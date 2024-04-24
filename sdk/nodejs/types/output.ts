@@ -2103,170 +2103,6 @@ export namespace aws {
 }
 
 export namespace azure {
-    export interface ElastigroupHealthCheck {
-        autoHealing?: boolean;
-        gracePeriod?: number;
-        healthCheckType: string;
-    }
-
-    export interface ElastigroupImage {
-        customs?: outputs.azure.ElastigroupImageCustom[];
-        marketplaces?: outputs.azure.ElastigroupImageMarketplace[];
-    }
-
-    export interface ElastigroupImageCustom {
-        imageName: string;
-        /**
-         * Name of the Resource Group for Elastigroup.
-         */
-        resourceGroupName: string;
-    }
-
-    export interface ElastigroupImageMarketplace {
-        offer: string;
-        publisher: string;
-        sku: string;
-    }
-
-    export interface ElastigroupIntegrationKubernetes {
-        clusterIdentifier: string;
-    }
-
-    export interface ElastigroupIntegrationMultaiRuntime {
-        deploymentId: string;
-    }
-
-    export interface ElastigroupLoadBalancer {
-        autoWeight?: boolean;
-        balancerId?: string;
-        targetSetId?: string;
-        type: string;
-    }
-
-    export interface ElastigroupLogin {
-        password?: string;
-        sshPublicKey?: string;
-        userName: string;
-    }
-
-    export interface ElastigroupManagedServiceIdentity {
-        /**
-         * The group name.
-         */
-        name: string;
-        /**
-         * Name of the Resource Group for Elastigroup.
-         */
-        resourceGroupName: string;
-    }
-
-    export interface ElastigroupNetwork {
-        additionalIpConfigs?: outputs.azure.ElastigroupNetworkAdditionalIpConfig[];
-        assignPublicIp?: boolean;
-        /**
-         * Name of the Resource Group for Elastigroup.
-         */
-        resourceGroupName: string;
-        subnetName: string;
-        virtualNetworkName: string;
-    }
-
-    export interface ElastigroupNetworkAdditionalIpConfig {
-        /**
-         * The group name.
-         */
-        name: string;
-        privateIpVersion?: string;
-    }
-
-    export interface ElastigroupScalingDownPolicy {
-        actionType?: string;
-        adjustment?: string;
-        cooldown: number;
-        dimensions?: outputs.azure.ElastigroupScalingDownPolicyDimension[];
-        evaluationPeriods: number;
-        maxTargetCapacity?: string;
-        maximum?: string;
-        metricName: string;
-        minTargetCapacity?: string;
-        minimum?: string;
-        namespace: string;
-        operator: string;
-        period: number;
-        policyName: string;
-        statistic: string;
-        target?: string;
-        threshold: number;
-        unit?: string;
-    }
-
-    export interface ElastigroupScalingDownPolicyDimension {
-        /**
-         * The group name.
-         */
-        name: string;
-        value?: string;
-    }
-
-    export interface ElastigroupScalingUpPolicy {
-        actionType?: string;
-        adjustment?: string;
-        cooldown: number;
-        dimensions?: outputs.azure.ElastigroupScalingUpPolicyDimension[];
-        evaluationPeriods: number;
-        maxTargetCapacity?: string;
-        maximum?: string;
-        metricName: string;
-        minTargetCapacity?: string;
-        minimum?: string;
-        namespace: string;
-        operator: string;
-        period: number;
-        policyName: string;
-        statistic: string;
-        target?: string;
-        threshold: number;
-        unit?: string;
-    }
-
-    export interface ElastigroupScalingUpPolicyDimension {
-        /**
-         * The group name.
-         */
-        name: string;
-        value?: string;
-    }
-
-    export interface ElastigroupScheduledTask {
-        adjustment?: string;
-        adjustmentPercentage?: string;
-        batchSizePercentage?: string;
-        cronExpression: string;
-        gracePeriod?: string;
-        isEnabled?: boolean;
-        scaleMaxCapacity?: string;
-        scaleMinCapacity?: string;
-        scaleTargetCapacity?: string;
-        taskType: string;
-    }
-
-    export interface ElastigroupStrategy {
-        drainingTimeout?: number;
-        lowPriorityPercentage?: number;
-        odCount?: number;
-    }
-
-    export interface ElastigroupUpdatePolicy {
-        rollConfig?: outputs.azure.ElastigroupUpdatePolicyRollConfig;
-        shouldRoll: boolean;
-    }
-
-    export interface ElastigroupUpdatePolicyRollConfig {
-        batchSizePercentage: number;
-        gracePeriod?: number;
-        healthCheckType?: string;
-    }
-
     export interface OceanAutoscaler {
         /**
          * Auto Scaling scale down operations.
@@ -2422,9 +2258,21 @@ export namespace azure {
     }
 
     export interface OceanNpAutoscaler {
+        /**
+         * Auto Scaling scale down operations.
+         */
         autoscaleDown?: outputs.azure.OceanNpAutoscalerAutoscaleDown;
+        /**
+         * Spare resource capacity management enabling fast assignment of pods without waiting for new resources to launch.
+         */
         autoscaleHeadroom?: outputs.azure.OceanNpAutoscalerAutoscaleHeadroom;
+        /**
+         * Enable the Ocean Kubernetes Autoscaler.
+         */
         autoscaleIsEnabled?: boolean;
+        /**
+         * Optionally set upper and lower bounds on the resource usage of the cluster.
+         */
         resourceLimits?: outputs.azure.OceanNpAutoscalerResourceLimits;
     }
 
@@ -2447,35 +2295,100 @@ export namespace azure {
     }
 
     export interface OceanNpFilters {
+        /**
+         * In case acceleratedNetworking is set to Enabled, accelerated networking applies only to the VM that enables it.
+         */
         acceleratedNetworking?: string;
+        /**
+         * The filtered vm sizes will support at least one of the architectures from this list. x8664 includes both intel64 and amd64.
+         */
         architectures?: string[];
+        /**
+         * The filtered vm sizes will support at least one of the classes from this list.
+         */
         diskPerformance?: string;
+        /**
+         * Vm sizes belonging to a series from the list will not be available for scaling
+         */
         excludeSeries?: string[];
+        /**
+         * The filtered gpu types will belong to one of the gpu types from this list.
+         *
+         * <a id="update-policy"></a>
+         */
         gpuTypes?: string[];
+        /**
+         * Maximum number of GPUs available.
+         */
         maxGpu?: number;
+        /**
+         * Maximum amount of Memory (GiB).
+         */
         maxMemoryGib?: number;
+        /**
+         * Maximum number of vcpus available.
+         */
         maxVcpu?: number;
+        /**
+         * Minimum number of data disks available.
+         */
         minDisk?: number;
+        /**
+         * Minimum number of GPUs available.
+         */
         minGpu?: number;
+        /**
+         * Minimum amount of Memory (GiB).
+         */
         minMemoryGib?: number;
+        /**
+         * Minimum number of network interfaces.
+         */
         minNics?: number;
+        /**
+         * Minimum number of vcpus available.
+         */
         minVcpu?: number;
+        /**
+         * Vm sizes belonging to a series from the list will be available for scaling. We can specify include list and series can be specified with capital or small letters, with space, without space or with underscore '_' .  For example all of these "DSv2", "Ds v2", "dsV2" refer to same DS_v2 series.
+         */
         series?: string[];
+        /**
+         * The filtered vm types will belong to one of the vm types from this list.
+         */
         vmTypes?: string[];
     }
 
     export interface OceanNpHeadroom {
+        /**
+         * Configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+         */
         cpuPerUnit?: number;
+        /**
+         * Amount of GPU to allocate for headroom unit.
+         */
         gpuPerUnit?: number;
+        /**
+         * Configure the amount of memory (MiB) to allocate the headroom.
+         */
         memoryPerUnit?: number;
+        /**
+         * The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+         */
         numOfUnits?: number;
     }
 
     export interface OceanNpHealth {
+        /**
+         * The amount of time to wait, in seconds, from the moment the instance has launched until monitoring of its health checks begins.
+         */
         gracePeriod?: number;
     }
 
     export interface OceanNpScheduling {
+        /**
+         * [Shutdown Hours](https://docs.spot.io/ocean/features/running-hours?id=shutdown-hours)An object used to specify times that the nodes in the cluster will be taken down.
+         */
         shutdownHours?: outputs.azure.OceanNpSchedulingShutdownHours;
     }
 
@@ -2485,8 +2398,17 @@ export namespace azure {
     }
 
     export interface OceanNpTaint {
+        /**
+         * Set taint effect.
+         */
         effect: string;
+        /**
+         * Set taint key. The following taint keys are not allowed: ["node.kubernetes.io/not-ready",  "node.kubernetes.io/unreachable", "node.kubernetes.io/unschedulable",  "node.kubernetes.io/memory-pressure",  "node.kubernetes.io/disk-pressure",  "node.kubernetes.io/network-unavailable",  "node.kubernetes.io/pid-pressure",  "node.kubernetes.io/out-of-service",  "node.cloudprovider.kubernetes.io/uninitialized",  "node.cloudprovider.kubernetes.io/shutdown", "kubernetes.azure.com/scalesetpriority"]
+         */
         key: string;
+        /**
+         * Set taint value.
+         */
         value: string;
     }
 
@@ -2508,33 +2430,100 @@ export namespace azure {
     }
 
     export interface OceanNpVirtualNodeGroupFilters {
+        /**
+         * In case acceleratedNetworking is set to Enabled, accelerated networking applies only to the VM that enables it.
+         */
         acceleratedNetworking?: string;
+        /**
+         * The filtered vm sizes will support at least one of the architectures from this list. x8664 includes both intel64 and amd64.
+         */
         architectures?: string[];
+        /**
+         * The filtered vm sizes will support at least one of the classes from this list.
+         */
         diskPerformance?: string;
+        /**
+         * Vm sizes belonging to a series from the list will not be available for scaling.
+         */
         excludeSeries?: string[];
+        /**
+         * The filtered gpu types will belong to one of the gpu types from this list.
+         * <a id="update-policy"></a>
+         */
         gpuTypes?: string[];
+        /**
+         * Maximum number of GPUs available.
+         */
         maxGpu?: number;
+        /**
+         * Maximum amount of Memory (GiB).
+         */
         maxMemoryGib?: number;
+        /**
+         * Maximum number of vcpus available.
+         */
         maxVcpu?: number;
+        /**
+         * Minimum number of data disks available.
+         */
         minDisk?: number;
+        /**
+         * Minimum number of GPUs available.
+         */
         minGpu?: number;
+        /**
+         * Minimum amount of Memory (GiB).
+         */
         minMemoryGib?: number;
+        /**
+         * Minimum number of network interfaces.
+         */
         minNics?: number;
+        /**
+         * Minimum number of vcpus available.
+         */
         minVcpu?: number;
+        /**
+         * Vm sizes belonging to a series from the list will be available for scaling.
+         */
         series?: string[];
+        /**
+         * The filtered vm types will belong to one of the vm types from this list.
+         */
         vmTypes?: string[];
     }
 
     export interface OceanNpVirtualNodeGroupHeadroom {
+        /**
+         * Configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+         */
         cpuPerUnit?: number;
+        /**
+         * Amount of GPU to allocate for headroom unit.
+         */
         gpuPerUnit?: number;
+        /**
+         * Configure the amount of memory (MiB) to allocate the headroom.
+         */
         memoryPerUnit?: number;
+        /**
+         * The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+         */
         numOfUnits?: number;
     }
 
     export interface OceanNpVirtualNodeGroupTaint {
+        /**
+         * Set taint effect.
+         */
         effect: string;
+        /**
+         * Set taint key. The following are not allowed: "kubernetes.azure.com/scalesetpriority".
+         */
         key: string;
+        /**
+         * Set taint value.
+         */
         value: string;
     }
 

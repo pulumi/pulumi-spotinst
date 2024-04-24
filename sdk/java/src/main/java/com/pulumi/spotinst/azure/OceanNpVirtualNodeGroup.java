@@ -23,113 +23,363 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Manages a Spotinst Ocean AKS Virtual Node Groups resource.
+ * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.spotinst.azure.OceanNpVirtualNodeGroup;
+ * import com.pulumi.spotinst.azure.OceanNpVirtualNodeGroupArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupHeadroomArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupTaintArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupFiltersArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new OceanNpVirtualNodeGroup(&#34;example&#34;, OceanNpVirtualNodeGroupArgs.builder()        
+ *             .name(&#34;testVng&#34;)
+ *             .oceanId(&#34;o-134abcd&#34;)
+ *             .headrooms(OceanNpVirtualNodeGroupHeadroomArgs.builder()
+ *                 .cpuPerUnit(1024)
+ *                 .memoryPerUnit(512)
+ *                 .gpuPerUnit(0)
+ *                 .numOfUnits(2)
+ *                 .build())
+ *             .availabilityZones(            
+ *                 &#34;1&#34;,
+ *                 &#34;2&#34;,
+ *                 &#34;3&#34;)
+ *             .labels(Map.ofEntries(
+ *                 Map.entry(&#34;key&#34;, &#34;env&#34;),
+ *                 Map.entry(&#34;value&#34;, &#34;test&#34;)
+ *             ))
+ *             .minCount(1)
+ *             .maxCount(100)
+ *             .maxPodsPerNode(30)
+ *             .enableNodePublicIp(true)
+ *             .osDiskSizeGb(30)
+ *             .osDiskType(&#34;Managed&#34;)
+ *             .osType(&#34;Linux&#34;)
+ *             .osSku(&#34;Ubuntu&#34;)
+ *             .kubernetesVersion(&#34;1.26&#34;)
+ *             .podSubnetIds(&#34;/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default&#34;)
+ *             .vnetSubnetIds(&#34;/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default&#34;)
+ *             .spotPercentage(50)
+ *             .fallbackToOndemand(true)
+ *             .taints(OceanNpVirtualNodeGroupTaintArgs.builder()
+ *                 .key(&#34;taintKey&#34;)
+ *                 .value(&#34;taintValue&#34;)
+ *                 .effect(&#34;NoSchedule&#34;)
+ *                 .build())
+ *             .tags(Map.ofEntries(
+ *                 Map.entry(&#34;tagKey&#34;, &#34;env&#34;),
+ *                 Map.entry(&#34;tagValue&#34;, &#34;staging&#34;)
+ *             ))
+ *             .filters(OceanNpVirtualNodeGroupFiltersArgs.builder()
+ *                 .minVcpu(2)
+ *                 .maxVcpu(16)
+ *                 .minMemoryGib(8)
+ *                 .maxMemoryGib(128)
+ *                 .architectures(                
+ *                     &#34;x86_64&#34;,
+ *                     &#34;arm64&#34;)
+ *                 .series(                
+ *                     &#34;D v3&#34;,
+ *                     &#34;Dds_v4&#34;,
+ *                     &#34;Dsv2&#34;)
+ *                 .excludeSeries(                
+ *                     &#34;Av2&#34;,
+ *                     &#34;A&#34;,
+ *                     &#34;Bs&#34;,
+ *                     &#34;D&#34;,
+ *                     &#34;E&#34;)
+ *                 .acceleratedNetworking(&#34;Enabled&#34;)
+ *                 .diskPerformance(&#34;Premium&#34;)
+ *                 .minGpu(1)
+ *                 .maxGpu(2)
+ *                 .minNics(1)
+ *                 .vmTypes(                
+ *                     &#34;generalPurpose&#34;,
+ *                     &#34;GPU&#34;)
+ *                 .minDisk(1)
+ *                 .gpuTypes(&#34;nvidia-tesla-t4&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ */
 @ResourceType(type="spotinst:azure/oceanNpVirtualNodeGroup:OceanNpVirtualNodeGroup")
 public class OceanNpVirtualNodeGroup extends com.pulumi.resources.CustomResource {
+    /**
+     * An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+     * 
+     */
     @Export(name="availabilityZones", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> availabilityZones;
 
+    /**
+     * @return An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+     * 
+     */
     public Output<Optional<List<String>>> availabilityZones() {
         return Codegen.optional(this.availabilityZones);
     }
+    /**
+     * Enable node public IP.
+     * 
+     */
     @Export(name="enableNodePublicIp", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableNodePublicIp;
 
+    /**
+     * @return Enable node public IP.
+     * 
+     */
     public Output<Optional<Boolean>> enableNodePublicIp() {
         return Codegen.optional(this.enableNodePublicIp);
     }
+    /**
+     * If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
+     * 
+     */
     @Export(name="fallbackToOndemand", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> fallbackToOndemand;
 
+    /**
+     * @return If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
+     * 
+     */
     public Output<Optional<Boolean>> fallbackToOndemand() {
         return Codegen.optional(this.fallbackToOndemand);
     }
+    /**
+     * Filters for the VM sizes that can be launched from the virtual node group.
+     * 
+     */
     @Export(name="filters", refs={OceanNpVirtualNodeGroupFilters.class}, tree="[0]")
     private Output</* @Nullable */ OceanNpVirtualNodeGroupFilters> filters;
 
+    /**
+     * @return Filters for the VM sizes that can be launched from the virtual node group.
+     * 
+     */
     public Output<Optional<OceanNpVirtualNodeGroupFilters>> filters() {
         return Codegen.optional(this.filters);
     }
+    /**
+     * Specify the custom headroom per VNG. Provide a list of headroom objects.
+     * 
+     */
     @Export(name="headrooms", refs={List.class,OceanNpVirtualNodeGroupHeadroom.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OceanNpVirtualNodeGroupHeadroom>> headrooms;
 
+    /**
+     * @return Specify the custom headroom per VNG. Provide a list of headroom objects.
+     * 
+     */
     public Output<Optional<List<OceanNpVirtualNodeGroupHeadroom>>> headrooms() {
         return Codegen.optional(this.headrooms);
     }
+    /**
+     * The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
+     * 
+     */
     @Export(name="kubernetesVersion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kubernetesVersion;
 
+    /**
+     * @return The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
+     * 
+     */
     public Output<Optional<String>> kubernetesVersion() {
         return Codegen.optional(this.kubernetesVersion);
     }
+    /**
+     * An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
+     * 
+     */
     @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> labels;
 
+    /**
+     * @return An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
+     * 
+     */
     public Output<Optional<Map<String,Object>>> labels() {
         return Codegen.optional(this.labels);
     }
+    /**
+     * Maximum node count limit.
+     * 
+     */
     @Export(name="maxCount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxCount;
 
+    /**
+     * @return Maximum node count limit.
+     * 
+     */
     public Output<Optional<Integer>> maxCount() {
         return Codegen.optional(this.maxCount);
     }
+    /**
+     * The maximum number of pods per node in the node pools.
+     * 
+     */
     @Export(name="maxPodsPerNode", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxPodsPerNode;
 
+    /**
+     * @return The maximum number of pods per node in the node pools.
+     * 
+     */
     public Output<Optional<Integer>> maxPodsPerNode() {
         return Codegen.optional(this.maxPodsPerNode);
     }
+    /**
+     * Minimum node count limit.
+     * 
+     */
     @Export(name="minCount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> minCount;
 
+    /**
+     * @return Minimum node count limit.
+     * 
+     */
     public Output<Optional<Integer>> minCount() {
         return Codegen.optional(this.minCount);
     }
+    /**
+     * Enter a name for the virtual node group.
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return Enter a name for the virtual node group.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * The Ocean cluster identifier. Required for Launch Spec creation.
+     * 
+     */
     @Export(name="oceanId", refs={String.class}, tree="[0]")
     private Output<String> oceanId;
 
+    /**
+     * @return The Ocean cluster identifier. Required for Launch Spec creation.
+     * 
+     */
     public Output<String> oceanId() {
         return this.oceanId;
     }
+    /**
+     * The size of the OS disk in GB.
+     * 
+     */
     @Export(name="osDiskSizeGb", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> osDiskSizeGb;
 
+    /**
+     * @return The size of the OS disk in GB.
+     * 
+     */
     public Output<Optional<Integer>> osDiskSizeGb() {
         return Codegen.optional(this.osDiskSizeGb);
     }
+    /**
+     * The type of the OS disk.
+     * 
+     */
     @Export(name="osDiskType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> osDiskType;
 
+    /**
+     * @return The type of the OS disk.
+     * 
+     */
     public Output<Optional<String>> osDiskType() {
         return Codegen.optional(this.osDiskType);
     }
+    /**
+     * The OS SKU of the OS type. Must correlate with the os type.
+     * 
+     */
     @Export(name="osSku", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> osSku;
 
+    /**
+     * @return The OS SKU of the OS type. Must correlate with the os type.
+     * 
+     */
     public Output<Optional<String>> osSku() {
         return Codegen.optional(this.osSku);
     }
+    /**
+     * The OS type of the OS disk. Can&#39;t be modified once set.
+     * 
+     */
     @Export(name="osType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> osType;
 
+    /**
+     * @return The OS type of the OS disk. Can&#39;t be modified once set.
+     * 
+     */
     public Output<Optional<String>> osType() {
         return Codegen.optional(this.osType);
     }
+    /**
+     * The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
+     * 
+     */
     @Export(name="podSubnetIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> podSubnetIds;
 
+    /**
+     * @return The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
+     * 
+     */
     public Output<Optional<List<String>>> podSubnetIds() {
         return Codegen.optional(this.podSubnetIds);
     }
+    /**
+     * Percentage of spot VMs to maintain.
+     * 
+     */
     @Export(name="spotPercentage", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> spotPercentage;
 
+    /**
+     * @return Percentage of spot VMs to maintain.
+     * 
+     */
     public Output<Optional<Integer>> spotPercentage() {
         return Codegen.optional(this.spotPercentage);
     }
@@ -139,9 +389,17 @@ public class OceanNpVirtualNodeGroup extends com.pulumi.resources.CustomResource
     public Output<Optional<Map<String,Object>>> tags() {
         return Codegen.optional(this.tags);
     }
+    /**
+     * Add taints to a virtual node group.
+     * 
+     */
     @Export(name="taints", refs={List.class,OceanNpVirtualNodeGroupTaint.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OceanNpVirtualNodeGroupTaint>> taints;
 
+    /**
+     * @return Add taints to a virtual node group.
+     * 
+     */
     public Output<Optional<List<OceanNpVirtualNodeGroupTaint>>> taints() {
         return Codegen.optional(this.taints);
     }
@@ -151,9 +409,17 @@ public class OceanNpVirtualNodeGroup extends com.pulumi.resources.CustomResource
     public Output<Optional<OceanNpVirtualNodeGroupUpdatePolicy>> updatePolicy() {
         return Codegen.optional(this.updatePolicy);
     }
+    /**
+     * The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
+     * 
+     */
     @Export(name="vnetSubnetIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> vnetSubnetIds;
 
+    /**
+     * @return The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
+     * 
+     */
     public Output<Optional<List<String>>> vnetSubnetIds() {
         return Codegen.optional(this.vnetSubnetIds);
     }

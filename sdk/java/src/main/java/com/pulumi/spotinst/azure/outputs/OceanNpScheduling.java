@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanNpScheduling {
+    /**
+     * @return [Shutdown Hours](https://docs.spot.io/ocean/features/running-hours?id=shutdown-hours)An object used to specify times that the nodes in the cluster will be taken down.
+     * 
+     */
     private @Nullable OceanNpSchedulingShutdownHours shutdownHours;
 
     private OceanNpScheduling() {}
+    /**
+     * @return [Shutdown Hours](https://docs.spot.io/ocean/features/running-hours?id=shutdown-hours)An object used to specify times that the nodes in the cluster will be taken down.
+     * 
+     */
     public Optional<OceanNpSchedulingShutdownHours> shutdownHours() {
         return Optional.ofNullable(this.shutdownHours);
     }

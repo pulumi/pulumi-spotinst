@@ -12,12 +12,21 @@ namespace Pulumi.SpotInst.Azure.Inputs
 
     public sealed class OceanNpVirtualNodeGroupTaintArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Set taint effect.
+        /// </summary>
         [Input("effect", required: true)]
         public Input<string> Effect { get; set; } = null!;
 
+        /// <summary>
+        /// Set taint key. The following are not allowed: "kubernetes.azure.com/scalesetpriority".
+        /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
+        /// <summary>
+        /// Set taint value.
+        /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
 

@@ -24,7 +24,6 @@
         "aws/oceanExtendedResourceDefinition.ts",
         "aws/oceanLaunchSpec.ts",
         "aws/suspension.ts",
-        "azure/elastigroup.ts",
         "azure/index.ts",
         "azure/ocean.ts",
         "azure/oceanNp.ts",

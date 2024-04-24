@@ -40,6 +40,26 @@ class OceanNpVirtualNodeGroupArgs:
                  vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a OceanNpVirtualNodeGroup resource.
+        :param pulumi.Input[str] ocean_id: The Ocean cluster identifier. Required for Launch Spec creation.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zones: An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+        :param pulumi.Input[bool] enable_node_public_ip: Enable node public IP.
+        :param pulumi.Input[bool] fallback_to_ondemand: If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
+        :param pulumi.Input['OceanNpVirtualNodeGroupFiltersArgs'] filters: Filters for the VM sizes that can be launched from the virtual node group.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupHeadroomArgs']]] headrooms: Specify the custom headroom per VNG. Provide a list of headroom objects.
+        :param pulumi.Input[str] kubernetes_version: The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
+        :param pulumi.Input[Mapping[str, Any]] labels: An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
+        :param pulumi.Input[int] max_count: Maximum node count limit.
+        :param pulumi.Input[int] max_pods_per_node: The maximum number of pods per node in the node pools.
+        :param pulumi.Input[int] min_count: Minimum node count limit.
+        :param pulumi.Input[str] name: Enter a name for the virtual node group.
+        :param pulumi.Input[int] os_disk_size_gb: The size of the OS disk in GB.
+        :param pulumi.Input[str] os_disk_type: The type of the OS disk.
+        :param pulumi.Input[str] os_sku: The OS SKU of the OS type. Must correlate with the os type.
+        :param pulumi.Input[str] os_type: The OS type of the OS disk. Can't be modified once set.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_subnet_ids: The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
+        :param pulumi.Input[int] spot_percentage: Percentage of spot VMs to maintain.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupTaintArgs']]] taints: Add taints to a virtual node group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vnet_subnet_ids: The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
         """
         pulumi.set(__self__, "ocean_id", ocean_id)
         if availability_zones is not None:
@@ -88,6 +108,9 @@ class OceanNpVirtualNodeGroupArgs:
     @property
     @pulumi.getter(name="oceanId")
     def ocean_id(self) -> pulumi.Input[str]:
+        """
+        The Ocean cluster identifier. Required for Launch Spec creation.
+        """
         return pulumi.get(self, "ocean_id")
 
     @ocean_id.setter
@@ -97,6 +120,9 @@ class OceanNpVirtualNodeGroupArgs:
     @property
     @pulumi.getter(name="availabilityZones")
     def availability_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+        """
         return pulumi.get(self, "availability_zones")
 
     @availability_zones.setter
@@ -106,6 +132,9 @@ class OceanNpVirtualNodeGroupArgs:
     @property
     @pulumi.getter(name="enableNodePublicIp")
     def enable_node_public_ip(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable node public IP.
+        """
         return pulumi.get(self, "enable_node_public_ip")
 
     @enable_node_public_ip.setter
@@ -115,6 +144,9 @@ class OceanNpVirtualNodeGroupArgs:
     @property
     @pulumi.getter(name="fallbackToOndemand")
     def fallback_to_ondemand(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
+        """
         return pulumi.get(self, "fallback_to_ondemand")
 
     @fallback_to_ondemand.setter
@@ -124,6 +156,9 @@ class OceanNpVirtualNodeGroupArgs:
     @property
     @pulumi.getter
     def filters(self) -> Optional[pulumi.Input['OceanNpVirtualNodeGroupFiltersArgs']]:
+        """
+        Filters for the VM sizes that can be launched from the virtual node group.
+        """
         return pulumi.get(self, "filters")
 
     @filters.setter
@@ -133,6 +168,9 @@ class OceanNpVirtualNodeGroupArgs:
     @property
     @pulumi.getter
     def headrooms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupHeadroomArgs']]]]:
+        """
+        Specify the custom headroom per VNG. Provide a list of headroom objects.
+        """
         return pulumi.get(self, "headrooms")
 
     @headrooms.setter
@@ -142,6 +180,9 @@ class OceanNpVirtualNodeGroupArgs:
     @property
     @pulumi.getter(name="kubernetesVersion")
     def kubernetes_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
+        """
         return pulumi.get(self, "kubernetes_version")
 
     @kubernetes_version.setter
@@ -151,6 +192,9 @@ class OceanNpVirtualNodeGroupArgs:
     @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
+        """
         return pulumi.get(self, "labels")
 
     @labels.setter
@@ -160,6 +204,9 @@ class OceanNpVirtualNodeGroupArgs:
     @property
     @pulumi.getter(name="maxCount")
     def max_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum node count limit.
+        """
         return pulumi.get(self, "max_count")
 
     @max_count.setter
@@ -169,6 +216,9 @@ class OceanNpVirtualNodeGroupArgs:
     @property
     @pulumi.getter(name="maxPodsPerNode")
     def max_pods_per_node(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum number of pods per node in the node pools.
+        """
         return pulumi.get(self, "max_pods_per_node")
 
     @max_pods_per_node.setter
@@ -178,6 +228,9 @@ class OceanNpVirtualNodeGroupArgs:
     @property
     @pulumi.getter(name="minCount")
     def min_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum node count limit.
+        """
         return pulumi.get(self, "min_count")
 
     @min_count.setter
@@ -187,6 +240,9 @@ class OceanNpVirtualNodeGroupArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Enter a name for the virtual node group.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -196,6 +252,9 @@ class OceanNpVirtualNodeGroupArgs:
     @property
     @pulumi.getter(name="osDiskSizeGb")
     def os_disk_size_gb(self) -> Optional[pulumi.Input[int]]:
+        """
+        The size of the OS disk in GB.
+        """
         return pulumi.get(self, "os_disk_size_gb")
 
     @os_disk_size_gb.setter
@@ -205,6 +264,9 @@ class OceanNpVirtualNodeGroupArgs:
     @property
     @pulumi.getter(name="osDiskType")
     def os_disk_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the OS disk.
+        """
         return pulumi.get(self, "os_disk_type")
 
     @os_disk_type.setter
@@ -214,6 +276,9 @@ class OceanNpVirtualNodeGroupArgs:
     @property
     @pulumi.getter(name="osSku")
     def os_sku(self) -> Optional[pulumi.Input[str]]:
+        """
+        The OS SKU of the OS type. Must correlate with the os type.
+        """
         return pulumi.get(self, "os_sku")
 
     @os_sku.setter
@@ -223,6 +288,9 @@ class OceanNpVirtualNodeGroupArgs:
     @property
     @pulumi.getter(name="osType")
     def os_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The OS type of the OS disk. Can't be modified once set.
+        """
         return pulumi.get(self, "os_type")
 
     @os_type.setter
@@ -232,6 +300,9 @@ class OceanNpVirtualNodeGroupArgs:
     @property
     @pulumi.getter(name="podSubnetIds")
     def pod_subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
+        """
         return pulumi.get(self, "pod_subnet_ids")
 
     @pod_subnet_ids.setter
@@ -241,6 +312,9 @@ class OceanNpVirtualNodeGroupArgs:
     @property
     @pulumi.getter(name="spotPercentage")
     def spot_percentage(self) -> Optional[pulumi.Input[int]]:
+        """
+        Percentage of spot VMs to maintain.
+        """
         return pulumi.get(self, "spot_percentage")
 
     @spot_percentage.setter
@@ -259,6 +333,9 @@ class OceanNpVirtualNodeGroupArgs:
     @property
     @pulumi.getter
     def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupTaintArgs']]]]:
+        """
+        Add taints to a virtual node group.
+        """
         return pulumi.get(self, "taints")
 
     @taints.setter
@@ -277,6 +354,9 @@ class OceanNpVirtualNodeGroupArgs:
     @property
     @pulumi.getter(name="vnetSubnetIds")
     def vnet_subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
+        """
         return pulumi.get(self, "vnet_subnet_ids")
 
     @vnet_subnet_ids.setter
@@ -311,6 +391,26 @@ class _OceanNpVirtualNodeGroupState:
                  vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering OceanNpVirtualNodeGroup resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zones: An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+        :param pulumi.Input[bool] enable_node_public_ip: Enable node public IP.
+        :param pulumi.Input[bool] fallback_to_ondemand: If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
+        :param pulumi.Input['OceanNpVirtualNodeGroupFiltersArgs'] filters: Filters for the VM sizes that can be launched from the virtual node group.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupHeadroomArgs']]] headrooms: Specify the custom headroom per VNG. Provide a list of headroom objects.
+        :param pulumi.Input[str] kubernetes_version: The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
+        :param pulumi.Input[Mapping[str, Any]] labels: An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
+        :param pulumi.Input[int] max_count: Maximum node count limit.
+        :param pulumi.Input[int] max_pods_per_node: The maximum number of pods per node in the node pools.
+        :param pulumi.Input[int] min_count: Minimum node count limit.
+        :param pulumi.Input[str] name: Enter a name for the virtual node group.
+        :param pulumi.Input[str] ocean_id: The Ocean cluster identifier. Required for Launch Spec creation.
+        :param pulumi.Input[int] os_disk_size_gb: The size of the OS disk in GB.
+        :param pulumi.Input[str] os_disk_type: The type of the OS disk.
+        :param pulumi.Input[str] os_sku: The OS SKU of the OS type. Must correlate with the os type.
+        :param pulumi.Input[str] os_type: The OS type of the OS disk. Can't be modified once set.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_subnet_ids: The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
+        :param pulumi.Input[int] spot_percentage: Percentage of spot VMs to maintain.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupTaintArgs']]] taints: Add taints to a virtual node group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vnet_subnet_ids: The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
         """
         if availability_zones is not None:
             pulumi.set(__self__, "availability_zones", availability_zones)
@@ -360,6 +460,9 @@ class _OceanNpVirtualNodeGroupState:
     @property
     @pulumi.getter(name="availabilityZones")
     def availability_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+        """
         return pulumi.get(self, "availability_zones")
 
     @availability_zones.setter
@@ -369,6 +472,9 @@ class _OceanNpVirtualNodeGroupState:
     @property
     @pulumi.getter(name="enableNodePublicIp")
     def enable_node_public_ip(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable node public IP.
+        """
         return pulumi.get(self, "enable_node_public_ip")
 
     @enable_node_public_ip.setter
@@ -378,6 +484,9 @@ class _OceanNpVirtualNodeGroupState:
     @property
     @pulumi.getter(name="fallbackToOndemand")
     def fallback_to_ondemand(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
+        """
         return pulumi.get(self, "fallback_to_ondemand")
 
     @fallback_to_ondemand.setter
@@ -387,6 +496,9 @@ class _OceanNpVirtualNodeGroupState:
     @property
     @pulumi.getter
     def filters(self) -> Optional[pulumi.Input['OceanNpVirtualNodeGroupFiltersArgs']]:
+        """
+        Filters for the VM sizes that can be launched from the virtual node group.
+        """
         return pulumi.get(self, "filters")
 
     @filters.setter
@@ -396,6 +508,9 @@ class _OceanNpVirtualNodeGroupState:
     @property
     @pulumi.getter
     def headrooms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupHeadroomArgs']]]]:
+        """
+        Specify the custom headroom per VNG. Provide a list of headroom objects.
+        """
         return pulumi.get(self, "headrooms")
 
     @headrooms.setter
@@ -405,6 +520,9 @@ class _OceanNpVirtualNodeGroupState:
     @property
     @pulumi.getter(name="kubernetesVersion")
     def kubernetes_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
+        """
         return pulumi.get(self, "kubernetes_version")
 
     @kubernetes_version.setter
@@ -414,6 +532,9 @@ class _OceanNpVirtualNodeGroupState:
     @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
+        """
         return pulumi.get(self, "labels")
 
     @labels.setter
@@ -423,6 +544,9 @@ class _OceanNpVirtualNodeGroupState:
     @property
     @pulumi.getter(name="maxCount")
     def max_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum node count limit.
+        """
         return pulumi.get(self, "max_count")
 
     @max_count.setter
@@ -432,6 +556,9 @@ class _OceanNpVirtualNodeGroupState:
     @property
     @pulumi.getter(name="maxPodsPerNode")
     def max_pods_per_node(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum number of pods per node in the node pools.
+        """
         return pulumi.get(self, "max_pods_per_node")
 
     @max_pods_per_node.setter
@@ -441,6 +568,9 @@ class _OceanNpVirtualNodeGroupState:
     @property
     @pulumi.getter(name="minCount")
     def min_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum node count limit.
+        """
         return pulumi.get(self, "min_count")
 
     @min_count.setter
@@ -450,6 +580,9 @@ class _OceanNpVirtualNodeGroupState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Enter a name for the virtual node group.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -459,6 +592,9 @@ class _OceanNpVirtualNodeGroupState:
     @property
     @pulumi.getter(name="oceanId")
     def ocean_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Ocean cluster identifier. Required for Launch Spec creation.
+        """
         return pulumi.get(self, "ocean_id")
 
     @ocean_id.setter
@@ -468,6 +604,9 @@ class _OceanNpVirtualNodeGroupState:
     @property
     @pulumi.getter(name="osDiskSizeGb")
     def os_disk_size_gb(self) -> Optional[pulumi.Input[int]]:
+        """
+        The size of the OS disk in GB.
+        """
         return pulumi.get(self, "os_disk_size_gb")
 
     @os_disk_size_gb.setter
@@ -477,6 +616,9 @@ class _OceanNpVirtualNodeGroupState:
     @property
     @pulumi.getter(name="osDiskType")
     def os_disk_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the OS disk.
+        """
         return pulumi.get(self, "os_disk_type")
 
     @os_disk_type.setter
@@ -486,6 +628,9 @@ class _OceanNpVirtualNodeGroupState:
     @property
     @pulumi.getter(name="osSku")
     def os_sku(self) -> Optional[pulumi.Input[str]]:
+        """
+        The OS SKU of the OS type. Must correlate with the os type.
+        """
         return pulumi.get(self, "os_sku")
 
     @os_sku.setter
@@ -495,6 +640,9 @@ class _OceanNpVirtualNodeGroupState:
     @property
     @pulumi.getter(name="osType")
     def os_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The OS type of the OS disk. Can't be modified once set.
+        """
         return pulumi.get(self, "os_type")
 
     @os_type.setter
@@ -504,6 +652,9 @@ class _OceanNpVirtualNodeGroupState:
     @property
     @pulumi.getter(name="podSubnetIds")
     def pod_subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
+        """
         return pulumi.get(self, "pod_subnet_ids")
 
     @pod_subnet_ids.setter
@@ -513,6 +664,9 @@ class _OceanNpVirtualNodeGroupState:
     @property
     @pulumi.getter(name="spotPercentage")
     def spot_percentage(self) -> Optional[pulumi.Input[int]]:
+        """
+        Percentage of spot VMs to maintain.
+        """
         return pulumi.get(self, "spot_percentage")
 
     @spot_percentage.setter
@@ -531,6 +685,9 @@ class _OceanNpVirtualNodeGroupState:
     @property
     @pulumi.getter
     def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupTaintArgs']]]]:
+        """
+        Add taints to a virtual node group.
+        """
         return pulumi.get(self, "taints")
 
     @taints.setter
@@ -549,6 +706,9 @@ class _OceanNpVirtualNodeGroupState:
     @property
     @pulumi.getter(name="vnetSubnetIds")
     def vnet_subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
+        """
         return pulumi.get(self, "vnet_subnet_ids")
 
     @vnet_subnet_ids.setter
@@ -585,9 +745,111 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
                  vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Create a OceanNpVirtualNodeGroup resource with the given unique name, props, and options.
+        Manages a Spotinst Ocean AKS Virtual Node Groups resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        example = spotinst.azure.OceanNpVirtualNodeGroup("example",
+            name="testVng",
+            ocean_id="o-134abcd",
+            headrooms=[spotinst.azure.OceanNpVirtualNodeGroupHeadroomArgs(
+                cpu_per_unit=1024,
+                memory_per_unit=512,
+                gpu_per_unit=0,
+                num_of_units=2,
+            )],
+            availability_zones=[
+                "1",
+                "2",
+                "3",
+            ],
+            labels={
+                "key": "env",
+                "value": "test",
+            },
+            min_count=1,
+            max_count=100,
+            max_pods_per_node=30,
+            enable_node_public_ip=True,
+            os_disk_size_gb=30,
+            os_disk_type="Managed",
+            os_type="Linux",
+            os_sku="Ubuntu",
+            kubernetes_version="1.26",
+            pod_subnet_ids=["/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default"],
+            vnet_subnet_ids=["/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default"],
+            spot_percentage=50,
+            fallback_to_ondemand=True,
+            taints=[spotinst.azure.OceanNpVirtualNodeGroupTaintArgs(
+                key="taintKey",
+                value="taintValue",
+                effect="NoSchedule",
+            )],
+            tags={
+                "tagKey": "env",
+                "tagValue": "staging",
+            },
+            filters=spotinst.azure.OceanNpVirtualNodeGroupFiltersArgs(
+                min_vcpu=2,
+                max_vcpu=16,
+                min_memory_gib=8,
+                max_memory_gib=128,
+                architectures=[
+                    "x86_64",
+                    "arm64",
+                ],
+                series=[
+                    "D v3",
+                    "Dds_v4",
+                    "Dsv2",
+                ],
+                exclude_series=[
+                    "Av2",
+                    "A",
+                    "Bs",
+                    "D",
+                    "E",
+                ],
+                accelerated_networking="Enabled",
+                disk_performance="Premium",
+                min_gpu=1,
+                max_gpu=2,
+                min_nics=1,
+                vm_types=[
+                    "generalPurpose",
+                    "GPU",
+                ],
+                min_disk=1,
+                gpu_types=["nvidia-tesla-t4"],
+            ))
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zones: An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+        :param pulumi.Input[bool] enable_node_public_ip: Enable node public IP.
+        :param pulumi.Input[bool] fallback_to_ondemand: If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
+        :param pulumi.Input[pulumi.InputType['OceanNpVirtualNodeGroupFiltersArgs']] filters: Filters for the VM sizes that can be launched from the virtual node group.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpVirtualNodeGroupHeadroomArgs']]]] headrooms: Specify the custom headroom per VNG. Provide a list of headroom objects.
+        :param pulumi.Input[str] kubernetes_version: The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
+        :param pulumi.Input[Mapping[str, Any]] labels: An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
+        :param pulumi.Input[int] max_count: Maximum node count limit.
+        :param pulumi.Input[int] max_pods_per_node: The maximum number of pods per node in the node pools.
+        :param pulumi.Input[int] min_count: Minimum node count limit.
+        :param pulumi.Input[str] name: Enter a name for the virtual node group.
+        :param pulumi.Input[str] ocean_id: The Ocean cluster identifier. Required for Launch Spec creation.
+        :param pulumi.Input[int] os_disk_size_gb: The size of the OS disk in GB.
+        :param pulumi.Input[str] os_disk_type: The type of the OS disk.
+        :param pulumi.Input[str] os_sku: The OS SKU of the OS type. Must correlate with the os type.
+        :param pulumi.Input[str] os_type: The OS type of the OS disk. Can't be modified once set.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_subnet_ids: The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
+        :param pulumi.Input[int] spot_percentage: Percentage of spot VMs to maintain.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpVirtualNodeGroupTaintArgs']]]] taints: Add taints to a virtual node group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vnet_subnet_ids: The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
         """
         ...
     @overload
@@ -596,7 +858,89 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
                  args: OceanNpVirtualNodeGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a OceanNpVirtualNodeGroup resource with the given unique name, props, and options.
+        Manages a Spotinst Ocean AKS Virtual Node Groups resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        example = spotinst.azure.OceanNpVirtualNodeGroup("example",
+            name="testVng",
+            ocean_id="o-134abcd",
+            headrooms=[spotinst.azure.OceanNpVirtualNodeGroupHeadroomArgs(
+                cpu_per_unit=1024,
+                memory_per_unit=512,
+                gpu_per_unit=0,
+                num_of_units=2,
+            )],
+            availability_zones=[
+                "1",
+                "2",
+                "3",
+            ],
+            labels={
+                "key": "env",
+                "value": "test",
+            },
+            min_count=1,
+            max_count=100,
+            max_pods_per_node=30,
+            enable_node_public_ip=True,
+            os_disk_size_gb=30,
+            os_disk_type="Managed",
+            os_type="Linux",
+            os_sku="Ubuntu",
+            kubernetes_version="1.26",
+            pod_subnet_ids=["/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default"],
+            vnet_subnet_ids=["/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default"],
+            spot_percentage=50,
+            fallback_to_ondemand=True,
+            taints=[spotinst.azure.OceanNpVirtualNodeGroupTaintArgs(
+                key="taintKey",
+                value="taintValue",
+                effect="NoSchedule",
+            )],
+            tags={
+                "tagKey": "env",
+                "tagValue": "staging",
+            },
+            filters=spotinst.azure.OceanNpVirtualNodeGroupFiltersArgs(
+                min_vcpu=2,
+                max_vcpu=16,
+                min_memory_gib=8,
+                max_memory_gib=128,
+                architectures=[
+                    "x86_64",
+                    "arm64",
+                ],
+                series=[
+                    "D v3",
+                    "Dds_v4",
+                    "Dsv2",
+                ],
+                exclude_series=[
+                    "Av2",
+                    "A",
+                    "Bs",
+                    "D",
+                    "E",
+                ],
+                accelerated_networking="Enabled",
+                disk_performance="Premium",
+                min_gpu=1,
+                max_gpu=2,
+                min_nics=1,
+                vm_types=[
+                    "generalPurpose",
+                    "GPU",
+                ],
+                min_disk=1,
+                gpu_types=["nvidia-tesla-t4"],
+            ))
+        ```
+
         :param str resource_name: The name of the resource.
         :param OceanNpVirtualNodeGroupArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -706,6 +1050,26 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zones: An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+        :param pulumi.Input[bool] enable_node_public_ip: Enable node public IP.
+        :param pulumi.Input[bool] fallback_to_ondemand: If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
+        :param pulumi.Input[pulumi.InputType['OceanNpVirtualNodeGroupFiltersArgs']] filters: Filters for the VM sizes that can be launched from the virtual node group.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpVirtualNodeGroupHeadroomArgs']]]] headrooms: Specify the custom headroom per VNG. Provide a list of headroom objects.
+        :param pulumi.Input[str] kubernetes_version: The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
+        :param pulumi.Input[Mapping[str, Any]] labels: An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
+        :param pulumi.Input[int] max_count: Maximum node count limit.
+        :param pulumi.Input[int] max_pods_per_node: The maximum number of pods per node in the node pools.
+        :param pulumi.Input[int] min_count: Minimum node count limit.
+        :param pulumi.Input[str] name: Enter a name for the virtual node group.
+        :param pulumi.Input[str] ocean_id: The Ocean cluster identifier. Required for Launch Spec creation.
+        :param pulumi.Input[int] os_disk_size_gb: The size of the OS disk in GB.
+        :param pulumi.Input[str] os_disk_type: The type of the OS disk.
+        :param pulumi.Input[str] os_sku: The OS SKU of the OS type. Must correlate with the os type.
+        :param pulumi.Input[str] os_type: The OS type of the OS disk. Can't be modified once set.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_subnet_ids: The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
+        :param pulumi.Input[int] spot_percentage: Percentage of spot VMs to maintain.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpVirtualNodeGroupTaintArgs']]]] taints: Add taints to a virtual node group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vnet_subnet_ids: The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -738,91 +1102,145 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
     @property
     @pulumi.getter(name="availabilityZones")
     def availability_zones(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+        """
         return pulumi.get(self, "availability_zones")
 
     @property
     @pulumi.getter(name="enableNodePublicIp")
     def enable_node_public_ip(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Enable node public IP.
+        """
         return pulumi.get(self, "enable_node_public_ip")
 
     @property
     @pulumi.getter(name="fallbackToOndemand")
     def fallback_to_ondemand(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
+        """
         return pulumi.get(self, "fallback_to_ondemand")
 
     @property
     @pulumi.getter
     def filters(self) -> pulumi.Output[Optional['outputs.OceanNpVirtualNodeGroupFilters']]:
+        """
+        Filters for the VM sizes that can be launched from the virtual node group.
+        """
         return pulumi.get(self, "filters")
 
     @property
     @pulumi.getter
     def headrooms(self) -> pulumi.Output[Optional[Sequence['outputs.OceanNpVirtualNodeGroupHeadroom']]]:
+        """
+        Specify the custom headroom per VNG. Provide a list of headroom objects.
+        """
         return pulumi.get(self, "headrooms")
 
     @property
     @pulumi.getter(name="kubernetesVersion")
     def kubernetes_version(self) -> pulumi.Output[Optional[str]]:
+        """
+        The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
+        """
         return pulumi.get(self, "kubernetes_version")
 
     @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
+        """
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter(name="maxCount")
     def max_count(self) -> pulumi.Output[Optional[int]]:
+        """
+        Maximum node count limit.
+        """
         return pulumi.get(self, "max_count")
 
     @property
     @pulumi.getter(name="maxPodsPerNode")
     def max_pods_per_node(self) -> pulumi.Output[Optional[int]]:
+        """
+        The maximum number of pods per node in the node pools.
+        """
         return pulumi.get(self, "max_pods_per_node")
 
     @property
     @pulumi.getter(name="minCount")
     def min_count(self) -> pulumi.Output[Optional[int]]:
+        """
+        Minimum node count limit.
+        """
         return pulumi.get(self, "min_count")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        Enter a name for the virtual node group.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="oceanId")
     def ocean_id(self) -> pulumi.Output[str]:
+        """
+        The Ocean cluster identifier. Required for Launch Spec creation.
+        """
         return pulumi.get(self, "ocean_id")
 
     @property
     @pulumi.getter(name="osDiskSizeGb")
     def os_disk_size_gb(self) -> pulumi.Output[Optional[int]]:
+        """
+        The size of the OS disk in GB.
+        """
         return pulumi.get(self, "os_disk_size_gb")
 
     @property
     @pulumi.getter(name="osDiskType")
     def os_disk_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        The type of the OS disk.
+        """
         return pulumi.get(self, "os_disk_type")
 
     @property
     @pulumi.getter(name="osSku")
     def os_sku(self) -> pulumi.Output[Optional[str]]:
+        """
+        The OS SKU of the OS type. Must correlate with the os type.
+        """
         return pulumi.get(self, "os_sku")
 
     @property
     @pulumi.getter(name="osType")
     def os_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        The OS type of the OS disk. Can't be modified once set.
+        """
         return pulumi.get(self, "os_type")
 
     @property
     @pulumi.getter(name="podSubnetIds")
     def pod_subnet_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
+        """
         return pulumi.get(self, "pod_subnet_ids")
 
     @property
     @pulumi.getter(name="spotPercentage")
     def spot_percentage(self) -> pulumi.Output[Optional[int]]:
+        """
+        Percentage of spot VMs to maintain.
+        """
         return pulumi.get(self, "spot_percentage")
 
     @property
@@ -833,6 +1251,9 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
     @property
     @pulumi.getter
     def taints(self) -> pulumi.Output[Optional[Sequence['outputs.OceanNpVirtualNodeGroupTaint']]]:
+        """
+        Add taints to a virtual node group.
+        """
         return pulumi.get(self, "taints")
 
     @property
@@ -843,5 +1264,8 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
     @property
     @pulumi.getter(name="vnetSubnetIds")
     def vnet_subnet_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
+        """
         return pulumi.get(self, "vnet_subnet_ids")
 

@@ -14,21 +14,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanNpAutoscaler {
+    /**
+     * @return Auto Scaling scale down operations.
+     * 
+     */
     private @Nullable OceanNpAutoscalerAutoscaleDown autoscaleDown;
+    /**
+     * @return Spare resource capacity management enabling fast assignment of pods without waiting for new resources to launch.
+     * 
+     */
     private @Nullable OceanNpAutoscalerAutoscaleHeadroom autoscaleHeadroom;
+    /**
+     * @return Enable the Ocean Kubernetes Autoscaler.
+     * 
+     */
     private @Nullable Boolean autoscaleIsEnabled;
+    /**
+     * @return Optionally set upper and lower bounds on the resource usage of the cluster.
+     * 
+     */
     private @Nullable OceanNpAutoscalerResourceLimits resourceLimits;
 
     private OceanNpAutoscaler() {}
+    /**
+     * @return Auto Scaling scale down operations.
+     * 
+     */
     public Optional<OceanNpAutoscalerAutoscaleDown> autoscaleDown() {
         return Optional.ofNullable(this.autoscaleDown);
     }
+    /**
+     * @return Spare resource capacity management enabling fast assignment of pods without waiting for new resources to launch.
+     * 
+     */
     public Optional<OceanNpAutoscalerAutoscaleHeadroom> autoscaleHeadroom() {
         return Optional.ofNullable(this.autoscaleHeadroom);
     }
+    /**
+     * @return Enable the Ocean Kubernetes Autoscaler.
+     * 
+     */
     public Optional<Boolean> autoscaleIsEnabled() {
         return Optional.ofNullable(this.autoscaleIsEnabled);
     }
+    /**
+     * @return Optionally set upper and lower bounds on the resource usage of the cluster.
+     * 
+     */
     public Optional<OceanNpAutoscalerResourceLimits> resourceLimits() {
         return Optional.ofNullable(this.resourceLimits);
     }

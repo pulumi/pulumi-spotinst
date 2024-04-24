@@ -127,14 +127,6 @@ _utilities.register(
  },
  {
   "pkg": "spotinst",
-  "mod": "azure/elastigroup",
-  "fqn": "pulumi_spotinst.azure",
-  "classes": {
-   "spotinst:azure/elastigroup:Elastigroup": "Elastigroup"
-  }
- },
- {
-  "pkg": "spotinst",
   "mod": "azure/ocean",
   "fqn": "pulumi_spotinst.azure",
   "classes": {

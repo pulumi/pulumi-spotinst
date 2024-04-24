@@ -15,30 +15,62 @@ public final class OceanNpHeadroomArgs extends com.pulumi.resources.ResourceArgs
 
     public static final OceanNpHeadroomArgs Empty = new OceanNpHeadroomArgs();
 
+    /**
+     * Configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+     * 
+     */
     @Import(name="cpuPerUnit")
     private @Nullable Output<Integer> cpuPerUnit;
 
+    /**
+     * @return Configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+     * 
+     */
     public Optional<Output<Integer>> cpuPerUnit() {
         return Optional.ofNullable(this.cpuPerUnit);
     }
 
+    /**
+     * Amount of GPU to allocate for headroom unit.
+     * 
+     */
     @Import(name="gpuPerUnit")
     private @Nullable Output<Integer> gpuPerUnit;
 
+    /**
+     * @return Amount of GPU to allocate for headroom unit.
+     * 
+     */
     public Optional<Output<Integer>> gpuPerUnit() {
         return Optional.ofNullable(this.gpuPerUnit);
     }
 
+    /**
+     * Configure the amount of memory (MiB) to allocate the headroom.
+     * 
+     */
     @Import(name="memoryPerUnit")
     private @Nullable Output<Integer> memoryPerUnit;
 
+    /**
+     * @return Configure the amount of memory (MiB) to allocate the headroom.
+     * 
+     */
     public Optional<Output<Integer>> memoryPerUnit() {
         return Optional.ofNullable(this.memoryPerUnit);
     }
 
+    /**
+     * The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+     * 
+     */
     @Import(name="numOfUnits")
     private @Nullable Output<Integer> numOfUnits;
 
+    /**
+     * @return The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+     * 
+     */
     public Optional<Output<Integer>> numOfUnits() {
         return Optional.ofNullable(this.numOfUnits);
     }
@@ -70,38 +102,86 @@ public final class OceanNpHeadroomArgs extends com.pulumi.resources.ResourceArgs
             $ = new OceanNpHeadroomArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param cpuPerUnit Configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cpuPerUnit(@Nullable Output<Integer> cpuPerUnit) {
             $.cpuPerUnit = cpuPerUnit;
             return this;
         }
 
+        /**
+         * @param cpuPerUnit Configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cpuPerUnit(Integer cpuPerUnit) {
             return cpuPerUnit(Output.of(cpuPerUnit));
         }
 
+        /**
+         * @param gpuPerUnit Amount of GPU to allocate for headroom unit.
+         * 
+         * @return builder
+         * 
+         */
         public Builder gpuPerUnit(@Nullable Output<Integer> gpuPerUnit) {
             $.gpuPerUnit = gpuPerUnit;
             return this;
         }
 
+        /**
+         * @param gpuPerUnit Amount of GPU to allocate for headroom unit.
+         * 
+         * @return builder
+         * 
+         */
         public Builder gpuPerUnit(Integer gpuPerUnit) {
             return gpuPerUnit(Output.of(gpuPerUnit));
         }
 
+        /**
+         * @param memoryPerUnit Configure the amount of memory (MiB) to allocate the headroom.
+         * 
+         * @return builder
+         * 
+         */
         public Builder memoryPerUnit(@Nullable Output<Integer> memoryPerUnit) {
             $.memoryPerUnit = memoryPerUnit;
             return this;
         }
 
+        /**
+         * @param memoryPerUnit Configure the amount of memory (MiB) to allocate the headroom.
+         * 
+         * @return builder
+         * 
+         */
         public Builder memoryPerUnit(Integer memoryPerUnit) {
             return memoryPerUnit(Output.of(memoryPerUnit));
         }
 
+        /**
+         * @param numOfUnits The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+         * 
+         * @return builder
+         * 
+         */
         public Builder numOfUnits(@Nullable Output<Integer> numOfUnits) {
             $.numOfUnits = numOfUnits;
             return this;
         }
 
+        /**
+         * @param numOfUnits The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+         * 
+         * @return builder
+         * 
+         */
         public Builder numOfUnits(Integer numOfUnits) {
             return numOfUnits(Output.of(numOfUnits));
         }

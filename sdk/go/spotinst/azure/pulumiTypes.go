@@ -13,2645 +13,6 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
-type ElastigroupHealthCheck struct {
-	AutoHealing     *bool  `pulumi:"autoHealing"`
-	GracePeriod     *int   `pulumi:"gracePeriod"`
-	HealthCheckType string `pulumi:"healthCheckType"`
-}
-
-// ElastigroupHealthCheckInput is an input type that accepts ElastigroupHealthCheckArgs and ElastigroupHealthCheckOutput values.
-// You can construct a concrete instance of `ElastigroupHealthCheckInput` via:
-//
-//	ElastigroupHealthCheckArgs{...}
-type ElastigroupHealthCheckInput interface {
-	pulumi.Input
-
-	ToElastigroupHealthCheckOutput() ElastigroupHealthCheckOutput
-	ToElastigroupHealthCheckOutputWithContext(context.Context) ElastigroupHealthCheckOutput
-}
-
-type ElastigroupHealthCheckArgs struct {
-	AutoHealing     pulumi.BoolPtrInput `pulumi:"autoHealing"`
-	GracePeriod     pulumi.IntPtrInput  `pulumi:"gracePeriod"`
-	HealthCheckType pulumi.StringInput  `pulumi:"healthCheckType"`
-}
-
-func (ElastigroupHealthCheckArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElastigroupHealthCheck)(nil)).Elem()
-}
-
-func (i ElastigroupHealthCheckArgs) ToElastigroupHealthCheckOutput() ElastigroupHealthCheckOutput {
-	return i.ToElastigroupHealthCheckOutputWithContext(context.Background())
-}
-
-func (i ElastigroupHealthCheckArgs) ToElastigroupHealthCheckOutputWithContext(ctx context.Context) ElastigroupHealthCheckOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupHealthCheckOutput)
-}
-
-func (i ElastigroupHealthCheckArgs) ToElastigroupHealthCheckPtrOutput() ElastigroupHealthCheckPtrOutput {
-	return i.ToElastigroupHealthCheckPtrOutputWithContext(context.Background())
-}
-
-func (i ElastigroupHealthCheckArgs) ToElastigroupHealthCheckPtrOutputWithContext(ctx context.Context) ElastigroupHealthCheckPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupHealthCheckOutput).ToElastigroupHealthCheckPtrOutputWithContext(ctx)
-}
-
-// ElastigroupHealthCheckPtrInput is an input type that accepts ElastigroupHealthCheckArgs, ElastigroupHealthCheckPtr and ElastigroupHealthCheckPtrOutput values.
-// You can construct a concrete instance of `ElastigroupHealthCheckPtrInput` via:
-//
-//	        ElastigroupHealthCheckArgs{...}
-//
-//	or:
-//
-//	        nil
-type ElastigroupHealthCheckPtrInput interface {
-	pulumi.Input
-
-	ToElastigroupHealthCheckPtrOutput() ElastigroupHealthCheckPtrOutput
-	ToElastigroupHealthCheckPtrOutputWithContext(context.Context) ElastigroupHealthCheckPtrOutput
-}
-
-type elastigroupHealthCheckPtrType ElastigroupHealthCheckArgs
-
-func ElastigroupHealthCheckPtr(v *ElastigroupHealthCheckArgs) ElastigroupHealthCheckPtrInput {
-	return (*elastigroupHealthCheckPtrType)(v)
-}
-
-func (*elastigroupHealthCheckPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ElastigroupHealthCheck)(nil)).Elem()
-}
-
-func (i *elastigroupHealthCheckPtrType) ToElastigroupHealthCheckPtrOutput() ElastigroupHealthCheckPtrOutput {
-	return i.ToElastigroupHealthCheckPtrOutputWithContext(context.Background())
-}
-
-func (i *elastigroupHealthCheckPtrType) ToElastigroupHealthCheckPtrOutputWithContext(ctx context.Context) ElastigroupHealthCheckPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupHealthCheckPtrOutput)
-}
-
-type ElastigroupHealthCheckOutput struct{ *pulumi.OutputState }
-
-func (ElastigroupHealthCheckOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElastigroupHealthCheck)(nil)).Elem()
-}
-
-func (o ElastigroupHealthCheckOutput) ToElastigroupHealthCheckOutput() ElastigroupHealthCheckOutput {
-	return o
-}
-
-func (o ElastigroupHealthCheckOutput) ToElastigroupHealthCheckOutputWithContext(ctx context.Context) ElastigroupHealthCheckOutput {
-	return o
-}
-
-func (o ElastigroupHealthCheckOutput) ToElastigroupHealthCheckPtrOutput() ElastigroupHealthCheckPtrOutput {
-	return o.ToElastigroupHealthCheckPtrOutputWithContext(context.Background())
-}
-
-func (o ElastigroupHealthCheckOutput) ToElastigroupHealthCheckPtrOutputWithContext(ctx context.Context) ElastigroupHealthCheckPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupHealthCheck) *ElastigroupHealthCheck {
-		return &v
-	}).(ElastigroupHealthCheckPtrOutput)
-}
-
-func (o ElastigroupHealthCheckOutput) AutoHealing() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ElastigroupHealthCheck) *bool { return v.AutoHealing }).(pulumi.BoolPtrOutput)
-}
-
-func (o ElastigroupHealthCheckOutput) GracePeriod() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupHealthCheck) *int { return v.GracePeriod }).(pulumi.IntPtrOutput)
-}
-
-func (o ElastigroupHealthCheckOutput) HealthCheckType() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupHealthCheck) string { return v.HealthCheckType }).(pulumi.StringOutput)
-}
-
-type ElastigroupHealthCheckPtrOutput struct{ *pulumi.OutputState }
-
-func (ElastigroupHealthCheckPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ElastigroupHealthCheck)(nil)).Elem()
-}
-
-func (o ElastigroupHealthCheckPtrOutput) ToElastigroupHealthCheckPtrOutput() ElastigroupHealthCheckPtrOutput {
-	return o
-}
-
-func (o ElastigroupHealthCheckPtrOutput) ToElastigroupHealthCheckPtrOutputWithContext(ctx context.Context) ElastigroupHealthCheckPtrOutput {
-	return o
-}
-
-func (o ElastigroupHealthCheckPtrOutput) Elem() ElastigroupHealthCheckOutput {
-	return o.ApplyT(func(v *ElastigroupHealthCheck) ElastigroupHealthCheck {
-		if v != nil {
-			return *v
-		}
-		var ret ElastigroupHealthCheck
-		return ret
-	}).(ElastigroupHealthCheckOutput)
-}
-
-func (o ElastigroupHealthCheckPtrOutput) AutoHealing() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ElastigroupHealthCheck) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.AutoHealing
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o ElastigroupHealthCheckPtrOutput) GracePeriod() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ElastigroupHealthCheck) *int {
-		if v == nil {
-			return nil
-		}
-		return v.GracePeriod
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o ElastigroupHealthCheckPtrOutput) HealthCheckType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ElastigroupHealthCheck) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.HealthCheckType
-	}).(pulumi.StringPtrOutput)
-}
-
-type ElastigroupImage struct {
-	Customs      []ElastigroupImageCustom      `pulumi:"customs"`
-	Marketplaces []ElastigroupImageMarketplace `pulumi:"marketplaces"`
-}
-
-// ElastigroupImageInput is an input type that accepts ElastigroupImageArgs and ElastigroupImageOutput values.
-// You can construct a concrete instance of `ElastigroupImageInput` via:
-//
-//	ElastigroupImageArgs{...}
-type ElastigroupImageInput interface {
-	pulumi.Input
-
-	ToElastigroupImageOutput() ElastigroupImageOutput
-	ToElastigroupImageOutputWithContext(context.Context) ElastigroupImageOutput
-}
-
-type ElastigroupImageArgs struct {
-	Customs      ElastigroupImageCustomArrayInput      `pulumi:"customs"`
-	Marketplaces ElastigroupImageMarketplaceArrayInput `pulumi:"marketplaces"`
-}
-
-func (ElastigroupImageArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElastigroupImage)(nil)).Elem()
-}
-
-func (i ElastigroupImageArgs) ToElastigroupImageOutput() ElastigroupImageOutput {
-	return i.ToElastigroupImageOutputWithContext(context.Background())
-}
-
-func (i ElastigroupImageArgs) ToElastigroupImageOutputWithContext(ctx context.Context) ElastigroupImageOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupImageOutput)
-}
-
-// ElastigroupImageArrayInput is an input type that accepts ElastigroupImageArray and ElastigroupImageArrayOutput values.
-// You can construct a concrete instance of `ElastigroupImageArrayInput` via:
-//
-//	ElastigroupImageArray{ ElastigroupImageArgs{...} }
-type ElastigroupImageArrayInput interface {
-	pulumi.Input
-
-	ToElastigroupImageArrayOutput() ElastigroupImageArrayOutput
-	ToElastigroupImageArrayOutputWithContext(context.Context) ElastigroupImageArrayOutput
-}
-
-type ElastigroupImageArray []ElastigroupImageInput
-
-func (ElastigroupImageArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ElastigroupImage)(nil)).Elem()
-}
-
-func (i ElastigroupImageArray) ToElastigroupImageArrayOutput() ElastigroupImageArrayOutput {
-	return i.ToElastigroupImageArrayOutputWithContext(context.Background())
-}
-
-func (i ElastigroupImageArray) ToElastigroupImageArrayOutputWithContext(ctx context.Context) ElastigroupImageArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupImageArrayOutput)
-}
-
-type ElastigroupImageOutput struct{ *pulumi.OutputState }
-
-func (ElastigroupImageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElastigroupImage)(nil)).Elem()
-}
-
-func (o ElastigroupImageOutput) ToElastigroupImageOutput() ElastigroupImageOutput {
-	return o
-}
-
-func (o ElastigroupImageOutput) ToElastigroupImageOutputWithContext(ctx context.Context) ElastigroupImageOutput {
-	return o
-}
-
-func (o ElastigroupImageOutput) Customs() ElastigroupImageCustomArrayOutput {
-	return o.ApplyT(func(v ElastigroupImage) []ElastigroupImageCustom { return v.Customs }).(ElastigroupImageCustomArrayOutput)
-}
-
-func (o ElastigroupImageOutput) Marketplaces() ElastigroupImageMarketplaceArrayOutput {
-	return o.ApplyT(func(v ElastigroupImage) []ElastigroupImageMarketplace { return v.Marketplaces }).(ElastigroupImageMarketplaceArrayOutput)
-}
-
-type ElastigroupImageArrayOutput struct{ *pulumi.OutputState }
-
-func (ElastigroupImageArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ElastigroupImage)(nil)).Elem()
-}
-
-func (o ElastigroupImageArrayOutput) ToElastigroupImageArrayOutput() ElastigroupImageArrayOutput {
-	return o
-}
-
-func (o ElastigroupImageArrayOutput) ToElastigroupImageArrayOutputWithContext(ctx context.Context) ElastigroupImageArrayOutput {
-	return o
-}
-
-func (o ElastigroupImageArrayOutput) Index(i pulumi.IntInput) ElastigroupImageOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupImage {
-		return vs[0].([]ElastigroupImage)[vs[1].(int)]
-	}).(ElastigroupImageOutput)
-}
-
-type ElastigroupImageCustom struct {
-	ImageName string `pulumi:"imageName"`
-	// Name of the Resource Group for Elastigroup.
-	ResourceGroupName string `pulumi:"resourceGroupName"`
-}
-
-// ElastigroupImageCustomInput is an input type that accepts ElastigroupImageCustomArgs and ElastigroupImageCustomOutput values.
-// You can construct a concrete instance of `ElastigroupImageCustomInput` via:
-//
-//	ElastigroupImageCustomArgs{...}
-type ElastigroupImageCustomInput interface {
-	pulumi.Input
-
-	ToElastigroupImageCustomOutput() ElastigroupImageCustomOutput
-	ToElastigroupImageCustomOutputWithContext(context.Context) ElastigroupImageCustomOutput
-}
-
-type ElastigroupImageCustomArgs struct {
-	ImageName pulumi.StringInput `pulumi:"imageName"`
-	// Name of the Resource Group for Elastigroup.
-	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-}
-
-func (ElastigroupImageCustomArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElastigroupImageCustom)(nil)).Elem()
-}
-
-func (i ElastigroupImageCustomArgs) ToElastigroupImageCustomOutput() ElastigroupImageCustomOutput {
-	return i.ToElastigroupImageCustomOutputWithContext(context.Background())
-}
-
-func (i ElastigroupImageCustomArgs) ToElastigroupImageCustomOutputWithContext(ctx context.Context) ElastigroupImageCustomOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupImageCustomOutput)
-}
-
-// ElastigroupImageCustomArrayInput is an input type that accepts ElastigroupImageCustomArray and ElastigroupImageCustomArrayOutput values.
-// You can construct a concrete instance of `ElastigroupImageCustomArrayInput` via:
-//
-//	ElastigroupImageCustomArray{ ElastigroupImageCustomArgs{...} }
-type ElastigroupImageCustomArrayInput interface {
-	pulumi.Input
-
-	ToElastigroupImageCustomArrayOutput() ElastigroupImageCustomArrayOutput
-	ToElastigroupImageCustomArrayOutputWithContext(context.Context) ElastigroupImageCustomArrayOutput
-}
-
-type ElastigroupImageCustomArray []ElastigroupImageCustomInput
-
-func (ElastigroupImageCustomArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ElastigroupImageCustom)(nil)).Elem()
-}
-
-func (i ElastigroupImageCustomArray) ToElastigroupImageCustomArrayOutput() ElastigroupImageCustomArrayOutput {
-	return i.ToElastigroupImageCustomArrayOutputWithContext(context.Background())
-}
-
-func (i ElastigroupImageCustomArray) ToElastigroupImageCustomArrayOutputWithContext(ctx context.Context) ElastigroupImageCustomArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupImageCustomArrayOutput)
-}
-
-type ElastigroupImageCustomOutput struct{ *pulumi.OutputState }
-
-func (ElastigroupImageCustomOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElastigroupImageCustom)(nil)).Elem()
-}
-
-func (o ElastigroupImageCustomOutput) ToElastigroupImageCustomOutput() ElastigroupImageCustomOutput {
-	return o
-}
-
-func (o ElastigroupImageCustomOutput) ToElastigroupImageCustomOutputWithContext(ctx context.Context) ElastigroupImageCustomOutput {
-	return o
-}
-
-func (o ElastigroupImageCustomOutput) ImageName() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupImageCustom) string { return v.ImageName }).(pulumi.StringOutput)
-}
-
-// Name of the Resource Group for Elastigroup.
-func (o ElastigroupImageCustomOutput) ResourceGroupName() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupImageCustom) string { return v.ResourceGroupName }).(pulumi.StringOutput)
-}
-
-type ElastigroupImageCustomArrayOutput struct{ *pulumi.OutputState }
-
-func (ElastigroupImageCustomArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ElastigroupImageCustom)(nil)).Elem()
-}
-
-func (o ElastigroupImageCustomArrayOutput) ToElastigroupImageCustomArrayOutput() ElastigroupImageCustomArrayOutput {
-	return o
-}
-
-func (o ElastigroupImageCustomArrayOutput) ToElastigroupImageCustomArrayOutputWithContext(ctx context.Context) ElastigroupImageCustomArrayOutput {
-	return o
-}
-
-func (o ElastigroupImageCustomArrayOutput) Index(i pulumi.IntInput) ElastigroupImageCustomOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupImageCustom {
-		return vs[0].([]ElastigroupImageCustom)[vs[1].(int)]
-	}).(ElastigroupImageCustomOutput)
-}
-
-type ElastigroupImageMarketplace struct {
-	Offer     string `pulumi:"offer"`
-	Publisher string `pulumi:"publisher"`
-	Sku       string `pulumi:"sku"`
-}
-
-// ElastigroupImageMarketplaceInput is an input type that accepts ElastigroupImageMarketplaceArgs and ElastigroupImageMarketplaceOutput values.
-// You can construct a concrete instance of `ElastigroupImageMarketplaceInput` via:
-//
-//	ElastigroupImageMarketplaceArgs{...}
-type ElastigroupImageMarketplaceInput interface {
-	pulumi.Input
-
-	ToElastigroupImageMarketplaceOutput() ElastigroupImageMarketplaceOutput
-	ToElastigroupImageMarketplaceOutputWithContext(context.Context) ElastigroupImageMarketplaceOutput
-}
-
-type ElastigroupImageMarketplaceArgs struct {
-	Offer     pulumi.StringInput `pulumi:"offer"`
-	Publisher pulumi.StringInput `pulumi:"publisher"`
-	Sku       pulumi.StringInput `pulumi:"sku"`
-}
-
-func (ElastigroupImageMarketplaceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElastigroupImageMarketplace)(nil)).Elem()
-}
-
-func (i ElastigroupImageMarketplaceArgs) ToElastigroupImageMarketplaceOutput() ElastigroupImageMarketplaceOutput {
-	return i.ToElastigroupImageMarketplaceOutputWithContext(context.Background())
-}
-
-func (i ElastigroupImageMarketplaceArgs) ToElastigroupImageMarketplaceOutputWithContext(ctx context.Context) ElastigroupImageMarketplaceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupImageMarketplaceOutput)
-}
-
-// ElastigroupImageMarketplaceArrayInput is an input type that accepts ElastigroupImageMarketplaceArray and ElastigroupImageMarketplaceArrayOutput values.
-// You can construct a concrete instance of `ElastigroupImageMarketplaceArrayInput` via:
-//
-//	ElastigroupImageMarketplaceArray{ ElastigroupImageMarketplaceArgs{...} }
-type ElastigroupImageMarketplaceArrayInput interface {
-	pulumi.Input
-
-	ToElastigroupImageMarketplaceArrayOutput() ElastigroupImageMarketplaceArrayOutput
-	ToElastigroupImageMarketplaceArrayOutputWithContext(context.Context) ElastigroupImageMarketplaceArrayOutput
-}
-
-type ElastigroupImageMarketplaceArray []ElastigroupImageMarketplaceInput
-
-func (ElastigroupImageMarketplaceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ElastigroupImageMarketplace)(nil)).Elem()
-}
-
-func (i ElastigroupImageMarketplaceArray) ToElastigroupImageMarketplaceArrayOutput() ElastigroupImageMarketplaceArrayOutput {
-	return i.ToElastigroupImageMarketplaceArrayOutputWithContext(context.Background())
-}
-
-func (i ElastigroupImageMarketplaceArray) ToElastigroupImageMarketplaceArrayOutputWithContext(ctx context.Context) ElastigroupImageMarketplaceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupImageMarketplaceArrayOutput)
-}
-
-type ElastigroupImageMarketplaceOutput struct{ *pulumi.OutputState }
-
-func (ElastigroupImageMarketplaceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElastigroupImageMarketplace)(nil)).Elem()
-}
-
-func (o ElastigroupImageMarketplaceOutput) ToElastigroupImageMarketplaceOutput() ElastigroupImageMarketplaceOutput {
-	return o
-}
-
-func (o ElastigroupImageMarketplaceOutput) ToElastigroupImageMarketplaceOutputWithContext(ctx context.Context) ElastigroupImageMarketplaceOutput {
-	return o
-}
-
-func (o ElastigroupImageMarketplaceOutput) Offer() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupImageMarketplace) string { return v.Offer }).(pulumi.StringOutput)
-}
-
-func (o ElastigroupImageMarketplaceOutput) Publisher() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupImageMarketplace) string { return v.Publisher }).(pulumi.StringOutput)
-}
-
-func (o ElastigroupImageMarketplaceOutput) Sku() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupImageMarketplace) string { return v.Sku }).(pulumi.StringOutput)
-}
-
-type ElastigroupImageMarketplaceArrayOutput struct{ *pulumi.OutputState }
-
-func (ElastigroupImageMarketplaceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ElastigroupImageMarketplace)(nil)).Elem()
-}
-
-func (o ElastigroupImageMarketplaceArrayOutput) ToElastigroupImageMarketplaceArrayOutput() ElastigroupImageMarketplaceArrayOutput {
-	return o
-}
-
-func (o ElastigroupImageMarketplaceArrayOutput) ToElastigroupImageMarketplaceArrayOutputWithContext(ctx context.Context) ElastigroupImageMarketplaceArrayOutput {
-	return o
-}
-
-func (o ElastigroupImageMarketplaceArrayOutput) Index(i pulumi.IntInput) ElastigroupImageMarketplaceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupImageMarketplace {
-		return vs[0].([]ElastigroupImageMarketplace)[vs[1].(int)]
-	}).(ElastigroupImageMarketplaceOutput)
-}
-
-type ElastigroupIntegrationKubernetes struct {
-	ClusterIdentifier string `pulumi:"clusterIdentifier"`
-}
-
-// ElastigroupIntegrationKubernetesInput is an input type that accepts ElastigroupIntegrationKubernetesArgs and ElastigroupIntegrationKubernetesOutput values.
-// You can construct a concrete instance of `ElastigroupIntegrationKubernetesInput` via:
-//
-//	ElastigroupIntegrationKubernetesArgs{...}
-type ElastigroupIntegrationKubernetesInput interface {
-	pulumi.Input
-
-	ToElastigroupIntegrationKubernetesOutput() ElastigroupIntegrationKubernetesOutput
-	ToElastigroupIntegrationKubernetesOutputWithContext(context.Context) ElastigroupIntegrationKubernetesOutput
-}
-
-type ElastigroupIntegrationKubernetesArgs struct {
-	ClusterIdentifier pulumi.StringInput `pulumi:"clusterIdentifier"`
-}
-
-func (ElastigroupIntegrationKubernetesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElastigroupIntegrationKubernetes)(nil)).Elem()
-}
-
-func (i ElastigroupIntegrationKubernetesArgs) ToElastigroupIntegrationKubernetesOutput() ElastigroupIntegrationKubernetesOutput {
-	return i.ToElastigroupIntegrationKubernetesOutputWithContext(context.Background())
-}
-
-func (i ElastigroupIntegrationKubernetesArgs) ToElastigroupIntegrationKubernetesOutputWithContext(ctx context.Context) ElastigroupIntegrationKubernetesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationKubernetesOutput)
-}
-
-func (i ElastigroupIntegrationKubernetesArgs) ToElastigroupIntegrationKubernetesPtrOutput() ElastigroupIntegrationKubernetesPtrOutput {
-	return i.ToElastigroupIntegrationKubernetesPtrOutputWithContext(context.Background())
-}
-
-func (i ElastigroupIntegrationKubernetesArgs) ToElastigroupIntegrationKubernetesPtrOutputWithContext(ctx context.Context) ElastigroupIntegrationKubernetesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationKubernetesOutput).ToElastigroupIntegrationKubernetesPtrOutputWithContext(ctx)
-}
-
-// ElastigroupIntegrationKubernetesPtrInput is an input type that accepts ElastigroupIntegrationKubernetesArgs, ElastigroupIntegrationKubernetesPtr and ElastigroupIntegrationKubernetesPtrOutput values.
-// You can construct a concrete instance of `ElastigroupIntegrationKubernetesPtrInput` via:
-//
-//	        ElastigroupIntegrationKubernetesArgs{...}
-//
-//	or:
-//
-//	        nil
-type ElastigroupIntegrationKubernetesPtrInput interface {
-	pulumi.Input
-
-	ToElastigroupIntegrationKubernetesPtrOutput() ElastigroupIntegrationKubernetesPtrOutput
-	ToElastigroupIntegrationKubernetesPtrOutputWithContext(context.Context) ElastigroupIntegrationKubernetesPtrOutput
-}
-
-type elastigroupIntegrationKubernetesPtrType ElastigroupIntegrationKubernetesArgs
-
-func ElastigroupIntegrationKubernetesPtr(v *ElastigroupIntegrationKubernetesArgs) ElastigroupIntegrationKubernetesPtrInput {
-	return (*elastigroupIntegrationKubernetesPtrType)(v)
-}
-
-func (*elastigroupIntegrationKubernetesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ElastigroupIntegrationKubernetes)(nil)).Elem()
-}
-
-func (i *elastigroupIntegrationKubernetesPtrType) ToElastigroupIntegrationKubernetesPtrOutput() ElastigroupIntegrationKubernetesPtrOutput {
-	return i.ToElastigroupIntegrationKubernetesPtrOutputWithContext(context.Background())
-}
-
-func (i *elastigroupIntegrationKubernetesPtrType) ToElastigroupIntegrationKubernetesPtrOutputWithContext(ctx context.Context) ElastigroupIntegrationKubernetesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationKubernetesPtrOutput)
-}
-
-type ElastigroupIntegrationKubernetesOutput struct{ *pulumi.OutputState }
-
-func (ElastigroupIntegrationKubernetesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElastigroupIntegrationKubernetes)(nil)).Elem()
-}
-
-func (o ElastigroupIntegrationKubernetesOutput) ToElastigroupIntegrationKubernetesOutput() ElastigroupIntegrationKubernetesOutput {
-	return o
-}
-
-func (o ElastigroupIntegrationKubernetesOutput) ToElastigroupIntegrationKubernetesOutputWithContext(ctx context.Context) ElastigroupIntegrationKubernetesOutput {
-	return o
-}
-
-func (o ElastigroupIntegrationKubernetesOutput) ToElastigroupIntegrationKubernetesPtrOutput() ElastigroupIntegrationKubernetesPtrOutput {
-	return o.ToElastigroupIntegrationKubernetesPtrOutputWithContext(context.Background())
-}
-
-func (o ElastigroupIntegrationKubernetesOutput) ToElastigroupIntegrationKubernetesPtrOutputWithContext(ctx context.Context) ElastigroupIntegrationKubernetesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupIntegrationKubernetes) *ElastigroupIntegrationKubernetes {
-		return &v
-	}).(ElastigroupIntegrationKubernetesPtrOutput)
-}
-
-func (o ElastigroupIntegrationKubernetesOutput) ClusterIdentifier() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationKubernetes) string { return v.ClusterIdentifier }).(pulumi.StringOutput)
-}
-
-type ElastigroupIntegrationKubernetesPtrOutput struct{ *pulumi.OutputState }
-
-func (ElastigroupIntegrationKubernetesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ElastigroupIntegrationKubernetes)(nil)).Elem()
-}
-
-func (o ElastigroupIntegrationKubernetesPtrOutput) ToElastigroupIntegrationKubernetesPtrOutput() ElastigroupIntegrationKubernetesPtrOutput {
-	return o
-}
-
-func (o ElastigroupIntegrationKubernetesPtrOutput) ToElastigroupIntegrationKubernetesPtrOutputWithContext(ctx context.Context) ElastigroupIntegrationKubernetesPtrOutput {
-	return o
-}
-
-func (o ElastigroupIntegrationKubernetesPtrOutput) Elem() ElastigroupIntegrationKubernetesOutput {
-	return o.ApplyT(func(v *ElastigroupIntegrationKubernetes) ElastigroupIntegrationKubernetes {
-		if v != nil {
-			return *v
-		}
-		var ret ElastigroupIntegrationKubernetes
-		return ret
-	}).(ElastigroupIntegrationKubernetesOutput)
-}
-
-func (o ElastigroupIntegrationKubernetesPtrOutput) ClusterIdentifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ElastigroupIntegrationKubernetes) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ClusterIdentifier
-	}).(pulumi.StringPtrOutput)
-}
-
-type ElastigroupIntegrationMultaiRuntime struct {
-	DeploymentId string `pulumi:"deploymentId"`
-}
-
-// ElastigroupIntegrationMultaiRuntimeInput is an input type that accepts ElastigroupIntegrationMultaiRuntimeArgs and ElastigroupIntegrationMultaiRuntimeOutput values.
-// You can construct a concrete instance of `ElastigroupIntegrationMultaiRuntimeInput` via:
-//
-//	ElastigroupIntegrationMultaiRuntimeArgs{...}
-type ElastigroupIntegrationMultaiRuntimeInput interface {
-	pulumi.Input
-
-	ToElastigroupIntegrationMultaiRuntimeOutput() ElastigroupIntegrationMultaiRuntimeOutput
-	ToElastigroupIntegrationMultaiRuntimeOutputWithContext(context.Context) ElastigroupIntegrationMultaiRuntimeOutput
-}
-
-type ElastigroupIntegrationMultaiRuntimeArgs struct {
-	DeploymentId pulumi.StringInput `pulumi:"deploymentId"`
-}
-
-func (ElastigroupIntegrationMultaiRuntimeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElastigroupIntegrationMultaiRuntime)(nil)).Elem()
-}
-
-func (i ElastigroupIntegrationMultaiRuntimeArgs) ToElastigroupIntegrationMultaiRuntimeOutput() ElastigroupIntegrationMultaiRuntimeOutput {
-	return i.ToElastigroupIntegrationMultaiRuntimeOutputWithContext(context.Background())
-}
-
-func (i ElastigroupIntegrationMultaiRuntimeArgs) ToElastigroupIntegrationMultaiRuntimeOutputWithContext(ctx context.Context) ElastigroupIntegrationMultaiRuntimeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationMultaiRuntimeOutput)
-}
-
-func (i ElastigroupIntegrationMultaiRuntimeArgs) ToElastigroupIntegrationMultaiRuntimePtrOutput() ElastigroupIntegrationMultaiRuntimePtrOutput {
-	return i.ToElastigroupIntegrationMultaiRuntimePtrOutputWithContext(context.Background())
-}
-
-func (i ElastigroupIntegrationMultaiRuntimeArgs) ToElastigroupIntegrationMultaiRuntimePtrOutputWithContext(ctx context.Context) ElastigroupIntegrationMultaiRuntimePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationMultaiRuntimeOutput).ToElastigroupIntegrationMultaiRuntimePtrOutputWithContext(ctx)
-}
-
-// ElastigroupIntegrationMultaiRuntimePtrInput is an input type that accepts ElastigroupIntegrationMultaiRuntimeArgs, ElastigroupIntegrationMultaiRuntimePtr and ElastigroupIntegrationMultaiRuntimePtrOutput values.
-// You can construct a concrete instance of `ElastigroupIntegrationMultaiRuntimePtrInput` via:
-//
-//	        ElastigroupIntegrationMultaiRuntimeArgs{...}
-//
-//	or:
-//
-//	        nil
-type ElastigroupIntegrationMultaiRuntimePtrInput interface {
-	pulumi.Input
-
-	ToElastigroupIntegrationMultaiRuntimePtrOutput() ElastigroupIntegrationMultaiRuntimePtrOutput
-	ToElastigroupIntegrationMultaiRuntimePtrOutputWithContext(context.Context) ElastigroupIntegrationMultaiRuntimePtrOutput
-}
-
-type elastigroupIntegrationMultaiRuntimePtrType ElastigroupIntegrationMultaiRuntimeArgs
-
-func ElastigroupIntegrationMultaiRuntimePtr(v *ElastigroupIntegrationMultaiRuntimeArgs) ElastigroupIntegrationMultaiRuntimePtrInput {
-	return (*elastigroupIntegrationMultaiRuntimePtrType)(v)
-}
-
-func (*elastigroupIntegrationMultaiRuntimePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ElastigroupIntegrationMultaiRuntime)(nil)).Elem()
-}
-
-func (i *elastigroupIntegrationMultaiRuntimePtrType) ToElastigroupIntegrationMultaiRuntimePtrOutput() ElastigroupIntegrationMultaiRuntimePtrOutput {
-	return i.ToElastigroupIntegrationMultaiRuntimePtrOutputWithContext(context.Background())
-}
-
-func (i *elastigroupIntegrationMultaiRuntimePtrType) ToElastigroupIntegrationMultaiRuntimePtrOutputWithContext(ctx context.Context) ElastigroupIntegrationMultaiRuntimePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationMultaiRuntimePtrOutput)
-}
-
-type ElastigroupIntegrationMultaiRuntimeOutput struct{ *pulumi.OutputState }
-
-func (ElastigroupIntegrationMultaiRuntimeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElastigroupIntegrationMultaiRuntime)(nil)).Elem()
-}
-
-func (o ElastigroupIntegrationMultaiRuntimeOutput) ToElastigroupIntegrationMultaiRuntimeOutput() ElastigroupIntegrationMultaiRuntimeOutput {
-	return o
-}
-
-func (o ElastigroupIntegrationMultaiRuntimeOutput) ToElastigroupIntegrationMultaiRuntimeOutputWithContext(ctx context.Context) ElastigroupIntegrationMultaiRuntimeOutput {
-	return o
-}
-
-func (o ElastigroupIntegrationMultaiRuntimeOutput) ToElastigroupIntegrationMultaiRuntimePtrOutput() ElastigroupIntegrationMultaiRuntimePtrOutput {
-	return o.ToElastigroupIntegrationMultaiRuntimePtrOutputWithContext(context.Background())
-}
-
-func (o ElastigroupIntegrationMultaiRuntimeOutput) ToElastigroupIntegrationMultaiRuntimePtrOutputWithContext(ctx context.Context) ElastigroupIntegrationMultaiRuntimePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupIntegrationMultaiRuntime) *ElastigroupIntegrationMultaiRuntime {
-		return &v
-	}).(ElastigroupIntegrationMultaiRuntimePtrOutput)
-}
-
-func (o ElastigroupIntegrationMultaiRuntimeOutput) DeploymentId() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationMultaiRuntime) string { return v.DeploymentId }).(pulumi.StringOutput)
-}
-
-type ElastigroupIntegrationMultaiRuntimePtrOutput struct{ *pulumi.OutputState }
-
-func (ElastigroupIntegrationMultaiRuntimePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ElastigroupIntegrationMultaiRuntime)(nil)).Elem()
-}
-
-func (o ElastigroupIntegrationMultaiRuntimePtrOutput) ToElastigroupIntegrationMultaiRuntimePtrOutput() ElastigroupIntegrationMultaiRuntimePtrOutput {
-	return o
-}
-
-func (o ElastigroupIntegrationMultaiRuntimePtrOutput) ToElastigroupIntegrationMultaiRuntimePtrOutputWithContext(ctx context.Context) ElastigroupIntegrationMultaiRuntimePtrOutput {
-	return o
-}
-
-func (o ElastigroupIntegrationMultaiRuntimePtrOutput) Elem() ElastigroupIntegrationMultaiRuntimeOutput {
-	return o.ApplyT(func(v *ElastigroupIntegrationMultaiRuntime) ElastigroupIntegrationMultaiRuntime {
-		if v != nil {
-			return *v
-		}
-		var ret ElastigroupIntegrationMultaiRuntime
-		return ret
-	}).(ElastigroupIntegrationMultaiRuntimeOutput)
-}
-
-func (o ElastigroupIntegrationMultaiRuntimePtrOutput) DeploymentId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ElastigroupIntegrationMultaiRuntime) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DeploymentId
-	}).(pulumi.StringPtrOutput)
-}
-
-type ElastigroupLoadBalancer struct {
-	AutoWeight  *bool   `pulumi:"autoWeight"`
-	BalancerId  *string `pulumi:"balancerId"`
-	TargetSetId *string `pulumi:"targetSetId"`
-	Type        string  `pulumi:"type"`
-}
-
-// ElastigroupLoadBalancerInput is an input type that accepts ElastigroupLoadBalancerArgs and ElastigroupLoadBalancerOutput values.
-// You can construct a concrete instance of `ElastigroupLoadBalancerInput` via:
-//
-//	ElastigroupLoadBalancerArgs{...}
-type ElastigroupLoadBalancerInput interface {
-	pulumi.Input
-
-	ToElastigroupLoadBalancerOutput() ElastigroupLoadBalancerOutput
-	ToElastigroupLoadBalancerOutputWithContext(context.Context) ElastigroupLoadBalancerOutput
-}
-
-type ElastigroupLoadBalancerArgs struct {
-	AutoWeight  pulumi.BoolPtrInput   `pulumi:"autoWeight"`
-	BalancerId  pulumi.StringPtrInput `pulumi:"balancerId"`
-	TargetSetId pulumi.StringPtrInput `pulumi:"targetSetId"`
-	Type        pulumi.StringInput    `pulumi:"type"`
-}
-
-func (ElastigroupLoadBalancerArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElastigroupLoadBalancer)(nil)).Elem()
-}
-
-func (i ElastigroupLoadBalancerArgs) ToElastigroupLoadBalancerOutput() ElastigroupLoadBalancerOutput {
-	return i.ToElastigroupLoadBalancerOutputWithContext(context.Background())
-}
-
-func (i ElastigroupLoadBalancerArgs) ToElastigroupLoadBalancerOutputWithContext(ctx context.Context) ElastigroupLoadBalancerOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupLoadBalancerOutput)
-}
-
-// ElastigroupLoadBalancerArrayInput is an input type that accepts ElastigroupLoadBalancerArray and ElastigroupLoadBalancerArrayOutput values.
-// You can construct a concrete instance of `ElastigroupLoadBalancerArrayInput` via:
-//
-//	ElastigroupLoadBalancerArray{ ElastigroupLoadBalancerArgs{...} }
-type ElastigroupLoadBalancerArrayInput interface {
-	pulumi.Input
-
-	ToElastigroupLoadBalancerArrayOutput() ElastigroupLoadBalancerArrayOutput
-	ToElastigroupLoadBalancerArrayOutputWithContext(context.Context) ElastigroupLoadBalancerArrayOutput
-}
-
-type ElastigroupLoadBalancerArray []ElastigroupLoadBalancerInput
-
-func (ElastigroupLoadBalancerArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ElastigroupLoadBalancer)(nil)).Elem()
-}
-
-func (i ElastigroupLoadBalancerArray) ToElastigroupLoadBalancerArrayOutput() ElastigroupLoadBalancerArrayOutput {
-	return i.ToElastigroupLoadBalancerArrayOutputWithContext(context.Background())
-}
-
-func (i ElastigroupLoadBalancerArray) ToElastigroupLoadBalancerArrayOutputWithContext(ctx context.Context) ElastigroupLoadBalancerArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupLoadBalancerArrayOutput)
-}
-
-type ElastigroupLoadBalancerOutput struct{ *pulumi.OutputState }
-
-func (ElastigroupLoadBalancerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElastigroupLoadBalancer)(nil)).Elem()
-}
-
-func (o ElastigroupLoadBalancerOutput) ToElastigroupLoadBalancerOutput() ElastigroupLoadBalancerOutput {
-	return o
-}
-
-func (o ElastigroupLoadBalancerOutput) ToElastigroupLoadBalancerOutputWithContext(ctx context.Context) ElastigroupLoadBalancerOutput {
-	return o
-}
-
-func (o ElastigroupLoadBalancerOutput) AutoWeight() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ElastigroupLoadBalancer) *bool { return v.AutoWeight }).(pulumi.BoolPtrOutput)
-}
-
-func (o ElastigroupLoadBalancerOutput) BalancerId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupLoadBalancer) *string { return v.BalancerId }).(pulumi.StringPtrOutput)
-}
-
-func (o ElastigroupLoadBalancerOutput) TargetSetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupLoadBalancer) *string { return v.TargetSetId }).(pulumi.StringPtrOutput)
-}
-
-func (o ElastigroupLoadBalancerOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupLoadBalancer) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type ElastigroupLoadBalancerArrayOutput struct{ *pulumi.OutputState }
-
-func (ElastigroupLoadBalancerArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ElastigroupLoadBalancer)(nil)).Elem()
-}
-
-func (o ElastigroupLoadBalancerArrayOutput) ToElastigroupLoadBalancerArrayOutput() ElastigroupLoadBalancerArrayOutput {
-	return o
-}
-
-func (o ElastigroupLoadBalancerArrayOutput) ToElastigroupLoadBalancerArrayOutputWithContext(ctx context.Context) ElastigroupLoadBalancerArrayOutput {
-	return o
-}
-
-func (o ElastigroupLoadBalancerArrayOutput) Index(i pulumi.IntInput) ElastigroupLoadBalancerOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupLoadBalancer {
-		return vs[0].([]ElastigroupLoadBalancer)[vs[1].(int)]
-	}).(ElastigroupLoadBalancerOutput)
-}
-
-type ElastigroupLogin struct {
-	Password     *string `pulumi:"password"`
-	SshPublicKey *string `pulumi:"sshPublicKey"`
-	UserName     string  `pulumi:"userName"`
-}
-
-// ElastigroupLoginInput is an input type that accepts ElastigroupLoginArgs and ElastigroupLoginOutput values.
-// You can construct a concrete instance of `ElastigroupLoginInput` via:
-//
-//	ElastigroupLoginArgs{...}
-type ElastigroupLoginInput interface {
-	pulumi.Input
-
-	ToElastigroupLoginOutput() ElastigroupLoginOutput
-	ToElastigroupLoginOutputWithContext(context.Context) ElastigroupLoginOutput
-}
-
-type ElastigroupLoginArgs struct {
-	Password     pulumi.StringPtrInput `pulumi:"password"`
-	SshPublicKey pulumi.StringPtrInput `pulumi:"sshPublicKey"`
-	UserName     pulumi.StringInput    `pulumi:"userName"`
-}
-
-func (ElastigroupLoginArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElastigroupLogin)(nil)).Elem()
-}
-
-func (i ElastigroupLoginArgs) ToElastigroupLoginOutput() ElastigroupLoginOutput {
-	return i.ToElastigroupLoginOutputWithContext(context.Background())
-}
-
-func (i ElastigroupLoginArgs) ToElastigroupLoginOutputWithContext(ctx context.Context) ElastigroupLoginOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupLoginOutput)
-}
-
-func (i ElastigroupLoginArgs) ToElastigroupLoginPtrOutput() ElastigroupLoginPtrOutput {
-	return i.ToElastigroupLoginPtrOutputWithContext(context.Background())
-}
-
-func (i ElastigroupLoginArgs) ToElastigroupLoginPtrOutputWithContext(ctx context.Context) ElastigroupLoginPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupLoginOutput).ToElastigroupLoginPtrOutputWithContext(ctx)
-}
-
-// ElastigroupLoginPtrInput is an input type that accepts ElastigroupLoginArgs, ElastigroupLoginPtr and ElastigroupLoginPtrOutput values.
-// You can construct a concrete instance of `ElastigroupLoginPtrInput` via:
-//
-//	        ElastigroupLoginArgs{...}
-//
-//	or:
-//
-//	        nil
-type ElastigroupLoginPtrInput interface {
-	pulumi.Input
-
-	ToElastigroupLoginPtrOutput() ElastigroupLoginPtrOutput
-	ToElastigroupLoginPtrOutputWithContext(context.Context) ElastigroupLoginPtrOutput
-}
-
-type elastigroupLoginPtrType ElastigroupLoginArgs
-
-func ElastigroupLoginPtr(v *ElastigroupLoginArgs) ElastigroupLoginPtrInput {
-	return (*elastigroupLoginPtrType)(v)
-}
-
-func (*elastigroupLoginPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ElastigroupLogin)(nil)).Elem()
-}
-
-func (i *elastigroupLoginPtrType) ToElastigroupLoginPtrOutput() ElastigroupLoginPtrOutput {
-	return i.ToElastigroupLoginPtrOutputWithContext(context.Background())
-}
-
-func (i *elastigroupLoginPtrType) ToElastigroupLoginPtrOutputWithContext(ctx context.Context) ElastigroupLoginPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupLoginPtrOutput)
-}
-
-type ElastigroupLoginOutput struct{ *pulumi.OutputState }
-
-func (ElastigroupLoginOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElastigroupLogin)(nil)).Elem()
-}
-
-func (o ElastigroupLoginOutput) ToElastigroupLoginOutput() ElastigroupLoginOutput {
-	return o
-}
-
-func (o ElastigroupLoginOutput) ToElastigroupLoginOutputWithContext(ctx context.Context) ElastigroupLoginOutput {
-	return o
-}
-
-func (o ElastigroupLoginOutput) ToElastigroupLoginPtrOutput() ElastigroupLoginPtrOutput {
-	return o.ToElastigroupLoginPtrOutputWithContext(context.Background())
-}
-
-func (o ElastigroupLoginOutput) ToElastigroupLoginPtrOutputWithContext(ctx context.Context) ElastigroupLoginPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupLogin) *ElastigroupLogin {
-		return &v
-	}).(ElastigroupLoginPtrOutput)
-}
-
-func (o ElastigroupLoginOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupLogin) *string { return v.Password }).(pulumi.StringPtrOutput)
-}
-
-func (o ElastigroupLoginOutput) SshPublicKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupLogin) *string { return v.SshPublicKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ElastigroupLoginOutput) UserName() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupLogin) string { return v.UserName }).(pulumi.StringOutput)
-}
-
-type ElastigroupLoginPtrOutput struct{ *pulumi.OutputState }
-
-func (ElastigroupLoginPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ElastigroupLogin)(nil)).Elem()
-}
-
-func (o ElastigroupLoginPtrOutput) ToElastigroupLoginPtrOutput() ElastigroupLoginPtrOutput {
-	return o
-}
-
-func (o ElastigroupLoginPtrOutput) ToElastigroupLoginPtrOutputWithContext(ctx context.Context) ElastigroupLoginPtrOutput {
-	return o
-}
-
-func (o ElastigroupLoginPtrOutput) Elem() ElastigroupLoginOutput {
-	return o.ApplyT(func(v *ElastigroupLogin) ElastigroupLogin {
-		if v != nil {
-			return *v
-		}
-		var ret ElastigroupLogin
-		return ret
-	}).(ElastigroupLoginOutput)
-}
-
-func (o ElastigroupLoginPtrOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ElastigroupLogin) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Password
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ElastigroupLoginPtrOutput) SshPublicKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ElastigroupLogin) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SshPublicKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ElastigroupLoginPtrOutput) UserName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ElastigroupLogin) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.UserName
-	}).(pulumi.StringPtrOutput)
-}
-
-type ElastigroupManagedServiceIdentity struct {
-	// The group name.
-	Name string `pulumi:"name"`
-	// Name of the Resource Group for Elastigroup.
-	ResourceGroupName string `pulumi:"resourceGroupName"`
-}
-
-// ElastigroupManagedServiceIdentityInput is an input type that accepts ElastigroupManagedServiceIdentityArgs and ElastigroupManagedServiceIdentityOutput values.
-// You can construct a concrete instance of `ElastigroupManagedServiceIdentityInput` via:
-//
-//	ElastigroupManagedServiceIdentityArgs{...}
-type ElastigroupManagedServiceIdentityInput interface {
-	pulumi.Input
-
-	ToElastigroupManagedServiceIdentityOutput() ElastigroupManagedServiceIdentityOutput
-	ToElastigroupManagedServiceIdentityOutputWithContext(context.Context) ElastigroupManagedServiceIdentityOutput
-}
-
-type ElastigroupManagedServiceIdentityArgs struct {
-	// The group name.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Name of the Resource Group for Elastigroup.
-	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-}
-
-func (ElastigroupManagedServiceIdentityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElastigroupManagedServiceIdentity)(nil)).Elem()
-}
-
-func (i ElastigroupManagedServiceIdentityArgs) ToElastigroupManagedServiceIdentityOutput() ElastigroupManagedServiceIdentityOutput {
-	return i.ToElastigroupManagedServiceIdentityOutputWithContext(context.Background())
-}
-
-func (i ElastigroupManagedServiceIdentityArgs) ToElastigroupManagedServiceIdentityOutputWithContext(ctx context.Context) ElastigroupManagedServiceIdentityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupManagedServiceIdentityOutput)
-}
-
-// ElastigroupManagedServiceIdentityArrayInput is an input type that accepts ElastigroupManagedServiceIdentityArray and ElastigroupManagedServiceIdentityArrayOutput values.
-// You can construct a concrete instance of `ElastigroupManagedServiceIdentityArrayInput` via:
-//
-//	ElastigroupManagedServiceIdentityArray{ ElastigroupManagedServiceIdentityArgs{...} }
-type ElastigroupManagedServiceIdentityArrayInput interface {
-	pulumi.Input
-
-	ToElastigroupManagedServiceIdentityArrayOutput() ElastigroupManagedServiceIdentityArrayOutput
-	ToElastigroupManagedServiceIdentityArrayOutputWithContext(context.Context) ElastigroupManagedServiceIdentityArrayOutput
-}
-
-type ElastigroupManagedServiceIdentityArray []ElastigroupManagedServiceIdentityInput
-
-func (ElastigroupManagedServiceIdentityArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ElastigroupManagedServiceIdentity)(nil)).Elem()
-}
-
-func (i ElastigroupManagedServiceIdentityArray) ToElastigroupManagedServiceIdentityArrayOutput() ElastigroupManagedServiceIdentityArrayOutput {
-	return i.ToElastigroupManagedServiceIdentityArrayOutputWithContext(context.Background())
-}
-
-func (i ElastigroupManagedServiceIdentityArray) ToElastigroupManagedServiceIdentityArrayOutputWithContext(ctx context.Context) ElastigroupManagedServiceIdentityArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupManagedServiceIdentityArrayOutput)
-}
-
-type ElastigroupManagedServiceIdentityOutput struct{ *pulumi.OutputState }
-
-func (ElastigroupManagedServiceIdentityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElastigroupManagedServiceIdentity)(nil)).Elem()
-}
-
-func (o ElastigroupManagedServiceIdentityOutput) ToElastigroupManagedServiceIdentityOutput() ElastigroupManagedServiceIdentityOutput {
-	return o
-}
-
-func (o ElastigroupManagedServiceIdentityOutput) ToElastigroupManagedServiceIdentityOutputWithContext(ctx context.Context) ElastigroupManagedServiceIdentityOutput {
-	return o
-}
-
-// The group name.
-func (o ElastigroupManagedServiceIdentityOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupManagedServiceIdentity) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Name of the Resource Group for Elastigroup.
-func (o ElastigroupManagedServiceIdentityOutput) ResourceGroupName() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupManagedServiceIdentity) string { return v.ResourceGroupName }).(pulumi.StringOutput)
-}
-
-type ElastigroupManagedServiceIdentityArrayOutput struct{ *pulumi.OutputState }
-
-func (ElastigroupManagedServiceIdentityArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ElastigroupManagedServiceIdentity)(nil)).Elem()
-}
-
-func (o ElastigroupManagedServiceIdentityArrayOutput) ToElastigroupManagedServiceIdentityArrayOutput() ElastigroupManagedServiceIdentityArrayOutput {
-	return o
-}
-
-func (o ElastigroupManagedServiceIdentityArrayOutput) ToElastigroupManagedServiceIdentityArrayOutputWithContext(ctx context.Context) ElastigroupManagedServiceIdentityArrayOutput {
-	return o
-}
-
-func (o ElastigroupManagedServiceIdentityArrayOutput) Index(i pulumi.IntInput) ElastigroupManagedServiceIdentityOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupManagedServiceIdentity {
-		return vs[0].([]ElastigroupManagedServiceIdentity)[vs[1].(int)]
-	}).(ElastigroupManagedServiceIdentityOutput)
-}
-
-type ElastigroupNetwork struct {
-	AdditionalIpConfigs []ElastigroupNetworkAdditionalIpConfig `pulumi:"additionalIpConfigs"`
-	AssignPublicIp      *bool                                  `pulumi:"assignPublicIp"`
-	// Name of the Resource Group for Elastigroup.
-	ResourceGroupName  string `pulumi:"resourceGroupName"`
-	SubnetName         string `pulumi:"subnetName"`
-	VirtualNetworkName string `pulumi:"virtualNetworkName"`
-}
-
-// ElastigroupNetworkInput is an input type that accepts ElastigroupNetworkArgs and ElastigroupNetworkOutput values.
-// You can construct a concrete instance of `ElastigroupNetworkInput` via:
-//
-//	ElastigroupNetworkArgs{...}
-type ElastigroupNetworkInput interface {
-	pulumi.Input
-
-	ToElastigroupNetworkOutput() ElastigroupNetworkOutput
-	ToElastigroupNetworkOutputWithContext(context.Context) ElastigroupNetworkOutput
-}
-
-type ElastigroupNetworkArgs struct {
-	AdditionalIpConfigs ElastigroupNetworkAdditionalIpConfigArrayInput `pulumi:"additionalIpConfigs"`
-	AssignPublicIp      pulumi.BoolPtrInput                            `pulumi:"assignPublicIp"`
-	// Name of the Resource Group for Elastigroup.
-	ResourceGroupName  pulumi.StringInput `pulumi:"resourceGroupName"`
-	SubnetName         pulumi.StringInput `pulumi:"subnetName"`
-	VirtualNetworkName pulumi.StringInput `pulumi:"virtualNetworkName"`
-}
-
-func (ElastigroupNetworkArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElastigroupNetwork)(nil)).Elem()
-}
-
-func (i ElastigroupNetworkArgs) ToElastigroupNetworkOutput() ElastigroupNetworkOutput {
-	return i.ToElastigroupNetworkOutputWithContext(context.Background())
-}
-
-func (i ElastigroupNetworkArgs) ToElastigroupNetworkOutputWithContext(ctx context.Context) ElastigroupNetworkOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupNetworkOutput)
-}
-
-func (i ElastigroupNetworkArgs) ToElastigroupNetworkPtrOutput() ElastigroupNetworkPtrOutput {
-	return i.ToElastigroupNetworkPtrOutputWithContext(context.Background())
-}
-
-func (i ElastigroupNetworkArgs) ToElastigroupNetworkPtrOutputWithContext(ctx context.Context) ElastigroupNetworkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupNetworkOutput).ToElastigroupNetworkPtrOutputWithContext(ctx)
-}
-
-// ElastigroupNetworkPtrInput is an input type that accepts ElastigroupNetworkArgs, ElastigroupNetworkPtr and ElastigroupNetworkPtrOutput values.
-// You can construct a concrete instance of `ElastigroupNetworkPtrInput` via:
-//
-//	        ElastigroupNetworkArgs{...}
-//
-//	or:
-//
-//	        nil
-type ElastigroupNetworkPtrInput interface {
-	pulumi.Input
-
-	ToElastigroupNetworkPtrOutput() ElastigroupNetworkPtrOutput
-	ToElastigroupNetworkPtrOutputWithContext(context.Context) ElastigroupNetworkPtrOutput
-}
-
-type elastigroupNetworkPtrType ElastigroupNetworkArgs
-
-func ElastigroupNetworkPtr(v *ElastigroupNetworkArgs) ElastigroupNetworkPtrInput {
-	return (*elastigroupNetworkPtrType)(v)
-}
-
-func (*elastigroupNetworkPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ElastigroupNetwork)(nil)).Elem()
-}
-
-func (i *elastigroupNetworkPtrType) ToElastigroupNetworkPtrOutput() ElastigroupNetworkPtrOutput {
-	return i.ToElastigroupNetworkPtrOutputWithContext(context.Background())
-}
-
-func (i *elastigroupNetworkPtrType) ToElastigroupNetworkPtrOutputWithContext(ctx context.Context) ElastigroupNetworkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupNetworkPtrOutput)
-}
-
-type ElastigroupNetworkOutput struct{ *pulumi.OutputState }
-
-func (ElastigroupNetworkOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElastigroupNetwork)(nil)).Elem()
-}
-
-func (o ElastigroupNetworkOutput) ToElastigroupNetworkOutput() ElastigroupNetworkOutput {
-	return o
-}
-
-func (o ElastigroupNetworkOutput) ToElastigroupNetworkOutputWithContext(ctx context.Context) ElastigroupNetworkOutput {
-	return o
-}
-
-func (o ElastigroupNetworkOutput) ToElastigroupNetworkPtrOutput() ElastigroupNetworkPtrOutput {
-	return o.ToElastigroupNetworkPtrOutputWithContext(context.Background())
-}
-
-func (o ElastigroupNetworkOutput) ToElastigroupNetworkPtrOutputWithContext(ctx context.Context) ElastigroupNetworkPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupNetwork) *ElastigroupNetwork {
-		return &v
-	}).(ElastigroupNetworkPtrOutput)
-}
-
-func (o ElastigroupNetworkOutput) AdditionalIpConfigs() ElastigroupNetworkAdditionalIpConfigArrayOutput {
-	return o.ApplyT(func(v ElastigroupNetwork) []ElastigroupNetworkAdditionalIpConfig { return v.AdditionalIpConfigs }).(ElastigroupNetworkAdditionalIpConfigArrayOutput)
-}
-
-func (o ElastigroupNetworkOutput) AssignPublicIp() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ElastigroupNetwork) *bool { return v.AssignPublicIp }).(pulumi.BoolPtrOutput)
-}
-
-// Name of the Resource Group for Elastigroup.
-func (o ElastigroupNetworkOutput) ResourceGroupName() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupNetwork) string { return v.ResourceGroupName }).(pulumi.StringOutput)
-}
-
-func (o ElastigroupNetworkOutput) SubnetName() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupNetwork) string { return v.SubnetName }).(pulumi.StringOutput)
-}
-
-func (o ElastigroupNetworkOutput) VirtualNetworkName() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupNetwork) string { return v.VirtualNetworkName }).(pulumi.StringOutput)
-}
-
-type ElastigroupNetworkPtrOutput struct{ *pulumi.OutputState }
-
-func (ElastigroupNetworkPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ElastigroupNetwork)(nil)).Elem()
-}
-
-func (o ElastigroupNetworkPtrOutput) ToElastigroupNetworkPtrOutput() ElastigroupNetworkPtrOutput {
-	return o
-}
-
-func (o ElastigroupNetworkPtrOutput) ToElastigroupNetworkPtrOutputWithContext(ctx context.Context) ElastigroupNetworkPtrOutput {
-	return o
-}
-
-func (o ElastigroupNetworkPtrOutput) Elem() ElastigroupNetworkOutput {
-	return o.ApplyT(func(v *ElastigroupNetwork) ElastigroupNetwork {
-		if v != nil {
-			return *v
-		}
-		var ret ElastigroupNetwork
-		return ret
-	}).(ElastigroupNetworkOutput)
-}
-
-func (o ElastigroupNetworkPtrOutput) AdditionalIpConfigs() ElastigroupNetworkAdditionalIpConfigArrayOutput {
-	return o.ApplyT(func(v *ElastigroupNetwork) []ElastigroupNetworkAdditionalIpConfig {
-		if v == nil {
-			return nil
-		}
-		return v.AdditionalIpConfigs
-	}).(ElastigroupNetworkAdditionalIpConfigArrayOutput)
-}
-
-func (o ElastigroupNetworkPtrOutput) AssignPublicIp() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ElastigroupNetwork) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.AssignPublicIp
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Name of the Resource Group for Elastigroup.
-func (o ElastigroupNetworkPtrOutput) ResourceGroupName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ElastigroupNetwork) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ResourceGroupName
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ElastigroupNetworkPtrOutput) SubnetName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ElastigroupNetwork) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SubnetName
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ElastigroupNetworkPtrOutput) VirtualNetworkName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ElastigroupNetwork) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.VirtualNetworkName
-	}).(pulumi.StringPtrOutput)
-}
-
-type ElastigroupNetworkAdditionalIpConfig struct {
-	// The group name.
-	Name             string  `pulumi:"name"`
-	PrivateIpVersion *string `pulumi:"privateIpVersion"`
-}
-
-// ElastigroupNetworkAdditionalIpConfigInput is an input type that accepts ElastigroupNetworkAdditionalIpConfigArgs and ElastigroupNetworkAdditionalIpConfigOutput values.
-// You can construct a concrete instance of `ElastigroupNetworkAdditionalIpConfigInput` via:
-//
-//	ElastigroupNetworkAdditionalIpConfigArgs{...}
-type ElastigroupNetworkAdditionalIpConfigInput interface {
-	pulumi.Input
-
-	ToElastigroupNetworkAdditionalIpConfigOutput() ElastigroupNetworkAdditionalIpConfigOutput
-	ToElastigroupNetworkAdditionalIpConfigOutputWithContext(context.Context) ElastigroupNetworkAdditionalIpConfigOutput
-}
-
-type ElastigroupNetworkAdditionalIpConfigArgs struct {
-	// The group name.
-	Name             pulumi.StringInput    `pulumi:"name"`
-	PrivateIpVersion pulumi.StringPtrInput `pulumi:"privateIpVersion"`
-}
-
-func (ElastigroupNetworkAdditionalIpConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElastigroupNetworkAdditionalIpConfig)(nil)).Elem()
-}
-
-func (i ElastigroupNetworkAdditionalIpConfigArgs) ToElastigroupNetworkAdditionalIpConfigOutput() ElastigroupNetworkAdditionalIpConfigOutput {
-	return i.ToElastigroupNetworkAdditionalIpConfigOutputWithContext(context.Background())
-}
-
-func (i ElastigroupNetworkAdditionalIpConfigArgs) ToElastigroupNetworkAdditionalIpConfigOutputWithContext(ctx context.Context) ElastigroupNetworkAdditionalIpConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupNetworkAdditionalIpConfigOutput)
-}
-
-// ElastigroupNetworkAdditionalIpConfigArrayInput is an input type that accepts ElastigroupNetworkAdditionalIpConfigArray and ElastigroupNetworkAdditionalIpConfigArrayOutput values.
-// You can construct a concrete instance of `ElastigroupNetworkAdditionalIpConfigArrayInput` via:
-//
-//	ElastigroupNetworkAdditionalIpConfigArray{ ElastigroupNetworkAdditionalIpConfigArgs{...} }
-type ElastigroupNetworkAdditionalIpConfigArrayInput interface {
-	pulumi.Input
-
-	ToElastigroupNetworkAdditionalIpConfigArrayOutput() ElastigroupNetworkAdditionalIpConfigArrayOutput
-	ToElastigroupNetworkAdditionalIpConfigArrayOutputWithContext(context.Context) ElastigroupNetworkAdditionalIpConfigArrayOutput
-}
-
-type ElastigroupNetworkAdditionalIpConfigArray []ElastigroupNetworkAdditionalIpConfigInput
-
-func (ElastigroupNetworkAdditionalIpConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ElastigroupNetworkAdditionalIpConfig)(nil)).Elem()
-}
-
-func (i ElastigroupNetworkAdditionalIpConfigArray) ToElastigroupNetworkAdditionalIpConfigArrayOutput() ElastigroupNetworkAdditionalIpConfigArrayOutput {
-	return i.ToElastigroupNetworkAdditionalIpConfigArrayOutputWithContext(context.Background())
-}
-
-func (i ElastigroupNetworkAdditionalIpConfigArray) ToElastigroupNetworkAdditionalIpConfigArrayOutputWithContext(ctx context.Context) ElastigroupNetworkAdditionalIpConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupNetworkAdditionalIpConfigArrayOutput)
-}
-
-type ElastigroupNetworkAdditionalIpConfigOutput struct{ *pulumi.OutputState }
-
-func (ElastigroupNetworkAdditionalIpConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElastigroupNetworkAdditionalIpConfig)(nil)).Elem()
-}
-
-func (o ElastigroupNetworkAdditionalIpConfigOutput) ToElastigroupNetworkAdditionalIpConfigOutput() ElastigroupNetworkAdditionalIpConfigOutput {
-	return o
-}
-
-func (o ElastigroupNetworkAdditionalIpConfigOutput) ToElastigroupNetworkAdditionalIpConfigOutputWithContext(ctx context.Context) ElastigroupNetworkAdditionalIpConfigOutput {
-	return o
-}
-
-// The group name.
-func (o ElastigroupNetworkAdditionalIpConfigOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupNetworkAdditionalIpConfig) string { return v.Name }).(pulumi.StringOutput)
-}
-
-func (o ElastigroupNetworkAdditionalIpConfigOutput) PrivateIpVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupNetworkAdditionalIpConfig) *string { return v.PrivateIpVersion }).(pulumi.StringPtrOutput)
-}
-
-type ElastigroupNetworkAdditionalIpConfigArrayOutput struct{ *pulumi.OutputState }
-
-func (ElastigroupNetworkAdditionalIpConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ElastigroupNetworkAdditionalIpConfig)(nil)).Elem()
-}
-
-func (o ElastigroupNetworkAdditionalIpConfigArrayOutput) ToElastigroupNetworkAdditionalIpConfigArrayOutput() ElastigroupNetworkAdditionalIpConfigArrayOutput {
-	return o
-}
-
-func (o ElastigroupNetworkAdditionalIpConfigArrayOutput) ToElastigroupNetworkAdditionalIpConfigArrayOutputWithContext(ctx context.Context) ElastigroupNetworkAdditionalIpConfigArrayOutput {
-	return o
-}
-
-func (o ElastigroupNetworkAdditionalIpConfigArrayOutput) Index(i pulumi.IntInput) ElastigroupNetworkAdditionalIpConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupNetworkAdditionalIpConfig {
-		return vs[0].([]ElastigroupNetworkAdditionalIpConfig)[vs[1].(int)]
-	}).(ElastigroupNetworkAdditionalIpConfigOutput)
-}
-
-type ElastigroupScalingDownPolicy struct {
-	ActionType        *string                                 `pulumi:"actionType"`
-	Adjustment        *string                                 `pulumi:"adjustment"`
-	Cooldown          *int                                    `pulumi:"cooldown"`
-	Dimensions        []ElastigroupScalingDownPolicyDimension `pulumi:"dimensions"`
-	EvaluationPeriods *int                                    `pulumi:"evaluationPeriods"`
-	MaxTargetCapacity *string                                 `pulumi:"maxTargetCapacity"`
-	Maximum           *string                                 `pulumi:"maximum"`
-	MetricName        string                                  `pulumi:"metricName"`
-	MinTargetCapacity *string                                 `pulumi:"minTargetCapacity"`
-	Minimum           *string                                 `pulumi:"minimum"`
-	Namespace         string                                  `pulumi:"namespace"`
-	Operator          *string                                 `pulumi:"operator"`
-	Period            *int                                    `pulumi:"period"`
-	PolicyName        string                                  `pulumi:"policyName"`
-	Statistic         *string                                 `pulumi:"statistic"`
-	Target            *string                                 `pulumi:"target"`
-	Threshold         float64                                 `pulumi:"threshold"`
-	Unit              *string                                 `pulumi:"unit"`
-}
-
-// ElastigroupScalingDownPolicyInput is an input type that accepts ElastigroupScalingDownPolicyArgs and ElastigroupScalingDownPolicyOutput values.
-// You can construct a concrete instance of `ElastigroupScalingDownPolicyInput` via:
-//
-//	ElastigroupScalingDownPolicyArgs{...}
-type ElastigroupScalingDownPolicyInput interface {
-	pulumi.Input
-
-	ToElastigroupScalingDownPolicyOutput() ElastigroupScalingDownPolicyOutput
-	ToElastigroupScalingDownPolicyOutputWithContext(context.Context) ElastigroupScalingDownPolicyOutput
-}
-
-type ElastigroupScalingDownPolicyArgs struct {
-	ActionType        pulumi.StringPtrInput                           `pulumi:"actionType"`
-	Adjustment        pulumi.StringPtrInput                           `pulumi:"adjustment"`
-	Cooldown          pulumi.IntPtrInput                              `pulumi:"cooldown"`
-	Dimensions        ElastigroupScalingDownPolicyDimensionArrayInput `pulumi:"dimensions"`
-	EvaluationPeriods pulumi.IntPtrInput                              `pulumi:"evaluationPeriods"`
-	MaxTargetCapacity pulumi.StringPtrInput                           `pulumi:"maxTargetCapacity"`
-	Maximum           pulumi.StringPtrInput                           `pulumi:"maximum"`
-	MetricName        pulumi.StringInput                              `pulumi:"metricName"`
-	MinTargetCapacity pulumi.StringPtrInput                           `pulumi:"minTargetCapacity"`
-	Minimum           pulumi.StringPtrInput                           `pulumi:"minimum"`
-	Namespace         pulumi.StringInput                              `pulumi:"namespace"`
-	Operator          pulumi.StringPtrInput                           `pulumi:"operator"`
-	Period            pulumi.IntPtrInput                              `pulumi:"period"`
-	PolicyName        pulumi.StringInput                              `pulumi:"policyName"`
-	Statistic         pulumi.StringPtrInput                           `pulumi:"statistic"`
-	Target            pulumi.StringPtrInput                           `pulumi:"target"`
-	Threshold         pulumi.Float64Input                             `pulumi:"threshold"`
-	Unit              pulumi.StringPtrInput                           `pulumi:"unit"`
-}
-
-func (ElastigroupScalingDownPolicyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElastigroupScalingDownPolicy)(nil)).Elem()
-}
-
-func (i ElastigroupScalingDownPolicyArgs) ToElastigroupScalingDownPolicyOutput() ElastigroupScalingDownPolicyOutput {
-	return i.ToElastigroupScalingDownPolicyOutputWithContext(context.Background())
-}
-
-func (i ElastigroupScalingDownPolicyArgs) ToElastigroupScalingDownPolicyOutputWithContext(ctx context.Context) ElastigroupScalingDownPolicyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupScalingDownPolicyOutput)
-}
-
-// ElastigroupScalingDownPolicyArrayInput is an input type that accepts ElastigroupScalingDownPolicyArray and ElastigroupScalingDownPolicyArrayOutput values.
-// You can construct a concrete instance of `ElastigroupScalingDownPolicyArrayInput` via:
-//
-//	ElastigroupScalingDownPolicyArray{ ElastigroupScalingDownPolicyArgs{...} }
-type ElastigroupScalingDownPolicyArrayInput interface {
-	pulumi.Input
-
-	ToElastigroupScalingDownPolicyArrayOutput() ElastigroupScalingDownPolicyArrayOutput
-	ToElastigroupScalingDownPolicyArrayOutputWithContext(context.Context) ElastigroupScalingDownPolicyArrayOutput
-}
-
-type ElastigroupScalingDownPolicyArray []ElastigroupScalingDownPolicyInput
-
-func (ElastigroupScalingDownPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ElastigroupScalingDownPolicy)(nil)).Elem()
-}
-
-func (i ElastigroupScalingDownPolicyArray) ToElastigroupScalingDownPolicyArrayOutput() ElastigroupScalingDownPolicyArrayOutput {
-	return i.ToElastigroupScalingDownPolicyArrayOutputWithContext(context.Background())
-}
-
-func (i ElastigroupScalingDownPolicyArray) ToElastigroupScalingDownPolicyArrayOutputWithContext(ctx context.Context) ElastigroupScalingDownPolicyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupScalingDownPolicyArrayOutput)
-}
-
-type ElastigroupScalingDownPolicyOutput struct{ *pulumi.OutputState }
-
-func (ElastigroupScalingDownPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElastigroupScalingDownPolicy)(nil)).Elem()
-}
-
-func (o ElastigroupScalingDownPolicyOutput) ToElastigroupScalingDownPolicyOutput() ElastigroupScalingDownPolicyOutput {
-	return o
-}
-
-func (o ElastigroupScalingDownPolicyOutput) ToElastigroupScalingDownPolicyOutputWithContext(ctx context.Context) ElastigroupScalingDownPolicyOutput {
-	return o
-}
-
-func (o ElastigroupScalingDownPolicyOutput) ActionType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *string { return v.ActionType }).(pulumi.StringPtrOutput)
-}
-
-func (o ElastigroupScalingDownPolicyOutput) Adjustment() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *string { return v.Adjustment }).(pulumi.StringPtrOutput)
-}
-
-func (o ElastigroupScalingDownPolicyOutput) Cooldown() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *int { return v.Cooldown }).(pulumi.IntPtrOutput)
-}
-
-func (o ElastigroupScalingDownPolicyOutput) Dimensions() ElastigroupScalingDownPolicyDimensionArrayOutput {
-	return o.ApplyT(func(v ElastigroupScalingDownPolicy) []ElastigroupScalingDownPolicyDimension { return v.Dimensions }).(ElastigroupScalingDownPolicyDimensionArrayOutput)
-}
-
-func (o ElastigroupScalingDownPolicyOutput) EvaluationPeriods() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
-}
-
-func (o ElastigroupScalingDownPolicyOutput) MaxTargetCapacity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *string { return v.MaxTargetCapacity }).(pulumi.StringPtrOutput)
-}
-
-func (o ElastigroupScalingDownPolicyOutput) Maximum() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *string { return v.Maximum }).(pulumi.StringPtrOutput)
-}
-
-func (o ElastigroupScalingDownPolicyOutput) MetricName() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupScalingDownPolicy) string { return v.MetricName }).(pulumi.StringOutput)
-}
-
-func (o ElastigroupScalingDownPolicyOutput) MinTargetCapacity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *string { return v.MinTargetCapacity }).(pulumi.StringPtrOutput)
-}
-
-func (o ElastigroupScalingDownPolicyOutput) Minimum() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *string { return v.Minimum }).(pulumi.StringPtrOutput)
-}
-
-func (o ElastigroupScalingDownPolicyOutput) Namespace() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupScalingDownPolicy) string { return v.Namespace }).(pulumi.StringOutput)
-}
-
-func (o ElastigroupScalingDownPolicyOutput) Operator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *string { return v.Operator }).(pulumi.StringPtrOutput)
-}
-
-func (o ElastigroupScalingDownPolicyOutput) Period() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *int { return v.Period }).(pulumi.IntPtrOutput)
-}
-
-func (o ElastigroupScalingDownPolicyOutput) PolicyName() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupScalingDownPolicy) string { return v.PolicyName }).(pulumi.StringOutput)
-}
-
-func (o ElastigroupScalingDownPolicyOutput) Statistic() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *string { return v.Statistic }).(pulumi.StringPtrOutput)
-}
-
-func (o ElastigroupScalingDownPolicyOutput) Target() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *string { return v.Target }).(pulumi.StringPtrOutput)
-}
-
-func (o ElastigroupScalingDownPolicyOutput) Threshold() pulumi.Float64Output {
-	return o.ApplyT(func(v ElastigroupScalingDownPolicy) float64 { return v.Threshold }).(pulumi.Float64Output)
-}
-
-func (o ElastigroupScalingDownPolicyOutput) Unit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *string { return v.Unit }).(pulumi.StringPtrOutput)
-}
-
-type ElastigroupScalingDownPolicyArrayOutput struct{ *pulumi.OutputState }
-
-func (ElastigroupScalingDownPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ElastigroupScalingDownPolicy)(nil)).Elem()
-}
-
-func (o ElastigroupScalingDownPolicyArrayOutput) ToElastigroupScalingDownPolicyArrayOutput() ElastigroupScalingDownPolicyArrayOutput {
-	return o
-}
-
-func (o ElastigroupScalingDownPolicyArrayOutput) ToElastigroupScalingDownPolicyArrayOutputWithContext(ctx context.Context) ElastigroupScalingDownPolicyArrayOutput {
-	return o
-}
-
-func (o ElastigroupScalingDownPolicyArrayOutput) Index(i pulumi.IntInput) ElastigroupScalingDownPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupScalingDownPolicy {
-		return vs[0].([]ElastigroupScalingDownPolicy)[vs[1].(int)]
-	}).(ElastigroupScalingDownPolicyOutput)
-}
-
-type ElastigroupScalingDownPolicyDimension struct {
-	// The group name.
-	Name  string  `pulumi:"name"`
-	Value *string `pulumi:"value"`
-}
-
-// ElastigroupScalingDownPolicyDimensionInput is an input type that accepts ElastigroupScalingDownPolicyDimensionArgs and ElastigroupScalingDownPolicyDimensionOutput values.
-// You can construct a concrete instance of `ElastigroupScalingDownPolicyDimensionInput` via:
-//
-//	ElastigroupScalingDownPolicyDimensionArgs{...}
-type ElastigroupScalingDownPolicyDimensionInput interface {
-	pulumi.Input
-
-	ToElastigroupScalingDownPolicyDimensionOutput() ElastigroupScalingDownPolicyDimensionOutput
-	ToElastigroupScalingDownPolicyDimensionOutputWithContext(context.Context) ElastigroupScalingDownPolicyDimensionOutput
-}
-
-type ElastigroupScalingDownPolicyDimensionArgs struct {
-	// The group name.
-	Name  pulumi.StringInput    `pulumi:"name"`
-	Value pulumi.StringPtrInput `pulumi:"value"`
-}
-
-func (ElastigroupScalingDownPolicyDimensionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElastigroupScalingDownPolicyDimension)(nil)).Elem()
-}
-
-func (i ElastigroupScalingDownPolicyDimensionArgs) ToElastigroupScalingDownPolicyDimensionOutput() ElastigroupScalingDownPolicyDimensionOutput {
-	return i.ToElastigroupScalingDownPolicyDimensionOutputWithContext(context.Background())
-}
-
-func (i ElastigroupScalingDownPolicyDimensionArgs) ToElastigroupScalingDownPolicyDimensionOutputWithContext(ctx context.Context) ElastigroupScalingDownPolicyDimensionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupScalingDownPolicyDimensionOutput)
-}
-
-// ElastigroupScalingDownPolicyDimensionArrayInput is an input type that accepts ElastigroupScalingDownPolicyDimensionArray and ElastigroupScalingDownPolicyDimensionArrayOutput values.
-// You can construct a concrete instance of `ElastigroupScalingDownPolicyDimensionArrayInput` via:
-//
-//	ElastigroupScalingDownPolicyDimensionArray{ ElastigroupScalingDownPolicyDimensionArgs{...} }
-type ElastigroupScalingDownPolicyDimensionArrayInput interface {
-	pulumi.Input
-
-	ToElastigroupScalingDownPolicyDimensionArrayOutput() ElastigroupScalingDownPolicyDimensionArrayOutput
-	ToElastigroupScalingDownPolicyDimensionArrayOutputWithContext(context.Context) ElastigroupScalingDownPolicyDimensionArrayOutput
-}
-
-type ElastigroupScalingDownPolicyDimensionArray []ElastigroupScalingDownPolicyDimensionInput
-
-func (ElastigroupScalingDownPolicyDimensionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ElastigroupScalingDownPolicyDimension)(nil)).Elem()
-}
-
-func (i ElastigroupScalingDownPolicyDimensionArray) ToElastigroupScalingDownPolicyDimensionArrayOutput() ElastigroupScalingDownPolicyDimensionArrayOutput {
-	return i.ToElastigroupScalingDownPolicyDimensionArrayOutputWithContext(context.Background())
-}
-
-func (i ElastigroupScalingDownPolicyDimensionArray) ToElastigroupScalingDownPolicyDimensionArrayOutputWithContext(ctx context.Context) ElastigroupScalingDownPolicyDimensionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupScalingDownPolicyDimensionArrayOutput)
-}
-
-type ElastigroupScalingDownPolicyDimensionOutput struct{ *pulumi.OutputState }
-
-func (ElastigroupScalingDownPolicyDimensionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElastigroupScalingDownPolicyDimension)(nil)).Elem()
-}
-
-func (o ElastigroupScalingDownPolicyDimensionOutput) ToElastigroupScalingDownPolicyDimensionOutput() ElastigroupScalingDownPolicyDimensionOutput {
-	return o
-}
-
-func (o ElastigroupScalingDownPolicyDimensionOutput) ToElastigroupScalingDownPolicyDimensionOutputWithContext(ctx context.Context) ElastigroupScalingDownPolicyDimensionOutput {
-	return o
-}
-
-// The group name.
-func (o ElastigroupScalingDownPolicyDimensionOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupScalingDownPolicyDimension) string { return v.Name }).(pulumi.StringOutput)
-}
-
-func (o ElastigroupScalingDownPolicyDimensionOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupScalingDownPolicyDimension) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type ElastigroupScalingDownPolicyDimensionArrayOutput struct{ *pulumi.OutputState }
-
-func (ElastigroupScalingDownPolicyDimensionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ElastigroupScalingDownPolicyDimension)(nil)).Elem()
-}
-
-func (o ElastigroupScalingDownPolicyDimensionArrayOutput) ToElastigroupScalingDownPolicyDimensionArrayOutput() ElastigroupScalingDownPolicyDimensionArrayOutput {
-	return o
-}
-
-func (o ElastigroupScalingDownPolicyDimensionArrayOutput) ToElastigroupScalingDownPolicyDimensionArrayOutputWithContext(ctx context.Context) ElastigroupScalingDownPolicyDimensionArrayOutput {
-	return o
-}
-
-func (o ElastigroupScalingDownPolicyDimensionArrayOutput) Index(i pulumi.IntInput) ElastigroupScalingDownPolicyDimensionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupScalingDownPolicyDimension {
-		return vs[0].([]ElastigroupScalingDownPolicyDimension)[vs[1].(int)]
-	}).(ElastigroupScalingDownPolicyDimensionOutput)
-}
-
-type ElastigroupScalingUpPolicy struct {
-	ActionType        *string                               `pulumi:"actionType"`
-	Adjustment        *string                               `pulumi:"adjustment"`
-	Cooldown          *int                                  `pulumi:"cooldown"`
-	Dimensions        []ElastigroupScalingUpPolicyDimension `pulumi:"dimensions"`
-	EvaluationPeriods *int                                  `pulumi:"evaluationPeriods"`
-	MaxTargetCapacity *string                               `pulumi:"maxTargetCapacity"`
-	Maximum           *string                               `pulumi:"maximum"`
-	MetricName        string                                `pulumi:"metricName"`
-	MinTargetCapacity *string                               `pulumi:"minTargetCapacity"`
-	Minimum           *string                               `pulumi:"minimum"`
-	Namespace         string                                `pulumi:"namespace"`
-	Operator          *string                               `pulumi:"operator"`
-	Period            *int                                  `pulumi:"period"`
-	PolicyName        string                                `pulumi:"policyName"`
-	Statistic         *string                               `pulumi:"statistic"`
-	Target            *string                               `pulumi:"target"`
-	Threshold         float64                               `pulumi:"threshold"`
-	Unit              *string                               `pulumi:"unit"`
-}
-
-// ElastigroupScalingUpPolicyInput is an input type that accepts ElastigroupScalingUpPolicyArgs and ElastigroupScalingUpPolicyOutput values.
-// You can construct a concrete instance of `ElastigroupScalingUpPolicyInput` via:
-//
-//	ElastigroupScalingUpPolicyArgs{...}
-type ElastigroupScalingUpPolicyInput interface {
-	pulumi.Input
-
-	ToElastigroupScalingUpPolicyOutput() ElastigroupScalingUpPolicyOutput
-	ToElastigroupScalingUpPolicyOutputWithContext(context.Context) ElastigroupScalingUpPolicyOutput
-}
-
-type ElastigroupScalingUpPolicyArgs struct {
-	ActionType        pulumi.StringPtrInput                         `pulumi:"actionType"`
-	Adjustment        pulumi.StringPtrInput                         `pulumi:"adjustment"`
-	Cooldown          pulumi.IntPtrInput                            `pulumi:"cooldown"`
-	Dimensions        ElastigroupScalingUpPolicyDimensionArrayInput `pulumi:"dimensions"`
-	EvaluationPeriods pulumi.IntPtrInput                            `pulumi:"evaluationPeriods"`
-	MaxTargetCapacity pulumi.StringPtrInput                         `pulumi:"maxTargetCapacity"`
-	Maximum           pulumi.StringPtrInput                         `pulumi:"maximum"`
-	MetricName        pulumi.StringInput                            `pulumi:"metricName"`
-	MinTargetCapacity pulumi.StringPtrInput                         `pulumi:"minTargetCapacity"`
-	Minimum           pulumi.StringPtrInput                         `pulumi:"minimum"`
-	Namespace         pulumi.StringInput                            `pulumi:"namespace"`
-	Operator          pulumi.StringPtrInput                         `pulumi:"operator"`
-	Period            pulumi.IntPtrInput                            `pulumi:"period"`
-	PolicyName        pulumi.StringInput                            `pulumi:"policyName"`
-	Statistic         pulumi.StringPtrInput                         `pulumi:"statistic"`
-	Target            pulumi.StringPtrInput                         `pulumi:"target"`
-	Threshold         pulumi.Float64Input                           `pulumi:"threshold"`
-	Unit              pulumi.StringPtrInput                         `pulumi:"unit"`
-}
-
-func (ElastigroupScalingUpPolicyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElastigroupScalingUpPolicy)(nil)).Elem()
-}
-
-func (i ElastigroupScalingUpPolicyArgs) ToElastigroupScalingUpPolicyOutput() ElastigroupScalingUpPolicyOutput {
-	return i.ToElastigroupScalingUpPolicyOutputWithContext(context.Background())
-}
-
-func (i ElastigroupScalingUpPolicyArgs) ToElastigroupScalingUpPolicyOutputWithContext(ctx context.Context) ElastigroupScalingUpPolicyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupScalingUpPolicyOutput)
-}
-
-// ElastigroupScalingUpPolicyArrayInput is an input type that accepts ElastigroupScalingUpPolicyArray and ElastigroupScalingUpPolicyArrayOutput values.
-// You can construct a concrete instance of `ElastigroupScalingUpPolicyArrayInput` via:
-//
-//	ElastigroupScalingUpPolicyArray{ ElastigroupScalingUpPolicyArgs{...} }
-type ElastigroupScalingUpPolicyArrayInput interface {
-	pulumi.Input
-
-	ToElastigroupScalingUpPolicyArrayOutput() ElastigroupScalingUpPolicyArrayOutput
-	ToElastigroupScalingUpPolicyArrayOutputWithContext(context.Context) ElastigroupScalingUpPolicyArrayOutput
-}
-
-type ElastigroupScalingUpPolicyArray []ElastigroupScalingUpPolicyInput
-
-func (ElastigroupScalingUpPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ElastigroupScalingUpPolicy)(nil)).Elem()
-}
-
-func (i ElastigroupScalingUpPolicyArray) ToElastigroupScalingUpPolicyArrayOutput() ElastigroupScalingUpPolicyArrayOutput {
-	return i.ToElastigroupScalingUpPolicyArrayOutputWithContext(context.Background())
-}
-
-func (i ElastigroupScalingUpPolicyArray) ToElastigroupScalingUpPolicyArrayOutputWithContext(ctx context.Context) ElastigroupScalingUpPolicyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupScalingUpPolicyArrayOutput)
-}
-
-type ElastigroupScalingUpPolicyOutput struct{ *pulumi.OutputState }
-
-func (ElastigroupScalingUpPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElastigroupScalingUpPolicy)(nil)).Elem()
-}
-
-func (o ElastigroupScalingUpPolicyOutput) ToElastigroupScalingUpPolicyOutput() ElastigroupScalingUpPolicyOutput {
-	return o
-}
-
-func (o ElastigroupScalingUpPolicyOutput) ToElastigroupScalingUpPolicyOutputWithContext(ctx context.Context) ElastigroupScalingUpPolicyOutput {
-	return o
-}
-
-func (o ElastigroupScalingUpPolicyOutput) ActionType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *string { return v.ActionType }).(pulumi.StringPtrOutput)
-}
-
-func (o ElastigroupScalingUpPolicyOutput) Adjustment() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *string { return v.Adjustment }).(pulumi.StringPtrOutput)
-}
-
-func (o ElastigroupScalingUpPolicyOutput) Cooldown() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *int { return v.Cooldown }).(pulumi.IntPtrOutput)
-}
-
-func (o ElastigroupScalingUpPolicyOutput) Dimensions() ElastigroupScalingUpPolicyDimensionArrayOutput {
-	return o.ApplyT(func(v ElastigroupScalingUpPolicy) []ElastigroupScalingUpPolicyDimension { return v.Dimensions }).(ElastigroupScalingUpPolicyDimensionArrayOutput)
-}
-
-func (o ElastigroupScalingUpPolicyOutput) EvaluationPeriods() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
-}
-
-func (o ElastigroupScalingUpPolicyOutput) MaxTargetCapacity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *string { return v.MaxTargetCapacity }).(pulumi.StringPtrOutput)
-}
-
-func (o ElastigroupScalingUpPolicyOutput) Maximum() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *string { return v.Maximum }).(pulumi.StringPtrOutput)
-}
-
-func (o ElastigroupScalingUpPolicyOutput) MetricName() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupScalingUpPolicy) string { return v.MetricName }).(pulumi.StringOutput)
-}
-
-func (o ElastigroupScalingUpPolicyOutput) MinTargetCapacity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *string { return v.MinTargetCapacity }).(pulumi.StringPtrOutput)
-}
-
-func (o ElastigroupScalingUpPolicyOutput) Minimum() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *string { return v.Minimum }).(pulumi.StringPtrOutput)
-}
-
-func (o ElastigroupScalingUpPolicyOutput) Namespace() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupScalingUpPolicy) string { return v.Namespace }).(pulumi.StringOutput)
-}
-
-func (o ElastigroupScalingUpPolicyOutput) Operator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *string { return v.Operator }).(pulumi.StringPtrOutput)
-}
-
-func (o ElastigroupScalingUpPolicyOutput) Period() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *int { return v.Period }).(pulumi.IntPtrOutput)
-}
-
-func (o ElastigroupScalingUpPolicyOutput) PolicyName() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupScalingUpPolicy) string { return v.PolicyName }).(pulumi.StringOutput)
-}
-
-func (o ElastigroupScalingUpPolicyOutput) Statistic() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *string { return v.Statistic }).(pulumi.StringPtrOutput)
-}
-
-func (o ElastigroupScalingUpPolicyOutput) Target() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *string { return v.Target }).(pulumi.StringPtrOutput)
-}
-
-func (o ElastigroupScalingUpPolicyOutput) Threshold() pulumi.Float64Output {
-	return o.ApplyT(func(v ElastigroupScalingUpPolicy) float64 { return v.Threshold }).(pulumi.Float64Output)
-}
-
-func (o ElastigroupScalingUpPolicyOutput) Unit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *string { return v.Unit }).(pulumi.StringPtrOutput)
-}
-
-type ElastigroupScalingUpPolicyArrayOutput struct{ *pulumi.OutputState }
-
-func (ElastigroupScalingUpPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ElastigroupScalingUpPolicy)(nil)).Elem()
-}
-
-func (o ElastigroupScalingUpPolicyArrayOutput) ToElastigroupScalingUpPolicyArrayOutput() ElastigroupScalingUpPolicyArrayOutput {
-	return o
-}
-
-func (o ElastigroupScalingUpPolicyArrayOutput) ToElastigroupScalingUpPolicyArrayOutputWithContext(ctx context.Context) ElastigroupScalingUpPolicyArrayOutput {
-	return o
-}
-
-func (o ElastigroupScalingUpPolicyArrayOutput) Index(i pulumi.IntInput) ElastigroupScalingUpPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupScalingUpPolicy {
-		return vs[0].([]ElastigroupScalingUpPolicy)[vs[1].(int)]
-	}).(ElastigroupScalingUpPolicyOutput)
-}
-
-type ElastigroupScalingUpPolicyDimension struct {
-	// The group name.
-	Name  string  `pulumi:"name"`
-	Value *string `pulumi:"value"`
-}
-
-// ElastigroupScalingUpPolicyDimensionInput is an input type that accepts ElastigroupScalingUpPolicyDimensionArgs and ElastigroupScalingUpPolicyDimensionOutput values.
-// You can construct a concrete instance of `ElastigroupScalingUpPolicyDimensionInput` via:
-//
-//	ElastigroupScalingUpPolicyDimensionArgs{...}
-type ElastigroupScalingUpPolicyDimensionInput interface {
-	pulumi.Input
-
-	ToElastigroupScalingUpPolicyDimensionOutput() ElastigroupScalingUpPolicyDimensionOutput
-	ToElastigroupScalingUpPolicyDimensionOutputWithContext(context.Context) ElastigroupScalingUpPolicyDimensionOutput
-}
-
-type ElastigroupScalingUpPolicyDimensionArgs struct {
-	// The group name.
-	Name  pulumi.StringInput    `pulumi:"name"`
-	Value pulumi.StringPtrInput `pulumi:"value"`
-}
-
-func (ElastigroupScalingUpPolicyDimensionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElastigroupScalingUpPolicyDimension)(nil)).Elem()
-}
-
-func (i ElastigroupScalingUpPolicyDimensionArgs) ToElastigroupScalingUpPolicyDimensionOutput() ElastigroupScalingUpPolicyDimensionOutput {
-	return i.ToElastigroupScalingUpPolicyDimensionOutputWithContext(context.Background())
-}
-
-func (i ElastigroupScalingUpPolicyDimensionArgs) ToElastigroupScalingUpPolicyDimensionOutputWithContext(ctx context.Context) ElastigroupScalingUpPolicyDimensionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupScalingUpPolicyDimensionOutput)
-}
-
-// ElastigroupScalingUpPolicyDimensionArrayInput is an input type that accepts ElastigroupScalingUpPolicyDimensionArray and ElastigroupScalingUpPolicyDimensionArrayOutput values.
-// You can construct a concrete instance of `ElastigroupScalingUpPolicyDimensionArrayInput` via:
-//
-//	ElastigroupScalingUpPolicyDimensionArray{ ElastigroupScalingUpPolicyDimensionArgs{...} }
-type ElastigroupScalingUpPolicyDimensionArrayInput interface {
-	pulumi.Input
-
-	ToElastigroupScalingUpPolicyDimensionArrayOutput() ElastigroupScalingUpPolicyDimensionArrayOutput
-	ToElastigroupScalingUpPolicyDimensionArrayOutputWithContext(context.Context) ElastigroupScalingUpPolicyDimensionArrayOutput
-}
-
-type ElastigroupScalingUpPolicyDimensionArray []ElastigroupScalingUpPolicyDimensionInput
-
-func (ElastigroupScalingUpPolicyDimensionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ElastigroupScalingUpPolicyDimension)(nil)).Elem()
-}
-
-func (i ElastigroupScalingUpPolicyDimensionArray) ToElastigroupScalingUpPolicyDimensionArrayOutput() ElastigroupScalingUpPolicyDimensionArrayOutput {
-	return i.ToElastigroupScalingUpPolicyDimensionArrayOutputWithContext(context.Background())
-}
-
-func (i ElastigroupScalingUpPolicyDimensionArray) ToElastigroupScalingUpPolicyDimensionArrayOutputWithContext(ctx context.Context) ElastigroupScalingUpPolicyDimensionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupScalingUpPolicyDimensionArrayOutput)
-}
-
-type ElastigroupScalingUpPolicyDimensionOutput struct{ *pulumi.OutputState }
-
-func (ElastigroupScalingUpPolicyDimensionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElastigroupScalingUpPolicyDimension)(nil)).Elem()
-}
-
-func (o ElastigroupScalingUpPolicyDimensionOutput) ToElastigroupScalingUpPolicyDimensionOutput() ElastigroupScalingUpPolicyDimensionOutput {
-	return o
-}
-
-func (o ElastigroupScalingUpPolicyDimensionOutput) ToElastigroupScalingUpPolicyDimensionOutputWithContext(ctx context.Context) ElastigroupScalingUpPolicyDimensionOutput {
-	return o
-}
-
-// The group name.
-func (o ElastigroupScalingUpPolicyDimensionOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupScalingUpPolicyDimension) string { return v.Name }).(pulumi.StringOutput)
-}
-
-func (o ElastigroupScalingUpPolicyDimensionOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupScalingUpPolicyDimension) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type ElastigroupScalingUpPolicyDimensionArrayOutput struct{ *pulumi.OutputState }
-
-func (ElastigroupScalingUpPolicyDimensionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ElastigroupScalingUpPolicyDimension)(nil)).Elem()
-}
-
-func (o ElastigroupScalingUpPolicyDimensionArrayOutput) ToElastigroupScalingUpPolicyDimensionArrayOutput() ElastigroupScalingUpPolicyDimensionArrayOutput {
-	return o
-}
-
-func (o ElastigroupScalingUpPolicyDimensionArrayOutput) ToElastigroupScalingUpPolicyDimensionArrayOutputWithContext(ctx context.Context) ElastigroupScalingUpPolicyDimensionArrayOutput {
-	return o
-}
-
-func (o ElastigroupScalingUpPolicyDimensionArrayOutput) Index(i pulumi.IntInput) ElastigroupScalingUpPolicyDimensionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupScalingUpPolicyDimension {
-		return vs[0].([]ElastigroupScalingUpPolicyDimension)[vs[1].(int)]
-	}).(ElastigroupScalingUpPolicyDimensionOutput)
-}
-
-type ElastigroupScheduledTask struct {
-	Adjustment           *string `pulumi:"adjustment"`
-	AdjustmentPercentage *string `pulumi:"adjustmentPercentage"`
-	BatchSizePercentage  *string `pulumi:"batchSizePercentage"`
-	CronExpression       string  `pulumi:"cronExpression"`
-	GracePeriod          *string `pulumi:"gracePeriod"`
-	IsEnabled            *bool   `pulumi:"isEnabled"`
-	ScaleMaxCapacity     *string `pulumi:"scaleMaxCapacity"`
-	ScaleMinCapacity     *string `pulumi:"scaleMinCapacity"`
-	ScaleTargetCapacity  *string `pulumi:"scaleTargetCapacity"`
-	TaskType             string  `pulumi:"taskType"`
-}
-
-// ElastigroupScheduledTaskInput is an input type that accepts ElastigroupScheduledTaskArgs and ElastigroupScheduledTaskOutput values.
-// You can construct a concrete instance of `ElastigroupScheduledTaskInput` via:
-//
-//	ElastigroupScheduledTaskArgs{...}
-type ElastigroupScheduledTaskInput interface {
-	pulumi.Input
-
-	ToElastigroupScheduledTaskOutput() ElastigroupScheduledTaskOutput
-	ToElastigroupScheduledTaskOutputWithContext(context.Context) ElastigroupScheduledTaskOutput
-}
-
-type ElastigroupScheduledTaskArgs struct {
-	Adjustment           pulumi.StringPtrInput `pulumi:"adjustment"`
-	AdjustmentPercentage pulumi.StringPtrInput `pulumi:"adjustmentPercentage"`
-	BatchSizePercentage  pulumi.StringPtrInput `pulumi:"batchSizePercentage"`
-	CronExpression       pulumi.StringInput    `pulumi:"cronExpression"`
-	GracePeriod          pulumi.StringPtrInput `pulumi:"gracePeriod"`
-	IsEnabled            pulumi.BoolPtrInput   `pulumi:"isEnabled"`
-	ScaleMaxCapacity     pulumi.StringPtrInput `pulumi:"scaleMaxCapacity"`
-	ScaleMinCapacity     pulumi.StringPtrInput `pulumi:"scaleMinCapacity"`
-	ScaleTargetCapacity  pulumi.StringPtrInput `pulumi:"scaleTargetCapacity"`
-	TaskType             pulumi.StringInput    `pulumi:"taskType"`
-}
-
-func (ElastigroupScheduledTaskArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElastigroupScheduledTask)(nil)).Elem()
-}
-
-func (i ElastigroupScheduledTaskArgs) ToElastigroupScheduledTaskOutput() ElastigroupScheduledTaskOutput {
-	return i.ToElastigroupScheduledTaskOutputWithContext(context.Background())
-}
-
-func (i ElastigroupScheduledTaskArgs) ToElastigroupScheduledTaskOutputWithContext(ctx context.Context) ElastigroupScheduledTaskOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupScheduledTaskOutput)
-}
-
-// ElastigroupScheduledTaskArrayInput is an input type that accepts ElastigroupScheduledTaskArray and ElastigroupScheduledTaskArrayOutput values.
-// You can construct a concrete instance of `ElastigroupScheduledTaskArrayInput` via:
-//
-//	ElastigroupScheduledTaskArray{ ElastigroupScheduledTaskArgs{...} }
-type ElastigroupScheduledTaskArrayInput interface {
-	pulumi.Input
-
-	ToElastigroupScheduledTaskArrayOutput() ElastigroupScheduledTaskArrayOutput
-	ToElastigroupScheduledTaskArrayOutputWithContext(context.Context) ElastigroupScheduledTaskArrayOutput
-}
-
-type ElastigroupScheduledTaskArray []ElastigroupScheduledTaskInput
-
-func (ElastigroupScheduledTaskArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ElastigroupScheduledTask)(nil)).Elem()
-}
-
-func (i ElastigroupScheduledTaskArray) ToElastigroupScheduledTaskArrayOutput() ElastigroupScheduledTaskArrayOutput {
-	return i.ToElastigroupScheduledTaskArrayOutputWithContext(context.Background())
-}
-
-func (i ElastigroupScheduledTaskArray) ToElastigroupScheduledTaskArrayOutputWithContext(ctx context.Context) ElastigroupScheduledTaskArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupScheduledTaskArrayOutput)
-}
-
-type ElastigroupScheduledTaskOutput struct{ *pulumi.OutputState }
-
-func (ElastigroupScheduledTaskOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElastigroupScheduledTask)(nil)).Elem()
-}
-
-func (o ElastigroupScheduledTaskOutput) ToElastigroupScheduledTaskOutput() ElastigroupScheduledTaskOutput {
-	return o
-}
-
-func (o ElastigroupScheduledTaskOutput) ToElastigroupScheduledTaskOutputWithContext(ctx context.Context) ElastigroupScheduledTaskOutput {
-	return o
-}
-
-func (o ElastigroupScheduledTaskOutput) Adjustment() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupScheduledTask) *string { return v.Adjustment }).(pulumi.StringPtrOutput)
-}
-
-func (o ElastigroupScheduledTaskOutput) AdjustmentPercentage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupScheduledTask) *string { return v.AdjustmentPercentage }).(pulumi.StringPtrOutput)
-}
-
-func (o ElastigroupScheduledTaskOutput) BatchSizePercentage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupScheduledTask) *string { return v.BatchSizePercentage }).(pulumi.StringPtrOutput)
-}
-
-func (o ElastigroupScheduledTaskOutput) CronExpression() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupScheduledTask) string { return v.CronExpression }).(pulumi.StringOutput)
-}
-
-func (o ElastigroupScheduledTaskOutput) GracePeriod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupScheduledTask) *string { return v.GracePeriod }).(pulumi.StringPtrOutput)
-}
-
-func (o ElastigroupScheduledTaskOutput) IsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ElastigroupScheduledTask) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
-}
-
-func (o ElastigroupScheduledTaskOutput) ScaleMaxCapacity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupScheduledTask) *string { return v.ScaleMaxCapacity }).(pulumi.StringPtrOutput)
-}
-
-func (o ElastigroupScheduledTaskOutput) ScaleMinCapacity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupScheduledTask) *string { return v.ScaleMinCapacity }).(pulumi.StringPtrOutput)
-}
-
-func (o ElastigroupScheduledTaskOutput) ScaleTargetCapacity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupScheduledTask) *string { return v.ScaleTargetCapacity }).(pulumi.StringPtrOutput)
-}
-
-func (o ElastigroupScheduledTaskOutput) TaskType() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupScheduledTask) string { return v.TaskType }).(pulumi.StringOutput)
-}
-
-type ElastigroupScheduledTaskArrayOutput struct{ *pulumi.OutputState }
-
-func (ElastigroupScheduledTaskArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ElastigroupScheduledTask)(nil)).Elem()
-}
-
-func (o ElastigroupScheduledTaskArrayOutput) ToElastigroupScheduledTaskArrayOutput() ElastigroupScheduledTaskArrayOutput {
-	return o
-}
-
-func (o ElastigroupScheduledTaskArrayOutput) ToElastigroupScheduledTaskArrayOutputWithContext(ctx context.Context) ElastigroupScheduledTaskArrayOutput {
-	return o
-}
-
-func (o ElastigroupScheduledTaskArrayOutput) Index(i pulumi.IntInput) ElastigroupScheduledTaskOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupScheduledTask {
-		return vs[0].([]ElastigroupScheduledTask)[vs[1].(int)]
-	}).(ElastigroupScheduledTaskOutput)
-}
-
-type ElastigroupStrategy struct {
-	DrainingTimeout       *int `pulumi:"drainingTimeout"`
-	LowPriorityPercentage *int `pulumi:"lowPriorityPercentage"`
-	OdCount               *int `pulumi:"odCount"`
-}
-
-// ElastigroupStrategyInput is an input type that accepts ElastigroupStrategyArgs and ElastigroupStrategyOutput values.
-// You can construct a concrete instance of `ElastigroupStrategyInput` via:
-//
-//	ElastigroupStrategyArgs{...}
-type ElastigroupStrategyInput interface {
-	pulumi.Input
-
-	ToElastigroupStrategyOutput() ElastigroupStrategyOutput
-	ToElastigroupStrategyOutputWithContext(context.Context) ElastigroupStrategyOutput
-}
-
-type ElastigroupStrategyArgs struct {
-	DrainingTimeout       pulumi.IntPtrInput `pulumi:"drainingTimeout"`
-	LowPriorityPercentage pulumi.IntPtrInput `pulumi:"lowPriorityPercentage"`
-	OdCount               pulumi.IntPtrInput `pulumi:"odCount"`
-}
-
-func (ElastigroupStrategyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElastigroupStrategy)(nil)).Elem()
-}
-
-func (i ElastigroupStrategyArgs) ToElastigroupStrategyOutput() ElastigroupStrategyOutput {
-	return i.ToElastigroupStrategyOutputWithContext(context.Background())
-}
-
-func (i ElastigroupStrategyArgs) ToElastigroupStrategyOutputWithContext(ctx context.Context) ElastigroupStrategyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupStrategyOutput)
-}
-
-func (i ElastigroupStrategyArgs) ToElastigroupStrategyPtrOutput() ElastigroupStrategyPtrOutput {
-	return i.ToElastigroupStrategyPtrOutputWithContext(context.Background())
-}
-
-func (i ElastigroupStrategyArgs) ToElastigroupStrategyPtrOutputWithContext(ctx context.Context) ElastigroupStrategyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupStrategyOutput).ToElastigroupStrategyPtrOutputWithContext(ctx)
-}
-
-// ElastigroupStrategyPtrInput is an input type that accepts ElastigroupStrategyArgs, ElastigroupStrategyPtr and ElastigroupStrategyPtrOutput values.
-// You can construct a concrete instance of `ElastigroupStrategyPtrInput` via:
-//
-//	        ElastigroupStrategyArgs{...}
-//
-//	or:
-//
-//	        nil
-type ElastigroupStrategyPtrInput interface {
-	pulumi.Input
-
-	ToElastigroupStrategyPtrOutput() ElastigroupStrategyPtrOutput
-	ToElastigroupStrategyPtrOutputWithContext(context.Context) ElastigroupStrategyPtrOutput
-}
-
-type elastigroupStrategyPtrType ElastigroupStrategyArgs
-
-func ElastigroupStrategyPtr(v *ElastigroupStrategyArgs) ElastigroupStrategyPtrInput {
-	return (*elastigroupStrategyPtrType)(v)
-}
-
-func (*elastigroupStrategyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ElastigroupStrategy)(nil)).Elem()
-}
-
-func (i *elastigroupStrategyPtrType) ToElastigroupStrategyPtrOutput() ElastigroupStrategyPtrOutput {
-	return i.ToElastigroupStrategyPtrOutputWithContext(context.Background())
-}
-
-func (i *elastigroupStrategyPtrType) ToElastigroupStrategyPtrOutputWithContext(ctx context.Context) ElastigroupStrategyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupStrategyPtrOutput)
-}
-
-type ElastigroupStrategyOutput struct{ *pulumi.OutputState }
-
-func (ElastigroupStrategyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElastigroupStrategy)(nil)).Elem()
-}
-
-func (o ElastigroupStrategyOutput) ToElastigroupStrategyOutput() ElastigroupStrategyOutput {
-	return o
-}
-
-func (o ElastigroupStrategyOutput) ToElastigroupStrategyOutputWithContext(ctx context.Context) ElastigroupStrategyOutput {
-	return o
-}
-
-func (o ElastigroupStrategyOutput) ToElastigroupStrategyPtrOutput() ElastigroupStrategyPtrOutput {
-	return o.ToElastigroupStrategyPtrOutputWithContext(context.Background())
-}
-
-func (o ElastigroupStrategyOutput) ToElastigroupStrategyPtrOutputWithContext(ctx context.Context) ElastigroupStrategyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupStrategy) *ElastigroupStrategy {
-		return &v
-	}).(ElastigroupStrategyPtrOutput)
-}
-
-func (o ElastigroupStrategyOutput) DrainingTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupStrategy) *int { return v.DrainingTimeout }).(pulumi.IntPtrOutput)
-}
-
-func (o ElastigroupStrategyOutput) LowPriorityPercentage() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupStrategy) *int { return v.LowPriorityPercentage }).(pulumi.IntPtrOutput)
-}
-
-func (o ElastigroupStrategyOutput) OdCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupStrategy) *int { return v.OdCount }).(pulumi.IntPtrOutput)
-}
-
-type ElastigroupStrategyPtrOutput struct{ *pulumi.OutputState }
-
-func (ElastigroupStrategyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ElastigroupStrategy)(nil)).Elem()
-}
-
-func (o ElastigroupStrategyPtrOutput) ToElastigroupStrategyPtrOutput() ElastigroupStrategyPtrOutput {
-	return o
-}
-
-func (o ElastigroupStrategyPtrOutput) ToElastigroupStrategyPtrOutputWithContext(ctx context.Context) ElastigroupStrategyPtrOutput {
-	return o
-}
-
-func (o ElastigroupStrategyPtrOutput) Elem() ElastigroupStrategyOutput {
-	return o.ApplyT(func(v *ElastigroupStrategy) ElastigroupStrategy {
-		if v != nil {
-			return *v
-		}
-		var ret ElastigroupStrategy
-		return ret
-	}).(ElastigroupStrategyOutput)
-}
-
-func (o ElastigroupStrategyPtrOutput) DrainingTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ElastigroupStrategy) *int {
-		if v == nil {
-			return nil
-		}
-		return v.DrainingTimeout
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o ElastigroupStrategyPtrOutput) LowPriorityPercentage() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ElastigroupStrategy) *int {
-		if v == nil {
-			return nil
-		}
-		return v.LowPriorityPercentage
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o ElastigroupStrategyPtrOutput) OdCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ElastigroupStrategy) *int {
-		if v == nil {
-			return nil
-		}
-		return v.OdCount
-	}).(pulumi.IntPtrOutput)
-}
-
-type ElastigroupUpdatePolicy struct {
-	RollConfig *ElastigroupUpdatePolicyRollConfig `pulumi:"rollConfig"`
-	ShouldRoll bool                               `pulumi:"shouldRoll"`
-}
-
-// ElastigroupUpdatePolicyInput is an input type that accepts ElastigroupUpdatePolicyArgs and ElastigroupUpdatePolicyOutput values.
-// You can construct a concrete instance of `ElastigroupUpdatePolicyInput` via:
-//
-//	ElastigroupUpdatePolicyArgs{...}
-type ElastigroupUpdatePolicyInput interface {
-	pulumi.Input
-
-	ToElastigroupUpdatePolicyOutput() ElastigroupUpdatePolicyOutput
-	ToElastigroupUpdatePolicyOutputWithContext(context.Context) ElastigroupUpdatePolicyOutput
-}
-
-type ElastigroupUpdatePolicyArgs struct {
-	RollConfig ElastigroupUpdatePolicyRollConfigPtrInput `pulumi:"rollConfig"`
-	ShouldRoll pulumi.BoolInput                          `pulumi:"shouldRoll"`
-}
-
-func (ElastigroupUpdatePolicyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElastigroupUpdatePolicy)(nil)).Elem()
-}
-
-func (i ElastigroupUpdatePolicyArgs) ToElastigroupUpdatePolicyOutput() ElastigroupUpdatePolicyOutput {
-	return i.ToElastigroupUpdatePolicyOutputWithContext(context.Background())
-}
-
-func (i ElastigroupUpdatePolicyArgs) ToElastigroupUpdatePolicyOutputWithContext(ctx context.Context) ElastigroupUpdatePolicyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupUpdatePolicyOutput)
-}
-
-func (i ElastigroupUpdatePolicyArgs) ToElastigroupUpdatePolicyPtrOutput() ElastigroupUpdatePolicyPtrOutput {
-	return i.ToElastigroupUpdatePolicyPtrOutputWithContext(context.Background())
-}
-
-func (i ElastigroupUpdatePolicyArgs) ToElastigroupUpdatePolicyPtrOutputWithContext(ctx context.Context) ElastigroupUpdatePolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupUpdatePolicyOutput).ToElastigroupUpdatePolicyPtrOutputWithContext(ctx)
-}
-
-// ElastigroupUpdatePolicyPtrInput is an input type that accepts ElastigroupUpdatePolicyArgs, ElastigroupUpdatePolicyPtr and ElastigroupUpdatePolicyPtrOutput values.
-// You can construct a concrete instance of `ElastigroupUpdatePolicyPtrInput` via:
-//
-//	        ElastigroupUpdatePolicyArgs{...}
-//
-//	or:
-//
-//	        nil
-type ElastigroupUpdatePolicyPtrInput interface {
-	pulumi.Input
-
-	ToElastigroupUpdatePolicyPtrOutput() ElastigroupUpdatePolicyPtrOutput
-	ToElastigroupUpdatePolicyPtrOutputWithContext(context.Context) ElastigroupUpdatePolicyPtrOutput
-}
-
-type elastigroupUpdatePolicyPtrType ElastigroupUpdatePolicyArgs
-
-func ElastigroupUpdatePolicyPtr(v *ElastigroupUpdatePolicyArgs) ElastigroupUpdatePolicyPtrInput {
-	return (*elastigroupUpdatePolicyPtrType)(v)
-}
-
-func (*elastigroupUpdatePolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ElastigroupUpdatePolicy)(nil)).Elem()
-}
-
-func (i *elastigroupUpdatePolicyPtrType) ToElastigroupUpdatePolicyPtrOutput() ElastigroupUpdatePolicyPtrOutput {
-	return i.ToElastigroupUpdatePolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *elastigroupUpdatePolicyPtrType) ToElastigroupUpdatePolicyPtrOutputWithContext(ctx context.Context) ElastigroupUpdatePolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupUpdatePolicyPtrOutput)
-}
-
-type ElastigroupUpdatePolicyOutput struct{ *pulumi.OutputState }
-
-func (ElastigroupUpdatePolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElastigroupUpdatePolicy)(nil)).Elem()
-}
-
-func (o ElastigroupUpdatePolicyOutput) ToElastigroupUpdatePolicyOutput() ElastigroupUpdatePolicyOutput {
-	return o
-}
-
-func (o ElastigroupUpdatePolicyOutput) ToElastigroupUpdatePolicyOutputWithContext(ctx context.Context) ElastigroupUpdatePolicyOutput {
-	return o
-}
-
-func (o ElastigroupUpdatePolicyOutput) ToElastigroupUpdatePolicyPtrOutput() ElastigroupUpdatePolicyPtrOutput {
-	return o.ToElastigroupUpdatePolicyPtrOutputWithContext(context.Background())
-}
-
-func (o ElastigroupUpdatePolicyOutput) ToElastigroupUpdatePolicyPtrOutputWithContext(ctx context.Context) ElastigroupUpdatePolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupUpdatePolicy) *ElastigroupUpdatePolicy {
-		return &v
-	}).(ElastigroupUpdatePolicyPtrOutput)
-}
-
-func (o ElastigroupUpdatePolicyOutput) RollConfig() ElastigroupUpdatePolicyRollConfigPtrOutput {
-	return o.ApplyT(func(v ElastigroupUpdatePolicy) *ElastigroupUpdatePolicyRollConfig { return v.RollConfig }).(ElastigroupUpdatePolicyRollConfigPtrOutput)
-}
-
-func (o ElastigroupUpdatePolicyOutput) ShouldRoll() pulumi.BoolOutput {
-	return o.ApplyT(func(v ElastigroupUpdatePolicy) bool { return v.ShouldRoll }).(pulumi.BoolOutput)
-}
-
-type ElastigroupUpdatePolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (ElastigroupUpdatePolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ElastigroupUpdatePolicy)(nil)).Elem()
-}
-
-func (o ElastigroupUpdatePolicyPtrOutput) ToElastigroupUpdatePolicyPtrOutput() ElastigroupUpdatePolicyPtrOutput {
-	return o
-}
-
-func (o ElastigroupUpdatePolicyPtrOutput) ToElastigroupUpdatePolicyPtrOutputWithContext(ctx context.Context) ElastigroupUpdatePolicyPtrOutput {
-	return o
-}
-
-func (o ElastigroupUpdatePolicyPtrOutput) Elem() ElastigroupUpdatePolicyOutput {
-	return o.ApplyT(func(v *ElastigroupUpdatePolicy) ElastigroupUpdatePolicy {
-		if v != nil {
-			return *v
-		}
-		var ret ElastigroupUpdatePolicy
-		return ret
-	}).(ElastigroupUpdatePolicyOutput)
-}
-
-func (o ElastigroupUpdatePolicyPtrOutput) RollConfig() ElastigroupUpdatePolicyRollConfigPtrOutput {
-	return o.ApplyT(func(v *ElastigroupUpdatePolicy) *ElastigroupUpdatePolicyRollConfig {
-		if v == nil {
-			return nil
-		}
-		return v.RollConfig
-	}).(ElastigroupUpdatePolicyRollConfigPtrOutput)
-}
-
-func (o ElastigroupUpdatePolicyPtrOutput) ShouldRoll() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ElastigroupUpdatePolicy) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.ShouldRoll
-	}).(pulumi.BoolPtrOutput)
-}
-
-type ElastigroupUpdatePolicyRollConfig struct {
-	BatchSizePercentage int     `pulumi:"batchSizePercentage"`
-	GracePeriod         *int    `pulumi:"gracePeriod"`
-	HealthCheckType     *string `pulumi:"healthCheckType"`
-}
-
-// ElastigroupUpdatePolicyRollConfigInput is an input type that accepts ElastigroupUpdatePolicyRollConfigArgs and ElastigroupUpdatePolicyRollConfigOutput values.
-// You can construct a concrete instance of `ElastigroupUpdatePolicyRollConfigInput` via:
-//
-//	ElastigroupUpdatePolicyRollConfigArgs{...}
-type ElastigroupUpdatePolicyRollConfigInput interface {
-	pulumi.Input
-
-	ToElastigroupUpdatePolicyRollConfigOutput() ElastigroupUpdatePolicyRollConfigOutput
-	ToElastigroupUpdatePolicyRollConfigOutputWithContext(context.Context) ElastigroupUpdatePolicyRollConfigOutput
-}
-
-type ElastigroupUpdatePolicyRollConfigArgs struct {
-	BatchSizePercentage pulumi.IntInput       `pulumi:"batchSizePercentage"`
-	GracePeriod         pulumi.IntPtrInput    `pulumi:"gracePeriod"`
-	HealthCheckType     pulumi.StringPtrInput `pulumi:"healthCheckType"`
-}
-
-func (ElastigroupUpdatePolicyRollConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElastigroupUpdatePolicyRollConfig)(nil)).Elem()
-}
-
-func (i ElastigroupUpdatePolicyRollConfigArgs) ToElastigroupUpdatePolicyRollConfigOutput() ElastigroupUpdatePolicyRollConfigOutput {
-	return i.ToElastigroupUpdatePolicyRollConfigOutputWithContext(context.Background())
-}
-
-func (i ElastigroupUpdatePolicyRollConfigArgs) ToElastigroupUpdatePolicyRollConfigOutputWithContext(ctx context.Context) ElastigroupUpdatePolicyRollConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupUpdatePolicyRollConfigOutput)
-}
-
-func (i ElastigroupUpdatePolicyRollConfigArgs) ToElastigroupUpdatePolicyRollConfigPtrOutput() ElastigroupUpdatePolicyRollConfigPtrOutput {
-	return i.ToElastigroupUpdatePolicyRollConfigPtrOutputWithContext(context.Background())
-}
-
-func (i ElastigroupUpdatePolicyRollConfigArgs) ToElastigroupUpdatePolicyRollConfigPtrOutputWithContext(ctx context.Context) ElastigroupUpdatePolicyRollConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupUpdatePolicyRollConfigOutput).ToElastigroupUpdatePolicyRollConfigPtrOutputWithContext(ctx)
-}
-
-// ElastigroupUpdatePolicyRollConfigPtrInput is an input type that accepts ElastigroupUpdatePolicyRollConfigArgs, ElastigroupUpdatePolicyRollConfigPtr and ElastigroupUpdatePolicyRollConfigPtrOutput values.
-// You can construct a concrete instance of `ElastigroupUpdatePolicyRollConfigPtrInput` via:
-//
-//	        ElastigroupUpdatePolicyRollConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type ElastigroupUpdatePolicyRollConfigPtrInput interface {
-	pulumi.Input
-
-	ToElastigroupUpdatePolicyRollConfigPtrOutput() ElastigroupUpdatePolicyRollConfigPtrOutput
-	ToElastigroupUpdatePolicyRollConfigPtrOutputWithContext(context.Context) ElastigroupUpdatePolicyRollConfigPtrOutput
-}
-
-type elastigroupUpdatePolicyRollConfigPtrType ElastigroupUpdatePolicyRollConfigArgs
-
-func ElastigroupUpdatePolicyRollConfigPtr(v *ElastigroupUpdatePolicyRollConfigArgs) ElastigroupUpdatePolicyRollConfigPtrInput {
-	return (*elastigroupUpdatePolicyRollConfigPtrType)(v)
-}
-
-func (*elastigroupUpdatePolicyRollConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ElastigroupUpdatePolicyRollConfig)(nil)).Elem()
-}
-
-func (i *elastigroupUpdatePolicyRollConfigPtrType) ToElastigroupUpdatePolicyRollConfigPtrOutput() ElastigroupUpdatePolicyRollConfigPtrOutput {
-	return i.ToElastigroupUpdatePolicyRollConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *elastigroupUpdatePolicyRollConfigPtrType) ToElastigroupUpdatePolicyRollConfigPtrOutputWithContext(ctx context.Context) ElastigroupUpdatePolicyRollConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupUpdatePolicyRollConfigPtrOutput)
-}
-
-type ElastigroupUpdatePolicyRollConfigOutput struct{ *pulumi.OutputState }
-
-func (ElastigroupUpdatePolicyRollConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElastigroupUpdatePolicyRollConfig)(nil)).Elem()
-}
-
-func (o ElastigroupUpdatePolicyRollConfigOutput) ToElastigroupUpdatePolicyRollConfigOutput() ElastigroupUpdatePolicyRollConfigOutput {
-	return o
-}
-
-func (o ElastigroupUpdatePolicyRollConfigOutput) ToElastigroupUpdatePolicyRollConfigOutputWithContext(ctx context.Context) ElastigroupUpdatePolicyRollConfigOutput {
-	return o
-}
-
-func (o ElastigroupUpdatePolicyRollConfigOutput) ToElastigroupUpdatePolicyRollConfigPtrOutput() ElastigroupUpdatePolicyRollConfigPtrOutput {
-	return o.ToElastigroupUpdatePolicyRollConfigPtrOutputWithContext(context.Background())
-}
-
-func (o ElastigroupUpdatePolicyRollConfigOutput) ToElastigroupUpdatePolicyRollConfigPtrOutputWithContext(ctx context.Context) ElastigroupUpdatePolicyRollConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupUpdatePolicyRollConfig) *ElastigroupUpdatePolicyRollConfig {
-		return &v
-	}).(ElastigroupUpdatePolicyRollConfigPtrOutput)
-}
-
-func (o ElastigroupUpdatePolicyRollConfigOutput) BatchSizePercentage() pulumi.IntOutput {
-	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfig) int { return v.BatchSizePercentage }).(pulumi.IntOutput)
-}
-
-func (o ElastigroupUpdatePolicyRollConfigOutput) GracePeriod() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfig) *int { return v.GracePeriod }).(pulumi.IntPtrOutput)
-}
-
-func (o ElastigroupUpdatePolicyRollConfigOutput) HealthCheckType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfig) *string { return v.HealthCheckType }).(pulumi.StringPtrOutput)
-}
-
-type ElastigroupUpdatePolicyRollConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (ElastigroupUpdatePolicyRollConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ElastigroupUpdatePolicyRollConfig)(nil)).Elem()
-}
-
-func (o ElastigroupUpdatePolicyRollConfigPtrOutput) ToElastigroupUpdatePolicyRollConfigPtrOutput() ElastigroupUpdatePolicyRollConfigPtrOutput {
-	return o
-}
-
-func (o ElastigroupUpdatePolicyRollConfigPtrOutput) ToElastigroupUpdatePolicyRollConfigPtrOutputWithContext(ctx context.Context) ElastigroupUpdatePolicyRollConfigPtrOutput {
-	return o
-}
-
-func (o ElastigroupUpdatePolicyRollConfigPtrOutput) Elem() ElastigroupUpdatePolicyRollConfigOutput {
-	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfig) ElastigroupUpdatePolicyRollConfig {
-		if v != nil {
-			return *v
-		}
-		var ret ElastigroupUpdatePolicyRollConfig
-		return ret
-	}).(ElastigroupUpdatePolicyRollConfigOutput)
-}
-
-func (o ElastigroupUpdatePolicyRollConfigPtrOutput) BatchSizePercentage() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfig) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.BatchSizePercentage
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o ElastigroupUpdatePolicyRollConfigPtrOutput) GracePeriod() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfig) *int {
-		if v == nil {
-			return nil
-		}
-		return v.GracePeriod
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o ElastigroupUpdatePolicyRollConfigPtrOutput) HealthCheckType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.HealthCheckType
-	}).(pulumi.StringPtrOutput)
-}
-
 type OceanAutoscaler struct {
 	// Auto Scaling scale down operations.
 	AutoscaleDown *OceanAutoscalerAutoscaleDown `pulumi:"autoscaleDown"`
@@ -4682,10 +2043,14 @@ func (o OceanNetworkNetworkInterfaceSecurityGroupPtrOutput) ResourceGroupName() 
 }
 
 type OceanNpAutoscaler struct {
-	AutoscaleDown      *OceanNpAutoscalerAutoscaleDown     `pulumi:"autoscaleDown"`
-	AutoscaleHeadroom  *OceanNpAutoscalerAutoscaleHeadroom `pulumi:"autoscaleHeadroom"`
-	AutoscaleIsEnabled *bool                               `pulumi:"autoscaleIsEnabled"`
-	ResourceLimits     *OceanNpAutoscalerResourceLimits    `pulumi:"resourceLimits"`
+	// Auto Scaling scale down operations.
+	AutoscaleDown *OceanNpAutoscalerAutoscaleDown `pulumi:"autoscaleDown"`
+	// Spare resource capacity management enabling fast assignment of pods without waiting for new resources to launch.
+	AutoscaleHeadroom *OceanNpAutoscalerAutoscaleHeadroom `pulumi:"autoscaleHeadroom"`
+	// Enable the Ocean Kubernetes Autoscaler.
+	AutoscaleIsEnabled *bool `pulumi:"autoscaleIsEnabled"`
+	// Optionally set upper and lower bounds on the resource usage of the cluster.
+	ResourceLimits *OceanNpAutoscalerResourceLimits `pulumi:"resourceLimits"`
 }
 
 // OceanNpAutoscalerInput is an input type that accepts OceanNpAutoscalerArgs and OceanNpAutoscalerOutput values.
@@ -4700,10 +2065,14 @@ type OceanNpAutoscalerInput interface {
 }
 
 type OceanNpAutoscalerArgs struct {
-	AutoscaleDown      OceanNpAutoscalerAutoscaleDownPtrInput     `pulumi:"autoscaleDown"`
-	AutoscaleHeadroom  OceanNpAutoscalerAutoscaleHeadroomPtrInput `pulumi:"autoscaleHeadroom"`
-	AutoscaleIsEnabled pulumi.BoolPtrInput                        `pulumi:"autoscaleIsEnabled"`
-	ResourceLimits     OceanNpAutoscalerResourceLimitsPtrInput    `pulumi:"resourceLimits"`
+	// Auto Scaling scale down operations.
+	AutoscaleDown OceanNpAutoscalerAutoscaleDownPtrInput `pulumi:"autoscaleDown"`
+	// Spare resource capacity management enabling fast assignment of pods without waiting for new resources to launch.
+	AutoscaleHeadroom OceanNpAutoscalerAutoscaleHeadroomPtrInput `pulumi:"autoscaleHeadroom"`
+	// Enable the Ocean Kubernetes Autoscaler.
+	AutoscaleIsEnabled pulumi.BoolPtrInput `pulumi:"autoscaleIsEnabled"`
+	// Optionally set upper and lower bounds on the resource usage of the cluster.
+	ResourceLimits OceanNpAutoscalerResourceLimitsPtrInput `pulumi:"resourceLimits"`
 }
 
 func (OceanNpAutoscalerArgs) ElementType() reflect.Type {
@@ -4783,18 +2152,22 @@ func (o OceanNpAutoscalerOutput) ToOceanNpAutoscalerPtrOutputWithContext(ctx con
 	}).(OceanNpAutoscalerPtrOutput)
 }
 
+// Auto Scaling scale down operations.
 func (o OceanNpAutoscalerOutput) AutoscaleDown() OceanNpAutoscalerAutoscaleDownPtrOutput {
 	return o.ApplyT(func(v OceanNpAutoscaler) *OceanNpAutoscalerAutoscaleDown { return v.AutoscaleDown }).(OceanNpAutoscalerAutoscaleDownPtrOutput)
 }
 
+// Spare resource capacity management enabling fast assignment of pods without waiting for new resources to launch.
 func (o OceanNpAutoscalerOutput) AutoscaleHeadroom() OceanNpAutoscalerAutoscaleHeadroomPtrOutput {
 	return o.ApplyT(func(v OceanNpAutoscaler) *OceanNpAutoscalerAutoscaleHeadroom { return v.AutoscaleHeadroom }).(OceanNpAutoscalerAutoscaleHeadroomPtrOutput)
 }
 
+// Enable the Ocean Kubernetes Autoscaler.
 func (o OceanNpAutoscalerOutput) AutoscaleIsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanNpAutoscaler) *bool { return v.AutoscaleIsEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Optionally set upper and lower bounds on the resource usage of the cluster.
 func (o OceanNpAutoscalerOutput) ResourceLimits() OceanNpAutoscalerResourceLimitsPtrOutput {
 	return o.ApplyT(func(v OceanNpAutoscaler) *OceanNpAutoscalerResourceLimits { return v.ResourceLimits }).(OceanNpAutoscalerResourceLimitsPtrOutput)
 }
@@ -4823,6 +2196,7 @@ func (o OceanNpAutoscalerPtrOutput) Elem() OceanNpAutoscalerOutput {
 	}).(OceanNpAutoscalerOutput)
 }
 
+// Auto Scaling scale down operations.
 func (o OceanNpAutoscalerPtrOutput) AutoscaleDown() OceanNpAutoscalerAutoscaleDownPtrOutput {
 	return o.ApplyT(func(v *OceanNpAutoscaler) *OceanNpAutoscalerAutoscaleDown {
 		if v == nil {
@@ -4832,6 +2206,7 @@ func (o OceanNpAutoscalerPtrOutput) AutoscaleDown() OceanNpAutoscalerAutoscaleDo
 	}).(OceanNpAutoscalerAutoscaleDownPtrOutput)
 }
 
+// Spare resource capacity management enabling fast assignment of pods without waiting for new resources to launch.
 func (o OceanNpAutoscalerPtrOutput) AutoscaleHeadroom() OceanNpAutoscalerAutoscaleHeadroomPtrOutput {
 	return o.ApplyT(func(v *OceanNpAutoscaler) *OceanNpAutoscalerAutoscaleHeadroom {
 		if v == nil {
@@ -4841,6 +2216,7 @@ func (o OceanNpAutoscalerPtrOutput) AutoscaleHeadroom() OceanNpAutoscalerAutosca
 	}).(OceanNpAutoscalerAutoscaleHeadroomPtrOutput)
 }
 
+// Enable the Ocean Kubernetes Autoscaler.
 func (o OceanNpAutoscalerPtrOutput) AutoscaleIsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanNpAutoscaler) *bool {
 		if v == nil {
@@ -4850,6 +2226,7 @@ func (o OceanNpAutoscalerPtrOutput) AutoscaleIsEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Optionally set upper and lower bounds on the resource usage of the cluster.
 func (o OceanNpAutoscalerPtrOutput) ResourceLimits() OceanNpAutoscalerResourceLimitsPtrOutput {
 	return o.ApplyT(func(v *OceanNpAutoscaler) *OceanNpAutoscalerResourceLimits {
 		if v == nil {
@@ -5424,21 +2801,38 @@ func (o OceanNpAutoscalerResourceLimitsPtrOutput) MaxVcpu() pulumi.IntPtrOutput 
 }
 
 type OceanNpFilters struct {
-	AcceleratedNetworking *string  `pulumi:"acceleratedNetworking"`
-	Architectures         []string `pulumi:"architectures"`
-	DiskPerformance       *string  `pulumi:"diskPerformance"`
-	ExcludeSeries         []string `pulumi:"excludeSeries"`
-	GpuTypes              []string `pulumi:"gpuTypes"`
-	MaxGpu                *float64 `pulumi:"maxGpu"`
-	MaxMemoryGib          *float64 `pulumi:"maxMemoryGib"`
-	MaxVcpu               *int     `pulumi:"maxVcpu"`
-	MinDisk               *int     `pulumi:"minDisk"`
-	MinGpu                *float64 `pulumi:"minGpu"`
-	MinMemoryGib          *float64 `pulumi:"minMemoryGib"`
-	MinNics               *int     `pulumi:"minNics"`
-	MinVcpu               *int     `pulumi:"minVcpu"`
-	Series                []string `pulumi:"series"`
-	VmTypes               []string `pulumi:"vmTypes"`
+	// In case acceleratedNetworking is set to Enabled, accelerated networking applies only to the VM that enables it.
+	AcceleratedNetworking *string `pulumi:"acceleratedNetworking"`
+	// The filtered vm sizes will support at least one of the architectures from this list. x8664 includes both intel64 and amd64.
+	Architectures []string `pulumi:"architectures"`
+	// The filtered vm sizes will support at least one of the classes from this list.
+	DiskPerformance *string `pulumi:"diskPerformance"`
+	// Vm sizes belonging to a series from the list will not be available for scaling
+	ExcludeSeries []string `pulumi:"excludeSeries"`
+	// The filtered gpu types will belong to one of the gpu types from this list.
+	//
+	// <a id="update-policy"></a>
+	GpuTypes []string `pulumi:"gpuTypes"`
+	// Maximum number of GPUs available.
+	MaxGpu *float64 `pulumi:"maxGpu"`
+	// Maximum amount of Memory (GiB).
+	MaxMemoryGib *float64 `pulumi:"maxMemoryGib"`
+	// Maximum number of vcpus available.
+	MaxVcpu *int `pulumi:"maxVcpu"`
+	// Minimum number of data disks available.
+	MinDisk *int `pulumi:"minDisk"`
+	// Minimum number of GPUs available.
+	MinGpu *float64 `pulumi:"minGpu"`
+	// Minimum amount of Memory (GiB).
+	MinMemoryGib *float64 `pulumi:"minMemoryGib"`
+	// Minimum number of network interfaces.
+	MinNics *int `pulumi:"minNics"`
+	// Minimum number of vcpus available.
+	MinVcpu *int `pulumi:"minVcpu"`
+	// Vm sizes belonging to a series from the list will be available for scaling. We can specify include list and series can be specified with capital or small letters, with space, without space or with underscore '_' .  For example all of these "DSv2", "Ds v2", "dsV2" refer to same DS_v2 series.
+	Series []string `pulumi:"series"`
+	// The filtered vm types will belong to one of the vm types from this list.
+	VmTypes []string `pulumi:"vmTypes"`
 }
 
 // OceanNpFiltersInput is an input type that accepts OceanNpFiltersArgs and OceanNpFiltersOutput values.
@@ -5453,21 +2847,38 @@ type OceanNpFiltersInput interface {
 }
 
 type OceanNpFiltersArgs struct {
-	AcceleratedNetworking pulumi.StringPtrInput   `pulumi:"acceleratedNetworking"`
-	Architectures         pulumi.StringArrayInput `pulumi:"architectures"`
-	DiskPerformance       pulumi.StringPtrInput   `pulumi:"diskPerformance"`
-	ExcludeSeries         pulumi.StringArrayInput `pulumi:"excludeSeries"`
-	GpuTypes              pulumi.StringArrayInput `pulumi:"gpuTypes"`
-	MaxGpu                pulumi.Float64PtrInput  `pulumi:"maxGpu"`
-	MaxMemoryGib          pulumi.Float64PtrInput  `pulumi:"maxMemoryGib"`
-	MaxVcpu               pulumi.IntPtrInput      `pulumi:"maxVcpu"`
-	MinDisk               pulumi.IntPtrInput      `pulumi:"minDisk"`
-	MinGpu                pulumi.Float64PtrInput  `pulumi:"minGpu"`
-	MinMemoryGib          pulumi.Float64PtrInput  `pulumi:"minMemoryGib"`
-	MinNics               pulumi.IntPtrInput      `pulumi:"minNics"`
-	MinVcpu               pulumi.IntPtrInput      `pulumi:"minVcpu"`
-	Series                pulumi.StringArrayInput `pulumi:"series"`
-	VmTypes               pulumi.StringArrayInput `pulumi:"vmTypes"`
+	// In case acceleratedNetworking is set to Enabled, accelerated networking applies only to the VM that enables it.
+	AcceleratedNetworking pulumi.StringPtrInput `pulumi:"acceleratedNetworking"`
+	// The filtered vm sizes will support at least one of the architectures from this list. x8664 includes both intel64 and amd64.
+	Architectures pulumi.StringArrayInput `pulumi:"architectures"`
+	// The filtered vm sizes will support at least one of the classes from this list.
+	DiskPerformance pulumi.StringPtrInput `pulumi:"diskPerformance"`
+	// Vm sizes belonging to a series from the list will not be available for scaling
+	ExcludeSeries pulumi.StringArrayInput `pulumi:"excludeSeries"`
+	// The filtered gpu types will belong to one of the gpu types from this list.
+	//
+	// <a id="update-policy"></a>
+	GpuTypes pulumi.StringArrayInput `pulumi:"gpuTypes"`
+	// Maximum number of GPUs available.
+	MaxGpu pulumi.Float64PtrInput `pulumi:"maxGpu"`
+	// Maximum amount of Memory (GiB).
+	MaxMemoryGib pulumi.Float64PtrInput `pulumi:"maxMemoryGib"`
+	// Maximum number of vcpus available.
+	MaxVcpu pulumi.IntPtrInput `pulumi:"maxVcpu"`
+	// Minimum number of data disks available.
+	MinDisk pulumi.IntPtrInput `pulumi:"minDisk"`
+	// Minimum number of GPUs available.
+	MinGpu pulumi.Float64PtrInput `pulumi:"minGpu"`
+	// Minimum amount of Memory (GiB).
+	MinMemoryGib pulumi.Float64PtrInput `pulumi:"minMemoryGib"`
+	// Minimum number of network interfaces.
+	MinNics pulumi.IntPtrInput `pulumi:"minNics"`
+	// Minimum number of vcpus available.
+	MinVcpu pulumi.IntPtrInput `pulumi:"minVcpu"`
+	// Vm sizes belonging to a series from the list will be available for scaling. We can specify include list and series can be specified with capital or small letters, with space, without space or with underscore '_' .  For example all of these "DSv2", "Ds v2", "dsV2" refer to same DS_v2 series.
+	Series pulumi.StringArrayInput `pulumi:"series"`
+	// The filtered vm types will belong to one of the vm types from this list.
+	VmTypes pulumi.StringArrayInput `pulumi:"vmTypes"`
 }
 
 func (OceanNpFiltersArgs) ElementType() reflect.Type {
@@ -5547,62 +2958,79 @@ func (o OceanNpFiltersOutput) ToOceanNpFiltersPtrOutputWithContext(ctx context.C
 	}).(OceanNpFiltersPtrOutput)
 }
 
+// In case acceleratedNetworking is set to Enabled, accelerated networking applies only to the VM that enables it.
 func (o OceanNpFiltersOutput) AcceleratedNetworking() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanNpFilters) *string { return v.AcceleratedNetworking }).(pulumi.StringPtrOutput)
 }
 
+// The filtered vm sizes will support at least one of the architectures from this list. x8664 includes both intel64 and amd64.
 func (o OceanNpFiltersOutput) Architectures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanNpFilters) []string { return v.Architectures }).(pulumi.StringArrayOutput)
 }
 
+// The filtered vm sizes will support at least one of the classes from this list.
 func (o OceanNpFiltersOutput) DiskPerformance() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanNpFilters) *string { return v.DiskPerformance }).(pulumi.StringPtrOutput)
 }
 
+// Vm sizes belonging to a series from the list will not be available for scaling
 func (o OceanNpFiltersOutput) ExcludeSeries() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanNpFilters) []string { return v.ExcludeSeries }).(pulumi.StringArrayOutput)
 }
 
+// The filtered gpu types will belong to one of the gpu types from this list.
+//
+// <a id="update-policy"></a>
 func (o OceanNpFiltersOutput) GpuTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanNpFilters) []string { return v.GpuTypes }).(pulumi.StringArrayOutput)
 }
 
+// Maximum number of GPUs available.
 func (o OceanNpFiltersOutput) MaxGpu() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v OceanNpFilters) *float64 { return v.MaxGpu }).(pulumi.Float64PtrOutput)
 }
 
+// Maximum amount of Memory (GiB).
 func (o OceanNpFiltersOutput) MaxMemoryGib() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v OceanNpFilters) *float64 { return v.MaxMemoryGib }).(pulumi.Float64PtrOutput)
 }
 
+// Maximum number of vcpus available.
 func (o OceanNpFiltersOutput) MaxVcpu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanNpFilters) *int { return v.MaxVcpu }).(pulumi.IntPtrOutput)
 }
 
+// Minimum number of data disks available.
 func (o OceanNpFiltersOutput) MinDisk() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanNpFilters) *int { return v.MinDisk }).(pulumi.IntPtrOutput)
 }
 
+// Minimum number of GPUs available.
 func (o OceanNpFiltersOutput) MinGpu() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v OceanNpFilters) *float64 { return v.MinGpu }).(pulumi.Float64PtrOutput)
 }
 
+// Minimum amount of Memory (GiB).
 func (o OceanNpFiltersOutput) MinMemoryGib() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v OceanNpFilters) *float64 { return v.MinMemoryGib }).(pulumi.Float64PtrOutput)
 }
 
+// Minimum number of network interfaces.
 func (o OceanNpFiltersOutput) MinNics() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanNpFilters) *int { return v.MinNics }).(pulumi.IntPtrOutput)
 }
 
+// Minimum number of vcpus available.
 func (o OceanNpFiltersOutput) MinVcpu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanNpFilters) *int { return v.MinVcpu }).(pulumi.IntPtrOutput)
 }
 
+// Vm sizes belonging to a series from the list will be available for scaling. We can specify include list and series can be specified with capital or small letters, with space, without space or with underscore '_' .  For example all of these "DSv2", "Ds v2", "dsV2" refer to same DS_v2 series.
 func (o OceanNpFiltersOutput) Series() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanNpFilters) []string { return v.Series }).(pulumi.StringArrayOutput)
 }
 
+// The filtered vm types will belong to one of the vm types from this list.
 func (o OceanNpFiltersOutput) VmTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanNpFilters) []string { return v.VmTypes }).(pulumi.StringArrayOutput)
 }
@@ -5631,6 +3059,7 @@ func (o OceanNpFiltersPtrOutput) Elem() OceanNpFiltersOutput {
 	}).(OceanNpFiltersOutput)
 }
 
+// In case acceleratedNetworking is set to Enabled, accelerated networking applies only to the VM that enables it.
 func (o OceanNpFiltersPtrOutput) AcceleratedNetworking() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanNpFilters) *string {
 		if v == nil {
@@ -5640,6 +3069,7 @@ func (o OceanNpFiltersPtrOutput) AcceleratedNetworking() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// The filtered vm sizes will support at least one of the architectures from this list. x8664 includes both intel64 and amd64.
 func (o OceanNpFiltersPtrOutput) Architectures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanNpFilters) []string {
 		if v == nil {
@@ -5649,6 +3079,7 @@ func (o OceanNpFiltersPtrOutput) Architectures() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// The filtered vm sizes will support at least one of the classes from this list.
 func (o OceanNpFiltersPtrOutput) DiskPerformance() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanNpFilters) *string {
 		if v == nil {
@@ -5658,6 +3089,7 @@ func (o OceanNpFiltersPtrOutput) DiskPerformance() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Vm sizes belonging to a series from the list will not be available for scaling
 func (o OceanNpFiltersPtrOutput) ExcludeSeries() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanNpFilters) []string {
 		if v == nil {
@@ -5667,6 +3099,9 @@ func (o OceanNpFiltersPtrOutput) ExcludeSeries() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// The filtered gpu types will belong to one of the gpu types from this list.
+//
+// <a id="update-policy"></a>
 func (o OceanNpFiltersPtrOutput) GpuTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanNpFilters) []string {
 		if v == nil {
@@ -5676,6 +3111,7 @@ func (o OceanNpFiltersPtrOutput) GpuTypes() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// Maximum number of GPUs available.
 func (o OceanNpFiltersPtrOutput) MaxGpu() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *OceanNpFilters) *float64 {
 		if v == nil {
@@ -5685,6 +3121,7 @@ func (o OceanNpFiltersPtrOutput) MaxGpu() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Maximum amount of Memory (GiB).
 func (o OceanNpFiltersPtrOutput) MaxMemoryGib() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *OceanNpFilters) *float64 {
 		if v == nil {
@@ -5694,6 +3131,7 @@ func (o OceanNpFiltersPtrOutput) MaxMemoryGib() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Maximum number of vcpus available.
 func (o OceanNpFiltersPtrOutput) MaxVcpu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanNpFilters) *int {
 		if v == nil {
@@ -5703,6 +3141,7 @@ func (o OceanNpFiltersPtrOutput) MaxVcpu() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Minimum number of data disks available.
 func (o OceanNpFiltersPtrOutput) MinDisk() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanNpFilters) *int {
 		if v == nil {
@@ -5712,6 +3151,7 @@ func (o OceanNpFiltersPtrOutput) MinDisk() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Minimum number of GPUs available.
 func (o OceanNpFiltersPtrOutput) MinGpu() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *OceanNpFilters) *float64 {
 		if v == nil {
@@ -5721,6 +3161,7 @@ func (o OceanNpFiltersPtrOutput) MinGpu() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Minimum amount of Memory (GiB).
 func (o OceanNpFiltersPtrOutput) MinMemoryGib() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *OceanNpFilters) *float64 {
 		if v == nil {
@@ -5730,6 +3171,7 @@ func (o OceanNpFiltersPtrOutput) MinMemoryGib() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Minimum number of network interfaces.
 func (o OceanNpFiltersPtrOutput) MinNics() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanNpFilters) *int {
 		if v == nil {
@@ -5739,6 +3181,7 @@ func (o OceanNpFiltersPtrOutput) MinNics() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Minimum number of vcpus available.
 func (o OceanNpFiltersPtrOutput) MinVcpu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanNpFilters) *int {
 		if v == nil {
@@ -5748,6 +3191,7 @@ func (o OceanNpFiltersPtrOutput) MinVcpu() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Vm sizes belonging to a series from the list will be available for scaling. We can specify include list and series can be specified with capital or small letters, with space, without space or with underscore '_' .  For example all of these "DSv2", "Ds v2", "dsV2" refer to same DS_v2 series.
 func (o OceanNpFiltersPtrOutput) Series() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanNpFilters) []string {
 		if v == nil {
@@ -5757,6 +3201,7 @@ func (o OceanNpFiltersPtrOutput) Series() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// The filtered vm types will belong to one of the vm types from this list.
 func (o OceanNpFiltersPtrOutput) VmTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanNpFilters) []string {
 		if v == nil {
@@ -5767,10 +3212,14 @@ func (o OceanNpFiltersPtrOutput) VmTypes() pulumi.StringArrayOutput {
 }
 
 type OceanNpHeadroom struct {
-	CpuPerUnit    *int `pulumi:"cpuPerUnit"`
-	GpuPerUnit    *int `pulumi:"gpuPerUnit"`
+	// Configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+	CpuPerUnit *int `pulumi:"cpuPerUnit"`
+	// Amount of GPU to allocate for headroom unit.
+	GpuPerUnit *int `pulumi:"gpuPerUnit"`
+	// Configure the amount of memory (MiB) to allocate the headroom.
 	MemoryPerUnit *int `pulumi:"memoryPerUnit"`
-	NumOfUnits    *int `pulumi:"numOfUnits"`
+	// The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+	NumOfUnits *int `pulumi:"numOfUnits"`
 }
 
 // OceanNpHeadroomInput is an input type that accepts OceanNpHeadroomArgs and OceanNpHeadroomOutput values.
@@ -5785,10 +3234,14 @@ type OceanNpHeadroomInput interface {
 }
 
 type OceanNpHeadroomArgs struct {
-	CpuPerUnit    pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
-	GpuPerUnit    pulumi.IntPtrInput `pulumi:"gpuPerUnit"`
+	// Configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+	CpuPerUnit pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
+	// Amount of GPU to allocate for headroom unit.
+	GpuPerUnit pulumi.IntPtrInput `pulumi:"gpuPerUnit"`
+	// Configure the amount of memory (MiB) to allocate the headroom.
 	MemoryPerUnit pulumi.IntPtrInput `pulumi:"memoryPerUnit"`
-	NumOfUnits    pulumi.IntPtrInput `pulumi:"numOfUnits"`
+	// The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+	NumOfUnits pulumi.IntPtrInput `pulumi:"numOfUnits"`
 }
 
 func (OceanNpHeadroomArgs) ElementType() reflect.Type {
@@ -5842,18 +3295,22 @@ func (o OceanNpHeadroomOutput) ToOceanNpHeadroomOutputWithContext(ctx context.Co
 	return o
 }
 
+// Configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
 func (o OceanNpHeadroomOutput) CpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanNpHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
+// Amount of GPU to allocate for headroom unit.
 func (o OceanNpHeadroomOutput) GpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanNpHeadroom) *int { return v.GpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
+// Configure the amount of memory (MiB) to allocate the headroom.
 func (o OceanNpHeadroomOutput) MemoryPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanNpHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
 }
 
+// The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
 func (o OceanNpHeadroomOutput) NumOfUnits() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanNpHeadroom) *int { return v.NumOfUnits }).(pulumi.IntPtrOutput)
 }
@@ -5879,6 +3336,7 @@ func (o OceanNpHeadroomArrayOutput) Index(i pulumi.IntInput) OceanNpHeadroomOutp
 }
 
 type OceanNpHealth struct {
+	// The amount of time to wait, in seconds, from the moment the instance has launched until monitoring of its health checks begins.
 	GracePeriod *int `pulumi:"gracePeriod"`
 }
 
@@ -5894,6 +3352,7 @@ type OceanNpHealthInput interface {
 }
 
 type OceanNpHealthArgs struct {
+	// The amount of time to wait, in seconds, from the moment the instance has launched until monitoring of its health checks begins.
 	GracePeriod pulumi.IntPtrInput `pulumi:"gracePeriod"`
 }
 
@@ -5974,6 +3433,7 @@ func (o OceanNpHealthOutput) ToOceanNpHealthPtrOutputWithContext(ctx context.Con
 	}).(OceanNpHealthPtrOutput)
 }
 
+// The amount of time to wait, in seconds, from the moment the instance has launched until monitoring of its health checks begins.
 func (o OceanNpHealthOutput) GracePeriod() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanNpHealth) *int { return v.GracePeriod }).(pulumi.IntPtrOutput)
 }
@@ -6002,6 +3462,7 @@ func (o OceanNpHealthPtrOutput) Elem() OceanNpHealthOutput {
 	}).(OceanNpHealthOutput)
 }
 
+// The amount of time to wait, in seconds, from the moment the instance has launched until monitoring of its health checks begins.
 func (o OceanNpHealthPtrOutput) GracePeriod() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanNpHealth) *int {
 		if v == nil {
@@ -6012,6 +3473,7 @@ func (o OceanNpHealthPtrOutput) GracePeriod() pulumi.IntPtrOutput {
 }
 
 type OceanNpScheduling struct {
+	// [Shutdown Hours](https://docs.spot.io/ocean/features/running-hours?id=shutdown-hours)An object used to specify times that the nodes in the cluster will be taken down.
 	ShutdownHours *OceanNpSchedulingShutdownHours `pulumi:"shutdownHours"`
 }
 
@@ -6027,6 +3489,7 @@ type OceanNpSchedulingInput interface {
 }
 
 type OceanNpSchedulingArgs struct {
+	// [Shutdown Hours](https://docs.spot.io/ocean/features/running-hours?id=shutdown-hours)An object used to specify times that the nodes in the cluster will be taken down.
 	ShutdownHours OceanNpSchedulingShutdownHoursPtrInput `pulumi:"shutdownHours"`
 }
 
@@ -6107,6 +3570,7 @@ func (o OceanNpSchedulingOutput) ToOceanNpSchedulingPtrOutputWithContext(ctx con
 	}).(OceanNpSchedulingPtrOutput)
 }
 
+// [Shutdown Hours](https://docs.spot.io/ocean/features/running-hours?id=shutdown-hours)An object used to specify times that the nodes in the cluster will be taken down.
 func (o OceanNpSchedulingOutput) ShutdownHours() OceanNpSchedulingShutdownHoursPtrOutput {
 	return o.ApplyT(func(v OceanNpScheduling) *OceanNpSchedulingShutdownHours { return v.ShutdownHours }).(OceanNpSchedulingShutdownHoursPtrOutput)
 }
@@ -6135,6 +3599,7 @@ func (o OceanNpSchedulingPtrOutput) Elem() OceanNpSchedulingOutput {
 	}).(OceanNpSchedulingOutput)
 }
 
+// [Shutdown Hours](https://docs.spot.io/ocean/features/running-hours?id=shutdown-hours)An object used to specify times that the nodes in the cluster will be taken down.
 func (o OceanNpSchedulingPtrOutput) ShutdownHours() OceanNpSchedulingShutdownHoursPtrOutput {
 	return o.ApplyT(func(v *OceanNpScheduling) *OceanNpSchedulingShutdownHours {
 		if v == nil {
@@ -6293,9 +3758,12 @@ func (o OceanNpSchedulingShutdownHoursPtrOutput) TimeWindows() pulumi.StringArra
 }
 
 type OceanNpTaint struct {
+	// Set taint effect.
 	Effect string `pulumi:"effect"`
-	Key    string `pulumi:"key"`
-	Value  string `pulumi:"value"`
+	// Set taint key. The following taint keys are not allowed: ["node.kubernetes.io/not-ready",  "node.kubernetes.io/unreachable", "node.kubernetes.io/unschedulable",  "node.kubernetes.io/memory-pressure",  "node.kubernetes.io/disk-pressure",  "node.kubernetes.io/network-unavailable",  "node.kubernetes.io/pid-pressure",  "node.kubernetes.io/out-of-service",  "node.cloudprovider.kubernetes.io/uninitialized",  "node.cloudprovider.kubernetes.io/shutdown", "kubernetes.azure.com/scalesetpriority"]
+	Key string `pulumi:"key"`
+	// Set taint value.
+	Value string `pulumi:"value"`
 }
 
 // OceanNpTaintInput is an input type that accepts OceanNpTaintArgs and OceanNpTaintOutput values.
@@ -6310,9 +3778,12 @@ type OceanNpTaintInput interface {
 }
 
 type OceanNpTaintArgs struct {
+	// Set taint effect.
 	Effect pulumi.StringInput `pulumi:"effect"`
-	Key    pulumi.StringInput `pulumi:"key"`
-	Value  pulumi.StringInput `pulumi:"value"`
+	// Set taint key. The following taint keys are not allowed: ["node.kubernetes.io/not-ready",  "node.kubernetes.io/unreachable", "node.kubernetes.io/unschedulable",  "node.kubernetes.io/memory-pressure",  "node.kubernetes.io/disk-pressure",  "node.kubernetes.io/network-unavailable",  "node.kubernetes.io/pid-pressure",  "node.kubernetes.io/out-of-service",  "node.cloudprovider.kubernetes.io/uninitialized",  "node.cloudprovider.kubernetes.io/shutdown", "kubernetes.azure.com/scalesetpriority"]
+	Key pulumi.StringInput `pulumi:"key"`
+	// Set taint value.
+	Value pulumi.StringInput `pulumi:"value"`
 }
 
 func (OceanNpTaintArgs) ElementType() reflect.Type {
@@ -6366,14 +3837,17 @@ func (o OceanNpTaintOutput) ToOceanNpTaintOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Set taint effect.
 func (o OceanNpTaintOutput) Effect() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanNpTaint) string { return v.Effect }).(pulumi.StringOutput)
 }
 
+// Set taint key. The following taint keys are not allowed: ["node.kubernetes.io/not-ready",  "node.kubernetes.io/unreachable", "node.kubernetes.io/unschedulable",  "node.kubernetes.io/memory-pressure",  "node.kubernetes.io/disk-pressure",  "node.kubernetes.io/network-unavailable",  "node.kubernetes.io/pid-pressure",  "node.kubernetes.io/out-of-service",  "node.cloudprovider.kubernetes.io/uninitialized",  "node.cloudprovider.kubernetes.io/shutdown", "kubernetes.azure.com/scalesetpriority"]
 func (o OceanNpTaintOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanNpTaint) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// Set taint value.
 func (o OceanNpTaintOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanNpTaint) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -6800,21 +4274,37 @@ func (o OceanNpUpdatePolicyRollConfigPtrOutput) VngIds() pulumi.StringArrayOutpu
 }
 
 type OceanNpVirtualNodeGroupFilters struct {
-	AcceleratedNetworking *string  `pulumi:"acceleratedNetworking"`
-	Architectures         []string `pulumi:"architectures"`
-	DiskPerformance       *string  `pulumi:"diskPerformance"`
-	ExcludeSeries         []string `pulumi:"excludeSeries"`
-	GpuTypes              []string `pulumi:"gpuTypes"`
-	MaxGpu                *float64 `pulumi:"maxGpu"`
-	MaxMemoryGib          *float64 `pulumi:"maxMemoryGib"`
-	MaxVcpu               *int     `pulumi:"maxVcpu"`
-	MinDisk               *int     `pulumi:"minDisk"`
-	MinGpu                *float64 `pulumi:"minGpu"`
-	MinMemoryGib          *float64 `pulumi:"minMemoryGib"`
-	MinNics               *int     `pulumi:"minNics"`
-	MinVcpu               *int     `pulumi:"minVcpu"`
-	Series                []string `pulumi:"series"`
-	VmTypes               []string `pulumi:"vmTypes"`
+	// In case acceleratedNetworking is set to Enabled, accelerated networking applies only to the VM that enables it.
+	AcceleratedNetworking *string `pulumi:"acceleratedNetworking"`
+	// The filtered vm sizes will support at least one of the architectures from this list. x8664 includes both intel64 and amd64.
+	Architectures []string `pulumi:"architectures"`
+	// The filtered vm sizes will support at least one of the classes from this list.
+	DiskPerformance *string `pulumi:"diskPerformance"`
+	// Vm sizes belonging to a series from the list will not be available for scaling.
+	ExcludeSeries []string `pulumi:"excludeSeries"`
+	// The filtered gpu types will belong to one of the gpu types from this list.
+	// <a id="update-policy"></a>
+	GpuTypes []string `pulumi:"gpuTypes"`
+	// Maximum number of GPUs available.
+	MaxGpu *float64 `pulumi:"maxGpu"`
+	// Maximum amount of Memory (GiB).
+	MaxMemoryGib *float64 `pulumi:"maxMemoryGib"`
+	// Maximum number of vcpus available.
+	MaxVcpu *int `pulumi:"maxVcpu"`
+	// Minimum number of data disks available.
+	MinDisk *int `pulumi:"minDisk"`
+	// Minimum number of GPUs available.
+	MinGpu *float64 `pulumi:"minGpu"`
+	// Minimum amount of Memory (GiB).
+	MinMemoryGib *float64 `pulumi:"minMemoryGib"`
+	// Minimum number of network interfaces.
+	MinNics *int `pulumi:"minNics"`
+	// Minimum number of vcpus available.
+	MinVcpu *int `pulumi:"minVcpu"`
+	// Vm sizes belonging to a series from the list will be available for scaling.
+	Series []string `pulumi:"series"`
+	// The filtered vm types will belong to one of the vm types from this list.
+	VmTypes []string `pulumi:"vmTypes"`
 }
 
 // OceanNpVirtualNodeGroupFiltersInput is an input type that accepts OceanNpVirtualNodeGroupFiltersArgs and OceanNpVirtualNodeGroupFiltersOutput values.
@@ -6829,21 +4319,37 @@ type OceanNpVirtualNodeGroupFiltersInput interface {
 }
 
 type OceanNpVirtualNodeGroupFiltersArgs struct {
-	AcceleratedNetworking pulumi.StringPtrInput   `pulumi:"acceleratedNetworking"`
-	Architectures         pulumi.StringArrayInput `pulumi:"architectures"`
-	DiskPerformance       pulumi.StringPtrInput   `pulumi:"diskPerformance"`
-	ExcludeSeries         pulumi.StringArrayInput `pulumi:"excludeSeries"`
-	GpuTypes              pulumi.StringArrayInput `pulumi:"gpuTypes"`
-	MaxGpu                pulumi.Float64PtrInput  `pulumi:"maxGpu"`
-	MaxMemoryGib          pulumi.Float64PtrInput  `pulumi:"maxMemoryGib"`
-	MaxVcpu               pulumi.IntPtrInput      `pulumi:"maxVcpu"`
-	MinDisk               pulumi.IntPtrInput      `pulumi:"minDisk"`
-	MinGpu                pulumi.Float64PtrInput  `pulumi:"minGpu"`
-	MinMemoryGib          pulumi.Float64PtrInput  `pulumi:"minMemoryGib"`
-	MinNics               pulumi.IntPtrInput      `pulumi:"minNics"`
-	MinVcpu               pulumi.IntPtrInput      `pulumi:"minVcpu"`
-	Series                pulumi.StringArrayInput `pulumi:"series"`
-	VmTypes               pulumi.StringArrayInput `pulumi:"vmTypes"`
+	// In case acceleratedNetworking is set to Enabled, accelerated networking applies only to the VM that enables it.
+	AcceleratedNetworking pulumi.StringPtrInput `pulumi:"acceleratedNetworking"`
+	// The filtered vm sizes will support at least one of the architectures from this list. x8664 includes both intel64 and amd64.
+	Architectures pulumi.StringArrayInput `pulumi:"architectures"`
+	// The filtered vm sizes will support at least one of the classes from this list.
+	DiskPerformance pulumi.StringPtrInput `pulumi:"diskPerformance"`
+	// Vm sizes belonging to a series from the list will not be available for scaling.
+	ExcludeSeries pulumi.StringArrayInput `pulumi:"excludeSeries"`
+	// The filtered gpu types will belong to one of the gpu types from this list.
+	// <a id="update-policy"></a>
+	GpuTypes pulumi.StringArrayInput `pulumi:"gpuTypes"`
+	// Maximum number of GPUs available.
+	MaxGpu pulumi.Float64PtrInput `pulumi:"maxGpu"`
+	// Maximum amount of Memory (GiB).
+	MaxMemoryGib pulumi.Float64PtrInput `pulumi:"maxMemoryGib"`
+	// Maximum number of vcpus available.
+	MaxVcpu pulumi.IntPtrInput `pulumi:"maxVcpu"`
+	// Minimum number of data disks available.
+	MinDisk pulumi.IntPtrInput `pulumi:"minDisk"`
+	// Minimum number of GPUs available.
+	MinGpu pulumi.Float64PtrInput `pulumi:"minGpu"`
+	// Minimum amount of Memory (GiB).
+	MinMemoryGib pulumi.Float64PtrInput `pulumi:"minMemoryGib"`
+	// Minimum number of network interfaces.
+	MinNics pulumi.IntPtrInput `pulumi:"minNics"`
+	// Minimum number of vcpus available.
+	MinVcpu pulumi.IntPtrInput `pulumi:"minVcpu"`
+	// Vm sizes belonging to a series from the list will be available for scaling.
+	Series pulumi.StringArrayInput `pulumi:"series"`
+	// The filtered vm types will belong to one of the vm types from this list.
+	VmTypes pulumi.StringArrayInput `pulumi:"vmTypes"`
 }
 
 func (OceanNpVirtualNodeGroupFiltersArgs) ElementType() reflect.Type {
@@ -6923,62 +4429,78 @@ func (o OceanNpVirtualNodeGroupFiltersOutput) ToOceanNpVirtualNodeGroupFiltersPt
 	}).(OceanNpVirtualNodeGroupFiltersPtrOutput)
 }
 
+// In case acceleratedNetworking is set to Enabled, accelerated networking applies only to the VM that enables it.
 func (o OceanNpVirtualNodeGroupFiltersOutput) AcceleratedNetworking() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanNpVirtualNodeGroupFilters) *string { return v.AcceleratedNetworking }).(pulumi.StringPtrOutput)
 }
 
+// The filtered vm sizes will support at least one of the architectures from this list. x8664 includes both intel64 and amd64.
 func (o OceanNpVirtualNodeGroupFiltersOutput) Architectures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanNpVirtualNodeGroupFilters) []string { return v.Architectures }).(pulumi.StringArrayOutput)
 }
 
+// The filtered vm sizes will support at least one of the classes from this list.
 func (o OceanNpVirtualNodeGroupFiltersOutput) DiskPerformance() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanNpVirtualNodeGroupFilters) *string { return v.DiskPerformance }).(pulumi.StringPtrOutput)
 }
 
+// Vm sizes belonging to a series from the list will not be available for scaling.
 func (o OceanNpVirtualNodeGroupFiltersOutput) ExcludeSeries() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanNpVirtualNodeGroupFilters) []string { return v.ExcludeSeries }).(pulumi.StringArrayOutput)
 }
 
+// The filtered gpu types will belong to one of the gpu types from this list.
+// <a id="update-policy"></a>
 func (o OceanNpVirtualNodeGroupFiltersOutput) GpuTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanNpVirtualNodeGroupFilters) []string { return v.GpuTypes }).(pulumi.StringArrayOutput)
 }
 
+// Maximum number of GPUs available.
 func (o OceanNpVirtualNodeGroupFiltersOutput) MaxGpu() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v OceanNpVirtualNodeGroupFilters) *float64 { return v.MaxGpu }).(pulumi.Float64PtrOutput)
 }
 
+// Maximum amount of Memory (GiB).
 func (o OceanNpVirtualNodeGroupFiltersOutput) MaxMemoryGib() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v OceanNpVirtualNodeGroupFilters) *float64 { return v.MaxMemoryGib }).(pulumi.Float64PtrOutput)
 }
 
+// Maximum number of vcpus available.
 func (o OceanNpVirtualNodeGroupFiltersOutput) MaxVcpu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanNpVirtualNodeGroupFilters) *int { return v.MaxVcpu }).(pulumi.IntPtrOutput)
 }
 
+// Minimum number of data disks available.
 func (o OceanNpVirtualNodeGroupFiltersOutput) MinDisk() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanNpVirtualNodeGroupFilters) *int { return v.MinDisk }).(pulumi.IntPtrOutput)
 }
 
+// Minimum number of GPUs available.
 func (o OceanNpVirtualNodeGroupFiltersOutput) MinGpu() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v OceanNpVirtualNodeGroupFilters) *float64 { return v.MinGpu }).(pulumi.Float64PtrOutput)
 }
 
+// Minimum amount of Memory (GiB).
 func (o OceanNpVirtualNodeGroupFiltersOutput) MinMemoryGib() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v OceanNpVirtualNodeGroupFilters) *float64 { return v.MinMemoryGib }).(pulumi.Float64PtrOutput)
 }
 
+// Minimum number of network interfaces.
 func (o OceanNpVirtualNodeGroupFiltersOutput) MinNics() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanNpVirtualNodeGroupFilters) *int { return v.MinNics }).(pulumi.IntPtrOutput)
 }
 
+// Minimum number of vcpus available.
 func (o OceanNpVirtualNodeGroupFiltersOutput) MinVcpu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanNpVirtualNodeGroupFilters) *int { return v.MinVcpu }).(pulumi.IntPtrOutput)
 }
 
+// Vm sizes belonging to a series from the list will be available for scaling.
 func (o OceanNpVirtualNodeGroupFiltersOutput) Series() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanNpVirtualNodeGroupFilters) []string { return v.Series }).(pulumi.StringArrayOutput)
 }
 
+// The filtered vm types will belong to one of the vm types from this list.
 func (o OceanNpVirtualNodeGroupFiltersOutput) VmTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanNpVirtualNodeGroupFilters) []string { return v.VmTypes }).(pulumi.StringArrayOutput)
 }
@@ -7007,6 +4529,7 @@ func (o OceanNpVirtualNodeGroupFiltersPtrOutput) Elem() OceanNpVirtualNodeGroupF
 	}).(OceanNpVirtualNodeGroupFiltersOutput)
 }
 
+// In case acceleratedNetworking is set to Enabled, accelerated networking applies only to the VM that enables it.
 func (o OceanNpVirtualNodeGroupFiltersPtrOutput) AcceleratedNetworking() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroupFilters) *string {
 		if v == nil {
@@ -7016,6 +4539,7 @@ func (o OceanNpVirtualNodeGroupFiltersPtrOutput) AcceleratedNetworking() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+// The filtered vm sizes will support at least one of the architectures from this list. x8664 includes both intel64 and amd64.
 func (o OceanNpVirtualNodeGroupFiltersPtrOutput) Architectures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroupFilters) []string {
 		if v == nil {
@@ -7025,6 +4549,7 @@ func (o OceanNpVirtualNodeGroupFiltersPtrOutput) Architectures() pulumi.StringAr
 	}).(pulumi.StringArrayOutput)
 }
 
+// The filtered vm sizes will support at least one of the classes from this list.
 func (o OceanNpVirtualNodeGroupFiltersPtrOutput) DiskPerformance() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroupFilters) *string {
 		if v == nil {
@@ -7034,6 +4559,7 @@ func (o OceanNpVirtualNodeGroupFiltersPtrOutput) DiskPerformance() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// Vm sizes belonging to a series from the list will not be available for scaling.
 func (o OceanNpVirtualNodeGroupFiltersPtrOutput) ExcludeSeries() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroupFilters) []string {
 		if v == nil {
@@ -7043,6 +4569,8 @@ func (o OceanNpVirtualNodeGroupFiltersPtrOutput) ExcludeSeries() pulumi.StringAr
 	}).(pulumi.StringArrayOutput)
 }
 
+// The filtered gpu types will belong to one of the gpu types from this list.
+// <a id="update-policy"></a>
 func (o OceanNpVirtualNodeGroupFiltersPtrOutput) GpuTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroupFilters) []string {
 		if v == nil {
@@ -7052,6 +4580,7 @@ func (o OceanNpVirtualNodeGroupFiltersPtrOutput) GpuTypes() pulumi.StringArrayOu
 	}).(pulumi.StringArrayOutput)
 }
 
+// Maximum number of GPUs available.
 func (o OceanNpVirtualNodeGroupFiltersPtrOutput) MaxGpu() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroupFilters) *float64 {
 		if v == nil {
@@ -7061,6 +4590,7 @@ func (o OceanNpVirtualNodeGroupFiltersPtrOutput) MaxGpu() pulumi.Float64PtrOutpu
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Maximum amount of Memory (GiB).
 func (o OceanNpVirtualNodeGroupFiltersPtrOutput) MaxMemoryGib() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroupFilters) *float64 {
 		if v == nil {
@@ -7070,6 +4600,7 @@ func (o OceanNpVirtualNodeGroupFiltersPtrOutput) MaxMemoryGib() pulumi.Float64Pt
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Maximum number of vcpus available.
 func (o OceanNpVirtualNodeGroupFiltersPtrOutput) MaxVcpu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroupFilters) *int {
 		if v == nil {
@@ -7079,6 +4610,7 @@ func (o OceanNpVirtualNodeGroupFiltersPtrOutput) MaxVcpu() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Minimum number of data disks available.
 func (o OceanNpVirtualNodeGroupFiltersPtrOutput) MinDisk() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroupFilters) *int {
 		if v == nil {
@@ -7088,6 +4620,7 @@ func (o OceanNpVirtualNodeGroupFiltersPtrOutput) MinDisk() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Minimum number of GPUs available.
 func (o OceanNpVirtualNodeGroupFiltersPtrOutput) MinGpu() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroupFilters) *float64 {
 		if v == nil {
@@ -7097,6 +4630,7 @@ func (o OceanNpVirtualNodeGroupFiltersPtrOutput) MinGpu() pulumi.Float64PtrOutpu
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Minimum amount of Memory (GiB).
 func (o OceanNpVirtualNodeGroupFiltersPtrOutput) MinMemoryGib() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroupFilters) *float64 {
 		if v == nil {
@@ -7106,6 +4640,7 @@ func (o OceanNpVirtualNodeGroupFiltersPtrOutput) MinMemoryGib() pulumi.Float64Pt
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Minimum number of network interfaces.
 func (o OceanNpVirtualNodeGroupFiltersPtrOutput) MinNics() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroupFilters) *int {
 		if v == nil {
@@ -7115,6 +4650,7 @@ func (o OceanNpVirtualNodeGroupFiltersPtrOutput) MinNics() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Minimum number of vcpus available.
 func (o OceanNpVirtualNodeGroupFiltersPtrOutput) MinVcpu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroupFilters) *int {
 		if v == nil {
@@ -7124,6 +4660,7 @@ func (o OceanNpVirtualNodeGroupFiltersPtrOutput) MinVcpu() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Vm sizes belonging to a series from the list will be available for scaling.
 func (o OceanNpVirtualNodeGroupFiltersPtrOutput) Series() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroupFilters) []string {
 		if v == nil {
@@ -7133,6 +4670,7 @@ func (o OceanNpVirtualNodeGroupFiltersPtrOutput) Series() pulumi.StringArrayOutp
 	}).(pulumi.StringArrayOutput)
 }
 
+// The filtered vm types will belong to one of the vm types from this list.
 func (o OceanNpVirtualNodeGroupFiltersPtrOutput) VmTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroupFilters) []string {
 		if v == nil {
@@ -7143,10 +4681,14 @@ func (o OceanNpVirtualNodeGroupFiltersPtrOutput) VmTypes() pulumi.StringArrayOut
 }
 
 type OceanNpVirtualNodeGroupHeadroom struct {
-	CpuPerUnit    *int `pulumi:"cpuPerUnit"`
-	GpuPerUnit    *int `pulumi:"gpuPerUnit"`
+	// Configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+	CpuPerUnit *int `pulumi:"cpuPerUnit"`
+	// Amount of GPU to allocate for headroom unit.
+	GpuPerUnit *int `pulumi:"gpuPerUnit"`
+	// Configure the amount of memory (MiB) to allocate the headroom.
 	MemoryPerUnit *int `pulumi:"memoryPerUnit"`
-	NumOfUnits    *int `pulumi:"numOfUnits"`
+	// The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+	NumOfUnits *int `pulumi:"numOfUnits"`
 }
 
 // OceanNpVirtualNodeGroupHeadroomInput is an input type that accepts OceanNpVirtualNodeGroupHeadroomArgs and OceanNpVirtualNodeGroupHeadroomOutput values.
@@ -7161,10 +4703,14 @@ type OceanNpVirtualNodeGroupHeadroomInput interface {
 }
 
 type OceanNpVirtualNodeGroupHeadroomArgs struct {
-	CpuPerUnit    pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
-	GpuPerUnit    pulumi.IntPtrInput `pulumi:"gpuPerUnit"`
+	// Configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+	CpuPerUnit pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
+	// Amount of GPU to allocate for headroom unit.
+	GpuPerUnit pulumi.IntPtrInput `pulumi:"gpuPerUnit"`
+	// Configure the amount of memory (MiB) to allocate the headroom.
 	MemoryPerUnit pulumi.IntPtrInput `pulumi:"memoryPerUnit"`
-	NumOfUnits    pulumi.IntPtrInput `pulumi:"numOfUnits"`
+	// The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+	NumOfUnits pulumi.IntPtrInput `pulumi:"numOfUnits"`
 }
 
 func (OceanNpVirtualNodeGroupHeadroomArgs) ElementType() reflect.Type {
@@ -7218,18 +4764,22 @@ func (o OceanNpVirtualNodeGroupHeadroomOutput) ToOceanNpVirtualNodeGroupHeadroom
 	return o
 }
 
+// Configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
 func (o OceanNpVirtualNodeGroupHeadroomOutput) CpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanNpVirtualNodeGroupHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
+// Amount of GPU to allocate for headroom unit.
 func (o OceanNpVirtualNodeGroupHeadroomOutput) GpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanNpVirtualNodeGroupHeadroom) *int { return v.GpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
+// Configure the amount of memory (MiB) to allocate the headroom.
 func (o OceanNpVirtualNodeGroupHeadroomOutput) MemoryPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanNpVirtualNodeGroupHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
 }
 
+// The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
 func (o OceanNpVirtualNodeGroupHeadroomOutput) NumOfUnits() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanNpVirtualNodeGroupHeadroom) *int { return v.NumOfUnits }).(pulumi.IntPtrOutput)
 }
@@ -7255,9 +4805,12 @@ func (o OceanNpVirtualNodeGroupHeadroomArrayOutput) Index(i pulumi.IntInput) Oce
 }
 
 type OceanNpVirtualNodeGroupTaint struct {
+	// Set taint effect.
 	Effect string `pulumi:"effect"`
-	Key    string `pulumi:"key"`
-	Value  string `pulumi:"value"`
+	// Set taint key. The following are not allowed: "kubernetes.azure.com/scalesetpriority".
+	Key string `pulumi:"key"`
+	// Set taint value.
+	Value string `pulumi:"value"`
 }
 
 // OceanNpVirtualNodeGroupTaintInput is an input type that accepts OceanNpVirtualNodeGroupTaintArgs and OceanNpVirtualNodeGroupTaintOutput values.
@@ -7272,9 +4825,12 @@ type OceanNpVirtualNodeGroupTaintInput interface {
 }
 
 type OceanNpVirtualNodeGroupTaintArgs struct {
+	// Set taint effect.
 	Effect pulumi.StringInput `pulumi:"effect"`
-	Key    pulumi.StringInput `pulumi:"key"`
-	Value  pulumi.StringInput `pulumi:"value"`
+	// Set taint key. The following are not allowed: "kubernetes.azure.com/scalesetpriority".
+	Key pulumi.StringInput `pulumi:"key"`
+	// Set taint value.
+	Value pulumi.StringInput `pulumi:"value"`
 }
 
 func (OceanNpVirtualNodeGroupTaintArgs) ElementType() reflect.Type {
@@ -7328,14 +4884,17 @@ func (o OceanNpVirtualNodeGroupTaintOutput) ToOceanNpVirtualNodeGroupTaintOutput
 	return o
 }
 
+// Set taint effect.
 func (o OceanNpVirtualNodeGroupTaintOutput) Effect() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanNpVirtualNodeGroupTaint) string { return v.Effect }).(pulumi.StringOutput)
 }
 
+// Set taint key. The following are not allowed: "kubernetes.azure.com/scalesetpriority".
 func (o OceanNpVirtualNodeGroupTaintOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanNpVirtualNodeGroupTaint) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// Set taint value.
 func (o OceanNpVirtualNodeGroupTaintOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanNpVirtualNodeGroupTaint) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -9146,44 +6705,6 @@ func (o OceanVmSizeArrayOutput) Index(i pulumi.IntInput) OceanVmSizeOutput {
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupHealthCheckInput)(nil)).Elem(), ElastigroupHealthCheckArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupHealthCheckPtrInput)(nil)).Elem(), ElastigroupHealthCheckArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupImageInput)(nil)).Elem(), ElastigroupImageArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupImageArrayInput)(nil)).Elem(), ElastigroupImageArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupImageCustomInput)(nil)).Elem(), ElastigroupImageCustomArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupImageCustomArrayInput)(nil)).Elem(), ElastigroupImageCustomArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupImageMarketplaceInput)(nil)).Elem(), ElastigroupImageMarketplaceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupImageMarketplaceArrayInput)(nil)).Elem(), ElastigroupImageMarketplaceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationKubernetesInput)(nil)).Elem(), ElastigroupIntegrationKubernetesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationKubernetesPtrInput)(nil)).Elem(), ElastigroupIntegrationKubernetesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationMultaiRuntimeInput)(nil)).Elem(), ElastigroupIntegrationMultaiRuntimeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationMultaiRuntimePtrInput)(nil)).Elem(), ElastigroupIntegrationMultaiRuntimeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupLoadBalancerInput)(nil)).Elem(), ElastigroupLoadBalancerArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupLoadBalancerArrayInput)(nil)).Elem(), ElastigroupLoadBalancerArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupLoginInput)(nil)).Elem(), ElastigroupLoginArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupLoginPtrInput)(nil)).Elem(), ElastigroupLoginArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupManagedServiceIdentityInput)(nil)).Elem(), ElastigroupManagedServiceIdentityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupManagedServiceIdentityArrayInput)(nil)).Elem(), ElastigroupManagedServiceIdentityArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupNetworkInput)(nil)).Elem(), ElastigroupNetworkArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupNetworkPtrInput)(nil)).Elem(), ElastigroupNetworkArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupNetworkAdditionalIpConfigInput)(nil)).Elem(), ElastigroupNetworkAdditionalIpConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupNetworkAdditionalIpConfigArrayInput)(nil)).Elem(), ElastigroupNetworkAdditionalIpConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingDownPolicyInput)(nil)).Elem(), ElastigroupScalingDownPolicyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingDownPolicyArrayInput)(nil)).Elem(), ElastigroupScalingDownPolicyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingDownPolicyDimensionInput)(nil)).Elem(), ElastigroupScalingDownPolicyDimensionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingDownPolicyDimensionArrayInput)(nil)).Elem(), ElastigroupScalingDownPolicyDimensionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingUpPolicyInput)(nil)).Elem(), ElastigroupScalingUpPolicyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingUpPolicyArrayInput)(nil)).Elem(), ElastigroupScalingUpPolicyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingUpPolicyDimensionInput)(nil)).Elem(), ElastigroupScalingUpPolicyDimensionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingUpPolicyDimensionArrayInput)(nil)).Elem(), ElastigroupScalingUpPolicyDimensionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScheduledTaskInput)(nil)).Elem(), ElastigroupScheduledTaskArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScheduledTaskArrayInput)(nil)).Elem(), ElastigroupScheduledTaskArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupStrategyInput)(nil)).Elem(), ElastigroupStrategyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupStrategyPtrInput)(nil)).Elem(), ElastigroupStrategyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupUpdatePolicyInput)(nil)).Elem(), ElastigroupUpdatePolicyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupUpdatePolicyPtrInput)(nil)).Elem(), ElastigroupUpdatePolicyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupUpdatePolicyRollConfigInput)(nil)).Elem(), ElastigroupUpdatePolicyRollConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupUpdatePolicyRollConfigPtrInput)(nil)).Elem(), ElastigroupUpdatePolicyRollConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanAutoscalerInput)(nil)).Elem(), OceanAutoscalerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanAutoscalerPtrInput)(nil)).Elem(), OceanAutoscalerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanAutoscalerAutoscaleDownInput)(nil)).Elem(), OceanAutoscalerAutoscaleDownArgs{})
@@ -9274,44 +6795,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanVirtualNodeGroupTaintArrayInput)(nil)).Elem(), OceanVirtualNodeGroupTaintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanVmSizeInput)(nil)).Elem(), OceanVmSizeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanVmSizeArrayInput)(nil)).Elem(), OceanVmSizeArray{})
-	pulumi.RegisterOutputType(ElastigroupHealthCheckOutput{})
-	pulumi.RegisterOutputType(ElastigroupHealthCheckPtrOutput{})
-	pulumi.RegisterOutputType(ElastigroupImageOutput{})
-	pulumi.RegisterOutputType(ElastigroupImageArrayOutput{})
-	pulumi.RegisterOutputType(ElastigroupImageCustomOutput{})
-	pulumi.RegisterOutputType(ElastigroupImageCustomArrayOutput{})
-	pulumi.RegisterOutputType(ElastigroupImageMarketplaceOutput{})
-	pulumi.RegisterOutputType(ElastigroupImageMarketplaceArrayOutput{})
-	pulumi.RegisterOutputType(ElastigroupIntegrationKubernetesOutput{})
-	pulumi.RegisterOutputType(ElastigroupIntegrationKubernetesPtrOutput{})
-	pulumi.RegisterOutputType(ElastigroupIntegrationMultaiRuntimeOutput{})
-	pulumi.RegisterOutputType(ElastigroupIntegrationMultaiRuntimePtrOutput{})
-	pulumi.RegisterOutputType(ElastigroupLoadBalancerOutput{})
-	pulumi.RegisterOutputType(ElastigroupLoadBalancerArrayOutput{})
-	pulumi.RegisterOutputType(ElastigroupLoginOutput{})
-	pulumi.RegisterOutputType(ElastigroupLoginPtrOutput{})
-	pulumi.RegisterOutputType(ElastigroupManagedServiceIdentityOutput{})
-	pulumi.RegisterOutputType(ElastigroupManagedServiceIdentityArrayOutput{})
-	pulumi.RegisterOutputType(ElastigroupNetworkOutput{})
-	pulumi.RegisterOutputType(ElastigroupNetworkPtrOutput{})
-	pulumi.RegisterOutputType(ElastigroupNetworkAdditionalIpConfigOutput{})
-	pulumi.RegisterOutputType(ElastigroupNetworkAdditionalIpConfigArrayOutput{})
-	pulumi.RegisterOutputType(ElastigroupScalingDownPolicyOutput{})
-	pulumi.RegisterOutputType(ElastigroupScalingDownPolicyArrayOutput{})
-	pulumi.RegisterOutputType(ElastigroupScalingDownPolicyDimensionOutput{})
-	pulumi.RegisterOutputType(ElastigroupScalingDownPolicyDimensionArrayOutput{})
-	pulumi.RegisterOutputType(ElastigroupScalingUpPolicyOutput{})
-	pulumi.RegisterOutputType(ElastigroupScalingUpPolicyArrayOutput{})
-	pulumi.RegisterOutputType(ElastigroupScalingUpPolicyDimensionOutput{})
-	pulumi.RegisterOutputType(ElastigroupScalingUpPolicyDimensionArrayOutput{})
-	pulumi.RegisterOutputType(ElastigroupScheduledTaskOutput{})
-	pulumi.RegisterOutputType(ElastigroupScheduledTaskArrayOutput{})
-	pulumi.RegisterOutputType(ElastigroupStrategyOutput{})
-	pulumi.RegisterOutputType(ElastigroupStrategyPtrOutput{})
-	pulumi.RegisterOutputType(ElastigroupUpdatePolicyOutput{})
-	pulumi.RegisterOutputType(ElastigroupUpdatePolicyPtrOutput{})
-	pulumi.RegisterOutputType(ElastigroupUpdatePolicyRollConfigOutput{})
-	pulumi.RegisterOutputType(ElastigroupUpdatePolicyRollConfigPtrOutput{})
 	pulumi.RegisterOutputType(OceanAutoscalerOutput{})
 	pulumi.RegisterOutputType(OceanAutoscalerPtrOutput{})
 	pulumi.RegisterOutputType(OceanAutoscalerAutoscaleDownOutput{})

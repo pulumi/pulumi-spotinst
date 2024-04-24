@@ -18,30 +18,62 @@ public final class OceanNpAutoscalerArgs extends com.pulumi.resources.ResourceAr
 
     public static final OceanNpAutoscalerArgs Empty = new OceanNpAutoscalerArgs();
 
+    /**
+     * Auto Scaling scale down operations.
+     * 
+     */
     @Import(name="autoscaleDown")
     private @Nullable Output<OceanNpAutoscalerAutoscaleDownArgs> autoscaleDown;
 
+    /**
+     * @return Auto Scaling scale down operations.
+     * 
+     */
     public Optional<Output<OceanNpAutoscalerAutoscaleDownArgs>> autoscaleDown() {
         return Optional.ofNullable(this.autoscaleDown);
     }
 
+    /**
+     * Spare resource capacity management enabling fast assignment of pods without waiting for new resources to launch.
+     * 
+     */
     @Import(name="autoscaleHeadroom")
     private @Nullable Output<OceanNpAutoscalerAutoscaleHeadroomArgs> autoscaleHeadroom;
 
+    /**
+     * @return Spare resource capacity management enabling fast assignment of pods without waiting for new resources to launch.
+     * 
+     */
     public Optional<Output<OceanNpAutoscalerAutoscaleHeadroomArgs>> autoscaleHeadroom() {
         return Optional.ofNullable(this.autoscaleHeadroom);
     }
 
+    /**
+     * Enable the Ocean Kubernetes Autoscaler.
+     * 
+     */
     @Import(name="autoscaleIsEnabled")
     private @Nullable Output<Boolean> autoscaleIsEnabled;
 
+    /**
+     * @return Enable the Ocean Kubernetes Autoscaler.
+     * 
+     */
     public Optional<Output<Boolean>> autoscaleIsEnabled() {
         return Optional.ofNullable(this.autoscaleIsEnabled);
     }
 
+    /**
+     * Optionally set upper and lower bounds on the resource usage of the cluster.
+     * 
+     */
     @Import(name="resourceLimits")
     private @Nullable Output<OceanNpAutoscalerResourceLimitsArgs> resourceLimits;
 
+    /**
+     * @return Optionally set upper and lower bounds on the resource usage of the cluster.
+     * 
+     */
     public Optional<Output<OceanNpAutoscalerResourceLimitsArgs>> resourceLimits() {
         return Optional.ofNullable(this.resourceLimits);
     }
@@ -73,38 +105,86 @@ public final class OceanNpAutoscalerArgs extends com.pulumi.resources.ResourceAr
             $ = new OceanNpAutoscalerArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param autoscaleDown Auto Scaling scale down operations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoscaleDown(@Nullable Output<OceanNpAutoscalerAutoscaleDownArgs> autoscaleDown) {
             $.autoscaleDown = autoscaleDown;
             return this;
         }
 
+        /**
+         * @param autoscaleDown Auto Scaling scale down operations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoscaleDown(OceanNpAutoscalerAutoscaleDownArgs autoscaleDown) {
             return autoscaleDown(Output.of(autoscaleDown));
         }
 
+        /**
+         * @param autoscaleHeadroom Spare resource capacity management enabling fast assignment of pods without waiting for new resources to launch.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoscaleHeadroom(@Nullable Output<OceanNpAutoscalerAutoscaleHeadroomArgs> autoscaleHeadroom) {
             $.autoscaleHeadroom = autoscaleHeadroom;
             return this;
         }
 
+        /**
+         * @param autoscaleHeadroom Spare resource capacity management enabling fast assignment of pods without waiting for new resources to launch.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoscaleHeadroom(OceanNpAutoscalerAutoscaleHeadroomArgs autoscaleHeadroom) {
             return autoscaleHeadroom(Output.of(autoscaleHeadroom));
         }
 
+        /**
+         * @param autoscaleIsEnabled Enable the Ocean Kubernetes Autoscaler.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoscaleIsEnabled(@Nullable Output<Boolean> autoscaleIsEnabled) {
             $.autoscaleIsEnabled = autoscaleIsEnabled;
             return this;
         }
 
+        /**
+         * @param autoscaleIsEnabled Enable the Ocean Kubernetes Autoscaler.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoscaleIsEnabled(Boolean autoscaleIsEnabled) {
             return autoscaleIsEnabled(Output.of(autoscaleIsEnabled));
         }
 
+        /**
+         * @param resourceLimits Optionally set upper and lower bounds on the resource usage of the cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceLimits(@Nullable Output<OceanNpAutoscalerResourceLimitsArgs> resourceLimits) {
             $.resourceLimits = resourceLimits;
             return this;
         }
 
+        /**
+         * @param resourceLimits Optionally set upper and lower bounds on the resource usage of the cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceLimits(OceanNpAutoscalerResourceLimitsArgs resourceLimits) {
             return resourceLimits(Output.of(resourceLimits));
         }

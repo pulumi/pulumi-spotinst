@@ -13,9 +13,21 @@ namespace Pulumi.SpotInst.Azure.Outputs
     [OutputType]
     public sealed class OceanNpHeadroom
     {
+        /// <summary>
+        /// Configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        /// </summary>
         public readonly int? CpuPerUnit;
+        /// <summary>
+        /// Amount of GPU to allocate for headroom unit.
+        /// </summary>
         public readonly int? GpuPerUnit;
+        /// <summary>
+        /// Configure the amount of memory (MiB) to allocate the headroom.
+        /// </summary>
         public readonly int? MemoryPerUnit;
+        /// <summary>
+        /// The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+        /// </summary>
         public readonly int? NumOfUnits;
 
         [OutputConstructor]

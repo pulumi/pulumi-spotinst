@@ -12,6 +12,9 @@ namespace Pulumi.SpotInst.Azure.Inputs
 
     public sealed class OceanNpSchedulingGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// [Shutdown Hours](https://docs.spot.io/ocean/features/running-hours?id=shutdown-hours)An object used to specify times that the nodes in the cluster will be taken down.
+        /// </summary>
         [Input("shutdownHours")]
         public Input<Inputs.OceanNpSchedulingShutdownHoursGetArgs>? ShutdownHours { get; set; }
 

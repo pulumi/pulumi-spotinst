@@ -15,9 +15,17 @@ public final class OceanNpHealthArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final OceanNpHealthArgs Empty = new OceanNpHealthArgs();
 
+    /**
+     * The amount of time to wait, in seconds, from the moment the instance has launched until monitoring of its health checks begins.
+     * 
+     */
     @Import(name="gracePeriod")
     private @Nullable Output<Integer> gracePeriod;
 
+    /**
+     * @return The amount of time to wait, in seconds, from the moment the instance has launched until monitoring of its health checks begins.
+     * 
+     */
     public Optional<Output<Integer>> gracePeriod() {
         return Optional.ofNullable(this.gracePeriod);
     }
@@ -46,11 +54,23 @@ public final class OceanNpHealthArgs extends com.pulumi.resources.ResourceArgs {
             $ = new OceanNpHealthArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param gracePeriod The amount of time to wait, in seconds, from the moment the instance has launched until monitoring of its health checks begins.
+         * 
+         * @return builder
+         * 
+         */
         public Builder gracePeriod(@Nullable Output<Integer> gracePeriod) {
             $.gracePeriod = gracePeriod;
             return this;
         }
 
+        /**
+         * @param gracePeriod The amount of time to wait, in seconds, from the moment the instance has launched until monitoring of its health checks begins.
+         * 
+         * @return builder
+         * 
+         */
         public Builder gracePeriod(Integer gracePeriod) {
             return gracePeriod(Output.of(gracePeriod));
         }
