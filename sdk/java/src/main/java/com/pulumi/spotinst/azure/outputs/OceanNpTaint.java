@@ -10,17 +10,41 @@ import java.util.Objects;
 
 @CustomType
 public final class OceanNpTaint {
+    /**
+     * @return Set taint effect.
+     * 
+     */
     private String effect;
+    /**
+     * @return Set taint key. The following taint keys are not allowed: [&#34;node.kubernetes.io/not-ready&#34;,  &#34;node.kubernetes.io/unreachable&#34;, &#34;node.kubernetes.io/unschedulable&#34;,  &#34;node.kubernetes.io/memory-pressure&#34;,  &#34;node.kubernetes.io/disk-pressure&#34;,  &#34;node.kubernetes.io/network-unavailable&#34;,  &#34;node.kubernetes.io/pid-pressure&#34;,  &#34;node.kubernetes.io/out-of-service&#34;,  &#34;node.cloudprovider.kubernetes.io/uninitialized&#34;,  &#34;node.cloudprovider.kubernetes.io/shutdown&#34;, &#34;kubernetes.azure.com/scalesetpriority&#34;]
+     * 
+     */
     private String key;
+    /**
+     * @return Set taint value.
+     * 
+     */
     private String value;
 
     private OceanNpTaint() {}
+    /**
+     * @return Set taint effect.
+     * 
+     */
     public String effect() {
         return this.effect;
     }
+    /**
+     * @return Set taint key. The following taint keys are not allowed: [&#34;node.kubernetes.io/not-ready&#34;,  &#34;node.kubernetes.io/unreachable&#34;, &#34;node.kubernetes.io/unschedulable&#34;,  &#34;node.kubernetes.io/memory-pressure&#34;,  &#34;node.kubernetes.io/disk-pressure&#34;,  &#34;node.kubernetes.io/network-unavailable&#34;,  &#34;node.kubernetes.io/pid-pressure&#34;,  &#34;node.kubernetes.io/out-of-service&#34;,  &#34;node.cloudprovider.kubernetes.io/uninitialized&#34;,  &#34;node.cloudprovider.kubernetes.io/shutdown&#34;, &#34;kubernetes.azure.com/scalesetpriority&#34;]
+     * 
+     */
     public String key() {
         return this.key;
     }
+    /**
+     * @return Set taint value.
+     * 
+     */
     public String value() {
         return this.value;
     }

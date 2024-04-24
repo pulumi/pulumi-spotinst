@@ -21,8 +21,6 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "spotinst:azure/elastigroup:Elastigroup":
-		r = &Elastigroup{}
 	case "spotinst:azure/ocean:Ocean":
 		r = &Ocean{}
 	case "spotinst:azure/oceanNp:OceanNp":
@@ -44,11 +42,6 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
-	pulumi.RegisterResourceModule(
-		"spotinst",
-		"azure/elastigroup",
-		&module{version},
-	)
 	pulumi.RegisterResourceModule(
 		"spotinst",
 		"azure/ocean",

@@ -14,65 +14,187 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanNpVirtualNodeGroupFilters {
+    /**
+     * @return In case acceleratedNetworking is set to Enabled, accelerated networking applies only to the VM that enables it.
+     * 
+     */
     private @Nullable String acceleratedNetworking;
+    /**
+     * @return The filtered vm sizes will support at least one of the architectures from this list. x86_64 includes both intel64 and amd64.
+     * 
+     */
     private @Nullable List<String> architectures;
+    /**
+     * @return The filtered vm sizes will support at least one of the classes from this list.
+     * 
+     */
     private @Nullable String diskPerformance;
+    /**
+     * @return Vm sizes belonging to a series from the list will not be available for scaling.
+     * 
+     */
     private @Nullable List<String> excludeSeries;
+    /**
+     * @return The filtered gpu types will belong to one of the gpu types from this list.
+     * &lt;a id=&#34;update-policy&#34;&gt;&lt;/a&gt;
+     * 
+     */
     private @Nullable List<String> gpuTypes;
+    /**
+     * @return Maximum number of GPUs available.
+     * 
+     */
     private @Nullable Double maxGpu;
+    /**
+     * @return Maximum amount of Memory (GiB).
+     * 
+     */
     private @Nullable Double maxMemoryGib;
+    /**
+     * @return Maximum number of vcpus available.
+     * 
+     */
     private @Nullable Integer maxVcpu;
+    /**
+     * @return Minimum number of data disks available.
+     * 
+     */
     private @Nullable Integer minDisk;
+    /**
+     * @return Minimum number of GPUs available.
+     * 
+     */
     private @Nullable Double minGpu;
+    /**
+     * @return Minimum amount of Memory (GiB).
+     * 
+     */
     private @Nullable Double minMemoryGib;
+    /**
+     * @return Minimum number of network interfaces.
+     * 
+     */
     private @Nullable Integer minNics;
+    /**
+     * @return Minimum number of vcpus available.
+     * 
+     */
     private @Nullable Integer minVcpu;
+    /**
+     * @return Vm sizes belonging to a series from the list will be available for scaling.
+     * 
+     */
     private @Nullable List<String> series;
+    /**
+     * @return The filtered vm types will belong to one of the vm types from this list.
+     * 
+     */
     private @Nullable List<String> vmTypes;
 
     private OceanNpVirtualNodeGroupFilters() {}
+    /**
+     * @return In case acceleratedNetworking is set to Enabled, accelerated networking applies only to the VM that enables it.
+     * 
+     */
     public Optional<String> acceleratedNetworking() {
         return Optional.ofNullable(this.acceleratedNetworking);
     }
+    /**
+     * @return The filtered vm sizes will support at least one of the architectures from this list. x86_64 includes both intel64 and amd64.
+     * 
+     */
     public List<String> architectures() {
         return this.architectures == null ? List.of() : this.architectures;
     }
+    /**
+     * @return The filtered vm sizes will support at least one of the classes from this list.
+     * 
+     */
     public Optional<String> diskPerformance() {
         return Optional.ofNullable(this.diskPerformance);
     }
+    /**
+     * @return Vm sizes belonging to a series from the list will not be available for scaling.
+     * 
+     */
     public List<String> excludeSeries() {
         return this.excludeSeries == null ? List.of() : this.excludeSeries;
     }
+    /**
+     * @return The filtered gpu types will belong to one of the gpu types from this list.
+     * &lt;a id=&#34;update-policy&#34;&gt;&lt;/a&gt;
+     * 
+     */
     public List<String> gpuTypes() {
         return this.gpuTypes == null ? List.of() : this.gpuTypes;
     }
+    /**
+     * @return Maximum number of GPUs available.
+     * 
+     */
     public Optional<Double> maxGpu() {
         return Optional.ofNullable(this.maxGpu);
     }
+    /**
+     * @return Maximum amount of Memory (GiB).
+     * 
+     */
     public Optional<Double> maxMemoryGib() {
         return Optional.ofNullable(this.maxMemoryGib);
     }
+    /**
+     * @return Maximum number of vcpus available.
+     * 
+     */
     public Optional<Integer> maxVcpu() {
         return Optional.ofNullable(this.maxVcpu);
     }
+    /**
+     * @return Minimum number of data disks available.
+     * 
+     */
     public Optional<Integer> minDisk() {
         return Optional.ofNullable(this.minDisk);
     }
+    /**
+     * @return Minimum number of GPUs available.
+     * 
+     */
     public Optional<Double> minGpu() {
         return Optional.ofNullable(this.minGpu);
     }
+    /**
+     * @return Minimum amount of Memory (GiB).
+     * 
+     */
     public Optional<Double> minMemoryGib() {
         return Optional.ofNullable(this.minMemoryGib);
     }
+    /**
+     * @return Minimum number of network interfaces.
+     * 
+     */
     public Optional<Integer> minNics() {
         return Optional.ofNullable(this.minNics);
     }
+    /**
+     * @return Minimum number of vcpus available.
+     * 
+     */
     public Optional<Integer> minVcpu() {
         return Optional.ofNullable(this.minVcpu);
     }
+    /**
+     * @return Vm sizes belonging to a series from the list will be available for scaling.
+     * 
+     */
     public List<String> series() {
         return this.series == null ? List.of() : this.series;
     }
+    /**
+     * @return The filtered vm types will belong to one of the vm types from this list.
+     * 
+     */
     public List<String> vmTypes() {
         return this.vmTypes == null ? List.of() : this.vmTypes;
     }

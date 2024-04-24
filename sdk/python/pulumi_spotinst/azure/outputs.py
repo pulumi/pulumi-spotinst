@@ -11,25 +11,6 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
-    'ElastigroupHealthCheck',
-    'ElastigroupImage',
-    'ElastigroupImageCustom',
-    'ElastigroupImageMarketplace',
-    'ElastigroupIntegrationKubernetes',
-    'ElastigroupIntegrationMultaiRuntime',
-    'ElastigroupLoadBalancer',
-    'ElastigroupLogin',
-    'ElastigroupManagedServiceIdentity',
-    'ElastigroupNetwork',
-    'ElastigroupNetworkAdditionalIpConfig',
-    'ElastigroupScalingDownPolicy',
-    'ElastigroupScalingDownPolicyDimension',
-    'ElastigroupScalingUpPolicy',
-    'ElastigroupScalingUpPolicyDimension',
-    'ElastigroupScheduledTask',
-    'ElastigroupStrategy',
-    'ElastigroupUpdatePolicy',
-    'ElastigroupUpdatePolicyRollConfig',
     'OceanAutoscaler',
     'OceanAutoscalerAutoscaleDown',
     'OceanAutoscalerAutoscaleHeadroom',
@@ -76,1120 +57,6 @@ __all__ = [
     'OceanVirtualNodeGroupTaint',
     'OceanVmSize',
 ]
-
-@pulumi.output_type
-class ElastigroupHealthCheck(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "healthCheckType":
-            suggest = "health_check_type"
-        elif key == "autoHealing":
-            suggest = "auto_healing"
-        elif key == "gracePeriod":
-            suggest = "grace_period"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ElastigroupHealthCheck. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ElastigroupHealthCheck.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ElastigroupHealthCheck.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 health_check_type: str,
-                 auto_healing: Optional[bool] = None,
-                 grace_period: Optional[int] = None):
-        pulumi.set(__self__, "health_check_type", health_check_type)
-        if auto_healing is not None:
-            pulumi.set(__self__, "auto_healing", auto_healing)
-        if grace_period is not None:
-            pulumi.set(__self__, "grace_period", grace_period)
-
-    @property
-    @pulumi.getter(name="healthCheckType")
-    def health_check_type(self) -> str:
-        return pulumi.get(self, "health_check_type")
-
-    @property
-    @pulumi.getter(name="autoHealing")
-    def auto_healing(self) -> Optional[bool]:
-        return pulumi.get(self, "auto_healing")
-
-    @property
-    @pulumi.getter(name="gracePeriod")
-    def grace_period(self) -> Optional[int]:
-        return pulumi.get(self, "grace_period")
-
-
-@pulumi.output_type
-class ElastigroupImage(dict):
-    def __init__(__self__, *,
-                 customs: Optional[Sequence['outputs.ElastigroupImageCustom']] = None,
-                 marketplaces: Optional[Sequence['outputs.ElastigroupImageMarketplace']] = None):
-        if customs is not None:
-            pulumi.set(__self__, "customs", customs)
-        if marketplaces is not None:
-            pulumi.set(__self__, "marketplaces", marketplaces)
-
-    @property
-    @pulumi.getter
-    def customs(self) -> Optional[Sequence['outputs.ElastigroupImageCustom']]:
-        return pulumi.get(self, "customs")
-
-    @property
-    @pulumi.getter
-    def marketplaces(self) -> Optional[Sequence['outputs.ElastigroupImageMarketplace']]:
-        return pulumi.get(self, "marketplaces")
-
-
-@pulumi.output_type
-class ElastigroupImageCustom(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "imageName":
-            suggest = "image_name"
-        elif key == "resourceGroupName":
-            suggest = "resource_group_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ElastigroupImageCustom. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ElastigroupImageCustom.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ElastigroupImageCustom.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 image_name: str,
-                 resource_group_name: str):
-        """
-        :param str resource_group_name: Name of the Resource Group for Elastigroup.
-        """
-        pulumi.set(__self__, "image_name", image_name)
-        pulumi.set(__self__, "resource_group_name", resource_group_name)
-
-    @property
-    @pulumi.getter(name="imageName")
-    def image_name(self) -> str:
-        return pulumi.get(self, "image_name")
-
-    @property
-    @pulumi.getter(name="resourceGroupName")
-    def resource_group_name(self) -> str:
-        """
-        Name of the Resource Group for Elastigroup.
-        """
-        return pulumi.get(self, "resource_group_name")
-
-
-@pulumi.output_type
-class ElastigroupImageMarketplace(dict):
-    def __init__(__self__, *,
-                 offer: str,
-                 publisher: str,
-                 sku: str):
-        pulumi.set(__self__, "offer", offer)
-        pulumi.set(__self__, "publisher", publisher)
-        pulumi.set(__self__, "sku", sku)
-
-    @property
-    @pulumi.getter
-    def offer(self) -> str:
-        return pulumi.get(self, "offer")
-
-    @property
-    @pulumi.getter
-    def publisher(self) -> str:
-        return pulumi.get(self, "publisher")
-
-    @property
-    @pulumi.getter
-    def sku(self) -> str:
-        return pulumi.get(self, "sku")
-
-
-@pulumi.output_type
-class ElastigroupIntegrationKubernetes(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clusterIdentifier":
-            suggest = "cluster_identifier"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ElastigroupIntegrationKubernetes. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ElastigroupIntegrationKubernetes.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ElastigroupIntegrationKubernetes.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 cluster_identifier: str):
-        pulumi.set(__self__, "cluster_identifier", cluster_identifier)
-
-    @property
-    @pulumi.getter(name="clusterIdentifier")
-    def cluster_identifier(self) -> str:
-        return pulumi.get(self, "cluster_identifier")
-
-
-@pulumi.output_type
-class ElastigroupIntegrationMultaiRuntime(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "deploymentId":
-            suggest = "deployment_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ElastigroupIntegrationMultaiRuntime. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ElastigroupIntegrationMultaiRuntime.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ElastigroupIntegrationMultaiRuntime.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 deployment_id: str):
-        pulumi.set(__self__, "deployment_id", deployment_id)
-
-    @property
-    @pulumi.getter(name="deploymentId")
-    def deployment_id(self) -> str:
-        return pulumi.get(self, "deployment_id")
-
-
-@pulumi.output_type
-class ElastigroupLoadBalancer(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "autoWeight":
-            suggest = "auto_weight"
-        elif key == "balancerId":
-            suggest = "balancer_id"
-        elif key == "targetSetId":
-            suggest = "target_set_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ElastigroupLoadBalancer. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ElastigroupLoadBalancer.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ElastigroupLoadBalancer.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 type: str,
-                 auto_weight: Optional[bool] = None,
-                 balancer_id: Optional[str] = None,
-                 target_set_id: Optional[str] = None):
-        pulumi.set(__self__, "type", type)
-        if auto_weight is not None:
-            pulumi.set(__self__, "auto_weight", auto_weight)
-        if balancer_id is not None:
-            pulumi.set(__self__, "balancer_id", balancer_id)
-        if target_set_id is not None:
-            pulumi.set(__self__, "target_set_id", target_set_id)
-
-    @property
-    @pulumi.getter
-    def type(self) -> str:
-        return pulumi.get(self, "type")
-
-    @property
-    @pulumi.getter(name="autoWeight")
-    def auto_weight(self) -> Optional[bool]:
-        return pulumi.get(self, "auto_weight")
-
-    @property
-    @pulumi.getter(name="balancerId")
-    def balancer_id(self) -> Optional[str]:
-        return pulumi.get(self, "balancer_id")
-
-    @property
-    @pulumi.getter(name="targetSetId")
-    def target_set_id(self) -> Optional[str]:
-        return pulumi.get(self, "target_set_id")
-
-
-@pulumi.output_type
-class ElastigroupLogin(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "userName":
-            suggest = "user_name"
-        elif key == "sshPublicKey":
-            suggest = "ssh_public_key"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ElastigroupLogin. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ElastigroupLogin.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ElastigroupLogin.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 user_name: str,
-                 password: Optional[str] = None,
-                 ssh_public_key: Optional[str] = None):
-        pulumi.set(__self__, "user_name", user_name)
-        if password is not None:
-            pulumi.set(__self__, "password", password)
-        if ssh_public_key is not None:
-            pulumi.set(__self__, "ssh_public_key", ssh_public_key)
-
-    @property
-    @pulumi.getter(name="userName")
-    def user_name(self) -> str:
-        return pulumi.get(self, "user_name")
-
-    @property
-    @pulumi.getter
-    def password(self) -> Optional[str]:
-        return pulumi.get(self, "password")
-
-    @property
-    @pulumi.getter(name="sshPublicKey")
-    def ssh_public_key(self) -> Optional[str]:
-        return pulumi.get(self, "ssh_public_key")
-
-
-@pulumi.output_type
-class ElastigroupManagedServiceIdentity(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "resourceGroupName":
-            suggest = "resource_group_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ElastigroupManagedServiceIdentity. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ElastigroupManagedServiceIdentity.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ElastigroupManagedServiceIdentity.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 name: str,
-                 resource_group_name: str):
-        """
-        :param str name: The group name.
-        :param str resource_group_name: Name of the Resource Group for Elastigroup.
-        """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "resource_group_name", resource_group_name)
-
-    @property
-    @pulumi.getter
-    def name(self) -> str:
-        """
-        The group name.
-        """
-        return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter(name="resourceGroupName")
-    def resource_group_name(self) -> str:
-        """
-        Name of the Resource Group for Elastigroup.
-        """
-        return pulumi.get(self, "resource_group_name")
-
-
-@pulumi.output_type
-class ElastigroupNetwork(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "resourceGroupName":
-            suggest = "resource_group_name"
-        elif key == "subnetName":
-            suggest = "subnet_name"
-        elif key == "virtualNetworkName":
-            suggest = "virtual_network_name"
-        elif key == "additionalIpConfigs":
-            suggest = "additional_ip_configs"
-        elif key == "assignPublicIp":
-            suggest = "assign_public_ip"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ElastigroupNetwork. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ElastigroupNetwork.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ElastigroupNetwork.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 resource_group_name: str,
-                 subnet_name: str,
-                 virtual_network_name: str,
-                 additional_ip_configs: Optional[Sequence['outputs.ElastigroupNetworkAdditionalIpConfig']] = None,
-                 assign_public_ip: Optional[bool] = None):
-        """
-        :param str resource_group_name: Name of the Resource Group for Elastigroup.
-        """
-        pulumi.set(__self__, "resource_group_name", resource_group_name)
-        pulumi.set(__self__, "subnet_name", subnet_name)
-        pulumi.set(__self__, "virtual_network_name", virtual_network_name)
-        if additional_ip_configs is not None:
-            pulumi.set(__self__, "additional_ip_configs", additional_ip_configs)
-        if assign_public_ip is not None:
-            pulumi.set(__self__, "assign_public_ip", assign_public_ip)
-
-    @property
-    @pulumi.getter(name="resourceGroupName")
-    def resource_group_name(self) -> str:
-        """
-        Name of the Resource Group for Elastigroup.
-        """
-        return pulumi.get(self, "resource_group_name")
-
-    @property
-    @pulumi.getter(name="subnetName")
-    def subnet_name(self) -> str:
-        return pulumi.get(self, "subnet_name")
-
-    @property
-    @pulumi.getter(name="virtualNetworkName")
-    def virtual_network_name(self) -> str:
-        return pulumi.get(self, "virtual_network_name")
-
-    @property
-    @pulumi.getter(name="additionalIpConfigs")
-    def additional_ip_configs(self) -> Optional[Sequence['outputs.ElastigroupNetworkAdditionalIpConfig']]:
-        return pulumi.get(self, "additional_ip_configs")
-
-    @property
-    @pulumi.getter(name="assignPublicIp")
-    def assign_public_ip(self) -> Optional[bool]:
-        return pulumi.get(self, "assign_public_ip")
-
-
-@pulumi.output_type
-class ElastigroupNetworkAdditionalIpConfig(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "privateIpVersion":
-            suggest = "private_ip_version"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ElastigroupNetworkAdditionalIpConfig. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ElastigroupNetworkAdditionalIpConfig.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ElastigroupNetworkAdditionalIpConfig.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 name: str,
-                 private_ip_version: Optional[str] = None):
-        """
-        :param str name: The group name.
-        """
-        pulumi.set(__self__, "name", name)
-        if private_ip_version is not None:
-            pulumi.set(__self__, "private_ip_version", private_ip_version)
-
-    @property
-    @pulumi.getter
-    def name(self) -> str:
-        """
-        The group name.
-        """
-        return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter(name="privateIpVersion")
-    def private_ip_version(self) -> Optional[str]:
-        return pulumi.get(self, "private_ip_version")
-
-
-@pulumi.output_type
-class ElastigroupScalingDownPolicy(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "metricName":
-            suggest = "metric_name"
-        elif key == "policyName":
-            suggest = "policy_name"
-        elif key == "actionType":
-            suggest = "action_type"
-        elif key == "evaluationPeriods":
-            suggest = "evaluation_periods"
-        elif key == "maxTargetCapacity":
-            suggest = "max_target_capacity"
-        elif key == "minTargetCapacity":
-            suggest = "min_target_capacity"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ElastigroupScalingDownPolicy. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ElastigroupScalingDownPolicy.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ElastigroupScalingDownPolicy.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 metric_name: str,
-                 namespace: str,
-                 policy_name: str,
-                 threshold: float,
-                 action_type: Optional[str] = None,
-                 adjustment: Optional[str] = None,
-                 cooldown: Optional[int] = None,
-                 dimensions: Optional[Sequence['outputs.ElastigroupScalingDownPolicyDimension']] = None,
-                 evaluation_periods: Optional[int] = None,
-                 max_target_capacity: Optional[str] = None,
-                 maximum: Optional[str] = None,
-                 min_target_capacity: Optional[str] = None,
-                 minimum: Optional[str] = None,
-                 operator: Optional[str] = None,
-                 period: Optional[int] = None,
-                 statistic: Optional[str] = None,
-                 target: Optional[str] = None,
-                 unit: Optional[str] = None):
-        pulumi.set(__self__, "metric_name", metric_name)
-        pulumi.set(__self__, "namespace", namespace)
-        pulumi.set(__self__, "policy_name", policy_name)
-        pulumi.set(__self__, "threshold", threshold)
-        if action_type is not None:
-            pulumi.set(__self__, "action_type", action_type)
-        if adjustment is not None:
-            pulumi.set(__self__, "adjustment", adjustment)
-        if cooldown is not None:
-            pulumi.set(__self__, "cooldown", cooldown)
-        if dimensions is not None:
-            pulumi.set(__self__, "dimensions", dimensions)
-        if evaluation_periods is not None:
-            pulumi.set(__self__, "evaluation_periods", evaluation_periods)
-        if max_target_capacity is not None:
-            pulumi.set(__self__, "max_target_capacity", max_target_capacity)
-        if maximum is not None:
-            pulumi.set(__self__, "maximum", maximum)
-        if min_target_capacity is not None:
-            pulumi.set(__self__, "min_target_capacity", min_target_capacity)
-        if minimum is not None:
-            pulumi.set(__self__, "minimum", minimum)
-        if operator is not None:
-            pulumi.set(__self__, "operator", operator)
-        if period is not None:
-            pulumi.set(__self__, "period", period)
-        if statistic is not None:
-            pulumi.set(__self__, "statistic", statistic)
-        if target is not None:
-            pulumi.set(__self__, "target", target)
-        if unit is not None:
-            pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter(name="metricName")
-    def metric_name(self) -> str:
-        return pulumi.get(self, "metric_name")
-
-    @property
-    @pulumi.getter
-    def namespace(self) -> str:
-        return pulumi.get(self, "namespace")
-
-    @property
-    @pulumi.getter(name="policyName")
-    def policy_name(self) -> str:
-        return pulumi.get(self, "policy_name")
-
-    @property
-    @pulumi.getter
-    def threshold(self) -> float:
-        return pulumi.get(self, "threshold")
-
-    @property
-    @pulumi.getter(name="actionType")
-    def action_type(self) -> Optional[str]:
-        return pulumi.get(self, "action_type")
-
-    @property
-    @pulumi.getter
-    def adjustment(self) -> Optional[str]:
-        return pulumi.get(self, "adjustment")
-
-    @property
-    @pulumi.getter
-    def cooldown(self) -> Optional[int]:
-        return pulumi.get(self, "cooldown")
-
-    @property
-    @pulumi.getter
-    def dimensions(self) -> Optional[Sequence['outputs.ElastigroupScalingDownPolicyDimension']]:
-        return pulumi.get(self, "dimensions")
-
-    @property
-    @pulumi.getter(name="evaluationPeriods")
-    def evaluation_periods(self) -> Optional[int]:
-        return pulumi.get(self, "evaluation_periods")
-
-    @property
-    @pulumi.getter(name="maxTargetCapacity")
-    def max_target_capacity(self) -> Optional[str]:
-        return pulumi.get(self, "max_target_capacity")
-
-    @property
-    @pulumi.getter
-    def maximum(self) -> Optional[str]:
-        return pulumi.get(self, "maximum")
-
-    @property
-    @pulumi.getter(name="minTargetCapacity")
-    def min_target_capacity(self) -> Optional[str]:
-        return pulumi.get(self, "min_target_capacity")
-
-    @property
-    @pulumi.getter
-    def minimum(self) -> Optional[str]:
-        return pulumi.get(self, "minimum")
-
-    @property
-    @pulumi.getter
-    def operator(self) -> Optional[str]:
-        return pulumi.get(self, "operator")
-
-    @property
-    @pulumi.getter
-    def period(self) -> Optional[int]:
-        return pulumi.get(self, "period")
-
-    @property
-    @pulumi.getter
-    def statistic(self) -> Optional[str]:
-        return pulumi.get(self, "statistic")
-
-    @property
-    @pulumi.getter
-    def target(self) -> Optional[str]:
-        return pulumi.get(self, "target")
-
-    @property
-    @pulumi.getter
-    def unit(self) -> Optional[str]:
-        return pulumi.get(self, "unit")
-
-
-@pulumi.output_type
-class ElastigroupScalingDownPolicyDimension(dict):
-    def __init__(__self__, *,
-                 name: str,
-                 value: Optional[str] = None):
-        """
-        :param str name: The group name.
-        """
-        pulumi.set(__self__, "name", name)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> str:
-        """
-        The group name.
-        """
-        return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[str]:
-        return pulumi.get(self, "value")
-
-
-@pulumi.output_type
-class ElastigroupScalingUpPolicy(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "metricName":
-            suggest = "metric_name"
-        elif key == "policyName":
-            suggest = "policy_name"
-        elif key == "actionType":
-            suggest = "action_type"
-        elif key == "evaluationPeriods":
-            suggest = "evaluation_periods"
-        elif key == "maxTargetCapacity":
-            suggest = "max_target_capacity"
-        elif key == "minTargetCapacity":
-            suggest = "min_target_capacity"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ElastigroupScalingUpPolicy. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ElastigroupScalingUpPolicy.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ElastigroupScalingUpPolicy.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 metric_name: str,
-                 namespace: str,
-                 policy_name: str,
-                 threshold: float,
-                 action_type: Optional[str] = None,
-                 adjustment: Optional[str] = None,
-                 cooldown: Optional[int] = None,
-                 dimensions: Optional[Sequence['outputs.ElastigroupScalingUpPolicyDimension']] = None,
-                 evaluation_periods: Optional[int] = None,
-                 max_target_capacity: Optional[str] = None,
-                 maximum: Optional[str] = None,
-                 min_target_capacity: Optional[str] = None,
-                 minimum: Optional[str] = None,
-                 operator: Optional[str] = None,
-                 period: Optional[int] = None,
-                 statistic: Optional[str] = None,
-                 target: Optional[str] = None,
-                 unit: Optional[str] = None):
-        pulumi.set(__self__, "metric_name", metric_name)
-        pulumi.set(__self__, "namespace", namespace)
-        pulumi.set(__self__, "policy_name", policy_name)
-        pulumi.set(__self__, "threshold", threshold)
-        if action_type is not None:
-            pulumi.set(__self__, "action_type", action_type)
-        if adjustment is not None:
-            pulumi.set(__self__, "adjustment", adjustment)
-        if cooldown is not None:
-            pulumi.set(__self__, "cooldown", cooldown)
-        if dimensions is not None:
-            pulumi.set(__self__, "dimensions", dimensions)
-        if evaluation_periods is not None:
-            pulumi.set(__self__, "evaluation_periods", evaluation_periods)
-        if max_target_capacity is not None:
-            pulumi.set(__self__, "max_target_capacity", max_target_capacity)
-        if maximum is not None:
-            pulumi.set(__self__, "maximum", maximum)
-        if min_target_capacity is not None:
-            pulumi.set(__self__, "min_target_capacity", min_target_capacity)
-        if minimum is not None:
-            pulumi.set(__self__, "minimum", minimum)
-        if operator is not None:
-            pulumi.set(__self__, "operator", operator)
-        if period is not None:
-            pulumi.set(__self__, "period", period)
-        if statistic is not None:
-            pulumi.set(__self__, "statistic", statistic)
-        if target is not None:
-            pulumi.set(__self__, "target", target)
-        if unit is not None:
-            pulumi.set(__self__, "unit", unit)
-
-    @property
-    @pulumi.getter(name="metricName")
-    def metric_name(self) -> str:
-        return pulumi.get(self, "metric_name")
-
-    @property
-    @pulumi.getter
-    def namespace(self) -> str:
-        return pulumi.get(self, "namespace")
-
-    @property
-    @pulumi.getter(name="policyName")
-    def policy_name(self) -> str:
-        return pulumi.get(self, "policy_name")
-
-    @property
-    @pulumi.getter
-    def threshold(self) -> float:
-        return pulumi.get(self, "threshold")
-
-    @property
-    @pulumi.getter(name="actionType")
-    def action_type(self) -> Optional[str]:
-        return pulumi.get(self, "action_type")
-
-    @property
-    @pulumi.getter
-    def adjustment(self) -> Optional[str]:
-        return pulumi.get(self, "adjustment")
-
-    @property
-    @pulumi.getter
-    def cooldown(self) -> Optional[int]:
-        return pulumi.get(self, "cooldown")
-
-    @property
-    @pulumi.getter
-    def dimensions(self) -> Optional[Sequence['outputs.ElastigroupScalingUpPolicyDimension']]:
-        return pulumi.get(self, "dimensions")
-
-    @property
-    @pulumi.getter(name="evaluationPeriods")
-    def evaluation_periods(self) -> Optional[int]:
-        return pulumi.get(self, "evaluation_periods")
-
-    @property
-    @pulumi.getter(name="maxTargetCapacity")
-    def max_target_capacity(self) -> Optional[str]:
-        return pulumi.get(self, "max_target_capacity")
-
-    @property
-    @pulumi.getter
-    def maximum(self) -> Optional[str]:
-        return pulumi.get(self, "maximum")
-
-    @property
-    @pulumi.getter(name="minTargetCapacity")
-    def min_target_capacity(self) -> Optional[str]:
-        return pulumi.get(self, "min_target_capacity")
-
-    @property
-    @pulumi.getter
-    def minimum(self) -> Optional[str]:
-        return pulumi.get(self, "minimum")
-
-    @property
-    @pulumi.getter
-    def operator(self) -> Optional[str]:
-        return pulumi.get(self, "operator")
-
-    @property
-    @pulumi.getter
-    def period(self) -> Optional[int]:
-        return pulumi.get(self, "period")
-
-    @property
-    @pulumi.getter
-    def statistic(self) -> Optional[str]:
-        return pulumi.get(self, "statistic")
-
-    @property
-    @pulumi.getter
-    def target(self) -> Optional[str]:
-        return pulumi.get(self, "target")
-
-    @property
-    @pulumi.getter
-    def unit(self) -> Optional[str]:
-        return pulumi.get(self, "unit")
-
-
-@pulumi.output_type
-class ElastigroupScalingUpPolicyDimension(dict):
-    def __init__(__self__, *,
-                 name: str,
-                 value: Optional[str] = None):
-        """
-        :param str name: The group name.
-        """
-        pulumi.set(__self__, "name", name)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> str:
-        """
-        The group name.
-        """
-        return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[str]:
-        return pulumi.get(self, "value")
-
-
-@pulumi.output_type
-class ElastigroupScheduledTask(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "cronExpression":
-            suggest = "cron_expression"
-        elif key == "taskType":
-            suggest = "task_type"
-        elif key == "adjustmentPercentage":
-            suggest = "adjustment_percentage"
-        elif key == "batchSizePercentage":
-            suggest = "batch_size_percentage"
-        elif key == "gracePeriod":
-            suggest = "grace_period"
-        elif key == "isEnabled":
-            suggest = "is_enabled"
-        elif key == "scaleMaxCapacity":
-            suggest = "scale_max_capacity"
-        elif key == "scaleMinCapacity":
-            suggest = "scale_min_capacity"
-        elif key == "scaleTargetCapacity":
-            suggest = "scale_target_capacity"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ElastigroupScheduledTask. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ElastigroupScheduledTask.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ElastigroupScheduledTask.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 cron_expression: str,
-                 task_type: str,
-                 adjustment: Optional[str] = None,
-                 adjustment_percentage: Optional[str] = None,
-                 batch_size_percentage: Optional[str] = None,
-                 grace_period: Optional[str] = None,
-                 is_enabled: Optional[bool] = None,
-                 scale_max_capacity: Optional[str] = None,
-                 scale_min_capacity: Optional[str] = None,
-                 scale_target_capacity: Optional[str] = None):
-        pulumi.set(__self__, "cron_expression", cron_expression)
-        pulumi.set(__self__, "task_type", task_type)
-        if adjustment is not None:
-            pulumi.set(__self__, "adjustment", adjustment)
-        if adjustment_percentage is not None:
-            pulumi.set(__self__, "adjustment_percentage", adjustment_percentage)
-        if batch_size_percentage is not None:
-            pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
-        if grace_period is not None:
-            pulumi.set(__self__, "grace_period", grace_period)
-        if is_enabled is not None:
-            pulumi.set(__self__, "is_enabled", is_enabled)
-        if scale_max_capacity is not None:
-            pulumi.set(__self__, "scale_max_capacity", scale_max_capacity)
-        if scale_min_capacity is not None:
-            pulumi.set(__self__, "scale_min_capacity", scale_min_capacity)
-        if scale_target_capacity is not None:
-            pulumi.set(__self__, "scale_target_capacity", scale_target_capacity)
-
-    @property
-    @pulumi.getter(name="cronExpression")
-    def cron_expression(self) -> str:
-        return pulumi.get(self, "cron_expression")
-
-    @property
-    @pulumi.getter(name="taskType")
-    def task_type(self) -> str:
-        return pulumi.get(self, "task_type")
-
-    @property
-    @pulumi.getter
-    def adjustment(self) -> Optional[str]:
-        return pulumi.get(self, "adjustment")
-
-    @property
-    @pulumi.getter(name="adjustmentPercentage")
-    def adjustment_percentage(self) -> Optional[str]:
-        return pulumi.get(self, "adjustment_percentage")
-
-    @property
-    @pulumi.getter(name="batchSizePercentage")
-    def batch_size_percentage(self) -> Optional[str]:
-        return pulumi.get(self, "batch_size_percentage")
-
-    @property
-    @pulumi.getter(name="gracePeriod")
-    def grace_period(self) -> Optional[str]:
-        return pulumi.get(self, "grace_period")
-
-    @property
-    @pulumi.getter(name="isEnabled")
-    def is_enabled(self) -> Optional[bool]:
-        return pulumi.get(self, "is_enabled")
-
-    @property
-    @pulumi.getter(name="scaleMaxCapacity")
-    def scale_max_capacity(self) -> Optional[str]:
-        return pulumi.get(self, "scale_max_capacity")
-
-    @property
-    @pulumi.getter(name="scaleMinCapacity")
-    def scale_min_capacity(self) -> Optional[str]:
-        return pulumi.get(self, "scale_min_capacity")
-
-    @property
-    @pulumi.getter(name="scaleTargetCapacity")
-    def scale_target_capacity(self) -> Optional[str]:
-        return pulumi.get(self, "scale_target_capacity")
-
-
-@pulumi.output_type
-class ElastigroupStrategy(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "drainingTimeout":
-            suggest = "draining_timeout"
-        elif key == "lowPriorityPercentage":
-            suggest = "low_priority_percentage"
-        elif key == "odCount":
-            suggest = "od_count"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ElastigroupStrategy. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ElastigroupStrategy.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ElastigroupStrategy.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 draining_timeout: Optional[int] = None,
-                 low_priority_percentage: Optional[int] = None,
-                 od_count: Optional[int] = None):
-        if draining_timeout is not None:
-            pulumi.set(__self__, "draining_timeout", draining_timeout)
-        if low_priority_percentage is not None:
-            pulumi.set(__self__, "low_priority_percentage", low_priority_percentage)
-        if od_count is not None:
-            pulumi.set(__self__, "od_count", od_count)
-
-    @property
-    @pulumi.getter(name="drainingTimeout")
-    def draining_timeout(self) -> Optional[int]:
-        return pulumi.get(self, "draining_timeout")
-
-    @property
-    @pulumi.getter(name="lowPriorityPercentage")
-    def low_priority_percentage(self) -> Optional[int]:
-        return pulumi.get(self, "low_priority_percentage")
-
-    @property
-    @pulumi.getter(name="odCount")
-    def od_count(self) -> Optional[int]:
-        return pulumi.get(self, "od_count")
-
-
-@pulumi.output_type
-class ElastigroupUpdatePolicy(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "shouldRoll":
-            suggest = "should_roll"
-        elif key == "rollConfig":
-            suggest = "roll_config"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ElastigroupUpdatePolicy. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ElastigroupUpdatePolicy.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ElastigroupUpdatePolicy.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 should_roll: bool,
-                 roll_config: Optional['outputs.ElastigroupUpdatePolicyRollConfig'] = None):
-        pulumi.set(__self__, "should_roll", should_roll)
-        if roll_config is not None:
-            pulumi.set(__self__, "roll_config", roll_config)
-
-    @property
-    @pulumi.getter(name="shouldRoll")
-    def should_roll(self) -> bool:
-        return pulumi.get(self, "should_roll")
-
-    @property
-    @pulumi.getter(name="rollConfig")
-    def roll_config(self) -> Optional['outputs.ElastigroupUpdatePolicyRollConfig']:
-        return pulumi.get(self, "roll_config")
-
-
-@pulumi.output_type
-class ElastigroupUpdatePolicyRollConfig(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "batchSizePercentage":
-            suggest = "batch_size_percentage"
-        elif key == "gracePeriod":
-            suggest = "grace_period"
-        elif key == "healthCheckType":
-            suggest = "health_check_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ElastigroupUpdatePolicyRollConfig. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ElastigroupUpdatePolicyRollConfig.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ElastigroupUpdatePolicyRollConfig.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 batch_size_percentage: int,
-                 grace_period: Optional[int] = None,
-                 health_check_type: Optional[str] = None):
-        pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
-        if grace_period is not None:
-            pulumi.set(__self__, "grace_period", grace_period)
-        if health_check_type is not None:
-            pulumi.set(__self__, "health_check_type", health_check_type)
-
-    @property
-    @pulumi.getter(name="batchSizePercentage")
-    def batch_size_percentage(self) -> int:
-        return pulumi.get(self, "batch_size_percentage")
-
-    @property
-    @pulumi.getter(name="gracePeriod")
-    def grace_period(self) -> Optional[int]:
-        return pulumi.get(self, "grace_period")
-
-    @property
-    @pulumi.getter(name="healthCheckType")
-    def health_check_type(self) -> Optional[str]:
-        return pulumi.get(self, "health_check_type")
-
 
 @pulumi.output_type
 class OceanAutoscaler(dict):
@@ -1954,6 +821,12 @@ class OceanNpAutoscaler(dict):
                  autoscale_headroom: Optional['outputs.OceanNpAutoscalerAutoscaleHeadroom'] = None,
                  autoscale_is_enabled: Optional[bool] = None,
                  resource_limits: Optional['outputs.OceanNpAutoscalerResourceLimits'] = None):
+        """
+        :param 'OceanNpAutoscalerAutoscaleDownArgs' autoscale_down: Auto Scaling scale down operations.
+        :param 'OceanNpAutoscalerAutoscaleHeadroomArgs' autoscale_headroom: Spare resource capacity management enabling fast assignment of pods without waiting for new resources to launch.
+        :param bool autoscale_is_enabled: Enable the Ocean Kubernetes Autoscaler.
+        :param 'OceanNpAutoscalerResourceLimitsArgs' resource_limits: Optionally set upper and lower bounds on the resource usage of the cluster.
+        """
         if autoscale_down is not None:
             pulumi.set(__self__, "autoscale_down", autoscale_down)
         if autoscale_headroom is not None:
@@ -1966,21 +839,33 @@ class OceanNpAutoscaler(dict):
     @property
     @pulumi.getter(name="autoscaleDown")
     def autoscale_down(self) -> Optional['outputs.OceanNpAutoscalerAutoscaleDown']:
+        """
+        Auto Scaling scale down operations.
+        """
         return pulumi.get(self, "autoscale_down")
 
     @property
     @pulumi.getter(name="autoscaleHeadroom")
     def autoscale_headroom(self) -> Optional['outputs.OceanNpAutoscalerAutoscaleHeadroom']:
+        """
+        Spare resource capacity management enabling fast assignment of pods without waiting for new resources to launch.
+        """
         return pulumi.get(self, "autoscale_headroom")
 
     @property
     @pulumi.getter(name="autoscaleIsEnabled")
     def autoscale_is_enabled(self) -> Optional[bool]:
+        """
+        Enable the Ocean Kubernetes Autoscaler.
+        """
         return pulumi.get(self, "autoscale_is_enabled")
 
     @property
     @pulumi.getter(name="resourceLimits")
     def resource_limits(self) -> Optional['outputs.OceanNpAutoscalerResourceLimits']:
+        """
+        Optionally set upper and lower bounds on the resource usage of the cluster.
+        """
         return pulumi.get(self, "resource_limits")
 
 
@@ -2164,6 +1049,25 @@ class OceanNpFilters(dict):
                  min_vcpu: Optional[int] = None,
                  series: Optional[Sequence[str]] = None,
                  vm_types: Optional[Sequence[str]] = None):
+        """
+        :param str accelerated_networking: In case acceleratedNetworking is set to Enabled, accelerated networking applies only to the VM that enables it.
+        :param Sequence[str] architectures: The filtered vm sizes will support at least one of the architectures from this list. x86_64 includes both intel64 and amd64.
+        :param str disk_performance: The filtered vm sizes will support at least one of the classes from this list.
+        :param Sequence[str] exclude_series: Vm sizes belonging to a series from the list will not be available for scaling
+        :param Sequence[str] gpu_types: The filtered gpu types will belong to one of the gpu types from this list.
+               
+               <a id="update-policy"></a>
+        :param float max_gpu: Maximum number of GPUs available.
+        :param float max_memory_gib: Maximum amount of Memory (GiB).
+        :param int max_vcpu: Maximum number of vcpus available.
+        :param int min_disk: Minimum number of data disks available.
+        :param float min_gpu: Minimum number of GPUs available.
+        :param float min_memory_gib: Minimum amount of Memory (GiB).
+        :param int min_nics: Minimum number of network interfaces.
+        :param int min_vcpu: Minimum number of vcpus available.
+        :param Sequence[str] series: Vm sizes belonging to a series from the list will be available for scaling. We can specify include list and series can be specified with capital or small letters, with space, without space or with underscore '_' .  For example all of these "DSv2", "Ds v2", "ds_v2" refer to same DS_v2 series.
+        :param Sequence[str] vm_types: The filtered vm types will belong to one of the vm types from this list.
+        """
         if accelerated_networking is not None:
             pulumi.set(__self__, "accelerated_networking", accelerated_networking)
         if architectures is not None:
@@ -2198,76 +1102,123 @@ class OceanNpFilters(dict):
     @property
     @pulumi.getter(name="acceleratedNetworking")
     def accelerated_networking(self) -> Optional[str]:
+        """
+        In case acceleratedNetworking is set to Enabled, accelerated networking applies only to the VM that enables it.
+        """
         return pulumi.get(self, "accelerated_networking")
 
     @property
     @pulumi.getter
     def architectures(self) -> Optional[Sequence[str]]:
+        """
+        The filtered vm sizes will support at least one of the architectures from this list. x86_64 includes both intel64 and amd64.
+        """
         return pulumi.get(self, "architectures")
 
     @property
     @pulumi.getter(name="diskPerformance")
     def disk_performance(self) -> Optional[str]:
+        """
+        The filtered vm sizes will support at least one of the classes from this list.
+        """
         return pulumi.get(self, "disk_performance")
 
     @property
     @pulumi.getter(name="excludeSeries")
     def exclude_series(self) -> Optional[Sequence[str]]:
+        """
+        Vm sizes belonging to a series from the list will not be available for scaling
+        """
         return pulumi.get(self, "exclude_series")
 
     @property
     @pulumi.getter(name="gpuTypes")
     def gpu_types(self) -> Optional[Sequence[str]]:
+        """
+        The filtered gpu types will belong to one of the gpu types from this list.
+
+        <a id="update-policy"></a>
+        """
         return pulumi.get(self, "gpu_types")
 
     @property
     @pulumi.getter(name="maxGpu")
     def max_gpu(self) -> Optional[float]:
+        """
+        Maximum number of GPUs available.
+        """
         return pulumi.get(self, "max_gpu")
 
     @property
     @pulumi.getter(name="maxMemoryGib")
     def max_memory_gib(self) -> Optional[float]:
+        """
+        Maximum amount of Memory (GiB).
+        """
         return pulumi.get(self, "max_memory_gib")
 
     @property
     @pulumi.getter(name="maxVcpu")
     def max_vcpu(self) -> Optional[int]:
+        """
+        Maximum number of vcpus available.
+        """
         return pulumi.get(self, "max_vcpu")
 
     @property
     @pulumi.getter(name="minDisk")
     def min_disk(self) -> Optional[int]:
+        """
+        Minimum number of data disks available.
+        """
         return pulumi.get(self, "min_disk")
 
     @property
     @pulumi.getter(name="minGpu")
     def min_gpu(self) -> Optional[float]:
+        """
+        Minimum number of GPUs available.
+        """
         return pulumi.get(self, "min_gpu")
 
     @property
     @pulumi.getter(name="minMemoryGib")
     def min_memory_gib(self) -> Optional[float]:
+        """
+        Minimum amount of Memory (GiB).
+        """
         return pulumi.get(self, "min_memory_gib")
 
     @property
     @pulumi.getter(name="minNics")
     def min_nics(self) -> Optional[int]:
+        """
+        Minimum number of network interfaces.
+        """
         return pulumi.get(self, "min_nics")
 
     @property
     @pulumi.getter(name="minVcpu")
     def min_vcpu(self) -> Optional[int]:
+        """
+        Minimum number of vcpus available.
+        """
         return pulumi.get(self, "min_vcpu")
 
     @property
     @pulumi.getter
     def series(self) -> Optional[Sequence[str]]:
+        """
+        Vm sizes belonging to a series from the list will be available for scaling. We can specify include list and series can be specified with capital or small letters, with space, without space or with underscore '_' .  For example all of these "DSv2", "Ds v2", "ds_v2" refer to same DS_v2 series.
+        """
         return pulumi.get(self, "series")
 
     @property
     @pulumi.getter(name="vmTypes")
     def vm_types(self) -> Optional[Sequence[str]]:
+        """
+        The filtered vm types will belong to one of the vm types from this list.
+        """
         return pulumi.get(self, "vm_types")
 
 
@@ -2301,6 +1252,12 @@ class OceanNpHeadroom(dict):
                  gpu_per_unit: Optional[int] = None,
                  memory_per_unit: Optional[int] = None,
                  num_of_units: Optional[int] = None):
+        """
+        :param int cpu_per_unit: Configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        :param int gpu_per_unit: Amount of GPU to allocate for headroom unit.
+        :param int memory_per_unit: Configure the amount of memory (MiB) to allocate the headroom.
+        :param int num_of_units: The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+        """
         if cpu_per_unit is not None:
             pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
         if gpu_per_unit is not None:
@@ -2313,21 +1270,33 @@ class OceanNpHeadroom(dict):
     @property
     @pulumi.getter(name="cpuPerUnit")
     def cpu_per_unit(self) -> Optional[int]:
+        """
+        Configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        """
         return pulumi.get(self, "cpu_per_unit")
 
     @property
     @pulumi.getter(name="gpuPerUnit")
     def gpu_per_unit(self) -> Optional[int]:
+        """
+        Amount of GPU to allocate for headroom unit.
+        """
         return pulumi.get(self, "gpu_per_unit")
 
     @property
     @pulumi.getter(name="memoryPerUnit")
     def memory_per_unit(self) -> Optional[int]:
+        """
+        Configure the amount of memory (MiB) to allocate the headroom.
+        """
         return pulumi.get(self, "memory_per_unit")
 
     @property
     @pulumi.getter(name="numOfUnits")
     def num_of_units(self) -> Optional[int]:
+        """
+        The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+        """
         return pulumi.get(self, "num_of_units")
 
 
@@ -2352,12 +1321,18 @@ class OceanNpHealth(dict):
 
     def __init__(__self__, *,
                  grace_period: Optional[int] = None):
+        """
+        :param int grace_period: The amount of time to wait, in seconds, from the moment the instance has launched until monitoring of its health checks begins.
+        """
         if grace_period is not None:
             pulumi.set(__self__, "grace_period", grace_period)
 
     @property
     @pulumi.getter(name="gracePeriod")
     def grace_period(self) -> Optional[int]:
+        """
+        The amount of time to wait, in seconds, from the moment the instance has launched until monitoring of its health checks begins.
+        """
         return pulumi.get(self, "grace_period")
 
 
@@ -2382,12 +1357,18 @@ class OceanNpScheduling(dict):
 
     def __init__(__self__, *,
                  shutdown_hours: Optional['outputs.OceanNpSchedulingShutdownHours'] = None):
+        """
+        :param 'OceanNpSchedulingShutdownHoursArgs' shutdown_hours: [Shutdown Hours](https://docs.spot.io/ocean/features/running-hours?id=shutdown-hours)An object used to specify times that the nodes in the cluster will be taken down.
+        """
         if shutdown_hours is not None:
             pulumi.set(__self__, "shutdown_hours", shutdown_hours)
 
     @property
     @pulumi.getter(name="shutdownHours")
     def shutdown_hours(self) -> Optional['outputs.OceanNpSchedulingShutdownHours']:
+        """
+        [Shutdown Hours](https://docs.spot.io/ocean/features/running-hours?id=shutdown-hours)An object used to specify times that the nodes in the cluster will be taken down.
+        """
         return pulumi.get(self, "shutdown_hours")
 
 
@@ -2436,6 +1417,11 @@ class OceanNpTaint(dict):
                  effect: str,
                  key: str,
                  value: str):
+        """
+        :param str effect: Set taint effect.
+        :param str key: Set taint key. The following taint keys are not allowed: ["node.kubernetes.io/not-ready",  "node.kubernetes.io/unreachable", "node.kubernetes.io/unschedulable",  "node.kubernetes.io/memory-pressure",  "node.kubernetes.io/disk-pressure",  "node.kubernetes.io/network-unavailable",  "node.kubernetes.io/pid-pressure",  "node.kubernetes.io/out-of-service",  "node.cloudprovider.kubernetes.io/uninitialized",  "node.cloudprovider.kubernetes.io/shutdown", "kubernetes.azure.com/scalesetpriority"]
+        :param str value: Set taint value.
+        """
         pulumi.set(__self__, "effect", effect)
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
@@ -2443,16 +1429,25 @@ class OceanNpTaint(dict):
     @property
     @pulumi.getter
     def effect(self) -> str:
+        """
+        Set taint effect.
+        """
         return pulumi.get(self, "effect")
 
     @property
     @pulumi.getter
     def key(self) -> str:
+        """
+        Set taint key. The following taint keys are not allowed: ["node.kubernetes.io/not-ready",  "node.kubernetes.io/unreachable", "node.kubernetes.io/unschedulable",  "node.kubernetes.io/memory-pressure",  "node.kubernetes.io/disk-pressure",  "node.kubernetes.io/network-unavailable",  "node.kubernetes.io/pid-pressure",  "node.kubernetes.io/out-of-service",  "node.cloudprovider.kubernetes.io/uninitialized",  "node.cloudprovider.kubernetes.io/shutdown", "kubernetes.azure.com/scalesetpriority"]
+        """
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        Set taint value.
+        """
         return pulumi.get(self, "value")
 
 
@@ -2662,6 +1657,24 @@ class OceanNpVirtualNodeGroupFilters(dict):
                  min_vcpu: Optional[int] = None,
                  series: Optional[Sequence[str]] = None,
                  vm_types: Optional[Sequence[str]] = None):
+        """
+        :param str accelerated_networking: In case acceleratedNetworking is set to Enabled, accelerated networking applies only to the VM that enables it.
+        :param Sequence[str] architectures: The filtered vm sizes will support at least one of the architectures from this list. x86_64 includes both intel64 and amd64.
+        :param str disk_performance: The filtered vm sizes will support at least one of the classes from this list.
+        :param Sequence[str] exclude_series: Vm sizes belonging to a series from the list will not be available for scaling.
+        :param Sequence[str] gpu_types: The filtered gpu types will belong to one of the gpu types from this list.
+               <a id="update-policy"></a>
+        :param float max_gpu: Maximum number of GPUs available.
+        :param float max_memory_gib: Maximum amount of Memory (GiB).
+        :param int max_vcpu: Maximum number of vcpus available.
+        :param int min_disk: Minimum number of data disks available.
+        :param float min_gpu: Minimum number of GPUs available.
+        :param float min_memory_gib: Minimum amount of Memory (GiB).
+        :param int min_nics: Minimum number of network interfaces.
+        :param int min_vcpu: Minimum number of vcpus available.
+        :param Sequence[str] series: Vm sizes belonging to a series from the list will be available for scaling.
+        :param Sequence[str] vm_types: The filtered vm types will belong to one of the vm types from this list.
+        """
         if accelerated_networking is not None:
             pulumi.set(__self__, "accelerated_networking", accelerated_networking)
         if architectures is not None:
@@ -2696,76 +1709,122 @@ class OceanNpVirtualNodeGroupFilters(dict):
     @property
     @pulumi.getter(name="acceleratedNetworking")
     def accelerated_networking(self) -> Optional[str]:
+        """
+        In case acceleratedNetworking is set to Enabled, accelerated networking applies only to the VM that enables it.
+        """
         return pulumi.get(self, "accelerated_networking")
 
     @property
     @pulumi.getter
     def architectures(self) -> Optional[Sequence[str]]:
+        """
+        The filtered vm sizes will support at least one of the architectures from this list. x86_64 includes both intel64 and amd64.
+        """
         return pulumi.get(self, "architectures")
 
     @property
     @pulumi.getter(name="diskPerformance")
     def disk_performance(self) -> Optional[str]:
+        """
+        The filtered vm sizes will support at least one of the classes from this list.
+        """
         return pulumi.get(self, "disk_performance")
 
     @property
     @pulumi.getter(name="excludeSeries")
     def exclude_series(self) -> Optional[Sequence[str]]:
+        """
+        Vm sizes belonging to a series from the list will not be available for scaling.
+        """
         return pulumi.get(self, "exclude_series")
 
     @property
     @pulumi.getter(name="gpuTypes")
     def gpu_types(self) -> Optional[Sequence[str]]:
+        """
+        The filtered gpu types will belong to one of the gpu types from this list.
+        <a id="update-policy"></a>
+        """
         return pulumi.get(self, "gpu_types")
 
     @property
     @pulumi.getter(name="maxGpu")
     def max_gpu(self) -> Optional[float]:
+        """
+        Maximum number of GPUs available.
+        """
         return pulumi.get(self, "max_gpu")
 
     @property
     @pulumi.getter(name="maxMemoryGib")
     def max_memory_gib(self) -> Optional[float]:
+        """
+        Maximum amount of Memory (GiB).
+        """
         return pulumi.get(self, "max_memory_gib")
 
     @property
     @pulumi.getter(name="maxVcpu")
     def max_vcpu(self) -> Optional[int]:
+        """
+        Maximum number of vcpus available.
+        """
         return pulumi.get(self, "max_vcpu")
 
     @property
     @pulumi.getter(name="minDisk")
     def min_disk(self) -> Optional[int]:
+        """
+        Minimum number of data disks available.
+        """
         return pulumi.get(self, "min_disk")
 
     @property
     @pulumi.getter(name="minGpu")
     def min_gpu(self) -> Optional[float]:
+        """
+        Minimum number of GPUs available.
+        """
         return pulumi.get(self, "min_gpu")
 
     @property
     @pulumi.getter(name="minMemoryGib")
     def min_memory_gib(self) -> Optional[float]:
+        """
+        Minimum amount of Memory (GiB).
+        """
         return pulumi.get(self, "min_memory_gib")
 
     @property
     @pulumi.getter(name="minNics")
     def min_nics(self) -> Optional[int]:
+        """
+        Minimum number of network interfaces.
+        """
         return pulumi.get(self, "min_nics")
 
     @property
     @pulumi.getter(name="minVcpu")
     def min_vcpu(self) -> Optional[int]:
+        """
+        Minimum number of vcpus available.
+        """
         return pulumi.get(self, "min_vcpu")
 
     @property
     @pulumi.getter
     def series(self) -> Optional[Sequence[str]]:
+        """
+        Vm sizes belonging to a series from the list will be available for scaling.
+        """
         return pulumi.get(self, "series")
 
     @property
     @pulumi.getter(name="vmTypes")
     def vm_types(self) -> Optional[Sequence[str]]:
+        """
+        The filtered vm types will belong to one of the vm types from this list.
+        """
         return pulumi.get(self, "vm_types")
 
 
@@ -2799,6 +1858,12 @@ class OceanNpVirtualNodeGroupHeadroom(dict):
                  gpu_per_unit: Optional[int] = None,
                  memory_per_unit: Optional[int] = None,
                  num_of_units: Optional[int] = None):
+        """
+        :param int cpu_per_unit: Configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        :param int gpu_per_unit: Amount of GPU to allocate for headroom unit.
+        :param int memory_per_unit: Configure the amount of memory (MiB) to allocate the headroom.
+        :param int num_of_units: The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+        """
         if cpu_per_unit is not None:
             pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
         if gpu_per_unit is not None:
@@ -2811,21 +1876,33 @@ class OceanNpVirtualNodeGroupHeadroom(dict):
     @property
     @pulumi.getter(name="cpuPerUnit")
     def cpu_per_unit(self) -> Optional[int]:
+        """
+        Configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        """
         return pulumi.get(self, "cpu_per_unit")
 
     @property
     @pulumi.getter(name="gpuPerUnit")
     def gpu_per_unit(self) -> Optional[int]:
+        """
+        Amount of GPU to allocate for headroom unit.
+        """
         return pulumi.get(self, "gpu_per_unit")
 
     @property
     @pulumi.getter(name="memoryPerUnit")
     def memory_per_unit(self) -> Optional[int]:
+        """
+        Configure the amount of memory (MiB) to allocate the headroom.
+        """
         return pulumi.get(self, "memory_per_unit")
 
     @property
     @pulumi.getter(name="numOfUnits")
     def num_of_units(self) -> Optional[int]:
+        """
+        The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+        """
         return pulumi.get(self, "num_of_units")
 
 
@@ -2835,6 +1912,11 @@ class OceanNpVirtualNodeGroupTaint(dict):
                  effect: str,
                  key: str,
                  value: str):
+        """
+        :param str effect: Set taint effect.
+        :param str key: Set taint key. The following are not allowed: "kubernetes.azure.com/scalesetpriority".
+        :param str value: Set taint value.
+        """
         pulumi.set(__self__, "effect", effect)
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
@@ -2842,16 +1924,25 @@ class OceanNpVirtualNodeGroupTaint(dict):
     @property
     @pulumi.getter
     def effect(self) -> str:
+        """
+        Set taint effect.
+        """
         return pulumi.get(self, "effect")
 
     @property
     @pulumi.getter
     def key(self) -> str:
+        """
+        Set taint key. The following are not allowed: "kubernetes.azure.com/scalesetpriority".
+        """
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        Set taint value.
+        """
         return pulumi.get(self, "value")
 
 

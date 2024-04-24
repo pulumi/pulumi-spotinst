@@ -12,15 +12,27 @@ namespace Pulumi.SpotInst.Azure.Inputs
 
     public sealed class OceanNpAutoscalerGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Auto Scaling scale down operations.
+        /// </summary>
         [Input("autoscaleDown")]
         public Input<Inputs.OceanNpAutoscalerAutoscaleDownGetArgs>? AutoscaleDown { get; set; }
 
+        /// <summary>
+        /// Spare resource capacity management enabling fast assignment of pods without waiting for new resources to launch.
+        /// </summary>
         [Input("autoscaleHeadroom")]
         public Input<Inputs.OceanNpAutoscalerAutoscaleHeadroomGetArgs>? AutoscaleHeadroom { get; set; }
 
+        /// <summary>
+        /// Enable the Ocean Kubernetes Autoscaler.
+        /// </summary>
         [Input("autoscaleIsEnabled")]
         public Input<bool>? AutoscaleIsEnabled { get; set; }
 
+        /// <summary>
+        /// Optionally set upper and lower bounds on the resource usage of the cluster.
+        /// </summary>
         [Input("resourceLimits")]
         public Input<Inputs.OceanNpAutoscalerResourceLimitsGetArgs>? ResourceLimits { get; set; }
 

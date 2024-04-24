@@ -16,7 +16,7 @@ package spotinst
 
 import (
 	"fmt"
-	"path/filepath"
+	"path"
 	"strings"
 	"unicode"
 
@@ -98,8 +98,7 @@ func Provider() tfbridge.ProviderInfo {
 				Tok:  makeResource(awsMod, "ManagedInstance"),
 				Docs: noUpstreamDocs,
 			},
-			"spotinst_elastigroup_azure": {Tok: makeResource(azureMod, "Elastigroup")},
-			"spotinst_ocean_aks":         {Tok: makeResource(azureMod, "Ocean")},
+			"spotinst_ocean_aks": {Tok: makeResource(azureMod, "Ocean")},
 			"spotinst_ocean_aks_np_virtual_node_group": {
 				Tok:  makeResource(azureMod, "OceanNpVirtualNodeGroup"),
 				Docs: noUpstreamDocs,
@@ -142,7 +141,6 @@ func Provider() tfbridge.ProviderInfo {
 			"spotinst_data_integration":    {Tok: makeResource(mainMod, "DataIntegration")},
 			"spotinst_stateful_node_azure": {Tok: makeResource(mainMod, "StatefulNodeAzure")},
 		},
-		DataSources: map[string]*tfbridge.DataSourceInfo{},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions
 			Dependencies: map[string]string{
@@ -153,17 +151,14 @@ func Provider() tfbridge.ProviderInfo {
 				"@types/mime": "^2.0.0",
 			},
 		},
-		Python: (func() *tfbridge.PythonInfo {
-			i := &tfbridge.PythonInfo{
-				Requires: map[string]string{
-					"pulumi": ">=3.0.0,<4.0.0",
-				}}
-			i.PyProject.Enabled = true
-			return i
-		})(),
-
+		Python: &tfbridge.PythonInfo{
+			Requires: map[string]string{
+				"pulumi": ">=3.0.0,<4.0.0",
+			},
+			PyProject: struct{ Enabled bool }{true},
+		},
 		Golang: &tfbridge.GolangInfo{
-			ImportBasePath: filepath.Join(
+			ImportBasePath: path.Join(
 				fmt.Sprintf("github.com/pulumi/pulumi-%[1]s/sdk/", mainPkg),
 				tfbridge.GetModuleMajorVersion(version.Version),
 				"go",
@@ -191,9 +186,7 @@ func Provider() tfbridge.ProviderInfo {
 	return prov
 }
 
-var noUpstreamDocs = &tfbridge.DocInfo{
-	Markdown: []byte(" "),
-}
+var noUpstreamDocs = &tfbridge.DocInfo{AllowMissing: true}
 
 //go:embed cmd/pulumi-resource-spotinst/bridge-metadata.json
 var metadata []byte

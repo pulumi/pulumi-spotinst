@@ -12,6 +12,9 @@ namespace Pulumi.SpotInst.Azure.Inputs
 
     public sealed class OceanNpHealthGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The amount of time to wait, in seconds, from the moment the instance has launched until monitoring of its health checks begins.
+        /// </summary>
         [Input("gracePeriod")]
         public Input<int>? GracePeriod { get; set; }
 

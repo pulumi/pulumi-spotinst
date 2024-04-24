@@ -12,38 +12,100 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages a Spotinst Ocean AKS resource.
+//
+// ## Basic Ocean Cluster Creation Usage Example - using minimum configuration with only required parameters
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/azure"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := azure.NewOceanNp(ctx, "example", &azure.OceanNpArgs{
+//				Name:                               pulumi.String("test"),
+//				AksRegion:                          pulumi.String("eastus"),
+//				AksClusterName:                     pulumi.String("test-cluster"),
+//				AksInfrastructureResourceGroupName: pulumi.String("MC_TestResourceGroup_test-cluster_eastus"),
+//				AksResourceGroupName:               pulumi.String("TestResourceGroup"),
+//				ControllerClusterId:                pulumi.String("test-123124"),
+//				AvailabilityZones: pulumi.StringArray{
+//					pulumi.String("1"),
+//					pulumi.String("2"),
+//					pulumi.String("3"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Detailed Ocean Cluster Creation Usage Example - using all available parameters with sample values
 type OceanNp struct {
 	pulumi.CustomResourceState
 
-	AksClusterName                     pulumi.StringOutput          `pulumi:"aksClusterName"`
-	AksInfrastructureResourceGroupName pulumi.StringOutput          `pulumi:"aksInfrastructureResourceGroupName"`
-	AksRegion                          pulumi.StringOutput          `pulumi:"aksRegion"`
-	AksResourceGroupName               pulumi.StringOutput          `pulumi:"aksResourceGroupName"`
-	Autoscaler                         OceanNpAutoscalerPtrOutput   `pulumi:"autoscaler"`
-	AvailabilityZones                  pulumi.StringArrayOutput     `pulumi:"availabilityZones"`
-	ControllerClusterId                pulumi.StringOutput          `pulumi:"controllerClusterId"`
-	EnableNodePublicIp                 pulumi.BoolPtrOutput         `pulumi:"enableNodePublicIp"`
-	FallbackToOndemand                 pulumi.BoolPtrOutput         `pulumi:"fallbackToOndemand"`
-	Filters                            OceanNpFiltersPtrOutput      `pulumi:"filters"`
-	Headrooms                          OceanNpHeadroomArrayOutput   `pulumi:"headrooms"`
-	Health                             OceanNpHealthPtrOutput       `pulumi:"health"`
-	KubernetesVersion                  pulumi.StringPtrOutput       `pulumi:"kubernetesVersion"`
-	Labels                             pulumi.MapOutput             `pulumi:"labels"`
-	MaxCount                           pulumi.IntPtrOutput          `pulumi:"maxCount"`
-	MaxPodsPerNode                     pulumi.IntPtrOutput          `pulumi:"maxPodsPerNode"`
-	MinCount                           pulumi.IntPtrOutput          `pulumi:"minCount"`
-	Name                               pulumi.StringOutput          `pulumi:"name"`
-	OsDiskSizeGb                       pulumi.IntPtrOutput          `pulumi:"osDiskSizeGb"`
-	OsDiskType                         pulumi.StringPtrOutput       `pulumi:"osDiskType"`
-	OsSku                              pulumi.StringPtrOutput       `pulumi:"osSku"`
-	OsType                             pulumi.StringPtrOutput       `pulumi:"osType"`
-	PodSubnetIds                       pulumi.StringArrayOutput     `pulumi:"podSubnetIds"`
-	Scheduling                         OceanNpSchedulingPtrOutput   `pulumi:"scheduling"`
-	SpotPercentage                     pulumi.IntPtrOutput          `pulumi:"spotPercentage"`
-	Tags                               pulumi.MapOutput             `pulumi:"tags"`
-	Taints                             OceanNpTaintArrayOutput      `pulumi:"taints"`
-	UpdatePolicy                       OceanNpUpdatePolicyPtrOutput `pulumi:"updatePolicy"`
-	VnetSubnetIds                      pulumi.StringArrayOutput     `pulumi:"vnetSubnetIds"`
+	AksClusterName                     pulumi.StringOutput `pulumi:"aksClusterName"`
+	AksInfrastructureResourceGroupName pulumi.StringOutput `pulumi:"aksInfrastructureResourceGroupName"`
+	AksRegion                          pulumi.StringOutput `pulumi:"aksRegion"`
+	AksResourceGroupName               pulumi.StringOutput `pulumi:"aksResourceGroupName"`
+	// The Ocean Kubernetes Autoscaler object.
+	Autoscaler OceanNpAutoscalerPtrOutput `pulumi:"autoscaler"`
+	// An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+	AvailabilityZones pulumi.StringArrayOutput `pulumi:"availabilityZones"`
+	// Enter a unique Ocean cluster identifier. Cannot be updated. This needs to match with string that was used to install the controller in the cluster, typically clusterName + 8 digit string.
+	ControllerClusterId pulumi.StringOutput `pulumi:"controllerClusterId"`
+	// Enable node public IP.
+	EnableNodePublicIp pulumi.BoolPtrOutput `pulumi:"enableNodePublicIp"`
+	// If no spot VM markets are available, enable Ocean to launch regular (pay-as-you-go) nodes instead.
+	FallbackToOndemand pulumi.BoolPtrOutput `pulumi:"fallbackToOndemand"`
+	// Filters for the VM sizes that can be launched from the virtual node group.
+	Filters OceanNpFiltersPtrOutput `pulumi:"filters"`
+	// Specify the custom headroom per VNG. Provide a list of headroom objects.
+	Headrooms OceanNpHeadroomArrayOutput `pulumi:"headrooms"`
+	// The Ocean AKS Health object.
+	Health OceanNpHealthPtrOutput `pulumi:"health"`
+	// The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
+	KubernetesVersion pulumi.StringPtrOutput `pulumi:"kubernetesVersion"`
+	// An array of labels to add to the virtual node group. Only custom user labels are allowed, and not [Kubernetes well-known labels](https://kubernetes.io/docs/reference/labels-annotations-taints/) or [ Azure AKS labels](https://learn.microsoft.com/en-us/azure/aks/use-labels) or [Spot labels](https://docs.spot.io/ocean/features/labels-and-taints?id=spot-labels).
+	Labels pulumi.MapOutput `pulumi:"labels"`
+	// Maximum node count limit.
+	MaxCount pulumi.IntPtrOutput `pulumi:"maxCount"`
+	// The maximum number of pods per node in the node pools.
+	MaxPodsPerNode pulumi.IntPtrOutput `pulumi:"maxPodsPerNode"`
+	// Minimum node count limit.
+	MinCount pulumi.IntPtrOutput `pulumi:"minCount"`
+	// Add a name for the Ocean cluster.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The size of the OS disk in GB.
+	OsDiskSizeGb pulumi.IntPtrOutput `pulumi:"osDiskSizeGb"`
+	// The type of the OS disk.
+	OsDiskType pulumi.StringPtrOutput `pulumi:"osDiskType"`
+	// The OS SKU of the OS type. Must correlate with the os type.
+	OsSku pulumi.StringPtrOutput `pulumi:"osSku"`
+	// The OS type of the OS disk. Can't be modified once set.
+	OsType pulumi.StringPtrOutput `pulumi:"osType"`
+	// The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
+	PodSubnetIds pulumi.StringArrayOutput `pulumi:"podSubnetIds"`
+	// An object used to specify times when the cluster will turn off. Once the shutdown time will be over, the cluster will return to its previous state.
+	Scheduling OceanNpSchedulingPtrOutput `pulumi:"scheduling"`
+	// Percentage of spot VMs to maintain.
+	SpotPercentage pulumi.IntPtrOutput `pulumi:"spotPercentage"`
+	Tags           pulumi.MapOutput    `pulumi:"tags"`
+	// Add taints to a virtual node group. Only custom user taints are allowed, and not [Kubernetes well-known taints](https://kubernetes.io/docs/reference/labels-annotations-taints/) or Azure AKS [ScaleSetPrioirty (Spot VM) taint](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool). For all Spot VMs, AKS injects a taint kubernetes.azure.com/scalesetpriority=spot:NoSchedule, to ensure that only workloads that can handle interruptions are scheduled on Spot nodes. To [schedule a pod to run on Spot node](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool#schedule-a-pod-to-run-on-the-spot-node), add a toleration but dont include the nodeAffinity (not supported for Spot Ocean), this will prevent the pod from being scheduled using Spot Ocean.
+	Taints       OceanNpTaintArrayOutput      `pulumi:"taints"`
+	UpdatePolicy OceanNpUpdatePolicyPtrOutput `pulumi:"updatePolicy"`
+	// The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
+	VnetSubnetIds pulumi.StringArrayOutput `pulumi:"vnetSubnetIds"`
 }
 
 // NewOceanNp registers a new resource with the given unique name, arguments, and options.
@@ -94,35 +156,58 @@ func GetOceanNp(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OceanNp resources.
 type oceanNpState struct {
-	AksClusterName                     *string                `pulumi:"aksClusterName"`
-	AksInfrastructureResourceGroupName *string                `pulumi:"aksInfrastructureResourceGroupName"`
-	AksRegion                          *string                `pulumi:"aksRegion"`
-	AksResourceGroupName               *string                `pulumi:"aksResourceGroupName"`
-	Autoscaler                         *OceanNpAutoscaler     `pulumi:"autoscaler"`
-	AvailabilityZones                  []string               `pulumi:"availabilityZones"`
-	ControllerClusterId                *string                `pulumi:"controllerClusterId"`
-	EnableNodePublicIp                 *bool                  `pulumi:"enableNodePublicIp"`
-	FallbackToOndemand                 *bool                  `pulumi:"fallbackToOndemand"`
-	Filters                            *OceanNpFilters        `pulumi:"filters"`
-	Headrooms                          []OceanNpHeadroom      `pulumi:"headrooms"`
-	Health                             *OceanNpHealth         `pulumi:"health"`
-	KubernetesVersion                  *string                `pulumi:"kubernetesVersion"`
-	Labels                             map[string]interface{} `pulumi:"labels"`
-	MaxCount                           *int                   `pulumi:"maxCount"`
-	MaxPodsPerNode                     *int                   `pulumi:"maxPodsPerNode"`
-	MinCount                           *int                   `pulumi:"minCount"`
-	Name                               *string                `pulumi:"name"`
-	OsDiskSizeGb                       *int                   `pulumi:"osDiskSizeGb"`
-	OsDiskType                         *string                `pulumi:"osDiskType"`
-	OsSku                              *string                `pulumi:"osSku"`
-	OsType                             *string                `pulumi:"osType"`
-	PodSubnetIds                       []string               `pulumi:"podSubnetIds"`
-	Scheduling                         *OceanNpScheduling     `pulumi:"scheduling"`
-	SpotPercentage                     *int                   `pulumi:"spotPercentage"`
-	Tags                               map[string]interface{} `pulumi:"tags"`
-	Taints                             []OceanNpTaint         `pulumi:"taints"`
-	UpdatePolicy                       *OceanNpUpdatePolicy   `pulumi:"updatePolicy"`
-	VnetSubnetIds                      []string               `pulumi:"vnetSubnetIds"`
+	AksClusterName                     *string `pulumi:"aksClusterName"`
+	AksInfrastructureResourceGroupName *string `pulumi:"aksInfrastructureResourceGroupName"`
+	AksRegion                          *string `pulumi:"aksRegion"`
+	AksResourceGroupName               *string `pulumi:"aksResourceGroupName"`
+	// The Ocean Kubernetes Autoscaler object.
+	Autoscaler *OceanNpAutoscaler `pulumi:"autoscaler"`
+	// An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+	AvailabilityZones []string `pulumi:"availabilityZones"`
+	// Enter a unique Ocean cluster identifier. Cannot be updated. This needs to match with string that was used to install the controller in the cluster, typically clusterName + 8 digit string.
+	ControllerClusterId *string `pulumi:"controllerClusterId"`
+	// Enable node public IP.
+	EnableNodePublicIp *bool `pulumi:"enableNodePublicIp"`
+	// If no spot VM markets are available, enable Ocean to launch regular (pay-as-you-go) nodes instead.
+	FallbackToOndemand *bool `pulumi:"fallbackToOndemand"`
+	// Filters for the VM sizes that can be launched from the virtual node group.
+	Filters *OceanNpFilters `pulumi:"filters"`
+	// Specify the custom headroom per VNG. Provide a list of headroom objects.
+	Headrooms []OceanNpHeadroom `pulumi:"headrooms"`
+	// The Ocean AKS Health object.
+	Health *OceanNpHealth `pulumi:"health"`
+	// The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
+	KubernetesVersion *string `pulumi:"kubernetesVersion"`
+	// An array of labels to add to the virtual node group. Only custom user labels are allowed, and not [Kubernetes well-known labels](https://kubernetes.io/docs/reference/labels-annotations-taints/) or [ Azure AKS labels](https://learn.microsoft.com/en-us/azure/aks/use-labels) or [Spot labels](https://docs.spot.io/ocean/features/labels-and-taints?id=spot-labels).
+	Labels map[string]interface{} `pulumi:"labels"`
+	// Maximum node count limit.
+	MaxCount *int `pulumi:"maxCount"`
+	// The maximum number of pods per node in the node pools.
+	MaxPodsPerNode *int `pulumi:"maxPodsPerNode"`
+	// Minimum node count limit.
+	MinCount *int `pulumi:"minCount"`
+	// Add a name for the Ocean cluster.
+	Name *string `pulumi:"name"`
+	// The size of the OS disk in GB.
+	OsDiskSizeGb *int `pulumi:"osDiskSizeGb"`
+	// The type of the OS disk.
+	OsDiskType *string `pulumi:"osDiskType"`
+	// The OS SKU of the OS type. Must correlate with the os type.
+	OsSku *string `pulumi:"osSku"`
+	// The OS type of the OS disk. Can't be modified once set.
+	OsType *string `pulumi:"osType"`
+	// The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
+	PodSubnetIds []string `pulumi:"podSubnetIds"`
+	// An object used to specify times when the cluster will turn off. Once the shutdown time will be over, the cluster will return to its previous state.
+	Scheduling *OceanNpScheduling `pulumi:"scheduling"`
+	// Percentage of spot VMs to maintain.
+	SpotPercentage *int                   `pulumi:"spotPercentage"`
+	Tags           map[string]interface{} `pulumi:"tags"`
+	// Add taints to a virtual node group. Only custom user taints are allowed, and not [Kubernetes well-known taints](https://kubernetes.io/docs/reference/labels-annotations-taints/) or Azure AKS [ScaleSetPrioirty (Spot VM) taint](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool). For all Spot VMs, AKS injects a taint kubernetes.azure.com/scalesetpriority=spot:NoSchedule, to ensure that only workloads that can handle interruptions are scheduled on Spot nodes. To [schedule a pod to run on Spot node](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool#schedule-a-pod-to-run-on-the-spot-node), add a toleration but dont include the nodeAffinity (not supported for Spot Ocean), this will prevent the pod from being scheduled using Spot Ocean.
+	Taints       []OceanNpTaint       `pulumi:"taints"`
+	UpdatePolicy *OceanNpUpdatePolicy `pulumi:"updatePolicy"`
+	// The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
+	VnetSubnetIds []string `pulumi:"vnetSubnetIds"`
 }
 
 type OceanNpState struct {
@@ -130,31 +215,54 @@ type OceanNpState struct {
 	AksInfrastructureResourceGroupName pulumi.StringPtrInput
 	AksRegion                          pulumi.StringPtrInput
 	AksResourceGroupName               pulumi.StringPtrInput
-	Autoscaler                         OceanNpAutoscalerPtrInput
-	AvailabilityZones                  pulumi.StringArrayInput
-	ControllerClusterId                pulumi.StringPtrInput
-	EnableNodePublicIp                 pulumi.BoolPtrInput
-	FallbackToOndemand                 pulumi.BoolPtrInput
-	Filters                            OceanNpFiltersPtrInput
-	Headrooms                          OceanNpHeadroomArrayInput
-	Health                             OceanNpHealthPtrInput
-	KubernetesVersion                  pulumi.StringPtrInput
-	Labels                             pulumi.MapInput
-	MaxCount                           pulumi.IntPtrInput
-	MaxPodsPerNode                     pulumi.IntPtrInput
-	MinCount                           pulumi.IntPtrInput
-	Name                               pulumi.StringPtrInput
-	OsDiskSizeGb                       pulumi.IntPtrInput
-	OsDiskType                         pulumi.StringPtrInput
-	OsSku                              pulumi.StringPtrInput
-	OsType                             pulumi.StringPtrInput
-	PodSubnetIds                       pulumi.StringArrayInput
-	Scheduling                         OceanNpSchedulingPtrInput
-	SpotPercentage                     pulumi.IntPtrInput
-	Tags                               pulumi.MapInput
-	Taints                             OceanNpTaintArrayInput
-	UpdatePolicy                       OceanNpUpdatePolicyPtrInput
-	VnetSubnetIds                      pulumi.StringArrayInput
+	// The Ocean Kubernetes Autoscaler object.
+	Autoscaler OceanNpAutoscalerPtrInput
+	// An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+	AvailabilityZones pulumi.StringArrayInput
+	// Enter a unique Ocean cluster identifier. Cannot be updated. This needs to match with string that was used to install the controller in the cluster, typically clusterName + 8 digit string.
+	ControllerClusterId pulumi.StringPtrInput
+	// Enable node public IP.
+	EnableNodePublicIp pulumi.BoolPtrInput
+	// If no spot VM markets are available, enable Ocean to launch regular (pay-as-you-go) nodes instead.
+	FallbackToOndemand pulumi.BoolPtrInput
+	// Filters for the VM sizes that can be launched from the virtual node group.
+	Filters OceanNpFiltersPtrInput
+	// Specify the custom headroom per VNG. Provide a list of headroom objects.
+	Headrooms OceanNpHeadroomArrayInput
+	// The Ocean AKS Health object.
+	Health OceanNpHealthPtrInput
+	// The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
+	KubernetesVersion pulumi.StringPtrInput
+	// An array of labels to add to the virtual node group. Only custom user labels are allowed, and not [Kubernetes well-known labels](https://kubernetes.io/docs/reference/labels-annotations-taints/) or [ Azure AKS labels](https://learn.microsoft.com/en-us/azure/aks/use-labels) or [Spot labels](https://docs.spot.io/ocean/features/labels-and-taints?id=spot-labels).
+	Labels pulumi.MapInput
+	// Maximum node count limit.
+	MaxCount pulumi.IntPtrInput
+	// The maximum number of pods per node in the node pools.
+	MaxPodsPerNode pulumi.IntPtrInput
+	// Minimum node count limit.
+	MinCount pulumi.IntPtrInput
+	// Add a name for the Ocean cluster.
+	Name pulumi.StringPtrInput
+	// The size of the OS disk in GB.
+	OsDiskSizeGb pulumi.IntPtrInput
+	// The type of the OS disk.
+	OsDiskType pulumi.StringPtrInput
+	// The OS SKU of the OS type. Must correlate with the os type.
+	OsSku pulumi.StringPtrInput
+	// The OS type of the OS disk. Can't be modified once set.
+	OsType pulumi.StringPtrInput
+	// The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
+	PodSubnetIds pulumi.StringArrayInput
+	// An object used to specify times when the cluster will turn off. Once the shutdown time will be over, the cluster will return to its previous state.
+	Scheduling OceanNpSchedulingPtrInput
+	// Percentage of spot VMs to maintain.
+	SpotPercentage pulumi.IntPtrInput
+	Tags           pulumi.MapInput
+	// Add taints to a virtual node group. Only custom user taints are allowed, and not [Kubernetes well-known taints](https://kubernetes.io/docs/reference/labels-annotations-taints/) or Azure AKS [ScaleSetPrioirty (Spot VM) taint](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool). For all Spot VMs, AKS injects a taint kubernetes.azure.com/scalesetpriority=spot:NoSchedule, to ensure that only workloads that can handle interruptions are scheduled on Spot nodes. To [schedule a pod to run on Spot node](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool#schedule-a-pod-to-run-on-the-spot-node), add a toleration but dont include the nodeAffinity (not supported for Spot Ocean), this will prevent the pod from being scheduled using Spot Ocean.
+	Taints       OceanNpTaintArrayInput
+	UpdatePolicy OceanNpUpdatePolicyPtrInput
+	// The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
+	VnetSubnetIds pulumi.StringArrayInput
 }
 
 func (OceanNpState) ElementType() reflect.Type {
@@ -162,35 +270,58 @@ func (OceanNpState) ElementType() reflect.Type {
 }
 
 type oceanNpArgs struct {
-	AksClusterName                     string                 `pulumi:"aksClusterName"`
-	AksInfrastructureResourceGroupName string                 `pulumi:"aksInfrastructureResourceGroupName"`
-	AksRegion                          string                 `pulumi:"aksRegion"`
-	AksResourceGroupName               string                 `pulumi:"aksResourceGroupName"`
-	Autoscaler                         *OceanNpAutoscaler     `pulumi:"autoscaler"`
-	AvailabilityZones                  []string               `pulumi:"availabilityZones"`
-	ControllerClusterId                string                 `pulumi:"controllerClusterId"`
-	EnableNodePublicIp                 *bool                  `pulumi:"enableNodePublicIp"`
-	FallbackToOndemand                 *bool                  `pulumi:"fallbackToOndemand"`
-	Filters                            *OceanNpFilters        `pulumi:"filters"`
-	Headrooms                          []OceanNpHeadroom      `pulumi:"headrooms"`
-	Health                             *OceanNpHealth         `pulumi:"health"`
-	KubernetesVersion                  *string                `pulumi:"kubernetesVersion"`
-	Labels                             map[string]interface{} `pulumi:"labels"`
-	MaxCount                           *int                   `pulumi:"maxCount"`
-	MaxPodsPerNode                     *int                   `pulumi:"maxPodsPerNode"`
-	MinCount                           *int                   `pulumi:"minCount"`
-	Name                               *string                `pulumi:"name"`
-	OsDiskSizeGb                       *int                   `pulumi:"osDiskSizeGb"`
-	OsDiskType                         *string                `pulumi:"osDiskType"`
-	OsSku                              *string                `pulumi:"osSku"`
-	OsType                             *string                `pulumi:"osType"`
-	PodSubnetIds                       []string               `pulumi:"podSubnetIds"`
-	Scheduling                         *OceanNpScheduling     `pulumi:"scheduling"`
-	SpotPercentage                     *int                   `pulumi:"spotPercentage"`
-	Tags                               map[string]interface{} `pulumi:"tags"`
-	Taints                             []OceanNpTaint         `pulumi:"taints"`
-	UpdatePolicy                       *OceanNpUpdatePolicy   `pulumi:"updatePolicy"`
-	VnetSubnetIds                      []string               `pulumi:"vnetSubnetIds"`
+	AksClusterName                     string `pulumi:"aksClusterName"`
+	AksInfrastructureResourceGroupName string `pulumi:"aksInfrastructureResourceGroupName"`
+	AksRegion                          string `pulumi:"aksRegion"`
+	AksResourceGroupName               string `pulumi:"aksResourceGroupName"`
+	// The Ocean Kubernetes Autoscaler object.
+	Autoscaler *OceanNpAutoscaler `pulumi:"autoscaler"`
+	// An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+	AvailabilityZones []string `pulumi:"availabilityZones"`
+	// Enter a unique Ocean cluster identifier. Cannot be updated. This needs to match with string that was used to install the controller in the cluster, typically clusterName + 8 digit string.
+	ControllerClusterId string `pulumi:"controllerClusterId"`
+	// Enable node public IP.
+	EnableNodePublicIp *bool `pulumi:"enableNodePublicIp"`
+	// If no spot VM markets are available, enable Ocean to launch regular (pay-as-you-go) nodes instead.
+	FallbackToOndemand *bool `pulumi:"fallbackToOndemand"`
+	// Filters for the VM sizes that can be launched from the virtual node group.
+	Filters *OceanNpFilters `pulumi:"filters"`
+	// Specify the custom headroom per VNG. Provide a list of headroom objects.
+	Headrooms []OceanNpHeadroom `pulumi:"headrooms"`
+	// The Ocean AKS Health object.
+	Health *OceanNpHealth `pulumi:"health"`
+	// The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
+	KubernetesVersion *string `pulumi:"kubernetesVersion"`
+	// An array of labels to add to the virtual node group. Only custom user labels are allowed, and not [Kubernetes well-known labels](https://kubernetes.io/docs/reference/labels-annotations-taints/) or [ Azure AKS labels](https://learn.microsoft.com/en-us/azure/aks/use-labels) or [Spot labels](https://docs.spot.io/ocean/features/labels-and-taints?id=spot-labels).
+	Labels map[string]interface{} `pulumi:"labels"`
+	// Maximum node count limit.
+	MaxCount *int `pulumi:"maxCount"`
+	// The maximum number of pods per node in the node pools.
+	MaxPodsPerNode *int `pulumi:"maxPodsPerNode"`
+	// Minimum node count limit.
+	MinCount *int `pulumi:"minCount"`
+	// Add a name for the Ocean cluster.
+	Name *string `pulumi:"name"`
+	// The size of the OS disk in GB.
+	OsDiskSizeGb *int `pulumi:"osDiskSizeGb"`
+	// The type of the OS disk.
+	OsDiskType *string `pulumi:"osDiskType"`
+	// The OS SKU of the OS type. Must correlate with the os type.
+	OsSku *string `pulumi:"osSku"`
+	// The OS type of the OS disk. Can't be modified once set.
+	OsType *string `pulumi:"osType"`
+	// The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
+	PodSubnetIds []string `pulumi:"podSubnetIds"`
+	// An object used to specify times when the cluster will turn off. Once the shutdown time will be over, the cluster will return to its previous state.
+	Scheduling *OceanNpScheduling `pulumi:"scheduling"`
+	// Percentage of spot VMs to maintain.
+	SpotPercentage *int                   `pulumi:"spotPercentage"`
+	Tags           map[string]interface{} `pulumi:"tags"`
+	// Add taints to a virtual node group. Only custom user taints are allowed, and not [Kubernetes well-known taints](https://kubernetes.io/docs/reference/labels-annotations-taints/) or Azure AKS [ScaleSetPrioirty (Spot VM) taint](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool). For all Spot VMs, AKS injects a taint kubernetes.azure.com/scalesetpriority=spot:NoSchedule, to ensure that only workloads that can handle interruptions are scheduled on Spot nodes. To [schedule a pod to run on Spot node](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool#schedule-a-pod-to-run-on-the-spot-node), add a toleration but dont include the nodeAffinity (not supported for Spot Ocean), this will prevent the pod from being scheduled using Spot Ocean.
+	Taints       []OceanNpTaint       `pulumi:"taints"`
+	UpdatePolicy *OceanNpUpdatePolicy `pulumi:"updatePolicy"`
+	// The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
+	VnetSubnetIds []string `pulumi:"vnetSubnetIds"`
 }
 
 // The set of arguments for constructing a OceanNp resource.
@@ -199,31 +330,54 @@ type OceanNpArgs struct {
 	AksInfrastructureResourceGroupName pulumi.StringInput
 	AksRegion                          pulumi.StringInput
 	AksResourceGroupName               pulumi.StringInput
-	Autoscaler                         OceanNpAutoscalerPtrInput
-	AvailabilityZones                  pulumi.StringArrayInput
-	ControllerClusterId                pulumi.StringInput
-	EnableNodePublicIp                 pulumi.BoolPtrInput
-	FallbackToOndemand                 pulumi.BoolPtrInput
-	Filters                            OceanNpFiltersPtrInput
-	Headrooms                          OceanNpHeadroomArrayInput
-	Health                             OceanNpHealthPtrInput
-	KubernetesVersion                  pulumi.StringPtrInput
-	Labels                             pulumi.MapInput
-	MaxCount                           pulumi.IntPtrInput
-	MaxPodsPerNode                     pulumi.IntPtrInput
-	MinCount                           pulumi.IntPtrInput
-	Name                               pulumi.StringPtrInput
-	OsDiskSizeGb                       pulumi.IntPtrInput
-	OsDiskType                         pulumi.StringPtrInput
-	OsSku                              pulumi.StringPtrInput
-	OsType                             pulumi.StringPtrInput
-	PodSubnetIds                       pulumi.StringArrayInput
-	Scheduling                         OceanNpSchedulingPtrInput
-	SpotPercentage                     pulumi.IntPtrInput
-	Tags                               pulumi.MapInput
-	Taints                             OceanNpTaintArrayInput
-	UpdatePolicy                       OceanNpUpdatePolicyPtrInput
-	VnetSubnetIds                      pulumi.StringArrayInput
+	// The Ocean Kubernetes Autoscaler object.
+	Autoscaler OceanNpAutoscalerPtrInput
+	// An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+	AvailabilityZones pulumi.StringArrayInput
+	// Enter a unique Ocean cluster identifier. Cannot be updated. This needs to match with string that was used to install the controller in the cluster, typically clusterName + 8 digit string.
+	ControllerClusterId pulumi.StringInput
+	// Enable node public IP.
+	EnableNodePublicIp pulumi.BoolPtrInput
+	// If no spot VM markets are available, enable Ocean to launch regular (pay-as-you-go) nodes instead.
+	FallbackToOndemand pulumi.BoolPtrInput
+	// Filters for the VM sizes that can be launched from the virtual node group.
+	Filters OceanNpFiltersPtrInput
+	// Specify the custom headroom per VNG. Provide a list of headroom objects.
+	Headrooms OceanNpHeadroomArrayInput
+	// The Ocean AKS Health object.
+	Health OceanNpHealthPtrInput
+	// The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
+	KubernetesVersion pulumi.StringPtrInput
+	// An array of labels to add to the virtual node group. Only custom user labels are allowed, and not [Kubernetes well-known labels](https://kubernetes.io/docs/reference/labels-annotations-taints/) or [ Azure AKS labels](https://learn.microsoft.com/en-us/azure/aks/use-labels) or [Spot labels](https://docs.spot.io/ocean/features/labels-and-taints?id=spot-labels).
+	Labels pulumi.MapInput
+	// Maximum node count limit.
+	MaxCount pulumi.IntPtrInput
+	// The maximum number of pods per node in the node pools.
+	MaxPodsPerNode pulumi.IntPtrInput
+	// Minimum node count limit.
+	MinCount pulumi.IntPtrInput
+	// Add a name for the Ocean cluster.
+	Name pulumi.StringPtrInput
+	// The size of the OS disk in GB.
+	OsDiskSizeGb pulumi.IntPtrInput
+	// The type of the OS disk.
+	OsDiskType pulumi.StringPtrInput
+	// The OS SKU of the OS type. Must correlate with the os type.
+	OsSku pulumi.StringPtrInput
+	// The OS type of the OS disk. Can't be modified once set.
+	OsType pulumi.StringPtrInput
+	// The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
+	PodSubnetIds pulumi.StringArrayInput
+	// An object used to specify times when the cluster will turn off. Once the shutdown time will be over, the cluster will return to its previous state.
+	Scheduling OceanNpSchedulingPtrInput
+	// Percentage of spot VMs to maintain.
+	SpotPercentage pulumi.IntPtrInput
+	Tags           pulumi.MapInput
+	// Add taints to a virtual node group. Only custom user taints are allowed, and not [Kubernetes well-known taints](https://kubernetes.io/docs/reference/labels-annotations-taints/) or Azure AKS [ScaleSetPrioirty (Spot VM) taint](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool). For all Spot VMs, AKS injects a taint kubernetes.azure.com/scalesetpriority=spot:NoSchedule, to ensure that only workloads that can handle interruptions are scheduled on Spot nodes. To [schedule a pod to run on Spot node](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool#schedule-a-pod-to-run-on-the-spot-node), add a toleration but dont include the nodeAffinity (not supported for Spot Ocean), this will prevent the pod from being scheduled using Spot Ocean.
+	Taints       OceanNpTaintArrayInput
+	UpdatePolicy OceanNpUpdatePolicyPtrInput
+	// The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
+	VnetSubnetIds pulumi.StringArrayInput
 }
 
 func (OceanNpArgs) ElementType() reflect.Type {
@@ -329,86 +483,107 @@ func (o OceanNpOutput) AksResourceGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v *OceanNp) pulumi.StringOutput { return v.AksResourceGroupName }).(pulumi.StringOutput)
 }
 
+// The Ocean Kubernetes Autoscaler object.
 func (o OceanNpOutput) Autoscaler() OceanNpAutoscalerPtrOutput {
 	return o.ApplyT(func(v *OceanNp) OceanNpAutoscalerPtrOutput { return v.Autoscaler }).(OceanNpAutoscalerPtrOutput)
 }
 
+// An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
 func (o OceanNpOutput) AvailabilityZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanNp) pulumi.StringArrayOutput { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
 }
 
+// Enter a unique Ocean cluster identifier. Cannot be updated. This needs to match with string that was used to install the controller in the cluster, typically clusterName + 8 digit string.
 func (o OceanNpOutput) ControllerClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OceanNp) pulumi.StringOutput { return v.ControllerClusterId }).(pulumi.StringOutput)
 }
 
+// Enable node public IP.
 func (o OceanNpOutput) EnableNodePublicIp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanNp) pulumi.BoolPtrOutput { return v.EnableNodePublicIp }).(pulumi.BoolPtrOutput)
 }
 
+// If no spot VM markets are available, enable Ocean to launch regular (pay-as-you-go) nodes instead.
 func (o OceanNpOutput) FallbackToOndemand() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanNp) pulumi.BoolPtrOutput { return v.FallbackToOndemand }).(pulumi.BoolPtrOutput)
 }
 
+// Filters for the VM sizes that can be launched from the virtual node group.
 func (o OceanNpOutput) Filters() OceanNpFiltersPtrOutput {
 	return o.ApplyT(func(v *OceanNp) OceanNpFiltersPtrOutput { return v.Filters }).(OceanNpFiltersPtrOutput)
 }
 
+// Specify the custom headroom per VNG. Provide a list of headroom objects.
 func (o OceanNpOutput) Headrooms() OceanNpHeadroomArrayOutput {
 	return o.ApplyT(func(v *OceanNp) OceanNpHeadroomArrayOutput { return v.Headrooms }).(OceanNpHeadroomArrayOutput)
 }
 
+// The Ocean AKS Health object.
 func (o OceanNpOutput) Health() OceanNpHealthPtrOutput {
 	return o.ApplyT(func(v *OceanNp) OceanNpHealthPtrOutput { return v.Health }).(OceanNpHealthPtrOutput)
 }
 
+// The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
 func (o OceanNpOutput) KubernetesVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanNp) pulumi.StringPtrOutput { return v.KubernetesVersion }).(pulumi.StringPtrOutput)
 }
 
+// An array of labels to add to the virtual node group. Only custom user labels are allowed, and not [Kubernetes well-known labels](https://kubernetes.io/docs/reference/labels-annotations-taints/) or [ Azure AKS labels](https://learn.microsoft.com/en-us/azure/aks/use-labels) or [Spot labels](https://docs.spot.io/ocean/features/labels-and-taints?id=spot-labels).
 func (o OceanNpOutput) Labels() pulumi.MapOutput {
 	return o.ApplyT(func(v *OceanNp) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
 }
 
+// Maximum node count limit.
 func (o OceanNpOutput) MaxCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanNp) pulumi.IntPtrOutput { return v.MaxCount }).(pulumi.IntPtrOutput)
 }
 
+// The maximum number of pods per node in the node pools.
 func (o OceanNpOutput) MaxPodsPerNode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanNp) pulumi.IntPtrOutput { return v.MaxPodsPerNode }).(pulumi.IntPtrOutput)
 }
 
+// Minimum node count limit.
 func (o OceanNpOutput) MinCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanNp) pulumi.IntPtrOutput { return v.MinCount }).(pulumi.IntPtrOutput)
 }
 
+// Add a name for the Ocean cluster.
 func (o OceanNpOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *OceanNp) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The size of the OS disk in GB.
 func (o OceanNpOutput) OsDiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanNp) pulumi.IntPtrOutput { return v.OsDiskSizeGb }).(pulumi.IntPtrOutput)
 }
 
+// The type of the OS disk.
 func (o OceanNpOutput) OsDiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanNp) pulumi.StringPtrOutput { return v.OsDiskType }).(pulumi.StringPtrOutput)
 }
 
+// The OS SKU of the OS type. Must correlate with the os type.
 func (o OceanNpOutput) OsSku() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanNp) pulumi.StringPtrOutput { return v.OsSku }).(pulumi.StringPtrOutput)
 }
 
+// The OS type of the OS disk. Can't be modified once set.
 func (o OceanNpOutput) OsType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanNp) pulumi.StringPtrOutput { return v.OsType }).(pulumi.StringPtrOutput)
 }
 
+// The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
 func (o OceanNpOutput) PodSubnetIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanNp) pulumi.StringArrayOutput { return v.PodSubnetIds }).(pulumi.StringArrayOutput)
 }
 
+// An object used to specify times when the cluster will turn off. Once the shutdown time will be over, the cluster will return to its previous state.
 func (o OceanNpOutput) Scheduling() OceanNpSchedulingPtrOutput {
 	return o.ApplyT(func(v *OceanNp) OceanNpSchedulingPtrOutput { return v.Scheduling }).(OceanNpSchedulingPtrOutput)
 }
 
+// Percentage of spot VMs to maintain.
 func (o OceanNpOutput) SpotPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanNp) pulumi.IntPtrOutput { return v.SpotPercentage }).(pulumi.IntPtrOutput)
 }
@@ -417,6 +592,7 @@ func (o OceanNpOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *OceanNp) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
+// Add taints to a virtual node group. Only custom user taints are allowed, and not [Kubernetes well-known taints](https://kubernetes.io/docs/reference/labels-annotations-taints/) or Azure AKS [ScaleSetPrioirty (Spot VM) taint](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool). For all Spot VMs, AKS injects a taint kubernetes.azure.com/scalesetpriority=spot:NoSchedule, to ensure that only workloads that can handle interruptions are scheduled on Spot nodes. To [schedule a pod to run on Spot node](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool#schedule-a-pod-to-run-on-the-spot-node), add a toleration but dont include the nodeAffinity (not supported for Spot Ocean), this will prevent the pod from being scheduled using Spot Ocean.
 func (o OceanNpOutput) Taints() OceanNpTaintArrayOutput {
 	return o.ApplyT(func(v *OceanNp) OceanNpTaintArrayOutput { return v.Taints }).(OceanNpTaintArrayOutput)
 }
@@ -425,6 +601,7 @@ func (o OceanNpOutput) UpdatePolicy() OceanNpUpdatePolicyPtrOutput {
 	return o.ApplyT(func(v *OceanNp) OceanNpUpdatePolicyPtrOutput { return v.UpdatePolicy }).(OceanNpUpdatePolicyPtrOutput)
 }
 
+// The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
 func (o OceanNpOutput) VnetSubnetIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanNp) pulumi.StringArrayOutput { return v.VnetSubnetIds }).(pulumi.StringArrayOutput)
 }

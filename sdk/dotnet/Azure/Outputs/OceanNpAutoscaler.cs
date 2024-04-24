@@ -13,9 +13,21 @@ namespace Pulumi.SpotInst.Azure.Outputs
     [OutputType]
     public sealed class OceanNpAutoscaler
     {
+        /// <summary>
+        /// Auto Scaling scale down operations.
+        /// </summary>
         public readonly Outputs.OceanNpAutoscalerAutoscaleDown? AutoscaleDown;
+        /// <summary>
+        /// Spare resource capacity management enabling fast assignment of pods without waiting for new resources to launch.
+        /// </summary>
         public readonly Outputs.OceanNpAutoscalerAutoscaleHeadroom? AutoscaleHeadroom;
+        /// <summary>
+        /// Enable the Ocean Kubernetes Autoscaler.
+        /// </summary>
         public readonly bool? AutoscaleIsEnabled;
+        /// <summary>
+        /// Optionally set upper and lower bounds on the resource usage of the cluster.
+        /// </summary>
         public readonly Outputs.OceanNpAutoscalerResourceLimits? ResourceLimits;
 
         [OutputConstructor]

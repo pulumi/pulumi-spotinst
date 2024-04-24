@@ -5,11 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export { ElastigroupArgs, ElastigroupState } from "./elastigroup";
-export type Elastigroup = import("./elastigroup").Elastigroup;
-export const Elastigroup: typeof import("./elastigroup").Elastigroup = null as any;
-utilities.lazyLoad(exports, ["Elastigroup"], () => require("./elastigroup"));
-
 export { OceanArgs, OceanState } from "./ocean";
 export type Ocean = import("./ocean").Ocean;
 export const Ocean: typeof import("./ocean").Ocean = null as any;
@@ -35,8 +30,6 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "spotinst:azure/elastigroup:Elastigroup":
-                return new Elastigroup(name, <any>undefined, { urn })
             case "spotinst:azure/ocean:Ocean":
                 return new Ocean(name, <any>undefined, { urn })
             case "spotinst:azure/oceanNp:OceanNp":
@@ -50,7 +43,6 @@ const _module = {
         }
     },
 };
-pulumi.runtime.registerResourceModule("spotinst", "azure/elastigroup", _module)
 pulumi.runtime.registerResourceModule("spotinst", "azure/ocean", _module)
 pulumi.runtime.registerResourceModule("spotinst", "azure/oceanNp", _module)
 pulumi.runtime.registerResourceModule("spotinst", "azure/oceanNpVirtualNodeGroup", _module)

@@ -9,72 +9,249 @@ using Pulumi.Serialization;
 
 namespace Pulumi.SpotInst.Azure
 {
+    /// <summary>
+    /// Manages a Spotinst Ocean AKS Virtual Node Groups resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SpotInst = Pulumi.SpotInst;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new SpotInst.Azure.OceanNpVirtualNodeGroup("example", new()
+    ///     {
+    ///         Name = "testVng",
+    ///         OceanId = "o-134abcd",
+    ///         Headrooms = new[]
+    ///         {
+    ///             new SpotInst.Azure.Inputs.OceanNpVirtualNodeGroupHeadroomArgs
+    ///             {
+    ///                 CpuPerUnit = 1024,
+    ///                 MemoryPerUnit = 512,
+    ///                 GpuPerUnit = 0,
+    ///                 NumOfUnits = 2,
+    ///             },
+    ///         },
+    ///         AvailabilityZones = new[]
+    ///         {
+    ///             "1",
+    ///             "2",
+    ///             "3",
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "key", "env" },
+    ///             { "value", "test" },
+    ///         },
+    ///         MinCount = 1,
+    ///         MaxCount = 100,
+    ///         MaxPodsPerNode = 30,
+    ///         EnableNodePublicIp = true,
+    ///         OsDiskSizeGb = 30,
+    ///         OsDiskType = "Managed",
+    ///         OsType = "Linux",
+    ///         OsSku = "Ubuntu",
+    ///         KubernetesVersion = "1.26",
+    ///         PodSubnetIds = new[]
+    ///         {
+    ///             "/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default",
+    ///         },
+    ///         VnetSubnetIds = new[]
+    ///         {
+    ///             "/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default",
+    ///         },
+    ///         SpotPercentage = 50,
+    ///         FallbackToOndemand = true,
+    ///         Taints = new[]
+    ///         {
+    ///             new SpotInst.Azure.Inputs.OceanNpVirtualNodeGroupTaintArgs
+    ///             {
+    ///                 Key = "taintKey",
+    ///                 Value = "taintValue",
+    ///                 Effect = "NoSchedule",
+    ///             },
+    ///         },
+    ///         Tags = 
+    ///         {
+    ///             { "tagKey", "env" },
+    ///             { "tagValue", "staging" },
+    ///         },
+    ///         Filters = new SpotInst.Azure.Inputs.OceanNpVirtualNodeGroupFiltersArgs
+    ///         {
+    ///             MinVcpu = 2,
+    ///             MaxVcpu = 16,
+    ///             MinMemoryGib = 8,
+    ///             MaxMemoryGib = 128,
+    ///             Architectures = new[]
+    ///             {
+    ///                 "x86_64",
+    ///                 "arm64",
+    ///             },
+    ///             Series = new[]
+    ///             {
+    ///                 "D v3",
+    ///                 "Dds_v4",
+    ///                 "Dsv2",
+    ///             },
+    ///             ExcludeSeries = new[]
+    ///             {
+    ///                 "Av2",
+    ///                 "A",
+    ///                 "Bs",
+    ///                 "D",
+    ///                 "E",
+    ///             },
+    ///             AcceleratedNetworking = "Enabled",
+    ///             DiskPerformance = "Premium",
+    ///             MinGpu = 1,
+    ///             MaxGpu = 2,
+    ///             MinNics = 1,
+    ///             VmTypes = new[]
+    ///             {
+    ///                 "generalPurpose",
+    ///                 "GPU",
+    ///             },
+    ///             MinDisk = 1,
+    ///             GpuTypes = new[]
+    ///             {
+    ///                 "nvidia-tesla-t4",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// </summary>
     [SpotInstResourceType("spotinst:azure/oceanNpVirtualNodeGroup:OceanNpVirtualNodeGroup")]
     public partial class OceanNpVirtualNodeGroup : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+        /// </summary>
         [Output("availabilityZones")]
         public Output<ImmutableArray<string>> AvailabilityZones { get; private set; } = null!;
 
+        /// <summary>
+        /// Enable node public IP.
+        /// </summary>
         [Output("enableNodePublicIp")]
         public Output<bool?> EnableNodePublicIp { get; private set; } = null!;
 
+        /// <summary>
+        /// If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
+        /// </summary>
         [Output("fallbackToOndemand")]
         public Output<bool?> FallbackToOndemand { get; private set; } = null!;
 
+        /// <summary>
+        /// Filters for the VM sizes that can be launched from the virtual node group.
+        /// </summary>
         [Output("filters")]
         public Output<Outputs.OceanNpVirtualNodeGroupFilters?> Filters { get; private set; } = null!;
 
+        /// <summary>
+        /// Specify the custom headroom per VNG. Provide a list of headroom objects.
+        /// </summary>
         [Output("headrooms")]
         public Output<ImmutableArray<Outputs.OceanNpVirtualNodeGroupHeadroom>> Headrooms { get; private set; } = null!;
 
+        /// <summary>
+        /// The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
+        /// </summary>
         [Output("kubernetesVersion")]
         public Output<string?> KubernetesVersion { get; private set; } = null!;
 
+        /// <summary>
+        /// An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
+        /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>?> Labels { get; private set; } = null!;
 
+        /// <summary>
+        /// Maximum node count limit.
+        /// </summary>
         [Output("maxCount")]
         public Output<int?> MaxCount { get; private set; } = null!;
 
+        /// <summary>
+        /// The maximum number of pods per node in the node pools.
+        /// </summary>
         [Output("maxPodsPerNode")]
         public Output<int?> MaxPodsPerNode { get; private set; } = null!;
 
+        /// <summary>
+        /// Minimum node count limit.
+        /// </summary>
         [Output("minCount")]
         public Output<int?> MinCount { get; private set; } = null!;
 
+        /// <summary>
+        /// Enter a name for the virtual node group.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The Ocean cluster identifier. Required for Launch Spec creation.
+        /// </summary>
         [Output("oceanId")]
         public Output<string> OceanId { get; private set; } = null!;
 
+        /// <summary>
+        /// The size of the OS disk in GB.
+        /// </summary>
         [Output("osDiskSizeGb")]
         public Output<int?> OsDiskSizeGb { get; private set; } = null!;
 
+        /// <summary>
+        /// The type of the OS disk.
+        /// </summary>
         [Output("osDiskType")]
         public Output<string?> OsDiskType { get; private set; } = null!;
 
+        /// <summary>
+        /// The OS SKU of the OS type. Must correlate with the os type.
+        /// </summary>
         [Output("osSku")]
         public Output<string?> OsSku { get; private set; } = null!;
 
+        /// <summary>
+        /// The OS type of the OS disk. Can't be modified once set.
+        /// </summary>
         [Output("osType")]
         public Output<string?> OsType { get; private set; } = null!;
 
+        /// <summary>
+        /// The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
+        /// </summary>
         [Output("podSubnetIds")]
         public Output<ImmutableArray<string>> PodSubnetIds { get; private set; } = null!;
 
+        /// <summary>
+        /// Percentage of spot VMs to maintain.
+        /// </summary>
         [Output("spotPercentage")]
         public Output<int?> SpotPercentage { get; private set; } = null!;
 
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
+        /// <summary>
+        /// Add taints to a virtual node group.
+        /// </summary>
         [Output("taints")]
         public Output<ImmutableArray<Outputs.OceanNpVirtualNodeGroupTaint>> Taints { get; private set; } = null!;
 
         [Output("updatePolicy")]
         public Output<Outputs.OceanNpVirtualNodeGroupUpdatePolicy?> UpdatePolicy { get; private set; } = null!;
 
+        /// <summary>
+        /// The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
+        /// </summary>
         [Output("vnetSubnetIds")]
         public Output<ImmutableArray<string>> VnetSubnetIds { get; private set; } = null!;
 
@@ -126,75 +303,133 @@ namespace Pulumi.SpotInst.Azure
     {
         [Input("availabilityZones")]
         private InputList<string>? _availabilityZones;
+
+        /// <summary>
+        /// An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+        /// </summary>
         public InputList<string> AvailabilityZones
         {
             get => _availabilityZones ?? (_availabilityZones = new InputList<string>());
             set => _availabilityZones = value;
         }
 
+        /// <summary>
+        /// Enable node public IP.
+        /// </summary>
         [Input("enableNodePublicIp")]
         public Input<bool>? EnableNodePublicIp { get; set; }
 
+        /// <summary>
+        /// If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
+        /// </summary>
         [Input("fallbackToOndemand")]
         public Input<bool>? FallbackToOndemand { get; set; }
 
+        /// <summary>
+        /// Filters for the VM sizes that can be launched from the virtual node group.
+        /// </summary>
         [Input("filters")]
         public Input<Inputs.OceanNpVirtualNodeGroupFiltersArgs>? Filters { get; set; }
 
         [Input("headrooms")]
         private InputList<Inputs.OceanNpVirtualNodeGroupHeadroomArgs>? _headrooms;
+
+        /// <summary>
+        /// Specify the custom headroom per VNG. Provide a list of headroom objects.
+        /// </summary>
         public InputList<Inputs.OceanNpVirtualNodeGroupHeadroomArgs> Headrooms
         {
             get => _headrooms ?? (_headrooms = new InputList<Inputs.OceanNpVirtualNodeGroupHeadroomArgs>());
             set => _headrooms = value;
         }
 
+        /// <summary>
+        /// The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
+        /// </summary>
         [Input("kubernetesVersion")]
         public Input<string>? KubernetesVersion { get; set; }
 
         [Input("labels")]
         private InputMap<object>? _labels;
+
+        /// <summary>
+        /// An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
+        /// </summary>
         public InputMap<object> Labels
         {
             get => _labels ?? (_labels = new InputMap<object>());
             set => _labels = value;
         }
 
+        /// <summary>
+        /// Maximum node count limit.
+        /// </summary>
         [Input("maxCount")]
         public Input<int>? MaxCount { get; set; }
 
+        /// <summary>
+        /// The maximum number of pods per node in the node pools.
+        /// </summary>
         [Input("maxPodsPerNode")]
         public Input<int>? MaxPodsPerNode { get; set; }
 
+        /// <summary>
+        /// Minimum node count limit.
+        /// </summary>
         [Input("minCount")]
         public Input<int>? MinCount { get; set; }
 
+        /// <summary>
+        /// Enter a name for the virtual node group.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The Ocean cluster identifier. Required for Launch Spec creation.
+        /// </summary>
         [Input("oceanId", required: true)]
         public Input<string> OceanId { get; set; } = null!;
 
+        /// <summary>
+        /// The size of the OS disk in GB.
+        /// </summary>
         [Input("osDiskSizeGb")]
         public Input<int>? OsDiskSizeGb { get; set; }
 
+        /// <summary>
+        /// The type of the OS disk.
+        /// </summary>
         [Input("osDiskType")]
         public Input<string>? OsDiskType { get; set; }
 
+        /// <summary>
+        /// The OS SKU of the OS type. Must correlate with the os type.
+        /// </summary>
         [Input("osSku")]
         public Input<string>? OsSku { get; set; }
 
+        /// <summary>
+        /// The OS type of the OS disk. Can't be modified once set.
+        /// </summary>
         [Input("osType")]
         public Input<string>? OsType { get; set; }
 
         [Input("podSubnetIds")]
         private InputList<string>? _podSubnetIds;
+
+        /// <summary>
+        /// The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
+        /// </summary>
         public InputList<string> PodSubnetIds
         {
             get => _podSubnetIds ?? (_podSubnetIds = new InputList<string>());
             set => _podSubnetIds = value;
         }
 
+        /// <summary>
+        /// Percentage of spot VMs to maintain.
+        /// </summary>
         [Input("spotPercentage")]
         public Input<int>? SpotPercentage { get; set; }
 
@@ -208,6 +443,10 @@ namespace Pulumi.SpotInst.Azure
 
         [Input("taints")]
         private InputList<Inputs.OceanNpVirtualNodeGroupTaintArgs>? _taints;
+
+        /// <summary>
+        /// Add taints to a virtual node group.
+        /// </summary>
         public InputList<Inputs.OceanNpVirtualNodeGroupTaintArgs> Taints
         {
             get => _taints ?? (_taints = new InputList<Inputs.OceanNpVirtualNodeGroupTaintArgs>());
@@ -219,6 +458,10 @@ namespace Pulumi.SpotInst.Azure
 
         [Input("vnetSubnetIds")]
         private InputList<string>? _vnetSubnetIds;
+
+        /// <summary>
+        /// The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
+        /// </summary>
         public InputList<string> VnetSubnetIds
         {
             get => _vnetSubnetIds ?? (_vnetSubnetIds = new InputList<string>());
@@ -235,75 +478,133 @@ namespace Pulumi.SpotInst.Azure
     {
         [Input("availabilityZones")]
         private InputList<string>? _availabilityZones;
+
+        /// <summary>
+        /// An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+        /// </summary>
         public InputList<string> AvailabilityZones
         {
             get => _availabilityZones ?? (_availabilityZones = new InputList<string>());
             set => _availabilityZones = value;
         }
 
+        /// <summary>
+        /// Enable node public IP.
+        /// </summary>
         [Input("enableNodePublicIp")]
         public Input<bool>? EnableNodePublicIp { get; set; }
 
+        /// <summary>
+        /// If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
+        /// </summary>
         [Input("fallbackToOndemand")]
         public Input<bool>? FallbackToOndemand { get; set; }
 
+        /// <summary>
+        /// Filters for the VM sizes that can be launched from the virtual node group.
+        /// </summary>
         [Input("filters")]
         public Input<Inputs.OceanNpVirtualNodeGroupFiltersGetArgs>? Filters { get; set; }
 
         [Input("headrooms")]
         private InputList<Inputs.OceanNpVirtualNodeGroupHeadroomGetArgs>? _headrooms;
+
+        /// <summary>
+        /// Specify the custom headroom per VNG. Provide a list of headroom objects.
+        /// </summary>
         public InputList<Inputs.OceanNpVirtualNodeGroupHeadroomGetArgs> Headrooms
         {
             get => _headrooms ?? (_headrooms = new InputList<Inputs.OceanNpVirtualNodeGroupHeadroomGetArgs>());
             set => _headrooms = value;
         }
 
+        /// <summary>
+        /// The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
+        /// </summary>
         [Input("kubernetesVersion")]
         public Input<string>? KubernetesVersion { get; set; }
 
         [Input("labels")]
         private InputMap<object>? _labels;
+
+        /// <summary>
+        /// An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
+        /// </summary>
         public InputMap<object> Labels
         {
             get => _labels ?? (_labels = new InputMap<object>());
             set => _labels = value;
         }
 
+        /// <summary>
+        /// Maximum node count limit.
+        /// </summary>
         [Input("maxCount")]
         public Input<int>? MaxCount { get; set; }
 
+        /// <summary>
+        /// The maximum number of pods per node in the node pools.
+        /// </summary>
         [Input("maxPodsPerNode")]
         public Input<int>? MaxPodsPerNode { get; set; }
 
+        /// <summary>
+        /// Minimum node count limit.
+        /// </summary>
         [Input("minCount")]
         public Input<int>? MinCount { get; set; }
 
+        /// <summary>
+        /// Enter a name for the virtual node group.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The Ocean cluster identifier. Required for Launch Spec creation.
+        /// </summary>
         [Input("oceanId")]
         public Input<string>? OceanId { get; set; }
 
+        /// <summary>
+        /// The size of the OS disk in GB.
+        /// </summary>
         [Input("osDiskSizeGb")]
         public Input<int>? OsDiskSizeGb { get; set; }
 
+        /// <summary>
+        /// The type of the OS disk.
+        /// </summary>
         [Input("osDiskType")]
         public Input<string>? OsDiskType { get; set; }
 
+        /// <summary>
+        /// The OS SKU of the OS type. Must correlate with the os type.
+        /// </summary>
         [Input("osSku")]
         public Input<string>? OsSku { get; set; }
 
+        /// <summary>
+        /// The OS type of the OS disk. Can't be modified once set.
+        /// </summary>
         [Input("osType")]
         public Input<string>? OsType { get; set; }
 
         [Input("podSubnetIds")]
         private InputList<string>? _podSubnetIds;
+
+        /// <summary>
+        /// The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
+        /// </summary>
         public InputList<string> PodSubnetIds
         {
             get => _podSubnetIds ?? (_podSubnetIds = new InputList<string>());
             set => _podSubnetIds = value;
         }
 
+        /// <summary>
+        /// Percentage of spot VMs to maintain.
+        /// </summary>
         [Input("spotPercentage")]
         public Input<int>? SpotPercentage { get; set; }
 
@@ -317,6 +618,10 @@ namespace Pulumi.SpotInst.Azure
 
         [Input("taints")]
         private InputList<Inputs.OceanNpVirtualNodeGroupTaintGetArgs>? _taints;
+
+        /// <summary>
+        /// Add taints to a virtual node group.
+        /// </summary>
         public InputList<Inputs.OceanNpVirtualNodeGroupTaintGetArgs> Taints
         {
             get => _taints ?? (_taints = new InputList<Inputs.OceanNpVirtualNodeGroupTaintGetArgs>());
@@ -328,6 +633,10 @@ namespace Pulumi.SpotInst.Azure
 
         [Input("vnetSubnetIds")]
         private InputList<string>? _vnetSubnetIds;
+
+        /// <summary>
+        /// The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
+        /// </summary>
         public InputList<string> VnetSubnetIds
         {
             get => _vnetSubnetIds ?? (_vnetSubnetIds = new InputList<string>());

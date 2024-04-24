@@ -13,6 +13,9 @@ namespace Pulumi.SpotInst.Azure.Outputs
     [OutputType]
     public sealed class OceanNpScheduling
     {
+        /// <summary>
+        /// [Shutdown Hours](https://docs.spot.io/ocean/features/running-hours?id=shutdown-hours)An object used to specify times that the nodes in the cluster will be taken down.
+        /// </summary>
         public readonly Outputs.OceanNpSchedulingShutdownHours? ShutdownHours;
 
         [OutputConstructor]

@@ -13,6 +13,9 @@ namespace Pulumi.SpotInst.Azure.Outputs
     [OutputType]
     public sealed class OceanNpHealth
     {
+        /// <summary>
+        /// The amount of time to wait, in seconds, from the moment the instance has launched until monitoring of its health checks begins.
+        /// </summary>
         public readonly int? GracePeriod;
 
         [OutputConstructor]

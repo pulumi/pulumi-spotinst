@@ -26,6 +26,54 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Manages a Spotinst Ocean AKS resource.
+ * 
+ * ## Basic Ocean Cluster Creation Usage Example - using minimum configuration with only required parameters
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.spotinst.azure.OceanNp;
+ * import com.pulumi.spotinst.azure.OceanNpArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new OceanNp(&#34;example&#34;, OceanNpArgs.builder()        
+ *             .name(&#34;test&#34;)
+ *             .aksRegion(&#34;eastus&#34;)
+ *             .aksClusterName(&#34;test-cluster&#34;)
+ *             .aksInfrastructureResourceGroupName(&#34;MC_TestResourceGroup_test-cluster_eastus&#34;)
+ *             .aksResourceGroupName(&#34;TestResourceGroup&#34;)
+ *             .controllerClusterId(&#34;test-123124&#34;)
+ *             .availabilityZones(            
+ *                 &#34;1&#34;,
+ *                 &#34;2&#34;,
+ *                 &#34;3&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;  
+ * 
+ * ## Detailed Ocean Cluster Creation Usage Example - using all available parameters with sample values
+ * 
+ */
 @ResourceType(type="spotinst:azure/oceanNp:OceanNp")
 public class OceanNp extends com.pulumi.resources.CustomResource {
     @Export(name="aksClusterName", refs={String.class}, tree="[0]")
@@ -52,129 +100,297 @@ public class OceanNp extends com.pulumi.resources.CustomResource {
     public Output<String> aksResourceGroupName() {
         return this.aksResourceGroupName;
     }
+    /**
+     * The Ocean Kubernetes Autoscaler object.
+     * 
+     */
     @Export(name="autoscaler", refs={OceanNpAutoscaler.class}, tree="[0]")
     private Output</* @Nullable */ OceanNpAutoscaler> autoscaler;
 
+    /**
+     * @return The Ocean Kubernetes Autoscaler object.
+     * 
+     */
     public Output<Optional<OceanNpAutoscaler>> autoscaler() {
         return Codegen.optional(this.autoscaler);
     }
+    /**
+     * An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+     * 
+     */
     @Export(name="availabilityZones", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> availabilityZones;
 
+    /**
+     * @return An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+     * 
+     */
     public Output<List<String>> availabilityZones() {
         return this.availabilityZones;
     }
+    /**
+     * Enter a unique Ocean cluster identifier. Cannot be updated. This needs to match with string that was used to install the controller in the cluster, typically clusterName + 8 digit string.
+     * 
+     */
     @Export(name="controllerClusterId", refs={String.class}, tree="[0]")
     private Output<String> controllerClusterId;
 
+    /**
+     * @return Enter a unique Ocean cluster identifier. Cannot be updated. This needs to match with string that was used to install the controller in the cluster, typically clusterName + 8 digit string.
+     * 
+     */
     public Output<String> controllerClusterId() {
         return this.controllerClusterId;
     }
+    /**
+     * Enable node public IP.
+     * 
+     */
     @Export(name="enableNodePublicIp", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableNodePublicIp;
 
+    /**
+     * @return Enable node public IP.
+     * 
+     */
     public Output<Optional<Boolean>> enableNodePublicIp() {
         return Codegen.optional(this.enableNodePublicIp);
     }
+    /**
+     * If no spot VM markets are available, enable Ocean to launch regular (pay-as-you-go) nodes instead.
+     * 
+     */
     @Export(name="fallbackToOndemand", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> fallbackToOndemand;
 
+    /**
+     * @return If no spot VM markets are available, enable Ocean to launch regular (pay-as-you-go) nodes instead.
+     * 
+     */
     public Output<Optional<Boolean>> fallbackToOndemand() {
         return Codegen.optional(this.fallbackToOndemand);
     }
+    /**
+     * Filters for the VM sizes that can be launched from the virtual node group.
+     * 
+     */
     @Export(name="filters", refs={OceanNpFilters.class}, tree="[0]")
     private Output</* @Nullable */ OceanNpFilters> filters;
 
+    /**
+     * @return Filters for the VM sizes that can be launched from the virtual node group.
+     * 
+     */
     public Output<Optional<OceanNpFilters>> filters() {
         return Codegen.optional(this.filters);
     }
+    /**
+     * Specify the custom headroom per VNG. Provide a list of headroom objects.
+     * 
+     */
     @Export(name="headrooms", refs={List.class,OceanNpHeadroom.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OceanNpHeadroom>> headrooms;
 
+    /**
+     * @return Specify the custom headroom per VNG. Provide a list of headroom objects.
+     * 
+     */
     public Output<Optional<List<OceanNpHeadroom>>> headrooms() {
         return Codegen.optional(this.headrooms);
     }
+    /**
+     * The Ocean AKS Health object.
+     * 
+     */
     @Export(name="health", refs={OceanNpHealth.class}, tree="[0]")
     private Output</* @Nullable */ OceanNpHealth> health;
 
+    /**
+     * @return The Ocean AKS Health object.
+     * 
+     */
     public Output<Optional<OceanNpHealth>> health() {
         return Codegen.optional(this.health);
     }
+    /**
+     * The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
+     * 
+     */
     @Export(name="kubernetesVersion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kubernetesVersion;
 
+    /**
+     * @return The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
+     * 
+     */
     public Output<Optional<String>> kubernetesVersion() {
         return Codegen.optional(this.kubernetesVersion);
     }
+    /**
+     * An array of labels to add to the virtual node group. Only custom user labels are allowed, and not [Kubernetes well-known labels](https://kubernetes.io/docs/reference/labels-annotations-taints/) or [ Azure AKS labels](https://learn.microsoft.com/en-us/azure/aks/use-labels) or [Spot labels](https://docs.spot.io/ocean/features/labels-and-taints?id=spot-labels).
+     * 
+     */
     @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> labels;
 
+    /**
+     * @return An array of labels to add to the virtual node group. Only custom user labels are allowed, and not [Kubernetes well-known labels](https://kubernetes.io/docs/reference/labels-annotations-taints/) or [ Azure AKS labels](https://learn.microsoft.com/en-us/azure/aks/use-labels) or [Spot labels](https://docs.spot.io/ocean/features/labels-and-taints?id=spot-labels).
+     * 
+     */
     public Output<Optional<Map<String,Object>>> labels() {
         return Codegen.optional(this.labels);
     }
+    /**
+     * Maximum node count limit.
+     * 
+     */
     @Export(name="maxCount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxCount;
 
+    /**
+     * @return Maximum node count limit.
+     * 
+     */
     public Output<Optional<Integer>> maxCount() {
         return Codegen.optional(this.maxCount);
     }
+    /**
+     * The maximum number of pods per node in the node pools.
+     * 
+     */
     @Export(name="maxPodsPerNode", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxPodsPerNode;
 
+    /**
+     * @return The maximum number of pods per node in the node pools.
+     * 
+     */
     public Output<Optional<Integer>> maxPodsPerNode() {
         return Codegen.optional(this.maxPodsPerNode);
     }
+    /**
+     * Minimum node count limit.
+     * 
+     */
     @Export(name="minCount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> minCount;
 
+    /**
+     * @return Minimum node count limit.
+     * 
+     */
     public Output<Optional<Integer>> minCount() {
         return Codegen.optional(this.minCount);
     }
+    /**
+     * Add a name for the Ocean cluster.
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return Add a name for the Ocean cluster.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * The size of the OS disk in GB.
+     * 
+     */
     @Export(name="osDiskSizeGb", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> osDiskSizeGb;
 
+    /**
+     * @return The size of the OS disk in GB.
+     * 
+     */
     public Output<Optional<Integer>> osDiskSizeGb() {
         return Codegen.optional(this.osDiskSizeGb);
     }
+    /**
+     * The type of the OS disk.
+     * 
+     */
     @Export(name="osDiskType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> osDiskType;
 
+    /**
+     * @return The type of the OS disk.
+     * 
+     */
     public Output<Optional<String>> osDiskType() {
         return Codegen.optional(this.osDiskType);
     }
+    /**
+     * The OS SKU of the OS type. Must correlate with the os type.
+     * 
+     */
     @Export(name="osSku", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> osSku;
 
+    /**
+     * @return The OS SKU of the OS type. Must correlate with the os type.
+     * 
+     */
     public Output<Optional<String>> osSku() {
         return Codegen.optional(this.osSku);
     }
+    /**
+     * The OS type of the OS disk. Can&#39;t be modified once set.
+     * 
+     */
     @Export(name="osType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> osType;
 
+    /**
+     * @return The OS type of the OS disk. Can&#39;t be modified once set.
+     * 
+     */
     public Output<Optional<String>> osType() {
         return Codegen.optional(this.osType);
     }
+    /**
+     * The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
+     * 
+     */
     @Export(name="podSubnetIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> podSubnetIds;
 
+    /**
+     * @return The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
+     * 
+     */
     public Output<Optional<List<String>>> podSubnetIds() {
         return Codegen.optional(this.podSubnetIds);
     }
+    /**
+     * An object used to specify times when the cluster will turn off. Once the shutdown time will be over, the cluster will return to its previous state.
+     * 
+     */
     @Export(name="scheduling", refs={OceanNpScheduling.class}, tree="[0]")
     private Output</* @Nullable */ OceanNpScheduling> scheduling;
 
+    /**
+     * @return An object used to specify times when the cluster will turn off. Once the shutdown time will be over, the cluster will return to its previous state.
+     * 
+     */
     public Output<Optional<OceanNpScheduling>> scheduling() {
         return Codegen.optional(this.scheduling);
     }
+    /**
+     * Percentage of spot VMs to maintain.
+     * 
+     */
     @Export(name="spotPercentage", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> spotPercentage;
 
+    /**
+     * @return Percentage of spot VMs to maintain.
+     * 
+     */
     public Output<Optional<Integer>> spotPercentage() {
         return Codegen.optional(this.spotPercentage);
     }
@@ -184,9 +400,17 @@ public class OceanNp extends com.pulumi.resources.CustomResource {
     public Output<Optional<Map<String,Object>>> tags() {
         return Codegen.optional(this.tags);
     }
+    /**
+     * Add taints to a virtual node group. Only custom user taints are allowed, and not [Kubernetes well-known taints](https://kubernetes.io/docs/reference/labels-annotations-taints/) or Azure AKS [ScaleSetPrioirty (Spot VM) taint](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool). For all Spot VMs, AKS injects a taint kubernetes.azure.com/scalesetpriority=spot:NoSchedule, to ensure that only workloads that can handle interruptions are scheduled on Spot nodes. To [schedule a pod to run on Spot node](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool#schedule-a-pod-to-run-on-the-spot-node), add a toleration but dont include the nodeAffinity (not supported for Spot Ocean), this will prevent the pod from being scheduled using Spot Ocean.
+     * 
+     */
     @Export(name="taints", refs={List.class,OceanNpTaint.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OceanNpTaint>> taints;
 
+    /**
+     * @return Add taints to a virtual node group. Only custom user taints are allowed, and not [Kubernetes well-known taints](https://kubernetes.io/docs/reference/labels-annotations-taints/) or Azure AKS [ScaleSetPrioirty (Spot VM) taint](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool). For all Spot VMs, AKS injects a taint kubernetes.azure.com/scalesetpriority=spot:NoSchedule, to ensure that only workloads that can handle interruptions are scheduled on Spot nodes. To [schedule a pod to run on Spot node](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool#schedule-a-pod-to-run-on-the-spot-node), add a toleration but dont include the nodeAffinity (not supported for Spot Ocean), this will prevent the pod from being scheduled using Spot Ocean.
+     * 
+     */
     public Output<Optional<List<OceanNpTaint>>> taints() {
         return Codegen.optional(this.taints);
     }
@@ -196,9 +420,17 @@ public class OceanNp extends com.pulumi.resources.CustomResource {
     public Output<Optional<OceanNpUpdatePolicy>> updatePolicy() {
         return Codegen.optional(this.updatePolicy);
     }
+    /**
+     * The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
+     * 
+     */
     @Export(name="vnetSubnetIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> vnetSubnetIds;
 
+    /**
+     * @return The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
+     * 
+     */
     public Output<Optional<List<String>>> vnetSubnetIds() {
         return Codegen.optional(this.vnetSubnetIds);
     }

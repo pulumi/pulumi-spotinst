@@ -10,17 +10,41 @@ import java.util.Objects;
 
 @CustomType
 public final class OceanNpVirtualNodeGroupTaint {
+    /**
+     * @return Set taint effect.
+     * 
+     */
     private String effect;
+    /**
+     * @return Set taint key. The following are not allowed: &#34;kubernetes.azure.com/scalesetpriority&#34;.
+     * 
+     */
     private String key;
+    /**
+     * @return Set taint value.
+     * 
+     */
     private String value;
 
     private OceanNpVirtualNodeGroupTaint() {}
+    /**
+     * @return Set taint effect.
+     * 
+     */
     public String effect() {
         return this.effect;
     }
+    /**
+     * @return Set taint key. The following are not allowed: &#34;kubernetes.azure.com/scalesetpriority&#34;.
+     * 
+     */
     public String key() {
         return this.key;
     }
+    /**
+     * @return Set taint value.
+     * 
+     */
     public String value() {
         return this.value;
     }

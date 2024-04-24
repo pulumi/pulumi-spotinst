@@ -13,20 +13,66 @@ namespace Pulumi.SpotInst.Azure.Outputs
     [OutputType]
     public sealed class OceanNpVirtualNodeGroupFilters
     {
+        /// <summary>
+        /// In case acceleratedNetworking is set to Enabled, accelerated networking applies only to the VM that enables it.
+        /// </summary>
         public readonly string? AcceleratedNetworking;
+        /// <summary>
+        /// The filtered vm sizes will support at least one of the architectures from this list. x86_64 includes both intel64 and amd64.
+        /// </summary>
         public readonly ImmutableArray<string> Architectures;
+        /// <summary>
+        /// The filtered vm sizes will support at least one of the classes from this list.
+        /// </summary>
         public readonly string? DiskPerformance;
+        /// <summary>
+        /// Vm sizes belonging to a series from the list will not be available for scaling.
+        /// </summary>
         public readonly ImmutableArray<string> ExcludeSeries;
+        /// <summary>
+        /// The filtered gpu types will belong to one of the gpu types from this list.
+        /// &lt;a id="update-policy"&gt;&lt;/a&gt;
+        /// </summary>
         public readonly ImmutableArray<string> GpuTypes;
+        /// <summary>
+        /// Maximum number of GPUs available.
+        /// </summary>
         public readonly double? MaxGpu;
+        /// <summary>
+        /// Maximum amount of Memory (GiB).
+        /// </summary>
         public readonly double? MaxMemoryGib;
+        /// <summary>
+        /// Maximum number of vcpus available.
+        /// </summary>
         public readonly int? MaxVcpu;
+        /// <summary>
+        /// Minimum number of data disks available.
+        /// </summary>
         public readonly int? MinDisk;
+        /// <summary>
+        /// Minimum number of GPUs available.
+        /// </summary>
         public readonly double? MinGpu;
+        /// <summary>
+        /// Minimum amount of Memory (GiB).
+        /// </summary>
         public readonly double? MinMemoryGib;
+        /// <summary>
+        /// Minimum number of network interfaces.
+        /// </summary>
         public readonly int? MinNics;
+        /// <summary>
+        /// Minimum number of vcpus available.
+        /// </summary>
         public readonly int? MinVcpu;
+        /// <summary>
+        /// Vm sizes belonging to a series from the list will be available for scaling.
+        /// </summary>
         public readonly ImmutableArray<string> Series;
+        /// <summary>
+        /// The filtered vm types will belong to one of the vm types from this list.
+        /// </summary>
         public readonly ImmutableArray<string> VmTypes;
 
         [OutputConstructor]

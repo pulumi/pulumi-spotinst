@@ -13,8 +13,17 @@ namespace Pulumi.SpotInst.Azure.Outputs
     [OutputType]
     public sealed class OceanNpVirtualNodeGroupTaint
     {
+        /// <summary>
+        /// Set taint effect.
+        /// </summary>
         public readonly string Effect;
+        /// <summary>
+        /// Set taint key. The following are not allowed: "kubernetes.azure.com/scalesetpriority".
+        /// </summary>
         public readonly string Key;
+        /// <summary>
+        /// Set taint value.
+        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

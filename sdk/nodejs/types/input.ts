@@ -2101,170 +2101,6 @@ export namespace aws {
 }
 
 export namespace azure {
-    export interface ElastigroupHealthCheck {
-        autoHealing?: pulumi.Input<boolean>;
-        gracePeriod?: pulumi.Input<number>;
-        healthCheckType: pulumi.Input<string>;
-    }
-
-    export interface ElastigroupImage {
-        customs?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupImageCustom>[]>;
-        marketplaces?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupImageMarketplace>[]>;
-    }
-
-    export interface ElastigroupImageCustom {
-        imageName: pulumi.Input<string>;
-        /**
-         * Name of the Resource Group for Elastigroup.
-         */
-        resourceGroupName: pulumi.Input<string>;
-    }
-
-    export interface ElastigroupImageMarketplace {
-        offer: pulumi.Input<string>;
-        publisher: pulumi.Input<string>;
-        sku: pulumi.Input<string>;
-    }
-
-    export interface ElastigroupIntegrationKubernetes {
-        clusterIdentifier: pulumi.Input<string>;
-    }
-
-    export interface ElastigroupIntegrationMultaiRuntime {
-        deploymentId: pulumi.Input<string>;
-    }
-
-    export interface ElastigroupLoadBalancer {
-        autoWeight?: pulumi.Input<boolean>;
-        balancerId?: pulumi.Input<string>;
-        targetSetId?: pulumi.Input<string>;
-        type: pulumi.Input<string>;
-    }
-
-    export interface ElastigroupLogin {
-        password?: pulumi.Input<string>;
-        sshPublicKey?: pulumi.Input<string>;
-        userName: pulumi.Input<string>;
-    }
-
-    export interface ElastigroupManagedServiceIdentity {
-        /**
-         * The group name.
-         */
-        name: pulumi.Input<string>;
-        /**
-         * Name of the Resource Group for Elastigroup.
-         */
-        resourceGroupName: pulumi.Input<string>;
-    }
-
-    export interface ElastigroupNetwork {
-        additionalIpConfigs?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupNetworkAdditionalIpConfig>[]>;
-        assignPublicIp?: pulumi.Input<boolean>;
-        /**
-         * Name of the Resource Group for Elastigroup.
-         */
-        resourceGroupName: pulumi.Input<string>;
-        subnetName: pulumi.Input<string>;
-        virtualNetworkName: pulumi.Input<string>;
-    }
-
-    export interface ElastigroupNetworkAdditionalIpConfig {
-        /**
-         * The group name.
-         */
-        name: pulumi.Input<string>;
-        privateIpVersion?: pulumi.Input<string>;
-    }
-
-    export interface ElastigroupScalingDownPolicy {
-        actionType?: pulumi.Input<string>;
-        adjustment?: pulumi.Input<string>;
-        cooldown?: pulumi.Input<number>;
-        dimensions?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupScalingDownPolicyDimension>[]>;
-        evaluationPeriods?: pulumi.Input<number>;
-        maxTargetCapacity?: pulumi.Input<string>;
-        maximum?: pulumi.Input<string>;
-        metricName: pulumi.Input<string>;
-        minTargetCapacity?: pulumi.Input<string>;
-        minimum?: pulumi.Input<string>;
-        namespace: pulumi.Input<string>;
-        operator?: pulumi.Input<string>;
-        period?: pulumi.Input<number>;
-        policyName: pulumi.Input<string>;
-        statistic?: pulumi.Input<string>;
-        target?: pulumi.Input<string>;
-        threshold: pulumi.Input<number>;
-        unit?: pulumi.Input<string>;
-    }
-
-    export interface ElastigroupScalingDownPolicyDimension {
-        /**
-         * The group name.
-         */
-        name: pulumi.Input<string>;
-        value?: pulumi.Input<string>;
-    }
-
-    export interface ElastigroupScalingUpPolicy {
-        actionType?: pulumi.Input<string>;
-        adjustment?: pulumi.Input<string>;
-        cooldown?: pulumi.Input<number>;
-        dimensions?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupScalingUpPolicyDimension>[]>;
-        evaluationPeriods?: pulumi.Input<number>;
-        maxTargetCapacity?: pulumi.Input<string>;
-        maximum?: pulumi.Input<string>;
-        metricName: pulumi.Input<string>;
-        minTargetCapacity?: pulumi.Input<string>;
-        minimum?: pulumi.Input<string>;
-        namespace: pulumi.Input<string>;
-        operator?: pulumi.Input<string>;
-        period?: pulumi.Input<number>;
-        policyName: pulumi.Input<string>;
-        statistic?: pulumi.Input<string>;
-        target?: pulumi.Input<string>;
-        threshold: pulumi.Input<number>;
-        unit?: pulumi.Input<string>;
-    }
-
-    export interface ElastigroupScalingUpPolicyDimension {
-        /**
-         * The group name.
-         */
-        name: pulumi.Input<string>;
-        value?: pulumi.Input<string>;
-    }
-
-    export interface ElastigroupScheduledTask {
-        adjustment?: pulumi.Input<string>;
-        adjustmentPercentage?: pulumi.Input<string>;
-        batchSizePercentage?: pulumi.Input<string>;
-        cronExpression: pulumi.Input<string>;
-        gracePeriod?: pulumi.Input<string>;
-        isEnabled?: pulumi.Input<boolean>;
-        scaleMaxCapacity?: pulumi.Input<string>;
-        scaleMinCapacity?: pulumi.Input<string>;
-        scaleTargetCapacity?: pulumi.Input<string>;
-        taskType: pulumi.Input<string>;
-    }
-
-    export interface ElastigroupStrategy {
-        drainingTimeout?: pulumi.Input<number>;
-        lowPriorityPercentage?: pulumi.Input<number>;
-        odCount?: pulumi.Input<number>;
-    }
-
-    export interface ElastigroupUpdatePolicy {
-        rollConfig?: pulumi.Input<inputs.azure.ElastigroupUpdatePolicyRollConfig>;
-        shouldRoll: pulumi.Input<boolean>;
-    }
-
-    export interface ElastigroupUpdatePolicyRollConfig {
-        batchSizePercentage: pulumi.Input<number>;
-        gracePeriod?: pulumi.Input<number>;
-        healthCheckType?: pulumi.Input<string>;
-    }
-
     export interface OceanAutoscaler {
         /**
          * Auto Scaling scale down operations.
@@ -2420,9 +2256,21 @@ export namespace azure {
     }
 
     export interface OceanNpAutoscaler {
+        /**
+         * Auto Scaling scale down operations.
+         */
         autoscaleDown?: pulumi.Input<inputs.azure.OceanNpAutoscalerAutoscaleDown>;
+        /**
+         * Spare resource capacity management enabling fast assignment of pods without waiting for new resources to launch.
+         */
         autoscaleHeadroom?: pulumi.Input<inputs.azure.OceanNpAutoscalerAutoscaleHeadroom>;
+        /**
+         * Enable the Ocean Kubernetes Autoscaler.
+         */
         autoscaleIsEnabled?: pulumi.Input<boolean>;
+        /**
+         * Optionally set upper and lower bounds on the resource usage of the cluster.
+         */
         resourceLimits?: pulumi.Input<inputs.azure.OceanNpAutoscalerResourceLimits>;
     }
 
@@ -2445,35 +2293,100 @@ export namespace azure {
     }
 
     export interface OceanNpFilters {
+        /**
+         * In case acceleratedNetworking is set to Enabled, accelerated networking applies only to the VM that enables it.
+         */
         acceleratedNetworking?: pulumi.Input<string>;
+        /**
+         * The filtered vm sizes will support at least one of the architectures from this list. x8664 includes both intel64 and amd64.
+         */
         architectures?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The filtered vm sizes will support at least one of the classes from this list.
+         */
         diskPerformance?: pulumi.Input<string>;
+        /**
+         * Vm sizes belonging to a series from the list will not be available for scaling
+         */
         excludeSeries?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The filtered gpu types will belong to one of the gpu types from this list.
+         *
+         * <a id="update-policy"></a>
+         */
         gpuTypes?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Maximum number of GPUs available.
+         */
         maxGpu?: pulumi.Input<number>;
+        /**
+         * Maximum amount of Memory (GiB).
+         */
         maxMemoryGib?: pulumi.Input<number>;
+        /**
+         * Maximum number of vcpus available.
+         */
         maxVcpu?: pulumi.Input<number>;
+        /**
+         * Minimum number of data disks available.
+         */
         minDisk?: pulumi.Input<number>;
+        /**
+         * Minimum number of GPUs available.
+         */
         minGpu?: pulumi.Input<number>;
+        /**
+         * Minimum amount of Memory (GiB).
+         */
         minMemoryGib?: pulumi.Input<number>;
+        /**
+         * Minimum number of network interfaces.
+         */
         minNics?: pulumi.Input<number>;
+        /**
+         * Minimum number of vcpus available.
+         */
         minVcpu?: pulumi.Input<number>;
+        /**
+         * Vm sizes belonging to a series from the list will be available for scaling. We can specify include list and series can be specified with capital or small letters, with space, without space or with underscore '_' .  For example all of these "DSv2", "Ds v2", "dsV2" refer to same DS_v2 series.
+         */
         series?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The filtered vm types will belong to one of the vm types from this list.
+         */
         vmTypes?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface OceanNpHeadroom {
+        /**
+         * Configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+         */
         cpuPerUnit?: pulumi.Input<number>;
+        /**
+         * Amount of GPU to allocate for headroom unit.
+         */
         gpuPerUnit?: pulumi.Input<number>;
+        /**
+         * Configure the amount of memory (MiB) to allocate the headroom.
+         */
         memoryPerUnit?: pulumi.Input<number>;
+        /**
+         * The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+         */
         numOfUnits?: pulumi.Input<number>;
     }
 
     export interface OceanNpHealth {
+        /**
+         * The amount of time to wait, in seconds, from the moment the instance has launched until monitoring of its health checks begins.
+         */
         gracePeriod?: pulumi.Input<number>;
     }
 
     export interface OceanNpScheduling {
+        /**
+         * [Shutdown Hours](https://docs.spot.io/ocean/features/running-hours?id=shutdown-hours)An object used to specify times that the nodes in the cluster will be taken down.
+         */
         shutdownHours?: pulumi.Input<inputs.azure.OceanNpSchedulingShutdownHours>;
     }
 
@@ -2483,8 +2396,17 @@ export namespace azure {
     }
 
     export interface OceanNpTaint {
+        /**
+         * Set taint effect.
+         */
         effect: pulumi.Input<string>;
+        /**
+         * Set taint key. The following taint keys are not allowed: ["node.kubernetes.io/not-ready",  "node.kubernetes.io/unreachable", "node.kubernetes.io/unschedulable",  "node.kubernetes.io/memory-pressure",  "node.kubernetes.io/disk-pressure",  "node.kubernetes.io/network-unavailable",  "node.kubernetes.io/pid-pressure",  "node.kubernetes.io/out-of-service",  "node.cloudprovider.kubernetes.io/uninitialized",  "node.cloudprovider.kubernetes.io/shutdown", "kubernetes.azure.com/scalesetpriority"]
+         */
         key: pulumi.Input<string>;
+        /**
+         * Set taint value.
+         */
         value: pulumi.Input<string>;
     }
 
@@ -2506,33 +2428,100 @@ export namespace azure {
     }
 
     export interface OceanNpVirtualNodeGroupFilters {
+        /**
+         * In case acceleratedNetworking is set to Enabled, accelerated networking applies only to the VM that enables it.
+         */
         acceleratedNetworking?: pulumi.Input<string>;
+        /**
+         * The filtered vm sizes will support at least one of the architectures from this list. x8664 includes both intel64 and amd64.
+         */
         architectures?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The filtered vm sizes will support at least one of the classes from this list.
+         */
         diskPerformance?: pulumi.Input<string>;
+        /**
+         * Vm sizes belonging to a series from the list will not be available for scaling.
+         */
         excludeSeries?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The filtered gpu types will belong to one of the gpu types from this list.
+         * <a id="update-policy"></a>
+         */
         gpuTypes?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Maximum number of GPUs available.
+         */
         maxGpu?: pulumi.Input<number>;
+        /**
+         * Maximum amount of Memory (GiB).
+         */
         maxMemoryGib?: pulumi.Input<number>;
+        /**
+         * Maximum number of vcpus available.
+         */
         maxVcpu?: pulumi.Input<number>;
+        /**
+         * Minimum number of data disks available.
+         */
         minDisk?: pulumi.Input<number>;
+        /**
+         * Minimum number of GPUs available.
+         */
         minGpu?: pulumi.Input<number>;
+        /**
+         * Minimum amount of Memory (GiB).
+         */
         minMemoryGib?: pulumi.Input<number>;
+        /**
+         * Minimum number of network interfaces.
+         */
         minNics?: pulumi.Input<number>;
+        /**
+         * Minimum number of vcpus available.
+         */
         minVcpu?: pulumi.Input<number>;
+        /**
+         * Vm sizes belonging to a series from the list will be available for scaling.
+         */
         series?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The filtered vm types will belong to one of the vm types from this list.
+         */
         vmTypes?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface OceanNpVirtualNodeGroupHeadroom {
+        /**
+         * Configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+         */
         cpuPerUnit?: pulumi.Input<number>;
+        /**
+         * Amount of GPU to allocate for headroom unit.
+         */
         gpuPerUnit?: pulumi.Input<number>;
+        /**
+         * Configure the amount of memory (MiB) to allocate the headroom.
+         */
         memoryPerUnit?: pulumi.Input<number>;
+        /**
+         * The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+         */
         numOfUnits?: pulumi.Input<number>;
     }
 
     export interface OceanNpVirtualNodeGroupTaint {
+        /**
+         * Set taint effect.
+         */
         effect: pulumi.Input<string>;
+        /**
+         * Set taint key. The following are not allowed: "kubernetes.azure.com/scalesetpriority".
+         */
         key: pulumi.Input<string>;
+        /**
+         * Set taint value.
+         */
         value: pulumi.Input<string>;
     }
 
