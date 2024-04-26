@@ -98,7 +98,7 @@ export class Ocean extends pulumi.CustomResource {
     /**
      * ID of the image used to launch the instances.
      */
-    public readonly imageId!: pulumi.Output<string | undefined>;
+    public readonly imageId!: pulumi.Output<string>;
     /**
      * Ocean instance metadata options object for IMDSv2.
      */
@@ -238,6 +238,9 @@ export class Ocean extends pulumi.CustomResource {
             resourceInputs["whitelists"] = state ? state.whitelists : undefined;
         } else {
             const args = argsOrState as OceanArgs | undefined;
+            if ((!args || args.imageId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'imageId'");
+            }
             if ((!args || args.securityGroups === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'securityGroups'");
             }
@@ -486,7 +489,7 @@ export interface OceanArgs {
     /**
      * ID of the image used to launch the instances.
      */
-    imageId?: pulumi.Input<string>;
+    imageId: pulumi.Input<string>;
     /**
      * Ocean instance metadata options object for IMDSv2.
      */

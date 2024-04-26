@@ -80,7 +80,7 @@ namespace Pulumi.SpotInst.Ecs
         /// ID of the image used to launch the instances.
         /// </summary>
         [Output("imageId")]
-        public Output<string?> ImageId { get; private set; } = null!;
+        public Output<string> ImageId { get; private set; } = null!;
 
         /// <summary>
         /// Ocean instance metadata options object for IMDSv2.
@@ -305,8 +305,8 @@ namespace Pulumi.SpotInst.Ecs
         /// <summary>
         /// ID of the image used to launch the instances.
         /// </summary>
-        [Input("imageId")]
-        public Input<string>? ImageId { get; set; }
+        [Input("imageId", required: true)]
+        public Input<string> ImageId { get; set; } = null!;
 
         /// <summary>
         /// Ocean instance metadata options object for IMDSv2.

@@ -11223,6 +11223,7 @@
             },
             "required": [
                 "desiredCapacity",
+                "imageId",
                 "minSize",
                 "name",
                 "securityGroups",
@@ -11410,6 +11411,7 @@
                 }
             },
             "requiredInputs": [
+                "imageId",
                 "securityGroups",
                 "subnetIds"
             ],
@@ -13693,6 +13695,7 @@
             "required": [
                 "clusterName",
                 "desiredCapacity",
+                "imageId",
                 "maxSize",
                 "minSize",
                 "name",
@@ -13847,6 +13850,7 @@
             },
             "requiredInputs": [
                 "clusterName",
+                "imageId",
                 "region",
                 "securityGroupIds",
                 "subnetIds"
