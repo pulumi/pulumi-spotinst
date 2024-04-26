@@ -17,6 +17,7 @@ __all__ = ['OceanArgs', 'Ocean']
 class OceanArgs:
     def __init__(__self__, *,
                  cluster_name: pulumi.Input[str],
+                 image_id: pulumi.Input[str],
                  region: pulumi.Input[str],
                  security_group_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
                  subnet_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
@@ -30,7 +31,6 @@ class OceanArgs:
                  ebs_optimized: Optional[pulumi.Input[bool]] = None,
                  filters: Optional[pulumi.Input['OceanFiltersArgs']] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
-                 image_id: Optional[pulumi.Input[str]] = None,
                  instance_metadata_options: Optional[pulumi.Input['OceanInstanceMetadataOptionsArgs']] = None,
                  key_pair: Optional[pulumi.Input[str]] = None,
                  logging: Optional[pulumi.Input['OceanLoggingArgs']] = None,
@@ -51,6 +51,7 @@ class OceanArgs:
         """
         The set of arguments for constructing a Ocean resource.
         :param pulumi.Input[str] cluster_name: The name of the ECS cluster.
+        :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
         :param pulumi.Input[str] region: The region the cluster will run in.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: One or more security group ids.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
@@ -59,7 +60,6 @@ class OceanArgs:
         :param pulumi.Input[int] draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
         :param pulumi.Input[bool] ebs_optimized: Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
         :param pulumi.Input[str] iam_instance_profile: The instance profile iam role.
-        :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
         :param pulumi.Input['OceanInstanceMetadataOptionsArgs'] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
         :param pulumi.Input[str] key_pair: The key pair to attach the instances.
         :param pulumi.Input['OceanLoggingArgs'] logging: Logging configuration.
@@ -75,6 +75,7 @@ class OceanArgs:
         :param pulumi.Input[bool] utilize_reserved_instances: If Reserved instances exist, Ocean will utilize them before launching Spot instances.
         """
         pulumi.set(__self__, "cluster_name", cluster_name)
+        pulumi.set(__self__, "image_id", image_id)
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "security_group_ids", security_group_ids)
         pulumi.set(__self__, "subnet_ids", subnet_ids)
@@ -98,8 +99,6 @@ class OceanArgs:
             pulumi.set(__self__, "filters", filters)
         if iam_instance_profile is not None:
             pulumi.set(__self__, "iam_instance_profile", iam_instance_profile)
-        if image_id is not None:
-            pulumi.set(__self__, "image_id", image_id)
         if instance_metadata_options is not None:
             pulumi.set(__self__, "instance_metadata_options", instance_metadata_options)
         if key_pair is not None:
@@ -146,6 +145,18 @@ class OceanArgs:
     @cluster_name.setter
     def cluster_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "cluster_name", value)
+
+    @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> pulumi.Input[str]:
+        """
+        ID of the image used to launch the instances.
+        """
+        return pulumi.get(self, "image_id")
+
+    @image_id.setter
+    def image_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "image_id", value)
 
     @property
     @pulumi.getter
@@ -287,18 +298,6 @@ class OceanArgs:
     @iam_instance_profile.setter
     def iam_instance_profile(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "iam_instance_profile", value)
-
-    @property
-    @pulumi.getter(name="imageId")
-    def image_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        ID of the image used to launch the instances.
-        """
-        return pulumi.get(self, "image_id")
-
-    @image_id.setter
-    def image_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "image_id", value)
 
     @property
     @pulumi.getter(name="instanceMetadataOptions")
@@ -1142,6 +1141,8 @@ class Ocean(pulumi.CustomResource):
             __props__.__dict__["ebs_optimized"] = ebs_optimized
             __props__.__dict__["filters"] = filters
             __props__.__dict__["iam_instance_profile"] = iam_instance_profile
+            if image_id is None and not opts.urn:
+                raise TypeError("Missing required property 'image_id'")
             __props__.__dict__["image_id"] = image_id
             __props__.__dict__["instance_metadata_options"] = instance_metadata_options
             __props__.__dict__["key_pair"] = key_pair
@@ -1355,7 +1356,7 @@ class Ocean(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> pulumi.Output[Optional[str]]:
+    def image_id(self) -> pulumi.Output[str]:
         """
         ID of the image used to launch the instances.
         """

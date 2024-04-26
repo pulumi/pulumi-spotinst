@@ -264,14 +264,14 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="imageId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> imageId;
+    private Output<String> imageId;
 
     /**
      * @return ID of the image used to launch the instances.
      * 
      */
-    public Output<Optional<String>> imageId() {
-        return Codegen.optional(this.imageId);
+    public Output<String> imageId() {
+        return this.imageId;
     }
     /**
      * Ocean instance metadata options object for IMDSv2.

@@ -227,15 +227,15 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
      * ID of the image used to launch the instances.
      * 
      */
-    @Import(name="imageId")
-    private @Nullable Output<String> imageId;
+    @Import(name="imageId", required=true)
+    private Output<String> imageId;
 
     /**
      * @return ID of the image used to launch the instances.
      * 
      */
-    public Optional<Output<String>> imageId() {
-        return Optional.ofNullable(this.imageId);
+    public Output<String> imageId() {
+        return this.imageId;
     }
 
     /**
@@ -914,7 +914,7 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder imageId(@Nullable Output<String> imageId) {
+        public Builder imageId(Output<String> imageId) {
             $.imageId = imageId;
             return this;
         }
@@ -1437,6 +1437,9 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public OceanArgs build() {
+            if ($.imageId == null) {
+                throw new MissingRequiredPropertyException("OceanArgs", "imageId");
+            }
             if ($.securityGroups == null) {
                 throw new MissingRequiredPropertyException("OceanArgs", "securityGroups");
             }

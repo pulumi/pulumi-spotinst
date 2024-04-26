@@ -44,7 +44,7 @@ type Ocean struct {
 	// The instance profile iam role.
 	IamInstanceProfile pulumi.StringPtrOutput `pulumi:"iamInstanceProfile"`
 	// ID of the image used to launch the instances.
-	ImageId pulumi.StringPtrOutput `pulumi:"imageId"`
+	ImageId pulumi.StringOutput `pulumi:"imageId"`
 	// Ocean instance metadata options object for IMDSv2.
 	InstanceMetadataOptions OceanInstanceMetadataOptionsPtrOutput `pulumi:"instanceMetadataOptions"`
 	// The key pair to attach the instances.
@@ -92,6 +92,9 @@ func NewOcean(ctx *pulumi.Context,
 
 	if args.ClusterName == nil {
 		return nil, errors.New("invalid value for required argument 'ClusterName'")
+	}
+	if args.ImageId == nil {
+		return nil, errors.New("invalid value for required argument 'ImageId'")
 	}
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
@@ -263,7 +266,7 @@ type oceanArgs struct {
 	// The instance profile iam role.
 	IamInstanceProfile *string `pulumi:"iamInstanceProfile"`
 	// ID of the image used to launch the instances.
-	ImageId *string `pulumi:"imageId"`
+	ImageId string `pulumi:"imageId"`
 	// Ocean instance metadata options object for IMDSv2.
 	InstanceMetadataOptions *OceanInstanceMetadataOptions `pulumi:"instanceMetadataOptions"`
 	// The key pair to attach the instances.
@@ -322,7 +325,7 @@ type OceanArgs struct {
 	// The instance profile iam role.
 	IamInstanceProfile pulumi.StringPtrInput
 	// ID of the image used to launch the instances.
-	ImageId pulumi.StringPtrInput
+	ImageId pulumi.StringInput
 	// Ocean instance metadata options object for IMDSv2.
 	InstanceMetadataOptions OceanInstanceMetadataOptionsPtrInput
 	// The key pair to attach the instances.
@@ -499,8 +502,8 @@ func (o OceanOutput) IamInstanceProfile() pulumi.StringPtrOutput {
 }
 
 // ID of the image used to launch the instances.
-func (o OceanOutput) ImageId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Ocean) pulumi.StringPtrOutput { return v.ImageId }).(pulumi.StringPtrOutput)
+func (o OceanOutput) ImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ocean) pulumi.StringOutput { return v.ImageId }).(pulumi.StringOutput)
 }
 
 // Ocean instance metadata options object for IMDSv2.
