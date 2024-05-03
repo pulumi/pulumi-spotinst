@@ -120,28 +120,16 @@ class ProgrammaticUserAccountArgs:
 @pulumi.input_type
 class ProgrammaticUserPolicyArgs:
     def __init__(__self__, *,
-                 policy_account_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 policy_id: pulumi.Input[str]):
+                 policy_id: pulumi.Input[str],
+                 policy_account_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[str] policy_id: Policy ID the programmatic user will have access to.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] policy_account_ids: A list of the accounts that the policy should be
                enforced for the user.
-        :param pulumi.Input[str] policy_id: Policy ID the programmatic user will have access to.
         """
-        pulumi.set(__self__, "policy_account_ids", policy_account_ids)
         pulumi.set(__self__, "policy_id", policy_id)
-
-    @property
-    @pulumi.getter(name="policyAccountIds")
-    def policy_account_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        """
-        A list of the accounts that the policy should be
-        enforced for the user.
-        """
-        return pulumi.get(self, "policy_account_ids")
-
-    @policy_account_ids.setter
-    def policy_account_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
-        pulumi.set(self, "policy_account_ids", value)
+        if policy_account_ids is not None:
+            pulumi.set(__self__, "policy_account_ids", policy_account_ids)
 
     @property
     @pulumi.getter(name="policyId")
@@ -154,6 +142,19 @@ class ProgrammaticUserPolicyArgs:
     @policy_id.setter
     def policy_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "policy_id", value)
+
+    @property
+    @pulumi.getter(name="policyAccountIds")
+    def policy_account_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of the accounts that the policy should be
+        enforced for the user.
+        """
+        return pulumi.get(self, "policy_account_ids")
+
+    @policy_account_ids.setter
+    def policy_account_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "policy_account_ids", value)
 
 
 @pulumi.input_type

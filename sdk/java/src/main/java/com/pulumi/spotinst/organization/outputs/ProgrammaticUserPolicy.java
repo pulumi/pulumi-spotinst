@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ProgrammaticUserPolicy {
@@ -16,7 +17,7 @@ public final class ProgrammaticUserPolicy {
      * enforced for the user.
      * 
      */
-    private List<String> policyAccountIds;
+    private @Nullable List<String> policyAccountIds;
     /**
      * @return Policy ID the programmatic user will have access to.
      * 
@@ -30,7 +31,7 @@ public final class ProgrammaticUserPolicy {
      * 
      */
     public List<String> policyAccountIds() {
-        return this.policyAccountIds;
+        return this.policyAccountIds == null ? List.of() : this.policyAccountIds;
     }
     /**
      * @return Policy ID the programmatic user will have access to.
@@ -49,7 +50,7 @@ public final class ProgrammaticUserPolicy {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<String> policyAccountIds;
+        private @Nullable List<String> policyAccountIds;
         private String policyId;
         public Builder() {}
         public Builder(ProgrammaticUserPolicy defaults) {
@@ -59,10 +60,8 @@ public final class ProgrammaticUserPolicy {
         }
 
         @CustomType.Setter
-        public Builder policyAccountIds(List<String> policyAccountIds) {
-            if (policyAccountIds == null) {
-              throw new MissingRequiredPropertyException("ProgrammaticUserPolicy", "policyAccountIds");
-            }
+        public Builder policyAccountIds(@Nullable List<String> policyAccountIds) {
+
             this.policyAccountIds = policyAccountIds;
             return this;
         }

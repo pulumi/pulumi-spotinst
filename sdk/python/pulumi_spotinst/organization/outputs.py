@@ -118,10 +118,10 @@ class ProgrammaticUserPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "policyAccountIds":
-            suggest = "policy_account_ids"
-        elif key == "policyId":
+        if key == "policyId":
             suggest = "policy_id"
+        elif key == "policyAccountIds":
+            suggest = "policy_account_ids"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ProgrammaticUserPolicy. Access the value via the '{suggest}' property getter instead.")
@@ -135,24 +135,16 @@ class ProgrammaticUserPolicy(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 policy_account_ids: Sequence[str],
-                 policy_id: str):
+                 policy_id: str,
+                 policy_account_ids: Optional[Sequence[str]] = None):
         """
+        :param str policy_id: Policy ID the programmatic user will have access to.
         :param Sequence[str] policy_account_ids: A list of the accounts that the policy should be
                enforced for the user.
-        :param str policy_id: Policy ID the programmatic user will have access to.
         """
-        pulumi.set(__self__, "policy_account_ids", policy_account_ids)
         pulumi.set(__self__, "policy_id", policy_id)
-
-    @property
-    @pulumi.getter(name="policyAccountIds")
-    def policy_account_ids(self) -> Sequence[str]:
-        """
-        A list of the accounts that the policy should be
-        enforced for the user.
-        """
-        return pulumi.get(self, "policy_account_ids")
+        if policy_account_ids is not None:
+            pulumi.set(__self__, "policy_account_ids", policy_account_ids)
 
     @property
     @pulumi.getter(name="policyId")
@@ -161,6 +153,15 @@ class ProgrammaticUserPolicy(dict):
         Policy ID the programmatic user will have access to.
         """
         return pulumi.get(self, "policy_id")
+
+    @property
+    @pulumi.getter(name="policyAccountIds")
+    def policy_account_ids(self) -> Optional[Sequence[str]]:
+        """
+        A list of the accounts that the policy should be
+        enforced for the user.
+        """
+        return pulumi.get(self, "policy_account_ids")
 
 
 @pulumi.output_type
