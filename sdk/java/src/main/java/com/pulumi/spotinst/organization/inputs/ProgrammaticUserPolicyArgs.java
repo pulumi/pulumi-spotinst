@@ -9,6 +9,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ProgrammaticUserPolicyArgs extends com.pulumi.resources.ResourceArgs {
@@ -20,16 +22,16 @@ public final class ProgrammaticUserPolicyArgs extends com.pulumi.resources.Resou
      * enforced for the user.
      * 
      */
-    @Import(name="policyAccountIds", required=true)
-    private Output<List<String>> policyAccountIds;
+    @Import(name="policyAccountIds")
+    private @Nullable Output<List<String>> policyAccountIds;
 
     /**
      * @return A list of the accounts that the policy should be
      * enforced for the user.
      * 
      */
-    public Output<List<String>> policyAccountIds() {
-        return this.policyAccountIds;
+    public Optional<Output<List<String>>> policyAccountIds() {
+        return Optional.ofNullable(this.policyAccountIds);
     }
 
     /**
@@ -79,7 +81,7 @@ public final class ProgrammaticUserPolicyArgs extends com.pulumi.resources.Resou
          * @return builder
          * 
          */
-        public Builder policyAccountIds(Output<List<String>> policyAccountIds) {
+        public Builder policyAccountIds(@Nullable Output<List<String>> policyAccountIds) {
             $.policyAccountIds = policyAccountIds;
             return this;
         }
@@ -128,9 +130,6 @@ public final class ProgrammaticUserPolicyArgs extends com.pulumi.resources.Resou
         }
 
         public ProgrammaticUserPolicyArgs build() {
-            if ($.policyAccountIds == null) {
-                throw new MissingRequiredPropertyException("ProgrammaticUserPolicyArgs", "policyAccountIds");
-            }
             if ($.policyId == null) {
                 throw new MissingRequiredPropertyException("ProgrammaticUserPolicyArgs", "policyId");
             }

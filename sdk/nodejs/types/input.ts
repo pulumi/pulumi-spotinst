@@ -3582,7 +3582,7 @@ export namespace organization {
          * A list of the accounts that the policy should be
          * enforced for the user.
          */
-        policyAccountIds: pulumi.Input<pulumi.Input<string>[]>;
+        policyAccountIds?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Policy ID the programmatic user will have access to.
          */

@@ -12,7 +12,7 @@ namespace Pulumi.SpotInst.Organization.Inputs
 
     public sealed class ProgrammaticUserPolicyArgs : global::Pulumi.ResourceArgs
     {
-        [Input("policyAccountIds", required: true)]
+        [Input("policyAccountIds")]
         private InputList<string>? _policyAccountIds;
 
         /// <summary>

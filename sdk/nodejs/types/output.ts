@@ -3588,7 +3588,7 @@ export namespace organization {
          * A list of the accounts that the policy should be
          * enforced for the user.
          */
-        policyAccountIds: string[];
+        policyAccountIds?: string[];
         /**
          * Policy ID the programmatic user will have access to.
          */
