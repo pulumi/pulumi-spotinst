@@ -8035,7 +8035,6 @@
             },
             "type": "object",
             "required": [
-                "policyAccountIds",
                 "policyId"
             ]
         },
