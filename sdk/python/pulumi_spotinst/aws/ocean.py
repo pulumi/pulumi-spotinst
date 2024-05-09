@@ -21,12 +21,14 @@ class OceanArgs:
                  subnet_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
                  associate_ipv6_address: Optional[pulumi.Input[bool]] = None,
                  associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
+                 attach_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['OceanAttachLoadBalancerArgs']]]] = None,
                  autoscaler: Optional[pulumi.Input['OceanAutoscalerArgs']] = None,
                  blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['OceanBlockDeviceMappingArgs']]]] = None,
                  cluster_orientations: Optional[pulumi.Input[Sequence[pulumi.Input['OceanClusterOrientationArgs']]]] = None,
                  controller_id: Optional[pulumi.Input[str]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
+                 detach_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['OceanDetachLoadBalancerArgs']]]] = None,
                  draining_timeout: Optional[pulumi.Input[int]] = None,
                  ebs_optimized: Optional[pulumi.Input[bool]] = None,
                  fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
@@ -98,6 +100,8 @@ class OceanArgs:
             pulumi.set(__self__, "associate_ipv6_address", associate_ipv6_address)
         if associate_public_ip_address is not None:
             pulumi.set(__self__, "associate_public_ip_address", associate_public_ip_address)
+        if attach_load_balancers is not None:
+            pulumi.set(__self__, "attach_load_balancers", attach_load_balancers)
         if autoscaler is not None:
             pulumi.set(__self__, "autoscaler", autoscaler)
         if blacklists is not None:
@@ -110,6 +114,8 @@ class OceanArgs:
             pulumi.set(__self__, "controller_id", controller_id)
         if desired_capacity is not None:
             pulumi.set(__self__, "desired_capacity", desired_capacity)
+        if detach_load_balancers is not None:
+            pulumi.set(__self__, "detach_load_balancers", detach_load_balancers)
         if draining_timeout is not None:
             pulumi.set(__self__, "draining_timeout", draining_timeout)
         if ebs_optimized is not None:
@@ -228,6 +234,15 @@ class OceanArgs:
         pulumi.set(self, "associate_public_ip_address", value)
 
     @property
+    @pulumi.getter(name="attachLoadBalancers")
+    def attach_load_balancers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanAttachLoadBalancerArgs']]]]:
+        return pulumi.get(self, "attach_load_balancers")
+
+    @attach_load_balancers.setter
+    def attach_load_balancers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanAttachLoadBalancerArgs']]]]):
+        pulumi.set(self, "attach_load_balancers", value)
+
+    @property
     @pulumi.getter
     def autoscaler(self) -> Optional[pulumi.Input['OceanAutoscalerArgs']]:
         return pulumi.get(self, "autoscaler")
@@ -289,6 +304,15 @@ class OceanArgs:
     @desired_capacity.setter
     def desired_capacity(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "desired_capacity", value)
+
+    @property
+    @pulumi.getter(name="detachLoadBalancers")
+    def detach_load_balancers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanDetachLoadBalancerArgs']]]]:
+        return pulumi.get(self, "detach_load_balancers")
+
+    @detach_load_balancers.setter
+    def detach_load_balancers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanDetachLoadBalancerArgs']]]]):
+        pulumi.set(self, "detach_load_balancers", value)
 
     @property
     @pulumi.getter(name="drainingTimeout")
@@ -621,12 +645,14 @@ class _OceanState:
     def __init__(__self__, *,
                  associate_ipv6_address: Optional[pulumi.Input[bool]] = None,
                  associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
+                 attach_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['OceanAttachLoadBalancerArgs']]]] = None,
                  autoscaler: Optional[pulumi.Input['OceanAutoscalerArgs']] = None,
                  blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['OceanBlockDeviceMappingArgs']]]] = None,
                  cluster_orientations: Optional[pulumi.Input[Sequence[pulumi.Input['OceanClusterOrientationArgs']]]] = None,
                  controller_id: Optional[pulumi.Input[str]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
+                 detach_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['OceanDetachLoadBalancerArgs']]]] = None,
                  draining_timeout: Optional[pulumi.Input[int]] = None,
                  ebs_optimized: Optional[pulumi.Input[bool]] = None,
                  fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
@@ -698,6 +724,8 @@ class _OceanState:
             pulumi.set(__self__, "associate_ipv6_address", associate_ipv6_address)
         if associate_public_ip_address is not None:
             pulumi.set(__self__, "associate_public_ip_address", associate_public_ip_address)
+        if attach_load_balancers is not None:
+            pulumi.set(__self__, "attach_load_balancers", attach_load_balancers)
         if autoscaler is not None:
             pulumi.set(__self__, "autoscaler", autoscaler)
         if blacklists is not None:
@@ -710,6 +738,8 @@ class _OceanState:
             pulumi.set(__self__, "controller_id", controller_id)
         if desired_capacity is not None:
             pulumi.set(__self__, "desired_capacity", desired_capacity)
+        if detach_load_balancers is not None:
+            pulumi.set(__self__, "detach_load_balancers", detach_load_balancers)
         if draining_timeout is not None:
             pulumi.set(__self__, "draining_timeout", draining_timeout)
         if ebs_optimized is not None:
@@ -798,6 +828,15 @@ class _OceanState:
         pulumi.set(self, "associate_public_ip_address", value)
 
     @property
+    @pulumi.getter(name="attachLoadBalancers")
+    def attach_load_balancers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanAttachLoadBalancerArgs']]]]:
+        return pulumi.get(self, "attach_load_balancers")
+
+    @attach_load_balancers.setter
+    def attach_load_balancers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanAttachLoadBalancerArgs']]]]):
+        pulumi.set(self, "attach_load_balancers", value)
+
+    @property
     @pulumi.getter
     def autoscaler(self) -> Optional[pulumi.Input['OceanAutoscalerArgs']]:
         return pulumi.get(self, "autoscaler")
@@ -859,6 +898,15 @@ class _OceanState:
     @desired_capacity.setter
     def desired_capacity(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "desired_capacity", value)
+
+    @property
+    @pulumi.getter(name="detachLoadBalancers")
+    def detach_load_balancers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanDetachLoadBalancerArgs']]]]:
+        return pulumi.get(self, "detach_load_balancers")
+
+    @detach_load_balancers.setter
+    def detach_load_balancers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanDetachLoadBalancerArgs']]]]):
+        pulumi.set(self, "detach_load_balancers", value)
 
     @property
     @pulumi.getter(name="drainingTimeout")
@@ -1229,12 +1277,14 @@ class Ocean(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  associate_ipv6_address: Optional[pulumi.Input[bool]] = None,
                  associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
+                 attach_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanAttachLoadBalancerArgs']]]]] = None,
                  autoscaler: Optional[pulumi.Input[pulumi.InputType['OceanAutoscalerArgs']]] = None,
                  blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanBlockDeviceMappingArgs']]]]] = None,
                  cluster_orientations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanClusterOrientationArgs']]]]] = None,
                  controller_id: Optional[pulumi.Input[str]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
+                 detach_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanDetachLoadBalancerArgs']]]]] = None,
                  draining_timeout: Optional[pulumi.Input[int]] = None,
                  ebs_optimized: Optional[pulumi.Input[bool]] = None,
                  fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
@@ -1352,12 +1402,14 @@ class Ocean(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  associate_ipv6_address: Optional[pulumi.Input[bool]] = None,
                  associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
+                 attach_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanAttachLoadBalancerArgs']]]]] = None,
                  autoscaler: Optional[pulumi.Input[pulumi.InputType['OceanAutoscalerArgs']]] = None,
                  blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanBlockDeviceMappingArgs']]]]] = None,
                  cluster_orientations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanClusterOrientationArgs']]]]] = None,
                  controller_id: Optional[pulumi.Input[str]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
+                 detach_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanDetachLoadBalancerArgs']]]]] = None,
                  draining_timeout: Optional[pulumi.Input[int]] = None,
                  ebs_optimized: Optional[pulumi.Input[bool]] = None,
                  fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
@@ -1400,12 +1452,14 @@ class Ocean(pulumi.CustomResource):
 
             __props__.__dict__["associate_ipv6_address"] = associate_ipv6_address
             __props__.__dict__["associate_public_ip_address"] = associate_public_ip_address
+            __props__.__dict__["attach_load_balancers"] = attach_load_balancers
             __props__.__dict__["autoscaler"] = autoscaler
             __props__.__dict__["blacklists"] = blacklists
             __props__.__dict__["block_device_mappings"] = block_device_mappings
             __props__.__dict__["cluster_orientations"] = cluster_orientations
             __props__.__dict__["controller_id"] = controller_id
             __props__.__dict__["desired_capacity"] = desired_capacity
+            __props__.__dict__["detach_load_balancers"] = detach_load_balancers
             __props__.__dict__["draining_timeout"] = draining_timeout
             __props__.__dict__["ebs_optimized"] = ebs_optimized
             __props__.__dict__["fallback_to_ondemand"] = fallback_to_ondemand
@@ -1455,12 +1509,14 @@ class Ocean(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             associate_ipv6_address: Optional[pulumi.Input[bool]] = None,
             associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
+            attach_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanAttachLoadBalancerArgs']]]]] = None,
             autoscaler: Optional[pulumi.Input[pulumi.InputType['OceanAutoscalerArgs']]] = None,
             blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanBlockDeviceMappingArgs']]]]] = None,
             cluster_orientations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanClusterOrientationArgs']]]]] = None,
             controller_id: Optional[pulumi.Input[str]] = None,
             desired_capacity: Optional[pulumi.Input[int]] = None,
+            detach_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanDetachLoadBalancerArgs']]]]] = None,
             draining_timeout: Optional[pulumi.Input[int]] = None,
             ebs_optimized: Optional[pulumi.Input[bool]] = None,
             fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
@@ -1539,12 +1595,14 @@ class Ocean(pulumi.CustomResource):
 
         __props__.__dict__["associate_ipv6_address"] = associate_ipv6_address
         __props__.__dict__["associate_public_ip_address"] = associate_public_ip_address
+        __props__.__dict__["attach_load_balancers"] = attach_load_balancers
         __props__.__dict__["autoscaler"] = autoscaler
         __props__.__dict__["blacklists"] = blacklists
         __props__.__dict__["block_device_mappings"] = block_device_mappings
         __props__.__dict__["cluster_orientations"] = cluster_orientations
         __props__.__dict__["controller_id"] = controller_id
         __props__.__dict__["desired_capacity"] = desired_capacity
+        __props__.__dict__["detach_load_balancers"] = detach_load_balancers
         __props__.__dict__["draining_timeout"] = draining_timeout
         __props__.__dict__["ebs_optimized"] = ebs_optimized
         __props__.__dict__["fallback_to_ondemand"] = fallback_to_ondemand
@@ -1595,6 +1653,11 @@ class Ocean(pulumi.CustomResource):
         return pulumi.get(self, "associate_public_ip_address")
 
     @property
+    @pulumi.getter(name="attachLoadBalancers")
+    def attach_load_balancers(self) -> pulumi.Output[Optional[Sequence['outputs.OceanAttachLoadBalancer']]]:
+        return pulumi.get(self, "attach_load_balancers")
+
+    @property
     @pulumi.getter
     def autoscaler(self) -> pulumi.Output[Optional['outputs.OceanAutoscaler']]:
         return pulumi.get(self, "autoscaler")
@@ -1632,6 +1695,11 @@ class Ocean(pulumi.CustomResource):
         The number of instances to launch and maintain in the cluster.
         """
         return pulumi.get(self, "desired_capacity")
+
+    @property
+    @pulumi.getter(name="detachLoadBalancers")
+    def detach_load_balancers(self) -> pulumi.Output[Optional[Sequence['outputs.OceanDetachLoadBalancer']]]:
+        return pulumi.get(self, "detach_load_balancers")
 
     @property
     @pulumi.getter(name="drainingTimeout")

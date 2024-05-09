@@ -55,6 +55,7 @@ export class Ocean extends pulumi.CustomResource {
      * Configure public IP address allocation.
      */
     public readonly associatePublicIpAddress!: pulumi.Output<boolean | undefined>;
+    public readonly attachLoadBalancers!: pulumi.Output<outputs.aws.OceanAttachLoadBalancer[] | undefined>;
     public readonly autoscaler!: pulumi.Output<outputs.aws.OceanAutoscaler | undefined>;
     public readonly blacklists!: pulumi.Output<string[] | undefined>;
     /**
@@ -70,6 +71,7 @@ export class Ocean extends pulumi.CustomResource {
      * The number of instances to launch and maintain in the cluster.
      */
     public readonly desiredCapacity!: pulumi.Output<number>;
+    public readonly detachLoadBalancers!: pulumi.Output<outputs.aws.OceanDetachLoadBalancer[] | undefined>;
     /**
      * The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
      */
@@ -199,12 +201,14 @@ export class Ocean extends pulumi.CustomResource {
             const state = argsOrState as OceanState | undefined;
             resourceInputs["associateIpv6Address"] = state ? state.associateIpv6Address : undefined;
             resourceInputs["associatePublicIpAddress"] = state ? state.associatePublicIpAddress : undefined;
+            resourceInputs["attachLoadBalancers"] = state ? state.attachLoadBalancers : undefined;
             resourceInputs["autoscaler"] = state ? state.autoscaler : undefined;
             resourceInputs["blacklists"] = state ? state.blacklists : undefined;
             resourceInputs["blockDeviceMappings"] = state ? state.blockDeviceMappings : undefined;
             resourceInputs["clusterOrientations"] = state ? state.clusterOrientations : undefined;
             resourceInputs["controllerId"] = state ? state.controllerId : undefined;
             resourceInputs["desiredCapacity"] = state ? state.desiredCapacity : undefined;
+            resourceInputs["detachLoadBalancers"] = state ? state.detachLoadBalancers : undefined;
             resourceInputs["drainingTimeout"] = state ? state.drainingTimeout : undefined;
             resourceInputs["ebsOptimized"] = state ? state.ebsOptimized : undefined;
             resourceInputs["fallbackToOndemand"] = state ? state.fallbackToOndemand : undefined;
@@ -249,12 +253,14 @@ export class Ocean extends pulumi.CustomResource {
             }
             resourceInputs["associateIpv6Address"] = args ? args.associateIpv6Address : undefined;
             resourceInputs["associatePublicIpAddress"] = args ? args.associatePublicIpAddress : undefined;
+            resourceInputs["attachLoadBalancers"] = args ? args.attachLoadBalancers : undefined;
             resourceInputs["autoscaler"] = args ? args.autoscaler : undefined;
             resourceInputs["blacklists"] = args ? args.blacklists : undefined;
             resourceInputs["blockDeviceMappings"] = args ? args.blockDeviceMappings : undefined;
             resourceInputs["clusterOrientations"] = args ? args.clusterOrientations : undefined;
             resourceInputs["controllerId"] = args ? args.controllerId : undefined;
             resourceInputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
+            resourceInputs["detachLoadBalancers"] = args ? args.detachLoadBalancers : undefined;
             resourceInputs["drainingTimeout"] = args ? args.drainingTimeout : undefined;
             resourceInputs["ebsOptimized"] = args ? args.ebsOptimized : undefined;
             resourceInputs["fallbackToOndemand"] = args ? args.fallbackToOndemand : undefined;
@@ -304,6 +310,7 @@ export interface OceanState {
      * Configure public IP address allocation.
      */
     associatePublicIpAddress?: pulumi.Input<boolean>;
+    attachLoadBalancers?: pulumi.Input<pulumi.Input<inputs.aws.OceanAttachLoadBalancer>[]>;
     autoscaler?: pulumi.Input<inputs.aws.OceanAutoscaler>;
     blacklists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -319,6 +326,7 @@ export interface OceanState {
      * The number of instances to launch and maintain in the cluster.
      */
     desiredCapacity?: pulumi.Input<number>;
+    detachLoadBalancers?: pulumi.Input<pulumi.Input<inputs.aws.OceanDetachLoadBalancer>[]>;
     /**
      * The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
      */
@@ -446,6 +454,7 @@ export interface OceanArgs {
      * Configure public IP address allocation.
      */
     associatePublicIpAddress?: pulumi.Input<boolean>;
+    attachLoadBalancers?: pulumi.Input<pulumi.Input<inputs.aws.OceanAttachLoadBalancer>[]>;
     autoscaler?: pulumi.Input<inputs.aws.OceanAutoscaler>;
     blacklists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -461,6 +470,7 @@ export interface OceanArgs {
      * The number of instances to launch and maintain in the cluster.
      */
     desiredCapacity?: pulumi.Input<number>;
+    detachLoadBalancers?: pulumi.Input<pulumi.Input<inputs.aws.OceanDetachLoadBalancer>[]>;
     /**
      * The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
      */

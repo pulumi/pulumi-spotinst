@@ -37,6 +37,9 @@ namespace Pulumi.SpotInst.Aws
         [Output("associatePublicIpAddress")]
         public Output<bool?> AssociatePublicIpAddress { get; private set; } = null!;
 
+        [Output("attachLoadBalancers")]
+        public Output<ImmutableArray<Outputs.OceanAttachLoadBalancer>> AttachLoadBalancers { get; private set; } = null!;
+
         [Output("autoscaler")]
         public Output<Outputs.OceanAutoscaler?> Autoscaler { get; private set; } = null!;
 
@@ -63,6 +66,9 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Output("desiredCapacity")]
         public Output<int> DesiredCapacity { get; private set; } = null!;
+
+        [Output("detachLoadBalancers")]
+        public Output<ImmutableArray<Outputs.OceanDetachLoadBalancer>> DetachLoadBalancers { get; private set; } = null!;
 
         /// <summary>
         /// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
@@ -297,6 +303,14 @@ namespace Pulumi.SpotInst.Aws
         [Input("associatePublicIpAddress")]
         public Input<bool>? AssociatePublicIpAddress { get; set; }
 
+        [Input("attachLoadBalancers")]
+        private InputList<Inputs.OceanAttachLoadBalancerArgs>? _attachLoadBalancers;
+        public InputList<Inputs.OceanAttachLoadBalancerArgs> AttachLoadBalancers
+        {
+            get => _attachLoadBalancers ?? (_attachLoadBalancers = new InputList<Inputs.OceanAttachLoadBalancerArgs>());
+            set => _attachLoadBalancers = value;
+        }
+
         [Input("autoscaler")]
         public Input<Inputs.OceanAutoscalerArgs>? Autoscaler { get; set; }
 
@@ -339,6 +353,14 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("desiredCapacity")]
         public Input<int>? DesiredCapacity { get; set; }
+
+        [Input("detachLoadBalancers")]
+        private InputList<Inputs.OceanDetachLoadBalancerArgs>? _detachLoadBalancers;
+        public InputList<Inputs.OceanDetachLoadBalancerArgs> DetachLoadBalancers
+        {
+            get => _detachLoadBalancers ?? (_detachLoadBalancers = new InputList<Inputs.OceanDetachLoadBalancerArgs>());
+            set => _detachLoadBalancers = value;
+        }
 
         /// <summary>
         /// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
@@ -575,6 +597,14 @@ namespace Pulumi.SpotInst.Aws
         [Input("associatePublicIpAddress")]
         public Input<bool>? AssociatePublicIpAddress { get; set; }
 
+        [Input("attachLoadBalancers")]
+        private InputList<Inputs.OceanAttachLoadBalancerGetArgs>? _attachLoadBalancers;
+        public InputList<Inputs.OceanAttachLoadBalancerGetArgs> AttachLoadBalancers
+        {
+            get => _attachLoadBalancers ?? (_attachLoadBalancers = new InputList<Inputs.OceanAttachLoadBalancerGetArgs>());
+            set => _attachLoadBalancers = value;
+        }
+
         [Input("autoscaler")]
         public Input<Inputs.OceanAutoscalerGetArgs>? Autoscaler { get; set; }
 
@@ -617,6 +647,14 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("desiredCapacity")]
         public Input<int>? DesiredCapacity { get; set; }
+
+        [Input("detachLoadBalancers")]
+        private InputList<Inputs.OceanDetachLoadBalancerGetArgs>? _detachLoadBalancers;
+        public InputList<Inputs.OceanDetachLoadBalancerGetArgs> DetachLoadBalancers
+        {
+            get => _detachLoadBalancers ?? (_detachLoadBalancers = new InputList<Inputs.OceanDetachLoadBalancerGetArgs>());
+            set => _detachLoadBalancers = value;
+        }
 
         /// <summary>
         /// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.

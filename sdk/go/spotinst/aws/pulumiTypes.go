@@ -15727,6 +15727,115 @@ func (o MrScalarTerminationPolicyStatementArrayOutput) Index(i pulumi.IntInput) 
 	}).(MrScalarTerminationPolicyStatementOutput)
 }
 
+type OceanAttachLoadBalancer struct {
+	Arn *string `pulumi:"arn"`
+	// The cluster name.
+	Name *string `pulumi:"name"`
+	Type string  `pulumi:"type"`
+}
+
+// OceanAttachLoadBalancerInput is an input type that accepts OceanAttachLoadBalancerArgs and OceanAttachLoadBalancerOutput values.
+// You can construct a concrete instance of `OceanAttachLoadBalancerInput` via:
+//
+//	OceanAttachLoadBalancerArgs{...}
+type OceanAttachLoadBalancerInput interface {
+	pulumi.Input
+
+	ToOceanAttachLoadBalancerOutput() OceanAttachLoadBalancerOutput
+	ToOceanAttachLoadBalancerOutputWithContext(context.Context) OceanAttachLoadBalancerOutput
+}
+
+type OceanAttachLoadBalancerArgs struct {
+	Arn pulumi.StringPtrInput `pulumi:"arn"`
+	// The cluster name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	Type pulumi.StringInput    `pulumi:"type"`
+}
+
+func (OceanAttachLoadBalancerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanAttachLoadBalancer)(nil)).Elem()
+}
+
+func (i OceanAttachLoadBalancerArgs) ToOceanAttachLoadBalancerOutput() OceanAttachLoadBalancerOutput {
+	return i.ToOceanAttachLoadBalancerOutputWithContext(context.Background())
+}
+
+func (i OceanAttachLoadBalancerArgs) ToOceanAttachLoadBalancerOutputWithContext(ctx context.Context) OceanAttachLoadBalancerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanAttachLoadBalancerOutput)
+}
+
+// OceanAttachLoadBalancerArrayInput is an input type that accepts OceanAttachLoadBalancerArray and OceanAttachLoadBalancerArrayOutput values.
+// You can construct a concrete instance of `OceanAttachLoadBalancerArrayInput` via:
+//
+//	OceanAttachLoadBalancerArray{ OceanAttachLoadBalancerArgs{...} }
+type OceanAttachLoadBalancerArrayInput interface {
+	pulumi.Input
+
+	ToOceanAttachLoadBalancerArrayOutput() OceanAttachLoadBalancerArrayOutput
+	ToOceanAttachLoadBalancerArrayOutputWithContext(context.Context) OceanAttachLoadBalancerArrayOutput
+}
+
+type OceanAttachLoadBalancerArray []OceanAttachLoadBalancerInput
+
+func (OceanAttachLoadBalancerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanAttachLoadBalancer)(nil)).Elem()
+}
+
+func (i OceanAttachLoadBalancerArray) ToOceanAttachLoadBalancerArrayOutput() OceanAttachLoadBalancerArrayOutput {
+	return i.ToOceanAttachLoadBalancerArrayOutputWithContext(context.Background())
+}
+
+func (i OceanAttachLoadBalancerArray) ToOceanAttachLoadBalancerArrayOutputWithContext(ctx context.Context) OceanAttachLoadBalancerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanAttachLoadBalancerArrayOutput)
+}
+
+type OceanAttachLoadBalancerOutput struct{ *pulumi.OutputState }
+
+func (OceanAttachLoadBalancerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanAttachLoadBalancer)(nil)).Elem()
+}
+
+func (o OceanAttachLoadBalancerOutput) ToOceanAttachLoadBalancerOutput() OceanAttachLoadBalancerOutput {
+	return o
+}
+
+func (o OceanAttachLoadBalancerOutput) ToOceanAttachLoadBalancerOutputWithContext(ctx context.Context) OceanAttachLoadBalancerOutput {
+	return o
+}
+
+func (o OceanAttachLoadBalancerOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanAttachLoadBalancer) *string { return v.Arn }).(pulumi.StringPtrOutput)
+}
+
+// The cluster name.
+func (o OceanAttachLoadBalancerOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanAttachLoadBalancer) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o OceanAttachLoadBalancerOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanAttachLoadBalancer) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type OceanAttachLoadBalancerArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanAttachLoadBalancerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanAttachLoadBalancer)(nil)).Elem()
+}
+
+func (o OceanAttachLoadBalancerArrayOutput) ToOceanAttachLoadBalancerArrayOutput() OceanAttachLoadBalancerArrayOutput {
+	return o
+}
+
+func (o OceanAttachLoadBalancerArrayOutput) ToOceanAttachLoadBalancerArrayOutputWithContext(ctx context.Context) OceanAttachLoadBalancerArrayOutput {
+	return o
+}
+
+func (o OceanAttachLoadBalancerArrayOutput) Index(i pulumi.IntInput) OceanAttachLoadBalancerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanAttachLoadBalancer {
+		return vs[0].([]OceanAttachLoadBalancer)[vs[1].(int)]
+	}).(OceanAttachLoadBalancerOutput)
+}
+
 type OceanAutoscaler struct {
 	AutoHeadroomPercentage           *int                              `pulumi:"autoHeadroomPercentage"`
 	AutoscaleCooldown                *int                              `pulumi:"autoscaleCooldown"`
@@ -17266,6 +17375,115 @@ func (o OceanClusterOrientationArrayOutput) Index(i pulumi.IntInput) OceanCluste
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanClusterOrientation {
 		return vs[0].([]OceanClusterOrientation)[vs[1].(int)]
 	}).(OceanClusterOrientationOutput)
+}
+
+type OceanDetachLoadBalancer struct {
+	Arn *string `pulumi:"arn"`
+	// The cluster name.
+	Name *string `pulumi:"name"`
+	Type string  `pulumi:"type"`
+}
+
+// OceanDetachLoadBalancerInput is an input type that accepts OceanDetachLoadBalancerArgs and OceanDetachLoadBalancerOutput values.
+// You can construct a concrete instance of `OceanDetachLoadBalancerInput` via:
+//
+//	OceanDetachLoadBalancerArgs{...}
+type OceanDetachLoadBalancerInput interface {
+	pulumi.Input
+
+	ToOceanDetachLoadBalancerOutput() OceanDetachLoadBalancerOutput
+	ToOceanDetachLoadBalancerOutputWithContext(context.Context) OceanDetachLoadBalancerOutput
+}
+
+type OceanDetachLoadBalancerArgs struct {
+	Arn pulumi.StringPtrInput `pulumi:"arn"`
+	// The cluster name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	Type pulumi.StringInput    `pulumi:"type"`
+}
+
+func (OceanDetachLoadBalancerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanDetachLoadBalancer)(nil)).Elem()
+}
+
+func (i OceanDetachLoadBalancerArgs) ToOceanDetachLoadBalancerOutput() OceanDetachLoadBalancerOutput {
+	return i.ToOceanDetachLoadBalancerOutputWithContext(context.Background())
+}
+
+func (i OceanDetachLoadBalancerArgs) ToOceanDetachLoadBalancerOutputWithContext(ctx context.Context) OceanDetachLoadBalancerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanDetachLoadBalancerOutput)
+}
+
+// OceanDetachLoadBalancerArrayInput is an input type that accepts OceanDetachLoadBalancerArray and OceanDetachLoadBalancerArrayOutput values.
+// You can construct a concrete instance of `OceanDetachLoadBalancerArrayInput` via:
+//
+//	OceanDetachLoadBalancerArray{ OceanDetachLoadBalancerArgs{...} }
+type OceanDetachLoadBalancerArrayInput interface {
+	pulumi.Input
+
+	ToOceanDetachLoadBalancerArrayOutput() OceanDetachLoadBalancerArrayOutput
+	ToOceanDetachLoadBalancerArrayOutputWithContext(context.Context) OceanDetachLoadBalancerArrayOutput
+}
+
+type OceanDetachLoadBalancerArray []OceanDetachLoadBalancerInput
+
+func (OceanDetachLoadBalancerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanDetachLoadBalancer)(nil)).Elem()
+}
+
+func (i OceanDetachLoadBalancerArray) ToOceanDetachLoadBalancerArrayOutput() OceanDetachLoadBalancerArrayOutput {
+	return i.ToOceanDetachLoadBalancerArrayOutputWithContext(context.Background())
+}
+
+func (i OceanDetachLoadBalancerArray) ToOceanDetachLoadBalancerArrayOutputWithContext(ctx context.Context) OceanDetachLoadBalancerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanDetachLoadBalancerArrayOutput)
+}
+
+type OceanDetachLoadBalancerOutput struct{ *pulumi.OutputState }
+
+func (OceanDetachLoadBalancerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanDetachLoadBalancer)(nil)).Elem()
+}
+
+func (o OceanDetachLoadBalancerOutput) ToOceanDetachLoadBalancerOutput() OceanDetachLoadBalancerOutput {
+	return o
+}
+
+func (o OceanDetachLoadBalancerOutput) ToOceanDetachLoadBalancerOutputWithContext(ctx context.Context) OceanDetachLoadBalancerOutput {
+	return o
+}
+
+func (o OceanDetachLoadBalancerOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanDetachLoadBalancer) *string { return v.Arn }).(pulumi.StringPtrOutput)
+}
+
+// The cluster name.
+func (o OceanDetachLoadBalancerOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanDetachLoadBalancer) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o OceanDetachLoadBalancerOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanDetachLoadBalancer) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type OceanDetachLoadBalancerArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanDetachLoadBalancerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanDetachLoadBalancer)(nil)).Elem()
+}
+
+func (o OceanDetachLoadBalancerArrayOutput) ToOceanDetachLoadBalancerArrayOutput() OceanDetachLoadBalancerArrayOutput {
+	return o
+}
+
+func (o OceanDetachLoadBalancerArrayOutput) ToOceanDetachLoadBalancerArrayOutputWithContext(ctx context.Context) OceanDetachLoadBalancerArrayOutput {
+	return o
+}
+
+func (o OceanDetachLoadBalancerArrayOutput) Index(i pulumi.IntInput) OceanDetachLoadBalancerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanDetachLoadBalancer {
+		return vs[0].([]OceanDetachLoadBalancer)[vs[1].(int)]
+	}).(OceanDetachLoadBalancerOutput)
 }
 
 type OceanFilters struct {
@@ -23667,6 +23885,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MrScalarTerminationPolicyArrayInput)(nil)).Elem(), MrScalarTerminationPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MrScalarTerminationPolicyStatementInput)(nil)).Elem(), MrScalarTerminationPolicyStatementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MrScalarTerminationPolicyStatementArrayInput)(nil)).Elem(), MrScalarTerminationPolicyStatementArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanAttachLoadBalancerInput)(nil)).Elem(), OceanAttachLoadBalancerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanAttachLoadBalancerArrayInput)(nil)).Elem(), OceanAttachLoadBalancerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanAutoscalerInput)(nil)).Elem(), OceanAutoscalerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanAutoscalerPtrInput)(nil)).Elem(), OceanAutoscalerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanAutoscalerAutoscaleDownInput)(nil)).Elem(), OceanAutoscalerAutoscaleDownArgs{})
@@ -23685,6 +23905,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanBlockDeviceMappingEbsDynamicVolumeSizePtrInput)(nil)).Elem(), OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanClusterOrientationInput)(nil)).Elem(), OceanClusterOrientationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanClusterOrientationArrayInput)(nil)).Elem(), OceanClusterOrientationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanDetachLoadBalancerInput)(nil)).Elem(), OceanDetachLoadBalancerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanDetachLoadBalancerArrayInput)(nil)).Elem(), OceanDetachLoadBalancerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanFiltersInput)(nil)).Elem(), OceanFiltersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanFiltersPtrInput)(nil)).Elem(), OceanFiltersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanInstanceMetadataOptionsInput)(nil)).Elem(), OceanInstanceMetadataOptionsArgs{})
@@ -23989,6 +24211,8 @@ func init() {
 	pulumi.RegisterOutputType(MrScalarTerminationPolicyArrayOutput{})
 	pulumi.RegisterOutputType(MrScalarTerminationPolicyStatementOutput{})
 	pulumi.RegisterOutputType(MrScalarTerminationPolicyStatementArrayOutput{})
+	pulumi.RegisterOutputType(OceanAttachLoadBalancerOutput{})
+	pulumi.RegisterOutputType(OceanAttachLoadBalancerArrayOutput{})
 	pulumi.RegisterOutputType(OceanAutoscalerOutput{})
 	pulumi.RegisterOutputType(OceanAutoscalerPtrOutput{})
 	pulumi.RegisterOutputType(OceanAutoscalerAutoscaleDownOutput{})
@@ -24007,6 +24231,8 @@ func init() {
 	pulumi.RegisterOutputType(OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput{})
 	pulumi.RegisterOutputType(OceanClusterOrientationOutput{})
 	pulumi.RegisterOutputType(OceanClusterOrientationArrayOutput{})
+	pulumi.RegisterOutputType(OceanDetachLoadBalancerOutput{})
+	pulumi.RegisterOutputType(OceanDetachLoadBalancerArrayOutput{})
 	pulumi.RegisterOutputType(OceanFiltersOutput{})
 	pulumi.RegisterOutputType(OceanFiltersPtrOutput{})
 	pulumi.RegisterOutputType(OceanInstanceMetadataOptionsOutput{})
