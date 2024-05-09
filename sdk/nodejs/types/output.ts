@@ -1583,6 +1583,15 @@ export namespace aws {
         unit?: string;
     }
 
+    export interface OceanAttachLoadBalancer {
+        arn?: string;
+        /**
+         * The cluster name.
+         */
+        name?: string;
+        type: string;
+    }
+
     export interface OceanAutoscaler {
         autoHeadroomPercentage?: number;
         autoscaleCooldown?: number;
@@ -1654,6 +1663,15 @@ export namespace aws {
          * You can control the approach that Ocean takes while launching nodes by configuring this value. Possible values: `costOriented`,`balanced`,`cheapest`.
          */
         availabilityVsCost?: string;
+    }
+
+    export interface OceanDetachLoadBalancer {
+        arn?: string;
+        /**
+         * The cluster name.
+         */
+        name?: string;
+        type: string;
     }
 
     export interface OceanFilters {

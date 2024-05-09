@@ -1208,6 +1208,9 @@
             "spotinst_ocean_aws": {
                 "current": "spotinst:aws/ocean:Ocean",
                 "fields": {
+                    "attach_load_balancer": {
+                        "maxItemsOne": false
+                    },
                     "autoscaler": {
                         "maxItemsOne": true,
                         "elem": {
@@ -1251,6 +1254,9 @@
                         }
                     },
                     "cluster_orientation": {
+                        "maxItemsOne": false
+                    },
+                    "detach_load_balancer": {
                         "maxItemsOne": false
                     },
                     "filters": {

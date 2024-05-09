@@ -121,6 +121,7 @@ __all__ = [
     'MrScalarTaskScalingUpPolicyArgs',
     'MrScalarTerminationPolicyArgs',
     'MrScalarTerminationPolicyStatementArgs',
+    'OceanAttachLoadBalancerArgs',
     'OceanAutoscalerArgs',
     'OceanAutoscalerAutoscaleDownArgs',
     'OceanAutoscalerAutoscaleHeadroomArgs',
@@ -130,6 +131,7 @@ __all__ = [
     'OceanBlockDeviceMappingEbsDynamicIopsArgs',
     'OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs',
     'OceanClusterOrientationArgs',
+    'OceanDetachLoadBalancerArgs',
     'OceanFiltersArgs',
     'OceanInstanceMetadataOptionsArgs',
     'OceanLaunchSpecAutoscaleDownArgs',
@@ -7108,6 +7110,52 @@ class MrScalarTerminationPolicyStatementArgs:
 
 
 @pulumi.input_type
+class OceanAttachLoadBalancerArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 arn: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: The cluster name.
+        """
+        pulumi.set(__self__, "type", type)
+        if arn is not None:
+            pulumi.set(__self__, "arn", arn)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def arn(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "arn")
+
+    @arn.setter
+    def arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "arn", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The cluster name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
 class OceanAutoscalerArgs:
     def __init__(__self__, *,
                  auto_headroom_percentage: Optional[pulumi.Input[int]] = None,
@@ -7604,6 +7652,52 @@ class OceanClusterOrientationArgs:
     @availability_vs_cost.setter
     def availability_vs_cost(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "availability_vs_cost", value)
+
+
+@pulumi.input_type
+class OceanDetachLoadBalancerArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 arn: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: The cluster name.
+        """
+        pulumi.set(__self__, "type", type)
+        if arn is not None:
+            pulumi.set(__self__, "arn", arn)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def arn(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "arn")
+
+    @arn.setter
+    def arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "arn", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The cluster name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 @pulumi.input_type

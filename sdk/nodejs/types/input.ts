@@ -1582,6 +1582,15 @@ export namespace aws {
         unit?: pulumi.Input<string>;
     }
 
+    export interface OceanAttachLoadBalancer {
+        arn?: pulumi.Input<string>;
+        /**
+         * The cluster name.
+         */
+        name?: pulumi.Input<string>;
+        type: pulumi.Input<string>;
+    }
+
     export interface OceanAutoscaler {
         autoHeadroomPercentage?: pulumi.Input<number>;
         autoscaleCooldown?: pulumi.Input<number>;
@@ -1653,6 +1662,15 @@ export namespace aws {
          * You can control the approach that Ocean takes while launching nodes by configuring this value. Possible values: `costOriented`,`balanced`,`cheapest`.
          */
         availabilityVsCost?: pulumi.Input<string>;
+    }
+
+    export interface OceanDetachLoadBalancer {
+        arn?: pulumi.Input<string>;
+        /**
+         * The cluster name.
+         */
+        name?: pulumi.Input<string>;
+        type: pulumi.Input<string>;
     }
 
     export interface OceanFilters {

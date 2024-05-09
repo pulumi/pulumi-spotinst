@@ -122,6 +122,7 @@ __all__ = [
     'MrScalarTaskScalingUpPolicy',
     'MrScalarTerminationPolicy',
     'MrScalarTerminationPolicyStatement',
+    'OceanAttachLoadBalancer',
     'OceanAutoscaler',
     'OceanAutoscalerAutoscaleDown',
     'OceanAutoscalerAutoscaleHeadroom',
@@ -131,6 +132,7 @@ __all__ = [
     'OceanBlockDeviceMappingEbsDynamicIops',
     'OceanBlockDeviceMappingEbsDynamicVolumeSize',
     'OceanClusterOrientation',
+    'OceanDetachLoadBalancer',
     'OceanFilters',
     'OceanInstanceMetadataOptions',
     'OceanLaunchSpecAutoscaleDown',
@@ -6928,6 +6930,40 @@ class MrScalarTerminationPolicyStatement(dict):
 
 
 @pulumi.output_type
+class OceanAttachLoadBalancer(dict):
+    def __init__(__self__, *,
+                 type: str,
+                 arn: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str name: The cluster name.
+        """
+        pulumi.set(__self__, "type", type)
+        if arn is not None:
+            pulumi.set(__self__, "arn", arn)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def arn(self) -> Optional[str]:
+        return pulumi.get(self, "arn")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The cluster name.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
 class OceanAutoscaler(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -7473,6 +7509,40 @@ class OceanClusterOrientation(dict):
         You can control the approach that Ocean takes while launching nodes by configuring this value. Possible values: `costOriented`,`balanced`,`cheapest`.
         """
         return pulumi.get(self, "availability_vs_cost")
+
+
+@pulumi.output_type
+class OceanDetachLoadBalancer(dict):
+    def __init__(__self__, *,
+                 type: str,
+                 arn: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str name: The cluster name.
+        """
+        pulumi.set(__self__, "type", type)
+        if arn is not None:
+            pulumi.set(__self__, "arn", arn)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def arn(self) -> Optional[str]:
+        return pulumi.get(self, "arn")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The cluster name.
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type

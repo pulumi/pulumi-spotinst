@@ -29,16 +29,18 @@ type Ocean struct {
 	// Configure IPv6 address allocation.
 	AssociateIpv6Address pulumi.BoolPtrOutput `pulumi:"associateIpv6Address"`
 	// Configure public IP address allocation.
-	AssociatePublicIpAddress pulumi.BoolPtrOutput     `pulumi:"associatePublicIpAddress"`
-	Autoscaler               OceanAutoscalerPtrOutput `pulumi:"autoscaler"`
-	Blacklists               pulumi.StringArrayOutput `pulumi:"blacklists"`
+	AssociatePublicIpAddress pulumi.BoolPtrOutput               `pulumi:"associatePublicIpAddress"`
+	AttachLoadBalancers      OceanAttachLoadBalancerArrayOutput `pulumi:"attachLoadBalancers"`
+	Autoscaler               OceanAutoscalerPtrOutput           `pulumi:"autoscaler"`
+	Blacklists               pulumi.StringArrayOutput           `pulumi:"blacklists"`
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings OceanBlockDeviceMappingArrayOutput `pulumi:"blockDeviceMappings"`
 	ClusterOrientations OceanClusterOrientationArrayOutput `pulumi:"clusterOrientations"`
 	// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
 	ControllerId pulumi.StringPtrOutput `pulumi:"controllerId"`
 	// The number of instances to launch and maintain in the cluster.
-	DesiredCapacity pulumi.IntOutput `pulumi:"desiredCapacity"`
+	DesiredCapacity     pulumi.IntOutput                   `pulumi:"desiredCapacity"`
+	DetachLoadBalancers OceanDetachLoadBalancerArrayOutput `pulumi:"detachLoadBalancers"`
 	// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
 	DrainingTimeout pulumi.IntPtrOutput `pulumi:"drainingTimeout"`
 	// Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
@@ -142,16 +144,18 @@ type oceanState struct {
 	// Configure IPv6 address allocation.
 	AssociateIpv6Address *bool `pulumi:"associateIpv6Address"`
 	// Configure public IP address allocation.
-	AssociatePublicIpAddress *bool            `pulumi:"associatePublicIpAddress"`
-	Autoscaler               *OceanAutoscaler `pulumi:"autoscaler"`
-	Blacklists               []string         `pulumi:"blacklists"`
+	AssociatePublicIpAddress *bool                     `pulumi:"associatePublicIpAddress"`
+	AttachLoadBalancers      []OceanAttachLoadBalancer `pulumi:"attachLoadBalancers"`
+	Autoscaler               *OceanAutoscaler          `pulumi:"autoscaler"`
+	Blacklists               []string                  `pulumi:"blacklists"`
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings []OceanBlockDeviceMapping `pulumi:"blockDeviceMappings"`
 	ClusterOrientations []OceanClusterOrientation `pulumi:"clusterOrientations"`
 	// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
 	ControllerId *string `pulumi:"controllerId"`
 	// The number of instances to launch and maintain in the cluster.
-	DesiredCapacity *int `pulumi:"desiredCapacity"`
+	DesiredCapacity     *int                      `pulumi:"desiredCapacity"`
+	DetachLoadBalancers []OceanDetachLoadBalancer `pulumi:"detachLoadBalancers"`
 	// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
 	DrainingTimeout *int `pulumi:"drainingTimeout"`
 	// Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
@@ -218,6 +222,7 @@ type OceanState struct {
 	AssociateIpv6Address pulumi.BoolPtrInput
 	// Configure public IP address allocation.
 	AssociatePublicIpAddress pulumi.BoolPtrInput
+	AttachLoadBalancers      OceanAttachLoadBalancerArrayInput
 	Autoscaler               OceanAutoscalerPtrInput
 	Blacklists               pulumi.StringArrayInput
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
@@ -226,7 +231,8 @@ type OceanState struct {
 	// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
 	ControllerId pulumi.StringPtrInput
 	// The number of instances to launch and maintain in the cluster.
-	DesiredCapacity pulumi.IntPtrInput
+	DesiredCapacity     pulumi.IntPtrInput
+	DetachLoadBalancers OceanDetachLoadBalancerArrayInput
 	// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
 	DrainingTimeout pulumi.IntPtrInput
 	// Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
@@ -296,16 +302,18 @@ type oceanArgs struct {
 	// Configure IPv6 address allocation.
 	AssociateIpv6Address *bool `pulumi:"associateIpv6Address"`
 	// Configure public IP address allocation.
-	AssociatePublicIpAddress *bool            `pulumi:"associatePublicIpAddress"`
-	Autoscaler               *OceanAutoscaler `pulumi:"autoscaler"`
-	Blacklists               []string         `pulumi:"blacklists"`
+	AssociatePublicIpAddress *bool                     `pulumi:"associatePublicIpAddress"`
+	AttachLoadBalancers      []OceanAttachLoadBalancer `pulumi:"attachLoadBalancers"`
+	Autoscaler               *OceanAutoscaler          `pulumi:"autoscaler"`
+	Blacklists               []string                  `pulumi:"blacklists"`
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings []OceanBlockDeviceMapping `pulumi:"blockDeviceMappings"`
 	ClusterOrientations []OceanClusterOrientation `pulumi:"clusterOrientations"`
 	// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
 	ControllerId *string `pulumi:"controllerId"`
 	// The number of instances to launch and maintain in the cluster.
-	DesiredCapacity *int `pulumi:"desiredCapacity"`
+	DesiredCapacity     *int                      `pulumi:"desiredCapacity"`
+	DetachLoadBalancers []OceanDetachLoadBalancer `pulumi:"detachLoadBalancers"`
 	// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
 	DrainingTimeout *int `pulumi:"drainingTimeout"`
 	// Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
@@ -373,6 +381,7 @@ type OceanArgs struct {
 	AssociateIpv6Address pulumi.BoolPtrInput
 	// Configure public IP address allocation.
 	AssociatePublicIpAddress pulumi.BoolPtrInput
+	AttachLoadBalancers      OceanAttachLoadBalancerArrayInput
 	Autoscaler               OceanAutoscalerPtrInput
 	Blacklists               pulumi.StringArrayInput
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
@@ -381,7 +390,8 @@ type OceanArgs struct {
 	// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
 	ControllerId pulumi.StringPtrInput
 	// The number of instances to launch and maintain in the cluster.
-	DesiredCapacity pulumi.IntPtrInput
+	DesiredCapacity     pulumi.IntPtrInput
+	DetachLoadBalancers OceanDetachLoadBalancerArrayInput
 	// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
 	DrainingTimeout pulumi.IntPtrInput
 	// Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
@@ -540,6 +550,10 @@ func (o OceanOutput) AssociatePublicIpAddress() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Ocean) pulumi.BoolPtrOutput { return v.AssociatePublicIpAddress }).(pulumi.BoolPtrOutput)
 }
 
+func (o OceanOutput) AttachLoadBalancers() OceanAttachLoadBalancerArrayOutput {
+	return o.ApplyT(func(v *Ocean) OceanAttachLoadBalancerArrayOutput { return v.AttachLoadBalancers }).(OceanAttachLoadBalancerArrayOutput)
+}
+
 func (o OceanOutput) Autoscaler() OceanAutoscalerPtrOutput {
 	return o.ApplyT(func(v *Ocean) OceanAutoscalerPtrOutput { return v.Autoscaler }).(OceanAutoscalerPtrOutput)
 }
@@ -565,6 +579,10 @@ func (o OceanOutput) ControllerId() pulumi.StringPtrOutput {
 // The number of instances to launch and maintain in the cluster.
 func (o OceanOutput) DesiredCapacity() pulumi.IntOutput {
 	return o.ApplyT(func(v *Ocean) pulumi.IntOutput { return v.DesiredCapacity }).(pulumi.IntOutput)
+}
+
+func (o OceanOutput) DetachLoadBalancers() OceanDetachLoadBalancerArrayOutput {
+	return o.ApplyT(func(v *Ocean) OceanDetachLoadBalancerArrayOutput { return v.DetachLoadBalancers }).(OceanDetachLoadBalancerArrayOutput)
 }
 
 // The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.

@@ -10,9 +10,11 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.spotinst.Utilities;
 import com.pulumi.spotinst.aws.OceanArgs;
 import com.pulumi.spotinst.aws.inputs.OceanState;
+import com.pulumi.spotinst.aws.outputs.OceanAttachLoadBalancer;
 import com.pulumi.spotinst.aws.outputs.OceanAutoscaler;
 import com.pulumi.spotinst.aws.outputs.OceanBlockDeviceMapping;
 import com.pulumi.spotinst.aws.outputs.OceanClusterOrientation;
+import com.pulumi.spotinst.aws.outputs.OceanDetachLoadBalancer;
 import com.pulumi.spotinst.aws.outputs.OceanFilters;
 import com.pulumi.spotinst.aws.outputs.OceanInstanceMetadataOptions;
 import com.pulumi.spotinst.aws.outputs.OceanLoadBalancer;
@@ -71,6 +73,12 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> associatePublicIpAddress() {
         return Codegen.optional(this.associatePublicIpAddress);
+    }
+    @Export(name="attachLoadBalancers", refs={List.class,OceanAttachLoadBalancer.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<OceanAttachLoadBalancer>> attachLoadBalancers;
+
+    public Output<Optional<List<OceanAttachLoadBalancer>>> attachLoadBalancers() {
+        return Codegen.optional(this.attachLoadBalancers);
     }
     @Export(name="autoscaler", refs={OceanAutoscaler.class}, tree="[0]")
     private Output</* @Nullable */ OceanAutoscaler> autoscaler;
@@ -131,6 +139,12 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> desiredCapacity() {
         return this.desiredCapacity;
+    }
+    @Export(name="detachLoadBalancers", refs={List.class,OceanDetachLoadBalancer.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<OceanDetachLoadBalancer>> detachLoadBalancers;
+
+    public Output<Optional<List<OceanDetachLoadBalancer>>> detachLoadBalancers() {
+        return Codegen.optional(this.detachLoadBalancers);
     }
     /**
      * The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.

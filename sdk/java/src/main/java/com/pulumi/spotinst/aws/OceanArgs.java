@@ -6,9 +6,11 @@ package com.pulumi.spotinst.aws;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.spotinst.aws.inputs.OceanAttachLoadBalancerArgs;
 import com.pulumi.spotinst.aws.inputs.OceanAutoscalerArgs;
 import com.pulumi.spotinst.aws.inputs.OceanBlockDeviceMappingArgs;
 import com.pulumi.spotinst.aws.inputs.OceanClusterOrientationArgs;
+import com.pulumi.spotinst.aws.inputs.OceanDetachLoadBalancerArgs;
 import com.pulumi.spotinst.aws.inputs.OceanFiltersArgs;
 import com.pulumi.spotinst.aws.inputs.OceanInstanceMetadataOptionsArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLoadBalancerArgs;
@@ -58,6 +60,13 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> associatePublicIpAddress() {
         return Optional.ofNullable(this.associatePublicIpAddress);
+    }
+
+    @Import(name="attachLoadBalancers")
+    private @Nullable Output<List<OceanAttachLoadBalancerArgs>> attachLoadBalancers;
+
+    public Optional<Output<List<OceanAttachLoadBalancerArgs>>> attachLoadBalancers() {
+        return Optional.ofNullable(this.attachLoadBalancers);
     }
 
     @Import(name="autoscaler")
@@ -124,6 +133,13 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Integer>> desiredCapacity() {
         return Optional.ofNullable(this.desiredCapacity);
+    }
+
+    @Import(name="detachLoadBalancers")
+    private @Nullable Output<List<OceanDetachLoadBalancerArgs>> detachLoadBalancers;
+
+    public Optional<Output<List<OceanDetachLoadBalancerArgs>>> detachLoadBalancers() {
+        return Optional.ofNullable(this.detachLoadBalancers);
     }
 
     /**
@@ -566,12 +582,14 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
     private OceanArgs(OceanArgs $) {
         this.associateIpv6Address = $.associateIpv6Address;
         this.associatePublicIpAddress = $.associatePublicIpAddress;
+        this.attachLoadBalancers = $.attachLoadBalancers;
         this.autoscaler = $.autoscaler;
         this.blacklists = $.blacklists;
         this.blockDeviceMappings = $.blockDeviceMappings;
         this.clusterOrientations = $.clusterOrientations;
         this.controllerId = $.controllerId;
         this.desiredCapacity = $.desiredCapacity;
+        this.detachLoadBalancers = $.detachLoadBalancers;
         this.drainingTimeout = $.drainingTimeout;
         this.ebsOptimized = $.ebsOptimized;
         this.fallbackToOndemand = $.fallbackToOndemand;
@@ -663,6 +681,19 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder associatePublicIpAddress(Boolean associatePublicIpAddress) {
             return associatePublicIpAddress(Output.of(associatePublicIpAddress));
+        }
+
+        public Builder attachLoadBalancers(@Nullable Output<List<OceanAttachLoadBalancerArgs>> attachLoadBalancers) {
+            $.attachLoadBalancers = attachLoadBalancers;
+            return this;
+        }
+
+        public Builder attachLoadBalancers(List<OceanAttachLoadBalancerArgs> attachLoadBalancers) {
+            return attachLoadBalancers(Output.of(attachLoadBalancers));
+        }
+
+        public Builder attachLoadBalancers(OceanAttachLoadBalancerArgs... attachLoadBalancers) {
+            return attachLoadBalancers(List.of(attachLoadBalancers));
         }
 
         public Builder autoscaler(@Nullable Output<OceanAutoscalerArgs> autoscaler) {
@@ -771,6 +802,19 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder desiredCapacity(Integer desiredCapacity) {
             return desiredCapacity(Output.of(desiredCapacity));
+        }
+
+        public Builder detachLoadBalancers(@Nullable Output<List<OceanDetachLoadBalancerArgs>> detachLoadBalancers) {
+            $.detachLoadBalancers = detachLoadBalancers;
+            return this;
+        }
+
+        public Builder detachLoadBalancers(List<OceanDetachLoadBalancerArgs> detachLoadBalancers) {
+            return detachLoadBalancers(Output.of(detachLoadBalancers));
+        }
+
+        public Builder detachLoadBalancers(OceanDetachLoadBalancerArgs... detachLoadBalancers) {
+            return detachLoadBalancers(List.of(detachLoadBalancers));
         }
 
         /**
