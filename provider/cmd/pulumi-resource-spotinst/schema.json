@@ -2779,6 +2779,24 @@
                 "threshold"
             ]
         },
+        "spotinst:aws/OceanAttachLoadBalancer:OceanAttachLoadBalancer": {
+            "properties": {
+                "arn": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The cluster name.\n"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "type"
+            ]
+        },
         "spotinst:aws/OceanAutoscaler:OceanAutoscaler": {
             "properties": {
                 "autoHeadroomPercentage": {
@@ -2959,6 +2977,24 @@
                 }
             },
             "type": "object"
+        },
+        "spotinst:aws/OceanDetachLoadBalancer:OceanDetachLoadBalancer": {
+            "properties": {
+                "arn": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The cluster name.\n"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "type"
+            ]
         },
         "spotinst:aws/OceanFilters:OceanFilters": {
             "properties": {
@@ -11048,6 +11084,12 @@
                     "type": "boolean",
                     "description": "Configure public IP address allocation.\n"
                 },
+                "attachLoadBalancers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:aws/OceanAttachLoadBalancer:OceanAttachLoadBalancer"
+                    }
+                },
                 "autoscaler": {
                     "$ref": "#/types/spotinst:aws/OceanAutoscaler:OceanAutoscaler"
                 },
@@ -11077,6 +11119,12 @@
                 "desiredCapacity": {
                     "type": "integer",
                     "description": "The number of instances to launch and maintain in the cluster.\n"
+                },
+                "detachLoadBalancers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:aws/OceanDetachLoadBalancer:OceanDetachLoadBalancer"
+                    }
                 },
                 "drainingTimeout": {
                     "type": "integer",
@@ -11237,6 +11285,12 @@
                     "type": "boolean",
                     "description": "Configure public IP address allocation.\n"
                 },
+                "attachLoadBalancers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:aws/OceanAttachLoadBalancer:OceanAttachLoadBalancer"
+                    }
+                },
                 "autoscaler": {
                     "$ref": "#/types/spotinst:aws/OceanAutoscaler:OceanAutoscaler"
                 },
@@ -11266,6 +11320,12 @@
                 "desiredCapacity": {
                     "type": "integer",
                     "description": "The number of instances to launch and maintain in the cluster.\n"
+                },
+                "detachLoadBalancers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:aws/OceanDetachLoadBalancer:OceanDetachLoadBalancer"
+                    }
                 },
                 "drainingTimeout": {
                     "type": "integer",
@@ -11425,6 +11485,12 @@
                         "type": "boolean",
                         "description": "Configure public IP address allocation.\n"
                     },
+                    "attachLoadBalancers": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/spotinst:aws/OceanAttachLoadBalancer:OceanAttachLoadBalancer"
+                        }
+                    },
                     "autoscaler": {
                         "$ref": "#/types/spotinst:aws/OceanAutoscaler:OceanAutoscaler"
                     },
@@ -11454,6 +11520,12 @@
                     "desiredCapacity": {
                         "type": "integer",
                         "description": "The number of instances to launch and maintain in the cluster.\n"
+                    },
+                    "detachLoadBalancers": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/spotinst:aws/OceanDetachLoadBalancer:OceanDetachLoadBalancer"
+                        }
                     },
                     "drainingTimeout": {
                         "type": "integer",
