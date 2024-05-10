@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,18 +44,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new DataIntegration(&#34;example&#34;, DataIntegrationArgs.builder()        
- *             .name(&#34;foo&#34;)
- *             .status(&#34;enabled&#34;)
+ *         var example = new DataIntegration("example", DataIntegrationArgs.builder()        
+ *             .name("foo")
+ *             .status("enabled")
  *             .s3(DataIntegrationS3Args.builder()
- *                 .bucketName(&#34;terraform-test-do-not-delete&#34;)
- *                 .subdir(&#34;terraform-test-data-integration&#34;)
+ *                 .bucketName("terraform-test-do-not-delete")
+ *                 .subdir("terraform-test-data-integration")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

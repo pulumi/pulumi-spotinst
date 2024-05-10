@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ## Basic Ocean Cluster Creation Usage Example - using minimum configuration with only required parameters
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,22 +54,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new OceanNp(&#34;example&#34;, OceanNpArgs.builder()        
- *             .name(&#34;test&#34;)
- *             .aksRegion(&#34;eastus&#34;)
- *             .aksClusterName(&#34;test-cluster&#34;)
- *             .aksInfrastructureResourceGroupName(&#34;MC_TestResourceGroup_test-cluster_eastus&#34;)
- *             .aksResourceGroupName(&#34;TestResourceGroup&#34;)
- *             .controllerClusterId(&#34;test-123124&#34;)
+ *         var example = new OceanNp("example", OceanNpArgs.builder()        
+ *             .name("test")
+ *             .aksRegion("eastus")
+ *             .aksClusterName("test-cluster")
+ *             .aksInfrastructureResourceGroupName("MC_TestResourceGroup_test-cluster_eastus")
+ *             .aksResourceGroupName("TestResourceGroup")
+ *             .controllerClusterId("test-123124")
  *             .availabilityZones(            
- *                 &#34;1&#34;,
- *                 &#34;2&#34;,
- *                 &#34;3&#34;)
+ *                 "1",
+ *                 "2",
+ *                 "3")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;  
  * 
  * ## Detailed Ocean Cluster Creation Usage Example - using all available parameters with sample values

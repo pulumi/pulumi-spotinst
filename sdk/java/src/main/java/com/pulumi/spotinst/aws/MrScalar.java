@@ -41,7 +41,8 @@ import javax.annotation.Nullable;
  * ### New Strategy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -73,120 +74,122 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a Mr Scaler with New strategy
- *         var sample_MrScaler_01 = new MrScalar(&#34;sample-MrScaler-01&#34;, MrScalarArgs.builder()        
- *             .name(&#34;sample-MrScaler-01&#34;)
- *             .description(&#34;Testing MrScaler creation&#34;)
- *             .region(&#34;us-west-2&#34;)
- *             .strategy(&#34;new&#34;)
- *             .releaseLabel(&#34;emr-5.17.0&#34;)
+ *         var sample_MrScaler_01 = new MrScalar("sample-MrScaler-01", MrScalarArgs.builder()        
+ *             .name("sample-MrScaler-01")
+ *             .description("Testing MrScaler creation")
+ *             .region("us-west-2")
+ *             .strategy("new")
+ *             .releaseLabel("emr-5.17.0")
  *             .retries(2)
- *             .availabilityZones(&#34;us-west-2a:subnet-123456&#34;)
+ *             .availabilityZones("us-west-2a:subnet-123456")
  *             .provisioningTimeout(MrScalarProvisioningTimeoutArgs.builder()
  *                 .timeout(15)
- *                 .timeoutAction(&#34;terminateAndRetry&#34;)
+ *                 .timeoutAction("terminateAndRetry")
  *                 .build())
- *             .logUri(&#34;s3://example-logs&#34;)
- *             .additionalInfo(&#34;{&#39;test&#39;:&#39;more information&#39;}&#34;)
- *             .jobFlowRole(&#34;EMR_EC2_ExampleRole&#34;)
- *             .securityConfig(&#34;example-config&#34;)
- *             .serviceRole(&#34;example-role&#34;)
+ *             .logUri("s3://example-logs")
+ *             .additionalInfo("{'test':'more information'}")
+ *             .jobFlowRole("EMR_EC2_ExampleRole")
+ *             .securityConfig("example-config")
+ *             .serviceRole("example-role")
  *             .terminationProtected(false)
  *             .keepJobFlowAlive(true)
- *             .customAmiId(&#34;ami-123456&#34;)
- *             .repoUpgradeOnBoot(&#34;NONE&#34;)
- *             .ec2KeyName(&#34;test-key&#34;)
- *             .managedPrimarySecurityGroup(&#34;sg-123456&#34;)
- *             .managedReplicaSecurityGroup(&#34;sg-987654&#34;)
- *             .serviceAccessSecurityGroup(&#34;access-example&#34;)
- *             .additionalPrimarySecurityGroups(&#34;sg-456321&#34;)
- *             .additionalReplicaSecurityGroups(&#34;sg-123654&#34;)
+ *             .customAmiId("ami-123456")
+ *             .repoUpgradeOnBoot("NONE")
+ *             .ec2KeyName("test-key")
+ *             .managedPrimarySecurityGroup("sg-123456")
+ *             .managedReplicaSecurityGroup("sg-987654")
+ *             .serviceAccessSecurityGroup("access-example")
+ *             .additionalPrimarySecurityGroups("sg-456321")
+ *             .additionalReplicaSecurityGroups("sg-123654")
  *             .applications(            
  *                 MrScalarApplicationArgs.builder()
- *                     .name(&#34;Ganglia&#34;)
- *                     .version(&#34;1.0&#34;)
+ *                     .name("Ganglia")
+ *                     .version("1.0")
  *                     .build(),
  *                 MrScalarApplicationArgs.builder()
- *                     .name(&#34;Hadoop&#34;)
+ *                     .name("Hadoop")
  *                     .build(),
  *                 MrScalarApplicationArgs.builder()
- *                     .name(&#34;Pig&#34;)
+ *                     .name("Pig")
  *                     .args(                    
- *                         &#34;fake&#34;,
- *                         &#34;args&#34;)
+ *                         "fake",
+ *                         "args")
  *                     .build())
  *             .instanceWeights(            
  *                 MrScalarInstanceWeightArgs.builder()
- *                     .instanceType(&#34;t2.small&#34;)
+ *                     .instanceType("t2.small")
  *                     .weightedCapacity(10)
  *                     .build(),
  *                 MrScalarInstanceWeightArgs.builder()
- *                     .instanceType(&#34;t2.medium&#34;)
+ *                     .instanceType("t2.medium")
  *                     .weightedCapacity(90)
  *                     .build())
  *             .stepsFiles(MrScalarStepsFileArgs.builder()
- *                 .bucket(&#34;example-bucket&#34;)
- *                 .key(&#34;steps.json&#34;)
+ *                 .bucket("example-bucket")
+ *                 .key("steps.json")
  *                 .build())
  *             .configurationsFiles(MrScalarConfigurationsFileArgs.builder()
- *                 .bucket(&#34;example-bucket&#34;)
- *                 .key(&#34;configurations.json&#34;)
+ *                 .bucket("example-bucket")
+ *                 .key("configurations.json")
  *                 .build())
  *             .bootstrapActionsFiles(MrScalarBootstrapActionsFileArgs.builder()
- *                 .bucket(&#34;sample-emr-test&#34;)
- *                 .key(&#34;bootstrap-actions.json&#34;)
+ *                 .bucket("sample-emr-test")
+ *                 .key("bootstrap-actions.json")
  *                 .build())
- *             .masterInstanceTypes(&#34;c3.xlarge&#34;)
- *             .masterLifecycle(&#34;SPOT&#34;)
+ *             .masterInstanceTypes("c3.xlarge")
+ *             .masterLifecycle("SPOT")
  *             .masterEbsOptimized(true)
  *             .masterTarget(1)
  *             .masterEbsBlockDevices(MrScalarMasterEbsBlockDeviceArgs.builder()
  *                 .volumesPerInstance(1)
- *                 .volumeType(&#34;gp2&#34;)
+ *                 .volumeType("gp2")
  *                 .sizeInGb(30)
  *                 .build())
  *             .coreInstanceTypes(            
- *                 &#34;c3.xlarge&#34;,
- *                 &#34;c4.xlarge&#34;)
+ *                 "c3.xlarge",
+ *                 "c4.xlarge")
  *             .coreMinSize(1)
  *             .coreMaxSize(1)
  *             .coreDesiredCapacity(1)
- *             .coreLifecycle(&#34;ON_DEMAND&#34;)
+ *             .coreLifecycle("ON_DEMAND")
  *             .coreEbsOptimized(false)
- *             .coreUnit(&#34;instance&#34;)
+ *             .coreUnit("instance")
  *             .coreEbsBlockDevices(MrScalarCoreEbsBlockDeviceArgs.builder()
  *                 .volumesPerInstance(2)
- *                 .volumeType(&#34;gp2&#34;)
+ *                 .volumeType("gp2")
  *                 .sizeInGb(40)
  *                 .build())
  *             .taskInstanceTypes(            
- *                 &#34;c3.xlarge&#34;,
- *                 &#34;c4.xlarge&#34;)
+ *                 "c3.xlarge",
+ *                 "c4.xlarge")
  *             .taskMinSize(0)
  *             .taskMaxSize(30)
  *             .taskDesiredCapacity(1)
- *             .taskLifecycle(&#34;SPOT&#34;)
+ *             .taskLifecycle("SPOT")
  *             .taskEbsOptimized(false)
- *             .taskUnit(&#34;instance&#34;)
+ *             .taskUnit("instance")
  *             .taskEbsBlockDevices(MrScalarTaskEbsBlockDeviceArgs.builder()
  *                 .volumesPerInstance(2)
- *                 .volumeType(&#34;gp2&#34;)
+ *                 .volumeType("gp2")
  *                 .sizeInGb(40)
  *                 .build())
  *             .tags(MrScalarTagArgs.builder()
- *                 .key(&#34;Creator&#34;)
- *                 .value(&#34;Pulumi&#34;)
+ *                 .key("Creator")
+ *                 .value("Pulumi")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Clone Strategy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -212,72 +215,72 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sample_MrScaler_01 = new MrScalar(&#34;sample-MrScaler-01&#34;, MrScalarArgs.builder()        
- *             .name(&#34;sample-MrScaler-01&#34;)
- *             .description(&#34;Testing MrScaler creation&#34;)
- *             .region(&#34;us-west-2&#34;)
- *             .strategy(&#34;clone&#34;)
- *             .clusterId(&#34;j-123456789&#34;)
+ *         var sample_MrScaler_01 = new MrScalar("sample-MrScaler-01", MrScalarArgs.builder()        
+ *             .name("sample-MrScaler-01")
+ *             .description("Testing MrScaler creation")
+ *             .region("us-west-2")
+ *             .strategy("clone")
+ *             .clusterId("j-123456789")
  *             .exposeClusterId(true)
- *             .availabilityZones(&#34;us-west-2a:subnet-12345678&#34;)
- *             .masterInstanceTypes(&#34;c3.xlarge&#34;)
- *             .masterLifecycle(&#34;SPOT&#34;)
+ *             .availabilityZones("us-west-2a:subnet-12345678")
+ *             .masterInstanceTypes("c3.xlarge")
+ *             .masterLifecycle("SPOT")
  *             .masterEbsOptimized(true)
  *             .masterTarget(1)
  *             .masterEbsBlockDevices(MrScalarMasterEbsBlockDeviceArgs.builder()
  *                 .volumesPerInstance(1)
- *                 .volumeType(&#34;gp2&#34;)
+ *                 .volumeType("gp2")
  *                 .sizeInGb(30)
  *                 .build())
  *             .coreInstanceTypes(            
- *                 &#34;c3.xlarge&#34;,
- *                 &#34;c4.xlarge&#34;)
+ *                 "c3.xlarge",
+ *                 "c4.xlarge")
  *             .coreMinSize(1)
  *             .coreMaxSize(1)
  *             .coreDesiredCapacity(1)
- *             .coreLifecycle(&#34;ON_DEMAND&#34;)
+ *             .coreLifecycle("ON_DEMAND")
  *             .coreEbsOptimized(false)
- *             .coreUnit(&#34;instance&#34;)
+ *             .coreUnit("instance")
  *             .coreEbsBlockDevices(MrScalarCoreEbsBlockDeviceArgs.builder()
  *                 .volumesPerInstance(2)
- *                 .volumeType(&#34;gp2&#34;)
+ *                 .volumeType("gp2")
  *                 .sizeInGb(40)
  *                 .build())
  *             .taskInstanceTypes(            
- *                 &#34;c3.xlarge&#34;,
- *                 &#34;c4.xlarge&#34;)
+ *                 "c3.xlarge",
+ *                 "c4.xlarge")
  *             .taskMinSize(0)
  *             .taskMaxSize(30)
  *             .taskDesiredCapacity(1)
- *             .taskLifecycle(&#34;SPOT&#34;)
+ *             .taskLifecycle("SPOT")
  *             .taskEbsOptimized(false)
- *             .taskUnit(&#34;instance&#34;)
+ *             .taskUnit("instance")
  *             .taskEbsBlockDevices(MrScalarTaskEbsBlockDeviceArgs.builder()
  *                 .volumesPerInstance(2)
- *                 .volumeType(&#34;gp2&#34;)
+ *                 .volumeType("gp2")
  *                 .sizeInGb(40)
  *                 .build())
  *             .tags(MrScalarTagArgs.builder()
- *                 .key(&#34;Creator&#34;)
- *                 .value(&#34;Pulumi&#34;)
+ *                 .key("Creator")
+ *                 .value("Pulumi")
  *                 .build())
  *             .taskScalingDownPolicies(MrScalarTaskScalingDownPolicyArgs.builder()
- *                 .policyName(&#34;policy-name&#34;)
- *                 .metricName(&#34;CPUUtilization&#34;)
- *                 .namespace(&#34;AWS/EC2&#34;)
- *                 .statistic(&#34;average&#34;)
- *                 .unit(&#34;&#34;)
+ *                 .policyName("policy-name")
+ *                 .metricName("CPUUtilization")
+ *                 .namespace("AWS/EC2")
+ *                 .statistic("average")
+ *                 .unit("")
  *                 .threshold(10)
- *                 .adjustment(&#34;1&#34;)
+ *                 .adjustment("1")
  *                 .cooldown(60)
  *                 .dimensions(Map.ofEntries(
- *                     Map.entry(&#34;name&#34;, &#34;name-1&#34;),
- *                     Map.entry(&#34;value&#34;, &#34;value-1&#34;)
+ *                     Map.entry("name", "name-1"),
+ *                     Map.entry("value", "value-1")
  *                 ))
- *                 .operator(&#34;gt&#34;)
+ *                 .operator("gt")
  *                 .evaluationPeriods(10)
  *                 .period(60)
- *                 .actionType(&#34;&#34;)
+ *                 .actionType("")
  *                 .minimum(0)
  *                 .maximum(10)
  *                 .target(5)
@@ -285,17 +288,19 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         ctx.export(&#34;mrscaler-name&#34;, sample_MrScaler_01.name());
- *         ctx.export(&#34;mrscaler-created-cluster-id&#34;, sample_MrScaler_01.outputClusterId());
+ *         ctx.export("mrscaler-name", sample_MrScaler_01.name());
+ *         ctx.export("mrscaler-created-cluster-id", sample_MrScaler_01.outputClusterId());
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Wrap Strategy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -318,30 +323,31 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a Mr Scaler with Wrap strategy
- *         var example_scaler_2 = new MrScalar(&#34;example-scaler-2&#34;, MrScalarArgs.builder()        
- *             .name(&#34;spotinst-mr-scaler-2&#34;)
- *             .description(&#34;created by Pulumi&#34;)
- *             .region(&#34;us-west-2&#34;)
- *             .strategy(&#34;wrap&#34;)
- *             .clusterId(&#34;j-27UVDEHXL4OQM&#34;)
+ *         var example_scaler_2 = new MrScalar("example-scaler-2", MrScalarArgs.builder()        
+ *             .name("spotinst-mr-scaler-2")
+ *             .description("created by Pulumi")
+ *             .region("us-west-2")
+ *             .strategy("wrap")
+ *             .clusterId("j-27UVDEHXL4OQM")
  *             .taskInstanceTypes(            
- *                 &#34;c3.xlarge&#34;,
- *                 &#34;c4.xlarge&#34;)
+ *                 "c3.xlarge",
+ *                 "c4.xlarge")
  *             .taskDesiredCapacity(2)
  *             .taskMinSize(0)
  *             .taskMaxSize(4)
- *             .taskLifecycle(&#34;SPOT&#34;)
- *             .taskUnit(&#34;instance&#34;)
+ *             .taskLifecycle("SPOT")
+ *             .taskUnit("instance")
  *             .taskEbsBlockDevices(MrScalarTaskEbsBlockDeviceArgs.builder()
  *                 .volumesPerInstance(1)
- *                 .volumeType(&#34;gp2&#34;)
+ *                 .volumeType("gp2")
  *                 .sizeInGb(20)
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

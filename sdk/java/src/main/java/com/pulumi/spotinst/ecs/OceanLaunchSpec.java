@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -61,57 +62,57 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new OceanLaunchSpec(&#34;example&#34;, OceanLaunchSpecArgs.builder()        
- *             .oceanId(&#34;o-123456&#34;)
- *             .imageId(&#34;ami-123456&#34;)
- *             .userData(&#34;echo hello world&#34;)
- *             .iamInstanceProfile(&#34;iam-profile&#34;)
- *             .subnetIds(&#34;subnet-12345&#34;)
- *             .securityGroupIds(&#34;awseb-12345&#34;)
+ *         var example = new OceanLaunchSpec("example", OceanLaunchSpecArgs.builder()        
+ *             .oceanId("o-123456")
+ *             .imageId("ami-123456")
+ *             .userData("echo hello world")
+ *             .iamInstanceProfile("iam-profile")
+ *             .subnetIds("subnet-12345")
+ *             .securityGroupIds("awseb-12345")
  *             .restrictScaleDown(true)
  *             .instanceTypes(            
- *                 &#34;m3.large&#34;,
- *                 &#34;m3.xlarge&#34;,
- *                 &#34;m3.2xlarge&#34;,
- *                 &#34;m4.large&#34;,
- *                 &#34;m4.xlarge&#34;,
- *                 &#34;m4.4xlarge&#34;,
- *                 &#34;m4.2xlarge&#34;,
- *                 &#34;m4.10xlarge&#34;,
- *                 &#34;m4.16xlarge&#34;,
- *                 &#34;m5.large&#34;,
- *                 &#34;m5.xlarge&#34;,
- *                 &#34;m5.2xlarge&#34;,
- *                 &#34;m5.4xlarge&#34;,
- *                 &#34;m5.12xlarge&#34;,
- *                 &#34;m5.24xlarge&#34;)
+ *                 "m3.large",
+ *                 "m3.xlarge",
+ *                 "m3.2xlarge",
+ *                 "m4.large",
+ *                 "m4.xlarge",
+ *                 "m4.4xlarge",
+ *                 "m4.2xlarge",
+ *                 "m4.10xlarge",
+ *                 "m4.16xlarge",
+ *                 "m5.large",
+ *                 "m5.xlarge",
+ *                 "m5.2xlarge",
+ *                 "m5.4xlarge",
+ *                 "m5.12xlarge",
+ *                 "m5.24xlarge")
  *             .preferredSpotTypes(            
- *                 &#34;m3.large&#34;,
- *                 &#34;m3.xlarge&#34;,
- *                 &#34;m3.2xlarge&#34;,
- *                 &#34;m4.large&#34;,
- *                 &#34;m4.xlarge&#34;)
+ *                 "m3.large",
+ *                 "m3.xlarge",
+ *                 "m3.2xlarge",
+ *                 "m4.large",
+ *                 "m4.xlarge")
  *             .blockDeviceMappings(OceanLaunchSpecBlockDeviceMappingArgs.builder()
- *                 .deviceName(&#34;/dev/xvda1&#34;)
+ *                 .deviceName("/dev/xvda1")
  *                 .ebs(OceanLaunchSpecBlockDeviceMappingEbsArgs.builder()
- *                     .deleteOnTermination(&#34;true&#34;)
- *                     .encrypted(&#34;false&#34;)
- *                     .volumeType(&#34;gp2&#34;)
+ *                     .deleteOnTermination("true")
+ *                     .encrypted("false")
+ *                     .volumeType("gp2")
  *                     .volumeSize(50)
  *                     .throughput(500)
  *                     .dynamicVolumeSize(OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs.builder()
  *                         .baseSize(50)
- *                         .resource(&#34;CPU&#34;)
+ *                         .resource("CPU")
  *                         .sizePerResourceUnit(20)
  *                         .build())
  *                     .build())
  *                 .build())
  *             .attributes(OceanLaunchSpecAttributeArgs.builder()
- *                 .key(&#34;fakeKey&#34;)
- *                 .value(&#34;fakeValue&#34;)
+ *                 .key("fakeKey")
+ *                 .value("fakeValue")
  *                 .build())
  *             .instanceMetadataOptions(OceanLaunchSpecInstanceMetadataOptionsArgs.builder()
- *                 .httpTokens(&#34;required&#34;)
+ *                 .httpTokens("required")
  *                 .httpPutResponseHopLimit(10)
  *                 .build())
  *             .autoscaleHeadrooms(OceanLaunchSpecAutoscaleHeadroomArgs.builder()
@@ -123,20 +124,20 @@ import javax.annotation.Nullable;
  *                 .spotPercentage(50)
  *                 .build())
  *             .tags(OceanLaunchSpecTagArgs.builder()
- *                 .key(&#34;Env&#34;)
- *                 .value(&#34;production&#34;)
+ *                 .key("Env")
+ *                 .value("production")
  *                 .build())
  *             .images(            
  *                 OceanLaunchSpecImageArgs.builder()
- *                     .imageId(&#34;ami-12345&#34;)
+ *                     .imageId("ami-12345")
  *                     .build(),
  *                 OceanLaunchSpecImageArgs.builder()
- *                     .imageId(&#34;ami-67890&#34;)
+ *                     .imageId("ami-67890")
  *                     .build())
  *             .schedulingTasks(OceanLaunchSpecSchedulingTaskArgs.builder()
  *                 .isEnabled(true)
- *                 .cronExpression(&#34;0 1 * * *&#34;)
- *                 .taskType(&#34;manualHeadroomUpdate&#34;)
+ *                 .cronExpression("0 1 * * *")
+ *                 .taskType("manualHeadroomUpdate")
  *                 .taskHeadrooms(OceanLaunchSpecSchedulingTaskTaskHeadroomArgs.builder()
  *                     .numOfUnits(5)
  *                     .cpuPerUnit(1000)
@@ -147,7 +148,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Block Devices

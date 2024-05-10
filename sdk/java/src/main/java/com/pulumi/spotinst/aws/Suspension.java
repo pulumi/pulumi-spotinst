@@ -19,7 +19,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -42,23 +43,24 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a suspension for Elastigroup
- *         var resourceName = new Suspension(&#34;resourceName&#34;, SuspensionArgs.builder()        
- *             .groupId(&#34;sig-12345678&#34;)
+ *         var resourceName = new Suspension("resourceName", SuspensionArgs.builder()        
+ *             .groupId("sig-12345678")
  *             .suspensions(            
  *                 SuspensionSuspensionArgs.builder()
- *                     .name(&#34;OUT_OF_STRATEGY&#34;)
+ *                     .name("OUT_OF_STRATEGY")
  *                     .build(),
  *                 SuspensionSuspensionArgs.builder()
- *                     .name(&#34;REVERT_PREFERRED&#34;)
+ *                     .name("REVERT_PREFERRED")
  *                     .build(),
  *                 SuspensionSuspensionArgs.builder()
- *                     .name(&#34;PREVENTIVE_REPLACEMENT&#34;)
+ *                     .name("PREVENTIVE_REPLACEMENT")
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

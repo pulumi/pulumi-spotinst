@@ -35,7 +35,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -71,42 +72,42 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Ocean(&#34;example&#34;, OceanArgs.builder()        
- *             .name(&#34;ocean-westus-dev-aks&#34;)
- *             .controllerClusterId(&#34;ocean-westus-dev-aks&#34;)
+ *         var example = new Ocean("example", OceanArgs.builder()        
+ *             .name("ocean-westus-dev-aks")
+ *             .controllerClusterId("ocean-westus-dev-aks")
  *             .zones(            
- *                 &#34;1&#34;,
- *                 &#34;2&#34;,
- *                 &#34;3&#34;)
- *             .acdIdentifier(&#34;acd-12345678&#34;)
- *             .aksName(&#34;ocean-westus-dev-aks&#34;)
- *             .aksResourceGroupName(&#34;ocean-westus-dev&#34;)
- *             .sshPublicKey(&#34;ssh-rsa [... redacted ...] generated-by-azure&#34;)
- *             .userName(&#34;some-name&#34;)
- *             .resourceGroupName(&#34;some-resource-group-name&#34;)
- *             .customData(&#34;[... redacted ...]&#34;)
+ *                 "1",
+ *                 "2",
+ *                 "3")
+ *             .acdIdentifier("acd-12345678")
+ *             .aksName("ocean-westus-dev-aks")
+ *             .aksResourceGroupName("ocean-westus-dev")
+ *             .sshPublicKey("ssh-rsa [... redacted ...] generated-by-azure")
+ *             .userName("some-name")
+ *             .resourceGroupName("some-resource-group-name")
+ *             .customData("[... redacted ...]")
  *             .maxPods(30)
  *             .managedServiceIdentities(OceanManagedServiceIdentityArgs.builder()
- *                 .resourceGroupName(&#34;MC_ocean-westus-dev_ocean-westus-dev-aks_westus&#34;)
- *                 .name(&#34;ocean-westus-dev-aks-agentpool&#34;)
+ *                 .resourceGroupName("MC_ocean-westus-dev_ocean-westus-dev-aks_westus")
+ *                 .name("ocean-westus-dev-aks-agentpool")
  *                 .build())
  *             .tags(OceanTagArgs.builder()
- *                 .key(&#34;Environment&#34;)
- *                 .value(&#34;Dev&#34;)
+ *                 .key("Environment")
+ *                 .value("Dev")
  *                 .build())
  *             .vmSizes(OceanVmSizeArgs.builder()
- *                 .whitelists(&#34;standard_ds2_v2&#34;)
+ *                 .whitelists("standard_ds2_v2")
  *                 .build())
  *             .osDisk(OceanOsDiskArgs.builder()
  *                 .sizeGb(130)
- *                 .type(&#34;Standard_LRS&#34;)
+ *                 .type("Standard_LRS")
  *                 .build())
  *             .images(OceanImageArgs.builder()
  *                 .marketplaces(OceanImageMarketplaceArgs.builder()
- *                     .publisher(&#34;Canonical&#34;)
- *                     .offer(&#34;UbuntuServer&#34;)
- *                     .sku(&#34;18.04-LTS&#34;)
- *                     .version(&#34;latest&#34;)
+ *                     .publisher("Canonical")
+ *                     .offer("UbuntuServer")
+ *                     .sku("18.04-LTS")
+ *                     .version("latest")
  *                     .build())
  *                 .build())
  *             .strategies(OceanStrategyArgs.builder()
@@ -117,31 +118,31 @@ import javax.annotation.Nullable;
  *                 .gracePeriod(10)
  *                 .build())
  *             .network(OceanNetworkArgs.builder()
- *                 .virtualNetworkName(&#34;vn-name&#34;)
- *                 .resourceGroupName(&#34;ocean-westus-dev&#34;)
+ *                 .virtualNetworkName("vn-name")
+ *                 .resourceGroupName("ocean-westus-dev")
  *                 .networkInterfaces(OceanNetworkNetworkInterfaceArgs.builder()
- *                     .subnetName(&#34;subnet-name&#34;)
+ *                     .subnetName("subnet-name")
  *                     .assignPublicIp(false)
  *                     .isPrimary(false)
  *                     .additionalIpConfigs(OceanNetworkNetworkInterfaceAdditionalIpConfigArgs.builder()
- *                         .name(&#34;ip-config-name&#34;)
- *                         .privateIpVersion(&#34;ipv4&#34;)
+ *                         .name("ip-config-name")
+ *                         .privateIpVersion("ipv4")
  *                         .build())
  *                     .build())
  *                 .build())
  *             .extensions(OceanExtensionArgs.builder()
- *                 .apiVersion(&#34;1.0&#34;)
+ *                 .apiVersion("1.0")
  *                 .minorVersionAutoUpgrade(true)
- *                 .name(&#34;extension-name&#34;)
- *                 .publisher(&#34;Microsoft.Azure.Extensions&#34;)
- *                 .type(&#34;Linux&#34;)
+ *                 .name("extension-name")
+ *                 .publisher("Microsoft.Azure.Extensions")
+ *                 .type("Linux")
  *                 .build())
  *             .loadBalancers(OceanLoadBalancerArgs.builder()
- *                 .backendPoolNames(&#34;terraform-backend-pool&#34;)
- *                 .loadBalancerSku(&#34;Standard&#34;)
- *                 .name(&#34;load-balancer-name&#34;)
- *                 .resourceGroupName(&#34;resource-group-name&#34;)
- *                 .type(&#34;loadBalancer&#34;)
+ *                 .backendPoolNames("terraform-backend-pool")
+ *                 .loadBalancerSku("Standard")
+ *                 .name("load-balancer-name")
+ *                 .resourceGroupName("resource-group-name")
+ *                 .type("loadBalancer")
  *                 .build())
  *             .autoscaler(OceanAutoscalerArgs.builder()
  *                 .autoscaleIsEnabled(true)
@@ -163,7 +164,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

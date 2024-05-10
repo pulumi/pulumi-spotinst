@@ -36,7 +36,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -64,92 +65,93 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Elastigroup(&#34;example&#34;, ElastigroupArgs.builder()        
- *             .name(&#34;example-gcp&#34;)
- *             .description(&#34;spotinst gcp group&#34;)
- *             .serviceAccount(&#34;example@myProject.iam.gservicecct.com&#34;)
- *             .startupScript(&#34;&#34;)
- *             .instanceNamePrefix(&#34;test-123a&#34;)
+ *         var example = new Elastigroup("example", ElastigroupArgs.builder()        
+ *             .name("example-gcp")
+ *             .description("spotinst gcp group")
+ *             .serviceAccount("example{@literal @}myProject.iam.gservicecct.com")
+ *             .startupScript("")
+ *             .instanceNamePrefix("test-123a")
  *             .minSize(0)
  *             .maxSize(1)
  *             .desiredCapacity(1)
  *             .availabilityZones(            
- *                 &#34;asia-east1-c&#34;,
- *                 &#34;us-central1-a&#34;)
+ *                 "asia-east1-c",
+ *                 "us-central1-a")
  *             .preemptiblePercentage(50)
  *             .fallbackToOndemand(true)
  *             .drainingTimeout(180)
- *             .provisioningModel(&#34;SPOT&#34;)
+ *             .provisioningModel("SPOT")
  *             .labels(ElastigroupLabelArgs.builder()
- *                 .key(&#34;test_key&#34;)
- *                 .value(&#34;test_value&#34;)
+ *                 .key("test_key")
+ *                 .value("test_value")
  *                 .build())
  *             .tags(            
- *                 &#34;http&#34;,
- *                 &#34;https&#34;)
+ *                 "http",
+ *                 "https")
  *             .backendServices(ElastigroupBackendServiceArgs.builder()
- *                 .serviceName(&#34;spotinst-elb-backend-service&#34;)
- *                 .locationType(&#34;regional&#34;)
- *                 .scheme(&#34;INTERNAL&#34;)
+ *                 .serviceName("spotinst-elb-backend-service")
+ *                 .locationType("regional")
+ *                 .scheme("INTERNAL")
  *                 .namedPorts(ElastigroupBackendServiceNamedPortArgs.builder()
- *                     .name(&#34;port-name&#34;)
+ *                     .name("port-name")
  *                     .ports(                    
  *                         8000,
  *                         6000)
  *                     .build())
  *                 .build())
  *             .disks(ElastigroupDiskArgs.builder()
- *                 .deviceName(&#34;device&#34;)
- *                 .mode(&#34;READ_WRITE&#34;)
- *                 .type(&#34;PERSISTENT&#34;)
+ *                 .deviceName("device")
+ *                 .mode("READ_WRITE")
+ *                 .type("PERSISTENT")
  *                 .autoDelete(true)
  *                 .boot(true)
- *                 .interface_(&#34;SCSI&#34;)
+ *                 .interface_("SCSI")
  *                 .initializeParams(ElastigroupDiskInitializeParamArgs.builder()
  *                     .diskSizeGb(10)
- *                     .diskType(&#34;pd-standard&#34;)
- *                     .sourceImage(&#34;&#34;)
+ *                     .diskType("pd-standard")
+ *                     .sourceImage("")
  *                     .build())
  *                 .build())
  *             .networkInterfaces(ElastigroupNetworkInterfaceArgs.builder()
- *                 .network(&#34;spot-network&#34;)
+ *                 .network("spot-network")
  *                 .build())
- *             .instanceTypesOndemand(&#34;n1-standard-1&#34;)
+ *             .instanceTypesOndemand("n1-standard-1")
  *             .instanceTypesPreemptibles(            
- *                 &#34;n1-standard-1&#34;,
- *                 &#34;n1-standard-2&#34;)
+ *                 "n1-standard-1",
+ *                 "n1-standard-2")
  *             .instanceTypesCustoms(ElastigroupInstanceTypesCustomArgs.builder()
  *                 .vcpu(2)
  *                 .memoryGib(7)
  *                 .build())
  *             .subnets(ElastigroupSubnetArgs.builder()
- *                 .region(&#34;asia-east1&#34;)
- *                 .subnetNames(&#34;default&#34;)
+ *                 .region("asia-east1")
+ *                 .subnetNames("default")
  *                 .build())
  *             .scalingUpPolicies(ElastigroupScalingUpPolicyArgs.builder()
- *                 .policyName(&#34;scale_up_1&#34;)
- *                 .source(&#34;stackdriver&#34;)
- *                 .metricName(&#34;instance/disk/read_ops_count&#34;)
- *                 .namespace(&#34;compute&#34;)
- *                 .statistic(&#34;average&#34;)
- *                 .unit(&#34;percent&#34;)
+ *                 .policyName("scale_up_1")
+ *                 .source("stackdriver")
+ *                 .metricName("instance/disk/read_ops_count")
+ *                 .namespace("compute")
+ *                 .statistic("average")
+ *                 .unit("percent")
  *                 .threshold(10000)
  *                 .period(300)
  *                 .cooldown(300)
- *                 .operator(&#34;gte&#34;)
+ *                 .operator("gte")
  *                 .evaluationPeriods(1)
- *                 .actionType(&#34;adjustment&#34;)
+ *                 .actionType("adjustment")
  *                 .adjustment(1)
  *                 .dimensions(ElastigroupScalingUpPolicyDimensionArgs.builder()
- *                     .name(&#34;storage_type&#34;)
- *                     .value(&#34;pd-ssd&#34;)
+ *                     .name("storage_type")
+ *                     .value("pd-ssd")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

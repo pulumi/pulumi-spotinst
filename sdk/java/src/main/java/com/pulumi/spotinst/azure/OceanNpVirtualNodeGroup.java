@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,9 +54,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new OceanNpVirtualNodeGroup(&#34;example&#34;, OceanNpVirtualNodeGroupArgs.builder()        
- *             .name(&#34;testVng&#34;)
- *             .oceanId(&#34;o-134abcd&#34;)
+ *         var example = new OceanNpVirtualNodeGroup("example", OceanNpVirtualNodeGroupArgs.builder()        
+ *             .name("testVng")
+ *             .oceanId("o-134abcd")
  *             .headrooms(OceanNpVirtualNodeGroupHeadroomArgs.builder()
  *                 .cpuPerUnit(1024)
  *                 .memoryPerUnit(512)
@@ -63,34 +64,34 @@ import javax.annotation.Nullable;
  *                 .numOfUnits(2)
  *                 .build())
  *             .availabilityZones(            
- *                 &#34;1&#34;,
- *                 &#34;2&#34;,
- *                 &#34;3&#34;)
+ *                 "1",
+ *                 "2",
+ *                 "3")
  *             .labels(Map.ofEntries(
- *                 Map.entry(&#34;key&#34;, &#34;env&#34;),
- *                 Map.entry(&#34;value&#34;, &#34;test&#34;)
+ *                 Map.entry("key", "env"),
+ *                 Map.entry("value", "test")
  *             ))
  *             .minCount(1)
  *             .maxCount(100)
  *             .maxPodsPerNode(30)
  *             .enableNodePublicIp(true)
  *             .osDiskSizeGb(30)
- *             .osDiskType(&#34;Managed&#34;)
- *             .osType(&#34;Linux&#34;)
- *             .osSku(&#34;Ubuntu&#34;)
- *             .kubernetesVersion(&#34;1.26&#34;)
- *             .podSubnetIds(&#34;/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default&#34;)
- *             .vnetSubnetIds(&#34;/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default&#34;)
+ *             .osDiskType("Managed")
+ *             .osType("Linux")
+ *             .osSku("Ubuntu")
+ *             .kubernetesVersion("1.26")
+ *             .podSubnetIds("/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default")
+ *             .vnetSubnetIds("/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default")
  *             .spotPercentage(50)
  *             .fallbackToOndemand(true)
  *             .taints(OceanNpVirtualNodeGroupTaintArgs.builder()
- *                 .key(&#34;taintKey&#34;)
- *                 .value(&#34;taintValue&#34;)
- *                 .effect(&#34;NoSchedule&#34;)
+ *                 .key("taintKey")
+ *                 .value("taintValue")
+ *                 .effect("NoSchedule")
  *                 .build())
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;tagKey&#34;, &#34;env&#34;),
- *                 Map.entry(&#34;tagValue&#34;, &#34;staging&#34;)
+ *                 Map.entry("tagKey", "env"),
+ *                 Map.entry("tagValue", "staging")
  *             ))
  *             .filters(OceanNpVirtualNodeGroupFiltersArgs.builder()
  *                 .minVcpu(2)
@@ -98,34 +99,35 @@ import javax.annotation.Nullable;
  *                 .minMemoryGib(8)
  *                 .maxMemoryGib(128)
  *                 .architectures(                
- *                     &#34;x86_64&#34;,
- *                     &#34;arm64&#34;)
+ *                     "x86_64",
+ *                     "arm64")
  *                 .series(                
- *                     &#34;D v3&#34;,
- *                     &#34;Dds_v4&#34;,
- *                     &#34;Dsv2&#34;)
+ *                     "D v3",
+ *                     "Dds_v4",
+ *                     "Dsv2")
  *                 .excludeSeries(                
- *                     &#34;Av2&#34;,
- *                     &#34;A&#34;,
- *                     &#34;Bs&#34;,
- *                     &#34;D&#34;,
- *                     &#34;E&#34;)
- *                 .acceleratedNetworking(&#34;Enabled&#34;)
- *                 .diskPerformance(&#34;Premium&#34;)
+ *                     "Av2",
+ *                     "A",
+ *                     "Bs",
+ *                     "D",
+ *                     "E")
+ *                 .acceleratedNetworking("Enabled")
+ *                 .diskPerformance("Premium")
  *                 .minGpu(1)
  *                 .maxGpu(2)
  *                 .minNics(1)
  *                 .vmTypes(                
- *                     &#34;generalPurpose&#34;,
- *                     &#34;GPU&#34;)
+ *                     "generalPurpose",
+ *                     "GPU")
  *                 .minDisk(1)
- *                 .gpuTypes(&#34;nvidia-tesla-t4&#34;)
+ *                 .gpuTypes("nvidia-tesla-t4")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

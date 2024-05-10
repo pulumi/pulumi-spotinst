@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,19 +45,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var terraformUserGroup = new UserGroup(&#34;terraformUserGroup&#34;, UserGroupArgs.builder()        
- *             .name(&#34;test_user_group&#34;)
- *             .description(&#34;user group by terraform&#34;)
- *             .userIds(&#34;u-372gf6ae&#34;)
+ *         var terraformUserGroup = new UserGroup("terraformUserGroup", UserGroupArgs.builder()        
+ *             .name("test_user_group")
+ *             .description("user group by terraform")
+ *             .userIds("u-372gf6ae")
  *             .policies(UserGroupPolicyArgs.builder()
- *                 .accountIds(&#34;act-a1b2c3d4&#34;)
- *                 .policyId(&#34;pol-vv7d8c06&#34;)
+ *                 .accountIds("act-a1b2c3d4")
+ *                 .policyId("pol-vv7d8c06")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,27 +59,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Ocean(&#34;example&#34;, OceanArgs.builder()        
- *             .oceanClusterId(&#34;ocean-cluster-id&#34;)
+ *         var example = new Ocean("example", OceanArgs.builder()        
+ *             .oceanClusterId("ocean-cluster-id")
  *             .ingress(OceanIngressArgs.builder()
  *                 .controller(OceanIngressControllerArgs.builder()
  *                     .managed(true)
  *                     .build())
  *                 .loadBalancer(OceanIngressLoadBalancerArgs.builder()
  *                     .managed(true)
- *                     .targetGroupArn(&#34;arn:aws:elasticloadbalancing:eu-north-1:XXXXXXXXXXXX:targetgroup/my-spark-cluster-nlb-tg/a38c2b83XXXXXXXX&#34;)
+ *                     .targetGroupArn("arn:aws:elasticloadbalancing:eu-north-1:XXXXXXXXXXXX:targetgroup/my-spark-cluster-nlb-tg/a38c2b83XXXXXXXX")
  *                     .serviceAnnotations(Map.ofEntries(
- *                         Map.entry(&#34;service.beta.kubernetes.io/aws-load-balancer-security-groups&#34;, &#34;sg-XXXXXXXXXXXXXXXXX&#34;),
- *                         Map.entry(&#34;some-service-annotation-2&#34;, &#34;some-service-annotation-value-2&#34;)
+ *                         Map.entry("service.beta.kubernetes.io/aws-load-balancer-security-groups", "sg-XXXXXXXXXXXXXXXXX"),
+ *                         Map.entry("some-service-annotation-2", "some-service-annotation-value-2")
  *                     ))
  *                     .build())
  *                 .customEndpoint(OceanIngressCustomEndpointArgs.builder()
  *                     .enabled(false)
- *                     .address(&#34;my-spark-cluster-nlb-8cbb8da7XXXXXXXX.elb.us-east-1.amazonaws.com&#34;)
+ *                     .address("my-spark-cluster-nlb-8cbb8da7XXXXXXXX.elb.us-east-1.amazonaws.com")
  *                     .build())
  *                 .privateLink(OceanIngressPrivateLinkArgs.builder()
  *                     .enabled(false)
- *                     .vpcEndpointService(&#34;com.amazonaws.vpce.eu-north-1.vpce-svc-XXXXXXXXXXXXXXXXX&#34;)
+ *                     .vpcEndpointService("com.amazonaws.vpce.eu-north-1.vpce-svc-XXXXXXXXXXXXXXXXX")
  *                     .build())
  *                 .build())
  *             .compute(OceanComputeArgs.builder()
@@ -94,14 +95,15 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .spark(OceanSparkArgs.builder()
  *                 .additionalAppNamespaces(                
- *                     &#34;extra-spark-app-ns-1&#34;,
- *                     &#34;extra-spark-app-ns-2&#34;)
+ *                     "extra-spark-app-ns-1",
+ *                     "extra-spark-app-ns-2")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

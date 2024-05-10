@@ -19,7 +19,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,14 +42,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // set credential AWS
- *         var credential = new Credentials(&#34;credential&#34;, CredentialsArgs.builder()        
- *             .iamrole(&#34;arn:aws:iam::1234567890:role/Spot_Iam_Role&#34;)
- *             .accountId(&#34;act-123456&#34;)
+ *         var credential = new Credentials("credential", CredentialsArgs.builder()        
+ *             .iamrole("arn:aws:iam::1234567890:role/Spot_Iam_Role")
+ *             .accountId("act-123456")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
