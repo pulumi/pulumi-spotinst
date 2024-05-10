@@ -41,7 +41,8 @@ import javax.annotation.Nullable;
  * * a handful of parameters are created remotely and will not appear in the diff. A complete list can be found below.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -66,21 +67,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example_gke_elastigroup = new Elastigroup(&#34;example-gke-elastigroup&#34;, ElastigroupArgs.builder()        
- *             .name(&#34;example-gke&#34;)
- *             .clusterZoneName(&#34;us-central1-a&#34;)
- *             .nodeImage(&#34;COS&#34;)
+ *         var example_gke_elastigroup = new Elastigroup("example-gke-elastigroup", ElastigroupArgs.builder()        
+ *             .name("example-gke")
+ *             .clusterZoneName("us-central1-a")
+ *             .nodeImage("COS")
  *             .maxSize(5)
  *             .minSize(1)
  *             .desiredCapacity(3)
- *             .instanceTypesOndemand(&#34;n1-standard-1&#34;)
+ *             .instanceTypesOndemand("n1-standard-1")
  *             .instanceTypesPreemptibles(            
- *                 &#34;n1-standard-1&#34;,
- *                 &#34;n1-standard-2&#34;)
+ *                 "n1-standard-1",
+ *                 "n1-standard-2")
  *             .preemptiblePercentage(100)
  *             .integrationGke(ElastigroupIntegrationGkeArgs.builder()
- *                 .location(&#34;us-central1-a&#34;)
- *                 .clusterId(&#34;example-cluster-id&#34;)
+ *                 .location("us-central1-a")
+ *                 .clusterId("example-cluster-id")
  *                 .autoscaleIsEnabled(true)
  *                 .autoscaleIsAutoConfig(false)
  *                 .autoscaleCooldown(300)
@@ -93,15 +94,15 @@ import javax.annotation.Nullable;
  *                     .evaluationPeriods(300)
  *                     .build())
  *                 .autoscaleLabels(ElastigroupIntegrationGkeAutoscaleLabelArgs.builder()
- *                     .key(&#34;label_key&#34;)
- *                     .value(&#34;label_value&#34;)
+ *                     .key("label_key")
+ *                     .value("label_value")
  *                     .build())
  *                 .build())
  *             .backendServices(ElastigroupBackendServiceArgs.builder()
- *                 .serviceName(&#34;backend-service&#34;)
- *                 .locationType(&#34;global&#34;)
+ *                 .serviceName("backend-service")
+ *                 .locationType("global")
  *                 .namedPorts(ElastigroupBackendServiceNamedPortArgs.builder()
- *                     .name(&#34;http&#34;)
+ *                     .name("http")
  *                     .ports(                    
  *                         80,
  *                         8080)
@@ -111,7 +112,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

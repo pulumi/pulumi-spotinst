@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,28 +53,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new OceanImport(&#34;example&#34;, OceanImportArgs.builder()        
- *             .clusterName(&#34;example-cluster-name&#34;)
- *             .controllerClusterId(&#34;example-controller-123124&#34;)
- *             .location(&#34;us-central1-a&#34;)
+ *         var example = new OceanImport("example", OceanImportArgs.builder()        
+ *             .clusterName("example-cluster-name")
+ *             .controllerClusterId("example-controller-123124")
+ *             .location("us-central1-a")
  *             .minSize(0)
  *             .maxSize(2)
  *             .desiredCapacity(0)
  *             .whitelists(            
- *                 &#34;n1-standard-1&#34;,
- *                 &#34;n1-standard-2&#34;)
+ *                 "n1-standard-1",
+ *                 "n1-standard-2")
  *             .backendServices(OceanImportBackendServiceArgs.builder()
- *                 .serviceName(&#34;example-backend-service&#34;)
- *                 .locationType(&#34;regional&#34;)
- *                 .scheme(&#34;INTERNAL&#34;)
+ *                 .serviceName("example-backend-service")
+ *                 .locationType("regional")
+ *                 .scheme("INTERNAL")
  *                 .namedPorts(OceanImportBackendServiceNamedPortArgs.builder()
- *                     .name(&#34;http&#34;)
+ *                     .name("http")
  *                     .ports(                    
  *                         80,
  *                         8080)
  *                     .build())
  *                 .build())
- *             .rootVolumeType(&#34;pd-ssd&#34;)
+ *             .rootVolumeType("pd-ssd")
  *             .shieldedInstanceConfig(OceanImportShieldedInstanceConfigArgs.builder()
  *                 .enableSecureBoot(true)
  *                 .enableIntegrityMonitoring(true)
@@ -83,7 +84,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

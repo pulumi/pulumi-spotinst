@@ -19,7 +19,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -40,14 +41,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new OceanLaunchSpecImport(&#34;example&#34;, OceanLaunchSpecImportArgs.builder()        
- *             .oceanId(&#34;o-123456&#34;)
- *             .nodePoolName(&#34;default-pool&#34;)
+ *         var example = new OceanLaunchSpecImport("example", OceanLaunchSpecImportArgs.builder()        
+ *             .oceanId("o-123456")
+ *             .nodePoolName("default-pool")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

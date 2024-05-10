@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -45,21 +46,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var terraformProgUser = new ProgrammaticUser(&#34;terraformProgUser&#34;, ProgrammaticUserArgs.builder()        
- *             .name(&#34;test-prog-user&#34;)
- *             .description(&#34;creating programmatic user&#34;)
+ *         var terraformProgUser = new ProgrammaticUser("terraformProgUser", ProgrammaticUserArgs.builder()        
+ *             .name("test-prog-user")
+ *             .description("creating programmatic user")
  *             .policies(ProgrammaticUserPolicyArgs.builder()
- *                 .policyId(&#34;pol-g75d8c06&#34;)
- *                 .policyAccountIds(&#34;act-a1b2c3d4&#34;)
+ *                 .policyId("pol-g75d8c06")
+ *                 .policyAccountIds("act-a1b2c3d4")
  *                 .build())
  *             .userGroupIds(            
- *                 &#34;ugr-abcd1234&#34;,
- *                 &#34;ugr-defg8763&#34;)
+ *                 "ugr-abcd1234",
+ *                 "ugr-defg8763")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

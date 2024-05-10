@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,21 +54,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new OceanVirtualNodeGroup(&#34;example&#34;, OceanVirtualNodeGroupArgs.builder()        
- *             .name(&#34;vng_name&#34;)
- *             .oceanId(&#34;o-12345&#34;)
+ *         var example = new OceanVirtualNodeGroup("example", OceanVirtualNodeGroupArgs.builder()        
+ *             .name("vng_name")
+ *             .oceanId("o-12345")
  *             .zones(            
- *                 &#34;1&#34;,
- *                 &#34;2&#34;,
- *                 &#34;3&#34;)
+ *                 "1",
+ *                 "2",
+ *                 "3")
  *             .labels(OceanVirtualNodeGroupLabelArgs.builder()
- *                 .key(&#34;label_key&#34;)
- *                 .value(&#34;label_value&#34;)
+ *                 .key("label_key")
+ *                 .value("label_value")
  *                 .build())
  *             .taints(OceanVirtualNodeGroupTaintArgs.builder()
- *                 .key(&#34;taint_key&#34;)
- *                 .value(&#34;taint_value&#34;)
- *                 .effect(&#34;NoSchedule&#34;)
+ *                 .key("taint_key")
+ *                 .value("taint_value")
+ *                 .effect("NoSchedule")
  *                 .build())
  *             .resourceLimits(OceanVirtualNodeGroupResourceLimitArgs.builder()
  *                 .maxInstanceCount(4)
@@ -84,12 +85,12 @@ import javax.annotation.Nullable;
  *             .launchSpecifications(OceanVirtualNodeGroupLaunchSpecificationArgs.builder()
  *                 .osDisk(OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs.builder()
  *                     .sizeGb(100)
- *                     .type(&#34;Standard_LRS&#34;)
+ *                     .type("Standard_LRS")
  *                     .utilizeEphemeralStorage(false)
  *                     .build())
  *                 .tags(OceanVirtualNodeGroupLaunchSpecificationTagArgs.builder()
- *                     .key(&#34;label_key&#34;)
- *                     .value(&#34;label_value&#34;)
+ *                     .key("label_key")
+ *                     .value("label_value")
  *                     .build())
  *                 .maxPods(30)
  *                 .build())
@@ -97,7 +98,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

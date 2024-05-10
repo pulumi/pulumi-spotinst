@@ -37,7 +37,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -69,18 +70,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new OceanLaunchSpec(&#34;example&#34;, OceanLaunchSpecArgs.builder()        
- *             .oceanId(&#34;o-123456&#34;)
- *             .nodePoolName(&#34;default-pool&#34;)
- *             .name(&#34;specialty.nodes.spotk8s.com&#34;)
- *             .sourceImage(&#34;image&#34;)
+ *         var example = new OceanLaunchSpec("example", OceanLaunchSpecArgs.builder()        
+ *             .oceanId("o-123456")
+ *             .nodePoolName("default-pool")
+ *             .name("specialty.nodes.spotk8s.com")
+ *             .sourceImage("image")
  *             .restrictScaleDown(true)
  *             .rootVolumeSize(10)
- *             .rootVolumeType(&#34;pd-standard&#34;)
- *             .instanceTypes(&#34;n1-standard-1, n1-standard-2&#34;)
+ *             .rootVolumeType("pd-standard")
+ *             .instanceTypes("n1-standard-1, n1-standard-2")
  *             .tags(            
- *                 &#34;tag1&#34;,
- *                 &#34;tag2&#34;)
+ *                 "tag1",
+ *                 "tag2")
  *             .shieldedInstanceConfig(OceanLaunchSpecShieldedInstanceConfigArgs.builder()
  *                 .enableSecureBoot(false)
  *                 .enableIntegrityMonitoring(true)
@@ -92,19 +93,19 @@ import javax.annotation.Nullable;
  *                 .maxInstanceCount(3)
  *                 .minInstanceCount(0)
  *                 .build())
- *             .serviceAccount(&#34;default&#34;)
+ *             .serviceAccount("default")
  *             .metadatas(OceanLaunchSpecMetadataArgs.builder()
- *                 .key(&#34;gci-update-strategy&#34;)
- *                 .value(&#34;update_disabled&#34;)
+ *                 .key("gci-update-strategy")
+ *                 .value("update_disabled")
  *                 .build())
  *             .labels(OceanLaunchSpecLabelArgs.builder()
- *                 .key(&#34;labelKey&#34;)
- *                 .value(&#34;labelVal&#34;)
+ *                 .key("labelKey")
+ *                 .value("labelVal")
  *                 .build())
  *             .taints(OceanLaunchSpecTaintArgs.builder()
- *                 .key(&#34;taintKey&#34;)
- *                 .value(&#34;taintVal&#34;)
- *                 .effect(&#34;taintEffect&#34;)
+ *                 .key("taintKey")
+ *                 .value("taintVal")
+ *                 .effect("taintEffect")
  *                 .build())
  *             .autoscaleHeadroomsAutomatics(OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs.builder()
  *                 .autoHeadroomPercentage(5)
@@ -120,8 +121,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .schedulingTasks(OceanLaunchSpecSchedulingTaskArgs.builder()
  *                 .isEnabled(true)
- *                 .cronExpression(&#34;0 1 * * *&#34;)
- *                 .taskType(&#34;manualHeadroomUpdate&#34;)
+ *                 .cronExpression("0 1 * * *")
+ *                 .taskType("manualHeadroomUpdate")
  *                 .taskHeadrooms(OceanLaunchSpecSchedulingTaskTaskHeadroomArgs.builder()
  *                     .numOfUnits(5)
  *                     .cpuPerUnit(1000)
@@ -130,22 +131,23 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .networkInterfaces(OceanLaunchSpecNetworkInterfaceArgs.builder()
- *                 .network(&#34;test-vng-network&#34;)
- *                 .projectId(&#34;test-vng-network-project&#34;)
+ *                 .network("test-vng-network")
+ *                 .projectId("test-vng-network-project")
  *                 .accessConfigs(OceanLaunchSpecNetworkInterfaceAccessConfigArgs.builder()
- *                     .name(&#34;external-nat-vng&#34;)
- *                     .type(&#34;ONE_TO_ONE_NAT&#34;)
+ *                     .name("external-nat-vng")
+ *                     .type("ONE_TO_ONE_NAT")
  *                     .build())
  *                 .aliasIpRanges(OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs.builder()
- *                     .ipCidrRange(&#34;/25&#34;)
- *                     .subnetworkRangeName(&#34;gke-test-native-vpc-pods-123456-vng&#34;)
+ *                     .ipCidrRange("/25")
+ *                     .subnetworkRangeName("gke-test-native-vpc-pods-123456-vng")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

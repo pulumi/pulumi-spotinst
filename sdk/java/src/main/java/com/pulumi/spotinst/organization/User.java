@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,24 +45,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var terraformUser = new User(&#34;terraformUser&#34;, UserArgs.builder()        
- *             .email(&#34;abc@xyz.com&#34;)
- *             .firstName(&#34;test&#34;)
- *             .lastName(&#34;user&#34;)
- *             .password(&#34;testUser@123&#34;)
- *             .role(&#34;viewer&#34;)
+ *         var terraformUser = new User("terraformUser", UserArgs.builder()        
+ *             .email("abc{@literal @}xyz.com")
+ *             .firstName("test")
+ *             .lastName("user")
+ *             .password("testUser{@literal @}123")
+ *             .role("viewer")
  *             .policies(UserPolicyArgs.builder()
- *                 .policyId(&#34;pol-abcd1236&#34;)
- *                 .policyAccountIds(&#34;act-abcf4245&#34;)
+ *                 .policyId("pol-abcd1236")
+ *                 .policyAccountIds("act-abcf4245")
  *                 .build())
  *             .userGroupIds(            
- *                 &#34;ugr-abcd1234&#34;,
- *                 &#34;ugr-defg8763&#34;)
+ *                 "ugr-abcd1234",
+ *                 "ugr-defg8763")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

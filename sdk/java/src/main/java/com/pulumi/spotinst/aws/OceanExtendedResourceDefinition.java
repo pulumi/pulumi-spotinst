@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -42,17 +43,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new OceanExtendedResourceDefinition(&#34;example&#34;, OceanExtendedResourceDefinitionArgs.builder()        
- *             .name(&#34;terraform_extended_resource_definition&#34;)
+ *         var example = new OceanExtendedResourceDefinition("example", OceanExtendedResourceDefinitionArgs.builder()        
+ *             .name("terraform_extended_resource_definition")
  *             .resourceMapping(Map.ofEntries(
- *                 Map.entry(&#34;c3.large&#34;, &#34;2Ki&#34;),
- *                 Map.entry(&#34;c3.xlarge&#34;, &#34;4Ki&#34;)
+ *                 Map.entry("c3.large", "2Ki"),
+ *                 Map.entry("c3.xlarge", "4Ki")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,31 +45,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var terraformPolicy = new Policy(&#34;terraformPolicy&#34;, PolicyArgs.builder()        
- *             .name(&#34;test-policy&#34;)
- *             .description(&#34;policy by terraform&#34;)
+ *         var terraformPolicy = new Policy("terraformPolicy", PolicyArgs.builder()        
+ *             .name("test-policy")
+ *             .description("policy by terraform")
  *             .policyContents(PolicyPolicyContentArgs.builder()
  *                 .statements(                
  *                     PolicyPolicyContentStatementArgs.builder()
- *                         .actions(&#34;ocean:deleteCluster&#34;)
- *                         .effect(&#34;DENY&#34;)
+ *                         .actions("ocean:deleteCluster")
+ *                         .effect("DENY")
  *                         .resources(                        
- *                             &#34;o-abcd1234&#34;,
- *                             &#34;o-defg6789&#34;)
+ *                             "o-abcd1234",
+ *                             "o-defg6789")
  *                         .build(),
  *                     PolicyPolicyContentStatementArgs.builder()
- *                         .actions(&#34;ocean:createCluster&#34;)
- *                         .effect(&#34;DENY&#34;)
+ *                         .actions("ocean:createCluster")
+ *                         .effect("DENY")
  *                         .resources(                        
- *                             &#34;o-fhau4752&#34;,
- *                             &#34;o-761owf4r3&#34;)
+ *                             "o-fhau4752",
+ *                             "o-761owf4r3")
  *                         .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

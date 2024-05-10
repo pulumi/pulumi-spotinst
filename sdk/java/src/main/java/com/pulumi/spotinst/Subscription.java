@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,23 +45,24 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a Subscription
- *         var default_subscription = new Subscription(&#34;default-subscription&#34;, SubscriptionArgs.builder()        
+ *         var default_subscription = new Subscription("default-subscription", SubscriptionArgs.builder()        
  *             .resourceId(my_eg.id())
- *             .eventType(&#34;AWS_EC2_INSTANCE_LAUNCH&#34;)
- *             .protocol(&#34;http&#34;)
- *             .endpoint(&#34;http://endpoint.com&#34;)
+ *             .eventType("AWS_EC2_INSTANCE_LAUNCH")
+ *             .protocol("http")
+ *             .endpoint("http://endpoint.com")
  *             .format(Map.ofEntries(
- *                 Map.entry(&#34;event&#34;, &#34;%event%&#34;),
- *                 Map.entry(&#34;instance_id&#34;, &#34;%instance-id%&#34;),
- *                 Map.entry(&#34;resource_id&#34;, &#34;%resource-id%&#34;),
- *                 Map.entry(&#34;resource_name&#34;, &#34;%resource-name%&#34;),
- *                 Map.entry(&#34;tags&#34;, &#34;foo,baz,baz&#34;)
+ *                 Map.entry("event", "%event%"),
+ *                 Map.entry("instance_id", "%instance-id%"),
+ *                 Map.entry("resource_id", "%resource-id%"),
+ *                 Map.entry("resource_name", "%resource-name%"),
+ *                 Map.entry("tags", "foo,baz,baz")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

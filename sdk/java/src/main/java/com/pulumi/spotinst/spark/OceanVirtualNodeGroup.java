@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,14 +45,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new OceanVirtualNodeGroup(&#34;example&#34;, OceanVirtualNodeGroupArgs.builder()        
- *             .virtualNodeGroupId(&#34;vng_id&#34;)
- *             .oceanSparkClusterId(&#34;cluster_id&#34;)
+ *         var example = new OceanVirtualNodeGroup("example", OceanVirtualNodeGroupArgs.builder()        
+ *             .virtualNodeGroupId("vng_id")
+ *             .oceanSparkClusterId("cluster_id")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

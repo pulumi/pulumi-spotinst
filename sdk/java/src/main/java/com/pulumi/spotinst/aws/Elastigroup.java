@@ -56,7 +56,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -89,57 +90,57 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create an Elastigroup
- *         var default_elastigroup = new Elastigroup(&#34;default-elastigroup&#34;, ElastigroupArgs.builder()        
- *             .name(&#34;default-elastigroup&#34;)
- *             .description(&#34;created by Pulumi&#34;)
- *             .product(&#34;Linux/UNIX&#34;)
+ *         var default_elastigroup = new Elastigroup("default-elastigroup", ElastigroupArgs.builder()        
+ *             .name("default-elastigroup")
+ *             .description("created by Pulumi")
+ *             .product("Linux/UNIX")
  *             .maxSize(0)
  *             .minSize(0)
  *             .desiredCapacity(0)
- *             .capacityUnit(&#34;weight&#34;)
- *             .region(&#34;us-west-2&#34;)
+ *             .capacityUnit("weight")
+ *             .region("us-west-2")
  *             .subnetIds(            
- *                 &#34;sb-123456&#34;,
- *                 &#34;sb-456789&#34;)
- *             .imageId(&#34;ami-a27d8fda&#34;)
- *             .iamInstanceProfile(&#34;iam-profile&#34;)
- *             .keyName(&#34;my-key.ssh&#34;)
- *             .securityGroups(&#34;sg-123456&#34;)
- *             .userData(&#34;echo hello world&#34;)
+ *                 "sb-123456",
+ *                 "sb-456789")
+ *             .imageId("ami-a27d8fda")
+ *             .iamInstanceProfile("iam-profile")
+ *             .keyName("my-key.ssh")
+ *             .securityGroups("sg-123456")
+ *             .userData("echo hello world")
  *             .enableMonitoring(false)
  *             .ebsOptimized(false)
- *             .placementTenancy(&#34;default&#34;)
+ *             .placementTenancy("default")
  *             .metadataOptions(ElastigroupMetadataOptionsArgs.builder()
- *                 .httpTokens(&#34;optional&#34;)
+ *                 .httpTokens("optional")
  *                 .httpPutResponseHopLimit(10)
- *                 .instanceMetadataTags(&#34;enabled&#34;)
+ *                 .instanceMetadataTags("enabled")
  *                 .build())
  *             .cpuOptions(ElastigroupCpuOptionsArgs.builder()
  *                 .threadsPerCore(1)
  *                 .build())
- *             .instanceTypesOndemand(&#34;m3.2xlarge&#34;)
+ *             .instanceTypesOndemand("m3.2xlarge")
  *             .instanceTypesSpots(            
- *                 &#34;m3.xlarge&#34;,
- *                 &#34;m3.2xlarge&#34;)
- *             .instanceTypesPreferredSpots(&#34;m3.xlarge&#34;)
- *             .onDemandTypes(&#34;c3.large&#34;)
+ *                 "m3.xlarge",
+ *                 "m3.2xlarge")
+ *             .instanceTypesPreferredSpots("m3.xlarge")
+ *             .onDemandTypes("c3.large")
  *             .instanceTypesWeights(            
  *                 ElastigroupInstanceTypesWeightArgs.builder()
- *                     .instanceType(&#34;m3.xlarge&#34;)
+ *                     .instanceType("m3.xlarge")
  *                     .weight(10)
  *                     .build(),
  *                 ElastigroupInstanceTypesWeightArgs.builder()
- *                     .instanceType(&#34;m3.2xlarge&#34;)
+ *                     .instanceType("m3.2xlarge")
  *                     .weight(16)
  *                     .build())
  *             .resourceRequirements(ElastigroupResourceRequirementArgs.builder()
  *                 .excludedInstanceFamilies(                
- *                     &#34;a&#34;,
- *                     &#34;m&#34;)
- *                 .excludedInstanceTypes(&#34;m3.large&#34;)
+ *                     "a",
+ *                     "m")
+ *                 .excludedInstanceTypes("m3.large")
  *                 .excludedInstanceGenerations(                
- *                     &#34;1&#34;,
- *                     &#34;2&#34;)
+ *                     "1",
+ *                     "2")
  *                 .requiredGpuMinimum(1)
  *                 .requiredGpuMaximum(16)
  *                 .requiredMemoryMinimum(1)
@@ -147,35 +148,35 @@ import javax.annotation.Nullable;
  *                 .requiredVcpuMinimum(1)
  *                 .requiredVcpuMaximum(64)
  *                 .build())
- *             .orientation(&#34;balanced&#34;)
+ *             .orientation("balanced")
  *             .fallbackToOndemand(false)
- *             .cpuCredits(&#34;unlimited&#34;)
+ *             .cpuCredits("unlimited")
  *             .minimumInstanceLifetime(12)
  *             .waitForCapacity(5)
  *             .waitForCapacityTimeout(300)
  *             .scalingStrategies(ElastigroupScalingStrategyArgs.builder()
  *                 .terminateAtEndOfBillingHour(true)
- *                 .terminationPolicy(&#34;default&#34;)
+ *                 .terminationPolicy("default")
  *                 .build())
  *             .scalingUpPolicies(ElastigroupScalingUpPolicyArgs.builder()
- *                 .policyName(&#34;Default Scaling Up Policy&#34;)
- *                 .metricName(&#34;DefaultQueuesDepth&#34;)
- *                 .statistic(&#34;average&#34;)
- *                 .unit(&#34;none&#34;)
+ *                 .policyName("Default Scaling Up Policy")
+ *                 .metricName("DefaultQueuesDepth")
+ *                 .statistic("average")
+ *                 .unit("none")
  *                 .adjustment(1)
- *                 .namespace(&#34;custom&#34;)
+ *                 .namespace("custom")
  *                 .threshold(100)
  *                 .period(60)
  *                 .evaluationPeriods(5)
  *                 .cooldown(300)
  *                 .build())
  *             .scalingDownPolicies(ElastigroupScalingDownPolicyArgs.builder()
- *                 .policyName(&#34;Default Scaling Down Policy&#34;)
- *                 .metricName(&#34;DefaultQueuesDepth&#34;)
- *                 .statistic(&#34;average&#34;)
- *                 .unit(&#34;none&#34;)
+ *                 .policyName("Default Scaling Down Policy")
+ *                 .metricName("DefaultQueuesDepth")
+ *                 .statistic("average")
+ *                 .unit("none")
  *                 .adjustment(1)
- *                 .namespace(&#34;custom&#34;)
+ *                 .namespace("custom")
  *                 .threshold(10)
  *                 .period(60)
  *                 .evaluationPeriods(10)
@@ -183,16 +184,16 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .tags(            
  *                 ElastigroupTagArgs.builder()
- *                     .key(&#34;Env&#34;)
- *                     .value(&#34;production&#34;)
+ *                     .key("Env")
+ *                     .value("production")
  *                     .build(),
  *                 ElastigroupTagArgs.builder()
- *                     .key(&#34;Name&#34;)
- *                     .value(&#34;default-production&#34;)
+ *                     .key("Name")
+ *                     .value("default-production")
  *                     .build(),
  *                 ElastigroupTagArgs.builder()
- *                     .key(&#34;Project&#34;)
- *                     .value(&#34;app_v2&#34;)
+ *                     .key("Project")
+ *                     .value("app_v2")
  *                     .build())
  *             .resourceTagSpecifications(ElastigroupResourceTagSpecificationArgs.builder()
  *                 .shouldTagEnis(true)
@@ -203,7 +204,7 @@ import javax.annotation.Nullable;
  *             .logging(ElastigroupLoggingArgs.builder()
  *                 .export(ElastigroupLoggingExportArgs.builder()
  *                     .s3s(ElastigroupLoggingExportS3Args.builder()
- *                         .id(&#34;di-123456&#34;)
+ *                         .id("di-123456")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -211,7 +212,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
