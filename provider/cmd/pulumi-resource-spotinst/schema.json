@@ -5385,7 +5385,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "The tag value.\n"
+                    "description": "The tag value.\n* `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.\n"
                 }
             },
             "type": "object",
@@ -11237,7 +11237,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.\n"
+                    "description": "A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.\n* `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.\n"
                 },
                 "tags": {
                     "type": "array",
@@ -11438,7 +11438,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.\n"
+                    "description": "A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.\n* `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.\n"
                 },
                 "tags": {
                     "type": "array",
@@ -11638,7 +11638,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.\n"
+                        "description": "A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.\n* `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.\n"
                     },
                     "tags": {
                         "type": "array",
@@ -14475,7 +14475,7 @@
                     "items": {
                         "$ref": "#/types/spotinst:gcp/ElastigroupInstanceTypesCustom:ElastigroupInstanceTypesCustom"
                     },
-                    "description": "Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.\n"
+                    "description": "Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.\n* `vCPU` - (Optional) The number of vCPUs in the custom instance type. GCP has a number of limitations on accepted vCPU values. For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]\n"
                 },
                 "instanceTypesOndemand": {
                     "type": "string",
@@ -14655,7 +14655,7 @@
                     "items": {
                         "$ref": "#/types/spotinst:gcp/ElastigroupInstanceTypesCustom:ElastigroupInstanceTypesCustom"
                     },
-                    "description": "Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.\n"
+                    "description": "Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.\n* `vCPU` - (Optional) The number of vCPUs in the custom instance type. GCP has a number of limitations on accepted vCPU values. For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]\n"
                 },
                 "instanceTypesOndemand": {
                     "type": "string",
@@ -14834,7 +14834,7 @@
                         "items": {
                             "$ref": "#/types/spotinst:gcp/ElastigroupInstanceTypesCustom:ElastigroupInstanceTypesCustom"
                         },
-                        "description": "Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.\n"
+                        "description": "Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.\n* `vCPU` - (Optional) The number of vCPUs in the custom instance type. GCP has a number of limitations on accepted vCPU values. For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]\n"
                     },
                     "instanceTypesOndemand": {
                         "type": "string",
@@ -16057,7 +16057,7 @@
                 },
                 "s3": {
                     "$ref": "#/types/spotinst:index/DataIntegrationS3:DataIntegrationS3",
-                    "description": "When vendor value is s3, the following fields are included:\n"
+                    "description": "When vendor value is s3, the following fields are included:\n* `bucketName` - (Required) The name of the bucket to use. Your spot IAM Role policy needs to include s3:putObject permissions for this bucket. Can't be null.\n"
                 },
                 "status": {
                     "type": "string",
@@ -16074,7 +16074,7 @@
                 },
                 "s3": {
                     "$ref": "#/types/spotinst:index/DataIntegrationS3:DataIntegrationS3",
-                    "description": "When vendor value is s3, the following fields are included:\n"
+                    "description": "When vendor value is s3, the following fields are included:\n* `bucketName` - (Required) The name of the bucket to use. Your spot IAM Role policy needs to include s3:putObject permissions for this bucket. Can't be null.\n"
                 },
                 "status": {
                     "type": "string",
@@ -16090,7 +16090,7 @@
                     },
                     "s3": {
                         "$ref": "#/types/spotinst:index/DataIntegrationS3:DataIntegrationS3",
-                        "description": "When vendor value is s3, the following fields are included:\n"
+                        "description": "When vendor value is s3, the following fields are included:\n* `bucketName` - (Required) The name of the bucket to use. Your spot IAM Role policy needs to include s3:putObject permissions for this bucket. Can't be null.\n"
                     },
                     "status": {
                         "type": "string",
