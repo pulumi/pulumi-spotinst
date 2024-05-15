@@ -4223,6 +4223,7 @@ type OceanTag struct {
 	// The tag key.
 	Key string `pulumi:"key"`
 	// The tag value.
+	// * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
 	Value string `pulumi:"value"`
 }
 
@@ -4241,6 +4242,7 @@ type OceanTagArgs struct {
 	// The tag key.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The tag value.
+	// * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -4301,6 +4303,7 @@ func (o OceanTagOutput) Key() pulumi.StringOutput {
 }
 
 // The tag value.
+// * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
 func (o OceanTagOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanTag) string { return v.Value }).(pulumi.StringOutput)
 }

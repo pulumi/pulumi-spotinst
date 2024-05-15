@@ -2926,6 +2926,7 @@ export namespace ecs {
         key: string;
         /**
          * The tag value.
+         * * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
          */
         value: string;
     }

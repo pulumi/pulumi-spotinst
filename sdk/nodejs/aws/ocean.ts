@@ -160,6 +160,7 @@ export class Ocean extends pulumi.CustomResource {
     public readonly spreadNodesBy!: pulumi.Output<string | undefined>;
     /**
      * A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
+     * * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
      */
     public readonly subnetIds!: pulumi.Output<string[]>;
     /**
@@ -415,6 +416,7 @@ export interface OceanState {
     spreadNodesBy?: pulumi.Input<string>;
     /**
      * A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
+     * * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
      */
     subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -559,6 +561,7 @@ export interface OceanArgs {
     spreadNodesBy?: pulumi.Input<string>;
     /**
      * A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
+     * * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
      */
     subnetIds: pulumi.Input<pulumi.Input<string>[]>;
     /**

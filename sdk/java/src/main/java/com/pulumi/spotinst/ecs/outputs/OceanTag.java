@@ -17,6 +17,7 @@ public final class OceanTag {
     private String key;
     /**
      * @return The tag value.
+     * * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
      * 
      */
     private String value;
@@ -31,6 +32,7 @@ public final class OceanTag {
     }
     /**
      * @return The tag value.
+     * * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
      * 
      */
     public String value() {

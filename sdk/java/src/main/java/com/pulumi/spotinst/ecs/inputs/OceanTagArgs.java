@@ -31,6 +31,7 @@ public final class OceanTagArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The tag value.
+     * * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
      * 
      */
     @Import(name="value", required=true)
@@ -38,6 +39,7 @@ public final class OceanTagArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The tag value.
+     * * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
      * 
      */
     public Output<String> value() {
@@ -92,6 +94,7 @@ public final class OceanTagArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param value The tag value.
+         * * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
          * 
          * @return builder
          * 
@@ -103,6 +106,7 @@ public final class OceanTagArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param value The tag value.
+         * * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
          * 
          * @return builder
          * 
