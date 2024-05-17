@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Elastigroup("example", ElastigroupArgs.builder()        
+ *         var example = new Elastigroup("example", ElastigroupArgs.builder()
  *             .name("example-gcp")
  *             .description("spotinst gcp group")
  *             .serviceAccount("example{@literal @}myProject.iam.gservicecct.com")
@@ -287,6 +287,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     }
     /**
      * Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
+     * * `vCPU` - (Optional) The number of vCPUs in the custom instance type. GCP has a number of limitations on accepted vCPU values. For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
      * 
      */
     @Export(name="instanceTypesCustoms", refs={List.class,ElastigroupInstanceTypesCustom.class}, tree="[0,1]")
@@ -294,6 +295,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
+     * * `vCPU` - (Optional) The number of vCPUs in the custom instance type. GCP has a number of limitations on accepted vCPU values. For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
      * 
      */
     public Output<Optional<List<ElastigroupInstanceTypesCustom>>> instanceTypesCustoms() {

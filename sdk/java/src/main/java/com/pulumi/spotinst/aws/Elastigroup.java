@@ -90,7 +90,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create an Elastigroup
- *         var default_elastigroup = new Elastigroup("default-elastigroup", ElastigroupArgs.builder()        
+ *         var default_elastigroup = new Elastigroup("default-elastigroup", ElastigroupArgs.builder()
  *             .name("default-elastigroup")
  *             .description("created by Pulumi")
  *             .product("Linux/UNIX")

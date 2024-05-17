@@ -59,6 +59,7 @@ export class DataIntegration extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * When vendor value is s3, the following fields are included:
+     * * `bucketName` - (Required) The name of the bucket to use. Your spot IAM Role policy needs to include s3:putObject permissions for this bucket. Can't be null.
      */
     public readonly s3!: pulumi.Output<outputs.DataIntegrationS3 | undefined>;
     /**
@@ -103,6 +104,7 @@ export interface DataIntegrationState {
     name?: pulumi.Input<string>;
     /**
      * When vendor value is s3, the following fields are included:
+     * * `bucketName` - (Required) The name of the bucket to use. Your spot IAM Role policy needs to include s3:putObject permissions for this bucket. Can't be null.
      */
     s3?: pulumi.Input<inputs.DataIntegrationS3>;
     /**
@@ -121,6 +123,7 @@ export interface DataIntegrationArgs {
     name?: pulumi.Input<string>;
     /**
      * When vendor value is s3, the following fields are included:
+     * * `bucketName` - (Required) The name of the bucket to use. Your spot IAM Role policy needs to include s3:putObject permissions for this bucket. Can't be null.
      */
     s3?: pulumi.Input<inputs.DataIntegrationS3>;
     /**

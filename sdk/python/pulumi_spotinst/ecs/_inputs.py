@@ -1461,6 +1461,7 @@ class OceanTagArgs:
         """
         :param pulumi.Input[str] key: The tag key.
         :param pulumi.Input[str] value: The tag value.
+               * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
@@ -1482,6 +1483,7 @@ class OceanTagArgs:
     def value(self) -> pulumi.Input[str]:
         """
         The tag value.
+        * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
         """
         return pulumi.get(self, "value")
 

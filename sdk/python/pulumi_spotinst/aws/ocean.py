@@ -62,6 +62,7 @@ class OceanArgs:
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: One or more security group ids.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
+               * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
         :param pulumi.Input[bool] associate_ipv6_address: Configure IPv6 address allocation.
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
         :param pulumi.Input[Sequence[pulumi.Input['OceanBlockDeviceMappingArgs']]] block_device_mappings: Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
@@ -202,6 +203,7 @@ class OceanArgs:
     def subnet_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
+        * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
         """
         return pulumi.get(self, "subnet_ids")
 
@@ -713,6 +715,7 @@ class _OceanState:
         :param pulumi.Input[int] spot_percentage: The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
         :param pulumi.Input[str] spread_nodes_by: Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
+               * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]] tags: Optionally adds tags to instances launched in an Ocean cluster.
         :param pulumi.Input[bool] use_as_template_only: launch specification defined on the Ocean object will function only as a template for virtual node groups.
                When set to true, on Ocean resource creation please make sure your custom VNG has an initial_nodes parameter to create nodes for your VNG.
@@ -1183,6 +1186,7 @@ class _OceanState:
     def subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
+        * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
         """
         return pulumi.get(self, "subnet_ids")
 
@@ -1359,6 +1363,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[int] spot_percentage: The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
         :param pulumi.Input[str] spread_nodes_by: Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
+               * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]] tags: Optionally adds tags to instances launched in an Ocean cluster.
         :param pulumi.Input[bool] use_as_template_only: launch specification defined on the Ocean object will function only as a template for virtual node groups.
                When set to true, on Ocean resource creation please make sure your custom VNG has an initial_nodes parameter to create nodes for your VNG.
@@ -1582,6 +1587,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[int] spot_percentage: The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
         :param pulumi.Input[str] spread_nodes_by: Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
+               * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]] tags: Optionally adds tags to instances launched in an Ocean cluster.
         :param pulumi.Input[bool] use_as_template_only: launch specification defined on the Ocean object will function only as a template for virtual node groups.
                When set to true, on Ocean resource creation please make sure your custom VNG has an initial_nodes parameter to create nodes for your VNG.
@@ -1884,6 +1890,7 @@ class Ocean(pulumi.CustomResource):
     def subnet_ids(self) -> pulumi.Output[Sequence[str]]:
         """
         A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
+        * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
         """
         return pulumi.get(self, "subnet_ids")
 

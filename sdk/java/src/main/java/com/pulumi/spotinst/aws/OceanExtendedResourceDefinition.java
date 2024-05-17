@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new OceanExtendedResourceDefinition("example", OceanExtendedResourceDefinitionArgs.builder()        
+ *         var example = new OceanExtendedResourceDefinition("example", OceanExtendedResourceDefinitionArgs.builder()
  *             .name("terraform_extended_resource_definition")
  *             .resourceMapping(Map.ofEntries(
  *                 Map.entry("c3.large", "2Ki"),

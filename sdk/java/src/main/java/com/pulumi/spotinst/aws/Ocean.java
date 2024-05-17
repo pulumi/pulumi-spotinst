@@ -454,6 +454,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
     }
     /**
      * A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
+     * * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
      * 
      */
     @Export(name="subnetIds", refs={List.class,String.class}, tree="[0,1]")
@@ -461,6 +462,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
+     * * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
      * 
      */
     public Output<List<String>> subnetIds() {

@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a Subscription
- *         var default_subscription = new Subscription("default-subscription", SubscriptionArgs.builder()        
+ *         var default_subscription = new Subscription("default-subscription", SubscriptionArgs.builder()
  *             .resourceId(my_eg.id())
  *             .eventType("AWS_EC2_INSTANCE_LAUNCH")
  *             .protocol("http")

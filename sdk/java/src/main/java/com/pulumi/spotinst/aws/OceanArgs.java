@@ -473,6 +473,7 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
+     * * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
      * 
      */
     @Import(name="subnetIds", required=true)
@@ -480,6 +481,7 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
+     * * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
      * 
      */
     public Output<List<String>> subnetIds() {
@@ -1312,6 +1314,7 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param subnetIds A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
+         * * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
          * 
          * @return builder
          * 
@@ -1323,6 +1326,7 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param subnetIds A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
+         * * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
          * 
          * @return builder
          * 
@@ -1333,6 +1337,7 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param subnetIds A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
+         * * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
          * 
          * @return builder
          * 

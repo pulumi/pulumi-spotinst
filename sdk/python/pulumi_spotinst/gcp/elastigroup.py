@@ -63,6 +63,7 @@ class ElastigroupArgs:
                * A maximal length of 25 characters.
                * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupInstanceTypesCustomArgs']]] instance_types_customs: Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
+               * `vCPU` - (Optional) The number of vCPUs in the custom instance type. GCP has a number of limitations on accepted vCPU values. For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
         :param pulumi.Input[str] instance_types_ondemand: The regular VM instance type to use for mixed-type groups and when falling back to on-demand. Required if instance_types_preemptible is not set.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_preemptibles: The preemptible VMs instance type. To maximize cost savings and market availability, select as many types as possible. Required if instance_types_ondemand is not set.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupLabelArgs']]] labels: Array of objects with key-value pairs.
@@ -289,6 +290,7 @@ class ElastigroupArgs:
     def instance_types_customs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupInstanceTypesCustomArgs']]]]:
         """
         Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
+        * `vCPU` - (Optional) The number of vCPUs in the custom instance type. GCP has a number of limitations on accepted vCPU values. For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
         """
         return pulumi.get(self, "instance_types_customs")
 
@@ -596,6 +598,7 @@ class _ElastigroupState:
                * A maximal length of 25 characters.
                * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupInstanceTypesCustomArgs']]] instance_types_customs: Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
+               * `vCPU` - (Optional) The number of vCPUs in the custom instance type. GCP has a number of limitations on accepted vCPU values. For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
         :param pulumi.Input[str] instance_types_ondemand: The regular VM instance type to use for mixed-type groups and when falling back to on-demand. Required if instance_types_preemptible is not set.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_preemptibles: The preemptible VMs instance type. To maximize cost savings and market availability, select as many types as possible. Required if instance_types_ondemand is not set.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupLabelArgs']]] labels: Array of objects with key-value pairs.
@@ -823,6 +826,7 @@ class _ElastigroupState:
     def instance_types_customs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupInstanceTypesCustomArgs']]]]:
         """
         Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
+        * `vCPU` - (Optional) The number of vCPUs in the custom instance type. GCP has a number of limitations on accepted vCPU values. For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
         """
         return pulumi.get(self, "instance_types_customs")
 
@@ -1229,6 +1233,7 @@ class Elastigroup(pulumi.CustomResource):
                * A maximal length of 25 characters.
                * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesCustomArgs']]]] instance_types_customs: Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
+               * `vCPU` - (Optional) The number of vCPUs in the custom instance type. GCP has a number of limitations on accepted vCPU values. For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
         :param pulumi.Input[str] instance_types_ondemand: The regular VM instance type to use for mixed-type groups and when falling back to on-demand. Required if instance_types_preemptible is not set.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_preemptibles: The preemptible VMs instance type. To maximize cost savings and market availability, select as many types as possible. Required if instance_types_ondemand is not set.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupLabelArgs']]]] labels: Array of objects with key-value pairs.
@@ -1506,6 +1511,7 @@ class Elastigroup(pulumi.CustomResource):
                * A maximal length of 25 characters.
                * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesCustomArgs']]]] instance_types_customs: Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
+               * `vCPU` - (Optional) The number of vCPUs in the custom instance type. GCP has a number of limitations on accepted vCPU values. For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
         :param pulumi.Input[str] instance_types_ondemand: The regular VM instance type to use for mixed-type groups and when falling back to on-demand. Required if instance_types_preemptible is not set.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_preemptibles: The preemptible VMs instance type. To maximize cost savings and market availability, select as many types as possible. Required if instance_types_ondemand is not set.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupLabelArgs']]]] labels: Array of objects with key-value pairs.
@@ -1651,6 +1657,7 @@ class Elastigroup(pulumi.CustomResource):
     def instance_types_customs(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupInstanceTypesCustom']]]:
         """
         Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
+        * `vCPU` - (Optional) The number of vCPUs in the custom instance type. GCP has a number of limitations on accepted vCPU values. For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
         """
         return pulumi.get(self, "instance_types_customs")
 

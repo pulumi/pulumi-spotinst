@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new OceanImport("example", OceanImportArgs.builder()        
+ *         var example = new OceanImport("example", OceanImportArgs.builder()
  *             .clusterName("example-cluster-name")
  *             .controllerClusterId("example-controller-123124")
  *             .location("us-central1-a")
