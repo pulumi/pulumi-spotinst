@@ -8002,6 +8002,292 @@
                 "state"
             ]
         },
+        "spotinst:oceancd/StrategyCanary:StrategyCanary": {
+            "properties": {
+                "backgroundVerification": {
+                    "$ref": "#/types/spotinst:oceancd/StrategyCanaryBackgroundVerification:StrategyCanaryBackgroundVerification",
+                    "description": "A list of background verifications.\n"
+                },
+                "steps": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:oceancd/StrategyCanaryStep:StrategyCanaryStep"
+                    },
+                    "description": "A set of separate conditions of rollout processing.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "steps"
+            ]
+        },
+        "spotinst:oceancd/StrategyCanaryBackgroundVerification:StrategyCanaryBackgroundVerification": {
+            "properties": {
+                "templateNames": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "templateNames"
+            ]
+        },
+        "spotinst:oceancd/StrategyCanaryStep:StrategyCanaryStep": {
+            "properties": {
+                "pause": {
+                    "$ref": "#/types/spotinst:oceancd/StrategyCanaryStepPause:StrategyCanaryStepPause"
+                },
+                "setCanaryScale": {
+                    "$ref": "#/types/spotinst:oceancd/StrategyCanaryStepSetCanaryScale:StrategyCanaryStepSetCanaryScale"
+                },
+                "setHeaderRoute": {
+                    "$ref": "#/types/spotinst:oceancd/StrategyCanaryStepSetHeaderRoute:StrategyCanaryStepSetHeaderRoute"
+                },
+                "setWeight": {
+                    "type": "integer"
+                },
+                "stepName": {
+                    "type": "string"
+                },
+                "verification": {
+                    "$ref": "#/types/spotinst:oceancd/StrategyCanaryStepVerification:StrategyCanaryStepVerification"
+                }
+            },
+            "type": "object"
+        },
+        "spotinst:oceancd/StrategyCanaryStepPause:StrategyCanaryStepPause": {
+            "properties": {
+                "duration": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "spotinst:oceancd/StrategyCanaryStepSetCanaryScale:StrategyCanaryStepSetCanaryScale": {
+            "properties": {
+                "matchTrafficWeight": {
+                    "type": "boolean"
+                },
+                "replicas": {
+                    "type": "integer"
+                },
+                "weight": {
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "spotinst:oceancd/StrategyCanaryStepSetHeaderRoute:StrategyCanaryStepSetHeaderRoute": {
+            "properties": {
+                "headerRouteName": {
+                    "type": "string"
+                },
+                "matches": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:oceancd/StrategyCanaryStepSetHeaderRouteMatch:StrategyCanaryStepSetHeaderRouteMatch"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "headerRouteName",
+                "matches"
+            ]
+        },
+        "spotinst:oceancd/StrategyCanaryStepSetHeaderRouteMatch:StrategyCanaryStepSetHeaderRouteMatch": {
+            "properties": {
+                "headerName": {
+                    "type": "string"
+                },
+                "headerValue": {
+                    "$ref": "#/types/spotinst:oceancd/StrategyCanaryStepSetHeaderRouteMatchHeaderValue:StrategyCanaryStepSetHeaderRouteMatchHeaderValue"
+                }
+            },
+            "type": "object",
+            "required": [
+                "headerName",
+                "headerValue"
+            ]
+        },
+        "spotinst:oceancd/StrategyCanaryStepSetHeaderRouteMatchHeaderValue:StrategyCanaryStepSetHeaderRouteMatchHeaderValue": {
+            "properties": {
+                "exact": {
+                    "type": "string"
+                },
+                "prefix": {
+                    "type": "string"
+                },
+                "regex": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "spotinst:oceancd/StrategyCanaryStepVerification:StrategyCanaryStepVerification": {
+            "properties": {
+                "templateNames": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "templateNames"
+            ]
+        },
+        "spotinst:oceancd/StrategyRolling:StrategyRolling": {
+            "properties": {
+                "steps": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:oceancd/StrategyRollingStep:StrategyRollingStep"
+                    },
+                    "description": "A set of separate conditions of rollout processing.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "steps"
+            ]
+        },
+        "spotinst:oceancd/StrategyRollingStep:StrategyRollingStep": {
+            "properties": {
+                "pause": {
+                    "$ref": "#/types/spotinst:oceancd/StrategyRollingStepPause:StrategyRollingStepPause"
+                },
+                "stepsName": {
+                    "type": "string"
+                },
+                "verification": {
+                    "$ref": "#/types/spotinst:oceancd/StrategyRollingStepVerification:StrategyRollingStepVerification"
+                }
+            },
+            "type": "object"
+        },
+        "spotinst:oceancd/StrategyRollingStepPause:StrategyRollingStepPause": {
+            "properties": {
+                "duration": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "spotinst:oceancd/StrategyRollingStepVerification:StrategyRollingStepVerification": {
+            "properties": {
+                "templateNames": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "templateNames"
+            ]
+        },
+        "spotinst:oceancd/VerificationProviderCloudWatch:VerificationProviderCloudWatch": {
+            "properties": {
+                "iamArn": {
+                    "type": "string",
+                    "description": "Set label key.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "iamArn"
+            ]
+        },
+        "spotinst:oceancd/VerificationProviderDatadog:VerificationProviderDatadog": {
+            "properties": {
+                "address": {
+                    "type": "string",
+                    "description": "DataDog API URL.\n"
+                },
+                "apiKey": {
+                    "type": "string",
+                    "description": "API key required by the Datadog Agent to submit metrics and events to Datadog.\n"
+                },
+                "appKey": {
+                    "type": "string",
+                    "description": "API key that gives users access to Datadog’s programmatic API.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "address",
+                "apiKey",
+                "appKey"
+            ]
+        },
+        "spotinst:oceancd/VerificationProviderJenkins:VerificationProviderJenkins": {
+            "properties": {
+                "apiToken": {
+                    "type": "string",
+                    "description": "The Jenkins server’s access apiToken.\n"
+                },
+                "baseUrl": {
+                    "type": "string",
+                    "description": "The address of the Jenkins server within the cluster.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The Jenkins server’s access username.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "apiToken",
+                "baseUrl",
+                "username"
+            ]
+        },
+        "spotinst:oceancd/VerificationProviderNewRelic:VerificationProviderNewRelic": {
+            "properties": {
+                "accountId": {
+                    "type": "string"
+                },
+                "baseUrlNerdGraph": {
+                    "type": "string",
+                    "description": "The base URL for NerdGraph for a proxy.\n"
+                },
+                "baseUrlRest": {
+                    "type": "string",
+                    "description": "The base URL of the New Relic REST API for a proxy.\n"
+                },
+                "personalApiKey": {
+                    "type": "string",
+                    "description": "The NewRelic user key\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "A region which the account is attached to. Default is \"us\".\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "accountId",
+                "personalApiKey"
+            ]
+        },
+        "spotinst:oceancd/VerificationProviderPrometheus:VerificationProviderPrometheus": {
+            "properties": {
+                "address": {
+                    "type": "string",
+                    "description": "The address which the Prometheus server available on.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "address"
+            ]
+        },
         "spotinst:organization/PolicyPolicyContent:PolicyPolicyContent": {
             "properties": {
                 "statements": {
@@ -17136,6 +17422,171 @@
                     "resourceId": {
                         "type": "string",
                         "description": "Spotinst Resource id (Elastigroup or Ocean ID).\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "spotinst:oceancd/strategy:Strategy": {
+            "description": "Manages a Spotinst OceanCD Strategy resource.\n\n",
+            "properties": {
+                "canary": {
+                    "$ref": "#/types/spotinst:oceancd/StrategyCanary:StrategyCanary",
+                    "description": "Represents Canary strategy. Cannot be defined when Rolling object is defined.\n"
+                },
+                "rolling": {
+                    "$ref": "#/types/spotinst:oceancd/StrategyRolling:StrategyRolling",
+                    "description": "Represents Rolling Update strategy. Cannot be defined when Canary object is defined.\n"
+                },
+                "strategyName": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "strategyName"
+            ],
+            "inputProperties": {
+                "canary": {
+                    "$ref": "#/types/spotinst:oceancd/StrategyCanary:StrategyCanary",
+                    "description": "Represents Canary strategy. Cannot be defined when Rolling object is defined.\n"
+                },
+                "rolling": {
+                    "$ref": "#/types/spotinst:oceancd/StrategyRolling:StrategyRolling",
+                    "description": "Represents Rolling Update strategy. Cannot be defined when Canary object is defined.\n"
+                },
+                "strategyName": {
+                    "type": "string"
+                }
+            },
+            "requiredInputs": [
+                "strategyName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Strategy resources.\n",
+                "properties": {
+                    "canary": {
+                        "$ref": "#/types/spotinst:oceancd/StrategyCanary:StrategyCanary",
+                        "description": "Represents Canary strategy. Cannot be defined when Rolling object is defined.\n"
+                    },
+                    "rolling": {
+                        "$ref": "#/types/spotinst:oceancd/StrategyRolling:StrategyRolling",
+                        "description": "Represents Rolling Update strategy. Cannot be defined when Canary object is defined.\n"
+                    },
+                    "strategyName": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "spotinst:oceancd/verificationProvider:VerificationProvider": {
+            "description": "Manages a Spotinst OceanCD Verfification Provider resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\nconst example = new spotinst.oceancd.VerificationProvider(\"example\", {\n    name: \"test-verification-provider\",\n    clusterIds: [\n        \"Example-Cluster-Id-1\",\n        \"Example-Cluster-Id-2\",\n        \"Example-Cluster-Id-3\",\n    ],\n    datadog: {\n        address: \"1024\",\n        apiKey: \"512\",\n        appKey: \"0\",\n    },\n    cloudWatch: {\n        iamArn: \"arn:aws:iam::123456789012:role/GetMetricData\",\n    },\n    prometheus: {\n        address: \"http://localhost:9090\",\n    },\n    newRelic: {\n        personalApiKey: \"AUO32RN20oUMD-40283\",\n        accountId: \"account-0189718\",\n        region: \"eu\",\n        baseUrlRest: \"https://rest.api.newrelic.eu\",\n        baseUrlNerdGraph: \"https://nerdgraph.api.newrelic.eu\",\n    },\n    jenkins: {\n        baseUrl: \"http://localhost:9090\",\n        username: \"test-user\",\n        apiToken: \"AbCDeeFFGG\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\nexample = spotinst.oceancd.VerificationProvider(\"example\",\n    name=\"test-verification-provider\",\n    cluster_ids=[\n        \"Example-Cluster-Id-1\",\n        \"Example-Cluster-Id-2\",\n        \"Example-Cluster-Id-3\",\n    ],\n    datadog=spotinst.oceancd.VerificationProviderDatadogArgs(\n        address=\"1024\",\n        api_key=\"512\",\n        app_key=\"0\",\n    ),\n    cloud_watch=spotinst.oceancd.VerificationProviderCloudWatchArgs(\n        iam_arn=\"arn:aws:iam::123456789012:role/GetMetricData\",\n    ),\n    prometheus=spotinst.oceancd.VerificationProviderPrometheusArgs(\n        address=\"http://localhost:9090\",\n    ),\n    new_relic=spotinst.oceancd.VerificationProviderNewRelicArgs(\n        personal_api_key=\"AUO32RN20oUMD-40283\",\n        account_id=\"account-0189718\",\n        region=\"eu\",\n        base_url_rest=\"https://rest.api.newrelic.eu\",\n        base_url_nerd_graph=\"https://nerdgraph.api.newrelic.eu\",\n    ),\n    jenkins=spotinst.oceancd.VerificationProviderJenkinsArgs(\n        base_url=\"http://localhost:9090\",\n        username=\"test-user\",\n        api_token=\"AbCDeeFFGG\",\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SpotInst = Pulumi.SpotInst;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new SpotInst.Oceancd.VerificationProvider(\"example\", new()\n    {\n        Name = \"test-verification-provider\",\n        ClusterIds = new[]\n        {\n            \"Example-Cluster-Id-1\",\n            \"Example-Cluster-Id-2\",\n            \"Example-Cluster-Id-3\",\n        },\n        Datadog = new SpotInst.Oceancd.Inputs.VerificationProviderDatadogArgs\n        {\n            Address = \"1024\",\n            ApiKey = \"512\",\n            AppKey = \"0\",\n        },\n        CloudWatch = new SpotInst.Oceancd.Inputs.VerificationProviderCloudWatchArgs\n        {\n            IamArn = \"arn:aws:iam::123456789012:role/GetMetricData\",\n        },\n        Prometheus = new SpotInst.Oceancd.Inputs.VerificationProviderPrometheusArgs\n        {\n            Address = \"http://localhost:9090\",\n        },\n        NewRelic = new SpotInst.Oceancd.Inputs.VerificationProviderNewRelicArgs\n        {\n            PersonalApiKey = \"AUO32RN20oUMD-40283\",\n            AccountId = \"account-0189718\",\n            Region = \"eu\",\n            BaseUrlRest = \"https://rest.api.newrelic.eu\",\n            BaseUrlNerdGraph = \"https://nerdgraph.api.newrelic.eu\",\n        },\n        Jenkins = new SpotInst.Oceancd.Inputs.VerificationProviderJenkinsArgs\n        {\n            BaseUrl = \"http://localhost:9090\",\n            Username = \"test-user\",\n            ApiToken = \"AbCDeeFFGG\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/oceancd\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := oceancd.NewVerificationProvider(ctx, \"example\", \u0026oceancd.VerificationProviderArgs{\n\t\t\tName: pulumi.String(\"test-verification-provider\"),\n\t\t\tClusterIds: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"Example-Cluster-Id-1\"),\n\t\t\t\tpulumi.String(\"Example-Cluster-Id-2\"),\n\t\t\t\tpulumi.String(\"Example-Cluster-Id-3\"),\n\t\t\t},\n\t\t\tDatadog: \u0026oceancd.VerificationProviderDatadogArgs{\n\t\t\t\tAddress: pulumi.String(\"1024\"),\n\t\t\t\tApiKey:  pulumi.String(\"512\"),\n\t\t\t\tAppKey:  pulumi.String(\"0\"),\n\t\t\t},\n\t\t\tCloudWatch: \u0026oceancd.VerificationProviderCloudWatchArgs{\n\t\t\t\tIamArn: pulumi.String(\"arn:aws:iam::123456789012:role/GetMetricData\"),\n\t\t\t},\n\t\t\tPrometheus: \u0026oceancd.VerificationProviderPrometheusArgs{\n\t\t\t\tAddress: pulumi.String(\"http://localhost:9090\"),\n\t\t\t},\n\t\t\tNewRelic: \u0026oceancd.VerificationProviderNewRelicArgs{\n\t\t\t\tPersonalApiKey:   pulumi.String(\"AUO32RN20oUMD-40283\"),\n\t\t\t\tAccountId:        pulumi.String(\"account-0189718\"),\n\t\t\t\tRegion:           pulumi.String(\"eu\"),\n\t\t\t\tBaseUrlRest:      pulumi.String(\"https://rest.api.newrelic.eu\"),\n\t\t\t\tBaseUrlNerdGraph: pulumi.String(\"https://nerdgraph.api.newrelic.eu\"),\n\t\t\t},\n\t\t\tJenkins: \u0026oceancd.VerificationProviderJenkinsArgs{\n\t\t\t\tBaseUrl:  pulumi.String(\"http://localhost:9090\"),\n\t\t\t\tUsername: pulumi.String(\"test-user\"),\n\t\t\t\tApiToken: pulumi.String(\"AbCDeeFFGG\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.spotinst.oceancd.VerificationProvider;\nimport com.pulumi.spotinst.oceancd.VerificationProviderArgs;\nimport com.pulumi.spotinst.oceancd.inputs.VerificationProviderDatadogArgs;\nimport com.pulumi.spotinst.oceancd.inputs.VerificationProviderCloudWatchArgs;\nimport com.pulumi.spotinst.oceancd.inputs.VerificationProviderPrometheusArgs;\nimport com.pulumi.spotinst.oceancd.inputs.VerificationProviderNewRelicArgs;\nimport com.pulumi.spotinst.oceancd.inputs.VerificationProviderJenkinsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new VerificationProvider(\"example\", VerificationProviderArgs.builder()        \n            .name(\"test-verification-provider\")\n            .clusterIds(            \n                \"Example-Cluster-Id-1\",\n                \"Example-Cluster-Id-2\",\n                \"Example-Cluster-Id-3\")\n            .datadog(VerificationProviderDatadogArgs.builder()\n                .address(1024)\n                .apiKey(512)\n                .appKey(0)\n                .build())\n            .cloudWatch(VerificationProviderCloudWatchArgs.builder()\n                .iamArn(\"arn:aws:iam::123456789012:role/GetMetricData\")\n                .build())\n            .prometheus(VerificationProviderPrometheusArgs.builder()\n                .address(\"http://localhost:9090\")\n                .build())\n            .newRelic(VerificationProviderNewRelicArgs.builder()\n                .personalApiKey(\"AUO32RN20oUMD-40283\")\n                .accountId(\"account-0189718\")\n                .region(\"eu\")\n                .baseUrlRest(\"https://rest.api.newrelic.eu\")\n                .baseUrlNerdGraph(\"https://nerdgraph.api.newrelic.eu\")\n                .build())\n            .jenkins(VerificationProviderJenkinsArgs.builder()\n                .baseUrl(\"http://localhost:9090\")\n                .username(\"test-user\")\n                .apiToken(\"AbCDeeFFGG\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: spotinst:oceancd:VerificationProvider\n    properties:\n      name: test-verification-provider\n      clusterIds:\n        - Example-Cluster-Id-1\n        - Example-Cluster-Id-2\n        - Example-Cluster-Id-3\n      datadog:\n        address: 1024\n        apiKey: 512\n        appKey: 0\n      cloudWatch:\n        iamArn: arn:aws:iam::123456789012:role/GetMetricData\n      prometheus:\n        address: http://localhost:9090\n      newRelic:\n        personalApiKey: AUO32RN20oUMD-40283\n        accountId: account-0189718\n        region: eu\n        baseUrlRest: https://rest.api.newrelic.eu\n        baseUrlNerdGraph: https://nerdgraph.api.newrelic.eu\n      jenkins:\n        baseUrl: http://localhost:9090\n        username: test-user\n        apiToken: AbCDeeFFGG\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n```\noutput \"name\" {\n  value = spotinst_oceancd_verification_provider.example.name\n}\n```\n",
+            "properties": {
+                "cloudWatch": {
+                    "$ref": "#/types/spotinst:oceancd/VerificationProviderCloudWatch:VerificationProviderCloudWatch",
+                    "description": "Specify the credentials for CloudWatch verification provider.\n"
+                },
+                "clusterIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of cluster IDs that this Verification Provider will be applied to.\n"
+                },
+                "datadog": {
+                    "$ref": "#/types/spotinst:oceancd/VerificationProviderDatadog:VerificationProviderDatadog",
+                    "description": "Specify the credentials for datadog verification provider.\n"
+                },
+                "jenkins": {
+                    "$ref": "#/types/spotinst:oceancd/VerificationProviderJenkins:VerificationProviderJenkins",
+                    "description": "Specify the credentials for Jenkins verification provider.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Identifier name for Ocean CD Verification Provider. Must be unique.\n"
+                },
+                "newRelic": {
+                    "$ref": "#/types/spotinst:oceancd/VerificationProviderNewRelic:VerificationProviderNewRelic",
+                    "description": "Specify the credentials for New Relic verification provider.\n"
+                },
+                "prometheus": {
+                    "$ref": "#/types/spotinst:oceancd/VerificationProviderPrometheus:VerificationProviderPrometheus",
+                    "description": "Specify the credentials for prometheus verification provider.\n"
+                }
+            },
+            "required": [
+                "clusterIds",
+                "name"
+            ],
+            "inputProperties": {
+                "cloudWatch": {
+                    "$ref": "#/types/spotinst:oceancd/VerificationProviderCloudWatch:VerificationProviderCloudWatch",
+                    "description": "Specify the credentials for CloudWatch verification provider.\n"
+                },
+                "clusterIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of cluster IDs that this Verification Provider will be applied to.\n"
+                },
+                "datadog": {
+                    "$ref": "#/types/spotinst:oceancd/VerificationProviderDatadog:VerificationProviderDatadog",
+                    "description": "Specify the credentials for datadog verification provider.\n"
+                },
+                "jenkins": {
+                    "$ref": "#/types/spotinst:oceancd/VerificationProviderJenkins:VerificationProviderJenkins",
+                    "description": "Specify the credentials for Jenkins verification provider.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Identifier name for Ocean CD Verification Provider. Must be unique.\n"
+                },
+                "newRelic": {
+                    "$ref": "#/types/spotinst:oceancd/VerificationProviderNewRelic:VerificationProviderNewRelic",
+                    "description": "Specify the credentials for New Relic verification provider.\n"
+                },
+                "prometheus": {
+                    "$ref": "#/types/spotinst:oceancd/VerificationProviderPrometheus:VerificationProviderPrometheus",
+                    "description": "Specify the credentials for prometheus verification provider.\n"
+                }
+            },
+            "requiredInputs": [
+                "clusterIds"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering VerificationProvider resources.\n",
+                "properties": {
+                    "cloudWatch": {
+                        "$ref": "#/types/spotinst:oceancd/VerificationProviderCloudWatch:VerificationProviderCloudWatch",
+                        "description": "Specify the credentials for CloudWatch verification provider.\n"
+                    },
+                    "clusterIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of cluster IDs that this Verification Provider will be applied to.\n"
+                    },
+                    "datadog": {
+                        "$ref": "#/types/spotinst:oceancd/VerificationProviderDatadog:VerificationProviderDatadog",
+                        "description": "Specify the credentials for datadog verification provider.\n"
+                    },
+                    "jenkins": {
+                        "$ref": "#/types/spotinst:oceancd/VerificationProviderJenkins:VerificationProviderJenkins",
+                        "description": "Specify the credentials for Jenkins verification provider.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Identifier name for Ocean CD Verification Provider. Must be unique.\n"
+                    },
+                    "newRelic": {
+                        "$ref": "#/types/spotinst:oceancd/VerificationProviderNewRelic:VerificationProviderNewRelic",
+                        "description": "Specify the credentials for New Relic verification provider.\n"
+                    },
+                    "prometheus": {
+                        "$ref": "#/types/spotinst:oceancd/VerificationProviderPrometheus:VerificationProviderPrometheus",
+                        "description": "Specify the credentials for prometheus verification provider.\n"
                     }
                 },
                 "type": "object"

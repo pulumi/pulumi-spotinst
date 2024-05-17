@@ -1975,6 +1975,118 @@
             "spotinst_ocean_spark_virtual_node_group": {
                 "current": "spotinst:spark/oceanVirtualNodeGroup:OceanVirtualNodeGroup"
             },
+            "spotinst_oceancd_strategy": {
+                "current": "spotinst:oceancd/strategy:Strategy",
+                "fields": {
+                    "canary": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "background_verification": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "template_names": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "steps": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "pause": {
+                                                "maxItemsOne": true
+                                            },
+                                            "set_canary_scale": {
+                                                "maxItemsOne": true
+                                            },
+                                            "set_header_route": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "match": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "header_value": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "verification": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "template_names": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "rolling": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "steps": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "pause": {
+                                                "maxItemsOne": true
+                                            },
+                                            "verification": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "template_names": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "spotinst_oceancd_verification_provider": {
+                "current": "spotinst:oceancd/verificationProvider:VerificationProvider",
+                "fields": {
+                    "cloud_watch": {
+                        "maxItemsOne": true
+                    },
+                    "cluster_ids": {
+                        "maxItemsOne": false
+                    },
+                    "datadog": {
+                        "maxItemsOne": true
+                    },
+                    "jenkins": {
+                        "maxItemsOne": true
+                    },
+                    "new_relic": {
+                        "maxItemsOne": true
+                    },
+                    "prometheus": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "spotinst_organization_policy": {
                 "current": "spotinst:organization/policy:Policy",
                 "fields": {
