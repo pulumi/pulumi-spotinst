@@ -28,6 +28,8 @@ if typing.TYPE_CHECKING:
     gcp = __gcp
     import pulumi_spotinst.gke as __gke
     gke = __gke
+    import pulumi_spotinst.oceancd as __oceancd
+    oceancd = __oceancd
     import pulumi_spotinst.organization as __organization
     organization = __organization
     import pulumi_spotinst.spark as __spark
@@ -39,6 +41,7 @@ else:
     ecs = _utilities.lazy_import('pulumi_spotinst.ecs')
     gcp = _utilities.lazy_import('pulumi_spotinst.gcp')
     gke = _utilities.lazy_import('pulumi_spotinst.gke')
+    oceancd = _utilities.lazy_import('pulumi_spotinst.oceancd')
     organization = _utilities.lazy_import('pulumi_spotinst.organization')
     spark = _utilities.lazy_import('pulumi_spotinst.spark')
 
@@ -251,6 +254,22 @@ _utilities.register(
   "fqn": "pulumi_spotinst",
   "classes": {
    "spotinst:index/subscription:Subscription": "Subscription"
+  }
+ },
+ {
+  "pkg": "spotinst",
+  "mod": "oceancd/strategy",
+  "fqn": "pulumi_spotinst.oceancd",
+  "classes": {
+   "spotinst:oceancd/strategy:Strategy": "Strategy"
+  }
+ },
+ {
+  "pkg": "spotinst",
+  "mod": "oceancd/verificationProvider",
+  "fqn": "pulumi_spotinst.oceancd",
+  "classes": {
+   "spotinst:oceancd/verificationProvider:VerificationProvider": "VerificationProvider"
   }
  },
  {

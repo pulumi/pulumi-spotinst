@@ -43,6 +43,7 @@ import * as config from "./config";
 import * as ecs from "./ecs";
 import * as gcp from "./gcp";
 import * as gke from "./gke";
+import * as oceancd from "./oceancd";
 import * as organization from "./organization";
 import * as spark from "./spark";
 import * as types from "./types";
@@ -54,6 +55,7 @@ export {
     ecs,
     gcp,
     gke,
+    oceancd,
     organization,
     spark,
     types,

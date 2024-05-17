@@ -3569,6 +3569,147 @@ export namespace gke {
     }
 }
 
+export namespace oceancd {
+    export interface StrategyCanary {
+        /**
+         * A list of background verifications.
+         */
+        backgroundVerification?: pulumi.Input<inputs.oceancd.StrategyCanaryBackgroundVerification>;
+        /**
+         * A set of separate conditions of rollout processing.
+         */
+        steps: pulumi.Input<pulumi.Input<inputs.oceancd.StrategyCanaryStep>[]>;
+    }
+
+    export interface StrategyCanaryBackgroundVerification {
+        templateNames: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface StrategyCanaryStep {
+        pause?: pulumi.Input<inputs.oceancd.StrategyCanaryStepPause>;
+        setCanaryScale?: pulumi.Input<inputs.oceancd.StrategyCanaryStepSetCanaryScale>;
+        setHeaderRoute?: pulumi.Input<inputs.oceancd.StrategyCanaryStepSetHeaderRoute>;
+        setWeight?: pulumi.Input<number>;
+        stepName?: pulumi.Input<string>;
+        verification?: pulumi.Input<inputs.oceancd.StrategyCanaryStepVerification>;
+    }
+
+    export interface StrategyCanaryStepPause {
+        duration?: pulumi.Input<string>;
+    }
+
+    export interface StrategyCanaryStepSetCanaryScale {
+        matchTrafficWeight?: pulumi.Input<boolean>;
+        replicas?: pulumi.Input<number>;
+        weight?: pulumi.Input<number>;
+    }
+
+    export interface StrategyCanaryStepSetHeaderRoute {
+        headerRouteName: pulumi.Input<string>;
+        matches: pulumi.Input<pulumi.Input<inputs.oceancd.StrategyCanaryStepSetHeaderRouteMatch>[]>;
+    }
+
+    export interface StrategyCanaryStepSetHeaderRouteMatch {
+        headerName: pulumi.Input<string>;
+        headerValue: pulumi.Input<inputs.oceancd.StrategyCanaryStepSetHeaderRouteMatchHeaderValue>;
+    }
+
+    export interface StrategyCanaryStepSetHeaderRouteMatchHeaderValue {
+        exact?: pulumi.Input<string>;
+        prefix?: pulumi.Input<string>;
+        regex?: pulumi.Input<string>;
+    }
+
+    export interface StrategyCanaryStepVerification {
+        templateNames: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface StrategyRolling {
+        /**
+         * A set of separate conditions of rollout processing.
+         */
+        steps: pulumi.Input<pulumi.Input<inputs.oceancd.StrategyRollingStep>[]>;
+    }
+
+    export interface StrategyRollingStep {
+        pause?: pulumi.Input<inputs.oceancd.StrategyRollingStepPause>;
+        stepsName?: pulumi.Input<string>;
+        verification?: pulumi.Input<inputs.oceancd.StrategyRollingStepVerification>;
+    }
+
+    export interface StrategyRollingStepPause {
+        duration?: pulumi.Input<string>;
+    }
+
+    export interface StrategyRollingStepVerification {
+        templateNames: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface VerificationProviderCloudWatch {
+        /**
+         * Set label key.
+         */
+        iamArn: pulumi.Input<string>;
+    }
+
+    export interface VerificationProviderDatadog {
+        /**
+         * DataDog API URL.
+         */
+        address: pulumi.Input<string>;
+        /**
+         * API key required by the Datadog Agent to submit metrics and events to Datadog.
+         */
+        apiKey: pulumi.Input<string>;
+        /**
+         * API key that gives users access to Datadog’s programmatic API.
+         */
+        appKey: pulumi.Input<string>;
+    }
+
+    export interface VerificationProviderJenkins {
+        /**
+         * The Jenkins server’s access apiToken.
+         */
+        apiToken: pulumi.Input<string>;
+        /**
+         * The address of the Jenkins server within the cluster.
+         */
+        baseUrl: pulumi.Input<string>;
+        /**
+         * The Jenkins server’s access username.
+         */
+        username: pulumi.Input<string>;
+    }
+
+    export interface VerificationProviderNewRelic {
+        accountId: pulumi.Input<string>;
+        /**
+         * The base URL for NerdGraph for a proxy.
+         */
+        baseUrlNerdGraph?: pulumi.Input<string>;
+        /**
+         * The base URL of the New Relic REST API for a proxy.
+         */
+        baseUrlRest?: pulumi.Input<string>;
+        /**
+         * The NewRelic user key
+         */
+        personalApiKey: pulumi.Input<string>;
+        /**
+         * A region which the account is attached to. Default is "us".
+         */
+        region?: pulumi.Input<string>;
+    }
+
+    export interface VerificationProviderPrometheus {
+        /**
+         * The address which the Prometheus server available on.
+         */
+        address: pulumi.Input<string>;
+    }
+}
+
 export namespace organization {
     export interface PolicyPolicyContent {
         /**
