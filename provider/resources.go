@@ -38,13 +38,14 @@ const (
 	// packages:
 	mainPkg = "spotinst"
 	// modules:
-	awsMod   = "Aws"
-	ecsMod   = "Ecs"
-	gcpMod   = "Gcp"
-	gkeMod   = "Gke"
-	azureMod = "Azure"
-	mainMod  = "Index"
-	sparkMod = "Spark"
+	awsMod     = "Aws"
+	ecsMod     = "Ecs"
+	gcpMod     = "Gcp"
+	gkeMod     = "Gke"
+	azureMod   = "Azure"
+	mainMod    = "Index"
+	sparkMod   = "Spark"
+	oceancdMod = "Oceancd"
 )
 
 var namespaceMap = map[string]string{
@@ -182,6 +183,7 @@ func Provider() tfbridge.ProviderInfo {
 	prov.MustComputeTokens(tks.KnownModules("spotinst_", "", []string{
 		"organization",
 		"multai",
+		"oceancd",
 	}, tks.MakeStandard(mainPkg)))
 	prov.MustApplyAutoAliases()
 

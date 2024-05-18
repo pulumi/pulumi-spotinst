@@ -3575,6 +3575,148 @@ export namespace gke {
 
 }
 
+export namespace oceancd {
+    export interface StrategyCanary {
+        /**
+         * A list of background verifications.
+         */
+        backgroundVerification?: outputs.oceancd.StrategyCanaryBackgroundVerification;
+        /**
+         * A set of separate conditions of rollout processing.
+         */
+        steps: outputs.oceancd.StrategyCanaryStep[];
+    }
+
+    export interface StrategyCanaryBackgroundVerification {
+        templateNames: string[];
+    }
+
+    export interface StrategyCanaryStep {
+        pause?: outputs.oceancd.StrategyCanaryStepPause;
+        setCanaryScale?: outputs.oceancd.StrategyCanaryStepSetCanaryScale;
+        setHeaderRoute?: outputs.oceancd.StrategyCanaryStepSetHeaderRoute;
+        setWeight?: number;
+        stepName?: string;
+        verification?: outputs.oceancd.StrategyCanaryStepVerification;
+    }
+
+    export interface StrategyCanaryStepPause {
+        duration?: string;
+    }
+
+    export interface StrategyCanaryStepSetCanaryScale {
+        matchTrafficWeight?: boolean;
+        replicas?: number;
+        weight?: number;
+    }
+
+    export interface StrategyCanaryStepSetHeaderRoute {
+        headerRouteName: string;
+        matches: outputs.oceancd.StrategyCanaryStepSetHeaderRouteMatch[];
+    }
+
+    export interface StrategyCanaryStepSetHeaderRouteMatch {
+        headerName: string;
+        headerValue: outputs.oceancd.StrategyCanaryStepSetHeaderRouteMatchHeaderValue;
+    }
+
+    export interface StrategyCanaryStepSetHeaderRouteMatchHeaderValue {
+        exact?: string;
+        prefix?: string;
+        regex?: string;
+    }
+
+    export interface StrategyCanaryStepVerification {
+        templateNames: string[];
+    }
+
+    export interface StrategyRolling {
+        /**
+         * A set of separate conditions of rollout processing.
+         */
+        steps: outputs.oceancd.StrategyRollingStep[];
+    }
+
+    export interface StrategyRollingStep {
+        pause?: outputs.oceancd.StrategyRollingStepPause;
+        stepsName?: string;
+        verification?: outputs.oceancd.StrategyRollingStepVerification;
+    }
+
+    export interface StrategyRollingStepPause {
+        duration?: string;
+    }
+
+    export interface StrategyRollingStepVerification {
+        templateNames: string[];
+    }
+
+    export interface VerificationProviderCloudWatch {
+        /**
+         * Set label key.
+         */
+        iamArn: string;
+    }
+
+    export interface VerificationProviderDatadog {
+        /**
+         * DataDog API URL.
+         */
+        address: string;
+        /**
+         * API key required by the Datadog Agent to submit metrics and events to Datadog.
+         */
+        apiKey: string;
+        /**
+         * API key that gives users access to Datadog’s programmatic API.
+         */
+        appKey: string;
+    }
+
+    export interface VerificationProviderJenkins {
+        /**
+         * The Jenkins server’s access apiToken.
+         */
+        apiToken: string;
+        /**
+         * The address of the Jenkins server within the cluster.
+         */
+        baseUrl: string;
+        /**
+         * The Jenkins server’s access username.
+         */
+        username: string;
+    }
+
+    export interface VerificationProviderNewRelic {
+        accountId: string;
+        /**
+         * The base URL for NerdGraph for a proxy.
+         */
+        baseUrlNerdGraph?: string;
+        /**
+         * The base URL of the New Relic REST API for a proxy.
+         */
+        baseUrlRest?: string;
+        /**
+         * The NewRelic user key
+         */
+        personalApiKey: string;
+        /**
+         * A region which the account is attached to. Default is "us".
+         */
+        region?: string;
+    }
+
+    export interface VerificationProviderPrometheus {
+        /**
+         * The address which the Prometheus server available on.
+         */
+        address: string;
+    }
+
+}
+
 export namespace organization {
     export interface PolicyPolicyContent {
         /**
