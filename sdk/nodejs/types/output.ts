@@ -3576,6 +3576,148 @@ export namespace gke {
 }
 
 export namespace oceancd {
+    export interface RolloutSpecFailurePolicy {
+        /**
+         * Choose an action to perform on failure. Default is `abort`.  Enum: "abort" "pause" "promote".
+         */
+        action: string;
+    }
+
+    export interface RolloutSpecSpotDeployment {
+        /**
+         * Ocean CD cluster identifier for the references `SpotDeployment`.
+         */
+        spotDeploymentsClusterId?: string;
+        /**
+         * The name of the `SpotDeployment` resource
+         */
+        spotDeploymentsName?: string;
+        /**
+         * The namespace which the `SpotDeployment` resource exists within.
+         */
+        spotDeploymentsNamespace?: string;
+    }
+
+    export interface RolloutSpecStrategy {
+        /**
+         * Arguments defined in Verification Templates.
+         */
+        args?: outputs.oceancd.RolloutSpecStrategyArg[];
+        /**
+         * Ocean CD strategy name identifier.
+         */
+        strategyName: string;
+    }
+
+    export interface RolloutSpecStrategyArg {
+        argName: string;
+        argValue?: string;
+        valueFrom?: outputs.oceancd.RolloutSpecStrategyArgValueFrom;
+    }
+
+    export interface RolloutSpecStrategyArgValueFrom {
+        fieldRef: outputs.oceancd.RolloutSpecStrategyArgValueFromFieldRef;
+    }
+
+    export interface RolloutSpecStrategyArgValueFromFieldRef {
+        fieldPath: string;
+    }
+
+    export interface RolloutSpecTraffic {
+        /**
+         * Holds ALB Ingress specific configuration to route traffic.
+         */
+        alb?: outputs.oceancd.RolloutSpecTrafficAlb;
+        /**
+         * Holds specific configuration to use Ambassador to route traffic.
+         */
+        ambassador?: outputs.oceancd.RolloutSpecTrafficAmbassador;
+        /**
+         * The canary service name.
+         */
+        canaryService?: string;
+        /**
+         * Holds Istio specific configuration to route traffic.
+         */
+        istio?: outputs.oceancd.RolloutSpecTrafficIstio;
+        /**
+         * Holds Nginx Ingress specific configuration to route traffic.
+         */
+        nginx?: outputs.oceancd.RolloutSpecTrafficNginx;
+        /**
+         * Holds the ping and pong services. You can use `pingPong` field only when using ALB as a traffic manager with the IP Mode approach.
+         */
+        pingPong?: outputs.oceancd.RolloutSpecTrafficPingPong;
+        /**
+         * Holds TrafficSplit specific configuration to route traffic.
+         */
+        smi?: outputs.oceancd.RolloutSpecTrafficSmi;
+        /**
+         * The stable service name.
+         */
+        stableService?: string;
+    }
+
+    export interface RolloutSpecTrafficAlb {
+        albAnnotationPrefix?: string;
+        albIngress: string;
+        albRootService: string;
+        servicePort: number;
+        stickinessConfig?: outputs.oceancd.RolloutSpecTrafficAlbStickinessConfig;
+    }
+
+    export interface RolloutSpecTrafficAlbStickinessConfig {
+        durationSeconds?: number;
+        enabled?: boolean;
+    }
+
+    export interface RolloutSpecTrafficAmbassador {
+        mappings: string[];
+    }
+
+    export interface RolloutSpecTrafficIstio {
+        destinationRule?: outputs.oceancd.RolloutSpecTrafficIstioDestinationRule;
+        virtualServices: outputs.oceancd.RolloutSpecTrafficIstioVirtualService[];
+    }
+
+    export interface RolloutSpecTrafficIstioDestinationRule {
+        canarySubsetName: string;
+        destinationRuleName: string;
+        stableSubsetName: string;
+    }
+
+    export interface RolloutSpecTrafficIstioVirtualService {
+        tlsRoutes?: outputs.oceancd.RolloutSpecTrafficIstioVirtualServiceTlsRoute[];
+        virtualServiceName: string;
+        virtualServiceRoutes?: string[];
+    }
+
+    export interface RolloutSpecTrafficIstioVirtualServiceTlsRoute {
+        port?: number;
+        sniHosts?: string[];
+    }
+
+    export interface RolloutSpecTrafficNginx {
+        additionalIngressAnnotation?: outputs.oceancd.RolloutSpecTrafficNginxAdditionalIngressAnnotation;
+        nginxAnnotationPrefix?: string;
+        stableIngress: string;
+    }
+
+    export interface RolloutSpecTrafficNginxAdditionalIngressAnnotation {
+        canaryByHeader?: string;
+        key1?: string;
+    }
+
+    export interface RolloutSpecTrafficPingPong {
+        pingService: string;
+        pongService: string;
+    }
+
+    export interface RolloutSpecTrafficSmi {
+        smiRootService?: string;
+        trafficSplitName?: string;
+    }
+
     export interface StrategyCanary {
         /**
          * A list of background verifications.
@@ -3713,6 +3855,215 @@ export namespace oceancd {
          * The address which the Prometheus server available on.
          */
         address: string;
+    }
+
+    export interface VerificationTemplateArg {
+        /**
+         * Name of an argument.
+         */
+        argName: string;
+        /**
+         * String representation of data.
+         */
+        value?: string;
+        /**
+         * ValueFrom object.
+         */
+        valueFrom?: outputs.oceancd.VerificationTemplateArgValueFrom;
+    }
+
+    export interface VerificationTemplateArgValueFrom {
+        secretKeyRef?: outputs.oceancd.VerificationTemplateArgValueFromSecretKeyRef;
+    }
+
+    export interface VerificationTemplateArgValueFromSecretKeyRef {
+        key: string;
+        /**
+         * Identifier name for Ocean CD Verification Template. Must be unique.
+         */
+        name: string;
+    }
+
+    export interface VerificationTemplateMetric {
+        /**
+         * Baseline Object.
+         */
+        baseline?: outputs.oceancd.VerificationTemplateMetricBaseline;
+        /**
+         * The maximum number of times the measurement is allowed to error in succession, before the metric is considered error.Default is 4.When choosing `Jenkins` as the provider, there is no need to send this variable.
+         */
+        consecutiveErrorLimit?: number;
+        /**
+         * The number of times to run the measurement. If both interval and count are omitted, the effective count is 1. If only interval is specified, metric runs indefinitely. If count > 1, interval must be specified. When choosing `Jenkins` as the provider, there is no need to send this variable.
+         */
+        count?: number;
+        /**
+         * Defines whether the metric should have an impact on the result of the rollout.
+         */
+        dryRun?: boolean;
+        /**
+         * An expression which determines if a measurement is considered failed.If failureCondition is set, then successCondition is not allowed. When choosing Jenkins as the provider, there is no need to send this variable.
+         */
+        failureCondition?: string;
+        /**
+         * The maximum number of times the measurement is allowed to fail, before the entire metric is considered failed.Default is 0. When choosing `Jenkins` as the provider, there is no need to send this variable.
+         */
+        failureLimit?: number;
+        /**
+         * How long to wait before starting this metric measurements. When choosing Jenkins as the provider, there is no need to send this variable.
+         */
+        initialDelay?: string;
+        /**
+         * Defines an interval string (30s, 5m, 1h) between each verification measurements. If omitted, will perform a single measurement.When choosing Jenkins as the provider, there is no need to send this variable.
+         */
+        interval?: string;
+        /**
+         * The name of the verification metric.
+         */
+        metricsName: string;
+        /**
+         * The name of the monitoring tool chosen for the metric.
+         */
+        providers: outputs.oceancd.VerificationTemplateMetricProvider[];
+        /**
+         * An expression which determines if a measurement is considered successful. The keyword `result` is a variable reference to the value of measurement. Results can be both structured data or primitive. If successCondition is set, then failureCondition is not allowed. When choosing `Jenkins` as the provider, there is no need to send this variable.
+         */
+        successCondition?: string;
+    }
+
+    export interface VerificationTemplateMetricBaseline {
+        baselineProviders: outputs.oceancd.VerificationTemplateMetricBaselineBaselineProvider[];
+        maxRange?: number;
+        minRange?: number;
+        threshold: string;
+    }
+
+    export interface VerificationTemplateMetricBaselineBaselineProvider {
+        datadog?: outputs.oceancd.VerificationTemplateMetricBaselineBaselineProviderDatadog;
+        newRelic?: outputs.oceancd.VerificationTemplateMetricBaselineBaselineProviderNewRelic;
+        prometheus?: outputs.oceancd.VerificationTemplateMetricBaselineBaselineProviderPrometheus;
+    }
+
+    export interface VerificationTemplateMetricBaselineBaselineProviderDatadog {
+        datadogQuery: string;
+        duration?: string;
+    }
+
+    export interface VerificationTemplateMetricBaselineBaselineProviderNewRelic {
+        newRelicQuery: string;
+        profile?: string;
+    }
+
+    export interface VerificationTemplateMetricBaselineBaselineProviderPrometheus {
+        prometheusQuery: string;
+    }
+
+    export interface VerificationTemplateMetricProvider {
+        cloudWatch?: outputs.oceancd.VerificationTemplateMetricProviderCloudWatch;
+        datadog?: outputs.oceancd.VerificationTemplateMetricProviderDatadog;
+        jenkins?: outputs.oceancd.VerificationTemplateMetricProviderJenkins;
+        job?: outputs.oceancd.VerificationTemplateMetricProviderJob;
+        newRelic?: outputs.oceancd.VerificationTemplateMetricProviderNewRelic;
+        prometheus?: outputs.oceancd.VerificationTemplateMetricProviderPrometheus;
+        web?: outputs.oceancd.VerificationTemplateMetricProviderWeb;
+    }
+
+    export interface VerificationTemplateMetricProviderCloudWatch {
+        duration?: string;
+        metricDataQueries: outputs.oceancd.VerificationTemplateMetricProviderCloudWatchMetricDataQuery[];
+    }
+
+    export interface VerificationTemplateMetricProviderCloudWatchMetricDataQuery {
+        expression?: string;
+        id: string;
+        label?: string;
+        metricStat?: outputs.oceancd.VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat;
+        period?: number;
+        returnData?: boolean;
+    }
+
+    export interface VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat {
+        metric?: outputs.oceancd.VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric;
+        metricPeriod?: number;
+        stat?: string;
+        unit?: string;
+    }
+
+    export interface VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric {
+        dimensions?: outputs.oceancd.VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimension[];
+        metricName: string;
+        namespace?: string;
+    }
+
+    export interface VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimension {
+        dimensionName: string;
+        dimensionValue: string;
+    }
+
+    export interface VerificationTemplateMetricProviderDatadog {
+        datadogQuery?: string;
+        duration?: string;
+    }
+
+    export interface VerificationTemplateMetricProviderJenkins {
+        jenkinsInterval: string;
+        jenkinsParameters?: outputs.oceancd.VerificationTemplateMetricProviderJenkinsJenkinsParameters;
+        pipelineName: string;
+        timeout: string;
+        tlsVerification?: boolean;
+    }
+
+    export interface VerificationTemplateMetricProviderJenkinsJenkinsParameters {
+        parameterKey: string;
+        parameterValue: string;
+    }
+
+    export interface VerificationTemplateMetricProviderJob {
+        specs: outputs.oceancd.VerificationTemplateMetricProviderJobSpec[];
+    }
+
+    export interface VerificationTemplateMetricProviderJobSpec {
+        backoffLimit?: number;
+        jobTemplates: outputs.oceancd.VerificationTemplateMetricProviderJobSpecJobTemplate[];
+    }
+
+    export interface VerificationTemplateMetricProviderJobSpecJobTemplate {
+        templateSpecs: outputs.oceancd.VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpec[];
+    }
+
+    export interface VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpec {
+        containers: outputs.oceancd.VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainer[];
+        restartPolicy: string;
+    }
+
+    export interface VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainer {
+        commands: string[];
+        containerName: string;
+        image: string;
+    }
+
+    export interface VerificationTemplateMetricProviderNewRelic {
+        newRelicQuery: string;
+        profile?: string;
+    }
+
+    export interface VerificationTemplateMetricProviderPrometheus {
+        prometheusQuery: string;
+    }
+
+    export interface VerificationTemplateMetricProviderWeb {
+        body?: string;
+        insecure?: boolean;
+        jsonPath?: string;
+        method?: string;
+        timeoutSeconds?: number;
+        url: string;
+        webHeaders?: outputs.oceancd.VerificationTemplateMetricProviderWebWebHeader[];
+    }
+
+    export interface VerificationTemplateMetricProviderWebWebHeader {
+        webHeaderKey: string;
+        webHeaderValue: string;
     }
 
 }

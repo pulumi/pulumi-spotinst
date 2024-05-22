@@ -13,6 +13,2763 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type RolloutSpecFailurePolicy struct {
+	// Choose an action to perform on failure. Default is `abort`.  Enum: "abort" "pause" "promote".
+	Action string `pulumi:"action"`
+}
+
+// RolloutSpecFailurePolicyInput is an input type that accepts RolloutSpecFailurePolicyArgs and RolloutSpecFailurePolicyOutput values.
+// You can construct a concrete instance of `RolloutSpecFailurePolicyInput` via:
+//
+//	RolloutSpecFailurePolicyArgs{...}
+type RolloutSpecFailurePolicyInput interface {
+	pulumi.Input
+
+	ToRolloutSpecFailurePolicyOutput() RolloutSpecFailurePolicyOutput
+	ToRolloutSpecFailurePolicyOutputWithContext(context.Context) RolloutSpecFailurePolicyOutput
+}
+
+type RolloutSpecFailurePolicyArgs struct {
+	// Choose an action to perform on failure. Default is `abort`.  Enum: "abort" "pause" "promote".
+	Action pulumi.StringInput `pulumi:"action"`
+}
+
+func (RolloutSpecFailurePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSpecFailurePolicy)(nil)).Elem()
+}
+
+func (i RolloutSpecFailurePolicyArgs) ToRolloutSpecFailurePolicyOutput() RolloutSpecFailurePolicyOutput {
+	return i.ToRolloutSpecFailurePolicyOutputWithContext(context.Background())
+}
+
+func (i RolloutSpecFailurePolicyArgs) ToRolloutSpecFailurePolicyOutputWithContext(ctx context.Context) RolloutSpecFailurePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecFailurePolicyOutput)
+}
+
+func (i RolloutSpecFailurePolicyArgs) ToRolloutSpecFailurePolicyPtrOutput() RolloutSpecFailurePolicyPtrOutput {
+	return i.ToRolloutSpecFailurePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i RolloutSpecFailurePolicyArgs) ToRolloutSpecFailurePolicyPtrOutputWithContext(ctx context.Context) RolloutSpecFailurePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecFailurePolicyOutput).ToRolloutSpecFailurePolicyPtrOutputWithContext(ctx)
+}
+
+// RolloutSpecFailurePolicyPtrInput is an input type that accepts RolloutSpecFailurePolicyArgs, RolloutSpecFailurePolicyPtr and RolloutSpecFailurePolicyPtrOutput values.
+// You can construct a concrete instance of `RolloutSpecFailurePolicyPtrInput` via:
+//
+//	        RolloutSpecFailurePolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type RolloutSpecFailurePolicyPtrInput interface {
+	pulumi.Input
+
+	ToRolloutSpecFailurePolicyPtrOutput() RolloutSpecFailurePolicyPtrOutput
+	ToRolloutSpecFailurePolicyPtrOutputWithContext(context.Context) RolloutSpecFailurePolicyPtrOutput
+}
+
+type rolloutSpecFailurePolicyPtrType RolloutSpecFailurePolicyArgs
+
+func RolloutSpecFailurePolicyPtr(v *RolloutSpecFailurePolicyArgs) RolloutSpecFailurePolicyPtrInput {
+	return (*rolloutSpecFailurePolicyPtrType)(v)
+}
+
+func (*rolloutSpecFailurePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolloutSpecFailurePolicy)(nil)).Elem()
+}
+
+func (i *rolloutSpecFailurePolicyPtrType) ToRolloutSpecFailurePolicyPtrOutput() RolloutSpecFailurePolicyPtrOutput {
+	return i.ToRolloutSpecFailurePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *rolloutSpecFailurePolicyPtrType) ToRolloutSpecFailurePolicyPtrOutputWithContext(ctx context.Context) RolloutSpecFailurePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecFailurePolicyPtrOutput)
+}
+
+type RolloutSpecFailurePolicyOutput struct{ *pulumi.OutputState }
+
+func (RolloutSpecFailurePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSpecFailurePolicy)(nil)).Elem()
+}
+
+func (o RolloutSpecFailurePolicyOutput) ToRolloutSpecFailurePolicyOutput() RolloutSpecFailurePolicyOutput {
+	return o
+}
+
+func (o RolloutSpecFailurePolicyOutput) ToRolloutSpecFailurePolicyOutputWithContext(ctx context.Context) RolloutSpecFailurePolicyOutput {
+	return o
+}
+
+func (o RolloutSpecFailurePolicyOutput) ToRolloutSpecFailurePolicyPtrOutput() RolloutSpecFailurePolicyPtrOutput {
+	return o.ToRolloutSpecFailurePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o RolloutSpecFailurePolicyOutput) ToRolloutSpecFailurePolicyPtrOutputWithContext(ctx context.Context) RolloutSpecFailurePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RolloutSpecFailurePolicy) *RolloutSpecFailurePolicy {
+		return &v
+	}).(RolloutSpecFailurePolicyPtrOutput)
+}
+
+// Choose an action to perform on failure. Default is `abort`.  Enum: "abort" "pause" "promote".
+func (o RolloutSpecFailurePolicyOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v RolloutSpecFailurePolicy) string { return v.Action }).(pulumi.StringOutput)
+}
+
+type RolloutSpecFailurePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (RolloutSpecFailurePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolloutSpecFailurePolicy)(nil)).Elem()
+}
+
+func (o RolloutSpecFailurePolicyPtrOutput) ToRolloutSpecFailurePolicyPtrOutput() RolloutSpecFailurePolicyPtrOutput {
+	return o
+}
+
+func (o RolloutSpecFailurePolicyPtrOutput) ToRolloutSpecFailurePolicyPtrOutputWithContext(ctx context.Context) RolloutSpecFailurePolicyPtrOutput {
+	return o
+}
+
+func (o RolloutSpecFailurePolicyPtrOutput) Elem() RolloutSpecFailurePolicyOutput {
+	return o.ApplyT(func(v *RolloutSpecFailurePolicy) RolloutSpecFailurePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret RolloutSpecFailurePolicy
+		return ret
+	}).(RolloutSpecFailurePolicyOutput)
+}
+
+// Choose an action to perform on failure. Default is `abort`.  Enum: "abort" "pause" "promote".
+func (o RolloutSpecFailurePolicyPtrOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RolloutSpecFailurePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Action
+	}).(pulumi.StringPtrOutput)
+}
+
+type RolloutSpecSpotDeployment struct {
+	// Ocean CD cluster identifier for the references `SpotDeployment`.
+	SpotDeploymentsClusterId *string `pulumi:"spotDeploymentsClusterId"`
+	// The name of the `SpotDeployment` resource
+	SpotDeploymentsName *string `pulumi:"spotDeploymentsName"`
+	// The namespace which the `SpotDeployment` resource exists within.
+	SpotDeploymentsNamespace *string `pulumi:"spotDeploymentsNamespace"`
+}
+
+// RolloutSpecSpotDeploymentInput is an input type that accepts RolloutSpecSpotDeploymentArgs and RolloutSpecSpotDeploymentOutput values.
+// You can construct a concrete instance of `RolloutSpecSpotDeploymentInput` via:
+//
+//	RolloutSpecSpotDeploymentArgs{...}
+type RolloutSpecSpotDeploymentInput interface {
+	pulumi.Input
+
+	ToRolloutSpecSpotDeploymentOutput() RolloutSpecSpotDeploymentOutput
+	ToRolloutSpecSpotDeploymentOutputWithContext(context.Context) RolloutSpecSpotDeploymentOutput
+}
+
+type RolloutSpecSpotDeploymentArgs struct {
+	// Ocean CD cluster identifier for the references `SpotDeployment`.
+	SpotDeploymentsClusterId pulumi.StringPtrInput `pulumi:"spotDeploymentsClusterId"`
+	// The name of the `SpotDeployment` resource
+	SpotDeploymentsName pulumi.StringPtrInput `pulumi:"spotDeploymentsName"`
+	// The namespace which the `SpotDeployment` resource exists within.
+	SpotDeploymentsNamespace pulumi.StringPtrInput `pulumi:"spotDeploymentsNamespace"`
+}
+
+func (RolloutSpecSpotDeploymentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSpecSpotDeployment)(nil)).Elem()
+}
+
+func (i RolloutSpecSpotDeploymentArgs) ToRolloutSpecSpotDeploymentOutput() RolloutSpecSpotDeploymentOutput {
+	return i.ToRolloutSpecSpotDeploymentOutputWithContext(context.Background())
+}
+
+func (i RolloutSpecSpotDeploymentArgs) ToRolloutSpecSpotDeploymentOutputWithContext(ctx context.Context) RolloutSpecSpotDeploymentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecSpotDeploymentOutput)
+}
+
+func (i RolloutSpecSpotDeploymentArgs) ToRolloutSpecSpotDeploymentPtrOutput() RolloutSpecSpotDeploymentPtrOutput {
+	return i.ToRolloutSpecSpotDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i RolloutSpecSpotDeploymentArgs) ToRolloutSpecSpotDeploymentPtrOutputWithContext(ctx context.Context) RolloutSpecSpotDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecSpotDeploymentOutput).ToRolloutSpecSpotDeploymentPtrOutputWithContext(ctx)
+}
+
+// RolloutSpecSpotDeploymentPtrInput is an input type that accepts RolloutSpecSpotDeploymentArgs, RolloutSpecSpotDeploymentPtr and RolloutSpecSpotDeploymentPtrOutput values.
+// You can construct a concrete instance of `RolloutSpecSpotDeploymentPtrInput` via:
+//
+//	        RolloutSpecSpotDeploymentArgs{...}
+//
+//	or:
+//
+//	        nil
+type RolloutSpecSpotDeploymentPtrInput interface {
+	pulumi.Input
+
+	ToRolloutSpecSpotDeploymentPtrOutput() RolloutSpecSpotDeploymentPtrOutput
+	ToRolloutSpecSpotDeploymentPtrOutputWithContext(context.Context) RolloutSpecSpotDeploymentPtrOutput
+}
+
+type rolloutSpecSpotDeploymentPtrType RolloutSpecSpotDeploymentArgs
+
+func RolloutSpecSpotDeploymentPtr(v *RolloutSpecSpotDeploymentArgs) RolloutSpecSpotDeploymentPtrInput {
+	return (*rolloutSpecSpotDeploymentPtrType)(v)
+}
+
+func (*rolloutSpecSpotDeploymentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolloutSpecSpotDeployment)(nil)).Elem()
+}
+
+func (i *rolloutSpecSpotDeploymentPtrType) ToRolloutSpecSpotDeploymentPtrOutput() RolloutSpecSpotDeploymentPtrOutput {
+	return i.ToRolloutSpecSpotDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i *rolloutSpecSpotDeploymentPtrType) ToRolloutSpecSpotDeploymentPtrOutputWithContext(ctx context.Context) RolloutSpecSpotDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecSpotDeploymentPtrOutput)
+}
+
+// RolloutSpecSpotDeploymentArrayInput is an input type that accepts RolloutSpecSpotDeploymentArray and RolloutSpecSpotDeploymentArrayOutput values.
+// You can construct a concrete instance of `RolloutSpecSpotDeploymentArrayInput` via:
+//
+//	RolloutSpecSpotDeploymentArray{ RolloutSpecSpotDeploymentArgs{...} }
+type RolloutSpecSpotDeploymentArrayInput interface {
+	pulumi.Input
+
+	ToRolloutSpecSpotDeploymentArrayOutput() RolloutSpecSpotDeploymentArrayOutput
+	ToRolloutSpecSpotDeploymentArrayOutputWithContext(context.Context) RolloutSpecSpotDeploymentArrayOutput
+}
+
+type RolloutSpecSpotDeploymentArray []RolloutSpecSpotDeploymentInput
+
+func (RolloutSpecSpotDeploymentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RolloutSpecSpotDeployment)(nil)).Elem()
+}
+
+func (i RolloutSpecSpotDeploymentArray) ToRolloutSpecSpotDeploymentArrayOutput() RolloutSpecSpotDeploymentArrayOutput {
+	return i.ToRolloutSpecSpotDeploymentArrayOutputWithContext(context.Background())
+}
+
+func (i RolloutSpecSpotDeploymentArray) ToRolloutSpecSpotDeploymentArrayOutputWithContext(ctx context.Context) RolloutSpecSpotDeploymentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecSpotDeploymentArrayOutput)
+}
+
+type RolloutSpecSpotDeploymentOutput struct{ *pulumi.OutputState }
+
+func (RolloutSpecSpotDeploymentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSpecSpotDeployment)(nil)).Elem()
+}
+
+func (o RolloutSpecSpotDeploymentOutput) ToRolloutSpecSpotDeploymentOutput() RolloutSpecSpotDeploymentOutput {
+	return o
+}
+
+func (o RolloutSpecSpotDeploymentOutput) ToRolloutSpecSpotDeploymentOutputWithContext(ctx context.Context) RolloutSpecSpotDeploymentOutput {
+	return o
+}
+
+func (o RolloutSpecSpotDeploymentOutput) ToRolloutSpecSpotDeploymentPtrOutput() RolloutSpecSpotDeploymentPtrOutput {
+	return o.ToRolloutSpecSpotDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (o RolloutSpecSpotDeploymentOutput) ToRolloutSpecSpotDeploymentPtrOutputWithContext(ctx context.Context) RolloutSpecSpotDeploymentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RolloutSpecSpotDeployment) *RolloutSpecSpotDeployment {
+		return &v
+	}).(RolloutSpecSpotDeploymentPtrOutput)
+}
+
+// Ocean CD cluster identifier for the references `SpotDeployment`.
+func (o RolloutSpecSpotDeploymentOutput) SpotDeploymentsClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RolloutSpecSpotDeployment) *string { return v.SpotDeploymentsClusterId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the `SpotDeployment` resource
+func (o RolloutSpecSpotDeploymentOutput) SpotDeploymentsName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RolloutSpecSpotDeployment) *string { return v.SpotDeploymentsName }).(pulumi.StringPtrOutput)
+}
+
+// The namespace which the `SpotDeployment` resource exists within.
+func (o RolloutSpecSpotDeploymentOutput) SpotDeploymentsNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RolloutSpecSpotDeployment) *string { return v.SpotDeploymentsNamespace }).(pulumi.StringPtrOutput)
+}
+
+type RolloutSpecSpotDeploymentPtrOutput struct{ *pulumi.OutputState }
+
+func (RolloutSpecSpotDeploymentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolloutSpecSpotDeployment)(nil)).Elem()
+}
+
+func (o RolloutSpecSpotDeploymentPtrOutput) ToRolloutSpecSpotDeploymentPtrOutput() RolloutSpecSpotDeploymentPtrOutput {
+	return o
+}
+
+func (o RolloutSpecSpotDeploymentPtrOutput) ToRolloutSpecSpotDeploymentPtrOutputWithContext(ctx context.Context) RolloutSpecSpotDeploymentPtrOutput {
+	return o
+}
+
+func (o RolloutSpecSpotDeploymentPtrOutput) Elem() RolloutSpecSpotDeploymentOutput {
+	return o.ApplyT(func(v *RolloutSpecSpotDeployment) RolloutSpecSpotDeployment {
+		if v != nil {
+			return *v
+		}
+		var ret RolloutSpecSpotDeployment
+		return ret
+	}).(RolloutSpecSpotDeploymentOutput)
+}
+
+// Ocean CD cluster identifier for the references `SpotDeployment`.
+func (o RolloutSpecSpotDeploymentPtrOutput) SpotDeploymentsClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RolloutSpecSpotDeployment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpotDeploymentsClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the `SpotDeployment` resource
+func (o RolloutSpecSpotDeploymentPtrOutput) SpotDeploymentsName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RolloutSpecSpotDeployment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpotDeploymentsName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The namespace which the `SpotDeployment` resource exists within.
+func (o RolloutSpecSpotDeploymentPtrOutput) SpotDeploymentsNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RolloutSpecSpotDeployment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpotDeploymentsNamespace
+	}).(pulumi.StringPtrOutput)
+}
+
+type RolloutSpecSpotDeploymentArrayOutput struct{ *pulumi.OutputState }
+
+func (RolloutSpecSpotDeploymentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RolloutSpecSpotDeployment)(nil)).Elem()
+}
+
+func (o RolloutSpecSpotDeploymentArrayOutput) ToRolloutSpecSpotDeploymentArrayOutput() RolloutSpecSpotDeploymentArrayOutput {
+	return o
+}
+
+func (o RolloutSpecSpotDeploymentArrayOutput) ToRolloutSpecSpotDeploymentArrayOutputWithContext(ctx context.Context) RolloutSpecSpotDeploymentArrayOutput {
+	return o
+}
+
+func (o RolloutSpecSpotDeploymentArrayOutput) Index(i pulumi.IntInput) RolloutSpecSpotDeploymentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RolloutSpecSpotDeployment {
+		return vs[0].([]RolloutSpecSpotDeployment)[vs[1].(int)]
+	}).(RolloutSpecSpotDeploymentOutput)
+}
+
+type RolloutSpecStrategy struct {
+	// Arguments defined in Verification Templates.
+	Args []RolloutSpecStrategyArg `pulumi:"args"`
+	// Ocean CD strategy name identifier.
+	StrategyName string `pulumi:"strategyName"`
+}
+
+// RolloutSpecStrategyInput is an input type that accepts RolloutSpecStrategyArgs and RolloutSpecStrategyOutput values.
+// You can construct a concrete instance of `RolloutSpecStrategyInput` via:
+//
+//	RolloutSpecStrategyArgs{...}
+type RolloutSpecStrategyInput interface {
+	pulumi.Input
+
+	ToRolloutSpecStrategyOutput() RolloutSpecStrategyOutput
+	ToRolloutSpecStrategyOutputWithContext(context.Context) RolloutSpecStrategyOutput
+}
+
+type RolloutSpecStrategyArgs struct {
+	// Arguments defined in Verification Templates.
+	Args RolloutSpecStrategyArgArrayInput `pulumi:"args"`
+	// Ocean CD strategy name identifier.
+	StrategyName pulumi.StringInput `pulumi:"strategyName"`
+}
+
+func (RolloutSpecStrategyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSpecStrategy)(nil)).Elem()
+}
+
+func (i RolloutSpecStrategyArgs) ToRolloutSpecStrategyOutput() RolloutSpecStrategyOutput {
+	return i.ToRolloutSpecStrategyOutputWithContext(context.Background())
+}
+
+func (i RolloutSpecStrategyArgs) ToRolloutSpecStrategyOutputWithContext(ctx context.Context) RolloutSpecStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecStrategyOutput)
+}
+
+func (i RolloutSpecStrategyArgs) ToRolloutSpecStrategyPtrOutput() RolloutSpecStrategyPtrOutput {
+	return i.ToRolloutSpecStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i RolloutSpecStrategyArgs) ToRolloutSpecStrategyPtrOutputWithContext(ctx context.Context) RolloutSpecStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecStrategyOutput).ToRolloutSpecStrategyPtrOutputWithContext(ctx)
+}
+
+// RolloutSpecStrategyPtrInput is an input type that accepts RolloutSpecStrategyArgs, RolloutSpecStrategyPtr and RolloutSpecStrategyPtrOutput values.
+// You can construct a concrete instance of `RolloutSpecStrategyPtrInput` via:
+//
+//	        RolloutSpecStrategyArgs{...}
+//
+//	or:
+//
+//	        nil
+type RolloutSpecStrategyPtrInput interface {
+	pulumi.Input
+
+	ToRolloutSpecStrategyPtrOutput() RolloutSpecStrategyPtrOutput
+	ToRolloutSpecStrategyPtrOutputWithContext(context.Context) RolloutSpecStrategyPtrOutput
+}
+
+type rolloutSpecStrategyPtrType RolloutSpecStrategyArgs
+
+func RolloutSpecStrategyPtr(v *RolloutSpecStrategyArgs) RolloutSpecStrategyPtrInput {
+	return (*rolloutSpecStrategyPtrType)(v)
+}
+
+func (*rolloutSpecStrategyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolloutSpecStrategy)(nil)).Elem()
+}
+
+func (i *rolloutSpecStrategyPtrType) ToRolloutSpecStrategyPtrOutput() RolloutSpecStrategyPtrOutput {
+	return i.ToRolloutSpecStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i *rolloutSpecStrategyPtrType) ToRolloutSpecStrategyPtrOutputWithContext(ctx context.Context) RolloutSpecStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecStrategyPtrOutput)
+}
+
+type RolloutSpecStrategyOutput struct{ *pulumi.OutputState }
+
+func (RolloutSpecStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSpecStrategy)(nil)).Elem()
+}
+
+func (o RolloutSpecStrategyOutput) ToRolloutSpecStrategyOutput() RolloutSpecStrategyOutput {
+	return o
+}
+
+func (o RolloutSpecStrategyOutput) ToRolloutSpecStrategyOutputWithContext(ctx context.Context) RolloutSpecStrategyOutput {
+	return o
+}
+
+func (o RolloutSpecStrategyOutput) ToRolloutSpecStrategyPtrOutput() RolloutSpecStrategyPtrOutput {
+	return o.ToRolloutSpecStrategyPtrOutputWithContext(context.Background())
+}
+
+func (o RolloutSpecStrategyOutput) ToRolloutSpecStrategyPtrOutputWithContext(ctx context.Context) RolloutSpecStrategyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RolloutSpecStrategy) *RolloutSpecStrategy {
+		return &v
+	}).(RolloutSpecStrategyPtrOutput)
+}
+
+// Arguments defined in Verification Templates.
+func (o RolloutSpecStrategyOutput) Args() RolloutSpecStrategyArgArrayOutput {
+	return o.ApplyT(func(v RolloutSpecStrategy) []RolloutSpecStrategyArg { return v.Args }).(RolloutSpecStrategyArgArrayOutput)
+}
+
+// Ocean CD strategy name identifier.
+func (o RolloutSpecStrategyOutput) StrategyName() pulumi.StringOutput {
+	return o.ApplyT(func(v RolloutSpecStrategy) string { return v.StrategyName }).(pulumi.StringOutput)
+}
+
+type RolloutSpecStrategyPtrOutput struct{ *pulumi.OutputState }
+
+func (RolloutSpecStrategyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolloutSpecStrategy)(nil)).Elem()
+}
+
+func (o RolloutSpecStrategyPtrOutput) ToRolloutSpecStrategyPtrOutput() RolloutSpecStrategyPtrOutput {
+	return o
+}
+
+func (o RolloutSpecStrategyPtrOutput) ToRolloutSpecStrategyPtrOutputWithContext(ctx context.Context) RolloutSpecStrategyPtrOutput {
+	return o
+}
+
+func (o RolloutSpecStrategyPtrOutput) Elem() RolloutSpecStrategyOutput {
+	return o.ApplyT(func(v *RolloutSpecStrategy) RolloutSpecStrategy {
+		if v != nil {
+			return *v
+		}
+		var ret RolloutSpecStrategy
+		return ret
+	}).(RolloutSpecStrategyOutput)
+}
+
+// Arguments defined in Verification Templates.
+func (o RolloutSpecStrategyPtrOutput) Args() RolloutSpecStrategyArgArrayOutput {
+	return o.ApplyT(func(v *RolloutSpecStrategy) []RolloutSpecStrategyArg {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(RolloutSpecStrategyArgArrayOutput)
+}
+
+// Ocean CD strategy name identifier.
+func (o RolloutSpecStrategyPtrOutput) StrategyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RolloutSpecStrategy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StrategyName
+	}).(pulumi.StringPtrOutput)
+}
+
+type RolloutSpecStrategyArg struct {
+	ArgName   string                           `pulumi:"argName"`
+	ArgValue  *string                          `pulumi:"argValue"`
+	ValueFrom *RolloutSpecStrategyArgValueFrom `pulumi:"valueFrom"`
+}
+
+// RolloutSpecStrategyArgInput is an input type that accepts RolloutSpecStrategyArgArgs and RolloutSpecStrategyArgOutput values.
+// You can construct a concrete instance of `RolloutSpecStrategyArgInput` via:
+//
+//	RolloutSpecStrategyArgArgs{...}
+type RolloutSpecStrategyArgInput interface {
+	pulumi.Input
+
+	ToRolloutSpecStrategyArgOutput() RolloutSpecStrategyArgOutput
+	ToRolloutSpecStrategyArgOutputWithContext(context.Context) RolloutSpecStrategyArgOutput
+}
+
+type RolloutSpecStrategyArgArgs struct {
+	ArgName   pulumi.StringInput                      `pulumi:"argName"`
+	ArgValue  pulumi.StringPtrInput                   `pulumi:"argValue"`
+	ValueFrom RolloutSpecStrategyArgValueFromPtrInput `pulumi:"valueFrom"`
+}
+
+func (RolloutSpecStrategyArgArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSpecStrategyArg)(nil)).Elem()
+}
+
+func (i RolloutSpecStrategyArgArgs) ToRolloutSpecStrategyArgOutput() RolloutSpecStrategyArgOutput {
+	return i.ToRolloutSpecStrategyArgOutputWithContext(context.Background())
+}
+
+func (i RolloutSpecStrategyArgArgs) ToRolloutSpecStrategyArgOutputWithContext(ctx context.Context) RolloutSpecStrategyArgOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecStrategyArgOutput)
+}
+
+// RolloutSpecStrategyArgArrayInput is an input type that accepts RolloutSpecStrategyArgArray and RolloutSpecStrategyArgArrayOutput values.
+// You can construct a concrete instance of `RolloutSpecStrategyArgArrayInput` via:
+//
+//	RolloutSpecStrategyArgArray{ RolloutSpecStrategyArgArgs{...} }
+type RolloutSpecStrategyArgArrayInput interface {
+	pulumi.Input
+
+	ToRolloutSpecStrategyArgArrayOutput() RolloutSpecStrategyArgArrayOutput
+	ToRolloutSpecStrategyArgArrayOutputWithContext(context.Context) RolloutSpecStrategyArgArrayOutput
+}
+
+type RolloutSpecStrategyArgArray []RolloutSpecStrategyArgInput
+
+func (RolloutSpecStrategyArgArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RolloutSpecStrategyArg)(nil)).Elem()
+}
+
+func (i RolloutSpecStrategyArgArray) ToRolloutSpecStrategyArgArrayOutput() RolloutSpecStrategyArgArrayOutput {
+	return i.ToRolloutSpecStrategyArgArrayOutputWithContext(context.Background())
+}
+
+func (i RolloutSpecStrategyArgArray) ToRolloutSpecStrategyArgArrayOutputWithContext(ctx context.Context) RolloutSpecStrategyArgArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecStrategyArgArrayOutput)
+}
+
+type RolloutSpecStrategyArgOutput struct{ *pulumi.OutputState }
+
+func (RolloutSpecStrategyArgOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSpecStrategyArg)(nil)).Elem()
+}
+
+func (o RolloutSpecStrategyArgOutput) ToRolloutSpecStrategyArgOutput() RolloutSpecStrategyArgOutput {
+	return o
+}
+
+func (o RolloutSpecStrategyArgOutput) ToRolloutSpecStrategyArgOutputWithContext(ctx context.Context) RolloutSpecStrategyArgOutput {
+	return o
+}
+
+func (o RolloutSpecStrategyArgOutput) ArgName() pulumi.StringOutput {
+	return o.ApplyT(func(v RolloutSpecStrategyArg) string { return v.ArgName }).(pulumi.StringOutput)
+}
+
+func (o RolloutSpecStrategyArgOutput) ArgValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RolloutSpecStrategyArg) *string { return v.ArgValue }).(pulumi.StringPtrOutput)
+}
+
+func (o RolloutSpecStrategyArgOutput) ValueFrom() RolloutSpecStrategyArgValueFromPtrOutput {
+	return o.ApplyT(func(v RolloutSpecStrategyArg) *RolloutSpecStrategyArgValueFrom { return v.ValueFrom }).(RolloutSpecStrategyArgValueFromPtrOutput)
+}
+
+type RolloutSpecStrategyArgArrayOutput struct{ *pulumi.OutputState }
+
+func (RolloutSpecStrategyArgArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RolloutSpecStrategyArg)(nil)).Elem()
+}
+
+func (o RolloutSpecStrategyArgArrayOutput) ToRolloutSpecStrategyArgArrayOutput() RolloutSpecStrategyArgArrayOutput {
+	return o
+}
+
+func (o RolloutSpecStrategyArgArrayOutput) ToRolloutSpecStrategyArgArrayOutputWithContext(ctx context.Context) RolloutSpecStrategyArgArrayOutput {
+	return o
+}
+
+func (o RolloutSpecStrategyArgArrayOutput) Index(i pulumi.IntInput) RolloutSpecStrategyArgOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RolloutSpecStrategyArg {
+		return vs[0].([]RolloutSpecStrategyArg)[vs[1].(int)]
+	}).(RolloutSpecStrategyArgOutput)
+}
+
+type RolloutSpecStrategyArgValueFrom struct {
+	FieldRef RolloutSpecStrategyArgValueFromFieldRef `pulumi:"fieldRef"`
+}
+
+// RolloutSpecStrategyArgValueFromInput is an input type that accepts RolloutSpecStrategyArgValueFromArgs and RolloutSpecStrategyArgValueFromOutput values.
+// You can construct a concrete instance of `RolloutSpecStrategyArgValueFromInput` via:
+//
+//	RolloutSpecStrategyArgValueFromArgs{...}
+type RolloutSpecStrategyArgValueFromInput interface {
+	pulumi.Input
+
+	ToRolloutSpecStrategyArgValueFromOutput() RolloutSpecStrategyArgValueFromOutput
+	ToRolloutSpecStrategyArgValueFromOutputWithContext(context.Context) RolloutSpecStrategyArgValueFromOutput
+}
+
+type RolloutSpecStrategyArgValueFromArgs struct {
+	FieldRef RolloutSpecStrategyArgValueFromFieldRefInput `pulumi:"fieldRef"`
+}
+
+func (RolloutSpecStrategyArgValueFromArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSpecStrategyArgValueFrom)(nil)).Elem()
+}
+
+func (i RolloutSpecStrategyArgValueFromArgs) ToRolloutSpecStrategyArgValueFromOutput() RolloutSpecStrategyArgValueFromOutput {
+	return i.ToRolloutSpecStrategyArgValueFromOutputWithContext(context.Background())
+}
+
+func (i RolloutSpecStrategyArgValueFromArgs) ToRolloutSpecStrategyArgValueFromOutputWithContext(ctx context.Context) RolloutSpecStrategyArgValueFromOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecStrategyArgValueFromOutput)
+}
+
+func (i RolloutSpecStrategyArgValueFromArgs) ToRolloutSpecStrategyArgValueFromPtrOutput() RolloutSpecStrategyArgValueFromPtrOutput {
+	return i.ToRolloutSpecStrategyArgValueFromPtrOutputWithContext(context.Background())
+}
+
+func (i RolloutSpecStrategyArgValueFromArgs) ToRolloutSpecStrategyArgValueFromPtrOutputWithContext(ctx context.Context) RolloutSpecStrategyArgValueFromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecStrategyArgValueFromOutput).ToRolloutSpecStrategyArgValueFromPtrOutputWithContext(ctx)
+}
+
+// RolloutSpecStrategyArgValueFromPtrInput is an input type that accepts RolloutSpecStrategyArgValueFromArgs, RolloutSpecStrategyArgValueFromPtr and RolloutSpecStrategyArgValueFromPtrOutput values.
+// You can construct a concrete instance of `RolloutSpecStrategyArgValueFromPtrInput` via:
+//
+//	        RolloutSpecStrategyArgValueFromArgs{...}
+//
+//	or:
+//
+//	        nil
+type RolloutSpecStrategyArgValueFromPtrInput interface {
+	pulumi.Input
+
+	ToRolloutSpecStrategyArgValueFromPtrOutput() RolloutSpecStrategyArgValueFromPtrOutput
+	ToRolloutSpecStrategyArgValueFromPtrOutputWithContext(context.Context) RolloutSpecStrategyArgValueFromPtrOutput
+}
+
+type rolloutSpecStrategyArgValueFromPtrType RolloutSpecStrategyArgValueFromArgs
+
+func RolloutSpecStrategyArgValueFromPtr(v *RolloutSpecStrategyArgValueFromArgs) RolloutSpecStrategyArgValueFromPtrInput {
+	return (*rolloutSpecStrategyArgValueFromPtrType)(v)
+}
+
+func (*rolloutSpecStrategyArgValueFromPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolloutSpecStrategyArgValueFrom)(nil)).Elem()
+}
+
+func (i *rolloutSpecStrategyArgValueFromPtrType) ToRolloutSpecStrategyArgValueFromPtrOutput() RolloutSpecStrategyArgValueFromPtrOutput {
+	return i.ToRolloutSpecStrategyArgValueFromPtrOutputWithContext(context.Background())
+}
+
+func (i *rolloutSpecStrategyArgValueFromPtrType) ToRolloutSpecStrategyArgValueFromPtrOutputWithContext(ctx context.Context) RolloutSpecStrategyArgValueFromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecStrategyArgValueFromPtrOutput)
+}
+
+type RolloutSpecStrategyArgValueFromOutput struct{ *pulumi.OutputState }
+
+func (RolloutSpecStrategyArgValueFromOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSpecStrategyArgValueFrom)(nil)).Elem()
+}
+
+func (o RolloutSpecStrategyArgValueFromOutput) ToRolloutSpecStrategyArgValueFromOutput() RolloutSpecStrategyArgValueFromOutput {
+	return o
+}
+
+func (o RolloutSpecStrategyArgValueFromOutput) ToRolloutSpecStrategyArgValueFromOutputWithContext(ctx context.Context) RolloutSpecStrategyArgValueFromOutput {
+	return o
+}
+
+func (o RolloutSpecStrategyArgValueFromOutput) ToRolloutSpecStrategyArgValueFromPtrOutput() RolloutSpecStrategyArgValueFromPtrOutput {
+	return o.ToRolloutSpecStrategyArgValueFromPtrOutputWithContext(context.Background())
+}
+
+func (o RolloutSpecStrategyArgValueFromOutput) ToRolloutSpecStrategyArgValueFromPtrOutputWithContext(ctx context.Context) RolloutSpecStrategyArgValueFromPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RolloutSpecStrategyArgValueFrom) *RolloutSpecStrategyArgValueFrom {
+		return &v
+	}).(RolloutSpecStrategyArgValueFromPtrOutput)
+}
+
+func (o RolloutSpecStrategyArgValueFromOutput) FieldRef() RolloutSpecStrategyArgValueFromFieldRefOutput {
+	return o.ApplyT(func(v RolloutSpecStrategyArgValueFrom) RolloutSpecStrategyArgValueFromFieldRef { return v.FieldRef }).(RolloutSpecStrategyArgValueFromFieldRefOutput)
+}
+
+type RolloutSpecStrategyArgValueFromPtrOutput struct{ *pulumi.OutputState }
+
+func (RolloutSpecStrategyArgValueFromPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolloutSpecStrategyArgValueFrom)(nil)).Elem()
+}
+
+func (o RolloutSpecStrategyArgValueFromPtrOutput) ToRolloutSpecStrategyArgValueFromPtrOutput() RolloutSpecStrategyArgValueFromPtrOutput {
+	return o
+}
+
+func (o RolloutSpecStrategyArgValueFromPtrOutput) ToRolloutSpecStrategyArgValueFromPtrOutputWithContext(ctx context.Context) RolloutSpecStrategyArgValueFromPtrOutput {
+	return o
+}
+
+func (o RolloutSpecStrategyArgValueFromPtrOutput) Elem() RolloutSpecStrategyArgValueFromOutput {
+	return o.ApplyT(func(v *RolloutSpecStrategyArgValueFrom) RolloutSpecStrategyArgValueFrom {
+		if v != nil {
+			return *v
+		}
+		var ret RolloutSpecStrategyArgValueFrom
+		return ret
+	}).(RolloutSpecStrategyArgValueFromOutput)
+}
+
+func (o RolloutSpecStrategyArgValueFromPtrOutput) FieldRef() RolloutSpecStrategyArgValueFromFieldRefPtrOutput {
+	return o.ApplyT(func(v *RolloutSpecStrategyArgValueFrom) *RolloutSpecStrategyArgValueFromFieldRef {
+		if v == nil {
+			return nil
+		}
+		return &v.FieldRef
+	}).(RolloutSpecStrategyArgValueFromFieldRefPtrOutput)
+}
+
+type RolloutSpecStrategyArgValueFromFieldRef struct {
+	FieldPath string `pulumi:"fieldPath"`
+}
+
+// RolloutSpecStrategyArgValueFromFieldRefInput is an input type that accepts RolloutSpecStrategyArgValueFromFieldRefArgs and RolloutSpecStrategyArgValueFromFieldRefOutput values.
+// You can construct a concrete instance of `RolloutSpecStrategyArgValueFromFieldRefInput` via:
+//
+//	RolloutSpecStrategyArgValueFromFieldRefArgs{...}
+type RolloutSpecStrategyArgValueFromFieldRefInput interface {
+	pulumi.Input
+
+	ToRolloutSpecStrategyArgValueFromFieldRefOutput() RolloutSpecStrategyArgValueFromFieldRefOutput
+	ToRolloutSpecStrategyArgValueFromFieldRefOutputWithContext(context.Context) RolloutSpecStrategyArgValueFromFieldRefOutput
+}
+
+type RolloutSpecStrategyArgValueFromFieldRefArgs struct {
+	FieldPath pulumi.StringInput `pulumi:"fieldPath"`
+}
+
+func (RolloutSpecStrategyArgValueFromFieldRefArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSpecStrategyArgValueFromFieldRef)(nil)).Elem()
+}
+
+func (i RolloutSpecStrategyArgValueFromFieldRefArgs) ToRolloutSpecStrategyArgValueFromFieldRefOutput() RolloutSpecStrategyArgValueFromFieldRefOutput {
+	return i.ToRolloutSpecStrategyArgValueFromFieldRefOutputWithContext(context.Background())
+}
+
+func (i RolloutSpecStrategyArgValueFromFieldRefArgs) ToRolloutSpecStrategyArgValueFromFieldRefOutputWithContext(ctx context.Context) RolloutSpecStrategyArgValueFromFieldRefOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecStrategyArgValueFromFieldRefOutput)
+}
+
+func (i RolloutSpecStrategyArgValueFromFieldRefArgs) ToRolloutSpecStrategyArgValueFromFieldRefPtrOutput() RolloutSpecStrategyArgValueFromFieldRefPtrOutput {
+	return i.ToRolloutSpecStrategyArgValueFromFieldRefPtrOutputWithContext(context.Background())
+}
+
+func (i RolloutSpecStrategyArgValueFromFieldRefArgs) ToRolloutSpecStrategyArgValueFromFieldRefPtrOutputWithContext(ctx context.Context) RolloutSpecStrategyArgValueFromFieldRefPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecStrategyArgValueFromFieldRefOutput).ToRolloutSpecStrategyArgValueFromFieldRefPtrOutputWithContext(ctx)
+}
+
+// RolloutSpecStrategyArgValueFromFieldRefPtrInput is an input type that accepts RolloutSpecStrategyArgValueFromFieldRefArgs, RolloutSpecStrategyArgValueFromFieldRefPtr and RolloutSpecStrategyArgValueFromFieldRefPtrOutput values.
+// You can construct a concrete instance of `RolloutSpecStrategyArgValueFromFieldRefPtrInput` via:
+//
+//	        RolloutSpecStrategyArgValueFromFieldRefArgs{...}
+//
+//	or:
+//
+//	        nil
+type RolloutSpecStrategyArgValueFromFieldRefPtrInput interface {
+	pulumi.Input
+
+	ToRolloutSpecStrategyArgValueFromFieldRefPtrOutput() RolloutSpecStrategyArgValueFromFieldRefPtrOutput
+	ToRolloutSpecStrategyArgValueFromFieldRefPtrOutputWithContext(context.Context) RolloutSpecStrategyArgValueFromFieldRefPtrOutput
+}
+
+type rolloutSpecStrategyArgValueFromFieldRefPtrType RolloutSpecStrategyArgValueFromFieldRefArgs
+
+func RolloutSpecStrategyArgValueFromFieldRefPtr(v *RolloutSpecStrategyArgValueFromFieldRefArgs) RolloutSpecStrategyArgValueFromFieldRefPtrInput {
+	return (*rolloutSpecStrategyArgValueFromFieldRefPtrType)(v)
+}
+
+func (*rolloutSpecStrategyArgValueFromFieldRefPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolloutSpecStrategyArgValueFromFieldRef)(nil)).Elem()
+}
+
+func (i *rolloutSpecStrategyArgValueFromFieldRefPtrType) ToRolloutSpecStrategyArgValueFromFieldRefPtrOutput() RolloutSpecStrategyArgValueFromFieldRefPtrOutput {
+	return i.ToRolloutSpecStrategyArgValueFromFieldRefPtrOutputWithContext(context.Background())
+}
+
+func (i *rolloutSpecStrategyArgValueFromFieldRefPtrType) ToRolloutSpecStrategyArgValueFromFieldRefPtrOutputWithContext(ctx context.Context) RolloutSpecStrategyArgValueFromFieldRefPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecStrategyArgValueFromFieldRefPtrOutput)
+}
+
+type RolloutSpecStrategyArgValueFromFieldRefOutput struct{ *pulumi.OutputState }
+
+func (RolloutSpecStrategyArgValueFromFieldRefOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSpecStrategyArgValueFromFieldRef)(nil)).Elem()
+}
+
+func (o RolloutSpecStrategyArgValueFromFieldRefOutput) ToRolloutSpecStrategyArgValueFromFieldRefOutput() RolloutSpecStrategyArgValueFromFieldRefOutput {
+	return o
+}
+
+func (o RolloutSpecStrategyArgValueFromFieldRefOutput) ToRolloutSpecStrategyArgValueFromFieldRefOutputWithContext(ctx context.Context) RolloutSpecStrategyArgValueFromFieldRefOutput {
+	return o
+}
+
+func (o RolloutSpecStrategyArgValueFromFieldRefOutput) ToRolloutSpecStrategyArgValueFromFieldRefPtrOutput() RolloutSpecStrategyArgValueFromFieldRefPtrOutput {
+	return o.ToRolloutSpecStrategyArgValueFromFieldRefPtrOutputWithContext(context.Background())
+}
+
+func (o RolloutSpecStrategyArgValueFromFieldRefOutput) ToRolloutSpecStrategyArgValueFromFieldRefPtrOutputWithContext(ctx context.Context) RolloutSpecStrategyArgValueFromFieldRefPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RolloutSpecStrategyArgValueFromFieldRef) *RolloutSpecStrategyArgValueFromFieldRef {
+		return &v
+	}).(RolloutSpecStrategyArgValueFromFieldRefPtrOutput)
+}
+
+func (o RolloutSpecStrategyArgValueFromFieldRefOutput) FieldPath() pulumi.StringOutput {
+	return o.ApplyT(func(v RolloutSpecStrategyArgValueFromFieldRef) string { return v.FieldPath }).(pulumi.StringOutput)
+}
+
+type RolloutSpecStrategyArgValueFromFieldRefPtrOutput struct{ *pulumi.OutputState }
+
+func (RolloutSpecStrategyArgValueFromFieldRefPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolloutSpecStrategyArgValueFromFieldRef)(nil)).Elem()
+}
+
+func (o RolloutSpecStrategyArgValueFromFieldRefPtrOutput) ToRolloutSpecStrategyArgValueFromFieldRefPtrOutput() RolloutSpecStrategyArgValueFromFieldRefPtrOutput {
+	return o
+}
+
+func (o RolloutSpecStrategyArgValueFromFieldRefPtrOutput) ToRolloutSpecStrategyArgValueFromFieldRefPtrOutputWithContext(ctx context.Context) RolloutSpecStrategyArgValueFromFieldRefPtrOutput {
+	return o
+}
+
+func (o RolloutSpecStrategyArgValueFromFieldRefPtrOutput) Elem() RolloutSpecStrategyArgValueFromFieldRefOutput {
+	return o.ApplyT(func(v *RolloutSpecStrategyArgValueFromFieldRef) RolloutSpecStrategyArgValueFromFieldRef {
+		if v != nil {
+			return *v
+		}
+		var ret RolloutSpecStrategyArgValueFromFieldRef
+		return ret
+	}).(RolloutSpecStrategyArgValueFromFieldRefOutput)
+}
+
+func (o RolloutSpecStrategyArgValueFromFieldRefPtrOutput) FieldPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RolloutSpecStrategyArgValueFromFieldRef) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.FieldPath
+	}).(pulumi.StringPtrOutput)
+}
+
+type RolloutSpecTraffic struct {
+	// Holds ALB Ingress specific configuration to route traffic.
+	Alb *RolloutSpecTrafficAlb `pulumi:"alb"`
+	// Holds specific configuration to use Ambassador to route traffic.
+	Ambassador *RolloutSpecTrafficAmbassador `pulumi:"ambassador"`
+	// The canary service name.
+	CanaryService *string `pulumi:"canaryService"`
+	// Holds Istio specific configuration to route traffic.
+	Istio *RolloutSpecTrafficIstio `pulumi:"istio"`
+	// Holds Nginx Ingress specific configuration to route traffic.
+	Nginx *RolloutSpecTrafficNginx `pulumi:"nginx"`
+	// Holds the ping and pong services. You can use `pingPong` field only when using ALB as a traffic manager with the IP Mode approach.
+	PingPong *RolloutSpecTrafficPingPong `pulumi:"pingPong"`
+	// Holds TrafficSplit specific configuration to route traffic.
+	Smi *RolloutSpecTrafficSmi `pulumi:"smi"`
+	// The stable service name.
+	StableService *string `pulumi:"stableService"`
+}
+
+// RolloutSpecTrafficInput is an input type that accepts RolloutSpecTrafficArgs and RolloutSpecTrafficOutput values.
+// You can construct a concrete instance of `RolloutSpecTrafficInput` via:
+//
+//	RolloutSpecTrafficArgs{...}
+type RolloutSpecTrafficInput interface {
+	pulumi.Input
+
+	ToRolloutSpecTrafficOutput() RolloutSpecTrafficOutput
+	ToRolloutSpecTrafficOutputWithContext(context.Context) RolloutSpecTrafficOutput
+}
+
+type RolloutSpecTrafficArgs struct {
+	// Holds ALB Ingress specific configuration to route traffic.
+	Alb RolloutSpecTrafficAlbPtrInput `pulumi:"alb"`
+	// Holds specific configuration to use Ambassador to route traffic.
+	Ambassador RolloutSpecTrafficAmbassadorPtrInput `pulumi:"ambassador"`
+	// The canary service name.
+	CanaryService pulumi.StringPtrInput `pulumi:"canaryService"`
+	// Holds Istio specific configuration to route traffic.
+	Istio RolloutSpecTrafficIstioPtrInput `pulumi:"istio"`
+	// Holds Nginx Ingress specific configuration to route traffic.
+	Nginx RolloutSpecTrafficNginxPtrInput `pulumi:"nginx"`
+	// Holds the ping and pong services. You can use `pingPong` field only when using ALB as a traffic manager with the IP Mode approach.
+	PingPong RolloutSpecTrafficPingPongPtrInput `pulumi:"pingPong"`
+	// Holds TrafficSplit specific configuration to route traffic.
+	Smi RolloutSpecTrafficSmiPtrInput `pulumi:"smi"`
+	// The stable service name.
+	StableService pulumi.StringPtrInput `pulumi:"stableService"`
+}
+
+func (RolloutSpecTrafficArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSpecTraffic)(nil)).Elem()
+}
+
+func (i RolloutSpecTrafficArgs) ToRolloutSpecTrafficOutput() RolloutSpecTrafficOutput {
+	return i.ToRolloutSpecTrafficOutputWithContext(context.Background())
+}
+
+func (i RolloutSpecTrafficArgs) ToRolloutSpecTrafficOutputWithContext(ctx context.Context) RolloutSpecTrafficOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecTrafficOutput)
+}
+
+func (i RolloutSpecTrafficArgs) ToRolloutSpecTrafficPtrOutput() RolloutSpecTrafficPtrOutput {
+	return i.ToRolloutSpecTrafficPtrOutputWithContext(context.Background())
+}
+
+func (i RolloutSpecTrafficArgs) ToRolloutSpecTrafficPtrOutputWithContext(ctx context.Context) RolloutSpecTrafficPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecTrafficOutput).ToRolloutSpecTrafficPtrOutputWithContext(ctx)
+}
+
+// RolloutSpecTrafficPtrInput is an input type that accepts RolloutSpecTrafficArgs, RolloutSpecTrafficPtr and RolloutSpecTrafficPtrOutput values.
+// You can construct a concrete instance of `RolloutSpecTrafficPtrInput` via:
+//
+//	        RolloutSpecTrafficArgs{...}
+//
+//	or:
+//
+//	        nil
+type RolloutSpecTrafficPtrInput interface {
+	pulumi.Input
+
+	ToRolloutSpecTrafficPtrOutput() RolloutSpecTrafficPtrOutput
+	ToRolloutSpecTrafficPtrOutputWithContext(context.Context) RolloutSpecTrafficPtrOutput
+}
+
+type rolloutSpecTrafficPtrType RolloutSpecTrafficArgs
+
+func RolloutSpecTrafficPtr(v *RolloutSpecTrafficArgs) RolloutSpecTrafficPtrInput {
+	return (*rolloutSpecTrafficPtrType)(v)
+}
+
+func (*rolloutSpecTrafficPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolloutSpecTraffic)(nil)).Elem()
+}
+
+func (i *rolloutSpecTrafficPtrType) ToRolloutSpecTrafficPtrOutput() RolloutSpecTrafficPtrOutput {
+	return i.ToRolloutSpecTrafficPtrOutputWithContext(context.Background())
+}
+
+func (i *rolloutSpecTrafficPtrType) ToRolloutSpecTrafficPtrOutputWithContext(ctx context.Context) RolloutSpecTrafficPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecTrafficPtrOutput)
+}
+
+type RolloutSpecTrafficOutput struct{ *pulumi.OutputState }
+
+func (RolloutSpecTrafficOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSpecTraffic)(nil)).Elem()
+}
+
+func (o RolloutSpecTrafficOutput) ToRolloutSpecTrafficOutput() RolloutSpecTrafficOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficOutput) ToRolloutSpecTrafficOutputWithContext(ctx context.Context) RolloutSpecTrafficOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficOutput) ToRolloutSpecTrafficPtrOutput() RolloutSpecTrafficPtrOutput {
+	return o.ToRolloutSpecTrafficPtrOutputWithContext(context.Background())
+}
+
+func (o RolloutSpecTrafficOutput) ToRolloutSpecTrafficPtrOutputWithContext(ctx context.Context) RolloutSpecTrafficPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RolloutSpecTraffic) *RolloutSpecTraffic {
+		return &v
+	}).(RolloutSpecTrafficPtrOutput)
+}
+
+// Holds ALB Ingress specific configuration to route traffic.
+func (o RolloutSpecTrafficOutput) Alb() RolloutSpecTrafficAlbPtrOutput {
+	return o.ApplyT(func(v RolloutSpecTraffic) *RolloutSpecTrafficAlb { return v.Alb }).(RolloutSpecTrafficAlbPtrOutput)
+}
+
+// Holds specific configuration to use Ambassador to route traffic.
+func (o RolloutSpecTrafficOutput) Ambassador() RolloutSpecTrafficAmbassadorPtrOutput {
+	return o.ApplyT(func(v RolloutSpecTraffic) *RolloutSpecTrafficAmbassador { return v.Ambassador }).(RolloutSpecTrafficAmbassadorPtrOutput)
+}
+
+// The canary service name.
+func (o RolloutSpecTrafficOutput) CanaryService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RolloutSpecTraffic) *string { return v.CanaryService }).(pulumi.StringPtrOutput)
+}
+
+// Holds Istio specific configuration to route traffic.
+func (o RolloutSpecTrafficOutput) Istio() RolloutSpecTrafficIstioPtrOutput {
+	return o.ApplyT(func(v RolloutSpecTraffic) *RolloutSpecTrafficIstio { return v.Istio }).(RolloutSpecTrafficIstioPtrOutput)
+}
+
+// Holds Nginx Ingress specific configuration to route traffic.
+func (o RolloutSpecTrafficOutput) Nginx() RolloutSpecTrafficNginxPtrOutput {
+	return o.ApplyT(func(v RolloutSpecTraffic) *RolloutSpecTrafficNginx { return v.Nginx }).(RolloutSpecTrafficNginxPtrOutput)
+}
+
+// Holds the ping and pong services. You can use `pingPong` field only when using ALB as a traffic manager with the IP Mode approach.
+func (o RolloutSpecTrafficOutput) PingPong() RolloutSpecTrafficPingPongPtrOutput {
+	return o.ApplyT(func(v RolloutSpecTraffic) *RolloutSpecTrafficPingPong { return v.PingPong }).(RolloutSpecTrafficPingPongPtrOutput)
+}
+
+// Holds TrafficSplit specific configuration to route traffic.
+func (o RolloutSpecTrafficOutput) Smi() RolloutSpecTrafficSmiPtrOutput {
+	return o.ApplyT(func(v RolloutSpecTraffic) *RolloutSpecTrafficSmi { return v.Smi }).(RolloutSpecTrafficSmiPtrOutput)
+}
+
+// The stable service name.
+func (o RolloutSpecTrafficOutput) StableService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RolloutSpecTraffic) *string { return v.StableService }).(pulumi.StringPtrOutput)
+}
+
+type RolloutSpecTrafficPtrOutput struct{ *pulumi.OutputState }
+
+func (RolloutSpecTrafficPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolloutSpecTraffic)(nil)).Elem()
+}
+
+func (o RolloutSpecTrafficPtrOutput) ToRolloutSpecTrafficPtrOutput() RolloutSpecTrafficPtrOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficPtrOutput) ToRolloutSpecTrafficPtrOutputWithContext(ctx context.Context) RolloutSpecTrafficPtrOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficPtrOutput) Elem() RolloutSpecTrafficOutput {
+	return o.ApplyT(func(v *RolloutSpecTraffic) RolloutSpecTraffic {
+		if v != nil {
+			return *v
+		}
+		var ret RolloutSpecTraffic
+		return ret
+	}).(RolloutSpecTrafficOutput)
+}
+
+// Holds ALB Ingress specific configuration to route traffic.
+func (o RolloutSpecTrafficPtrOutput) Alb() RolloutSpecTrafficAlbPtrOutput {
+	return o.ApplyT(func(v *RolloutSpecTraffic) *RolloutSpecTrafficAlb {
+		if v == nil {
+			return nil
+		}
+		return v.Alb
+	}).(RolloutSpecTrafficAlbPtrOutput)
+}
+
+// Holds specific configuration to use Ambassador to route traffic.
+func (o RolloutSpecTrafficPtrOutput) Ambassador() RolloutSpecTrafficAmbassadorPtrOutput {
+	return o.ApplyT(func(v *RolloutSpecTraffic) *RolloutSpecTrafficAmbassador {
+		if v == nil {
+			return nil
+		}
+		return v.Ambassador
+	}).(RolloutSpecTrafficAmbassadorPtrOutput)
+}
+
+// The canary service name.
+func (o RolloutSpecTrafficPtrOutput) CanaryService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RolloutSpecTraffic) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CanaryService
+	}).(pulumi.StringPtrOutput)
+}
+
+// Holds Istio specific configuration to route traffic.
+func (o RolloutSpecTrafficPtrOutput) Istio() RolloutSpecTrafficIstioPtrOutput {
+	return o.ApplyT(func(v *RolloutSpecTraffic) *RolloutSpecTrafficIstio {
+		if v == nil {
+			return nil
+		}
+		return v.Istio
+	}).(RolloutSpecTrafficIstioPtrOutput)
+}
+
+// Holds Nginx Ingress specific configuration to route traffic.
+func (o RolloutSpecTrafficPtrOutput) Nginx() RolloutSpecTrafficNginxPtrOutput {
+	return o.ApplyT(func(v *RolloutSpecTraffic) *RolloutSpecTrafficNginx {
+		if v == nil {
+			return nil
+		}
+		return v.Nginx
+	}).(RolloutSpecTrafficNginxPtrOutput)
+}
+
+// Holds the ping and pong services. You can use `pingPong` field only when using ALB as a traffic manager with the IP Mode approach.
+func (o RolloutSpecTrafficPtrOutput) PingPong() RolloutSpecTrafficPingPongPtrOutput {
+	return o.ApplyT(func(v *RolloutSpecTraffic) *RolloutSpecTrafficPingPong {
+		if v == nil {
+			return nil
+		}
+		return v.PingPong
+	}).(RolloutSpecTrafficPingPongPtrOutput)
+}
+
+// Holds TrafficSplit specific configuration to route traffic.
+func (o RolloutSpecTrafficPtrOutput) Smi() RolloutSpecTrafficSmiPtrOutput {
+	return o.ApplyT(func(v *RolloutSpecTraffic) *RolloutSpecTrafficSmi {
+		if v == nil {
+			return nil
+		}
+		return v.Smi
+	}).(RolloutSpecTrafficSmiPtrOutput)
+}
+
+// The stable service name.
+func (o RolloutSpecTrafficPtrOutput) StableService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RolloutSpecTraffic) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StableService
+	}).(pulumi.StringPtrOutput)
+}
+
+type RolloutSpecTrafficAlb struct {
+	AlbAnnotationPrefix *string                                `pulumi:"albAnnotationPrefix"`
+	AlbIngress          string                                 `pulumi:"albIngress"`
+	AlbRootService      string                                 `pulumi:"albRootService"`
+	ServicePort         int                                    `pulumi:"servicePort"`
+	StickinessConfig    *RolloutSpecTrafficAlbStickinessConfig `pulumi:"stickinessConfig"`
+}
+
+// RolloutSpecTrafficAlbInput is an input type that accepts RolloutSpecTrafficAlbArgs and RolloutSpecTrafficAlbOutput values.
+// You can construct a concrete instance of `RolloutSpecTrafficAlbInput` via:
+//
+//	RolloutSpecTrafficAlbArgs{...}
+type RolloutSpecTrafficAlbInput interface {
+	pulumi.Input
+
+	ToRolloutSpecTrafficAlbOutput() RolloutSpecTrafficAlbOutput
+	ToRolloutSpecTrafficAlbOutputWithContext(context.Context) RolloutSpecTrafficAlbOutput
+}
+
+type RolloutSpecTrafficAlbArgs struct {
+	AlbAnnotationPrefix pulumi.StringPtrInput                         `pulumi:"albAnnotationPrefix"`
+	AlbIngress          pulumi.StringInput                            `pulumi:"albIngress"`
+	AlbRootService      pulumi.StringInput                            `pulumi:"albRootService"`
+	ServicePort         pulumi.IntInput                               `pulumi:"servicePort"`
+	StickinessConfig    RolloutSpecTrafficAlbStickinessConfigPtrInput `pulumi:"stickinessConfig"`
+}
+
+func (RolloutSpecTrafficAlbArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSpecTrafficAlb)(nil)).Elem()
+}
+
+func (i RolloutSpecTrafficAlbArgs) ToRolloutSpecTrafficAlbOutput() RolloutSpecTrafficAlbOutput {
+	return i.ToRolloutSpecTrafficAlbOutputWithContext(context.Background())
+}
+
+func (i RolloutSpecTrafficAlbArgs) ToRolloutSpecTrafficAlbOutputWithContext(ctx context.Context) RolloutSpecTrafficAlbOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecTrafficAlbOutput)
+}
+
+func (i RolloutSpecTrafficAlbArgs) ToRolloutSpecTrafficAlbPtrOutput() RolloutSpecTrafficAlbPtrOutput {
+	return i.ToRolloutSpecTrafficAlbPtrOutputWithContext(context.Background())
+}
+
+func (i RolloutSpecTrafficAlbArgs) ToRolloutSpecTrafficAlbPtrOutputWithContext(ctx context.Context) RolloutSpecTrafficAlbPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecTrafficAlbOutput).ToRolloutSpecTrafficAlbPtrOutputWithContext(ctx)
+}
+
+// RolloutSpecTrafficAlbPtrInput is an input type that accepts RolloutSpecTrafficAlbArgs, RolloutSpecTrafficAlbPtr and RolloutSpecTrafficAlbPtrOutput values.
+// You can construct a concrete instance of `RolloutSpecTrafficAlbPtrInput` via:
+//
+//	        RolloutSpecTrafficAlbArgs{...}
+//
+//	or:
+//
+//	        nil
+type RolloutSpecTrafficAlbPtrInput interface {
+	pulumi.Input
+
+	ToRolloutSpecTrafficAlbPtrOutput() RolloutSpecTrafficAlbPtrOutput
+	ToRolloutSpecTrafficAlbPtrOutputWithContext(context.Context) RolloutSpecTrafficAlbPtrOutput
+}
+
+type rolloutSpecTrafficAlbPtrType RolloutSpecTrafficAlbArgs
+
+func RolloutSpecTrafficAlbPtr(v *RolloutSpecTrafficAlbArgs) RolloutSpecTrafficAlbPtrInput {
+	return (*rolloutSpecTrafficAlbPtrType)(v)
+}
+
+func (*rolloutSpecTrafficAlbPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolloutSpecTrafficAlb)(nil)).Elem()
+}
+
+func (i *rolloutSpecTrafficAlbPtrType) ToRolloutSpecTrafficAlbPtrOutput() RolloutSpecTrafficAlbPtrOutput {
+	return i.ToRolloutSpecTrafficAlbPtrOutputWithContext(context.Background())
+}
+
+func (i *rolloutSpecTrafficAlbPtrType) ToRolloutSpecTrafficAlbPtrOutputWithContext(ctx context.Context) RolloutSpecTrafficAlbPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecTrafficAlbPtrOutput)
+}
+
+type RolloutSpecTrafficAlbOutput struct{ *pulumi.OutputState }
+
+func (RolloutSpecTrafficAlbOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSpecTrafficAlb)(nil)).Elem()
+}
+
+func (o RolloutSpecTrafficAlbOutput) ToRolloutSpecTrafficAlbOutput() RolloutSpecTrafficAlbOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficAlbOutput) ToRolloutSpecTrafficAlbOutputWithContext(ctx context.Context) RolloutSpecTrafficAlbOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficAlbOutput) ToRolloutSpecTrafficAlbPtrOutput() RolloutSpecTrafficAlbPtrOutput {
+	return o.ToRolloutSpecTrafficAlbPtrOutputWithContext(context.Background())
+}
+
+func (o RolloutSpecTrafficAlbOutput) ToRolloutSpecTrafficAlbPtrOutputWithContext(ctx context.Context) RolloutSpecTrafficAlbPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RolloutSpecTrafficAlb) *RolloutSpecTrafficAlb {
+		return &v
+	}).(RolloutSpecTrafficAlbPtrOutput)
+}
+
+func (o RolloutSpecTrafficAlbOutput) AlbAnnotationPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RolloutSpecTrafficAlb) *string { return v.AlbAnnotationPrefix }).(pulumi.StringPtrOutput)
+}
+
+func (o RolloutSpecTrafficAlbOutput) AlbIngress() pulumi.StringOutput {
+	return o.ApplyT(func(v RolloutSpecTrafficAlb) string { return v.AlbIngress }).(pulumi.StringOutput)
+}
+
+func (o RolloutSpecTrafficAlbOutput) AlbRootService() pulumi.StringOutput {
+	return o.ApplyT(func(v RolloutSpecTrafficAlb) string { return v.AlbRootService }).(pulumi.StringOutput)
+}
+
+func (o RolloutSpecTrafficAlbOutput) ServicePort() pulumi.IntOutput {
+	return o.ApplyT(func(v RolloutSpecTrafficAlb) int { return v.ServicePort }).(pulumi.IntOutput)
+}
+
+func (o RolloutSpecTrafficAlbOutput) StickinessConfig() RolloutSpecTrafficAlbStickinessConfigPtrOutput {
+	return o.ApplyT(func(v RolloutSpecTrafficAlb) *RolloutSpecTrafficAlbStickinessConfig { return v.StickinessConfig }).(RolloutSpecTrafficAlbStickinessConfigPtrOutput)
+}
+
+type RolloutSpecTrafficAlbPtrOutput struct{ *pulumi.OutputState }
+
+func (RolloutSpecTrafficAlbPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolloutSpecTrafficAlb)(nil)).Elem()
+}
+
+func (o RolloutSpecTrafficAlbPtrOutput) ToRolloutSpecTrafficAlbPtrOutput() RolloutSpecTrafficAlbPtrOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficAlbPtrOutput) ToRolloutSpecTrafficAlbPtrOutputWithContext(ctx context.Context) RolloutSpecTrafficAlbPtrOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficAlbPtrOutput) Elem() RolloutSpecTrafficAlbOutput {
+	return o.ApplyT(func(v *RolloutSpecTrafficAlb) RolloutSpecTrafficAlb {
+		if v != nil {
+			return *v
+		}
+		var ret RolloutSpecTrafficAlb
+		return ret
+	}).(RolloutSpecTrafficAlbOutput)
+}
+
+func (o RolloutSpecTrafficAlbPtrOutput) AlbAnnotationPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RolloutSpecTrafficAlb) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AlbAnnotationPrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RolloutSpecTrafficAlbPtrOutput) AlbIngress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RolloutSpecTrafficAlb) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AlbIngress
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RolloutSpecTrafficAlbPtrOutput) AlbRootService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RolloutSpecTrafficAlb) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AlbRootService
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RolloutSpecTrafficAlbPtrOutput) ServicePort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RolloutSpecTrafficAlb) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.ServicePort
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o RolloutSpecTrafficAlbPtrOutput) StickinessConfig() RolloutSpecTrafficAlbStickinessConfigPtrOutput {
+	return o.ApplyT(func(v *RolloutSpecTrafficAlb) *RolloutSpecTrafficAlbStickinessConfig {
+		if v == nil {
+			return nil
+		}
+		return v.StickinessConfig
+	}).(RolloutSpecTrafficAlbStickinessConfigPtrOutput)
+}
+
+type RolloutSpecTrafficAlbStickinessConfig struct {
+	DurationSeconds *int  `pulumi:"durationSeconds"`
+	Enabled         *bool `pulumi:"enabled"`
+}
+
+// RolloutSpecTrafficAlbStickinessConfigInput is an input type that accepts RolloutSpecTrafficAlbStickinessConfigArgs and RolloutSpecTrafficAlbStickinessConfigOutput values.
+// You can construct a concrete instance of `RolloutSpecTrafficAlbStickinessConfigInput` via:
+//
+//	RolloutSpecTrafficAlbStickinessConfigArgs{...}
+type RolloutSpecTrafficAlbStickinessConfigInput interface {
+	pulumi.Input
+
+	ToRolloutSpecTrafficAlbStickinessConfigOutput() RolloutSpecTrafficAlbStickinessConfigOutput
+	ToRolloutSpecTrafficAlbStickinessConfigOutputWithContext(context.Context) RolloutSpecTrafficAlbStickinessConfigOutput
+}
+
+type RolloutSpecTrafficAlbStickinessConfigArgs struct {
+	DurationSeconds pulumi.IntPtrInput  `pulumi:"durationSeconds"`
+	Enabled         pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (RolloutSpecTrafficAlbStickinessConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSpecTrafficAlbStickinessConfig)(nil)).Elem()
+}
+
+func (i RolloutSpecTrafficAlbStickinessConfigArgs) ToRolloutSpecTrafficAlbStickinessConfigOutput() RolloutSpecTrafficAlbStickinessConfigOutput {
+	return i.ToRolloutSpecTrafficAlbStickinessConfigOutputWithContext(context.Background())
+}
+
+func (i RolloutSpecTrafficAlbStickinessConfigArgs) ToRolloutSpecTrafficAlbStickinessConfigOutputWithContext(ctx context.Context) RolloutSpecTrafficAlbStickinessConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecTrafficAlbStickinessConfigOutput)
+}
+
+func (i RolloutSpecTrafficAlbStickinessConfigArgs) ToRolloutSpecTrafficAlbStickinessConfigPtrOutput() RolloutSpecTrafficAlbStickinessConfigPtrOutput {
+	return i.ToRolloutSpecTrafficAlbStickinessConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RolloutSpecTrafficAlbStickinessConfigArgs) ToRolloutSpecTrafficAlbStickinessConfigPtrOutputWithContext(ctx context.Context) RolloutSpecTrafficAlbStickinessConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecTrafficAlbStickinessConfigOutput).ToRolloutSpecTrafficAlbStickinessConfigPtrOutputWithContext(ctx)
+}
+
+// RolloutSpecTrafficAlbStickinessConfigPtrInput is an input type that accepts RolloutSpecTrafficAlbStickinessConfigArgs, RolloutSpecTrafficAlbStickinessConfigPtr and RolloutSpecTrafficAlbStickinessConfigPtrOutput values.
+// You can construct a concrete instance of `RolloutSpecTrafficAlbStickinessConfigPtrInput` via:
+//
+//	        RolloutSpecTrafficAlbStickinessConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type RolloutSpecTrafficAlbStickinessConfigPtrInput interface {
+	pulumi.Input
+
+	ToRolloutSpecTrafficAlbStickinessConfigPtrOutput() RolloutSpecTrafficAlbStickinessConfigPtrOutput
+	ToRolloutSpecTrafficAlbStickinessConfigPtrOutputWithContext(context.Context) RolloutSpecTrafficAlbStickinessConfigPtrOutput
+}
+
+type rolloutSpecTrafficAlbStickinessConfigPtrType RolloutSpecTrafficAlbStickinessConfigArgs
+
+func RolloutSpecTrafficAlbStickinessConfigPtr(v *RolloutSpecTrafficAlbStickinessConfigArgs) RolloutSpecTrafficAlbStickinessConfigPtrInput {
+	return (*rolloutSpecTrafficAlbStickinessConfigPtrType)(v)
+}
+
+func (*rolloutSpecTrafficAlbStickinessConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolloutSpecTrafficAlbStickinessConfig)(nil)).Elem()
+}
+
+func (i *rolloutSpecTrafficAlbStickinessConfigPtrType) ToRolloutSpecTrafficAlbStickinessConfigPtrOutput() RolloutSpecTrafficAlbStickinessConfigPtrOutput {
+	return i.ToRolloutSpecTrafficAlbStickinessConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *rolloutSpecTrafficAlbStickinessConfigPtrType) ToRolloutSpecTrafficAlbStickinessConfigPtrOutputWithContext(ctx context.Context) RolloutSpecTrafficAlbStickinessConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecTrafficAlbStickinessConfigPtrOutput)
+}
+
+type RolloutSpecTrafficAlbStickinessConfigOutput struct{ *pulumi.OutputState }
+
+func (RolloutSpecTrafficAlbStickinessConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSpecTrafficAlbStickinessConfig)(nil)).Elem()
+}
+
+func (o RolloutSpecTrafficAlbStickinessConfigOutput) ToRolloutSpecTrafficAlbStickinessConfigOutput() RolloutSpecTrafficAlbStickinessConfigOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficAlbStickinessConfigOutput) ToRolloutSpecTrafficAlbStickinessConfigOutputWithContext(ctx context.Context) RolloutSpecTrafficAlbStickinessConfigOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficAlbStickinessConfigOutput) ToRolloutSpecTrafficAlbStickinessConfigPtrOutput() RolloutSpecTrafficAlbStickinessConfigPtrOutput {
+	return o.ToRolloutSpecTrafficAlbStickinessConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RolloutSpecTrafficAlbStickinessConfigOutput) ToRolloutSpecTrafficAlbStickinessConfigPtrOutputWithContext(ctx context.Context) RolloutSpecTrafficAlbStickinessConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RolloutSpecTrafficAlbStickinessConfig) *RolloutSpecTrafficAlbStickinessConfig {
+		return &v
+	}).(RolloutSpecTrafficAlbStickinessConfigPtrOutput)
+}
+
+func (o RolloutSpecTrafficAlbStickinessConfigOutput) DurationSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RolloutSpecTrafficAlbStickinessConfig) *int { return v.DurationSeconds }).(pulumi.IntPtrOutput)
+}
+
+func (o RolloutSpecTrafficAlbStickinessConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RolloutSpecTrafficAlbStickinessConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type RolloutSpecTrafficAlbStickinessConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RolloutSpecTrafficAlbStickinessConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolloutSpecTrafficAlbStickinessConfig)(nil)).Elem()
+}
+
+func (o RolloutSpecTrafficAlbStickinessConfigPtrOutput) ToRolloutSpecTrafficAlbStickinessConfigPtrOutput() RolloutSpecTrafficAlbStickinessConfigPtrOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficAlbStickinessConfigPtrOutput) ToRolloutSpecTrafficAlbStickinessConfigPtrOutputWithContext(ctx context.Context) RolloutSpecTrafficAlbStickinessConfigPtrOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficAlbStickinessConfigPtrOutput) Elem() RolloutSpecTrafficAlbStickinessConfigOutput {
+	return o.ApplyT(func(v *RolloutSpecTrafficAlbStickinessConfig) RolloutSpecTrafficAlbStickinessConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RolloutSpecTrafficAlbStickinessConfig
+		return ret
+	}).(RolloutSpecTrafficAlbStickinessConfigOutput)
+}
+
+func (o RolloutSpecTrafficAlbStickinessConfigPtrOutput) DurationSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RolloutSpecTrafficAlbStickinessConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DurationSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o RolloutSpecTrafficAlbStickinessConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RolloutSpecTrafficAlbStickinessConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type RolloutSpecTrafficAmbassador struct {
+	Mappings []string `pulumi:"mappings"`
+}
+
+// RolloutSpecTrafficAmbassadorInput is an input type that accepts RolloutSpecTrafficAmbassadorArgs and RolloutSpecTrafficAmbassadorOutput values.
+// You can construct a concrete instance of `RolloutSpecTrafficAmbassadorInput` via:
+//
+//	RolloutSpecTrafficAmbassadorArgs{...}
+type RolloutSpecTrafficAmbassadorInput interface {
+	pulumi.Input
+
+	ToRolloutSpecTrafficAmbassadorOutput() RolloutSpecTrafficAmbassadorOutput
+	ToRolloutSpecTrafficAmbassadorOutputWithContext(context.Context) RolloutSpecTrafficAmbassadorOutput
+}
+
+type RolloutSpecTrafficAmbassadorArgs struct {
+	Mappings pulumi.StringArrayInput `pulumi:"mappings"`
+}
+
+func (RolloutSpecTrafficAmbassadorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSpecTrafficAmbassador)(nil)).Elem()
+}
+
+func (i RolloutSpecTrafficAmbassadorArgs) ToRolloutSpecTrafficAmbassadorOutput() RolloutSpecTrafficAmbassadorOutput {
+	return i.ToRolloutSpecTrafficAmbassadorOutputWithContext(context.Background())
+}
+
+func (i RolloutSpecTrafficAmbassadorArgs) ToRolloutSpecTrafficAmbassadorOutputWithContext(ctx context.Context) RolloutSpecTrafficAmbassadorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecTrafficAmbassadorOutput)
+}
+
+func (i RolloutSpecTrafficAmbassadorArgs) ToRolloutSpecTrafficAmbassadorPtrOutput() RolloutSpecTrafficAmbassadorPtrOutput {
+	return i.ToRolloutSpecTrafficAmbassadorPtrOutputWithContext(context.Background())
+}
+
+func (i RolloutSpecTrafficAmbassadorArgs) ToRolloutSpecTrafficAmbassadorPtrOutputWithContext(ctx context.Context) RolloutSpecTrafficAmbassadorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecTrafficAmbassadorOutput).ToRolloutSpecTrafficAmbassadorPtrOutputWithContext(ctx)
+}
+
+// RolloutSpecTrafficAmbassadorPtrInput is an input type that accepts RolloutSpecTrafficAmbassadorArgs, RolloutSpecTrafficAmbassadorPtr and RolloutSpecTrafficAmbassadorPtrOutput values.
+// You can construct a concrete instance of `RolloutSpecTrafficAmbassadorPtrInput` via:
+//
+//	        RolloutSpecTrafficAmbassadorArgs{...}
+//
+//	or:
+//
+//	        nil
+type RolloutSpecTrafficAmbassadorPtrInput interface {
+	pulumi.Input
+
+	ToRolloutSpecTrafficAmbassadorPtrOutput() RolloutSpecTrafficAmbassadorPtrOutput
+	ToRolloutSpecTrafficAmbassadorPtrOutputWithContext(context.Context) RolloutSpecTrafficAmbassadorPtrOutput
+}
+
+type rolloutSpecTrafficAmbassadorPtrType RolloutSpecTrafficAmbassadorArgs
+
+func RolloutSpecTrafficAmbassadorPtr(v *RolloutSpecTrafficAmbassadorArgs) RolloutSpecTrafficAmbassadorPtrInput {
+	return (*rolloutSpecTrafficAmbassadorPtrType)(v)
+}
+
+func (*rolloutSpecTrafficAmbassadorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolloutSpecTrafficAmbassador)(nil)).Elem()
+}
+
+func (i *rolloutSpecTrafficAmbassadorPtrType) ToRolloutSpecTrafficAmbassadorPtrOutput() RolloutSpecTrafficAmbassadorPtrOutput {
+	return i.ToRolloutSpecTrafficAmbassadorPtrOutputWithContext(context.Background())
+}
+
+func (i *rolloutSpecTrafficAmbassadorPtrType) ToRolloutSpecTrafficAmbassadorPtrOutputWithContext(ctx context.Context) RolloutSpecTrafficAmbassadorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecTrafficAmbassadorPtrOutput)
+}
+
+type RolloutSpecTrafficAmbassadorOutput struct{ *pulumi.OutputState }
+
+func (RolloutSpecTrafficAmbassadorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSpecTrafficAmbassador)(nil)).Elem()
+}
+
+func (o RolloutSpecTrafficAmbassadorOutput) ToRolloutSpecTrafficAmbassadorOutput() RolloutSpecTrafficAmbassadorOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficAmbassadorOutput) ToRolloutSpecTrafficAmbassadorOutputWithContext(ctx context.Context) RolloutSpecTrafficAmbassadorOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficAmbassadorOutput) ToRolloutSpecTrafficAmbassadorPtrOutput() RolloutSpecTrafficAmbassadorPtrOutput {
+	return o.ToRolloutSpecTrafficAmbassadorPtrOutputWithContext(context.Background())
+}
+
+func (o RolloutSpecTrafficAmbassadorOutput) ToRolloutSpecTrafficAmbassadorPtrOutputWithContext(ctx context.Context) RolloutSpecTrafficAmbassadorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RolloutSpecTrafficAmbassador) *RolloutSpecTrafficAmbassador {
+		return &v
+	}).(RolloutSpecTrafficAmbassadorPtrOutput)
+}
+
+func (o RolloutSpecTrafficAmbassadorOutput) Mappings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RolloutSpecTrafficAmbassador) []string { return v.Mappings }).(pulumi.StringArrayOutput)
+}
+
+type RolloutSpecTrafficAmbassadorPtrOutput struct{ *pulumi.OutputState }
+
+func (RolloutSpecTrafficAmbassadorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolloutSpecTrafficAmbassador)(nil)).Elem()
+}
+
+func (o RolloutSpecTrafficAmbassadorPtrOutput) ToRolloutSpecTrafficAmbassadorPtrOutput() RolloutSpecTrafficAmbassadorPtrOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficAmbassadorPtrOutput) ToRolloutSpecTrafficAmbassadorPtrOutputWithContext(ctx context.Context) RolloutSpecTrafficAmbassadorPtrOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficAmbassadorPtrOutput) Elem() RolloutSpecTrafficAmbassadorOutput {
+	return o.ApplyT(func(v *RolloutSpecTrafficAmbassador) RolloutSpecTrafficAmbassador {
+		if v != nil {
+			return *v
+		}
+		var ret RolloutSpecTrafficAmbassador
+		return ret
+	}).(RolloutSpecTrafficAmbassadorOutput)
+}
+
+func (o RolloutSpecTrafficAmbassadorPtrOutput) Mappings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RolloutSpecTrafficAmbassador) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Mappings
+	}).(pulumi.StringArrayOutput)
+}
+
+type RolloutSpecTrafficIstio struct {
+	DestinationRule *RolloutSpecTrafficIstioDestinationRule `pulumi:"destinationRule"`
+	VirtualServices []RolloutSpecTrafficIstioVirtualService `pulumi:"virtualServices"`
+}
+
+// RolloutSpecTrafficIstioInput is an input type that accepts RolloutSpecTrafficIstioArgs and RolloutSpecTrafficIstioOutput values.
+// You can construct a concrete instance of `RolloutSpecTrafficIstioInput` via:
+//
+//	RolloutSpecTrafficIstioArgs{...}
+type RolloutSpecTrafficIstioInput interface {
+	pulumi.Input
+
+	ToRolloutSpecTrafficIstioOutput() RolloutSpecTrafficIstioOutput
+	ToRolloutSpecTrafficIstioOutputWithContext(context.Context) RolloutSpecTrafficIstioOutput
+}
+
+type RolloutSpecTrafficIstioArgs struct {
+	DestinationRule RolloutSpecTrafficIstioDestinationRulePtrInput  `pulumi:"destinationRule"`
+	VirtualServices RolloutSpecTrafficIstioVirtualServiceArrayInput `pulumi:"virtualServices"`
+}
+
+func (RolloutSpecTrafficIstioArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSpecTrafficIstio)(nil)).Elem()
+}
+
+func (i RolloutSpecTrafficIstioArgs) ToRolloutSpecTrafficIstioOutput() RolloutSpecTrafficIstioOutput {
+	return i.ToRolloutSpecTrafficIstioOutputWithContext(context.Background())
+}
+
+func (i RolloutSpecTrafficIstioArgs) ToRolloutSpecTrafficIstioOutputWithContext(ctx context.Context) RolloutSpecTrafficIstioOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecTrafficIstioOutput)
+}
+
+func (i RolloutSpecTrafficIstioArgs) ToRolloutSpecTrafficIstioPtrOutput() RolloutSpecTrafficIstioPtrOutput {
+	return i.ToRolloutSpecTrafficIstioPtrOutputWithContext(context.Background())
+}
+
+func (i RolloutSpecTrafficIstioArgs) ToRolloutSpecTrafficIstioPtrOutputWithContext(ctx context.Context) RolloutSpecTrafficIstioPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecTrafficIstioOutput).ToRolloutSpecTrafficIstioPtrOutputWithContext(ctx)
+}
+
+// RolloutSpecTrafficIstioPtrInput is an input type that accepts RolloutSpecTrafficIstioArgs, RolloutSpecTrafficIstioPtr and RolloutSpecTrafficIstioPtrOutput values.
+// You can construct a concrete instance of `RolloutSpecTrafficIstioPtrInput` via:
+//
+//	        RolloutSpecTrafficIstioArgs{...}
+//
+//	or:
+//
+//	        nil
+type RolloutSpecTrafficIstioPtrInput interface {
+	pulumi.Input
+
+	ToRolloutSpecTrafficIstioPtrOutput() RolloutSpecTrafficIstioPtrOutput
+	ToRolloutSpecTrafficIstioPtrOutputWithContext(context.Context) RolloutSpecTrafficIstioPtrOutput
+}
+
+type rolloutSpecTrafficIstioPtrType RolloutSpecTrafficIstioArgs
+
+func RolloutSpecTrafficIstioPtr(v *RolloutSpecTrafficIstioArgs) RolloutSpecTrafficIstioPtrInput {
+	return (*rolloutSpecTrafficIstioPtrType)(v)
+}
+
+func (*rolloutSpecTrafficIstioPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolloutSpecTrafficIstio)(nil)).Elem()
+}
+
+func (i *rolloutSpecTrafficIstioPtrType) ToRolloutSpecTrafficIstioPtrOutput() RolloutSpecTrafficIstioPtrOutput {
+	return i.ToRolloutSpecTrafficIstioPtrOutputWithContext(context.Background())
+}
+
+func (i *rolloutSpecTrafficIstioPtrType) ToRolloutSpecTrafficIstioPtrOutputWithContext(ctx context.Context) RolloutSpecTrafficIstioPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecTrafficIstioPtrOutput)
+}
+
+type RolloutSpecTrafficIstioOutput struct{ *pulumi.OutputState }
+
+func (RolloutSpecTrafficIstioOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSpecTrafficIstio)(nil)).Elem()
+}
+
+func (o RolloutSpecTrafficIstioOutput) ToRolloutSpecTrafficIstioOutput() RolloutSpecTrafficIstioOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficIstioOutput) ToRolloutSpecTrafficIstioOutputWithContext(ctx context.Context) RolloutSpecTrafficIstioOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficIstioOutput) ToRolloutSpecTrafficIstioPtrOutput() RolloutSpecTrafficIstioPtrOutput {
+	return o.ToRolloutSpecTrafficIstioPtrOutputWithContext(context.Background())
+}
+
+func (o RolloutSpecTrafficIstioOutput) ToRolloutSpecTrafficIstioPtrOutputWithContext(ctx context.Context) RolloutSpecTrafficIstioPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RolloutSpecTrafficIstio) *RolloutSpecTrafficIstio {
+		return &v
+	}).(RolloutSpecTrafficIstioPtrOutput)
+}
+
+func (o RolloutSpecTrafficIstioOutput) DestinationRule() RolloutSpecTrafficIstioDestinationRulePtrOutput {
+	return o.ApplyT(func(v RolloutSpecTrafficIstio) *RolloutSpecTrafficIstioDestinationRule { return v.DestinationRule }).(RolloutSpecTrafficIstioDestinationRulePtrOutput)
+}
+
+func (o RolloutSpecTrafficIstioOutput) VirtualServices() RolloutSpecTrafficIstioVirtualServiceArrayOutput {
+	return o.ApplyT(func(v RolloutSpecTrafficIstio) []RolloutSpecTrafficIstioVirtualService { return v.VirtualServices }).(RolloutSpecTrafficIstioVirtualServiceArrayOutput)
+}
+
+type RolloutSpecTrafficIstioPtrOutput struct{ *pulumi.OutputState }
+
+func (RolloutSpecTrafficIstioPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolloutSpecTrafficIstio)(nil)).Elem()
+}
+
+func (o RolloutSpecTrafficIstioPtrOutput) ToRolloutSpecTrafficIstioPtrOutput() RolloutSpecTrafficIstioPtrOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficIstioPtrOutput) ToRolloutSpecTrafficIstioPtrOutputWithContext(ctx context.Context) RolloutSpecTrafficIstioPtrOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficIstioPtrOutput) Elem() RolloutSpecTrafficIstioOutput {
+	return o.ApplyT(func(v *RolloutSpecTrafficIstio) RolloutSpecTrafficIstio {
+		if v != nil {
+			return *v
+		}
+		var ret RolloutSpecTrafficIstio
+		return ret
+	}).(RolloutSpecTrafficIstioOutput)
+}
+
+func (o RolloutSpecTrafficIstioPtrOutput) DestinationRule() RolloutSpecTrafficIstioDestinationRulePtrOutput {
+	return o.ApplyT(func(v *RolloutSpecTrafficIstio) *RolloutSpecTrafficIstioDestinationRule {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationRule
+	}).(RolloutSpecTrafficIstioDestinationRulePtrOutput)
+}
+
+func (o RolloutSpecTrafficIstioPtrOutput) VirtualServices() RolloutSpecTrafficIstioVirtualServiceArrayOutput {
+	return o.ApplyT(func(v *RolloutSpecTrafficIstio) []RolloutSpecTrafficIstioVirtualService {
+		if v == nil {
+			return nil
+		}
+		return v.VirtualServices
+	}).(RolloutSpecTrafficIstioVirtualServiceArrayOutput)
+}
+
+type RolloutSpecTrafficIstioDestinationRule struct {
+	CanarySubsetName    string `pulumi:"canarySubsetName"`
+	DestinationRuleName string `pulumi:"destinationRuleName"`
+	StableSubsetName    string `pulumi:"stableSubsetName"`
+}
+
+// RolloutSpecTrafficIstioDestinationRuleInput is an input type that accepts RolloutSpecTrafficIstioDestinationRuleArgs and RolloutSpecTrafficIstioDestinationRuleOutput values.
+// You can construct a concrete instance of `RolloutSpecTrafficIstioDestinationRuleInput` via:
+//
+//	RolloutSpecTrafficIstioDestinationRuleArgs{...}
+type RolloutSpecTrafficIstioDestinationRuleInput interface {
+	pulumi.Input
+
+	ToRolloutSpecTrafficIstioDestinationRuleOutput() RolloutSpecTrafficIstioDestinationRuleOutput
+	ToRolloutSpecTrafficIstioDestinationRuleOutputWithContext(context.Context) RolloutSpecTrafficIstioDestinationRuleOutput
+}
+
+type RolloutSpecTrafficIstioDestinationRuleArgs struct {
+	CanarySubsetName    pulumi.StringInput `pulumi:"canarySubsetName"`
+	DestinationRuleName pulumi.StringInput `pulumi:"destinationRuleName"`
+	StableSubsetName    pulumi.StringInput `pulumi:"stableSubsetName"`
+}
+
+func (RolloutSpecTrafficIstioDestinationRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSpecTrafficIstioDestinationRule)(nil)).Elem()
+}
+
+func (i RolloutSpecTrafficIstioDestinationRuleArgs) ToRolloutSpecTrafficIstioDestinationRuleOutput() RolloutSpecTrafficIstioDestinationRuleOutput {
+	return i.ToRolloutSpecTrafficIstioDestinationRuleOutputWithContext(context.Background())
+}
+
+func (i RolloutSpecTrafficIstioDestinationRuleArgs) ToRolloutSpecTrafficIstioDestinationRuleOutputWithContext(ctx context.Context) RolloutSpecTrafficIstioDestinationRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecTrafficIstioDestinationRuleOutput)
+}
+
+func (i RolloutSpecTrafficIstioDestinationRuleArgs) ToRolloutSpecTrafficIstioDestinationRulePtrOutput() RolloutSpecTrafficIstioDestinationRulePtrOutput {
+	return i.ToRolloutSpecTrafficIstioDestinationRulePtrOutputWithContext(context.Background())
+}
+
+func (i RolloutSpecTrafficIstioDestinationRuleArgs) ToRolloutSpecTrafficIstioDestinationRulePtrOutputWithContext(ctx context.Context) RolloutSpecTrafficIstioDestinationRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecTrafficIstioDestinationRuleOutput).ToRolloutSpecTrafficIstioDestinationRulePtrOutputWithContext(ctx)
+}
+
+// RolloutSpecTrafficIstioDestinationRulePtrInput is an input type that accepts RolloutSpecTrafficIstioDestinationRuleArgs, RolloutSpecTrafficIstioDestinationRulePtr and RolloutSpecTrafficIstioDestinationRulePtrOutput values.
+// You can construct a concrete instance of `RolloutSpecTrafficIstioDestinationRulePtrInput` via:
+//
+//	        RolloutSpecTrafficIstioDestinationRuleArgs{...}
+//
+//	or:
+//
+//	        nil
+type RolloutSpecTrafficIstioDestinationRulePtrInput interface {
+	pulumi.Input
+
+	ToRolloutSpecTrafficIstioDestinationRulePtrOutput() RolloutSpecTrafficIstioDestinationRulePtrOutput
+	ToRolloutSpecTrafficIstioDestinationRulePtrOutputWithContext(context.Context) RolloutSpecTrafficIstioDestinationRulePtrOutput
+}
+
+type rolloutSpecTrafficIstioDestinationRulePtrType RolloutSpecTrafficIstioDestinationRuleArgs
+
+func RolloutSpecTrafficIstioDestinationRulePtr(v *RolloutSpecTrafficIstioDestinationRuleArgs) RolloutSpecTrafficIstioDestinationRulePtrInput {
+	return (*rolloutSpecTrafficIstioDestinationRulePtrType)(v)
+}
+
+func (*rolloutSpecTrafficIstioDestinationRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolloutSpecTrafficIstioDestinationRule)(nil)).Elem()
+}
+
+func (i *rolloutSpecTrafficIstioDestinationRulePtrType) ToRolloutSpecTrafficIstioDestinationRulePtrOutput() RolloutSpecTrafficIstioDestinationRulePtrOutput {
+	return i.ToRolloutSpecTrafficIstioDestinationRulePtrOutputWithContext(context.Background())
+}
+
+func (i *rolloutSpecTrafficIstioDestinationRulePtrType) ToRolloutSpecTrafficIstioDestinationRulePtrOutputWithContext(ctx context.Context) RolloutSpecTrafficIstioDestinationRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecTrafficIstioDestinationRulePtrOutput)
+}
+
+type RolloutSpecTrafficIstioDestinationRuleOutput struct{ *pulumi.OutputState }
+
+func (RolloutSpecTrafficIstioDestinationRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSpecTrafficIstioDestinationRule)(nil)).Elem()
+}
+
+func (o RolloutSpecTrafficIstioDestinationRuleOutput) ToRolloutSpecTrafficIstioDestinationRuleOutput() RolloutSpecTrafficIstioDestinationRuleOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficIstioDestinationRuleOutput) ToRolloutSpecTrafficIstioDestinationRuleOutputWithContext(ctx context.Context) RolloutSpecTrafficIstioDestinationRuleOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficIstioDestinationRuleOutput) ToRolloutSpecTrafficIstioDestinationRulePtrOutput() RolloutSpecTrafficIstioDestinationRulePtrOutput {
+	return o.ToRolloutSpecTrafficIstioDestinationRulePtrOutputWithContext(context.Background())
+}
+
+func (o RolloutSpecTrafficIstioDestinationRuleOutput) ToRolloutSpecTrafficIstioDestinationRulePtrOutputWithContext(ctx context.Context) RolloutSpecTrafficIstioDestinationRulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RolloutSpecTrafficIstioDestinationRule) *RolloutSpecTrafficIstioDestinationRule {
+		return &v
+	}).(RolloutSpecTrafficIstioDestinationRulePtrOutput)
+}
+
+func (o RolloutSpecTrafficIstioDestinationRuleOutput) CanarySubsetName() pulumi.StringOutput {
+	return o.ApplyT(func(v RolloutSpecTrafficIstioDestinationRule) string { return v.CanarySubsetName }).(pulumi.StringOutput)
+}
+
+func (o RolloutSpecTrafficIstioDestinationRuleOutput) DestinationRuleName() pulumi.StringOutput {
+	return o.ApplyT(func(v RolloutSpecTrafficIstioDestinationRule) string { return v.DestinationRuleName }).(pulumi.StringOutput)
+}
+
+func (o RolloutSpecTrafficIstioDestinationRuleOutput) StableSubsetName() pulumi.StringOutput {
+	return o.ApplyT(func(v RolloutSpecTrafficIstioDestinationRule) string { return v.StableSubsetName }).(pulumi.StringOutput)
+}
+
+type RolloutSpecTrafficIstioDestinationRulePtrOutput struct{ *pulumi.OutputState }
+
+func (RolloutSpecTrafficIstioDestinationRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolloutSpecTrafficIstioDestinationRule)(nil)).Elem()
+}
+
+func (o RolloutSpecTrafficIstioDestinationRulePtrOutput) ToRolloutSpecTrafficIstioDestinationRulePtrOutput() RolloutSpecTrafficIstioDestinationRulePtrOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficIstioDestinationRulePtrOutput) ToRolloutSpecTrafficIstioDestinationRulePtrOutputWithContext(ctx context.Context) RolloutSpecTrafficIstioDestinationRulePtrOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficIstioDestinationRulePtrOutput) Elem() RolloutSpecTrafficIstioDestinationRuleOutput {
+	return o.ApplyT(func(v *RolloutSpecTrafficIstioDestinationRule) RolloutSpecTrafficIstioDestinationRule {
+		if v != nil {
+			return *v
+		}
+		var ret RolloutSpecTrafficIstioDestinationRule
+		return ret
+	}).(RolloutSpecTrafficIstioDestinationRuleOutput)
+}
+
+func (o RolloutSpecTrafficIstioDestinationRulePtrOutput) CanarySubsetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RolloutSpecTrafficIstioDestinationRule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CanarySubsetName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RolloutSpecTrafficIstioDestinationRulePtrOutput) DestinationRuleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RolloutSpecTrafficIstioDestinationRule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DestinationRuleName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RolloutSpecTrafficIstioDestinationRulePtrOutput) StableSubsetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RolloutSpecTrafficIstioDestinationRule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StableSubsetName
+	}).(pulumi.StringPtrOutput)
+}
+
+type RolloutSpecTrafficIstioVirtualService struct {
+	TlsRoutes            []RolloutSpecTrafficIstioVirtualServiceTlsRoute `pulumi:"tlsRoutes"`
+	VirtualServiceName   string                                          `pulumi:"virtualServiceName"`
+	VirtualServiceRoutes []string                                        `pulumi:"virtualServiceRoutes"`
+}
+
+// RolloutSpecTrafficIstioVirtualServiceInput is an input type that accepts RolloutSpecTrafficIstioVirtualServiceArgs and RolloutSpecTrafficIstioVirtualServiceOutput values.
+// You can construct a concrete instance of `RolloutSpecTrafficIstioVirtualServiceInput` via:
+//
+//	RolloutSpecTrafficIstioVirtualServiceArgs{...}
+type RolloutSpecTrafficIstioVirtualServiceInput interface {
+	pulumi.Input
+
+	ToRolloutSpecTrafficIstioVirtualServiceOutput() RolloutSpecTrafficIstioVirtualServiceOutput
+	ToRolloutSpecTrafficIstioVirtualServiceOutputWithContext(context.Context) RolloutSpecTrafficIstioVirtualServiceOutput
+}
+
+type RolloutSpecTrafficIstioVirtualServiceArgs struct {
+	TlsRoutes            RolloutSpecTrafficIstioVirtualServiceTlsRouteArrayInput `pulumi:"tlsRoutes"`
+	VirtualServiceName   pulumi.StringInput                                      `pulumi:"virtualServiceName"`
+	VirtualServiceRoutes pulumi.StringArrayInput                                 `pulumi:"virtualServiceRoutes"`
+}
+
+func (RolloutSpecTrafficIstioVirtualServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSpecTrafficIstioVirtualService)(nil)).Elem()
+}
+
+func (i RolloutSpecTrafficIstioVirtualServiceArgs) ToRolloutSpecTrafficIstioVirtualServiceOutput() RolloutSpecTrafficIstioVirtualServiceOutput {
+	return i.ToRolloutSpecTrafficIstioVirtualServiceOutputWithContext(context.Background())
+}
+
+func (i RolloutSpecTrafficIstioVirtualServiceArgs) ToRolloutSpecTrafficIstioVirtualServiceOutputWithContext(ctx context.Context) RolloutSpecTrafficIstioVirtualServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecTrafficIstioVirtualServiceOutput)
+}
+
+// RolloutSpecTrafficIstioVirtualServiceArrayInput is an input type that accepts RolloutSpecTrafficIstioVirtualServiceArray and RolloutSpecTrafficIstioVirtualServiceArrayOutput values.
+// You can construct a concrete instance of `RolloutSpecTrafficIstioVirtualServiceArrayInput` via:
+//
+//	RolloutSpecTrafficIstioVirtualServiceArray{ RolloutSpecTrafficIstioVirtualServiceArgs{...} }
+type RolloutSpecTrafficIstioVirtualServiceArrayInput interface {
+	pulumi.Input
+
+	ToRolloutSpecTrafficIstioVirtualServiceArrayOutput() RolloutSpecTrafficIstioVirtualServiceArrayOutput
+	ToRolloutSpecTrafficIstioVirtualServiceArrayOutputWithContext(context.Context) RolloutSpecTrafficIstioVirtualServiceArrayOutput
+}
+
+type RolloutSpecTrafficIstioVirtualServiceArray []RolloutSpecTrafficIstioVirtualServiceInput
+
+func (RolloutSpecTrafficIstioVirtualServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RolloutSpecTrafficIstioVirtualService)(nil)).Elem()
+}
+
+func (i RolloutSpecTrafficIstioVirtualServiceArray) ToRolloutSpecTrafficIstioVirtualServiceArrayOutput() RolloutSpecTrafficIstioVirtualServiceArrayOutput {
+	return i.ToRolloutSpecTrafficIstioVirtualServiceArrayOutputWithContext(context.Background())
+}
+
+func (i RolloutSpecTrafficIstioVirtualServiceArray) ToRolloutSpecTrafficIstioVirtualServiceArrayOutputWithContext(ctx context.Context) RolloutSpecTrafficIstioVirtualServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecTrafficIstioVirtualServiceArrayOutput)
+}
+
+type RolloutSpecTrafficIstioVirtualServiceOutput struct{ *pulumi.OutputState }
+
+func (RolloutSpecTrafficIstioVirtualServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSpecTrafficIstioVirtualService)(nil)).Elem()
+}
+
+func (o RolloutSpecTrafficIstioVirtualServiceOutput) ToRolloutSpecTrafficIstioVirtualServiceOutput() RolloutSpecTrafficIstioVirtualServiceOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficIstioVirtualServiceOutput) ToRolloutSpecTrafficIstioVirtualServiceOutputWithContext(ctx context.Context) RolloutSpecTrafficIstioVirtualServiceOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficIstioVirtualServiceOutput) TlsRoutes() RolloutSpecTrafficIstioVirtualServiceTlsRouteArrayOutput {
+	return o.ApplyT(func(v RolloutSpecTrafficIstioVirtualService) []RolloutSpecTrafficIstioVirtualServiceTlsRoute {
+		return v.TlsRoutes
+	}).(RolloutSpecTrafficIstioVirtualServiceTlsRouteArrayOutput)
+}
+
+func (o RolloutSpecTrafficIstioVirtualServiceOutput) VirtualServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v RolloutSpecTrafficIstioVirtualService) string { return v.VirtualServiceName }).(pulumi.StringOutput)
+}
+
+func (o RolloutSpecTrafficIstioVirtualServiceOutput) VirtualServiceRoutes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RolloutSpecTrafficIstioVirtualService) []string { return v.VirtualServiceRoutes }).(pulumi.StringArrayOutput)
+}
+
+type RolloutSpecTrafficIstioVirtualServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (RolloutSpecTrafficIstioVirtualServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RolloutSpecTrafficIstioVirtualService)(nil)).Elem()
+}
+
+func (o RolloutSpecTrafficIstioVirtualServiceArrayOutput) ToRolloutSpecTrafficIstioVirtualServiceArrayOutput() RolloutSpecTrafficIstioVirtualServiceArrayOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficIstioVirtualServiceArrayOutput) ToRolloutSpecTrafficIstioVirtualServiceArrayOutputWithContext(ctx context.Context) RolloutSpecTrafficIstioVirtualServiceArrayOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficIstioVirtualServiceArrayOutput) Index(i pulumi.IntInput) RolloutSpecTrafficIstioVirtualServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RolloutSpecTrafficIstioVirtualService {
+		return vs[0].([]RolloutSpecTrafficIstioVirtualService)[vs[1].(int)]
+	}).(RolloutSpecTrafficIstioVirtualServiceOutput)
+}
+
+type RolloutSpecTrafficIstioVirtualServiceTlsRoute struct {
+	Port     *int     `pulumi:"port"`
+	SniHosts []string `pulumi:"sniHosts"`
+}
+
+// RolloutSpecTrafficIstioVirtualServiceTlsRouteInput is an input type that accepts RolloutSpecTrafficIstioVirtualServiceTlsRouteArgs and RolloutSpecTrafficIstioVirtualServiceTlsRouteOutput values.
+// You can construct a concrete instance of `RolloutSpecTrafficIstioVirtualServiceTlsRouteInput` via:
+//
+//	RolloutSpecTrafficIstioVirtualServiceTlsRouteArgs{...}
+type RolloutSpecTrafficIstioVirtualServiceTlsRouteInput interface {
+	pulumi.Input
+
+	ToRolloutSpecTrafficIstioVirtualServiceTlsRouteOutput() RolloutSpecTrafficIstioVirtualServiceTlsRouteOutput
+	ToRolloutSpecTrafficIstioVirtualServiceTlsRouteOutputWithContext(context.Context) RolloutSpecTrafficIstioVirtualServiceTlsRouteOutput
+}
+
+type RolloutSpecTrafficIstioVirtualServiceTlsRouteArgs struct {
+	Port     pulumi.IntPtrInput      `pulumi:"port"`
+	SniHosts pulumi.StringArrayInput `pulumi:"sniHosts"`
+}
+
+func (RolloutSpecTrafficIstioVirtualServiceTlsRouteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSpecTrafficIstioVirtualServiceTlsRoute)(nil)).Elem()
+}
+
+func (i RolloutSpecTrafficIstioVirtualServiceTlsRouteArgs) ToRolloutSpecTrafficIstioVirtualServiceTlsRouteOutput() RolloutSpecTrafficIstioVirtualServiceTlsRouteOutput {
+	return i.ToRolloutSpecTrafficIstioVirtualServiceTlsRouteOutputWithContext(context.Background())
+}
+
+func (i RolloutSpecTrafficIstioVirtualServiceTlsRouteArgs) ToRolloutSpecTrafficIstioVirtualServiceTlsRouteOutputWithContext(ctx context.Context) RolloutSpecTrafficIstioVirtualServiceTlsRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecTrafficIstioVirtualServiceTlsRouteOutput)
+}
+
+// RolloutSpecTrafficIstioVirtualServiceTlsRouteArrayInput is an input type that accepts RolloutSpecTrafficIstioVirtualServiceTlsRouteArray and RolloutSpecTrafficIstioVirtualServiceTlsRouteArrayOutput values.
+// You can construct a concrete instance of `RolloutSpecTrafficIstioVirtualServiceTlsRouteArrayInput` via:
+//
+//	RolloutSpecTrafficIstioVirtualServiceTlsRouteArray{ RolloutSpecTrafficIstioVirtualServiceTlsRouteArgs{...} }
+type RolloutSpecTrafficIstioVirtualServiceTlsRouteArrayInput interface {
+	pulumi.Input
+
+	ToRolloutSpecTrafficIstioVirtualServiceTlsRouteArrayOutput() RolloutSpecTrafficIstioVirtualServiceTlsRouteArrayOutput
+	ToRolloutSpecTrafficIstioVirtualServiceTlsRouteArrayOutputWithContext(context.Context) RolloutSpecTrafficIstioVirtualServiceTlsRouteArrayOutput
+}
+
+type RolloutSpecTrafficIstioVirtualServiceTlsRouteArray []RolloutSpecTrafficIstioVirtualServiceTlsRouteInput
+
+func (RolloutSpecTrafficIstioVirtualServiceTlsRouteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RolloutSpecTrafficIstioVirtualServiceTlsRoute)(nil)).Elem()
+}
+
+func (i RolloutSpecTrafficIstioVirtualServiceTlsRouteArray) ToRolloutSpecTrafficIstioVirtualServiceTlsRouteArrayOutput() RolloutSpecTrafficIstioVirtualServiceTlsRouteArrayOutput {
+	return i.ToRolloutSpecTrafficIstioVirtualServiceTlsRouteArrayOutputWithContext(context.Background())
+}
+
+func (i RolloutSpecTrafficIstioVirtualServiceTlsRouteArray) ToRolloutSpecTrafficIstioVirtualServiceTlsRouteArrayOutputWithContext(ctx context.Context) RolloutSpecTrafficIstioVirtualServiceTlsRouteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecTrafficIstioVirtualServiceTlsRouteArrayOutput)
+}
+
+type RolloutSpecTrafficIstioVirtualServiceTlsRouteOutput struct{ *pulumi.OutputState }
+
+func (RolloutSpecTrafficIstioVirtualServiceTlsRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSpecTrafficIstioVirtualServiceTlsRoute)(nil)).Elem()
+}
+
+func (o RolloutSpecTrafficIstioVirtualServiceTlsRouteOutput) ToRolloutSpecTrafficIstioVirtualServiceTlsRouteOutput() RolloutSpecTrafficIstioVirtualServiceTlsRouteOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficIstioVirtualServiceTlsRouteOutput) ToRolloutSpecTrafficIstioVirtualServiceTlsRouteOutputWithContext(ctx context.Context) RolloutSpecTrafficIstioVirtualServiceTlsRouteOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficIstioVirtualServiceTlsRouteOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RolloutSpecTrafficIstioVirtualServiceTlsRoute) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+func (o RolloutSpecTrafficIstioVirtualServiceTlsRouteOutput) SniHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RolloutSpecTrafficIstioVirtualServiceTlsRoute) []string { return v.SniHosts }).(pulumi.StringArrayOutput)
+}
+
+type RolloutSpecTrafficIstioVirtualServiceTlsRouteArrayOutput struct{ *pulumi.OutputState }
+
+func (RolloutSpecTrafficIstioVirtualServiceTlsRouteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RolloutSpecTrafficIstioVirtualServiceTlsRoute)(nil)).Elem()
+}
+
+func (o RolloutSpecTrafficIstioVirtualServiceTlsRouteArrayOutput) ToRolloutSpecTrafficIstioVirtualServiceTlsRouteArrayOutput() RolloutSpecTrafficIstioVirtualServiceTlsRouteArrayOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficIstioVirtualServiceTlsRouteArrayOutput) ToRolloutSpecTrafficIstioVirtualServiceTlsRouteArrayOutputWithContext(ctx context.Context) RolloutSpecTrafficIstioVirtualServiceTlsRouteArrayOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficIstioVirtualServiceTlsRouteArrayOutput) Index(i pulumi.IntInput) RolloutSpecTrafficIstioVirtualServiceTlsRouteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RolloutSpecTrafficIstioVirtualServiceTlsRoute {
+		return vs[0].([]RolloutSpecTrafficIstioVirtualServiceTlsRoute)[vs[1].(int)]
+	}).(RolloutSpecTrafficIstioVirtualServiceTlsRouteOutput)
+}
+
+type RolloutSpecTrafficNginx struct {
+	AdditionalIngressAnnotation *RolloutSpecTrafficNginxAdditionalIngressAnnotation `pulumi:"additionalIngressAnnotation"`
+	NginxAnnotationPrefix       *string                                             `pulumi:"nginxAnnotationPrefix"`
+	StableIngress               string                                              `pulumi:"stableIngress"`
+}
+
+// RolloutSpecTrafficNginxInput is an input type that accepts RolloutSpecTrafficNginxArgs and RolloutSpecTrafficNginxOutput values.
+// You can construct a concrete instance of `RolloutSpecTrafficNginxInput` via:
+//
+//	RolloutSpecTrafficNginxArgs{...}
+type RolloutSpecTrafficNginxInput interface {
+	pulumi.Input
+
+	ToRolloutSpecTrafficNginxOutput() RolloutSpecTrafficNginxOutput
+	ToRolloutSpecTrafficNginxOutputWithContext(context.Context) RolloutSpecTrafficNginxOutput
+}
+
+type RolloutSpecTrafficNginxArgs struct {
+	AdditionalIngressAnnotation RolloutSpecTrafficNginxAdditionalIngressAnnotationPtrInput `pulumi:"additionalIngressAnnotation"`
+	NginxAnnotationPrefix       pulumi.StringPtrInput                                      `pulumi:"nginxAnnotationPrefix"`
+	StableIngress               pulumi.StringInput                                         `pulumi:"stableIngress"`
+}
+
+func (RolloutSpecTrafficNginxArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSpecTrafficNginx)(nil)).Elem()
+}
+
+func (i RolloutSpecTrafficNginxArgs) ToRolloutSpecTrafficNginxOutput() RolloutSpecTrafficNginxOutput {
+	return i.ToRolloutSpecTrafficNginxOutputWithContext(context.Background())
+}
+
+func (i RolloutSpecTrafficNginxArgs) ToRolloutSpecTrafficNginxOutputWithContext(ctx context.Context) RolloutSpecTrafficNginxOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecTrafficNginxOutput)
+}
+
+func (i RolloutSpecTrafficNginxArgs) ToRolloutSpecTrafficNginxPtrOutput() RolloutSpecTrafficNginxPtrOutput {
+	return i.ToRolloutSpecTrafficNginxPtrOutputWithContext(context.Background())
+}
+
+func (i RolloutSpecTrafficNginxArgs) ToRolloutSpecTrafficNginxPtrOutputWithContext(ctx context.Context) RolloutSpecTrafficNginxPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecTrafficNginxOutput).ToRolloutSpecTrafficNginxPtrOutputWithContext(ctx)
+}
+
+// RolloutSpecTrafficNginxPtrInput is an input type that accepts RolloutSpecTrafficNginxArgs, RolloutSpecTrafficNginxPtr and RolloutSpecTrafficNginxPtrOutput values.
+// You can construct a concrete instance of `RolloutSpecTrafficNginxPtrInput` via:
+//
+//	        RolloutSpecTrafficNginxArgs{...}
+//
+//	or:
+//
+//	        nil
+type RolloutSpecTrafficNginxPtrInput interface {
+	pulumi.Input
+
+	ToRolloutSpecTrafficNginxPtrOutput() RolloutSpecTrafficNginxPtrOutput
+	ToRolloutSpecTrafficNginxPtrOutputWithContext(context.Context) RolloutSpecTrafficNginxPtrOutput
+}
+
+type rolloutSpecTrafficNginxPtrType RolloutSpecTrafficNginxArgs
+
+func RolloutSpecTrafficNginxPtr(v *RolloutSpecTrafficNginxArgs) RolloutSpecTrafficNginxPtrInput {
+	return (*rolloutSpecTrafficNginxPtrType)(v)
+}
+
+func (*rolloutSpecTrafficNginxPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolloutSpecTrafficNginx)(nil)).Elem()
+}
+
+func (i *rolloutSpecTrafficNginxPtrType) ToRolloutSpecTrafficNginxPtrOutput() RolloutSpecTrafficNginxPtrOutput {
+	return i.ToRolloutSpecTrafficNginxPtrOutputWithContext(context.Background())
+}
+
+func (i *rolloutSpecTrafficNginxPtrType) ToRolloutSpecTrafficNginxPtrOutputWithContext(ctx context.Context) RolloutSpecTrafficNginxPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecTrafficNginxPtrOutput)
+}
+
+type RolloutSpecTrafficNginxOutput struct{ *pulumi.OutputState }
+
+func (RolloutSpecTrafficNginxOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSpecTrafficNginx)(nil)).Elem()
+}
+
+func (o RolloutSpecTrafficNginxOutput) ToRolloutSpecTrafficNginxOutput() RolloutSpecTrafficNginxOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficNginxOutput) ToRolloutSpecTrafficNginxOutputWithContext(ctx context.Context) RolloutSpecTrafficNginxOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficNginxOutput) ToRolloutSpecTrafficNginxPtrOutput() RolloutSpecTrafficNginxPtrOutput {
+	return o.ToRolloutSpecTrafficNginxPtrOutputWithContext(context.Background())
+}
+
+func (o RolloutSpecTrafficNginxOutput) ToRolloutSpecTrafficNginxPtrOutputWithContext(ctx context.Context) RolloutSpecTrafficNginxPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RolloutSpecTrafficNginx) *RolloutSpecTrafficNginx {
+		return &v
+	}).(RolloutSpecTrafficNginxPtrOutput)
+}
+
+func (o RolloutSpecTrafficNginxOutput) AdditionalIngressAnnotation() RolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutput {
+	return o.ApplyT(func(v RolloutSpecTrafficNginx) *RolloutSpecTrafficNginxAdditionalIngressAnnotation {
+		return v.AdditionalIngressAnnotation
+	}).(RolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutput)
+}
+
+func (o RolloutSpecTrafficNginxOutput) NginxAnnotationPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RolloutSpecTrafficNginx) *string { return v.NginxAnnotationPrefix }).(pulumi.StringPtrOutput)
+}
+
+func (o RolloutSpecTrafficNginxOutput) StableIngress() pulumi.StringOutput {
+	return o.ApplyT(func(v RolloutSpecTrafficNginx) string { return v.StableIngress }).(pulumi.StringOutput)
+}
+
+type RolloutSpecTrafficNginxPtrOutput struct{ *pulumi.OutputState }
+
+func (RolloutSpecTrafficNginxPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolloutSpecTrafficNginx)(nil)).Elem()
+}
+
+func (o RolloutSpecTrafficNginxPtrOutput) ToRolloutSpecTrafficNginxPtrOutput() RolloutSpecTrafficNginxPtrOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficNginxPtrOutput) ToRolloutSpecTrafficNginxPtrOutputWithContext(ctx context.Context) RolloutSpecTrafficNginxPtrOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficNginxPtrOutput) Elem() RolloutSpecTrafficNginxOutput {
+	return o.ApplyT(func(v *RolloutSpecTrafficNginx) RolloutSpecTrafficNginx {
+		if v != nil {
+			return *v
+		}
+		var ret RolloutSpecTrafficNginx
+		return ret
+	}).(RolloutSpecTrafficNginxOutput)
+}
+
+func (o RolloutSpecTrafficNginxPtrOutput) AdditionalIngressAnnotation() RolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutput {
+	return o.ApplyT(func(v *RolloutSpecTrafficNginx) *RolloutSpecTrafficNginxAdditionalIngressAnnotation {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalIngressAnnotation
+	}).(RolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutput)
+}
+
+func (o RolloutSpecTrafficNginxPtrOutput) NginxAnnotationPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RolloutSpecTrafficNginx) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NginxAnnotationPrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RolloutSpecTrafficNginxPtrOutput) StableIngress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RolloutSpecTrafficNginx) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StableIngress
+	}).(pulumi.StringPtrOutput)
+}
+
+type RolloutSpecTrafficNginxAdditionalIngressAnnotation struct {
+	CanaryByHeader *string `pulumi:"canaryByHeader"`
+	Key1           *string `pulumi:"key1"`
+}
+
+// RolloutSpecTrafficNginxAdditionalIngressAnnotationInput is an input type that accepts RolloutSpecTrafficNginxAdditionalIngressAnnotationArgs and RolloutSpecTrafficNginxAdditionalIngressAnnotationOutput values.
+// You can construct a concrete instance of `RolloutSpecTrafficNginxAdditionalIngressAnnotationInput` via:
+//
+//	RolloutSpecTrafficNginxAdditionalIngressAnnotationArgs{...}
+type RolloutSpecTrafficNginxAdditionalIngressAnnotationInput interface {
+	pulumi.Input
+
+	ToRolloutSpecTrafficNginxAdditionalIngressAnnotationOutput() RolloutSpecTrafficNginxAdditionalIngressAnnotationOutput
+	ToRolloutSpecTrafficNginxAdditionalIngressAnnotationOutputWithContext(context.Context) RolloutSpecTrafficNginxAdditionalIngressAnnotationOutput
+}
+
+type RolloutSpecTrafficNginxAdditionalIngressAnnotationArgs struct {
+	CanaryByHeader pulumi.StringPtrInput `pulumi:"canaryByHeader"`
+	Key1           pulumi.StringPtrInput `pulumi:"key1"`
+}
+
+func (RolloutSpecTrafficNginxAdditionalIngressAnnotationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSpecTrafficNginxAdditionalIngressAnnotation)(nil)).Elem()
+}
+
+func (i RolloutSpecTrafficNginxAdditionalIngressAnnotationArgs) ToRolloutSpecTrafficNginxAdditionalIngressAnnotationOutput() RolloutSpecTrafficNginxAdditionalIngressAnnotationOutput {
+	return i.ToRolloutSpecTrafficNginxAdditionalIngressAnnotationOutputWithContext(context.Background())
+}
+
+func (i RolloutSpecTrafficNginxAdditionalIngressAnnotationArgs) ToRolloutSpecTrafficNginxAdditionalIngressAnnotationOutputWithContext(ctx context.Context) RolloutSpecTrafficNginxAdditionalIngressAnnotationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecTrafficNginxAdditionalIngressAnnotationOutput)
+}
+
+func (i RolloutSpecTrafficNginxAdditionalIngressAnnotationArgs) ToRolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutput() RolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutput {
+	return i.ToRolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutputWithContext(context.Background())
+}
+
+func (i RolloutSpecTrafficNginxAdditionalIngressAnnotationArgs) ToRolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutputWithContext(ctx context.Context) RolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecTrafficNginxAdditionalIngressAnnotationOutput).ToRolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutputWithContext(ctx)
+}
+
+// RolloutSpecTrafficNginxAdditionalIngressAnnotationPtrInput is an input type that accepts RolloutSpecTrafficNginxAdditionalIngressAnnotationArgs, RolloutSpecTrafficNginxAdditionalIngressAnnotationPtr and RolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutput values.
+// You can construct a concrete instance of `RolloutSpecTrafficNginxAdditionalIngressAnnotationPtrInput` via:
+//
+//	        RolloutSpecTrafficNginxAdditionalIngressAnnotationArgs{...}
+//
+//	or:
+//
+//	        nil
+type RolloutSpecTrafficNginxAdditionalIngressAnnotationPtrInput interface {
+	pulumi.Input
+
+	ToRolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutput() RolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutput
+	ToRolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutputWithContext(context.Context) RolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutput
+}
+
+type rolloutSpecTrafficNginxAdditionalIngressAnnotationPtrType RolloutSpecTrafficNginxAdditionalIngressAnnotationArgs
+
+func RolloutSpecTrafficNginxAdditionalIngressAnnotationPtr(v *RolloutSpecTrafficNginxAdditionalIngressAnnotationArgs) RolloutSpecTrafficNginxAdditionalIngressAnnotationPtrInput {
+	return (*rolloutSpecTrafficNginxAdditionalIngressAnnotationPtrType)(v)
+}
+
+func (*rolloutSpecTrafficNginxAdditionalIngressAnnotationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolloutSpecTrafficNginxAdditionalIngressAnnotation)(nil)).Elem()
+}
+
+func (i *rolloutSpecTrafficNginxAdditionalIngressAnnotationPtrType) ToRolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutput() RolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutput {
+	return i.ToRolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutputWithContext(context.Background())
+}
+
+func (i *rolloutSpecTrafficNginxAdditionalIngressAnnotationPtrType) ToRolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutputWithContext(ctx context.Context) RolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutput)
+}
+
+type RolloutSpecTrafficNginxAdditionalIngressAnnotationOutput struct{ *pulumi.OutputState }
+
+func (RolloutSpecTrafficNginxAdditionalIngressAnnotationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSpecTrafficNginxAdditionalIngressAnnotation)(nil)).Elem()
+}
+
+func (o RolloutSpecTrafficNginxAdditionalIngressAnnotationOutput) ToRolloutSpecTrafficNginxAdditionalIngressAnnotationOutput() RolloutSpecTrafficNginxAdditionalIngressAnnotationOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficNginxAdditionalIngressAnnotationOutput) ToRolloutSpecTrafficNginxAdditionalIngressAnnotationOutputWithContext(ctx context.Context) RolloutSpecTrafficNginxAdditionalIngressAnnotationOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficNginxAdditionalIngressAnnotationOutput) ToRolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutput() RolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutput {
+	return o.ToRolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutputWithContext(context.Background())
+}
+
+func (o RolloutSpecTrafficNginxAdditionalIngressAnnotationOutput) ToRolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutputWithContext(ctx context.Context) RolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RolloutSpecTrafficNginxAdditionalIngressAnnotation) *RolloutSpecTrafficNginxAdditionalIngressAnnotation {
+		return &v
+	}).(RolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutput)
+}
+
+func (o RolloutSpecTrafficNginxAdditionalIngressAnnotationOutput) CanaryByHeader() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RolloutSpecTrafficNginxAdditionalIngressAnnotation) *string { return v.CanaryByHeader }).(pulumi.StringPtrOutput)
+}
+
+func (o RolloutSpecTrafficNginxAdditionalIngressAnnotationOutput) Key1() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RolloutSpecTrafficNginxAdditionalIngressAnnotation) *string { return v.Key1 }).(pulumi.StringPtrOutput)
+}
+
+type RolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutput struct{ *pulumi.OutputState }
+
+func (RolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolloutSpecTrafficNginxAdditionalIngressAnnotation)(nil)).Elem()
+}
+
+func (o RolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutput) ToRolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutput() RolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutput) ToRolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutputWithContext(ctx context.Context) RolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutput) Elem() RolloutSpecTrafficNginxAdditionalIngressAnnotationOutput {
+	return o.ApplyT(func(v *RolloutSpecTrafficNginxAdditionalIngressAnnotation) RolloutSpecTrafficNginxAdditionalIngressAnnotation {
+		if v != nil {
+			return *v
+		}
+		var ret RolloutSpecTrafficNginxAdditionalIngressAnnotation
+		return ret
+	}).(RolloutSpecTrafficNginxAdditionalIngressAnnotationOutput)
+}
+
+func (o RolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutput) CanaryByHeader() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RolloutSpecTrafficNginxAdditionalIngressAnnotation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CanaryByHeader
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutput) Key1() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RolloutSpecTrafficNginxAdditionalIngressAnnotation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key1
+	}).(pulumi.StringPtrOutput)
+}
+
+type RolloutSpecTrafficPingPong struct {
+	PingService string `pulumi:"pingService"`
+	PongService string `pulumi:"pongService"`
+}
+
+// RolloutSpecTrafficPingPongInput is an input type that accepts RolloutSpecTrafficPingPongArgs and RolloutSpecTrafficPingPongOutput values.
+// You can construct a concrete instance of `RolloutSpecTrafficPingPongInput` via:
+//
+//	RolloutSpecTrafficPingPongArgs{...}
+type RolloutSpecTrafficPingPongInput interface {
+	pulumi.Input
+
+	ToRolloutSpecTrafficPingPongOutput() RolloutSpecTrafficPingPongOutput
+	ToRolloutSpecTrafficPingPongOutputWithContext(context.Context) RolloutSpecTrafficPingPongOutput
+}
+
+type RolloutSpecTrafficPingPongArgs struct {
+	PingService pulumi.StringInput `pulumi:"pingService"`
+	PongService pulumi.StringInput `pulumi:"pongService"`
+}
+
+func (RolloutSpecTrafficPingPongArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSpecTrafficPingPong)(nil)).Elem()
+}
+
+func (i RolloutSpecTrafficPingPongArgs) ToRolloutSpecTrafficPingPongOutput() RolloutSpecTrafficPingPongOutput {
+	return i.ToRolloutSpecTrafficPingPongOutputWithContext(context.Background())
+}
+
+func (i RolloutSpecTrafficPingPongArgs) ToRolloutSpecTrafficPingPongOutputWithContext(ctx context.Context) RolloutSpecTrafficPingPongOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecTrafficPingPongOutput)
+}
+
+func (i RolloutSpecTrafficPingPongArgs) ToRolloutSpecTrafficPingPongPtrOutput() RolloutSpecTrafficPingPongPtrOutput {
+	return i.ToRolloutSpecTrafficPingPongPtrOutputWithContext(context.Background())
+}
+
+func (i RolloutSpecTrafficPingPongArgs) ToRolloutSpecTrafficPingPongPtrOutputWithContext(ctx context.Context) RolloutSpecTrafficPingPongPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecTrafficPingPongOutput).ToRolloutSpecTrafficPingPongPtrOutputWithContext(ctx)
+}
+
+// RolloutSpecTrafficPingPongPtrInput is an input type that accepts RolloutSpecTrafficPingPongArgs, RolloutSpecTrafficPingPongPtr and RolloutSpecTrafficPingPongPtrOutput values.
+// You can construct a concrete instance of `RolloutSpecTrafficPingPongPtrInput` via:
+//
+//	        RolloutSpecTrafficPingPongArgs{...}
+//
+//	or:
+//
+//	        nil
+type RolloutSpecTrafficPingPongPtrInput interface {
+	pulumi.Input
+
+	ToRolloutSpecTrafficPingPongPtrOutput() RolloutSpecTrafficPingPongPtrOutput
+	ToRolloutSpecTrafficPingPongPtrOutputWithContext(context.Context) RolloutSpecTrafficPingPongPtrOutput
+}
+
+type rolloutSpecTrafficPingPongPtrType RolloutSpecTrafficPingPongArgs
+
+func RolloutSpecTrafficPingPongPtr(v *RolloutSpecTrafficPingPongArgs) RolloutSpecTrafficPingPongPtrInput {
+	return (*rolloutSpecTrafficPingPongPtrType)(v)
+}
+
+func (*rolloutSpecTrafficPingPongPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolloutSpecTrafficPingPong)(nil)).Elem()
+}
+
+func (i *rolloutSpecTrafficPingPongPtrType) ToRolloutSpecTrafficPingPongPtrOutput() RolloutSpecTrafficPingPongPtrOutput {
+	return i.ToRolloutSpecTrafficPingPongPtrOutputWithContext(context.Background())
+}
+
+func (i *rolloutSpecTrafficPingPongPtrType) ToRolloutSpecTrafficPingPongPtrOutputWithContext(ctx context.Context) RolloutSpecTrafficPingPongPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecTrafficPingPongPtrOutput)
+}
+
+type RolloutSpecTrafficPingPongOutput struct{ *pulumi.OutputState }
+
+func (RolloutSpecTrafficPingPongOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSpecTrafficPingPong)(nil)).Elem()
+}
+
+func (o RolloutSpecTrafficPingPongOutput) ToRolloutSpecTrafficPingPongOutput() RolloutSpecTrafficPingPongOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficPingPongOutput) ToRolloutSpecTrafficPingPongOutputWithContext(ctx context.Context) RolloutSpecTrafficPingPongOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficPingPongOutput) ToRolloutSpecTrafficPingPongPtrOutput() RolloutSpecTrafficPingPongPtrOutput {
+	return o.ToRolloutSpecTrafficPingPongPtrOutputWithContext(context.Background())
+}
+
+func (o RolloutSpecTrafficPingPongOutput) ToRolloutSpecTrafficPingPongPtrOutputWithContext(ctx context.Context) RolloutSpecTrafficPingPongPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RolloutSpecTrafficPingPong) *RolloutSpecTrafficPingPong {
+		return &v
+	}).(RolloutSpecTrafficPingPongPtrOutput)
+}
+
+func (o RolloutSpecTrafficPingPongOutput) PingService() pulumi.StringOutput {
+	return o.ApplyT(func(v RolloutSpecTrafficPingPong) string { return v.PingService }).(pulumi.StringOutput)
+}
+
+func (o RolloutSpecTrafficPingPongOutput) PongService() pulumi.StringOutput {
+	return o.ApplyT(func(v RolloutSpecTrafficPingPong) string { return v.PongService }).(pulumi.StringOutput)
+}
+
+type RolloutSpecTrafficPingPongPtrOutput struct{ *pulumi.OutputState }
+
+func (RolloutSpecTrafficPingPongPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolloutSpecTrafficPingPong)(nil)).Elem()
+}
+
+func (o RolloutSpecTrafficPingPongPtrOutput) ToRolloutSpecTrafficPingPongPtrOutput() RolloutSpecTrafficPingPongPtrOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficPingPongPtrOutput) ToRolloutSpecTrafficPingPongPtrOutputWithContext(ctx context.Context) RolloutSpecTrafficPingPongPtrOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficPingPongPtrOutput) Elem() RolloutSpecTrafficPingPongOutput {
+	return o.ApplyT(func(v *RolloutSpecTrafficPingPong) RolloutSpecTrafficPingPong {
+		if v != nil {
+			return *v
+		}
+		var ret RolloutSpecTrafficPingPong
+		return ret
+	}).(RolloutSpecTrafficPingPongOutput)
+}
+
+func (o RolloutSpecTrafficPingPongPtrOutput) PingService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RolloutSpecTrafficPingPong) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PingService
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RolloutSpecTrafficPingPongPtrOutput) PongService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RolloutSpecTrafficPingPong) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PongService
+	}).(pulumi.StringPtrOutput)
+}
+
+type RolloutSpecTrafficSmi struct {
+	SmiRootService   *string `pulumi:"smiRootService"`
+	TrafficSplitName *string `pulumi:"trafficSplitName"`
+}
+
+// RolloutSpecTrafficSmiInput is an input type that accepts RolloutSpecTrafficSmiArgs and RolloutSpecTrafficSmiOutput values.
+// You can construct a concrete instance of `RolloutSpecTrafficSmiInput` via:
+//
+//	RolloutSpecTrafficSmiArgs{...}
+type RolloutSpecTrafficSmiInput interface {
+	pulumi.Input
+
+	ToRolloutSpecTrafficSmiOutput() RolloutSpecTrafficSmiOutput
+	ToRolloutSpecTrafficSmiOutputWithContext(context.Context) RolloutSpecTrafficSmiOutput
+}
+
+type RolloutSpecTrafficSmiArgs struct {
+	SmiRootService   pulumi.StringPtrInput `pulumi:"smiRootService"`
+	TrafficSplitName pulumi.StringPtrInput `pulumi:"trafficSplitName"`
+}
+
+func (RolloutSpecTrafficSmiArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSpecTrafficSmi)(nil)).Elem()
+}
+
+func (i RolloutSpecTrafficSmiArgs) ToRolloutSpecTrafficSmiOutput() RolloutSpecTrafficSmiOutput {
+	return i.ToRolloutSpecTrafficSmiOutputWithContext(context.Background())
+}
+
+func (i RolloutSpecTrafficSmiArgs) ToRolloutSpecTrafficSmiOutputWithContext(ctx context.Context) RolloutSpecTrafficSmiOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecTrafficSmiOutput)
+}
+
+func (i RolloutSpecTrafficSmiArgs) ToRolloutSpecTrafficSmiPtrOutput() RolloutSpecTrafficSmiPtrOutput {
+	return i.ToRolloutSpecTrafficSmiPtrOutputWithContext(context.Background())
+}
+
+func (i RolloutSpecTrafficSmiArgs) ToRolloutSpecTrafficSmiPtrOutputWithContext(ctx context.Context) RolloutSpecTrafficSmiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecTrafficSmiOutput).ToRolloutSpecTrafficSmiPtrOutputWithContext(ctx)
+}
+
+// RolloutSpecTrafficSmiPtrInput is an input type that accepts RolloutSpecTrafficSmiArgs, RolloutSpecTrafficSmiPtr and RolloutSpecTrafficSmiPtrOutput values.
+// You can construct a concrete instance of `RolloutSpecTrafficSmiPtrInput` via:
+//
+//	        RolloutSpecTrafficSmiArgs{...}
+//
+//	or:
+//
+//	        nil
+type RolloutSpecTrafficSmiPtrInput interface {
+	pulumi.Input
+
+	ToRolloutSpecTrafficSmiPtrOutput() RolloutSpecTrafficSmiPtrOutput
+	ToRolloutSpecTrafficSmiPtrOutputWithContext(context.Context) RolloutSpecTrafficSmiPtrOutput
+}
+
+type rolloutSpecTrafficSmiPtrType RolloutSpecTrafficSmiArgs
+
+func RolloutSpecTrafficSmiPtr(v *RolloutSpecTrafficSmiArgs) RolloutSpecTrafficSmiPtrInput {
+	return (*rolloutSpecTrafficSmiPtrType)(v)
+}
+
+func (*rolloutSpecTrafficSmiPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolloutSpecTrafficSmi)(nil)).Elem()
+}
+
+func (i *rolloutSpecTrafficSmiPtrType) ToRolloutSpecTrafficSmiPtrOutput() RolloutSpecTrafficSmiPtrOutput {
+	return i.ToRolloutSpecTrafficSmiPtrOutputWithContext(context.Background())
+}
+
+func (i *rolloutSpecTrafficSmiPtrType) ToRolloutSpecTrafficSmiPtrOutputWithContext(ctx context.Context) RolloutSpecTrafficSmiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSpecTrafficSmiPtrOutput)
+}
+
+type RolloutSpecTrafficSmiOutput struct{ *pulumi.OutputState }
+
+func (RolloutSpecTrafficSmiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSpecTrafficSmi)(nil)).Elem()
+}
+
+func (o RolloutSpecTrafficSmiOutput) ToRolloutSpecTrafficSmiOutput() RolloutSpecTrafficSmiOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficSmiOutput) ToRolloutSpecTrafficSmiOutputWithContext(ctx context.Context) RolloutSpecTrafficSmiOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficSmiOutput) ToRolloutSpecTrafficSmiPtrOutput() RolloutSpecTrafficSmiPtrOutput {
+	return o.ToRolloutSpecTrafficSmiPtrOutputWithContext(context.Background())
+}
+
+func (o RolloutSpecTrafficSmiOutput) ToRolloutSpecTrafficSmiPtrOutputWithContext(ctx context.Context) RolloutSpecTrafficSmiPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RolloutSpecTrafficSmi) *RolloutSpecTrafficSmi {
+		return &v
+	}).(RolloutSpecTrafficSmiPtrOutput)
+}
+
+func (o RolloutSpecTrafficSmiOutput) SmiRootService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RolloutSpecTrafficSmi) *string { return v.SmiRootService }).(pulumi.StringPtrOutput)
+}
+
+func (o RolloutSpecTrafficSmiOutput) TrafficSplitName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RolloutSpecTrafficSmi) *string { return v.TrafficSplitName }).(pulumi.StringPtrOutput)
+}
+
+type RolloutSpecTrafficSmiPtrOutput struct{ *pulumi.OutputState }
+
+func (RolloutSpecTrafficSmiPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolloutSpecTrafficSmi)(nil)).Elem()
+}
+
+func (o RolloutSpecTrafficSmiPtrOutput) ToRolloutSpecTrafficSmiPtrOutput() RolloutSpecTrafficSmiPtrOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficSmiPtrOutput) ToRolloutSpecTrafficSmiPtrOutputWithContext(ctx context.Context) RolloutSpecTrafficSmiPtrOutput {
+	return o
+}
+
+func (o RolloutSpecTrafficSmiPtrOutput) Elem() RolloutSpecTrafficSmiOutput {
+	return o.ApplyT(func(v *RolloutSpecTrafficSmi) RolloutSpecTrafficSmi {
+		if v != nil {
+			return *v
+		}
+		var ret RolloutSpecTrafficSmi
+		return ret
+	}).(RolloutSpecTrafficSmiOutput)
+}
+
+func (o RolloutSpecTrafficSmiPtrOutput) SmiRootService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RolloutSpecTrafficSmi) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SmiRootService
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RolloutSpecTrafficSmiPtrOutput) TrafficSplitName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RolloutSpecTrafficSmi) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrafficSplitName
+	}).(pulumi.StringPtrOutput)
+}
+
 type StrategyCanary struct {
 	// A list of background verifications.
 	BackgroundVerification *StrategyCanaryBackgroundVerification `pulumi:"backgroundVerification"`
@@ -2508,7 +5265,3871 @@ func (o VerificationProviderPrometheusPtrOutput) Address() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+type VerificationTemplateArg struct {
+	// Name of an argument.
+	ArgName string `pulumi:"argName"`
+	// String representation of data.
+	Value *string `pulumi:"value"`
+	// ValueFrom object.
+	ValueFrom *VerificationTemplateArgValueFrom `pulumi:"valueFrom"`
+}
+
+// VerificationTemplateArgInput is an input type that accepts VerificationTemplateArgArgs and VerificationTemplateArgOutput values.
+// You can construct a concrete instance of `VerificationTemplateArgInput` via:
+//
+//	VerificationTemplateArgArgs{...}
+type VerificationTemplateArgInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateArgOutput() VerificationTemplateArgOutput
+	ToVerificationTemplateArgOutputWithContext(context.Context) VerificationTemplateArgOutput
+}
+
+type VerificationTemplateArgArgs struct {
+	// Name of an argument.
+	ArgName pulumi.StringInput `pulumi:"argName"`
+	// String representation of data.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+	// ValueFrom object.
+	ValueFrom VerificationTemplateArgValueFromPtrInput `pulumi:"valueFrom"`
+}
+
+func (VerificationTemplateArgArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateArg)(nil)).Elem()
+}
+
+func (i VerificationTemplateArgArgs) ToVerificationTemplateArgOutput() VerificationTemplateArgOutput {
+	return i.ToVerificationTemplateArgOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateArgArgs) ToVerificationTemplateArgOutputWithContext(ctx context.Context) VerificationTemplateArgOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateArgOutput)
+}
+
+// VerificationTemplateArgArrayInput is an input type that accepts VerificationTemplateArgArray and VerificationTemplateArgArrayOutput values.
+// You can construct a concrete instance of `VerificationTemplateArgArrayInput` via:
+//
+//	VerificationTemplateArgArray{ VerificationTemplateArgArgs{...} }
+type VerificationTemplateArgArrayInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateArgArrayOutput() VerificationTemplateArgArrayOutput
+	ToVerificationTemplateArgArrayOutputWithContext(context.Context) VerificationTemplateArgArrayOutput
+}
+
+type VerificationTemplateArgArray []VerificationTemplateArgInput
+
+func (VerificationTemplateArgArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VerificationTemplateArg)(nil)).Elem()
+}
+
+func (i VerificationTemplateArgArray) ToVerificationTemplateArgArrayOutput() VerificationTemplateArgArrayOutput {
+	return i.ToVerificationTemplateArgArrayOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateArgArray) ToVerificationTemplateArgArrayOutputWithContext(ctx context.Context) VerificationTemplateArgArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateArgArrayOutput)
+}
+
+type VerificationTemplateArgOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateArgOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateArg)(nil)).Elem()
+}
+
+func (o VerificationTemplateArgOutput) ToVerificationTemplateArgOutput() VerificationTemplateArgOutput {
+	return o
+}
+
+func (o VerificationTemplateArgOutput) ToVerificationTemplateArgOutputWithContext(ctx context.Context) VerificationTemplateArgOutput {
+	return o
+}
+
+// Name of an argument.
+func (o VerificationTemplateArgOutput) ArgName() pulumi.StringOutput {
+	return o.ApplyT(func(v VerificationTemplateArg) string { return v.ArgName }).(pulumi.StringOutput)
+}
+
+// String representation of data.
+func (o VerificationTemplateArgOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateArg) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+// ValueFrom object.
+func (o VerificationTemplateArgOutput) ValueFrom() VerificationTemplateArgValueFromPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateArg) *VerificationTemplateArgValueFrom { return v.ValueFrom }).(VerificationTemplateArgValueFromPtrOutput)
+}
+
+type VerificationTemplateArgArrayOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateArgArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VerificationTemplateArg)(nil)).Elem()
+}
+
+func (o VerificationTemplateArgArrayOutput) ToVerificationTemplateArgArrayOutput() VerificationTemplateArgArrayOutput {
+	return o
+}
+
+func (o VerificationTemplateArgArrayOutput) ToVerificationTemplateArgArrayOutputWithContext(ctx context.Context) VerificationTemplateArgArrayOutput {
+	return o
+}
+
+func (o VerificationTemplateArgArrayOutput) Index(i pulumi.IntInput) VerificationTemplateArgOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VerificationTemplateArg {
+		return vs[0].([]VerificationTemplateArg)[vs[1].(int)]
+	}).(VerificationTemplateArgOutput)
+}
+
+type VerificationTemplateArgValueFrom struct {
+	SecretKeyRef *VerificationTemplateArgValueFromSecretKeyRef `pulumi:"secretKeyRef"`
+}
+
+// VerificationTemplateArgValueFromInput is an input type that accepts VerificationTemplateArgValueFromArgs and VerificationTemplateArgValueFromOutput values.
+// You can construct a concrete instance of `VerificationTemplateArgValueFromInput` via:
+//
+//	VerificationTemplateArgValueFromArgs{...}
+type VerificationTemplateArgValueFromInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateArgValueFromOutput() VerificationTemplateArgValueFromOutput
+	ToVerificationTemplateArgValueFromOutputWithContext(context.Context) VerificationTemplateArgValueFromOutput
+}
+
+type VerificationTemplateArgValueFromArgs struct {
+	SecretKeyRef VerificationTemplateArgValueFromSecretKeyRefPtrInput `pulumi:"secretKeyRef"`
+}
+
+func (VerificationTemplateArgValueFromArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateArgValueFrom)(nil)).Elem()
+}
+
+func (i VerificationTemplateArgValueFromArgs) ToVerificationTemplateArgValueFromOutput() VerificationTemplateArgValueFromOutput {
+	return i.ToVerificationTemplateArgValueFromOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateArgValueFromArgs) ToVerificationTemplateArgValueFromOutputWithContext(ctx context.Context) VerificationTemplateArgValueFromOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateArgValueFromOutput)
+}
+
+func (i VerificationTemplateArgValueFromArgs) ToVerificationTemplateArgValueFromPtrOutput() VerificationTemplateArgValueFromPtrOutput {
+	return i.ToVerificationTemplateArgValueFromPtrOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateArgValueFromArgs) ToVerificationTemplateArgValueFromPtrOutputWithContext(ctx context.Context) VerificationTemplateArgValueFromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateArgValueFromOutput).ToVerificationTemplateArgValueFromPtrOutputWithContext(ctx)
+}
+
+// VerificationTemplateArgValueFromPtrInput is an input type that accepts VerificationTemplateArgValueFromArgs, VerificationTemplateArgValueFromPtr and VerificationTemplateArgValueFromPtrOutput values.
+// You can construct a concrete instance of `VerificationTemplateArgValueFromPtrInput` via:
+//
+//	        VerificationTemplateArgValueFromArgs{...}
+//
+//	or:
+//
+//	        nil
+type VerificationTemplateArgValueFromPtrInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateArgValueFromPtrOutput() VerificationTemplateArgValueFromPtrOutput
+	ToVerificationTemplateArgValueFromPtrOutputWithContext(context.Context) VerificationTemplateArgValueFromPtrOutput
+}
+
+type verificationTemplateArgValueFromPtrType VerificationTemplateArgValueFromArgs
+
+func VerificationTemplateArgValueFromPtr(v *VerificationTemplateArgValueFromArgs) VerificationTemplateArgValueFromPtrInput {
+	return (*verificationTemplateArgValueFromPtrType)(v)
+}
+
+func (*verificationTemplateArgValueFromPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VerificationTemplateArgValueFrom)(nil)).Elem()
+}
+
+func (i *verificationTemplateArgValueFromPtrType) ToVerificationTemplateArgValueFromPtrOutput() VerificationTemplateArgValueFromPtrOutput {
+	return i.ToVerificationTemplateArgValueFromPtrOutputWithContext(context.Background())
+}
+
+func (i *verificationTemplateArgValueFromPtrType) ToVerificationTemplateArgValueFromPtrOutputWithContext(ctx context.Context) VerificationTemplateArgValueFromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateArgValueFromPtrOutput)
+}
+
+type VerificationTemplateArgValueFromOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateArgValueFromOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateArgValueFrom)(nil)).Elem()
+}
+
+func (o VerificationTemplateArgValueFromOutput) ToVerificationTemplateArgValueFromOutput() VerificationTemplateArgValueFromOutput {
+	return o
+}
+
+func (o VerificationTemplateArgValueFromOutput) ToVerificationTemplateArgValueFromOutputWithContext(ctx context.Context) VerificationTemplateArgValueFromOutput {
+	return o
+}
+
+func (o VerificationTemplateArgValueFromOutput) ToVerificationTemplateArgValueFromPtrOutput() VerificationTemplateArgValueFromPtrOutput {
+	return o.ToVerificationTemplateArgValueFromPtrOutputWithContext(context.Background())
+}
+
+func (o VerificationTemplateArgValueFromOutput) ToVerificationTemplateArgValueFromPtrOutputWithContext(ctx context.Context) VerificationTemplateArgValueFromPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VerificationTemplateArgValueFrom) *VerificationTemplateArgValueFrom {
+		return &v
+	}).(VerificationTemplateArgValueFromPtrOutput)
+}
+
+func (o VerificationTemplateArgValueFromOutput) SecretKeyRef() VerificationTemplateArgValueFromSecretKeyRefPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateArgValueFrom) *VerificationTemplateArgValueFromSecretKeyRef {
+		return v.SecretKeyRef
+	}).(VerificationTemplateArgValueFromSecretKeyRefPtrOutput)
+}
+
+type VerificationTemplateArgValueFromPtrOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateArgValueFromPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VerificationTemplateArgValueFrom)(nil)).Elem()
+}
+
+func (o VerificationTemplateArgValueFromPtrOutput) ToVerificationTemplateArgValueFromPtrOutput() VerificationTemplateArgValueFromPtrOutput {
+	return o
+}
+
+func (o VerificationTemplateArgValueFromPtrOutput) ToVerificationTemplateArgValueFromPtrOutputWithContext(ctx context.Context) VerificationTemplateArgValueFromPtrOutput {
+	return o
+}
+
+func (o VerificationTemplateArgValueFromPtrOutput) Elem() VerificationTemplateArgValueFromOutput {
+	return o.ApplyT(func(v *VerificationTemplateArgValueFrom) VerificationTemplateArgValueFrom {
+		if v != nil {
+			return *v
+		}
+		var ret VerificationTemplateArgValueFrom
+		return ret
+	}).(VerificationTemplateArgValueFromOutput)
+}
+
+func (o VerificationTemplateArgValueFromPtrOutput) SecretKeyRef() VerificationTemplateArgValueFromSecretKeyRefPtrOutput {
+	return o.ApplyT(func(v *VerificationTemplateArgValueFrom) *VerificationTemplateArgValueFromSecretKeyRef {
+		if v == nil {
+			return nil
+		}
+		return v.SecretKeyRef
+	}).(VerificationTemplateArgValueFromSecretKeyRefPtrOutput)
+}
+
+type VerificationTemplateArgValueFromSecretKeyRef struct {
+	Key string `pulumi:"key"`
+	// Identifier name for Ocean CD Verification Template. Must be unique.
+	Name string `pulumi:"name"`
+}
+
+// VerificationTemplateArgValueFromSecretKeyRefInput is an input type that accepts VerificationTemplateArgValueFromSecretKeyRefArgs and VerificationTemplateArgValueFromSecretKeyRefOutput values.
+// You can construct a concrete instance of `VerificationTemplateArgValueFromSecretKeyRefInput` via:
+//
+//	VerificationTemplateArgValueFromSecretKeyRefArgs{...}
+type VerificationTemplateArgValueFromSecretKeyRefInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateArgValueFromSecretKeyRefOutput() VerificationTemplateArgValueFromSecretKeyRefOutput
+	ToVerificationTemplateArgValueFromSecretKeyRefOutputWithContext(context.Context) VerificationTemplateArgValueFromSecretKeyRefOutput
+}
+
+type VerificationTemplateArgValueFromSecretKeyRefArgs struct {
+	Key pulumi.StringInput `pulumi:"key"`
+	// Identifier name for Ocean CD Verification Template. Must be unique.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (VerificationTemplateArgValueFromSecretKeyRefArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateArgValueFromSecretKeyRef)(nil)).Elem()
+}
+
+func (i VerificationTemplateArgValueFromSecretKeyRefArgs) ToVerificationTemplateArgValueFromSecretKeyRefOutput() VerificationTemplateArgValueFromSecretKeyRefOutput {
+	return i.ToVerificationTemplateArgValueFromSecretKeyRefOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateArgValueFromSecretKeyRefArgs) ToVerificationTemplateArgValueFromSecretKeyRefOutputWithContext(ctx context.Context) VerificationTemplateArgValueFromSecretKeyRefOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateArgValueFromSecretKeyRefOutput)
+}
+
+func (i VerificationTemplateArgValueFromSecretKeyRefArgs) ToVerificationTemplateArgValueFromSecretKeyRefPtrOutput() VerificationTemplateArgValueFromSecretKeyRefPtrOutput {
+	return i.ToVerificationTemplateArgValueFromSecretKeyRefPtrOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateArgValueFromSecretKeyRefArgs) ToVerificationTemplateArgValueFromSecretKeyRefPtrOutputWithContext(ctx context.Context) VerificationTemplateArgValueFromSecretKeyRefPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateArgValueFromSecretKeyRefOutput).ToVerificationTemplateArgValueFromSecretKeyRefPtrOutputWithContext(ctx)
+}
+
+// VerificationTemplateArgValueFromSecretKeyRefPtrInput is an input type that accepts VerificationTemplateArgValueFromSecretKeyRefArgs, VerificationTemplateArgValueFromSecretKeyRefPtr and VerificationTemplateArgValueFromSecretKeyRefPtrOutput values.
+// You can construct a concrete instance of `VerificationTemplateArgValueFromSecretKeyRefPtrInput` via:
+//
+//	        VerificationTemplateArgValueFromSecretKeyRefArgs{...}
+//
+//	or:
+//
+//	        nil
+type VerificationTemplateArgValueFromSecretKeyRefPtrInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateArgValueFromSecretKeyRefPtrOutput() VerificationTemplateArgValueFromSecretKeyRefPtrOutput
+	ToVerificationTemplateArgValueFromSecretKeyRefPtrOutputWithContext(context.Context) VerificationTemplateArgValueFromSecretKeyRefPtrOutput
+}
+
+type verificationTemplateArgValueFromSecretKeyRefPtrType VerificationTemplateArgValueFromSecretKeyRefArgs
+
+func VerificationTemplateArgValueFromSecretKeyRefPtr(v *VerificationTemplateArgValueFromSecretKeyRefArgs) VerificationTemplateArgValueFromSecretKeyRefPtrInput {
+	return (*verificationTemplateArgValueFromSecretKeyRefPtrType)(v)
+}
+
+func (*verificationTemplateArgValueFromSecretKeyRefPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VerificationTemplateArgValueFromSecretKeyRef)(nil)).Elem()
+}
+
+func (i *verificationTemplateArgValueFromSecretKeyRefPtrType) ToVerificationTemplateArgValueFromSecretKeyRefPtrOutput() VerificationTemplateArgValueFromSecretKeyRefPtrOutput {
+	return i.ToVerificationTemplateArgValueFromSecretKeyRefPtrOutputWithContext(context.Background())
+}
+
+func (i *verificationTemplateArgValueFromSecretKeyRefPtrType) ToVerificationTemplateArgValueFromSecretKeyRefPtrOutputWithContext(ctx context.Context) VerificationTemplateArgValueFromSecretKeyRefPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateArgValueFromSecretKeyRefPtrOutput)
+}
+
+type VerificationTemplateArgValueFromSecretKeyRefOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateArgValueFromSecretKeyRefOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateArgValueFromSecretKeyRef)(nil)).Elem()
+}
+
+func (o VerificationTemplateArgValueFromSecretKeyRefOutput) ToVerificationTemplateArgValueFromSecretKeyRefOutput() VerificationTemplateArgValueFromSecretKeyRefOutput {
+	return o
+}
+
+func (o VerificationTemplateArgValueFromSecretKeyRefOutput) ToVerificationTemplateArgValueFromSecretKeyRefOutputWithContext(ctx context.Context) VerificationTemplateArgValueFromSecretKeyRefOutput {
+	return o
+}
+
+func (o VerificationTemplateArgValueFromSecretKeyRefOutput) ToVerificationTemplateArgValueFromSecretKeyRefPtrOutput() VerificationTemplateArgValueFromSecretKeyRefPtrOutput {
+	return o.ToVerificationTemplateArgValueFromSecretKeyRefPtrOutputWithContext(context.Background())
+}
+
+func (o VerificationTemplateArgValueFromSecretKeyRefOutput) ToVerificationTemplateArgValueFromSecretKeyRefPtrOutputWithContext(ctx context.Context) VerificationTemplateArgValueFromSecretKeyRefPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VerificationTemplateArgValueFromSecretKeyRef) *VerificationTemplateArgValueFromSecretKeyRef {
+		return &v
+	}).(VerificationTemplateArgValueFromSecretKeyRefPtrOutput)
+}
+
+func (o VerificationTemplateArgValueFromSecretKeyRefOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v VerificationTemplateArgValueFromSecretKeyRef) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Identifier name for Ocean CD Verification Template. Must be unique.
+func (o VerificationTemplateArgValueFromSecretKeyRefOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v VerificationTemplateArgValueFromSecretKeyRef) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type VerificationTemplateArgValueFromSecretKeyRefPtrOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateArgValueFromSecretKeyRefPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VerificationTemplateArgValueFromSecretKeyRef)(nil)).Elem()
+}
+
+func (o VerificationTemplateArgValueFromSecretKeyRefPtrOutput) ToVerificationTemplateArgValueFromSecretKeyRefPtrOutput() VerificationTemplateArgValueFromSecretKeyRefPtrOutput {
+	return o
+}
+
+func (o VerificationTemplateArgValueFromSecretKeyRefPtrOutput) ToVerificationTemplateArgValueFromSecretKeyRefPtrOutputWithContext(ctx context.Context) VerificationTemplateArgValueFromSecretKeyRefPtrOutput {
+	return o
+}
+
+func (o VerificationTemplateArgValueFromSecretKeyRefPtrOutput) Elem() VerificationTemplateArgValueFromSecretKeyRefOutput {
+	return o.ApplyT(func(v *VerificationTemplateArgValueFromSecretKeyRef) VerificationTemplateArgValueFromSecretKeyRef {
+		if v != nil {
+			return *v
+		}
+		var ret VerificationTemplateArgValueFromSecretKeyRef
+		return ret
+	}).(VerificationTemplateArgValueFromSecretKeyRefOutput)
+}
+
+func (o VerificationTemplateArgValueFromSecretKeyRefPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VerificationTemplateArgValueFromSecretKeyRef) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identifier name for Ocean CD Verification Template. Must be unique.
+func (o VerificationTemplateArgValueFromSecretKeyRefPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VerificationTemplateArgValueFromSecretKeyRef) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type VerificationTemplateMetric struct {
+	// Baseline Object.
+	Baseline *VerificationTemplateMetricBaseline `pulumi:"baseline"`
+	// The maximum number of times the measurement is allowed to error in succession, before the metric is considered error.Default is 4.When choosing `Jenkins` as the provider, there is no need to send this variable.
+	ConsecutiveErrorLimit *int `pulumi:"consecutiveErrorLimit"`
+	// The number of times to run the measurement. If both interval and count are omitted, the effective count is 1. If only interval is specified, metric runs indefinitely. If count > 1, interval must be specified. When choosing `Jenkins` as the provider, there is no need to send this variable.
+	Count *int `pulumi:"count"`
+	// Defines whether the metric should have an impact on the result of the rollout.
+	DryRun *bool `pulumi:"dryRun"`
+	// An expression which determines if a measurement is considered failed.If failureCondition is set, then successCondition is not allowed. When choosing Jenkins as the provider, there is no need to send this variable.
+	FailureCondition *string `pulumi:"failureCondition"`
+	// The maximum number of times the measurement is allowed to fail, before the entire metric is considered failed.Default is 0. When choosing `Jenkins` as the provider, there is no need to send this variable.
+	FailureLimit *int `pulumi:"failureLimit"`
+	// How long to wait before starting this metric measurements. When choosing Jenkins as the provider, there is no need to send this variable.
+	InitialDelay *string `pulumi:"initialDelay"`
+	// Defines an interval string (30s, 5m, 1h) between each verification measurements. If omitted, will perform a single measurement.When choosing Jenkins as the provider, there is no need to send this variable.
+	Interval *string `pulumi:"interval"`
+	// The name of the verification metric.
+	MetricsName string `pulumi:"metricsName"`
+	// The name of the monitoring tool chosen for the metric.
+	Providers []VerificationTemplateMetricProvider `pulumi:"providers"`
+	// An expression which determines if a measurement is considered successful. The keyword `result` is a variable reference to the value of measurement. Results can be both structured data or primitive. If successCondition is set, then failureCondition is not allowed. When choosing `Jenkins` as the provider, there is no need to send this variable.
+	SuccessCondition *string `pulumi:"successCondition"`
+}
+
+// VerificationTemplateMetricInput is an input type that accepts VerificationTemplateMetricArgs and VerificationTemplateMetricOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricInput` via:
+//
+//	VerificationTemplateMetricArgs{...}
+type VerificationTemplateMetricInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricOutput() VerificationTemplateMetricOutput
+	ToVerificationTemplateMetricOutputWithContext(context.Context) VerificationTemplateMetricOutput
+}
+
+type VerificationTemplateMetricArgs struct {
+	// Baseline Object.
+	Baseline VerificationTemplateMetricBaselinePtrInput `pulumi:"baseline"`
+	// The maximum number of times the measurement is allowed to error in succession, before the metric is considered error.Default is 4.When choosing `Jenkins` as the provider, there is no need to send this variable.
+	ConsecutiveErrorLimit pulumi.IntPtrInput `pulumi:"consecutiveErrorLimit"`
+	// The number of times to run the measurement. If both interval and count are omitted, the effective count is 1. If only interval is specified, metric runs indefinitely. If count > 1, interval must be specified. When choosing `Jenkins` as the provider, there is no need to send this variable.
+	Count pulumi.IntPtrInput `pulumi:"count"`
+	// Defines whether the metric should have an impact on the result of the rollout.
+	DryRun pulumi.BoolPtrInput `pulumi:"dryRun"`
+	// An expression which determines if a measurement is considered failed.If failureCondition is set, then successCondition is not allowed. When choosing Jenkins as the provider, there is no need to send this variable.
+	FailureCondition pulumi.StringPtrInput `pulumi:"failureCondition"`
+	// The maximum number of times the measurement is allowed to fail, before the entire metric is considered failed.Default is 0. When choosing `Jenkins` as the provider, there is no need to send this variable.
+	FailureLimit pulumi.IntPtrInput `pulumi:"failureLimit"`
+	// How long to wait before starting this metric measurements. When choosing Jenkins as the provider, there is no need to send this variable.
+	InitialDelay pulumi.StringPtrInput `pulumi:"initialDelay"`
+	// Defines an interval string (30s, 5m, 1h) between each verification measurements. If omitted, will perform a single measurement.When choosing Jenkins as the provider, there is no need to send this variable.
+	Interval pulumi.StringPtrInput `pulumi:"interval"`
+	// The name of the verification metric.
+	MetricsName pulumi.StringInput `pulumi:"metricsName"`
+	// The name of the monitoring tool chosen for the metric.
+	Providers VerificationTemplateMetricProviderArrayInput `pulumi:"providers"`
+	// An expression which determines if a measurement is considered successful. The keyword `result` is a variable reference to the value of measurement. Results can be both structured data or primitive. If successCondition is set, then failureCondition is not allowed. When choosing `Jenkins` as the provider, there is no need to send this variable.
+	SuccessCondition pulumi.StringPtrInput `pulumi:"successCondition"`
+}
+
+func (VerificationTemplateMetricArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetric)(nil)).Elem()
+}
+
+func (i VerificationTemplateMetricArgs) ToVerificationTemplateMetricOutput() VerificationTemplateMetricOutput {
+	return i.ToVerificationTemplateMetricOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricArgs) ToVerificationTemplateMetricOutputWithContext(ctx context.Context) VerificationTemplateMetricOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricOutput)
+}
+
+// VerificationTemplateMetricArrayInput is an input type that accepts VerificationTemplateMetricArray and VerificationTemplateMetricArrayOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricArrayInput` via:
+//
+//	VerificationTemplateMetricArray{ VerificationTemplateMetricArgs{...} }
+type VerificationTemplateMetricArrayInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricArrayOutput() VerificationTemplateMetricArrayOutput
+	ToVerificationTemplateMetricArrayOutputWithContext(context.Context) VerificationTemplateMetricArrayOutput
+}
+
+type VerificationTemplateMetricArray []VerificationTemplateMetricInput
+
+func (VerificationTemplateMetricArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VerificationTemplateMetric)(nil)).Elem()
+}
+
+func (i VerificationTemplateMetricArray) ToVerificationTemplateMetricArrayOutput() VerificationTemplateMetricArrayOutput {
+	return i.ToVerificationTemplateMetricArrayOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricArray) ToVerificationTemplateMetricArrayOutputWithContext(ctx context.Context) VerificationTemplateMetricArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricArrayOutput)
+}
+
+type VerificationTemplateMetricOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetric)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricOutput) ToVerificationTemplateMetricOutput() VerificationTemplateMetricOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricOutput) ToVerificationTemplateMetricOutputWithContext(ctx context.Context) VerificationTemplateMetricOutput {
+	return o
+}
+
+// Baseline Object.
+func (o VerificationTemplateMetricOutput) Baseline() VerificationTemplateMetricBaselinePtrOutput {
+	return o.ApplyT(func(v VerificationTemplateMetric) *VerificationTemplateMetricBaseline { return v.Baseline }).(VerificationTemplateMetricBaselinePtrOutput)
+}
+
+// The maximum number of times the measurement is allowed to error in succession, before the metric is considered error.Default is 4.When choosing `Jenkins` as the provider, there is no need to send this variable.
+func (o VerificationTemplateMetricOutput) ConsecutiveErrorLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateMetric) *int { return v.ConsecutiveErrorLimit }).(pulumi.IntPtrOutput)
+}
+
+// The number of times to run the measurement. If both interval and count are omitted, the effective count is 1. If only interval is specified, metric runs indefinitely. If count > 1, interval must be specified. When choosing `Jenkins` as the provider, there is no need to send this variable.
+func (o VerificationTemplateMetricOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateMetric) *int { return v.Count }).(pulumi.IntPtrOutput)
+}
+
+// Defines whether the metric should have an impact on the result of the rollout.
+func (o VerificationTemplateMetricOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateMetric) *bool { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// An expression which determines if a measurement is considered failed.If failureCondition is set, then successCondition is not allowed. When choosing Jenkins as the provider, there is no need to send this variable.
+func (o VerificationTemplateMetricOutput) FailureCondition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateMetric) *string { return v.FailureCondition }).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of times the measurement is allowed to fail, before the entire metric is considered failed.Default is 0. When choosing `Jenkins` as the provider, there is no need to send this variable.
+func (o VerificationTemplateMetricOutput) FailureLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateMetric) *int { return v.FailureLimit }).(pulumi.IntPtrOutput)
+}
+
+// How long to wait before starting this metric measurements. When choosing Jenkins as the provider, there is no need to send this variable.
+func (o VerificationTemplateMetricOutput) InitialDelay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateMetric) *string { return v.InitialDelay }).(pulumi.StringPtrOutput)
+}
+
+// Defines an interval string (30s, 5m, 1h) between each verification measurements. If omitted, will perform a single measurement.When choosing Jenkins as the provider, there is no need to send this variable.
+func (o VerificationTemplateMetricOutput) Interval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateMetric) *string { return v.Interval }).(pulumi.StringPtrOutput)
+}
+
+// The name of the verification metric.
+func (o VerificationTemplateMetricOutput) MetricsName() pulumi.StringOutput {
+	return o.ApplyT(func(v VerificationTemplateMetric) string { return v.MetricsName }).(pulumi.StringOutput)
+}
+
+// The name of the monitoring tool chosen for the metric.
+func (o VerificationTemplateMetricOutput) Providers() VerificationTemplateMetricProviderArrayOutput {
+	return o.ApplyT(func(v VerificationTemplateMetric) []VerificationTemplateMetricProvider { return v.Providers }).(VerificationTemplateMetricProviderArrayOutput)
+}
+
+// An expression which determines if a measurement is considered successful. The keyword `result` is a variable reference to the value of measurement. Results can be both structured data or primitive. If successCondition is set, then failureCondition is not allowed. When choosing `Jenkins` as the provider, there is no need to send this variable.
+func (o VerificationTemplateMetricOutput) SuccessCondition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateMetric) *string { return v.SuccessCondition }).(pulumi.StringPtrOutput)
+}
+
+type VerificationTemplateMetricArrayOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VerificationTemplateMetric)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricArrayOutput) ToVerificationTemplateMetricArrayOutput() VerificationTemplateMetricArrayOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricArrayOutput) ToVerificationTemplateMetricArrayOutputWithContext(ctx context.Context) VerificationTemplateMetricArrayOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricArrayOutput) Index(i pulumi.IntInput) VerificationTemplateMetricOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VerificationTemplateMetric {
+		return vs[0].([]VerificationTemplateMetric)[vs[1].(int)]
+	}).(VerificationTemplateMetricOutput)
+}
+
+type VerificationTemplateMetricBaseline struct {
+	BaselineProviders []VerificationTemplateMetricBaselineBaselineProvider `pulumi:"baselineProviders"`
+	MaxRange          *int                                                 `pulumi:"maxRange"`
+	MinRange          *int                                                 `pulumi:"minRange"`
+	Threshold         string                                               `pulumi:"threshold"`
+}
+
+// VerificationTemplateMetricBaselineInput is an input type that accepts VerificationTemplateMetricBaselineArgs and VerificationTemplateMetricBaselineOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricBaselineInput` via:
+//
+//	VerificationTemplateMetricBaselineArgs{...}
+type VerificationTemplateMetricBaselineInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricBaselineOutput() VerificationTemplateMetricBaselineOutput
+	ToVerificationTemplateMetricBaselineOutputWithContext(context.Context) VerificationTemplateMetricBaselineOutput
+}
+
+type VerificationTemplateMetricBaselineArgs struct {
+	BaselineProviders VerificationTemplateMetricBaselineBaselineProviderArrayInput `pulumi:"baselineProviders"`
+	MaxRange          pulumi.IntPtrInput                                           `pulumi:"maxRange"`
+	MinRange          pulumi.IntPtrInput                                           `pulumi:"minRange"`
+	Threshold         pulumi.StringInput                                           `pulumi:"threshold"`
+}
+
+func (VerificationTemplateMetricBaselineArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricBaseline)(nil)).Elem()
+}
+
+func (i VerificationTemplateMetricBaselineArgs) ToVerificationTemplateMetricBaselineOutput() VerificationTemplateMetricBaselineOutput {
+	return i.ToVerificationTemplateMetricBaselineOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricBaselineArgs) ToVerificationTemplateMetricBaselineOutputWithContext(ctx context.Context) VerificationTemplateMetricBaselineOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricBaselineOutput)
+}
+
+func (i VerificationTemplateMetricBaselineArgs) ToVerificationTemplateMetricBaselinePtrOutput() VerificationTemplateMetricBaselinePtrOutput {
+	return i.ToVerificationTemplateMetricBaselinePtrOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricBaselineArgs) ToVerificationTemplateMetricBaselinePtrOutputWithContext(ctx context.Context) VerificationTemplateMetricBaselinePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricBaselineOutput).ToVerificationTemplateMetricBaselinePtrOutputWithContext(ctx)
+}
+
+// VerificationTemplateMetricBaselinePtrInput is an input type that accepts VerificationTemplateMetricBaselineArgs, VerificationTemplateMetricBaselinePtr and VerificationTemplateMetricBaselinePtrOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricBaselinePtrInput` via:
+//
+//	        VerificationTemplateMetricBaselineArgs{...}
+//
+//	or:
+//
+//	        nil
+type VerificationTemplateMetricBaselinePtrInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricBaselinePtrOutput() VerificationTemplateMetricBaselinePtrOutput
+	ToVerificationTemplateMetricBaselinePtrOutputWithContext(context.Context) VerificationTemplateMetricBaselinePtrOutput
+}
+
+type verificationTemplateMetricBaselinePtrType VerificationTemplateMetricBaselineArgs
+
+func VerificationTemplateMetricBaselinePtr(v *VerificationTemplateMetricBaselineArgs) VerificationTemplateMetricBaselinePtrInput {
+	return (*verificationTemplateMetricBaselinePtrType)(v)
+}
+
+func (*verificationTemplateMetricBaselinePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VerificationTemplateMetricBaseline)(nil)).Elem()
+}
+
+func (i *verificationTemplateMetricBaselinePtrType) ToVerificationTemplateMetricBaselinePtrOutput() VerificationTemplateMetricBaselinePtrOutput {
+	return i.ToVerificationTemplateMetricBaselinePtrOutputWithContext(context.Background())
+}
+
+func (i *verificationTemplateMetricBaselinePtrType) ToVerificationTemplateMetricBaselinePtrOutputWithContext(ctx context.Context) VerificationTemplateMetricBaselinePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricBaselinePtrOutput)
+}
+
+type VerificationTemplateMetricBaselineOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricBaselineOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricBaseline)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricBaselineOutput) ToVerificationTemplateMetricBaselineOutput() VerificationTemplateMetricBaselineOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricBaselineOutput) ToVerificationTemplateMetricBaselineOutputWithContext(ctx context.Context) VerificationTemplateMetricBaselineOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricBaselineOutput) ToVerificationTemplateMetricBaselinePtrOutput() VerificationTemplateMetricBaselinePtrOutput {
+	return o.ToVerificationTemplateMetricBaselinePtrOutputWithContext(context.Background())
+}
+
+func (o VerificationTemplateMetricBaselineOutput) ToVerificationTemplateMetricBaselinePtrOutputWithContext(ctx context.Context) VerificationTemplateMetricBaselinePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VerificationTemplateMetricBaseline) *VerificationTemplateMetricBaseline {
+		return &v
+	}).(VerificationTemplateMetricBaselinePtrOutput)
+}
+
+func (o VerificationTemplateMetricBaselineOutput) BaselineProviders() VerificationTemplateMetricBaselineBaselineProviderArrayOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricBaseline) []VerificationTemplateMetricBaselineBaselineProvider {
+		return v.BaselineProviders
+	}).(VerificationTemplateMetricBaselineBaselineProviderArrayOutput)
+}
+
+func (o VerificationTemplateMetricBaselineOutput) MaxRange() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricBaseline) *int { return v.MaxRange }).(pulumi.IntPtrOutput)
+}
+
+func (o VerificationTemplateMetricBaselineOutput) MinRange() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricBaseline) *int { return v.MinRange }).(pulumi.IntPtrOutput)
+}
+
+func (o VerificationTemplateMetricBaselineOutput) Threshold() pulumi.StringOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricBaseline) string { return v.Threshold }).(pulumi.StringOutput)
+}
+
+type VerificationTemplateMetricBaselinePtrOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricBaselinePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VerificationTemplateMetricBaseline)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricBaselinePtrOutput) ToVerificationTemplateMetricBaselinePtrOutput() VerificationTemplateMetricBaselinePtrOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricBaselinePtrOutput) ToVerificationTemplateMetricBaselinePtrOutputWithContext(ctx context.Context) VerificationTemplateMetricBaselinePtrOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricBaselinePtrOutput) Elem() VerificationTemplateMetricBaselineOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricBaseline) VerificationTemplateMetricBaseline {
+		if v != nil {
+			return *v
+		}
+		var ret VerificationTemplateMetricBaseline
+		return ret
+	}).(VerificationTemplateMetricBaselineOutput)
+}
+
+func (o VerificationTemplateMetricBaselinePtrOutput) BaselineProviders() VerificationTemplateMetricBaselineBaselineProviderArrayOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricBaseline) []VerificationTemplateMetricBaselineBaselineProvider {
+		if v == nil {
+			return nil
+		}
+		return v.BaselineProviders
+	}).(VerificationTemplateMetricBaselineBaselineProviderArrayOutput)
+}
+
+func (o VerificationTemplateMetricBaselinePtrOutput) MaxRange() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricBaseline) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxRange
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o VerificationTemplateMetricBaselinePtrOutput) MinRange() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricBaseline) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinRange
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o VerificationTemplateMetricBaselinePtrOutput) Threshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricBaseline) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Threshold
+	}).(pulumi.StringPtrOutput)
+}
+
+type VerificationTemplateMetricBaselineBaselineProvider struct {
+	Datadog    *VerificationTemplateMetricBaselineBaselineProviderDatadog    `pulumi:"datadog"`
+	NewRelic   *VerificationTemplateMetricBaselineBaselineProviderNewRelic   `pulumi:"newRelic"`
+	Prometheus *VerificationTemplateMetricBaselineBaselineProviderPrometheus `pulumi:"prometheus"`
+}
+
+// VerificationTemplateMetricBaselineBaselineProviderInput is an input type that accepts VerificationTemplateMetricBaselineBaselineProviderArgs and VerificationTemplateMetricBaselineBaselineProviderOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricBaselineBaselineProviderInput` via:
+//
+//	VerificationTemplateMetricBaselineBaselineProviderArgs{...}
+type VerificationTemplateMetricBaselineBaselineProviderInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricBaselineBaselineProviderOutput() VerificationTemplateMetricBaselineBaselineProviderOutput
+	ToVerificationTemplateMetricBaselineBaselineProviderOutputWithContext(context.Context) VerificationTemplateMetricBaselineBaselineProviderOutput
+}
+
+type VerificationTemplateMetricBaselineBaselineProviderArgs struct {
+	Datadog    VerificationTemplateMetricBaselineBaselineProviderDatadogPtrInput    `pulumi:"datadog"`
+	NewRelic   VerificationTemplateMetricBaselineBaselineProviderNewRelicPtrInput   `pulumi:"newRelic"`
+	Prometheus VerificationTemplateMetricBaselineBaselineProviderPrometheusPtrInput `pulumi:"prometheus"`
+}
+
+func (VerificationTemplateMetricBaselineBaselineProviderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricBaselineBaselineProvider)(nil)).Elem()
+}
+
+func (i VerificationTemplateMetricBaselineBaselineProviderArgs) ToVerificationTemplateMetricBaselineBaselineProviderOutput() VerificationTemplateMetricBaselineBaselineProviderOutput {
+	return i.ToVerificationTemplateMetricBaselineBaselineProviderOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricBaselineBaselineProviderArgs) ToVerificationTemplateMetricBaselineBaselineProviderOutputWithContext(ctx context.Context) VerificationTemplateMetricBaselineBaselineProviderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricBaselineBaselineProviderOutput)
+}
+
+// VerificationTemplateMetricBaselineBaselineProviderArrayInput is an input type that accepts VerificationTemplateMetricBaselineBaselineProviderArray and VerificationTemplateMetricBaselineBaselineProviderArrayOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricBaselineBaselineProviderArrayInput` via:
+//
+//	VerificationTemplateMetricBaselineBaselineProviderArray{ VerificationTemplateMetricBaselineBaselineProviderArgs{...} }
+type VerificationTemplateMetricBaselineBaselineProviderArrayInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricBaselineBaselineProviderArrayOutput() VerificationTemplateMetricBaselineBaselineProviderArrayOutput
+	ToVerificationTemplateMetricBaselineBaselineProviderArrayOutputWithContext(context.Context) VerificationTemplateMetricBaselineBaselineProviderArrayOutput
+}
+
+type VerificationTemplateMetricBaselineBaselineProviderArray []VerificationTemplateMetricBaselineBaselineProviderInput
+
+func (VerificationTemplateMetricBaselineBaselineProviderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VerificationTemplateMetricBaselineBaselineProvider)(nil)).Elem()
+}
+
+func (i VerificationTemplateMetricBaselineBaselineProviderArray) ToVerificationTemplateMetricBaselineBaselineProviderArrayOutput() VerificationTemplateMetricBaselineBaselineProviderArrayOutput {
+	return i.ToVerificationTemplateMetricBaselineBaselineProviderArrayOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricBaselineBaselineProviderArray) ToVerificationTemplateMetricBaselineBaselineProviderArrayOutputWithContext(ctx context.Context) VerificationTemplateMetricBaselineBaselineProviderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricBaselineBaselineProviderArrayOutput)
+}
+
+type VerificationTemplateMetricBaselineBaselineProviderOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricBaselineBaselineProviderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricBaselineBaselineProvider)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricBaselineBaselineProviderOutput) ToVerificationTemplateMetricBaselineBaselineProviderOutput() VerificationTemplateMetricBaselineBaselineProviderOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricBaselineBaselineProviderOutput) ToVerificationTemplateMetricBaselineBaselineProviderOutputWithContext(ctx context.Context) VerificationTemplateMetricBaselineBaselineProviderOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricBaselineBaselineProviderOutput) Datadog() VerificationTemplateMetricBaselineBaselineProviderDatadogPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricBaselineBaselineProvider) *VerificationTemplateMetricBaselineBaselineProviderDatadog {
+		return v.Datadog
+	}).(VerificationTemplateMetricBaselineBaselineProviderDatadogPtrOutput)
+}
+
+func (o VerificationTemplateMetricBaselineBaselineProviderOutput) NewRelic() VerificationTemplateMetricBaselineBaselineProviderNewRelicPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricBaselineBaselineProvider) *VerificationTemplateMetricBaselineBaselineProviderNewRelic {
+		return v.NewRelic
+	}).(VerificationTemplateMetricBaselineBaselineProviderNewRelicPtrOutput)
+}
+
+func (o VerificationTemplateMetricBaselineBaselineProviderOutput) Prometheus() VerificationTemplateMetricBaselineBaselineProviderPrometheusPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricBaselineBaselineProvider) *VerificationTemplateMetricBaselineBaselineProviderPrometheus {
+		return v.Prometheus
+	}).(VerificationTemplateMetricBaselineBaselineProviderPrometheusPtrOutput)
+}
+
+type VerificationTemplateMetricBaselineBaselineProviderArrayOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricBaselineBaselineProviderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VerificationTemplateMetricBaselineBaselineProvider)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricBaselineBaselineProviderArrayOutput) ToVerificationTemplateMetricBaselineBaselineProviderArrayOutput() VerificationTemplateMetricBaselineBaselineProviderArrayOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricBaselineBaselineProviderArrayOutput) ToVerificationTemplateMetricBaselineBaselineProviderArrayOutputWithContext(ctx context.Context) VerificationTemplateMetricBaselineBaselineProviderArrayOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricBaselineBaselineProviderArrayOutput) Index(i pulumi.IntInput) VerificationTemplateMetricBaselineBaselineProviderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VerificationTemplateMetricBaselineBaselineProvider {
+		return vs[0].([]VerificationTemplateMetricBaselineBaselineProvider)[vs[1].(int)]
+	}).(VerificationTemplateMetricBaselineBaselineProviderOutput)
+}
+
+type VerificationTemplateMetricBaselineBaselineProviderDatadog struct {
+	DatadogQuery string  `pulumi:"datadogQuery"`
+	Duration     *string `pulumi:"duration"`
+}
+
+// VerificationTemplateMetricBaselineBaselineProviderDatadogInput is an input type that accepts VerificationTemplateMetricBaselineBaselineProviderDatadogArgs and VerificationTemplateMetricBaselineBaselineProviderDatadogOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricBaselineBaselineProviderDatadogInput` via:
+//
+//	VerificationTemplateMetricBaselineBaselineProviderDatadogArgs{...}
+type VerificationTemplateMetricBaselineBaselineProviderDatadogInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricBaselineBaselineProviderDatadogOutput() VerificationTemplateMetricBaselineBaselineProviderDatadogOutput
+	ToVerificationTemplateMetricBaselineBaselineProviderDatadogOutputWithContext(context.Context) VerificationTemplateMetricBaselineBaselineProviderDatadogOutput
+}
+
+type VerificationTemplateMetricBaselineBaselineProviderDatadogArgs struct {
+	DatadogQuery pulumi.StringInput    `pulumi:"datadogQuery"`
+	Duration     pulumi.StringPtrInput `pulumi:"duration"`
+}
+
+func (VerificationTemplateMetricBaselineBaselineProviderDatadogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricBaselineBaselineProviderDatadog)(nil)).Elem()
+}
+
+func (i VerificationTemplateMetricBaselineBaselineProviderDatadogArgs) ToVerificationTemplateMetricBaselineBaselineProviderDatadogOutput() VerificationTemplateMetricBaselineBaselineProviderDatadogOutput {
+	return i.ToVerificationTemplateMetricBaselineBaselineProviderDatadogOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricBaselineBaselineProviderDatadogArgs) ToVerificationTemplateMetricBaselineBaselineProviderDatadogOutputWithContext(ctx context.Context) VerificationTemplateMetricBaselineBaselineProviderDatadogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricBaselineBaselineProviderDatadogOutput)
+}
+
+func (i VerificationTemplateMetricBaselineBaselineProviderDatadogArgs) ToVerificationTemplateMetricBaselineBaselineProviderDatadogPtrOutput() VerificationTemplateMetricBaselineBaselineProviderDatadogPtrOutput {
+	return i.ToVerificationTemplateMetricBaselineBaselineProviderDatadogPtrOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricBaselineBaselineProviderDatadogArgs) ToVerificationTemplateMetricBaselineBaselineProviderDatadogPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricBaselineBaselineProviderDatadogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricBaselineBaselineProviderDatadogOutput).ToVerificationTemplateMetricBaselineBaselineProviderDatadogPtrOutputWithContext(ctx)
+}
+
+// VerificationTemplateMetricBaselineBaselineProviderDatadogPtrInput is an input type that accepts VerificationTemplateMetricBaselineBaselineProviderDatadogArgs, VerificationTemplateMetricBaselineBaselineProviderDatadogPtr and VerificationTemplateMetricBaselineBaselineProviderDatadogPtrOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricBaselineBaselineProviderDatadogPtrInput` via:
+//
+//	        VerificationTemplateMetricBaselineBaselineProviderDatadogArgs{...}
+//
+//	or:
+//
+//	        nil
+type VerificationTemplateMetricBaselineBaselineProviderDatadogPtrInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricBaselineBaselineProviderDatadogPtrOutput() VerificationTemplateMetricBaselineBaselineProviderDatadogPtrOutput
+	ToVerificationTemplateMetricBaselineBaselineProviderDatadogPtrOutputWithContext(context.Context) VerificationTemplateMetricBaselineBaselineProviderDatadogPtrOutput
+}
+
+type verificationTemplateMetricBaselineBaselineProviderDatadogPtrType VerificationTemplateMetricBaselineBaselineProviderDatadogArgs
+
+func VerificationTemplateMetricBaselineBaselineProviderDatadogPtr(v *VerificationTemplateMetricBaselineBaselineProviderDatadogArgs) VerificationTemplateMetricBaselineBaselineProviderDatadogPtrInput {
+	return (*verificationTemplateMetricBaselineBaselineProviderDatadogPtrType)(v)
+}
+
+func (*verificationTemplateMetricBaselineBaselineProviderDatadogPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VerificationTemplateMetricBaselineBaselineProviderDatadog)(nil)).Elem()
+}
+
+func (i *verificationTemplateMetricBaselineBaselineProviderDatadogPtrType) ToVerificationTemplateMetricBaselineBaselineProviderDatadogPtrOutput() VerificationTemplateMetricBaselineBaselineProviderDatadogPtrOutput {
+	return i.ToVerificationTemplateMetricBaselineBaselineProviderDatadogPtrOutputWithContext(context.Background())
+}
+
+func (i *verificationTemplateMetricBaselineBaselineProviderDatadogPtrType) ToVerificationTemplateMetricBaselineBaselineProviderDatadogPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricBaselineBaselineProviderDatadogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricBaselineBaselineProviderDatadogPtrOutput)
+}
+
+type VerificationTemplateMetricBaselineBaselineProviderDatadogOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricBaselineBaselineProviderDatadogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricBaselineBaselineProviderDatadog)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricBaselineBaselineProviderDatadogOutput) ToVerificationTemplateMetricBaselineBaselineProviderDatadogOutput() VerificationTemplateMetricBaselineBaselineProviderDatadogOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricBaselineBaselineProviderDatadogOutput) ToVerificationTemplateMetricBaselineBaselineProviderDatadogOutputWithContext(ctx context.Context) VerificationTemplateMetricBaselineBaselineProviderDatadogOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricBaselineBaselineProviderDatadogOutput) ToVerificationTemplateMetricBaselineBaselineProviderDatadogPtrOutput() VerificationTemplateMetricBaselineBaselineProviderDatadogPtrOutput {
+	return o.ToVerificationTemplateMetricBaselineBaselineProviderDatadogPtrOutputWithContext(context.Background())
+}
+
+func (o VerificationTemplateMetricBaselineBaselineProviderDatadogOutput) ToVerificationTemplateMetricBaselineBaselineProviderDatadogPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricBaselineBaselineProviderDatadogPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VerificationTemplateMetricBaselineBaselineProviderDatadog) *VerificationTemplateMetricBaselineBaselineProviderDatadog {
+		return &v
+	}).(VerificationTemplateMetricBaselineBaselineProviderDatadogPtrOutput)
+}
+
+func (o VerificationTemplateMetricBaselineBaselineProviderDatadogOutput) DatadogQuery() pulumi.StringOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricBaselineBaselineProviderDatadog) string { return v.DatadogQuery }).(pulumi.StringOutput)
+}
+
+func (o VerificationTemplateMetricBaselineBaselineProviderDatadogOutput) Duration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricBaselineBaselineProviderDatadog) *string { return v.Duration }).(pulumi.StringPtrOutput)
+}
+
+type VerificationTemplateMetricBaselineBaselineProviderDatadogPtrOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricBaselineBaselineProviderDatadogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VerificationTemplateMetricBaselineBaselineProviderDatadog)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricBaselineBaselineProviderDatadogPtrOutput) ToVerificationTemplateMetricBaselineBaselineProviderDatadogPtrOutput() VerificationTemplateMetricBaselineBaselineProviderDatadogPtrOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricBaselineBaselineProviderDatadogPtrOutput) ToVerificationTemplateMetricBaselineBaselineProviderDatadogPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricBaselineBaselineProviderDatadogPtrOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricBaselineBaselineProviderDatadogPtrOutput) Elem() VerificationTemplateMetricBaselineBaselineProviderDatadogOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricBaselineBaselineProviderDatadog) VerificationTemplateMetricBaselineBaselineProviderDatadog {
+		if v != nil {
+			return *v
+		}
+		var ret VerificationTemplateMetricBaselineBaselineProviderDatadog
+		return ret
+	}).(VerificationTemplateMetricBaselineBaselineProviderDatadogOutput)
+}
+
+func (o VerificationTemplateMetricBaselineBaselineProviderDatadogPtrOutput) DatadogQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricBaselineBaselineProviderDatadog) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DatadogQuery
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o VerificationTemplateMetricBaselineBaselineProviderDatadogPtrOutput) Duration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricBaselineBaselineProviderDatadog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Duration
+	}).(pulumi.StringPtrOutput)
+}
+
+type VerificationTemplateMetricBaselineBaselineProviderNewRelic struct {
+	NewRelicQuery string  `pulumi:"newRelicQuery"`
+	Profile       *string `pulumi:"profile"`
+}
+
+// VerificationTemplateMetricBaselineBaselineProviderNewRelicInput is an input type that accepts VerificationTemplateMetricBaselineBaselineProviderNewRelicArgs and VerificationTemplateMetricBaselineBaselineProviderNewRelicOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricBaselineBaselineProviderNewRelicInput` via:
+//
+//	VerificationTemplateMetricBaselineBaselineProviderNewRelicArgs{...}
+type VerificationTemplateMetricBaselineBaselineProviderNewRelicInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricBaselineBaselineProviderNewRelicOutput() VerificationTemplateMetricBaselineBaselineProviderNewRelicOutput
+	ToVerificationTemplateMetricBaselineBaselineProviderNewRelicOutputWithContext(context.Context) VerificationTemplateMetricBaselineBaselineProviderNewRelicOutput
+}
+
+type VerificationTemplateMetricBaselineBaselineProviderNewRelicArgs struct {
+	NewRelicQuery pulumi.StringInput    `pulumi:"newRelicQuery"`
+	Profile       pulumi.StringPtrInput `pulumi:"profile"`
+}
+
+func (VerificationTemplateMetricBaselineBaselineProviderNewRelicArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricBaselineBaselineProviderNewRelic)(nil)).Elem()
+}
+
+func (i VerificationTemplateMetricBaselineBaselineProviderNewRelicArgs) ToVerificationTemplateMetricBaselineBaselineProviderNewRelicOutput() VerificationTemplateMetricBaselineBaselineProviderNewRelicOutput {
+	return i.ToVerificationTemplateMetricBaselineBaselineProviderNewRelicOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricBaselineBaselineProviderNewRelicArgs) ToVerificationTemplateMetricBaselineBaselineProviderNewRelicOutputWithContext(ctx context.Context) VerificationTemplateMetricBaselineBaselineProviderNewRelicOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricBaselineBaselineProviderNewRelicOutput)
+}
+
+func (i VerificationTemplateMetricBaselineBaselineProviderNewRelicArgs) ToVerificationTemplateMetricBaselineBaselineProviderNewRelicPtrOutput() VerificationTemplateMetricBaselineBaselineProviderNewRelicPtrOutput {
+	return i.ToVerificationTemplateMetricBaselineBaselineProviderNewRelicPtrOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricBaselineBaselineProviderNewRelicArgs) ToVerificationTemplateMetricBaselineBaselineProviderNewRelicPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricBaselineBaselineProviderNewRelicPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricBaselineBaselineProviderNewRelicOutput).ToVerificationTemplateMetricBaselineBaselineProviderNewRelicPtrOutputWithContext(ctx)
+}
+
+// VerificationTemplateMetricBaselineBaselineProviderNewRelicPtrInput is an input type that accepts VerificationTemplateMetricBaselineBaselineProviderNewRelicArgs, VerificationTemplateMetricBaselineBaselineProviderNewRelicPtr and VerificationTemplateMetricBaselineBaselineProviderNewRelicPtrOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricBaselineBaselineProviderNewRelicPtrInput` via:
+//
+//	        VerificationTemplateMetricBaselineBaselineProviderNewRelicArgs{...}
+//
+//	or:
+//
+//	        nil
+type VerificationTemplateMetricBaselineBaselineProviderNewRelicPtrInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricBaselineBaselineProviderNewRelicPtrOutput() VerificationTemplateMetricBaselineBaselineProviderNewRelicPtrOutput
+	ToVerificationTemplateMetricBaselineBaselineProviderNewRelicPtrOutputWithContext(context.Context) VerificationTemplateMetricBaselineBaselineProviderNewRelicPtrOutput
+}
+
+type verificationTemplateMetricBaselineBaselineProviderNewRelicPtrType VerificationTemplateMetricBaselineBaselineProviderNewRelicArgs
+
+func VerificationTemplateMetricBaselineBaselineProviderNewRelicPtr(v *VerificationTemplateMetricBaselineBaselineProviderNewRelicArgs) VerificationTemplateMetricBaselineBaselineProviderNewRelicPtrInput {
+	return (*verificationTemplateMetricBaselineBaselineProviderNewRelicPtrType)(v)
+}
+
+func (*verificationTemplateMetricBaselineBaselineProviderNewRelicPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VerificationTemplateMetricBaselineBaselineProviderNewRelic)(nil)).Elem()
+}
+
+func (i *verificationTemplateMetricBaselineBaselineProviderNewRelicPtrType) ToVerificationTemplateMetricBaselineBaselineProviderNewRelicPtrOutput() VerificationTemplateMetricBaselineBaselineProviderNewRelicPtrOutput {
+	return i.ToVerificationTemplateMetricBaselineBaselineProviderNewRelicPtrOutputWithContext(context.Background())
+}
+
+func (i *verificationTemplateMetricBaselineBaselineProviderNewRelicPtrType) ToVerificationTemplateMetricBaselineBaselineProviderNewRelicPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricBaselineBaselineProviderNewRelicPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricBaselineBaselineProviderNewRelicPtrOutput)
+}
+
+type VerificationTemplateMetricBaselineBaselineProviderNewRelicOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricBaselineBaselineProviderNewRelicOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricBaselineBaselineProviderNewRelic)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricBaselineBaselineProviderNewRelicOutput) ToVerificationTemplateMetricBaselineBaselineProviderNewRelicOutput() VerificationTemplateMetricBaselineBaselineProviderNewRelicOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricBaselineBaselineProviderNewRelicOutput) ToVerificationTemplateMetricBaselineBaselineProviderNewRelicOutputWithContext(ctx context.Context) VerificationTemplateMetricBaselineBaselineProviderNewRelicOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricBaselineBaselineProviderNewRelicOutput) ToVerificationTemplateMetricBaselineBaselineProviderNewRelicPtrOutput() VerificationTemplateMetricBaselineBaselineProviderNewRelicPtrOutput {
+	return o.ToVerificationTemplateMetricBaselineBaselineProviderNewRelicPtrOutputWithContext(context.Background())
+}
+
+func (o VerificationTemplateMetricBaselineBaselineProviderNewRelicOutput) ToVerificationTemplateMetricBaselineBaselineProviderNewRelicPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricBaselineBaselineProviderNewRelicPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VerificationTemplateMetricBaselineBaselineProviderNewRelic) *VerificationTemplateMetricBaselineBaselineProviderNewRelic {
+		return &v
+	}).(VerificationTemplateMetricBaselineBaselineProviderNewRelicPtrOutput)
+}
+
+func (o VerificationTemplateMetricBaselineBaselineProviderNewRelicOutput) NewRelicQuery() pulumi.StringOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricBaselineBaselineProviderNewRelic) string { return v.NewRelicQuery }).(pulumi.StringOutput)
+}
+
+func (o VerificationTemplateMetricBaselineBaselineProviderNewRelicOutput) Profile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricBaselineBaselineProviderNewRelic) *string { return v.Profile }).(pulumi.StringPtrOutput)
+}
+
+type VerificationTemplateMetricBaselineBaselineProviderNewRelicPtrOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricBaselineBaselineProviderNewRelicPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VerificationTemplateMetricBaselineBaselineProviderNewRelic)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricBaselineBaselineProviderNewRelicPtrOutput) ToVerificationTemplateMetricBaselineBaselineProviderNewRelicPtrOutput() VerificationTemplateMetricBaselineBaselineProviderNewRelicPtrOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricBaselineBaselineProviderNewRelicPtrOutput) ToVerificationTemplateMetricBaselineBaselineProviderNewRelicPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricBaselineBaselineProviderNewRelicPtrOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricBaselineBaselineProviderNewRelicPtrOutput) Elem() VerificationTemplateMetricBaselineBaselineProviderNewRelicOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricBaselineBaselineProviderNewRelic) VerificationTemplateMetricBaselineBaselineProviderNewRelic {
+		if v != nil {
+			return *v
+		}
+		var ret VerificationTemplateMetricBaselineBaselineProviderNewRelic
+		return ret
+	}).(VerificationTemplateMetricBaselineBaselineProviderNewRelicOutput)
+}
+
+func (o VerificationTemplateMetricBaselineBaselineProviderNewRelicPtrOutput) NewRelicQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricBaselineBaselineProviderNewRelic) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NewRelicQuery
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o VerificationTemplateMetricBaselineBaselineProviderNewRelicPtrOutput) Profile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricBaselineBaselineProviderNewRelic) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Profile
+	}).(pulumi.StringPtrOutput)
+}
+
+type VerificationTemplateMetricBaselineBaselineProviderPrometheus struct {
+	PrometheusQuery string `pulumi:"prometheusQuery"`
+}
+
+// VerificationTemplateMetricBaselineBaselineProviderPrometheusInput is an input type that accepts VerificationTemplateMetricBaselineBaselineProviderPrometheusArgs and VerificationTemplateMetricBaselineBaselineProviderPrometheusOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricBaselineBaselineProviderPrometheusInput` via:
+//
+//	VerificationTemplateMetricBaselineBaselineProviderPrometheusArgs{...}
+type VerificationTemplateMetricBaselineBaselineProviderPrometheusInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricBaselineBaselineProviderPrometheusOutput() VerificationTemplateMetricBaselineBaselineProviderPrometheusOutput
+	ToVerificationTemplateMetricBaselineBaselineProviderPrometheusOutputWithContext(context.Context) VerificationTemplateMetricBaselineBaselineProviderPrometheusOutput
+}
+
+type VerificationTemplateMetricBaselineBaselineProviderPrometheusArgs struct {
+	PrometheusQuery pulumi.StringInput `pulumi:"prometheusQuery"`
+}
+
+func (VerificationTemplateMetricBaselineBaselineProviderPrometheusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricBaselineBaselineProviderPrometheus)(nil)).Elem()
+}
+
+func (i VerificationTemplateMetricBaselineBaselineProviderPrometheusArgs) ToVerificationTemplateMetricBaselineBaselineProviderPrometheusOutput() VerificationTemplateMetricBaselineBaselineProviderPrometheusOutput {
+	return i.ToVerificationTemplateMetricBaselineBaselineProviderPrometheusOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricBaselineBaselineProviderPrometheusArgs) ToVerificationTemplateMetricBaselineBaselineProviderPrometheusOutputWithContext(ctx context.Context) VerificationTemplateMetricBaselineBaselineProviderPrometheusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricBaselineBaselineProviderPrometheusOutput)
+}
+
+func (i VerificationTemplateMetricBaselineBaselineProviderPrometheusArgs) ToVerificationTemplateMetricBaselineBaselineProviderPrometheusPtrOutput() VerificationTemplateMetricBaselineBaselineProviderPrometheusPtrOutput {
+	return i.ToVerificationTemplateMetricBaselineBaselineProviderPrometheusPtrOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricBaselineBaselineProviderPrometheusArgs) ToVerificationTemplateMetricBaselineBaselineProviderPrometheusPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricBaselineBaselineProviderPrometheusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricBaselineBaselineProviderPrometheusOutput).ToVerificationTemplateMetricBaselineBaselineProviderPrometheusPtrOutputWithContext(ctx)
+}
+
+// VerificationTemplateMetricBaselineBaselineProviderPrometheusPtrInput is an input type that accepts VerificationTemplateMetricBaselineBaselineProviderPrometheusArgs, VerificationTemplateMetricBaselineBaselineProviderPrometheusPtr and VerificationTemplateMetricBaselineBaselineProviderPrometheusPtrOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricBaselineBaselineProviderPrometheusPtrInput` via:
+//
+//	        VerificationTemplateMetricBaselineBaselineProviderPrometheusArgs{...}
+//
+//	or:
+//
+//	        nil
+type VerificationTemplateMetricBaselineBaselineProviderPrometheusPtrInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricBaselineBaselineProviderPrometheusPtrOutput() VerificationTemplateMetricBaselineBaselineProviderPrometheusPtrOutput
+	ToVerificationTemplateMetricBaselineBaselineProviderPrometheusPtrOutputWithContext(context.Context) VerificationTemplateMetricBaselineBaselineProviderPrometheusPtrOutput
+}
+
+type verificationTemplateMetricBaselineBaselineProviderPrometheusPtrType VerificationTemplateMetricBaselineBaselineProviderPrometheusArgs
+
+func VerificationTemplateMetricBaselineBaselineProviderPrometheusPtr(v *VerificationTemplateMetricBaselineBaselineProviderPrometheusArgs) VerificationTemplateMetricBaselineBaselineProviderPrometheusPtrInput {
+	return (*verificationTemplateMetricBaselineBaselineProviderPrometheusPtrType)(v)
+}
+
+func (*verificationTemplateMetricBaselineBaselineProviderPrometheusPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VerificationTemplateMetricBaselineBaselineProviderPrometheus)(nil)).Elem()
+}
+
+func (i *verificationTemplateMetricBaselineBaselineProviderPrometheusPtrType) ToVerificationTemplateMetricBaselineBaselineProviderPrometheusPtrOutput() VerificationTemplateMetricBaselineBaselineProviderPrometheusPtrOutput {
+	return i.ToVerificationTemplateMetricBaselineBaselineProviderPrometheusPtrOutputWithContext(context.Background())
+}
+
+func (i *verificationTemplateMetricBaselineBaselineProviderPrometheusPtrType) ToVerificationTemplateMetricBaselineBaselineProviderPrometheusPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricBaselineBaselineProviderPrometheusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricBaselineBaselineProviderPrometheusPtrOutput)
+}
+
+type VerificationTemplateMetricBaselineBaselineProviderPrometheusOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricBaselineBaselineProviderPrometheusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricBaselineBaselineProviderPrometheus)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricBaselineBaselineProviderPrometheusOutput) ToVerificationTemplateMetricBaselineBaselineProviderPrometheusOutput() VerificationTemplateMetricBaselineBaselineProviderPrometheusOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricBaselineBaselineProviderPrometheusOutput) ToVerificationTemplateMetricBaselineBaselineProviderPrometheusOutputWithContext(ctx context.Context) VerificationTemplateMetricBaselineBaselineProviderPrometheusOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricBaselineBaselineProviderPrometheusOutput) ToVerificationTemplateMetricBaselineBaselineProviderPrometheusPtrOutput() VerificationTemplateMetricBaselineBaselineProviderPrometheusPtrOutput {
+	return o.ToVerificationTemplateMetricBaselineBaselineProviderPrometheusPtrOutputWithContext(context.Background())
+}
+
+func (o VerificationTemplateMetricBaselineBaselineProviderPrometheusOutput) ToVerificationTemplateMetricBaselineBaselineProviderPrometheusPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricBaselineBaselineProviderPrometheusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VerificationTemplateMetricBaselineBaselineProviderPrometheus) *VerificationTemplateMetricBaselineBaselineProviderPrometheus {
+		return &v
+	}).(VerificationTemplateMetricBaselineBaselineProviderPrometheusPtrOutput)
+}
+
+func (o VerificationTemplateMetricBaselineBaselineProviderPrometheusOutput) PrometheusQuery() pulumi.StringOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricBaselineBaselineProviderPrometheus) string { return v.PrometheusQuery }).(pulumi.StringOutput)
+}
+
+type VerificationTemplateMetricBaselineBaselineProviderPrometheusPtrOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricBaselineBaselineProviderPrometheusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VerificationTemplateMetricBaselineBaselineProviderPrometheus)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricBaselineBaselineProviderPrometheusPtrOutput) ToVerificationTemplateMetricBaselineBaselineProviderPrometheusPtrOutput() VerificationTemplateMetricBaselineBaselineProviderPrometheusPtrOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricBaselineBaselineProviderPrometheusPtrOutput) ToVerificationTemplateMetricBaselineBaselineProviderPrometheusPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricBaselineBaselineProviderPrometheusPtrOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricBaselineBaselineProviderPrometheusPtrOutput) Elem() VerificationTemplateMetricBaselineBaselineProviderPrometheusOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricBaselineBaselineProviderPrometheus) VerificationTemplateMetricBaselineBaselineProviderPrometheus {
+		if v != nil {
+			return *v
+		}
+		var ret VerificationTemplateMetricBaselineBaselineProviderPrometheus
+		return ret
+	}).(VerificationTemplateMetricBaselineBaselineProviderPrometheusOutput)
+}
+
+func (o VerificationTemplateMetricBaselineBaselineProviderPrometheusPtrOutput) PrometheusQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricBaselineBaselineProviderPrometheus) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrometheusQuery
+	}).(pulumi.StringPtrOutput)
+}
+
+type VerificationTemplateMetricProvider struct {
+	CloudWatch *VerificationTemplateMetricProviderCloudWatch `pulumi:"cloudWatch"`
+	Datadog    *VerificationTemplateMetricProviderDatadog    `pulumi:"datadog"`
+	Jenkins    *VerificationTemplateMetricProviderJenkins    `pulumi:"jenkins"`
+	Job        *VerificationTemplateMetricProviderJob        `pulumi:"job"`
+	NewRelic   *VerificationTemplateMetricProviderNewRelic   `pulumi:"newRelic"`
+	Prometheus *VerificationTemplateMetricProviderPrometheus `pulumi:"prometheus"`
+	Web        *VerificationTemplateMetricProviderWeb        `pulumi:"web"`
+}
+
+// VerificationTemplateMetricProviderInput is an input type that accepts VerificationTemplateMetricProviderArgs and VerificationTemplateMetricProviderOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricProviderInput` via:
+//
+//	VerificationTemplateMetricProviderArgs{...}
+type VerificationTemplateMetricProviderInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricProviderOutput() VerificationTemplateMetricProviderOutput
+	ToVerificationTemplateMetricProviderOutputWithContext(context.Context) VerificationTemplateMetricProviderOutput
+}
+
+type VerificationTemplateMetricProviderArgs struct {
+	CloudWatch VerificationTemplateMetricProviderCloudWatchPtrInput `pulumi:"cloudWatch"`
+	Datadog    VerificationTemplateMetricProviderDatadogPtrInput    `pulumi:"datadog"`
+	Jenkins    VerificationTemplateMetricProviderJenkinsPtrInput    `pulumi:"jenkins"`
+	Job        VerificationTemplateMetricProviderJobPtrInput        `pulumi:"job"`
+	NewRelic   VerificationTemplateMetricProviderNewRelicPtrInput   `pulumi:"newRelic"`
+	Prometheus VerificationTemplateMetricProviderPrometheusPtrInput `pulumi:"prometheus"`
+	Web        VerificationTemplateMetricProviderWebPtrInput        `pulumi:"web"`
+}
+
+func (VerificationTemplateMetricProviderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricProvider)(nil)).Elem()
+}
+
+func (i VerificationTemplateMetricProviderArgs) ToVerificationTemplateMetricProviderOutput() VerificationTemplateMetricProviderOutput {
+	return i.ToVerificationTemplateMetricProviderOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricProviderArgs) ToVerificationTemplateMetricProviderOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderOutput)
+}
+
+// VerificationTemplateMetricProviderArrayInput is an input type that accepts VerificationTemplateMetricProviderArray and VerificationTemplateMetricProviderArrayOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricProviderArrayInput` via:
+//
+//	VerificationTemplateMetricProviderArray{ VerificationTemplateMetricProviderArgs{...} }
+type VerificationTemplateMetricProviderArrayInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricProviderArrayOutput() VerificationTemplateMetricProviderArrayOutput
+	ToVerificationTemplateMetricProviderArrayOutputWithContext(context.Context) VerificationTemplateMetricProviderArrayOutput
+}
+
+type VerificationTemplateMetricProviderArray []VerificationTemplateMetricProviderInput
+
+func (VerificationTemplateMetricProviderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VerificationTemplateMetricProvider)(nil)).Elem()
+}
+
+func (i VerificationTemplateMetricProviderArray) ToVerificationTemplateMetricProviderArrayOutput() VerificationTemplateMetricProviderArrayOutput {
+	return i.ToVerificationTemplateMetricProviderArrayOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricProviderArray) ToVerificationTemplateMetricProviderArrayOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderArrayOutput)
+}
+
+type VerificationTemplateMetricProviderOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricProviderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricProvider)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricProviderOutput) ToVerificationTemplateMetricProviderOutput() VerificationTemplateMetricProviderOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderOutput) ToVerificationTemplateMetricProviderOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderOutput) CloudWatch() VerificationTemplateMetricProviderCloudWatchPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProvider) *VerificationTemplateMetricProviderCloudWatch {
+		return v.CloudWatch
+	}).(VerificationTemplateMetricProviderCloudWatchPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderOutput) Datadog() VerificationTemplateMetricProviderDatadogPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProvider) *VerificationTemplateMetricProviderDatadog {
+		return v.Datadog
+	}).(VerificationTemplateMetricProviderDatadogPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderOutput) Jenkins() VerificationTemplateMetricProviderJenkinsPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProvider) *VerificationTemplateMetricProviderJenkins {
+		return v.Jenkins
+	}).(VerificationTemplateMetricProviderJenkinsPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderOutput) Job() VerificationTemplateMetricProviderJobPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProvider) *VerificationTemplateMetricProviderJob { return v.Job }).(VerificationTemplateMetricProviderJobPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderOutput) NewRelic() VerificationTemplateMetricProviderNewRelicPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProvider) *VerificationTemplateMetricProviderNewRelic {
+		return v.NewRelic
+	}).(VerificationTemplateMetricProviderNewRelicPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderOutput) Prometheus() VerificationTemplateMetricProviderPrometheusPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProvider) *VerificationTemplateMetricProviderPrometheus {
+		return v.Prometheus
+	}).(VerificationTemplateMetricProviderPrometheusPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderOutput) Web() VerificationTemplateMetricProviderWebPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProvider) *VerificationTemplateMetricProviderWeb { return v.Web }).(VerificationTemplateMetricProviderWebPtrOutput)
+}
+
+type VerificationTemplateMetricProviderArrayOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricProviderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VerificationTemplateMetricProvider)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricProviderArrayOutput) ToVerificationTemplateMetricProviderArrayOutput() VerificationTemplateMetricProviderArrayOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderArrayOutput) ToVerificationTemplateMetricProviderArrayOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderArrayOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderArrayOutput) Index(i pulumi.IntInput) VerificationTemplateMetricProviderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VerificationTemplateMetricProvider {
+		return vs[0].([]VerificationTemplateMetricProvider)[vs[1].(int)]
+	}).(VerificationTemplateMetricProviderOutput)
+}
+
+type VerificationTemplateMetricProviderCloudWatch struct {
+	Duration          *string                                                       `pulumi:"duration"`
+	MetricDataQueries []VerificationTemplateMetricProviderCloudWatchMetricDataQuery `pulumi:"metricDataQueries"`
+}
+
+// VerificationTemplateMetricProviderCloudWatchInput is an input type that accepts VerificationTemplateMetricProviderCloudWatchArgs and VerificationTemplateMetricProviderCloudWatchOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricProviderCloudWatchInput` via:
+//
+//	VerificationTemplateMetricProviderCloudWatchArgs{...}
+type VerificationTemplateMetricProviderCloudWatchInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricProviderCloudWatchOutput() VerificationTemplateMetricProviderCloudWatchOutput
+	ToVerificationTemplateMetricProviderCloudWatchOutputWithContext(context.Context) VerificationTemplateMetricProviderCloudWatchOutput
+}
+
+type VerificationTemplateMetricProviderCloudWatchArgs struct {
+	Duration          pulumi.StringPtrInput                                                 `pulumi:"duration"`
+	MetricDataQueries VerificationTemplateMetricProviderCloudWatchMetricDataQueryArrayInput `pulumi:"metricDataQueries"`
+}
+
+func (VerificationTemplateMetricProviderCloudWatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricProviderCloudWatch)(nil)).Elem()
+}
+
+func (i VerificationTemplateMetricProviderCloudWatchArgs) ToVerificationTemplateMetricProviderCloudWatchOutput() VerificationTemplateMetricProviderCloudWatchOutput {
+	return i.ToVerificationTemplateMetricProviderCloudWatchOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricProviderCloudWatchArgs) ToVerificationTemplateMetricProviderCloudWatchOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderCloudWatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderCloudWatchOutput)
+}
+
+func (i VerificationTemplateMetricProviderCloudWatchArgs) ToVerificationTemplateMetricProviderCloudWatchPtrOutput() VerificationTemplateMetricProviderCloudWatchPtrOutput {
+	return i.ToVerificationTemplateMetricProviderCloudWatchPtrOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricProviderCloudWatchArgs) ToVerificationTemplateMetricProviderCloudWatchPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderCloudWatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderCloudWatchOutput).ToVerificationTemplateMetricProviderCloudWatchPtrOutputWithContext(ctx)
+}
+
+// VerificationTemplateMetricProviderCloudWatchPtrInput is an input type that accepts VerificationTemplateMetricProviderCloudWatchArgs, VerificationTemplateMetricProviderCloudWatchPtr and VerificationTemplateMetricProviderCloudWatchPtrOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricProviderCloudWatchPtrInput` via:
+//
+//	        VerificationTemplateMetricProviderCloudWatchArgs{...}
+//
+//	or:
+//
+//	        nil
+type VerificationTemplateMetricProviderCloudWatchPtrInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricProviderCloudWatchPtrOutput() VerificationTemplateMetricProviderCloudWatchPtrOutput
+	ToVerificationTemplateMetricProviderCloudWatchPtrOutputWithContext(context.Context) VerificationTemplateMetricProviderCloudWatchPtrOutput
+}
+
+type verificationTemplateMetricProviderCloudWatchPtrType VerificationTemplateMetricProviderCloudWatchArgs
+
+func VerificationTemplateMetricProviderCloudWatchPtr(v *VerificationTemplateMetricProviderCloudWatchArgs) VerificationTemplateMetricProviderCloudWatchPtrInput {
+	return (*verificationTemplateMetricProviderCloudWatchPtrType)(v)
+}
+
+func (*verificationTemplateMetricProviderCloudWatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VerificationTemplateMetricProviderCloudWatch)(nil)).Elem()
+}
+
+func (i *verificationTemplateMetricProviderCloudWatchPtrType) ToVerificationTemplateMetricProviderCloudWatchPtrOutput() VerificationTemplateMetricProviderCloudWatchPtrOutput {
+	return i.ToVerificationTemplateMetricProviderCloudWatchPtrOutputWithContext(context.Background())
+}
+
+func (i *verificationTemplateMetricProviderCloudWatchPtrType) ToVerificationTemplateMetricProviderCloudWatchPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderCloudWatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderCloudWatchPtrOutput)
+}
+
+type VerificationTemplateMetricProviderCloudWatchOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricProviderCloudWatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricProviderCloudWatch)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchOutput) ToVerificationTemplateMetricProviderCloudWatchOutput() VerificationTemplateMetricProviderCloudWatchOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchOutput) ToVerificationTemplateMetricProviderCloudWatchOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderCloudWatchOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchOutput) ToVerificationTemplateMetricProviderCloudWatchPtrOutput() VerificationTemplateMetricProviderCloudWatchPtrOutput {
+	return o.ToVerificationTemplateMetricProviderCloudWatchPtrOutputWithContext(context.Background())
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchOutput) ToVerificationTemplateMetricProviderCloudWatchPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderCloudWatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VerificationTemplateMetricProviderCloudWatch) *VerificationTemplateMetricProviderCloudWatch {
+		return &v
+	}).(VerificationTemplateMetricProviderCloudWatchPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchOutput) Duration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderCloudWatch) *string { return v.Duration }).(pulumi.StringPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchOutput) MetricDataQueries() VerificationTemplateMetricProviderCloudWatchMetricDataQueryArrayOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderCloudWatch) []VerificationTemplateMetricProviderCloudWatchMetricDataQuery {
+		return v.MetricDataQueries
+	}).(VerificationTemplateMetricProviderCloudWatchMetricDataQueryArrayOutput)
+}
+
+type VerificationTemplateMetricProviderCloudWatchPtrOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricProviderCloudWatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VerificationTemplateMetricProviderCloudWatch)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchPtrOutput) ToVerificationTemplateMetricProviderCloudWatchPtrOutput() VerificationTemplateMetricProviderCloudWatchPtrOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchPtrOutput) ToVerificationTemplateMetricProviderCloudWatchPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderCloudWatchPtrOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchPtrOutput) Elem() VerificationTemplateMetricProviderCloudWatchOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricProviderCloudWatch) VerificationTemplateMetricProviderCloudWatch {
+		if v != nil {
+			return *v
+		}
+		var ret VerificationTemplateMetricProviderCloudWatch
+		return ret
+	}).(VerificationTemplateMetricProviderCloudWatchOutput)
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchPtrOutput) Duration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricProviderCloudWatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Duration
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchPtrOutput) MetricDataQueries() VerificationTemplateMetricProviderCloudWatchMetricDataQueryArrayOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricProviderCloudWatch) []VerificationTemplateMetricProviderCloudWatchMetricDataQuery {
+		if v == nil {
+			return nil
+		}
+		return v.MetricDataQueries
+	}).(VerificationTemplateMetricProviderCloudWatchMetricDataQueryArrayOutput)
+}
+
+type VerificationTemplateMetricProviderCloudWatchMetricDataQuery struct {
+	Expression *string                                                                `pulumi:"expression"`
+	Id         string                                                                 `pulumi:"id"`
+	Label      *string                                                                `pulumi:"label"`
+	MetricStat *VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat `pulumi:"metricStat"`
+	Period     *int                                                                   `pulumi:"period"`
+	ReturnData *bool                                                                  `pulumi:"returnData"`
+}
+
+// VerificationTemplateMetricProviderCloudWatchMetricDataQueryInput is an input type that accepts VerificationTemplateMetricProviderCloudWatchMetricDataQueryArgs and VerificationTemplateMetricProviderCloudWatchMetricDataQueryOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricProviderCloudWatchMetricDataQueryInput` via:
+//
+//	VerificationTemplateMetricProviderCloudWatchMetricDataQueryArgs{...}
+type VerificationTemplateMetricProviderCloudWatchMetricDataQueryInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryOutput() VerificationTemplateMetricProviderCloudWatchMetricDataQueryOutput
+	ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryOutputWithContext(context.Context) VerificationTemplateMetricProviderCloudWatchMetricDataQueryOutput
+}
+
+type VerificationTemplateMetricProviderCloudWatchMetricDataQueryArgs struct {
+	Expression pulumi.StringPtrInput                                                         `pulumi:"expression"`
+	Id         pulumi.StringInput                                                            `pulumi:"id"`
+	Label      pulumi.StringPtrInput                                                         `pulumi:"label"`
+	MetricStat VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrInput `pulumi:"metricStat"`
+	Period     pulumi.IntPtrInput                                                            `pulumi:"period"`
+	ReturnData pulumi.BoolPtrInput                                                           `pulumi:"returnData"`
+}
+
+func (VerificationTemplateMetricProviderCloudWatchMetricDataQueryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricProviderCloudWatchMetricDataQuery)(nil)).Elem()
+}
+
+func (i VerificationTemplateMetricProviderCloudWatchMetricDataQueryArgs) ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryOutput() VerificationTemplateMetricProviderCloudWatchMetricDataQueryOutput {
+	return i.ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricProviderCloudWatchMetricDataQueryArgs) ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderCloudWatchMetricDataQueryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderCloudWatchMetricDataQueryOutput)
+}
+
+// VerificationTemplateMetricProviderCloudWatchMetricDataQueryArrayInput is an input type that accepts VerificationTemplateMetricProviderCloudWatchMetricDataQueryArray and VerificationTemplateMetricProviderCloudWatchMetricDataQueryArrayOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricProviderCloudWatchMetricDataQueryArrayInput` via:
+//
+//	VerificationTemplateMetricProviderCloudWatchMetricDataQueryArray{ VerificationTemplateMetricProviderCloudWatchMetricDataQueryArgs{...} }
+type VerificationTemplateMetricProviderCloudWatchMetricDataQueryArrayInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryArrayOutput() VerificationTemplateMetricProviderCloudWatchMetricDataQueryArrayOutput
+	ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryArrayOutputWithContext(context.Context) VerificationTemplateMetricProviderCloudWatchMetricDataQueryArrayOutput
+}
+
+type VerificationTemplateMetricProviderCloudWatchMetricDataQueryArray []VerificationTemplateMetricProviderCloudWatchMetricDataQueryInput
+
+func (VerificationTemplateMetricProviderCloudWatchMetricDataQueryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VerificationTemplateMetricProviderCloudWatchMetricDataQuery)(nil)).Elem()
+}
+
+func (i VerificationTemplateMetricProviderCloudWatchMetricDataQueryArray) ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryArrayOutput() VerificationTemplateMetricProviderCloudWatchMetricDataQueryArrayOutput {
+	return i.ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryArrayOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricProviderCloudWatchMetricDataQueryArray) ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryArrayOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderCloudWatchMetricDataQueryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderCloudWatchMetricDataQueryArrayOutput)
+}
+
+type VerificationTemplateMetricProviderCloudWatchMetricDataQueryOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricProviderCloudWatchMetricDataQueryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricProviderCloudWatchMetricDataQuery)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryOutput) ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryOutput() VerificationTemplateMetricProviderCloudWatchMetricDataQueryOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryOutput) ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderCloudWatchMetricDataQueryOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderCloudWatchMetricDataQuery) *string { return v.Expression }).(pulumi.StringPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderCloudWatchMetricDataQuery) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderCloudWatchMetricDataQuery) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryOutput) MetricStat() VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderCloudWatchMetricDataQuery) *VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat {
+		return v.MetricStat
+	}).(VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderCloudWatchMetricDataQuery) *int { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryOutput) ReturnData() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderCloudWatchMetricDataQuery) *bool { return v.ReturnData }).(pulumi.BoolPtrOutput)
+}
+
+type VerificationTemplateMetricProviderCloudWatchMetricDataQueryArrayOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricProviderCloudWatchMetricDataQueryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VerificationTemplateMetricProviderCloudWatchMetricDataQuery)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryArrayOutput) ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryArrayOutput() VerificationTemplateMetricProviderCloudWatchMetricDataQueryArrayOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryArrayOutput) ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryArrayOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderCloudWatchMetricDataQueryArrayOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryArrayOutput) Index(i pulumi.IntInput) VerificationTemplateMetricProviderCloudWatchMetricDataQueryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VerificationTemplateMetricProviderCloudWatchMetricDataQuery {
+		return vs[0].([]VerificationTemplateMetricProviderCloudWatchMetricDataQuery)[vs[1].(int)]
+	}).(VerificationTemplateMetricProviderCloudWatchMetricDataQueryOutput)
+}
+
+type VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat struct {
+	Metric       *VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric `pulumi:"metric"`
+	MetricPeriod *int                                                                         `pulumi:"metricPeriod"`
+	Stat         *string                                                                      `pulumi:"stat"`
+	Unit         *string                                                                      `pulumi:"unit"`
+}
+
+// VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatInput is an input type that accepts VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatArgs and VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatInput` via:
+//
+//	VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatArgs{...}
+type VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatOutput() VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatOutput
+	ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatOutputWithContext(context.Context) VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatOutput
+}
+
+type VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatArgs struct {
+	Metric       VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrInput `pulumi:"metric"`
+	MetricPeriod pulumi.IntPtrInput                                                                  `pulumi:"metricPeriod"`
+	Stat         pulumi.StringPtrInput                                                               `pulumi:"stat"`
+	Unit         pulumi.StringPtrInput                                                               `pulumi:"unit"`
+}
+
+func (VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat)(nil)).Elem()
+}
+
+func (i VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatArgs) ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatOutput() VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatOutput {
+	return i.ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatArgs) ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatOutput)
+}
+
+func (i VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatArgs) ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutput() VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutput {
+	return i.ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatArgs) ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatOutput).ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutputWithContext(ctx)
+}
+
+// VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrInput is an input type that accepts VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatArgs, VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtr and VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrInput` via:
+//
+//	        VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatArgs{...}
+//
+//	or:
+//
+//	        nil
+type VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutput() VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutput
+	ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutputWithContext(context.Context) VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutput
+}
+
+type verificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrType VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatArgs
+
+func VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtr(v *VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatArgs) VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrInput {
+	return (*verificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrType)(v)
+}
+
+func (*verificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat)(nil)).Elem()
+}
+
+func (i *verificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrType) ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutput() VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutput {
+	return i.ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutputWithContext(context.Background())
+}
+
+func (i *verificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrType) ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutput)
+}
+
+type VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatOutput) ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatOutput() VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatOutput) ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatOutput) ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutput() VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutput {
+	return o.ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutputWithContext(context.Background())
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatOutput) ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat) *VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat {
+		return &v
+	}).(VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatOutput) Metric() VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat) *VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric {
+		return v.Metric
+	}).(VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatOutput) MetricPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat) *int {
+		return v.MetricPeriod
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatOutput) Stat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat) *string { return v.Stat }).(pulumi.StringPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+type VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutput) ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutput() VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutput) ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutput) Elem() VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat) VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat {
+		if v != nil {
+			return *v
+		}
+		var ret VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat
+		return ret
+	}).(VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatOutput)
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutput) Metric() VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat) *VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric {
+		if v == nil {
+			return nil
+		}
+		return v.Metric
+	}).(VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutput) MetricPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MetricPeriod
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutput) Stat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Stat
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+type VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric struct {
+	Dimensions []VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimension `pulumi:"dimensions"`
+	MetricName string                                                                                 `pulumi:"metricName"`
+	Namespace  *string                                                                                `pulumi:"namespace"`
+}
+
+// VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricInput is an input type that accepts VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricArgs and VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricInput` via:
+//
+//	VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricArgs{...}
+type VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricOutput() VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricOutput
+	ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricOutputWithContext(context.Context) VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricOutput
+}
+
+type VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricArgs struct {
+	Dimensions VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArrayInput `pulumi:"dimensions"`
+	MetricName pulumi.StringInput                                                                             `pulumi:"metricName"`
+	Namespace  pulumi.StringPtrInput                                                                          `pulumi:"namespace"`
+}
+
+func (VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric)(nil)).Elem()
+}
+
+func (i VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricArgs) ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricOutput() VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricOutput {
+	return i.ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricArgs) ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricOutput)
+}
+
+func (i VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricArgs) ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutput() VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutput {
+	return i.ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricArgs) ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricOutput).ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutputWithContext(ctx)
+}
+
+// VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrInput is an input type that accepts VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricArgs, VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtr and VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrInput` via:
+//
+//	        VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricArgs{...}
+//
+//	or:
+//
+//	        nil
+type VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutput() VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutput
+	ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutputWithContext(context.Context) VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutput
+}
+
+type verificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrType VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricArgs
+
+func VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtr(v *VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricArgs) VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrInput {
+	return (*verificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrType)(v)
+}
+
+func (*verificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric)(nil)).Elem()
+}
+
+func (i *verificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrType) ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutput() VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutput {
+	return i.ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutputWithContext(context.Background())
+}
+
+func (i *verificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrType) ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutput)
+}
+
+type VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricOutput) ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricOutput() VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricOutput) ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricOutput) ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutput() VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutput {
+	return o.ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutputWithContext(context.Background())
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricOutput) ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric) *VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric {
+		return &v
+	}).(VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricOutput) Dimensions() VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArrayOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric) []VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimension {
+		return v.Dimensions
+	}).(VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArrayOutput)
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricOutput) MetricName() pulumi.StringOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric) string {
+		return v.MetricName
+	}).(pulumi.StringOutput)
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric) *string {
+		return v.Namespace
+	}).(pulumi.StringPtrOutput)
+}
+
+type VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutput) ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutput() VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutput) ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutput) Elem() VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric) VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric {
+		if v != nil {
+			return *v
+		}
+		var ret VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric
+		return ret
+	}).(VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricOutput)
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutput) Dimensions() VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArrayOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric) []VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimension {
+		if v == nil {
+			return nil
+		}
+		return v.Dimensions
+	}).(VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArrayOutput)
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutput) MetricName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MetricName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Namespace
+	}).(pulumi.StringPtrOutput)
+}
+
+type VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimension struct {
+	DimensionName  string `pulumi:"dimensionName"`
+	DimensionValue string `pulumi:"dimensionValue"`
+}
+
+// VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionInput is an input type that accepts VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArgs and VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionInput` via:
+//
+//	VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArgs{...}
+type VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionOutput() VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionOutput
+	ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionOutputWithContext(context.Context) VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionOutput
+}
+
+type VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArgs struct {
+	DimensionName  pulumi.StringInput `pulumi:"dimensionName"`
+	DimensionValue pulumi.StringInput `pulumi:"dimensionValue"`
+}
+
+func (VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimension)(nil)).Elem()
+}
+
+func (i VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArgs) ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionOutput() VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionOutput {
+	return i.ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArgs) ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionOutput)
+}
+
+// VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArrayInput is an input type that accepts VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArray and VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArrayOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArrayInput` via:
+//
+//	VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArray{ VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArgs{...} }
+type VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArrayInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArrayOutput() VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArrayOutput
+	ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArrayOutputWithContext(context.Context) VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArrayOutput
+}
+
+type VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArray []VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionInput
+
+func (VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimension)(nil)).Elem()
+}
+
+func (i VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArray) ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArrayOutput() VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArrayOutput {
+	return i.ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArrayOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArray) ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArrayOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArrayOutput)
+}
+
+type VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimension)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionOutput) ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionOutput() VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionOutput) ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionOutput) DimensionName() pulumi.StringOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimension) string {
+		return v.DimensionName
+	}).(pulumi.StringOutput)
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionOutput) DimensionValue() pulumi.StringOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimension) string {
+		return v.DimensionValue
+	}).(pulumi.StringOutput)
+}
+
+type VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArrayOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimension)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArrayOutput) ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArrayOutput() VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArrayOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArrayOutput) ToVerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArrayOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArrayOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArrayOutput) Index(i pulumi.IntInput) VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimension {
+		return vs[0].([]VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimension)[vs[1].(int)]
+	}).(VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionOutput)
+}
+
+type VerificationTemplateMetricProviderDatadog struct {
+	DatadogQuery *string `pulumi:"datadogQuery"`
+	Duration     *string `pulumi:"duration"`
+}
+
+// VerificationTemplateMetricProviderDatadogInput is an input type that accepts VerificationTemplateMetricProviderDatadogArgs and VerificationTemplateMetricProviderDatadogOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricProviderDatadogInput` via:
+//
+//	VerificationTemplateMetricProviderDatadogArgs{...}
+type VerificationTemplateMetricProviderDatadogInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricProviderDatadogOutput() VerificationTemplateMetricProviderDatadogOutput
+	ToVerificationTemplateMetricProviderDatadogOutputWithContext(context.Context) VerificationTemplateMetricProviderDatadogOutput
+}
+
+type VerificationTemplateMetricProviderDatadogArgs struct {
+	DatadogQuery pulumi.StringPtrInput `pulumi:"datadogQuery"`
+	Duration     pulumi.StringPtrInput `pulumi:"duration"`
+}
+
+func (VerificationTemplateMetricProviderDatadogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricProviderDatadog)(nil)).Elem()
+}
+
+func (i VerificationTemplateMetricProviderDatadogArgs) ToVerificationTemplateMetricProviderDatadogOutput() VerificationTemplateMetricProviderDatadogOutput {
+	return i.ToVerificationTemplateMetricProviderDatadogOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricProviderDatadogArgs) ToVerificationTemplateMetricProviderDatadogOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderDatadogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderDatadogOutput)
+}
+
+func (i VerificationTemplateMetricProviderDatadogArgs) ToVerificationTemplateMetricProviderDatadogPtrOutput() VerificationTemplateMetricProviderDatadogPtrOutput {
+	return i.ToVerificationTemplateMetricProviderDatadogPtrOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricProviderDatadogArgs) ToVerificationTemplateMetricProviderDatadogPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderDatadogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderDatadogOutput).ToVerificationTemplateMetricProviderDatadogPtrOutputWithContext(ctx)
+}
+
+// VerificationTemplateMetricProviderDatadogPtrInput is an input type that accepts VerificationTemplateMetricProviderDatadogArgs, VerificationTemplateMetricProviderDatadogPtr and VerificationTemplateMetricProviderDatadogPtrOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricProviderDatadogPtrInput` via:
+//
+//	        VerificationTemplateMetricProviderDatadogArgs{...}
+//
+//	or:
+//
+//	        nil
+type VerificationTemplateMetricProviderDatadogPtrInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricProviderDatadogPtrOutput() VerificationTemplateMetricProviderDatadogPtrOutput
+	ToVerificationTemplateMetricProviderDatadogPtrOutputWithContext(context.Context) VerificationTemplateMetricProviderDatadogPtrOutput
+}
+
+type verificationTemplateMetricProviderDatadogPtrType VerificationTemplateMetricProviderDatadogArgs
+
+func VerificationTemplateMetricProviderDatadogPtr(v *VerificationTemplateMetricProviderDatadogArgs) VerificationTemplateMetricProviderDatadogPtrInput {
+	return (*verificationTemplateMetricProviderDatadogPtrType)(v)
+}
+
+func (*verificationTemplateMetricProviderDatadogPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VerificationTemplateMetricProviderDatadog)(nil)).Elem()
+}
+
+func (i *verificationTemplateMetricProviderDatadogPtrType) ToVerificationTemplateMetricProviderDatadogPtrOutput() VerificationTemplateMetricProviderDatadogPtrOutput {
+	return i.ToVerificationTemplateMetricProviderDatadogPtrOutputWithContext(context.Background())
+}
+
+func (i *verificationTemplateMetricProviderDatadogPtrType) ToVerificationTemplateMetricProviderDatadogPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderDatadogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderDatadogPtrOutput)
+}
+
+type VerificationTemplateMetricProviderDatadogOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricProviderDatadogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricProviderDatadog)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricProviderDatadogOutput) ToVerificationTemplateMetricProviderDatadogOutput() VerificationTemplateMetricProviderDatadogOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderDatadogOutput) ToVerificationTemplateMetricProviderDatadogOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderDatadogOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderDatadogOutput) ToVerificationTemplateMetricProviderDatadogPtrOutput() VerificationTemplateMetricProviderDatadogPtrOutput {
+	return o.ToVerificationTemplateMetricProviderDatadogPtrOutputWithContext(context.Background())
+}
+
+func (o VerificationTemplateMetricProviderDatadogOutput) ToVerificationTemplateMetricProviderDatadogPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderDatadogPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VerificationTemplateMetricProviderDatadog) *VerificationTemplateMetricProviderDatadog {
+		return &v
+	}).(VerificationTemplateMetricProviderDatadogPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderDatadogOutput) DatadogQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderDatadog) *string { return v.DatadogQuery }).(pulumi.StringPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderDatadogOutput) Duration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderDatadog) *string { return v.Duration }).(pulumi.StringPtrOutput)
+}
+
+type VerificationTemplateMetricProviderDatadogPtrOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricProviderDatadogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VerificationTemplateMetricProviderDatadog)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricProviderDatadogPtrOutput) ToVerificationTemplateMetricProviderDatadogPtrOutput() VerificationTemplateMetricProviderDatadogPtrOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderDatadogPtrOutput) ToVerificationTemplateMetricProviderDatadogPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderDatadogPtrOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderDatadogPtrOutput) Elem() VerificationTemplateMetricProviderDatadogOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricProviderDatadog) VerificationTemplateMetricProviderDatadog {
+		if v != nil {
+			return *v
+		}
+		var ret VerificationTemplateMetricProviderDatadog
+		return ret
+	}).(VerificationTemplateMetricProviderDatadogOutput)
+}
+
+func (o VerificationTemplateMetricProviderDatadogPtrOutput) DatadogQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricProviderDatadog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DatadogQuery
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderDatadogPtrOutput) Duration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricProviderDatadog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Duration
+	}).(pulumi.StringPtrOutput)
+}
+
+type VerificationTemplateMetricProviderJenkins struct {
+	JenkinsInterval   string                                                      `pulumi:"jenkinsInterval"`
+	JenkinsParameters *VerificationTemplateMetricProviderJenkinsJenkinsParameters `pulumi:"jenkinsParameters"`
+	PipelineName      string                                                      `pulumi:"pipelineName"`
+	Timeout           string                                                      `pulumi:"timeout"`
+	TlsVerification   *bool                                                       `pulumi:"tlsVerification"`
+}
+
+// VerificationTemplateMetricProviderJenkinsInput is an input type that accepts VerificationTemplateMetricProviderJenkinsArgs and VerificationTemplateMetricProviderJenkinsOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricProviderJenkinsInput` via:
+//
+//	VerificationTemplateMetricProviderJenkinsArgs{...}
+type VerificationTemplateMetricProviderJenkinsInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricProviderJenkinsOutput() VerificationTemplateMetricProviderJenkinsOutput
+	ToVerificationTemplateMetricProviderJenkinsOutputWithContext(context.Context) VerificationTemplateMetricProviderJenkinsOutput
+}
+
+type VerificationTemplateMetricProviderJenkinsArgs struct {
+	JenkinsInterval   pulumi.StringInput                                                 `pulumi:"jenkinsInterval"`
+	JenkinsParameters VerificationTemplateMetricProviderJenkinsJenkinsParametersPtrInput `pulumi:"jenkinsParameters"`
+	PipelineName      pulumi.StringInput                                                 `pulumi:"pipelineName"`
+	Timeout           pulumi.StringInput                                                 `pulumi:"timeout"`
+	TlsVerification   pulumi.BoolPtrInput                                                `pulumi:"tlsVerification"`
+}
+
+func (VerificationTemplateMetricProviderJenkinsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricProviderJenkins)(nil)).Elem()
+}
+
+func (i VerificationTemplateMetricProviderJenkinsArgs) ToVerificationTemplateMetricProviderJenkinsOutput() VerificationTemplateMetricProviderJenkinsOutput {
+	return i.ToVerificationTemplateMetricProviderJenkinsOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricProviderJenkinsArgs) ToVerificationTemplateMetricProviderJenkinsOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderJenkinsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderJenkinsOutput)
+}
+
+func (i VerificationTemplateMetricProviderJenkinsArgs) ToVerificationTemplateMetricProviderJenkinsPtrOutput() VerificationTemplateMetricProviderJenkinsPtrOutput {
+	return i.ToVerificationTemplateMetricProviderJenkinsPtrOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricProviderJenkinsArgs) ToVerificationTemplateMetricProviderJenkinsPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderJenkinsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderJenkinsOutput).ToVerificationTemplateMetricProviderJenkinsPtrOutputWithContext(ctx)
+}
+
+// VerificationTemplateMetricProviderJenkinsPtrInput is an input type that accepts VerificationTemplateMetricProviderJenkinsArgs, VerificationTemplateMetricProviderJenkinsPtr and VerificationTemplateMetricProviderJenkinsPtrOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricProviderJenkinsPtrInput` via:
+//
+//	        VerificationTemplateMetricProviderJenkinsArgs{...}
+//
+//	or:
+//
+//	        nil
+type VerificationTemplateMetricProviderJenkinsPtrInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricProviderJenkinsPtrOutput() VerificationTemplateMetricProviderJenkinsPtrOutput
+	ToVerificationTemplateMetricProviderJenkinsPtrOutputWithContext(context.Context) VerificationTemplateMetricProviderJenkinsPtrOutput
+}
+
+type verificationTemplateMetricProviderJenkinsPtrType VerificationTemplateMetricProviderJenkinsArgs
+
+func VerificationTemplateMetricProviderJenkinsPtr(v *VerificationTemplateMetricProviderJenkinsArgs) VerificationTemplateMetricProviderJenkinsPtrInput {
+	return (*verificationTemplateMetricProviderJenkinsPtrType)(v)
+}
+
+func (*verificationTemplateMetricProviderJenkinsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VerificationTemplateMetricProviderJenkins)(nil)).Elem()
+}
+
+func (i *verificationTemplateMetricProviderJenkinsPtrType) ToVerificationTemplateMetricProviderJenkinsPtrOutput() VerificationTemplateMetricProviderJenkinsPtrOutput {
+	return i.ToVerificationTemplateMetricProviderJenkinsPtrOutputWithContext(context.Background())
+}
+
+func (i *verificationTemplateMetricProviderJenkinsPtrType) ToVerificationTemplateMetricProviderJenkinsPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderJenkinsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderJenkinsPtrOutput)
+}
+
+type VerificationTemplateMetricProviderJenkinsOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricProviderJenkinsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricProviderJenkins)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricProviderJenkinsOutput) ToVerificationTemplateMetricProviderJenkinsOutput() VerificationTemplateMetricProviderJenkinsOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderJenkinsOutput) ToVerificationTemplateMetricProviderJenkinsOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderJenkinsOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderJenkinsOutput) ToVerificationTemplateMetricProviderJenkinsPtrOutput() VerificationTemplateMetricProviderJenkinsPtrOutput {
+	return o.ToVerificationTemplateMetricProviderJenkinsPtrOutputWithContext(context.Background())
+}
+
+func (o VerificationTemplateMetricProviderJenkinsOutput) ToVerificationTemplateMetricProviderJenkinsPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderJenkinsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VerificationTemplateMetricProviderJenkins) *VerificationTemplateMetricProviderJenkins {
+		return &v
+	}).(VerificationTemplateMetricProviderJenkinsPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderJenkinsOutput) JenkinsInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderJenkins) string { return v.JenkinsInterval }).(pulumi.StringOutput)
+}
+
+func (o VerificationTemplateMetricProviderJenkinsOutput) JenkinsParameters() VerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderJenkins) *VerificationTemplateMetricProviderJenkinsJenkinsParameters {
+		return v.JenkinsParameters
+	}).(VerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderJenkinsOutput) PipelineName() pulumi.StringOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderJenkins) string { return v.PipelineName }).(pulumi.StringOutput)
+}
+
+func (o VerificationTemplateMetricProviderJenkinsOutput) Timeout() pulumi.StringOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderJenkins) string { return v.Timeout }).(pulumi.StringOutput)
+}
+
+func (o VerificationTemplateMetricProviderJenkinsOutput) TlsVerification() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderJenkins) *bool { return v.TlsVerification }).(pulumi.BoolPtrOutput)
+}
+
+type VerificationTemplateMetricProviderJenkinsPtrOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricProviderJenkinsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VerificationTemplateMetricProviderJenkins)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricProviderJenkinsPtrOutput) ToVerificationTemplateMetricProviderJenkinsPtrOutput() VerificationTemplateMetricProviderJenkinsPtrOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderJenkinsPtrOutput) ToVerificationTemplateMetricProviderJenkinsPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderJenkinsPtrOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderJenkinsPtrOutput) Elem() VerificationTemplateMetricProviderJenkinsOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricProviderJenkins) VerificationTemplateMetricProviderJenkins {
+		if v != nil {
+			return *v
+		}
+		var ret VerificationTemplateMetricProviderJenkins
+		return ret
+	}).(VerificationTemplateMetricProviderJenkinsOutput)
+}
+
+func (o VerificationTemplateMetricProviderJenkinsPtrOutput) JenkinsInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricProviderJenkins) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.JenkinsInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderJenkinsPtrOutput) JenkinsParameters() VerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricProviderJenkins) *VerificationTemplateMetricProviderJenkinsJenkinsParameters {
+		if v == nil {
+			return nil
+		}
+		return v.JenkinsParameters
+	}).(VerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderJenkinsPtrOutput) PipelineName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricProviderJenkins) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PipelineName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderJenkinsPtrOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricProviderJenkins) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Timeout
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderJenkinsPtrOutput) TlsVerification() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricProviderJenkins) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TlsVerification
+	}).(pulumi.BoolPtrOutput)
+}
+
+type VerificationTemplateMetricProviderJenkinsJenkinsParameters struct {
+	ParameterKey   string `pulumi:"parameterKey"`
+	ParameterValue string `pulumi:"parameterValue"`
+}
+
+// VerificationTemplateMetricProviderJenkinsJenkinsParametersInput is an input type that accepts VerificationTemplateMetricProviderJenkinsJenkinsParametersArgs and VerificationTemplateMetricProviderJenkinsJenkinsParametersOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricProviderJenkinsJenkinsParametersInput` via:
+//
+//	VerificationTemplateMetricProviderJenkinsJenkinsParametersArgs{...}
+type VerificationTemplateMetricProviderJenkinsJenkinsParametersInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricProviderJenkinsJenkinsParametersOutput() VerificationTemplateMetricProviderJenkinsJenkinsParametersOutput
+	ToVerificationTemplateMetricProviderJenkinsJenkinsParametersOutputWithContext(context.Context) VerificationTemplateMetricProviderJenkinsJenkinsParametersOutput
+}
+
+type VerificationTemplateMetricProviderJenkinsJenkinsParametersArgs struct {
+	ParameterKey   pulumi.StringInput `pulumi:"parameterKey"`
+	ParameterValue pulumi.StringInput `pulumi:"parameterValue"`
+}
+
+func (VerificationTemplateMetricProviderJenkinsJenkinsParametersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricProviderJenkinsJenkinsParameters)(nil)).Elem()
+}
+
+func (i VerificationTemplateMetricProviderJenkinsJenkinsParametersArgs) ToVerificationTemplateMetricProviderJenkinsJenkinsParametersOutput() VerificationTemplateMetricProviderJenkinsJenkinsParametersOutput {
+	return i.ToVerificationTemplateMetricProviderJenkinsJenkinsParametersOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricProviderJenkinsJenkinsParametersArgs) ToVerificationTemplateMetricProviderJenkinsJenkinsParametersOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderJenkinsJenkinsParametersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderJenkinsJenkinsParametersOutput)
+}
+
+func (i VerificationTemplateMetricProviderJenkinsJenkinsParametersArgs) ToVerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutput() VerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutput {
+	return i.ToVerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricProviderJenkinsJenkinsParametersArgs) ToVerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderJenkinsJenkinsParametersOutput).ToVerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutputWithContext(ctx)
+}
+
+// VerificationTemplateMetricProviderJenkinsJenkinsParametersPtrInput is an input type that accepts VerificationTemplateMetricProviderJenkinsJenkinsParametersArgs, VerificationTemplateMetricProviderJenkinsJenkinsParametersPtr and VerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricProviderJenkinsJenkinsParametersPtrInput` via:
+//
+//	        VerificationTemplateMetricProviderJenkinsJenkinsParametersArgs{...}
+//
+//	or:
+//
+//	        nil
+type VerificationTemplateMetricProviderJenkinsJenkinsParametersPtrInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutput() VerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutput
+	ToVerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutputWithContext(context.Context) VerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutput
+}
+
+type verificationTemplateMetricProviderJenkinsJenkinsParametersPtrType VerificationTemplateMetricProviderJenkinsJenkinsParametersArgs
+
+func VerificationTemplateMetricProviderJenkinsJenkinsParametersPtr(v *VerificationTemplateMetricProviderJenkinsJenkinsParametersArgs) VerificationTemplateMetricProviderJenkinsJenkinsParametersPtrInput {
+	return (*verificationTemplateMetricProviderJenkinsJenkinsParametersPtrType)(v)
+}
+
+func (*verificationTemplateMetricProviderJenkinsJenkinsParametersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VerificationTemplateMetricProviderJenkinsJenkinsParameters)(nil)).Elem()
+}
+
+func (i *verificationTemplateMetricProviderJenkinsJenkinsParametersPtrType) ToVerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutput() VerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutput {
+	return i.ToVerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutputWithContext(context.Background())
+}
+
+func (i *verificationTemplateMetricProviderJenkinsJenkinsParametersPtrType) ToVerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutput)
+}
+
+type VerificationTemplateMetricProviderJenkinsJenkinsParametersOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricProviderJenkinsJenkinsParametersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricProviderJenkinsJenkinsParameters)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricProviderJenkinsJenkinsParametersOutput) ToVerificationTemplateMetricProviderJenkinsJenkinsParametersOutput() VerificationTemplateMetricProviderJenkinsJenkinsParametersOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderJenkinsJenkinsParametersOutput) ToVerificationTemplateMetricProviderJenkinsJenkinsParametersOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderJenkinsJenkinsParametersOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderJenkinsJenkinsParametersOutput) ToVerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutput() VerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutput {
+	return o.ToVerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutputWithContext(context.Background())
+}
+
+func (o VerificationTemplateMetricProviderJenkinsJenkinsParametersOutput) ToVerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VerificationTemplateMetricProviderJenkinsJenkinsParameters) *VerificationTemplateMetricProviderJenkinsJenkinsParameters {
+		return &v
+	}).(VerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderJenkinsJenkinsParametersOutput) ParameterKey() pulumi.StringOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderJenkinsJenkinsParameters) string { return v.ParameterKey }).(pulumi.StringOutput)
+}
+
+func (o VerificationTemplateMetricProviderJenkinsJenkinsParametersOutput) ParameterValue() pulumi.StringOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderJenkinsJenkinsParameters) string { return v.ParameterValue }).(pulumi.StringOutput)
+}
+
+type VerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VerificationTemplateMetricProviderJenkinsJenkinsParameters)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutput) ToVerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutput() VerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutput) ToVerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutput) Elem() VerificationTemplateMetricProviderJenkinsJenkinsParametersOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricProviderJenkinsJenkinsParameters) VerificationTemplateMetricProviderJenkinsJenkinsParameters {
+		if v != nil {
+			return *v
+		}
+		var ret VerificationTemplateMetricProviderJenkinsJenkinsParameters
+		return ret
+	}).(VerificationTemplateMetricProviderJenkinsJenkinsParametersOutput)
+}
+
+func (o VerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutput) ParameterKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricProviderJenkinsJenkinsParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ParameterKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutput) ParameterValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricProviderJenkinsJenkinsParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ParameterValue
+	}).(pulumi.StringPtrOutput)
+}
+
+type VerificationTemplateMetricProviderJob struct {
+	Specs []VerificationTemplateMetricProviderJobSpec `pulumi:"specs"`
+}
+
+// VerificationTemplateMetricProviderJobInput is an input type that accepts VerificationTemplateMetricProviderJobArgs and VerificationTemplateMetricProviderJobOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricProviderJobInput` via:
+//
+//	VerificationTemplateMetricProviderJobArgs{...}
+type VerificationTemplateMetricProviderJobInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricProviderJobOutput() VerificationTemplateMetricProviderJobOutput
+	ToVerificationTemplateMetricProviderJobOutputWithContext(context.Context) VerificationTemplateMetricProviderJobOutput
+}
+
+type VerificationTemplateMetricProviderJobArgs struct {
+	Specs VerificationTemplateMetricProviderJobSpecArrayInput `pulumi:"specs"`
+}
+
+func (VerificationTemplateMetricProviderJobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricProviderJob)(nil)).Elem()
+}
+
+func (i VerificationTemplateMetricProviderJobArgs) ToVerificationTemplateMetricProviderJobOutput() VerificationTemplateMetricProviderJobOutput {
+	return i.ToVerificationTemplateMetricProviderJobOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricProviderJobArgs) ToVerificationTemplateMetricProviderJobOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderJobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderJobOutput)
+}
+
+func (i VerificationTemplateMetricProviderJobArgs) ToVerificationTemplateMetricProviderJobPtrOutput() VerificationTemplateMetricProviderJobPtrOutput {
+	return i.ToVerificationTemplateMetricProviderJobPtrOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricProviderJobArgs) ToVerificationTemplateMetricProviderJobPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderJobOutput).ToVerificationTemplateMetricProviderJobPtrOutputWithContext(ctx)
+}
+
+// VerificationTemplateMetricProviderJobPtrInput is an input type that accepts VerificationTemplateMetricProviderJobArgs, VerificationTemplateMetricProviderJobPtr and VerificationTemplateMetricProviderJobPtrOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricProviderJobPtrInput` via:
+//
+//	        VerificationTemplateMetricProviderJobArgs{...}
+//
+//	or:
+//
+//	        nil
+type VerificationTemplateMetricProviderJobPtrInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricProviderJobPtrOutput() VerificationTemplateMetricProviderJobPtrOutput
+	ToVerificationTemplateMetricProviderJobPtrOutputWithContext(context.Context) VerificationTemplateMetricProviderJobPtrOutput
+}
+
+type verificationTemplateMetricProviderJobPtrType VerificationTemplateMetricProviderJobArgs
+
+func VerificationTemplateMetricProviderJobPtr(v *VerificationTemplateMetricProviderJobArgs) VerificationTemplateMetricProviderJobPtrInput {
+	return (*verificationTemplateMetricProviderJobPtrType)(v)
+}
+
+func (*verificationTemplateMetricProviderJobPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VerificationTemplateMetricProviderJob)(nil)).Elem()
+}
+
+func (i *verificationTemplateMetricProviderJobPtrType) ToVerificationTemplateMetricProviderJobPtrOutput() VerificationTemplateMetricProviderJobPtrOutput {
+	return i.ToVerificationTemplateMetricProviderJobPtrOutputWithContext(context.Background())
+}
+
+func (i *verificationTemplateMetricProviderJobPtrType) ToVerificationTemplateMetricProviderJobPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderJobPtrOutput)
+}
+
+type VerificationTemplateMetricProviderJobOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricProviderJobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricProviderJob)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricProviderJobOutput) ToVerificationTemplateMetricProviderJobOutput() VerificationTemplateMetricProviderJobOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderJobOutput) ToVerificationTemplateMetricProviderJobOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderJobOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderJobOutput) ToVerificationTemplateMetricProviderJobPtrOutput() VerificationTemplateMetricProviderJobPtrOutput {
+	return o.ToVerificationTemplateMetricProviderJobPtrOutputWithContext(context.Background())
+}
+
+func (o VerificationTemplateMetricProviderJobOutput) ToVerificationTemplateMetricProviderJobPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderJobPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VerificationTemplateMetricProviderJob) *VerificationTemplateMetricProviderJob {
+		return &v
+	}).(VerificationTemplateMetricProviderJobPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderJobOutput) Specs() VerificationTemplateMetricProviderJobSpecArrayOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderJob) []VerificationTemplateMetricProviderJobSpec {
+		return v.Specs
+	}).(VerificationTemplateMetricProviderJobSpecArrayOutput)
+}
+
+type VerificationTemplateMetricProviderJobPtrOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricProviderJobPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VerificationTemplateMetricProviderJob)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricProviderJobPtrOutput) ToVerificationTemplateMetricProviderJobPtrOutput() VerificationTemplateMetricProviderJobPtrOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderJobPtrOutput) ToVerificationTemplateMetricProviderJobPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderJobPtrOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderJobPtrOutput) Elem() VerificationTemplateMetricProviderJobOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricProviderJob) VerificationTemplateMetricProviderJob {
+		if v != nil {
+			return *v
+		}
+		var ret VerificationTemplateMetricProviderJob
+		return ret
+	}).(VerificationTemplateMetricProviderJobOutput)
+}
+
+func (o VerificationTemplateMetricProviderJobPtrOutput) Specs() VerificationTemplateMetricProviderJobSpecArrayOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricProviderJob) []VerificationTemplateMetricProviderJobSpec {
+		if v == nil {
+			return nil
+		}
+		return v.Specs
+	}).(VerificationTemplateMetricProviderJobSpecArrayOutput)
+}
+
+type VerificationTemplateMetricProviderJobSpec struct {
+	BackoffLimit *int                                                   `pulumi:"backoffLimit"`
+	JobTemplates []VerificationTemplateMetricProviderJobSpecJobTemplate `pulumi:"jobTemplates"`
+}
+
+// VerificationTemplateMetricProviderJobSpecInput is an input type that accepts VerificationTemplateMetricProviderJobSpecArgs and VerificationTemplateMetricProviderJobSpecOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricProviderJobSpecInput` via:
+//
+//	VerificationTemplateMetricProviderJobSpecArgs{...}
+type VerificationTemplateMetricProviderJobSpecInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricProviderJobSpecOutput() VerificationTemplateMetricProviderJobSpecOutput
+	ToVerificationTemplateMetricProviderJobSpecOutputWithContext(context.Context) VerificationTemplateMetricProviderJobSpecOutput
+}
+
+type VerificationTemplateMetricProviderJobSpecArgs struct {
+	BackoffLimit pulumi.IntPtrInput                                             `pulumi:"backoffLimit"`
+	JobTemplates VerificationTemplateMetricProviderJobSpecJobTemplateArrayInput `pulumi:"jobTemplates"`
+}
+
+func (VerificationTemplateMetricProviderJobSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricProviderJobSpec)(nil)).Elem()
+}
+
+func (i VerificationTemplateMetricProviderJobSpecArgs) ToVerificationTemplateMetricProviderJobSpecOutput() VerificationTemplateMetricProviderJobSpecOutput {
+	return i.ToVerificationTemplateMetricProviderJobSpecOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricProviderJobSpecArgs) ToVerificationTemplateMetricProviderJobSpecOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderJobSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderJobSpecOutput)
+}
+
+// VerificationTemplateMetricProviderJobSpecArrayInput is an input type that accepts VerificationTemplateMetricProviderJobSpecArray and VerificationTemplateMetricProviderJobSpecArrayOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricProviderJobSpecArrayInput` via:
+//
+//	VerificationTemplateMetricProviderJobSpecArray{ VerificationTemplateMetricProviderJobSpecArgs{...} }
+type VerificationTemplateMetricProviderJobSpecArrayInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricProviderJobSpecArrayOutput() VerificationTemplateMetricProviderJobSpecArrayOutput
+	ToVerificationTemplateMetricProviderJobSpecArrayOutputWithContext(context.Context) VerificationTemplateMetricProviderJobSpecArrayOutput
+}
+
+type VerificationTemplateMetricProviderJobSpecArray []VerificationTemplateMetricProviderJobSpecInput
+
+func (VerificationTemplateMetricProviderJobSpecArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VerificationTemplateMetricProviderJobSpec)(nil)).Elem()
+}
+
+func (i VerificationTemplateMetricProviderJobSpecArray) ToVerificationTemplateMetricProviderJobSpecArrayOutput() VerificationTemplateMetricProviderJobSpecArrayOutput {
+	return i.ToVerificationTemplateMetricProviderJobSpecArrayOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricProviderJobSpecArray) ToVerificationTemplateMetricProviderJobSpecArrayOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderJobSpecArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderJobSpecArrayOutput)
+}
+
+type VerificationTemplateMetricProviderJobSpecOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricProviderJobSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricProviderJobSpec)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricProviderJobSpecOutput) ToVerificationTemplateMetricProviderJobSpecOutput() VerificationTemplateMetricProviderJobSpecOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderJobSpecOutput) ToVerificationTemplateMetricProviderJobSpecOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderJobSpecOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderJobSpecOutput) BackoffLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderJobSpec) *int { return v.BackoffLimit }).(pulumi.IntPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderJobSpecOutput) JobTemplates() VerificationTemplateMetricProviderJobSpecJobTemplateArrayOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderJobSpec) []VerificationTemplateMetricProviderJobSpecJobTemplate {
+		return v.JobTemplates
+	}).(VerificationTemplateMetricProviderJobSpecJobTemplateArrayOutput)
+}
+
+type VerificationTemplateMetricProviderJobSpecArrayOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricProviderJobSpecArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VerificationTemplateMetricProviderJobSpec)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricProviderJobSpecArrayOutput) ToVerificationTemplateMetricProviderJobSpecArrayOutput() VerificationTemplateMetricProviderJobSpecArrayOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderJobSpecArrayOutput) ToVerificationTemplateMetricProviderJobSpecArrayOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderJobSpecArrayOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderJobSpecArrayOutput) Index(i pulumi.IntInput) VerificationTemplateMetricProviderJobSpecOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VerificationTemplateMetricProviderJobSpec {
+		return vs[0].([]VerificationTemplateMetricProviderJobSpec)[vs[1].(int)]
+	}).(VerificationTemplateMetricProviderJobSpecOutput)
+}
+
+type VerificationTemplateMetricProviderJobSpecJobTemplate struct {
+	TemplateSpecs []VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpec `pulumi:"templateSpecs"`
+}
+
+// VerificationTemplateMetricProviderJobSpecJobTemplateInput is an input type that accepts VerificationTemplateMetricProviderJobSpecJobTemplateArgs and VerificationTemplateMetricProviderJobSpecJobTemplateOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricProviderJobSpecJobTemplateInput` via:
+//
+//	VerificationTemplateMetricProviderJobSpecJobTemplateArgs{...}
+type VerificationTemplateMetricProviderJobSpecJobTemplateInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricProviderJobSpecJobTemplateOutput() VerificationTemplateMetricProviderJobSpecJobTemplateOutput
+	ToVerificationTemplateMetricProviderJobSpecJobTemplateOutputWithContext(context.Context) VerificationTemplateMetricProviderJobSpecJobTemplateOutput
+}
+
+type VerificationTemplateMetricProviderJobSpecJobTemplateArgs struct {
+	TemplateSpecs VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArrayInput `pulumi:"templateSpecs"`
+}
+
+func (VerificationTemplateMetricProviderJobSpecJobTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricProviderJobSpecJobTemplate)(nil)).Elem()
+}
+
+func (i VerificationTemplateMetricProviderJobSpecJobTemplateArgs) ToVerificationTemplateMetricProviderJobSpecJobTemplateOutput() VerificationTemplateMetricProviderJobSpecJobTemplateOutput {
+	return i.ToVerificationTemplateMetricProviderJobSpecJobTemplateOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricProviderJobSpecJobTemplateArgs) ToVerificationTemplateMetricProviderJobSpecJobTemplateOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderJobSpecJobTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderJobSpecJobTemplateOutput)
+}
+
+// VerificationTemplateMetricProviderJobSpecJobTemplateArrayInput is an input type that accepts VerificationTemplateMetricProviderJobSpecJobTemplateArray and VerificationTemplateMetricProviderJobSpecJobTemplateArrayOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricProviderJobSpecJobTemplateArrayInput` via:
+//
+//	VerificationTemplateMetricProviderJobSpecJobTemplateArray{ VerificationTemplateMetricProviderJobSpecJobTemplateArgs{...} }
+type VerificationTemplateMetricProviderJobSpecJobTemplateArrayInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricProviderJobSpecJobTemplateArrayOutput() VerificationTemplateMetricProviderJobSpecJobTemplateArrayOutput
+	ToVerificationTemplateMetricProviderJobSpecJobTemplateArrayOutputWithContext(context.Context) VerificationTemplateMetricProviderJobSpecJobTemplateArrayOutput
+}
+
+type VerificationTemplateMetricProviderJobSpecJobTemplateArray []VerificationTemplateMetricProviderJobSpecJobTemplateInput
+
+func (VerificationTemplateMetricProviderJobSpecJobTemplateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VerificationTemplateMetricProviderJobSpecJobTemplate)(nil)).Elem()
+}
+
+func (i VerificationTemplateMetricProviderJobSpecJobTemplateArray) ToVerificationTemplateMetricProviderJobSpecJobTemplateArrayOutput() VerificationTemplateMetricProviderJobSpecJobTemplateArrayOutput {
+	return i.ToVerificationTemplateMetricProviderJobSpecJobTemplateArrayOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricProviderJobSpecJobTemplateArray) ToVerificationTemplateMetricProviderJobSpecJobTemplateArrayOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderJobSpecJobTemplateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderJobSpecJobTemplateArrayOutput)
+}
+
+type VerificationTemplateMetricProviderJobSpecJobTemplateOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricProviderJobSpecJobTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricProviderJobSpecJobTemplate)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricProviderJobSpecJobTemplateOutput) ToVerificationTemplateMetricProviderJobSpecJobTemplateOutput() VerificationTemplateMetricProviderJobSpecJobTemplateOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderJobSpecJobTemplateOutput) ToVerificationTemplateMetricProviderJobSpecJobTemplateOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderJobSpecJobTemplateOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderJobSpecJobTemplateOutput) TemplateSpecs() VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArrayOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderJobSpecJobTemplate) []VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpec {
+		return v.TemplateSpecs
+	}).(VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArrayOutput)
+}
+
+type VerificationTemplateMetricProviderJobSpecJobTemplateArrayOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricProviderJobSpecJobTemplateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VerificationTemplateMetricProviderJobSpecJobTemplate)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricProviderJobSpecJobTemplateArrayOutput) ToVerificationTemplateMetricProviderJobSpecJobTemplateArrayOutput() VerificationTemplateMetricProviderJobSpecJobTemplateArrayOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderJobSpecJobTemplateArrayOutput) ToVerificationTemplateMetricProviderJobSpecJobTemplateArrayOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderJobSpecJobTemplateArrayOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderJobSpecJobTemplateArrayOutput) Index(i pulumi.IntInput) VerificationTemplateMetricProviderJobSpecJobTemplateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VerificationTemplateMetricProviderJobSpecJobTemplate {
+		return vs[0].([]VerificationTemplateMetricProviderJobSpecJobTemplate)[vs[1].(int)]
+	}).(VerificationTemplateMetricProviderJobSpecJobTemplateOutput)
+}
+
+type VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpec struct {
+	Containers    []VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainer `pulumi:"containers"`
+	RestartPolicy string                                                                      `pulumi:"restartPolicy"`
+}
+
+// VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecInput is an input type that accepts VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArgs and VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecInput` via:
+//
+//	VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArgs{...}
+type VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecOutput() VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecOutput
+	ToVerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecOutputWithContext(context.Context) VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecOutput
+}
+
+type VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArgs struct {
+	Containers    VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArrayInput `pulumi:"containers"`
+	RestartPolicy pulumi.StringInput                                                                  `pulumi:"restartPolicy"`
+}
+
+func (VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpec)(nil)).Elem()
+}
+
+func (i VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArgs) ToVerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecOutput() VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecOutput {
+	return i.ToVerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArgs) ToVerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecOutput)
+}
+
+// VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArrayInput is an input type that accepts VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArray and VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArrayOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArrayInput` via:
+//
+//	VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArray{ VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArgs{...} }
+type VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArrayInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArrayOutput() VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArrayOutput
+	ToVerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArrayOutputWithContext(context.Context) VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArrayOutput
+}
+
+type VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArray []VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecInput
+
+func (VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpec)(nil)).Elem()
+}
+
+func (i VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArray) ToVerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArrayOutput() VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArrayOutput {
+	return i.ToVerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArrayOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArray) ToVerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArrayOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArrayOutput)
+}
+
+type VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpec)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecOutput) ToVerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecOutput() VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecOutput) ToVerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecOutput) Containers() VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArrayOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpec) []VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainer {
+		return v.Containers
+	}).(VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArrayOutput)
+}
+
+func (o VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecOutput) RestartPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpec) string {
+		return v.RestartPolicy
+	}).(pulumi.StringOutput)
+}
+
+type VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArrayOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpec)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArrayOutput) ToVerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArrayOutput() VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArrayOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArrayOutput) ToVerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArrayOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArrayOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArrayOutput) Index(i pulumi.IntInput) VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpec {
+		return vs[0].([]VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpec)[vs[1].(int)]
+	}).(VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecOutput)
+}
+
+type VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainer struct {
+	Commands      []string `pulumi:"commands"`
+	ContainerName string   `pulumi:"containerName"`
+	Image         string   `pulumi:"image"`
+}
+
+// VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerInput is an input type that accepts VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArgs and VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerInput` via:
+//
+//	VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArgs{...}
+type VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerOutput() VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerOutput
+	ToVerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerOutputWithContext(context.Context) VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerOutput
+}
+
+type VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArgs struct {
+	Commands      pulumi.StringArrayInput `pulumi:"commands"`
+	ContainerName pulumi.StringInput      `pulumi:"containerName"`
+	Image         pulumi.StringInput      `pulumi:"image"`
+}
+
+func (VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainer)(nil)).Elem()
+}
+
+func (i VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArgs) ToVerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerOutput() VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerOutput {
+	return i.ToVerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArgs) ToVerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerOutput)
+}
+
+// VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArrayInput is an input type that accepts VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArray and VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArrayOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArrayInput` via:
+//
+//	VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArray{ VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArgs{...} }
+type VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArrayInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArrayOutput() VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArrayOutput
+	ToVerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArrayOutputWithContext(context.Context) VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArrayOutput
+}
+
+type VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArray []VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerInput
+
+func (VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainer)(nil)).Elem()
+}
+
+func (i VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArray) ToVerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArrayOutput() VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArrayOutput {
+	return i.ToVerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArrayOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArray) ToVerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArrayOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArrayOutput)
+}
+
+type VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainer)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerOutput) ToVerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerOutput() VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerOutput) ToVerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainer) []string {
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerOutput) ContainerName() pulumi.StringOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainer) string {
+		return v.ContainerName
+	}).(pulumi.StringOutput)
+}
+
+func (o VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainer) string {
+		return v.Image
+	}).(pulumi.StringOutput)
+}
+
+type VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArrayOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainer)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArrayOutput) ToVerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArrayOutput() VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArrayOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArrayOutput) ToVerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArrayOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArrayOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArrayOutput) Index(i pulumi.IntInput) VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainer {
+		return vs[0].([]VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainer)[vs[1].(int)]
+	}).(VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerOutput)
+}
+
+type VerificationTemplateMetricProviderNewRelic struct {
+	NewRelicQuery string  `pulumi:"newRelicQuery"`
+	Profile       *string `pulumi:"profile"`
+}
+
+// VerificationTemplateMetricProviderNewRelicInput is an input type that accepts VerificationTemplateMetricProviderNewRelicArgs and VerificationTemplateMetricProviderNewRelicOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricProviderNewRelicInput` via:
+//
+//	VerificationTemplateMetricProviderNewRelicArgs{...}
+type VerificationTemplateMetricProviderNewRelicInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricProviderNewRelicOutput() VerificationTemplateMetricProviderNewRelicOutput
+	ToVerificationTemplateMetricProviderNewRelicOutputWithContext(context.Context) VerificationTemplateMetricProviderNewRelicOutput
+}
+
+type VerificationTemplateMetricProviderNewRelicArgs struct {
+	NewRelicQuery pulumi.StringInput    `pulumi:"newRelicQuery"`
+	Profile       pulumi.StringPtrInput `pulumi:"profile"`
+}
+
+func (VerificationTemplateMetricProviderNewRelicArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricProviderNewRelic)(nil)).Elem()
+}
+
+func (i VerificationTemplateMetricProviderNewRelicArgs) ToVerificationTemplateMetricProviderNewRelicOutput() VerificationTemplateMetricProviderNewRelicOutput {
+	return i.ToVerificationTemplateMetricProviderNewRelicOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricProviderNewRelicArgs) ToVerificationTemplateMetricProviderNewRelicOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderNewRelicOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderNewRelicOutput)
+}
+
+func (i VerificationTemplateMetricProviderNewRelicArgs) ToVerificationTemplateMetricProviderNewRelicPtrOutput() VerificationTemplateMetricProviderNewRelicPtrOutput {
+	return i.ToVerificationTemplateMetricProviderNewRelicPtrOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricProviderNewRelicArgs) ToVerificationTemplateMetricProviderNewRelicPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderNewRelicPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderNewRelicOutput).ToVerificationTemplateMetricProviderNewRelicPtrOutputWithContext(ctx)
+}
+
+// VerificationTemplateMetricProviderNewRelicPtrInput is an input type that accepts VerificationTemplateMetricProviderNewRelicArgs, VerificationTemplateMetricProviderNewRelicPtr and VerificationTemplateMetricProviderNewRelicPtrOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricProviderNewRelicPtrInput` via:
+//
+//	        VerificationTemplateMetricProviderNewRelicArgs{...}
+//
+//	or:
+//
+//	        nil
+type VerificationTemplateMetricProviderNewRelicPtrInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricProviderNewRelicPtrOutput() VerificationTemplateMetricProviderNewRelicPtrOutput
+	ToVerificationTemplateMetricProviderNewRelicPtrOutputWithContext(context.Context) VerificationTemplateMetricProviderNewRelicPtrOutput
+}
+
+type verificationTemplateMetricProviderNewRelicPtrType VerificationTemplateMetricProviderNewRelicArgs
+
+func VerificationTemplateMetricProviderNewRelicPtr(v *VerificationTemplateMetricProviderNewRelicArgs) VerificationTemplateMetricProviderNewRelicPtrInput {
+	return (*verificationTemplateMetricProviderNewRelicPtrType)(v)
+}
+
+func (*verificationTemplateMetricProviderNewRelicPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VerificationTemplateMetricProviderNewRelic)(nil)).Elem()
+}
+
+func (i *verificationTemplateMetricProviderNewRelicPtrType) ToVerificationTemplateMetricProviderNewRelicPtrOutput() VerificationTemplateMetricProviderNewRelicPtrOutput {
+	return i.ToVerificationTemplateMetricProviderNewRelicPtrOutputWithContext(context.Background())
+}
+
+func (i *verificationTemplateMetricProviderNewRelicPtrType) ToVerificationTemplateMetricProviderNewRelicPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderNewRelicPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderNewRelicPtrOutput)
+}
+
+type VerificationTemplateMetricProviderNewRelicOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricProviderNewRelicOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricProviderNewRelic)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricProviderNewRelicOutput) ToVerificationTemplateMetricProviderNewRelicOutput() VerificationTemplateMetricProviderNewRelicOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderNewRelicOutput) ToVerificationTemplateMetricProviderNewRelicOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderNewRelicOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderNewRelicOutput) ToVerificationTemplateMetricProviderNewRelicPtrOutput() VerificationTemplateMetricProviderNewRelicPtrOutput {
+	return o.ToVerificationTemplateMetricProviderNewRelicPtrOutputWithContext(context.Background())
+}
+
+func (o VerificationTemplateMetricProviderNewRelicOutput) ToVerificationTemplateMetricProviderNewRelicPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderNewRelicPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VerificationTemplateMetricProviderNewRelic) *VerificationTemplateMetricProviderNewRelic {
+		return &v
+	}).(VerificationTemplateMetricProviderNewRelicPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderNewRelicOutput) NewRelicQuery() pulumi.StringOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderNewRelic) string { return v.NewRelicQuery }).(pulumi.StringOutput)
+}
+
+func (o VerificationTemplateMetricProviderNewRelicOutput) Profile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderNewRelic) *string { return v.Profile }).(pulumi.StringPtrOutput)
+}
+
+type VerificationTemplateMetricProviderNewRelicPtrOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricProviderNewRelicPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VerificationTemplateMetricProviderNewRelic)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricProviderNewRelicPtrOutput) ToVerificationTemplateMetricProviderNewRelicPtrOutput() VerificationTemplateMetricProviderNewRelicPtrOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderNewRelicPtrOutput) ToVerificationTemplateMetricProviderNewRelicPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderNewRelicPtrOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderNewRelicPtrOutput) Elem() VerificationTemplateMetricProviderNewRelicOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricProviderNewRelic) VerificationTemplateMetricProviderNewRelic {
+		if v != nil {
+			return *v
+		}
+		var ret VerificationTemplateMetricProviderNewRelic
+		return ret
+	}).(VerificationTemplateMetricProviderNewRelicOutput)
+}
+
+func (o VerificationTemplateMetricProviderNewRelicPtrOutput) NewRelicQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricProviderNewRelic) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NewRelicQuery
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderNewRelicPtrOutput) Profile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricProviderNewRelic) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Profile
+	}).(pulumi.StringPtrOutput)
+}
+
+type VerificationTemplateMetricProviderPrometheus struct {
+	PrometheusQuery string `pulumi:"prometheusQuery"`
+}
+
+// VerificationTemplateMetricProviderPrometheusInput is an input type that accepts VerificationTemplateMetricProviderPrometheusArgs and VerificationTemplateMetricProviderPrometheusOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricProviderPrometheusInput` via:
+//
+//	VerificationTemplateMetricProviderPrometheusArgs{...}
+type VerificationTemplateMetricProviderPrometheusInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricProviderPrometheusOutput() VerificationTemplateMetricProviderPrometheusOutput
+	ToVerificationTemplateMetricProviderPrometheusOutputWithContext(context.Context) VerificationTemplateMetricProviderPrometheusOutput
+}
+
+type VerificationTemplateMetricProviderPrometheusArgs struct {
+	PrometheusQuery pulumi.StringInput `pulumi:"prometheusQuery"`
+}
+
+func (VerificationTemplateMetricProviderPrometheusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricProviderPrometheus)(nil)).Elem()
+}
+
+func (i VerificationTemplateMetricProviderPrometheusArgs) ToVerificationTemplateMetricProviderPrometheusOutput() VerificationTemplateMetricProviderPrometheusOutput {
+	return i.ToVerificationTemplateMetricProviderPrometheusOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricProviderPrometheusArgs) ToVerificationTemplateMetricProviderPrometheusOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderPrometheusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderPrometheusOutput)
+}
+
+func (i VerificationTemplateMetricProviderPrometheusArgs) ToVerificationTemplateMetricProviderPrometheusPtrOutput() VerificationTemplateMetricProviderPrometheusPtrOutput {
+	return i.ToVerificationTemplateMetricProviderPrometheusPtrOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricProviderPrometheusArgs) ToVerificationTemplateMetricProviderPrometheusPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderPrometheusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderPrometheusOutput).ToVerificationTemplateMetricProviderPrometheusPtrOutputWithContext(ctx)
+}
+
+// VerificationTemplateMetricProviderPrometheusPtrInput is an input type that accepts VerificationTemplateMetricProviderPrometheusArgs, VerificationTemplateMetricProviderPrometheusPtr and VerificationTemplateMetricProviderPrometheusPtrOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricProviderPrometheusPtrInput` via:
+//
+//	        VerificationTemplateMetricProviderPrometheusArgs{...}
+//
+//	or:
+//
+//	        nil
+type VerificationTemplateMetricProviderPrometheusPtrInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricProviderPrometheusPtrOutput() VerificationTemplateMetricProviderPrometheusPtrOutput
+	ToVerificationTemplateMetricProviderPrometheusPtrOutputWithContext(context.Context) VerificationTemplateMetricProviderPrometheusPtrOutput
+}
+
+type verificationTemplateMetricProviderPrometheusPtrType VerificationTemplateMetricProviderPrometheusArgs
+
+func VerificationTemplateMetricProviderPrometheusPtr(v *VerificationTemplateMetricProviderPrometheusArgs) VerificationTemplateMetricProviderPrometheusPtrInput {
+	return (*verificationTemplateMetricProviderPrometheusPtrType)(v)
+}
+
+func (*verificationTemplateMetricProviderPrometheusPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VerificationTemplateMetricProviderPrometheus)(nil)).Elem()
+}
+
+func (i *verificationTemplateMetricProviderPrometheusPtrType) ToVerificationTemplateMetricProviderPrometheusPtrOutput() VerificationTemplateMetricProviderPrometheusPtrOutput {
+	return i.ToVerificationTemplateMetricProviderPrometheusPtrOutputWithContext(context.Background())
+}
+
+func (i *verificationTemplateMetricProviderPrometheusPtrType) ToVerificationTemplateMetricProviderPrometheusPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderPrometheusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderPrometheusPtrOutput)
+}
+
+type VerificationTemplateMetricProviderPrometheusOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricProviderPrometheusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricProviderPrometheus)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricProviderPrometheusOutput) ToVerificationTemplateMetricProviderPrometheusOutput() VerificationTemplateMetricProviderPrometheusOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderPrometheusOutput) ToVerificationTemplateMetricProviderPrometheusOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderPrometheusOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderPrometheusOutput) ToVerificationTemplateMetricProviderPrometheusPtrOutput() VerificationTemplateMetricProviderPrometheusPtrOutput {
+	return o.ToVerificationTemplateMetricProviderPrometheusPtrOutputWithContext(context.Background())
+}
+
+func (o VerificationTemplateMetricProviderPrometheusOutput) ToVerificationTemplateMetricProviderPrometheusPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderPrometheusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VerificationTemplateMetricProviderPrometheus) *VerificationTemplateMetricProviderPrometheus {
+		return &v
+	}).(VerificationTemplateMetricProviderPrometheusPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderPrometheusOutput) PrometheusQuery() pulumi.StringOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderPrometheus) string { return v.PrometheusQuery }).(pulumi.StringOutput)
+}
+
+type VerificationTemplateMetricProviderPrometheusPtrOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricProviderPrometheusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VerificationTemplateMetricProviderPrometheus)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricProviderPrometheusPtrOutput) ToVerificationTemplateMetricProviderPrometheusPtrOutput() VerificationTemplateMetricProviderPrometheusPtrOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderPrometheusPtrOutput) ToVerificationTemplateMetricProviderPrometheusPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderPrometheusPtrOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderPrometheusPtrOutput) Elem() VerificationTemplateMetricProviderPrometheusOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricProviderPrometheus) VerificationTemplateMetricProviderPrometheus {
+		if v != nil {
+			return *v
+		}
+		var ret VerificationTemplateMetricProviderPrometheus
+		return ret
+	}).(VerificationTemplateMetricProviderPrometheusOutput)
+}
+
+func (o VerificationTemplateMetricProviderPrometheusPtrOutput) PrometheusQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricProviderPrometheus) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrometheusQuery
+	}).(pulumi.StringPtrOutput)
+}
+
+type VerificationTemplateMetricProviderWeb struct {
+	Body           *string                                          `pulumi:"body"`
+	Insecure       *bool                                            `pulumi:"insecure"`
+	JsonPath       *string                                          `pulumi:"jsonPath"`
+	Method         *string                                          `pulumi:"method"`
+	TimeoutSeconds *int                                             `pulumi:"timeoutSeconds"`
+	Url            string                                           `pulumi:"url"`
+	WebHeaders     []VerificationTemplateMetricProviderWebWebHeader `pulumi:"webHeaders"`
+}
+
+// VerificationTemplateMetricProviderWebInput is an input type that accepts VerificationTemplateMetricProviderWebArgs and VerificationTemplateMetricProviderWebOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricProviderWebInput` via:
+//
+//	VerificationTemplateMetricProviderWebArgs{...}
+type VerificationTemplateMetricProviderWebInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricProviderWebOutput() VerificationTemplateMetricProviderWebOutput
+	ToVerificationTemplateMetricProviderWebOutputWithContext(context.Context) VerificationTemplateMetricProviderWebOutput
+}
+
+type VerificationTemplateMetricProviderWebArgs struct {
+	Body           pulumi.StringPtrInput                                    `pulumi:"body"`
+	Insecure       pulumi.BoolPtrInput                                      `pulumi:"insecure"`
+	JsonPath       pulumi.StringPtrInput                                    `pulumi:"jsonPath"`
+	Method         pulumi.StringPtrInput                                    `pulumi:"method"`
+	TimeoutSeconds pulumi.IntPtrInput                                       `pulumi:"timeoutSeconds"`
+	Url            pulumi.StringInput                                       `pulumi:"url"`
+	WebHeaders     VerificationTemplateMetricProviderWebWebHeaderArrayInput `pulumi:"webHeaders"`
+}
+
+func (VerificationTemplateMetricProviderWebArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricProviderWeb)(nil)).Elem()
+}
+
+func (i VerificationTemplateMetricProviderWebArgs) ToVerificationTemplateMetricProviderWebOutput() VerificationTemplateMetricProviderWebOutput {
+	return i.ToVerificationTemplateMetricProviderWebOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricProviderWebArgs) ToVerificationTemplateMetricProviderWebOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderWebOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderWebOutput)
+}
+
+func (i VerificationTemplateMetricProviderWebArgs) ToVerificationTemplateMetricProviderWebPtrOutput() VerificationTemplateMetricProviderWebPtrOutput {
+	return i.ToVerificationTemplateMetricProviderWebPtrOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricProviderWebArgs) ToVerificationTemplateMetricProviderWebPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderWebPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderWebOutput).ToVerificationTemplateMetricProviderWebPtrOutputWithContext(ctx)
+}
+
+// VerificationTemplateMetricProviderWebPtrInput is an input type that accepts VerificationTemplateMetricProviderWebArgs, VerificationTemplateMetricProviderWebPtr and VerificationTemplateMetricProviderWebPtrOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricProviderWebPtrInput` via:
+//
+//	        VerificationTemplateMetricProviderWebArgs{...}
+//
+//	or:
+//
+//	        nil
+type VerificationTemplateMetricProviderWebPtrInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricProviderWebPtrOutput() VerificationTemplateMetricProviderWebPtrOutput
+	ToVerificationTemplateMetricProviderWebPtrOutputWithContext(context.Context) VerificationTemplateMetricProviderWebPtrOutput
+}
+
+type verificationTemplateMetricProviderWebPtrType VerificationTemplateMetricProviderWebArgs
+
+func VerificationTemplateMetricProviderWebPtr(v *VerificationTemplateMetricProviderWebArgs) VerificationTemplateMetricProviderWebPtrInput {
+	return (*verificationTemplateMetricProviderWebPtrType)(v)
+}
+
+func (*verificationTemplateMetricProviderWebPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VerificationTemplateMetricProviderWeb)(nil)).Elem()
+}
+
+func (i *verificationTemplateMetricProviderWebPtrType) ToVerificationTemplateMetricProviderWebPtrOutput() VerificationTemplateMetricProviderWebPtrOutput {
+	return i.ToVerificationTemplateMetricProviderWebPtrOutputWithContext(context.Background())
+}
+
+func (i *verificationTemplateMetricProviderWebPtrType) ToVerificationTemplateMetricProviderWebPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderWebPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderWebPtrOutput)
+}
+
+type VerificationTemplateMetricProviderWebOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricProviderWebOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricProviderWeb)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricProviderWebOutput) ToVerificationTemplateMetricProviderWebOutput() VerificationTemplateMetricProviderWebOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderWebOutput) ToVerificationTemplateMetricProviderWebOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderWebOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderWebOutput) ToVerificationTemplateMetricProviderWebPtrOutput() VerificationTemplateMetricProviderWebPtrOutput {
+	return o.ToVerificationTemplateMetricProviderWebPtrOutputWithContext(context.Background())
+}
+
+func (o VerificationTemplateMetricProviderWebOutput) ToVerificationTemplateMetricProviderWebPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderWebPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VerificationTemplateMetricProviderWeb) *VerificationTemplateMetricProviderWeb {
+		return &v
+	}).(VerificationTemplateMetricProviderWebPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderWebOutput) Body() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderWeb) *string { return v.Body }).(pulumi.StringPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderWebOutput) Insecure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderWeb) *bool { return v.Insecure }).(pulumi.BoolPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderWebOutput) JsonPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderWeb) *string { return v.JsonPath }).(pulumi.StringPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderWebOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderWeb) *string { return v.Method }).(pulumi.StringPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderWebOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderWeb) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderWebOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderWeb) string { return v.Url }).(pulumi.StringOutput)
+}
+
+func (o VerificationTemplateMetricProviderWebOutput) WebHeaders() VerificationTemplateMetricProviderWebWebHeaderArrayOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderWeb) []VerificationTemplateMetricProviderWebWebHeader {
+		return v.WebHeaders
+	}).(VerificationTemplateMetricProviderWebWebHeaderArrayOutput)
+}
+
+type VerificationTemplateMetricProviderWebPtrOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricProviderWebPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VerificationTemplateMetricProviderWeb)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricProviderWebPtrOutput) ToVerificationTemplateMetricProviderWebPtrOutput() VerificationTemplateMetricProviderWebPtrOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderWebPtrOutput) ToVerificationTemplateMetricProviderWebPtrOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderWebPtrOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderWebPtrOutput) Elem() VerificationTemplateMetricProviderWebOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricProviderWeb) VerificationTemplateMetricProviderWeb {
+		if v != nil {
+			return *v
+		}
+		var ret VerificationTemplateMetricProviderWeb
+		return ret
+	}).(VerificationTemplateMetricProviderWebOutput)
+}
+
+func (o VerificationTemplateMetricProviderWebPtrOutput) Body() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricProviderWeb) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Body
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderWebPtrOutput) Insecure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricProviderWeb) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Insecure
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderWebPtrOutput) JsonPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricProviderWeb) *string {
+		if v == nil {
+			return nil
+		}
+		return v.JsonPath
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderWebPtrOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricProviderWeb) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Method
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderWebPtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricProviderWeb) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderWebPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricProviderWeb) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o VerificationTemplateMetricProviderWebPtrOutput) WebHeaders() VerificationTemplateMetricProviderWebWebHeaderArrayOutput {
+	return o.ApplyT(func(v *VerificationTemplateMetricProviderWeb) []VerificationTemplateMetricProviderWebWebHeader {
+		if v == nil {
+			return nil
+		}
+		return v.WebHeaders
+	}).(VerificationTemplateMetricProviderWebWebHeaderArrayOutput)
+}
+
+type VerificationTemplateMetricProviderWebWebHeader struct {
+	WebHeaderKey   string `pulumi:"webHeaderKey"`
+	WebHeaderValue string `pulumi:"webHeaderValue"`
+}
+
+// VerificationTemplateMetricProviderWebWebHeaderInput is an input type that accepts VerificationTemplateMetricProviderWebWebHeaderArgs and VerificationTemplateMetricProviderWebWebHeaderOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricProviderWebWebHeaderInput` via:
+//
+//	VerificationTemplateMetricProviderWebWebHeaderArgs{...}
+type VerificationTemplateMetricProviderWebWebHeaderInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricProviderWebWebHeaderOutput() VerificationTemplateMetricProviderWebWebHeaderOutput
+	ToVerificationTemplateMetricProviderWebWebHeaderOutputWithContext(context.Context) VerificationTemplateMetricProviderWebWebHeaderOutput
+}
+
+type VerificationTemplateMetricProviderWebWebHeaderArgs struct {
+	WebHeaderKey   pulumi.StringInput `pulumi:"webHeaderKey"`
+	WebHeaderValue pulumi.StringInput `pulumi:"webHeaderValue"`
+}
+
+func (VerificationTemplateMetricProviderWebWebHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricProviderWebWebHeader)(nil)).Elem()
+}
+
+func (i VerificationTemplateMetricProviderWebWebHeaderArgs) ToVerificationTemplateMetricProviderWebWebHeaderOutput() VerificationTemplateMetricProviderWebWebHeaderOutput {
+	return i.ToVerificationTemplateMetricProviderWebWebHeaderOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricProviderWebWebHeaderArgs) ToVerificationTemplateMetricProviderWebWebHeaderOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderWebWebHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderWebWebHeaderOutput)
+}
+
+// VerificationTemplateMetricProviderWebWebHeaderArrayInput is an input type that accepts VerificationTemplateMetricProviderWebWebHeaderArray and VerificationTemplateMetricProviderWebWebHeaderArrayOutput values.
+// You can construct a concrete instance of `VerificationTemplateMetricProviderWebWebHeaderArrayInput` via:
+//
+//	VerificationTemplateMetricProviderWebWebHeaderArray{ VerificationTemplateMetricProviderWebWebHeaderArgs{...} }
+type VerificationTemplateMetricProviderWebWebHeaderArrayInput interface {
+	pulumi.Input
+
+	ToVerificationTemplateMetricProviderWebWebHeaderArrayOutput() VerificationTemplateMetricProviderWebWebHeaderArrayOutput
+	ToVerificationTemplateMetricProviderWebWebHeaderArrayOutputWithContext(context.Context) VerificationTemplateMetricProviderWebWebHeaderArrayOutput
+}
+
+type VerificationTemplateMetricProviderWebWebHeaderArray []VerificationTemplateMetricProviderWebWebHeaderInput
+
+func (VerificationTemplateMetricProviderWebWebHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VerificationTemplateMetricProviderWebWebHeader)(nil)).Elem()
+}
+
+func (i VerificationTemplateMetricProviderWebWebHeaderArray) ToVerificationTemplateMetricProviderWebWebHeaderArrayOutput() VerificationTemplateMetricProviderWebWebHeaderArrayOutput {
+	return i.ToVerificationTemplateMetricProviderWebWebHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i VerificationTemplateMetricProviderWebWebHeaderArray) ToVerificationTemplateMetricProviderWebWebHeaderArrayOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderWebWebHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VerificationTemplateMetricProviderWebWebHeaderArrayOutput)
+}
+
+type VerificationTemplateMetricProviderWebWebHeaderOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricProviderWebWebHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationTemplateMetricProviderWebWebHeader)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricProviderWebWebHeaderOutput) ToVerificationTemplateMetricProviderWebWebHeaderOutput() VerificationTemplateMetricProviderWebWebHeaderOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderWebWebHeaderOutput) ToVerificationTemplateMetricProviderWebWebHeaderOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderWebWebHeaderOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderWebWebHeaderOutput) WebHeaderKey() pulumi.StringOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderWebWebHeader) string { return v.WebHeaderKey }).(pulumi.StringOutput)
+}
+
+func (o VerificationTemplateMetricProviderWebWebHeaderOutput) WebHeaderValue() pulumi.StringOutput {
+	return o.ApplyT(func(v VerificationTemplateMetricProviderWebWebHeader) string { return v.WebHeaderValue }).(pulumi.StringOutput)
+}
+
+type VerificationTemplateMetricProviderWebWebHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (VerificationTemplateMetricProviderWebWebHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VerificationTemplateMetricProviderWebWebHeader)(nil)).Elem()
+}
+
+func (o VerificationTemplateMetricProviderWebWebHeaderArrayOutput) ToVerificationTemplateMetricProviderWebWebHeaderArrayOutput() VerificationTemplateMetricProviderWebWebHeaderArrayOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderWebWebHeaderArrayOutput) ToVerificationTemplateMetricProviderWebWebHeaderArrayOutputWithContext(ctx context.Context) VerificationTemplateMetricProviderWebWebHeaderArrayOutput {
+	return o
+}
+
+func (o VerificationTemplateMetricProviderWebWebHeaderArrayOutput) Index(i pulumi.IntInput) VerificationTemplateMetricProviderWebWebHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VerificationTemplateMetricProviderWebWebHeader {
+		return vs[0].([]VerificationTemplateMetricProviderWebWebHeader)[vs[1].(int)]
+	}).(VerificationTemplateMetricProviderWebWebHeaderOutput)
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSpecFailurePolicyInput)(nil)).Elem(), RolloutSpecFailurePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSpecFailurePolicyPtrInput)(nil)).Elem(), RolloutSpecFailurePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSpecSpotDeploymentInput)(nil)).Elem(), RolloutSpecSpotDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSpecSpotDeploymentPtrInput)(nil)).Elem(), RolloutSpecSpotDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSpecSpotDeploymentArrayInput)(nil)).Elem(), RolloutSpecSpotDeploymentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSpecStrategyInput)(nil)).Elem(), RolloutSpecStrategyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSpecStrategyPtrInput)(nil)).Elem(), RolloutSpecStrategyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSpecStrategyArgInput)(nil)).Elem(), RolloutSpecStrategyArgArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSpecStrategyArgArrayInput)(nil)).Elem(), RolloutSpecStrategyArgArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSpecStrategyArgValueFromInput)(nil)).Elem(), RolloutSpecStrategyArgValueFromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSpecStrategyArgValueFromPtrInput)(nil)).Elem(), RolloutSpecStrategyArgValueFromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSpecStrategyArgValueFromFieldRefInput)(nil)).Elem(), RolloutSpecStrategyArgValueFromFieldRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSpecStrategyArgValueFromFieldRefPtrInput)(nil)).Elem(), RolloutSpecStrategyArgValueFromFieldRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSpecTrafficInput)(nil)).Elem(), RolloutSpecTrafficArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSpecTrafficPtrInput)(nil)).Elem(), RolloutSpecTrafficArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSpecTrafficAlbInput)(nil)).Elem(), RolloutSpecTrafficAlbArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSpecTrafficAlbPtrInput)(nil)).Elem(), RolloutSpecTrafficAlbArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSpecTrafficAlbStickinessConfigInput)(nil)).Elem(), RolloutSpecTrafficAlbStickinessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSpecTrafficAlbStickinessConfigPtrInput)(nil)).Elem(), RolloutSpecTrafficAlbStickinessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSpecTrafficAmbassadorInput)(nil)).Elem(), RolloutSpecTrafficAmbassadorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSpecTrafficAmbassadorPtrInput)(nil)).Elem(), RolloutSpecTrafficAmbassadorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSpecTrafficIstioInput)(nil)).Elem(), RolloutSpecTrafficIstioArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSpecTrafficIstioPtrInput)(nil)).Elem(), RolloutSpecTrafficIstioArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSpecTrafficIstioDestinationRuleInput)(nil)).Elem(), RolloutSpecTrafficIstioDestinationRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSpecTrafficIstioDestinationRulePtrInput)(nil)).Elem(), RolloutSpecTrafficIstioDestinationRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSpecTrafficIstioVirtualServiceInput)(nil)).Elem(), RolloutSpecTrafficIstioVirtualServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSpecTrafficIstioVirtualServiceArrayInput)(nil)).Elem(), RolloutSpecTrafficIstioVirtualServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSpecTrafficIstioVirtualServiceTlsRouteInput)(nil)).Elem(), RolloutSpecTrafficIstioVirtualServiceTlsRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSpecTrafficIstioVirtualServiceTlsRouteArrayInput)(nil)).Elem(), RolloutSpecTrafficIstioVirtualServiceTlsRouteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSpecTrafficNginxInput)(nil)).Elem(), RolloutSpecTrafficNginxArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSpecTrafficNginxPtrInput)(nil)).Elem(), RolloutSpecTrafficNginxArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSpecTrafficNginxAdditionalIngressAnnotationInput)(nil)).Elem(), RolloutSpecTrafficNginxAdditionalIngressAnnotationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSpecTrafficNginxAdditionalIngressAnnotationPtrInput)(nil)).Elem(), RolloutSpecTrafficNginxAdditionalIngressAnnotationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSpecTrafficPingPongInput)(nil)).Elem(), RolloutSpecTrafficPingPongArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSpecTrafficPingPongPtrInput)(nil)).Elem(), RolloutSpecTrafficPingPongArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSpecTrafficSmiInput)(nil)).Elem(), RolloutSpecTrafficSmiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSpecTrafficSmiPtrInput)(nil)).Elem(), RolloutSpecTrafficSmiArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StrategyCanaryInput)(nil)).Elem(), StrategyCanaryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StrategyCanaryPtrInput)(nil)).Elem(), StrategyCanaryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StrategyCanaryBackgroundVerificationInput)(nil)).Elem(), StrategyCanaryBackgroundVerificationArgs{})
@@ -2544,6 +9165,97 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VerificationProviderNewRelicPtrInput)(nil)).Elem(), VerificationProviderNewRelicArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VerificationProviderPrometheusInput)(nil)).Elem(), VerificationProviderPrometheusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VerificationProviderPrometheusPtrInput)(nil)).Elem(), VerificationProviderPrometheusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateArgInput)(nil)).Elem(), VerificationTemplateArgArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateArgArrayInput)(nil)).Elem(), VerificationTemplateArgArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateArgValueFromInput)(nil)).Elem(), VerificationTemplateArgValueFromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateArgValueFromPtrInput)(nil)).Elem(), VerificationTemplateArgValueFromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateArgValueFromSecretKeyRefInput)(nil)).Elem(), VerificationTemplateArgValueFromSecretKeyRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateArgValueFromSecretKeyRefPtrInput)(nil)).Elem(), VerificationTemplateArgValueFromSecretKeyRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricInput)(nil)).Elem(), VerificationTemplateMetricArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricArrayInput)(nil)).Elem(), VerificationTemplateMetricArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricBaselineInput)(nil)).Elem(), VerificationTemplateMetricBaselineArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricBaselinePtrInput)(nil)).Elem(), VerificationTemplateMetricBaselineArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricBaselineBaselineProviderInput)(nil)).Elem(), VerificationTemplateMetricBaselineBaselineProviderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricBaselineBaselineProviderArrayInput)(nil)).Elem(), VerificationTemplateMetricBaselineBaselineProviderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricBaselineBaselineProviderDatadogInput)(nil)).Elem(), VerificationTemplateMetricBaselineBaselineProviderDatadogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricBaselineBaselineProviderDatadogPtrInput)(nil)).Elem(), VerificationTemplateMetricBaselineBaselineProviderDatadogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricBaselineBaselineProviderNewRelicInput)(nil)).Elem(), VerificationTemplateMetricBaselineBaselineProviderNewRelicArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricBaselineBaselineProviderNewRelicPtrInput)(nil)).Elem(), VerificationTemplateMetricBaselineBaselineProviderNewRelicArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricBaselineBaselineProviderPrometheusInput)(nil)).Elem(), VerificationTemplateMetricBaselineBaselineProviderPrometheusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricBaselineBaselineProviderPrometheusPtrInput)(nil)).Elem(), VerificationTemplateMetricBaselineBaselineProviderPrometheusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricProviderInput)(nil)).Elem(), VerificationTemplateMetricProviderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricProviderArrayInput)(nil)).Elem(), VerificationTemplateMetricProviderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricProviderCloudWatchInput)(nil)).Elem(), VerificationTemplateMetricProviderCloudWatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricProviderCloudWatchPtrInput)(nil)).Elem(), VerificationTemplateMetricProviderCloudWatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricProviderCloudWatchMetricDataQueryInput)(nil)).Elem(), VerificationTemplateMetricProviderCloudWatchMetricDataQueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricProviderCloudWatchMetricDataQueryArrayInput)(nil)).Elem(), VerificationTemplateMetricProviderCloudWatchMetricDataQueryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatInput)(nil)).Elem(), VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrInput)(nil)).Elem(), VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricInput)(nil)).Elem(), VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrInput)(nil)).Elem(), VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionInput)(nil)).Elem(), VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArrayInput)(nil)).Elem(), VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricProviderDatadogInput)(nil)).Elem(), VerificationTemplateMetricProviderDatadogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricProviderDatadogPtrInput)(nil)).Elem(), VerificationTemplateMetricProviderDatadogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricProviderJenkinsInput)(nil)).Elem(), VerificationTemplateMetricProviderJenkinsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricProviderJenkinsPtrInput)(nil)).Elem(), VerificationTemplateMetricProviderJenkinsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricProviderJenkinsJenkinsParametersInput)(nil)).Elem(), VerificationTemplateMetricProviderJenkinsJenkinsParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricProviderJenkinsJenkinsParametersPtrInput)(nil)).Elem(), VerificationTemplateMetricProviderJenkinsJenkinsParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricProviderJobInput)(nil)).Elem(), VerificationTemplateMetricProviderJobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricProviderJobPtrInput)(nil)).Elem(), VerificationTemplateMetricProviderJobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricProviderJobSpecInput)(nil)).Elem(), VerificationTemplateMetricProviderJobSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricProviderJobSpecArrayInput)(nil)).Elem(), VerificationTemplateMetricProviderJobSpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricProviderJobSpecJobTemplateInput)(nil)).Elem(), VerificationTemplateMetricProviderJobSpecJobTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricProviderJobSpecJobTemplateArrayInput)(nil)).Elem(), VerificationTemplateMetricProviderJobSpecJobTemplateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecInput)(nil)).Elem(), VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArrayInput)(nil)).Elem(), VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerInput)(nil)).Elem(), VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArrayInput)(nil)).Elem(), VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricProviderNewRelicInput)(nil)).Elem(), VerificationTemplateMetricProviderNewRelicArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricProviderNewRelicPtrInput)(nil)).Elem(), VerificationTemplateMetricProviderNewRelicArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricProviderPrometheusInput)(nil)).Elem(), VerificationTemplateMetricProviderPrometheusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricProviderPrometheusPtrInput)(nil)).Elem(), VerificationTemplateMetricProviderPrometheusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricProviderWebInput)(nil)).Elem(), VerificationTemplateMetricProviderWebArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricProviderWebPtrInput)(nil)).Elem(), VerificationTemplateMetricProviderWebArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricProviderWebWebHeaderInput)(nil)).Elem(), VerificationTemplateMetricProviderWebWebHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VerificationTemplateMetricProviderWebWebHeaderArrayInput)(nil)).Elem(), VerificationTemplateMetricProviderWebWebHeaderArray{})
+	pulumi.RegisterOutputType(RolloutSpecFailurePolicyOutput{})
+	pulumi.RegisterOutputType(RolloutSpecFailurePolicyPtrOutput{})
+	pulumi.RegisterOutputType(RolloutSpecSpotDeploymentOutput{})
+	pulumi.RegisterOutputType(RolloutSpecSpotDeploymentPtrOutput{})
+	pulumi.RegisterOutputType(RolloutSpecSpotDeploymentArrayOutput{})
+	pulumi.RegisterOutputType(RolloutSpecStrategyOutput{})
+	pulumi.RegisterOutputType(RolloutSpecStrategyPtrOutput{})
+	pulumi.RegisterOutputType(RolloutSpecStrategyArgOutput{})
+	pulumi.RegisterOutputType(RolloutSpecStrategyArgArrayOutput{})
+	pulumi.RegisterOutputType(RolloutSpecStrategyArgValueFromOutput{})
+	pulumi.RegisterOutputType(RolloutSpecStrategyArgValueFromPtrOutput{})
+	pulumi.RegisterOutputType(RolloutSpecStrategyArgValueFromFieldRefOutput{})
+	pulumi.RegisterOutputType(RolloutSpecStrategyArgValueFromFieldRefPtrOutput{})
+	pulumi.RegisterOutputType(RolloutSpecTrafficOutput{})
+	pulumi.RegisterOutputType(RolloutSpecTrafficPtrOutput{})
+	pulumi.RegisterOutputType(RolloutSpecTrafficAlbOutput{})
+	pulumi.RegisterOutputType(RolloutSpecTrafficAlbPtrOutput{})
+	pulumi.RegisterOutputType(RolloutSpecTrafficAlbStickinessConfigOutput{})
+	pulumi.RegisterOutputType(RolloutSpecTrafficAlbStickinessConfigPtrOutput{})
+	pulumi.RegisterOutputType(RolloutSpecTrafficAmbassadorOutput{})
+	pulumi.RegisterOutputType(RolloutSpecTrafficAmbassadorPtrOutput{})
+	pulumi.RegisterOutputType(RolloutSpecTrafficIstioOutput{})
+	pulumi.RegisterOutputType(RolloutSpecTrafficIstioPtrOutput{})
+	pulumi.RegisterOutputType(RolloutSpecTrafficIstioDestinationRuleOutput{})
+	pulumi.RegisterOutputType(RolloutSpecTrafficIstioDestinationRulePtrOutput{})
+	pulumi.RegisterOutputType(RolloutSpecTrafficIstioVirtualServiceOutput{})
+	pulumi.RegisterOutputType(RolloutSpecTrafficIstioVirtualServiceArrayOutput{})
+	pulumi.RegisterOutputType(RolloutSpecTrafficIstioVirtualServiceTlsRouteOutput{})
+	pulumi.RegisterOutputType(RolloutSpecTrafficIstioVirtualServiceTlsRouteArrayOutput{})
+	pulumi.RegisterOutputType(RolloutSpecTrafficNginxOutput{})
+	pulumi.RegisterOutputType(RolloutSpecTrafficNginxPtrOutput{})
+	pulumi.RegisterOutputType(RolloutSpecTrafficNginxAdditionalIngressAnnotationOutput{})
+	pulumi.RegisterOutputType(RolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutput{})
+	pulumi.RegisterOutputType(RolloutSpecTrafficPingPongOutput{})
+	pulumi.RegisterOutputType(RolloutSpecTrafficPingPongPtrOutput{})
+	pulumi.RegisterOutputType(RolloutSpecTrafficSmiOutput{})
+	pulumi.RegisterOutputType(RolloutSpecTrafficSmiPtrOutput{})
 	pulumi.RegisterOutputType(StrategyCanaryOutput{})
 	pulumi.RegisterOutputType(StrategyCanaryPtrOutput{})
 	pulumi.RegisterOutputType(StrategyCanaryBackgroundVerificationOutput{})
@@ -2579,4 +9291,58 @@ func init() {
 	pulumi.RegisterOutputType(VerificationProviderNewRelicPtrOutput{})
 	pulumi.RegisterOutputType(VerificationProviderPrometheusOutput{})
 	pulumi.RegisterOutputType(VerificationProviderPrometheusPtrOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateArgOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateArgArrayOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateArgValueFromOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateArgValueFromPtrOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateArgValueFromSecretKeyRefOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateArgValueFromSecretKeyRefPtrOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricArrayOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricBaselineOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricBaselinePtrOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricBaselineBaselineProviderOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricBaselineBaselineProviderArrayOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricBaselineBaselineProviderDatadogOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricBaselineBaselineProviderDatadogPtrOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricBaselineBaselineProviderNewRelicOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricBaselineBaselineProviderNewRelicPtrOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricBaselineBaselineProviderPrometheusOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricBaselineBaselineProviderPrometheusPtrOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricProviderOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricProviderArrayOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricProviderCloudWatchOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricProviderCloudWatchPtrOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricProviderCloudWatchMetricDataQueryOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricProviderCloudWatchMetricDataQueryArrayOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArrayOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricProviderDatadogOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricProviderDatadogPtrOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricProviderJenkinsOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricProviderJenkinsPtrOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricProviderJenkinsJenkinsParametersOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricProviderJobOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricProviderJobPtrOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricProviderJobSpecOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricProviderJobSpecArrayOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricProviderJobSpecJobTemplateOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricProviderJobSpecJobTemplateArrayOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArrayOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArrayOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricProviderNewRelicOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricProviderNewRelicPtrOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricProviderPrometheusOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricProviderPrometheusPtrOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricProviderWebOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricProviderWebPtrOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricProviderWebWebHeaderOutput{})
+	pulumi.RegisterOutputType(VerificationTemplateMetricProviderWebWebHeaderArrayOutput{})
 }

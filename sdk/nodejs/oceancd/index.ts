@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { RolloutSpecArgs, RolloutSpecState } from "./rolloutSpec";
+export type RolloutSpec = import("./rolloutSpec").RolloutSpec;
+export const RolloutSpec: typeof import("./rolloutSpec").RolloutSpec = null as any;
+utilities.lazyLoad(exports, ["RolloutSpec"], () => require("./rolloutSpec"));
+
 export { StrategyArgs, StrategyState } from "./strategy";
 export type Strategy = import("./strategy").Strategy;
 export const Strategy: typeof import("./strategy").Strategy = null as any;
@@ -15,19 +20,30 @@ export type VerificationProvider = import("./verificationProvider").Verification
 export const VerificationProvider: typeof import("./verificationProvider").VerificationProvider = null as any;
 utilities.lazyLoad(exports, ["VerificationProvider"], () => require("./verificationProvider"));
 
+export { VerificationTemplateArgs, VerificationTemplateState } from "./verificationTemplate";
+export type VerificationTemplate = import("./verificationTemplate").VerificationTemplate;
+export const VerificationTemplate: typeof import("./verificationTemplate").VerificationTemplate = null as any;
+utilities.lazyLoad(exports, ["VerificationTemplate"], () => require("./verificationTemplate"));
+
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "spotinst:oceancd/rolloutSpec:RolloutSpec":
+                return new RolloutSpec(name, <any>undefined, { urn })
             case "spotinst:oceancd/strategy:Strategy":
                 return new Strategy(name, <any>undefined, { urn })
             case "spotinst:oceancd/verificationProvider:VerificationProvider":
                 return new VerificationProvider(name, <any>undefined, { urn })
+            case "spotinst:oceancd/verificationTemplate:VerificationTemplate":
+                return new VerificationTemplate(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
+pulumi.runtime.registerResourceModule("spotinst", "oceancd/rolloutSpec", _module)
 pulumi.runtime.registerResourceModule("spotinst", "oceancd/strategy", _module)
 pulumi.runtime.registerResourceModule("spotinst", "oceancd/verificationProvider", _module)
+pulumi.runtime.registerResourceModule("spotinst", "oceancd/verificationTemplate", _module)

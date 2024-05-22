@@ -3570,6 +3570,148 @@ export namespace gke {
 }
 
 export namespace oceancd {
+    export interface RolloutSpecFailurePolicy {
+        /**
+         * Choose an action to perform on failure. Default is `abort`.  Enum: "abort" "pause" "promote".
+         */
+        action: pulumi.Input<string>;
+    }
+
+    export interface RolloutSpecSpotDeployment {
+        /**
+         * Ocean CD cluster identifier for the references `SpotDeployment`.
+         */
+        spotDeploymentsClusterId?: pulumi.Input<string>;
+        /**
+         * The name of the `SpotDeployment` resource
+         */
+        spotDeploymentsName?: pulumi.Input<string>;
+        /**
+         * The namespace which the `SpotDeployment` resource exists within.
+         */
+        spotDeploymentsNamespace?: pulumi.Input<string>;
+    }
+
+    export interface RolloutSpecStrategy {
+        /**
+         * Arguments defined in Verification Templates.
+         */
+        args?: pulumi.Input<pulumi.Input<inputs.oceancd.RolloutSpecStrategyArg>[]>;
+        /**
+         * Ocean CD strategy name identifier.
+         */
+        strategyName: pulumi.Input<string>;
+    }
+
+    export interface RolloutSpecStrategyArg {
+        argName: pulumi.Input<string>;
+        argValue?: pulumi.Input<string>;
+        valueFrom?: pulumi.Input<inputs.oceancd.RolloutSpecStrategyArgValueFrom>;
+    }
+
+    export interface RolloutSpecStrategyArgValueFrom {
+        fieldRef: pulumi.Input<inputs.oceancd.RolloutSpecStrategyArgValueFromFieldRef>;
+    }
+
+    export interface RolloutSpecStrategyArgValueFromFieldRef {
+        fieldPath: pulumi.Input<string>;
+    }
+
+    export interface RolloutSpecTraffic {
+        /**
+         * Holds ALB Ingress specific configuration to route traffic.
+         */
+        alb?: pulumi.Input<inputs.oceancd.RolloutSpecTrafficAlb>;
+        /**
+         * Holds specific configuration to use Ambassador to route traffic.
+         */
+        ambassador?: pulumi.Input<inputs.oceancd.RolloutSpecTrafficAmbassador>;
+        /**
+         * The canary service name.
+         */
+        canaryService?: pulumi.Input<string>;
+        /**
+         * Holds Istio specific configuration to route traffic.
+         */
+        istio?: pulumi.Input<inputs.oceancd.RolloutSpecTrafficIstio>;
+        /**
+         * Holds Nginx Ingress specific configuration to route traffic.
+         */
+        nginx?: pulumi.Input<inputs.oceancd.RolloutSpecTrafficNginx>;
+        /**
+         * Holds the ping and pong services. You can use `pingPong` field only when using ALB as a traffic manager with the IP Mode approach.
+         */
+        pingPong?: pulumi.Input<inputs.oceancd.RolloutSpecTrafficPingPong>;
+        /**
+         * Holds TrafficSplit specific configuration to route traffic.
+         */
+        smi?: pulumi.Input<inputs.oceancd.RolloutSpecTrafficSmi>;
+        /**
+         * The stable service name.
+         */
+        stableService?: pulumi.Input<string>;
+    }
+
+    export interface RolloutSpecTrafficAlb {
+        albAnnotationPrefix?: pulumi.Input<string>;
+        albIngress: pulumi.Input<string>;
+        albRootService: pulumi.Input<string>;
+        servicePort: pulumi.Input<number>;
+        stickinessConfig?: pulumi.Input<inputs.oceancd.RolloutSpecTrafficAlbStickinessConfig>;
+    }
+
+    export interface RolloutSpecTrafficAlbStickinessConfig {
+        durationSeconds?: pulumi.Input<number>;
+        enabled?: pulumi.Input<boolean>;
+    }
+
+    export interface RolloutSpecTrafficAmbassador {
+        mappings: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface RolloutSpecTrafficIstio {
+        destinationRule?: pulumi.Input<inputs.oceancd.RolloutSpecTrafficIstioDestinationRule>;
+        virtualServices: pulumi.Input<pulumi.Input<inputs.oceancd.RolloutSpecTrafficIstioVirtualService>[]>;
+    }
+
+    export interface RolloutSpecTrafficIstioDestinationRule {
+        canarySubsetName: pulumi.Input<string>;
+        destinationRuleName: pulumi.Input<string>;
+        stableSubsetName: pulumi.Input<string>;
+    }
+
+    export interface RolloutSpecTrafficIstioVirtualService {
+        tlsRoutes?: pulumi.Input<pulumi.Input<inputs.oceancd.RolloutSpecTrafficIstioVirtualServiceTlsRoute>[]>;
+        virtualServiceName: pulumi.Input<string>;
+        virtualServiceRoutes?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface RolloutSpecTrafficIstioVirtualServiceTlsRoute {
+        port?: pulumi.Input<number>;
+        sniHosts?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface RolloutSpecTrafficNginx {
+        additionalIngressAnnotation?: pulumi.Input<inputs.oceancd.RolloutSpecTrafficNginxAdditionalIngressAnnotation>;
+        nginxAnnotationPrefix?: pulumi.Input<string>;
+        stableIngress: pulumi.Input<string>;
+    }
+
+    export interface RolloutSpecTrafficNginxAdditionalIngressAnnotation {
+        canaryByHeader?: pulumi.Input<string>;
+        key1?: pulumi.Input<string>;
+    }
+
+    export interface RolloutSpecTrafficPingPong {
+        pingService: pulumi.Input<string>;
+        pongService: pulumi.Input<string>;
+    }
+
+    export interface RolloutSpecTrafficSmi {
+        smiRootService?: pulumi.Input<string>;
+        trafficSplitName?: pulumi.Input<string>;
+    }
+
     export interface StrategyCanary {
         /**
          * A list of background verifications.
@@ -3707,6 +3849,215 @@ export namespace oceancd {
          * The address which the Prometheus server available on.
          */
         address: pulumi.Input<string>;
+    }
+
+    export interface VerificationTemplateArg {
+        /**
+         * Name of an argument.
+         */
+        argName: pulumi.Input<string>;
+        /**
+         * String representation of data.
+         */
+        value?: pulumi.Input<string>;
+        /**
+         * ValueFrom object.
+         */
+        valueFrom?: pulumi.Input<inputs.oceancd.VerificationTemplateArgValueFrom>;
+    }
+
+    export interface VerificationTemplateArgValueFrom {
+        secretKeyRef?: pulumi.Input<inputs.oceancd.VerificationTemplateArgValueFromSecretKeyRef>;
+    }
+
+    export interface VerificationTemplateArgValueFromSecretKeyRef {
+        key: pulumi.Input<string>;
+        /**
+         * Identifier name for Ocean CD Verification Template. Must be unique.
+         */
+        name: pulumi.Input<string>;
+    }
+
+    export interface VerificationTemplateMetric {
+        /**
+         * Baseline Object.
+         */
+        baseline?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricBaseline>;
+        /**
+         * The maximum number of times the measurement is allowed to error in succession, before the metric is considered error.Default is 4.When choosing `Jenkins` as the provider, there is no need to send this variable.
+         */
+        consecutiveErrorLimit?: pulumi.Input<number>;
+        /**
+         * The number of times to run the measurement. If both interval and count are omitted, the effective count is 1. If only interval is specified, metric runs indefinitely. If count > 1, interval must be specified. When choosing `Jenkins` as the provider, there is no need to send this variable.
+         */
+        count?: pulumi.Input<number>;
+        /**
+         * Defines whether the metric should have an impact on the result of the rollout.
+         */
+        dryRun?: pulumi.Input<boolean>;
+        /**
+         * An expression which determines if a measurement is considered failed.If failureCondition is set, then successCondition is not allowed. When choosing Jenkins as the provider, there is no need to send this variable.
+         */
+        failureCondition?: pulumi.Input<string>;
+        /**
+         * The maximum number of times the measurement is allowed to fail, before the entire metric is considered failed.Default is 0. When choosing `Jenkins` as the provider, there is no need to send this variable.
+         */
+        failureLimit?: pulumi.Input<number>;
+        /**
+         * How long to wait before starting this metric measurements. When choosing Jenkins as the provider, there is no need to send this variable.
+         */
+        initialDelay?: pulumi.Input<string>;
+        /**
+         * Defines an interval string (30s, 5m, 1h) between each verification measurements. If omitted, will perform a single measurement.When choosing Jenkins as the provider, there is no need to send this variable.
+         */
+        interval?: pulumi.Input<string>;
+        /**
+         * The name of the verification metric.
+         */
+        metricsName: pulumi.Input<string>;
+        /**
+         * The name of the monitoring tool chosen for the metric.
+         */
+        providers: pulumi.Input<pulumi.Input<inputs.oceancd.VerificationTemplateMetricProvider>[]>;
+        /**
+         * An expression which determines if a measurement is considered successful. The keyword `result` is a variable reference to the value of measurement. Results can be both structured data or primitive. If successCondition is set, then failureCondition is not allowed. When choosing `Jenkins` as the provider, there is no need to send this variable.
+         */
+        successCondition?: pulumi.Input<string>;
+    }
+
+    export interface VerificationTemplateMetricBaseline {
+        baselineProviders: pulumi.Input<pulumi.Input<inputs.oceancd.VerificationTemplateMetricBaselineBaselineProvider>[]>;
+        maxRange?: pulumi.Input<number>;
+        minRange?: pulumi.Input<number>;
+        threshold: pulumi.Input<string>;
+    }
+
+    export interface VerificationTemplateMetricBaselineBaselineProvider {
+        datadog?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricBaselineBaselineProviderDatadog>;
+        newRelic?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricBaselineBaselineProviderNewRelic>;
+        prometheus?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricBaselineBaselineProviderPrometheus>;
+    }
+
+    export interface VerificationTemplateMetricBaselineBaselineProviderDatadog {
+        datadogQuery: pulumi.Input<string>;
+        duration?: pulumi.Input<string>;
+    }
+
+    export interface VerificationTemplateMetricBaselineBaselineProviderNewRelic {
+        newRelicQuery: pulumi.Input<string>;
+        profile?: pulumi.Input<string>;
+    }
+
+    export interface VerificationTemplateMetricBaselineBaselineProviderPrometheus {
+        prometheusQuery: pulumi.Input<string>;
+    }
+
+    export interface VerificationTemplateMetricProvider {
+        cloudWatch?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderCloudWatch>;
+        datadog?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderDatadog>;
+        jenkins?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderJenkins>;
+        job?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderJob>;
+        newRelic?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderNewRelic>;
+        prometheus?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderPrometheus>;
+        web?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderWeb>;
+    }
+
+    export interface VerificationTemplateMetricProviderCloudWatch {
+        duration?: pulumi.Input<string>;
+        metricDataQueries: pulumi.Input<pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderCloudWatchMetricDataQuery>[]>;
+    }
+
+    export interface VerificationTemplateMetricProviderCloudWatchMetricDataQuery {
+        expression?: pulumi.Input<string>;
+        id: pulumi.Input<string>;
+        label?: pulumi.Input<string>;
+        metricStat?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat>;
+        period?: pulumi.Input<number>;
+        returnData?: pulumi.Input<boolean>;
+    }
+
+    export interface VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat {
+        metric?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric>;
+        metricPeriod?: pulumi.Input<number>;
+        stat?: pulumi.Input<string>;
+        unit?: pulumi.Input<string>;
+    }
+
+    export interface VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric {
+        dimensions?: pulumi.Input<pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimension>[]>;
+        metricName: pulumi.Input<string>;
+        namespace?: pulumi.Input<string>;
+    }
+
+    export interface VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimension {
+        dimensionName: pulumi.Input<string>;
+        dimensionValue: pulumi.Input<string>;
+    }
+
+    export interface VerificationTemplateMetricProviderDatadog {
+        datadogQuery?: pulumi.Input<string>;
+        duration?: pulumi.Input<string>;
+    }
+
+    export interface VerificationTemplateMetricProviderJenkins {
+        jenkinsInterval: pulumi.Input<string>;
+        jenkinsParameters?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderJenkinsJenkinsParameters>;
+        pipelineName: pulumi.Input<string>;
+        timeout: pulumi.Input<string>;
+        tlsVerification?: pulumi.Input<boolean>;
+    }
+
+    export interface VerificationTemplateMetricProviderJenkinsJenkinsParameters {
+        parameterKey: pulumi.Input<string>;
+        parameterValue: pulumi.Input<string>;
+    }
+
+    export interface VerificationTemplateMetricProviderJob {
+        specs: pulumi.Input<pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderJobSpec>[]>;
+    }
+
+    export interface VerificationTemplateMetricProviderJobSpec {
+        backoffLimit?: pulumi.Input<number>;
+        jobTemplates: pulumi.Input<pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderJobSpecJobTemplate>[]>;
+    }
+
+    export interface VerificationTemplateMetricProviderJobSpecJobTemplate {
+        templateSpecs: pulumi.Input<pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpec>[]>;
+    }
+
+    export interface VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpec {
+        containers: pulumi.Input<pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainer>[]>;
+        restartPolicy: pulumi.Input<string>;
+    }
+
+    export interface VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainer {
+        commands: pulumi.Input<pulumi.Input<string>[]>;
+        containerName: pulumi.Input<string>;
+        image: pulumi.Input<string>;
+    }
+
+    export interface VerificationTemplateMetricProviderNewRelic {
+        newRelicQuery: pulumi.Input<string>;
+        profile?: pulumi.Input<string>;
+    }
+
+    export interface VerificationTemplateMetricProviderPrometheus {
+        prometheusQuery: pulumi.Input<string>;
+    }
+
+    export interface VerificationTemplateMetricProviderWeb {
+        body?: pulumi.Input<string>;
+        insecure?: pulumi.Input<boolean>;
+        jsonPath?: pulumi.Input<string>;
+        method?: pulumi.Input<string>;
+        timeoutSeconds?: pulumi.Input<number>;
+        url: pulumi.Input<string>;
+        webHeaders?: pulumi.Input<pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderWebWebHeader>[]>;
+    }
+
+    export interface VerificationTemplateMetricProviderWebWebHeader {
+        webHeaderKey: pulumi.Input<string>;
+        webHeaderValue: pulumi.Input<string>;
     }
 }
 

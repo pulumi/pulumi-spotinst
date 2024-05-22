@@ -21,10 +21,14 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "spotinst:oceancd/rolloutSpec:RolloutSpec":
+		r = &RolloutSpec{}
 	case "spotinst:oceancd/strategy:Strategy":
 		r = &Strategy{}
 	case "spotinst:oceancd/verificationProvider:VerificationProvider":
 		r = &VerificationProvider{}
+	case "spotinst:oceancd/verificationTemplate:VerificationTemplate":
+		r = &VerificationTemplate{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -40,12 +44,22 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"spotinst",
+		"oceancd/rolloutSpec",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"spotinst",
 		"oceancd/strategy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"spotinst",
 		"oceancd/verificationProvider",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"spotinst",
+		"oceancd/verificationTemplate",
 		&module{version},
 	)
 }
