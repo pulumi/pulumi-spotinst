@@ -8002,6 +8002,307 @@
                 "state"
             ]
         },
+        "spotinst:oceancd/RolloutSpecFailurePolicy:RolloutSpecFailurePolicy": {
+            "properties": {
+                "action": {
+                    "type": "string",
+                    "description": "Choose an action to perform on failure. Default is `abort`.  Enum: \"abort\" \"pause\" \"promote\".\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "action"
+            ]
+        },
+        "spotinst:oceancd/RolloutSpecSpotDeployment:RolloutSpecSpotDeployment": {
+            "properties": {
+                "spotDeploymentsClusterId": {
+                    "type": "string",
+                    "description": "Ocean CD cluster identifier for the references `SpotDeployment`.\n"
+                },
+                "spotDeploymentsName": {
+                    "type": "string",
+                    "description": "The name of the `SpotDeployment` resource\n"
+                },
+                "spotDeploymentsNamespace": {
+                    "type": "string",
+                    "description": "The namespace which the `SpotDeployment` resource exists within.\n"
+                }
+            },
+            "type": "object"
+        },
+        "spotinst:oceancd/RolloutSpecStrategy:RolloutSpecStrategy": {
+            "properties": {
+                "args": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:oceancd/RolloutSpecStrategyArg:RolloutSpecStrategyArg"
+                    },
+                    "description": "Arguments defined in Verification Templates.\n"
+                },
+                "strategyName": {
+                    "type": "string",
+                    "description": "Ocean CD strategy name identifier.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "strategyName"
+            ]
+        },
+        "spotinst:oceancd/RolloutSpecStrategyArg:RolloutSpecStrategyArg": {
+            "properties": {
+                "argName": {
+                    "type": "string"
+                },
+                "argValue": {
+                    "type": "string"
+                },
+                "valueFrom": {
+                    "$ref": "#/types/spotinst:oceancd/RolloutSpecStrategyArgValueFrom:RolloutSpecStrategyArgValueFrom"
+                }
+            },
+            "type": "object",
+            "required": [
+                "argName"
+            ]
+        },
+        "spotinst:oceancd/RolloutSpecStrategyArgValueFrom:RolloutSpecStrategyArgValueFrom": {
+            "properties": {
+                "fieldRef": {
+                    "$ref": "#/types/spotinst:oceancd/RolloutSpecStrategyArgValueFromFieldRef:RolloutSpecStrategyArgValueFromFieldRef"
+                }
+            },
+            "type": "object",
+            "required": [
+                "fieldRef"
+            ]
+        },
+        "spotinst:oceancd/RolloutSpecStrategyArgValueFromFieldRef:RolloutSpecStrategyArgValueFromFieldRef": {
+            "properties": {
+                "fieldPath": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "fieldPath"
+            ]
+        },
+        "spotinst:oceancd/RolloutSpecTraffic:RolloutSpecTraffic": {
+            "properties": {
+                "alb": {
+                    "$ref": "#/types/spotinst:oceancd/RolloutSpecTrafficAlb:RolloutSpecTrafficAlb",
+                    "description": "Holds ALB Ingress specific configuration to route traffic.\n"
+                },
+                "ambassador": {
+                    "$ref": "#/types/spotinst:oceancd/RolloutSpecTrafficAmbassador:RolloutSpecTrafficAmbassador",
+                    "description": "Holds specific configuration to use Ambassador to route traffic.\n"
+                },
+                "canaryService": {
+                    "type": "string",
+                    "description": "The canary service name.\n"
+                },
+                "istio": {
+                    "$ref": "#/types/spotinst:oceancd/RolloutSpecTrafficIstio:RolloutSpecTrafficIstio",
+                    "description": "Holds Istio specific configuration to route traffic.\n"
+                },
+                "nginx": {
+                    "$ref": "#/types/spotinst:oceancd/RolloutSpecTrafficNginx:RolloutSpecTrafficNginx",
+                    "description": "Holds Nginx Ingress specific configuration to route traffic.\n"
+                },
+                "pingPong": {
+                    "$ref": "#/types/spotinst:oceancd/RolloutSpecTrafficPingPong:RolloutSpecTrafficPingPong",
+                    "description": "Holds the ping and pong services. You can use `pingPong` field only when using ALB as a traffic manager with the IP Mode approach.\n"
+                },
+                "smi": {
+                    "$ref": "#/types/spotinst:oceancd/RolloutSpecTrafficSmi:RolloutSpecTrafficSmi",
+                    "description": "Holds TrafficSplit specific configuration to route traffic.\n"
+                },
+                "stableService": {
+                    "type": "string",
+                    "description": "The stable service name.\n"
+                }
+            },
+            "type": "object"
+        },
+        "spotinst:oceancd/RolloutSpecTrafficAlb:RolloutSpecTrafficAlb": {
+            "properties": {
+                "albAnnotationPrefix": {
+                    "type": "string"
+                },
+                "albIngress": {
+                    "type": "string"
+                },
+                "albRootService": {
+                    "type": "string"
+                },
+                "servicePort": {
+                    "type": "integer"
+                },
+                "stickinessConfig": {
+                    "$ref": "#/types/spotinst:oceancd/RolloutSpecTrafficAlbStickinessConfig:RolloutSpecTrafficAlbStickinessConfig"
+                }
+            },
+            "type": "object",
+            "required": [
+                "albIngress",
+                "albRootService",
+                "servicePort"
+            ]
+        },
+        "spotinst:oceancd/RolloutSpecTrafficAlbStickinessConfig:RolloutSpecTrafficAlbStickinessConfig": {
+            "properties": {
+                "durationSeconds": {
+                    "type": "integer"
+                },
+                "enabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "spotinst:oceancd/RolloutSpecTrafficAmbassador:RolloutSpecTrafficAmbassador": {
+            "properties": {
+                "mappings": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "mappings"
+            ]
+        },
+        "spotinst:oceancd/RolloutSpecTrafficIstio:RolloutSpecTrafficIstio": {
+            "properties": {
+                "destinationRule": {
+                    "$ref": "#/types/spotinst:oceancd/RolloutSpecTrafficIstioDestinationRule:RolloutSpecTrafficIstioDestinationRule"
+                },
+                "virtualServices": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:oceancd/RolloutSpecTrafficIstioVirtualService:RolloutSpecTrafficIstioVirtualService"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "virtualServices"
+            ]
+        },
+        "spotinst:oceancd/RolloutSpecTrafficIstioDestinationRule:RolloutSpecTrafficIstioDestinationRule": {
+            "properties": {
+                "canarySubsetName": {
+                    "type": "string"
+                },
+                "destinationRuleName": {
+                    "type": "string"
+                },
+                "stableSubsetName": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "canarySubsetName",
+                "destinationRuleName",
+                "stableSubsetName"
+            ]
+        },
+        "spotinst:oceancd/RolloutSpecTrafficIstioVirtualService:RolloutSpecTrafficIstioVirtualService": {
+            "properties": {
+                "tlsRoutes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:oceancd/RolloutSpecTrafficIstioVirtualServiceTlsRoute:RolloutSpecTrafficIstioVirtualServiceTlsRoute"
+                    }
+                },
+                "virtualServiceName": {
+                    "type": "string"
+                },
+                "virtualServiceRoutes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "virtualServiceName"
+            ]
+        },
+        "spotinst:oceancd/RolloutSpecTrafficIstioVirtualServiceTlsRoute:RolloutSpecTrafficIstioVirtualServiceTlsRoute": {
+            "properties": {
+                "port": {
+                    "type": "integer"
+                },
+                "sniHosts": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "spotinst:oceancd/RolloutSpecTrafficNginx:RolloutSpecTrafficNginx": {
+            "properties": {
+                "additionalIngressAnnotation": {
+                    "$ref": "#/types/spotinst:oceancd/RolloutSpecTrafficNginxAdditionalIngressAnnotation:RolloutSpecTrafficNginxAdditionalIngressAnnotation"
+                },
+                "nginxAnnotationPrefix": {
+                    "type": "string"
+                },
+                "stableIngress": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "stableIngress"
+            ]
+        },
+        "spotinst:oceancd/RolloutSpecTrafficNginxAdditionalIngressAnnotation:RolloutSpecTrafficNginxAdditionalIngressAnnotation": {
+            "properties": {
+                "canaryByHeader": {
+                    "type": "string"
+                },
+                "key1": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "spotinst:oceancd/RolloutSpecTrafficPingPong:RolloutSpecTrafficPingPong": {
+            "properties": {
+                "pingService": {
+                    "type": "string"
+                },
+                "pongService": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "pingService",
+                "pongService"
+            ]
+        },
+        "spotinst:oceancd/RolloutSpecTrafficSmi:RolloutSpecTrafficSmi": {
+            "properties": {
+                "smiRootService": {
+                    "type": "string"
+                },
+                "trafficSplitName": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "spotinst:oceancd/StrategyCanary:StrategyCanary": {
             "properties": {
                 "backgroundVerification": {
@@ -8286,6 +8587,512 @@
             "type": "object",
             "required": [
                 "address"
+            ]
+        },
+        "spotinst:oceancd/VerificationTemplateArg:VerificationTemplateArg": {
+            "properties": {
+                "argName": {
+                    "type": "string",
+                    "description": "Name of an argument.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "String representation of data.\n"
+                },
+                "valueFrom": {
+                    "$ref": "#/types/spotinst:oceancd/VerificationTemplateArgValueFrom:VerificationTemplateArgValueFrom",
+                    "description": "ValueFrom object.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "argName"
+            ]
+        },
+        "spotinst:oceancd/VerificationTemplateArgValueFrom:VerificationTemplateArgValueFrom": {
+            "properties": {
+                "secretKeyRef": {
+                    "$ref": "#/types/spotinst:oceancd/VerificationTemplateArgValueFromSecretKeyRef:VerificationTemplateArgValueFromSecretKeyRef"
+                }
+            },
+            "type": "object"
+        },
+        "spotinst:oceancd/VerificationTemplateArgValueFromSecretKeyRef:VerificationTemplateArgValueFromSecretKeyRef": {
+            "properties": {
+                "key": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Identifier name for Ocean CD Verification Template. Must be unique.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "key",
+                "name"
+            ]
+        },
+        "spotinst:oceancd/VerificationTemplateMetric:VerificationTemplateMetric": {
+            "properties": {
+                "baseline": {
+                    "$ref": "#/types/spotinst:oceancd/VerificationTemplateMetricBaseline:VerificationTemplateMetricBaseline",
+                    "description": "Baseline Object.\n"
+                },
+                "consecutiveErrorLimit": {
+                    "type": "integer",
+                    "description": "The maximum number of times the measurement is allowed to error in succession, before the metric is considered error.Default is 4.When choosing `Jenkins` as the provider, there is no need to send this variable.\n"
+                },
+                "count": {
+                    "type": "integer",
+                    "description": "The number of times to run the measurement. If both interval and count are omitted, the effective count is 1. If only interval is specified, metric runs indefinitely. If count \u003e 1, interval must be specified. When choosing `Jenkins` as the provider, there is no need to send this variable.\n"
+                },
+                "dryRun": {
+                    "type": "boolean",
+                    "description": "Defines whether the metric should have an impact on the result of the rollout.\n"
+                },
+                "failureCondition": {
+                    "type": "string",
+                    "description": "An expression which determines if a measurement is considered failed.If failureCondition is set, then successCondition is not allowed. When choosing Jenkins as the provider, there is no need to send this variable.\n"
+                },
+                "failureLimit": {
+                    "type": "integer",
+                    "description": "The maximum number of times the measurement is allowed to fail, before the entire metric is considered failed.Default is 0. When choosing `Jenkins` as the provider, there is no need to send this variable.\n"
+                },
+                "initialDelay": {
+                    "type": "string",
+                    "description": "How long to wait before starting this metric measurements. When choosing Jenkins as the provider, there is no need to send this variable.\n"
+                },
+                "interval": {
+                    "type": "string",
+                    "description": "Defines an interval string (30s, 5m, 1h) between each verification measurements. If omitted, will perform a single measurement.When choosing Jenkins as the provider, there is no need to send this variable.\n"
+                },
+                "metricsName": {
+                    "type": "string",
+                    "description": "The name of the verification metric.\n"
+                },
+                "providers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:oceancd/VerificationTemplateMetricProvider:VerificationTemplateMetricProvider"
+                    },
+                    "description": "The name of the monitoring tool chosen for the metric.\n"
+                },
+                "successCondition": {
+                    "type": "string",
+                    "description": "An expression which determines if a measurement is considered successful. The keyword `result` is a variable reference to the value of measurement. Results can be both structured data or primitive. If successCondition is set, then failureCondition is not allowed. When choosing `Jenkins` as the provider, there is no need to send this variable.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "metricsName",
+                "providers"
+            ]
+        },
+        "spotinst:oceancd/VerificationTemplateMetricBaseline:VerificationTemplateMetricBaseline": {
+            "properties": {
+                "baselineProviders": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:oceancd/VerificationTemplateMetricBaselineBaselineProvider:VerificationTemplateMetricBaselineBaselineProvider"
+                    }
+                },
+                "maxRange": {
+                    "type": "integer"
+                },
+                "minRange": {
+                    "type": "integer"
+                },
+                "threshold": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "baselineProviders",
+                "threshold"
+            ]
+        },
+        "spotinst:oceancd/VerificationTemplateMetricBaselineBaselineProvider:VerificationTemplateMetricBaselineBaselineProvider": {
+            "properties": {
+                "datadog": {
+                    "$ref": "#/types/spotinst:oceancd/VerificationTemplateMetricBaselineBaselineProviderDatadog:VerificationTemplateMetricBaselineBaselineProviderDatadog"
+                },
+                "newRelic": {
+                    "$ref": "#/types/spotinst:oceancd/VerificationTemplateMetricBaselineBaselineProviderNewRelic:VerificationTemplateMetricBaselineBaselineProviderNewRelic"
+                },
+                "prometheus": {
+                    "$ref": "#/types/spotinst:oceancd/VerificationTemplateMetricBaselineBaselineProviderPrometheus:VerificationTemplateMetricBaselineBaselineProviderPrometheus"
+                }
+            },
+            "type": "object"
+        },
+        "spotinst:oceancd/VerificationTemplateMetricBaselineBaselineProviderDatadog:VerificationTemplateMetricBaselineBaselineProviderDatadog": {
+            "properties": {
+                "datadogQuery": {
+                    "type": "string"
+                },
+                "duration": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "datadogQuery"
+            ]
+        },
+        "spotinst:oceancd/VerificationTemplateMetricBaselineBaselineProviderNewRelic:VerificationTemplateMetricBaselineBaselineProviderNewRelic": {
+            "properties": {
+                "newRelicQuery": {
+                    "type": "string"
+                },
+                "profile": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "newRelicQuery"
+            ]
+        },
+        "spotinst:oceancd/VerificationTemplateMetricBaselineBaselineProviderPrometheus:VerificationTemplateMetricBaselineBaselineProviderPrometheus": {
+            "properties": {
+                "prometheusQuery": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "prometheusQuery"
+            ]
+        },
+        "spotinst:oceancd/VerificationTemplateMetricProvider:VerificationTemplateMetricProvider": {
+            "properties": {
+                "cloudWatch": {
+                    "$ref": "#/types/spotinst:oceancd/VerificationTemplateMetricProviderCloudWatch:VerificationTemplateMetricProviderCloudWatch"
+                },
+                "datadog": {
+                    "$ref": "#/types/spotinst:oceancd/VerificationTemplateMetricProviderDatadog:VerificationTemplateMetricProviderDatadog"
+                },
+                "jenkins": {
+                    "$ref": "#/types/spotinst:oceancd/VerificationTemplateMetricProviderJenkins:VerificationTemplateMetricProviderJenkins"
+                },
+                "job": {
+                    "$ref": "#/types/spotinst:oceancd/VerificationTemplateMetricProviderJob:VerificationTemplateMetricProviderJob"
+                },
+                "newRelic": {
+                    "$ref": "#/types/spotinst:oceancd/VerificationTemplateMetricProviderNewRelic:VerificationTemplateMetricProviderNewRelic"
+                },
+                "prometheus": {
+                    "$ref": "#/types/spotinst:oceancd/VerificationTemplateMetricProviderPrometheus:VerificationTemplateMetricProviderPrometheus"
+                },
+                "web": {
+                    "$ref": "#/types/spotinst:oceancd/VerificationTemplateMetricProviderWeb:VerificationTemplateMetricProviderWeb"
+                }
+            },
+            "type": "object"
+        },
+        "spotinst:oceancd/VerificationTemplateMetricProviderCloudWatch:VerificationTemplateMetricProviderCloudWatch": {
+            "properties": {
+                "duration": {
+                    "type": "string"
+                },
+                "metricDataQueries": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:oceancd/VerificationTemplateMetricProviderCloudWatchMetricDataQuery:VerificationTemplateMetricProviderCloudWatchMetricDataQuery"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "metricDataQueries"
+            ]
+        },
+        "spotinst:oceancd/VerificationTemplateMetricProviderCloudWatchMetricDataQuery:VerificationTemplateMetricProviderCloudWatchMetricDataQuery": {
+            "properties": {
+                "expression": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "label": {
+                    "type": "string"
+                },
+                "metricStat": {
+                    "$ref": "#/types/spotinst:oceancd/VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat:VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat"
+                },
+                "period": {
+                    "type": "integer"
+                },
+                "returnData": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id"
+            ]
+        },
+        "spotinst:oceancd/VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat:VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat": {
+            "properties": {
+                "metric": {
+                    "$ref": "#/types/spotinst:oceancd/VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric:VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric"
+                },
+                "metricPeriod": {
+                    "type": "integer"
+                },
+                "stat": {
+                    "type": "string"
+                },
+                "unit": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "spotinst:oceancd/VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric:VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric": {
+            "properties": {
+                "dimensions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:oceancd/VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimension:VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimension"
+                    }
+                },
+                "metricName": {
+                    "type": "string"
+                },
+                "namespace": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "metricName"
+            ]
+        },
+        "spotinst:oceancd/VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimension:VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimension": {
+            "properties": {
+                "dimensionName": {
+                    "type": "string"
+                },
+                "dimensionValue": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "dimensionName",
+                "dimensionValue"
+            ]
+        },
+        "spotinst:oceancd/VerificationTemplateMetricProviderDatadog:VerificationTemplateMetricProviderDatadog": {
+            "properties": {
+                "datadogQuery": {
+                    "type": "string"
+                },
+                "duration": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "spotinst:oceancd/VerificationTemplateMetricProviderJenkins:VerificationTemplateMetricProviderJenkins": {
+            "properties": {
+                "jenkinsInterval": {
+                    "type": "string"
+                },
+                "jenkinsParameters": {
+                    "$ref": "#/types/spotinst:oceancd/VerificationTemplateMetricProviderJenkinsJenkinsParameters:VerificationTemplateMetricProviderJenkinsJenkinsParameters"
+                },
+                "pipelineName": {
+                    "type": "string"
+                },
+                "timeout": {
+                    "type": "string"
+                },
+                "tlsVerification": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "jenkinsInterval",
+                "pipelineName",
+                "timeout"
+            ]
+        },
+        "spotinst:oceancd/VerificationTemplateMetricProviderJenkinsJenkinsParameters:VerificationTemplateMetricProviderJenkinsJenkinsParameters": {
+            "properties": {
+                "parameterKey": {
+                    "type": "string"
+                },
+                "parameterValue": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "parameterKey",
+                "parameterValue"
+            ]
+        },
+        "spotinst:oceancd/VerificationTemplateMetricProviderJob:VerificationTemplateMetricProviderJob": {
+            "properties": {
+                "specs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:oceancd/VerificationTemplateMetricProviderJobSpec:VerificationTemplateMetricProviderJobSpec"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "specs"
+            ]
+        },
+        "spotinst:oceancd/VerificationTemplateMetricProviderJobSpec:VerificationTemplateMetricProviderJobSpec": {
+            "properties": {
+                "backoffLimit": {
+                    "type": "integer"
+                },
+                "jobTemplates": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:oceancd/VerificationTemplateMetricProviderJobSpecJobTemplate:VerificationTemplateMetricProviderJobSpecJobTemplate"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "jobTemplates"
+            ]
+        },
+        "spotinst:oceancd/VerificationTemplateMetricProviderJobSpecJobTemplate:VerificationTemplateMetricProviderJobSpecJobTemplate": {
+            "properties": {
+                "templateSpecs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:oceancd/VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpec:VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpec"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "templateSpecs"
+            ]
+        },
+        "spotinst:oceancd/VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpec:VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpec": {
+            "properties": {
+                "containers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:oceancd/VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainer:VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainer"
+                    }
+                },
+                "restartPolicy": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "containers",
+                "restartPolicy"
+            ]
+        },
+        "spotinst:oceancd/VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainer:VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainer": {
+            "properties": {
+                "commands": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "containerName": {
+                    "type": "string"
+                },
+                "image": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "commands",
+                "containerName",
+                "image"
+            ]
+        },
+        "spotinst:oceancd/VerificationTemplateMetricProviderNewRelic:VerificationTemplateMetricProviderNewRelic": {
+            "properties": {
+                "newRelicQuery": {
+                    "type": "string"
+                },
+                "profile": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "newRelicQuery"
+            ]
+        },
+        "spotinst:oceancd/VerificationTemplateMetricProviderPrometheus:VerificationTemplateMetricProviderPrometheus": {
+            "properties": {
+                "prometheusQuery": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "prometheusQuery"
+            ]
+        },
+        "spotinst:oceancd/VerificationTemplateMetricProviderWeb:VerificationTemplateMetricProviderWeb": {
+            "properties": {
+                "body": {
+                    "type": "string"
+                },
+                "insecure": {
+                    "type": "boolean"
+                },
+                "jsonPath": {
+                    "type": "string"
+                },
+                "method": {
+                    "type": "string"
+                },
+                "timeoutSeconds": {
+                    "type": "integer"
+                },
+                "url": {
+                    "type": "string"
+                },
+                "webHeaders": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:oceancd/VerificationTemplateMetricProviderWebWebHeader:VerificationTemplateMetricProviderWebWebHeader"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "url"
+            ]
+        },
+        "spotinst:oceancd/VerificationTemplateMetricProviderWebWebHeader:VerificationTemplateMetricProviderWebWebHeader": {
+            "properties": {
+                "webHeaderKey": {
+                    "type": "string"
+                },
+                "webHeaderValue": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "webHeaderKey",
+                "webHeaderValue"
             ]
         },
         "spotinst:organization/PolicyPolicyContent:PolicyPolicyContent": {
@@ -17427,6 +18234,108 @@
                 "type": "object"
             }
         },
+        "spotinst:oceancd/rolloutSpec:RolloutSpec": {
+            "description": "Manages a Spotinst OceanCD Rollout Spec resource.\n\n",
+            "properties": {
+                "failurePolicy": {
+                    "$ref": "#/types/spotinst:oceancd/RolloutSpecFailurePolicy:RolloutSpecFailurePolicy",
+                    "description": "Holds information on how to react when failure happens.\n"
+                },
+                "rolloutSpecName": {
+                    "type": "string",
+                    "description": "Identifier name for Ocean CD Rollout Spec. Must be unique\n"
+                },
+                "spotDeployment": {
+                    "$ref": "#/types/spotinst:oceancd/RolloutSpecSpotDeployment:RolloutSpecSpotDeployment",
+                    "description": "Represents the SpotDeployment selector.\n"
+                },
+                "spotDeployments": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:oceancd/RolloutSpecSpotDeployment:RolloutSpecSpotDeployment"
+                    },
+                    "description": "You must specify either `spotDeployment` OR `spotDeployments` but not both. Every SpotDeployment has to be unique. If more than one `SpotDeployment` has been configured, no `traffic` managers can be set as part of the RolloutSpec.For such case ensure that each of the chosen SpotDeployments are being exposed with different Kubernetes services.\n"
+                },
+                "strategy": {
+                    "$ref": "#/types/spotinst:oceancd/RolloutSpecStrategy:RolloutSpecStrategy",
+                    "description": "Determines the Ocean CD strategy\n"
+                },
+                "traffic": {
+                    "$ref": "#/types/spotinst:oceancd/RolloutSpecTraffic:RolloutSpecTraffic",
+                    "description": "Hosts all of the supported service meshes needed to enable more fine-grained traffic routing. In case `SpotDeployments` contains more than one SpotDeployment the `traffic` manager may not be configured.\n"
+                }
+            },
+            "required": [
+                "rolloutSpecName",
+                "strategy"
+            ],
+            "inputProperties": {
+                "failurePolicy": {
+                    "$ref": "#/types/spotinst:oceancd/RolloutSpecFailurePolicy:RolloutSpecFailurePolicy",
+                    "description": "Holds information on how to react when failure happens.\n"
+                },
+                "rolloutSpecName": {
+                    "type": "string",
+                    "description": "Identifier name for Ocean CD Rollout Spec. Must be unique\n"
+                },
+                "spotDeployment": {
+                    "$ref": "#/types/spotinst:oceancd/RolloutSpecSpotDeployment:RolloutSpecSpotDeployment",
+                    "description": "Represents the SpotDeployment selector.\n"
+                },
+                "spotDeployments": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:oceancd/RolloutSpecSpotDeployment:RolloutSpecSpotDeployment"
+                    },
+                    "description": "You must specify either `spotDeployment` OR `spotDeployments` but not both. Every SpotDeployment has to be unique. If more than one `SpotDeployment` has been configured, no `traffic` managers can be set as part of the RolloutSpec.For such case ensure that each of the chosen SpotDeployments are being exposed with different Kubernetes services.\n"
+                },
+                "strategy": {
+                    "$ref": "#/types/spotinst:oceancd/RolloutSpecStrategy:RolloutSpecStrategy",
+                    "description": "Determines the Ocean CD strategy\n"
+                },
+                "traffic": {
+                    "$ref": "#/types/spotinst:oceancd/RolloutSpecTraffic:RolloutSpecTraffic",
+                    "description": "Hosts all of the supported service meshes needed to enable more fine-grained traffic routing. In case `SpotDeployments` contains more than one SpotDeployment the `traffic` manager may not be configured.\n"
+                }
+            },
+            "requiredInputs": [
+                "rolloutSpecName",
+                "strategy"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering RolloutSpec resources.\n",
+                "properties": {
+                    "failurePolicy": {
+                        "$ref": "#/types/spotinst:oceancd/RolloutSpecFailurePolicy:RolloutSpecFailurePolicy",
+                        "description": "Holds information on how to react when failure happens.\n"
+                    },
+                    "rolloutSpecName": {
+                        "type": "string",
+                        "description": "Identifier name for Ocean CD Rollout Spec. Must be unique\n"
+                    },
+                    "spotDeployment": {
+                        "$ref": "#/types/spotinst:oceancd/RolloutSpecSpotDeployment:RolloutSpecSpotDeployment",
+                        "description": "Represents the SpotDeployment selector.\n"
+                    },
+                    "spotDeployments": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/spotinst:oceancd/RolloutSpecSpotDeployment:RolloutSpecSpotDeployment"
+                        },
+                        "description": "You must specify either `spotDeployment` OR `spotDeployments` but not both. Every SpotDeployment has to be unique. If more than one `SpotDeployment` has been configured, no `traffic` managers can be set as part of the RolloutSpec.For such case ensure that each of the chosen SpotDeployments are being exposed with different Kubernetes services.\n"
+                    },
+                    "strategy": {
+                        "$ref": "#/types/spotinst:oceancd/RolloutSpecStrategy:RolloutSpecStrategy",
+                        "description": "Determines the Ocean CD strategy\n"
+                    },
+                    "traffic": {
+                        "$ref": "#/types/spotinst:oceancd/RolloutSpecTraffic:RolloutSpecTraffic",
+                        "description": "Hosts all of the supported service meshes needed to enable more fine-grained traffic routing. In case `SpotDeployments` contains more than one SpotDeployment the `traffic` manager may not be configured.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "spotinst:oceancd/strategy:Strategy": {
             "description": "Manages a Spotinst OceanCD Strategy resource.\n\n",
             "properties": {
@@ -17587,6 +18496,76 @@
                     "prometheus": {
                         "$ref": "#/types/spotinst:oceancd/VerificationProviderPrometheus:VerificationProviderPrometheus",
                         "description": "Specify the credentials for prometheus verification provider.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "spotinst:oceancd/verificationTemplate:VerificationTemplate": {
+            "description": "Manages a Spotinst OceanCD Verfification Template resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\nconst test = new spotinst.oceancd.VerificationTemplate(\"test\", {\n    name: \"test-verification-template-tes\",\n    args: [{\n        argName: \"test-arg\",\n        value: \"test\",\n        valueFrom: {\n            secretKeyRef: {\n                name: \"test_key\",\n                key: \"key-value-test\",\n            },\n        },\n    }],\n    metrics: [{\n        metricsName: \"test-metrics-names\",\n        dryRun: false,\n        interval: \"10m\",\n        initialDelay: \"1m\",\n        count: 10,\n        successCondition: \"result[0] \u003c= 0.95\",\n        failureCondition: \"result[0] \u003e= 0.95\",\n        failureLimit: 2,\n        consecutiveErrorLimit: 1,\n        providers: [{\n            prometheus: {\n                prometheusQuery: \"http_requests_new\",\n            },\n            datadog: {\n                duration: \"1m\",\n                datadogQuery: \"avg:kubernetes.cpu.user.total\",\n            },\n            newRelic: {\n                profile: \"test\",\n                newRelicQuery: \"FROM Metric SELECT count\",\n            },\n            cloudWatch: {\n                duration: \"5m\",\n                metricDataQueries: [{\n                    id: \"utilization\",\n                    metricStat: {\n                        metric: {\n                            metricName: \"Test\",\n                            namespace: \"AWS/EC2\",\n                            dimensions: [{\n                                dimensionName: \"instandId\",\n                                dimensionValue: \"i-123044\",\n                            }],\n                        },\n                        metricPeriod: 400,\n                        stat: \"average\",\n                        unit: \"None\",\n                    },\n                    expression: \"SELECT AVG(CPUUtilization) FROM SCHEMA\",\n                    label: \"TestLabel\",\n                    returnData: false,\n                    period: 300,\n                }],\n            },\n            web: {\n                method: \"GET\",\n                url: \"https://oceancd.com/api/v1/metrics?clusterId= args.clusterId\",\n                webHeaders: [{\n                    webHeaderKey: \"Autorization\",\n                    webHeaderValue: \"Bearer=args.token\",\n                }],\n                body: \"{\\\"key\\\": \\\"test\\\"}\",\n                timeoutSeconds: 20,\n                jsonPath: \"$.data\",\n                insecure: false,\n            },\n            job: {\n                specs: [{\n                    backoffLimit: 1,\n                    jobTemplates: [{\n                        templateSpecs: [{\n                            containers: [{\n                                containerName: \"hello\",\n                                commands: [\n                                    \"sh\",\n                                    \"-c\",\n                                ],\n                                image: \"nginx.2.1\",\n                            }],\n                            restartPolicy: \"never\",\n                        }],\n                    }],\n                }],\n            },\n            jenkins: {\n                pipelineName: \"testPipelineName\",\n                tlsVerification: true,\n                timeout: \"2m\",\n                jenkinsInterval: \"5s\",\n                jenkinsParameters: {\n                    parameterKey: \"app\",\n                    parameterValue: \"my-app\",\n                },\n            },\n        }],\n        baseline: {\n            baselineProviders: [{\n                prometheus: {\n                    prometheusQuery: \"http_requests_total.status!\",\n                },\n                datadog: {\n                    duration: \"2m\",\n                    datadogQuery: \"avg:kubernetes.cpu.user\",\n                },\n                newRelic: {\n                    profile: \"test\",\n                    newRelicQuery: \"FROM Metric SELECT count*\",\n                },\n            }],\n            minRange: 40,\n            maxRange: 50,\n            threshold: \"range\",\n        },\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\ntest = spotinst.oceancd.VerificationTemplate(\"test\",\n    name=\"test-verification-template-tes\",\n    args=[spotinst.oceancd.VerificationTemplateArgArgs(\n        arg_name=\"test-arg\",\n        value=\"test\",\n        value_from=spotinst.oceancd.VerificationTemplateArgValueFromArgs(\n            secret_key_ref=spotinst.oceancd.VerificationTemplateArgValueFromSecretKeyRefArgs(\n                name=\"test_key\",\n                key=\"key-value-test\",\n            ),\n        ),\n    )],\n    metrics=[spotinst.oceancd.VerificationTemplateMetricArgs(\n        metrics_name=\"test-metrics-names\",\n        dry_run=False,\n        interval=\"10m\",\n        initial_delay=\"1m\",\n        count=10,\n        success_condition=\"result[0] \u003c= 0.95\",\n        failure_condition=\"result[0] \u003e= 0.95\",\n        failure_limit=2,\n        consecutive_error_limit=1,\n        providers=[spotinst.oceancd.VerificationTemplateMetricProviderArgs(\n            prometheus=spotinst.oceancd.VerificationTemplateMetricProviderPrometheusArgs(\n                prometheus_query=\"http_requests_new\",\n            ),\n            datadog=spotinst.oceancd.VerificationTemplateMetricProviderDatadogArgs(\n                duration=\"1m\",\n                datadog_query=\"avg:kubernetes.cpu.user.total\",\n            ),\n            new_relic=spotinst.oceancd.VerificationTemplateMetricProviderNewRelicArgs(\n                profile=\"test\",\n                new_relic_query=\"FROM Metric SELECT count\",\n            ),\n            cloud_watch=spotinst.oceancd.VerificationTemplateMetricProviderCloudWatchArgs(\n                duration=\"5m\",\n                metric_data_queries=[spotinst.oceancd.VerificationTemplateMetricProviderCloudWatchMetricDataQueryArgs(\n                    id=\"utilization\",\n                    metric_stat=spotinst.oceancd.VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatArgs(\n                        metric=spotinst.oceancd.VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricArgs(\n                            metric_name=\"Test\",\n                            namespace=\"AWS/EC2\",\n                            dimensions=[spotinst.oceancd.VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArgs(\n                                dimension_name=\"instandId\",\n                                dimension_value=\"i-123044\",\n                            )],\n                        ),\n                        metric_period=400,\n                        stat=\"average\",\n                        unit=\"None\",\n                    ),\n                    expression=\"SELECT AVG(CPUUtilization) FROM SCHEMA\",\n                    label=\"TestLabel\",\n                    return_data=False,\n                    period=300,\n                )],\n            ),\n            web=spotinst.oceancd.VerificationTemplateMetricProviderWebArgs(\n                method=\"GET\",\n                url=\"https://oceancd.com/api/v1/metrics?clusterId= args.clusterId\",\n                web_headers=[spotinst.oceancd.VerificationTemplateMetricProviderWebWebHeaderArgs(\n                    web_header_key=\"Autorization\",\n                    web_header_value=\"Bearer=args.token\",\n                )],\n                body=\"{\\\"key\\\": \\\"test\\\"}\",\n                timeout_seconds=20,\n                json_path=\"$.data\",\n                insecure=False,\n            ),\n            job=spotinst.oceancd.VerificationTemplateMetricProviderJobArgs(\n                specs=[spotinst.oceancd.VerificationTemplateMetricProviderJobSpecArgs(\n                    backoff_limit=1,\n                    job_templates=[spotinst.oceancd.VerificationTemplateMetricProviderJobSpecJobTemplateArgs(\n                        template_specs=[spotinst.oceancd.VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArgs(\n                            containers=[spotinst.oceancd.VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArgs(\n                                container_name=\"hello\",\n                                commands=[\n                                    \"sh\",\n                                    \"-c\",\n                                ],\n                                image=\"nginx.2.1\",\n                            )],\n                            restart_policy=\"never\",\n                        )],\n                    )],\n                )],\n            ),\n            jenkins=spotinst.oceancd.VerificationTemplateMetricProviderJenkinsArgs(\n                pipeline_name=\"testPipelineName\",\n                tls_verification=True,\n                timeout=\"2m\",\n                jenkins_interval=\"5s\",\n                jenkins_parameters=spotinst.oceancd.VerificationTemplateMetricProviderJenkinsJenkinsParametersArgs(\n                    parameter_key=\"app\",\n                    parameter_value=\"my-app\",\n                ),\n            ),\n        )],\n        baseline=spotinst.oceancd.VerificationTemplateMetricBaselineArgs(\n            baseline_providers=[spotinst.oceancd.VerificationTemplateMetricBaselineBaselineProviderArgs(\n                prometheus=spotinst.oceancd.VerificationTemplateMetricBaselineBaselineProviderPrometheusArgs(\n                    prometheus_query=\"http_requests_total.status!\",\n                ),\n                datadog=spotinst.oceancd.VerificationTemplateMetricBaselineBaselineProviderDatadogArgs(\n                    duration=\"2m\",\n                    datadog_query=\"avg:kubernetes.cpu.user\",\n                ),\n                new_relic=spotinst.oceancd.VerificationTemplateMetricBaselineBaselineProviderNewRelicArgs(\n                    profile=\"test\",\n                    new_relic_query=\"FROM Metric SELECT count*\",\n                ),\n            )],\n            min_range=40,\n            max_range=50,\n            threshold=\"range\",\n        ),\n    )])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SpotInst = Pulumi.SpotInst;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = new SpotInst.Oceancd.VerificationTemplate(\"test\", new()\n    {\n        Name = \"test-verification-template-tes\",\n        Args = new[]\n        {\n            new SpotInst.Oceancd.Inputs.VerificationTemplateArgArgs\n            {\n                ArgName = \"test-arg\",\n                Value = \"test\",\n                ValueFrom = new SpotInst.Oceancd.Inputs.VerificationTemplateArgValueFromArgs\n                {\n                    SecretKeyRef = new SpotInst.Oceancd.Inputs.VerificationTemplateArgValueFromSecretKeyRefArgs\n                    {\n                        Name = \"test_key\",\n                        Key = \"key-value-test\",\n                    },\n                },\n            },\n        },\n        Metrics = new[]\n        {\n            new SpotInst.Oceancd.Inputs.VerificationTemplateMetricArgs\n            {\n                MetricsName = \"test-metrics-names\",\n                DryRun = false,\n                Interval = \"10m\",\n                InitialDelay = \"1m\",\n                Count = 10,\n                SuccessCondition = \"result[0] \u003c= 0.95\",\n                FailureCondition = \"result[0] \u003e= 0.95\",\n                FailureLimit = 2,\n                ConsecutiveErrorLimit = 1,\n                Providers = new[]\n                {\n                    new SpotInst.Oceancd.Inputs.VerificationTemplateMetricProviderArgs\n                    {\n                        Prometheus = new SpotInst.Oceancd.Inputs.VerificationTemplateMetricProviderPrometheusArgs\n                        {\n                            PrometheusQuery = \"http_requests_new\",\n                        },\n                        Datadog = new SpotInst.Oceancd.Inputs.VerificationTemplateMetricProviderDatadogArgs\n                        {\n                            Duration = \"1m\",\n                            DatadogQuery = \"avg:kubernetes.cpu.user.total\",\n                        },\n                        NewRelic = new SpotInst.Oceancd.Inputs.VerificationTemplateMetricProviderNewRelicArgs\n                        {\n                            Profile = \"test\",\n                            NewRelicQuery = \"FROM Metric SELECT count\",\n                        },\n                        CloudWatch = new SpotInst.Oceancd.Inputs.VerificationTemplateMetricProviderCloudWatchArgs\n                        {\n                            Duration = \"5m\",\n                            MetricDataQueries = new[]\n                            {\n                                new SpotInst.Oceancd.Inputs.VerificationTemplateMetricProviderCloudWatchMetricDataQueryArgs\n                                {\n                                    Id = \"utilization\",\n                                    MetricStat = new SpotInst.Oceancd.Inputs.VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatArgs\n                                    {\n                                        Metric = new SpotInst.Oceancd.Inputs.VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricArgs\n                                        {\n                                            MetricName = \"Test\",\n                                            Namespace = \"AWS/EC2\",\n                                            Dimensions = new[]\n                                            {\n                                                new SpotInst.Oceancd.Inputs.VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArgs\n                                                {\n                                                    DimensionName = \"instandId\",\n                                                    DimensionValue = \"i-123044\",\n                                                },\n                                            },\n                                        },\n                                        MetricPeriod = 400,\n                                        Stat = \"average\",\n                                        Unit = \"None\",\n                                    },\n                                    Expression = \"SELECT AVG(CPUUtilization) FROM SCHEMA\",\n                                    Label = \"TestLabel\",\n                                    ReturnData = false,\n                                    Period = 300,\n                                },\n                            },\n                        },\n                        Web = new SpotInst.Oceancd.Inputs.VerificationTemplateMetricProviderWebArgs\n                        {\n                            Method = \"GET\",\n                            Url = \"https://oceancd.com/api/v1/metrics?clusterId= args.clusterId\",\n                            WebHeaders = new[]\n                            {\n                                new SpotInst.Oceancd.Inputs.VerificationTemplateMetricProviderWebWebHeaderArgs\n                                {\n                                    WebHeaderKey = \"Autorization\",\n                                    WebHeaderValue = \"Bearer=args.token\",\n                                },\n                            },\n                            Body = \"{\\\"key\\\": \\\"test\\\"}\",\n                            TimeoutSeconds = 20,\n                            JsonPath = \"$.data\",\n                            Insecure = false,\n                        },\n                        Job = new SpotInst.Oceancd.Inputs.VerificationTemplateMetricProviderJobArgs\n                        {\n                            Specs = new[]\n                            {\n                                new SpotInst.Oceancd.Inputs.VerificationTemplateMetricProviderJobSpecArgs\n                                {\n                                    BackoffLimit = 1,\n                                    JobTemplates = new[]\n                                    {\n                                        new SpotInst.Oceancd.Inputs.VerificationTemplateMetricProviderJobSpecJobTemplateArgs\n                                        {\n                                            TemplateSpecs = new[]\n                                            {\n                                                new SpotInst.Oceancd.Inputs.VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArgs\n                                                {\n                                                    Containers = new[]\n                                                    {\n                                                        new SpotInst.Oceancd.Inputs.VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArgs\n                                                        {\n                                                            ContainerName = \"hello\",\n                                                            Commands = new[]\n                                                            {\n                                                                \"sh\",\n                                                                \"-c\",\n                                                            },\n                                                            Image = \"nginx.2.1\",\n                                                        },\n                                                    },\n                                                    RestartPolicy = \"never\",\n                                                },\n                                            },\n                                        },\n                                    },\n                                },\n                            },\n                        },\n                        Jenkins = new SpotInst.Oceancd.Inputs.VerificationTemplateMetricProviderJenkinsArgs\n                        {\n                            PipelineName = \"testPipelineName\",\n                            TlsVerification = true,\n                            Timeout = \"2m\",\n                            JenkinsInterval = \"5s\",\n                            JenkinsParameters = new SpotInst.Oceancd.Inputs.VerificationTemplateMetricProviderJenkinsJenkinsParametersArgs\n                            {\n                                ParameterKey = \"app\",\n                                ParameterValue = \"my-app\",\n                            },\n                        },\n                    },\n                },\n                Baseline = new SpotInst.Oceancd.Inputs.VerificationTemplateMetricBaselineArgs\n                {\n                    BaselineProviders = new[]\n                    {\n                        new SpotInst.Oceancd.Inputs.VerificationTemplateMetricBaselineBaselineProviderArgs\n                        {\n                            Prometheus = new SpotInst.Oceancd.Inputs.VerificationTemplateMetricBaselineBaselineProviderPrometheusArgs\n                            {\n                                PrometheusQuery = \"http_requests_total.status!\",\n                            },\n                            Datadog = new SpotInst.Oceancd.Inputs.VerificationTemplateMetricBaselineBaselineProviderDatadogArgs\n                            {\n                                Duration = \"2m\",\n                                DatadogQuery = \"avg:kubernetes.cpu.user\",\n                            },\n                            NewRelic = new SpotInst.Oceancd.Inputs.VerificationTemplateMetricBaselineBaselineProviderNewRelicArgs\n                            {\n                                Profile = \"test\",\n                                NewRelicQuery = \"FROM Metric SELECT count*\",\n                            },\n                        },\n                    },\n                    MinRange = 40,\n                    MaxRange = 50,\n                    Threshold = \"range\",\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/oceancd\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := oceancd.NewVerificationTemplate(ctx, \"test\", \u0026oceancd.VerificationTemplateArgs{\n\t\t\tName: pulumi.String(\"test-verification-template-tes\"),\n\t\t\tArgs: oceancd.VerificationTemplateArgArray{\n\t\t\t\t\u0026oceancd.VerificationTemplateArgArgs{\n\t\t\t\t\tArgName: pulumi.String(\"test-arg\"),\n\t\t\t\t\tValue:   pulumi.String(\"test\"),\n\t\t\t\t\tValueFrom: \u0026oceancd.VerificationTemplateArgValueFromArgs{\n\t\t\t\t\t\tSecretKeyRef: \u0026oceancd.VerificationTemplateArgValueFromSecretKeyRefArgs{\n\t\t\t\t\t\t\tName: pulumi.String(\"test_key\"),\n\t\t\t\t\t\t\tKey:  pulumi.String(\"key-value-test\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tMetrics: oceancd.VerificationTemplateMetricArray{\n\t\t\t\t\u0026oceancd.VerificationTemplateMetricArgs{\n\t\t\t\t\tMetricsName:           pulumi.String(\"test-metrics-names\"),\n\t\t\t\t\tDryRun:                pulumi.Bool(false),\n\t\t\t\t\tInterval:              pulumi.String(\"10m\"),\n\t\t\t\t\tInitialDelay:          pulumi.String(\"1m\"),\n\t\t\t\t\tCount:                 pulumi.Int(10),\n\t\t\t\t\tSuccessCondition:      pulumi.String(\"result[0] \u003c= 0.95\"),\n\t\t\t\t\tFailureCondition:      pulumi.String(\"result[0] \u003e= 0.95\"),\n\t\t\t\t\tFailureLimit:          pulumi.Int(2),\n\t\t\t\t\tConsecutiveErrorLimit: pulumi.Int(1),\n\t\t\t\t\tProviders: oceancd.VerificationTemplateMetricProviderArray{\n\t\t\t\t\t\t\u0026oceancd.VerificationTemplateMetricProviderArgs{\n\t\t\t\t\t\t\tPrometheus: \u0026oceancd.VerificationTemplateMetricProviderPrometheusArgs{\n\t\t\t\t\t\t\t\tPrometheusQuery: pulumi.String(\"http_requests_new\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\tDatadog: \u0026oceancd.VerificationTemplateMetricProviderDatadogArgs{\n\t\t\t\t\t\t\t\tDuration:     pulumi.String(\"1m\"),\n\t\t\t\t\t\t\t\tDatadogQuery: pulumi.String(\"avg:kubernetes.cpu.user.total\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\tNewRelic: \u0026oceancd.VerificationTemplateMetricProviderNewRelicArgs{\n\t\t\t\t\t\t\t\tProfile:       pulumi.String(\"test\"),\n\t\t\t\t\t\t\t\tNewRelicQuery: pulumi.String(\"FROM Metric SELECT count\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\tCloudWatch: \u0026oceancd.VerificationTemplateMetricProviderCloudWatchArgs{\n\t\t\t\t\t\t\t\tDuration: pulumi.String(\"5m\"),\n\t\t\t\t\t\t\t\tMetricDataQueries: oceancd.VerificationTemplateMetricProviderCloudWatchMetricDataQueryArray{\n\t\t\t\t\t\t\t\t\t\u0026oceancd.VerificationTemplateMetricProviderCloudWatchMetricDataQueryArgs{\n\t\t\t\t\t\t\t\t\t\tId: pulumi.String(\"utilization\"),\n\t\t\t\t\t\t\t\t\t\tMetricStat: \u0026oceancd.VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatArgs{\n\t\t\t\t\t\t\t\t\t\t\tMetric: \u0026oceancd.VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricArgs{\n\t\t\t\t\t\t\t\t\t\t\t\tMetricName: pulumi.String(\"Test\"),\n\t\t\t\t\t\t\t\t\t\t\t\tNamespace:  pulumi.String(\"AWS/EC2\"),\n\t\t\t\t\t\t\t\t\t\t\t\tDimensions: oceancd.VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArray{\n\t\t\t\t\t\t\t\t\t\t\t\t\t\u0026oceancd.VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArgs{\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tDimensionName:  pulumi.String(\"instandId\"),\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tDimensionValue: pulumi.String(\"i-123044\"),\n\t\t\t\t\t\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t\t\t\tMetricPeriod: pulumi.Int(400),\n\t\t\t\t\t\t\t\t\t\t\tStat:         pulumi.String(\"average\"),\n\t\t\t\t\t\t\t\t\t\t\tUnit:         pulumi.String(\"None\"),\n\t\t\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t\t\tExpression: pulumi.String(\"SELECT AVG(CPUUtilization) FROM SCHEMA\"),\n\t\t\t\t\t\t\t\t\t\tLabel:      pulumi.String(\"TestLabel\"),\n\t\t\t\t\t\t\t\t\t\tReturnData: pulumi.Bool(false),\n\t\t\t\t\t\t\t\t\t\tPeriod:     pulumi.Int(300),\n\t\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\tWeb: \u0026oceancd.VerificationTemplateMetricProviderWebArgs{\n\t\t\t\t\t\t\t\tMethod: pulumi.String(\"GET\"),\n\t\t\t\t\t\t\t\tUrl:    pulumi.String(\"https://oceancd.com/api/v1/metrics?clusterId= args.clusterId\"),\n\t\t\t\t\t\t\t\tWebHeaders: oceancd.VerificationTemplateMetricProviderWebWebHeaderArray{\n\t\t\t\t\t\t\t\t\t\u0026oceancd.VerificationTemplateMetricProviderWebWebHeaderArgs{\n\t\t\t\t\t\t\t\t\t\tWebHeaderKey:   pulumi.String(\"Autorization\"),\n\t\t\t\t\t\t\t\t\t\tWebHeaderValue: pulumi.String(\"Bearer=args.token\"),\n\t\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\tBody:           pulumi.String(\"{\\\"key\\\": \\\"test\\\"}\"),\n\t\t\t\t\t\t\t\tTimeoutSeconds: pulumi.Int(20),\n\t\t\t\t\t\t\t\tJsonPath:       pulumi.String(\"$.data\"),\n\t\t\t\t\t\t\t\tInsecure:       pulumi.Bool(false),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\tJob: \u0026oceancd.VerificationTemplateMetricProviderJobArgs{\n\t\t\t\t\t\t\t\tSpecs: oceancd.VerificationTemplateMetricProviderJobSpecArray{\n\t\t\t\t\t\t\t\t\t\u0026oceancd.VerificationTemplateMetricProviderJobSpecArgs{\n\t\t\t\t\t\t\t\t\t\tBackoffLimit: pulumi.Int(1),\n\t\t\t\t\t\t\t\t\t\tJobTemplates: oceancd.VerificationTemplateMetricProviderJobSpecJobTemplateArray{\n\t\t\t\t\t\t\t\t\t\t\t\u0026oceancd.VerificationTemplateMetricProviderJobSpecJobTemplateArgs{\n\t\t\t\t\t\t\t\t\t\t\t\tTemplateSpecs: oceancd.VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArray{\n\t\t\t\t\t\t\t\t\t\t\t\t\t\u0026oceancd.VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArgs{\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tContainers: oceancd.VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArray{\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\u0026oceancd.VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArgs{\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tContainerName: pulumi.String(\"hello\"),\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tCommands: pulumi.StringArray{\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tpulumi.String(\"sh\"),\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tpulumi.String(\"-c\"),\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tImage: pulumi.String(\"nginx.2.1\"),\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tRestartPolicy: pulumi.String(\"never\"),\n\t\t\t\t\t\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\tJenkins: \u0026oceancd.VerificationTemplateMetricProviderJenkinsArgs{\n\t\t\t\t\t\t\t\tPipelineName:    pulumi.String(\"testPipelineName\"),\n\t\t\t\t\t\t\t\tTlsVerification: pulumi.Bool(true),\n\t\t\t\t\t\t\t\tTimeout:         pulumi.String(\"2m\"),\n\t\t\t\t\t\t\t\tJenkinsInterval: pulumi.String(\"5s\"),\n\t\t\t\t\t\t\t\tJenkinsParameters: \u0026oceancd.VerificationTemplateMetricProviderJenkinsJenkinsParametersArgs{\n\t\t\t\t\t\t\t\t\tParameterKey:   pulumi.String(\"app\"),\n\t\t\t\t\t\t\t\t\tParameterValue: pulumi.String(\"my-app\"),\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tBaseline: \u0026oceancd.VerificationTemplateMetricBaselineArgs{\n\t\t\t\t\t\tBaselineProviders: oceancd.VerificationTemplateMetricBaselineBaselineProviderArray{\n\t\t\t\t\t\t\t\u0026oceancd.VerificationTemplateMetricBaselineBaselineProviderArgs{\n\t\t\t\t\t\t\t\tPrometheus: \u0026oceancd.VerificationTemplateMetricBaselineBaselineProviderPrometheusArgs{\n\t\t\t\t\t\t\t\t\tPrometheusQuery: pulumi.String(\"http_requests_total.status!\"),\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\tDatadog: \u0026oceancd.VerificationTemplateMetricBaselineBaselineProviderDatadogArgs{\n\t\t\t\t\t\t\t\t\tDuration:     pulumi.String(\"2m\"),\n\t\t\t\t\t\t\t\t\tDatadogQuery: pulumi.String(\"avg:kubernetes.cpu.user\"),\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\tNewRelic: \u0026oceancd.VerificationTemplateMetricBaselineBaselineProviderNewRelicArgs{\n\t\t\t\t\t\t\t\t\tProfile:       pulumi.String(\"test\"),\n\t\t\t\t\t\t\t\t\tNewRelicQuery: pulumi.String(\"FROM Metric SELECT count*\"),\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t\tMinRange:  pulumi.Int(40),\n\t\t\t\t\t\tMaxRange:  pulumi.Int(50),\n\t\t\t\t\t\tThreshold: pulumi.String(\"range\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.spotinst.oceancd.VerificationTemplate;\nimport com.pulumi.spotinst.oceancd.VerificationTemplateArgs;\nimport com.pulumi.spotinst.oceancd.inputs.VerificationTemplateArgArgs;\nimport com.pulumi.spotinst.oceancd.inputs.VerificationTemplateArgValueFromArgs;\nimport com.pulumi.spotinst.oceancd.inputs.VerificationTemplateArgValueFromSecretKeyRefArgs;\nimport com.pulumi.spotinst.oceancd.inputs.VerificationTemplateMetricArgs;\nimport com.pulumi.spotinst.oceancd.inputs.VerificationTemplateMetricBaselineArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var test = new VerificationTemplate(\"test\", VerificationTemplateArgs.builder()        \n            .name(\"test-verification-template-tes\")\n            .args(VerificationTemplateArgArgs.builder()\n                .argName(\"test-arg\")\n                .value(\"test\")\n                .valueFrom(VerificationTemplateArgValueFromArgs.builder()\n                    .secretKeyRef(VerificationTemplateArgValueFromSecretKeyRefArgs.builder()\n                        .name(\"test_key\")\n                        .key(\"key-value-test\")\n                        .build())\n                    .build())\n                .build())\n            .metrics(VerificationTemplateMetricArgs.builder()\n                .metricsName(\"test-metrics-names\")\n                .dryRun(false)\n                .interval(\"10m\")\n                .initialDelay(\"1m\")\n                .count(\"10\")\n                .successCondition(\"result[0] \u003c= 0.95\")\n                .failureCondition(\"result[0] \u003e= 0.95\")\n                .failureLimit(2)\n                .consecutiveErrorLimit(1)\n                .providers(VerificationTemplateMetricProviderArgs.builder()\n                    .prometheus(VerificationTemplateMetricProviderPrometheusArgs.builder()\n                        .prometheusQuery(\"http_requests_new\")\n                        .build())\n                    .datadog(VerificationTemplateMetricProviderDatadogArgs.builder()\n                        .duration(\"1m\")\n                        .datadogQuery(\"avg:kubernetes.cpu.user.total\")\n                        .build())\n                    .newRelic(VerificationTemplateMetricProviderNewRelicArgs.builder()\n                        .profile(\"test\")\n                        .newRelicQuery(\"FROM Metric SELECT count\")\n                        .build())\n                    .cloudWatch(VerificationTemplateMetricProviderCloudWatchArgs.builder()\n                        .duration(\"5m\")\n                        .metricDataQueries(VerificationTemplateMetricProviderCloudWatchMetricDataQueryArgs.builder()\n                            .id(\"utilization\")\n                            .metricStat(VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatArgs.builder()\n                                .metric(VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricArgs.builder()\n                                    .metricName(\"Test\")\n                                    .namespace(\"AWS/EC2\")\n                                    .dimensions(VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArgs.builder()\n                                        .dimensionName(\"instandId\")\n                                        .dimensionValue(\"i-123044\")\n                                        .build())\n                                    .build())\n                                .metricPeriod(400)\n                                .stat(\"average\")\n                                .unit(\"None\")\n                                .build())\n                            .expression(\"SELECT AVG(CPUUtilization) FROM SCHEMA\")\n                            .label(\"TestLabel\")\n                            .returnData(false)\n                            .period(300)\n                            .build())\n                        .build())\n                    .web(VerificationTemplateMetricProviderWebArgs.builder()\n                        .method(\"GET\")\n                        .url(\"https://oceancd.com/api/v1/metrics?clusterId= args.clusterId\")\n                        .webHeaders(VerificationTemplateMetricProviderWebWebHeaderArgs.builder()\n                            .webHeaderKey(\"Autorization\")\n                            .webHeaderValue(\"Bearer=args.token\")\n                            .build())\n                        .body(\"{\\\"key\\\": \\\"test\\\"}\")\n                        .timeoutSeconds(20)\n                        .jsonPath(\"$.data\")\n                        .insecure(false)\n                        .build())\n                    .job(VerificationTemplateMetricProviderJobArgs.builder()\n                        .specs(VerificationTemplateMetricProviderJobSpecArgs.builder()\n                            .backoffLimit(1)\n                            .jobTemplates(VerificationTemplateMetricProviderJobSpecJobTemplateArgs.builder()\n                                .templateSpecs(VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArgs.builder()\n                                    .containers(VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArgs.builder()\n                                        .containerName(\"hello\")\n                                        .commands(                                        \n                                            \"sh\",\n                                            \"-c\")\n                                        .image(\"nginx.2.1\")\n                                        .build())\n                                    .restartPolicy(\"never\")\n                                    .build())\n                                .build())\n                            .build())\n                        .build())\n                    .jenkins(VerificationTemplateMetricProviderJenkinsArgs.builder()\n                        .pipelineName(\"testPipelineName\")\n                        .tlsVerification(true)\n                        .timeout(\"2m\")\n                        .jenkinsInterval(\"5s\")\n                        .jenkinsParameters(VerificationTemplateMetricProviderJenkinsJenkinsParametersArgs.builder()\n                            .parameterKey(\"app\")\n                            .parameterValue(\"my-app\")\n                            .build())\n                        .build())\n                    .build())\n                .baseline(VerificationTemplateMetricBaselineArgs.builder()\n                    .baselineProviders(VerificationTemplateMetricBaselineBaselineProviderArgs.builder()\n                        .prometheus(VerificationTemplateMetricBaselineBaselineProviderPrometheusArgs.builder()\n                            .prometheusQuery(\"http_requests_total.status!\")\n                            .build())\n                        .datadog(VerificationTemplateMetricBaselineBaselineProviderDatadogArgs.builder()\n                            .duration(\"2m\")\n                            .datadogQuery(\"avg:kubernetes.cpu.user\")\n                            .build())\n                        .newRelic(VerificationTemplateMetricBaselineBaselineProviderNewRelicArgs.builder()\n                            .profile(\"test\")\n                            .newRelicQuery(\"FROM Metric SELECT count*\")\n                            .build())\n                        .build())\n                    .minRange(40)\n                    .maxRange(50)\n                    .threshold(\"range\")\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  test:\n    type: spotinst:oceancd:VerificationTemplate\n    properties:\n      name: test-verification-template-tes\n      args:\n        - argName: test-arg\n          value: test\n          valueFrom:\n            secretKeyRef:\n              name: test_key\n              key: key-value-test\n      metrics:\n        - metricsName: test-metrics-names\n          dryRun: false\n          interval: 10m\n          initialDelay: 1m\n          count: '10'\n          successCondition: result[0] \u003c= 0.95\n          failureCondition: result[0] \u003e= 0.95\n          failureLimit: 2\n          consecutiveErrorLimit: 1\n          providers:\n            - prometheus:\n                prometheusQuery: http_requests_new\n              datadog:\n                duration: 1m\n                datadogQuery: avg:kubernetes.cpu.user.total\n              newRelic:\n                profile: test\n                newRelicQuery: FROM Metric SELECT count\n              cloudWatch:\n                duration: 5m\n                metricDataQueries:\n                  - id: utilization\n                    metricStat:\n                      metric:\n                        metricName: Test\n                        namespace: AWS/EC2\n                        dimensions:\n                          - dimensionName: instandId\n                            dimensionValue: i-123044\n                      metricPeriod: 400\n                      stat: average\n                      unit: None\n                    expression: SELECT AVG(CPUUtilization) FROM SCHEMA\n                    label: TestLabel\n                    returnData: false\n                    period: 300\n              web:\n                method: GET\n                url: https://oceancd.com/api/v1/metrics?clusterId= args.clusterId\n                webHeaders:\n                  - webHeaderKey: Autorization\n                    webHeaderValue: Bearer=args.token\n                body: '{\"key\": \"test\"}'\n                timeoutSeconds: 20\n                jsonPath: $.data\n                insecure: false\n              job:\n                specs:\n                  - backoffLimit: 1\n                    jobTemplates:\n                      - templateSpecs:\n                          - containers:\n                              - containerName: hello\n                                commands:\n                                  - sh\n                                  - -c\n                                image: nginx.2.1\n                            restartPolicy: never\n              jenkins:\n                pipelineName: testPipelineName\n                tlsVerification: true\n                timeout: 2m\n                jenkinsInterval: 5s\n                jenkinsParameters:\n                  parameterKey: app\n                  parameterValue: my-app\n          baseline:\n            baselineProviders:\n              - prometheus:\n                  prometheusQuery: http_requests_total.status!\n                datadog:\n                  duration: 2m\n                  datadogQuery: avg:kubernetes.cpu.user\n                newRelic:\n                  profile: test\n                  newRelicQuery: FROM Metric SELECT count*\n            minRange: 40\n            maxRange: 50\n            threshold: range\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n```\noutput \"name\" {\n  value = spotinst_oceancd_verification_template.example.name\n}\n```\n",
+            "properties": {
+                "args": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:oceancd/VerificationTemplateArg:VerificationTemplateArg"
+                    },
+                    "description": "List of verification arguments. You may specify either `value` OR `valueFrom` but not both.In case `args`:`value` is already defined in the RolloutSpec entity, there is no need to also specify it in the VerificationTemplate entity.\n"
+                },
+                "metrics": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:oceancd/VerificationTemplateMetric:VerificationTemplateMetric"
+                    },
+                    "description": "List of verification metrics.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Identifier name for Ocean CD Verification Template. Must be unique.\n"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "inputProperties": {
+                "args": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:oceancd/VerificationTemplateArg:VerificationTemplateArg"
+                    },
+                    "description": "List of verification arguments. You may specify either `value` OR `valueFrom` but not both.In case `args`:`value` is already defined in the RolloutSpec entity, there is no need to also specify it in the VerificationTemplate entity.\n"
+                },
+                "metrics": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:oceancd/VerificationTemplateMetric:VerificationTemplateMetric"
+                    },
+                    "description": "List of verification metrics.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Identifier name for Ocean CD Verification Template. Must be unique.\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering VerificationTemplate resources.\n",
+                "properties": {
+                    "args": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/spotinst:oceancd/VerificationTemplateArg:VerificationTemplateArg"
+                        },
+                        "description": "List of verification arguments. You may specify either `value` OR `valueFrom` but not both.In case `args`:`value` is already defined in the RolloutSpec entity, there is no need to also specify it in the VerificationTemplate entity.\n"
+                    },
+                    "metrics": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/spotinst:oceancd/VerificationTemplateMetric:VerificationTemplateMetric"
+                        },
+                        "description": "List of verification metrics.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Identifier name for Ocean CD Verification Template. Must be unique.\n"
                     }
                 },
                 "type": "object"

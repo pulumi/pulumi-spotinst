@@ -258,6 +258,14 @@ _utilities.register(
  },
  {
   "pkg": "spotinst",
+  "mod": "oceancd/rolloutSpec",
+  "fqn": "pulumi_spotinst.oceancd",
+  "classes": {
+   "spotinst:oceancd/rolloutSpec:RolloutSpec": "RolloutSpec"
+  }
+ },
+ {
+  "pkg": "spotinst",
   "mod": "oceancd/strategy",
   "fqn": "pulumi_spotinst.oceancd",
   "classes": {
@@ -270,6 +278,14 @@ _utilities.register(
   "fqn": "pulumi_spotinst.oceancd",
   "classes": {
    "spotinst:oceancd/verificationProvider:VerificationProvider": "VerificationProvider"
+  }
+ },
+ {
+  "pkg": "spotinst",
+  "mod": "oceancd/verificationTemplate",
+  "fqn": "pulumi_spotinst.oceancd",
+  "classes": {
+   "spotinst:oceancd/verificationTemplate:VerificationTemplate": "VerificationTemplate"
   }
  },
  {

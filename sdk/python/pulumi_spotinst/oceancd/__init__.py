@@ -5,7 +5,9 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .rollout_spec import *
 from .strategy import *
 from .verification_provider import *
+from .verification_template import *
 from ._inputs import *
 from . import outputs

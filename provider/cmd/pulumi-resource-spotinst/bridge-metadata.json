@@ -1975,6 +1975,117 @@
             "spotinst_ocean_spark_virtual_node_group": {
                 "current": "spotinst:spark/oceanVirtualNodeGroup:OceanVirtualNodeGroup"
             },
+            "spotinst_oceancd_rollout_spec": {
+                "current": "spotinst:oceancd/rolloutSpec:RolloutSpec",
+                "fields": {
+                    "failure_policy": {
+                        "maxItemsOne": true
+                    },
+                    "spot_deployment": {
+                        "maxItemsOne": true
+                    },
+                    "spot_deployments": {
+                        "maxItemsOne": false
+                    },
+                    "strategy": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "args": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "value_from": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "field_ref": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "traffic": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "alb": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "stickiness_config": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "ambassador": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "mappings": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "istio": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "destination_rule": {
+                                                "maxItemsOne": true
+                                            },
+                                            "virtual_services": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "tls_routes": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "sni_hosts": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "virtual_service_routes": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "nginx": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "additional_ingress_annotation": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "ping_pong": {
+                                    "maxItemsOne": true
+                                },
+                                "smi": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "spotinst_oceancd_strategy": {
                 "current": "spotinst:oceancd/strategy:Strategy",
                 "fields": {
@@ -2084,6 +2195,163 @@
                     },
                     "prometheus": {
                         "maxItemsOne": true
+                    }
+                }
+            },
+            "spotinst_oceancd_verification_template": {
+                "current": "spotinst:oceancd/verificationTemplate:VerificationTemplate",
+                "fields": {
+                    "args": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "value_from": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "secret_key_ref": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "metrics": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "baseline": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "baseline_provider": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "datadog": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "new_relic": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "prometheus": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "provider": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "cloud_watch": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "metric_data_queries": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "metric_stat": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "metric": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "dimensions": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "datadog": {
+                                                "maxItemsOne": true
+                                            },
+                                            "jenkins": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "jenkins_parameters": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "job": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "spec": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "job_template": {
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "template_spec": {
+                                                                                    "maxItemsOne": false,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "containers": {
+                                                                                                "maxItemsOne": false,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "command": {
+                                                                                                            "maxItemsOne": false
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "new_relic": {
+                                                "maxItemsOne": true
+                                            },
+                                            "prometheus": {
+                                                "maxItemsOne": true
+                                            },
+                                            "web": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "web_header": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
