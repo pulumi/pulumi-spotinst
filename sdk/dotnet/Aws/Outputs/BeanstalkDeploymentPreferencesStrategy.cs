@@ -13,7 +13,13 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class BeanstalkDeploymentPreferencesStrategy
     {
+        /// <summary>
+        /// Action to take
+        /// </summary>
         public readonly string? Action;
+        /// <summary>
+        /// Bool value if to wait to drain instance
+        /// </summary>
         public readonly bool? ShouldDrainInstances;
 
         [OutputConstructor]

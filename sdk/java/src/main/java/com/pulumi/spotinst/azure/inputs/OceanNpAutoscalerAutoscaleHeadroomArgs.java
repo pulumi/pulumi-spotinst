@@ -15,9 +15,17 @@ public final class OceanNpAutoscalerAutoscaleHeadroomArgs extends com.pulumi.res
 
     public static final OceanNpAutoscalerAutoscaleHeadroomArgs Empty = new OceanNpAutoscalerAutoscaleHeadroomArgs();
 
+    /**
+     * [Automatic headroom](https://docs.spot.io/ocean/features/headroom?id=automatic-headroom) configuration.
+     * 
+     */
     @Import(name="automatic")
     private @Nullable Output<OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs> automatic;
 
+    /**
+     * @return [Automatic headroom](https://docs.spot.io/ocean/features/headroom?id=automatic-headroom) configuration.
+     * 
+     */
     public Optional<Output<OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs>> automatic() {
         return Optional.ofNullable(this.automatic);
     }
@@ -46,11 +54,23 @@ public final class OceanNpAutoscalerAutoscaleHeadroomArgs extends com.pulumi.res
             $ = new OceanNpAutoscalerAutoscaleHeadroomArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param automatic [Automatic headroom](https://docs.spot.io/ocean/features/headroom?id=automatic-headroom) configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder automatic(@Nullable Output<OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs> automatic) {
             $.automatic = automatic;
             return this;
         }
 
+        /**
+         * @param automatic [Automatic headroom](https://docs.spot.io/ocean/features/headroom?id=automatic-headroom) configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder automatic(OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs automatic) {
             return automatic(Output.of(automatic));
         }

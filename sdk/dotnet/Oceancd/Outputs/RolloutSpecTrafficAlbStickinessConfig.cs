@@ -13,7 +13,13 @@ namespace Pulumi.SpotInst.Oceancd.Outputs
     [OutputType]
     public sealed class RolloutSpecTrafficAlbStickinessConfig
     {
+        /// <summary>
+        /// Defines how long the load balancer should consistently route the user's request to the same target.
+        /// </summary>
         public readonly int? DurationSeconds;
+        /// <summary>
+        /// Enables the load balancer to bind a user's session to a specific target.
+        /// </summary>
         public readonly bool? Enabled;
 
         [OutputConstructor]

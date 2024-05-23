@@ -16,30 +16,62 @@ public final class OceanLaunchSpecSchedulingTaskTaskHeadroomArgs extends com.pul
 
     public static final OceanLaunchSpecSchedulingTaskTaskHeadroomArgs Empty = new OceanLaunchSpecSchedulingTaskTaskHeadroomArgs();
 
+    /**
+     * Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+     * 
+     */
     @Import(name="cpuPerUnit")
     private @Nullable Output<Integer> cpuPerUnit;
 
+    /**
+     * @return Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+     * 
+     */
     public Optional<Output<Integer>> cpuPerUnit() {
         return Optional.ofNullable(this.cpuPerUnit);
     }
 
+    /**
+     * Optionally configure the number of GPUS to allocate for each headroom unit.
+     * 
+     */
     @Import(name="gpuPerUnit")
     private @Nullable Output<Integer> gpuPerUnit;
 
+    /**
+     * @return Optionally configure the number of GPUS to allocate for each headroom unit.
+     * 
+     */
     public Optional<Output<Integer>> gpuPerUnit() {
         return Optional.ofNullable(this.gpuPerUnit);
     }
 
+    /**
+     * Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
+     * 
+     */
     @Import(name="memoryPerUnit")
     private @Nullable Output<Integer> memoryPerUnit;
 
+    /**
+     * @return Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
+     * 
+     */
     public Optional<Output<Integer>> memoryPerUnit() {
         return Optional.ofNullable(this.memoryPerUnit);
     }
 
+    /**
+     * The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+     * 
+     */
     @Import(name="numOfUnits", required=true)
     private Output<Integer> numOfUnits;
 
+    /**
+     * @return The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+     * 
+     */
     public Output<Integer> numOfUnits() {
         return this.numOfUnits;
     }
@@ -71,38 +103,86 @@ public final class OceanLaunchSpecSchedulingTaskTaskHeadroomArgs extends com.pul
             $ = new OceanLaunchSpecSchedulingTaskTaskHeadroomArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param cpuPerUnit Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cpuPerUnit(@Nullable Output<Integer> cpuPerUnit) {
             $.cpuPerUnit = cpuPerUnit;
             return this;
         }
 
+        /**
+         * @param cpuPerUnit Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cpuPerUnit(Integer cpuPerUnit) {
             return cpuPerUnit(Output.of(cpuPerUnit));
         }
 
+        /**
+         * @param gpuPerUnit Optionally configure the number of GPUS to allocate for each headroom unit.
+         * 
+         * @return builder
+         * 
+         */
         public Builder gpuPerUnit(@Nullable Output<Integer> gpuPerUnit) {
             $.gpuPerUnit = gpuPerUnit;
             return this;
         }
 
+        /**
+         * @param gpuPerUnit Optionally configure the number of GPUS to allocate for each headroom unit.
+         * 
+         * @return builder
+         * 
+         */
         public Builder gpuPerUnit(Integer gpuPerUnit) {
             return gpuPerUnit(Output.of(gpuPerUnit));
         }
 
+        /**
+         * @param memoryPerUnit Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
+         * 
+         * @return builder
+         * 
+         */
         public Builder memoryPerUnit(@Nullable Output<Integer> memoryPerUnit) {
             $.memoryPerUnit = memoryPerUnit;
             return this;
         }
 
+        /**
+         * @param memoryPerUnit Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
+         * 
+         * @return builder
+         * 
+         */
         public Builder memoryPerUnit(Integer memoryPerUnit) {
             return memoryPerUnit(Output.of(memoryPerUnit));
         }
 
+        /**
+         * @param numOfUnits The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+         * 
+         * @return builder
+         * 
+         */
         public Builder numOfUnits(Output<Integer> numOfUnits) {
             $.numOfUnits = numOfUnits;
             return this;
         }
 
+        /**
+         * @param numOfUnits The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+         * 
+         * @return builder
+         * 
+         */
         public Builder numOfUnits(Integer numOfUnits) {
             return numOfUnits(Output.of(numOfUnits));
         }

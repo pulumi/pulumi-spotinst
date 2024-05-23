@@ -13,10 +13,25 @@ namespace Pulumi.SpotInst.Oceancd.Outputs
     [OutputType]
     public sealed class VerificationTemplateMetricProviderJenkins
     {
+        /// <summary>
+        /// The interval time to poll status.
+        /// </summary>
         public readonly string JenkinsInterval;
+        /// <summary>
+        /// List of parameters.
+        /// </summary>
         public readonly Outputs.VerificationTemplateMetricProviderJenkinsJenkinsParameters? JenkinsParameters;
+        /// <summary>
+        /// The Jenkins pipeline name.
+        /// </summary>
         public readonly string PipelineName;
+        /// <summary>
+        /// The total jenkins timeout.
+        /// </summary>
         public readonly string Timeout;
+        /// <summary>
+        /// Host TLS verification.
+        /// </summary>
         public readonly bool? TlsVerification;
 
         [OutputConstructor]

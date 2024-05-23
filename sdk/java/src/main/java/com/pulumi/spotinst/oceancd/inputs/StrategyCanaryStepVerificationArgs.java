@@ -15,9 +15,17 @@ public final class StrategyCanaryStepVerificationArgs extends com.pulumi.resourc
 
     public static final StrategyCanaryStepVerificationArgs Empty = new StrategyCanaryStepVerificationArgs();
 
+    /**
+     * List of Verification Template names.
+     * 
+     */
     @Import(name="templateNames", required=true)
     private Output<List<String>> templateNames;
 
+    /**
+     * @return List of Verification Template names.
+     * 
+     */
     public Output<List<String>> templateNames() {
         return this.templateNames;
     }
@@ -46,15 +54,33 @@ public final class StrategyCanaryStepVerificationArgs extends com.pulumi.resourc
             $ = new StrategyCanaryStepVerificationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param templateNames List of Verification Template names.
+         * 
+         * @return builder
+         * 
+         */
         public Builder templateNames(Output<List<String>> templateNames) {
             $.templateNames = templateNames;
             return this;
         }
 
+        /**
+         * @param templateNames List of Verification Template names.
+         * 
+         * @return builder
+         * 
+         */
         public Builder templateNames(List<String> templateNames) {
             return templateNames(Output.of(templateNames));
         }
 
+        /**
+         * @param templateNames List of Verification Template names.
+         * 
+         * @return builder
+         * 
+         */
         public Builder templateNames(String... templateNames) {
             return templateNames(List.of(templateNames));
         }

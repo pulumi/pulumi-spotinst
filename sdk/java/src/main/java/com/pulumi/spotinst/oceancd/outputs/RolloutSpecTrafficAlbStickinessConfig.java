@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RolloutSpecTrafficAlbStickinessConfig {
+    /**
+     * @return Defines how long the load balancer should consistently route the user&#39;s request to the same target.
+     * 
+     */
     private @Nullable Integer durationSeconds;
+    /**
+     * @return Enables the load balancer to bind a user&#39;s session to a specific target.
+     * 
+     */
     private @Nullable Boolean enabled;
 
     private RolloutSpecTrafficAlbStickinessConfig() {}
+    /**
+     * @return Defines how long the load balancer should consistently route the user&#39;s request to the same target.
+     * 
+     */
     public Optional<Integer> durationSeconds() {
         return Optional.ofNullable(this.durationSeconds);
     }
+    /**
+     * @return Enables the load balancer to bind a user&#39;s session to a specific target.
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }

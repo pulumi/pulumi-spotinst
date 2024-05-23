@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class RolloutSpecStrategyArgValueFrom {
+    /**
+     * @return Defines the field path from where to get the value of an argument.
+     * 
+     */
     private RolloutSpecStrategyArgValueFromFieldRef fieldRef;
 
     private RolloutSpecStrategyArgValueFrom() {}
+    /**
+     * @return Defines the field path from where to get the value of an argument.
+     * 
+     */
     public RolloutSpecStrategyArgValueFromFieldRef fieldRef() {
         return this.fieldRef;
     }

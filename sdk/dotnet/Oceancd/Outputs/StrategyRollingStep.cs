@@ -13,8 +13,14 @@ namespace Pulumi.SpotInst.Oceancd.Outputs
     [OutputType]
     public sealed class StrategyRollingStep
     {
+        /// <summary>
+        /// Defines the duration of time to freeze the rollout.
+        /// </summary>
         public readonly Outputs.StrategyRollingStepPause? Pause;
         public readonly string? StepsName;
+        /// <summary>
+        /// Represents the list of verifications to run in a step.
+        /// </summary>
         public readonly Outputs.StrategyRollingStepVerification? Verification;
 
         [OutputConstructor]

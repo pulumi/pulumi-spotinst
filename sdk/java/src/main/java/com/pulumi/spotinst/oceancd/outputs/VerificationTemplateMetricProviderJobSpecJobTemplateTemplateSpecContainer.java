@@ -11,17 +11,41 @@ import java.util.Objects;
 
 @CustomType
 public final class VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainer {
+    /**
+     * @return The entry point of a container.
+     * 
+     */
     private List<String> commands;
+    /**
+     * @return The name of a container.
+     * 
+     */
     private String containerName;
+    /**
+     * @return The image name of a container.
+     * 
+     */
     private String image;
 
     private VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainer() {}
+    /**
+     * @return The entry point of a container.
+     * 
+     */
     public List<String> commands() {
         return this.commands;
     }
+    /**
+     * @return The name of a container.
+     * 
+     */
     public String containerName() {
         return this.containerName;
     }
+    /**
+     * @return The image name of a container.
+     * 
+     */
     public String image() {
         return this.image;
     }

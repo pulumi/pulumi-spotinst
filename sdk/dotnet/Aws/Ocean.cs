@@ -204,6 +204,7 @@ namespace Pulumi.SpotInst.Aws
 
         /// <summary>
         /// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
+        /// * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
         /// </summary>
         [Output("subnetIds")]
         public Output<ImmutableArray<string>> SubnetIds { get; private set; } = null!;
@@ -522,6 +523,7 @@ namespace Pulumi.SpotInst.Aws
 
         /// <summary>
         /// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
+        /// * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
         /// </summary>
         public InputList<string> SubnetIds
         {
@@ -816,6 +818,7 @@ namespace Pulumi.SpotInst.Aws
 
         /// <summary>
         /// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
+        /// * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
         /// </summary>
         public InputList<string> SubnetIds
         {

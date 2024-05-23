@@ -46,6 +46,12 @@ class PolicyPolicyContentStatementArgs:
                  actions: pulumi.Input[Sequence[pulumi.Input[str]]],
                  effect: pulumi.Input[str],
                  resources: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] actions: Set a list of required actions for this permissions statement.
+               Full list of actions can be found in [https://docs.spot.io/account-user-management/user-management/access-policies-actions/](https://docs.spot.io/account-user-management/user-management/access-policies-actions/).
+        :param pulumi.Input[str] effect: Valid values "ALLOW", "DENY".
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: Set a list of resources IDs. In order to include all resources in this statement - use "*".
+        """
         pulumi.set(__self__, "actions", actions)
         pulumi.set(__self__, "effect", effect)
         pulumi.set(__self__, "resources", resources)
@@ -53,6 +59,10 @@ class PolicyPolicyContentStatementArgs:
     @property
     @pulumi.getter
     def actions(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Set a list of required actions for this permissions statement.
+        Full list of actions can be found in [https://docs.spot.io/account-user-management/user-management/access-policies-actions/](https://docs.spot.io/account-user-management/user-management/access-policies-actions/).
+        """
         return pulumi.get(self, "actions")
 
     @actions.setter
@@ -62,6 +72,9 @@ class PolicyPolicyContentStatementArgs:
     @property
     @pulumi.getter
     def effect(self) -> pulumi.Input[str]:
+        """
+        Valid values "ALLOW", "DENY".
+        """
         return pulumi.get(self, "effect")
 
     @effect.setter
@@ -71,6 +84,9 @@ class PolicyPolicyContentStatementArgs:
     @property
     @pulumi.getter
     def resources(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Set a list of resources IDs. In order to include all resources in this statement - use "*".
+        """
         return pulumi.get(self, "resources")
 
     @resources.setter

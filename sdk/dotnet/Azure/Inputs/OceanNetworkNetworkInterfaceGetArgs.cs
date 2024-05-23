@@ -14,21 +14,34 @@ namespace Pulumi.SpotInst.Azure.Inputs
     {
         [Input("additionalIpConfigs")]
         private InputList<Inputs.OceanNetworkNetworkInterfaceAdditionalIpConfigGetArgs>? _additionalIpConfigs;
+
+        /// <summary>
+        /// Additional configuration of network interface. The name fields between all the `additional_ip_config` must be unique.
+        /// </summary>
         public InputList<Inputs.OceanNetworkNetworkInterfaceAdditionalIpConfigGetArgs> AdditionalIpConfigs
         {
             get => _additionalIpConfigs ?? (_additionalIpConfigs = new InputList<Inputs.OceanNetworkNetworkInterfaceAdditionalIpConfigGetArgs>());
             set => _additionalIpConfigs = value;
         }
 
+        /// <summary>
+        /// Assign public IP.
+        /// </summary>
         [Input("assignPublicIp")]
         public Input<bool>? AssignPublicIp { get; set; }
 
+        /// <summary>
+        /// Defines whether the network interface is primary or not.
+        /// </summary>
         [Input("isPrimary")]
         public Input<bool>? IsPrimary { get; set; }
 
         [Input("securityGroup")]
         public Input<Inputs.OceanNetworkNetworkInterfaceSecurityGroupGetArgs>? SecurityGroup { get; set; }
 
+        /// <summary>
+        /// Subnet name.
+        /// </summary>
         [Input("subnetName")]
         public Input<string>? SubnetName { get; set; }
 

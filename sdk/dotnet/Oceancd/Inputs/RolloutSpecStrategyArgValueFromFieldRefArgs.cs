@@ -12,6 +12,9 @@ namespace Pulumi.SpotInst.Oceancd.Inputs
 
     public sealed class RolloutSpecStrategyArgValueFromFieldRefArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Path to SpotDeployment's field from where to get the value of an argument.
+        /// </summary>
         [Input("fieldPath", required: true)]
         public Input<string> FieldPath { get; set; } = null!;
 

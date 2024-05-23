@@ -344,7 +344,13 @@ export namespace aws {
     }
 
     export interface BeanstalkDeploymentPreferencesStrategy {
+        /**
+         * Action to take
+         */
         action?: string;
+        /**
+         * Bool value if to wait to drain instance
+         */
         shouldDrainInstances?: boolean;
     }
 
@@ -356,8 +362,17 @@ export namespace aws {
     }
 
     export interface BeanstalkManagedActionsPlatformUpdate {
+        /**
+         * Actions to perform (options: timeWindow, never)
+         */
         performAt?: string;
+        /**
+         * Time Window for when action occurs ex. Mon:23:50-Tue:00:20
+         */
         timeWindow?: string;
+        /**
+         * Level to update
+         */
         updateLevel?: string;
     }
 
@@ -763,12 +778,15 @@ export namespace aws {
     }
 
     export interface ElastigroupLoggingExport {
+        /**
+         * Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
+         */
         s3s?: outputs.aws.ElastigroupLoggingExportS3[];
     }
 
     export interface ElastigroupLoggingExportS3 {
         /**
-         * The group ID.
+         * The identifier of The S3 data integration to export the logs to.
          */
         id: string;
     }
@@ -1573,13 +1591,37 @@ export namespace aws {
     }
 
     export interface MrScalarTerminationPolicyStatement {
+        /**
+         * The number of periods over which data is compared to the specified threshold.
+         */
         evaluationPeriods?: number;
+        /**
+         * The name of the metric in CloudWatch which the statement will be based on.
+         */
         metricName: string;
+        /**
+         * Must contain the value: `AWS/ElasticMapReduce`.
+         */
         namespace: string;
+        /**
+         * The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+         */
         operator?: string;
+        /**
+         * The time window in seconds over which the statistic is applied.
+         */
         period?: number;
+        /**
+         * The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
+         */
         statistic?: string;
+        /**
+         * The value that the specified statistic is compared to.
+         */
         threshold: number;
+        /**
+         * The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+         */
         unit?: string;
     }
 
@@ -1634,27 +1676,72 @@ export namespace aws {
     }
 
     export interface OceanBlockDeviceMappingEbs {
+        /**
+         * Boolean. Flag to delete the EBS on instance termination.
+         */
         deleteOnTermination: boolean;
+        /**
+         * Set dynamic IOPS properties. When using this object, you cannot use the `iops` attribute. You must use one or the other.
+         */
         dynamicIops?: outputs.aws.OceanBlockDeviceMappingEbsDynamicIops;
+        /**
+         * Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
+         */
         dynamicVolumeSize?: outputs.aws.OceanBlockDeviceMappingEbsDynamicVolumeSize;
+        /**
+         * Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+         */
         encrypted: boolean;
+        /**
+         * Must be greater than or equal to 0.
+         */
         iops?: number;
+        /**
+         * String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+         */
         kmsKeyId?: string;
+        /**
+         * (Optional) String. The Snapshot ID to mount by.
+         */
         snapshotId?: string;
+        /**
+         * The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = `gp3`.
+         */
         throughput?: number;
+        /**
+         * Int. The size, in GB of the volume.
+         */
         volumeSize?: number;
+        /**
+         * String. The type of the volume. (Example: `gp2`).
+         */
         volumeType: string;
     }
 
     export interface OceanBlockDeviceMappingEbsDynamicIops {
+        /**
+         * Initial size for IOPS.
+         */
         baseSize: number;
         resource: string;
+        /**
+         * Additional size per resource unit (in IOPS). (Example: `baseSize=50`, `sizePerResourceUnit=20`, and an instance with 2 CPU is launched; its IOPS size will be: 90).
+         */
         sizePerResourceUnit: number;
     }
 
     export interface OceanBlockDeviceMappingEbsDynamicVolumeSize {
+        /**
+         * Int. Initial size for volume. (Example: 50)
+         */
         baseSize: number;
+        /**
+         * String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)
+         */
         resource: string;
+        /**
+         * Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB).
+         */
         sizePerResourceUnit: number;
     }
 
@@ -1749,28 +1836,61 @@ export namespace aws {
          * Object. Set Elastic Block Store properties .
          */
         ebs?: outputs.aws.OceanLaunchSpecBlockDeviceMappingEbs;
-        /**
-         * String. Suppresses the specified device included in the block device mapping of the AMI.
-         */
         noDevice?: string;
         virtualName?: string;
     }
 
     export interface OceanLaunchSpecBlockDeviceMappingEbs {
+        /**
+         * Boolean. Flag to delete the EBS on instance termination.
+         */
         deleteOnTermination: boolean;
+        /**
+         * Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
+         */
         dynamicVolumeSize?: outputs.aws.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize;
+        /**
+         * Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+         */
         encrypted: boolean;
+        /**
+         * Int. The number of I/O operations per second (IOPS) that the volume supports.
+         */
         iops?: number;
+        /**
+         * String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+         */
         kmsKeyId?: string;
+        /**
+         * (Optional) String. The Snapshot ID to mount by.
+         */
         snapshotId?: string;
+        /**
+         * The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = `gp3`.
+         */
         throughput?: number;
+        /**
+         * Int. The size, in GB of the volume.
+         */
         volumeSize?: number;
+        /**
+         * String. The type of the volume. (Example: `gp2`).
+         */
         volumeType: string;
     }
 
     export interface OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize {
+        /**
+         * Int. Initial size for volume. (Example: 50)
+         */
         baseSize: number;
+        /**
+         * String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)
+         */
         resource: string;
+        /**
+         * Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB)
+         */
         sizePerResourceUnit: number;
     }
 
@@ -1800,7 +1920,13 @@ export namespace aws {
     }
 
     export interface OceanLaunchSpecElasticIpPoolTagSelector {
+        /**
+         * Elastic IP tag key. The Virtual Node Group will consider all Elastic IPs tagged with this tag as a part of the Elastic IP pool to use.
+         */
         tagKey: string;
+        /**
+         * Elastic IP tag value. Can be null.
+         */
         tagValue?: string;
     }
 
@@ -1960,9 +2086,21 @@ export namespace aws {
     }
 
     export interface OceanLaunchSpecSchedulingTaskTaskHeadroom {
+        /**
+         * Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+         */
         cpuPerUnit?: number;
+        /**
+         * Optionally configure the number of GPUS to allocate for each headroom unit.
+         */
         gpuPerUnit?: number;
+        /**
+         * Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
+         */
         memoryPerUnit?: number;
+        /**
+         * The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+         */
         numOfUnits: number;
     }
 
@@ -2025,12 +2163,15 @@ export namespace aws {
     }
 
     export interface OceanLoggingExport {
+        /**
+         * Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
+         */
         s3s?: outputs.aws.OceanLoggingExportS3[];
     }
 
     export interface OceanLoggingExportS3 {
         /**
-         * The Cluster ID.
+         * The identifier of The S3 data integration to export the logs to.
          */
         id: string;
     }
@@ -2141,20 +2282,38 @@ export namespace azure {
     }
 
     export interface OceanAutoscalerAutoscaleDown {
+        /**
+         * Would represent the maximum % to scale-down.
+         */
         maxScaleDownPercentage: number;
     }
 
     export interface OceanAutoscalerAutoscaleHeadroom {
+        /**
+         * Automatic headroom configuration.
+         */
         automatic: outputs.azure.OceanAutoscalerAutoscaleHeadroomAutomatic;
     }
 
     export interface OceanAutoscalerAutoscaleHeadroomAutomatic {
+        /**
+         * Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
+         */
         isEnabled: boolean;
+        /**
+         * Optionally set a number between 0-100 to control the percentage of total cluster resources dedicated to headroom. Relevant when `isEnabled` is toggled on.
+         */
         percentage: number;
     }
 
     export interface OceanAutoscalerResourceLimits {
+        /**
+         * The maximum memory in GiB units that can be allocated to the cluster.
+         */
         maxMemoryGib: number;
+        /**
+         * The maximum cpu in vCpu units that can be allocated to the cluster.
+         */
         maxVcpu?: number;
     }
 
@@ -2193,9 +2352,21 @@ export namespace azure {
     }
 
     export interface OceanImageMarketplace {
+        /**
+         * Image name.
+         */
         offer: string;
+        /**
+         * Image publisher.
+         */
         publisher: string;
+        /**
+         * Image Stock Keeping Unit (which is the specific version of the image).
+         */
         sku: string;
+        /**
+         * Image version.
+         */
         version: string;
     }
 
@@ -2249,18 +2420,33 @@ export namespace azure {
     }
 
     export interface OceanNetworkNetworkInterface {
+        /**
+         * Additional configuration of network interface. The name fields between all the `additionalIpConfig` must be unique.
+         */
         additionalIpConfigs: outputs.azure.OceanNetworkNetworkInterfaceAdditionalIpConfig[];
+        /**
+         * Assign public IP.
+         */
         assignPublicIp: boolean;
+        /**
+         * Defines whether the network interface is primary or not.
+         */
         isPrimary: boolean;
         securityGroup: outputs.azure.OceanNetworkNetworkInterfaceSecurityGroup;
+        /**
+         * Subnet name.
+         */
         subnetName: string;
     }
 
     export interface OceanNetworkNetworkInterfaceAdditionalIpConfig {
         /**
-         * The Ocean cluster name.
+         * Configuration name.
          */
         name: string;
+        /**
+         * Supported values: `IPv4`, `IPv6`.
+         */
         privateIpVersion: string;
     }
 
@@ -2295,20 +2481,38 @@ export namespace azure {
     }
 
     export interface OceanNpAutoscalerAutoscaleDown {
+        /**
+         * The maximum percentage allowed to scale down in a single scaling action.
+         */
         maxScaleDownPercentage?: number;
     }
 
     export interface OceanNpAutoscalerAutoscaleHeadroom {
+        /**
+         * [Automatic headroom](https://docs.spot.io/ocean/features/headroom?id=automatic-headroom) configuration.
+         */
         automatic?: outputs.azure.OceanNpAutoscalerAutoscaleHeadroomAutomatic;
     }
 
     export interface OceanNpAutoscalerAutoscaleHeadroomAutomatic {
+        /**
+         * Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+         */
         isEnabled?: boolean;
+        /**
+         * Optionally set a number between 0-100 to control the percentage of total cluster resources dedicated to headroom.
+         */
         percentage?: number;
     }
 
     export interface OceanNpAutoscalerResourceLimits {
+        /**
+         * The maximum memory in GiB units that can be allocated to the cluster.
+         */
         maxMemoryGib?: number;
+        /**
+         * The maximum cpu in vCpu units that can be allocated to the cluster.
+         */
         maxVcpu?: number;
     }
 
@@ -2411,6 +2615,9 @@ export namespace azure {
     }
 
     export interface OceanNpLinuxOsConfigSysctl {
+        /**
+         * Maximum number of memory map areas a process may have. Can be configured only if OS type is Linux.
+         */
         vmMaxMapCount?: number;
     }
 
@@ -2567,6 +2774,9 @@ export namespace azure {
     }
 
     export interface OceanNpVirtualNodeGroupLinuxOsConfigSysctl {
+        /**
+         * Maximum number of memory map areas a process may have. Can be configured only if OS type is Linux.
+         */
         vmMaxMapCount?: number;
     }
 
@@ -2644,9 +2854,21 @@ export namespace azure {
     }
 
     export interface OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom {
+        /**
+         * Configure the number of CPUs to allocate for the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+         */
         cpuPerUnit?: number;
+        /**
+         * How many GPU cores should be allocated for headroom unit.
+         */
         gpuPerUnit?: number;
+        /**
+         * Configure the amount of memory (MiB) to allocate the headroom.
+         */
         memoryPerUnit?: number;
+        /**
+         * The number of headroom units to maintain, where each unit has the defined CPU, memory and GPU.
+         */
         numOfUnits: number;
     }
 
@@ -2677,13 +2899,28 @@ export namespace azure {
     }
 
     export interface OceanVirtualNodeGroupLaunchSpecificationOsDisk {
+        /**
+         * The size of the OS disk in GB, Required if dataDisks is specified.
+         */
         sizeGb: number;
+        /**
+         * The type of the OS disk. Valid values: `"Standard_LRS"`, `"Premium_LRS"`, `"StandardSSD_LRS"`.
+         */
         type?: string;
+        /**
+         * Flag to enable/disable the Ephemeral OS Disk utilization.
+         */
         utilizeEphemeralStorage?: boolean;
     }
 
     export interface OceanVirtualNodeGroupLaunchSpecificationTag {
+        /**
+         * Tag Key for Vms in the cluster.
+         */
         key?: string;
+        /**
+         * Tag Value for VMs in the cluster.
+         */
         value?: string;
     }
 
@@ -2695,9 +2932,6 @@ export namespace azure {
     }
 
     export interface OceanVirtualNodeGroupTaint {
-        /**
-         * The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`, `"PreferNoExecute"`.
-         */
         effect: string;
         /**
          * The taint key.
@@ -2900,8 +3134,17 @@ export namespace ecs {
     }
 
     export interface OceanLaunchSpecSchedulingTaskTaskHeadroom {
+        /**
+         * Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+         */
         cpuPerUnit?: number;
+        /**
+         * Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
+         */
         memoryPerUnit?: number;
+        /**
+         * The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+         */
         numOfUnits: number;
     }
 
@@ -2927,12 +3170,15 @@ export namespace ecs {
     }
 
     export interface OceanLoggingExport {
+        /**
+         * Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
+         */
         s3s?: outputs.ecs.OceanLoggingExportS3[];
     }
 
     export interface OceanLoggingExportS3 {
         /**
-         * The Spotinst Ocean ID.
+         * The identifier of The S3 data integration to export the logs to.
          */
         id: string;
     }
@@ -2966,6 +3212,7 @@ export namespace ecs {
         key: string;
         /**
          * The tag value.
+         * * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
          */
         value: string;
     }
@@ -3516,14 +3763,25 @@ export namespace gke {
 
     export interface OceanLaunchSpecNetworkInterfaceAccessConfig {
         /**
-         * The launch specification name.
+         * The name of the access configuration.
          */
         name?: string;
+        /**
+         * The type of the access configuration.
+         */
         type?: string;
     }
 
     export interface OceanLaunchSpecNetworkInterfaceAliasIpRange {
+        /**
+         * specify the IP address range in CIDR notation that can be used for the alias IP addresses associated with the imported node pool.
+         */
         ipCidrRange: string;
+        /**
+         * specify the IP address range for the subnet secondary IP range.
+         *
+         * <a id="update-policy"></a>
+         */
         subnetworkRangeName: string;
     }
 
@@ -3558,9 +3816,21 @@ export namespace gke {
     }
 
     export interface OceanLaunchSpecSchedulingTaskTaskHeadroom {
+        /**
+         * Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+         */
         cpuPerUnit?: number;
+        /**
+         * Optionally configure the number of GPUS to allocate for each headroom unit.
+         */
         gpuPerUnit?: number;
+        /**
+         * Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
+         */
         memoryPerUnit?: number;
+        /**
+         * The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+         */
         numOfUnits: number;
     }
 
@@ -3650,16 +3920,31 @@ export namespace oceancd {
     }
 
     export interface RolloutSpecStrategyArg {
+        /**
+         * Name of an argument.
+         */
         argName: string;
+        /**
+         * Value of an argument.
+         */
         argValue?: string;
+        /**
+         * Defines from where to get the value of an argument.
+         */
         valueFrom?: outputs.oceancd.RolloutSpecStrategyArgValueFrom;
     }
 
     export interface RolloutSpecStrategyArgValueFrom {
+        /**
+         * Defines the field path from where to get the value of an argument.
+         */
         fieldRef: outputs.oceancd.RolloutSpecStrategyArgValueFromFieldRef;
     }
 
     export interface RolloutSpecStrategyArgValueFromFieldRef {
+        /**
+         * Path to SpotDeployment's field from where to get the value of an argument.
+         */
         fieldPath: string;
     }
 
@@ -3699,62 +3984,143 @@ export namespace oceancd {
     }
 
     export interface RolloutSpecTrafficAlb {
+        /**
+         * Has to match the configured annotation prefix on the alb ingress controller.
+         */
         albAnnotationPrefix?: string;
+        /**
+         * Refers to the name of an `Ingress` resource in the same namespace as the `SpotDeployment`.
+         */
         albIngress: string;
+        /**
+         * References the service in the ingress to the controller should add the action to.
+         */
         albRootService: string;
+        /**
+         * Refers to the port that the Ingress action should route traffic to.
+         */
         servicePort: number;
+        /**
+         * Allows to specify further settings on the ForwardConfig.
+         */
         stickinessConfig?: outputs.oceancd.RolloutSpecTrafficAlbStickinessConfig;
     }
 
     export interface RolloutSpecTrafficAlbStickinessConfig {
+        /**
+         * Defines how long the load balancer should consistently route the user's request to the same target.
+         */
         durationSeconds?: number;
+        /**
+         * Enables the load balancer to bind a user's session to a specific target.
+         */
         enabled?: boolean;
     }
 
     export interface RolloutSpecTrafficAmbassador {
+        /**
+         * A list of names of the Ambassador Mappings used to route traffic to the service.
+         */
         mappings: string[];
     }
 
     export interface RolloutSpecTrafficIstio {
+        /**
+         * It references to an Istio DestinationRule to modify and shape traffic. `DestinationRule` field belongs only to the Subset Level approach.
+         */
         destinationRule?: outputs.oceancd.RolloutSpecTrafficIstioDestinationRule;
+        /**
+         * Defines a set of traffic routing rules to apply when a host is addressed.
+         */
         virtualServices: outputs.oceancd.RolloutSpecTrafficIstioVirtualService[];
     }
 
     export interface RolloutSpecTrafficIstioDestinationRule {
+        /**
+         * The subset name to modify labels with the canary version.
+         */
         canarySubsetName: string;
+        /**
+         * Holds the name of the DestinationRule.
+         */
         destinationRuleName: string;
+        /**
+         * The subset name to modify labels with the stable version.
+         */
         stableSubsetName: string;
     }
 
     export interface RolloutSpecTrafficIstioVirtualService {
+        /**
+         * A list of HTTPS routes within VirtualService.
+         */
         tlsRoutes?: outputs.oceancd.RolloutSpecTrafficIstioVirtualServiceTlsRoute[];
+        /**
+         * Holds the name of the VirtualService.
+         */
         virtualServiceName: string;
+        /**
+         * A list of HTTP routes within VirtualService.
+         */
         virtualServiceRoutes?: string[];
     }
 
     export interface RolloutSpecTrafficIstioVirtualServiceTlsRoute {
+        /**
+         * The port of the TLS Route desired to be matched in the given Istio VirtualService.
+         */
         port?: number;
+        /**
+         * A list of all the SNI Hosts of the TLS Route desired to be matched in the given Istio VirtualService.
+         */
         sniHosts?: string[];
     }
 
     export interface RolloutSpecTrafficNginx {
+        /**
+         * Provides additional features to add to the canary ingress (such as routing by header, cookie, etc). You can add these Kubernetes annotations to specific Ingress objects to customize their behavior. Above are found examples of accepted k8s keys.For the full list of supported keys, you may reach the following documentation - https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#canary.
+         */
         additionalIngressAnnotation?: outputs.oceancd.RolloutSpecTrafficNginxAdditionalIngressAnnotation;
+        /**
+         * Has to match the configured annotation prefix on the Nginx ingress controller.
+         */
         nginxAnnotationPrefix?: string;
+        /**
+         * Refers to the name of an `Ingress` resource in the same namespace as the `SpotDeployment`.
+         */
         stableIngress: string;
     }
 
     export interface RolloutSpecTrafficNginxAdditionalIngressAnnotation {
+        /**
+         * Allows customizing the header value instead of using hardcoded values.
+         */
         canaryByHeader?: string;
+        /**
+         * Any of supported annotations.
+         */
         key1?: string;
     }
 
     export interface RolloutSpecTrafficPingPong {
+        /**
+         * Holds the name of the ping service.
+         */
         pingService: string;
+        /**
+         * Holds the name of the pong service.
+         */
         pongService: string;
     }
 
     export interface RolloutSpecTrafficSmi {
+        /**
+         * Holds the name of service that clients use to communicate.
+         */
         smiRootService?: string;
+        /**
+         * Holds the name of the TrafficSplit.
+         */
         trafficSplitName?: string;
     }
 
@@ -3770,45 +4136,99 @@ export namespace oceancd {
     }
 
     export interface StrategyCanaryBackgroundVerification {
+        /**
+         * List of Verification Template names.
+         */
         templateNames: string[];
     }
 
     export interface StrategyCanaryStep {
+        /**
+         * Defines the duration of time to freeze the rollout.
+         */
         pause?: outputs.oceancd.StrategyCanaryStepPause;
+        /**
+         * Defines how to scale the version without traffic weight changing.
+         */
         setCanaryScale?: outputs.oceancd.StrategyCanaryStepSetCanaryScale;
+        /**
+         * Defines the list of HeaderRoutes to add to the Rollout.
+         */
         setHeaderRoute?: outputs.oceancd.StrategyCanaryStepSetHeaderRoute;
+        /**
+         * Defines the percentage that the new version should receive.
+         */
         setWeight?: number;
         stepName?: string;
+        /**
+         * Represents the list of verifications to run in a step.
+         */
         verification?: outputs.oceancd.StrategyCanaryStepVerification;
     }
 
     export interface StrategyCanaryStepPause {
+        /**
+         * The amount of time to wait before moving to the next step.
+         */
         duration?: string;
     }
 
     export interface StrategyCanaryStepSetCanaryScale {
+        /**
+         * Defines whether a rollout should match the current canary's setWeight step.
+         */
         matchTrafficWeight?: boolean;
+        /**
+         * Sets the number of replicas the new version should have.
+         */
         replicas?: number;
+        /**
+         * Sets the percentage of replicas the new version should have.
+         */
         weight?: number;
     }
 
     export interface StrategyCanaryStepSetHeaderRoute {
+        /**
+         * The name of the HeaderRoute group.
+         */
         headerRouteName: string;
+        /**
+         * The matching rules for the header route.
+         */
         matches: outputs.oceancd.StrategyCanaryStepSetHeaderRouteMatch[];
     }
 
     export interface StrategyCanaryStepSetHeaderRouteMatch {
+        /**
+         * The name of the header.
+         */
         headerName: string;
+        /**
+         * Defines a single header to add to the Rollout. Must be only one initialized from the following (exact, prefix, regex).
+         */
         headerValue: outputs.oceancd.StrategyCanaryStepSetHeaderRouteMatchHeaderValue;
     }
 
     export interface StrategyCanaryStepSetHeaderRouteMatchHeaderValue {
+        /**
+         * The exact header value.
+         */
         exact?: string;
+        /**
+         * The prefix of the value.
+         */
         prefix?: string;
+        /**
+         * The value in a regex format.
+         */
         regex?: string;
     }
 
     export interface StrategyCanaryStepVerification {
+        /**
+         * List of Verification Template names.
+         */
         templateNames: string[];
     }
 
@@ -3820,16 +4240,28 @@ export namespace oceancd {
     }
 
     export interface StrategyRollingStep {
+        /**
+         * Defines the duration of time to freeze the rollout.
+         */
         pause?: outputs.oceancd.StrategyRollingStepPause;
         stepsName?: string;
+        /**
+         * Represents the list of verifications to run in a step.
+         */
         verification?: outputs.oceancd.StrategyRollingStepVerification;
     }
 
     export interface StrategyRollingStepPause {
+        /**
+         * The amount of time to wait before moving to the next step.
+         */
         duration?: string;
     }
 
     export interface StrategyRollingStepVerification {
+        /**
+         * List of Verification Template names.
+         */
         templateNames: string[];
     }
 
@@ -3913,13 +4345,19 @@ export namespace oceancd {
     }
 
     export interface VerificationTemplateArgValueFrom {
+        /**
+         * Secret key to use.
+         */
         secretKeyRef?: outputs.oceancd.VerificationTemplateArgValueFromSecretKeyRef;
     }
 
     export interface VerificationTemplateArgValueFromSecretKeyRef {
+        /**
+         * The name of the field inside the secret.
+         */
         key: string;
         /**
-         * Identifier name for Ocean CD Verification Template. Must be unique.
+         * The name of the secret.
          */
         name: string;
     }
@@ -3972,118 +4410,286 @@ export namespace oceancd {
     }
 
     export interface VerificationTemplateMetricBaseline {
+        /**
+         * The name of the monitoring tool chosen for the metric.
+         */
         baselineProviders: outputs.oceancd.VerificationTemplateMetricBaselineBaselineProvider[];
+        /**
+         * Number in percent we allow the new version’s data result to be under baseline data result.
+         */
         maxRange?: number;
+        /**
+         * Number in percent we allow the new version’s data result to be under baseline data result.*
+         */
         minRange?: number;
+        /**
+         * A mathematical expression needed for the comparison. Enum: "<" ">" "<=" ">=" "=" "range"
+         */
         threshold: string;
     }
 
     export interface VerificationTemplateMetricBaselineBaselineProvider {
+        /**
+         * The datadog provider.
+         */
         datadog?: outputs.oceancd.VerificationTemplateMetricBaselineBaselineProviderDatadog;
+        /**
+         * The New Relic provider.
+         */
         newRelic?: outputs.oceancd.VerificationTemplateMetricBaselineBaselineProviderNewRelic;
+        /**
+         * The Prometheus provider.
+         */
         prometheus?: outputs.oceancd.VerificationTemplateMetricBaselineBaselineProviderPrometheus;
     }
 
     export interface VerificationTemplateMetricBaselineBaselineProviderDatadog {
+        /**
+         * A request for information retrieved from Datadog.
+         */
         datadogQuery: string;
+        /**
+         * The window of time we are looking at in DataDog.
+         */
         duration?: string;
     }
 
     export interface VerificationTemplateMetricBaselineBaselineProviderNewRelic {
+        /**
+         * A raw newrelic NRQL query to perform.
+         */
         newRelicQuery: string;
+        /**
+         * The name of the secret holding NR account configuration.
+         */
         profile?: string;
     }
 
     export interface VerificationTemplateMetricBaselineBaselineProviderPrometheus {
+        /**
+         * A request for information retrieved from Prometheus.
+         */
         prometheusQuery: string;
     }
 
     export interface VerificationTemplateMetricProvider {
+        /**
+         * The CloudWatch provider.
+         */
         cloudWatch?: outputs.oceancd.VerificationTemplateMetricProviderCloudWatch;
+        /**
+         * The datadog provider.
+         */
         datadog?: outputs.oceancd.VerificationTemplateMetricProviderDatadog;
+        /**
+         * The Jenkins provider. Default is "{$}"
+         */
         jenkins?: outputs.oceancd.VerificationTemplateMetricProviderJenkins;
+        /**
+         * The Job provider.
+         */
         job?: outputs.oceancd.VerificationTemplateMetricProviderJob;
+        /**
+         * The New Relic provider.
+         */
         newRelic?: outputs.oceancd.VerificationTemplateMetricProviderNewRelic;
+        /**
+         * The Prometheus provider.
+         */
         prometheus?: outputs.oceancd.VerificationTemplateMetricProviderPrometheus;
+        /**
+         * The Web provider.
+         */
         web?: outputs.oceancd.VerificationTemplateMetricProviderWeb;
     }
 
     export interface VerificationTemplateMetricProviderCloudWatch {
+        /**
+         * The window of time we are looking at in CloudWatch.
+         */
         duration?: string;
+        /**
+         * The metric queries to be returned. A single MetricData call can include as many as 500 MetricDataQuery structures. Each of these structures can specify either a metric to retrieve, a Metrics Insights query, or a math expression to perform on retrieved data.
+         */
         metricDataQueries: outputs.oceancd.VerificationTemplateMetricProviderCloudWatchMetricDataQuery[];
     }
 
     export interface VerificationTemplateMetricProviderCloudWatchMetricDataQuery {
+        /**
+         * This field can contain either a Metrics Insights query, or a metric math expression to be performed on the returned data. Within one metricdataquery object, you must specify either expression or metricstat but not both.
+         */
         expression?: string;
+        /**
+         * The response ID. Must be unique and not null. This object can contain characters, letters, numbers and underscore. The first letter must be a lowercase letter.
+         */
         id: string;
+        /**
+         * A human-readable label for this metric or expression. If the metric or expression is shown in a CloudWatch dashboard widget, the label is shown
+         */
         label?: string;
+        /**
+         * The metric to be returned, along with statistics, period, and units. Use this parameter only if this object is retrieving a metric and not performing a math expression on returned data.Within one metricdataquery object, you must specify either expression or metricstat but not both.
+         */
         metricStat?: outputs.oceancd.VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat;
+        /**
+         * The granularity, in seconds, of the returned data points.
+         */
         period?: number;
+        /**
+         * This option indicates whether to return the timestamps and raw data values of this metric. If you are performing this call just to do math expressions and do not also need the raw data returned, you can specify False . If you omit this, the default of True is used.
+         */
         returnData?: boolean;
     }
 
     export interface VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat {
+        /**
+         * The metric to return, including the metric name, namespace, and dimensions.
+         */
         metric?: outputs.oceancd.VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric;
+        /**
+         * The granularity, in seconds, of the returned data points.
+         */
         metricPeriod?: number;
+        /**
+         * The statistic to return. It can include any CloudWatch statistic or extended statistic.
+         */
         stat?: string;
+        /**
+         * This defines what unit you want to use when storing the metric.  Enum: `"Seconds" "Microseconds" "Milliseconds" "Bytes" "Kilobytes" "Megabytes" "Gigabytes" "Terabytes" "Bits" "Kilobits" "Megabits" "Gigabits" "Terabits" "Percent" "Count" "Bytes/Second" "Kilobytes/Second" "Megabytes/Second" "Gigabytes/Second" "Terabytes/Second" "Bits/Second" "Kilobits/Second" "Megabits/Second" "Gigabits/Second" "Terabits/Second" "Count/Second" "None"`
+         */
         unit?: string;
     }
 
     export interface VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric {
+        /**
+         * A dimension is a name/value pair that is part of the identity of a metric.You can assign upto 30 dimensions to a metric
+         */
         dimensions?: outputs.oceancd.VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimension[];
+        /**
+         * The name of the metric.
+         */
         metricName: string;
+        /**
+         * The namespace of the metric.
+         */
         namespace?: string;
     }
 
     export interface VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimension {
+        /**
+         * The name of the dimensions. These values must contain only ASCII characters and must include at least one non-whitespace characte
+         */
         dimensionName: string;
+        /**
+         * The value of the dimensions.These values must contain only ASCII characters and must include at least one non-whitespace characte
+         */
         dimensionValue: string;
     }
 
     export interface VerificationTemplateMetricProviderDatadog {
+        /**
+         * A request for information retrieved from Datadog.
+         */
         datadogQuery?: string;
+        /**
+         * The window of time we are looking at in DataDog.
+         */
         duration?: string;
     }
 
     export interface VerificationTemplateMetricProviderJenkins {
+        /**
+         * The interval time to poll status.
+         */
         jenkinsInterval: string;
+        /**
+         * List of parameters.
+         */
         jenkinsParameters?: outputs.oceancd.VerificationTemplateMetricProviderJenkinsJenkinsParameters;
+        /**
+         * The Jenkins pipeline name.
+         */
         pipelineName: string;
+        /**
+         * The total jenkins timeout.
+         */
         timeout: string;
+        /**
+         * Host TLS verification.
+         */
         tlsVerification?: boolean;
     }
 
     export interface VerificationTemplateMetricProviderJenkinsJenkinsParameters {
+        /**
+         * Key of an argument.
+         */
         parameterKey: string;
+        /**
+         * Value of an argument.
+         */
         parameterValue: string;
     }
 
     export interface VerificationTemplateMetricProviderJob {
+        /**
+         * The job spec require to run the metric.
+         */
         specs: outputs.oceancd.VerificationTemplateMetricProviderJobSpec[];
     }
 
     export interface VerificationTemplateMetricProviderJobSpec {
+        /**
+         * Specifies the number of retries before marking this job failed.
+         */
         backoffLimit?: number;
+        /**
+         * Describes the pod that will be created when executing a job.
+         */
         jobTemplates: outputs.oceancd.VerificationTemplateMetricProviderJobSpecJobTemplate[];
     }
 
     export interface VerificationTemplateMetricProviderJobSpecJobTemplate {
+        /**
+         * Specification of the desired behavior of the pod.
+         */
         templateSpecs: outputs.oceancd.VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpec[];
     }
 
     export interface VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpec {
+        /**
+         * A list of containers belonging to the pod.
+         */
         containers: outputs.oceancd.VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainer[];
+        /**
+         * Restart policy for all containers within the pod. Enum: `"Never" "OnFailure"`
+         */
         restartPolicy: string;
     }
 
     export interface VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainer {
+        /**
+         * The entry point of a container.
+         */
         commands: string[];
+        /**
+         * The name of a container.
+         */
         containerName: string;
+        /**
+         * The image name of a container.
+         */
         image: string;
     }
 
     export interface VerificationTemplateMetricProviderNewRelic {
+        /**
+         * A raw newrelic NRQL query to perform.
+         */
         newRelicQuery: string;
+        /**
+         * The name of the secret holding NR account configuration.
+         */
         profile?: string;
     }
 
@@ -4092,17 +4698,44 @@ export namespace oceancd {
     }
 
     export interface VerificationTemplateMetricProviderWeb {
+        /**
+         * The body of the web metric.
+         */
         body?: string;
+        /**
+         * Skips host TLS verification.
+         */
         insecure?: boolean;
+        /**
+         * A JSON Path to use as the result variable. Default is "{$}"
+         */
         jsonPath?: string;
+        /**
+         * The method of the web metric.  Enum: "GET" "POST" "PUT"
+         */
         method?: string;
+        /**
+         * The timeout for the request in seconds. Default is 10.
+         */
         timeoutSeconds?: number;
+        /**
+         * The address of the web metric.
+         */
         url: string;
+        /**
+         * Optional HTTP headers to use in the request.
+         */
         webHeaders?: outputs.oceancd.VerificationTemplateMetricProviderWebWebHeader[];
     }
 
     export interface VerificationTemplateMetricProviderWebWebHeader {
+        /**
+         * The name of a header
+         */
         webHeaderKey: string;
+        /**
+         * The value of a header
+         */
         webHeaderValue: string;
     }
 
@@ -4117,8 +4750,18 @@ export namespace organization {
     }
 
     export interface PolicyPolicyContentStatement {
+        /**
+         * Set a list of required actions for this permissions statement.
+         * Full list of actions can be found in [https://docs.spot.io/account-user-management/user-management/access-policies-actions/](https://docs.spot.io/account-user-management/user-management/access-policies-actions/).
+         */
         actions: string[];
+        /**
+         * Valid values "ALLOW", "DENY".
+         */
         effect: string;
+        /**
+         * Set a list of resources IDs. In order to include all resources in this statement - use "*".
+         */
         resources: string[];
     }
 

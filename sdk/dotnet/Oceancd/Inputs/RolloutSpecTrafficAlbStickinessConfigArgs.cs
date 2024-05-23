@@ -12,9 +12,15 @@ namespace Pulumi.SpotInst.Oceancd.Inputs
 
     public sealed class RolloutSpecTrafficAlbStickinessConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Defines how long the load balancer should consistently route the user's request to the same target.
+        /// </summary>
         [Input("durationSeconds")]
         public Input<int>? DurationSeconds { get; set; }
 
+        /// <summary>
+        /// Enables the load balancer to bind a user's session to a specific target.
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 

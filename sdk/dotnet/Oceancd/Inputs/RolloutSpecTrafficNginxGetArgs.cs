@@ -12,12 +12,21 @@ namespace Pulumi.SpotInst.Oceancd.Inputs
 
     public sealed class RolloutSpecTrafficNginxGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Provides additional features to add to the canary ingress (such as routing by header, cookie, etc). You can add these Kubernetes annotations to specific Ingress objects to customize their behavior. Above are found examples of accepted k8s keys.For the full list of supported keys, you may reach the following documentation - https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#canary.
+        /// </summary>
         [Input("additionalIngressAnnotation")]
         public Input<Inputs.RolloutSpecTrafficNginxAdditionalIngressAnnotationGetArgs>? AdditionalIngressAnnotation { get; set; }
 
+        /// <summary>
+        /// Has to match the configured annotation prefix on the Nginx ingress controller.
+        /// </summary>
         [Input("nginxAnnotationPrefix")]
         public Input<string>? NginxAnnotationPrefix { get; set; }
 
+        /// <summary>
+        /// Refers to the name of an `Ingress` resource in the same namespace as the `SpotDeployment`.
+        /// </summary>
         [Input("stableIngress", required: true)]
         public Input<string> StableIngress { get; set; } = null!;
 

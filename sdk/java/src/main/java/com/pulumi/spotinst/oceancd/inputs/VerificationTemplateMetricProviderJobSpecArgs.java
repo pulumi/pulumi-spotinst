@@ -18,16 +18,32 @@ public final class VerificationTemplateMetricProviderJobSpecArgs extends com.pul
 
     public static final VerificationTemplateMetricProviderJobSpecArgs Empty = new VerificationTemplateMetricProviderJobSpecArgs();
 
+    /**
+     * Specifies the number of retries before marking this job failed.
+     * 
+     */
     @Import(name="backoffLimit")
     private @Nullable Output<Integer> backoffLimit;
 
+    /**
+     * @return Specifies the number of retries before marking this job failed.
+     * 
+     */
     public Optional<Output<Integer>> backoffLimit() {
         return Optional.ofNullable(this.backoffLimit);
     }
 
+    /**
+     * Describes the pod that will be created when executing a job.
+     * 
+     */
     @Import(name="jobTemplates", required=true)
     private Output<List<VerificationTemplateMetricProviderJobSpecJobTemplateArgs>> jobTemplates;
 
+    /**
+     * @return Describes the pod that will be created when executing a job.
+     * 
+     */
     public Output<List<VerificationTemplateMetricProviderJobSpecJobTemplateArgs>> jobTemplates() {
         return this.jobTemplates;
     }
@@ -57,24 +73,54 @@ public final class VerificationTemplateMetricProviderJobSpecArgs extends com.pul
             $ = new VerificationTemplateMetricProviderJobSpecArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param backoffLimit Specifies the number of retries before marking this job failed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder backoffLimit(@Nullable Output<Integer> backoffLimit) {
             $.backoffLimit = backoffLimit;
             return this;
         }
 
+        /**
+         * @param backoffLimit Specifies the number of retries before marking this job failed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder backoffLimit(Integer backoffLimit) {
             return backoffLimit(Output.of(backoffLimit));
         }
 
+        /**
+         * @param jobTemplates Describes the pod that will be created when executing a job.
+         * 
+         * @return builder
+         * 
+         */
         public Builder jobTemplates(Output<List<VerificationTemplateMetricProviderJobSpecJobTemplateArgs>> jobTemplates) {
             $.jobTemplates = jobTemplates;
             return this;
         }
 
+        /**
+         * @param jobTemplates Describes the pod that will be created when executing a job.
+         * 
+         * @return builder
+         * 
+         */
         public Builder jobTemplates(List<VerificationTemplateMetricProviderJobSpecJobTemplateArgs> jobTemplates) {
             return jobTemplates(Output.of(jobTemplates));
         }
 
+        /**
+         * @param jobTemplates Describes the pod that will be created when executing a job.
+         * 
+         * @return builder
+         * 
+         */
         public Builder jobTemplates(VerificationTemplateMetricProviderJobSpecJobTemplateArgs... jobTemplates) {
             return jobTemplates(List.of(jobTemplates));
         }

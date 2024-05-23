@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanNpAutoscalerAutoscaleDown {
+    /**
+     * @return The maximum percentage allowed to scale down in a single scaling action.
+     * 
+     */
     private @Nullable Integer maxScaleDownPercentage;
 
     private OceanNpAutoscalerAutoscaleDown() {}
+    /**
+     * @return The maximum percentage allowed to scale down in a single scaling action.
+     * 
+     */
     public Optional<Integer> maxScaleDownPercentage() {
         return Optional.ofNullable(this.maxScaleDownPercentage);
     }

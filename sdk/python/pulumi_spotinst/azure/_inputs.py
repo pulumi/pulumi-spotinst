@@ -139,12 +139,18 @@ class OceanAutoscalerArgs:
 class OceanAutoscalerAutoscaleDownArgs:
     def __init__(__self__, *,
                  max_scale_down_percentage: Optional[pulumi.Input[float]] = None):
+        """
+        :param pulumi.Input[float] max_scale_down_percentage: Would represent the maximum % to scale-down.
+        """
         if max_scale_down_percentage is not None:
             pulumi.set(__self__, "max_scale_down_percentage", max_scale_down_percentage)
 
     @property
     @pulumi.getter(name="maxScaleDownPercentage")
     def max_scale_down_percentage(self) -> Optional[pulumi.Input[float]]:
+        """
+        Would represent the maximum % to scale-down.
+        """
         return pulumi.get(self, "max_scale_down_percentage")
 
     @max_scale_down_percentage.setter
@@ -156,12 +162,18 @@ class OceanAutoscalerAutoscaleDownArgs:
 class OceanAutoscalerAutoscaleHeadroomArgs:
     def __init__(__self__, *,
                  automatic: Optional[pulumi.Input['OceanAutoscalerAutoscaleHeadroomAutomaticArgs']] = None):
+        """
+        :param pulumi.Input['OceanAutoscalerAutoscaleHeadroomAutomaticArgs'] automatic: Automatic headroom configuration.
+        """
         if automatic is not None:
             pulumi.set(__self__, "automatic", automatic)
 
     @property
     @pulumi.getter
     def automatic(self) -> Optional[pulumi.Input['OceanAutoscalerAutoscaleHeadroomAutomaticArgs']]:
+        """
+        Automatic headroom configuration.
+        """
         return pulumi.get(self, "automatic")
 
     @automatic.setter
@@ -174,6 +186,10 @@ class OceanAutoscalerAutoscaleHeadroomAutomaticArgs:
     def __init__(__self__, *,
                  is_enabled: Optional[pulumi.Input[bool]] = None,
                  percentage: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[bool] is_enabled: Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
+        :param pulumi.Input[int] percentage: Optionally set a number between 0-100 to control the percentage of total cluster resources dedicated to headroom. Relevant when `isEnabled` is toggled on.
+        """
         if is_enabled is not None:
             pulumi.set(__self__, "is_enabled", is_enabled)
         if percentage is not None:
@@ -182,6 +198,9 @@ class OceanAutoscalerAutoscaleHeadroomAutomaticArgs:
     @property
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
+        """
         return pulumi.get(self, "is_enabled")
 
     @is_enabled.setter
@@ -191,6 +210,9 @@ class OceanAutoscalerAutoscaleHeadroomAutomaticArgs:
     @property
     @pulumi.getter
     def percentage(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optionally set a number between 0-100 to control the percentage of total cluster resources dedicated to headroom. Relevant when `isEnabled` is toggled on.
+        """
         return pulumi.get(self, "percentage")
 
     @percentage.setter
@@ -203,6 +225,10 @@ class OceanAutoscalerResourceLimitsArgs:
     def __init__(__self__, *,
                  max_memory_gib: Optional[pulumi.Input[int]] = None,
                  max_vcpu: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] max_memory_gib: The maximum memory in GiB units that can be allocated to the cluster.
+        :param pulumi.Input[int] max_vcpu: The maximum cpu in vCpu units that can be allocated to the cluster.
+        """
         if max_memory_gib is not None:
             pulumi.set(__self__, "max_memory_gib", max_memory_gib)
         if max_vcpu is not None:
@@ -211,6 +237,9 @@ class OceanAutoscalerResourceLimitsArgs:
     @property
     @pulumi.getter(name="maxMemoryGib")
     def max_memory_gib(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum memory in GiB units that can be allocated to the cluster.
+        """
         return pulumi.get(self, "max_memory_gib")
 
     @max_memory_gib.setter
@@ -220,6 +249,9 @@ class OceanAutoscalerResourceLimitsArgs:
     @property
     @pulumi.getter(name="maxVcpu")
     def max_vcpu(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum cpu in vCpu units that can be allocated to the cluster.
+        """
         return pulumi.get(self, "max_vcpu")
 
     @max_vcpu.setter
@@ -363,6 +395,12 @@ class OceanImageMarketplaceArgs:
                  publisher: Optional[pulumi.Input[str]] = None,
                  sku: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] offer: Image name.
+        :param pulumi.Input[str] publisher: Image publisher.
+        :param pulumi.Input[str] sku: Image Stock Keeping Unit (which is the specific version of the image).
+        :param pulumi.Input[str] version: Image version.
+        """
         if offer is not None:
             pulumi.set(__self__, "offer", offer)
         if publisher is not None:
@@ -375,6 +413,9 @@ class OceanImageMarketplaceArgs:
     @property
     @pulumi.getter
     def offer(self) -> Optional[pulumi.Input[str]]:
+        """
+        Image name.
+        """
         return pulumi.get(self, "offer")
 
     @offer.setter
@@ -384,6 +425,9 @@ class OceanImageMarketplaceArgs:
     @property
     @pulumi.getter
     def publisher(self) -> Optional[pulumi.Input[str]]:
+        """
+        Image publisher.
+        """
         return pulumi.get(self, "publisher")
 
     @publisher.setter
@@ -393,6 +437,9 @@ class OceanImageMarketplaceArgs:
     @property
     @pulumi.getter
     def sku(self) -> Optional[pulumi.Input[str]]:
+        """
+        Image Stock Keeping Unit (which is the specific version of the image).
+        """
         return pulumi.get(self, "sku")
 
     @sku.setter
@@ -402,6 +449,9 @@ class OceanImageMarketplaceArgs:
     @property
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Image version.
+        """
         return pulumi.get(self, "version")
 
     @version.setter
@@ -596,6 +646,12 @@ class OceanNetworkNetworkInterfaceArgs:
                  is_primary: Optional[pulumi.Input[bool]] = None,
                  security_group: Optional[pulumi.Input['OceanNetworkNetworkInterfaceSecurityGroupArgs']] = None,
                  subnet_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['OceanNetworkNetworkInterfaceAdditionalIpConfigArgs']]] additional_ip_configs: Additional configuration of network interface. The name fields between all the `additional_ip_config` must be unique.
+        :param pulumi.Input[bool] assign_public_ip: Assign public IP.
+        :param pulumi.Input[bool] is_primary: Defines whether the network interface is primary or not.
+        :param pulumi.Input[str] subnet_name: Subnet name.
+        """
         if additional_ip_configs is not None:
             pulumi.set(__self__, "additional_ip_configs", additional_ip_configs)
         if assign_public_ip is not None:
@@ -610,6 +666,9 @@ class OceanNetworkNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="additionalIpConfigs")
     def additional_ip_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanNetworkNetworkInterfaceAdditionalIpConfigArgs']]]]:
+        """
+        Additional configuration of network interface. The name fields between all the `additional_ip_config` must be unique.
+        """
         return pulumi.get(self, "additional_ip_configs")
 
     @additional_ip_configs.setter
@@ -619,6 +678,9 @@ class OceanNetworkNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="assignPublicIp")
     def assign_public_ip(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Assign public IP.
+        """
         return pulumi.get(self, "assign_public_ip")
 
     @assign_public_ip.setter
@@ -628,6 +690,9 @@ class OceanNetworkNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="isPrimary")
     def is_primary(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defines whether the network interface is primary or not.
+        """
         return pulumi.get(self, "is_primary")
 
     @is_primary.setter
@@ -646,6 +711,9 @@ class OceanNetworkNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="subnetName")
     def subnet_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Subnet name.
+        """
         return pulumi.get(self, "subnet_name")
 
     @subnet_name.setter
@@ -659,7 +727,8 @@ class OceanNetworkNetworkInterfaceAdditionalIpConfigArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  private_ip_version: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: The Ocean cluster name.
+        :param pulumi.Input[str] name: Configuration name.
+        :param pulumi.Input[str] private_ip_version: Supported values: `IPv4`, `IPv6`.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -670,7 +739,7 @@ class OceanNetworkNetworkInterfaceAdditionalIpConfigArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The Ocean cluster name.
+        Configuration name.
         """
         return pulumi.get(self, "name")
 
@@ -681,6 +750,9 @@ class OceanNetworkNetworkInterfaceAdditionalIpConfigArgs:
     @property
     @pulumi.getter(name="privateIpVersion")
     def private_ip_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Supported values: `IPv4`, `IPv6`.
+        """
         return pulumi.get(self, "private_ip_version")
 
     @private_ip_version.setter
@@ -802,12 +874,18 @@ class OceanNpAutoscalerArgs:
 class OceanNpAutoscalerAutoscaleDownArgs:
     def __init__(__self__, *,
                  max_scale_down_percentage: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] max_scale_down_percentage: The maximum percentage allowed to scale down in a single scaling action.
+        """
         if max_scale_down_percentage is not None:
             pulumi.set(__self__, "max_scale_down_percentage", max_scale_down_percentage)
 
     @property
     @pulumi.getter(name="maxScaleDownPercentage")
     def max_scale_down_percentage(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum percentage allowed to scale down in a single scaling action.
+        """
         return pulumi.get(self, "max_scale_down_percentage")
 
     @max_scale_down_percentage.setter
@@ -819,12 +897,18 @@ class OceanNpAutoscalerAutoscaleDownArgs:
 class OceanNpAutoscalerAutoscaleHeadroomArgs:
     def __init__(__self__, *,
                  automatic: Optional[pulumi.Input['OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs']] = None):
+        """
+        :param pulumi.Input['OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs'] automatic: [Automatic headroom](https://docs.spot.io/ocean/features/headroom?id=automatic-headroom) configuration.
+        """
         if automatic is not None:
             pulumi.set(__self__, "automatic", automatic)
 
     @property
     @pulumi.getter
     def automatic(self) -> Optional[pulumi.Input['OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs']]:
+        """
+        [Automatic headroom](https://docs.spot.io/ocean/features/headroom?id=automatic-headroom) configuration.
+        """
         return pulumi.get(self, "automatic")
 
     @automatic.setter
@@ -837,6 +921,10 @@ class OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs:
     def __init__(__self__, *,
                  is_enabled: Optional[pulumi.Input[bool]] = None,
                  percentage: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[bool] is_enabled: Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+        :param pulumi.Input[int] percentage: Optionally set a number between 0-100 to control the percentage of total cluster resources dedicated to headroom.
+        """
         if is_enabled is not None:
             pulumi.set(__self__, "is_enabled", is_enabled)
         if percentage is not None:
@@ -845,6 +933,9 @@ class OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs:
     @property
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+        """
         return pulumi.get(self, "is_enabled")
 
     @is_enabled.setter
@@ -854,6 +945,9 @@ class OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs:
     @property
     @pulumi.getter
     def percentage(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optionally set a number between 0-100 to control the percentage of total cluster resources dedicated to headroom.
+        """
         return pulumi.get(self, "percentage")
 
     @percentage.setter
@@ -866,6 +960,10 @@ class OceanNpAutoscalerResourceLimitsArgs:
     def __init__(__self__, *,
                  max_memory_gib: Optional[pulumi.Input[int]] = None,
                  max_vcpu: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] max_memory_gib: The maximum memory in GiB units that can be allocated to the cluster.
+        :param pulumi.Input[int] max_vcpu: The maximum cpu in vCpu units that can be allocated to the cluster.
+        """
         if max_memory_gib is not None:
             pulumi.set(__self__, "max_memory_gib", max_memory_gib)
         if max_vcpu is not None:
@@ -874,6 +972,9 @@ class OceanNpAutoscalerResourceLimitsArgs:
     @property
     @pulumi.getter(name="maxMemoryGib")
     def max_memory_gib(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum memory in GiB units that can be allocated to the cluster.
+        """
         return pulumi.get(self, "max_memory_gib")
 
     @max_memory_gib.setter
@@ -883,6 +984,9 @@ class OceanNpAutoscalerResourceLimitsArgs:
     @property
     @pulumi.getter(name="maxVcpu")
     def max_vcpu(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum cpu in vCpu units that can be allocated to the cluster.
+        """
         return pulumi.get(self, "max_vcpu")
 
     @max_vcpu.setter
@@ -1262,12 +1366,18 @@ class OceanNpLinuxOsConfigArgs:
 class OceanNpLinuxOsConfigSysctlArgs:
     def __init__(__self__, *,
                  vm_max_map_count: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] vm_max_map_count: Maximum number of memory map areas a process may have. Can be configured only if OS type is Linux.
+        """
         if vm_max_map_count is not None:
             pulumi.set(__self__, "vm_max_map_count", vm_max_map_count)
 
     @property
     @pulumi.getter(name="vmMaxMapCount")
     def vm_max_map_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of memory map areas a process may have. Can be configured only if OS type is Linux.
+        """
         return pulumi.get(self, "vm_max_map_count")
 
     @vm_max_map_count.setter
@@ -2017,12 +2127,18 @@ class OceanNpVirtualNodeGroupLinuxOsConfigArgs:
 class OceanNpVirtualNodeGroupLinuxOsConfigSysctlArgs:
     def __init__(__self__, *,
                  vm_max_map_count: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] vm_max_map_count: Maximum number of memory map areas a process may have. Can be configured only if OS type is Linux.
+        """
         if vm_max_map_count is not None:
             pulumi.set(__self__, "vm_max_map_count", vm_max_map_count)
 
     @property
     @pulumi.getter(name="vmMaxMapCount")
     def vm_max_map_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of memory map areas a process may have. Can be configured only if OS type is Linux.
+        """
         return pulumi.get(self, "vm_max_map_count")
 
     @vm_max_map_count.setter
@@ -2381,6 +2497,12 @@ class OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs:
                  cpu_per_unit: Optional[pulumi.Input[int]] = None,
                  gpu_per_unit: Optional[pulumi.Input[int]] = None,
                  memory_per_unit: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] num_of_units: The number of headroom units to maintain, where each unit has the defined CPU, memory and GPU.
+        :param pulumi.Input[int] cpu_per_unit: Configure the number of CPUs to allocate for the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        :param pulumi.Input[int] gpu_per_unit: How many GPU cores should be allocated for headroom unit.
+        :param pulumi.Input[int] memory_per_unit: Configure the amount of memory (MiB) to allocate the headroom.
+        """
         pulumi.set(__self__, "num_of_units", num_of_units)
         if cpu_per_unit is not None:
             pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
@@ -2392,6 +2514,9 @@ class OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs:
     @property
     @pulumi.getter(name="numOfUnits")
     def num_of_units(self) -> pulumi.Input[int]:
+        """
+        The number of headroom units to maintain, where each unit has the defined CPU, memory and GPU.
+        """
         return pulumi.get(self, "num_of_units")
 
     @num_of_units.setter
@@ -2401,6 +2526,9 @@ class OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs:
     @property
     @pulumi.getter(name="cpuPerUnit")
     def cpu_per_unit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Configure the number of CPUs to allocate for the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        """
         return pulumi.get(self, "cpu_per_unit")
 
     @cpu_per_unit.setter
@@ -2410,6 +2538,9 @@ class OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs:
     @property
     @pulumi.getter(name="gpuPerUnit")
     def gpu_per_unit(self) -> Optional[pulumi.Input[int]]:
+        """
+        How many GPU cores should be allocated for headroom unit.
+        """
         return pulumi.get(self, "gpu_per_unit")
 
     @gpu_per_unit.setter
@@ -2419,6 +2550,9 @@ class OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs:
     @property
     @pulumi.getter(name="memoryPerUnit")
     def memory_per_unit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Configure the amount of memory (MiB) to allocate the headroom.
+        """
         return pulumi.get(self, "memory_per_unit")
 
     @memory_per_unit.setter
@@ -2525,6 +2659,11 @@ class OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs:
                  size_gb: pulumi.Input[int],
                  type: Optional[pulumi.Input[str]] = None,
                  utilize_ephemeral_storage: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[int] size_gb: The size of the OS disk in GB, Required if dataDisks is specified.
+        :param pulumi.Input[str] type: The type of the OS disk. Valid values: `"Standard_LRS"`, `"Premium_LRS"`, `"StandardSSD_LRS"`.
+        :param pulumi.Input[bool] utilize_ephemeral_storage: Flag to enable/disable the Ephemeral OS Disk utilization.
+        """
         pulumi.set(__self__, "size_gb", size_gb)
         if type is not None:
             pulumi.set(__self__, "type", type)
@@ -2534,6 +2673,9 @@ class OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs:
     @property
     @pulumi.getter(name="sizeGb")
     def size_gb(self) -> pulumi.Input[int]:
+        """
+        The size of the OS disk in GB, Required if dataDisks is specified.
+        """
         return pulumi.get(self, "size_gb")
 
     @size_gb.setter
@@ -2543,6 +2685,9 @@ class OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the OS disk. Valid values: `"Standard_LRS"`, `"Premium_LRS"`, `"StandardSSD_LRS"`.
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -2552,6 +2697,9 @@ class OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs:
     @property
     @pulumi.getter(name="utilizeEphemeralStorage")
     def utilize_ephemeral_storage(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Flag to enable/disable the Ephemeral OS Disk utilization.
+        """
         return pulumi.get(self, "utilize_ephemeral_storage")
 
     @utilize_ephemeral_storage.setter
@@ -2564,6 +2712,10 @@ class OceanVirtualNodeGroupLaunchSpecificationTagArgs:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: Tag Key for Vms in the cluster.
+        :param pulumi.Input[str] value: Tag Value for VMs in the cluster.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
@@ -2572,6 +2724,9 @@ class OceanVirtualNodeGroupLaunchSpecificationTagArgs:
     @property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Tag Key for Vms in the cluster.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -2581,6 +2736,9 @@ class OceanVirtualNodeGroupLaunchSpecificationTagArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Tag Value for VMs in the cluster.
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -2618,7 +2776,6 @@ class OceanVirtualNodeGroupTaintArgs:
                  key: pulumi.Input[str],
                  value: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] effect: The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`, `"PreferNoExecute"`.
         :param pulumi.Input[str] key: The taint key.
         :param pulumi.Input[str] value: The taint value.
         """
@@ -2629,9 +2786,6 @@ class OceanVirtualNodeGroupTaintArgs:
     @property
     @pulumi.getter
     def effect(self) -> pulumi.Input[str]:
-        """
-        The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`, `"PreferNoExecute"`.
-        """
         return pulumi.get(self, "effect")
 
     @effect.setter

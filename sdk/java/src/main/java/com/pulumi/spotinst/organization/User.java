@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var terraformUser = new User("terraformUser", UserArgs.builder()        
+ *         var terraformUser = new User("terraformUser", UserArgs.builder()
  *             .email("abc{@literal @}xyz.com")
  *             .firstName("test")
  *             .lastName("user")

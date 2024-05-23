@@ -15,25 +15,57 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanNetworkNetworkInterface {
+    /**
+     * @return Additional configuration of network interface. The name fields between all the `additional_ip_config` must be unique.
+     * 
+     */
     private @Nullable List<OceanNetworkNetworkInterfaceAdditionalIpConfig> additionalIpConfigs;
+    /**
+     * @return Assign public IP.
+     * 
+     */
     private @Nullable Boolean assignPublicIp;
+    /**
+     * @return Defines whether the network interface is primary or not.
+     * 
+     */
     private @Nullable Boolean isPrimary;
     private @Nullable OceanNetworkNetworkInterfaceSecurityGroup securityGroup;
+    /**
+     * @return Subnet name.
+     * 
+     */
     private @Nullable String subnetName;
 
     private OceanNetworkNetworkInterface() {}
+    /**
+     * @return Additional configuration of network interface. The name fields between all the `additional_ip_config` must be unique.
+     * 
+     */
     public List<OceanNetworkNetworkInterfaceAdditionalIpConfig> additionalIpConfigs() {
         return this.additionalIpConfigs == null ? List.of() : this.additionalIpConfigs;
     }
+    /**
+     * @return Assign public IP.
+     * 
+     */
     public Optional<Boolean> assignPublicIp() {
         return Optional.ofNullable(this.assignPublicIp);
     }
+    /**
+     * @return Defines whether the network interface is primary or not.
+     * 
+     */
     public Optional<Boolean> isPrimary() {
         return Optional.ofNullable(this.isPrimary);
     }
     public Optional<OceanNetworkNetworkInterfaceSecurityGroup> securityGroup() {
         return Optional.ofNullable(this.securityGroup);
     }
+    /**
+     * @return Subnet name.
+     * 
+     */
     public Optional<String> subnetName() {
         return Optional.ofNullable(this.subnetName);
     }

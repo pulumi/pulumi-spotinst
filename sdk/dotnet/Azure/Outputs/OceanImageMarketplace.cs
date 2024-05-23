@@ -13,9 +13,21 @@ namespace Pulumi.SpotInst.Azure.Outputs
     [OutputType]
     public sealed class OceanImageMarketplace
     {
+        /// <summary>
+        /// Image name.
+        /// </summary>
         public readonly string? Offer;
+        /// <summary>
+        /// Image publisher.
+        /// </summary>
         public readonly string? Publisher;
+        /// <summary>
+        /// Image Stock Keeping Unit (which is the specific version of the image).
+        /// </summary>
         public readonly string? Sku;
+        /// <summary>
+        /// Image version.
+        /// </summary>
         public readonly string? Version;
 
         [OutputConstructor]

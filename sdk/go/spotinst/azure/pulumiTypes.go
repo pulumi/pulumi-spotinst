@@ -208,6 +208,7 @@ func (o OceanAutoscalerPtrOutput) ResourceLimits() OceanAutoscalerResourceLimits
 }
 
 type OceanAutoscalerAutoscaleDown struct {
+	// Would represent the maximum % to scale-down.
 	MaxScaleDownPercentage *float64 `pulumi:"maxScaleDownPercentage"`
 }
 
@@ -223,6 +224,7 @@ type OceanAutoscalerAutoscaleDownInput interface {
 }
 
 type OceanAutoscalerAutoscaleDownArgs struct {
+	// Would represent the maximum % to scale-down.
 	MaxScaleDownPercentage pulumi.Float64PtrInput `pulumi:"maxScaleDownPercentage"`
 }
 
@@ -303,6 +305,7 @@ func (o OceanAutoscalerAutoscaleDownOutput) ToOceanAutoscalerAutoscaleDownPtrOut
 	}).(OceanAutoscalerAutoscaleDownPtrOutput)
 }
 
+// Would represent the maximum % to scale-down.
 func (o OceanAutoscalerAutoscaleDownOutput) MaxScaleDownPercentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerAutoscaleDown) *float64 { return v.MaxScaleDownPercentage }).(pulumi.Float64PtrOutput)
 }
@@ -331,6 +334,7 @@ func (o OceanAutoscalerAutoscaleDownPtrOutput) Elem() OceanAutoscalerAutoscaleDo
 	}).(OceanAutoscalerAutoscaleDownOutput)
 }
 
+// Would represent the maximum % to scale-down.
 func (o OceanAutoscalerAutoscaleDownPtrOutput) MaxScaleDownPercentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *OceanAutoscalerAutoscaleDown) *float64 {
 		if v == nil {
@@ -341,6 +345,7 @@ func (o OceanAutoscalerAutoscaleDownPtrOutput) MaxScaleDownPercentage() pulumi.F
 }
 
 type OceanAutoscalerAutoscaleHeadroom struct {
+	// Automatic headroom configuration.
 	Automatic *OceanAutoscalerAutoscaleHeadroomAutomatic `pulumi:"automatic"`
 }
 
@@ -356,6 +361,7 @@ type OceanAutoscalerAutoscaleHeadroomInput interface {
 }
 
 type OceanAutoscalerAutoscaleHeadroomArgs struct {
+	// Automatic headroom configuration.
 	Automatic OceanAutoscalerAutoscaleHeadroomAutomaticPtrInput `pulumi:"automatic"`
 }
 
@@ -436,6 +442,7 @@ func (o OceanAutoscalerAutoscaleHeadroomOutput) ToOceanAutoscalerAutoscaleHeadro
 	}).(OceanAutoscalerAutoscaleHeadroomPtrOutput)
 }
 
+// Automatic headroom configuration.
 func (o OceanAutoscalerAutoscaleHeadroomOutput) Automatic() OceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerAutoscaleHeadroom) *OceanAutoscalerAutoscaleHeadroomAutomatic {
 		return v.Automatic
@@ -466,6 +473,7 @@ func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) Elem() OceanAutoscalerAutosca
 	}).(OceanAutoscalerAutoscaleHeadroomOutput)
 }
 
+// Automatic headroom configuration.
 func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) Automatic() OceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscalerAutoscaleHeadroom) *OceanAutoscalerAutoscaleHeadroomAutomatic {
 		if v == nil {
@@ -476,8 +484,10 @@ func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) Automatic() OceanAutoscalerAu
 }
 
 type OceanAutoscalerAutoscaleHeadroomAutomatic struct {
-	IsEnabled  *bool `pulumi:"isEnabled"`
-	Percentage *int  `pulumi:"percentage"`
+	// Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
+	IsEnabled *bool `pulumi:"isEnabled"`
+	// Optionally set a number between 0-100 to control the percentage of total cluster resources dedicated to headroom. Relevant when `isEnabled` is toggled on.
+	Percentage *int `pulumi:"percentage"`
 }
 
 // OceanAutoscalerAutoscaleHeadroomAutomaticInput is an input type that accepts OceanAutoscalerAutoscaleHeadroomAutomaticArgs and OceanAutoscalerAutoscaleHeadroomAutomaticOutput values.
@@ -492,8 +502,10 @@ type OceanAutoscalerAutoscaleHeadroomAutomaticInput interface {
 }
 
 type OceanAutoscalerAutoscaleHeadroomAutomaticArgs struct {
-	IsEnabled  pulumi.BoolPtrInput `pulumi:"isEnabled"`
-	Percentage pulumi.IntPtrInput  `pulumi:"percentage"`
+	// Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
+	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
+	// Optionally set a number between 0-100 to control the percentage of total cluster resources dedicated to headroom. Relevant when `isEnabled` is toggled on.
+	Percentage pulumi.IntPtrInput `pulumi:"percentage"`
 }
 
 func (OceanAutoscalerAutoscaleHeadroomAutomaticArgs) ElementType() reflect.Type {
@@ -573,10 +585,12 @@ func (o OceanAutoscalerAutoscaleHeadroomAutomaticOutput) ToOceanAutoscalerAutosc
 	}).(OceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput)
 }
 
+// Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
 func (o OceanAutoscalerAutoscaleHeadroomAutomaticOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerAutoscaleHeadroomAutomatic) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Optionally set a number between 0-100 to control the percentage of total cluster resources dedicated to headroom. Relevant when `isEnabled` is toggled on.
 func (o OceanAutoscalerAutoscaleHeadroomAutomaticOutput) Percentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerAutoscaleHeadroomAutomatic) *int { return v.Percentage }).(pulumi.IntPtrOutput)
 }
@@ -605,6 +619,7 @@ func (o OceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput) Elem() OceanAutoscal
 	}).(OceanAutoscalerAutoscaleHeadroomAutomaticOutput)
 }
 
+// Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
 func (o OceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscalerAutoscaleHeadroomAutomatic) *bool {
 		if v == nil {
@@ -614,6 +629,7 @@ func (o OceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput) IsEnabled() pulumi.B
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Optionally set a number between 0-100 to control the percentage of total cluster resources dedicated to headroom. Relevant when `isEnabled` is toggled on.
 func (o OceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput) Percentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscalerAutoscaleHeadroomAutomatic) *int {
 		if v == nil {
@@ -624,8 +640,10 @@ func (o OceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput) Percentage() pulumi.
 }
 
 type OceanAutoscalerResourceLimits struct {
+	// The maximum memory in GiB units that can be allocated to the cluster.
 	MaxMemoryGib *int `pulumi:"maxMemoryGib"`
-	MaxVcpu      *int `pulumi:"maxVcpu"`
+	// The maximum cpu in vCpu units that can be allocated to the cluster.
+	MaxVcpu *int `pulumi:"maxVcpu"`
 }
 
 // OceanAutoscalerResourceLimitsInput is an input type that accepts OceanAutoscalerResourceLimitsArgs and OceanAutoscalerResourceLimitsOutput values.
@@ -640,8 +658,10 @@ type OceanAutoscalerResourceLimitsInput interface {
 }
 
 type OceanAutoscalerResourceLimitsArgs struct {
+	// The maximum memory in GiB units that can be allocated to the cluster.
 	MaxMemoryGib pulumi.IntPtrInput `pulumi:"maxMemoryGib"`
-	MaxVcpu      pulumi.IntPtrInput `pulumi:"maxVcpu"`
+	// The maximum cpu in vCpu units that can be allocated to the cluster.
+	MaxVcpu pulumi.IntPtrInput `pulumi:"maxVcpu"`
 }
 
 func (OceanAutoscalerResourceLimitsArgs) ElementType() reflect.Type {
@@ -721,10 +741,12 @@ func (o OceanAutoscalerResourceLimitsOutput) ToOceanAutoscalerResourceLimitsPtrO
 	}).(OceanAutoscalerResourceLimitsPtrOutput)
 }
 
+// The maximum memory in GiB units that can be allocated to the cluster.
 func (o OceanAutoscalerResourceLimitsOutput) MaxMemoryGib() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerResourceLimits) *int { return v.MaxMemoryGib }).(pulumi.IntPtrOutput)
 }
 
+// The maximum cpu in vCpu units that can be allocated to the cluster.
 func (o OceanAutoscalerResourceLimitsOutput) MaxVcpu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerResourceLimits) *int { return v.MaxVcpu }).(pulumi.IntPtrOutput)
 }
@@ -753,6 +775,7 @@ func (o OceanAutoscalerResourceLimitsPtrOutput) Elem() OceanAutoscalerResourceLi
 	}).(OceanAutoscalerResourceLimitsOutput)
 }
 
+// The maximum memory in GiB units that can be allocated to the cluster.
 func (o OceanAutoscalerResourceLimitsPtrOutput) MaxMemoryGib() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscalerResourceLimits) *int {
 		if v == nil {
@@ -762,6 +785,7 @@ func (o OceanAutoscalerResourceLimitsPtrOutput) MaxMemoryGib() pulumi.IntPtrOutp
 	}).(pulumi.IntPtrOutput)
 }
 
+// The maximum cpu in vCpu units that can be allocated to the cluster.
 func (o OceanAutoscalerResourceLimitsPtrOutput) MaxVcpu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscalerResourceLimits) *int {
 		if v == nil {
@@ -1136,10 +1160,14 @@ func (o OceanImageArrayOutput) Index(i pulumi.IntInput) OceanImageOutput {
 }
 
 type OceanImageMarketplace struct {
-	Offer     *string `pulumi:"offer"`
+	// Image name.
+	Offer *string `pulumi:"offer"`
+	// Image publisher.
 	Publisher *string `pulumi:"publisher"`
-	Sku       *string `pulumi:"sku"`
-	Version   *string `pulumi:"version"`
+	// Image Stock Keeping Unit (which is the specific version of the image).
+	Sku *string `pulumi:"sku"`
+	// Image version.
+	Version *string `pulumi:"version"`
 }
 
 // OceanImageMarketplaceInput is an input type that accepts OceanImageMarketplaceArgs and OceanImageMarketplaceOutput values.
@@ -1154,10 +1182,14 @@ type OceanImageMarketplaceInput interface {
 }
 
 type OceanImageMarketplaceArgs struct {
-	Offer     pulumi.StringPtrInput `pulumi:"offer"`
+	// Image name.
+	Offer pulumi.StringPtrInput `pulumi:"offer"`
+	// Image publisher.
 	Publisher pulumi.StringPtrInput `pulumi:"publisher"`
-	Sku       pulumi.StringPtrInput `pulumi:"sku"`
-	Version   pulumi.StringPtrInput `pulumi:"version"`
+	// Image Stock Keeping Unit (which is the specific version of the image).
+	Sku pulumi.StringPtrInput `pulumi:"sku"`
+	// Image version.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (OceanImageMarketplaceArgs) ElementType() reflect.Type {
@@ -1211,18 +1243,22 @@ func (o OceanImageMarketplaceOutput) ToOceanImageMarketplaceOutputWithContext(ct
 	return o
 }
 
+// Image name.
 func (o OceanImageMarketplaceOutput) Offer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanImageMarketplace) *string { return v.Offer }).(pulumi.StringPtrOutput)
 }
 
+// Image publisher.
 func (o OceanImageMarketplaceOutput) Publisher() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanImageMarketplace) *string { return v.Publisher }).(pulumi.StringPtrOutput)
 }
 
+// Image Stock Keeping Unit (which is the specific version of the image).
 func (o OceanImageMarketplaceOutput) Sku() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanImageMarketplace) *string { return v.Sku }).(pulumi.StringPtrOutput)
 }
 
+// Image version.
 func (o OceanImageMarketplaceOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanImageMarketplace) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -1662,11 +1698,15 @@ func (o OceanNetworkPtrOutput) VirtualNetworkName() pulumi.StringPtrOutput {
 }
 
 type OceanNetworkNetworkInterface struct {
+	// Additional configuration of network interface. The name fields between all the `additionalIpConfig` must be unique.
 	AdditionalIpConfigs []OceanNetworkNetworkInterfaceAdditionalIpConfig `pulumi:"additionalIpConfigs"`
-	AssignPublicIp      *bool                                            `pulumi:"assignPublicIp"`
-	IsPrimary           *bool                                            `pulumi:"isPrimary"`
-	SecurityGroup       *OceanNetworkNetworkInterfaceSecurityGroup       `pulumi:"securityGroup"`
-	SubnetName          *string                                          `pulumi:"subnetName"`
+	// Assign public IP.
+	AssignPublicIp *bool `pulumi:"assignPublicIp"`
+	// Defines whether the network interface is primary or not.
+	IsPrimary     *bool                                      `pulumi:"isPrimary"`
+	SecurityGroup *OceanNetworkNetworkInterfaceSecurityGroup `pulumi:"securityGroup"`
+	// Subnet name.
+	SubnetName *string `pulumi:"subnetName"`
 }
 
 // OceanNetworkNetworkInterfaceInput is an input type that accepts OceanNetworkNetworkInterfaceArgs and OceanNetworkNetworkInterfaceOutput values.
@@ -1681,11 +1721,15 @@ type OceanNetworkNetworkInterfaceInput interface {
 }
 
 type OceanNetworkNetworkInterfaceArgs struct {
+	// Additional configuration of network interface. The name fields between all the `additionalIpConfig` must be unique.
 	AdditionalIpConfigs OceanNetworkNetworkInterfaceAdditionalIpConfigArrayInput `pulumi:"additionalIpConfigs"`
-	AssignPublicIp      pulumi.BoolPtrInput                                      `pulumi:"assignPublicIp"`
-	IsPrimary           pulumi.BoolPtrInput                                      `pulumi:"isPrimary"`
-	SecurityGroup       OceanNetworkNetworkInterfaceSecurityGroupPtrInput        `pulumi:"securityGroup"`
-	SubnetName          pulumi.StringPtrInput                                    `pulumi:"subnetName"`
+	// Assign public IP.
+	AssignPublicIp pulumi.BoolPtrInput `pulumi:"assignPublicIp"`
+	// Defines whether the network interface is primary or not.
+	IsPrimary     pulumi.BoolPtrInput                               `pulumi:"isPrimary"`
+	SecurityGroup OceanNetworkNetworkInterfaceSecurityGroupPtrInput `pulumi:"securityGroup"`
+	// Subnet name.
+	SubnetName pulumi.StringPtrInput `pulumi:"subnetName"`
 }
 
 func (OceanNetworkNetworkInterfaceArgs) ElementType() reflect.Type {
@@ -1739,16 +1783,19 @@ func (o OceanNetworkNetworkInterfaceOutput) ToOceanNetworkNetworkInterfaceOutput
 	return o
 }
 
+// Additional configuration of network interface. The name fields between all the `additionalIpConfig` must be unique.
 func (o OceanNetworkNetworkInterfaceOutput) AdditionalIpConfigs() OceanNetworkNetworkInterfaceAdditionalIpConfigArrayOutput {
 	return o.ApplyT(func(v OceanNetworkNetworkInterface) []OceanNetworkNetworkInterfaceAdditionalIpConfig {
 		return v.AdditionalIpConfigs
 	}).(OceanNetworkNetworkInterfaceAdditionalIpConfigArrayOutput)
 }
 
+// Assign public IP.
 func (o OceanNetworkNetworkInterfaceOutput) AssignPublicIp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanNetworkNetworkInterface) *bool { return v.AssignPublicIp }).(pulumi.BoolPtrOutput)
 }
 
+// Defines whether the network interface is primary or not.
 func (o OceanNetworkNetworkInterfaceOutput) IsPrimary() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanNetworkNetworkInterface) *bool { return v.IsPrimary }).(pulumi.BoolPtrOutput)
 }
@@ -1759,6 +1806,7 @@ func (o OceanNetworkNetworkInterfaceOutput) SecurityGroup() OceanNetworkNetworkI
 	}).(OceanNetworkNetworkInterfaceSecurityGroupPtrOutput)
 }
 
+// Subnet name.
 func (o OceanNetworkNetworkInterfaceOutput) SubnetName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanNetworkNetworkInterface) *string { return v.SubnetName }).(pulumi.StringPtrOutput)
 }
@@ -1784,8 +1832,9 @@ func (o OceanNetworkNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) OceanN
 }
 
 type OceanNetworkNetworkInterfaceAdditionalIpConfig struct {
-	// The Ocean cluster name.
-	Name             *string `pulumi:"name"`
+	// Configuration name.
+	Name *string `pulumi:"name"`
+	// Supported values: `IPv4`, `IPv6`.
 	PrivateIpVersion *string `pulumi:"privateIpVersion"`
 }
 
@@ -1801,8 +1850,9 @@ type OceanNetworkNetworkInterfaceAdditionalIpConfigInput interface {
 }
 
 type OceanNetworkNetworkInterfaceAdditionalIpConfigArgs struct {
-	// The Ocean cluster name.
-	Name             pulumi.StringPtrInput `pulumi:"name"`
+	// Configuration name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Supported values: `IPv4`, `IPv6`.
 	PrivateIpVersion pulumi.StringPtrInput `pulumi:"privateIpVersion"`
 }
 
@@ -1857,11 +1907,12 @@ func (o OceanNetworkNetworkInterfaceAdditionalIpConfigOutput) ToOceanNetworkNetw
 	return o
 }
 
-// The Ocean cluster name.
+// Configuration name.
 func (o OceanNetworkNetworkInterfaceAdditionalIpConfigOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanNetworkNetworkInterfaceAdditionalIpConfig) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Supported values: `IPv4`, `IPv6`.
 func (o OceanNetworkNetworkInterfaceAdditionalIpConfigOutput) PrivateIpVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanNetworkNetworkInterfaceAdditionalIpConfig) *string { return v.PrivateIpVersion }).(pulumi.StringPtrOutput)
 }
@@ -2237,6 +2288,7 @@ func (o OceanNpAutoscalerPtrOutput) ResourceLimits() OceanNpAutoscalerResourceLi
 }
 
 type OceanNpAutoscalerAutoscaleDown struct {
+	// The maximum percentage allowed to scale down in a single scaling action.
 	MaxScaleDownPercentage *int `pulumi:"maxScaleDownPercentage"`
 }
 
@@ -2252,6 +2304,7 @@ type OceanNpAutoscalerAutoscaleDownInput interface {
 }
 
 type OceanNpAutoscalerAutoscaleDownArgs struct {
+	// The maximum percentage allowed to scale down in a single scaling action.
 	MaxScaleDownPercentage pulumi.IntPtrInput `pulumi:"maxScaleDownPercentage"`
 }
 
@@ -2332,6 +2385,7 @@ func (o OceanNpAutoscalerAutoscaleDownOutput) ToOceanNpAutoscalerAutoscaleDownPt
 	}).(OceanNpAutoscalerAutoscaleDownPtrOutput)
 }
 
+// The maximum percentage allowed to scale down in a single scaling action.
 func (o OceanNpAutoscalerAutoscaleDownOutput) MaxScaleDownPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanNpAutoscalerAutoscaleDown) *int { return v.MaxScaleDownPercentage }).(pulumi.IntPtrOutput)
 }
@@ -2360,6 +2414,7 @@ func (o OceanNpAutoscalerAutoscaleDownPtrOutput) Elem() OceanNpAutoscalerAutosca
 	}).(OceanNpAutoscalerAutoscaleDownOutput)
 }
 
+// The maximum percentage allowed to scale down in a single scaling action.
 func (o OceanNpAutoscalerAutoscaleDownPtrOutput) MaxScaleDownPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanNpAutoscalerAutoscaleDown) *int {
 		if v == nil {
@@ -2370,6 +2425,7 @@ func (o OceanNpAutoscalerAutoscaleDownPtrOutput) MaxScaleDownPercentage() pulumi
 }
 
 type OceanNpAutoscalerAutoscaleHeadroom struct {
+	// [Automatic headroom](https://docs.spot.io/ocean/features/headroom?id=automatic-headroom) configuration.
 	Automatic *OceanNpAutoscalerAutoscaleHeadroomAutomatic `pulumi:"automatic"`
 }
 
@@ -2385,6 +2441,7 @@ type OceanNpAutoscalerAutoscaleHeadroomInput interface {
 }
 
 type OceanNpAutoscalerAutoscaleHeadroomArgs struct {
+	// [Automatic headroom](https://docs.spot.io/ocean/features/headroom?id=automatic-headroom) configuration.
 	Automatic OceanNpAutoscalerAutoscaleHeadroomAutomaticPtrInput `pulumi:"automatic"`
 }
 
@@ -2465,6 +2522,7 @@ func (o OceanNpAutoscalerAutoscaleHeadroomOutput) ToOceanNpAutoscalerAutoscaleHe
 	}).(OceanNpAutoscalerAutoscaleHeadroomPtrOutput)
 }
 
+// [Automatic headroom](https://docs.spot.io/ocean/features/headroom?id=automatic-headroom) configuration.
 func (o OceanNpAutoscalerAutoscaleHeadroomOutput) Automatic() OceanNpAutoscalerAutoscaleHeadroomAutomaticPtrOutput {
 	return o.ApplyT(func(v OceanNpAutoscalerAutoscaleHeadroom) *OceanNpAutoscalerAutoscaleHeadroomAutomatic {
 		return v.Automatic
@@ -2495,6 +2553,7 @@ func (o OceanNpAutoscalerAutoscaleHeadroomPtrOutput) Elem() OceanNpAutoscalerAut
 	}).(OceanNpAutoscalerAutoscaleHeadroomOutput)
 }
 
+// [Automatic headroom](https://docs.spot.io/ocean/features/headroom?id=automatic-headroom) configuration.
 func (o OceanNpAutoscalerAutoscaleHeadroomPtrOutput) Automatic() OceanNpAutoscalerAutoscaleHeadroomAutomaticPtrOutput {
 	return o.ApplyT(func(v *OceanNpAutoscalerAutoscaleHeadroom) *OceanNpAutoscalerAutoscaleHeadroomAutomatic {
 		if v == nil {
@@ -2505,8 +2564,10 @@ func (o OceanNpAutoscalerAutoscaleHeadroomPtrOutput) Automatic() OceanNpAutoscal
 }
 
 type OceanNpAutoscalerAutoscaleHeadroomAutomatic struct {
-	IsEnabled  *bool `pulumi:"isEnabled"`
-	Percentage *int  `pulumi:"percentage"`
+	// Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+	IsEnabled *bool `pulumi:"isEnabled"`
+	// Optionally set a number between 0-100 to control the percentage of total cluster resources dedicated to headroom.
+	Percentage *int `pulumi:"percentage"`
 }
 
 // OceanNpAutoscalerAutoscaleHeadroomAutomaticInput is an input type that accepts OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs and OceanNpAutoscalerAutoscaleHeadroomAutomaticOutput values.
@@ -2521,8 +2582,10 @@ type OceanNpAutoscalerAutoscaleHeadroomAutomaticInput interface {
 }
 
 type OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs struct {
-	IsEnabled  pulumi.BoolPtrInput `pulumi:"isEnabled"`
-	Percentage pulumi.IntPtrInput  `pulumi:"percentage"`
+	// Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
+	// Optionally set a number between 0-100 to control the percentage of total cluster resources dedicated to headroom.
+	Percentage pulumi.IntPtrInput `pulumi:"percentage"`
 }
 
 func (OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs) ElementType() reflect.Type {
@@ -2602,10 +2665,12 @@ func (o OceanNpAutoscalerAutoscaleHeadroomAutomaticOutput) ToOceanNpAutoscalerAu
 	}).(OceanNpAutoscalerAutoscaleHeadroomAutomaticPtrOutput)
 }
 
+// Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
 func (o OceanNpAutoscalerAutoscaleHeadroomAutomaticOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanNpAutoscalerAutoscaleHeadroomAutomatic) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Optionally set a number between 0-100 to control the percentage of total cluster resources dedicated to headroom.
 func (o OceanNpAutoscalerAutoscaleHeadroomAutomaticOutput) Percentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanNpAutoscalerAutoscaleHeadroomAutomatic) *int { return v.Percentage }).(pulumi.IntPtrOutput)
 }
@@ -2634,6 +2699,7 @@ func (o OceanNpAutoscalerAutoscaleHeadroomAutomaticPtrOutput) Elem() OceanNpAuto
 	}).(OceanNpAutoscalerAutoscaleHeadroomAutomaticOutput)
 }
 
+// Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
 func (o OceanNpAutoscalerAutoscaleHeadroomAutomaticPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanNpAutoscalerAutoscaleHeadroomAutomatic) *bool {
 		if v == nil {
@@ -2643,6 +2709,7 @@ func (o OceanNpAutoscalerAutoscaleHeadroomAutomaticPtrOutput) IsEnabled() pulumi
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Optionally set a number between 0-100 to control the percentage of total cluster resources dedicated to headroom.
 func (o OceanNpAutoscalerAutoscaleHeadroomAutomaticPtrOutput) Percentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanNpAutoscalerAutoscaleHeadroomAutomatic) *int {
 		if v == nil {
@@ -2653,8 +2720,10 @@ func (o OceanNpAutoscalerAutoscaleHeadroomAutomaticPtrOutput) Percentage() pulum
 }
 
 type OceanNpAutoscalerResourceLimits struct {
+	// The maximum memory in GiB units that can be allocated to the cluster.
 	MaxMemoryGib *int `pulumi:"maxMemoryGib"`
-	MaxVcpu      *int `pulumi:"maxVcpu"`
+	// The maximum cpu in vCpu units that can be allocated to the cluster.
+	MaxVcpu *int `pulumi:"maxVcpu"`
 }
 
 // OceanNpAutoscalerResourceLimitsInput is an input type that accepts OceanNpAutoscalerResourceLimitsArgs and OceanNpAutoscalerResourceLimitsOutput values.
@@ -2669,8 +2738,10 @@ type OceanNpAutoscalerResourceLimitsInput interface {
 }
 
 type OceanNpAutoscalerResourceLimitsArgs struct {
+	// The maximum memory in GiB units that can be allocated to the cluster.
 	MaxMemoryGib pulumi.IntPtrInput `pulumi:"maxMemoryGib"`
-	MaxVcpu      pulumi.IntPtrInput `pulumi:"maxVcpu"`
+	// The maximum cpu in vCpu units that can be allocated to the cluster.
+	MaxVcpu pulumi.IntPtrInput `pulumi:"maxVcpu"`
 }
 
 func (OceanNpAutoscalerResourceLimitsArgs) ElementType() reflect.Type {
@@ -2750,10 +2821,12 @@ func (o OceanNpAutoscalerResourceLimitsOutput) ToOceanNpAutoscalerResourceLimits
 	}).(OceanNpAutoscalerResourceLimitsPtrOutput)
 }
 
+// The maximum memory in GiB units that can be allocated to the cluster.
 func (o OceanNpAutoscalerResourceLimitsOutput) MaxMemoryGib() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanNpAutoscalerResourceLimits) *int { return v.MaxMemoryGib }).(pulumi.IntPtrOutput)
 }
 
+// The maximum cpu in vCpu units that can be allocated to the cluster.
 func (o OceanNpAutoscalerResourceLimitsOutput) MaxVcpu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanNpAutoscalerResourceLimits) *int { return v.MaxVcpu }).(pulumi.IntPtrOutput)
 }
@@ -2782,6 +2855,7 @@ func (o OceanNpAutoscalerResourceLimitsPtrOutput) Elem() OceanNpAutoscalerResour
 	}).(OceanNpAutoscalerResourceLimitsOutput)
 }
 
+// The maximum memory in GiB units that can be allocated to the cluster.
 func (o OceanNpAutoscalerResourceLimitsPtrOutput) MaxMemoryGib() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanNpAutoscalerResourceLimits) *int {
 		if v == nil {
@@ -2791,6 +2865,7 @@ func (o OceanNpAutoscalerResourceLimitsPtrOutput) MaxMemoryGib() pulumi.IntPtrOu
 	}).(pulumi.IntPtrOutput)
 }
 
+// The maximum cpu in vCpu units that can be allocated to the cluster.
 func (o OceanNpAutoscalerResourceLimitsPtrOutput) MaxVcpu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanNpAutoscalerResourceLimits) *int {
 		if v == nil {
@@ -3570,6 +3645,7 @@ func (o OceanNpLinuxOsConfigArrayOutput) Index(i pulumi.IntInput) OceanNpLinuxOs
 }
 
 type OceanNpLinuxOsConfigSysctl struct {
+	// Maximum number of memory map areas a process may have. Can be configured only if OS type is Linux.
 	VmMaxMapCount *int `pulumi:"vmMaxMapCount"`
 }
 
@@ -3585,6 +3661,7 @@ type OceanNpLinuxOsConfigSysctlInput interface {
 }
 
 type OceanNpLinuxOsConfigSysctlArgs struct {
+	// Maximum number of memory map areas a process may have. Can be configured only if OS type is Linux.
 	VmMaxMapCount pulumi.IntPtrInput `pulumi:"vmMaxMapCount"`
 }
 
@@ -3639,6 +3716,7 @@ func (o OceanNpLinuxOsConfigSysctlOutput) ToOceanNpLinuxOsConfigSysctlOutputWith
 	return o
 }
 
+// Maximum number of memory map areas a process may have. Can be configured only if OS type is Linux.
 func (o OceanNpLinuxOsConfigSysctlOutput) VmMaxMapCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanNpLinuxOsConfigSysctl) *int { return v.VmMaxMapCount }).(pulumi.IntPtrOutput)
 }
@@ -5561,6 +5639,7 @@ func (o OceanNpVirtualNodeGroupLinuxOsConfigArrayOutput) Index(i pulumi.IntInput
 }
 
 type OceanNpVirtualNodeGroupLinuxOsConfigSysctl struct {
+	// Maximum number of memory map areas a process may have. Can be configured only if OS type is Linux.
 	VmMaxMapCount *int `pulumi:"vmMaxMapCount"`
 }
 
@@ -5576,6 +5655,7 @@ type OceanNpVirtualNodeGroupLinuxOsConfigSysctlInput interface {
 }
 
 type OceanNpVirtualNodeGroupLinuxOsConfigSysctlArgs struct {
+	// Maximum number of memory map areas a process may have. Can be configured only if OS type is Linux.
 	VmMaxMapCount pulumi.IntPtrInput `pulumi:"vmMaxMapCount"`
 }
 
@@ -5630,6 +5710,7 @@ func (o OceanNpVirtualNodeGroupLinuxOsConfigSysctlOutput) ToOceanNpVirtualNodeGr
 	return o
 }
 
+// Maximum number of memory map areas a process may have. Can be configured only if OS type is Linux.
 func (o OceanNpVirtualNodeGroupLinuxOsConfigSysctlOutput) VmMaxMapCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanNpVirtualNodeGroupLinuxOsConfigSysctl) *int { return v.VmMaxMapCount }).(pulumi.IntPtrOutput)
 }
@@ -6646,10 +6727,14 @@ func (o OceanVirtualNodeGroupAutoscaleArrayOutput) Index(i pulumi.IntInput) Ocea
 }
 
 type OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom struct {
-	CpuPerUnit    *int `pulumi:"cpuPerUnit"`
-	GpuPerUnit    *int `pulumi:"gpuPerUnit"`
+	// Configure the number of CPUs to allocate for the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+	CpuPerUnit *int `pulumi:"cpuPerUnit"`
+	// How many GPU cores should be allocated for headroom unit.
+	GpuPerUnit *int `pulumi:"gpuPerUnit"`
+	// Configure the amount of memory (MiB) to allocate the headroom.
 	MemoryPerUnit *int `pulumi:"memoryPerUnit"`
-	NumOfUnits    int  `pulumi:"numOfUnits"`
+	// The number of headroom units to maintain, where each unit has the defined CPU, memory and GPU.
+	NumOfUnits int `pulumi:"numOfUnits"`
 }
 
 // OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomInput is an input type that accepts OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs and OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput values.
@@ -6664,10 +6749,14 @@ type OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomInput interface {
 }
 
 type OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs struct {
-	CpuPerUnit    pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
-	GpuPerUnit    pulumi.IntPtrInput `pulumi:"gpuPerUnit"`
+	// Configure the number of CPUs to allocate for the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+	CpuPerUnit pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
+	// How many GPU cores should be allocated for headroom unit.
+	GpuPerUnit pulumi.IntPtrInput `pulumi:"gpuPerUnit"`
+	// Configure the amount of memory (MiB) to allocate the headroom.
 	MemoryPerUnit pulumi.IntPtrInput `pulumi:"memoryPerUnit"`
-	NumOfUnits    pulumi.IntInput    `pulumi:"numOfUnits"`
+	// The number of headroom units to maintain, where each unit has the defined CPU, memory and GPU.
+	NumOfUnits pulumi.IntInput `pulumi:"numOfUnits"`
 }
 
 func (OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs) ElementType() reflect.Type {
@@ -6721,18 +6810,22 @@ func (o OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput) ToOceanVirtualNod
 	return o
 }
 
+// Configure the number of CPUs to allocate for the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
 func (o OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput) CpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
+// How many GPU cores should be allocated for headroom unit.
 func (o OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput) GpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom) *int { return v.GpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
+// Configure the amount of memory (MiB) to allocate the headroom.
 func (o OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput) MemoryPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
 }
 
+// The number of headroom units to maintain, where each unit has the defined CPU, memory and GPU.
 func (o OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput) NumOfUnits() pulumi.IntOutput {
 	return o.ApplyT(func(v OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom) int { return v.NumOfUnits }).(pulumi.IntOutput)
 }
@@ -6983,9 +7076,12 @@ func (o OceanVirtualNodeGroupLaunchSpecificationArrayOutput) Index(i pulumi.IntI
 }
 
 type OceanVirtualNodeGroupLaunchSpecificationOsDisk struct {
-	SizeGb                  int     `pulumi:"sizeGb"`
-	Type                    *string `pulumi:"type"`
-	UtilizeEphemeralStorage *bool   `pulumi:"utilizeEphemeralStorage"`
+	// The size of the OS disk in GB, Required if dataDisks is specified.
+	SizeGb int `pulumi:"sizeGb"`
+	// The type of the OS disk. Valid values: `"Standard_LRS"`, `"Premium_LRS"`, `"StandardSSD_LRS"`.
+	Type *string `pulumi:"type"`
+	// Flag to enable/disable the Ephemeral OS Disk utilization.
+	UtilizeEphemeralStorage *bool `pulumi:"utilizeEphemeralStorage"`
 }
 
 // OceanVirtualNodeGroupLaunchSpecificationOsDiskInput is an input type that accepts OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs and OceanVirtualNodeGroupLaunchSpecificationOsDiskOutput values.
@@ -7000,9 +7096,12 @@ type OceanVirtualNodeGroupLaunchSpecificationOsDiskInput interface {
 }
 
 type OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs struct {
-	SizeGb                  pulumi.IntInput       `pulumi:"sizeGb"`
-	Type                    pulumi.StringPtrInput `pulumi:"type"`
-	UtilizeEphemeralStorage pulumi.BoolPtrInput   `pulumi:"utilizeEphemeralStorage"`
+	// The size of the OS disk in GB, Required if dataDisks is specified.
+	SizeGb pulumi.IntInput `pulumi:"sizeGb"`
+	// The type of the OS disk. Valid values: `"Standard_LRS"`, `"Premium_LRS"`, `"StandardSSD_LRS"`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Flag to enable/disable the Ephemeral OS Disk utilization.
+	UtilizeEphemeralStorage pulumi.BoolPtrInput `pulumi:"utilizeEphemeralStorage"`
 }
 
 func (OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs) ElementType() reflect.Type {
@@ -7082,14 +7181,17 @@ func (o OceanVirtualNodeGroupLaunchSpecificationOsDiskOutput) ToOceanVirtualNode
 	}).(OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput)
 }
 
+// The size of the OS disk in GB, Required if dataDisks is specified.
 func (o OceanVirtualNodeGroupLaunchSpecificationOsDiskOutput) SizeGb() pulumi.IntOutput {
 	return o.ApplyT(func(v OceanVirtualNodeGroupLaunchSpecificationOsDisk) int { return v.SizeGb }).(pulumi.IntOutput)
 }
 
+// The type of the OS disk. Valid values: `"Standard_LRS"`, `"Premium_LRS"`, `"StandardSSD_LRS"`.
 func (o OceanVirtualNodeGroupLaunchSpecificationOsDiskOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanVirtualNodeGroupLaunchSpecificationOsDisk) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
+// Flag to enable/disable the Ephemeral OS Disk utilization.
 func (o OceanVirtualNodeGroupLaunchSpecificationOsDiskOutput) UtilizeEphemeralStorage() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanVirtualNodeGroupLaunchSpecificationOsDisk) *bool { return v.UtilizeEphemeralStorage }).(pulumi.BoolPtrOutput)
 }
@@ -7118,6 +7220,7 @@ func (o OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput) Elem() OceanVir
 	}).(OceanVirtualNodeGroupLaunchSpecificationOsDiskOutput)
 }
 
+// The size of the OS disk in GB, Required if dataDisks is specified.
 func (o OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput) SizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanVirtualNodeGroupLaunchSpecificationOsDisk) *int {
 		if v == nil {
@@ -7127,6 +7230,7 @@ func (o OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput) SizeGb() pulumi
 	}).(pulumi.IntPtrOutput)
 }
 
+// The type of the OS disk. Valid values: `"Standard_LRS"`, `"Premium_LRS"`, `"StandardSSD_LRS"`.
 func (o OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanVirtualNodeGroupLaunchSpecificationOsDisk) *string {
 		if v == nil {
@@ -7136,6 +7240,7 @@ func (o OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput) Type() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
+// Flag to enable/disable the Ephemeral OS Disk utilization.
 func (o OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput) UtilizeEphemeralStorage() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanVirtualNodeGroupLaunchSpecificationOsDisk) *bool {
 		if v == nil {
@@ -7146,7 +7251,9 @@ func (o OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput) UtilizeEphemera
 }
 
 type OceanVirtualNodeGroupLaunchSpecificationTag struct {
-	Key   *string `pulumi:"key"`
+	// Tag Key for Vms in the cluster.
+	Key *string `pulumi:"key"`
+	// Tag Value for VMs in the cluster.
 	Value *string `pulumi:"value"`
 }
 
@@ -7162,7 +7269,9 @@ type OceanVirtualNodeGroupLaunchSpecificationTagInput interface {
 }
 
 type OceanVirtualNodeGroupLaunchSpecificationTagArgs struct {
-	Key   pulumi.StringPtrInput `pulumi:"key"`
+	// Tag Key for Vms in the cluster.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Tag Value for VMs in the cluster.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -7217,10 +7326,12 @@ func (o OceanVirtualNodeGroupLaunchSpecificationTagOutput) ToOceanVirtualNodeGro
 	return o
 }
 
+// Tag Key for Vms in the cluster.
 func (o OceanVirtualNodeGroupLaunchSpecificationTagOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanVirtualNodeGroupLaunchSpecificationTag) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
+// Tag Value for VMs in the cluster.
 func (o OceanVirtualNodeGroupLaunchSpecificationTagOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanVirtualNodeGroupLaunchSpecificationTag) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -7343,7 +7454,6 @@ func (o OceanVirtualNodeGroupResourceLimitArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type OceanVirtualNodeGroupTaint struct {
-	// The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`, `"PreferNoExecute"`.
 	Effect string `pulumi:"effect"`
 	// The taint key.
 	Key string `pulumi:"key"`
@@ -7363,7 +7473,6 @@ type OceanVirtualNodeGroupTaintInput interface {
 }
 
 type OceanVirtualNodeGroupTaintArgs struct {
-	// The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`, `"PreferNoExecute"`.
 	Effect pulumi.StringInput `pulumi:"effect"`
 	// The taint key.
 	Key pulumi.StringInput `pulumi:"key"`
@@ -7422,7 +7531,6 @@ func (o OceanVirtualNodeGroupTaintOutput) ToOceanVirtualNodeGroupTaintOutputWith
 	return o
 }
 
-// The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`, `"PreferNoExecute"`.
 func (o OceanVirtualNodeGroupTaintOutput) Effect() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanVirtualNodeGroupTaint) string { return v.Effect }).(pulumi.StringOutput)
 }

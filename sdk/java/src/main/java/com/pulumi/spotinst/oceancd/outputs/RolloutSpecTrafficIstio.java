@@ -14,13 +14,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RolloutSpecTrafficIstio {
+    /**
+     * @return It references to an Istio DestinationRule to modify and shape traffic. `DestinationRule` field belongs only to the Subset Level approach.
+     * 
+     */
     private @Nullable RolloutSpecTrafficIstioDestinationRule destinationRule;
+    /**
+     * @return Defines a set of traffic routing rules to apply when a host is addressed.
+     * 
+     */
     private List<RolloutSpecTrafficIstioVirtualService> virtualServices;
 
     private RolloutSpecTrafficIstio() {}
+    /**
+     * @return It references to an Istio DestinationRule to modify and shape traffic. `DestinationRule` field belongs only to the Subset Level approach.
+     * 
+     */
     public Optional<RolloutSpecTrafficIstioDestinationRule> destinationRule() {
         return Optional.ofNullable(this.destinationRule);
     }
+    /**
+     * @return Defines a set of traffic routing rules to apply when a host is addressed.
+     * 
+     */
     public List<RolloutSpecTrafficIstioVirtualService> virtualServices() {
         return this.virtualServices;
     }

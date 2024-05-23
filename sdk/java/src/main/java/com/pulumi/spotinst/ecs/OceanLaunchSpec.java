@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new OceanLaunchSpec("example", OceanLaunchSpecArgs.builder()        
+ *         var example = new OceanLaunchSpec("example", OceanLaunchSpecArgs.builder()
  *             .oceanId("o-123456")
  *             .imageId("ami-123456")
  *             .userData("echo hello world")

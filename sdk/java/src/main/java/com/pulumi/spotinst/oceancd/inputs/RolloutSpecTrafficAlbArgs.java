@@ -18,37 +18,77 @@ public final class RolloutSpecTrafficAlbArgs extends com.pulumi.resources.Resour
 
     public static final RolloutSpecTrafficAlbArgs Empty = new RolloutSpecTrafficAlbArgs();
 
+    /**
+     * Has to match the configured annotation prefix on the alb ingress controller.
+     * 
+     */
     @Import(name="albAnnotationPrefix")
     private @Nullable Output<String> albAnnotationPrefix;
 
+    /**
+     * @return Has to match the configured annotation prefix on the alb ingress controller.
+     * 
+     */
     public Optional<Output<String>> albAnnotationPrefix() {
         return Optional.ofNullable(this.albAnnotationPrefix);
     }
 
+    /**
+     * Refers to the name of an `Ingress` resource in the same namespace as the `SpotDeployment`.
+     * 
+     */
     @Import(name="albIngress", required=true)
     private Output<String> albIngress;
 
+    /**
+     * @return Refers to the name of an `Ingress` resource in the same namespace as the `SpotDeployment`.
+     * 
+     */
     public Output<String> albIngress() {
         return this.albIngress;
     }
 
+    /**
+     * References the service in the ingress to the controller should add the action to.
+     * 
+     */
     @Import(name="albRootService", required=true)
     private Output<String> albRootService;
 
+    /**
+     * @return References the service in the ingress to the controller should add the action to.
+     * 
+     */
     public Output<String> albRootService() {
         return this.albRootService;
     }
 
+    /**
+     * Refers to the port that the Ingress action should route traffic to.
+     * 
+     */
     @Import(name="servicePort", required=true)
     private Output<Integer> servicePort;
 
+    /**
+     * @return Refers to the port that the Ingress action should route traffic to.
+     * 
+     */
     public Output<Integer> servicePort() {
         return this.servicePort;
     }
 
+    /**
+     * Allows to specify further settings on the ForwardConfig.
+     * 
+     */
     @Import(name="stickinessConfig")
     private @Nullable Output<RolloutSpecTrafficAlbStickinessConfigArgs> stickinessConfig;
 
+    /**
+     * @return Allows to specify further settings on the ForwardConfig.
+     * 
+     */
     public Optional<Output<RolloutSpecTrafficAlbStickinessConfigArgs>> stickinessConfig() {
         return Optional.ofNullable(this.stickinessConfig);
     }
@@ -81,47 +121,107 @@ public final class RolloutSpecTrafficAlbArgs extends com.pulumi.resources.Resour
             $ = new RolloutSpecTrafficAlbArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param albAnnotationPrefix Has to match the configured annotation prefix on the alb ingress controller.
+         * 
+         * @return builder
+         * 
+         */
         public Builder albAnnotationPrefix(@Nullable Output<String> albAnnotationPrefix) {
             $.albAnnotationPrefix = albAnnotationPrefix;
             return this;
         }
 
+        /**
+         * @param albAnnotationPrefix Has to match the configured annotation prefix on the alb ingress controller.
+         * 
+         * @return builder
+         * 
+         */
         public Builder albAnnotationPrefix(String albAnnotationPrefix) {
             return albAnnotationPrefix(Output.of(albAnnotationPrefix));
         }
 
+        /**
+         * @param albIngress Refers to the name of an `Ingress` resource in the same namespace as the `SpotDeployment`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder albIngress(Output<String> albIngress) {
             $.albIngress = albIngress;
             return this;
         }
 
+        /**
+         * @param albIngress Refers to the name of an `Ingress` resource in the same namespace as the `SpotDeployment`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder albIngress(String albIngress) {
             return albIngress(Output.of(albIngress));
         }
 
+        /**
+         * @param albRootService References the service in the ingress to the controller should add the action to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder albRootService(Output<String> albRootService) {
             $.albRootService = albRootService;
             return this;
         }
 
+        /**
+         * @param albRootService References the service in the ingress to the controller should add the action to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder albRootService(String albRootService) {
             return albRootService(Output.of(albRootService));
         }
 
+        /**
+         * @param servicePort Refers to the port that the Ingress action should route traffic to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder servicePort(Output<Integer> servicePort) {
             $.servicePort = servicePort;
             return this;
         }
 
+        /**
+         * @param servicePort Refers to the port that the Ingress action should route traffic to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder servicePort(Integer servicePort) {
             return servicePort(Output.of(servicePort));
         }
 
+        /**
+         * @param stickinessConfig Allows to specify further settings on the ForwardConfig.
+         * 
+         * @return builder
+         * 
+         */
         public Builder stickinessConfig(@Nullable Output<RolloutSpecTrafficAlbStickinessConfigArgs> stickinessConfig) {
             $.stickinessConfig = stickinessConfig;
             return this;
         }
 
+        /**
+         * @param stickinessConfig Allows to specify further settings on the ForwardConfig.
+         * 
+         * @return builder
+         * 
+         */
         public Builder stickinessConfig(RolloutSpecTrafficAlbStickinessConfigArgs stickinessConfig) {
             return stickinessConfig(Output.of(stickinessConfig));
         }

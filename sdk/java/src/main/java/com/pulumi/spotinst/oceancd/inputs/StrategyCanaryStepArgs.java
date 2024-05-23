@@ -20,30 +20,62 @@ public final class StrategyCanaryStepArgs extends com.pulumi.resources.ResourceA
 
     public static final StrategyCanaryStepArgs Empty = new StrategyCanaryStepArgs();
 
+    /**
+     * Defines the duration of time to freeze the rollout.
+     * 
+     */
     @Import(name="pause")
     private @Nullable Output<StrategyCanaryStepPauseArgs> pause;
 
+    /**
+     * @return Defines the duration of time to freeze the rollout.
+     * 
+     */
     public Optional<Output<StrategyCanaryStepPauseArgs>> pause() {
         return Optional.ofNullable(this.pause);
     }
 
+    /**
+     * Defines how to scale the version without traffic weight changing.
+     * 
+     */
     @Import(name="setCanaryScale")
     private @Nullable Output<StrategyCanaryStepSetCanaryScaleArgs> setCanaryScale;
 
+    /**
+     * @return Defines how to scale the version without traffic weight changing.
+     * 
+     */
     public Optional<Output<StrategyCanaryStepSetCanaryScaleArgs>> setCanaryScale() {
         return Optional.ofNullable(this.setCanaryScale);
     }
 
+    /**
+     * Defines the list of HeaderRoutes to add to the Rollout.
+     * 
+     */
     @Import(name="setHeaderRoute")
     private @Nullable Output<StrategyCanaryStepSetHeaderRouteArgs> setHeaderRoute;
 
+    /**
+     * @return Defines the list of HeaderRoutes to add to the Rollout.
+     * 
+     */
     public Optional<Output<StrategyCanaryStepSetHeaderRouteArgs>> setHeaderRoute() {
         return Optional.ofNullable(this.setHeaderRoute);
     }
 
+    /**
+     * Defines the percentage that the new version should receive.
+     * 
+     */
     @Import(name="setWeight")
     private @Nullable Output<Integer> setWeight;
 
+    /**
+     * @return Defines the percentage that the new version should receive.
+     * 
+     */
     public Optional<Output<Integer>> setWeight() {
         return Optional.ofNullable(this.setWeight);
     }
@@ -55,9 +87,17 @@ public final class StrategyCanaryStepArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.stepName);
     }
 
+    /**
+     * Represents the list of verifications to run in a step.
+     * 
+     */
     @Import(name="verification")
     private @Nullable Output<StrategyCanaryStepVerificationArgs> verification;
 
+    /**
+     * @return Represents the list of verifications to run in a step.
+     * 
+     */
     public Optional<Output<StrategyCanaryStepVerificationArgs>> verification() {
         return Optional.ofNullable(this.verification);
     }
@@ -91,38 +131,86 @@ public final class StrategyCanaryStepArgs extends com.pulumi.resources.ResourceA
             $ = new StrategyCanaryStepArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param pause Defines the duration of time to freeze the rollout.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pause(@Nullable Output<StrategyCanaryStepPauseArgs> pause) {
             $.pause = pause;
             return this;
         }
 
+        /**
+         * @param pause Defines the duration of time to freeze the rollout.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pause(StrategyCanaryStepPauseArgs pause) {
             return pause(Output.of(pause));
         }
 
+        /**
+         * @param setCanaryScale Defines how to scale the version without traffic weight changing.
+         * 
+         * @return builder
+         * 
+         */
         public Builder setCanaryScale(@Nullable Output<StrategyCanaryStepSetCanaryScaleArgs> setCanaryScale) {
             $.setCanaryScale = setCanaryScale;
             return this;
         }
 
+        /**
+         * @param setCanaryScale Defines how to scale the version without traffic weight changing.
+         * 
+         * @return builder
+         * 
+         */
         public Builder setCanaryScale(StrategyCanaryStepSetCanaryScaleArgs setCanaryScale) {
             return setCanaryScale(Output.of(setCanaryScale));
         }
 
+        /**
+         * @param setHeaderRoute Defines the list of HeaderRoutes to add to the Rollout.
+         * 
+         * @return builder
+         * 
+         */
         public Builder setHeaderRoute(@Nullable Output<StrategyCanaryStepSetHeaderRouteArgs> setHeaderRoute) {
             $.setHeaderRoute = setHeaderRoute;
             return this;
         }
 
+        /**
+         * @param setHeaderRoute Defines the list of HeaderRoutes to add to the Rollout.
+         * 
+         * @return builder
+         * 
+         */
         public Builder setHeaderRoute(StrategyCanaryStepSetHeaderRouteArgs setHeaderRoute) {
             return setHeaderRoute(Output.of(setHeaderRoute));
         }
 
+        /**
+         * @param setWeight Defines the percentage that the new version should receive.
+         * 
+         * @return builder
+         * 
+         */
         public Builder setWeight(@Nullable Output<Integer> setWeight) {
             $.setWeight = setWeight;
             return this;
         }
 
+        /**
+         * @param setWeight Defines the percentage that the new version should receive.
+         * 
+         * @return builder
+         * 
+         */
         public Builder setWeight(Integer setWeight) {
             return setWeight(Output.of(setWeight));
         }
@@ -136,11 +224,23 @@ public final class StrategyCanaryStepArgs extends com.pulumi.resources.ResourceA
             return stepName(Output.of(stepName));
         }
 
+        /**
+         * @param verification Represents the list of verifications to run in a step.
+         * 
+         * @return builder
+         * 
+         */
         public Builder verification(@Nullable Output<StrategyCanaryStepVerificationArgs> verification) {
             $.verification = verification;
             return this;
         }
 
+        /**
+         * @param verification Represents the list of verifications to run in a step.
+         * 
+         * @return builder
+         * 
+         */
         public Builder verification(StrategyCanaryStepVerificationArgs verification) {
             return verification(Output.of(verification));
         }

@@ -13,7 +13,13 @@ namespace Pulumi.SpotInst.Oceancd.Outputs
     [OutputType]
     public sealed class VerificationTemplateMetricProviderJobSpec
     {
+        /// <summary>
+        /// Specifies the number of retries before marking this job failed.
+        /// </summary>
         public readonly int? BackoffLimit;
+        /// <summary>
+        /// Describes the pod that will be created when executing a job.
+        /// </summary>
         public readonly ImmutableArray<Outputs.VerificationTemplateMetricProviderJobSpecJobTemplate> JobTemplates;
 
         [OutputConstructor]

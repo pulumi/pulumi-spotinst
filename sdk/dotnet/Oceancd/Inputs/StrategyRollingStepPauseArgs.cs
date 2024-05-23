@@ -12,6 +12,9 @@ namespace Pulumi.SpotInst.Oceancd.Inputs
 
     public sealed class StrategyRollingStepPauseArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The amount of time to wait before moving to the next step.
+        /// </summary>
         [Input("duration")]
         public Input<string>? Duration { get; set; }
 

@@ -14,6 +14,10 @@ namespace Pulumi.SpotInst.Oceancd.Inputs
     {
         [Input("mappings", required: true)]
         private InputList<string>? _mappings;
+
+        /// <summary>
+        /// A list of names of the Ambassador Mappings used to route traffic to the service.
+        /// </summary>
         public InputList<string> Mappings
         {
             get => _mappings ?? (_mappings = new InputList<string>());

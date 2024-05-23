@@ -17,23 +17,47 @@ public final class VerificationTemplateMetricBaselineBaselineProviderArgs extend
 
     public static final VerificationTemplateMetricBaselineBaselineProviderArgs Empty = new VerificationTemplateMetricBaselineBaselineProviderArgs();
 
+    /**
+     * The datadog provider.
+     * 
+     */
     @Import(name="datadog")
     private @Nullable Output<VerificationTemplateMetricBaselineBaselineProviderDatadogArgs> datadog;
 
+    /**
+     * @return The datadog provider.
+     * 
+     */
     public Optional<Output<VerificationTemplateMetricBaselineBaselineProviderDatadogArgs>> datadog() {
         return Optional.ofNullable(this.datadog);
     }
 
+    /**
+     * The New Relic provider.
+     * 
+     */
     @Import(name="newRelic")
     private @Nullable Output<VerificationTemplateMetricBaselineBaselineProviderNewRelicArgs> newRelic;
 
+    /**
+     * @return The New Relic provider.
+     * 
+     */
     public Optional<Output<VerificationTemplateMetricBaselineBaselineProviderNewRelicArgs>> newRelic() {
         return Optional.ofNullable(this.newRelic);
     }
 
+    /**
+     * The Prometheus provider.
+     * 
+     */
     @Import(name="prometheus")
     private @Nullable Output<VerificationTemplateMetricBaselineBaselineProviderPrometheusArgs> prometheus;
 
+    /**
+     * @return The Prometheus provider.
+     * 
+     */
     public Optional<Output<VerificationTemplateMetricBaselineBaselineProviderPrometheusArgs>> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }
@@ -64,29 +88,65 @@ public final class VerificationTemplateMetricBaselineBaselineProviderArgs extend
             $ = new VerificationTemplateMetricBaselineBaselineProviderArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param datadog The datadog provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder datadog(@Nullable Output<VerificationTemplateMetricBaselineBaselineProviderDatadogArgs> datadog) {
             $.datadog = datadog;
             return this;
         }
 
+        /**
+         * @param datadog The datadog provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder datadog(VerificationTemplateMetricBaselineBaselineProviderDatadogArgs datadog) {
             return datadog(Output.of(datadog));
         }
 
+        /**
+         * @param newRelic The New Relic provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder newRelic(@Nullable Output<VerificationTemplateMetricBaselineBaselineProviderNewRelicArgs> newRelic) {
             $.newRelic = newRelic;
             return this;
         }
 
+        /**
+         * @param newRelic The New Relic provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder newRelic(VerificationTemplateMetricBaselineBaselineProviderNewRelicArgs newRelic) {
             return newRelic(Output.of(newRelic));
         }
 
+        /**
+         * @param prometheus The Prometheus provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder prometheus(@Nullable Output<VerificationTemplateMetricBaselineBaselineProviderPrometheusArgs> prometheus) {
             $.prometheus = prometheus;
             return this;
         }
 
+        /**
+         * @param prometheus The Prometheus provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder prometheus(VerificationTemplateMetricBaselineBaselineProviderPrometheusArgs prometheus) {
             return prometheus(Output.of(prometheus));
         }

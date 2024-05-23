@@ -12,6 +12,9 @@ namespace Pulumi.SpotInst.Oceancd.Inputs
 
     public sealed class VerificationTemplateArgValueFromArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Secret key to use.
+        /// </summary>
         [Input("secretKeyRef")]
         public Input<Inputs.VerificationTemplateArgValueFromSecretKeyRefArgs>? SecretKeyRef { get; set; }
 

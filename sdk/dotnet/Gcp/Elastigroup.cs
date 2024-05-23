@@ -221,6 +221,7 @@ namespace Pulumi.SpotInst.Gcp
 
         /// <summary>
         /// Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
+        /// * `vCPU` - (Optional) The number of vCPUs in the custom instance type. GCP has a number of limitations on accepted vCPU values. For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
         /// </summary>
         [Output("instanceTypesCustoms")]
         public Output<ImmutableArray<Outputs.ElastigroupInstanceTypesCustom>> InstanceTypesCustoms { get; private set; } = null!;
@@ -465,6 +466,7 @@ namespace Pulumi.SpotInst.Gcp
 
         /// <summary>
         /// Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
+        /// * `vCPU` - (Optional) The number of vCPUs in the custom instance type. GCP has a number of limitations on accepted vCPU values. For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
         /// </summary>
         public InputList<Inputs.ElastigroupInstanceTypesCustomArgs> InstanceTypesCustoms
         {
@@ -724,6 +726,7 @@ namespace Pulumi.SpotInst.Gcp
 
         /// <summary>
         /// Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
+        /// * `vCPU` - (Optional) The number of vCPUs in the custom instance type. GCP has a number of limitations on accepted vCPU values. For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
         /// </summary>
         public InputList<Inputs.ElastigroupInstanceTypesCustomGetArgs> InstanceTypesCustoms
         {

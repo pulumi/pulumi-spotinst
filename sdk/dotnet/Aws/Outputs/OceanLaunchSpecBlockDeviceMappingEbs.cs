@@ -13,14 +13,41 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class OceanLaunchSpecBlockDeviceMappingEbs
     {
+        /// <summary>
+        /// Boolean. Flag to delete the EBS on instance termination.
+        /// </summary>
         public readonly bool? DeleteOnTermination;
+        /// <summary>
+        /// Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
+        /// </summary>
         public readonly Outputs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize? DynamicVolumeSize;
+        /// <summary>
+        /// Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+        /// </summary>
         public readonly bool? Encrypted;
+        /// <summary>
+        /// Int. The number of I/O operations per second (IOPS) that the volume supports.
+        /// </summary>
         public readonly int? Iops;
+        /// <summary>
+        /// String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+        /// </summary>
         public readonly string? KmsKeyId;
+        /// <summary>
+        /// (Optional) String. The Snapshot ID to mount by.
+        /// </summary>
         public readonly string? SnapshotId;
+        /// <summary>
+        /// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = `gp3`.
+        /// </summary>
         public readonly int? Throughput;
+        /// <summary>
+        /// Int. The size, in GB of the volume.
+        /// </summary>
         public readonly int? VolumeSize;
+        /// <summary>
+        /// String. The type of the volume. (Example: `gp2`).
+        /// </summary>
         public readonly string? VolumeType;
 
         [OutputConstructor]

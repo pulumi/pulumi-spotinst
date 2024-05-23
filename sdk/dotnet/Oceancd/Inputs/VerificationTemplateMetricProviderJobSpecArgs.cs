@@ -12,11 +12,18 @@ namespace Pulumi.SpotInst.Oceancd.Inputs
 
     public sealed class VerificationTemplateMetricProviderJobSpecArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies the number of retries before marking this job failed.
+        /// </summary>
         [Input("backoffLimit")]
         public Input<int>? BackoffLimit { get; set; }
 
         [Input("jobTemplates", required: true)]
         private InputList<Inputs.VerificationTemplateMetricProviderJobSpecJobTemplateArgs>? _jobTemplates;
+
+        /// <summary>
+        /// Describes the pod that will be created when executing a job.
+        /// </summary>
         public InputList<Inputs.VerificationTemplateMetricProviderJobSpecJobTemplateArgs> JobTemplates
         {
             get => _jobTemplates ?? (_jobTemplates = new InputList<Inputs.VerificationTemplateMetricProviderJobSpecJobTemplateArgs>());

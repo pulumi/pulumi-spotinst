@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a Account
- *         var myAwsAcct = new Account("myAwsAcct", AccountArgs.builder()        
+ *         var myAwsAcct = new Account("myAwsAcct", AccountArgs.builder()
  *             .name("my_aws_acct")
  *             .build());
  * 

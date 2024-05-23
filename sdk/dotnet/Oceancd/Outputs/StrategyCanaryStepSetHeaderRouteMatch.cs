@@ -13,7 +13,13 @@ namespace Pulumi.SpotInst.Oceancd.Outputs
     [OutputType]
     public sealed class StrategyCanaryStepSetHeaderRouteMatch
     {
+        /// <summary>
+        /// The name of the header.
+        /// </summary>
         public readonly string HeaderName;
+        /// <summary>
+        /// Defines a single header to add to the Rollout. Must be only one initialized from the following (exact, prefix, regex).
+        /// </summary>
         public readonly Outputs.StrategyCanaryStepSetHeaderRouteMatchHeaderValue HeaderValue;
 
         [OutputConstructor]

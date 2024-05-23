@@ -14,16 +14,32 @@ public final class RolloutSpecTrafficPingPongArgs extends com.pulumi.resources.R
 
     public static final RolloutSpecTrafficPingPongArgs Empty = new RolloutSpecTrafficPingPongArgs();
 
+    /**
+     * Holds the name of the ping service.
+     * 
+     */
     @Import(name="pingService", required=true)
     private Output<String> pingService;
 
+    /**
+     * @return Holds the name of the ping service.
+     * 
+     */
     public Output<String> pingService() {
         return this.pingService;
     }
 
+    /**
+     * Holds the name of the pong service.
+     * 
+     */
     @Import(name="pongService", required=true)
     private Output<String> pongService;
 
+    /**
+     * @return Holds the name of the pong service.
+     * 
+     */
     public Output<String> pongService() {
         return this.pongService;
     }
@@ -53,20 +69,44 @@ public final class RolloutSpecTrafficPingPongArgs extends com.pulumi.resources.R
             $ = new RolloutSpecTrafficPingPongArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param pingService Holds the name of the ping service.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pingService(Output<String> pingService) {
             $.pingService = pingService;
             return this;
         }
 
+        /**
+         * @param pingService Holds the name of the ping service.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pingService(String pingService) {
             return pingService(Output.of(pingService));
         }
 
+        /**
+         * @param pongService Holds the name of the pong service.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pongService(Output<String> pongService) {
             $.pongService = pongService;
             return this;
         }
 
+        /**
+         * @param pongService Holds the name of the pong service.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pongService(String pongService) {
             return pongService(Output.of(pongService));
         }

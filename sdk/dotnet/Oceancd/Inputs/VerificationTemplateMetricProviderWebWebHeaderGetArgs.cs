@@ -12,9 +12,15 @@ namespace Pulumi.SpotInst.Oceancd.Inputs
 
     public sealed class VerificationTemplateMetricProviderWebWebHeaderGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of a header
+        /// </summary>
         [Input("webHeaderKey", required: true)]
         public Input<string> WebHeaderKey { get; set; } = null!;
 
+        /// <summary>
+        /// The value of a header
+        /// </summary>
         [Input("webHeaderValue", required: true)]
         public Input<string> WebHeaderValue { get; set; } = null!;
 

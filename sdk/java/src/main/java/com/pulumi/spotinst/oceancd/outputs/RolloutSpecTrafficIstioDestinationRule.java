@@ -10,17 +10,41 @@ import java.util.Objects;
 
 @CustomType
 public final class RolloutSpecTrafficIstioDestinationRule {
+    /**
+     * @return The subset name to modify labels with the canary version.
+     * 
+     */
     private String canarySubsetName;
+    /**
+     * @return Holds the name of the DestinationRule.
+     * 
+     */
     private String destinationRuleName;
+    /**
+     * @return The subset name to modify labels with the stable version.
+     * 
+     */
     private String stableSubsetName;
 
     private RolloutSpecTrafficIstioDestinationRule() {}
+    /**
+     * @return The subset name to modify labels with the canary version.
+     * 
+     */
     public String canarySubsetName() {
         return this.canarySubsetName;
     }
+    /**
+     * @return Holds the name of the DestinationRule.
+     * 
+     */
     public String destinationRuleName() {
         return this.destinationRuleName;
     }
+    /**
+     * @return The subset name to modify labels with the stable version.
+     * 
+     */
     public String stableSubsetName() {
         return this.stableSubsetName;
     }

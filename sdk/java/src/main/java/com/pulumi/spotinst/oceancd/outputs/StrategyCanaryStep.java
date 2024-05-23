@@ -16,29 +16,69 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class StrategyCanaryStep {
+    /**
+     * @return Defines the duration of time to freeze the rollout.
+     * 
+     */
     private @Nullable StrategyCanaryStepPause pause;
+    /**
+     * @return Defines how to scale the version without traffic weight changing.
+     * 
+     */
     private @Nullable StrategyCanaryStepSetCanaryScale setCanaryScale;
+    /**
+     * @return Defines the list of HeaderRoutes to add to the Rollout.
+     * 
+     */
     private @Nullable StrategyCanaryStepSetHeaderRoute setHeaderRoute;
+    /**
+     * @return Defines the percentage that the new version should receive.
+     * 
+     */
     private @Nullable Integer setWeight;
     private @Nullable String stepName;
+    /**
+     * @return Represents the list of verifications to run in a step.
+     * 
+     */
     private @Nullable StrategyCanaryStepVerification verification;
 
     private StrategyCanaryStep() {}
+    /**
+     * @return Defines the duration of time to freeze the rollout.
+     * 
+     */
     public Optional<StrategyCanaryStepPause> pause() {
         return Optional.ofNullable(this.pause);
     }
+    /**
+     * @return Defines how to scale the version without traffic weight changing.
+     * 
+     */
     public Optional<StrategyCanaryStepSetCanaryScale> setCanaryScale() {
         return Optional.ofNullable(this.setCanaryScale);
     }
+    /**
+     * @return Defines the list of HeaderRoutes to add to the Rollout.
+     * 
+     */
     public Optional<StrategyCanaryStepSetHeaderRoute> setHeaderRoute() {
         return Optional.ofNullable(this.setHeaderRoute);
     }
+    /**
+     * @return Defines the percentage that the new version should receive.
+     * 
+     */
     public Optional<Integer> setWeight() {
         return Optional.ofNullable(this.setWeight);
     }
     public Optional<String> stepName() {
         return Optional.ofNullable(this.stepName);
     }
+    /**
+     * @return Represents the list of verifications to run in a step.
+     * 
+     */
     public Optional<StrategyCanaryStepVerification> verification() {
         return Optional.ofNullable(this.verification);
     }

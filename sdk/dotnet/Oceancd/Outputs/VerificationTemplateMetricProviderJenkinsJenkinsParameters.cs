@@ -13,7 +13,13 @@ namespace Pulumi.SpotInst.Oceancd.Outputs
     [OutputType]
     public sealed class VerificationTemplateMetricProviderJenkinsJenkinsParameters
     {
+        /// <summary>
+        /// Key of an argument.
+        /// </summary>
         public readonly string ParameterKey;
+        /// <summary>
+        /// Value of an argument.
+        /// </summary>
         public readonly string ParameterValue;
 
         [OutputConstructor]

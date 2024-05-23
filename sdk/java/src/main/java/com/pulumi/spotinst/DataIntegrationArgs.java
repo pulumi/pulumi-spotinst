@@ -33,6 +33,7 @@ public final class DataIntegrationArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * When vendor value is s3, the following fields are included:
+     * * `bucketName` - (Required) The name of the bucket to use. Your spot IAM Role policy needs to include s3:putObject permissions for this bucket. Can&#39;t be null.
      * 
      */
     @Import(name="s3")
@@ -40,6 +41,7 @@ public final class DataIntegrationArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return When vendor value is s3, the following fields are included:
+     * * `bucketName` - (Required) The name of the bucket to use. Your spot IAM Role policy needs to include s3:putObject permissions for this bucket. Can&#39;t be null.
      * 
      */
     public Optional<Output<DataIntegrationS3Args>> s3() {
@@ -110,6 +112,7 @@ public final class DataIntegrationArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param s3 When vendor value is s3, the following fields are included:
+         * * `bucketName` - (Required) The name of the bucket to use. Your spot IAM Role policy needs to include s3:putObject permissions for this bucket. Can&#39;t be null.
          * 
          * @return builder
          * 
@@ -121,6 +124,7 @@ public final class DataIntegrationArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param s3 When vendor value is s3, the following fields are included:
+         * * `bucketName` - (Required) The name of the bucket to use. Your spot IAM Role policy needs to include s3:putObject permissions for this bucket. Can&#39;t be null.
          * 
          * @return builder
          * 

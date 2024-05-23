@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RolloutSpecTrafficSmi {
+    /**
+     * @return Holds the name of service that clients use to communicate.
+     * 
+     */
     private @Nullable String smiRootService;
+    /**
+     * @return Holds the name of the TrafficSplit.
+     * 
+     */
     private @Nullable String trafficSplitName;
 
     private RolloutSpecTrafficSmi() {}
+    /**
+     * @return Holds the name of service that clients use to communicate.
+     * 
+     */
     public Optional<String> smiRootService() {
         return Optional.ofNullable(this.smiRootService);
     }
+    /**
+     * @return Holds the name of the TrafficSplit.
+     * 
+     */
     public Optional<String> trafficSplitName() {
         return Optional.ofNullable(this.trafficSplitName);
     }

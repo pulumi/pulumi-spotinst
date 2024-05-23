@@ -15,9 +15,17 @@ public final class OceanAutoscalerAutoscaleHeadroomArgs extends com.pulumi.resou
 
     public static final OceanAutoscalerAutoscaleHeadroomArgs Empty = new OceanAutoscalerAutoscaleHeadroomArgs();
 
+    /**
+     * Automatic headroom configuration.
+     * 
+     */
     @Import(name="automatic")
     private @Nullable Output<OceanAutoscalerAutoscaleHeadroomAutomaticArgs> automatic;
 
+    /**
+     * @return Automatic headroom configuration.
+     * 
+     */
     public Optional<Output<OceanAutoscalerAutoscaleHeadroomAutomaticArgs>> automatic() {
         return Optional.ofNullable(this.automatic);
     }
@@ -46,11 +54,23 @@ public final class OceanAutoscalerAutoscaleHeadroomArgs extends com.pulumi.resou
             $ = new OceanAutoscalerAutoscaleHeadroomArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param automatic Automatic headroom configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder automatic(@Nullable Output<OceanAutoscalerAutoscaleHeadroomAutomaticArgs> automatic) {
             $.automatic = automatic;
             return this;
         }
 
+        /**
+         * @param automatic Automatic headroom configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder automatic(OceanAutoscalerAutoscaleHeadroomAutomaticArgs automatic) {
             return automatic(Output.of(automatic));
         }

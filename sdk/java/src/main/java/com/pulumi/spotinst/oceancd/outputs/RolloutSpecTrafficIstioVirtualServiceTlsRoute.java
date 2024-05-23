@@ -13,13 +13,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RolloutSpecTrafficIstioVirtualServiceTlsRoute {
+    /**
+     * @return The port of the TLS Route desired to be matched in the given Istio VirtualService.
+     * 
+     */
     private @Nullable Integer port;
+    /**
+     * @return A list of all the SNI Hosts of the TLS Route desired to be matched in the given Istio VirtualService.
+     * 
+     */
     private @Nullable List<String> sniHosts;
 
     private RolloutSpecTrafficIstioVirtualServiceTlsRoute() {}
+    /**
+     * @return The port of the TLS Route desired to be matched in the given Istio VirtualService.
+     * 
+     */
     public Optional<Integer> port() {
         return Optional.ofNullable(this.port);
     }
+    /**
+     * @return A list of all the SNI Hosts of the TLS Route desired to be matched in the given Istio VirtualService.
+     * 
+     */
     public List<String> sniHosts() {
         return this.sniHosts == null ? List.of() : this.sniHosts;
     }

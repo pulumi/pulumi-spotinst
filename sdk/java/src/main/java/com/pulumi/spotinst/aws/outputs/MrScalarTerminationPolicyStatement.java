@@ -14,37 +14,101 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MrScalarTerminationPolicyStatement {
+    /**
+     * @return The number of periods over which data is compared to the specified threshold.
+     * 
+     */
     private @Nullable Integer evaluationPeriods;
+    /**
+     * @return The name of the metric in CloudWatch which the statement will be based on.
+     * 
+     */
     private String metricName;
+    /**
+     * @return Must contain the value: `AWS/ElasticMapReduce`.
+     * 
+     */
     private String namespace;
+    /**
+     * @return The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+     * 
+     */
     private @Nullable String operator;
+    /**
+     * @return The time window in seconds over which the statistic is applied.
+     * 
+     */
     private @Nullable Integer period;
+    /**
+     * @return The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
+     * 
+     */
     private @Nullable String statistic;
+    /**
+     * @return The value that the specified statistic is compared to.
+     * 
+     */
     private Double threshold;
+    /**
+     * @return The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+     * 
+     */
     private @Nullable String unit;
 
     private MrScalarTerminationPolicyStatement() {}
+    /**
+     * @return The number of periods over which data is compared to the specified threshold.
+     * 
+     */
     public Optional<Integer> evaluationPeriods() {
         return Optional.ofNullable(this.evaluationPeriods);
     }
+    /**
+     * @return The name of the metric in CloudWatch which the statement will be based on.
+     * 
+     */
     public String metricName() {
         return this.metricName;
     }
+    /**
+     * @return Must contain the value: `AWS/ElasticMapReduce`.
+     * 
+     */
     public String namespace() {
         return this.namespace;
     }
+    /**
+     * @return The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+     * 
+     */
     public Optional<String> operator() {
         return Optional.ofNullable(this.operator);
     }
+    /**
+     * @return The time window in seconds over which the statistic is applied.
+     * 
+     */
     public Optional<Integer> period() {
         return Optional.ofNullable(this.period);
     }
+    /**
+     * @return The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
+     * 
+     */
     public Optional<String> statistic() {
         return Optional.ofNullable(this.statistic);
     }
+    /**
+     * @return The value that the specified statistic is compared to.
+     * 
+     */
     public Double threshold() {
         return this.threshold;
     }
+    /**
+     * @return The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+     * 
+     */
     public Optional<String> unit() {
         return Optional.ofNullable(this.unit);
     }

@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a Mr Scaler with New strategy
- *         var sample_MrScaler_01 = new MrScalar("sample-MrScaler-01", MrScalarArgs.builder()        
+ *         var sample_MrScaler_01 = new MrScalar("sample-MrScaler-01", MrScalarArgs.builder()
  *             .name("sample-MrScaler-01")
  *             .description("Testing MrScaler creation")
  *             .region("us-west-2")
@@ -215,7 +215,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sample_MrScaler_01 = new MrScalar("sample-MrScaler-01", MrScalarArgs.builder()        
+ *         var sample_MrScaler_01 = new MrScalar("sample-MrScaler-01", MrScalarArgs.builder()
  *             .name("sample-MrScaler-01")
  *             .description("Testing MrScaler creation")
  *             .region("us-west-2")
@@ -323,7 +323,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a Mr Scaler with Wrap strategy
- *         var example_scaler_2 = new MrScalar("example-scaler-2", MrScalarArgs.builder()        
+ *         var example_scaler_2 = new MrScalar("example-scaler-2", MrScalarArgs.builder()
  *             .name("spotinst-mr-scaler-2")
  *             .description("created by Pulumi")
  *             .region("us-west-2")

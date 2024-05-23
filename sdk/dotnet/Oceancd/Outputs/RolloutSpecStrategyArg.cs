@@ -13,8 +13,17 @@ namespace Pulumi.SpotInst.Oceancd.Outputs
     [OutputType]
     public sealed class RolloutSpecStrategyArg
     {
+        /// <summary>
+        /// Name of an argument.
+        /// </summary>
         public readonly string ArgName;
+        /// <summary>
+        /// Value of an argument.
+        /// </summary>
         public readonly string? ArgValue;
+        /// <summary>
+        /// Defines from where to get the value of an argument.
+        /// </summary>
         public readonly Outputs.RolloutSpecStrategyArgValueFrom? ValueFrom;
 
         [OutputConstructor]

@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanNpVirtualNodeGroupLinuxOsConfigSysctl {
+    /**
+     * @return Maximum number of memory map areas a process may have. Can be configured only if OS type is Linux.
+     * 
+     */
     private @Nullable Integer vmMaxMapCount;
 
     private OceanNpVirtualNodeGroupLinuxOsConfigSysctl() {}
+    /**
+     * @return Maximum number of memory map areas a process may have. Can be configured only if OS type is Linux.
+     * 
+     */
     public Optional<Integer> vmMaxMapCount() {
         return Optional.ofNullable(this.vmMaxMapCount);
     }

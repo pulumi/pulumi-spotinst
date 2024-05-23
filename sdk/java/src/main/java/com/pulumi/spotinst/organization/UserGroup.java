@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var terraformUserGroup = new UserGroup("terraformUserGroup", UserGroupArgs.builder()        
+ *         var terraformUserGroup = new UserGroup("terraformUserGroup", UserGroupArgs.builder()
  *             .name("test_user_group")
  *             .description("user group by terraform")
  *             .userIds("u-372gf6ae")
