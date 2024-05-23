@@ -119,6 +119,12 @@ namespace Pulumi.SpotInst.Azure
         public Output<ImmutableDictionary<string, object>?> Labels { get; private set; } = null!;
 
         /// <summary>
+        /// Custom Linux OS configuration.
+        /// </summary>
+        [Output("linuxOsConfigs")]
+        public Output<ImmutableArray<Outputs.OceanNpLinuxOsConfig>> LinuxOsConfigs { get; private set; } = null!;
+
+        /// <summary>
         /// Maximum node count limit.
         /// </summary>
         [Output("maxCount")]
@@ -172,9 +178,6 @@ namespace Pulumi.SpotInst.Azure
         [Output("podSubnetIds")]
         public Output<ImmutableArray<string>> PodSubnetIds { get; private set; } = null!;
 
-        /// <summary>
-        /// An object used to specify times when the cluster will turn off. Once the shutdown time will be over, the cluster will return to its previous state.
-        /// </summary>
         [Output("scheduling")]
         public Output<Outputs.OceanNpScheduling?> Scheduling { get; private set; } = null!;
 
@@ -338,6 +341,18 @@ namespace Pulumi.SpotInst.Azure
             set => _labels = value;
         }
 
+        [Input("linuxOsConfigs")]
+        private InputList<Inputs.OceanNpLinuxOsConfigArgs>? _linuxOsConfigs;
+
+        /// <summary>
+        /// Custom Linux OS configuration.
+        /// </summary>
+        public InputList<Inputs.OceanNpLinuxOsConfigArgs> LinuxOsConfigs
+        {
+            get => _linuxOsConfigs ?? (_linuxOsConfigs = new InputList<Inputs.OceanNpLinuxOsConfigArgs>());
+            set => _linuxOsConfigs = value;
+        }
+
         /// <summary>
         /// Maximum node count limit.
         /// </summary>
@@ -398,9 +413,6 @@ namespace Pulumi.SpotInst.Azure
             set => _podSubnetIds = value;
         }
 
-        /// <summary>
-        /// An object used to specify times when the cluster will turn off. Once the shutdown time will be over, the cluster will return to its previous state.
-        /// </summary>
         [Input("scheduling")]
         public Input<Inputs.OceanNpSchedulingArgs>? Scheduling { get; set; }
 
@@ -543,6 +555,18 @@ namespace Pulumi.SpotInst.Azure
             set => _labels = value;
         }
 
+        [Input("linuxOsConfigs")]
+        private InputList<Inputs.OceanNpLinuxOsConfigGetArgs>? _linuxOsConfigs;
+
+        /// <summary>
+        /// Custom Linux OS configuration.
+        /// </summary>
+        public InputList<Inputs.OceanNpLinuxOsConfigGetArgs> LinuxOsConfigs
+        {
+            get => _linuxOsConfigs ?? (_linuxOsConfigs = new InputList<Inputs.OceanNpLinuxOsConfigGetArgs>());
+            set => _linuxOsConfigs = value;
+        }
+
         /// <summary>
         /// Maximum node count limit.
         /// </summary>
@@ -603,9 +627,6 @@ namespace Pulumi.SpotInst.Azure
             set => _podSubnetIds = value;
         }
 
-        /// <summary>
-        /// An object used to specify times when the cluster will turn off. Once the shutdown time will be over, the cluster will return to its previous state.
-        /// </summary>
         [Input("scheduling")]
         public Input<Inputs.OceanNpSchedulingGetArgs>? Scheduling { get; set; }
 

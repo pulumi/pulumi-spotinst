@@ -6,6 +6,8 @@ package com.pulumi.spotinst.azure.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.spotinst.azure.inputs.OceanNpSchedulingShutdownHoursArgs;
+import com.pulumi.spotinst.azure.inputs.OceanNpSchedulingTaskArgs;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,25 +17,25 @@ public final class OceanNpSchedulingArgs extends com.pulumi.resources.ResourceAr
 
     public static final OceanNpSchedulingArgs Empty = new OceanNpSchedulingArgs();
 
-    /**
-     * [Shutdown Hours](https://docs.spot.io/ocean/features/running-hours?id=shutdown-hours)An object used to specify times that the nodes in the cluster will be taken down.
-     * 
-     */
     @Import(name="shutdownHours")
     private @Nullable Output<OceanNpSchedulingShutdownHoursArgs> shutdownHours;
 
-    /**
-     * @return [Shutdown Hours](https://docs.spot.io/ocean/features/running-hours?id=shutdown-hours)An object used to specify times that the nodes in the cluster will be taken down.
-     * 
-     */
     public Optional<Output<OceanNpSchedulingShutdownHoursArgs>> shutdownHours() {
         return Optional.ofNullable(this.shutdownHours);
+    }
+
+    @Import(name="tasks")
+    private @Nullable Output<List<OceanNpSchedulingTaskArgs>> tasks;
+
+    public Optional<Output<List<OceanNpSchedulingTaskArgs>>> tasks() {
+        return Optional.ofNullable(this.tasks);
     }
 
     private OceanNpSchedulingArgs() {}
 
     private OceanNpSchedulingArgs(OceanNpSchedulingArgs $) {
         this.shutdownHours = $.shutdownHours;
+        this.tasks = $.tasks;
     }
 
     public static Builder builder() {
@@ -54,25 +56,26 @@ public final class OceanNpSchedulingArgs extends com.pulumi.resources.ResourceAr
             $ = new OceanNpSchedulingArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param shutdownHours [Shutdown Hours](https://docs.spot.io/ocean/features/running-hours?id=shutdown-hours)An object used to specify times that the nodes in the cluster will be taken down.
-         * 
-         * @return builder
-         * 
-         */
         public Builder shutdownHours(@Nullable Output<OceanNpSchedulingShutdownHoursArgs> shutdownHours) {
             $.shutdownHours = shutdownHours;
             return this;
         }
 
-        /**
-         * @param shutdownHours [Shutdown Hours](https://docs.spot.io/ocean/features/running-hours?id=shutdown-hours)An object used to specify times that the nodes in the cluster will be taken down.
-         * 
-         * @return builder
-         * 
-         */
         public Builder shutdownHours(OceanNpSchedulingShutdownHoursArgs shutdownHours) {
             return shutdownHours(Output.of(shutdownHours));
+        }
+
+        public Builder tasks(@Nullable Output<List<OceanNpSchedulingTaskArgs>> tasks) {
+            $.tasks = tasks;
+            return this;
+        }
+
+        public Builder tasks(List<OceanNpSchedulingTaskArgs> tasks) {
+            return tasks(Output.of(tasks));
+        }
+
+        public Builder tasks(OceanNpSchedulingTaskArgs... tasks) {
+            return tasks(List.of(tasks));
         }
 
         public OceanNpSchedulingArgs build() {

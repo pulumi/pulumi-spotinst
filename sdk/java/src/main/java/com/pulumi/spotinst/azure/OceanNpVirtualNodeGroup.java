@@ -12,6 +12,7 @@ import com.pulumi.spotinst.azure.OceanNpVirtualNodeGroupArgs;
 import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupState;
 import com.pulumi.spotinst.azure.outputs.OceanNpVirtualNodeGroupFilters;
 import com.pulumi.spotinst.azure.outputs.OceanNpVirtualNodeGroupHeadroom;
+import com.pulumi.spotinst.azure.outputs.OceanNpVirtualNodeGroupLinuxOsConfig;
 import com.pulumi.spotinst.azure.outputs.OceanNpVirtualNodeGroupTaint;
 import com.pulumi.spotinst.azure.outputs.OceanNpVirtualNodeGroupUpdatePolicy;
 import java.lang.Boolean;
@@ -39,6 +40,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.spotinst.azure.OceanNpVirtualNodeGroup;
  * import com.pulumi.spotinst.azure.OceanNpVirtualNodeGroupArgs;
  * import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupHeadroomArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupLinuxOsConfigArgs;
  * import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupTaintArgs;
  * import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupFiltersArgs;
  * import java.util.List;
@@ -82,6 +84,11 @@ import javax.annotation.Nullable;
  *             .kubernetesVersion("1.26")
  *             .podSubnetIds("/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default")
  *             .vnetSubnetIds("/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default")
+ *             .linuxOsConfigs(OceanNpVirtualNodeGroupLinuxOsConfigArgs.builder()
+ *                 .sysctls(OceanNpVirtualNodeGroupLinuxOsConfigSysctlArgs.builder()
+ *                     .vmMaxMapCount(79550)
+ *                     .build())
+ *                 .build())
  *             .spotPercentage(50)
  *             .fallbackToOndemand(true)
  *             .taints(OceanNpVirtualNodeGroupTaintArgs.builder()
@@ -230,6 +237,20 @@ public class OceanNpVirtualNodeGroup extends com.pulumi.resources.CustomResource
      */
     public Output<Optional<Map<String,Object>>> labels() {
         return Codegen.optional(this.labels);
+    }
+    /**
+     * Custom Linux OS configuration.
+     * 
+     */
+    @Export(name="linuxOsConfigs", refs={List.class,OceanNpVirtualNodeGroupLinuxOsConfig.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<OceanNpVirtualNodeGroupLinuxOsConfig>> linuxOsConfigs;
+
+    /**
+     * @return Custom Linux OS configuration.
+     * 
+     */
+    public Output<Optional<List<OceanNpVirtualNodeGroupLinuxOsConfig>>> linuxOsConfigs() {
+        return Codegen.optional(this.linuxOsConfigs);
     }
     /**
      * Maximum node count limit.

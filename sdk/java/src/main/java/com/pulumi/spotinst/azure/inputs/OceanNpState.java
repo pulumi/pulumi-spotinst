@@ -9,6 +9,7 @@ import com.pulumi.spotinst.azure.inputs.OceanNpAutoscalerArgs;
 import com.pulumi.spotinst.azure.inputs.OceanNpFiltersArgs;
 import com.pulumi.spotinst.azure.inputs.OceanNpHeadroomArgs;
 import com.pulumi.spotinst.azure.inputs.OceanNpHealthArgs;
+import com.pulumi.spotinst.azure.inputs.OceanNpLinuxOsConfigArgs;
 import com.pulumi.spotinst.azure.inputs.OceanNpSchedulingArgs;
 import com.pulumi.spotinst.azure.inputs.OceanNpTaintArgs;
 import com.pulumi.spotinst.azure.inputs.OceanNpUpdatePolicyArgs;
@@ -206,6 +207,21 @@ public final class OceanNpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Custom Linux OS configuration.
+     * 
+     */
+    @Import(name="linuxOsConfigs")
+    private @Nullable Output<List<OceanNpLinuxOsConfigArgs>> linuxOsConfigs;
+
+    /**
+     * @return Custom Linux OS configuration.
+     * 
+     */
+    public Optional<Output<List<OceanNpLinuxOsConfigArgs>>> linuxOsConfigs() {
+        return Optional.ofNullable(this.linuxOsConfigs);
+    }
+
+    /**
      * Maximum node count limit.
      * 
      */
@@ -340,17 +356,9 @@ public final class OceanNpState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.podSubnetIds);
     }
 
-    /**
-     * An object used to specify times when the cluster will turn off. Once the shutdown time will be over, the cluster will return to its previous state.
-     * 
-     */
     @Import(name="scheduling")
     private @Nullable Output<OceanNpSchedulingArgs> scheduling;
 
-    /**
-     * @return An object used to specify times when the cluster will turn off. Once the shutdown time will be over, the cluster will return to its previous state.
-     * 
-     */
     public Optional<Output<OceanNpSchedulingArgs>> scheduling() {
         return Optional.ofNullable(this.scheduling);
     }
@@ -431,6 +439,7 @@ public final class OceanNpState extends com.pulumi.resources.ResourceArgs {
         this.health = $.health;
         this.kubernetesVersion = $.kubernetesVersion;
         this.labels = $.labels;
+        this.linuxOsConfigs = $.linuxOsConfigs;
         this.maxCount = $.maxCount;
         this.maxPodsPerNode = $.maxPodsPerNode;
         this.minCount = $.minCount;
@@ -733,6 +742,37 @@ public final class OceanNpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param linuxOsConfigs Custom Linux OS configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder linuxOsConfigs(@Nullable Output<List<OceanNpLinuxOsConfigArgs>> linuxOsConfigs) {
+            $.linuxOsConfigs = linuxOsConfigs;
+            return this;
+        }
+
+        /**
+         * @param linuxOsConfigs Custom Linux OS configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder linuxOsConfigs(List<OceanNpLinuxOsConfigArgs> linuxOsConfigs) {
+            return linuxOsConfigs(Output.of(linuxOsConfigs));
+        }
+
+        /**
+         * @param linuxOsConfigs Custom Linux OS configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder linuxOsConfigs(OceanNpLinuxOsConfigArgs... linuxOsConfigs) {
+            return linuxOsConfigs(List.of(linuxOsConfigs));
+        }
+
+        /**
          * @param maxCount Maximum node count limit.
          * 
          * @return builder
@@ -931,23 +971,11 @@ public final class OceanNpState extends com.pulumi.resources.ResourceArgs {
             return podSubnetIds(List.of(podSubnetIds));
         }
 
-        /**
-         * @param scheduling An object used to specify times when the cluster will turn off. Once the shutdown time will be over, the cluster will return to its previous state.
-         * 
-         * @return builder
-         * 
-         */
         public Builder scheduling(@Nullable Output<OceanNpSchedulingArgs> scheduling) {
             $.scheduling = scheduling;
             return this;
         }
 
-        /**
-         * @param scheduling An object used to specify times when the cluster will turn off. Once the shutdown time will be over, the cluster will return to its previous state.
-         * 
-         * @return builder
-         * 
-         */
         public Builder scheduling(OceanNpSchedulingArgs scheduling) {
             return scheduling(Output.of(scheduling));
         }

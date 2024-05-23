@@ -5,7 +5,6 @@ package com.pulumi.spotinst.azure.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -25,11 +24,11 @@ public final class OceanNpSchedulingShutdownHoursArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.isEnabled);
     }
 
-    @Import(name="timeWindows", required=true)
-    private Output<List<String>> timeWindows;
+    @Import(name="timeWindows")
+    private @Nullable Output<List<String>> timeWindows;
 
-    public Output<List<String>> timeWindows() {
-        return this.timeWindows;
+    public Optional<Output<List<String>>> timeWindows() {
+        return Optional.ofNullable(this.timeWindows);
     }
 
     private OceanNpSchedulingShutdownHoursArgs() {}
@@ -66,7 +65,7 @@ public final class OceanNpSchedulingShutdownHoursArgs extends com.pulumi.resourc
             return isEnabled(Output.of(isEnabled));
         }
 
-        public Builder timeWindows(Output<List<String>> timeWindows) {
+        public Builder timeWindows(@Nullable Output<List<String>> timeWindows) {
             $.timeWindows = timeWindows;
             return this;
         }
@@ -80,9 +79,6 @@ public final class OceanNpSchedulingShutdownHoursArgs extends com.pulumi.resourc
         }
 
         public OceanNpSchedulingShutdownHoursArgs build() {
-            if ($.timeWindows == null) {
-                throw new MissingRequiredPropertyException("OceanNpSchedulingShutdownHoursArgs", "timeWindows");
-            }
             return $;
         }
     }

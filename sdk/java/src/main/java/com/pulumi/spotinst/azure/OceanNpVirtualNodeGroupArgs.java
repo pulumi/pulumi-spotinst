@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupFiltersArgs;
 import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupHeadroomArgs;
+import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupLinuxOsConfigArgs;
 import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupTaintArgs;
 import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupUpdatePolicyArgs;
 import java.lang.Boolean;
@@ -128,6 +129,21 @@ public final class OceanNpVirtualNodeGroupArgs extends com.pulumi.resources.Reso
      */
     public Optional<Output<Map<String,Object>>> labels() {
         return Optional.ofNullable(this.labels);
+    }
+
+    /**
+     * Custom Linux OS configuration.
+     * 
+     */
+    @Import(name="linuxOsConfigs")
+    private @Nullable Output<List<OceanNpVirtualNodeGroupLinuxOsConfigArgs>> linuxOsConfigs;
+
+    /**
+     * @return Custom Linux OS configuration.
+     * 
+     */
+    public Optional<Output<List<OceanNpVirtualNodeGroupLinuxOsConfigArgs>>> linuxOsConfigs() {
+        return Optional.ofNullable(this.linuxOsConfigs);
     }
 
     /**
@@ -349,6 +365,7 @@ public final class OceanNpVirtualNodeGroupArgs extends com.pulumi.resources.Reso
         this.headrooms = $.headrooms;
         this.kubernetesVersion = $.kubernetesVersion;
         this.labels = $.labels;
+        this.linuxOsConfigs = $.linuxOsConfigs;
         this.maxCount = $.maxCount;
         this.maxPodsPerNode = $.maxPodsPerNode;
         this.minCount = $.minCount;
@@ -549,6 +566,37 @@ public final class OceanNpVirtualNodeGroupArgs extends com.pulumi.resources.Reso
          */
         public Builder labels(Map<String,Object> labels) {
             return labels(Output.of(labels));
+        }
+
+        /**
+         * @param linuxOsConfigs Custom Linux OS configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder linuxOsConfigs(@Nullable Output<List<OceanNpVirtualNodeGroupLinuxOsConfigArgs>> linuxOsConfigs) {
+            $.linuxOsConfigs = linuxOsConfigs;
+            return this;
+        }
+
+        /**
+         * @param linuxOsConfigs Custom Linux OS configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder linuxOsConfigs(List<OceanNpVirtualNodeGroupLinuxOsConfigArgs> linuxOsConfigs) {
+            return linuxOsConfigs(Output.of(linuxOsConfigs));
+        }
+
+        /**
+         * @param linuxOsConfigs Custom Linux OS configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder linuxOsConfigs(OceanNpVirtualNodeGroupLinuxOsConfigArgs... linuxOsConfigs) {
+            return linuxOsConfigs(List.of(linuxOsConfigs));
         }
 
         /**

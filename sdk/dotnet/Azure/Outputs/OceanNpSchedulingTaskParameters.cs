@@ -11,19 +11,14 @@ namespace Pulumi.SpotInst.Azure.Outputs
 {
 
     [OutputType]
-    public sealed class OceanNpScheduling
+    public sealed class OceanNpSchedulingTaskParameters
     {
-        public readonly Outputs.OceanNpSchedulingShutdownHours? ShutdownHours;
-        public readonly ImmutableArray<Outputs.OceanNpSchedulingTask> Tasks;
+        public readonly Outputs.OceanNpSchedulingTaskParametersParametersClusterRoll? ParametersClusterRoll;
 
         [OutputConstructor]
-        private OceanNpScheduling(
-            Outputs.OceanNpSchedulingShutdownHours? shutdownHours,
-
-            ImmutableArray<Outputs.OceanNpSchedulingTask> tasks)
+        private OceanNpSchedulingTaskParameters(Outputs.OceanNpSchedulingTaskParametersParametersClusterRoll? parametersClusterRoll)
         {
-            ShutdownHours = shutdownHours;
-            Tasks = tasks;
+            ParametersClusterRoll = parametersClusterRoll;
         }
     }
 }

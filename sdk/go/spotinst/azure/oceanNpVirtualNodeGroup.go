@@ -63,6 +63,15 @@ import (
 //				VnetSubnetIds: pulumi.StringArray{
 //					pulumi.String("/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default"),
 //				},
+//				LinuxOsConfigs: azure.OceanNpVirtualNodeGroupLinuxOsConfigArray{
+//					&azure.OceanNpVirtualNodeGroupLinuxOsConfigArgs{
+//						Sysctls: azure.OceanNpVirtualNodeGroupLinuxOsConfigSysctlArray{
+//							&azure.OceanNpVirtualNodeGroupLinuxOsConfigSysctlArgs{
+//								VmMaxMapCount: pulumi.Int(79550),
+//							},
+//						},
+//					},
+//				},
 //				SpotPercentage:     pulumi.Int(50),
 //				FallbackToOndemand: pulumi.Bool(true),
 //				Taints: azure.OceanNpVirtualNodeGroupTaintArray{
@@ -137,6 +146,8 @@ type OceanNpVirtualNodeGroup struct {
 	KubernetesVersion pulumi.StringPtrOutput `pulumi:"kubernetesVersion"`
 	// An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
 	Labels pulumi.MapOutput `pulumi:"labels"`
+	// Custom Linux OS configuration.
+	LinuxOsConfigs OceanNpVirtualNodeGroupLinuxOsConfigArrayOutput `pulumi:"linuxOsConfigs"`
 	// Maximum node count limit.
 	MaxCount pulumi.IntPtrOutput `pulumi:"maxCount"`
 	// The maximum number of pods per node in the node pools.
@@ -214,6 +225,8 @@ type oceanNpVirtualNodeGroupState struct {
 	KubernetesVersion *string `pulumi:"kubernetesVersion"`
 	// An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
 	Labels map[string]interface{} `pulumi:"labels"`
+	// Custom Linux OS configuration.
+	LinuxOsConfigs []OceanNpVirtualNodeGroupLinuxOsConfig `pulumi:"linuxOsConfigs"`
 	// Maximum node count limit.
 	MaxCount *int `pulumi:"maxCount"`
 	// The maximum number of pods per node in the node pools.
@@ -259,6 +272,8 @@ type OceanNpVirtualNodeGroupState struct {
 	KubernetesVersion pulumi.StringPtrInput
 	// An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
 	Labels pulumi.MapInput
+	// Custom Linux OS configuration.
+	LinuxOsConfigs OceanNpVirtualNodeGroupLinuxOsConfigArrayInput
 	// Maximum node count limit.
 	MaxCount pulumi.IntPtrInput
 	// The maximum number of pods per node in the node pools.
@@ -308,6 +323,8 @@ type oceanNpVirtualNodeGroupArgs struct {
 	KubernetesVersion *string `pulumi:"kubernetesVersion"`
 	// An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
 	Labels map[string]interface{} `pulumi:"labels"`
+	// Custom Linux OS configuration.
+	LinuxOsConfigs []OceanNpVirtualNodeGroupLinuxOsConfig `pulumi:"linuxOsConfigs"`
 	// Maximum node count limit.
 	MaxCount *int `pulumi:"maxCount"`
 	// The maximum number of pods per node in the node pools.
@@ -354,6 +371,8 @@ type OceanNpVirtualNodeGroupArgs struct {
 	KubernetesVersion pulumi.StringPtrInput
 	// An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
 	Labels pulumi.MapInput
+	// Custom Linux OS configuration.
+	LinuxOsConfigs OceanNpVirtualNodeGroupLinuxOsConfigArrayInput
 	// Maximum node count limit.
 	MaxCount pulumi.IntPtrInput
 	// The maximum number of pods per node in the node pools.
@@ -504,6 +523,13 @@ func (o OceanNpVirtualNodeGroupOutput) KubernetesVersion() pulumi.StringPtrOutpu
 // An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
 func (o OceanNpVirtualNodeGroupOutput) Labels() pulumi.MapOutput {
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroup) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// Custom Linux OS configuration.
+func (o OceanNpVirtualNodeGroupOutput) LinuxOsConfigs() OceanNpVirtualNodeGroupLinuxOsConfigArrayOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroup) OceanNpVirtualNodeGroupLinuxOsConfigArrayOutput {
+		return v.LinuxOsConfigs
+	}).(OceanNpVirtualNodeGroupLinuxOsConfigArrayOutput)
 }
 
 // Maximum node count limit.

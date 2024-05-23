@@ -2403,16 +2403,45 @@ export namespace azure {
         gracePeriod?: number;
     }
 
-    export interface OceanNpScheduling {
+    export interface OceanNpLinuxOsConfig {
         /**
-         * [Shutdown Hours](https://docs.spot.io/ocean/features/running-hours?id=shutdown-hours)An object used to specify times that the nodes in the cluster will be taken down.
+         * System Controls
          */
+        sysctls?: outputs.azure.OceanNpLinuxOsConfigSysctl[];
+    }
+
+    export interface OceanNpLinuxOsConfigSysctl {
+        vmMaxMapCount?: number;
+    }
+
+    export interface OceanNpScheduling {
         shutdownHours?: outputs.azure.OceanNpSchedulingShutdownHours;
+        tasks?: outputs.azure.OceanNpSchedulingTask[];
     }
 
     export interface OceanNpSchedulingShutdownHours {
         isEnabled?: boolean;
-        timeWindows: string[];
+        timeWindows?: string[];
+    }
+
+    export interface OceanNpSchedulingTask {
+        cronExpression: string;
+        isEnabled: boolean;
+        parameters?: outputs.azure.OceanNpSchedulingTaskParameters;
+        taskType: string;
+    }
+
+    export interface OceanNpSchedulingTaskParameters {
+        parametersClusterRoll?: outputs.azure.OceanNpSchedulingTaskParametersParametersClusterRoll;
+    }
+
+    export interface OceanNpSchedulingTaskParametersParametersClusterRoll {
+        batchMinHealthyPercentage?: number;
+        batchSizePercentage?: number;
+        comment?: string;
+        respectPdb?: boolean;
+        respectRestrictScaleDown?: boolean;
+        vngIds?: string[];
     }
 
     export interface OceanNpTaint {
@@ -2528,6 +2557,17 @@ export namespace azure {
          * The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
          */
         numOfUnits?: number;
+    }
+
+    export interface OceanNpVirtualNodeGroupLinuxOsConfig {
+        /**
+         * System Controls
+         */
+        sysctls?: outputs.azure.OceanNpVirtualNodeGroupLinuxOsConfigSysctl[];
+    }
+
+    export interface OceanNpVirtualNodeGroupLinuxOsConfigSysctl {
+        vmMaxMapCount?: number;
     }
 
     export interface OceanNpVirtualNodeGroupTaint {
