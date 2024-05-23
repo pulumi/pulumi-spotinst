@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new DataIntegration("example", DataIntegrationArgs.builder()        
+ *         var example = new DataIntegration("example", DataIntegrationArgs.builder()
  *             .name("foo")
  *             .status("enabled")
  *             .s3(DataIntegrationS3Args.builder()
@@ -78,6 +78,7 @@ public class DataIntegration extends com.pulumi.resources.CustomResource {
     }
     /**
      * When vendor value is s3, the following fields are included:
+     * * `bucketName` - (Required) The name of the bucket to use. Your spot IAM Role policy needs to include s3:putObject permissions for this bucket. Can&#39;t be null.
      * 
      */
     @Export(name="s3", refs={DataIntegrationS3.class}, tree="[0]")
@@ -85,6 +86,7 @@ public class DataIntegration extends com.pulumi.resources.CustomResource {
 
     /**
      * @return When vendor value is s3, the following fields are included:
+     * * `bucketName` - (Required) The name of the bucket to use. Your spot IAM Role policy needs to include s3:putObject permissions for this bucket. Can&#39;t be null.
      * 
      */
     public Output<Optional<DataIntegrationS3>> s3() {

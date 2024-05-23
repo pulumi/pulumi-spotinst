@@ -13,17 +13,33 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class StrategyRollingStep {
+    /**
+     * @return Defines the duration of time to freeze the rollout.
+     * 
+     */
     private @Nullable StrategyRollingStepPause pause;
     private @Nullable String stepsName;
+    /**
+     * @return Represents the list of verifications to run in a step.
+     * 
+     */
     private @Nullable StrategyRollingStepVerification verification;
 
     private StrategyRollingStep() {}
+    /**
+     * @return Defines the duration of time to freeze the rollout.
+     * 
+     */
     public Optional<StrategyRollingStepPause> pause() {
         return Optional.ofNullable(this.pause);
     }
     public Optional<String> stepsName() {
         return Optional.ofNullable(this.stepsName);
     }
+    /**
+     * @return Represents the list of verifications to run in a step.
+     * 
+     */
     public Optional<StrategyRollingStepVerification> verification() {
         return Optional.ofNullable(this.verification);
     }

@@ -12,11 +12,18 @@ namespace Pulumi.SpotInst.Oceancd.Inputs
 
     public sealed class StrategyCanaryStepSetHeaderRouteArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of the HeaderRoute group.
+        /// </summary>
         [Input("headerRouteName", required: true)]
         public Input<string> HeaderRouteName { get; set; } = null!;
 
         [Input("matches", required: true)]
         private InputList<Inputs.StrategyCanaryStepSetHeaderRouteMatchArgs>? _matches;
+
+        /// <summary>
+        /// The matching rules for the header route.
+        /// </summary>
         public InputList<Inputs.StrategyCanaryStepSetHeaderRouteMatchArgs> Matches
         {
             get => _matches ?? (_matches = new InputList<Inputs.StrategyCanaryStepSetHeaderRouteMatchArgs>());

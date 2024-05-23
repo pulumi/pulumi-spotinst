@@ -12,9 +12,15 @@ namespace Pulumi.SpotInst.Oceancd.Inputs
 
     public sealed class RolloutSpecTrafficSmiArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Holds the name of service that clients use to communicate.
+        /// </summary>
         [Input("smiRootService")]
         public Input<string>? SmiRootService { get; set; }
 
+        /// <summary>
+        /// Holds the name of the TrafficSplit.
+        /// </summary>
         [Input("trafficSplitName")]
         public Input<string>? TrafficSplitName { get; set; }
 

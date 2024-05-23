@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanNpAutoscalerAutoscaleHeadroomAutomatic {
+    /**
+     * @return Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+     * 
+     */
     private @Nullable Boolean isEnabled;
+    /**
+     * @return Optionally set a number between 0-100 to control the percentage of total cluster resources dedicated to headroom.
+     * 
+     */
     private @Nullable Integer percentage;
 
     private OceanNpAutoscalerAutoscaleHeadroomAutomatic() {}
+    /**
+     * @return Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+     * 
+     */
     public Optional<Boolean> isEnabled() {
         return Optional.ofNullable(this.isEnabled);
     }
+    /**
+     * @return Optionally set a number between 0-100 to control the percentage of total cluster resources dedicated to headroom.
+     * 
+     */
     public Optional<Integer> percentage() {
         return Optional.ofNullable(this.percentage);
     }

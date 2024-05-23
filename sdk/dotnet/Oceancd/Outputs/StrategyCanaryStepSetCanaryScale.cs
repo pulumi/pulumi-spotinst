@@ -13,8 +13,17 @@ namespace Pulumi.SpotInst.Oceancd.Outputs
     [OutputType]
     public sealed class StrategyCanaryStepSetCanaryScale
     {
+        /// <summary>
+        /// Defines whether a rollout should match the current canary's setWeight step.
+        /// </summary>
         public readonly bool? MatchTrafficWeight;
+        /// <summary>
+        /// Sets the number of replicas the new version should have.
+        /// </summary>
         public readonly int? Replicas;
+        /// <summary>
+        /// Sets the percentage of replicas the new version should have.
+        /// </summary>
         public readonly int? Weight;
 
         [OutputConstructor]

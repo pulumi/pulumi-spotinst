@@ -11,9 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class StrategyCanaryStepVerification {
+    /**
+     * @return List of Verification Template names.
+     * 
+     */
     private List<String> templateNames;
 
     private StrategyCanaryStepVerification() {}
+    /**
+     * @return List of Verification Template names.
+     * 
+     */
     public List<String> templateNames() {
         return this.templateNames;
     }

@@ -12,24 +12,45 @@ namespace Pulumi.SpotInst.Oceancd.Inputs
 
     public sealed class VerificationTemplateMetricProviderGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The CloudWatch provider.
+        /// </summary>
         [Input("cloudWatch")]
         public Input<Inputs.VerificationTemplateMetricProviderCloudWatchGetArgs>? CloudWatch { get; set; }
 
+        /// <summary>
+        /// The datadog provider.
+        /// </summary>
         [Input("datadog")]
         public Input<Inputs.VerificationTemplateMetricProviderDatadogGetArgs>? Datadog { get; set; }
 
+        /// <summary>
+        /// The Jenkins provider. Default is "{$}"
+        /// </summary>
         [Input("jenkins")]
         public Input<Inputs.VerificationTemplateMetricProviderJenkinsGetArgs>? Jenkins { get; set; }
 
+        /// <summary>
+        /// The Job provider.
+        /// </summary>
         [Input("job")]
         public Input<Inputs.VerificationTemplateMetricProviderJobGetArgs>? Job { get; set; }
 
+        /// <summary>
+        /// The New Relic provider.
+        /// </summary>
         [Input("newRelic")]
         public Input<Inputs.VerificationTemplateMetricProviderNewRelicGetArgs>? NewRelic { get; set; }
 
+        /// <summary>
+        /// The Prometheus provider.
+        /// </summary>
         [Input("prometheus")]
         public Input<Inputs.VerificationTemplateMetricProviderPrometheusGetArgs>? Prometheus { get; set; }
 
+        /// <summary>
+        /// The Web provider.
+        /// </summary>
         [Input("web")]
         public Input<Inputs.VerificationTemplateMetricProviderWebGetArgs>? Web { get; set; }
 

@@ -15,14 +15,14 @@ public final class OceanLoggingExportS3Args extends com.pulumi.resources.Resourc
     public static final OceanLoggingExportS3Args Empty = new OceanLoggingExportS3Args();
 
     /**
-     * The Spotinst Ocean ID.
+     * The identifier of The S3 data integration to export the logs to.
      * 
      */
     @Import(name="id", required=true)
     private Output<String> id;
 
     /**
-     * @return The Spotinst Ocean ID.
+     * @return The identifier of The S3 data integration to export the logs to.
      * 
      */
     public Output<String> id() {
@@ -54,7 +54,7 @@ public final class OceanLoggingExportS3Args extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param id The Spotinst Ocean ID.
+         * @param id The identifier of The S3 data integration to export the logs to.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class OceanLoggingExportS3Args extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param id The Spotinst Ocean ID.
+         * @param id The identifier of The S3 data integration to export the logs to.
          * 
          * @return builder
          * 

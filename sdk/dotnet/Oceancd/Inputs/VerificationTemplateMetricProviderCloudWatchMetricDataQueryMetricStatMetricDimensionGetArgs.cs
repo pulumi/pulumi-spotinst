@@ -12,9 +12,15 @@ namespace Pulumi.SpotInst.Oceancd.Inputs
 
     public sealed class VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of the dimensions. These values must contain only ASCII characters and must include at least one non-whitespace characte
+        /// </summary>
         [Input("dimensionName", required: true)]
         public Input<string> DimensionName { get; set; } = null!;
 
+        /// <summary>
+        /// The value of the dimensions.These values must contain only ASCII characters and must include at least one non-whitespace characte
+        /// </summary>
         [Input("dimensionValue", required: true)]
         public Input<string> DimensionValue { get; set; } = null!;
 

@@ -13,6 +13,9 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class OceanLoggingExport
     {
+        /// <summary>
+        /// Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
+        /// </summary>
         public readonly ImmutableArray<Outputs.OceanLoggingExportS3> S3s;
 
         [OutputConstructor]

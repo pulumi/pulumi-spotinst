@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimension {
+    /**
+     * @return The name of the dimensions. These values must contain only ASCII characters and must include at least one non-whitespace characte
+     * 
+     */
     private String dimensionName;
+    /**
+     * @return The value of the dimensions.These values must contain only ASCII characters and must include at least one non-whitespace characte
+     * 
+     */
     private String dimensionValue;
 
     private VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimension() {}
+    /**
+     * @return The name of the dimensions. These values must contain only ASCII characters and must include at least one non-whitespace characte
+     * 
+     */
     public String dimensionName() {
         return this.dimensionName;
     }
+    /**
+     * @return The value of the dimensions.These values must contain only ASCII characters and must include at least one non-whitespace characte
+     * 
+     */
     public String dimensionValue() {
         return this.dimensionValue;
     }

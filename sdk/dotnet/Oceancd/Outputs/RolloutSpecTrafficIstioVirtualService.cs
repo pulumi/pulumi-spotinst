@@ -13,8 +13,17 @@ namespace Pulumi.SpotInst.Oceancd.Outputs
     [OutputType]
     public sealed class RolloutSpecTrafficIstioVirtualService
     {
+        /// <summary>
+        /// A list of HTTPS routes within VirtualService.
+        /// </summary>
         public readonly ImmutableArray<Outputs.RolloutSpecTrafficIstioVirtualServiceTlsRoute> TlsRoutes;
+        /// <summary>
+        /// Holds the name of the VirtualService.
+        /// </summary>
         public readonly string VirtualServiceName;
+        /// <summary>
+        /// A list of HTTP routes within VirtualService.
+        /// </summary>
         public readonly ImmutableArray<string> VirtualServiceRoutes;
 
         [OutputConstructor]

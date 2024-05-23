@@ -13,7 +13,13 @@ namespace Pulumi.SpotInst.Oceancd.Outputs
     [OutputType]
     public sealed class StrategyCanaryStepSetHeaderRoute
     {
+        /// <summary>
+        /// The name of the HeaderRoute group.
+        /// </summary>
         public readonly string HeaderRouteName;
+        /// <summary>
+        /// The matching rules for the header route.
+        /// </summary>
         public readonly ImmutableArray<Outputs.StrategyCanaryStepSetHeaderRouteMatch> Matches;
 
         [OutputConstructor]

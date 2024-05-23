@@ -14,18 +14,31 @@ namespace Pulumi.SpotInst.Oceancd.Inputs
     {
         [Input("baselineProviders", required: true)]
         private InputList<Inputs.VerificationTemplateMetricBaselineBaselineProviderArgs>? _baselineProviders;
+
+        /// <summary>
+        /// The name of the monitoring tool chosen for the metric.
+        /// </summary>
         public InputList<Inputs.VerificationTemplateMetricBaselineBaselineProviderArgs> BaselineProviders
         {
             get => _baselineProviders ?? (_baselineProviders = new InputList<Inputs.VerificationTemplateMetricBaselineBaselineProviderArgs>());
             set => _baselineProviders = value;
         }
 
+        /// <summary>
+        /// Number in percent we allow the new version’s data result to be under baseline data result.
+        /// </summary>
         [Input("maxRange")]
         public Input<int>? MaxRange { get; set; }
 
+        /// <summary>
+        /// Number in percent we allow the new version’s data result to be under baseline data result.*
+        /// </summary>
         [Input("minRange")]
         public Input<int>? MinRange { get; set; }
 
+        /// <summary>
+        /// A mathematical expression needed for the comparison. Enum: "&lt;" "&gt;" "&lt;=" "&gt;=" "=" "range"
+        /// </summary>
         [Input("threshold", required: true)]
         public Input<string> Threshold { get; set; } = null!;
 

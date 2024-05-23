@@ -14,15 +14,25 @@ namespace Pulumi.SpotInst.Oceancd.Inputs
     {
         [Input("commands", required: true)]
         private InputList<string>? _commands;
+
+        /// <summary>
+        /// The entry point of a container.
+        /// </summary>
         public InputList<string> Commands
         {
             get => _commands ?? (_commands = new InputList<string>());
             set => _commands = value;
         }
 
+        /// <summary>
+        /// The name of a container.
+        /// </summary>
         [Input("containerName", required: true)]
         public Input<string> ContainerName { get; set; } = null!;
 
+        /// <summary>
+        /// The image name of a container.
+        /// </summary>
         [Input("image", required: true)]
         public Input<string> Image { get; set; } = null!;
 

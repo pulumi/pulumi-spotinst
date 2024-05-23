@@ -14,23 +14,47 @@ public final class RolloutSpecTrafficIstioDestinationRuleArgs extends com.pulumi
 
     public static final RolloutSpecTrafficIstioDestinationRuleArgs Empty = new RolloutSpecTrafficIstioDestinationRuleArgs();
 
+    /**
+     * The subset name to modify labels with the canary version.
+     * 
+     */
     @Import(name="canarySubsetName", required=true)
     private Output<String> canarySubsetName;
 
+    /**
+     * @return The subset name to modify labels with the canary version.
+     * 
+     */
     public Output<String> canarySubsetName() {
         return this.canarySubsetName;
     }
 
+    /**
+     * Holds the name of the DestinationRule.
+     * 
+     */
     @Import(name="destinationRuleName", required=true)
     private Output<String> destinationRuleName;
 
+    /**
+     * @return Holds the name of the DestinationRule.
+     * 
+     */
     public Output<String> destinationRuleName() {
         return this.destinationRuleName;
     }
 
+    /**
+     * The subset name to modify labels with the stable version.
+     * 
+     */
     @Import(name="stableSubsetName", required=true)
     private Output<String> stableSubsetName;
 
+    /**
+     * @return The subset name to modify labels with the stable version.
+     * 
+     */
     public Output<String> stableSubsetName() {
         return this.stableSubsetName;
     }
@@ -61,29 +85,65 @@ public final class RolloutSpecTrafficIstioDestinationRuleArgs extends com.pulumi
             $ = new RolloutSpecTrafficIstioDestinationRuleArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param canarySubsetName The subset name to modify labels with the canary version.
+         * 
+         * @return builder
+         * 
+         */
         public Builder canarySubsetName(Output<String> canarySubsetName) {
             $.canarySubsetName = canarySubsetName;
             return this;
         }
 
+        /**
+         * @param canarySubsetName The subset name to modify labels with the canary version.
+         * 
+         * @return builder
+         * 
+         */
         public Builder canarySubsetName(String canarySubsetName) {
             return canarySubsetName(Output.of(canarySubsetName));
         }
 
+        /**
+         * @param destinationRuleName Holds the name of the DestinationRule.
+         * 
+         * @return builder
+         * 
+         */
         public Builder destinationRuleName(Output<String> destinationRuleName) {
             $.destinationRuleName = destinationRuleName;
             return this;
         }
 
+        /**
+         * @param destinationRuleName Holds the name of the DestinationRule.
+         * 
+         * @return builder
+         * 
+         */
         public Builder destinationRuleName(String destinationRuleName) {
             return destinationRuleName(Output.of(destinationRuleName));
         }
 
+        /**
+         * @param stableSubsetName The subset name to modify labels with the stable version.
+         * 
+         * @return builder
+         * 
+         */
         public Builder stableSubsetName(Output<String> stableSubsetName) {
             $.stableSubsetName = stableSubsetName;
             return this;
         }
 
+        /**
+         * @param stableSubsetName The subset name to modify labels with the stable version.
+         * 
+         * @return builder
+         * 
+         */
         public Builder stableSubsetName(String stableSubsetName) {
             return stableSubsetName(Output.of(stableSubsetName));
         }

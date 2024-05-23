@@ -15,14 +15,14 @@ public final class ElastigroupLoggingExportS3Args extends com.pulumi.resources.R
     public static final ElastigroupLoggingExportS3Args Empty = new ElastigroupLoggingExportS3Args();
 
     /**
-     * The group ID.
+     * The identifier of The S3 data integration to export the logs to.
      * 
      */
     @Import(name="id", required=true)
     private Output<String> id;
 
     /**
-     * @return The group ID.
+     * @return The identifier of The S3 data integration to export the logs to.
      * 
      */
     public Output<String> id() {
@@ -54,7 +54,7 @@ public final class ElastigroupLoggingExportS3Args extends com.pulumi.resources.R
         }
 
         /**
-         * @param id The group ID.
+         * @param id The identifier of The S3 data integration to export the logs to.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class ElastigroupLoggingExportS3Args extends com.pulumi.resources.R
         }
 
         /**
-         * @param id The group ID.
+         * @param id The identifier of The S3 data integration to export the logs to.
          * 
          * @return builder
          * 

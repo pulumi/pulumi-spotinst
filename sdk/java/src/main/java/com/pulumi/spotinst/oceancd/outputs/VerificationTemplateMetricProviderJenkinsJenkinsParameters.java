@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class VerificationTemplateMetricProviderJenkinsJenkinsParameters {
+    /**
+     * @return Key of an argument.
+     * 
+     */
     private String parameterKey;
+    /**
+     * @return Value of an argument.
+     * 
+     */
     private String parameterValue;
 
     private VerificationTemplateMetricProviderJenkinsJenkinsParameters() {}
+    /**
+     * @return Key of an argument.
+     * 
+     */
     public String parameterKey() {
         return this.parameterKey;
     }
+    /**
+     * @return Value of an argument.
+     * 
+     */
     public String parameterValue() {
         return this.parameterValue;
     }

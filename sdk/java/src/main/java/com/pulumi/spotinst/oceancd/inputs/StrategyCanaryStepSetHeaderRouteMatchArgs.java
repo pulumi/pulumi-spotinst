@@ -15,16 +15,32 @@ public final class StrategyCanaryStepSetHeaderRouteMatchArgs extends com.pulumi.
 
     public static final StrategyCanaryStepSetHeaderRouteMatchArgs Empty = new StrategyCanaryStepSetHeaderRouteMatchArgs();
 
+    /**
+     * The name of the header.
+     * 
+     */
     @Import(name="headerName", required=true)
     private Output<String> headerName;
 
+    /**
+     * @return The name of the header.
+     * 
+     */
     public Output<String> headerName() {
         return this.headerName;
     }
 
+    /**
+     * Defines a single header to add to the Rollout. Must be only one initialized from the following (exact, prefix, regex).
+     * 
+     */
     @Import(name="headerValue", required=true)
     private Output<StrategyCanaryStepSetHeaderRouteMatchHeaderValueArgs> headerValue;
 
+    /**
+     * @return Defines a single header to add to the Rollout. Must be only one initialized from the following (exact, prefix, regex).
+     * 
+     */
     public Output<StrategyCanaryStepSetHeaderRouteMatchHeaderValueArgs> headerValue() {
         return this.headerValue;
     }
@@ -54,20 +70,44 @@ public final class StrategyCanaryStepSetHeaderRouteMatchArgs extends com.pulumi.
             $ = new StrategyCanaryStepSetHeaderRouteMatchArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param headerName The name of the header.
+         * 
+         * @return builder
+         * 
+         */
         public Builder headerName(Output<String> headerName) {
             $.headerName = headerName;
             return this;
         }
 
+        /**
+         * @param headerName The name of the header.
+         * 
+         * @return builder
+         * 
+         */
         public Builder headerName(String headerName) {
             return headerName(Output.of(headerName));
         }
 
+        /**
+         * @param headerValue Defines a single header to add to the Rollout. Must be only one initialized from the following (exact, prefix, regex).
+         * 
+         * @return builder
+         * 
+         */
         public Builder headerValue(Output<StrategyCanaryStepSetHeaderRouteMatchHeaderValueArgs> headerValue) {
             $.headerValue = headerValue;
             return this;
         }
 
+        /**
+         * @param headerValue Defines a single header to add to the Rollout. Must be only one initialized from the following (exact, prefix, regex).
+         * 
+         * @return builder
+         * 
+         */
         public Builder headerValue(StrategyCanaryStepSetHeaderRouteMatchHeaderValueArgs headerValue) {
             return headerValue(Output.of(headerValue));
         }

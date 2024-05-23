@@ -13,17 +13,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RolloutSpecTrafficNginx {
+    /**
+     * @return Provides additional features to add to the canary ingress (such as routing by header, cookie, etc). You can add these Kubernetes annotations to specific Ingress objects to customize their behavior. Above are found examples of accepted k8s keys.For the full list of supported keys, you may reach the following documentation - https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#canary.
+     * 
+     */
     private @Nullable RolloutSpecTrafficNginxAdditionalIngressAnnotation additionalIngressAnnotation;
+    /**
+     * @return Has to match the configured annotation prefix on the Nginx ingress controller.
+     * 
+     */
     private @Nullable String nginxAnnotationPrefix;
+    /**
+     * @return Refers to the name of an `Ingress` resource in the same namespace as the `SpotDeployment`.
+     * 
+     */
     private String stableIngress;
 
     private RolloutSpecTrafficNginx() {}
+    /**
+     * @return Provides additional features to add to the canary ingress (such as routing by header, cookie, etc). You can add these Kubernetes annotations to specific Ingress objects to customize their behavior. Above are found examples of accepted k8s keys.For the full list of supported keys, you may reach the following documentation - https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#canary.
+     * 
+     */
     public Optional<RolloutSpecTrafficNginxAdditionalIngressAnnotation> additionalIngressAnnotation() {
         return Optional.ofNullable(this.additionalIngressAnnotation);
     }
+    /**
+     * @return Has to match the configured annotation prefix on the Nginx ingress controller.
+     * 
+     */
     public Optional<String> nginxAnnotationPrefix() {
         return Optional.ofNullable(this.nginxAnnotationPrefix);
     }
+    /**
+     * @return Refers to the name of an `Ingress` resource in the same namespace as the `SpotDeployment`.
+     * 
+     */
     public String stableIngress() {
         return this.stableIngress;
     }

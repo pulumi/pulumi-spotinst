@@ -12,15 +12,27 @@ namespace Pulumi.SpotInst.Azure.Inputs
 
     public sealed class OceanImageMarketplaceGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Image name.
+        /// </summary>
         [Input("offer")]
         public Input<string>? Offer { get; set; }
 
+        /// <summary>
+        /// Image publisher.
+        /// </summary>
         [Input("publisher")]
         public Input<string>? Publisher { get; set; }
 
+        /// <summary>
+        /// Image Stock Keeping Unit (which is the specific version of the image).
+        /// </summary>
         [Input("sku")]
         public Input<string>? Sku { get; set; }
 
+        /// <summary>
+        /// Image version.
+        /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
 

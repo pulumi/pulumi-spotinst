@@ -13,17 +13,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class VerificationTemplateMetricBaselineBaselineProvider {
+    /**
+     * @return The datadog provider.
+     * 
+     */
     private @Nullable VerificationTemplateMetricBaselineBaselineProviderDatadog datadog;
+    /**
+     * @return The New Relic provider.
+     * 
+     */
     private @Nullable VerificationTemplateMetricBaselineBaselineProviderNewRelic newRelic;
+    /**
+     * @return The Prometheus provider.
+     * 
+     */
     private @Nullable VerificationTemplateMetricBaselineBaselineProviderPrometheus prometheus;
 
     private VerificationTemplateMetricBaselineBaselineProvider() {}
+    /**
+     * @return The datadog provider.
+     * 
+     */
     public Optional<VerificationTemplateMetricBaselineBaselineProviderDatadog> datadog() {
         return Optional.ofNullable(this.datadog);
     }
+    /**
+     * @return The New Relic provider.
+     * 
+     */
     public Optional<VerificationTemplateMetricBaselineBaselineProviderNewRelic> newRelic() {
         return Optional.ofNullable(this.newRelic);
     }
+    /**
+     * @return The Prometheus provider.
+     * 
+     */
     public Optional<VerificationTemplateMetricBaselineBaselineProviderPrometheus> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }

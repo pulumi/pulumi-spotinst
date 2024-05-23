@@ -13,10 +13,22 @@ namespace Pulumi.SpotInst.Azure.Outputs
     [OutputType]
     public sealed class OceanNetworkNetworkInterface
     {
+        /// <summary>
+        /// Additional configuration of network interface. The name fields between all the `additional_ip_config` must be unique.
+        /// </summary>
         public readonly ImmutableArray<Outputs.OceanNetworkNetworkInterfaceAdditionalIpConfig> AdditionalIpConfigs;
+        /// <summary>
+        /// Assign public IP.
+        /// </summary>
         public readonly bool? AssignPublicIp;
+        /// <summary>
+        /// Defines whether the network interface is primary or not.
+        /// </summary>
         public readonly bool? IsPrimary;
         public readonly Outputs.OceanNetworkNetworkInterfaceSecurityGroup? SecurityGroup;
+        /// <summary>
+        /// Subnet name.
+        /// </summary>
         public readonly string? SubnetName;
 
         [OutputConstructor]

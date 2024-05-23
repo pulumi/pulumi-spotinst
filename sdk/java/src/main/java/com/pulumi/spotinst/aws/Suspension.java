@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a suspension for Elastigroup
- *         var resourceName = new Suspension("resourceName", SuspensionArgs.builder()        
+ *         var resourceName = new Suspension("resourceName", SuspensionArgs.builder()
  *             .groupId("sig-12345678")
  *             .suspensions(            
  *                 SuspensionSuspensionArgs.builder()

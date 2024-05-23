@@ -18,16 +18,32 @@ public final class VerificationTemplateMetricProviderCloudWatchArgs extends com.
 
     public static final VerificationTemplateMetricProviderCloudWatchArgs Empty = new VerificationTemplateMetricProviderCloudWatchArgs();
 
+    /**
+     * The window of time we are looking at in CloudWatch.
+     * 
+     */
     @Import(name="duration")
     private @Nullable Output<String> duration;
 
+    /**
+     * @return The window of time we are looking at in CloudWatch.
+     * 
+     */
     public Optional<Output<String>> duration() {
         return Optional.ofNullable(this.duration);
     }
 
+    /**
+     * The metric queries to be returned. A single MetricData call can include as many as 500 MetricDataQuery structures. Each of these structures can specify either a metric to retrieve, a Metrics Insights query, or a math expression to perform on retrieved data.
+     * 
+     */
     @Import(name="metricDataQueries", required=true)
     private Output<List<VerificationTemplateMetricProviderCloudWatchMetricDataQueryArgs>> metricDataQueries;
 
+    /**
+     * @return The metric queries to be returned. A single MetricData call can include as many as 500 MetricDataQuery structures. Each of these structures can specify either a metric to retrieve, a Metrics Insights query, or a math expression to perform on retrieved data.
+     * 
+     */
     public Output<List<VerificationTemplateMetricProviderCloudWatchMetricDataQueryArgs>> metricDataQueries() {
         return this.metricDataQueries;
     }
@@ -57,24 +73,54 @@ public final class VerificationTemplateMetricProviderCloudWatchArgs extends com.
             $ = new VerificationTemplateMetricProviderCloudWatchArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param duration The window of time we are looking at in CloudWatch.
+         * 
+         * @return builder
+         * 
+         */
         public Builder duration(@Nullable Output<String> duration) {
             $.duration = duration;
             return this;
         }
 
+        /**
+         * @param duration The window of time we are looking at in CloudWatch.
+         * 
+         * @return builder
+         * 
+         */
         public Builder duration(String duration) {
             return duration(Output.of(duration));
         }
 
+        /**
+         * @param metricDataQueries The metric queries to be returned. A single MetricData call can include as many as 500 MetricDataQuery structures. Each of these structures can specify either a metric to retrieve, a Metrics Insights query, or a math expression to perform on retrieved data.
+         * 
+         * @return builder
+         * 
+         */
         public Builder metricDataQueries(Output<List<VerificationTemplateMetricProviderCloudWatchMetricDataQueryArgs>> metricDataQueries) {
             $.metricDataQueries = metricDataQueries;
             return this;
         }
 
+        /**
+         * @param metricDataQueries The metric queries to be returned. A single MetricData call can include as many as 500 MetricDataQuery structures. Each of these structures can specify either a metric to retrieve, a Metrics Insights query, or a math expression to perform on retrieved data.
+         * 
+         * @return builder
+         * 
+         */
         public Builder metricDataQueries(List<VerificationTemplateMetricProviderCloudWatchMetricDataQueryArgs> metricDataQueries) {
             return metricDataQueries(Output.of(metricDataQueries));
         }
 
+        /**
+         * @param metricDataQueries The metric queries to be returned. A single MetricData call can include as many as 500 MetricDataQuery structures. Each of these structures can specify either a metric to retrieve, a Metrics Insights query, or a math expression to perform on retrieved data.
+         * 
+         * @return builder
+         * 
+         */
         public Builder metricDataQueries(VerificationTemplateMetricProviderCloudWatchMetricDataQueryArgs... metricDataQueries) {
             return metricDataQueries(List.of(metricDataQueries));
         }

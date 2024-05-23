@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class RolloutSpecTrafficPingPong {
+    /**
+     * @return Holds the name of the ping service.
+     * 
+     */
     private String pingService;
+    /**
+     * @return Holds the name of the pong service.
+     * 
+     */
     private String pongService;
 
     private RolloutSpecTrafficPingPong() {}
+    /**
+     * @return Holds the name of the ping service.
+     * 
+     */
     public String pingService() {
         return this.pingService;
     }
+    /**
+     * @return Holds the name of the pong service.
+     * 
+     */
     public String pongService() {
         return this.pongService;
     }

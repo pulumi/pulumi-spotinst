@@ -343,7 +343,13 @@ export namespace aws {
     }
 
     export interface BeanstalkDeploymentPreferencesStrategy {
+        /**
+         * Action to take
+         */
         action?: pulumi.Input<string>;
+        /**
+         * Bool value if to wait to drain instance
+         */
         shouldDrainInstances?: pulumi.Input<boolean>;
     }
 
@@ -355,8 +361,17 @@ export namespace aws {
     }
 
     export interface BeanstalkManagedActionsPlatformUpdate {
+        /**
+         * Actions to perform (options: timeWindow, never)
+         */
         performAt?: pulumi.Input<string>;
+        /**
+         * Time Window for when action occurs ex. Mon:23:50-Tue:00:20
+         */
         timeWindow?: pulumi.Input<string>;
+        /**
+         * Level to update
+         */
         updateLevel?: pulumi.Input<string>;
     }
 
@@ -762,12 +777,15 @@ export namespace aws {
     }
 
     export interface ElastigroupLoggingExport {
+        /**
+         * Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
+         */
         s3s?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupLoggingExportS3>[]>;
     }
 
     export interface ElastigroupLoggingExportS3 {
         /**
-         * The group ID.
+         * The identifier of The S3 data integration to export the logs to.
          */
         id: pulumi.Input<string>;
     }
@@ -1572,13 +1590,37 @@ export namespace aws {
     }
 
     export interface MrScalarTerminationPolicyStatement {
+        /**
+         * The number of periods over which data is compared to the specified threshold.
+         */
         evaluationPeriods?: pulumi.Input<number>;
+        /**
+         * The name of the metric in CloudWatch which the statement will be based on.
+         */
         metricName: pulumi.Input<string>;
+        /**
+         * Must contain the value: `AWS/ElasticMapReduce`.
+         */
         namespace: pulumi.Input<string>;
+        /**
+         * The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+         */
         operator?: pulumi.Input<string>;
+        /**
+         * The time window in seconds over which the statistic is applied.
+         */
         period?: pulumi.Input<number>;
+        /**
+         * The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
+         */
         statistic?: pulumi.Input<string>;
+        /**
+         * The value that the specified statistic is compared to.
+         */
         threshold: pulumi.Input<number>;
+        /**
+         * The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+         */
         unit?: pulumi.Input<string>;
     }
 
@@ -1633,27 +1675,72 @@ export namespace aws {
     }
 
     export interface OceanBlockDeviceMappingEbs {
+        /**
+         * Boolean. Flag to delete the EBS on instance termination.
+         */
         deleteOnTermination?: pulumi.Input<boolean>;
+        /**
+         * Set dynamic IOPS properties. When using this object, you cannot use the `iops` attribute. You must use one or the other.
+         */
         dynamicIops?: pulumi.Input<inputs.aws.OceanBlockDeviceMappingEbsDynamicIops>;
+        /**
+         * Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
+         */
         dynamicVolumeSize?: pulumi.Input<inputs.aws.OceanBlockDeviceMappingEbsDynamicVolumeSize>;
+        /**
+         * Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+         */
         encrypted?: pulumi.Input<boolean>;
+        /**
+         * Must be greater than or equal to 0.
+         */
         iops?: pulumi.Input<number>;
+        /**
+         * String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+         */
         kmsKeyId?: pulumi.Input<string>;
+        /**
+         * (Optional) String. The Snapshot ID to mount by.
+         */
         snapshotId?: pulumi.Input<string>;
+        /**
+         * The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = `gp3`.
+         */
         throughput?: pulumi.Input<number>;
+        /**
+         * Int. The size, in GB of the volume.
+         */
         volumeSize?: pulumi.Input<number>;
+        /**
+         * String. The type of the volume. (Example: `gp2`).
+         */
         volumeType?: pulumi.Input<string>;
     }
 
     export interface OceanBlockDeviceMappingEbsDynamicIops {
+        /**
+         * Initial size for IOPS.
+         */
         baseSize: pulumi.Input<number>;
         resource: pulumi.Input<string>;
+        /**
+         * Additional size per resource unit (in IOPS). (Example: `baseSize=50`, `sizePerResourceUnit=20`, and an instance with 2 CPU is launched; its IOPS size will be: 90).
+         */
         sizePerResourceUnit: pulumi.Input<number>;
     }
 
     export interface OceanBlockDeviceMappingEbsDynamicVolumeSize {
+        /**
+         * Int. Initial size for volume. (Example: 50)
+         */
         baseSize: pulumi.Input<number>;
+        /**
+         * String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)
+         */
         resource: pulumi.Input<string>;
+        /**
+         * Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB).
+         */
         sizePerResourceUnit: pulumi.Input<number>;
     }
 
@@ -1748,28 +1835,61 @@ export namespace aws {
          * Object. Set Elastic Block Store properties .
          */
         ebs?: pulumi.Input<inputs.aws.OceanLaunchSpecBlockDeviceMappingEbs>;
-        /**
-         * String. Suppresses the specified device included in the block device mapping of the AMI.
-         */
         noDevice?: pulumi.Input<string>;
         virtualName?: pulumi.Input<string>;
     }
 
     export interface OceanLaunchSpecBlockDeviceMappingEbs {
+        /**
+         * Boolean. Flag to delete the EBS on instance termination.
+         */
         deleteOnTermination?: pulumi.Input<boolean>;
+        /**
+         * Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
+         */
         dynamicVolumeSize?: pulumi.Input<inputs.aws.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize>;
+        /**
+         * Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+         */
         encrypted?: pulumi.Input<boolean>;
+        /**
+         * Int. The number of I/O operations per second (IOPS) that the volume supports.
+         */
         iops?: pulumi.Input<number>;
+        /**
+         * String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+         */
         kmsKeyId?: pulumi.Input<string>;
+        /**
+         * (Optional) String. The Snapshot ID to mount by.
+         */
         snapshotId?: pulumi.Input<string>;
+        /**
+         * The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = `gp3`.
+         */
         throughput?: pulumi.Input<number>;
+        /**
+         * Int. The size, in GB of the volume.
+         */
         volumeSize?: pulumi.Input<number>;
+        /**
+         * String. The type of the volume. (Example: `gp2`).
+         */
         volumeType?: pulumi.Input<string>;
     }
 
     export interface OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize {
+        /**
+         * Int. Initial size for volume. (Example: 50)
+         */
         baseSize: pulumi.Input<number>;
+        /**
+         * String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)
+         */
         resource: pulumi.Input<string>;
+        /**
+         * Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB)
+         */
         sizePerResourceUnit: pulumi.Input<number>;
     }
 
@@ -1799,7 +1919,13 @@ export namespace aws {
     }
 
     export interface OceanLaunchSpecElasticIpPoolTagSelector {
+        /**
+         * Elastic IP tag key. The Virtual Node Group will consider all Elastic IPs tagged with this tag as a part of the Elastic IP pool to use.
+         */
         tagKey: pulumi.Input<string>;
+        /**
+         * Elastic IP tag value. Can be null.
+         */
         tagValue?: pulumi.Input<string>;
     }
 
@@ -1959,9 +2085,21 @@ export namespace aws {
     }
 
     export interface OceanLaunchSpecSchedulingTaskTaskHeadroom {
+        /**
+         * Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+         */
         cpuPerUnit?: pulumi.Input<number>;
+        /**
+         * Optionally configure the number of GPUS to allocate for each headroom unit.
+         */
         gpuPerUnit?: pulumi.Input<number>;
+        /**
+         * Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
+         */
         memoryPerUnit?: pulumi.Input<number>;
+        /**
+         * The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+         */
         numOfUnits: pulumi.Input<number>;
     }
 
@@ -2024,12 +2162,15 @@ export namespace aws {
     }
 
     export interface OceanLoggingExport {
+        /**
+         * Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
+         */
         s3s?: pulumi.Input<pulumi.Input<inputs.aws.OceanLoggingExportS3>[]>;
     }
 
     export interface OceanLoggingExportS3 {
         /**
-         * The Cluster ID.
+         * The identifier of The S3 data integration to export the logs to.
          */
         id: pulumi.Input<string>;
     }
@@ -2139,20 +2280,38 @@ export namespace azure {
     }
 
     export interface OceanAutoscalerAutoscaleDown {
+        /**
+         * Would represent the maximum % to scale-down.
+         */
         maxScaleDownPercentage?: pulumi.Input<number>;
     }
 
     export interface OceanAutoscalerAutoscaleHeadroom {
+        /**
+         * Automatic headroom configuration.
+         */
         automatic?: pulumi.Input<inputs.azure.OceanAutoscalerAutoscaleHeadroomAutomatic>;
     }
 
     export interface OceanAutoscalerAutoscaleHeadroomAutomatic {
+        /**
+         * Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
+         */
         isEnabled?: pulumi.Input<boolean>;
+        /**
+         * Optionally set a number between 0-100 to control the percentage of total cluster resources dedicated to headroom. Relevant when `isEnabled` is toggled on.
+         */
         percentage?: pulumi.Input<number>;
     }
 
     export interface OceanAutoscalerResourceLimits {
+        /**
+         * The maximum memory in GiB units that can be allocated to the cluster.
+         */
         maxMemoryGib?: pulumi.Input<number>;
+        /**
+         * The maximum cpu in vCpu units that can be allocated to the cluster.
+         */
         maxVcpu?: pulumi.Input<number>;
     }
 
@@ -2191,9 +2350,21 @@ export namespace azure {
     }
 
     export interface OceanImageMarketplace {
+        /**
+         * Image name.
+         */
         offer?: pulumi.Input<string>;
+        /**
+         * Image publisher.
+         */
         publisher?: pulumi.Input<string>;
+        /**
+         * Image Stock Keeping Unit (which is the specific version of the image).
+         */
         sku?: pulumi.Input<string>;
+        /**
+         * Image version.
+         */
         version?: pulumi.Input<string>;
     }
 
@@ -2247,18 +2418,33 @@ export namespace azure {
     }
 
     export interface OceanNetworkNetworkInterface {
+        /**
+         * Additional configuration of network interface. The name fields between all the `additionalIpConfig` must be unique.
+         */
         additionalIpConfigs?: pulumi.Input<pulumi.Input<inputs.azure.OceanNetworkNetworkInterfaceAdditionalIpConfig>[]>;
+        /**
+         * Assign public IP.
+         */
         assignPublicIp?: pulumi.Input<boolean>;
+        /**
+         * Defines whether the network interface is primary or not.
+         */
         isPrimary?: pulumi.Input<boolean>;
         securityGroup?: pulumi.Input<inputs.azure.OceanNetworkNetworkInterfaceSecurityGroup>;
+        /**
+         * Subnet name.
+         */
         subnetName?: pulumi.Input<string>;
     }
 
     export interface OceanNetworkNetworkInterfaceAdditionalIpConfig {
         /**
-         * The Ocean cluster name.
+         * Configuration name.
          */
         name?: pulumi.Input<string>;
+        /**
+         * Supported values: `IPv4`, `IPv6`.
+         */
         privateIpVersion?: pulumi.Input<string>;
     }
 
@@ -2293,20 +2479,38 @@ export namespace azure {
     }
 
     export interface OceanNpAutoscalerAutoscaleDown {
+        /**
+         * The maximum percentage allowed to scale down in a single scaling action.
+         */
         maxScaleDownPercentage?: pulumi.Input<number>;
     }
 
     export interface OceanNpAutoscalerAutoscaleHeadroom {
+        /**
+         * [Automatic headroom](https://docs.spot.io/ocean/features/headroom?id=automatic-headroom) configuration.
+         */
         automatic?: pulumi.Input<inputs.azure.OceanNpAutoscalerAutoscaleHeadroomAutomatic>;
     }
 
     export interface OceanNpAutoscalerAutoscaleHeadroomAutomatic {
+        /**
+         * Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+         */
         isEnabled?: pulumi.Input<boolean>;
+        /**
+         * Optionally set a number between 0-100 to control the percentage of total cluster resources dedicated to headroom.
+         */
         percentage?: pulumi.Input<number>;
     }
 
     export interface OceanNpAutoscalerResourceLimits {
+        /**
+         * The maximum memory in GiB units that can be allocated to the cluster.
+         */
         maxMemoryGib?: pulumi.Input<number>;
+        /**
+         * The maximum cpu in vCpu units that can be allocated to the cluster.
+         */
         maxVcpu?: pulumi.Input<number>;
     }
 
@@ -2409,6 +2613,9 @@ export namespace azure {
     }
 
     export interface OceanNpLinuxOsConfigSysctl {
+        /**
+         * Maximum number of memory map areas a process may have. Can be configured only if OS type is Linux.
+         */
         vmMaxMapCount?: pulumi.Input<number>;
     }
 
@@ -2565,6 +2772,9 @@ export namespace azure {
     }
 
     export interface OceanNpVirtualNodeGroupLinuxOsConfigSysctl {
+        /**
+         * Maximum number of memory map areas a process may have. Can be configured only if OS type is Linux.
+         */
         vmMaxMapCount?: pulumi.Input<number>;
     }
 
@@ -2642,9 +2852,21 @@ export namespace azure {
     }
 
     export interface OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom {
+        /**
+         * Configure the number of CPUs to allocate for the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+         */
         cpuPerUnit?: pulumi.Input<number>;
+        /**
+         * How many GPU cores should be allocated for headroom unit.
+         */
         gpuPerUnit?: pulumi.Input<number>;
+        /**
+         * Configure the amount of memory (MiB) to allocate the headroom.
+         */
         memoryPerUnit?: pulumi.Input<number>;
+        /**
+         * The number of headroom units to maintain, where each unit has the defined CPU, memory and GPU.
+         */
         numOfUnits: pulumi.Input<number>;
     }
 
@@ -2675,13 +2897,28 @@ export namespace azure {
     }
 
     export interface OceanVirtualNodeGroupLaunchSpecificationOsDisk {
+        /**
+         * The size of the OS disk in GB, Required if dataDisks is specified.
+         */
         sizeGb: pulumi.Input<number>;
+        /**
+         * The type of the OS disk. Valid values: `"Standard_LRS"`, `"Premium_LRS"`, `"StandardSSD_LRS"`.
+         */
         type?: pulumi.Input<string>;
+        /**
+         * Flag to enable/disable the Ephemeral OS Disk utilization.
+         */
         utilizeEphemeralStorage?: pulumi.Input<boolean>;
     }
 
     export interface OceanVirtualNodeGroupLaunchSpecificationTag {
+        /**
+         * Tag Key for Vms in the cluster.
+         */
         key?: pulumi.Input<string>;
+        /**
+         * Tag Value for VMs in the cluster.
+         */
         value?: pulumi.Input<string>;
     }
 
@@ -2693,9 +2930,6 @@ export namespace azure {
     }
 
     export interface OceanVirtualNodeGroupTaint {
-        /**
-         * The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`, `"PreferNoExecute"`.
-         */
         effect: pulumi.Input<string>;
         /**
          * The taint key.
@@ -2897,8 +3131,17 @@ export namespace ecs {
     }
 
     export interface OceanLaunchSpecSchedulingTaskTaskHeadroom {
+        /**
+         * Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+         */
         cpuPerUnit?: pulumi.Input<number>;
+        /**
+         * Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
+         */
         memoryPerUnit?: pulumi.Input<number>;
+        /**
+         * The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+         */
         numOfUnits: pulumi.Input<number>;
     }
 
@@ -2924,12 +3167,15 @@ export namespace ecs {
     }
 
     export interface OceanLoggingExport {
+        /**
+         * Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
+         */
         s3s?: pulumi.Input<pulumi.Input<inputs.ecs.OceanLoggingExportS3>[]>;
     }
 
     export interface OceanLoggingExportS3 {
         /**
-         * The Spotinst Ocean ID.
+         * The identifier of The S3 data integration to export the logs to.
          */
         id: pulumi.Input<string>;
     }
@@ -2963,6 +3209,7 @@ export namespace ecs {
         key: pulumi.Input<string>;
         /**
          * The tag value.
+         * * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
          */
         value: pulumi.Input<string>;
     }
@@ -3511,14 +3758,25 @@ export namespace gke {
 
     export interface OceanLaunchSpecNetworkInterfaceAccessConfig {
         /**
-         * The launch specification name.
+         * The name of the access configuration.
          */
         name?: pulumi.Input<string>;
+        /**
+         * The type of the access configuration.
+         */
         type?: pulumi.Input<string>;
     }
 
     export interface OceanLaunchSpecNetworkInterfaceAliasIpRange {
+        /**
+         * specify the IP address range in CIDR notation that can be used for the alias IP addresses associated with the imported node pool.
+         */
         ipCidrRange: pulumi.Input<string>;
+        /**
+         * specify the IP address range for the subnet secondary IP range.
+         *
+         * <a id="update-policy"></a>
+         */
         subnetworkRangeName: pulumi.Input<string>;
     }
 
@@ -3553,9 +3811,21 @@ export namespace gke {
     }
 
     export interface OceanLaunchSpecSchedulingTaskTaskHeadroom {
+        /**
+         * Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+         */
         cpuPerUnit?: pulumi.Input<number>;
+        /**
+         * Optionally configure the number of GPUS to allocate for each headroom unit.
+         */
         gpuPerUnit?: pulumi.Input<number>;
+        /**
+         * Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
+         */
         memoryPerUnit?: pulumi.Input<number>;
+        /**
+         * The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+         */
         numOfUnits: pulumi.Input<number>;
     }
 
@@ -3644,16 +3914,31 @@ export namespace oceancd {
     }
 
     export interface RolloutSpecStrategyArg {
+        /**
+         * Name of an argument.
+         */
         argName: pulumi.Input<string>;
+        /**
+         * Value of an argument.
+         */
         argValue?: pulumi.Input<string>;
+        /**
+         * Defines from where to get the value of an argument.
+         */
         valueFrom?: pulumi.Input<inputs.oceancd.RolloutSpecStrategyArgValueFrom>;
     }
 
     export interface RolloutSpecStrategyArgValueFrom {
+        /**
+         * Defines the field path from where to get the value of an argument.
+         */
         fieldRef: pulumi.Input<inputs.oceancd.RolloutSpecStrategyArgValueFromFieldRef>;
     }
 
     export interface RolloutSpecStrategyArgValueFromFieldRef {
+        /**
+         * Path to SpotDeployment's field from where to get the value of an argument.
+         */
         fieldPath: pulumi.Input<string>;
     }
 
@@ -3693,62 +3978,143 @@ export namespace oceancd {
     }
 
     export interface RolloutSpecTrafficAlb {
+        /**
+         * Has to match the configured annotation prefix on the alb ingress controller.
+         */
         albAnnotationPrefix?: pulumi.Input<string>;
+        /**
+         * Refers to the name of an `Ingress` resource in the same namespace as the `SpotDeployment`.
+         */
         albIngress: pulumi.Input<string>;
+        /**
+         * References the service in the ingress to the controller should add the action to.
+         */
         albRootService: pulumi.Input<string>;
+        /**
+         * Refers to the port that the Ingress action should route traffic to.
+         */
         servicePort: pulumi.Input<number>;
+        /**
+         * Allows to specify further settings on the ForwardConfig.
+         */
         stickinessConfig?: pulumi.Input<inputs.oceancd.RolloutSpecTrafficAlbStickinessConfig>;
     }
 
     export interface RolloutSpecTrafficAlbStickinessConfig {
+        /**
+         * Defines how long the load balancer should consistently route the user's request to the same target.
+         */
         durationSeconds?: pulumi.Input<number>;
+        /**
+         * Enables the load balancer to bind a user's session to a specific target.
+         */
         enabled?: pulumi.Input<boolean>;
     }
 
     export interface RolloutSpecTrafficAmbassador {
+        /**
+         * A list of names of the Ambassador Mappings used to route traffic to the service.
+         */
         mappings: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface RolloutSpecTrafficIstio {
+        /**
+         * It references to an Istio DestinationRule to modify and shape traffic. `DestinationRule` field belongs only to the Subset Level approach.
+         */
         destinationRule?: pulumi.Input<inputs.oceancd.RolloutSpecTrafficIstioDestinationRule>;
+        /**
+         * Defines a set of traffic routing rules to apply when a host is addressed.
+         */
         virtualServices: pulumi.Input<pulumi.Input<inputs.oceancd.RolloutSpecTrafficIstioVirtualService>[]>;
     }
 
     export interface RolloutSpecTrafficIstioDestinationRule {
+        /**
+         * The subset name to modify labels with the canary version.
+         */
         canarySubsetName: pulumi.Input<string>;
+        /**
+         * Holds the name of the DestinationRule.
+         */
         destinationRuleName: pulumi.Input<string>;
+        /**
+         * The subset name to modify labels with the stable version.
+         */
         stableSubsetName: pulumi.Input<string>;
     }
 
     export interface RolloutSpecTrafficIstioVirtualService {
+        /**
+         * A list of HTTPS routes within VirtualService.
+         */
         tlsRoutes?: pulumi.Input<pulumi.Input<inputs.oceancd.RolloutSpecTrafficIstioVirtualServiceTlsRoute>[]>;
+        /**
+         * Holds the name of the VirtualService.
+         */
         virtualServiceName: pulumi.Input<string>;
+        /**
+         * A list of HTTP routes within VirtualService.
+         */
         virtualServiceRoutes?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface RolloutSpecTrafficIstioVirtualServiceTlsRoute {
+        /**
+         * The port of the TLS Route desired to be matched in the given Istio VirtualService.
+         */
         port?: pulumi.Input<number>;
+        /**
+         * A list of all the SNI Hosts of the TLS Route desired to be matched in the given Istio VirtualService.
+         */
         sniHosts?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface RolloutSpecTrafficNginx {
+        /**
+         * Provides additional features to add to the canary ingress (such as routing by header, cookie, etc). You can add these Kubernetes annotations to specific Ingress objects to customize their behavior. Above are found examples of accepted k8s keys.For the full list of supported keys, you may reach the following documentation - https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#canary.
+         */
         additionalIngressAnnotation?: pulumi.Input<inputs.oceancd.RolloutSpecTrafficNginxAdditionalIngressAnnotation>;
+        /**
+         * Has to match the configured annotation prefix on the Nginx ingress controller.
+         */
         nginxAnnotationPrefix?: pulumi.Input<string>;
+        /**
+         * Refers to the name of an `Ingress` resource in the same namespace as the `SpotDeployment`.
+         */
         stableIngress: pulumi.Input<string>;
     }
 
     export interface RolloutSpecTrafficNginxAdditionalIngressAnnotation {
+        /**
+         * Allows customizing the header value instead of using hardcoded values.
+         */
         canaryByHeader?: pulumi.Input<string>;
+        /**
+         * Any of supported annotations.
+         */
         key1?: pulumi.Input<string>;
     }
 
     export interface RolloutSpecTrafficPingPong {
+        /**
+         * Holds the name of the ping service.
+         */
         pingService: pulumi.Input<string>;
+        /**
+         * Holds the name of the pong service.
+         */
         pongService: pulumi.Input<string>;
     }
 
     export interface RolloutSpecTrafficSmi {
+        /**
+         * Holds the name of service that clients use to communicate.
+         */
         smiRootService?: pulumi.Input<string>;
+        /**
+         * Holds the name of the TrafficSplit.
+         */
         trafficSplitName?: pulumi.Input<string>;
     }
 
@@ -3764,45 +4130,99 @@ export namespace oceancd {
     }
 
     export interface StrategyCanaryBackgroundVerification {
+        /**
+         * List of Verification Template names.
+         */
         templateNames: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface StrategyCanaryStep {
+        /**
+         * Defines the duration of time to freeze the rollout.
+         */
         pause?: pulumi.Input<inputs.oceancd.StrategyCanaryStepPause>;
+        /**
+         * Defines how to scale the version without traffic weight changing.
+         */
         setCanaryScale?: pulumi.Input<inputs.oceancd.StrategyCanaryStepSetCanaryScale>;
+        /**
+         * Defines the list of HeaderRoutes to add to the Rollout.
+         */
         setHeaderRoute?: pulumi.Input<inputs.oceancd.StrategyCanaryStepSetHeaderRoute>;
+        /**
+         * Defines the percentage that the new version should receive.
+         */
         setWeight?: pulumi.Input<number>;
         stepName?: pulumi.Input<string>;
+        /**
+         * Represents the list of verifications to run in a step.
+         */
         verification?: pulumi.Input<inputs.oceancd.StrategyCanaryStepVerification>;
     }
 
     export interface StrategyCanaryStepPause {
+        /**
+         * The amount of time to wait before moving to the next step.
+         */
         duration?: pulumi.Input<string>;
     }
 
     export interface StrategyCanaryStepSetCanaryScale {
+        /**
+         * Defines whether a rollout should match the current canary's setWeight step.
+         */
         matchTrafficWeight?: pulumi.Input<boolean>;
+        /**
+         * Sets the number of replicas the new version should have.
+         */
         replicas?: pulumi.Input<number>;
+        /**
+         * Sets the percentage of replicas the new version should have.
+         */
         weight?: pulumi.Input<number>;
     }
 
     export interface StrategyCanaryStepSetHeaderRoute {
+        /**
+         * The name of the HeaderRoute group.
+         */
         headerRouteName: pulumi.Input<string>;
+        /**
+         * The matching rules for the header route.
+         */
         matches: pulumi.Input<pulumi.Input<inputs.oceancd.StrategyCanaryStepSetHeaderRouteMatch>[]>;
     }
 
     export interface StrategyCanaryStepSetHeaderRouteMatch {
+        /**
+         * The name of the header.
+         */
         headerName: pulumi.Input<string>;
+        /**
+         * Defines a single header to add to the Rollout. Must be only one initialized from the following (exact, prefix, regex).
+         */
         headerValue: pulumi.Input<inputs.oceancd.StrategyCanaryStepSetHeaderRouteMatchHeaderValue>;
     }
 
     export interface StrategyCanaryStepSetHeaderRouteMatchHeaderValue {
+        /**
+         * The exact header value.
+         */
         exact?: pulumi.Input<string>;
+        /**
+         * The prefix of the value.
+         */
         prefix?: pulumi.Input<string>;
+        /**
+         * The value in a regex format.
+         */
         regex?: pulumi.Input<string>;
     }
 
     export interface StrategyCanaryStepVerification {
+        /**
+         * List of Verification Template names.
+         */
         templateNames: pulumi.Input<pulumi.Input<string>[]>;
     }
 
@@ -3814,16 +4234,28 @@ export namespace oceancd {
     }
 
     export interface StrategyRollingStep {
+        /**
+         * Defines the duration of time to freeze the rollout.
+         */
         pause?: pulumi.Input<inputs.oceancd.StrategyRollingStepPause>;
         stepsName?: pulumi.Input<string>;
+        /**
+         * Represents the list of verifications to run in a step.
+         */
         verification?: pulumi.Input<inputs.oceancd.StrategyRollingStepVerification>;
     }
 
     export interface StrategyRollingStepPause {
+        /**
+         * The amount of time to wait before moving to the next step.
+         */
         duration?: pulumi.Input<string>;
     }
 
     export interface StrategyRollingStepVerification {
+        /**
+         * List of Verification Template names.
+         */
         templateNames: pulumi.Input<pulumi.Input<string>[]>;
     }
 
@@ -3907,13 +4339,19 @@ export namespace oceancd {
     }
 
     export interface VerificationTemplateArgValueFrom {
+        /**
+         * Secret key to use.
+         */
         secretKeyRef?: pulumi.Input<inputs.oceancd.VerificationTemplateArgValueFromSecretKeyRef>;
     }
 
     export interface VerificationTemplateArgValueFromSecretKeyRef {
+        /**
+         * The name of the field inside the secret.
+         */
         key: pulumi.Input<string>;
         /**
-         * Identifier name for Ocean CD Verification Template. Must be unique.
+         * The name of the secret.
          */
         name: pulumi.Input<string>;
     }
@@ -3966,118 +4404,286 @@ export namespace oceancd {
     }
 
     export interface VerificationTemplateMetricBaseline {
+        /**
+         * The name of the monitoring tool chosen for the metric.
+         */
         baselineProviders: pulumi.Input<pulumi.Input<inputs.oceancd.VerificationTemplateMetricBaselineBaselineProvider>[]>;
+        /**
+         * Number in percent we allow the new version’s data result to be under baseline data result.
+         */
         maxRange?: pulumi.Input<number>;
+        /**
+         * Number in percent we allow the new version’s data result to be under baseline data result.*
+         */
         minRange?: pulumi.Input<number>;
+        /**
+         * A mathematical expression needed for the comparison. Enum: "<" ">" "<=" ">=" "=" "range"
+         */
         threshold: pulumi.Input<string>;
     }
 
     export interface VerificationTemplateMetricBaselineBaselineProvider {
+        /**
+         * The datadog provider.
+         */
         datadog?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricBaselineBaselineProviderDatadog>;
+        /**
+         * The New Relic provider.
+         */
         newRelic?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricBaselineBaselineProviderNewRelic>;
+        /**
+         * The Prometheus provider.
+         */
         prometheus?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricBaselineBaselineProviderPrometheus>;
     }
 
     export interface VerificationTemplateMetricBaselineBaselineProviderDatadog {
+        /**
+         * A request for information retrieved from Datadog.
+         */
         datadogQuery: pulumi.Input<string>;
+        /**
+         * The window of time we are looking at in DataDog.
+         */
         duration?: pulumi.Input<string>;
     }
 
     export interface VerificationTemplateMetricBaselineBaselineProviderNewRelic {
+        /**
+         * A raw newrelic NRQL query to perform.
+         */
         newRelicQuery: pulumi.Input<string>;
+        /**
+         * The name of the secret holding NR account configuration.
+         */
         profile?: pulumi.Input<string>;
     }
 
     export interface VerificationTemplateMetricBaselineBaselineProviderPrometheus {
+        /**
+         * A request for information retrieved from Prometheus.
+         */
         prometheusQuery: pulumi.Input<string>;
     }
 
     export interface VerificationTemplateMetricProvider {
+        /**
+         * The CloudWatch provider.
+         */
         cloudWatch?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderCloudWatch>;
+        /**
+         * The datadog provider.
+         */
         datadog?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderDatadog>;
+        /**
+         * The Jenkins provider. Default is "{$}"
+         */
         jenkins?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderJenkins>;
+        /**
+         * The Job provider.
+         */
         job?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderJob>;
+        /**
+         * The New Relic provider.
+         */
         newRelic?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderNewRelic>;
+        /**
+         * The Prometheus provider.
+         */
         prometheus?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderPrometheus>;
+        /**
+         * The Web provider.
+         */
         web?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderWeb>;
     }
 
     export interface VerificationTemplateMetricProviderCloudWatch {
+        /**
+         * The window of time we are looking at in CloudWatch.
+         */
         duration?: pulumi.Input<string>;
+        /**
+         * The metric queries to be returned. A single MetricData call can include as many as 500 MetricDataQuery structures. Each of these structures can specify either a metric to retrieve, a Metrics Insights query, or a math expression to perform on retrieved data.
+         */
         metricDataQueries: pulumi.Input<pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderCloudWatchMetricDataQuery>[]>;
     }
 
     export interface VerificationTemplateMetricProviderCloudWatchMetricDataQuery {
+        /**
+         * This field can contain either a Metrics Insights query, or a metric math expression to be performed on the returned data. Within one metricdataquery object, you must specify either expression or metricstat but not both.
+         */
         expression?: pulumi.Input<string>;
+        /**
+         * The response ID. Must be unique and not null. This object can contain characters, letters, numbers and underscore. The first letter must be a lowercase letter.
+         */
         id: pulumi.Input<string>;
+        /**
+         * A human-readable label for this metric or expression. If the metric or expression is shown in a CloudWatch dashboard widget, the label is shown
+         */
         label?: pulumi.Input<string>;
+        /**
+         * The metric to be returned, along with statistics, period, and units. Use this parameter only if this object is retrieving a metric and not performing a math expression on returned data.Within one metricdataquery object, you must specify either expression or metricstat but not both.
+         */
         metricStat?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat>;
+        /**
+         * The granularity, in seconds, of the returned data points.
+         */
         period?: pulumi.Input<number>;
+        /**
+         * This option indicates whether to return the timestamps and raw data values of this metric. If you are performing this call just to do math expressions and do not also need the raw data returned, you can specify False . If you omit this, the default of True is used.
+         */
         returnData?: pulumi.Input<boolean>;
     }
 
     export interface VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat {
+        /**
+         * The metric to return, including the metric name, namespace, and dimensions.
+         */
         metric?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric>;
+        /**
+         * The granularity, in seconds, of the returned data points.
+         */
         metricPeriod?: pulumi.Input<number>;
+        /**
+         * The statistic to return. It can include any CloudWatch statistic or extended statistic.
+         */
         stat?: pulumi.Input<string>;
+        /**
+         * This defines what unit you want to use when storing the metric.  Enum: `"Seconds" "Microseconds" "Milliseconds" "Bytes" "Kilobytes" "Megabytes" "Gigabytes" "Terabytes" "Bits" "Kilobits" "Megabits" "Gigabits" "Terabits" "Percent" "Count" "Bytes/Second" "Kilobytes/Second" "Megabytes/Second" "Gigabytes/Second" "Terabytes/Second" "Bits/Second" "Kilobits/Second" "Megabits/Second" "Gigabits/Second" "Terabits/Second" "Count/Second" "None"`
+         */
         unit?: pulumi.Input<string>;
     }
 
     export interface VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric {
+        /**
+         * A dimension is a name/value pair that is part of the identity of a metric.You can assign upto 30 dimensions to a metric
+         */
         dimensions?: pulumi.Input<pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimension>[]>;
+        /**
+         * The name of the metric.
+         */
         metricName: pulumi.Input<string>;
+        /**
+         * The namespace of the metric.
+         */
         namespace?: pulumi.Input<string>;
     }
 
     export interface VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimension {
+        /**
+         * The name of the dimensions. These values must contain only ASCII characters and must include at least one non-whitespace characte
+         */
         dimensionName: pulumi.Input<string>;
+        /**
+         * The value of the dimensions.These values must contain only ASCII characters and must include at least one non-whitespace characte
+         */
         dimensionValue: pulumi.Input<string>;
     }
 
     export interface VerificationTemplateMetricProviderDatadog {
+        /**
+         * A request for information retrieved from Datadog.
+         */
         datadogQuery?: pulumi.Input<string>;
+        /**
+         * The window of time we are looking at in DataDog.
+         */
         duration?: pulumi.Input<string>;
     }
 
     export interface VerificationTemplateMetricProviderJenkins {
+        /**
+         * The interval time to poll status.
+         */
         jenkinsInterval: pulumi.Input<string>;
+        /**
+         * List of parameters.
+         */
         jenkinsParameters?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderJenkinsJenkinsParameters>;
+        /**
+         * The Jenkins pipeline name.
+         */
         pipelineName: pulumi.Input<string>;
+        /**
+         * The total jenkins timeout.
+         */
         timeout: pulumi.Input<string>;
+        /**
+         * Host TLS verification.
+         */
         tlsVerification?: pulumi.Input<boolean>;
     }
 
     export interface VerificationTemplateMetricProviderJenkinsJenkinsParameters {
+        /**
+         * Key of an argument.
+         */
         parameterKey: pulumi.Input<string>;
+        /**
+         * Value of an argument.
+         */
         parameterValue: pulumi.Input<string>;
     }
 
     export interface VerificationTemplateMetricProviderJob {
+        /**
+         * The job spec require to run the metric.
+         */
         specs: pulumi.Input<pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderJobSpec>[]>;
     }
 
     export interface VerificationTemplateMetricProviderJobSpec {
+        /**
+         * Specifies the number of retries before marking this job failed.
+         */
         backoffLimit?: pulumi.Input<number>;
+        /**
+         * Describes the pod that will be created when executing a job.
+         */
         jobTemplates: pulumi.Input<pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderJobSpecJobTemplate>[]>;
     }
 
     export interface VerificationTemplateMetricProviderJobSpecJobTemplate {
+        /**
+         * Specification of the desired behavior of the pod.
+         */
         templateSpecs: pulumi.Input<pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpec>[]>;
     }
 
     export interface VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpec {
+        /**
+         * A list of containers belonging to the pod.
+         */
         containers: pulumi.Input<pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainer>[]>;
+        /**
+         * Restart policy for all containers within the pod. Enum: `"Never" "OnFailure"`
+         */
         restartPolicy: pulumi.Input<string>;
     }
 
     export interface VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainer {
+        /**
+         * The entry point of a container.
+         */
         commands: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The name of a container.
+         */
         containerName: pulumi.Input<string>;
+        /**
+         * The image name of a container.
+         */
         image: pulumi.Input<string>;
     }
 
     export interface VerificationTemplateMetricProviderNewRelic {
+        /**
+         * A raw newrelic NRQL query to perform.
+         */
         newRelicQuery: pulumi.Input<string>;
+        /**
+         * The name of the secret holding NR account configuration.
+         */
         profile?: pulumi.Input<string>;
     }
 
@@ -4086,17 +4692,44 @@ export namespace oceancd {
     }
 
     export interface VerificationTemplateMetricProviderWeb {
+        /**
+         * The body of the web metric.
+         */
         body?: pulumi.Input<string>;
+        /**
+         * Skips host TLS verification.
+         */
         insecure?: pulumi.Input<boolean>;
+        /**
+         * A JSON Path to use as the result variable. Default is "{$}"
+         */
         jsonPath?: pulumi.Input<string>;
+        /**
+         * The method of the web metric.  Enum: "GET" "POST" "PUT"
+         */
         method?: pulumi.Input<string>;
+        /**
+         * The timeout for the request in seconds. Default is 10.
+         */
         timeoutSeconds?: pulumi.Input<number>;
+        /**
+         * The address of the web metric.
+         */
         url: pulumi.Input<string>;
+        /**
+         * Optional HTTP headers to use in the request.
+         */
         webHeaders?: pulumi.Input<pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderWebWebHeader>[]>;
     }
 
     export interface VerificationTemplateMetricProviderWebWebHeader {
+        /**
+         * The name of a header
+         */
         webHeaderKey: pulumi.Input<string>;
+        /**
+         * The value of a header
+         */
         webHeaderValue: pulumi.Input<string>;
     }
 }
@@ -4110,8 +4743,18 @@ export namespace organization {
     }
 
     export interface PolicyPolicyContentStatement {
+        /**
+         * Set a list of required actions for this permissions statement.
+         * Full list of actions can be found in [https://docs.spot.io/account-user-management/user-management/access-policies-actions/](https://docs.spot.io/account-user-management/user-management/access-policies-actions/).
+         */
         actions: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Valid values "ALLOW", "DENY".
+         */
         effect: pulumi.Input<string>;
+        /**
+         * Set a list of resources IDs. In order to include all resources in this statement - use "*".
+         */
         resources: pulumi.Input<pulumi.Input<string>[]>;
     }
 

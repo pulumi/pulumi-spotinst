@@ -13,6 +13,9 @@ namespace Pulumi.SpotInst.Oceancd.Outputs
     [OutputType]
     public sealed class StrategyCanaryStepPause
     {
+        /// <summary>
+        /// The amount of time to wait before moving to the next step.
+        /// </summary>
         public readonly string? Duration;
 
         [OutputConstructor]

@@ -12,9 +12,15 @@ namespace Pulumi.SpotInst.Oceancd.Inputs
 
     public sealed class VerificationTemplateMetricProviderJenkinsJenkinsParametersGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Key of an argument.
+        /// </summary>
         [Input("parameterKey", required: true)]
         public Input<string> ParameterKey { get; set; } = null!;
 
+        /// <summary>
+        /// Value of an argument.
+        /// </summary>
         [Input("parameterValue", required: true)]
         public Input<string> ParameterValue { get; set; } = null!;
 

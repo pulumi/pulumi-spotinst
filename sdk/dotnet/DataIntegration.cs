@@ -47,6 +47,7 @@ namespace Pulumi.SpotInst
 
         /// <summary>
         /// When vendor value is s3, the following fields are included:
+        /// * `bucketName` - (Required) The name of the bucket to use. Your spot IAM Role policy needs to include s3:putObject permissions for this bucket. Can't be null.
         /// </summary>
         [Output("s3")]
         public Output<Outputs.DataIntegrationS3?> S3 { get; private set; } = null!;
@@ -111,6 +112,7 @@ namespace Pulumi.SpotInst
 
         /// <summary>
         /// When vendor value is s3, the following fields are included:
+        /// * `bucketName` - (Required) The name of the bucket to use. Your spot IAM Role policy needs to include s3:putObject permissions for this bucket. Can't be null.
         /// </summary>
         [Input("s3")]
         public Input<Inputs.DataIntegrationS3Args>? S3 { get; set; }
@@ -137,6 +139,7 @@ namespace Pulumi.SpotInst
 
         /// <summary>
         /// When vendor value is s3, the following fields are included:
+        /// * `bucketName` - (Required) The name of the bucket to use. Your spot IAM Role policy needs to include s3:putObject permissions for this bucket. Can't be null.
         /// </summary>
         [Input("s3")]
         public Input<Inputs.DataIntegrationS3GetArgs>? S3 { get; set; }

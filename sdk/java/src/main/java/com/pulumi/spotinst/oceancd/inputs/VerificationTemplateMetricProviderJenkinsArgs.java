@@ -18,37 +18,77 @@ public final class VerificationTemplateMetricProviderJenkinsArgs extends com.pul
 
     public static final VerificationTemplateMetricProviderJenkinsArgs Empty = new VerificationTemplateMetricProviderJenkinsArgs();
 
+    /**
+     * The interval time to poll status.
+     * 
+     */
     @Import(name="jenkinsInterval", required=true)
     private Output<String> jenkinsInterval;
 
+    /**
+     * @return The interval time to poll status.
+     * 
+     */
     public Output<String> jenkinsInterval() {
         return this.jenkinsInterval;
     }
 
+    /**
+     * List of parameters.
+     * 
+     */
     @Import(name="jenkinsParameters")
     private @Nullable Output<VerificationTemplateMetricProviderJenkinsJenkinsParametersArgs> jenkinsParameters;
 
+    /**
+     * @return List of parameters.
+     * 
+     */
     public Optional<Output<VerificationTemplateMetricProviderJenkinsJenkinsParametersArgs>> jenkinsParameters() {
         return Optional.ofNullable(this.jenkinsParameters);
     }
 
+    /**
+     * The Jenkins pipeline name.
+     * 
+     */
     @Import(name="pipelineName", required=true)
     private Output<String> pipelineName;
 
+    /**
+     * @return The Jenkins pipeline name.
+     * 
+     */
     public Output<String> pipelineName() {
         return this.pipelineName;
     }
 
+    /**
+     * The total jenkins timeout.
+     * 
+     */
     @Import(name="timeout", required=true)
     private Output<String> timeout;
 
+    /**
+     * @return The total jenkins timeout.
+     * 
+     */
     public Output<String> timeout() {
         return this.timeout;
     }
 
+    /**
+     * Host TLS verification.
+     * 
+     */
     @Import(name="tlsVerification")
     private @Nullable Output<Boolean> tlsVerification;
 
+    /**
+     * @return Host TLS verification.
+     * 
+     */
     public Optional<Output<Boolean>> tlsVerification() {
         return Optional.ofNullable(this.tlsVerification);
     }
@@ -81,47 +121,107 @@ public final class VerificationTemplateMetricProviderJenkinsArgs extends com.pul
             $ = new VerificationTemplateMetricProviderJenkinsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param jenkinsInterval The interval time to poll status.
+         * 
+         * @return builder
+         * 
+         */
         public Builder jenkinsInterval(Output<String> jenkinsInterval) {
             $.jenkinsInterval = jenkinsInterval;
             return this;
         }
 
+        /**
+         * @param jenkinsInterval The interval time to poll status.
+         * 
+         * @return builder
+         * 
+         */
         public Builder jenkinsInterval(String jenkinsInterval) {
             return jenkinsInterval(Output.of(jenkinsInterval));
         }
 
+        /**
+         * @param jenkinsParameters List of parameters.
+         * 
+         * @return builder
+         * 
+         */
         public Builder jenkinsParameters(@Nullable Output<VerificationTemplateMetricProviderJenkinsJenkinsParametersArgs> jenkinsParameters) {
             $.jenkinsParameters = jenkinsParameters;
             return this;
         }
 
+        /**
+         * @param jenkinsParameters List of parameters.
+         * 
+         * @return builder
+         * 
+         */
         public Builder jenkinsParameters(VerificationTemplateMetricProviderJenkinsJenkinsParametersArgs jenkinsParameters) {
             return jenkinsParameters(Output.of(jenkinsParameters));
         }
 
+        /**
+         * @param pipelineName The Jenkins pipeline name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pipelineName(Output<String> pipelineName) {
             $.pipelineName = pipelineName;
             return this;
         }
 
+        /**
+         * @param pipelineName The Jenkins pipeline name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pipelineName(String pipelineName) {
             return pipelineName(Output.of(pipelineName));
         }
 
+        /**
+         * @param timeout The total jenkins timeout.
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeout(Output<String> timeout) {
             $.timeout = timeout;
             return this;
         }
 
+        /**
+         * @param timeout The total jenkins timeout.
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeout(String timeout) {
             return timeout(Output.of(timeout));
         }
 
+        /**
+         * @param tlsVerification Host TLS verification.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tlsVerification(@Nullable Output<Boolean> tlsVerification) {
             $.tlsVerification = tlsVerification;
             return this;
         }
 
+        /**
+         * @param tlsVerification Host TLS verification.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tlsVerification(Boolean tlsVerification) {
             return tlsVerification(Output.of(tlsVerification));
         }

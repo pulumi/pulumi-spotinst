@@ -177,6 +177,7 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
+     * * `vCPU` - (Optional) The number of vCPUs in the custom instance type. GCP has a number of limitations on accepted vCPU values. For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
      * 
      */
     @Import(name="instanceTypesCustoms")
@@ -184,6 +185,7 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
+     * * `vCPU` - (Optional) The number of vCPUs in the custom instance type. GCP has a number of limitations on accepted vCPU values. For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
      * 
      */
     public Optional<Output<List<ElastigroupInstanceTypesCustomArgs>>> instanceTypesCustoms() {
@@ -742,6 +744,7 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param instanceTypesCustoms Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
+         * * `vCPU` - (Optional) The number of vCPUs in the custom instance type. GCP has a number of limitations on accepted vCPU values. For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
          * 
          * @return builder
          * 
@@ -753,6 +756,7 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param instanceTypesCustoms Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
+         * * `vCPU` - (Optional) The number of vCPUs in the custom instance type. GCP has a number of limitations on accepted vCPU values. For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
          * 
          * @return builder
          * 
@@ -763,6 +767,7 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param instanceTypesCustoms Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
+         * * `vCPU` - (Optional) The number of vCPUs in the custom instance type. GCP has a number of limitations on accepted vCPU values. For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
          * 
          * @return builder
          * 

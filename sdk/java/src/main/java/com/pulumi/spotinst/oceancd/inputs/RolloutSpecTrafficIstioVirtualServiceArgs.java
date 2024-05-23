@@ -18,23 +18,47 @@ public final class RolloutSpecTrafficIstioVirtualServiceArgs extends com.pulumi.
 
     public static final RolloutSpecTrafficIstioVirtualServiceArgs Empty = new RolloutSpecTrafficIstioVirtualServiceArgs();
 
+    /**
+     * A list of HTTPS routes within VirtualService.
+     * 
+     */
     @Import(name="tlsRoutes")
     private @Nullable Output<List<RolloutSpecTrafficIstioVirtualServiceTlsRouteArgs>> tlsRoutes;
 
+    /**
+     * @return A list of HTTPS routes within VirtualService.
+     * 
+     */
     public Optional<Output<List<RolloutSpecTrafficIstioVirtualServiceTlsRouteArgs>>> tlsRoutes() {
         return Optional.ofNullable(this.tlsRoutes);
     }
 
+    /**
+     * Holds the name of the VirtualService.
+     * 
+     */
     @Import(name="virtualServiceName", required=true)
     private Output<String> virtualServiceName;
 
+    /**
+     * @return Holds the name of the VirtualService.
+     * 
+     */
     public Output<String> virtualServiceName() {
         return this.virtualServiceName;
     }
 
+    /**
+     * A list of HTTP routes within VirtualService.
+     * 
+     */
     @Import(name="virtualServiceRoutes")
     private @Nullable Output<List<String>> virtualServiceRoutes;
 
+    /**
+     * @return A list of HTTP routes within VirtualService.
+     * 
+     */
     public Optional<Output<List<String>>> virtualServiceRoutes() {
         return Optional.ofNullable(this.virtualServiceRoutes);
     }
@@ -65,37 +89,85 @@ public final class RolloutSpecTrafficIstioVirtualServiceArgs extends com.pulumi.
             $ = new RolloutSpecTrafficIstioVirtualServiceArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param tlsRoutes A list of HTTPS routes within VirtualService.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tlsRoutes(@Nullable Output<List<RolloutSpecTrafficIstioVirtualServiceTlsRouteArgs>> tlsRoutes) {
             $.tlsRoutes = tlsRoutes;
             return this;
         }
 
+        /**
+         * @param tlsRoutes A list of HTTPS routes within VirtualService.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tlsRoutes(List<RolloutSpecTrafficIstioVirtualServiceTlsRouteArgs> tlsRoutes) {
             return tlsRoutes(Output.of(tlsRoutes));
         }
 
+        /**
+         * @param tlsRoutes A list of HTTPS routes within VirtualService.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tlsRoutes(RolloutSpecTrafficIstioVirtualServiceTlsRouteArgs... tlsRoutes) {
             return tlsRoutes(List.of(tlsRoutes));
         }
 
+        /**
+         * @param virtualServiceName Holds the name of the VirtualService.
+         * 
+         * @return builder
+         * 
+         */
         public Builder virtualServiceName(Output<String> virtualServiceName) {
             $.virtualServiceName = virtualServiceName;
             return this;
         }
 
+        /**
+         * @param virtualServiceName Holds the name of the VirtualService.
+         * 
+         * @return builder
+         * 
+         */
         public Builder virtualServiceName(String virtualServiceName) {
             return virtualServiceName(Output.of(virtualServiceName));
         }
 
+        /**
+         * @param virtualServiceRoutes A list of HTTP routes within VirtualService.
+         * 
+         * @return builder
+         * 
+         */
         public Builder virtualServiceRoutes(@Nullable Output<List<String>> virtualServiceRoutes) {
             $.virtualServiceRoutes = virtualServiceRoutes;
             return this;
         }
 
+        /**
+         * @param virtualServiceRoutes A list of HTTP routes within VirtualService.
+         * 
+         * @return builder
+         * 
+         */
         public Builder virtualServiceRoutes(List<String> virtualServiceRoutes) {
             return virtualServiceRoutes(Output.of(virtualServiceRoutes));
         }
 
+        /**
+         * @param virtualServiceRoutes A list of HTTP routes within VirtualService.
+         * 
+         * @return builder
+         * 
+         */
         public Builder virtualServiceRoutes(String... virtualServiceRoutes) {
             return virtualServiceRoutes(List.of(virtualServiceRoutes));
         }

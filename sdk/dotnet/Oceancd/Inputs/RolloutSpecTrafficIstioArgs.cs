@@ -12,11 +12,18 @@ namespace Pulumi.SpotInst.Oceancd.Inputs
 
     public sealed class RolloutSpecTrafficIstioArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// It references to an Istio DestinationRule to modify and shape traffic. `DestinationRule` field belongs only to the Subset Level approach.
+        /// </summary>
         [Input("destinationRule")]
         public Input<Inputs.RolloutSpecTrafficIstioDestinationRuleArgs>? DestinationRule { get; set; }
 
         [Input("virtualServices", required: true)]
         private InputList<Inputs.RolloutSpecTrafficIstioVirtualServiceArgs>? _virtualServices;
+
+        /// <summary>
+        /// Defines a set of traffic routing rules to apply when a host is addressed.
+        /// </summary>
         public InputList<Inputs.RolloutSpecTrafficIstioVirtualServiceArgs> VirtualServices
         {
             get => _virtualServices ?? (_virtualServices = new InputList<Inputs.RolloutSpecTrafficIstioVirtualServiceArgs>());

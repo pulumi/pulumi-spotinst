@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new OceanVirtualNodeGroup("example", OceanVirtualNodeGroupArgs.builder()        
+ *         var example = new OceanVirtualNodeGroup("example", OceanVirtualNodeGroupArgs.builder()
  *             .name("vng_name")
  *             .oceanId("o-12345")
  *             .zones(            

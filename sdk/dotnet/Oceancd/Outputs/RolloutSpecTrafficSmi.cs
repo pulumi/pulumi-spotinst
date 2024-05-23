@@ -13,7 +13,13 @@ namespace Pulumi.SpotInst.Oceancd.Outputs
     [OutputType]
     public sealed class RolloutSpecTrafficSmi
     {
+        /// <summary>
+        /// Holds the name of service that clients use to communicate.
+        /// </summary>
         public readonly string? SmiRootService;
+        /// <summary>
+        /// Holds the name of the TrafficSplit.
+        /// </summary>
         public readonly string? TrafficSplitName;
 
         [OutputConstructor]

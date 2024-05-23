@@ -1248,6 +1248,11 @@ class OceanLaunchSpecSchedulingTaskTaskHeadroom(dict):
                  num_of_units: int,
                  cpu_per_unit: Optional[int] = None,
                  memory_per_unit: Optional[int] = None):
+        """
+        :param int num_of_units: The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+        :param int cpu_per_unit: Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        :param int memory_per_unit: Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
+        """
         pulumi.set(__self__, "num_of_units", num_of_units)
         if cpu_per_unit is not None:
             pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
@@ -1257,16 +1262,25 @@ class OceanLaunchSpecSchedulingTaskTaskHeadroom(dict):
     @property
     @pulumi.getter(name="numOfUnits")
     def num_of_units(self) -> int:
+        """
+        The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+        """
         return pulumi.get(self, "num_of_units")
 
     @property
     @pulumi.getter(name="cpuPerUnit")
     def cpu_per_unit(self) -> Optional[int]:
+        """
+        Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        """
         return pulumi.get(self, "cpu_per_unit")
 
     @property
     @pulumi.getter(name="memoryPerUnit")
     def memory_per_unit(self) -> Optional[int]:
+        """
+        Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
+        """
         return pulumi.get(self, "memory_per_unit")
 
 
@@ -1352,12 +1366,18 @@ class OceanLogging(dict):
 class OceanLoggingExport(dict):
     def __init__(__self__, *,
                  s3s: Optional[Sequence['outputs.OceanLoggingExportS3']] = None):
+        """
+        :param Sequence['OceanLoggingExportS3Args'] s3s: Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
+        """
         if s3s is not None:
             pulumi.set(__self__, "s3s", s3s)
 
     @property
     @pulumi.getter
     def s3s(self) -> Optional[Sequence['outputs.OceanLoggingExportS3']]:
+        """
+        Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
+        """
         return pulumi.get(self, "s3s")
 
 
@@ -1366,7 +1386,7 @@ class OceanLoggingExportS3(dict):
     def __init__(__self__, *,
                  id: str):
         """
-        :param str id: The Spotinst Ocean ID.
+        :param str id: The identifier of The S3 data integration to export the logs to.
         """
         pulumi.set(__self__, "id", id)
 
@@ -1374,7 +1394,7 @@ class OceanLoggingExportS3(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        The Spotinst Ocean ID.
+        The identifier of The S3 data integration to export the logs to.
         """
         return pulumi.get(self, "id")
 
@@ -1559,6 +1579,7 @@ class OceanTag(dict):
         """
         :param str key: The tag key.
         :param str value: The tag value.
+               * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
@@ -1576,6 +1597,7 @@ class OceanTag(dict):
     def value(self) -> str:
         """
         The tag value.
+        * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
         """
         return pulumi.get(self, "value")
 

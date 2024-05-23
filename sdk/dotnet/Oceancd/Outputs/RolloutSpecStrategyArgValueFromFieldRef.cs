@@ -13,6 +13,9 @@ namespace Pulumi.SpotInst.Oceancd.Outputs
     [OutputType]
     public sealed class RolloutSpecStrategyArgValueFromFieldRef
     {
+        /// <summary>
+        /// Path to SpotDeployment's field from where to get the value of an argument.
+        /// </summary>
         public readonly string FieldPath;
 
         [OutputConstructor]

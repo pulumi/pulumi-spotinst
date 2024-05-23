@@ -13,7 +13,13 @@ namespace Pulumi.SpotInst.Oceancd.Outputs
     [OutputType]
     public sealed class VerificationTemplateMetricBaselineBaselineProviderDatadog
     {
+        /// <summary>
+        /// A request for information retrieved from Datadog.
+        /// </summary>
         public readonly string DatadogQuery;
+        /// <summary>
+        /// The window of time we are looking at in DataDog.
+        /// </summary>
         public readonly string? Duration;
 
         [OutputConstructor]

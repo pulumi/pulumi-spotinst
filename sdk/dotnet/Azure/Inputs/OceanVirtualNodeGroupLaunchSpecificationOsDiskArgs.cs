@@ -12,12 +12,21 @@ namespace Pulumi.SpotInst.Azure.Inputs
 
     public sealed class OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The size of the OS disk in GB, Required if dataDisks is specified.
+        /// </summary>
         [Input("sizeGb", required: true)]
         public Input<int> SizeGb { get; set; } = null!;
 
+        /// <summary>
+        /// The type of the OS disk. Valid values: `"Standard_LRS"`, `"Premium_LRS"`, `"StandardSSD_LRS"`.
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
+        /// <summary>
+        /// Flag to enable/disable the Ephemeral OS Disk utilization.
+        /// </summary>
         [Input("utilizeEphemeralStorage")]
         public Input<bool>? UtilizeEphemeralStorage { get; set; }
 

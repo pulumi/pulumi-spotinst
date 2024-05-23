@@ -13,17 +13,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RolloutSpecStrategyArg {
+    /**
+     * @return Name of an argument.
+     * 
+     */
     private String argName;
+    /**
+     * @return Value of an argument.
+     * 
+     */
     private @Nullable String argValue;
+    /**
+     * @return Defines from where to get the value of an argument.
+     * 
+     */
     private @Nullable RolloutSpecStrategyArgValueFrom valueFrom;
 
     private RolloutSpecStrategyArg() {}
+    /**
+     * @return Name of an argument.
+     * 
+     */
     public String argName() {
         return this.argName;
     }
+    /**
+     * @return Value of an argument.
+     * 
+     */
     public Optional<String> argValue() {
         return Optional.ofNullable(this.argValue);
     }
+    /**
+     * @return Defines from where to get the value of an argument.
+     * 
+     */
     public Optional<RolloutSpecStrategyArgValueFrom> valueFrom() {
         return Optional.ofNullable(this.valueFrom);
     }

@@ -13,11 +13,14 @@ namespace Pulumi.SpotInst.Azure.Inputs
     public sealed class OceanNetworkNetworkInterfaceAdditionalIpConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Ocean cluster name.
+        /// Configuration name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Supported values: `IPv4`, `IPv6`.
+        /// </summary>
         [Input("privateIpVersion")]
         public Input<string>? PrivateIpVersion { get; set; }
 

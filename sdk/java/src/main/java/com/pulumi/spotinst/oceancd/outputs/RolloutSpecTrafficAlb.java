@@ -14,25 +14,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RolloutSpecTrafficAlb {
+    /**
+     * @return Has to match the configured annotation prefix on the alb ingress controller.
+     * 
+     */
     private @Nullable String albAnnotationPrefix;
+    /**
+     * @return Refers to the name of an `Ingress` resource in the same namespace as the `SpotDeployment`.
+     * 
+     */
     private String albIngress;
+    /**
+     * @return References the service in the ingress to the controller should add the action to.
+     * 
+     */
     private String albRootService;
+    /**
+     * @return Refers to the port that the Ingress action should route traffic to.
+     * 
+     */
     private Integer servicePort;
+    /**
+     * @return Allows to specify further settings on the ForwardConfig.
+     * 
+     */
     private @Nullable RolloutSpecTrafficAlbStickinessConfig stickinessConfig;
 
     private RolloutSpecTrafficAlb() {}
+    /**
+     * @return Has to match the configured annotation prefix on the alb ingress controller.
+     * 
+     */
     public Optional<String> albAnnotationPrefix() {
         return Optional.ofNullable(this.albAnnotationPrefix);
     }
+    /**
+     * @return Refers to the name of an `Ingress` resource in the same namespace as the `SpotDeployment`.
+     * 
+     */
     public String albIngress() {
         return this.albIngress;
     }
+    /**
+     * @return References the service in the ingress to the controller should add the action to.
+     * 
+     */
     public String albRootService() {
         return this.albRootService;
     }
+    /**
+     * @return Refers to the port that the Ingress action should route traffic to.
+     * 
+     */
     public Integer servicePort() {
         return this.servicePort;
     }
+    /**
+     * @return Allows to specify further settings on the ForwardConfig.
+     * 
+     */
     public Optional<RolloutSpecTrafficAlbStickinessConfig> stickinessConfig() {
         return Optional.ofNullable(this.stickinessConfig);
     }

@@ -16,16 +16,32 @@ public final class VerificationTemplateMetricBaselineBaselineProviderNewRelicArg
 
     public static final VerificationTemplateMetricBaselineBaselineProviderNewRelicArgs Empty = new VerificationTemplateMetricBaselineBaselineProviderNewRelicArgs();
 
+    /**
+     * A raw newrelic NRQL query to perform.
+     * 
+     */
     @Import(name="newRelicQuery", required=true)
     private Output<String> newRelicQuery;
 
+    /**
+     * @return A raw newrelic NRQL query to perform.
+     * 
+     */
     public Output<String> newRelicQuery() {
         return this.newRelicQuery;
     }
 
+    /**
+     * The name of the secret holding NR account configuration.
+     * 
+     */
     @Import(name="profile")
     private @Nullable Output<String> profile;
 
+    /**
+     * @return The name of the secret holding NR account configuration.
+     * 
+     */
     public Optional<Output<String>> profile() {
         return Optional.ofNullable(this.profile);
     }
@@ -55,20 +71,44 @@ public final class VerificationTemplateMetricBaselineBaselineProviderNewRelicArg
             $ = new VerificationTemplateMetricBaselineBaselineProviderNewRelicArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param newRelicQuery A raw newrelic NRQL query to perform.
+         * 
+         * @return builder
+         * 
+         */
         public Builder newRelicQuery(Output<String> newRelicQuery) {
             $.newRelicQuery = newRelicQuery;
             return this;
         }
 
+        /**
+         * @param newRelicQuery A raw newrelic NRQL query to perform.
+         * 
+         * @return builder
+         * 
+         */
         public Builder newRelicQuery(String newRelicQuery) {
             return newRelicQuery(Output.of(newRelicQuery));
         }
 
+        /**
+         * @param profile The name of the secret holding NR account configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder profile(@Nullable Output<String> profile) {
             $.profile = profile;
             return this;
         }
 
+        /**
+         * @param profile The name of the secret holding NR account configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder profile(String profile) {
             return profile(Output.of(profile));
         }

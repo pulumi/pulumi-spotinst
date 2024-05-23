@@ -16,16 +16,32 @@ public final class OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs extends com.p
 
     public static final OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs Empty = new OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs();
 
+    /**
+     * Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+     * 
+     */
     @Import(name="isEnabled")
     private @Nullable Output<Boolean> isEnabled;
 
+    /**
+     * @return Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+     * 
+     */
     public Optional<Output<Boolean>> isEnabled() {
         return Optional.ofNullable(this.isEnabled);
     }
 
+    /**
+     * Optionally set a number between 0-100 to control the percentage of total cluster resources dedicated to headroom.
+     * 
+     */
     @Import(name="percentage")
     private @Nullable Output<Integer> percentage;
 
+    /**
+     * @return Optionally set a number between 0-100 to control the percentage of total cluster resources dedicated to headroom.
+     * 
+     */
     public Optional<Output<Integer>> percentage() {
         return Optional.ofNullable(this.percentage);
     }
@@ -55,20 +71,44 @@ public final class OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs extends com.p
             $ = new OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param isEnabled Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isEnabled(@Nullable Output<Boolean> isEnabled) {
             $.isEnabled = isEnabled;
             return this;
         }
 
+        /**
+         * @param isEnabled Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isEnabled(Boolean isEnabled) {
             return isEnabled(Output.of(isEnabled));
         }
 
+        /**
+         * @param percentage Optionally set a number between 0-100 to control the percentage of total cluster resources dedicated to headroom.
+         * 
+         * @return builder
+         * 
+         */
         public Builder percentage(@Nullable Output<Integer> percentage) {
             $.percentage = percentage;
             return this;
         }
 
+        /**
+         * @param percentage Optionally set a number between 0-100 to control the percentage of total cluster resources dedicated to headroom.
+         * 
+         * @return builder
+         * 
+         */
         public Builder percentage(Integer percentage) {
             return percentage(Output.of(percentage));
         }

@@ -14,13 +14,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class VerificationTemplateMetricProviderCloudWatch {
+    /**
+     * @return The window of time we are looking at in CloudWatch.
+     * 
+     */
     private @Nullable String duration;
+    /**
+     * @return The metric queries to be returned. A single MetricData call can include as many as 500 MetricDataQuery structures. Each of these structures can specify either a metric to retrieve, a Metrics Insights query, or a math expression to perform on retrieved data.
+     * 
+     */
     private List<VerificationTemplateMetricProviderCloudWatchMetricDataQuery> metricDataQueries;
 
     private VerificationTemplateMetricProviderCloudWatch() {}
+    /**
+     * @return The window of time we are looking at in CloudWatch.
+     * 
+     */
     public Optional<String> duration() {
         return Optional.ofNullable(this.duration);
     }
+    /**
+     * @return The metric queries to be returned. A single MetricData call can include as many as 500 MetricDataQuery structures. Each of these structures can specify either a metric to retrieve, a Metrics Insights query, or a math expression to perform on retrieved data.
+     * 
+     */
     public List<VerificationTemplateMetricProviderCloudWatchMetricDataQuery> metricDataQueries() {
         return this.metricDataQueries;
     }

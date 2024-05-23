@@ -14,16 +14,32 @@ public final class VerificationTemplateMetricProviderJenkinsJenkinsParametersArg
 
     public static final VerificationTemplateMetricProviderJenkinsJenkinsParametersArgs Empty = new VerificationTemplateMetricProviderJenkinsJenkinsParametersArgs();
 
+    /**
+     * Key of an argument.
+     * 
+     */
     @Import(name="parameterKey", required=true)
     private Output<String> parameterKey;
 
+    /**
+     * @return Key of an argument.
+     * 
+     */
     public Output<String> parameterKey() {
         return this.parameterKey;
     }
 
+    /**
+     * Value of an argument.
+     * 
+     */
     @Import(name="parameterValue", required=true)
     private Output<String> parameterValue;
 
+    /**
+     * @return Value of an argument.
+     * 
+     */
     public Output<String> parameterValue() {
         return this.parameterValue;
     }
@@ -53,20 +69,44 @@ public final class VerificationTemplateMetricProviderJenkinsJenkinsParametersArg
             $ = new VerificationTemplateMetricProviderJenkinsJenkinsParametersArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param parameterKey Key of an argument.
+         * 
+         * @return builder
+         * 
+         */
         public Builder parameterKey(Output<String> parameterKey) {
             $.parameterKey = parameterKey;
             return this;
         }
 
+        /**
+         * @param parameterKey Key of an argument.
+         * 
+         * @return builder
+         * 
+         */
         public Builder parameterKey(String parameterKey) {
             return parameterKey(Output.of(parameterKey));
         }
 
+        /**
+         * @param parameterValue Value of an argument.
+         * 
+         * @return builder
+         * 
+         */
         public Builder parameterValue(Output<String> parameterValue) {
             $.parameterValue = parameterValue;
             return this;
         }
 
+        /**
+         * @param parameterValue Value of an argument.
+         * 
+         * @return builder
+         * 
+         */
         public Builder parameterValue(String parameterValue) {
             return parameterValue(Output.of(parameterValue));
         }

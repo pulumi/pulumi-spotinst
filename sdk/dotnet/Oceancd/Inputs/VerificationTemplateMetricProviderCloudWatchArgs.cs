@@ -12,11 +12,18 @@ namespace Pulumi.SpotInst.Oceancd.Inputs
 
     public sealed class VerificationTemplateMetricProviderCloudWatchArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The window of time we are looking at in CloudWatch.
+        /// </summary>
         [Input("duration")]
         public Input<string>? Duration { get; set; }
 
         [Input("metricDataQueries", required: true)]
         private InputList<Inputs.VerificationTemplateMetricProviderCloudWatchMetricDataQueryArgs>? _metricDataQueries;
+
+        /// <summary>
+        /// The metric queries to be returned. A single MetricData call can include as many as 500 MetricDataQuery structures. Each of these structures can specify either a metric to retrieve, a Metrics Insights query, or a math expression to perform on retrieved data.
+        /// </summary>
         public InputList<Inputs.VerificationTemplateMetricProviderCloudWatchMetricDataQueryArgs> MetricDataQueries
         {
             get => _metricDataQueries ?? (_metricDataQueries = new InputList<Inputs.VerificationTemplateMetricProviderCloudWatchMetricDataQueryArgs>());

@@ -13,11 +13,14 @@ namespace Pulumi.SpotInst.Gke.Inputs
     public sealed class OceanLaunchSpecNetworkInterfaceAccessConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The launch specification name.
+        /// The name of the access configuration.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The type of the access configuration.
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 

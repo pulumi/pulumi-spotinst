@@ -14,7 +14,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class ElastigroupLoggingExportS3
     {
         /// <summary>
-        /// The group ID.
+        /// The identifier of The S3 data integration to export the logs to.
         /// </summary>
         public readonly string Id;
 

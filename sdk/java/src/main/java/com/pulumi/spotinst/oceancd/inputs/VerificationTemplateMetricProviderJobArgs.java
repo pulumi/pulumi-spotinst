@@ -15,9 +15,17 @@ public final class VerificationTemplateMetricProviderJobArgs extends com.pulumi.
 
     public static final VerificationTemplateMetricProviderJobArgs Empty = new VerificationTemplateMetricProviderJobArgs();
 
+    /**
+     * The job spec require to run the metric.
+     * 
+     */
     @Import(name="specs", required=true)
     private Output<List<VerificationTemplateMetricProviderJobSpecArgs>> specs;
 
+    /**
+     * @return The job spec require to run the metric.
+     * 
+     */
     public Output<List<VerificationTemplateMetricProviderJobSpecArgs>> specs() {
         return this.specs;
     }
@@ -46,15 +54,33 @@ public final class VerificationTemplateMetricProviderJobArgs extends com.pulumi.
             $ = new VerificationTemplateMetricProviderJobArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param specs The job spec require to run the metric.
+         * 
+         * @return builder
+         * 
+         */
         public Builder specs(Output<List<VerificationTemplateMetricProviderJobSpecArgs>> specs) {
             $.specs = specs;
             return this;
         }
 
+        /**
+         * @param specs The job spec require to run the metric.
+         * 
+         * @return builder
+         * 
+         */
         public Builder specs(List<VerificationTemplateMetricProviderJobSpecArgs> specs) {
             return specs(Output.of(specs));
         }
 
+        /**
+         * @param specs The job spec require to run the metric.
+         * 
+         * @return builder
+         * 
+         */
         public Builder specs(VerificationTemplateMetricProviderJobSpecArgs... specs) {
             return specs(List.of(specs));
         }

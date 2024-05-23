@@ -12,15 +12,27 @@ namespace Pulumi.SpotInst.Azure.Inputs
 
     public sealed class OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Configure the number of CPUs to allocate for the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        /// </summary>
         [Input("cpuPerUnit")]
         public Input<int>? CpuPerUnit { get; set; }
 
+        /// <summary>
+        /// How many GPU cores should be allocated for headroom unit.
+        /// </summary>
         [Input("gpuPerUnit")]
         public Input<int>? GpuPerUnit { get; set; }
 
+        /// <summary>
+        /// Configure the amount of memory (MiB) to allocate the headroom.
+        /// </summary>
         [Input("memoryPerUnit")]
         public Input<int>? MemoryPerUnit { get; set; }
 
+        /// <summary>
+        /// The number of headroom units to maintain, where each unit has the defined CPU, memory and GPU.
+        /// </summary>
         [Input("numOfUnits", required: true)]
         public Input<int> NumOfUnits { get; set; } = null!;
 

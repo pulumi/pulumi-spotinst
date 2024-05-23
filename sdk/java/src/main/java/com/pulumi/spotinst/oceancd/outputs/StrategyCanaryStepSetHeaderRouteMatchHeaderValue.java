@@ -11,17 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class StrategyCanaryStepSetHeaderRouteMatchHeaderValue {
+    /**
+     * @return The exact header value.
+     * 
+     */
     private @Nullable String exact;
+    /**
+     * @return The prefix of the value.
+     * 
+     */
     private @Nullable String prefix;
+    /**
+     * @return The value in a regex format.
+     * 
+     */
     private @Nullable String regex;
 
     private StrategyCanaryStepSetHeaderRouteMatchHeaderValue() {}
+    /**
+     * @return The exact header value.
+     * 
+     */
     public Optional<String> exact() {
         return Optional.ofNullable(this.exact);
     }
+    /**
+     * @return The prefix of the value.
+     * 
+     */
     public Optional<String> prefix() {
         return Optional.ofNullable(this.prefix);
     }
+    /**
+     * @return The value in a regex format.
+     * 
+     */
     public Optional<String> regex() {
         return Optional.ofNullable(this.regex);
     }

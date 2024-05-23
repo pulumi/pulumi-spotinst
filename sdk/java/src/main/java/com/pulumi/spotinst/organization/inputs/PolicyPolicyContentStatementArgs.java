@@ -15,23 +15,49 @@ public final class PolicyPolicyContentStatementArgs extends com.pulumi.resources
 
     public static final PolicyPolicyContentStatementArgs Empty = new PolicyPolicyContentStatementArgs();
 
+    /**
+     * Set a list of required actions for this permissions statement.
+     * Full list of actions can be found in [https://docs.spot.io/account-user-management/user-management/access-policies-actions/](https://docs.spot.io/account-user-management/user-management/access-policies-actions/).
+     * 
+     */
     @Import(name="actions", required=true)
     private Output<List<String>> actions;
 
+    /**
+     * @return Set a list of required actions for this permissions statement.
+     * Full list of actions can be found in [https://docs.spot.io/account-user-management/user-management/access-policies-actions/](https://docs.spot.io/account-user-management/user-management/access-policies-actions/).
+     * 
+     */
     public Output<List<String>> actions() {
         return this.actions;
     }
 
+    /**
+     * Valid values &#34;ALLOW&#34;, &#34;DENY&#34;.
+     * 
+     */
     @Import(name="effect", required=true)
     private Output<String> effect;
 
+    /**
+     * @return Valid values &#34;ALLOW&#34;, &#34;DENY&#34;.
+     * 
+     */
     public Output<String> effect() {
         return this.effect;
     }
 
+    /**
+     * Set a list of resources IDs. In order to include all resources in this statement - use &#34;*&#34;.
+     * 
+     */
     @Import(name="resources", required=true)
     private Output<List<String>> resources;
 
+    /**
+     * @return Set a list of resources IDs. In order to include all resources in this statement - use &#34;*&#34;.
+     * 
+     */
     public Output<List<String>> resources() {
         return this.resources;
     }
@@ -62,37 +88,88 @@ public final class PolicyPolicyContentStatementArgs extends com.pulumi.resources
             $ = new PolicyPolicyContentStatementArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param actions Set a list of required actions for this permissions statement.
+         * Full list of actions can be found in [https://docs.spot.io/account-user-management/user-management/access-policies-actions/](https://docs.spot.io/account-user-management/user-management/access-policies-actions/).
+         * 
+         * @return builder
+         * 
+         */
         public Builder actions(Output<List<String>> actions) {
             $.actions = actions;
             return this;
         }
 
+        /**
+         * @param actions Set a list of required actions for this permissions statement.
+         * Full list of actions can be found in [https://docs.spot.io/account-user-management/user-management/access-policies-actions/](https://docs.spot.io/account-user-management/user-management/access-policies-actions/).
+         * 
+         * @return builder
+         * 
+         */
         public Builder actions(List<String> actions) {
             return actions(Output.of(actions));
         }
 
+        /**
+         * @param actions Set a list of required actions for this permissions statement.
+         * Full list of actions can be found in [https://docs.spot.io/account-user-management/user-management/access-policies-actions/](https://docs.spot.io/account-user-management/user-management/access-policies-actions/).
+         * 
+         * @return builder
+         * 
+         */
         public Builder actions(String... actions) {
             return actions(List.of(actions));
         }
 
+        /**
+         * @param effect Valid values &#34;ALLOW&#34;, &#34;DENY&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effect(Output<String> effect) {
             $.effect = effect;
             return this;
         }
 
+        /**
+         * @param effect Valid values &#34;ALLOW&#34;, &#34;DENY&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effect(String effect) {
             return effect(Output.of(effect));
         }
 
+        /**
+         * @param resources Set a list of resources IDs. In order to include all resources in this statement - use &#34;*&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resources(Output<List<String>> resources) {
             $.resources = resources;
             return this;
         }
 
+        /**
+         * @param resources Set a list of resources IDs. In order to include all resources in this statement - use &#34;*&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resources(List<String> resources) {
             return resources(Output.of(resources));
         }
 
+        /**
+         * @param resources Set a list of resources IDs. In order to include all resources in this statement - use &#34;*&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resources(String... resources) {
             return resources(List.of(resources));
         }

@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanLaunchSpecElasticIpPoolTagSelector {
+    /**
+     * @return Elastic IP tag key. The Virtual Node Group will consider all Elastic IPs tagged with this tag as a part of the Elastic IP pool to use.
+     * 
+     */
     private String tagKey;
+    /**
+     * @return Elastic IP tag value. Can be null.
+     * 
+     */
     private @Nullable String tagValue;
 
     private OceanLaunchSpecElasticIpPoolTagSelector() {}
+    /**
+     * @return Elastic IP tag key. The Virtual Node Group will consider all Elastic IPs tagged with this tag as a part of the Elastic IP pool to use.
+     * 
+     */
     public String tagKey() {
         return this.tagKey;
     }
+    /**
+     * @return Elastic IP tag value. Can be null.
+     * 
+     */
     public Optional<String> tagValue() {
         return Optional.ofNullable(this.tagValue);
     }

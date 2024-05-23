@@ -15,9 +15,17 @@ public final class RolloutSpecTrafficAmbassadorArgs extends com.pulumi.resources
 
     public static final RolloutSpecTrafficAmbassadorArgs Empty = new RolloutSpecTrafficAmbassadorArgs();
 
+    /**
+     * A list of names of the Ambassador Mappings used to route traffic to the service.
+     * 
+     */
     @Import(name="mappings", required=true)
     private Output<List<String>> mappings;
 
+    /**
+     * @return A list of names of the Ambassador Mappings used to route traffic to the service.
+     * 
+     */
     public Output<List<String>> mappings() {
         return this.mappings;
     }
@@ -46,15 +54,33 @@ public final class RolloutSpecTrafficAmbassadorArgs extends com.pulumi.resources
             $ = new RolloutSpecTrafficAmbassadorArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param mappings A list of names of the Ambassador Mappings used to route traffic to the service.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mappings(Output<List<String>> mappings) {
             $.mappings = mappings;
             return this;
         }
 
+        /**
+         * @param mappings A list of names of the Ambassador Mappings used to route traffic to the service.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mappings(List<String> mappings) {
             return mappings(Output.of(mappings));
         }
 
+        /**
+         * @param mappings A list of names of the Ambassador Mappings used to route traffic to the service.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mappings(String... mappings) {
             return mappings(List.of(mappings));
         }

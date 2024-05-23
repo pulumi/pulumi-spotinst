@@ -13,7 +13,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
     public sealed class OceanLoggingExportS3GetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Cluster ID.
+        /// The identifier of The S3 data integration to export the logs to.
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;

@@ -252,6 +252,10 @@ class BeanstalkDeploymentPreferencesStrategyArgs:
     def __init__(__self__, *,
                  action: Optional[pulumi.Input[str]] = None,
                  should_drain_instances: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] action: Action to take
+        :param pulumi.Input[bool] should_drain_instances: Bool value if to wait to drain instance
+        """
         if action is not None:
             pulumi.set(__self__, "action", action)
         if should_drain_instances is not None:
@@ -260,6 +264,9 @@ class BeanstalkDeploymentPreferencesStrategyArgs:
     @property
     @pulumi.getter
     def action(self) -> Optional[pulumi.Input[str]]:
+        """
+        Action to take
+        """
         return pulumi.get(self, "action")
 
     @action.setter
@@ -269,6 +276,9 @@ class BeanstalkDeploymentPreferencesStrategyArgs:
     @property
     @pulumi.getter(name="shouldDrainInstances")
     def should_drain_instances(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Bool value if to wait to drain instance
+        """
         return pulumi.get(self, "should_drain_instances")
 
     @should_drain_instances.setter
@@ -305,6 +315,11 @@ class BeanstalkManagedActionsPlatformUpdateArgs:
                  perform_at: Optional[pulumi.Input[str]] = None,
                  time_window: Optional[pulumi.Input[str]] = None,
                  update_level: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] perform_at: Actions to perform (options: timeWindow, never)
+        :param pulumi.Input[str] time_window: Time Window for when action occurs ex. Mon:23:50-Tue:00:20
+        :param pulumi.Input[str] update_level: Level to update
+        """
         if perform_at is not None:
             pulumi.set(__self__, "perform_at", perform_at)
         if time_window is not None:
@@ -315,6 +330,9 @@ class BeanstalkManagedActionsPlatformUpdateArgs:
     @property
     @pulumi.getter(name="performAt")
     def perform_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        Actions to perform (options: timeWindow, never)
+        """
         return pulumi.get(self, "perform_at")
 
     @perform_at.setter
@@ -324,6 +342,9 @@ class BeanstalkManagedActionsPlatformUpdateArgs:
     @property
     @pulumi.getter(name="timeWindow")
     def time_window(self) -> Optional[pulumi.Input[str]]:
+        """
+        Time Window for when action occurs ex. Mon:23:50-Tue:00:20
+        """
         return pulumi.get(self, "time_window")
 
     @time_window.setter
@@ -333,6 +354,9 @@ class BeanstalkManagedActionsPlatformUpdateArgs:
     @property
     @pulumi.getter(name="updateLevel")
     def update_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Level to update
+        """
         return pulumi.get(self, "update_level")
 
     @update_level.setter
@@ -2552,12 +2576,18 @@ class ElastigroupLoggingArgs:
 class ElastigroupLoggingExportArgs:
     def __init__(__self__, *,
                  s3s: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupLoggingExportS3Args']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupLoggingExportS3Args']]] s3s: Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
+        """
         if s3s is not None:
             pulumi.set(__self__, "s3s", s3s)
 
     @property
     @pulumi.getter
     def s3s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupLoggingExportS3Args']]]]:
+        """
+        Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
+        """
         return pulumi.get(self, "s3s")
 
     @s3s.setter
@@ -2570,7 +2600,7 @@ class ElastigroupLoggingExportS3Args:
     def __init__(__self__, *,
                  id: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] id: The group ID.
+        :param pulumi.Input[str] id: The identifier of The S3 data integration to export the logs to.
         """
         pulumi.set(__self__, "id", id)
 
@@ -2578,7 +2608,7 @@ class ElastigroupLoggingExportS3Args:
     @pulumi.getter
     def id(self) -> pulumi.Input[str]:
         """
-        The group ID.
+        The identifier of The S3 data integration to export the logs to.
         """
         return pulumi.get(self, "id")
 
@@ -7022,6 +7052,16 @@ class MrScalarTerminationPolicyStatementArgs:
                  period: Optional[pulumi.Input[int]] = None,
                  statistic: Optional[pulumi.Input[str]] = None,
                  unit: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] metric_name: The name of the metric in CloudWatch which the statement will be based on.
+        :param pulumi.Input[str] namespace: Must contain the value: `AWS/ElasticMapReduce`.
+        :param pulumi.Input[float] threshold: The value that the specified statistic is compared to.
+        :param pulumi.Input[int] evaluation_periods: The number of periods over which data is compared to the specified threshold.
+        :param pulumi.Input[str] operator: The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+        :param pulumi.Input[int] period: The time window in seconds over which the statistic is applied.
+        :param pulumi.Input[str] statistic: The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
+        :param pulumi.Input[str] unit: The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+        """
         pulumi.set(__self__, "metric_name", metric_name)
         pulumi.set(__self__, "namespace", namespace)
         pulumi.set(__self__, "threshold", threshold)
@@ -7039,6 +7079,9 @@ class MrScalarTerminationPolicyStatementArgs:
     @property
     @pulumi.getter(name="metricName")
     def metric_name(self) -> pulumi.Input[str]:
+        """
+        The name of the metric in CloudWatch which the statement will be based on.
+        """
         return pulumi.get(self, "metric_name")
 
     @metric_name.setter
@@ -7048,6 +7091,9 @@ class MrScalarTerminationPolicyStatementArgs:
     @property
     @pulumi.getter
     def namespace(self) -> pulumi.Input[str]:
+        """
+        Must contain the value: `AWS/ElasticMapReduce`.
+        """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
@@ -7057,6 +7103,9 @@ class MrScalarTerminationPolicyStatementArgs:
     @property
     @pulumi.getter
     def threshold(self) -> pulumi.Input[float]:
+        """
+        The value that the specified statistic is compared to.
+        """
         return pulumi.get(self, "threshold")
 
     @threshold.setter
@@ -7066,6 +7115,9 @@ class MrScalarTerminationPolicyStatementArgs:
     @property
     @pulumi.getter(name="evaluationPeriods")
     def evaluation_periods(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of periods over which data is compared to the specified threshold.
+        """
         return pulumi.get(self, "evaluation_periods")
 
     @evaluation_periods.setter
@@ -7075,6 +7127,9 @@ class MrScalarTerminationPolicyStatementArgs:
     @property
     @pulumi.getter
     def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+        """
         return pulumi.get(self, "operator")
 
     @operator.setter
@@ -7084,6 +7139,9 @@ class MrScalarTerminationPolicyStatementArgs:
     @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The time window in seconds over which the statistic is applied.
+        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -7093,6 +7151,9 @@ class MrScalarTerminationPolicyStatementArgs:
     @property
     @pulumi.getter
     def statistic(self) -> Optional[pulumi.Input[str]]:
+        """
+        The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
+        """
         return pulumi.get(self, "statistic")
 
     @statistic.setter
@@ -7102,6 +7163,9 @@ class MrScalarTerminationPolicyStatementArgs:
     @property
     @pulumi.getter
     def unit(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+        """
         return pulumi.get(self, "unit")
 
     @unit.setter
@@ -7443,6 +7507,18 @@ class OceanBlockDeviceMappingEbsArgs:
                  throughput: Optional[pulumi.Input[int]] = None,
                  volume_size: Optional[pulumi.Input[int]] = None,
                  volume_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] delete_on_termination: Boolean. Flag to delete the EBS on instance termination.
+        :param pulumi.Input['OceanBlockDeviceMappingEbsDynamicIopsArgs'] dynamic_iops: Set dynamic IOPS properties. When using this object, you cannot use the `iops` attribute. You must use one or the other.
+        :param pulumi.Input['OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs'] dynamic_volume_size: Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
+        :param pulumi.Input[bool] encrypted: Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+        :param pulumi.Input[int] iops: Must be greater than or equal to 0.
+        :param pulumi.Input[str] kms_key_id: String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+        :param pulumi.Input[str] snapshot_id: (Optional) String. The Snapshot ID to mount by.
+        :param pulumi.Input[int] throughput: The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = `gp3`.
+        :param pulumi.Input[int] volume_size: Int. The size, in GB of the volume.
+        :param pulumi.Input[str] volume_type: String. The type of the volume. (Example: `gp2`).
+        """
         if delete_on_termination is not None:
             pulumi.set(__self__, "delete_on_termination", delete_on_termination)
         if dynamic_iops is not None:
@@ -7467,6 +7543,9 @@ class OceanBlockDeviceMappingEbsArgs:
     @property
     @pulumi.getter(name="deleteOnTermination")
     def delete_on_termination(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean. Flag to delete the EBS on instance termination.
+        """
         return pulumi.get(self, "delete_on_termination")
 
     @delete_on_termination.setter
@@ -7476,6 +7555,9 @@ class OceanBlockDeviceMappingEbsArgs:
     @property
     @pulumi.getter(name="dynamicIops")
     def dynamic_iops(self) -> Optional[pulumi.Input['OceanBlockDeviceMappingEbsDynamicIopsArgs']]:
+        """
+        Set dynamic IOPS properties. When using this object, you cannot use the `iops` attribute. You must use one or the other.
+        """
         return pulumi.get(self, "dynamic_iops")
 
     @dynamic_iops.setter
@@ -7485,6 +7567,9 @@ class OceanBlockDeviceMappingEbsArgs:
     @property
     @pulumi.getter(name="dynamicVolumeSize")
     def dynamic_volume_size(self) -> Optional[pulumi.Input['OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs']]:
+        """
+        Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
+        """
         return pulumi.get(self, "dynamic_volume_size")
 
     @dynamic_volume_size.setter
@@ -7494,6 +7579,9 @@ class OceanBlockDeviceMappingEbsArgs:
     @property
     @pulumi.getter
     def encrypted(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+        """
         return pulumi.get(self, "encrypted")
 
     @encrypted.setter
@@ -7503,6 +7591,9 @@ class OceanBlockDeviceMappingEbsArgs:
     @property
     @pulumi.getter
     def iops(self) -> Optional[pulumi.Input[int]]:
+        """
+        Must be greater than or equal to 0.
+        """
         return pulumi.get(self, "iops")
 
     @iops.setter
@@ -7512,6 +7603,9 @@ class OceanBlockDeviceMappingEbsArgs:
     @property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+        """
         return pulumi.get(self, "kms_key_id")
 
     @kms_key_id.setter
@@ -7521,6 +7615,9 @@ class OceanBlockDeviceMappingEbsArgs:
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Optional) String. The Snapshot ID to mount by.
+        """
         return pulumi.get(self, "snapshot_id")
 
     @snapshot_id.setter
@@ -7530,6 +7627,9 @@ class OceanBlockDeviceMappingEbsArgs:
     @property
     @pulumi.getter
     def throughput(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = `gp3`.
+        """
         return pulumi.get(self, "throughput")
 
     @throughput.setter
@@ -7539,6 +7639,9 @@ class OceanBlockDeviceMappingEbsArgs:
     @property
     @pulumi.getter(name="volumeSize")
     def volume_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        Int. The size, in GB of the volume.
+        """
         return pulumi.get(self, "volume_size")
 
     @volume_size.setter
@@ -7548,6 +7651,9 @@ class OceanBlockDeviceMappingEbsArgs:
     @property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. The type of the volume. (Example: `gp2`).
+        """
         return pulumi.get(self, "volume_type")
 
     @volume_type.setter
@@ -7561,6 +7667,10 @@ class OceanBlockDeviceMappingEbsDynamicIopsArgs:
                  base_size: pulumi.Input[int],
                  resource: pulumi.Input[str],
                  size_per_resource_unit: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] base_size: Initial size for IOPS.
+        :param pulumi.Input[int] size_per_resource_unit: Additional size per resource unit (in IOPS). (Example: `baseSize=50`, `sizePerResourceUnit=20`, and an instance with 2 CPU is launched; its IOPS size will be: 90).
+        """
         pulumi.set(__self__, "base_size", base_size)
         pulumi.set(__self__, "resource", resource)
         pulumi.set(__self__, "size_per_resource_unit", size_per_resource_unit)
@@ -7568,6 +7678,9 @@ class OceanBlockDeviceMappingEbsDynamicIopsArgs:
     @property
     @pulumi.getter(name="baseSize")
     def base_size(self) -> pulumi.Input[int]:
+        """
+        Initial size for IOPS.
+        """
         return pulumi.get(self, "base_size")
 
     @base_size.setter
@@ -7586,6 +7699,9 @@ class OceanBlockDeviceMappingEbsDynamicIopsArgs:
     @property
     @pulumi.getter(name="sizePerResourceUnit")
     def size_per_resource_unit(self) -> pulumi.Input[int]:
+        """
+        Additional size per resource unit (in IOPS). (Example: `baseSize=50`, `sizePerResourceUnit=20`, and an instance with 2 CPU is launched; its IOPS size will be: 90).
+        """
         return pulumi.get(self, "size_per_resource_unit")
 
     @size_per_resource_unit.setter
@@ -7599,6 +7715,11 @@ class OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs:
                  base_size: pulumi.Input[int],
                  resource: pulumi.Input[str],
                  size_per_resource_unit: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] base_size: Int. Initial size for volume. (Example: 50)
+        :param pulumi.Input[str] resource: String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)
+        :param pulumi.Input[int] size_per_resource_unit: Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB).
+        """
         pulumi.set(__self__, "base_size", base_size)
         pulumi.set(__self__, "resource", resource)
         pulumi.set(__self__, "size_per_resource_unit", size_per_resource_unit)
@@ -7606,6 +7727,9 @@ class OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs:
     @property
     @pulumi.getter(name="baseSize")
     def base_size(self) -> pulumi.Input[int]:
+        """
+        Int. Initial size for volume. (Example: 50)
+        """
         return pulumi.get(self, "base_size")
 
     @base_size.setter
@@ -7615,6 +7739,9 @@ class OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs:
     @property
     @pulumi.getter
     def resource(self) -> pulumi.Input[str]:
+        """
+        String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)
+        """
         return pulumi.get(self, "resource")
 
     @resource.setter
@@ -7624,6 +7751,9 @@ class OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs:
     @property
     @pulumi.getter(name="sizePerResourceUnit")
     def size_per_resource_unit(self) -> pulumi.Input[int]:
+        """
+        Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB).
+        """
         return pulumi.get(self, "size_per_resource_unit")
 
     @size_per_resource_unit.setter
@@ -8097,7 +8227,6 @@ class OceanLaunchSpecBlockDeviceMappingArgs:
         """
         :param pulumi.Input[str] device_name: String. Set device name. (Example: `/dev/xvda`).
         :param pulumi.Input['OceanLaunchSpecBlockDeviceMappingEbsArgs'] ebs: Object. Set Elastic Block Store properties .
-        :param pulumi.Input[str] no_device: String. Suppresses the specified device included in the block device mapping of the AMI.
         """
         if device_name is not None:
             pulumi.set(__self__, "device_name", device_name)
@@ -8135,9 +8264,6 @@ class OceanLaunchSpecBlockDeviceMappingArgs:
     @property
     @pulumi.getter(name="noDevice")
     def no_device(self) -> Optional[pulumi.Input[str]]:
-        """
-        String. Suppresses the specified device included in the block device mapping of the AMI.
-        """
         return pulumi.get(self, "no_device")
 
     @no_device.setter
@@ -8166,6 +8292,17 @@ class OceanLaunchSpecBlockDeviceMappingEbsArgs:
                  throughput: Optional[pulumi.Input[int]] = None,
                  volume_size: Optional[pulumi.Input[int]] = None,
                  volume_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] delete_on_termination: Boolean. Flag to delete the EBS on instance termination.
+        :param pulumi.Input['OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs'] dynamic_volume_size: Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
+        :param pulumi.Input[bool] encrypted: Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+        :param pulumi.Input[int] iops: Int. The number of I/O operations per second (IOPS) that the volume supports.
+        :param pulumi.Input[str] kms_key_id: String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+        :param pulumi.Input[str] snapshot_id: (Optional) String. The Snapshot ID to mount by.
+        :param pulumi.Input[int] throughput: The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = `gp3`.
+        :param pulumi.Input[int] volume_size: Int. The size, in GB of the volume.
+        :param pulumi.Input[str] volume_type: String. The type of the volume. (Example: `gp2`).
+        """
         if delete_on_termination is not None:
             pulumi.set(__self__, "delete_on_termination", delete_on_termination)
         if dynamic_volume_size is not None:
@@ -8188,6 +8325,9 @@ class OceanLaunchSpecBlockDeviceMappingEbsArgs:
     @property
     @pulumi.getter(name="deleteOnTermination")
     def delete_on_termination(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean. Flag to delete the EBS on instance termination.
+        """
         return pulumi.get(self, "delete_on_termination")
 
     @delete_on_termination.setter
@@ -8197,6 +8337,9 @@ class OceanLaunchSpecBlockDeviceMappingEbsArgs:
     @property
     @pulumi.getter(name="dynamicVolumeSize")
     def dynamic_volume_size(self) -> Optional[pulumi.Input['OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs']]:
+        """
+        Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
+        """
         return pulumi.get(self, "dynamic_volume_size")
 
     @dynamic_volume_size.setter
@@ -8206,6 +8349,9 @@ class OceanLaunchSpecBlockDeviceMappingEbsArgs:
     @property
     @pulumi.getter
     def encrypted(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+        """
         return pulumi.get(self, "encrypted")
 
     @encrypted.setter
@@ -8215,6 +8361,9 @@ class OceanLaunchSpecBlockDeviceMappingEbsArgs:
     @property
     @pulumi.getter
     def iops(self) -> Optional[pulumi.Input[int]]:
+        """
+        Int. The number of I/O operations per second (IOPS) that the volume supports.
+        """
         return pulumi.get(self, "iops")
 
     @iops.setter
@@ -8224,6 +8373,9 @@ class OceanLaunchSpecBlockDeviceMappingEbsArgs:
     @property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+        """
         return pulumi.get(self, "kms_key_id")
 
     @kms_key_id.setter
@@ -8233,6 +8385,9 @@ class OceanLaunchSpecBlockDeviceMappingEbsArgs:
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Optional) String. The Snapshot ID to mount by.
+        """
         return pulumi.get(self, "snapshot_id")
 
     @snapshot_id.setter
@@ -8242,6 +8397,9 @@ class OceanLaunchSpecBlockDeviceMappingEbsArgs:
     @property
     @pulumi.getter
     def throughput(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = `gp3`.
+        """
         return pulumi.get(self, "throughput")
 
     @throughput.setter
@@ -8251,6 +8409,9 @@ class OceanLaunchSpecBlockDeviceMappingEbsArgs:
     @property
     @pulumi.getter(name="volumeSize")
     def volume_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        Int. The size, in GB of the volume.
+        """
         return pulumi.get(self, "volume_size")
 
     @volume_size.setter
@@ -8260,6 +8421,9 @@ class OceanLaunchSpecBlockDeviceMappingEbsArgs:
     @property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. The type of the volume. (Example: `gp2`).
+        """
         return pulumi.get(self, "volume_type")
 
     @volume_type.setter
@@ -8273,6 +8437,11 @@ class OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs:
                  base_size: pulumi.Input[int],
                  resource: pulumi.Input[str],
                  size_per_resource_unit: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] base_size: Int. Initial size for volume. (Example: 50)
+        :param pulumi.Input[str] resource: String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)
+        :param pulumi.Input[int] size_per_resource_unit: Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB)
+        """
         pulumi.set(__self__, "base_size", base_size)
         pulumi.set(__self__, "resource", resource)
         pulumi.set(__self__, "size_per_resource_unit", size_per_resource_unit)
@@ -8280,6 +8449,9 @@ class OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs:
     @property
     @pulumi.getter(name="baseSize")
     def base_size(self) -> pulumi.Input[int]:
+        """
+        Int. Initial size for volume. (Example: 50)
+        """
         return pulumi.get(self, "base_size")
 
     @base_size.setter
@@ -8289,6 +8461,9 @@ class OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs:
     @property
     @pulumi.getter
     def resource(self) -> pulumi.Input[str]:
+        """
+        String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)
+        """
         return pulumi.get(self, "resource")
 
     @resource.setter
@@ -8298,6 +8473,9 @@ class OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs:
     @property
     @pulumi.getter(name="sizePerResourceUnit")
     def size_per_resource_unit(self) -> pulumi.Input[int]:
+        """
+        Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB)
+        """
         return pulumi.get(self, "size_per_resource_unit")
 
     @size_per_resource_unit.setter
@@ -8394,6 +8572,10 @@ class OceanLaunchSpecElasticIpPoolTagSelectorArgs:
     def __init__(__self__, *,
                  tag_key: pulumi.Input[str],
                  tag_value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] tag_key: Elastic IP tag key. The Virtual Node Group will consider all Elastic IPs tagged with this tag as a part of the Elastic IP pool to use.
+        :param pulumi.Input[str] tag_value: Elastic IP tag value. Can be null.
+        """
         pulumi.set(__self__, "tag_key", tag_key)
         if tag_value is not None:
             pulumi.set(__self__, "tag_value", tag_value)
@@ -8401,6 +8583,9 @@ class OceanLaunchSpecElasticIpPoolTagSelectorArgs:
     @property
     @pulumi.getter(name="tagKey")
     def tag_key(self) -> pulumi.Input[str]:
+        """
+        Elastic IP tag key. The Virtual Node Group will consider all Elastic IPs tagged with this tag as a part of the Elastic IP pool to use.
+        """
         return pulumi.get(self, "tag_key")
 
     @tag_key.setter
@@ -8410,6 +8595,9 @@ class OceanLaunchSpecElasticIpPoolTagSelectorArgs:
     @property
     @pulumi.getter(name="tagValue")
     def tag_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Elastic IP tag value. Can be null.
+        """
         return pulumi.get(self, "tag_value")
 
     @tag_value.setter
@@ -8991,6 +9179,12 @@ class OceanLaunchSpecSchedulingTaskTaskHeadroomArgs:
                  cpu_per_unit: Optional[pulumi.Input[int]] = None,
                  gpu_per_unit: Optional[pulumi.Input[int]] = None,
                  memory_per_unit: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] num_of_units: The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+        :param pulumi.Input[int] cpu_per_unit: Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        :param pulumi.Input[int] gpu_per_unit: Optionally configure the number of GPUS to allocate for each headroom unit.
+        :param pulumi.Input[int] memory_per_unit: Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
+        """
         pulumi.set(__self__, "num_of_units", num_of_units)
         if cpu_per_unit is not None:
             pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
@@ -9002,6 +9196,9 @@ class OceanLaunchSpecSchedulingTaskTaskHeadroomArgs:
     @property
     @pulumi.getter(name="numOfUnits")
     def num_of_units(self) -> pulumi.Input[int]:
+        """
+        The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+        """
         return pulumi.get(self, "num_of_units")
 
     @num_of_units.setter
@@ -9011,6 +9208,9 @@ class OceanLaunchSpecSchedulingTaskTaskHeadroomArgs:
     @property
     @pulumi.getter(name="cpuPerUnit")
     def cpu_per_unit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        """
         return pulumi.get(self, "cpu_per_unit")
 
     @cpu_per_unit.setter
@@ -9020,6 +9220,9 @@ class OceanLaunchSpecSchedulingTaskTaskHeadroomArgs:
     @property
     @pulumi.getter(name="gpuPerUnit")
     def gpu_per_unit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optionally configure the number of GPUS to allocate for each headroom unit.
+        """
         return pulumi.get(self, "gpu_per_unit")
 
     @gpu_per_unit.setter
@@ -9029,6 +9232,9 @@ class OceanLaunchSpecSchedulingTaskTaskHeadroomArgs:
     @property
     @pulumi.getter(name="memoryPerUnit")
     def memory_per_unit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
+        """
         return pulumi.get(self, "memory_per_unit")
 
     @memory_per_unit.setter
@@ -9264,12 +9470,18 @@ class OceanLoggingArgs:
 class OceanLoggingExportArgs:
     def __init__(__self__, *,
                  s3s: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLoggingExportS3Args']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['OceanLoggingExportS3Args']]] s3s: Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
+        """
         if s3s is not None:
             pulumi.set(__self__, "s3s", s3s)
 
     @property
     @pulumi.getter
     def s3s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLoggingExportS3Args']]]]:
+        """
+        Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
+        """
         return pulumi.get(self, "s3s")
 
     @s3s.setter
@@ -9282,7 +9494,7 @@ class OceanLoggingExportS3Args:
     def __init__(__self__, *,
                  id: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] id: The Cluster ID.
+        :param pulumi.Input[str] id: The identifier of The S3 data integration to export the logs to.
         """
         pulumi.set(__self__, "id", id)
 
@@ -9290,7 +9502,7 @@ class OceanLoggingExportS3Args:
     @pulumi.getter
     def id(self) -> pulumi.Input[str]:
         """
-        The Cluster ID.
+        The identifier of The S3 data integration to export the logs to.
         """
         return pulumi.get(self, "id")
 

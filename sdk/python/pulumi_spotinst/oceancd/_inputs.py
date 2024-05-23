@@ -196,6 +196,11 @@ class RolloutSpecStrategyArgArgs:
                  arg_name: pulumi.Input[str],
                  arg_value: Optional[pulumi.Input[str]] = None,
                  value_from: Optional[pulumi.Input['RolloutSpecStrategyArgValueFromArgs']] = None):
+        """
+        :param pulumi.Input[str] arg_name: Name of an argument.
+        :param pulumi.Input[str] arg_value: Value of an argument.
+        :param pulumi.Input['RolloutSpecStrategyArgValueFromArgs'] value_from: Defines from where to get the value of an argument.
+        """
         pulumi.set(__self__, "arg_name", arg_name)
         if arg_value is not None:
             pulumi.set(__self__, "arg_value", arg_value)
@@ -205,6 +210,9 @@ class RolloutSpecStrategyArgArgs:
     @property
     @pulumi.getter(name="argName")
     def arg_name(self) -> pulumi.Input[str]:
+        """
+        Name of an argument.
+        """
         return pulumi.get(self, "arg_name")
 
     @arg_name.setter
@@ -214,6 +222,9 @@ class RolloutSpecStrategyArgArgs:
     @property
     @pulumi.getter(name="argValue")
     def arg_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Value of an argument.
+        """
         return pulumi.get(self, "arg_value")
 
     @arg_value.setter
@@ -223,6 +234,9 @@ class RolloutSpecStrategyArgArgs:
     @property
     @pulumi.getter(name="valueFrom")
     def value_from(self) -> Optional[pulumi.Input['RolloutSpecStrategyArgValueFromArgs']]:
+        """
+        Defines from where to get the value of an argument.
+        """
         return pulumi.get(self, "value_from")
 
     @value_from.setter
@@ -234,11 +248,17 @@ class RolloutSpecStrategyArgArgs:
 class RolloutSpecStrategyArgValueFromArgs:
     def __init__(__self__, *,
                  field_ref: pulumi.Input['RolloutSpecStrategyArgValueFromFieldRefArgs']):
+        """
+        :param pulumi.Input['RolloutSpecStrategyArgValueFromFieldRefArgs'] field_ref: Defines the field path from where to get the value of an argument.
+        """
         pulumi.set(__self__, "field_ref", field_ref)
 
     @property
     @pulumi.getter(name="fieldRef")
     def field_ref(self) -> pulumi.Input['RolloutSpecStrategyArgValueFromFieldRefArgs']:
+        """
+        Defines the field path from where to get the value of an argument.
+        """
         return pulumi.get(self, "field_ref")
 
     @field_ref.setter
@@ -250,11 +270,17 @@ class RolloutSpecStrategyArgValueFromArgs:
 class RolloutSpecStrategyArgValueFromFieldRefArgs:
     def __init__(__self__, *,
                  field_path: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] field_path: Path to SpotDeployment's field from where to get the value of an argument.
+        """
         pulumi.set(__self__, "field_path", field_path)
 
     @property
     @pulumi.getter(name="fieldPath")
     def field_path(self) -> pulumi.Input[str]:
+        """
+        Path to SpotDeployment's field from where to get the value of an argument.
+        """
         return pulumi.get(self, "field_path")
 
     @field_path.setter
@@ -405,6 +431,13 @@ class RolloutSpecTrafficAlbArgs:
                  service_port: pulumi.Input[int],
                  alb_annotation_prefix: Optional[pulumi.Input[str]] = None,
                  stickiness_config: Optional[pulumi.Input['RolloutSpecTrafficAlbStickinessConfigArgs']] = None):
+        """
+        :param pulumi.Input[str] alb_ingress: Refers to the name of an `Ingress` resource in the same namespace as the `SpotDeployment`.
+        :param pulumi.Input[str] alb_root_service: References the service in the ingress to the controller should add the action to.
+        :param pulumi.Input[int] service_port: Refers to the port that the Ingress action should route traffic to.
+        :param pulumi.Input[str] alb_annotation_prefix: Has to match the configured annotation prefix on the alb ingress controller.
+        :param pulumi.Input['RolloutSpecTrafficAlbStickinessConfigArgs'] stickiness_config: Allows to specify further settings on the ForwardConfig.
+        """
         pulumi.set(__self__, "alb_ingress", alb_ingress)
         pulumi.set(__self__, "alb_root_service", alb_root_service)
         pulumi.set(__self__, "service_port", service_port)
@@ -416,6 +449,9 @@ class RolloutSpecTrafficAlbArgs:
     @property
     @pulumi.getter(name="albIngress")
     def alb_ingress(self) -> pulumi.Input[str]:
+        """
+        Refers to the name of an `Ingress` resource in the same namespace as the `SpotDeployment`.
+        """
         return pulumi.get(self, "alb_ingress")
 
     @alb_ingress.setter
@@ -425,6 +461,9 @@ class RolloutSpecTrafficAlbArgs:
     @property
     @pulumi.getter(name="albRootService")
     def alb_root_service(self) -> pulumi.Input[str]:
+        """
+        References the service in the ingress to the controller should add the action to.
+        """
         return pulumi.get(self, "alb_root_service")
 
     @alb_root_service.setter
@@ -434,6 +473,9 @@ class RolloutSpecTrafficAlbArgs:
     @property
     @pulumi.getter(name="servicePort")
     def service_port(self) -> pulumi.Input[int]:
+        """
+        Refers to the port that the Ingress action should route traffic to.
+        """
         return pulumi.get(self, "service_port")
 
     @service_port.setter
@@ -443,6 +485,9 @@ class RolloutSpecTrafficAlbArgs:
     @property
     @pulumi.getter(name="albAnnotationPrefix")
     def alb_annotation_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Has to match the configured annotation prefix on the alb ingress controller.
+        """
         return pulumi.get(self, "alb_annotation_prefix")
 
     @alb_annotation_prefix.setter
@@ -452,6 +497,9 @@ class RolloutSpecTrafficAlbArgs:
     @property
     @pulumi.getter(name="stickinessConfig")
     def stickiness_config(self) -> Optional[pulumi.Input['RolloutSpecTrafficAlbStickinessConfigArgs']]:
+        """
+        Allows to specify further settings on the ForwardConfig.
+        """
         return pulumi.get(self, "stickiness_config")
 
     @stickiness_config.setter
@@ -464,6 +512,10 @@ class RolloutSpecTrafficAlbStickinessConfigArgs:
     def __init__(__self__, *,
                  duration_seconds: Optional[pulumi.Input[int]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[int] duration_seconds: Defines how long the load balancer should consistently route the user's request to the same target.
+        :param pulumi.Input[bool] enabled: Enables the load balancer to bind a user's session to a specific target.
+        """
         if duration_seconds is not None:
             pulumi.set(__self__, "duration_seconds", duration_seconds)
         if enabled is not None:
@@ -472,6 +524,9 @@ class RolloutSpecTrafficAlbStickinessConfigArgs:
     @property
     @pulumi.getter(name="durationSeconds")
     def duration_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Defines how long the load balancer should consistently route the user's request to the same target.
+        """
         return pulumi.get(self, "duration_seconds")
 
     @duration_seconds.setter
@@ -481,6 +536,9 @@ class RolloutSpecTrafficAlbStickinessConfigArgs:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables the load balancer to bind a user's session to a specific target.
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -492,11 +550,17 @@ class RolloutSpecTrafficAlbStickinessConfigArgs:
 class RolloutSpecTrafficAmbassadorArgs:
     def __init__(__self__, *,
                  mappings: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] mappings: A list of names of the Ambassador Mappings used to route traffic to the service.
+        """
         pulumi.set(__self__, "mappings", mappings)
 
     @property
     @pulumi.getter
     def mappings(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        A list of names of the Ambassador Mappings used to route traffic to the service.
+        """
         return pulumi.get(self, "mappings")
 
     @mappings.setter
@@ -509,6 +573,10 @@ class RolloutSpecTrafficIstioArgs:
     def __init__(__self__, *,
                  virtual_services: pulumi.Input[Sequence[pulumi.Input['RolloutSpecTrafficIstioVirtualServiceArgs']]],
                  destination_rule: Optional[pulumi.Input['RolloutSpecTrafficIstioDestinationRuleArgs']] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['RolloutSpecTrafficIstioVirtualServiceArgs']]] virtual_services: Defines a set of traffic routing rules to apply when a host is addressed.
+        :param pulumi.Input['RolloutSpecTrafficIstioDestinationRuleArgs'] destination_rule: It references to an Istio DestinationRule to modify and shape traffic. `DestinationRule` field belongs only to the Subset Level approach.
+        """
         pulumi.set(__self__, "virtual_services", virtual_services)
         if destination_rule is not None:
             pulumi.set(__self__, "destination_rule", destination_rule)
@@ -516,6 +584,9 @@ class RolloutSpecTrafficIstioArgs:
     @property
     @pulumi.getter(name="virtualServices")
     def virtual_services(self) -> pulumi.Input[Sequence[pulumi.Input['RolloutSpecTrafficIstioVirtualServiceArgs']]]:
+        """
+        Defines a set of traffic routing rules to apply when a host is addressed.
+        """
         return pulumi.get(self, "virtual_services")
 
     @virtual_services.setter
@@ -525,6 +596,9 @@ class RolloutSpecTrafficIstioArgs:
     @property
     @pulumi.getter(name="destinationRule")
     def destination_rule(self) -> Optional[pulumi.Input['RolloutSpecTrafficIstioDestinationRuleArgs']]:
+        """
+        It references to an Istio DestinationRule to modify and shape traffic. `DestinationRule` field belongs only to the Subset Level approach.
+        """
         return pulumi.get(self, "destination_rule")
 
     @destination_rule.setter
@@ -538,6 +612,11 @@ class RolloutSpecTrafficIstioDestinationRuleArgs:
                  canary_subset_name: pulumi.Input[str],
                  destination_rule_name: pulumi.Input[str],
                  stable_subset_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] canary_subset_name: The subset name to modify labels with the canary version.
+        :param pulumi.Input[str] destination_rule_name: Holds the name of the DestinationRule.
+        :param pulumi.Input[str] stable_subset_name: The subset name to modify labels with the stable version.
+        """
         pulumi.set(__self__, "canary_subset_name", canary_subset_name)
         pulumi.set(__self__, "destination_rule_name", destination_rule_name)
         pulumi.set(__self__, "stable_subset_name", stable_subset_name)
@@ -545,6 +624,9 @@ class RolloutSpecTrafficIstioDestinationRuleArgs:
     @property
     @pulumi.getter(name="canarySubsetName")
     def canary_subset_name(self) -> pulumi.Input[str]:
+        """
+        The subset name to modify labels with the canary version.
+        """
         return pulumi.get(self, "canary_subset_name")
 
     @canary_subset_name.setter
@@ -554,6 +636,9 @@ class RolloutSpecTrafficIstioDestinationRuleArgs:
     @property
     @pulumi.getter(name="destinationRuleName")
     def destination_rule_name(self) -> pulumi.Input[str]:
+        """
+        Holds the name of the DestinationRule.
+        """
         return pulumi.get(self, "destination_rule_name")
 
     @destination_rule_name.setter
@@ -563,6 +648,9 @@ class RolloutSpecTrafficIstioDestinationRuleArgs:
     @property
     @pulumi.getter(name="stableSubsetName")
     def stable_subset_name(self) -> pulumi.Input[str]:
+        """
+        The subset name to modify labels with the stable version.
+        """
         return pulumi.get(self, "stable_subset_name")
 
     @stable_subset_name.setter
@@ -576,6 +664,11 @@ class RolloutSpecTrafficIstioVirtualServiceArgs:
                  virtual_service_name: pulumi.Input[str],
                  tls_routes: Optional[pulumi.Input[Sequence[pulumi.Input['RolloutSpecTrafficIstioVirtualServiceTlsRouteArgs']]]] = None,
                  virtual_service_routes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] virtual_service_name: Holds the name of the VirtualService.
+        :param pulumi.Input[Sequence[pulumi.Input['RolloutSpecTrafficIstioVirtualServiceTlsRouteArgs']]] tls_routes: A list of HTTPS routes within VirtualService.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] virtual_service_routes: A list of HTTP routes within VirtualService.
+        """
         pulumi.set(__self__, "virtual_service_name", virtual_service_name)
         if tls_routes is not None:
             pulumi.set(__self__, "tls_routes", tls_routes)
@@ -585,6 +678,9 @@ class RolloutSpecTrafficIstioVirtualServiceArgs:
     @property
     @pulumi.getter(name="virtualServiceName")
     def virtual_service_name(self) -> pulumi.Input[str]:
+        """
+        Holds the name of the VirtualService.
+        """
         return pulumi.get(self, "virtual_service_name")
 
     @virtual_service_name.setter
@@ -594,6 +690,9 @@ class RolloutSpecTrafficIstioVirtualServiceArgs:
     @property
     @pulumi.getter(name="tlsRoutes")
     def tls_routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RolloutSpecTrafficIstioVirtualServiceTlsRouteArgs']]]]:
+        """
+        A list of HTTPS routes within VirtualService.
+        """
         return pulumi.get(self, "tls_routes")
 
     @tls_routes.setter
@@ -603,6 +702,9 @@ class RolloutSpecTrafficIstioVirtualServiceArgs:
     @property
     @pulumi.getter(name="virtualServiceRoutes")
     def virtual_service_routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of HTTP routes within VirtualService.
+        """
         return pulumi.get(self, "virtual_service_routes")
 
     @virtual_service_routes.setter
@@ -615,6 +717,10 @@ class RolloutSpecTrafficIstioVirtualServiceTlsRouteArgs:
     def __init__(__self__, *,
                  port: Optional[pulumi.Input[int]] = None,
                  sni_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[int] port: The port of the TLS Route desired to be matched in the given Istio VirtualService.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] sni_hosts: A list of all the SNI Hosts of the TLS Route desired to be matched in the given Istio VirtualService.
+        """
         if port is not None:
             pulumi.set(__self__, "port", port)
         if sni_hosts is not None:
@@ -623,6 +729,9 @@ class RolloutSpecTrafficIstioVirtualServiceTlsRouteArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port of the TLS Route desired to be matched in the given Istio VirtualService.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -632,6 +741,9 @@ class RolloutSpecTrafficIstioVirtualServiceTlsRouteArgs:
     @property
     @pulumi.getter(name="sniHosts")
     def sni_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of all the SNI Hosts of the TLS Route desired to be matched in the given Istio VirtualService.
+        """
         return pulumi.get(self, "sni_hosts")
 
     @sni_hosts.setter
@@ -645,6 +757,11 @@ class RolloutSpecTrafficNginxArgs:
                  stable_ingress: pulumi.Input[str],
                  additional_ingress_annotation: Optional[pulumi.Input['RolloutSpecTrafficNginxAdditionalIngressAnnotationArgs']] = None,
                  nginx_annotation_prefix: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] stable_ingress: Refers to the name of an `Ingress` resource in the same namespace as the `SpotDeployment`.
+        :param pulumi.Input['RolloutSpecTrafficNginxAdditionalIngressAnnotationArgs'] additional_ingress_annotation: Provides additional features to add to the canary ingress (such as routing by header, cookie, etc). You can add these Kubernetes annotations to specific Ingress objects to customize their behavior. Above are found examples of accepted k8s keys.For the full list of supported keys, you may reach the following documentation - https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#canary.
+        :param pulumi.Input[str] nginx_annotation_prefix: Has to match the configured annotation prefix on the Nginx ingress controller.
+        """
         pulumi.set(__self__, "stable_ingress", stable_ingress)
         if additional_ingress_annotation is not None:
             pulumi.set(__self__, "additional_ingress_annotation", additional_ingress_annotation)
@@ -654,6 +771,9 @@ class RolloutSpecTrafficNginxArgs:
     @property
     @pulumi.getter(name="stableIngress")
     def stable_ingress(self) -> pulumi.Input[str]:
+        """
+        Refers to the name of an `Ingress` resource in the same namespace as the `SpotDeployment`.
+        """
         return pulumi.get(self, "stable_ingress")
 
     @stable_ingress.setter
@@ -663,6 +783,9 @@ class RolloutSpecTrafficNginxArgs:
     @property
     @pulumi.getter(name="additionalIngressAnnotation")
     def additional_ingress_annotation(self) -> Optional[pulumi.Input['RolloutSpecTrafficNginxAdditionalIngressAnnotationArgs']]:
+        """
+        Provides additional features to add to the canary ingress (such as routing by header, cookie, etc). You can add these Kubernetes annotations to specific Ingress objects to customize their behavior. Above are found examples of accepted k8s keys.For the full list of supported keys, you may reach the following documentation - https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#canary.
+        """
         return pulumi.get(self, "additional_ingress_annotation")
 
     @additional_ingress_annotation.setter
@@ -672,6 +795,9 @@ class RolloutSpecTrafficNginxArgs:
     @property
     @pulumi.getter(name="nginxAnnotationPrefix")
     def nginx_annotation_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Has to match the configured annotation prefix on the Nginx ingress controller.
+        """
         return pulumi.get(self, "nginx_annotation_prefix")
 
     @nginx_annotation_prefix.setter
@@ -684,6 +810,10 @@ class RolloutSpecTrafficNginxAdditionalIngressAnnotationArgs:
     def __init__(__self__, *,
                  canary_by_header: Optional[pulumi.Input[str]] = None,
                  key1: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] canary_by_header: Allows customizing the header value instead of using hardcoded values.
+        :param pulumi.Input[str] key1: Any of supported annotations.
+        """
         if canary_by_header is not None:
             pulumi.set(__self__, "canary_by_header", canary_by_header)
         if key1 is not None:
@@ -692,6 +822,9 @@ class RolloutSpecTrafficNginxAdditionalIngressAnnotationArgs:
     @property
     @pulumi.getter(name="canaryByHeader")
     def canary_by_header(self) -> Optional[pulumi.Input[str]]:
+        """
+        Allows customizing the header value instead of using hardcoded values.
+        """
         return pulumi.get(self, "canary_by_header")
 
     @canary_by_header.setter
@@ -701,6 +834,9 @@ class RolloutSpecTrafficNginxAdditionalIngressAnnotationArgs:
     @property
     @pulumi.getter
     def key1(self) -> Optional[pulumi.Input[str]]:
+        """
+        Any of supported annotations.
+        """
         return pulumi.get(self, "key1")
 
     @key1.setter
@@ -713,12 +849,19 @@ class RolloutSpecTrafficPingPongArgs:
     def __init__(__self__, *,
                  ping_service: pulumi.Input[str],
                  pong_service: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] ping_service: Holds the name of the ping service.
+        :param pulumi.Input[str] pong_service: Holds the name of the pong service.
+        """
         pulumi.set(__self__, "ping_service", ping_service)
         pulumi.set(__self__, "pong_service", pong_service)
 
     @property
     @pulumi.getter(name="pingService")
     def ping_service(self) -> pulumi.Input[str]:
+        """
+        Holds the name of the ping service.
+        """
         return pulumi.get(self, "ping_service")
 
     @ping_service.setter
@@ -728,6 +871,9 @@ class RolloutSpecTrafficPingPongArgs:
     @property
     @pulumi.getter(name="pongService")
     def pong_service(self) -> pulumi.Input[str]:
+        """
+        Holds the name of the pong service.
+        """
         return pulumi.get(self, "pong_service")
 
     @pong_service.setter
@@ -740,6 +886,10 @@ class RolloutSpecTrafficSmiArgs:
     def __init__(__self__, *,
                  smi_root_service: Optional[pulumi.Input[str]] = None,
                  traffic_split_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] smi_root_service: Holds the name of service that clients use to communicate.
+        :param pulumi.Input[str] traffic_split_name: Holds the name of the TrafficSplit.
+        """
         if smi_root_service is not None:
             pulumi.set(__self__, "smi_root_service", smi_root_service)
         if traffic_split_name is not None:
@@ -748,6 +898,9 @@ class RolloutSpecTrafficSmiArgs:
     @property
     @pulumi.getter(name="smiRootService")
     def smi_root_service(self) -> Optional[pulumi.Input[str]]:
+        """
+        Holds the name of service that clients use to communicate.
+        """
         return pulumi.get(self, "smi_root_service")
 
     @smi_root_service.setter
@@ -757,6 +910,9 @@ class RolloutSpecTrafficSmiArgs:
     @property
     @pulumi.getter(name="trafficSplitName")
     def traffic_split_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Holds the name of the TrafficSplit.
+        """
         return pulumi.get(self, "traffic_split_name")
 
     @traffic_split_name.setter
@@ -806,11 +962,17 @@ class StrategyCanaryArgs:
 class StrategyCanaryBackgroundVerificationArgs:
     def __init__(__self__, *,
                  template_names: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] template_names: List of Verification Template names.
+        """
         pulumi.set(__self__, "template_names", template_names)
 
     @property
     @pulumi.getter(name="templateNames")
     def template_names(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List of Verification Template names.
+        """
         return pulumi.get(self, "template_names")
 
     @template_names.setter
@@ -827,6 +989,13 @@ class StrategyCanaryStepArgs:
                  set_weight: Optional[pulumi.Input[int]] = None,
                  step_name: Optional[pulumi.Input[str]] = None,
                  verification: Optional[pulumi.Input['StrategyCanaryStepVerificationArgs']] = None):
+        """
+        :param pulumi.Input['StrategyCanaryStepPauseArgs'] pause: Defines the duration of time to freeze the rollout.
+        :param pulumi.Input['StrategyCanaryStepSetCanaryScaleArgs'] set_canary_scale: Defines how to scale the version without traffic weight changing.
+        :param pulumi.Input['StrategyCanaryStepSetHeaderRouteArgs'] set_header_route: Defines the list of HeaderRoutes to add to the Rollout.
+        :param pulumi.Input[int] set_weight: Defines the percentage that the new version should receive.
+        :param pulumi.Input['StrategyCanaryStepVerificationArgs'] verification: Represents the list of verifications to run in a step.
+        """
         if pause is not None:
             pulumi.set(__self__, "pause", pause)
         if set_canary_scale is not None:
@@ -843,6 +1012,9 @@ class StrategyCanaryStepArgs:
     @property
     @pulumi.getter
     def pause(self) -> Optional[pulumi.Input['StrategyCanaryStepPauseArgs']]:
+        """
+        Defines the duration of time to freeze the rollout.
+        """
         return pulumi.get(self, "pause")
 
     @pause.setter
@@ -852,6 +1024,9 @@ class StrategyCanaryStepArgs:
     @property
     @pulumi.getter(name="setCanaryScale")
     def set_canary_scale(self) -> Optional[pulumi.Input['StrategyCanaryStepSetCanaryScaleArgs']]:
+        """
+        Defines how to scale the version without traffic weight changing.
+        """
         return pulumi.get(self, "set_canary_scale")
 
     @set_canary_scale.setter
@@ -861,6 +1036,9 @@ class StrategyCanaryStepArgs:
     @property
     @pulumi.getter(name="setHeaderRoute")
     def set_header_route(self) -> Optional[pulumi.Input['StrategyCanaryStepSetHeaderRouteArgs']]:
+        """
+        Defines the list of HeaderRoutes to add to the Rollout.
+        """
         return pulumi.get(self, "set_header_route")
 
     @set_header_route.setter
@@ -870,6 +1048,9 @@ class StrategyCanaryStepArgs:
     @property
     @pulumi.getter(name="setWeight")
     def set_weight(self) -> Optional[pulumi.Input[int]]:
+        """
+        Defines the percentage that the new version should receive.
+        """
         return pulumi.get(self, "set_weight")
 
     @set_weight.setter
@@ -888,6 +1069,9 @@ class StrategyCanaryStepArgs:
     @property
     @pulumi.getter
     def verification(self) -> Optional[pulumi.Input['StrategyCanaryStepVerificationArgs']]:
+        """
+        Represents the list of verifications to run in a step.
+        """
         return pulumi.get(self, "verification")
 
     @verification.setter
@@ -899,12 +1083,18 @@ class StrategyCanaryStepArgs:
 class StrategyCanaryStepPauseArgs:
     def __init__(__self__, *,
                  duration: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] duration: The amount of time to wait before moving to the next step.
+        """
         if duration is not None:
             pulumi.set(__self__, "duration", duration)
 
     @property
     @pulumi.getter
     def duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        The amount of time to wait before moving to the next step.
+        """
         return pulumi.get(self, "duration")
 
     @duration.setter
@@ -918,6 +1108,11 @@ class StrategyCanaryStepSetCanaryScaleArgs:
                  match_traffic_weight: Optional[pulumi.Input[bool]] = None,
                  replicas: Optional[pulumi.Input[int]] = None,
                  weight: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[bool] match_traffic_weight: Defines whether a rollout should match the current canary's setWeight step.
+        :param pulumi.Input[int] replicas: Sets the number of replicas the new version should have.
+        :param pulumi.Input[int] weight: Sets the percentage of replicas the new version should have.
+        """
         if match_traffic_weight is not None:
             pulumi.set(__self__, "match_traffic_weight", match_traffic_weight)
         if replicas is not None:
@@ -928,6 +1123,9 @@ class StrategyCanaryStepSetCanaryScaleArgs:
     @property
     @pulumi.getter(name="matchTrafficWeight")
     def match_traffic_weight(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defines whether a rollout should match the current canary's setWeight step.
+        """
         return pulumi.get(self, "match_traffic_weight")
 
     @match_traffic_weight.setter
@@ -937,6 +1135,9 @@ class StrategyCanaryStepSetCanaryScaleArgs:
     @property
     @pulumi.getter
     def replicas(self) -> Optional[pulumi.Input[int]]:
+        """
+        Sets the number of replicas the new version should have.
+        """
         return pulumi.get(self, "replicas")
 
     @replicas.setter
@@ -946,6 +1147,9 @@ class StrategyCanaryStepSetCanaryScaleArgs:
     @property
     @pulumi.getter
     def weight(self) -> Optional[pulumi.Input[int]]:
+        """
+        Sets the percentage of replicas the new version should have.
+        """
         return pulumi.get(self, "weight")
 
     @weight.setter
@@ -958,12 +1162,19 @@ class StrategyCanaryStepSetHeaderRouteArgs:
     def __init__(__self__, *,
                  header_route_name: pulumi.Input[str],
                  matches: pulumi.Input[Sequence[pulumi.Input['StrategyCanaryStepSetHeaderRouteMatchArgs']]]):
+        """
+        :param pulumi.Input[str] header_route_name: The name of the HeaderRoute group.
+        :param pulumi.Input[Sequence[pulumi.Input['StrategyCanaryStepSetHeaderRouteMatchArgs']]] matches: The matching rules for the header route.
+        """
         pulumi.set(__self__, "header_route_name", header_route_name)
         pulumi.set(__self__, "matches", matches)
 
     @property
     @pulumi.getter(name="headerRouteName")
     def header_route_name(self) -> pulumi.Input[str]:
+        """
+        The name of the HeaderRoute group.
+        """
         return pulumi.get(self, "header_route_name")
 
     @header_route_name.setter
@@ -973,6 +1184,9 @@ class StrategyCanaryStepSetHeaderRouteArgs:
     @property
     @pulumi.getter
     def matches(self) -> pulumi.Input[Sequence[pulumi.Input['StrategyCanaryStepSetHeaderRouteMatchArgs']]]:
+        """
+        The matching rules for the header route.
+        """
         return pulumi.get(self, "matches")
 
     @matches.setter
@@ -985,12 +1199,19 @@ class StrategyCanaryStepSetHeaderRouteMatchArgs:
     def __init__(__self__, *,
                  header_name: pulumi.Input[str],
                  header_value: pulumi.Input['StrategyCanaryStepSetHeaderRouteMatchHeaderValueArgs']):
+        """
+        :param pulumi.Input[str] header_name: The name of the header.
+        :param pulumi.Input['StrategyCanaryStepSetHeaderRouteMatchHeaderValueArgs'] header_value: Defines a single header to add to the Rollout. Must be only one initialized from the following (exact, prefix, regex).
+        """
         pulumi.set(__self__, "header_name", header_name)
         pulumi.set(__self__, "header_value", header_value)
 
     @property
     @pulumi.getter(name="headerName")
     def header_name(self) -> pulumi.Input[str]:
+        """
+        The name of the header.
+        """
         return pulumi.get(self, "header_name")
 
     @header_name.setter
@@ -1000,6 +1221,9 @@ class StrategyCanaryStepSetHeaderRouteMatchArgs:
     @property
     @pulumi.getter(name="headerValue")
     def header_value(self) -> pulumi.Input['StrategyCanaryStepSetHeaderRouteMatchHeaderValueArgs']:
+        """
+        Defines a single header to add to the Rollout. Must be only one initialized from the following (exact, prefix, regex).
+        """
         return pulumi.get(self, "header_value")
 
     @header_value.setter
@@ -1013,6 +1237,11 @@ class StrategyCanaryStepSetHeaderRouteMatchHeaderValueArgs:
                  exact: Optional[pulumi.Input[str]] = None,
                  prefix: Optional[pulumi.Input[str]] = None,
                  regex: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] exact: The exact header value.
+        :param pulumi.Input[str] prefix: The prefix of the value.
+        :param pulumi.Input[str] regex: The value in a regex format.
+        """
         if exact is not None:
             pulumi.set(__self__, "exact", exact)
         if prefix is not None:
@@ -1023,6 +1252,9 @@ class StrategyCanaryStepSetHeaderRouteMatchHeaderValueArgs:
     @property
     @pulumi.getter
     def exact(self) -> Optional[pulumi.Input[str]]:
+        """
+        The exact header value.
+        """
         return pulumi.get(self, "exact")
 
     @exact.setter
@@ -1032,6 +1264,9 @@ class StrategyCanaryStepSetHeaderRouteMatchHeaderValueArgs:
     @property
     @pulumi.getter
     def prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        The prefix of the value.
+        """
         return pulumi.get(self, "prefix")
 
     @prefix.setter
@@ -1041,6 +1276,9 @@ class StrategyCanaryStepSetHeaderRouteMatchHeaderValueArgs:
     @property
     @pulumi.getter
     def regex(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value in a regex format.
+        """
         return pulumi.get(self, "regex")
 
     @regex.setter
@@ -1052,11 +1290,17 @@ class StrategyCanaryStepSetHeaderRouteMatchHeaderValueArgs:
 class StrategyCanaryStepVerificationArgs:
     def __init__(__self__, *,
                  template_names: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] template_names: List of Verification Template names.
+        """
         pulumi.set(__self__, "template_names", template_names)
 
     @property
     @pulumi.getter(name="templateNames")
     def template_names(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List of Verification Template names.
+        """
         return pulumi.get(self, "template_names")
 
     @template_names.setter
@@ -1092,6 +1336,10 @@ class StrategyRollingStepArgs:
                  pause: Optional[pulumi.Input['StrategyRollingStepPauseArgs']] = None,
                  steps_name: Optional[pulumi.Input[str]] = None,
                  verification: Optional[pulumi.Input['StrategyRollingStepVerificationArgs']] = None):
+        """
+        :param pulumi.Input['StrategyRollingStepPauseArgs'] pause: Defines the duration of time to freeze the rollout.
+        :param pulumi.Input['StrategyRollingStepVerificationArgs'] verification: Represents the list of verifications to run in a step.
+        """
         if pause is not None:
             pulumi.set(__self__, "pause", pause)
         if steps_name is not None:
@@ -1102,6 +1350,9 @@ class StrategyRollingStepArgs:
     @property
     @pulumi.getter
     def pause(self) -> Optional[pulumi.Input['StrategyRollingStepPauseArgs']]:
+        """
+        Defines the duration of time to freeze the rollout.
+        """
         return pulumi.get(self, "pause")
 
     @pause.setter
@@ -1120,6 +1371,9 @@ class StrategyRollingStepArgs:
     @property
     @pulumi.getter
     def verification(self) -> Optional[pulumi.Input['StrategyRollingStepVerificationArgs']]:
+        """
+        Represents the list of verifications to run in a step.
+        """
         return pulumi.get(self, "verification")
 
     @verification.setter
@@ -1131,12 +1385,18 @@ class StrategyRollingStepArgs:
 class StrategyRollingStepPauseArgs:
     def __init__(__self__, *,
                  duration: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] duration: The amount of time to wait before moving to the next step.
+        """
         if duration is not None:
             pulumi.set(__self__, "duration", duration)
 
     @property
     @pulumi.getter
     def duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        The amount of time to wait before moving to the next step.
+        """
         return pulumi.get(self, "duration")
 
     @duration.setter
@@ -1148,11 +1408,17 @@ class StrategyRollingStepPauseArgs:
 class StrategyRollingStepVerificationArgs:
     def __init__(__self__, *,
                  template_names: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] template_names: List of Verification Template names.
+        """
         pulumi.set(__self__, "template_names", template_names)
 
     @property
     @pulumi.getter(name="templateNames")
     def template_names(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List of Verification Template names.
+        """
         return pulumi.get(self, "template_names")
 
     @template_names.setter
@@ -1447,12 +1713,18 @@ class VerificationTemplateArgArgs:
 class VerificationTemplateArgValueFromArgs:
     def __init__(__self__, *,
                  secret_key_ref: Optional[pulumi.Input['VerificationTemplateArgValueFromSecretKeyRefArgs']] = None):
+        """
+        :param pulumi.Input['VerificationTemplateArgValueFromSecretKeyRefArgs'] secret_key_ref: Secret key to use.
+        """
         if secret_key_ref is not None:
             pulumi.set(__self__, "secret_key_ref", secret_key_ref)
 
     @property
     @pulumi.getter(name="secretKeyRef")
     def secret_key_ref(self) -> Optional[pulumi.Input['VerificationTemplateArgValueFromSecretKeyRefArgs']]:
+        """
+        Secret key to use.
+        """
         return pulumi.get(self, "secret_key_ref")
 
     @secret_key_ref.setter
@@ -1466,7 +1738,8 @@ class VerificationTemplateArgValueFromSecretKeyRefArgs:
                  key: pulumi.Input[str],
                  name: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] name: Identifier name for Ocean CD Verification Template. Must be unique.
+        :param pulumi.Input[str] key: The name of the field inside the secret.
+        :param pulumi.Input[str] name: The name of the secret.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "name", name)
@@ -1474,6 +1747,9 @@ class VerificationTemplateArgValueFromSecretKeyRefArgs:
     @property
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
+        """
+        The name of the field inside the secret.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -1484,7 +1760,7 @@ class VerificationTemplateArgValueFromSecretKeyRefArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Identifier name for Ocean CD Verification Template. Must be unique.
+        The name of the secret.
         """
         return pulumi.get(self, "name")
 
@@ -1681,6 +1957,12 @@ class VerificationTemplateMetricBaselineArgs:
                  threshold: pulumi.Input[str],
                  max_range: Optional[pulumi.Input[int]] = None,
                  min_range: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['VerificationTemplateMetricBaselineBaselineProviderArgs']]] baseline_providers: The name of the monitoring tool chosen for the metric.
+        :param pulumi.Input[str] threshold: A mathematical expression needed for the comparison. Enum: "<" ">" "<=" ">=" "=" "range"
+        :param pulumi.Input[int] max_range: Number in percent we allow the new version’s data result to be under baseline data result.
+        :param pulumi.Input[int] min_range: Number in percent we allow the new version’s data result to be under baseline data result.*
+        """
         pulumi.set(__self__, "baseline_providers", baseline_providers)
         pulumi.set(__self__, "threshold", threshold)
         if max_range is not None:
@@ -1691,6 +1973,9 @@ class VerificationTemplateMetricBaselineArgs:
     @property
     @pulumi.getter(name="baselineProviders")
     def baseline_providers(self) -> pulumi.Input[Sequence[pulumi.Input['VerificationTemplateMetricBaselineBaselineProviderArgs']]]:
+        """
+        The name of the monitoring tool chosen for the metric.
+        """
         return pulumi.get(self, "baseline_providers")
 
     @baseline_providers.setter
@@ -1700,6 +1985,9 @@ class VerificationTemplateMetricBaselineArgs:
     @property
     @pulumi.getter
     def threshold(self) -> pulumi.Input[str]:
+        """
+        A mathematical expression needed for the comparison. Enum: "<" ">" "<=" ">=" "=" "range"
+        """
         return pulumi.get(self, "threshold")
 
     @threshold.setter
@@ -1709,6 +1997,9 @@ class VerificationTemplateMetricBaselineArgs:
     @property
     @pulumi.getter(name="maxRange")
     def max_range(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number in percent we allow the new version’s data result to be under baseline data result.
+        """
         return pulumi.get(self, "max_range")
 
     @max_range.setter
@@ -1718,6 +2009,9 @@ class VerificationTemplateMetricBaselineArgs:
     @property
     @pulumi.getter(name="minRange")
     def min_range(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number in percent we allow the new version’s data result to be under baseline data result.*
+        """
         return pulumi.get(self, "min_range")
 
     @min_range.setter
@@ -1731,6 +2025,11 @@ class VerificationTemplateMetricBaselineBaselineProviderArgs:
                  datadog: Optional[pulumi.Input['VerificationTemplateMetricBaselineBaselineProviderDatadogArgs']] = None,
                  new_relic: Optional[pulumi.Input['VerificationTemplateMetricBaselineBaselineProviderNewRelicArgs']] = None,
                  prometheus: Optional[pulumi.Input['VerificationTemplateMetricBaselineBaselineProviderPrometheusArgs']] = None):
+        """
+        :param pulumi.Input['VerificationTemplateMetricBaselineBaselineProviderDatadogArgs'] datadog: The datadog provider.
+        :param pulumi.Input['VerificationTemplateMetricBaselineBaselineProviderNewRelicArgs'] new_relic: The New Relic provider.
+        :param pulumi.Input['VerificationTemplateMetricBaselineBaselineProviderPrometheusArgs'] prometheus: The Prometheus provider.
+        """
         if datadog is not None:
             pulumi.set(__self__, "datadog", datadog)
         if new_relic is not None:
@@ -1741,6 +2040,9 @@ class VerificationTemplateMetricBaselineBaselineProviderArgs:
     @property
     @pulumi.getter
     def datadog(self) -> Optional[pulumi.Input['VerificationTemplateMetricBaselineBaselineProviderDatadogArgs']]:
+        """
+        The datadog provider.
+        """
         return pulumi.get(self, "datadog")
 
     @datadog.setter
@@ -1750,6 +2052,9 @@ class VerificationTemplateMetricBaselineBaselineProviderArgs:
     @property
     @pulumi.getter(name="newRelic")
     def new_relic(self) -> Optional[pulumi.Input['VerificationTemplateMetricBaselineBaselineProviderNewRelicArgs']]:
+        """
+        The New Relic provider.
+        """
         return pulumi.get(self, "new_relic")
 
     @new_relic.setter
@@ -1759,6 +2064,9 @@ class VerificationTemplateMetricBaselineBaselineProviderArgs:
     @property
     @pulumi.getter
     def prometheus(self) -> Optional[pulumi.Input['VerificationTemplateMetricBaselineBaselineProviderPrometheusArgs']]:
+        """
+        The Prometheus provider.
+        """
         return pulumi.get(self, "prometheus")
 
     @prometheus.setter
@@ -1771,6 +2079,10 @@ class VerificationTemplateMetricBaselineBaselineProviderDatadogArgs:
     def __init__(__self__, *,
                  datadog_query: pulumi.Input[str],
                  duration: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] datadog_query: A request for information retrieved from Datadog.
+        :param pulumi.Input[str] duration: The window of time we are looking at in DataDog.
+        """
         pulumi.set(__self__, "datadog_query", datadog_query)
         if duration is not None:
             pulumi.set(__self__, "duration", duration)
@@ -1778,6 +2090,9 @@ class VerificationTemplateMetricBaselineBaselineProviderDatadogArgs:
     @property
     @pulumi.getter(name="datadogQuery")
     def datadog_query(self) -> pulumi.Input[str]:
+        """
+        A request for information retrieved from Datadog.
+        """
         return pulumi.get(self, "datadog_query")
 
     @datadog_query.setter
@@ -1787,6 +2102,9 @@ class VerificationTemplateMetricBaselineBaselineProviderDatadogArgs:
     @property
     @pulumi.getter
     def duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        The window of time we are looking at in DataDog.
+        """
         return pulumi.get(self, "duration")
 
     @duration.setter
@@ -1799,6 +2117,10 @@ class VerificationTemplateMetricBaselineBaselineProviderNewRelicArgs:
     def __init__(__self__, *,
                  new_relic_query: pulumi.Input[str],
                  profile: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] new_relic_query: A raw newrelic NRQL query to perform.
+        :param pulumi.Input[str] profile: The name of the secret holding NR account configuration.
+        """
         pulumi.set(__self__, "new_relic_query", new_relic_query)
         if profile is not None:
             pulumi.set(__self__, "profile", profile)
@@ -1806,6 +2128,9 @@ class VerificationTemplateMetricBaselineBaselineProviderNewRelicArgs:
     @property
     @pulumi.getter(name="newRelicQuery")
     def new_relic_query(self) -> pulumi.Input[str]:
+        """
+        A raw newrelic NRQL query to perform.
+        """
         return pulumi.get(self, "new_relic_query")
 
     @new_relic_query.setter
@@ -1815,6 +2140,9 @@ class VerificationTemplateMetricBaselineBaselineProviderNewRelicArgs:
     @property
     @pulumi.getter
     def profile(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the secret holding NR account configuration.
+        """
         return pulumi.get(self, "profile")
 
     @profile.setter
@@ -1826,11 +2154,17 @@ class VerificationTemplateMetricBaselineBaselineProviderNewRelicArgs:
 class VerificationTemplateMetricBaselineBaselineProviderPrometheusArgs:
     def __init__(__self__, *,
                  prometheus_query: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] prometheus_query: A request for information retrieved from Prometheus.
+        """
         pulumi.set(__self__, "prometheus_query", prometheus_query)
 
     @property
     @pulumi.getter(name="prometheusQuery")
     def prometheus_query(self) -> pulumi.Input[str]:
+        """
+        A request for information retrieved from Prometheus.
+        """
         return pulumi.get(self, "prometheus_query")
 
     @prometheus_query.setter
@@ -1848,6 +2182,15 @@ class VerificationTemplateMetricProviderArgs:
                  new_relic: Optional[pulumi.Input['VerificationTemplateMetricProviderNewRelicArgs']] = None,
                  prometheus: Optional[pulumi.Input['VerificationTemplateMetricProviderPrometheusArgs']] = None,
                  web: Optional[pulumi.Input['VerificationTemplateMetricProviderWebArgs']] = None):
+        """
+        :param pulumi.Input['VerificationTemplateMetricProviderCloudWatchArgs'] cloud_watch: The CloudWatch provider.
+        :param pulumi.Input['VerificationTemplateMetricProviderDatadogArgs'] datadog: The datadog provider.
+        :param pulumi.Input['VerificationTemplateMetricProviderJenkinsArgs'] jenkins: The Jenkins provider. Default is "{$}"
+        :param pulumi.Input['VerificationTemplateMetricProviderJobArgs'] job: The Job provider.
+        :param pulumi.Input['VerificationTemplateMetricProviderNewRelicArgs'] new_relic: The New Relic provider.
+        :param pulumi.Input['VerificationTemplateMetricProviderPrometheusArgs'] prometheus: The Prometheus provider.
+        :param pulumi.Input['VerificationTemplateMetricProviderWebArgs'] web: The Web provider.
+        """
         if cloud_watch is not None:
             pulumi.set(__self__, "cloud_watch", cloud_watch)
         if datadog is not None:
@@ -1866,6 +2209,9 @@ class VerificationTemplateMetricProviderArgs:
     @property
     @pulumi.getter(name="cloudWatch")
     def cloud_watch(self) -> Optional[pulumi.Input['VerificationTemplateMetricProviderCloudWatchArgs']]:
+        """
+        The CloudWatch provider.
+        """
         return pulumi.get(self, "cloud_watch")
 
     @cloud_watch.setter
@@ -1875,6 +2221,9 @@ class VerificationTemplateMetricProviderArgs:
     @property
     @pulumi.getter
     def datadog(self) -> Optional[pulumi.Input['VerificationTemplateMetricProviderDatadogArgs']]:
+        """
+        The datadog provider.
+        """
         return pulumi.get(self, "datadog")
 
     @datadog.setter
@@ -1884,6 +2233,9 @@ class VerificationTemplateMetricProviderArgs:
     @property
     @pulumi.getter
     def jenkins(self) -> Optional[pulumi.Input['VerificationTemplateMetricProviderJenkinsArgs']]:
+        """
+        The Jenkins provider. Default is "{$}"
+        """
         return pulumi.get(self, "jenkins")
 
     @jenkins.setter
@@ -1893,6 +2245,9 @@ class VerificationTemplateMetricProviderArgs:
     @property
     @pulumi.getter
     def job(self) -> Optional[pulumi.Input['VerificationTemplateMetricProviderJobArgs']]:
+        """
+        The Job provider.
+        """
         return pulumi.get(self, "job")
 
     @job.setter
@@ -1902,6 +2257,9 @@ class VerificationTemplateMetricProviderArgs:
     @property
     @pulumi.getter(name="newRelic")
     def new_relic(self) -> Optional[pulumi.Input['VerificationTemplateMetricProviderNewRelicArgs']]:
+        """
+        The New Relic provider.
+        """
         return pulumi.get(self, "new_relic")
 
     @new_relic.setter
@@ -1911,6 +2269,9 @@ class VerificationTemplateMetricProviderArgs:
     @property
     @pulumi.getter
     def prometheus(self) -> Optional[pulumi.Input['VerificationTemplateMetricProviderPrometheusArgs']]:
+        """
+        The Prometheus provider.
+        """
         return pulumi.get(self, "prometheus")
 
     @prometheus.setter
@@ -1920,6 +2281,9 @@ class VerificationTemplateMetricProviderArgs:
     @property
     @pulumi.getter
     def web(self) -> Optional[pulumi.Input['VerificationTemplateMetricProviderWebArgs']]:
+        """
+        The Web provider.
+        """
         return pulumi.get(self, "web")
 
     @web.setter
@@ -1932,6 +2296,10 @@ class VerificationTemplateMetricProviderCloudWatchArgs:
     def __init__(__self__, *,
                  metric_data_queries: pulumi.Input[Sequence[pulumi.Input['VerificationTemplateMetricProviderCloudWatchMetricDataQueryArgs']]],
                  duration: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['VerificationTemplateMetricProviderCloudWatchMetricDataQueryArgs']]] metric_data_queries: The metric queries to be returned. A single MetricData call can include as many as 500 MetricDataQuery structures. Each of these structures can specify either a metric to retrieve, a Metrics Insights query, or a math expression to perform on retrieved data.
+        :param pulumi.Input[str] duration: The window of time we are looking at in CloudWatch.
+        """
         pulumi.set(__self__, "metric_data_queries", metric_data_queries)
         if duration is not None:
             pulumi.set(__self__, "duration", duration)
@@ -1939,6 +2307,9 @@ class VerificationTemplateMetricProviderCloudWatchArgs:
     @property
     @pulumi.getter(name="metricDataQueries")
     def metric_data_queries(self) -> pulumi.Input[Sequence[pulumi.Input['VerificationTemplateMetricProviderCloudWatchMetricDataQueryArgs']]]:
+        """
+        The metric queries to be returned. A single MetricData call can include as many as 500 MetricDataQuery structures. Each of these structures can specify either a metric to retrieve, a Metrics Insights query, or a math expression to perform on retrieved data.
+        """
         return pulumi.get(self, "metric_data_queries")
 
     @metric_data_queries.setter
@@ -1948,6 +2319,9 @@ class VerificationTemplateMetricProviderCloudWatchArgs:
     @property
     @pulumi.getter
     def duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        The window of time we are looking at in CloudWatch.
+        """
         return pulumi.get(self, "duration")
 
     @duration.setter
@@ -1964,6 +2338,14 @@ class VerificationTemplateMetricProviderCloudWatchMetricDataQueryArgs:
                  metric_stat: Optional[pulumi.Input['VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatArgs']] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  return_data: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] id: The response ID. Must be unique and not null. This object can contain characters, letters, numbers and underscore. The first letter must be a lowercase letter.
+        :param pulumi.Input[str] expression: This field can contain either a Metrics Insights query, or a metric math expression to be performed on the returned data. Within one metricdataquery object, you must specify either expression or metricstat but not both.
+        :param pulumi.Input[str] label: A human-readable label for this metric or expression. If the metric or expression is shown in a CloudWatch dashboard widget, the label is shown
+        :param pulumi.Input['VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatArgs'] metric_stat: The metric to be returned, along with statistics, period, and units. Use this parameter only if this object is retrieving a metric and not performing a math expression on returned data.Within one metricdataquery object, you must specify either expression or metricstat but not both.
+        :param pulumi.Input[int] period: The granularity, in seconds, of the returned data points.
+        :param pulumi.Input[bool] return_data: This option indicates whether to return the timestamps and raw data values of this metric. If you are performing this call just to do math expressions and do not also need the raw data returned, you can specify False . If you omit this, the default of True is used.
+        """
         pulumi.set(__self__, "id", id)
         if expression is not None:
             pulumi.set(__self__, "expression", expression)
@@ -1979,6 +2361,9 @@ class VerificationTemplateMetricProviderCloudWatchMetricDataQueryArgs:
     @property
     @pulumi.getter
     def id(self) -> pulumi.Input[str]:
+        """
+        The response ID. Must be unique and not null. This object can contain characters, letters, numbers and underscore. The first letter must be a lowercase letter.
+        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -1988,6 +2373,9 @@ class VerificationTemplateMetricProviderCloudWatchMetricDataQueryArgs:
     @property
     @pulumi.getter
     def expression(self) -> Optional[pulumi.Input[str]]:
+        """
+        This field can contain either a Metrics Insights query, or a metric math expression to be performed on the returned data. Within one metricdataquery object, you must specify either expression or metricstat but not both.
+        """
         return pulumi.get(self, "expression")
 
     @expression.setter
@@ -1997,6 +2385,9 @@ class VerificationTemplateMetricProviderCloudWatchMetricDataQueryArgs:
     @property
     @pulumi.getter
     def label(self) -> Optional[pulumi.Input[str]]:
+        """
+        A human-readable label for this metric or expression. If the metric or expression is shown in a CloudWatch dashboard widget, the label is shown
+        """
         return pulumi.get(self, "label")
 
     @label.setter
@@ -2006,6 +2397,9 @@ class VerificationTemplateMetricProviderCloudWatchMetricDataQueryArgs:
     @property
     @pulumi.getter(name="metricStat")
     def metric_stat(self) -> Optional[pulumi.Input['VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatArgs']]:
+        """
+        The metric to be returned, along with statistics, period, and units. Use this parameter only if this object is retrieving a metric and not performing a math expression on returned data.Within one metricdataquery object, you must specify either expression or metricstat but not both.
+        """
         return pulumi.get(self, "metric_stat")
 
     @metric_stat.setter
@@ -2015,6 +2409,9 @@ class VerificationTemplateMetricProviderCloudWatchMetricDataQueryArgs:
     @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The granularity, in seconds, of the returned data points.
+        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -2024,6 +2421,9 @@ class VerificationTemplateMetricProviderCloudWatchMetricDataQueryArgs:
     @property
     @pulumi.getter(name="returnData")
     def return_data(self) -> Optional[pulumi.Input[bool]]:
+        """
+        This option indicates whether to return the timestamps and raw data values of this metric. If you are performing this call just to do math expressions and do not also need the raw data returned, you can specify False . If you omit this, the default of True is used.
+        """
         return pulumi.get(self, "return_data")
 
     @return_data.setter
@@ -2038,6 +2438,12 @@ class VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatArgs:
                  metric_period: Optional[pulumi.Input[int]] = None,
                  stat: Optional[pulumi.Input[str]] = None,
                  unit: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input['VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricArgs'] metric: The metric to return, including the metric name, namespace, and dimensions.
+        :param pulumi.Input[int] metric_period: The granularity, in seconds, of the returned data points.
+        :param pulumi.Input[str] stat: The statistic to return. It can include any CloudWatch statistic or extended statistic.
+        :param pulumi.Input[str] unit: This defines what unit you want to use when storing the metric.  Enum: `"Seconds" "Microseconds" "Milliseconds" "Bytes" "Kilobytes" "Megabytes" "Gigabytes" "Terabytes" "Bits" "Kilobits" "Megabits" "Gigabits" "Terabits" "Percent" "Count" "Bytes/Second" "Kilobytes/Second" "Megabytes/Second" "Gigabytes/Second" "Terabytes/Second" "Bits/Second" "Kilobits/Second" "Megabits/Second" "Gigabits/Second" "Terabits/Second" "Count/Second" "None"`
+        """
         if metric is not None:
             pulumi.set(__self__, "metric", metric)
         if metric_period is not None:
@@ -2050,6 +2456,9 @@ class VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatArgs:
     @property
     @pulumi.getter
     def metric(self) -> Optional[pulumi.Input['VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricArgs']]:
+        """
+        The metric to return, including the metric name, namespace, and dimensions.
+        """
         return pulumi.get(self, "metric")
 
     @metric.setter
@@ -2059,6 +2468,9 @@ class VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatArgs:
     @property
     @pulumi.getter(name="metricPeriod")
     def metric_period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The granularity, in seconds, of the returned data points.
+        """
         return pulumi.get(self, "metric_period")
 
     @metric_period.setter
@@ -2068,6 +2480,9 @@ class VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatArgs:
     @property
     @pulumi.getter
     def stat(self) -> Optional[pulumi.Input[str]]:
+        """
+        The statistic to return. It can include any CloudWatch statistic or extended statistic.
+        """
         return pulumi.get(self, "stat")
 
     @stat.setter
@@ -2077,6 +2492,9 @@ class VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatArgs:
     @property
     @pulumi.getter
     def unit(self) -> Optional[pulumi.Input[str]]:
+        """
+        This defines what unit you want to use when storing the metric.  Enum: `"Seconds" "Microseconds" "Milliseconds" "Bytes" "Kilobytes" "Megabytes" "Gigabytes" "Terabytes" "Bits" "Kilobits" "Megabits" "Gigabits" "Terabits" "Percent" "Count" "Bytes/Second" "Kilobytes/Second" "Megabytes/Second" "Gigabytes/Second" "Terabytes/Second" "Bits/Second" "Kilobits/Second" "Megabits/Second" "Gigabits/Second" "Terabits/Second" "Count/Second" "None"`
+        """
         return pulumi.get(self, "unit")
 
     @unit.setter
@@ -2090,6 +2508,11 @@ class VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetri
                  metric_name: pulumi.Input[str],
                  dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArgs']]]] = None,
                  namespace: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] metric_name: The name of the metric.
+        :param pulumi.Input[Sequence[pulumi.Input['VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArgs']]] dimensions: A dimension is a name/value pair that is part of the identity of a metric.You can assign upto 30 dimensions to a metric
+        :param pulumi.Input[str] namespace: The namespace of the metric.
+        """
         pulumi.set(__self__, "metric_name", metric_name)
         if dimensions is not None:
             pulumi.set(__self__, "dimensions", dimensions)
@@ -2099,6 +2522,9 @@ class VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetri
     @property
     @pulumi.getter(name="metricName")
     def metric_name(self) -> pulumi.Input[str]:
+        """
+        The name of the metric.
+        """
         return pulumi.get(self, "metric_name")
 
     @metric_name.setter
@@ -2108,6 +2534,9 @@ class VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetri
     @property
     @pulumi.getter
     def dimensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArgs']]]]:
+        """
+        A dimension is a name/value pair that is part of the identity of a metric.You can assign upto 30 dimensions to a metric
+        """
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
@@ -2117,6 +2546,9 @@ class VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetri
     @property
     @pulumi.getter
     def namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        The namespace of the metric.
+        """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
@@ -2129,12 +2561,19 @@ class VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetri
     def __init__(__self__, *,
                  dimension_name: pulumi.Input[str],
                  dimension_value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] dimension_name: The name of the dimensions. These values must contain only ASCII characters and must include at least one non-whitespace characte
+        :param pulumi.Input[str] dimension_value: The value of the dimensions.These values must contain only ASCII characters and must include at least one non-whitespace characte
+        """
         pulumi.set(__self__, "dimension_name", dimension_name)
         pulumi.set(__self__, "dimension_value", dimension_value)
 
     @property
     @pulumi.getter(name="dimensionName")
     def dimension_name(self) -> pulumi.Input[str]:
+        """
+        The name of the dimensions. These values must contain only ASCII characters and must include at least one non-whitespace characte
+        """
         return pulumi.get(self, "dimension_name")
 
     @dimension_name.setter
@@ -2144,6 +2583,9 @@ class VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetri
     @property
     @pulumi.getter(name="dimensionValue")
     def dimension_value(self) -> pulumi.Input[str]:
+        """
+        The value of the dimensions.These values must contain only ASCII characters and must include at least one non-whitespace characte
+        """
         return pulumi.get(self, "dimension_value")
 
     @dimension_value.setter
@@ -2156,6 +2598,10 @@ class VerificationTemplateMetricProviderDatadogArgs:
     def __init__(__self__, *,
                  datadog_query: Optional[pulumi.Input[str]] = None,
                  duration: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] datadog_query: A request for information retrieved from Datadog.
+        :param pulumi.Input[str] duration: The window of time we are looking at in DataDog.
+        """
         if datadog_query is not None:
             pulumi.set(__self__, "datadog_query", datadog_query)
         if duration is not None:
@@ -2164,6 +2610,9 @@ class VerificationTemplateMetricProviderDatadogArgs:
     @property
     @pulumi.getter(name="datadogQuery")
     def datadog_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        A request for information retrieved from Datadog.
+        """
         return pulumi.get(self, "datadog_query")
 
     @datadog_query.setter
@@ -2173,6 +2622,9 @@ class VerificationTemplateMetricProviderDatadogArgs:
     @property
     @pulumi.getter
     def duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        The window of time we are looking at in DataDog.
+        """
         return pulumi.get(self, "duration")
 
     @duration.setter
@@ -2188,6 +2640,13 @@ class VerificationTemplateMetricProviderJenkinsArgs:
                  timeout: pulumi.Input[str],
                  jenkins_parameters: Optional[pulumi.Input['VerificationTemplateMetricProviderJenkinsJenkinsParametersArgs']] = None,
                  tls_verification: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] jenkins_interval: The interval time to poll status.
+        :param pulumi.Input[str] pipeline_name: The Jenkins pipeline name.
+        :param pulumi.Input[str] timeout: The total jenkins timeout.
+        :param pulumi.Input['VerificationTemplateMetricProviderJenkinsJenkinsParametersArgs'] jenkins_parameters: List of parameters.
+        :param pulumi.Input[bool] tls_verification: Host TLS verification.
+        """
         pulumi.set(__self__, "jenkins_interval", jenkins_interval)
         pulumi.set(__self__, "pipeline_name", pipeline_name)
         pulumi.set(__self__, "timeout", timeout)
@@ -2199,6 +2658,9 @@ class VerificationTemplateMetricProviderJenkinsArgs:
     @property
     @pulumi.getter(name="jenkinsInterval")
     def jenkins_interval(self) -> pulumi.Input[str]:
+        """
+        The interval time to poll status.
+        """
         return pulumi.get(self, "jenkins_interval")
 
     @jenkins_interval.setter
@@ -2208,6 +2670,9 @@ class VerificationTemplateMetricProviderJenkinsArgs:
     @property
     @pulumi.getter(name="pipelineName")
     def pipeline_name(self) -> pulumi.Input[str]:
+        """
+        The Jenkins pipeline name.
+        """
         return pulumi.get(self, "pipeline_name")
 
     @pipeline_name.setter
@@ -2217,6 +2682,9 @@ class VerificationTemplateMetricProviderJenkinsArgs:
     @property
     @pulumi.getter
     def timeout(self) -> pulumi.Input[str]:
+        """
+        The total jenkins timeout.
+        """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
@@ -2226,6 +2694,9 @@ class VerificationTemplateMetricProviderJenkinsArgs:
     @property
     @pulumi.getter(name="jenkinsParameters")
     def jenkins_parameters(self) -> Optional[pulumi.Input['VerificationTemplateMetricProviderJenkinsJenkinsParametersArgs']]:
+        """
+        List of parameters.
+        """
         return pulumi.get(self, "jenkins_parameters")
 
     @jenkins_parameters.setter
@@ -2235,6 +2706,9 @@ class VerificationTemplateMetricProviderJenkinsArgs:
     @property
     @pulumi.getter(name="tlsVerification")
     def tls_verification(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Host TLS verification.
+        """
         return pulumi.get(self, "tls_verification")
 
     @tls_verification.setter
@@ -2247,12 +2721,19 @@ class VerificationTemplateMetricProviderJenkinsJenkinsParametersArgs:
     def __init__(__self__, *,
                  parameter_key: pulumi.Input[str],
                  parameter_value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] parameter_key: Key of an argument.
+        :param pulumi.Input[str] parameter_value: Value of an argument.
+        """
         pulumi.set(__self__, "parameter_key", parameter_key)
         pulumi.set(__self__, "parameter_value", parameter_value)
 
     @property
     @pulumi.getter(name="parameterKey")
     def parameter_key(self) -> pulumi.Input[str]:
+        """
+        Key of an argument.
+        """
         return pulumi.get(self, "parameter_key")
 
     @parameter_key.setter
@@ -2262,6 +2743,9 @@ class VerificationTemplateMetricProviderJenkinsJenkinsParametersArgs:
     @property
     @pulumi.getter(name="parameterValue")
     def parameter_value(self) -> pulumi.Input[str]:
+        """
+        Value of an argument.
+        """
         return pulumi.get(self, "parameter_value")
 
     @parameter_value.setter
@@ -2273,11 +2757,17 @@ class VerificationTemplateMetricProviderJenkinsJenkinsParametersArgs:
 class VerificationTemplateMetricProviderJobArgs:
     def __init__(__self__, *,
                  specs: pulumi.Input[Sequence[pulumi.Input['VerificationTemplateMetricProviderJobSpecArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['VerificationTemplateMetricProviderJobSpecArgs']]] specs: The job spec require to run the metric.
+        """
         pulumi.set(__self__, "specs", specs)
 
     @property
     @pulumi.getter
     def specs(self) -> pulumi.Input[Sequence[pulumi.Input['VerificationTemplateMetricProviderJobSpecArgs']]]:
+        """
+        The job spec require to run the metric.
+        """
         return pulumi.get(self, "specs")
 
     @specs.setter
@@ -2290,6 +2780,10 @@ class VerificationTemplateMetricProviderJobSpecArgs:
     def __init__(__self__, *,
                  job_templates: pulumi.Input[Sequence[pulumi.Input['VerificationTemplateMetricProviderJobSpecJobTemplateArgs']]],
                  backoff_limit: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['VerificationTemplateMetricProviderJobSpecJobTemplateArgs']]] job_templates: Describes the pod that will be created when executing a job.
+        :param pulumi.Input[int] backoff_limit: Specifies the number of retries before marking this job failed.
+        """
         pulumi.set(__self__, "job_templates", job_templates)
         if backoff_limit is not None:
             pulumi.set(__self__, "backoff_limit", backoff_limit)
@@ -2297,6 +2791,9 @@ class VerificationTemplateMetricProviderJobSpecArgs:
     @property
     @pulumi.getter(name="jobTemplates")
     def job_templates(self) -> pulumi.Input[Sequence[pulumi.Input['VerificationTemplateMetricProviderJobSpecJobTemplateArgs']]]:
+        """
+        Describes the pod that will be created when executing a job.
+        """
         return pulumi.get(self, "job_templates")
 
     @job_templates.setter
@@ -2306,6 +2803,9 @@ class VerificationTemplateMetricProviderJobSpecArgs:
     @property
     @pulumi.getter(name="backoffLimit")
     def backoff_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies the number of retries before marking this job failed.
+        """
         return pulumi.get(self, "backoff_limit")
 
     @backoff_limit.setter
@@ -2317,11 +2817,17 @@ class VerificationTemplateMetricProviderJobSpecArgs:
 class VerificationTemplateMetricProviderJobSpecJobTemplateArgs:
     def __init__(__self__, *,
                  template_specs: pulumi.Input[Sequence[pulumi.Input['VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArgs']]] template_specs: Specification of the desired behavior of the pod.
+        """
         pulumi.set(__self__, "template_specs", template_specs)
 
     @property
     @pulumi.getter(name="templateSpecs")
     def template_specs(self) -> pulumi.Input[Sequence[pulumi.Input['VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArgs']]]:
+        """
+        Specification of the desired behavior of the pod.
+        """
         return pulumi.get(self, "template_specs")
 
     @template_specs.setter
@@ -2334,12 +2840,19 @@ class VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArgs:
     def __init__(__self__, *,
                  containers: pulumi.Input[Sequence[pulumi.Input['VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArgs']]],
                  restart_policy: pulumi.Input[str]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArgs']]] containers: A list of containers belonging to the pod.
+        :param pulumi.Input[str] restart_policy: Restart policy for all containers within the pod. Enum: `"Never" "OnFailure"`
+        """
         pulumi.set(__self__, "containers", containers)
         pulumi.set(__self__, "restart_policy", restart_policy)
 
     @property
     @pulumi.getter
     def containers(self) -> pulumi.Input[Sequence[pulumi.Input['VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArgs']]]:
+        """
+        A list of containers belonging to the pod.
+        """
         return pulumi.get(self, "containers")
 
     @containers.setter
@@ -2349,6 +2862,9 @@ class VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArgs:
     @property
     @pulumi.getter(name="restartPolicy")
     def restart_policy(self) -> pulumi.Input[str]:
+        """
+        Restart policy for all containers within the pod. Enum: `"Never" "OnFailure"`
+        """
         return pulumi.get(self, "restart_policy")
 
     @restart_policy.setter
@@ -2362,6 +2878,11 @@ class VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerA
                  commands: pulumi.Input[Sequence[pulumi.Input[str]]],
                  container_name: pulumi.Input[str],
                  image: pulumi.Input[str]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: The entry point of a container.
+        :param pulumi.Input[str] container_name: The name of a container.
+        :param pulumi.Input[str] image: The image name of a container.
+        """
         pulumi.set(__self__, "commands", commands)
         pulumi.set(__self__, "container_name", container_name)
         pulumi.set(__self__, "image", image)
@@ -2369,6 +2890,9 @@ class VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerA
     @property
     @pulumi.getter
     def commands(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The entry point of a container.
+        """
         return pulumi.get(self, "commands")
 
     @commands.setter
@@ -2378,6 +2902,9 @@ class VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerA
     @property
     @pulumi.getter(name="containerName")
     def container_name(self) -> pulumi.Input[str]:
+        """
+        The name of a container.
+        """
         return pulumi.get(self, "container_name")
 
     @container_name.setter
@@ -2387,6 +2914,9 @@ class VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerA
     @property
     @pulumi.getter
     def image(self) -> pulumi.Input[str]:
+        """
+        The image name of a container.
+        """
         return pulumi.get(self, "image")
 
     @image.setter
@@ -2399,6 +2929,10 @@ class VerificationTemplateMetricProviderNewRelicArgs:
     def __init__(__self__, *,
                  new_relic_query: pulumi.Input[str],
                  profile: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] new_relic_query: A raw newrelic NRQL query to perform.
+        :param pulumi.Input[str] profile: The name of the secret holding NR account configuration.
+        """
         pulumi.set(__self__, "new_relic_query", new_relic_query)
         if profile is not None:
             pulumi.set(__self__, "profile", profile)
@@ -2406,6 +2940,9 @@ class VerificationTemplateMetricProviderNewRelicArgs:
     @property
     @pulumi.getter(name="newRelicQuery")
     def new_relic_query(self) -> pulumi.Input[str]:
+        """
+        A raw newrelic NRQL query to perform.
+        """
         return pulumi.get(self, "new_relic_query")
 
     @new_relic_query.setter
@@ -2415,6 +2952,9 @@ class VerificationTemplateMetricProviderNewRelicArgs:
     @property
     @pulumi.getter
     def profile(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the secret holding NR account configuration.
+        """
         return pulumi.get(self, "profile")
 
     @profile.setter
@@ -2448,6 +2988,15 @@ class VerificationTemplateMetricProviderWebArgs:
                  method: Optional[pulumi.Input[str]] = None,
                  timeout_seconds: Optional[pulumi.Input[int]] = None,
                  web_headers: Optional[pulumi.Input[Sequence[pulumi.Input['VerificationTemplateMetricProviderWebWebHeaderArgs']]]] = None):
+        """
+        :param pulumi.Input[str] url: The address of the web metric.
+        :param pulumi.Input[str] body: The body of the web metric.
+        :param pulumi.Input[bool] insecure: Skips host TLS verification.
+        :param pulumi.Input[str] json_path: A JSON Path to use as the result variable. Default is "{$}"
+        :param pulumi.Input[str] method: The method of the web metric.  Enum: "GET" "POST" "PUT"
+        :param pulumi.Input[int] timeout_seconds: The timeout for the request in seconds. Default is 10.
+        :param pulumi.Input[Sequence[pulumi.Input['VerificationTemplateMetricProviderWebWebHeaderArgs']]] web_headers: Optional HTTP headers to use in the request.
+        """
         pulumi.set(__self__, "url", url)
         if body is not None:
             pulumi.set(__self__, "body", body)
@@ -2465,6 +3014,9 @@ class VerificationTemplateMetricProviderWebArgs:
     @property
     @pulumi.getter
     def url(self) -> pulumi.Input[str]:
+        """
+        The address of the web metric.
+        """
         return pulumi.get(self, "url")
 
     @url.setter
@@ -2474,6 +3026,9 @@ class VerificationTemplateMetricProviderWebArgs:
     @property
     @pulumi.getter
     def body(self) -> Optional[pulumi.Input[str]]:
+        """
+        The body of the web metric.
+        """
         return pulumi.get(self, "body")
 
     @body.setter
@@ -2483,6 +3038,9 @@ class VerificationTemplateMetricProviderWebArgs:
     @property
     @pulumi.getter
     def insecure(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Skips host TLS verification.
+        """
         return pulumi.get(self, "insecure")
 
     @insecure.setter
@@ -2492,6 +3050,9 @@ class VerificationTemplateMetricProviderWebArgs:
     @property
     @pulumi.getter(name="jsonPath")
     def json_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        A JSON Path to use as the result variable. Default is "{$}"
+        """
         return pulumi.get(self, "json_path")
 
     @json_path.setter
@@ -2501,6 +3062,9 @@ class VerificationTemplateMetricProviderWebArgs:
     @property
     @pulumi.getter
     def method(self) -> Optional[pulumi.Input[str]]:
+        """
+        The method of the web metric.  Enum: "GET" "POST" "PUT"
+        """
         return pulumi.get(self, "method")
 
     @method.setter
@@ -2510,6 +3074,9 @@ class VerificationTemplateMetricProviderWebArgs:
     @property
     @pulumi.getter(name="timeoutSeconds")
     def timeout_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        The timeout for the request in seconds. Default is 10.
+        """
         return pulumi.get(self, "timeout_seconds")
 
     @timeout_seconds.setter
@@ -2519,6 +3086,9 @@ class VerificationTemplateMetricProviderWebArgs:
     @property
     @pulumi.getter(name="webHeaders")
     def web_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VerificationTemplateMetricProviderWebWebHeaderArgs']]]]:
+        """
+        Optional HTTP headers to use in the request.
+        """
         return pulumi.get(self, "web_headers")
 
     @web_headers.setter
@@ -2531,12 +3101,19 @@ class VerificationTemplateMetricProviderWebWebHeaderArgs:
     def __init__(__self__, *,
                  web_header_key: pulumi.Input[str],
                  web_header_value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] web_header_key: The name of a header
+        :param pulumi.Input[str] web_header_value: The value of a header
+        """
         pulumi.set(__self__, "web_header_key", web_header_key)
         pulumi.set(__self__, "web_header_value", web_header_value)
 
     @property
     @pulumi.getter(name="webHeaderKey")
     def web_header_key(self) -> pulumi.Input[str]:
+        """
+        The name of a header
+        """
         return pulumi.get(self, "web_header_key")
 
     @web_header_key.setter
@@ -2546,6 +3123,9 @@ class VerificationTemplateMetricProviderWebWebHeaderArgs:
     @property
     @pulumi.getter(name="webHeaderValue")
     def web_header_value(self) -> pulumi.Input[str]:
+        """
+        The value of a header
+        """
         return pulumi.get(self, "web_header_value")
 
     @web_header_value.setter

@@ -14,6 +14,10 @@ namespace Pulumi.SpotInst.Oceancd.Inputs
     {
         [Input("templateSpecs", required: true)]
         private InputList<Inputs.VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArgs>? _templateSpecs;
+
+        /// <summary>
+        /// Specification of the desired behavior of the pod.
+        /// </summary>
         public InputList<Inputs.VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArgs> TemplateSpecs
         {
             get => _templateSpecs ?? (_templateSpecs = new InputList<Inputs.VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArgs>());

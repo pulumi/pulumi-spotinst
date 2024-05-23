@@ -111,8 +111,12 @@ func (o PolicyPolicyContentArrayOutput) Index(i pulumi.IntInput) PolicyPolicyCon
 }
 
 type PolicyPolicyContentStatement struct {
-	Actions   []string `pulumi:"actions"`
-	Effect    string   `pulumi:"effect"`
+	// Set a list of required actions for this permissions statement.
+	// Full list of actions can be found in [https://docs.spot.io/account-user-management/user-management/access-policies-actions/](https://docs.spot.io/account-user-management/user-management/access-policies-actions/).
+	Actions []string `pulumi:"actions"`
+	// Valid values "ALLOW", "DENY".
+	Effect string `pulumi:"effect"`
+	// Set a list of resources IDs. In order to include all resources in this statement - use "*".
 	Resources []string `pulumi:"resources"`
 }
 
@@ -128,8 +132,12 @@ type PolicyPolicyContentStatementInput interface {
 }
 
 type PolicyPolicyContentStatementArgs struct {
-	Actions   pulumi.StringArrayInput `pulumi:"actions"`
-	Effect    pulumi.StringInput      `pulumi:"effect"`
+	// Set a list of required actions for this permissions statement.
+	// Full list of actions can be found in [https://docs.spot.io/account-user-management/user-management/access-policies-actions/](https://docs.spot.io/account-user-management/user-management/access-policies-actions/).
+	Actions pulumi.StringArrayInput `pulumi:"actions"`
+	// Valid values "ALLOW", "DENY".
+	Effect pulumi.StringInput `pulumi:"effect"`
+	// Set a list of resources IDs. In order to include all resources in this statement - use "*".
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
 }
 
@@ -184,14 +192,18 @@ func (o PolicyPolicyContentStatementOutput) ToPolicyPolicyContentStatementOutput
 	return o
 }
 
+// Set a list of required actions for this permissions statement.
+// Full list of actions can be found in [https://docs.spot.io/account-user-management/user-management/access-policies-actions/](https://docs.spot.io/account-user-management/user-management/access-policies-actions/).
 func (o PolicyPolicyContentStatementOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PolicyPolicyContentStatement) []string { return v.Actions }).(pulumi.StringArrayOutput)
 }
 
+// Valid values "ALLOW", "DENY".
 func (o PolicyPolicyContentStatementOutput) Effect() pulumi.StringOutput {
 	return o.ApplyT(func(v PolicyPolicyContentStatement) string { return v.Effect }).(pulumi.StringOutput)
 }
 
+// Set a list of resources IDs. In order to include all resources in this statement - use "*".
 func (o PolicyPolicyContentStatementOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PolicyPolicyContentStatement) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }

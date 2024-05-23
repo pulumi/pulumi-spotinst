@@ -20,51 +20,107 @@ public final class VerificationTemplateMetricProviderWebArgs extends com.pulumi.
 
     public static final VerificationTemplateMetricProviderWebArgs Empty = new VerificationTemplateMetricProviderWebArgs();
 
+    /**
+     * The body of the web metric.
+     * 
+     */
     @Import(name="body")
     private @Nullable Output<String> body;
 
+    /**
+     * @return The body of the web metric.
+     * 
+     */
     public Optional<Output<String>> body() {
         return Optional.ofNullable(this.body);
     }
 
+    /**
+     * Skips host TLS verification.
+     * 
+     */
     @Import(name="insecure")
     private @Nullable Output<Boolean> insecure;
 
+    /**
+     * @return Skips host TLS verification.
+     * 
+     */
     public Optional<Output<Boolean>> insecure() {
         return Optional.ofNullable(this.insecure);
     }
 
+    /**
+     * A JSON Path to use as the result variable. Default is &#34;{$}&#34;
+     * 
+     */
     @Import(name="jsonPath")
     private @Nullable Output<String> jsonPath;
 
+    /**
+     * @return A JSON Path to use as the result variable. Default is &#34;{$}&#34;
+     * 
+     */
     public Optional<Output<String>> jsonPath() {
         return Optional.ofNullable(this.jsonPath);
     }
 
+    /**
+     * The method of the web metric.  Enum: &#34;GET&#34; &#34;POST&#34; &#34;PUT&#34;
+     * 
+     */
     @Import(name="method")
     private @Nullable Output<String> method;
 
+    /**
+     * @return The method of the web metric.  Enum: &#34;GET&#34; &#34;POST&#34; &#34;PUT&#34;
+     * 
+     */
     public Optional<Output<String>> method() {
         return Optional.ofNullable(this.method);
     }
 
+    /**
+     * The timeout for the request in seconds. Default is 10.
+     * 
+     */
     @Import(name="timeoutSeconds")
     private @Nullable Output<Integer> timeoutSeconds;
 
+    /**
+     * @return The timeout for the request in seconds. Default is 10.
+     * 
+     */
     public Optional<Output<Integer>> timeoutSeconds() {
         return Optional.ofNullable(this.timeoutSeconds);
     }
 
+    /**
+     * The address of the web metric.
+     * 
+     */
     @Import(name="url", required=true)
     private Output<String> url;
 
+    /**
+     * @return The address of the web metric.
+     * 
+     */
     public Output<String> url() {
         return this.url;
     }
 
+    /**
+     * Optional HTTP headers to use in the request.
+     * 
+     */
     @Import(name="webHeaders")
     private @Nullable Output<List<VerificationTemplateMetricProviderWebWebHeaderArgs>> webHeaders;
 
+    /**
+     * @return Optional HTTP headers to use in the request.
+     * 
+     */
     public Optional<Output<List<VerificationTemplateMetricProviderWebWebHeaderArgs>>> webHeaders() {
         return Optional.ofNullable(this.webHeaders);
     }
@@ -99,69 +155,159 @@ public final class VerificationTemplateMetricProviderWebArgs extends com.pulumi.
             $ = new VerificationTemplateMetricProviderWebArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param body The body of the web metric.
+         * 
+         * @return builder
+         * 
+         */
         public Builder body(@Nullable Output<String> body) {
             $.body = body;
             return this;
         }
 
+        /**
+         * @param body The body of the web metric.
+         * 
+         * @return builder
+         * 
+         */
         public Builder body(String body) {
             return body(Output.of(body));
         }
 
+        /**
+         * @param insecure Skips host TLS verification.
+         * 
+         * @return builder
+         * 
+         */
         public Builder insecure(@Nullable Output<Boolean> insecure) {
             $.insecure = insecure;
             return this;
         }
 
+        /**
+         * @param insecure Skips host TLS verification.
+         * 
+         * @return builder
+         * 
+         */
         public Builder insecure(Boolean insecure) {
             return insecure(Output.of(insecure));
         }
 
+        /**
+         * @param jsonPath A JSON Path to use as the result variable. Default is &#34;{$}&#34;
+         * 
+         * @return builder
+         * 
+         */
         public Builder jsonPath(@Nullable Output<String> jsonPath) {
             $.jsonPath = jsonPath;
             return this;
         }
 
+        /**
+         * @param jsonPath A JSON Path to use as the result variable. Default is &#34;{$}&#34;
+         * 
+         * @return builder
+         * 
+         */
         public Builder jsonPath(String jsonPath) {
             return jsonPath(Output.of(jsonPath));
         }
 
+        /**
+         * @param method The method of the web metric.  Enum: &#34;GET&#34; &#34;POST&#34; &#34;PUT&#34;
+         * 
+         * @return builder
+         * 
+         */
         public Builder method(@Nullable Output<String> method) {
             $.method = method;
             return this;
         }
 
+        /**
+         * @param method The method of the web metric.  Enum: &#34;GET&#34; &#34;POST&#34; &#34;PUT&#34;
+         * 
+         * @return builder
+         * 
+         */
         public Builder method(String method) {
             return method(Output.of(method));
         }
 
+        /**
+         * @param timeoutSeconds The timeout for the request in seconds. Default is 10.
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeoutSeconds(@Nullable Output<Integer> timeoutSeconds) {
             $.timeoutSeconds = timeoutSeconds;
             return this;
         }
 
+        /**
+         * @param timeoutSeconds The timeout for the request in seconds. Default is 10.
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeoutSeconds(Integer timeoutSeconds) {
             return timeoutSeconds(Output.of(timeoutSeconds));
         }
 
+        /**
+         * @param url The address of the web metric.
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(Output<String> url) {
             $.url = url;
             return this;
         }
 
+        /**
+         * @param url The address of the web metric.
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(String url) {
             return url(Output.of(url));
         }
 
+        /**
+         * @param webHeaders Optional HTTP headers to use in the request.
+         * 
+         * @return builder
+         * 
+         */
         public Builder webHeaders(@Nullable Output<List<VerificationTemplateMetricProviderWebWebHeaderArgs>> webHeaders) {
             $.webHeaders = webHeaders;
             return this;
         }
 
+        /**
+         * @param webHeaders Optional HTTP headers to use in the request.
+         * 
+         * @return builder
+         * 
+         */
         public Builder webHeaders(List<VerificationTemplateMetricProviderWebWebHeaderArgs> webHeaders) {
             return webHeaders(Output.of(webHeaders));
         }
 
+        /**
+         * @param webHeaders Optional HTTP headers to use in the request.
+         * 
+         * @return builder
+         * 
+         */
         public Builder webHeaders(VerificationTemplateMetricProviderWebWebHeaderArgs... webHeaders) {
             return webHeaders(List.of(webHeaders));
         }

@@ -10,13 +10,33 @@ import java.util.Objects;
 
 @CustomType
 public final class OceanLaunchSpecNetworkInterfaceAliasIpRange {
+    /**
+     * @return specify the IP address range in CIDR notation that can be used for the alias IP addresses associated with the imported node pool.
+     * 
+     */
     private String ipCidrRange;
+    /**
+     * @return specify the IP address range for the subnet secondary IP range.
+     * 
+     * &lt;a id=&#34;update-policy&#34;&gt;&lt;/a&gt;
+     * 
+     */
     private String subnetworkRangeName;
 
     private OceanLaunchSpecNetworkInterfaceAliasIpRange() {}
+    /**
+     * @return specify the IP address range in CIDR notation that can be used for the alias IP addresses associated with the imported node pool.
+     * 
+     */
     public String ipCidrRange() {
         return this.ipCidrRange;
     }
+    /**
+     * @return specify the IP address range for the subnet secondary IP range.
+     * 
+     * &lt;a id=&#34;update-policy&#34;&gt;&lt;/a&gt;
+     * 
+     */
     public String subnetworkRangeName() {
         return this.subnetworkRangeName;
     }

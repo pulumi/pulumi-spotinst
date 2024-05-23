@@ -16,23 +16,47 @@ public final class StrategyCanaryStepSetCanaryScaleArgs extends com.pulumi.resou
 
     public static final StrategyCanaryStepSetCanaryScaleArgs Empty = new StrategyCanaryStepSetCanaryScaleArgs();
 
+    /**
+     * Defines whether a rollout should match the current canary&#39;s setWeight step.
+     * 
+     */
     @Import(name="matchTrafficWeight")
     private @Nullable Output<Boolean> matchTrafficWeight;
 
+    /**
+     * @return Defines whether a rollout should match the current canary&#39;s setWeight step.
+     * 
+     */
     public Optional<Output<Boolean>> matchTrafficWeight() {
         return Optional.ofNullable(this.matchTrafficWeight);
     }
 
+    /**
+     * Sets the number of replicas the new version should have.
+     * 
+     */
     @Import(name="replicas")
     private @Nullable Output<Integer> replicas;
 
+    /**
+     * @return Sets the number of replicas the new version should have.
+     * 
+     */
     public Optional<Output<Integer>> replicas() {
         return Optional.ofNullable(this.replicas);
     }
 
+    /**
+     * Sets the percentage of replicas the new version should have.
+     * 
+     */
     @Import(name="weight")
     private @Nullable Output<Integer> weight;
 
+    /**
+     * @return Sets the percentage of replicas the new version should have.
+     * 
+     */
     public Optional<Output<Integer>> weight() {
         return Optional.ofNullable(this.weight);
     }
@@ -63,29 +87,65 @@ public final class StrategyCanaryStepSetCanaryScaleArgs extends com.pulumi.resou
             $ = new StrategyCanaryStepSetCanaryScaleArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param matchTrafficWeight Defines whether a rollout should match the current canary&#39;s setWeight step.
+         * 
+         * @return builder
+         * 
+         */
         public Builder matchTrafficWeight(@Nullable Output<Boolean> matchTrafficWeight) {
             $.matchTrafficWeight = matchTrafficWeight;
             return this;
         }
 
+        /**
+         * @param matchTrafficWeight Defines whether a rollout should match the current canary&#39;s setWeight step.
+         * 
+         * @return builder
+         * 
+         */
         public Builder matchTrafficWeight(Boolean matchTrafficWeight) {
             return matchTrafficWeight(Output.of(matchTrafficWeight));
         }
 
+        /**
+         * @param replicas Sets the number of replicas the new version should have.
+         * 
+         * @return builder
+         * 
+         */
         public Builder replicas(@Nullable Output<Integer> replicas) {
             $.replicas = replicas;
             return this;
         }
 
+        /**
+         * @param replicas Sets the number of replicas the new version should have.
+         * 
+         * @return builder
+         * 
+         */
         public Builder replicas(Integer replicas) {
             return replicas(Output.of(replicas));
         }
 
+        /**
+         * @param weight Sets the percentage of replicas the new version should have.
+         * 
+         * @return builder
+         * 
+         */
         public Builder weight(@Nullable Output<Integer> weight) {
             $.weight = weight;
             return this;
         }
 
+        /**
+         * @param weight Sets the percentage of replicas the new version should have.
+         * 
+         * @return builder
+         * 
+         */
         public Builder weight(Integer weight) {
             return weight(Output.of(weight));
         }
