@@ -1049,6 +1049,16 @@
                     "health": {
                         "maxItemsOne": true
                     },
+                    "linux_os_config": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "sysctls": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "pod_subnet_ids": {
                         "maxItemsOne": false
                     },
@@ -1062,6 +1072,30 @@
                                         "fields": {
                                             "time_windows": {
                                                 "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "tasks": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "parameters": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "parameters_cluster_roll": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "vng_ids": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
                                             }
                                         }
                                     }
@@ -1130,6 +1164,16 @@
                     },
                     "headrooms": {
                         "maxItemsOne": false
+                    },
+                    "linux_os_config": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "sysctls": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "pod_subnet_ids": {
                         "maxItemsOne": false

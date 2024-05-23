@@ -15,7 +15,7 @@ namespace Pulumi.SpotInst.Azure.Inputs
         [Input("isEnabled")]
         public Input<bool>? IsEnabled { get; set; }
 
-        [Input("timeWindows", required: true)]
+        [Input("timeWindows")]
         private InputList<string>? _timeWindows;
         public InputList<string> TimeWindows
         {

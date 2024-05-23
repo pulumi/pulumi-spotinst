@@ -105,6 +105,10 @@ export class OceanNp extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
+     * Custom Linux OS configuration.
+     */
+    public readonly linuxOsConfigs!: pulumi.Output<outputs.azure.OceanNpLinuxOsConfig[] | undefined>;
+    /**
      * Maximum node count limit.
      */
     public readonly maxCount!: pulumi.Output<number | undefined>;
@@ -140,9 +144,6 @@ export class OceanNp extends pulumi.CustomResource {
      * The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
      */
     public readonly podSubnetIds!: pulumi.Output<string[] | undefined>;
-    /**
-     * An object used to specify times when the cluster will turn off. Once the shutdown time will be over, the cluster will return to its previous state.
-     */
     public readonly scheduling!: pulumi.Output<outputs.azure.OceanNpScheduling | undefined>;
     /**
      * Percentage of spot VMs to maintain.
@@ -186,6 +187,7 @@ export class OceanNp extends pulumi.CustomResource {
             resourceInputs["health"] = state ? state.health : undefined;
             resourceInputs["kubernetesVersion"] = state ? state.kubernetesVersion : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["linuxOsConfigs"] = state ? state.linuxOsConfigs : undefined;
             resourceInputs["maxCount"] = state ? state.maxCount : undefined;
             resourceInputs["maxPodsPerNode"] = state ? state.maxPodsPerNode : undefined;
             resourceInputs["minCount"] = state ? state.minCount : undefined;
@@ -235,6 +237,7 @@ export class OceanNp extends pulumi.CustomResource {
             resourceInputs["health"] = args ? args.health : undefined;
             resourceInputs["kubernetesVersion"] = args ? args.kubernetesVersion : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["linuxOsConfigs"] = args ? args.linuxOsConfigs : undefined;
             resourceInputs["maxCount"] = args ? args.maxCount : undefined;
             resourceInputs["maxPodsPerNode"] = args ? args.maxPodsPerNode : undefined;
             resourceInputs["minCount"] = args ? args.minCount : undefined;
@@ -305,6 +308,10 @@ export interface OceanNpState {
      */
     labels?: pulumi.Input<{[key: string]: any}>;
     /**
+     * Custom Linux OS configuration.
+     */
+    linuxOsConfigs?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpLinuxOsConfig>[]>;
+    /**
      * Maximum node count limit.
      */
     maxCount?: pulumi.Input<number>;
@@ -340,9 +347,6 @@ export interface OceanNpState {
      * The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
      */
     podSubnetIds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * An object used to specify times when the cluster will turn off. Once the shutdown time will be over, the cluster will return to its previous state.
-     */
     scheduling?: pulumi.Input<inputs.azure.OceanNpScheduling>;
     /**
      * Percentage of spot VMs to maintain.
@@ -409,6 +413,10 @@ export interface OceanNpArgs {
      */
     labels?: pulumi.Input<{[key: string]: any}>;
     /**
+     * Custom Linux OS configuration.
+     */
+    linuxOsConfigs?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpLinuxOsConfig>[]>;
+    /**
      * Maximum node count limit.
      */
     maxCount?: pulumi.Input<number>;
@@ -444,9 +452,6 @@ export interface OceanNpArgs {
      * The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
      */
     podSubnetIds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * An object used to specify times when the cluster will turn off. Once the shutdown time will be over, the cluster will return to its previous state.
-     */
     scheduling?: pulumi.Input<inputs.azure.OceanNpScheduling>;
     /**
      * Percentage of spot VMs to maintain.

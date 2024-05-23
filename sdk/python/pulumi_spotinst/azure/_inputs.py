@@ -33,13 +33,20 @@ __all__ = [
     'OceanNpFiltersArgs',
     'OceanNpHeadroomArgs',
     'OceanNpHealthArgs',
+    'OceanNpLinuxOsConfigArgs',
+    'OceanNpLinuxOsConfigSysctlArgs',
     'OceanNpSchedulingArgs',
     'OceanNpSchedulingShutdownHoursArgs',
+    'OceanNpSchedulingTaskArgs',
+    'OceanNpSchedulingTaskParametersArgs',
+    'OceanNpSchedulingTaskParametersParametersClusterRollArgs',
     'OceanNpTaintArgs',
     'OceanNpUpdatePolicyArgs',
     'OceanNpUpdatePolicyRollConfigArgs',
     'OceanNpVirtualNodeGroupFiltersArgs',
     'OceanNpVirtualNodeGroupHeadroomArgs',
+    'OceanNpVirtualNodeGroupLinuxOsConfigArgs',
+    'OceanNpVirtualNodeGroupLinuxOsConfigSysctlArgs',
     'OceanNpVirtualNodeGroupTaintArgs',
     'OceanNpVirtualNodeGroupUpdatePolicyArgs',
     'OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs',
@@ -1229,45 +1236,83 @@ class OceanNpHealthArgs:
 
 
 @pulumi.input_type
+class OceanNpLinuxOsConfigArgs:
+    def __init__(__self__, *,
+                 sysctls: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpLinuxOsConfigSysctlArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['OceanNpLinuxOsConfigSysctlArgs']]] sysctls: System Controls
+        """
+        if sysctls is not None:
+            pulumi.set(__self__, "sysctls", sysctls)
+
+    @property
+    @pulumi.getter
+    def sysctls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpLinuxOsConfigSysctlArgs']]]]:
+        """
+        System Controls
+        """
+        return pulumi.get(self, "sysctls")
+
+    @sysctls.setter
+    def sysctls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpLinuxOsConfigSysctlArgs']]]]):
+        pulumi.set(self, "sysctls", value)
+
+
+@pulumi.input_type
+class OceanNpLinuxOsConfigSysctlArgs:
+    def __init__(__self__, *,
+                 vm_max_map_count: Optional[pulumi.Input[int]] = None):
+        if vm_max_map_count is not None:
+            pulumi.set(__self__, "vm_max_map_count", vm_max_map_count)
+
+    @property
+    @pulumi.getter(name="vmMaxMapCount")
+    def vm_max_map_count(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "vm_max_map_count")
+
+    @vm_max_map_count.setter
+    def vm_max_map_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "vm_max_map_count", value)
+
+
+@pulumi.input_type
 class OceanNpSchedulingArgs:
     def __init__(__self__, *,
-                 shutdown_hours: Optional[pulumi.Input['OceanNpSchedulingShutdownHoursArgs']] = None):
-        """
-        :param pulumi.Input['OceanNpSchedulingShutdownHoursArgs'] shutdown_hours: [Shutdown Hours](https://docs.spot.io/ocean/features/running-hours?id=shutdown-hours)An object used to specify times that the nodes in the cluster will be taken down.
-        """
+                 shutdown_hours: Optional[pulumi.Input['OceanNpSchedulingShutdownHoursArgs']] = None,
+                 tasks: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpSchedulingTaskArgs']]]] = None):
         if shutdown_hours is not None:
             pulumi.set(__self__, "shutdown_hours", shutdown_hours)
+        if tasks is not None:
+            pulumi.set(__self__, "tasks", tasks)
 
     @property
     @pulumi.getter(name="shutdownHours")
     def shutdown_hours(self) -> Optional[pulumi.Input['OceanNpSchedulingShutdownHoursArgs']]:
-        """
-        [Shutdown Hours](https://docs.spot.io/ocean/features/running-hours?id=shutdown-hours)An object used to specify times that the nodes in the cluster will be taken down.
-        """
         return pulumi.get(self, "shutdown_hours")
 
     @shutdown_hours.setter
     def shutdown_hours(self, value: Optional[pulumi.Input['OceanNpSchedulingShutdownHoursArgs']]):
         pulumi.set(self, "shutdown_hours", value)
 
+    @property
+    @pulumi.getter
+    def tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpSchedulingTaskArgs']]]]:
+        return pulumi.get(self, "tasks")
+
+    @tasks.setter
+    def tasks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpSchedulingTaskArgs']]]]):
+        pulumi.set(self, "tasks", value)
+
 
 @pulumi.input_type
 class OceanNpSchedulingShutdownHoursArgs:
     def __init__(__self__, *,
-                 time_windows: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 is_enabled: Optional[pulumi.Input[bool]] = None):
-        pulumi.set(__self__, "time_windows", time_windows)
+                 is_enabled: Optional[pulumi.Input[bool]] = None,
+                 time_windows: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         if is_enabled is not None:
             pulumi.set(__self__, "is_enabled", is_enabled)
-
-    @property
-    @pulumi.getter(name="timeWindows")
-    def time_windows(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        return pulumi.get(self, "time_windows")
-
-    @time_windows.setter
-    def time_windows(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
-        pulumi.set(self, "time_windows", value)
+        if time_windows is not None:
+            pulumi.set(__self__, "time_windows", time_windows)
 
     @property
     @pulumi.getter(name="isEnabled")
@@ -1277,6 +1322,159 @@ class OceanNpSchedulingShutdownHoursArgs:
     @is_enabled.setter
     def is_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "is_enabled", value)
+
+    @property
+    @pulumi.getter(name="timeWindows")
+    def time_windows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "time_windows")
+
+    @time_windows.setter
+    def time_windows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "time_windows", value)
+
+
+@pulumi.input_type
+class OceanNpSchedulingTaskArgs:
+    def __init__(__self__, *,
+                 cron_expression: pulumi.Input[str],
+                 is_enabled: pulumi.Input[bool],
+                 task_type: pulumi.Input[str],
+                 parameters: Optional[pulumi.Input['OceanNpSchedulingTaskParametersArgs']] = None):
+        pulumi.set(__self__, "cron_expression", cron_expression)
+        pulumi.set(__self__, "is_enabled", is_enabled)
+        pulumi.set(__self__, "task_type", task_type)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+
+    @property
+    @pulumi.getter(name="cronExpression")
+    def cron_expression(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "cron_expression")
+
+    @cron_expression.setter
+    def cron_expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cron_expression", value)
+
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "is_enabled")
+
+    @is_enabled.setter
+    def is_enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "is_enabled", value)
+
+    @property
+    @pulumi.getter(name="taskType")
+    def task_type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "task_type")
+
+    @task_type.setter
+    def task_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "task_type", value)
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[pulumi.Input['OceanNpSchedulingTaskParametersArgs']]:
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[pulumi.Input['OceanNpSchedulingTaskParametersArgs']]):
+        pulumi.set(self, "parameters", value)
+
+
+@pulumi.input_type
+class OceanNpSchedulingTaskParametersArgs:
+    def __init__(__self__, *,
+                 parameters_cluster_roll: Optional[pulumi.Input['OceanNpSchedulingTaskParametersParametersClusterRollArgs']] = None):
+        if parameters_cluster_roll is not None:
+            pulumi.set(__self__, "parameters_cluster_roll", parameters_cluster_roll)
+
+    @property
+    @pulumi.getter(name="parametersClusterRoll")
+    def parameters_cluster_roll(self) -> Optional[pulumi.Input['OceanNpSchedulingTaskParametersParametersClusterRollArgs']]:
+        return pulumi.get(self, "parameters_cluster_roll")
+
+    @parameters_cluster_roll.setter
+    def parameters_cluster_roll(self, value: Optional[pulumi.Input['OceanNpSchedulingTaskParametersParametersClusterRollArgs']]):
+        pulumi.set(self, "parameters_cluster_roll", value)
+
+
+@pulumi.input_type
+class OceanNpSchedulingTaskParametersParametersClusterRollArgs:
+    def __init__(__self__, *,
+                 batch_min_healthy_percentage: Optional[pulumi.Input[int]] = None,
+                 batch_size_percentage: Optional[pulumi.Input[int]] = None,
+                 comment: Optional[pulumi.Input[str]] = None,
+                 respect_pdb: Optional[pulumi.Input[bool]] = None,
+                 respect_restrict_scale_down: Optional[pulumi.Input[bool]] = None,
+                 vng_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        if batch_min_healthy_percentage is not None:
+            pulumi.set(__self__, "batch_min_healthy_percentage", batch_min_healthy_percentage)
+        if batch_size_percentage is not None:
+            pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if respect_pdb is not None:
+            pulumi.set(__self__, "respect_pdb", respect_pdb)
+        if respect_restrict_scale_down is not None:
+            pulumi.set(__self__, "respect_restrict_scale_down", respect_restrict_scale_down)
+        if vng_ids is not None:
+            pulumi.set(__self__, "vng_ids", vng_ids)
+
+    @property
+    @pulumi.getter(name="batchMinHealthyPercentage")
+    def batch_min_healthy_percentage(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "batch_min_healthy_percentage")
+
+    @batch_min_healthy_percentage.setter
+    def batch_min_healthy_percentage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "batch_min_healthy_percentage", value)
+
+    @property
+    @pulumi.getter(name="batchSizePercentage")
+    def batch_size_percentage(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "batch_size_percentage")
+
+    @batch_size_percentage.setter
+    def batch_size_percentage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "batch_size_percentage", value)
+
+    @property
+    @pulumi.getter
+    def comment(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter(name="respectPdb")
+    def respect_pdb(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "respect_pdb")
+
+    @respect_pdb.setter
+    def respect_pdb(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "respect_pdb", value)
+
+    @property
+    @pulumi.getter(name="respectRestrictScaleDown")
+    def respect_restrict_scale_down(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "respect_restrict_scale_down")
+
+    @respect_restrict_scale_down.setter
+    def respect_restrict_scale_down(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "respect_restrict_scale_down", value)
+
+    @property
+    @pulumi.getter(name="vngIds")
+    def vng_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "vng_ids")
+
+    @vng_ids.setter
+    def vng_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "vng_ids", value)
 
 
 @pulumi.input_type
@@ -1790,6 +1988,46 @@ class OceanNpVirtualNodeGroupHeadroomArgs:
     @num_of_units.setter
     def num_of_units(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "num_of_units", value)
+
+
+@pulumi.input_type
+class OceanNpVirtualNodeGroupLinuxOsConfigArgs:
+    def __init__(__self__, *,
+                 sysctls: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLinuxOsConfigSysctlArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLinuxOsConfigSysctlArgs']]] sysctls: System Controls
+        """
+        if sysctls is not None:
+            pulumi.set(__self__, "sysctls", sysctls)
+
+    @property
+    @pulumi.getter
+    def sysctls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLinuxOsConfigSysctlArgs']]]]:
+        """
+        System Controls
+        """
+        return pulumi.get(self, "sysctls")
+
+    @sysctls.setter
+    def sysctls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLinuxOsConfigSysctlArgs']]]]):
+        pulumi.set(self, "sysctls", value)
+
+
+@pulumi.input_type
+class OceanNpVirtualNodeGroupLinuxOsConfigSysctlArgs:
+    def __init__(__self__, *,
+                 vm_max_map_count: Optional[pulumi.Input[int]] = None):
+        if vm_max_map_count is not None:
+            pulumi.set(__self__, "vm_max_map_count", vm_max_map_count)
+
+    @property
+    @pulumi.getter(name="vmMaxMapCount")
+    def vm_max_map_count(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "vm_max_map_count")
+
+    @vm_max_map_count.setter
+    def vm_max_map_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "vm_max_map_count", value)
 
 
 @pulumi.input_type

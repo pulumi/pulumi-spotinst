@@ -4,7 +4,6 @@
 package com.pulumi.spotinst.azure.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -15,14 +14,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OceanNpSchedulingShutdownHours {
     private @Nullable Boolean isEnabled;
-    private List<String> timeWindows;
+    private @Nullable List<String> timeWindows;
 
     private OceanNpSchedulingShutdownHours() {}
     public Optional<Boolean> isEnabled() {
         return Optional.ofNullable(this.isEnabled);
     }
     public List<String> timeWindows() {
-        return this.timeWindows;
+        return this.timeWindows == null ? List.of() : this.timeWindows;
     }
 
     public static Builder builder() {
@@ -35,7 +34,7 @@ public final class OceanNpSchedulingShutdownHours {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean isEnabled;
-        private List<String> timeWindows;
+        private @Nullable List<String> timeWindows;
         public Builder() {}
         public Builder(OceanNpSchedulingShutdownHours defaults) {
     	      Objects.requireNonNull(defaults);
@@ -50,10 +49,8 @@ public final class OceanNpSchedulingShutdownHours {
             return this;
         }
         @CustomType.Setter
-        public Builder timeWindows(List<String> timeWindows) {
-            if (timeWindows == null) {
-              throw new MissingRequiredPropertyException("OceanNpSchedulingShutdownHours", "timeWindows");
-            }
+        public Builder timeWindows(@Nullable List<String> timeWindows) {
+
             this.timeWindows = timeWindows;
             return this;
         }

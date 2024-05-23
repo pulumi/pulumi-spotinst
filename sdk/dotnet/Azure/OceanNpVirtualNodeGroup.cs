@@ -64,6 +64,19 @@ namespace Pulumi.SpotInst.Azure
     ///         {
     ///             "/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default",
     ///         },
+    ///         LinuxOsConfigs = new[]
+    ///         {
+    ///             new SpotInst.Azure.Inputs.OceanNpVirtualNodeGroupLinuxOsConfigArgs
+    ///             {
+    ///                 Sysctls = new[]
+    ///                 {
+    ///                     new SpotInst.Azure.Inputs.OceanNpVirtualNodeGroupLinuxOsConfigSysctlArgs
+    ///                     {
+    ///                         VmMaxMapCount = 79550,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
     ///         SpotPercentage = 50,
     ///         FallbackToOndemand = true,
     ///         Taints = new[]
@@ -170,6 +183,12 @@ namespace Pulumi.SpotInst.Azure
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>?> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// Custom Linux OS configuration.
+        /// </summary>
+        [Output("linuxOsConfigs")]
+        public Output<ImmutableArray<Outputs.OceanNpVirtualNodeGroupLinuxOsConfig>> LinuxOsConfigs { get; private set; } = null!;
 
         /// <summary>
         /// Maximum node count limit.
@@ -361,6 +380,18 @@ namespace Pulumi.SpotInst.Azure
             set => _labels = value;
         }
 
+        [Input("linuxOsConfigs")]
+        private InputList<Inputs.OceanNpVirtualNodeGroupLinuxOsConfigArgs>? _linuxOsConfigs;
+
+        /// <summary>
+        /// Custom Linux OS configuration.
+        /// </summary>
+        public InputList<Inputs.OceanNpVirtualNodeGroupLinuxOsConfigArgs> LinuxOsConfigs
+        {
+            get => _linuxOsConfigs ?? (_linuxOsConfigs = new InputList<Inputs.OceanNpVirtualNodeGroupLinuxOsConfigArgs>());
+            set => _linuxOsConfigs = value;
+        }
+
         /// <summary>
         /// Maximum node count limit.
         /// </summary>
@@ -534,6 +565,18 @@ namespace Pulumi.SpotInst.Azure
         {
             get => _labels ?? (_labels = new InputMap<object>());
             set => _labels = value;
+        }
+
+        [Input("linuxOsConfigs")]
+        private InputList<Inputs.OceanNpVirtualNodeGroupLinuxOsConfigGetArgs>? _linuxOsConfigs;
+
+        /// <summary>
+        /// Custom Linux OS configuration.
+        /// </summary>
+        public InputList<Inputs.OceanNpVirtualNodeGroupLinuxOsConfigGetArgs> LinuxOsConfigs
+        {
+            get => _linuxOsConfigs ?? (_linuxOsConfigs = new InputList<Inputs.OceanNpVirtualNodeGroupLinuxOsConfigGetArgs>());
+            set => _linuxOsConfigs = value;
         }
 
         /// <summary>

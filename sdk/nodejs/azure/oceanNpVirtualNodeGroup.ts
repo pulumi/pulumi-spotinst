@@ -44,6 +44,11 @@ import * as utilities from "../utilities";
  *     kubernetesVersion: "1.26",
  *     podSubnetIds: ["/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default"],
  *     vnetSubnetIds: ["/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default"],
+ *     linuxOsConfigs: [{
+ *         sysctls: [{
+ *             vmMaxMapCount: 79550,
+ *         }],
+ *     }],
  *     spotPercentage: 50,
  *     fallbackToOndemand: true,
  *     taints: [{
@@ -148,6 +153,10 @@ export class OceanNpVirtualNodeGroup extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
+     * Custom Linux OS configuration.
+     */
+    public readonly linuxOsConfigs!: pulumi.Output<outputs.azure.OceanNpVirtualNodeGroupLinuxOsConfig[] | undefined>;
+    /**
      * Maximum node count limit.
      */
     public readonly maxCount!: pulumi.Output<number | undefined>;
@@ -222,6 +231,7 @@ export class OceanNpVirtualNodeGroup extends pulumi.CustomResource {
             resourceInputs["headrooms"] = state ? state.headrooms : undefined;
             resourceInputs["kubernetesVersion"] = state ? state.kubernetesVersion : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["linuxOsConfigs"] = state ? state.linuxOsConfigs : undefined;
             resourceInputs["maxCount"] = state ? state.maxCount : undefined;
             resourceInputs["maxPodsPerNode"] = state ? state.maxPodsPerNode : undefined;
             resourceInputs["minCount"] = state ? state.minCount : undefined;
@@ -249,6 +259,7 @@ export class OceanNpVirtualNodeGroup extends pulumi.CustomResource {
             resourceInputs["headrooms"] = args ? args.headrooms : undefined;
             resourceInputs["kubernetesVersion"] = args ? args.kubernetesVersion : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["linuxOsConfigs"] = args ? args.linuxOsConfigs : undefined;
             resourceInputs["maxCount"] = args ? args.maxCount : undefined;
             resourceInputs["maxPodsPerNode"] = args ? args.maxPodsPerNode : undefined;
             resourceInputs["minCount"] = args ? args.minCount : undefined;
@@ -302,6 +313,10 @@ export interface OceanNpVirtualNodeGroupState {
      * An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
      */
     labels?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Custom Linux OS configuration.
+     */
+    linuxOsConfigs?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupLinuxOsConfig>[]>;
     /**
      * Maximum node count limit.
      */
@@ -390,6 +405,10 @@ export interface OceanNpVirtualNodeGroupArgs {
      * An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
      */
     labels?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Custom Linux OS configuration.
+     */
+    linuxOsConfigs?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupLinuxOsConfig>[]>;
     /**
      * Maximum node count limit.
      */

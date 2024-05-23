@@ -78,6 +78,8 @@ type OceanNp struct {
 	KubernetesVersion pulumi.StringPtrOutput `pulumi:"kubernetesVersion"`
 	// An array of labels to add to the virtual node group. Only custom user labels are allowed, and not [Kubernetes well-known labels](https://kubernetes.io/docs/reference/labels-annotations-taints/) or [ Azure AKS labels](https://learn.microsoft.com/en-us/azure/aks/use-labels) or [Spot labels](https://docs.spot.io/ocean/features/labels-and-taints?id=spot-labels).
 	Labels pulumi.MapOutput `pulumi:"labels"`
+	// Custom Linux OS configuration.
+	LinuxOsConfigs OceanNpLinuxOsConfigArrayOutput `pulumi:"linuxOsConfigs"`
 	// Maximum node count limit.
 	MaxCount pulumi.IntPtrOutput `pulumi:"maxCount"`
 	// The maximum number of pods per node in the node pools.
@@ -95,9 +97,8 @@ type OceanNp struct {
 	// The OS type of the OS disk. Can't be modified once set.
 	OsType pulumi.StringPtrOutput `pulumi:"osType"`
 	// The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
-	PodSubnetIds pulumi.StringArrayOutput `pulumi:"podSubnetIds"`
-	// An object used to specify times when the cluster will turn off. Once the shutdown time will be over, the cluster will return to its previous state.
-	Scheduling OceanNpSchedulingPtrOutput `pulumi:"scheduling"`
+	PodSubnetIds pulumi.StringArrayOutput   `pulumi:"podSubnetIds"`
+	Scheduling   OceanNpSchedulingPtrOutput `pulumi:"scheduling"`
 	// Percentage of spot VMs to maintain.
 	SpotPercentage pulumi.IntPtrOutput `pulumi:"spotPercentage"`
 	Tags           pulumi.MapOutput    `pulumi:"tags"`
@@ -180,6 +181,8 @@ type oceanNpState struct {
 	KubernetesVersion *string `pulumi:"kubernetesVersion"`
 	// An array of labels to add to the virtual node group. Only custom user labels are allowed, and not [Kubernetes well-known labels](https://kubernetes.io/docs/reference/labels-annotations-taints/) or [ Azure AKS labels](https://learn.microsoft.com/en-us/azure/aks/use-labels) or [Spot labels](https://docs.spot.io/ocean/features/labels-and-taints?id=spot-labels).
 	Labels map[string]interface{} `pulumi:"labels"`
+	// Custom Linux OS configuration.
+	LinuxOsConfigs []OceanNpLinuxOsConfig `pulumi:"linuxOsConfigs"`
 	// Maximum node count limit.
 	MaxCount *int `pulumi:"maxCount"`
 	// The maximum number of pods per node in the node pools.
@@ -197,9 +200,8 @@ type oceanNpState struct {
 	// The OS type of the OS disk. Can't be modified once set.
 	OsType *string `pulumi:"osType"`
 	// The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
-	PodSubnetIds []string `pulumi:"podSubnetIds"`
-	// An object used to specify times when the cluster will turn off. Once the shutdown time will be over, the cluster will return to its previous state.
-	Scheduling *OceanNpScheduling `pulumi:"scheduling"`
+	PodSubnetIds []string           `pulumi:"podSubnetIds"`
+	Scheduling   *OceanNpScheduling `pulumi:"scheduling"`
 	// Percentage of spot VMs to maintain.
 	SpotPercentage *int                   `pulumi:"spotPercentage"`
 	Tags           map[string]interface{} `pulumi:"tags"`
@@ -235,6 +237,8 @@ type OceanNpState struct {
 	KubernetesVersion pulumi.StringPtrInput
 	// An array of labels to add to the virtual node group. Only custom user labels are allowed, and not [Kubernetes well-known labels](https://kubernetes.io/docs/reference/labels-annotations-taints/) or [ Azure AKS labels](https://learn.microsoft.com/en-us/azure/aks/use-labels) or [Spot labels](https://docs.spot.io/ocean/features/labels-and-taints?id=spot-labels).
 	Labels pulumi.MapInput
+	// Custom Linux OS configuration.
+	LinuxOsConfigs OceanNpLinuxOsConfigArrayInput
 	// Maximum node count limit.
 	MaxCount pulumi.IntPtrInput
 	// The maximum number of pods per node in the node pools.
@@ -253,8 +257,7 @@ type OceanNpState struct {
 	OsType pulumi.StringPtrInput
 	// The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
 	PodSubnetIds pulumi.StringArrayInput
-	// An object used to specify times when the cluster will turn off. Once the shutdown time will be over, the cluster will return to its previous state.
-	Scheduling OceanNpSchedulingPtrInput
+	Scheduling   OceanNpSchedulingPtrInput
 	// Percentage of spot VMs to maintain.
 	SpotPercentage pulumi.IntPtrInput
 	Tags           pulumi.MapInput
@@ -294,6 +297,8 @@ type oceanNpArgs struct {
 	KubernetesVersion *string `pulumi:"kubernetesVersion"`
 	// An array of labels to add to the virtual node group. Only custom user labels are allowed, and not [Kubernetes well-known labels](https://kubernetes.io/docs/reference/labels-annotations-taints/) or [ Azure AKS labels](https://learn.microsoft.com/en-us/azure/aks/use-labels) or [Spot labels](https://docs.spot.io/ocean/features/labels-and-taints?id=spot-labels).
 	Labels map[string]interface{} `pulumi:"labels"`
+	// Custom Linux OS configuration.
+	LinuxOsConfigs []OceanNpLinuxOsConfig `pulumi:"linuxOsConfigs"`
 	// Maximum node count limit.
 	MaxCount *int `pulumi:"maxCount"`
 	// The maximum number of pods per node in the node pools.
@@ -311,9 +316,8 @@ type oceanNpArgs struct {
 	// The OS type of the OS disk. Can't be modified once set.
 	OsType *string `pulumi:"osType"`
 	// The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
-	PodSubnetIds []string `pulumi:"podSubnetIds"`
-	// An object used to specify times when the cluster will turn off. Once the shutdown time will be over, the cluster will return to its previous state.
-	Scheduling *OceanNpScheduling `pulumi:"scheduling"`
+	PodSubnetIds []string           `pulumi:"podSubnetIds"`
+	Scheduling   *OceanNpScheduling `pulumi:"scheduling"`
 	// Percentage of spot VMs to maintain.
 	SpotPercentage *int                   `pulumi:"spotPercentage"`
 	Tags           map[string]interface{} `pulumi:"tags"`
@@ -350,6 +354,8 @@ type OceanNpArgs struct {
 	KubernetesVersion pulumi.StringPtrInput
 	// An array of labels to add to the virtual node group. Only custom user labels are allowed, and not [Kubernetes well-known labels](https://kubernetes.io/docs/reference/labels-annotations-taints/) or [ Azure AKS labels](https://learn.microsoft.com/en-us/azure/aks/use-labels) or [Spot labels](https://docs.spot.io/ocean/features/labels-and-taints?id=spot-labels).
 	Labels pulumi.MapInput
+	// Custom Linux OS configuration.
+	LinuxOsConfigs OceanNpLinuxOsConfigArrayInput
 	// Maximum node count limit.
 	MaxCount pulumi.IntPtrInput
 	// The maximum number of pods per node in the node pools.
@@ -368,8 +374,7 @@ type OceanNpArgs struct {
 	OsType pulumi.StringPtrInput
 	// The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
 	PodSubnetIds pulumi.StringArrayInput
-	// An object used to specify times when the cluster will turn off. Once the shutdown time will be over, the cluster will return to its previous state.
-	Scheduling OceanNpSchedulingPtrInput
+	Scheduling   OceanNpSchedulingPtrInput
 	// Percentage of spot VMs to maintain.
 	SpotPercentage pulumi.IntPtrInput
 	Tags           pulumi.MapInput
@@ -533,6 +538,11 @@ func (o OceanNpOutput) Labels() pulumi.MapOutput {
 	return o.ApplyT(func(v *OceanNp) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
 }
 
+// Custom Linux OS configuration.
+func (o OceanNpOutput) LinuxOsConfigs() OceanNpLinuxOsConfigArrayOutput {
+	return o.ApplyT(func(v *OceanNp) OceanNpLinuxOsConfigArrayOutput { return v.LinuxOsConfigs }).(OceanNpLinuxOsConfigArrayOutput)
+}
+
 // Maximum node count limit.
 func (o OceanNpOutput) MaxCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanNp) pulumi.IntPtrOutput { return v.MaxCount }).(pulumi.IntPtrOutput)
@@ -578,7 +588,6 @@ func (o OceanNpOutput) PodSubnetIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanNp) pulumi.StringArrayOutput { return v.PodSubnetIds }).(pulumi.StringArrayOutput)
 }
 
-// An object used to specify times when the cluster will turn off. Once the shutdown time will be over, the cluster will return to its previous state.
 func (o OceanNpOutput) Scheduling() OceanNpSchedulingPtrOutput {
 	return o.ApplyT(func(v *OceanNp) OceanNpSchedulingPtrOutput { return v.Scheduling }).(OceanNpSchedulingPtrOutput)
 }

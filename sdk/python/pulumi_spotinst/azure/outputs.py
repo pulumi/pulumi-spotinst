@@ -34,13 +34,20 @@ __all__ = [
     'OceanNpFilters',
     'OceanNpHeadroom',
     'OceanNpHealth',
+    'OceanNpLinuxOsConfig',
+    'OceanNpLinuxOsConfigSysctl',
     'OceanNpScheduling',
     'OceanNpSchedulingShutdownHours',
+    'OceanNpSchedulingTask',
+    'OceanNpSchedulingTaskParameters',
+    'OceanNpSchedulingTaskParametersParametersClusterRoll',
     'OceanNpTaint',
     'OceanNpUpdatePolicy',
     'OceanNpUpdatePolicyRollConfig',
     'OceanNpVirtualNodeGroupFilters',
     'OceanNpVirtualNodeGroupHeadroom',
+    'OceanNpVirtualNodeGroupLinuxOsConfig',
+    'OceanNpVirtualNodeGroupLinuxOsConfigSysctl',
     'OceanNpVirtualNodeGroupTaint',
     'OceanNpVirtualNodeGroupUpdatePolicy',
     'OceanNpVirtualNodeGroupUpdatePolicyRollConfig',
@@ -1337,6 +1344,55 @@ class OceanNpHealth(dict):
 
 
 @pulumi.output_type
+class OceanNpLinuxOsConfig(dict):
+    def __init__(__self__, *,
+                 sysctls: Optional[Sequence['outputs.OceanNpLinuxOsConfigSysctl']] = None):
+        """
+        :param Sequence['OceanNpLinuxOsConfigSysctlArgs'] sysctls: System Controls
+        """
+        if sysctls is not None:
+            pulumi.set(__self__, "sysctls", sysctls)
+
+    @property
+    @pulumi.getter
+    def sysctls(self) -> Optional[Sequence['outputs.OceanNpLinuxOsConfigSysctl']]:
+        """
+        System Controls
+        """
+        return pulumi.get(self, "sysctls")
+
+
+@pulumi.output_type
+class OceanNpLinuxOsConfigSysctl(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "vmMaxMapCount":
+            suggest = "vm_max_map_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanNpLinuxOsConfigSysctl. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanNpLinuxOsConfigSysctl.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanNpLinuxOsConfigSysctl.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 vm_max_map_count: Optional[int] = None):
+        if vm_max_map_count is not None:
+            pulumi.set(__self__, "vm_max_map_count", vm_max_map_count)
+
+    @property
+    @pulumi.getter(name="vmMaxMapCount")
+    def vm_max_map_count(self) -> Optional[int]:
+        return pulumi.get(self, "vm_max_map_count")
+
+
+@pulumi.output_type
 class OceanNpScheduling(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -1356,20 +1412,22 @@ class OceanNpScheduling(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 shutdown_hours: Optional['outputs.OceanNpSchedulingShutdownHours'] = None):
-        """
-        :param 'OceanNpSchedulingShutdownHoursArgs' shutdown_hours: [Shutdown Hours](https://docs.spot.io/ocean/features/running-hours?id=shutdown-hours)An object used to specify times that the nodes in the cluster will be taken down.
-        """
+                 shutdown_hours: Optional['outputs.OceanNpSchedulingShutdownHours'] = None,
+                 tasks: Optional[Sequence['outputs.OceanNpSchedulingTask']] = None):
         if shutdown_hours is not None:
             pulumi.set(__self__, "shutdown_hours", shutdown_hours)
+        if tasks is not None:
+            pulumi.set(__self__, "tasks", tasks)
 
     @property
     @pulumi.getter(name="shutdownHours")
     def shutdown_hours(self) -> Optional['outputs.OceanNpSchedulingShutdownHours']:
-        """
-        [Shutdown Hours](https://docs.spot.io/ocean/features/running-hours?id=shutdown-hours)An object used to specify times that the nodes in the cluster will be taken down.
-        """
         return pulumi.get(self, "shutdown_hours")
+
+    @property
+    @pulumi.getter
+    def tasks(self) -> Optional[Sequence['outputs.OceanNpSchedulingTask']]:
+        return pulumi.get(self, "tasks")
 
 
 @pulumi.output_type
@@ -1377,10 +1435,10 @@ class OceanNpSchedulingShutdownHours(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "timeWindows":
-            suggest = "time_windows"
-        elif key == "isEnabled":
+        if key == "isEnabled":
             suggest = "is_enabled"
+        elif key == "timeWindows":
+            suggest = "time_windows"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in OceanNpSchedulingShutdownHours. Access the value via the '{suggest}' property getter instead.")
@@ -1394,21 +1452,185 @@ class OceanNpSchedulingShutdownHours(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 time_windows: Sequence[str],
-                 is_enabled: Optional[bool] = None):
-        pulumi.set(__self__, "time_windows", time_windows)
+                 is_enabled: Optional[bool] = None,
+                 time_windows: Optional[Sequence[str]] = None):
         if is_enabled is not None:
             pulumi.set(__self__, "is_enabled", is_enabled)
-
-    @property
-    @pulumi.getter(name="timeWindows")
-    def time_windows(self) -> Sequence[str]:
-        return pulumi.get(self, "time_windows")
+        if time_windows is not None:
+            pulumi.set(__self__, "time_windows", time_windows)
 
     @property
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> Optional[bool]:
         return pulumi.get(self, "is_enabled")
+
+    @property
+    @pulumi.getter(name="timeWindows")
+    def time_windows(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "time_windows")
+
+
+@pulumi.output_type
+class OceanNpSchedulingTask(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cronExpression":
+            suggest = "cron_expression"
+        elif key == "isEnabled":
+            suggest = "is_enabled"
+        elif key == "taskType":
+            suggest = "task_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanNpSchedulingTask. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanNpSchedulingTask.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanNpSchedulingTask.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cron_expression: str,
+                 is_enabled: bool,
+                 task_type: str,
+                 parameters: Optional['outputs.OceanNpSchedulingTaskParameters'] = None):
+        pulumi.set(__self__, "cron_expression", cron_expression)
+        pulumi.set(__self__, "is_enabled", is_enabled)
+        pulumi.set(__self__, "task_type", task_type)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+
+    @property
+    @pulumi.getter(name="cronExpression")
+    def cron_expression(self) -> str:
+        return pulumi.get(self, "cron_expression")
+
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> bool:
+        return pulumi.get(self, "is_enabled")
+
+    @property
+    @pulumi.getter(name="taskType")
+    def task_type(self) -> str:
+        return pulumi.get(self, "task_type")
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional['outputs.OceanNpSchedulingTaskParameters']:
+        return pulumi.get(self, "parameters")
+
+
+@pulumi.output_type
+class OceanNpSchedulingTaskParameters(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "parametersClusterRoll":
+            suggest = "parameters_cluster_roll"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanNpSchedulingTaskParameters. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanNpSchedulingTaskParameters.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanNpSchedulingTaskParameters.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 parameters_cluster_roll: Optional['outputs.OceanNpSchedulingTaskParametersParametersClusterRoll'] = None):
+        if parameters_cluster_roll is not None:
+            pulumi.set(__self__, "parameters_cluster_roll", parameters_cluster_roll)
+
+    @property
+    @pulumi.getter(name="parametersClusterRoll")
+    def parameters_cluster_roll(self) -> Optional['outputs.OceanNpSchedulingTaskParametersParametersClusterRoll']:
+        return pulumi.get(self, "parameters_cluster_roll")
+
+
+@pulumi.output_type
+class OceanNpSchedulingTaskParametersParametersClusterRoll(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "batchMinHealthyPercentage":
+            suggest = "batch_min_healthy_percentage"
+        elif key == "batchSizePercentage":
+            suggest = "batch_size_percentage"
+        elif key == "respectPdb":
+            suggest = "respect_pdb"
+        elif key == "respectRestrictScaleDown":
+            suggest = "respect_restrict_scale_down"
+        elif key == "vngIds":
+            suggest = "vng_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanNpSchedulingTaskParametersParametersClusterRoll. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanNpSchedulingTaskParametersParametersClusterRoll.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanNpSchedulingTaskParametersParametersClusterRoll.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 batch_min_healthy_percentage: Optional[int] = None,
+                 batch_size_percentage: Optional[int] = None,
+                 comment: Optional[str] = None,
+                 respect_pdb: Optional[bool] = None,
+                 respect_restrict_scale_down: Optional[bool] = None,
+                 vng_ids: Optional[Sequence[str]] = None):
+        if batch_min_healthy_percentage is not None:
+            pulumi.set(__self__, "batch_min_healthy_percentage", batch_min_healthy_percentage)
+        if batch_size_percentage is not None:
+            pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if respect_pdb is not None:
+            pulumi.set(__self__, "respect_pdb", respect_pdb)
+        if respect_restrict_scale_down is not None:
+            pulumi.set(__self__, "respect_restrict_scale_down", respect_restrict_scale_down)
+        if vng_ids is not None:
+            pulumi.set(__self__, "vng_ids", vng_ids)
+
+    @property
+    @pulumi.getter(name="batchMinHealthyPercentage")
+    def batch_min_healthy_percentage(self) -> Optional[int]:
+        return pulumi.get(self, "batch_min_healthy_percentage")
+
+    @property
+    @pulumi.getter(name="batchSizePercentage")
+    def batch_size_percentage(self) -> Optional[int]:
+        return pulumi.get(self, "batch_size_percentage")
+
+    @property
+    @pulumi.getter
+    def comment(self) -> Optional[str]:
+        return pulumi.get(self, "comment")
+
+    @property
+    @pulumi.getter(name="respectPdb")
+    def respect_pdb(self) -> Optional[bool]:
+        return pulumi.get(self, "respect_pdb")
+
+    @property
+    @pulumi.getter(name="respectRestrictScaleDown")
+    def respect_restrict_scale_down(self) -> Optional[bool]:
+        return pulumi.get(self, "respect_restrict_scale_down")
+
+    @property
+    @pulumi.getter(name="vngIds")
+    def vng_ids(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "vng_ids")
 
 
 @pulumi.output_type
@@ -1904,6 +2126,55 @@ class OceanNpVirtualNodeGroupHeadroom(dict):
         The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
         """
         return pulumi.get(self, "num_of_units")
+
+
+@pulumi.output_type
+class OceanNpVirtualNodeGroupLinuxOsConfig(dict):
+    def __init__(__self__, *,
+                 sysctls: Optional[Sequence['outputs.OceanNpVirtualNodeGroupLinuxOsConfigSysctl']] = None):
+        """
+        :param Sequence['OceanNpVirtualNodeGroupLinuxOsConfigSysctlArgs'] sysctls: System Controls
+        """
+        if sysctls is not None:
+            pulumi.set(__self__, "sysctls", sysctls)
+
+    @property
+    @pulumi.getter
+    def sysctls(self) -> Optional[Sequence['outputs.OceanNpVirtualNodeGroupLinuxOsConfigSysctl']]:
+        """
+        System Controls
+        """
+        return pulumi.get(self, "sysctls")
+
+
+@pulumi.output_type
+class OceanNpVirtualNodeGroupLinuxOsConfigSysctl(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "vmMaxMapCount":
+            suggest = "vm_max_map_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanNpVirtualNodeGroupLinuxOsConfigSysctl. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanNpVirtualNodeGroupLinuxOsConfigSysctl.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanNpVirtualNodeGroupLinuxOsConfigSysctl.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 vm_max_map_count: Optional[int] = None):
+        if vm_max_map_count is not None:
+            pulumi.set(__self__, "vm_max_map_count", vm_max_map_count)
+
+    @property
+    @pulumi.getter(name="vmMaxMapCount")
+    def vm_max_map_count(self) -> Optional[int]:
+        return pulumi.get(self, "vm_max_map_count")
 
 
 @pulumi.output_type

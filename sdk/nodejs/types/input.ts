@@ -2401,16 +2401,45 @@ export namespace azure {
         gracePeriod?: pulumi.Input<number>;
     }
 
-    export interface OceanNpScheduling {
+    export interface OceanNpLinuxOsConfig {
         /**
-         * [Shutdown Hours](https://docs.spot.io/ocean/features/running-hours?id=shutdown-hours)An object used to specify times that the nodes in the cluster will be taken down.
+         * System Controls
          */
+        sysctls?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpLinuxOsConfigSysctl>[]>;
+    }
+
+    export interface OceanNpLinuxOsConfigSysctl {
+        vmMaxMapCount?: pulumi.Input<number>;
+    }
+
+    export interface OceanNpScheduling {
         shutdownHours?: pulumi.Input<inputs.azure.OceanNpSchedulingShutdownHours>;
+        tasks?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpSchedulingTask>[]>;
     }
 
     export interface OceanNpSchedulingShutdownHours {
         isEnabled?: pulumi.Input<boolean>;
-        timeWindows: pulumi.Input<pulumi.Input<string>[]>;
+        timeWindows?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface OceanNpSchedulingTask {
+        cronExpression: pulumi.Input<string>;
+        isEnabled: pulumi.Input<boolean>;
+        parameters?: pulumi.Input<inputs.azure.OceanNpSchedulingTaskParameters>;
+        taskType: pulumi.Input<string>;
+    }
+
+    export interface OceanNpSchedulingTaskParameters {
+        parametersClusterRoll?: pulumi.Input<inputs.azure.OceanNpSchedulingTaskParametersParametersClusterRoll>;
+    }
+
+    export interface OceanNpSchedulingTaskParametersParametersClusterRoll {
+        batchMinHealthyPercentage?: pulumi.Input<number>;
+        batchSizePercentage?: pulumi.Input<number>;
+        comment?: pulumi.Input<string>;
+        respectPdb?: pulumi.Input<boolean>;
+        respectRestrictScaleDown?: pulumi.Input<boolean>;
+        vngIds?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface OceanNpTaint {
@@ -2526,6 +2555,17 @@ export namespace azure {
          * The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
          */
         numOfUnits?: pulumi.Input<number>;
+    }
+
+    export interface OceanNpVirtualNodeGroupLinuxOsConfig {
+        /**
+         * System Controls
+         */
+        sysctls?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupLinuxOsConfigSysctl>[]>;
+    }
+
+    export interface OceanNpVirtualNodeGroupLinuxOsConfigSysctl {
+        vmMaxMapCount?: pulumi.Input<number>;
     }
 
     export interface OceanNpVirtualNodeGroupTaint {

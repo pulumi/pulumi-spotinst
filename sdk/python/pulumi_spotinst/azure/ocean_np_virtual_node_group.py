@@ -24,6 +24,7 @@ class OceanNpVirtualNodeGroupArgs:
                  headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupHeadroomArgs']]]] = None,
                  kubernetes_version: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 linux_os_configs: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLinuxOsConfigArgs']]]] = None,
                  max_count: Optional[pulumi.Input[int]] = None,
                  max_pods_per_node: Optional[pulumi.Input[int]] = None,
                  min_count: Optional[pulumi.Input[int]] = None,
@@ -48,6 +49,7 @@ class OceanNpVirtualNodeGroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupHeadroomArgs']]] headrooms: Specify the custom headroom per VNG. Provide a list of headroom objects.
         :param pulumi.Input[str] kubernetes_version: The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
         :param pulumi.Input[Mapping[str, Any]] labels: An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLinuxOsConfigArgs']]] linux_os_configs: Custom Linux OS configuration.
         :param pulumi.Input[int] max_count: Maximum node count limit.
         :param pulumi.Input[int] max_pods_per_node: The maximum number of pods per node in the node pools.
         :param pulumi.Input[int] min_count: Minimum node count limit.
@@ -76,6 +78,8 @@ class OceanNpVirtualNodeGroupArgs:
             pulumi.set(__self__, "kubernetes_version", kubernetes_version)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if linux_os_configs is not None:
+            pulumi.set(__self__, "linux_os_configs", linux_os_configs)
         if max_count is not None:
             pulumi.set(__self__, "max_count", max_count)
         if max_pods_per_node is not None:
@@ -200,6 +204,18 @@ class OceanNpVirtualNodeGroupArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="linuxOsConfigs")
+    def linux_os_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLinuxOsConfigArgs']]]]:
+        """
+        Custom Linux OS configuration.
+        """
+        return pulumi.get(self, "linux_os_configs")
+
+    @linux_os_configs.setter
+    def linux_os_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLinuxOsConfigArgs']]]]):
+        pulumi.set(self, "linux_os_configs", value)
 
     @property
     @pulumi.getter(name="maxCount")
@@ -374,6 +390,7 @@ class _OceanNpVirtualNodeGroupState:
                  headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupHeadroomArgs']]]] = None,
                  kubernetes_version: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 linux_os_configs: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLinuxOsConfigArgs']]]] = None,
                  max_count: Optional[pulumi.Input[int]] = None,
                  max_pods_per_node: Optional[pulumi.Input[int]] = None,
                  min_count: Optional[pulumi.Input[int]] = None,
@@ -398,6 +415,7 @@ class _OceanNpVirtualNodeGroupState:
         :param pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupHeadroomArgs']]] headrooms: Specify the custom headroom per VNG. Provide a list of headroom objects.
         :param pulumi.Input[str] kubernetes_version: The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
         :param pulumi.Input[Mapping[str, Any]] labels: An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLinuxOsConfigArgs']]] linux_os_configs: Custom Linux OS configuration.
         :param pulumi.Input[int] max_count: Maximum node count limit.
         :param pulumi.Input[int] max_pods_per_node: The maximum number of pods per node in the node pools.
         :param pulumi.Input[int] min_count: Minimum node count limit.
@@ -426,6 +444,8 @@ class _OceanNpVirtualNodeGroupState:
             pulumi.set(__self__, "kubernetes_version", kubernetes_version)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if linux_os_configs is not None:
+            pulumi.set(__self__, "linux_os_configs", linux_os_configs)
         if max_count is not None:
             pulumi.set(__self__, "max_count", max_count)
         if max_pods_per_node is not None:
@@ -540,6 +560,18 @@ class _OceanNpVirtualNodeGroupState:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="linuxOsConfigs")
+    def linux_os_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLinuxOsConfigArgs']]]]:
+        """
+        Custom Linux OS configuration.
+        """
+        return pulumi.get(self, "linux_os_configs")
+
+    @linux_os_configs.setter
+    def linux_os_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLinuxOsConfigArgs']]]]):
+        pulumi.set(self, "linux_os_configs", value)
 
     @property
     @pulumi.getter(name="maxCount")
@@ -728,6 +760,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
                  headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpVirtualNodeGroupHeadroomArgs']]]]] = None,
                  kubernetes_version: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 linux_os_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpVirtualNodeGroupLinuxOsConfigArgs']]]]] = None,
                  max_count: Optional[pulumi.Input[int]] = None,
                  max_pods_per_node: Optional[pulumi.Input[int]] = None,
                  min_count: Optional[pulumi.Input[int]] = None,
@@ -782,6 +815,11 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
             kubernetes_version="1.26",
             pod_subnet_ids=["/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default"],
             vnet_subnet_ids=["/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default"],
+            linux_os_configs=[spotinst.azure.OceanNpVirtualNodeGroupLinuxOsConfigArgs(
+                sysctls=[spotinst.azure.OceanNpVirtualNodeGroupLinuxOsConfigSysctlArgs(
+                    vm_max_map_count=79550,
+                )],
+            )],
             spot_percentage=50,
             fallback_to_ondemand=True,
             taints=[spotinst.azure.OceanNpVirtualNodeGroupTaintArgs(
@@ -837,6 +875,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpVirtualNodeGroupHeadroomArgs']]]] headrooms: Specify the custom headroom per VNG. Provide a list of headroom objects.
         :param pulumi.Input[str] kubernetes_version: The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
         :param pulumi.Input[Mapping[str, Any]] labels: An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpVirtualNodeGroupLinuxOsConfigArgs']]]] linux_os_configs: Custom Linux OS configuration.
         :param pulumi.Input[int] max_count: Maximum node count limit.
         :param pulumi.Input[int] max_pods_per_node: The maximum number of pods per node in the node pools.
         :param pulumi.Input[int] min_count: Minimum node count limit.
@@ -895,6 +934,11 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
             kubernetes_version="1.26",
             pod_subnet_ids=["/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default"],
             vnet_subnet_ids=["/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default"],
+            linux_os_configs=[spotinst.azure.OceanNpVirtualNodeGroupLinuxOsConfigArgs(
+                sysctls=[spotinst.azure.OceanNpVirtualNodeGroupLinuxOsConfigSysctlArgs(
+                    vm_max_map_count=79550,
+                )],
+            )],
             spot_percentage=50,
             fallback_to_ondemand=True,
             taints=[spotinst.azure.OceanNpVirtualNodeGroupTaintArgs(
@@ -963,6 +1007,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
                  headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpVirtualNodeGroupHeadroomArgs']]]]] = None,
                  kubernetes_version: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 linux_os_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpVirtualNodeGroupLinuxOsConfigArgs']]]]] = None,
                  max_count: Optional[pulumi.Input[int]] = None,
                  max_pods_per_node: Optional[pulumi.Input[int]] = None,
                  min_count: Optional[pulumi.Input[int]] = None,
@@ -994,6 +1039,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
             __props__.__dict__["headrooms"] = headrooms
             __props__.__dict__["kubernetes_version"] = kubernetes_version
             __props__.__dict__["labels"] = labels
+            __props__.__dict__["linux_os_configs"] = linux_os_configs
             __props__.__dict__["max_count"] = max_count
             __props__.__dict__["max_pods_per_node"] = max_pods_per_node
             __props__.__dict__["min_count"] = min_count
@@ -1028,6 +1074,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
             headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpVirtualNodeGroupHeadroomArgs']]]]] = None,
             kubernetes_version: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            linux_os_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpVirtualNodeGroupLinuxOsConfigArgs']]]]] = None,
             max_count: Optional[pulumi.Input[int]] = None,
             max_pods_per_node: Optional[pulumi.Input[int]] = None,
             min_count: Optional[pulumi.Input[int]] = None,
@@ -1057,6 +1104,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpVirtualNodeGroupHeadroomArgs']]]] headrooms: Specify the custom headroom per VNG. Provide a list of headroom objects.
         :param pulumi.Input[str] kubernetes_version: The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
         :param pulumi.Input[Mapping[str, Any]] labels: An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpVirtualNodeGroupLinuxOsConfigArgs']]]] linux_os_configs: Custom Linux OS configuration.
         :param pulumi.Input[int] max_count: Maximum node count limit.
         :param pulumi.Input[int] max_pods_per_node: The maximum number of pods per node in the node pools.
         :param pulumi.Input[int] min_count: Minimum node count limit.
@@ -1082,6 +1130,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         __props__.__dict__["headrooms"] = headrooms
         __props__.__dict__["kubernetes_version"] = kubernetes_version
         __props__.__dict__["labels"] = labels
+        __props__.__dict__["linux_os_configs"] = linux_os_configs
         __props__.__dict__["max_count"] = max_count
         __props__.__dict__["max_pods_per_node"] = max_pods_per_node
         __props__.__dict__["min_count"] = min_count
@@ -1154,6 +1203,14 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="linuxOsConfigs")
+    def linux_os_configs(self) -> pulumi.Output[Optional[Sequence['outputs.OceanNpVirtualNodeGroupLinuxOsConfig']]]:
+        """
+        Custom Linux OS configuration.
+        """
+        return pulumi.get(self, "linux_os_configs")
 
     @property
     @pulumi.getter(name="maxCount")

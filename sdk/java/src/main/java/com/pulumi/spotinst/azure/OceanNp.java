@@ -14,6 +14,7 @@ import com.pulumi.spotinst.azure.outputs.OceanNpAutoscaler;
 import com.pulumi.spotinst.azure.outputs.OceanNpFilters;
 import com.pulumi.spotinst.azure.outputs.OceanNpHeadroom;
 import com.pulumi.spotinst.azure.outputs.OceanNpHealth;
+import com.pulumi.spotinst.azure.outputs.OceanNpLinuxOsConfig;
 import com.pulumi.spotinst.azure.outputs.OceanNpScheduling;
 import com.pulumi.spotinst.azure.outputs.OceanNpTaint;
 import com.pulumi.spotinst.azure.outputs.OceanNpUpdatePolicy;
@@ -243,6 +244,20 @@ public class OceanNp extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.labels);
     }
     /**
+     * Custom Linux OS configuration.
+     * 
+     */
+    @Export(name="linuxOsConfigs", refs={List.class,OceanNpLinuxOsConfig.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<OceanNpLinuxOsConfig>> linuxOsConfigs;
+
+    /**
+     * @return Custom Linux OS configuration.
+     * 
+     */
+    public Output<Optional<List<OceanNpLinuxOsConfig>>> linuxOsConfigs() {
+        return Codegen.optional(this.linuxOsConfigs);
+    }
+    /**
      * Maximum node count limit.
      * 
      */
@@ -368,17 +383,9 @@ public class OceanNp extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<String>>> podSubnetIds() {
         return Codegen.optional(this.podSubnetIds);
     }
-    /**
-     * An object used to specify times when the cluster will turn off. Once the shutdown time will be over, the cluster will return to its previous state.
-     * 
-     */
     @Export(name="scheduling", refs={OceanNpScheduling.class}, tree="[0]")
     private Output</* @Nullable */ OceanNpScheduling> scheduling;
 
-    /**
-     * @return An object used to specify times when the cluster will turn off. Once the shutdown time will be over, the cluster will return to its previous state.
-     * 
-     */
     public Output<Optional<OceanNpScheduling>> scheduling() {
         return Codegen.optional(this.scheduling);
     }
