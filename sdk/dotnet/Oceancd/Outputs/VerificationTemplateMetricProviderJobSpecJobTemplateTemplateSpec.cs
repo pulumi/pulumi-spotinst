@@ -13,7 +13,13 @@ namespace Pulumi.SpotInst.Oceancd.Outputs
     [OutputType]
     public sealed class VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpec
     {
+        /// <summary>
+        /// A list of containers belonging to the pod.
+        /// </summary>
         public readonly ImmutableArray<Outputs.VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainer> Containers;
+        /// <summary>
+        /// Restart policy for all containers within the pod. Enum: `"Never" "OnFailure"`
+        /// </summary>
         public readonly string RestartPolicy;
 
         [OutputConstructor]

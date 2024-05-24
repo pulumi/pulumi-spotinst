@@ -14,15 +14,25 @@ namespace Pulumi.SpotInst.Oceancd.Inputs
     {
         [Input("dimensions")]
         private InputList<Inputs.VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArgs>? _dimensions;
+
+        /// <summary>
+        /// A dimension is a name/value pair that is part of the identity of a metric.You can assign upto 30 dimensions to a metric
+        /// </summary>
         public InputList<Inputs.VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArgs> Dimensions
         {
             get => _dimensions ?? (_dimensions = new InputList<Inputs.VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArgs>());
             set => _dimensions = value;
         }
 
+        /// <summary>
+        /// The name of the metric.
+        /// </summary>
         [Input("metricName", required: true)]
         public Input<string> MetricName { get; set; } = null!;
 
+        /// <summary>
+        /// The namespace of the metric.
+        /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
 

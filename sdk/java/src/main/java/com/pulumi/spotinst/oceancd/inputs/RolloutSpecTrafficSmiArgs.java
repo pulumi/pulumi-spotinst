@@ -15,16 +15,32 @@ public final class RolloutSpecTrafficSmiArgs extends com.pulumi.resources.Resour
 
     public static final RolloutSpecTrafficSmiArgs Empty = new RolloutSpecTrafficSmiArgs();
 
+    /**
+     * Holds the name of service that clients use to communicate.
+     * 
+     */
     @Import(name="smiRootService")
     private @Nullable Output<String> smiRootService;
 
+    /**
+     * @return Holds the name of service that clients use to communicate.
+     * 
+     */
     public Optional<Output<String>> smiRootService() {
         return Optional.ofNullable(this.smiRootService);
     }
 
+    /**
+     * Holds the name of the TrafficSplit.
+     * 
+     */
     @Import(name="trafficSplitName")
     private @Nullable Output<String> trafficSplitName;
 
+    /**
+     * @return Holds the name of the TrafficSplit.
+     * 
+     */
     public Optional<Output<String>> trafficSplitName() {
         return Optional.ofNullable(this.trafficSplitName);
     }
@@ -54,20 +70,44 @@ public final class RolloutSpecTrafficSmiArgs extends com.pulumi.resources.Resour
             $ = new RolloutSpecTrafficSmiArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param smiRootService Holds the name of service that clients use to communicate.
+         * 
+         * @return builder
+         * 
+         */
         public Builder smiRootService(@Nullable Output<String> smiRootService) {
             $.smiRootService = smiRootService;
             return this;
         }
 
+        /**
+         * @param smiRootService Holds the name of service that clients use to communicate.
+         * 
+         * @return builder
+         * 
+         */
         public Builder smiRootService(String smiRootService) {
             return smiRootService(Output.of(smiRootService));
         }
 
+        /**
+         * @param trafficSplitName Holds the name of the TrafficSplit.
+         * 
+         * @return builder
+         * 
+         */
         public Builder trafficSplitName(@Nullable Output<String> trafficSplitName) {
             $.trafficSplitName = trafficSplitName;
             return this;
         }
 
+        /**
+         * @param trafficSplitName Holds the name of the TrafficSplit.
+         * 
+         * @return builder
+         * 
+         */
         public Builder trafficSplitName(String trafficSplitName) {
             return trafficSplitName(Output.of(trafficSplitName));
         }

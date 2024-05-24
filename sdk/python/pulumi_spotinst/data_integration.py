@@ -23,6 +23,7 @@ class DataIntegrationArgs:
         The set of arguments for constructing a DataIntegration resource.
         :param pulumi.Input[str] name: The name of the data integration.
         :param pulumi.Input['DataIntegrationS3Args'] s3: When vendor value is s3, the following fields are included:
+               * `bucketName` - (Required) The name of the bucket to use. Your spot IAM Role policy needs to include s3:putObject permissions for this bucket. Can't be null.
         :param pulumi.Input[str] status: Determines if this data integration is on or off. Valid values: `"enabled"`, `"disabled"`
         """
         if name is not None:
@@ -49,6 +50,7 @@ class DataIntegrationArgs:
     def s3(self) -> Optional[pulumi.Input['DataIntegrationS3Args']]:
         """
         When vendor value is s3, the following fields are included:
+        * `bucketName` - (Required) The name of the bucket to use. Your spot IAM Role policy needs to include s3:putObject permissions for this bucket. Can't be null.
         """
         return pulumi.get(self, "s3")
 
@@ -79,6 +81,7 @@ class _DataIntegrationState:
         Input properties used for looking up and filtering DataIntegration resources.
         :param pulumi.Input[str] name: The name of the data integration.
         :param pulumi.Input['DataIntegrationS3Args'] s3: When vendor value is s3, the following fields are included:
+               * `bucketName` - (Required) The name of the bucket to use. Your spot IAM Role policy needs to include s3:putObject permissions for this bucket. Can't be null.
         :param pulumi.Input[str] status: Determines if this data integration is on or off. Valid values: `"enabled"`, `"disabled"`
         """
         if name is not None:
@@ -105,6 +108,7 @@ class _DataIntegrationState:
     def s3(self) -> Optional[pulumi.Input['DataIntegrationS3Args']]:
         """
         When vendor value is s3, the following fields are included:
+        * `bucketName` - (Required) The name of the bucket to use. Your spot IAM Role policy needs to include s3:putObject permissions for this bucket. Can't be null.
         """
         return pulumi.get(self, "s3")
 
@@ -156,6 +160,7 @@ class DataIntegration(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the data integration.
         :param pulumi.Input[pulumi.InputType['DataIntegrationS3Args']] s3: When vendor value is s3, the following fields are included:
+               * `bucketName` - (Required) The name of the bucket to use. Your spot IAM Role policy needs to include s3:putObject permissions for this bucket. Can't be null.
         :param pulumi.Input[str] status: Determines if this data integration is on or off. Valid values: `"enabled"`, `"disabled"`
         """
         ...
@@ -234,6 +239,7 @@ class DataIntegration(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the data integration.
         :param pulumi.Input[pulumi.InputType['DataIntegrationS3Args']] s3: When vendor value is s3, the following fields are included:
+               * `bucketName` - (Required) The name of the bucket to use. Your spot IAM Role policy needs to include s3:putObject permissions for this bucket. Can't be null.
         :param pulumi.Input[str] status: Determines if this data integration is on or off. Valid values: `"enabled"`, `"disabled"`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -258,6 +264,7 @@ class DataIntegration(pulumi.CustomResource):
     def s3(self) -> pulumi.Output[Optional['outputs.DataIntegrationS3']]:
         """
         When vendor value is s3, the following fields are included:
+        * `bucketName` - (Required) The name of the bucket to use. Your spot IAM Role policy needs to include s3:putObject permissions for this bucket. Can't be null.
         """
         return pulumi.get(self, "s3")
 

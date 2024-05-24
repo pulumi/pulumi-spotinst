@@ -14,17 +14,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanVirtualNodeGroupLaunchSpecificationOsDisk {
+    /**
+     * @return The size of the OS disk in GB, Required if dataDisks is specified.
+     * 
+     */
     private Integer sizeGb;
+    /**
+     * @return The type of the OS disk. Valid values: `&#34;Standard_LRS&#34;`, `&#34;Premium_LRS&#34;`, `&#34;StandardSSD_LRS&#34;`.
+     * 
+     */
     private @Nullable String type;
+    /**
+     * @return Flag to enable/disable the Ephemeral OS Disk utilization.
+     * 
+     */
     private @Nullable Boolean utilizeEphemeralStorage;
 
     private OceanVirtualNodeGroupLaunchSpecificationOsDisk() {}
+    /**
+     * @return The size of the OS disk in GB, Required if dataDisks is specified.
+     * 
+     */
     public Integer sizeGb() {
         return this.sizeGb;
     }
+    /**
+     * @return The type of the OS disk. Valid values: `&#34;Standard_LRS&#34;`, `&#34;Premium_LRS&#34;`, `&#34;StandardSSD_LRS&#34;`.
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
+    /**
+     * @return Flag to enable/disable the Ephemeral OS Disk utilization.
+     * 
+     */
     public Optional<Boolean> utilizeEphemeralStorage() {
         return Optional.ofNullable(this.utilizeEphemeralStorage);
     }

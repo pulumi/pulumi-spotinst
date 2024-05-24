@@ -86,6 +86,7 @@ type Ocean struct {
 	// Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
 	SpreadNodesBy pulumi.StringPtrOutput `pulumi:"spreadNodesBy"`
 	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
+	// * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
 	SubnetIds pulumi.StringArrayOutput `pulumi:"subnetIds"`
 	// Optionally adds tags to instances launched in an Ocean cluster.
 	Tags         OceanTagArrayOutput        `pulumi:"tags"`
@@ -201,6 +202,7 @@ type oceanState struct {
 	// Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
 	SpreadNodesBy *string `pulumi:"spreadNodesBy"`
 	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
+	// * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
 	SubnetIds []string `pulumi:"subnetIds"`
 	// Optionally adds tags to instances launched in an Ocean cluster.
 	Tags         []OceanTag         `pulumi:"tags"`
@@ -278,6 +280,7 @@ type OceanState struct {
 	// Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
 	SpreadNodesBy pulumi.StringPtrInput
 	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
+	// * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
 	SubnetIds pulumi.StringArrayInput
 	// Optionally adds tags to instances launched in an Ocean cluster.
 	Tags         OceanTagArrayInput
@@ -359,6 +362,7 @@ type oceanArgs struct {
 	// Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
 	SpreadNodesBy *string `pulumi:"spreadNodesBy"`
 	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
+	// * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
 	SubnetIds []string `pulumi:"subnetIds"`
 	// Optionally adds tags to instances launched in an Ocean cluster.
 	Tags         []OceanTag         `pulumi:"tags"`
@@ -437,6 +441,7 @@ type OceanArgs struct {
 	// Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
 	SpreadNodesBy pulumi.StringPtrInput
 	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
+	// * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
 	SubnetIds pulumi.StringArrayInput
 	// Optionally adds tags to instances launched in an Ocean cluster.
 	Tags         OceanTagArrayInput
@@ -699,6 +704,7 @@ func (o OceanOutput) SpreadNodesBy() pulumi.StringPtrOutput {
 }
 
 // A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
+// * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
 func (o OceanOutput) SubnetIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Ocean) pulumi.StringArrayOutput { return v.SubnetIds }).(pulumi.StringArrayOutput)
 }

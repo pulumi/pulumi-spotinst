@@ -14,9 +14,17 @@ public final class VerificationTemplateMetricBaselineBaselineProviderPrometheusA
 
     public static final VerificationTemplateMetricBaselineBaselineProviderPrometheusArgs Empty = new VerificationTemplateMetricBaselineBaselineProviderPrometheusArgs();
 
+    /**
+     * A request for information retrieved from Prometheus.
+     * 
+     */
     @Import(name="prometheusQuery", required=true)
     private Output<String> prometheusQuery;
 
+    /**
+     * @return A request for information retrieved from Prometheus.
+     * 
+     */
     public Output<String> prometheusQuery() {
         return this.prometheusQuery;
     }
@@ -45,11 +53,23 @@ public final class VerificationTemplateMetricBaselineBaselineProviderPrometheusA
             $ = new VerificationTemplateMetricBaselineBaselineProviderPrometheusArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param prometheusQuery A request for information retrieved from Prometheus.
+         * 
+         * @return builder
+         * 
+         */
         public Builder prometheusQuery(Output<String> prometheusQuery) {
             $.prometheusQuery = prometheusQuery;
             return this;
         }
 
+        /**
+         * @param prometheusQuery A request for information retrieved from Prometheus.
+         * 
+         * @return builder
+         * 
+         */
         public Builder prometheusQuery(String prometheusQuery) {
             return prometheusQuery(Output.of(prometheusQuery));
         }

@@ -14,16 +14,32 @@ public final class VerificationTemplateMetricProviderWebWebHeaderArgs extends co
 
     public static final VerificationTemplateMetricProviderWebWebHeaderArgs Empty = new VerificationTemplateMetricProviderWebWebHeaderArgs();
 
+    /**
+     * The name of a header
+     * 
+     */
     @Import(name="webHeaderKey", required=true)
     private Output<String> webHeaderKey;
 
+    /**
+     * @return The name of a header
+     * 
+     */
     public Output<String> webHeaderKey() {
         return this.webHeaderKey;
     }
 
+    /**
+     * The value of a header
+     * 
+     */
     @Import(name="webHeaderValue", required=true)
     private Output<String> webHeaderValue;
 
+    /**
+     * @return The value of a header
+     * 
+     */
     public Output<String> webHeaderValue() {
         return this.webHeaderValue;
     }
@@ -53,20 +69,44 @@ public final class VerificationTemplateMetricProviderWebWebHeaderArgs extends co
             $ = new VerificationTemplateMetricProviderWebWebHeaderArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param webHeaderKey The name of a header
+         * 
+         * @return builder
+         * 
+         */
         public Builder webHeaderKey(Output<String> webHeaderKey) {
             $.webHeaderKey = webHeaderKey;
             return this;
         }
 
+        /**
+         * @param webHeaderKey The name of a header
+         * 
+         * @return builder
+         * 
+         */
         public Builder webHeaderKey(String webHeaderKey) {
             return webHeaderKey(Output.of(webHeaderKey));
         }
 
+        /**
+         * @param webHeaderValue The value of a header
+         * 
+         * @return builder
+         * 
+         */
         public Builder webHeaderValue(Output<String> webHeaderValue) {
             $.webHeaderValue = webHeaderValue;
             return this;
         }
 
+        /**
+         * @param webHeaderValue The value of a header
+         * 
+         * @return builder
+         * 
+         */
         public Builder webHeaderValue(String webHeaderValue) {
             return webHeaderValue(Output.of(webHeaderValue));
         }

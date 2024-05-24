@@ -12,12 +12,21 @@ namespace Pulumi.SpotInst.Oceancd.Inputs
 
     public sealed class VerificationTemplateMetricBaselineBaselineProviderGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The datadog provider.
+        /// </summary>
         [Input("datadog")]
         public Input<Inputs.VerificationTemplateMetricBaselineBaselineProviderDatadogGetArgs>? Datadog { get; set; }
 
+        /// <summary>
+        /// The New Relic provider.
+        /// </summary>
         [Input("newRelic")]
         public Input<Inputs.VerificationTemplateMetricBaselineBaselineProviderNewRelicGetArgs>? NewRelic { get; set; }
 
+        /// <summary>
+        /// The Prometheus provider.
+        /// </summary>
         [Input("prometheus")]
         public Input<Inputs.VerificationTemplateMetricBaselineBaselineProviderPrometheusGetArgs>? Prometheus { get; set; }
 

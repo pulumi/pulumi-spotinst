@@ -14,12 +14,19 @@ namespace Pulumi.SpotInst.Oceancd.Inputs
     {
         [Input("containers", required: true)]
         private InputList<Inputs.VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerGetArgs>? _containers;
+
+        /// <summary>
+        /// A list of containers belonging to the pod.
+        /// </summary>
         public InputList<Inputs.VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerGetArgs> Containers
         {
             get => _containers ?? (_containers = new InputList<Inputs.VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerGetArgs>());
             set => _containers = value;
         }
 
+        /// <summary>
+        /// Restart policy for all containers within the pod. Enum: `"Never" "OnFailure"`
+        /// </summary>
         [Input("restartPolicy", required: true)]
         public Input<string> RestartPolicy { get; set; } = null!;
 

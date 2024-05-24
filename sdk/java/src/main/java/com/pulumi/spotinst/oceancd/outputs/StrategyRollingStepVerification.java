@@ -11,9 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class StrategyRollingStepVerification {
+    /**
+     * @return List of Verification Template names.
+     * 
+     */
     private List<String> templateNames;
 
     private StrategyRollingStepVerification() {}
+    /**
+     * @return List of Verification Template names.
+     * 
+     */
     public List<String> templateNames() {
         return this.templateNames;
     }

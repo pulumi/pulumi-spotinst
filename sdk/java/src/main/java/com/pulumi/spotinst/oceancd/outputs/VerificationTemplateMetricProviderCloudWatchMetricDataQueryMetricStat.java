@@ -13,21 +13,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat {
+    /**
+     * @return The metric to return, including the metric name, namespace, and dimensions.
+     * 
+     */
     private @Nullable VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric metric;
+    /**
+     * @return The granularity, in seconds, of the returned data points.
+     * 
+     */
     private @Nullable Integer metricPeriod;
+    /**
+     * @return The statistic to return. It can include any CloudWatch statistic or extended statistic.
+     * 
+     */
     private @Nullable String stat;
+    /**
+     * @return This defines what unit you want to use when storing the metric.  Enum: `&#34;Seconds&#34; &#34;Microseconds&#34; &#34;Milliseconds&#34; &#34;Bytes&#34; &#34;Kilobytes&#34; &#34;Megabytes&#34; &#34;Gigabytes&#34; &#34;Terabytes&#34; &#34;Bits&#34; &#34;Kilobits&#34; &#34;Megabits&#34; &#34;Gigabits&#34; &#34;Terabits&#34; &#34;Percent&#34; &#34;Count&#34; &#34;Bytes/Second&#34; &#34;Kilobytes/Second&#34; &#34;Megabytes/Second&#34; &#34;Gigabytes/Second&#34; &#34;Terabytes/Second&#34; &#34;Bits/Second&#34; &#34;Kilobits/Second&#34; &#34;Megabits/Second&#34; &#34;Gigabits/Second&#34; &#34;Terabits/Second&#34; &#34;Count/Second&#34; &#34;None&#34;`
+     * 
+     */
     private @Nullable String unit;
 
     private VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat() {}
+    /**
+     * @return The metric to return, including the metric name, namespace, and dimensions.
+     * 
+     */
     public Optional<VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric> metric() {
         return Optional.ofNullable(this.metric);
     }
+    /**
+     * @return The granularity, in seconds, of the returned data points.
+     * 
+     */
     public Optional<Integer> metricPeriod() {
         return Optional.ofNullable(this.metricPeriod);
     }
+    /**
+     * @return The statistic to return. It can include any CloudWatch statistic or extended statistic.
+     * 
+     */
     public Optional<String> stat() {
         return Optional.ofNullable(this.stat);
     }
+    /**
+     * @return This defines what unit you want to use when storing the metric.  Enum: `&#34;Seconds&#34; &#34;Microseconds&#34; &#34;Milliseconds&#34; &#34;Bytes&#34; &#34;Kilobytes&#34; &#34;Megabytes&#34; &#34;Gigabytes&#34; &#34;Terabytes&#34; &#34;Bits&#34; &#34;Kilobits&#34; &#34;Megabits&#34; &#34;Gigabits&#34; &#34;Terabits&#34; &#34;Percent&#34; &#34;Count&#34; &#34;Bytes/Second&#34; &#34;Kilobytes/Second&#34; &#34;Megabytes/Second&#34; &#34;Gigabytes/Second&#34; &#34;Terabytes/Second&#34; &#34;Bits/Second&#34; &#34;Kilobits/Second&#34; &#34;Megabits/Second&#34; &#34;Gigabits/Second&#34; &#34;Terabits/Second&#34; &#34;Count/Second&#34; &#34;None&#34;`
+     * 
+     */
     public Optional<String> unit() {
         return Optional.ofNullable(this.unit);
     }

@@ -15,9 +15,17 @@ public final class VerificationTemplateMetricProviderJobSpecJobTemplateArgs exte
 
     public static final VerificationTemplateMetricProviderJobSpecJobTemplateArgs Empty = new VerificationTemplateMetricProviderJobSpecJobTemplateArgs();
 
+    /**
+     * Specification of the desired behavior of the pod.
+     * 
+     */
     @Import(name="templateSpecs", required=true)
     private Output<List<VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArgs>> templateSpecs;
 
+    /**
+     * @return Specification of the desired behavior of the pod.
+     * 
+     */
     public Output<List<VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArgs>> templateSpecs() {
         return this.templateSpecs;
     }
@@ -46,15 +54,33 @@ public final class VerificationTemplateMetricProviderJobSpecJobTemplateArgs exte
             $ = new VerificationTemplateMetricProviderJobSpecJobTemplateArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param templateSpecs Specification of the desired behavior of the pod.
+         * 
+         * @return builder
+         * 
+         */
         public Builder templateSpecs(Output<List<VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArgs>> templateSpecs) {
             $.templateSpecs = templateSpecs;
             return this;
         }
 
+        /**
+         * @param templateSpecs Specification of the desired behavior of the pod.
+         * 
+         * @return builder
+         * 
+         */
         public Builder templateSpecs(List<VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArgs> templateSpecs) {
             return templateSpecs(Output.of(templateSpecs));
         }
 
+        /**
+         * @param templateSpecs Specification of the desired behavior of the pod.
+         * 
+         * @return builder
+         * 
+         */
         public Builder templateSpecs(VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArgs... templateSpecs) {
             return templateSpecs(List.of(templateSpecs));
         }

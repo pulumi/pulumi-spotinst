@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new VerificationProvider("example", VerificationProviderArgs.builder()        
+ *         var example = new VerificationProvider("example", VerificationProviderArgs.builder()
  *             .name("test-verification-provider")
  *             .clusterIds(            
  *                 "Example-Cluster-Id-1",

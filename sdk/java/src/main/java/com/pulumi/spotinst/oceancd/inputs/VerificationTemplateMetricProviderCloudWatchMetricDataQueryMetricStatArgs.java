@@ -17,30 +17,62 @@ public final class VerificationTemplateMetricProviderCloudWatchMetricDataQueryMe
 
     public static final VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatArgs Empty = new VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatArgs();
 
+    /**
+     * The metric to return, including the metric name, namespace, and dimensions.
+     * 
+     */
     @Import(name="metric")
     private @Nullable Output<VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricArgs> metric;
 
+    /**
+     * @return The metric to return, including the metric name, namespace, and dimensions.
+     * 
+     */
     public Optional<Output<VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricArgs>> metric() {
         return Optional.ofNullable(this.metric);
     }
 
+    /**
+     * The granularity, in seconds, of the returned data points.
+     * 
+     */
     @Import(name="metricPeriod")
     private @Nullable Output<Integer> metricPeriod;
 
+    /**
+     * @return The granularity, in seconds, of the returned data points.
+     * 
+     */
     public Optional<Output<Integer>> metricPeriod() {
         return Optional.ofNullable(this.metricPeriod);
     }
 
+    /**
+     * The statistic to return. It can include any CloudWatch statistic or extended statistic.
+     * 
+     */
     @Import(name="stat")
     private @Nullable Output<String> stat;
 
+    /**
+     * @return The statistic to return. It can include any CloudWatch statistic or extended statistic.
+     * 
+     */
     public Optional<Output<String>> stat() {
         return Optional.ofNullable(this.stat);
     }
 
+    /**
+     * This defines what unit you want to use when storing the metric.  Enum: `&#34;Seconds&#34; &#34;Microseconds&#34; &#34;Milliseconds&#34; &#34;Bytes&#34; &#34;Kilobytes&#34; &#34;Megabytes&#34; &#34;Gigabytes&#34; &#34;Terabytes&#34; &#34;Bits&#34; &#34;Kilobits&#34; &#34;Megabits&#34; &#34;Gigabits&#34; &#34;Terabits&#34; &#34;Percent&#34; &#34;Count&#34; &#34;Bytes/Second&#34; &#34;Kilobytes/Second&#34; &#34;Megabytes/Second&#34; &#34;Gigabytes/Second&#34; &#34;Terabytes/Second&#34; &#34;Bits/Second&#34; &#34;Kilobits/Second&#34; &#34;Megabits/Second&#34; &#34;Gigabits/Second&#34; &#34;Terabits/Second&#34; &#34;Count/Second&#34; &#34;None&#34;`
+     * 
+     */
     @Import(name="unit")
     private @Nullable Output<String> unit;
 
+    /**
+     * @return This defines what unit you want to use when storing the metric.  Enum: `&#34;Seconds&#34; &#34;Microseconds&#34; &#34;Milliseconds&#34; &#34;Bytes&#34; &#34;Kilobytes&#34; &#34;Megabytes&#34; &#34;Gigabytes&#34; &#34;Terabytes&#34; &#34;Bits&#34; &#34;Kilobits&#34; &#34;Megabits&#34; &#34;Gigabits&#34; &#34;Terabits&#34; &#34;Percent&#34; &#34;Count&#34; &#34;Bytes/Second&#34; &#34;Kilobytes/Second&#34; &#34;Megabytes/Second&#34; &#34;Gigabytes/Second&#34; &#34;Terabytes/Second&#34; &#34;Bits/Second&#34; &#34;Kilobits/Second&#34; &#34;Megabits/Second&#34; &#34;Gigabits/Second&#34; &#34;Terabits/Second&#34; &#34;Count/Second&#34; &#34;None&#34;`
+     * 
+     */
     public Optional<Output<String>> unit() {
         return Optional.ofNullable(this.unit);
     }
@@ -72,38 +104,86 @@ public final class VerificationTemplateMetricProviderCloudWatchMetricDataQueryMe
             $ = new VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param metric The metric to return, including the metric name, namespace, and dimensions.
+         * 
+         * @return builder
+         * 
+         */
         public Builder metric(@Nullable Output<VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricArgs> metric) {
             $.metric = metric;
             return this;
         }
 
+        /**
+         * @param metric The metric to return, including the metric name, namespace, and dimensions.
+         * 
+         * @return builder
+         * 
+         */
         public Builder metric(VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricArgs metric) {
             return metric(Output.of(metric));
         }
 
+        /**
+         * @param metricPeriod The granularity, in seconds, of the returned data points.
+         * 
+         * @return builder
+         * 
+         */
         public Builder metricPeriod(@Nullable Output<Integer> metricPeriod) {
             $.metricPeriod = metricPeriod;
             return this;
         }
 
+        /**
+         * @param metricPeriod The granularity, in seconds, of the returned data points.
+         * 
+         * @return builder
+         * 
+         */
         public Builder metricPeriod(Integer metricPeriod) {
             return metricPeriod(Output.of(metricPeriod));
         }
 
+        /**
+         * @param stat The statistic to return. It can include any CloudWatch statistic or extended statistic.
+         * 
+         * @return builder
+         * 
+         */
         public Builder stat(@Nullable Output<String> stat) {
             $.stat = stat;
             return this;
         }
 
+        /**
+         * @param stat The statistic to return. It can include any CloudWatch statistic or extended statistic.
+         * 
+         * @return builder
+         * 
+         */
         public Builder stat(String stat) {
             return stat(Output.of(stat));
         }
 
+        /**
+         * @param unit This defines what unit you want to use when storing the metric.  Enum: `&#34;Seconds&#34; &#34;Microseconds&#34; &#34;Milliseconds&#34; &#34;Bytes&#34; &#34;Kilobytes&#34; &#34;Megabytes&#34; &#34;Gigabytes&#34; &#34;Terabytes&#34; &#34;Bits&#34; &#34;Kilobits&#34; &#34;Megabits&#34; &#34;Gigabits&#34; &#34;Terabits&#34; &#34;Percent&#34; &#34;Count&#34; &#34;Bytes/Second&#34; &#34;Kilobytes/Second&#34; &#34;Megabytes/Second&#34; &#34;Gigabytes/Second&#34; &#34;Terabytes/Second&#34; &#34;Bits/Second&#34; &#34;Kilobits/Second&#34; &#34;Megabits/Second&#34; &#34;Gigabits/Second&#34; &#34;Terabits/Second&#34; &#34;Count/Second&#34; &#34;None&#34;`
+         * 
+         * @return builder
+         * 
+         */
         public Builder unit(@Nullable Output<String> unit) {
             $.unit = unit;
             return this;
         }
 
+        /**
+         * @param unit This defines what unit you want to use when storing the metric.  Enum: `&#34;Seconds&#34; &#34;Microseconds&#34; &#34;Milliseconds&#34; &#34;Bytes&#34; &#34;Kilobytes&#34; &#34;Megabytes&#34; &#34;Gigabytes&#34; &#34;Terabytes&#34; &#34;Bits&#34; &#34;Kilobits&#34; &#34;Megabits&#34; &#34;Gigabits&#34; &#34;Terabits&#34; &#34;Percent&#34; &#34;Count&#34; &#34;Bytes/Second&#34; &#34;Kilobytes/Second&#34; &#34;Megabytes/Second&#34; &#34;Gigabytes/Second&#34; &#34;Terabytes/Second&#34; &#34;Bits/Second&#34; &#34;Kilobits/Second&#34; &#34;Megabits/Second&#34; &#34;Gigabits/Second&#34; &#34;Terabits/Second&#34; &#34;Count/Second&#34; &#34;None&#34;`
+         * 
+         * @return builder
+         * 
+         */
         public Builder unit(String unit) {
             return unit(Output.of(unit));
         }

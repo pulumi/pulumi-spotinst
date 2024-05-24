@@ -15,23 +15,47 @@ public final class VerificationTemplateMetricProviderJobSpecJobTemplateTemplateS
 
     public static final VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArgs Empty = new VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArgs();
 
+    /**
+     * The entry point of a container.
+     * 
+     */
     @Import(name="commands", required=true)
     private Output<List<String>> commands;
 
+    /**
+     * @return The entry point of a container.
+     * 
+     */
     public Output<List<String>> commands() {
         return this.commands;
     }
 
+    /**
+     * The name of a container.
+     * 
+     */
     @Import(name="containerName", required=true)
     private Output<String> containerName;
 
+    /**
+     * @return The name of a container.
+     * 
+     */
     public Output<String> containerName() {
         return this.containerName;
     }
 
+    /**
+     * The image name of a container.
+     * 
+     */
     @Import(name="image", required=true)
     private Output<String> image;
 
+    /**
+     * @return The image name of a container.
+     * 
+     */
     public Output<String> image() {
         return this.image;
     }
@@ -62,33 +86,75 @@ public final class VerificationTemplateMetricProviderJobSpecJobTemplateTemplateS
             $ = new VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param commands The entry point of a container.
+         * 
+         * @return builder
+         * 
+         */
         public Builder commands(Output<List<String>> commands) {
             $.commands = commands;
             return this;
         }
 
+        /**
+         * @param commands The entry point of a container.
+         * 
+         * @return builder
+         * 
+         */
         public Builder commands(List<String> commands) {
             return commands(Output.of(commands));
         }
 
+        /**
+         * @param commands The entry point of a container.
+         * 
+         * @return builder
+         * 
+         */
         public Builder commands(String... commands) {
             return commands(List.of(commands));
         }
 
+        /**
+         * @param containerName The name of a container.
+         * 
+         * @return builder
+         * 
+         */
         public Builder containerName(Output<String> containerName) {
             $.containerName = containerName;
             return this;
         }
 
+        /**
+         * @param containerName The name of a container.
+         * 
+         * @return builder
+         * 
+         */
         public Builder containerName(String containerName) {
             return containerName(Output.of(containerName));
         }
 
+        /**
+         * @param image The image name of a container.
+         * 
+         * @return builder
+         * 
+         */
         public Builder image(Output<String> image) {
             $.image = image;
             return this;
         }
 
+        /**
+         * @param image The image name of a container.
+         * 
+         * @return builder
+         * 
+         */
         public Builder image(String image) {
             return image(Output.of(image));
         }

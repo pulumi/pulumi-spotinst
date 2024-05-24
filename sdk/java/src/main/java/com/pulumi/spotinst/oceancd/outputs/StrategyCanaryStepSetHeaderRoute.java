@@ -12,13 +12,29 @@ import java.util.Objects;
 
 @CustomType
 public final class StrategyCanaryStepSetHeaderRoute {
+    /**
+     * @return The name of the HeaderRoute group.
+     * 
+     */
     private String headerRouteName;
+    /**
+     * @return The matching rules for the header route.
+     * 
+     */
     private List<StrategyCanaryStepSetHeaderRouteMatch> matches;
 
     private StrategyCanaryStepSetHeaderRoute() {}
+    /**
+     * @return The name of the HeaderRoute group.
+     * 
+     */
     public String headerRouteName() {
         return this.headerRouteName;
     }
+    /**
+     * @return The matching rules for the header route.
+     * 
+     */
     public List<StrategyCanaryStepSetHeaderRouteMatch> matches() {
         return this.matches;
     }

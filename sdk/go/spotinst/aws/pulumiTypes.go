@@ -208,8 +208,10 @@ func (o BeanstalkDeploymentPreferencesPtrOutput) Strategies() BeanstalkDeploymen
 }
 
 type BeanstalkDeploymentPreferencesStrategy struct {
-	Action               *string `pulumi:"action"`
-	ShouldDrainInstances *bool   `pulumi:"shouldDrainInstances"`
+	// Action to take
+	Action *string `pulumi:"action"`
+	// Bool value if to wait to drain instance
+	ShouldDrainInstances *bool `pulumi:"shouldDrainInstances"`
 }
 
 // BeanstalkDeploymentPreferencesStrategyInput is an input type that accepts BeanstalkDeploymentPreferencesStrategyArgs and BeanstalkDeploymentPreferencesStrategyOutput values.
@@ -224,8 +226,10 @@ type BeanstalkDeploymentPreferencesStrategyInput interface {
 }
 
 type BeanstalkDeploymentPreferencesStrategyArgs struct {
-	Action               pulumi.StringPtrInput `pulumi:"action"`
-	ShouldDrainInstances pulumi.BoolPtrInput   `pulumi:"shouldDrainInstances"`
+	// Action to take
+	Action pulumi.StringPtrInput `pulumi:"action"`
+	// Bool value if to wait to drain instance
+	ShouldDrainInstances pulumi.BoolPtrInput `pulumi:"shouldDrainInstances"`
 }
 
 func (BeanstalkDeploymentPreferencesStrategyArgs) ElementType() reflect.Type {
@@ -279,10 +283,12 @@ func (o BeanstalkDeploymentPreferencesStrategyOutput) ToBeanstalkDeploymentPrefe
 	return o
 }
 
+// Action to take
 func (o BeanstalkDeploymentPreferencesStrategyOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BeanstalkDeploymentPreferencesStrategy) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
 
+// Bool value if to wait to drain instance
 func (o BeanstalkDeploymentPreferencesStrategyOutput) ShouldDrainInstances() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BeanstalkDeploymentPreferencesStrategy) *bool { return v.ShouldDrainInstances }).(pulumi.BoolPtrOutput)
 }
@@ -445,8 +451,11 @@ func (o BeanstalkManagedActionsPtrOutput) PlatformUpdate() BeanstalkManagedActio
 }
 
 type BeanstalkManagedActionsPlatformUpdate struct {
-	PerformAt   *string `pulumi:"performAt"`
-	TimeWindow  *string `pulumi:"timeWindow"`
+	// Actions to perform (options: timeWindow, never)
+	PerformAt *string `pulumi:"performAt"`
+	// Time Window for when action occurs ex. Mon:23:50-Tue:00:20
+	TimeWindow *string `pulumi:"timeWindow"`
+	// Level to update
 	UpdateLevel *string `pulumi:"updateLevel"`
 }
 
@@ -462,8 +471,11 @@ type BeanstalkManagedActionsPlatformUpdateInput interface {
 }
 
 type BeanstalkManagedActionsPlatformUpdateArgs struct {
-	PerformAt   pulumi.StringPtrInput `pulumi:"performAt"`
-	TimeWindow  pulumi.StringPtrInput `pulumi:"timeWindow"`
+	// Actions to perform (options: timeWindow, never)
+	PerformAt pulumi.StringPtrInput `pulumi:"performAt"`
+	// Time Window for when action occurs ex. Mon:23:50-Tue:00:20
+	TimeWindow pulumi.StringPtrInput `pulumi:"timeWindow"`
+	// Level to update
 	UpdateLevel pulumi.StringPtrInput `pulumi:"updateLevel"`
 }
 
@@ -544,14 +556,17 @@ func (o BeanstalkManagedActionsPlatformUpdateOutput) ToBeanstalkManagedActionsPl
 	}).(BeanstalkManagedActionsPlatformUpdatePtrOutput)
 }
 
+// Actions to perform (options: timeWindow, never)
 func (o BeanstalkManagedActionsPlatformUpdateOutput) PerformAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BeanstalkManagedActionsPlatformUpdate) *string { return v.PerformAt }).(pulumi.StringPtrOutput)
 }
 
+// Time Window for when action occurs ex. Mon:23:50-Tue:00:20
 func (o BeanstalkManagedActionsPlatformUpdateOutput) TimeWindow() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BeanstalkManagedActionsPlatformUpdate) *string { return v.TimeWindow }).(pulumi.StringPtrOutput)
 }
 
+// Level to update
 func (o BeanstalkManagedActionsPlatformUpdateOutput) UpdateLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BeanstalkManagedActionsPlatformUpdate) *string { return v.UpdateLevel }).(pulumi.StringPtrOutput)
 }
@@ -580,6 +595,7 @@ func (o BeanstalkManagedActionsPlatformUpdatePtrOutput) Elem() BeanstalkManagedA
 	}).(BeanstalkManagedActionsPlatformUpdateOutput)
 }
 
+// Actions to perform (options: timeWindow, never)
 func (o BeanstalkManagedActionsPlatformUpdatePtrOutput) PerformAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BeanstalkManagedActionsPlatformUpdate) *string {
 		if v == nil {
@@ -589,6 +605,7 @@ func (o BeanstalkManagedActionsPlatformUpdatePtrOutput) PerformAt() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// Time Window for when action occurs ex. Mon:23:50-Tue:00:20
 func (o BeanstalkManagedActionsPlatformUpdatePtrOutput) TimeWindow() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BeanstalkManagedActionsPlatformUpdate) *string {
 		if v == nil {
@@ -598,6 +615,7 @@ func (o BeanstalkManagedActionsPlatformUpdatePtrOutput) TimeWindow() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// Level to update
 func (o BeanstalkManagedActionsPlatformUpdatePtrOutput) UpdateLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BeanstalkManagedActionsPlatformUpdate) *string {
 		if v == nil {
@@ -7335,6 +7353,7 @@ func (o ElastigroupLoggingPtrOutput) Export() ElastigroupLoggingExportPtrOutput 
 }
 
 type ElastigroupLoggingExport struct {
+	// Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
 	S3s []ElastigroupLoggingExportS3 `pulumi:"s3s"`
 }
 
@@ -7350,6 +7369,7 @@ type ElastigroupLoggingExportInput interface {
 }
 
 type ElastigroupLoggingExportArgs struct {
+	// Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
 	S3s ElastigroupLoggingExportS3ArrayInput `pulumi:"s3s"`
 }
 
@@ -7430,6 +7450,7 @@ func (o ElastigroupLoggingExportOutput) ToElastigroupLoggingExportPtrOutputWithC
 	}).(ElastigroupLoggingExportPtrOutput)
 }
 
+// Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
 func (o ElastigroupLoggingExportOutput) S3s() ElastigroupLoggingExportS3ArrayOutput {
 	return o.ApplyT(func(v ElastigroupLoggingExport) []ElastigroupLoggingExportS3 { return v.S3s }).(ElastigroupLoggingExportS3ArrayOutput)
 }
@@ -7458,6 +7479,7 @@ func (o ElastigroupLoggingExportPtrOutput) Elem() ElastigroupLoggingExportOutput
 	}).(ElastigroupLoggingExportOutput)
 }
 
+// Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
 func (o ElastigroupLoggingExportPtrOutput) S3s() ElastigroupLoggingExportS3ArrayOutput {
 	return o.ApplyT(func(v *ElastigroupLoggingExport) []ElastigroupLoggingExportS3 {
 		if v == nil {
@@ -7468,7 +7490,7 @@ func (o ElastigroupLoggingExportPtrOutput) S3s() ElastigroupLoggingExportS3Array
 }
 
 type ElastigroupLoggingExportS3 struct {
-	// The group ID.
+	// The identifier of The S3 data integration to export the logs to.
 	Id string `pulumi:"id"`
 }
 
@@ -7484,7 +7506,7 @@ type ElastigroupLoggingExportS3Input interface {
 }
 
 type ElastigroupLoggingExportS3Args struct {
-	// The group ID.
+	// The identifier of The S3 data integration to export the logs to.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -7539,7 +7561,7 @@ func (o ElastigroupLoggingExportS3Output) ToElastigroupLoggingExportS3OutputWith
 	return o
 }
 
-// The group ID.
+// The identifier of The S3 data integration to export the logs to.
 func (o ElastigroupLoggingExportS3Output) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupLoggingExportS3) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -15592,14 +15614,22 @@ func (o MrScalarTerminationPolicyArrayOutput) Index(i pulumi.IntInput) MrScalarT
 }
 
 type MrScalarTerminationPolicyStatement struct {
-	EvaluationPeriods *int    `pulumi:"evaluationPeriods"`
-	MetricName        string  `pulumi:"metricName"`
-	Namespace         string  `pulumi:"namespace"`
-	Operator          *string `pulumi:"operator"`
-	Period            *int    `pulumi:"period"`
-	Statistic         *string `pulumi:"statistic"`
-	Threshold         float64 `pulumi:"threshold"`
-	Unit              *string `pulumi:"unit"`
+	// The number of periods over which data is compared to the specified threshold.
+	EvaluationPeriods *int `pulumi:"evaluationPeriods"`
+	// The name of the metric in CloudWatch which the statement will be based on.
+	MetricName string `pulumi:"metricName"`
+	// Must contain the value: `AWS/ElasticMapReduce`.
+	Namespace string `pulumi:"namespace"`
+	// The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+	Operator *string `pulumi:"operator"`
+	// The time window in seconds over which the statistic is applied.
+	Period *int `pulumi:"period"`
+	// The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
+	Statistic *string `pulumi:"statistic"`
+	// The value that the specified statistic is compared to.
+	Threshold float64 `pulumi:"threshold"`
+	// The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+	Unit *string `pulumi:"unit"`
 }
 
 // MrScalarTerminationPolicyStatementInput is an input type that accepts MrScalarTerminationPolicyStatementArgs and MrScalarTerminationPolicyStatementOutput values.
@@ -15614,14 +15644,22 @@ type MrScalarTerminationPolicyStatementInput interface {
 }
 
 type MrScalarTerminationPolicyStatementArgs struct {
-	EvaluationPeriods pulumi.IntPtrInput    `pulumi:"evaluationPeriods"`
-	MetricName        pulumi.StringInput    `pulumi:"metricName"`
-	Namespace         pulumi.StringInput    `pulumi:"namespace"`
-	Operator          pulumi.StringPtrInput `pulumi:"operator"`
-	Period            pulumi.IntPtrInput    `pulumi:"period"`
-	Statistic         pulumi.StringPtrInput `pulumi:"statistic"`
-	Threshold         pulumi.Float64Input   `pulumi:"threshold"`
-	Unit              pulumi.StringPtrInput `pulumi:"unit"`
+	// The number of periods over which data is compared to the specified threshold.
+	EvaluationPeriods pulumi.IntPtrInput `pulumi:"evaluationPeriods"`
+	// The name of the metric in CloudWatch which the statement will be based on.
+	MetricName pulumi.StringInput `pulumi:"metricName"`
+	// Must contain the value: `AWS/ElasticMapReduce`.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+	Operator pulumi.StringPtrInput `pulumi:"operator"`
+	// The time window in seconds over which the statistic is applied.
+	Period pulumi.IntPtrInput `pulumi:"period"`
+	// The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
+	Statistic pulumi.StringPtrInput `pulumi:"statistic"`
+	// The value that the specified statistic is compared to.
+	Threshold pulumi.Float64Input `pulumi:"threshold"`
+	// The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
 }
 
 func (MrScalarTerminationPolicyStatementArgs) ElementType() reflect.Type {
@@ -15675,34 +15713,42 @@ func (o MrScalarTerminationPolicyStatementOutput) ToMrScalarTerminationPolicySta
 	return o
 }
 
+// The number of periods over which data is compared to the specified threshold.
 func (o MrScalarTerminationPolicyStatementOutput) EvaluationPeriods() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v MrScalarTerminationPolicyStatement) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
 }
 
+// The name of the metric in CloudWatch which the statement will be based on.
 func (o MrScalarTerminationPolicyStatementOutput) MetricName() pulumi.StringOutput {
 	return o.ApplyT(func(v MrScalarTerminationPolicyStatement) string { return v.MetricName }).(pulumi.StringOutput)
 }
 
+// Must contain the value: `AWS/ElasticMapReduce`.
 func (o MrScalarTerminationPolicyStatementOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v MrScalarTerminationPolicyStatement) string { return v.Namespace }).(pulumi.StringOutput)
 }
 
+// The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
 func (o MrScalarTerminationPolicyStatementOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MrScalarTerminationPolicyStatement) *string { return v.Operator }).(pulumi.StringPtrOutput)
 }
 
+// The time window in seconds over which the statistic is applied.
 func (o MrScalarTerminationPolicyStatementOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v MrScalarTerminationPolicyStatement) *int { return v.Period }).(pulumi.IntPtrOutput)
 }
 
+// The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
 func (o MrScalarTerminationPolicyStatementOutput) Statistic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MrScalarTerminationPolicyStatement) *string { return v.Statistic }).(pulumi.StringPtrOutput)
 }
 
+// The value that the specified statistic is compared to.
 func (o MrScalarTerminationPolicyStatementOutput) Threshold() pulumi.Float64Output {
 	return o.ApplyT(func(v MrScalarTerminationPolicyStatement) float64 { return v.Threshold }).(pulumi.Float64Output)
 }
 
+// The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
 func (o MrScalarTerminationPolicyStatementOutput) Unit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MrScalarTerminationPolicyStatement) *string { return v.Unit }).(pulumi.StringPtrOutput)
 }
@@ -16685,16 +16731,26 @@ func (o OceanBlockDeviceMappingArrayOutput) Index(i pulumi.IntInput) OceanBlockD
 }
 
 type OceanBlockDeviceMappingEbs struct {
-	DeleteOnTermination *bool                                        `pulumi:"deleteOnTermination"`
-	DynamicIops         *OceanBlockDeviceMappingEbsDynamicIops       `pulumi:"dynamicIops"`
-	DynamicVolumeSize   *OceanBlockDeviceMappingEbsDynamicVolumeSize `pulumi:"dynamicVolumeSize"`
-	Encrypted           *bool                                        `pulumi:"encrypted"`
-	Iops                *int                                         `pulumi:"iops"`
-	KmsKeyId            *string                                      `pulumi:"kmsKeyId"`
-	SnapshotId          *string                                      `pulumi:"snapshotId"`
-	Throughput          *int                                         `pulumi:"throughput"`
-	VolumeSize          *int                                         `pulumi:"volumeSize"`
-	VolumeType          *string                                      `pulumi:"volumeType"`
+	// Boolean. Flag to delete the EBS on instance termination.
+	DeleteOnTermination *bool `pulumi:"deleteOnTermination"`
+	// Set dynamic IOPS properties. When using this object, you cannot use the `iops` attribute. You must use one or the other.
+	DynamicIops *OceanBlockDeviceMappingEbsDynamicIops `pulumi:"dynamicIops"`
+	// Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
+	DynamicVolumeSize *OceanBlockDeviceMappingEbsDynamicVolumeSize `pulumi:"dynamicVolumeSize"`
+	// Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+	Encrypted *bool `pulumi:"encrypted"`
+	// Must be greater than or equal to 0.
+	Iops *int `pulumi:"iops"`
+	// String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+	KmsKeyId *string `pulumi:"kmsKeyId"`
+	// (Optional) String. The Snapshot ID to mount by.
+	SnapshotId *string `pulumi:"snapshotId"`
+	// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = `gp3`.
+	Throughput *int `pulumi:"throughput"`
+	// Int. The size, in GB of the volume.
+	VolumeSize *int `pulumi:"volumeSize"`
+	// String. The type of the volume. (Example: `gp2`).
+	VolumeType *string `pulumi:"volumeType"`
 }
 
 // OceanBlockDeviceMappingEbsInput is an input type that accepts OceanBlockDeviceMappingEbsArgs and OceanBlockDeviceMappingEbsOutput values.
@@ -16709,16 +16765,26 @@ type OceanBlockDeviceMappingEbsInput interface {
 }
 
 type OceanBlockDeviceMappingEbsArgs struct {
-	DeleteOnTermination pulumi.BoolPtrInput                                 `pulumi:"deleteOnTermination"`
-	DynamicIops         OceanBlockDeviceMappingEbsDynamicIopsPtrInput       `pulumi:"dynamicIops"`
-	DynamicVolumeSize   OceanBlockDeviceMappingEbsDynamicVolumeSizePtrInput `pulumi:"dynamicVolumeSize"`
-	Encrypted           pulumi.BoolPtrInput                                 `pulumi:"encrypted"`
-	Iops                pulumi.IntPtrInput                                  `pulumi:"iops"`
-	KmsKeyId            pulumi.StringPtrInput                               `pulumi:"kmsKeyId"`
-	SnapshotId          pulumi.StringPtrInput                               `pulumi:"snapshotId"`
-	Throughput          pulumi.IntPtrInput                                  `pulumi:"throughput"`
-	VolumeSize          pulumi.IntPtrInput                                  `pulumi:"volumeSize"`
-	VolumeType          pulumi.StringPtrInput                               `pulumi:"volumeType"`
+	// Boolean. Flag to delete the EBS on instance termination.
+	DeleteOnTermination pulumi.BoolPtrInput `pulumi:"deleteOnTermination"`
+	// Set dynamic IOPS properties. When using this object, you cannot use the `iops` attribute. You must use one or the other.
+	DynamicIops OceanBlockDeviceMappingEbsDynamicIopsPtrInput `pulumi:"dynamicIops"`
+	// Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
+	DynamicVolumeSize OceanBlockDeviceMappingEbsDynamicVolumeSizePtrInput `pulumi:"dynamicVolumeSize"`
+	// Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	// Must be greater than or equal to 0.
+	Iops pulumi.IntPtrInput `pulumi:"iops"`
+	// String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
+	// (Optional) String. The Snapshot ID to mount by.
+	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
+	// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = `gp3`.
+	Throughput pulumi.IntPtrInput `pulumi:"throughput"`
+	// Int. The size, in GB of the volume.
+	VolumeSize pulumi.IntPtrInput `pulumi:"volumeSize"`
+	// String. The type of the volume. (Example: `gp2`).
+	VolumeType pulumi.StringPtrInput `pulumi:"volumeType"`
 }
 
 func (OceanBlockDeviceMappingEbsArgs) ElementType() reflect.Type {
@@ -16798,44 +16864,54 @@ func (o OceanBlockDeviceMappingEbsOutput) ToOceanBlockDeviceMappingEbsPtrOutputW
 	}).(OceanBlockDeviceMappingEbsPtrOutput)
 }
 
+// Boolean. Flag to delete the EBS on instance termination.
 func (o OceanBlockDeviceMappingEbsOutput) DeleteOnTermination() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanBlockDeviceMappingEbs) *bool { return v.DeleteOnTermination }).(pulumi.BoolPtrOutput)
 }
 
+// Set dynamic IOPS properties. When using this object, you cannot use the `iops` attribute. You must use one or the other.
 func (o OceanBlockDeviceMappingEbsOutput) DynamicIops() OceanBlockDeviceMappingEbsDynamicIopsPtrOutput {
 	return o.ApplyT(func(v OceanBlockDeviceMappingEbs) *OceanBlockDeviceMappingEbsDynamicIops { return v.DynamicIops }).(OceanBlockDeviceMappingEbsDynamicIopsPtrOutput)
 }
 
+// Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
 func (o OceanBlockDeviceMappingEbsOutput) DynamicVolumeSize() OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput {
 	return o.ApplyT(func(v OceanBlockDeviceMappingEbs) *OceanBlockDeviceMappingEbsDynamicVolumeSize {
 		return v.DynamicVolumeSize
 	}).(OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput)
 }
 
+// Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
 func (o OceanBlockDeviceMappingEbsOutput) Encrypted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanBlockDeviceMappingEbs) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
 }
 
+// Must be greater than or equal to 0.
 func (o OceanBlockDeviceMappingEbsOutput) Iops() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanBlockDeviceMappingEbs) *int { return v.Iops }).(pulumi.IntPtrOutput)
 }
 
+// String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
 func (o OceanBlockDeviceMappingEbsOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanBlockDeviceMappingEbs) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }
 
+// (Optional) String. The Snapshot ID to mount by.
 func (o OceanBlockDeviceMappingEbsOutput) SnapshotId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanBlockDeviceMappingEbs) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
 }
 
+// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = `gp3`.
 func (o OceanBlockDeviceMappingEbsOutput) Throughput() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanBlockDeviceMappingEbs) *int { return v.Throughput }).(pulumi.IntPtrOutput)
 }
 
+// Int. The size, in GB of the volume.
 func (o OceanBlockDeviceMappingEbsOutput) VolumeSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanBlockDeviceMappingEbs) *int { return v.VolumeSize }).(pulumi.IntPtrOutput)
 }
 
+// String. The type of the volume. (Example: `gp2`).
 func (o OceanBlockDeviceMappingEbsOutput) VolumeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanBlockDeviceMappingEbs) *string { return v.VolumeType }).(pulumi.StringPtrOutput)
 }
@@ -16864,6 +16940,7 @@ func (o OceanBlockDeviceMappingEbsPtrOutput) Elem() OceanBlockDeviceMappingEbsOu
 	}).(OceanBlockDeviceMappingEbsOutput)
 }
 
+// Boolean. Flag to delete the EBS on instance termination.
 func (o OceanBlockDeviceMappingEbsPtrOutput) DeleteOnTermination() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanBlockDeviceMappingEbs) *bool {
 		if v == nil {
@@ -16873,6 +16950,7 @@ func (o OceanBlockDeviceMappingEbsPtrOutput) DeleteOnTermination() pulumi.BoolPt
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Set dynamic IOPS properties. When using this object, you cannot use the `iops` attribute. You must use one or the other.
 func (o OceanBlockDeviceMappingEbsPtrOutput) DynamicIops() OceanBlockDeviceMappingEbsDynamicIopsPtrOutput {
 	return o.ApplyT(func(v *OceanBlockDeviceMappingEbs) *OceanBlockDeviceMappingEbsDynamicIops {
 		if v == nil {
@@ -16882,6 +16960,7 @@ func (o OceanBlockDeviceMappingEbsPtrOutput) DynamicIops() OceanBlockDeviceMappi
 	}).(OceanBlockDeviceMappingEbsDynamicIopsPtrOutput)
 }
 
+// Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
 func (o OceanBlockDeviceMappingEbsPtrOutput) DynamicVolumeSize() OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput {
 	return o.ApplyT(func(v *OceanBlockDeviceMappingEbs) *OceanBlockDeviceMappingEbsDynamicVolumeSize {
 		if v == nil {
@@ -16891,6 +16970,7 @@ func (o OceanBlockDeviceMappingEbsPtrOutput) DynamicVolumeSize() OceanBlockDevic
 	}).(OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput)
 }
 
+// Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
 func (o OceanBlockDeviceMappingEbsPtrOutput) Encrypted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanBlockDeviceMappingEbs) *bool {
 		if v == nil {
@@ -16900,6 +16980,7 @@ func (o OceanBlockDeviceMappingEbsPtrOutput) Encrypted() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Must be greater than or equal to 0.
 func (o OceanBlockDeviceMappingEbsPtrOutput) Iops() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanBlockDeviceMappingEbs) *int {
 		if v == nil {
@@ -16909,6 +16990,7 @@ func (o OceanBlockDeviceMappingEbsPtrOutput) Iops() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
 func (o OceanBlockDeviceMappingEbsPtrOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanBlockDeviceMappingEbs) *string {
 		if v == nil {
@@ -16918,6 +17000,7 @@ func (o OceanBlockDeviceMappingEbsPtrOutput) KmsKeyId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Optional) String. The Snapshot ID to mount by.
 func (o OceanBlockDeviceMappingEbsPtrOutput) SnapshotId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanBlockDeviceMappingEbs) *string {
 		if v == nil {
@@ -16927,6 +17010,7 @@ func (o OceanBlockDeviceMappingEbsPtrOutput) SnapshotId() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = `gp3`.
 func (o OceanBlockDeviceMappingEbsPtrOutput) Throughput() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanBlockDeviceMappingEbs) *int {
 		if v == nil {
@@ -16936,6 +17020,7 @@ func (o OceanBlockDeviceMappingEbsPtrOutput) Throughput() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Int. The size, in GB of the volume.
 func (o OceanBlockDeviceMappingEbsPtrOutput) VolumeSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanBlockDeviceMappingEbs) *int {
 		if v == nil {
@@ -16945,6 +17030,7 @@ func (o OceanBlockDeviceMappingEbsPtrOutput) VolumeSize() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// String. The type of the volume. (Example: `gp2`).
 func (o OceanBlockDeviceMappingEbsPtrOutput) VolumeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanBlockDeviceMappingEbs) *string {
 		if v == nil {
@@ -16955,9 +17041,11 @@ func (o OceanBlockDeviceMappingEbsPtrOutput) VolumeType() pulumi.StringPtrOutput
 }
 
 type OceanBlockDeviceMappingEbsDynamicIops struct {
-	BaseSize            int    `pulumi:"baseSize"`
-	Resource            string `pulumi:"resource"`
-	SizePerResourceUnit int    `pulumi:"sizePerResourceUnit"`
+	// Initial size for IOPS.
+	BaseSize int    `pulumi:"baseSize"`
+	Resource string `pulumi:"resource"`
+	// Additional size per resource unit (in IOPS). (Example: `baseSize=50`, `sizePerResourceUnit=20`, and an instance with 2 CPU is launched; its IOPS size will be: 90).
+	SizePerResourceUnit int `pulumi:"sizePerResourceUnit"`
 }
 
 // OceanBlockDeviceMappingEbsDynamicIopsInput is an input type that accepts OceanBlockDeviceMappingEbsDynamicIopsArgs and OceanBlockDeviceMappingEbsDynamicIopsOutput values.
@@ -16972,9 +17060,11 @@ type OceanBlockDeviceMappingEbsDynamicIopsInput interface {
 }
 
 type OceanBlockDeviceMappingEbsDynamicIopsArgs struct {
-	BaseSize            pulumi.IntInput    `pulumi:"baseSize"`
-	Resource            pulumi.StringInput `pulumi:"resource"`
-	SizePerResourceUnit pulumi.IntInput    `pulumi:"sizePerResourceUnit"`
+	// Initial size for IOPS.
+	BaseSize pulumi.IntInput    `pulumi:"baseSize"`
+	Resource pulumi.StringInput `pulumi:"resource"`
+	// Additional size per resource unit (in IOPS). (Example: `baseSize=50`, `sizePerResourceUnit=20`, and an instance with 2 CPU is launched; its IOPS size will be: 90).
+	SizePerResourceUnit pulumi.IntInput `pulumi:"sizePerResourceUnit"`
 }
 
 func (OceanBlockDeviceMappingEbsDynamicIopsArgs) ElementType() reflect.Type {
@@ -17054,6 +17144,7 @@ func (o OceanBlockDeviceMappingEbsDynamicIopsOutput) ToOceanBlockDeviceMappingEb
 	}).(OceanBlockDeviceMappingEbsDynamicIopsPtrOutput)
 }
 
+// Initial size for IOPS.
 func (o OceanBlockDeviceMappingEbsDynamicIopsOutput) BaseSize() pulumi.IntOutput {
 	return o.ApplyT(func(v OceanBlockDeviceMappingEbsDynamicIops) int { return v.BaseSize }).(pulumi.IntOutput)
 }
@@ -17062,6 +17153,7 @@ func (o OceanBlockDeviceMappingEbsDynamicIopsOutput) Resource() pulumi.StringOut
 	return o.ApplyT(func(v OceanBlockDeviceMappingEbsDynamicIops) string { return v.Resource }).(pulumi.StringOutput)
 }
 
+// Additional size per resource unit (in IOPS). (Example: `baseSize=50`, `sizePerResourceUnit=20`, and an instance with 2 CPU is launched; its IOPS size will be: 90).
 func (o OceanBlockDeviceMappingEbsDynamicIopsOutput) SizePerResourceUnit() pulumi.IntOutput {
 	return o.ApplyT(func(v OceanBlockDeviceMappingEbsDynamicIops) int { return v.SizePerResourceUnit }).(pulumi.IntOutput)
 }
@@ -17090,6 +17182,7 @@ func (o OceanBlockDeviceMappingEbsDynamicIopsPtrOutput) Elem() OceanBlockDeviceM
 	}).(OceanBlockDeviceMappingEbsDynamicIopsOutput)
 }
 
+// Initial size for IOPS.
 func (o OceanBlockDeviceMappingEbsDynamicIopsPtrOutput) BaseSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanBlockDeviceMappingEbsDynamicIops) *int {
 		if v == nil {
@@ -17108,6 +17201,7 @@ func (o OceanBlockDeviceMappingEbsDynamicIopsPtrOutput) Resource() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// Additional size per resource unit (in IOPS). (Example: `baseSize=50`, `sizePerResourceUnit=20`, and an instance with 2 CPU is launched; its IOPS size will be: 90).
 func (o OceanBlockDeviceMappingEbsDynamicIopsPtrOutput) SizePerResourceUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanBlockDeviceMappingEbsDynamicIops) *int {
 		if v == nil {
@@ -17118,9 +17212,12 @@ func (o OceanBlockDeviceMappingEbsDynamicIopsPtrOutput) SizePerResourceUnit() pu
 }
 
 type OceanBlockDeviceMappingEbsDynamicVolumeSize struct {
-	BaseSize            int    `pulumi:"baseSize"`
-	Resource            string `pulumi:"resource"`
-	SizePerResourceUnit int    `pulumi:"sizePerResourceUnit"`
+	// Int. Initial size for volume. (Example: 50)
+	BaseSize int `pulumi:"baseSize"`
+	// String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)
+	Resource string `pulumi:"resource"`
+	// Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB).
+	SizePerResourceUnit int `pulumi:"sizePerResourceUnit"`
 }
 
 // OceanBlockDeviceMappingEbsDynamicVolumeSizeInput is an input type that accepts OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs and OceanBlockDeviceMappingEbsDynamicVolumeSizeOutput values.
@@ -17135,9 +17232,12 @@ type OceanBlockDeviceMappingEbsDynamicVolumeSizeInput interface {
 }
 
 type OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs struct {
-	BaseSize            pulumi.IntInput    `pulumi:"baseSize"`
-	Resource            pulumi.StringInput `pulumi:"resource"`
-	SizePerResourceUnit pulumi.IntInput    `pulumi:"sizePerResourceUnit"`
+	// Int. Initial size for volume. (Example: 50)
+	BaseSize pulumi.IntInput `pulumi:"baseSize"`
+	// String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)
+	Resource pulumi.StringInput `pulumi:"resource"`
+	// Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB).
+	SizePerResourceUnit pulumi.IntInput `pulumi:"sizePerResourceUnit"`
 }
 
 func (OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs) ElementType() reflect.Type {
@@ -17217,14 +17317,17 @@ func (o OceanBlockDeviceMappingEbsDynamicVolumeSizeOutput) ToOceanBlockDeviceMap
 	}).(OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput)
 }
 
+// Int. Initial size for volume. (Example: 50)
 func (o OceanBlockDeviceMappingEbsDynamicVolumeSizeOutput) BaseSize() pulumi.IntOutput {
 	return o.ApplyT(func(v OceanBlockDeviceMappingEbsDynamicVolumeSize) int { return v.BaseSize }).(pulumi.IntOutput)
 }
 
+// String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)
 func (o OceanBlockDeviceMappingEbsDynamicVolumeSizeOutput) Resource() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanBlockDeviceMappingEbsDynamicVolumeSize) string { return v.Resource }).(pulumi.StringOutput)
 }
 
+// Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB).
 func (o OceanBlockDeviceMappingEbsDynamicVolumeSizeOutput) SizePerResourceUnit() pulumi.IntOutput {
 	return o.ApplyT(func(v OceanBlockDeviceMappingEbsDynamicVolumeSize) int { return v.SizePerResourceUnit }).(pulumi.IntOutput)
 }
@@ -17253,6 +17356,7 @@ func (o OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput) Elem() OceanBlockD
 	}).(OceanBlockDeviceMappingEbsDynamicVolumeSizeOutput)
 }
 
+// Int. Initial size for volume. (Example: 50)
 func (o OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput) BaseSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanBlockDeviceMappingEbsDynamicVolumeSize) *int {
 		if v == nil {
@@ -17262,6 +17366,7 @@ func (o OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput) BaseSize() pulumi.
 	}).(pulumi.IntPtrOutput)
 }
 
+// String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)
 func (o OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput) Resource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanBlockDeviceMappingEbsDynamicVolumeSize) *string {
 		if v == nil {
@@ -17271,6 +17376,7 @@ func (o OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput) Resource() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+// Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB).
 func (o OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput) SizePerResourceUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanBlockDeviceMappingEbsDynamicVolumeSize) *int {
 		if v == nil {
@@ -18367,10 +18473,9 @@ type OceanLaunchSpecBlockDeviceMapping struct {
 	// String. Set device name. (Example: `/dev/xvda`).
 	DeviceName *string `pulumi:"deviceName"`
 	// Object. Set Elastic Block Store properties .
-	Ebs *OceanLaunchSpecBlockDeviceMappingEbs `pulumi:"ebs"`
-	// String. Suppresses the specified device included in the block device mapping of the AMI.
-	NoDevice    *string `pulumi:"noDevice"`
-	VirtualName *string `pulumi:"virtualName"`
+	Ebs         *OceanLaunchSpecBlockDeviceMappingEbs `pulumi:"ebs"`
+	NoDevice    *string                               `pulumi:"noDevice"`
+	VirtualName *string                               `pulumi:"virtualName"`
 }
 
 // OceanLaunchSpecBlockDeviceMappingInput is an input type that accepts OceanLaunchSpecBlockDeviceMappingArgs and OceanLaunchSpecBlockDeviceMappingOutput values.
@@ -18388,10 +18493,9 @@ type OceanLaunchSpecBlockDeviceMappingArgs struct {
 	// String. Set device name. (Example: `/dev/xvda`).
 	DeviceName pulumi.StringPtrInput `pulumi:"deviceName"`
 	// Object. Set Elastic Block Store properties .
-	Ebs OceanLaunchSpecBlockDeviceMappingEbsPtrInput `pulumi:"ebs"`
-	// String. Suppresses the specified device included in the block device mapping of the AMI.
-	NoDevice    pulumi.StringPtrInput `pulumi:"noDevice"`
-	VirtualName pulumi.StringPtrInput `pulumi:"virtualName"`
+	Ebs         OceanLaunchSpecBlockDeviceMappingEbsPtrInput `pulumi:"ebs"`
+	NoDevice    pulumi.StringPtrInput                        `pulumi:"noDevice"`
+	VirtualName pulumi.StringPtrInput                        `pulumi:"virtualName"`
 }
 
 func (OceanLaunchSpecBlockDeviceMappingArgs) ElementType() reflect.Type {
@@ -18455,7 +18559,6 @@ func (o OceanLaunchSpecBlockDeviceMappingOutput) Ebs() OceanLaunchSpecBlockDevic
 	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMapping) *OceanLaunchSpecBlockDeviceMappingEbs { return v.Ebs }).(OceanLaunchSpecBlockDeviceMappingEbsPtrOutput)
 }
 
-// String. Suppresses the specified device included in the block device mapping of the AMI.
 func (o OceanLaunchSpecBlockDeviceMappingOutput) NoDevice() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMapping) *string { return v.NoDevice }).(pulumi.StringPtrOutput)
 }
@@ -18485,15 +18588,24 @@ func (o OceanLaunchSpecBlockDeviceMappingArrayOutput) Index(i pulumi.IntInput) O
 }
 
 type OceanLaunchSpecBlockDeviceMappingEbs struct {
-	DeleteOnTermination *bool                                                  `pulumi:"deleteOnTermination"`
-	DynamicVolumeSize   *OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize `pulumi:"dynamicVolumeSize"`
-	Encrypted           *bool                                                  `pulumi:"encrypted"`
-	Iops                *int                                                   `pulumi:"iops"`
-	KmsKeyId            *string                                                `pulumi:"kmsKeyId"`
-	SnapshotId          *string                                                `pulumi:"snapshotId"`
-	Throughput          *int                                                   `pulumi:"throughput"`
-	VolumeSize          *int                                                   `pulumi:"volumeSize"`
-	VolumeType          *string                                                `pulumi:"volumeType"`
+	// Boolean. Flag to delete the EBS on instance termination.
+	DeleteOnTermination *bool `pulumi:"deleteOnTermination"`
+	// Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
+	DynamicVolumeSize *OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize `pulumi:"dynamicVolumeSize"`
+	// Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+	Encrypted *bool `pulumi:"encrypted"`
+	// Int. The number of I/O operations per second (IOPS) that the volume supports.
+	Iops *int `pulumi:"iops"`
+	// String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+	KmsKeyId *string `pulumi:"kmsKeyId"`
+	// (Optional) String. The Snapshot ID to mount by.
+	SnapshotId *string `pulumi:"snapshotId"`
+	// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = `gp3`.
+	Throughput *int `pulumi:"throughput"`
+	// Int. The size, in GB of the volume.
+	VolumeSize *int `pulumi:"volumeSize"`
+	// String. The type of the volume. (Example: `gp2`).
+	VolumeType *string `pulumi:"volumeType"`
 }
 
 // OceanLaunchSpecBlockDeviceMappingEbsInput is an input type that accepts OceanLaunchSpecBlockDeviceMappingEbsArgs and OceanLaunchSpecBlockDeviceMappingEbsOutput values.
@@ -18508,15 +18620,24 @@ type OceanLaunchSpecBlockDeviceMappingEbsInput interface {
 }
 
 type OceanLaunchSpecBlockDeviceMappingEbsArgs struct {
-	DeleteOnTermination pulumi.BoolPtrInput                                           `pulumi:"deleteOnTermination"`
-	DynamicVolumeSize   OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrInput `pulumi:"dynamicVolumeSize"`
-	Encrypted           pulumi.BoolPtrInput                                           `pulumi:"encrypted"`
-	Iops                pulumi.IntPtrInput                                            `pulumi:"iops"`
-	KmsKeyId            pulumi.StringPtrInput                                         `pulumi:"kmsKeyId"`
-	SnapshotId          pulumi.StringPtrInput                                         `pulumi:"snapshotId"`
-	Throughput          pulumi.IntPtrInput                                            `pulumi:"throughput"`
-	VolumeSize          pulumi.IntPtrInput                                            `pulumi:"volumeSize"`
-	VolumeType          pulumi.StringPtrInput                                         `pulumi:"volumeType"`
+	// Boolean. Flag to delete the EBS on instance termination.
+	DeleteOnTermination pulumi.BoolPtrInput `pulumi:"deleteOnTermination"`
+	// Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
+	DynamicVolumeSize OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrInput `pulumi:"dynamicVolumeSize"`
+	// Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	// Int. The number of I/O operations per second (IOPS) that the volume supports.
+	Iops pulumi.IntPtrInput `pulumi:"iops"`
+	// String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
+	// (Optional) String. The Snapshot ID to mount by.
+	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
+	// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = `gp3`.
+	Throughput pulumi.IntPtrInput `pulumi:"throughput"`
+	// Int. The size, in GB of the volume.
+	VolumeSize pulumi.IntPtrInput `pulumi:"volumeSize"`
+	// String. The type of the volume. (Example: `gp2`).
+	VolumeType pulumi.StringPtrInput `pulumi:"volumeType"`
 }
 
 func (OceanLaunchSpecBlockDeviceMappingEbsArgs) ElementType() reflect.Type {
@@ -18596,40 +18717,49 @@ func (o OceanLaunchSpecBlockDeviceMappingEbsOutput) ToOceanLaunchSpecBlockDevice
 	}).(OceanLaunchSpecBlockDeviceMappingEbsPtrOutput)
 }
 
+// Boolean. Flag to delete the EBS on instance termination.
 func (o OceanLaunchSpecBlockDeviceMappingEbsOutput) DeleteOnTermination() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMappingEbs) *bool { return v.DeleteOnTermination }).(pulumi.BoolPtrOutput)
 }
 
+// Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
 func (o OceanLaunchSpecBlockDeviceMappingEbsOutput) DynamicVolumeSize() OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMappingEbs) *OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize {
 		return v.DynamicVolumeSize
 	}).(OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrOutput)
 }
 
+// Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
 func (o OceanLaunchSpecBlockDeviceMappingEbsOutput) Encrypted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMappingEbs) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
 }
 
+// Int. The number of I/O operations per second (IOPS) that the volume supports.
 func (o OceanLaunchSpecBlockDeviceMappingEbsOutput) Iops() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMappingEbs) *int { return v.Iops }).(pulumi.IntPtrOutput)
 }
 
+// String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
 func (o OceanLaunchSpecBlockDeviceMappingEbsOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMappingEbs) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }
 
+// (Optional) String. The Snapshot ID to mount by.
 func (o OceanLaunchSpecBlockDeviceMappingEbsOutput) SnapshotId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMappingEbs) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
 }
 
+// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = `gp3`.
 func (o OceanLaunchSpecBlockDeviceMappingEbsOutput) Throughput() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMappingEbs) *int { return v.Throughput }).(pulumi.IntPtrOutput)
 }
 
+// Int. The size, in GB of the volume.
 func (o OceanLaunchSpecBlockDeviceMappingEbsOutput) VolumeSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMappingEbs) *int { return v.VolumeSize }).(pulumi.IntPtrOutput)
 }
 
+// String. The type of the volume. (Example: `gp2`).
 func (o OceanLaunchSpecBlockDeviceMappingEbsOutput) VolumeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMappingEbs) *string { return v.VolumeType }).(pulumi.StringPtrOutput)
 }
@@ -18658,6 +18788,7 @@ func (o OceanLaunchSpecBlockDeviceMappingEbsPtrOutput) Elem() OceanLaunchSpecBlo
 	}).(OceanLaunchSpecBlockDeviceMappingEbsOutput)
 }
 
+// Boolean. Flag to delete the EBS on instance termination.
 func (o OceanLaunchSpecBlockDeviceMappingEbsPtrOutput) DeleteOnTermination() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanLaunchSpecBlockDeviceMappingEbs) *bool {
 		if v == nil {
@@ -18667,6 +18798,7 @@ func (o OceanLaunchSpecBlockDeviceMappingEbsPtrOutput) DeleteOnTermination() pul
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
 func (o OceanLaunchSpecBlockDeviceMappingEbsPtrOutput) DynamicVolumeSize() OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrOutput {
 	return o.ApplyT(func(v *OceanLaunchSpecBlockDeviceMappingEbs) *OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize {
 		if v == nil {
@@ -18676,6 +18808,7 @@ func (o OceanLaunchSpecBlockDeviceMappingEbsPtrOutput) DynamicVolumeSize() Ocean
 	}).(OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrOutput)
 }
 
+// Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
 func (o OceanLaunchSpecBlockDeviceMappingEbsPtrOutput) Encrypted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanLaunchSpecBlockDeviceMappingEbs) *bool {
 		if v == nil {
@@ -18685,6 +18818,7 @@ func (o OceanLaunchSpecBlockDeviceMappingEbsPtrOutput) Encrypted() pulumi.BoolPt
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Int. The number of I/O operations per second (IOPS) that the volume supports.
 func (o OceanLaunchSpecBlockDeviceMappingEbsPtrOutput) Iops() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanLaunchSpecBlockDeviceMappingEbs) *int {
 		if v == nil {
@@ -18694,6 +18828,7 @@ func (o OceanLaunchSpecBlockDeviceMappingEbsPtrOutput) Iops() pulumi.IntPtrOutpu
 	}).(pulumi.IntPtrOutput)
 }
 
+// String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
 func (o OceanLaunchSpecBlockDeviceMappingEbsPtrOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanLaunchSpecBlockDeviceMappingEbs) *string {
 		if v == nil {
@@ -18703,6 +18838,7 @@ func (o OceanLaunchSpecBlockDeviceMappingEbsPtrOutput) KmsKeyId() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Optional) String. The Snapshot ID to mount by.
 func (o OceanLaunchSpecBlockDeviceMappingEbsPtrOutput) SnapshotId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanLaunchSpecBlockDeviceMappingEbs) *string {
 		if v == nil {
@@ -18712,6 +18848,7 @@ func (o OceanLaunchSpecBlockDeviceMappingEbsPtrOutput) SnapshotId() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = `gp3`.
 func (o OceanLaunchSpecBlockDeviceMappingEbsPtrOutput) Throughput() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanLaunchSpecBlockDeviceMappingEbs) *int {
 		if v == nil {
@@ -18721,6 +18858,7 @@ func (o OceanLaunchSpecBlockDeviceMappingEbsPtrOutput) Throughput() pulumi.IntPt
 	}).(pulumi.IntPtrOutput)
 }
 
+// Int. The size, in GB of the volume.
 func (o OceanLaunchSpecBlockDeviceMappingEbsPtrOutput) VolumeSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanLaunchSpecBlockDeviceMappingEbs) *int {
 		if v == nil {
@@ -18730,6 +18868,7 @@ func (o OceanLaunchSpecBlockDeviceMappingEbsPtrOutput) VolumeSize() pulumi.IntPt
 	}).(pulumi.IntPtrOutput)
 }
 
+// String. The type of the volume. (Example: `gp2`).
 func (o OceanLaunchSpecBlockDeviceMappingEbsPtrOutput) VolumeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanLaunchSpecBlockDeviceMappingEbs) *string {
 		if v == nil {
@@ -18740,9 +18879,12 @@ func (o OceanLaunchSpecBlockDeviceMappingEbsPtrOutput) VolumeType() pulumi.Strin
 }
 
 type OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize struct {
-	BaseSize            int    `pulumi:"baseSize"`
-	Resource            string `pulumi:"resource"`
-	SizePerResourceUnit int    `pulumi:"sizePerResourceUnit"`
+	// Int. Initial size for volume. (Example: 50)
+	BaseSize int `pulumi:"baseSize"`
+	// String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)
+	Resource string `pulumi:"resource"`
+	// Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB)
+	SizePerResourceUnit int `pulumi:"sizePerResourceUnit"`
 }
 
 // OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeInput is an input type that accepts OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs and OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeOutput values.
@@ -18757,9 +18899,12 @@ type OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeInput interface {
 }
 
 type OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs struct {
-	BaseSize            pulumi.IntInput    `pulumi:"baseSize"`
-	Resource            pulumi.StringInput `pulumi:"resource"`
-	SizePerResourceUnit pulumi.IntInput    `pulumi:"sizePerResourceUnit"`
+	// Int. Initial size for volume. (Example: 50)
+	BaseSize pulumi.IntInput `pulumi:"baseSize"`
+	// String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)
+	Resource pulumi.StringInput `pulumi:"resource"`
+	// Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB)
+	SizePerResourceUnit pulumi.IntInput `pulumi:"sizePerResourceUnit"`
 }
 
 func (OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs) ElementType() reflect.Type {
@@ -18839,14 +18984,17 @@ func (o OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeOutput) ToOceanLaun
 	}).(OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrOutput)
 }
 
+// Int. Initial size for volume. (Example: 50)
 func (o OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeOutput) BaseSize() pulumi.IntOutput {
 	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize) int { return v.BaseSize }).(pulumi.IntOutput)
 }
 
+// String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)
 func (o OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeOutput) Resource() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize) string { return v.Resource }).(pulumi.StringOutput)
 }
 
+// Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB)
 func (o OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeOutput) SizePerResourceUnit() pulumi.IntOutput {
 	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize) int { return v.SizePerResourceUnit }).(pulumi.IntOutput)
 }
@@ -18875,6 +19023,7 @@ func (o OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrOutput) Elem() O
 	}).(OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeOutput)
 }
 
+// Int. Initial size for volume. (Example: 50)
 func (o OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrOutput) BaseSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize) *int {
 		if v == nil {
@@ -18884,6 +19033,7 @@ func (o OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrOutput) BaseSize
 	}).(pulumi.IntPtrOutput)
 }
 
+// String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)
 func (o OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrOutput) Resource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize) *string {
 		if v == nil {
@@ -18893,6 +19043,7 @@ func (o OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrOutput) Resource
 	}).(pulumi.StringPtrOutput)
 }
 
+// Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB)
 func (o OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrOutput) SizePerResourceUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize) *int {
 		if v == nil {
@@ -19293,7 +19444,9 @@ func (o OceanLaunchSpecElasticIpPoolArrayOutput) Index(i pulumi.IntInput) OceanL
 }
 
 type OceanLaunchSpecElasticIpPoolTagSelector struct {
-	TagKey   string  `pulumi:"tagKey"`
+	// Elastic IP tag key. The Virtual Node Group will consider all Elastic IPs tagged with this tag as a part of the Elastic IP pool to use.
+	TagKey string `pulumi:"tagKey"`
+	// Elastic IP tag value. Can be null.
 	TagValue *string `pulumi:"tagValue"`
 }
 
@@ -19309,7 +19462,9 @@ type OceanLaunchSpecElasticIpPoolTagSelectorInput interface {
 }
 
 type OceanLaunchSpecElasticIpPoolTagSelectorArgs struct {
-	TagKey   pulumi.StringInput    `pulumi:"tagKey"`
+	// Elastic IP tag key. The Virtual Node Group will consider all Elastic IPs tagged with this tag as a part of the Elastic IP pool to use.
+	TagKey pulumi.StringInput `pulumi:"tagKey"`
+	// Elastic IP tag value. Can be null.
 	TagValue pulumi.StringPtrInput `pulumi:"tagValue"`
 }
 
@@ -19390,10 +19545,12 @@ func (o OceanLaunchSpecElasticIpPoolTagSelectorOutput) ToOceanLaunchSpecElasticI
 	}).(OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput)
 }
 
+// Elastic IP tag key. The Virtual Node Group will consider all Elastic IPs tagged with this tag as a part of the Elastic IP pool to use.
 func (o OceanLaunchSpecElasticIpPoolTagSelectorOutput) TagKey() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanLaunchSpecElasticIpPoolTagSelector) string { return v.TagKey }).(pulumi.StringOutput)
 }
 
+// Elastic IP tag value. Can be null.
 func (o OceanLaunchSpecElasticIpPoolTagSelectorOutput) TagValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecElasticIpPoolTagSelector) *string { return v.TagValue }).(pulumi.StringPtrOutput)
 }
@@ -19422,6 +19579,7 @@ func (o OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput) Elem() OceanLaunchSpec
 	}).(OceanLaunchSpecElasticIpPoolTagSelectorOutput)
 }
 
+// Elastic IP tag key. The Virtual Node Group will consider all Elastic IPs tagged with this tag as a part of the Elastic IP pool to use.
 func (o OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput) TagKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanLaunchSpecElasticIpPoolTagSelector) *string {
 		if v == nil {
@@ -19431,6 +19589,7 @@ func (o OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput) TagKey() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// Elastic IP tag value. Can be null.
 func (o OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput) TagValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanLaunchSpecElasticIpPoolTagSelector) *string {
 		if v == nil {
@@ -20751,10 +20910,14 @@ func (o OceanLaunchSpecSchedulingTaskArrayOutput) Index(i pulumi.IntInput) Ocean
 }
 
 type OceanLaunchSpecSchedulingTaskTaskHeadroom struct {
-	CpuPerUnit    *int `pulumi:"cpuPerUnit"`
-	GpuPerUnit    *int `pulumi:"gpuPerUnit"`
+	// Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+	CpuPerUnit *int `pulumi:"cpuPerUnit"`
+	// Optionally configure the number of GPUS to allocate for each headroom unit.
+	GpuPerUnit *int `pulumi:"gpuPerUnit"`
+	// Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
 	MemoryPerUnit *int `pulumi:"memoryPerUnit"`
-	NumOfUnits    int  `pulumi:"numOfUnits"`
+	// The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+	NumOfUnits int `pulumi:"numOfUnits"`
 }
 
 // OceanLaunchSpecSchedulingTaskTaskHeadroomInput is an input type that accepts OceanLaunchSpecSchedulingTaskTaskHeadroomArgs and OceanLaunchSpecSchedulingTaskTaskHeadroomOutput values.
@@ -20769,10 +20932,14 @@ type OceanLaunchSpecSchedulingTaskTaskHeadroomInput interface {
 }
 
 type OceanLaunchSpecSchedulingTaskTaskHeadroomArgs struct {
-	CpuPerUnit    pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
-	GpuPerUnit    pulumi.IntPtrInput `pulumi:"gpuPerUnit"`
+	// Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+	CpuPerUnit pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
+	// Optionally configure the number of GPUS to allocate for each headroom unit.
+	GpuPerUnit pulumi.IntPtrInput `pulumi:"gpuPerUnit"`
+	// Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
 	MemoryPerUnit pulumi.IntPtrInput `pulumi:"memoryPerUnit"`
-	NumOfUnits    pulumi.IntInput    `pulumi:"numOfUnits"`
+	// The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+	NumOfUnits pulumi.IntInput `pulumi:"numOfUnits"`
 }
 
 func (OceanLaunchSpecSchedulingTaskTaskHeadroomArgs) ElementType() reflect.Type {
@@ -20826,18 +20993,22 @@ func (o OceanLaunchSpecSchedulingTaskTaskHeadroomOutput) ToOceanLaunchSpecSchedu
 	return o
 }
 
+// Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
 func (o OceanLaunchSpecSchedulingTaskTaskHeadroomOutput) CpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecSchedulingTaskTaskHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
+// Optionally configure the number of GPUS to allocate for each headroom unit.
 func (o OceanLaunchSpecSchedulingTaskTaskHeadroomOutput) GpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecSchedulingTaskTaskHeadroom) *int { return v.GpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
+// Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
 func (o OceanLaunchSpecSchedulingTaskTaskHeadroomOutput) MemoryPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecSchedulingTaskTaskHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
 }
 
+// The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
 func (o OceanLaunchSpecSchedulingTaskTaskHeadroomOutput) NumOfUnits() pulumi.IntOutput {
 	return o.ApplyT(func(v OceanLaunchSpecSchedulingTaskTaskHeadroom) int { return v.NumOfUnits }).(pulumi.IntOutput)
 }
@@ -21708,6 +21879,7 @@ func (o OceanLoggingPtrOutput) Export() OceanLoggingExportPtrOutput {
 }
 
 type OceanLoggingExport struct {
+	// Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
 	S3s []OceanLoggingExportS3 `pulumi:"s3s"`
 }
 
@@ -21723,6 +21895,7 @@ type OceanLoggingExportInput interface {
 }
 
 type OceanLoggingExportArgs struct {
+	// Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
 	S3s OceanLoggingExportS3ArrayInput `pulumi:"s3s"`
 }
 
@@ -21803,6 +21976,7 @@ func (o OceanLoggingExportOutput) ToOceanLoggingExportPtrOutputWithContext(ctx c
 	}).(OceanLoggingExportPtrOutput)
 }
 
+// Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
 func (o OceanLoggingExportOutput) S3s() OceanLoggingExportS3ArrayOutput {
 	return o.ApplyT(func(v OceanLoggingExport) []OceanLoggingExportS3 { return v.S3s }).(OceanLoggingExportS3ArrayOutput)
 }
@@ -21831,6 +22005,7 @@ func (o OceanLoggingExportPtrOutput) Elem() OceanLoggingExportOutput {
 	}).(OceanLoggingExportOutput)
 }
 
+// Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
 func (o OceanLoggingExportPtrOutput) S3s() OceanLoggingExportS3ArrayOutput {
 	return o.ApplyT(func(v *OceanLoggingExport) []OceanLoggingExportS3 {
 		if v == nil {
@@ -21841,7 +22016,7 @@ func (o OceanLoggingExportPtrOutput) S3s() OceanLoggingExportS3ArrayOutput {
 }
 
 type OceanLoggingExportS3 struct {
-	// The Cluster ID.
+	// The identifier of The S3 data integration to export the logs to.
 	Id string `pulumi:"id"`
 }
 
@@ -21857,7 +22032,7 @@ type OceanLoggingExportS3Input interface {
 }
 
 type OceanLoggingExportS3Args struct {
-	// The Cluster ID.
+	// The identifier of The S3 data integration to export the logs to.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -21912,7 +22087,7 @@ func (o OceanLoggingExportS3Output) ToOceanLoggingExportS3OutputWithContext(ctx 
 	return o
 }
 
-// The Cluster ID.
+// The identifier of The S3 data integration to export the logs to.
 func (o OceanLoggingExportS3Output) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanLoggingExportS3) string { return v.Id }).(pulumi.StringOutput)
 }

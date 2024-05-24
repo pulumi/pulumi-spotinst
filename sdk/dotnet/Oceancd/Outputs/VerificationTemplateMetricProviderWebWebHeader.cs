@@ -13,7 +13,13 @@ namespace Pulumi.SpotInst.Oceancd.Outputs
     [OutputType]
     public sealed class VerificationTemplateMetricProviderWebWebHeader
     {
+        /// <summary>
+        /// The name of a header
+        /// </summary>
         public readonly string WebHeaderKey;
+        /// <summary>
+        /// The value of a header
+        /// </summary>
         public readonly string WebHeaderValue;
 
         [OutputConstructor]

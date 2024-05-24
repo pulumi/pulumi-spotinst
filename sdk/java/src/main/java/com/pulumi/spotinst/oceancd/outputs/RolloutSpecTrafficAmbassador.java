@@ -11,9 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class RolloutSpecTrafficAmbassador {
+    /**
+     * @return A list of names of the Ambassador Mappings used to route traffic to the service.
+     * 
+     */
     private List<String> mappings;
 
     private RolloutSpecTrafficAmbassador() {}
+    /**
+     * @return A list of names of the Ambassador Mappings used to route traffic to the service.
+     * 
+     */
     public List<String> mappings() {
         return this.mappings;
     }

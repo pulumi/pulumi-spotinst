@@ -16,16 +16,32 @@ public final class RolloutSpecTrafficAlbStickinessConfigArgs extends com.pulumi.
 
     public static final RolloutSpecTrafficAlbStickinessConfigArgs Empty = new RolloutSpecTrafficAlbStickinessConfigArgs();
 
+    /**
+     * Defines how long the load balancer should consistently route the user&#39;s request to the same target.
+     * 
+     */
     @Import(name="durationSeconds")
     private @Nullable Output<Integer> durationSeconds;
 
+    /**
+     * @return Defines how long the load balancer should consistently route the user&#39;s request to the same target.
+     * 
+     */
     public Optional<Output<Integer>> durationSeconds() {
         return Optional.ofNullable(this.durationSeconds);
     }
 
+    /**
+     * Enables the load balancer to bind a user&#39;s session to a specific target.
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Enables the load balancer to bind a user&#39;s session to a specific target.
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -55,20 +71,44 @@ public final class RolloutSpecTrafficAlbStickinessConfigArgs extends com.pulumi.
             $ = new RolloutSpecTrafficAlbStickinessConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param durationSeconds Defines how long the load balancer should consistently route the user&#39;s request to the same target.
+         * 
+         * @return builder
+         * 
+         */
         public Builder durationSeconds(@Nullable Output<Integer> durationSeconds) {
             $.durationSeconds = durationSeconds;
             return this;
         }
 
+        /**
+         * @param durationSeconds Defines how long the load balancer should consistently route the user&#39;s request to the same target.
+         * 
+         * @return builder
+         * 
+         */
         public Builder durationSeconds(Integer durationSeconds) {
             return durationSeconds(Output.of(durationSeconds));
         }
 
+        /**
+         * @param enabled Enables the load balancer to bind a user&#39;s session to a specific target.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Enables the load balancer to bind a user&#39;s session to a specific target.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

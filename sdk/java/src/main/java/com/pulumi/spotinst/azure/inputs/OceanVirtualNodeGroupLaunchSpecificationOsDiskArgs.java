@@ -18,23 +18,47 @@ public final class OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs extends co
 
     public static final OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs Empty = new OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs();
 
+    /**
+     * The size of the OS disk in GB, Required if dataDisks is specified.
+     * 
+     */
     @Import(name="sizeGb", required=true)
     private Output<Integer> sizeGb;
 
+    /**
+     * @return The size of the OS disk in GB, Required if dataDisks is specified.
+     * 
+     */
     public Output<Integer> sizeGb() {
         return this.sizeGb;
     }
 
+    /**
+     * The type of the OS disk. Valid values: `&#34;Standard_LRS&#34;`, `&#34;Premium_LRS&#34;`, `&#34;StandardSSD_LRS&#34;`.
+     * 
+     */
     @Import(name="type")
     private @Nullable Output<String> type;
 
+    /**
+     * @return The type of the OS disk. Valid values: `&#34;Standard_LRS&#34;`, `&#34;Premium_LRS&#34;`, `&#34;StandardSSD_LRS&#34;`.
+     * 
+     */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
 
+    /**
+     * Flag to enable/disable the Ephemeral OS Disk utilization.
+     * 
+     */
     @Import(name="utilizeEphemeralStorage")
     private @Nullable Output<Boolean> utilizeEphemeralStorage;
 
+    /**
+     * @return Flag to enable/disable the Ephemeral OS Disk utilization.
+     * 
+     */
     public Optional<Output<Boolean>> utilizeEphemeralStorage() {
         return Optional.ofNullable(this.utilizeEphemeralStorage);
     }
@@ -65,29 +89,65 @@ public final class OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs extends co
             $ = new OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param sizeGb The size of the OS disk in GB, Required if dataDisks is specified.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sizeGb(Output<Integer> sizeGb) {
             $.sizeGb = sizeGb;
             return this;
         }
 
+        /**
+         * @param sizeGb The size of the OS disk in GB, Required if dataDisks is specified.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sizeGb(Integer sizeGb) {
             return sizeGb(Output.of(sizeGb));
         }
 
+        /**
+         * @param type The type of the OS disk. Valid values: `&#34;Standard_LRS&#34;`, `&#34;Premium_LRS&#34;`, `&#34;StandardSSD_LRS&#34;`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type The type of the OS disk. Valid values: `&#34;Standard_LRS&#34;`, `&#34;Premium_LRS&#34;`, `&#34;StandardSSD_LRS&#34;`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }
 
+        /**
+         * @param utilizeEphemeralStorage Flag to enable/disable the Ephemeral OS Disk utilization.
+         * 
+         * @return builder
+         * 
+         */
         public Builder utilizeEphemeralStorage(@Nullable Output<Boolean> utilizeEphemeralStorage) {
             $.utilizeEphemeralStorage = utilizeEphemeralStorage;
             return this;
         }
 
+        /**
+         * @param utilizeEphemeralStorage Flag to enable/disable the Ephemeral OS Disk utilization.
+         * 
+         * @return builder
+         * 
+         */
         public Builder utilizeEphemeralStorage(Boolean utilizeEphemeralStorage) {
             return utilizeEphemeralStorage(Output.of(utilizeEphemeralStorage));
         }

@@ -12,9 +12,15 @@ namespace Pulumi.SpotInst.Oceancd.Inputs
 
     public sealed class RolloutSpecTrafficNginxAdditionalIngressAnnotationArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Allows customizing the header value instead of using hardcoded values.
+        /// </summary>
         [Input("canaryByHeader")]
         public Input<string>? CanaryByHeader { get; set; }
 
+        /// <summary>
+        /// Any of supported annotations.
+        /// </summary>
         [Input("key1")]
         public Input<string>? Key1 { get; set; }
 

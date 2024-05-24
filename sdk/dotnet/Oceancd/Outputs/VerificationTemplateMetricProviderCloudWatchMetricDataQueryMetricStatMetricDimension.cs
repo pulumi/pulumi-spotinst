@@ -13,7 +13,13 @@ namespace Pulumi.SpotInst.Oceancd.Outputs
     [OutputType]
     public sealed class VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimension
     {
+        /// <summary>
+        /// The name of the dimensions. These values must contain only ASCII characters and must include at least one non-whitespace characte
+        /// </summary>
         public readonly string DimensionName;
+        /// <summary>
+        /// The value of the dimensions.These values must contain only ASCII characters and must include at least one non-whitespace characte
+        /// </summary>
         public readonly string DimensionValue;
 
         [OutputConstructor]

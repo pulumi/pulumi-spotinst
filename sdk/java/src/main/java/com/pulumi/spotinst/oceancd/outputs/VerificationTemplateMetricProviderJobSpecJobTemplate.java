@@ -11,9 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class VerificationTemplateMetricProviderJobSpecJobTemplate {
+    /**
+     * @return Specification of the desired behavior of the pod.
+     * 
+     */
     private List<VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpec> templateSpecs;
 
     private VerificationTemplateMetricProviderJobSpecJobTemplate() {}
+    /**
+     * @return Specification of the desired behavior of the pod.
+     * 
+     */
     public List<VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpec> templateSpecs() {
         return this.templateSpecs;
     }

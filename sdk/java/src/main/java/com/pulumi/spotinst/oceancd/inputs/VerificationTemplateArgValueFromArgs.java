@@ -15,9 +15,17 @@ public final class VerificationTemplateArgValueFromArgs extends com.pulumi.resou
 
     public static final VerificationTemplateArgValueFromArgs Empty = new VerificationTemplateArgValueFromArgs();
 
+    /**
+     * Secret key to use.
+     * 
+     */
     @Import(name="secretKeyRef")
     private @Nullable Output<VerificationTemplateArgValueFromSecretKeyRefArgs> secretKeyRef;
 
+    /**
+     * @return Secret key to use.
+     * 
+     */
     public Optional<Output<VerificationTemplateArgValueFromSecretKeyRefArgs>> secretKeyRef() {
         return Optional.ofNullable(this.secretKeyRef);
     }
@@ -46,11 +54,23 @@ public final class VerificationTemplateArgValueFromArgs extends com.pulumi.resou
             $ = new VerificationTemplateArgValueFromArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param secretKeyRef Secret key to use.
+         * 
+         * @return builder
+         * 
+         */
         public Builder secretKeyRef(@Nullable Output<VerificationTemplateArgValueFromSecretKeyRefArgs> secretKeyRef) {
             $.secretKeyRef = secretKeyRef;
             return this;
         }
 
+        /**
+         * @param secretKeyRef Secret key to use.
+         * 
+         * @return builder
+         * 
+         */
         public Builder secretKeyRef(VerificationTemplateArgValueFromSecretKeyRefArgs secretKeyRef) {
             return secretKeyRef(Output.of(secretKeyRef));
         }

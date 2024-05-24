@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new VerificationTemplate("test", VerificationTemplateArgs.builder()        
+ *         var test = new VerificationTemplate("test", VerificationTemplateArgs.builder()
  *             .name("test-verification-template-tes")
  *             .args(VerificationTemplateArgArgs.builder()
  *                 .argName("test-arg")

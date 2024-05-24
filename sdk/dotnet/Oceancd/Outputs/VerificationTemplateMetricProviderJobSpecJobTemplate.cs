@@ -13,6 +13,9 @@ namespace Pulumi.SpotInst.Oceancd.Outputs
     [OutputType]
     public sealed class VerificationTemplateMetricProviderJobSpecJobTemplate
     {
+        /// <summary>
+        /// Specification of the desired behavior of the pod.
+        /// </summary>
         public readonly ImmutableArray<Outputs.VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpec> TemplateSpecs;
 
         [OutputConstructor]

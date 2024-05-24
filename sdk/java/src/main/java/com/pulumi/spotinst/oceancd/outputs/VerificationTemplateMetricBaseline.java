@@ -15,21 +15,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class VerificationTemplateMetricBaseline {
+    /**
+     * @return The name of the monitoring tool chosen for the metric.
+     * 
+     */
     private List<VerificationTemplateMetricBaselineBaselineProvider> baselineProviders;
+    /**
+     * @return Number in percent we allow the new version’s data result to be under baseline data result.
+     * 
+     */
     private @Nullable Integer maxRange;
+    /**
+     * @return Number in percent we allow the new version’s data result to be under baseline data result.*
+     * 
+     */
     private @Nullable Integer minRange;
+    /**
+     * @return A mathematical expression needed for the comparison. Enum: &#34;&lt;&#34; &#34;&gt;&#34; &#34;&lt;=&#34; &#34;&gt;=&#34; &#34;=&#34; &#34;range&#34;
+     * 
+     */
     private String threshold;
 
     private VerificationTemplateMetricBaseline() {}
+    /**
+     * @return The name of the monitoring tool chosen for the metric.
+     * 
+     */
     public List<VerificationTemplateMetricBaselineBaselineProvider> baselineProviders() {
         return this.baselineProviders;
     }
+    /**
+     * @return Number in percent we allow the new version’s data result to be under baseline data result.
+     * 
+     */
     public Optional<Integer> maxRange() {
         return Optional.ofNullable(this.maxRange);
     }
+    /**
+     * @return Number in percent we allow the new version’s data result to be under baseline data result.*
+     * 
+     */
     public Optional<Integer> minRange() {
         return Optional.ofNullable(this.minRange);
     }
+    /**
+     * @return A mathematical expression needed for the comparison. Enum: &#34;&lt;&#34; &#34;&gt;&#34; &#34;&lt;=&#34; &#34;&gt;=&#34; &#34;=&#34; &#34;range&#34;
+     * 
+     */
     public String threshold() {
         return this.threshold;
     }

@@ -12,13 +12,29 @@ import java.util.Objects;
 
 @CustomType
 public final class VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpec {
+    /**
+     * @return A list of containers belonging to the pod.
+     * 
+     */
     private List<VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainer> containers;
+    /**
+     * @return Restart policy for all containers within the pod. Enum: `&#34;Never&#34; &#34;OnFailure&#34;`
+     * 
+     */
     private String restartPolicy;
 
     private VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpec() {}
+    /**
+     * @return A list of containers belonging to the pod.
+     * 
+     */
     public List<VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainer> containers() {
         return this.containers;
     }
+    /**
+     * @return Restart policy for all containers within the pod. Enum: `&#34;Never&#34; &#34;OnFailure&#34;`
+     * 
+     */
     public String restartPolicy() {
         return this.restartPolicy;
     }

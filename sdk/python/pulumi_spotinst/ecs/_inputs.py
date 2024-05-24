@@ -1169,6 +1169,11 @@ class OceanLaunchSpecSchedulingTaskTaskHeadroomArgs:
                  num_of_units: pulumi.Input[int],
                  cpu_per_unit: Optional[pulumi.Input[int]] = None,
                  memory_per_unit: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] num_of_units: The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+        :param pulumi.Input[int] cpu_per_unit: Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        :param pulumi.Input[int] memory_per_unit: Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
+        """
         pulumi.set(__self__, "num_of_units", num_of_units)
         if cpu_per_unit is not None:
             pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
@@ -1178,6 +1183,9 @@ class OceanLaunchSpecSchedulingTaskTaskHeadroomArgs:
     @property
     @pulumi.getter(name="numOfUnits")
     def num_of_units(self) -> pulumi.Input[int]:
+        """
+        The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+        """
         return pulumi.get(self, "num_of_units")
 
     @num_of_units.setter
@@ -1187,6 +1195,9 @@ class OceanLaunchSpecSchedulingTaskTaskHeadroomArgs:
     @property
     @pulumi.getter(name="cpuPerUnit")
     def cpu_per_unit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        """
         return pulumi.get(self, "cpu_per_unit")
 
     @cpu_per_unit.setter
@@ -1196,6 +1207,9 @@ class OceanLaunchSpecSchedulingTaskTaskHeadroomArgs:
     @property
     @pulumi.getter(name="memoryPerUnit")
     def memory_per_unit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
+        """
         return pulumi.get(self, "memory_per_unit")
 
     @memory_per_unit.setter
@@ -1284,12 +1298,18 @@ class OceanLoggingArgs:
 class OceanLoggingExportArgs:
     def __init__(__self__, *,
                  s3s: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLoggingExportS3Args']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['OceanLoggingExportS3Args']]] s3s: Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
+        """
         if s3s is not None:
             pulumi.set(__self__, "s3s", s3s)
 
     @property
     @pulumi.getter
     def s3s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLoggingExportS3Args']]]]:
+        """
+        Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
+        """
         return pulumi.get(self, "s3s")
 
     @s3s.setter
@@ -1302,7 +1322,7 @@ class OceanLoggingExportS3Args:
     def __init__(__self__, *,
                  id: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] id: The Spotinst Ocean ID.
+        :param pulumi.Input[str] id: The identifier of The S3 data integration to export the logs to.
         """
         pulumi.set(__self__, "id", id)
 
@@ -1310,7 +1330,7 @@ class OceanLoggingExportS3Args:
     @pulumi.getter
     def id(self) -> pulumi.Input[str]:
         """
-        The Spotinst Ocean ID.
+        The identifier of The S3 data integration to export the logs to.
         """
         return pulumi.get(self, "id")
 
@@ -1461,6 +1481,7 @@ class OceanTagArgs:
         """
         :param pulumi.Input[str] key: The tag key.
         :param pulumi.Input[str] value: The tag value.
+               * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
@@ -1482,6 +1503,7 @@ class OceanTagArgs:
     def value(self) -> pulumi.Input[str]:
         """
         The tag value.
+        * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
         """
         return pulumi.get(self, "value")
 

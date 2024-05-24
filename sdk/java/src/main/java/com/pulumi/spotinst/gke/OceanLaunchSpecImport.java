@@ -41,7 +41,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new OceanLaunchSpecImport("example", OceanLaunchSpecImportArgs.builder()        
+ *         var example = new OceanLaunchSpecImport("example", OceanLaunchSpecImportArgs.builder()
  *             .oceanId("o-123456")
  *             .nodePoolName("default-pool")
  *             .build());

@@ -14,6 +14,10 @@ namespace Pulumi.SpotInst.Oceancd.Inputs
     {
         [Input("specs", required: true)]
         private InputList<Inputs.VerificationTemplateMetricProviderJobSpecArgs>? _specs;
+
+        /// <summary>
+        /// The job spec require to run the metric.
+        /// </summary>
         public InputList<Inputs.VerificationTemplateMetricProviderJobSpecArgs> Specs
         {
             get => _specs ?? (_specs = new InputList<Inputs.VerificationTemplateMetricProviderJobSpecArgs>());

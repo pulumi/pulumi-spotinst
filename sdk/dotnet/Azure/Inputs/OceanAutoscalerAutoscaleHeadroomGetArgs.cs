@@ -12,6 +12,9 @@ namespace Pulumi.SpotInst.Azure.Inputs
 
     public sealed class OceanAutoscalerAutoscaleHeadroomGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Automatic headroom configuration.
+        /// </summary>
         [Input("automatic")]
         public Input<Inputs.OceanAutoscalerAutoscaleHeadroomAutomaticGetArgs>? Automatic { get; set; }
 

@@ -17,16 +17,32 @@ public final class RolloutSpecTrafficIstioVirtualServiceTlsRouteArgs extends com
 
     public static final RolloutSpecTrafficIstioVirtualServiceTlsRouteArgs Empty = new RolloutSpecTrafficIstioVirtualServiceTlsRouteArgs();
 
+    /**
+     * The port of the TLS Route desired to be matched in the given Istio VirtualService.
+     * 
+     */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
+    /**
+     * @return The port of the TLS Route desired to be matched in the given Istio VirtualService.
+     * 
+     */
     public Optional<Output<Integer>> port() {
         return Optional.ofNullable(this.port);
     }
 
+    /**
+     * A list of all the SNI Hosts of the TLS Route desired to be matched in the given Istio VirtualService.
+     * 
+     */
     @Import(name="sniHosts")
     private @Nullable Output<List<String>> sniHosts;
 
+    /**
+     * @return A list of all the SNI Hosts of the TLS Route desired to be matched in the given Istio VirtualService.
+     * 
+     */
     public Optional<Output<List<String>>> sniHosts() {
         return Optional.ofNullable(this.sniHosts);
     }
@@ -56,24 +72,54 @@ public final class RolloutSpecTrafficIstioVirtualServiceTlsRouteArgs extends com
             $ = new RolloutSpecTrafficIstioVirtualServiceTlsRouteArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param port The port of the TLS Route desired to be matched in the given Istio VirtualService.
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(@Nullable Output<Integer> port) {
             $.port = port;
             return this;
         }
 
+        /**
+         * @param port The port of the TLS Route desired to be matched in the given Istio VirtualService.
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(Integer port) {
             return port(Output.of(port));
         }
 
+        /**
+         * @param sniHosts A list of all the SNI Hosts of the TLS Route desired to be matched in the given Istio VirtualService.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sniHosts(@Nullable Output<List<String>> sniHosts) {
             $.sniHosts = sniHosts;
             return this;
         }
 
+        /**
+         * @param sniHosts A list of all the SNI Hosts of the TLS Route desired to be matched in the given Istio VirtualService.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sniHosts(List<String> sniHosts) {
             return sniHosts(Output.of(sniHosts));
         }
 
+        /**
+         * @param sniHosts A list of all the SNI Hosts of the TLS Route desired to be matched in the given Istio VirtualService.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sniHosts(String... sniHosts) {
             return sniHosts(List.of(sniHosts));
         }

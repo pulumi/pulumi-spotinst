@@ -12,9 +12,15 @@ namespace Pulumi.SpotInst.Oceancd.Inputs
 
     public sealed class StrategyCanaryStepSetHeaderRouteMatchGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of the header.
+        /// </summary>
         [Input("headerName", required: true)]
         public Input<string> HeaderName { get; set; } = null!;
 
+        /// <summary>
+        /// Defines a single header to add to the Rollout. Must be only one initialized from the following (exact, prefix, regex).
+        /// </summary>
         [Input("headerValue", required: true)]
         public Input<Inputs.StrategyCanaryStepSetHeaderRouteMatchHeaderValueGetArgs> HeaderValue { get; set; } = null!;
 

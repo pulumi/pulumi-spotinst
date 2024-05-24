@@ -13,9 +13,21 @@ namespace Pulumi.SpotInst.Oceancd.Outputs
     [OutputType]
     public sealed class VerificationTemplateMetricBaseline
     {
+        /// <summary>
+        /// The name of the monitoring tool chosen for the metric.
+        /// </summary>
         public readonly ImmutableArray<Outputs.VerificationTemplateMetricBaselineBaselineProvider> BaselineProviders;
+        /// <summary>
+        /// Number in percent we allow the new version’s data result to be under baseline data result.
+        /// </summary>
         public readonly int? MaxRange;
+        /// <summary>
+        /// Number in percent we allow the new version’s data result to be under baseline data result.*
+        /// </summary>
         public readonly int? MinRange;
+        /// <summary>
+        /// A mathematical expression needed for the comparison. Enum: "&lt;" "&gt;" "&lt;=" "&gt;=" "=" "range"
+        /// </summary>
         public readonly string Threshold;
 
         [OutputConstructor]

@@ -14,9 +14,17 @@ public final class RolloutSpecStrategyArgValueFromFieldRefArgs extends com.pulum
 
     public static final RolloutSpecStrategyArgValueFromFieldRefArgs Empty = new RolloutSpecStrategyArgValueFromFieldRefArgs();
 
+    /**
+     * Path to SpotDeployment&#39;s field from where to get the value of an argument.
+     * 
+     */
     @Import(name="fieldPath", required=true)
     private Output<String> fieldPath;
 
+    /**
+     * @return Path to SpotDeployment&#39;s field from where to get the value of an argument.
+     * 
+     */
     public Output<String> fieldPath() {
         return this.fieldPath;
     }
@@ -45,11 +53,23 @@ public final class RolloutSpecStrategyArgValueFromFieldRefArgs extends com.pulum
             $ = new RolloutSpecStrategyArgValueFromFieldRefArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param fieldPath Path to SpotDeployment&#39;s field from where to get the value of an argument.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fieldPath(Output<String> fieldPath) {
             $.fieldPath = fieldPath;
             return this;
         }
 
+        /**
+         * @param fieldPath Path to SpotDeployment&#39;s field from where to get the value of an argument.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fieldPath(String fieldPath) {
             return fieldPath(Output.of(fieldPath));
         }

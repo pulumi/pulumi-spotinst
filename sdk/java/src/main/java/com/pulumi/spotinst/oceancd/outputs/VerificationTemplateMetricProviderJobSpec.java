@@ -14,13 +14,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class VerificationTemplateMetricProviderJobSpec {
+    /**
+     * @return Specifies the number of retries before marking this job failed.
+     * 
+     */
     private @Nullable Integer backoffLimit;
+    /**
+     * @return Describes the pod that will be created when executing a job.
+     * 
+     */
     private List<VerificationTemplateMetricProviderJobSpecJobTemplate> jobTemplates;
 
     private VerificationTemplateMetricProviderJobSpec() {}
+    /**
+     * @return Specifies the number of retries before marking this job failed.
+     * 
+     */
     public Optional<Integer> backoffLimit() {
         return Optional.ofNullable(this.backoffLimit);
     }
+    /**
+     * @return Describes the pod that will be created when executing a job.
+     * 
+     */
     public List<VerificationTemplateMetricProviderJobSpecJobTemplate> jobTemplates() {
         return this.jobTemplates;
     }

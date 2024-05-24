@@ -170,6 +170,7 @@ type Elastigroup struct {
 	// * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
 	InstanceNamePrefix pulumi.StringPtrOutput `pulumi:"instanceNamePrefix"`
 	// Defines a set of custom instance types. Required if instanceTypesPreemptible and instanceTypesOndemand are not set.
+	// * `vCPU` - (Optional) The number of vCPUs in the custom instance type. GCP has a number of limitations on accepted vCPU values. For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
 	InstanceTypesCustoms ElastigroupInstanceTypesCustomArrayOutput `pulumi:"instanceTypesCustoms"`
 	// The regular VM instance type to use for mixed-type groups and when falling back to on-demand. Required if instanceTypesPreemptible is not set.
 	InstanceTypesOndemand pulumi.StringPtrOutput `pulumi:"instanceTypesOndemand"`
@@ -266,6 +267,7 @@ type elastigroupState struct {
 	// * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
 	InstanceNamePrefix *string `pulumi:"instanceNamePrefix"`
 	// Defines a set of custom instance types. Required if instanceTypesPreemptible and instanceTypesOndemand are not set.
+	// * `vCPU` - (Optional) The number of vCPUs in the custom instance type. GCP has a number of limitations on accepted vCPU values. For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
 	InstanceTypesCustoms []ElastigroupInstanceTypesCustom `pulumi:"instanceTypesCustoms"`
 	// The regular VM instance type to use for mixed-type groups and when falling back to on-demand. Required if instanceTypesPreemptible is not set.
 	InstanceTypesOndemand *string `pulumi:"instanceTypesOndemand"`
@@ -330,6 +332,7 @@ type ElastigroupState struct {
 	// * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
 	InstanceNamePrefix pulumi.StringPtrInput
 	// Defines a set of custom instance types. Required if instanceTypesPreemptible and instanceTypesOndemand are not set.
+	// * `vCPU` - (Optional) The number of vCPUs in the custom instance type. GCP has a number of limitations on accepted vCPU values. For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
 	InstanceTypesCustoms ElastigroupInstanceTypesCustomArrayInput
 	// The regular VM instance type to use for mixed-type groups and when falling back to on-demand. Required if instanceTypesPreemptible is not set.
 	InstanceTypesOndemand pulumi.StringPtrInput
@@ -398,6 +401,7 @@ type elastigroupArgs struct {
 	// * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
 	InstanceNamePrefix *string `pulumi:"instanceNamePrefix"`
 	// Defines a set of custom instance types. Required if instanceTypesPreemptible and instanceTypesOndemand are not set.
+	// * `vCPU` - (Optional) The number of vCPUs in the custom instance type. GCP has a number of limitations on accepted vCPU values. For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
 	InstanceTypesCustoms []ElastigroupInstanceTypesCustom `pulumi:"instanceTypesCustoms"`
 	// The regular VM instance type to use for mixed-type groups and when falling back to on-demand. Required if instanceTypesPreemptible is not set.
 	InstanceTypesOndemand *string `pulumi:"instanceTypesOndemand"`
@@ -463,6 +467,7 @@ type ElastigroupArgs struct {
 	// * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
 	InstanceNamePrefix pulumi.StringPtrInput
 	// Defines a set of custom instance types. Required if instanceTypesPreemptible and instanceTypesOndemand are not set.
+	// * `vCPU` - (Optional) The number of vCPUs in the custom instance type. GCP has a number of limitations on accepted vCPU values. For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
 	InstanceTypesCustoms ElastigroupInstanceTypesCustomArrayInput
 	// The regular VM instance type to use for mixed-type groups and when falling back to on-demand. Required if instanceTypesPreemptible is not set.
 	InstanceTypesOndemand pulumi.StringPtrInput
@@ -649,6 +654,7 @@ func (o ElastigroupOutput) InstanceNamePrefix() pulumi.StringPtrOutput {
 }
 
 // Defines a set of custom instance types. Required if instanceTypesPreemptible and instanceTypesOndemand are not set.
+// * `vCPU` - (Optional) The number of vCPUs in the custom instance type. GCP has a number of limitations on accepted vCPU values. For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
 func (o ElastigroupOutput) InstanceTypesCustoms() ElastigroupInstanceTypesCustomArrayOutput {
 	return o.ApplyT(func(v *Elastigroup) ElastigroupInstanceTypesCustomArrayOutput { return v.InstanceTypesCustoms }).(ElastigroupInstanceTypesCustomArrayOutput)
 }

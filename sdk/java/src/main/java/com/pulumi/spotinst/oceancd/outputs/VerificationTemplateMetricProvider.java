@@ -17,33 +17,89 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class VerificationTemplateMetricProvider {
+    /**
+     * @return The CloudWatch provider.
+     * 
+     */
     private @Nullable VerificationTemplateMetricProviderCloudWatch cloudWatch;
+    /**
+     * @return The datadog provider.
+     * 
+     */
     private @Nullable VerificationTemplateMetricProviderDatadog datadog;
+    /**
+     * @return The Jenkins provider. Default is &#34;{$}&#34;
+     * 
+     */
     private @Nullable VerificationTemplateMetricProviderJenkins jenkins;
+    /**
+     * @return The Job provider.
+     * 
+     */
     private @Nullable VerificationTemplateMetricProviderJob job;
+    /**
+     * @return The New Relic provider.
+     * 
+     */
     private @Nullable VerificationTemplateMetricProviderNewRelic newRelic;
+    /**
+     * @return The Prometheus provider.
+     * 
+     */
     private @Nullable VerificationTemplateMetricProviderPrometheus prometheus;
+    /**
+     * @return The Web provider.
+     * 
+     */
     private @Nullable VerificationTemplateMetricProviderWeb web;
 
     private VerificationTemplateMetricProvider() {}
+    /**
+     * @return The CloudWatch provider.
+     * 
+     */
     public Optional<VerificationTemplateMetricProviderCloudWatch> cloudWatch() {
         return Optional.ofNullable(this.cloudWatch);
     }
+    /**
+     * @return The datadog provider.
+     * 
+     */
     public Optional<VerificationTemplateMetricProviderDatadog> datadog() {
         return Optional.ofNullable(this.datadog);
     }
+    /**
+     * @return The Jenkins provider. Default is &#34;{$}&#34;
+     * 
+     */
     public Optional<VerificationTemplateMetricProviderJenkins> jenkins() {
         return Optional.ofNullable(this.jenkins);
     }
+    /**
+     * @return The Job provider.
+     * 
+     */
     public Optional<VerificationTemplateMetricProviderJob> job() {
         return Optional.ofNullable(this.job);
     }
+    /**
+     * @return The New Relic provider.
+     * 
+     */
     public Optional<VerificationTemplateMetricProviderNewRelic> newRelic() {
         return Optional.ofNullable(this.newRelic);
     }
+    /**
+     * @return The Prometheus provider.
+     * 
+     */
     public Optional<VerificationTemplateMetricProviderPrometheus> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }
+    /**
+     * @return The Web provider.
+     * 
+     */
     public Optional<VerificationTemplateMetricProviderWeb> web() {
         return Optional.ofNullable(this.web);
     }

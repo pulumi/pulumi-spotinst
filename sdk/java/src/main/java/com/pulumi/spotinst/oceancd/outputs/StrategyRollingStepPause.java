@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class StrategyRollingStepPause {
+    /**
+     * @return The amount of time to wait before moving to the next step.
+     * 
+     */
     private @Nullable String duration;
 
     private StrategyRollingStepPause() {}
+    /**
+     * @return The amount of time to wait before moving to the next step.
+     * 
+     */
     public Optional<String> duration() {
         return Optional.ofNullable(this.duration);
     }

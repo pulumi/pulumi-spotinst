@@ -12,6 +12,9 @@ namespace Pulumi.SpotInst.Oceancd.Inputs
 
     public sealed class RolloutSpecStrategyArgValueFromGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Defines the field path from where to get the value of an argument.
+        /// </summary>
         [Input("fieldRef", required: true)]
         public Input<Inputs.RolloutSpecStrategyArgValueFromFieldRefGetArgs> FieldRef { get; set; } = null!;
 

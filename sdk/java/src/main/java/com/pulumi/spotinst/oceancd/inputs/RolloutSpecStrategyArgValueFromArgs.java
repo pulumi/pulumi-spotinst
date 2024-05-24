@@ -14,9 +14,17 @@ public final class RolloutSpecStrategyArgValueFromArgs extends com.pulumi.resour
 
     public static final RolloutSpecStrategyArgValueFromArgs Empty = new RolloutSpecStrategyArgValueFromArgs();
 
+    /**
+     * Defines the field path from where to get the value of an argument.
+     * 
+     */
     @Import(name="fieldRef", required=true)
     private Output<RolloutSpecStrategyArgValueFromFieldRefArgs> fieldRef;
 
+    /**
+     * @return Defines the field path from where to get the value of an argument.
+     * 
+     */
     public Output<RolloutSpecStrategyArgValueFromFieldRefArgs> fieldRef() {
         return this.fieldRef;
     }
@@ -45,11 +53,23 @@ public final class RolloutSpecStrategyArgValueFromArgs extends com.pulumi.resour
             $ = new RolloutSpecStrategyArgValueFromArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param fieldRef Defines the field path from where to get the value of an argument.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fieldRef(Output<RolloutSpecStrategyArgValueFromFieldRefArgs> fieldRef) {
             $.fieldRef = fieldRef;
             return this;
         }
 
+        /**
+         * @param fieldRef Defines the field path from where to get the value of an argument.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fieldRef(RolloutSpecStrategyArgValueFromFieldRefArgs fieldRef) {
             return fieldRef(Output.of(fieldRef));
         }

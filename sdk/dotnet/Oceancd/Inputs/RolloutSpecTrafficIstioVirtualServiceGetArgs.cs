@@ -14,17 +14,28 @@ namespace Pulumi.SpotInst.Oceancd.Inputs
     {
         [Input("tlsRoutes")]
         private InputList<Inputs.RolloutSpecTrafficIstioVirtualServiceTlsRouteGetArgs>? _tlsRoutes;
+
+        /// <summary>
+        /// A list of HTTPS routes within VirtualService.
+        /// </summary>
         public InputList<Inputs.RolloutSpecTrafficIstioVirtualServiceTlsRouteGetArgs> TlsRoutes
         {
             get => _tlsRoutes ?? (_tlsRoutes = new InputList<Inputs.RolloutSpecTrafficIstioVirtualServiceTlsRouteGetArgs>());
             set => _tlsRoutes = value;
         }
 
+        /// <summary>
+        /// Holds the name of the VirtualService.
+        /// </summary>
         [Input("virtualServiceName", required: true)]
         public Input<string> VirtualServiceName { get; set; } = null!;
 
         [Input("virtualServiceRoutes")]
         private InputList<string>? _virtualServiceRoutes;
+
+        /// <summary>
+        /// A list of HTTP routes within VirtualService.
+        /// </summary>
         public InputList<string> VirtualServiceRoutes
         {
             get => _virtualServiceRoutes ?? (_virtualServiceRoutes = new InputList<string>());

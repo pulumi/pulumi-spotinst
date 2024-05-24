@@ -13,9 +13,12 @@ namespace Pulumi.SpotInst.Oceancd.Outputs
     [OutputType]
     public sealed class VerificationTemplateArgValueFromSecretKeyRef
     {
+        /// <summary>
+        /// The name of the field inside the secret.
+        /// </summary>
         public readonly string Key;
         /// <summary>
-        /// Identifier name for Ocean CD Verification Template. Must be unique.
+        /// The name of the secret.
         /// </summary>
         public readonly string Name;
 

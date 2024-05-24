@@ -16,16 +16,32 @@ public final class StrategyCanaryStepSetHeaderRouteArgs extends com.pulumi.resou
 
     public static final StrategyCanaryStepSetHeaderRouteArgs Empty = new StrategyCanaryStepSetHeaderRouteArgs();
 
+    /**
+     * The name of the HeaderRoute group.
+     * 
+     */
     @Import(name="headerRouteName", required=true)
     private Output<String> headerRouteName;
 
+    /**
+     * @return The name of the HeaderRoute group.
+     * 
+     */
     public Output<String> headerRouteName() {
         return this.headerRouteName;
     }
 
+    /**
+     * The matching rules for the header route.
+     * 
+     */
     @Import(name="matches", required=true)
     private Output<List<StrategyCanaryStepSetHeaderRouteMatchArgs>> matches;
 
+    /**
+     * @return The matching rules for the header route.
+     * 
+     */
     public Output<List<StrategyCanaryStepSetHeaderRouteMatchArgs>> matches() {
         return this.matches;
     }
@@ -55,24 +71,54 @@ public final class StrategyCanaryStepSetHeaderRouteArgs extends com.pulumi.resou
             $ = new StrategyCanaryStepSetHeaderRouteArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param headerRouteName The name of the HeaderRoute group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder headerRouteName(Output<String> headerRouteName) {
             $.headerRouteName = headerRouteName;
             return this;
         }
 
+        /**
+         * @param headerRouteName The name of the HeaderRoute group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder headerRouteName(String headerRouteName) {
             return headerRouteName(Output.of(headerRouteName));
         }
 
+        /**
+         * @param matches The matching rules for the header route.
+         * 
+         * @return builder
+         * 
+         */
         public Builder matches(Output<List<StrategyCanaryStepSetHeaderRouteMatchArgs>> matches) {
             $.matches = matches;
             return this;
         }
 
+        /**
+         * @param matches The matching rules for the header route.
+         * 
+         * @return builder
+         * 
+         */
         public Builder matches(List<StrategyCanaryStepSetHeaderRouteMatchArgs> matches) {
             return matches(Output.of(matches));
         }
 
+        /**
+         * @param matches The matching rules for the header route.
+         * 
+         * @return builder
+         * 
+         */
         public Builder matches(StrategyCanaryStepSetHeaderRouteMatchArgs... matches) {
             return matches(List.of(matches));
         }

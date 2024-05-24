@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class VerificationTemplateMetricProviderWebWebHeader {
+    /**
+     * @return The name of a header
+     * 
+     */
     private String webHeaderKey;
+    /**
+     * @return The value of a header
+     * 
+     */
     private String webHeaderValue;
 
     private VerificationTemplateMetricProviderWebWebHeader() {}
+    /**
+     * @return The name of a header
+     * 
+     */
     public String webHeaderKey() {
         return this.webHeaderKey;
     }
+    /**
+     * @return The value of a header
+     * 
+     */
     public String webHeaderValue() {
         return this.webHeaderValue;
     }

@@ -20,6 +20,7 @@ namespace Pulumi.SpotInst.Ecs.Inputs
 
         /// <summary>
         /// The tag value.
+        /// * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
         /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;

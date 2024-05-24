@@ -3027,9 +3027,12 @@ func (o OceanLaunchSpecSchedulingTaskArrayOutput) Index(i pulumi.IntInput) Ocean
 }
 
 type OceanLaunchSpecSchedulingTaskTaskHeadroom struct {
-	CpuPerUnit    *int `pulumi:"cpuPerUnit"`
+	// Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+	CpuPerUnit *int `pulumi:"cpuPerUnit"`
+	// Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
 	MemoryPerUnit *int `pulumi:"memoryPerUnit"`
-	NumOfUnits    int  `pulumi:"numOfUnits"`
+	// The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+	NumOfUnits int `pulumi:"numOfUnits"`
 }
 
 // OceanLaunchSpecSchedulingTaskTaskHeadroomInput is an input type that accepts OceanLaunchSpecSchedulingTaskTaskHeadroomArgs and OceanLaunchSpecSchedulingTaskTaskHeadroomOutput values.
@@ -3044,9 +3047,12 @@ type OceanLaunchSpecSchedulingTaskTaskHeadroomInput interface {
 }
 
 type OceanLaunchSpecSchedulingTaskTaskHeadroomArgs struct {
-	CpuPerUnit    pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
+	// Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+	CpuPerUnit pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
+	// Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
 	MemoryPerUnit pulumi.IntPtrInput `pulumi:"memoryPerUnit"`
-	NumOfUnits    pulumi.IntInput    `pulumi:"numOfUnits"`
+	// The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+	NumOfUnits pulumi.IntInput `pulumi:"numOfUnits"`
 }
 
 func (OceanLaunchSpecSchedulingTaskTaskHeadroomArgs) ElementType() reflect.Type {
@@ -3100,14 +3106,17 @@ func (o OceanLaunchSpecSchedulingTaskTaskHeadroomOutput) ToOceanLaunchSpecSchedu
 	return o
 }
 
+// Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
 func (o OceanLaunchSpecSchedulingTaskTaskHeadroomOutput) CpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecSchedulingTaskTaskHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
+// Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
 func (o OceanLaunchSpecSchedulingTaskTaskHeadroomOutput) MemoryPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecSchedulingTaskTaskHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
 }
 
+// The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
 func (o OceanLaunchSpecSchedulingTaskTaskHeadroomOutput) NumOfUnits() pulumi.IntOutput {
 	return o.ApplyT(func(v OceanLaunchSpecSchedulingTaskTaskHeadroom) int { return v.NumOfUnits }).(pulumi.IntOutput)
 }
@@ -3473,6 +3482,7 @@ func (o OceanLoggingPtrOutput) Export() OceanLoggingExportPtrOutput {
 }
 
 type OceanLoggingExport struct {
+	// Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
 	S3s []OceanLoggingExportS3 `pulumi:"s3s"`
 }
 
@@ -3488,6 +3498,7 @@ type OceanLoggingExportInput interface {
 }
 
 type OceanLoggingExportArgs struct {
+	// Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
 	S3s OceanLoggingExportS3ArrayInput `pulumi:"s3s"`
 }
 
@@ -3568,6 +3579,7 @@ func (o OceanLoggingExportOutput) ToOceanLoggingExportPtrOutputWithContext(ctx c
 	}).(OceanLoggingExportPtrOutput)
 }
 
+// Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
 func (o OceanLoggingExportOutput) S3s() OceanLoggingExportS3ArrayOutput {
 	return o.ApplyT(func(v OceanLoggingExport) []OceanLoggingExportS3 { return v.S3s }).(OceanLoggingExportS3ArrayOutput)
 }
@@ -3596,6 +3608,7 @@ func (o OceanLoggingExportPtrOutput) Elem() OceanLoggingExportOutput {
 	}).(OceanLoggingExportOutput)
 }
 
+// Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
 func (o OceanLoggingExportPtrOutput) S3s() OceanLoggingExportS3ArrayOutput {
 	return o.ApplyT(func(v *OceanLoggingExport) []OceanLoggingExportS3 {
 		if v == nil {
@@ -3606,7 +3619,7 @@ func (o OceanLoggingExportPtrOutput) S3s() OceanLoggingExportS3ArrayOutput {
 }
 
 type OceanLoggingExportS3 struct {
-	// The Spotinst Ocean ID.
+	// The identifier of The S3 data integration to export the logs to.
 	Id string `pulumi:"id"`
 }
 
@@ -3622,7 +3635,7 @@ type OceanLoggingExportS3Input interface {
 }
 
 type OceanLoggingExportS3Args struct {
-	// The Spotinst Ocean ID.
+	// The identifier of The S3 data integration to export the logs to.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -3677,7 +3690,7 @@ func (o OceanLoggingExportS3Output) ToOceanLoggingExportS3OutputWithContext(ctx 
 	return o
 }
 
-// The Spotinst Ocean ID.
+// The identifier of The S3 data integration to export the logs to.
 func (o OceanLoggingExportS3Output) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanLoggingExportS3) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -4223,6 +4236,7 @@ type OceanTag struct {
 	// The tag key.
 	Key string `pulumi:"key"`
 	// The tag value.
+	// * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
 	Value string `pulumi:"value"`
 }
 
@@ -4241,6 +4255,7 @@ type OceanTagArgs struct {
 	// The tag key.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The tag value.
+	// * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -4301,6 +4316,7 @@ func (o OceanTagOutput) Key() pulumi.StringOutput {
 }
 
 // The tag value.
+// * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
 func (o OceanTagOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanTag) string { return v.Value }).(pulumi.StringOutput)
 }

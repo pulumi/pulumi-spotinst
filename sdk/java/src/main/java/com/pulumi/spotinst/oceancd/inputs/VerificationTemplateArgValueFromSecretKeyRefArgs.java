@@ -14,22 +14,30 @@ public final class VerificationTemplateArgValueFromSecretKeyRefArgs extends com.
 
     public static final VerificationTemplateArgValueFromSecretKeyRefArgs Empty = new VerificationTemplateArgValueFromSecretKeyRefArgs();
 
+    /**
+     * The name of the field inside the secret.
+     * 
+     */
     @Import(name="key", required=true)
     private Output<String> key;
 
+    /**
+     * @return The name of the field inside the secret.
+     * 
+     */
     public Output<String> key() {
         return this.key;
     }
 
     /**
-     * Identifier name for Ocean CD Verification Template. Must be unique.
+     * The name of the secret.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Identifier name for Ocean CD Verification Template. Must be unique.
+     * @return The name of the secret.
      * 
      */
     public Output<String> name() {
@@ -61,17 +69,29 @@ public final class VerificationTemplateArgValueFromSecretKeyRefArgs extends com.
             $ = new VerificationTemplateArgValueFromSecretKeyRefArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param key The name of the field inside the secret.
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(Output<String> key) {
             $.key = key;
             return this;
         }
 
+        /**
+         * @param key The name of the field inside the secret.
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(String key) {
             return key(Output.of(key));
         }
 
         /**
-         * @param name Identifier name for Ocean CD Verification Template. Must be unique.
+         * @param name The name of the secret.
          * 
          * @return builder
          * 
@@ -82,7 +102,7 @@ public final class VerificationTemplateArgValueFromSecretKeyRefArgs extends com.
         }
 
         /**
-         * @param name Identifier name for Ocean CD Verification Template. Must be unique.
+         * @param name The name of the secret.
          * 
          * @return builder
          * 

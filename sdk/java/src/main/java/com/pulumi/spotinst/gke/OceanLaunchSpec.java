@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new OceanLaunchSpec("example", OceanLaunchSpecArgs.builder()        
+ *         var example = new OceanLaunchSpec("example", OceanLaunchSpecArgs.builder()
  *             .oceanId("o-123456")
  *             .nodePoolName("default-pool")
  *             .name("specialty.nodes.spotk8s.com")

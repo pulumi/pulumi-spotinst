@@ -13,17 +13,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RolloutSpecTrafficIstioVirtualService {
+    /**
+     * @return A list of HTTPS routes within VirtualService.
+     * 
+     */
     private @Nullable List<RolloutSpecTrafficIstioVirtualServiceTlsRoute> tlsRoutes;
+    /**
+     * @return Holds the name of the VirtualService.
+     * 
+     */
     private String virtualServiceName;
+    /**
+     * @return A list of HTTP routes within VirtualService.
+     * 
+     */
     private @Nullable List<String> virtualServiceRoutes;
 
     private RolloutSpecTrafficIstioVirtualService() {}
+    /**
+     * @return A list of HTTPS routes within VirtualService.
+     * 
+     */
     public List<RolloutSpecTrafficIstioVirtualServiceTlsRoute> tlsRoutes() {
         return this.tlsRoutes == null ? List.of() : this.tlsRoutes;
     }
+    /**
+     * @return Holds the name of the VirtualService.
+     * 
+     */
     public String virtualServiceName() {
         return this.virtualServiceName;
     }
+    /**
+     * @return A list of HTTP routes within VirtualService.
+     * 
+     */
     public List<String> virtualServiceRoutes() {
         return this.virtualServiceRoutes == null ? List.of() : this.virtualServiceRoutes;
     }

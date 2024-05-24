@@ -5292,8 +5292,9 @@ func (o OceanLaunchSpecNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) Oce
 }
 
 type OceanLaunchSpecNetworkInterfaceAccessConfig struct {
-	// The launch specification name.
+	// The name of the access configuration.
 	Name *string `pulumi:"name"`
+	// The type of the access configuration.
 	Type *string `pulumi:"type"`
 }
 
@@ -5309,8 +5310,9 @@ type OceanLaunchSpecNetworkInterfaceAccessConfigInput interface {
 }
 
 type OceanLaunchSpecNetworkInterfaceAccessConfigArgs struct {
-	// The launch specification name.
+	// The name of the access configuration.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The type of the access configuration.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -5365,11 +5367,12 @@ func (o OceanLaunchSpecNetworkInterfaceAccessConfigOutput) ToOceanLaunchSpecNetw
 	return o
 }
 
-// The launch specification name.
+// The name of the access configuration.
 func (o OceanLaunchSpecNetworkInterfaceAccessConfigOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecNetworkInterfaceAccessConfig) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The type of the access configuration.
 func (o OceanLaunchSpecNetworkInterfaceAccessConfigOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecNetworkInterfaceAccessConfig) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -5395,7 +5398,11 @@ func (o OceanLaunchSpecNetworkInterfaceAccessConfigArrayOutput) Index(i pulumi.I
 }
 
 type OceanLaunchSpecNetworkInterfaceAliasIpRange struct {
-	IpCidrRange         string `pulumi:"ipCidrRange"`
+	// specify the IP address range in CIDR notation that can be used for the alias IP addresses associated with the imported node pool.
+	IpCidrRange string `pulumi:"ipCidrRange"`
+	// specify the IP address range for the subnet secondary IP range.
+	//
+	// <a id="update-policy"></a>
 	SubnetworkRangeName string `pulumi:"subnetworkRangeName"`
 }
 
@@ -5411,7 +5418,11 @@ type OceanLaunchSpecNetworkInterfaceAliasIpRangeInput interface {
 }
 
 type OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs struct {
-	IpCidrRange         pulumi.StringInput `pulumi:"ipCidrRange"`
+	// specify the IP address range in CIDR notation that can be used for the alias IP addresses associated with the imported node pool.
+	IpCidrRange pulumi.StringInput `pulumi:"ipCidrRange"`
+	// specify the IP address range for the subnet secondary IP range.
+	//
+	// <a id="update-policy"></a>
 	SubnetworkRangeName pulumi.StringInput `pulumi:"subnetworkRangeName"`
 }
 
@@ -5466,10 +5477,14 @@ func (o OceanLaunchSpecNetworkInterfaceAliasIpRangeOutput) ToOceanLaunchSpecNetw
 	return o
 }
 
+// specify the IP address range in CIDR notation that can be used for the alias IP addresses associated with the imported node pool.
 func (o OceanLaunchSpecNetworkInterfaceAliasIpRangeOutput) IpCidrRange() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanLaunchSpecNetworkInterfaceAliasIpRange) string { return v.IpCidrRange }).(pulumi.StringOutput)
 }
 
+// specify the IP address range for the subnet secondary IP range.
+//
+// <a id="update-policy"></a>
 func (o OceanLaunchSpecNetworkInterfaceAliasIpRangeOutput) SubnetworkRangeName() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanLaunchSpecNetworkInterfaceAliasIpRange) string { return v.SubnetworkRangeName }).(pulumi.StringOutput)
 }
@@ -5777,10 +5792,14 @@ func (o OceanLaunchSpecSchedulingTaskArrayOutput) Index(i pulumi.IntInput) Ocean
 }
 
 type OceanLaunchSpecSchedulingTaskTaskHeadroom struct {
-	CpuPerUnit    *int `pulumi:"cpuPerUnit"`
-	GpuPerUnit    *int `pulumi:"gpuPerUnit"`
+	// Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+	CpuPerUnit *int `pulumi:"cpuPerUnit"`
+	// Optionally configure the number of GPUS to allocate for each headroom unit.
+	GpuPerUnit *int `pulumi:"gpuPerUnit"`
+	// Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
 	MemoryPerUnit *int `pulumi:"memoryPerUnit"`
-	NumOfUnits    int  `pulumi:"numOfUnits"`
+	// The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+	NumOfUnits int `pulumi:"numOfUnits"`
 }
 
 // OceanLaunchSpecSchedulingTaskTaskHeadroomInput is an input type that accepts OceanLaunchSpecSchedulingTaskTaskHeadroomArgs and OceanLaunchSpecSchedulingTaskTaskHeadroomOutput values.
@@ -5795,10 +5814,14 @@ type OceanLaunchSpecSchedulingTaskTaskHeadroomInput interface {
 }
 
 type OceanLaunchSpecSchedulingTaskTaskHeadroomArgs struct {
-	CpuPerUnit    pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
-	GpuPerUnit    pulumi.IntPtrInput `pulumi:"gpuPerUnit"`
+	// Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+	CpuPerUnit pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
+	// Optionally configure the number of GPUS to allocate for each headroom unit.
+	GpuPerUnit pulumi.IntPtrInput `pulumi:"gpuPerUnit"`
+	// Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
 	MemoryPerUnit pulumi.IntPtrInput `pulumi:"memoryPerUnit"`
-	NumOfUnits    pulumi.IntInput    `pulumi:"numOfUnits"`
+	// The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+	NumOfUnits pulumi.IntInput `pulumi:"numOfUnits"`
 }
 
 func (OceanLaunchSpecSchedulingTaskTaskHeadroomArgs) ElementType() reflect.Type {
@@ -5852,18 +5875,22 @@ func (o OceanLaunchSpecSchedulingTaskTaskHeadroomOutput) ToOceanLaunchSpecSchedu
 	return o
 }
 
+// Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
 func (o OceanLaunchSpecSchedulingTaskTaskHeadroomOutput) CpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecSchedulingTaskTaskHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
+// Optionally configure the number of GPUS to allocate for each headroom unit.
 func (o OceanLaunchSpecSchedulingTaskTaskHeadroomOutput) GpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecSchedulingTaskTaskHeadroom) *int { return v.GpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
+// Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
 func (o OceanLaunchSpecSchedulingTaskTaskHeadroomOutput) MemoryPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecSchedulingTaskTaskHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
 }
 
+// The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
 func (o OceanLaunchSpecSchedulingTaskTaskHeadroomOutput) NumOfUnits() pulumi.IntOutput {
 	return o.ApplyT(func(v OceanLaunchSpecSchedulingTaskTaskHeadroom) int { return v.NumOfUnits }).(pulumi.IntOutput)
 }

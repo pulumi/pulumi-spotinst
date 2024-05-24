@@ -15,16 +15,32 @@ public final class VerificationTemplateMetricProviderDatadogArgs extends com.pul
 
     public static final VerificationTemplateMetricProviderDatadogArgs Empty = new VerificationTemplateMetricProviderDatadogArgs();
 
+    /**
+     * A request for information retrieved from Datadog.
+     * 
+     */
     @Import(name="datadogQuery")
     private @Nullable Output<String> datadogQuery;
 
+    /**
+     * @return A request for information retrieved from Datadog.
+     * 
+     */
     public Optional<Output<String>> datadogQuery() {
         return Optional.ofNullable(this.datadogQuery);
     }
 
+    /**
+     * The window of time we are looking at in DataDog.
+     * 
+     */
     @Import(name="duration")
     private @Nullable Output<String> duration;
 
+    /**
+     * @return The window of time we are looking at in DataDog.
+     * 
+     */
     public Optional<Output<String>> duration() {
         return Optional.ofNullable(this.duration);
     }
@@ -54,20 +70,44 @@ public final class VerificationTemplateMetricProviderDatadogArgs extends com.pul
             $ = new VerificationTemplateMetricProviderDatadogArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param datadogQuery A request for information retrieved from Datadog.
+         * 
+         * @return builder
+         * 
+         */
         public Builder datadogQuery(@Nullable Output<String> datadogQuery) {
             $.datadogQuery = datadogQuery;
             return this;
         }
 
+        /**
+         * @param datadogQuery A request for information retrieved from Datadog.
+         * 
+         * @return builder
+         * 
+         */
         public Builder datadogQuery(String datadogQuery) {
             return datadogQuery(Output.of(datadogQuery));
         }
 
+        /**
+         * @param duration The window of time we are looking at in DataDog.
+         * 
+         * @return builder
+         * 
+         */
         public Builder duration(@Nullable Output<String> duration) {
             $.duration = duration;
             return this;
         }
 
+        /**
+         * @param duration The window of time we are looking at in DataDog.
+         * 
+         * @return builder
+         * 
+         */
         public Builder duration(String duration) {
             return duration(Output.of(duration));
         }

@@ -13,6 +13,9 @@ namespace Pulumi.SpotInst.Azure.Outputs
     [OutputType]
     public sealed class OceanNpLinuxOsConfigSysctl
     {
+        /// <summary>
+        /// Maximum number of memory map areas a process may have. Can be configured only if OS type is Linux.
+        /// </summary>
         public readonly int? VmMaxMapCount;
 
         [OutputConstructor]

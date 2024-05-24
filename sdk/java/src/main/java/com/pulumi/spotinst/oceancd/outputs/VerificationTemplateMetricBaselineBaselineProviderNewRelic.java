@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class VerificationTemplateMetricBaselineBaselineProviderNewRelic {
+    /**
+     * @return A raw newrelic NRQL query to perform.
+     * 
+     */
     private String newRelicQuery;
+    /**
+     * @return The name of the secret holding NR account configuration.
+     * 
+     */
     private @Nullable String profile;
 
     private VerificationTemplateMetricBaselineBaselineProviderNewRelic() {}
+    /**
+     * @return A raw newrelic NRQL query to perform.
+     * 
+     */
     public String newRelicQuery() {
         return this.newRelicQuery;
     }
+    /**
+     * @return The name of the secret holding NR account configuration.
+     * 
+     */
     public Optional<String> profile() {
         return Optional.ofNullable(this.profile);
     }

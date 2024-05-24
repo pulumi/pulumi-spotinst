@@ -21,51 +21,107 @@ public final class VerificationTemplateMetricProviderArgs extends com.pulumi.res
 
     public static final VerificationTemplateMetricProviderArgs Empty = new VerificationTemplateMetricProviderArgs();
 
+    /**
+     * The CloudWatch provider.
+     * 
+     */
     @Import(name="cloudWatch")
     private @Nullable Output<VerificationTemplateMetricProviderCloudWatchArgs> cloudWatch;
 
+    /**
+     * @return The CloudWatch provider.
+     * 
+     */
     public Optional<Output<VerificationTemplateMetricProviderCloudWatchArgs>> cloudWatch() {
         return Optional.ofNullable(this.cloudWatch);
     }
 
+    /**
+     * The datadog provider.
+     * 
+     */
     @Import(name="datadog")
     private @Nullable Output<VerificationTemplateMetricProviderDatadogArgs> datadog;
 
+    /**
+     * @return The datadog provider.
+     * 
+     */
     public Optional<Output<VerificationTemplateMetricProviderDatadogArgs>> datadog() {
         return Optional.ofNullable(this.datadog);
     }
 
+    /**
+     * The Jenkins provider. Default is &#34;{$}&#34;
+     * 
+     */
     @Import(name="jenkins")
     private @Nullable Output<VerificationTemplateMetricProviderJenkinsArgs> jenkins;
 
+    /**
+     * @return The Jenkins provider. Default is &#34;{$}&#34;
+     * 
+     */
     public Optional<Output<VerificationTemplateMetricProviderJenkinsArgs>> jenkins() {
         return Optional.ofNullable(this.jenkins);
     }
 
+    /**
+     * The Job provider.
+     * 
+     */
     @Import(name="job")
     private @Nullable Output<VerificationTemplateMetricProviderJobArgs> job;
 
+    /**
+     * @return The Job provider.
+     * 
+     */
     public Optional<Output<VerificationTemplateMetricProviderJobArgs>> job() {
         return Optional.ofNullable(this.job);
     }
 
+    /**
+     * The New Relic provider.
+     * 
+     */
     @Import(name="newRelic")
     private @Nullable Output<VerificationTemplateMetricProviderNewRelicArgs> newRelic;
 
+    /**
+     * @return The New Relic provider.
+     * 
+     */
     public Optional<Output<VerificationTemplateMetricProviderNewRelicArgs>> newRelic() {
         return Optional.ofNullable(this.newRelic);
     }
 
+    /**
+     * The Prometheus provider.
+     * 
+     */
     @Import(name="prometheus")
     private @Nullable Output<VerificationTemplateMetricProviderPrometheusArgs> prometheus;
 
+    /**
+     * @return The Prometheus provider.
+     * 
+     */
     public Optional<Output<VerificationTemplateMetricProviderPrometheusArgs>> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }
 
+    /**
+     * The Web provider.
+     * 
+     */
     @Import(name="web")
     private @Nullable Output<VerificationTemplateMetricProviderWebArgs> web;
 
+    /**
+     * @return The Web provider.
+     * 
+     */
     public Optional<Output<VerificationTemplateMetricProviderWebArgs>> web() {
         return Optional.ofNullable(this.web);
     }
@@ -100,65 +156,149 @@ public final class VerificationTemplateMetricProviderArgs extends com.pulumi.res
             $ = new VerificationTemplateMetricProviderArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param cloudWatch The CloudWatch provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cloudWatch(@Nullable Output<VerificationTemplateMetricProviderCloudWatchArgs> cloudWatch) {
             $.cloudWatch = cloudWatch;
             return this;
         }
 
+        /**
+         * @param cloudWatch The CloudWatch provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cloudWatch(VerificationTemplateMetricProviderCloudWatchArgs cloudWatch) {
             return cloudWatch(Output.of(cloudWatch));
         }
 
+        /**
+         * @param datadog The datadog provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder datadog(@Nullable Output<VerificationTemplateMetricProviderDatadogArgs> datadog) {
             $.datadog = datadog;
             return this;
         }
 
+        /**
+         * @param datadog The datadog provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder datadog(VerificationTemplateMetricProviderDatadogArgs datadog) {
             return datadog(Output.of(datadog));
         }
 
+        /**
+         * @param jenkins The Jenkins provider. Default is &#34;{$}&#34;
+         * 
+         * @return builder
+         * 
+         */
         public Builder jenkins(@Nullable Output<VerificationTemplateMetricProviderJenkinsArgs> jenkins) {
             $.jenkins = jenkins;
             return this;
         }
 
+        /**
+         * @param jenkins The Jenkins provider. Default is &#34;{$}&#34;
+         * 
+         * @return builder
+         * 
+         */
         public Builder jenkins(VerificationTemplateMetricProviderJenkinsArgs jenkins) {
             return jenkins(Output.of(jenkins));
         }
 
+        /**
+         * @param job The Job provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder job(@Nullable Output<VerificationTemplateMetricProviderJobArgs> job) {
             $.job = job;
             return this;
         }
 
+        /**
+         * @param job The Job provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder job(VerificationTemplateMetricProviderJobArgs job) {
             return job(Output.of(job));
         }
 
+        /**
+         * @param newRelic The New Relic provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder newRelic(@Nullable Output<VerificationTemplateMetricProviderNewRelicArgs> newRelic) {
             $.newRelic = newRelic;
             return this;
         }
 
+        /**
+         * @param newRelic The New Relic provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder newRelic(VerificationTemplateMetricProviderNewRelicArgs newRelic) {
             return newRelic(Output.of(newRelic));
         }
 
+        /**
+         * @param prometheus The Prometheus provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder prometheus(@Nullable Output<VerificationTemplateMetricProviderPrometheusArgs> prometheus) {
             $.prometheus = prometheus;
             return this;
         }
 
+        /**
+         * @param prometheus The Prometheus provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder prometheus(VerificationTemplateMetricProviderPrometheusArgs prometheus) {
             return prometheus(Output.of(prometheus));
         }
 
+        /**
+         * @param web The Web provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder web(@Nullable Output<VerificationTemplateMetricProviderWebArgs> web) {
             $.web = web;
             return this;
         }
 
+        /**
+         * @param web The Web provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder web(VerificationTemplateMetricProviderWebArgs web) {
             return web(Output.of(web));
         }

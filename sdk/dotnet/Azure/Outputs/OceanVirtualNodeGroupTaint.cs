@@ -13,9 +13,6 @@ namespace Pulumi.SpotInst.Azure.Outputs
     [OutputType]
     public sealed class OceanVirtualNodeGroupTaint
     {
-        /// <summary>
-        /// The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`, `"PreferNoExecute"`.
-        /// </summary>
         public readonly string Effect;
         /// <summary>
         /// The taint key.

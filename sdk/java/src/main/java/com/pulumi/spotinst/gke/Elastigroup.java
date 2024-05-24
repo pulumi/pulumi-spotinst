@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example_gke_elastigroup = new Elastigroup("example-gke-elastigroup", ElastigroupArgs.builder()        
+ *         var example_gke_elastigroup = new Elastigroup("example-gke-elastigroup", ElastigroupArgs.builder()
  *             .name("example-gke")
  *             .clusterZoneName("us-central1-a")
  *             .nodeImage("COS")

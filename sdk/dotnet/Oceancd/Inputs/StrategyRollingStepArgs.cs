@@ -12,12 +12,18 @@ namespace Pulumi.SpotInst.Oceancd.Inputs
 
     public sealed class StrategyRollingStepArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Defines the duration of time to freeze the rollout.
+        /// </summary>
         [Input("pause")]
         public Input<Inputs.StrategyRollingStepPauseArgs>? Pause { get; set; }
 
         [Input("stepsName")]
         public Input<string>? StepsName { get; set; }
 
+        /// <summary>
+        /// Represents the list of verifications to run in a step.
+        /// </summary>
         [Input("verification")]
         public Input<Inputs.StrategyRollingStepVerificationArgs>? Verification { get; set; }
 

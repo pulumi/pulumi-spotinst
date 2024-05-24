@@ -12,12 +12,21 @@ namespace Pulumi.SpotInst.Oceancd.Inputs
 
     public sealed class RolloutSpecStrategyArgGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Name of an argument.
+        /// </summary>
         [Input("argName", required: true)]
         public Input<string> ArgName { get; set; } = null!;
 
+        /// <summary>
+        /// Value of an argument.
+        /// </summary>
         [Input("argValue")]
         public Input<string>? ArgValue { get; set; }
 
+        /// <summary>
+        /// Defines from where to get the value of an argument.
+        /// </summary>
         [Input("valueFrom")]
         public Input<Inputs.RolloutSpecStrategyArgValueFromGetArgs>? ValueFrom { get; set; }
 

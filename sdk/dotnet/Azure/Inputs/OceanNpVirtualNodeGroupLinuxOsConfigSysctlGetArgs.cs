@@ -12,6 +12,9 @@ namespace Pulumi.SpotInst.Azure.Inputs
 
     public sealed class OceanNpVirtualNodeGroupLinuxOsConfigSysctlGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Maximum number of memory map areas a process may have. Can be configured only if OS type is Linux.
+        /// </summary>
         [Input("vmMaxMapCount")]
         public Input<int>? VmMaxMapCount { get; set; }
 

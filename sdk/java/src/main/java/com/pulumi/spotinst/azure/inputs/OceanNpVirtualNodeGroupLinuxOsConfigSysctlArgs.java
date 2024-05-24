@@ -15,9 +15,17 @@ public final class OceanNpVirtualNodeGroupLinuxOsConfigSysctlArgs extends com.pu
 
     public static final OceanNpVirtualNodeGroupLinuxOsConfigSysctlArgs Empty = new OceanNpVirtualNodeGroupLinuxOsConfigSysctlArgs();
 
+    /**
+     * Maximum number of memory map areas a process may have. Can be configured only if OS type is Linux.
+     * 
+     */
     @Import(name="vmMaxMapCount")
     private @Nullable Output<Integer> vmMaxMapCount;
 
+    /**
+     * @return Maximum number of memory map areas a process may have. Can be configured only if OS type is Linux.
+     * 
+     */
     public Optional<Output<Integer>> vmMaxMapCount() {
         return Optional.ofNullable(this.vmMaxMapCount);
     }
@@ -46,11 +54,23 @@ public final class OceanNpVirtualNodeGroupLinuxOsConfigSysctlArgs extends com.pu
             $ = new OceanNpVirtualNodeGroupLinuxOsConfigSysctlArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param vmMaxMapCount Maximum number of memory map areas a process may have. Can be configured only if OS type is Linux.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vmMaxMapCount(@Nullable Output<Integer> vmMaxMapCount) {
             $.vmMaxMapCount = vmMaxMapCount;
             return this;
         }
 
+        /**
+         * @param vmMaxMapCount Maximum number of memory map areas a process may have. Can be configured only if OS type is Linux.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vmMaxMapCount(Integer vmMaxMapCount) {
             return vmMaxMapCount(Output.of(vmMaxMapCount));
         }

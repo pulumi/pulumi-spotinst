@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanVirtualNodeGroupLaunchSpecificationTag {
+    /**
+     * @return Tag Key for Vms in the cluster.
+     * 
+     */
     private @Nullable String key;
+    /**
+     * @return Tag Value for VMs in the cluster.
+     * 
+     */
     private @Nullable String value;
 
     private OceanVirtualNodeGroupLaunchSpecificationTag() {}
+    /**
+     * @return Tag Key for Vms in the cluster.
+     * 
+     */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
+    /**
+     * @return Tag Value for VMs in the cluster.
+     * 
+     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

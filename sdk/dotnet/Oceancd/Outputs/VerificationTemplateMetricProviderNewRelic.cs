@@ -13,7 +13,13 @@ namespace Pulumi.SpotInst.Oceancd.Outputs
     [OutputType]
     public sealed class VerificationTemplateMetricProviderNewRelic
     {
+        /// <summary>
+        /// A raw newrelic NRQL query to perform.
+        /// </summary>
         public readonly string NewRelicQuery;
+        /// <summary>
+        /// The name of the secret holding NR account configuration.
+        /// </summary>
         public readonly string? Profile;
 
         [OutputConstructor]

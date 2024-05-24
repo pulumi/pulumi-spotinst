@@ -14,16 +14,32 @@ public final class VerificationTemplateMetricProviderCloudWatchMetricDataQueryMe
 
     public static final VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArgs Empty = new VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArgs();
 
+    /**
+     * The name of the dimensions. These values must contain only ASCII characters and must include at least one non-whitespace characte
+     * 
+     */
     @Import(name="dimensionName", required=true)
     private Output<String> dimensionName;
 
+    /**
+     * @return The name of the dimensions. These values must contain only ASCII characters and must include at least one non-whitespace characte
+     * 
+     */
     public Output<String> dimensionName() {
         return this.dimensionName;
     }
 
+    /**
+     * The value of the dimensions.These values must contain only ASCII characters and must include at least one non-whitespace characte
+     * 
+     */
     @Import(name="dimensionValue", required=true)
     private Output<String> dimensionValue;
 
+    /**
+     * @return The value of the dimensions.These values must contain only ASCII characters and must include at least one non-whitespace characte
+     * 
+     */
     public Output<String> dimensionValue() {
         return this.dimensionValue;
     }
@@ -53,20 +69,44 @@ public final class VerificationTemplateMetricProviderCloudWatchMetricDataQueryMe
             $ = new VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param dimensionName The name of the dimensions. These values must contain only ASCII characters and must include at least one non-whitespace characte
+         * 
+         * @return builder
+         * 
+         */
         public Builder dimensionName(Output<String> dimensionName) {
             $.dimensionName = dimensionName;
             return this;
         }
 
+        /**
+         * @param dimensionName The name of the dimensions. These values must contain only ASCII characters and must include at least one non-whitespace characte
+         * 
+         * @return builder
+         * 
+         */
         public Builder dimensionName(String dimensionName) {
             return dimensionName(Output.of(dimensionName));
         }
 
+        /**
+         * @param dimensionValue The value of the dimensions.These values must contain only ASCII characters and must include at least one non-whitespace characte
+         * 
+         * @return builder
+         * 
+         */
         public Builder dimensionValue(Output<String> dimensionValue) {
             $.dimensionValue = dimensionValue;
             return this;
         }
 
+        /**
+         * @param dimensionValue The value of the dimensions.These values must contain only ASCII characters and must include at least one non-whitespace characte
+         * 
+         * @return builder
+         * 
+         */
         public Builder dimensionValue(String dimensionValue) {
             return dimensionValue(Output.of(dimensionValue));
         }

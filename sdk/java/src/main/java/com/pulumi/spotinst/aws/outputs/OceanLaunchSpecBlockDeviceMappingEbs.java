@@ -14,41 +14,113 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanLaunchSpecBlockDeviceMappingEbs {
+    /**
+     * @return Boolean. Flag to delete the EBS on instance termination.
+     * 
+     */
     private @Nullable Boolean deleteOnTermination;
+    /**
+     * @return Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
+     * 
+     */
     private @Nullable OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize dynamicVolumeSize;
+    /**
+     * @return Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+     * 
+     */
     private @Nullable Boolean encrypted;
+    /**
+     * @return Int. The number of I/O operations per second (IOPS) that the volume supports.
+     * 
+     */
     private @Nullable Integer iops;
+    /**
+     * @return String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+     * 
+     */
     private @Nullable String kmsKeyId;
+    /**
+     * @return (Optional) String. The Snapshot ID to mount by.
+     * 
+     */
     private @Nullable String snapshotId;
+    /**
+     * @return The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = `gp3`.
+     * 
+     */
     private @Nullable Integer throughput;
+    /**
+     * @return Int. The size, in GB of the volume.
+     * 
+     */
     private @Nullable Integer volumeSize;
+    /**
+     * @return String. The type of the volume. (Example: `gp2`).
+     * 
+     */
     private @Nullable String volumeType;
 
     private OceanLaunchSpecBlockDeviceMappingEbs() {}
+    /**
+     * @return Boolean. Flag to delete the EBS on instance termination.
+     * 
+     */
     public Optional<Boolean> deleteOnTermination() {
         return Optional.ofNullable(this.deleteOnTermination);
     }
+    /**
+     * @return Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
+     * 
+     */
     public Optional<OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize> dynamicVolumeSize() {
         return Optional.ofNullable(this.dynamicVolumeSize);
     }
+    /**
+     * @return Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+     * 
+     */
     public Optional<Boolean> encrypted() {
         return Optional.ofNullable(this.encrypted);
     }
+    /**
+     * @return Int. The number of I/O operations per second (IOPS) that the volume supports.
+     * 
+     */
     public Optional<Integer> iops() {
         return Optional.ofNullable(this.iops);
     }
+    /**
+     * @return String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+     * 
+     */
     public Optional<String> kmsKeyId() {
         return Optional.ofNullable(this.kmsKeyId);
     }
+    /**
+     * @return (Optional) String. The Snapshot ID to mount by.
+     * 
+     */
     public Optional<String> snapshotId() {
         return Optional.ofNullable(this.snapshotId);
     }
+    /**
+     * @return The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = `gp3`.
+     * 
+     */
     public Optional<Integer> throughput() {
         return Optional.ofNullable(this.throughput);
     }
+    /**
+     * @return Int. The size, in GB of the volume.
+     * 
+     */
     public Optional<Integer> volumeSize() {
         return Optional.ofNullable(this.volumeSize);
     }
+    /**
+     * @return String. The type of the volume. (Example: `gp2`).
+     * 
+     */
     public Optional<String> volumeType() {
         return Optional.ofNullable(this.volumeType);
     }
