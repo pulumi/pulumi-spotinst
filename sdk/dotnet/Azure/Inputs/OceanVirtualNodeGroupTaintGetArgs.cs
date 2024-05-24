@@ -12,9 +12,6 @@ namespace Pulumi.SpotInst.Azure.Inputs
 
     public sealed class OceanVirtualNodeGroupTaintGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`, `"PreferNoExecute"`.
-        /// </summary>
         [Input("effect", required: true)]
         public Input<string> Effect { get; set; } = null!;
 

@@ -15,9 +15,17 @@ public final class OceanNpAutoscalerAutoscaleDownArgs extends com.pulumi.resourc
 
     public static final OceanNpAutoscalerAutoscaleDownArgs Empty = new OceanNpAutoscalerAutoscaleDownArgs();
 
+    /**
+     * The maximum percentage allowed to scale down in a single scaling action.
+     * 
+     */
     @Import(name="maxScaleDownPercentage")
     private @Nullable Output<Integer> maxScaleDownPercentage;
 
+    /**
+     * @return The maximum percentage allowed to scale down in a single scaling action.
+     * 
+     */
     public Optional<Output<Integer>> maxScaleDownPercentage() {
         return Optional.ofNullable(this.maxScaleDownPercentage);
     }
@@ -46,11 +54,23 @@ public final class OceanNpAutoscalerAutoscaleDownArgs extends com.pulumi.resourc
             $ = new OceanNpAutoscalerAutoscaleDownArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param maxScaleDownPercentage The maximum percentage allowed to scale down in a single scaling action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxScaleDownPercentage(@Nullable Output<Integer> maxScaleDownPercentage) {
             $.maxScaleDownPercentage = maxScaleDownPercentage;
             return this;
         }
 
+        /**
+         * @param maxScaleDownPercentage The maximum percentage allowed to scale down in a single scaling action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxScaleDownPercentage(Integer maxScaleDownPercentage) {
             return maxScaleDownPercentage(Output.of(maxScaleDownPercentage));
         }

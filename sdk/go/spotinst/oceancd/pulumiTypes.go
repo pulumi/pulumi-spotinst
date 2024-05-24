@@ -527,8 +527,11 @@ func (o RolloutSpecStrategyPtrOutput) StrategyName() pulumi.StringPtrOutput {
 }
 
 type RolloutSpecStrategyArg struct {
-	ArgName   string                           `pulumi:"argName"`
-	ArgValue  *string                          `pulumi:"argValue"`
+	// Name of an argument.
+	ArgName string `pulumi:"argName"`
+	// Value of an argument.
+	ArgValue *string `pulumi:"argValue"`
+	// Defines from where to get the value of an argument.
 	ValueFrom *RolloutSpecStrategyArgValueFrom `pulumi:"valueFrom"`
 }
 
@@ -544,8 +547,11 @@ type RolloutSpecStrategyArgInput interface {
 }
 
 type RolloutSpecStrategyArgArgs struct {
-	ArgName   pulumi.StringInput                      `pulumi:"argName"`
-	ArgValue  pulumi.StringPtrInput                   `pulumi:"argValue"`
+	// Name of an argument.
+	ArgName pulumi.StringInput `pulumi:"argName"`
+	// Value of an argument.
+	ArgValue pulumi.StringPtrInput `pulumi:"argValue"`
+	// Defines from where to get the value of an argument.
 	ValueFrom RolloutSpecStrategyArgValueFromPtrInput `pulumi:"valueFrom"`
 }
 
@@ -600,14 +606,17 @@ func (o RolloutSpecStrategyArgOutput) ToRolloutSpecStrategyArgOutputWithContext(
 	return o
 }
 
+// Name of an argument.
 func (o RolloutSpecStrategyArgOutput) ArgName() pulumi.StringOutput {
 	return o.ApplyT(func(v RolloutSpecStrategyArg) string { return v.ArgName }).(pulumi.StringOutput)
 }
 
+// Value of an argument.
 func (o RolloutSpecStrategyArgOutput) ArgValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RolloutSpecStrategyArg) *string { return v.ArgValue }).(pulumi.StringPtrOutput)
 }
 
+// Defines from where to get the value of an argument.
 func (o RolloutSpecStrategyArgOutput) ValueFrom() RolloutSpecStrategyArgValueFromPtrOutput {
 	return o.ApplyT(func(v RolloutSpecStrategyArg) *RolloutSpecStrategyArgValueFrom { return v.ValueFrom }).(RolloutSpecStrategyArgValueFromPtrOutput)
 }
@@ -633,6 +642,7 @@ func (o RolloutSpecStrategyArgArrayOutput) Index(i pulumi.IntInput) RolloutSpecS
 }
 
 type RolloutSpecStrategyArgValueFrom struct {
+	// Defines the field path from where to get the value of an argument.
 	FieldRef RolloutSpecStrategyArgValueFromFieldRef `pulumi:"fieldRef"`
 }
 
@@ -648,6 +658,7 @@ type RolloutSpecStrategyArgValueFromInput interface {
 }
 
 type RolloutSpecStrategyArgValueFromArgs struct {
+	// Defines the field path from where to get the value of an argument.
 	FieldRef RolloutSpecStrategyArgValueFromFieldRefInput `pulumi:"fieldRef"`
 }
 
@@ -728,6 +739,7 @@ func (o RolloutSpecStrategyArgValueFromOutput) ToRolloutSpecStrategyArgValueFrom
 	}).(RolloutSpecStrategyArgValueFromPtrOutput)
 }
 
+// Defines the field path from where to get the value of an argument.
 func (o RolloutSpecStrategyArgValueFromOutput) FieldRef() RolloutSpecStrategyArgValueFromFieldRefOutput {
 	return o.ApplyT(func(v RolloutSpecStrategyArgValueFrom) RolloutSpecStrategyArgValueFromFieldRef { return v.FieldRef }).(RolloutSpecStrategyArgValueFromFieldRefOutput)
 }
@@ -756,6 +768,7 @@ func (o RolloutSpecStrategyArgValueFromPtrOutput) Elem() RolloutSpecStrategyArgV
 	}).(RolloutSpecStrategyArgValueFromOutput)
 }
 
+// Defines the field path from where to get the value of an argument.
 func (o RolloutSpecStrategyArgValueFromPtrOutput) FieldRef() RolloutSpecStrategyArgValueFromFieldRefPtrOutput {
 	return o.ApplyT(func(v *RolloutSpecStrategyArgValueFrom) *RolloutSpecStrategyArgValueFromFieldRef {
 		if v == nil {
@@ -766,6 +779,7 @@ func (o RolloutSpecStrategyArgValueFromPtrOutput) FieldRef() RolloutSpecStrategy
 }
 
 type RolloutSpecStrategyArgValueFromFieldRef struct {
+	// Path to SpotDeployment's field from where to get the value of an argument.
 	FieldPath string `pulumi:"fieldPath"`
 }
 
@@ -781,6 +795,7 @@ type RolloutSpecStrategyArgValueFromFieldRefInput interface {
 }
 
 type RolloutSpecStrategyArgValueFromFieldRefArgs struct {
+	// Path to SpotDeployment's field from where to get the value of an argument.
 	FieldPath pulumi.StringInput `pulumi:"fieldPath"`
 }
 
@@ -861,6 +876,7 @@ func (o RolloutSpecStrategyArgValueFromFieldRefOutput) ToRolloutSpecStrategyArgV
 	}).(RolloutSpecStrategyArgValueFromFieldRefPtrOutput)
 }
 
+// Path to SpotDeployment's field from where to get the value of an argument.
 func (o RolloutSpecStrategyArgValueFromFieldRefOutput) FieldPath() pulumi.StringOutput {
 	return o.ApplyT(func(v RolloutSpecStrategyArgValueFromFieldRef) string { return v.FieldPath }).(pulumi.StringOutput)
 }
@@ -889,6 +905,7 @@ func (o RolloutSpecStrategyArgValueFromFieldRefPtrOutput) Elem() RolloutSpecStra
 	}).(RolloutSpecStrategyArgValueFromFieldRefOutput)
 }
 
+// Path to SpotDeployment's field from where to get the value of an argument.
 func (o RolloutSpecStrategyArgValueFromFieldRefPtrOutput) FieldPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RolloutSpecStrategyArgValueFromFieldRef) *string {
 		if v == nil {
@@ -1169,11 +1186,16 @@ func (o RolloutSpecTrafficPtrOutput) StableService() pulumi.StringPtrOutput {
 }
 
 type RolloutSpecTrafficAlb struct {
-	AlbAnnotationPrefix *string                                `pulumi:"albAnnotationPrefix"`
-	AlbIngress          string                                 `pulumi:"albIngress"`
-	AlbRootService      string                                 `pulumi:"albRootService"`
-	ServicePort         int                                    `pulumi:"servicePort"`
-	StickinessConfig    *RolloutSpecTrafficAlbStickinessConfig `pulumi:"stickinessConfig"`
+	// Has to match the configured annotation prefix on the alb ingress controller.
+	AlbAnnotationPrefix *string `pulumi:"albAnnotationPrefix"`
+	// Refers to the name of an `Ingress` resource in the same namespace as the `SpotDeployment`.
+	AlbIngress string `pulumi:"albIngress"`
+	// References the service in the ingress to the controller should add the action to.
+	AlbRootService string `pulumi:"albRootService"`
+	// Refers to the port that the Ingress action should route traffic to.
+	ServicePort int `pulumi:"servicePort"`
+	// Allows to specify further settings on the ForwardConfig.
+	StickinessConfig *RolloutSpecTrafficAlbStickinessConfig `pulumi:"stickinessConfig"`
 }
 
 // RolloutSpecTrafficAlbInput is an input type that accepts RolloutSpecTrafficAlbArgs and RolloutSpecTrafficAlbOutput values.
@@ -1188,11 +1210,16 @@ type RolloutSpecTrafficAlbInput interface {
 }
 
 type RolloutSpecTrafficAlbArgs struct {
-	AlbAnnotationPrefix pulumi.StringPtrInput                         `pulumi:"albAnnotationPrefix"`
-	AlbIngress          pulumi.StringInput                            `pulumi:"albIngress"`
-	AlbRootService      pulumi.StringInput                            `pulumi:"albRootService"`
-	ServicePort         pulumi.IntInput                               `pulumi:"servicePort"`
-	StickinessConfig    RolloutSpecTrafficAlbStickinessConfigPtrInput `pulumi:"stickinessConfig"`
+	// Has to match the configured annotation prefix on the alb ingress controller.
+	AlbAnnotationPrefix pulumi.StringPtrInput `pulumi:"albAnnotationPrefix"`
+	// Refers to the name of an `Ingress` resource in the same namespace as the `SpotDeployment`.
+	AlbIngress pulumi.StringInput `pulumi:"albIngress"`
+	// References the service in the ingress to the controller should add the action to.
+	AlbRootService pulumi.StringInput `pulumi:"albRootService"`
+	// Refers to the port that the Ingress action should route traffic to.
+	ServicePort pulumi.IntInput `pulumi:"servicePort"`
+	// Allows to specify further settings on the ForwardConfig.
+	StickinessConfig RolloutSpecTrafficAlbStickinessConfigPtrInput `pulumi:"stickinessConfig"`
 }
 
 func (RolloutSpecTrafficAlbArgs) ElementType() reflect.Type {
@@ -1272,22 +1299,27 @@ func (o RolloutSpecTrafficAlbOutput) ToRolloutSpecTrafficAlbPtrOutputWithContext
 	}).(RolloutSpecTrafficAlbPtrOutput)
 }
 
+// Has to match the configured annotation prefix on the alb ingress controller.
 func (o RolloutSpecTrafficAlbOutput) AlbAnnotationPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RolloutSpecTrafficAlb) *string { return v.AlbAnnotationPrefix }).(pulumi.StringPtrOutput)
 }
 
+// Refers to the name of an `Ingress` resource in the same namespace as the `SpotDeployment`.
 func (o RolloutSpecTrafficAlbOutput) AlbIngress() pulumi.StringOutput {
 	return o.ApplyT(func(v RolloutSpecTrafficAlb) string { return v.AlbIngress }).(pulumi.StringOutput)
 }
 
+// References the service in the ingress to the controller should add the action to.
 func (o RolloutSpecTrafficAlbOutput) AlbRootService() pulumi.StringOutput {
 	return o.ApplyT(func(v RolloutSpecTrafficAlb) string { return v.AlbRootService }).(pulumi.StringOutput)
 }
 
+// Refers to the port that the Ingress action should route traffic to.
 func (o RolloutSpecTrafficAlbOutput) ServicePort() pulumi.IntOutput {
 	return o.ApplyT(func(v RolloutSpecTrafficAlb) int { return v.ServicePort }).(pulumi.IntOutput)
 }
 
+// Allows to specify further settings on the ForwardConfig.
 func (o RolloutSpecTrafficAlbOutput) StickinessConfig() RolloutSpecTrafficAlbStickinessConfigPtrOutput {
 	return o.ApplyT(func(v RolloutSpecTrafficAlb) *RolloutSpecTrafficAlbStickinessConfig { return v.StickinessConfig }).(RolloutSpecTrafficAlbStickinessConfigPtrOutput)
 }
@@ -1316,6 +1348,7 @@ func (o RolloutSpecTrafficAlbPtrOutput) Elem() RolloutSpecTrafficAlbOutput {
 	}).(RolloutSpecTrafficAlbOutput)
 }
 
+// Has to match the configured annotation prefix on the alb ingress controller.
 func (o RolloutSpecTrafficAlbPtrOutput) AlbAnnotationPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RolloutSpecTrafficAlb) *string {
 		if v == nil {
@@ -1325,6 +1358,7 @@ func (o RolloutSpecTrafficAlbPtrOutput) AlbAnnotationPrefix() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Refers to the name of an `Ingress` resource in the same namespace as the `SpotDeployment`.
 func (o RolloutSpecTrafficAlbPtrOutput) AlbIngress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RolloutSpecTrafficAlb) *string {
 		if v == nil {
@@ -1334,6 +1368,7 @@ func (o RolloutSpecTrafficAlbPtrOutput) AlbIngress() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// References the service in the ingress to the controller should add the action to.
 func (o RolloutSpecTrafficAlbPtrOutput) AlbRootService() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RolloutSpecTrafficAlb) *string {
 		if v == nil {
@@ -1343,6 +1378,7 @@ func (o RolloutSpecTrafficAlbPtrOutput) AlbRootService() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Refers to the port that the Ingress action should route traffic to.
 func (o RolloutSpecTrafficAlbPtrOutput) ServicePort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RolloutSpecTrafficAlb) *int {
 		if v == nil {
@@ -1352,6 +1388,7 @@ func (o RolloutSpecTrafficAlbPtrOutput) ServicePort() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Allows to specify further settings on the ForwardConfig.
 func (o RolloutSpecTrafficAlbPtrOutput) StickinessConfig() RolloutSpecTrafficAlbStickinessConfigPtrOutput {
 	return o.ApplyT(func(v *RolloutSpecTrafficAlb) *RolloutSpecTrafficAlbStickinessConfig {
 		if v == nil {
@@ -1362,8 +1399,10 @@ func (o RolloutSpecTrafficAlbPtrOutput) StickinessConfig() RolloutSpecTrafficAlb
 }
 
 type RolloutSpecTrafficAlbStickinessConfig struct {
-	DurationSeconds *int  `pulumi:"durationSeconds"`
-	Enabled         *bool `pulumi:"enabled"`
+	// Defines how long the load balancer should consistently route the user's request to the same target.
+	DurationSeconds *int `pulumi:"durationSeconds"`
+	// Enables the load balancer to bind a user's session to a specific target.
+	Enabled *bool `pulumi:"enabled"`
 }
 
 // RolloutSpecTrafficAlbStickinessConfigInput is an input type that accepts RolloutSpecTrafficAlbStickinessConfigArgs and RolloutSpecTrafficAlbStickinessConfigOutput values.
@@ -1378,8 +1417,10 @@ type RolloutSpecTrafficAlbStickinessConfigInput interface {
 }
 
 type RolloutSpecTrafficAlbStickinessConfigArgs struct {
-	DurationSeconds pulumi.IntPtrInput  `pulumi:"durationSeconds"`
-	Enabled         pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Defines how long the load balancer should consistently route the user's request to the same target.
+	DurationSeconds pulumi.IntPtrInput `pulumi:"durationSeconds"`
+	// Enables the load balancer to bind a user's session to a specific target.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
 func (RolloutSpecTrafficAlbStickinessConfigArgs) ElementType() reflect.Type {
@@ -1459,10 +1500,12 @@ func (o RolloutSpecTrafficAlbStickinessConfigOutput) ToRolloutSpecTrafficAlbStic
 	}).(RolloutSpecTrafficAlbStickinessConfigPtrOutput)
 }
 
+// Defines how long the load balancer should consistently route the user's request to the same target.
 func (o RolloutSpecTrafficAlbStickinessConfigOutput) DurationSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RolloutSpecTrafficAlbStickinessConfig) *int { return v.DurationSeconds }).(pulumi.IntPtrOutput)
 }
 
+// Enables the load balancer to bind a user's session to a specific target.
 func (o RolloutSpecTrafficAlbStickinessConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RolloutSpecTrafficAlbStickinessConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -1491,6 +1534,7 @@ func (o RolloutSpecTrafficAlbStickinessConfigPtrOutput) Elem() RolloutSpecTraffi
 	}).(RolloutSpecTrafficAlbStickinessConfigOutput)
 }
 
+// Defines how long the load balancer should consistently route the user's request to the same target.
 func (o RolloutSpecTrafficAlbStickinessConfigPtrOutput) DurationSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RolloutSpecTrafficAlbStickinessConfig) *int {
 		if v == nil {
@@ -1500,6 +1544,7 @@ func (o RolloutSpecTrafficAlbStickinessConfigPtrOutput) DurationSeconds() pulumi
 	}).(pulumi.IntPtrOutput)
 }
 
+// Enables the load balancer to bind a user's session to a specific target.
 func (o RolloutSpecTrafficAlbStickinessConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RolloutSpecTrafficAlbStickinessConfig) *bool {
 		if v == nil {
@@ -1510,6 +1555,7 @@ func (o RolloutSpecTrafficAlbStickinessConfigPtrOutput) Enabled() pulumi.BoolPtr
 }
 
 type RolloutSpecTrafficAmbassador struct {
+	// A list of names of the Ambassador Mappings used to route traffic to the service.
 	Mappings []string `pulumi:"mappings"`
 }
 
@@ -1525,6 +1571,7 @@ type RolloutSpecTrafficAmbassadorInput interface {
 }
 
 type RolloutSpecTrafficAmbassadorArgs struct {
+	// A list of names of the Ambassador Mappings used to route traffic to the service.
 	Mappings pulumi.StringArrayInput `pulumi:"mappings"`
 }
 
@@ -1605,6 +1652,7 @@ func (o RolloutSpecTrafficAmbassadorOutput) ToRolloutSpecTrafficAmbassadorPtrOut
 	}).(RolloutSpecTrafficAmbassadorPtrOutput)
 }
 
+// A list of names of the Ambassador Mappings used to route traffic to the service.
 func (o RolloutSpecTrafficAmbassadorOutput) Mappings() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RolloutSpecTrafficAmbassador) []string { return v.Mappings }).(pulumi.StringArrayOutput)
 }
@@ -1633,6 +1681,7 @@ func (o RolloutSpecTrafficAmbassadorPtrOutput) Elem() RolloutSpecTrafficAmbassad
 	}).(RolloutSpecTrafficAmbassadorOutput)
 }
 
+// A list of names of the Ambassador Mappings used to route traffic to the service.
 func (o RolloutSpecTrafficAmbassadorPtrOutput) Mappings() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RolloutSpecTrafficAmbassador) []string {
 		if v == nil {
@@ -1643,7 +1692,9 @@ func (o RolloutSpecTrafficAmbassadorPtrOutput) Mappings() pulumi.StringArrayOutp
 }
 
 type RolloutSpecTrafficIstio struct {
+	// It references to an Istio DestinationRule to modify and shape traffic. `DestinationRule` field belongs only to the Subset Level approach.
 	DestinationRule *RolloutSpecTrafficIstioDestinationRule `pulumi:"destinationRule"`
+	// Defines a set of traffic routing rules to apply when a host is addressed.
 	VirtualServices []RolloutSpecTrafficIstioVirtualService `pulumi:"virtualServices"`
 }
 
@@ -1659,7 +1710,9 @@ type RolloutSpecTrafficIstioInput interface {
 }
 
 type RolloutSpecTrafficIstioArgs struct {
-	DestinationRule RolloutSpecTrafficIstioDestinationRulePtrInput  `pulumi:"destinationRule"`
+	// It references to an Istio DestinationRule to modify and shape traffic. `DestinationRule` field belongs only to the Subset Level approach.
+	DestinationRule RolloutSpecTrafficIstioDestinationRulePtrInput `pulumi:"destinationRule"`
+	// Defines a set of traffic routing rules to apply when a host is addressed.
 	VirtualServices RolloutSpecTrafficIstioVirtualServiceArrayInput `pulumi:"virtualServices"`
 }
 
@@ -1740,10 +1793,12 @@ func (o RolloutSpecTrafficIstioOutput) ToRolloutSpecTrafficIstioPtrOutputWithCon
 	}).(RolloutSpecTrafficIstioPtrOutput)
 }
 
+// It references to an Istio DestinationRule to modify and shape traffic. `DestinationRule` field belongs only to the Subset Level approach.
 func (o RolloutSpecTrafficIstioOutput) DestinationRule() RolloutSpecTrafficIstioDestinationRulePtrOutput {
 	return o.ApplyT(func(v RolloutSpecTrafficIstio) *RolloutSpecTrafficIstioDestinationRule { return v.DestinationRule }).(RolloutSpecTrafficIstioDestinationRulePtrOutput)
 }
 
+// Defines a set of traffic routing rules to apply when a host is addressed.
 func (o RolloutSpecTrafficIstioOutput) VirtualServices() RolloutSpecTrafficIstioVirtualServiceArrayOutput {
 	return o.ApplyT(func(v RolloutSpecTrafficIstio) []RolloutSpecTrafficIstioVirtualService { return v.VirtualServices }).(RolloutSpecTrafficIstioVirtualServiceArrayOutput)
 }
@@ -1772,6 +1827,7 @@ func (o RolloutSpecTrafficIstioPtrOutput) Elem() RolloutSpecTrafficIstioOutput {
 	}).(RolloutSpecTrafficIstioOutput)
 }
 
+// It references to an Istio DestinationRule to modify and shape traffic. `DestinationRule` field belongs only to the Subset Level approach.
 func (o RolloutSpecTrafficIstioPtrOutput) DestinationRule() RolloutSpecTrafficIstioDestinationRulePtrOutput {
 	return o.ApplyT(func(v *RolloutSpecTrafficIstio) *RolloutSpecTrafficIstioDestinationRule {
 		if v == nil {
@@ -1781,6 +1837,7 @@ func (o RolloutSpecTrafficIstioPtrOutput) DestinationRule() RolloutSpecTrafficIs
 	}).(RolloutSpecTrafficIstioDestinationRulePtrOutput)
 }
 
+// Defines a set of traffic routing rules to apply when a host is addressed.
 func (o RolloutSpecTrafficIstioPtrOutput) VirtualServices() RolloutSpecTrafficIstioVirtualServiceArrayOutput {
 	return o.ApplyT(func(v *RolloutSpecTrafficIstio) []RolloutSpecTrafficIstioVirtualService {
 		if v == nil {
@@ -1791,9 +1848,12 @@ func (o RolloutSpecTrafficIstioPtrOutput) VirtualServices() RolloutSpecTrafficIs
 }
 
 type RolloutSpecTrafficIstioDestinationRule struct {
-	CanarySubsetName    string `pulumi:"canarySubsetName"`
+	// The subset name to modify labels with the canary version.
+	CanarySubsetName string `pulumi:"canarySubsetName"`
+	// Holds the name of the DestinationRule.
 	DestinationRuleName string `pulumi:"destinationRuleName"`
-	StableSubsetName    string `pulumi:"stableSubsetName"`
+	// The subset name to modify labels with the stable version.
+	StableSubsetName string `pulumi:"stableSubsetName"`
 }
 
 // RolloutSpecTrafficIstioDestinationRuleInput is an input type that accepts RolloutSpecTrafficIstioDestinationRuleArgs and RolloutSpecTrafficIstioDestinationRuleOutput values.
@@ -1808,9 +1868,12 @@ type RolloutSpecTrafficIstioDestinationRuleInput interface {
 }
 
 type RolloutSpecTrafficIstioDestinationRuleArgs struct {
-	CanarySubsetName    pulumi.StringInput `pulumi:"canarySubsetName"`
+	// The subset name to modify labels with the canary version.
+	CanarySubsetName pulumi.StringInput `pulumi:"canarySubsetName"`
+	// Holds the name of the DestinationRule.
 	DestinationRuleName pulumi.StringInput `pulumi:"destinationRuleName"`
-	StableSubsetName    pulumi.StringInput `pulumi:"stableSubsetName"`
+	// The subset name to modify labels with the stable version.
+	StableSubsetName pulumi.StringInput `pulumi:"stableSubsetName"`
 }
 
 func (RolloutSpecTrafficIstioDestinationRuleArgs) ElementType() reflect.Type {
@@ -1890,14 +1953,17 @@ func (o RolloutSpecTrafficIstioDestinationRuleOutput) ToRolloutSpecTrafficIstioD
 	}).(RolloutSpecTrafficIstioDestinationRulePtrOutput)
 }
 
+// The subset name to modify labels with the canary version.
 func (o RolloutSpecTrafficIstioDestinationRuleOutput) CanarySubsetName() pulumi.StringOutput {
 	return o.ApplyT(func(v RolloutSpecTrafficIstioDestinationRule) string { return v.CanarySubsetName }).(pulumi.StringOutput)
 }
 
+// Holds the name of the DestinationRule.
 func (o RolloutSpecTrafficIstioDestinationRuleOutput) DestinationRuleName() pulumi.StringOutput {
 	return o.ApplyT(func(v RolloutSpecTrafficIstioDestinationRule) string { return v.DestinationRuleName }).(pulumi.StringOutput)
 }
 
+// The subset name to modify labels with the stable version.
 func (o RolloutSpecTrafficIstioDestinationRuleOutput) StableSubsetName() pulumi.StringOutput {
 	return o.ApplyT(func(v RolloutSpecTrafficIstioDestinationRule) string { return v.StableSubsetName }).(pulumi.StringOutput)
 }
@@ -1926,6 +1992,7 @@ func (o RolloutSpecTrafficIstioDestinationRulePtrOutput) Elem() RolloutSpecTraff
 	}).(RolloutSpecTrafficIstioDestinationRuleOutput)
 }
 
+// The subset name to modify labels with the canary version.
 func (o RolloutSpecTrafficIstioDestinationRulePtrOutput) CanarySubsetName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RolloutSpecTrafficIstioDestinationRule) *string {
 		if v == nil {
@@ -1935,6 +2002,7 @@ func (o RolloutSpecTrafficIstioDestinationRulePtrOutput) CanarySubsetName() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Holds the name of the DestinationRule.
 func (o RolloutSpecTrafficIstioDestinationRulePtrOutput) DestinationRuleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RolloutSpecTrafficIstioDestinationRule) *string {
 		if v == nil {
@@ -1944,6 +2012,7 @@ func (o RolloutSpecTrafficIstioDestinationRulePtrOutput) DestinationRuleName() p
 	}).(pulumi.StringPtrOutput)
 }
 
+// The subset name to modify labels with the stable version.
 func (o RolloutSpecTrafficIstioDestinationRulePtrOutput) StableSubsetName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RolloutSpecTrafficIstioDestinationRule) *string {
 		if v == nil {
@@ -1954,9 +2023,12 @@ func (o RolloutSpecTrafficIstioDestinationRulePtrOutput) StableSubsetName() pulu
 }
 
 type RolloutSpecTrafficIstioVirtualService struct {
-	TlsRoutes            []RolloutSpecTrafficIstioVirtualServiceTlsRoute `pulumi:"tlsRoutes"`
-	VirtualServiceName   string                                          `pulumi:"virtualServiceName"`
-	VirtualServiceRoutes []string                                        `pulumi:"virtualServiceRoutes"`
+	// A list of HTTPS routes within VirtualService.
+	TlsRoutes []RolloutSpecTrafficIstioVirtualServiceTlsRoute `pulumi:"tlsRoutes"`
+	// Holds the name of the VirtualService.
+	VirtualServiceName string `pulumi:"virtualServiceName"`
+	// A list of HTTP routes within VirtualService.
+	VirtualServiceRoutes []string `pulumi:"virtualServiceRoutes"`
 }
 
 // RolloutSpecTrafficIstioVirtualServiceInput is an input type that accepts RolloutSpecTrafficIstioVirtualServiceArgs and RolloutSpecTrafficIstioVirtualServiceOutput values.
@@ -1971,9 +2043,12 @@ type RolloutSpecTrafficIstioVirtualServiceInput interface {
 }
 
 type RolloutSpecTrafficIstioVirtualServiceArgs struct {
-	TlsRoutes            RolloutSpecTrafficIstioVirtualServiceTlsRouteArrayInput `pulumi:"tlsRoutes"`
-	VirtualServiceName   pulumi.StringInput                                      `pulumi:"virtualServiceName"`
-	VirtualServiceRoutes pulumi.StringArrayInput                                 `pulumi:"virtualServiceRoutes"`
+	// A list of HTTPS routes within VirtualService.
+	TlsRoutes RolloutSpecTrafficIstioVirtualServiceTlsRouteArrayInput `pulumi:"tlsRoutes"`
+	// Holds the name of the VirtualService.
+	VirtualServiceName pulumi.StringInput `pulumi:"virtualServiceName"`
+	// A list of HTTP routes within VirtualService.
+	VirtualServiceRoutes pulumi.StringArrayInput `pulumi:"virtualServiceRoutes"`
 }
 
 func (RolloutSpecTrafficIstioVirtualServiceArgs) ElementType() reflect.Type {
@@ -2027,16 +2102,19 @@ func (o RolloutSpecTrafficIstioVirtualServiceOutput) ToRolloutSpecTrafficIstioVi
 	return o
 }
 
+// A list of HTTPS routes within VirtualService.
 func (o RolloutSpecTrafficIstioVirtualServiceOutput) TlsRoutes() RolloutSpecTrafficIstioVirtualServiceTlsRouteArrayOutput {
 	return o.ApplyT(func(v RolloutSpecTrafficIstioVirtualService) []RolloutSpecTrafficIstioVirtualServiceTlsRoute {
 		return v.TlsRoutes
 	}).(RolloutSpecTrafficIstioVirtualServiceTlsRouteArrayOutput)
 }
 
+// Holds the name of the VirtualService.
 func (o RolloutSpecTrafficIstioVirtualServiceOutput) VirtualServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v RolloutSpecTrafficIstioVirtualService) string { return v.VirtualServiceName }).(pulumi.StringOutput)
 }
 
+// A list of HTTP routes within VirtualService.
 func (o RolloutSpecTrafficIstioVirtualServiceOutput) VirtualServiceRoutes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RolloutSpecTrafficIstioVirtualService) []string { return v.VirtualServiceRoutes }).(pulumi.StringArrayOutput)
 }
@@ -2062,7 +2140,9 @@ func (o RolloutSpecTrafficIstioVirtualServiceArrayOutput) Index(i pulumi.IntInpu
 }
 
 type RolloutSpecTrafficIstioVirtualServiceTlsRoute struct {
-	Port     *int     `pulumi:"port"`
+	// The port of the TLS Route desired to be matched in the given Istio VirtualService.
+	Port *int `pulumi:"port"`
+	// A list of all the SNI Hosts of the TLS Route desired to be matched in the given Istio VirtualService.
 	SniHosts []string `pulumi:"sniHosts"`
 }
 
@@ -2078,7 +2158,9 @@ type RolloutSpecTrafficIstioVirtualServiceTlsRouteInput interface {
 }
 
 type RolloutSpecTrafficIstioVirtualServiceTlsRouteArgs struct {
-	Port     pulumi.IntPtrInput      `pulumi:"port"`
+	// The port of the TLS Route desired to be matched in the given Istio VirtualService.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// A list of all the SNI Hosts of the TLS Route desired to be matched in the given Istio VirtualService.
 	SniHosts pulumi.StringArrayInput `pulumi:"sniHosts"`
 }
 
@@ -2133,10 +2215,12 @@ func (o RolloutSpecTrafficIstioVirtualServiceTlsRouteOutput) ToRolloutSpecTraffi
 	return o
 }
 
+// The port of the TLS Route desired to be matched in the given Istio VirtualService.
 func (o RolloutSpecTrafficIstioVirtualServiceTlsRouteOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RolloutSpecTrafficIstioVirtualServiceTlsRoute) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
+// A list of all the SNI Hosts of the TLS Route desired to be matched in the given Istio VirtualService.
 func (o RolloutSpecTrafficIstioVirtualServiceTlsRouteOutput) SniHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RolloutSpecTrafficIstioVirtualServiceTlsRoute) []string { return v.SniHosts }).(pulumi.StringArrayOutput)
 }
@@ -2162,9 +2246,12 @@ func (o RolloutSpecTrafficIstioVirtualServiceTlsRouteArrayOutput) Index(i pulumi
 }
 
 type RolloutSpecTrafficNginx struct {
+	// Provides additional features to add to the canary ingress (such as routing by header, cookie, etc). You can add these Kubernetes annotations to specific Ingress objects to customize their behavior. Above are found examples of accepted k8s keys.For the full list of supported keys, you may reach the following documentation - https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#canary.
 	AdditionalIngressAnnotation *RolloutSpecTrafficNginxAdditionalIngressAnnotation `pulumi:"additionalIngressAnnotation"`
-	NginxAnnotationPrefix       *string                                             `pulumi:"nginxAnnotationPrefix"`
-	StableIngress               string                                              `pulumi:"stableIngress"`
+	// Has to match the configured annotation prefix on the Nginx ingress controller.
+	NginxAnnotationPrefix *string `pulumi:"nginxAnnotationPrefix"`
+	// Refers to the name of an `Ingress` resource in the same namespace as the `SpotDeployment`.
+	StableIngress string `pulumi:"stableIngress"`
 }
 
 // RolloutSpecTrafficNginxInput is an input type that accepts RolloutSpecTrafficNginxArgs and RolloutSpecTrafficNginxOutput values.
@@ -2179,9 +2266,12 @@ type RolloutSpecTrafficNginxInput interface {
 }
 
 type RolloutSpecTrafficNginxArgs struct {
+	// Provides additional features to add to the canary ingress (such as routing by header, cookie, etc). You can add these Kubernetes annotations to specific Ingress objects to customize their behavior. Above are found examples of accepted k8s keys.For the full list of supported keys, you may reach the following documentation - https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#canary.
 	AdditionalIngressAnnotation RolloutSpecTrafficNginxAdditionalIngressAnnotationPtrInput `pulumi:"additionalIngressAnnotation"`
-	NginxAnnotationPrefix       pulumi.StringPtrInput                                      `pulumi:"nginxAnnotationPrefix"`
-	StableIngress               pulumi.StringInput                                         `pulumi:"stableIngress"`
+	// Has to match the configured annotation prefix on the Nginx ingress controller.
+	NginxAnnotationPrefix pulumi.StringPtrInput `pulumi:"nginxAnnotationPrefix"`
+	// Refers to the name of an `Ingress` resource in the same namespace as the `SpotDeployment`.
+	StableIngress pulumi.StringInput `pulumi:"stableIngress"`
 }
 
 func (RolloutSpecTrafficNginxArgs) ElementType() reflect.Type {
@@ -2261,16 +2351,19 @@ func (o RolloutSpecTrafficNginxOutput) ToRolloutSpecTrafficNginxPtrOutputWithCon
 	}).(RolloutSpecTrafficNginxPtrOutput)
 }
 
+// Provides additional features to add to the canary ingress (such as routing by header, cookie, etc). You can add these Kubernetes annotations to specific Ingress objects to customize their behavior. Above are found examples of accepted k8s keys.For the full list of supported keys, you may reach the following documentation - https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#canary.
 func (o RolloutSpecTrafficNginxOutput) AdditionalIngressAnnotation() RolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutput {
 	return o.ApplyT(func(v RolloutSpecTrafficNginx) *RolloutSpecTrafficNginxAdditionalIngressAnnotation {
 		return v.AdditionalIngressAnnotation
 	}).(RolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutput)
 }
 
+// Has to match the configured annotation prefix on the Nginx ingress controller.
 func (o RolloutSpecTrafficNginxOutput) NginxAnnotationPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RolloutSpecTrafficNginx) *string { return v.NginxAnnotationPrefix }).(pulumi.StringPtrOutput)
 }
 
+// Refers to the name of an `Ingress` resource in the same namespace as the `SpotDeployment`.
 func (o RolloutSpecTrafficNginxOutput) StableIngress() pulumi.StringOutput {
 	return o.ApplyT(func(v RolloutSpecTrafficNginx) string { return v.StableIngress }).(pulumi.StringOutput)
 }
@@ -2299,6 +2392,7 @@ func (o RolloutSpecTrafficNginxPtrOutput) Elem() RolloutSpecTrafficNginxOutput {
 	}).(RolloutSpecTrafficNginxOutput)
 }
 
+// Provides additional features to add to the canary ingress (such as routing by header, cookie, etc). You can add these Kubernetes annotations to specific Ingress objects to customize their behavior. Above are found examples of accepted k8s keys.For the full list of supported keys, you may reach the following documentation - https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#canary.
 func (o RolloutSpecTrafficNginxPtrOutput) AdditionalIngressAnnotation() RolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutput {
 	return o.ApplyT(func(v *RolloutSpecTrafficNginx) *RolloutSpecTrafficNginxAdditionalIngressAnnotation {
 		if v == nil {
@@ -2308,6 +2402,7 @@ func (o RolloutSpecTrafficNginxPtrOutput) AdditionalIngressAnnotation() RolloutS
 	}).(RolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutput)
 }
 
+// Has to match the configured annotation prefix on the Nginx ingress controller.
 func (o RolloutSpecTrafficNginxPtrOutput) NginxAnnotationPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RolloutSpecTrafficNginx) *string {
 		if v == nil {
@@ -2317,6 +2412,7 @@ func (o RolloutSpecTrafficNginxPtrOutput) NginxAnnotationPrefix() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// Refers to the name of an `Ingress` resource in the same namespace as the `SpotDeployment`.
 func (o RolloutSpecTrafficNginxPtrOutput) StableIngress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RolloutSpecTrafficNginx) *string {
 		if v == nil {
@@ -2327,8 +2423,10 @@ func (o RolloutSpecTrafficNginxPtrOutput) StableIngress() pulumi.StringPtrOutput
 }
 
 type RolloutSpecTrafficNginxAdditionalIngressAnnotation struct {
+	// Allows customizing the header value instead of using hardcoded values.
 	CanaryByHeader *string `pulumi:"canaryByHeader"`
-	Key1           *string `pulumi:"key1"`
+	// Any of supported annotations.
+	Key1 *string `pulumi:"key1"`
 }
 
 // RolloutSpecTrafficNginxAdditionalIngressAnnotationInput is an input type that accepts RolloutSpecTrafficNginxAdditionalIngressAnnotationArgs and RolloutSpecTrafficNginxAdditionalIngressAnnotationOutput values.
@@ -2343,8 +2441,10 @@ type RolloutSpecTrafficNginxAdditionalIngressAnnotationInput interface {
 }
 
 type RolloutSpecTrafficNginxAdditionalIngressAnnotationArgs struct {
+	// Allows customizing the header value instead of using hardcoded values.
 	CanaryByHeader pulumi.StringPtrInput `pulumi:"canaryByHeader"`
-	Key1           pulumi.StringPtrInput `pulumi:"key1"`
+	// Any of supported annotations.
+	Key1 pulumi.StringPtrInput `pulumi:"key1"`
 }
 
 func (RolloutSpecTrafficNginxAdditionalIngressAnnotationArgs) ElementType() reflect.Type {
@@ -2424,10 +2524,12 @@ func (o RolloutSpecTrafficNginxAdditionalIngressAnnotationOutput) ToRolloutSpecT
 	}).(RolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutput)
 }
 
+// Allows customizing the header value instead of using hardcoded values.
 func (o RolloutSpecTrafficNginxAdditionalIngressAnnotationOutput) CanaryByHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RolloutSpecTrafficNginxAdditionalIngressAnnotation) *string { return v.CanaryByHeader }).(pulumi.StringPtrOutput)
 }
 
+// Any of supported annotations.
 func (o RolloutSpecTrafficNginxAdditionalIngressAnnotationOutput) Key1() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RolloutSpecTrafficNginxAdditionalIngressAnnotation) *string { return v.Key1 }).(pulumi.StringPtrOutput)
 }
@@ -2456,6 +2558,7 @@ func (o RolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutput) Elem() Roll
 	}).(RolloutSpecTrafficNginxAdditionalIngressAnnotationOutput)
 }
 
+// Allows customizing the header value instead of using hardcoded values.
 func (o RolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutput) CanaryByHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RolloutSpecTrafficNginxAdditionalIngressAnnotation) *string {
 		if v == nil {
@@ -2465,6 +2568,7 @@ func (o RolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutput) CanaryByHea
 	}).(pulumi.StringPtrOutput)
 }
 
+// Any of supported annotations.
 func (o RolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutput) Key1() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RolloutSpecTrafficNginxAdditionalIngressAnnotation) *string {
 		if v == nil {
@@ -2475,7 +2579,9 @@ func (o RolloutSpecTrafficNginxAdditionalIngressAnnotationPtrOutput) Key1() pulu
 }
 
 type RolloutSpecTrafficPingPong struct {
+	// Holds the name of the ping service.
 	PingService string `pulumi:"pingService"`
+	// Holds the name of the pong service.
 	PongService string `pulumi:"pongService"`
 }
 
@@ -2491,7 +2597,9 @@ type RolloutSpecTrafficPingPongInput interface {
 }
 
 type RolloutSpecTrafficPingPongArgs struct {
+	// Holds the name of the ping service.
 	PingService pulumi.StringInput `pulumi:"pingService"`
+	// Holds the name of the pong service.
 	PongService pulumi.StringInput `pulumi:"pongService"`
 }
 
@@ -2572,10 +2680,12 @@ func (o RolloutSpecTrafficPingPongOutput) ToRolloutSpecTrafficPingPongPtrOutputW
 	}).(RolloutSpecTrafficPingPongPtrOutput)
 }
 
+// Holds the name of the ping service.
 func (o RolloutSpecTrafficPingPongOutput) PingService() pulumi.StringOutput {
 	return o.ApplyT(func(v RolloutSpecTrafficPingPong) string { return v.PingService }).(pulumi.StringOutput)
 }
 
+// Holds the name of the pong service.
 func (o RolloutSpecTrafficPingPongOutput) PongService() pulumi.StringOutput {
 	return o.ApplyT(func(v RolloutSpecTrafficPingPong) string { return v.PongService }).(pulumi.StringOutput)
 }
@@ -2604,6 +2714,7 @@ func (o RolloutSpecTrafficPingPongPtrOutput) Elem() RolloutSpecTrafficPingPongOu
 	}).(RolloutSpecTrafficPingPongOutput)
 }
 
+// Holds the name of the ping service.
 func (o RolloutSpecTrafficPingPongPtrOutput) PingService() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RolloutSpecTrafficPingPong) *string {
 		if v == nil {
@@ -2613,6 +2724,7 @@ func (o RolloutSpecTrafficPingPongPtrOutput) PingService() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Holds the name of the pong service.
 func (o RolloutSpecTrafficPingPongPtrOutput) PongService() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RolloutSpecTrafficPingPong) *string {
 		if v == nil {
@@ -2623,7 +2735,9 @@ func (o RolloutSpecTrafficPingPongPtrOutput) PongService() pulumi.StringPtrOutpu
 }
 
 type RolloutSpecTrafficSmi struct {
-	SmiRootService   *string `pulumi:"smiRootService"`
+	// Holds the name of service that clients use to communicate.
+	SmiRootService *string `pulumi:"smiRootService"`
+	// Holds the name of the TrafficSplit.
 	TrafficSplitName *string `pulumi:"trafficSplitName"`
 }
 
@@ -2639,7 +2753,9 @@ type RolloutSpecTrafficSmiInput interface {
 }
 
 type RolloutSpecTrafficSmiArgs struct {
-	SmiRootService   pulumi.StringPtrInput `pulumi:"smiRootService"`
+	// Holds the name of service that clients use to communicate.
+	SmiRootService pulumi.StringPtrInput `pulumi:"smiRootService"`
+	// Holds the name of the TrafficSplit.
 	TrafficSplitName pulumi.StringPtrInput `pulumi:"trafficSplitName"`
 }
 
@@ -2720,10 +2836,12 @@ func (o RolloutSpecTrafficSmiOutput) ToRolloutSpecTrafficSmiPtrOutputWithContext
 	}).(RolloutSpecTrafficSmiPtrOutput)
 }
 
+// Holds the name of service that clients use to communicate.
 func (o RolloutSpecTrafficSmiOutput) SmiRootService() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RolloutSpecTrafficSmi) *string { return v.SmiRootService }).(pulumi.StringPtrOutput)
 }
 
+// Holds the name of the TrafficSplit.
 func (o RolloutSpecTrafficSmiOutput) TrafficSplitName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RolloutSpecTrafficSmi) *string { return v.TrafficSplitName }).(pulumi.StringPtrOutput)
 }
@@ -2752,6 +2870,7 @@ func (o RolloutSpecTrafficSmiPtrOutput) Elem() RolloutSpecTrafficSmiOutput {
 	}).(RolloutSpecTrafficSmiOutput)
 }
 
+// Holds the name of service that clients use to communicate.
 func (o RolloutSpecTrafficSmiPtrOutput) SmiRootService() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RolloutSpecTrafficSmi) *string {
 		if v == nil {
@@ -2761,6 +2880,7 @@ func (o RolloutSpecTrafficSmiPtrOutput) SmiRootService() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Holds the name of the TrafficSplit.
 func (o RolloutSpecTrafficSmiPtrOutput) TrafficSplitName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RolloutSpecTrafficSmi) *string {
 		if v == nil {
@@ -2927,6 +3047,7 @@ func (o StrategyCanaryPtrOutput) Steps() StrategyCanaryStepArrayOutput {
 }
 
 type StrategyCanaryBackgroundVerification struct {
+	// List of Verification Template names.
 	TemplateNames []string `pulumi:"templateNames"`
 }
 
@@ -2942,6 +3063,7 @@ type StrategyCanaryBackgroundVerificationInput interface {
 }
 
 type StrategyCanaryBackgroundVerificationArgs struct {
+	// List of Verification Template names.
 	TemplateNames pulumi.StringArrayInput `pulumi:"templateNames"`
 }
 
@@ -3022,6 +3144,7 @@ func (o StrategyCanaryBackgroundVerificationOutput) ToStrategyCanaryBackgroundVe
 	}).(StrategyCanaryBackgroundVerificationPtrOutput)
 }
 
+// List of Verification Template names.
 func (o StrategyCanaryBackgroundVerificationOutput) TemplateNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v StrategyCanaryBackgroundVerification) []string { return v.TemplateNames }).(pulumi.StringArrayOutput)
 }
@@ -3050,6 +3173,7 @@ func (o StrategyCanaryBackgroundVerificationPtrOutput) Elem() StrategyCanaryBack
 	}).(StrategyCanaryBackgroundVerificationOutput)
 }
 
+// List of Verification Template names.
 func (o StrategyCanaryBackgroundVerificationPtrOutput) TemplateNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *StrategyCanaryBackgroundVerification) []string {
 		if v == nil {
@@ -3060,12 +3184,17 @@ func (o StrategyCanaryBackgroundVerificationPtrOutput) TemplateNames() pulumi.St
 }
 
 type StrategyCanaryStep struct {
-	Pause          *StrategyCanaryStepPause          `pulumi:"pause"`
+	// Defines the duration of time to freeze the rollout.
+	Pause *StrategyCanaryStepPause `pulumi:"pause"`
+	// Defines how to scale the version without traffic weight changing.
 	SetCanaryScale *StrategyCanaryStepSetCanaryScale `pulumi:"setCanaryScale"`
+	// Defines the list of HeaderRoutes to add to the Rollout.
 	SetHeaderRoute *StrategyCanaryStepSetHeaderRoute `pulumi:"setHeaderRoute"`
-	SetWeight      *int                              `pulumi:"setWeight"`
-	StepName       *string                           `pulumi:"stepName"`
-	Verification   *StrategyCanaryStepVerification   `pulumi:"verification"`
+	// Defines the percentage that the new version should receive.
+	SetWeight *int    `pulumi:"setWeight"`
+	StepName  *string `pulumi:"stepName"`
+	// Represents the list of verifications to run in a step.
+	Verification *StrategyCanaryStepVerification `pulumi:"verification"`
 }
 
 // StrategyCanaryStepInput is an input type that accepts StrategyCanaryStepArgs and StrategyCanaryStepOutput values.
@@ -3080,12 +3209,17 @@ type StrategyCanaryStepInput interface {
 }
 
 type StrategyCanaryStepArgs struct {
-	Pause          StrategyCanaryStepPausePtrInput          `pulumi:"pause"`
+	// Defines the duration of time to freeze the rollout.
+	Pause StrategyCanaryStepPausePtrInput `pulumi:"pause"`
+	// Defines how to scale the version without traffic weight changing.
 	SetCanaryScale StrategyCanaryStepSetCanaryScalePtrInput `pulumi:"setCanaryScale"`
+	// Defines the list of HeaderRoutes to add to the Rollout.
 	SetHeaderRoute StrategyCanaryStepSetHeaderRoutePtrInput `pulumi:"setHeaderRoute"`
-	SetWeight      pulumi.IntPtrInput                       `pulumi:"setWeight"`
-	StepName       pulumi.StringPtrInput                    `pulumi:"stepName"`
-	Verification   StrategyCanaryStepVerificationPtrInput   `pulumi:"verification"`
+	// Defines the percentage that the new version should receive.
+	SetWeight pulumi.IntPtrInput    `pulumi:"setWeight"`
+	StepName  pulumi.StringPtrInput `pulumi:"stepName"`
+	// Represents the list of verifications to run in a step.
+	Verification StrategyCanaryStepVerificationPtrInput `pulumi:"verification"`
 }
 
 func (StrategyCanaryStepArgs) ElementType() reflect.Type {
@@ -3139,18 +3273,22 @@ func (o StrategyCanaryStepOutput) ToStrategyCanaryStepOutputWithContext(ctx cont
 	return o
 }
 
+// Defines the duration of time to freeze the rollout.
 func (o StrategyCanaryStepOutput) Pause() StrategyCanaryStepPausePtrOutput {
 	return o.ApplyT(func(v StrategyCanaryStep) *StrategyCanaryStepPause { return v.Pause }).(StrategyCanaryStepPausePtrOutput)
 }
 
+// Defines how to scale the version without traffic weight changing.
 func (o StrategyCanaryStepOutput) SetCanaryScale() StrategyCanaryStepSetCanaryScalePtrOutput {
 	return o.ApplyT(func(v StrategyCanaryStep) *StrategyCanaryStepSetCanaryScale { return v.SetCanaryScale }).(StrategyCanaryStepSetCanaryScalePtrOutput)
 }
 
+// Defines the list of HeaderRoutes to add to the Rollout.
 func (o StrategyCanaryStepOutput) SetHeaderRoute() StrategyCanaryStepSetHeaderRoutePtrOutput {
 	return o.ApplyT(func(v StrategyCanaryStep) *StrategyCanaryStepSetHeaderRoute { return v.SetHeaderRoute }).(StrategyCanaryStepSetHeaderRoutePtrOutput)
 }
 
+// Defines the percentage that the new version should receive.
 func (o StrategyCanaryStepOutput) SetWeight() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StrategyCanaryStep) *int { return v.SetWeight }).(pulumi.IntPtrOutput)
 }
@@ -3159,6 +3297,7 @@ func (o StrategyCanaryStepOutput) StepName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StrategyCanaryStep) *string { return v.StepName }).(pulumi.StringPtrOutput)
 }
 
+// Represents the list of verifications to run in a step.
 func (o StrategyCanaryStepOutput) Verification() StrategyCanaryStepVerificationPtrOutput {
 	return o.ApplyT(func(v StrategyCanaryStep) *StrategyCanaryStepVerification { return v.Verification }).(StrategyCanaryStepVerificationPtrOutput)
 }
@@ -3184,6 +3323,7 @@ func (o StrategyCanaryStepArrayOutput) Index(i pulumi.IntInput) StrategyCanarySt
 }
 
 type StrategyCanaryStepPause struct {
+	// The amount of time to wait before moving to the next step.
 	Duration *string `pulumi:"duration"`
 }
 
@@ -3199,6 +3339,7 @@ type StrategyCanaryStepPauseInput interface {
 }
 
 type StrategyCanaryStepPauseArgs struct {
+	// The amount of time to wait before moving to the next step.
 	Duration pulumi.StringPtrInput `pulumi:"duration"`
 }
 
@@ -3279,6 +3420,7 @@ func (o StrategyCanaryStepPauseOutput) ToStrategyCanaryStepPausePtrOutputWithCon
 	}).(StrategyCanaryStepPausePtrOutput)
 }
 
+// The amount of time to wait before moving to the next step.
 func (o StrategyCanaryStepPauseOutput) Duration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StrategyCanaryStepPause) *string { return v.Duration }).(pulumi.StringPtrOutput)
 }
@@ -3307,6 +3449,7 @@ func (o StrategyCanaryStepPausePtrOutput) Elem() StrategyCanaryStepPauseOutput {
 	}).(StrategyCanaryStepPauseOutput)
 }
 
+// The amount of time to wait before moving to the next step.
 func (o StrategyCanaryStepPausePtrOutput) Duration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StrategyCanaryStepPause) *string {
 		if v == nil {
@@ -3317,9 +3460,12 @@ func (o StrategyCanaryStepPausePtrOutput) Duration() pulumi.StringPtrOutput {
 }
 
 type StrategyCanaryStepSetCanaryScale struct {
+	// Defines whether a rollout should match the current canary's setWeight step.
 	MatchTrafficWeight *bool `pulumi:"matchTrafficWeight"`
-	Replicas           *int  `pulumi:"replicas"`
-	Weight             *int  `pulumi:"weight"`
+	// Sets the number of replicas the new version should have.
+	Replicas *int `pulumi:"replicas"`
+	// Sets the percentage of replicas the new version should have.
+	Weight *int `pulumi:"weight"`
 }
 
 // StrategyCanaryStepSetCanaryScaleInput is an input type that accepts StrategyCanaryStepSetCanaryScaleArgs and StrategyCanaryStepSetCanaryScaleOutput values.
@@ -3334,9 +3480,12 @@ type StrategyCanaryStepSetCanaryScaleInput interface {
 }
 
 type StrategyCanaryStepSetCanaryScaleArgs struct {
+	// Defines whether a rollout should match the current canary's setWeight step.
 	MatchTrafficWeight pulumi.BoolPtrInput `pulumi:"matchTrafficWeight"`
-	Replicas           pulumi.IntPtrInput  `pulumi:"replicas"`
-	Weight             pulumi.IntPtrInput  `pulumi:"weight"`
+	// Sets the number of replicas the new version should have.
+	Replicas pulumi.IntPtrInput `pulumi:"replicas"`
+	// Sets the percentage of replicas the new version should have.
+	Weight pulumi.IntPtrInput `pulumi:"weight"`
 }
 
 func (StrategyCanaryStepSetCanaryScaleArgs) ElementType() reflect.Type {
@@ -3416,14 +3565,17 @@ func (o StrategyCanaryStepSetCanaryScaleOutput) ToStrategyCanaryStepSetCanarySca
 	}).(StrategyCanaryStepSetCanaryScalePtrOutput)
 }
 
+// Defines whether a rollout should match the current canary's setWeight step.
 func (o StrategyCanaryStepSetCanaryScaleOutput) MatchTrafficWeight() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v StrategyCanaryStepSetCanaryScale) *bool { return v.MatchTrafficWeight }).(pulumi.BoolPtrOutput)
 }
 
+// Sets the number of replicas the new version should have.
 func (o StrategyCanaryStepSetCanaryScaleOutput) Replicas() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StrategyCanaryStepSetCanaryScale) *int { return v.Replicas }).(pulumi.IntPtrOutput)
 }
 
+// Sets the percentage of replicas the new version should have.
 func (o StrategyCanaryStepSetCanaryScaleOutput) Weight() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StrategyCanaryStepSetCanaryScale) *int { return v.Weight }).(pulumi.IntPtrOutput)
 }
@@ -3452,6 +3604,7 @@ func (o StrategyCanaryStepSetCanaryScalePtrOutput) Elem() StrategyCanaryStepSetC
 	}).(StrategyCanaryStepSetCanaryScaleOutput)
 }
 
+// Defines whether a rollout should match the current canary's setWeight step.
 func (o StrategyCanaryStepSetCanaryScalePtrOutput) MatchTrafficWeight() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *StrategyCanaryStepSetCanaryScale) *bool {
 		if v == nil {
@@ -3461,6 +3614,7 @@ func (o StrategyCanaryStepSetCanaryScalePtrOutput) MatchTrafficWeight() pulumi.B
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Sets the number of replicas the new version should have.
 func (o StrategyCanaryStepSetCanaryScalePtrOutput) Replicas() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *StrategyCanaryStepSetCanaryScale) *int {
 		if v == nil {
@@ -3470,6 +3624,7 @@ func (o StrategyCanaryStepSetCanaryScalePtrOutput) Replicas() pulumi.IntPtrOutpu
 	}).(pulumi.IntPtrOutput)
 }
 
+// Sets the percentage of replicas the new version should have.
 func (o StrategyCanaryStepSetCanaryScalePtrOutput) Weight() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *StrategyCanaryStepSetCanaryScale) *int {
 		if v == nil {
@@ -3480,8 +3635,10 @@ func (o StrategyCanaryStepSetCanaryScalePtrOutput) Weight() pulumi.IntPtrOutput 
 }
 
 type StrategyCanaryStepSetHeaderRoute struct {
-	HeaderRouteName string                                  `pulumi:"headerRouteName"`
-	Matches         []StrategyCanaryStepSetHeaderRouteMatch `pulumi:"matches"`
+	// The name of the HeaderRoute group.
+	HeaderRouteName string `pulumi:"headerRouteName"`
+	// The matching rules for the header route.
+	Matches []StrategyCanaryStepSetHeaderRouteMatch `pulumi:"matches"`
 }
 
 // StrategyCanaryStepSetHeaderRouteInput is an input type that accepts StrategyCanaryStepSetHeaderRouteArgs and StrategyCanaryStepSetHeaderRouteOutput values.
@@ -3496,8 +3653,10 @@ type StrategyCanaryStepSetHeaderRouteInput interface {
 }
 
 type StrategyCanaryStepSetHeaderRouteArgs struct {
-	HeaderRouteName pulumi.StringInput                              `pulumi:"headerRouteName"`
-	Matches         StrategyCanaryStepSetHeaderRouteMatchArrayInput `pulumi:"matches"`
+	// The name of the HeaderRoute group.
+	HeaderRouteName pulumi.StringInput `pulumi:"headerRouteName"`
+	// The matching rules for the header route.
+	Matches StrategyCanaryStepSetHeaderRouteMatchArrayInput `pulumi:"matches"`
 }
 
 func (StrategyCanaryStepSetHeaderRouteArgs) ElementType() reflect.Type {
@@ -3577,10 +3736,12 @@ func (o StrategyCanaryStepSetHeaderRouteOutput) ToStrategyCanaryStepSetHeaderRou
 	}).(StrategyCanaryStepSetHeaderRoutePtrOutput)
 }
 
+// The name of the HeaderRoute group.
 func (o StrategyCanaryStepSetHeaderRouteOutput) HeaderRouteName() pulumi.StringOutput {
 	return o.ApplyT(func(v StrategyCanaryStepSetHeaderRoute) string { return v.HeaderRouteName }).(pulumi.StringOutput)
 }
 
+// The matching rules for the header route.
 func (o StrategyCanaryStepSetHeaderRouteOutput) Matches() StrategyCanaryStepSetHeaderRouteMatchArrayOutput {
 	return o.ApplyT(func(v StrategyCanaryStepSetHeaderRoute) []StrategyCanaryStepSetHeaderRouteMatch { return v.Matches }).(StrategyCanaryStepSetHeaderRouteMatchArrayOutput)
 }
@@ -3609,6 +3770,7 @@ func (o StrategyCanaryStepSetHeaderRoutePtrOutput) Elem() StrategyCanaryStepSetH
 	}).(StrategyCanaryStepSetHeaderRouteOutput)
 }
 
+// The name of the HeaderRoute group.
 func (o StrategyCanaryStepSetHeaderRoutePtrOutput) HeaderRouteName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StrategyCanaryStepSetHeaderRoute) *string {
 		if v == nil {
@@ -3618,6 +3780,7 @@ func (o StrategyCanaryStepSetHeaderRoutePtrOutput) HeaderRouteName() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// The matching rules for the header route.
 func (o StrategyCanaryStepSetHeaderRoutePtrOutput) Matches() StrategyCanaryStepSetHeaderRouteMatchArrayOutput {
 	return o.ApplyT(func(v *StrategyCanaryStepSetHeaderRoute) []StrategyCanaryStepSetHeaderRouteMatch {
 		if v == nil {
@@ -3628,7 +3791,9 @@ func (o StrategyCanaryStepSetHeaderRoutePtrOutput) Matches() StrategyCanaryStepS
 }
 
 type StrategyCanaryStepSetHeaderRouteMatch struct {
-	HeaderName  string                                           `pulumi:"headerName"`
+	// The name of the header.
+	HeaderName string `pulumi:"headerName"`
+	// Defines a single header to add to the Rollout. Must be only one initialized from the following (exact, prefix, regex).
 	HeaderValue StrategyCanaryStepSetHeaderRouteMatchHeaderValue `pulumi:"headerValue"`
 }
 
@@ -3644,7 +3809,9 @@ type StrategyCanaryStepSetHeaderRouteMatchInput interface {
 }
 
 type StrategyCanaryStepSetHeaderRouteMatchArgs struct {
-	HeaderName  pulumi.StringInput                                    `pulumi:"headerName"`
+	// The name of the header.
+	HeaderName pulumi.StringInput `pulumi:"headerName"`
+	// Defines a single header to add to the Rollout. Must be only one initialized from the following (exact, prefix, regex).
 	HeaderValue StrategyCanaryStepSetHeaderRouteMatchHeaderValueInput `pulumi:"headerValue"`
 }
 
@@ -3699,10 +3866,12 @@ func (o StrategyCanaryStepSetHeaderRouteMatchOutput) ToStrategyCanaryStepSetHead
 	return o
 }
 
+// The name of the header.
 func (o StrategyCanaryStepSetHeaderRouteMatchOutput) HeaderName() pulumi.StringOutput {
 	return o.ApplyT(func(v StrategyCanaryStepSetHeaderRouteMatch) string { return v.HeaderName }).(pulumi.StringOutput)
 }
 
+// Defines a single header to add to the Rollout. Must be only one initialized from the following (exact, prefix, regex).
 func (o StrategyCanaryStepSetHeaderRouteMatchOutput) HeaderValue() StrategyCanaryStepSetHeaderRouteMatchHeaderValueOutput {
 	return o.ApplyT(func(v StrategyCanaryStepSetHeaderRouteMatch) StrategyCanaryStepSetHeaderRouteMatchHeaderValue {
 		return v.HeaderValue
@@ -3730,9 +3899,12 @@ func (o StrategyCanaryStepSetHeaderRouteMatchArrayOutput) Index(i pulumi.IntInpu
 }
 
 type StrategyCanaryStepSetHeaderRouteMatchHeaderValue struct {
-	Exact  *string `pulumi:"exact"`
+	// The exact header value.
+	Exact *string `pulumi:"exact"`
+	// The prefix of the value.
 	Prefix *string `pulumi:"prefix"`
-	Regex  *string `pulumi:"regex"`
+	// The value in a regex format.
+	Regex *string `pulumi:"regex"`
 }
 
 // StrategyCanaryStepSetHeaderRouteMatchHeaderValueInput is an input type that accepts StrategyCanaryStepSetHeaderRouteMatchHeaderValueArgs and StrategyCanaryStepSetHeaderRouteMatchHeaderValueOutput values.
@@ -3747,9 +3919,12 @@ type StrategyCanaryStepSetHeaderRouteMatchHeaderValueInput interface {
 }
 
 type StrategyCanaryStepSetHeaderRouteMatchHeaderValueArgs struct {
-	Exact  pulumi.StringPtrInput `pulumi:"exact"`
+	// The exact header value.
+	Exact pulumi.StringPtrInput `pulumi:"exact"`
+	// The prefix of the value.
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
-	Regex  pulumi.StringPtrInput `pulumi:"regex"`
+	// The value in a regex format.
+	Regex pulumi.StringPtrInput `pulumi:"regex"`
 }
 
 func (StrategyCanaryStepSetHeaderRouteMatchHeaderValueArgs) ElementType() reflect.Type {
@@ -3778,19 +3953,23 @@ func (o StrategyCanaryStepSetHeaderRouteMatchHeaderValueOutput) ToStrategyCanary
 	return o
 }
 
+// The exact header value.
 func (o StrategyCanaryStepSetHeaderRouteMatchHeaderValueOutput) Exact() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StrategyCanaryStepSetHeaderRouteMatchHeaderValue) *string { return v.Exact }).(pulumi.StringPtrOutput)
 }
 
+// The prefix of the value.
 func (o StrategyCanaryStepSetHeaderRouteMatchHeaderValueOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StrategyCanaryStepSetHeaderRouteMatchHeaderValue) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
 
+// The value in a regex format.
 func (o StrategyCanaryStepSetHeaderRouteMatchHeaderValueOutput) Regex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StrategyCanaryStepSetHeaderRouteMatchHeaderValue) *string { return v.Regex }).(pulumi.StringPtrOutput)
 }
 
 type StrategyCanaryStepVerification struct {
+	// List of Verification Template names.
 	TemplateNames []string `pulumi:"templateNames"`
 }
 
@@ -3806,6 +3985,7 @@ type StrategyCanaryStepVerificationInput interface {
 }
 
 type StrategyCanaryStepVerificationArgs struct {
+	// List of Verification Template names.
 	TemplateNames pulumi.StringArrayInput `pulumi:"templateNames"`
 }
 
@@ -3886,6 +4066,7 @@ func (o StrategyCanaryStepVerificationOutput) ToStrategyCanaryStepVerificationPt
 	}).(StrategyCanaryStepVerificationPtrOutput)
 }
 
+// List of Verification Template names.
 func (o StrategyCanaryStepVerificationOutput) TemplateNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v StrategyCanaryStepVerification) []string { return v.TemplateNames }).(pulumi.StringArrayOutput)
 }
@@ -3914,6 +4095,7 @@ func (o StrategyCanaryStepVerificationPtrOutput) Elem() StrategyCanaryStepVerifi
 	}).(StrategyCanaryStepVerificationOutput)
 }
 
+// List of Verification Template names.
 func (o StrategyCanaryStepVerificationPtrOutput) TemplateNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *StrategyCanaryStepVerification) []string {
 		if v == nil {
@@ -4061,8 +4243,10 @@ func (o StrategyRollingPtrOutput) Steps() StrategyRollingStepArrayOutput {
 }
 
 type StrategyRollingStep struct {
-	Pause        *StrategyRollingStepPause        `pulumi:"pause"`
-	StepsName    *string                          `pulumi:"stepsName"`
+	// Defines the duration of time to freeze the rollout.
+	Pause     *StrategyRollingStepPause `pulumi:"pause"`
+	StepsName *string                   `pulumi:"stepsName"`
+	// Represents the list of verifications to run in a step.
 	Verification *StrategyRollingStepVerification `pulumi:"verification"`
 }
 
@@ -4078,8 +4262,10 @@ type StrategyRollingStepInput interface {
 }
 
 type StrategyRollingStepArgs struct {
-	Pause        StrategyRollingStepPausePtrInput        `pulumi:"pause"`
-	StepsName    pulumi.StringPtrInput                   `pulumi:"stepsName"`
+	// Defines the duration of time to freeze the rollout.
+	Pause     StrategyRollingStepPausePtrInput `pulumi:"pause"`
+	StepsName pulumi.StringPtrInput            `pulumi:"stepsName"`
+	// Represents the list of verifications to run in a step.
 	Verification StrategyRollingStepVerificationPtrInput `pulumi:"verification"`
 }
 
@@ -4134,6 +4320,7 @@ func (o StrategyRollingStepOutput) ToStrategyRollingStepOutputWithContext(ctx co
 	return o
 }
 
+// Defines the duration of time to freeze the rollout.
 func (o StrategyRollingStepOutput) Pause() StrategyRollingStepPausePtrOutput {
 	return o.ApplyT(func(v StrategyRollingStep) *StrategyRollingStepPause { return v.Pause }).(StrategyRollingStepPausePtrOutput)
 }
@@ -4142,6 +4329,7 @@ func (o StrategyRollingStepOutput) StepsName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StrategyRollingStep) *string { return v.StepsName }).(pulumi.StringPtrOutput)
 }
 
+// Represents the list of verifications to run in a step.
 func (o StrategyRollingStepOutput) Verification() StrategyRollingStepVerificationPtrOutput {
 	return o.ApplyT(func(v StrategyRollingStep) *StrategyRollingStepVerification { return v.Verification }).(StrategyRollingStepVerificationPtrOutput)
 }
@@ -4167,6 +4355,7 @@ func (o StrategyRollingStepArrayOutput) Index(i pulumi.IntInput) StrategyRolling
 }
 
 type StrategyRollingStepPause struct {
+	// The amount of time to wait before moving to the next step.
 	Duration *string `pulumi:"duration"`
 }
 
@@ -4182,6 +4371,7 @@ type StrategyRollingStepPauseInput interface {
 }
 
 type StrategyRollingStepPauseArgs struct {
+	// The amount of time to wait before moving to the next step.
 	Duration pulumi.StringPtrInput `pulumi:"duration"`
 }
 
@@ -4262,6 +4452,7 @@ func (o StrategyRollingStepPauseOutput) ToStrategyRollingStepPausePtrOutputWithC
 	}).(StrategyRollingStepPausePtrOutput)
 }
 
+// The amount of time to wait before moving to the next step.
 func (o StrategyRollingStepPauseOutput) Duration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StrategyRollingStepPause) *string { return v.Duration }).(pulumi.StringPtrOutput)
 }
@@ -4290,6 +4481,7 @@ func (o StrategyRollingStepPausePtrOutput) Elem() StrategyRollingStepPauseOutput
 	}).(StrategyRollingStepPauseOutput)
 }
 
+// The amount of time to wait before moving to the next step.
 func (o StrategyRollingStepPausePtrOutput) Duration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StrategyRollingStepPause) *string {
 		if v == nil {
@@ -4300,6 +4492,7 @@ func (o StrategyRollingStepPausePtrOutput) Duration() pulumi.StringPtrOutput {
 }
 
 type StrategyRollingStepVerification struct {
+	// List of Verification Template names.
 	TemplateNames []string `pulumi:"templateNames"`
 }
 
@@ -4315,6 +4508,7 @@ type StrategyRollingStepVerificationInput interface {
 }
 
 type StrategyRollingStepVerificationArgs struct {
+	// List of Verification Template names.
 	TemplateNames pulumi.StringArrayInput `pulumi:"templateNames"`
 }
 
@@ -4395,6 +4589,7 @@ func (o StrategyRollingStepVerificationOutput) ToStrategyRollingStepVerification
 	}).(StrategyRollingStepVerificationPtrOutput)
 }
 
+// List of Verification Template names.
 func (o StrategyRollingStepVerificationOutput) TemplateNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v StrategyRollingStepVerification) []string { return v.TemplateNames }).(pulumi.StringArrayOutput)
 }
@@ -4423,6 +4618,7 @@ func (o StrategyRollingStepVerificationPtrOutput) Elem() StrategyRollingStepVeri
 	}).(StrategyRollingStepVerificationOutput)
 }
 
+// List of Verification Template names.
 func (o StrategyRollingStepVerificationPtrOutput) TemplateNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *StrategyRollingStepVerification) []string {
 		if v == nil {
@@ -5381,6 +5577,7 @@ func (o VerificationTemplateArgArrayOutput) Index(i pulumi.IntInput) Verificatio
 }
 
 type VerificationTemplateArgValueFrom struct {
+	// Secret key to use.
 	SecretKeyRef *VerificationTemplateArgValueFromSecretKeyRef `pulumi:"secretKeyRef"`
 }
 
@@ -5396,6 +5593,7 @@ type VerificationTemplateArgValueFromInput interface {
 }
 
 type VerificationTemplateArgValueFromArgs struct {
+	// Secret key to use.
 	SecretKeyRef VerificationTemplateArgValueFromSecretKeyRefPtrInput `pulumi:"secretKeyRef"`
 }
 
@@ -5476,6 +5674,7 @@ func (o VerificationTemplateArgValueFromOutput) ToVerificationTemplateArgValueFr
 	}).(VerificationTemplateArgValueFromPtrOutput)
 }
 
+// Secret key to use.
 func (o VerificationTemplateArgValueFromOutput) SecretKeyRef() VerificationTemplateArgValueFromSecretKeyRefPtrOutput {
 	return o.ApplyT(func(v VerificationTemplateArgValueFrom) *VerificationTemplateArgValueFromSecretKeyRef {
 		return v.SecretKeyRef
@@ -5506,6 +5705,7 @@ func (o VerificationTemplateArgValueFromPtrOutput) Elem() VerificationTemplateAr
 	}).(VerificationTemplateArgValueFromOutput)
 }
 
+// Secret key to use.
 func (o VerificationTemplateArgValueFromPtrOutput) SecretKeyRef() VerificationTemplateArgValueFromSecretKeyRefPtrOutput {
 	return o.ApplyT(func(v *VerificationTemplateArgValueFrom) *VerificationTemplateArgValueFromSecretKeyRef {
 		if v == nil {
@@ -5516,8 +5716,9 @@ func (o VerificationTemplateArgValueFromPtrOutput) SecretKeyRef() VerificationTe
 }
 
 type VerificationTemplateArgValueFromSecretKeyRef struct {
+	// The name of the field inside the secret.
 	Key string `pulumi:"key"`
-	// Identifier name for Ocean CD Verification Template. Must be unique.
+	// The name of the secret.
 	Name string `pulumi:"name"`
 }
 
@@ -5533,8 +5734,9 @@ type VerificationTemplateArgValueFromSecretKeyRefInput interface {
 }
 
 type VerificationTemplateArgValueFromSecretKeyRefArgs struct {
+	// The name of the field inside the secret.
 	Key pulumi.StringInput `pulumi:"key"`
-	// Identifier name for Ocean CD Verification Template. Must be unique.
+	// The name of the secret.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -5615,11 +5817,12 @@ func (o VerificationTemplateArgValueFromSecretKeyRefOutput) ToVerificationTempla
 	}).(VerificationTemplateArgValueFromSecretKeyRefPtrOutput)
 }
 
+// The name of the field inside the secret.
 func (o VerificationTemplateArgValueFromSecretKeyRefOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v VerificationTemplateArgValueFromSecretKeyRef) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Identifier name for Ocean CD Verification Template. Must be unique.
+// The name of the secret.
 func (o VerificationTemplateArgValueFromSecretKeyRefOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v VerificationTemplateArgValueFromSecretKeyRef) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -5648,6 +5851,7 @@ func (o VerificationTemplateArgValueFromSecretKeyRefPtrOutput) Elem() Verificati
 	}).(VerificationTemplateArgValueFromSecretKeyRefOutput)
 }
 
+// The name of the field inside the secret.
 func (o VerificationTemplateArgValueFromSecretKeyRefPtrOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VerificationTemplateArgValueFromSecretKeyRef) *string {
 		if v == nil {
@@ -5657,7 +5861,7 @@ func (o VerificationTemplateArgValueFromSecretKeyRefPtrOutput) Key() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Identifier name for Ocean CD Verification Template. Must be unique.
+// The name of the secret.
 func (o VerificationTemplateArgValueFromSecretKeyRefPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VerificationTemplateArgValueFromSecretKeyRef) *string {
 		if v == nil {
@@ -5855,10 +6059,14 @@ func (o VerificationTemplateMetricArrayOutput) Index(i pulumi.IntInput) Verifica
 }
 
 type VerificationTemplateMetricBaseline struct {
+	// The name of the monitoring tool chosen for the metric.
 	BaselineProviders []VerificationTemplateMetricBaselineBaselineProvider `pulumi:"baselineProviders"`
-	MaxRange          *int                                                 `pulumi:"maxRange"`
-	MinRange          *int                                                 `pulumi:"minRange"`
-	Threshold         string                                               `pulumi:"threshold"`
+	// Number in percent we allow the new version’s data result to be under baseline data result.
+	MaxRange *int `pulumi:"maxRange"`
+	// Number in percent we allow the new version’s data result to be under baseline data result.*
+	MinRange *int `pulumi:"minRange"`
+	// A mathematical expression needed for the comparison. Enum: "<" ">" "<=" ">=" "=" "range"
+	Threshold string `pulumi:"threshold"`
 }
 
 // VerificationTemplateMetricBaselineInput is an input type that accepts VerificationTemplateMetricBaselineArgs and VerificationTemplateMetricBaselineOutput values.
@@ -5873,10 +6081,14 @@ type VerificationTemplateMetricBaselineInput interface {
 }
 
 type VerificationTemplateMetricBaselineArgs struct {
+	// The name of the monitoring tool chosen for the metric.
 	BaselineProviders VerificationTemplateMetricBaselineBaselineProviderArrayInput `pulumi:"baselineProviders"`
-	MaxRange          pulumi.IntPtrInput                                           `pulumi:"maxRange"`
-	MinRange          pulumi.IntPtrInput                                           `pulumi:"minRange"`
-	Threshold         pulumi.StringInput                                           `pulumi:"threshold"`
+	// Number in percent we allow the new version’s data result to be under baseline data result.
+	MaxRange pulumi.IntPtrInput `pulumi:"maxRange"`
+	// Number in percent we allow the new version’s data result to be under baseline data result.*
+	MinRange pulumi.IntPtrInput `pulumi:"minRange"`
+	// A mathematical expression needed for the comparison. Enum: "<" ">" "<=" ">=" "=" "range"
+	Threshold pulumi.StringInput `pulumi:"threshold"`
 }
 
 func (VerificationTemplateMetricBaselineArgs) ElementType() reflect.Type {
@@ -5956,20 +6168,24 @@ func (o VerificationTemplateMetricBaselineOutput) ToVerificationTemplateMetricBa
 	}).(VerificationTemplateMetricBaselinePtrOutput)
 }
 
+// The name of the monitoring tool chosen for the metric.
 func (o VerificationTemplateMetricBaselineOutput) BaselineProviders() VerificationTemplateMetricBaselineBaselineProviderArrayOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricBaseline) []VerificationTemplateMetricBaselineBaselineProvider {
 		return v.BaselineProviders
 	}).(VerificationTemplateMetricBaselineBaselineProviderArrayOutput)
 }
 
+// Number in percent we allow the new version’s data result to be under baseline data result.
 func (o VerificationTemplateMetricBaselineOutput) MaxRange() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricBaseline) *int { return v.MaxRange }).(pulumi.IntPtrOutput)
 }
 
+// Number in percent we allow the new version’s data result to be under baseline data result.*
 func (o VerificationTemplateMetricBaselineOutput) MinRange() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricBaseline) *int { return v.MinRange }).(pulumi.IntPtrOutput)
 }
 
+// A mathematical expression needed for the comparison. Enum: "<" ">" "<=" ">=" "=" "range"
 func (o VerificationTemplateMetricBaselineOutput) Threshold() pulumi.StringOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricBaseline) string { return v.Threshold }).(pulumi.StringOutput)
 }
@@ -5998,6 +6214,7 @@ func (o VerificationTemplateMetricBaselinePtrOutput) Elem() VerificationTemplate
 	}).(VerificationTemplateMetricBaselineOutput)
 }
 
+// The name of the monitoring tool chosen for the metric.
 func (o VerificationTemplateMetricBaselinePtrOutput) BaselineProviders() VerificationTemplateMetricBaselineBaselineProviderArrayOutput {
 	return o.ApplyT(func(v *VerificationTemplateMetricBaseline) []VerificationTemplateMetricBaselineBaselineProvider {
 		if v == nil {
@@ -6007,6 +6224,7 @@ func (o VerificationTemplateMetricBaselinePtrOutput) BaselineProviders() Verific
 	}).(VerificationTemplateMetricBaselineBaselineProviderArrayOutput)
 }
 
+// Number in percent we allow the new version’s data result to be under baseline data result.
 func (o VerificationTemplateMetricBaselinePtrOutput) MaxRange() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VerificationTemplateMetricBaseline) *int {
 		if v == nil {
@@ -6016,6 +6234,7 @@ func (o VerificationTemplateMetricBaselinePtrOutput) MaxRange() pulumi.IntPtrOut
 	}).(pulumi.IntPtrOutput)
 }
 
+// Number in percent we allow the new version’s data result to be under baseline data result.*
 func (o VerificationTemplateMetricBaselinePtrOutput) MinRange() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VerificationTemplateMetricBaseline) *int {
 		if v == nil {
@@ -6025,6 +6244,7 @@ func (o VerificationTemplateMetricBaselinePtrOutput) MinRange() pulumi.IntPtrOut
 	}).(pulumi.IntPtrOutput)
 }
 
+// A mathematical expression needed for the comparison. Enum: "<" ">" "<=" ">=" "=" "range"
 func (o VerificationTemplateMetricBaselinePtrOutput) Threshold() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VerificationTemplateMetricBaseline) *string {
 		if v == nil {
@@ -6035,8 +6255,11 @@ func (o VerificationTemplateMetricBaselinePtrOutput) Threshold() pulumi.StringPt
 }
 
 type VerificationTemplateMetricBaselineBaselineProvider struct {
-	Datadog    *VerificationTemplateMetricBaselineBaselineProviderDatadog    `pulumi:"datadog"`
-	NewRelic   *VerificationTemplateMetricBaselineBaselineProviderNewRelic   `pulumi:"newRelic"`
+	// The datadog provider.
+	Datadog *VerificationTemplateMetricBaselineBaselineProviderDatadog `pulumi:"datadog"`
+	// The New Relic provider.
+	NewRelic *VerificationTemplateMetricBaselineBaselineProviderNewRelic `pulumi:"newRelic"`
+	// The Prometheus provider.
 	Prometheus *VerificationTemplateMetricBaselineBaselineProviderPrometheus `pulumi:"prometheus"`
 }
 
@@ -6052,8 +6275,11 @@ type VerificationTemplateMetricBaselineBaselineProviderInput interface {
 }
 
 type VerificationTemplateMetricBaselineBaselineProviderArgs struct {
-	Datadog    VerificationTemplateMetricBaselineBaselineProviderDatadogPtrInput    `pulumi:"datadog"`
-	NewRelic   VerificationTemplateMetricBaselineBaselineProviderNewRelicPtrInput   `pulumi:"newRelic"`
+	// The datadog provider.
+	Datadog VerificationTemplateMetricBaselineBaselineProviderDatadogPtrInput `pulumi:"datadog"`
+	// The New Relic provider.
+	NewRelic VerificationTemplateMetricBaselineBaselineProviderNewRelicPtrInput `pulumi:"newRelic"`
+	// The Prometheus provider.
 	Prometheus VerificationTemplateMetricBaselineBaselineProviderPrometheusPtrInput `pulumi:"prometheus"`
 }
 
@@ -6108,18 +6334,21 @@ func (o VerificationTemplateMetricBaselineBaselineProviderOutput) ToVerification
 	return o
 }
 
+// The datadog provider.
 func (o VerificationTemplateMetricBaselineBaselineProviderOutput) Datadog() VerificationTemplateMetricBaselineBaselineProviderDatadogPtrOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricBaselineBaselineProvider) *VerificationTemplateMetricBaselineBaselineProviderDatadog {
 		return v.Datadog
 	}).(VerificationTemplateMetricBaselineBaselineProviderDatadogPtrOutput)
 }
 
+// The New Relic provider.
 func (o VerificationTemplateMetricBaselineBaselineProviderOutput) NewRelic() VerificationTemplateMetricBaselineBaselineProviderNewRelicPtrOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricBaselineBaselineProvider) *VerificationTemplateMetricBaselineBaselineProviderNewRelic {
 		return v.NewRelic
 	}).(VerificationTemplateMetricBaselineBaselineProviderNewRelicPtrOutput)
 }
 
+// The Prometheus provider.
 func (o VerificationTemplateMetricBaselineBaselineProviderOutput) Prometheus() VerificationTemplateMetricBaselineBaselineProviderPrometheusPtrOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricBaselineBaselineProvider) *VerificationTemplateMetricBaselineBaselineProviderPrometheus {
 		return v.Prometheus
@@ -6147,8 +6376,10 @@ func (o VerificationTemplateMetricBaselineBaselineProviderArrayOutput) Index(i p
 }
 
 type VerificationTemplateMetricBaselineBaselineProviderDatadog struct {
-	DatadogQuery string  `pulumi:"datadogQuery"`
-	Duration     *string `pulumi:"duration"`
+	// A request for information retrieved from Datadog.
+	DatadogQuery string `pulumi:"datadogQuery"`
+	// The window of time we are looking at in DataDog.
+	Duration *string `pulumi:"duration"`
 }
 
 // VerificationTemplateMetricBaselineBaselineProviderDatadogInput is an input type that accepts VerificationTemplateMetricBaselineBaselineProviderDatadogArgs and VerificationTemplateMetricBaselineBaselineProviderDatadogOutput values.
@@ -6163,8 +6394,10 @@ type VerificationTemplateMetricBaselineBaselineProviderDatadogInput interface {
 }
 
 type VerificationTemplateMetricBaselineBaselineProviderDatadogArgs struct {
-	DatadogQuery pulumi.StringInput    `pulumi:"datadogQuery"`
-	Duration     pulumi.StringPtrInput `pulumi:"duration"`
+	// A request for information retrieved from Datadog.
+	DatadogQuery pulumi.StringInput `pulumi:"datadogQuery"`
+	// The window of time we are looking at in DataDog.
+	Duration pulumi.StringPtrInput `pulumi:"duration"`
 }
 
 func (VerificationTemplateMetricBaselineBaselineProviderDatadogArgs) ElementType() reflect.Type {
@@ -6244,10 +6477,12 @@ func (o VerificationTemplateMetricBaselineBaselineProviderDatadogOutput) ToVerif
 	}).(VerificationTemplateMetricBaselineBaselineProviderDatadogPtrOutput)
 }
 
+// A request for information retrieved from Datadog.
 func (o VerificationTemplateMetricBaselineBaselineProviderDatadogOutput) DatadogQuery() pulumi.StringOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricBaselineBaselineProviderDatadog) string { return v.DatadogQuery }).(pulumi.StringOutput)
 }
 
+// The window of time we are looking at in DataDog.
 func (o VerificationTemplateMetricBaselineBaselineProviderDatadogOutput) Duration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricBaselineBaselineProviderDatadog) *string { return v.Duration }).(pulumi.StringPtrOutput)
 }
@@ -6276,6 +6511,7 @@ func (o VerificationTemplateMetricBaselineBaselineProviderDatadogPtrOutput) Elem
 	}).(VerificationTemplateMetricBaselineBaselineProviderDatadogOutput)
 }
 
+// A request for information retrieved from Datadog.
 func (o VerificationTemplateMetricBaselineBaselineProviderDatadogPtrOutput) DatadogQuery() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VerificationTemplateMetricBaselineBaselineProviderDatadog) *string {
 		if v == nil {
@@ -6285,6 +6521,7 @@ func (o VerificationTemplateMetricBaselineBaselineProviderDatadogPtrOutput) Data
 	}).(pulumi.StringPtrOutput)
 }
 
+// The window of time we are looking at in DataDog.
 func (o VerificationTemplateMetricBaselineBaselineProviderDatadogPtrOutput) Duration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VerificationTemplateMetricBaselineBaselineProviderDatadog) *string {
 		if v == nil {
@@ -6295,8 +6532,10 @@ func (o VerificationTemplateMetricBaselineBaselineProviderDatadogPtrOutput) Dura
 }
 
 type VerificationTemplateMetricBaselineBaselineProviderNewRelic struct {
-	NewRelicQuery string  `pulumi:"newRelicQuery"`
-	Profile       *string `pulumi:"profile"`
+	// A raw newrelic NRQL query to perform.
+	NewRelicQuery string `pulumi:"newRelicQuery"`
+	// The name of the secret holding NR account configuration.
+	Profile *string `pulumi:"profile"`
 }
 
 // VerificationTemplateMetricBaselineBaselineProviderNewRelicInput is an input type that accepts VerificationTemplateMetricBaselineBaselineProviderNewRelicArgs and VerificationTemplateMetricBaselineBaselineProviderNewRelicOutput values.
@@ -6311,8 +6550,10 @@ type VerificationTemplateMetricBaselineBaselineProviderNewRelicInput interface {
 }
 
 type VerificationTemplateMetricBaselineBaselineProviderNewRelicArgs struct {
-	NewRelicQuery pulumi.StringInput    `pulumi:"newRelicQuery"`
-	Profile       pulumi.StringPtrInput `pulumi:"profile"`
+	// A raw newrelic NRQL query to perform.
+	NewRelicQuery pulumi.StringInput `pulumi:"newRelicQuery"`
+	// The name of the secret holding NR account configuration.
+	Profile pulumi.StringPtrInput `pulumi:"profile"`
 }
 
 func (VerificationTemplateMetricBaselineBaselineProviderNewRelicArgs) ElementType() reflect.Type {
@@ -6392,10 +6633,12 @@ func (o VerificationTemplateMetricBaselineBaselineProviderNewRelicOutput) ToVeri
 	}).(VerificationTemplateMetricBaselineBaselineProviderNewRelicPtrOutput)
 }
 
+// A raw newrelic NRQL query to perform.
 func (o VerificationTemplateMetricBaselineBaselineProviderNewRelicOutput) NewRelicQuery() pulumi.StringOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricBaselineBaselineProviderNewRelic) string { return v.NewRelicQuery }).(pulumi.StringOutput)
 }
 
+// The name of the secret holding NR account configuration.
 func (o VerificationTemplateMetricBaselineBaselineProviderNewRelicOutput) Profile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricBaselineBaselineProviderNewRelic) *string { return v.Profile }).(pulumi.StringPtrOutput)
 }
@@ -6424,6 +6667,7 @@ func (o VerificationTemplateMetricBaselineBaselineProviderNewRelicPtrOutput) Ele
 	}).(VerificationTemplateMetricBaselineBaselineProviderNewRelicOutput)
 }
 
+// A raw newrelic NRQL query to perform.
 func (o VerificationTemplateMetricBaselineBaselineProviderNewRelicPtrOutput) NewRelicQuery() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VerificationTemplateMetricBaselineBaselineProviderNewRelic) *string {
 		if v == nil {
@@ -6433,6 +6677,7 @@ func (o VerificationTemplateMetricBaselineBaselineProviderNewRelicPtrOutput) New
 	}).(pulumi.StringPtrOutput)
 }
 
+// The name of the secret holding NR account configuration.
 func (o VerificationTemplateMetricBaselineBaselineProviderNewRelicPtrOutput) Profile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VerificationTemplateMetricBaselineBaselineProviderNewRelic) *string {
 		if v == nil {
@@ -6443,6 +6688,7 @@ func (o VerificationTemplateMetricBaselineBaselineProviderNewRelicPtrOutput) Pro
 }
 
 type VerificationTemplateMetricBaselineBaselineProviderPrometheus struct {
+	// A request for information retrieved from Prometheus.
 	PrometheusQuery string `pulumi:"prometheusQuery"`
 }
 
@@ -6458,6 +6704,7 @@ type VerificationTemplateMetricBaselineBaselineProviderPrometheusInput interface
 }
 
 type VerificationTemplateMetricBaselineBaselineProviderPrometheusArgs struct {
+	// A request for information retrieved from Prometheus.
 	PrometheusQuery pulumi.StringInput `pulumi:"prometheusQuery"`
 }
 
@@ -6538,6 +6785,7 @@ func (o VerificationTemplateMetricBaselineBaselineProviderPrometheusOutput) ToVe
 	}).(VerificationTemplateMetricBaselineBaselineProviderPrometheusPtrOutput)
 }
 
+// A request for information retrieved from Prometheus.
 func (o VerificationTemplateMetricBaselineBaselineProviderPrometheusOutput) PrometheusQuery() pulumi.StringOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricBaselineBaselineProviderPrometheus) string { return v.PrometheusQuery }).(pulumi.StringOutput)
 }
@@ -6566,6 +6814,7 @@ func (o VerificationTemplateMetricBaselineBaselineProviderPrometheusPtrOutput) E
 	}).(VerificationTemplateMetricBaselineBaselineProviderPrometheusOutput)
 }
 
+// A request for information retrieved from Prometheus.
 func (o VerificationTemplateMetricBaselineBaselineProviderPrometheusPtrOutput) PrometheusQuery() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VerificationTemplateMetricBaselineBaselineProviderPrometheus) *string {
 		if v == nil {
@@ -6576,13 +6825,20 @@ func (o VerificationTemplateMetricBaselineBaselineProviderPrometheusPtrOutput) P
 }
 
 type VerificationTemplateMetricProvider struct {
+	// The CloudWatch provider.
 	CloudWatch *VerificationTemplateMetricProviderCloudWatch `pulumi:"cloudWatch"`
-	Datadog    *VerificationTemplateMetricProviderDatadog    `pulumi:"datadog"`
-	Jenkins    *VerificationTemplateMetricProviderJenkins    `pulumi:"jenkins"`
-	Job        *VerificationTemplateMetricProviderJob        `pulumi:"job"`
-	NewRelic   *VerificationTemplateMetricProviderNewRelic   `pulumi:"newRelic"`
+	// The datadog provider.
+	Datadog *VerificationTemplateMetricProviderDatadog `pulumi:"datadog"`
+	// The Jenkins provider. Default is "{$}"
+	Jenkins *VerificationTemplateMetricProviderJenkins `pulumi:"jenkins"`
+	// The Job provider.
+	Job *VerificationTemplateMetricProviderJob `pulumi:"job"`
+	// The New Relic provider.
+	NewRelic *VerificationTemplateMetricProviderNewRelic `pulumi:"newRelic"`
+	// The Prometheus provider.
 	Prometheus *VerificationTemplateMetricProviderPrometheus `pulumi:"prometheus"`
-	Web        *VerificationTemplateMetricProviderWeb        `pulumi:"web"`
+	// The Web provider.
+	Web *VerificationTemplateMetricProviderWeb `pulumi:"web"`
 }
 
 // VerificationTemplateMetricProviderInput is an input type that accepts VerificationTemplateMetricProviderArgs and VerificationTemplateMetricProviderOutput values.
@@ -6597,13 +6853,20 @@ type VerificationTemplateMetricProviderInput interface {
 }
 
 type VerificationTemplateMetricProviderArgs struct {
+	// The CloudWatch provider.
 	CloudWatch VerificationTemplateMetricProviderCloudWatchPtrInput `pulumi:"cloudWatch"`
-	Datadog    VerificationTemplateMetricProviderDatadogPtrInput    `pulumi:"datadog"`
-	Jenkins    VerificationTemplateMetricProviderJenkinsPtrInput    `pulumi:"jenkins"`
-	Job        VerificationTemplateMetricProviderJobPtrInput        `pulumi:"job"`
-	NewRelic   VerificationTemplateMetricProviderNewRelicPtrInput   `pulumi:"newRelic"`
+	// The datadog provider.
+	Datadog VerificationTemplateMetricProviderDatadogPtrInput `pulumi:"datadog"`
+	// The Jenkins provider. Default is "{$}"
+	Jenkins VerificationTemplateMetricProviderJenkinsPtrInput `pulumi:"jenkins"`
+	// The Job provider.
+	Job VerificationTemplateMetricProviderJobPtrInput `pulumi:"job"`
+	// The New Relic provider.
+	NewRelic VerificationTemplateMetricProviderNewRelicPtrInput `pulumi:"newRelic"`
+	// The Prometheus provider.
 	Prometheus VerificationTemplateMetricProviderPrometheusPtrInput `pulumi:"prometheus"`
-	Web        VerificationTemplateMetricProviderWebPtrInput        `pulumi:"web"`
+	// The Web provider.
+	Web VerificationTemplateMetricProviderWebPtrInput `pulumi:"web"`
 }
 
 func (VerificationTemplateMetricProviderArgs) ElementType() reflect.Type {
@@ -6657,40 +6920,47 @@ func (o VerificationTemplateMetricProviderOutput) ToVerificationTemplateMetricPr
 	return o
 }
 
+// The CloudWatch provider.
 func (o VerificationTemplateMetricProviderOutput) CloudWatch() VerificationTemplateMetricProviderCloudWatchPtrOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProvider) *VerificationTemplateMetricProviderCloudWatch {
 		return v.CloudWatch
 	}).(VerificationTemplateMetricProviderCloudWatchPtrOutput)
 }
 
+// The datadog provider.
 func (o VerificationTemplateMetricProviderOutput) Datadog() VerificationTemplateMetricProviderDatadogPtrOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProvider) *VerificationTemplateMetricProviderDatadog {
 		return v.Datadog
 	}).(VerificationTemplateMetricProviderDatadogPtrOutput)
 }
 
+// The Jenkins provider. Default is "{$}"
 func (o VerificationTemplateMetricProviderOutput) Jenkins() VerificationTemplateMetricProviderJenkinsPtrOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProvider) *VerificationTemplateMetricProviderJenkins {
 		return v.Jenkins
 	}).(VerificationTemplateMetricProviderJenkinsPtrOutput)
 }
 
+// The Job provider.
 func (o VerificationTemplateMetricProviderOutput) Job() VerificationTemplateMetricProviderJobPtrOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProvider) *VerificationTemplateMetricProviderJob { return v.Job }).(VerificationTemplateMetricProviderJobPtrOutput)
 }
 
+// The New Relic provider.
 func (o VerificationTemplateMetricProviderOutput) NewRelic() VerificationTemplateMetricProviderNewRelicPtrOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProvider) *VerificationTemplateMetricProviderNewRelic {
 		return v.NewRelic
 	}).(VerificationTemplateMetricProviderNewRelicPtrOutput)
 }
 
+// The Prometheus provider.
 func (o VerificationTemplateMetricProviderOutput) Prometheus() VerificationTemplateMetricProviderPrometheusPtrOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProvider) *VerificationTemplateMetricProviderPrometheus {
 		return v.Prometheus
 	}).(VerificationTemplateMetricProviderPrometheusPtrOutput)
 }
 
+// The Web provider.
 func (o VerificationTemplateMetricProviderOutput) Web() VerificationTemplateMetricProviderWebPtrOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProvider) *VerificationTemplateMetricProviderWeb { return v.Web }).(VerificationTemplateMetricProviderWebPtrOutput)
 }
@@ -6716,7 +6986,9 @@ func (o VerificationTemplateMetricProviderArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type VerificationTemplateMetricProviderCloudWatch struct {
-	Duration          *string                                                       `pulumi:"duration"`
+	// The window of time we are looking at in CloudWatch.
+	Duration *string `pulumi:"duration"`
+	// The metric queries to be returned. A single MetricData call can include as many as 500 MetricDataQuery structures. Each of these structures can specify either a metric to retrieve, a Metrics Insights query, or a math expression to perform on retrieved data.
 	MetricDataQueries []VerificationTemplateMetricProviderCloudWatchMetricDataQuery `pulumi:"metricDataQueries"`
 }
 
@@ -6732,7 +7004,9 @@ type VerificationTemplateMetricProviderCloudWatchInput interface {
 }
 
 type VerificationTemplateMetricProviderCloudWatchArgs struct {
-	Duration          pulumi.StringPtrInput                                                 `pulumi:"duration"`
+	// The window of time we are looking at in CloudWatch.
+	Duration pulumi.StringPtrInput `pulumi:"duration"`
+	// The metric queries to be returned. A single MetricData call can include as many as 500 MetricDataQuery structures. Each of these structures can specify either a metric to retrieve, a Metrics Insights query, or a math expression to perform on retrieved data.
 	MetricDataQueries VerificationTemplateMetricProviderCloudWatchMetricDataQueryArrayInput `pulumi:"metricDataQueries"`
 }
 
@@ -6813,10 +7087,12 @@ func (o VerificationTemplateMetricProviderCloudWatchOutput) ToVerificationTempla
 	}).(VerificationTemplateMetricProviderCloudWatchPtrOutput)
 }
 
+// The window of time we are looking at in CloudWatch.
 func (o VerificationTemplateMetricProviderCloudWatchOutput) Duration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderCloudWatch) *string { return v.Duration }).(pulumi.StringPtrOutput)
 }
 
+// The metric queries to be returned. A single MetricData call can include as many as 500 MetricDataQuery structures. Each of these structures can specify either a metric to retrieve, a Metrics Insights query, or a math expression to perform on retrieved data.
 func (o VerificationTemplateMetricProviderCloudWatchOutput) MetricDataQueries() VerificationTemplateMetricProviderCloudWatchMetricDataQueryArrayOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderCloudWatch) []VerificationTemplateMetricProviderCloudWatchMetricDataQuery {
 		return v.MetricDataQueries
@@ -6847,6 +7123,7 @@ func (o VerificationTemplateMetricProviderCloudWatchPtrOutput) Elem() Verificati
 	}).(VerificationTemplateMetricProviderCloudWatchOutput)
 }
 
+// The window of time we are looking at in CloudWatch.
 func (o VerificationTemplateMetricProviderCloudWatchPtrOutput) Duration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VerificationTemplateMetricProviderCloudWatch) *string {
 		if v == nil {
@@ -6856,6 +7133,7 @@ func (o VerificationTemplateMetricProviderCloudWatchPtrOutput) Duration() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// The metric queries to be returned. A single MetricData call can include as many as 500 MetricDataQuery structures. Each of these structures can specify either a metric to retrieve, a Metrics Insights query, or a math expression to perform on retrieved data.
 func (o VerificationTemplateMetricProviderCloudWatchPtrOutput) MetricDataQueries() VerificationTemplateMetricProviderCloudWatchMetricDataQueryArrayOutput {
 	return o.ApplyT(func(v *VerificationTemplateMetricProviderCloudWatch) []VerificationTemplateMetricProviderCloudWatchMetricDataQuery {
 		if v == nil {
@@ -6866,12 +7144,18 @@ func (o VerificationTemplateMetricProviderCloudWatchPtrOutput) MetricDataQueries
 }
 
 type VerificationTemplateMetricProviderCloudWatchMetricDataQuery struct {
-	Expression *string                                                                `pulumi:"expression"`
-	Id         string                                                                 `pulumi:"id"`
-	Label      *string                                                                `pulumi:"label"`
+	// This field can contain either a Metrics Insights query, or a metric math expression to be performed on the returned data. Within one metricdataquery object, you must specify either expression or metricstat but not both.
+	Expression *string `pulumi:"expression"`
+	// The response ID. Must be unique and not null. This object can contain characters, letters, numbers and underscore. The first letter must be a lowercase letter.
+	Id string `pulumi:"id"`
+	// A human-readable label for this metric or expression. If the metric or expression is shown in a CloudWatch dashboard widget, the label is shown
+	Label *string `pulumi:"label"`
+	// The metric to be returned, along with statistics, period, and units. Use this parameter only if this object is retrieving a metric and not performing a math expression on returned data.Within one metricdataquery object, you must specify either expression or metricstat but not both.
 	MetricStat *VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat `pulumi:"metricStat"`
-	Period     *int                                                                   `pulumi:"period"`
-	ReturnData *bool                                                                  `pulumi:"returnData"`
+	// The granularity, in seconds, of the returned data points.
+	Period *int `pulumi:"period"`
+	// This option indicates whether to return the timestamps and raw data values of this metric. If you are performing this call just to do math expressions and do not also need the raw data returned, you can specify False . If you omit this, the default of True is used.
+	ReturnData *bool `pulumi:"returnData"`
 }
 
 // VerificationTemplateMetricProviderCloudWatchMetricDataQueryInput is an input type that accepts VerificationTemplateMetricProviderCloudWatchMetricDataQueryArgs and VerificationTemplateMetricProviderCloudWatchMetricDataQueryOutput values.
@@ -6886,12 +7170,18 @@ type VerificationTemplateMetricProviderCloudWatchMetricDataQueryInput interface 
 }
 
 type VerificationTemplateMetricProviderCloudWatchMetricDataQueryArgs struct {
-	Expression pulumi.StringPtrInput                                                         `pulumi:"expression"`
-	Id         pulumi.StringInput                                                            `pulumi:"id"`
-	Label      pulumi.StringPtrInput                                                         `pulumi:"label"`
+	// This field can contain either a Metrics Insights query, or a metric math expression to be performed on the returned data. Within one metricdataquery object, you must specify either expression or metricstat but not both.
+	Expression pulumi.StringPtrInput `pulumi:"expression"`
+	// The response ID. Must be unique and not null. This object can contain characters, letters, numbers and underscore. The first letter must be a lowercase letter.
+	Id pulumi.StringInput `pulumi:"id"`
+	// A human-readable label for this metric or expression. If the metric or expression is shown in a CloudWatch dashboard widget, the label is shown
+	Label pulumi.StringPtrInput `pulumi:"label"`
+	// The metric to be returned, along with statistics, period, and units. Use this parameter only if this object is retrieving a metric and not performing a math expression on returned data.Within one metricdataquery object, you must specify either expression or metricstat but not both.
 	MetricStat VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrInput `pulumi:"metricStat"`
-	Period     pulumi.IntPtrInput                                                            `pulumi:"period"`
-	ReturnData pulumi.BoolPtrInput                                                           `pulumi:"returnData"`
+	// The granularity, in seconds, of the returned data points.
+	Period pulumi.IntPtrInput `pulumi:"period"`
+	// This option indicates whether to return the timestamps and raw data values of this metric. If you are performing this call just to do math expressions and do not also need the raw data returned, you can specify False . If you omit this, the default of True is used.
+	ReturnData pulumi.BoolPtrInput `pulumi:"returnData"`
 }
 
 func (VerificationTemplateMetricProviderCloudWatchMetricDataQueryArgs) ElementType() reflect.Type {
@@ -6945,28 +7235,34 @@ func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryOutput) ToVer
 	return o
 }
 
+// This field can contain either a Metrics Insights query, or a metric math expression to be performed on the returned data. Within one metricdataquery object, you must specify either expression or metricstat but not both.
 func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryOutput) Expression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderCloudWatchMetricDataQuery) *string { return v.Expression }).(pulumi.StringPtrOutput)
 }
 
+// The response ID. Must be unique and not null. This object can contain characters, letters, numbers and underscore. The first letter must be a lowercase letter.
 func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderCloudWatchMetricDataQuery) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A human-readable label for this metric or expression. If the metric or expression is shown in a CloudWatch dashboard widget, the label is shown
 func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderCloudWatchMetricDataQuery) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
 
+// The metric to be returned, along with statistics, period, and units. Use this parameter only if this object is retrieving a metric and not performing a math expression on returned data.Within one metricdataquery object, you must specify either expression or metricstat but not both.
 func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryOutput) MetricStat() VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderCloudWatchMetricDataQuery) *VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat {
 		return v.MetricStat
 	}).(VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutput)
 }
 
+// The granularity, in seconds, of the returned data points.
 func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderCloudWatchMetricDataQuery) *int { return v.Period }).(pulumi.IntPtrOutput)
 }
 
+// This option indicates whether to return the timestamps and raw data values of this metric. If you are performing this call just to do math expressions and do not also need the raw data returned, you can specify False . If you omit this, the default of True is used.
 func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryOutput) ReturnData() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderCloudWatchMetricDataQuery) *bool { return v.ReturnData }).(pulumi.BoolPtrOutput)
 }
@@ -6992,10 +7288,14 @@ func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryArrayOutput) 
 }
 
 type VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat struct {
-	Metric       *VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric `pulumi:"metric"`
-	MetricPeriod *int                                                                         `pulumi:"metricPeriod"`
-	Stat         *string                                                                      `pulumi:"stat"`
-	Unit         *string                                                                      `pulumi:"unit"`
+	// The metric to return, including the metric name, namespace, and dimensions.
+	Metric *VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric `pulumi:"metric"`
+	// The granularity, in seconds, of the returned data points.
+	MetricPeriod *int `pulumi:"metricPeriod"`
+	// The statistic to return. It can include any CloudWatch statistic or extended statistic.
+	Stat *string `pulumi:"stat"`
+	// This defines what unit you want to use when storing the metric.  Enum: `"Seconds" "Microseconds" "Milliseconds" "Bytes" "Kilobytes" "Megabytes" "Gigabytes" "Terabytes" "Bits" "Kilobits" "Megabits" "Gigabits" "Terabits" "Percent" "Count" "Bytes/Second" "Kilobytes/Second" "Megabytes/Second" "Gigabytes/Second" "Terabytes/Second" "Bits/Second" "Kilobits/Second" "Megabits/Second" "Gigabits/Second" "Terabits/Second" "Count/Second" "None"`
+	Unit *string `pulumi:"unit"`
 }
 
 // VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatInput is an input type that accepts VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatArgs and VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatOutput values.
@@ -7010,10 +7310,14 @@ type VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatInput 
 }
 
 type VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatArgs struct {
-	Metric       VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrInput `pulumi:"metric"`
-	MetricPeriod pulumi.IntPtrInput                                                                  `pulumi:"metricPeriod"`
-	Stat         pulumi.StringPtrInput                                                               `pulumi:"stat"`
-	Unit         pulumi.StringPtrInput                                                               `pulumi:"unit"`
+	// The metric to return, including the metric name, namespace, and dimensions.
+	Metric VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrInput `pulumi:"metric"`
+	// The granularity, in seconds, of the returned data points.
+	MetricPeriod pulumi.IntPtrInput `pulumi:"metricPeriod"`
+	// The statistic to return. It can include any CloudWatch statistic or extended statistic.
+	Stat pulumi.StringPtrInput `pulumi:"stat"`
+	// This defines what unit you want to use when storing the metric.  Enum: `"Seconds" "Microseconds" "Milliseconds" "Bytes" "Kilobytes" "Megabytes" "Gigabytes" "Terabytes" "Bits" "Kilobits" "Megabits" "Gigabits" "Terabits" "Percent" "Count" "Bytes/Second" "Kilobytes/Second" "Megabytes/Second" "Gigabytes/Second" "Terabytes/Second" "Bits/Second" "Kilobits/Second" "Megabits/Second" "Gigabits/Second" "Terabits/Second" "Count/Second" "None"`
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
 }
 
 func (VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatArgs) ElementType() reflect.Type {
@@ -7093,22 +7397,26 @@ func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatOut
 	}).(VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutput)
 }
 
+// The metric to return, including the metric name, namespace, and dimensions.
 func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatOutput) Metric() VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat) *VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric {
 		return v.Metric
 	}).(VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutput)
 }
 
+// The granularity, in seconds, of the returned data points.
 func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatOutput) MetricPeriod() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat) *int {
 		return v.MetricPeriod
 	}).(pulumi.IntPtrOutput)
 }
 
+// The statistic to return. It can include any CloudWatch statistic or extended statistic.
 func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatOutput) Stat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat) *string { return v.Stat }).(pulumi.StringPtrOutput)
 }
 
+// This defines what unit you want to use when storing the metric.  Enum: `"Seconds" "Microseconds" "Milliseconds" "Bytes" "Kilobytes" "Megabytes" "Gigabytes" "Terabytes" "Bits" "Kilobits" "Megabits" "Gigabits" "Terabits" "Percent" "Count" "Bytes/Second" "Kilobytes/Second" "Megabytes/Second" "Gigabytes/Second" "Terabytes/Second" "Bits/Second" "Kilobits/Second" "Megabits/Second" "Gigabits/Second" "Terabits/Second" "Count/Second" "None"`
 func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatOutput) Unit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat) *string { return v.Unit }).(pulumi.StringPtrOutput)
 }
@@ -7137,6 +7445,7 @@ func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtr
 	}).(VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatOutput)
 }
 
+// The metric to return, including the metric name, namespace, and dimensions.
 func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutput) Metric() VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutput {
 	return o.ApplyT(func(v *VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat) *VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric {
 		if v == nil {
@@ -7146,6 +7455,7 @@ func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtr
 	}).(VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutput)
 }
 
+// The granularity, in seconds, of the returned data points.
 func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutput) MetricPeriod() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat) *int {
 		if v == nil {
@@ -7155,6 +7465,7 @@ func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtr
 	}).(pulumi.IntPtrOutput)
 }
 
+// The statistic to return. It can include any CloudWatch statistic or extended statistic.
 func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutput) Stat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat) *string {
 		if v == nil {
@@ -7164,6 +7475,7 @@ func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// This defines what unit you want to use when storing the metric.  Enum: `"Seconds" "Microseconds" "Milliseconds" "Bytes" "Kilobytes" "Megabytes" "Gigabytes" "Terabytes" "Bits" "Kilobits" "Megabits" "Gigabits" "Terabits" "Percent" "Count" "Bytes/Second" "Kilobytes/Second" "Megabytes/Second" "Gigabytes/Second" "Terabytes/Second" "Bits/Second" "Kilobits/Second" "Megabits/Second" "Gigabits/Second" "Terabits/Second" "Count/Second" "None"`
 func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrOutput) Unit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat) *string {
 		if v == nil {
@@ -7174,9 +7486,12 @@ func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtr
 }
 
 type VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric struct {
+	// A dimension is a name/value pair that is part of the identity of a metric.You can assign upto 30 dimensions to a metric
 	Dimensions []VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimension `pulumi:"dimensions"`
-	MetricName string                                                                                 `pulumi:"metricName"`
-	Namespace  *string                                                                                `pulumi:"namespace"`
+	// The name of the metric.
+	MetricName string `pulumi:"metricName"`
+	// The namespace of the metric.
+	Namespace *string `pulumi:"namespace"`
 }
 
 // VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricInput is an input type that accepts VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricArgs and VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricOutput values.
@@ -7191,9 +7506,12 @@ type VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric
 }
 
 type VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricArgs struct {
+	// A dimension is a name/value pair that is part of the identity of a metric.You can assign upto 30 dimensions to a metric
 	Dimensions VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArrayInput `pulumi:"dimensions"`
-	MetricName pulumi.StringInput                                                                             `pulumi:"metricName"`
-	Namespace  pulumi.StringPtrInput                                                                          `pulumi:"namespace"`
+	// The name of the metric.
+	MetricName pulumi.StringInput `pulumi:"metricName"`
+	// The namespace of the metric.
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
 }
 
 func (VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricArgs) ElementType() reflect.Type {
@@ -7273,18 +7591,21 @@ func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMet
 	}).(VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutput)
 }
 
+// A dimension is a name/value pair that is part of the identity of a metric.You can assign upto 30 dimensions to a metric
 func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricOutput) Dimensions() VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArrayOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric) []VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimension {
 		return v.Dimensions
 	}).(VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArrayOutput)
 }
 
+// The name of the metric.
 func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricOutput) MetricName() pulumi.StringOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric) string {
 		return v.MetricName
 	}).(pulumi.StringOutput)
 }
 
+// The namespace of the metric.
 func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric) *string {
 		return v.Namespace
@@ -7315,6 +7636,7 @@ func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMet
 	}).(VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricOutput)
 }
 
+// A dimension is a name/value pair that is part of the identity of a metric.You can assign upto 30 dimensions to a metric
 func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutput) Dimensions() VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArrayOutput {
 	return o.ApplyT(func(v *VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric) []VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimension {
 		if v == nil {
@@ -7324,6 +7646,7 @@ func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMet
 	}).(VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArrayOutput)
 }
 
+// The name of the metric.
 func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutput) MetricName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric) *string {
 		if v == nil {
@@ -7333,6 +7656,7 @@ func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMet
 	}).(pulumi.StringPtrOutput)
 }
 
+// The namespace of the metric.
 func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricPtrOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric) *string {
 		if v == nil {
@@ -7343,7 +7667,9 @@ func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMet
 }
 
 type VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimension struct {
-	DimensionName  string `pulumi:"dimensionName"`
+	// The name of the dimensions. These values must contain only ASCII characters and must include at least one non-whitespace characte
+	DimensionName string `pulumi:"dimensionName"`
+	// The value of the dimensions.These values must contain only ASCII characters and must include at least one non-whitespace characte
 	DimensionValue string `pulumi:"dimensionValue"`
 }
 
@@ -7359,7 +7685,9 @@ type VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric
 }
 
 type VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArgs struct {
-	DimensionName  pulumi.StringInput `pulumi:"dimensionName"`
+	// The name of the dimensions. These values must contain only ASCII characters and must include at least one non-whitespace characte
+	DimensionName pulumi.StringInput `pulumi:"dimensionName"`
+	// The value of the dimensions.These values must contain only ASCII characters and must include at least one non-whitespace characte
 	DimensionValue pulumi.StringInput `pulumi:"dimensionValue"`
 }
 
@@ -7414,12 +7742,14 @@ func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMet
 	return o
 }
 
+// The name of the dimensions. These values must contain only ASCII characters and must include at least one non-whitespace characte
 func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionOutput) DimensionName() pulumi.StringOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimension) string {
 		return v.DimensionName
 	}).(pulumi.StringOutput)
 }
 
+// The value of the dimensions.These values must contain only ASCII characters and must include at least one non-whitespace characte
 func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionOutput) DimensionValue() pulumi.StringOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimension) string {
 		return v.DimensionValue
@@ -7447,8 +7777,10 @@ func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMet
 }
 
 type VerificationTemplateMetricProviderDatadog struct {
+	// A request for information retrieved from Datadog.
 	DatadogQuery *string `pulumi:"datadogQuery"`
-	Duration     *string `pulumi:"duration"`
+	// The window of time we are looking at in DataDog.
+	Duration *string `pulumi:"duration"`
 }
 
 // VerificationTemplateMetricProviderDatadogInput is an input type that accepts VerificationTemplateMetricProviderDatadogArgs and VerificationTemplateMetricProviderDatadogOutput values.
@@ -7463,8 +7795,10 @@ type VerificationTemplateMetricProviderDatadogInput interface {
 }
 
 type VerificationTemplateMetricProviderDatadogArgs struct {
+	// A request for information retrieved from Datadog.
 	DatadogQuery pulumi.StringPtrInput `pulumi:"datadogQuery"`
-	Duration     pulumi.StringPtrInput `pulumi:"duration"`
+	// The window of time we are looking at in DataDog.
+	Duration pulumi.StringPtrInput `pulumi:"duration"`
 }
 
 func (VerificationTemplateMetricProviderDatadogArgs) ElementType() reflect.Type {
@@ -7544,10 +7878,12 @@ func (o VerificationTemplateMetricProviderDatadogOutput) ToVerificationTemplateM
 	}).(VerificationTemplateMetricProviderDatadogPtrOutput)
 }
 
+// A request for information retrieved from Datadog.
 func (o VerificationTemplateMetricProviderDatadogOutput) DatadogQuery() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderDatadog) *string { return v.DatadogQuery }).(pulumi.StringPtrOutput)
 }
 
+// The window of time we are looking at in DataDog.
 func (o VerificationTemplateMetricProviderDatadogOutput) Duration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderDatadog) *string { return v.Duration }).(pulumi.StringPtrOutput)
 }
@@ -7576,6 +7912,7 @@ func (o VerificationTemplateMetricProviderDatadogPtrOutput) Elem() VerificationT
 	}).(VerificationTemplateMetricProviderDatadogOutput)
 }
 
+// A request for information retrieved from Datadog.
 func (o VerificationTemplateMetricProviderDatadogPtrOutput) DatadogQuery() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VerificationTemplateMetricProviderDatadog) *string {
 		if v == nil {
@@ -7585,6 +7922,7 @@ func (o VerificationTemplateMetricProviderDatadogPtrOutput) DatadogQuery() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
+// The window of time we are looking at in DataDog.
 func (o VerificationTemplateMetricProviderDatadogPtrOutput) Duration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VerificationTemplateMetricProviderDatadog) *string {
 		if v == nil {
@@ -7595,11 +7933,16 @@ func (o VerificationTemplateMetricProviderDatadogPtrOutput) Duration() pulumi.St
 }
 
 type VerificationTemplateMetricProviderJenkins struct {
-	JenkinsInterval   string                                                      `pulumi:"jenkinsInterval"`
+	// The interval time to poll status.
+	JenkinsInterval string `pulumi:"jenkinsInterval"`
+	// List of parameters.
 	JenkinsParameters *VerificationTemplateMetricProviderJenkinsJenkinsParameters `pulumi:"jenkinsParameters"`
-	PipelineName      string                                                      `pulumi:"pipelineName"`
-	Timeout           string                                                      `pulumi:"timeout"`
-	TlsVerification   *bool                                                       `pulumi:"tlsVerification"`
+	// The Jenkins pipeline name.
+	PipelineName string `pulumi:"pipelineName"`
+	// The total jenkins timeout.
+	Timeout string `pulumi:"timeout"`
+	// Host TLS verification.
+	TlsVerification *bool `pulumi:"tlsVerification"`
 }
 
 // VerificationTemplateMetricProviderJenkinsInput is an input type that accepts VerificationTemplateMetricProviderJenkinsArgs and VerificationTemplateMetricProviderJenkinsOutput values.
@@ -7614,11 +7957,16 @@ type VerificationTemplateMetricProviderJenkinsInput interface {
 }
 
 type VerificationTemplateMetricProviderJenkinsArgs struct {
-	JenkinsInterval   pulumi.StringInput                                                 `pulumi:"jenkinsInterval"`
+	// The interval time to poll status.
+	JenkinsInterval pulumi.StringInput `pulumi:"jenkinsInterval"`
+	// List of parameters.
 	JenkinsParameters VerificationTemplateMetricProviderJenkinsJenkinsParametersPtrInput `pulumi:"jenkinsParameters"`
-	PipelineName      pulumi.StringInput                                                 `pulumi:"pipelineName"`
-	Timeout           pulumi.StringInput                                                 `pulumi:"timeout"`
-	TlsVerification   pulumi.BoolPtrInput                                                `pulumi:"tlsVerification"`
+	// The Jenkins pipeline name.
+	PipelineName pulumi.StringInput `pulumi:"pipelineName"`
+	// The total jenkins timeout.
+	Timeout pulumi.StringInput `pulumi:"timeout"`
+	// Host TLS verification.
+	TlsVerification pulumi.BoolPtrInput `pulumi:"tlsVerification"`
 }
 
 func (VerificationTemplateMetricProviderJenkinsArgs) ElementType() reflect.Type {
@@ -7698,24 +8046,29 @@ func (o VerificationTemplateMetricProviderJenkinsOutput) ToVerificationTemplateM
 	}).(VerificationTemplateMetricProviderJenkinsPtrOutput)
 }
 
+// The interval time to poll status.
 func (o VerificationTemplateMetricProviderJenkinsOutput) JenkinsInterval() pulumi.StringOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderJenkins) string { return v.JenkinsInterval }).(pulumi.StringOutput)
 }
 
+// List of parameters.
 func (o VerificationTemplateMetricProviderJenkinsOutput) JenkinsParameters() VerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderJenkins) *VerificationTemplateMetricProviderJenkinsJenkinsParameters {
 		return v.JenkinsParameters
 	}).(VerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutput)
 }
 
+// The Jenkins pipeline name.
 func (o VerificationTemplateMetricProviderJenkinsOutput) PipelineName() pulumi.StringOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderJenkins) string { return v.PipelineName }).(pulumi.StringOutput)
 }
 
+// The total jenkins timeout.
 func (o VerificationTemplateMetricProviderJenkinsOutput) Timeout() pulumi.StringOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderJenkins) string { return v.Timeout }).(pulumi.StringOutput)
 }
 
+// Host TLS verification.
 func (o VerificationTemplateMetricProviderJenkinsOutput) TlsVerification() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderJenkins) *bool { return v.TlsVerification }).(pulumi.BoolPtrOutput)
 }
@@ -7744,6 +8097,7 @@ func (o VerificationTemplateMetricProviderJenkinsPtrOutput) Elem() VerificationT
 	}).(VerificationTemplateMetricProviderJenkinsOutput)
 }
 
+// The interval time to poll status.
 func (o VerificationTemplateMetricProviderJenkinsPtrOutput) JenkinsInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VerificationTemplateMetricProviderJenkins) *string {
 		if v == nil {
@@ -7753,6 +8107,7 @@ func (o VerificationTemplateMetricProviderJenkinsPtrOutput) JenkinsInterval() pu
 	}).(pulumi.StringPtrOutput)
 }
 
+// List of parameters.
 func (o VerificationTemplateMetricProviderJenkinsPtrOutput) JenkinsParameters() VerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutput {
 	return o.ApplyT(func(v *VerificationTemplateMetricProviderJenkins) *VerificationTemplateMetricProviderJenkinsJenkinsParameters {
 		if v == nil {
@@ -7762,6 +8117,7 @@ func (o VerificationTemplateMetricProviderJenkinsPtrOutput) JenkinsParameters() 
 	}).(VerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutput)
 }
 
+// The Jenkins pipeline name.
 func (o VerificationTemplateMetricProviderJenkinsPtrOutput) PipelineName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VerificationTemplateMetricProviderJenkins) *string {
 		if v == nil {
@@ -7771,6 +8127,7 @@ func (o VerificationTemplateMetricProviderJenkinsPtrOutput) PipelineName() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
+// The total jenkins timeout.
 func (o VerificationTemplateMetricProviderJenkinsPtrOutput) Timeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VerificationTemplateMetricProviderJenkins) *string {
 		if v == nil {
@@ -7780,6 +8137,7 @@ func (o VerificationTemplateMetricProviderJenkinsPtrOutput) Timeout() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// Host TLS verification.
 func (o VerificationTemplateMetricProviderJenkinsPtrOutput) TlsVerification() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VerificationTemplateMetricProviderJenkins) *bool {
 		if v == nil {
@@ -7790,7 +8148,9 @@ func (o VerificationTemplateMetricProviderJenkinsPtrOutput) TlsVerification() pu
 }
 
 type VerificationTemplateMetricProviderJenkinsJenkinsParameters struct {
-	ParameterKey   string `pulumi:"parameterKey"`
+	// Key of an argument.
+	ParameterKey string `pulumi:"parameterKey"`
+	// Value of an argument.
 	ParameterValue string `pulumi:"parameterValue"`
 }
 
@@ -7806,7 +8166,9 @@ type VerificationTemplateMetricProviderJenkinsJenkinsParametersInput interface {
 }
 
 type VerificationTemplateMetricProviderJenkinsJenkinsParametersArgs struct {
-	ParameterKey   pulumi.StringInput `pulumi:"parameterKey"`
+	// Key of an argument.
+	ParameterKey pulumi.StringInput `pulumi:"parameterKey"`
+	// Value of an argument.
 	ParameterValue pulumi.StringInput `pulumi:"parameterValue"`
 }
 
@@ -7887,10 +8249,12 @@ func (o VerificationTemplateMetricProviderJenkinsJenkinsParametersOutput) ToVeri
 	}).(VerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutput)
 }
 
+// Key of an argument.
 func (o VerificationTemplateMetricProviderJenkinsJenkinsParametersOutput) ParameterKey() pulumi.StringOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderJenkinsJenkinsParameters) string { return v.ParameterKey }).(pulumi.StringOutput)
 }
 
+// Value of an argument.
 func (o VerificationTemplateMetricProviderJenkinsJenkinsParametersOutput) ParameterValue() pulumi.StringOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderJenkinsJenkinsParameters) string { return v.ParameterValue }).(pulumi.StringOutput)
 }
@@ -7919,6 +8283,7 @@ func (o VerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutput) Ele
 	}).(VerificationTemplateMetricProviderJenkinsJenkinsParametersOutput)
 }
 
+// Key of an argument.
 func (o VerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutput) ParameterKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VerificationTemplateMetricProviderJenkinsJenkinsParameters) *string {
 		if v == nil {
@@ -7928,6 +8293,7 @@ func (o VerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutput) Par
 	}).(pulumi.StringPtrOutput)
 }
 
+// Value of an argument.
 func (o VerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutput) ParameterValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VerificationTemplateMetricProviderJenkinsJenkinsParameters) *string {
 		if v == nil {
@@ -7938,6 +8304,7 @@ func (o VerificationTemplateMetricProviderJenkinsJenkinsParametersPtrOutput) Par
 }
 
 type VerificationTemplateMetricProviderJob struct {
+	// The job spec require to run the metric.
 	Specs []VerificationTemplateMetricProviderJobSpec `pulumi:"specs"`
 }
 
@@ -7953,6 +8320,7 @@ type VerificationTemplateMetricProviderJobInput interface {
 }
 
 type VerificationTemplateMetricProviderJobArgs struct {
+	// The job spec require to run the metric.
 	Specs VerificationTemplateMetricProviderJobSpecArrayInput `pulumi:"specs"`
 }
 
@@ -8033,6 +8401,7 @@ func (o VerificationTemplateMetricProviderJobOutput) ToVerificationTemplateMetri
 	}).(VerificationTemplateMetricProviderJobPtrOutput)
 }
 
+// The job spec require to run the metric.
 func (o VerificationTemplateMetricProviderJobOutput) Specs() VerificationTemplateMetricProviderJobSpecArrayOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderJob) []VerificationTemplateMetricProviderJobSpec {
 		return v.Specs
@@ -8063,6 +8432,7 @@ func (o VerificationTemplateMetricProviderJobPtrOutput) Elem() VerificationTempl
 	}).(VerificationTemplateMetricProviderJobOutput)
 }
 
+// The job spec require to run the metric.
 func (o VerificationTemplateMetricProviderJobPtrOutput) Specs() VerificationTemplateMetricProviderJobSpecArrayOutput {
 	return o.ApplyT(func(v *VerificationTemplateMetricProviderJob) []VerificationTemplateMetricProviderJobSpec {
 		if v == nil {
@@ -8073,7 +8443,9 @@ func (o VerificationTemplateMetricProviderJobPtrOutput) Specs() VerificationTemp
 }
 
 type VerificationTemplateMetricProviderJobSpec struct {
-	BackoffLimit *int                                                   `pulumi:"backoffLimit"`
+	// Specifies the number of retries before marking this job failed.
+	BackoffLimit *int `pulumi:"backoffLimit"`
+	// Describes the pod that will be created when executing a job.
 	JobTemplates []VerificationTemplateMetricProviderJobSpecJobTemplate `pulumi:"jobTemplates"`
 }
 
@@ -8089,7 +8461,9 @@ type VerificationTemplateMetricProviderJobSpecInput interface {
 }
 
 type VerificationTemplateMetricProviderJobSpecArgs struct {
-	BackoffLimit pulumi.IntPtrInput                                             `pulumi:"backoffLimit"`
+	// Specifies the number of retries before marking this job failed.
+	BackoffLimit pulumi.IntPtrInput `pulumi:"backoffLimit"`
+	// Describes the pod that will be created when executing a job.
 	JobTemplates VerificationTemplateMetricProviderJobSpecJobTemplateArrayInput `pulumi:"jobTemplates"`
 }
 
@@ -8144,10 +8518,12 @@ func (o VerificationTemplateMetricProviderJobSpecOutput) ToVerificationTemplateM
 	return o
 }
 
+// Specifies the number of retries before marking this job failed.
 func (o VerificationTemplateMetricProviderJobSpecOutput) BackoffLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderJobSpec) *int { return v.BackoffLimit }).(pulumi.IntPtrOutput)
 }
 
+// Describes the pod that will be created when executing a job.
 func (o VerificationTemplateMetricProviderJobSpecOutput) JobTemplates() VerificationTemplateMetricProviderJobSpecJobTemplateArrayOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderJobSpec) []VerificationTemplateMetricProviderJobSpecJobTemplate {
 		return v.JobTemplates
@@ -8175,6 +8551,7 @@ func (o VerificationTemplateMetricProviderJobSpecArrayOutput) Index(i pulumi.Int
 }
 
 type VerificationTemplateMetricProviderJobSpecJobTemplate struct {
+	// Specification of the desired behavior of the pod.
 	TemplateSpecs []VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpec `pulumi:"templateSpecs"`
 }
 
@@ -8190,6 +8567,7 @@ type VerificationTemplateMetricProviderJobSpecJobTemplateInput interface {
 }
 
 type VerificationTemplateMetricProviderJobSpecJobTemplateArgs struct {
+	// Specification of the desired behavior of the pod.
 	TemplateSpecs VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArrayInput `pulumi:"templateSpecs"`
 }
 
@@ -8244,6 +8622,7 @@ func (o VerificationTemplateMetricProviderJobSpecJobTemplateOutput) ToVerificati
 	return o
 }
 
+// Specification of the desired behavior of the pod.
 func (o VerificationTemplateMetricProviderJobSpecJobTemplateOutput) TemplateSpecs() VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArrayOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderJobSpecJobTemplate) []VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpec {
 		return v.TemplateSpecs
@@ -8271,8 +8650,10 @@ func (o VerificationTemplateMetricProviderJobSpecJobTemplateArrayOutput) Index(i
 }
 
 type VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpec struct {
-	Containers    []VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainer `pulumi:"containers"`
-	RestartPolicy string                                                                      `pulumi:"restartPolicy"`
+	// A list of containers belonging to the pod.
+	Containers []VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainer `pulumi:"containers"`
+	// Restart policy for all containers within the pod. Enum: `"Never" "OnFailure"`
+	RestartPolicy string `pulumi:"restartPolicy"`
 }
 
 // VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecInput is an input type that accepts VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArgs and VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecOutput values.
@@ -8287,8 +8668,10 @@ type VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecInput inter
 }
 
 type VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArgs struct {
-	Containers    VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArrayInput `pulumi:"containers"`
-	RestartPolicy pulumi.StringInput                                                                  `pulumi:"restartPolicy"`
+	// A list of containers belonging to the pod.
+	Containers VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArrayInput `pulumi:"containers"`
+	// Restart policy for all containers within the pod. Enum: `"Never" "OnFailure"`
+	RestartPolicy pulumi.StringInput `pulumi:"restartPolicy"`
 }
 
 func (VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArgs) ElementType() reflect.Type {
@@ -8342,12 +8725,14 @@ func (o VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecOutput) 
 	return o
 }
 
+// A list of containers belonging to the pod.
 func (o VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecOutput) Containers() VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArrayOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpec) []VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainer {
 		return v.Containers
 	}).(VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArrayOutput)
 }
 
+// Restart policy for all containers within the pod. Enum: `"Never" "OnFailure"`
 func (o VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecOutput) RestartPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpec) string {
 		return v.RestartPolicy
@@ -8375,9 +8760,12 @@ func (o VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArrayOut
 }
 
 type VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainer struct {
-	Commands      []string `pulumi:"commands"`
-	ContainerName string   `pulumi:"containerName"`
-	Image         string   `pulumi:"image"`
+	// The entry point of a container.
+	Commands []string `pulumi:"commands"`
+	// The name of a container.
+	ContainerName string `pulumi:"containerName"`
+	// The image name of a container.
+	Image string `pulumi:"image"`
 }
 
 // VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerInput is an input type that accepts VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArgs and VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerOutput values.
@@ -8392,9 +8780,12 @@ type VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerIn
 }
 
 type VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArgs struct {
-	Commands      pulumi.StringArrayInput `pulumi:"commands"`
-	ContainerName pulumi.StringInput      `pulumi:"containerName"`
-	Image         pulumi.StringInput      `pulumi:"image"`
+	// The entry point of a container.
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+	// The name of a container.
+	ContainerName pulumi.StringInput `pulumi:"containerName"`
+	// The image name of a container.
+	Image pulumi.StringInput `pulumi:"image"`
 }
 
 func (VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArgs) ElementType() reflect.Type {
@@ -8448,18 +8839,21 @@ func (o VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContaine
 	return o
 }
 
+// The entry point of a container.
 func (o VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerOutput) Commands() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainer) []string {
 		return v.Commands
 	}).(pulumi.StringArrayOutput)
 }
 
+// The name of a container.
 func (o VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerOutput) ContainerName() pulumi.StringOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainer) string {
 		return v.ContainerName
 	}).(pulumi.StringOutput)
 }
 
+// The image name of a container.
 func (o VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainer) string {
 		return v.Image
@@ -8487,8 +8881,10 @@ func (o VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContaine
 }
 
 type VerificationTemplateMetricProviderNewRelic struct {
-	NewRelicQuery string  `pulumi:"newRelicQuery"`
-	Profile       *string `pulumi:"profile"`
+	// A raw newrelic NRQL query to perform.
+	NewRelicQuery string `pulumi:"newRelicQuery"`
+	// The name of the secret holding NR account configuration.
+	Profile *string `pulumi:"profile"`
 }
 
 // VerificationTemplateMetricProviderNewRelicInput is an input type that accepts VerificationTemplateMetricProviderNewRelicArgs and VerificationTemplateMetricProviderNewRelicOutput values.
@@ -8503,8 +8899,10 @@ type VerificationTemplateMetricProviderNewRelicInput interface {
 }
 
 type VerificationTemplateMetricProviderNewRelicArgs struct {
-	NewRelicQuery pulumi.StringInput    `pulumi:"newRelicQuery"`
-	Profile       pulumi.StringPtrInput `pulumi:"profile"`
+	// A raw newrelic NRQL query to perform.
+	NewRelicQuery pulumi.StringInput `pulumi:"newRelicQuery"`
+	// The name of the secret holding NR account configuration.
+	Profile pulumi.StringPtrInput `pulumi:"profile"`
 }
 
 func (VerificationTemplateMetricProviderNewRelicArgs) ElementType() reflect.Type {
@@ -8584,10 +8982,12 @@ func (o VerificationTemplateMetricProviderNewRelicOutput) ToVerificationTemplate
 	}).(VerificationTemplateMetricProviderNewRelicPtrOutput)
 }
 
+// A raw newrelic NRQL query to perform.
 func (o VerificationTemplateMetricProviderNewRelicOutput) NewRelicQuery() pulumi.StringOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderNewRelic) string { return v.NewRelicQuery }).(pulumi.StringOutput)
 }
 
+// The name of the secret holding NR account configuration.
 func (o VerificationTemplateMetricProviderNewRelicOutput) Profile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderNewRelic) *string { return v.Profile }).(pulumi.StringPtrOutput)
 }
@@ -8616,6 +9016,7 @@ func (o VerificationTemplateMetricProviderNewRelicPtrOutput) Elem() Verification
 	}).(VerificationTemplateMetricProviderNewRelicOutput)
 }
 
+// A raw newrelic NRQL query to perform.
 func (o VerificationTemplateMetricProviderNewRelicPtrOutput) NewRelicQuery() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VerificationTemplateMetricProviderNewRelic) *string {
 		if v == nil {
@@ -8625,6 +9026,7 @@ func (o VerificationTemplateMetricProviderNewRelicPtrOutput) NewRelicQuery() pul
 	}).(pulumi.StringPtrOutput)
 }
 
+// The name of the secret holding NR account configuration.
 func (o VerificationTemplateMetricProviderNewRelicPtrOutput) Profile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VerificationTemplateMetricProviderNewRelic) *string {
 		if v == nil {
@@ -8768,13 +9170,20 @@ func (o VerificationTemplateMetricProviderPrometheusPtrOutput) PrometheusQuery()
 }
 
 type VerificationTemplateMetricProviderWeb struct {
-	Body           *string                                          `pulumi:"body"`
-	Insecure       *bool                                            `pulumi:"insecure"`
-	JsonPath       *string                                          `pulumi:"jsonPath"`
-	Method         *string                                          `pulumi:"method"`
-	TimeoutSeconds *int                                             `pulumi:"timeoutSeconds"`
-	Url            string                                           `pulumi:"url"`
-	WebHeaders     []VerificationTemplateMetricProviderWebWebHeader `pulumi:"webHeaders"`
+	// The body of the web metric.
+	Body *string `pulumi:"body"`
+	// Skips host TLS verification.
+	Insecure *bool `pulumi:"insecure"`
+	// A JSON Path to use as the result variable. Default is "{$}"
+	JsonPath *string `pulumi:"jsonPath"`
+	// The method of the web metric.  Enum: "GET" "POST" "PUT"
+	Method *string `pulumi:"method"`
+	// The timeout for the request in seconds. Default is 10.
+	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
+	// The address of the web metric.
+	Url string `pulumi:"url"`
+	// Optional HTTP headers to use in the request.
+	WebHeaders []VerificationTemplateMetricProviderWebWebHeader `pulumi:"webHeaders"`
 }
 
 // VerificationTemplateMetricProviderWebInput is an input type that accepts VerificationTemplateMetricProviderWebArgs and VerificationTemplateMetricProviderWebOutput values.
@@ -8789,13 +9198,20 @@ type VerificationTemplateMetricProviderWebInput interface {
 }
 
 type VerificationTemplateMetricProviderWebArgs struct {
-	Body           pulumi.StringPtrInput                                    `pulumi:"body"`
-	Insecure       pulumi.BoolPtrInput                                      `pulumi:"insecure"`
-	JsonPath       pulumi.StringPtrInput                                    `pulumi:"jsonPath"`
-	Method         pulumi.StringPtrInput                                    `pulumi:"method"`
-	TimeoutSeconds pulumi.IntPtrInput                                       `pulumi:"timeoutSeconds"`
-	Url            pulumi.StringInput                                       `pulumi:"url"`
-	WebHeaders     VerificationTemplateMetricProviderWebWebHeaderArrayInput `pulumi:"webHeaders"`
+	// The body of the web metric.
+	Body pulumi.StringPtrInput `pulumi:"body"`
+	// Skips host TLS verification.
+	Insecure pulumi.BoolPtrInput `pulumi:"insecure"`
+	// A JSON Path to use as the result variable. Default is "{$}"
+	JsonPath pulumi.StringPtrInput `pulumi:"jsonPath"`
+	// The method of the web metric.  Enum: "GET" "POST" "PUT"
+	Method pulumi.StringPtrInput `pulumi:"method"`
+	// The timeout for the request in seconds. Default is 10.
+	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
+	// The address of the web metric.
+	Url pulumi.StringInput `pulumi:"url"`
+	// Optional HTTP headers to use in the request.
+	WebHeaders VerificationTemplateMetricProviderWebWebHeaderArrayInput `pulumi:"webHeaders"`
 }
 
 func (VerificationTemplateMetricProviderWebArgs) ElementType() reflect.Type {
@@ -8875,30 +9291,37 @@ func (o VerificationTemplateMetricProviderWebOutput) ToVerificationTemplateMetri
 	}).(VerificationTemplateMetricProviderWebPtrOutput)
 }
 
+// The body of the web metric.
 func (o VerificationTemplateMetricProviderWebOutput) Body() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderWeb) *string { return v.Body }).(pulumi.StringPtrOutput)
 }
 
+// Skips host TLS verification.
 func (o VerificationTemplateMetricProviderWebOutput) Insecure() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderWeb) *bool { return v.Insecure }).(pulumi.BoolPtrOutput)
 }
 
+// A JSON Path to use as the result variable. Default is "{$}"
 func (o VerificationTemplateMetricProviderWebOutput) JsonPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderWeb) *string { return v.JsonPath }).(pulumi.StringPtrOutput)
 }
 
+// The method of the web metric.  Enum: "GET" "POST" "PUT"
 func (o VerificationTemplateMetricProviderWebOutput) Method() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderWeb) *string { return v.Method }).(pulumi.StringPtrOutput)
 }
 
+// The timeout for the request in seconds. Default is 10.
 func (o VerificationTemplateMetricProviderWebOutput) TimeoutSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderWeb) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
 }
 
+// The address of the web metric.
 func (o VerificationTemplateMetricProviderWebOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderWeb) string { return v.Url }).(pulumi.StringOutput)
 }
 
+// Optional HTTP headers to use in the request.
 func (o VerificationTemplateMetricProviderWebOutput) WebHeaders() VerificationTemplateMetricProviderWebWebHeaderArrayOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderWeb) []VerificationTemplateMetricProviderWebWebHeader {
 		return v.WebHeaders
@@ -8929,6 +9352,7 @@ func (o VerificationTemplateMetricProviderWebPtrOutput) Elem() VerificationTempl
 	}).(VerificationTemplateMetricProviderWebOutput)
 }
 
+// The body of the web metric.
 func (o VerificationTemplateMetricProviderWebPtrOutput) Body() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VerificationTemplateMetricProviderWeb) *string {
 		if v == nil {
@@ -8938,6 +9362,7 @@ func (o VerificationTemplateMetricProviderWebPtrOutput) Body() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// Skips host TLS verification.
 func (o VerificationTemplateMetricProviderWebPtrOutput) Insecure() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VerificationTemplateMetricProviderWeb) *bool {
 		if v == nil {
@@ -8947,6 +9372,7 @@ func (o VerificationTemplateMetricProviderWebPtrOutput) Insecure() pulumi.BoolPt
 	}).(pulumi.BoolPtrOutput)
 }
 
+// A JSON Path to use as the result variable. Default is "{$}"
 func (o VerificationTemplateMetricProviderWebPtrOutput) JsonPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VerificationTemplateMetricProviderWeb) *string {
 		if v == nil {
@@ -8956,6 +9382,7 @@ func (o VerificationTemplateMetricProviderWebPtrOutput) JsonPath() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// The method of the web metric.  Enum: "GET" "POST" "PUT"
 func (o VerificationTemplateMetricProviderWebPtrOutput) Method() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VerificationTemplateMetricProviderWeb) *string {
 		if v == nil {
@@ -8965,6 +9392,7 @@ func (o VerificationTemplateMetricProviderWebPtrOutput) Method() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// The timeout for the request in seconds. Default is 10.
 func (o VerificationTemplateMetricProviderWebPtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VerificationTemplateMetricProviderWeb) *int {
 		if v == nil {
@@ -8974,6 +9402,7 @@ func (o VerificationTemplateMetricProviderWebPtrOutput) TimeoutSeconds() pulumi.
 	}).(pulumi.IntPtrOutput)
 }
 
+// The address of the web metric.
 func (o VerificationTemplateMetricProviderWebPtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VerificationTemplateMetricProviderWeb) *string {
 		if v == nil {
@@ -8983,6 +9412,7 @@ func (o VerificationTemplateMetricProviderWebPtrOutput) Url() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional HTTP headers to use in the request.
 func (o VerificationTemplateMetricProviderWebPtrOutput) WebHeaders() VerificationTemplateMetricProviderWebWebHeaderArrayOutput {
 	return o.ApplyT(func(v *VerificationTemplateMetricProviderWeb) []VerificationTemplateMetricProviderWebWebHeader {
 		if v == nil {
@@ -8993,7 +9423,9 @@ func (o VerificationTemplateMetricProviderWebPtrOutput) WebHeaders() Verificatio
 }
 
 type VerificationTemplateMetricProviderWebWebHeader struct {
-	WebHeaderKey   string `pulumi:"webHeaderKey"`
+	// The name of a header
+	WebHeaderKey string `pulumi:"webHeaderKey"`
+	// The value of a header
 	WebHeaderValue string `pulumi:"webHeaderValue"`
 }
 
@@ -9009,7 +9441,9 @@ type VerificationTemplateMetricProviderWebWebHeaderInput interface {
 }
 
 type VerificationTemplateMetricProviderWebWebHeaderArgs struct {
-	WebHeaderKey   pulumi.StringInput `pulumi:"webHeaderKey"`
+	// The name of a header
+	WebHeaderKey pulumi.StringInput `pulumi:"webHeaderKey"`
+	// The value of a header
 	WebHeaderValue pulumi.StringInput `pulumi:"webHeaderValue"`
 }
 
@@ -9064,10 +9498,12 @@ func (o VerificationTemplateMetricProviderWebWebHeaderOutput) ToVerificationTemp
 	return o
 }
 
+// The name of a header
 func (o VerificationTemplateMetricProviderWebWebHeaderOutput) WebHeaderKey() pulumi.StringOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderWebWebHeader) string { return v.WebHeaderKey }).(pulumi.StringOutput)
 }
 
+// The value of a header
 func (o VerificationTemplateMetricProviderWebWebHeaderOutput) WebHeaderValue() pulumi.StringOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderWebWebHeader) string { return v.WebHeaderValue }).(pulumi.StringOutput)
 }

@@ -13,6 +13,9 @@ namespace Pulumi.SpotInst.Oceancd.Outputs
     [OutputType]
     public sealed class RolloutSpecTrafficAmbassador
     {
+        /// <summary>
+        /// A list of names of the Ambassador Mappings used to route traffic to the service.
+        /// </summary>
         public readonly ImmutableArray<string> Mappings;
 
         [OutputConstructor]

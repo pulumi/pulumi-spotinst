@@ -11,17 +11,41 @@ import java.util.Objects;
 
 @CustomType
 public final class OceanBlockDeviceMappingEbsDynamicVolumeSize {
+    /**
+     * @return Int. Initial size for volume. (Example: 50)
+     * 
+     */
     private Integer baseSize;
+    /**
+     * @return String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)
+     * 
+     */
     private String resource;
+    /**
+     * @return Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB).
+     * 
+     */
     private Integer sizePerResourceUnit;
 
     private OceanBlockDeviceMappingEbsDynamicVolumeSize() {}
+    /**
+     * @return Int. Initial size for volume. (Example: 50)
+     * 
+     */
     public Integer baseSize() {
         return this.baseSize;
     }
+    /**
+     * @return String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)
+     * 
+     */
     public String resource() {
         return this.resource;
     }
+    /**
+     * @return Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB).
+     * 
+     */
     public Integer sizePerResourceUnit() {
         return this.sizePerResourceUnit;
     }

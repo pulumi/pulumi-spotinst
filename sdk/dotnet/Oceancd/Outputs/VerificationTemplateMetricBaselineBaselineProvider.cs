@@ -13,8 +13,17 @@ namespace Pulumi.SpotInst.Oceancd.Outputs
     [OutputType]
     public sealed class VerificationTemplateMetricBaselineBaselineProvider
     {
+        /// <summary>
+        /// The datadog provider.
+        /// </summary>
         public readonly Outputs.VerificationTemplateMetricBaselineBaselineProviderDatadog? Datadog;
+        /// <summary>
+        /// The New Relic provider.
+        /// </summary>
         public readonly Outputs.VerificationTemplateMetricBaselineBaselineProviderNewRelic? NewRelic;
+        /// <summary>
+        /// The Prometheus provider.
+        /// </summary>
         public readonly Outputs.VerificationTemplateMetricBaselineBaselineProviderPrometheus? Prometheus;
 
         [OutputConstructor]

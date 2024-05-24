@@ -13,6 +13,9 @@ namespace Pulumi.SpotInst.Oceancd.Outputs
     [OutputType]
     public sealed class StrategyRollingStepVerification
     {
+        /// <summary>
+        /// List of Verification Template names.
+        /// </summary>
         public readonly ImmutableArray<string> TemplateNames;
 
         [OutputConstructor]

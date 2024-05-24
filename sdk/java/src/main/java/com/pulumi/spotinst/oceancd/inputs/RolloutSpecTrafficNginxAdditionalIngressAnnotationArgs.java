@@ -15,16 +15,32 @@ public final class RolloutSpecTrafficNginxAdditionalIngressAnnotationArgs extend
 
     public static final RolloutSpecTrafficNginxAdditionalIngressAnnotationArgs Empty = new RolloutSpecTrafficNginxAdditionalIngressAnnotationArgs();
 
+    /**
+     * Allows customizing the header value instead of using hardcoded values.
+     * 
+     */
     @Import(name="canaryByHeader")
     private @Nullable Output<String> canaryByHeader;
 
+    /**
+     * @return Allows customizing the header value instead of using hardcoded values.
+     * 
+     */
     public Optional<Output<String>> canaryByHeader() {
         return Optional.ofNullable(this.canaryByHeader);
     }
 
+    /**
+     * Any of supported annotations.
+     * 
+     */
     @Import(name="key1")
     private @Nullable Output<String> key1;
 
+    /**
+     * @return Any of supported annotations.
+     * 
+     */
     public Optional<Output<String>> key1() {
         return Optional.ofNullable(this.key1);
     }
@@ -54,20 +70,44 @@ public final class RolloutSpecTrafficNginxAdditionalIngressAnnotationArgs extend
             $ = new RolloutSpecTrafficNginxAdditionalIngressAnnotationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param canaryByHeader Allows customizing the header value instead of using hardcoded values.
+         * 
+         * @return builder
+         * 
+         */
         public Builder canaryByHeader(@Nullable Output<String> canaryByHeader) {
             $.canaryByHeader = canaryByHeader;
             return this;
         }
 
+        /**
+         * @param canaryByHeader Allows customizing the header value instead of using hardcoded values.
+         * 
+         * @return builder
+         * 
+         */
         public Builder canaryByHeader(String canaryByHeader) {
             return canaryByHeader(Output.of(canaryByHeader));
         }
 
+        /**
+         * @param key1 Any of supported annotations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder key1(@Nullable Output<String> key1) {
             $.key1 = key1;
             return this;
         }
 
+        /**
+         * @param key1 Any of supported annotations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder key1(String key1) {
             return key1(Output.of(key1));
         }

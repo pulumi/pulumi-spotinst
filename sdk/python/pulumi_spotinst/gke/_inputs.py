@@ -2011,7 +2011,8 @@ class OceanLaunchSpecNetworkInterfaceAccessConfigArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: The launch specification name.
+        :param pulumi.Input[str] name: The name of the access configuration.
+        :param pulumi.Input[str] type: The type of the access configuration.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -2022,7 +2023,7 @@ class OceanLaunchSpecNetworkInterfaceAccessConfigArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The launch specification name.
+        The name of the access configuration.
         """
         return pulumi.get(self, "name")
 
@@ -2033,6 +2034,9 @@ class OceanLaunchSpecNetworkInterfaceAccessConfigArgs:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the access configuration.
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -2045,12 +2049,21 @@ class OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs:
     def __init__(__self__, *,
                  ip_cidr_range: pulumi.Input[str],
                  subnetwork_range_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] ip_cidr_range: specify the IP address range in CIDR notation that can be used for the alias IP addresses associated with the imported node pool.
+        :param pulumi.Input[str] subnetwork_range_name: specify the IP address range for the subnet secondary IP range.
+               
+               <a id="update-policy"></a>
+        """
         pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
         pulumi.set(__self__, "subnetwork_range_name", subnetwork_range_name)
 
     @property
     @pulumi.getter(name="ipCidrRange")
     def ip_cidr_range(self) -> pulumi.Input[str]:
+        """
+        specify the IP address range in CIDR notation that can be used for the alias IP addresses associated with the imported node pool.
+        """
         return pulumi.get(self, "ip_cidr_range")
 
     @ip_cidr_range.setter
@@ -2060,6 +2073,11 @@ class OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs:
     @property
     @pulumi.getter(name="subnetworkRangeName")
     def subnetwork_range_name(self) -> pulumi.Input[str]:
+        """
+        specify the IP address range for the subnet secondary IP range.
+
+        <a id="update-policy"></a>
+        """
         return pulumi.get(self, "subnetwork_range_name")
 
     @subnetwork_range_name.setter
@@ -2181,6 +2199,12 @@ class OceanLaunchSpecSchedulingTaskTaskHeadroomArgs:
                  cpu_per_unit: Optional[pulumi.Input[int]] = None,
                  gpu_per_unit: Optional[pulumi.Input[int]] = None,
                  memory_per_unit: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] num_of_units: The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+        :param pulumi.Input[int] cpu_per_unit: Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        :param pulumi.Input[int] gpu_per_unit: Optionally configure the number of GPUS to allocate for each headroom unit.
+        :param pulumi.Input[int] memory_per_unit: Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
+        """
         pulumi.set(__self__, "num_of_units", num_of_units)
         if cpu_per_unit is not None:
             pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
@@ -2192,6 +2216,9 @@ class OceanLaunchSpecSchedulingTaskTaskHeadroomArgs:
     @property
     @pulumi.getter(name="numOfUnits")
     def num_of_units(self) -> pulumi.Input[int]:
+        """
+        The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+        """
         return pulumi.get(self, "num_of_units")
 
     @num_of_units.setter
@@ -2201,6 +2228,9 @@ class OceanLaunchSpecSchedulingTaskTaskHeadroomArgs:
     @property
     @pulumi.getter(name="cpuPerUnit")
     def cpu_per_unit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        """
         return pulumi.get(self, "cpu_per_unit")
 
     @cpu_per_unit.setter
@@ -2210,6 +2240,9 @@ class OceanLaunchSpecSchedulingTaskTaskHeadroomArgs:
     @property
     @pulumi.getter(name="gpuPerUnit")
     def gpu_per_unit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optionally configure the number of GPUS to allocate for each headroom unit.
+        """
         return pulumi.get(self, "gpu_per_unit")
 
     @gpu_per_unit.setter
@@ -2219,6 +2252,9 @@ class OceanLaunchSpecSchedulingTaskTaskHeadroomArgs:
     @property
     @pulumi.getter(name="memoryPerUnit")
     def memory_per_unit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
+        """
         return pulumi.get(self, "memory_per_unit")
 
     @memory_per_unit.setter

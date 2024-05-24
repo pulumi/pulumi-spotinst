@@ -11,9 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class VerificationTemplateMetricProviderJob {
+    /**
+     * @return The job spec require to run the metric.
+     * 
+     */
     private List<VerificationTemplateMetricProviderJobSpec> specs;
 
     private VerificationTemplateMetricProviderJob() {}
+    /**
+     * @return The job spec require to run the metric.
+     * 
+     */
     public List<VerificationTemplateMetricProviderJobSpec> specs() {
         return this.specs;
     }

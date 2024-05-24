@@ -13,7 +13,13 @@ namespace Pulumi.SpotInst.Oceancd.Outputs
     [OutputType]
     public sealed class RolloutSpecTrafficNginxAdditionalIngressAnnotation
     {
+        /// <summary>
+        /// Allows customizing the header value instead of using hardcoded values.
+        /// </summary>
         public readonly string? CanaryByHeader;
+        /// <summary>
+        /// Any of supported annotations.
+        /// </summary>
         public readonly string? Key1;
 
         [OutputConstructor]

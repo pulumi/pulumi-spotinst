@@ -12,9 +12,15 @@ namespace Pulumi.SpotInst.Oceancd.Inputs
 
     public sealed class VerificationTemplateMetricBaselineBaselineProviderDatadogArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A request for information retrieved from Datadog.
+        /// </summary>
         [Input("datadogQuery", required: true)]
         public Input<string> DatadogQuery { get; set; } = null!;
 
+        /// <summary>
+        /// The window of time we are looking at in DataDog.
+        /// </summary>
         [Input("duration")]
         public Input<string>? Duration { get; set; }
 

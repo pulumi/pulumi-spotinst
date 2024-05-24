@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanNpAutoscalerAutoscaleHeadroom {
+    /**
+     * @return [Automatic headroom](https://docs.spot.io/ocean/features/headroom?id=automatic-headroom) configuration.
+     * 
+     */
     private @Nullable OceanNpAutoscalerAutoscaleHeadroomAutomatic automatic;
 
     private OceanNpAutoscalerAutoscaleHeadroom() {}
+    /**
+     * @return [Automatic headroom](https://docs.spot.io/ocean/features/headroom?id=automatic-headroom) configuration.
+     * 
+     */
     public Optional<OceanNpAutoscalerAutoscaleHeadroomAutomatic> automatic() {
         return Optional.ofNullable(this.automatic);
     }

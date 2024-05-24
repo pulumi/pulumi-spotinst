@@ -12,12 +12,21 @@ namespace Pulumi.SpotInst.Oceancd.Inputs
 
     public sealed class StrategyCanaryStepSetHeaderRouteMatchHeaderValueArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The exact header value.
+        /// </summary>
         [Input("exact")]
         public Input<string>? Exact { get; set; }
 
+        /// <summary>
+        /// The prefix of the value.
+        /// </summary>
         [Input("prefix")]
         public Input<string>? Prefix { get; set; }
 
+        /// <summary>
+        /// The value in a regex format.
+        /// </summary>
         [Input("regex")]
         public Input<string>? Regex { get; set; }
 

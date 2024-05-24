@@ -15,29 +15,77 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class VerificationTemplateMetricProviderCloudWatchMetricDataQuery {
+    /**
+     * @return This field can contain either a Metrics Insights query, or a metric math expression to be performed on the returned data. Within one metricdataquery object, you must specify either expression or metricstat but not both.
+     * 
+     */
     private @Nullable String expression;
+    /**
+     * @return The response ID. Must be unique and not null. This object can contain characters, letters, numbers and underscore. The first letter must be a lowercase letter.
+     * 
+     */
     private String id;
+    /**
+     * @return A human-readable label for this metric or expression. If the metric or expression is shown in a CloudWatch dashboard widget, the label is shown
+     * 
+     */
     private @Nullable String label;
+    /**
+     * @return The metric to be returned, along with statistics, period, and units. Use this parameter only if this object is retrieving a metric and not performing a math expression on returned data.Within one metricdataquery object, you must specify either expression or metricstat but not both.
+     * 
+     */
     private @Nullable VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat metricStat;
+    /**
+     * @return The granularity, in seconds, of the returned data points.
+     * 
+     */
     private @Nullable Integer period;
+    /**
+     * @return This option indicates whether to return the timestamps and raw data values of this metric. If you are performing this call just to do math expressions and do not also need the raw data returned, you can specify False . If you omit this, the default of True is used.
+     * 
+     */
     private @Nullable Boolean returnData;
 
     private VerificationTemplateMetricProviderCloudWatchMetricDataQuery() {}
+    /**
+     * @return This field can contain either a Metrics Insights query, or a metric math expression to be performed on the returned data. Within one metricdataquery object, you must specify either expression or metricstat but not both.
+     * 
+     */
     public Optional<String> expression() {
         return Optional.ofNullable(this.expression);
     }
+    /**
+     * @return The response ID. Must be unique and not null. This object can contain characters, letters, numbers and underscore. The first letter must be a lowercase letter.
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return A human-readable label for this metric or expression. If the metric or expression is shown in a CloudWatch dashboard widget, the label is shown
+     * 
+     */
     public Optional<String> label() {
         return Optional.ofNullable(this.label);
     }
+    /**
+     * @return The metric to be returned, along with statistics, period, and units. Use this parameter only if this object is retrieving a metric and not performing a math expression on returned data.Within one metricdataquery object, you must specify either expression or metricstat but not both.
+     * 
+     */
     public Optional<VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat> metricStat() {
         return Optional.ofNullable(this.metricStat);
     }
+    /**
+     * @return The granularity, in seconds, of the returned data points.
+     * 
+     */
     public Optional<Integer> period() {
         return Optional.ofNullable(this.period);
     }
+    /**
+     * @return This option indicates whether to return the timestamps and raw data values of this metric. If you are performing this call just to do math expressions and do not also need the raw data returned, you can specify False . If you omit this, the default of True is used.
+     * 
+     */
     public Optional<Boolean> returnData() {
         return Optional.ofNullable(this.returnData);
     }

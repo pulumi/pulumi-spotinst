@@ -13,7 +13,13 @@ namespace Pulumi.SpotInst.Azure.Outputs
     [OutputType]
     public sealed class OceanVirtualNodeGroupLaunchSpecificationTag
     {
+        /// <summary>
+        /// Tag Key for Vms in the cluster.
+        /// </summary>
         public readonly string? Key;
+        /// <summary>
+        /// Tag Value for VMs in the cluster.
+        /// </summary>
         public readonly string? Value;
 
         [OutputConstructor]

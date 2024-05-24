@@ -13,7 +13,13 @@ namespace Pulumi.SpotInst.Oceancd.Outputs
     [OutputType]
     public sealed class RolloutSpecTrafficPingPong
     {
+        /// <summary>
+        /// Holds the name of the ping service.
+        /// </summary>
         public readonly string PingService;
+        /// <summary>
+        /// Holds the name of the pong service.
+        /// </summary>
         public readonly string PongService;
 
         [OutputConstructor]

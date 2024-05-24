@@ -13,8 +13,17 @@ namespace Pulumi.SpotInst.Oceancd.Outputs
     [OutputType]
     public sealed class StrategyCanaryStepSetHeaderRouteMatchHeaderValue
     {
+        /// <summary>
+        /// The exact header value.
+        /// </summary>
         public readonly string? Exact;
+        /// <summary>
+        /// The prefix of the value.
+        /// </summary>
         public readonly string? Prefix;
+        /// <summary>
+        /// The value in a regex format.
+        /// </summary>
         public readonly string? Regex;
 
         [OutputConstructor]

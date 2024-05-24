@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class ElastigroupLoggingExportS3 {
     /**
-     * @return The group ID.
+     * @return The identifier of The S3 data integration to export the logs to.
      * 
      */
     private String id;
 
     private ElastigroupLoggingExportS3() {}
     /**
-     * @return The group ID.
+     * @return The identifier of The S3 data integration to export the logs to.
      * 
      */
     public String id() {

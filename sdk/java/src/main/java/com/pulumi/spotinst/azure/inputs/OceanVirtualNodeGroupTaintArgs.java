@@ -14,17 +14,9 @@ public final class OceanVirtualNodeGroupTaintArgs extends com.pulumi.resources.R
 
     public static final OceanVirtualNodeGroupTaintArgs Empty = new OceanVirtualNodeGroupTaintArgs();
 
-    /**
-     * The effect of the taint. Valid values: `&#34;NoSchedule&#34;`, `&#34;PreferNoSchedule&#34;`, `&#34;NoExecute&#34;`, `&#34;PreferNoExecute&#34;`.
-     * 
-     */
     @Import(name="effect", required=true)
     private Output<String> effect;
 
-    /**
-     * @return The effect of the taint. Valid values: `&#34;NoSchedule&#34;`, `&#34;PreferNoSchedule&#34;`, `&#34;NoExecute&#34;`, `&#34;PreferNoExecute&#34;`.
-     * 
-     */
     public Output<String> effect() {
         return this.effect;
     }
@@ -85,23 +77,11 @@ public final class OceanVirtualNodeGroupTaintArgs extends com.pulumi.resources.R
             $ = new OceanVirtualNodeGroupTaintArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param effect The effect of the taint. Valid values: `&#34;NoSchedule&#34;`, `&#34;PreferNoSchedule&#34;`, `&#34;NoExecute&#34;`, `&#34;PreferNoExecute&#34;`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder effect(Output<String> effect) {
             $.effect = effect;
             return this;
         }
 
-        /**
-         * @param effect The effect of the taint. Valid values: `&#34;NoSchedule&#34;`, `&#34;PreferNoSchedule&#34;`, `&#34;NoExecute&#34;`, `&#34;PreferNoExecute&#34;`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder effect(String effect) {
             return effect(Output.of(effect));
         }

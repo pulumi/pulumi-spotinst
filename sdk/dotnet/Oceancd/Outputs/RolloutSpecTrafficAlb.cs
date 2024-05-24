@@ -13,10 +13,25 @@ namespace Pulumi.SpotInst.Oceancd.Outputs
     [OutputType]
     public sealed class RolloutSpecTrafficAlb
     {
+        /// <summary>
+        /// Has to match the configured annotation prefix on the alb ingress controller.
+        /// </summary>
         public readonly string? AlbAnnotationPrefix;
+        /// <summary>
+        /// Refers to the name of an `Ingress` resource in the same namespace as the `SpotDeployment`.
+        /// </summary>
         public readonly string AlbIngress;
+        /// <summary>
+        /// References the service in the ingress to the controller should add the action to.
+        /// </summary>
         public readonly string AlbRootService;
+        /// <summary>
+        /// Refers to the port that the Ingress action should route traffic to.
+        /// </summary>
         public readonly int ServicePort;
+        /// <summary>
+        /// Allows to specify further settings on the ForwardConfig.
+        /// </summary>
         public readonly Outputs.RolloutSpecTrafficAlbStickinessConfig? StickinessConfig;
 
         [OutputConstructor]

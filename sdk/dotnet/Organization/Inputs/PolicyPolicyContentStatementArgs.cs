@@ -14,17 +14,29 @@ namespace Pulumi.SpotInst.Organization.Inputs
     {
         [Input("actions", required: true)]
         private InputList<string>? _actions;
+
+        /// <summary>
+        /// Set a list of required actions for this permissions statement.
+        /// Full list of actions can be found in [https://docs.spot.io/account-user-management/user-management/access-policies-actions/](https://docs.spot.io/account-user-management/user-management/access-policies-actions/).
+        /// </summary>
         public InputList<string> Actions
         {
             get => _actions ?? (_actions = new InputList<string>());
             set => _actions = value;
         }
 
+        /// <summary>
+        /// Valid values "ALLOW", "DENY".
+        /// </summary>
         [Input("effect", required: true)]
         public Input<string> Effect { get; set; } = null!;
 
         [Input("resources", required: true)]
         private InputList<string>? _resources;
+
+        /// <summary>
+        /// Set a list of resources IDs. In order to include all resources in this statement - use "*".
+        /// </summary>
         public InputList<string> Resources
         {
             get => _resources ?? (_resources = new InputList<string>());

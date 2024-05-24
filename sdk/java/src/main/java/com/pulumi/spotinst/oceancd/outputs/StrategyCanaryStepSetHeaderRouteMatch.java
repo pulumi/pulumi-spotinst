@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class StrategyCanaryStepSetHeaderRouteMatch {
+    /**
+     * @return The name of the header.
+     * 
+     */
     private String headerName;
+    /**
+     * @return Defines a single header to add to the Rollout. Must be only one initialized from the following (exact, prefix, regex).
+     * 
+     */
     private StrategyCanaryStepSetHeaderRouteMatchHeaderValue headerValue;
 
     private StrategyCanaryStepSetHeaderRouteMatch() {}
+    /**
+     * @return The name of the header.
+     * 
+     */
     public String headerName() {
         return this.headerName;
     }
+    /**
+     * @return Defines a single header to add to the Rollout. Must be only one initialized from the following (exact, prefix, regex).
+     * 
+     */
     public StrategyCanaryStepSetHeaderRouteMatchHeaderValue headerValue() {
         return this.headerValue;
     }

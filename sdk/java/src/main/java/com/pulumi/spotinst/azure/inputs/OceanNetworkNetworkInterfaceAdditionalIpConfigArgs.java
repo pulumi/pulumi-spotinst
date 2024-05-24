@@ -16,23 +16,31 @@ public final class OceanNetworkNetworkInterfaceAdditionalIpConfigArgs extends co
     public static final OceanNetworkNetworkInterfaceAdditionalIpConfigArgs Empty = new OceanNetworkNetworkInterfaceAdditionalIpConfigArgs();
 
     /**
-     * The Ocean cluster name.
+     * Configuration name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The Ocean cluster name.
+     * @return Configuration name.
      * 
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Supported values: `IPv4`, `IPv6`.
+     * 
+     */
     @Import(name="privateIpVersion")
     private @Nullable Output<String> privateIpVersion;
 
+    /**
+     * @return Supported values: `IPv4`, `IPv6`.
+     * 
+     */
     public Optional<Output<String>> privateIpVersion() {
         return Optional.ofNullable(this.privateIpVersion);
     }
@@ -63,7 +71,7 @@ public final class OceanNetworkNetworkInterfaceAdditionalIpConfigArgs extends co
         }
 
         /**
-         * @param name The Ocean cluster name.
+         * @param name Configuration name.
          * 
          * @return builder
          * 
@@ -74,7 +82,7 @@ public final class OceanNetworkNetworkInterfaceAdditionalIpConfigArgs extends co
         }
 
         /**
-         * @param name The Ocean cluster name.
+         * @param name Configuration name.
          * 
          * @return builder
          * 
@@ -83,11 +91,23 @@ public final class OceanNetworkNetworkInterfaceAdditionalIpConfigArgs extends co
             return name(Output.of(name));
         }
 
+        /**
+         * @param privateIpVersion Supported values: `IPv4`, `IPv6`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder privateIpVersion(@Nullable Output<String> privateIpVersion) {
             $.privateIpVersion = privateIpVersion;
             return this;
         }
 
+        /**
+         * @param privateIpVersion Supported values: `IPv4`, `IPv6`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder privateIpVersion(String privateIpVersion) {
             return privateIpVersion(Output.of(privateIpVersion));
         }

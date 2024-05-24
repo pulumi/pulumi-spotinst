@@ -14,17 +14,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric {
+    /**
+     * @return A dimension is a name/value pair that is part of the identity of a metric.You can assign upto 30 dimensions to a metric
+     * 
+     */
     private @Nullable List<VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimension> dimensions;
+    /**
+     * @return The name of the metric.
+     * 
+     */
     private String metricName;
+    /**
+     * @return The namespace of the metric.
+     * 
+     */
     private @Nullable String namespace;
 
     private VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric() {}
+    /**
+     * @return A dimension is a name/value pair that is part of the identity of a metric.You can assign upto 30 dimensions to a metric
+     * 
+     */
     public List<VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimension> dimensions() {
         return this.dimensions == null ? List.of() : this.dimensions;
     }
+    /**
+     * @return The name of the metric.
+     * 
+     */
     public String metricName() {
         return this.metricName;
     }
+    /**
+     * @return The namespace of the metric.
+     * 
+     */
     public Optional<String> namespace() {
         return Optional.ofNullable(this.namespace);
     }

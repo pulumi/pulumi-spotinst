@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new OceanNp("example", OceanNpArgs.builder()        
+ *         var example = new OceanNp("example", OceanNpArgs.builder()
  *             .name("test")
  *             .aksRegion("eastus")
  *             .aksClusterName("test-cluster")

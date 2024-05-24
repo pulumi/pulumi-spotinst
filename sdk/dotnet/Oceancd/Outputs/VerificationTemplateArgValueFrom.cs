@@ -13,6 +13,9 @@ namespace Pulumi.SpotInst.Oceancd.Outputs
     [OutputType]
     public sealed class VerificationTemplateArgValueFrom
     {
+        /// <summary>
+        /// Secret key to use.
+        /// </summary>
         public readonly Outputs.VerificationTemplateArgValueFromSecretKeyRef? SecretKeyRef;
 
         [OutputConstructor]

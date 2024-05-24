@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var terraformProgUser = new ProgrammaticUser("terraformProgUser", ProgrammaticUserArgs.builder()        
+ *         var terraformProgUser = new ProgrammaticUser("terraformProgUser", ProgrammaticUserArgs.builder()
  *             .name("test-prog-user")
  *             .description("creating programmatic user")
  *             .policies(ProgrammaticUserPolicyArgs.builder()

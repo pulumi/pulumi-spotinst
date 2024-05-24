@@ -11,21 +11,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanImageMarketplace {
+    /**
+     * @return Image name.
+     * 
+     */
     private @Nullable String offer;
+    /**
+     * @return Image publisher.
+     * 
+     */
     private @Nullable String publisher;
+    /**
+     * @return Image Stock Keeping Unit (which is the specific version of the image).
+     * 
+     */
     private @Nullable String sku;
+    /**
+     * @return Image version.
+     * 
+     */
     private @Nullable String version;
 
     private OceanImageMarketplace() {}
+    /**
+     * @return Image name.
+     * 
+     */
     public Optional<String> offer() {
         return Optional.ofNullable(this.offer);
     }
+    /**
+     * @return Image publisher.
+     * 
+     */
     public Optional<String> publisher() {
         return Optional.ofNullable(this.publisher);
     }
+    /**
+     * @return Image Stock Keeping Unit (which is the specific version of the image).
+     * 
+     */
     public Optional<String> sku() {
         return Optional.ofNullable(this.sku);
     }
+    /**
+     * @return Image version.
+     * 
+     */
     public Optional<String> version() {
         return Optional.ofNullable(this.version);
     }

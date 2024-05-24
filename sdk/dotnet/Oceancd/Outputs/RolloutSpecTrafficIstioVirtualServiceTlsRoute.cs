@@ -13,7 +13,13 @@ namespace Pulumi.SpotInst.Oceancd.Outputs
     [OutputType]
     public sealed class RolloutSpecTrafficIstioVirtualServiceTlsRoute
     {
+        /// <summary>
+        /// The port of the TLS Route desired to be matched in the given Istio VirtualService.
+        /// </summary>
         public readonly int? Port;
+        /// <summary>
+        /// A list of all the SNI Hosts of the TLS Route desired to be matched in the given Istio VirtualService.
+        /// </summary>
         public readonly ImmutableArray<string> SniHosts;
 
         [OutputConstructor]

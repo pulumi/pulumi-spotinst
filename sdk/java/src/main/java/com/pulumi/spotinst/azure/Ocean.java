@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Ocean("example", OceanArgs.builder()        
+ *         var example = new Ocean("example", OceanArgs.builder()
  *             .name("ocean-westus-dev-aks")
  *             .controllerClusterId("ocean-westus-dev-aks")
  *             .zones(            

@@ -16,33 +16,89 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class VerificationTemplateMetricProviderWeb {
+    /**
+     * @return The body of the web metric.
+     * 
+     */
     private @Nullable String body;
+    /**
+     * @return Skips host TLS verification.
+     * 
+     */
     private @Nullable Boolean insecure;
+    /**
+     * @return A JSON Path to use as the result variable. Default is &#34;{$}&#34;
+     * 
+     */
     private @Nullable String jsonPath;
+    /**
+     * @return The method of the web metric.  Enum: &#34;GET&#34; &#34;POST&#34; &#34;PUT&#34;
+     * 
+     */
     private @Nullable String method;
+    /**
+     * @return The timeout for the request in seconds. Default is 10.
+     * 
+     */
     private @Nullable Integer timeoutSeconds;
+    /**
+     * @return The address of the web metric.
+     * 
+     */
     private String url;
+    /**
+     * @return Optional HTTP headers to use in the request.
+     * 
+     */
     private @Nullable List<VerificationTemplateMetricProviderWebWebHeader> webHeaders;
 
     private VerificationTemplateMetricProviderWeb() {}
+    /**
+     * @return The body of the web metric.
+     * 
+     */
     public Optional<String> body() {
         return Optional.ofNullable(this.body);
     }
+    /**
+     * @return Skips host TLS verification.
+     * 
+     */
     public Optional<Boolean> insecure() {
         return Optional.ofNullable(this.insecure);
     }
+    /**
+     * @return A JSON Path to use as the result variable. Default is &#34;{$}&#34;
+     * 
+     */
     public Optional<String> jsonPath() {
         return Optional.ofNullable(this.jsonPath);
     }
+    /**
+     * @return The method of the web metric.  Enum: &#34;GET&#34; &#34;POST&#34; &#34;PUT&#34;
+     * 
+     */
     public Optional<String> method() {
         return Optional.ofNullable(this.method);
     }
+    /**
+     * @return The timeout for the request in seconds. Default is 10.
+     * 
+     */
     public Optional<Integer> timeoutSeconds() {
         return Optional.ofNullable(this.timeoutSeconds);
     }
+    /**
+     * @return The address of the web metric.
+     * 
+     */
     public String url() {
         return this.url;
     }
+    /**
+     * @return Optional HTTP headers to use in the request.
+     * 
+     */
     public List<VerificationTemplateMetricProviderWebWebHeader> webHeaders() {
         return this.webHeaders == null ? List.of() : this.webHeaders;
     }

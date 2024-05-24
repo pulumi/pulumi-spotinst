@@ -18,16 +18,32 @@ public final class RolloutSpecTrafficIstioArgs extends com.pulumi.resources.Reso
 
     public static final RolloutSpecTrafficIstioArgs Empty = new RolloutSpecTrafficIstioArgs();
 
+    /**
+     * It references to an Istio DestinationRule to modify and shape traffic. `DestinationRule` field belongs only to the Subset Level approach.
+     * 
+     */
     @Import(name="destinationRule")
     private @Nullable Output<RolloutSpecTrafficIstioDestinationRuleArgs> destinationRule;
 
+    /**
+     * @return It references to an Istio DestinationRule to modify and shape traffic. `DestinationRule` field belongs only to the Subset Level approach.
+     * 
+     */
     public Optional<Output<RolloutSpecTrafficIstioDestinationRuleArgs>> destinationRule() {
         return Optional.ofNullable(this.destinationRule);
     }
 
+    /**
+     * Defines a set of traffic routing rules to apply when a host is addressed.
+     * 
+     */
     @Import(name="virtualServices", required=true)
     private Output<List<RolloutSpecTrafficIstioVirtualServiceArgs>> virtualServices;
 
+    /**
+     * @return Defines a set of traffic routing rules to apply when a host is addressed.
+     * 
+     */
     public Output<List<RolloutSpecTrafficIstioVirtualServiceArgs>> virtualServices() {
         return this.virtualServices;
     }
@@ -57,24 +73,54 @@ public final class RolloutSpecTrafficIstioArgs extends com.pulumi.resources.Reso
             $ = new RolloutSpecTrafficIstioArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param destinationRule It references to an Istio DestinationRule to modify and shape traffic. `DestinationRule` field belongs only to the Subset Level approach.
+         * 
+         * @return builder
+         * 
+         */
         public Builder destinationRule(@Nullable Output<RolloutSpecTrafficIstioDestinationRuleArgs> destinationRule) {
             $.destinationRule = destinationRule;
             return this;
         }
 
+        /**
+         * @param destinationRule It references to an Istio DestinationRule to modify and shape traffic. `DestinationRule` field belongs only to the Subset Level approach.
+         * 
+         * @return builder
+         * 
+         */
         public Builder destinationRule(RolloutSpecTrafficIstioDestinationRuleArgs destinationRule) {
             return destinationRule(Output.of(destinationRule));
         }
 
+        /**
+         * @param virtualServices Defines a set of traffic routing rules to apply when a host is addressed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder virtualServices(Output<List<RolloutSpecTrafficIstioVirtualServiceArgs>> virtualServices) {
             $.virtualServices = virtualServices;
             return this;
         }
 
+        /**
+         * @param virtualServices Defines a set of traffic routing rules to apply when a host is addressed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder virtualServices(List<RolloutSpecTrafficIstioVirtualServiceArgs> virtualServices) {
             return virtualServices(Output.of(virtualServices));
         }
 
+        /**
+         * @param virtualServices Defines a set of traffic routing rules to apply when a host is addressed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder virtualServices(RolloutSpecTrafficIstioVirtualServiceArgs... virtualServices) {
             return virtualServices(List.of(virtualServices));
         }

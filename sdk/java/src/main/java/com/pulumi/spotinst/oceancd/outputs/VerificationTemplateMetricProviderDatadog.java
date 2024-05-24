@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class VerificationTemplateMetricProviderDatadog {
+    /**
+     * @return A request for information retrieved from Datadog.
+     * 
+     */
     private @Nullable String datadogQuery;
+    /**
+     * @return The window of time we are looking at in DataDog.
+     * 
+     */
     private @Nullable String duration;
 
     private VerificationTemplateMetricProviderDatadog() {}
+    /**
+     * @return A request for information retrieved from Datadog.
+     * 
+     */
     public Optional<String> datadogQuery() {
         return Optional.ofNullable(this.datadogQuery);
     }
+    /**
+     * @return The window of time we are looking at in DataDog.
+     * 
+     */
     public Optional<String> duration() {
         return Optional.ofNullable(this.duration);
     }

@@ -17,23 +17,47 @@ public final class RolloutSpecStrategyArgArgs extends com.pulumi.resources.Resou
 
     public static final RolloutSpecStrategyArgArgs Empty = new RolloutSpecStrategyArgArgs();
 
+    /**
+     * Name of an argument.
+     * 
+     */
     @Import(name="argName", required=true)
     private Output<String> argName;
 
+    /**
+     * @return Name of an argument.
+     * 
+     */
     public Output<String> argName() {
         return this.argName;
     }
 
+    /**
+     * Value of an argument.
+     * 
+     */
     @Import(name="argValue")
     private @Nullable Output<String> argValue;
 
+    /**
+     * @return Value of an argument.
+     * 
+     */
     public Optional<Output<String>> argValue() {
         return Optional.ofNullable(this.argValue);
     }
 
+    /**
+     * Defines from where to get the value of an argument.
+     * 
+     */
     @Import(name="valueFrom")
     private @Nullable Output<RolloutSpecStrategyArgValueFromArgs> valueFrom;
 
+    /**
+     * @return Defines from where to get the value of an argument.
+     * 
+     */
     public Optional<Output<RolloutSpecStrategyArgValueFromArgs>> valueFrom() {
         return Optional.ofNullable(this.valueFrom);
     }
@@ -64,29 +88,65 @@ public final class RolloutSpecStrategyArgArgs extends com.pulumi.resources.Resou
             $ = new RolloutSpecStrategyArgArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param argName Name of an argument.
+         * 
+         * @return builder
+         * 
+         */
         public Builder argName(Output<String> argName) {
             $.argName = argName;
             return this;
         }
 
+        /**
+         * @param argName Name of an argument.
+         * 
+         * @return builder
+         * 
+         */
         public Builder argName(String argName) {
             return argName(Output.of(argName));
         }
 
+        /**
+         * @param argValue Value of an argument.
+         * 
+         * @return builder
+         * 
+         */
         public Builder argValue(@Nullable Output<String> argValue) {
             $.argValue = argValue;
             return this;
         }
 
+        /**
+         * @param argValue Value of an argument.
+         * 
+         * @return builder
+         * 
+         */
         public Builder argValue(String argValue) {
             return argValue(Output.of(argValue));
         }
 
+        /**
+         * @param valueFrom Defines from where to get the value of an argument.
+         * 
+         * @return builder
+         * 
+         */
         public Builder valueFrom(@Nullable Output<RolloutSpecStrategyArgValueFromArgs> valueFrom) {
             $.valueFrom = valueFrom;
             return this;
         }
 
+        /**
+         * @param valueFrom Defines from where to get the value of an argument.
+         * 
+         * @return builder
+         * 
+         */
         public Builder valueFrom(RolloutSpecStrategyArgValueFromArgs valueFrom) {
             return valueFrom(Output.of(valueFrom));
         }

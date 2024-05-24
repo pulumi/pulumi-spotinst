@@ -12,9 +12,15 @@ namespace Pulumi.SpotInst.Oceancd.Inputs
 
     public sealed class RolloutSpecTrafficPingPongArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Holds the name of the ping service.
+        /// </summary>
         [Input("pingService", required: true)]
         public Input<string> PingService { get; set; } = null!;
 
+        /// <summary>
+        /// Holds the name of the pong service.
+        /// </summary>
         [Input("pongService", required: true)]
         public Input<string> PongService { get; set; } = null!;
 

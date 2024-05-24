@@ -12,26 +12,48 @@ namespace Pulumi.SpotInst.Oceancd.Inputs
 
     public sealed class VerificationTemplateMetricProviderWebGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The body of the web metric.
+        /// </summary>
         [Input("body")]
         public Input<string>? Body { get; set; }
 
+        /// <summary>
+        /// Skips host TLS verification.
+        /// </summary>
         [Input("insecure")]
         public Input<bool>? Insecure { get; set; }
 
+        /// <summary>
+        /// A JSON Path to use as the result variable. Default is "{$}"
+        /// </summary>
         [Input("jsonPath")]
         public Input<string>? JsonPath { get; set; }
 
+        /// <summary>
+        /// The method of the web metric.  Enum: "GET" "POST" "PUT"
+        /// </summary>
         [Input("method")]
         public Input<string>? Method { get; set; }
 
+        /// <summary>
+        /// The timeout for the request in seconds. Default is 10.
+        /// </summary>
         [Input("timeoutSeconds")]
         public Input<int>? TimeoutSeconds { get; set; }
 
+        /// <summary>
+        /// The address of the web metric.
+        /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;
 
         [Input("webHeaders")]
         private InputList<Inputs.VerificationTemplateMetricProviderWebWebHeaderGetArgs>? _webHeaders;
+
+        /// <summary>
+        /// Optional HTTP headers to use in the request.
+        /// </summary>
         public InputList<Inputs.VerificationTemplateMetricProviderWebWebHeaderGetArgs> WebHeaders
         {
             get => _webHeaders ?? (_webHeaders = new InputList<Inputs.VerificationTemplateMetricProviderWebWebHeaderGetArgs>());

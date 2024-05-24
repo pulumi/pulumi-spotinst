@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var terraformPolicy = new Policy("terraformPolicy", PolicyArgs.builder()        
+ *         var terraformPolicy = new Policy("terraformPolicy", PolicyArgs.builder()
  *             .name("test-policy")
  *             .description("policy by terraform")
  *             .policyContents(PolicyPolicyContentArgs.builder()

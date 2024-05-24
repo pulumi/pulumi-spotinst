@@ -15,9 +15,17 @@ public final class StrategyCanaryStepPauseArgs extends com.pulumi.resources.Reso
 
     public static final StrategyCanaryStepPauseArgs Empty = new StrategyCanaryStepPauseArgs();
 
+    /**
+     * The amount of time to wait before moving to the next step.
+     * 
+     */
     @Import(name="duration")
     private @Nullable Output<String> duration;
 
+    /**
+     * @return The amount of time to wait before moving to the next step.
+     * 
+     */
     public Optional<Output<String>> duration() {
         return Optional.ofNullable(this.duration);
     }
@@ -46,11 +54,23 @@ public final class StrategyCanaryStepPauseArgs extends com.pulumi.resources.Reso
             $ = new StrategyCanaryStepPauseArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param duration The amount of time to wait before moving to the next step.
+         * 
+         * @return builder
+         * 
+         */
         public Builder duration(@Nullable Output<String> duration) {
             $.duration = duration;
             return this;
         }
 
+        /**
+         * @param duration The amount of time to wait before moving to the next step.
+         * 
+         * @return builder
+         * 
+         */
         public Builder duration(String duration) {
             return duration(Output.of(duration));
         }

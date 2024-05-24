@@ -12,17 +12,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class StrategyCanaryStepSetCanaryScale {
+    /**
+     * @return Defines whether a rollout should match the current canary&#39;s setWeight step.
+     * 
+     */
     private @Nullable Boolean matchTrafficWeight;
+    /**
+     * @return Sets the number of replicas the new version should have.
+     * 
+     */
     private @Nullable Integer replicas;
+    /**
+     * @return Sets the percentage of replicas the new version should have.
+     * 
+     */
     private @Nullable Integer weight;
 
     private StrategyCanaryStepSetCanaryScale() {}
+    /**
+     * @return Defines whether a rollout should match the current canary&#39;s setWeight step.
+     * 
+     */
     public Optional<Boolean> matchTrafficWeight() {
         return Optional.ofNullable(this.matchTrafficWeight);
     }
+    /**
+     * @return Sets the number of replicas the new version should have.
+     * 
+     */
     public Optional<Integer> replicas() {
         return Optional.ofNullable(this.replicas);
     }
+    /**
+     * @return Sets the percentage of replicas the new version should have.
+     * 
+     */
     public Optional<Integer> weight() {
         return Optional.ofNullable(this.weight);
     }

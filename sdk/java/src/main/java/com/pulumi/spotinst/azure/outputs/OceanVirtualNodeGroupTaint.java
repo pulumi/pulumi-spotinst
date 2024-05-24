@@ -10,10 +10,6 @@ import java.util.Objects;
 
 @CustomType
 public final class OceanVirtualNodeGroupTaint {
-    /**
-     * @return The effect of the taint. Valid values: `&#34;NoSchedule&#34;`, `&#34;PreferNoSchedule&#34;`, `&#34;NoExecute&#34;`, `&#34;PreferNoExecute&#34;`.
-     * 
-     */
     private String effect;
     /**
      * @return The taint key.
@@ -27,10 +23,6 @@ public final class OceanVirtualNodeGroupTaint {
     private String value;
 
     private OceanVirtualNodeGroupTaint() {}
-    /**
-     * @return The effect of the taint. Valid values: `&#34;NoSchedule&#34;`, `&#34;PreferNoSchedule&#34;`, `&#34;NoExecute&#34;`, `&#34;PreferNoExecute&#34;`.
-     * 
-     */
     public String effect() {
         return this.effect;
     }

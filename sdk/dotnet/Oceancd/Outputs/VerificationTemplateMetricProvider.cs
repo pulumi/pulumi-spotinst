@@ -13,12 +13,33 @@ namespace Pulumi.SpotInst.Oceancd.Outputs
     [OutputType]
     public sealed class VerificationTemplateMetricProvider
     {
+        /// <summary>
+        /// The CloudWatch provider.
+        /// </summary>
         public readonly Outputs.VerificationTemplateMetricProviderCloudWatch? CloudWatch;
+        /// <summary>
+        /// The datadog provider.
+        /// </summary>
         public readonly Outputs.VerificationTemplateMetricProviderDatadog? Datadog;
+        /// <summary>
+        /// The Jenkins provider. Default is "{$}"
+        /// </summary>
         public readonly Outputs.VerificationTemplateMetricProviderJenkins? Jenkins;
+        /// <summary>
+        /// The Job provider.
+        /// </summary>
         public readonly Outputs.VerificationTemplateMetricProviderJob? Job;
+        /// <summary>
+        /// The New Relic provider.
+        /// </summary>
         public readonly Outputs.VerificationTemplateMetricProviderNewRelic? NewRelic;
+        /// <summary>
+        /// The Prometheus provider.
+        /// </summary>
         public readonly Outputs.VerificationTemplateMetricProviderPrometheus? Prometheus;
+        /// <summary>
+        /// The Web provider.
+        /// </summary>
         public readonly Outputs.VerificationTemplateMetricProviderWeb? Web;
 
         [OutputConstructor]

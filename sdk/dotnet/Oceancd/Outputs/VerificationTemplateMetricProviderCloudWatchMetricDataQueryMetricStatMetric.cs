@@ -13,8 +13,17 @@ namespace Pulumi.SpotInst.Oceancd.Outputs
     [OutputType]
     public sealed class VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric
     {
+        /// <summary>
+        /// A dimension is a name/value pair that is part of the identity of a metric.You can assign upto 30 dimensions to a metric
+        /// </summary>
         public readonly ImmutableArray<Outputs.VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimension> Dimensions;
+        /// <summary>
+        /// The name of the metric.
+        /// </summary>
         public readonly string MetricName;
+        /// <summary>
+        /// The namespace of the metric.
+        /// </summary>
         public readonly string? Namespace;
 
         [OutputConstructor]

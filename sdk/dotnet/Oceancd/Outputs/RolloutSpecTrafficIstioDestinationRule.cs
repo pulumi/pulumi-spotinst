@@ -13,8 +13,17 @@ namespace Pulumi.SpotInst.Oceancd.Outputs
     [OutputType]
     public sealed class RolloutSpecTrafficIstioDestinationRule
     {
+        /// <summary>
+        /// The subset name to modify labels with the canary version.
+        /// </summary>
         public readonly string CanarySubsetName;
+        /// <summary>
+        /// Holds the name of the DestinationRule.
+        /// </summary>
         public readonly string DestinationRuleName;
+        /// <summary>
+        /// The subset name to modify labels with the stable version.
+        /// </summary>
         public readonly string StableSubsetName;
 
         [OutputConstructor]

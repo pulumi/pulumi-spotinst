@@ -13,6 +13,9 @@ namespace Pulumi.SpotInst.Oceancd.Outputs
     [OutputType]
     public sealed class VerificationTemplateMetricProviderJob
     {
+        /// <summary>
+        /// The job spec require to run the metric.
+        /// </summary>
         public readonly ImmutableArray<Outputs.VerificationTemplateMetricProviderJobSpec> Specs;
 
         [OutputConstructor]

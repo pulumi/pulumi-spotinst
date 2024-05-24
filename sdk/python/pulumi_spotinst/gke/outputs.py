@@ -2049,7 +2049,8 @@ class OceanLaunchSpecNetworkInterfaceAccessConfig(dict):
                  name: Optional[str] = None,
                  type: Optional[str] = None):
         """
-        :param str name: The launch specification name.
+        :param str name: The name of the access configuration.
+        :param str type: The type of the access configuration.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -2060,13 +2061,16 @@ class OceanLaunchSpecNetworkInterfaceAccessConfig(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The launch specification name.
+        The name of the access configuration.
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def type(self) -> Optional[str]:
+        """
+        The type of the access configuration.
+        """
         return pulumi.get(self, "type")
 
 
@@ -2094,17 +2098,31 @@ class OceanLaunchSpecNetworkInterfaceAliasIpRange(dict):
     def __init__(__self__, *,
                  ip_cidr_range: str,
                  subnetwork_range_name: str):
+        """
+        :param str ip_cidr_range: specify the IP address range in CIDR notation that can be used for the alias IP addresses associated with the imported node pool.
+        :param str subnetwork_range_name: specify the IP address range for the subnet secondary IP range.
+               
+               <a id="update-policy"></a>
+        """
         pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
         pulumi.set(__self__, "subnetwork_range_name", subnetwork_range_name)
 
     @property
     @pulumi.getter(name="ipCidrRange")
     def ip_cidr_range(self) -> str:
+        """
+        specify the IP address range in CIDR notation that can be used for the alias IP addresses associated with the imported node pool.
+        """
         return pulumi.get(self, "ip_cidr_range")
 
     @property
     @pulumi.getter(name="subnetworkRangeName")
     def subnetwork_range_name(self) -> str:
+        """
+        specify the IP address range for the subnet secondary IP range.
+
+        <a id="update-policy"></a>
+        """
         return pulumi.get(self, "subnetwork_range_name")
 
 
@@ -2263,6 +2281,12 @@ class OceanLaunchSpecSchedulingTaskTaskHeadroom(dict):
                  cpu_per_unit: Optional[int] = None,
                  gpu_per_unit: Optional[int] = None,
                  memory_per_unit: Optional[int] = None):
+        """
+        :param int num_of_units: The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+        :param int cpu_per_unit: Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        :param int gpu_per_unit: Optionally configure the number of GPUS to allocate for each headroom unit.
+        :param int memory_per_unit: Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
+        """
         pulumi.set(__self__, "num_of_units", num_of_units)
         if cpu_per_unit is not None:
             pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
@@ -2274,21 +2298,33 @@ class OceanLaunchSpecSchedulingTaskTaskHeadroom(dict):
     @property
     @pulumi.getter(name="numOfUnits")
     def num_of_units(self) -> int:
+        """
+        The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+        """
         return pulumi.get(self, "num_of_units")
 
     @property
     @pulumi.getter(name="cpuPerUnit")
     def cpu_per_unit(self) -> Optional[int]:
+        """
+        Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        """
         return pulumi.get(self, "cpu_per_unit")
 
     @property
     @pulumi.getter(name="gpuPerUnit")
     def gpu_per_unit(self) -> Optional[int]:
+        """
+        Optionally configure the number of GPUS to allocate for each headroom unit.
+        """
         return pulumi.get(self, "gpu_per_unit")
 
     @property
     @pulumi.getter(name="memoryPerUnit")
     def memory_per_unit(self) -> Optional[int]:
+        """
+        Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
+        """
         return pulumi.get(self, "memory_per_unit")
 
 

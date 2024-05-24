@@ -10,19 +10,27 @@ import java.util.Objects;
 
 @CustomType
 public final class VerificationTemplateArgValueFromSecretKeyRef {
+    /**
+     * @return The name of the field inside the secret.
+     * 
+     */
     private String key;
     /**
-     * @return Identifier name for Ocean CD Verification Template. Must be unique.
+     * @return The name of the secret.
      * 
      */
     private String name;
 
     private VerificationTemplateArgValueFromSecretKeyRef() {}
+    /**
+     * @return The name of the field inside the secret.
+     * 
+     */
     public String key() {
         return this.key;
     }
     /**
-     * @return Identifier name for Ocean CD Verification Template. Must be unique.
+     * @return The name of the secret.
      * 
      */
     public String name() {

@@ -12,12 +12,21 @@ namespace Pulumi.SpotInst.Oceancd.Inputs
 
     public sealed class RolloutSpecTrafficIstioDestinationRuleArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The subset name to modify labels with the canary version.
+        /// </summary>
         [Input("canarySubsetName", required: true)]
         public Input<string> CanarySubsetName { get; set; } = null!;
 
+        /// <summary>
+        /// Holds the name of the DestinationRule.
+        /// </summary>
         [Input("destinationRuleName", required: true)]
         public Input<string> DestinationRuleName { get; set; } = null!;
 
+        /// <summary>
+        /// The subset name to modify labels with the stable version.
+        /// </summary>
         [Input("stableSubsetName", required: true)]
         public Input<string> StableSubsetName { get; set; } = null!;
 

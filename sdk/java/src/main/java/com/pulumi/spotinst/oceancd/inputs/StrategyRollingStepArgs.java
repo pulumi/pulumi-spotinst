@@ -17,9 +17,17 @@ public final class StrategyRollingStepArgs extends com.pulumi.resources.Resource
 
     public static final StrategyRollingStepArgs Empty = new StrategyRollingStepArgs();
 
+    /**
+     * Defines the duration of time to freeze the rollout.
+     * 
+     */
     @Import(name="pause")
     private @Nullable Output<StrategyRollingStepPauseArgs> pause;
 
+    /**
+     * @return Defines the duration of time to freeze the rollout.
+     * 
+     */
     public Optional<Output<StrategyRollingStepPauseArgs>> pause() {
         return Optional.ofNullable(this.pause);
     }
@@ -31,9 +39,17 @@ public final class StrategyRollingStepArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.stepsName);
     }
 
+    /**
+     * Represents the list of verifications to run in a step.
+     * 
+     */
     @Import(name="verification")
     private @Nullable Output<StrategyRollingStepVerificationArgs> verification;
 
+    /**
+     * @return Represents the list of verifications to run in a step.
+     * 
+     */
     public Optional<Output<StrategyRollingStepVerificationArgs>> verification() {
         return Optional.ofNullable(this.verification);
     }
@@ -64,11 +80,23 @@ public final class StrategyRollingStepArgs extends com.pulumi.resources.Resource
             $ = new StrategyRollingStepArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param pause Defines the duration of time to freeze the rollout.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pause(@Nullable Output<StrategyRollingStepPauseArgs> pause) {
             $.pause = pause;
             return this;
         }
 
+        /**
+         * @param pause Defines the duration of time to freeze the rollout.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pause(StrategyRollingStepPauseArgs pause) {
             return pause(Output.of(pause));
         }
@@ -82,11 +110,23 @@ public final class StrategyRollingStepArgs extends com.pulumi.resources.Resource
             return stepsName(Output.of(stepsName));
         }
 
+        /**
+         * @param verification Represents the list of verifications to run in a step.
+         * 
+         * @return builder
+         * 
+         */
         public Builder verification(@Nullable Output<StrategyRollingStepVerificationArgs> verification) {
             $.verification = verification;
             return this;
         }
 
+        /**
+         * @param verification Represents the list of verifications to run in a step.
+         * 
+         * @return builder
+         * 
+         */
         public Builder verification(StrategyRollingStepVerificationArgs verification) {
             return verification(Output.of(verification));
         }

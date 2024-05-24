@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class RolloutSpecStrategyArgValueFromFieldRef {
+    /**
+     * @return Path to SpotDeployment&#39;s field from where to get the value of an argument.
+     * 
+     */
     private String fieldPath;
 
     private RolloutSpecStrategyArgValueFromFieldRef() {}
+    /**
+     * @return Path to SpotDeployment&#39;s field from where to get the value of an argument.
+     * 
+     */
     public String fieldPath() {
         return this.fieldPath;
     }

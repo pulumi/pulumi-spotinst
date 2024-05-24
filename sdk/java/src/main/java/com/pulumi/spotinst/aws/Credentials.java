@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // set credential AWS
- *         var credential = new Credentials("credential", CredentialsArgs.builder()        
+ *         var credential = new Credentials("credential", CredentialsArgs.builder()
  *             .iamrole("arn:aws:iam::1234567890:role/Spot_Iam_Role")
  *             .accountId("act-123456")
  *             .build());

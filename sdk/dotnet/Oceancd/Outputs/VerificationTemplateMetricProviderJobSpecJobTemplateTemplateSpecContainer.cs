@@ -13,8 +13,17 @@ namespace Pulumi.SpotInst.Oceancd.Outputs
     [OutputType]
     public sealed class VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainer
     {
+        /// <summary>
+        /// The entry point of a container.
+        /// </summary>
         public readonly ImmutableArray<string> Commands;
+        /// <summary>
+        /// The name of a container.
+        /// </summary>
         public readonly string ContainerName;
+        /// <summary>
+        /// The image name of a container.
+        /// </summary>
         public readonly string Image;
 
         [OutputConstructor]

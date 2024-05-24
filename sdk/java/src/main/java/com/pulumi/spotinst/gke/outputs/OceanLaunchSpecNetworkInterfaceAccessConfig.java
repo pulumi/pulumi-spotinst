@@ -12,20 +12,28 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OceanLaunchSpecNetworkInterfaceAccessConfig {
     /**
-     * @return The launch specification name.
+     * @return The name of the access configuration.
      * 
      */
     private @Nullable String name;
+    /**
+     * @return The type of the access configuration.
+     * 
+     */
     private @Nullable String type;
 
     private OceanLaunchSpecNetworkInterfaceAccessConfig() {}
     /**
-     * @return The launch specification name.
+     * @return The name of the access configuration.
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return The type of the access configuration.
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }

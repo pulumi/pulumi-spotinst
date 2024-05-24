@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class VerificationTemplateArgValueFrom {
+    /**
+     * @return Secret key to use.
+     * 
+     */
     private @Nullable VerificationTemplateArgValueFromSecretKeyRef secretKeyRef;
 
     private VerificationTemplateArgValueFrom() {}
+    /**
+     * @return Secret key to use.
+     * 
+     */
     public Optional<VerificationTemplateArgValueFromSecretKeyRef> secretKeyRef() {
         return Optional.ofNullable(this.secretKeyRef);
     }

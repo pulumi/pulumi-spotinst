@@ -15,23 +15,47 @@ public final class BeanstalkManagedActionsPlatformUpdateArgs extends com.pulumi.
 
     public static final BeanstalkManagedActionsPlatformUpdateArgs Empty = new BeanstalkManagedActionsPlatformUpdateArgs();
 
+    /**
+     * Actions to perform (options: timeWindow, never)
+     * 
+     */
     @Import(name="performAt")
     private @Nullable Output<String> performAt;
 
+    /**
+     * @return Actions to perform (options: timeWindow, never)
+     * 
+     */
     public Optional<Output<String>> performAt() {
         return Optional.ofNullable(this.performAt);
     }
 
+    /**
+     * Time Window for when action occurs ex. Mon:23:50-Tue:00:20
+     * 
+     */
     @Import(name="timeWindow")
     private @Nullable Output<String> timeWindow;
 
+    /**
+     * @return Time Window for when action occurs ex. Mon:23:50-Tue:00:20
+     * 
+     */
     public Optional<Output<String>> timeWindow() {
         return Optional.ofNullable(this.timeWindow);
     }
 
+    /**
+     * Level to update
+     * 
+     */
     @Import(name="updateLevel")
     private @Nullable Output<String> updateLevel;
 
+    /**
+     * @return Level to update
+     * 
+     */
     public Optional<Output<String>> updateLevel() {
         return Optional.ofNullable(this.updateLevel);
     }
@@ -62,29 +86,65 @@ public final class BeanstalkManagedActionsPlatformUpdateArgs extends com.pulumi.
             $ = new BeanstalkManagedActionsPlatformUpdateArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param performAt Actions to perform (options: timeWindow, never)
+         * 
+         * @return builder
+         * 
+         */
         public Builder performAt(@Nullable Output<String> performAt) {
             $.performAt = performAt;
             return this;
         }
 
+        /**
+         * @param performAt Actions to perform (options: timeWindow, never)
+         * 
+         * @return builder
+         * 
+         */
         public Builder performAt(String performAt) {
             return performAt(Output.of(performAt));
         }
 
+        /**
+         * @param timeWindow Time Window for when action occurs ex. Mon:23:50-Tue:00:20
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeWindow(@Nullable Output<String> timeWindow) {
             $.timeWindow = timeWindow;
             return this;
         }
 
+        /**
+         * @param timeWindow Time Window for when action occurs ex. Mon:23:50-Tue:00:20
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeWindow(String timeWindow) {
             return timeWindow(Output.of(timeWindow));
         }
 
+        /**
+         * @param updateLevel Level to update
+         * 
+         * @return builder
+         * 
+         */
         public Builder updateLevel(@Nullable Output<String> updateLevel) {
             $.updateLevel = updateLevel;
             return this;
         }
 
+        /**
+         * @param updateLevel Level to update
+         * 
+         * @return builder
+         * 
+         */
         public Builder updateLevel(String updateLevel) {
             return updateLevel(Output.of(updateLevel));
         }

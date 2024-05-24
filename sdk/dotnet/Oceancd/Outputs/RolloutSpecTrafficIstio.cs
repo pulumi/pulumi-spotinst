@@ -13,7 +13,13 @@ namespace Pulumi.SpotInst.Oceancd.Outputs
     [OutputType]
     public sealed class RolloutSpecTrafficIstio
     {
+        /// <summary>
+        /// It references to an Istio DestinationRule to modify and shape traffic. `DestinationRule` field belongs only to the Subset Level approach.
+        /// </summary>
         public readonly Outputs.RolloutSpecTrafficIstioDestinationRule? DestinationRule;
+        /// <summary>
+        /// Defines a set of traffic routing rules to apply when a host is addressed.
+        /// </summary>
         public readonly ImmutableArray<Outputs.RolloutSpecTrafficIstioVirtualService> VirtualServices;
 
         [OutputConstructor]

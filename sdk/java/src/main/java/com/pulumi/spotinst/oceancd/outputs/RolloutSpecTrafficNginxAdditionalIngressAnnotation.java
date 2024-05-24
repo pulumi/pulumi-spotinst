@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RolloutSpecTrafficNginxAdditionalIngressAnnotation {
+    /**
+     * @return Allows customizing the header value instead of using hardcoded values.
+     * 
+     */
     private @Nullable String canaryByHeader;
+    /**
+     * @return Any of supported annotations.
+     * 
+     */
     private @Nullable String key1;
 
     private RolloutSpecTrafficNginxAdditionalIngressAnnotation() {}
+    /**
+     * @return Allows customizing the header value instead of using hardcoded values.
+     * 
+     */
     public Optional<String> canaryByHeader() {
         return Optional.ofNullable(this.canaryByHeader);
     }
+    /**
+     * @return Any of supported annotations.
+     * 
+     */
     public Optional<String> key1() {
         return Optional.ofNullable(this.key1);
     }

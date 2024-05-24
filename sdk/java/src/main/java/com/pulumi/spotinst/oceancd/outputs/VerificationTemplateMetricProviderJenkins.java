@@ -14,25 +14,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class VerificationTemplateMetricProviderJenkins {
+    /**
+     * @return The interval time to poll status.
+     * 
+     */
     private String jenkinsInterval;
+    /**
+     * @return List of parameters.
+     * 
+     */
     private @Nullable VerificationTemplateMetricProviderJenkinsJenkinsParameters jenkinsParameters;
+    /**
+     * @return The Jenkins pipeline name.
+     * 
+     */
     private String pipelineName;
+    /**
+     * @return The total jenkins timeout.
+     * 
+     */
     private String timeout;
+    /**
+     * @return Host TLS verification.
+     * 
+     */
     private @Nullable Boolean tlsVerification;
 
     private VerificationTemplateMetricProviderJenkins() {}
+    /**
+     * @return The interval time to poll status.
+     * 
+     */
     public String jenkinsInterval() {
         return this.jenkinsInterval;
     }
+    /**
+     * @return List of parameters.
+     * 
+     */
     public Optional<VerificationTemplateMetricProviderJenkinsJenkinsParameters> jenkinsParameters() {
         return Optional.ofNullable(this.jenkinsParameters);
     }
+    /**
+     * @return The Jenkins pipeline name.
+     * 
+     */
     public String pipelineName() {
         return this.pipelineName;
     }
+    /**
+     * @return The total jenkins timeout.
+     * 
+     */
     public String timeout() {
         return this.timeout;
     }
+    /**
+     * @return Host TLS verification.
+     * 
+     */
     public Optional<Boolean> tlsVerification() {
         return Optional.ofNullable(this.tlsVerification);
     }

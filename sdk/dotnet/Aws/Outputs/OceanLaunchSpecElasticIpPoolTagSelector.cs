@@ -13,7 +13,13 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class OceanLaunchSpecElasticIpPoolTagSelector
     {
+        /// <summary>
+        /// Elastic IP tag key. The Virtual Node Group will consider all Elastic IPs tagged with this tag as a part of the Elastic IP pool to use.
+        /// </summary>
         public readonly string TagKey;
+        /// <summary>
+        /// Elastic IP tag value. Can be null.
+        /// </summary>
         public readonly string? TagValue;
 
         [OutputConstructor]

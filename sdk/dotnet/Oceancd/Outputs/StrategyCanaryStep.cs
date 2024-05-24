@@ -13,11 +13,26 @@ namespace Pulumi.SpotInst.Oceancd.Outputs
     [OutputType]
     public sealed class StrategyCanaryStep
     {
+        /// <summary>
+        /// Defines the duration of time to freeze the rollout.
+        /// </summary>
         public readonly Outputs.StrategyCanaryStepPause? Pause;
+        /// <summary>
+        /// Defines how to scale the version without traffic weight changing.
+        /// </summary>
         public readonly Outputs.StrategyCanaryStepSetCanaryScale? SetCanaryScale;
+        /// <summary>
+        /// Defines the list of HeaderRoutes to add to the Rollout.
+        /// </summary>
         public readonly Outputs.StrategyCanaryStepSetHeaderRoute? SetHeaderRoute;
+        /// <summary>
+        /// Defines the percentage that the new version should receive.
+        /// </summary>
         public readonly int? SetWeight;
         public readonly string? StepName;
+        /// <summary>
+        /// Represents the list of verifications to run in a step.
+        /// </summary>
         public readonly Outputs.StrategyCanaryStepVerification? Verification;
 
         [OutputConstructor]

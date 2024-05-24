@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class OceanLoggingExportS3 {
     /**
-     * @return The Spotinst Ocean ID.
+     * @return The identifier of The S3 data integration to export the logs to.
      * 
      */
     private String id;
 
     private OceanLoggingExportS3() {}
     /**
-     * @return The Spotinst Ocean ID.
+     * @return The identifier of The S3 data integration to export the logs to.
      * 
      */
     public String id() {

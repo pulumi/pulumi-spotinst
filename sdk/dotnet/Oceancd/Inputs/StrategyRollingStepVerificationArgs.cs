@@ -14,6 +14,10 @@ namespace Pulumi.SpotInst.Oceancd.Inputs
     {
         [Input("templateNames", required: true)]
         private InputList<string>? _templateNames;
+
+        /// <summary>
+        /// List of Verification Template names.
+        /// </summary>
         public InputList<string> TemplateNames
         {
             get => _templateNames ?? (_templateNames = new InputList<string>());

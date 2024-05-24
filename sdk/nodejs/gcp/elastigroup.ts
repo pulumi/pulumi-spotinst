@@ -167,6 +167,7 @@ export class Elastigroup extends pulumi.CustomResource {
     public readonly instanceNamePrefix!: pulumi.Output<string | undefined>;
     /**
      * Defines a set of custom instance types. Required if instanceTypesPreemptible and instanceTypesOndemand are not set.
+     * * `vCPU` - (Optional) The number of vCPUs in the custom instance type. GCP has a number of limitations on accepted vCPU values. For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
      */
     public readonly instanceTypesCustoms!: pulumi.Output<outputs.gcp.ElastigroupInstanceTypesCustom[] | undefined>;
     /**
@@ -371,6 +372,7 @@ export interface ElastigroupState {
     instanceNamePrefix?: pulumi.Input<string>;
     /**
      * Defines a set of custom instance types. Required if instanceTypesPreemptible and instanceTypesOndemand are not set.
+     * * `vCPU` - (Optional) The number of vCPUs in the custom instance type. GCP has a number of limitations on accepted vCPU values. For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
      */
     instanceTypesCustoms?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupInstanceTypesCustom>[]>;
     /**
@@ -480,6 +482,7 @@ export interface ElastigroupArgs {
     instanceNamePrefix?: pulumi.Input<string>;
     /**
      * Defines a set of custom instance types. Required if instanceTypesPreemptible and instanceTypesOndemand are not set.
+     * * `vCPU` - (Optional) The number of vCPUs in the custom instance type. GCP has a number of limitations on accepted vCPU values. For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
      */
     instanceTypesCustoms?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupInstanceTypesCustom>[]>;
     /**

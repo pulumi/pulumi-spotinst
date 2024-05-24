@@ -49,6 +49,7 @@ type DataIntegration struct {
 	// The name of the data integration.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// When vendor value is s3, the following fields are included:
+	// * `bucketName` - (Required) The name of the bucket to use. Your spot IAM Role policy needs to include s3:putObject permissions for this bucket. Can't be null.
 	S3 DataIntegrationS3PtrOutput `pulumi:"s3"`
 	// Determines if this data integration is on or off. Valid values: `"enabled"`, `"disabled"`
 	Status pulumi.StringPtrOutput `pulumi:"status"`
@@ -87,6 +88,7 @@ type dataIntegrationState struct {
 	// The name of the data integration.
 	Name *string `pulumi:"name"`
 	// When vendor value is s3, the following fields are included:
+	// * `bucketName` - (Required) The name of the bucket to use. Your spot IAM Role policy needs to include s3:putObject permissions for this bucket. Can't be null.
 	S3 *DataIntegrationS3 `pulumi:"s3"`
 	// Determines if this data integration is on or off. Valid values: `"enabled"`, `"disabled"`
 	Status *string `pulumi:"status"`
@@ -96,6 +98,7 @@ type DataIntegrationState struct {
 	// The name of the data integration.
 	Name pulumi.StringPtrInput
 	// When vendor value is s3, the following fields are included:
+	// * `bucketName` - (Required) The name of the bucket to use. Your spot IAM Role policy needs to include s3:putObject permissions for this bucket. Can't be null.
 	S3 DataIntegrationS3PtrInput
 	// Determines if this data integration is on or off. Valid values: `"enabled"`, `"disabled"`
 	Status pulumi.StringPtrInput
@@ -109,6 +112,7 @@ type dataIntegrationArgs struct {
 	// The name of the data integration.
 	Name *string `pulumi:"name"`
 	// When vendor value is s3, the following fields are included:
+	// * `bucketName` - (Required) The name of the bucket to use. Your spot IAM Role policy needs to include s3:putObject permissions for this bucket. Can't be null.
 	S3 *DataIntegrationS3 `pulumi:"s3"`
 	// Determines if this data integration is on or off. Valid values: `"enabled"`, `"disabled"`
 	Status *string `pulumi:"status"`
@@ -119,6 +123,7 @@ type DataIntegrationArgs struct {
 	// The name of the data integration.
 	Name pulumi.StringPtrInput
 	// When vendor value is s3, the following fields are included:
+	// * `bucketName` - (Required) The name of the bucket to use. Your spot IAM Role policy needs to include s3:putObject permissions for this bucket. Can't be null.
 	S3 DataIntegrationS3PtrInput
 	// Determines if this data integration is on or off. Valid values: `"enabled"`, `"disabled"`
 	Status pulumi.StringPtrInput
@@ -217,6 +222,7 @@ func (o DataIntegrationOutput) Name() pulumi.StringOutput {
 }
 
 // When vendor value is s3, the following fields are included:
+// * `bucketName` - (Required) The name of the bucket to use. Your spot IAM Role policy needs to include s3:putObject permissions for this bucket. Can't be null.
 func (o DataIntegrationOutput) S3() DataIntegrationS3PtrOutput {
 	return o.ApplyT(func(v *DataIntegration) DataIntegrationS3PtrOutput { return v.S3 }).(DataIntegrationS3PtrOutput)
 }
