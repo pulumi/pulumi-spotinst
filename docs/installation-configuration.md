@@ -4,4 +4,4 @@ meta_desc: Provides an overview on how to configure credentials for the Pulumi S
 layout: package
 ---
 
-I am an installation file! I'm local though.
+I am an installation file!
