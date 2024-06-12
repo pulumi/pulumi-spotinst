@@ -30,6 +30,9 @@ namespace Pulumi.SpotInst.Inputs
         [Input("publicIpTtlInHours")]
         public Input<int>? PublicIpTtlInHours { get; set; }
 
+        [Input("shouldDeregisterFromLb")]
+        public Input<bool>? ShouldDeregisterFromLb { get; set; }
+
         [Input("shouldTerminateVm", required: true)]
         public Input<bool> ShouldTerminateVm { get; set; } = null!;
 

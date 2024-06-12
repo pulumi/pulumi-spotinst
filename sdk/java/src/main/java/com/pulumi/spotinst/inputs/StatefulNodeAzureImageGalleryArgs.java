@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class StatefulNodeAzureImageGalleryArgs extends com.pulumi.resources.ResourceArgs {
@@ -35,6 +37,13 @@ public final class StatefulNodeAzureImageGalleryArgs extends com.pulumi.resource
         return this.imageName;
     }
 
+    @Import(name="spotAccountId")
+    private @Nullable Output<String> spotAccountId;
+
+    public Optional<Output<String>> spotAccountId() {
+        return Optional.ofNullable(this.spotAccountId);
+    }
+
     @Import(name="versionName", required=true)
     private Output<String> versionName;
 
@@ -48,6 +57,7 @@ public final class StatefulNodeAzureImageGalleryArgs extends com.pulumi.resource
         this.galleryName = $.galleryName;
         this.galleryResourceGroupName = $.galleryResourceGroupName;
         this.imageName = $.imageName;
+        this.spotAccountId = $.spotAccountId;
         this.versionName = $.versionName;
     }
 
@@ -94,6 +104,15 @@ public final class StatefulNodeAzureImageGalleryArgs extends com.pulumi.resource
 
         public Builder imageName(String imageName) {
             return imageName(Output.of(imageName));
+        }
+
+        public Builder spotAccountId(@Nullable Output<String> spotAccountId) {
+            $.spotAccountId = spotAccountId;
+            return this;
+        }
+
+        public Builder spotAccountId(String spotAccountId) {
+            return spotAccountId(Output.of(spotAccountId));
         }
 
         public Builder versionName(Output<String> versionName) {

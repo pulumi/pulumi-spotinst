@@ -169,6 +169,7 @@ import javax.annotation.Nullable;
  *                     .galleryName("galleryName")
  *                     .imageName("imageName")
  *                     .versionName("1.1.0")
+ *                     .spotAccountId("act-123456")
  *                     .build())
  *                 .build())
  *             .loadBalancers(StatefulNodeAzureLoadBalancerArgs.builder()
@@ -290,6 +291,7 @@ import javax.annotation.Nullable;
  *                 .snapshotTtlInHours(0)
  *                 .publicIpShouldDeallocate(true)
  *                 .publicIpTtlInHours(0)
+ *                 .shouldDeregisterFromLb(true)
  *                 .build())
  *             .build());
  * 
@@ -387,6 +389,7 @@ import javax.annotation.Nullable;
  *     * `gallery_name` - (Required) Name of the gallery.
  *     * `image_name` - (Required) Name of the gallery image.
  *     * `version_name` - (Required) Image&#39;s version. Can be in the format x.x.x or &#39;latest&#39;.
+ *     * `spot_account_id` - (Optional) The Spot account ID that connected to the Azure subscription to which the gallery belongs. Relevant only in case of cross-subscription shared galleries. [Read more](https://docs.spot.io/elastigroup/features-azure/shared-image-galleries) about cross-subscription shared galleries in Elastigroup.
  *   * `custom_image` - (Optional) Custom image definitions. Required if marketplace image or gallery image are not specified.
  *     * `custom_image_resource_group_name` - (Required) The resource group name for custom image.
  *     * `name` - (Required) The name of the custom image.
@@ -571,6 +574,7 @@ import javax.annotation.Nullable;
  *     * `snapshot_ttl_in_hours` - (Optional, Default: 96) Hours to keep the snapshots alive before deletion.
  *     * `public_ip_should_deallocate` - (Required) Indicates whether to delete the stateful node&#39;s public ip resources.
  *     * `public_ip_ttl_in_hours` - (Optional, Default: 96) Hours to keep the public ip alive before deletion.
+ *     * `should_deregister_from_lb` - (Optional, Default: true) Indicates whether to deregister the stateful node&#39;s VM from any type of load balancer. Can be changed to false only when shouldTerminateVms is &#39;false&#39;.
  * 
  */
 @ResourceType(type="spotinst:index/statefulNodeAzure:StatefulNodeAzure")

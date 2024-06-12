@@ -125,6 +125,7 @@ export interface StatefulNodeAzureDelete {
     networkTtlInHours?: pulumi.Input<number>;
     publicIpShouldDeallocate: pulumi.Input<boolean>;
     publicIpTtlInHours?: pulumi.Input<number>;
+    shouldDeregisterFromLb?: pulumi.Input<boolean>;
     shouldTerminateVm: pulumi.Input<boolean>;
     snapshotShouldDeallocate: pulumi.Input<boolean>;
     snapshotTtlInHours?: pulumi.Input<number>;
@@ -169,6 +170,7 @@ export interface StatefulNodeAzureImageGallery {
     galleryName: pulumi.Input<string>;
     galleryResourceGroupName: pulumi.Input<string>;
     imageName: pulumi.Input<string>;
+    spotAccountId?: pulumi.Input<string>;
     versionName: pulumi.Input<string>;
 }
 

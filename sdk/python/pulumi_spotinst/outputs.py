@@ -781,6 +781,8 @@ class StatefulNodeAzureDelete(dict):
             suggest = "network_ttl_in_hours"
         elif key == "publicIpTtlInHours":
             suggest = "public_ip_ttl_in_hours"
+        elif key == "shouldDeregisterFromLb":
+            suggest = "should_deregister_from_lb"
         elif key == "snapshotTtlInHours":
             suggest = "snapshot_ttl_in_hours"
 
@@ -804,6 +806,7 @@ class StatefulNodeAzureDelete(dict):
                  disk_ttl_in_hours: Optional[int] = None,
                  network_ttl_in_hours: Optional[int] = None,
                  public_ip_ttl_in_hours: Optional[int] = None,
+                 should_deregister_from_lb: Optional[bool] = None,
                  snapshot_ttl_in_hours: Optional[int] = None):
         pulumi.set(__self__, "disk_should_deallocate", disk_should_deallocate)
         pulumi.set(__self__, "network_should_deallocate", network_should_deallocate)
@@ -816,6 +819,8 @@ class StatefulNodeAzureDelete(dict):
             pulumi.set(__self__, "network_ttl_in_hours", network_ttl_in_hours)
         if public_ip_ttl_in_hours is not None:
             pulumi.set(__self__, "public_ip_ttl_in_hours", public_ip_ttl_in_hours)
+        if should_deregister_from_lb is not None:
+            pulumi.set(__self__, "should_deregister_from_lb", should_deregister_from_lb)
         if snapshot_ttl_in_hours is not None:
             pulumi.set(__self__, "snapshot_ttl_in_hours", snapshot_ttl_in_hours)
 
@@ -858,6 +863,11 @@ class StatefulNodeAzureDelete(dict):
     @pulumi.getter(name="publicIpTtlInHours")
     def public_ip_ttl_in_hours(self) -> Optional[int]:
         return pulumi.get(self, "public_ip_ttl_in_hours")
+
+    @property
+    @pulumi.getter(name="shouldDeregisterFromLb")
+    def should_deregister_from_lb(self) -> Optional[bool]:
+        return pulumi.get(self, "should_deregister_from_lb")
 
     @property
     @pulumi.getter(name="snapshotTtlInHours")
@@ -1156,6 +1166,8 @@ class StatefulNodeAzureImageGallery(dict):
             suggest = "image_name"
         elif key == "versionName":
             suggest = "version_name"
+        elif key == "spotAccountId":
+            suggest = "spot_account_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in StatefulNodeAzureImageGallery. Access the value via the '{suggest}' property getter instead.")
@@ -1172,11 +1184,14 @@ class StatefulNodeAzureImageGallery(dict):
                  gallery_name: str,
                  gallery_resource_group_name: str,
                  image_name: str,
-                 version_name: str):
+                 version_name: str,
+                 spot_account_id: Optional[str] = None):
         pulumi.set(__self__, "gallery_name", gallery_name)
         pulumi.set(__self__, "gallery_resource_group_name", gallery_resource_group_name)
         pulumi.set(__self__, "image_name", image_name)
         pulumi.set(__self__, "version_name", version_name)
+        if spot_account_id is not None:
+            pulumi.set(__self__, "spot_account_id", spot_account_id)
 
     @property
     @pulumi.getter(name="galleryName")
@@ -1197,6 +1212,11 @@ class StatefulNodeAzureImageGallery(dict):
     @pulumi.getter(name="versionName")
     def version_name(self) -> str:
         return pulumi.get(self, "version_name")
+
+    @property
+    @pulumi.getter(name="spotAccountId")
+    def spot_account_id(self) -> Optional[str]:
+        return pulumi.get(self, "spot_account_id")
 
 
 @pulumi.output_type

@@ -1939,15 +1939,16 @@ func (o StatefulNodeAzureDataDiskArrayOutput) Index(i pulumi.IntInput) StatefulN
 }
 
 type StatefulNodeAzureDelete struct {
-	DiskShouldDeallocate     bool `pulumi:"diskShouldDeallocate"`
-	DiskTtlInHours           *int `pulumi:"diskTtlInHours"`
-	NetworkShouldDeallocate  bool `pulumi:"networkShouldDeallocate"`
-	NetworkTtlInHours        *int `pulumi:"networkTtlInHours"`
-	PublicIpShouldDeallocate bool `pulumi:"publicIpShouldDeallocate"`
-	PublicIpTtlInHours       *int `pulumi:"publicIpTtlInHours"`
-	ShouldTerminateVm        bool `pulumi:"shouldTerminateVm"`
-	SnapshotShouldDeallocate bool `pulumi:"snapshotShouldDeallocate"`
-	SnapshotTtlInHours       *int `pulumi:"snapshotTtlInHours"`
+	DiskShouldDeallocate     bool  `pulumi:"diskShouldDeallocate"`
+	DiskTtlInHours           *int  `pulumi:"diskTtlInHours"`
+	NetworkShouldDeallocate  bool  `pulumi:"networkShouldDeallocate"`
+	NetworkTtlInHours        *int  `pulumi:"networkTtlInHours"`
+	PublicIpShouldDeallocate bool  `pulumi:"publicIpShouldDeallocate"`
+	PublicIpTtlInHours       *int  `pulumi:"publicIpTtlInHours"`
+	ShouldDeregisterFromLb   *bool `pulumi:"shouldDeregisterFromLb"`
+	ShouldTerminateVm        bool  `pulumi:"shouldTerminateVm"`
+	SnapshotShouldDeallocate bool  `pulumi:"snapshotShouldDeallocate"`
+	SnapshotTtlInHours       *int  `pulumi:"snapshotTtlInHours"`
 }
 
 // StatefulNodeAzureDeleteInput is an input type that accepts StatefulNodeAzureDeleteArgs and StatefulNodeAzureDeleteOutput values.
@@ -1962,15 +1963,16 @@ type StatefulNodeAzureDeleteInput interface {
 }
 
 type StatefulNodeAzureDeleteArgs struct {
-	DiskShouldDeallocate     pulumi.BoolInput   `pulumi:"diskShouldDeallocate"`
-	DiskTtlInHours           pulumi.IntPtrInput `pulumi:"diskTtlInHours"`
-	NetworkShouldDeallocate  pulumi.BoolInput   `pulumi:"networkShouldDeallocate"`
-	NetworkTtlInHours        pulumi.IntPtrInput `pulumi:"networkTtlInHours"`
-	PublicIpShouldDeallocate pulumi.BoolInput   `pulumi:"publicIpShouldDeallocate"`
-	PublicIpTtlInHours       pulumi.IntPtrInput `pulumi:"publicIpTtlInHours"`
-	ShouldTerminateVm        pulumi.BoolInput   `pulumi:"shouldTerminateVm"`
-	SnapshotShouldDeallocate pulumi.BoolInput   `pulumi:"snapshotShouldDeallocate"`
-	SnapshotTtlInHours       pulumi.IntPtrInput `pulumi:"snapshotTtlInHours"`
+	DiskShouldDeallocate     pulumi.BoolInput    `pulumi:"diskShouldDeallocate"`
+	DiskTtlInHours           pulumi.IntPtrInput  `pulumi:"diskTtlInHours"`
+	NetworkShouldDeallocate  pulumi.BoolInput    `pulumi:"networkShouldDeallocate"`
+	NetworkTtlInHours        pulumi.IntPtrInput  `pulumi:"networkTtlInHours"`
+	PublicIpShouldDeallocate pulumi.BoolInput    `pulumi:"publicIpShouldDeallocate"`
+	PublicIpTtlInHours       pulumi.IntPtrInput  `pulumi:"publicIpTtlInHours"`
+	ShouldDeregisterFromLb   pulumi.BoolPtrInput `pulumi:"shouldDeregisterFromLb"`
+	ShouldTerminateVm        pulumi.BoolInput    `pulumi:"shouldTerminateVm"`
+	SnapshotShouldDeallocate pulumi.BoolInput    `pulumi:"snapshotShouldDeallocate"`
+	SnapshotTtlInHours       pulumi.IntPtrInput  `pulumi:"snapshotTtlInHours"`
 }
 
 func (StatefulNodeAzureDeleteArgs) ElementType() reflect.Type {
@@ -2046,6 +2048,10 @@ func (o StatefulNodeAzureDeleteOutput) PublicIpShouldDeallocate() pulumi.BoolOut
 
 func (o StatefulNodeAzureDeleteOutput) PublicIpTtlInHours() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StatefulNodeAzureDelete) *int { return v.PublicIpTtlInHours }).(pulumi.IntPtrOutput)
+}
+
+func (o StatefulNodeAzureDeleteOutput) ShouldDeregisterFromLb() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureDelete) *bool { return v.ShouldDeregisterFromLb }).(pulumi.BoolPtrOutput)
 }
 
 func (o StatefulNodeAzureDeleteOutput) ShouldTerminateVm() pulumi.BoolOutput {
@@ -2764,10 +2770,11 @@ func (o StatefulNodeAzureImageCustomImageArrayOutput) Index(i pulumi.IntInput) S
 }
 
 type StatefulNodeAzureImageGallery struct {
-	GalleryName              string `pulumi:"galleryName"`
-	GalleryResourceGroupName string `pulumi:"galleryResourceGroupName"`
-	ImageName                string `pulumi:"imageName"`
-	VersionName              string `pulumi:"versionName"`
+	GalleryName              string  `pulumi:"galleryName"`
+	GalleryResourceGroupName string  `pulumi:"galleryResourceGroupName"`
+	ImageName                string  `pulumi:"imageName"`
+	SpotAccountId            *string `pulumi:"spotAccountId"`
+	VersionName              string  `pulumi:"versionName"`
 }
 
 // StatefulNodeAzureImageGalleryInput is an input type that accepts StatefulNodeAzureImageGalleryArgs and StatefulNodeAzureImageGalleryOutput values.
@@ -2782,10 +2789,11 @@ type StatefulNodeAzureImageGalleryInput interface {
 }
 
 type StatefulNodeAzureImageGalleryArgs struct {
-	GalleryName              pulumi.StringInput `pulumi:"galleryName"`
-	GalleryResourceGroupName pulumi.StringInput `pulumi:"galleryResourceGroupName"`
-	ImageName                pulumi.StringInput `pulumi:"imageName"`
-	VersionName              pulumi.StringInput `pulumi:"versionName"`
+	GalleryName              pulumi.StringInput    `pulumi:"galleryName"`
+	GalleryResourceGroupName pulumi.StringInput    `pulumi:"galleryResourceGroupName"`
+	ImageName                pulumi.StringInput    `pulumi:"imageName"`
+	SpotAccountId            pulumi.StringPtrInput `pulumi:"spotAccountId"`
+	VersionName              pulumi.StringInput    `pulumi:"versionName"`
 }
 
 func (StatefulNodeAzureImageGalleryArgs) ElementType() reflect.Type {
@@ -2849,6 +2857,10 @@ func (o StatefulNodeAzureImageGalleryOutput) GalleryResourceGroupName() pulumi.S
 
 func (o StatefulNodeAzureImageGalleryOutput) ImageName() pulumi.StringOutput {
 	return o.ApplyT(func(v StatefulNodeAzureImageGallery) string { return v.ImageName }).(pulumi.StringOutput)
+}
+
+func (o StatefulNodeAzureImageGalleryOutput) SpotAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureImageGallery) *string { return v.SpotAccountId }).(pulumi.StringPtrOutput)
 }
 
 func (o StatefulNodeAzureImageGalleryOutput) VersionName() pulumi.StringOutput {

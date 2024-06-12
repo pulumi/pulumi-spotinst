@@ -19,6 +19,7 @@ namespace Pulumi.SpotInst.Outputs
         public readonly int? NetworkTtlInHours;
         public readonly bool PublicIpShouldDeallocate;
         public readonly int? PublicIpTtlInHours;
+        public readonly bool? ShouldDeregisterFromLb;
         public readonly bool ShouldTerminateVm;
         public readonly bool SnapshotShouldDeallocate;
         public readonly int? SnapshotTtlInHours;
@@ -37,6 +38,8 @@ namespace Pulumi.SpotInst.Outputs
 
             int? publicIpTtlInHours,
 
+            bool? shouldDeregisterFromLb,
+
             bool shouldTerminateVm,
 
             bool snapshotShouldDeallocate,
@@ -49,6 +52,7 @@ namespace Pulumi.SpotInst.Outputs
             NetworkTtlInHours = networkTtlInHours;
             PublicIpShouldDeallocate = publicIpShouldDeallocate;
             PublicIpTtlInHours = publicIpTtlInHours;
+            ShouldDeregisterFromLb = shouldDeregisterFromLb;
             ShouldTerminateVm = shouldTerminateVm;
             SnapshotShouldDeallocate = snapshotShouldDeallocate;
             SnapshotTtlInHours = snapshotTtlInHours;
