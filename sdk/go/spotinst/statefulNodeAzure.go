@@ -141,6 +141,7 @@ import (
 //							GalleryName:              pulumi.String("galleryName"),
 //							ImageName:                pulumi.String("imageName"),
 //							VersionName:              pulumi.String("1.1.0"),
+//							SpotAccountId:            pulumi.String("act-123456"),
 //						},
 //					},
 //				},
@@ -295,6 +296,7 @@ import (
 //						SnapshotTtlInHours:       pulumi.Int(0),
 //						PublicIpShouldDeallocate: pulumi.Bool(true),
 //						PublicIpTtlInHours:       pulumi.Int(0),
+//						ShouldDeregisterFromLb:   pulumi.Bool(true),
 //					},
 //				},
 //			})
@@ -395,6 +397,7 @@ import (
 //   - `galleryName` - (Required) Name of the gallery.
 //   - `imageName` - (Required) Name of the gallery image.
 //   - `versionName` - (Required) Image's version. Can be in the format x.x.x or 'latest'.
+//   - `spotAccountId` - (Optional) The Spot account ID that connected to the Azure subscription to which the gallery belongs. Relevant only in case of cross-subscription shared galleries. [Read more](https://docs.spot.io/elastigroup/features-azure/shared-image-galleries) about cross-subscription shared galleries in Elastigroup.
 //   - `customImage` - (Optional) Custom image definitions. Required if marketplace image or gallery image are not specified.
 //   - `customImageResourceGroupName` - (Required) The resource group name for custom image.
 //   - `name` - (Required) The name of the custom image.
@@ -579,6 +582,7 @@ import (
 //   - `snapshotTtlInHours` - (Optional, Default: 96) Hours to keep the snapshots alive before deletion.
 //   - `publicIpShouldDeallocate` - (Required) Indicates whether to delete the stateful node's public ip resources.
 //   - `publicIpTtlInHours` - (Optional, Default: 96) Hours to keep the public ip alive before deletion.
+//   - `shouldDeregisterFromLb` - (Optional, Default: true) Indicates whether to deregister the stateful node's VM from any type of load balancer. Can be changed to false only when shouldTerminateVms is 'false'.
 type StatefulNodeAzure struct {
 	pulumi.CustomResourceState
 

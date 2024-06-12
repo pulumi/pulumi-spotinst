@@ -21,6 +21,9 @@ namespace Pulumi.SpotInst.Inputs
         [Input("imageName", required: true)]
         public Input<string> ImageName { get; set; } = null!;
 
+        [Input("spotAccountId")]
+        public Input<string>? SpotAccountId { get; set; }
+
         [Input("versionName", required: true)]
         public Input<string> VersionName { get; set; } = null!;
 

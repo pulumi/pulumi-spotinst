@@ -1227,6 +1227,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
                     gallery_name="galleryName",
                     image_name="imageName",
                     version_name="1.1.0",
+                    spot_account_id="act-123456",
                 )],
             ),
             load_balancers=[spotinst.StatefulNodeAzureLoadBalancerArgs(
@@ -1351,6 +1352,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
                 snapshot_ttl_in_hours=0,
                 public_ip_should_deallocate=True,
                 public_ip_ttl_in_hours=0,
+                should_deregister_from_lb=True,
             )])
         ```
 
@@ -1442,6 +1444,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
             * `gallery_name` - (Required) Name of the gallery.
             * `image_name` - (Required) Name of the gallery image.
             * `version_name` - (Required) Image's version. Can be in the format x.x.x or 'latest'.
+            * `spot_account_id` - (Optional) The Spot account ID that connected to the Azure subscription to which the gallery belongs. Relevant only in case of cross-subscription shared galleries. [Read more](https://docs.spot.io/elastigroup/features-azure/shared-image-galleries) about cross-subscription shared galleries in Elastigroup.
           * `custom_image` - (Optional) Custom image definitions. Required if marketplace image or gallery image are not specified.
             * `custom_image_resource_group_name` - (Required) The resource group name for custom image.
             * `name` - (Required) The name of the custom image.
@@ -1626,6 +1629,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
             * `snapshot_ttl_in_hours` - (Optional, Default: 96) Hours to keep the snapshots alive before deletion.
             * `public_ip_should_deallocate` - (Required) Indicates whether to delete the stateful node's public ip resources.
             * `public_ip_ttl_in_hours` - (Optional, Default: 96) Hours to keep the public ip alive before deletion.
+            * `should_deregister_from_lb` - (Optional, Default: true) Indicates whether to deregister the stateful node's VM from any type of load balancer. Can be changed to false only when shouldTerminateVms is 'false'.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1737,6 +1741,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
                     gallery_name="galleryName",
                     image_name="imageName",
                     version_name="1.1.0",
+                    spot_account_id="act-123456",
                 )],
             ),
             load_balancers=[spotinst.StatefulNodeAzureLoadBalancerArgs(
@@ -1861,6 +1866,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
                 snapshot_ttl_in_hours=0,
                 public_ip_should_deallocate=True,
                 public_ip_ttl_in_hours=0,
+                should_deregister_from_lb=True,
             )])
         ```
 
@@ -1952,6 +1958,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
             * `gallery_name` - (Required) Name of the gallery.
             * `image_name` - (Required) Name of the gallery image.
             * `version_name` - (Required) Image's version. Can be in the format x.x.x or 'latest'.
+            * `spot_account_id` - (Optional) The Spot account ID that connected to the Azure subscription to which the gallery belongs. Relevant only in case of cross-subscription shared galleries. [Read more](https://docs.spot.io/elastigroup/features-azure/shared-image-galleries) about cross-subscription shared galleries in Elastigroup.
           * `custom_image` - (Optional) Custom image definitions. Required if marketplace image or gallery image are not specified.
             * `custom_image_resource_group_name` - (Required) The resource group name for custom image.
             * `name` - (Required) The name of the custom image.
@@ -2136,6 +2143,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
             * `snapshot_ttl_in_hours` - (Optional, Default: 96) Hours to keep the snapshots alive before deletion.
             * `public_ip_should_deallocate` - (Required) Indicates whether to delete the stateful node's public ip resources.
             * `public_ip_ttl_in_hours` - (Optional, Default: 96) Hours to keep the public ip alive before deletion.
+            * `should_deregister_from_lb` - (Optional, Default: true) Indicates whether to deregister the stateful node's VM from any type of load balancer. Can be changed to false only when shouldTerminateVms is 'false'.
 
         :param str resource_name: The name of the resource.
         :param StatefulNodeAzureArgs args: The arguments to use to populate this resource's properties.

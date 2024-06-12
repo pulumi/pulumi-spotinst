@@ -59,6 +59,13 @@ public final class StatefulNodeAzureDeleteArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.publicIpTtlInHours);
     }
 
+    @Import(name="shouldDeregisterFromLb")
+    private @Nullable Output<Boolean> shouldDeregisterFromLb;
+
+    public Optional<Output<Boolean>> shouldDeregisterFromLb() {
+        return Optional.ofNullable(this.shouldDeregisterFromLb);
+    }
+
     @Import(name="shouldTerminateVm", required=true)
     private Output<Boolean> shouldTerminateVm;
 
@@ -89,6 +96,7 @@ public final class StatefulNodeAzureDeleteArgs extends com.pulumi.resources.Reso
         this.networkTtlInHours = $.networkTtlInHours;
         this.publicIpShouldDeallocate = $.publicIpShouldDeallocate;
         this.publicIpTtlInHours = $.publicIpTtlInHours;
+        this.shouldDeregisterFromLb = $.shouldDeregisterFromLb;
         this.shouldTerminateVm = $.shouldTerminateVm;
         this.snapshotShouldDeallocate = $.snapshotShouldDeallocate;
         this.snapshotTtlInHours = $.snapshotTtlInHours;
@@ -164,6 +172,15 @@ public final class StatefulNodeAzureDeleteArgs extends com.pulumi.resources.Reso
 
         public Builder publicIpTtlInHours(Integer publicIpTtlInHours) {
             return publicIpTtlInHours(Output.of(publicIpTtlInHours));
+        }
+
+        public Builder shouldDeregisterFromLb(@Nullable Output<Boolean> shouldDeregisterFromLb) {
+            $.shouldDeregisterFromLb = shouldDeregisterFromLb;
+            return this;
+        }
+
+        public Builder shouldDeregisterFromLb(Boolean shouldDeregisterFromLb) {
+            return shouldDeregisterFromLb(Output.of(shouldDeregisterFromLb));
         }
 
         public Builder shouldTerminateVm(Output<Boolean> shouldTerminateVm) {

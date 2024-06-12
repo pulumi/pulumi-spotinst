@@ -16,6 +16,7 @@ namespace Pulumi.SpotInst.Outputs
         public readonly string GalleryName;
         public readonly string GalleryResourceGroupName;
         public readonly string ImageName;
+        public readonly string? SpotAccountId;
         public readonly string VersionName;
 
         [OutputConstructor]
@@ -26,11 +27,14 @@ namespace Pulumi.SpotInst.Outputs
 
             string imageName,
 
+            string? spotAccountId,
+
             string versionName)
         {
             GalleryName = galleryName;
             GalleryResourceGroupName = galleryResourceGroupName;
             ImageName = imageName;
+            SpotAccountId = spotAccountId;
             VersionName = versionName;
         }
     }

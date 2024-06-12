@@ -7,12 +7,15 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class StatefulNodeAzureImageGallery {
     private String galleryName;
     private String galleryResourceGroupName;
     private String imageName;
+    private @Nullable String spotAccountId;
     private String versionName;
 
     private StatefulNodeAzureImageGallery() {}
@@ -24,6 +27,9 @@ public final class StatefulNodeAzureImageGallery {
     }
     public String imageName() {
         return this.imageName;
+    }
+    public Optional<String> spotAccountId() {
+        return Optional.ofNullable(this.spotAccountId);
     }
     public String versionName() {
         return this.versionName;
@@ -41,6 +47,7 @@ public final class StatefulNodeAzureImageGallery {
         private String galleryName;
         private String galleryResourceGroupName;
         private String imageName;
+        private @Nullable String spotAccountId;
         private String versionName;
         public Builder() {}
         public Builder(StatefulNodeAzureImageGallery defaults) {
@@ -48,6 +55,7 @@ public final class StatefulNodeAzureImageGallery {
     	      this.galleryName = defaults.galleryName;
     	      this.galleryResourceGroupName = defaults.galleryResourceGroupName;
     	      this.imageName = defaults.imageName;
+    	      this.spotAccountId = defaults.spotAccountId;
     	      this.versionName = defaults.versionName;
         }
 
@@ -76,6 +84,12 @@ public final class StatefulNodeAzureImageGallery {
             return this;
         }
         @CustomType.Setter
+        public Builder spotAccountId(@Nullable String spotAccountId) {
+
+            this.spotAccountId = spotAccountId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder versionName(String versionName) {
             if (versionName == null) {
               throw new MissingRequiredPropertyException("StatefulNodeAzureImageGallery", "versionName");
@@ -88,6 +102,7 @@ public final class StatefulNodeAzureImageGallery {
             _resultValue.galleryName = galleryName;
             _resultValue.galleryResourceGroupName = galleryResourceGroupName;
             _resultValue.imageName = imageName;
+            _resultValue.spotAccountId = spotAccountId;
             _resultValue.versionName = versionName;
             return _resultValue;
         }

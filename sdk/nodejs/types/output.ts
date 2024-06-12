@@ -125,6 +125,7 @@ export interface StatefulNodeAzureDelete {
     networkTtlInHours?: number;
     publicIpShouldDeallocate: boolean;
     publicIpTtlInHours?: number;
+    shouldDeregisterFromLb?: boolean;
     shouldTerminateVm: boolean;
     snapshotShouldDeallocate: boolean;
     snapshotTtlInHours?: number;
@@ -169,6 +170,7 @@ export interface StatefulNodeAzureImageGallery {
     galleryName: string;
     galleryResourceGroupName: string;
     imageName: string;
+    spotAccountId?: string;
     versionName: string;
 }
 

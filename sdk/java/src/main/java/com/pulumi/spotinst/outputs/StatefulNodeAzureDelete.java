@@ -19,6 +19,7 @@ public final class StatefulNodeAzureDelete {
     private @Nullable Integer networkTtlInHours;
     private Boolean publicIpShouldDeallocate;
     private @Nullable Integer publicIpTtlInHours;
+    private @Nullable Boolean shouldDeregisterFromLb;
     private Boolean shouldTerminateVm;
     private Boolean snapshotShouldDeallocate;
     private @Nullable Integer snapshotTtlInHours;
@@ -41,6 +42,9 @@ public final class StatefulNodeAzureDelete {
     }
     public Optional<Integer> publicIpTtlInHours() {
         return Optional.ofNullable(this.publicIpTtlInHours);
+    }
+    public Optional<Boolean> shouldDeregisterFromLb() {
+        return Optional.ofNullable(this.shouldDeregisterFromLb);
     }
     public Boolean shouldTerminateVm() {
         return this.shouldTerminateVm;
@@ -67,6 +71,7 @@ public final class StatefulNodeAzureDelete {
         private @Nullable Integer networkTtlInHours;
         private Boolean publicIpShouldDeallocate;
         private @Nullable Integer publicIpTtlInHours;
+        private @Nullable Boolean shouldDeregisterFromLb;
         private Boolean shouldTerminateVm;
         private Boolean snapshotShouldDeallocate;
         private @Nullable Integer snapshotTtlInHours;
@@ -79,6 +84,7 @@ public final class StatefulNodeAzureDelete {
     	      this.networkTtlInHours = defaults.networkTtlInHours;
     	      this.publicIpShouldDeallocate = defaults.publicIpShouldDeallocate;
     	      this.publicIpTtlInHours = defaults.publicIpTtlInHours;
+    	      this.shouldDeregisterFromLb = defaults.shouldDeregisterFromLb;
     	      this.shouldTerminateVm = defaults.shouldTerminateVm;
     	      this.snapshotShouldDeallocate = defaults.snapshotShouldDeallocate;
     	      this.snapshotTtlInHours = defaults.snapshotTtlInHours;
@@ -127,6 +133,12 @@ public final class StatefulNodeAzureDelete {
             return this;
         }
         @CustomType.Setter
+        public Builder shouldDeregisterFromLb(@Nullable Boolean shouldDeregisterFromLb) {
+
+            this.shouldDeregisterFromLb = shouldDeregisterFromLb;
+            return this;
+        }
+        @CustomType.Setter
         public Builder shouldTerminateVm(Boolean shouldTerminateVm) {
             if (shouldTerminateVm == null) {
               throw new MissingRequiredPropertyException("StatefulNodeAzureDelete", "shouldTerminateVm");
@@ -156,6 +168,7 @@ public final class StatefulNodeAzureDelete {
             _resultValue.networkTtlInHours = networkTtlInHours;
             _resultValue.publicIpShouldDeallocate = publicIpShouldDeallocate;
             _resultValue.publicIpTtlInHours = publicIpTtlInHours;
+            _resultValue.shouldDeregisterFromLb = shouldDeregisterFromLb;
             _resultValue.shouldTerminateVm = shouldTerminateVm;
             _resultValue.snapshotShouldDeallocate = snapshotShouldDeallocate;
             _resultValue.snapshotTtlInHours = snapshotTtlInHours;

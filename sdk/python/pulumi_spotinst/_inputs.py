@@ -740,6 +740,7 @@ class StatefulNodeAzureDeleteArgs:
                  disk_ttl_in_hours: Optional[pulumi.Input[int]] = None,
                  network_ttl_in_hours: Optional[pulumi.Input[int]] = None,
                  public_ip_ttl_in_hours: Optional[pulumi.Input[int]] = None,
+                 should_deregister_from_lb: Optional[pulumi.Input[bool]] = None,
                  snapshot_ttl_in_hours: Optional[pulumi.Input[int]] = None):
         pulumi.set(__self__, "disk_should_deallocate", disk_should_deallocate)
         pulumi.set(__self__, "network_should_deallocate", network_should_deallocate)
@@ -752,6 +753,8 @@ class StatefulNodeAzureDeleteArgs:
             pulumi.set(__self__, "network_ttl_in_hours", network_ttl_in_hours)
         if public_ip_ttl_in_hours is not None:
             pulumi.set(__self__, "public_ip_ttl_in_hours", public_ip_ttl_in_hours)
+        if should_deregister_from_lb is not None:
+            pulumi.set(__self__, "should_deregister_from_lb", should_deregister_from_lb)
         if snapshot_ttl_in_hours is not None:
             pulumi.set(__self__, "snapshot_ttl_in_hours", snapshot_ttl_in_hours)
 
@@ -826,6 +829,15 @@ class StatefulNodeAzureDeleteArgs:
     @public_ip_ttl_in_hours.setter
     def public_ip_ttl_in_hours(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "public_ip_ttl_in_hours", value)
+
+    @property
+    @pulumi.getter(name="shouldDeregisterFromLb")
+    def should_deregister_from_lb(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "should_deregister_from_lb")
+
+    @should_deregister_from_lb.setter
+    def should_deregister_from_lb(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "should_deregister_from_lb", value)
 
     @property
     @pulumi.getter(name="snapshotTtlInHours")
@@ -1096,11 +1108,14 @@ class StatefulNodeAzureImageGalleryArgs:
                  gallery_name: pulumi.Input[str],
                  gallery_resource_group_name: pulumi.Input[str],
                  image_name: pulumi.Input[str],
-                 version_name: pulumi.Input[str]):
+                 version_name: pulumi.Input[str],
+                 spot_account_id: Optional[pulumi.Input[str]] = None):
         pulumi.set(__self__, "gallery_name", gallery_name)
         pulumi.set(__self__, "gallery_resource_group_name", gallery_resource_group_name)
         pulumi.set(__self__, "image_name", image_name)
         pulumi.set(__self__, "version_name", version_name)
+        if spot_account_id is not None:
+            pulumi.set(__self__, "spot_account_id", spot_account_id)
 
     @property
     @pulumi.getter(name="galleryName")
@@ -1137,6 +1152,15 @@ class StatefulNodeAzureImageGalleryArgs:
     @version_name.setter
     def version_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "version_name", value)
+
+    @property
+    @pulumi.getter(name="spotAccountId")
+    def spot_account_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "spot_account_id")
+
+    @spot_account_id.setter
+    def spot_account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "spot_account_id", value)
 
 
 @pulumi.input_type
