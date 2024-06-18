@@ -2,8 +2,9 @@ package spotinst
 
 import (
 	"bytes"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"regexp"
+
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 )
 
 var anchorRegexp = regexp.MustCompile(`<a id=\"[a-zA-Z0-9-]*\"></a>`)
@@ -53,7 +54,7 @@ type replace struct {
 
 var fixUpElastigroup = tfbridge.DocsEdit{
 	Path: "elastigroup_*.md",
-	Edit: func(path string, content []byte) ([]byte, error) {
+	Edit: func(_ string, content []byte) ([]byte, error) {
 
 		content = bytes.Replace(content,
 			[]byte("## Stateful"),
@@ -114,7 +115,8 @@ var fixUpElastigroup = tfbridge.DocsEdit{
 				"### Backend Services\n\n `backend_services` supports the following:\n",
 			},
 			{
-				"## Disks\n\n* `disks` - (Optional) Array of disks associated with this instance. Persistent disks must be created before you can assign them.\n",
+				"## Disks\n\n* `disks` - (Optional) Array of disks associated with this instance. " +
+					"Persistent disks must be created before you can assign them.\n",
 				"### Disks\n\n `disk` supports the following:\n",
 			},
 			{
@@ -259,7 +261,7 @@ var fixupMrScaler = tfbridge.DocsEdit{
 
 var fixUpStatefulNode = tfbridge.DocsEdit{
 	Path: "stateful_node_aws.md",
-	Edit: func(path string, content []byte) ([]byte, error) {
+	Edit: func(_ string, content []byte) ([]byte, error) {
 		replaces := []replace{
 			{
 				"description = \"created by Terraform\"",
@@ -317,5 +319,12 @@ var fixupHealthCheck = tfbridge.DocsEdit{
 }
 
 func docEditRules(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
-	return append(defaults, fixUpElastigroup, fixupOcean, fixupMrScaler, fixUpStatefulNode, fixupHealthCheck, removeAnchors)
+	return append(defaults,
+		fixUpElastigroup,
+		fixupOcean,
+		fixupMrScaler,
+		fixUpStatefulNode,
+		fixupHealthCheck,
+		removeAnchors,
+	)
 }
