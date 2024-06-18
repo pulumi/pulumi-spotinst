@@ -81,17 +81,16 @@ func Provider() tfbridge.ProviderInfo {
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
-		P:                p,
-		Name:             "spotinst",
-		Description:      "A Pulumi package for creating and managing spotinst cloud resources.",
-		Keywords:         []string{"pulumi", "spotinst"},
-		License:          "Apache-2.0",
-		Homepage:         "https://pulumi.io",
-		GitHubOrg:        "spotinst",
-		Repository:       "https://github.com/pulumi/pulumi-spotinst",
-		Config:           map[string]*tfbridge.SchemaInfo{},
-		UpstreamRepoPath: "./upstream",
-		DocRules:         &tfbridge.DocRuleInfo{EditRules: docEditRules},
+		P:           p,
+		Name:        "spotinst",
+		Description: "A Pulumi package for creating and managing spotinst cloud resources.",
+		Keywords:    []string{"pulumi", "spotinst"},
+		License:     "Apache-2.0",
+		Homepage:    "https://pulumi.io",
+		GitHubOrg:   "spotinst",
+		Repository:  "https://github.com/pulumi/pulumi-spotinst",
+		Config:      map[string]*tfbridge.SchemaInfo{},
+		DocRules:    &tfbridge.DocRuleInfo{EditRules: docEditRules},
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"spotinst_account_aws":                {Tok: makeResource(awsMod, "Account")},
 			"spotinst_credentials_aws":            {Tok: makeResource(awsMod, "Credentials")},
@@ -473,71 +472,6 @@ var fixUpStatefulNode = tfbridge.DocsEdit{
 			)
 		}
 
-		//content = bytes.ReplaceAll(content,
-		//	[]byte("## Resource Tag Specification"),
-		//	[]byte("### Resource Tag Specification"),
-		//)
-		//content = bytes.ReplaceAll(content,
-		//	[]byte("## Scaling Policies"),
-		//	[]byte("### Scaling Policies\n\n `scaling_up_policy` supports the following:\n"),
-		//)
-		//content = bytes.ReplaceAll(content,
-		//	[]byte("## Network Interfaces"),
-		//	[]byte("### Network Interfaces\n\n `network_interface` supports the following:\n"),
-		//)
-		//content = bytes.ReplaceAll(content,
-		//	[]byte("## Block Devices"),
-		//	[]byte("### Block Devices"),
-		//)
-		//content = bytes.Replace(content,
-		//	[]byte("## Stateful"),
-		//	[]byte("### Stateful"),
-		//	1,
-		//)
-		//content = bytes.ReplaceAll(content,
-		//	[]byte("## Stateful Deallocation\n\n* `stateful_deallocation` - (Optional)\n"),
-		//	[]byte("### Stateful Deallocation\n\n `stateful_deallocation` supports the following:\n"),
-		//)
-		//content = bytes.ReplaceAll(content,
-		//	[]byte("## Stateful Instance Action\n\n* `stateful_instance_action` - (Optional)\n"),
-		//	[]byte("### Stateful Instance Action\n\n `stateful_instance_action` supports the following:\n"),
-		//)
-		//content = bytes.ReplaceAll(content,
-		//	[]byte("## Health Check"),
-		//	[]byte("### Health Check"),
-		//)
-		//content = bytes.ReplaceAll(content,
-		//	[]byte("## Third-Party Integrations"),
-		//	[]byte("### Third-Party Integrations"),
-		//)
-		//content = bytes.ReplaceAll(content,
-		//	[]byte("## Update Policy\n\n* `update_policy` - (Optional)\n"),
-		//	[]byte("### Update Policy\n\n `update_policy` supports the following:\n"),
-		//)
-		//content = bytes.ReplaceAll(content,
-		//	[]byte("## GPU\n\n* `gpu` - (Optional) Defines the GPU configuration.\n"),
-		//	[]byte("### GPU\n\n `gpu` supports the following:\n"),
-		//)
-		//content = bytes.ReplaceAll(content,
-		//	[]byte("## Backend Services\n\n* `backend_services` - (Optional) Describes the backend service configurations.\n"),
-		//	[]byte("### Backend Services\n\n `backend_services` supports the following:\n"),
-		//)
-		//content = bytes.ReplaceAll(content,
-		//	[]byte("## Disks\n\n* `disks` - (Optional) Array of disks associated with this instance. Persistent disks must be created before you can assign them.\n"),
-		//	[]byte("### Disks\n\n `disk` supports the following:\n"),
-		//)
-		//content = bytes.ReplaceAll(content,
-		//	[]byte("## Diff-suppressed Parameters"),
-		//	[]byte("### Diff-suppressed Parameters"),
-		//)
-		//content = bytes.ReplaceAll(content,
-		//	[]byte("description = \"created by Terraform\""),
-		//	[]byte("description = \"created by Pulumi\""),
-		//)
-		//content = bytes.ReplaceAll(content,
-		//	[]byte("terraform-acc-test-cluster"),
-		//	[]byte("sample-acc-test-cluster"),
-		//)
 		return content, nil
 	},
 }
@@ -554,7 +488,7 @@ var fixupHealthCheck = tfbridge.DocsEdit{
 }
 
 func docEditRules(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
-	return append(defaults, fixUpElastigroup, fixupOcean, fixupMrScaler, removeAnchors)
+	return append(defaults, fixUpElastigroup, fixupOcean, fixupMrScaler, fixUpStatefulNode, removeAnchors)
 }
 
 var noUpstreamDocs = &tfbridge.DocInfo{AllowMissing: true}

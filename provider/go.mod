@@ -5,7 +5,7 @@ go 1.21
 require (
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.84.0
 	github.com/pulumi/pulumi/sdk/v3 v3.118.0
-	github.com/spotinst/terraform-provider-spotinst v0.0.0
+	github.com/spotinst/terraform-provider-spotinst v1.176.1
 )
 
 replace (
@@ -13,7 +13,6 @@ replace (
 	github.com/hashicorp/terraform-exec => github.com/hashicorp/terraform-exec v0.17.3
 	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20240520223432-0c0bf0d65f10
 	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
-	github.com/spotinst/terraform-provider-spotinst => ../upstream
 )
 
 require (
