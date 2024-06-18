@@ -18075,7 +18075,7 @@
             }
         },
         "spotinst:index/healthCheck:HealthCheck": {
-            "description": "Provides a Spotinst Health Check resource.\n\n## Example Usage\n\n```hcl \nresource \"spotinst_health_check\" \"http_check\" {\n  name        = \"terraform_healt_cheack\"\n  resource_id = \"sig-123\"\n\n  check {\n    protocol = \"http\"\n    endpoint = \"http://endpoint.com\"\n    port     = 1337\n    interval = 10\n    timeout  = 10\n    healthy   = 1\n    unhealthy = 1\n  }\n\n    proxy_address = \"http://proxy.com\"\n    proxy_port = 80\n  \n}\n```\n",
+            "description": "Provides a Spotinst Health Check resource.\n\n## Example Usage\n\n```hcl \nresource \"spotinst_health_check\" \"http_check\" {\n  name        = \"sample_health_check\"\n  resource_id = \"sig-123\"\n\n  check {\n    protocol = \"http\"\n    endpoint = \"http://endpoint.com\"\n    port     = 1337\n    interval = 10\n    timeout  = 10\n    healthy   = 1\n    unhealthy = 1\n  }\n\n    proxy_address = \"http://proxy.com\"\n    proxy_port = 80\n  \n}\n```\n",
             "properties": {
                 "check": {
                     "$ref": "#/types/spotinst:index/HealthCheckCheck:HealthCheckCheck",
