@@ -13,8 +13,17 @@ namespace Pulumi.SpotInst.Gke.Outputs
     [OutputType]
     public sealed class OceanImportUpdatePolicy
     {
+        /// <summary>
+        /// Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
+        /// </summary>
         public readonly bool? ConditionedRoll;
+        /// <summary>
+        /// Holds the roll configuration.
+        /// </summary>
         public readonly Outputs.OceanImportUpdatePolicyRollConfig? RollConfig;
+        /// <summary>
+        /// Enables the roll.
+        /// </summary>
         public readonly bool ShouldRoll;
 
         [OutputConstructor]

@@ -13,7 +13,13 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class OceanScheduledTaskTaskParameters
     {
+        /// <summary>
+        /// Set amiAutoUpdate object
+        /// </summary>
         public readonly Outputs.OceanScheduledTaskTaskParametersAmiAutoUpdate? AmiAutoUpdate;
+        /// <summary>
+        /// Set clusterRoll object
+        /// </summary>
         public readonly Outputs.OceanScheduledTaskTaskParametersParametersClusterRoll? ParametersClusterRoll;
 
         [OutputConstructor]

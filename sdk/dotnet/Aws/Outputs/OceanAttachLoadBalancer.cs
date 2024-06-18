@@ -13,11 +13,17 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class OceanAttachLoadBalancer
     {
+        /// <summary>
+        /// If type is "TARGET_GROUP" then an ARN is required. Otherwise is not allowed.
+        /// </summary>
         public readonly string? Arn;
         /// <summary>
-        /// The cluster name.
+        /// If type is "CLASSIC" then a name is required. Otherwise is not allowed.
         /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// Type of load balancer to use.
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

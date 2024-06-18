@@ -12,9 +12,17 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class ElastigroupStatefulInstanceActionGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// String, Stateful Instance ID on which the action should be performed.
+        /// </summary>
         [Input("statefulInstanceId", required: true)]
         public Input<string> StatefulInstanceId { get; set; } = null!;
 
+        /// <summary>
+        /// String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+        /// 
+        /// Usage:
+        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 

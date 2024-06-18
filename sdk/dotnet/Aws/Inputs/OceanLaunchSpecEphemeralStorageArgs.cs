@@ -14,9 +14,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
     {
         /// <summary>
         /// Specify an alternative device name from which ephemeral storage calculations should be derived. This parameter is used when the ephemeral storage should not utilize the root device. Provide the device name configured in the VNG's BDM or AMI's BDM that differs from the default root device.
-        /// 
-        /// 
-        /// &lt;a id="update-policy"&gt;&lt;/a&gt;
         /// </summary>
         [Input("ephemeralStorageDeviceName")]
         public Input<string>? EphemeralStorageDeviceName { get; set; }

@@ -14,17 +14,33 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupUpdatePolicyRollConfigStrategyOnFailure {
+    /**
+     * @return Sets the action that will take place, Accepted values are: `DETACH_OLD`, `DETACH_NEW`.
+     * 
+     */
     private String actionType;
     private @Nullable Integer batchNum;
     /**
-     * @return The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
+     * @return Indicates (in seconds) the timeout to wait until instance are detached.
      * 
      */
     private @Nullable Integer drainingTimeout;
+    /**
+     * @return Decrementing the group target capacity after detaching the instances.
+     * 
+     */
     private @Nullable Boolean shouldDecrementTargetCapacity;
+    /**
+     * @return Indicator if the action should apply to all batches of the deployment or only the latest batch.
+     * 
+     */
     private @Nullable Boolean shouldHandleAllBatches;
 
     private ElastigroupUpdatePolicyRollConfigStrategyOnFailure() {}
+    /**
+     * @return Sets the action that will take place, Accepted values are: `DETACH_OLD`, `DETACH_NEW`.
+     * 
+     */
     public String actionType() {
         return this.actionType;
     }
@@ -32,15 +48,23 @@ public final class ElastigroupUpdatePolicyRollConfigStrategyOnFailure {
         return Optional.ofNullable(this.batchNum);
     }
     /**
-     * @return The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
+     * @return Indicates (in seconds) the timeout to wait until instance are detached.
      * 
      */
     public Optional<Integer> drainingTimeout() {
         return Optional.ofNullable(this.drainingTimeout);
     }
+    /**
+     * @return Decrementing the group target capacity after detaching the instances.
+     * 
+     */
     public Optional<Boolean> shouldDecrementTargetCapacity() {
         return Optional.ofNullable(this.shouldDecrementTargetCapacity);
     }
+    /**
+     * @return Indicator if the action should apply to all batches of the deployment or only the latest batch.
+     * 
+     */
     public Optional<Boolean> shouldHandleAllBatches() {
         return Optional.ofNullable(this.shouldHandleAllBatches);
     }

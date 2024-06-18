@@ -16,31 +16,47 @@ public final class OceanAttachLoadBalancerArgs extends com.pulumi.resources.Reso
 
     public static final OceanAttachLoadBalancerArgs Empty = new OceanAttachLoadBalancerArgs();
 
+    /**
+     * If type is &#34;TARGET_GROUP&#34; then an ARN is required. Otherwise is not allowed.
+     * 
+     */
     @Import(name="arn")
     private @Nullable Output<String> arn;
 
+    /**
+     * @return If type is &#34;TARGET_GROUP&#34; then an ARN is required. Otherwise is not allowed.
+     * 
+     */
     public Optional<Output<String>> arn() {
         return Optional.ofNullable(this.arn);
     }
 
     /**
-     * The cluster name.
+     * If type is &#34;CLASSIC&#34; then a name is required. Otherwise is not allowed.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The cluster name.
+     * @return If type is &#34;CLASSIC&#34; then a name is required. Otherwise is not allowed.
      * 
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Type of load balancer to use.
+     * 
+     */
     @Import(name="type", required=true)
     private Output<String> type;
 
+    /**
+     * @return Type of load balancer to use.
+     * 
+     */
     public Output<String> type() {
         return this.type;
     }
@@ -71,17 +87,29 @@ public final class OceanAttachLoadBalancerArgs extends com.pulumi.resources.Reso
             $ = new OceanAttachLoadBalancerArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param arn If type is &#34;TARGET_GROUP&#34; then an ARN is required. Otherwise is not allowed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder arn(@Nullable Output<String> arn) {
             $.arn = arn;
             return this;
         }
 
+        /**
+         * @param arn If type is &#34;TARGET_GROUP&#34; then an ARN is required. Otherwise is not allowed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder arn(String arn) {
             return arn(Output.of(arn));
         }
 
         /**
-         * @param name The cluster name.
+         * @param name If type is &#34;CLASSIC&#34; then a name is required. Otherwise is not allowed.
          * 
          * @return builder
          * 
@@ -92,7 +120,7 @@ public final class OceanAttachLoadBalancerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param name The cluster name.
+         * @param name If type is &#34;CLASSIC&#34; then a name is required. Otherwise is not allowed.
          * 
          * @return builder
          * 
@@ -101,11 +129,23 @@ public final class OceanAttachLoadBalancerArgs extends com.pulumi.resources.Reso
             return name(Output.of(name));
         }
 
+        /**
+         * @param type Type of load balancer to use.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type Type of load balancer to use.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

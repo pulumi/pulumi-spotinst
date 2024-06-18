@@ -12,15 +12,21 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class OceanDetachLoadBalancerGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// If type is "TARGET_GROUP" then an ARN is required. Otherwise is not allowed.
+        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
         /// <summary>
-        /// The cluster name.
+        /// If type is "CLASSIC" then a name is required. Otherwise is not allowed.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Type of load balancer to use.
+        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 

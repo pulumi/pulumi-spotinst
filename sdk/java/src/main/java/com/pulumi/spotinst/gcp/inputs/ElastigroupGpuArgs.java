@@ -15,16 +15,36 @@ public final class ElastigroupGpuArgs extends com.pulumi.resources.ResourceArgs 
 
     public static final ElastigroupGpuArgs Empty = new ElastigroupGpuArgs();
 
+    /**
+     * The number of GPUs. Must be 0, 2, 4, 6, 8.
+     * 
+     * Usage:
+     * 
+     */
     @Import(name="count", required=true)
     private Output<Integer> count;
 
+    /**
+     * @return The number of GPUs. Must be 0, 2, 4, 6, 8.
+     * 
+     * Usage:
+     * 
+     */
     public Output<Integer> count() {
         return this.count;
     }
 
+    /**
+     * The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
+     * 
+     */
     @Import(name="type", required=true)
     private Output<String> type;
 
+    /**
+     * @return The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
+     * 
+     */
     public Output<String> type() {
         return this.type;
     }
@@ -54,20 +74,48 @@ public final class ElastigroupGpuArgs extends com.pulumi.resources.ResourceArgs 
             $ = new ElastigroupGpuArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param count The number of GPUs. Must be 0, 2, 4, 6, 8.
+         * 
+         * Usage:
+         * 
+         * @return builder
+         * 
+         */
         public Builder count(Output<Integer> count) {
             $.count = count;
             return this;
         }
 
+        /**
+         * @param count The number of GPUs. Must be 0, 2, 4, 6, 8.
+         * 
+         * Usage:
+         * 
+         * @return builder
+         * 
+         */
         public Builder count(Integer count) {
             return count(Output.of(count));
         }
 
+        /**
+         * @param type The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

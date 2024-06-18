@@ -13,45 +13,105 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupNetworkInterface {
+    /**
+     * @return Indicates whether to assign IPV6 addresses to your instance. Requires a subnet with IPV6 CIDR block ranges.
+     * 
+     * Usage:
+     * 
+     */
     private @Nullable Boolean associateIpv6Address;
+    /**
+     * @return Indicates whether to assign a public IP address to an instance you launch in a VPC. The public IP address can only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an existing one.
+     * 
+     */
     private @Nullable Boolean associatePublicIpAddress;
+    /**
+     * @return If set to true, the interface is deleted when the instance is terminated.
+     * 
+     */
     private @Nullable Boolean deleteOnTermination;
     /**
-     * @return The group description.
+     * @return The description of the network interface.
      * 
      */
     private @Nullable String description;
+    /**
+     * @return The index of the device on the instance for the network interface attachment.
+     * 
+     */
     private String deviceIndex;
+    /**
+     * @return The ID of the network interface.
+     * 
+     */
     private @Nullable String networkInterfaceId;
+    /**
+     * @return The private IP address of the network interface.
+     * 
+     */
     private @Nullable String privateIpAddress;
+    /**
+     * @return The number of secondary private IP addresses.
+     * 
+     */
     private @Nullable String secondaryPrivateIpAddressCount;
 
     private ElastigroupNetworkInterface() {}
+    /**
+     * @return Indicates whether to assign IPV6 addresses to your instance. Requires a subnet with IPV6 CIDR block ranges.
+     * 
+     * Usage:
+     * 
+     */
     public Optional<Boolean> associateIpv6Address() {
         return Optional.ofNullable(this.associateIpv6Address);
     }
+    /**
+     * @return Indicates whether to assign a public IP address to an instance you launch in a VPC. The public IP address can only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an existing one.
+     * 
+     */
     public Optional<Boolean> associatePublicIpAddress() {
         return Optional.ofNullable(this.associatePublicIpAddress);
     }
+    /**
+     * @return If set to true, the interface is deleted when the instance is terminated.
+     * 
+     */
     public Optional<Boolean> deleteOnTermination() {
         return Optional.ofNullable(this.deleteOnTermination);
     }
     /**
-     * @return The group description.
+     * @return The description of the network interface.
      * 
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
+    /**
+     * @return The index of the device on the instance for the network interface attachment.
+     * 
+     */
     public String deviceIndex() {
         return this.deviceIndex;
     }
+    /**
+     * @return The ID of the network interface.
+     * 
+     */
     public Optional<String> networkInterfaceId() {
         return Optional.ofNullable(this.networkInterfaceId);
     }
+    /**
+     * @return The private IP address of the network interface.
+     * 
+     */
     public Optional<String> privateIpAddress() {
         return Optional.ofNullable(this.privateIpAddress);
     }
+    /**
+     * @return The number of secondary private IP addresses.
+     * 
+     */
     public Optional<String> secondaryPrivateIpAddressCount() {
         return Optional.ofNullable(this.secondaryPrivateIpAddressCount);
     }

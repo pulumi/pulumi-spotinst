@@ -14,37 +14,101 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupDisk {
+    /**
+     * @return Specifies whether the disk will be auto-deleted when the instance is deleted.
+     * 
+     */
     private @Nullable Boolean autoDelete;
+    /**
+     * @return Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
+     * 
+     */
     private @Nullable Boolean boot;
+    /**
+     * @return Specifies a unique device name of your choice.
+     * 
+     */
     private @Nullable String deviceName;
+    /**
+     * @return Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance.
+     * 
+     */
     private @Nullable List<ElastigroupDiskInitializeParam> initializeParams;
+    /**
+     * @return Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME.
+     * 
+     */
     private @Nullable String interface_;
+    /**
+     * @return The mode in which to attach this disk, either READ_WRITE or READ_ONLY.
+     * 
+     */
     private @Nullable String mode;
+    /**
+     * @return Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
+     * 
+     */
     private @Nullable String source;
+    /**
+     * @return Specifies the type of disk, either SCRATCH or PERSISTENT.
+     * 
+     */
     private @Nullable String type;
 
     private ElastigroupDisk() {}
+    /**
+     * @return Specifies whether the disk will be auto-deleted when the instance is deleted.
+     * 
+     */
     public Optional<Boolean> autoDelete() {
         return Optional.ofNullable(this.autoDelete);
     }
+    /**
+     * @return Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
+     * 
+     */
     public Optional<Boolean> boot() {
         return Optional.ofNullable(this.boot);
     }
+    /**
+     * @return Specifies a unique device name of your choice.
+     * 
+     */
     public Optional<String> deviceName() {
         return Optional.ofNullable(this.deviceName);
     }
+    /**
+     * @return Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance.
+     * 
+     */
     public List<ElastigroupDiskInitializeParam> initializeParams() {
         return this.initializeParams == null ? List.of() : this.initializeParams;
     }
+    /**
+     * @return Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME.
+     * 
+     */
     public Optional<String> interface_() {
         return Optional.ofNullable(this.interface_);
     }
+    /**
+     * @return The mode in which to attach this disk, either READ_WRITE or READ_ONLY.
+     * 
+     */
     public Optional<String> mode() {
         return Optional.ofNullable(this.mode);
     }
+    /**
+     * @return Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
+     * 
+     */
     public Optional<String> source() {
         return Optional.ofNullable(this.source);
     }
+    /**
+     * @return Specifies the type of disk, either SCRATCH or PERSISTENT.
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }

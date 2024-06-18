@@ -13,11 +13,16 @@ namespace Pulumi.SpotInst.Gcp.Inputs
     public sealed class ElastigroupScalingUpPolicyDimensionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The group name.
+        /// The dimension name.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// The dimension value.
+        /// 
+        /// Usage:
+        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 

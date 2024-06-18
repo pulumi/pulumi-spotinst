@@ -13,9 +13,21 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class OceanScheduledTaskTask
     {
+        /// <summary>
+        /// A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. (Example: `0 1 * * *`).
+        /// </summary>
         public readonly string CronExpression;
+        /// <summary>
+        /// Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
+        /// </summary>
         public readonly bool IsEnabled;
+        /// <summary>
+        /// This filed will be compatible to the `task_type` field. If `task_type` is defined as `clusterRoll`, user cluster roll object in parameters.
+        /// </summary>
         public readonly Outputs.OceanScheduledTaskTaskParameters? Parameters;
+        /// <summary>
+        /// Valid values: `clusterRoll` `amiAutoUpdate`. Required for `cluster.scheduling.tasks`
+        /// </summary>
         public readonly string TaskType;
 
         [OutputConstructor]

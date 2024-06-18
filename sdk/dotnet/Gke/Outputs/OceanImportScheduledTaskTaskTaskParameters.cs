@@ -13,6 +13,9 @@ namespace Pulumi.SpotInst.Gke.Outputs
     [OutputType]
     public sealed class OceanImportScheduledTaskTaskTaskParameters
     {
+        /// <summary>
+        /// The cluster roll parameters for the cluster.
+        /// </summary>
         public readonly Outputs.OceanImportScheduledTaskTaskTaskParametersClusterRoll? ClusterRoll;
 
         [OutputConstructor]

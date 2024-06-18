@@ -842,16 +842,39 @@ export namespace aws {
     }
 
     export interface ElastigroupNetworkInterface {
+        /**
+         * Indicates whether to assign IPV6 addresses to your instance. Requires a subnet with IPV6 CIDR block ranges.
+         *
+         * Usage:
+         */
         associateIpv6Address?: pulumi.Input<boolean>;
+        /**
+         * Indicates whether to assign a public IP address to an instance you launch in a VPC. The public IP address can only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an existing one.
+         */
         associatePublicIpAddress?: pulumi.Input<boolean>;
+        /**
+         * If set to true, the interface is deleted when the instance is terminated.
+         */
         deleteOnTermination?: pulumi.Input<boolean>;
         /**
-         * The group description.
+         * The description of the network interface.
          */
         description?: pulumi.Input<string>;
+        /**
+         * The index of the device on the instance for the network interface attachment.
+         */
         deviceIndex: pulumi.Input<string>;
+        /**
+         * The ID of the network interface.
+         */
         networkInterfaceId?: pulumi.Input<string>;
+        /**
+         * The private IP address of the network interface.
+         */
         privateIpAddress?: pulumi.Input<string>;
+        /**
+         * The number of secondary private IP addresses.
+         */
         secondaryPrivateIpAddressCount?: pulumi.Input<string>;
     }
 
@@ -1298,14 +1321,36 @@ export namespace aws {
     }
 
     export interface ElastigroupStatefulDeallocation {
+        /**
+         * For stateful groups: remove persistent images.
+         */
         shouldDeleteImages?: pulumi.Input<boolean>;
+        /**
+         * For stateful groups: remove network interfaces.
+         */
         shouldDeleteNetworkInterfaces?: pulumi.Input<boolean>;
+        /**
+         * For stateful groups: remove snapshots.
+         *
+         * Usage:
+         */
         shouldDeleteSnapshots?: pulumi.Input<boolean>;
+        /**
+         * For stateful groups: remove persistent volumes.
+         */
         shouldDeleteVolumes?: pulumi.Input<boolean>;
     }
 
     export interface ElastigroupStatefulInstanceAction {
+        /**
+         * String, Stateful Instance ID on which the action should be performed.
+         */
         statefulInstanceId: pulumi.Input<string>;
+        /**
+         * String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+         *
+         * Usage:
+         */
         type: pulumi.Input<string>;
     }
 
@@ -1315,39 +1360,87 @@ export namespace aws {
     }
 
     export interface ElastigroupUpdatePolicy {
+        /**
+         * Enables updates to tags without rolling the group when set to `true`.
+         */
         autoApplyTags?: pulumi.Input<boolean>;
+        /**
+         * While used, you can control whether the group should perform a deployment after an update to the configuration.
+         */
         rollConfig?: pulumi.Input<inputs.aws.ElastigroupUpdatePolicyRollConfig>;
+        /**
+         * This will apply resuming action for Stateful instances in the Elastigroup upon scale up or capacity changes. Example usage will be for Elastigroups that will have scheduling rules to set a target capacity of 0 instances in the night and automatically restore the same state of the instances in the morning.
+         */
         shouldResumeStateful: pulumi.Input<boolean>;
+        /**
+         * Sets the enablement of the roll option.
+         */
         shouldRoll: pulumi.Input<boolean>;
     }
 
     export interface ElastigroupUpdatePolicyRollConfig {
+        /**
+         * Sets the percentage of the instances to deploy in each batch.
+         */
         batchSizePercentage: pulumi.Input<number>;
+        /**
+         * Sets the grace period for new instances to become healthy.
+         */
         gracePeriod?: pulumi.Input<number>;
         /**
-         * The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"EC2"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+         * Sets the health check type to use. Valid values: `"EC2"`, `"ECS_CLUSTER_INSTANCE"`, `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"NONE"`.
          */
         healthCheckType?: pulumi.Input<string>;
+        /**
+         * Strategy parameters
+         */
         strategy?: pulumi.Input<inputs.aws.ElastigroupUpdatePolicyRollConfigStrategy>;
+        /**
+         * For use with `shouldRoll`. Sets minimum % of roll required to complete before continuing the plan. Required if `waitForRollTimeout` is set.
+         */
         waitForRollPercentage?: pulumi.Input<number>;
+        /**
+         * For use with `shouldRoll`. Sets how long to wait for the deployed % of a roll to exceed `waitForRollPercentage` before continuing the plan. Required if `waitForRollPercentage` is set.
+         */
         waitForRollTimeout?: pulumi.Input<number>;
     }
 
     export interface ElastigroupUpdatePolicyRollConfigStrategy {
+        /**
+         * Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
+         */
         action: pulumi.Input<string>;
+        /**
+         * Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the deployment will fail. Range `1` - `100`.
+         */
         batchMinHealthyPercentage?: pulumi.Input<number>;
+        /**
+         * Set detach options to the deployment.
+         */
         onFailure?: pulumi.Input<inputs.aws.ElastigroupUpdatePolicyRollConfigStrategyOnFailure>;
+        /**
+         * Specify whether to drain incoming TCP connections before terminating a server.
+         */
         shouldDrainInstances?: pulumi.Input<boolean>;
     }
 
     export interface ElastigroupUpdatePolicyRollConfigStrategyOnFailure {
+        /**
+         * Sets the action that will take place, Accepted values are: `DETACH_OLD`, `DETACH_NEW`.
+         */
         actionType: pulumi.Input<string>;
         batchNum?: pulumi.Input<number>;
         /**
-         * The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
+         * Indicates (in seconds) the timeout to wait until instance are detached.
          */
         drainingTimeout?: pulumi.Input<number>;
+        /**
+         * Decrementing the group target capacity after detaching the instances.
+         */
         shouldDecrementTargetCapacity?: pulumi.Input<boolean>;
+        /**
+         * Indicator if the action should apply to all batches of the deployment or only the latest batch.
+         */
         shouldHandleAllBatches?: pulumi.Input<boolean>;
     }
 
@@ -1627,41 +1720,98 @@ export namespace aws {
     }
 
     export interface OceanAttachLoadBalancer {
+        /**
+         * If type is "TARGET_GROUP" then an ARN is required. Otherwise is not allowed.
+         */
         arn?: pulumi.Input<string>;
         /**
-         * The cluster name.
+         * If type is "CLASSIC" then a name is required. Otherwise is not allowed.
          */
         name?: pulumi.Input<string>;
+        /**
+         * Type of load balancer to use.
+         */
         type: pulumi.Input<string>;
     }
 
     export interface OceanAutoscaler {
+        /**
+         * Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscaleIsAutoConfig` toggled on.
+         */
         autoHeadroomPercentage?: pulumi.Input<number>;
+        /**
+         * Cooldown period between scaling actions.
+         */
         autoscaleCooldown?: pulumi.Input<number>;
+        /**
+         * Auto Scaling scale down operations.
+         */
         autoscaleDown?: pulumi.Input<inputs.aws.OceanAutoscalerAutoscaleDown>;
+        /**
+         * Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
+         */
         autoscaleHeadroom?: pulumi.Input<inputs.aws.OceanAutoscalerAutoscaleHeadroom>;
+        /**
+         * Automatically configure and optimize headroom resources.
+         */
         autoscaleIsAutoConfig?: pulumi.Input<boolean>;
+        /**
+         * Enable the Ocean Kubernetes Auto Scaler.
+         */
         autoscaleIsEnabled?: pulumi.Input<boolean>;
+        /**
+         * enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
+         */
         enableAutomaticAndManualHeadroom?: pulumi.Input<boolean>;
+        /**
+         * List of Ocean extended resource definitions to use in this cluster.
+         */
         extendedResourceDefinitions?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Optionally set upper and lower bounds on the resource usage of the cluster.
+         */
         resourceLimits?: pulumi.Input<inputs.aws.OceanAutoscalerResourceLimits>;
     }
 
     export interface OceanAutoscalerAutoscaleDown {
         evaluationPeriods?: pulumi.Input<number>;
+        /**
+         * When set to 'true', the Aggressive Scale Down feature is enabled.
+         */
         isAggressiveScaleDownEnabled?: pulumi.Input<boolean>;
+        /**
+         * Would represent the maximum % to scale-down. Number between 1-100.
+         */
         maxScaleDownPercentage?: pulumi.Input<number>;
     }
 
     export interface OceanAutoscalerAutoscaleHeadroom {
+        /**
+         * Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+         */
         cpuPerUnit?: pulumi.Input<number>;
+        /**
+         * Optionally configure the number of GPUs to allocate the headroom.
+         */
         gpuPerUnit?: pulumi.Input<number>;
+        /**
+         * Optionally configure the amount of memory (MB) to allocate the headroom.
+         */
         memoryPerUnit?: pulumi.Input<number>;
+        /**
+         * The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+         */
         numOfUnits?: pulumi.Input<number>;
     }
 
     export interface OceanAutoscalerResourceLimits {
+        /**
+         * The maximum memory in GiB units that can be allocated to the cluster.
+         */
         maxMemoryGib?: pulumi.Input<number>;
+        /**
+         * The maximum cpu in vCPU units that can be allocated to the cluster.
+         */
         maxVcpu?: pulumi.Input<number>;
     }
 
@@ -1754,11 +1904,17 @@ export namespace aws {
     }
 
     export interface OceanDetachLoadBalancer {
+        /**
+         * If type is "TARGET_GROUP" then an ARN is required. Otherwise is not allowed.
+         */
         arn?: pulumi.Input<string>;
         /**
-         * The cluster name.
+         * If type is "CLASSIC" then a name is required. Otherwise is not allowed.
          */
         name?: pulumi.Input<string>;
+        /**
+         * Type of load balancer to use.
+         */
         type: pulumi.Input<string>;
     }
 
@@ -1934,9 +2090,6 @@ export namespace aws {
     export interface OceanLaunchSpecEphemeralStorage {
         /**
          * Specify an alternative device name from which ephemeral storage calculations should be derived. This parameter is used when the ephemeral storage should not utilize the root device. Provide the device name configured in the VNG's BDM or AMI's BDM that differs from the default root device.
-         *
-         *
-         * <a id="update-policy"></a>
          */
         ephemeralStorageDeviceName?: pulumi.Input<string>;
     }
@@ -2133,11 +2286,20 @@ export namespace aws {
     }
 
     export interface OceanLaunchSpecUpdatePolicy {
+        /**
+         * Holds the roll configuration.
+         */
         rollConfig?: pulumi.Input<inputs.aws.OceanLaunchSpecUpdatePolicyRollConfig>;
+        /**
+         * Enables the roll.
+         */
         shouldRoll: pulumi.Input<boolean>;
     }
 
     export interface OceanLaunchSpecUpdatePolicyRollConfig {
+        /**
+         * Sets the percentage of the instances to deploy in each batch.
+         */
         batchSizePercentage: pulumi.Input<number>;
     }
 
@@ -2185,45 +2347,111 @@ export namespace aws {
     }
 
     export interface OceanScheduledTask {
+        /**
+         * Set shutdown hours for cluster object.
+         */
         shutdownHours?: pulumi.Input<inputs.aws.OceanScheduledTaskShutdownHours>;
+        /**
+         * The scheduling tasks for the cluster.
+         */
         tasks?: pulumi.Input<pulumi.Input<inputs.aws.OceanScheduledTaskTask>[]>;
     }
 
     export interface OceanScheduledTaskShutdownHours {
+        /**
+         * Toggle the shutdown hours task. (Example: `true`).
+         */
         isEnabled?: pulumi.Input<boolean>;
+        /**
+         * Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of: `ddd:hh:mm-ddd:hh:mm` where `ddd` = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat, `hh` = hour 24 = 0 -23, `mm` = minute = 0 - 59. Time windows should not overlap. Required if `cluster.scheduling.isEnabled` is `true`. (Example: `Fri:15:30-Wed:14:30`).
+         */
         timeWindows: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface OceanScheduledTaskTask {
+        /**
+         * A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. (Example: `0 1 * * *`).
+         */
         cronExpression: pulumi.Input<string>;
+        /**
+         * Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
+         */
         isEnabled: pulumi.Input<boolean>;
+        /**
+         * This filed will be compatible to the `taskType` field. If `taskType` is defined as `clusterRoll`, user cluster roll object in parameters.
+         */
         parameters?: pulumi.Input<inputs.aws.OceanScheduledTaskTaskParameters>;
+        /**
+         * Valid values: `clusterRoll` `amiAutoUpdate`. Required for `cluster.scheduling.tasks`
+         */
         taskType: pulumi.Input<string>;
     }
 
     export interface OceanScheduledTaskTaskParameters {
+        /**
+         * Set amiAutoUpdate object
+         */
         amiAutoUpdate?: pulumi.Input<inputs.aws.OceanScheduledTaskTaskParametersAmiAutoUpdate>;
+        /**
+         * Set clusterRoll object
+         */
         parametersClusterRoll?: pulumi.Input<inputs.aws.OceanScheduledTaskTaskParametersParametersClusterRoll>;
     }
 
     export interface OceanScheduledTaskTaskParametersAmiAutoUpdate {
+        /**
+         * Set clusterRoll object
+         */
         amiAutoUpdateClusterRoll?: pulumi.Input<inputs.aws.OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRoll>;
+        /**
+         * When the AMI is updated according to the configuration set, a cluster roll can be triggered
+         */
         applyRoll?: pulumi.Input<boolean>;
+        /**
+         * When set to 'true', the auto-update process will update the VNGs’ AMI with the AMI to match the Kubernetes control plane version. either "patch" or "minorVersion" must be true.
+         */
         minorVersion?: pulumi.Input<boolean>;
+        /**
+         * When set to 'true', the auto-update process will update the VNGs’ images with the latest security patches. either "patch" or "minorVersion" must be true.
+         */
         patch?: pulumi.Input<boolean>;
     }
 
     export interface OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRoll {
+        /**
+         * Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+         */
         batchMinHealthyPercentage?: pulumi.Input<number>;
+        /**
+         * Value as a percent to set the size of a batch in a roll. Valid values are 0-100.
+         */
         batchSizePercentage?: pulumi.Input<number>;
+        /**
+         * Add a `comment` description for the roll. The `comment` is limited to 256 chars
+         */
         comment?: pulumi.Input<string>;
+        /**
+         * During the roll, if the parameter is set to true we honor PDB during the instance replacement.
+         */
         respectPdb?: pulumi.Input<boolean>;
     }
 
     export interface OceanScheduledTaskTaskParametersParametersClusterRoll {
+        /**
+         * Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+         */
         batchMinHealthyPercentage?: pulumi.Input<number>;
+        /**
+         * Value as a percent to set the size of a batch in a roll. Valid values are 0-100.
+         */
         batchSizePercentage?: pulumi.Input<number>;
+        /**
+         * Add a `comment` description for the roll. The `comment` is limited to 256 chars
+         */
         comment?: pulumi.Input<string>;
+        /**
+         * During the roll, if the parameter is set to true we honor PDB during the instance replacement.
+         */
         respectPdb?: pulumi.Input<boolean>;
     }
 
@@ -2239,17 +2467,44 @@ export namespace aws {
     }
 
     export interface OceanUpdatePolicy {
+        /**
+         * will update instance tags on the fly without rolling the cluster.
+         */
         autoApplyTags?: pulumi.Input<boolean>;
+        /**
+         * Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
+         */
         conditionedRoll?: pulumi.Input<boolean>;
+        /**
+         * A custom list of attributes will trigger the cluster roll operation (overrides the predefined list of parameters). Valid only when the `conditionedRoll` parameter is set to true. (Valid values: `"subnetIds"`,`"whitelist"`,`"blacklist"`,`"userData"`,`"imageId"`,`"securityGroups"`,`"keyName"`,`"iamInstanceProfile"`,`"associatePublicIpAddress"`,`"loadBalancers"`,`"instanceMetadataOptions"`,`"ebsOptimized"`,`"rootVolumeSize"`)
+         */
         conditionedRollParams?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * While used, you can control whether the group should perform a deployment after an update to the configuration.
+         */
         rollConfig?: pulumi.Input<inputs.aws.OceanUpdatePolicyRollConfig>;
+        /**
+         * Enables the roll.
+         */
         shouldRoll: pulumi.Input<boolean>;
     }
 
     export interface OceanUpdatePolicyRollConfig {
+        /**
+         * Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+         */
         batchMinHealthyPercentage?: pulumi.Input<number>;
+        /**
+         * Sets the percentage of the instances to deploy in each batch.
+         */
         batchSizePercentage: pulumi.Input<number>;
+        /**
+         * List of virtual node group identifiers to be rolled.
+         */
         launchSpecIds?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+         */
         respectPdb?: pulumi.Input<boolean>;
     }
 
@@ -2535,8 +2790,6 @@ export namespace azure {
         excludeSeries?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * The filtered gpu types will belong to one of the gpu types from this list.
-         *
-         * <a id="update-policy"></a>
          */
         gpuTypes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -2667,19 +2920,52 @@ export namespace azure {
     }
 
     export interface OceanNpUpdatePolicy {
+        /**
+         * Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as availability_zones, max_pods_per_node, enable_node_public_ip, os_disk_size_gb, os_disk_type, os_sku, kubernetes_version, vnet_subnet_ids, pod_subnet_ids, labels, taints and tags).
+         */
         conditionedRoll?: pulumi.Input<boolean>;
+        /**
+         * While used, you can control whether the group should perform a deployment after an update to the configuration.
+         */
         rollConfig?: pulumi.Input<inputs.azure.OceanNpUpdatePolicyRollConfig>;
+        /**
+         * If set to true along with the cluster update, roll will be triggered.
+         */
         shouldRoll: pulumi.Input<boolean>;
     }
 
     export interface OceanNpUpdatePolicyRollConfig {
+        /**
+         * Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+         */
         batchMinHealthyPercentage?: pulumi.Input<number>;
+        /**
+         * Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.
+         */
         batchSizePercentage?: pulumi.Input<number>;
+        /**
+         * Add a comment description for the roll. The comment is limited to 256 chars and optional.
+         */
         comment?: pulumi.Input<string>;
+        /**
+         * List of node names to be rolled. Each identifier is a string. nodeNames can be null, and cannot be used together with nodePoolNames and vngIds.
+         */
         nodeNames?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * List of node pools to be rolled. Each node pool name is a string. nodePoolNames can be null, and cannot be used together with nodeNames and vngIds.
+         */
         nodePoolNames?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * During the roll, if the parameter is set to true we honor PDB during the nodes replacement.
+         */
         respectPdb?: pulumi.Input<boolean>;
+        /**
+         * During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.
+         */
         respectRestrictScaleDown?: pulumi.Input<boolean>;
+        /**
+         * List of virtual node group identifiers to be rolled. Each identifier is a string. vngIds can be null, and cannot be used together with nodeNames and nodePoolNames.
+         */
         vngIds?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
@@ -2702,7 +2988,6 @@ export namespace azure {
         excludeSeries?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * The filtered gpu types will belong to one of the gpu types from this list.
-         * <a id="update-policy"></a>
          */
         gpuTypes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -2796,19 +3081,52 @@ export namespace azure {
     }
 
     export interface OceanNpVirtualNodeGroupUpdatePolicy {
+        /**
+         * Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as availability_zones, max_pods_per_node, enable_node_public_ip, os_disk_size_gb, os_disk_type, os_sku, kubernetes_version, vnet_subnet_ids, pod_subnet_ids, labels, taints and tags).
+         */
         conditionedRoll?: pulumi.Input<boolean>;
+        /**
+         * While used, you can control whether the group should perform a deployment after an update to the configuration.
+         */
         rollConfig?: pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupUpdatePolicyRollConfig>;
+        /**
+         * If set to true along with the vng update, roll will be triggered.
+         */
         shouldRoll: pulumi.Input<boolean>;
     }
 
     export interface OceanNpVirtualNodeGroupUpdatePolicyRollConfig {
+        /**
+         * Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+         */
         batchMinHealthyPercentage?: pulumi.Input<number>;
+        /**
+         * Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.
+         */
         batchSizePercentage?: pulumi.Input<number>;
+        /**
+         * Add a comment description for the roll. The comment is limited to 256 chars and optional.
+         */
         comment?: pulumi.Input<string>;
+        /**
+         * List of node names to be rolled. Each identifier is a string. nodeNames can be null, and cannot be used together with nodePoolNames and vngIds.
+         */
         nodeNames?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * List of node pools to be rolled. Each node pool name is a string. nodePoolNames can be null, and cannot be used together with nodeNames and vngIds.
+         */
         nodePoolNames?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * During the roll, if the parameter is set to true we honor PDB during the nodes replacement.
+         */
         respectPdb?: pulumi.Input<boolean>;
+        /**
+         * During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.
+         */
         respectRestrictScaleDown?: pulumi.Input<boolean>;
+        /**
+         * List of virtual node group identifiers to be rolled. Each identifier is a string. vngIds can be null, and cannot be used together with nodeNames and nodePoolNames.
+         */
         vngIds?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
@@ -2953,54 +3271,144 @@ export namespace azure {
 
 export namespace ecs {
     export interface OceanAutoscaler {
+        /**
+         * The auto-headroom percentage. Set a number between 0-200 to control the headroom % of the cluster. Relevant when `isAutoConfig`= true.
+         */
         autoHeadroomPercentage?: pulumi.Input<number>;
+        /**
+         * Cooldown period between scaling actions.
+         */
         cooldown?: pulumi.Input<number>;
+        /**
+         * Auto Scaling scale down operations.
+         */
         down?: pulumi.Input<inputs.ecs.OceanAutoscalerDown>;
+        /**
+         * When set to true, both automatic and per custom launch specification manual headroom to be saved concurrently and independently in the cluster. prerequisite: isAutoConfig must be true
+         */
         enableAutomaticAndManualHeadroom?: pulumi.Input<boolean>;
+        /**
+         * Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
+         */
         headroom?: pulumi.Input<inputs.ecs.OceanAutoscalerHeadroom>;
+        /**
+         * Automatically configure and optimize headroom resources.
+         */
         isAutoConfig?: pulumi.Input<boolean>;
+        /**
+         * Enable the Ocean ECS autoscaler.
+         */
         isEnabled?: pulumi.Input<boolean>;
+        /**
+         * Optionally set upper and lower bounds on the resource usage of the cluster.
+         */
         resourceLimits?: pulumi.Input<inputs.ecs.OceanAutoscalerResourceLimits>;
+        /**
+         * Option to scale down non-service tasks. If not set, Ocean does not scale down standalone tasks.
+         */
         shouldScaleDownNonServiceTasks?: pulumi.Input<boolean>;
     }
 
     export interface OceanAutoscalerDown {
+        /**
+         * Would represent the maximum % to scale-down. Number between 1-100.
+         */
         maxScaleDownPercentage?: pulumi.Input<number>;
     }
 
     export interface OceanAutoscalerHeadroom {
+        /**
+         * Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+         */
         cpuPerUnit?: pulumi.Input<number>;
+        /**
+         * Optionally configure the amount of memory (MB) to allocate the headroom.
+         */
         memoryPerUnit?: pulumi.Input<number>;
+        /**
+         * The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+         */
         numOfUnits?: pulumi.Input<number>;
     }
 
     export interface OceanAutoscalerResourceLimits {
+        /**
+         * The maximum memory in GiB units that can be allocated to the cluster.
+         */
         maxMemoryGib?: pulumi.Input<number>;
+        /**
+         * The maximum cpu in vCPU units that can be allocated to the cluster.
+         */
         maxVcpu?: pulumi.Input<number>;
     }
 
     export interface OceanBlockDeviceMapping {
+        /**
+         * String. Set device name. Example: `/dev/xvda1`.
+         */
         deviceName: pulumi.Input<string>;
+        /**
+         * Object. Set Elastic Block Store properties.
+         */
         ebs?: pulumi.Input<inputs.ecs.OceanBlockDeviceMappingEbs>;
+        /**
+         * String. Suppresses the specified device included in the block device mapping of the AMI.
+         */
         noDevice?: pulumi.Input<string>;
         virtualName?: pulumi.Input<string>;
     }
 
     export interface OceanBlockDeviceMappingEbs {
+        /**
+         * Boolean. Toggles EBS deletion upon instance termination.
+         */
         deleteOnTermination?: pulumi.Input<boolean>;
+        /**
+         * Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
+         */
         dynamicVolumeSize?: pulumi.Input<inputs.ecs.OceanBlockDeviceMappingEbsDynamicVolumeSize>;
+        /**
+         * Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+         */
         encrypted?: pulumi.Input<boolean>;
+        /**
+         * Int. The number of I/O operations per second (IOPS) that the volume supports.
+         */
         iops?: pulumi.Input<number>;
+        /**
+         * String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+         */
         kmsKeyId?: pulumi.Input<string>;
+        /**
+         * (Optional) String. The snapshot ID to mount by.
+         */
         snapshotId?: pulumi.Input<string>;
+        /**
+         * The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
+         */
         throughput?: pulumi.Input<number>;
+        /**
+         * Int. The size (in GB) of the volume.
+         */
         volumeSize?: pulumi.Input<number>;
+        /**
+         * String. The type of the volume. Example: `gp2`.
+         */
         volumeType?: pulumi.Input<string>;
     }
 
     export interface OceanBlockDeviceMappingEbsDynamicVolumeSize {
+        /**
+         * Int. Initial size for volume. Example: `50`.
+         */
         baseSize: pulumi.Input<number>;
+        /**
+         * String. Resource type to increase volume size dynamically by. Valid values: `CPU`.
+         */
         resource: pulumi.Input<string>;
+        /**
+         * Int. Additional size (in GB) per resource unit. Example: When the `baseSize=50`, `sizePerResourceUnit=20`, and instance with two CPUs is launched, its total disk size will be: 90GB.
+         */
         sizePerResourceUnit: pulumi.Input<number>;
     }
 
@@ -3071,27 +3479,69 @@ export namespace ecs {
     }
 
     export interface OceanLaunchSpecBlockDeviceMapping {
+        /**
+         * String. Set device name. (Example: "/dev/xvda1").
+         */
         deviceName: pulumi.Input<string>;
+        /**
+         * Object. Set Elastic Block Store properties .
+         */
         ebs?: pulumi.Input<inputs.ecs.OceanLaunchSpecBlockDeviceMappingEbs>;
         noDevice?: pulumi.Input<string>;
         virtualName?: pulumi.Input<string>;
     }
 
     export interface OceanLaunchSpecBlockDeviceMappingEbs {
+        /**
+         * Boolean. Flag to delete the EBS on instance termination.
+         */
         deleteOnTermination?: pulumi.Input<boolean>;
+        /**
+         * Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
+         */
         dynamicVolumeSize?: pulumi.Input<inputs.ecs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize>;
+        /**
+         * Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+         */
         encrypted?: pulumi.Input<boolean>;
+        /**
+         * Int. The number of I/O operations per second (IOPS) that the volume supports.
+         */
         iops?: pulumi.Input<number>;
+        /**
+         * String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+         */
         kmsKeyId?: pulumi.Input<string>;
+        /**
+         * (Optional) String. The Snapshot ID to mount by.
+         */
         snapshotId?: pulumi.Input<string>;
+        /**
+         * The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
+         */
         throughput?: pulumi.Input<number>;
+        /**
+         * Int. The size, in GB of the volume.
+         */
         volumeSize?: pulumi.Input<number>;
+        /**
+         * String. The type of the volume (example: "gp2").
+         */
         volumeType?: pulumi.Input<string>;
     }
 
     export interface OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize {
+        /**
+         * Int. Initial size for volume. (Example: 50)
+         */
         baseSize: pulumi.Input<number>;
+        /**
+         * String. Resource type to increase volume size dynamically by. (valid values: "CPU")
+         */
         resource: pulumi.Input<string>;
+        /**
+         * Int. Additional size (in GB) per resource unit. (Example: baseSize= 50, sizePerResourceUnit=20, and instance with 2 CPU is launched - its total disk size will be: 90GB)
+         */
         sizePerResourceUnit: pulumi.Input<number>;
     }
 
@@ -3150,8 +3600,6 @@ export namespace ecs {
     export interface OceanLaunchSpecStrategy {
         /**
          * When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Virtual Node Group instances.
-         *
-         * <a id="block-devices"></a>
          */
         spotPercentage?: pulumi.Input<number>;
     }
@@ -3183,24 +3631,54 @@ export namespace ecs {
     }
 
     export interface OceanOptimizeImages {
+        /**
+         * String. Valid values: "always" "never" "timeWindow".
+         */
         performAt: pulumi.Input<string>;
+        /**
+         * Boolean. Enable auto image (AMI) update for the ECS container instances. The auto update applies for ECS-Optimized AMIs.
+         */
         shouldOptimizeEcsAmi: pulumi.Input<boolean>;
+        /**
+         * Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
+         */
         timeWindows?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface OceanScheduledTask {
+        /**
+         * Set shutdown hours for cluster object.
+         */
         shutdownHours?: pulumi.Input<inputs.ecs.OceanScheduledTaskShutdownHours>;
+        /**
+         * The scheduling tasks for the cluster.
+         */
         tasks?: pulumi.Input<pulumi.Input<inputs.ecs.OceanScheduledTaskTask>[]>;
     }
 
     export interface OceanScheduledTaskShutdownHours {
+        /**
+         * Flag to enable / disable the shutdown hours.
+         */
         isEnabled?: pulumi.Input<boolean>;
+        /**
+         * Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59). Time windows should not overlap. Required when `cluster.scheduling.isEnabled` is true. API Times are in UTC. Example: `Fri:15:30-Wed:14:30`.
+         */
         timeWindows: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface OceanScheduledTaskTask {
+        /**
+         * A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. Example: `0 1 * * *`.
+         */
         cronExpression: pulumi.Input<string>;
+        /**
+         * Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
+         */
         isEnabled: pulumi.Input<boolean>;
+        /**
+         * Valid values: "clusterRoll". Required for `cluster.scheduling.tasks object`. Example: `clusterRoll`.
+         */
         taskType: pulumi.Input<string>;
     }
 
@@ -3217,53 +3695,128 @@ export namespace ecs {
     }
 
     export interface OceanUpdatePolicy {
+        /**
+         * will update instance tags on the fly without rolling the cluster.
+         */
         autoApplyTags?: pulumi.Input<boolean>;
+        /**
+         * Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
+         */
         conditionedRoll?: pulumi.Input<boolean>;
         rollConfig?: pulumi.Input<inputs.ecs.OceanUpdatePolicyRollConfig>;
+        /**
+         * Enables the roll.
+         */
         shouldRoll: pulumi.Input<boolean>;
     }
 
     export interface OceanUpdatePolicyRollConfig {
+        /**
+         * Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+         */
         batchMinHealthyPercentage?: pulumi.Input<number>;
+        /**
+         * Sets the percentage of the instances to deploy in each batch.
+         */
         batchSizePercentage: pulumi.Input<number>;
     }
 }
 
 export namespace gcp {
     export interface ElastigroupBackendService {
+        /**
+         * Sets which location the backend services will be active. Valid values: `regional`, `global`.
+         */
         locationType?: pulumi.Input<string>;
+        /**
+         * Describes a named port and a list of ports.
+         */
         namedPorts?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupBackendServiceNamedPort>[]>;
+        /**
+         * Use when `locationType` is "regional". Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
+         */
         scheme?: pulumi.Input<string>;
+        /**
+         * The name of the backend service.
+         */
         serviceName: pulumi.Input<string>;
     }
 
     export interface ElastigroupBackendServiceNamedPort {
         /**
-         * The group name.
+         * The name of the port.
          */
         name: pulumi.Input<string>;
+        /**
+         * A list of ports.
+         *
+         * Usage:
+         */
         ports: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface ElastigroupDisk {
+        /**
+         * Specifies whether the disk will be auto-deleted when the instance is deleted.
+         */
         autoDelete?: pulumi.Input<boolean>;
+        /**
+         * Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
+         */
         boot?: pulumi.Input<boolean>;
+        /**
+         * Specifies a unique device name of your choice.
+         */
         deviceName?: pulumi.Input<string>;
+        /**
+         * Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance.
+         */
         initializeParams?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupDiskInitializeParam>[]>;
+        /**
+         * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME.
+         */
         interface?: pulumi.Input<string>;
+        /**
+         * The mode in which to attach this disk, either READ_WRITE or READ_ONLY.
+         */
         mode?: pulumi.Input<string>;
+        /**
+         * Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
+         */
         source?: pulumi.Input<string>;
+        /**
+         * Specifies the type of disk, either SCRATCH or PERSISTENT.
+         */
         type?: pulumi.Input<string>;
     }
 
     export interface ElastigroupDiskInitializeParam {
+        /**
+         * Specifies disk size in gigabytes. Must be in increments of 2.
+         */
         diskSizeGb?: pulumi.Input<string>;
+        /**
+         * Specifies the disk type to use to create the instance. Valid values: pd-ssd, local-ssd.
+         */
         diskType?: pulumi.Input<string>;
+        /**
+         * A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
+         *
+         * Usage:
+         */
         sourceImage: pulumi.Input<string>;
     }
 
     export interface ElastigroupGpu {
+        /**
+         * The number of GPUs. Must be 0, 2, 4, 6, 8.
+         *
+         * Usage:
+         */
         count: pulumi.Input<number>;
+        /**
+         * The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
+         */
         type: pulumi.Input<string>;
     }
 
@@ -3374,27 +3927,65 @@ export namespace gcp {
     }
 
     export interface ElastigroupScalingUpPolicy {
+        /**
+         * Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
+         */
         actionType?: pulumi.Input<string>;
+        /**
+         * Value to which the action type will be adjusted. Required if using "numeric" or "percentageAdjustment" action types.
+         */
         adjustment?: pulumi.Input<number>;
+        /**
+         * Time (seconds) to wait after a scaling action before resuming monitoring.
+         */
         cooldown?: pulumi.Input<number>;
+        /**
+         * A list of dimensions describing qualities of the metric.
+         */
         dimensions?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupScalingUpPolicyDimension>[]>;
+        /**
+         * Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
+         */
         evaluationPeriods?: pulumi.Input<number>;
+        /**
+         * Metric to monitor. Valid values: "Percentage CPU", "Network In", "Network Out", "Disk Read Bytes", "Disk Write Bytes", "Disk Write Operations/Sec", "Disk Read Operations/Sec".
+         */
         metricName: pulumi.Input<string>;
         namespace: pulumi.Input<string>;
+        /**
+         * The operator used to evaluate the threshold against the current metric value. Valid values: "gt" (greater than), "get" (greater-than or equal), "lt" (less than), "lte" (less than or equal).
+         */
         operator?: pulumi.Input<string>;
+        /**
+         * Amount of time (seconds) for which the threshold must be met in order to trigger the scaling action.
+         */
         period?: pulumi.Input<number>;
+        /**
+         * Name of scaling policy.
+         */
         policyName: pulumi.Input<string>;
         source?: pulumi.Input<string>;
+        /**
+         * Statistic by which to evaluate the selected metric. Valid values: "AVERAGE", "SAMPLE_COUNT", "SUM", "MINIMUM", "MAXIMUM", "PERCENTILE", "COUNT".
+         */
         statistic?: pulumi.Input<string>;
+        /**
+         * The value at which the scaling action is triggered.
+         */
         threshold: pulumi.Input<number>;
         unit: pulumi.Input<string>;
     }
 
     export interface ElastigroupScalingUpPolicyDimension {
         /**
-         * The group name.
+         * The dimension name.
          */
         name: pulumi.Input<string>;
+        /**
+         * The dimension value.
+         *
+         * Usage:
+         */
         value?: pulumi.Input<string>;
     }
 
@@ -3582,30 +4173,78 @@ export namespace gke {
     }
 
     export interface OceanImportAutoscaler {
+        /**
+         * Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom % from the cluster. Relevant when isAutoConfig=true.
+         */
         autoHeadroomPercentage?: pulumi.Input<number>;
+        /**
+         * Cooldown period between scaling actions.
+         */
         cooldown?: pulumi.Input<number>;
+        /**
+         * Auto Scaling scale down operations.
+         */
         down?: pulumi.Input<inputs.gke.OceanImportAutoscalerDown>;
+        /**
+         * enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
+         */
         enableAutomaticAndManualHeadroom?: pulumi.Input<boolean>;
+        /**
+         * Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
+         */
         headroom?: pulumi.Input<inputs.gke.OceanImportAutoscalerHeadroom>;
+        /**
+         * Automatically configure and optimize headroom resources.
+         */
         isAutoConfig?: pulumi.Input<boolean>;
+        /**
+         * Enable the Ocean Kubernetes Autoscaler.
+         */
         isEnabled?: pulumi.Input<boolean>;
+        /**
+         * Optionally set upper and lower bounds on the resource usage of the cluster.
+         */
         resourceLimits?: pulumi.Input<inputs.gke.OceanImportAutoscalerResourceLimits>;
     }
 
     export interface OceanImportAutoscalerDown {
+        /**
+         * The number of evaluation periods that should accumulate before a scale down action takes place.
+         */
         evaluationPeriods?: pulumi.Input<number>;
+        /**
+         * Would represent the maximum % to scale-down. Number between 1-100.
+         */
         maxScaleDownPercentage?: pulumi.Input<number>;
     }
 
     export interface OceanImportAutoscalerHeadroom {
+        /**
+         * Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+         */
         cpuPerUnit?: pulumi.Input<number>;
+        /**
+         * How much GPU allocate for headroom unit.
+         */
         gpuPerUnit?: pulumi.Input<number>;
+        /**
+         * Optionally configure the amount of memory (MiB) to allocate the headroom.
+         */
         memoryPerUnit?: pulumi.Input<number>;
+        /**
+         * The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+         */
         numOfUnits?: pulumi.Input<number>;
     }
 
     export interface OceanImportAutoscalerResourceLimits {
+        /**
+         * The maximum memory in GiB units that can be allocated to the cluster.
+         */
         maxMemoryGib?: pulumi.Input<number>;
+        /**
+         * The maximum cpu in vCpu units that can be allocated to the cluster.
+         */
         maxVcpu?: pulumi.Input<number>;
     }
 
@@ -3631,30 +4270,72 @@ export namespace gke {
     }
 
     export interface OceanImportScheduledTask {
+        /**
+         * Set shutdown hours for cluster object.
+         */
         shutdownHours?: pulumi.Input<inputs.gke.OceanImportScheduledTaskShutdownHours>;
+        /**
+         * The scheduling tasks for the cluster.
+         */
         tasks?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportScheduledTaskTask>[]>;
     }
 
     export interface OceanImportScheduledTaskShutdownHours {
+        /**
+         * Flag to enable / disable the shutdown hours.
+         * Example: True
+         */
         isEnabled?: pulumi.Input<boolean>;
+        /**
+         * Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
+         * Example: Fri:15:30-Wed:14:30
+         */
         timeWindows: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface OceanImportScheduledTaskTask {
+        /**
+         * A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
+         * Example: 0 1 * * *
+         */
         cronExpression: pulumi.Input<string>;
+        /**
+         * Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
+         */
         isEnabled: pulumi.Input<boolean>;
+        /**
+         * The scheduling parameters for the cluster.
+         */
         taskParameters?: pulumi.Input<inputs.gke.OceanImportScheduledTaskTaskTaskParameters>;
+        /**
+         * Valid values: "clusterRoll". Required for cluster.scheduling.tasks object.
+         */
         taskType: pulumi.Input<string>;
     }
 
     export interface OceanImportScheduledTaskTaskTaskParameters {
+        /**
+         * The cluster roll parameters for the cluster.
+         */
         clusterRoll?: pulumi.Input<inputs.gke.OceanImportScheduledTaskTaskTaskParametersClusterRoll>;
     }
 
     export interface OceanImportScheduledTaskTaskTaskParametersClusterRoll {
+        /**
+         * Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+         */
         batchMinHealthyPercentage?: pulumi.Input<number>;
+        /**
+         * Value as a percent to set the size of a batch in a roll. Valid values are 0-100.
+         */
         batchSizePercentage?: pulumi.Input<number>;
+        /**
+         * Add a comment description for the roll. The comment is limited to 256 chars.
+         */
         comment?: pulumi.Input<string>;
+        /**
+         * During the roll, if the parameter is set to true we honor PDB during the instance replacement.
+         */
         respectPdb?: pulumi.Input<boolean>;
     }
 
@@ -3671,23 +4352,50 @@ export namespace gke {
 
     export interface OceanImportStrategy {
         /**
-         * The draining timeout (in seconds) before terminating the instance.
+         * The draining timeout (in seconds) before terminating the instance. If no draining timeout is defined, the default draining timeout will be used.
          */
         drainingTimeout?: pulumi.Input<number>;
+        /**
+         * Defines the desired preemptible percentage for the cluster.
+         */
         preemptiblePercentage?: pulumi.Input<number>;
+        /**
+         * Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
+         */
         provisioningModel?: pulumi.Input<string>;
     }
 
     export interface OceanImportUpdatePolicy {
+        /**
+         * Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
+         */
         conditionedRoll?: pulumi.Input<boolean>;
+        /**
+         * Holds the roll configuration.
+         */
         rollConfig?: pulumi.Input<inputs.gke.OceanImportUpdatePolicyRollConfig>;
+        /**
+         * Enables the roll.
+         */
         shouldRoll: pulumi.Input<boolean>;
     }
 
     export interface OceanImportUpdatePolicyRollConfig {
+        /**
+         * Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+         */
         batchMinHealthyPercentage?: pulumi.Input<number>;
+        /**
+         * Sets the percentage of the instances to deploy in each batch.
+         */
         batchSizePercentage: pulumi.Input<number>;
+        /**
+         * List of Virtual Node Group identifiers to be rolled.
+         */
         launchSpecIds?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Default: False. During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+         */
         respectPdb?: pulumi.Input<boolean>;
     }
 
@@ -3776,8 +4484,6 @@ export namespace gke {
         ipCidrRange: pulumi.Input<string>;
         /**
          * specify the IP address range for the subnet secondary IP range.
-         *
-         * <a id="update-policy"></a>
          */
         subnetworkRangeName: pulumi.Input<string>;
     }
@@ -3872,11 +4578,20 @@ export namespace gke {
     }
 
     export interface OceanLaunchSpecUpdatePolicy {
+        /**
+         * Holds the roll configuration.
+         */
         rollConfig?: pulumi.Input<inputs.gke.OceanLaunchSpecUpdatePolicyRollConfig>;
+        /**
+         * Enables the roll.
+         */
         shouldRoll: pulumi.Input<boolean>;
     }
 
     export interface OceanLaunchSpecUpdatePolicyRollConfig {
+        /**
+         * Sets the percentage of the instances to deploy in each batch.
+         */
         batchSizePercentage: pulumi.Input<number>;
     }
 }

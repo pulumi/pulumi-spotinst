@@ -13,7 +13,13 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class OceanScheduledTaskShutdownHours
     {
+        /// <summary>
+        /// Toggle the shutdown hours task. (Example: `true`).
+        /// </summary>
         public readonly bool? IsEnabled;
+        /// <summary>
+        /// Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of: `ddd:hh:mm-ddd:hh:mm` where `ddd` = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat, `hh` = hour 24 = 0 -23, `mm` = minute = 0 - 59. Time windows should not overlap. Required if `cluster.scheduling.isEnabled` is `true`. (Example: `Fri:15:30-Wed:14:30`).
+        /// </summary>
         public readonly ImmutableArray<string> TimeWindows;
 
         [OutputConstructor]

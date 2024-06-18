@@ -13,14 +13,41 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class OceanAutoscaler
     {
+        /// <summary>
+        /// Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscale_is_auto_config` toggled on.
+        /// </summary>
         public readonly int? AutoHeadroomPercentage;
+        /// <summary>
+        /// Cooldown period between scaling actions.
+        /// </summary>
         public readonly int? AutoscaleCooldown;
+        /// <summary>
+        /// Auto Scaling scale down operations.
+        /// </summary>
         public readonly Outputs.OceanAutoscalerAutoscaleDown? AutoscaleDown;
+        /// <summary>
+        /// Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
+        /// </summary>
         public readonly Outputs.OceanAutoscalerAutoscaleHeadroom? AutoscaleHeadroom;
+        /// <summary>
+        /// Automatically configure and optimize headroom resources.
+        /// </summary>
         public readonly bool? AutoscaleIsAutoConfig;
+        /// <summary>
+        /// Enable the Ocean Kubernetes Auto Scaler.
+        /// </summary>
         public readonly bool? AutoscaleIsEnabled;
+        /// <summary>
+        /// enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
+        /// </summary>
         public readonly bool? EnableAutomaticAndManualHeadroom;
+        /// <summary>
+        /// List of Ocean extended resource definitions to use in this cluster.
+        /// </summary>
         public readonly ImmutableArray<string> ExtendedResourceDefinitions;
+        /// <summary>
+        /// Optionally set upper and lower bounds on the resource usage of the cluster.
+        /// </summary>
         public readonly Outputs.OceanAutoscalerResourceLimits? ResourceLimits;
 
         [OutputConstructor]

@@ -17,124 +17,6 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
  *
- * // Create a Mr Scaler with New strategy
- * const sample_MrScaler_01 = new spotinst.aws.MrScalar("sample-MrScaler-01", {
- *     name: "sample-MrScaler-01",
- *     description: "Testing MrScaler creation",
- *     region: "us-west-2",
- *     strategy: "new",
- *     releaseLabel: "emr-5.17.0",
- *     retries: 2,
- *     availabilityZones: ["us-west-2a:subnet-123456"],
- *     provisioningTimeout: {
- *         timeout: 15,
- *         timeoutAction: "terminateAndRetry",
- *     },
- *     logUri: "s3://example-logs",
- *     additionalInfo: "{'test':'more information'}",
- *     jobFlowRole: "EMR_EC2_ExampleRole",
- *     securityConfig: "example-config",
- *     serviceRole: "example-role",
- *     terminationProtected: false,
- *     keepJobFlowAlive: true,
- *     customAmiId: "ami-123456",
- *     repoUpgradeOnBoot: "NONE",
- *     ec2KeyName: "test-key",
- *     managedPrimarySecurityGroup: "sg-123456",
- *     managedReplicaSecurityGroup: "sg-987654",
- *     serviceAccessSecurityGroup: "access-example",
- *     additionalPrimarySecurityGroups: ["sg-456321"],
- *     additionalReplicaSecurityGroups: ["sg-123654"],
- *     applications: [
- *         {
- *             name: "Ganglia",
- *             version: "1.0",
- *         },
- *         {
- *             name: "Hadoop",
- *         },
- *         {
- *             name: "Pig",
- *             args: [
- *                 "fake",
- *                 "args",
- *             ],
- *         },
- *     ],
- *     instanceWeights: [
- *         {
- *             instanceType: "t2.small",
- *             weightedCapacity: 10,
- *         },
- *         {
- *             instanceType: "t2.medium",
- *             weightedCapacity: 90,
- *         },
- *     ],
- *     stepsFiles: [{
- *         bucket: "example-bucket",
- *         key: "steps.json",
- *     }],
- *     configurationsFiles: [{
- *         bucket: "example-bucket",
- *         key: "configurations.json",
- *     }],
- *     bootstrapActionsFiles: [{
- *         bucket: "sample-emr-test",
- *         key: "bootstrap-actions.json",
- *     }],
- *     masterInstanceTypes: ["c3.xlarge"],
- *     masterLifecycle: "SPOT",
- *     masterEbsOptimized: true,
- *     masterTarget: 1,
- *     masterEbsBlockDevices: [{
- *         volumesPerInstance: 1,
- *         volumeType: "gp2",
- *         sizeInGb: 30,
- *     }],
- *     coreInstanceTypes: [
- *         "c3.xlarge",
- *         "c4.xlarge",
- *     ],
- *     coreMinSize: 1,
- *     coreMaxSize: 1,
- *     coreDesiredCapacity: 1,
- *     coreLifecycle: "ON_DEMAND",
- *     coreEbsOptimized: false,
- *     coreUnit: "instance",
- *     coreEbsBlockDevices: [{
- *         volumesPerInstance: 2,
- *         volumeType: "gp2",
- *         sizeInGb: 40,
- *     }],
- *     taskInstanceTypes: [
- *         "c3.xlarge",
- *         "c4.xlarge",
- *     ],
- *     taskMinSize: 0,
- *     taskMaxSize: 30,
- *     taskDesiredCapacity: 1,
- *     taskLifecycle: "SPOT",
- *     taskEbsOptimized: false,
- *     taskUnit: "instance",
- *     taskEbsBlockDevices: [{
- *         volumesPerInstance: 2,
- *         volumeType: "gp2",
- *         sizeInGb: 40,
- *     }],
- *     tags: [{
- *         key: "Creator",
- *         value: "Pulumi",
- *     }],
- * });
- * ```
- *
- * ### Clone Strategy
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as spotinst from "@pulumi/spotinst";
- *
  * export = async () => {
  *     const sample_MrScaler_01 = new spotinst.aws.MrScalar("sample-MrScaler-01", {
  *         name: "sample-MrScaler-01",
@@ -243,6 +125,124 @@ import * as utilities from "../utilities";
  *         volumesPerInstance: 1,
  *         volumeType: "gp2",
  *         sizeInGb: 20,
+ *     }],
+ * });
+ * ```
+ *
+ * ### New Strategy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as spotinst from "@pulumi/spotinst";
+ *
+ * // Create a Mr Scaler with New strategy
+ * const sample_MrScaler_01 = new spotinst.aws.MrScalar("sample-MrScaler-01", {
+ *     name: "sample-MrScaler-01",
+ *     description: "Testing MrScaler creation",
+ *     region: "us-west-2",
+ *     strategy: "new",
+ *     releaseLabel: "emr-5.17.0",
+ *     retries: 2,
+ *     availabilityZones: ["us-west-2a:subnet-123456"],
+ *     provisioningTimeout: {
+ *         timeout: 15,
+ *         timeoutAction: "terminateAndRetry",
+ *     },
+ *     logUri: "s3://example-logs",
+ *     additionalInfo: "{'test':'more information'}",
+ *     jobFlowRole: "EMR_EC2_ExampleRole",
+ *     securityConfig: "example-config",
+ *     serviceRole: "example-role",
+ *     terminationProtected: false,
+ *     keepJobFlowAlive: true,
+ *     customAmiId: "ami-123456",
+ *     repoUpgradeOnBoot: "NONE",
+ *     ec2KeyName: "test-key",
+ *     managedPrimarySecurityGroup: "sg-123456",
+ *     managedReplicaSecurityGroup: "sg-987654",
+ *     serviceAccessSecurityGroup: "access-example",
+ *     additionalPrimarySecurityGroups: ["sg-456321"],
+ *     additionalReplicaSecurityGroups: ["sg-123654"],
+ *     applications: [
+ *         {
+ *             name: "Ganglia",
+ *             version: "1.0",
+ *         },
+ *         {
+ *             name: "Hadoop",
+ *         },
+ *         {
+ *             name: "Pig",
+ *             args: [
+ *                 "fake",
+ *                 "args",
+ *             ],
+ *         },
+ *     ],
+ *     instanceWeights: [
+ *         {
+ *             instanceType: "t2.small",
+ *             weightedCapacity: 10,
+ *         },
+ *         {
+ *             instanceType: "t2.medium",
+ *             weightedCapacity: 90,
+ *         },
+ *     ],
+ *     stepsFiles: [{
+ *         bucket: "example-bucket",
+ *         key: "steps.json",
+ *     }],
+ *     configurationsFiles: [{
+ *         bucket: "example-bucket",
+ *         key: "configurations.json",
+ *     }],
+ *     bootstrapActionsFiles: [{
+ *         bucket: "sample-emr-test",
+ *         key: "bootstrap-actions.json",
+ *     }],
+ *     masterInstanceTypes: ["c3.xlarge"],
+ *     masterLifecycle: "SPOT",
+ *     masterEbsOptimized: true,
+ *     masterTarget: 1,
+ *     masterEbsBlockDevices: [{
+ *         volumesPerInstance: 1,
+ *         volumeType: "gp2",
+ *         sizeInGb: 30,
+ *     }],
+ *     coreInstanceTypes: [
+ *         "c3.xlarge",
+ *         "c4.xlarge",
+ *     ],
+ *     coreMinSize: 1,
+ *     coreMaxSize: 1,
+ *     coreDesiredCapacity: 1,
+ *     coreLifecycle: "ON_DEMAND",
+ *     coreEbsOptimized: false,
+ *     coreUnit: "instance",
+ *     coreEbsBlockDevices: [{
+ *         volumesPerInstance: 2,
+ *         volumeType: "gp2",
+ *         sizeInGb: 40,
+ *     }],
+ *     taskInstanceTypes: [
+ *         "c3.xlarge",
+ *         "c4.xlarge",
+ *     ],
+ *     taskMinSize: 0,
+ *     taskMaxSize: 30,
+ *     taskDesiredCapacity: 1,
+ *     taskLifecycle: "SPOT",
+ *     taskEbsOptimized: false,
+ *     taskUnit: "instance",
+ *     taskEbsBlockDevices: [{
+ *         volumesPerInstance: 2,
+ *         volumeType: "gp2",
+ *         sizeInGb: 40,
+ *     }],
+ *     tags: [{
+ *         key: "Creator",
+ *         value: "Pulumi",
  *     }],
  * });
  * ```

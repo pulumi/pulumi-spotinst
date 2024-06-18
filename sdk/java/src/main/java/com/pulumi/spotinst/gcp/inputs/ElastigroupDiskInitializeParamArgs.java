@@ -16,23 +16,51 @@ public final class ElastigroupDiskInitializeParamArgs extends com.pulumi.resourc
 
     public static final ElastigroupDiskInitializeParamArgs Empty = new ElastigroupDiskInitializeParamArgs();
 
+    /**
+     * Specifies disk size in gigabytes. Must be in increments of 2.
+     * 
+     */
     @Import(name="diskSizeGb")
     private @Nullable Output<String> diskSizeGb;
 
+    /**
+     * @return Specifies disk size in gigabytes. Must be in increments of 2.
+     * 
+     */
     public Optional<Output<String>> diskSizeGb() {
         return Optional.ofNullable(this.diskSizeGb);
     }
 
+    /**
+     * Specifies the disk type to use to create the instance. Valid values: pd-ssd, local-ssd.
+     * 
+     */
     @Import(name="diskType")
     private @Nullable Output<String> diskType;
 
+    /**
+     * @return Specifies the disk type to use to create the instance. Valid values: pd-ssd, local-ssd.
+     * 
+     */
     public Optional<Output<String>> diskType() {
         return Optional.ofNullable(this.diskType);
     }
 
+    /**
+     * A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
+     * 
+     * Usage:
+     * 
+     */
     @Import(name="sourceImage", required=true)
     private Output<String> sourceImage;
 
+    /**
+     * @return A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
+     * 
+     * Usage:
+     * 
+     */
     public Output<String> sourceImage() {
         return this.sourceImage;
     }
@@ -63,29 +91,69 @@ public final class ElastigroupDiskInitializeParamArgs extends com.pulumi.resourc
             $ = new ElastigroupDiskInitializeParamArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param diskSizeGb Specifies disk size in gigabytes. Must be in increments of 2.
+         * 
+         * @return builder
+         * 
+         */
         public Builder diskSizeGb(@Nullable Output<String> diskSizeGb) {
             $.diskSizeGb = diskSizeGb;
             return this;
         }
 
+        /**
+         * @param diskSizeGb Specifies disk size in gigabytes. Must be in increments of 2.
+         * 
+         * @return builder
+         * 
+         */
         public Builder diskSizeGb(String diskSizeGb) {
             return diskSizeGb(Output.of(diskSizeGb));
         }
 
+        /**
+         * @param diskType Specifies the disk type to use to create the instance. Valid values: pd-ssd, local-ssd.
+         * 
+         * @return builder
+         * 
+         */
         public Builder diskType(@Nullable Output<String> diskType) {
             $.diskType = diskType;
             return this;
         }
 
+        /**
+         * @param diskType Specifies the disk type to use to create the instance. Valid values: pd-ssd, local-ssd.
+         * 
+         * @return builder
+         * 
+         */
         public Builder diskType(String diskType) {
             return diskType(Output.of(diskType));
         }
 
+        /**
+         * @param sourceImage A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
+         * 
+         * Usage:
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceImage(Output<String> sourceImage) {
             $.sourceImage = sourceImage;
             return this;
         }
 
+        /**
+         * @param sourceImage A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
+         * 
+         * Usage:
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceImage(String sourceImage) {
             return sourceImage(Output.of(sourceImage));
         }

@@ -14,7 +14,13 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class OceanAutoscalerAutoscaleDown
     {
         public readonly int? EvaluationPeriods;
+        /// <summary>
+        /// When set to 'true', the Aggressive Scale Down feature is enabled.
+        /// </summary>
         public readonly bool? IsAggressiveScaleDownEnabled;
+        /// <summary>
+        /// Would represent the maximum % to scale-down. Number between 1-100.
+        /// </summary>
         public readonly double? MaxScaleDownPercentage;
 
         [OutputConstructor]

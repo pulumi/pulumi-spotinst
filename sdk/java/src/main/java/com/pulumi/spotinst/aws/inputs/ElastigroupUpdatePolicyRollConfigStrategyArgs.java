@@ -19,30 +19,62 @@ public final class ElastigroupUpdatePolicyRollConfigStrategyArgs extends com.pul
 
     public static final ElastigroupUpdatePolicyRollConfigStrategyArgs Empty = new ElastigroupUpdatePolicyRollConfigStrategyArgs();
 
+    /**
+     * Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
+     * 
+     */
     @Import(name="action", required=true)
     private Output<String> action;
 
+    /**
+     * @return Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
+     * 
+     */
     public Output<String> action() {
         return this.action;
     }
 
+    /**
+     * Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the deployment will fail. Range `1` - `100`.
+     * 
+     */
     @Import(name="batchMinHealthyPercentage")
     private @Nullable Output<Integer> batchMinHealthyPercentage;
 
+    /**
+     * @return Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the deployment will fail. Range `1` - `100`.
+     * 
+     */
     public Optional<Output<Integer>> batchMinHealthyPercentage() {
         return Optional.ofNullable(this.batchMinHealthyPercentage);
     }
 
+    /**
+     * Set detach options to the deployment.
+     * 
+     */
     @Import(name="onFailure")
     private @Nullable Output<ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs> onFailure;
 
+    /**
+     * @return Set detach options to the deployment.
+     * 
+     */
     public Optional<Output<ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs>> onFailure() {
         return Optional.ofNullable(this.onFailure);
     }
 
+    /**
+     * Specify whether to drain incoming TCP connections before terminating a server.
+     * 
+     */
     @Import(name="shouldDrainInstances")
     private @Nullable Output<Boolean> shouldDrainInstances;
 
+    /**
+     * @return Specify whether to drain incoming TCP connections before terminating a server.
+     * 
+     */
     public Optional<Output<Boolean>> shouldDrainInstances() {
         return Optional.ofNullable(this.shouldDrainInstances);
     }
@@ -74,38 +106,86 @@ public final class ElastigroupUpdatePolicyRollConfigStrategyArgs extends com.pul
             $ = new ElastigroupUpdatePolicyRollConfigStrategyArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param action Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder action(Output<String> action) {
             $.action = action;
             return this;
         }
 
+        /**
+         * @param action Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder action(String action) {
             return action(Output.of(action));
         }
 
+        /**
+         * @param batchMinHealthyPercentage Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the deployment will fail. Range `1` - `100`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder batchMinHealthyPercentage(@Nullable Output<Integer> batchMinHealthyPercentage) {
             $.batchMinHealthyPercentage = batchMinHealthyPercentage;
             return this;
         }
 
+        /**
+         * @param batchMinHealthyPercentage Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the deployment will fail. Range `1` - `100`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder batchMinHealthyPercentage(Integer batchMinHealthyPercentage) {
             return batchMinHealthyPercentage(Output.of(batchMinHealthyPercentage));
         }
 
+        /**
+         * @param onFailure Set detach options to the deployment.
+         * 
+         * @return builder
+         * 
+         */
         public Builder onFailure(@Nullable Output<ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs> onFailure) {
             $.onFailure = onFailure;
             return this;
         }
 
+        /**
+         * @param onFailure Set detach options to the deployment.
+         * 
+         * @return builder
+         * 
+         */
         public Builder onFailure(ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs onFailure) {
             return onFailure(Output.of(onFailure));
         }
 
+        /**
+         * @param shouldDrainInstances Specify whether to drain incoming TCP connections before terminating a server.
+         * 
+         * @return builder
+         * 
+         */
         public Builder shouldDrainInstances(@Nullable Output<Boolean> shouldDrainInstances) {
             $.shouldDrainInstances = shouldDrainInstances;
             return this;
         }
 
+        /**
+         * @param shouldDrainInstances Specify whether to drain incoming TCP connections before terminating a server.
+         * 
+         * @return builder
+         * 
+         */
         public Builder shouldDrainInstances(Boolean shouldDrainInstances) {
             return shouldDrainInstances(Output.of(shouldDrainInstances));
         }

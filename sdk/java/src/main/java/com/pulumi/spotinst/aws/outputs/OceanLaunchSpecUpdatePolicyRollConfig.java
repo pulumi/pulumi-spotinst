@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class OceanLaunchSpecUpdatePolicyRollConfig {
+    /**
+     * @return Sets the percentage of the instances to deploy in each batch.
+     * 
+     */
     private Integer batchSizePercentage;
 
     private OceanLaunchSpecUpdatePolicyRollConfig() {}
+    /**
+     * @return Sets the percentage of the instances to deploy in each batch.
+     * 
+     */
     public Integer batchSizePercentage() {
         return this.batchSizePercentage;
     }

@@ -61,16 +61,32 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.associatePublicIpAddress);
     }
 
+    /**
+     * Attach load balancers to the cluster.
+     * 
+     */
     @Import(name="attachLoadBalancers")
     private @Nullable Output<List<OceanAttachLoadBalancerArgs>> attachLoadBalancers;
 
+    /**
+     * @return Attach load balancers to the cluster.
+     * 
+     */
     public Optional<Output<List<OceanAttachLoadBalancerArgs>>> attachLoadBalancers() {
         return Optional.ofNullable(this.attachLoadBalancers);
     }
 
+    /**
+     * Describes the Ocean Kubernetes Auto Scaler.
+     * 
+     */
     @Import(name="autoscaler")
     private @Nullable Output<OceanAutoscalerArgs> autoscaler;
 
+    /**
+     * @return Describes the Ocean Kubernetes Auto Scaler.
+     * 
+     */
     public Optional<Output<OceanAutoscalerArgs>> autoscaler() {
         return Optional.ofNullable(this.autoscaler);
     }
@@ -134,9 +150,17 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.desiredCapacity);
     }
 
+    /**
+     * Detach load balancers from the cluster.
+     * 
+     */
     @Import(name="detachLoadBalancers")
     private @Nullable Output<List<OceanDetachLoadBalancerArgs>> detachLoadBalancers;
 
+    /**
+     * @return Detach load balancers from the cluster.
+     * 
+     */
     public Optional<Output<List<OceanDetachLoadBalancerArgs>>> detachLoadBalancers() {
         return Optional.ofNullable(this.detachLoadBalancers);
     }
@@ -418,9 +442,17 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.rootVolumeSize);
     }
 
+    /**
+     * Set scheduling object.
+     * 
+     */
     @Import(name="scheduledTasks")
     private @Nullable Output<List<OceanScheduledTaskArgs>> scheduledTasks;
 
+    /**
+     * @return Set scheduling object.
+     * 
+     */
     public Optional<Output<List<OceanScheduledTaskArgs>>> scheduledTasks() {
         return Optional.ofNullable(this.scheduledTasks);
     }
@@ -684,24 +716,54 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
             return associatePublicIpAddress(Output.of(associatePublicIpAddress));
         }
 
+        /**
+         * @param attachLoadBalancers Attach load balancers to the cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder attachLoadBalancers(@Nullable Output<List<OceanAttachLoadBalancerArgs>> attachLoadBalancers) {
             $.attachLoadBalancers = attachLoadBalancers;
             return this;
         }
 
+        /**
+         * @param attachLoadBalancers Attach load balancers to the cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder attachLoadBalancers(List<OceanAttachLoadBalancerArgs> attachLoadBalancers) {
             return attachLoadBalancers(Output.of(attachLoadBalancers));
         }
 
+        /**
+         * @param attachLoadBalancers Attach load balancers to the cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder attachLoadBalancers(OceanAttachLoadBalancerArgs... attachLoadBalancers) {
             return attachLoadBalancers(List.of(attachLoadBalancers));
         }
 
+        /**
+         * @param autoscaler Describes the Ocean Kubernetes Auto Scaler.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoscaler(@Nullable Output<OceanAutoscalerArgs> autoscaler) {
             $.autoscaler = autoscaler;
             return this;
         }
 
+        /**
+         * @param autoscaler Describes the Ocean Kubernetes Auto Scaler.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoscaler(OceanAutoscalerArgs autoscaler) {
             return autoscaler(Output.of(autoscaler));
         }
@@ -805,15 +867,33 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
             return desiredCapacity(Output.of(desiredCapacity));
         }
 
+        /**
+         * @param detachLoadBalancers Detach load balancers from the cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder detachLoadBalancers(@Nullable Output<List<OceanDetachLoadBalancerArgs>> detachLoadBalancers) {
             $.detachLoadBalancers = detachLoadBalancers;
             return this;
         }
 
+        /**
+         * @param detachLoadBalancers Detach load balancers from the cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder detachLoadBalancers(List<OceanDetachLoadBalancerArgs> detachLoadBalancers) {
             return detachLoadBalancers(Output.of(detachLoadBalancers));
         }
 
+        /**
+         * @param detachLoadBalancers Detach load balancers from the cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder detachLoadBalancers(OceanDetachLoadBalancerArgs... detachLoadBalancers) {
             return detachLoadBalancers(List.of(detachLoadBalancers));
         }
@@ -1225,15 +1305,33 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
             return rootVolumeSize(Output.of(rootVolumeSize));
         }
 
+        /**
+         * @param scheduledTasks Set scheduling object.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scheduledTasks(@Nullable Output<List<OceanScheduledTaskArgs>> scheduledTasks) {
             $.scheduledTasks = scheduledTasks;
             return this;
         }
 
+        /**
+         * @param scheduledTasks Set scheduling object.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scheduledTasks(List<OceanScheduledTaskArgs> scheduledTasks) {
             return scheduledTasks(Output.of(scheduledTasks));
         }
 
+        /**
+         * @param scheduledTasks Set scheduling object.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scheduledTasks(OceanScheduledTaskArgs... scheduledTasks) {
             return scheduledTasks(List.of(scheduledTasks));
         }

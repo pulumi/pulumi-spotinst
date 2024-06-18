@@ -17,23 +17,47 @@ public final class OceanNpVirtualNodeGroupUpdatePolicyArgs extends com.pulumi.re
 
     public static final OceanNpVirtualNodeGroupUpdatePolicyArgs Empty = new OceanNpVirtualNodeGroupUpdatePolicyArgs();
 
+    /**
+     * Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as availability_zones, max_pods_per_node, enable_node_public_ip, os_disk_size_gb, os_disk_type, os_sku, kubernetes_version, vnet_subnet_ids, pod_subnet_ids, labels, taints and tags).
+     * 
+     */
     @Import(name="conditionedRoll")
     private @Nullable Output<Boolean> conditionedRoll;
 
+    /**
+     * @return Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as availability_zones, max_pods_per_node, enable_node_public_ip, os_disk_size_gb, os_disk_type, os_sku, kubernetes_version, vnet_subnet_ids, pod_subnet_ids, labels, taints and tags).
+     * 
+     */
     public Optional<Output<Boolean>> conditionedRoll() {
         return Optional.ofNullable(this.conditionedRoll);
     }
 
+    /**
+     * While used, you can control whether the group should perform a deployment after an update to the configuration.
+     * 
+     */
     @Import(name="rollConfig")
     private @Nullable Output<OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs> rollConfig;
 
+    /**
+     * @return While used, you can control whether the group should perform a deployment after an update to the configuration.
+     * 
+     */
     public Optional<Output<OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs>> rollConfig() {
         return Optional.ofNullable(this.rollConfig);
     }
 
+    /**
+     * If set to true along with the vng update, roll will be triggered.
+     * 
+     */
     @Import(name="shouldRoll", required=true)
     private Output<Boolean> shouldRoll;
 
+    /**
+     * @return If set to true along with the vng update, roll will be triggered.
+     * 
+     */
     public Output<Boolean> shouldRoll() {
         return this.shouldRoll;
     }
@@ -64,29 +88,65 @@ public final class OceanNpVirtualNodeGroupUpdatePolicyArgs extends com.pulumi.re
             $ = new OceanNpVirtualNodeGroupUpdatePolicyArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param conditionedRoll Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as availability_zones, max_pods_per_node, enable_node_public_ip, os_disk_size_gb, os_disk_type, os_sku, kubernetes_version, vnet_subnet_ids, pod_subnet_ids, labels, taints and tags).
+         * 
+         * @return builder
+         * 
+         */
         public Builder conditionedRoll(@Nullable Output<Boolean> conditionedRoll) {
             $.conditionedRoll = conditionedRoll;
             return this;
         }
 
+        /**
+         * @param conditionedRoll Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as availability_zones, max_pods_per_node, enable_node_public_ip, os_disk_size_gb, os_disk_type, os_sku, kubernetes_version, vnet_subnet_ids, pod_subnet_ids, labels, taints and tags).
+         * 
+         * @return builder
+         * 
+         */
         public Builder conditionedRoll(Boolean conditionedRoll) {
             return conditionedRoll(Output.of(conditionedRoll));
         }
 
+        /**
+         * @param rollConfig While used, you can control whether the group should perform a deployment after an update to the configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rollConfig(@Nullable Output<OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs> rollConfig) {
             $.rollConfig = rollConfig;
             return this;
         }
 
+        /**
+         * @param rollConfig While used, you can control whether the group should perform a deployment after an update to the configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rollConfig(OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs rollConfig) {
             return rollConfig(Output.of(rollConfig));
         }
 
+        /**
+         * @param shouldRoll If set to true along with the vng update, roll will be triggered.
+         * 
+         * @return builder
+         * 
+         */
         public Builder shouldRoll(Output<Boolean> shouldRoll) {
             $.shouldRoll = shouldRoll;
             return this;
         }
 
+        /**
+         * @param shouldRoll If set to true along with the vng update, roll will be triggered.
+         * 
+         * @return builder
+         * 
+         */
         public Builder shouldRoll(Boolean shouldRoll) {
             return shouldRoll(Output.of(shouldRoll));
         }

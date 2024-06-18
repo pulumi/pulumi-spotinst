@@ -13,7 +13,13 @@ namespace Pulumi.SpotInst.Gke.Outputs
     [OutputType]
     public sealed class OceanImportAutoscalerResourceLimits
     {
+        /// <summary>
+        /// The maximum memory in GiB units that can be allocated to the cluster.
+        /// </summary>
         public readonly int? MaxMemoryGib;
+        /// <summary>
+        /// The maximum cpu in vCpu units that can be allocated to the cluster.
+        /// </summary>
         public readonly int? MaxVcpu;
 
         [OutputConstructor]

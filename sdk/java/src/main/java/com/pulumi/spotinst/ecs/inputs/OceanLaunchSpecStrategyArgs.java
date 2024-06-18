@@ -18,16 +18,12 @@ public final class OceanLaunchSpecStrategyArgs extends com.pulumi.resources.Reso
     /**
      * When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Virtual Node Group instances.
      * 
-     * &lt;a id=&#34;block-devices&#34;&gt;&lt;/a&gt;
-     * 
      */
     @Import(name="spotPercentage")
     private @Nullable Output<Integer> spotPercentage;
 
     /**
      * @return When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Virtual Node Group instances.
-     * 
-     * &lt;a id=&#34;block-devices&#34;&gt;&lt;/a&gt;
      * 
      */
     public Optional<Output<Integer>> spotPercentage() {
@@ -61,8 +57,6 @@ public final class OceanLaunchSpecStrategyArgs extends com.pulumi.resources.Reso
         /**
          * @param spotPercentage When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Virtual Node Group instances.
          * 
-         * &lt;a id=&#34;block-devices&#34;&gt;&lt;/a&gt;
-         * 
          * @return builder
          * 
          */
@@ -73,8 +67,6 @@ public final class OceanLaunchSpecStrategyArgs extends com.pulumi.resources.Reso
 
         /**
          * @param spotPercentage When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Virtual Node Group instances.
-         * 
-         * &lt;a id=&#34;block-devices&#34;&gt;&lt;/a&gt;
          * 
          * @return builder
          * 

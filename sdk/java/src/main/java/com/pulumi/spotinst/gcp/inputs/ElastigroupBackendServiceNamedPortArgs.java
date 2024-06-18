@@ -16,23 +16,35 @@ public final class ElastigroupBackendServiceNamedPortArgs extends com.pulumi.res
     public static final ElastigroupBackendServiceNamedPortArgs Empty = new ElastigroupBackendServiceNamedPortArgs();
 
     /**
-     * The group name.
+     * The name of the port.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The group name.
+     * @return The name of the port.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
 
+    /**
+     * A list of ports.
+     * 
+     * Usage:
+     * 
+     */
     @Import(name="ports", required=true)
     private Output<List<String>> ports;
 
+    /**
+     * @return A list of ports.
+     * 
+     * Usage:
+     * 
+     */
     public Output<List<String>> ports() {
         return this.ports;
     }
@@ -63,7 +75,7 @@ public final class ElastigroupBackendServiceNamedPortArgs extends com.pulumi.res
         }
 
         /**
-         * @param name The group name.
+         * @param name The name of the port.
          * 
          * @return builder
          * 
@@ -74,7 +86,7 @@ public final class ElastigroupBackendServiceNamedPortArgs extends com.pulumi.res
         }
 
         /**
-         * @param name The group name.
+         * @param name The name of the port.
          * 
          * @return builder
          * 
@@ -83,15 +95,39 @@ public final class ElastigroupBackendServiceNamedPortArgs extends com.pulumi.res
             return name(Output.of(name));
         }
 
+        /**
+         * @param ports A list of ports.
+         * 
+         * Usage:
+         * 
+         * @return builder
+         * 
+         */
         public Builder ports(Output<List<String>> ports) {
             $.ports = ports;
             return this;
         }
 
+        /**
+         * @param ports A list of ports.
+         * 
+         * Usage:
+         * 
+         * @return builder
+         * 
+         */
         public Builder ports(List<String> ports) {
             return ports(Output.of(ports));
         }
 
+        /**
+         * @param ports A list of ports.
+         * 
+         * Usage:
+         * 
+         * @return builder
+         * 
+         */
         public Builder ports(String... ports) {
             return ports(List.of(ports));
         }

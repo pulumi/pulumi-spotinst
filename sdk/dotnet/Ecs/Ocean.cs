@@ -31,12 +31,18 @@ namespace Pulumi.SpotInst.Ecs
         [Output("associatePublicIpAddress")]
         public Output<bool?> AssociatePublicIpAddress { get; private set; } = null!;
 
+        /// <summary>
+        /// Describes the Ocean ECS autoscaler.
+        /// </summary>
         [Output("autoscaler")]
         public Output<Outputs.OceanAutoscaler?> Autoscaler { get; private set; } = null!;
 
         [Output("blacklists")]
         public Output<ImmutableArray<string>> Blacklists { get; private set; } = null!;
 
+        /// <summary>
+        /// Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+        /// </summary>
         [Output("blockDeviceMappings")]
         public Output<ImmutableArray<Outputs.OceanBlockDeviceMapping>> BlockDeviceMappings { get; private set; } = null!;
 
@@ -124,6 +130,9 @@ namespace Pulumi.SpotInst.Ecs
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Object. Set auto image update settings.
+        /// </summary>
         [Output("optimizeImages")]
         public Output<Outputs.OceanOptimizeImages?> OptimizeImages { get; private set; } = null!;
 
@@ -133,6 +142,9 @@ namespace Pulumi.SpotInst.Ecs
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
+        /// <summary>
+        /// While used, you can control whether the group should perform a deployment after an update to the configuration.
+        /// </summary>
         [Output("scheduledTasks")]
         public Output<ImmutableArray<Outputs.OceanScheduledTask>> ScheduledTasks { get; private set; } = null!;
 
@@ -160,6 +172,9 @@ namespace Pulumi.SpotInst.Ecs
         [Output("tags")]
         public Output<ImmutableArray<Outputs.OceanTag>> Tags { get; private set; } = null!;
 
+        /// <summary>
+        /// While used, you can control whether the group should perform a deployment after an update to the configuration.
+        /// </summary>
         [Output("updatePolicy")]
         public Output<Outputs.OceanUpdatePolicy?> UpdatePolicy { get; private set; } = null!;
 
@@ -242,6 +257,9 @@ namespace Pulumi.SpotInst.Ecs
         [Input("associatePublicIpAddress")]
         public Input<bool>? AssociatePublicIpAddress { get; set; }
 
+        /// <summary>
+        /// Describes the Ocean ECS autoscaler.
+        /// </summary>
         [Input("autoscaler")]
         public Input<Inputs.OceanAutoscalerArgs>? Autoscaler { get; set; }
 
@@ -255,6 +273,10 @@ namespace Pulumi.SpotInst.Ecs
 
         [Input("blockDeviceMappings")]
         private InputList<Inputs.OceanBlockDeviceMappingArgs>? _blockDeviceMappings;
+
+        /// <summary>
+        /// Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+        /// </summary>
         public InputList<Inputs.OceanBlockDeviceMappingArgs> BlockDeviceMappings
         {
             get => _blockDeviceMappings ?? (_blockDeviceMappings = new InputList<Inputs.OceanBlockDeviceMappingArgs>());
@@ -350,6 +372,9 @@ namespace Pulumi.SpotInst.Ecs
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Object. Set auto image update settings.
+        /// </summary>
         [Input("optimizeImages")]
         public Input<Inputs.OceanOptimizeImagesArgs>? OptimizeImages { get; set; }
 
@@ -361,6 +386,10 @@ namespace Pulumi.SpotInst.Ecs
 
         [Input("scheduledTasks")]
         private InputList<Inputs.OceanScheduledTaskArgs>? _scheduledTasks;
+
+        /// <summary>
+        /// While used, you can control whether the group should perform a deployment after an update to the configuration.
+        /// </summary>
         public InputList<Inputs.OceanScheduledTaskArgs> ScheduledTasks
         {
             get => _scheduledTasks ?? (_scheduledTasks = new InputList<Inputs.OceanScheduledTaskArgs>());
@@ -409,6 +438,9 @@ namespace Pulumi.SpotInst.Ecs
             set => _tags = value;
         }
 
+        /// <summary>
+        /// While used, you can control whether the group should perform a deployment after an update to the configuration.
+        /// </summary>
         [Input("updatePolicy")]
         public Input<Inputs.OceanUpdatePolicyArgs>? UpdatePolicy { get; set; }
 
@@ -458,6 +490,9 @@ namespace Pulumi.SpotInst.Ecs
         [Input("associatePublicIpAddress")]
         public Input<bool>? AssociatePublicIpAddress { get; set; }
 
+        /// <summary>
+        /// Describes the Ocean ECS autoscaler.
+        /// </summary>
         [Input("autoscaler")]
         public Input<Inputs.OceanAutoscalerGetArgs>? Autoscaler { get; set; }
 
@@ -471,6 +506,10 @@ namespace Pulumi.SpotInst.Ecs
 
         [Input("blockDeviceMappings")]
         private InputList<Inputs.OceanBlockDeviceMappingGetArgs>? _blockDeviceMappings;
+
+        /// <summary>
+        /// Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+        /// </summary>
         public InputList<Inputs.OceanBlockDeviceMappingGetArgs> BlockDeviceMappings
         {
             get => _blockDeviceMappings ?? (_blockDeviceMappings = new InputList<Inputs.OceanBlockDeviceMappingGetArgs>());
@@ -566,6 +605,9 @@ namespace Pulumi.SpotInst.Ecs
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Object. Set auto image update settings.
+        /// </summary>
         [Input("optimizeImages")]
         public Input<Inputs.OceanOptimizeImagesGetArgs>? OptimizeImages { get; set; }
 
@@ -577,6 +619,10 @@ namespace Pulumi.SpotInst.Ecs
 
         [Input("scheduledTasks")]
         private InputList<Inputs.OceanScheduledTaskGetArgs>? _scheduledTasks;
+
+        /// <summary>
+        /// While used, you can control whether the group should perform a deployment after an update to the configuration.
+        /// </summary>
         public InputList<Inputs.OceanScheduledTaskGetArgs> ScheduledTasks
         {
             get => _scheduledTasks ?? (_scheduledTasks = new InputList<Inputs.OceanScheduledTaskGetArgs>());
@@ -625,6 +671,9 @@ namespace Pulumi.SpotInst.Ecs
             set => _tags = value;
         }
 
+        /// <summary>
+        /// While used, you can control whether the group should perform a deployment after an update to the configuration.
+        /// </summary>
         [Input("updatePolicy")]
         public Input<Inputs.OceanUpdatePolicyGetArgs>? UpdatePolicy { get; set; }
 

@@ -13,8 +13,17 @@ namespace Pulumi.SpotInst.Ecs.Outputs
     [OutputType]
     public sealed class OceanOptimizeImages
     {
+        /// <summary>
+        /// String. Valid values: "always" "never" "timeWindow".
+        /// </summary>
         public readonly string PerformAt;
+        /// <summary>
+        /// Boolean. Enable auto image (AMI) update for the ECS container instances. The auto update applies for ECS-Optimized AMIs.
+        /// </summary>
         public readonly bool ShouldOptimizeEcsAmi;
+        /// <summary>
+        /// Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
+        /// </summary>
         public readonly ImmutableArray<string> TimeWindows;
 
         [OutputConstructor]

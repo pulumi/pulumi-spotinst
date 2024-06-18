@@ -843,16 +843,39 @@ export namespace aws {
     }
 
     export interface ElastigroupNetworkInterface {
+        /**
+         * Indicates whether to assign IPV6 addresses to your instance. Requires a subnet with IPV6 CIDR block ranges.
+         *
+         * Usage:
+         */
         associateIpv6Address?: boolean;
+        /**
+         * Indicates whether to assign a public IP address to an instance you launch in a VPC. The public IP address can only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an existing one.
+         */
         associatePublicIpAddress?: boolean;
+        /**
+         * If set to true, the interface is deleted when the instance is terminated.
+         */
         deleteOnTermination: boolean;
         /**
-         * The group description.
+         * The description of the network interface.
          */
         description?: string;
+        /**
+         * The index of the device on the instance for the network interface attachment.
+         */
         deviceIndex: string;
+        /**
+         * The ID of the network interface.
+         */
         networkInterfaceId?: string;
+        /**
+         * The private IP address of the network interface.
+         */
         privateIpAddress?: string;
+        /**
+         * The number of secondary private IP addresses.
+         */
         secondaryPrivateIpAddressCount?: string;
     }
 
@@ -1299,14 +1322,36 @@ export namespace aws {
     }
 
     export interface ElastigroupStatefulDeallocation {
+        /**
+         * For stateful groups: remove persistent images.
+         */
         shouldDeleteImages?: boolean;
+        /**
+         * For stateful groups: remove network interfaces.
+         */
         shouldDeleteNetworkInterfaces?: boolean;
+        /**
+         * For stateful groups: remove snapshots.
+         *
+         * Usage:
+         */
         shouldDeleteSnapshots?: boolean;
+        /**
+         * For stateful groups: remove persistent volumes.
+         */
         shouldDeleteVolumes?: boolean;
     }
 
     export interface ElastigroupStatefulInstanceAction {
+        /**
+         * String, Stateful Instance ID on which the action should be performed.
+         */
         statefulInstanceId: string;
+        /**
+         * String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+         *
+         * Usage:
+         */
         type: string;
     }
 
@@ -1316,39 +1361,87 @@ export namespace aws {
     }
 
     export interface ElastigroupUpdatePolicy {
+        /**
+         * Enables updates to tags without rolling the group when set to `true`.
+         */
         autoApplyTags?: boolean;
+        /**
+         * While used, you can control whether the group should perform a deployment after an update to the configuration.
+         */
         rollConfig?: outputs.aws.ElastigroupUpdatePolicyRollConfig;
+        /**
+         * This will apply resuming action for Stateful instances in the Elastigroup upon scale up or capacity changes. Example usage will be for Elastigroups that will have scheduling rules to set a target capacity of 0 instances in the night and automatically restore the same state of the instances in the morning.
+         */
         shouldResumeStateful: boolean;
+        /**
+         * Sets the enablement of the roll option.
+         */
         shouldRoll: boolean;
     }
 
     export interface ElastigroupUpdatePolicyRollConfig {
+        /**
+         * Sets the percentage of the instances to deploy in each batch.
+         */
         batchSizePercentage: number;
+        /**
+         * Sets the grace period for new instances to become healthy.
+         */
         gracePeriod?: number;
         /**
-         * The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"EC2"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+         * Sets the health check type to use. Valid values: `"EC2"`, `"ECS_CLUSTER_INSTANCE"`, `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"NONE"`.
          */
         healthCheckType?: string;
+        /**
+         * Strategy parameters
+         */
         strategy?: outputs.aws.ElastigroupUpdatePolicyRollConfigStrategy;
+        /**
+         * For use with `shouldRoll`. Sets minimum % of roll required to complete before continuing the plan. Required if `waitForRollTimeout` is set.
+         */
         waitForRollPercentage?: number;
+        /**
+         * For use with `shouldRoll`. Sets how long to wait for the deployed % of a roll to exceed `waitForRollPercentage` before continuing the plan. Required if `waitForRollPercentage` is set.
+         */
         waitForRollTimeout?: number;
     }
 
     export interface ElastigroupUpdatePolicyRollConfigStrategy {
+        /**
+         * Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
+         */
         action: string;
+        /**
+         * Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the deployment will fail. Range `1` - `100`.
+         */
         batchMinHealthyPercentage?: number;
+        /**
+         * Set detach options to the deployment.
+         */
         onFailure?: outputs.aws.ElastigroupUpdatePolicyRollConfigStrategyOnFailure;
+        /**
+         * Specify whether to drain incoming TCP connections before terminating a server.
+         */
         shouldDrainInstances?: boolean;
     }
 
     export interface ElastigroupUpdatePolicyRollConfigStrategyOnFailure {
+        /**
+         * Sets the action that will take place, Accepted values are: `DETACH_OLD`, `DETACH_NEW`.
+         */
         actionType: string;
         batchNum?: number;
         /**
-         * The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
+         * Indicates (in seconds) the timeout to wait until instance are detached.
          */
         drainingTimeout?: number;
+        /**
+         * Decrementing the group target capacity after detaching the instances.
+         */
         shouldDecrementTargetCapacity?: boolean;
+        /**
+         * Indicator if the action should apply to all batches of the deployment or only the latest batch.
+         */
         shouldHandleAllBatches?: boolean;
     }
 
@@ -1628,41 +1721,98 @@ export namespace aws {
     }
 
     export interface OceanAttachLoadBalancer {
+        /**
+         * If type is "TARGET_GROUP" then an ARN is required. Otherwise is not allowed.
+         */
         arn?: string;
         /**
-         * The cluster name.
+         * If type is "CLASSIC" then a name is required. Otherwise is not allowed.
          */
         name?: string;
+        /**
+         * Type of load balancer to use.
+         */
         type: string;
     }
 
     export interface OceanAutoscaler {
+        /**
+         * Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscaleIsAutoConfig` toggled on.
+         */
         autoHeadroomPercentage?: number;
+        /**
+         * Cooldown period between scaling actions.
+         */
         autoscaleCooldown?: number;
+        /**
+         * Auto Scaling scale down operations.
+         */
         autoscaleDown?: outputs.aws.OceanAutoscalerAutoscaleDown;
+        /**
+         * Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
+         */
         autoscaleHeadroom?: outputs.aws.OceanAutoscalerAutoscaleHeadroom;
+        /**
+         * Automatically configure and optimize headroom resources.
+         */
         autoscaleIsAutoConfig?: boolean;
+        /**
+         * Enable the Ocean Kubernetes Auto Scaler.
+         */
         autoscaleIsEnabled?: boolean;
+        /**
+         * enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
+         */
         enableAutomaticAndManualHeadroom?: boolean;
+        /**
+         * List of Ocean extended resource definitions to use in this cluster.
+         */
         extendedResourceDefinitions?: string[];
+        /**
+         * Optionally set upper and lower bounds on the resource usage of the cluster.
+         */
         resourceLimits?: outputs.aws.OceanAutoscalerResourceLimits;
     }
 
     export interface OceanAutoscalerAutoscaleDown {
         evaluationPeriods?: number;
+        /**
+         * When set to 'true', the Aggressive Scale Down feature is enabled.
+         */
         isAggressiveScaleDownEnabled?: boolean;
+        /**
+         * Would represent the maximum % to scale-down. Number between 1-100.
+         */
         maxScaleDownPercentage?: number;
     }
 
     export interface OceanAutoscalerAutoscaleHeadroom {
+        /**
+         * Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+         */
         cpuPerUnit?: number;
+        /**
+         * Optionally configure the number of GPUs to allocate the headroom.
+         */
         gpuPerUnit?: number;
+        /**
+         * Optionally configure the amount of memory (MB) to allocate the headroom.
+         */
         memoryPerUnit?: number;
+        /**
+         * The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+         */
         numOfUnits?: number;
     }
 
     export interface OceanAutoscalerResourceLimits {
+        /**
+         * The maximum memory in GiB units that can be allocated to the cluster.
+         */
         maxMemoryGib?: number;
+        /**
+         * The maximum cpu in vCPU units that can be allocated to the cluster.
+         */
         maxVcpu?: number;
     }
 
@@ -1755,11 +1905,17 @@ export namespace aws {
     }
 
     export interface OceanDetachLoadBalancer {
+        /**
+         * If type is "TARGET_GROUP" then an ARN is required. Otherwise is not allowed.
+         */
         arn?: string;
         /**
-         * The cluster name.
+         * If type is "CLASSIC" then a name is required. Otherwise is not allowed.
          */
         name?: string;
+        /**
+         * Type of load balancer to use.
+         */
         type: string;
     }
 
@@ -1935,9 +2091,6 @@ export namespace aws {
     export interface OceanLaunchSpecEphemeralStorage {
         /**
          * Specify an alternative device name from which ephemeral storage calculations should be derived. This parameter is used when the ephemeral storage should not utilize the root device. Provide the device name configured in the VNG's BDM or AMI's BDM that differs from the default root device.
-         *
-         *
-         * <a id="update-policy"></a>
          */
         ephemeralStorageDeviceName?: string;
     }
@@ -2134,11 +2287,20 @@ export namespace aws {
     }
 
     export interface OceanLaunchSpecUpdatePolicy {
+        /**
+         * Holds the roll configuration.
+         */
         rollConfig?: outputs.aws.OceanLaunchSpecUpdatePolicyRollConfig;
+        /**
+         * Enables the roll.
+         */
         shouldRoll: boolean;
     }
 
     export interface OceanLaunchSpecUpdatePolicyRollConfig {
+        /**
+         * Sets the percentage of the instances to deploy in each batch.
+         */
         batchSizePercentage: number;
     }
 
@@ -2186,45 +2348,111 @@ export namespace aws {
     }
 
     export interface OceanScheduledTask {
+        /**
+         * Set shutdown hours for cluster object.
+         */
         shutdownHours?: outputs.aws.OceanScheduledTaskShutdownHours;
+        /**
+         * The scheduling tasks for the cluster.
+         */
         tasks?: outputs.aws.OceanScheduledTaskTask[];
     }
 
     export interface OceanScheduledTaskShutdownHours {
+        /**
+         * Toggle the shutdown hours task. (Example: `true`).
+         */
         isEnabled?: boolean;
+        /**
+         * Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of: `ddd:hh:mm-ddd:hh:mm` where `ddd` = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat, `hh` = hour 24 = 0 -23, `mm` = minute = 0 - 59. Time windows should not overlap. Required if `cluster.scheduling.isEnabled` is `true`. (Example: `Fri:15:30-Wed:14:30`).
+         */
         timeWindows: string[];
     }
 
     export interface OceanScheduledTaskTask {
+        /**
+         * A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. (Example: `0 1 * * *`).
+         */
         cronExpression: string;
+        /**
+         * Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
+         */
         isEnabled: boolean;
+        /**
+         * This filed will be compatible to the `taskType` field. If `taskType` is defined as `clusterRoll`, user cluster roll object in parameters.
+         */
         parameters?: outputs.aws.OceanScheduledTaskTaskParameters;
+        /**
+         * Valid values: `clusterRoll` `amiAutoUpdate`. Required for `cluster.scheduling.tasks`
+         */
         taskType: string;
     }
 
     export interface OceanScheduledTaskTaskParameters {
+        /**
+         * Set amiAutoUpdate object
+         */
         amiAutoUpdate?: outputs.aws.OceanScheduledTaskTaskParametersAmiAutoUpdate;
+        /**
+         * Set clusterRoll object
+         */
         parametersClusterRoll?: outputs.aws.OceanScheduledTaskTaskParametersParametersClusterRoll;
     }
 
     export interface OceanScheduledTaskTaskParametersAmiAutoUpdate {
+        /**
+         * Set clusterRoll object
+         */
         amiAutoUpdateClusterRoll?: outputs.aws.OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRoll;
+        /**
+         * When the AMI is updated according to the configuration set, a cluster roll can be triggered
+         */
         applyRoll?: boolean;
+        /**
+         * When set to 'true', the auto-update process will update the VNGs’ AMI with the AMI to match the Kubernetes control plane version. either "patch" or "minorVersion" must be true.
+         */
         minorVersion?: boolean;
+        /**
+         * When set to 'true', the auto-update process will update the VNGs’ images with the latest security patches. either "patch" or "minorVersion" must be true.
+         */
         patch?: boolean;
     }
 
     export interface OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRoll {
+        /**
+         * Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+         */
         batchMinHealthyPercentage?: number;
+        /**
+         * Value as a percent to set the size of a batch in a roll. Valid values are 0-100.
+         */
         batchSizePercentage?: number;
+        /**
+         * Add a `comment` description for the roll. The `comment` is limited to 256 chars
+         */
         comment?: string;
+        /**
+         * During the roll, if the parameter is set to true we honor PDB during the instance replacement.
+         */
         respectPdb?: boolean;
     }
 
     export interface OceanScheduledTaskTaskParametersParametersClusterRoll {
+        /**
+         * Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+         */
         batchMinHealthyPercentage?: number;
+        /**
+         * Value as a percent to set the size of a batch in a roll. Valid values are 0-100.
+         */
         batchSizePercentage?: number;
+        /**
+         * Add a `comment` description for the roll. The `comment` is limited to 256 chars
+         */
         comment?: string;
+        /**
+         * During the roll, if the parameter is set to true we honor PDB during the instance replacement.
+         */
         respectPdb?: boolean;
     }
 
@@ -2240,17 +2468,44 @@ export namespace aws {
     }
 
     export interface OceanUpdatePolicy {
+        /**
+         * will update instance tags on the fly without rolling the cluster.
+         */
         autoApplyTags?: boolean;
+        /**
+         * Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
+         */
         conditionedRoll?: boolean;
+        /**
+         * A custom list of attributes will trigger the cluster roll operation (overrides the predefined list of parameters). Valid only when the `conditionedRoll` parameter is set to true. (Valid values: `"subnetIds"`,`"whitelist"`,`"blacklist"`,`"userData"`,`"imageId"`,`"securityGroups"`,`"keyName"`,`"iamInstanceProfile"`,`"associatePublicIpAddress"`,`"loadBalancers"`,`"instanceMetadataOptions"`,`"ebsOptimized"`,`"rootVolumeSize"`)
+         */
         conditionedRollParams?: string[];
+        /**
+         * While used, you can control whether the group should perform a deployment after an update to the configuration.
+         */
         rollConfig?: outputs.aws.OceanUpdatePolicyRollConfig;
+        /**
+         * Enables the roll.
+         */
         shouldRoll: boolean;
     }
 
     export interface OceanUpdatePolicyRollConfig {
+        /**
+         * Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+         */
         batchMinHealthyPercentage?: number;
+        /**
+         * Sets the percentage of the instances to deploy in each batch.
+         */
         batchSizePercentage: number;
+        /**
+         * List of virtual node group identifiers to be rolled.
+         */
         launchSpecIds?: string[];
+        /**
+         * During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+         */
         respectPdb?: boolean;
     }
 
@@ -2537,8 +2792,6 @@ export namespace azure {
         excludeSeries?: string[];
         /**
          * The filtered gpu types will belong to one of the gpu types from this list.
-         *
-         * <a id="update-policy"></a>
          */
         gpuTypes?: string[];
         /**
@@ -2669,19 +2922,52 @@ export namespace azure {
     }
 
     export interface OceanNpUpdatePolicy {
+        /**
+         * Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as availability_zones, max_pods_per_node, enable_node_public_ip, os_disk_size_gb, os_disk_type, os_sku, kubernetes_version, vnet_subnet_ids, pod_subnet_ids, labels, taints and tags).
+         */
         conditionedRoll?: boolean;
+        /**
+         * While used, you can control whether the group should perform a deployment after an update to the configuration.
+         */
         rollConfig?: outputs.azure.OceanNpUpdatePolicyRollConfig;
+        /**
+         * If set to true along with the cluster update, roll will be triggered.
+         */
         shouldRoll: boolean;
     }
 
     export interface OceanNpUpdatePolicyRollConfig {
+        /**
+         * Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+         */
         batchMinHealthyPercentage?: number;
+        /**
+         * Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.
+         */
         batchSizePercentage?: number;
+        /**
+         * Add a comment description for the roll. The comment is limited to 256 chars and optional.
+         */
         comment?: string;
+        /**
+         * List of node names to be rolled. Each identifier is a string. nodeNames can be null, and cannot be used together with nodePoolNames and vngIds.
+         */
         nodeNames?: string[];
+        /**
+         * List of node pools to be rolled. Each node pool name is a string. nodePoolNames can be null, and cannot be used together with nodeNames and vngIds.
+         */
         nodePoolNames?: string[];
+        /**
+         * During the roll, if the parameter is set to true we honor PDB during the nodes replacement.
+         */
         respectPdb?: boolean;
+        /**
+         * During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.
+         */
         respectRestrictScaleDown?: boolean;
+        /**
+         * List of virtual node group identifiers to be rolled. Each identifier is a string. vngIds can be null, and cannot be used together with nodeNames and nodePoolNames.
+         */
         vngIds?: string[];
     }
 
@@ -2704,7 +2990,6 @@ export namespace azure {
         excludeSeries?: string[];
         /**
          * The filtered gpu types will belong to one of the gpu types from this list.
-         * <a id="update-policy"></a>
          */
         gpuTypes?: string[];
         /**
@@ -2798,19 +3083,52 @@ export namespace azure {
     }
 
     export interface OceanNpVirtualNodeGroupUpdatePolicy {
+        /**
+         * Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as availability_zones, max_pods_per_node, enable_node_public_ip, os_disk_size_gb, os_disk_type, os_sku, kubernetes_version, vnet_subnet_ids, pod_subnet_ids, labels, taints and tags).
+         */
         conditionedRoll?: boolean;
+        /**
+         * While used, you can control whether the group should perform a deployment after an update to the configuration.
+         */
         rollConfig?: outputs.azure.OceanNpVirtualNodeGroupUpdatePolicyRollConfig;
+        /**
+         * If set to true along with the vng update, roll will be triggered.
+         */
         shouldRoll: boolean;
     }
 
     export interface OceanNpVirtualNodeGroupUpdatePolicyRollConfig {
+        /**
+         * Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+         */
         batchMinHealthyPercentage?: number;
+        /**
+         * Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.
+         */
         batchSizePercentage?: number;
+        /**
+         * Add a comment description for the roll. The comment is limited to 256 chars and optional.
+         */
         comment?: string;
+        /**
+         * List of node names to be rolled. Each identifier is a string. nodeNames can be null, and cannot be used together with nodePoolNames and vngIds.
+         */
         nodeNames?: string[];
+        /**
+         * List of node pools to be rolled. Each node pool name is a string. nodePoolNames can be null, and cannot be used together with nodeNames and vngIds.
+         */
         nodePoolNames?: string[];
+        /**
+         * During the roll, if the parameter is set to true we honor PDB during the nodes replacement.
+         */
         respectPdb?: boolean;
+        /**
+         * During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.
+         */
         respectRestrictScaleDown?: boolean;
+        /**
+         * List of virtual node group identifiers to be rolled. Each identifier is a string. vngIds can be null, and cannot be used together with nodeNames and nodePoolNames.
+         */
         vngIds?: string[];
     }
 
@@ -2956,54 +3274,144 @@ export namespace azure {
 
 export namespace ecs {
     export interface OceanAutoscaler {
+        /**
+         * The auto-headroom percentage. Set a number between 0-200 to control the headroom % of the cluster. Relevant when `isAutoConfig`= true.
+         */
         autoHeadroomPercentage?: number;
+        /**
+         * Cooldown period between scaling actions.
+         */
         cooldown?: number;
+        /**
+         * Auto Scaling scale down operations.
+         */
         down?: outputs.ecs.OceanAutoscalerDown;
+        /**
+         * When set to true, both automatic and per custom launch specification manual headroom to be saved concurrently and independently in the cluster. prerequisite: isAutoConfig must be true
+         */
         enableAutomaticAndManualHeadroom?: boolean;
+        /**
+         * Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
+         */
         headroom?: outputs.ecs.OceanAutoscalerHeadroom;
+        /**
+         * Automatically configure and optimize headroom resources.
+         */
         isAutoConfig?: boolean;
+        /**
+         * Enable the Ocean ECS autoscaler.
+         */
         isEnabled?: boolean;
+        /**
+         * Optionally set upper and lower bounds on the resource usage of the cluster.
+         */
         resourceLimits?: outputs.ecs.OceanAutoscalerResourceLimits;
+        /**
+         * Option to scale down non-service tasks. If not set, Ocean does not scale down standalone tasks.
+         */
         shouldScaleDownNonServiceTasks?: boolean;
     }
 
     export interface OceanAutoscalerDown {
+        /**
+         * Would represent the maximum % to scale-down. Number between 1-100.
+         */
         maxScaleDownPercentage?: number;
     }
 
     export interface OceanAutoscalerHeadroom {
+        /**
+         * Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+         */
         cpuPerUnit?: number;
+        /**
+         * Optionally configure the amount of memory (MB) to allocate the headroom.
+         */
         memoryPerUnit?: number;
+        /**
+         * The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+         */
         numOfUnits?: number;
     }
 
     export interface OceanAutoscalerResourceLimits {
+        /**
+         * The maximum memory in GiB units that can be allocated to the cluster.
+         */
         maxMemoryGib?: number;
+        /**
+         * The maximum cpu in vCPU units that can be allocated to the cluster.
+         */
         maxVcpu?: number;
     }
 
     export interface OceanBlockDeviceMapping {
+        /**
+         * String. Set device name. Example: `/dev/xvda1`.
+         */
         deviceName: string;
+        /**
+         * Object. Set Elastic Block Store properties.
+         */
         ebs?: outputs.ecs.OceanBlockDeviceMappingEbs;
+        /**
+         * String. Suppresses the specified device included in the block device mapping of the AMI.
+         */
         noDevice?: string;
         virtualName?: string;
     }
 
     export interface OceanBlockDeviceMappingEbs {
+        /**
+         * Boolean. Toggles EBS deletion upon instance termination.
+         */
         deleteOnTermination: boolean;
+        /**
+         * Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
+         */
         dynamicVolumeSize?: outputs.ecs.OceanBlockDeviceMappingEbsDynamicVolumeSize;
+        /**
+         * Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+         */
         encrypted: boolean;
+        /**
+         * Int. The number of I/O operations per second (IOPS) that the volume supports.
+         */
         iops?: number;
+        /**
+         * String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+         */
         kmsKeyId?: string;
+        /**
+         * (Optional) String. The snapshot ID to mount by.
+         */
         snapshotId?: string;
+        /**
+         * The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
+         */
         throughput?: number;
+        /**
+         * Int. The size (in GB) of the volume.
+         */
         volumeSize?: number;
+        /**
+         * String. The type of the volume. Example: `gp2`.
+         */
         volumeType: string;
     }
 
     export interface OceanBlockDeviceMappingEbsDynamicVolumeSize {
+        /**
+         * Int. Initial size for volume. Example: `50`.
+         */
         baseSize: number;
+        /**
+         * String. Resource type to increase volume size dynamically by. Valid values: `CPU`.
+         */
         resource: string;
+        /**
+         * Int. Additional size (in GB) per resource unit. Example: When the `baseSize=50`, `sizePerResourceUnit=20`, and instance with two CPUs is launched, its total disk size will be: 90GB.
+         */
         sizePerResourceUnit: number;
     }
 
@@ -3074,27 +3482,69 @@ export namespace ecs {
     }
 
     export interface OceanLaunchSpecBlockDeviceMapping {
+        /**
+         * String. Set device name. (Example: "/dev/xvda1").
+         */
         deviceName: string;
+        /**
+         * Object. Set Elastic Block Store properties .
+         */
         ebs?: outputs.ecs.OceanLaunchSpecBlockDeviceMappingEbs;
         noDevice?: string;
         virtualName?: string;
     }
 
     export interface OceanLaunchSpecBlockDeviceMappingEbs {
+        /**
+         * Boolean. Flag to delete the EBS on instance termination.
+         */
         deleteOnTermination: boolean;
+        /**
+         * Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
+         */
         dynamicVolumeSize?: outputs.ecs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize;
+        /**
+         * Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+         */
         encrypted: boolean;
+        /**
+         * Int. The number of I/O operations per second (IOPS) that the volume supports.
+         */
         iops?: number;
+        /**
+         * String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+         */
         kmsKeyId?: string;
+        /**
+         * (Optional) String. The Snapshot ID to mount by.
+         */
         snapshotId?: string;
+        /**
+         * The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
+         */
         throughput?: number;
+        /**
+         * Int. The size, in GB of the volume.
+         */
         volumeSize?: number;
+        /**
+         * String. The type of the volume (example: "gp2").
+         */
         volumeType: string;
     }
 
     export interface OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize {
+        /**
+         * Int. Initial size for volume. (Example: 50)
+         */
         baseSize: number;
+        /**
+         * String. Resource type to increase volume size dynamically by. (valid values: "CPU")
+         */
         resource: string;
+        /**
+         * Int. Additional size (in GB) per resource unit. (Example: baseSize= 50, sizePerResourceUnit=20, and instance with 2 CPU is launched - its total disk size will be: 90GB)
+         */
         sizePerResourceUnit: number;
     }
 
@@ -3153,8 +3603,6 @@ export namespace ecs {
     export interface OceanLaunchSpecStrategy {
         /**
          * When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Virtual Node Group instances.
-         *
-         * <a id="block-devices"></a>
          */
         spotPercentage?: number;
     }
@@ -3186,24 +3634,54 @@ export namespace ecs {
     }
 
     export interface OceanOptimizeImages {
+        /**
+         * String. Valid values: "always" "never" "timeWindow".
+         */
         performAt: string;
+        /**
+         * Boolean. Enable auto image (AMI) update for the ECS container instances. The auto update applies for ECS-Optimized AMIs.
+         */
         shouldOptimizeEcsAmi: boolean;
+        /**
+         * Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
+         */
         timeWindows?: string[];
     }
 
     export interface OceanScheduledTask {
+        /**
+         * Set shutdown hours for cluster object.
+         */
         shutdownHours?: outputs.ecs.OceanScheduledTaskShutdownHours;
+        /**
+         * The scheduling tasks for the cluster.
+         */
         tasks?: outputs.ecs.OceanScheduledTaskTask[];
     }
 
     export interface OceanScheduledTaskShutdownHours {
+        /**
+         * Flag to enable / disable the shutdown hours.
+         */
         isEnabled?: boolean;
+        /**
+         * Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59). Time windows should not overlap. Required when `cluster.scheduling.isEnabled` is true. API Times are in UTC. Example: `Fri:15:30-Wed:14:30`.
+         */
         timeWindows: string[];
     }
 
     export interface OceanScheduledTaskTask {
+        /**
+         * A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. Example: `0 1 * * *`.
+         */
         cronExpression: string;
+        /**
+         * Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
+         */
         isEnabled: boolean;
+        /**
+         * Valid values: "clusterRoll". Required for `cluster.scheduling.tasks object`. Example: `clusterRoll`.
+         */
         taskType: string;
     }
 
@@ -3220,14 +3698,29 @@ export namespace ecs {
     }
 
     export interface OceanUpdatePolicy {
+        /**
+         * will update instance tags on the fly without rolling the cluster.
+         */
         autoApplyTags?: boolean;
+        /**
+         * Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
+         */
         conditionedRoll?: boolean;
         rollConfig?: outputs.ecs.OceanUpdatePolicyRollConfig;
+        /**
+         * Enables the roll.
+         */
         shouldRoll: boolean;
     }
 
     export interface OceanUpdatePolicyRollConfig {
+        /**
+         * Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+         */
         batchMinHealthyPercentage?: number;
+        /**
+         * Sets the percentage of the instances to deploy in each batch.
+         */
         batchSizePercentage: number;
     }
 
@@ -3235,39 +3728,99 @@ export namespace ecs {
 
 export namespace gcp {
     export interface ElastigroupBackendService {
+        /**
+         * Sets which location the backend services will be active. Valid values: `regional`, `global`.
+         */
         locationType?: string;
+        /**
+         * Describes a named port and a list of ports.
+         */
         namedPorts?: outputs.gcp.ElastigroupBackendServiceNamedPort[];
+        /**
+         * Use when `locationType` is "regional". Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
+         */
         scheme?: string;
+        /**
+         * The name of the backend service.
+         */
         serviceName: string;
     }
 
     export interface ElastigroupBackendServiceNamedPort {
         /**
-         * The group name.
+         * The name of the port.
          */
         name: string;
+        /**
+         * A list of ports.
+         *
+         * Usage:
+         */
         ports: string[];
     }
 
     export interface ElastigroupDisk {
+        /**
+         * Specifies whether the disk will be auto-deleted when the instance is deleted.
+         */
         autoDelete?: boolean;
+        /**
+         * Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
+         */
         boot?: boolean;
+        /**
+         * Specifies a unique device name of your choice.
+         */
         deviceName?: string;
+        /**
+         * Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance.
+         */
         initializeParams?: outputs.gcp.ElastigroupDiskInitializeParam[];
+        /**
+         * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME.
+         */
         interface?: string;
+        /**
+         * The mode in which to attach this disk, either READ_WRITE or READ_ONLY.
+         */
         mode?: string;
+        /**
+         * Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
+         */
         source?: string;
+        /**
+         * Specifies the type of disk, either SCRATCH or PERSISTENT.
+         */
         type?: string;
     }
 
     export interface ElastigroupDiskInitializeParam {
+        /**
+         * Specifies disk size in gigabytes. Must be in increments of 2.
+         */
         diskSizeGb?: string;
+        /**
+         * Specifies the disk type to use to create the instance. Valid values: pd-ssd, local-ssd.
+         */
         diskType?: string;
+        /**
+         * A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
+         *
+         * Usage:
+         */
         sourceImage: string;
     }
 
     export interface ElastigroupGpu {
+        /**
+         * The number of GPUs. Must be 0, 2, 4, 6, 8.
+         *
+         * Usage:
+         */
         count: number;
+        /**
+         * The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
+         */
         type: string;
     }
 
@@ -3378,27 +3931,65 @@ export namespace gcp {
     }
 
     export interface ElastigroupScalingUpPolicy {
+        /**
+         * Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
+         */
         actionType?: string;
+        /**
+         * Value to which the action type will be adjusted. Required if using "numeric" or "percentageAdjustment" action types.
+         */
         adjustment?: number;
+        /**
+         * Time (seconds) to wait after a scaling action before resuming monitoring.
+         */
         cooldown: number;
+        /**
+         * A list of dimensions describing qualities of the metric.
+         */
         dimensions?: outputs.gcp.ElastigroupScalingUpPolicyDimension[];
+        /**
+         * Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
+         */
         evaluationPeriods: number;
+        /**
+         * Metric to monitor. Valid values: "Percentage CPU", "Network In", "Network Out", "Disk Read Bytes", "Disk Write Bytes", "Disk Write Operations/Sec", "Disk Read Operations/Sec".
+         */
         metricName: string;
         namespace: string;
+        /**
+         * The operator used to evaluate the threshold against the current metric value. Valid values: "gt" (greater than), "get" (greater-than or equal), "lt" (less than), "lte" (less than or equal).
+         */
         operator: string;
+        /**
+         * Amount of time (seconds) for which the threshold must be met in order to trigger the scaling action.
+         */
         period: number;
+        /**
+         * Name of scaling policy.
+         */
         policyName: string;
         source: string;
+        /**
+         * Statistic by which to evaluate the selected metric. Valid values: "AVERAGE", "SAMPLE_COUNT", "SUM", "MINIMUM", "MAXIMUM", "PERCENTILE", "COUNT".
+         */
         statistic: string;
+        /**
+         * The value at which the scaling action is triggered.
+         */
         threshold: number;
         unit: string;
     }
 
     export interface ElastigroupScalingUpPolicyDimension {
         /**
-         * The group name.
+         * The dimension name.
          */
         name: string;
+        /**
+         * The dimension value.
+         *
+         * Usage:
+         */
         value?: string;
     }
 
@@ -3587,30 +4178,78 @@ export namespace gke {
     }
 
     export interface OceanImportAutoscaler {
+        /**
+         * Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom % from the cluster. Relevant when isAutoConfig=true.
+         */
         autoHeadroomPercentage?: number;
+        /**
+         * Cooldown period between scaling actions.
+         */
         cooldown?: number;
+        /**
+         * Auto Scaling scale down operations.
+         */
         down?: outputs.gke.OceanImportAutoscalerDown;
+        /**
+         * enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
+         */
         enableAutomaticAndManualHeadroom?: boolean;
+        /**
+         * Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
+         */
         headroom?: outputs.gke.OceanImportAutoscalerHeadroom;
+        /**
+         * Automatically configure and optimize headroom resources.
+         */
         isAutoConfig?: boolean;
+        /**
+         * Enable the Ocean Kubernetes Autoscaler.
+         */
         isEnabled?: boolean;
+        /**
+         * Optionally set upper and lower bounds on the resource usage of the cluster.
+         */
         resourceLimits?: outputs.gke.OceanImportAutoscalerResourceLimits;
     }
 
     export interface OceanImportAutoscalerDown {
+        /**
+         * The number of evaluation periods that should accumulate before a scale down action takes place.
+         */
         evaluationPeriods?: number;
+        /**
+         * Would represent the maximum % to scale-down. Number between 1-100.
+         */
         maxScaleDownPercentage?: number;
     }
 
     export interface OceanImportAutoscalerHeadroom {
+        /**
+         * Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+         */
         cpuPerUnit?: number;
+        /**
+         * How much GPU allocate for headroom unit.
+         */
         gpuPerUnit?: number;
+        /**
+         * Optionally configure the amount of memory (MiB) to allocate the headroom.
+         */
         memoryPerUnit?: number;
+        /**
+         * The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+         */
         numOfUnits?: number;
     }
 
     export interface OceanImportAutoscalerResourceLimits {
+        /**
+         * The maximum memory in GiB units that can be allocated to the cluster.
+         */
         maxMemoryGib?: number;
+        /**
+         * The maximum cpu in vCpu units that can be allocated to the cluster.
+         */
         maxVcpu?: number;
     }
 
@@ -3636,30 +4275,72 @@ export namespace gke {
     }
 
     export interface OceanImportScheduledTask {
+        /**
+         * Set shutdown hours for cluster object.
+         */
         shutdownHours?: outputs.gke.OceanImportScheduledTaskShutdownHours;
+        /**
+         * The scheduling tasks for the cluster.
+         */
         tasks?: outputs.gke.OceanImportScheduledTaskTask[];
     }
 
     export interface OceanImportScheduledTaskShutdownHours {
+        /**
+         * Flag to enable / disable the shutdown hours.
+         * Example: True
+         */
         isEnabled?: boolean;
+        /**
+         * Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
+         * Example: Fri:15:30-Wed:14:30
+         */
         timeWindows: string[];
     }
 
     export interface OceanImportScheduledTaskTask {
+        /**
+         * A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
+         * Example: 0 1 * * *
+         */
         cronExpression: string;
+        /**
+         * Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
+         */
         isEnabled: boolean;
+        /**
+         * The scheduling parameters for the cluster.
+         */
         taskParameters?: outputs.gke.OceanImportScheduledTaskTaskTaskParameters;
+        /**
+         * Valid values: "clusterRoll". Required for cluster.scheduling.tasks object.
+         */
         taskType: string;
     }
 
     export interface OceanImportScheduledTaskTaskTaskParameters {
+        /**
+         * The cluster roll parameters for the cluster.
+         */
         clusterRoll?: outputs.gke.OceanImportScheduledTaskTaskTaskParametersClusterRoll;
     }
 
     export interface OceanImportScheduledTaskTaskTaskParametersClusterRoll {
+        /**
+         * Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+         */
         batchMinHealthyPercentage?: number;
+        /**
+         * Value as a percent to set the size of a batch in a roll. Valid values are 0-100.
+         */
         batchSizePercentage?: number;
+        /**
+         * Add a comment description for the roll. The comment is limited to 256 chars.
+         */
         comment?: string;
+        /**
+         * During the roll, if the parameter is set to true we honor PDB during the instance replacement.
+         */
         respectPdb?: boolean;
     }
 
@@ -3676,23 +4357,50 @@ export namespace gke {
 
     export interface OceanImportStrategy {
         /**
-         * The draining timeout (in seconds) before terminating the instance.
+         * The draining timeout (in seconds) before terminating the instance. If no draining timeout is defined, the default draining timeout will be used.
          */
         drainingTimeout?: number;
+        /**
+         * Defines the desired preemptible percentage for the cluster.
+         */
         preemptiblePercentage?: number;
+        /**
+         * Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
+         */
         provisioningModel?: string;
     }
 
     export interface OceanImportUpdatePolicy {
+        /**
+         * Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
+         */
         conditionedRoll?: boolean;
+        /**
+         * Holds the roll configuration.
+         */
         rollConfig?: outputs.gke.OceanImportUpdatePolicyRollConfig;
+        /**
+         * Enables the roll.
+         */
         shouldRoll: boolean;
     }
 
     export interface OceanImportUpdatePolicyRollConfig {
+        /**
+         * Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+         */
         batchMinHealthyPercentage?: number;
+        /**
+         * Sets the percentage of the instances to deploy in each batch.
+         */
         batchSizePercentage: number;
+        /**
+         * List of Virtual Node Group identifiers to be rolled.
+         */
         launchSpecIds?: string[];
+        /**
+         * Default: False. During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+         */
         respectPdb?: boolean;
     }
 
@@ -3781,8 +4489,6 @@ export namespace gke {
         ipCidrRange: string;
         /**
          * specify the IP address range for the subnet secondary IP range.
-         *
-         * <a id="update-policy"></a>
          */
         subnetworkRangeName: string;
     }
@@ -3877,11 +4583,20 @@ export namespace gke {
     }
 
     export interface OceanLaunchSpecUpdatePolicy {
+        /**
+         * Holds the roll configuration.
+         */
         rollConfig?: outputs.gke.OceanLaunchSpecUpdatePolicyRollConfig;
+        /**
+         * Enables the roll.
+         */
         shouldRoll: boolean;
     }
 
     export interface OceanLaunchSpecUpdatePolicyRollConfig {
+        /**
+         * Sets the percentage of the instances to deploy in each batch.
+         */
         batchSizePercentage: number;
     }
 

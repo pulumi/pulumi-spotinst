@@ -13,8 +13,19 @@ namespace Pulumi.SpotInst.Gcp.Outputs
     [OutputType]
     public sealed class ElastigroupDiskInitializeParam
     {
+        /// <summary>
+        /// Specifies disk size in gigabytes. Must be in increments of 2.
+        /// </summary>
         public readonly string? DiskSizeGb;
+        /// <summary>
+        /// Specifies the disk type to use to create the instance. Valid values: pd-ssd, local-ssd.
+        /// </summary>
         public readonly string? DiskType;
+        /// <summary>
+        /// A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
+        /// 
+        /// Usage:
+        /// </summary>
         public readonly string SourceImage;
 
         [OutputConstructor]

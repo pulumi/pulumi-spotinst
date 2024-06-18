@@ -12,9 +12,15 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class OceanScheduledTaskTaskParametersArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Set amiAutoUpdate object
+        /// </summary>
         [Input("amiAutoUpdate")]
         public Input<Inputs.OceanScheduledTaskTaskParametersAmiAutoUpdateArgs>? AmiAutoUpdate { get; set; }
 
+        /// <summary>
+        /// Set clusterRoll object
+        /// </summary>
         [Input("parametersClusterRoll")]
         public Input<Inputs.OceanScheduledTaskTaskParametersParametersClusterRollArgs>? ParametersClusterRoll { get; set; }
 

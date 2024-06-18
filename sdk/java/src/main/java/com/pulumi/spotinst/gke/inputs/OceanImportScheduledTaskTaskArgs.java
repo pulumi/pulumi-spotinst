@@ -18,30 +18,64 @@ public final class OceanImportScheduledTaskTaskArgs extends com.pulumi.resources
 
     public static final OceanImportScheduledTaskTaskArgs Empty = new OceanImportScheduledTaskTaskArgs();
 
+    /**
+     * A valid cron expression. For example : &#34; * * * * * &#34;.The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
+     * Example: 0 1 * * *
+     * 
+     */
     @Import(name="cronExpression", required=true)
     private Output<String> cronExpression;
 
+    /**
+     * @return A valid cron expression. For example : &#34; * * * * * &#34;.The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
+     * Example: 0 1 * * *
+     * 
+     */
     public Output<String> cronExpression() {
         return this.cronExpression;
     }
 
+    /**
+     * Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
+     * 
+     */
     @Import(name="isEnabled", required=true)
     private Output<Boolean> isEnabled;
 
+    /**
+     * @return Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
+     * 
+     */
     public Output<Boolean> isEnabled() {
         return this.isEnabled;
     }
 
+    /**
+     * The scheduling parameters for the cluster.
+     * 
+     */
     @Import(name="taskParameters")
     private @Nullable Output<OceanImportScheduledTaskTaskTaskParametersArgs> taskParameters;
 
+    /**
+     * @return The scheduling parameters for the cluster.
+     * 
+     */
     public Optional<Output<OceanImportScheduledTaskTaskTaskParametersArgs>> taskParameters() {
         return Optional.ofNullable(this.taskParameters);
     }
 
+    /**
+     * Valid values: &#34;clusterRoll&#34;. Required for cluster.scheduling.tasks object.
+     * 
+     */
     @Import(name="taskType", required=true)
     private Output<String> taskType;
 
+    /**
+     * @return Valid values: &#34;clusterRoll&#34;. Required for cluster.scheduling.tasks object.
+     * 
+     */
     public Output<String> taskType() {
         return this.taskType;
     }
@@ -73,38 +107,88 @@ public final class OceanImportScheduledTaskTaskArgs extends com.pulumi.resources
             $ = new OceanImportScheduledTaskTaskArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param cronExpression A valid cron expression. For example : &#34; * * * * * &#34;.The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
+         * Example: 0 1 * * *
+         * 
+         * @return builder
+         * 
+         */
         public Builder cronExpression(Output<String> cronExpression) {
             $.cronExpression = cronExpression;
             return this;
         }
 
+        /**
+         * @param cronExpression A valid cron expression. For example : &#34; * * * * * &#34;.The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
+         * Example: 0 1 * * *
+         * 
+         * @return builder
+         * 
+         */
         public Builder cronExpression(String cronExpression) {
             return cronExpression(Output.of(cronExpression));
         }
 
+        /**
+         * @param isEnabled Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isEnabled(Output<Boolean> isEnabled) {
             $.isEnabled = isEnabled;
             return this;
         }
 
+        /**
+         * @param isEnabled Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isEnabled(Boolean isEnabled) {
             return isEnabled(Output.of(isEnabled));
         }
 
+        /**
+         * @param taskParameters The scheduling parameters for the cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder taskParameters(@Nullable Output<OceanImportScheduledTaskTaskTaskParametersArgs> taskParameters) {
             $.taskParameters = taskParameters;
             return this;
         }
 
+        /**
+         * @param taskParameters The scheduling parameters for the cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder taskParameters(OceanImportScheduledTaskTaskTaskParametersArgs taskParameters) {
             return taskParameters(Output.of(taskParameters));
         }
 
+        /**
+         * @param taskType Valid values: &#34;clusterRoll&#34;. Required for cluster.scheduling.tasks object.
+         * 
+         * @return builder
+         * 
+         */
         public Builder taskType(Output<String> taskType) {
             $.taskType = taskType;
             return this;
         }
 
+        /**
+         * @param taskType Valid values: &#34;clusterRoll&#34;. Required for cluster.scheduling.tasks object.
+         * 
+         * @return builder
+         * 
+         */
         public Builder taskType(String taskType) {
             return taskType(Output.of(taskType));
         }

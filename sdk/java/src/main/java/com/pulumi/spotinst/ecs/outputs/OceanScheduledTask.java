@@ -13,13 +13,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanScheduledTask {
+    /**
+     * @return Set shutdown hours for cluster object.
+     * 
+     */
     private @Nullable OceanScheduledTaskShutdownHours shutdownHours;
+    /**
+     * @return The scheduling tasks for the cluster.
+     * 
+     */
     private @Nullable List<OceanScheduledTaskTask> tasks;
 
     private OceanScheduledTask() {}
+    /**
+     * @return Set shutdown hours for cluster object.
+     * 
+     */
     public Optional<OceanScheduledTaskShutdownHours> shutdownHours() {
         return Optional.ofNullable(this.shutdownHours);
     }
+    /**
+     * @return The scheduling tasks for the cluster.
+     * 
+     */
     public List<OceanScheduledTaskTask> tasks() {
         return this.tasks == null ? List.of() : this.tasks;
     }

@@ -12,9 +12,15 @@ namespace Pulumi.SpotInst.Gke.Inputs
 
     public sealed class OceanImportAutoscalerResourceLimitsArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The maximum memory in GiB units that can be allocated to the cluster.
+        /// </summary>
         [Input("maxMemoryGib")]
         public Input<int>? MaxMemoryGib { get; set; }
 
+        /// <summary>
+        /// The maximum cpu in vCpu units that can be allocated to the cluster.
+        /// </summary>
         [Input("maxVcpu")]
         public Input<int>? MaxVcpu { get; set; }
 

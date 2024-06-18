@@ -51,8 +51,14 @@ export class Ocean extends pulumi.CustomResource {
      * Configure public IP address allocation.
      */
     public readonly associatePublicIpAddress!: pulumi.Output<boolean | undefined>;
+    /**
+     * Describes the Ocean ECS autoscaler.
+     */
     public readonly autoscaler!: pulumi.Output<outputs.ecs.OceanAutoscaler | undefined>;
     public readonly blacklists!: pulumi.Output<string[] | undefined>;
+    /**
+     * Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+     */
     public readonly blockDeviceMappings!: pulumi.Output<outputs.ecs.OceanBlockDeviceMapping[] | undefined>;
     /**
      * The name of the ECS cluster.
@@ -108,11 +114,17 @@ export class Ocean extends pulumi.CustomResource {
      * The Ocean cluster name.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Object. Set auto image update settings.
+     */
     public readonly optimizeImages!: pulumi.Output<outputs.ecs.OceanOptimizeImages | undefined>;
     /**
      * The region the cluster will run in.
      */
     public readonly region!: pulumi.Output<string>;
+    /**
+     * While used, you can control whether the group should perform a deployment after an update to the configuration.
+     */
     public readonly scheduledTasks!: pulumi.Output<outputs.ecs.OceanScheduledTask[] | undefined>;
     /**
      * One or more security group ids.
@@ -130,6 +142,9 @@ export class Ocean extends pulumi.CustomResource {
      * Optionally adds tags to instances launched in an Ocean cluster.
      */
     public readonly tags!: pulumi.Output<outputs.ecs.OceanTag[] | undefined>;
+    /**
+     * While used, you can control whether the group should perform a deployment after an update to the configuration.
+     */
     public readonly updatePolicy!: pulumi.Output<outputs.ecs.OceanUpdatePolicy | undefined>;
     /**
      * launch specification defined on the Ocean object will function only as a template for virtual node groups.
@@ -257,8 +272,14 @@ export interface OceanState {
      * Configure public IP address allocation.
      */
     associatePublicIpAddress?: pulumi.Input<boolean>;
+    /**
+     * Describes the Ocean ECS autoscaler.
+     */
     autoscaler?: pulumi.Input<inputs.ecs.OceanAutoscaler>;
     blacklists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+     */
     blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.ecs.OceanBlockDeviceMapping>[]>;
     /**
      * The name of the ECS cluster.
@@ -314,11 +335,17 @@ export interface OceanState {
      * The Ocean cluster name.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Object. Set auto image update settings.
+     */
     optimizeImages?: pulumi.Input<inputs.ecs.OceanOptimizeImages>;
     /**
      * The region the cluster will run in.
      */
     region?: pulumi.Input<string>;
+    /**
+     * While used, you can control whether the group should perform a deployment after an update to the configuration.
+     */
     scheduledTasks?: pulumi.Input<pulumi.Input<inputs.ecs.OceanScheduledTask>[]>;
     /**
      * One or more security group ids.
@@ -336,6 +363,9 @@ export interface OceanState {
      * Optionally adds tags to instances launched in an Ocean cluster.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.ecs.OceanTag>[]>;
+    /**
+     * While used, you can control whether the group should perform a deployment after an update to the configuration.
+     */
     updatePolicy?: pulumi.Input<inputs.ecs.OceanUpdatePolicy>;
     /**
      * launch specification defined on the Ocean object will function only as a template for virtual node groups.
@@ -364,8 +394,14 @@ export interface OceanArgs {
      * Configure public IP address allocation.
      */
     associatePublicIpAddress?: pulumi.Input<boolean>;
+    /**
+     * Describes the Ocean ECS autoscaler.
+     */
     autoscaler?: pulumi.Input<inputs.ecs.OceanAutoscaler>;
     blacklists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+     */
     blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.ecs.OceanBlockDeviceMapping>[]>;
     /**
      * The name of the ECS cluster.
@@ -421,11 +457,17 @@ export interface OceanArgs {
      * The Ocean cluster name.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Object. Set auto image update settings.
+     */
     optimizeImages?: pulumi.Input<inputs.ecs.OceanOptimizeImages>;
     /**
      * The region the cluster will run in.
      */
     region: pulumi.Input<string>;
+    /**
+     * While used, you can control whether the group should perform a deployment after an update to the configuration.
+     */
     scheduledTasks?: pulumi.Input<pulumi.Input<inputs.ecs.OceanScheduledTask>[]>;
     /**
      * One or more security group ids.
@@ -443,6 +485,9 @@ export interface OceanArgs {
      * Optionally adds tags to instances launched in an Ocean cluster.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.ecs.OceanTag>[]>;
+    /**
+     * While used, you can control whether the group should perform a deployment after an update to the configuration.
+     */
     updatePolicy?: pulumi.Input<inputs.ecs.OceanUpdatePolicy>;
     /**
      * launch specification defined on the Ocean object will function only as a template for virtual node groups.

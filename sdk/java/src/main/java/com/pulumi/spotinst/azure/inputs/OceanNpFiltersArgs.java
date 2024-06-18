@@ -81,16 +81,12 @@ public final class OceanNpFiltersArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * The filtered gpu types will belong to one of the gpu types from this list.
      * 
-     * &lt;a id=&#34;update-policy&#34;&gt;&lt;/a&gt;
-     * 
      */
     @Import(name="gpuTypes")
     private @Nullable Output<List<String>> gpuTypes;
 
     /**
      * @return The filtered gpu types will belong to one of the gpu types from this list.
-     * 
-     * &lt;a id=&#34;update-policy&#34;&gt;&lt;/a&gt;
      * 
      */
     public Optional<Output<List<String>>> gpuTypes() {
@@ -392,8 +388,6 @@ public final class OceanNpFiltersArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param gpuTypes The filtered gpu types will belong to one of the gpu types from this list.
          * 
-         * &lt;a id=&#34;update-policy&#34;&gt;&lt;/a&gt;
-         * 
          * @return builder
          * 
          */
@@ -405,8 +399,6 @@ public final class OceanNpFiltersArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param gpuTypes The filtered gpu types will belong to one of the gpu types from this list.
          * 
-         * &lt;a id=&#34;update-policy&#34;&gt;&lt;/a&gt;
-         * 
          * @return builder
          * 
          */
@@ -416,8 +408,6 @@ public final class OceanNpFiltersArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param gpuTypes The filtered gpu types will belong to one of the gpu types from this list.
-         * 
-         * &lt;a id=&#34;update-policy&#34;&gt;&lt;/a&gt;
          * 
          * @return builder
          * 

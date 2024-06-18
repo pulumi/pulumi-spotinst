@@ -1115,6 +1115,16 @@ class OceanImportAutoscalerArgs:
                  is_auto_config: Optional[pulumi.Input[bool]] = None,
                  is_enabled: Optional[pulumi.Input[bool]] = None,
                  resource_limits: Optional[pulumi.Input['OceanImportAutoscalerResourceLimitsArgs']] = None):
+        """
+        :param pulumi.Input[int] auto_headroom_percentage: Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom % from the cluster. Relevant when isAutoConfig=true.
+        :param pulumi.Input[int] cooldown: Cooldown period between scaling actions.
+        :param pulumi.Input['OceanImportAutoscalerDownArgs'] down: Auto Scaling scale down operations.
+        :param pulumi.Input[bool] enable_automatic_and_manual_headroom: enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
+        :param pulumi.Input['OceanImportAutoscalerHeadroomArgs'] headroom: Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
+        :param pulumi.Input[bool] is_auto_config: Automatically configure and optimize headroom resources.
+        :param pulumi.Input[bool] is_enabled: Enable the Ocean Kubernetes Autoscaler.
+        :param pulumi.Input['OceanImportAutoscalerResourceLimitsArgs'] resource_limits: Optionally set upper and lower bounds on the resource usage of the cluster.
+        """
         if auto_headroom_percentage is not None:
             pulumi.set(__self__, "auto_headroom_percentage", auto_headroom_percentage)
         if cooldown is not None:
@@ -1135,6 +1145,9 @@ class OceanImportAutoscalerArgs:
     @property
     @pulumi.getter(name="autoHeadroomPercentage")
     def auto_headroom_percentage(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom % from the cluster. Relevant when isAutoConfig=true.
+        """
         return pulumi.get(self, "auto_headroom_percentage")
 
     @auto_headroom_percentage.setter
@@ -1144,6 +1157,9 @@ class OceanImportAutoscalerArgs:
     @property
     @pulumi.getter
     def cooldown(self) -> Optional[pulumi.Input[int]]:
+        """
+        Cooldown period between scaling actions.
+        """
         return pulumi.get(self, "cooldown")
 
     @cooldown.setter
@@ -1153,6 +1169,9 @@ class OceanImportAutoscalerArgs:
     @property
     @pulumi.getter
     def down(self) -> Optional[pulumi.Input['OceanImportAutoscalerDownArgs']]:
+        """
+        Auto Scaling scale down operations.
+        """
         return pulumi.get(self, "down")
 
     @down.setter
@@ -1162,6 +1181,9 @@ class OceanImportAutoscalerArgs:
     @property
     @pulumi.getter(name="enableAutomaticAndManualHeadroom")
     def enable_automatic_and_manual_headroom(self) -> Optional[pulumi.Input[bool]]:
+        """
+        enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
+        """
         return pulumi.get(self, "enable_automatic_and_manual_headroom")
 
     @enable_automatic_and_manual_headroom.setter
@@ -1171,6 +1193,9 @@ class OceanImportAutoscalerArgs:
     @property
     @pulumi.getter
     def headroom(self) -> Optional[pulumi.Input['OceanImportAutoscalerHeadroomArgs']]:
+        """
+        Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
+        """
         return pulumi.get(self, "headroom")
 
     @headroom.setter
@@ -1180,6 +1205,9 @@ class OceanImportAutoscalerArgs:
     @property
     @pulumi.getter(name="isAutoConfig")
     def is_auto_config(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Automatically configure and optimize headroom resources.
+        """
         return pulumi.get(self, "is_auto_config")
 
     @is_auto_config.setter
@@ -1189,6 +1217,9 @@ class OceanImportAutoscalerArgs:
     @property
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable the Ocean Kubernetes Autoscaler.
+        """
         return pulumi.get(self, "is_enabled")
 
     @is_enabled.setter
@@ -1198,6 +1229,9 @@ class OceanImportAutoscalerArgs:
     @property
     @pulumi.getter(name="resourceLimits")
     def resource_limits(self) -> Optional[pulumi.Input['OceanImportAutoscalerResourceLimitsArgs']]:
+        """
+        Optionally set upper and lower bounds on the resource usage of the cluster.
+        """
         return pulumi.get(self, "resource_limits")
 
     @resource_limits.setter
@@ -1210,6 +1244,10 @@ class OceanImportAutoscalerDownArgs:
     def __init__(__self__, *,
                  evaluation_periods: Optional[pulumi.Input[int]] = None,
                  max_scale_down_percentage: Optional[pulumi.Input[float]] = None):
+        """
+        :param pulumi.Input[int] evaluation_periods: The number of evaluation periods that should accumulate before a scale down action takes place.
+        :param pulumi.Input[float] max_scale_down_percentage: Would represent the maximum % to scale-down. Number between 1-100.
+        """
         if evaluation_periods is not None:
             pulumi.set(__self__, "evaluation_periods", evaluation_periods)
         if max_scale_down_percentage is not None:
@@ -1218,6 +1256,9 @@ class OceanImportAutoscalerDownArgs:
     @property
     @pulumi.getter(name="evaluationPeriods")
     def evaluation_periods(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of evaluation periods that should accumulate before a scale down action takes place.
+        """
         return pulumi.get(self, "evaluation_periods")
 
     @evaluation_periods.setter
@@ -1227,6 +1268,9 @@ class OceanImportAutoscalerDownArgs:
     @property
     @pulumi.getter(name="maxScaleDownPercentage")
     def max_scale_down_percentage(self) -> Optional[pulumi.Input[float]]:
+        """
+        Would represent the maximum % to scale-down. Number between 1-100.
+        """
         return pulumi.get(self, "max_scale_down_percentage")
 
     @max_scale_down_percentage.setter
@@ -1241,6 +1285,12 @@ class OceanImportAutoscalerHeadroomArgs:
                  gpu_per_unit: Optional[pulumi.Input[int]] = None,
                  memory_per_unit: Optional[pulumi.Input[int]] = None,
                  num_of_units: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] cpu_per_unit: Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        :param pulumi.Input[int] gpu_per_unit: How much GPU allocate for headroom unit.
+        :param pulumi.Input[int] memory_per_unit: Optionally configure the amount of memory (MiB) to allocate the headroom.
+        :param pulumi.Input[int] num_of_units: The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+        """
         if cpu_per_unit is not None:
             pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
         if gpu_per_unit is not None:
@@ -1253,6 +1303,9 @@ class OceanImportAutoscalerHeadroomArgs:
     @property
     @pulumi.getter(name="cpuPerUnit")
     def cpu_per_unit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        """
         return pulumi.get(self, "cpu_per_unit")
 
     @cpu_per_unit.setter
@@ -1262,6 +1315,9 @@ class OceanImportAutoscalerHeadroomArgs:
     @property
     @pulumi.getter(name="gpuPerUnit")
     def gpu_per_unit(self) -> Optional[pulumi.Input[int]]:
+        """
+        How much GPU allocate for headroom unit.
+        """
         return pulumi.get(self, "gpu_per_unit")
 
     @gpu_per_unit.setter
@@ -1271,6 +1327,9 @@ class OceanImportAutoscalerHeadroomArgs:
     @property
     @pulumi.getter(name="memoryPerUnit")
     def memory_per_unit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optionally configure the amount of memory (MiB) to allocate the headroom.
+        """
         return pulumi.get(self, "memory_per_unit")
 
     @memory_per_unit.setter
@@ -1280,6 +1339,9 @@ class OceanImportAutoscalerHeadroomArgs:
     @property
     @pulumi.getter(name="numOfUnits")
     def num_of_units(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+        """
         return pulumi.get(self, "num_of_units")
 
     @num_of_units.setter
@@ -1292,6 +1354,10 @@ class OceanImportAutoscalerResourceLimitsArgs:
     def __init__(__self__, *,
                  max_memory_gib: Optional[pulumi.Input[int]] = None,
                  max_vcpu: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] max_memory_gib: The maximum memory in GiB units that can be allocated to the cluster.
+        :param pulumi.Input[int] max_vcpu: The maximum cpu in vCpu units that can be allocated to the cluster.
+        """
         if max_memory_gib is not None:
             pulumi.set(__self__, "max_memory_gib", max_memory_gib)
         if max_vcpu is not None:
@@ -1300,6 +1366,9 @@ class OceanImportAutoscalerResourceLimitsArgs:
     @property
     @pulumi.getter(name="maxMemoryGib")
     def max_memory_gib(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum memory in GiB units that can be allocated to the cluster.
+        """
         return pulumi.get(self, "max_memory_gib")
 
     @max_memory_gib.setter
@@ -1309,6 +1378,9 @@ class OceanImportAutoscalerResourceLimitsArgs:
     @property
     @pulumi.getter(name="maxVcpu")
     def max_vcpu(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum cpu in vCpu units that can be allocated to the cluster.
+        """
         return pulumi.get(self, "max_vcpu")
 
     @max_vcpu.setter
@@ -1414,6 +1486,10 @@ class OceanImportScheduledTaskArgs:
     def __init__(__self__, *,
                  shutdown_hours: Optional[pulumi.Input['OceanImportScheduledTaskShutdownHoursArgs']] = None,
                  tasks: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportScheduledTaskTaskArgs']]]] = None):
+        """
+        :param pulumi.Input['OceanImportScheduledTaskShutdownHoursArgs'] shutdown_hours: Set shutdown hours for cluster object.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanImportScheduledTaskTaskArgs']]] tasks: The scheduling tasks for the cluster.
+        """
         if shutdown_hours is not None:
             pulumi.set(__self__, "shutdown_hours", shutdown_hours)
         if tasks is not None:
@@ -1422,6 +1498,9 @@ class OceanImportScheduledTaskArgs:
     @property
     @pulumi.getter(name="shutdownHours")
     def shutdown_hours(self) -> Optional[pulumi.Input['OceanImportScheduledTaskShutdownHoursArgs']]:
+        """
+        Set shutdown hours for cluster object.
+        """
         return pulumi.get(self, "shutdown_hours")
 
     @shutdown_hours.setter
@@ -1431,6 +1510,9 @@ class OceanImportScheduledTaskArgs:
     @property
     @pulumi.getter
     def tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportScheduledTaskTaskArgs']]]]:
+        """
+        The scheduling tasks for the cluster.
+        """
         return pulumi.get(self, "tasks")
 
     @tasks.setter
@@ -1443,6 +1525,12 @@ class OceanImportScheduledTaskShutdownHoursArgs:
     def __init__(__self__, *,
                  time_windows: pulumi.Input[Sequence[pulumi.Input[str]]],
                  is_enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] time_windows: Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
+               Example: Fri:15:30-Wed:14:30
+        :param pulumi.Input[bool] is_enabled: Flag to enable / disable the shutdown hours.
+               Example: True
+        """
         pulumi.set(__self__, "time_windows", time_windows)
         if is_enabled is not None:
             pulumi.set(__self__, "is_enabled", is_enabled)
@@ -1450,6 +1538,10 @@ class OceanImportScheduledTaskShutdownHoursArgs:
     @property
     @pulumi.getter(name="timeWindows")
     def time_windows(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
+        Example: Fri:15:30-Wed:14:30
+        """
         return pulumi.get(self, "time_windows")
 
     @time_windows.setter
@@ -1459,6 +1551,10 @@ class OceanImportScheduledTaskShutdownHoursArgs:
     @property
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Flag to enable / disable the shutdown hours.
+        Example: True
+        """
         return pulumi.get(self, "is_enabled")
 
     @is_enabled.setter
@@ -1473,6 +1569,13 @@ class OceanImportScheduledTaskTaskArgs:
                  is_enabled: pulumi.Input[bool],
                  task_type: pulumi.Input[str],
                  task_parameters: Optional[pulumi.Input['OceanImportScheduledTaskTaskTaskParametersArgs']] = None):
+        """
+        :param pulumi.Input[str] cron_expression: A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
+               Example: 0 1 * * *
+        :param pulumi.Input[bool] is_enabled: Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
+        :param pulumi.Input[str] task_type: Valid values: "clusterRoll". Required for cluster.scheduling.tasks object.
+        :param pulumi.Input['OceanImportScheduledTaskTaskTaskParametersArgs'] task_parameters: The scheduling parameters for the cluster.
+        """
         pulumi.set(__self__, "cron_expression", cron_expression)
         pulumi.set(__self__, "is_enabled", is_enabled)
         pulumi.set(__self__, "task_type", task_type)
@@ -1482,6 +1585,10 @@ class OceanImportScheduledTaskTaskArgs:
     @property
     @pulumi.getter(name="cronExpression")
     def cron_expression(self) -> pulumi.Input[str]:
+        """
+        A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
+        Example: 0 1 * * *
+        """
         return pulumi.get(self, "cron_expression")
 
     @cron_expression.setter
@@ -1491,6 +1598,9 @@ class OceanImportScheduledTaskTaskArgs:
     @property
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> pulumi.Input[bool]:
+        """
+        Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
+        """
         return pulumi.get(self, "is_enabled")
 
     @is_enabled.setter
@@ -1500,6 +1610,9 @@ class OceanImportScheduledTaskTaskArgs:
     @property
     @pulumi.getter(name="taskType")
     def task_type(self) -> pulumi.Input[str]:
+        """
+        Valid values: "clusterRoll". Required for cluster.scheduling.tasks object.
+        """
         return pulumi.get(self, "task_type")
 
     @task_type.setter
@@ -1509,6 +1622,9 @@ class OceanImportScheduledTaskTaskArgs:
     @property
     @pulumi.getter(name="taskParameters")
     def task_parameters(self) -> Optional[pulumi.Input['OceanImportScheduledTaskTaskTaskParametersArgs']]:
+        """
+        The scheduling parameters for the cluster.
+        """
         return pulumi.get(self, "task_parameters")
 
     @task_parameters.setter
@@ -1520,12 +1636,18 @@ class OceanImportScheduledTaskTaskArgs:
 class OceanImportScheduledTaskTaskTaskParametersArgs:
     def __init__(__self__, *,
                  cluster_roll: Optional[pulumi.Input['OceanImportScheduledTaskTaskTaskParametersClusterRollArgs']] = None):
+        """
+        :param pulumi.Input['OceanImportScheduledTaskTaskTaskParametersClusterRollArgs'] cluster_roll: The cluster roll parameters for the cluster.
+        """
         if cluster_roll is not None:
             pulumi.set(__self__, "cluster_roll", cluster_roll)
 
     @property
     @pulumi.getter(name="clusterRoll")
     def cluster_roll(self) -> Optional[pulumi.Input['OceanImportScheduledTaskTaskTaskParametersClusterRollArgs']]:
+        """
+        The cluster roll parameters for the cluster.
+        """
         return pulumi.get(self, "cluster_roll")
 
     @cluster_roll.setter
@@ -1540,6 +1662,12 @@ class OceanImportScheduledTaskTaskTaskParametersClusterRollArgs:
                  batch_size_percentage: Optional[pulumi.Input[int]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  respect_pdb: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[int] batch_min_healthy_percentage: Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+        :param pulumi.Input[int] batch_size_percentage: Value as a percent to set the size of a batch in a roll. Valid values are 0-100.
+        :param pulumi.Input[str] comment: Add a comment description for the roll. The comment is limited to 256 chars.
+        :param pulumi.Input[bool] respect_pdb: During the roll, if the parameter is set to true we honor PDB during the instance replacement.
+        """
         if batch_min_healthy_percentage is not None:
             pulumi.set(__self__, "batch_min_healthy_percentage", batch_min_healthy_percentage)
         if batch_size_percentage is not None:
@@ -1552,6 +1680,9 @@ class OceanImportScheduledTaskTaskTaskParametersClusterRollArgs:
     @property
     @pulumi.getter(name="batchMinHealthyPercentage")
     def batch_min_healthy_percentage(self) -> Optional[pulumi.Input[int]]:
+        """
+        Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+        """
         return pulumi.get(self, "batch_min_healthy_percentage")
 
     @batch_min_healthy_percentage.setter
@@ -1561,6 +1692,9 @@ class OceanImportScheduledTaskTaskTaskParametersClusterRollArgs:
     @property
     @pulumi.getter(name="batchSizePercentage")
     def batch_size_percentage(self) -> Optional[pulumi.Input[int]]:
+        """
+        Value as a percent to set the size of a batch in a roll. Valid values are 0-100.
+        """
         return pulumi.get(self, "batch_size_percentage")
 
     @batch_size_percentage.setter
@@ -1570,6 +1704,9 @@ class OceanImportScheduledTaskTaskTaskParametersClusterRollArgs:
     @property
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
+        """
+        Add a comment description for the roll. The comment is limited to 256 chars.
+        """
         return pulumi.get(self, "comment")
 
     @comment.setter
@@ -1579,6 +1716,9 @@ class OceanImportScheduledTaskTaskTaskParametersClusterRollArgs:
     @property
     @pulumi.getter(name="respectPdb")
     def respect_pdb(self) -> Optional[pulumi.Input[bool]]:
+        """
+        During the roll, if the parameter is set to true we honor PDB during the instance replacement.
+        """
         return pulumi.get(self, "respect_pdb")
 
     @respect_pdb.setter
@@ -1632,7 +1772,9 @@ class OceanImportStrategyArgs:
                  preemptible_percentage: Optional[pulumi.Input[int]] = None,
                  provisioning_model: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[int] draining_timeout: The draining timeout (in seconds) before terminating the instance.
+        :param pulumi.Input[int] draining_timeout: The draining timeout (in seconds) before terminating the instance. If no draining timeout is defined, the default draining timeout will be used.
+        :param pulumi.Input[int] preemptible_percentage: Defines the desired preemptible percentage for the cluster.
+        :param pulumi.Input[str] provisioning_model: Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
         """
         if draining_timeout is not None:
             pulumi.set(__self__, "draining_timeout", draining_timeout)
@@ -1645,7 +1787,7 @@ class OceanImportStrategyArgs:
     @pulumi.getter(name="drainingTimeout")
     def draining_timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        The draining timeout (in seconds) before terminating the instance.
+        The draining timeout (in seconds) before terminating the instance. If no draining timeout is defined, the default draining timeout will be used.
         """
         return pulumi.get(self, "draining_timeout")
 
@@ -1656,6 +1798,9 @@ class OceanImportStrategyArgs:
     @property
     @pulumi.getter(name="preemptiblePercentage")
     def preemptible_percentage(self) -> Optional[pulumi.Input[int]]:
+        """
+        Defines the desired preemptible percentage for the cluster.
+        """
         return pulumi.get(self, "preemptible_percentage")
 
     @preemptible_percentage.setter
@@ -1665,6 +1810,9 @@ class OceanImportStrategyArgs:
     @property
     @pulumi.getter(name="provisioningModel")
     def provisioning_model(self) -> Optional[pulumi.Input[str]]:
+        """
+        Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
+        """
         return pulumi.get(self, "provisioning_model")
 
     @provisioning_model.setter
@@ -1678,6 +1826,11 @@ class OceanImportUpdatePolicyArgs:
                  should_roll: pulumi.Input[bool],
                  conditioned_roll: Optional[pulumi.Input[bool]] = None,
                  roll_config: Optional[pulumi.Input['OceanImportUpdatePolicyRollConfigArgs']] = None):
+        """
+        :param pulumi.Input[bool] should_roll: Enables the roll.
+        :param pulumi.Input[bool] conditioned_roll: Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
+        :param pulumi.Input['OceanImportUpdatePolicyRollConfigArgs'] roll_config: Holds the roll configuration.
+        """
         pulumi.set(__self__, "should_roll", should_roll)
         if conditioned_roll is not None:
             pulumi.set(__self__, "conditioned_roll", conditioned_roll)
@@ -1687,6 +1840,9 @@ class OceanImportUpdatePolicyArgs:
     @property
     @pulumi.getter(name="shouldRoll")
     def should_roll(self) -> pulumi.Input[bool]:
+        """
+        Enables the roll.
+        """
         return pulumi.get(self, "should_roll")
 
     @should_roll.setter
@@ -1696,6 +1852,9 @@ class OceanImportUpdatePolicyArgs:
     @property
     @pulumi.getter(name="conditionedRoll")
     def conditioned_roll(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
+        """
         return pulumi.get(self, "conditioned_roll")
 
     @conditioned_roll.setter
@@ -1705,6 +1864,9 @@ class OceanImportUpdatePolicyArgs:
     @property
     @pulumi.getter(name="rollConfig")
     def roll_config(self) -> Optional[pulumi.Input['OceanImportUpdatePolicyRollConfigArgs']]:
+        """
+        Holds the roll configuration.
+        """
         return pulumi.get(self, "roll_config")
 
     @roll_config.setter
@@ -1719,6 +1881,12 @@ class OceanImportUpdatePolicyRollConfigArgs:
                  batch_min_healthy_percentage: Optional[pulumi.Input[int]] = None,
                  launch_spec_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  respect_pdb: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[int] batch_size_percentage: Sets the percentage of the instances to deploy in each batch.
+        :param pulumi.Input[int] batch_min_healthy_percentage: Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] launch_spec_ids: List of Virtual Node Group identifiers to be rolled.
+        :param pulumi.Input[bool] respect_pdb: Default: False. During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+        """
         pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
         if batch_min_healthy_percentage is not None:
             pulumi.set(__self__, "batch_min_healthy_percentage", batch_min_healthy_percentage)
@@ -1730,6 +1898,9 @@ class OceanImportUpdatePolicyRollConfigArgs:
     @property
     @pulumi.getter(name="batchSizePercentage")
     def batch_size_percentage(self) -> pulumi.Input[int]:
+        """
+        Sets the percentage of the instances to deploy in each batch.
+        """
         return pulumi.get(self, "batch_size_percentage")
 
     @batch_size_percentage.setter
@@ -1739,6 +1910,9 @@ class OceanImportUpdatePolicyRollConfigArgs:
     @property
     @pulumi.getter(name="batchMinHealthyPercentage")
     def batch_min_healthy_percentage(self) -> Optional[pulumi.Input[int]]:
+        """
+        Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+        """
         return pulumi.get(self, "batch_min_healthy_percentage")
 
     @batch_min_healthy_percentage.setter
@@ -1748,6 +1922,9 @@ class OceanImportUpdatePolicyRollConfigArgs:
     @property
     @pulumi.getter(name="launchSpecIds")
     def launch_spec_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of Virtual Node Group identifiers to be rolled.
+        """
         return pulumi.get(self, "launch_spec_ids")
 
     @launch_spec_ids.setter
@@ -1757,6 +1934,9 @@ class OceanImportUpdatePolicyRollConfigArgs:
     @property
     @pulumi.getter(name="respectPdb")
     def respect_pdb(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Default: False. During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+        """
         return pulumi.get(self, "respect_pdb")
 
     @respect_pdb.setter
@@ -2052,8 +2232,6 @@ class OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs:
         """
         :param pulumi.Input[str] ip_cidr_range: specify the IP address range in CIDR notation that can be used for the alias IP addresses associated with the imported node pool.
         :param pulumi.Input[str] subnetwork_range_name: specify the IP address range for the subnet secondary IP range.
-               
-               <a id="update-policy"></a>
         """
         pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
         pulumi.set(__self__, "subnetwork_range_name", subnetwork_range_name)
@@ -2075,8 +2253,6 @@ class OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs:
     def subnetwork_range_name(self) -> pulumi.Input[str]:
         """
         specify the IP address range for the subnet secondary IP range.
-
-        <a id="update-policy"></a>
         """
         return pulumi.get(self, "subnetwork_range_name")
 
@@ -2407,6 +2583,10 @@ class OceanLaunchSpecUpdatePolicyArgs:
     def __init__(__self__, *,
                  should_roll: pulumi.Input[bool],
                  roll_config: Optional[pulumi.Input['OceanLaunchSpecUpdatePolicyRollConfigArgs']] = None):
+        """
+        :param pulumi.Input[bool] should_roll: Enables the roll.
+        :param pulumi.Input['OceanLaunchSpecUpdatePolicyRollConfigArgs'] roll_config: Holds the roll configuration.
+        """
         pulumi.set(__self__, "should_roll", should_roll)
         if roll_config is not None:
             pulumi.set(__self__, "roll_config", roll_config)
@@ -2414,6 +2594,9 @@ class OceanLaunchSpecUpdatePolicyArgs:
     @property
     @pulumi.getter(name="shouldRoll")
     def should_roll(self) -> pulumi.Input[bool]:
+        """
+        Enables the roll.
+        """
         return pulumi.get(self, "should_roll")
 
     @should_roll.setter
@@ -2423,6 +2606,9 @@ class OceanLaunchSpecUpdatePolicyArgs:
     @property
     @pulumi.getter(name="rollConfig")
     def roll_config(self) -> Optional[pulumi.Input['OceanLaunchSpecUpdatePolicyRollConfigArgs']]:
+        """
+        Holds the roll configuration.
+        """
         return pulumi.get(self, "roll_config")
 
     @roll_config.setter
@@ -2434,11 +2620,17 @@ class OceanLaunchSpecUpdatePolicyArgs:
 class OceanLaunchSpecUpdatePolicyRollConfigArgs:
     def __init__(__self__, *,
                  batch_size_percentage: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] batch_size_percentage: Sets the percentage of the instances to deploy in each batch.
+        """
         pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
 
     @property
     @pulumi.getter(name="batchSizePercentage")
     def batch_size_percentage(self) -> pulumi.Input[int]:
+        """
+        Sets the percentage of the instances to deploy in each batch.
+        """
         return pulumi.get(self, "batch_size_percentage")
 
     @batch_size_percentage.setter

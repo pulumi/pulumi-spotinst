@@ -2885,8 +2885,6 @@ type OceanNpFilters struct {
 	// Vm sizes belonging to a series from the list will not be available for scaling
 	ExcludeSeries []string `pulumi:"excludeSeries"`
 	// The filtered gpu types will belong to one of the gpu types from this list.
-	//
-	// <a id="update-policy"></a>
 	GpuTypes []string `pulumi:"gpuTypes"`
 	// Maximum number of GPUs available.
 	MaxGpu *float64 `pulumi:"maxGpu"`
@@ -2931,8 +2929,6 @@ type OceanNpFiltersArgs struct {
 	// Vm sizes belonging to a series from the list will not be available for scaling
 	ExcludeSeries pulumi.StringArrayInput `pulumi:"excludeSeries"`
 	// The filtered gpu types will belong to one of the gpu types from this list.
-	//
-	// <a id="update-policy"></a>
 	GpuTypes pulumi.StringArrayInput `pulumi:"gpuTypes"`
 	// Maximum number of GPUs available.
 	MaxGpu pulumi.Float64PtrInput `pulumi:"maxGpu"`
@@ -3054,8 +3050,6 @@ func (o OceanNpFiltersOutput) ExcludeSeries() pulumi.StringArrayOutput {
 }
 
 // The filtered gpu types will belong to one of the gpu types from this list.
-//
-// <a id="update-policy"></a>
 func (o OceanNpFiltersOutput) GpuTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanNpFilters) []string { return v.GpuTypes }).(pulumi.StringArrayOutput)
 }
@@ -3175,8 +3169,6 @@ func (o OceanNpFiltersPtrOutput) ExcludeSeries() pulumi.StringArrayOutput {
 }
 
 // The filtered gpu types will belong to one of the gpu types from this list.
-//
-// <a id="update-policy"></a>
 func (o OceanNpFiltersPtrOutput) GpuTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanNpFilters) []string {
 		if v == nil {
@@ -4608,9 +4600,12 @@ func (o OceanNpTaintArrayOutput) Index(i pulumi.IntInput) OceanNpTaintOutput {
 }
 
 type OceanNpUpdatePolicy struct {
-	ConditionedRoll *bool                          `pulumi:"conditionedRoll"`
-	RollConfig      *OceanNpUpdatePolicyRollConfig `pulumi:"rollConfig"`
-	ShouldRoll      bool                           `pulumi:"shouldRoll"`
+	// Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as availability_zones, max_pods_per_node, enable_node_public_ip, os_disk_size_gb, os_disk_type, os_sku, kubernetes_version, vnet_subnet_ids, pod_subnet_ids, labels, taints and tags).
+	ConditionedRoll *bool `pulumi:"conditionedRoll"`
+	// While used, you can control whether the group should perform a deployment after an update to the configuration.
+	RollConfig *OceanNpUpdatePolicyRollConfig `pulumi:"rollConfig"`
+	// If set to true along with the cluster update, roll will be triggered.
+	ShouldRoll bool `pulumi:"shouldRoll"`
 }
 
 // OceanNpUpdatePolicyInput is an input type that accepts OceanNpUpdatePolicyArgs and OceanNpUpdatePolicyOutput values.
@@ -4625,9 +4620,12 @@ type OceanNpUpdatePolicyInput interface {
 }
 
 type OceanNpUpdatePolicyArgs struct {
-	ConditionedRoll pulumi.BoolPtrInput                   `pulumi:"conditionedRoll"`
-	RollConfig      OceanNpUpdatePolicyRollConfigPtrInput `pulumi:"rollConfig"`
-	ShouldRoll      pulumi.BoolInput                      `pulumi:"shouldRoll"`
+	// Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as availability_zones, max_pods_per_node, enable_node_public_ip, os_disk_size_gb, os_disk_type, os_sku, kubernetes_version, vnet_subnet_ids, pod_subnet_ids, labels, taints and tags).
+	ConditionedRoll pulumi.BoolPtrInput `pulumi:"conditionedRoll"`
+	// While used, you can control whether the group should perform a deployment after an update to the configuration.
+	RollConfig OceanNpUpdatePolicyRollConfigPtrInput `pulumi:"rollConfig"`
+	// If set to true along with the cluster update, roll will be triggered.
+	ShouldRoll pulumi.BoolInput `pulumi:"shouldRoll"`
 }
 
 func (OceanNpUpdatePolicyArgs) ElementType() reflect.Type {
@@ -4707,14 +4705,17 @@ func (o OceanNpUpdatePolicyOutput) ToOceanNpUpdatePolicyPtrOutputWithContext(ctx
 	}).(OceanNpUpdatePolicyPtrOutput)
 }
 
+// Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as availability_zones, max_pods_per_node, enable_node_public_ip, os_disk_size_gb, os_disk_type, os_sku, kubernetes_version, vnet_subnet_ids, pod_subnet_ids, labels, taints and tags).
 func (o OceanNpUpdatePolicyOutput) ConditionedRoll() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanNpUpdatePolicy) *bool { return v.ConditionedRoll }).(pulumi.BoolPtrOutput)
 }
 
+// While used, you can control whether the group should perform a deployment after an update to the configuration.
 func (o OceanNpUpdatePolicyOutput) RollConfig() OceanNpUpdatePolicyRollConfigPtrOutput {
 	return o.ApplyT(func(v OceanNpUpdatePolicy) *OceanNpUpdatePolicyRollConfig { return v.RollConfig }).(OceanNpUpdatePolicyRollConfigPtrOutput)
 }
 
+// If set to true along with the cluster update, roll will be triggered.
 func (o OceanNpUpdatePolicyOutput) ShouldRoll() pulumi.BoolOutput {
 	return o.ApplyT(func(v OceanNpUpdatePolicy) bool { return v.ShouldRoll }).(pulumi.BoolOutput)
 }
@@ -4743,6 +4744,7 @@ func (o OceanNpUpdatePolicyPtrOutput) Elem() OceanNpUpdatePolicyOutput {
 	}).(OceanNpUpdatePolicyOutput)
 }
 
+// Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as availability_zones, max_pods_per_node, enable_node_public_ip, os_disk_size_gb, os_disk_type, os_sku, kubernetes_version, vnet_subnet_ids, pod_subnet_ids, labels, taints and tags).
 func (o OceanNpUpdatePolicyPtrOutput) ConditionedRoll() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanNpUpdatePolicy) *bool {
 		if v == nil {
@@ -4752,6 +4754,7 @@ func (o OceanNpUpdatePolicyPtrOutput) ConditionedRoll() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// While used, you can control whether the group should perform a deployment after an update to the configuration.
 func (o OceanNpUpdatePolicyPtrOutput) RollConfig() OceanNpUpdatePolicyRollConfigPtrOutput {
 	return o.ApplyT(func(v *OceanNpUpdatePolicy) *OceanNpUpdatePolicyRollConfig {
 		if v == nil {
@@ -4761,6 +4764,7 @@ func (o OceanNpUpdatePolicyPtrOutput) RollConfig() OceanNpUpdatePolicyRollConfig
 	}).(OceanNpUpdatePolicyRollConfigPtrOutput)
 }
 
+// If set to true along with the cluster update, roll will be triggered.
 func (o OceanNpUpdatePolicyPtrOutput) ShouldRoll() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanNpUpdatePolicy) *bool {
 		if v == nil {
@@ -4771,14 +4775,22 @@ func (o OceanNpUpdatePolicyPtrOutput) ShouldRoll() pulumi.BoolPtrOutput {
 }
 
 type OceanNpUpdatePolicyRollConfig struct {
-	BatchMinHealthyPercentage *int     `pulumi:"batchMinHealthyPercentage"`
-	BatchSizePercentage       *int     `pulumi:"batchSizePercentage"`
-	Comment                   *string  `pulumi:"comment"`
-	NodeNames                 []string `pulumi:"nodeNames"`
-	NodePoolNames             []string `pulumi:"nodePoolNames"`
-	RespectPdb                *bool    `pulumi:"respectPdb"`
-	RespectRestrictScaleDown  *bool    `pulumi:"respectRestrictScaleDown"`
-	VngIds                    []string `pulumi:"vngIds"`
+	// Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+	BatchMinHealthyPercentage *int `pulumi:"batchMinHealthyPercentage"`
+	// Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.
+	BatchSizePercentage *int `pulumi:"batchSizePercentage"`
+	// Add a comment description for the roll. The comment is limited to 256 chars and optional.
+	Comment *string `pulumi:"comment"`
+	// List of node names to be rolled. Each identifier is a string. nodeNames can be null, and cannot be used together with nodePoolNames and vngIds.
+	NodeNames []string `pulumi:"nodeNames"`
+	// List of node pools to be rolled. Each node pool name is a string. nodePoolNames can be null, and cannot be used together with nodeNames and vngIds.
+	NodePoolNames []string `pulumi:"nodePoolNames"`
+	// During the roll, if the parameter is set to true we honor PDB during the nodes replacement.
+	RespectPdb *bool `pulumi:"respectPdb"`
+	// During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.
+	RespectRestrictScaleDown *bool `pulumi:"respectRestrictScaleDown"`
+	// List of virtual node group identifiers to be rolled. Each identifier is a string. vngIds can be null, and cannot be used together with nodeNames and nodePoolNames.
+	VngIds []string `pulumi:"vngIds"`
 }
 
 // OceanNpUpdatePolicyRollConfigInput is an input type that accepts OceanNpUpdatePolicyRollConfigArgs and OceanNpUpdatePolicyRollConfigOutput values.
@@ -4793,14 +4805,22 @@ type OceanNpUpdatePolicyRollConfigInput interface {
 }
 
 type OceanNpUpdatePolicyRollConfigArgs struct {
-	BatchMinHealthyPercentage pulumi.IntPtrInput      `pulumi:"batchMinHealthyPercentage"`
-	BatchSizePercentage       pulumi.IntPtrInput      `pulumi:"batchSizePercentage"`
-	Comment                   pulumi.StringPtrInput   `pulumi:"comment"`
-	NodeNames                 pulumi.StringArrayInput `pulumi:"nodeNames"`
-	NodePoolNames             pulumi.StringArrayInput `pulumi:"nodePoolNames"`
-	RespectPdb                pulumi.BoolPtrInput     `pulumi:"respectPdb"`
-	RespectRestrictScaleDown  pulumi.BoolPtrInput     `pulumi:"respectRestrictScaleDown"`
-	VngIds                    pulumi.StringArrayInput `pulumi:"vngIds"`
+	// Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+	BatchMinHealthyPercentage pulumi.IntPtrInput `pulumi:"batchMinHealthyPercentage"`
+	// Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.
+	BatchSizePercentage pulumi.IntPtrInput `pulumi:"batchSizePercentage"`
+	// Add a comment description for the roll. The comment is limited to 256 chars and optional.
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// List of node names to be rolled. Each identifier is a string. nodeNames can be null, and cannot be used together with nodePoolNames and vngIds.
+	NodeNames pulumi.StringArrayInput `pulumi:"nodeNames"`
+	// List of node pools to be rolled. Each node pool name is a string. nodePoolNames can be null, and cannot be used together with nodeNames and vngIds.
+	NodePoolNames pulumi.StringArrayInput `pulumi:"nodePoolNames"`
+	// During the roll, if the parameter is set to true we honor PDB during the nodes replacement.
+	RespectPdb pulumi.BoolPtrInput `pulumi:"respectPdb"`
+	// During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.
+	RespectRestrictScaleDown pulumi.BoolPtrInput `pulumi:"respectRestrictScaleDown"`
+	// List of virtual node group identifiers to be rolled. Each identifier is a string. vngIds can be null, and cannot be used together with nodeNames and nodePoolNames.
+	VngIds pulumi.StringArrayInput `pulumi:"vngIds"`
 }
 
 func (OceanNpUpdatePolicyRollConfigArgs) ElementType() reflect.Type {
@@ -4880,34 +4900,42 @@ func (o OceanNpUpdatePolicyRollConfigOutput) ToOceanNpUpdatePolicyRollConfigPtrO
 	}).(OceanNpUpdatePolicyRollConfigPtrOutput)
 }
 
+// Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
 func (o OceanNpUpdatePolicyRollConfigOutput) BatchMinHealthyPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanNpUpdatePolicyRollConfig) *int { return v.BatchMinHealthyPercentage }).(pulumi.IntPtrOutput)
 }
 
+// Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.
 func (o OceanNpUpdatePolicyRollConfigOutput) BatchSizePercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanNpUpdatePolicyRollConfig) *int { return v.BatchSizePercentage }).(pulumi.IntPtrOutput)
 }
 
+// Add a comment description for the roll. The comment is limited to 256 chars and optional.
 func (o OceanNpUpdatePolicyRollConfigOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanNpUpdatePolicyRollConfig) *string { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
+// List of node names to be rolled. Each identifier is a string. nodeNames can be null, and cannot be used together with nodePoolNames and vngIds.
 func (o OceanNpUpdatePolicyRollConfigOutput) NodeNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanNpUpdatePolicyRollConfig) []string { return v.NodeNames }).(pulumi.StringArrayOutput)
 }
 
+// List of node pools to be rolled. Each node pool name is a string. nodePoolNames can be null, and cannot be used together with nodeNames and vngIds.
 func (o OceanNpUpdatePolicyRollConfigOutput) NodePoolNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanNpUpdatePolicyRollConfig) []string { return v.NodePoolNames }).(pulumi.StringArrayOutput)
 }
 
+// During the roll, if the parameter is set to true we honor PDB during the nodes replacement.
 func (o OceanNpUpdatePolicyRollConfigOutput) RespectPdb() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanNpUpdatePolicyRollConfig) *bool { return v.RespectPdb }).(pulumi.BoolPtrOutput)
 }
 
+// During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.
 func (o OceanNpUpdatePolicyRollConfigOutput) RespectRestrictScaleDown() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanNpUpdatePolicyRollConfig) *bool { return v.RespectRestrictScaleDown }).(pulumi.BoolPtrOutput)
 }
 
+// List of virtual node group identifiers to be rolled. Each identifier is a string. vngIds can be null, and cannot be used together with nodeNames and nodePoolNames.
 func (o OceanNpUpdatePolicyRollConfigOutput) VngIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanNpUpdatePolicyRollConfig) []string { return v.VngIds }).(pulumi.StringArrayOutput)
 }
@@ -4936,6 +4964,7 @@ func (o OceanNpUpdatePolicyRollConfigPtrOutput) Elem() OceanNpUpdatePolicyRollCo
 	}).(OceanNpUpdatePolicyRollConfigOutput)
 }
 
+// Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
 func (o OceanNpUpdatePolicyRollConfigPtrOutput) BatchMinHealthyPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanNpUpdatePolicyRollConfig) *int {
 		if v == nil {
@@ -4945,6 +4974,7 @@ func (o OceanNpUpdatePolicyRollConfigPtrOutput) BatchMinHealthyPercentage() pulu
 	}).(pulumi.IntPtrOutput)
 }
 
+// Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.
 func (o OceanNpUpdatePolicyRollConfigPtrOutput) BatchSizePercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanNpUpdatePolicyRollConfig) *int {
 		if v == nil {
@@ -4954,6 +4984,7 @@ func (o OceanNpUpdatePolicyRollConfigPtrOutput) BatchSizePercentage() pulumi.Int
 	}).(pulumi.IntPtrOutput)
 }
 
+// Add a comment description for the roll. The comment is limited to 256 chars and optional.
 func (o OceanNpUpdatePolicyRollConfigPtrOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanNpUpdatePolicyRollConfig) *string {
 		if v == nil {
@@ -4963,6 +4994,7 @@ func (o OceanNpUpdatePolicyRollConfigPtrOutput) Comment() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// List of node names to be rolled. Each identifier is a string. nodeNames can be null, and cannot be used together with nodePoolNames and vngIds.
 func (o OceanNpUpdatePolicyRollConfigPtrOutput) NodeNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanNpUpdatePolicyRollConfig) []string {
 		if v == nil {
@@ -4972,6 +5004,7 @@ func (o OceanNpUpdatePolicyRollConfigPtrOutput) NodeNames() pulumi.StringArrayOu
 	}).(pulumi.StringArrayOutput)
 }
 
+// List of node pools to be rolled. Each node pool name is a string. nodePoolNames can be null, and cannot be used together with nodeNames and vngIds.
 func (o OceanNpUpdatePolicyRollConfigPtrOutput) NodePoolNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanNpUpdatePolicyRollConfig) []string {
 		if v == nil {
@@ -4981,6 +5014,7 @@ func (o OceanNpUpdatePolicyRollConfigPtrOutput) NodePoolNames() pulumi.StringArr
 	}).(pulumi.StringArrayOutput)
 }
 
+// During the roll, if the parameter is set to true we honor PDB during the nodes replacement.
 func (o OceanNpUpdatePolicyRollConfigPtrOutput) RespectPdb() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanNpUpdatePolicyRollConfig) *bool {
 		if v == nil {
@@ -4990,6 +5024,7 @@ func (o OceanNpUpdatePolicyRollConfigPtrOutput) RespectPdb() pulumi.BoolPtrOutpu
 	}).(pulumi.BoolPtrOutput)
 }
 
+// During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.
 func (o OceanNpUpdatePolicyRollConfigPtrOutput) RespectRestrictScaleDown() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanNpUpdatePolicyRollConfig) *bool {
 		if v == nil {
@@ -4999,6 +5034,7 @@ func (o OceanNpUpdatePolicyRollConfigPtrOutput) RespectRestrictScaleDown() pulum
 	}).(pulumi.BoolPtrOutput)
 }
 
+// List of virtual node group identifiers to be rolled. Each identifier is a string. vngIds can be null, and cannot be used together with nodeNames and nodePoolNames.
 func (o OceanNpUpdatePolicyRollConfigPtrOutput) VngIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanNpUpdatePolicyRollConfig) []string {
 		if v == nil {
@@ -5018,7 +5054,6 @@ type OceanNpVirtualNodeGroupFilters struct {
 	// Vm sizes belonging to a series from the list will not be available for scaling.
 	ExcludeSeries []string `pulumi:"excludeSeries"`
 	// The filtered gpu types will belong to one of the gpu types from this list.
-	// <a id="update-policy"></a>
 	GpuTypes []string `pulumi:"gpuTypes"`
 	// Maximum number of GPUs available.
 	MaxGpu *float64 `pulumi:"maxGpu"`
@@ -5063,7 +5098,6 @@ type OceanNpVirtualNodeGroupFiltersArgs struct {
 	// Vm sizes belonging to a series from the list will not be available for scaling.
 	ExcludeSeries pulumi.StringArrayInput `pulumi:"excludeSeries"`
 	// The filtered gpu types will belong to one of the gpu types from this list.
-	// <a id="update-policy"></a>
 	GpuTypes pulumi.StringArrayInput `pulumi:"gpuTypes"`
 	// Maximum number of GPUs available.
 	MaxGpu pulumi.Float64PtrInput `pulumi:"maxGpu"`
@@ -5185,7 +5219,6 @@ func (o OceanNpVirtualNodeGroupFiltersOutput) ExcludeSeries() pulumi.StringArray
 }
 
 // The filtered gpu types will belong to one of the gpu types from this list.
-// <a id="update-policy"></a>
 func (o OceanNpVirtualNodeGroupFiltersOutput) GpuTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanNpVirtualNodeGroupFilters) []string { return v.GpuTypes }).(pulumi.StringArrayOutput)
 }
@@ -5305,7 +5338,6 @@ func (o OceanNpVirtualNodeGroupFiltersPtrOutput) ExcludeSeries() pulumi.StringAr
 }
 
 // The filtered gpu types will belong to one of the gpu types from this list.
-// <a id="update-policy"></a>
 func (o OceanNpVirtualNodeGroupFiltersPtrOutput) GpuTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroupFilters) []string {
 		if v == nil {
@@ -5851,9 +5883,12 @@ func (o OceanNpVirtualNodeGroupTaintArrayOutput) Index(i pulumi.IntInput) OceanN
 }
 
 type OceanNpVirtualNodeGroupUpdatePolicy struct {
-	ConditionedRoll *bool                                          `pulumi:"conditionedRoll"`
-	RollConfig      *OceanNpVirtualNodeGroupUpdatePolicyRollConfig `pulumi:"rollConfig"`
-	ShouldRoll      bool                                           `pulumi:"shouldRoll"`
+	// Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as availability_zones, max_pods_per_node, enable_node_public_ip, os_disk_size_gb, os_disk_type, os_sku, kubernetes_version, vnet_subnet_ids, pod_subnet_ids, labels, taints and tags).
+	ConditionedRoll *bool `pulumi:"conditionedRoll"`
+	// While used, you can control whether the group should perform a deployment after an update to the configuration.
+	RollConfig *OceanNpVirtualNodeGroupUpdatePolicyRollConfig `pulumi:"rollConfig"`
+	// If set to true along with the vng update, roll will be triggered.
+	ShouldRoll bool `pulumi:"shouldRoll"`
 }
 
 // OceanNpVirtualNodeGroupUpdatePolicyInput is an input type that accepts OceanNpVirtualNodeGroupUpdatePolicyArgs and OceanNpVirtualNodeGroupUpdatePolicyOutput values.
@@ -5868,9 +5903,12 @@ type OceanNpVirtualNodeGroupUpdatePolicyInput interface {
 }
 
 type OceanNpVirtualNodeGroupUpdatePolicyArgs struct {
-	ConditionedRoll pulumi.BoolPtrInput                                   `pulumi:"conditionedRoll"`
-	RollConfig      OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrInput `pulumi:"rollConfig"`
-	ShouldRoll      pulumi.BoolInput                                      `pulumi:"shouldRoll"`
+	// Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as availability_zones, max_pods_per_node, enable_node_public_ip, os_disk_size_gb, os_disk_type, os_sku, kubernetes_version, vnet_subnet_ids, pod_subnet_ids, labels, taints and tags).
+	ConditionedRoll pulumi.BoolPtrInput `pulumi:"conditionedRoll"`
+	// While used, you can control whether the group should perform a deployment after an update to the configuration.
+	RollConfig OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrInput `pulumi:"rollConfig"`
+	// If set to true along with the vng update, roll will be triggered.
+	ShouldRoll pulumi.BoolInput `pulumi:"shouldRoll"`
 }
 
 func (OceanNpVirtualNodeGroupUpdatePolicyArgs) ElementType() reflect.Type {
@@ -5950,16 +5988,19 @@ func (o OceanNpVirtualNodeGroupUpdatePolicyOutput) ToOceanNpVirtualNodeGroupUpda
 	}).(OceanNpVirtualNodeGroupUpdatePolicyPtrOutput)
 }
 
+// Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as availability_zones, max_pods_per_node, enable_node_public_ip, os_disk_size_gb, os_disk_type, os_sku, kubernetes_version, vnet_subnet_ids, pod_subnet_ids, labels, taints and tags).
 func (o OceanNpVirtualNodeGroupUpdatePolicyOutput) ConditionedRoll() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanNpVirtualNodeGroupUpdatePolicy) *bool { return v.ConditionedRoll }).(pulumi.BoolPtrOutput)
 }
 
+// While used, you can control whether the group should perform a deployment after an update to the configuration.
 func (o OceanNpVirtualNodeGroupUpdatePolicyOutput) RollConfig() OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput {
 	return o.ApplyT(func(v OceanNpVirtualNodeGroupUpdatePolicy) *OceanNpVirtualNodeGroupUpdatePolicyRollConfig {
 		return v.RollConfig
 	}).(OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput)
 }
 
+// If set to true along with the vng update, roll will be triggered.
 func (o OceanNpVirtualNodeGroupUpdatePolicyOutput) ShouldRoll() pulumi.BoolOutput {
 	return o.ApplyT(func(v OceanNpVirtualNodeGroupUpdatePolicy) bool { return v.ShouldRoll }).(pulumi.BoolOutput)
 }
@@ -5988,6 +6029,7 @@ func (o OceanNpVirtualNodeGroupUpdatePolicyPtrOutput) Elem() OceanNpVirtualNodeG
 	}).(OceanNpVirtualNodeGroupUpdatePolicyOutput)
 }
 
+// Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as availability_zones, max_pods_per_node, enable_node_public_ip, os_disk_size_gb, os_disk_type, os_sku, kubernetes_version, vnet_subnet_ids, pod_subnet_ids, labels, taints and tags).
 func (o OceanNpVirtualNodeGroupUpdatePolicyPtrOutput) ConditionedRoll() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroupUpdatePolicy) *bool {
 		if v == nil {
@@ -5997,6 +6039,7 @@ func (o OceanNpVirtualNodeGroupUpdatePolicyPtrOutput) ConditionedRoll() pulumi.B
 	}).(pulumi.BoolPtrOutput)
 }
 
+// While used, you can control whether the group should perform a deployment after an update to the configuration.
 func (o OceanNpVirtualNodeGroupUpdatePolicyPtrOutput) RollConfig() OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput {
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroupUpdatePolicy) *OceanNpVirtualNodeGroupUpdatePolicyRollConfig {
 		if v == nil {
@@ -6006,6 +6049,7 @@ func (o OceanNpVirtualNodeGroupUpdatePolicyPtrOutput) RollConfig() OceanNpVirtua
 	}).(OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput)
 }
 
+// If set to true along with the vng update, roll will be triggered.
 func (o OceanNpVirtualNodeGroupUpdatePolicyPtrOutput) ShouldRoll() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroupUpdatePolicy) *bool {
 		if v == nil {
@@ -6016,14 +6060,22 @@ func (o OceanNpVirtualNodeGroupUpdatePolicyPtrOutput) ShouldRoll() pulumi.BoolPt
 }
 
 type OceanNpVirtualNodeGroupUpdatePolicyRollConfig struct {
-	BatchMinHealthyPercentage *int     `pulumi:"batchMinHealthyPercentage"`
-	BatchSizePercentage       *int     `pulumi:"batchSizePercentage"`
-	Comment                   *string  `pulumi:"comment"`
-	NodeNames                 []string `pulumi:"nodeNames"`
-	NodePoolNames             []string `pulumi:"nodePoolNames"`
-	RespectPdb                *bool    `pulumi:"respectPdb"`
-	RespectRestrictScaleDown  *bool    `pulumi:"respectRestrictScaleDown"`
-	VngIds                    []string `pulumi:"vngIds"`
+	// Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+	BatchMinHealthyPercentage *int `pulumi:"batchMinHealthyPercentage"`
+	// Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.
+	BatchSizePercentage *int `pulumi:"batchSizePercentage"`
+	// Add a comment description for the roll. The comment is limited to 256 chars and optional.
+	Comment *string `pulumi:"comment"`
+	// List of node names to be rolled. Each identifier is a string. nodeNames can be null, and cannot be used together with nodePoolNames and vngIds.
+	NodeNames []string `pulumi:"nodeNames"`
+	// List of node pools to be rolled. Each node pool name is a string. nodePoolNames can be null, and cannot be used together with nodeNames and vngIds.
+	NodePoolNames []string `pulumi:"nodePoolNames"`
+	// During the roll, if the parameter is set to true we honor PDB during the nodes replacement.
+	RespectPdb *bool `pulumi:"respectPdb"`
+	// During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.
+	RespectRestrictScaleDown *bool `pulumi:"respectRestrictScaleDown"`
+	// List of virtual node group identifiers to be rolled. Each identifier is a string. vngIds can be null, and cannot be used together with nodeNames and nodePoolNames.
+	VngIds []string `pulumi:"vngIds"`
 }
 
 // OceanNpVirtualNodeGroupUpdatePolicyRollConfigInput is an input type that accepts OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs and OceanNpVirtualNodeGroupUpdatePolicyRollConfigOutput values.
@@ -6038,14 +6090,22 @@ type OceanNpVirtualNodeGroupUpdatePolicyRollConfigInput interface {
 }
 
 type OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs struct {
-	BatchMinHealthyPercentage pulumi.IntPtrInput      `pulumi:"batchMinHealthyPercentage"`
-	BatchSizePercentage       pulumi.IntPtrInput      `pulumi:"batchSizePercentage"`
-	Comment                   pulumi.StringPtrInput   `pulumi:"comment"`
-	NodeNames                 pulumi.StringArrayInput `pulumi:"nodeNames"`
-	NodePoolNames             pulumi.StringArrayInput `pulumi:"nodePoolNames"`
-	RespectPdb                pulumi.BoolPtrInput     `pulumi:"respectPdb"`
-	RespectRestrictScaleDown  pulumi.BoolPtrInput     `pulumi:"respectRestrictScaleDown"`
-	VngIds                    pulumi.StringArrayInput `pulumi:"vngIds"`
+	// Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+	BatchMinHealthyPercentage pulumi.IntPtrInput `pulumi:"batchMinHealthyPercentage"`
+	// Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.
+	BatchSizePercentage pulumi.IntPtrInput `pulumi:"batchSizePercentage"`
+	// Add a comment description for the roll. The comment is limited to 256 chars and optional.
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// List of node names to be rolled. Each identifier is a string. nodeNames can be null, and cannot be used together with nodePoolNames and vngIds.
+	NodeNames pulumi.StringArrayInput `pulumi:"nodeNames"`
+	// List of node pools to be rolled. Each node pool name is a string. nodePoolNames can be null, and cannot be used together with nodeNames and vngIds.
+	NodePoolNames pulumi.StringArrayInput `pulumi:"nodePoolNames"`
+	// During the roll, if the parameter is set to true we honor PDB during the nodes replacement.
+	RespectPdb pulumi.BoolPtrInput `pulumi:"respectPdb"`
+	// During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.
+	RespectRestrictScaleDown pulumi.BoolPtrInput `pulumi:"respectRestrictScaleDown"`
+	// List of virtual node group identifiers to be rolled. Each identifier is a string. vngIds can be null, and cannot be used together with nodeNames and nodePoolNames.
+	VngIds pulumi.StringArrayInput `pulumi:"vngIds"`
 }
 
 func (OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs) ElementType() reflect.Type {
@@ -6125,34 +6185,42 @@ func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigOutput) ToOceanNpVirtualNod
 	}).(OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput)
 }
 
+// Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
 func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigOutput) BatchMinHealthyPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanNpVirtualNodeGroupUpdatePolicyRollConfig) *int { return v.BatchMinHealthyPercentage }).(pulumi.IntPtrOutput)
 }
 
+// Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.
 func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigOutput) BatchSizePercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanNpVirtualNodeGroupUpdatePolicyRollConfig) *int { return v.BatchSizePercentage }).(pulumi.IntPtrOutput)
 }
 
+// Add a comment description for the roll. The comment is limited to 256 chars and optional.
 func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanNpVirtualNodeGroupUpdatePolicyRollConfig) *string { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
+// List of node names to be rolled. Each identifier is a string. nodeNames can be null, and cannot be used together with nodePoolNames and vngIds.
 func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigOutput) NodeNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanNpVirtualNodeGroupUpdatePolicyRollConfig) []string { return v.NodeNames }).(pulumi.StringArrayOutput)
 }
 
+// List of node pools to be rolled. Each node pool name is a string. nodePoolNames can be null, and cannot be used together with nodeNames and vngIds.
 func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigOutput) NodePoolNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanNpVirtualNodeGroupUpdatePolicyRollConfig) []string { return v.NodePoolNames }).(pulumi.StringArrayOutput)
 }
 
+// During the roll, if the parameter is set to true we honor PDB during the nodes replacement.
 func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigOutput) RespectPdb() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanNpVirtualNodeGroupUpdatePolicyRollConfig) *bool { return v.RespectPdb }).(pulumi.BoolPtrOutput)
 }
 
+// During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.
 func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigOutput) RespectRestrictScaleDown() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanNpVirtualNodeGroupUpdatePolicyRollConfig) *bool { return v.RespectRestrictScaleDown }).(pulumi.BoolPtrOutput)
 }
 
+// List of virtual node group identifiers to be rolled. Each identifier is a string. vngIds can be null, and cannot be used together with nodeNames and nodePoolNames.
 func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigOutput) VngIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanNpVirtualNodeGroupUpdatePolicyRollConfig) []string { return v.VngIds }).(pulumi.StringArrayOutput)
 }
@@ -6181,6 +6249,7 @@ func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput) Elem() OceanNpVi
 	}).(OceanNpVirtualNodeGroupUpdatePolicyRollConfigOutput)
 }
 
+// Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
 func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput) BatchMinHealthyPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroupUpdatePolicyRollConfig) *int {
 		if v == nil {
@@ -6190,6 +6259,7 @@ func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput) BatchMinHealthyP
 	}).(pulumi.IntPtrOutput)
 }
 
+// Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.
 func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput) BatchSizePercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroupUpdatePolicyRollConfig) *int {
 		if v == nil {
@@ -6199,6 +6269,7 @@ func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput) BatchSizePercent
 	}).(pulumi.IntPtrOutput)
 }
 
+// Add a comment description for the roll. The comment is limited to 256 chars and optional.
 func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroupUpdatePolicyRollConfig) *string {
 		if v == nil {
@@ -6208,6 +6279,7 @@ func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput) Comment() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// List of node names to be rolled. Each identifier is a string. nodeNames can be null, and cannot be used together with nodePoolNames and vngIds.
 func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput) NodeNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroupUpdatePolicyRollConfig) []string {
 		if v == nil {
@@ -6217,6 +6289,7 @@ func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput) NodeNames() pulu
 	}).(pulumi.StringArrayOutput)
 }
 
+// List of node pools to be rolled. Each node pool name is a string. nodePoolNames can be null, and cannot be used together with nodeNames and vngIds.
 func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput) NodePoolNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroupUpdatePolicyRollConfig) []string {
 		if v == nil {
@@ -6226,6 +6299,7 @@ func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput) NodePoolNames() 
 	}).(pulumi.StringArrayOutput)
 }
 
+// During the roll, if the parameter is set to true we honor PDB during the nodes replacement.
 func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput) RespectPdb() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroupUpdatePolicyRollConfig) *bool {
 		if v == nil {
@@ -6235,6 +6309,7 @@ func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput) RespectPdb() pul
 	}).(pulumi.BoolPtrOutput)
 }
 
+// During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.
 func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput) RespectRestrictScaleDown() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroupUpdatePolicyRollConfig) *bool {
 		if v == nil {
@@ -6244,6 +6319,7 @@ func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput) RespectRestrictS
 	}).(pulumi.BoolPtrOutput)
 }
 
+// List of virtual node group identifiers to be rolled. Each identifier is a string. vngIds can be null, and cannot be used together with nodeNames and nodePoolNames.
 func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput) VngIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroupUpdatePolicyRollConfig) []string {
 		if v == nil {

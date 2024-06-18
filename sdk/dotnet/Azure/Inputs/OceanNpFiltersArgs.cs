@@ -53,8 +53,6 @@ namespace Pulumi.SpotInst.Azure.Inputs
 
         /// <summary>
         /// The filtered gpu types will belong to one of the gpu types from this list.
-        /// 
-        /// &lt;a id="update-policy"&gt;&lt;/a&gt;
         /// </summary>
         public InputList<string> GpuTypes
         {

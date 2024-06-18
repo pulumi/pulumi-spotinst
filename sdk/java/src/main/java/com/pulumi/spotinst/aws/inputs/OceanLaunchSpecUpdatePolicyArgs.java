@@ -17,16 +17,32 @@ public final class OceanLaunchSpecUpdatePolicyArgs extends com.pulumi.resources.
 
     public static final OceanLaunchSpecUpdatePolicyArgs Empty = new OceanLaunchSpecUpdatePolicyArgs();
 
+    /**
+     * Holds the roll configuration.
+     * 
+     */
     @Import(name="rollConfig")
     private @Nullable Output<OceanLaunchSpecUpdatePolicyRollConfigArgs> rollConfig;
 
+    /**
+     * @return Holds the roll configuration.
+     * 
+     */
     public Optional<Output<OceanLaunchSpecUpdatePolicyRollConfigArgs>> rollConfig() {
         return Optional.ofNullable(this.rollConfig);
     }
 
+    /**
+     * Enables the roll.
+     * 
+     */
     @Import(name="shouldRoll", required=true)
     private Output<Boolean> shouldRoll;
 
+    /**
+     * @return Enables the roll.
+     * 
+     */
     public Output<Boolean> shouldRoll() {
         return this.shouldRoll;
     }
@@ -56,20 +72,44 @@ public final class OceanLaunchSpecUpdatePolicyArgs extends com.pulumi.resources.
             $ = new OceanLaunchSpecUpdatePolicyArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param rollConfig Holds the roll configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rollConfig(@Nullable Output<OceanLaunchSpecUpdatePolicyRollConfigArgs> rollConfig) {
             $.rollConfig = rollConfig;
             return this;
         }
 
+        /**
+         * @param rollConfig Holds the roll configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rollConfig(OceanLaunchSpecUpdatePolicyRollConfigArgs rollConfig) {
             return rollConfig(Output.of(rollConfig));
         }
 
+        /**
+         * @param shouldRoll Enables the roll.
+         * 
+         * @return builder
+         * 
+         */
         public Builder shouldRoll(Output<Boolean> shouldRoll) {
             $.shouldRoll = shouldRoll;
             return this;
         }
 
+        /**
+         * @param shouldRoll Enables the roll.
+         * 
+         * @return builder
+         * 
+         */
         public Builder shouldRoll(Boolean shouldRoll) {
             return shouldRoll(Output.of(shouldRoll));
         }

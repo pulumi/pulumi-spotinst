@@ -31,7 +31,6 @@ namespace Pulumi.SpotInst.Azure.Outputs
         public readonly ImmutableArray<string> ExcludeSeries;
         /// <summary>
         /// The filtered gpu types will belong to one of the gpu types from this list.
-        /// &lt;a id="update-policy"&gt;&lt;/a&gt;
         /// </summary>
         public readonly ImmutableArray<string> GpuTypes;
         /// <summary>

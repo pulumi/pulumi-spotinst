@@ -43,9 +43,17 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.associatePublicIpAddress);
     }
 
+    /**
+     * Describes the Ocean ECS autoscaler.
+     * 
+     */
     @Import(name="autoscaler")
     private @Nullable Output<OceanAutoscalerArgs> autoscaler;
 
+    /**
+     * @return Describes the Ocean ECS autoscaler.
+     * 
+     */
     public Optional<Output<OceanAutoscalerArgs>> autoscaler() {
         return Optional.ofNullable(this.autoscaler);
     }
@@ -57,9 +65,17 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.blacklists);
     }
 
+    /**
+     * Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+     * 
+     */
     @Import(name="blockDeviceMappings")
     private @Nullable Output<List<OceanBlockDeviceMappingArgs>> blockDeviceMappings;
 
+    /**
+     * @return Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+     * 
+     */
     public Optional<Output<List<OceanBlockDeviceMappingArgs>>> blockDeviceMappings() {
         return Optional.ofNullable(this.blockDeviceMappings);
     }
@@ -273,9 +289,17 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Object. Set auto image update settings.
+     * 
+     */
     @Import(name="optimizeImages")
     private @Nullable Output<OceanOptimizeImagesArgs> optimizeImages;
 
+    /**
+     * @return Object. Set auto image update settings.
+     * 
+     */
     public Optional<Output<OceanOptimizeImagesArgs>> optimizeImages() {
         return Optional.ofNullable(this.optimizeImages);
     }
@@ -295,9 +319,17 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.region);
     }
 
+    /**
+     * While used, you can control whether the group should perform a deployment after an update to the configuration.
+     * 
+     */
     @Import(name="scheduledTasks")
     private @Nullable Output<List<OceanScheduledTaskArgs>> scheduledTasks;
 
+    /**
+     * @return While used, you can control whether the group should perform a deployment after an update to the configuration.
+     * 
+     */
     public Optional<Output<List<OceanScheduledTaskArgs>>> scheduledTasks() {
         return Optional.ofNullable(this.scheduledTasks);
     }
@@ -362,9 +394,17 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * While used, you can control whether the group should perform a deployment after an update to the configuration.
+     * 
+     */
     @Import(name="updatePolicy")
     private @Nullable Output<OceanUpdatePolicyArgs> updatePolicy;
 
+    /**
+     * @return While used, you can control whether the group should perform a deployment after an update to the configuration.
+     * 
+     */
     public Optional<Output<OceanUpdatePolicyArgs>> updatePolicy() {
         return Optional.ofNullable(this.updatePolicy);
     }
@@ -512,11 +552,23 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
             return associatePublicIpAddress(Output.of(associatePublicIpAddress));
         }
 
+        /**
+         * @param autoscaler Describes the Ocean ECS autoscaler.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoscaler(@Nullable Output<OceanAutoscalerArgs> autoscaler) {
             $.autoscaler = autoscaler;
             return this;
         }
 
+        /**
+         * @param autoscaler Describes the Ocean ECS autoscaler.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoscaler(OceanAutoscalerArgs autoscaler) {
             return autoscaler(Output.of(autoscaler));
         }
@@ -534,15 +586,33 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
             return blacklists(List.of(blacklists));
         }
 
+        /**
+         * @param blockDeviceMappings Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder blockDeviceMappings(@Nullable Output<List<OceanBlockDeviceMappingArgs>> blockDeviceMappings) {
             $.blockDeviceMappings = blockDeviceMappings;
             return this;
         }
 
+        /**
+         * @param blockDeviceMappings Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder blockDeviceMappings(List<OceanBlockDeviceMappingArgs> blockDeviceMappings) {
             return blockDeviceMappings(Output.of(blockDeviceMappings));
         }
 
+        /**
+         * @param blockDeviceMappings Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder blockDeviceMappings(OceanBlockDeviceMappingArgs... blockDeviceMappings) {
             return blockDeviceMappings(List.of(blockDeviceMappings));
         }
@@ -842,11 +912,23 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
             return name(Output.of(name));
         }
 
+        /**
+         * @param optimizeImages Object. Set auto image update settings.
+         * 
+         * @return builder
+         * 
+         */
         public Builder optimizeImages(@Nullable Output<OceanOptimizeImagesArgs> optimizeImages) {
             $.optimizeImages = optimizeImages;
             return this;
         }
 
+        /**
+         * @param optimizeImages Object. Set auto image update settings.
+         * 
+         * @return builder
+         * 
+         */
         public Builder optimizeImages(OceanOptimizeImagesArgs optimizeImages) {
             return optimizeImages(Output.of(optimizeImages));
         }
@@ -872,15 +954,33 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
             return region(Output.of(region));
         }
 
+        /**
+         * @param scheduledTasks While used, you can control whether the group should perform a deployment after an update to the configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scheduledTasks(@Nullable Output<List<OceanScheduledTaskArgs>> scheduledTasks) {
             $.scheduledTasks = scheduledTasks;
             return this;
         }
 
+        /**
+         * @param scheduledTasks While used, you can control whether the group should perform a deployment after an update to the configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scheduledTasks(List<OceanScheduledTaskArgs> scheduledTasks) {
             return scheduledTasks(Output.of(scheduledTasks));
         }
 
+        /**
+         * @param scheduledTasks While used, you can control whether the group should perform a deployment after an update to the configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scheduledTasks(OceanScheduledTaskArgs... scheduledTasks) {
             return scheduledTasks(List.of(scheduledTasks));
         }
@@ -999,11 +1099,23 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
             return tags(List.of(tags));
         }
 
+        /**
+         * @param updatePolicy While used, you can control whether the group should perform a deployment after an update to the configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatePolicy(@Nullable Output<OceanUpdatePolicyArgs> updatePolicy) {
             $.updatePolicy = updatePolicy;
             return this;
         }
 
+        /**
+         * @param updatePolicy While used, you can control whether the group should perform a deployment after an update to the configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatePolicy(OceanUpdatePolicyArgs updatePolicy) {
             return updatePolicy(Output.of(updatePolicy));
         }

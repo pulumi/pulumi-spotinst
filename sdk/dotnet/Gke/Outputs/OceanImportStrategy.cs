@@ -14,10 +14,16 @@ namespace Pulumi.SpotInst.Gke.Outputs
     public sealed class OceanImportStrategy
     {
         /// <summary>
-        /// The draining timeout (in seconds) before terminating the instance.
+        /// The draining timeout (in seconds) before terminating the instance. If no draining timeout is defined, the default draining timeout will be used.
         /// </summary>
         public readonly int? DrainingTimeout;
+        /// <summary>
+        /// Defines the desired preemptible percentage for the cluster.
+        /// </summary>
         public readonly int? PreemptiblePercentage;
+        /// <summary>
+        /// Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
+        /// </summary>
         public readonly string? ProvisioningModel;
 
         [OutputConstructor]

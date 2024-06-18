@@ -18,58 +18,122 @@ public final class OceanNpUpdatePolicyRollConfigArgs extends com.pulumi.resource
 
     public static final OceanNpUpdatePolicyRollConfigArgs Empty = new OceanNpUpdatePolicyRollConfigArgs();
 
+    /**
+     * Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+     * 
+     */
     @Import(name="batchMinHealthyPercentage")
     private @Nullable Output<Integer> batchMinHealthyPercentage;
 
+    /**
+     * @return Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+     * 
+     */
     public Optional<Output<Integer>> batchMinHealthyPercentage() {
         return Optional.ofNullable(this.batchMinHealthyPercentage);
     }
 
+    /**
+     * Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.
+     * 
+     */
     @Import(name="batchSizePercentage")
     private @Nullable Output<Integer> batchSizePercentage;
 
+    /**
+     * @return Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.
+     * 
+     */
     public Optional<Output<Integer>> batchSizePercentage() {
         return Optional.ofNullable(this.batchSizePercentage);
     }
 
+    /**
+     * Add a comment description for the roll. The comment is limited to 256 chars and optional.
+     * 
+     */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
+    /**
+     * @return Add a comment description for the roll. The comment is limited to 256 chars and optional.
+     * 
+     */
     public Optional<Output<String>> comment() {
         return Optional.ofNullable(this.comment);
     }
 
+    /**
+     * List of node names to be rolled. Each identifier is a string. nodeNames can be null, and cannot be used together with nodePoolNames and vngIds.
+     * 
+     */
     @Import(name="nodeNames")
     private @Nullable Output<List<String>> nodeNames;
 
+    /**
+     * @return List of node names to be rolled. Each identifier is a string. nodeNames can be null, and cannot be used together with nodePoolNames and vngIds.
+     * 
+     */
     public Optional<Output<List<String>>> nodeNames() {
         return Optional.ofNullable(this.nodeNames);
     }
 
+    /**
+     * List of node pools to be rolled. Each node pool name is a string. nodePoolNames can be null, and cannot be used together with nodeNames and vngIds.
+     * 
+     */
     @Import(name="nodePoolNames")
     private @Nullable Output<List<String>> nodePoolNames;
 
+    /**
+     * @return List of node pools to be rolled. Each node pool name is a string. nodePoolNames can be null, and cannot be used together with nodeNames and vngIds.
+     * 
+     */
     public Optional<Output<List<String>>> nodePoolNames() {
         return Optional.ofNullable(this.nodePoolNames);
     }
 
+    /**
+     * During the roll, if the parameter is set to true we honor PDB during the nodes replacement.
+     * 
+     */
     @Import(name="respectPdb")
     private @Nullable Output<Boolean> respectPdb;
 
+    /**
+     * @return During the roll, if the parameter is set to true we honor PDB during the nodes replacement.
+     * 
+     */
     public Optional<Output<Boolean>> respectPdb() {
         return Optional.ofNullable(this.respectPdb);
     }
 
+    /**
+     * During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.
+     * 
+     */
     @Import(name="respectRestrictScaleDown")
     private @Nullable Output<Boolean> respectRestrictScaleDown;
 
+    /**
+     * @return During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.
+     * 
+     */
     public Optional<Output<Boolean>> respectRestrictScaleDown() {
         return Optional.ofNullable(this.respectRestrictScaleDown);
     }
 
+    /**
+     * List of virtual node group identifiers to be rolled. Each identifier is a string. vngIds can be null, and cannot be used together with nodeNames and nodePoolNames.
+     * 
+     */
     @Import(name="vngIds")
     private @Nullable Output<List<String>> vngIds;
 
+    /**
+     * @return List of virtual node group identifiers to be rolled. Each identifier is a string. vngIds can be null, and cannot be used together with nodeNames and nodePoolNames.
+     * 
+     */
     public Optional<Output<List<String>>> vngIds() {
         return Optional.ofNullable(this.vngIds);
     }
@@ -105,86 +169,200 @@ public final class OceanNpUpdatePolicyRollConfigArgs extends com.pulumi.resource
             $ = new OceanNpUpdatePolicyRollConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param batchMinHealthyPercentage Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+         * 
+         * @return builder
+         * 
+         */
         public Builder batchMinHealthyPercentage(@Nullable Output<Integer> batchMinHealthyPercentage) {
             $.batchMinHealthyPercentage = batchMinHealthyPercentage;
             return this;
         }
 
+        /**
+         * @param batchMinHealthyPercentage Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+         * 
+         * @return builder
+         * 
+         */
         public Builder batchMinHealthyPercentage(Integer batchMinHealthyPercentage) {
             return batchMinHealthyPercentage(Output.of(batchMinHealthyPercentage));
         }
 
+        /**
+         * @param batchSizePercentage Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.
+         * 
+         * @return builder
+         * 
+         */
         public Builder batchSizePercentage(@Nullable Output<Integer> batchSizePercentage) {
             $.batchSizePercentage = batchSizePercentage;
             return this;
         }
 
+        /**
+         * @param batchSizePercentage Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.
+         * 
+         * @return builder
+         * 
+         */
         public Builder batchSizePercentage(Integer batchSizePercentage) {
             return batchSizePercentage(Output.of(batchSizePercentage));
         }
 
+        /**
+         * @param comment Add a comment description for the roll. The comment is limited to 256 chars and optional.
+         * 
+         * @return builder
+         * 
+         */
         public Builder comment(@Nullable Output<String> comment) {
             $.comment = comment;
             return this;
         }
 
+        /**
+         * @param comment Add a comment description for the roll. The comment is limited to 256 chars and optional.
+         * 
+         * @return builder
+         * 
+         */
         public Builder comment(String comment) {
             return comment(Output.of(comment));
         }
 
+        /**
+         * @param nodeNames List of node names to be rolled. Each identifier is a string. nodeNames can be null, and cannot be used together with nodePoolNames and vngIds.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeNames(@Nullable Output<List<String>> nodeNames) {
             $.nodeNames = nodeNames;
             return this;
         }
 
+        /**
+         * @param nodeNames List of node names to be rolled. Each identifier is a string. nodeNames can be null, and cannot be used together with nodePoolNames and vngIds.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeNames(List<String> nodeNames) {
             return nodeNames(Output.of(nodeNames));
         }
 
+        /**
+         * @param nodeNames List of node names to be rolled. Each identifier is a string. nodeNames can be null, and cannot be used together with nodePoolNames and vngIds.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeNames(String... nodeNames) {
             return nodeNames(List.of(nodeNames));
         }
 
+        /**
+         * @param nodePoolNames List of node pools to be rolled. Each node pool name is a string. nodePoolNames can be null, and cannot be used together with nodeNames and vngIds.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodePoolNames(@Nullable Output<List<String>> nodePoolNames) {
             $.nodePoolNames = nodePoolNames;
             return this;
         }
 
+        /**
+         * @param nodePoolNames List of node pools to be rolled. Each node pool name is a string. nodePoolNames can be null, and cannot be used together with nodeNames and vngIds.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodePoolNames(List<String> nodePoolNames) {
             return nodePoolNames(Output.of(nodePoolNames));
         }
 
+        /**
+         * @param nodePoolNames List of node pools to be rolled. Each node pool name is a string. nodePoolNames can be null, and cannot be used together with nodeNames and vngIds.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodePoolNames(String... nodePoolNames) {
             return nodePoolNames(List.of(nodePoolNames));
         }
 
+        /**
+         * @param respectPdb During the roll, if the parameter is set to true we honor PDB during the nodes replacement.
+         * 
+         * @return builder
+         * 
+         */
         public Builder respectPdb(@Nullable Output<Boolean> respectPdb) {
             $.respectPdb = respectPdb;
             return this;
         }
 
+        /**
+         * @param respectPdb During the roll, if the parameter is set to true we honor PDB during the nodes replacement.
+         * 
+         * @return builder
+         * 
+         */
         public Builder respectPdb(Boolean respectPdb) {
             return respectPdb(Output.of(respectPdb));
         }
 
+        /**
+         * @param respectRestrictScaleDown During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.
+         * 
+         * @return builder
+         * 
+         */
         public Builder respectRestrictScaleDown(@Nullable Output<Boolean> respectRestrictScaleDown) {
             $.respectRestrictScaleDown = respectRestrictScaleDown;
             return this;
         }
 
+        /**
+         * @param respectRestrictScaleDown During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.
+         * 
+         * @return builder
+         * 
+         */
         public Builder respectRestrictScaleDown(Boolean respectRestrictScaleDown) {
             return respectRestrictScaleDown(Output.of(respectRestrictScaleDown));
         }
 
+        /**
+         * @param vngIds List of virtual node group identifiers to be rolled. Each identifier is a string. vngIds can be null, and cannot be used together with nodeNames and nodePoolNames.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vngIds(@Nullable Output<List<String>> vngIds) {
             $.vngIds = vngIds;
             return this;
         }
 
+        /**
+         * @param vngIds List of virtual node group identifiers to be rolled. Each identifier is a string. vngIds can be null, and cannot be used together with nodeNames and nodePoolNames.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vngIds(List<String> vngIds) {
             return vngIds(Output.of(vngIds));
         }
 
+        /**
+         * @param vngIds List of virtual node group identifiers to be rolled. Each identifier is a string. vngIds can be null, and cannot be used together with nodeNames and nodePoolNames.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vngIds(String... vngIds) {
             return vngIds(List.of(vngIds));
         }

@@ -13,7 +13,13 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class OceanScheduledTask
     {
+        /// <summary>
+        /// Set shutdown hours for cluster object.
+        /// </summary>
         public readonly Outputs.OceanScheduledTaskShutdownHours? ShutdownHours;
+        /// <summary>
+        /// The scheduling tasks for the cluster.
+        /// </summary>
         public readonly ImmutableArray<Outputs.OceanScheduledTaskTask> Tasks;
 
         [OutputConstructor]

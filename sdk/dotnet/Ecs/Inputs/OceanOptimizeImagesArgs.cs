@@ -12,14 +12,24 @@ namespace Pulumi.SpotInst.Ecs.Inputs
 
     public sealed class OceanOptimizeImagesArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// String. Valid values: "always" "never" "timeWindow".
+        /// </summary>
         [Input("performAt", required: true)]
         public Input<string> PerformAt { get; set; } = null!;
 
+        /// <summary>
+        /// Boolean. Enable auto image (AMI) update for the ECS container instances. The auto update applies for ECS-Optimized AMIs.
+        /// </summary>
         [Input("shouldOptimizeEcsAmi", required: true)]
         public Input<bool> ShouldOptimizeEcsAmi { get; set; } = null!;
 
         [Input("timeWindows")]
         private InputList<string>? _timeWindows;
+
+        /// <summary>
+        /// Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
+        /// </summary>
         public InputList<string> TimeWindows
         {
             get => _timeWindows ?? (_timeWindows = new InputList<string>());

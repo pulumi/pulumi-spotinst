@@ -15,23 +15,47 @@ public final class OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs ext
 
     public static final OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs Empty = new OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs();
 
+    /**
+     * Int. Initial size for volume. (Example: 50)
+     * 
+     */
     @Import(name="baseSize", required=true)
     private Output<Integer> baseSize;
 
+    /**
+     * @return Int. Initial size for volume. (Example: 50)
+     * 
+     */
     public Output<Integer> baseSize() {
         return this.baseSize;
     }
 
+    /**
+     * String. Resource type to increase volume size dynamically by. (valid values: &#34;CPU&#34;)
+     * 
+     */
     @Import(name="resource", required=true)
     private Output<String> resource;
 
+    /**
+     * @return String. Resource type to increase volume size dynamically by. (valid values: &#34;CPU&#34;)
+     * 
+     */
     public Output<String> resource() {
         return this.resource;
     }
 
+    /**
+     * Int. Additional size (in GB) per resource unit. (Example: baseSize= 50, sizePerResourceUnit=20, and instance with 2 CPU is launched - its total disk size will be: 90GB)
+     * 
+     */
     @Import(name="sizePerResourceUnit", required=true)
     private Output<Integer> sizePerResourceUnit;
 
+    /**
+     * @return Int. Additional size (in GB) per resource unit. (Example: baseSize= 50, sizePerResourceUnit=20, and instance with 2 CPU is launched - its total disk size will be: 90GB)
+     * 
+     */
     public Output<Integer> sizePerResourceUnit() {
         return this.sizePerResourceUnit;
     }
@@ -62,29 +86,65 @@ public final class OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs ext
             $ = new OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param baseSize Int. Initial size for volume. (Example: 50)
+         * 
+         * @return builder
+         * 
+         */
         public Builder baseSize(Output<Integer> baseSize) {
             $.baseSize = baseSize;
             return this;
         }
 
+        /**
+         * @param baseSize Int. Initial size for volume. (Example: 50)
+         * 
+         * @return builder
+         * 
+         */
         public Builder baseSize(Integer baseSize) {
             return baseSize(Output.of(baseSize));
         }
 
+        /**
+         * @param resource String. Resource type to increase volume size dynamically by. (valid values: &#34;CPU&#34;)
+         * 
+         * @return builder
+         * 
+         */
         public Builder resource(Output<String> resource) {
             $.resource = resource;
             return this;
         }
 
+        /**
+         * @param resource String. Resource type to increase volume size dynamically by. (valid values: &#34;CPU&#34;)
+         * 
+         * @return builder
+         * 
+         */
         public Builder resource(String resource) {
             return resource(Output.of(resource));
         }
 
+        /**
+         * @param sizePerResourceUnit Int. Additional size (in GB) per resource unit. (Example: baseSize= 50, sizePerResourceUnit=20, and instance with 2 CPU is launched - its total disk size will be: 90GB)
+         * 
+         * @return builder
+         * 
+         */
         public Builder sizePerResourceUnit(Output<Integer> sizePerResourceUnit) {
             $.sizePerResourceUnit = sizePerResourceUnit;
             return this;
         }
 
+        /**
+         * @param sizePerResourceUnit Int. Additional size (in GB) per resource unit. (Example: baseSize= 50, sizePerResourceUnit=20, and instance with 2 CPU is launched - its total disk size will be: 90GB)
+         * 
+         * @return builder
+         * 
+         */
         public Builder sizePerResourceUnit(Integer sizePerResourceUnit) {
             return sizePerResourceUnit(Output.of(sizePerResourceUnit));
         }

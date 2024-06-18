@@ -13,7 +13,13 @@ namespace Pulumi.SpotInst.Gke.Outputs
     [OutputType]
     public sealed class OceanLaunchSpecUpdatePolicy
     {
+        /// <summary>
+        /// Holds the roll configuration.
+        /// </summary>
         public readonly Outputs.OceanLaunchSpecUpdatePolicyRollConfig? RollConfig;
+        /// <summary>
+        /// Enables the roll.
+        /// </summary>
         public readonly bool ShouldRoll;
 
         [OutputConstructor]

@@ -30,161 +30,6 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Create a Mr Scaler with New strategy
-//			_, err := aws.NewMrScalar(ctx, "sample-MrScaler-01", &aws.MrScalarArgs{
-//				Name:         pulumi.String("sample-MrScaler-01"),
-//				Description:  pulumi.String("Testing MrScaler creation"),
-//				Region:       pulumi.String("us-west-2"),
-//				Strategy:     pulumi.String("new"),
-//				ReleaseLabel: pulumi.String("emr-5.17.0"),
-//				Retries:      pulumi.Int(2),
-//				AvailabilityZones: pulumi.StringArray{
-//					pulumi.String("us-west-2a:subnet-123456"),
-//				},
-//				ProvisioningTimeout: &aws.MrScalarProvisioningTimeoutArgs{
-//					Timeout:       pulumi.Int(15),
-//					TimeoutAction: pulumi.String("terminateAndRetry"),
-//				},
-//				LogUri:                      pulumi.String("s3://example-logs"),
-//				AdditionalInfo:              pulumi.String("{'test':'more information'}"),
-//				JobFlowRole:                 pulumi.String("EMR_EC2_ExampleRole"),
-//				SecurityConfig:              pulumi.String("example-config"),
-//				ServiceRole:                 pulumi.String("example-role"),
-//				TerminationProtected:        pulumi.Bool(false),
-//				KeepJobFlowAlive:            pulumi.Bool(true),
-//				CustomAmiId:                 pulumi.String("ami-123456"),
-//				RepoUpgradeOnBoot:           pulumi.String("NONE"),
-//				Ec2KeyName:                  pulumi.String("test-key"),
-//				ManagedPrimarySecurityGroup: pulumi.String("sg-123456"),
-//				ManagedReplicaSecurityGroup: pulumi.String("sg-987654"),
-//				ServiceAccessSecurityGroup:  pulumi.String("access-example"),
-//				AdditionalPrimarySecurityGroups: pulumi.StringArray{
-//					pulumi.String("sg-456321"),
-//				},
-//				AdditionalReplicaSecurityGroups: pulumi.StringArray{
-//					pulumi.String("sg-123654"),
-//				},
-//				Applications: aws.MrScalarApplicationArray{
-//					&aws.MrScalarApplicationArgs{
-//						Name:    pulumi.String("Ganglia"),
-//						Version: pulumi.String("1.0"),
-//					},
-//					&aws.MrScalarApplicationArgs{
-//						Name: pulumi.String("Hadoop"),
-//					},
-//					&aws.MrScalarApplicationArgs{
-//						Name: pulumi.String("Pig"),
-//						Args: pulumi.StringArray{
-//							pulumi.String("fake"),
-//							pulumi.String("args"),
-//						},
-//					},
-//				},
-//				InstanceWeights: aws.MrScalarInstanceWeightArray{
-//					&aws.MrScalarInstanceWeightArgs{
-//						InstanceType:     pulumi.String("t2.small"),
-//						WeightedCapacity: pulumi.Int(10),
-//					},
-//					&aws.MrScalarInstanceWeightArgs{
-//						InstanceType:     pulumi.String("t2.medium"),
-//						WeightedCapacity: pulumi.Int(90),
-//					},
-//				},
-//				StepsFiles: aws.MrScalarStepsFileArray{
-//					&aws.MrScalarStepsFileArgs{
-//						Bucket: pulumi.String("example-bucket"),
-//						Key:    pulumi.String("steps.json"),
-//					},
-//				},
-//				ConfigurationsFiles: aws.MrScalarConfigurationsFileArray{
-//					&aws.MrScalarConfigurationsFileArgs{
-//						Bucket: pulumi.String("example-bucket"),
-//						Key:    pulumi.String("configurations.json"),
-//					},
-//				},
-//				BootstrapActionsFiles: aws.MrScalarBootstrapActionsFileArray{
-//					&aws.MrScalarBootstrapActionsFileArgs{
-//						Bucket: pulumi.String("sample-emr-test"),
-//						Key:    pulumi.String("bootstrap-actions.json"),
-//					},
-//				},
-//				MasterInstanceTypes: pulumi.StringArray{
-//					pulumi.String("c3.xlarge"),
-//				},
-//				MasterLifecycle:    pulumi.String("SPOT"),
-//				MasterEbsOptimized: pulumi.Bool(true),
-//				MasterTarget:       pulumi.Int(1),
-//				MasterEbsBlockDevices: aws.MrScalarMasterEbsBlockDeviceArray{
-//					&aws.MrScalarMasterEbsBlockDeviceArgs{
-//						VolumesPerInstance: pulumi.Int(1),
-//						VolumeType:         pulumi.String("gp2"),
-//						SizeInGb:           pulumi.Int(30),
-//					},
-//				},
-//				CoreInstanceTypes: pulumi.StringArray{
-//					pulumi.String("c3.xlarge"),
-//					pulumi.String("c4.xlarge"),
-//				},
-//				CoreMinSize:         pulumi.Int(1),
-//				CoreMaxSize:         pulumi.Int(1),
-//				CoreDesiredCapacity: pulumi.Int(1),
-//				CoreLifecycle:       pulumi.String("ON_DEMAND"),
-//				CoreEbsOptimized:    pulumi.Bool(false),
-//				CoreUnit:            pulumi.String("instance"),
-//				CoreEbsBlockDevices: aws.MrScalarCoreEbsBlockDeviceArray{
-//					&aws.MrScalarCoreEbsBlockDeviceArgs{
-//						VolumesPerInstance: pulumi.Int(2),
-//						VolumeType:         pulumi.String("gp2"),
-//						SizeInGb:           pulumi.Int(40),
-//					},
-//				},
-//				TaskInstanceTypes: pulumi.StringArray{
-//					pulumi.String("c3.xlarge"),
-//					pulumi.String("c4.xlarge"),
-//				},
-//				TaskMinSize:         pulumi.Int(0),
-//				TaskMaxSize:         pulumi.Int(30),
-//				TaskDesiredCapacity: pulumi.Int(1),
-//				TaskLifecycle:       pulumi.String("SPOT"),
-//				TaskEbsOptimized:    pulumi.Bool(false),
-//				TaskUnit:            pulumi.String("instance"),
-//				TaskEbsBlockDevices: aws.MrScalarTaskEbsBlockDeviceArray{
-//					&aws.MrScalarTaskEbsBlockDeviceArgs{
-//						VolumesPerInstance: pulumi.Int(2),
-//						VolumeType:         pulumi.String("gp2"),
-//						SizeInGb:           pulumi.Int(40),
-//					},
-//				},
-//				Tags: aws.MrScalarTagArray{
-//					&aws.MrScalarTagArgs{
-//						Key:   pulumi.String("Creator"),
-//						Value: pulumi.String("Pulumi"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Clone Strategy
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/aws"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aws.NewMrScalar(ctx, "sample-MrScaler-01", &aws.MrScalarArgs{
 //				Name:            pulumi.String("sample-MrScaler-01"),
 //				Description:     pulumi.String("Testing MrScaler creation"),
@@ -321,6 +166,161 @@ import (
 //						VolumesPerInstance: pulumi.Int(1),
 //						VolumeType:         pulumi.String("gp2"),
 //						SizeInGb:           pulumi.Int(20),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### New Strategy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/aws"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a Mr Scaler with New strategy
+//			_, err := aws.NewMrScalar(ctx, "sample-MrScaler-01", &aws.MrScalarArgs{
+//				Name:         pulumi.String("sample-MrScaler-01"),
+//				Description:  pulumi.String("Testing MrScaler creation"),
+//				Region:       pulumi.String("us-west-2"),
+//				Strategy:     pulumi.String("new"),
+//				ReleaseLabel: pulumi.String("emr-5.17.0"),
+//				Retries:      pulumi.Int(2),
+//				AvailabilityZones: pulumi.StringArray{
+//					pulumi.String("us-west-2a:subnet-123456"),
+//				},
+//				ProvisioningTimeout: &aws.MrScalarProvisioningTimeoutArgs{
+//					Timeout:       pulumi.Int(15),
+//					TimeoutAction: pulumi.String("terminateAndRetry"),
+//				},
+//				LogUri:                      pulumi.String("s3://example-logs"),
+//				AdditionalInfo:              pulumi.String("{'test':'more information'}"),
+//				JobFlowRole:                 pulumi.String("EMR_EC2_ExampleRole"),
+//				SecurityConfig:              pulumi.String("example-config"),
+//				ServiceRole:                 pulumi.String("example-role"),
+//				TerminationProtected:        pulumi.Bool(false),
+//				KeepJobFlowAlive:            pulumi.Bool(true),
+//				CustomAmiId:                 pulumi.String("ami-123456"),
+//				RepoUpgradeOnBoot:           pulumi.String("NONE"),
+//				Ec2KeyName:                  pulumi.String("test-key"),
+//				ManagedPrimarySecurityGroup: pulumi.String("sg-123456"),
+//				ManagedReplicaSecurityGroup: pulumi.String("sg-987654"),
+//				ServiceAccessSecurityGroup:  pulumi.String("access-example"),
+//				AdditionalPrimarySecurityGroups: pulumi.StringArray{
+//					pulumi.String("sg-456321"),
+//				},
+//				AdditionalReplicaSecurityGroups: pulumi.StringArray{
+//					pulumi.String("sg-123654"),
+//				},
+//				Applications: aws.MrScalarApplicationArray{
+//					&aws.MrScalarApplicationArgs{
+//						Name:    pulumi.String("Ganglia"),
+//						Version: pulumi.String("1.0"),
+//					},
+//					&aws.MrScalarApplicationArgs{
+//						Name: pulumi.String("Hadoop"),
+//					},
+//					&aws.MrScalarApplicationArgs{
+//						Name: pulumi.String("Pig"),
+//						Args: pulumi.StringArray{
+//							pulumi.String("fake"),
+//							pulumi.String("args"),
+//						},
+//					},
+//				},
+//				InstanceWeights: aws.MrScalarInstanceWeightArray{
+//					&aws.MrScalarInstanceWeightArgs{
+//						InstanceType:     pulumi.String("t2.small"),
+//						WeightedCapacity: pulumi.Int(10),
+//					},
+//					&aws.MrScalarInstanceWeightArgs{
+//						InstanceType:     pulumi.String("t2.medium"),
+//						WeightedCapacity: pulumi.Int(90),
+//					},
+//				},
+//				StepsFiles: aws.MrScalarStepsFileArray{
+//					&aws.MrScalarStepsFileArgs{
+//						Bucket: pulumi.String("example-bucket"),
+//						Key:    pulumi.String("steps.json"),
+//					},
+//				},
+//				ConfigurationsFiles: aws.MrScalarConfigurationsFileArray{
+//					&aws.MrScalarConfigurationsFileArgs{
+//						Bucket: pulumi.String("example-bucket"),
+//						Key:    pulumi.String("configurations.json"),
+//					},
+//				},
+//				BootstrapActionsFiles: aws.MrScalarBootstrapActionsFileArray{
+//					&aws.MrScalarBootstrapActionsFileArgs{
+//						Bucket: pulumi.String("sample-emr-test"),
+//						Key:    pulumi.String("bootstrap-actions.json"),
+//					},
+//				},
+//				MasterInstanceTypes: pulumi.StringArray{
+//					pulumi.String("c3.xlarge"),
+//				},
+//				MasterLifecycle:    pulumi.String("SPOT"),
+//				MasterEbsOptimized: pulumi.Bool(true),
+//				MasterTarget:       pulumi.Int(1),
+//				MasterEbsBlockDevices: aws.MrScalarMasterEbsBlockDeviceArray{
+//					&aws.MrScalarMasterEbsBlockDeviceArgs{
+//						VolumesPerInstance: pulumi.Int(1),
+//						VolumeType:         pulumi.String("gp2"),
+//						SizeInGb:           pulumi.Int(30),
+//					},
+//				},
+//				CoreInstanceTypes: pulumi.StringArray{
+//					pulumi.String("c3.xlarge"),
+//					pulumi.String("c4.xlarge"),
+//				},
+//				CoreMinSize:         pulumi.Int(1),
+//				CoreMaxSize:         pulumi.Int(1),
+//				CoreDesiredCapacity: pulumi.Int(1),
+//				CoreLifecycle:       pulumi.String("ON_DEMAND"),
+//				CoreEbsOptimized:    pulumi.Bool(false),
+//				CoreUnit:            pulumi.String("instance"),
+//				CoreEbsBlockDevices: aws.MrScalarCoreEbsBlockDeviceArray{
+//					&aws.MrScalarCoreEbsBlockDeviceArgs{
+//						VolumesPerInstance: pulumi.Int(2),
+//						VolumeType:         pulumi.String("gp2"),
+//						SizeInGb:           pulumi.Int(40),
+//					},
+//				},
+//				TaskInstanceTypes: pulumi.StringArray{
+//					pulumi.String("c3.xlarge"),
+//					pulumi.String("c4.xlarge"),
+//				},
+//				TaskMinSize:         pulumi.Int(0),
+//				TaskMaxSize:         pulumi.Int(30),
+//				TaskDesiredCapacity: pulumi.Int(1),
+//				TaskLifecycle:       pulumi.String("SPOT"),
+//				TaskEbsOptimized:    pulumi.Bool(false),
+//				TaskUnit:            pulumi.String("instance"),
+//				TaskEbsBlockDevices: aws.MrScalarTaskEbsBlockDeviceArray{
+//					&aws.MrScalarTaskEbsBlockDeviceArgs{
+//						VolumesPerInstance: pulumi.Int(2),
+//						VolumeType:         pulumi.String("gp2"),
+//						SizeInGb:           pulumi.Int(40),
+//					},
+//				},
+//				Tags: aws.MrScalarTagArray{
+//					&aws.MrScalarTagArgs{
+//						Key:   pulumi.String("Creator"),
+//						Value: pulumi.String("Pulumi"),
 //					},
 //				},
 //			})

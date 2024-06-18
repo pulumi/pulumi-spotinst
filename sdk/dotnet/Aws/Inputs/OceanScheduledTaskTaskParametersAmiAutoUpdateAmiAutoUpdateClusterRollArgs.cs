@@ -12,15 +12,27 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+        /// </summary>
         [Input("batchMinHealthyPercentage")]
         public Input<int>? BatchMinHealthyPercentage { get; set; }
 
+        /// <summary>
+        /// Value as a percent to set the size of a batch in a roll. Valid values are 0-100.
+        /// </summary>
         [Input("batchSizePercentage")]
         public Input<int>? BatchSizePercentage { get; set; }
 
+        /// <summary>
+        /// Add a `comment` description for the roll. The `comment` is limited to 256 chars
+        /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
+        /// <summary>
+        /// During the roll, if the parameter is set to true we honor PDB during the instance replacement.
+        /// </summary>
         [Input("respectPdb")]
         public Input<bool>? RespectPdb { get; set; }
 

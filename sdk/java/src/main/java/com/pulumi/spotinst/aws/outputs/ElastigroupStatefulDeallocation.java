@@ -11,21 +11,57 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupStatefulDeallocation {
+    /**
+     * @return For stateful groups: remove persistent images.
+     * 
+     */
     private @Nullable Boolean shouldDeleteImages;
+    /**
+     * @return For stateful groups: remove network interfaces.
+     * 
+     */
     private @Nullable Boolean shouldDeleteNetworkInterfaces;
+    /**
+     * @return For stateful groups: remove snapshots.
+     * 
+     * Usage:
+     * 
+     */
     private @Nullable Boolean shouldDeleteSnapshots;
+    /**
+     * @return For stateful groups: remove persistent volumes.
+     * 
+     */
     private @Nullable Boolean shouldDeleteVolumes;
 
     private ElastigroupStatefulDeallocation() {}
+    /**
+     * @return For stateful groups: remove persistent images.
+     * 
+     */
     public Optional<Boolean> shouldDeleteImages() {
         return Optional.ofNullable(this.shouldDeleteImages);
     }
+    /**
+     * @return For stateful groups: remove network interfaces.
+     * 
+     */
     public Optional<Boolean> shouldDeleteNetworkInterfaces() {
         return Optional.ofNullable(this.shouldDeleteNetworkInterfaces);
     }
+    /**
+     * @return For stateful groups: remove snapshots.
+     * 
+     * Usage:
+     * 
+     */
     public Optional<Boolean> shouldDeleteSnapshots() {
         return Optional.ofNullable(this.shouldDeleteSnapshots);
     }
+    /**
+     * @return For stateful groups: remove persistent volumes.
+     * 
+     */
     public Optional<Boolean> shouldDeleteVolumes() {
         return Optional.ofNullable(this.shouldDeleteVolumes);
     }

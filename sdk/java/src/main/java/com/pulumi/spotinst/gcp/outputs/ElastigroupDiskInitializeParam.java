@@ -12,17 +12,45 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupDiskInitializeParam {
+    /**
+     * @return Specifies disk size in gigabytes. Must be in increments of 2.
+     * 
+     */
     private @Nullable String diskSizeGb;
+    /**
+     * @return Specifies the disk type to use to create the instance. Valid values: pd-ssd, local-ssd.
+     * 
+     */
     private @Nullable String diskType;
+    /**
+     * @return A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
+     * 
+     * Usage:
+     * 
+     */
     private String sourceImage;
 
     private ElastigroupDiskInitializeParam() {}
+    /**
+     * @return Specifies disk size in gigabytes. Must be in increments of 2.
+     * 
+     */
     public Optional<String> diskSizeGb() {
         return Optional.ofNullable(this.diskSizeGb);
     }
+    /**
+     * @return Specifies the disk type to use to create the instance. Valid values: pd-ssd, local-ssd.
+     * 
+     */
     public Optional<String> diskType() {
         return Optional.ofNullable(this.diskType);
     }
+    /**
+     * @return A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
+     * 
+     * Usage:
+     * 
+     */
     public String sourceImage() {
         return this.sourceImage;
     }

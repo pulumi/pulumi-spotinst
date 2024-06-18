@@ -12,9 +12,15 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class OceanLaunchSpecUpdatePolicyGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Holds the roll configuration.
+        /// </summary>
         [Input("rollConfig")]
         public Input<Inputs.OceanLaunchSpecUpdatePolicyRollConfigGetArgs>? RollConfig { get; set; }
 
+        /// <summary>
+        /// Enables the roll.
+        /// </summary>
         [Input("shouldRoll", required: true)]
         public Input<bool> ShouldRoll { get; set; } = null!;
 

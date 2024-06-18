@@ -16,16 +16,32 @@ public final class OceanScheduledTaskTaskParametersArgs extends com.pulumi.resou
 
     public static final OceanScheduledTaskTaskParametersArgs Empty = new OceanScheduledTaskTaskParametersArgs();
 
+    /**
+     * Set amiAutoUpdate object
+     * 
+     */
     @Import(name="amiAutoUpdate")
     private @Nullable Output<OceanScheduledTaskTaskParametersAmiAutoUpdateArgs> amiAutoUpdate;
 
+    /**
+     * @return Set amiAutoUpdate object
+     * 
+     */
     public Optional<Output<OceanScheduledTaskTaskParametersAmiAutoUpdateArgs>> amiAutoUpdate() {
         return Optional.ofNullable(this.amiAutoUpdate);
     }
 
+    /**
+     * Set clusterRoll object
+     * 
+     */
     @Import(name="parametersClusterRoll")
     private @Nullable Output<OceanScheduledTaskTaskParametersParametersClusterRollArgs> parametersClusterRoll;
 
+    /**
+     * @return Set clusterRoll object
+     * 
+     */
     public Optional<Output<OceanScheduledTaskTaskParametersParametersClusterRollArgs>> parametersClusterRoll() {
         return Optional.ofNullable(this.parametersClusterRoll);
     }
@@ -55,20 +71,44 @@ public final class OceanScheduledTaskTaskParametersArgs extends com.pulumi.resou
             $ = new OceanScheduledTaskTaskParametersArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param amiAutoUpdate Set amiAutoUpdate object
+         * 
+         * @return builder
+         * 
+         */
         public Builder amiAutoUpdate(@Nullable Output<OceanScheduledTaskTaskParametersAmiAutoUpdateArgs> amiAutoUpdate) {
             $.amiAutoUpdate = amiAutoUpdate;
             return this;
         }
 
+        /**
+         * @param amiAutoUpdate Set amiAutoUpdate object
+         * 
+         * @return builder
+         * 
+         */
         public Builder amiAutoUpdate(OceanScheduledTaskTaskParametersAmiAutoUpdateArgs amiAutoUpdate) {
             return amiAutoUpdate(Output.of(amiAutoUpdate));
         }
 
+        /**
+         * @param parametersClusterRoll Set clusterRoll object
+         * 
+         * @return builder
+         * 
+         */
         public Builder parametersClusterRoll(@Nullable Output<OceanScheduledTaskTaskParametersParametersClusterRollArgs> parametersClusterRoll) {
             $.parametersClusterRoll = parametersClusterRoll;
             return this;
         }
 
+        /**
+         * @param parametersClusterRoll Set clusterRoll object
+         * 
+         * @return builder
+         * 
+         */
         public Builder parametersClusterRoll(OceanScheduledTaskTaskParametersParametersClusterRollArgs parametersClusterRoll) {
             return parametersClusterRoll(Output.of(parametersClusterRoll));
         }

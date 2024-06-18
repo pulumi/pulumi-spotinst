@@ -16,30 +16,62 @@ public final class OceanScheduledTaskTaskParametersAmiAutoUpdateArgs extends com
 
     public static final OceanScheduledTaskTaskParametersAmiAutoUpdateArgs Empty = new OceanScheduledTaskTaskParametersAmiAutoUpdateArgs();
 
+    /**
+     * Set clusterRoll object
+     * 
+     */
     @Import(name="amiAutoUpdateClusterRoll")
     private @Nullable Output<OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollArgs> amiAutoUpdateClusterRoll;
 
+    /**
+     * @return Set clusterRoll object
+     * 
+     */
     public Optional<Output<OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollArgs>> amiAutoUpdateClusterRoll() {
         return Optional.ofNullable(this.amiAutoUpdateClusterRoll);
     }
 
+    /**
+     * When the AMI is updated according to the configuration set, a cluster roll can be triggered
+     * 
+     */
     @Import(name="applyRoll")
     private @Nullable Output<Boolean> applyRoll;
 
+    /**
+     * @return When the AMI is updated according to the configuration set, a cluster roll can be triggered
+     * 
+     */
     public Optional<Output<Boolean>> applyRoll() {
         return Optional.ofNullable(this.applyRoll);
     }
 
+    /**
+     * When set to &#39;true&#39;, the auto-update process will update the VNGs’ AMI with the AMI to match the Kubernetes control plane version. either &#34;patch&#34; or &#34;minor_version&#34; must be true.
+     * 
+     */
     @Import(name="minorVersion")
     private @Nullable Output<Boolean> minorVersion;
 
+    /**
+     * @return When set to &#39;true&#39;, the auto-update process will update the VNGs’ AMI with the AMI to match the Kubernetes control plane version. either &#34;patch&#34; or &#34;minor_version&#34; must be true.
+     * 
+     */
     public Optional<Output<Boolean>> minorVersion() {
         return Optional.ofNullable(this.minorVersion);
     }
 
+    /**
+     * When set to &#39;true&#39;, the auto-update process will update the VNGs’ images with the latest security patches. either &#34;patch&#34; or &#34;minorVersion&#34; must be true.
+     * 
+     */
     @Import(name="patch")
     private @Nullable Output<Boolean> patch;
 
+    /**
+     * @return When set to &#39;true&#39;, the auto-update process will update the VNGs’ images with the latest security patches. either &#34;patch&#34; or &#34;minorVersion&#34; must be true.
+     * 
+     */
     public Optional<Output<Boolean>> patch() {
         return Optional.ofNullable(this.patch);
     }
@@ -71,38 +103,86 @@ public final class OceanScheduledTaskTaskParametersAmiAutoUpdateArgs extends com
             $ = new OceanScheduledTaskTaskParametersAmiAutoUpdateArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param amiAutoUpdateClusterRoll Set clusterRoll object
+         * 
+         * @return builder
+         * 
+         */
         public Builder amiAutoUpdateClusterRoll(@Nullable Output<OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollArgs> amiAutoUpdateClusterRoll) {
             $.amiAutoUpdateClusterRoll = amiAutoUpdateClusterRoll;
             return this;
         }
 
+        /**
+         * @param amiAutoUpdateClusterRoll Set clusterRoll object
+         * 
+         * @return builder
+         * 
+         */
         public Builder amiAutoUpdateClusterRoll(OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollArgs amiAutoUpdateClusterRoll) {
             return amiAutoUpdateClusterRoll(Output.of(amiAutoUpdateClusterRoll));
         }
 
+        /**
+         * @param applyRoll When the AMI is updated according to the configuration set, a cluster roll can be triggered
+         * 
+         * @return builder
+         * 
+         */
         public Builder applyRoll(@Nullable Output<Boolean> applyRoll) {
             $.applyRoll = applyRoll;
             return this;
         }
 
+        /**
+         * @param applyRoll When the AMI is updated according to the configuration set, a cluster roll can be triggered
+         * 
+         * @return builder
+         * 
+         */
         public Builder applyRoll(Boolean applyRoll) {
             return applyRoll(Output.of(applyRoll));
         }
 
+        /**
+         * @param minorVersion When set to &#39;true&#39;, the auto-update process will update the VNGs’ AMI with the AMI to match the Kubernetes control plane version. either &#34;patch&#34; or &#34;minor_version&#34; must be true.
+         * 
+         * @return builder
+         * 
+         */
         public Builder minorVersion(@Nullable Output<Boolean> minorVersion) {
             $.minorVersion = minorVersion;
             return this;
         }
 
+        /**
+         * @param minorVersion When set to &#39;true&#39;, the auto-update process will update the VNGs’ AMI with the AMI to match the Kubernetes control plane version. either &#34;patch&#34; or &#34;minor_version&#34; must be true.
+         * 
+         * @return builder
+         * 
+         */
         public Builder minorVersion(Boolean minorVersion) {
             return minorVersion(Output.of(minorVersion));
         }
 
+        /**
+         * @param patch When set to &#39;true&#39;, the auto-update process will update the VNGs’ images with the latest security patches. either &#34;patch&#34; or &#34;minorVersion&#34; must be true.
+         * 
+         * @return builder
+         * 
+         */
         public Builder patch(@Nullable Output<Boolean> patch) {
             $.patch = patch;
             return this;
         }
 
+        /**
+         * @param patch When set to &#39;true&#39;, the auto-update process will update the VNGs’ images with the latest security patches. either &#34;patch&#34; or &#34;minorVersion&#34; must be true.
+         * 
+         * @return builder
+         * 
+         */
         public Builder patch(Boolean patch) {
             return patch(Output.of(patch));
         }
