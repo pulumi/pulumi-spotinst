@@ -36,7 +36,6 @@ public final class OceanNpVirtualNodeGroupFilters {
     private @Nullable List<String> excludeSeries;
     /**
      * @return The filtered gpu types will belong to one of the gpu types from this list.
-     * &lt;a id=&#34;update-policy&#34;&gt;&lt;/a&gt;
      * 
      */
     private @Nullable List<String> gpuTypes;
@@ -122,7 +121,6 @@ public final class OceanNpVirtualNodeGroupFilters {
     }
     /**
      * @return The filtered gpu types will belong to one of the gpu types from this list.
-     * &lt;a id=&#34;update-policy&#34;&gt;&lt;/a&gt;
      * 
      */
     public List<String> gpuTypes() {

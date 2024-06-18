@@ -378,7 +378,6 @@ namespace Pulumi.SpotInst
     /// * `resource_group_name` - (Required) Name of the Resource Group for stateful node.
     /// * `description` - (Optional) Describe your Azure stateful node.
     /// 
-    /// &lt;a id="strategy"&gt;&lt;/a&gt;
     /// ## Strategy
     /// 
     /// * `strategy` - (Required) Strategy for stateful node.
@@ -399,7 +398,6 @@ namespace Pulumi.SpotInst
     ///       * `crg_resource_group_name` - (Required) Azure resource group name
     ///       * `crg_should_prioritize` - The desired CRG to utilize ahead of other CRGs in the subscription.
     /// 
-    /// &lt;a id="compute"&gt;&lt;/a&gt;
     /// ## Compute
     /// 
     /// * `os` - (Required, Enum `"Linux", "Windows"`) Type of operating system.
@@ -431,7 +429,6 @@ namespace Pulumi.SpotInst
     ///   * `lun` - (Required) The LUN of the data disk.
     ///   * `type` - (Required, Enum `"Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "UltraSSD_LRS"`) The type of the data disk.
     /// 
-    /// &lt;a id="extensions"&gt;&lt;/a&gt;
     /// ## Extensions
     /// 
     /// * `extension` - (Optional) An object for an azure extension.
@@ -443,7 +440,6 @@ namespace Pulumi.SpotInst
     ///   * `protected_settings` - (Optional) Object for protected settings.
     ///   * `public_settings` - (Optional) Object for public settings.
     /// 
-    /// &lt;a id="image"&gt;&lt;/a&gt;
     /// ## Image
     /// 
     /// * `image`
@@ -475,7 +471,6 @@ namespace Pulumi.SpotInst
     ///       `“Standard_Large”, “Standard_Medium”, “Standard_Small”, “Standard_v2", “WAF_Large”, “WAF_Medium", “WAF_v2"`.
     ///   * `backend_pool_names` - (Optional) Name of the Backend Pool to register the Stateful Node VMs to. Each Backend Pool is a separate load balancer. Required if Type is APPLICATION_GATEWAY.
     /// 
-    /// &lt;a id="login"&gt;&lt;/a&gt;
     /// ## Login
     /// 
     /// * `login` - (Required) Set admin access for accessing your VMs. Password/SSH is required for Linux.
@@ -497,7 +492,6 @@ namespace Pulumi.SpotInst
     ///   * `name` - (Required) name of the proximity placement group.
     ///   * `resource_group_name` - (Required) The Resource Group name of the proximity placement group.
     /// 
-    /// &lt;a id="network"&gt;&lt;/a&gt;
     /// ## Network
     /// 
     /// * `network` - (Required) Define the Virtual Network and Subnet for your Stateful Node.
@@ -531,7 +525,6 @@ namespace Pulumi.SpotInst
     ///   * `type` - (Required, Enum `"Standard_LRS", "Premium_LRS", "StandardSSD_LRS"`) The type of the OS disk.
     ///   * `caching` - (Optional, Enum `"None", "ReadOnly", "ReadWrite"`) Specifies the host caching requirements. With disk caching enabled, VMs can achieve higher levels of performance. If not specified, the Azure default behavior will be applied.
     /// 
-    /// &lt;a id="secret"&gt;&lt;/a&gt;
     /// ## Secret
     /// 
     /// * `secret` - (Optional) Set of certificates that should be installed on the VM.
@@ -544,7 +537,6 @@ namespace Pulumi.SpotInst
     ///       * This field is required only when using Windows OS type
     ///       * This field must be ‘null’ when the OS type is Linux
     /// 
-    /// &lt;a id="secutiry"&gt;&lt;/a&gt;
     /// ## Security
     /// 
     /// * `security` - (Optional) Specifies the Security related profile settings for the virtual machine.
@@ -552,14 +544,12 @@ namespace Pulumi.SpotInst
     ///     * `security_type` - (Optional) Enum: `"Standard", "TrustedLaunch"` Security type refers to the different security features of a virtual machine. Security features like Trusted launch virtual machines help to improve the security of Azure generation 2 virtual machines.
     ///     * `vtpm_enabled` - (Optional) Specifies whether vTPM should be enabled on the virtual machine.
     /// 
-    /// &lt;a id="tag"&gt;&lt;/a&gt;
     /// ## Tag
     /// 
     /// * `tag` - (Optional) Unique Key-Value pair for all Stateful Node Resources.
     ///   * `tag_key` - (Optional) Tag Key for Stateful Node Resources.
     ///   * `tag_value` - (Optional) Tag Value for Stateful Node Resources.
     /// 
-    /// &lt;a id="health"&gt;&lt;/a&gt;
     /// ## Health
     /// 
     /// * `health` - (Optional) Set the auto healing preferences for unhealthy VMs.
@@ -568,7 +558,6 @@ namespace Pulumi.SpotInst
     ///   * `auto_healing` - (Required) Enable Autohealing of unhealthy VMs.
     ///   * `grace_period` - (Optional) Period of time to wait for VM to reach healthiness before monitoring for unhealthiness.
     /// 
-    /// &lt;a id="persistence"&gt;&lt;/a&gt;
     /// ## Persistence
     /// 
     /// * `should_persist_os_disk` - (Required) Should persist os disk.
@@ -585,7 +574,6 @@ namespace Pulumi.SpotInst
     ///   * `type` - (Required, Enum `"pause", "resume", "recycle") The type of the scheduled task
     ///   * `cron_expression` (Required) A expression which describes when to execute the scheduled task (UTC).
     /// 
-    /// &lt;a id="signals"&gt;&lt;/a&gt;
     /// ## Signals
     /// 
     /// * `signal` - (Optional) A signal object defined for the stateful node.
@@ -629,7 +617,6 @@ namespace Pulumi.SpotInst
     ///   * `draining_timeout` - (Optional) Hours to keep resources alive.
     ///   * `resources_retention_time` - (Optional) Hours to keep resources alive.
     /// 
-    /// &lt;a id="delete"&gt;&lt;/a&gt;
     /// ## Deallocation Config
     /// 
     /// * `delete` - (Required) Specify deallocation parameters for stateful node deletion.

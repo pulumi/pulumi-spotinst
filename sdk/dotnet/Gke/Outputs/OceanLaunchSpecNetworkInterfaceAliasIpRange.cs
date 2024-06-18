@@ -19,8 +19,6 @@ namespace Pulumi.SpotInst.Gke.Outputs
         public readonly string IpCidrRange;
         /// <summary>
         /// specify the IP address range for the subnet secondary IP range.
-        /// 
-        /// &lt;a id="update-policy"&gt;&lt;/a&gt;
         /// </summary>
         public readonly string SubnetworkRangeName;
 

@@ -12,6 +12,9 @@ namespace Pulumi.SpotInst.Gke.Inputs
 
     public sealed class OceanImportScheduledTaskTaskTaskParametersGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The cluster roll parameters for the cluster.
+        /// </summary>
         [Input("clusterRoll")]
         public Input<Inputs.OceanImportScheduledTaskTaskTaskParametersClusterRollGetArgs>? ClusterRoll { get; set; }
 

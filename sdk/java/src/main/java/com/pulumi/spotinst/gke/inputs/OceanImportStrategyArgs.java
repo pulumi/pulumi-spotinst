@@ -17,30 +17,46 @@ public final class OceanImportStrategyArgs extends com.pulumi.resources.Resource
     public static final OceanImportStrategyArgs Empty = new OceanImportStrategyArgs();
 
     /**
-     * The draining timeout (in seconds) before terminating the instance.
+     * The draining timeout (in seconds) before terminating the instance. If no draining timeout is defined, the default draining timeout will be used.
      * 
      */
     @Import(name="drainingTimeout")
     private @Nullable Output<Integer> drainingTimeout;
 
     /**
-     * @return The draining timeout (in seconds) before terminating the instance.
+     * @return The draining timeout (in seconds) before terminating the instance. If no draining timeout is defined, the default draining timeout will be used.
      * 
      */
     public Optional<Output<Integer>> drainingTimeout() {
         return Optional.ofNullable(this.drainingTimeout);
     }
 
+    /**
+     * Defines the desired preemptible percentage for the cluster.
+     * 
+     */
     @Import(name="preemptiblePercentage")
     private @Nullable Output<Integer> preemptiblePercentage;
 
+    /**
+     * @return Defines the desired preemptible percentage for the cluster.
+     * 
+     */
     public Optional<Output<Integer>> preemptiblePercentage() {
         return Optional.ofNullable(this.preemptiblePercentage);
     }
 
+    /**
+     * Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
+     * 
+     */
     @Import(name="provisioningModel")
     private @Nullable Output<String> provisioningModel;
 
+    /**
+     * @return Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
+     * 
+     */
     public Optional<Output<String>> provisioningModel() {
         return Optional.ofNullable(this.provisioningModel);
     }
@@ -72,7 +88,7 @@ public final class OceanImportStrategyArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param drainingTimeout The draining timeout (in seconds) before terminating the instance.
+         * @param drainingTimeout The draining timeout (in seconds) before terminating the instance. If no draining timeout is defined, the default draining timeout will be used.
          * 
          * @return builder
          * 
@@ -83,7 +99,7 @@ public final class OceanImportStrategyArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param drainingTimeout The draining timeout (in seconds) before terminating the instance.
+         * @param drainingTimeout The draining timeout (in seconds) before terminating the instance. If no draining timeout is defined, the default draining timeout will be used.
          * 
          * @return builder
          * 
@@ -92,20 +108,44 @@ public final class OceanImportStrategyArgs extends com.pulumi.resources.Resource
             return drainingTimeout(Output.of(drainingTimeout));
         }
 
+        /**
+         * @param preemptiblePercentage Defines the desired preemptible percentage for the cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder preemptiblePercentage(@Nullable Output<Integer> preemptiblePercentage) {
             $.preemptiblePercentage = preemptiblePercentage;
             return this;
         }
 
+        /**
+         * @param preemptiblePercentage Defines the desired preemptible percentage for the cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder preemptiblePercentage(Integer preemptiblePercentage) {
             return preemptiblePercentage(Output.of(preemptiblePercentage));
         }
 
+        /**
+         * @param provisioningModel Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder provisioningModel(@Nullable Output<String> provisioningModel) {
             $.provisioningModel = provisioningModel;
             return this;
         }
 
+        /**
+         * @param provisioningModel Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder provisioningModel(String provisioningModel) {
             return provisioningModel(Output.of(provisioningModel));
         }

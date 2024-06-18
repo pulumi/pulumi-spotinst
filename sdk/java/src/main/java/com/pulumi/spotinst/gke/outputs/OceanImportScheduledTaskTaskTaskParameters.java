@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanImportScheduledTaskTaskTaskParameters {
+    /**
+     * @return The cluster roll parameters for the cluster.
+     * 
+     */
     private @Nullable OceanImportScheduledTaskTaskTaskParametersClusterRoll clusterRoll;
 
     private OceanImportScheduledTaskTaskTaskParameters() {}
+    /**
+     * @return The cluster roll parameters for the cluster.
+     * 
+     */
     public Optional<OceanImportScheduledTaskTaskTaskParametersClusterRoll> clusterRoll() {
         return Optional.ofNullable(this.clusterRoll);
     }

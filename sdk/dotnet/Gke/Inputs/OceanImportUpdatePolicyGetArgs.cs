@@ -12,12 +12,21 @@ namespace Pulumi.SpotInst.Gke.Inputs
 
     public sealed class OceanImportUpdatePolicyGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
+        /// </summary>
         [Input("conditionedRoll")]
         public Input<bool>? ConditionedRoll { get; set; }
 
+        /// <summary>
+        /// Holds the roll configuration.
+        /// </summary>
         [Input("rollConfig")]
         public Input<Inputs.OceanImportUpdatePolicyRollConfigGetArgs>? RollConfig { get; set; }
 
+        /// <summary>
+        /// Enables the roll.
+        /// </summary>
         [Input("shouldRoll", required: true)]
         public Input<bool> ShouldRoll { get; set; } = null!;
 

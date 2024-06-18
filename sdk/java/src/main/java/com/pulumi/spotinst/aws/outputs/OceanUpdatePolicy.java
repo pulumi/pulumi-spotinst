@@ -15,25 +15,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanUpdatePolicy {
+    /**
+     * @return will update instance tags on the fly without rolling the cluster.
+     * 
+     */
     private @Nullable Boolean autoApplyTags;
+    /**
+     * @return Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
+     * 
+     */
     private @Nullable Boolean conditionedRoll;
+    /**
+     * @return A custom list of attributes will trigger the cluster roll operation (overrides the predefined list of parameters). Valid only when the `conditioned_roll` parameter is set to true. (Valid values: `&#34;subnet_ids&#34;`,`&#34;whitelist&#34;`,`&#34;blacklist&#34;`,`&#34;user_data&#34;`,`&#34;image_id&#34;`,`&#34;security_groups&#34;`,`&#34;key_name&#34;`,`&#34;iam_instance_profile&#34;`,`&#34;associate_public_ip_address&#34;`,`&#34;load_balancers&#34;`,`&#34;instance_metadata_options&#34;`,`&#34;ebs_optimized&#34;`,`&#34;root_volume_size&#34;`)
+     * 
+     */
     private @Nullable List<String> conditionedRollParams;
+    /**
+     * @return While used, you can control whether the group should perform a deployment after an update to the configuration.
+     * 
+     */
     private @Nullable OceanUpdatePolicyRollConfig rollConfig;
+    /**
+     * @return Enables the roll.
+     * 
+     */
     private Boolean shouldRoll;
 
     private OceanUpdatePolicy() {}
+    /**
+     * @return will update instance tags on the fly without rolling the cluster.
+     * 
+     */
     public Optional<Boolean> autoApplyTags() {
         return Optional.ofNullable(this.autoApplyTags);
     }
+    /**
+     * @return Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
+     * 
+     */
     public Optional<Boolean> conditionedRoll() {
         return Optional.ofNullable(this.conditionedRoll);
     }
+    /**
+     * @return A custom list of attributes will trigger the cluster roll operation (overrides the predefined list of parameters). Valid only when the `conditioned_roll` parameter is set to true. (Valid values: `&#34;subnet_ids&#34;`,`&#34;whitelist&#34;`,`&#34;blacklist&#34;`,`&#34;user_data&#34;`,`&#34;image_id&#34;`,`&#34;security_groups&#34;`,`&#34;key_name&#34;`,`&#34;iam_instance_profile&#34;`,`&#34;associate_public_ip_address&#34;`,`&#34;load_balancers&#34;`,`&#34;instance_metadata_options&#34;`,`&#34;ebs_optimized&#34;`,`&#34;root_volume_size&#34;`)
+     * 
+     */
     public List<String> conditionedRollParams() {
         return this.conditionedRollParams == null ? List.of() : this.conditionedRollParams;
     }
+    /**
+     * @return While used, you can control whether the group should perform a deployment after an update to the configuration.
+     * 
+     */
     public Optional<OceanUpdatePolicyRollConfig> rollConfig() {
         return Optional.ofNullable(this.rollConfig);
     }
+    /**
+     * @return Enables the roll.
+     * 
+     */
     public Boolean shouldRoll() {
         return this.shouldRoll;
     }

@@ -13,15 +13,31 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanLaunchSpecBlockDeviceMapping {
+    /**
+     * @return String. Set device name. (Example: &#34;/dev/xvda1&#34;).
+     * 
+     */
     private String deviceName;
+    /**
+     * @return Object. Set Elastic Block Store properties .
+     * 
+     */
     private @Nullable OceanLaunchSpecBlockDeviceMappingEbs ebs;
     private @Nullable String noDevice;
     private @Nullable String virtualName;
 
     private OceanLaunchSpecBlockDeviceMapping() {}
+    /**
+     * @return String. Set device name. (Example: &#34;/dev/xvda1&#34;).
+     * 
+     */
     public String deviceName() {
         return this.deviceName;
     }
+    /**
+     * @return Object. Set Elastic Block Store properties .
+     * 
+     */
     public Optional<OceanLaunchSpecBlockDeviceMappingEbs> ebs() {
         return Optional.ofNullable(this.ebs);
     }

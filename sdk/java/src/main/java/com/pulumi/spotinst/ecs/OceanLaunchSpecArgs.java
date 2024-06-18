@@ -56,9 +56,17 @@ public final class OceanLaunchSpecArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.autoscaleHeadrooms);
     }
 
+    /**
+     * Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+     * 
+     */
     @Import(name="blockDeviceMappings")
     private @Nullable Output<List<OceanLaunchSpecBlockDeviceMappingArgs>> blockDeviceMappings;
 
+    /**
+     * @return Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+     * 
+     */
     public Optional<Output<List<OceanLaunchSpecBlockDeviceMappingArgs>>> blockDeviceMappings() {
         return Optional.ofNullable(this.blockDeviceMappings);
     }
@@ -391,15 +399,33 @@ public final class OceanLaunchSpecArgs extends com.pulumi.resources.ResourceArgs
             return autoscaleHeadrooms(List.of(autoscaleHeadrooms));
         }
 
+        /**
+         * @param blockDeviceMappings Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder blockDeviceMappings(@Nullable Output<List<OceanLaunchSpecBlockDeviceMappingArgs>> blockDeviceMappings) {
             $.blockDeviceMappings = blockDeviceMappings;
             return this;
         }
 
+        /**
+         * @param blockDeviceMappings Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder blockDeviceMappings(List<OceanLaunchSpecBlockDeviceMappingArgs> blockDeviceMappings) {
             return blockDeviceMappings(Output.of(blockDeviceMappings));
         }
 
+        /**
+         * @param blockDeviceMappings Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder blockDeviceMappings(OceanLaunchSpecBlockDeviceMappingArgs... blockDeviceMappings) {
             return blockDeviceMappings(List.of(blockDeviceMappings));
         }

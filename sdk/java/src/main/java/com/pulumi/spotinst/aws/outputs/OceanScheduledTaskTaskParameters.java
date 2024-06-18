@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanScheduledTaskTaskParameters {
+    /**
+     * @return Set amiAutoUpdate object
+     * 
+     */
     private @Nullable OceanScheduledTaskTaskParametersAmiAutoUpdate amiAutoUpdate;
+    /**
+     * @return Set clusterRoll object
+     * 
+     */
     private @Nullable OceanScheduledTaskTaskParametersParametersClusterRoll parametersClusterRoll;
 
     private OceanScheduledTaskTaskParameters() {}
+    /**
+     * @return Set amiAutoUpdate object
+     * 
+     */
     public Optional<OceanScheduledTaskTaskParametersAmiAutoUpdate> amiAutoUpdate() {
         return Optional.ofNullable(this.amiAutoUpdate);
     }
+    /**
+     * @return Set clusterRoll object
+     * 
+     */
     public Optional<OceanScheduledTaskTaskParametersParametersClusterRoll> parametersClusterRoll() {
         return Optional.ofNullable(this.parametersClusterRoll);
     }

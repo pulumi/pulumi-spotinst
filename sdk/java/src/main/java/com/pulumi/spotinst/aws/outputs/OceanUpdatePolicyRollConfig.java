@@ -15,21 +15,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanUpdatePolicyRollConfig {
+    /**
+     * @return Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+     * 
+     */
     private @Nullable Integer batchMinHealthyPercentage;
+    /**
+     * @return Sets the percentage of the instances to deploy in each batch.
+     * 
+     */
     private Integer batchSizePercentage;
+    /**
+     * @return List of virtual node group identifiers to be rolled.
+     * 
+     */
     private @Nullable List<String> launchSpecIds;
+    /**
+     * @return During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+     * 
+     */
     private @Nullable Boolean respectPdb;
 
     private OceanUpdatePolicyRollConfig() {}
+    /**
+     * @return Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+     * 
+     */
     public Optional<Integer> batchMinHealthyPercentage() {
         return Optional.ofNullable(this.batchMinHealthyPercentage);
     }
+    /**
+     * @return Sets the percentage of the instances to deploy in each batch.
+     * 
+     */
     public Integer batchSizePercentage() {
         return this.batchSizePercentage;
     }
+    /**
+     * @return List of virtual node group identifiers to be rolled.
+     * 
+     */
     public List<String> launchSpecIds() {
         return this.launchSpecIds == null ? List.of() : this.launchSpecIds;
     }
+    /**
+     * @return During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+     * 
+     */
     public Optional<Boolean> respectPdb() {
         return Optional.ofNullable(this.respectPdb);
     }

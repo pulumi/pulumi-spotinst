@@ -80,7 +80,6 @@ public final class OceanNpVirtualNodeGroupFiltersArgs extends com.pulumi.resourc
 
     /**
      * The filtered gpu types will belong to one of the gpu types from this list.
-     * &lt;a id=&#34;update-policy&#34;&gt;&lt;/a&gt;
      * 
      */
     @Import(name="gpuTypes")
@@ -88,7 +87,6 @@ public final class OceanNpVirtualNodeGroupFiltersArgs extends com.pulumi.resourc
 
     /**
      * @return The filtered gpu types will belong to one of the gpu types from this list.
-     * &lt;a id=&#34;update-policy&#34;&gt;&lt;/a&gt;
      * 
      */
     public Optional<Output<List<String>>> gpuTypes() {
@@ -389,7 +387,6 @@ public final class OceanNpVirtualNodeGroupFiltersArgs extends com.pulumi.resourc
 
         /**
          * @param gpuTypes The filtered gpu types will belong to one of the gpu types from this list.
-         * &lt;a id=&#34;update-policy&#34;&gt;&lt;/a&gt;
          * 
          * @return builder
          * 
@@ -401,7 +398,6 @@ public final class OceanNpVirtualNodeGroupFiltersArgs extends com.pulumi.resourc
 
         /**
          * @param gpuTypes The filtered gpu types will belong to one of the gpu types from this list.
-         * &lt;a id=&#34;update-policy&#34;&gt;&lt;/a&gt;
          * 
          * @return builder
          * 
@@ -412,7 +408,6 @@ public final class OceanNpVirtualNodeGroupFiltersArgs extends com.pulumi.resourc
 
         /**
          * @param gpuTypes The filtered gpu types will belong to one of the gpu types from this list.
-         * &lt;a id=&#34;update-policy&#34;&gt;&lt;/a&gt;
          * 
          * @return builder
          * 

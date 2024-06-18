@@ -3073,7 +3073,16 @@ class ElastigroupNetworkInterface(dict):
                  private_ip_address: Optional[str] = None,
                  secondary_private_ip_address_count: Optional[str] = None):
         """
-        :param str description: The group description.
+        :param str device_index: The index of the device on the instance for the network interface attachment.
+        :param bool associate_ipv6_address: Indicates whether to assign IPV6 addresses to your instance. Requires a subnet with IPV6 CIDR block ranges.
+               
+               Usage:
+        :param bool associate_public_ip_address: Indicates whether to assign a public IP address to an instance you launch in a VPC. The public IP address can only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an existing one.
+        :param bool delete_on_termination: If set to true, the interface is deleted when the instance is terminated.
+        :param str description: The description of the network interface.
+        :param str network_interface_id: The ID of the network interface.
+        :param str private_ip_address: The private IP address of the network interface.
+        :param str secondary_private_ip_address_count: The number of secondary private IP addresses.
         """
         pulumi.set(__self__, "device_index", device_index)
         if associate_ipv6_address is not None:
@@ -3094,44 +3103,67 @@ class ElastigroupNetworkInterface(dict):
     @property
     @pulumi.getter(name="deviceIndex")
     def device_index(self) -> str:
+        """
+        The index of the device on the instance for the network interface attachment.
+        """
         return pulumi.get(self, "device_index")
 
     @property
     @pulumi.getter(name="associateIpv6Address")
     def associate_ipv6_address(self) -> Optional[bool]:
+        """
+        Indicates whether to assign IPV6 addresses to your instance. Requires a subnet with IPV6 CIDR block ranges.
+
+        Usage:
+        """
         return pulumi.get(self, "associate_ipv6_address")
 
     @property
     @pulumi.getter(name="associatePublicIpAddress")
     def associate_public_ip_address(self) -> Optional[bool]:
+        """
+        Indicates whether to assign a public IP address to an instance you launch in a VPC. The public IP address can only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an existing one.
+        """
         return pulumi.get(self, "associate_public_ip_address")
 
     @property
     @pulumi.getter(name="deleteOnTermination")
     def delete_on_termination(self) -> Optional[bool]:
+        """
+        If set to true, the interface is deleted when the instance is terminated.
+        """
         return pulumi.get(self, "delete_on_termination")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        The group description.
+        The description of the network interface.
         """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="networkInterfaceId")
     def network_interface_id(self) -> Optional[str]:
+        """
+        The ID of the network interface.
+        """
         return pulumi.get(self, "network_interface_id")
 
     @property
     @pulumi.getter(name="privateIpAddress")
     def private_ip_address(self) -> Optional[str]:
+        """
+        The private IP address of the network interface.
+        """
         return pulumi.get(self, "private_ip_address")
 
     @property
     @pulumi.getter(name="secondaryPrivateIpAddressCount")
     def secondary_private_ip_address_count(self) -> Optional[str]:
+        """
+        The number of secondary private IP addresses.
+        """
         return pulumi.get(self, "secondary_private_ip_address_count")
 
 
@@ -4787,6 +4819,14 @@ class ElastigroupStatefulDeallocation(dict):
                  should_delete_network_interfaces: Optional[bool] = None,
                  should_delete_snapshots: Optional[bool] = None,
                  should_delete_volumes: Optional[bool] = None):
+        """
+        :param bool should_delete_images: For stateful groups: remove persistent images.
+        :param bool should_delete_network_interfaces: For stateful groups: remove network interfaces.
+        :param bool should_delete_snapshots: For stateful groups: remove snapshots.
+               
+               Usage:
+        :param bool should_delete_volumes: For stateful groups: remove persistent volumes.
+        """
         if should_delete_images is not None:
             pulumi.set(__self__, "should_delete_images", should_delete_images)
         if should_delete_network_interfaces is not None:
@@ -4799,21 +4839,35 @@ class ElastigroupStatefulDeallocation(dict):
     @property
     @pulumi.getter(name="shouldDeleteImages")
     def should_delete_images(self) -> Optional[bool]:
+        """
+        For stateful groups: remove persistent images.
+        """
         return pulumi.get(self, "should_delete_images")
 
     @property
     @pulumi.getter(name="shouldDeleteNetworkInterfaces")
     def should_delete_network_interfaces(self) -> Optional[bool]:
+        """
+        For stateful groups: remove network interfaces.
+        """
         return pulumi.get(self, "should_delete_network_interfaces")
 
     @property
     @pulumi.getter(name="shouldDeleteSnapshots")
     def should_delete_snapshots(self) -> Optional[bool]:
+        """
+        For stateful groups: remove snapshots.
+
+        Usage:
+        """
         return pulumi.get(self, "should_delete_snapshots")
 
     @property
     @pulumi.getter(name="shouldDeleteVolumes")
     def should_delete_volumes(self) -> Optional[bool]:
+        """
+        For stateful groups: remove persistent volumes.
+        """
         return pulumi.get(self, "should_delete_volumes")
 
 
@@ -4839,17 +4893,31 @@ class ElastigroupStatefulInstanceAction(dict):
     def __init__(__self__, *,
                  stateful_instance_id: str,
                  type: str):
+        """
+        :param str stateful_instance_id: String, Stateful Instance ID on which the action should be performed.
+        :param str type: String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+               
+               Usage:
+        """
         pulumi.set(__self__, "stateful_instance_id", stateful_instance_id)
         pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="statefulInstanceId")
     def stateful_instance_id(self) -> str:
+        """
+        String, Stateful Instance ID on which the action should be performed.
+        """
         return pulumi.get(self, "stateful_instance_id")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+
+        Usage:
+        """
         return pulumi.get(self, "type")
 
 
@@ -4904,6 +4972,12 @@ class ElastigroupUpdatePolicy(dict):
                  should_roll: bool,
                  auto_apply_tags: Optional[bool] = None,
                  roll_config: Optional['outputs.ElastigroupUpdatePolicyRollConfig'] = None):
+        """
+        :param bool should_resume_stateful: This will apply resuming action for Stateful instances in the Elastigroup upon scale up or capacity changes. Example usage will be for Elastigroups that will have scheduling rules to set a target capacity of 0 instances in the night and automatically restore the same state of the instances in the morning.
+        :param bool should_roll: Sets the enablement of the roll option.
+        :param bool auto_apply_tags: Enables updates to tags without rolling the group when set to `true`.
+        :param 'ElastigroupUpdatePolicyRollConfigArgs' roll_config: While used, you can control whether the group should perform a deployment after an update to the configuration.
+        """
         pulumi.set(__self__, "should_resume_stateful", should_resume_stateful)
         pulumi.set(__self__, "should_roll", should_roll)
         if auto_apply_tags is not None:
@@ -4914,21 +4988,33 @@ class ElastigroupUpdatePolicy(dict):
     @property
     @pulumi.getter(name="shouldResumeStateful")
     def should_resume_stateful(self) -> bool:
+        """
+        This will apply resuming action for Stateful instances in the Elastigroup upon scale up or capacity changes. Example usage will be for Elastigroups that will have scheduling rules to set a target capacity of 0 instances in the night and automatically restore the same state of the instances in the morning.
+        """
         return pulumi.get(self, "should_resume_stateful")
 
     @property
     @pulumi.getter(name="shouldRoll")
     def should_roll(self) -> bool:
+        """
+        Sets the enablement of the roll option.
+        """
         return pulumi.get(self, "should_roll")
 
     @property
     @pulumi.getter(name="autoApplyTags")
     def auto_apply_tags(self) -> Optional[bool]:
+        """
+        Enables updates to tags without rolling the group when set to `true`.
+        """
         return pulumi.get(self, "auto_apply_tags")
 
     @property
     @pulumi.getter(name="rollConfig")
     def roll_config(self) -> Optional['outputs.ElastigroupUpdatePolicyRollConfig']:
+        """
+        While used, you can control whether the group should perform a deployment after an update to the configuration.
+        """
         return pulumi.get(self, "roll_config")
 
 
@@ -4967,7 +5053,12 @@ class ElastigroupUpdatePolicyRollConfig(dict):
                  wait_for_roll_percentage: Optional[float] = None,
                  wait_for_roll_timeout: Optional[int] = None):
         """
-        :param str health_check_type: The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"EC2"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+        :param int batch_size_percentage: Sets the percentage of the instances to deploy in each batch.
+        :param int grace_period: Sets the grace period for new instances to become healthy.
+        :param str health_check_type: Sets the health check type to use. Valid values: `"EC2"`, `"ECS_CLUSTER_INSTANCE"`, `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"NONE"`.
+        :param 'ElastigroupUpdatePolicyRollConfigStrategyArgs' strategy: Strategy parameters
+        :param float wait_for_roll_percentage: For use with `should_roll`. Sets minimum % of roll required to complete before continuing the plan. Required if `wait_for_roll_timeout` is set.
+        :param int wait_for_roll_timeout: For use with `should_roll`. Sets how long to wait for the deployed % of a roll to exceed `wait_for_roll_percentage` before continuing the plan. Required if `wait_for_roll_percentage` is set.
         """
         pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
         if grace_period is not None:
@@ -4984,34 +5075,49 @@ class ElastigroupUpdatePolicyRollConfig(dict):
     @property
     @pulumi.getter(name="batchSizePercentage")
     def batch_size_percentage(self) -> int:
+        """
+        Sets the percentage of the instances to deploy in each batch.
+        """
         return pulumi.get(self, "batch_size_percentage")
 
     @property
     @pulumi.getter(name="gracePeriod")
     def grace_period(self) -> Optional[int]:
+        """
+        Sets the grace period for new instances to become healthy.
+        """
         return pulumi.get(self, "grace_period")
 
     @property
     @pulumi.getter(name="healthCheckType")
     def health_check_type(self) -> Optional[str]:
         """
-        The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"EC2"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+        Sets the health check type to use. Valid values: `"EC2"`, `"ECS_CLUSTER_INSTANCE"`, `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"NONE"`.
         """
         return pulumi.get(self, "health_check_type")
 
     @property
     @pulumi.getter
     def strategy(self) -> Optional['outputs.ElastigroupUpdatePolicyRollConfigStrategy']:
+        """
+        Strategy parameters
+        """
         return pulumi.get(self, "strategy")
 
     @property
     @pulumi.getter(name="waitForRollPercentage")
     def wait_for_roll_percentage(self) -> Optional[float]:
+        """
+        For use with `should_roll`. Sets minimum % of roll required to complete before continuing the plan. Required if `wait_for_roll_timeout` is set.
+        """
         return pulumi.get(self, "wait_for_roll_percentage")
 
     @property
     @pulumi.getter(name="waitForRollTimeout")
     def wait_for_roll_timeout(self) -> Optional[int]:
+        """
+        For use with `should_roll`. Sets how long to wait for the deployed % of a roll to exceed `wait_for_roll_percentage` before continuing the plan. Required if `wait_for_roll_percentage` is set.
+        """
         return pulumi.get(self, "wait_for_roll_timeout")
 
 
@@ -5043,6 +5149,12 @@ class ElastigroupUpdatePolicyRollConfigStrategy(dict):
                  batch_min_healthy_percentage: Optional[int] = None,
                  on_failure: Optional['outputs.ElastigroupUpdatePolicyRollConfigStrategyOnFailure'] = None,
                  should_drain_instances: Optional[bool] = None):
+        """
+        :param str action: Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
+        :param int batch_min_healthy_percentage: Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the deployment will fail. Range `1` - `100`.
+        :param 'ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs' on_failure: Set detach options to the deployment.
+        :param bool should_drain_instances: Specify whether to drain incoming TCP connections before terminating a server.
+        """
         pulumi.set(__self__, "action", action)
         if batch_min_healthy_percentage is not None:
             pulumi.set(__self__, "batch_min_healthy_percentage", batch_min_healthy_percentage)
@@ -5054,21 +5166,33 @@ class ElastigroupUpdatePolicyRollConfigStrategy(dict):
     @property
     @pulumi.getter
     def action(self) -> str:
+        """
+        Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
+        """
         return pulumi.get(self, "action")
 
     @property
     @pulumi.getter(name="batchMinHealthyPercentage")
     def batch_min_healthy_percentage(self) -> Optional[int]:
+        """
+        Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the deployment will fail. Range `1` - `100`.
+        """
         return pulumi.get(self, "batch_min_healthy_percentage")
 
     @property
     @pulumi.getter(name="onFailure")
     def on_failure(self) -> Optional['outputs.ElastigroupUpdatePolicyRollConfigStrategyOnFailure']:
+        """
+        Set detach options to the deployment.
+        """
         return pulumi.get(self, "on_failure")
 
     @property
     @pulumi.getter(name="shouldDrainInstances")
     def should_drain_instances(self) -> Optional[bool]:
+        """
+        Specify whether to drain incoming TCP connections before terminating a server.
+        """
         return pulumi.get(self, "should_drain_instances")
 
 
@@ -5106,7 +5230,10 @@ class ElastigroupUpdatePolicyRollConfigStrategyOnFailure(dict):
                  should_decrement_target_capacity: Optional[bool] = None,
                  should_handle_all_batches: Optional[bool] = None):
         """
-        :param int draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
+        :param str action_type: Sets the action that will take place, Accepted values are: `DETACH_OLD`, `DETACH_NEW`.
+        :param int draining_timeout: Indicates (in seconds) the timeout to wait until instance are detached.
+        :param bool should_decrement_target_capacity: Decrementing the group target capacity after detaching the instances.
+        :param bool should_handle_all_batches: Indicator if the action should apply to all batches of the deployment or only the latest batch.
         """
         pulumi.set(__self__, "action_type", action_type)
         if batch_num is not None:
@@ -5121,6 +5248,9 @@ class ElastigroupUpdatePolicyRollConfigStrategyOnFailure(dict):
     @property
     @pulumi.getter(name="actionType")
     def action_type(self) -> str:
+        """
+        Sets the action that will take place, Accepted values are: `DETACH_OLD`, `DETACH_NEW`.
+        """
         return pulumi.get(self, "action_type")
 
     @property
@@ -5132,18 +5262,24 @@ class ElastigroupUpdatePolicyRollConfigStrategyOnFailure(dict):
     @pulumi.getter(name="drainingTimeout")
     def draining_timeout(self) -> Optional[int]:
         """
-        The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
+        Indicates (in seconds) the timeout to wait until instance are detached.
         """
         return pulumi.get(self, "draining_timeout")
 
     @property
     @pulumi.getter(name="shouldDecrementTargetCapacity")
     def should_decrement_target_capacity(self) -> Optional[bool]:
+        """
+        Decrementing the group target capacity after detaching the instances.
+        """
         return pulumi.get(self, "should_decrement_target_capacity")
 
     @property
     @pulumi.getter(name="shouldHandleAllBatches")
     def should_handle_all_batches(self) -> Optional[bool]:
+        """
+        Indicator if the action should apply to all batches of the deployment or only the latest batch.
+        """
         return pulumi.get(self, "should_handle_all_batches")
 
 
@@ -7000,7 +7136,9 @@ class OceanAttachLoadBalancer(dict):
                  arn: Optional[str] = None,
                  name: Optional[str] = None):
         """
-        :param str name: The cluster name.
+        :param str type: Type of load balancer to use.
+        :param str arn: If type is "TARGET_GROUP" then an ARN is required. Otherwise is not allowed.
+        :param str name: If type is "CLASSIC" then a name is required. Otherwise is not allowed.
         """
         pulumi.set(__self__, "type", type)
         if arn is not None:
@@ -7011,18 +7149,24 @@ class OceanAttachLoadBalancer(dict):
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        Type of load balancer to use.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def arn(self) -> Optional[str]:
+        """
+        If type is "TARGET_GROUP" then an ARN is required. Otherwise is not allowed.
+        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The cluster name.
+        If type is "CLASSIC" then a name is required. Otherwise is not allowed.
         """
         return pulumi.get(self, "name")
 
@@ -7072,6 +7216,17 @@ class OceanAutoscaler(dict):
                  enable_automatic_and_manual_headroom: Optional[bool] = None,
                  extended_resource_definitions: Optional[Sequence[str]] = None,
                  resource_limits: Optional['outputs.OceanAutoscalerResourceLimits'] = None):
+        """
+        :param int auto_headroom_percentage: Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscale_is_auto_config` toggled on.
+        :param int autoscale_cooldown: Cooldown period between scaling actions.
+        :param 'OceanAutoscalerAutoscaleDownArgs' autoscale_down: Auto Scaling scale down operations.
+        :param 'OceanAutoscalerAutoscaleHeadroomArgs' autoscale_headroom: Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
+        :param bool autoscale_is_auto_config: Automatically configure and optimize headroom resources.
+        :param bool autoscale_is_enabled: Enable the Ocean Kubernetes Auto Scaler.
+        :param bool enable_automatic_and_manual_headroom: enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
+        :param Sequence[str] extended_resource_definitions: List of Ocean extended resource definitions to use in this cluster.
+        :param 'OceanAutoscalerResourceLimitsArgs' resource_limits: Optionally set upper and lower bounds on the resource usage of the cluster.
+        """
         if auto_headroom_percentage is not None:
             pulumi.set(__self__, "auto_headroom_percentage", auto_headroom_percentage)
         if autoscale_cooldown is not None:
@@ -7094,46 +7249,73 @@ class OceanAutoscaler(dict):
     @property
     @pulumi.getter(name="autoHeadroomPercentage")
     def auto_headroom_percentage(self) -> Optional[int]:
+        """
+        Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscale_is_auto_config` toggled on.
+        """
         return pulumi.get(self, "auto_headroom_percentage")
 
     @property
     @pulumi.getter(name="autoscaleCooldown")
     def autoscale_cooldown(self) -> Optional[int]:
+        """
+        Cooldown period between scaling actions.
+        """
         return pulumi.get(self, "autoscale_cooldown")
 
     @property
     @pulumi.getter(name="autoscaleDown")
     def autoscale_down(self) -> Optional['outputs.OceanAutoscalerAutoscaleDown']:
+        """
+        Auto Scaling scale down operations.
+        """
         return pulumi.get(self, "autoscale_down")
 
     @property
     @pulumi.getter(name="autoscaleHeadroom")
     def autoscale_headroom(self) -> Optional['outputs.OceanAutoscalerAutoscaleHeadroom']:
+        """
+        Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
+        """
         return pulumi.get(self, "autoscale_headroom")
 
     @property
     @pulumi.getter(name="autoscaleIsAutoConfig")
     def autoscale_is_auto_config(self) -> Optional[bool]:
+        """
+        Automatically configure and optimize headroom resources.
+        """
         return pulumi.get(self, "autoscale_is_auto_config")
 
     @property
     @pulumi.getter(name="autoscaleIsEnabled")
     def autoscale_is_enabled(self) -> Optional[bool]:
+        """
+        Enable the Ocean Kubernetes Auto Scaler.
+        """
         return pulumi.get(self, "autoscale_is_enabled")
 
     @property
     @pulumi.getter(name="enableAutomaticAndManualHeadroom")
     def enable_automatic_and_manual_headroom(self) -> Optional[bool]:
+        """
+        enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
+        """
         return pulumi.get(self, "enable_automatic_and_manual_headroom")
 
     @property
     @pulumi.getter(name="extendedResourceDefinitions")
     def extended_resource_definitions(self) -> Optional[Sequence[str]]:
+        """
+        List of Ocean extended resource definitions to use in this cluster.
+        """
         return pulumi.get(self, "extended_resource_definitions")
 
     @property
     @pulumi.getter(name="resourceLimits")
     def resource_limits(self) -> Optional['outputs.OceanAutoscalerResourceLimits']:
+        """
+        Optionally set upper and lower bounds on the resource usage of the cluster.
+        """
         return pulumi.get(self, "resource_limits")
 
 
@@ -7164,6 +7346,10 @@ class OceanAutoscalerAutoscaleDown(dict):
                  evaluation_periods: Optional[int] = None,
                  is_aggressive_scale_down_enabled: Optional[bool] = None,
                  max_scale_down_percentage: Optional[float] = None):
+        """
+        :param bool is_aggressive_scale_down_enabled: When set to 'true', the Aggressive Scale Down feature is enabled.
+        :param float max_scale_down_percentage: Would represent the maximum % to scale-down. Number between 1-100.
+        """
         if evaluation_periods is not None:
             pulumi.set(__self__, "evaluation_periods", evaluation_periods)
         if is_aggressive_scale_down_enabled is not None:
@@ -7179,11 +7365,17 @@ class OceanAutoscalerAutoscaleDown(dict):
     @property
     @pulumi.getter(name="isAggressiveScaleDownEnabled")
     def is_aggressive_scale_down_enabled(self) -> Optional[bool]:
+        """
+        When set to 'true', the Aggressive Scale Down feature is enabled.
+        """
         return pulumi.get(self, "is_aggressive_scale_down_enabled")
 
     @property
     @pulumi.getter(name="maxScaleDownPercentage")
     def max_scale_down_percentage(self) -> Optional[float]:
+        """
+        Would represent the maximum % to scale-down. Number between 1-100.
+        """
         return pulumi.get(self, "max_scale_down_percentage")
 
 
@@ -7217,6 +7409,12 @@ class OceanAutoscalerAutoscaleHeadroom(dict):
                  gpu_per_unit: Optional[int] = None,
                  memory_per_unit: Optional[int] = None,
                  num_of_units: Optional[int] = None):
+        """
+        :param int cpu_per_unit: Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        :param int gpu_per_unit: Optionally configure the number of GPUs to allocate the headroom.
+        :param int memory_per_unit: Optionally configure the amount of memory (MB) to allocate the headroom.
+        :param int num_of_units: The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+        """
         if cpu_per_unit is not None:
             pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
         if gpu_per_unit is not None:
@@ -7229,21 +7427,33 @@ class OceanAutoscalerAutoscaleHeadroom(dict):
     @property
     @pulumi.getter(name="cpuPerUnit")
     def cpu_per_unit(self) -> Optional[int]:
+        """
+        Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        """
         return pulumi.get(self, "cpu_per_unit")
 
     @property
     @pulumi.getter(name="gpuPerUnit")
     def gpu_per_unit(self) -> Optional[int]:
+        """
+        Optionally configure the number of GPUs to allocate the headroom.
+        """
         return pulumi.get(self, "gpu_per_unit")
 
     @property
     @pulumi.getter(name="memoryPerUnit")
     def memory_per_unit(self) -> Optional[int]:
+        """
+        Optionally configure the amount of memory (MB) to allocate the headroom.
+        """
         return pulumi.get(self, "memory_per_unit")
 
     @property
     @pulumi.getter(name="numOfUnits")
     def num_of_units(self) -> Optional[int]:
+        """
+        The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+        """
         return pulumi.get(self, "num_of_units")
 
 
@@ -7271,6 +7481,10 @@ class OceanAutoscalerResourceLimits(dict):
     def __init__(__self__, *,
                  max_memory_gib: Optional[int] = None,
                  max_vcpu: Optional[int] = None):
+        """
+        :param int max_memory_gib: The maximum memory in GiB units that can be allocated to the cluster.
+        :param int max_vcpu: The maximum cpu in vCPU units that can be allocated to the cluster.
+        """
         if max_memory_gib is not None:
             pulumi.set(__self__, "max_memory_gib", max_memory_gib)
         if max_vcpu is not None:
@@ -7279,11 +7493,17 @@ class OceanAutoscalerResourceLimits(dict):
     @property
     @pulumi.getter(name="maxMemoryGib")
     def max_memory_gib(self) -> Optional[int]:
+        """
+        The maximum memory in GiB units that can be allocated to the cluster.
+        """
         return pulumi.get(self, "max_memory_gib")
 
     @property
     @pulumi.getter(name="maxVcpu")
     def max_vcpu(self) -> Optional[int]:
+        """
+        The maximum cpu in vCPU units that can be allocated to the cluster.
+        """
         return pulumi.get(self, "max_vcpu")
 
 
@@ -7648,7 +7868,9 @@ class OceanDetachLoadBalancer(dict):
                  arn: Optional[str] = None,
                  name: Optional[str] = None):
         """
-        :param str name: The cluster name.
+        :param str type: Type of load balancer to use.
+        :param str arn: If type is "TARGET_GROUP" then an ARN is required. Otherwise is not allowed.
+        :param str name: If type is "CLASSIC" then a name is required. Otherwise is not allowed.
         """
         pulumi.set(__self__, "type", type)
         if arn is not None:
@@ -7659,18 +7881,24 @@ class OceanDetachLoadBalancer(dict):
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        Type of load balancer to use.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def arn(self) -> Optional[str]:
+        """
+        If type is "TARGET_GROUP" then an ARN is required. Otherwise is not allowed.
+        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The cluster name.
+        If type is "CLASSIC" then a name is required. Otherwise is not allowed.
         """
         return pulumi.get(self, "name")
 
@@ -8539,9 +8767,6 @@ class OceanLaunchSpecEphemeralStorage(dict):
                  ephemeral_storage_device_name: Optional[str] = None):
         """
         :param str ephemeral_storage_device_name: Specify an alternative device name from which ephemeral storage calculations should be derived. This parameter is used when the ephemeral storage should not utilize the root device. Provide the device name configured in the VNG's BDM or AMI's BDM that differs from the default root device.
-               
-               
-               <a id="update-policy"></a>
         """
         if ephemeral_storage_device_name is not None:
             pulumi.set(__self__, "ephemeral_storage_device_name", ephemeral_storage_device_name)
@@ -8551,9 +8776,6 @@ class OceanLaunchSpecEphemeralStorage(dict):
     def ephemeral_storage_device_name(self) -> Optional[str]:
         """
         Specify an alternative device name from which ephemeral storage calculations should be derived. This parameter is used when the ephemeral storage should not utilize the root device. Provide the device name configured in the VNG's BDM or AMI's BDM that differs from the default root device.
-
-
-        <a id="update-policy"></a>
         """
         return pulumi.get(self, "ephemeral_storage_device_name")
 
@@ -9312,6 +9534,10 @@ class OceanLaunchSpecUpdatePolicy(dict):
     def __init__(__self__, *,
                  should_roll: bool,
                  roll_config: Optional['outputs.OceanLaunchSpecUpdatePolicyRollConfig'] = None):
+        """
+        :param bool should_roll: Enables the roll.
+        :param 'OceanLaunchSpecUpdatePolicyRollConfigArgs' roll_config: Holds the roll configuration.
+        """
         pulumi.set(__self__, "should_roll", should_roll)
         if roll_config is not None:
             pulumi.set(__self__, "roll_config", roll_config)
@@ -9319,11 +9545,17 @@ class OceanLaunchSpecUpdatePolicy(dict):
     @property
     @pulumi.getter(name="shouldRoll")
     def should_roll(self) -> bool:
+        """
+        Enables the roll.
+        """
         return pulumi.get(self, "should_roll")
 
     @property
     @pulumi.getter(name="rollConfig")
     def roll_config(self) -> Optional['outputs.OceanLaunchSpecUpdatePolicyRollConfig']:
+        """
+        Holds the roll configuration.
+        """
         return pulumi.get(self, "roll_config")
 
 
@@ -9348,11 +9580,17 @@ class OceanLaunchSpecUpdatePolicyRollConfig(dict):
 
     def __init__(__self__, *,
                  batch_size_percentage: int):
+        """
+        :param int batch_size_percentage: Sets the percentage of the instances to deploy in each batch.
+        """
         pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
 
     @property
     @pulumi.getter(name="batchSizePercentage")
     def batch_size_percentage(self) -> int:
+        """
+        Sets the percentage of the instances to deploy in each batch.
+        """
         return pulumi.get(self, "batch_size_percentage")
 
 
@@ -9513,6 +9751,10 @@ class OceanScheduledTask(dict):
     def __init__(__self__, *,
                  shutdown_hours: Optional['outputs.OceanScheduledTaskShutdownHours'] = None,
                  tasks: Optional[Sequence['outputs.OceanScheduledTaskTask']] = None):
+        """
+        :param 'OceanScheduledTaskShutdownHoursArgs' shutdown_hours: Set shutdown hours for cluster object.
+        :param Sequence['OceanScheduledTaskTaskArgs'] tasks: The scheduling tasks for the cluster.
+        """
         if shutdown_hours is not None:
             pulumi.set(__self__, "shutdown_hours", shutdown_hours)
         if tasks is not None:
@@ -9521,11 +9763,17 @@ class OceanScheduledTask(dict):
     @property
     @pulumi.getter(name="shutdownHours")
     def shutdown_hours(self) -> Optional['outputs.OceanScheduledTaskShutdownHours']:
+        """
+        Set shutdown hours for cluster object.
+        """
         return pulumi.get(self, "shutdown_hours")
 
     @property
     @pulumi.getter
     def tasks(self) -> Optional[Sequence['outputs.OceanScheduledTaskTask']]:
+        """
+        The scheduling tasks for the cluster.
+        """
         return pulumi.get(self, "tasks")
 
 
@@ -9553,6 +9801,10 @@ class OceanScheduledTaskShutdownHours(dict):
     def __init__(__self__, *,
                  time_windows: Sequence[str],
                  is_enabled: Optional[bool] = None):
+        """
+        :param Sequence[str] time_windows: Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of: `ddd:hh:mm-ddd:hh:mm` where `ddd` = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat, `hh` = hour 24 = 0 -23, `mm` = minute = 0 - 59. Time windows should not overlap. Required if `cluster.scheduling.isEnabled` is `true`. (Example: `Fri:15:30-Wed:14:30`).
+        :param bool is_enabled: Toggle the shutdown hours task. (Example: `true`).
+        """
         pulumi.set(__self__, "time_windows", time_windows)
         if is_enabled is not None:
             pulumi.set(__self__, "is_enabled", is_enabled)
@@ -9560,11 +9812,17 @@ class OceanScheduledTaskShutdownHours(dict):
     @property
     @pulumi.getter(name="timeWindows")
     def time_windows(self) -> Sequence[str]:
+        """
+        Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of: `ddd:hh:mm-ddd:hh:mm` where `ddd` = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat, `hh` = hour 24 = 0 -23, `mm` = minute = 0 - 59. Time windows should not overlap. Required if `cluster.scheduling.isEnabled` is `true`. (Example: `Fri:15:30-Wed:14:30`).
+        """
         return pulumi.get(self, "time_windows")
 
     @property
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> Optional[bool]:
+        """
+        Toggle the shutdown hours task. (Example: `true`).
+        """
         return pulumi.get(self, "is_enabled")
 
 
@@ -9596,6 +9854,12 @@ class OceanScheduledTaskTask(dict):
                  is_enabled: bool,
                  task_type: str,
                  parameters: Optional['outputs.OceanScheduledTaskTaskParameters'] = None):
+        """
+        :param str cron_expression: A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. (Example: `0 1 * * *`).
+        :param bool is_enabled: Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
+        :param str task_type: Valid values: `clusterRoll` `amiAutoUpdate`. Required for `cluster.scheduling.tasks`
+        :param 'OceanScheduledTaskTaskParametersArgs' parameters: This filed will be compatible to the `task_type` field. If `task_type` is defined as `clusterRoll`, user cluster roll object in parameters.
+        """
         pulumi.set(__self__, "cron_expression", cron_expression)
         pulumi.set(__self__, "is_enabled", is_enabled)
         pulumi.set(__self__, "task_type", task_type)
@@ -9605,21 +9869,33 @@ class OceanScheduledTaskTask(dict):
     @property
     @pulumi.getter(name="cronExpression")
     def cron_expression(self) -> str:
+        """
+        A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. (Example: `0 1 * * *`).
+        """
         return pulumi.get(self, "cron_expression")
 
     @property
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> bool:
+        """
+        Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
+        """
         return pulumi.get(self, "is_enabled")
 
     @property
     @pulumi.getter(name="taskType")
     def task_type(self) -> str:
+        """
+        Valid values: `clusterRoll` `amiAutoUpdate`. Required for `cluster.scheduling.tasks`
+        """
         return pulumi.get(self, "task_type")
 
     @property
     @pulumi.getter
     def parameters(self) -> Optional['outputs.OceanScheduledTaskTaskParameters']:
+        """
+        This filed will be compatible to the `task_type` field. If `task_type` is defined as `clusterRoll`, user cluster roll object in parameters.
+        """
         return pulumi.get(self, "parameters")
 
 
@@ -9647,6 +9923,10 @@ class OceanScheduledTaskTaskParameters(dict):
     def __init__(__self__, *,
                  ami_auto_update: Optional['outputs.OceanScheduledTaskTaskParametersAmiAutoUpdate'] = None,
                  parameters_cluster_roll: Optional['outputs.OceanScheduledTaskTaskParametersParametersClusterRoll'] = None):
+        """
+        :param 'OceanScheduledTaskTaskParametersAmiAutoUpdateArgs' ami_auto_update: Set amiAutoUpdate object
+        :param 'OceanScheduledTaskTaskParametersParametersClusterRollArgs' parameters_cluster_roll: Set clusterRoll object
+        """
         if ami_auto_update is not None:
             pulumi.set(__self__, "ami_auto_update", ami_auto_update)
         if parameters_cluster_roll is not None:
@@ -9655,11 +9935,17 @@ class OceanScheduledTaskTaskParameters(dict):
     @property
     @pulumi.getter(name="amiAutoUpdate")
     def ami_auto_update(self) -> Optional['outputs.OceanScheduledTaskTaskParametersAmiAutoUpdate']:
+        """
+        Set amiAutoUpdate object
+        """
         return pulumi.get(self, "ami_auto_update")
 
     @property
     @pulumi.getter(name="parametersClusterRoll")
     def parameters_cluster_roll(self) -> Optional['outputs.OceanScheduledTaskTaskParametersParametersClusterRoll']:
+        """
+        Set clusterRoll object
+        """
         return pulumi.get(self, "parameters_cluster_roll")
 
 
@@ -9691,6 +9977,12 @@ class OceanScheduledTaskTaskParametersAmiAutoUpdate(dict):
                  apply_roll: Optional[bool] = None,
                  minor_version: Optional[bool] = None,
                  patch: Optional[bool] = None):
+        """
+        :param 'OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollArgs' ami_auto_update_cluster_roll: Set clusterRoll object
+        :param bool apply_roll: When the AMI is updated according to the configuration set, a cluster roll can be triggered
+        :param bool minor_version: When set to 'true', the auto-update process will update the VNGs’ AMI with the AMI to match the Kubernetes control plane version. either "patch" or "minor_version" must be true.
+        :param bool patch: When set to 'true', the auto-update process will update the VNGs’ images with the latest security patches. either "patch" or "minorVersion" must be true.
+        """
         if ami_auto_update_cluster_roll is not None:
             pulumi.set(__self__, "ami_auto_update_cluster_roll", ami_auto_update_cluster_roll)
         if apply_roll is not None:
@@ -9703,21 +9995,33 @@ class OceanScheduledTaskTaskParametersAmiAutoUpdate(dict):
     @property
     @pulumi.getter(name="amiAutoUpdateClusterRoll")
     def ami_auto_update_cluster_roll(self) -> Optional['outputs.OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRoll']:
+        """
+        Set clusterRoll object
+        """
         return pulumi.get(self, "ami_auto_update_cluster_roll")
 
     @property
     @pulumi.getter(name="applyRoll")
     def apply_roll(self) -> Optional[bool]:
+        """
+        When the AMI is updated according to the configuration set, a cluster roll can be triggered
+        """
         return pulumi.get(self, "apply_roll")
 
     @property
     @pulumi.getter(name="minorVersion")
     def minor_version(self) -> Optional[bool]:
+        """
+        When set to 'true', the auto-update process will update the VNGs’ AMI with the AMI to match the Kubernetes control plane version. either "patch" or "minor_version" must be true.
+        """
         return pulumi.get(self, "minor_version")
 
     @property
     @pulumi.getter
     def patch(self) -> Optional[bool]:
+        """
+        When set to 'true', the auto-update process will update the VNGs’ images with the latest security patches. either "patch" or "minorVersion" must be true.
+        """
         return pulumi.get(self, "patch")
 
 
@@ -9749,6 +10053,12 @@ class OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRoll(dict
                  batch_size_percentage: Optional[int] = None,
                  comment: Optional[str] = None,
                  respect_pdb: Optional[bool] = None):
+        """
+        :param int batch_min_healthy_percentage: Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+        :param int batch_size_percentage: Value as a percent to set the size of a batch in a roll. Valid values are 0-100.
+        :param str comment: Add a `comment` description for the roll. The `comment` is limited to 256 chars
+        :param bool respect_pdb: During the roll, if the parameter is set to true we honor PDB during the instance replacement.
+        """
         if batch_min_healthy_percentage is not None:
             pulumi.set(__self__, "batch_min_healthy_percentage", batch_min_healthy_percentage)
         if batch_size_percentage is not None:
@@ -9761,21 +10071,33 @@ class OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRoll(dict
     @property
     @pulumi.getter(name="batchMinHealthyPercentage")
     def batch_min_healthy_percentage(self) -> Optional[int]:
+        """
+        Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+        """
         return pulumi.get(self, "batch_min_healthy_percentage")
 
     @property
     @pulumi.getter(name="batchSizePercentage")
     def batch_size_percentage(self) -> Optional[int]:
+        """
+        Value as a percent to set the size of a batch in a roll. Valid values are 0-100.
+        """
         return pulumi.get(self, "batch_size_percentage")
 
     @property
     @pulumi.getter
     def comment(self) -> Optional[str]:
+        """
+        Add a `comment` description for the roll. The `comment` is limited to 256 chars
+        """
         return pulumi.get(self, "comment")
 
     @property
     @pulumi.getter(name="respectPdb")
     def respect_pdb(self) -> Optional[bool]:
+        """
+        During the roll, if the parameter is set to true we honor PDB during the instance replacement.
+        """
         return pulumi.get(self, "respect_pdb")
 
 
@@ -9807,6 +10129,12 @@ class OceanScheduledTaskTaskParametersParametersClusterRoll(dict):
                  batch_size_percentage: Optional[int] = None,
                  comment: Optional[str] = None,
                  respect_pdb: Optional[bool] = None):
+        """
+        :param int batch_min_healthy_percentage: Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+        :param int batch_size_percentage: Value as a percent to set the size of a batch in a roll. Valid values are 0-100.
+        :param str comment: Add a `comment` description for the roll. The `comment` is limited to 256 chars
+        :param bool respect_pdb: During the roll, if the parameter is set to true we honor PDB during the instance replacement.
+        """
         if batch_min_healthy_percentage is not None:
             pulumi.set(__self__, "batch_min_healthy_percentage", batch_min_healthy_percentage)
         if batch_size_percentage is not None:
@@ -9819,21 +10147,33 @@ class OceanScheduledTaskTaskParametersParametersClusterRoll(dict):
     @property
     @pulumi.getter(name="batchMinHealthyPercentage")
     def batch_min_healthy_percentage(self) -> Optional[int]:
+        """
+        Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+        """
         return pulumi.get(self, "batch_min_healthy_percentage")
 
     @property
     @pulumi.getter(name="batchSizePercentage")
     def batch_size_percentage(self) -> Optional[int]:
+        """
+        Value as a percent to set the size of a batch in a roll. Valid values are 0-100.
+        """
         return pulumi.get(self, "batch_size_percentage")
 
     @property
     @pulumi.getter
     def comment(self) -> Optional[str]:
+        """
+        Add a `comment` description for the roll. The `comment` is limited to 256 chars
+        """
         return pulumi.get(self, "comment")
 
     @property
     @pulumi.getter(name="respectPdb")
     def respect_pdb(self) -> Optional[bool]:
+        """
+        During the roll, if the parameter is set to true we honor PDB during the instance replacement.
+        """
         return pulumi.get(self, "respect_pdb")
 
 
@@ -9899,6 +10239,13 @@ class OceanUpdatePolicy(dict):
                  conditioned_roll: Optional[bool] = None,
                  conditioned_roll_params: Optional[Sequence[str]] = None,
                  roll_config: Optional['outputs.OceanUpdatePolicyRollConfig'] = None):
+        """
+        :param bool should_roll: Enables the roll.
+        :param bool auto_apply_tags: will update instance tags on the fly without rolling the cluster.
+        :param bool conditioned_roll: Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
+        :param Sequence[str] conditioned_roll_params: A custom list of attributes will trigger the cluster roll operation (overrides the predefined list of parameters). Valid only when the `conditioned_roll` parameter is set to true. (Valid values: `"subnet_ids"`,`"whitelist"`,`"blacklist"`,`"user_data"`,`"image_id"`,`"security_groups"`,`"key_name"`,`"iam_instance_profile"`,`"associate_public_ip_address"`,`"load_balancers"`,`"instance_metadata_options"`,`"ebs_optimized"`,`"root_volume_size"`)
+        :param 'OceanUpdatePolicyRollConfigArgs' roll_config: While used, you can control whether the group should perform a deployment after an update to the configuration.
+        """
         pulumi.set(__self__, "should_roll", should_roll)
         if auto_apply_tags is not None:
             pulumi.set(__self__, "auto_apply_tags", auto_apply_tags)
@@ -9912,26 +10259,41 @@ class OceanUpdatePolicy(dict):
     @property
     @pulumi.getter(name="shouldRoll")
     def should_roll(self) -> bool:
+        """
+        Enables the roll.
+        """
         return pulumi.get(self, "should_roll")
 
     @property
     @pulumi.getter(name="autoApplyTags")
     def auto_apply_tags(self) -> Optional[bool]:
+        """
+        will update instance tags on the fly without rolling the cluster.
+        """
         return pulumi.get(self, "auto_apply_tags")
 
     @property
     @pulumi.getter(name="conditionedRoll")
     def conditioned_roll(self) -> Optional[bool]:
+        """
+        Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
+        """
         return pulumi.get(self, "conditioned_roll")
 
     @property
     @pulumi.getter(name="conditionedRollParams")
     def conditioned_roll_params(self) -> Optional[Sequence[str]]:
+        """
+        A custom list of attributes will trigger the cluster roll operation (overrides the predefined list of parameters). Valid only when the `conditioned_roll` parameter is set to true. (Valid values: `"subnet_ids"`,`"whitelist"`,`"blacklist"`,`"user_data"`,`"image_id"`,`"security_groups"`,`"key_name"`,`"iam_instance_profile"`,`"associate_public_ip_address"`,`"load_balancers"`,`"instance_metadata_options"`,`"ebs_optimized"`,`"root_volume_size"`)
+        """
         return pulumi.get(self, "conditioned_roll_params")
 
     @property
     @pulumi.getter(name="rollConfig")
     def roll_config(self) -> Optional['outputs.OceanUpdatePolicyRollConfig']:
+        """
+        While used, you can control whether the group should perform a deployment after an update to the configuration.
+        """
         return pulumi.get(self, "roll_config")
 
 
@@ -9965,6 +10327,12 @@ class OceanUpdatePolicyRollConfig(dict):
                  batch_min_healthy_percentage: Optional[int] = None,
                  launch_spec_ids: Optional[Sequence[str]] = None,
                  respect_pdb: Optional[bool] = None):
+        """
+        :param int batch_size_percentage: Sets the percentage of the instances to deploy in each batch.
+        :param int batch_min_healthy_percentage: Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+        :param Sequence[str] launch_spec_ids: List of virtual node group identifiers to be rolled.
+        :param bool respect_pdb: During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+        """
         pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
         if batch_min_healthy_percentage is not None:
             pulumi.set(__self__, "batch_min_healthy_percentage", batch_min_healthy_percentage)
@@ -9976,21 +10344,33 @@ class OceanUpdatePolicyRollConfig(dict):
     @property
     @pulumi.getter(name="batchSizePercentage")
     def batch_size_percentage(self) -> int:
+        """
+        Sets the percentage of the instances to deploy in each batch.
+        """
         return pulumi.get(self, "batch_size_percentage")
 
     @property
     @pulumi.getter(name="batchMinHealthyPercentage")
     def batch_min_healthy_percentage(self) -> Optional[int]:
+        """
+        Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+        """
         return pulumi.get(self, "batch_min_healthy_percentage")
 
     @property
     @pulumi.getter(name="launchSpecIds")
     def launch_spec_ids(self) -> Optional[Sequence[str]]:
+        """
+        List of virtual node group identifiers to be rolled.
+        """
         return pulumi.get(self, "launch_spec_ids")
 
     @property
     @pulumi.getter(name="respectPdb")
     def respect_pdb(self) -> Optional[bool]:
+        """
+        During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+        """
         return pulumi.get(self, "respect_pdb")
 
 

@@ -12,6 +12,9 @@ namespace Pulumi.SpotInst.Ecs.Inputs
 
     public sealed class OceanAutoscalerDownGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Would represent the maximum % to scale-down. Number between 1-100.
+        /// </summary>
         [Input("maxScaleDownPercentage")]
         public Input<double>? MaxScaleDownPercentage { get; set; }
 

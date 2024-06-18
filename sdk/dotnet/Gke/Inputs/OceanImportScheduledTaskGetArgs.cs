@@ -12,11 +12,18 @@ namespace Pulumi.SpotInst.Gke.Inputs
 
     public sealed class OceanImportScheduledTaskGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Set shutdown hours for cluster object.
+        /// </summary>
         [Input("shutdownHours")]
         public Input<Inputs.OceanImportScheduledTaskShutdownHoursGetArgs>? ShutdownHours { get; set; }
 
         [Input("tasks")]
         private InputList<Inputs.OceanImportScheduledTaskTaskGetArgs>? _tasks;
+
+        /// <summary>
+        /// The scheduling tasks for the cluster.
+        /// </summary>
         public InputList<Inputs.OceanImportScheduledTaskTaskGetArgs> Tasks
         {
             get => _tasks ?? (_tasks = new InputList<Inputs.OceanImportScheduledTaskTaskGetArgs>());

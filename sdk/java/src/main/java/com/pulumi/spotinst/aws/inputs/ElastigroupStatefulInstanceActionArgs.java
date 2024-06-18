@@ -14,16 +14,36 @@ public final class ElastigroupStatefulInstanceActionArgs extends com.pulumi.reso
 
     public static final ElastigroupStatefulInstanceActionArgs Empty = new ElastigroupStatefulInstanceActionArgs();
 
+    /**
+     * String, Stateful Instance ID on which the action should be performed.
+     * 
+     */
     @Import(name="statefulInstanceId", required=true)
     private Output<String> statefulInstanceId;
 
+    /**
+     * @return String, Stateful Instance ID on which the action should be performed.
+     * 
+     */
     public Output<String> statefulInstanceId() {
         return this.statefulInstanceId;
     }
 
+    /**
+     * String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+     * 
+     * Usage:
+     * 
+     */
     @Import(name="type", required=true)
     private Output<String> type;
 
+    /**
+     * @return String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+     * 
+     * Usage:
+     * 
+     */
     public Output<String> type() {
         return this.type;
     }
@@ -53,20 +73,48 @@ public final class ElastigroupStatefulInstanceActionArgs extends com.pulumi.reso
             $ = new ElastigroupStatefulInstanceActionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param statefulInstanceId String, Stateful Instance ID on which the action should be performed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder statefulInstanceId(Output<String> statefulInstanceId) {
             $.statefulInstanceId = statefulInstanceId;
             return this;
         }
 
+        /**
+         * @param statefulInstanceId String, Stateful Instance ID on which the action should be performed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder statefulInstanceId(String statefulInstanceId) {
             return statefulInstanceId(Output.of(statefulInstanceId));
         }
 
+        /**
+         * @param type String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+         * 
+         * Usage:
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+         * 
+         * Usage:
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

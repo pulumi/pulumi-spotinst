@@ -15,9 +15,17 @@ public final class OceanImportScheduledTaskTaskTaskParametersArgs extends com.pu
 
     public static final OceanImportScheduledTaskTaskTaskParametersArgs Empty = new OceanImportScheduledTaskTaskTaskParametersArgs();
 
+    /**
+     * The cluster roll parameters for the cluster.
+     * 
+     */
     @Import(name="clusterRoll")
     private @Nullable Output<OceanImportScheduledTaskTaskTaskParametersClusterRollArgs> clusterRoll;
 
+    /**
+     * @return The cluster roll parameters for the cluster.
+     * 
+     */
     public Optional<Output<OceanImportScheduledTaskTaskTaskParametersClusterRollArgs>> clusterRoll() {
         return Optional.ofNullable(this.clusterRoll);
     }
@@ -46,11 +54,23 @@ public final class OceanImportScheduledTaskTaskTaskParametersArgs extends com.pu
             $ = new OceanImportScheduledTaskTaskTaskParametersArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param clusterRoll The cluster roll parameters for the cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clusterRoll(@Nullable Output<OceanImportScheduledTaskTaskTaskParametersClusterRollArgs> clusterRoll) {
             $.clusterRoll = clusterRoll;
             return this;
         }
 
+        /**
+         * @param clusterRoll The cluster roll parameters for the cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clusterRoll(OceanImportScheduledTaskTaskTaskParametersClusterRollArgs clusterRoll) {
             return clusterRoll(Output.of(clusterRoll));
         }

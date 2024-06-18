@@ -12,15 +12,27 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class OceanScheduledTaskTaskParametersAmiAutoUpdateArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Set clusterRoll object
+        /// </summary>
         [Input("amiAutoUpdateClusterRoll")]
         public Input<Inputs.OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollArgs>? AmiAutoUpdateClusterRoll { get; set; }
 
+        /// <summary>
+        /// When the AMI is updated according to the configuration set, a cluster roll can be triggered
+        /// </summary>
         [Input("applyRoll")]
         public Input<bool>? ApplyRoll { get; set; }
 
+        /// <summary>
+        /// When set to 'true', the auto-update process will update the VNGs’ AMI with the AMI to match the Kubernetes control plane version. either "patch" or "minor_version" must be true.
+        /// </summary>
         [Input("minorVersion")]
         public Input<bool>? MinorVersion { get; set; }
 
+        /// <summary>
+        /// When set to 'true', the auto-update process will update the VNGs’ images with the latest security patches. either "patch" or "minorVersion" must be true.
+        /// </summary>
         [Input("patch")]
         public Input<bool>? Patch { get; set; }
 

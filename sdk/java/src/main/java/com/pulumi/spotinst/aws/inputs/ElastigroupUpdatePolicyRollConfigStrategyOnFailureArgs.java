@@ -18,9 +18,17 @@ public final class ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs extend
 
     public static final ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs Empty = new ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs();
 
+    /**
+     * Sets the action that will take place, Accepted values are: `DETACH_OLD`, `DETACH_NEW`.
+     * 
+     */
     @Import(name="actionType", required=true)
     private Output<String> actionType;
 
+    /**
+     * @return Sets the action that will take place, Accepted values are: `DETACH_OLD`, `DETACH_NEW`.
+     * 
+     */
     public Output<String> actionType() {
         return this.actionType;
     }
@@ -33,30 +41,46 @@ public final class ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs extend
     }
 
     /**
-     * The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
+     * Indicates (in seconds) the timeout to wait until instance are detached.
      * 
      */
     @Import(name="drainingTimeout")
     private @Nullable Output<Integer> drainingTimeout;
 
     /**
-     * @return The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
+     * @return Indicates (in seconds) the timeout to wait until instance are detached.
      * 
      */
     public Optional<Output<Integer>> drainingTimeout() {
         return Optional.ofNullable(this.drainingTimeout);
     }
 
+    /**
+     * Decrementing the group target capacity after detaching the instances.
+     * 
+     */
     @Import(name="shouldDecrementTargetCapacity")
     private @Nullable Output<Boolean> shouldDecrementTargetCapacity;
 
+    /**
+     * @return Decrementing the group target capacity after detaching the instances.
+     * 
+     */
     public Optional<Output<Boolean>> shouldDecrementTargetCapacity() {
         return Optional.ofNullable(this.shouldDecrementTargetCapacity);
     }
 
+    /**
+     * Indicator if the action should apply to all batches of the deployment or only the latest batch.
+     * 
+     */
     @Import(name="shouldHandleAllBatches")
     private @Nullable Output<Boolean> shouldHandleAllBatches;
 
+    /**
+     * @return Indicator if the action should apply to all batches of the deployment or only the latest batch.
+     * 
+     */
     public Optional<Output<Boolean>> shouldHandleAllBatches() {
         return Optional.ofNullable(this.shouldHandleAllBatches);
     }
@@ -89,11 +113,23 @@ public final class ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs extend
             $ = new ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param actionType Sets the action that will take place, Accepted values are: `DETACH_OLD`, `DETACH_NEW`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder actionType(Output<String> actionType) {
             $.actionType = actionType;
             return this;
         }
 
+        /**
+         * @param actionType Sets the action that will take place, Accepted values are: `DETACH_OLD`, `DETACH_NEW`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder actionType(String actionType) {
             return actionType(Output.of(actionType));
         }
@@ -108,7 +144,7 @@ public final class ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs extend
         }
 
         /**
-         * @param drainingTimeout The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
+         * @param drainingTimeout Indicates (in seconds) the timeout to wait until instance are detached.
          * 
          * @return builder
          * 
@@ -119,7 +155,7 @@ public final class ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs extend
         }
 
         /**
-         * @param drainingTimeout The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
+         * @param drainingTimeout Indicates (in seconds) the timeout to wait until instance are detached.
          * 
          * @return builder
          * 
@@ -128,20 +164,44 @@ public final class ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs extend
             return drainingTimeout(Output.of(drainingTimeout));
         }
 
+        /**
+         * @param shouldDecrementTargetCapacity Decrementing the group target capacity after detaching the instances.
+         * 
+         * @return builder
+         * 
+         */
         public Builder shouldDecrementTargetCapacity(@Nullable Output<Boolean> shouldDecrementTargetCapacity) {
             $.shouldDecrementTargetCapacity = shouldDecrementTargetCapacity;
             return this;
         }
 
+        /**
+         * @param shouldDecrementTargetCapacity Decrementing the group target capacity after detaching the instances.
+         * 
+         * @return builder
+         * 
+         */
         public Builder shouldDecrementTargetCapacity(Boolean shouldDecrementTargetCapacity) {
             return shouldDecrementTargetCapacity(Output.of(shouldDecrementTargetCapacity));
         }
 
+        /**
+         * @param shouldHandleAllBatches Indicator if the action should apply to all batches of the deployment or only the latest batch.
+         * 
+         * @return builder
+         * 
+         */
         public Builder shouldHandleAllBatches(@Nullable Output<Boolean> shouldHandleAllBatches) {
             $.shouldHandleAllBatches = shouldHandleAllBatches;
             return this;
         }
 
+        /**
+         * @param shouldHandleAllBatches Indicator if the action should apply to all batches of the deployment or only the latest batch.
+         * 
+         * @return builder
+         * 
+         */
         public Builder shouldHandleAllBatches(Boolean shouldHandleAllBatches) {
             return shouldHandleAllBatches(Output.of(shouldHandleAllBatches));
         }

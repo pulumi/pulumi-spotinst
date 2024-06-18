@@ -18,23 +18,47 @@ public final class OceanOptimizeImagesArgs extends com.pulumi.resources.Resource
 
     public static final OceanOptimizeImagesArgs Empty = new OceanOptimizeImagesArgs();
 
+    /**
+     * String. Valid values: &#34;always&#34; &#34;never&#34; &#34;timeWindow&#34;.
+     * 
+     */
     @Import(name="performAt", required=true)
     private Output<String> performAt;
 
+    /**
+     * @return String. Valid values: &#34;always&#34; &#34;never&#34; &#34;timeWindow&#34;.
+     * 
+     */
     public Output<String> performAt() {
         return this.performAt;
     }
 
+    /**
+     * Boolean. Enable auto image (AMI) update for the ECS container instances. The auto update applies for ECS-Optimized AMIs.
+     * 
+     */
     @Import(name="shouldOptimizeEcsAmi", required=true)
     private Output<Boolean> shouldOptimizeEcsAmi;
 
+    /**
+     * @return Boolean. Enable auto image (AMI) update for the ECS container instances. The auto update applies for ECS-Optimized AMIs.
+     * 
+     */
     public Output<Boolean> shouldOptimizeEcsAmi() {
         return this.shouldOptimizeEcsAmi;
     }
 
+    /**
+     * Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
+     * 
+     */
     @Import(name="timeWindows")
     private @Nullable Output<List<String>> timeWindows;
 
+    /**
+     * @return Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
+     * 
+     */
     public Optional<Output<List<String>>> timeWindows() {
         return Optional.ofNullable(this.timeWindows);
     }
@@ -65,33 +89,75 @@ public final class OceanOptimizeImagesArgs extends com.pulumi.resources.Resource
             $ = new OceanOptimizeImagesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param performAt String. Valid values: &#34;always&#34; &#34;never&#34; &#34;timeWindow&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder performAt(Output<String> performAt) {
             $.performAt = performAt;
             return this;
         }
 
+        /**
+         * @param performAt String. Valid values: &#34;always&#34; &#34;never&#34; &#34;timeWindow&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder performAt(String performAt) {
             return performAt(Output.of(performAt));
         }
 
+        /**
+         * @param shouldOptimizeEcsAmi Boolean. Enable auto image (AMI) update for the ECS container instances. The auto update applies for ECS-Optimized AMIs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder shouldOptimizeEcsAmi(Output<Boolean> shouldOptimizeEcsAmi) {
             $.shouldOptimizeEcsAmi = shouldOptimizeEcsAmi;
             return this;
         }
 
+        /**
+         * @param shouldOptimizeEcsAmi Boolean. Enable auto image (AMI) update for the ECS container instances. The auto update applies for ECS-Optimized AMIs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder shouldOptimizeEcsAmi(Boolean shouldOptimizeEcsAmi) {
             return shouldOptimizeEcsAmi(Output.of(shouldOptimizeEcsAmi));
         }
 
+        /**
+         * @param timeWindows Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeWindows(@Nullable Output<List<String>> timeWindows) {
             $.timeWindows = timeWindows;
             return this;
         }
 
+        /**
+         * @param timeWindows Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeWindows(List<String> timeWindows) {
             return timeWindows(Output.of(timeWindows));
         }
 
+        /**
+         * @param timeWindows Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeWindows(String... timeWindows) {
             return timeWindows(List.of(timeWindows));
         }

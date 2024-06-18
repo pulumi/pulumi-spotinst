@@ -12,6 +12,9 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class ElastigroupUpdatePolicyRollConfigStrategyOnFailureGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Sets the action that will take place, Accepted values are: `DETACH_OLD`, `DETACH_NEW`.
+        /// </summary>
         [Input("actionType", required: true)]
         public Input<string> ActionType { get; set; } = null!;
 
@@ -19,14 +22,20 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<int>? BatchNum { get; set; }
 
         /// <summary>
-        /// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
+        /// Indicates (in seconds) the timeout to wait until instance are detached.
         /// </summary>
         [Input("drainingTimeout")]
         public Input<int>? DrainingTimeout { get; set; }
 
+        /// <summary>
+        /// Decrementing the group target capacity after detaching the instances.
+        /// </summary>
         [Input("shouldDecrementTargetCapacity")]
         public Input<bool>? ShouldDecrementTargetCapacity { get; set; }
 
+        /// <summary>
+        /// Indicator if the action should apply to all batches of the deployment or only the latest batch.
+        /// </summary>
         [Input("shouldHandleAllBatches")]
         public Input<bool>? ShouldHandleAllBatches { get; set; }
 

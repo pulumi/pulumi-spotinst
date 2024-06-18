@@ -15,21 +15,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupUpdatePolicyRollConfigStrategy {
+    /**
+     * @return Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
+     * 
+     */
     private String action;
+    /**
+     * @return Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the deployment will fail. Range `1` - `100`.
+     * 
+     */
     private @Nullable Integer batchMinHealthyPercentage;
+    /**
+     * @return Set detach options to the deployment.
+     * 
+     */
     private @Nullable ElastigroupUpdatePolicyRollConfigStrategyOnFailure onFailure;
+    /**
+     * @return Specify whether to drain incoming TCP connections before terminating a server.
+     * 
+     */
     private @Nullable Boolean shouldDrainInstances;
 
     private ElastigroupUpdatePolicyRollConfigStrategy() {}
+    /**
+     * @return Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
+     * 
+     */
     public String action() {
         return this.action;
     }
+    /**
+     * @return Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the deployment will fail. Range `1` - `100`.
+     * 
+     */
     public Optional<Integer> batchMinHealthyPercentage() {
         return Optional.ofNullable(this.batchMinHealthyPercentage);
     }
+    /**
+     * @return Set detach options to the deployment.
+     * 
+     */
     public Optional<ElastigroupUpdatePolicyRollConfigStrategyOnFailure> onFailure() {
         return Optional.ofNullable(this.onFailure);
     }
+    /**
+     * @return Specify whether to drain incoming TCP connections before terminating a server.
+     * 
+     */
     public Optional<Boolean> shouldDrainInstances() {
         return Optional.ofNullable(this.shouldDrainInstances);
     }

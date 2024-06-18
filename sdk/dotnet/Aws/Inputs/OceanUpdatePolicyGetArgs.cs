@@ -12,23 +12,39 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class OceanUpdatePolicyGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// will update instance tags on the fly without rolling the cluster.
+        /// </summary>
         [Input("autoApplyTags")]
         public Input<bool>? AutoApplyTags { get; set; }
 
+        /// <summary>
+        /// Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
+        /// </summary>
         [Input("conditionedRoll")]
         public Input<bool>? ConditionedRoll { get; set; }
 
         [Input("conditionedRollParams")]
         private InputList<string>? _conditionedRollParams;
+
+        /// <summary>
+        /// A custom list of attributes will trigger the cluster roll operation (overrides the predefined list of parameters). Valid only when the `conditioned_roll` parameter is set to true. (Valid values: `"subnet_ids"`,`"whitelist"`,`"blacklist"`,`"user_data"`,`"image_id"`,`"security_groups"`,`"key_name"`,`"iam_instance_profile"`,`"associate_public_ip_address"`,`"load_balancers"`,`"instance_metadata_options"`,`"ebs_optimized"`,`"root_volume_size"`)
+        /// </summary>
         public InputList<string> ConditionedRollParams
         {
             get => _conditionedRollParams ?? (_conditionedRollParams = new InputList<string>());
             set => _conditionedRollParams = value;
         }
 
+        /// <summary>
+        /// While used, you can control whether the group should perform a deployment after an update to the configuration.
+        /// </summary>
         [Input("rollConfig")]
         public Input<Inputs.OceanUpdatePolicyRollConfigGetArgs>? RollConfig { get; set; }
 
+        /// <summary>
+        /// Enables the roll.
+        /// </summary>
         [Input("shouldRoll", required: true)]
         public Input<bool> ShouldRoll { get; set; } = null!;
 

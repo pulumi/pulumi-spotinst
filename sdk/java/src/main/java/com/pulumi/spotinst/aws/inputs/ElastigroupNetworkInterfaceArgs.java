@@ -17,66 +17,126 @@ public final class ElastigroupNetworkInterfaceArgs extends com.pulumi.resources.
 
     public static final ElastigroupNetworkInterfaceArgs Empty = new ElastigroupNetworkInterfaceArgs();
 
+    /**
+     * Indicates whether to assign IPV6 addresses to your instance. Requires a subnet with IPV6 CIDR block ranges.
+     * 
+     * Usage:
+     * 
+     */
     @Import(name="associateIpv6Address")
     private @Nullable Output<Boolean> associateIpv6Address;
 
+    /**
+     * @return Indicates whether to assign IPV6 addresses to your instance. Requires a subnet with IPV6 CIDR block ranges.
+     * 
+     * Usage:
+     * 
+     */
     public Optional<Output<Boolean>> associateIpv6Address() {
         return Optional.ofNullable(this.associateIpv6Address);
     }
 
+    /**
+     * Indicates whether to assign a public IP address to an instance you launch in a VPC. The public IP address can only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an existing one.
+     * 
+     */
     @Import(name="associatePublicIpAddress")
     private @Nullable Output<Boolean> associatePublicIpAddress;
 
+    /**
+     * @return Indicates whether to assign a public IP address to an instance you launch in a VPC. The public IP address can only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an existing one.
+     * 
+     */
     public Optional<Output<Boolean>> associatePublicIpAddress() {
         return Optional.ofNullable(this.associatePublicIpAddress);
     }
 
+    /**
+     * If set to true, the interface is deleted when the instance is terminated.
+     * 
+     */
     @Import(name="deleteOnTermination")
     private @Nullable Output<Boolean> deleteOnTermination;
 
+    /**
+     * @return If set to true, the interface is deleted when the instance is terminated.
+     * 
+     */
     public Optional<Output<Boolean>> deleteOnTermination() {
         return Optional.ofNullable(this.deleteOnTermination);
     }
 
     /**
-     * The group description.
+     * The description of the network interface.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The group description.
+     * @return The description of the network interface.
      * 
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * The index of the device on the instance for the network interface attachment.
+     * 
+     */
     @Import(name="deviceIndex", required=true)
     private Output<String> deviceIndex;
 
+    /**
+     * @return The index of the device on the instance for the network interface attachment.
+     * 
+     */
     public Output<String> deviceIndex() {
         return this.deviceIndex;
     }
 
+    /**
+     * The ID of the network interface.
+     * 
+     */
     @Import(name="networkInterfaceId")
     private @Nullable Output<String> networkInterfaceId;
 
+    /**
+     * @return The ID of the network interface.
+     * 
+     */
     public Optional<Output<String>> networkInterfaceId() {
         return Optional.ofNullable(this.networkInterfaceId);
     }
 
+    /**
+     * The private IP address of the network interface.
+     * 
+     */
     @Import(name="privateIpAddress")
     private @Nullable Output<String> privateIpAddress;
 
+    /**
+     * @return The private IP address of the network interface.
+     * 
+     */
     public Optional<Output<String>> privateIpAddress() {
         return Optional.ofNullable(this.privateIpAddress);
     }
 
+    /**
+     * The number of secondary private IP addresses.
+     * 
+     */
     @Import(name="secondaryPrivateIpAddressCount")
     private @Nullable Output<String> secondaryPrivateIpAddressCount;
 
+    /**
+     * @return The number of secondary private IP addresses.
+     * 
+     */
     public Optional<Output<String>> secondaryPrivateIpAddressCount() {
         return Optional.ofNullable(this.secondaryPrivateIpAddressCount);
     }
@@ -112,35 +172,75 @@ public final class ElastigroupNetworkInterfaceArgs extends com.pulumi.resources.
             $ = new ElastigroupNetworkInterfaceArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param associateIpv6Address Indicates whether to assign IPV6 addresses to your instance. Requires a subnet with IPV6 CIDR block ranges.
+         * 
+         * Usage:
+         * 
+         * @return builder
+         * 
+         */
         public Builder associateIpv6Address(@Nullable Output<Boolean> associateIpv6Address) {
             $.associateIpv6Address = associateIpv6Address;
             return this;
         }
 
+        /**
+         * @param associateIpv6Address Indicates whether to assign IPV6 addresses to your instance. Requires a subnet with IPV6 CIDR block ranges.
+         * 
+         * Usage:
+         * 
+         * @return builder
+         * 
+         */
         public Builder associateIpv6Address(Boolean associateIpv6Address) {
             return associateIpv6Address(Output.of(associateIpv6Address));
         }
 
+        /**
+         * @param associatePublicIpAddress Indicates whether to assign a public IP address to an instance you launch in a VPC. The public IP address can only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an existing one.
+         * 
+         * @return builder
+         * 
+         */
         public Builder associatePublicIpAddress(@Nullable Output<Boolean> associatePublicIpAddress) {
             $.associatePublicIpAddress = associatePublicIpAddress;
             return this;
         }
 
+        /**
+         * @param associatePublicIpAddress Indicates whether to assign a public IP address to an instance you launch in a VPC. The public IP address can only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an existing one.
+         * 
+         * @return builder
+         * 
+         */
         public Builder associatePublicIpAddress(Boolean associatePublicIpAddress) {
             return associatePublicIpAddress(Output.of(associatePublicIpAddress));
         }
 
+        /**
+         * @param deleteOnTermination If set to true, the interface is deleted when the instance is terminated.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteOnTermination(@Nullable Output<Boolean> deleteOnTermination) {
             $.deleteOnTermination = deleteOnTermination;
             return this;
         }
 
+        /**
+         * @param deleteOnTermination If set to true, the interface is deleted when the instance is terminated.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteOnTermination(Boolean deleteOnTermination) {
             return deleteOnTermination(Output.of(deleteOnTermination));
         }
 
         /**
-         * @param description The group description.
+         * @param description The description of the network interface.
          * 
          * @return builder
          * 
@@ -151,7 +251,7 @@ public final class ElastigroupNetworkInterfaceArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param description The group description.
+         * @param description The description of the network interface.
          * 
          * @return builder
          * 
@@ -160,38 +260,86 @@ public final class ElastigroupNetworkInterfaceArgs extends com.pulumi.resources.
             return description(Output.of(description));
         }
 
+        /**
+         * @param deviceIndex The index of the device on the instance for the network interface attachment.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deviceIndex(Output<String> deviceIndex) {
             $.deviceIndex = deviceIndex;
             return this;
         }
 
+        /**
+         * @param deviceIndex The index of the device on the instance for the network interface attachment.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deviceIndex(String deviceIndex) {
             return deviceIndex(Output.of(deviceIndex));
         }
 
+        /**
+         * @param networkInterfaceId The ID of the network interface.
+         * 
+         * @return builder
+         * 
+         */
         public Builder networkInterfaceId(@Nullable Output<String> networkInterfaceId) {
             $.networkInterfaceId = networkInterfaceId;
             return this;
         }
 
+        /**
+         * @param networkInterfaceId The ID of the network interface.
+         * 
+         * @return builder
+         * 
+         */
         public Builder networkInterfaceId(String networkInterfaceId) {
             return networkInterfaceId(Output.of(networkInterfaceId));
         }
 
+        /**
+         * @param privateIpAddress The private IP address of the network interface.
+         * 
+         * @return builder
+         * 
+         */
         public Builder privateIpAddress(@Nullable Output<String> privateIpAddress) {
             $.privateIpAddress = privateIpAddress;
             return this;
         }
 
+        /**
+         * @param privateIpAddress The private IP address of the network interface.
+         * 
+         * @return builder
+         * 
+         */
         public Builder privateIpAddress(String privateIpAddress) {
             return privateIpAddress(Output.of(privateIpAddress));
         }
 
+        /**
+         * @param secondaryPrivateIpAddressCount The number of secondary private IP addresses.
+         * 
+         * @return builder
+         * 
+         */
         public Builder secondaryPrivateIpAddressCount(@Nullable Output<String> secondaryPrivateIpAddressCount) {
             $.secondaryPrivateIpAddressCount = secondaryPrivateIpAddressCount;
             return this;
         }
 
+        /**
+         * @param secondaryPrivateIpAddressCount The number of secondary private IP addresses.
+         * 
+         * @return builder
+         * 
+         */
         public Builder secondaryPrivateIpAddressCount(String secondaryPrivateIpAddressCount) {
             return secondaryPrivateIpAddressCount(Output.of(secondaryPrivateIpAddressCount));
         }

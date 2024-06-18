@@ -15,30 +15,66 @@ public final class ElastigroupStatefulDeallocationArgs extends com.pulumi.resour
 
     public static final ElastigroupStatefulDeallocationArgs Empty = new ElastigroupStatefulDeallocationArgs();
 
+    /**
+     * For stateful groups: remove persistent images.
+     * 
+     */
     @Import(name="shouldDeleteImages")
     private @Nullable Output<Boolean> shouldDeleteImages;
 
+    /**
+     * @return For stateful groups: remove persistent images.
+     * 
+     */
     public Optional<Output<Boolean>> shouldDeleteImages() {
         return Optional.ofNullable(this.shouldDeleteImages);
     }
 
+    /**
+     * For stateful groups: remove network interfaces.
+     * 
+     */
     @Import(name="shouldDeleteNetworkInterfaces")
     private @Nullable Output<Boolean> shouldDeleteNetworkInterfaces;
 
+    /**
+     * @return For stateful groups: remove network interfaces.
+     * 
+     */
     public Optional<Output<Boolean>> shouldDeleteNetworkInterfaces() {
         return Optional.ofNullable(this.shouldDeleteNetworkInterfaces);
     }
 
+    /**
+     * For stateful groups: remove snapshots.
+     * 
+     * Usage:
+     * 
+     */
     @Import(name="shouldDeleteSnapshots")
     private @Nullable Output<Boolean> shouldDeleteSnapshots;
 
+    /**
+     * @return For stateful groups: remove snapshots.
+     * 
+     * Usage:
+     * 
+     */
     public Optional<Output<Boolean>> shouldDeleteSnapshots() {
         return Optional.ofNullable(this.shouldDeleteSnapshots);
     }
 
+    /**
+     * For stateful groups: remove persistent volumes.
+     * 
+     */
     @Import(name="shouldDeleteVolumes")
     private @Nullable Output<Boolean> shouldDeleteVolumes;
 
+    /**
+     * @return For stateful groups: remove persistent volumes.
+     * 
+     */
     public Optional<Output<Boolean>> shouldDeleteVolumes() {
         return Optional.ofNullable(this.shouldDeleteVolumes);
     }
@@ -70,38 +106,90 @@ public final class ElastigroupStatefulDeallocationArgs extends com.pulumi.resour
             $ = new ElastigroupStatefulDeallocationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param shouldDeleteImages For stateful groups: remove persistent images.
+         * 
+         * @return builder
+         * 
+         */
         public Builder shouldDeleteImages(@Nullable Output<Boolean> shouldDeleteImages) {
             $.shouldDeleteImages = shouldDeleteImages;
             return this;
         }
 
+        /**
+         * @param shouldDeleteImages For stateful groups: remove persistent images.
+         * 
+         * @return builder
+         * 
+         */
         public Builder shouldDeleteImages(Boolean shouldDeleteImages) {
             return shouldDeleteImages(Output.of(shouldDeleteImages));
         }
 
+        /**
+         * @param shouldDeleteNetworkInterfaces For stateful groups: remove network interfaces.
+         * 
+         * @return builder
+         * 
+         */
         public Builder shouldDeleteNetworkInterfaces(@Nullable Output<Boolean> shouldDeleteNetworkInterfaces) {
             $.shouldDeleteNetworkInterfaces = shouldDeleteNetworkInterfaces;
             return this;
         }
 
+        /**
+         * @param shouldDeleteNetworkInterfaces For stateful groups: remove network interfaces.
+         * 
+         * @return builder
+         * 
+         */
         public Builder shouldDeleteNetworkInterfaces(Boolean shouldDeleteNetworkInterfaces) {
             return shouldDeleteNetworkInterfaces(Output.of(shouldDeleteNetworkInterfaces));
         }
 
+        /**
+         * @param shouldDeleteSnapshots For stateful groups: remove snapshots.
+         * 
+         * Usage:
+         * 
+         * @return builder
+         * 
+         */
         public Builder shouldDeleteSnapshots(@Nullable Output<Boolean> shouldDeleteSnapshots) {
             $.shouldDeleteSnapshots = shouldDeleteSnapshots;
             return this;
         }
 
+        /**
+         * @param shouldDeleteSnapshots For stateful groups: remove snapshots.
+         * 
+         * Usage:
+         * 
+         * @return builder
+         * 
+         */
         public Builder shouldDeleteSnapshots(Boolean shouldDeleteSnapshots) {
             return shouldDeleteSnapshots(Output.of(shouldDeleteSnapshots));
         }
 
+        /**
+         * @param shouldDeleteVolumes For stateful groups: remove persistent volumes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder shouldDeleteVolumes(@Nullable Output<Boolean> shouldDeleteVolumes) {
             $.shouldDeleteVolumes = shouldDeleteVolumes;
             return this;
         }
 
+        /**
+         * @param shouldDeleteVolumes For stateful groups: remove persistent volumes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder shouldDeleteVolumes(Boolean shouldDeleteVolumes) {
             return shouldDeleteVolumes(Output.of(shouldDeleteVolumes));
         }

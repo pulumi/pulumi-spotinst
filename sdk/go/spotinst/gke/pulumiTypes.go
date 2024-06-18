@@ -2517,14 +2517,22 @@ func (o ElastigroupScalingUpPolicyDimensionArrayOutput) Index(i pulumi.IntInput)
 }
 
 type OceanImportAutoscaler struct {
-	AutoHeadroomPercentage           *int                                 `pulumi:"autoHeadroomPercentage"`
-	Cooldown                         *int                                 `pulumi:"cooldown"`
-	Down                             *OceanImportAutoscalerDown           `pulumi:"down"`
-	EnableAutomaticAndManualHeadroom *bool                                `pulumi:"enableAutomaticAndManualHeadroom"`
-	Headroom                         *OceanImportAutoscalerHeadroom       `pulumi:"headroom"`
-	IsAutoConfig                     *bool                                `pulumi:"isAutoConfig"`
-	IsEnabled                        *bool                                `pulumi:"isEnabled"`
-	ResourceLimits                   *OceanImportAutoscalerResourceLimits `pulumi:"resourceLimits"`
+	// Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom % from the cluster. Relevant when isAutoConfig=true.
+	AutoHeadroomPercentage *int `pulumi:"autoHeadroomPercentage"`
+	// Cooldown period between scaling actions.
+	Cooldown *int `pulumi:"cooldown"`
+	// Auto Scaling scale down operations.
+	Down *OceanImportAutoscalerDown `pulumi:"down"`
+	// enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
+	EnableAutomaticAndManualHeadroom *bool `pulumi:"enableAutomaticAndManualHeadroom"`
+	// Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
+	Headroom *OceanImportAutoscalerHeadroom `pulumi:"headroom"`
+	// Automatically configure and optimize headroom resources.
+	IsAutoConfig *bool `pulumi:"isAutoConfig"`
+	// Enable the Ocean Kubernetes Autoscaler.
+	IsEnabled *bool `pulumi:"isEnabled"`
+	// Optionally set upper and lower bounds on the resource usage of the cluster.
+	ResourceLimits *OceanImportAutoscalerResourceLimits `pulumi:"resourceLimits"`
 }
 
 // OceanImportAutoscalerInput is an input type that accepts OceanImportAutoscalerArgs and OceanImportAutoscalerOutput values.
@@ -2539,14 +2547,22 @@ type OceanImportAutoscalerInput interface {
 }
 
 type OceanImportAutoscalerArgs struct {
-	AutoHeadroomPercentage           pulumi.IntPtrInput                          `pulumi:"autoHeadroomPercentage"`
-	Cooldown                         pulumi.IntPtrInput                          `pulumi:"cooldown"`
-	Down                             OceanImportAutoscalerDownPtrInput           `pulumi:"down"`
-	EnableAutomaticAndManualHeadroom pulumi.BoolPtrInput                         `pulumi:"enableAutomaticAndManualHeadroom"`
-	Headroom                         OceanImportAutoscalerHeadroomPtrInput       `pulumi:"headroom"`
-	IsAutoConfig                     pulumi.BoolPtrInput                         `pulumi:"isAutoConfig"`
-	IsEnabled                        pulumi.BoolPtrInput                         `pulumi:"isEnabled"`
-	ResourceLimits                   OceanImportAutoscalerResourceLimitsPtrInput `pulumi:"resourceLimits"`
+	// Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom % from the cluster. Relevant when isAutoConfig=true.
+	AutoHeadroomPercentage pulumi.IntPtrInput `pulumi:"autoHeadroomPercentage"`
+	// Cooldown period between scaling actions.
+	Cooldown pulumi.IntPtrInput `pulumi:"cooldown"`
+	// Auto Scaling scale down operations.
+	Down OceanImportAutoscalerDownPtrInput `pulumi:"down"`
+	// enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
+	EnableAutomaticAndManualHeadroom pulumi.BoolPtrInput `pulumi:"enableAutomaticAndManualHeadroom"`
+	// Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
+	Headroom OceanImportAutoscalerHeadroomPtrInput `pulumi:"headroom"`
+	// Automatically configure and optimize headroom resources.
+	IsAutoConfig pulumi.BoolPtrInput `pulumi:"isAutoConfig"`
+	// Enable the Ocean Kubernetes Autoscaler.
+	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
+	// Optionally set upper and lower bounds on the resource usage of the cluster.
+	ResourceLimits OceanImportAutoscalerResourceLimitsPtrInput `pulumi:"resourceLimits"`
 }
 
 func (OceanImportAutoscalerArgs) ElementType() reflect.Type {
@@ -2626,34 +2642,42 @@ func (o OceanImportAutoscalerOutput) ToOceanImportAutoscalerPtrOutputWithContext
 	}).(OceanImportAutoscalerPtrOutput)
 }
 
+// Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom % from the cluster. Relevant when isAutoConfig=true.
 func (o OceanImportAutoscalerOutput) AutoHeadroomPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanImportAutoscaler) *int { return v.AutoHeadroomPercentage }).(pulumi.IntPtrOutput)
 }
 
+// Cooldown period between scaling actions.
 func (o OceanImportAutoscalerOutput) Cooldown() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanImportAutoscaler) *int { return v.Cooldown }).(pulumi.IntPtrOutput)
 }
 
+// Auto Scaling scale down operations.
 func (o OceanImportAutoscalerOutput) Down() OceanImportAutoscalerDownPtrOutput {
 	return o.ApplyT(func(v OceanImportAutoscaler) *OceanImportAutoscalerDown { return v.Down }).(OceanImportAutoscalerDownPtrOutput)
 }
 
+// enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
 func (o OceanImportAutoscalerOutput) EnableAutomaticAndManualHeadroom() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanImportAutoscaler) *bool { return v.EnableAutomaticAndManualHeadroom }).(pulumi.BoolPtrOutput)
 }
 
+// Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
 func (o OceanImportAutoscalerOutput) Headroom() OceanImportAutoscalerHeadroomPtrOutput {
 	return o.ApplyT(func(v OceanImportAutoscaler) *OceanImportAutoscalerHeadroom { return v.Headroom }).(OceanImportAutoscalerHeadroomPtrOutput)
 }
 
+// Automatically configure and optimize headroom resources.
 func (o OceanImportAutoscalerOutput) IsAutoConfig() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanImportAutoscaler) *bool { return v.IsAutoConfig }).(pulumi.BoolPtrOutput)
 }
 
+// Enable the Ocean Kubernetes Autoscaler.
 func (o OceanImportAutoscalerOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanImportAutoscaler) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Optionally set upper and lower bounds on the resource usage of the cluster.
 func (o OceanImportAutoscalerOutput) ResourceLimits() OceanImportAutoscalerResourceLimitsPtrOutput {
 	return o.ApplyT(func(v OceanImportAutoscaler) *OceanImportAutoscalerResourceLimits { return v.ResourceLimits }).(OceanImportAutoscalerResourceLimitsPtrOutput)
 }
@@ -2682,6 +2706,7 @@ func (o OceanImportAutoscalerPtrOutput) Elem() OceanImportAutoscalerOutput {
 	}).(OceanImportAutoscalerOutput)
 }
 
+// Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom % from the cluster. Relevant when isAutoConfig=true.
 func (o OceanImportAutoscalerPtrOutput) AutoHeadroomPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanImportAutoscaler) *int {
 		if v == nil {
@@ -2691,6 +2716,7 @@ func (o OceanImportAutoscalerPtrOutput) AutoHeadroomPercentage() pulumi.IntPtrOu
 	}).(pulumi.IntPtrOutput)
 }
 
+// Cooldown period between scaling actions.
 func (o OceanImportAutoscalerPtrOutput) Cooldown() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanImportAutoscaler) *int {
 		if v == nil {
@@ -2700,6 +2726,7 @@ func (o OceanImportAutoscalerPtrOutput) Cooldown() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Auto Scaling scale down operations.
 func (o OceanImportAutoscalerPtrOutput) Down() OceanImportAutoscalerDownPtrOutput {
 	return o.ApplyT(func(v *OceanImportAutoscaler) *OceanImportAutoscalerDown {
 		if v == nil {
@@ -2709,6 +2736,7 @@ func (o OceanImportAutoscalerPtrOutput) Down() OceanImportAutoscalerDownPtrOutpu
 	}).(OceanImportAutoscalerDownPtrOutput)
 }
 
+// enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
 func (o OceanImportAutoscalerPtrOutput) EnableAutomaticAndManualHeadroom() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanImportAutoscaler) *bool {
 		if v == nil {
@@ -2718,6 +2746,7 @@ func (o OceanImportAutoscalerPtrOutput) EnableAutomaticAndManualHeadroom() pulum
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
 func (o OceanImportAutoscalerPtrOutput) Headroom() OceanImportAutoscalerHeadroomPtrOutput {
 	return o.ApplyT(func(v *OceanImportAutoscaler) *OceanImportAutoscalerHeadroom {
 		if v == nil {
@@ -2727,6 +2756,7 @@ func (o OceanImportAutoscalerPtrOutput) Headroom() OceanImportAutoscalerHeadroom
 	}).(OceanImportAutoscalerHeadroomPtrOutput)
 }
 
+// Automatically configure and optimize headroom resources.
 func (o OceanImportAutoscalerPtrOutput) IsAutoConfig() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanImportAutoscaler) *bool {
 		if v == nil {
@@ -2736,6 +2766,7 @@ func (o OceanImportAutoscalerPtrOutput) IsAutoConfig() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Enable the Ocean Kubernetes Autoscaler.
 func (o OceanImportAutoscalerPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanImportAutoscaler) *bool {
 		if v == nil {
@@ -2745,6 +2776,7 @@ func (o OceanImportAutoscalerPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Optionally set upper and lower bounds on the resource usage of the cluster.
 func (o OceanImportAutoscalerPtrOutput) ResourceLimits() OceanImportAutoscalerResourceLimitsPtrOutput {
 	return o.ApplyT(func(v *OceanImportAutoscaler) *OceanImportAutoscalerResourceLimits {
 		if v == nil {
@@ -2755,7 +2787,9 @@ func (o OceanImportAutoscalerPtrOutput) ResourceLimits() OceanImportAutoscalerRe
 }
 
 type OceanImportAutoscalerDown struct {
-	EvaluationPeriods      *int     `pulumi:"evaluationPeriods"`
+	// The number of evaluation periods that should accumulate before a scale down action takes place.
+	EvaluationPeriods *int `pulumi:"evaluationPeriods"`
+	// Would represent the maximum % to scale-down. Number between 1-100.
 	MaxScaleDownPercentage *float64 `pulumi:"maxScaleDownPercentage"`
 }
 
@@ -2771,7 +2805,9 @@ type OceanImportAutoscalerDownInput interface {
 }
 
 type OceanImportAutoscalerDownArgs struct {
-	EvaluationPeriods      pulumi.IntPtrInput     `pulumi:"evaluationPeriods"`
+	// The number of evaluation periods that should accumulate before a scale down action takes place.
+	EvaluationPeriods pulumi.IntPtrInput `pulumi:"evaluationPeriods"`
+	// Would represent the maximum % to scale-down. Number between 1-100.
 	MaxScaleDownPercentage pulumi.Float64PtrInput `pulumi:"maxScaleDownPercentage"`
 }
 
@@ -2852,10 +2888,12 @@ func (o OceanImportAutoscalerDownOutput) ToOceanImportAutoscalerDownPtrOutputWit
 	}).(OceanImportAutoscalerDownPtrOutput)
 }
 
+// The number of evaluation periods that should accumulate before a scale down action takes place.
 func (o OceanImportAutoscalerDownOutput) EvaluationPeriods() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanImportAutoscalerDown) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
 }
 
+// Would represent the maximum % to scale-down. Number between 1-100.
 func (o OceanImportAutoscalerDownOutput) MaxScaleDownPercentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v OceanImportAutoscalerDown) *float64 { return v.MaxScaleDownPercentage }).(pulumi.Float64PtrOutput)
 }
@@ -2884,6 +2922,7 @@ func (o OceanImportAutoscalerDownPtrOutput) Elem() OceanImportAutoscalerDownOutp
 	}).(OceanImportAutoscalerDownOutput)
 }
 
+// The number of evaluation periods that should accumulate before a scale down action takes place.
 func (o OceanImportAutoscalerDownPtrOutput) EvaluationPeriods() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanImportAutoscalerDown) *int {
 		if v == nil {
@@ -2893,6 +2932,7 @@ func (o OceanImportAutoscalerDownPtrOutput) EvaluationPeriods() pulumi.IntPtrOut
 	}).(pulumi.IntPtrOutput)
 }
 
+// Would represent the maximum % to scale-down. Number between 1-100.
 func (o OceanImportAutoscalerDownPtrOutput) MaxScaleDownPercentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *OceanImportAutoscalerDown) *float64 {
 		if v == nil {
@@ -2903,10 +2943,14 @@ func (o OceanImportAutoscalerDownPtrOutput) MaxScaleDownPercentage() pulumi.Floa
 }
 
 type OceanImportAutoscalerHeadroom struct {
-	CpuPerUnit    *int `pulumi:"cpuPerUnit"`
-	GpuPerUnit    *int `pulumi:"gpuPerUnit"`
+	// Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+	CpuPerUnit *int `pulumi:"cpuPerUnit"`
+	// How much GPU allocate for headroom unit.
+	GpuPerUnit *int `pulumi:"gpuPerUnit"`
+	// Optionally configure the amount of memory (MiB) to allocate the headroom.
 	MemoryPerUnit *int `pulumi:"memoryPerUnit"`
-	NumOfUnits    *int `pulumi:"numOfUnits"`
+	// The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+	NumOfUnits *int `pulumi:"numOfUnits"`
 }
 
 // OceanImportAutoscalerHeadroomInput is an input type that accepts OceanImportAutoscalerHeadroomArgs and OceanImportAutoscalerHeadroomOutput values.
@@ -2921,10 +2965,14 @@ type OceanImportAutoscalerHeadroomInput interface {
 }
 
 type OceanImportAutoscalerHeadroomArgs struct {
-	CpuPerUnit    pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
-	GpuPerUnit    pulumi.IntPtrInput `pulumi:"gpuPerUnit"`
+	// Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+	CpuPerUnit pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
+	// How much GPU allocate for headroom unit.
+	GpuPerUnit pulumi.IntPtrInput `pulumi:"gpuPerUnit"`
+	// Optionally configure the amount of memory (MiB) to allocate the headroom.
 	MemoryPerUnit pulumi.IntPtrInput `pulumi:"memoryPerUnit"`
-	NumOfUnits    pulumi.IntPtrInput `pulumi:"numOfUnits"`
+	// The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+	NumOfUnits pulumi.IntPtrInput `pulumi:"numOfUnits"`
 }
 
 func (OceanImportAutoscalerHeadroomArgs) ElementType() reflect.Type {
@@ -3004,18 +3052,22 @@ func (o OceanImportAutoscalerHeadroomOutput) ToOceanImportAutoscalerHeadroomPtrO
 	}).(OceanImportAutoscalerHeadroomPtrOutput)
 }
 
+// Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
 func (o OceanImportAutoscalerHeadroomOutput) CpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanImportAutoscalerHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
+// How much GPU allocate for headroom unit.
 func (o OceanImportAutoscalerHeadroomOutput) GpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanImportAutoscalerHeadroom) *int { return v.GpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
+// Optionally configure the amount of memory (MiB) to allocate the headroom.
 func (o OceanImportAutoscalerHeadroomOutput) MemoryPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanImportAutoscalerHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
 }
 
+// The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
 func (o OceanImportAutoscalerHeadroomOutput) NumOfUnits() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanImportAutoscalerHeadroom) *int { return v.NumOfUnits }).(pulumi.IntPtrOutput)
 }
@@ -3044,6 +3096,7 @@ func (o OceanImportAutoscalerHeadroomPtrOutput) Elem() OceanImportAutoscalerHead
 	}).(OceanImportAutoscalerHeadroomOutput)
 }
 
+// Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
 func (o OceanImportAutoscalerHeadroomPtrOutput) CpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanImportAutoscalerHeadroom) *int {
 		if v == nil {
@@ -3053,6 +3106,7 @@ func (o OceanImportAutoscalerHeadroomPtrOutput) CpuPerUnit() pulumi.IntPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
+// How much GPU allocate for headroom unit.
 func (o OceanImportAutoscalerHeadroomPtrOutput) GpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanImportAutoscalerHeadroom) *int {
 		if v == nil {
@@ -3062,6 +3116,7 @@ func (o OceanImportAutoscalerHeadroomPtrOutput) GpuPerUnit() pulumi.IntPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
+// Optionally configure the amount of memory (MiB) to allocate the headroom.
 func (o OceanImportAutoscalerHeadroomPtrOutput) MemoryPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanImportAutoscalerHeadroom) *int {
 		if v == nil {
@@ -3071,6 +3126,7 @@ func (o OceanImportAutoscalerHeadroomPtrOutput) MemoryPerUnit() pulumi.IntPtrOut
 	}).(pulumi.IntPtrOutput)
 }
 
+// The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
 func (o OceanImportAutoscalerHeadroomPtrOutput) NumOfUnits() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanImportAutoscalerHeadroom) *int {
 		if v == nil {
@@ -3081,8 +3137,10 @@ func (o OceanImportAutoscalerHeadroomPtrOutput) NumOfUnits() pulumi.IntPtrOutput
 }
 
 type OceanImportAutoscalerResourceLimits struct {
+	// The maximum memory in GiB units that can be allocated to the cluster.
 	MaxMemoryGib *int `pulumi:"maxMemoryGib"`
-	MaxVcpu      *int `pulumi:"maxVcpu"`
+	// The maximum cpu in vCpu units that can be allocated to the cluster.
+	MaxVcpu *int `pulumi:"maxVcpu"`
 }
 
 // OceanImportAutoscalerResourceLimitsInput is an input type that accepts OceanImportAutoscalerResourceLimitsArgs and OceanImportAutoscalerResourceLimitsOutput values.
@@ -3097,8 +3155,10 @@ type OceanImportAutoscalerResourceLimitsInput interface {
 }
 
 type OceanImportAutoscalerResourceLimitsArgs struct {
+	// The maximum memory in GiB units that can be allocated to the cluster.
 	MaxMemoryGib pulumi.IntPtrInput `pulumi:"maxMemoryGib"`
-	MaxVcpu      pulumi.IntPtrInput `pulumi:"maxVcpu"`
+	// The maximum cpu in vCpu units that can be allocated to the cluster.
+	MaxVcpu pulumi.IntPtrInput `pulumi:"maxVcpu"`
 }
 
 func (OceanImportAutoscalerResourceLimitsArgs) ElementType() reflect.Type {
@@ -3178,10 +3238,12 @@ func (o OceanImportAutoscalerResourceLimitsOutput) ToOceanImportAutoscalerResour
 	}).(OceanImportAutoscalerResourceLimitsPtrOutput)
 }
 
+// The maximum memory in GiB units that can be allocated to the cluster.
 func (o OceanImportAutoscalerResourceLimitsOutput) MaxMemoryGib() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanImportAutoscalerResourceLimits) *int { return v.MaxMemoryGib }).(pulumi.IntPtrOutput)
 }
 
+// The maximum cpu in vCpu units that can be allocated to the cluster.
 func (o OceanImportAutoscalerResourceLimitsOutput) MaxVcpu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanImportAutoscalerResourceLimits) *int { return v.MaxVcpu }).(pulumi.IntPtrOutput)
 }
@@ -3210,6 +3272,7 @@ func (o OceanImportAutoscalerResourceLimitsPtrOutput) Elem() OceanImportAutoscal
 	}).(OceanImportAutoscalerResourceLimitsOutput)
 }
 
+// The maximum memory in GiB units that can be allocated to the cluster.
 func (o OceanImportAutoscalerResourceLimitsPtrOutput) MaxMemoryGib() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanImportAutoscalerResourceLimits) *int {
 		if v == nil {
@@ -3219,6 +3282,7 @@ func (o OceanImportAutoscalerResourceLimitsPtrOutput) MaxMemoryGib() pulumi.IntP
 	}).(pulumi.IntPtrOutput)
 }
 
+// The maximum cpu in vCpu units that can be allocated to the cluster.
 func (o OceanImportAutoscalerResourceLimitsPtrOutput) MaxVcpu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanImportAutoscalerResourceLimits) *int {
 		if v == nil {
@@ -3450,8 +3514,10 @@ func (o OceanImportBackendServiceNamedPortArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type OceanImportScheduledTask struct {
+	// Set shutdown hours for cluster object.
 	ShutdownHours *OceanImportScheduledTaskShutdownHours `pulumi:"shutdownHours"`
-	Tasks         []OceanImportScheduledTaskTask         `pulumi:"tasks"`
+	// The scheduling tasks for the cluster.
+	Tasks []OceanImportScheduledTaskTask `pulumi:"tasks"`
 }
 
 // OceanImportScheduledTaskInput is an input type that accepts OceanImportScheduledTaskArgs and OceanImportScheduledTaskOutput values.
@@ -3466,8 +3532,10 @@ type OceanImportScheduledTaskInput interface {
 }
 
 type OceanImportScheduledTaskArgs struct {
+	// Set shutdown hours for cluster object.
 	ShutdownHours OceanImportScheduledTaskShutdownHoursPtrInput `pulumi:"shutdownHours"`
-	Tasks         OceanImportScheduledTaskTaskArrayInput        `pulumi:"tasks"`
+	// The scheduling tasks for the cluster.
+	Tasks OceanImportScheduledTaskTaskArrayInput `pulumi:"tasks"`
 }
 
 func (OceanImportScheduledTaskArgs) ElementType() reflect.Type {
@@ -3521,10 +3589,12 @@ func (o OceanImportScheduledTaskOutput) ToOceanImportScheduledTaskOutputWithCont
 	return o
 }
 
+// Set shutdown hours for cluster object.
 func (o OceanImportScheduledTaskOutput) ShutdownHours() OceanImportScheduledTaskShutdownHoursPtrOutput {
 	return o.ApplyT(func(v OceanImportScheduledTask) *OceanImportScheduledTaskShutdownHours { return v.ShutdownHours }).(OceanImportScheduledTaskShutdownHoursPtrOutput)
 }
 
+// The scheduling tasks for the cluster.
 func (o OceanImportScheduledTaskOutput) Tasks() OceanImportScheduledTaskTaskArrayOutput {
 	return o.ApplyT(func(v OceanImportScheduledTask) []OceanImportScheduledTaskTask { return v.Tasks }).(OceanImportScheduledTaskTaskArrayOutput)
 }
@@ -3550,7 +3620,11 @@ func (o OceanImportScheduledTaskArrayOutput) Index(i pulumi.IntInput) OceanImpor
 }
 
 type OceanImportScheduledTaskShutdownHours struct {
-	IsEnabled   *bool    `pulumi:"isEnabled"`
+	// Flag to enable / disable the shutdown hours.
+	// Example: True
+	IsEnabled *bool `pulumi:"isEnabled"`
+	// Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
+	// Example: Fri:15:30-Wed:14:30
 	TimeWindows []string `pulumi:"timeWindows"`
 }
 
@@ -3566,7 +3640,11 @@ type OceanImportScheduledTaskShutdownHoursInput interface {
 }
 
 type OceanImportScheduledTaskShutdownHoursArgs struct {
-	IsEnabled   pulumi.BoolPtrInput     `pulumi:"isEnabled"`
+	// Flag to enable / disable the shutdown hours.
+	// Example: True
+	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
+	// Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
+	// Example: Fri:15:30-Wed:14:30
 	TimeWindows pulumi.StringArrayInput `pulumi:"timeWindows"`
 }
 
@@ -3647,10 +3725,14 @@ func (o OceanImportScheduledTaskShutdownHoursOutput) ToOceanImportScheduledTaskS
 	}).(OceanImportScheduledTaskShutdownHoursPtrOutput)
 }
 
+// Flag to enable / disable the shutdown hours.
+// Example: True
 func (o OceanImportScheduledTaskShutdownHoursOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanImportScheduledTaskShutdownHours) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
+// Example: Fri:15:30-Wed:14:30
 func (o OceanImportScheduledTaskShutdownHoursOutput) TimeWindows() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanImportScheduledTaskShutdownHours) []string { return v.TimeWindows }).(pulumi.StringArrayOutput)
 }
@@ -3679,6 +3761,8 @@ func (o OceanImportScheduledTaskShutdownHoursPtrOutput) Elem() OceanImportSchedu
 	}).(OceanImportScheduledTaskShutdownHoursOutput)
 }
 
+// Flag to enable / disable the shutdown hours.
+// Example: True
 func (o OceanImportScheduledTaskShutdownHoursPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanImportScheduledTaskShutdownHours) *bool {
 		if v == nil {
@@ -3688,6 +3772,8 @@ func (o OceanImportScheduledTaskShutdownHoursPtrOutput) IsEnabled() pulumi.BoolP
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
+// Example: Fri:15:30-Wed:14:30
 func (o OceanImportScheduledTaskShutdownHoursPtrOutput) TimeWindows() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanImportScheduledTaskShutdownHours) []string {
 		if v == nil {
@@ -3698,10 +3784,15 @@ func (o OceanImportScheduledTaskShutdownHoursPtrOutput) TimeWindows() pulumi.Str
 }
 
 type OceanImportScheduledTaskTask struct {
-	CronExpression string                                      `pulumi:"cronExpression"`
-	IsEnabled      bool                                        `pulumi:"isEnabled"`
+	// A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
+	// Example: 0 1 * * *
+	CronExpression string `pulumi:"cronExpression"`
+	// Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
+	IsEnabled bool `pulumi:"isEnabled"`
+	// The scheduling parameters for the cluster.
 	TaskParameters *OceanImportScheduledTaskTaskTaskParameters `pulumi:"taskParameters"`
-	TaskType       string                                      `pulumi:"taskType"`
+	// Valid values: "clusterRoll". Required for cluster.scheduling.tasks object.
+	TaskType string `pulumi:"taskType"`
 }
 
 // OceanImportScheduledTaskTaskInput is an input type that accepts OceanImportScheduledTaskTaskArgs and OceanImportScheduledTaskTaskOutput values.
@@ -3716,10 +3807,15 @@ type OceanImportScheduledTaskTaskInput interface {
 }
 
 type OceanImportScheduledTaskTaskArgs struct {
-	CronExpression pulumi.StringInput                                 `pulumi:"cronExpression"`
-	IsEnabled      pulumi.BoolInput                                   `pulumi:"isEnabled"`
+	// A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
+	// Example: 0 1 * * *
+	CronExpression pulumi.StringInput `pulumi:"cronExpression"`
+	// Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
+	IsEnabled pulumi.BoolInput `pulumi:"isEnabled"`
+	// The scheduling parameters for the cluster.
 	TaskParameters OceanImportScheduledTaskTaskTaskParametersPtrInput `pulumi:"taskParameters"`
-	TaskType       pulumi.StringInput                                 `pulumi:"taskType"`
+	// Valid values: "clusterRoll". Required for cluster.scheduling.tasks object.
+	TaskType pulumi.StringInput `pulumi:"taskType"`
 }
 
 func (OceanImportScheduledTaskTaskArgs) ElementType() reflect.Type {
@@ -3773,20 +3869,25 @@ func (o OceanImportScheduledTaskTaskOutput) ToOceanImportScheduledTaskTaskOutput
 	return o
 }
 
+// A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
+// Example: 0 1 * * *
 func (o OceanImportScheduledTaskTaskOutput) CronExpression() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanImportScheduledTaskTask) string { return v.CronExpression }).(pulumi.StringOutput)
 }
 
+// Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
 func (o OceanImportScheduledTaskTaskOutput) IsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v OceanImportScheduledTaskTask) bool { return v.IsEnabled }).(pulumi.BoolOutput)
 }
 
+// The scheduling parameters for the cluster.
 func (o OceanImportScheduledTaskTaskOutput) TaskParameters() OceanImportScheduledTaskTaskTaskParametersPtrOutput {
 	return o.ApplyT(func(v OceanImportScheduledTaskTask) *OceanImportScheduledTaskTaskTaskParameters {
 		return v.TaskParameters
 	}).(OceanImportScheduledTaskTaskTaskParametersPtrOutput)
 }
 
+// Valid values: "clusterRoll". Required for cluster.scheduling.tasks object.
 func (o OceanImportScheduledTaskTaskOutput) TaskType() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanImportScheduledTaskTask) string { return v.TaskType }).(pulumi.StringOutput)
 }
@@ -3812,6 +3913,7 @@ func (o OceanImportScheduledTaskTaskArrayOutput) Index(i pulumi.IntInput) OceanI
 }
 
 type OceanImportScheduledTaskTaskTaskParameters struct {
+	// The cluster roll parameters for the cluster.
 	ClusterRoll *OceanImportScheduledTaskTaskTaskParametersClusterRoll `pulumi:"clusterRoll"`
 }
 
@@ -3827,6 +3929,7 @@ type OceanImportScheduledTaskTaskTaskParametersInput interface {
 }
 
 type OceanImportScheduledTaskTaskTaskParametersArgs struct {
+	// The cluster roll parameters for the cluster.
 	ClusterRoll OceanImportScheduledTaskTaskTaskParametersClusterRollPtrInput `pulumi:"clusterRoll"`
 }
 
@@ -3907,6 +4010,7 @@ func (o OceanImportScheduledTaskTaskTaskParametersOutput) ToOceanImportScheduled
 	}).(OceanImportScheduledTaskTaskTaskParametersPtrOutput)
 }
 
+// The cluster roll parameters for the cluster.
 func (o OceanImportScheduledTaskTaskTaskParametersOutput) ClusterRoll() OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput {
 	return o.ApplyT(func(v OceanImportScheduledTaskTaskTaskParameters) *OceanImportScheduledTaskTaskTaskParametersClusterRoll {
 		return v.ClusterRoll
@@ -3937,6 +4041,7 @@ func (o OceanImportScheduledTaskTaskTaskParametersPtrOutput) Elem() OceanImportS
 	}).(OceanImportScheduledTaskTaskTaskParametersOutput)
 }
 
+// The cluster roll parameters for the cluster.
 func (o OceanImportScheduledTaskTaskTaskParametersPtrOutput) ClusterRoll() OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput {
 	return o.ApplyT(func(v *OceanImportScheduledTaskTaskTaskParameters) *OceanImportScheduledTaskTaskTaskParametersClusterRoll {
 		if v == nil {
@@ -3947,10 +4052,14 @@ func (o OceanImportScheduledTaskTaskTaskParametersPtrOutput) ClusterRoll() Ocean
 }
 
 type OceanImportScheduledTaskTaskTaskParametersClusterRoll struct {
-	BatchMinHealthyPercentage *int    `pulumi:"batchMinHealthyPercentage"`
-	BatchSizePercentage       *int    `pulumi:"batchSizePercentage"`
-	Comment                   *string `pulumi:"comment"`
-	RespectPdb                *bool   `pulumi:"respectPdb"`
+	// Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+	BatchMinHealthyPercentage *int `pulumi:"batchMinHealthyPercentage"`
+	// Value as a percent to set the size of a batch in a roll. Valid values are 0-100.
+	BatchSizePercentage *int `pulumi:"batchSizePercentage"`
+	// Add a comment description for the roll. The comment is limited to 256 chars.
+	Comment *string `pulumi:"comment"`
+	// During the roll, if the parameter is set to true we honor PDB during the instance replacement.
+	RespectPdb *bool `pulumi:"respectPdb"`
 }
 
 // OceanImportScheduledTaskTaskTaskParametersClusterRollInput is an input type that accepts OceanImportScheduledTaskTaskTaskParametersClusterRollArgs and OceanImportScheduledTaskTaskTaskParametersClusterRollOutput values.
@@ -3965,10 +4074,14 @@ type OceanImportScheduledTaskTaskTaskParametersClusterRollInput interface {
 }
 
 type OceanImportScheduledTaskTaskTaskParametersClusterRollArgs struct {
-	BatchMinHealthyPercentage pulumi.IntPtrInput    `pulumi:"batchMinHealthyPercentage"`
-	BatchSizePercentage       pulumi.IntPtrInput    `pulumi:"batchSizePercentage"`
-	Comment                   pulumi.StringPtrInput `pulumi:"comment"`
-	RespectPdb                pulumi.BoolPtrInput   `pulumi:"respectPdb"`
+	// Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+	BatchMinHealthyPercentage pulumi.IntPtrInput `pulumi:"batchMinHealthyPercentage"`
+	// Value as a percent to set the size of a batch in a roll. Valid values are 0-100.
+	BatchSizePercentage pulumi.IntPtrInput `pulumi:"batchSizePercentage"`
+	// Add a comment description for the roll. The comment is limited to 256 chars.
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// During the roll, if the parameter is set to true we honor PDB during the instance replacement.
+	RespectPdb pulumi.BoolPtrInput `pulumi:"respectPdb"`
 }
 
 func (OceanImportScheduledTaskTaskTaskParametersClusterRollArgs) ElementType() reflect.Type {
@@ -4048,18 +4161,22 @@ func (o OceanImportScheduledTaskTaskTaskParametersClusterRollOutput) ToOceanImpo
 	}).(OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput)
 }
 
+// Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
 func (o OceanImportScheduledTaskTaskTaskParametersClusterRollOutput) BatchMinHealthyPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanImportScheduledTaskTaskTaskParametersClusterRoll) *int { return v.BatchMinHealthyPercentage }).(pulumi.IntPtrOutput)
 }
 
+// Value as a percent to set the size of a batch in a roll. Valid values are 0-100.
 func (o OceanImportScheduledTaskTaskTaskParametersClusterRollOutput) BatchSizePercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanImportScheduledTaskTaskTaskParametersClusterRoll) *int { return v.BatchSizePercentage }).(pulumi.IntPtrOutput)
 }
 
+// Add a comment description for the roll. The comment is limited to 256 chars.
 func (o OceanImportScheduledTaskTaskTaskParametersClusterRollOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanImportScheduledTaskTaskTaskParametersClusterRoll) *string { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
+// During the roll, if the parameter is set to true we honor PDB during the instance replacement.
 func (o OceanImportScheduledTaskTaskTaskParametersClusterRollOutput) RespectPdb() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanImportScheduledTaskTaskTaskParametersClusterRoll) *bool { return v.RespectPdb }).(pulumi.BoolPtrOutput)
 }
@@ -4088,6 +4205,7 @@ func (o OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput) Elem() O
 	}).(OceanImportScheduledTaskTaskTaskParametersClusterRollOutput)
 }
 
+// Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
 func (o OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput) BatchMinHealthyPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanImportScheduledTaskTaskTaskParametersClusterRoll) *int {
 		if v == nil {
@@ -4097,6 +4215,7 @@ func (o OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput) BatchMin
 	}).(pulumi.IntPtrOutput)
 }
 
+// Value as a percent to set the size of a batch in a roll. Valid values are 0-100.
 func (o OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput) BatchSizePercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanImportScheduledTaskTaskTaskParametersClusterRoll) *int {
 		if v == nil {
@@ -4106,6 +4225,7 @@ func (o OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput) BatchSiz
 	}).(pulumi.IntPtrOutput)
 }
 
+// Add a comment description for the roll. The comment is limited to 256 chars.
 func (o OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanImportScheduledTaskTaskTaskParametersClusterRoll) *string {
 		if v == nil {
@@ -4115,6 +4235,7 @@ func (o OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput) Comment(
 	}).(pulumi.StringPtrOutput)
 }
 
+// During the roll, if the parameter is set to true we honor PDB during the instance replacement.
 func (o OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput) RespectPdb() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanImportScheduledTaskTaskTaskParametersClusterRoll) *bool {
 		if v == nil {
@@ -4281,10 +4402,12 @@ func (o OceanImportShieldedInstanceConfigPtrOutput) EnableSecureBoot() pulumi.Bo
 }
 
 type OceanImportStrategy struct {
-	// The draining timeout (in seconds) before terminating the instance.
-	DrainingTimeout       *int    `pulumi:"drainingTimeout"`
-	PreemptiblePercentage *int    `pulumi:"preemptiblePercentage"`
-	ProvisioningModel     *string `pulumi:"provisioningModel"`
+	// The draining timeout (in seconds) before terminating the instance. If no draining timeout is defined, the default draining timeout will be used.
+	DrainingTimeout *int `pulumi:"drainingTimeout"`
+	// Defines the desired preemptible percentage for the cluster.
+	PreemptiblePercentage *int `pulumi:"preemptiblePercentage"`
+	// Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
+	ProvisioningModel *string `pulumi:"provisioningModel"`
 }
 
 // OceanImportStrategyInput is an input type that accepts OceanImportStrategyArgs and OceanImportStrategyOutput values.
@@ -4299,10 +4422,12 @@ type OceanImportStrategyInput interface {
 }
 
 type OceanImportStrategyArgs struct {
-	// The draining timeout (in seconds) before terminating the instance.
-	DrainingTimeout       pulumi.IntPtrInput    `pulumi:"drainingTimeout"`
-	PreemptiblePercentage pulumi.IntPtrInput    `pulumi:"preemptiblePercentage"`
-	ProvisioningModel     pulumi.StringPtrInput `pulumi:"provisioningModel"`
+	// The draining timeout (in seconds) before terminating the instance. If no draining timeout is defined, the default draining timeout will be used.
+	DrainingTimeout pulumi.IntPtrInput `pulumi:"drainingTimeout"`
+	// Defines the desired preemptible percentage for the cluster.
+	PreemptiblePercentage pulumi.IntPtrInput `pulumi:"preemptiblePercentage"`
+	// Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
+	ProvisioningModel pulumi.StringPtrInput `pulumi:"provisioningModel"`
 }
 
 func (OceanImportStrategyArgs) ElementType() reflect.Type {
@@ -4356,15 +4481,17 @@ func (o OceanImportStrategyOutput) ToOceanImportStrategyOutputWithContext(ctx co
 	return o
 }
 
-// The draining timeout (in seconds) before terminating the instance.
+// The draining timeout (in seconds) before terminating the instance. If no draining timeout is defined, the default draining timeout will be used.
 func (o OceanImportStrategyOutput) DrainingTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanImportStrategy) *int { return v.DrainingTimeout }).(pulumi.IntPtrOutput)
 }
 
+// Defines the desired preemptible percentage for the cluster.
 func (o OceanImportStrategyOutput) PreemptiblePercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanImportStrategy) *int { return v.PreemptiblePercentage }).(pulumi.IntPtrOutput)
 }
 
+// Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
 func (o OceanImportStrategyOutput) ProvisioningModel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanImportStrategy) *string { return v.ProvisioningModel }).(pulumi.StringPtrOutput)
 }
@@ -4390,9 +4517,12 @@ func (o OceanImportStrategyArrayOutput) Index(i pulumi.IntInput) OceanImportStra
 }
 
 type OceanImportUpdatePolicy struct {
-	ConditionedRoll *bool                              `pulumi:"conditionedRoll"`
-	RollConfig      *OceanImportUpdatePolicyRollConfig `pulumi:"rollConfig"`
-	ShouldRoll      bool                               `pulumi:"shouldRoll"`
+	// Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
+	ConditionedRoll *bool `pulumi:"conditionedRoll"`
+	// Holds the roll configuration.
+	RollConfig *OceanImportUpdatePolicyRollConfig `pulumi:"rollConfig"`
+	// Enables the roll.
+	ShouldRoll bool `pulumi:"shouldRoll"`
 }
 
 // OceanImportUpdatePolicyInput is an input type that accepts OceanImportUpdatePolicyArgs and OceanImportUpdatePolicyOutput values.
@@ -4407,9 +4537,12 @@ type OceanImportUpdatePolicyInput interface {
 }
 
 type OceanImportUpdatePolicyArgs struct {
-	ConditionedRoll pulumi.BoolPtrInput                       `pulumi:"conditionedRoll"`
-	RollConfig      OceanImportUpdatePolicyRollConfigPtrInput `pulumi:"rollConfig"`
-	ShouldRoll      pulumi.BoolInput                          `pulumi:"shouldRoll"`
+	// Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
+	ConditionedRoll pulumi.BoolPtrInput `pulumi:"conditionedRoll"`
+	// Holds the roll configuration.
+	RollConfig OceanImportUpdatePolicyRollConfigPtrInput `pulumi:"rollConfig"`
+	// Enables the roll.
+	ShouldRoll pulumi.BoolInput `pulumi:"shouldRoll"`
 }
 
 func (OceanImportUpdatePolicyArgs) ElementType() reflect.Type {
@@ -4489,14 +4622,17 @@ func (o OceanImportUpdatePolicyOutput) ToOceanImportUpdatePolicyPtrOutputWithCon
 	}).(OceanImportUpdatePolicyPtrOutput)
 }
 
+// Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
 func (o OceanImportUpdatePolicyOutput) ConditionedRoll() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanImportUpdatePolicy) *bool { return v.ConditionedRoll }).(pulumi.BoolPtrOutput)
 }
 
+// Holds the roll configuration.
 func (o OceanImportUpdatePolicyOutput) RollConfig() OceanImportUpdatePolicyRollConfigPtrOutput {
 	return o.ApplyT(func(v OceanImportUpdatePolicy) *OceanImportUpdatePolicyRollConfig { return v.RollConfig }).(OceanImportUpdatePolicyRollConfigPtrOutput)
 }
 
+// Enables the roll.
 func (o OceanImportUpdatePolicyOutput) ShouldRoll() pulumi.BoolOutput {
 	return o.ApplyT(func(v OceanImportUpdatePolicy) bool { return v.ShouldRoll }).(pulumi.BoolOutput)
 }
@@ -4525,6 +4661,7 @@ func (o OceanImportUpdatePolicyPtrOutput) Elem() OceanImportUpdatePolicyOutput {
 	}).(OceanImportUpdatePolicyOutput)
 }
 
+// Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
 func (o OceanImportUpdatePolicyPtrOutput) ConditionedRoll() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanImportUpdatePolicy) *bool {
 		if v == nil {
@@ -4534,6 +4671,7 @@ func (o OceanImportUpdatePolicyPtrOutput) ConditionedRoll() pulumi.BoolPtrOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Holds the roll configuration.
 func (o OceanImportUpdatePolicyPtrOutput) RollConfig() OceanImportUpdatePolicyRollConfigPtrOutput {
 	return o.ApplyT(func(v *OceanImportUpdatePolicy) *OceanImportUpdatePolicyRollConfig {
 		if v == nil {
@@ -4543,6 +4681,7 @@ func (o OceanImportUpdatePolicyPtrOutput) RollConfig() OceanImportUpdatePolicyRo
 	}).(OceanImportUpdatePolicyRollConfigPtrOutput)
 }
 
+// Enables the roll.
 func (o OceanImportUpdatePolicyPtrOutput) ShouldRoll() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanImportUpdatePolicy) *bool {
 		if v == nil {
@@ -4553,10 +4692,14 @@ func (o OceanImportUpdatePolicyPtrOutput) ShouldRoll() pulumi.BoolPtrOutput {
 }
 
 type OceanImportUpdatePolicyRollConfig struct {
-	BatchMinHealthyPercentage *int     `pulumi:"batchMinHealthyPercentage"`
-	BatchSizePercentage       int      `pulumi:"batchSizePercentage"`
-	LaunchSpecIds             []string `pulumi:"launchSpecIds"`
-	RespectPdb                *bool    `pulumi:"respectPdb"`
+	// Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+	BatchMinHealthyPercentage *int `pulumi:"batchMinHealthyPercentage"`
+	// Sets the percentage of the instances to deploy in each batch.
+	BatchSizePercentage int `pulumi:"batchSizePercentage"`
+	// List of Virtual Node Group identifiers to be rolled.
+	LaunchSpecIds []string `pulumi:"launchSpecIds"`
+	// Default: False. During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+	RespectPdb *bool `pulumi:"respectPdb"`
 }
 
 // OceanImportUpdatePolicyRollConfigInput is an input type that accepts OceanImportUpdatePolicyRollConfigArgs and OceanImportUpdatePolicyRollConfigOutput values.
@@ -4571,10 +4714,14 @@ type OceanImportUpdatePolicyRollConfigInput interface {
 }
 
 type OceanImportUpdatePolicyRollConfigArgs struct {
-	BatchMinHealthyPercentage pulumi.IntPtrInput      `pulumi:"batchMinHealthyPercentage"`
-	BatchSizePercentage       pulumi.IntInput         `pulumi:"batchSizePercentage"`
-	LaunchSpecIds             pulumi.StringArrayInput `pulumi:"launchSpecIds"`
-	RespectPdb                pulumi.BoolPtrInput     `pulumi:"respectPdb"`
+	// Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+	BatchMinHealthyPercentage pulumi.IntPtrInput `pulumi:"batchMinHealthyPercentage"`
+	// Sets the percentage of the instances to deploy in each batch.
+	BatchSizePercentage pulumi.IntInput `pulumi:"batchSizePercentage"`
+	// List of Virtual Node Group identifiers to be rolled.
+	LaunchSpecIds pulumi.StringArrayInput `pulumi:"launchSpecIds"`
+	// Default: False. During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+	RespectPdb pulumi.BoolPtrInput `pulumi:"respectPdb"`
 }
 
 func (OceanImportUpdatePolicyRollConfigArgs) ElementType() reflect.Type {
@@ -4654,18 +4801,22 @@ func (o OceanImportUpdatePolicyRollConfigOutput) ToOceanImportUpdatePolicyRollCo
 	}).(OceanImportUpdatePolicyRollConfigPtrOutput)
 }
 
+// Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
 func (o OceanImportUpdatePolicyRollConfigOutput) BatchMinHealthyPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanImportUpdatePolicyRollConfig) *int { return v.BatchMinHealthyPercentage }).(pulumi.IntPtrOutput)
 }
 
+// Sets the percentage of the instances to deploy in each batch.
 func (o OceanImportUpdatePolicyRollConfigOutput) BatchSizePercentage() pulumi.IntOutput {
 	return o.ApplyT(func(v OceanImportUpdatePolicyRollConfig) int { return v.BatchSizePercentage }).(pulumi.IntOutput)
 }
 
+// List of Virtual Node Group identifiers to be rolled.
 func (o OceanImportUpdatePolicyRollConfigOutput) LaunchSpecIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanImportUpdatePolicyRollConfig) []string { return v.LaunchSpecIds }).(pulumi.StringArrayOutput)
 }
 
+// Default: False. During the roll, if the parameter is set to True we honor PDB during the instance replacement.
 func (o OceanImportUpdatePolicyRollConfigOutput) RespectPdb() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanImportUpdatePolicyRollConfig) *bool { return v.RespectPdb }).(pulumi.BoolPtrOutput)
 }
@@ -4694,6 +4845,7 @@ func (o OceanImportUpdatePolicyRollConfigPtrOutput) Elem() OceanImportUpdatePoli
 	}).(OceanImportUpdatePolicyRollConfigOutput)
 }
 
+// Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
 func (o OceanImportUpdatePolicyRollConfigPtrOutput) BatchMinHealthyPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanImportUpdatePolicyRollConfig) *int {
 		if v == nil {
@@ -4703,6 +4855,7 @@ func (o OceanImportUpdatePolicyRollConfigPtrOutput) BatchMinHealthyPercentage() 
 	}).(pulumi.IntPtrOutput)
 }
 
+// Sets the percentage of the instances to deploy in each batch.
 func (o OceanImportUpdatePolicyRollConfigPtrOutput) BatchSizePercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanImportUpdatePolicyRollConfig) *int {
 		if v == nil {
@@ -4712,6 +4865,7 @@ func (o OceanImportUpdatePolicyRollConfigPtrOutput) BatchSizePercentage() pulumi
 	}).(pulumi.IntPtrOutput)
 }
 
+// List of Virtual Node Group identifiers to be rolled.
 func (o OceanImportUpdatePolicyRollConfigPtrOutput) LaunchSpecIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanImportUpdatePolicyRollConfig) []string {
 		if v == nil {
@@ -4721,6 +4875,7 @@ func (o OceanImportUpdatePolicyRollConfigPtrOutput) LaunchSpecIds() pulumi.Strin
 	}).(pulumi.StringArrayOutput)
 }
 
+// Default: False. During the roll, if the parameter is set to True we honor PDB during the instance replacement.
 func (o OceanImportUpdatePolicyRollConfigPtrOutput) RespectPdb() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanImportUpdatePolicyRollConfig) *bool {
 		if v == nil {
@@ -5401,8 +5556,6 @@ type OceanLaunchSpecNetworkInterfaceAliasIpRange struct {
 	// specify the IP address range in CIDR notation that can be used for the alias IP addresses associated with the imported node pool.
 	IpCidrRange string `pulumi:"ipCidrRange"`
 	// specify the IP address range for the subnet secondary IP range.
-	//
-	// <a id="update-policy"></a>
 	SubnetworkRangeName string `pulumi:"subnetworkRangeName"`
 }
 
@@ -5421,8 +5574,6 @@ type OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs struct {
 	// specify the IP address range in CIDR notation that can be used for the alias IP addresses associated with the imported node pool.
 	IpCidrRange pulumi.StringInput `pulumi:"ipCidrRange"`
 	// specify the IP address range for the subnet secondary IP range.
-	//
-	// <a id="update-policy"></a>
 	SubnetworkRangeName pulumi.StringInput `pulumi:"subnetworkRangeName"`
 }
 
@@ -5483,8 +5634,6 @@ func (o OceanLaunchSpecNetworkInterfaceAliasIpRangeOutput) IpCidrRange() pulumi.
 }
 
 // specify the IP address range for the subnet secondary IP range.
-//
-// <a id="update-policy"></a>
 func (o OceanLaunchSpecNetworkInterfaceAliasIpRangeOutput) SubnetworkRangeName() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanLaunchSpecNetworkInterfaceAliasIpRange) string { return v.SubnetworkRangeName }).(pulumi.StringOutput)
 }
@@ -6421,8 +6570,10 @@ func (o OceanLaunchSpecTaintArrayOutput) Index(i pulumi.IntInput) OceanLaunchSpe
 }
 
 type OceanLaunchSpecUpdatePolicy struct {
+	// Holds the roll configuration.
 	RollConfig *OceanLaunchSpecUpdatePolicyRollConfig `pulumi:"rollConfig"`
-	ShouldRoll bool                                   `pulumi:"shouldRoll"`
+	// Enables the roll.
+	ShouldRoll bool `pulumi:"shouldRoll"`
 }
 
 // OceanLaunchSpecUpdatePolicyInput is an input type that accepts OceanLaunchSpecUpdatePolicyArgs and OceanLaunchSpecUpdatePolicyOutput values.
@@ -6437,8 +6588,10 @@ type OceanLaunchSpecUpdatePolicyInput interface {
 }
 
 type OceanLaunchSpecUpdatePolicyArgs struct {
+	// Holds the roll configuration.
 	RollConfig OceanLaunchSpecUpdatePolicyRollConfigPtrInput `pulumi:"rollConfig"`
-	ShouldRoll pulumi.BoolInput                              `pulumi:"shouldRoll"`
+	// Enables the roll.
+	ShouldRoll pulumi.BoolInput `pulumi:"shouldRoll"`
 }
 
 func (OceanLaunchSpecUpdatePolicyArgs) ElementType() reflect.Type {
@@ -6518,10 +6671,12 @@ func (o OceanLaunchSpecUpdatePolicyOutput) ToOceanLaunchSpecUpdatePolicyPtrOutpu
 	}).(OceanLaunchSpecUpdatePolicyPtrOutput)
 }
 
+// Holds the roll configuration.
 func (o OceanLaunchSpecUpdatePolicyOutput) RollConfig() OceanLaunchSpecUpdatePolicyRollConfigPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecUpdatePolicy) *OceanLaunchSpecUpdatePolicyRollConfig { return v.RollConfig }).(OceanLaunchSpecUpdatePolicyRollConfigPtrOutput)
 }
 
+// Enables the roll.
 func (o OceanLaunchSpecUpdatePolicyOutput) ShouldRoll() pulumi.BoolOutput {
 	return o.ApplyT(func(v OceanLaunchSpecUpdatePolicy) bool { return v.ShouldRoll }).(pulumi.BoolOutput)
 }
@@ -6550,6 +6705,7 @@ func (o OceanLaunchSpecUpdatePolicyPtrOutput) Elem() OceanLaunchSpecUpdatePolicy
 	}).(OceanLaunchSpecUpdatePolicyOutput)
 }
 
+// Holds the roll configuration.
 func (o OceanLaunchSpecUpdatePolicyPtrOutput) RollConfig() OceanLaunchSpecUpdatePolicyRollConfigPtrOutput {
 	return o.ApplyT(func(v *OceanLaunchSpecUpdatePolicy) *OceanLaunchSpecUpdatePolicyRollConfig {
 		if v == nil {
@@ -6559,6 +6715,7 @@ func (o OceanLaunchSpecUpdatePolicyPtrOutput) RollConfig() OceanLaunchSpecUpdate
 	}).(OceanLaunchSpecUpdatePolicyRollConfigPtrOutput)
 }
 
+// Enables the roll.
 func (o OceanLaunchSpecUpdatePolicyPtrOutput) ShouldRoll() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanLaunchSpecUpdatePolicy) *bool {
 		if v == nil {
@@ -6569,6 +6726,7 @@ func (o OceanLaunchSpecUpdatePolicyPtrOutput) ShouldRoll() pulumi.BoolPtrOutput 
 }
 
 type OceanLaunchSpecUpdatePolicyRollConfig struct {
+	// Sets the percentage of the instances to deploy in each batch.
 	BatchSizePercentage int `pulumi:"batchSizePercentage"`
 }
 
@@ -6584,6 +6742,7 @@ type OceanLaunchSpecUpdatePolicyRollConfigInput interface {
 }
 
 type OceanLaunchSpecUpdatePolicyRollConfigArgs struct {
+	// Sets the percentage of the instances to deploy in each batch.
 	BatchSizePercentage pulumi.IntInput `pulumi:"batchSizePercentage"`
 }
 
@@ -6664,6 +6823,7 @@ func (o OceanLaunchSpecUpdatePolicyRollConfigOutput) ToOceanLaunchSpecUpdatePoli
 	}).(OceanLaunchSpecUpdatePolicyRollConfigPtrOutput)
 }
 
+// Sets the percentage of the instances to deploy in each batch.
 func (o OceanLaunchSpecUpdatePolicyRollConfigOutput) BatchSizePercentage() pulumi.IntOutput {
 	return o.ApplyT(func(v OceanLaunchSpecUpdatePolicyRollConfig) int { return v.BatchSizePercentage }).(pulumi.IntOutput)
 }
@@ -6692,6 +6852,7 @@ func (o OceanLaunchSpecUpdatePolicyRollConfigPtrOutput) Elem() OceanLaunchSpecUp
 	}).(OceanLaunchSpecUpdatePolicyRollConfigOutput)
 }
 
+// Sets the percentage of the instances to deploy in each batch.
 func (o OceanLaunchSpecUpdatePolicyRollConfigPtrOutput) BatchSizePercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanLaunchSpecUpdatePolicyRollConfig) *int {
 		if v == nil {

@@ -14,37 +14,101 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanNpUpdatePolicyRollConfig {
+    /**
+     * @return Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+     * 
+     */
     private @Nullable Integer batchMinHealthyPercentage;
+    /**
+     * @return Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.
+     * 
+     */
     private @Nullable Integer batchSizePercentage;
+    /**
+     * @return Add a comment description for the roll. The comment is limited to 256 chars and optional.
+     * 
+     */
     private @Nullable String comment;
+    /**
+     * @return List of node names to be rolled. Each identifier is a string. nodeNames can be null, and cannot be used together with nodePoolNames and vngIds.
+     * 
+     */
     private @Nullable List<String> nodeNames;
+    /**
+     * @return List of node pools to be rolled. Each node pool name is a string. nodePoolNames can be null, and cannot be used together with nodeNames and vngIds.
+     * 
+     */
     private @Nullable List<String> nodePoolNames;
+    /**
+     * @return During the roll, if the parameter is set to true we honor PDB during the nodes replacement.
+     * 
+     */
     private @Nullable Boolean respectPdb;
+    /**
+     * @return During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.
+     * 
+     */
     private @Nullable Boolean respectRestrictScaleDown;
+    /**
+     * @return List of virtual node group identifiers to be rolled. Each identifier is a string. vngIds can be null, and cannot be used together with nodeNames and nodePoolNames.
+     * 
+     */
     private @Nullable List<String> vngIds;
 
     private OceanNpUpdatePolicyRollConfig() {}
+    /**
+     * @return Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+     * 
+     */
     public Optional<Integer> batchMinHealthyPercentage() {
         return Optional.ofNullable(this.batchMinHealthyPercentage);
     }
+    /**
+     * @return Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.
+     * 
+     */
     public Optional<Integer> batchSizePercentage() {
         return Optional.ofNullable(this.batchSizePercentage);
     }
+    /**
+     * @return Add a comment description for the roll. The comment is limited to 256 chars and optional.
+     * 
+     */
     public Optional<String> comment() {
         return Optional.ofNullable(this.comment);
     }
+    /**
+     * @return List of node names to be rolled. Each identifier is a string. nodeNames can be null, and cannot be used together with nodePoolNames and vngIds.
+     * 
+     */
     public List<String> nodeNames() {
         return this.nodeNames == null ? List.of() : this.nodeNames;
     }
+    /**
+     * @return List of node pools to be rolled. Each node pool name is a string. nodePoolNames can be null, and cannot be used together with nodeNames and vngIds.
+     * 
+     */
     public List<String> nodePoolNames() {
         return this.nodePoolNames == null ? List.of() : this.nodePoolNames;
     }
+    /**
+     * @return During the roll, if the parameter is set to true we honor PDB during the nodes replacement.
+     * 
+     */
     public Optional<Boolean> respectPdb() {
         return Optional.ofNullable(this.respectPdb);
     }
+    /**
+     * @return During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.
+     * 
+     */
     public Optional<Boolean> respectRestrictScaleDown() {
         return Optional.ofNullable(this.respectRestrictScaleDown);
     }
+    /**
+     * @return List of virtual node group identifiers to be rolled. Each identifier is a string. vngIds can be null, and cannot be used together with nodeNames and nodePoolNames.
+     * 
+     */
     public List<String> vngIds() {
         return this.vngIds == null ? List.of() : this.vngIds;
     }

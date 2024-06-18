@@ -13,16 +13,39 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class ElastigroupNetworkInterface
     {
+        /// <summary>
+        /// Indicates whether to assign IPV6 addresses to your instance. Requires a subnet with IPV6 CIDR block ranges.
+        /// 
+        /// Usage:
+        /// </summary>
         public readonly bool? AssociateIpv6Address;
+        /// <summary>
+        /// Indicates whether to assign a public IP address to an instance you launch in a VPC. The public IP address can only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an existing one.
+        /// </summary>
         public readonly bool? AssociatePublicIpAddress;
+        /// <summary>
+        /// If set to true, the interface is deleted when the instance is terminated.
+        /// </summary>
         public readonly bool? DeleteOnTermination;
         /// <summary>
-        /// The group description.
+        /// The description of the network interface.
         /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// The index of the device on the instance for the network interface attachment.
+        /// </summary>
         public readonly string DeviceIndex;
+        /// <summary>
+        /// The ID of the network interface.
+        /// </summary>
         public readonly string? NetworkInterfaceId;
+        /// <summary>
+        /// The private IP address of the network interface.
+        /// </summary>
         public readonly string? PrivateIpAddress;
+        /// <summary>
+        /// The number of secondary private IP addresses.
+        /// </summary>
         public readonly string? SecondaryPrivateIpAddressCount;
 
         [OutputConstructor]

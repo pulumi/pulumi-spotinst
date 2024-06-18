@@ -310,7 +310,6 @@ import javax.annotation.Nullable;
  * * `resource_group_name` - (Required) Name of the Resource Group for stateful node.
  * * `description` - (Optional) Describe your Azure stateful node.
  * 
- * &lt;a id=&#34;strategy&#34;&gt;&lt;/a&gt;
  * ## Strategy
  * 
  * * `strategy` - (Required) Strategy for stateful node.
@@ -331,7 +330,6 @@ import javax.annotation.Nullable;
  *       * `crg_resource_group_name` - (Required) Azure resource group name
  *       * `crg_should_prioritize` - The desired CRG to utilize ahead of other CRGs in the subscription.
  * 
- * &lt;a id=&#34;compute&#34;&gt;&lt;/a&gt;
  * ## Compute
  * 
  * * `os` - (Required, Enum `&#34;Linux&#34;, &#34;Windows&#34;`) Type of operating system.
@@ -363,7 +361,6 @@ import javax.annotation.Nullable;
  *   * `lun` - (Required) The LUN of the data disk.
  *   * `type` - (Required, Enum `&#34;Standard_LRS&#34;, &#34;Premium_LRS&#34;, &#34;StandardSSD_LRS&#34;, &#34;UltraSSD_LRS&#34;`) The type of the data disk.
  * 
- * &lt;a id=&#34;extensions&#34;&gt;&lt;/a&gt;
  * ## Extensions
  * 
  * * `extension` - (Optional) An object for an azure extension.
@@ -375,7 +372,6 @@ import javax.annotation.Nullable;
  *   * `protected_settings` - (Optional) Object for protected settings.
  *   * `public_settings` - (Optional) Object for public settings.
  * 
- * &lt;a id=&#34;image&#34;&gt;&lt;/a&gt;
  * ## Image
  * 
  * * `image`
@@ -407,7 +403,6 @@ import javax.annotation.Nullable;
  *       `“Standard_Large”, “Standard_Medium”, “Standard_Small”, “Standard_v2&#34;, “WAF_Large”, “WAF_Medium&#34;, “WAF_v2&#34;`.
  *   * `backend_pool_names` - (Optional) Name of the Backend Pool to register the Stateful Node VMs to. Each Backend Pool is a separate load balancer. Required if Type is APPLICATION_GATEWAY.
  * 
- * &lt;a id=&#34;login&#34;&gt;&lt;/a&gt;
  * ## Login
  * 
  * * `login` - (Required) Set admin access for accessing your VMs. Password/SSH is required for Linux.
@@ -429,7 +424,6 @@ import javax.annotation.Nullable;
  *   * `name` - (Required) name of the proximity placement group.
  *   * `resource_group_name` - (Required) The Resource Group name of the proximity placement group.
  * 
- * &lt;a id=&#34;network&#34;&gt;&lt;/a&gt;
  * ## Network
  * 
  * * `network` - (Required) Define the Virtual Network and Subnet for your Stateful Node.
@@ -463,7 +457,6 @@ import javax.annotation.Nullable;
  *   * `type` - (Required, Enum `&#34;Standard_LRS&#34;, &#34;Premium_LRS&#34;, &#34;StandardSSD_LRS&#34;`) The type of the OS disk.
  *   * `caching` - (Optional, Enum `&#34;None&#34;, &#34;ReadOnly&#34;, &#34;ReadWrite&#34;`) Specifies the host caching requirements. With disk caching enabled, VMs can achieve higher levels of performance. If not specified, the Azure default behavior will be applied.
  * 
- * &lt;a id=&#34;secret&#34;&gt;&lt;/a&gt;
  * ## Secret
  * 
  * * `secret` - (Optional) Set of certificates that should be installed on the VM.
@@ -476,7 +469,6 @@ import javax.annotation.Nullable;
  *       * This field is required only when using Windows OS type
  *       * This field must be ‘null’ when the OS type is Linux
  * 
- * &lt;a id=&#34;secutiry&#34;&gt;&lt;/a&gt;
  * ## Security
  * 
  * * `security` - (Optional) Specifies the Security related profile settings for the virtual machine.
@@ -484,14 +476,12 @@ import javax.annotation.Nullable;
  *     * `security_type` - (Optional) Enum: `&#34;Standard&#34;, &#34;TrustedLaunch&#34;` Security type refers to the different security features of a virtual machine. Security features like Trusted launch virtual machines help to improve the security of Azure generation 2 virtual machines.
  *     * `vtpm_enabled` - (Optional) Specifies whether vTPM should be enabled on the virtual machine.
  * 
- * &lt;a id=&#34;tag&#34;&gt;&lt;/a&gt;
  * ## Tag
  * 
  * * `tag` - (Optional) Unique Key-Value pair for all Stateful Node Resources.
  *   * `tag_key` - (Optional) Tag Key for Stateful Node Resources.
  *   * `tag_value` - (Optional) Tag Value for Stateful Node Resources.
  * 
- * &lt;a id=&#34;health&#34;&gt;&lt;/a&gt;
  * ## Health
  * 
  * * `health` - (Optional) Set the auto healing preferences for unhealthy VMs.
@@ -500,7 +490,6 @@ import javax.annotation.Nullable;
  *   * `auto_healing` - (Required) Enable Autohealing of unhealthy VMs.
  *   * `grace_period` - (Optional) Period of time to wait for VM to reach healthiness before monitoring for unhealthiness.
  * 
- * &lt;a id=&#34;persistence&#34;&gt;&lt;/a&gt;
  * ## Persistence
  * 
  * * `should_persist_os_disk` - (Required) Should persist os disk.
@@ -517,7 +506,6 @@ import javax.annotation.Nullable;
  *   * `type` - (Required, Enum `&#34;pause&#34;, &#34;resume&#34;, &#34;recycle&#34;) The type of the scheduled task
  *   * `cron_expression` (Required) A expression which describes when to execute the scheduled task (UTC).
  * 
- * &lt;a id=&#34;signals&#34;&gt;&lt;/a&gt;
  * ## Signals
  * 
  * * `signal` - (Optional) A signal object defined for the stateful node.
@@ -561,7 +549,6 @@ import javax.annotation.Nullable;
  *   * `draining_timeout` - (Optional) Hours to keep resources alive.
  *   * `resources_retention_time` - (Optional) Hours to keep resources alive.
  * 
- * &lt;a id=&#34;delete&#34;&gt;&lt;/a&gt;
  * ## Deallocation Config
  * 
  * * `delete` - (Required) Specify deallocation parameters for stateful node deletion.

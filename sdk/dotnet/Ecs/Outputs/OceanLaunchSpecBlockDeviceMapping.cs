@@ -13,7 +13,13 @@ namespace Pulumi.SpotInst.Ecs.Outputs
     [OutputType]
     public sealed class OceanLaunchSpecBlockDeviceMapping
     {
+        /// <summary>
+        /// String. Set device name. (Example: "/dev/xvda1").
+        /// </summary>
         public readonly string DeviceName;
+        /// <summary>
+        /// Object. Set Elastic Block Store properties .
+        /// </summary>
         public readonly Outputs.OceanLaunchSpecBlockDeviceMappingEbs? Ebs;
         public readonly string? NoDevice;
         public readonly string? VirtualName;

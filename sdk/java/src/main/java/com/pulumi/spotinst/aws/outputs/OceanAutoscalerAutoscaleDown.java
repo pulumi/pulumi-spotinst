@@ -14,16 +14,32 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OceanAutoscalerAutoscaleDown {
     private @Nullable Integer evaluationPeriods;
+    /**
+     * @return When set to &#39;true&#39;, the Aggressive Scale Down feature is enabled.
+     * 
+     */
     private @Nullable Boolean isAggressiveScaleDownEnabled;
+    /**
+     * @return Would represent the maximum % to scale-down. Number between 1-100.
+     * 
+     */
     private @Nullable Double maxScaleDownPercentage;
 
     private OceanAutoscalerAutoscaleDown() {}
     public Optional<Integer> evaluationPeriods() {
         return Optional.ofNullable(this.evaluationPeriods);
     }
+    /**
+     * @return When set to &#39;true&#39;, the Aggressive Scale Down feature is enabled.
+     * 
+     */
     public Optional<Boolean> isAggressiveScaleDownEnabled() {
         return Optional.ofNullable(this.isAggressiveScaleDownEnabled);
     }
+    /**
+     * @return Would represent the maximum % to scale-down. Number between 1-100.
+     * 
+     */
     public Optional<Double> maxScaleDownPercentage() {
         return Optional.ofNullable(this.maxScaleDownPercentage);
     }

@@ -13,9 +13,21 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class ElastigroupUpdatePolicyRollConfigStrategy
     {
+        /// <summary>
+        /// Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
+        /// </summary>
         public readonly string Action;
+        /// <summary>
+        /// Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the deployment will fail. Range `1` - `100`.
+        /// </summary>
         public readonly int? BatchMinHealthyPercentage;
+        /// <summary>
+        /// Set detach options to the deployment.
+        /// </summary>
         public readonly Outputs.ElastigroupUpdatePolicyRollConfigStrategyOnFailure? OnFailure;
+        /// <summary>
+        /// Specify whether to drain incoming TCP connections before terminating a server.
+        /// </summary>
         public readonly bool? ShouldDrainInstances;
 
         [OutputConstructor]

@@ -13,13 +13,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanLaunchSpecUpdatePolicy {
+    /**
+     * @return Holds the roll configuration.
+     * 
+     */
     private @Nullable OceanLaunchSpecUpdatePolicyRollConfig rollConfig;
+    /**
+     * @return Enables the roll.
+     * 
+     */
     private Boolean shouldRoll;
 
     private OceanLaunchSpecUpdatePolicy() {}
+    /**
+     * @return Holds the roll configuration.
+     * 
+     */
     public Optional<OceanLaunchSpecUpdatePolicyRollConfig> rollConfig() {
         return Optional.ofNullable(this.rollConfig);
     }
+    /**
+     * @return Enables the roll.
+     * 
+     */
     public Boolean shouldRoll() {
         return this.shouldRoll;
     }

@@ -12,21 +12,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanScheduledTaskTaskParametersAmiAutoUpdate {
+    /**
+     * @return Set clusterRoll object
+     * 
+     */
     private @Nullable OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRoll amiAutoUpdateClusterRoll;
+    /**
+     * @return When the AMI is updated according to the configuration set, a cluster roll can be triggered
+     * 
+     */
     private @Nullable Boolean applyRoll;
+    /**
+     * @return When set to &#39;true&#39;, the auto-update process will update the VNGs’ AMI with the AMI to match the Kubernetes control plane version. either &#34;patch&#34; or &#34;minor_version&#34; must be true.
+     * 
+     */
     private @Nullable Boolean minorVersion;
+    /**
+     * @return When set to &#39;true&#39;, the auto-update process will update the VNGs’ images with the latest security patches. either &#34;patch&#34; or &#34;minorVersion&#34; must be true.
+     * 
+     */
     private @Nullable Boolean patch;
 
     private OceanScheduledTaskTaskParametersAmiAutoUpdate() {}
+    /**
+     * @return Set clusterRoll object
+     * 
+     */
     public Optional<OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRoll> amiAutoUpdateClusterRoll() {
         return Optional.ofNullable(this.amiAutoUpdateClusterRoll);
     }
+    /**
+     * @return When the AMI is updated according to the configuration set, a cluster roll can be triggered
+     * 
+     */
     public Optional<Boolean> applyRoll() {
         return Optional.ofNullable(this.applyRoll);
     }
+    /**
+     * @return When set to &#39;true&#39;, the auto-update process will update the VNGs’ AMI with the AMI to match the Kubernetes control plane version. either &#34;patch&#34; or &#34;minor_version&#34; must be true.
+     * 
+     */
     public Optional<Boolean> minorVersion() {
         return Optional.ofNullable(this.minorVersion);
     }
+    /**
+     * @return When set to &#39;true&#39;, the auto-update process will update the VNGs’ images with the latest security patches. either &#34;patch&#34; or &#34;minorVersion&#34; must be true.
+     * 
+     */
     public Optional<Boolean> patch() {
         return Optional.ofNullable(this.patch);
     }

@@ -74,15 +74,31 @@ public class Ocean extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> associatePublicIpAddress() {
         return Codegen.optional(this.associatePublicIpAddress);
     }
+    /**
+     * Attach load balancers to the cluster.
+     * 
+     */
     @Export(name="attachLoadBalancers", refs={List.class,OceanAttachLoadBalancer.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OceanAttachLoadBalancer>> attachLoadBalancers;
 
+    /**
+     * @return Attach load balancers to the cluster.
+     * 
+     */
     public Output<Optional<List<OceanAttachLoadBalancer>>> attachLoadBalancers() {
         return Codegen.optional(this.attachLoadBalancers);
     }
+    /**
+     * Describes the Ocean Kubernetes Auto Scaler.
+     * 
+     */
     @Export(name="autoscaler", refs={OceanAutoscaler.class}, tree="[0]")
     private Output</* @Nullable */ OceanAutoscaler> autoscaler;
 
+    /**
+     * @return Describes the Ocean Kubernetes Auto Scaler.
+     * 
+     */
     public Output<Optional<OceanAutoscaler>> autoscaler() {
         return Codegen.optional(this.autoscaler);
     }
@@ -140,9 +156,17 @@ public class Ocean extends com.pulumi.resources.CustomResource {
     public Output<Integer> desiredCapacity() {
         return this.desiredCapacity;
     }
+    /**
+     * Detach load balancers from the cluster.
+     * 
+     */
     @Export(name="detachLoadBalancers", refs={List.class,OceanDetachLoadBalancer.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OceanDetachLoadBalancer>> detachLoadBalancers;
 
+    /**
+     * @return Detach load balancers from the cluster.
+     * 
+     */
     public Output<Optional<List<OceanDetachLoadBalancer>>> detachLoadBalancers() {
         return Codegen.optional(this.detachLoadBalancers);
     }
@@ -404,9 +428,17 @@ public class Ocean extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> rootVolumeSize() {
         return Codegen.optional(this.rootVolumeSize);
     }
+    /**
+     * Set scheduling object.
+     * 
+     */
     @Export(name="scheduledTasks", refs={List.class,OceanScheduledTask.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OceanScheduledTask>> scheduledTasks;
 
+    /**
+     * @return Set scheduling object.
+     * 
+     */
     public Output<Optional<List<OceanScheduledTask>>> scheduledTasks() {
         return Codegen.optional(this.scheduledTasks);
     }

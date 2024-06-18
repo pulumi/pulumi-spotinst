@@ -14,10 +14,14 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type ElastigroupBackendService struct {
-	LocationType *string                              `pulumi:"locationType"`
-	NamedPorts   []ElastigroupBackendServiceNamedPort `pulumi:"namedPorts"`
-	Scheme       *string                              `pulumi:"scheme"`
-	ServiceName  string                               `pulumi:"serviceName"`
+	// Sets which location the backend services will be active. Valid values: `regional`, `global`.
+	LocationType *string `pulumi:"locationType"`
+	// Describes a named port and a list of ports.
+	NamedPorts []ElastigroupBackendServiceNamedPort `pulumi:"namedPorts"`
+	// Use when `locationType` is "regional". Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
+	Scheme *string `pulumi:"scheme"`
+	// The name of the backend service.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // ElastigroupBackendServiceInput is an input type that accepts ElastigroupBackendServiceArgs and ElastigroupBackendServiceOutput values.
@@ -32,10 +36,14 @@ type ElastigroupBackendServiceInput interface {
 }
 
 type ElastigroupBackendServiceArgs struct {
-	LocationType pulumi.StringPtrInput                        `pulumi:"locationType"`
-	NamedPorts   ElastigroupBackendServiceNamedPortArrayInput `pulumi:"namedPorts"`
-	Scheme       pulumi.StringPtrInput                        `pulumi:"scheme"`
-	ServiceName  pulumi.StringInput                           `pulumi:"serviceName"`
+	// Sets which location the backend services will be active. Valid values: `regional`, `global`.
+	LocationType pulumi.StringPtrInput `pulumi:"locationType"`
+	// Describes a named port and a list of ports.
+	NamedPorts ElastigroupBackendServiceNamedPortArrayInput `pulumi:"namedPorts"`
+	// Use when `locationType` is "regional". Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
+	Scheme pulumi.StringPtrInput `pulumi:"scheme"`
+	// The name of the backend service.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (ElastigroupBackendServiceArgs) ElementType() reflect.Type {
@@ -89,18 +97,22 @@ func (o ElastigroupBackendServiceOutput) ToElastigroupBackendServiceOutputWithCo
 	return o
 }
 
+// Sets which location the backend services will be active. Valid values: `regional`, `global`.
 func (o ElastigroupBackendServiceOutput) LocationType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupBackendService) *string { return v.LocationType }).(pulumi.StringPtrOutput)
 }
 
+// Describes a named port and a list of ports.
 func (o ElastigroupBackendServiceOutput) NamedPorts() ElastigroupBackendServiceNamedPortArrayOutput {
 	return o.ApplyT(func(v ElastigroupBackendService) []ElastigroupBackendServiceNamedPort { return v.NamedPorts }).(ElastigroupBackendServiceNamedPortArrayOutput)
 }
 
+// Use when `locationType` is "regional". Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
 func (o ElastigroupBackendServiceOutput) Scheme() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupBackendService) *string { return v.Scheme }).(pulumi.StringPtrOutput)
 }
 
+// The name of the backend service.
 func (o ElastigroupBackendServiceOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupBackendService) string { return v.ServiceName }).(pulumi.StringOutput)
 }
@@ -126,8 +138,11 @@ func (o ElastigroupBackendServiceArrayOutput) Index(i pulumi.IntInput) Elastigro
 }
 
 type ElastigroupBackendServiceNamedPort struct {
-	// The group name.
-	Name  string   `pulumi:"name"`
+	// The name of the port.
+	Name string `pulumi:"name"`
+	// A list of ports.
+	//
+	// Usage:
 	Ports []string `pulumi:"ports"`
 }
 
@@ -143,8 +158,11 @@ type ElastigroupBackendServiceNamedPortInput interface {
 }
 
 type ElastigroupBackendServiceNamedPortArgs struct {
-	// The group name.
-	Name  pulumi.StringInput      `pulumi:"name"`
+	// The name of the port.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of ports.
+	//
+	// Usage:
 	Ports pulumi.StringArrayInput `pulumi:"ports"`
 }
 
@@ -199,11 +217,14 @@ func (o ElastigroupBackendServiceNamedPortOutput) ToElastigroupBackendServiceNam
 	return o
 }
 
-// The group name.
+// The name of the port.
 func (o ElastigroupBackendServiceNamedPortOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupBackendServiceNamedPort) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// A list of ports.
+//
+// Usage:
 func (o ElastigroupBackendServiceNamedPortOutput) Ports() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ElastigroupBackendServiceNamedPort) []string { return v.Ports }).(pulumi.StringArrayOutput)
 }
@@ -229,14 +250,22 @@ func (o ElastigroupBackendServiceNamedPortArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type ElastigroupDisk struct {
-	AutoDelete       *bool                            `pulumi:"autoDelete"`
-	Boot             *bool                            `pulumi:"boot"`
-	DeviceName       *string                          `pulumi:"deviceName"`
+	// Specifies whether the disk will be auto-deleted when the instance is deleted.
+	AutoDelete *bool `pulumi:"autoDelete"`
+	// Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
+	Boot *bool `pulumi:"boot"`
+	// Specifies a unique device name of your choice.
+	DeviceName *string `pulumi:"deviceName"`
+	// Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance.
 	InitializeParams []ElastigroupDiskInitializeParam `pulumi:"initializeParams"`
-	Interface        *string                          `pulumi:"interface"`
-	Mode             *string                          `pulumi:"mode"`
-	Source           *string                          `pulumi:"source"`
-	Type             *string                          `pulumi:"type"`
+	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME.
+	Interface *string `pulumi:"interface"`
+	// The mode in which to attach this disk, either READ_WRITE or READ_ONLY.
+	Mode *string `pulumi:"mode"`
+	// Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
+	Source *string `pulumi:"source"`
+	// Specifies the type of disk, either SCRATCH or PERSISTENT.
+	Type *string `pulumi:"type"`
 }
 
 // ElastigroupDiskInput is an input type that accepts ElastigroupDiskArgs and ElastigroupDiskOutput values.
@@ -251,14 +280,22 @@ type ElastigroupDiskInput interface {
 }
 
 type ElastigroupDiskArgs struct {
-	AutoDelete       pulumi.BoolPtrInput                      `pulumi:"autoDelete"`
-	Boot             pulumi.BoolPtrInput                      `pulumi:"boot"`
-	DeviceName       pulumi.StringPtrInput                    `pulumi:"deviceName"`
+	// Specifies whether the disk will be auto-deleted when the instance is deleted.
+	AutoDelete pulumi.BoolPtrInput `pulumi:"autoDelete"`
+	// Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
+	Boot pulumi.BoolPtrInput `pulumi:"boot"`
+	// Specifies a unique device name of your choice.
+	DeviceName pulumi.StringPtrInput `pulumi:"deviceName"`
+	// Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance.
 	InitializeParams ElastigroupDiskInitializeParamArrayInput `pulumi:"initializeParams"`
-	Interface        pulumi.StringPtrInput                    `pulumi:"interface"`
-	Mode             pulumi.StringPtrInput                    `pulumi:"mode"`
-	Source           pulumi.StringPtrInput                    `pulumi:"source"`
-	Type             pulumi.StringPtrInput                    `pulumi:"type"`
+	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME.
+	Interface pulumi.StringPtrInput `pulumi:"interface"`
+	// The mode in which to attach this disk, either READ_WRITE or READ_ONLY.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
+	Source pulumi.StringPtrInput `pulumi:"source"`
+	// Specifies the type of disk, either SCRATCH or PERSISTENT.
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (ElastigroupDiskArgs) ElementType() reflect.Type {
@@ -312,34 +349,42 @@ func (o ElastigroupDiskOutput) ToElastigroupDiskOutputWithContext(ctx context.Co
 	return o
 }
 
+// Specifies whether the disk will be auto-deleted when the instance is deleted.
 func (o ElastigroupDiskOutput) AutoDelete() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ElastigroupDisk) *bool { return v.AutoDelete }).(pulumi.BoolPtrOutput)
 }
 
+// Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
 func (o ElastigroupDiskOutput) Boot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ElastigroupDisk) *bool { return v.Boot }).(pulumi.BoolPtrOutput)
 }
 
+// Specifies a unique device name of your choice.
 func (o ElastigroupDiskOutput) DeviceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupDisk) *string { return v.DeviceName }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance.
 func (o ElastigroupDiskOutput) InitializeParams() ElastigroupDiskInitializeParamArrayOutput {
 	return o.ApplyT(func(v ElastigroupDisk) []ElastigroupDiskInitializeParam { return v.InitializeParams }).(ElastigroupDiskInitializeParamArrayOutput)
 }
 
+// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME.
 func (o ElastigroupDiskOutput) Interface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupDisk) *string { return v.Interface }).(pulumi.StringPtrOutput)
 }
 
+// The mode in which to attach this disk, either READ_WRITE or READ_ONLY.
 func (o ElastigroupDiskOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupDisk) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
 
+// Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
 func (o ElastigroupDiskOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupDisk) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the type of disk, either SCRATCH or PERSISTENT.
 func (o ElastigroupDiskOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupDisk) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -365,9 +410,14 @@ func (o ElastigroupDiskArrayOutput) Index(i pulumi.IntInput) ElastigroupDiskOutp
 }
 
 type ElastigroupDiskInitializeParam struct {
-	DiskSizeGb  *string `pulumi:"diskSizeGb"`
-	DiskType    *string `pulumi:"diskType"`
-	SourceImage string  `pulumi:"sourceImage"`
+	// Specifies disk size in gigabytes. Must be in increments of 2.
+	DiskSizeGb *string `pulumi:"diskSizeGb"`
+	// Specifies the disk type to use to create the instance. Valid values: pd-ssd, local-ssd.
+	DiskType *string `pulumi:"diskType"`
+	// A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
+	//
+	// Usage:
+	SourceImage string `pulumi:"sourceImage"`
 }
 
 // ElastigroupDiskInitializeParamInput is an input type that accepts ElastigroupDiskInitializeParamArgs and ElastigroupDiskInitializeParamOutput values.
@@ -382,9 +432,14 @@ type ElastigroupDiskInitializeParamInput interface {
 }
 
 type ElastigroupDiskInitializeParamArgs struct {
-	DiskSizeGb  pulumi.StringPtrInput `pulumi:"diskSizeGb"`
-	DiskType    pulumi.StringPtrInput `pulumi:"diskType"`
-	SourceImage pulumi.StringInput    `pulumi:"sourceImage"`
+	// Specifies disk size in gigabytes. Must be in increments of 2.
+	DiskSizeGb pulumi.StringPtrInput `pulumi:"diskSizeGb"`
+	// Specifies the disk type to use to create the instance. Valid values: pd-ssd, local-ssd.
+	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	// A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
+	//
+	// Usage:
+	SourceImage pulumi.StringInput `pulumi:"sourceImage"`
 }
 
 func (ElastigroupDiskInitializeParamArgs) ElementType() reflect.Type {
@@ -438,14 +493,19 @@ func (o ElastigroupDiskInitializeParamOutput) ToElastigroupDiskInitializeParamOu
 	return o
 }
 
+// Specifies disk size in gigabytes. Must be in increments of 2.
 func (o ElastigroupDiskInitializeParamOutput) DiskSizeGb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupDiskInitializeParam) *string { return v.DiskSizeGb }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the disk type to use to create the instance. Valid values: pd-ssd, local-ssd.
 func (o ElastigroupDiskInitializeParamOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupDiskInitializeParam) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
 
+// A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
+//
+// Usage:
 func (o ElastigroupDiskInitializeParamOutput) SourceImage() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupDiskInitializeParam) string { return v.SourceImage }).(pulumi.StringOutput)
 }
@@ -471,8 +531,12 @@ func (o ElastigroupDiskInitializeParamArrayOutput) Index(i pulumi.IntInput) Elas
 }
 
 type ElastigroupGpu struct {
-	Count int    `pulumi:"count"`
-	Type  string `pulumi:"type"`
+	// The number of GPUs. Must be 0, 2, 4, 6, 8.
+	//
+	// Usage:
+	Count int `pulumi:"count"`
+	// The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
+	Type string `pulumi:"type"`
 }
 
 // ElastigroupGpuInput is an input type that accepts ElastigroupGpuArgs and ElastigroupGpuOutput values.
@@ -487,8 +551,12 @@ type ElastigroupGpuInput interface {
 }
 
 type ElastigroupGpuArgs struct {
-	Count pulumi.IntInput    `pulumi:"count"`
-	Type  pulumi.StringInput `pulumi:"type"`
+	// The number of GPUs. Must be 0, 2, 4, 6, 8.
+	//
+	// Usage:
+	Count pulumi.IntInput `pulumi:"count"`
+	// The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (ElastigroupGpuArgs) ElementType() reflect.Type {
@@ -542,10 +610,14 @@ func (o ElastigroupGpuOutput) ToElastigroupGpuOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The number of GPUs. Must be 0, 2, 4, 6, 8.
+//
+// Usage:
 func (o ElastigroupGpuOutput) Count() pulumi.IntOutput {
 	return o.ApplyT(func(v ElastigroupGpu) int { return v.Count }).(pulumi.IntOutput)
 }
 
+// The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
 func (o ElastigroupGpuOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupGpu) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -2269,20 +2341,31 @@ func (o ElastigroupScalingDownPolicyDimensionArrayOutput) Index(i pulumi.IntInpu
 }
 
 type ElastigroupScalingUpPolicy struct {
-	ActionType        *string                               `pulumi:"actionType"`
-	Adjustment        *int                                  `pulumi:"adjustment"`
-	Cooldown          *int                                  `pulumi:"cooldown"`
-	Dimensions        []ElastigroupScalingUpPolicyDimension `pulumi:"dimensions"`
-	EvaluationPeriods *int                                  `pulumi:"evaluationPeriods"`
-	MetricName        string                                `pulumi:"metricName"`
-	Namespace         string                                `pulumi:"namespace"`
-	Operator          *string                               `pulumi:"operator"`
-	Period            *int                                  `pulumi:"period"`
-	PolicyName        string                                `pulumi:"policyName"`
-	Source            *string                               `pulumi:"source"`
-	Statistic         *string                               `pulumi:"statistic"`
-	Threshold         float64                               `pulumi:"threshold"`
-	Unit              string                                `pulumi:"unit"`
+	// Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
+	ActionType *string `pulumi:"actionType"`
+	// Value to which the action type will be adjusted. Required if using "numeric" or "percentageAdjustment" action types.
+	Adjustment *int `pulumi:"adjustment"`
+	// Time (seconds) to wait after a scaling action before resuming monitoring.
+	Cooldown *int `pulumi:"cooldown"`
+	// A list of dimensions describing qualities of the metric.
+	Dimensions []ElastigroupScalingUpPolicyDimension `pulumi:"dimensions"`
+	// Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
+	EvaluationPeriods *int `pulumi:"evaluationPeriods"`
+	// Metric to monitor. Valid values: "Percentage CPU", "Network In", "Network Out", "Disk Read Bytes", "Disk Write Bytes", "Disk Write Operations/Sec", "Disk Read Operations/Sec".
+	MetricName string `pulumi:"metricName"`
+	Namespace  string `pulumi:"namespace"`
+	// The operator used to evaluate the threshold against the current metric value. Valid values: "gt" (greater than), "get" (greater-than or equal), "lt" (less than), "lte" (less than or equal).
+	Operator *string `pulumi:"operator"`
+	// Amount of time (seconds) for which the threshold must be met in order to trigger the scaling action.
+	Period *int `pulumi:"period"`
+	// Name of scaling policy.
+	PolicyName string  `pulumi:"policyName"`
+	Source     *string `pulumi:"source"`
+	// Statistic by which to evaluate the selected metric. Valid values: "AVERAGE", "SAMPLE_COUNT", "SUM", "MINIMUM", "MAXIMUM", "PERCENTILE", "COUNT".
+	Statistic *string `pulumi:"statistic"`
+	// The value at which the scaling action is triggered.
+	Threshold float64 `pulumi:"threshold"`
+	Unit      string  `pulumi:"unit"`
 }
 
 // ElastigroupScalingUpPolicyInput is an input type that accepts ElastigroupScalingUpPolicyArgs and ElastigroupScalingUpPolicyOutput values.
@@ -2297,20 +2380,31 @@ type ElastigroupScalingUpPolicyInput interface {
 }
 
 type ElastigroupScalingUpPolicyArgs struct {
-	ActionType        pulumi.StringPtrInput                         `pulumi:"actionType"`
-	Adjustment        pulumi.IntPtrInput                            `pulumi:"adjustment"`
-	Cooldown          pulumi.IntPtrInput                            `pulumi:"cooldown"`
-	Dimensions        ElastigroupScalingUpPolicyDimensionArrayInput `pulumi:"dimensions"`
-	EvaluationPeriods pulumi.IntPtrInput                            `pulumi:"evaluationPeriods"`
-	MetricName        pulumi.StringInput                            `pulumi:"metricName"`
-	Namespace         pulumi.StringInput                            `pulumi:"namespace"`
-	Operator          pulumi.StringPtrInput                         `pulumi:"operator"`
-	Period            pulumi.IntPtrInput                            `pulumi:"period"`
-	PolicyName        pulumi.StringInput                            `pulumi:"policyName"`
-	Source            pulumi.StringPtrInput                         `pulumi:"source"`
-	Statistic         pulumi.StringPtrInput                         `pulumi:"statistic"`
-	Threshold         pulumi.Float64Input                           `pulumi:"threshold"`
-	Unit              pulumi.StringInput                            `pulumi:"unit"`
+	// Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
+	ActionType pulumi.StringPtrInput `pulumi:"actionType"`
+	// Value to which the action type will be adjusted. Required if using "numeric" or "percentageAdjustment" action types.
+	Adjustment pulumi.IntPtrInput `pulumi:"adjustment"`
+	// Time (seconds) to wait after a scaling action before resuming monitoring.
+	Cooldown pulumi.IntPtrInput `pulumi:"cooldown"`
+	// A list of dimensions describing qualities of the metric.
+	Dimensions ElastigroupScalingUpPolicyDimensionArrayInput `pulumi:"dimensions"`
+	// Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
+	EvaluationPeriods pulumi.IntPtrInput `pulumi:"evaluationPeriods"`
+	// Metric to monitor. Valid values: "Percentage CPU", "Network In", "Network Out", "Disk Read Bytes", "Disk Write Bytes", "Disk Write Operations/Sec", "Disk Read Operations/Sec".
+	MetricName pulumi.StringInput `pulumi:"metricName"`
+	Namespace  pulumi.StringInput `pulumi:"namespace"`
+	// The operator used to evaluate the threshold against the current metric value. Valid values: "gt" (greater than), "get" (greater-than or equal), "lt" (less than), "lte" (less than or equal).
+	Operator pulumi.StringPtrInput `pulumi:"operator"`
+	// Amount of time (seconds) for which the threshold must be met in order to trigger the scaling action.
+	Period pulumi.IntPtrInput `pulumi:"period"`
+	// Name of scaling policy.
+	PolicyName pulumi.StringInput    `pulumi:"policyName"`
+	Source     pulumi.StringPtrInput `pulumi:"source"`
+	// Statistic by which to evaluate the selected metric. Valid values: "AVERAGE", "SAMPLE_COUNT", "SUM", "MINIMUM", "MAXIMUM", "PERCENTILE", "COUNT".
+	Statistic pulumi.StringPtrInput `pulumi:"statistic"`
+	// The value at which the scaling action is triggered.
+	Threshold pulumi.Float64Input `pulumi:"threshold"`
+	Unit      pulumi.StringInput  `pulumi:"unit"`
 }
 
 func (ElastigroupScalingUpPolicyArgs) ElementType() reflect.Type {
@@ -2364,26 +2458,32 @@ func (o ElastigroupScalingUpPolicyOutput) ToElastigroupScalingUpPolicyOutputWith
 	return o
 }
 
+// Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
 func (o ElastigroupScalingUpPolicyOutput) ActionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *string { return v.ActionType }).(pulumi.StringPtrOutput)
 }
 
+// Value to which the action type will be adjusted. Required if using "numeric" or "percentageAdjustment" action types.
 func (o ElastigroupScalingUpPolicyOutput) Adjustment() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *int { return v.Adjustment }).(pulumi.IntPtrOutput)
 }
 
+// Time (seconds) to wait after a scaling action before resuming monitoring.
 func (o ElastigroupScalingUpPolicyOutput) Cooldown() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *int { return v.Cooldown }).(pulumi.IntPtrOutput)
 }
 
+// A list of dimensions describing qualities of the metric.
 func (o ElastigroupScalingUpPolicyOutput) Dimensions() ElastigroupScalingUpPolicyDimensionArrayOutput {
 	return o.ApplyT(func(v ElastigroupScalingUpPolicy) []ElastigroupScalingUpPolicyDimension { return v.Dimensions }).(ElastigroupScalingUpPolicyDimensionArrayOutput)
 }
 
+// Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
 func (o ElastigroupScalingUpPolicyOutput) EvaluationPeriods() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
 }
 
+// Metric to monitor. Valid values: "Percentage CPU", "Network In", "Network Out", "Disk Read Bytes", "Disk Write Bytes", "Disk Write Operations/Sec", "Disk Read Operations/Sec".
 func (o ElastigroupScalingUpPolicyOutput) MetricName() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupScalingUpPolicy) string { return v.MetricName }).(pulumi.StringOutput)
 }
@@ -2392,14 +2492,17 @@ func (o ElastigroupScalingUpPolicyOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupScalingUpPolicy) string { return v.Namespace }).(pulumi.StringOutput)
 }
 
+// The operator used to evaluate the threshold against the current metric value. Valid values: "gt" (greater than), "get" (greater-than or equal), "lt" (less than), "lte" (less than or equal).
 func (o ElastigroupScalingUpPolicyOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *string { return v.Operator }).(pulumi.StringPtrOutput)
 }
 
+// Amount of time (seconds) for which the threshold must be met in order to trigger the scaling action.
 func (o ElastigroupScalingUpPolicyOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *int { return v.Period }).(pulumi.IntPtrOutput)
 }
 
+// Name of scaling policy.
 func (o ElastigroupScalingUpPolicyOutput) PolicyName() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupScalingUpPolicy) string { return v.PolicyName }).(pulumi.StringOutput)
 }
@@ -2408,10 +2511,12 @@ func (o ElastigroupScalingUpPolicyOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
+// Statistic by which to evaluate the selected metric. Valid values: "AVERAGE", "SAMPLE_COUNT", "SUM", "MINIMUM", "MAXIMUM", "PERCENTILE", "COUNT".
 func (o ElastigroupScalingUpPolicyOutput) Statistic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *string { return v.Statistic }).(pulumi.StringPtrOutput)
 }
 
+// The value at which the scaling action is triggered.
 func (o ElastigroupScalingUpPolicyOutput) Threshold() pulumi.Float64Output {
 	return o.ApplyT(func(v ElastigroupScalingUpPolicy) float64 { return v.Threshold }).(pulumi.Float64Output)
 }
@@ -2441,8 +2546,11 @@ func (o ElastigroupScalingUpPolicyArrayOutput) Index(i pulumi.IntInput) Elastigr
 }
 
 type ElastigroupScalingUpPolicyDimension struct {
-	// The group name.
-	Name  string  `pulumi:"name"`
+	// The dimension name.
+	Name string `pulumi:"name"`
+	// The dimension value.
+	//
+	// Usage:
 	Value *string `pulumi:"value"`
 }
 
@@ -2458,8 +2566,11 @@ type ElastigroupScalingUpPolicyDimensionInput interface {
 }
 
 type ElastigroupScalingUpPolicyDimensionArgs struct {
-	// The group name.
-	Name  pulumi.StringInput    `pulumi:"name"`
+	// The dimension name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The dimension value.
+	//
+	// Usage:
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -2514,11 +2625,14 @@ func (o ElastigroupScalingUpPolicyDimensionOutput) ToElastigroupScalingUpPolicyD
 	return o
 }
 
-// The group name.
+// The dimension name.
 func (o ElastigroupScalingUpPolicyDimensionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupScalingUpPolicyDimension) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The dimension value.
+//
+// Usage:
 func (o ElastigroupScalingUpPolicyDimensionOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingUpPolicyDimension) *string { return v.Value }).(pulumi.StringPtrOutput)
 }

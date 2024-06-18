@@ -1625,123 +1625,6 @@ class MrScalar(pulumi.CustomResource):
         import pulumi
         import pulumi_spotinst as spotinst
 
-        # Create a Mr Scaler with New strategy
-        sample__mr_scaler_01 = spotinst.aws.MrScalar("sample-MrScaler-01",
-            name="sample-MrScaler-01",
-            description="Testing MrScaler creation",
-            region="us-west-2",
-            strategy="new",
-            release_label="emr-5.17.0",
-            retries=2,
-            availability_zones=["us-west-2a:subnet-123456"],
-            provisioning_timeout=spotinst.aws.MrScalarProvisioningTimeoutArgs(
-                timeout=15,
-                timeout_action="terminateAndRetry",
-            ),
-            log_uri="s3://example-logs",
-            additional_info="{'test':'more information'}",
-            job_flow_role="EMR_EC2_ExampleRole",
-            security_config="example-config",
-            service_role="example-role",
-            termination_protected=False,
-            keep_job_flow_alive=True,
-            custom_ami_id="ami-123456",
-            repo_upgrade_on_boot="NONE",
-            ec2_key_name="test-key",
-            managed_primary_security_group="sg-123456",
-            managed_replica_security_group="sg-987654",
-            service_access_security_group="access-example",
-            additional_primary_security_groups=["sg-456321"],
-            additional_replica_security_groups=["sg-123654"],
-            applications=[
-                spotinst.aws.MrScalarApplicationArgs(
-                    name="Ganglia",
-                    version="1.0",
-                ),
-                spotinst.aws.MrScalarApplicationArgs(
-                    name="Hadoop",
-                ),
-                spotinst.aws.MrScalarApplicationArgs(
-                    name="Pig",
-                    args=[
-                        "fake",
-                        "args",
-                    ],
-                ),
-            ],
-            instance_weights=[
-                spotinst.aws.MrScalarInstanceWeightArgs(
-                    instance_type="t2.small",
-                    weighted_capacity=10,
-                ),
-                spotinst.aws.MrScalarInstanceWeightArgs(
-                    instance_type="t2.medium",
-                    weighted_capacity=90,
-                ),
-            ],
-            steps_files=[spotinst.aws.MrScalarStepsFileArgs(
-                bucket="example-bucket",
-                key="steps.json",
-            )],
-            configurations_files=[spotinst.aws.MrScalarConfigurationsFileArgs(
-                bucket="example-bucket",
-                key="configurations.json",
-            )],
-            bootstrap_actions_files=[spotinst.aws.MrScalarBootstrapActionsFileArgs(
-                bucket="sample-emr-test",
-                key="bootstrap-actions.json",
-            )],
-            master_instance_types=["c3.xlarge"],
-            master_lifecycle="SPOT",
-            master_ebs_optimized=True,
-            master_target=1,
-            master_ebs_block_devices=[spotinst.aws.MrScalarMasterEbsBlockDeviceArgs(
-                volumes_per_instance=1,
-                volume_type="gp2",
-                size_in_gb=30,
-            )],
-            core_instance_types=[
-                "c3.xlarge",
-                "c4.xlarge",
-            ],
-            core_min_size=1,
-            core_max_size=1,
-            core_desired_capacity=1,
-            core_lifecycle="ON_DEMAND",
-            core_ebs_optimized=False,
-            core_unit="instance",
-            core_ebs_block_devices=[spotinst.aws.MrScalarCoreEbsBlockDeviceArgs(
-                volumes_per_instance=2,
-                volume_type="gp2",
-                size_in_gb=40,
-            )],
-            task_instance_types=[
-                "c3.xlarge",
-                "c4.xlarge",
-            ],
-            task_min_size=0,
-            task_max_size=30,
-            task_desired_capacity=1,
-            task_lifecycle="SPOT",
-            task_ebs_optimized=False,
-            task_unit="instance",
-            task_ebs_block_devices=[spotinst.aws.MrScalarTaskEbsBlockDeviceArgs(
-                volumes_per_instance=2,
-                volume_type="gp2",
-                size_in_gb=40,
-            )],
-            tags=[spotinst.aws.MrScalarTagArgs(
-                key="Creator",
-                value="Pulumi",
-            )])
-        ```
-
-        ### Clone Strategy
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
         sample__mr_scaler_01 = spotinst.aws.MrScalar("sample-MrScaler-01",
             name="sample-MrScaler-01",
             description="Testing MrScaler creation",
@@ -1847,27 +1730,6 @@ class MrScalar(pulumi.CustomResource):
                 size_in_gb=20,
             )])
         ```
-
-        :param str resource_name: The name of the resource.
-        :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cluster_id: The MrScaler cluster id.
-        :param pulumi.Input[str] description: The MrScaler description.
-        :param pulumi.Input[bool] expose_cluster_id: Allow the `cluster_id` to set a provider output variable.
-        :param pulumi.Input[str] name: The MrScaler name.
-        :param pulumi.Input[str] region: The MrScaler region.
-        :param pulumi.Input[str] strategy: The MrScaler strategy. Allowed values are `new` `clone` and `wrap`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarTerminationPolicyArgs']]]] termination_policies: Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
-        """
-        ...
-    @overload
-    def __init__(__self__,
-                 resource_name: str,
-                 args: MrScalarArgs,
-                 opts: Optional[pulumi.ResourceOptions] = None):
-        """
-        Provides a Spotinst AWS MrScaler resource.
-
-        ## Example Usage
 
         ### New Strategy
 
@@ -1986,7 +1848,28 @@ class MrScalar(pulumi.CustomResource):
             )])
         ```
 
-        ### Clone Strategy
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] cluster_id: The MrScaler cluster id.
+        :param pulumi.Input[str] description: The MrScaler description.
+        :param pulumi.Input[bool] expose_cluster_id: Allow the `cluster_id` to set a provider output variable.
+        :param pulumi.Input[str] name: The MrScaler name.
+        :param pulumi.Input[str] region: The MrScaler region.
+        :param pulumi.Input[str] strategy: The MrScaler strategy. Allowed values are `new` `clone` and `wrap`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarTerminationPolicyArgs']]]] termination_policies: Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
+        """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: MrScalarArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Spotinst AWS MrScaler resource.
+
+        ## Example Usage
+
+        ### New Strategy
 
         ```python
         import pulumi
@@ -2095,6 +1978,123 @@ class MrScalar(pulumi.CustomResource):
                 volumes_per_instance=1,
                 volume_type="gp2",
                 size_in_gb=20,
+            )])
+        ```
+
+        ### New Strategy
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        # Create a Mr Scaler with New strategy
+        sample__mr_scaler_01 = spotinst.aws.MrScalar("sample-MrScaler-01",
+            name="sample-MrScaler-01",
+            description="Testing MrScaler creation",
+            region="us-west-2",
+            strategy="new",
+            release_label="emr-5.17.0",
+            retries=2,
+            availability_zones=["us-west-2a:subnet-123456"],
+            provisioning_timeout=spotinst.aws.MrScalarProvisioningTimeoutArgs(
+                timeout=15,
+                timeout_action="terminateAndRetry",
+            ),
+            log_uri="s3://example-logs",
+            additional_info="{'test':'more information'}",
+            job_flow_role="EMR_EC2_ExampleRole",
+            security_config="example-config",
+            service_role="example-role",
+            termination_protected=False,
+            keep_job_flow_alive=True,
+            custom_ami_id="ami-123456",
+            repo_upgrade_on_boot="NONE",
+            ec2_key_name="test-key",
+            managed_primary_security_group="sg-123456",
+            managed_replica_security_group="sg-987654",
+            service_access_security_group="access-example",
+            additional_primary_security_groups=["sg-456321"],
+            additional_replica_security_groups=["sg-123654"],
+            applications=[
+                spotinst.aws.MrScalarApplicationArgs(
+                    name="Ganglia",
+                    version="1.0",
+                ),
+                spotinst.aws.MrScalarApplicationArgs(
+                    name="Hadoop",
+                ),
+                spotinst.aws.MrScalarApplicationArgs(
+                    name="Pig",
+                    args=[
+                        "fake",
+                        "args",
+                    ],
+                ),
+            ],
+            instance_weights=[
+                spotinst.aws.MrScalarInstanceWeightArgs(
+                    instance_type="t2.small",
+                    weighted_capacity=10,
+                ),
+                spotinst.aws.MrScalarInstanceWeightArgs(
+                    instance_type="t2.medium",
+                    weighted_capacity=90,
+                ),
+            ],
+            steps_files=[spotinst.aws.MrScalarStepsFileArgs(
+                bucket="example-bucket",
+                key="steps.json",
+            )],
+            configurations_files=[spotinst.aws.MrScalarConfigurationsFileArgs(
+                bucket="example-bucket",
+                key="configurations.json",
+            )],
+            bootstrap_actions_files=[spotinst.aws.MrScalarBootstrapActionsFileArgs(
+                bucket="sample-emr-test",
+                key="bootstrap-actions.json",
+            )],
+            master_instance_types=["c3.xlarge"],
+            master_lifecycle="SPOT",
+            master_ebs_optimized=True,
+            master_target=1,
+            master_ebs_block_devices=[spotinst.aws.MrScalarMasterEbsBlockDeviceArgs(
+                volumes_per_instance=1,
+                volume_type="gp2",
+                size_in_gb=30,
+            )],
+            core_instance_types=[
+                "c3.xlarge",
+                "c4.xlarge",
+            ],
+            core_min_size=1,
+            core_max_size=1,
+            core_desired_capacity=1,
+            core_lifecycle="ON_DEMAND",
+            core_ebs_optimized=False,
+            core_unit="instance",
+            core_ebs_block_devices=[spotinst.aws.MrScalarCoreEbsBlockDeviceArgs(
+                volumes_per_instance=2,
+                volume_type="gp2",
+                size_in_gb=40,
+            )],
+            task_instance_types=[
+                "c3.xlarge",
+                "c4.xlarge",
+            ],
+            task_min_size=0,
+            task_max_size=30,
+            task_desired_capacity=1,
+            task_lifecycle="SPOT",
+            task_ebs_optimized=False,
+            task_unit="instance",
+            task_ebs_block_devices=[spotinst.aws.MrScalarTaskEbsBlockDeviceArgs(
+                volumes_per_instance=2,
+                volume_type="gp2",
+                size_in_gb=40,
+            )],
+            tags=[spotinst.aws.MrScalarTagArgs(
+                key="Creator",
+                value="Pulumi",
             )])
         ```
 

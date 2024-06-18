@@ -65,9 +65,12 @@ class OceanArgs:
                * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
         :param pulumi.Input[bool] associate_ipv6_address: Configure IPv6 address allocation.
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanAttachLoadBalancerArgs']]] attach_load_balancers: Attach load balancers to the cluster.
+        :param pulumi.Input['OceanAutoscalerArgs'] autoscaler: Describes the Ocean Kubernetes Auto Scaler.
         :param pulumi.Input[Sequence[pulumi.Input['OceanBlockDeviceMappingArgs']]] block_device_mappings: Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
         :param pulumi.Input[str] controller_id: A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
         :param pulumi.Input[int] desired_capacity: The number of instances to launch and maintain in the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanDetachLoadBalancerArgs']]] detach_load_balancers: Detach load balancers from the cluster.
         :param pulumi.Input[int] draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
         :param pulumi.Input[bool] ebs_optimized: Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
         :param pulumi.Input[bool] fallback_to_ondemand: If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
@@ -85,6 +88,7 @@ class OceanArgs:
         :param pulumi.Input[str] region: The region the cluster will run in.
         :param pulumi.Input[Sequence[pulumi.Input['OceanResourceTagSpecificationArgs']]] resource_tag_specifications: Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
         :param pulumi.Input[int] root_volume_size: The size (in Gb) to allocate for the root volume. Minimum `20`.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskArgs']]] scheduled_tasks: Set scheduling object.
         :param pulumi.Input[int] spot_percentage: The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
         :param pulumi.Input[str] spread_nodes_by: Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
         :param pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]] tags: Optionally adds tags to instances launched in an Ocean cluster.
@@ -238,6 +242,9 @@ class OceanArgs:
     @property
     @pulumi.getter(name="attachLoadBalancers")
     def attach_load_balancers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanAttachLoadBalancerArgs']]]]:
+        """
+        Attach load balancers to the cluster.
+        """
         return pulumi.get(self, "attach_load_balancers")
 
     @attach_load_balancers.setter
@@ -247,6 +254,9 @@ class OceanArgs:
     @property
     @pulumi.getter
     def autoscaler(self) -> Optional[pulumi.Input['OceanAutoscalerArgs']]:
+        """
+        Describes the Ocean Kubernetes Auto Scaler.
+        """
         return pulumi.get(self, "autoscaler")
 
     @autoscaler.setter
@@ -310,6 +320,9 @@ class OceanArgs:
     @property
     @pulumi.getter(name="detachLoadBalancers")
     def detach_load_balancers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanDetachLoadBalancerArgs']]]]:
+        """
+        Detach load balancers from the cluster.
+        """
         return pulumi.get(self, "detach_load_balancers")
 
     @detach_load_balancers.setter
@@ -532,6 +545,9 @@ class OceanArgs:
     @property
     @pulumi.getter(name="scheduledTasks")
     def scheduled_tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskArgs']]]]:
+        """
+        Set scheduling object.
+        """
         return pulumi.get(self, "scheduled_tasks")
 
     @scheduled_tasks.setter
@@ -690,9 +706,12 @@ class _OceanState:
         Input properties used for looking up and filtering Ocean resources.
         :param pulumi.Input[bool] associate_ipv6_address: Configure IPv6 address allocation.
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanAttachLoadBalancerArgs']]] attach_load_balancers: Attach load balancers to the cluster.
+        :param pulumi.Input['OceanAutoscalerArgs'] autoscaler: Describes the Ocean Kubernetes Auto Scaler.
         :param pulumi.Input[Sequence[pulumi.Input['OceanBlockDeviceMappingArgs']]] block_device_mappings: Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
         :param pulumi.Input[str] controller_id: A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
         :param pulumi.Input[int] desired_capacity: The number of instances to launch and maintain in the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanDetachLoadBalancerArgs']]] detach_load_balancers: Detach load balancers from the cluster.
         :param pulumi.Input[int] draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
         :param pulumi.Input[bool] ebs_optimized: Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
         :param pulumi.Input[bool] fallback_to_ondemand: If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
@@ -711,6 +730,7 @@ class _OceanState:
         :param pulumi.Input[str] region: The region the cluster will run in.
         :param pulumi.Input[Sequence[pulumi.Input['OceanResourceTagSpecificationArgs']]] resource_tag_specifications: Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
         :param pulumi.Input[int] root_volume_size: The size (in Gb) to allocate for the root volume. Minimum `20`.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskArgs']]] scheduled_tasks: Set scheduling object.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: One or more security group ids.
         :param pulumi.Input[int] spot_percentage: The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
         :param pulumi.Input[str] spread_nodes_by: Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
@@ -833,6 +853,9 @@ class _OceanState:
     @property
     @pulumi.getter(name="attachLoadBalancers")
     def attach_load_balancers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanAttachLoadBalancerArgs']]]]:
+        """
+        Attach load balancers to the cluster.
+        """
         return pulumi.get(self, "attach_load_balancers")
 
     @attach_load_balancers.setter
@@ -842,6 +865,9 @@ class _OceanState:
     @property
     @pulumi.getter
     def autoscaler(self) -> Optional[pulumi.Input['OceanAutoscalerArgs']]:
+        """
+        Describes the Ocean Kubernetes Auto Scaler.
+        """
         return pulumi.get(self, "autoscaler")
 
     @autoscaler.setter
@@ -905,6 +931,9 @@ class _OceanState:
     @property
     @pulumi.getter(name="detachLoadBalancers")
     def detach_load_balancers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanDetachLoadBalancerArgs']]]]:
+        """
+        Detach load balancers from the cluster.
+        """
         return pulumi.get(self, "detach_load_balancers")
 
     @detach_load_balancers.setter
@@ -1139,6 +1168,9 @@ class _OceanState:
     @property
     @pulumi.getter(name="scheduledTasks")
     def scheduled_tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskArgs']]]]:
+        """
+        Set scheduling object.
+        """
         return pulumi.get(self, "scheduled_tasks")
 
     @scheduled_tasks.setter
@@ -1338,9 +1370,12 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] associate_ipv6_address: Configure IPv6 address allocation.
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanAttachLoadBalancerArgs']]]] attach_load_balancers: Attach load balancers to the cluster.
+        :param pulumi.Input[pulumi.InputType['OceanAutoscalerArgs']] autoscaler: Describes the Ocean Kubernetes Auto Scaler.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanBlockDeviceMappingArgs']]]] block_device_mappings: Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
         :param pulumi.Input[str] controller_id: A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
         :param pulumi.Input[int] desired_capacity: The number of instances to launch and maintain in the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanDetachLoadBalancerArgs']]]] detach_load_balancers: Detach load balancers from the cluster.
         :param pulumi.Input[int] draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
         :param pulumi.Input[bool] ebs_optimized: Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
         :param pulumi.Input[bool] fallback_to_ondemand: If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
@@ -1359,6 +1394,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region the cluster will run in.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanResourceTagSpecificationArgs']]]] resource_tag_specifications: Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
         :param pulumi.Input[int] root_volume_size: The size (in Gb) to allocate for the root volume. Minimum `20`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanScheduledTaskArgs']]]] scheduled_tasks: Set scheduling object.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: One or more security group ids.
         :param pulumi.Input[int] spot_percentage: The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
         :param pulumi.Input[str] spread_nodes_by: Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
@@ -1562,9 +1598,12 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] associate_ipv6_address: Configure IPv6 address allocation.
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanAttachLoadBalancerArgs']]]] attach_load_balancers: Attach load balancers to the cluster.
+        :param pulumi.Input[pulumi.InputType['OceanAutoscalerArgs']] autoscaler: Describes the Ocean Kubernetes Auto Scaler.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanBlockDeviceMappingArgs']]]] block_device_mappings: Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
         :param pulumi.Input[str] controller_id: A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
         :param pulumi.Input[int] desired_capacity: The number of instances to launch and maintain in the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanDetachLoadBalancerArgs']]]] detach_load_balancers: Detach load balancers from the cluster.
         :param pulumi.Input[int] draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
         :param pulumi.Input[bool] ebs_optimized: Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
         :param pulumi.Input[bool] fallback_to_ondemand: If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
@@ -1583,6 +1622,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region the cluster will run in.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanResourceTagSpecificationArgs']]]] resource_tag_specifications: Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
         :param pulumi.Input[int] root_volume_size: The size (in Gb) to allocate for the root volume. Minimum `20`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanScheduledTaskArgs']]]] scheduled_tasks: Set scheduling object.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: One or more security group ids.
         :param pulumi.Input[int] spot_percentage: The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
         :param pulumi.Input[str] spread_nodes_by: Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
@@ -1661,11 +1701,17 @@ class Ocean(pulumi.CustomResource):
     @property
     @pulumi.getter(name="attachLoadBalancers")
     def attach_load_balancers(self) -> pulumi.Output[Optional[Sequence['outputs.OceanAttachLoadBalancer']]]:
+        """
+        Attach load balancers to the cluster.
+        """
         return pulumi.get(self, "attach_load_balancers")
 
     @property
     @pulumi.getter
     def autoscaler(self) -> pulumi.Output[Optional['outputs.OceanAutoscaler']]:
+        """
+        Describes the Ocean Kubernetes Auto Scaler.
+        """
         return pulumi.get(self, "autoscaler")
 
     @property
@@ -1705,6 +1751,9 @@ class Ocean(pulumi.CustomResource):
     @property
     @pulumi.getter(name="detachLoadBalancers")
     def detach_load_balancers(self) -> pulumi.Output[Optional[Sequence['outputs.OceanDetachLoadBalancer']]]:
+        """
+        Detach load balancers from the cluster.
+        """
         return pulumi.get(self, "detach_load_balancers")
 
     @property
@@ -1859,6 +1908,9 @@ class Ocean(pulumi.CustomResource):
     @property
     @pulumi.getter(name="scheduledTasks")
     def scheduled_tasks(self) -> pulumi.Output[Optional[Sequence['outputs.OceanScheduledTask']]]:
+        """
+        Set scheduling object.
+        """
         return pulumi.get(self, "scheduled_tasks")
 
     @property

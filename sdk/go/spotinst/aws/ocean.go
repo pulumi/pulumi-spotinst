@@ -29,17 +29,20 @@ type Ocean struct {
 	// Configure IPv6 address allocation.
 	AssociateIpv6Address pulumi.BoolPtrOutput `pulumi:"associateIpv6Address"`
 	// Configure public IP address allocation.
-	AssociatePublicIpAddress pulumi.BoolPtrOutput               `pulumi:"associatePublicIpAddress"`
-	AttachLoadBalancers      OceanAttachLoadBalancerArrayOutput `pulumi:"attachLoadBalancers"`
-	Autoscaler               OceanAutoscalerPtrOutput           `pulumi:"autoscaler"`
-	Blacklists               pulumi.StringArrayOutput           `pulumi:"blacklists"`
+	AssociatePublicIpAddress pulumi.BoolPtrOutput `pulumi:"associatePublicIpAddress"`
+	// Attach load balancers to the cluster.
+	AttachLoadBalancers OceanAttachLoadBalancerArrayOutput `pulumi:"attachLoadBalancers"`
+	// Describes the Ocean Kubernetes Auto Scaler.
+	Autoscaler OceanAutoscalerPtrOutput `pulumi:"autoscaler"`
+	Blacklists pulumi.StringArrayOutput `pulumi:"blacklists"`
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings OceanBlockDeviceMappingArrayOutput `pulumi:"blockDeviceMappings"`
 	ClusterOrientations OceanClusterOrientationArrayOutput `pulumi:"clusterOrientations"`
 	// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
 	ControllerId pulumi.StringPtrOutput `pulumi:"controllerId"`
 	// The number of instances to launch and maintain in the cluster.
-	DesiredCapacity     pulumi.IntOutput                   `pulumi:"desiredCapacity"`
+	DesiredCapacity pulumi.IntOutput `pulumi:"desiredCapacity"`
+	// Detach load balancers from the cluster.
 	DetachLoadBalancers OceanDetachLoadBalancerArrayOutput `pulumi:"detachLoadBalancers"`
 	// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
 	DrainingTimeout pulumi.IntPtrOutput `pulumi:"drainingTimeout"`
@@ -77,7 +80,8 @@ type Ocean struct {
 	// Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
 	ResourceTagSpecifications OceanResourceTagSpecificationArrayOutput `pulumi:"resourceTagSpecifications"`
 	// The size (in Gb) to allocate for the root volume. Minimum `20`.
-	RootVolumeSize pulumi.IntPtrOutput           `pulumi:"rootVolumeSize"`
+	RootVolumeSize pulumi.IntPtrOutput `pulumi:"rootVolumeSize"`
+	// Set scheduling object.
 	ScheduledTasks OceanScheduledTaskArrayOutput `pulumi:"scheduledTasks"`
 	// One or more security group ids.
 	SecurityGroups pulumi.StringArrayOutput `pulumi:"securityGroups"`
@@ -145,17 +149,20 @@ type oceanState struct {
 	// Configure IPv6 address allocation.
 	AssociateIpv6Address *bool `pulumi:"associateIpv6Address"`
 	// Configure public IP address allocation.
-	AssociatePublicIpAddress *bool                     `pulumi:"associatePublicIpAddress"`
-	AttachLoadBalancers      []OceanAttachLoadBalancer `pulumi:"attachLoadBalancers"`
-	Autoscaler               *OceanAutoscaler          `pulumi:"autoscaler"`
-	Blacklists               []string                  `pulumi:"blacklists"`
+	AssociatePublicIpAddress *bool `pulumi:"associatePublicIpAddress"`
+	// Attach load balancers to the cluster.
+	AttachLoadBalancers []OceanAttachLoadBalancer `pulumi:"attachLoadBalancers"`
+	// Describes the Ocean Kubernetes Auto Scaler.
+	Autoscaler *OceanAutoscaler `pulumi:"autoscaler"`
+	Blacklists []string         `pulumi:"blacklists"`
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings []OceanBlockDeviceMapping `pulumi:"blockDeviceMappings"`
 	ClusterOrientations []OceanClusterOrientation `pulumi:"clusterOrientations"`
 	// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
 	ControllerId *string `pulumi:"controllerId"`
 	// The number of instances to launch and maintain in the cluster.
-	DesiredCapacity     *int                      `pulumi:"desiredCapacity"`
+	DesiredCapacity *int `pulumi:"desiredCapacity"`
+	// Detach load balancers from the cluster.
 	DetachLoadBalancers []OceanDetachLoadBalancer `pulumi:"detachLoadBalancers"`
 	// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
 	DrainingTimeout *int `pulumi:"drainingTimeout"`
@@ -193,7 +200,8 @@ type oceanState struct {
 	// Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
 	ResourceTagSpecifications []OceanResourceTagSpecification `pulumi:"resourceTagSpecifications"`
 	// The size (in Gb) to allocate for the root volume. Minimum `20`.
-	RootVolumeSize *int                 `pulumi:"rootVolumeSize"`
+	RootVolumeSize *int `pulumi:"rootVolumeSize"`
+	// Set scheduling object.
 	ScheduledTasks []OceanScheduledTask `pulumi:"scheduledTasks"`
 	// One or more security group ids.
 	SecurityGroups []string `pulumi:"securityGroups"`
@@ -224,16 +232,19 @@ type OceanState struct {
 	AssociateIpv6Address pulumi.BoolPtrInput
 	// Configure public IP address allocation.
 	AssociatePublicIpAddress pulumi.BoolPtrInput
-	AttachLoadBalancers      OceanAttachLoadBalancerArrayInput
-	Autoscaler               OceanAutoscalerPtrInput
-	Blacklists               pulumi.StringArrayInput
+	// Attach load balancers to the cluster.
+	AttachLoadBalancers OceanAttachLoadBalancerArrayInput
+	// Describes the Ocean Kubernetes Auto Scaler.
+	Autoscaler OceanAutoscalerPtrInput
+	Blacklists pulumi.StringArrayInput
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings OceanBlockDeviceMappingArrayInput
 	ClusterOrientations OceanClusterOrientationArrayInput
 	// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
 	ControllerId pulumi.StringPtrInput
 	// The number of instances to launch and maintain in the cluster.
-	DesiredCapacity     pulumi.IntPtrInput
+	DesiredCapacity pulumi.IntPtrInput
+	// Detach load balancers from the cluster.
 	DetachLoadBalancers OceanDetachLoadBalancerArrayInput
 	// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
 	DrainingTimeout pulumi.IntPtrInput
@@ -272,6 +283,7 @@ type OceanState struct {
 	ResourceTagSpecifications OceanResourceTagSpecificationArrayInput
 	// The size (in Gb) to allocate for the root volume. Minimum `20`.
 	RootVolumeSize pulumi.IntPtrInput
+	// Set scheduling object.
 	ScheduledTasks OceanScheduledTaskArrayInput
 	// One or more security group ids.
 	SecurityGroups pulumi.StringArrayInput
@@ -305,17 +317,20 @@ type oceanArgs struct {
 	// Configure IPv6 address allocation.
 	AssociateIpv6Address *bool `pulumi:"associateIpv6Address"`
 	// Configure public IP address allocation.
-	AssociatePublicIpAddress *bool                     `pulumi:"associatePublicIpAddress"`
-	AttachLoadBalancers      []OceanAttachLoadBalancer `pulumi:"attachLoadBalancers"`
-	Autoscaler               *OceanAutoscaler          `pulumi:"autoscaler"`
-	Blacklists               []string                  `pulumi:"blacklists"`
+	AssociatePublicIpAddress *bool `pulumi:"associatePublicIpAddress"`
+	// Attach load balancers to the cluster.
+	AttachLoadBalancers []OceanAttachLoadBalancer `pulumi:"attachLoadBalancers"`
+	// Describes the Ocean Kubernetes Auto Scaler.
+	Autoscaler *OceanAutoscaler `pulumi:"autoscaler"`
+	Blacklists []string         `pulumi:"blacklists"`
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings []OceanBlockDeviceMapping `pulumi:"blockDeviceMappings"`
 	ClusterOrientations []OceanClusterOrientation `pulumi:"clusterOrientations"`
 	// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
 	ControllerId *string `pulumi:"controllerId"`
 	// The number of instances to launch and maintain in the cluster.
-	DesiredCapacity     *int                      `pulumi:"desiredCapacity"`
+	DesiredCapacity *int `pulumi:"desiredCapacity"`
+	// Detach load balancers from the cluster.
 	DetachLoadBalancers []OceanDetachLoadBalancer `pulumi:"detachLoadBalancers"`
 	// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
 	DrainingTimeout *int `pulumi:"drainingTimeout"`
@@ -353,7 +368,8 @@ type oceanArgs struct {
 	// Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
 	ResourceTagSpecifications []OceanResourceTagSpecification `pulumi:"resourceTagSpecifications"`
 	// The size (in Gb) to allocate for the root volume. Minimum `20`.
-	RootVolumeSize *int                 `pulumi:"rootVolumeSize"`
+	RootVolumeSize *int `pulumi:"rootVolumeSize"`
+	// Set scheduling object.
 	ScheduledTasks []OceanScheduledTask `pulumi:"scheduledTasks"`
 	// One or more security group ids.
 	SecurityGroups []string `pulumi:"securityGroups"`
@@ -385,16 +401,19 @@ type OceanArgs struct {
 	AssociateIpv6Address pulumi.BoolPtrInput
 	// Configure public IP address allocation.
 	AssociatePublicIpAddress pulumi.BoolPtrInput
-	AttachLoadBalancers      OceanAttachLoadBalancerArrayInput
-	Autoscaler               OceanAutoscalerPtrInput
-	Blacklists               pulumi.StringArrayInput
+	// Attach load balancers to the cluster.
+	AttachLoadBalancers OceanAttachLoadBalancerArrayInput
+	// Describes the Ocean Kubernetes Auto Scaler.
+	Autoscaler OceanAutoscalerPtrInput
+	Blacklists pulumi.StringArrayInput
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings OceanBlockDeviceMappingArrayInput
 	ClusterOrientations OceanClusterOrientationArrayInput
 	// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
 	ControllerId pulumi.StringPtrInput
 	// The number of instances to launch and maintain in the cluster.
-	DesiredCapacity     pulumi.IntPtrInput
+	DesiredCapacity pulumi.IntPtrInput
+	// Detach load balancers from the cluster.
 	DetachLoadBalancers OceanDetachLoadBalancerArrayInput
 	// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
 	DrainingTimeout pulumi.IntPtrInput
@@ -433,6 +452,7 @@ type OceanArgs struct {
 	ResourceTagSpecifications OceanResourceTagSpecificationArrayInput
 	// The size (in Gb) to allocate for the root volume. Minimum `20`.
 	RootVolumeSize pulumi.IntPtrInput
+	// Set scheduling object.
 	ScheduledTasks OceanScheduledTaskArrayInput
 	// One or more security group ids.
 	SecurityGroups pulumi.StringArrayInput
@@ -555,10 +575,12 @@ func (o OceanOutput) AssociatePublicIpAddress() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Ocean) pulumi.BoolPtrOutput { return v.AssociatePublicIpAddress }).(pulumi.BoolPtrOutput)
 }
 
+// Attach load balancers to the cluster.
 func (o OceanOutput) AttachLoadBalancers() OceanAttachLoadBalancerArrayOutput {
 	return o.ApplyT(func(v *Ocean) OceanAttachLoadBalancerArrayOutput { return v.AttachLoadBalancers }).(OceanAttachLoadBalancerArrayOutput)
 }
 
+// Describes the Ocean Kubernetes Auto Scaler.
 func (o OceanOutput) Autoscaler() OceanAutoscalerPtrOutput {
 	return o.ApplyT(func(v *Ocean) OceanAutoscalerPtrOutput { return v.Autoscaler }).(OceanAutoscalerPtrOutput)
 }
@@ -586,6 +608,7 @@ func (o OceanOutput) DesiredCapacity() pulumi.IntOutput {
 	return o.ApplyT(func(v *Ocean) pulumi.IntOutput { return v.DesiredCapacity }).(pulumi.IntOutput)
 }
 
+// Detach load balancers from the cluster.
 func (o OceanOutput) DetachLoadBalancers() OceanDetachLoadBalancerArrayOutput {
 	return o.ApplyT(func(v *Ocean) OceanDetachLoadBalancerArrayOutput { return v.DetachLoadBalancers }).(OceanDetachLoadBalancerArrayOutput)
 }
@@ -684,6 +707,7 @@ func (o OceanOutput) RootVolumeSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Ocean) pulumi.IntPtrOutput { return v.RootVolumeSize }).(pulumi.IntPtrOutput)
 }
 
+// Set scheduling object.
 func (o OceanOutput) ScheduledTasks() OceanScheduledTaskArrayOutput {
 	return o.ApplyT(func(v *Ocean) OceanScheduledTaskArrayOutput { return v.ScheduledTasks }).(OceanScheduledTaskArrayOutput)
 }

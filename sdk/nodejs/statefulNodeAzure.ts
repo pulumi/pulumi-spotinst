@@ -246,7 +246,6 @@ import * as utilities from "./utilities";
  * * `resourceGroupName` - (Required) Name of the Resource Group for stateful node.
  * * `description` - (Optional) Describe your Azure stateful node.
  *
- * <a id="strategy"></a>
  * ## Strategy
  *
  * * `strategy` - (Required) Strategy for stateful node.
@@ -267,7 +266,6 @@ import * as utilities from "./utilities";
  *       * `crgResourceGroupName` - (Required) Azure resource group name
  *       * `crgShouldPrioritize` - The desired CRG to utilize ahead of other CRGs in the subscription.
  *
- * <a id="compute"></a>
  * ## Compute
  *
  * * `os` - (Required, Enum `"Linux", "Windows"`) Type of operating system.
@@ -299,7 +297,6 @@ import * as utilities from "./utilities";
  *   * `lun` - (Required) The LUN of the data disk.
  *   * `type` - (Required, Enum `"Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "UltraSSD_LRS"`) The type of the data disk.
  *
- * <a id="extensions"></a>
  * ## Extensions
  *
  * * `extension` - (Optional) An object for an azure extension.
@@ -311,7 +308,6 @@ import * as utilities from "./utilities";
  *   * `protectedSettings` - (Optional) Object for protected settings.
  *   * `publicSettings` - (Optional) Object for public settings.
  *
- * <a id="image"></a>
  * ## Image
  *
  * * `image`
@@ -343,7 +339,6 @@ import * as utilities from "./utilities";
  *       `“Standard_Large”, “Standard_Medium”, “Standard_Small”, “Standard_v2", “WAF_Large”, “WAF_Medium", “WAF_v2"`.
  *   * `backendPoolNames` - (Optional) Name of the Backend Pool to register the Stateful Node VMs to. Each Backend Pool is a separate load balancer. Required if Type is APPLICATION_GATEWAY.
  *
- * <a id="login"></a>
  * ## Login
  *
  * * `login` - (Required) Set admin access for accessing your VMs. Password/SSH is required for Linux.
@@ -365,7 +360,6 @@ import * as utilities from "./utilities";
  *   * `name` - (Required) name of the proximity placement group.
  *   * `resourceGroupName` - (Required) The Resource Group name of the proximity placement group.
  *
- * <a id="network"></a>
  * ## Network
  *
  * * `network` - (Required) Define the Virtual Network and Subnet for your Stateful Node.
@@ -399,7 +393,6 @@ import * as utilities from "./utilities";
  *   * `type` - (Required, Enum `"Standard_LRS", "Premium_LRS", "StandardSSD_LRS"`) The type of the OS disk.
  *   * `caching` - (Optional, Enum `"None", "ReadOnly", "ReadWrite"`) Specifies the host caching requirements. With disk caching enabled, VMs can achieve higher levels of performance. If not specified, the Azure default behavior will be applied.
  *
- * <a id="secret"></a>
  * ## Secret
  *
  * * `secret` - (Optional) Set of certificates that should be installed on the VM.
@@ -412,7 +405,6 @@ import * as utilities from "./utilities";
  *       * This field is required only when using Windows OS type
  *       * This field must be ‘null’ when the OS type is Linux
  *
- * <a id="secutiry"></a>
  * ## Security
  *
  * * `security` - (Optional) Specifies the Security related profile settings for the virtual machine.
@@ -420,14 +412,12 @@ import * as utilities from "./utilities";
  *     * `securityType` - (Optional) Enum: `"Standard", "TrustedLaunch"` Security type refers to the different security features of a virtual machine. Security features like Trusted launch virtual machines help to improve the security of Azure generation 2 virtual machines.
  *     * `vtpmEnabled` - (Optional) Specifies whether vTPM should be enabled on the virtual machine.
  *
- * <a id="tag"></a>
  * ## Tag
  *
  * * `tag` - (Optional) Unique Key-Value pair for all Stateful Node Resources.
  *   * `tagKey` - (Optional) Tag Key for Stateful Node Resources.
  *   * `tagValue` - (Optional) Tag Value for Stateful Node Resources.
  *
- * <a id="health"></a>
  * ## Health
  *
  * * `health` - (Optional) Set the auto healing preferences for unhealthy VMs.
@@ -436,7 +426,6 @@ import * as utilities from "./utilities";
  *   * `autoHealing` - (Required) Enable Autohealing of unhealthy VMs.
  *   * `gracePeriod` - (Optional) Period of time to wait for VM to reach healthiness before monitoring for unhealthiness.
  *
- * <a id="persistence"></a>
  * ## Persistence
  *
  * * `shouldPersistOsDisk` - (Required) Should persist os disk.
@@ -453,7 +442,6 @@ import * as utilities from "./utilities";
  *   * `type` - (Required, Enum `"pause", "resume", "recycle") The type of the scheduled task
  *   * `cronExpression` (Required) A expression which describes when to execute the scheduled task (UTC).
  *
- * <a id="signals"></a>
  * ## Signals
  *
  * * `signal` - (Optional) A signal object defined for the stateful node.
@@ -497,7 +485,6 @@ import * as utilities from "./utilities";
  *   * `drainingTimeout` - (Optional) Hours to keep resources alive.
  *   * `resourcesRetentionTime` - (Optional) Hours to keep resources alive.
  *
- * <a id="delete"></a>
  * ## Deallocation Config
  *
  * * `delete` - (Required) Specify deallocation parameters for stateful node deletion.

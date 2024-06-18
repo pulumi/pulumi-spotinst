@@ -13,14 +13,29 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class ElastigroupUpdatePolicyRollConfig
     {
+        /// <summary>
+        /// Sets the percentage of the instances to deploy in each batch.
+        /// </summary>
         public readonly int BatchSizePercentage;
+        /// <summary>
+        /// Sets the grace period for new instances to become healthy.
+        /// </summary>
         public readonly int? GracePeriod;
         /// <summary>
-        /// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"EC2"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+        /// Sets the health check type to use. Valid values: `"EC2"`, `"ECS_CLUSTER_INSTANCE"`, `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"NONE"`.
         /// </summary>
         public readonly string? HealthCheckType;
+        /// <summary>
+        /// Strategy parameters
+        /// </summary>
         public readonly Outputs.ElastigroupUpdatePolicyRollConfigStrategy? Strategy;
+        /// <summary>
+        /// For use with `should_roll`. Sets minimum % of roll required to complete before continuing the plan. Required if `wait_for_roll_timeout` is set.
+        /// </summary>
         public readonly double? WaitForRollPercentage;
+        /// <summary>
+        /// For use with `should_roll`. Sets how long to wait for the deployed % of a roll to exceed `wait_for_roll_percentage` before continuing the plan. Required if `wait_for_roll_percentage` is set.
+        /// </summary>
         public readonly int? WaitForRollTimeout;
 
         [OutputConstructor]

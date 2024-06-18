@@ -37,9 +37,15 @@ namespace Pulumi.SpotInst.Aws
         [Output("associatePublicIpAddress")]
         public Output<bool?> AssociatePublicIpAddress { get; private set; } = null!;
 
+        /// <summary>
+        /// Attach load balancers to the cluster.
+        /// </summary>
         [Output("attachLoadBalancers")]
         public Output<ImmutableArray<Outputs.OceanAttachLoadBalancer>> AttachLoadBalancers { get; private set; } = null!;
 
+        /// <summary>
+        /// Describes the Ocean Kubernetes Auto Scaler.
+        /// </summary>
         [Output("autoscaler")]
         public Output<Outputs.OceanAutoscaler?> Autoscaler { get; private set; } = null!;
 
@@ -67,6 +73,9 @@ namespace Pulumi.SpotInst.Aws
         [Output("desiredCapacity")]
         public Output<int> DesiredCapacity { get; private set; } = null!;
 
+        /// <summary>
+        /// Detach load balancers from the cluster.
+        /// </summary>
         [Output("detachLoadBalancers")]
         public Output<ImmutableArray<Outputs.OceanDetachLoadBalancer>> DetachLoadBalancers { get; private set; } = null!;
 
@@ -181,6 +190,9 @@ namespace Pulumi.SpotInst.Aws
         [Output("rootVolumeSize")]
         public Output<int?> RootVolumeSize { get; private set; } = null!;
 
+        /// <summary>
+        /// Set scheduling object.
+        /// </summary>
         [Output("scheduledTasks")]
         public Output<ImmutableArray<Outputs.OceanScheduledTask>> ScheduledTasks { get; private set; } = null!;
 
@@ -306,12 +318,19 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("attachLoadBalancers")]
         private InputList<Inputs.OceanAttachLoadBalancerArgs>? _attachLoadBalancers;
+
+        /// <summary>
+        /// Attach load balancers to the cluster.
+        /// </summary>
         public InputList<Inputs.OceanAttachLoadBalancerArgs> AttachLoadBalancers
         {
             get => _attachLoadBalancers ?? (_attachLoadBalancers = new InputList<Inputs.OceanAttachLoadBalancerArgs>());
             set => _attachLoadBalancers = value;
         }
 
+        /// <summary>
+        /// Describes the Ocean Kubernetes Auto Scaler.
+        /// </summary>
         [Input("autoscaler")]
         public Input<Inputs.OceanAutoscalerArgs>? Autoscaler { get; set; }
 
@@ -357,6 +376,10 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("detachLoadBalancers")]
         private InputList<Inputs.OceanDetachLoadBalancerArgs>? _detachLoadBalancers;
+
+        /// <summary>
+        /// Detach load balancers from the cluster.
+        /// </summary>
         public InputList<Inputs.OceanDetachLoadBalancerArgs> DetachLoadBalancers
         {
             get => _detachLoadBalancers ?? (_detachLoadBalancers = new InputList<Inputs.OceanDetachLoadBalancerArgs>());
@@ -488,6 +511,10 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("scheduledTasks")]
         private InputList<Inputs.OceanScheduledTaskArgs>? _scheduledTasks;
+
+        /// <summary>
+        /// Set scheduling object.
+        /// </summary>
         public InputList<Inputs.OceanScheduledTaskArgs> ScheduledTasks
         {
             get => _scheduledTasks ?? (_scheduledTasks = new InputList<Inputs.OceanScheduledTaskArgs>());
@@ -601,12 +628,19 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("attachLoadBalancers")]
         private InputList<Inputs.OceanAttachLoadBalancerGetArgs>? _attachLoadBalancers;
+
+        /// <summary>
+        /// Attach load balancers to the cluster.
+        /// </summary>
         public InputList<Inputs.OceanAttachLoadBalancerGetArgs> AttachLoadBalancers
         {
             get => _attachLoadBalancers ?? (_attachLoadBalancers = new InputList<Inputs.OceanAttachLoadBalancerGetArgs>());
             set => _attachLoadBalancers = value;
         }
 
+        /// <summary>
+        /// Describes the Ocean Kubernetes Auto Scaler.
+        /// </summary>
         [Input("autoscaler")]
         public Input<Inputs.OceanAutoscalerGetArgs>? Autoscaler { get; set; }
 
@@ -652,6 +686,10 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("detachLoadBalancers")]
         private InputList<Inputs.OceanDetachLoadBalancerGetArgs>? _detachLoadBalancers;
+
+        /// <summary>
+        /// Detach load balancers from the cluster.
+        /// </summary>
         public InputList<Inputs.OceanDetachLoadBalancerGetArgs> DetachLoadBalancers
         {
             get => _detachLoadBalancers ?? (_detachLoadBalancers = new InputList<Inputs.OceanDetachLoadBalancerGetArgs>());
@@ -783,6 +821,10 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("scheduledTasks")]
         private InputList<Inputs.OceanScheduledTaskGetArgs>? _scheduledTasks;
+
+        /// <summary>
+        /// Set scheduling object.
+        /// </summary>
         public InputList<Inputs.OceanScheduledTaskGetArgs> ScheduledTasks
         {
             get => _scheduledTasks ?? (_scheduledTasks = new InputList<Inputs.OceanScheduledTaskGetArgs>());

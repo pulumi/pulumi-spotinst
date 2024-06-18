@@ -17,16 +17,32 @@ public final class OceanLaunchSpecBlockDeviceMappingArgs extends com.pulumi.reso
 
     public static final OceanLaunchSpecBlockDeviceMappingArgs Empty = new OceanLaunchSpecBlockDeviceMappingArgs();
 
+    /**
+     * String. Set device name. (Example: &#34;/dev/xvda1&#34;).
+     * 
+     */
     @Import(name="deviceName", required=true)
     private Output<String> deviceName;
 
+    /**
+     * @return String. Set device name. (Example: &#34;/dev/xvda1&#34;).
+     * 
+     */
     public Output<String> deviceName() {
         return this.deviceName;
     }
 
+    /**
+     * Object. Set Elastic Block Store properties .
+     * 
+     */
     @Import(name="ebs")
     private @Nullable Output<OceanLaunchSpecBlockDeviceMappingEbsArgs> ebs;
 
+    /**
+     * @return Object. Set Elastic Block Store properties .
+     * 
+     */
     public Optional<Output<OceanLaunchSpecBlockDeviceMappingEbsArgs>> ebs() {
         return Optional.ofNullable(this.ebs);
     }
@@ -72,20 +88,44 @@ public final class OceanLaunchSpecBlockDeviceMappingArgs extends com.pulumi.reso
             $ = new OceanLaunchSpecBlockDeviceMappingArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param deviceName String. Set device name. (Example: &#34;/dev/xvda1&#34;).
+         * 
+         * @return builder
+         * 
+         */
         public Builder deviceName(Output<String> deviceName) {
             $.deviceName = deviceName;
             return this;
         }
 
+        /**
+         * @param deviceName String. Set device name. (Example: &#34;/dev/xvda1&#34;).
+         * 
+         * @return builder
+         * 
+         */
         public Builder deviceName(String deviceName) {
             return deviceName(Output.of(deviceName));
         }
 
+        /**
+         * @param ebs Object. Set Elastic Block Store properties .
+         * 
+         * @return builder
+         * 
+         */
         public Builder ebs(@Nullable Output<OceanLaunchSpecBlockDeviceMappingEbsArgs> ebs) {
             $.ebs = ebs;
             return this;
         }
 
+        /**
+         * @param ebs Object. Set Elastic Block Store properties .
+         * 
+         * @return builder
+         * 
+         */
         public Builder ebs(OceanLaunchSpecBlockDeviceMappingEbsArgs ebs) {
             return ebs(Output.of(ebs));
         }

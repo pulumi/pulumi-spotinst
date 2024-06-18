@@ -12,25 +12,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanDetachLoadBalancer {
+    /**
+     * @return If type is &#34;TARGET_GROUP&#34; then an ARN is required. Otherwise is not allowed.
+     * 
+     */
     private @Nullable String arn;
     /**
-     * @return The cluster name.
+     * @return If type is &#34;CLASSIC&#34; then a name is required. Otherwise is not allowed.
      * 
      */
     private @Nullable String name;
+    /**
+     * @return Type of load balancer to use.
+     * 
+     */
     private String type;
 
     private OceanDetachLoadBalancer() {}
+    /**
+     * @return If type is &#34;TARGET_GROUP&#34; then an ARN is required. Otherwise is not allowed.
+     * 
+     */
     public Optional<String> arn() {
         return Optional.ofNullable(this.arn);
     }
     /**
-     * @return The cluster name.
+     * @return If type is &#34;CLASSIC&#34; then a name is required. Otherwise is not allowed.
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return Type of load balancer to use.
+     * 
+     */
     public String type() {
         return this.type;
     }

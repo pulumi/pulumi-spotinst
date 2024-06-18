@@ -18,16 +18,12 @@ public final class OceanLaunchSpecEphemeralStorageArgs extends com.pulumi.resour
     /**
      * Specify an alternative device name from which ephemeral storage calculations should be derived. This parameter is used when the ephemeral storage should not utilize the root device. Provide the device name configured in the VNG&#39;s BDM or AMI&#39;s BDM that differs from the default root device.
      * 
-     * &lt;a id=&#34;update-policy&#34;&gt;&lt;/a&gt;
-     * 
      */
     @Import(name="ephemeralStorageDeviceName")
     private @Nullable Output<String> ephemeralStorageDeviceName;
 
     /**
      * @return Specify an alternative device name from which ephemeral storage calculations should be derived. This parameter is used when the ephemeral storage should not utilize the root device. Provide the device name configured in the VNG&#39;s BDM or AMI&#39;s BDM that differs from the default root device.
-     * 
-     * &lt;a id=&#34;update-policy&#34;&gt;&lt;/a&gt;
      * 
      */
     public Optional<Output<String>> ephemeralStorageDeviceName() {
@@ -61,8 +57,6 @@ public final class OceanLaunchSpecEphemeralStorageArgs extends com.pulumi.resour
         /**
          * @param ephemeralStorageDeviceName Specify an alternative device name from which ephemeral storage calculations should be derived. This parameter is used when the ephemeral storage should not utilize the root device. Provide the device name configured in the VNG&#39;s BDM or AMI&#39;s BDM that differs from the default root device.
          * 
-         * &lt;a id=&#34;update-policy&#34;&gt;&lt;/a&gt;
-         * 
          * @return builder
          * 
          */
@@ -73,8 +67,6 @@ public final class OceanLaunchSpecEphemeralStorageArgs extends com.pulumi.resour
 
         /**
          * @param ephemeralStorageDeviceName Specify an alternative device name from which ephemeral storage calculations should be derived. This parameter is used when the ephemeral storage should not utilize the root device. Provide the device name configured in the VNG&#39;s BDM or AMI&#39;s BDM that differs from the default root device.
-         * 
-         * &lt;a id=&#34;update-policy&#34;&gt;&lt;/a&gt;
          * 
          * @return builder
          * 

@@ -1365,7 +1365,6 @@ class StatefulNodeAzure(pulumi.CustomResource):
         * `resource_group_name` - (Required) Name of the Resource Group for stateful node.
         * `description` - (Optional) Describe your Azure stateful node.
 
-        <a id="strategy"></a>
         ## Strategy
 
         * `strategy` - (Required) Strategy for stateful node.
@@ -1386,7 +1385,6 @@ class StatefulNodeAzure(pulumi.CustomResource):
               * `crg_resource_group_name` - (Required) Azure resource group name
               * `crg_should_prioritize` - The desired CRG to utilize ahead of other CRGs in the subscription.
 
-        <a id="compute"></a>
         ## Compute
 
         * `os` - (Required, Enum `"Linux", "Windows"`) Type of operating system.
@@ -1418,7 +1416,6 @@ class StatefulNodeAzure(pulumi.CustomResource):
           * `lun` - (Required) The LUN of the data disk.
           * `type` - (Required, Enum `"Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "UltraSSD_LRS"`) The type of the data disk.
 
-        <a id="extensions"></a>
         ## Extensions
 
         * `extension` - (Optional) An object for an azure extension.
@@ -1430,7 +1427,6 @@ class StatefulNodeAzure(pulumi.CustomResource):
           * `protected_settings` - (Optional) Object for protected settings.
           * `public_settings` - (Optional) Object for public settings.
 
-        <a id="image"></a>
         ## Image
 
         * `image`
@@ -1462,7 +1458,6 @@ class StatefulNodeAzure(pulumi.CustomResource):
               `“Standard_Large”, “Standard_Medium”, “Standard_Small”, “Standard_v2", “WAF_Large”, “WAF_Medium", “WAF_v2"`.
           * `backend_pool_names` - (Optional) Name of the Backend Pool to register the Stateful Node VMs to. Each Backend Pool is a separate load balancer. Required if Type is APPLICATION_GATEWAY.
 
-        <a id="login"></a>
         ## Login
 
         * `login` - (Required) Set admin access for accessing your VMs. Password/SSH is required for Linux.
@@ -1484,7 +1479,6 @@ class StatefulNodeAzure(pulumi.CustomResource):
           * `name` - (Required) name of the proximity placement group.
           * `resource_group_name` - (Required) The Resource Group name of the proximity placement group.
 
-        <a id="network"></a>
         ## Network
 
         * `network` - (Required) Define the Virtual Network and Subnet for your Stateful Node.
@@ -1518,7 +1512,6 @@ class StatefulNodeAzure(pulumi.CustomResource):
           * `type` - (Required, Enum `"Standard_LRS", "Premium_LRS", "StandardSSD_LRS"`) The type of the OS disk.
           * `caching` - (Optional, Enum `"None", "ReadOnly", "ReadWrite"`) Specifies the host caching requirements. With disk caching enabled, VMs can achieve higher levels of performance. If not specified, the Azure default behavior will be applied.
 
-        <a id="secret"></a>
         ## Secret
 
         * `secret` - (Optional) Set of certificates that should be installed on the VM.
@@ -1531,7 +1524,6 @@ class StatefulNodeAzure(pulumi.CustomResource):
               * This field is required only when using Windows OS type
               * This field must be ‘null’ when the OS type is Linux
 
-        <a id="secutiry"></a>
         ## Security
 
         * `security` - (Optional) Specifies the Security related profile settings for the virtual machine.
@@ -1539,14 +1531,12 @@ class StatefulNodeAzure(pulumi.CustomResource):
             * `security_type` - (Optional) Enum: `"Standard", "TrustedLaunch"` Security type refers to the different security features of a virtual machine. Security features like Trusted launch virtual machines help to improve the security of Azure generation 2 virtual machines.
             * `vtpm_enabled` - (Optional) Specifies whether vTPM should be enabled on the virtual machine.
 
-        <a id="tag"></a>
         ## Tag
 
         * `tag` - (Optional) Unique Key-Value pair for all Stateful Node Resources.
           * `tag_key` - (Optional) Tag Key for Stateful Node Resources.
           * `tag_value` - (Optional) Tag Value for Stateful Node Resources.
 
-        <a id="health"></a>
         ## Health
 
         * `health` - (Optional) Set the auto healing preferences for unhealthy VMs.
@@ -1555,7 +1545,6 @@ class StatefulNodeAzure(pulumi.CustomResource):
           * `auto_healing` - (Required) Enable Autohealing of unhealthy VMs.
           * `grace_period` - (Optional) Period of time to wait for VM to reach healthiness before monitoring for unhealthiness.
 
-        <a id="persistence"></a>
         ## Persistence
 
         * `should_persist_os_disk` - (Required) Should persist os disk.
@@ -1572,7 +1561,6 @@ class StatefulNodeAzure(pulumi.CustomResource):
           * `type` - (Required, Enum `"pause", "resume", "recycle") The type of the scheduled task
           * `cron_expression` (Required) A expression which describes when to execute the scheduled task (UTC).
 
-        <a id="signals"></a>
         ## Signals
 
         * `signal` - (Optional) A signal object defined for the stateful node.
@@ -1616,7 +1604,6 @@ class StatefulNodeAzure(pulumi.CustomResource):
           * `draining_timeout` - (Optional) Hours to keep resources alive.
           * `resources_retention_time` - (Optional) Hours to keep resources alive.
 
-        <a id="delete"></a>
         ## Deallocation Config
 
         * `delete` - (Required) Specify deallocation parameters for stateful node deletion.
@@ -1879,7 +1866,6 @@ class StatefulNodeAzure(pulumi.CustomResource):
         * `resource_group_name` - (Required) Name of the Resource Group for stateful node.
         * `description` - (Optional) Describe your Azure stateful node.
 
-        <a id="strategy"></a>
         ## Strategy
 
         * `strategy` - (Required) Strategy for stateful node.
@@ -1900,7 +1886,6 @@ class StatefulNodeAzure(pulumi.CustomResource):
               * `crg_resource_group_name` - (Required) Azure resource group name
               * `crg_should_prioritize` - The desired CRG to utilize ahead of other CRGs in the subscription.
 
-        <a id="compute"></a>
         ## Compute
 
         * `os` - (Required, Enum `"Linux", "Windows"`) Type of operating system.
@@ -1932,7 +1917,6 @@ class StatefulNodeAzure(pulumi.CustomResource):
           * `lun` - (Required) The LUN of the data disk.
           * `type` - (Required, Enum `"Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "UltraSSD_LRS"`) The type of the data disk.
 
-        <a id="extensions"></a>
         ## Extensions
 
         * `extension` - (Optional) An object for an azure extension.
@@ -1944,7 +1928,6 @@ class StatefulNodeAzure(pulumi.CustomResource):
           * `protected_settings` - (Optional) Object for protected settings.
           * `public_settings` - (Optional) Object for public settings.
 
-        <a id="image"></a>
         ## Image
 
         * `image`
@@ -1976,7 +1959,6 @@ class StatefulNodeAzure(pulumi.CustomResource):
               `“Standard_Large”, “Standard_Medium”, “Standard_Small”, “Standard_v2", “WAF_Large”, “WAF_Medium", “WAF_v2"`.
           * `backend_pool_names` - (Optional) Name of the Backend Pool to register the Stateful Node VMs to. Each Backend Pool is a separate load balancer. Required if Type is APPLICATION_GATEWAY.
 
-        <a id="login"></a>
         ## Login
 
         * `login` - (Required) Set admin access for accessing your VMs. Password/SSH is required for Linux.
@@ -1998,7 +1980,6 @@ class StatefulNodeAzure(pulumi.CustomResource):
           * `name` - (Required) name of the proximity placement group.
           * `resource_group_name` - (Required) The Resource Group name of the proximity placement group.
 
-        <a id="network"></a>
         ## Network
 
         * `network` - (Required) Define the Virtual Network and Subnet for your Stateful Node.
@@ -2032,7 +2013,6 @@ class StatefulNodeAzure(pulumi.CustomResource):
           * `type` - (Required, Enum `"Standard_LRS", "Premium_LRS", "StandardSSD_LRS"`) The type of the OS disk.
           * `caching` - (Optional, Enum `"None", "ReadOnly", "ReadWrite"`) Specifies the host caching requirements. With disk caching enabled, VMs can achieve higher levels of performance. If not specified, the Azure default behavior will be applied.
 
-        <a id="secret"></a>
         ## Secret
 
         * `secret` - (Optional) Set of certificates that should be installed on the VM.
@@ -2045,7 +2025,6 @@ class StatefulNodeAzure(pulumi.CustomResource):
               * This field is required only when using Windows OS type
               * This field must be ‘null’ when the OS type is Linux
 
-        <a id="secutiry"></a>
         ## Security
 
         * `security` - (Optional) Specifies the Security related profile settings for the virtual machine.
@@ -2053,14 +2032,12 @@ class StatefulNodeAzure(pulumi.CustomResource):
             * `security_type` - (Optional) Enum: `"Standard", "TrustedLaunch"` Security type refers to the different security features of a virtual machine. Security features like Trusted launch virtual machines help to improve the security of Azure generation 2 virtual machines.
             * `vtpm_enabled` - (Optional) Specifies whether vTPM should be enabled on the virtual machine.
 
-        <a id="tag"></a>
         ## Tag
 
         * `tag` - (Optional) Unique Key-Value pair for all Stateful Node Resources.
           * `tag_key` - (Optional) Tag Key for Stateful Node Resources.
           * `tag_value` - (Optional) Tag Value for Stateful Node Resources.
 
-        <a id="health"></a>
         ## Health
 
         * `health` - (Optional) Set the auto healing preferences for unhealthy VMs.
@@ -2069,7 +2046,6 @@ class StatefulNodeAzure(pulumi.CustomResource):
           * `auto_healing` - (Required) Enable Autohealing of unhealthy VMs.
           * `grace_period` - (Optional) Period of time to wait for VM to reach healthiness before monitoring for unhealthiness.
 
-        <a id="persistence"></a>
         ## Persistence
 
         * `should_persist_os_disk` - (Required) Should persist os disk.
@@ -2086,7 +2062,6 @@ class StatefulNodeAzure(pulumi.CustomResource):
           * `type` - (Required, Enum `"pause", "resume", "recycle") The type of the scheduled task
           * `cron_expression` (Required) A expression which describes when to execute the scheduled task (UTC).
 
-        <a id="signals"></a>
         ## Signals
 
         * `signal` - (Optional) A signal object defined for the stateful node.
@@ -2130,7 +2105,6 @@ class StatefulNodeAzure(pulumi.CustomResource):
           * `draining_timeout` - (Optional) Hours to keep resources alive.
           * `resources_retention_time` - (Optional) Hours to keep resources alive.
 
-        <a id="delete"></a>
         ## Deallocation Config
 
         * `delete` - (Required) Specify deallocation parameters for stateful node deletion.

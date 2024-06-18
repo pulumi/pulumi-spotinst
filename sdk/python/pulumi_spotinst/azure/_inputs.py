@@ -1018,8 +1018,6 @@ class OceanNpFiltersArgs:
         :param pulumi.Input[str] disk_performance: The filtered vm sizes will support at least one of the classes from this list.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_series: Vm sizes belonging to a series from the list will not be available for scaling
         :param pulumi.Input[Sequence[pulumi.Input[str]]] gpu_types: The filtered gpu types will belong to one of the gpu types from this list.
-               
-               <a id="update-policy"></a>
         :param pulumi.Input[float] max_gpu: Maximum number of GPUs available.
         :param pulumi.Input[float] max_memory_gib: Maximum amount of Memory (GiB).
         :param pulumi.Input[int] max_vcpu: Maximum number of vcpus available.
@@ -1115,8 +1113,6 @@ class OceanNpFiltersArgs:
     def gpu_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The filtered gpu types will belong to one of the gpu types from this list.
-
-        <a id="update-policy"></a>
         """
         return pulumi.get(self, "gpu_types")
 
@@ -1645,6 +1641,11 @@ class OceanNpUpdatePolicyArgs:
                  should_roll: pulumi.Input[bool],
                  conditioned_roll: Optional[pulumi.Input[bool]] = None,
                  roll_config: Optional[pulumi.Input['OceanNpUpdatePolicyRollConfigArgs']] = None):
+        """
+        :param pulumi.Input[bool] should_roll: If set to true along with the cluster update, roll will be triggered.
+        :param pulumi.Input[bool] conditioned_roll: Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as availability_zones, max_pods_per_node, enable_node_public_ip, os_disk_size_gb, os_disk_type, os_sku, kubernetes_version, vnet_subnet_ids, pod_subnet_ids, labels, taints and tags).
+        :param pulumi.Input['OceanNpUpdatePolicyRollConfigArgs'] roll_config: While used, you can control whether the group should perform a deployment after an update to the configuration.
+        """
         pulumi.set(__self__, "should_roll", should_roll)
         if conditioned_roll is not None:
             pulumi.set(__self__, "conditioned_roll", conditioned_roll)
@@ -1654,6 +1655,9 @@ class OceanNpUpdatePolicyArgs:
     @property
     @pulumi.getter(name="shouldRoll")
     def should_roll(self) -> pulumi.Input[bool]:
+        """
+        If set to true along with the cluster update, roll will be triggered.
+        """
         return pulumi.get(self, "should_roll")
 
     @should_roll.setter
@@ -1663,6 +1667,9 @@ class OceanNpUpdatePolicyArgs:
     @property
     @pulumi.getter(name="conditionedRoll")
     def conditioned_roll(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as availability_zones, max_pods_per_node, enable_node_public_ip, os_disk_size_gb, os_disk_type, os_sku, kubernetes_version, vnet_subnet_ids, pod_subnet_ids, labels, taints and tags).
+        """
         return pulumi.get(self, "conditioned_roll")
 
     @conditioned_roll.setter
@@ -1672,6 +1679,9 @@ class OceanNpUpdatePolicyArgs:
     @property
     @pulumi.getter(name="rollConfig")
     def roll_config(self) -> Optional[pulumi.Input['OceanNpUpdatePolicyRollConfigArgs']]:
+        """
+        While used, you can control whether the group should perform a deployment after an update to the configuration.
+        """
         return pulumi.get(self, "roll_config")
 
     @roll_config.setter
@@ -1690,6 +1700,16 @@ class OceanNpUpdatePolicyRollConfigArgs:
                  respect_pdb: Optional[pulumi.Input[bool]] = None,
                  respect_restrict_scale_down: Optional[pulumi.Input[bool]] = None,
                  vng_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[int] batch_min_healthy_percentage: Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+        :param pulumi.Input[int] batch_size_percentage: Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.
+        :param pulumi.Input[str] comment: Add a comment description for the roll. The comment is limited to 256 chars and optional.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] node_names: List of node names to be rolled. Each identifier is a string. nodeNames can be null, and cannot be used together with nodePoolNames and vngIds.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] node_pool_names: List of node pools to be rolled. Each node pool name is a string. nodePoolNames can be null, and cannot be used together with nodeNames and vngIds.
+        :param pulumi.Input[bool] respect_pdb: During the roll, if the parameter is set to true we honor PDB during the nodes replacement.
+        :param pulumi.Input[bool] respect_restrict_scale_down: During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vng_ids: List of virtual node group identifiers to be rolled. Each identifier is a string. vngIds can be null, and cannot be used together with nodeNames and nodePoolNames.
+        """
         if batch_min_healthy_percentage is not None:
             pulumi.set(__self__, "batch_min_healthy_percentage", batch_min_healthy_percentage)
         if batch_size_percentage is not None:
@@ -1710,6 +1730,9 @@ class OceanNpUpdatePolicyRollConfigArgs:
     @property
     @pulumi.getter(name="batchMinHealthyPercentage")
     def batch_min_healthy_percentage(self) -> Optional[pulumi.Input[int]]:
+        """
+        Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+        """
         return pulumi.get(self, "batch_min_healthy_percentage")
 
     @batch_min_healthy_percentage.setter
@@ -1719,6 +1742,9 @@ class OceanNpUpdatePolicyRollConfigArgs:
     @property
     @pulumi.getter(name="batchSizePercentage")
     def batch_size_percentage(self) -> Optional[pulumi.Input[int]]:
+        """
+        Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.
+        """
         return pulumi.get(self, "batch_size_percentage")
 
     @batch_size_percentage.setter
@@ -1728,6 +1754,9 @@ class OceanNpUpdatePolicyRollConfigArgs:
     @property
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
+        """
+        Add a comment description for the roll. The comment is limited to 256 chars and optional.
+        """
         return pulumi.get(self, "comment")
 
     @comment.setter
@@ -1737,6 +1766,9 @@ class OceanNpUpdatePolicyRollConfigArgs:
     @property
     @pulumi.getter(name="nodeNames")
     def node_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of node names to be rolled. Each identifier is a string. nodeNames can be null, and cannot be used together with nodePoolNames and vngIds.
+        """
         return pulumi.get(self, "node_names")
 
     @node_names.setter
@@ -1746,6 +1778,9 @@ class OceanNpUpdatePolicyRollConfigArgs:
     @property
     @pulumi.getter(name="nodePoolNames")
     def node_pool_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of node pools to be rolled. Each node pool name is a string. nodePoolNames can be null, and cannot be used together with nodeNames and vngIds.
+        """
         return pulumi.get(self, "node_pool_names")
 
     @node_pool_names.setter
@@ -1755,6 +1790,9 @@ class OceanNpUpdatePolicyRollConfigArgs:
     @property
     @pulumi.getter(name="respectPdb")
     def respect_pdb(self) -> Optional[pulumi.Input[bool]]:
+        """
+        During the roll, if the parameter is set to true we honor PDB during the nodes replacement.
+        """
         return pulumi.get(self, "respect_pdb")
 
     @respect_pdb.setter
@@ -1764,6 +1802,9 @@ class OceanNpUpdatePolicyRollConfigArgs:
     @property
     @pulumi.getter(name="respectRestrictScaleDown")
     def respect_restrict_scale_down(self) -> Optional[pulumi.Input[bool]]:
+        """
+        During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.
+        """
         return pulumi.get(self, "respect_restrict_scale_down")
 
     @respect_restrict_scale_down.setter
@@ -1773,6 +1814,9 @@ class OceanNpUpdatePolicyRollConfigArgs:
     @property
     @pulumi.getter(name="vngIds")
     def vng_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of virtual node group identifiers to be rolled. Each identifier is a string. vngIds can be null, and cannot be used together with nodeNames and nodePoolNames.
+        """
         return pulumi.get(self, "vng_ids")
 
     @vng_ids.setter
@@ -1804,7 +1848,6 @@ class OceanNpVirtualNodeGroupFiltersArgs:
         :param pulumi.Input[str] disk_performance: The filtered vm sizes will support at least one of the classes from this list.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_series: Vm sizes belonging to a series from the list will not be available for scaling.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] gpu_types: The filtered gpu types will belong to one of the gpu types from this list.
-               <a id="update-policy"></a>
         :param pulumi.Input[float] max_gpu: Maximum number of GPUs available.
         :param pulumi.Input[float] max_memory_gib: Maximum amount of Memory (GiB).
         :param pulumi.Input[int] max_vcpu: Maximum number of vcpus available.
@@ -1900,7 +1943,6 @@ class OceanNpVirtualNodeGroupFiltersArgs:
     def gpu_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The filtered gpu types will belong to one of the gpu types from this list.
-        <a id="update-policy"></a>
         """
         return pulumi.get(self, "gpu_types")
 
@@ -2204,6 +2246,11 @@ class OceanNpVirtualNodeGroupUpdatePolicyArgs:
                  should_roll: pulumi.Input[bool],
                  conditioned_roll: Optional[pulumi.Input[bool]] = None,
                  roll_config: Optional[pulumi.Input['OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs']] = None):
+        """
+        :param pulumi.Input[bool] should_roll: If set to true along with the vng update, roll will be triggered.
+        :param pulumi.Input[bool] conditioned_roll: Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as availability_zones, max_pods_per_node, enable_node_public_ip, os_disk_size_gb, os_disk_type, os_sku, kubernetes_version, vnet_subnet_ids, pod_subnet_ids, labels, taints and tags).
+        :param pulumi.Input['OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs'] roll_config: While used, you can control whether the group should perform a deployment after an update to the configuration.
+        """
         pulumi.set(__self__, "should_roll", should_roll)
         if conditioned_roll is not None:
             pulumi.set(__self__, "conditioned_roll", conditioned_roll)
@@ -2213,6 +2260,9 @@ class OceanNpVirtualNodeGroupUpdatePolicyArgs:
     @property
     @pulumi.getter(name="shouldRoll")
     def should_roll(self) -> pulumi.Input[bool]:
+        """
+        If set to true along with the vng update, roll will be triggered.
+        """
         return pulumi.get(self, "should_roll")
 
     @should_roll.setter
@@ -2222,6 +2272,9 @@ class OceanNpVirtualNodeGroupUpdatePolicyArgs:
     @property
     @pulumi.getter(name="conditionedRoll")
     def conditioned_roll(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as availability_zones, max_pods_per_node, enable_node_public_ip, os_disk_size_gb, os_disk_type, os_sku, kubernetes_version, vnet_subnet_ids, pod_subnet_ids, labels, taints and tags).
+        """
         return pulumi.get(self, "conditioned_roll")
 
     @conditioned_roll.setter
@@ -2231,6 +2284,9 @@ class OceanNpVirtualNodeGroupUpdatePolicyArgs:
     @property
     @pulumi.getter(name="rollConfig")
     def roll_config(self) -> Optional[pulumi.Input['OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs']]:
+        """
+        While used, you can control whether the group should perform a deployment after an update to the configuration.
+        """
         return pulumi.get(self, "roll_config")
 
     @roll_config.setter
@@ -2249,6 +2305,16 @@ class OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs:
                  respect_pdb: Optional[pulumi.Input[bool]] = None,
                  respect_restrict_scale_down: Optional[pulumi.Input[bool]] = None,
                  vng_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[int] batch_min_healthy_percentage: Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+        :param pulumi.Input[int] batch_size_percentage: Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.
+        :param pulumi.Input[str] comment: Add a comment description for the roll. The comment is limited to 256 chars and optional.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] node_names: List of node names to be rolled. Each identifier is a string. nodeNames can be null, and cannot be used together with nodePoolNames and vngIds.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] node_pool_names: List of node pools to be rolled. Each node pool name is a string. nodePoolNames can be null, and cannot be used together with nodeNames and vngIds.
+        :param pulumi.Input[bool] respect_pdb: During the roll, if the parameter is set to true we honor PDB during the nodes replacement.
+        :param pulumi.Input[bool] respect_restrict_scale_down: During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vng_ids: List of virtual node group identifiers to be rolled. Each identifier is a string. vngIds can be null, and cannot be used together with nodeNames and nodePoolNames.
+        """
         if batch_min_healthy_percentage is not None:
             pulumi.set(__self__, "batch_min_healthy_percentage", batch_min_healthy_percentage)
         if batch_size_percentage is not None:
@@ -2269,6 +2335,9 @@ class OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs:
     @property
     @pulumi.getter(name="batchMinHealthyPercentage")
     def batch_min_healthy_percentage(self) -> Optional[pulumi.Input[int]]:
+        """
+        Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+        """
         return pulumi.get(self, "batch_min_healthy_percentage")
 
     @batch_min_healthy_percentage.setter
@@ -2278,6 +2347,9 @@ class OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs:
     @property
     @pulumi.getter(name="batchSizePercentage")
     def batch_size_percentage(self) -> Optional[pulumi.Input[int]]:
+        """
+        Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.
+        """
         return pulumi.get(self, "batch_size_percentage")
 
     @batch_size_percentage.setter
@@ -2287,6 +2359,9 @@ class OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs:
     @property
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
+        """
+        Add a comment description for the roll. The comment is limited to 256 chars and optional.
+        """
         return pulumi.get(self, "comment")
 
     @comment.setter
@@ -2296,6 +2371,9 @@ class OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs:
     @property
     @pulumi.getter(name="nodeNames")
     def node_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of node names to be rolled. Each identifier is a string. nodeNames can be null, and cannot be used together with nodePoolNames and vngIds.
+        """
         return pulumi.get(self, "node_names")
 
     @node_names.setter
@@ -2305,6 +2383,9 @@ class OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs:
     @property
     @pulumi.getter(name="nodePoolNames")
     def node_pool_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of node pools to be rolled. Each node pool name is a string. nodePoolNames can be null, and cannot be used together with nodeNames and vngIds.
+        """
         return pulumi.get(self, "node_pool_names")
 
     @node_pool_names.setter
@@ -2314,6 +2395,9 @@ class OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs:
     @property
     @pulumi.getter(name="respectPdb")
     def respect_pdb(self) -> Optional[pulumi.Input[bool]]:
+        """
+        During the roll, if the parameter is set to true we honor PDB during the nodes replacement.
+        """
         return pulumi.get(self, "respect_pdb")
 
     @respect_pdb.setter
@@ -2323,6 +2407,9 @@ class OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs:
     @property
     @pulumi.getter(name="respectRestrictScaleDown")
     def respect_restrict_scale_down(self) -> Optional[pulumi.Input[bool]]:
+        """
+        During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.
+        """
         return pulumi.get(self, "respect_restrict_scale_down")
 
     @respect_restrict_scale_down.setter
@@ -2332,6 +2419,9 @@ class OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs:
     @property
     @pulumi.getter(name="vngIds")
     def vng_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of virtual node group identifiers to be rolled. Each identifier is a string. vngIds can be null, and cannot be used together with nodeNames and nodePoolNames.
+        """
         return pulumi.get(self, "vng_ids")
 
     @vng_ids.setter

@@ -13,24 +13,40 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OceanImportStrategy {
     /**
-     * @return The draining timeout (in seconds) before terminating the instance.
+     * @return The draining timeout (in seconds) before terminating the instance. If no draining timeout is defined, the default draining timeout will be used.
      * 
      */
     private @Nullable Integer drainingTimeout;
+    /**
+     * @return Defines the desired preemptible percentage for the cluster.
+     * 
+     */
     private @Nullable Integer preemptiblePercentage;
+    /**
+     * @return Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
+     * 
+     */
     private @Nullable String provisioningModel;
 
     private OceanImportStrategy() {}
     /**
-     * @return The draining timeout (in seconds) before terminating the instance.
+     * @return The draining timeout (in seconds) before terminating the instance. If no draining timeout is defined, the default draining timeout will be used.
      * 
      */
     public Optional<Integer> drainingTimeout() {
         return Optional.ofNullable(this.drainingTimeout);
     }
+    /**
+     * @return Defines the desired preemptible percentage for the cluster.
+     * 
+     */
     public Optional<Integer> preemptiblePercentage() {
         return Optional.ofNullable(this.preemptiblePercentage);
     }
+    /**
+     * @return Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
+     * 
+     */
     public Optional<String> provisioningModel() {
         return Optional.ofNullable(this.provisioningModel);
     }

@@ -24,9 +24,17 @@ public final class OceanImportState extends com.pulumi.resources.ResourceArgs {
 
     public static final OceanImportState Empty = new OceanImportState();
 
+    /**
+     * The Ocean Kubernetes Autoscaler object.
+     * 
+     */
     @Import(name="autoscaler")
     private @Nullable Output<OceanImportAutoscalerArgs> autoscaler;
 
+    /**
+     * @return The Ocean Kubernetes Autoscaler object.
+     * 
+     */
     public Optional<Output<OceanImportAutoscalerArgs>> autoscaler() {
         return Optional.ofNullable(this.autoscaler);
     }
@@ -173,9 +181,17 @@ public final class OceanImportState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.rootVolumeType);
     }
 
+    /**
+     * Set scheduling object.
+     * 
+     */
     @Import(name="scheduledTasks")
     private @Nullable Output<List<OceanImportScheduledTaskArgs>> scheduledTasks;
 
+    /**
+     * @return Set scheduling object.
+     * 
+     */
     public Optional<Output<List<OceanImportScheduledTaskArgs>>> scheduledTasks() {
         return Optional.ofNullable(this.scheduledTasks);
     }
@@ -195,9 +211,17 @@ public final class OceanImportState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.shieldedInstanceConfig);
     }
 
+    /**
+     * Strategy object.
+     * 
+     */
     @Import(name="strategies")
     private @Nullable Output<List<OceanImportStrategyArgs>> strategies;
 
+    /**
+     * @return Strategy object.
+     * 
+     */
     public Optional<Output<List<OceanImportStrategyArgs>>> strategies() {
         return Optional.ofNullable(this.strategies);
     }
@@ -279,11 +303,23 @@ public final class OceanImportState extends com.pulumi.resources.ResourceArgs {
             $ = new OceanImportState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param autoscaler The Ocean Kubernetes Autoscaler object.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoscaler(@Nullable Output<OceanImportAutoscalerArgs> autoscaler) {
             $.autoscaler = autoscaler;
             return this;
         }
 
+        /**
+         * @param autoscaler The Ocean Kubernetes Autoscaler object.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoscaler(OceanImportAutoscalerArgs autoscaler) {
             return autoscaler(Output.of(autoscaler));
         }
@@ -506,15 +542,33 @@ public final class OceanImportState extends com.pulumi.resources.ResourceArgs {
             return rootVolumeType(Output.of(rootVolumeType));
         }
 
+        /**
+         * @param scheduledTasks Set scheduling object.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scheduledTasks(@Nullable Output<List<OceanImportScheduledTaskArgs>> scheduledTasks) {
             $.scheduledTasks = scheduledTasks;
             return this;
         }
 
+        /**
+         * @param scheduledTasks Set scheduling object.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scheduledTasks(List<OceanImportScheduledTaskArgs> scheduledTasks) {
             return scheduledTasks(Output.of(scheduledTasks));
         }
 
+        /**
+         * @param scheduledTasks Set scheduling object.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scheduledTasks(OceanImportScheduledTaskArgs... scheduledTasks) {
             return scheduledTasks(List.of(scheduledTasks));
         }
@@ -540,15 +594,33 @@ public final class OceanImportState extends com.pulumi.resources.ResourceArgs {
             return shieldedInstanceConfig(Output.of(shieldedInstanceConfig));
         }
 
+        /**
+         * @param strategies Strategy object.
+         * 
+         * @return builder
+         * 
+         */
         public Builder strategies(@Nullable Output<List<OceanImportStrategyArgs>> strategies) {
             $.strategies = strategies;
             return this;
         }
 
+        /**
+         * @param strategies Strategy object.
+         * 
+         * @return builder
+         * 
+         */
         public Builder strategies(List<OceanImportStrategyArgs> strategies) {
             return strategies(Output.of(strategies));
         }
 
+        /**
+         * @param strategies Strategy object.
+         * 
+         * @return builder
+         * 
+         */
         public Builder strategies(OceanImportStrategyArgs... strategies) {
             return strategies(List.of(strategies));
         }

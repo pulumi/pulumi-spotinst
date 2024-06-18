@@ -14,9 +14,17 @@ public final class OceanLaunchSpecUpdatePolicyRollConfigArgs extends com.pulumi.
 
     public static final OceanLaunchSpecUpdatePolicyRollConfigArgs Empty = new OceanLaunchSpecUpdatePolicyRollConfigArgs();
 
+    /**
+     * Sets the percentage of the instances to deploy in each batch.
+     * 
+     */
     @Import(name="batchSizePercentage", required=true)
     private Output<Integer> batchSizePercentage;
 
+    /**
+     * @return Sets the percentage of the instances to deploy in each batch.
+     * 
+     */
     public Output<Integer> batchSizePercentage() {
         return this.batchSizePercentage;
     }
@@ -45,11 +53,23 @@ public final class OceanLaunchSpecUpdatePolicyRollConfigArgs extends com.pulumi.
             $ = new OceanLaunchSpecUpdatePolicyRollConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param batchSizePercentage Sets the percentage of the instances to deploy in each batch.
+         * 
+         * @return builder
+         * 
+         */
         public Builder batchSizePercentage(Output<Integer> batchSizePercentage) {
             $.batchSizePercentage = batchSizePercentage;
             return this;
         }
 
+        /**
+         * @param batchSizePercentage Sets the percentage of the instances to deploy in each batch.
+         * 
+         * @return builder
+         * 
+         */
         public Builder batchSizePercentage(Integer batchSizePercentage) {
             return batchSizePercentage(Output.of(batchSizePercentage));
         }

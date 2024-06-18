@@ -8251,14 +8251,23 @@ func (o ElastigroupMultipleMetricsMetricDimensionArrayOutput) Index(i pulumi.Int
 }
 
 type ElastigroupNetworkInterface struct {
-	AssociateIpv6Address     *bool `pulumi:"associateIpv6Address"`
+	// Indicates whether to assign IPV6 addresses to your instance. Requires a subnet with IPV6 CIDR block ranges.
+	//
+	// Usage:
+	AssociateIpv6Address *bool `pulumi:"associateIpv6Address"`
+	// Indicates whether to assign a public IP address to an instance you launch in a VPC. The public IP address can only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an existing one.
 	AssociatePublicIpAddress *bool `pulumi:"associatePublicIpAddress"`
-	DeleteOnTermination      *bool `pulumi:"deleteOnTermination"`
-	// The group description.
-	Description                    *string `pulumi:"description"`
-	DeviceIndex                    string  `pulumi:"deviceIndex"`
-	NetworkInterfaceId             *string `pulumi:"networkInterfaceId"`
-	PrivateIpAddress               *string `pulumi:"privateIpAddress"`
+	// If set to true, the interface is deleted when the instance is terminated.
+	DeleteOnTermination *bool `pulumi:"deleteOnTermination"`
+	// The description of the network interface.
+	Description *string `pulumi:"description"`
+	// The index of the device on the instance for the network interface attachment.
+	DeviceIndex string `pulumi:"deviceIndex"`
+	// The ID of the network interface.
+	NetworkInterfaceId *string `pulumi:"networkInterfaceId"`
+	// The private IP address of the network interface.
+	PrivateIpAddress *string `pulumi:"privateIpAddress"`
+	// The number of secondary private IP addresses.
 	SecondaryPrivateIpAddressCount *string `pulumi:"secondaryPrivateIpAddressCount"`
 }
 
@@ -8274,14 +8283,23 @@ type ElastigroupNetworkInterfaceInput interface {
 }
 
 type ElastigroupNetworkInterfaceArgs struct {
-	AssociateIpv6Address     pulumi.BoolPtrInput `pulumi:"associateIpv6Address"`
+	// Indicates whether to assign IPV6 addresses to your instance. Requires a subnet with IPV6 CIDR block ranges.
+	//
+	// Usage:
+	AssociateIpv6Address pulumi.BoolPtrInput `pulumi:"associateIpv6Address"`
+	// Indicates whether to assign a public IP address to an instance you launch in a VPC. The public IP address can only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an existing one.
 	AssociatePublicIpAddress pulumi.BoolPtrInput `pulumi:"associatePublicIpAddress"`
-	DeleteOnTermination      pulumi.BoolPtrInput `pulumi:"deleteOnTermination"`
-	// The group description.
-	Description                    pulumi.StringPtrInput `pulumi:"description"`
-	DeviceIndex                    pulumi.StringInput    `pulumi:"deviceIndex"`
-	NetworkInterfaceId             pulumi.StringPtrInput `pulumi:"networkInterfaceId"`
-	PrivateIpAddress               pulumi.StringPtrInput `pulumi:"privateIpAddress"`
+	// If set to true, the interface is deleted when the instance is terminated.
+	DeleteOnTermination pulumi.BoolPtrInput `pulumi:"deleteOnTermination"`
+	// The description of the network interface.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The index of the device on the instance for the network interface attachment.
+	DeviceIndex pulumi.StringInput `pulumi:"deviceIndex"`
+	// The ID of the network interface.
+	NetworkInterfaceId pulumi.StringPtrInput `pulumi:"networkInterfaceId"`
+	// The private IP address of the network interface.
+	PrivateIpAddress pulumi.StringPtrInput `pulumi:"privateIpAddress"`
+	// The number of secondary private IP addresses.
 	SecondaryPrivateIpAddressCount pulumi.StringPtrInput `pulumi:"secondaryPrivateIpAddressCount"`
 }
 
@@ -8336,35 +8354,44 @@ func (o ElastigroupNetworkInterfaceOutput) ToElastigroupNetworkInterfaceOutputWi
 	return o
 }
 
+// Indicates whether to assign IPV6 addresses to your instance. Requires a subnet with IPV6 CIDR block ranges.
+//
+// Usage:
 func (o ElastigroupNetworkInterfaceOutput) AssociateIpv6Address() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ElastigroupNetworkInterface) *bool { return v.AssociateIpv6Address }).(pulumi.BoolPtrOutput)
 }
 
+// Indicates whether to assign a public IP address to an instance you launch in a VPC. The public IP address can only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an existing one.
 func (o ElastigroupNetworkInterfaceOutput) AssociatePublicIpAddress() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ElastigroupNetworkInterface) *bool { return v.AssociatePublicIpAddress }).(pulumi.BoolPtrOutput)
 }
 
+// If set to true, the interface is deleted when the instance is terminated.
 func (o ElastigroupNetworkInterfaceOutput) DeleteOnTermination() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ElastigroupNetworkInterface) *bool { return v.DeleteOnTermination }).(pulumi.BoolPtrOutput)
 }
 
-// The group description.
+// The description of the network interface.
 func (o ElastigroupNetworkInterfaceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupNetworkInterface) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The index of the device on the instance for the network interface attachment.
 func (o ElastigroupNetworkInterfaceOutput) DeviceIndex() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupNetworkInterface) string { return v.DeviceIndex }).(pulumi.StringOutput)
 }
 
+// The ID of the network interface.
 func (o ElastigroupNetworkInterfaceOutput) NetworkInterfaceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupNetworkInterface) *string { return v.NetworkInterfaceId }).(pulumi.StringPtrOutput)
 }
 
+// The private IP address of the network interface.
 func (o ElastigroupNetworkInterfaceOutput) PrivateIpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupNetworkInterface) *string { return v.PrivateIpAddress }).(pulumi.StringPtrOutput)
 }
 
+// The number of secondary private IP addresses.
 func (o ElastigroupNetworkInterfaceOutput) SecondaryPrivateIpAddressCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupNetworkInterface) *string { return v.SecondaryPrivateIpAddressCount }).(pulumi.StringPtrOutput)
 }
@@ -10741,10 +10768,16 @@ func (o ElastigroupSignalArrayOutput) Index(i pulumi.IntInput) ElastigroupSignal
 }
 
 type ElastigroupStatefulDeallocation struct {
-	ShouldDeleteImages            *bool `pulumi:"shouldDeleteImages"`
+	// For stateful groups: remove persistent images.
+	ShouldDeleteImages *bool `pulumi:"shouldDeleteImages"`
+	// For stateful groups: remove network interfaces.
 	ShouldDeleteNetworkInterfaces *bool `pulumi:"shouldDeleteNetworkInterfaces"`
-	ShouldDeleteSnapshots         *bool `pulumi:"shouldDeleteSnapshots"`
-	ShouldDeleteVolumes           *bool `pulumi:"shouldDeleteVolumes"`
+	// For stateful groups: remove snapshots.
+	//
+	// Usage:
+	ShouldDeleteSnapshots *bool `pulumi:"shouldDeleteSnapshots"`
+	// For stateful groups: remove persistent volumes.
+	ShouldDeleteVolumes *bool `pulumi:"shouldDeleteVolumes"`
 }
 
 // ElastigroupStatefulDeallocationInput is an input type that accepts ElastigroupStatefulDeallocationArgs and ElastigroupStatefulDeallocationOutput values.
@@ -10759,10 +10792,16 @@ type ElastigroupStatefulDeallocationInput interface {
 }
 
 type ElastigroupStatefulDeallocationArgs struct {
-	ShouldDeleteImages            pulumi.BoolPtrInput `pulumi:"shouldDeleteImages"`
+	// For stateful groups: remove persistent images.
+	ShouldDeleteImages pulumi.BoolPtrInput `pulumi:"shouldDeleteImages"`
+	// For stateful groups: remove network interfaces.
 	ShouldDeleteNetworkInterfaces pulumi.BoolPtrInput `pulumi:"shouldDeleteNetworkInterfaces"`
-	ShouldDeleteSnapshots         pulumi.BoolPtrInput `pulumi:"shouldDeleteSnapshots"`
-	ShouldDeleteVolumes           pulumi.BoolPtrInput `pulumi:"shouldDeleteVolumes"`
+	// For stateful groups: remove snapshots.
+	//
+	// Usage:
+	ShouldDeleteSnapshots pulumi.BoolPtrInput `pulumi:"shouldDeleteSnapshots"`
+	// For stateful groups: remove persistent volumes.
+	ShouldDeleteVolumes pulumi.BoolPtrInput `pulumi:"shouldDeleteVolumes"`
 }
 
 func (ElastigroupStatefulDeallocationArgs) ElementType() reflect.Type {
@@ -10842,18 +10881,24 @@ func (o ElastigroupStatefulDeallocationOutput) ToElastigroupStatefulDeallocation
 	}).(ElastigroupStatefulDeallocationPtrOutput)
 }
 
+// For stateful groups: remove persistent images.
 func (o ElastigroupStatefulDeallocationOutput) ShouldDeleteImages() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ElastigroupStatefulDeallocation) *bool { return v.ShouldDeleteImages }).(pulumi.BoolPtrOutput)
 }
 
+// For stateful groups: remove network interfaces.
 func (o ElastigroupStatefulDeallocationOutput) ShouldDeleteNetworkInterfaces() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ElastigroupStatefulDeallocation) *bool { return v.ShouldDeleteNetworkInterfaces }).(pulumi.BoolPtrOutput)
 }
 
+// For stateful groups: remove snapshots.
+//
+// Usage:
 func (o ElastigroupStatefulDeallocationOutput) ShouldDeleteSnapshots() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ElastigroupStatefulDeallocation) *bool { return v.ShouldDeleteSnapshots }).(pulumi.BoolPtrOutput)
 }
 
+// For stateful groups: remove persistent volumes.
 func (o ElastigroupStatefulDeallocationOutput) ShouldDeleteVolumes() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ElastigroupStatefulDeallocation) *bool { return v.ShouldDeleteVolumes }).(pulumi.BoolPtrOutput)
 }
@@ -10882,6 +10927,7 @@ func (o ElastigroupStatefulDeallocationPtrOutput) Elem() ElastigroupStatefulDeal
 	}).(ElastigroupStatefulDeallocationOutput)
 }
 
+// For stateful groups: remove persistent images.
 func (o ElastigroupStatefulDeallocationPtrOutput) ShouldDeleteImages() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ElastigroupStatefulDeallocation) *bool {
 		if v == nil {
@@ -10891,6 +10937,7 @@ func (o ElastigroupStatefulDeallocationPtrOutput) ShouldDeleteImages() pulumi.Bo
 	}).(pulumi.BoolPtrOutput)
 }
 
+// For stateful groups: remove network interfaces.
 func (o ElastigroupStatefulDeallocationPtrOutput) ShouldDeleteNetworkInterfaces() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ElastigroupStatefulDeallocation) *bool {
 		if v == nil {
@@ -10900,6 +10947,9 @@ func (o ElastigroupStatefulDeallocationPtrOutput) ShouldDeleteNetworkInterfaces(
 	}).(pulumi.BoolPtrOutput)
 }
 
+// For stateful groups: remove snapshots.
+//
+// Usage:
 func (o ElastigroupStatefulDeallocationPtrOutput) ShouldDeleteSnapshots() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ElastigroupStatefulDeallocation) *bool {
 		if v == nil {
@@ -10909,6 +10959,7 @@ func (o ElastigroupStatefulDeallocationPtrOutput) ShouldDeleteSnapshots() pulumi
 	}).(pulumi.BoolPtrOutput)
 }
 
+// For stateful groups: remove persistent volumes.
 func (o ElastigroupStatefulDeallocationPtrOutput) ShouldDeleteVolumes() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ElastigroupStatefulDeallocation) *bool {
 		if v == nil {
@@ -10919,8 +10970,12 @@ func (o ElastigroupStatefulDeallocationPtrOutput) ShouldDeleteVolumes() pulumi.B
 }
 
 type ElastigroupStatefulInstanceAction struct {
+	// String, Stateful Instance ID on which the action should be performed.
 	StatefulInstanceId string `pulumi:"statefulInstanceId"`
-	Type               string `pulumi:"type"`
+	// String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+	//
+	// Usage:
+	Type string `pulumi:"type"`
 }
 
 // ElastigroupStatefulInstanceActionInput is an input type that accepts ElastigroupStatefulInstanceActionArgs and ElastigroupStatefulInstanceActionOutput values.
@@ -10935,8 +10990,12 @@ type ElastigroupStatefulInstanceActionInput interface {
 }
 
 type ElastigroupStatefulInstanceActionArgs struct {
+	// String, Stateful Instance ID on which the action should be performed.
 	StatefulInstanceId pulumi.StringInput `pulumi:"statefulInstanceId"`
-	Type               pulumi.StringInput `pulumi:"type"`
+	// String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+	//
+	// Usage:
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (ElastigroupStatefulInstanceActionArgs) ElementType() reflect.Type {
@@ -10990,10 +11049,14 @@ func (o ElastigroupStatefulInstanceActionOutput) ToElastigroupStatefulInstanceAc
 	return o
 }
 
+// String, Stateful Instance ID on which the action should be performed.
 func (o ElastigroupStatefulInstanceActionOutput) StatefulInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupStatefulInstanceAction) string { return v.StatefulInstanceId }).(pulumi.StringOutput)
 }
 
+// String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+//
+// Usage:
 func (o ElastigroupStatefulInstanceActionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupStatefulInstanceAction) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -11119,10 +11182,14 @@ func (o ElastigroupTagArrayOutput) Index(i pulumi.IntInput) ElastigroupTagOutput
 }
 
 type ElastigroupUpdatePolicy struct {
-	AutoApplyTags        *bool                              `pulumi:"autoApplyTags"`
-	RollConfig           *ElastigroupUpdatePolicyRollConfig `pulumi:"rollConfig"`
-	ShouldResumeStateful bool                               `pulumi:"shouldResumeStateful"`
-	ShouldRoll           bool                               `pulumi:"shouldRoll"`
+	// Enables updates to tags without rolling the group when set to `true`.
+	AutoApplyTags *bool `pulumi:"autoApplyTags"`
+	// While used, you can control whether the group should perform a deployment after an update to the configuration.
+	RollConfig *ElastigroupUpdatePolicyRollConfig `pulumi:"rollConfig"`
+	// This will apply resuming action for Stateful instances in the Elastigroup upon scale up or capacity changes. Example usage will be for Elastigroups that will have scheduling rules to set a target capacity of 0 instances in the night and automatically restore the same state of the instances in the morning.
+	ShouldResumeStateful bool `pulumi:"shouldResumeStateful"`
+	// Sets the enablement of the roll option.
+	ShouldRoll bool `pulumi:"shouldRoll"`
 }
 
 // ElastigroupUpdatePolicyInput is an input type that accepts ElastigroupUpdatePolicyArgs and ElastigroupUpdatePolicyOutput values.
@@ -11137,10 +11204,14 @@ type ElastigroupUpdatePolicyInput interface {
 }
 
 type ElastigroupUpdatePolicyArgs struct {
-	AutoApplyTags        pulumi.BoolPtrInput                       `pulumi:"autoApplyTags"`
-	RollConfig           ElastigroupUpdatePolicyRollConfigPtrInput `pulumi:"rollConfig"`
-	ShouldResumeStateful pulumi.BoolInput                          `pulumi:"shouldResumeStateful"`
-	ShouldRoll           pulumi.BoolInput                          `pulumi:"shouldRoll"`
+	// Enables updates to tags without rolling the group when set to `true`.
+	AutoApplyTags pulumi.BoolPtrInput `pulumi:"autoApplyTags"`
+	// While used, you can control whether the group should perform a deployment after an update to the configuration.
+	RollConfig ElastigroupUpdatePolicyRollConfigPtrInput `pulumi:"rollConfig"`
+	// This will apply resuming action for Stateful instances in the Elastigroup upon scale up or capacity changes. Example usage will be for Elastigroups that will have scheduling rules to set a target capacity of 0 instances in the night and automatically restore the same state of the instances in the morning.
+	ShouldResumeStateful pulumi.BoolInput `pulumi:"shouldResumeStateful"`
+	// Sets the enablement of the roll option.
+	ShouldRoll pulumi.BoolInput `pulumi:"shouldRoll"`
 }
 
 func (ElastigroupUpdatePolicyArgs) ElementType() reflect.Type {
@@ -11220,18 +11291,22 @@ func (o ElastigroupUpdatePolicyOutput) ToElastigroupUpdatePolicyPtrOutputWithCon
 	}).(ElastigroupUpdatePolicyPtrOutput)
 }
 
+// Enables updates to tags without rolling the group when set to `true`.
 func (o ElastigroupUpdatePolicyOutput) AutoApplyTags() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ElastigroupUpdatePolicy) *bool { return v.AutoApplyTags }).(pulumi.BoolPtrOutput)
 }
 
+// While used, you can control whether the group should perform a deployment after an update to the configuration.
 func (o ElastigroupUpdatePolicyOutput) RollConfig() ElastigroupUpdatePolicyRollConfigPtrOutput {
 	return o.ApplyT(func(v ElastigroupUpdatePolicy) *ElastigroupUpdatePolicyRollConfig { return v.RollConfig }).(ElastigroupUpdatePolicyRollConfigPtrOutput)
 }
 
+// This will apply resuming action for Stateful instances in the Elastigroup upon scale up or capacity changes. Example usage will be for Elastigroups that will have scheduling rules to set a target capacity of 0 instances in the night and automatically restore the same state of the instances in the morning.
 func (o ElastigroupUpdatePolicyOutput) ShouldResumeStateful() pulumi.BoolOutput {
 	return o.ApplyT(func(v ElastigroupUpdatePolicy) bool { return v.ShouldResumeStateful }).(pulumi.BoolOutput)
 }
 
+// Sets the enablement of the roll option.
 func (o ElastigroupUpdatePolicyOutput) ShouldRoll() pulumi.BoolOutput {
 	return o.ApplyT(func(v ElastigroupUpdatePolicy) bool { return v.ShouldRoll }).(pulumi.BoolOutput)
 }
@@ -11260,6 +11335,7 @@ func (o ElastigroupUpdatePolicyPtrOutput) Elem() ElastigroupUpdatePolicyOutput {
 	}).(ElastigroupUpdatePolicyOutput)
 }
 
+// Enables updates to tags without rolling the group when set to `true`.
 func (o ElastigroupUpdatePolicyPtrOutput) AutoApplyTags() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ElastigroupUpdatePolicy) *bool {
 		if v == nil {
@@ -11269,6 +11345,7 @@ func (o ElastigroupUpdatePolicyPtrOutput) AutoApplyTags() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// While used, you can control whether the group should perform a deployment after an update to the configuration.
 func (o ElastigroupUpdatePolicyPtrOutput) RollConfig() ElastigroupUpdatePolicyRollConfigPtrOutput {
 	return o.ApplyT(func(v *ElastigroupUpdatePolicy) *ElastigroupUpdatePolicyRollConfig {
 		if v == nil {
@@ -11278,6 +11355,7 @@ func (o ElastigroupUpdatePolicyPtrOutput) RollConfig() ElastigroupUpdatePolicyRo
 	}).(ElastigroupUpdatePolicyRollConfigPtrOutput)
 }
 
+// This will apply resuming action for Stateful instances in the Elastigroup upon scale up or capacity changes. Example usage will be for Elastigroups that will have scheduling rules to set a target capacity of 0 instances in the night and automatically restore the same state of the instances in the morning.
 func (o ElastigroupUpdatePolicyPtrOutput) ShouldResumeStateful() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ElastigroupUpdatePolicy) *bool {
 		if v == nil {
@@ -11287,6 +11365,7 @@ func (o ElastigroupUpdatePolicyPtrOutput) ShouldResumeStateful() pulumi.BoolPtrO
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Sets the enablement of the roll option.
 func (o ElastigroupUpdatePolicyPtrOutput) ShouldRoll() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ElastigroupUpdatePolicy) *bool {
 		if v == nil {
@@ -11297,13 +11376,18 @@ func (o ElastigroupUpdatePolicyPtrOutput) ShouldRoll() pulumi.BoolPtrOutput {
 }
 
 type ElastigroupUpdatePolicyRollConfig struct {
-	BatchSizePercentage int  `pulumi:"batchSizePercentage"`
-	GracePeriod         *int `pulumi:"gracePeriod"`
-	// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"EC2"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
-	HealthCheckType       *string                                    `pulumi:"healthCheckType"`
-	Strategy              *ElastigroupUpdatePolicyRollConfigStrategy `pulumi:"strategy"`
-	WaitForRollPercentage *float64                                   `pulumi:"waitForRollPercentage"`
-	WaitForRollTimeout    *int                                       `pulumi:"waitForRollTimeout"`
+	// Sets the percentage of the instances to deploy in each batch.
+	BatchSizePercentage int `pulumi:"batchSizePercentage"`
+	// Sets the grace period for new instances to become healthy.
+	GracePeriod *int `pulumi:"gracePeriod"`
+	// Sets the health check type to use. Valid values: `"EC2"`, `"ECS_CLUSTER_INSTANCE"`, `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"NONE"`.
+	HealthCheckType *string `pulumi:"healthCheckType"`
+	// Strategy parameters
+	Strategy *ElastigroupUpdatePolicyRollConfigStrategy `pulumi:"strategy"`
+	// For use with `shouldRoll`. Sets minimum % of roll required to complete before continuing the plan. Required if `waitForRollTimeout` is set.
+	WaitForRollPercentage *float64 `pulumi:"waitForRollPercentage"`
+	// For use with `shouldRoll`. Sets how long to wait for the deployed % of a roll to exceed `waitForRollPercentage` before continuing the plan. Required if `waitForRollPercentage` is set.
+	WaitForRollTimeout *int `pulumi:"waitForRollTimeout"`
 }
 
 // ElastigroupUpdatePolicyRollConfigInput is an input type that accepts ElastigroupUpdatePolicyRollConfigArgs and ElastigroupUpdatePolicyRollConfigOutput values.
@@ -11318,13 +11402,18 @@ type ElastigroupUpdatePolicyRollConfigInput interface {
 }
 
 type ElastigroupUpdatePolicyRollConfigArgs struct {
-	BatchSizePercentage pulumi.IntInput    `pulumi:"batchSizePercentage"`
-	GracePeriod         pulumi.IntPtrInput `pulumi:"gracePeriod"`
-	// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"EC2"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
-	HealthCheckType       pulumi.StringPtrInput                             `pulumi:"healthCheckType"`
-	Strategy              ElastigroupUpdatePolicyRollConfigStrategyPtrInput `pulumi:"strategy"`
-	WaitForRollPercentage pulumi.Float64PtrInput                            `pulumi:"waitForRollPercentage"`
-	WaitForRollTimeout    pulumi.IntPtrInput                                `pulumi:"waitForRollTimeout"`
+	// Sets the percentage of the instances to deploy in each batch.
+	BatchSizePercentage pulumi.IntInput `pulumi:"batchSizePercentage"`
+	// Sets the grace period for new instances to become healthy.
+	GracePeriod pulumi.IntPtrInput `pulumi:"gracePeriod"`
+	// Sets the health check type to use. Valid values: `"EC2"`, `"ECS_CLUSTER_INSTANCE"`, `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"NONE"`.
+	HealthCheckType pulumi.StringPtrInput `pulumi:"healthCheckType"`
+	// Strategy parameters
+	Strategy ElastigroupUpdatePolicyRollConfigStrategyPtrInput `pulumi:"strategy"`
+	// For use with `shouldRoll`. Sets minimum % of roll required to complete before continuing the plan. Required if `waitForRollTimeout` is set.
+	WaitForRollPercentage pulumi.Float64PtrInput `pulumi:"waitForRollPercentage"`
+	// For use with `shouldRoll`. Sets how long to wait for the deployed % of a roll to exceed `waitForRollPercentage` before continuing the plan. Required if `waitForRollPercentage` is set.
+	WaitForRollTimeout pulumi.IntPtrInput `pulumi:"waitForRollTimeout"`
 }
 
 func (ElastigroupUpdatePolicyRollConfigArgs) ElementType() reflect.Type {
@@ -11404,29 +11493,34 @@ func (o ElastigroupUpdatePolicyRollConfigOutput) ToElastigroupUpdatePolicyRollCo
 	}).(ElastigroupUpdatePolicyRollConfigPtrOutput)
 }
 
+// Sets the percentage of the instances to deploy in each batch.
 func (o ElastigroupUpdatePolicyRollConfigOutput) BatchSizePercentage() pulumi.IntOutput {
 	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfig) int { return v.BatchSizePercentage }).(pulumi.IntOutput)
 }
 
+// Sets the grace period for new instances to become healthy.
 func (o ElastigroupUpdatePolicyRollConfigOutput) GracePeriod() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfig) *int { return v.GracePeriod }).(pulumi.IntPtrOutput)
 }
 
-// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"EC2"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+// Sets the health check type to use. Valid values: `"EC2"`, `"ECS_CLUSTER_INSTANCE"`, `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"NONE"`.
 func (o ElastigroupUpdatePolicyRollConfigOutput) HealthCheckType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfig) *string { return v.HealthCheckType }).(pulumi.StringPtrOutput)
 }
 
+// Strategy parameters
 func (o ElastigroupUpdatePolicyRollConfigOutput) Strategy() ElastigroupUpdatePolicyRollConfigStrategyPtrOutput {
 	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfig) *ElastigroupUpdatePolicyRollConfigStrategy {
 		return v.Strategy
 	}).(ElastigroupUpdatePolicyRollConfigStrategyPtrOutput)
 }
 
+// For use with `shouldRoll`. Sets minimum % of roll required to complete before continuing the plan. Required if `waitForRollTimeout` is set.
 func (o ElastigroupUpdatePolicyRollConfigOutput) WaitForRollPercentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfig) *float64 { return v.WaitForRollPercentage }).(pulumi.Float64PtrOutput)
 }
 
+// For use with `shouldRoll`. Sets how long to wait for the deployed % of a roll to exceed `waitForRollPercentage` before continuing the plan. Required if `waitForRollPercentage` is set.
 func (o ElastigroupUpdatePolicyRollConfigOutput) WaitForRollTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfig) *int { return v.WaitForRollTimeout }).(pulumi.IntPtrOutput)
 }
@@ -11455,6 +11549,7 @@ func (o ElastigroupUpdatePolicyRollConfigPtrOutput) Elem() ElastigroupUpdatePoli
 	}).(ElastigroupUpdatePolicyRollConfigOutput)
 }
 
+// Sets the percentage of the instances to deploy in each batch.
 func (o ElastigroupUpdatePolicyRollConfigPtrOutput) BatchSizePercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfig) *int {
 		if v == nil {
@@ -11464,6 +11559,7 @@ func (o ElastigroupUpdatePolicyRollConfigPtrOutput) BatchSizePercentage() pulumi
 	}).(pulumi.IntPtrOutput)
 }
 
+// Sets the grace period for new instances to become healthy.
 func (o ElastigroupUpdatePolicyRollConfigPtrOutput) GracePeriod() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfig) *int {
 		if v == nil {
@@ -11473,7 +11569,7 @@ func (o ElastigroupUpdatePolicyRollConfigPtrOutput) GracePeriod() pulumi.IntPtrO
 	}).(pulumi.IntPtrOutput)
 }
 
-// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"EC2"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+// Sets the health check type to use. Valid values: `"EC2"`, `"ECS_CLUSTER_INSTANCE"`, `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"NONE"`.
 func (o ElastigroupUpdatePolicyRollConfigPtrOutput) HealthCheckType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfig) *string {
 		if v == nil {
@@ -11483,6 +11579,7 @@ func (o ElastigroupUpdatePolicyRollConfigPtrOutput) HealthCheckType() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// Strategy parameters
 func (o ElastigroupUpdatePolicyRollConfigPtrOutput) Strategy() ElastigroupUpdatePolicyRollConfigStrategyPtrOutput {
 	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfig) *ElastigroupUpdatePolicyRollConfigStrategy {
 		if v == nil {
@@ -11492,6 +11589,7 @@ func (o ElastigroupUpdatePolicyRollConfigPtrOutput) Strategy() ElastigroupUpdate
 	}).(ElastigroupUpdatePolicyRollConfigStrategyPtrOutput)
 }
 
+// For use with `shouldRoll`. Sets minimum % of roll required to complete before continuing the plan. Required if `waitForRollTimeout` is set.
 func (o ElastigroupUpdatePolicyRollConfigPtrOutput) WaitForRollPercentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfig) *float64 {
 		if v == nil {
@@ -11501,6 +11599,7 @@ func (o ElastigroupUpdatePolicyRollConfigPtrOutput) WaitForRollPercentage() pulu
 	}).(pulumi.Float64PtrOutput)
 }
 
+// For use with `shouldRoll`. Sets how long to wait for the deployed % of a roll to exceed `waitForRollPercentage` before continuing the plan. Required if `waitForRollPercentage` is set.
 func (o ElastigroupUpdatePolicyRollConfigPtrOutput) WaitForRollTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfig) *int {
 		if v == nil {
@@ -11511,10 +11610,14 @@ func (o ElastigroupUpdatePolicyRollConfigPtrOutput) WaitForRollTimeout() pulumi.
 }
 
 type ElastigroupUpdatePolicyRollConfigStrategy struct {
-	Action                    string                                              `pulumi:"action"`
-	BatchMinHealthyPercentage *int                                                `pulumi:"batchMinHealthyPercentage"`
-	OnFailure                 *ElastigroupUpdatePolicyRollConfigStrategyOnFailure `pulumi:"onFailure"`
-	ShouldDrainInstances      *bool                                               `pulumi:"shouldDrainInstances"`
+	// Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
+	Action string `pulumi:"action"`
+	// Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the deployment will fail. Range `1` - `100`.
+	BatchMinHealthyPercentage *int `pulumi:"batchMinHealthyPercentage"`
+	// Set detach options to the deployment.
+	OnFailure *ElastigroupUpdatePolicyRollConfigStrategyOnFailure `pulumi:"onFailure"`
+	// Specify whether to drain incoming TCP connections before terminating a server.
+	ShouldDrainInstances *bool `pulumi:"shouldDrainInstances"`
 }
 
 // ElastigroupUpdatePolicyRollConfigStrategyInput is an input type that accepts ElastigroupUpdatePolicyRollConfigStrategyArgs and ElastigroupUpdatePolicyRollConfigStrategyOutput values.
@@ -11529,10 +11632,14 @@ type ElastigroupUpdatePolicyRollConfigStrategyInput interface {
 }
 
 type ElastigroupUpdatePolicyRollConfigStrategyArgs struct {
-	Action                    pulumi.StringInput                                         `pulumi:"action"`
-	BatchMinHealthyPercentage pulumi.IntPtrInput                                         `pulumi:"batchMinHealthyPercentage"`
-	OnFailure                 ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrInput `pulumi:"onFailure"`
-	ShouldDrainInstances      pulumi.BoolPtrInput                                        `pulumi:"shouldDrainInstances"`
+	// Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
+	Action pulumi.StringInput `pulumi:"action"`
+	// Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the deployment will fail. Range `1` - `100`.
+	BatchMinHealthyPercentage pulumi.IntPtrInput `pulumi:"batchMinHealthyPercentage"`
+	// Set detach options to the deployment.
+	OnFailure ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrInput `pulumi:"onFailure"`
+	// Specify whether to drain incoming TCP connections before terminating a server.
+	ShouldDrainInstances pulumi.BoolPtrInput `pulumi:"shouldDrainInstances"`
 }
 
 func (ElastigroupUpdatePolicyRollConfigStrategyArgs) ElementType() reflect.Type {
@@ -11612,20 +11719,24 @@ func (o ElastigroupUpdatePolicyRollConfigStrategyOutput) ToElastigroupUpdatePoli
 	}).(ElastigroupUpdatePolicyRollConfigStrategyPtrOutput)
 }
 
+// Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
 func (o ElastigroupUpdatePolicyRollConfigStrategyOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfigStrategy) string { return v.Action }).(pulumi.StringOutput)
 }
 
+// Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the deployment will fail. Range `1` - `100`.
 func (o ElastigroupUpdatePolicyRollConfigStrategyOutput) BatchMinHealthyPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfigStrategy) *int { return v.BatchMinHealthyPercentage }).(pulumi.IntPtrOutput)
 }
 
+// Set detach options to the deployment.
 func (o ElastigroupUpdatePolicyRollConfigStrategyOutput) OnFailure() ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput {
 	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfigStrategy) *ElastigroupUpdatePolicyRollConfigStrategyOnFailure {
 		return v.OnFailure
 	}).(ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput)
 }
 
+// Specify whether to drain incoming TCP connections before terminating a server.
 func (o ElastigroupUpdatePolicyRollConfigStrategyOutput) ShouldDrainInstances() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfigStrategy) *bool { return v.ShouldDrainInstances }).(pulumi.BoolPtrOutput)
 }
@@ -11654,6 +11765,7 @@ func (o ElastigroupUpdatePolicyRollConfigStrategyPtrOutput) Elem() ElastigroupUp
 	}).(ElastigroupUpdatePolicyRollConfigStrategyOutput)
 }
 
+// Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
 func (o ElastigroupUpdatePolicyRollConfigStrategyPtrOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfigStrategy) *string {
 		if v == nil {
@@ -11663,6 +11775,7 @@ func (o ElastigroupUpdatePolicyRollConfigStrategyPtrOutput) Action() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the deployment will fail. Range `1` - `100`.
 func (o ElastigroupUpdatePolicyRollConfigStrategyPtrOutput) BatchMinHealthyPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfigStrategy) *int {
 		if v == nil {
@@ -11672,6 +11785,7 @@ func (o ElastigroupUpdatePolicyRollConfigStrategyPtrOutput) BatchMinHealthyPerce
 	}).(pulumi.IntPtrOutput)
 }
 
+// Set detach options to the deployment.
 func (o ElastigroupUpdatePolicyRollConfigStrategyPtrOutput) OnFailure() ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput {
 	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfigStrategy) *ElastigroupUpdatePolicyRollConfigStrategyOnFailure {
 		if v == nil {
@@ -11681,6 +11795,7 @@ func (o ElastigroupUpdatePolicyRollConfigStrategyPtrOutput) OnFailure() Elastigr
 	}).(ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput)
 }
 
+// Specify whether to drain incoming TCP connections before terminating a server.
 func (o ElastigroupUpdatePolicyRollConfigStrategyPtrOutput) ShouldDrainInstances() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfigStrategy) *bool {
 		if v == nil {
@@ -11691,12 +11806,15 @@ func (o ElastigroupUpdatePolicyRollConfigStrategyPtrOutput) ShouldDrainInstances
 }
 
 type ElastigroupUpdatePolicyRollConfigStrategyOnFailure struct {
+	// Sets the action that will take place, Accepted values are: `DETACH_OLD`, `DETACH_NEW`.
 	ActionType string `pulumi:"actionType"`
 	BatchNum   *int   `pulumi:"batchNum"`
-	// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
-	DrainingTimeout               *int  `pulumi:"drainingTimeout"`
+	// Indicates (in seconds) the timeout to wait until instance are detached.
+	DrainingTimeout *int `pulumi:"drainingTimeout"`
+	// Decrementing the group target capacity after detaching the instances.
 	ShouldDecrementTargetCapacity *bool `pulumi:"shouldDecrementTargetCapacity"`
-	ShouldHandleAllBatches        *bool `pulumi:"shouldHandleAllBatches"`
+	// Indicator if the action should apply to all batches of the deployment or only the latest batch.
+	ShouldHandleAllBatches *bool `pulumi:"shouldHandleAllBatches"`
 }
 
 // ElastigroupUpdatePolicyRollConfigStrategyOnFailureInput is an input type that accepts ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs and ElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput values.
@@ -11711,12 +11829,15 @@ type ElastigroupUpdatePolicyRollConfigStrategyOnFailureInput interface {
 }
 
 type ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs struct {
+	// Sets the action that will take place, Accepted values are: `DETACH_OLD`, `DETACH_NEW`.
 	ActionType pulumi.StringInput `pulumi:"actionType"`
 	BatchNum   pulumi.IntPtrInput `pulumi:"batchNum"`
-	// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
-	DrainingTimeout               pulumi.IntPtrInput  `pulumi:"drainingTimeout"`
+	// Indicates (in seconds) the timeout to wait until instance are detached.
+	DrainingTimeout pulumi.IntPtrInput `pulumi:"drainingTimeout"`
+	// Decrementing the group target capacity after detaching the instances.
 	ShouldDecrementTargetCapacity pulumi.BoolPtrInput `pulumi:"shouldDecrementTargetCapacity"`
-	ShouldHandleAllBatches        pulumi.BoolPtrInput `pulumi:"shouldHandleAllBatches"`
+	// Indicator if the action should apply to all batches of the deployment or only the latest batch.
+	ShouldHandleAllBatches pulumi.BoolPtrInput `pulumi:"shouldHandleAllBatches"`
 }
 
 func (ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs) ElementType() reflect.Type {
@@ -11796,6 +11917,7 @@ func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput) ToElastigroupU
 	}).(ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput)
 }
 
+// Sets the action that will take place, Accepted values are: `DETACH_OLD`, `DETACH_NEW`.
 func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput) ActionType() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfigStrategyOnFailure) string { return v.ActionType }).(pulumi.StringOutput)
 }
@@ -11804,17 +11926,19 @@ func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput) BatchNum() pul
 	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfigStrategyOnFailure) *int { return v.BatchNum }).(pulumi.IntPtrOutput)
 }
 
-// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
+// Indicates (in seconds) the timeout to wait until instance are detached.
 func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput) DrainingTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfigStrategyOnFailure) *int { return v.DrainingTimeout }).(pulumi.IntPtrOutput)
 }
 
+// Decrementing the group target capacity after detaching the instances.
 func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput) ShouldDecrementTargetCapacity() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfigStrategyOnFailure) *bool {
 		return v.ShouldDecrementTargetCapacity
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Indicator if the action should apply to all batches of the deployment or only the latest batch.
 func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput) ShouldHandleAllBatches() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfigStrategyOnFailure) *bool { return v.ShouldHandleAllBatches }).(pulumi.BoolPtrOutput)
 }
@@ -11843,6 +11967,7 @@ func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput) Elem() Elas
 	}).(ElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput)
 }
 
+// Sets the action that will take place, Accepted values are: `DETACH_OLD`, `DETACH_NEW`.
 func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput) ActionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfigStrategyOnFailure) *string {
 		if v == nil {
@@ -11861,7 +11986,7 @@ func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput) BatchNum() 
 	}).(pulumi.IntPtrOutput)
 }
 
-// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
+// Indicates (in seconds) the timeout to wait until instance are detached.
 func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput) DrainingTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfigStrategyOnFailure) *int {
 		if v == nil {
@@ -11871,6 +11996,7 @@ func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput) DrainingTim
 	}).(pulumi.IntPtrOutput)
 }
 
+// Decrementing the group target capacity after detaching the instances.
 func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput) ShouldDecrementTargetCapacity() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfigStrategyOnFailure) *bool {
 		if v == nil {
@@ -11880,6 +12006,7 @@ func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput) ShouldDecre
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Indicator if the action should apply to all batches of the deployment or only the latest batch.
 func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput) ShouldHandleAllBatches() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfigStrategyOnFailure) *bool {
 		if v == nil {
@@ -15774,10 +15901,12 @@ func (o MrScalarTerminationPolicyStatementArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type OceanAttachLoadBalancer struct {
+	// If type is "TARGET_GROUP" then an ARN is required. Otherwise is not allowed.
 	Arn *string `pulumi:"arn"`
-	// The cluster name.
+	// If type is "CLASSIC" then a name is required. Otherwise is not allowed.
 	Name *string `pulumi:"name"`
-	Type string  `pulumi:"type"`
+	// Type of load balancer to use.
+	Type string `pulumi:"type"`
 }
 
 // OceanAttachLoadBalancerInput is an input type that accepts OceanAttachLoadBalancerArgs and OceanAttachLoadBalancerOutput values.
@@ -15792,10 +15921,12 @@ type OceanAttachLoadBalancerInput interface {
 }
 
 type OceanAttachLoadBalancerArgs struct {
+	// If type is "TARGET_GROUP" then an ARN is required. Otherwise is not allowed.
 	Arn pulumi.StringPtrInput `pulumi:"arn"`
-	// The cluster name.
+	// If type is "CLASSIC" then a name is required. Otherwise is not allowed.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	Type pulumi.StringInput    `pulumi:"type"`
+	// Type of load balancer to use.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (OceanAttachLoadBalancerArgs) ElementType() reflect.Type {
@@ -15849,15 +15980,17 @@ func (o OceanAttachLoadBalancerOutput) ToOceanAttachLoadBalancerOutputWithContex
 	return o
 }
 
+// If type is "TARGET_GROUP" then an ARN is required. Otherwise is not allowed.
 func (o OceanAttachLoadBalancerOutput) Arn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanAttachLoadBalancer) *string { return v.Arn }).(pulumi.StringPtrOutput)
 }
 
-// The cluster name.
+// If type is "CLASSIC" then a name is required. Otherwise is not allowed.
 func (o OceanAttachLoadBalancerOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanAttachLoadBalancer) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Type of load balancer to use.
 func (o OceanAttachLoadBalancerOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanAttachLoadBalancer) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -15883,15 +16016,24 @@ func (o OceanAttachLoadBalancerArrayOutput) Index(i pulumi.IntInput) OceanAttach
 }
 
 type OceanAutoscaler struct {
-	AutoHeadroomPercentage           *int                              `pulumi:"autoHeadroomPercentage"`
-	AutoscaleCooldown                *int                              `pulumi:"autoscaleCooldown"`
-	AutoscaleDown                    *OceanAutoscalerAutoscaleDown     `pulumi:"autoscaleDown"`
-	AutoscaleHeadroom                *OceanAutoscalerAutoscaleHeadroom `pulumi:"autoscaleHeadroom"`
-	AutoscaleIsAutoConfig            *bool                             `pulumi:"autoscaleIsAutoConfig"`
-	AutoscaleIsEnabled               *bool                             `pulumi:"autoscaleIsEnabled"`
-	EnableAutomaticAndManualHeadroom *bool                             `pulumi:"enableAutomaticAndManualHeadroom"`
-	ExtendedResourceDefinitions      []string                          `pulumi:"extendedResourceDefinitions"`
-	ResourceLimits                   *OceanAutoscalerResourceLimits    `pulumi:"resourceLimits"`
+	// Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscaleIsAutoConfig` toggled on.
+	AutoHeadroomPercentage *int `pulumi:"autoHeadroomPercentage"`
+	// Cooldown period between scaling actions.
+	AutoscaleCooldown *int `pulumi:"autoscaleCooldown"`
+	// Auto Scaling scale down operations.
+	AutoscaleDown *OceanAutoscalerAutoscaleDown `pulumi:"autoscaleDown"`
+	// Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
+	AutoscaleHeadroom *OceanAutoscalerAutoscaleHeadroom `pulumi:"autoscaleHeadroom"`
+	// Automatically configure and optimize headroom resources.
+	AutoscaleIsAutoConfig *bool `pulumi:"autoscaleIsAutoConfig"`
+	// Enable the Ocean Kubernetes Auto Scaler.
+	AutoscaleIsEnabled *bool `pulumi:"autoscaleIsEnabled"`
+	// enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
+	EnableAutomaticAndManualHeadroom *bool `pulumi:"enableAutomaticAndManualHeadroom"`
+	// List of Ocean extended resource definitions to use in this cluster.
+	ExtendedResourceDefinitions []string `pulumi:"extendedResourceDefinitions"`
+	// Optionally set upper and lower bounds on the resource usage of the cluster.
+	ResourceLimits *OceanAutoscalerResourceLimits `pulumi:"resourceLimits"`
 }
 
 // OceanAutoscalerInput is an input type that accepts OceanAutoscalerArgs and OceanAutoscalerOutput values.
@@ -15906,15 +16048,24 @@ type OceanAutoscalerInput interface {
 }
 
 type OceanAutoscalerArgs struct {
-	AutoHeadroomPercentage           pulumi.IntPtrInput                       `pulumi:"autoHeadroomPercentage"`
-	AutoscaleCooldown                pulumi.IntPtrInput                       `pulumi:"autoscaleCooldown"`
-	AutoscaleDown                    OceanAutoscalerAutoscaleDownPtrInput     `pulumi:"autoscaleDown"`
-	AutoscaleHeadroom                OceanAutoscalerAutoscaleHeadroomPtrInput `pulumi:"autoscaleHeadroom"`
-	AutoscaleIsAutoConfig            pulumi.BoolPtrInput                      `pulumi:"autoscaleIsAutoConfig"`
-	AutoscaleIsEnabled               pulumi.BoolPtrInput                      `pulumi:"autoscaleIsEnabled"`
-	EnableAutomaticAndManualHeadroom pulumi.BoolPtrInput                      `pulumi:"enableAutomaticAndManualHeadroom"`
-	ExtendedResourceDefinitions      pulumi.StringArrayInput                  `pulumi:"extendedResourceDefinitions"`
-	ResourceLimits                   OceanAutoscalerResourceLimitsPtrInput    `pulumi:"resourceLimits"`
+	// Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscaleIsAutoConfig` toggled on.
+	AutoHeadroomPercentage pulumi.IntPtrInput `pulumi:"autoHeadroomPercentage"`
+	// Cooldown period between scaling actions.
+	AutoscaleCooldown pulumi.IntPtrInput `pulumi:"autoscaleCooldown"`
+	// Auto Scaling scale down operations.
+	AutoscaleDown OceanAutoscalerAutoscaleDownPtrInput `pulumi:"autoscaleDown"`
+	// Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
+	AutoscaleHeadroom OceanAutoscalerAutoscaleHeadroomPtrInput `pulumi:"autoscaleHeadroom"`
+	// Automatically configure and optimize headroom resources.
+	AutoscaleIsAutoConfig pulumi.BoolPtrInput `pulumi:"autoscaleIsAutoConfig"`
+	// Enable the Ocean Kubernetes Auto Scaler.
+	AutoscaleIsEnabled pulumi.BoolPtrInput `pulumi:"autoscaleIsEnabled"`
+	// enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
+	EnableAutomaticAndManualHeadroom pulumi.BoolPtrInput `pulumi:"enableAutomaticAndManualHeadroom"`
+	// List of Ocean extended resource definitions to use in this cluster.
+	ExtendedResourceDefinitions pulumi.StringArrayInput `pulumi:"extendedResourceDefinitions"`
+	// Optionally set upper and lower bounds on the resource usage of the cluster.
+	ResourceLimits OceanAutoscalerResourceLimitsPtrInput `pulumi:"resourceLimits"`
 }
 
 func (OceanAutoscalerArgs) ElementType() reflect.Type {
@@ -15994,38 +16145,47 @@ func (o OceanAutoscalerOutput) ToOceanAutoscalerPtrOutputWithContext(ctx context
 	}).(OceanAutoscalerPtrOutput)
 }
 
+// Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscaleIsAutoConfig` toggled on.
 func (o OceanAutoscalerOutput) AutoHeadroomPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscaler) *int { return v.AutoHeadroomPercentage }).(pulumi.IntPtrOutput)
 }
 
+// Cooldown period between scaling actions.
 func (o OceanAutoscalerOutput) AutoscaleCooldown() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscaler) *int { return v.AutoscaleCooldown }).(pulumi.IntPtrOutput)
 }
 
+// Auto Scaling scale down operations.
 func (o OceanAutoscalerOutput) AutoscaleDown() OceanAutoscalerAutoscaleDownPtrOutput {
 	return o.ApplyT(func(v OceanAutoscaler) *OceanAutoscalerAutoscaleDown { return v.AutoscaleDown }).(OceanAutoscalerAutoscaleDownPtrOutput)
 }
 
+// Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
 func (o OceanAutoscalerOutput) AutoscaleHeadroom() OceanAutoscalerAutoscaleHeadroomPtrOutput {
 	return o.ApplyT(func(v OceanAutoscaler) *OceanAutoscalerAutoscaleHeadroom { return v.AutoscaleHeadroom }).(OceanAutoscalerAutoscaleHeadroomPtrOutput)
 }
 
+// Automatically configure and optimize headroom resources.
 func (o OceanAutoscalerOutput) AutoscaleIsAutoConfig() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanAutoscaler) *bool { return v.AutoscaleIsAutoConfig }).(pulumi.BoolPtrOutput)
 }
 
+// Enable the Ocean Kubernetes Auto Scaler.
 func (o OceanAutoscalerOutput) AutoscaleIsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanAutoscaler) *bool { return v.AutoscaleIsEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
 func (o OceanAutoscalerOutput) EnableAutomaticAndManualHeadroom() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanAutoscaler) *bool { return v.EnableAutomaticAndManualHeadroom }).(pulumi.BoolPtrOutput)
 }
 
+// List of Ocean extended resource definitions to use in this cluster.
 func (o OceanAutoscalerOutput) ExtendedResourceDefinitions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanAutoscaler) []string { return v.ExtendedResourceDefinitions }).(pulumi.StringArrayOutput)
 }
 
+// Optionally set upper and lower bounds on the resource usage of the cluster.
 func (o OceanAutoscalerOutput) ResourceLimits() OceanAutoscalerResourceLimitsPtrOutput {
 	return o.ApplyT(func(v OceanAutoscaler) *OceanAutoscalerResourceLimits { return v.ResourceLimits }).(OceanAutoscalerResourceLimitsPtrOutput)
 }
@@ -16054,6 +16214,7 @@ func (o OceanAutoscalerPtrOutput) Elem() OceanAutoscalerOutput {
 	}).(OceanAutoscalerOutput)
 }
 
+// Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscaleIsAutoConfig` toggled on.
 func (o OceanAutoscalerPtrOutput) AutoHeadroomPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscaler) *int {
 		if v == nil {
@@ -16063,6 +16224,7 @@ func (o OceanAutoscalerPtrOutput) AutoHeadroomPercentage() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Cooldown period between scaling actions.
 func (o OceanAutoscalerPtrOutput) AutoscaleCooldown() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscaler) *int {
 		if v == nil {
@@ -16072,6 +16234,7 @@ func (o OceanAutoscalerPtrOutput) AutoscaleCooldown() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Auto Scaling scale down operations.
 func (o OceanAutoscalerPtrOutput) AutoscaleDown() OceanAutoscalerAutoscaleDownPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscaler) *OceanAutoscalerAutoscaleDown {
 		if v == nil {
@@ -16081,6 +16244,7 @@ func (o OceanAutoscalerPtrOutput) AutoscaleDown() OceanAutoscalerAutoscaleDownPt
 	}).(OceanAutoscalerAutoscaleDownPtrOutput)
 }
 
+// Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
 func (o OceanAutoscalerPtrOutput) AutoscaleHeadroom() OceanAutoscalerAutoscaleHeadroomPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscaler) *OceanAutoscalerAutoscaleHeadroom {
 		if v == nil {
@@ -16090,6 +16254,7 @@ func (o OceanAutoscalerPtrOutput) AutoscaleHeadroom() OceanAutoscalerAutoscaleHe
 	}).(OceanAutoscalerAutoscaleHeadroomPtrOutput)
 }
 
+// Automatically configure and optimize headroom resources.
 func (o OceanAutoscalerPtrOutput) AutoscaleIsAutoConfig() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscaler) *bool {
 		if v == nil {
@@ -16099,6 +16264,7 @@ func (o OceanAutoscalerPtrOutput) AutoscaleIsAutoConfig() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Enable the Ocean Kubernetes Auto Scaler.
 func (o OceanAutoscalerPtrOutput) AutoscaleIsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscaler) *bool {
 		if v == nil {
@@ -16108,6 +16274,7 @@ func (o OceanAutoscalerPtrOutput) AutoscaleIsEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
 func (o OceanAutoscalerPtrOutput) EnableAutomaticAndManualHeadroom() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscaler) *bool {
 		if v == nil {
@@ -16117,6 +16284,7 @@ func (o OceanAutoscalerPtrOutput) EnableAutomaticAndManualHeadroom() pulumi.Bool
 	}).(pulumi.BoolPtrOutput)
 }
 
+// List of Ocean extended resource definitions to use in this cluster.
 func (o OceanAutoscalerPtrOutput) ExtendedResourceDefinitions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanAutoscaler) []string {
 		if v == nil {
@@ -16126,6 +16294,7 @@ func (o OceanAutoscalerPtrOutput) ExtendedResourceDefinitions() pulumi.StringArr
 	}).(pulumi.StringArrayOutput)
 }
 
+// Optionally set upper and lower bounds on the resource usage of the cluster.
 func (o OceanAutoscalerPtrOutput) ResourceLimits() OceanAutoscalerResourceLimitsPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscaler) *OceanAutoscalerResourceLimits {
 		if v == nil {
@@ -16136,9 +16305,11 @@ func (o OceanAutoscalerPtrOutput) ResourceLimits() OceanAutoscalerResourceLimits
 }
 
 type OceanAutoscalerAutoscaleDown struct {
-	EvaluationPeriods            *int     `pulumi:"evaluationPeriods"`
-	IsAggressiveScaleDownEnabled *bool    `pulumi:"isAggressiveScaleDownEnabled"`
-	MaxScaleDownPercentage       *float64 `pulumi:"maxScaleDownPercentage"`
+	EvaluationPeriods *int `pulumi:"evaluationPeriods"`
+	// When set to 'true', the Aggressive Scale Down feature is enabled.
+	IsAggressiveScaleDownEnabled *bool `pulumi:"isAggressiveScaleDownEnabled"`
+	// Would represent the maximum % to scale-down. Number between 1-100.
+	MaxScaleDownPercentage *float64 `pulumi:"maxScaleDownPercentage"`
 }
 
 // OceanAutoscalerAutoscaleDownInput is an input type that accepts OceanAutoscalerAutoscaleDownArgs and OceanAutoscalerAutoscaleDownOutput values.
@@ -16153,9 +16324,11 @@ type OceanAutoscalerAutoscaleDownInput interface {
 }
 
 type OceanAutoscalerAutoscaleDownArgs struct {
-	EvaluationPeriods            pulumi.IntPtrInput     `pulumi:"evaluationPeriods"`
-	IsAggressiveScaleDownEnabled pulumi.BoolPtrInput    `pulumi:"isAggressiveScaleDownEnabled"`
-	MaxScaleDownPercentage       pulumi.Float64PtrInput `pulumi:"maxScaleDownPercentage"`
+	EvaluationPeriods pulumi.IntPtrInput `pulumi:"evaluationPeriods"`
+	// When set to 'true', the Aggressive Scale Down feature is enabled.
+	IsAggressiveScaleDownEnabled pulumi.BoolPtrInput `pulumi:"isAggressiveScaleDownEnabled"`
+	// Would represent the maximum % to scale-down. Number between 1-100.
+	MaxScaleDownPercentage pulumi.Float64PtrInput `pulumi:"maxScaleDownPercentage"`
 }
 
 func (OceanAutoscalerAutoscaleDownArgs) ElementType() reflect.Type {
@@ -16239,10 +16412,12 @@ func (o OceanAutoscalerAutoscaleDownOutput) EvaluationPeriods() pulumi.IntPtrOut
 	return o.ApplyT(func(v OceanAutoscalerAutoscaleDown) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
 }
 
+// When set to 'true', the Aggressive Scale Down feature is enabled.
 func (o OceanAutoscalerAutoscaleDownOutput) IsAggressiveScaleDownEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerAutoscaleDown) *bool { return v.IsAggressiveScaleDownEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Would represent the maximum % to scale-down. Number between 1-100.
 func (o OceanAutoscalerAutoscaleDownOutput) MaxScaleDownPercentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerAutoscaleDown) *float64 { return v.MaxScaleDownPercentage }).(pulumi.Float64PtrOutput)
 }
@@ -16280,6 +16455,7 @@ func (o OceanAutoscalerAutoscaleDownPtrOutput) EvaluationPeriods() pulumi.IntPtr
 	}).(pulumi.IntPtrOutput)
 }
 
+// When set to 'true', the Aggressive Scale Down feature is enabled.
 func (o OceanAutoscalerAutoscaleDownPtrOutput) IsAggressiveScaleDownEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscalerAutoscaleDown) *bool {
 		if v == nil {
@@ -16289,6 +16465,7 @@ func (o OceanAutoscalerAutoscaleDownPtrOutput) IsAggressiveScaleDownEnabled() pu
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Would represent the maximum % to scale-down. Number between 1-100.
 func (o OceanAutoscalerAutoscaleDownPtrOutput) MaxScaleDownPercentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *OceanAutoscalerAutoscaleDown) *float64 {
 		if v == nil {
@@ -16299,10 +16476,14 @@ func (o OceanAutoscalerAutoscaleDownPtrOutput) MaxScaleDownPercentage() pulumi.F
 }
 
 type OceanAutoscalerAutoscaleHeadroom struct {
-	CpuPerUnit    *int `pulumi:"cpuPerUnit"`
-	GpuPerUnit    *int `pulumi:"gpuPerUnit"`
+	// Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+	CpuPerUnit *int `pulumi:"cpuPerUnit"`
+	// Optionally configure the number of GPUs to allocate the headroom.
+	GpuPerUnit *int `pulumi:"gpuPerUnit"`
+	// Optionally configure the amount of memory (MB) to allocate the headroom.
 	MemoryPerUnit *int `pulumi:"memoryPerUnit"`
-	NumOfUnits    *int `pulumi:"numOfUnits"`
+	// The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+	NumOfUnits *int `pulumi:"numOfUnits"`
 }
 
 // OceanAutoscalerAutoscaleHeadroomInput is an input type that accepts OceanAutoscalerAutoscaleHeadroomArgs and OceanAutoscalerAutoscaleHeadroomOutput values.
@@ -16317,10 +16498,14 @@ type OceanAutoscalerAutoscaleHeadroomInput interface {
 }
 
 type OceanAutoscalerAutoscaleHeadroomArgs struct {
-	CpuPerUnit    pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
-	GpuPerUnit    pulumi.IntPtrInput `pulumi:"gpuPerUnit"`
+	// Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+	CpuPerUnit pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
+	// Optionally configure the number of GPUs to allocate the headroom.
+	GpuPerUnit pulumi.IntPtrInput `pulumi:"gpuPerUnit"`
+	// Optionally configure the amount of memory (MB) to allocate the headroom.
 	MemoryPerUnit pulumi.IntPtrInput `pulumi:"memoryPerUnit"`
-	NumOfUnits    pulumi.IntPtrInput `pulumi:"numOfUnits"`
+	// The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+	NumOfUnits pulumi.IntPtrInput `pulumi:"numOfUnits"`
 }
 
 func (OceanAutoscalerAutoscaleHeadroomArgs) ElementType() reflect.Type {
@@ -16400,18 +16585,22 @@ func (o OceanAutoscalerAutoscaleHeadroomOutput) ToOceanAutoscalerAutoscaleHeadro
 	}).(OceanAutoscalerAutoscaleHeadroomPtrOutput)
 }
 
+// Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
 func (o OceanAutoscalerAutoscaleHeadroomOutput) CpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerAutoscaleHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
+// Optionally configure the number of GPUs to allocate the headroom.
 func (o OceanAutoscalerAutoscaleHeadroomOutput) GpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerAutoscaleHeadroom) *int { return v.GpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
+// Optionally configure the amount of memory (MB) to allocate the headroom.
 func (o OceanAutoscalerAutoscaleHeadroomOutput) MemoryPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerAutoscaleHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
 }
 
+// The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
 func (o OceanAutoscalerAutoscaleHeadroomOutput) NumOfUnits() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerAutoscaleHeadroom) *int { return v.NumOfUnits }).(pulumi.IntPtrOutput)
 }
@@ -16440,6 +16629,7 @@ func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) Elem() OceanAutoscalerAutosca
 	}).(OceanAutoscalerAutoscaleHeadroomOutput)
 }
 
+// Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
 func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) CpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscalerAutoscaleHeadroom) *int {
 		if v == nil {
@@ -16449,6 +16639,7 @@ func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) CpuPerUnit() pulumi.IntPtrOut
 	}).(pulumi.IntPtrOutput)
 }
 
+// Optionally configure the number of GPUs to allocate the headroom.
 func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) GpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscalerAutoscaleHeadroom) *int {
 		if v == nil {
@@ -16458,6 +16649,7 @@ func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) GpuPerUnit() pulumi.IntPtrOut
 	}).(pulumi.IntPtrOutput)
 }
 
+// Optionally configure the amount of memory (MB) to allocate the headroom.
 func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) MemoryPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscalerAutoscaleHeadroom) *int {
 		if v == nil {
@@ -16467,6 +16659,7 @@ func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) MemoryPerUnit() pulumi.IntPtr
 	}).(pulumi.IntPtrOutput)
 }
 
+// The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
 func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) NumOfUnits() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscalerAutoscaleHeadroom) *int {
 		if v == nil {
@@ -16477,8 +16670,10 @@ func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) NumOfUnits() pulumi.IntPtrOut
 }
 
 type OceanAutoscalerResourceLimits struct {
+	// The maximum memory in GiB units that can be allocated to the cluster.
 	MaxMemoryGib *int `pulumi:"maxMemoryGib"`
-	MaxVcpu      *int `pulumi:"maxVcpu"`
+	// The maximum cpu in vCPU units that can be allocated to the cluster.
+	MaxVcpu *int `pulumi:"maxVcpu"`
 }
 
 // OceanAutoscalerResourceLimitsInput is an input type that accepts OceanAutoscalerResourceLimitsArgs and OceanAutoscalerResourceLimitsOutput values.
@@ -16493,8 +16688,10 @@ type OceanAutoscalerResourceLimitsInput interface {
 }
 
 type OceanAutoscalerResourceLimitsArgs struct {
+	// The maximum memory in GiB units that can be allocated to the cluster.
 	MaxMemoryGib pulumi.IntPtrInput `pulumi:"maxMemoryGib"`
-	MaxVcpu      pulumi.IntPtrInput `pulumi:"maxVcpu"`
+	// The maximum cpu in vCPU units that can be allocated to the cluster.
+	MaxVcpu pulumi.IntPtrInput `pulumi:"maxVcpu"`
 }
 
 func (OceanAutoscalerResourceLimitsArgs) ElementType() reflect.Type {
@@ -16574,10 +16771,12 @@ func (o OceanAutoscalerResourceLimitsOutput) ToOceanAutoscalerResourceLimitsPtrO
 	}).(OceanAutoscalerResourceLimitsPtrOutput)
 }
 
+// The maximum memory in GiB units that can be allocated to the cluster.
 func (o OceanAutoscalerResourceLimitsOutput) MaxMemoryGib() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerResourceLimits) *int { return v.MaxMemoryGib }).(pulumi.IntPtrOutput)
 }
 
+// The maximum cpu in vCPU units that can be allocated to the cluster.
 func (o OceanAutoscalerResourceLimitsOutput) MaxVcpu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerResourceLimits) *int { return v.MaxVcpu }).(pulumi.IntPtrOutput)
 }
@@ -16606,6 +16805,7 @@ func (o OceanAutoscalerResourceLimitsPtrOutput) Elem() OceanAutoscalerResourceLi
 	}).(OceanAutoscalerResourceLimitsOutput)
 }
 
+// The maximum memory in GiB units that can be allocated to the cluster.
 func (o OceanAutoscalerResourceLimitsPtrOutput) MaxMemoryGib() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscalerResourceLimits) *int {
 		if v == nil {
@@ -16615,6 +16815,7 @@ func (o OceanAutoscalerResourceLimitsPtrOutput) MaxMemoryGib() pulumi.IntPtrOutp
 	}).(pulumi.IntPtrOutput)
 }
 
+// The maximum cpu in vCPU units that can be allocated to the cluster.
 func (o OceanAutoscalerResourceLimitsPtrOutput) MaxVcpu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscalerResourceLimits) *int {
 		if v == nil {
@@ -17484,10 +17685,12 @@ func (o OceanClusterOrientationArrayOutput) Index(i pulumi.IntInput) OceanCluste
 }
 
 type OceanDetachLoadBalancer struct {
+	// If type is "TARGET_GROUP" then an ARN is required. Otherwise is not allowed.
 	Arn *string `pulumi:"arn"`
-	// The cluster name.
+	// If type is "CLASSIC" then a name is required. Otherwise is not allowed.
 	Name *string `pulumi:"name"`
-	Type string  `pulumi:"type"`
+	// Type of load balancer to use.
+	Type string `pulumi:"type"`
 }
 
 // OceanDetachLoadBalancerInput is an input type that accepts OceanDetachLoadBalancerArgs and OceanDetachLoadBalancerOutput values.
@@ -17502,10 +17705,12 @@ type OceanDetachLoadBalancerInput interface {
 }
 
 type OceanDetachLoadBalancerArgs struct {
+	// If type is "TARGET_GROUP" then an ARN is required. Otherwise is not allowed.
 	Arn pulumi.StringPtrInput `pulumi:"arn"`
-	// The cluster name.
+	// If type is "CLASSIC" then a name is required. Otherwise is not allowed.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	Type pulumi.StringInput    `pulumi:"type"`
+	// Type of load balancer to use.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (OceanDetachLoadBalancerArgs) ElementType() reflect.Type {
@@ -17559,15 +17764,17 @@ func (o OceanDetachLoadBalancerOutput) ToOceanDetachLoadBalancerOutputWithContex
 	return o
 }
 
+// If type is "TARGET_GROUP" then an ARN is required. Otherwise is not allowed.
 func (o OceanDetachLoadBalancerOutput) Arn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanDetachLoadBalancer) *string { return v.Arn }).(pulumi.StringPtrOutput)
 }
 
-// The cluster name.
+// If type is "CLASSIC" then a name is required. Otherwise is not allowed.
 func (o OceanDetachLoadBalancerOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanDetachLoadBalancer) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Type of load balancer to use.
 func (o OceanDetachLoadBalancerOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanDetachLoadBalancer) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -19601,8 +19808,6 @@ func (o OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput) TagValue() pulumi.Stri
 
 type OceanLaunchSpecEphemeralStorage struct {
 	// Specify an alternative device name from which ephemeral storage calculations should be derived. This parameter is used when the ephemeral storage should not utilize the root device. Provide the device name configured in the VNG's BDM or AMI's BDM that differs from the default root device.
-	//
-	// <a id="update-policy"></a>
 	EphemeralStorageDeviceName *string `pulumi:"ephemeralStorageDeviceName"`
 }
 
@@ -19619,8 +19824,6 @@ type OceanLaunchSpecEphemeralStorageInput interface {
 
 type OceanLaunchSpecEphemeralStorageArgs struct {
 	// Specify an alternative device name from which ephemeral storage calculations should be derived. This parameter is used when the ephemeral storage should not utilize the root device. Provide the device name configured in the VNG's BDM or AMI's BDM that differs from the default root device.
-	//
-	// <a id="update-policy"></a>
 	EphemeralStorageDeviceName pulumi.StringPtrInput `pulumi:"ephemeralStorageDeviceName"`
 }
 
@@ -19676,8 +19879,6 @@ func (o OceanLaunchSpecEphemeralStorageOutput) ToOceanLaunchSpecEphemeralStorage
 }
 
 // Specify an alternative device name from which ephemeral storage calculations should be derived. This parameter is used when the ephemeral storage should not utilize the root device. Provide the device name configured in the VNG's BDM or AMI's BDM that differs from the default root device.
-//
-// <a id="update-policy"></a>
 func (o OceanLaunchSpecEphemeralStorageOutput) EphemeralStorageDeviceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecEphemeralStorage) *string { return v.EphemeralStorageDeviceName }).(pulumi.StringPtrOutput)
 }
@@ -21346,8 +21547,10 @@ func (o OceanLaunchSpecTaintArrayOutput) Index(i pulumi.IntInput) OceanLaunchSpe
 }
 
 type OceanLaunchSpecUpdatePolicy struct {
+	// Holds the roll configuration.
 	RollConfig *OceanLaunchSpecUpdatePolicyRollConfig `pulumi:"rollConfig"`
-	ShouldRoll bool                                   `pulumi:"shouldRoll"`
+	// Enables the roll.
+	ShouldRoll bool `pulumi:"shouldRoll"`
 }
 
 // OceanLaunchSpecUpdatePolicyInput is an input type that accepts OceanLaunchSpecUpdatePolicyArgs and OceanLaunchSpecUpdatePolicyOutput values.
@@ -21362,8 +21565,10 @@ type OceanLaunchSpecUpdatePolicyInput interface {
 }
 
 type OceanLaunchSpecUpdatePolicyArgs struct {
+	// Holds the roll configuration.
 	RollConfig OceanLaunchSpecUpdatePolicyRollConfigPtrInput `pulumi:"rollConfig"`
-	ShouldRoll pulumi.BoolInput                              `pulumi:"shouldRoll"`
+	// Enables the roll.
+	ShouldRoll pulumi.BoolInput `pulumi:"shouldRoll"`
 }
 
 func (OceanLaunchSpecUpdatePolicyArgs) ElementType() reflect.Type {
@@ -21443,10 +21648,12 @@ func (o OceanLaunchSpecUpdatePolicyOutput) ToOceanLaunchSpecUpdatePolicyPtrOutpu
 	}).(OceanLaunchSpecUpdatePolicyPtrOutput)
 }
 
+// Holds the roll configuration.
 func (o OceanLaunchSpecUpdatePolicyOutput) RollConfig() OceanLaunchSpecUpdatePolicyRollConfigPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecUpdatePolicy) *OceanLaunchSpecUpdatePolicyRollConfig { return v.RollConfig }).(OceanLaunchSpecUpdatePolicyRollConfigPtrOutput)
 }
 
+// Enables the roll.
 func (o OceanLaunchSpecUpdatePolicyOutput) ShouldRoll() pulumi.BoolOutput {
 	return o.ApplyT(func(v OceanLaunchSpecUpdatePolicy) bool { return v.ShouldRoll }).(pulumi.BoolOutput)
 }
@@ -21475,6 +21682,7 @@ func (o OceanLaunchSpecUpdatePolicyPtrOutput) Elem() OceanLaunchSpecUpdatePolicy
 	}).(OceanLaunchSpecUpdatePolicyOutput)
 }
 
+// Holds the roll configuration.
 func (o OceanLaunchSpecUpdatePolicyPtrOutput) RollConfig() OceanLaunchSpecUpdatePolicyRollConfigPtrOutput {
 	return o.ApplyT(func(v *OceanLaunchSpecUpdatePolicy) *OceanLaunchSpecUpdatePolicyRollConfig {
 		if v == nil {
@@ -21484,6 +21692,7 @@ func (o OceanLaunchSpecUpdatePolicyPtrOutput) RollConfig() OceanLaunchSpecUpdate
 	}).(OceanLaunchSpecUpdatePolicyRollConfigPtrOutput)
 }
 
+// Enables the roll.
 func (o OceanLaunchSpecUpdatePolicyPtrOutput) ShouldRoll() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanLaunchSpecUpdatePolicy) *bool {
 		if v == nil {
@@ -21494,6 +21703,7 @@ func (o OceanLaunchSpecUpdatePolicyPtrOutput) ShouldRoll() pulumi.BoolPtrOutput 
 }
 
 type OceanLaunchSpecUpdatePolicyRollConfig struct {
+	// Sets the percentage of the instances to deploy in each batch.
 	BatchSizePercentage int `pulumi:"batchSizePercentage"`
 }
 
@@ -21509,6 +21719,7 @@ type OceanLaunchSpecUpdatePolicyRollConfigInput interface {
 }
 
 type OceanLaunchSpecUpdatePolicyRollConfigArgs struct {
+	// Sets the percentage of the instances to deploy in each batch.
 	BatchSizePercentage pulumi.IntInput `pulumi:"batchSizePercentage"`
 }
 
@@ -21589,6 +21800,7 @@ func (o OceanLaunchSpecUpdatePolicyRollConfigOutput) ToOceanLaunchSpecUpdatePoli
 	}).(OceanLaunchSpecUpdatePolicyRollConfigPtrOutput)
 }
 
+// Sets the percentage of the instances to deploy in each batch.
 func (o OceanLaunchSpecUpdatePolicyRollConfigOutput) BatchSizePercentage() pulumi.IntOutput {
 	return o.ApplyT(func(v OceanLaunchSpecUpdatePolicyRollConfig) int { return v.BatchSizePercentage }).(pulumi.IntOutput)
 }
@@ -21617,6 +21829,7 @@ func (o OceanLaunchSpecUpdatePolicyRollConfigPtrOutput) Elem() OceanLaunchSpecUp
 	}).(OceanLaunchSpecUpdatePolicyRollConfigOutput)
 }
 
+// Sets the percentage of the instances to deploy in each batch.
 func (o OceanLaunchSpecUpdatePolicyRollConfigPtrOutput) BatchSizePercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanLaunchSpecUpdatePolicyRollConfig) *int {
 		if v == nil {
@@ -22210,8 +22423,10 @@ func (o OceanResourceTagSpecificationArrayOutput) Index(i pulumi.IntInput) Ocean
 }
 
 type OceanScheduledTask struct {
+	// Set shutdown hours for cluster object.
 	ShutdownHours *OceanScheduledTaskShutdownHours `pulumi:"shutdownHours"`
-	Tasks         []OceanScheduledTaskTask         `pulumi:"tasks"`
+	// The scheduling tasks for the cluster.
+	Tasks []OceanScheduledTaskTask `pulumi:"tasks"`
 }
 
 // OceanScheduledTaskInput is an input type that accepts OceanScheduledTaskArgs and OceanScheduledTaskOutput values.
@@ -22226,8 +22441,10 @@ type OceanScheduledTaskInput interface {
 }
 
 type OceanScheduledTaskArgs struct {
+	// Set shutdown hours for cluster object.
 	ShutdownHours OceanScheduledTaskShutdownHoursPtrInput `pulumi:"shutdownHours"`
-	Tasks         OceanScheduledTaskTaskArrayInput        `pulumi:"tasks"`
+	// The scheduling tasks for the cluster.
+	Tasks OceanScheduledTaskTaskArrayInput `pulumi:"tasks"`
 }
 
 func (OceanScheduledTaskArgs) ElementType() reflect.Type {
@@ -22281,10 +22498,12 @@ func (o OceanScheduledTaskOutput) ToOceanScheduledTaskOutputWithContext(ctx cont
 	return o
 }
 
+// Set shutdown hours for cluster object.
 func (o OceanScheduledTaskOutput) ShutdownHours() OceanScheduledTaskShutdownHoursPtrOutput {
 	return o.ApplyT(func(v OceanScheduledTask) *OceanScheduledTaskShutdownHours { return v.ShutdownHours }).(OceanScheduledTaskShutdownHoursPtrOutput)
 }
 
+// The scheduling tasks for the cluster.
 func (o OceanScheduledTaskOutput) Tasks() OceanScheduledTaskTaskArrayOutput {
 	return o.ApplyT(func(v OceanScheduledTask) []OceanScheduledTaskTask { return v.Tasks }).(OceanScheduledTaskTaskArrayOutput)
 }
@@ -22310,7 +22529,9 @@ func (o OceanScheduledTaskArrayOutput) Index(i pulumi.IntInput) OceanScheduledTa
 }
 
 type OceanScheduledTaskShutdownHours struct {
-	IsEnabled   *bool    `pulumi:"isEnabled"`
+	// Toggle the shutdown hours task. (Example: `true`).
+	IsEnabled *bool `pulumi:"isEnabled"`
+	// Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of: `ddd:hh:mm-ddd:hh:mm` where `ddd` = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat, `hh` = hour 24 = 0 -23, `mm` = minute = 0 - 59. Time windows should not overlap. Required if `cluster.scheduling.isEnabled` is `true`. (Example: `Fri:15:30-Wed:14:30`).
 	TimeWindows []string `pulumi:"timeWindows"`
 }
 
@@ -22326,7 +22547,9 @@ type OceanScheduledTaskShutdownHoursInput interface {
 }
 
 type OceanScheduledTaskShutdownHoursArgs struct {
-	IsEnabled   pulumi.BoolPtrInput     `pulumi:"isEnabled"`
+	// Toggle the shutdown hours task. (Example: `true`).
+	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
+	// Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of: `ddd:hh:mm-ddd:hh:mm` where `ddd` = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat, `hh` = hour 24 = 0 -23, `mm` = minute = 0 - 59. Time windows should not overlap. Required if `cluster.scheduling.isEnabled` is `true`. (Example: `Fri:15:30-Wed:14:30`).
 	TimeWindows pulumi.StringArrayInput `pulumi:"timeWindows"`
 }
 
@@ -22407,10 +22630,12 @@ func (o OceanScheduledTaskShutdownHoursOutput) ToOceanScheduledTaskShutdownHours
 	}).(OceanScheduledTaskShutdownHoursPtrOutput)
 }
 
+// Toggle the shutdown hours task. (Example: `true`).
 func (o OceanScheduledTaskShutdownHoursOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanScheduledTaskShutdownHours) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of: `ddd:hh:mm-ddd:hh:mm` where `ddd` = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat, `hh` = hour 24 = 0 -23, `mm` = minute = 0 - 59. Time windows should not overlap. Required if `cluster.scheduling.isEnabled` is `true`. (Example: `Fri:15:30-Wed:14:30`).
 func (o OceanScheduledTaskShutdownHoursOutput) TimeWindows() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanScheduledTaskShutdownHours) []string { return v.TimeWindows }).(pulumi.StringArrayOutput)
 }
@@ -22439,6 +22664,7 @@ func (o OceanScheduledTaskShutdownHoursPtrOutput) Elem() OceanScheduledTaskShutd
 	}).(OceanScheduledTaskShutdownHoursOutput)
 }
 
+// Toggle the shutdown hours task. (Example: `true`).
 func (o OceanScheduledTaskShutdownHoursPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanScheduledTaskShutdownHours) *bool {
 		if v == nil {
@@ -22448,6 +22674,7 @@ func (o OceanScheduledTaskShutdownHoursPtrOutput) IsEnabled() pulumi.BoolPtrOutp
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of: `ddd:hh:mm-ddd:hh:mm` where `ddd` = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat, `hh` = hour 24 = 0 -23, `mm` = minute = 0 - 59. Time windows should not overlap. Required if `cluster.scheduling.isEnabled` is `true`. (Example: `Fri:15:30-Wed:14:30`).
 func (o OceanScheduledTaskShutdownHoursPtrOutput) TimeWindows() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanScheduledTaskShutdownHours) []string {
 		if v == nil {
@@ -22458,10 +22685,14 @@ func (o OceanScheduledTaskShutdownHoursPtrOutput) TimeWindows() pulumi.StringArr
 }
 
 type OceanScheduledTaskTask struct {
-	CronExpression string                            `pulumi:"cronExpression"`
-	IsEnabled      bool                              `pulumi:"isEnabled"`
-	Parameters     *OceanScheduledTaskTaskParameters `pulumi:"parameters"`
-	TaskType       string                            `pulumi:"taskType"`
+	// A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. (Example: `0 1 * * *`).
+	CronExpression string `pulumi:"cronExpression"`
+	// Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
+	IsEnabled bool `pulumi:"isEnabled"`
+	// This filed will be compatible to the `taskType` field. If `taskType` is defined as `clusterRoll`, user cluster roll object in parameters.
+	Parameters *OceanScheduledTaskTaskParameters `pulumi:"parameters"`
+	// Valid values: `clusterRoll` `amiAutoUpdate`. Required for `cluster.scheduling.tasks`
+	TaskType string `pulumi:"taskType"`
 }
 
 // OceanScheduledTaskTaskInput is an input type that accepts OceanScheduledTaskTaskArgs and OceanScheduledTaskTaskOutput values.
@@ -22476,10 +22707,14 @@ type OceanScheduledTaskTaskInput interface {
 }
 
 type OceanScheduledTaskTaskArgs struct {
-	CronExpression pulumi.StringInput                       `pulumi:"cronExpression"`
-	IsEnabled      pulumi.BoolInput                         `pulumi:"isEnabled"`
-	Parameters     OceanScheduledTaskTaskParametersPtrInput `pulumi:"parameters"`
-	TaskType       pulumi.StringInput                       `pulumi:"taskType"`
+	// A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. (Example: `0 1 * * *`).
+	CronExpression pulumi.StringInput `pulumi:"cronExpression"`
+	// Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
+	IsEnabled pulumi.BoolInput `pulumi:"isEnabled"`
+	// This filed will be compatible to the `taskType` field. If `taskType` is defined as `clusterRoll`, user cluster roll object in parameters.
+	Parameters OceanScheduledTaskTaskParametersPtrInput `pulumi:"parameters"`
+	// Valid values: `clusterRoll` `amiAutoUpdate`. Required for `cluster.scheduling.tasks`
+	TaskType pulumi.StringInput `pulumi:"taskType"`
 }
 
 func (OceanScheduledTaskTaskArgs) ElementType() reflect.Type {
@@ -22533,18 +22768,22 @@ func (o OceanScheduledTaskTaskOutput) ToOceanScheduledTaskTaskOutputWithContext(
 	return o
 }
 
+// A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. (Example: `0 1 * * *`).
 func (o OceanScheduledTaskTaskOutput) CronExpression() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanScheduledTaskTask) string { return v.CronExpression }).(pulumi.StringOutput)
 }
 
+// Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
 func (o OceanScheduledTaskTaskOutput) IsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v OceanScheduledTaskTask) bool { return v.IsEnabled }).(pulumi.BoolOutput)
 }
 
+// This filed will be compatible to the `taskType` field. If `taskType` is defined as `clusterRoll`, user cluster roll object in parameters.
 func (o OceanScheduledTaskTaskOutput) Parameters() OceanScheduledTaskTaskParametersPtrOutput {
 	return o.ApplyT(func(v OceanScheduledTaskTask) *OceanScheduledTaskTaskParameters { return v.Parameters }).(OceanScheduledTaskTaskParametersPtrOutput)
 }
 
+// Valid values: `clusterRoll` `amiAutoUpdate`. Required for `cluster.scheduling.tasks`
 func (o OceanScheduledTaskTaskOutput) TaskType() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanScheduledTaskTask) string { return v.TaskType }).(pulumi.StringOutput)
 }
@@ -22570,7 +22809,9 @@ func (o OceanScheduledTaskTaskArrayOutput) Index(i pulumi.IntInput) OceanSchedul
 }
 
 type OceanScheduledTaskTaskParameters struct {
-	AmiAutoUpdate         *OceanScheduledTaskTaskParametersAmiAutoUpdate         `pulumi:"amiAutoUpdate"`
+	// Set amiAutoUpdate object
+	AmiAutoUpdate *OceanScheduledTaskTaskParametersAmiAutoUpdate `pulumi:"amiAutoUpdate"`
+	// Set clusterRoll object
 	ParametersClusterRoll *OceanScheduledTaskTaskParametersParametersClusterRoll `pulumi:"parametersClusterRoll"`
 }
 
@@ -22586,7 +22827,9 @@ type OceanScheduledTaskTaskParametersInput interface {
 }
 
 type OceanScheduledTaskTaskParametersArgs struct {
-	AmiAutoUpdate         OceanScheduledTaskTaskParametersAmiAutoUpdatePtrInput         `pulumi:"amiAutoUpdate"`
+	// Set amiAutoUpdate object
+	AmiAutoUpdate OceanScheduledTaskTaskParametersAmiAutoUpdatePtrInput `pulumi:"amiAutoUpdate"`
+	// Set clusterRoll object
 	ParametersClusterRoll OceanScheduledTaskTaskParametersParametersClusterRollPtrInput `pulumi:"parametersClusterRoll"`
 }
 
@@ -22667,12 +22910,14 @@ func (o OceanScheduledTaskTaskParametersOutput) ToOceanScheduledTaskTaskParamete
 	}).(OceanScheduledTaskTaskParametersPtrOutput)
 }
 
+// Set amiAutoUpdate object
 func (o OceanScheduledTaskTaskParametersOutput) AmiAutoUpdate() OceanScheduledTaskTaskParametersAmiAutoUpdatePtrOutput {
 	return o.ApplyT(func(v OceanScheduledTaskTaskParameters) *OceanScheduledTaskTaskParametersAmiAutoUpdate {
 		return v.AmiAutoUpdate
 	}).(OceanScheduledTaskTaskParametersAmiAutoUpdatePtrOutput)
 }
 
+// Set clusterRoll object
 func (o OceanScheduledTaskTaskParametersOutput) ParametersClusterRoll() OceanScheduledTaskTaskParametersParametersClusterRollPtrOutput {
 	return o.ApplyT(func(v OceanScheduledTaskTaskParameters) *OceanScheduledTaskTaskParametersParametersClusterRoll {
 		return v.ParametersClusterRoll
@@ -22703,6 +22948,7 @@ func (o OceanScheduledTaskTaskParametersPtrOutput) Elem() OceanScheduledTaskTask
 	}).(OceanScheduledTaskTaskParametersOutput)
 }
 
+// Set amiAutoUpdate object
 func (o OceanScheduledTaskTaskParametersPtrOutput) AmiAutoUpdate() OceanScheduledTaskTaskParametersAmiAutoUpdatePtrOutput {
 	return o.ApplyT(func(v *OceanScheduledTaskTaskParameters) *OceanScheduledTaskTaskParametersAmiAutoUpdate {
 		if v == nil {
@@ -22712,6 +22958,7 @@ func (o OceanScheduledTaskTaskParametersPtrOutput) AmiAutoUpdate() OceanSchedule
 	}).(OceanScheduledTaskTaskParametersAmiAutoUpdatePtrOutput)
 }
 
+// Set clusterRoll object
 func (o OceanScheduledTaskTaskParametersPtrOutput) ParametersClusterRoll() OceanScheduledTaskTaskParametersParametersClusterRollPtrOutput {
 	return o.ApplyT(func(v *OceanScheduledTaskTaskParameters) *OceanScheduledTaskTaskParametersParametersClusterRoll {
 		if v == nil {
@@ -22722,10 +22969,14 @@ func (o OceanScheduledTaskTaskParametersPtrOutput) ParametersClusterRoll() Ocean
 }
 
 type OceanScheduledTaskTaskParametersAmiAutoUpdate struct {
+	// Set clusterRoll object
 	AmiAutoUpdateClusterRoll *OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRoll `pulumi:"amiAutoUpdateClusterRoll"`
-	ApplyRoll                *bool                                                                  `pulumi:"applyRoll"`
-	MinorVersion             *bool                                                                  `pulumi:"minorVersion"`
-	Patch                    *bool                                                                  `pulumi:"patch"`
+	// When the AMI is updated according to the configuration set, a cluster roll can be triggered
+	ApplyRoll *bool `pulumi:"applyRoll"`
+	// When set to 'true', the auto-update process will update the VNGs’ AMI with the AMI to match the Kubernetes control plane version. either "patch" or "minorVersion" must be true.
+	MinorVersion *bool `pulumi:"minorVersion"`
+	// When set to 'true', the auto-update process will update the VNGs’ images with the latest security patches. either "patch" or "minorVersion" must be true.
+	Patch *bool `pulumi:"patch"`
 }
 
 // OceanScheduledTaskTaskParametersAmiAutoUpdateInput is an input type that accepts OceanScheduledTaskTaskParametersAmiAutoUpdateArgs and OceanScheduledTaskTaskParametersAmiAutoUpdateOutput values.
@@ -22740,10 +22991,14 @@ type OceanScheduledTaskTaskParametersAmiAutoUpdateInput interface {
 }
 
 type OceanScheduledTaskTaskParametersAmiAutoUpdateArgs struct {
+	// Set clusterRoll object
 	AmiAutoUpdateClusterRoll OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollPtrInput `pulumi:"amiAutoUpdateClusterRoll"`
-	ApplyRoll                pulumi.BoolPtrInput                                                           `pulumi:"applyRoll"`
-	MinorVersion             pulumi.BoolPtrInput                                                           `pulumi:"minorVersion"`
-	Patch                    pulumi.BoolPtrInput                                                           `pulumi:"patch"`
+	// When the AMI is updated according to the configuration set, a cluster roll can be triggered
+	ApplyRoll pulumi.BoolPtrInput `pulumi:"applyRoll"`
+	// When set to 'true', the auto-update process will update the VNGs’ AMI with the AMI to match the Kubernetes control plane version. either "patch" or "minorVersion" must be true.
+	MinorVersion pulumi.BoolPtrInput `pulumi:"minorVersion"`
+	// When set to 'true', the auto-update process will update the VNGs’ images with the latest security patches. either "patch" or "minorVersion" must be true.
+	Patch pulumi.BoolPtrInput `pulumi:"patch"`
 }
 
 func (OceanScheduledTaskTaskParametersAmiAutoUpdateArgs) ElementType() reflect.Type {
@@ -22823,20 +23078,24 @@ func (o OceanScheduledTaskTaskParametersAmiAutoUpdateOutput) ToOceanScheduledTas
 	}).(OceanScheduledTaskTaskParametersAmiAutoUpdatePtrOutput)
 }
 
+// Set clusterRoll object
 func (o OceanScheduledTaskTaskParametersAmiAutoUpdateOutput) AmiAutoUpdateClusterRoll() OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollPtrOutput {
 	return o.ApplyT(func(v OceanScheduledTaskTaskParametersAmiAutoUpdate) *OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRoll {
 		return v.AmiAutoUpdateClusterRoll
 	}).(OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollPtrOutput)
 }
 
+// When the AMI is updated according to the configuration set, a cluster roll can be triggered
 func (o OceanScheduledTaskTaskParametersAmiAutoUpdateOutput) ApplyRoll() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanScheduledTaskTaskParametersAmiAutoUpdate) *bool { return v.ApplyRoll }).(pulumi.BoolPtrOutput)
 }
 
+// When set to 'true', the auto-update process will update the VNGs’ AMI with the AMI to match the Kubernetes control plane version. either "patch" or "minorVersion" must be true.
 func (o OceanScheduledTaskTaskParametersAmiAutoUpdateOutput) MinorVersion() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanScheduledTaskTaskParametersAmiAutoUpdate) *bool { return v.MinorVersion }).(pulumi.BoolPtrOutput)
 }
 
+// When set to 'true', the auto-update process will update the VNGs’ images with the latest security patches. either "patch" or "minorVersion" must be true.
 func (o OceanScheduledTaskTaskParametersAmiAutoUpdateOutput) Patch() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanScheduledTaskTaskParametersAmiAutoUpdate) *bool { return v.Patch }).(pulumi.BoolPtrOutput)
 }
@@ -22865,6 +23124,7 @@ func (o OceanScheduledTaskTaskParametersAmiAutoUpdatePtrOutput) Elem() OceanSche
 	}).(OceanScheduledTaskTaskParametersAmiAutoUpdateOutput)
 }
 
+// Set clusterRoll object
 func (o OceanScheduledTaskTaskParametersAmiAutoUpdatePtrOutput) AmiAutoUpdateClusterRoll() OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollPtrOutput {
 	return o.ApplyT(func(v *OceanScheduledTaskTaskParametersAmiAutoUpdate) *OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRoll {
 		if v == nil {
@@ -22874,6 +23134,7 @@ func (o OceanScheduledTaskTaskParametersAmiAutoUpdatePtrOutput) AmiAutoUpdateClu
 	}).(OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollPtrOutput)
 }
 
+// When the AMI is updated according to the configuration set, a cluster roll can be triggered
 func (o OceanScheduledTaskTaskParametersAmiAutoUpdatePtrOutput) ApplyRoll() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanScheduledTaskTaskParametersAmiAutoUpdate) *bool {
 		if v == nil {
@@ -22883,6 +23144,7 @@ func (o OceanScheduledTaskTaskParametersAmiAutoUpdatePtrOutput) ApplyRoll() pulu
 	}).(pulumi.BoolPtrOutput)
 }
 
+// When set to 'true', the auto-update process will update the VNGs’ AMI with the AMI to match the Kubernetes control plane version. either "patch" or "minorVersion" must be true.
 func (o OceanScheduledTaskTaskParametersAmiAutoUpdatePtrOutput) MinorVersion() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanScheduledTaskTaskParametersAmiAutoUpdate) *bool {
 		if v == nil {
@@ -22892,6 +23154,7 @@ func (o OceanScheduledTaskTaskParametersAmiAutoUpdatePtrOutput) MinorVersion() p
 	}).(pulumi.BoolPtrOutput)
 }
 
+// When set to 'true', the auto-update process will update the VNGs’ images with the latest security patches. either "patch" or "minorVersion" must be true.
 func (o OceanScheduledTaskTaskParametersAmiAutoUpdatePtrOutput) Patch() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanScheduledTaskTaskParametersAmiAutoUpdate) *bool {
 		if v == nil {
@@ -22902,10 +23165,14 @@ func (o OceanScheduledTaskTaskParametersAmiAutoUpdatePtrOutput) Patch() pulumi.B
 }
 
 type OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRoll struct {
-	BatchMinHealthyPercentage *int    `pulumi:"batchMinHealthyPercentage"`
-	BatchSizePercentage       *int    `pulumi:"batchSizePercentage"`
-	Comment                   *string `pulumi:"comment"`
-	RespectPdb                *bool   `pulumi:"respectPdb"`
+	// Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+	BatchMinHealthyPercentage *int `pulumi:"batchMinHealthyPercentage"`
+	// Value as a percent to set the size of a batch in a roll. Valid values are 0-100.
+	BatchSizePercentage *int `pulumi:"batchSizePercentage"`
+	// Add a `comment` description for the roll. The `comment` is limited to 256 chars
+	Comment *string `pulumi:"comment"`
+	// During the roll, if the parameter is set to true we honor PDB during the instance replacement.
+	RespectPdb *bool `pulumi:"respectPdb"`
 }
 
 // OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollInput is an input type that accepts OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollArgs and OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollOutput values.
@@ -22920,10 +23187,14 @@ type OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollInput 
 }
 
 type OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollArgs struct {
-	BatchMinHealthyPercentage pulumi.IntPtrInput    `pulumi:"batchMinHealthyPercentage"`
-	BatchSizePercentage       pulumi.IntPtrInput    `pulumi:"batchSizePercentage"`
-	Comment                   pulumi.StringPtrInput `pulumi:"comment"`
-	RespectPdb                pulumi.BoolPtrInput   `pulumi:"respectPdb"`
+	// Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+	BatchMinHealthyPercentage pulumi.IntPtrInput `pulumi:"batchMinHealthyPercentage"`
+	// Value as a percent to set the size of a batch in a roll. Valid values are 0-100.
+	BatchSizePercentage pulumi.IntPtrInput `pulumi:"batchSizePercentage"`
+	// Add a `comment` description for the roll. The `comment` is limited to 256 chars
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// During the roll, if the parameter is set to true we honor PDB during the instance replacement.
+	RespectPdb pulumi.BoolPtrInput `pulumi:"respectPdb"`
 }
 
 func (OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollArgs) ElementType() reflect.Type {
@@ -23003,24 +23274,28 @@ func (o OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollOut
 	}).(OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollPtrOutput)
 }
 
+// Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
 func (o OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollOutput) BatchMinHealthyPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRoll) *int {
 		return v.BatchMinHealthyPercentage
 	}).(pulumi.IntPtrOutput)
 }
 
+// Value as a percent to set the size of a batch in a roll. Valid values are 0-100.
 func (o OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollOutput) BatchSizePercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRoll) *int {
 		return v.BatchSizePercentage
 	}).(pulumi.IntPtrOutput)
 }
 
+// Add a `comment` description for the roll. The `comment` is limited to 256 chars
 func (o OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRoll) *string {
 		return v.Comment
 	}).(pulumi.StringPtrOutput)
 }
 
+// During the roll, if the parameter is set to true we honor PDB during the instance replacement.
 func (o OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollOutput) RespectPdb() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRoll) *bool {
 		return v.RespectPdb
@@ -23051,6 +23326,7 @@ func (o OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollPtr
 	}).(OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollOutput)
 }
 
+// Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
 func (o OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollPtrOutput) BatchMinHealthyPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRoll) *int {
 		if v == nil {
@@ -23060,6 +23336,7 @@ func (o OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollPtr
 	}).(pulumi.IntPtrOutput)
 }
 
+// Value as a percent to set the size of a batch in a roll. Valid values are 0-100.
 func (o OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollPtrOutput) BatchSizePercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRoll) *int {
 		if v == nil {
@@ -23069,6 +23346,7 @@ func (o OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollPtr
 	}).(pulumi.IntPtrOutput)
 }
 
+// Add a `comment` description for the roll. The `comment` is limited to 256 chars
 func (o OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollPtrOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRoll) *string {
 		if v == nil {
@@ -23078,6 +23356,7 @@ func (o OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// During the roll, if the parameter is set to true we honor PDB during the instance replacement.
 func (o OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollPtrOutput) RespectPdb() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRoll) *bool {
 		if v == nil {
@@ -23088,10 +23367,14 @@ func (o OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollPtr
 }
 
 type OceanScheduledTaskTaskParametersParametersClusterRoll struct {
-	BatchMinHealthyPercentage *int    `pulumi:"batchMinHealthyPercentage"`
-	BatchSizePercentage       *int    `pulumi:"batchSizePercentage"`
-	Comment                   *string `pulumi:"comment"`
-	RespectPdb                *bool   `pulumi:"respectPdb"`
+	// Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+	BatchMinHealthyPercentage *int `pulumi:"batchMinHealthyPercentage"`
+	// Value as a percent to set the size of a batch in a roll. Valid values are 0-100.
+	BatchSizePercentage *int `pulumi:"batchSizePercentage"`
+	// Add a `comment` description for the roll. The `comment` is limited to 256 chars
+	Comment *string `pulumi:"comment"`
+	// During the roll, if the parameter is set to true we honor PDB during the instance replacement.
+	RespectPdb *bool `pulumi:"respectPdb"`
 }
 
 // OceanScheduledTaskTaskParametersParametersClusterRollInput is an input type that accepts OceanScheduledTaskTaskParametersParametersClusterRollArgs and OceanScheduledTaskTaskParametersParametersClusterRollOutput values.
@@ -23106,10 +23389,14 @@ type OceanScheduledTaskTaskParametersParametersClusterRollInput interface {
 }
 
 type OceanScheduledTaskTaskParametersParametersClusterRollArgs struct {
-	BatchMinHealthyPercentage pulumi.IntPtrInput    `pulumi:"batchMinHealthyPercentage"`
-	BatchSizePercentage       pulumi.IntPtrInput    `pulumi:"batchSizePercentage"`
-	Comment                   pulumi.StringPtrInput `pulumi:"comment"`
-	RespectPdb                pulumi.BoolPtrInput   `pulumi:"respectPdb"`
+	// Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+	BatchMinHealthyPercentage pulumi.IntPtrInput `pulumi:"batchMinHealthyPercentage"`
+	// Value as a percent to set the size of a batch in a roll. Valid values are 0-100.
+	BatchSizePercentage pulumi.IntPtrInput `pulumi:"batchSizePercentage"`
+	// Add a `comment` description for the roll. The `comment` is limited to 256 chars
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// During the roll, if the parameter is set to true we honor PDB during the instance replacement.
+	RespectPdb pulumi.BoolPtrInput `pulumi:"respectPdb"`
 }
 
 func (OceanScheduledTaskTaskParametersParametersClusterRollArgs) ElementType() reflect.Type {
@@ -23189,18 +23476,22 @@ func (o OceanScheduledTaskTaskParametersParametersClusterRollOutput) ToOceanSche
 	}).(OceanScheduledTaskTaskParametersParametersClusterRollPtrOutput)
 }
 
+// Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
 func (o OceanScheduledTaskTaskParametersParametersClusterRollOutput) BatchMinHealthyPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanScheduledTaskTaskParametersParametersClusterRoll) *int { return v.BatchMinHealthyPercentage }).(pulumi.IntPtrOutput)
 }
 
+// Value as a percent to set the size of a batch in a roll. Valid values are 0-100.
 func (o OceanScheduledTaskTaskParametersParametersClusterRollOutput) BatchSizePercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanScheduledTaskTaskParametersParametersClusterRoll) *int { return v.BatchSizePercentage }).(pulumi.IntPtrOutput)
 }
 
+// Add a `comment` description for the roll. The `comment` is limited to 256 chars
 func (o OceanScheduledTaskTaskParametersParametersClusterRollOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanScheduledTaskTaskParametersParametersClusterRoll) *string { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
+// During the roll, if the parameter is set to true we honor PDB during the instance replacement.
 func (o OceanScheduledTaskTaskParametersParametersClusterRollOutput) RespectPdb() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanScheduledTaskTaskParametersParametersClusterRoll) *bool { return v.RespectPdb }).(pulumi.BoolPtrOutput)
 }
@@ -23229,6 +23520,7 @@ func (o OceanScheduledTaskTaskParametersParametersClusterRollPtrOutput) Elem() O
 	}).(OceanScheduledTaskTaskParametersParametersClusterRollOutput)
 }
 
+// Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
 func (o OceanScheduledTaskTaskParametersParametersClusterRollPtrOutput) BatchMinHealthyPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanScheduledTaskTaskParametersParametersClusterRoll) *int {
 		if v == nil {
@@ -23238,6 +23530,7 @@ func (o OceanScheduledTaskTaskParametersParametersClusterRollPtrOutput) BatchMin
 	}).(pulumi.IntPtrOutput)
 }
 
+// Value as a percent to set the size of a batch in a roll. Valid values are 0-100.
 func (o OceanScheduledTaskTaskParametersParametersClusterRollPtrOutput) BatchSizePercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanScheduledTaskTaskParametersParametersClusterRoll) *int {
 		if v == nil {
@@ -23247,6 +23540,7 @@ func (o OceanScheduledTaskTaskParametersParametersClusterRollPtrOutput) BatchSiz
 	}).(pulumi.IntPtrOutput)
 }
 
+// Add a `comment` description for the roll. The `comment` is limited to 256 chars
 func (o OceanScheduledTaskTaskParametersParametersClusterRollPtrOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanScheduledTaskTaskParametersParametersClusterRoll) *string {
 		if v == nil {
@@ -23256,6 +23550,7 @@ func (o OceanScheduledTaskTaskParametersParametersClusterRollPtrOutput) Comment(
 	}).(pulumi.StringPtrOutput)
 }
 
+// During the roll, if the parameter is set to true we honor PDB during the instance replacement.
 func (o OceanScheduledTaskTaskParametersParametersClusterRollPtrOutput) RespectPdb() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanScheduledTaskTaskParametersParametersClusterRoll) *bool {
 		if v == nil {
@@ -23372,11 +23667,16 @@ func (o OceanTagArrayOutput) Index(i pulumi.IntInput) OceanTagOutput {
 }
 
 type OceanUpdatePolicy struct {
-	AutoApplyTags         *bool                        `pulumi:"autoApplyTags"`
-	ConditionedRoll       *bool                        `pulumi:"conditionedRoll"`
-	ConditionedRollParams []string                     `pulumi:"conditionedRollParams"`
-	RollConfig            *OceanUpdatePolicyRollConfig `pulumi:"rollConfig"`
-	ShouldRoll            bool                         `pulumi:"shouldRoll"`
+	// will update instance tags on the fly without rolling the cluster.
+	AutoApplyTags *bool `pulumi:"autoApplyTags"`
+	// Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
+	ConditionedRoll *bool `pulumi:"conditionedRoll"`
+	// A custom list of attributes will trigger the cluster roll operation (overrides the predefined list of parameters). Valid only when the `conditionedRoll` parameter is set to true. (Valid values: `"subnetIds"`,`"whitelist"`,`"blacklist"`,`"userData"`,`"imageId"`,`"securityGroups"`,`"keyName"`,`"iamInstanceProfile"`,`"associatePublicIpAddress"`,`"loadBalancers"`,`"instanceMetadataOptions"`,`"ebsOptimized"`,`"rootVolumeSize"`)
+	ConditionedRollParams []string `pulumi:"conditionedRollParams"`
+	// While used, you can control whether the group should perform a deployment after an update to the configuration.
+	RollConfig *OceanUpdatePolicyRollConfig `pulumi:"rollConfig"`
+	// Enables the roll.
+	ShouldRoll bool `pulumi:"shouldRoll"`
 }
 
 // OceanUpdatePolicyInput is an input type that accepts OceanUpdatePolicyArgs and OceanUpdatePolicyOutput values.
@@ -23391,11 +23691,16 @@ type OceanUpdatePolicyInput interface {
 }
 
 type OceanUpdatePolicyArgs struct {
-	AutoApplyTags         pulumi.BoolPtrInput                 `pulumi:"autoApplyTags"`
-	ConditionedRoll       pulumi.BoolPtrInput                 `pulumi:"conditionedRoll"`
-	ConditionedRollParams pulumi.StringArrayInput             `pulumi:"conditionedRollParams"`
-	RollConfig            OceanUpdatePolicyRollConfigPtrInput `pulumi:"rollConfig"`
-	ShouldRoll            pulumi.BoolInput                    `pulumi:"shouldRoll"`
+	// will update instance tags on the fly without rolling the cluster.
+	AutoApplyTags pulumi.BoolPtrInput `pulumi:"autoApplyTags"`
+	// Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
+	ConditionedRoll pulumi.BoolPtrInput `pulumi:"conditionedRoll"`
+	// A custom list of attributes will trigger the cluster roll operation (overrides the predefined list of parameters). Valid only when the `conditionedRoll` parameter is set to true. (Valid values: `"subnetIds"`,`"whitelist"`,`"blacklist"`,`"userData"`,`"imageId"`,`"securityGroups"`,`"keyName"`,`"iamInstanceProfile"`,`"associatePublicIpAddress"`,`"loadBalancers"`,`"instanceMetadataOptions"`,`"ebsOptimized"`,`"rootVolumeSize"`)
+	ConditionedRollParams pulumi.StringArrayInput `pulumi:"conditionedRollParams"`
+	// While used, you can control whether the group should perform a deployment after an update to the configuration.
+	RollConfig OceanUpdatePolicyRollConfigPtrInput `pulumi:"rollConfig"`
+	// Enables the roll.
+	ShouldRoll pulumi.BoolInput `pulumi:"shouldRoll"`
 }
 
 func (OceanUpdatePolicyArgs) ElementType() reflect.Type {
@@ -23475,22 +23780,27 @@ func (o OceanUpdatePolicyOutput) ToOceanUpdatePolicyPtrOutputWithContext(ctx con
 	}).(OceanUpdatePolicyPtrOutput)
 }
 
+// will update instance tags on the fly without rolling the cluster.
 func (o OceanUpdatePolicyOutput) AutoApplyTags() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanUpdatePolicy) *bool { return v.AutoApplyTags }).(pulumi.BoolPtrOutput)
 }
 
+// Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
 func (o OceanUpdatePolicyOutput) ConditionedRoll() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanUpdatePolicy) *bool { return v.ConditionedRoll }).(pulumi.BoolPtrOutput)
 }
 
+// A custom list of attributes will trigger the cluster roll operation (overrides the predefined list of parameters). Valid only when the `conditionedRoll` parameter is set to true. (Valid values: `"subnetIds"`,`"whitelist"`,`"blacklist"`,`"userData"`,`"imageId"`,`"securityGroups"`,`"keyName"`,`"iamInstanceProfile"`,`"associatePublicIpAddress"`,`"loadBalancers"`,`"instanceMetadataOptions"`,`"ebsOptimized"`,`"rootVolumeSize"`)
 func (o OceanUpdatePolicyOutput) ConditionedRollParams() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanUpdatePolicy) []string { return v.ConditionedRollParams }).(pulumi.StringArrayOutput)
 }
 
+// While used, you can control whether the group should perform a deployment after an update to the configuration.
 func (o OceanUpdatePolicyOutput) RollConfig() OceanUpdatePolicyRollConfigPtrOutput {
 	return o.ApplyT(func(v OceanUpdatePolicy) *OceanUpdatePolicyRollConfig { return v.RollConfig }).(OceanUpdatePolicyRollConfigPtrOutput)
 }
 
+// Enables the roll.
 func (o OceanUpdatePolicyOutput) ShouldRoll() pulumi.BoolOutput {
 	return o.ApplyT(func(v OceanUpdatePolicy) bool { return v.ShouldRoll }).(pulumi.BoolOutput)
 }
@@ -23519,6 +23829,7 @@ func (o OceanUpdatePolicyPtrOutput) Elem() OceanUpdatePolicyOutput {
 	}).(OceanUpdatePolicyOutput)
 }
 
+// will update instance tags on the fly without rolling the cluster.
 func (o OceanUpdatePolicyPtrOutput) AutoApplyTags() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanUpdatePolicy) *bool {
 		if v == nil {
@@ -23528,6 +23839,7 @@ func (o OceanUpdatePolicyPtrOutput) AutoApplyTags() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
 func (o OceanUpdatePolicyPtrOutput) ConditionedRoll() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanUpdatePolicy) *bool {
 		if v == nil {
@@ -23537,6 +23849,7 @@ func (o OceanUpdatePolicyPtrOutput) ConditionedRoll() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// A custom list of attributes will trigger the cluster roll operation (overrides the predefined list of parameters). Valid only when the `conditionedRoll` parameter is set to true. (Valid values: `"subnetIds"`,`"whitelist"`,`"blacklist"`,`"userData"`,`"imageId"`,`"securityGroups"`,`"keyName"`,`"iamInstanceProfile"`,`"associatePublicIpAddress"`,`"loadBalancers"`,`"instanceMetadataOptions"`,`"ebsOptimized"`,`"rootVolumeSize"`)
 func (o OceanUpdatePolicyPtrOutput) ConditionedRollParams() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanUpdatePolicy) []string {
 		if v == nil {
@@ -23546,6 +23859,7 @@ func (o OceanUpdatePolicyPtrOutput) ConditionedRollParams() pulumi.StringArrayOu
 	}).(pulumi.StringArrayOutput)
 }
 
+// While used, you can control whether the group should perform a deployment after an update to the configuration.
 func (o OceanUpdatePolicyPtrOutput) RollConfig() OceanUpdatePolicyRollConfigPtrOutput {
 	return o.ApplyT(func(v *OceanUpdatePolicy) *OceanUpdatePolicyRollConfig {
 		if v == nil {
@@ -23555,6 +23869,7 @@ func (o OceanUpdatePolicyPtrOutput) RollConfig() OceanUpdatePolicyRollConfigPtrO
 	}).(OceanUpdatePolicyRollConfigPtrOutput)
 }
 
+// Enables the roll.
 func (o OceanUpdatePolicyPtrOutput) ShouldRoll() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanUpdatePolicy) *bool {
 		if v == nil {
@@ -23565,10 +23880,14 @@ func (o OceanUpdatePolicyPtrOutput) ShouldRoll() pulumi.BoolPtrOutput {
 }
 
 type OceanUpdatePolicyRollConfig struct {
-	BatchMinHealthyPercentage *int     `pulumi:"batchMinHealthyPercentage"`
-	BatchSizePercentage       int      `pulumi:"batchSizePercentage"`
-	LaunchSpecIds             []string `pulumi:"launchSpecIds"`
-	RespectPdb                *bool    `pulumi:"respectPdb"`
+	// Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+	BatchMinHealthyPercentage *int `pulumi:"batchMinHealthyPercentage"`
+	// Sets the percentage of the instances to deploy in each batch.
+	BatchSizePercentage int `pulumi:"batchSizePercentage"`
+	// List of virtual node group identifiers to be rolled.
+	LaunchSpecIds []string `pulumi:"launchSpecIds"`
+	// During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+	RespectPdb *bool `pulumi:"respectPdb"`
 }
 
 // OceanUpdatePolicyRollConfigInput is an input type that accepts OceanUpdatePolicyRollConfigArgs and OceanUpdatePolicyRollConfigOutput values.
@@ -23583,10 +23902,14 @@ type OceanUpdatePolicyRollConfigInput interface {
 }
 
 type OceanUpdatePolicyRollConfigArgs struct {
-	BatchMinHealthyPercentage pulumi.IntPtrInput      `pulumi:"batchMinHealthyPercentage"`
-	BatchSizePercentage       pulumi.IntInput         `pulumi:"batchSizePercentage"`
-	LaunchSpecIds             pulumi.StringArrayInput `pulumi:"launchSpecIds"`
-	RespectPdb                pulumi.BoolPtrInput     `pulumi:"respectPdb"`
+	// Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+	BatchMinHealthyPercentage pulumi.IntPtrInput `pulumi:"batchMinHealthyPercentage"`
+	// Sets the percentage of the instances to deploy in each batch.
+	BatchSizePercentage pulumi.IntInput `pulumi:"batchSizePercentage"`
+	// List of virtual node group identifiers to be rolled.
+	LaunchSpecIds pulumi.StringArrayInput `pulumi:"launchSpecIds"`
+	// During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+	RespectPdb pulumi.BoolPtrInput `pulumi:"respectPdb"`
 }
 
 func (OceanUpdatePolicyRollConfigArgs) ElementType() reflect.Type {
@@ -23666,18 +23989,22 @@ func (o OceanUpdatePolicyRollConfigOutput) ToOceanUpdatePolicyRollConfigPtrOutpu
 	}).(OceanUpdatePolicyRollConfigPtrOutput)
 }
 
+// Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
 func (o OceanUpdatePolicyRollConfigOutput) BatchMinHealthyPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanUpdatePolicyRollConfig) *int { return v.BatchMinHealthyPercentage }).(pulumi.IntPtrOutput)
 }
 
+// Sets the percentage of the instances to deploy in each batch.
 func (o OceanUpdatePolicyRollConfigOutput) BatchSizePercentage() pulumi.IntOutput {
 	return o.ApplyT(func(v OceanUpdatePolicyRollConfig) int { return v.BatchSizePercentage }).(pulumi.IntOutput)
 }
 
+// List of virtual node group identifiers to be rolled.
 func (o OceanUpdatePolicyRollConfigOutput) LaunchSpecIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanUpdatePolicyRollConfig) []string { return v.LaunchSpecIds }).(pulumi.StringArrayOutput)
 }
 
+// During the roll, if the parameter is set to True we honor PDB during the instance replacement.
 func (o OceanUpdatePolicyRollConfigOutput) RespectPdb() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanUpdatePolicyRollConfig) *bool { return v.RespectPdb }).(pulumi.BoolPtrOutput)
 }
@@ -23706,6 +24033,7 @@ func (o OceanUpdatePolicyRollConfigPtrOutput) Elem() OceanUpdatePolicyRollConfig
 	}).(OceanUpdatePolicyRollConfigOutput)
 }
 
+// Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
 func (o OceanUpdatePolicyRollConfigPtrOutput) BatchMinHealthyPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanUpdatePolicyRollConfig) *int {
 		if v == nil {
@@ -23715,6 +24043,7 @@ func (o OceanUpdatePolicyRollConfigPtrOutput) BatchMinHealthyPercentage() pulumi
 	}).(pulumi.IntPtrOutput)
 }
 
+// Sets the percentage of the instances to deploy in each batch.
 func (o OceanUpdatePolicyRollConfigPtrOutput) BatchSizePercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanUpdatePolicyRollConfig) *int {
 		if v == nil {
@@ -23724,6 +24053,7 @@ func (o OceanUpdatePolicyRollConfigPtrOutput) BatchSizePercentage() pulumi.IntPt
 	}).(pulumi.IntPtrOutput)
 }
 
+// List of virtual node group identifiers to be rolled.
 func (o OceanUpdatePolicyRollConfigPtrOutput) LaunchSpecIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanUpdatePolicyRollConfig) []string {
 		if v == nil {
@@ -23733,6 +24063,7 @@ func (o OceanUpdatePolicyRollConfigPtrOutput) LaunchSpecIds() pulumi.StringArray
 	}).(pulumi.StringArrayOutput)
 }
 
+// During the roll, if the parameter is set to True we honor PDB during the instance replacement.
 func (o OceanUpdatePolicyRollConfigPtrOutput) RespectPdb() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanUpdatePolicyRollConfig) *bool {
 		if v == nil {

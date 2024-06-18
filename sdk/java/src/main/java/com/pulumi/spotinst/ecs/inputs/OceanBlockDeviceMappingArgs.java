@@ -17,23 +17,47 @@ public final class OceanBlockDeviceMappingArgs extends com.pulumi.resources.Reso
 
     public static final OceanBlockDeviceMappingArgs Empty = new OceanBlockDeviceMappingArgs();
 
+    /**
+     * String. Set device name. Example: `/dev/xvda1`.
+     * 
+     */
     @Import(name="deviceName", required=true)
     private Output<String> deviceName;
 
+    /**
+     * @return String. Set device name. Example: `/dev/xvda1`.
+     * 
+     */
     public Output<String> deviceName() {
         return this.deviceName;
     }
 
+    /**
+     * Object. Set Elastic Block Store properties.
+     * 
+     */
     @Import(name="ebs")
     private @Nullable Output<OceanBlockDeviceMappingEbsArgs> ebs;
 
+    /**
+     * @return Object. Set Elastic Block Store properties.
+     * 
+     */
     public Optional<Output<OceanBlockDeviceMappingEbsArgs>> ebs() {
         return Optional.ofNullable(this.ebs);
     }
 
+    /**
+     * String. Suppresses the specified device included in the block device mapping of the AMI.
+     * 
+     */
     @Import(name="noDevice")
     private @Nullable Output<String> noDevice;
 
+    /**
+     * @return String. Suppresses the specified device included in the block device mapping of the AMI.
+     * 
+     */
     public Optional<Output<String>> noDevice() {
         return Optional.ofNullable(this.noDevice);
     }
@@ -72,29 +96,65 @@ public final class OceanBlockDeviceMappingArgs extends com.pulumi.resources.Reso
             $ = new OceanBlockDeviceMappingArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param deviceName String. Set device name. Example: `/dev/xvda1`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deviceName(Output<String> deviceName) {
             $.deviceName = deviceName;
             return this;
         }
 
+        /**
+         * @param deviceName String. Set device name. Example: `/dev/xvda1`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deviceName(String deviceName) {
             return deviceName(Output.of(deviceName));
         }
 
+        /**
+         * @param ebs Object. Set Elastic Block Store properties.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ebs(@Nullable Output<OceanBlockDeviceMappingEbsArgs> ebs) {
             $.ebs = ebs;
             return this;
         }
 
+        /**
+         * @param ebs Object. Set Elastic Block Store properties.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ebs(OceanBlockDeviceMappingEbsArgs ebs) {
             return ebs(Output.of(ebs));
         }
 
+        /**
+         * @param noDevice String. Suppresses the specified device included in the block device mapping of the AMI.
+         * 
+         * @return builder
+         * 
+         */
         public Builder noDevice(@Nullable Output<String> noDevice) {
             $.noDevice = noDevice;
             return this;
         }
 
+        /**
+         * @param noDevice String. Suppresses the specified device included in the block device mapping of the AMI.
+         * 
+         * @return builder
+         * 
+         */
         public Builder noDevice(String noDevice) {
             return noDevice(Output.of(noDevice));
         }

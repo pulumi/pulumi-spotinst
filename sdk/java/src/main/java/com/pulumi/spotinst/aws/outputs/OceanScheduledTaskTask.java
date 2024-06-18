@@ -14,21 +14,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanScheduledTaskTask {
+    /**
+     * @return A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. (Example: `0 1 * * *`).
+     * 
+     */
     private String cronExpression;
+    /**
+     * @return Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
+     * 
+     */
     private Boolean isEnabled;
+    /**
+     * @return This filed will be compatible to the `task_type` field. If `task_type` is defined as `clusterRoll`, user cluster roll object in parameters.
+     * 
+     */
     private @Nullable OceanScheduledTaskTaskParameters parameters;
+    /**
+     * @return Valid values: `clusterRoll` `amiAutoUpdate`. Required for `cluster.scheduling.tasks`
+     * 
+     */
     private String taskType;
 
     private OceanScheduledTaskTask() {}
+    /**
+     * @return A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. (Example: `0 1 * * *`).
+     * 
+     */
     public String cronExpression() {
         return this.cronExpression;
     }
+    /**
+     * @return Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
+     * 
+     */
     public Boolean isEnabled() {
         return this.isEnabled;
     }
+    /**
+     * @return This filed will be compatible to the `task_type` field. If `task_type` is defined as `clusterRoll`, user cluster roll object in parameters.
+     * 
+     */
     public Optional<OceanScheduledTaskTaskParameters> parameters() {
         return Optional.ofNullable(this.parameters);
     }
+    /**
+     * @return Valid values: `clusterRoll` `amiAutoUpdate`. Required for `cluster.scheduling.tasks`
+     * 
+     */
     public String taskType() {
         return this.taskType;
     }

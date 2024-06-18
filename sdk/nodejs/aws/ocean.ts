@@ -55,7 +55,13 @@ export class Ocean extends pulumi.CustomResource {
      * Configure public IP address allocation.
      */
     public readonly associatePublicIpAddress!: pulumi.Output<boolean | undefined>;
+    /**
+     * Attach load balancers to the cluster.
+     */
     public readonly attachLoadBalancers!: pulumi.Output<outputs.aws.OceanAttachLoadBalancer[] | undefined>;
+    /**
+     * Describes the Ocean Kubernetes Auto Scaler.
+     */
     public readonly autoscaler!: pulumi.Output<outputs.aws.OceanAutoscaler | undefined>;
     public readonly blacklists!: pulumi.Output<string[] | undefined>;
     /**
@@ -71,6 +77,9 @@ export class Ocean extends pulumi.CustomResource {
      * The number of instances to launch and maintain in the cluster.
      */
     public readonly desiredCapacity!: pulumi.Output<number>;
+    /**
+     * Detach load balancers from the cluster.
+     */
     public readonly detachLoadBalancers!: pulumi.Output<outputs.aws.OceanDetachLoadBalancer[] | undefined>;
     /**
      * The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
@@ -145,6 +154,9 @@ export class Ocean extends pulumi.CustomResource {
      * The size (in Gb) to allocate for the root volume. Minimum `20`.
      */
     public readonly rootVolumeSize!: pulumi.Output<number | undefined>;
+    /**
+     * Set scheduling object.
+     */
     public readonly scheduledTasks!: pulumi.Output<outputs.aws.OceanScheduledTask[] | undefined>;
     /**
      * One or more security group ids.
@@ -311,7 +323,13 @@ export interface OceanState {
      * Configure public IP address allocation.
      */
     associatePublicIpAddress?: pulumi.Input<boolean>;
+    /**
+     * Attach load balancers to the cluster.
+     */
     attachLoadBalancers?: pulumi.Input<pulumi.Input<inputs.aws.OceanAttachLoadBalancer>[]>;
+    /**
+     * Describes the Ocean Kubernetes Auto Scaler.
+     */
     autoscaler?: pulumi.Input<inputs.aws.OceanAutoscaler>;
     blacklists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -327,6 +345,9 @@ export interface OceanState {
      * The number of instances to launch and maintain in the cluster.
      */
     desiredCapacity?: pulumi.Input<number>;
+    /**
+     * Detach load balancers from the cluster.
+     */
     detachLoadBalancers?: pulumi.Input<pulumi.Input<inputs.aws.OceanDetachLoadBalancer>[]>;
     /**
      * The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
@@ -401,6 +422,9 @@ export interface OceanState {
      * The size (in Gb) to allocate for the root volume. Minimum `20`.
      */
     rootVolumeSize?: pulumi.Input<number>;
+    /**
+     * Set scheduling object.
+     */
     scheduledTasks?: pulumi.Input<pulumi.Input<inputs.aws.OceanScheduledTask>[]>;
     /**
      * One or more security group ids.
@@ -456,7 +480,13 @@ export interface OceanArgs {
      * Configure public IP address allocation.
      */
     associatePublicIpAddress?: pulumi.Input<boolean>;
+    /**
+     * Attach load balancers to the cluster.
+     */
     attachLoadBalancers?: pulumi.Input<pulumi.Input<inputs.aws.OceanAttachLoadBalancer>[]>;
+    /**
+     * Describes the Ocean Kubernetes Auto Scaler.
+     */
     autoscaler?: pulumi.Input<inputs.aws.OceanAutoscaler>;
     blacklists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -472,6 +502,9 @@ export interface OceanArgs {
      * The number of instances to launch and maintain in the cluster.
      */
     desiredCapacity?: pulumi.Input<number>;
+    /**
+     * Detach load balancers from the cluster.
+     */
     detachLoadBalancers?: pulumi.Input<pulumi.Input<inputs.aws.OceanDetachLoadBalancer>[]>;
     /**
      * The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
@@ -546,6 +579,9 @@ export interface OceanArgs {
      * The size (in Gb) to allocate for the root volume. Minimum `20`.
      */
     rootVolumeSize?: pulumi.Input<number>;
+    /**
+     * Set scheduling object.
+     */
     scheduledTasks?: pulumi.Input<pulumi.Input<inputs.aws.OceanScheduledTask>[]>;
     /**
      * One or more security group ids.
