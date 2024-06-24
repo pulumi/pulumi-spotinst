@@ -105,6 +105,10 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
     /**
      * A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
      */
+    public readonly preferredOdTypes!: pulumi.Output<string[] | undefined>;
+    /**
+     * A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+     */
     public readonly preferredSpotTypes!: pulumi.Output<string[] | undefined>;
     public readonly resourceLimits!: pulumi.Output<outputs.aws.OceanLaunchSpecResourceLimit[] | undefined>;
     /**
@@ -177,6 +181,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["oceanId"] = state ? state.oceanId : undefined;
+            resourceInputs["preferredOdTypes"] = state ? state.preferredOdTypes : undefined;
             resourceInputs["preferredSpotTypes"] = state ? state.preferredSpotTypes : undefined;
             resourceInputs["resourceLimits"] = state ? state.resourceLimits : undefined;
             resourceInputs["restrictScaleDown"] = state ? state.restrictScaleDown : undefined;
@@ -213,6 +218,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["oceanId"] = args ? args.oceanId : undefined;
+            resourceInputs["preferredOdTypes"] = args ? args.preferredOdTypes : undefined;
             resourceInputs["preferredSpotTypes"] = args ? args.preferredSpotTypes : undefined;
             resourceInputs["resourceLimits"] = args ? args.resourceLimits : undefined;
             resourceInputs["restrictScaleDown"] = args ? args.restrictScaleDown : undefined;
@@ -301,6 +307,10 @@ export interface OceanLaunchSpecState {
      * The ID of the Ocean cluster.
      */
     oceanId?: pulumi.Input<string>;
+    /**
+     * A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+     */
+    preferredOdTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
      */
@@ -415,6 +425,10 @@ export interface OceanLaunchSpecArgs {
      * The ID of the Ocean cluster.
      */
     oceanId: pulumi.Input<string>;
+    /**
+     * A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+     */
+    preferredOdTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
      */

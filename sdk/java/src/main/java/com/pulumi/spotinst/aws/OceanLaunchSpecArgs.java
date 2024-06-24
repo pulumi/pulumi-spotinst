@@ -292,6 +292,21 @@ public final class OceanLaunchSpecArgs extends com.pulumi.resources.ResourceArgs
      * A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
      * 
      */
+    @Import(name="preferredOdTypes")
+    private @Nullable Output<List<String>> preferredOdTypes;
+
+    /**
+     * @return A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+     * 
+     */
+    public Optional<Output<List<String>>> preferredOdTypes() {
+        return Optional.ofNullable(this.preferredOdTypes);
+    }
+
+    /**
+     * A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+     * 
+     */
     @Import(name="preferredSpotTypes")
     private @Nullable Output<List<String>> preferredSpotTypes;
 
@@ -480,6 +495,7 @@ public final class OceanLaunchSpecArgs extends com.pulumi.resources.ResourceArgs
         this.labels = $.labels;
         this.name = $.name;
         this.oceanId = $.oceanId;
+        this.preferredOdTypes = $.preferredOdTypes;
         this.preferredSpotTypes = $.preferredSpotTypes;
         this.resourceLimits = $.resourceLimits;
         this.restrictScaleDown = $.restrictScaleDown;
@@ -942,6 +958,37 @@ public final class OceanLaunchSpecArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder oceanId(String oceanId) {
             return oceanId(Output.of(oceanId));
+        }
+
+        /**
+         * @param preferredOdTypes A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preferredOdTypes(@Nullable Output<List<String>> preferredOdTypes) {
+            $.preferredOdTypes = preferredOdTypes;
+            return this;
+        }
+
+        /**
+         * @param preferredOdTypes A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preferredOdTypes(List<String> preferredOdTypes) {
+            return preferredOdTypes(Output.of(preferredOdTypes));
+        }
+
+        /**
+         * @param preferredOdTypes A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preferredOdTypes(String... preferredOdTypes) {
+            return preferredOdTypes(List.of(preferredOdTypes));
         }
 
         /**

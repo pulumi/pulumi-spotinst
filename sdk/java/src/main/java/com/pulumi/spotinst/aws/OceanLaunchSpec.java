@@ -278,6 +278,20 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
      * A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
      * 
      */
+    @Export(name="preferredOdTypes", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> preferredOdTypes;
+
+    /**
+     * @return A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+     * 
+     */
+    public Output<Optional<List<String>>> preferredOdTypes() {
+        return Codegen.optional(this.preferredOdTypes);
+    }
+    /**
+     * A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+     * 
+     */
     @Export(name="preferredSpotTypes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> preferredSpotTypes;
 
