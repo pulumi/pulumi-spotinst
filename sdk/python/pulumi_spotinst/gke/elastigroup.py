@@ -143,10 +143,8 @@ class ElastigroupArgs:
 
     @property
     @pulumi.getter(name="clusterId")
+    @_utilities.deprecated("""Please define cluster_id under integration_gke""")
     def cluster_id(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""Please define cluster_id under integration_gke""", DeprecationWarning)
-        pulumi.log.warn("""cluster_id is deprecated: Please define cluster_id under integration_gke""")
-
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
@@ -511,10 +509,8 @@ class _ElastigroupState:
 
     @property
     @pulumi.getter(name="clusterId")
+    @_utilities.deprecated("""Please define cluster_id under integration_gke""")
     def cluster_id(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""Please define cluster_id under integration_gke""", DeprecationWarning)
-        pulumi.log.warn("""cluster_id is deprecated: Please define cluster_id under integration_gke""")
-
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
@@ -1134,10 +1130,8 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterId")
+    @_utilities.deprecated("""Please define cluster_id under integration_gke""")
     def cluster_id(self) -> pulumi.Output[Optional[str]]:
-        warnings.warn("""Please define cluster_id under integration_gke""", DeprecationWarning)
-        pulumi.log.warn("""cluster_id is deprecated: Please define cluster_id under integration_gke""")
-
         return pulumi.get(self, "cluster_id")
 
     @property

@@ -177,13 +177,11 @@ class ElastigroupArgs:
 
     @property
     @pulumi.getter(name="availabilityZones")
+    @_utilities.deprecated("""This field will soon be handled by Region in Subnets""")
     def availability_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of availability zones for the group.
         """
-        warnings.warn("""This field will soon be handled by Region in Subnets""", DeprecationWarning)
-        pulumi.log.warn("""availability_zones is deprecated: This field will soon be handled by Region in Subnets""")
-
         return pulumi.get(self, "availability_zones")
 
     @availability_zones.setter
@@ -701,13 +699,11 @@ class _ElastigroupState:
 
     @property
     @pulumi.getter(name="availabilityZones")
+    @_utilities.deprecated("""This field will soon be handled by Region in Subnets""")
     def availability_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of availability zones for the group.
         """
-        warnings.warn("""This field will soon be handled by Region in Subnets""", DeprecationWarning)
-        pulumi.log.warn("""availability_zones is deprecated: This field will soon be handled by Region in Subnets""")
-
         return pulumi.get(self, "availability_zones")
 
     @availability_zones.setter
@@ -1576,13 +1572,11 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="availabilityZones")
+    @_utilities.deprecated("""This field will soon be handled by Region in Subnets""")
     def availability_zones(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         List of availability zones for the group.
         """
-        warnings.warn("""This field will soon be handled by Region in Subnets""", DeprecationWarning)
-        pulumi.log.warn("""availability_zones is deprecated: This field will soon be handled by Region in Subnets""")
-
         return pulumi.get(self, "availability_zones")
 
     @property
