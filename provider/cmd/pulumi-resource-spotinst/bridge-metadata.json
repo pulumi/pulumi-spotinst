@@ -893,105 +893,6 @@
                     }
                 }
             },
-            "spotinst_ocean_aks": {
-                "current": "spotinst:azure/ocean:Ocean",
-                "fields": {
-                    "autoscaler": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "autoscale_down": {
-                                    "maxItemsOne": true
-                                },
-                                "autoscale_headroom": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "automatic": {
-                                                "maxItemsOne": true
-                                            }
-                                        }
-                                    }
-                                },
-                                "resource_limits": {
-                                    "maxItemsOne": true
-                                }
-                            }
-                        }
-                    },
-                    "extension": {
-                        "maxItemsOne": false
-                    },
-                    "health": {
-                        "maxItemsOne": true
-                    },
-                    "image": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "marketplace": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "load_balancer": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "backend_pool_names": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "managed_service_identity": {
-                        "maxItemsOne": false
-                    },
-                    "network": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "network_interface": {
-                                    "maxItemsOne": false,
-                                    "elem": {
-                                        "fields": {
-                                            "additional_ip_config": {
-                                                "maxItemsOne": false
-                                            },
-                                            "security_group": {
-                                                "maxItemsOne": true
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "os_disk": {
-                        "maxItemsOne": true
-                    },
-                    "strategy": {
-                        "maxItemsOne": false
-                    },
-                    "tag": {
-                        "maxItemsOne": false
-                    },
-                    "vm_sizes": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "whitelist": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "zones": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
             "spotinst_ocean_aks_np": {
                 "current": "spotinst:azure/oceanNp:OceanNp",
                 "fields": {
@@ -1205,46 +1106,6 @@
                         }
                     },
                     "vnet_subnet_ids": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "spotinst_ocean_aks_virtual_node_group": {
-                "current": "spotinst:azure/oceanVirtualNodeGroup:OceanVirtualNodeGroup",
-                "fields": {
-                    "autoscale": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "autoscale_headroom": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "label": {
-                        "maxItemsOne": false
-                    },
-                    "launch_specification": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "os_disk": {
-                                    "maxItemsOne": true
-                                },
-                                "tag": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "resource_limits": {
-                        "maxItemsOne": false
-                    },
-                    "taint": {
-                        "maxItemsOne": false
-                    },
-                    "zones": {
                         "maxItemsOne": false
                     }
                 }
@@ -1527,6 +1388,9 @@
                         }
                     },
                     "labels": {
+                        "maxItemsOne": false
+                    },
+                    "preferred_od_types": {
                         "maxItemsOne": false
                     },
                     "preferred_spot_types": {
