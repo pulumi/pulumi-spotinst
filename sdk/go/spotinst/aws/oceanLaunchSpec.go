@@ -52,6 +52,8 @@ type OceanLaunchSpec struct {
 	// The ID of the Ocean cluster.
 	OceanId pulumi.StringOutput `pulumi:"oceanId"`
 	// A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+	PreferredOdTypes pulumi.StringArrayOutput `pulumi:"preferredOdTypes"`
+	// A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
 	PreferredSpotTypes pulumi.StringArrayOutput                `pulumi:"preferredSpotTypes"`
 	ResourceLimits     OceanLaunchSpecResourceLimitArrayOutput `pulumi:"resourceLimits"`
 	// Boolean. When set to `True`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
@@ -145,6 +147,8 @@ type oceanLaunchSpecState struct {
 	// The ID of the Ocean cluster.
 	OceanId *string `pulumi:"oceanId"`
 	// A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+	PreferredOdTypes []string `pulumi:"preferredOdTypes"`
+	// A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
 	PreferredSpotTypes []string                       `pulumi:"preferredSpotTypes"`
 	ResourceLimits     []OceanLaunchSpecResourceLimit `pulumi:"resourceLimits"`
 	// Boolean. When set to `True`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
@@ -205,6 +209,8 @@ type OceanLaunchSpecState struct {
 	Name pulumi.StringPtrInput
 	// The ID of the Ocean cluster.
 	OceanId pulumi.StringPtrInput
+	// A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+	PreferredOdTypes pulumi.StringArrayInput
 	// A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
 	PreferredSpotTypes pulumi.StringArrayInput
 	ResourceLimits     OceanLaunchSpecResourceLimitArrayInput
@@ -271,6 +277,8 @@ type oceanLaunchSpecArgs struct {
 	// The ID of the Ocean cluster.
 	OceanId string `pulumi:"oceanId"`
 	// A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+	PreferredOdTypes []string `pulumi:"preferredOdTypes"`
+	// A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
 	PreferredSpotTypes []string                       `pulumi:"preferredSpotTypes"`
 	ResourceLimits     []OceanLaunchSpecResourceLimit `pulumi:"resourceLimits"`
 	// Boolean. When set to `True`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
@@ -332,6 +340,8 @@ type OceanLaunchSpecArgs struct {
 	Name pulumi.StringPtrInput
 	// The ID of the Ocean cluster.
 	OceanId pulumi.StringInput
+	// A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+	PreferredOdTypes pulumi.StringArrayInput
 	// A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
 	PreferredSpotTypes pulumi.StringArrayInput
 	ResourceLimits     OceanLaunchSpecResourceLimitArrayInput
@@ -535,6 +545,11 @@ func (o OceanLaunchSpecOutput) Name() pulumi.StringOutput {
 // The ID of the Ocean cluster.
 func (o OceanLaunchSpecOutput) OceanId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.StringOutput { return v.OceanId }).(pulumi.StringOutput)
+}
+
+// A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+func (o OceanLaunchSpecOutput) PreferredOdTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.StringArrayOutput { return v.PreferredOdTypes }).(pulumi.StringArrayOutput)
 }
 
 // A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.

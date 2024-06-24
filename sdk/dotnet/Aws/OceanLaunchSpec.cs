@@ -119,6 +119,12 @@ namespace Pulumi.SpotInst.Aws
         /// <summary>
         /// A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
         /// </summary>
+        [Output("preferredOdTypes")]
+        public Output<ImmutableArray<string>> PreferredOdTypes { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+        /// </summary>
         [Output("preferredSpotTypes")]
         public Output<ImmutableArray<string>> PreferredSpotTypes { get; private set; } = null!;
 
@@ -384,6 +390,18 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("oceanId", required: true)]
         public Input<string> OceanId { get; set; } = null!;
+
+        [Input("preferredOdTypes")]
+        private InputList<string>? _preferredOdTypes;
+
+        /// <summary>
+        /// A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+        /// </summary>
+        public InputList<string> PreferredOdTypes
+        {
+            get => _preferredOdTypes ?? (_preferredOdTypes = new InputList<string>());
+            set => _preferredOdTypes = value;
+        }
 
         [Input("preferredSpotTypes")]
         private InputList<string>? _preferredSpotTypes;
@@ -661,6 +679,18 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("oceanId")]
         public Input<string>? OceanId { get; set; }
+
+        [Input("preferredOdTypes")]
+        private InputList<string>? _preferredOdTypes;
+
+        /// <summary>
+        /// A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+        /// </summary>
+        public InputList<string> PreferredOdTypes
+        {
+            get => _preferredOdTypes ?? (_preferredOdTypes = new InputList<string>());
+            set => _preferredOdTypes = value;
+        }
 
         [Input("preferredSpotTypes")]
         private InputList<string>? _preferredSpotTypes;

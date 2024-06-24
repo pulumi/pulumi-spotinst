@@ -130,14 +130,6 @@ _utilities.register(
  },
  {
   "pkg": "spotinst",
-  "mod": "azure/ocean",
-  "fqn": "pulumi_spotinst.azure",
-  "classes": {
-   "spotinst:azure/ocean:Ocean": "Ocean"
-  }
- },
- {
-  "pkg": "spotinst",
   "mod": "azure/oceanNp",
   "fqn": "pulumi_spotinst.azure",
   "classes": {
@@ -150,14 +142,6 @@ _utilities.register(
   "fqn": "pulumi_spotinst.azure",
   "classes": {
    "spotinst:azure/oceanNpVirtualNodeGroup:OceanNpVirtualNodeGroup": "OceanNpVirtualNodeGroup"
-  }
- },
- {
-  "pkg": "spotinst",
-  "mod": "azure/oceanVirtualNodeGroup",
-  "fqn": "pulumi_spotinst.azure",
-  "classes": {
-   "spotinst:azure/oceanVirtualNodeGroup:OceanVirtualNodeGroup": "OceanVirtualNodeGroup"
   }
  },
  {

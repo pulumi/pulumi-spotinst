@@ -5,11 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export { OceanArgs, OceanState } from "./ocean";
-export type Ocean = import("./ocean").Ocean;
-export const Ocean: typeof import("./ocean").Ocean = null as any;
-utilities.lazyLoad(exports, ["Ocean"], () => require("./ocean"));
-
 export { OceanNpArgs, OceanNpState } from "./oceanNp";
 export type OceanNp = import("./oceanNp").OceanNp;
 export const OceanNp: typeof import("./oceanNp").OceanNp = null as any;
@@ -20,30 +15,19 @@ export type OceanNpVirtualNodeGroup = import("./oceanNpVirtualNodeGroup").OceanN
 export const OceanNpVirtualNodeGroup: typeof import("./oceanNpVirtualNodeGroup").OceanNpVirtualNodeGroup = null as any;
 utilities.lazyLoad(exports, ["OceanNpVirtualNodeGroup"], () => require("./oceanNpVirtualNodeGroup"));
 
-export { OceanVirtualNodeGroupArgs, OceanVirtualNodeGroupState } from "./oceanVirtualNodeGroup";
-export type OceanVirtualNodeGroup = import("./oceanVirtualNodeGroup").OceanVirtualNodeGroup;
-export const OceanVirtualNodeGroup: typeof import("./oceanVirtualNodeGroup").OceanVirtualNodeGroup = null as any;
-utilities.lazyLoad(exports, ["OceanVirtualNodeGroup"], () => require("./oceanVirtualNodeGroup"));
-
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "spotinst:azure/ocean:Ocean":
-                return new Ocean(name, <any>undefined, { urn })
             case "spotinst:azure/oceanNp:OceanNp":
                 return new OceanNp(name, <any>undefined, { urn })
             case "spotinst:azure/oceanNpVirtualNodeGroup:OceanNpVirtualNodeGroup":
                 return new OceanNpVirtualNodeGroup(name, <any>undefined, { urn })
-            case "spotinst:azure/oceanVirtualNodeGroup:OceanVirtualNodeGroup":
-                return new OceanVirtualNodeGroup(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("spotinst", "azure/ocean", _module)
 pulumi.runtime.registerResourceModule("spotinst", "azure/oceanNp", _module)
 pulumi.runtime.registerResourceModule("spotinst", "azure/oceanNpVirtualNodeGroup", _module)
-pulumi.runtime.registerResourceModule("spotinst", "azure/oceanVirtualNodeGroup", _module)
