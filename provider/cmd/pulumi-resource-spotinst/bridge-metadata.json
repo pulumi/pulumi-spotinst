@@ -501,14 +501,21 @@
                             }
                         }
                     },
-                    "od_sizes": {
-                        "maxItemsOne": false
-                    },
-                    "spot_sizes": {
-                        "maxItemsOne": false
-                    },
                     "tags": {
                         "maxItemsOne": false
+                    },
+                    "vm_sizes": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "od_sizes": {
+                                    "maxItemsOne": false
+                                },
+                                "spot_sizes": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -1830,6 +1837,100 @@
             "spotinst_ocean_gke_launch_spec_import": {
                 "current": "spotinst:gke/oceanLaunchSpecImport:OceanLaunchSpecImport"
             },
+            "spotinst_ocean_right_sizing_rule": {
+                "current": "spotinst:index/oceanRightSizingRule:OceanRightSizingRule",
+                "fields": {
+                    "attach_workloads": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "namespaces": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "labels": {
+                                                "maxItemsOne": false
+                                            },
+                                            "workloads": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "detach_workloads": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "namespaces": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "labels": {
+                                                "maxItemsOne": false
+                                            },
+                                            "workloads": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "recommendation_application_boundaries": {
+                        "maxItemsOne": false
+                    },
+                    "recommendation_application_intervals": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "monthly_repetition_basis": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "interval_months": {
+                                                "maxItemsOne": false
+                                            },
+                                            "week_of_the_month": {
+                                                "maxItemsOne": false
+                                            },
+                                            "weekly_repetition_basis": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "interval_days": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "weekly_repetition_basis": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "interval_days": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "recommendation_application_min_threshold": {
+                        "maxItemsOne": false
+                    },
+                    "recommendation_application_overhead_values": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "spotinst_ocean_spark": {
                 "current": "spotinst:spark/ocean:Ocean",
                 "fields": {
@@ -2440,14 +2541,8 @@
                             }
                         }
                     },
-                    "od_sizes": {
-                        "maxItemsOne": false
-                    },
                     "os_disk": {
                         "maxItemsOne": true
-                    },
-                    "preferred_spot_sizes": {
-                        "maxItemsOne": false
                     },
                     "proximity_placement_groups": {
                         "maxItemsOne": false
@@ -2472,9 +2567,6 @@
                         "maxItemsOne": true
                     },
                     "signal": {
-                        "maxItemsOne": false
-                    },
-                    "spot_sizes": {
                         "maxItemsOne": false
                     },
                     "strategy": {
@@ -2508,6 +2600,22 @@
                     },
                     "update_state": {
                         "maxItemsOne": false
+                    },
+                    "vm_sizes": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "od_sizes": {
+                                    "maxItemsOne": false
+                                },
+                                "preferred_spot_sizes": {
+                                    "maxItemsOne": false
+                                },
+                                "spot_sizes": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "zones": {
                         "maxItemsOne": false
