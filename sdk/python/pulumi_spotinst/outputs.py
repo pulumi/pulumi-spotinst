@@ -22,7 +22,23 @@ __all__ = [
     'ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig',
     'ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup',
     'ElastigroupAzureV3Tag',
+    'ElastigroupAzureV3VmSizes',
     'HealthCheckCheck',
+    'OceanRightSizingRuleAttachWorkload',
+    'OceanRightSizingRuleAttachWorkloadNamespace',
+    'OceanRightSizingRuleAttachWorkloadNamespaceLabel',
+    'OceanRightSizingRuleAttachWorkloadNamespaceWorkload',
+    'OceanRightSizingRuleDetachWorkload',
+    'OceanRightSizingRuleDetachWorkloadNamespace',
+    'OceanRightSizingRuleDetachWorkloadNamespaceLabel',
+    'OceanRightSizingRuleDetachWorkloadNamespaceWorkload',
+    'OceanRightSizingRuleRecommendationApplicationBoundary',
+    'OceanRightSizingRuleRecommendationApplicationInterval',
+    'OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase',
+    'OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBase',
+    'OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBase',
+    'OceanRightSizingRuleRecommendationApplicationMinThreshold',
+    'OceanRightSizingRuleRecommendationApplicationOverheadValue',
     'StatefulNodeAzureAttachDataDisk',
     'StatefulNodeAzureBootDiagnostic',
     'StatefulNodeAzureDataDisk',
@@ -58,6 +74,7 @@ __all__ = [
     'StatefulNodeAzureStrategyRevertToSpot',
     'StatefulNodeAzureTag',
     'StatefulNodeAzureUpdateState',
+    'StatefulNodeAzureVmSizes',
 ]
 
 @pulumi.output_type
@@ -485,6 +502,44 @@ class ElastigroupAzureV3Tag(dict):
 
 
 @pulumi.output_type
+class ElastigroupAzureV3VmSizes(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "odSizes":
+            suggest = "od_sizes"
+        elif key == "spotSizes":
+            suggest = "spot_sizes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupAzureV3VmSizes. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupAzureV3VmSizes.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupAzureV3VmSizes.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 od_sizes: Sequence[str],
+                 spot_sizes: Sequence[str]):
+        pulumi.set(__self__, "od_sizes", od_sizes)
+        pulumi.set(__self__, "spot_sizes", spot_sizes)
+
+    @property
+    @pulumi.getter(name="odSizes")
+    def od_sizes(self) -> Sequence[str]:
+        return pulumi.get(self, "od_sizes")
+
+    @property
+    @pulumi.getter(name="spotSizes")
+    def spot_sizes(self) -> Sequence[str]:
+        return pulumi.get(self, "spot_sizes")
+
+
+@pulumi.output_type
 class HealthCheckCheck(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -595,6 +650,587 @@ class HealthCheckCheck(dict):
         the amount of time (in seconds) to wait when receiving a response from the health check.
         """
         return pulumi.get(self, "timeout")
+
+
+@pulumi.output_type
+class OceanRightSizingRuleAttachWorkload(dict):
+    def __init__(__self__, *,
+                 namespaces: Sequence['outputs.OceanRightSizingRuleAttachWorkloadNamespace']):
+        pulumi.set(__self__, "namespaces", namespaces)
+
+    @property
+    @pulumi.getter
+    def namespaces(self) -> Sequence['outputs.OceanRightSizingRuleAttachWorkloadNamespace']:
+        return pulumi.get(self, "namespaces")
+
+
+@pulumi.output_type
+class OceanRightSizingRuleAttachWorkloadNamespace(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "namespaceName":
+            suggest = "namespace_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanRightSizingRuleAttachWorkloadNamespace. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanRightSizingRuleAttachWorkloadNamespace.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanRightSizingRuleAttachWorkloadNamespace.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 namespace_name: str,
+                 labels: Optional[Sequence['outputs.OceanRightSizingRuleAttachWorkloadNamespaceLabel']] = None,
+                 workloads: Optional[Sequence['outputs.OceanRightSizingRuleAttachWorkloadNamespaceWorkload']] = None):
+        pulumi.set(__self__, "namespace_name", namespace_name)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if workloads is not None:
+            pulumi.set(__self__, "workloads", workloads)
+
+    @property
+    @pulumi.getter(name="namespaceName")
+    def namespace_name(self) -> str:
+        return pulumi.get(self, "namespace_name")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[Sequence['outputs.OceanRightSizingRuleAttachWorkloadNamespaceLabel']]:
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def workloads(self) -> Optional[Sequence['outputs.OceanRightSizingRuleAttachWorkloadNamespaceWorkload']]:
+        return pulumi.get(self, "workloads")
+
+
+@pulumi.output_type
+class OceanRightSizingRuleAttachWorkloadNamespaceLabel(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class OceanRightSizingRuleAttachWorkloadNamespaceWorkload(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "workloadType":
+            suggest = "workload_type"
+        elif key == "regexName":
+            suggest = "regex_name"
+        elif key == "workloadName":
+            suggest = "workload_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanRightSizingRuleAttachWorkloadNamespaceWorkload. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanRightSizingRuleAttachWorkloadNamespaceWorkload.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanRightSizingRuleAttachWorkloadNamespaceWorkload.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 workload_type: str,
+                 regex_name: Optional[str] = None,
+                 workload_name: Optional[str] = None):
+        pulumi.set(__self__, "workload_type", workload_type)
+        if regex_name is not None:
+            pulumi.set(__self__, "regex_name", regex_name)
+        if workload_name is not None:
+            pulumi.set(__self__, "workload_name", workload_name)
+
+    @property
+    @pulumi.getter(name="workloadType")
+    def workload_type(self) -> str:
+        return pulumi.get(self, "workload_type")
+
+    @property
+    @pulumi.getter(name="regexName")
+    def regex_name(self) -> Optional[str]:
+        return pulumi.get(self, "regex_name")
+
+    @property
+    @pulumi.getter(name="workloadName")
+    def workload_name(self) -> Optional[str]:
+        return pulumi.get(self, "workload_name")
+
+
+@pulumi.output_type
+class OceanRightSizingRuleDetachWorkload(dict):
+    def __init__(__self__, *,
+                 namespaces: Sequence['outputs.OceanRightSizingRuleDetachWorkloadNamespace']):
+        pulumi.set(__self__, "namespaces", namespaces)
+
+    @property
+    @pulumi.getter
+    def namespaces(self) -> Sequence['outputs.OceanRightSizingRuleDetachWorkloadNamespace']:
+        return pulumi.get(self, "namespaces")
+
+
+@pulumi.output_type
+class OceanRightSizingRuleDetachWorkloadNamespace(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "namespaceName":
+            suggest = "namespace_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanRightSizingRuleDetachWorkloadNamespace. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanRightSizingRuleDetachWorkloadNamespace.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanRightSizingRuleDetachWorkloadNamespace.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 namespace_name: str,
+                 labels: Optional[Sequence['outputs.OceanRightSizingRuleDetachWorkloadNamespaceLabel']] = None,
+                 workloads: Optional[Sequence['outputs.OceanRightSizingRuleDetachWorkloadNamespaceWorkload']] = None):
+        pulumi.set(__self__, "namespace_name", namespace_name)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if workloads is not None:
+            pulumi.set(__self__, "workloads", workloads)
+
+    @property
+    @pulumi.getter(name="namespaceName")
+    def namespace_name(self) -> str:
+        return pulumi.get(self, "namespace_name")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[Sequence['outputs.OceanRightSizingRuleDetachWorkloadNamespaceLabel']]:
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def workloads(self) -> Optional[Sequence['outputs.OceanRightSizingRuleDetachWorkloadNamespaceWorkload']]:
+        return pulumi.get(self, "workloads")
+
+
+@pulumi.output_type
+class OceanRightSizingRuleDetachWorkloadNamespaceLabel(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class OceanRightSizingRuleDetachWorkloadNamespaceWorkload(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "workloadType":
+            suggest = "workload_type"
+        elif key == "regexName":
+            suggest = "regex_name"
+        elif key == "workloadName":
+            suggest = "workload_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanRightSizingRuleDetachWorkloadNamespaceWorkload. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanRightSizingRuleDetachWorkloadNamespaceWorkload.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanRightSizingRuleDetachWorkloadNamespaceWorkload.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 workload_type: str,
+                 regex_name: Optional[str] = None,
+                 workload_name: Optional[str] = None):
+        pulumi.set(__self__, "workload_type", workload_type)
+        if regex_name is not None:
+            pulumi.set(__self__, "regex_name", regex_name)
+        if workload_name is not None:
+            pulumi.set(__self__, "workload_name", workload_name)
+
+    @property
+    @pulumi.getter(name="workloadType")
+    def workload_type(self) -> str:
+        return pulumi.get(self, "workload_type")
+
+    @property
+    @pulumi.getter(name="regexName")
+    def regex_name(self) -> Optional[str]:
+        return pulumi.get(self, "regex_name")
+
+    @property
+    @pulumi.getter(name="workloadName")
+    def workload_name(self) -> Optional[str]:
+        return pulumi.get(self, "workload_name")
+
+
+@pulumi.output_type
+class OceanRightSizingRuleRecommendationApplicationBoundary(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cpuMax":
+            suggest = "cpu_max"
+        elif key == "cpuMin":
+            suggest = "cpu_min"
+        elif key == "memoryMax":
+            suggest = "memory_max"
+        elif key == "memoryMin":
+            suggest = "memory_min"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanRightSizingRuleRecommendationApplicationBoundary. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanRightSizingRuleRecommendationApplicationBoundary.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanRightSizingRuleRecommendationApplicationBoundary.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cpu_max: Optional[float] = None,
+                 cpu_min: Optional[float] = None,
+                 memory_max: Optional[int] = None,
+                 memory_min: Optional[int] = None):
+        if cpu_max is not None:
+            pulumi.set(__self__, "cpu_max", cpu_max)
+        if cpu_min is not None:
+            pulumi.set(__self__, "cpu_min", cpu_min)
+        if memory_max is not None:
+            pulumi.set(__self__, "memory_max", memory_max)
+        if memory_min is not None:
+            pulumi.set(__self__, "memory_min", memory_min)
+
+    @property
+    @pulumi.getter(name="cpuMax")
+    def cpu_max(self) -> Optional[float]:
+        return pulumi.get(self, "cpu_max")
+
+    @property
+    @pulumi.getter(name="cpuMin")
+    def cpu_min(self) -> Optional[float]:
+        return pulumi.get(self, "cpu_min")
+
+    @property
+    @pulumi.getter(name="memoryMax")
+    def memory_max(self) -> Optional[int]:
+        return pulumi.get(self, "memory_max")
+
+    @property
+    @pulumi.getter(name="memoryMin")
+    def memory_min(self) -> Optional[int]:
+        return pulumi.get(self, "memory_min")
+
+
+@pulumi.output_type
+class OceanRightSizingRuleRecommendationApplicationInterval(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "repetitionBasis":
+            suggest = "repetition_basis"
+        elif key == "monthlyRepetitionBases":
+            suggest = "monthly_repetition_bases"
+        elif key == "weeklyRepetitionBases":
+            suggest = "weekly_repetition_bases"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanRightSizingRuleRecommendationApplicationInterval. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanRightSizingRuleRecommendationApplicationInterval.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanRightSizingRuleRecommendationApplicationInterval.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 repetition_basis: str,
+                 monthly_repetition_bases: Optional[Sequence['outputs.OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase']] = None,
+                 weekly_repetition_bases: Optional[Sequence['outputs.OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBase']] = None):
+        pulumi.set(__self__, "repetition_basis", repetition_basis)
+        if monthly_repetition_bases is not None:
+            pulumi.set(__self__, "monthly_repetition_bases", monthly_repetition_bases)
+        if weekly_repetition_bases is not None:
+            pulumi.set(__self__, "weekly_repetition_bases", weekly_repetition_bases)
+
+    @property
+    @pulumi.getter(name="repetitionBasis")
+    def repetition_basis(self) -> str:
+        return pulumi.get(self, "repetition_basis")
+
+    @property
+    @pulumi.getter(name="monthlyRepetitionBases")
+    def monthly_repetition_bases(self) -> Optional[Sequence['outputs.OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase']]:
+        return pulumi.get(self, "monthly_repetition_bases")
+
+    @property
+    @pulumi.getter(name="weeklyRepetitionBases")
+    def weekly_repetition_bases(self) -> Optional[Sequence['outputs.OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBase']]:
+        return pulumi.get(self, "weekly_repetition_bases")
+
+
+@pulumi.output_type
+class OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "intervalMonths":
+            suggest = "interval_months"
+        elif key == "weekOfTheMonths":
+            suggest = "week_of_the_months"
+        elif key == "weeklyRepetitionBases":
+            suggest = "weekly_repetition_bases"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 interval_months: Sequence[int],
+                 week_of_the_months: Sequence[str],
+                 weekly_repetition_bases: Optional[Sequence['outputs.OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBase']] = None):
+        pulumi.set(__self__, "interval_months", interval_months)
+        pulumi.set(__self__, "week_of_the_months", week_of_the_months)
+        if weekly_repetition_bases is not None:
+            pulumi.set(__self__, "weekly_repetition_bases", weekly_repetition_bases)
+
+    @property
+    @pulumi.getter(name="intervalMonths")
+    def interval_months(self) -> Sequence[int]:
+        return pulumi.get(self, "interval_months")
+
+    @property
+    @pulumi.getter(name="weekOfTheMonths")
+    def week_of_the_months(self) -> Sequence[str]:
+        return pulumi.get(self, "week_of_the_months")
+
+    @property
+    @pulumi.getter(name="weeklyRepetitionBases")
+    def weekly_repetition_bases(self) -> Optional[Sequence['outputs.OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBase']]:
+        return pulumi.get(self, "weekly_repetition_bases")
+
+
+@pulumi.output_type
+class OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBase(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "intervalDays":
+            suggest = "interval_days"
+        elif key == "intervalHoursEndTime":
+            suggest = "interval_hours_end_time"
+        elif key == "intervalHoursStartTime":
+            suggest = "interval_hours_start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBase. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBase.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBase.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 interval_days: Sequence[str],
+                 interval_hours_end_time: str,
+                 interval_hours_start_time: str):
+        pulumi.set(__self__, "interval_days", interval_days)
+        pulumi.set(__self__, "interval_hours_end_time", interval_hours_end_time)
+        pulumi.set(__self__, "interval_hours_start_time", interval_hours_start_time)
+
+    @property
+    @pulumi.getter(name="intervalDays")
+    def interval_days(self) -> Sequence[str]:
+        return pulumi.get(self, "interval_days")
+
+    @property
+    @pulumi.getter(name="intervalHoursEndTime")
+    def interval_hours_end_time(self) -> str:
+        return pulumi.get(self, "interval_hours_end_time")
+
+    @property
+    @pulumi.getter(name="intervalHoursStartTime")
+    def interval_hours_start_time(self) -> str:
+        return pulumi.get(self, "interval_hours_start_time")
+
+
+@pulumi.output_type
+class OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBase(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "intervalDays":
+            suggest = "interval_days"
+        elif key == "intervalHoursEndTime":
+            suggest = "interval_hours_end_time"
+        elif key == "intervalHoursStartTime":
+            suggest = "interval_hours_start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBase. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBase.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBase.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 interval_days: Sequence[str],
+                 interval_hours_end_time: str,
+                 interval_hours_start_time: str):
+        pulumi.set(__self__, "interval_days", interval_days)
+        pulumi.set(__self__, "interval_hours_end_time", interval_hours_end_time)
+        pulumi.set(__self__, "interval_hours_start_time", interval_hours_start_time)
+
+    @property
+    @pulumi.getter(name="intervalDays")
+    def interval_days(self) -> Sequence[str]:
+        return pulumi.get(self, "interval_days")
+
+    @property
+    @pulumi.getter(name="intervalHoursEndTime")
+    def interval_hours_end_time(self) -> str:
+        return pulumi.get(self, "interval_hours_end_time")
+
+    @property
+    @pulumi.getter(name="intervalHoursStartTime")
+    def interval_hours_start_time(self) -> str:
+        return pulumi.get(self, "interval_hours_start_time")
+
+
+@pulumi.output_type
+class OceanRightSizingRuleRecommendationApplicationMinThreshold(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cpuPercentage":
+            suggest = "cpu_percentage"
+        elif key == "memoryPercentage":
+            suggest = "memory_percentage"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanRightSizingRuleRecommendationApplicationMinThreshold. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanRightSizingRuleRecommendationApplicationMinThreshold.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanRightSizingRuleRecommendationApplicationMinThreshold.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cpu_percentage: Optional[float] = None,
+                 memory_percentage: Optional[float] = None):
+        if cpu_percentage is not None:
+            pulumi.set(__self__, "cpu_percentage", cpu_percentage)
+        if memory_percentage is not None:
+            pulumi.set(__self__, "memory_percentage", memory_percentage)
+
+    @property
+    @pulumi.getter(name="cpuPercentage")
+    def cpu_percentage(self) -> Optional[float]:
+        return pulumi.get(self, "cpu_percentage")
+
+    @property
+    @pulumi.getter(name="memoryPercentage")
+    def memory_percentage(self) -> Optional[float]:
+        return pulumi.get(self, "memory_percentage")
+
+
+@pulumi.output_type
+class OceanRightSizingRuleRecommendationApplicationOverheadValue(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cpuPercentage":
+            suggest = "cpu_percentage"
+        elif key == "memoryPercentage":
+            suggest = "memory_percentage"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanRightSizingRuleRecommendationApplicationOverheadValue. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanRightSizingRuleRecommendationApplicationOverheadValue.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanRightSizingRuleRecommendationApplicationOverheadValue.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cpu_percentage: Optional[float] = None,
+                 memory_percentage: Optional[float] = None):
+        if cpu_percentage is not None:
+            pulumi.set(__self__, "cpu_percentage", cpu_percentage)
+        if memory_percentage is not None:
+            pulumi.set(__self__, "memory_percentage", memory_percentage)
+
+    @property
+    @pulumi.getter(name="cpuPercentage")
+    def cpu_percentage(self) -> Optional[float]:
+        return pulumi.get(self, "cpu_percentage")
+
+    @property
+    @pulumi.getter(name="memoryPercentage")
+    def memory_percentage(self) -> Optional[float]:
+        return pulumi.get(self, "memory_percentage")
 
 
 @pulumi.output_type
@@ -2346,5 +2982,53 @@ class StatefulNodeAzureUpdateState(dict):
     @pulumi.getter
     def state(self) -> str:
         return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class StatefulNodeAzureVmSizes(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "odSizes":
+            suggest = "od_sizes"
+        elif key == "spotSizes":
+            suggest = "spot_sizes"
+        elif key == "preferredSpotSizes":
+            suggest = "preferred_spot_sizes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StatefulNodeAzureVmSizes. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StatefulNodeAzureVmSizes.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StatefulNodeAzureVmSizes.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 od_sizes: Sequence[str],
+                 spot_sizes: Sequence[str],
+                 preferred_spot_sizes: Optional[Sequence[str]] = None):
+        pulumi.set(__self__, "od_sizes", od_sizes)
+        pulumi.set(__self__, "spot_sizes", spot_sizes)
+        if preferred_spot_sizes is not None:
+            pulumi.set(__self__, "preferred_spot_sizes", preferred_spot_sizes)
+
+    @property
+    @pulumi.getter(name="odSizes")
+    def od_sizes(self) -> Sequence[str]:
+        return pulumi.get(self, "od_sizes")
+
+    @property
+    @pulumi.getter(name="spotSizes")
+    def spot_sizes(self) -> Sequence[str]:
+        return pulumi.get(self, "spot_sizes")
+
+    @property
+    @pulumi.getter(name="preferredSpotSizes")
+    def preferred_spot_sizes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "preferred_spot_sizes")
 
 

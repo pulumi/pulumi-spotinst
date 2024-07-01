@@ -20,6 +20,11 @@ export type HealthCheck = import("./healthCheck").HealthCheck;
 export const HealthCheck: typeof import("./healthCheck").HealthCheck = null as any;
 utilities.lazyLoad(exports, ["HealthCheck"], () => require("./healthCheck"));
 
+export { OceanRightSizingRuleArgs, OceanRightSizingRuleState } from "./oceanRightSizingRule";
+export type OceanRightSizingRule = import("./oceanRightSizingRule").OceanRightSizingRule;
+export const OceanRightSizingRule: typeof import("./oceanRightSizingRule").OceanRightSizingRule = null as any;
+utilities.lazyLoad(exports, ["OceanRightSizingRule"], () => require("./oceanRightSizingRule"));
+
 export { ProviderArgs } from "./provider";
 export type Provider = import("./provider").Provider;
 export const Provider: typeof import("./provider").Provider = null as any;
@@ -71,6 +76,8 @@ const _module = {
                 return new ElastigroupAzureV3(name, <any>undefined, { urn })
             case "spotinst:index/healthCheck:HealthCheck":
                 return new HealthCheck(name, <any>undefined, { urn })
+            case "spotinst:index/oceanRightSizingRule:OceanRightSizingRule":
+                return new OceanRightSizingRule(name, <any>undefined, { urn })
             case "spotinst:index/statefulNodeAzure:StatefulNodeAzure":
                 return new StatefulNodeAzure(name, <any>undefined, { urn })
             case "spotinst:index/subscription:Subscription":
@@ -83,6 +90,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("spotinst", "index/dataIntegration", _module)
 pulumi.runtime.registerResourceModule("spotinst", "index/elastigroupAzureV3", _module)
 pulumi.runtime.registerResourceModule("spotinst", "index/healthCheck", _module)
+pulumi.runtime.registerResourceModule("spotinst", "index/oceanRightSizingRule", _module)
 pulumi.runtime.registerResourceModule("spotinst", "index/statefulNodeAzure", _module)
 pulumi.runtime.registerResourceModule("spotinst", "index/subscription", _module)
 pulumi.runtime.registerResourcePackage("spotinst", {

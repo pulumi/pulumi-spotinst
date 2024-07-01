@@ -1329,6 +1329,154 @@ func (o ElastigroupAzureV3TagArrayOutput) Index(i pulumi.IntInput) ElastigroupAz
 	}).(ElastigroupAzureV3TagOutput)
 }
 
+type ElastigroupAzureV3VmSizes struct {
+	OdSizes   []string `pulumi:"odSizes"`
+	SpotSizes []string `pulumi:"spotSizes"`
+}
+
+// ElastigroupAzureV3VmSizesInput is an input type that accepts ElastigroupAzureV3VmSizesArgs and ElastigroupAzureV3VmSizesOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3VmSizesInput` via:
+//
+//	ElastigroupAzureV3VmSizesArgs{...}
+type ElastigroupAzureV3VmSizesInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3VmSizesOutput() ElastigroupAzureV3VmSizesOutput
+	ToElastigroupAzureV3VmSizesOutputWithContext(context.Context) ElastigroupAzureV3VmSizesOutput
+}
+
+type ElastigroupAzureV3VmSizesArgs struct {
+	OdSizes   pulumi.StringArrayInput `pulumi:"odSizes"`
+	SpotSizes pulumi.StringArrayInput `pulumi:"spotSizes"`
+}
+
+func (ElastigroupAzureV3VmSizesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3VmSizes)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3VmSizesArgs) ToElastigroupAzureV3VmSizesOutput() ElastigroupAzureV3VmSizesOutput {
+	return i.ToElastigroupAzureV3VmSizesOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3VmSizesArgs) ToElastigroupAzureV3VmSizesOutputWithContext(ctx context.Context) ElastigroupAzureV3VmSizesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3VmSizesOutput)
+}
+
+func (i ElastigroupAzureV3VmSizesArgs) ToElastigroupAzureV3VmSizesPtrOutput() ElastigroupAzureV3VmSizesPtrOutput {
+	return i.ToElastigroupAzureV3VmSizesPtrOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3VmSizesArgs) ToElastigroupAzureV3VmSizesPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3VmSizesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3VmSizesOutput).ToElastigroupAzureV3VmSizesPtrOutputWithContext(ctx)
+}
+
+// ElastigroupAzureV3VmSizesPtrInput is an input type that accepts ElastigroupAzureV3VmSizesArgs, ElastigroupAzureV3VmSizesPtr and ElastigroupAzureV3VmSizesPtrOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3VmSizesPtrInput` via:
+//
+//	        ElastigroupAzureV3VmSizesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ElastigroupAzureV3VmSizesPtrInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3VmSizesPtrOutput() ElastigroupAzureV3VmSizesPtrOutput
+	ToElastigroupAzureV3VmSizesPtrOutputWithContext(context.Context) ElastigroupAzureV3VmSizesPtrOutput
+}
+
+type elastigroupAzureV3VmSizesPtrType ElastigroupAzureV3VmSizesArgs
+
+func ElastigroupAzureV3VmSizesPtr(v *ElastigroupAzureV3VmSizesArgs) ElastigroupAzureV3VmSizesPtrInput {
+	return (*elastigroupAzureV3VmSizesPtrType)(v)
+}
+
+func (*elastigroupAzureV3VmSizesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupAzureV3VmSizes)(nil)).Elem()
+}
+
+func (i *elastigroupAzureV3VmSizesPtrType) ToElastigroupAzureV3VmSizesPtrOutput() ElastigroupAzureV3VmSizesPtrOutput {
+	return i.ToElastigroupAzureV3VmSizesPtrOutputWithContext(context.Background())
+}
+
+func (i *elastigroupAzureV3VmSizesPtrType) ToElastigroupAzureV3VmSizesPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3VmSizesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3VmSizesPtrOutput)
+}
+
+type ElastigroupAzureV3VmSizesOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3VmSizesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3VmSizes)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3VmSizesOutput) ToElastigroupAzureV3VmSizesOutput() ElastigroupAzureV3VmSizesOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3VmSizesOutput) ToElastigroupAzureV3VmSizesOutputWithContext(ctx context.Context) ElastigroupAzureV3VmSizesOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3VmSizesOutput) ToElastigroupAzureV3VmSizesPtrOutput() ElastigroupAzureV3VmSizesPtrOutput {
+	return o.ToElastigroupAzureV3VmSizesPtrOutputWithContext(context.Background())
+}
+
+func (o ElastigroupAzureV3VmSizesOutput) ToElastigroupAzureV3VmSizesPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3VmSizesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupAzureV3VmSizes) *ElastigroupAzureV3VmSizes {
+		return &v
+	}).(ElastigroupAzureV3VmSizesPtrOutput)
+}
+
+func (o ElastigroupAzureV3VmSizesOutput) OdSizes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3VmSizes) []string { return v.OdSizes }).(pulumi.StringArrayOutput)
+}
+
+func (o ElastigroupAzureV3VmSizesOutput) SpotSizes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3VmSizes) []string { return v.SpotSizes }).(pulumi.StringArrayOutput)
+}
+
+type ElastigroupAzureV3VmSizesPtrOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3VmSizesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupAzureV3VmSizes)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3VmSizesPtrOutput) ToElastigroupAzureV3VmSizesPtrOutput() ElastigroupAzureV3VmSizesPtrOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3VmSizesPtrOutput) ToElastigroupAzureV3VmSizesPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3VmSizesPtrOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3VmSizesPtrOutput) Elem() ElastigroupAzureV3VmSizesOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3VmSizes) ElastigroupAzureV3VmSizes {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupAzureV3VmSizes
+		return ret
+	}).(ElastigroupAzureV3VmSizesOutput)
+}
+
+func (o ElastigroupAzureV3VmSizesPtrOutput) OdSizes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3VmSizes) []string {
+		if v == nil {
+			return nil
+		}
+		return v.OdSizes
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o ElastigroupAzureV3VmSizesPtrOutput) SpotSizes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3VmSizes) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SpotSizes
+	}).(pulumi.StringArrayOutput)
+}
+
 type HealthCheckCheck struct {
 	EndPoint *string `pulumi:"endPoint"`
 	// The destination for the request.
@@ -1600,6 +1748,1588 @@ func (o HealthCheckCheckPtrOutput) Unhealthy() pulumi.IntPtrOutput {
 		}
 		return &v.Unhealthy
 	}).(pulumi.IntPtrOutput)
+}
+
+type OceanRightSizingRuleAttachWorkload struct {
+	Namespaces []OceanRightSizingRuleAttachWorkloadNamespace `pulumi:"namespaces"`
+}
+
+// OceanRightSizingRuleAttachWorkloadInput is an input type that accepts OceanRightSizingRuleAttachWorkloadArgs and OceanRightSizingRuleAttachWorkloadOutput values.
+// You can construct a concrete instance of `OceanRightSizingRuleAttachWorkloadInput` via:
+//
+//	OceanRightSizingRuleAttachWorkloadArgs{...}
+type OceanRightSizingRuleAttachWorkloadInput interface {
+	pulumi.Input
+
+	ToOceanRightSizingRuleAttachWorkloadOutput() OceanRightSizingRuleAttachWorkloadOutput
+	ToOceanRightSizingRuleAttachWorkloadOutputWithContext(context.Context) OceanRightSizingRuleAttachWorkloadOutput
+}
+
+type OceanRightSizingRuleAttachWorkloadArgs struct {
+	Namespaces OceanRightSizingRuleAttachWorkloadNamespaceArrayInput `pulumi:"namespaces"`
+}
+
+func (OceanRightSizingRuleAttachWorkloadArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanRightSizingRuleAttachWorkload)(nil)).Elem()
+}
+
+func (i OceanRightSizingRuleAttachWorkloadArgs) ToOceanRightSizingRuleAttachWorkloadOutput() OceanRightSizingRuleAttachWorkloadOutput {
+	return i.ToOceanRightSizingRuleAttachWorkloadOutputWithContext(context.Background())
+}
+
+func (i OceanRightSizingRuleAttachWorkloadArgs) ToOceanRightSizingRuleAttachWorkloadOutputWithContext(ctx context.Context) OceanRightSizingRuleAttachWorkloadOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanRightSizingRuleAttachWorkloadOutput)
+}
+
+// OceanRightSizingRuleAttachWorkloadArrayInput is an input type that accepts OceanRightSizingRuleAttachWorkloadArray and OceanRightSizingRuleAttachWorkloadArrayOutput values.
+// You can construct a concrete instance of `OceanRightSizingRuleAttachWorkloadArrayInput` via:
+//
+//	OceanRightSizingRuleAttachWorkloadArray{ OceanRightSizingRuleAttachWorkloadArgs{...} }
+type OceanRightSizingRuleAttachWorkloadArrayInput interface {
+	pulumi.Input
+
+	ToOceanRightSizingRuleAttachWorkloadArrayOutput() OceanRightSizingRuleAttachWorkloadArrayOutput
+	ToOceanRightSizingRuleAttachWorkloadArrayOutputWithContext(context.Context) OceanRightSizingRuleAttachWorkloadArrayOutput
+}
+
+type OceanRightSizingRuleAttachWorkloadArray []OceanRightSizingRuleAttachWorkloadInput
+
+func (OceanRightSizingRuleAttachWorkloadArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanRightSizingRuleAttachWorkload)(nil)).Elem()
+}
+
+func (i OceanRightSizingRuleAttachWorkloadArray) ToOceanRightSizingRuleAttachWorkloadArrayOutput() OceanRightSizingRuleAttachWorkloadArrayOutput {
+	return i.ToOceanRightSizingRuleAttachWorkloadArrayOutputWithContext(context.Background())
+}
+
+func (i OceanRightSizingRuleAttachWorkloadArray) ToOceanRightSizingRuleAttachWorkloadArrayOutputWithContext(ctx context.Context) OceanRightSizingRuleAttachWorkloadArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanRightSizingRuleAttachWorkloadArrayOutput)
+}
+
+type OceanRightSizingRuleAttachWorkloadOutput struct{ *pulumi.OutputState }
+
+func (OceanRightSizingRuleAttachWorkloadOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanRightSizingRuleAttachWorkload)(nil)).Elem()
+}
+
+func (o OceanRightSizingRuleAttachWorkloadOutput) ToOceanRightSizingRuleAttachWorkloadOutput() OceanRightSizingRuleAttachWorkloadOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleAttachWorkloadOutput) ToOceanRightSizingRuleAttachWorkloadOutputWithContext(ctx context.Context) OceanRightSizingRuleAttachWorkloadOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleAttachWorkloadOutput) Namespaces() OceanRightSizingRuleAttachWorkloadNamespaceArrayOutput {
+	return o.ApplyT(func(v OceanRightSizingRuleAttachWorkload) []OceanRightSizingRuleAttachWorkloadNamespace {
+		return v.Namespaces
+	}).(OceanRightSizingRuleAttachWorkloadNamespaceArrayOutput)
+}
+
+type OceanRightSizingRuleAttachWorkloadArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanRightSizingRuleAttachWorkloadArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanRightSizingRuleAttachWorkload)(nil)).Elem()
+}
+
+func (o OceanRightSizingRuleAttachWorkloadArrayOutput) ToOceanRightSizingRuleAttachWorkloadArrayOutput() OceanRightSizingRuleAttachWorkloadArrayOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleAttachWorkloadArrayOutput) ToOceanRightSizingRuleAttachWorkloadArrayOutputWithContext(ctx context.Context) OceanRightSizingRuleAttachWorkloadArrayOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleAttachWorkloadArrayOutput) Index(i pulumi.IntInput) OceanRightSizingRuleAttachWorkloadOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanRightSizingRuleAttachWorkload {
+		return vs[0].([]OceanRightSizingRuleAttachWorkload)[vs[1].(int)]
+	}).(OceanRightSizingRuleAttachWorkloadOutput)
+}
+
+type OceanRightSizingRuleAttachWorkloadNamespace struct {
+	Labels        []OceanRightSizingRuleAttachWorkloadNamespaceLabel    `pulumi:"labels"`
+	NamespaceName string                                                `pulumi:"namespaceName"`
+	Workloads     []OceanRightSizingRuleAttachWorkloadNamespaceWorkload `pulumi:"workloads"`
+}
+
+// OceanRightSizingRuleAttachWorkloadNamespaceInput is an input type that accepts OceanRightSizingRuleAttachWorkloadNamespaceArgs and OceanRightSizingRuleAttachWorkloadNamespaceOutput values.
+// You can construct a concrete instance of `OceanRightSizingRuleAttachWorkloadNamespaceInput` via:
+//
+//	OceanRightSizingRuleAttachWorkloadNamespaceArgs{...}
+type OceanRightSizingRuleAttachWorkloadNamespaceInput interface {
+	pulumi.Input
+
+	ToOceanRightSizingRuleAttachWorkloadNamespaceOutput() OceanRightSizingRuleAttachWorkloadNamespaceOutput
+	ToOceanRightSizingRuleAttachWorkloadNamespaceOutputWithContext(context.Context) OceanRightSizingRuleAttachWorkloadNamespaceOutput
+}
+
+type OceanRightSizingRuleAttachWorkloadNamespaceArgs struct {
+	Labels        OceanRightSizingRuleAttachWorkloadNamespaceLabelArrayInput    `pulumi:"labels"`
+	NamespaceName pulumi.StringInput                                            `pulumi:"namespaceName"`
+	Workloads     OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArrayInput `pulumi:"workloads"`
+}
+
+func (OceanRightSizingRuleAttachWorkloadNamespaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanRightSizingRuleAttachWorkloadNamespace)(nil)).Elem()
+}
+
+func (i OceanRightSizingRuleAttachWorkloadNamespaceArgs) ToOceanRightSizingRuleAttachWorkloadNamespaceOutput() OceanRightSizingRuleAttachWorkloadNamespaceOutput {
+	return i.ToOceanRightSizingRuleAttachWorkloadNamespaceOutputWithContext(context.Background())
+}
+
+func (i OceanRightSizingRuleAttachWorkloadNamespaceArgs) ToOceanRightSizingRuleAttachWorkloadNamespaceOutputWithContext(ctx context.Context) OceanRightSizingRuleAttachWorkloadNamespaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanRightSizingRuleAttachWorkloadNamespaceOutput)
+}
+
+// OceanRightSizingRuleAttachWorkloadNamespaceArrayInput is an input type that accepts OceanRightSizingRuleAttachWorkloadNamespaceArray and OceanRightSizingRuleAttachWorkloadNamespaceArrayOutput values.
+// You can construct a concrete instance of `OceanRightSizingRuleAttachWorkloadNamespaceArrayInput` via:
+//
+//	OceanRightSizingRuleAttachWorkloadNamespaceArray{ OceanRightSizingRuleAttachWorkloadNamespaceArgs{...} }
+type OceanRightSizingRuleAttachWorkloadNamespaceArrayInput interface {
+	pulumi.Input
+
+	ToOceanRightSizingRuleAttachWorkloadNamespaceArrayOutput() OceanRightSizingRuleAttachWorkloadNamespaceArrayOutput
+	ToOceanRightSizingRuleAttachWorkloadNamespaceArrayOutputWithContext(context.Context) OceanRightSizingRuleAttachWorkloadNamespaceArrayOutput
+}
+
+type OceanRightSizingRuleAttachWorkloadNamespaceArray []OceanRightSizingRuleAttachWorkloadNamespaceInput
+
+func (OceanRightSizingRuleAttachWorkloadNamespaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanRightSizingRuleAttachWorkloadNamespace)(nil)).Elem()
+}
+
+func (i OceanRightSizingRuleAttachWorkloadNamespaceArray) ToOceanRightSizingRuleAttachWorkloadNamespaceArrayOutput() OceanRightSizingRuleAttachWorkloadNamespaceArrayOutput {
+	return i.ToOceanRightSizingRuleAttachWorkloadNamespaceArrayOutputWithContext(context.Background())
+}
+
+func (i OceanRightSizingRuleAttachWorkloadNamespaceArray) ToOceanRightSizingRuleAttachWorkloadNamespaceArrayOutputWithContext(ctx context.Context) OceanRightSizingRuleAttachWorkloadNamespaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanRightSizingRuleAttachWorkloadNamespaceArrayOutput)
+}
+
+type OceanRightSizingRuleAttachWorkloadNamespaceOutput struct{ *pulumi.OutputState }
+
+func (OceanRightSizingRuleAttachWorkloadNamespaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanRightSizingRuleAttachWorkloadNamespace)(nil)).Elem()
+}
+
+func (o OceanRightSizingRuleAttachWorkloadNamespaceOutput) ToOceanRightSizingRuleAttachWorkloadNamespaceOutput() OceanRightSizingRuleAttachWorkloadNamespaceOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleAttachWorkloadNamespaceOutput) ToOceanRightSizingRuleAttachWorkloadNamespaceOutputWithContext(ctx context.Context) OceanRightSizingRuleAttachWorkloadNamespaceOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleAttachWorkloadNamespaceOutput) Labels() OceanRightSizingRuleAttachWorkloadNamespaceLabelArrayOutput {
+	return o.ApplyT(func(v OceanRightSizingRuleAttachWorkloadNamespace) []OceanRightSizingRuleAttachWorkloadNamespaceLabel {
+		return v.Labels
+	}).(OceanRightSizingRuleAttachWorkloadNamespaceLabelArrayOutput)
+}
+
+func (o OceanRightSizingRuleAttachWorkloadNamespaceOutput) NamespaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanRightSizingRuleAttachWorkloadNamespace) string { return v.NamespaceName }).(pulumi.StringOutput)
+}
+
+func (o OceanRightSizingRuleAttachWorkloadNamespaceOutput) Workloads() OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArrayOutput {
+	return o.ApplyT(func(v OceanRightSizingRuleAttachWorkloadNamespace) []OceanRightSizingRuleAttachWorkloadNamespaceWorkload {
+		return v.Workloads
+	}).(OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArrayOutput)
+}
+
+type OceanRightSizingRuleAttachWorkloadNamespaceArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanRightSizingRuleAttachWorkloadNamespaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanRightSizingRuleAttachWorkloadNamespace)(nil)).Elem()
+}
+
+func (o OceanRightSizingRuleAttachWorkloadNamespaceArrayOutput) ToOceanRightSizingRuleAttachWorkloadNamespaceArrayOutput() OceanRightSizingRuleAttachWorkloadNamespaceArrayOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleAttachWorkloadNamespaceArrayOutput) ToOceanRightSizingRuleAttachWorkloadNamespaceArrayOutputWithContext(ctx context.Context) OceanRightSizingRuleAttachWorkloadNamespaceArrayOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleAttachWorkloadNamespaceArrayOutput) Index(i pulumi.IntInput) OceanRightSizingRuleAttachWorkloadNamespaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanRightSizingRuleAttachWorkloadNamespace {
+		return vs[0].([]OceanRightSizingRuleAttachWorkloadNamespace)[vs[1].(int)]
+	}).(OceanRightSizingRuleAttachWorkloadNamespaceOutput)
+}
+
+type OceanRightSizingRuleAttachWorkloadNamespaceLabel struct {
+	Key   string `pulumi:"key"`
+	Value string `pulumi:"value"`
+}
+
+// OceanRightSizingRuleAttachWorkloadNamespaceLabelInput is an input type that accepts OceanRightSizingRuleAttachWorkloadNamespaceLabelArgs and OceanRightSizingRuleAttachWorkloadNamespaceLabelOutput values.
+// You can construct a concrete instance of `OceanRightSizingRuleAttachWorkloadNamespaceLabelInput` via:
+//
+//	OceanRightSizingRuleAttachWorkloadNamespaceLabelArgs{...}
+type OceanRightSizingRuleAttachWorkloadNamespaceLabelInput interface {
+	pulumi.Input
+
+	ToOceanRightSizingRuleAttachWorkloadNamespaceLabelOutput() OceanRightSizingRuleAttachWorkloadNamespaceLabelOutput
+	ToOceanRightSizingRuleAttachWorkloadNamespaceLabelOutputWithContext(context.Context) OceanRightSizingRuleAttachWorkloadNamespaceLabelOutput
+}
+
+type OceanRightSizingRuleAttachWorkloadNamespaceLabelArgs struct {
+	Key   pulumi.StringInput `pulumi:"key"`
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (OceanRightSizingRuleAttachWorkloadNamespaceLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanRightSizingRuleAttachWorkloadNamespaceLabel)(nil)).Elem()
+}
+
+func (i OceanRightSizingRuleAttachWorkloadNamespaceLabelArgs) ToOceanRightSizingRuleAttachWorkloadNamespaceLabelOutput() OceanRightSizingRuleAttachWorkloadNamespaceLabelOutput {
+	return i.ToOceanRightSizingRuleAttachWorkloadNamespaceLabelOutputWithContext(context.Background())
+}
+
+func (i OceanRightSizingRuleAttachWorkloadNamespaceLabelArgs) ToOceanRightSizingRuleAttachWorkloadNamespaceLabelOutputWithContext(ctx context.Context) OceanRightSizingRuleAttachWorkloadNamespaceLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanRightSizingRuleAttachWorkloadNamespaceLabelOutput)
+}
+
+// OceanRightSizingRuleAttachWorkloadNamespaceLabelArrayInput is an input type that accepts OceanRightSizingRuleAttachWorkloadNamespaceLabelArray and OceanRightSizingRuleAttachWorkloadNamespaceLabelArrayOutput values.
+// You can construct a concrete instance of `OceanRightSizingRuleAttachWorkloadNamespaceLabelArrayInput` via:
+//
+//	OceanRightSizingRuleAttachWorkloadNamespaceLabelArray{ OceanRightSizingRuleAttachWorkloadNamespaceLabelArgs{...} }
+type OceanRightSizingRuleAttachWorkloadNamespaceLabelArrayInput interface {
+	pulumi.Input
+
+	ToOceanRightSizingRuleAttachWorkloadNamespaceLabelArrayOutput() OceanRightSizingRuleAttachWorkloadNamespaceLabelArrayOutput
+	ToOceanRightSizingRuleAttachWorkloadNamespaceLabelArrayOutputWithContext(context.Context) OceanRightSizingRuleAttachWorkloadNamespaceLabelArrayOutput
+}
+
+type OceanRightSizingRuleAttachWorkloadNamespaceLabelArray []OceanRightSizingRuleAttachWorkloadNamespaceLabelInput
+
+func (OceanRightSizingRuleAttachWorkloadNamespaceLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanRightSizingRuleAttachWorkloadNamespaceLabel)(nil)).Elem()
+}
+
+func (i OceanRightSizingRuleAttachWorkloadNamespaceLabelArray) ToOceanRightSizingRuleAttachWorkloadNamespaceLabelArrayOutput() OceanRightSizingRuleAttachWorkloadNamespaceLabelArrayOutput {
+	return i.ToOceanRightSizingRuleAttachWorkloadNamespaceLabelArrayOutputWithContext(context.Background())
+}
+
+func (i OceanRightSizingRuleAttachWorkloadNamespaceLabelArray) ToOceanRightSizingRuleAttachWorkloadNamespaceLabelArrayOutputWithContext(ctx context.Context) OceanRightSizingRuleAttachWorkloadNamespaceLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanRightSizingRuleAttachWorkloadNamespaceLabelArrayOutput)
+}
+
+type OceanRightSizingRuleAttachWorkloadNamespaceLabelOutput struct{ *pulumi.OutputState }
+
+func (OceanRightSizingRuleAttachWorkloadNamespaceLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanRightSizingRuleAttachWorkloadNamespaceLabel)(nil)).Elem()
+}
+
+func (o OceanRightSizingRuleAttachWorkloadNamespaceLabelOutput) ToOceanRightSizingRuleAttachWorkloadNamespaceLabelOutput() OceanRightSizingRuleAttachWorkloadNamespaceLabelOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleAttachWorkloadNamespaceLabelOutput) ToOceanRightSizingRuleAttachWorkloadNamespaceLabelOutputWithContext(ctx context.Context) OceanRightSizingRuleAttachWorkloadNamespaceLabelOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleAttachWorkloadNamespaceLabelOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanRightSizingRuleAttachWorkloadNamespaceLabel) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o OceanRightSizingRuleAttachWorkloadNamespaceLabelOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanRightSizingRuleAttachWorkloadNamespaceLabel) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type OceanRightSizingRuleAttachWorkloadNamespaceLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanRightSizingRuleAttachWorkloadNamespaceLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanRightSizingRuleAttachWorkloadNamespaceLabel)(nil)).Elem()
+}
+
+func (o OceanRightSizingRuleAttachWorkloadNamespaceLabelArrayOutput) ToOceanRightSizingRuleAttachWorkloadNamespaceLabelArrayOutput() OceanRightSizingRuleAttachWorkloadNamespaceLabelArrayOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleAttachWorkloadNamespaceLabelArrayOutput) ToOceanRightSizingRuleAttachWorkloadNamespaceLabelArrayOutputWithContext(ctx context.Context) OceanRightSizingRuleAttachWorkloadNamespaceLabelArrayOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleAttachWorkloadNamespaceLabelArrayOutput) Index(i pulumi.IntInput) OceanRightSizingRuleAttachWorkloadNamespaceLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanRightSizingRuleAttachWorkloadNamespaceLabel {
+		return vs[0].([]OceanRightSizingRuleAttachWorkloadNamespaceLabel)[vs[1].(int)]
+	}).(OceanRightSizingRuleAttachWorkloadNamespaceLabelOutput)
+}
+
+type OceanRightSizingRuleAttachWorkloadNamespaceWorkload struct {
+	RegexName    *string `pulumi:"regexName"`
+	WorkloadName *string `pulumi:"workloadName"`
+	WorkloadType string  `pulumi:"workloadType"`
+}
+
+// OceanRightSizingRuleAttachWorkloadNamespaceWorkloadInput is an input type that accepts OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArgs and OceanRightSizingRuleAttachWorkloadNamespaceWorkloadOutput values.
+// You can construct a concrete instance of `OceanRightSizingRuleAttachWorkloadNamespaceWorkloadInput` via:
+//
+//	OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArgs{...}
+type OceanRightSizingRuleAttachWorkloadNamespaceWorkloadInput interface {
+	pulumi.Input
+
+	ToOceanRightSizingRuleAttachWorkloadNamespaceWorkloadOutput() OceanRightSizingRuleAttachWorkloadNamespaceWorkloadOutput
+	ToOceanRightSizingRuleAttachWorkloadNamespaceWorkloadOutputWithContext(context.Context) OceanRightSizingRuleAttachWorkloadNamespaceWorkloadOutput
+}
+
+type OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArgs struct {
+	RegexName    pulumi.StringPtrInput `pulumi:"regexName"`
+	WorkloadName pulumi.StringPtrInput `pulumi:"workloadName"`
+	WorkloadType pulumi.StringInput    `pulumi:"workloadType"`
+}
+
+func (OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanRightSizingRuleAttachWorkloadNamespaceWorkload)(nil)).Elem()
+}
+
+func (i OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArgs) ToOceanRightSizingRuleAttachWorkloadNamespaceWorkloadOutput() OceanRightSizingRuleAttachWorkloadNamespaceWorkloadOutput {
+	return i.ToOceanRightSizingRuleAttachWorkloadNamespaceWorkloadOutputWithContext(context.Background())
+}
+
+func (i OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArgs) ToOceanRightSizingRuleAttachWorkloadNamespaceWorkloadOutputWithContext(ctx context.Context) OceanRightSizingRuleAttachWorkloadNamespaceWorkloadOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanRightSizingRuleAttachWorkloadNamespaceWorkloadOutput)
+}
+
+// OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArrayInput is an input type that accepts OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArray and OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArrayOutput values.
+// You can construct a concrete instance of `OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArrayInput` via:
+//
+//	OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArray{ OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArgs{...} }
+type OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArrayInput interface {
+	pulumi.Input
+
+	ToOceanRightSizingRuleAttachWorkloadNamespaceWorkloadArrayOutput() OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArrayOutput
+	ToOceanRightSizingRuleAttachWorkloadNamespaceWorkloadArrayOutputWithContext(context.Context) OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArrayOutput
+}
+
+type OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArray []OceanRightSizingRuleAttachWorkloadNamespaceWorkloadInput
+
+func (OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanRightSizingRuleAttachWorkloadNamespaceWorkload)(nil)).Elem()
+}
+
+func (i OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArray) ToOceanRightSizingRuleAttachWorkloadNamespaceWorkloadArrayOutput() OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArrayOutput {
+	return i.ToOceanRightSizingRuleAttachWorkloadNamespaceWorkloadArrayOutputWithContext(context.Background())
+}
+
+func (i OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArray) ToOceanRightSizingRuleAttachWorkloadNamespaceWorkloadArrayOutputWithContext(ctx context.Context) OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArrayOutput)
+}
+
+type OceanRightSizingRuleAttachWorkloadNamespaceWorkloadOutput struct{ *pulumi.OutputState }
+
+func (OceanRightSizingRuleAttachWorkloadNamespaceWorkloadOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanRightSizingRuleAttachWorkloadNamespaceWorkload)(nil)).Elem()
+}
+
+func (o OceanRightSizingRuleAttachWorkloadNamespaceWorkloadOutput) ToOceanRightSizingRuleAttachWorkloadNamespaceWorkloadOutput() OceanRightSizingRuleAttachWorkloadNamespaceWorkloadOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleAttachWorkloadNamespaceWorkloadOutput) ToOceanRightSizingRuleAttachWorkloadNamespaceWorkloadOutputWithContext(ctx context.Context) OceanRightSizingRuleAttachWorkloadNamespaceWorkloadOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleAttachWorkloadNamespaceWorkloadOutput) RegexName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanRightSizingRuleAttachWorkloadNamespaceWorkload) *string { return v.RegexName }).(pulumi.StringPtrOutput)
+}
+
+func (o OceanRightSizingRuleAttachWorkloadNamespaceWorkloadOutput) WorkloadName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanRightSizingRuleAttachWorkloadNamespaceWorkload) *string { return v.WorkloadName }).(pulumi.StringPtrOutput)
+}
+
+func (o OceanRightSizingRuleAttachWorkloadNamespaceWorkloadOutput) WorkloadType() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanRightSizingRuleAttachWorkloadNamespaceWorkload) string { return v.WorkloadType }).(pulumi.StringOutput)
+}
+
+type OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanRightSizingRuleAttachWorkloadNamespaceWorkload)(nil)).Elem()
+}
+
+func (o OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArrayOutput) ToOceanRightSizingRuleAttachWorkloadNamespaceWorkloadArrayOutput() OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArrayOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArrayOutput) ToOceanRightSizingRuleAttachWorkloadNamespaceWorkloadArrayOutputWithContext(ctx context.Context) OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArrayOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArrayOutput) Index(i pulumi.IntInput) OceanRightSizingRuleAttachWorkloadNamespaceWorkloadOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanRightSizingRuleAttachWorkloadNamespaceWorkload {
+		return vs[0].([]OceanRightSizingRuleAttachWorkloadNamespaceWorkload)[vs[1].(int)]
+	}).(OceanRightSizingRuleAttachWorkloadNamespaceWorkloadOutput)
+}
+
+type OceanRightSizingRuleDetachWorkload struct {
+	Namespaces []OceanRightSizingRuleDetachWorkloadNamespace `pulumi:"namespaces"`
+}
+
+// OceanRightSizingRuleDetachWorkloadInput is an input type that accepts OceanRightSizingRuleDetachWorkloadArgs and OceanRightSizingRuleDetachWorkloadOutput values.
+// You can construct a concrete instance of `OceanRightSizingRuleDetachWorkloadInput` via:
+//
+//	OceanRightSizingRuleDetachWorkloadArgs{...}
+type OceanRightSizingRuleDetachWorkloadInput interface {
+	pulumi.Input
+
+	ToOceanRightSizingRuleDetachWorkloadOutput() OceanRightSizingRuleDetachWorkloadOutput
+	ToOceanRightSizingRuleDetachWorkloadOutputWithContext(context.Context) OceanRightSizingRuleDetachWorkloadOutput
+}
+
+type OceanRightSizingRuleDetachWorkloadArgs struct {
+	Namespaces OceanRightSizingRuleDetachWorkloadNamespaceArrayInput `pulumi:"namespaces"`
+}
+
+func (OceanRightSizingRuleDetachWorkloadArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanRightSizingRuleDetachWorkload)(nil)).Elem()
+}
+
+func (i OceanRightSizingRuleDetachWorkloadArgs) ToOceanRightSizingRuleDetachWorkloadOutput() OceanRightSizingRuleDetachWorkloadOutput {
+	return i.ToOceanRightSizingRuleDetachWorkloadOutputWithContext(context.Background())
+}
+
+func (i OceanRightSizingRuleDetachWorkloadArgs) ToOceanRightSizingRuleDetachWorkloadOutputWithContext(ctx context.Context) OceanRightSizingRuleDetachWorkloadOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanRightSizingRuleDetachWorkloadOutput)
+}
+
+// OceanRightSizingRuleDetachWorkloadArrayInput is an input type that accepts OceanRightSizingRuleDetachWorkloadArray and OceanRightSizingRuleDetachWorkloadArrayOutput values.
+// You can construct a concrete instance of `OceanRightSizingRuleDetachWorkloadArrayInput` via:
+//
+//	OceanRightSizingRuleDetachWorkloadArray{ OceanRightSizingRuleDetachWorkloadArgs{...} }
+type OceanRightSizingRuleDetachWorkloadArrayInput interface {
+	pulumi.Input
+
+	ToOceanRightSizingRuleDetachWorkloadArrayOutput() OceanRightSizingRuleDetachWorkloadArrayOutput
+	ToOceanRightSizingRuleDetachWorkloadArrayOutputWithContext(context.Context) OceanRightSizingRuleDetachWorkloadArrayOutput
+}
+
+type OceanRightSizingRuleDetachWorkloadArray []OceanRightSizingRuleDetachWorkloadInput
+
+func (OceanRightSizingRuleDetachWorkloadArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanRightSizingRuleDetachWorkload)(nil)).Elem()
+}
+
+func (i OceanRightSizingRuleDetachWorkloadArray) ToOceanRightSizingRuleDetachWorkloadArrayOutput() OceanRightSizingRuleDetachWorkloadArrayOutput {
+	return i.ToOceanRightSizingRuleDetachWorkloadArrayOutputWithContext(context.Background())
+}
+
+func (i OceanRightSizingRuleDetachWorkloadArray) ToOceanRightSizingRuleDetachWorkloadArrayOutputWithContext(ctx context.Context) OceanRightSizingRuleDetachWorkloadArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanRightSizingRuleDetachWorkloadArrayOutput)
+}
+
+type OceanRightSizingRuleDetachWorkloadOutput struct{ *pulumi.OutputState }
+
+func (OceanRightSizingRuleDetachWorkloadOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanRightSizingRuleDetachWorkload)(nil)).Elem()
+}
+
+func (o OceanRightSizingRuleDetachWorkloadOutput) ToOceanRightSizingRuleDetachWorkloadOutput() OceanRightSizingRuleDetachWorkloadOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleDetachWorkloadOutput) ToOceanRightSizingRuleDetachWorkloadOutputWithContext(ctx context.Context) OceanRightSizingRuleDetachWorkloadOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleDetachWorkloadOutput) Namespaces() OceanRightSizingRuleDetachWorkloadNamespaceArrayOutput {
+	return o.ApplyT(func(v OceanRightSizingRuleDetachWorkload) []OceanRightSizingRuleDetachWorkloadNamespace {
+		return v.Namespaces
+	}).(OceanRightSizingRuleDetachWorkloadNamespaceArrayOutput)
+}
+
+type OceanRightSizingRuleDetachWorkloadArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanRightSizingRuleDetachWorkloadArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanRightSizingRuleDetachWorkload)(nil)).Elem()
+}
+
+func (o OceanRightSizingRuleDetachWorkloadArrayOutput) ToOceanRightSizingRuleDetachWorkloadArrayOutput() OceanRightSizingRuleDetachWorkloadArrayOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleDetachWorkloadArrayOutput) ToOceanRightSizingRuleDetachWorkloadArrayOutputWithContext(ctx context.Context) OceanRightSizingRuleDetachWorkloadArrayOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleDetachWorkloadArrayOutput) Index(i pulumi.IntInput) OceanRightSizingRuleDetachWorkloadOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanRightSizingRuleDetachWorkload {
+		return vs[0].([]OceanRightSizingRuleDetachWorkload)[vs[1].(int)]
+	}).(OceanRightSizingRuleDetachWorkloadOutput)
+}
+
+type OceanRightSizingRuleDetachWorkloadNamespace struct {
+	Labels        []OceanRightSizingRuleDetachWorkloadNamespaceLabel    `pulumi:"labels"`
+	NamespaceName string                                                `pulumi:"namespaceName"`
+	Workloads     []OceanRightSizingRuleDetachWorkloadNamespaceWorkload `pulumi:"workloads"`
+}
+
+// OceanRightSizingRuleDetachWorkloadNamespaceInput is an input type that accepts OceanRightSizingRuleDetachWorkloadNamespaceArgs and OceanRightSizingRuleDetachWorkloadNamespaceOutput values.
+// You can construct a concrete instance of `OceanRightSizingRuleDetachWorkloadNamespaceInput` via:
+//
+//	OceanRightSizingRuleDetachWorkloadNamespaceArgs{...}
+type OceanRightSizingRuleDetachWorkloadNamespaceInput interface {
+	pulumi.Input
+
+	ToOceanRightSizingRuleDetachWorkloadNamespaceOutput() OceanRightSizingRuleDetachWorkloadNamespaceOutput
+	ToOceanRightSizingRuleDetachWorkloadNamespaceOutputWithContext(context.Context) OceanRightSizingRuleDetachWorkloadNamespaceOutput
+}
+
+type OceanRightSizingRuleDetachWorkloadNamespaceArgs struct {
+	Labels        OceanRightSizingRuleDetachWorkloadNamespaceLabelArrayInput    `pulumi:"labels"`
+	NamespaceName pulumi.StringInput                                            `pulumi:"namespaceName"`
+	Workloads     OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArrayInput `pulumi:"workloads"`
+}
+
+func (OceanRightSizingRuleDetachWorkloadNamespaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanRightSizingRuleDetachWorkloadNamespace)(nil)).Elem()
+}
+
+func (i OceanRightSizingRuleDetachWorkloadNamespaceArgs) ToOceanRightSizingRuleDetachWorkloadNamespaceOutput() OceanRightSizingRuleDetachWorkloadNamespaceOutput {
+	return i.ToOceanRightSizingRuleDetachWorkloadNamespaceOutputWithContext(context.Background())
+}
+
+func (i OceanRightSizingRuleDetachWorkloadNamespaceArgs) ToOceanRightSizingRuleDetachWorkloadNamespaceOutputWithContext(ctx context.Context) OceanRightSizingRuleDetachWorkloadNamespaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanRightSizingRuleDetachWorkloadNamespaceOutput)
+}
+
+// OceanRightSizingRuleDetachWorkloadNamespaceArrayInput is an input type that accepts OceanRightSizingRuleDetachWorkloadNamespaceArray and OceanRightSizingRuleDetachWorkloadNamespaceArrayOutput values.
+// You can construct a concrete instance of `OceanRightSizingRuleDetachWorkloadNamespaceArrayInput` via:
+//
+//	OceanRightSizingRuleDetachWorkloadNamespaceArray{ OceanRightSizingRuleDetachWorkloadNamespaceArgs{...} }
+type OceanRightSizingRuleDetachWorkloadNamespaceArrayInput interface {
+	pulumi.Input
+
+	ToOceanRightSizingRuleDetachWorkloadNamespaceArrayOutput() OceanRightSizingRuleDetachWorkloadNamespaceArrayOutput
+	ToOceanRightSizingRuleDetachWorkloadNamespaceArrayOutputWithContext(context.Context) OceanRightSizingRuleDetachWorkloadNamespaceArrayOutput
+}
+
+type OceanRightSizingRuleDetachWorkloadNamespaceArray []OceanRightSizingRuleDetachWorkloadNamespaceInput
+
+func (OceanRightSizingRuleDetachWorkloadNamespaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanRightSizingRuleDetachWorkloadNamespace)(nil)).Elem()
+}
+
+func (i OceanRightSizingRuleDetachWorkloadNamespaceArray) ToOceanRightSizingRuleDetachWorkloadNamespaceArrayOutput() OceanRightSizingRuleDetachWorkloadNamespaceArrayOutput {
+	return i.ToOceanRightSizingRuleDetachWorkloadNamespaceArrayOutputWithContext(context.Background())
+}
+
+func (i OceanRightSizingRuleDetachWorkloadNamespaceArray) ToOceanRightSizingRuleDetachWorkloadNamespaceArrayOutputWithContext(ctx context.Context) OceanRightSizingRuleDetachWorkloadNamespaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanRightSizingRuleDetachWorkloadNamespaceArrayOutput)
+}
+
+type OceanRightSizingRuleDetachWorkloadNamespaceOutput struct{ *pulumi.OutputState }
+
+func (OceanRightSizingRuleDetachWorkloadNamespaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanRightSizingRuleDetachWorkloadNamespace)(nil)).Elem()
+}
+
+func (o OceanRightSizingRuleDetachWorkloadNamespaceOutput) ToOceanRightSizingRuleDetachWorkloadNamespaceOutput() OceanRightSizingRuleDetachWorkloadNamespaceOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleDetachWorkloadNamespaceOutput) ToOceanRightSizingRuleDetachWorkloadNamespaceOutputWithContext(ctx context.Context) OceanRightSizingRuleDetachWorkloadNamespaceOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleDetachWorkloadNamespaceOutput) Labels() OceanRightSizingRuleDetachWorkloadNamespaceLabelArrayOutput {
+	return o.ApplyT(func(v OceanRightSizingRuleDetachWorkloadNamespace) []OceanRightSizingRuleDetachWorkloadNamespaceLabel {
+		return v.Labels
+	}).(OceanRightSizingRuleDetachWorkloadNamespaceLabelArrayOutput)
+}
+
+func (o OceanRightSizingRuleDetachWorkloadNamespaceOutput) NamespaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanRightSizingRuleDetachWorkloadNamespace) string { return v.NamespaceName }).(pulumi.StringOutput)
+}
+
+func (o OceanRightSizingRuleDetachWorkloadNamespaceOutput) Workloads() OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArrayOutput {
+	return o.ApplyT(func(v OceanRightSizingRuleDetachWorkloadNamespace) []OceanRightSizingRuleDetachWorkloadNamespaceWorkload {
+		return v.Workloads
+	}).(OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArrayOutput)
+}
+
+type OceanRightSizingRuleDetachWorkloadNamespaceArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanRightSizingRuleDetachWorkloadNamespaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanRightSizingRuleDetachWorkloadNamespace)(nil)).Elem()
+}
+
+func (o OceanRightSizingRuleDetachWorkloadNamespaceArrayOutput) ToOceanRightSizingRuleDetachWorkloadNamespaceArrayOutput() OceanRightSizingRuleDetachWorkloadNamespaceArrayOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleDetachWorkloadNamespaceArrayOutput) ToOceanRightSizingRuleDetachWorkloadNamespaceArrayOutputWithContext(ctx context.Context) OceanRightSizingRuleDetachWorkloadNamespaceArrayOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleDetachWorkloadNamespaceArrayOutput) Index(i pulumi.IntInput) OceanRightSizingRuleDetachWorkloadNamespaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanRightSizingRuleDetachWorkloadNamespace {
+		return vs[0].([]OceanRightSizingRuleDetachWorkloadNamespace)[vs[1].(int)]
+	}).(OceanRightSizingRuleDetachWorkloadNamespaceOutput)
+}
+
+type OceanRightSizingRuleDetachWorkloadNamespaceLabel struct {
+	Key   string `pulumi:"key"`
+	Value string `pulumi:"value"`
+}
+
+// OceanRightSizingRuleDetachWorkloadNamespaceLabelInput is an input type that accepts OceanRightSizingRuleDetachWorkloadNamespaceLabelArgs and OceanRightSizingRuleDetachWorkloadNamespaceLabelOutput values.
+// You can construct a concrete instance of `OceanRightSizingRuleDetachWorkloadNamespaceLabelInput` via:
+//
+//	OceanRightSizingRuleDetachWorkloadNamespaceLabelArgs{...}
+type OceanRightSizingRuleDetachWorkloadNamespaceLabelInput interface {
+	pulumi.Input
+
+	ToOceanRightSizingRuleDetachWorkloadNamespaceLabelOutput() OceanRightSizingRuleDetachWorkloadNamespaceLabelOutput
+	ToOceanRightSizingRuleDetachWorkloadNamespaceLabelOutputWithContext(context.Context) OceanRightSizingRuleDetachWorkloadNamespaceLabelOutput
+}
+
+type OceanRightSizingRuleDetachWorkloadNamespaceLabelArgs struct {
+	Key   pulumi.StringInput `pulumi:"key"`
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (OceanRightSizingRuleDetachWorkloadNamespaceLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanRightSizingRuleDetachWorkloadNamespaceLabel)(nil)).Elem()
+}
+
+func (i OceanRightSizingRuleDetachWorkloadNamespaceLabelArgs) ToOceanRightSizingRuleDetachWorkloadNamespaceLabelOutput() OceanRightSizingRuleDetachWorkloadNamespaceLabelOutput {
+	return i.ToOceanRightSizingRuleDetachWorkloadNamespaceLabelOutputWithContext(context.Background())
+}
+
+func (i OceanRightSizingRuleDetachWorkloadNamespaceLabelArgs) ToOceanRightSizingRuleDetachWorkloadNamespaceLabelOutputWithContext(ctx context.Context) OceanRightSizingRuleDetachWorkloadNamespaceLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanRightSizingRuleDetachWorkloadNamespaceLabelOutput)
+}
+
+// OceanRightSizingRuleDetachWorkloadNamespaceLabelArrayInput is an input type that accepts OceanRightSizingRuleDetachWorkloadNamespaceLabelArray and OceanRightSizingRuleDetachWorkloadNamespaceLabelArrayOutput values.
+// You can construct a concrete instance of `OceanRightSizingRuleDetachWorkloadNamespaceLabelArrayInput` via:
+//
+//	OceanRightSizingRuleDetachWorkloadNamespaceLabelArray{ OceanRightSizingRuleDetachWorkloadNamespaceLabelArgs{...} }
+type OceanRightSizingRuleDetachWorkloadNamespaceLabelArrayInput interface {
+	pulumi.Input
+
+	ToOceanRightSizingRuleDetachWorkloadNamespaceLabelArrayOutput() OceanRightSizingRuleDetachWorkloadNamespaceLabelArrayOutput
+	ToOceanRightSizingRuleDetachWorkloadNamespaceLabelArrayOutputWithContext(context.Context) OceanRightSizingRuleDetachWorkloadNamespaceLabelArrayOutput
+}
+
+type OceanRightSizingRuleDetachWorkloadNamespaceLabelArray []OceanRightSizingRuleDetachWorkloadNamespaceLabelInput
+
+func (OceanRightSizingRuleDetachWorkloadNamespaceLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanRightSizingRuleDetachWorkloadNamespaceLabel)(nil)).Elem()
+}
+
+func (i OceanRightSizingRuleDetachWorkloadNamespaceLabelArray) ToOceanRightSizingRuleDetachWorkloadNamespaceLabelArrayOutput() OceanRightSizingRuleDetachWorkloadNamespaceLabelArrayOutput {
+	return i.ToOceanRightSizingRuleDetachWorkloadNamespaceLabelArrayOutputWithContext(context.Background())
+}
+
+func (i OceanRightSizingRuleDetachWorkloadNamespaceLabelArray) ToOceanRightSizingRuleDetachWorkloadNamespaceLabelArrayOutputWithContext(ctx context.Context) OceanRightSizingRuleDetachWorkloadNamespaceLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanRightSizingRuleDetachWorkloadNamespaceLabelArrayOutput)
+}
+
+type OceanRightSizingRuleDetachWorkloadNamespaceLabelOutput struct{ *pulumi.OutputState }
+
+func (OceanRightSizingRuleDetachWorkloadNamespaceLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanRightSizingRuleDetachWorkloadNamespaceLabel)(nil)).Elem()
+}
+
+func (o OceanRightSizingRuleDetachWorkloadNamespaceLabelOutput) ToOceanRightSizingRuleDetachWorkloadNamespaceLabelOutput() OceanRightSizingRuleDetachWorkloadNamespaceLabelOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleDetachWorkloadNamespaceLabelOutput) ToOceanRightSizingRuleDetachWorkloadNamespaceLabelOutputWithContext(ctx context.Context) OceanRightSizingRuleDetachWorkloadNamespaceLabelOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleDetachWorkloadNamespaceLabelOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanRightSizingRuleDetachWorkloadNamespaceLabel) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o OceanRightSizingRuleDetachWorkloadNamespaceLabelOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanRightSizingRuleDetachWorkloadNamespaceLabel) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type OceanRightSizingRuleDetachWorkloadNamespaceLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanRightSizingRuleDetachWorkloadNamespaceLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanRightSizingRuleDetachWorkloadNamespaceLabel)(nil)).Elem()
+}
+
+func (o OceanRightSizingRuleDetachWorkloadNamespaceLabelArrayOutput) ToOceanRightSizingRuleDetachWorkloadNamespaceLabelArrayOutput() OceanRightSizingRuleDetachWorkloadNamespaceLabelArrayOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleDetachWorkloadNamespaceLabelArrayOutput) ToOceanRightSizingRuleDetachWorkloadNamespaceLabelArrayOutputWithContext(ctx context.Context) OceanRightSizingRuleDetachWorkloadNamespaceLabelArrayOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleDetachWorkloadNamespaceLabelArrayOutput) Index(i pulumi.IntInput) OceanRightSizingRuleDetachWorkloadNamespaceLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanRightSizingRuleDetachWorkloadNamespaceLabel {
+		return vs[0].([]OceanRightSizingRuleDetachWorkloadNamespaceLabel)[vs[1].(int)]
+	}).(OceanRightSizingRuleDetachWorkloadNamespaceLabelOutput)
+}
+
+type OceanRightSizingRuleDetachWorkloadNamespaceWorkload struct {
+	RegexName    *string `pulumi:"regexName"`
+	WorkloadName *string `pulumi:"workloadName"`
+	WorkloadType string  `pulumi:"workloadType"`
+}
+
+// OceanRightSizingRuleDetachWorkloadNamespaceWorkloadInput is an input type that accepts OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArgs and OceanRightSizingRuleDetachWorkloadNamespaceWorkloadOutput values.
+// You can construct a concrete instance of `OceanRightSizingRuleDetachWorkloadNamespaceWorkloadInput` via:
+//
+//	OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArgs{...}
+type OceanRightSizingRuleDetachWorkloadNamespaceWorkloadInput interface {
+	pulumi.Input
+
+	ToOceanRightSizingRuleDetachWorkloadNamespaceWorkloadOutput() OceanRightSizingRuleDetachWorkloadNamespaceWorkloadOutput
+	ToOceanRightSizingRuleDetachWorkloadNamespaceWorkloadOutputWithContext(context.Context) OceanRightSizingRuleDetachWorkloadNamespaceWorkloadOutput
+}
+
+type OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArgs struct {
+	RegexName    pulumi.StringPtrInput `pulumi:"regexName"`
+	WorkloadName pulumi.StringPtrInput `pulumi:"workloadName"`
+	WorkloadType pulumi.StringInput    `pulumi:"workloadType"`
+}
+
+func (OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanRightSizingRuleDetachWorkloadNamespaceWorkload)(nil)).Elem()
+}
+
+func (i OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArgs) ToOceanRightSizingRuleDetachWorkloadNamespaceWorkloadOutput() OceanRightSizingRuleDetachWorkloadNamespaceWorkloadOutput {
+	return i.ToOceanRightSizingRuleDetachWorkloadNamespaceWorkloadOutputWithContext(context.Background())
+}
+
+func (i OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArgs) ToOceanRightSizingRuleDetachWorkloadNamespaceWorkloadOutputWithContext(ctx context.Context) OceanRightSizingRuleDetachWorkloadNamespaceWorkloadOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanRightSizingRuleDetachWorkloadNamespaceWorkloadOutput)
+}
+
+// OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArrayInput is an input type that accepts OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArray and OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArrayOutput values.
+// You can construct a concrete instance of `OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArrayInput` via:
+//
+//	OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArray{ OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArgs{...} }
+type OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArrayInput interface {
+	pulumi.Input
+
+	ToOceanRightSizingRuleDetachWorkloadNamespaceWorkloadArrayOutput() OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArrayOutput
+	ToOceanRightSizingRuleDetachWorkloadNamespaceWorkloadArrayOutputWithContext(context.Context) OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArrayOutput
+}
+
+type OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArray []OceanRightSizingRuleDetachWorkloadNamespaceWorkloadInput
+
+func (OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanRightSizingRuleDetachWorkloadNamespaceWorkload)(nil)).Elem()
+}
+
+func (i OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArray) ToOceanRightSizingRuleDetachWorkloadNamespaceWorkloadArrayOutput() OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArrayOutput {
+	return i.ToOceanRightSizingRuleDetachWorkloadNamespaceWorkloadArrayOutputWithContext(context.Background())
+}
+
+func (i OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArray) ToOceanRightSizingRuleDetachWorkloadNamespaceWorkloadArrayOutputWithContext(ctx context.Context) OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArrayOutput)
+}
+
+type OceanRightSizingRuleDetachWorkloadNamespaceWorkloadOutput struct{ *pulumi.OutputState }
+
+func (OceanRightSizingRuleDetachWorkloadNamespaceWorkloadOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanRightSizingRuleDetachWorkloadNamespaceWorkload)(nil)).Elem()
+}
+
+func (o OceanRightSizingRuleDetachWorkloadNamespaceWorkloadOutput) ToOceanRightSizingRuleDetachWorkloadNamespaceWorkloadOutput() OceanRightSizingRuleDetachWorkloadNamespaceWorkloadOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleDetachWorkloadNamespaceWorkloadOutput) ToOceanRightSizingRuleDetachWorkloadNamespaceWorkloadOutputWithContext(ctx context.Context) OceanRightSizingRuleDetachWorkloadNamespaceWorkloadOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleDetachWorkloadNamespaceWorkloadOutput) RegexName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanRightSizingRuleDetachWorkloadNamespaceWorkload) *string { return v.RegexName }).(pulumi.StringPtrOutput)
+}
+
+func (o OceanRightSizingRuleDetachWorkloadNamespaceWorkloadOutput) WorkloadName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanRightSizingRuleDetachWorkloadNamespaceWorkload) *string { return v.WorkloadName }).(pulumi.StringPtrOutput)
+}
+
+func (o OceanRightSizingRuleDetachWorkloadNamespaceWorkloadOutput) WorkloadType() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanRightSizingRuleDetachWorkloadNamespaceWorkload) string { return v.WorkloadType }).(pulumi.StringOutput)
+}
+
+type OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanRightSizingRuleDetachWorkloadNamespaceWorkload)(nil)).Elem()
+}
+
+func (o OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArrayOutput) ToOceanRightSizingRuleDetachWorkloadNamespaceWorkloadArrayOutput() OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArrayOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArrayOutput) ToOceanRightSizingRuleDetachWorkloadNamespaceWorkloadArrayOutputWithContext(ctx context.Context) OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArrayOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArrayOutput) Index(i pulumi.IntInput) OceanRightSizingRuleDetachWorkloadNamespaceWorkloadOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanRightSizingRuleDetachWorkloadNamespaceWorkload {
+		return vs[0].([]OceanRightSizingRuleDetachWorkloadNamespaceWorkload)[vs[1].(int)]
+	}).(OceanRightSizingRuleDetachWorkloadNamespaceWorkloadOutput)
+}
+
+type OceanRightSizingRuleRecommendationApplicationBoundary struct {
+	CpuMax    *float64 `pulumi:"cpuMax"`
+	CpuMin    *float64 `pulumi:"cpuMin"`
+	MemoryMax *int     `pulumi:"memoryMax"`
+	MemoryMin *int     `pulumi:"memoryMin"`
+}
+
+// OceanRightSizingRuleRecommendationApplicationBoundaryInput is an input type that accepts OceanRightSizingRuleRecommendationApplicationBoundaryArgs and OceanRightSizingRuleRecommendationApplicationBoundaryOutput values.
+// You can construct a concrete instance of `OceanRightSizingRuleRecommendationApplicationBoundaryInput` via:
+//
+//	OceanRightSizingRuleRecommendationApplicationBoundaryArgs{...}
+type OceanRightSizingRuleRecommendationApplicationBoundaryInput interface {
+	pulumi.Input
+
+	ToOceanRightSizingRuleRecommendationApplicationBoundaryOutput() OceanRightSizingRuleRecommendationApplicationBoundaryOutput
+	ToOceanRightSizingRuleRecommendationApplicationBoundaryOutputWithContext(context.Context) OceanRightSizingRuleRecommendationApplicationBoundaryOutput
+}
+
+type OceanRightSizingRuleRecommendationApplicationBoundaryArgs struct {
+	CpuMax    pulumi.Float64PtrInput `pulumi:"cpuMax"`
+	CpuMin    pulumi.Float64PtrInput `pulumi:"cpuMin"`
+	MemoryMax pulumi.IntPtrInput     `pulumi:"memoryMax"`
+	MemoryMin pulumi.IntPtrInput     `pulumi:"memoryMin"`
+}
+
+func (OceanRightSizingRuleRecommendationApplicationBoundaryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanRightSizingRuleRecommendationApplicationBoundary)(nil)).Elem()
+}
+
+func (i OceanRightSizingRuleRecommendationApplicationBoundaryArgs) ToOceanRightSizingRuleRecommendationApplicationBoundaryOutput() OceanRightSizingRuleRecommendationApplicationBoundaryOutput {
+	return i.ToOceanRightSizingRuleRecommendationApplicationBoundaryOutputWithContext(context.Background())
+}
+
+func (i OceanRightSizingRuleRecommendationApplicationBoundaryArgs) ToOceanRightSizingRuleRecommendationApplicationBoundaryOutputWithContext(ctx context.Context) OceanRightSizingRuleRecommendationApplicationBoundaryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanRightSizingRuleRecommendationApplicationBoundaryOutput)
+}
+
+// OceanRightSizingRuleRecommendationApplicationBoundaryArrayInput is an input type that accepts OceanRightSizingRuleRecommendationApplicationBoundaryArray and OceanRightSizingRuleRecommendationApplicationBoundaryArrayOutput values.
+// You can construct a concrete instance of `OceanRightSizingRuleRecommendationApplicationBoundaryArrayInput` via:
+//
+//	OceanRightSizingRuleRecommendationApplicationBoundaryArray{ OceanRightSizingRuleRecommendationApplicationBoundaryArgs{...} }
+type OceanRightSizingRuleRecommendationApplicationBoundaryArrayInput interface {
+	pulumi.Input
+
+	ToOceanRightSizingRuleRecommendationApplicationBoundaryArrayOutput() OceanRightSizingRuleRecommendationApplicationBoundaryArrayOutput
+	ToOceanRightSizingRuleRecommendationApplicationBoundaryArrayOutputWithContext(context.Context) OceanRightSizingRuleRecommendationApplicationBoundaryArrayOutput
+}
+
+type OceanRightSizingRuleRecommendationApplicationBoundaryArray []OceanRightSizingRuleRecommendationApplicationBoundaryInput
+
+func (OceanRightSizingRuleRecommendationApplicationBoundaryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanRightSizingRuleRecommendationApplicationBoundary)(nil)).Elem()
+}
+
+func (i OceanRightSizingRuleRecommendationApplicationBoundaryArray) ToOceanRightSizingRuleRecommendationApplicationBoundaryArrayOutput() OceanRightSizingRuleRecommendationApplicationBoundaryArrayOutput {
+	return i.ToOceanRightSizingRuleRecommendationApplicationBoundaryArrayOutputWithContext(context.Background())
+}
+
+func (i OceanRightSizingRuleRecommendationApplicationBoundaryArray) ToOceanRightSizingRuleRecommendationApplicationBoundaryArrayOutputWithContext(ctx context.Context) OceanRightSizingRuleRecommendationApplicationBoundaryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanRightSizingRuleRecommendationApplicationBoundaryArrayOutput)
+}
+
+type OceanRightSizingRuleRecommendationApplicationBoundaryOutput struct{ *pulumi.OutputState }
+
+func (OceanRightSizingRuleRecommendationApplicationBoundaryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanRightSizingRuleRecommendationApplicationBoundary)(nil)).Elem()
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationBoundaryOutput) ToOceanRightSizingRuleRecommendationApplicationBoundaryOutput() OceanRightSizingRuleRecommendationApplicationBoundaryOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationBoundaryOutput) ToOceanRightSizingRuleRecommendationApplicationBoundaryOutputWithContext(ctx context.Context) OceanRightSizingRuleRecommendationApplicationBoundaryOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationBoundaryOutput) CpuMax() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v OceanRightSizingRuleRecommendationApplicationBoundary) *float64 { return v.CpuMax }).(pulumi.Float64PtrOutput)
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationBoundaryOutput) CpuMin() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v OceanRightSizingRuleRecommendationApplicationBoundary) *float64 { return v.CpuMin }).(pulumi.Float64PtrOutput)
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationBoundaryOutput) MemoryMax() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanRightSizingRuleRecommendationApplicationBoundary) *int { return v.MemoryMax }).(pulumi.IntPtrOutput)
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationBoundaryOutput) MemoryMin() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanRightSizingRuleRecommendationApplicationBoundary) *int { return v.MemoryMin }).(pulumi.IntPtrOutput)
+}
+
+type OceanRightSizingRuleRecommendationApplicationBoundaryArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanRightSizingRuleRecommendationApplicationBoundaryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanRightSizingRuleRecommendationApplicationBoundary)(nil)).Elem()
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationBoundaryArrayOutput) ToOceanRightSizingRuleRecommendationApplicationBoundaryArrayOutput() OceanRightSizingRuleRecommendationApplicationBoundaryArrayOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationBoundaryArrayOutput) ToOceanRightSizingRuleRecommendationApplicationBoundaryArrayOutputWithContext(ctx context.Context) OceanRightSizingRuleRecommendationApplicationBoundaryArrayOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationBoundaryArrayOutput) Index(i pulumi.IntInput) OceanRightSizingRuleRecommendationApplicationBoundaryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanRightSizingRuleRecommendationApplicationBoundary {
+		return vs[0].([]OceanRightSizingRuleRecommendationApplicationBoundary)[vs[1].(int)]
+	}).(OceanRightSizingRuleRecommendationApplicationBoundaryOutput)
+}
+
+type OceanRightSizingRuleRecommendationApplicationInterval struct {
+	MonthlyRepetitionBases []OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase `pulumi:"monthlyRepetitionBases"`
+	RepetitionBasis        string                                                                       `pulumi:"repetitionBasis"`
+	WeeklyRepetitionBases  []OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBase  `pulumi:"weeklyRepetitionBases"`
+}
+
+// OceanRightSizingRuleRecommendationApplicationIntervalInput is an input type that accepts OceanRightSizingRuleRecommendationApplicationIntervalArgs and OceanRightSizingRuleRecommendationApplicationIntervalOutput values.
+// You can construct a concrete instance of `OceanRightSizingRuleRecommendationApplicationIntervalInput` via:
+//
+//	OceanRightSizingRuleRecommendationApplicationIntervalArgs{...}
+type OceanRightSizingRuleRecommendationApplicationIntervalInput interface {
+	pulumi.Input
+
+	ToOceanRightSizingRuleRecommendationApplicationIntervalOutput() OceanRightSizingRuleRecommendationApplicationIntervalOutput
+	ToOceanRightSizingRuleRecommendationApplicationIntervalOutputWithContext(context.Context) OceanRightSizingRuleRecommendationApplicationIntervalOutput
+}
+
+type OceanRightSizingRuleRecommendationApplicationIntervalArgs struct {
+	MonthlyRepetitionBases OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArrayInput `pulumi:"monthlyRepetitionBases"`
+	RepetitionBasis        pulumi.StringInput                                                                   `pulumi:"repetitionBasis"`
+	WeeklyRepetitionBases  OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArrayInput  `pulumi:"weeklyRepetitionBases"`
+}
+
+func (OceanRightSizingRuleRecommendationApplicationIntervalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanRightSizingRuleRecommendationApplicationInterval)(nil)).Elem()
+}
+
+func (i OceanRightSizingRuleRecommendationApplicationIntervalArgs) ToOceanRightSizingRuleRecommendationApplicationIntervalOutput() OceanRightSizingRuleRecommendationApplicationIntervalOutput {
+	return i.ToOceanRightSizingRuleRecommendationApplicationIntervalOutputWithContext(context.Background())
+}
+
+func (i OceanRightSizingRuleRecommendationApplicationIntervalArgs) ToOceanRightSizingRuleRecommendationApplicationIntervalOutputWithContext(ctx context.Context) OceanRightSizingRuleRecommendationApplicationIntervalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanRightSizingRuleRecommendationApplicationIntervalOutput)
+}
+
+// OceanRightSizingRuleRecommendationApplicationIntervalArrayInput is an input type that accepts OceanRightSizingRuleRecommendationApplicationIntervalArray and OceanRightSizingRuleRecommendationApplicationIntervalArrayOutput values.
+// You can construct a concrete instance of `OceanRightSizingRuleRecommendationApplicationIntervalArrayInput` via:
+//
+//	OceanRightSizingRuleRecommendationApplicationIntervalArray{ OceanRightSizingRuleRecommendationApplicationIntervalArgs{...} }
+type OceanRightSizingRuleRecommendationApplicationIntervalArrayInput interface {
+	pulumi.Input
+
+	ToOceanRightSizingRuleRecommendationApplicationIntervalArrayOutput() OceanRightSizingRuleRecommendationApplicationIntervalArrayOutput
+	ToOceanRightSizingRuleRecommendationApplicationIntervalArrayOutputWithContext(context.Context) OceanRightSizingRuleRecommendationApplicationIntervalArrayOutput
+}
+
+type OceanRightSizingRuleRecommendationApplicationIntervalArray []OceanRightSizingRuleRecommendationApplicationIntervalInput
+
+func (OceanRightSizingRuleRecommendationApplicationIntervalArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanRightSizingRuleRecommendationApplicationInterval)(nil)).Elem()
+}
+
+func (i OceanRightSizingRuleRecommendationApplicationIntervalArray) ToOceanRightSizingRuleRecommendationApplicationIntervalArrayOutput() OceanRightSizingRuleRecommendationApplicationIntervalArrayOutput {
+	return i.ToOceanRightSizingRuleRecommendationApplicationIntervalArrayOutputWithContext(context.Background())
+}
+
+func (i OceanRightSizingRuleRecommendationApplicationIntervalArray) ToOceanRightSizingRuleRecommendationApplicationIntervalArrayOutputWithContext(ctx context.Context) OceanRightSizingRuleRecommendationApplicationIntervalArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanRightSizingRuleRecommendationApplicationIntervalArrayOutput)
+}
+
+type OceanRightSizingRuleRecommendationApplicationIntervalOutput struct{ *pulumi.OutputState }
+
+func (OceanRightSizingRuleRecommendationApplicationIntervalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanRightSizingRuleRecommendationApplicationInterval)(nil)).Elem()
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationIntervalOutput) ToOceanRightSizingRuleRecommendationApplicationIntervalOutput() OceanRightSizingRuleRecommendationApplicationIntervalOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationIntervalOutput) ToOceanRightSizingRuleRecommendationApplicationIntervalOutputWithContext(ctx context.Context) OceanRightSizingRuleRecommendationApplicationIntervalOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationIntervalOutput) MonthlyRepetitionBases() OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArrayOutput {
+	return o.ApplyT(func(v OceanRightSizingRuleRecommendationApplicationInterval) []OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase {
+		return v.MonthlyRepetitionBases
+	}).(OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArrayOutput)
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationIntervalOutput) RepetitionBasis() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanRightSizingRuleRecommendationApplicationInterval) string { return v.RepetitionBasis }).(pulumi.StringOutput)
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationIntervalOutput) WeeklyRepetitionBases() OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArrayOutput {
+	return o.ApplyT(func(v OceanRightSizingRuleRecommendationApplicationInterval) []OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBase {
+		return v.WeeklyRepetitionBases
+	}).(OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArrayOutput)
+}
+
+type OceanRightSizingRuleRecommendationApplicationIntervalArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanRightSizingRuleRecommendationApplicationIntervalArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanRightSizingRuleRecommendationApplicationInterval)(nil)).Elem()
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationIntervalArrayOutput) ToOceanRightSizingRuleRecommendationApplicationIntervalArrayOutput() OceanRightSizingRuleRecommendationApplicationIntervalArrayOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationIntervalArrayOutput) ToOceanRightSizingRuleRecommendationApplicationIntervalArrayOutputWithContext(ctx context.Context) OceanRightSizingRuleRecommendationApplicationIntervalArrayOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationIntervalArrayOutput) Index(i pulumi.IntInput) OceanRightSizingRuleRecommendationApplicationIntervalOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanRightSizingRuleRecommendationApplicationInterval {
+		return vs[0].([]OceanRightSizingRuleRecommendationApplicationInterval)[vs[1].(int)]
+	}).(OceanRightSizingRuleRecommendationApplicationIntervalOutput)
+}
+
+type OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase struct {
+	IntervalMonths        []int                                                                                            `pulumi:"intervalMonths"`
+	WeekOfTheMonths       []string                                                                                         `pulumi:"weekOfTheMonths"`
+	WeeklyRepetitionBases []OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBase `pulumi:"weeklyRepetitionBases"`
+}
+
+// OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseInput is an input type that accepts OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs and OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseOutput values.
+// You can construct a concrete instance of `OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseInput` via:
+//
+//	OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs{...}
+type OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseInput interface {
+	pulumi.Input
+
+	ToOceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseOutput() OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseOutput
+	ToOceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseOutputWithContext(context.Context) OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseOutput
+}
+
+type OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs struct {
+	IntervalMonths        pulumi.IntArrayInput                                                                                     `pulumi:"intervalMonths"`
+	WeekOfTheMonths       pulumi.StringArrayInput                                                                                  `pulumi:"weekOfTheMonths"`
+	WeeklyRepetitionBases OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArrayInput `pulumi:"weeklyRepetitionBases"`
+}
+
+func (OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase)(nil)).Elem()
+}
+
+func (i OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs) ToOceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseOutput() OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseOutput {
+	return i.ToOceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseOutputWithContext(context.Background())
+}
+
+func (i OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs) ToOceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseOutputWithContext(ctx context.Context) OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseOutput)
+}
+
+// OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArrayInput is an input type that accepts OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArray and OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArrayOutput values.
+// You can construct a concrete instance of `OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArrayInput` via:
+//
+//	OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArray{ OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs{...} }
+type OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArrayInput interface {
+	pulumi.Input
+
+	ToOceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArrayOutput() OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArrayOutput
+	ToOceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArrayOutputWithContext(context.Context) OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArrayOutput
+}
+
+type OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArray []OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseInput
+
+func (OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase)(nil)).Elem()
+}
+
+func (i OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArray) ToOceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArrayOutput() OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArrayOutput {
+	return i.ToOceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArrayOutputWithContext(context.Background())
+}
+
+func (i OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArray) ToOceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArrayOutputWithContext(ctx context.Context) OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArrayOutput)
+}
+
+type OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseOutput struct{ *pulumi.OutputState }
+
+func (OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase)(nil)).Elem()
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseOutput) ToOceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseOutput() OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseOutput) ToOceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseOutputWithContext(ctx context.Context) OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseOutput) IntervalMonths() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase) []int {
+		return v.IntervalMonths
+	}).(pulumi.IntArrayOutput)
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseOutput) WeekOfTheMonths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase) []string {
+		return v.WeekOfTheMonths
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseOutput) WeeklyRepetitionBases() OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArrayOutput {
+	return o.ApplyT(func(v OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase) []OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBase {
+		return v.WeeklyRepetitionBases
+	}).(OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArrayOutput)
+}
+
+type OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase)(nil)).Elem()
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArrayOutput) ToOceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArrayOutput() OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArrayOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArrayOutput) ToOceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArrayOutputWithContext(ctx context.Context) OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArrayOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArrayOutput) Index(i pulumi.IntInput) OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase {
+		return vs[0].([]OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase)[vs[1].(int)]
+	}).(OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseOutput)
+}
+
+type OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBase struct {
+	IntervalDays           []string `pulumi:"intervalDays"`
+	IntervalHoursEndTime   string   `pulumi:"intervalHoursEndTime"`
+	IntervalHoursStartTime string   `pulumi:"intervalHoursStartTime"`
+}
+
+// OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseInput is an input type that accepts OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgs and OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseOutput values.
+// You can construct a concrete instance of `OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseInput` via:
+//
+//	OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgs{...}
+type OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseInput interface {
+	pulumi.Input
+
+	ToOceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseOutput() OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseOutput
+	ToOceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseOutputWithContext(context.Context) OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseOutput
+}
+
+type OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgs struct {
+	IntervalDays           pulumi.StringArrayInput `pulumi:"intervalDays"`
+	IntervalHoursEndTime   pulumi.StringInput      `pulumi:"intervalHoursEndTime"`
+	IntervalHoursStartTime pulumi.StringInput      `pulumi:"intervalHoursStartTime"`
+}
+
+func (OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBase)(nil)).Elem()
+}
+
+func (i OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgs) ToOceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseOutput() OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseOutput {
+	return i.ToOceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseOutputWithContext(context.Background())
+}
+
+func (i OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgs) ToOceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseOutputWithContext(ctx context.Context) OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseOutput)
+}
+
+// OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArrayInput is an input type that accepts OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArray and OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArrayOutput values.
+// You can construct a concrete instance of `OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArrayInput` via:
+//
+//	OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArray{ OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgs{...} }
+type OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArrayInput interface {
+	pulumi.Input
+
+	ToOceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArrayOutput() OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArrayOutput
+	ToOceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArrayOutputWithContext(context.Context) OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArrayOutput
+}
+
+type OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArray []OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseInput
+
+func (OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBase)(nil)).Elem()
+}
+
+func (i OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArray) ToOceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArrayOutput() OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArrayOutput {
+	return i.ToOceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArrayOutputWithContext(context.Background())
+}
+
+func (i OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArray) ToOceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArrayOutputWithContext(ctx context.Context) OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArrayOutput)
+}
+
+type OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseOutput struct{ *pulumi.OutputState }
+
+func (OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBase)(nil)).Elem()
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseOutput) ToOceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseOutput() OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseOutput) ToOceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseOutputWithContext(ctx context.Context) OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseOutput) IntervalDays() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBase) []string {
+		return v.IntervalDays
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseOutput) IntervalHoursEndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBase) string {
+		return v.IntervalHoursEndTime
+	}).(pulumi.StringOutput)
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseOutput) IntervalHoursStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBase) string {
+		return v.IntervalHoursStartTime
+	}).(pulumi.StringOutput)
+}
+
+type OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBase)(nil)).Elem()
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArrayOutput) ToOceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArrayOutput() OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArrayOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArrayOutput) ToOceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArrayOutputWithContext(ctx context.Context) OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArrayOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArrayOutput) Index(i pulumi.IntInput) OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBase {
+		return vs[0].([]OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBase)[vs[1].(int)]
+	}).(OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseOutput)
+}
+
+type OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBase struct {
+	IntervalDays           []string `pulumi:"intervalDays"`
+	IntervalHoursEndTime   string   `pulumi:"intervalHoursEndTime"`
+	IntervalHoursStartTime string   `pulumi:"intervalHoursStartTime"`
+}
+
+// OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseInput is an input type that accepts OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgs and OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseOutput values.
+// You can construct a concrete instance of `OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseInput` via:
+//
+//	OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgs{...}
+type OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseInput interface {
+	pulumi.Input
+
+	ToOceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseOutput() OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseOutput
+	ToOceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseOutputWithContext(context.Context) OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseOutput
+}
+
+type OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgs struct {
+	IntervalDays           pulumi.StringArrayInput `pulumi:"intervalDays"`
+	IntervalHoursEndTime   pulumi.StringInput      `pulumi:"intervalHoursEndTime"`
+	IntervalHoursStartTime pulumi.StringInput      `pulumi:"intervalHoursStartTime"`
+}
+
+func (OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBase)(nil)).Elem()
+}
+
+func (i OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgs) ToOceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseOutput() OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseOutput {
+	return i.ToOceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseOutputWithContext(context.Background())
+}
+
+func (i OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgs) ToOceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseOutputWithContext(ctx context.Context) OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseOutput)
+}
+
+// OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArrayInput is an input type that accepts OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArray and OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArrayOutput values.
+// You can construct a concrete instance of `OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArrayInput` via:
+//
+//	OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArray{ OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgs{...} }
+type OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArrayInput interface {
+	pulumi.Input
+
+	ToOceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArrayOutput() OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArrayOutput
+	ToOceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArrayOutputWithContext(context.Context) OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArrayOutput
+}
+
+type OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArray []OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseInput
+
+func (OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBase)(nil)).Elem()
+}
+
+func (i OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArray) ToOceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArrayOutput() OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArrayOutput {
+	return i.ToOceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArrayOutputWithContext(context.Background())
+}
+
+func (i OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArray) ToOceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArrayOutputWithContext(ctx context.Context) OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArrayOutput)
+}
+
+type OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseOutput struct{ *pulumi.OutputState }
+
+func (OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBase)(nil)).Elem()
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseOutput) ToOceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseOutput() OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseOutput) ToOceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseOutputWithContext(ctx context.Context) OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseOutput) IntervalDays() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBase) []string {
+		return v.IntervalDays
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseOutput) IntervalHoursEndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBase) string {
+		return v.IntervalHoursEndTime
+	}).(pulumi.StringOutput)
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseOutput) IntervalHoursStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBase) string {
+		return v.IntervalHoursStartTime
+	}).(pulumi.StringOutput)
+}
+
+type OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBase)(nil)).Elem()
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArrayOutput) ToOceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArrayOutput() OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArrayOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArrayOutput) ToOceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArrayOutputWithContext(ctx context.Context) OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArrayOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArrayOutput) Index(i pulumi.IntInput) OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBase {
+		return vs[0].([]OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBase)[vs[1].(int)]
+	}).(OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseOutput)
+}
+
+type OceanRightSizingRuleRecommendationApplicationMinThreshold struct {
+	CpuPercentage    *float64 `pulumi:"cpuPercentage"`
+	MemoryPercentage *float64 `pulumi:"memoryPercentage"`
+}
+
+// OceanRightSizingRuleRecommendationApplicationMinThresholdInput is an input type that accepts OceanRightSizingRuleRecommendationApplicationMinThresholdArgs and OceanRightSizingRuleRecommendationApplicationMinThresholdOutput values.
+// You can construct a concrete instance of `OceanRightSizingRuleRecommendationApplicationMinThresholdInput` via:
+//
+//	OceanRightSizingRuleRecommendationApplicationMinThresholdArgs{...}
+type OceanRightSizingRuleRecommendationApplicationMinThresholdInput interface {
+	pulumi.Input
+
+	ToOceanRightSizingRuleRecommendationApplicationMinThresholdOutput() OceanRightSizingRuleRecommendationApplicationMinThresholdOutput
+	ToOceanRightSizingRuleRecommendationApplicationMinThresholdOutputWithContext(context.Context) OceanRightSizingRuleRecommendationApplicationMinThresholdOutput
+}
+
+type OceanRightSizingRuleRecommendationApplicationMinThresholdArgs struct {
+	CpuPercentage    pulumi.Float64PtrInput `pulumi:"cpuPercentage"`
+	MemoryPercentage pulumi.Float64PtrInput `pulumi:"memoryPercentage"`
+}
+
+func (OceanRightSizingRuleRecommendationApplicationMinThresholdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanRightSizingRuleRecommendationApplicationMinThreshold)(nil)).Elem()
+}
+
+func (i OceanRightSizingRuleRecommendationApplicationMinThresholdArgs) ToOceanRightSizingRuleRecommendationApplicationMinThresholdOutput() OceanRightSizingRuleRecommendationApplicationMinThresholdOutput {
+	return i.ToOceanRightSizingRuleRecommendationApplicationMinThresholdOutputWithContext(context.Background())
+}
+
+func (i OceanRightSizingRuleRecommendationApplicationMinThresholdArgs) ToOceanRightSizingRuleRecommendationApplicationMinThresholdOutputWithContext(ctx context.Context) OceanRightSizingRuleRecommendationApplicationMinThresholdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanRightSizingRuleRecommendationApplicationMinThresholdOutput)
+}
+
+// OceanRightSizingRuleRecommendationApplicationMinThresholdArrayInput is an input type that accepts OceanRightSizingRuleRecommendationApplicationMinThresholdArray and OceanRightSizingRuleRecommendationApplicationMinThresholdArrayOutput values.
+// You can construct a concrete instance of `OceanRightSizingRuleRecommendationApplicationMinThresholdArrayInput` via:
+//
+//	OceanRightSizingRuleRecommendationApplicationMinThresholdArray{ OceanRightSizingRuleRecommendationApplicationMinThresholdArgs{...} }
+type OceanRightSizingRuleRecommendationApplicationMinThresholdArrayInput interface {
+	pulumi.Input
+
+	ToOceanRightSizingRuleRecommendationApplicationMinThresholdArrayOutput() OceanRightSizingRuleRecommendationApplicationMinThresholdArrayOutput
+	ToOceanRightSizingRuleRecommendationApplicationMinThresholdArrayOutputWithContext(context.Context) OceanRightSizingRuleRecommendationApplicationMinThresholdArrayOutput
+}
+
+type OceanRightSizingRuleRecommendationApplicationMinThresholdArray []OceanRightSizingRuleRecommendationApplicationMinThresholdInput
+
+func (OceanRightSizingRuleRecommendationApplicationMinThresholdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanRightSizingRuleRecommendationApplicationMinThreshold)(nil)).Elem()
+}
+
+func (i OceanRightSizingRuleRecommendationApplicationMinThresholdArray) ToOceanRightSizingRuleRecommendationApplicationMinThresholdArrayOutput() OceanRightSizingRuleRecommendationApplicationMinThresholdArrayOutput {
+	return i.ToOceanRightSizingRuleRecommendationApplicationMinThresholdArrayOutputWithContext(context.Background())
+}
+
+func (i OceanRightSizingRuleRecommendationApplicationMinThresholdArray) ToOceanRightSizingRuleRecommendationApplicationMinThresholdArrayOutputWithContext(ctx context.Context) OceanRightSizingRuleRecommendationApplicationMinThresholdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanRightSizingRuleRecommendationApplicationMinThresholdArrayOutput)
+}
+
+type OceanRightSizingRuleRecommendationApplicationMinThresholdOutput struct{ *pulumi.OutputState }
+
+func (OceanRightSizingRuleRecommendationApplicationMinThresholdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanRightSizingRuleRecommendationApplicationMinThreshold)(nil)).Elem()
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationMinThresholdOutput) ToOceanRightSizingRuleRecommendationApplicationMinThresholdOutput() OceanRightSizingRuleRecommendationApplicationMinThresholdOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationMinThresholdOutput) ToOceanRightSizingRuleRecommendationApplicationMinThresholdOutputWithContext(ctx context.Context) OceanRightSizingRuleRecommendationApplicationMinThresholdOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationMinThresholdOutput) CpuPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v OceanRightSizingRuleRecommendationApplicationMinThreshold) *float64 { return v.CpuPercentage }).(pulumi.Float64PtrOutput)
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationMinThresholdOutput) MemoryPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v OceanRightSizingRuleRecommendationApplicationMinThreshold) *float64 { return v.MemoryPercentage }).(pulumi.Float64PtrOutput)
+}
+
+type OceanRightSizingRuleRecommendationApplicationMinThresholdArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanRightSizingRuleRecommendationApplicationMinThresholdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanRightSizingRuleRecommendationApplicationMinThreshold)(nil)).Elem()
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationMinThresholdArrayOutput) ToOceanRightSizingRuleRecommendationApplicationMinThresholdArrayOutput() OceanRightSizingRuleRecommendationApplicationMinThresholdArrayOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationMinThresholdArrayOutput) ToOceanRightSizingRuleRecommendationApplicationMinThresholdArrayOutputWithContext(ctx context.Context) OceanRightSizingRuleRecommendationApplicationMinThresholdArrayOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationMinThresholdArrayOutput) Index(i pulumi.IntInput) OceanRightSizingRuleRecommendationApplicationMinThresholdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanRightSizingRuleRecommendationApplicationMinThreshold {
+		return vs[0].([]OceanRightSizingRuleRecommendationApplicationMinThreshold)[vs[1].(int)]
+	}).(OceanRightSizingRuleRecommendationApplicationMinThresholdOutput)
+}
+
+type OceanRightSizingRuleRecommendationApplicationOverheadValue struct {
+	CpuPercentage    *float64 `pulumi:"cpuPercentage"`
+	MemoryPercentage *float64 `pulumi:"memoryPercentage"`
+}
+
+// OceanRightSizingRuleRecommendationApplicationOverheadValueInput is an input type that accepts OceanRightSizingRuleRecommendationApplicationOverheadValueArgs and OceanRightSizingRuleRecommendationApplicationOverheadValueOutput values.
+// You can construct a concrete instance of `OceanRightSizingRuleRecommendationApplicationOverheadValueInput` via:
+//
+//	OceanRightSizingRuleRecommendationApplicationOverheadValueArgs{...}
+type OceanRightSizingRuleRecommendationApplicationOverheadValueInput interface {
+	pulumi.Input
+
+	ToOceanRightSizingRuleRecommendationApplicationOverheadValueOutput() OceanRightSizingRuleRecommendationApplicationOverheadValueOutput
+	ToOceanRightSizingRuleRecommendationApplicationOverheadValueOutputWithContext(context.Context) OceanRightSizingRuleRecommendationApplicationOverheadValueOutput
+}
+
+type OceanRightSizingRuleRecommendationApplicationOverheadValueArgs struct {
+	CpuPercentage    pulumi.Float64PtrInput `pulumi:"cpuPercentage"`
+	MemoryPercentage pulumi.Float64PtrInput `pulumi:"memoryPercentage"`
+}
+
+func (OceanRightSizingRuleRecommendationApplicationOverheadValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanRightSizingRuleRecommendationApplicationOverheadValue)(nil)).Elem()
+}
+
+func (i OceanRightSizingRuleRecommendationApplicationOverheadValueArgs) ToOceanRightSizingRuleRecommendationApplicationOverheadValueOutput() OceanRightSizingRuleRecommendationApplicationOverheadValueOutput {
+	return i.ToOceanRightSizingRuleRecommendationApplicationOverheadValueOutputWithContext(context.Background())
+}
+
+func (i OceanRightSizingRuleRecommendationApplicationOverheadValueArgs) ToOceanRightSizingRuleRecommendationApplicationOverheadValueOutputWithContext(ctx context.Context) OceanRightSizingRuleRecommendationApplicationOverheadValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanRightSizingRuleRecommendationApplicationOverheadValueOutput)
+}
+
+// OceanRightSizingRuleRecommendationApplicationOverheadValueArrayInput is an input type that accepts OceanRightSizingRuleRecommendationApplicationOverheadValueArray and OceanRightSizingRuleRecommendationApplicationOverheadValueArrayOutput values.
+// You can construct a concrete instance of `OceanRightSizingRuleRecommendationApplicationOverheadValueArrayInput` via:
+//
+//	OceanRightSizingRuleRecommendationApplicationOverheadValueArray{ OceanRightSizingRuleRecommendationApplicationOverheadValueArgs{...} }
+type OceanRightSizingRuleRecommendationApplicationOverheadValueArrayInput interface {
+	pulumi.Input
+
+	ToOceanRightSizingRuleRecommendationApplicationOverheadValueArrayOutput() OceanRightSizingRuleRecommendationApplicationOverheadValueArrayOutput
+	ToOceanRightSizingRuleRecommendationApplicationOverheadValueArrayOutputWithContext(context.Context) OceanRightSizingRuleRecommendationApplicationOverheadValueArrayOutput
+}
+
+type OceanRightSizingRuleRecommendationApplicationOverheadValueArray []OceanRightSizingRuleRecommendationApplicationOverheadValueInput
+
+func (OceanRightSizingRuleRecommendationApplicationOverheadValueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanRightSizingRuleRecommendationApplicationOverheadValue)(nil)).Elem()
+}
+
+func (i OceanRightSizingRuleRecommendationApplicationOverheadValueArray) ToOceanRightSizingRuleRecommendationApplicationOverheadValueArrayOutput() OceanRightSizingRuleRecommendationApplicationOverheadValueArrayOutput {
+	return i.ToOceanRightSizingRuleRecommendationApplicationOverheadValueArrayOutputWithContext(context.Background())
+}
+
+func (i OceanRightSizingRuleRecommendationApplicationOverheadValueArray) ToOceanRightSizingRuleRecommendationApplicationOverheadValueArrayOutputWithContext(ctx context.Context) OceanRightSizingRuleRecommendationApplicationOverheadValueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanRightSizingRuleRecommendationApplicationOverheadValueArrayOutput)
+}
+
+type OceanRightSizingRuleRecommendationApplicationOverheadValueOutput struct{ *pulumi.OutputState }
+
+func (OceanRightSizingRuleRecommendationApplicationOverheadValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanRightSizingRuleRecommendationApplicationOverheadValue)(nil)).Elem()
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationOverheadValueOutput) ToOceanRightSizingRuleRecommendationApplicationOverheadValueOutput() OceanRightSizingRuleRecommendationApplicationOverheadValueOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationOverheadValueOutput) ToOceanRightSizingRuleRecommendationApplicationOverheadValueOutputWithContext(ctx context.Context) OceanRightSizingRuleRecommendationApplicationOverheadValueOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationOverheadValueOutput) CpuPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v OceanRightSizingRuleRecommendationApplicationOverheadValue) *float64 { return v.CpuPercentage }).(pulumi.Float64PtrOutput)
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationOverheadValueOutput) MemoryPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v OceanRightSizingRuleRecommendationApplicationOverheadValue) *float64 { return v.MemoryPercentage }).(pulumi.Float64PtrOutput)
+}
+
+type OceanRightSizingRuleRecommendationApplicationOverheadValueArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanRightSizingRuleRecommendationApplicationOverheadValueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanRightSizingRuleRecommendationApplicationOverheadValue)(nil)).Elem()
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationOverheadValueArrayOutput) ToOceanRightSizingRuleRecommendationApplicationOverheadValueArrayOutput() OceanRightSizingRuleRecommendationApplicationOverheadValueArrayOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationOverheadValueArrayOutput) ToOceanRightSizingRuleRecommendationApplicationOverheadValueArrayOutputWithContext(ctx context.Context) OceanRightSizingRuleRecommendationApplicationOverheadValueArrayOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationOverheadValueArrayOutput) Index(i pulumi.IntInput) OceanRightSizingRuleRecommendationApplicationOverheadValueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanRightSizingRuleRecommendationApplicationOverheadValue {
+		return vs[0].([]OceanRightSizingRuleRecommendationApplicationOverheadValue)[vs[1].(int)]
+	}).(OceanRightSizingRuleRecommendationApplicationOverheadValueOutput)
 }
 
 type StatefulNodeAzureAttachDataDisk struct {
@@ -5936,6 +7666,169 @@ func (o StatefulNodeAzureUpdateStateArrayOutput) Index(i pulumi.IntInput) Statef
 	}).(StatefulNodeAzureUpdateStateOutput)
 }
 
+type StatefulNodeAzureVmSizes struct {
+	OdSizes            []string `pulumi:"odSizes"`
+	PreferredSpotSizes []string `pulumi:"preferredSpotSizes"`
+	SpotSizes          []string `pulumi:"spotSizes"`
+}
+
+// StatefulNodeAzureVmSizesInput is an input type that accepts StatefulNodeAzureVmSizesArgs and StatefulNodeAzureVmSizesOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureVmSizesInput` via:
+//
+//	StatefulNodeAzureVmSizesArgs{...}
+type StatefulNodeAzureVmSizesInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureVmSizesOutput() StatefulNodeAzureVmSizesOutput
+	ToStatefulNodeAzureVmSizesOutputWithContext(context.Context) StatefulNodeAzureVmSizesOutput
+}
+
+type StatefulNodeAzureVmSizesArgs struct {
+	OdSizes            pulumi.StringArrayInput `pulumi:"odSizes"`
+	PreferredSpotSizes pulumi.StringArrayInput `pulumi:"preferredSpotSizes"`
+	SpotSizes          pulumi.StringArrayInput `pulumi:"spotSizes"`
+}
+
+func (StatefulNodeAzureVmSizesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureVmSizes)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureVmSizesArgs) ToStatefulNodeAzureVmSizesOutput() StatefulNodeAzureVmSizesOutput {
+	return i.ToStatefulNodeAzureVmSizesOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureVmSizesArgs) ToStatefulNodeAzureVmSizesOutputWithContext(ctx context.Context) StatefulNodeAzureVmSizesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureVmSizesOutput)
+}
+
+func (i StatefulNodeAzureVmSizesArgs) ToStatefulNodeAzureVmSizesPtrOutput() StatefulNodeAzureVmSizesPtrOutput {
+	return i.ToStatefulNodeAzureVmSizesPtrOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureVmSizesArgs) ToStatefulNodeAzureVmSizesPtrOutputWithContext(ctx context.Context) StatefulNodeAzureVmSizesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureVmSizesOutput).ToStatefulNodeAzureVmSizesPtrOutputWithContext(ctx)
+}
+
+// StatefulNodeAzureVmSizesPtrInput is an input type that accepts StatefulNodeAzureVmSizesArgs, StatefulNodeAzureVmSizesPtr and StatefulNodeAzureVmSizesPtrOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureVmSizesPtrInput` via:
+//
+//	        StatefulNodeAzureVmSizesArgs{...}
+//
+//	or:
+//
+//	        nil
+type StatefulNodeAzureVmSizesPtrInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureVmSizesPtrOutput() StatefulNodeAzureVmSizesPtrOutput
+	ToStatefulNodeAzureVmSizesPtrOutputWithContext(context.Context) StatefulNodeAzureVmSizesPtrOutput
+}
+
+type statefulNodeAzureVmSizesPtrType StatefulNodeAzureVmSizesArgs
+
+func StatefulNodeAzureVmSizesPtr(v *StatefulNodeAzureVmSizesArgs) StatefulNodeAzureVmSizesPtrInput {
+	return (*statefulNodeAzureVmSizesPtrType)(v)
+}
+
+func (*statefulNodeAzureVmSizesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatefulNodeAzureVmSizes)(nil)).Elem()
+}
+
+func (i *statefulNodeAzureVmSizesPtrType) ToStatefulNodeAzureVmSizesPtrOutput() StatefulNodeAzureVmSizesPtrOutput {
+	return i.ToStatefulNodeAzureVmSizesPtrOutputWithContext(context.Background())
+}
+
+func (i *statefulNodeAzureVmSizesPtrType) ToStatefulNodeAzureVmSizesPtrOutputWithContext(ctx context.Context) StatefulNodeAzureVmSizesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureVmSizesPtrOutput)
+}
+
+type StatefulNodeAzureVmSizesOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureVmSizesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureVmSizes)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureVmSizesOutput) ToStatefulNodeAzureVmSizesOutput() StatefulNodeAzureVmSizesOutput {
+	return o
+}
+
+func (o StatefulNodeAzureVmSizesOutput) ToStatefulNodeAzureVmSizesOutputWithContext(ctx context.Context) StatefulNodeAzureVmSizesOutput {
+	return o
+}
+
+func (o StatefulNodeAzureVmSizesOutput) ToStatefulNodeAzureVmSizesPtrOutput() StatefulNodeAzureVmSizesPtrOutput {
+	return o.ToStatefulNodeAzureVmSizesPtrOutputWithContext(context.Background())
+}
+
+func (o StatefulNodeAzureVmSizesOutput) ToStatefulNodeAzureVmSizesPtrOutputWithContext(ctx context.Context) StatefulNodeAzureVmSizesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatefulNodeAzureVmSizes) *StatefulNodeAzureVmSizes {
+		return &v
+	}).(StatefulNodeAzureVmSizesPtrOutput)
+}
+
+func (o StatefulNodeAzureVmSizesOutput) OdSizes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StatefulNodeAzureVmSizes) []string { return v.OdSizes }).(pulumi.StringArrayOutput)
+}
+
+func (o StatefulNodeAzureVmSizesOutput) PreferredSpotSizes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StatefulNodeAzureVmSizes) []string { return v.PreferredSpotSizes }).(pulumi.StringArrayOutput)
+}
+
+func (o StatefulNodeAzureVmSizesOutput) SpotSizes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StatefulNodeAzureVmSizes) []string { return v.SpotSizes }).(pulumi.StringArrayOutput)
+}
+
+type StatefulNodeAzureVmSizesPtrOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureVmSizesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatefulNodeAzureVmSizes)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureVmSizesPtrOutput) ToStatefulNodeAzureVmSizesPtrOutput() StatefulNodeAzureVmSizesPtrOutput {
+	return o
+}
+
+func (o StatefulNodeAzureVmSizesPtrOutput) ToStatefulNodeAzureVmSizesPtrOutputWithContext(ctx context.Context) StatefulNodeAzureVmSizesPtrOutput {
+	return o
+}
+
+func (o StatefulNodeAzureVmSizesPtrOutput) Elem() StatefulNodeAzureVmSizesOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureVmSizes) StatefulNodeAzureVmSizes {
+		if v != nil {
+			return *v
+		}
+		var ret StatefulNodeAzureVmSizes
+		return ret
+	}).(StatefulNodeAzureVmSizesOutput)
+}
+
+func (o StatefulNodeAzureVmSizesPtrOutput) OdSizes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureVmSizes) []string {
+		if v == nil {
+			return nil
+		}
+		return v.OdSizes
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o StatefulNodeAzureVmSizesPtrOutput) PreferredSpotSizes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureVmSizes) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PreferredSpotSizes
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o StatefulNodeAzureVmSizesPtrOutput) SpotSizes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureVmSizes) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SpotSizes
+	}).(pulumi.StringArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DataIntegrationS3Input)(nil)).Elem(), DataIntegrationS3Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataIntegrationS3PtrInput)(nil)).Elem(), DataIntegrationS3Args{})
@@ -5959,8 +7852,40 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayInput)(nil)).Elem(), ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3TagInput)(nil)).Elem(), ElastigroupAzureV3TagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3TagArrayInput)(nil)).Elem(), ElastigroupAzureV3TagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3VmSizesInput)(nil)).Elem(), ElastigroupAzureV3VmSizesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3VmSizesPtrInput)(nil)).Elem(), ElastigroupAzureV3VmSizesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HealthCheckCheckInput)(nil)).Elem(), HealthCheckCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HealthCheckCheckPtrInput)(nil)).Elem(), HealthCheckCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleAttachWorkloadInput)(nil)).Elem(), OceanRightSizingRuleAttachWorkloadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleAttachWorkloadArrayInput)(nil)).Elem(), OceanRightSizingRuleAttachWorkloadArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleAttachWorkloadNamespaceInput)(nil)).Elem(), OceanRightSizingRuleAttachWorkloadNamespaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleAttachWorkloadNamespaceArrayInput)(nil)).Elem(), OceanRightSizingRuleAttachWorkloadNamespaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleAttachWorkloadNamespaceLabelInput)(nil)).Elem(), OceanRightSizingRuleAttachWorkloadNamespaceLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleAttachWorkloadNamespaceLabelArrayInput)(nil)).Elem(), OceanRightSizingRuleAttachWorkloadNamespaceLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleAttachWorkloadNamespaceWorkloadInput)(nil)).Elem(), OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArrayInput)(nil)).Elem(), OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleDetachWorkloadInput)(nil)).Elem(), OceanRightSizingRuleDetachWorkloadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleDetachWorkloadArrayInput)(nil)).Elem(), OceanRightSizingRuleDetachWorkloadArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleDetachWorkloadNamespaceInput)(nil)).Elem(), OceanRightSizingRuleDetachWorkloadNamespaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleDetachWorkloadNamespaceArrayInput)(nil)).Elem(), OceanRightSizingRuleDetachWorkloadNamespaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleDetachWorkloadNamespaceLabelInput)(nil)).Elem(), OceanRightSizingRuleDetachWorkloadNamespaceLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleDetachWorkloadNamespaceLabelArrayInput)(nil)).Elem(), OceanRightSizingRuleDetachWorkloadNamespaceLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleDetachWorkloadNamespaceWorkloadInput)(nil)).Elem(), OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArrayInput)(nil)).Elem(), OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleRecommendationApplicationBoundaryInput)(nil)).Elem(), OceanRightSizingRuleRecommendationApplicationBoundaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleRecommendationApplicationBoundaryArrayInput)(nil)).Elem(), OceanRightSizingRuleRecommendationApplicationBoundaryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleRecommendationApplicationIntervalInput)(nil)).Elem(), OceanRightSizingRuleRecommendationApplicationIntervalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleRecommendationApplicationIntervalArrayInput)(nil)).Elem(), OceanRightSizingRuleRecommendationApplicationIntervalArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseInput)(nil)).Elem(), OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArrayInput)(nil)).Elem(), OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseInput)(nil)).Elem(), OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArrayInput)(nil)).Elem(), OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseInput)(nil)).Elem(), OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArrayInput)(nil)).Elem(), OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleRecommendationApplicationMinThresholdInput)(nil)).Elem(), OceanRightSizingRuleRecommendationApplicationMinThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleRecommendationApplicationMinThresholdArrayInput)(nil)).Elem(), OceanRightSizingRuleRecommendationApplicationMinThresholdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleRecommendationApplicationOverheadValueInput)(nil)).Elem(), OceanRightSizingRuleRecommendationApplicationOverheadValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleRecommendationApplicationOverheadValueArrayInput)(nil)).Elem(), OceanRightSizingRuleRecommendationApplicationOverheadValueArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureAttachDataDiskInput)(nil)).Elem(), StatefulNodeAzureAttachDataDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureAttachDataDiskArrayInput)(nil)).Elem(), StatefulNodeAzureAttachDataDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureBootDiagnosticInput)(nil)).Elem(), StatefulNodeAzureBootDiagnosticArgs{})
@@ -6031,6 +7956,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureTagArrayInput)(nil)).Elem(), StatefulNodeAzureTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureUpdateStateInput)(nil)).Elem(), StatefulNodeAzureUpdateStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureUpdateStateArrayInput)(nil)).Elem(), StatefulNodeAzureUpdateStateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureVmSizesInput)(nil)).Elem(), StatefulNodeAzureVmSizesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureVmSizesPtrInput)(nil)).Elem(), StatefulNodeAzureVmSizesArgs{})
 	pulumi.RegisterOutputType(DataIntegrationS3Output{})
 	pulumi.RegisterOutputType(DataIntegrationS3PtrOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3ImageOutput{})
@@ -6053,8 +7980,40 @@ func init() {
 	pulumi.RegisterOutputType(ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3TagOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3TagArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3VmSizesOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3VmSizesPtrOutput{})
 	pulumi.RegisterOutputType(HealthCheckCheckOutput{})
 	pulumi.RegisterOutputType(HealthCheckCheckPtrOutput{})
+	pulumi.RegisterOutputType(OceanRightSizingRuleAttachWorkloadOutput{})
+	pulumi.RegisterOutputType(OceanRightSizingRuleAttachWorkloadArrayOutput{})
+	pulumi.RegisterOutputType(OceanRightSizingRuleAttachWorkloadNamespaceOutput{})
+	pulumi.RegisterOutputType(OceanRightSizingRuleAttachWorkloadNamespaceArrayOutput{})
+	pulumi.RegisterOutputType(OceanRightSizingRuleAttachWorkloadNamespaceLabelOutput{})
+	pulumi.RegisterOutputType(OceanRightSizingRuleAttachWorkloadNamespaceLabelArrayOutput{})
+	pulumi.RegisterOutputType(OceanRightSizingRuleAttachWorkloadNamespaceWorkloadOutput{})
+	pulumi.RegisterOutputType(OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArrayOutput{})
+	pulumi.RegisterOutputType(OceanRightSizingRuleDetachWorkloadOutput{})
+	pulumi.RegisterOutputType(OceanRightSizingRuleDetachWorkloadArrayOutput{})
+	pulumi.RegisterOutputType(OceanRightSizingRuleDetachWorkloadNamespaceOutput{})
+	pulumi.RegisterOutputType(OceanRightSizingRuleDetachWorkloadNamespaceArrayOutput{})
+	pulumi.RegisterOutputType(OceanRightSizingRuleDetachWorkloadNamespaceLabelOutput{})
+	pulumi.RegisterOutputType(OceanRightSizingRuleDetachWorkloadNamespaceLabelArrayOutput{})
+	pulumi.RegisterOutputType(OceanRightSizingRuleDetachWorkloadNamespaceWorkloadOutput{})
+	pulumi.RegisterOutputType(OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArrayOutput{})
+	pulumi.RegisterOutputType(OceanRightSizingRuleRecommendationApplicationBoundaryOutput{})
+	pulumi.RegisterOutputType(OceanRightSizingRuleRecommendationApplicationBoundaryArrayOutput{})
+	pulumi.RegisterOutputType(OceanRightSizingRuleRecommendationApplicationIntervalOutput{})
+	pulumi.RegisterOutputType(OceanRightSizingRuleRecommendationApplicationIntervalArrayOutput{})
+	pulumi.RegisterOutputType(OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseOutput{})
+	pulumi.RegisterOutputType(OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArrayOutput{})
+	pulumi.RegisterOutputType(OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseOutput{})
+	pulumi.RegisterOutputType(OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArrayOutput{})
+	pulumi.RegisterOutputType(OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseOutput{})
+	pulumi.RegisterOutputType(OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArrayOutput{})
+	pulumi.RegisterOutputType(OceanRightSizingRuleRecommendationApplicationMinThresholdOutput{})
+	pulumi.RegisterOutputType(OceanRightSizingRuleRecommendationApplicationMinThresholdArrayOutput{})
+	pulumi.RegisterOutputType(OceanRightSizingRuleRecommendationApplicationOverheadValueOutput{})
+	pulumi.RegisterOutputType(OceanRightSizingRuleRecommendationApplicationOverheadValueArrayOutput{})
 	pulumi.RegisterOutputType(StatefulNodeAzureAttachDataDiskOutput{})
 	pulumi.RegisterOutputType(StatefulNodeAzureAttachDataDiskArrayOutput{})
 	pulumi.RegisterOutputType(StatefulNodeAzureBootDiagnosticOutput{})
@@ -6125,4 +8084,6 @@ func init() {
 	pulumi.RegisterOutputType(StatefulNodeAzureTagArrayOutput{})
 	pulumi.RegisterOutputType(StatefulNodeAzureUpdateStateOutput{})
 	pulumi.RegisterOutputType(StatefulNodeAzureUpdateStateArrayOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureVmSizesOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureVmSizesPtrOutput{})
 }

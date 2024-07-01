@@ -21,7 +21,23 @@ __all__ = [
     'ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs',
     'ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs',
     'ElastigroupAzureV3TagArgs',
+    'ElastigroupAzureV3VmSizesArgs',
     'HealthCheckCheckArgs',
+    'OceanRightSizingRuleAttachWorkloadArgs',
+    'OceanRightSizingRuleAttachWorkloadNamespaceArgs',
+    'OceanRightSizingRuleAttachWorkloadNamespaceLabelArgs',
+    'OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArgs',
+    'OceanRightSizingRuleDetachWorkloadArgs',
+    'OceanRightSizingRuleDetachWorkloadNamespaceArgs',
+    'OceanRightSizingRuleDetachWorkloadNamespaceLabelArgs',
+    'OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArgs',
+    'OceanRightSizingRuleRecommendationApplicationBoundaryArgs',
+    'OceanRightSizingRuleRecommendationApplicationIntervalArgs',
+    'OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs',
+    'OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgs',
+    'OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgs',
+    'OceanRightSizingRuleRecommendationApplicationMinThresholdArgs',
+    'OceanRightSizingRuleRecommendationApplicationOverheadValueArgs',
     'StatefulNodeAzureAttachDataDiskArgs',
     'StatefulNodeAzureBootDiagnosticArgs',
     'StatefulNodeAzureDataDiskArgs',
@@ -57,6 +73,7 @@ __all__ = [
     'StatefulNodeAzureStrategyRevertToSpotArgs',
     'StatefulNodeAzureTagArgs',
     'StatefulNodeAzureUpdateStateArgs',
+    'StatefulNodeAzureVmSizesArgs',
 ]
 
 @pulumi.input_type
@@ -448,6 +465,33 @@ class ElastigroupAzureV3TagArgs:
 
 
 @pulumi.input_type
+class ElastigroupAzureV3VmSizesArgs:
+    def __init__(__self__, *,
+                 od_sizes: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 spot_sizes: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(__self__, "od_sizes", od_sizes)
+        pulumi.set(__self__, "spot_sizes", spot_sizes)
+
+    @property
+    @pulumi.getter(name="odSizes")
+    def od_sizes(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        return pulumi.get(self, "od_sizes")
+
+    @od_sizes.setter
+    def od_sizes(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "od_sizes", value)
+
+    @property
+    @pulumi.getter(name="spotSizes")
+    def spot_sizes(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        return pulumi.get(self, "spot_sizes")
+
+    @spot_sizes.setter
+    def spot_sizes(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "spot_sizes", value)
+
+
+@pulumi.input_type
 class HealthCheckCheckArgs:
     def __init__(__self__, *,
                  healthy: pulumi.Input[int],
@@ -575,6 +619,518 @@ class HealthCheckCheckArgs:
     @timeout.setter
     def timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "timeout", value)
+
+
+@pulumi.input_type
+class OceanRightSizingRuleAttachWorkloadArgs:
+    def __init__(__self__, *,
+                 namespaces: pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadNamespaceArgs']]]):
+        pulumi.set(__self__, "namespaces", namespaces)
+
+    @property
+    @pulumi.getter
+    def namespaces(self) -> pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadNamespaceArgs']]]:
+        return pulumi.get(self, "namespaces")
+
+    @namespaces.setter
+    def namespaces(self, value: pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadNamespaceArgs']]]):
+        pulumi.set(self, "namespaces", value)
+
+
+@pulumi.input_type
+class OceanRightSizingRuleAttachWorkloadNamespaceArgs:
+    def __init__(__self__, *,
+                 namespace_name: pulumi.Input[str],
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadNamespaceLabelArgs']]]] = None,
+                 workloads: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArgs']]]] = None):
+        pulumi.set(__self__, "namespace_name", namespace_name)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if workloads is not None:
+            pulumi.set(__self__, "workloads", workloads)
+
+    @property
+    @pulumi.getter(name="namespaceName")
+    def namespace_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "namespace_name")
+
+    @namespace_name.setter
+    def namespace_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "namespace_name", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadNamespaceLabelArgs']]]]:
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadNamespaceLabelArgs']]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def workloads(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArgs']]]]:
+        return pulumi.get(self, "workloads")
+
+    @workloads.setter
+    def workloads(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArgs']]]]):
+        pulumi.set(self, "workloads", value)
+
+
+@pulumi.input_type
+class OceanRightSizingRuleAttachWorkloadNamespaceLabelArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[str],
+                 value: pulumi.Input[str]):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArgs:
+    def __init__(__self__, *,
+                 workload_type: pulumi.Input[str],
+                 regex_name: Optional[pulumi.Input[str]] = None,
+                 workload_name: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "workload_type", workload_type)
+        if regex_name is not None:
+            pulumi.set(__self__, "regex_name", regex_name)
+        if workload_name is not None:
+            pulumi.set(__self__, "workload_name", workload_name)
+
+    @property
+    @pulumi.getter(name="workloadType")
+    def workload_type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "workload_type")
+
+    @workload_type.setter
+    def workload_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "workload_type", value)
+
+    @property
+    @pulumi.getter(name="regexName")
+    def regex_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "regex_name")
+
+    @regex_name.setter
+    def regex_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "regex_name", value)
+
+    @property
+    @pulumi.getter(name="workloadName")
+    def workload_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "workload_name")
+
+    @workload_name.setter
+    def workload_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "workload_name", value)
+
+
+@pulumi.input_type
+class OceanRightSizingRuleDetachWorkloadArgs:
+    def __init__(__self__, *,
+                 namespaces: pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadNamespaceArgs']]]):
+        pulumi.set(__self__, "namespaces", namespaces)
+
+    @property
+    @pulumi.getter
+    def namespaces(self) -> pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadNamespaceArgs']]]:
+        return pulumi.get(self, "namespaces")
+
+    @namespaces.setter
+    def namespaces(self, value: pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadNamespaceArgs']]]):
+        pulumi.set(self, "namespaces", value)
+
+
+@pulumi.input_type
+class OceanRightSizingRuleDetachWorkloadNamespaceArgs:
+    def __init__(__self__, *,
+                 namespace_name: pulumi.Input[str],
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadNamespaceLabelArgs']]]] = None,
+                 workloads: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArgs']]]] = None):
+        pulumi.set(__self__, "namespace_name", namespace_name)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if workloads is not None:
+            pulumi.set(__self__, "workloads", workloads)
+
+    @property
+    @pulumi.getter(name="namespaceName")
+    def namespace_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "namespace_name")
+
+    @namespace_name.setter
+    def namespace_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "namespace_name", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadNamespaceLabelArgs']]]]:
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadNamespaceLabelArgs']]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def workloads(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArgs']]]]:
+        return pulumi.get(self, "workloads")
+
+    @workloads.setter
+    def workloads(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArgs']]]]):
+        pulumi.set(self, "workloads", value)
+
+
+@pulumi.input_type
+class OceanRightSizingRuleDetachWorkloadNamespaceLabelArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[str],
+                 value: pulumi.Input[str]):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArgs:
+    def __init__(__self__, *,
+                 workload_type: pulumi.Input[str],
+                 regex_name: Optional[pulumi.Input[str]] = None,
+                 workload_name: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "workload_type", workload_type)
+        if regex_name is not None:
+            pulumi.set(__self__, "regex_name", regex_name)
+        if workload_name is not None:
+            pulumi.set(__self__, "workload_name", workload_name)
+
+    @property
+    @pulumi.getter(name="workloadType")
+    def workload_type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "workload_type")
+
+    @workload_type.setter
+    def workload_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "workload_type", value)
+
+    @property
+    @pulumi.getter(name="regexName")
+    def regex_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "regex_name")
+
+    @regex_name.setter
+    def regex_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "regex_name", value)
+
+    @property
+    @pulumi.getter(name="workloadName")
+    def workload_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "workload_name")
+
+    @workload_name.setter
+    def workload_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "workload_name", value)
+
+
+@pulumi.input_type
+class OceanRightSizingRuleRecommendationApplicationBoundaryArgs:
+    def __init__(__self__, *,
+                 cpu_max: Optional[pulumi.Input[float]] = None,
+                 cpu_min: Optional[pulumi.Input[float]] = None,
+                 memory_max: Optional[pulumi.Input[int]] = None,
+                 memory_min: Optional[pulumi.Input[int]] = None):
+        if cpu_max is not None:
+            pulumi.set(__self__, "cpu_max", cpu_max)
+        if cpu_min is not None:
+            pulumi.set(__self__, "cpu_min", cpu_min)
+        if memory_max is not None:
+            pulumi.set(__self__, "memory_max", memory_max)
+        if memory_min is not None:
+            pulumi.set(__self__, "memory_min", memory_min)
+
+    @property
+    @pulumi.getter(name="cpuMax")
+    def cpu_max(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "cpu_max")
+
+    @cpu_max.setter
+    def cpu_max(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "cpu_max", value)
+
+    @property
+    @pulumi.getter(name="cpuMin")
+    def cpu_min(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "cpu_min")
+
+    @cpu_min.setter
+    def cpu_min(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "cpu_min", value)
+
+    @property
+    @pulumi.getter(name="memoryMax")
+    def memory_max(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "memory_max")
+
+    @memory_max.setter
+    def memory_max(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "memory_max", value)
+
+    @property
+    @pulumi.getter(name="memoryMin")
+    def memory_min(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "memory_min")
+
+    @memory_min.setter
+    def memory_min(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "memory_min", value)
+
+
+@pulumi.input_type
+class OceanRightSizingRuleRecommendationApplicationIntervalArgs:
+    def __init__(__self__, *,
+                 repetition_basis: pulumi.Input[str],
+                 monthly_repetition_bases: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs']]]] = None,
+                 weekly_repetition_bases: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgs']]]] = None):
+        pulumi.set(__self__, "repetition_basis", repetition_basis)
+        if monthly_repetition_bases is not None:
+            pulumi.set(__self__, "monthly_repetition_bases", monthly_repetition_bases)
+        if weekly_repetition_bases is not None:
+            pulumi.set(__self__, "weekly_repetition_bases", weekly_repetition_bases)
+
+    @property
+    @pulumi.getter(name="repetitionBasis")
+    def repetition_basis(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "repetition_basis")
+
+    @repetition_basis.setter
+    def repetition_basis(self, value: pulumi.Input[str]):
+        pulumi.set(self, "repetition_basis", value)
+
+    @property
+    @pulumi.getter(name="monthlyRepetitionBases")
+    def monthly_repetition_bases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs']]]]:
+        return pulumi.get(self, "monthly_repetition_bases")
+
+    @monthly_repetition_bases.setter
+    def monthly_repetition_bases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs']]]]):
+        pulumi.set(self, "monthly_repetition_bases", value)
+
+    @property
+    @pulumi.getter(name="weeklyRepetitionBases")
+    def weekly_repetition_bases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgs']]]]:
+        return pulumi.get(self, "weekly_repetition_bases")
+
+    @weekly_repetition_bases.setter
+    def weekly_repetition_bases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgs']]]]):
+        pulumi.set(self, "weekly_repetition_bases", value)
+
+
+@pulumi.input_type
+class OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs:
+    def __init__(__self__, *,
+                 interval_months: pulumi.Input[Sequence[pulumi.Input[int]]],
+                 week_of_the_months: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 weekly_repetition_bases: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgs']]]] = None):
+        pulumi.set(__self__, "interval_months", interval_months)
+        pulumi.set(__self__, "week_of_the_months", week_of_the_months)
+        if weekly_repetition_bases is not None:
+            pulumi.set(__self__, "weekly_repetition_bases", weekly_repetition_bases)
+
+    @property
+    @pulumi.getter(name="intervalMonths")
+    def interval_months(self) -> pulumi.Input[Sequence[pulumi.Input[int]]]:
+        return pulumi.get(self, "interval_months")
+
+    @interval_months.setter
+    def interval_months(self, value: pulumi.Input[Sequence[pulumi.Input[int]]]):
+        pulumi.set(self, "interval_months", value)
+
+    @property
+    @pulumi.getter(name="weekOfTheMonths")
+    def week_of_the_months(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        return pulumi.get(self, "week_of_the_months")
+
+    @week_of_the_months.setter
+    def week_of_the_months(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "week_of_the_months", value)
+
+    @property
+    @pulumi.getter(name="weeklyRepetitionBases")
+    def weekly_repetition_bases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgs']]]]:
+        return pulumi.get(self, "weekly_repetition_bases")
+
+    @weekly_repetition_bases.setter
+    def weekly_repetition_bases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgs']]]]):
+        pulumi.set(self, "weekly_repetition_bases", value)
+
+
+@pulumi.input_type
+class OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgs:
+    def __init__(__self__, *,
+                 interval_days: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 interval_hours_end_time: pulumi.Input[str],
+                 interval_hours_start_time: pulumi.Input[str]):
+        pulumi.set(__self__, "interval_days", interval_days)
+        pulumi.set(__self__, "interval_hours_end_time", interval_hours_end_time)
+        pulumi.set(__self__, "interval_hours_start_time", interval_hours_start_time)
+
+    @property
+    @pulumi.getter(name="intervalDays")
+    def interval_days(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        return pulumi.get(self, "interval_days")
+
+    @interval_days.setter
+    def interval_days(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "interval_days", value)
+
+    @property
+    @pulumi.getter(name="intervalHoursEndTime")
+    def interval_hours_end_time(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "interval_hours_end_time")
+
+    @interval_hours_end_time.setter
+    def interval_hours_end_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "interval_hours_end_time", value)
+
+    @property
+    @pulumi.getter(name="intervalHoursStartTime")
+    def interval_hours_start_time(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "interval_hours_start_time")
+
+    @interval_hours_start_time.setter
+    def interval_hours_start_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "interval_hours_start_time", value)
+
+
+@pulumi.input_type
+class OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgs:
+    def __init__(__self__, *,
+                 interval_days: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 interval_hours_end_time: pulumi.Input[str],
+                 interval_hours_start_time: pulumi.Input[str]):
+        pulumi.set(__self__, "interval_days", interval_days)
+        pulumi.set(__self__, "interval_hours_end_time", interval_hours_end_time)
+        pulumi.set(__self__, "interval_hours_start_time", interval_hours_start_time)
+
+    @property
+    @pulumi.getter(name="intervalDays")
+    def interval_days(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        return pulumi.get(self, "interval_days")
+
+    @interval_days.setter
+    def interval_days(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "interval_days", value)
+
+    @property
+    @pulumi.getter(name="intervalHoursEndTime")
+    def interval_hours_end_time(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "interval_hours_end_time")
+
+    @interval_hours_end_time.setter
+    def interval_hours_end_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "interval_hours_end_time", value)
+
+    @property
+    @pulumi.getter(name="intervalHoursStartTime")
+    def interval_hours_start_time(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "interval_hours_start_time")
+
+    @interval_hours_start_time.setter
+    def interval_hours_start_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "interval_hours_start_time", value)
+
+
+@pulumi.input_type
+class OceanRightSizingRuleRecommendationApplicationMinThresholdArgs:
+    def __init__(__self__, *,
+                 cpu_percentage: Optional[pulumi.Input[float]] = None,
+                 memory_percentage: Optional[pulumi.Input[float]] = None):
+        if cpu_percentage is not None:
+            pulumi.set(__self__, "cpu_percentage", cpu_percentage)
+        if memory_percentage is not None:
+            pulumi.set(__self__, "memory_percentage", memory_percentage)
+
+    @property
+    @pulumi.getter(name="cpuPercentage")
+    def cpu_percentage(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "cpu_percentage")
+
+    @cpu_percentage.setter
+    def cpu_percentage(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "cpu_percentage", value)
+
+    @property
+    @pulumi.getter(name="memoryPercentage")
+    def memory_percentage(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "memory_percentage")
+
+    @memory_percentage.setter
+    def memory_percentage(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "memory_percentage", value)
+
+
+@pulumi.input_type
+class OceanRightSizingRuleRecommendationApplicationOverheadValueArgs:
+    def __init__(__self__, *,
+                 cpu_percentage: Optional[pulumi.Input[float]] = None,
+                 memory_percentage: Optional[pulumi.Input[float]] = None):
+        if cpu_percentage is not None:
+            pulumi.set(__self__, "cpu_percentage", cpu_percentage)
+        if memory_percentage is not None:
+            pulumi.set(__self__, "memory_percentage", memory_percentage)
+
+    @property
+    @pulumi.getter(name="cpuPercentage")
+    def cpu_percentage(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "cpu_percentage")
+
+    @cpu_percentage.setter
+    def cpu_percentage(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "cpu_percentage", value)
+
+    @property
+    @pulumi.getter(name="memoryPercentage")
+    def memory_percentage(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "memory_percentage")
+
+    @memory_percentage.setter
+    def memory_percentage(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "memory_percentage", value)
 
 
 @pulumi.input_type
@@ -2154,5 +2710,44 @@ class StatefulNodeAzureUpdateStateArgs:
     @state.setter
     def state(self, value: pulumi.Input[str]):
         pulumi.set(self, "state", value)
+
+
+@pulumi.input_type
+class StatefulNodeAzureVmSizesArgs:
+    def __init__(__self__, *,
+                 od_sizes: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 spot_sizes: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 preferred_spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        pulumi.set(__self__, "od_sizes", od_sizes)
+        pulumi.set(__self__, "spot_sizes", spot_sizes)
+        if preferred_spot_sizes is not None:
+            pulumi.set(__self__, "preferred_spot_sizes", preferred_spot_sizes)
+
+    @property
+    @pulumi.getter(name="odSizes")
+    def od_sizes(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        return pulumi.get(self, "od_sizes")
+
+    @od_sizes.setter
+    def od_sizes(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "od_sizes", value)
+
+    @property
+    @pulumi.getter(name="spotSizes")
+    def spot_sizes(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        return pulumi.get(self, "spot_sizes")
+
+    @spot_sizes.setter
+    def spot_sizes(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "spot_sizes", value)
+
+    @property
+    @pulumi.getter(name="preferredSpotSizes")
+    def preferred_spot_sizes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "preferred_spot_sizes")
+
+    @preferred_spot_sizes.setter
+    def preferred_spot_sizes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "preferred_spot_sizes", value)
 
 

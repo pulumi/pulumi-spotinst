@@ -18,11 +18,10 @@ class ElastigroupAzureV3Args:
     def __init__(__self__, *,
                  fallback_to_on_demand: pulumi.Input[bool],
                  network: pulumi.Input['ElastigroupAzureV3NetworkArgs'],
-                 od_sizes: pulumi.Input[Sequence[pulumi.Input[str]]],
                  os: pulumi.Input[str],
                  region: pulumi.Input[str],
                  resource_group_name: pulumi.Input[str],
-                 spot_sizes: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 vm_sizes: pulumi.Input['ElastigroupAzureV3VmSizesArgs'],
                  custom_data: Optional[pulumi.Input[str]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
                  draining_timeout: Optional[pulumi.Input[int]] = None,
@@ -40,11 +39,10 @@ class ElastigroupAzureV3Args:
         """
         pulumi.set(__self__, "fallback_to_on_demand", fallback_to_on_demand)
         pulumi.set(__self__, "network", network)
-        pulumi.set(__self__, "od_sizes", od_sizes)
         pulumi.set(__self__, "os", os)
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "resource_group_name", resource_group_name)
-        pulumi.set(__self__, "spot_sizes", spot_sizes)
+        pulumi.set(__self__, "vm_sizes", vm_sizes)
         if custom_data is not None:
             pulumi.set(__self__, "custom_data", custom_data)
         if desired_capacity is not None:
@@ -89,15 +87,6 @@ class ElastigroupAzureV3Args:
         pulumi.set(self, "network", value)
 
     @property
-    @pulumi.getter(name="odSizes")
-    def od_sizes(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        return pulumi.get(self, "od_sizes")
-
-    @od_sizes.setter
-    def od_sizes(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
-        pulumi.set(self, "od_sizes", value)
-
-    @property
     @pulumi.getter
     def os(self) -> pulumi.Input[str]:
         return pulumi.get(self, "os")
@@ -125,13 +114,13 @@ class ElastigroupAzureV3Args:
         pulumi.set(self, "resource_group_name", value)
 
     @property
-    @pulumi.getter(name="spotSizes")
-    def spot_sizes(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        return pulumi.get(self, "spot_sizes")
+    @pulumi.getter(name="vmSizes")
+    def vm_sizes(self) -> pulumi.Input['ElastigroupAzureV3VmSizesArgs']:
+        return pulumi.get(self, "vm_sizes")
 
-    @spot_sizes.setter
-    def spot_sizes(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
-        pulumi.set(self, "spot_sizes", value)
+    @vm_sizes.setter
+    def vm_sizes(self, value: pulumi.Input['ElastigroupAzureV3VmSizesArgs']):
+        pulumi.set(self, "vm_sizes", value)
 
     @property
     @pulumi.getter(name="customData")
@@ -256,14 +245,13 @@ class _ElastigroupAzureV3State:
                  min_size: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input['ElastigroupAzureV3NetworkArgs']] = None,
-                 od_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  on_demand_count: Optional[pulumi.Input[int]] = None,
                  os: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
-                 spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3TagArgs']]]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3TagArgs']]]] = None,
+                 vm_sizes: Optional[pulumi.Input['ElastigroupAzureV3VmSizesArgs']] = None):
         """
         Input properties used for looking up and filtering ElastigroupAzureV3 resources.
         """
@@ -289,8 +277,6 @@ class _ElastigroupAzureV3State:
             pulumi.set(__self__, "name", name)
         if network is not None:
             pulumi.set(__self__, "network", network)
-        if od_sizes is not None:
-            pulumi.set(__self__, "od_sizes", od_sizes)
         if on_demand_count is not None:
             pulumi.set(__self__, "on_demand_count", on_demand_count)
         if os is not None:
@@ -301,10 +287,10 @@ class _ElastigroupAzureV3State:
             pulumi.set(__self__, "resource_group_name", resource_group_name)
         if spot_percentage is not None:
             pulumi.set(__self__, "spot_percentage", spot_percentage)
-        if spot_sizes is not None:
-            pulumi.set(__self__, "spot_sizes", spot_sizes)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if vm_sizes is not None:
+            pulumi.set(__self__, "vm_sizes", vm_sizes)
 
     @property
     @pulumi.getter(name="customData")
@@ -406,15 +392,6 @@ class _ElastigroupAzureV3State:
         pulumi.set(self, "network", value)
 
     @property
-    @pulumi.getter(name="odSizes")
-    def od_sizes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        return pulumi.get(self, "od_sizes")
-
-    @od_sizes.setter
-    def od_sizes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "od_sizes", value)
-
-    @property
     @pulumi.getter(name="onDemandCount")
     def on_demand_count(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "on_demand_count")
@@ -460,15 +437,6 @@ class _ElastigroupAzureV3State:
         pulumi.set(self, "spot_percentage", value)
 
     @property
-    @pulumi.getter(name="spotSizes")
-    def spot_sizes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        return pulumi.get(self, "spot_sizes")
-
-    @spot_sizes.setter
-    def spot_sizes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "spot_sizes", value)
-
-    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3TagArgs']]]]:
         return pulumi.get(self, "tags")
@@ -476,6 +444,15 @@ class _ElastigroupAzureV3State:
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3TagArgs']]]]):
         pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="vmSizes")
+    def vm_sizes(self) -> Optional[pulumi.Input['ElastigroupAzureV3VmSizesArgs']]:
+        return pulumi.get(self, "vm_sizes")
+
+    @vm_sizes.setter
+    def vm_sizes(self, value: Optional[pulumi.Input['ElastigroupAzureV3VmSizesArgs']]):
+        pulumi.set(self, "vm_sizes", value)
 
 
 class ElastigroupAzureV3(pulumi.CustomResource):
@@ -494,14 +471,13 @@ class ElastigroupAzureV3(pulumi.CustomResource):
                  min_size: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[pulumi.InputType['ElastigroupAzureV3NetworkArgs']]] = None,
-                 od_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  on_demand_count: Optional[pulumi.Input[int]] = None,
                  os: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
-                 spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupAzureV3TagArgs']]]]] = None,
+                 vm_sizes: Optional[pulumi.Input[pulumi.InputType['ElastigroupAzureV3VmSizesArgs']]] = None,
                  __props__=None):
         """
         Create a ElastigroupAzureV3 resource with the given unique name, props, and options.
@@ -542,14 +518,13 @@ class ElastigroupAzureV3(pulumi.CustomResource):
                  min_size: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[pulumi.InputType['ElastigroupAzureV3NetworkArgs']]] = None,
-                 od_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  on_demand_count: Optional[pulumi.Input[int]] = None,
                  os: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
-                 spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupAzureV3TagArgs']]]]] = None,
+                 vm_sizes: Optional[pulumi.Input[pulumi.InputType['ElastigroupAzureV3VmSizesArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -574,9 +549,6 @@ class ElastigroupAzureV3(pulumi.CustomResource):
             if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")
             __props__.__dict__["network"] = network
-            if od_sizes is None and not opts.urn:
-                raise TypeError("Missing required property 'od_sizes'")
-            __props__.__dict__["od_sizes"] = od_sizes
             __props__.__dict__["on_demand_count"] = on_demand_count
             if os is None and not opts.urn:
                 raise TypeError("Missing required property 'os'")
@@ -588,10 +560,10 @@ class ElastigroupAzureV3(pulumi.CustomResource):
                 raise TypeError("Missing required property 'resource_group_name'")
             __props__.__dict__["resource_group_name"] = resource_group_name
             __props__.__dict__["spot_percentage"] = spot_percentage
-            if spot_sizes is None and not opts.urn:
-                raise TypeError("Missing required property 'spot_sizes'")
-            __props__.__dict__["spot_sizes"] = spot_sizes
             __props__.__dict__["tags"] = tags
+            if vm_sizes is None and not opts.urn:
+                raise TypeError("Missing required property 'vm_sizes'")
+            __props__.__dict__["vm_sizes"] = vm_sizes
         super(ElastigroupAzureV3, __self__).__init__(
             'spotinst:index/elastigroupAzureV3:ElastigroupAzureV3',
             resource_name,
@@ -613,14 +585,13 @@ class ElastigroupAzureV3(pulumi.CustomResource):
             min_size: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[pulumi.InputType['ElastigroupAzureV3NetworkArgs']]] = None,
-            od_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             on_demand_count: Optional[pulumi.Input[int]] = None,
             os: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             resource_group_name: Optional[pulumi.Input[str]] = None,
             spot_percentage: Optional[pulumi.Input[int]] = None,
-            spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupAzureV3TagArgs']]]]] = None) -> 'ElastigroupAzureV3':
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupAzureV3TagArgs']]]]] = None,
+            vm_sizes: Optional[pulumi.Input[pulumi.InputType['ElastigroupAzureV3VmSizesArgs']]] = None) -> 'ElastigroupAzureV3':
         """
         Get an existing ElastigroupAzureV3 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -644,14 +615,13 @@ class ElastigroupAzureV3(pulumi.CustomResource):
         __props__.__dict__["min_size"] = min_size
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
-        __props__.__dict__["od_sizes"] = od_sizes
         __props__.__dict__["on_demand_count"] = on_demand_count
         __props__.__dict__["os"] = os
         __props__.__dict__["region"] = region
         __props__.__dict__["resource_group_name"] = resource_group_name
         __props__.__dict__["spot_percentage"] = spot_percentage
-        __props__.__dict__["spot_sizes"] = spot_sizes
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["vm_sizes"] = vm_sizes
         return ElastigroupAzureV3(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -710,11 +680,6 @@ class ElastigroupAzureV3(pulumi.CustomResource):
         return pulumi.get(self, "network")
 
     @property
-    @pulumi.getter(name="odSizes")
-    def od_sizes(self) -> pulumi.Output[Sequence[str]]:
-        return pulumi.get(self, "od_sizes")
-
-    @property
     @pulumi.getter(name="onDemandCount")
     def on_demand_count(self) -> pulumi.Output[Optional[int]]:
         return pulumi.get(self, "on_demand_count")
@@ -740,12 +705,12 @@ class ElastigroupAzureV3(pulumi.CustomResource):
         return pulumi.get(self, "spot_percentage")
 
     @property
-    @pulumi.getter(name="spotSizes")
-    def spot_sizes(self) -> pulumi.Output[Sequence[str]]:
-        return pulumi.get(self, "spot_sizes")
-
-    @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupAzureV3Tag']]]:
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="vmSizes")
+    def vm_sizes(self) -> pulumi.Output['outputs.ElastigroupAzureV3VmSizes']:
+        return pulumi.get(self, "vm_sizes")
 

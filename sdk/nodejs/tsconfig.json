@@ -43,6 +43,7 @@
         "gke/oceanLaunchSpecImport.ts",
         "healthCheck.ts",
         "index.ts",
+        "oceanRightSizingRule.ts",
         "oceancd/index.ts",
         "oceancd/rolloutSpec.ts",
         "oceancd/strategy.ts",

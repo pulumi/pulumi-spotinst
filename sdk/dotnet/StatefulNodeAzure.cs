@@ -65,19 +65,22 @@ namespace Pulumi.SpotInst
     ///             },
     ///         },
     ///         Os = "Linux",
-    ///         OdSizes = new[]
+    ///         VmSizes = new SpotInst.Inputs.StatefulNodeAzureVmSizesArgs
     ///         {
-    ///             "standard_ds1_v2",
-    ///             "standard_ds2_v2",
-    ///         },
-    ///         SpotSizes = new[]
-    ///         {
-    ///             "standard_ds1_v2",
-    ///             "standard_ds2_v2",
-    ///         },
-    ///         PreferredSpotSizes = new[]
-    ///         {
-    ///             "standard_ds1_v2",
+    ///             OdSizes = new[]
+    ///             {
+    ///                 "standard_ds1_v2",
+    ///                 "standard_ds2_v2",
+    ///             },
+    ///             SpotSizes = new[]
+    ///             {
+    ///                 "standard_ds1_v2",
+    ///                 "standard_ds2_v2",
+    ///             },
+    ///             PreferredSpotSizes = new[]
+    ///             {
+    ///                 "standard_ds1_v2",
+    ///             },
     ///         },
     ///         Zones = new[]
     ///         {
@@ -401,9 +404,10 @@ namespace Pulumi.SpotInst
     /// ## Compute
     /// 
     /// * `os` - (Required, Enum `"Linux", "Windows"`) Type of operating system.
-    /// * `od_sizes` - (Required) Available On-Demand sizes.
-    /// * `spot_sizes` - (Required) Available Spot-VM sizes.
-    /// * `preferred_spot_sizes` - (Optional) Prioritize Spot VM sizes when launching Spot VMs for the group. If set, must be a sublist of compute.vmSizes.spotSizes.
+    /// * `vm_sizes` - (Required) Defines the VM sizes to use when launching VMs.
+    ///     * `od_sizes` - (Required) Available On-Demand sizes.
+    ///     * `spot_sizes` - (Required) Available Spot-VM sizes.
+    ///     * `preferred_spot_sizes` - (Optional) Prioritize Spot VM sizes when launching Spot VMs for the group. If set, must be a sublist of compute.vmSizes.spotSizes.
     /// * `zones` - (Optional, Enum `"1", "2", "3"`) List of Azure Availability Zones in the defined region. If not defined, Virtual machines will be launched regionally.
     /// * `preferred_zone` - (Optional, Enum `"1", "2", "3"`) The AZ to prioritize when launching VMs. If no markets are available in the Preferred AZ, VMs are launched in the non-preferred AZ. Must be a sublist of compute.zones.
     /// * `custom_data` - (Optional) This value will hold the YAML in base64 and will be executed upon VM launch.
@@ -688,9 +692,6 @@ namespace Pulumi.SpotInst
         [Output("network")]
         public Output<Outputs.StatefulNodeAzureNetwork?> Network { get; private set; } = null!;
 
-        [Output("odSizes")]
-        public Output<ImmutableArray<string>> OdSizes { get; private set; } = null!;
-
         [Output("os")]
         public Output<string> Os { get; private set; } = null!;
 
@@ -699,9 +700,6 @@ namespace Pulumi.SpotInst
 
         [Output("osDiskPersistenceMode")]
         public Output<string> OsDiskPersistenceMode { get; private set; } = null!;
-
-        [Output("preferredSpotSizes")]
-        public Output<ImmutableArray<string>> PreferredSpotSizes { get; private set; } = null!;
 
         [Output("preferredZone")]
         public Output<string> PreferredZone { get; private set; } = null!;
@@ -742,9 +740,6 @@ namespace Pulumi.SpotInst
         [Output("signals")]
         public Output<ImmutableArray<Outputs.StatefulNodeAzureSignal>> Signals { get; private set; } = null!;
 
-        [Output("spotSizes")]
-        public Output<ImmutableArray<string>> SpotSizes { get; private set; } = null!;
-
         [Output("strategy")]
         public Output<Outputs.StatefulNodeAzureStrategy> Strategy { get; private set; } = null!;
 
@@ -762,6 +757,9 @@ namespace Pulumi.SpotInst
 
         [Output("vmNamePrefix")]
         public Output<string?> VmNamePrefix { get; private set; } = null!;
+
+        [Output("vmSizes")]
+        public Output<Outputs.StatefulNodeAzureVmSizes> VmSizes { get; private set; } = null!;
 
         [Output("zones")]
         public Output<ImmutableArray<string>> Zones { get; private set; } = null!;
@@ -911,14 +909,6 @@ namespace Pulumi.SpotInst
         [Input("network")]
         public Input<Inputs.StatefulNodeAzureNetworkArgs>? Network { get; set; }
 
-        [Input("odSizes", required: true)]
-        private InputList<string>? _odSizes;
-        public InputList<string> OdSizes
-        {
-            get => _odSizes ?? (_odSizes = new InputList<string>());
-            set => _odSizes = value;
-        }
-
         [Input("os", required: true)]
         public Input<string> Os { get; set; } = null!;
 
@@ -927,14 +917,6 @@ namespace Pulumi.SpotInst
 
         [Input("osDiskPersistenceMode")]
         public Input<string>? OsDiskPersistenceMode { get; set; }
-
-        [Input("preferredSpotSizes")]
-        private InputList<string>? _preferredSpotSizes;
-        public InputList<string> PreferredSpotSizes
-        {
-            get => _preferredSpotSizes ?? (_preferredSpotSizes = new InputList<string>());
-            set => _preferredSpotSizes = value;
-        }
 
         [Input("preferredZone")]
         public Input<string>? PreferredZone { get; set; }
@@ -995,14 +977,6 @@ namespace Pulumi.SpotInst
             set => _signals = value;
         }
 
-        [Input("spotSizes", required: true)]
-        private InputList<string>? _spotSizes;
-        public InputList<string> SpotSizes
-        {
-            get => _spotSizes ?? (_spotSizes = new InputList<string>());
-            set => _spotSizes = value;
-        }
-
         [Input("strategy", required: true)]
         public Input<Inputs.StatefulNodeAzureStrategyArgs> Strategy { get; set; } = null!;
 
@@ -1030,6 +1004,9 @@ namespace Pulumi.SpotInst
 
         [Input("vmNamePrefix")]
         public Input<string>? VmNamePrefix { get; set; }
+
+        [Input("vmSizes", required: true)]
+        public Input<Inputs.StatefulNodeAzureVmSizesArgs> VmSizes { get; set; } = null!;
 
         [Input("zones")]
         private InputList<string>? _zones;
@@ -1146,14 +1123,6 @@ namespace Pulumi.SpotInst
         [Input("network")]
         public Input<Inputs.StatefulNodeAzureNetworkGetArgs>? Network { get; set; }
 
-        [Input("odSizes")]
-        private InputList<string>? _odSizes;
-        public InputList<string> OdSizes
-        {
-            get => _odSizes ?? (_odSizes = new InputList<string>());
-            set => _odSizes = value;
-        }
-
         [Input("os")]
         public Input<string>? Os { get; set; }
 
@@ -1162,14 +1131,6 @@ namespace Pulumi.SpotInst
 
         [Input("osDiskPersistenceMode")]
         public Input<string>? OsDiskPersistenceMode { get; set; }
-
-        [Input("preferredSpotSizes")]
-        private InputList<string>? _preferredSpotSizes;
-        public InputList<string> PreferredSpotSizes
-        {
-            get => _preferredSpotSizes ?? (_preferredSpotSizes = new InputList<string>());
-            set => _preferredSpotSizes = value;
-        }
 
         [Input("preferredZone")]
         public Input<string>? PreferredZone { get; set; }
@@ -1230,14 +1191,6 @@ namespace Pulumi.SpotInst
             set => _signals = value;
         }
 
-        [Input("spotSizes")]
-        private InputList<string>? _spotSizes;
-        public InputList<string> SpotSizes
-        {
-            get => _spotSizes ?? (_spotSizes = new InputList<string>());
-            set => _spotSizes = value;
-        }
-
         [Input("strategy")]
         public Input<Inputs.StatefulNodeAzureStrategyGetArgs>? Strategy { get; set; }
 
@@ -1265,6 +1218,9 @@ namespace Pulumi.SpotInst
 
         [Input("vmNamePrefix")]
         public Input<string>? VmNamePrefix { get; set; }
+
+        [Input("vmSizes")]
+        public Input<Inputs.StatefulNodeAzureVmSizesGetArgs>? VmSizes { get; set; }
 
         [Input("zones")]
         private InputList<string>? _zones;

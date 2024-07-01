@@ -41,15 +41,17 @@ import * as utilities from "./utilities";
  *         }],
  *     },
  *     os: "Linux",
- *     odSizes: [
- *         "standard_ds1_v2",
- *         "standard_ds2_v2",
- *     ],
- *     spotSizes: [
- *         "standard_ds1_v2",
- *         "standard_ds2_v2",
- *     ],
- *     preferredSpotSizes: ["standard_ds1_v2"],
+ *     vmSizes: {
+ *         odSizes: [
+ *             "standard_ds1_v2",
+ *             "standard_ds2_v2",
+ *         ],
+ *         spotSizes: [
+ *             "standard_ds1_v2",
+ *             "standard_ds2_v2",
+ *         ],
+ *         preferredSpotSizes: ["standard_ds1_v2"],
+ *     },
  *     zones: [
  *         "1",
  *         "3",
@@ -269,9 +271,10 @@ import * as utilities from "./utilities";
  * ## Compute
  *
  * * `os` - (Required, Enum `"Linux", "Windows"`) Type of operating system.
- * * `odSizes` - (Required) Available On-Demand sizes.
- * * `spotSizes` - (Required) Available Spot-VM sizes.
- * * `preferredSpotSizes` - (Optional) Prioritize Spot VM sizes when launching Spot VMs for the group. If set, must be a sublist of compute.vmSizes.spotSizes.
+ * * `vmSizes` - (Required) Defines the VM sizes to use when launching VMs.
+ *     * `odSizes` - (Required) Available On-Demand sizes.
+ *     * `spotSizes` - (Required) Available Spot-VM sizes.
+ *     * `preferredSpotSizes` - (Optional) Prioritize Spot VM sizes when launching Spot VMs for the group. If set, must be a sublist of compute.vmSizes.spotSizes.
  * * `zones` - (Optional, Enum `"1", "2", "3"`) List of Azure Availability Zones in the defined region. If not defined, Virtual machines will be launched regionally.
  * * `preferredZone` - (Optional, Enum `"1", "2", "3"`) The AZ to prioritize when launching VMs. If no markets are available in the Preferred AZ, VMs are launched in the non-preferred AZ. Must be a sublist of compute.zones.
  * * `customData` - (Optional) This value will hold the YAML in base64 and will be executed upon VM launch.
@@ -545,11 +548,9 @@ export class StatefulNodeAzure extends pulumi.CustomResource {
     public readonly managedServiceIdentities!: pulumi.Output<outputs.StatefulNodeAzureManagedServiceIdentity[]>;
     public readonly name!: pulumi.Output<string>;
     public readonly network!: pulumi.Output<outputs.StatefulNodeAzureNetwork | undefined>;
-    public readonly odSizes!: pulumi.Output<string[]>;
     public readonly os!: pulumi.Output<string>;
     public readonly osDisk!: pulumi.Output<outputs.StatefulNodeAzureOsDisk | undefined>;
     public readonly osDiskPersistenceMode!: pulumi.Output<string>;
-    public readonly preferredSpotSizes!: pulumi.Output<string[]>;
     public readonly preferredZone!: pulumi.Output<string>;
     public readonly proximityPlacementGroups!: pulumi.Output<outputs.StatefulNodeAzureProximityPlacementGroup[]>;
     public readonly region!: pulumi.Output<string>;
@@ -563,13 +564,13 @@ export class StatefulNodeAzure extends pulumi.CustomResource {
     public readonly shouldPersistVm!: pulumi.Output<boolean>;
     public readonly shutdownScript!: pulumi.Output<string>;
     public readonly signals!: pulumi.Output<outputs.StatefulNodeAzureSignal[]>;
-    public readonly spotSizes!: pulumi.Output<string[]>;
     public readonly strategy!: pulumi.Output<outputs.StatefulNodeAzureStrategy>;
     public readonly tags!: pulumi.Output<outputs.StatefulNodeAzureTag[]>;
     public readonly updateStates!: pulumi.Output<outputs.StatefulNodeAzureUpdateState[] | undefined>;
     public readonly userData!: pulumi.Output<string>;
     public readonly vmName!: pulumi.Output<string | undefined>;
     public readonly vmNamePrefix!: pulumi.Output<string | undefined>;
+    public readonly vmSizes!: pulumi.Output<outputs.StatefulNodeAzureVmSizes>;
     public readonly zones!: pulumi.Output<string[] | undefined>;
 
     /**
@@ -603,11 +604,9 @@ export class StatefulNodeAzure extends pulumi.CustomResource {
             resourceInputs["managedServiceIdentities"] = state ? state.managedServiceIdentities : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["odSizes"] = state ? state.odSizes : undefined;
             resourceInputs["os"] = state ? state.os : undefined;
             resourceInputs["osDisk"] = state ? state.osDisk : undefined;
             resourceInputs["osDiskPersistenceMode"] = state ? state.osDiskPersistenceMode : undefined;
-            resourceInputs["preferredSpotSizes"] = state ? state.preferredSpotSizes : undefined;
             resourceInputs["preferredZone"] = state ? state.preferredZone : undefined;
             resourceInputs["proximityPlacementGroups"] = state ? state.proximityPlacementGroups : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
@@ -621,19 +620,16 @@ export class StatefulNodeAzure extends pulumi.CustomResource {
             resourceInputs["shouldPersistVm"] = state ? state.shouldPersistVm : undefined;
             resourceInputs["shutdownScript"] = state ? state.shutdownScript : undefined;
             resourceInputs["signals"] = state ? state.signals : undefined;
-            resourceInputs["spotSizes"] = state ? state.spotSizes : undefined;
             resourceInputs["strategy"] = state ? state.strategy : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["updateStates"] = state ? state.updateStates : undefined;
             resourceInputs["userData"] = state ? state.userData : undefined;
             resourceInputs["vmName"] = state ? state.vmName : undefined;
             resourceInputs["vmNamePrefix"] = state ? state.vmNamePrefix : undefined;
+            resourceInputs["vmSizes"] = state ? state.vmSizes : undefined;
             resourceInputs["zones"] = state ? state.zones : undefined;
         } else {
             const args = argsOrState as StatefulNodeAzureArgs | undefined;
-            if ((!args || args.odSizes === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'odSizes'");
-            }
             if ((!args || args.os === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'os'");
             }
@@ -652,11 +648,11 @@ export class StatefulNodeAzure extends pulumi.CustomResource {
             if ((!args || args.shouldPersistOsDisk === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'shouldPersistOsDisk'");
             }
-            if ((!args || args.spotSizes === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'spotSizes'");
-            }
             if ((!args || args.strategy === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'strategy'");
+            }
+            if ((!args || args.vmSizes === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'vmSizes'");
             }
             resourceInputs["attachDataDisks"] = args ? args.attachDataDisks : undefined;
             resourceInputs["bootDiagnostics"] = args ? args.bootDiagnostics : undefined;
@@ -676,11 +672,9 @@ export class StatefulNodeAzure extends pulumi.CustomResource {
             resourceInputs["managedServiceIdentities"] = args ? args.managedServiceIdentities : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["odSizes"] = args ? args.odSizes : undefined;
             resourceInputs["os"] = args ? args.os : undefined;
             resourceInputs["osDisk"] = args ? args.osDisk : undefined;
             resourceInputs["osDiskPersistenceMode"] = args ? args.osDiskPersistenceMode : undefined;
-            resourceInputs["preferredSpotSizes"] = args ? args.preferredSpotSizes : undefined;
             resourceInputs["preferredZone"] = args ? args.preferredZone : undefined;
             resourceInputs["proximityPlacementGroups"] = args ? args.proximityPlacementGroups : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
@@ -694,13 +688,13 @@ export class StatefulNodeAzure extends pulumi.CustomResource {
             resourceInputs["shouldPersistVm"] = args ? args.shouldPersistVm : undefined;
             resourceInputs["shutdownScript"] = args ? args.shutdownScript : undefined;
             resourceInputs["signals"] = args ? args.signals : undefined;
-            resourceInputs["spotSizes"] = args ? args.spotSizes : undefined;
             resourceInputs["strategy"] = args ? args.strategy : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["updateStates"] = args ? args.updateStates : undefined;
             resourceInputs["userData"] = args ? args.userData : undefined;
             resourceInputs["vmName"] = args ? args.vmName : undefined;
             resourceInputs["vmNamePrefix"] = args ? args.vmNamePrefix : undefined;
+            resourceInputs["vmSizes"] = args ? args.vmSizes : undefined;
             resourceInputs["zones"] = args ? args.zones : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -730,11 +724,9 @@ export interface StatefulNodeAzureState {
     managedServiceIdentities?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureManagedServiceIdentity>[]>;
     name?: pulumi.Input<string>;
     network?: pulumi.Input<inputs.StatefulNodeAzureNetwork>;
-    odSizes?: pulumi.Input<pulumi.Input<string>[]>;
     os?: pulumi.Input<string>;
     osDisk?: pulumi.Input<inputs.StatefulNodeAzureOsDisk>;
     osDiskPersistenceMode?: pulumi.Input<string>;
-    preferredSpotSizes?: pulumi.Input<pulumi.Input<string>[]>;
     preferredZone?: pulumi.Input<string>;
     proximityPlacementGroups?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureProximityPlacementGroup>[]>;
     region?: pulumi.Input<string>;
@@ -748,13 +740,13 @@ export interface StatefulNodeAzureState {
     shouldPersistVm?: pulumi.Input<boolean>;
     shutdownScript?: pulumi.Input<string>;
     signals?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureSignal>[]>;
-    spotSizes?: pulumi.Input<pulumi.Input<string>[]>;
     strategy?: pulumi.Input<inputs.StatefulNodeAzureStrategy>;
     tags?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureTag>[]>;
     updateStates?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureUpdateState>[]>;
     userData?: pulumi.Input<string>;
     vmName?: pulumi.Input<string>;
     vmNamePrefix?: pulumi.Input<string>;
+    vmSizes?: pulumi.Input<inputs.StatefulNodeAzureVmSizes>;
     zones?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -780,11 +772,9 @@ export interface StatefulNodeAzureArgs {
     managedServiceIdentities?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureManagedServiceIdentity>[]>;
     name?: pulumi.Input<string>;
     network?: pulumi.Input<inputs.StatefulNodeAzureNetwork>;
-    odSizes: pulumi.Input<pulumi.Input<string>[]>;
     os: pulumi.Input<string>;
     osDisk?: pulumi.Input<inputs.StatefulNodeAzureOsDisk>;
     osDiskPersistenceMode?: pulumi.Input<string>;
-    preferredSpotSizes?: pulumi.Input<pulumi.Input<string>[]>;
     preferredZone?: pulumi.Input<string>;
     proximityPlacementGroups?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureProximityPlacementGroup>[]>;
     region: pulumi.Input<string>;
@@ -798,12 +788,12 @@ export interface StatefulNodeAzureArgs {
     shouldPersistVm?: pulumi.Input<boolean>;
     shutdownScript?: pulumi.Input<string>;
     signals?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureSignal>[]>;
-    spotSizes: pulumi.Input<pulumi.Input<string>[]>;
     strategy: pulumi.Input<inputs.StatefulNodeAzureStrategy>;
     tags?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureTag>[]>;
     updateStates?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureUpdateState>[]>;
     userData?: pulumi.Input<string>;
     vmName?: pulumi.Input<string>;
     vmNamePrefix?: pulumi.Input<string>;
+    vmSizes: pulumi.Input<inputs.StatefulNodeAzureVmSizes>;
     zones?: pulumi.Input<pulumi.Input<string>[]>;
 }

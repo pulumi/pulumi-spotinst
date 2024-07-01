@@ -26,14 +26,13 @@ type ElastigroupAzureV3 struct {
 	MinSize                  pulumi.IntOutput                                    `pulumi:"minSize"`
 	Name                     pulumi.StringOutput                                 `pulumi:"name"`
 	Network                  ElastigroupAzureV3NetworkOutput                     `pulumi:"network"`
-	OdSizes                  pulumi.StringArrayOutput                            `pulumi:"odSizes"`
 	OnDemandCount            pulumi.IntPtrOutput                                 `pulumi:"onDemandCount"`
 	Os                       pulumi.StringOutput                                 `pulumi:"os"`
 	Region                   pulumi.StringOutput                                 `pulumi:"region"`
 	ResourceGroupName        pulumi.StringOutput                                 `pulumi:"resourceGroupName"`
 	SpotPercentage           pulumi.IntPtrOutput                                 `pulumi:"spotPercentage"`
-	SpotSizes                pulumi.StringArrayOutput                            `pulumi:"spotSizes"`
 	Tags                     ElastigroupAzureV3TagArrayOutput                    `pulumi:"tags"`
+	VmSizes                  ElastigroupAzureV3VmSizesOutput                     `pulumi:"vmSizes"`
 }
 
 // NewElastigroupAzureV3 registers a new resource with the given unique name, arguments, and options.
@@ -49,9 +48,6 @@ func NewElastigroupAzureV3(ctx *pulumi.Context,
 	if args.Network == nil {
 		return nil, errors.New("invalid value for required argument 'Network'")
 	}
-	if args.OdSizes == nil {
-		return nil, errors.New("invalid value for required argument 'OdSizes'")
-	}
 	if args.Os == nil {
 		return nil, errors.New("invalid value for required argument 'Os'")
 	}
@@ -61,8 +57,8 @@ func NewElastigroupAzureV3(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if args.SpotSizes == nil {
-		return nil, errors.New("invalid value for required argument 'SpotSizes'")
+	if args.VmSizes == nil {
+		return nil, errors.New("invalid value for required argument 'VmSizes'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ElastigroupAzureV3
@@ -98,14 +94,13 @@ type elastigroupAzureV3State struct {
 	MinSize                  *int                                       `pulumi:"minSize"`
 	Name                     *string                                    `pulumi:"name"`
 	Network                  *ElastigroupAzureV3Network                 `pulumi:"network"`
-	OdSizes                  []string                                   `pulumi:"odSizes"`
 	OnDemandCount            *int                                       `pulumi:"onDemandCount"`
 	Os                       *string                                    `pulumi:"os"`
 	Region                   *string                                    `pulumi:"region"`
 	ResourceGroupName        *string                                    `pulumi:"resourceGroupName"`
 	SpotPercentage           *int                                       `pulumi:"spotPercentage"`
-	SpotSizes                []string                                   `pulumi:"spotSizes"`
 	Tags                     []ElastigroupAzureV3Tag                    `pulumi:"tags"`
+	VmSizes                  *ElastigroupAzureV3VmSizes                 `pulumi:"vmSizes"`
 }
 
 type ElastigroupAzureV3State struct {
@@ -120,14 +115,13 @@ type ElastigroupAzureV3State struct {
 	MinSize                  pulumi.IntPtrInput
 	Name                     pulumi.StringPtrInput
 	Network                  ElastigroupAzureV3NetworkPtrInput
-	OdSizes                  pulumi.StringArrayInput
 	OnDemandCount            pulumi.IntPtrInput
 	Os                       pulumi.StringPtrInput
 	Region                   pulumi.StringPtrInput
 	ResourceGroupName        pulumi.StringPtrInput
 	SpotPercentage           pulumi.IntPtrInput
-	SpotSizes                pulumi.StringArrayInput
 	Tags                     ElastigroupAzureV3TagArrayInput
+	VmSizes                  ElastigroupAzureV3VmSizesPtrInput
 }
 
 func (ElastigroupAzureV3State) ElementType() reflect.Type {
@@ -146,14 +140,13 @@ type elastigroupAzureV3Args struct {
 	MinSize                  *int                                       `pulumi:"minSize"`
 	Name                     *string                                    `pulumi:"name"`
 	Network                  ElastigroupAzureV3Network                  `pulumi:"network"`
-	OdSizes                  []string                                   `pulumi:"odSizes"`
 	OnDemandCount            *int                                       `pulumi:"onDemandCount"`
 	Os                       string                                     `pulumi:"os"`
 	Region                   string                                     `pulumi:"region"`
 	ResourceGroupName        string                                     `pulumi:"resourceGroupName"`
 	SpotPercentage           *int                                       `pulumi:"spotPercentage"`
-	SpotSizes                []string                                   `pulumi:"spotSizes"`
 	Tags                     []ElastigroupAzureV3Tag                    `pulumi:"tags"`
+	VmSizes                  ElastigroupAzureV3VmSizes                  `pulumi:"vmSizes"`
 }
 
 // The set of arguments for constructing a ElastigroupAzureV3 resource.
@@ -169,14 +162,13 @@ type ElastigroupAzureV3Args struct {
 	MinSize                  pulumi.IntPtrInput
 	Name                     pulumi.StringPtrInput
 	Network                  ElastigroupAzureV3NetworkInput
-	OdSizes                  pulumi.StringArrayInput
 	OnDemandCount            pulumi.IntPtrInput
 	Os                       pulumi.StringInput
 	Region                   pulumi.StringInput
 	ResourceGroupName        pulumi.StringInput
 	SpotPercentage           pulumi.IntPtrInput
-	SpotSizes                pulumi.StringArrayInput
 	Tags                     ElastigroupAzureV3TagArrayInput
+	VmSizes                  ElastigroupAzureV3VmSizesInput
 }
 
 func (ElastigroupAzureV3Args) ElementType() reflect.Type {
@@ -312,10 +304,6 @@ func (o ElastigroupAzureV3Output) Network() ElastigroupAzureV3NetworkOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3) ElastigroupAzureV3NetworkOutput { return v.Network }).(ElastigroupAzureV3NetworkOutput)
 }
 
-func (o ElastigroupAzureV3Output) OdSizes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.StringArrayOutput { return v.OdSizes }).(pulumi.StringArrayOutput)
-}
-
 func (o ElastigroupAzureV3Output) OnDemandCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.IntPtrOutput { return v.OnDemandCount }).(pulumi.IntPtrOutput)
 }
@@ -336,12 +324,12 @@ func (o ElastigroupAzureV3Output) SpotPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.IntPtrOutput { return v.SpotPercentage }).(pulumi.IntPtrOutput)
 }
 
-func (o ElastigroupAzureV3Output) SpotSizes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.StringArrayOutput { return v.SpotSizes }).(pulumi.StringArrayOutput)
-}
-
 func (o ElastigroupAzureV3Output) Tags() ElastigroupAzureV3TagArrayOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3) ElastigroupAzureV3TagArrayOutput { return v.Tags }).(ElastigroupAzureV3TagArrayOutput)
+}
+
+func (o ElastigroupAzureV3Output) VmSizes() ElastigroupAzureV3VmSizesOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3) ElastigroupAzureV3VmSizesOutput { return v.VmSizes }).(ElastigroupAzureV3VmSizesOutput)
 }
 
 type ElastigroupAzureV3ArrayOutput struct{ *pulumi.OutputState }
