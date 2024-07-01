@@ -15,6 +15,7 @@ import com.pulumi.spotinst.outputs.ElastigroupAzureV3Login;
 import com.pulumi.spotinst.outputs.ElastigroupAzureV3ManagedServiceIdentity;
 import com.pulumi.spotinst.outputs.ElastigroupAzureV3Network;
 import com.pulumi.spotinst.outputs.ElastigroupAzureV3Tag;
+import com.pulumi.spotinst.outputs.ElastigroupAzureV3VmSizes;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -90,12 +91,6 @@ public class ElastigroupAzureV3 extends com.pulumi.resources.CustomResource {
     public Output<ElastigroupAzureV3Network> network() {
         return this.network;
     }
-    @Export(name="odSizes", refs={List.class,String.class}, tree="[0,1]")
-    private Output<List<String>> odSizes;
-
-    public Output<List<String>> odSizes() {
-        return this.odSizes;
-    }
     @Export(name="onDemandCount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> onDemandCount;
 
@@ -126,17 +121,17 @@ public class ElastigroupAzureV3 extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> spotPercentage() {
         return Codegen.optional(this.spotPercentage);
     }
-    @Export(name="spotSizes", refs={List.class,String.class}, tree="[0,1]")
-    private Output<List<String>> spotSizes;
-
-    public Output<List<String>> spotSizes() {
-        return this.spotSizes;
-    }
     @Export(name="tags", refs={List.class,ElastigroupAzureV3Tag.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ElastigroupAzureV3Tag>> tags;
 
     public Output<Optional<List<ElastigroupAzureV3Tag>>> tags() {
         return Codegen.optional(this.tags);
+    }
+    @Export(name="vmSizes", refs={ElastigroupAzureV3VmSizes.class}, tree="[0]")
+    private Output<ElastigroupAzureV3VmSizes> vmSizes;
+
+    public Output<ElastigroupAzureV3VmSizes> vmSizes() {
+        return this.vmSizes;
     }
 
     /**

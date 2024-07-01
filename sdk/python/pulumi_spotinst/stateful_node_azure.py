@@ -16,15 +16,14 @@ __all__ = ['StatefulNodeAzureArgs', 'StatefulNodeAzure']
 @pulumi.input_type
 class StatefulNodeAzureArgs:
     def __init__(__self__, *,
-                 od_sizes: pulumi.Input[Sequence[pulumi.Input[str]]],
                  os: pulumi.Input[str],
                  region: pulumi.Input[str],
                  resource_group_name: pulumi.Input[str],
                  should_persist_data_disks: pulumi.Input[bool],
                  should_persist_network: pulumi.Input[bool],
                  should_persist_os_disk: pulumi.Input[bool],
-                 spot_sizes: pulumi.Input[Sequence[pulumi.Input[str]]],
                  strategy: pulumi.Input['StatefulNodeAzureStrategyArgs'],
+                 vm_sizes: pulumi.Input['StatefulNodeAzureVmSizesArgs'],
                  attach_data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureAttachDataDiskArgs']]]] = None,
                  boot_diagnostics: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureBootDiagnosticArgs']]]] = None,
                  custom_data: Optional[pulumi.Input[str]] = None,
@@ -45,7 +44,6 @@ class StatefulNodeAzureArgs:
                  network: Optional[pulumi.Input['StatefulNodeAzureNetworkArgs']] = None,
                  os_disk: Optional[pulumi.Input['StatefulNodeAzureOsDiskArgs']] = None,
                  os_disk_persistence_mode: Optional[pulumi.Input[str]] = None,
-                 preferred_spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preferred_zone: Optional[pulumi.Input[str]] = None,
                  proximity_placement_groups: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureProximityPlacementGroupArgs']]]] = None,
                  scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSchedulingTaskArgs']]]] = None,
@@ -63,15 +61,14 @@ class StatefulNodeAzureArgs:
         """
         The set of arguments for constructing a StatefulNodeAzure resource.
         """
-        pulumi.set(__self__, "od_sizes", od_sizes)
         pulumi.set(__self__, "os", os)
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "resource_group_name", resource_group_name)
         pulumi.set(__self__, "should_persist_data_disks", should_persist_data_disks)
         pulumi.set(__self__, "should_persist_network", should_persist_network)
         pulumi.set(__self__, "should_persist_os_disk", should_persist_os_disk)
-        pulumi.set(__self__, "spot_sizes", spot_sizes)
         pulumi.set(__self__, "strategy", strategy)
+        pulumi.set(__self__, "vm_sizes", vm_sizes)
         if attach_data_disks is not None:
             pulumi.set(__self__, "attach_data_disks", attach_data_disks)
         if boot_diagnostics is not None:
@@ -112,8 +109,6 @@ class StatefulNodeAzureArgs:
             pulumi.set(__self__, "os_disk", os_disk)
         if os_disk_persistence_mode is not None:
             pulumi.set(__self__, "os_disk_persistence_mode", os_disk_persistence_mode)
-        if preferred_spot_sizes is not None:
-            pulumi.set(__self__, "preferred_spot_sizes", preferred_spot_sizes)
         if preferred_zone is not None:
             pulumi.set(__self__, "preferred_zone", preferred_zone)
         if proximity_placement_groups is not None:
@@ -142,15 +137,6 @@ class StatefulNodeAzureArgs:
             pulumi.set(__self__, "vm_name_prefix", vm_name_prefix)
         if zones is not None:
             pulumi.set(__self__, "zones", zones)
-
-    @property
-    @pulumi.getter(name="odSizes")
-    def od_sizes(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        return pulumi.get(self, "od_sizes")
-
-    @od_sizes.setter
-    def od_sizes(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
-        pulumi.set(self, "od_sizes", value)
 
     @property
     @pulumi.getter
@@ -207,15 +193,6 @@ class StatefulNodeAzureArgs:
         pulumi.set(self, "should_persist_os_disk", value)
 
     @property
-    @pulumi.getter(name="spotSizes")
-    def spot_sizes(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        return pulumi.get(self, "spot_sizes")
-
-    @spot_sizes.setter
-    def spot_sizes(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
-        pulumi.set(self, "spot_sizes", value)
-
-    @property
     @pulumi.getter
     def strategy(self) -> pulumi.Input['StatefulNodeAzureStrategyArgs']:
         return pulumi.get(self, "strategy")
@@ -223,6 +200,15 @@ class StatefulNodeAzureArgs:
     @strategy.setter
     def strategy(self, value: pulumi.Input['StatefulNodeAzureStrategyArgs']):
         pulumi.set(self, "strategy", value)
+
+    @property
+    @pulumi.getter(name="vmSizes")
+    def vm_sizes(self) -> pulumi.Input['StatefulNodeAzureVmSizesArgs']:
+        return pulumi.get(self, "vm_sizes")
+
+    @vm_sizes.setter
+    def vm_sizes(self, value: pulumi.Input['StatefulNodeAzureVmSizesArgs']):
+        pulumi.set(self, "vm_sizes", value)
 
     @property
     @pulumi.getter(name="attachDataDisks")
@@ -403,15 +389,6 @@ class StatefulNodeAzureArgs:
     @os_disk_persistence_mode.setter
     def os_disk_persistence_mode(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "os_disk_persistence_mode", value)
-
-    @property
-    @pulumi.getter(name="preferredSpotSizes")
-    def preferred_spot_sizes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        return pulumi.get(self, "preferred_spot_sizes")
-
-    @preferred_spot_sizes.setter
-    def preferred_spot_sizes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "preferred_spot_sizes", value)
 
     @property
     @pulumi.getter(name="preferredZone")
@@ -561,11 +538,9 @@ class _StatefulNodeAzureState:
                  managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureManagedServiceIdentityArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input['StatefulNodeAzureNetworkArgs']] = None,
-                 od_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  os: Optional[pulumi.Input[str]] = None,
                  os_disk: Optional[pulumi.Input['StatefulNodeAzureOsDiskArgs']] = None,
                  os_disk_persistence_mode: Optional[pulumi.Input[str]] = None,
-                 preferred_spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preferred_zone: Optional[pulumi.Input[str]] = None,
                  proximity_placement_groups: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureProximityPlacementGroupArgs']]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -579,13 +554,13 @@ class _StatefulNodeAzureState:
                  should_persist_vm: Optional[pulumi.Input[bool]] = None,
                  shutdown_script: Optional[pulumi.Input[str]] = None,
                  signals: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSignalArgs']]]] = None,
-                 spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  strategy: Optional[pulumi.Input['StatefulNodeAzureStrategyArgs']] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureTagArgs']]]] = None,
                  update_states: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureUpdateStateArgs']]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  vm_name: Optional[pulumi.Input[str]] = None,
                  vm_name_prefix: Optional[pulumi.Input[str]] = None,
+                 vm_sizes: Optional[pulumi.Input['StatefulNodeAzureVmSizesArgs']] = None,
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering StatefulNodeAzure resources.
@@ -626,16 +601,12 @@ class _StatefulNodeAzureState:
             pulumi.set(__self__, "name", name)
         if network is not None:
             pulumi.set(__self__, "network", network)
-        if od_sizes is not None:
-            pulumi.set(__self__, "od_sizes", od_sizes)
         if os is not None:
             pulumi.set(__self__, "os", os)
         if os_disk is not None:
             pulumi.set(__self__, "os_disk", os_disk)
         if os_disk_persistence_mode is not None:
             pulumi.set(__self__, "os_disk_persistence_mode", os_disk_persistence_mode)
-        if preferred_spot_sizes is not None:
-            pulumi.set(__self__, "preferred_spot_sizes", preferred_spot_sizes)
         if preferred_zone is not None:
             pulumi.set(__self__, "preferred_zone", preferred_zone)
         if proximity_placement_groups is not None:
@@ -662,8 +633,6 @@ class _StatefulNodeAzureState:
             pulumi.set(__self__, "shutdown_script", shutdown_script)
         if signals is not None:
             pulumi.set(__self__, "signals", signals)
-        if spot_sizes is not None:
-            pulumi.set(__self__, "spot_sizes", spot_sizes)
         if strategy is not None:
             pulumi.set(__self__, "strategy", strategy)
         if tags is not None:
@@ -676,6 +645,8 @@ class _StatefulNodeAzureState:
             pulumi.set(__self__, "vm_name", vm_name)
         if vm_name_prefix is not None:
             pulumi.set(__self__, "vm_name_prefix", vm_name_prefix)
+        if vm_sizes is not None:
+            pulumi.set(__self__, "vm_sizes", vm_sizes)
         if zones is not None:
             pulumi.set(__self__, "zones", zones)
 
@@ -842,15 +813,6 @@ class _StatefulNodeAzureState:
         pulumi.set(self, "network", value)
 
     @property
-    @pulumi.getter(name="odSizes")
-    def od_sizes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        return pulumi.get(self, "od_sizes")
-
-    @od_sizes.setter
-    def od_sizes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "od_sizes", value)
-
-    @property
     @pulumi.getter
     def os(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "os")
@@ -876,15 +838,6 @@ class _StatefulNodeAzureState:
     @os_disk_persistence_mode.setter
     def os_disk_persistence_mode(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "os_disk_persistence_mode", value)
-
-    @property
-    @pulumi.getter(name="preferredSpotSizes")
-    def preferred_spot_sizes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        return pulumi.get(self, "preferred_spot_sizes")
-
-    @preferred_spot_sizes.setter
-    def preferred_spot_sizes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "preferred_spot_sizes", value)
 
     @property
     @pulumi.getter(name="preferredZone")
@@ -1004,15 +957,6 @@ class _StatefulNodeAzureState:
         pulumi.set(self, "signals", value)
 
     @property
-    @pulumi.getter(name="spotSizes")
-    def spot_sizes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        return pulumi.get(self, "spot_sizes")
-
-    @spot_sizes.setter
-    def spot_sizes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "spot_sizes", value)
-
-    @property
     @pulumi.getter
     def strategy(self) -> Optional[pulumi.Input['StatefulNodeAzureStrategyArgs']]:
         return pulumi.get(self, "strategy")
@@ -1067,6 +1011,15 @@ class _StatefulNodeAzureState:
         pulumi.set(self, "vm_name_prefix", value)
 
     @property
+    @pulumi.getter(name="vmSizes")
+    def vm_sizes(self) -> Optional[pulumi.Input['StatefulNodeAzureVmSizesArgs']]:
+        return pulumi.get(self, "vm_sizes")
+
+    @vm_sizes.setter
+    def vm_sizes(self, value: Optional[pulumi.Input['StatefulNodeAzureVmSizesArgs']]):
+        pulumi.set(self, "vm_sizes", value)
+
+    @property
     @pulumi.getter
     def zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "zones")
@@ -1099,11 +1052,9 @@ class StatefulNodeAzure(pulumi.CustomResource):
                  managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatefulNodeAzureManagedServiceIdentityArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[pulumi.InputType['StatefulNodeAzureNetworkArgs']]] = None,
-                 od_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  os: Optional[pulumi.Input[str]] = None,
                  os_disk: Optional[pulumi.Input[pulumi.InputType['StatefulNodeAzureOsDiskArgs']]] = None,
                  os_disk_persistence_mode: Optional[pulumi.Input[str]] = None,
-                 preferred_spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preferred_zone: Optional[pulumi.Input[str]] = None,
                  proximity_placement_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatefulNodeAzureProximityPlacementGroupArgs']]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -1117,13 +1068,13 @@ class StatefulNodeAzure(pulumi.CustomResource):
                  should_persist_vm: Optional[pulumi.Input[bool]] = None,
                  shutdown_script: Optional[pulumi.Input[str]] = None,
                  signals: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatefulNodeAzureSignalArgs']]]]] = None,
-                 spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  strategy: Optional[pulumi.Input[pulumi.InputType['StatefulNodeAzureStrategyArgs']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatefulNodeAzureTagArgs']]]]] = None,
                  update_states: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatefulNodeAzureUpdateStateArgs']]]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  vm_name: Optional[pulumi.Input[str]] = None,
                  vm_name_prefix: Optional[pulumi.Input[str]] = None,
+                 vm_sizes: Optional[pulumi.Input[pulumi.InputType['StatefulNodeAzureVmSizesArgs']]] = None,
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -1161,15 +1112,17 @@ class StatefulNodeAzure(pulumi.CustomResource):
                 )],
             ),
             os="Linux",
-            od_sizes=[
-                "standard_ds1_v2",
-                "standard_ds2_v2",
-            ],
-            spot_sizes=[
-                "standard_ds1_v2",
-                "standard_ds2_v2",
-            ],
-            preferred_spot_sizes=["standard_ds1_v2"],
+            vm_sizes=spotinst.StatefulNodeAzureVmSizesArgs(
+                od_sizes=[
+                    "standard_ds1_v2",
+                    "standard_ds2_v2",
+                ],
+                spot_sizes=[
+                    "standard_ds1_v2",
+                    "standard_ds2_v2",
+                ],
+                preferred_spot_sizes=["standard_ds1_v2"],
+            ),
             zones=[
                 "1",
                 "3",
@@ -1388,9 +1341,10 @@ class StatefulNodeAzure(pulumi.CustomResource):
         ## Compute
 
         * `os` - (Required, Enum `"Linux", "Windows"`) Type of operating system.
-        * `od_sizes` - (Required) Available On-Demand sizes.
-        * `spot_sizes` - (Required) Available Spot-VM sizes.
-        * `preferred_spot_sizes` - (Optional) Prioritize Spot VM sizes when launching Spot VMs for the group. If set, must be a sublist of compute.vmSizes.spotSizes.
+        * `vm_sizes` - (Required) Defines the VM sizes to use when launching VMs.
+            * `od_sizes` - (Required) Available On-Demand sizes.
+            * `spot_sizes` - (Required) Available Spot-VM sizes.
+            * `preferred_spot_sizes` - (Optional) Prioritize Spot VM sizes when launching Spot VMs for the group. If set, must be a sublist of compute.vmSizes.spotSizes.
         * `zones` - (Optional, Enum `"1", "2", "3"`) List of Azure Availability Zones in the defined region. If not defined, Virtual machines will be launched regionally.
         * `preferred_zone` - (Optional, Enum `"1", "2", "3"`) The AZ to prioritize when launching VMs. If no markets are available in the Preferred AZ, VMs are launched in the non-preferred AZ. Must be a sublist of compute.zones.
         * `custom_data` - (Optional) This value will hold the YAML in base64 and will be executed upon VM launch.
@@ -1662,15 +1616,17 @@ class StatefulNodeAzure(pulumi.CustomResource):
                 )],
             ),
             os="Linux",
-            od_sizes=[
-                "standard_ds1_v2",
-                "standard_ds2_v2",
-            ],
-            spot_sizes=[
-                "standard_ds1_v2",
-                "standard_ds2_v2",
-            ],
-            preferred_spot_sizes=["standard_ds1_v2"],
+            vm_sizes=spotinst.StatefulNodeAzureVmSizesArgs(
+                od_sizes=[
+                    "standard_ds1_v2",
+                    "standard_ds2_v2",
+                ],
+                spot_sizes=[
+                    "standard_ds1_v2",
+                    "standard_ds2_v2",
+                ],
+                preferred_spot_sizes=["standard_ds1_v2"],
+            ),
             zones=[
                 "1",
                 "3",
@@ -1889,9 +1845,10 @@ class StatefulNodeAzure(pulumi.CustomResource):
         ## Compute
 
         * `os` - (Required, Enum `"Linux", "Windows"`) Type of operating system.
-        * `od_sizes` - (Required) Available On-Demand sizes.
-        * `spot_sizes` - (Required) Available Spot-VM sizes.
-        * `preferred_spot_sizes` - (Optional) Prioritize Spot VM sizes when launching Spot VMs for the group. If set, must be a sublist of compute.vmSizes.spotSizes.
+        * `vm_sizes` - (Required) Defines the VM sizes to use when launching VMs.
+            * `od_sizes` - (Required) Available On-Demand sizes.
+            * `spot_sizes` - (Required) Available Spot-VM sizes.
+            * `preferred_spot_sizes` - (Optional) Prioritize Spot VM sizes when launching Spot VMs for the group. If set, must be a sublist of compute.vmSizes.spotSizes.
         * `zones` - (Optional, Enum `"1", "2", "3"`) List of Azure Availability Zones in the defined region. If not defined, Virtual machines will be launched regionally.
         * `preferred_zone` - (Optional, Enum `"1", "2", "3"`) The AZ to prioritize when launching VMs. If no markets are available in the Preferred AZ, VMs are launched in the non-preferred AZ. Must be a sublist of compute.zones.
         * `custom_data` - (Optional) This value will hold the YAML in base64 and will be executed upon VM launch.
@@ -2152,11 +2109,9 @@ class StatefulNodeAzure(pulumi.CustomResource):
                  managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatefulNodeAzureManagedServiceIdentityArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[pulumi.InputType['StatefulNodeAzureNetworkArgs']]] = None,
-                 od_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  os: Optional[pulumi.Input[str]] = None,
                  os_disk: Optional[pulumi.Input[pulumi.InputType['StatefulNodeAzureOsDiskArgs']]] = None,
                  os_disk_persistence_mode: Optional[pulumi.Input[str]] = None,
-                 preferred_spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preferred_zone: Optional[pulumi.Input[str]] = None,
                  proximity_placement_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatefulNodeAzureProximityPlacementGroupArgs']]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -2170,13 +2125,13 @@ class StatefulNodeAzure(pulumi.CustomResource):
                  should_persist_vm: Optional[pulumi.Input[bool]] = None,
                  shutdown_script: Optional[pulumi.Input[str]] = None,
                  signals: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatefulNodeAzureSignalArgs']]]]] = None,
-                 spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  strategy: Optional[pulumi.Input[pulumi.InputType['StatefulNodeAzureStrategyArgs']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatefulNodeAzureTagArgs']]]]] = None,
                  update_states: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatefulNodeAzureUpdateStateArgs']]]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  vm_name: Optional[pulumi.Input[str]] = None,
                  vm_name_prefix: Optional[pulumi.Input[str]] = None,
+                 vm_sizes: Optional[pulumi.Input[pulumi.InputType['StatefulNodeAzureVmSizesArgs']]] = None,
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -2205,15 +2160,11 @@ class StatefulNodeAzure(pulumi.CustomResource):
             __props__.__dict__["managed_service_identities"] = managed_service_identities
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
-            if od_sizes is None and not opts.urn:
-                raise TypeError("Missing required property 'od_sizes'")
-            __props__.__dict__["od_sizes"] = od_sizes
             if os is None and not opts.urn:
                 raise TypeError("Missing required property 'os'")
             __props__.__dict__["os"] = os
             __props__.__dict__["os_disk"] = os_disk
             __props__.__dict__["os_disk_persistence_mode"] = os_disk_persistence_mode
-            __props__.__dict__["preferred_spot_sizes"] = preferred_spot_sizes
             __props__.__dict__["preferred_zone"] = preferred_zone
             __props__.__dict__["proximity_placement_groups"] = proximity_placement_groups
             if region is None and not opts.urn:
@@ -2237,9 +2188,6 @@ class StatefulNodeAzure(pulumi.CustomResource):
             __props__.__dict__["should_persist_vm"] = should_persist_vm
             __props__.__dict__["shutdown_script"] = shutdown_script
             __props__.__dict__["signals"] = signals
-            if spot_sizes is None and not opts.urn:
-                raise TypeError("Missing required property 'spot_sizes'")
-            __props__.__dict__["spot_sizes"] = spot_sizes
             if strategy is None and not opts.urn:
                 raise TypeError("Missing required property 'strategy'")
             __props__.__dict__["strategy"] = strategy
@@ -2248,6 +2196,9 @@ class StatefulNodeAzure(pulumi.CustomResource):
             __props__.__dict__["user_data"] = user_data
             __props__.__dict__["vm_name"] = vm_name
             __props__.__dict__["vm_name_prefix"] = vm_name_prefix
+            if vm_sizes is None and not opts.urn:
+                raise TypeError("Missing required property 'vm_sizes'")
+            __props__.__dict__["vm_sizes"] = vm_sizes
             __props__.__dict__["zones"] = zones
         super(StatefulNodeAzure, __self__).__init__(
             'spotinst:index/statefulNodeAzure:StatefulNodeAzure',
@@ -2277,11 +2228,9 @@ class StatefulNodeAzure(pulumi.CustomResource):
             managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatefulNodeAzureManagedServiceIdentityArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[pulumi.InputType['StatefulNodeAzureNetworkArgs']]] = None,
-            od_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             os: Optional[pulumi.Input[str]] = None,
             os_disk: Optional[pulumi.Input[pulumi.InputType['StatefulNodeAzureOsDiskArgs']]] = None,
             os_disk_persistence_mode: Optional[pulumi.Input[str]] = None,
-            preferred_spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             preferred_zone: Optional[pulumi.Input[str]] = None,
             proximity_placement_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatefulNodeAzureProximityPlacementGroupArgs']]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
@@ -2295,13 +2244,13 @@ class StatefulNodeAzure(pulumi.CustomResource):
             should_persist_vm: Optional[pulumi.Input[bool]] = None,
             shutdown_script: Optional[pulumi.Input[str]] = None,
             signals: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatefulNodeAzureSignalArgs']]]]] = None,
-            spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             strategy: Optional[pulumi.Input[pulumi.InputType['StatefulNodeAzureStrategyArgs']]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatefulNodeAzureTagArgs']]]]] = None,
             update_states: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatefulNodeAzureUpdateStateArgs']]]]] = None,
             user_data: Optional[pulumi.Input[str]] = None,
             vm_name: Optional[pulumi.Input[str]] = None,
             vm_name_prefix: Optional[pulumi.Input[str]] = None,
+            vm_sizes: Optional[pulumi.Input[pulumi.InputType['StatefulNodeAzureVmSizesArgs']]] = None,
             zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'StatefulNodeAzure':
         """
         Get an existing StatefulNodeAzure resource's state with the given name, id, and optional extra
@@ -2333,11 +2282,9 @@ class StatefulNodeAzure(pulumi.CustomResource):
         __props__.__dict__["managed_service_identities"] = managed_service_identities
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
-        __props__.__dict__["od_sizes"] = od_sizes
         __props__.__dict__["os"] = os
         __props__.__dict__["os_disk"] = os_disk
         __props__.__dict__["os_disk_persistence_mode"] = os_disk_persistence_mode
-        __props__.__dict__["preferred_spot_sizes"] = preferred_spot_sizes
         __props__.__dict__["preferred_zone"] = preferred_zone
         __props__.__dict__["proximity_placement_groups"] = proximity_placement_groups
         __props__.__dict__["region"] = region
@@ -2351,13 +2298,13 @@ class StatefulNodeAzure(pulumi.CustomResource):
         __props__.__dict__["should_persist_vm"] = should_persist_vm
         __props__.__dict__["shutdown_script"] = shutdown_script
         __props__.__dict__["signals"] = signals
-        __props__.__dict__["spot_sizes"] = spot_sizes
         __props__.__dict__["strategy"] = strategy
         __props__.__dict__["tags"] = tags
         __props__.__dict__["update_states"] = update_states
         __props__.__dict__["user_data"] = user_data
         __props__.__dict__["vm_name"] = vm_name
         __props__.__dict__["vm_name_prefix"] = vm_name_prefix
+        __props__.__dict__["vm_sizes"] = vm_sizes
         __props__.__dict__["zones"] = zones
         return StatefulNodeAzure(resource_name, opts=opts, __props__=__props__)
 
@@ -2452,11 +2399,6 @@ class StatefulNodeAzure(pulumi.CustomResource):
         return pulumi.get(self, "network")
 
     @property
-    @pulumi.getter(name="odSizes")
-    def od_sizes(self) -> pulumi.Output[Sequence[str]]:
-        return pulumi.get(self, "od_sizes")
-
-    @property
     @pulumi.getter
     def os(self) -> pulumi.Output[str]:
         return pulumi.get(self, "os")
@@ -2470,11 +2412,6 @@ class StatefulNodeAzure(pulumi.CustomResource):
     @pulumi.getter(name="osDiskPersistenceMode")
     def os_disk_persistence_mode(self) -> pulumi.Output[str]:
         return pulumi.get(self, "os_disk_persistence_mode")
-
-    @property
-    @pulumi.getter(name="preferredSpotSizes")
-    def preferred_spot_sizes(self) -> pulumi.Output[Sequence[str]]:
-        return pulumi.get(self, "preferred_spot_sizes")
 
     @property
     @pulumi.getter(name="preferredZone")
@@ -2542,11 +2479,6 @@ class StatefulNodeAzure(pulumi.CustomResource):
         return pulumi.get(self, "signals")
 
     @property
-    @pulumi.getter(name="spotSizes")
-    def spot_sizes(self) -> pulumi.Output[Sequence[str]]:
-        return pulumi.get(self, "spot_sizes")
-
-    @property
     @pulumi.getter
     def strategy(self) -> pulumi.Output['outputs.StatefulNodeAzureStrategy']:
         return pulumi.get(self, "strategy")
@@ -2575,6 +2507,11 @@ class StatefulNodeAzure(pulumi.CustomResource):
     @pulumi.getter(name="vmNamePrefix")
     def vm_name_prefix(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "vm_name_prefix")
+
+    @property
+    @pulumi.getter(name="vmSizes")
+    def vm_sizes(self) -> pulumi.Output['outputs.StatefulNodeAzureVmSizes']:
+        return pulumi.get(self, "vm_sizes")
 
     @property
     @pulumi.getter

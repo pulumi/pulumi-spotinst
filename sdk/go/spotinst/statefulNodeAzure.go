@@ -62,16 +62,18 @@ import (
 //					},
 //				},
 //				Os: pulumi.String("Linux"),
-//				OdSizes: pulumi.StringArray{
-//					pulumi.String("standard_ds1_v2"),
-//					pulumi.String("standard_ds2_v2"),
-//				},
-//				SpotSizes: pulumi.StringArray{
-//					pulumi.String("standard_ds1_v2"),
-//					pulumi.String("standard_ds2_v2"),
-//				},
-//				PreferredSpotSizes: pulumi.StringArray{
-//					pulumi.String("standard_ds1_v2"),
+//				VmSizes: &spotinst.StatefulNodeAzureVmSizesArgs{
+//					OdSizes: pulumi.StringArray{
+//						pulumi.String("standard_ds1_v2"),
+//						pulumi.String("standard_ds2_v2"),
+//					},
+//					SpotSizes: pulumi.StringArray{
+//						pulumi.String("standard_ds1_v2"),
+//						pulumi.String("standard_ds2_v2"),
+//					},
+//					PreferredSpotSizes: pulumi.StringArray{
+//						pulumi.String("standard_ds1_v2"),
+//					},
 //				},
 //				Zones: pulumi.StringArray{
 //					pulumi.String("1"),
@@ -341,9 +343,11 @@ import (
 // ## Compute
 //
 // * `os` - (Required, Enum `"Linux", "Windows"`) Type of operating system.
-// * `odSizes` - (Required) Available On-Demand sizes.
-// * `spotSizes` - (Required) Available Spot-VM sizes.
-// * `preferredSpotSizes` - (Optional) Prioritize Spot VM sizes when launching Spot VMs for the group. If set, must be a sublist of compute.vmSizes.spotSizes.
+// * `vmSizes` - (Required) Defines the VM sizes to use when launching VMs.
+//   - `odSizes` - (Required) Available On-Demand sizes.
+//   - `spotSizes` - (Required) Available Spot-VM sizes.
+//   - `preferredSpotSizes` - (Optional) Prioritize Spot VM sizes when launching Spot VMs for the group. If set, must be a sublist of compute.vmSizes.spotSizes.
+//
 // * `zones` - (Optional, Enum `"1", "2", "3"`) List of Azure Availability Zones in the defined region. If not defined, Virtual machines will be launched regionally.
 // * `preferredZone` - (Optional, Enum `"1", "2", "3"`) The AZ to prioritize when launching VMs. If no markets are available in the Preferred AZ, VMs are launched in the non-preferred AZ. Must be a sublist of compute.zones.
 // * `customData` - (Optional) This value will hold the YAML in base64 and will be executed upon VM launch.
@@ -591,11 +595,9 @@ type StatefulNodeAzure struct {
 	ManagedServiceIdentities StatefulNodeAzureManagedServiceIdentityArrayOutput  `pulumi:"managedServiceIdentities"`
 	Name                     pulumi.StringOutput                                 `pulumi:"name"`
 	Network                  StatefulNodeAzureNetworkPtrOutput                   `pulumi:"network"`
-	OdSizes                  pulumi.StringArrayOutput                            `pulumi:"odSizes"`
 	Os                       pulumi.StringOutput                                 `pulumi:"os"`
 	OsDisk                   StatefulNodeAzureOsDiskPtrOutput                    `pulumi:"osDisk"`
 	OsDiskPersistenceMode    pulumi.StringOutput                                 `pulumi:"osDiskPersistenceMode"`
-	PreferredSpotSizes       pulumi.StringArrayOutput                            `pulumi:"preferredSpotSizes"`
 	PreferredZone            pulumi.StringOutput                                 `pulumi:"preferredZone"`
 	ProximityPlacementGroups StatefulNodeAzureProximityPlacementGroupArrayOutput `pulumi:"proximityPlacementGroups"`
 	Region                   pulumi.StringOutput                                 `pulumi:"region"`
@@ -609,13 +611,13 @@ type StatefulNodeAzure struct {
 	ShouldPersistVm          pulumi.BoolOutput                                   `pulumi:"shouldPersistVm"`
 	ShutdownScript           pulumi.StringOutput                                 `pulumi:"shutdownScript"`
 	Signals                  StatefulNodeAzureSignalArrayOutput                  `pulumi:"signals"`
-	SpotSizes                pulumi.StringArrayOutput                            `pulumi:"spotSizes"`
 	Strategy                 StatefulNodeAzureStrategyOutput                     `pulumi:"strategy"`
 	Tags                     StatefulNodeAzureTagArrayOutput                     `pulumi:"tags"`
 	UpdateStates             StatefulNodeAzureUpdateStateArrayOutput             `pulumi:"updateStates"`
 	UserData                 pulumi.StringOutput                                 `pulumi:"userData"`
 	VmName                   pulumi.StringPtrOutput                              `pulumi:"vmName"`
 	VmNamePrefix             pulumi.StringPtrOutput                              `pulumi:"vmNamePrefix"`
+	VmSizes                  StatefulNodeAzureVmSizesOutput                      `pulumi:"vmSizes"`
 	Zones                    pulumi.StringArrayOutput                            `pulumi:"zones"`
 }
 
@@ -626,9 +628,6 @@ func NewStatefulNodeAzure(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.OdSizes == nil {
-		return nil, errors.New("invalid value for required argument 'OdSizes'")
-	}
 	if args.Os == nil {
 		return nil, errors.New("invalid value for required argument 'Os'")
 	}
@@ -647,11 +646,11 @@ func NewStatefulNodeAzure(ctx *pulumi.Context,
 	if args.ShouldPersistOsDisk == nil {
 		return nil, errors.New("invalid value for required argument 'ShouldPersistOsDisk'")
 	}
-	if args.SpotSizes == nil {
-		return nil, errors.New("invalid value for required argument 'SpotSizes'")
-	}
 	if args.Strategy == nil {
 		return nil, errors.New("invalid value for required argument 'Strategy'")
+	}
+	if args.VmSizes == nil {
+		return nil, errors.New("invalid value for required argument 'VmSizes'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource StatefulNodeAzure
@@ -694,11 +693,9 @@ type statefulNodeAzureState struct {
 	ManagedServiceIdentities []StatefulNodeAzureManagedServiceIdentity  `pulumi:"managedServiceIdentities"`
 	Name                     *string                                    `pulumi:"name"`
 	Network                  *StatefulNodeAzureNetwork                  `pulumi:"network"`
-	OdSizes                  []string                                   `pulumi:"odSizes"`
 	Os                       *string                                    `pulumi:"os"`
 	OsDisk                   *StatefulNodeAzureOsDisk                   `pulumi:"osDisk"`
 	OsDiskPersistenceMode    *string                                    `pulumi:"osDiskPersistenceMode"`
-	PreferredSpotSizes       []string                                   `pulumi:"preferredSpotSizes"`
 	PreferredZone            *string                                    `pulumi:"preferredZone"`
 	ProximityPlacementGroups []StatefulNodeAzureProximityPlacementGroup `pulumi:"proximityPlacementGroups"`
 	Region                   *string                                    `pulumi:"region"`
@@ -712,13 +709,13 @@ type statefulNodeAzureState struct {
 	ShouldPersistVm          *bool                                      `pulumi:"shouldPersistVm"`
 	ShutdownScript           *string                                    `pulumi:"shutdownScript"`
 	Signals                  []StatefulNodeAzureSignal                  `pulumi:"signals"`
-	SpotSizes                []string                                   `pulumi:"spotSizes"`
 	Strategy                 *StatefulNodeAzureStrategy                 `pulumi:"strategy"`
 	Tags                     []StatefulNodeAzureTag                     `pulumi:"tags"`
 	UpdateStates             []StatefulNodeAzureUpdateState             `pulumi:"updateStates"`
 	UserData                 *string                                    `pulumi:"userData"`
 	VmName                   *string                                    `pulumi:"vmName"`
 	VmNamePrefix             *string                                    `pulumi:"vmNamePrefix"`
+	VmSizes                  *StatefulNodeAzureVmSizes                  `pulumi:"vmSizes"`
 	Zones                    []string                                   `pulumi:"zones"`
 }
 
@@ -741,11 +738,9 @@ type StatefulNodeAzureState struct {
 	ManagedServiceIdentities StatefulNodeAzureManagedServiceIdentityArrayInput
 	Name                     pulumi.StringPtrInput
 	Network                  StatefulNodeAzureNetworkPtrInput
-	OdSizes                  pulumi.StringArrayInput
 	Os                       pulumi.StringPtrInput
 	OsDisk                   StatefulNodeAzureOsDiskPtrInput
 	OsDiskPersistenceMode    pulumi.StringPtrInput
-	PreferredSpotSizes       pulumi.StringArrayInput
 	PreferredZone            pulumi.StringPtrInput
 	ProximityPlacementGroups StatefulNodeAzureProximityPlacementGroupArrayInput
 	Region                   pulumi.StringPtrInput
@@ -759,13 +754,13 @@ type StatefulNodeAzureState struct {
 	ShouldPersistVm          pulumi.BoolPtrInput
 	ShutdownScript           pulumi.StringPtrInput
 	Signals                  StatefulNodeAzureSignalArrayInput
-	SpotSizes                pulumi.StringArrayInput
 	Strategy                 StatefulNodeAzureStrategyPtrInput
 	Tags                     StatefulNodeAzureTagArrayInput
 	UpdateStates             StatefulNodeAzureUpdateStateArrayInput
 	UserData                 pulumi.StringPtrInput
 	VmName                   pulumi.StringPtrInput
 	VmNamePrefix             pulumi.StringPtrInput
+	VmSizes                  StatefulNodeAzureVmSizesPtrInput
 	Zones                    pulumi.StringArrayInput
 }
 
@@ -792,11 +787,9 @@ type statefulNodeAzureArgs struct {
 	ManagedServiceIdentities []StatefulNodeAzureManagedServiceIdentity  `pulumi:"managedServiceIdentities"`
 	Name                     *string                                    `pulumi:"name"`
 	Network                  *StatefulNodeAzureNetwork                  `pulumi:"network"`
-	OdSizes                  []string                                   `pulumi:"odSizes"`
 	Os                       string                                     `pulumi:"os"`
 	OsDisk                   *StatefulNodeAzureOsDisk                   `pulumi:"osDisk"`
 	OsDiskPersistenceMode    *string                                    `pulumi:"osDiskPersistenceMode"`
-	PreferredSpotSizes       []string                                   `pulumi:"preferredSpotSizes"`
 	PreferredZone            *string                                    `pulumi:"preferredZone"`
 	ProximityPlacementGroups []StatefulNodeAzureProximityPlacementGroup `pulumi:"proximityPlacementGroups"`
 	Region                   string                                     `pulumi:"region"`
@@ -810,13 +803,13 @@ type statefulNodeAzureArgs struct {
 	ShouldPersistVm          *bool                                      `pulumi:"shouldPersistVm"`
 	ShutdownScript           *string                                    `pulumi:"shutdownScript"`
 	Signals                  []StatefulNodeAzureSignal                  `pulumi:"signals"`
-	SpotSizes                []string                                   `pulumi:"spotSizes"`
 	Strategy                 StatefulNodeAzureStrategy                  `pulumi:"strategy"`
 	Tags                     []StatefulNodeAzureTag                     `pulumi:"tags"`
 	UpdateStates             []StatefulNodeAzureUpdateState             `pulumi:"updateStates"`
 	UserData                 *string                                    `pulumi:"userData"`
 	VmName                   *string                                    `pulumi:"vmName"`
 	VmNamePrefix             *string                                    `pulumi:"vmNamePrefix"`
+	VmSizes                  StatefulNodeAzureVmSizes                   `pulumi:"vmSizes"`
 	Zones                    []string                                   `pulumi:"zones"`
 }
 
@@ -840,11 +833,9 @@ type StatefulNodeAzureArgs struct {
 	ManagedServiceIdentities StatefulNodeAzureManagedServiceIdentityArrayInput
 	Name                     pulumi.StringPtrInput
 	Network                  StatefulNodeAzureNetworkPtrInput
-	OdSizes                  pulumi.StringArrayInput
 	Os                       pulumi.StringInput
 	OsDisk                   StatefulNodeAzureOsDiskPtrInput
 	OsDiskPersistenceMode    pulumi.StringPtrInput
-	PreferredSpotSizes       pulumi.StringArrayInput
 	PreferredZone            pulumi.StringPtrInput
 	ProximityPlacementGroups StatefulNodeAzureProximityPlacementGroupArrayInput
 	Region                   pulumi.StringInput
@@ -858,13 +849,13 @@ type StatefulNodeAzureArgs struct {
 	ShouldPersistVm          pulumi.BoolPtrInput
 	ShutdownScript           pulumi.StringPtrInput
 	Signals                  StatefulNodeAzureSignalArrayInput
-	SpotSizes                pulumi.StringArrayInput
 	Strategy                 StatefulNodeAzureStrategyInput
 	Tags                     StatefulNodeAzureTagArrayInput
 	UpdateStates             StatefulNodeAzureUpdateStateArrayInput
 	UserData                 pulumi.StringPtrInput
 	VmName                   pulumi.StringPtrInput
 	VmNamePrefix             pulumi.StringPtrInput
+	VmSizes                  StatefulNodeAzureVmSizesInput
 	Zones                    pulumi.StringArrayInput
 }
 
@@ -1029,10 +1020,6 @@ func (o StatefulNodeAzureOutput) Network() StatefulNodeAzureNetworkPtrOutput {
 	return o.ApplyT(func(v *StatefulNodeAzure) StatefulNodeAzureNetworkPtrOutput { return v.Network }).(StatefulNodeAzureNetworkPtrOutput)
 }
 
-func (o StatefulNodeAzureOutput) OdSizes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *StatefulNodeAzure) pulumi.StringArrayOutput { return v.OdSizes }).(pulumi.StringArrayOutput)
-}
-
 func (o StatefulNodeAzureOutput) Os() pulumi.StringOutput {
 	return o.ApplyT(func(v *StatefulNodeAzure) pulumi.StringOutput { return v.Os }).(pulumi.StringOutput)
 }
@@ -1043,10 +1030,6 @@ func (o StatefulNodeAzureOutput) OsDisk() StatefulNodeAzureOsDiskPtrOutput {
 
 func (o StatefulNodeAzureOutput) OsDiskPersistenceMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *StatefulNodeAzure) pulumi.StringOutput { return v.OsDiskPersistenceMode }).(pulumi.StringOutput)
-}
-
-func (o StatefulNodeAzureOutput) PreferredSpotSizes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *StatefulNodeAzure) pulumi.StringArrayOutput { return v.PreferredSpotSizes }).(pulumi.StringArrayOutput)
 }
 
 func (o StatefulNodeAzureOutput) PreferredZone() pulumi.StringOutput {
@@ -1103,10 +1086,6 @@ func (o StatefulNodeAzureOutput) Signals() StatefulNodeAzureSignalArrayOutput {
 	return o.ApplyT(func(v *StatefulNodeAzure) StatefulNodeAzureSignalArrayOutput { return v.Signals }).(StatefulNodeAzureSignalArrayOutput)
 }
 
-func (o StatefulNodeAzureOutput) SpotSizes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *StatefulNodeAzure) pulumi.StringArrayOutput { return v.SpotSizes }).(pulumi.StringArrayOutput)
-}
-
 func (o StatefulNodeAzureOutput) Strategy() StatefulNodeAzureStrategyOutput {
 	return o.ApplyT(func(v *StatefulNodeAzure) StatefulNodeAzureStrategyOutput { return v.Strategy }).(StatefulNodeAzureStrategyOutput)
 }
@@ -1129,6 +1108,10 @@ func (o StatefulNodeAzureOutput) VmName() pulumi.StringPtrOutput {
 
 func (o StatefulNodeAzureOutput) VmNamePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StatefulNodeAzure) pulumi.StringPtrOutput { return v.VmNamePrefix }).(pulumi.StringPtrOutput)
+}
+
+func (o StatefulNodeAzureOutput) VmSizes() StatefulNodeAzureVmSizesOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) StatefulNodeAzureVmSizesOutput { return v.VmSizes }).(StatefulNodeAzureVmSizesOutput)
 }
 
 func (o StatefulNodeAzureOutput) Zones() pulumi.StringArrayOutput {

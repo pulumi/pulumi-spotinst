@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ElastigroupAzureV3{}
 	case "spotinst:index/healthCheck:HealthCheck":
 		r = &HealthCheck{}
+	case "spotinst:index/oceanRightSizingRule:OceanRightSizingRule":
+		r = &OceanRightSizingRule{}
 	case "spotinst:index/statefulNodeAzure:StatefulNodeAzure":
 		r = &StatefulNodeAzure{}
 	case "spotinst:index/subscription:Subscription":
@@ -75,6 +77,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"spotinst",
 		"index/healthCheck",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"spotinst",
+		"index/oceanRightSizingRule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

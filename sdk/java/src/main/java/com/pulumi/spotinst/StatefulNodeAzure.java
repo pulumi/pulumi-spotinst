@@ -32,6 +32,7 @@ import com.pulumi.spotinst.outputs.StatefulNodeAzureSignal;
 import com.pulumi.spotinst.outputs.StatefulNodeAzureStrategy;
 import com.pulumi.spotinst.outputs.StatefulNodeAzureTag;
 import com.pulumi.spotinst.outputs.StatefulNodeAzureUpdateState;
+import com.pulumi.spotinst.outputs.StatefulNodeAzureVmSizes;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -55,6 +56,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.spotinst.StatefulNodeAzureArgs;
  * import com.pulumi.spotinst.inputs.StatefulNodeAzureStrategyArgs;
  * import com.pulumi.spotinst.inputs.StatefulNodeAzureStrategyRevertToSpotArgs;
+ * import com.pulumi.spotinst.inputs.StatefulNodeAzureVmSizesArgs;
  * import com.pulumi.spotinst.inputs.StatefulNodeAzureBootDiagnosticArgs;
  * import com.pulumi.spotinst.inputs.StatefulNodeAzureDataDiskArgs;
  * import com.pulumi.spotinst.inputs.StatefulNodeAzureExtensionArgs;
@@ -111,13 +113,15 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .os("Linux")
- *             .odSizes(            
- *                 "standard_ds1_v2",
- *                 "standard_ds2_v2")
- *             .spotSizes(            
- *                 "standard_ds1_v2",
- *                 "standard_ds2_v2")
- *             .preferredSpotSizes("standard_ds1_v2")
+ *             .vmSizes(StatefulNodeAzureVmSizesArgs.builder()
+ *                 .odSizes(                
+ *                     "standard_ds1_v2",
+ *                     "standard_ds2_v2")
+ *                 .spotSizes(                
+ *                     "standard_ds1_v2",
+ *                     "standard_ds2_v2")
+ *                 .preferredSpotSizes("standard_ds1_v2")
+ *                 .build())
  *             .zones(            
  *                 "1",
  *                 "3")
@@ -333,9 +337,10 @@ import javax.annotation.Nullable;
  * ## Compute
  * 
  * * `os` - (Required, Enum `&#34;Linux&#34;, &#34;Windows&#34;`) Type of operating system.
- * * `od_sizes` - (Required) Available On-Demand sizes.
- * * `spot_sizes` - (Required) Available Spot-VM sizes.
- * * `preferred_spot_sizes` - (Optional) Prioritize Spot VM sizes when launching Spot VMs for the group. If set, must be a sublist of compute.vmSizes.spotSizes.
+ * * `vm_sizes` - (Required) Defines the VM sizes to use when launching VMs.
+ *     * `od_sizes` - (Required) Available On-Demand sizes.
+ *     * `spot_sizes` - (Required) Available Spot-VM sizes.
+ *     * `preferred_spot_sizes` - (Optional) Prioritize Spot VM sizes when launching Spot VMs for the group. If set, must be a sublist of compute.vmSizes.spotSizes.
  * * `zones` - (Optional, Enum `&#34;1&#34;, &#34;2&#34;, &#34;3&#34;`) List of Azure Availability Zones in the defined region. If not defined, Virtual machines will be launched regionally.
  * * `preferred_zone` - (Optional, Enum `&#34;1&#34;, &#34;2&#34;, &#34;3&#34;`) The AZ to prioritize when launching VMs. If no markets are available in the Preferred AZ, VMs are launched in the non-preferred AZ. Must be a sublist of compute.zones.
  * * `custom_data` - (Optional) This value will hold the YAML in base64 and will be executed upon VM launch.
@@ -674,12 +679,6 @@ public class StatefulNodeAzure extends com.pulumi.resources.CustomResource {
     public Output<Optional<StatefulNodeAzureNetwork>> network() {
         return Codegen.optional(this.network);
     }
-    @Export(name="odSizes", refs={List.class,String.class}, tree="[0,1]")
-    private Output<List<String>> odSizes;
-
-    public Output<List<String>> odSizes() {
-        return this.odSizes;
-    }
     @Export(name="os", refs={String.class}, tree="[0]")
     private Output<String> os;
 
@@ -697,12 +696,6 @@ public class StatefulNodeAzure extends com.pulumi.resources.CustomResource {
 
     public Output<String> osDiskPersistenceMode() {
         return this.osDiskPersistenceMode;
-    }
-    @Export(name="preferredSpotSizes", refs={List.class,String.class}, tree="[0,1]")
-    private Output<List<String>> preferredSpotSizes;
-
-    public Output<List<String>> preferredSpotSizes() {
-        return this.preferredSpotSizes;
     }
     @Export(name="preferredZone", refs={String.class}, tree="[0]")
     private Output<String> preferredZone;
@@ -782,12 +775,6 @@ public class StatefulNodeAzure extends com.pulumi.resources.CustomResource {
     public Output<List<StatefulNodeAzureSignal>> signals() {
         return this.signals;
     }
-    @Export(name="spotSizes", refs={List.class,String.class}, tree="[0,1]")
-    private Output<List<String>> spotSizes;
-
-    public Output<List<String>> spotSizes() {
-        return this.spotSizes;
-    }
     @Export(name="strategy", refs={StatefulNodeAzureStrategy.class}, tree="[0]")
     private Output<StatefulNodeAzureStrategy> strategy;
 
@@ -823,6 +810,12 @@ public class StatefulNodeAzure extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<String>> vmNamePrefix() {
         return Codegen.optional(this.vmNamePrefix);
+    }
+    @Export(name="vmSizes", refs={StatefulNodeAzureVmSizes.class}, tree="[0]")
+    private Output<StatefulNodeAzureVmSizes> vmSizes;
+
+    public Output<StatefulNodeAzureVmSizes> vmSizes() {
+        return this.vmSizes;
     }
     @Export(name="zones", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> zones;

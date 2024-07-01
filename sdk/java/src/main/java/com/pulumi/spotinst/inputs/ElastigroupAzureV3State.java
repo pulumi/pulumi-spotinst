@@ -10,6 +10,7 @@ import com.pulumi.spotinst.inputs.ElastigroupAzureV3LoginArgs;
 import com.pulumi.spotinst.inputs.ElastigroupAzureV3ManagedServiceIdentityArgs;
 import com.pulumi.spotinst.inputs.ElastigroupAzureV3NetworkArgs;
 import com.pulumi.spotinst.inputs.ElastigroupAzureV3TagArgs;
+import com.pulumi.spotinst.inputs.ElastigroupAzureV3VmSizesArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -100,13 +101,6 @@ public final class ElastigroupAzureV3State extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.network);
     }
 
-    @Import(name="odSizes")
-    private @Nullable Output<List<String>> odSizes;
-
-    public Optional<Output<List<String>>> odSizes() {
-        return Optional.ofNullable(this.odSizes);
-    }
-
     @Import(name="onDemandCount")
     private @Nullable Output<Integer> onDemandCount;
 
@@ -142,18 +136,18 @@ public final class ElastigroupAzureV3State extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.spotPercentage);
     }
 
-    @Import(name="spotSizes")
-    private @Nullable Output<List<String>> spotSizes;
-
-    public Optional<Output<List<String>>> spotSizes() {
-        return Optional.ofNullable(this.spotSizes);
-    }
-
     @Import(name="tags")
     private @Nullable Output<List<ElastigroupAzureV3TagArgs>> tags;
 
     public Optional<Output<List<ElastigroupAzureV3TagArgs>>> tags() {
         return Optional.ofNullable(this.tags);
+    }
+
+    @Import(name="vmSizes")
+    private @Nullable Output<ElastigroupAzureV3VmSizesArgs> vmSizes;
+
+    public Optional<Output<ElastigroupAzureV3VmSizesArgs>> vmSizes() {
+        return Optional.ofNullable(this.vmSizes);
     }
 
     private ElastigroupAzureV3State() {}
@@ -170,14 +164,13 @@ public final class ElastigroupAzureV3State extends com.pulumi.resources.Resource
         this.minSize = $.minSize;
         this.name = $.name;
         this.network = $.network;
-        this.odSizes = $.odSizes;
         this.onDemandCount = $.onDemandCount;
         this.os = $.os;
         this.region = $.region;
         this.resourceGroupName = $.resourceGroupName;
         this.spotPercentage = $.spotPercentage;
-        this.spotSizes = $.spotSizes;
         this.tags = $.tags;
+        this.vmSizes = $.vmSizes;
     }
 
     public static Builder builder() {
@@ -305,19 +298,6 @@ public final class ElastigroupAzureV3State extends com.pulumi.resources.Resource
             return network(Output.of(network));
         }
 
-        public Builder odSizes(@Nullable Output<List<String>> odSizes) {
-            $.odSizes = odSizes;
-            return this;
-        }
-
-        public Builder odSizes(List<String> odSizes) {
-            return odSizes(Output.of(odSizes));
-        }
-
-        public Builder odSizes(String... odSizes) {
-            return odSizes(List.of(odSizes));
-        }
-
         public Builder onDemandCount(@Nullable Output<Integer> onDemandCount) {
             $.onDemandCount = onDemandCount;
             return this;
@@ -363,19 +343,6 @@ public final class ElastigroupAzureV3State extends com.pulumi.resources.Resource
             return spotPercentage(Output.of(spotPercentage));
         }
 
-        public Builder spotSizes(@Nullable Output<List<String>> spotSizes) {
-            $.spotSizes = spotSizes;
-            return this;
-        }
-
-        public Builder spotSizes(List<String> spotSizes) {
-            return spotSizes(Output.of(spotSizes));
-        }
-
-        public Builder spotSizes(String... spotSizes) {
-            return spotSizes(List.of(spotSizes));
-        }
-
         public Builder tags(@Nullable Output<List<ElastigroupAzureV3TagArgs>> tags) {
             $.tags = tags;
             return this;
@@ -387,6 +354,15 @@ public final class ElastigroupAzureV3State extends com.pulumi.resources.Resource
 
         public Builder tags(ElastigroupAzureV3TagArgs... tags) {
             return tags(List.of(tags));
+        }
+
+        public Builder vmSizes(@Nullable Output<ElastigroupAzureV3VmSizesArgs> vmSizes) {
+            $.vmSizes = vmSizes;
+            return this;
+        }
+
+        public Builder vmSizes(ElastigroupAzureV3VmSizesArgs vmSizes) {
+            return vmSizes(Output.of(vmSizes));
         }
 
         public ElastigroupAzureV3State build() {

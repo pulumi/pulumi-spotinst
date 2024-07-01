@@ -11,6 +11,7 @@ import com.pulumi.spotinst.inputs.ElastigroupAzureV3LoginArgs;
 import com.pulumi.spotinst.inputs.ElastigroupAzureV3ManagedServiceIdentityArgs;
 import com.pulumi.spotinst.inputs.ElastigroupAzureV3NetworkArgs;
 import com.pulumi.spotinst.inputs.ElastigroupAzureV3TagArgs;
+import com.pulumi.spotinst.inputs.ElastigroupAzureV3VmSizesArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -101,13 +102,6 @@ public final class ElastigroupAzureV3Args extends com.pulumi.resources.ResourceA
         return this.network;
     }
 
-    @Import(name="odSizes", required=true)
-    private Output<List<String>> odSizes;
-
-    public Output<List<String>> odSizes() {
-        return this.odSizes;
-    }
-
     @Import(name="onDemandCount")
     private @Nullable Output<Integer> onDemandCount;
 
@@ -143,18 +137,18 @@ public final class ElastigroupAzureV3Args extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.spotPercentage);
     }
 
-    @Import(name="spotSizes", required=true)
-    private Output<List<String>> spotSizes;
-
-    public Output<List<String>> spotSizes() {
-        return this.spotSizes;
-    }
-
     @Import(name="tags")
     private @Nullable Output<List<ElastigroupAzureV3TagArgs>> tags;
 
     public Optional<Output<List<ElastigroupAzureV3TagArgs>>> tags() {
         return Optional.ofNullable(this.tags);
+    }
+
+    @Import(name="vmSizes", required=true)
+    private Output<ElastigroupAzureV3VmSizesArgs> vmSizes;
+
+    public Output<ElastigroupAzureV3VmSizesArgs> vmSizes() {
+        return this.vmSizes;
     }
 
     private ElastigroupAzureV3Args() {}
@@ -171,14 +165,13 @@ public final class ElastigroupAzureV3Args extends com.pulumi.resources.ResourceA
         this.minSize = $.minSize;
         this.name = $.name;
         this.network = $.network;
-        this.odSizes = $.odSizes;
         this.onDemandCount = $.onDemandCount;
         this.os = $.os;
         this.region = $.region;
         this.resourceGroupName = $.resourceGroupName;
         this.spotPercentage = $.spotPercentage;
-        this.spotSizes = $.spotSizes;
         this.tags = $.tags;
+        this.vmSizes = $.vmSizes;
     }
 
     public static Builder builder() {
@@ -306,19 +299,6 @@ public final class ElastigroupAzureV3Args extends com.pulumi.resources.ResourceA
             return network(Output.of(network));
         }
 
-        public Builder odSizes(Output<List<String>> odSizes) {
-            $.odSizes = odSizes;
-            return this;
-        }
-
-        public Builder odSizes(List<String> odSizes) {
-            return odSizes(Output.of(odSizes));
-        }
-
-        public Builder odSizes(String... odSizes) {
-            return odSizes(List.of(odSizes));
-        }
-
         public Builder onDemandCount(@Nullable Output<Integer> onDemandCount) {
             $.onDemandCount = onDemandCount;
             return this;
@@ -364,19 +344,6 @@ public final class ElastigroupAzureV3Args extends com.pulumi.resources.ResourceA
             return spotPercentage(Output.of(spotPercentage));
         }
 
-        public Builder spotSizes(Output<List<String>> spotSizes) {
-            $.spotSizes = spotSizes;
-            return this;
-        }
-
-        public Builder spotSizes(List<String> spotSizes) {
-            return spotSizes(Output.of(spotSizes));
-        }
-
-        public Builder spotSizes(String... spotSizes) {
-            return spotSizes(List.of(spotSizes));
-        }
-
         public Builder tags(@Nullable Output<List<ElastigroupAzureV3TagArgs>> tags) {
             $.tags = tags;
             return this;
@@ -390,15 +357,21 @@ public final class ElastigroupAzureV3Args extends com.pulumi.resources.ResourceA
             return tags(List.of(tags));
         }
 
+        public Builder vmSizes(Output<ElastigroupAzureV3VmSizesArgs> vmSizes) {
+            $.vmSizes = vmSizes;
+            return this;
+        }
+
+        public Builder vmSizes(ElastigroupAzureV3VmSizesArgs vmSizes) {
+            return vmSizes(Output.of(vmSizes));
+        }
+
         public ElastigroupAzureV3Args build() {
             if ($.fallbackToOnDemand == null) {
                 throw new MissingRequiredPropertyException("ElastigroupAzureV3Args", "fallbackToOnDemand");
             }
             if ($.network == null) {
                 throw new MissingRequiredPropertyException("ElastigroupAzureV3Args", "network");
-            }
-            if ($.odSizes == null) {
-                throw new MissingRequiredPropertyException("ElastigroupAzureV3Args", "odSizes");
             }
             if ($.os == null) {
                 throw new MissingRequiredPropertyException("ElastigroupAzureV3Args", "os");
@@ -409,8 +382,8 @@ public final class ElastigroupAzureV3Args extends com.pulumi.resources.ResourceA
             if ($.resourceGroupName == null) {
                 throw new MissingRequiredPropertyException("ElastigroupAzureV3Args", "resourceGroupName");
             }
-            if ($.spotSizes == null) {
-                throw new MissingRequiredPropertyException("ElastigroupAzureV3Args", "spotSizes");
+            if ($.vmSizes == null) {
+                throw new MissingRequiredPropertyException("ElastigroupAzureV3Args", "vmSizes");
             }
             return $;
         }

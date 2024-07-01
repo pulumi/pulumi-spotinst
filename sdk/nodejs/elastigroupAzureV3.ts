@@ -45,14 +45,13 @@ export class ElastigroupAzureV3 extends pulumi.CustomResource {
     public readonly minSize!: pulumi.Output<number>;
     public readonly name!: pulumi.Output<string>;
     public readonly network!: pulumi.Output<outputs.ElastigroupAzureV3Network>;
-    public readonly odSizes!: pulumi.Output<string[]>;
     public readonly onDemandCount!: pulumi.Output<number | undefined>;
     public readonly os!: pulumi.Output<string>;
     public readonly region!: pulumi.Output<string>;
     public readonly resourceGroupName!: pulumi.Output<string>;
     public readonly spotPercentage!: pulumi.Output<number | undefined>;
-    public readonly spotSizes!: pulumi.Output<string[]>;
     public readonly tags!: pulumi.Output<outputs.ElastigroupAzureV3Tag[] | undefined>;
+    public readonly vmSizes!: pulumi.Output<outputs.ElastigroupAzureV3VmSizes>;
 
     /**
      * Create a ElastigroupAzureV3 resource with the given unique name, arguments, and options.
@@ -78,14 +77,13 @@ export class ElastigroupAzureV3 extends pulumi.CustomResource {
             resourceInputs["minSize"] = state ? state.minSize : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["odSizes"] = state ? state.odSizes : undefined;
             resourceInputs["onDemandCount"] = state ? state.onDemandCount : undefined;
             resourceInputs["os"] = state ? state.os : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["resourceGroupName"] = state ? state.resourceGroupName : undefined;
             resourceInputs["spotPercentage"] = state ? state.spotPercentage : undefined;
-            resourceInputs["spotSizes"] = state ? state.spotSizes : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["vmSizes"] = state ? state.vmSizes : undefined;
         } else {
             const args = argsOrState as ElastigroupAzureV3Args | undefined;
             if ((!args || args.fallbackToOnDemand === undefined) && !opts.urn) {
@@ -93,9 +91,6 @@ export class ElastigroupAzureV3 extends pulumi.CustomResource {
             }
             if ((!args || args.network === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'network'");
-            }
-            if ((!args || args.odSizes === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'odSizes'");
             }
             if ((!args || args.os === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'os'");
@@ -106,8 +101,8 @@ export class ElastigroupAzureV3 extends pulumi.CustomResource {
             if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.spotSizes === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'spotSizes'");
+            if ((!args || args.vmSizes === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'vmSizes'");
             }
             resourceInputs["customData"] = args ? args.customData : undefined;
             resourceInputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
@@ -120,14 +115,13 @@ export class ElastigroupAzureV3 extends pulumi.CustomResource {
             resourceInputs["minSize"] = args ? args.minSize : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["odSizes"] = args ? args.odSizes : undefined;
             resourceInputs["onDemandCount"] = args ? args.onDemandCount : undefined;
             resourceInputs["os"] = args ? args.os : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["spotPercentage"] = args ? args.spotPercentage : undefined;
-            resourceInputs["spotSizes"] = args ? args.spotSizes : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["vmSizes"] = args ? args.vmSizes : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ElastigroupAzureV3.__pulumiType, name, resourceInputs, opts);
@@ -149,14 +143,13 @@ export interface ElastigroupAzureV3State {
     minSize?: pulumi.Input<number>;
     name?: pulumi.Input<string>;
     network?: pulumi.Input<inputs.ElastigroupAzureV3Network>;
-    odSizes?: pulumi.Input<pulumi.Input<string>[]>;
     onDemandCount?: pulumi.Input<number>;
     os?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
     resourceGroupName?: pulumi.Input<string>;
     spotPercentage?: pulumi.Input<number>;
-    spotSizes?: pulumi.Input<pulumi.Input<string>[]>;
     tags?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3Tag>[]>;
+    vmSizes?: pulumi.Input<inputs.ElastigroupAzureV3VmSizes>;
 }
 
 /**
@@ -174,12 +167,11 @@ export interface ElastigroupAzureV3Args {
     minSize?: pulumi.Input<number>;
     name?: pulumi.Input<string>;
     network: pulumi.Input<inputs.ElastigroupAzureV3Network>;
-    odSizes: pulumi.Input<pulumi.Input<string>[]>;
     onDemandCount?: pulumi.Input<number>;
     os: pulumi.Input<string>;
     region: pulumi.Input<string>;
     resourceGroupName: pulumi.Input<string>;
     spotPercentage?: pulumi.Input<number>;
-    spotSizes: pulumi.Input<pulumi.Input<string>[]>;
     tags?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3Tag>[]>;
+    vmSizes: pulumi.Input<inputs.ElastigroupAzureV3VmSizes>;
 }

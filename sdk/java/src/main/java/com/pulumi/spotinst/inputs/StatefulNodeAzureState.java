@@ -27,6 +27,7 @@ import com.pulumi.spotinst.inputs.StatefulNodeAzureSignalArgs;
 import com.pulumi.spotinst.inputs.StatefulNodeAzureStrategyArgs;
 import com.pulumi.spotinst.inputs.StatefulNodeAzureTagArgs;
 import com.pulumi.spotinst.inputs.StatefulNodeAzureUpdateStateArgs;
+import com.pulumi.spotinst.inputs.StatefulNodeAzureVmSizesArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -165,13 +166,6 @@ public final class StatefulNodeAzureState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.network);
     }
 
-    @Import(name="odSizes")
-    private @Nullable Output<List<String>> odSizes;
-
-    public Optional<Output<List<String>>> odSizes() {
-        return Optional.ofNullable(this.odSizes);
-    }
-
     @Import(name="os")
     private @Nullable Output<String> os;
 
@@ -191,13 +185,6 @@ public final class StatefulNodeAzureState extends com.pulumi.resources.ResourceA
 
     public Optional<Output<String>> osDiskPersistenceMode() {
         return Optional.ofNullable(this.osDiskPersistenceMode);
-    }
-
-    @Import(name="preferredSpotSizes")
-    private @Nullable Output<List<String>> preferredSpotSizes;
-
-    public Optional<Output<List<String>>> preferredSpotSizes() {
-        return Optional.ofNullable(this.preferredSpotSizes);
     }
 
     @Import(name="preferredZone")
@@ -291,13 +278,6 @@ public final class StatefulNodeAzureState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.signals);
     }
 
-    @Import(name="spotSizes")
-    private @Nullable Output<List<String>> spotSizes;
-
-    public Optional<Output<List<String>>> spotSizes() {
-        return Optional.ofNullable(this.spotSizes);
-    }
-
     @Import(name="strategy")
     private @Nullable Output<StatefulNodeAzureStrategyArgs> strategy;
 
@@ -340,6 +320,13 @@ public final class StatefulNodeAzureState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.vmNamePrefix);
     }
 
+    @Import(name="vmSizes")
+    private @Nullable Output<StatefulNodeAzureVmSizesArgs> vmSizes;
+
+    public Optional<Output<StatefulNodeAzureVmSizesArgs>> vmSizes() {
+        return Optional.ofNullable(this.vmSizes);
+    }
+
     @Import(name="zones")
     private @Nullable Output<List<String>> zones;
 
@@ -368,11 +355,9 @@ public final class StatefulNodeAzureState extends com.pulumi.resources.ResourceA
         this.managedServiceIdentities = $.managedServiceIdentities;
         this.name = $.name;
         this.network = $.network;
-        this.odSizes = $.odSizes;
         this.os = $.os;
         this.osDisk = $.osDisk;
         this.osDiskPersistenceMode = $.osDiskPersistenceMode;
-        this.preferredSpotSizes = $.preferredSpotSizes;
         this.preferredZone = $.preferredZone;
         this.proximityPlacementGroups = $.proximityPlacementGroups;
         this.region = $.region;
@@ -386,13 +371,13 @@ public final class StatefulNodeAzureState extends com.pulumi.resources.ResourceA
         this.shouldPersistVm = $.shouldPersistVm;
         this.shutdownScript = $.shutdownScript;
         this.signals = $.signals;
-        this.spotSizes = $.spotSizes;
         this.strategy = $.strategy;
         this.tags = $.tags;
         this.updateStates = $.updateStates;
         this.userData = $.userData;
         this.vmName = $.vmName;
         this.vmNamePrefix = $.vmNamePrefix;
+        this.vmSizes = $.vmSizes;
         this.zones = $.zones;
     }
 
@@ -612,19 +597,6 @@ public final class StatefulNodeAzureState extends com.pulumi.resources.ResourceA
             return network(Output.of(network));
         }
 
-        public Builder odSizes(@Nullable Output<List<String>> odSizes) {
-            $.odSizes = odSizes;
-            return this;
-        }
-
-        public Builder odSizes(List<String> odSizes) {
-            return odSizes(Output.of(odSizes));
-        }
-
-        public Builder odSizes(String... odSizes) {
-            return odSizes(List.of(odSizes));
-        }
-
         public Builder os(@Nullable Output<String> os) {
             $.os = os;
             return this;
@@ -650,19 +622,6 @@ public final class StatefulNodeAzureState extends com.pulumi.resources.ResourceA
 
         public Builder osDiskPersistenceMode(String osDiskPersistenceMode) {
             return osDiskPersistenceMode(Output.of(osDiskPersistenceMode));
-        }
-
-        public Builder preferredSpotSizes(@Nullable Output<List<String>> preferredSpotSizes) {
-            $.preferredSpotSizes = preferredSpotSizes;
-            return this;
-        }
-
-        public Builder preferredSpotSizes(List<String> preferredSpotSizes) {
-            return preferredSpotSizes(Output.of(preferredSpotSizes));
-        }
-
-        public Builder preferredSpotSizes(String... preferredSpotSizes) {
-            return preferredSpotSizes(List.of(preferredSpotSizes));
         }
 
         public Builder preferredZone(@Nullable Output<String> preferredZone) {
@@ -798,19 +757,6 @@ public final class StatefulNodeAzureState extends com.pulumi.resources.ResourceA
             return signals(List.of(signals));
         }
 
-        public Builder spotSizes(@Nullable Output<List<String>> spotSizes) {
-            $.spotSizes = spotSizes;
-            return this;
-        }
-
-        public Builder spotSizes(List<String> spotSizes) {
-            return spotSizes(Output.of(spotSizes));
-        }
-
-        public Builder spotSizes(String... spotSizes) {
-            return spotSizes(List.of(spotSizes));
-        }
-
         public Builder strategy(@Nullable Output<StatefulNodeAzureStrategyArgs> strategy) {
             $.strategy = strategy;
             return this;
@@ -871,6 +817,15 @@ public final class StatefulNodeAzureState extends com.pulumi.resources.ResourceA
 
         public Builder vmNamePrefix(String vmNamePrefix) {
             return vmNamePrefix(Output.of(vmNamePrefix));
+        }
+
+        public Builder vmSizes(@Nullable Output<StatefulNodeAzureVmSizesArgs> vmSizes) {
+            $.vmSizes = vmSizes;
+            return this;
+        }
+
+        public Builder vmSizes(StatefulNodeAzureVmSizesArgs vmSizes) {
+            return vmSizes(Output.of(vmSizes));
         }
 
         public Builder zones(@Nullable Output<List<String>> zones) {

@@ -70,6 +70,11 @@ export interface ElastigroupAzureV3Tag {
     value: string;
 }
 
+export interface ElastigroupAzureV3VmSizes {
+    odSizes: string[];
+    spotSizes: string[];
+}
+
 export interface HealthCheckCheck {
     endPoint?: string;
     /**
@@ -95,6 +100,89 @@ export interface HealthCheckCheck {
      */
     timeout?: number;
     unhealthy: number;
+}
+
+export interface OceanRightSizingRuleAttachWorkload {
+    namespaces: outputs.OceanRightSizingRuleAttachWorkloadNamespace[];
+}
+
+export interface OceanRightSizingRuleAttachWorkloadNamespace {
+    labels?: outputs.OceanRightSizingRuleAttachWorkloadNamespaceLabel[];
+    namespaceName: string;
+    workloads?: outputs.OceanRightSizingRuleAttachWorkloadNamespaceWorkload[];
+}
+
+export interface OceanRightSizingRuleAttachWorkloadNamespaceLabel {
+    key: string;
+    value: string;
+}
+
+export interface OceanRightSizingRuleAttachWorkloadNamespaceWorkload {
+    regexName?: string;
+    workloadName?: string;
+    workloadType: string;
+}
+
+export interface OceanRightSizingRuleDetachWorkload {
+    namespaces: outputs.OceanRightSizingRuleDetachWorkloadNamespace[];
+}
+
+export interface OceanRightSizingRuleDetachWorkloadNamespace {
+    labels?: outputs.OceanRightSizingRuleDetachWorkloadNamespaceLabel[];
+    namespaceName: string;
+    workloads?: outputs.OceanRightSizingRuleDetachWorkloadNamespaceWorkload[];
+}
+
+export interface OceanRightSizingRuleDetachWorkloadNamespaceLabel {
+    key: string;
+    value: string;
+}
+
+export interface OceanRightSizingRuleDetachWorkloadNamespaceWorkload {
+    regexName?: string;
+    workloadName?: string;
+    workloadType: string;
+}
+
+export interface OceanRightSizingRuleRecommendationApplicationBoundary {
+    cpuMax?: number;
+    cpuMin?: number;
+    memoryMax?: number;
+    memoryMin?: number;
+}
+
+export interface OceanRightSizingRuleRecommendationApplicationInterval {
+    monthlyRepetitionBases?: outputs.OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase[];
+    repetitionBasis: string;
+    weeklyRepetitionBases?: outputs.OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBase[];
+}
+
+export interface OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase {
+    intervalMonths: number[];
+    weekOfTheMonths: string[];
+    weeklyRepetitionBases?: outputs.OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBase[];
+}
+
+export interface OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBase {
+    intervalDays: string[];
+    intervalHoursEndTime: string;
+    intervalHoursStartTime: string;
+}
+
+export interface OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBase {
+    intervalDays: string[];
+    intervalHoursEndTime: string;
+    intervalHoursStartTime: string;
+}
+
+export interface OceanRightSizingRuleRecommendationApplicationMinThreshold {
+    cpuPercentage?: number;
+    memoryPercentage?: number;
+}
+
+export interface OceanRightSizingRuleRecommendationApplicationOverheadValue {
+    cpuPercentage?: number;
+    memoryPercentage?: number;
 }
 
 export interface StatefulNodeAzureAttachDataDisk {
@@ -323,6 +411,12 @@ export interface StatefulNodeAzureTag {
 
 export interface StatefulNodeAzureUpdateState {
     state: string;
+}
+
+export interface StatefulNodeAzureVmSizes {
+    odSizes: string[];
+    preferredSpotSizes?: string[];
+    spotSizes: string[];
 }
 
 export namespace aws {

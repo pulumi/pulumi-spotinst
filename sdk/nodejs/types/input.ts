@@ -70,6 +70,11 @@ export interface ElastigroupAzureV3Tag {
     value: pulumi.Input<string>;
 }
 
+export interface ElastigroupAzureV3VmSizes {
+    odSizes: pulumi.Input<pulumi.Input<string>[]>;
+    spotSizes: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface HealthCheckCheck {
     endPoint?: pulumi.Input<string>;
     /**
@@ -95,6 +100,89 @@ export interface HealthCheckCheck {
      */
     timeout?: pulumi.Input<number>;
     unhealthy: pulumi.Input<number>;
+}
+
+export interface OceanRightSizingRuleAttachWorkload {
+    namespaces: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleAttachWorkloadNamespace>[]>;
+}
+
+export interface OceanRightSizingRuleAttachWorkloadNamespace {
+    labels?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleAttachWorkloadNamespaceLabel>[]>;
+    namespaceName: pulumi.Input<string>;
+    workloads?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleAttachWorkloadNamespaceWorkload>[]>;
+}
+
+export interface OceanRightSizingRuleAttachWorkloadNamespaceLabel {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface OceanRightSizingRuleAttachWorkloadNamespaceWorkload {
+    regexName?: pulumi.Input<string>;
+    workloadName?: pulumi.Input<string>;
+    workloadType: pulumi.Input<string>;
+}
+
+export interface OceanRightSizingRuleDetachWorkload {
+    namespaces: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleDetachWorkloadNamespace>[]>;
+}
+
+export interface OceanRightSizingRuleDetachWorkloadNamespace {
+    labels?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleDetachWorkloadNamespaceLabel>[]>;
+    namespaceName: pulumi.Input<string>;
+    workloads?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleDetachWorkloadNamespaceWorkload>[]>;
+}
+
+export interface OceanRightSizingRuleDetachWorkloadNamespaceLabel {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface OceanRightSizingRuleDetachWorkloadNamespaceWorkload {
+    regexName?: pulumi.Input<string>;
+    workloadName?: pulumi.Input<string>;
+    workloadType: pulumi.Input<string>;
+}
+
+export interface OceanRightSizingRuleRecommendationApplicationBoundary {
+    cpuMax?: pulumi.Input<number>;
+    cpuMin?: pulumi.Input<number>;
+    memoryMax?: pulumi.Input<number>;
+    memoryMin?: pulumi.Input<number>;
+}
+
+export interface OceanRightSizingRuleRecommendationApplicationInterval {
+    monthlyRepetitionBases?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase>[]>;
+    repetitionBasis: pulumi.Input<string>;
+    weeklyRepetitionBases?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBase>[]>;
+}
+
+export interface OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase {
+    intervalMonths: pulumi.Input<pulumi.Input<number>[]>;
+    weekOfTheMonths: pulumi.Input<pulumi.Input<string>[]>;
+    weeklyRepetitionBases?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBase>[]>;
+}
+
+export interface OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBase {
+    intervalDays: pulumi.Input<pulumi.Input<string>[]>;
+    intervalHoursEndTime: pulumi.Input<string>;
+    intervalHoursStartTime: pulumi.Input<string>;
+}
+
+export interface OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBase {
+    intervalDays: pulumi.Input<pulumi.Input<string>[]>;
+    intervalHoursEndTime: pulumi.Input<string>;
+    intervalHoursStartTime: pulumi.Input<string>;
+}
+
+export interface OceanRightSizingRuleRecommendationApplicationMinThreshold {
+    cpuPercentage?: pulumi.Input<number>;
+    memoryPercentage?: pulumi.Input<number>;
+}
+
+export interface OceanRightSizingRuleRecommendationApplicationOverheadValue {
+    cpuPercentage?: pulumi.Input<number>;
+    memoryPercentage?: pulumi.Input<number>;
 }
 
 export interface StatefulNodeAzureAttachDataDisk {
@@ -323,6 +411,12 @@ export interface StatefulNodeAzureTag {
 
 export interface StatefulNodeAzureUpdateState {
     state: pulumi.Input<string>;
+}
+
+export interface StatefulNodeAzureVmSizes {
+    odSizes: pulumi.Input<pulumi.Input<string>[]>;
+    preferredSpotSizes?: pulumi.Input<pulumi.Input<string>[]>;
+    spotSizes: pulumi.Input<pulumi.Input<string>[]>;
 }
 export namespace aws {
     export interface BeanstalkDeploymentPreferences {

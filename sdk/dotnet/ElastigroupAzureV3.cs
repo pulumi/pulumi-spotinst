@@ -45,9 +45,6 @@ namespace Pulumi.SpotInst
         [Output("network")]
         public Output<Outputs.ElastigroupAzureV3Network> Network { get; private set; } = null!;
 
-        [Output("odSizes")]
-        public Output<ImmutableArray<string>> OdSizes { get; private set; } = null!;
-
         [Output("onDemandCount")]
         public Output<int?> OnDemandCount { get; private set; } = null!;
 
@@ -63,11 +60,11 @@ namespace Pulumi.SpotInst
         [Output("spotPercentage")]
         public Output<int?> SpotPercentage { get; private set; } = null!;
 
-        [Output("spotSizes")]
-        public Output<ImmutableArray<string>> SpotSizes { get; private set; } = null!;
-
         [Output("tags")]
         public Output<ImmutableArray<Outputs.ElastigroupAzureV3Tag>> Tags { get; private set; } = null!;
+
+        [Output("vmSizes")]
+        public Output<Outputs.ElastigroupAzureV3VmSizes> VmSizes { get; private set; } = null!;
 
 
         /// <summary>
@@ -158,14 +155,6 @@ namespace Pulumi.SpotInst
         [Input("network", required: true)]
         public Input<Inputs.ElastigroupAzureV3NetworkArgs> Network { get; set; } = null!;
 
-        [Input("odSizes", required: true)]
-        private InputList<string>? _odSizes;
-        public InputList<string> OdSizes
-        {
-            get => _odSizes ?? (_odSizes = new InputList<string>());
-            set => _odSizes = value;
-        }
-
         [Input("onDemandCount")]
         public Input<int>? OnDemandCount { get; set; }
 
@@ -181,14 +170,6 @@ namespace Pulumi.SpotInst
         [Input("spotPercentage")]
         public Input<int>? SpotPercentage { get; set; }
 
-        [Input("spotSizes", required: true)]
-        private InputList<string>? _spotSizes;
-        public InputList<string> SpotSizes
-        {
-            get => _spotSizes ?? (_spotSizes = new InputList<string>());
-            set => _spotSizes = value;
-        }
-
         [Input("tags")]
         private InputList<Inputs.ElastigroupAzureV3TagArgs>? _tags;
         public InputList<Inputs.ElastigroupAzureV3TagArgs> Tags
@@ -196,6 +177,9 @@ namespace Pulumi.SpotInst
             get => _tags ?? (_tags = new InputList<Inputs.ElastigroupAzureV3TagArgs>());
             set => _tags = value;
         }
+
+        [Input("vmSizes", required: true)]
+        public Input<Inputs.ElastigroupAzureV3VmSizesArgs> VmSizes { get; set; } = null!;
 
         public ElastigroupAzureV3Args()
         {
@@ -248,14 +232,6 @@ namespace Pulumi.SpotInst
         [Input("network")]
         public Input<Inputs.ElastigroupAzureV3NetworkGetArgs>? Network { get; set; }
 
-        [Input("odSizes")]
-        private InputList<string>? _odSizes;
-        public InputList<string> OdSizes
-        {
-            get => _odSizes ?? (_odSizes = new InputList<string>());
-            set => _odSizes = value;
-        }
-
         [Input("onDemandCount")]
         public Input<int>? OnDemandCount { get; set; }
 
@@ -271,14 +247,6 @@ namespace Pulumi.SpotInst
         [Input("spotPercentage")]
         public Input<int>? SpotPercentage { get; set; }
 
-        [Input("spotSizes")]
-        private InputList<string>? _spotSizes;
-        public InputList<string> SpotSizes
-        {
-            get => _spotSizes ?? (_spotSizes = new InputList<string>());
-            set => _spotSizes = value;
-        }
-
         [Input("tags")]
         private InputList<Inputs.ElastigroupAzureV3TagGetArgs>? _tags;
         public InputList<Inputs.ElastigroupAzureV3TagGetArgs> Tags
@@ -286,6 +254,9 @@ namespace Pulumi.SpotInst
             get => _tags ?? (_tags = new InputList<Inputs.ElastigroupAzureV3TagGetArgs>());
             set => _tags = value;
         }
+
+        [Input("vmSizes")]
+        public Input<Inputs.ElastigroupAzureV3VmSizesGetArgs>? VmSizes { get; set; }
 
         public ElastigroupAzureV3State()
         {
