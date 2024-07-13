@@ -48,6 +48,7 @@ __all__ = [
     'OceanImportUpdatePolicyRollConfig',
     'OceanLaunchSpecAutoscaleHeadroom',
     'OceanLaunchSpecAutoscaleHeadroomsAutomatic',
+    'OceanLaunchSpecCreateOptions',
     'OceanLaunchSpecLabel',
     'OceanLaunchSpecMetadata',
     'OceanLaunchSpecNetworkInterface',
@@ -2084,6 +2085,42 @@ class OceanLaunchSpecAutoscaleHeadroomsAutomatic(dict):
         Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`is_enabled` = true is set on the Ocean cluster.
         """
         return pulumi.get(self, "auto_headroom_percentage")
+
+
+@pulumi.output_type
+class OceanLaunchSpecCreateOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "initialNodes":
+            suggest = "initial_nodes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanLaunchSpecCreateOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanLaunchSpecCreateOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanLaunchSpecCreateOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 initial_nodes: Optional[int] = None):
+        """
+        :param int initial_nodes: When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group.
+        """
+        if initial_nodes is not None:
+            pulumi.set(__self__, "initial_nodes", initial_nodes)
+
+    @property
+    @pulumi.getter(name="initialNodes")
+    def initial_nodes(self) -> Optional[int]:
+        """
+        When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group.
+        """
+        return pulumi.get(self, "initial_nodes")
 
 
 @pulumi.output_type

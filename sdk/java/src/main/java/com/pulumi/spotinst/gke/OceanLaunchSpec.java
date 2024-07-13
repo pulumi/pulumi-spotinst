@@ -12,6 +12,7 @@ import com.pulumi.spotinst.gke.OceanLaunchSpecArgs;
 import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecState;
 import com.pulumi.spotinst.gke.outputs.OceanLaunchSpecAutoscaleHeadroom;
 import com.pulumi.spotinst.gke.outputs.OceanLaunchSpecAutoscaleHeadroomsAutomatic;
+import com.pulumi.spotinst.gke.outputs.OceanLaunchSpecCreateOptions;
 import com.pulumi.spotinst.gke.outputs.OceanLaunchSpecLabel;
 import com.pulumi.spotinst.gke.outputs.OceanLaunchSpecMetadata;
 import com.pulumi.spotinst.gke.outputs.OceanLaunchSpecNetworkInterface;
@@ -46,6 +47,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.spotinst.gke.OceanLaunchSpec;
  * import com.pulumi.spotinst.gke.OceanLaunchSpecArgs;
+ * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecCreateOptionsArgs;
  * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecShieldedInstanceConfigArgs;
  * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecStorageArgs;
  * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecResourceLimitsArgs;
@@ -82,6 +84,9 @@ import javax.annotation.Nullable;
  *             .tags(            
  *                 "tag1",
  *                 "tag2")
+ *             .createOptions(OceanLaunchSpecCreateOptionsArgs.builder()
+ *                 .initialNodes(1)
+ *                 .build())
  *             .shieldedInstanceConfig(OceanLaunchSpecShieldedInstanceConfigArgs.builder()
  *                 .enableSecureBoot(false)
  *                 .enableIntegrityMonitoring(true)
@@ -180,6 +185,12 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<OceanLaunchSpecAutoscaleHeadroomsAutomatic>>> autoscaleHeadroomsAutomatics() {
         return Codegen.optional(this.autoscaleHeadroomsAutomatics);
+    }
+    @Export(name="createOptions", refs={OceanLaunchSpecCreateOptions.class}, tree="[0]")
+    private Output</* @Nullable */ OceanLaunchSpecCreateOptions> createOptions;
+
+    public Output<Optional<OceanLaunchSpecCreateOptions>> createOptions() {
+        return Codegen.optional(this.createOptions);
     }
     /**
      * List of supported machine types for the Launch Spec.

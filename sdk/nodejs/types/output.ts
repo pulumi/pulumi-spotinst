@@ -4187,6 +4187,13 @@ export namespace gke {
         autoHeadroomPercentage?: number;
     }
 
+    export interface OceanLaunchSpecCreateOptions {
+        /**
+         * When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group.
+         */
+        initialNodes?: number;
+    }
+
     export interface OceanLaunchSpecLabel {
         /**
          * The label key.
