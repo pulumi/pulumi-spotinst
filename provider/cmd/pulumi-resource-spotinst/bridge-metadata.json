@@ -1772,6 +1772,9 @@
                     "autoscale_headrooms_automatic": {
                         "maxItemsOne": false
                     },
+                    "create_options": {
+                        "maxItemsOne": true
+                    },
                     "instance_types": {
                         "maxItemsOne": false
                     },

@@ -5106,6 +5106,143 @@ func (o OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput) Index(i pulumi.In
 	}).(OceanLaunchSpecAutoscaleHeadroomsAutomaticOutput)
 }
 
+type OceanLaunchSpecCreateOptions struct {
+	// When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group.
+	InitialNodes *int `pulumi:"initialNodes"`
+}
+
+// OceanLaunchSpecCreateOptionsInput is an input type that accepts OceanLaunchSpecCreateOptionsArgs and OceanLaunchSpecCreateOptionsOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecCreateOptionsInput` via:
+//
+//	OceanLaunchSpecCreateOptionsArgs{...}
+type OceanLaunchSpecCreateOptionsInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecCreateOptionsOutput() OceanLaunchSpecCreateOptionsOutput
+	ToOceanLaunchSpecCreateOptionsOutputWithContext(context.Context) OceanLaunchSpecCreateOptionsOutput
+}
+
+type OceanLaunchSpecCreateOptionsArgs struct {
+	// When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group.
+	InitialNodes pulumi.IntPtrInput `pulumi:"initialNodes"`
+}
+
+func (OceanLaunchSpecCreateOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecCreateOptions)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecCreateOptionsArgs) ToOceanLaunchSpecCreateOptionsOutput() OceanLaunchSpecCreateOptionsOutput {
+	return i.ToOceanLaunchSpecCreateOptionsOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecCreateOptionsArgs) ToOceanLaunchSpecCreateOptionsOutputWithContext(ctx context.Context) OceanLaunchSpecCreateOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecCreateOptionsOutput)
+}
+
+func (i OceanLaunchSpecCreateOptionsArgs) ToOceanLaunchSpecCreateOptionsPtrOutput() OceanLaunchSpecCreateOptionsPtrOutput {
+	return i.ToOceanLaunchSpecCreateOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecCreateOptionsArgs) ToOceanLaunchSpecCreateOptionsPtrOutputWithContext(ctx context.Context) OceanLaunchSpecCreateOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecCreateOptionsOutput).ToOceanLaunchSpecCreateOptionsPtrOutputWithContext(ctx)
+}
+
+// OceanLaunchSpecCreateOptionsPtrInput is an input type that accepts OceanLaunchSpecCreateOptionsArgs, OceanLaunchSpecCreateOptionsPtr and OceanLaunchSpecCreateOptionsPtrOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecCreateOptionsPtrInput` via:
+//
+//	        OceanLaunchSpecCreateOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type OceanLaunchSpecCreateOptionsPtrInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecCreateOptionsPtrOutput() OceanLaunchSpecCreateOptionsPtrOutput
+	ToOceanLaunchSpecCreateOptionsPtrOutputWithContext(context.Context) OceanLaunchSpecCreateOptionsPtrOutput
+}
+
+type oceanLaunchSpecCreateOptionsPtrType OceanLaunchSpecCreateOptionsArgs
+
+func OceanLaunchSpecCreateOptionsPtr(v *OceanLaunchSpecCreateOptionsArgs) OceanLaunchSpecCreateOptionsPtrInput {
+	return (*oceanLaunchSpecCreateOptionsPtrType)(v)
+}
+
+func (*oceanLaunchSpecCreateOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLaunchSpecCreateOptions)(nil)).Elem()
+}
+
+func (i *oceanLaunchSpecCreateOptionsPtrType) ToOceanLaunchSpecCreateOptionsPtrOutput() OceanLaunchSpecCreateOptionsPtrOutput {
+	return i.ToOceanLaunchSpecCreateOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanLaunchSpecCreateOptionsPtrType) ToOceanLaunchSpecCreateOptionsPtrOutputWithContext(ctx context.Context) OceanLaunchSpecCreateOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecCreateOptionsPtrOutput)
+}
+
+type OceanLaunchSpecCreateOptionsOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecCreateOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecCreateOptions)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecCreateOptionsOutput) ToOceanLaunchSpecCreateOptionsOutput() OceanLaunchSpecCreateOptionsOutput {
+	return o
+}
+
+func (o OceanLaunchSpecCreateOptionsOutput) ToOceanLaunchSpecCreateOptionsOutputWithContext(ctx context.Context) OceanLaunchSpecCreateOptionsOutput {
+	return o
+}
+
+func (o OceanLaunchSpecCreateOptionsOutput) ToOceanLaunchSpecCreateOptionsPtrOutput() OceanLaunchSpecCreateOptionsPtrOutput {
+	return o.ToOceanLaunchSpecCreateOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o OceanLaunchSpecCreateOptionsOutput) ToOceanLaunchSpecCreateOptionsPtrOutputWithContext(ctx context.Context) OceanLaunchSpecCreateOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanLaunchSpecCreateOptions) *OceanLaunchSpecCreateOptions {
+		return &v
+	}).(OceanLaunchSpecCreateOptionsPtrOutput)
+}
+
+// When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group.
+func (o OceanLaunchSpecCreateOptionsOutput) InitialNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecCreateOptions) *int { return v.InitialNodes }).(pulumi.IntPtrOutput)
+}
+
+type OceanLaunchSpecCreateOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecCreateOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLaunchSpecCreateOptions)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecCreateOptionsPtrOutput) ToOceanLaunchSpecCreateOptionsPtrOutput() OceanLaunchSpecCreateOptionsPtrOutput {
+	return o
+}
+
+func (o OceanLaunchSpecCreateOptionsPtrOutput) ToOceanLaunchSpecCreateOptionsPtrOutputWithContext(ctx context.Context) OceanLaunchSpecCreateOptionsPtrOutput {
+	return o
+}
+
+func (o OceanLaunchSpecCreateOptionsPtrOutput) Elem() OceanLaunchSpecCreateOptionsOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecCreateOptions) OceanLaunchSpecCreateOptions {
+		if v != nil {
+			return *v
+		}
+		var ret OceanLaunchSpecCreateOptions
+		return ret
+	}).(OceanLaunchSpecCreateOptionsOutput)
+}
+
+// When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group.
+func (o OceanLaunchSpecCreateOptionsPtrOutput) InitialNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecCreateOptions) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InitialNodes
+	}).(pulumi.IntPtrOutput)
+}
+
 type OceanLaunchSpecLabel struct {
 	// The label key.
 	Key *string `pulumi:"key"`
@@ -6937,6 +7074,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecAutoscaleHeadroomArrayInput)(nil)).Elem(), OceanLaunchSpecAutoscaleHeadroomArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecAutoscaleHeadroomsAutomaticInput)(nil)).Elem(), OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayInput)(nil)).Elem(), OceanLaunchSpecAutoscaleHeadroomsAutomaticArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecCreateOptionsInput)(nil)).Elem(), OceanLaunchSpecCreateOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecCreateOptionsPtrInput)(nil)).Elem(), OceanLaunchSpecCreateOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecLabelInput)(nil)).Elem(), OceanLaunchSpecLabelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecLabelArrayInput)(nil)).Elem(), OceanLaunchSpecLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecMetadataInput)(nil)).Elem(), OceanLaunchSpecMetadataArgs{})
@@ -7039,6 +7178,8 @@ func init() {
 	pulumi.RegisterOutputType(OceanLaunchSpecAutoscaleHeadroomArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecAutoscaleHeadroomsAutomaticOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecCreateOptionsOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecCreateOptionsPtrOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecLabelOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecLabelArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecMetadataOutput{})

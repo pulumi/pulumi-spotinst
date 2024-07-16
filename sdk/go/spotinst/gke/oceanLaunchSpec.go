@@ -45,6 +45,9 @@ import (
 //					pulumi.String("tag1"),
 //					pulumi.String("tag2"),
 //				},
+//				CreateOptions: &gke.OceanLaunchSpecCreateOptionsArgs{
+//					InitialNodes: pulumi.Int(1),
+//				},
 //				ShieldedInstanceConfig: &gke.OceanLaunchSpecShieldedInstanceConfigArgs{
 //					EnableSecureBoot:          pulumi.Bool(false),
 //					EnableIntegrityMonitoring: pulumi.Bool(true),
@@ -143,6 +146,7 @@ type OceanLaunchSpec struct {
 	AutoscaleHeadrooms OceanLaunchSpecAutoscaleHeadroomArrayOutput `pulumi:"autoscaleHeadrooms"`
 	// Set automatic headroom per launch spec.
 	AutoscaleHeadroomsAutomatics OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput `pulumi:"autoscaleHeadroomsAutomatics"`
+	CreateOptions                OceanLaunchSpecCreateOptionsPtrOutput                 `pulumi:"createOptions"`
 	// List of supported machine types for the Launch Spec.
 	InstanceTypes pulumi.StringArrayOutput `pulumi:"instanceTypes"`
 	// Optionally adds labels to instances launched in an Ocean cluster.
@@ -221,6 +225,7 @@ type oceanLaunchSpecState struct {
 	AutoscaleHeadrooms []OceanLaunchSpecAutoscaleHeadroom `pulumi:"autoscaleHeadrooms"`
 	// Set automatic headroom per launch spec.
 	AutoscaleHeadroomsAutomatics []OceanLaunchSpecAutoscaleHeadroomsAutomatic `pulumi:"autoscaleHeadroomsAutomatics"`
+	CreateOptions                *OceanLaunchSpecCreateOptions                `pulumi:"createOptions"`
 	// List of supported machine types for the Launch Spec.
 	InstanceTypes []string `pulumi:"instanceTypes"`
 	// Optionally adds labels to instances launched in an Ocean cluster.
@@ -267,6 +272,7 @@ type OceanLaunchSpecState struct {
 	AutoscaleHeadrooms OceanLaunchSpecAutoscaleHeadroomArrayInput
 	// Set automatic headroom per launch spec.
 	AutoscaleHeadroomsAutomatics OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayInput
+	CreateOptions                OceanLaunchSpecCreateOptionsPtrInput
 	// List of supported machine types for the Launch Spec.
 	InstanceTypes pulumi.StringArrayInput
 	// Optionally adds labels to instances launched in an Ocean cluster.
@@ -317,6 +323,7 @@ type oceanLaunchSpecArgs struct {
 	AutoscaleHeadrooms []OceanLaunchSpecAutoscaleHeadroom `pulumi:"autoscaleHeadrooms"`
 	// Set automatic headroom per launch spec.
 	AutoscaleHeadroomsAutomatics []OceanLaunchSpecAutoscaleHeadroomsAutomatic `pulumi:"autoscaleHeadroomsAutomatics"`
+	CreateOptions                *OceanLaunchSpecCreateOptions                `pulumi:"createOptions"`
 	// List of supported machine types for the Launch Spec.
 	InstanceTypes []string `pulumi:"instanceTypes"`
 	// Optionally adds labels to instances launched in an Ocean cluster.
@@ -364,6 +371,7 @@ type OceanLaunchSpecArgs struct {
 	AutoscaleHeadrooms OceanLaunchSpecAutoscaleHeadroomArrayInput
 	// Set automatic headroom per launch spec.
 	AutoscaleHeadroomsAutomatics OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayInput
+	CreateOptions                OceanLaunchSpecCreateOptionsPtrInput
 	// List of supported machine types for the Launch Spec.
 	InstanceTypes pulumi.StringArrayInput
 	// Optionally adds labels to instances launched in an Ocean cluster.
@@ -502,6 +510,10 @@ func (o OceanLaunchSpecOutput) AutoscaleHeadroomsAutomatics() OceanLaunchSpecAut
 	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput {
 		return v.AutoscaleHeadroomsAutomatics
 	}).(OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput)
+}
+
+func (o OceanLaunchSpecOutput) CreateOptions() OceanLaunchSpecCreateOptionsPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecCreateOptionsPtrOutput { return v.CreateOptions }).(OceanLaunchSpecCreateOptionsPtrOutput)
 }
 
 // List of supported machine types for the Launch Spec.

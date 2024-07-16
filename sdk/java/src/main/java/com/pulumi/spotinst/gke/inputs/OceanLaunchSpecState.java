@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecAutoscaleHeadroomArgs;
 import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs;
+import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecCreateOptionsArgs;
 import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecLabelArgs;
 import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecMetadataArgs;
 import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecNetworkInterfaceArgs;
@@ -58,6 +59,13 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<List<OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs>>> autoscaleHeadroomsAutomatics() {
         return Optional.ofNullable(this.autoscaleHeadroomsAutomatics);
+    }
+
+    @Import(name="createOptions")
+    private @Nullable Output<OceanLaunchSpecCreateOptionsArgs> createOptions;
+
+    public Optional<Output<OceanLaunchSpecCreateOptionsArgs>> createOptions() {
+        return Optional.ofNullable(this.createOptions);
     }
 
     /**
@@ -357,6 +365,7 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
     private OceanLaunchSpecState(OceanLaunchSpecState $) {
         this.autoscaleHeadrooms = $.autoscaleHeadrooms;
         this.autoscaleHeadroomsAutomatics = $.autoscaleHeadroomsAutomatics;
+        this.createOptions = $.createOptions;
         this.instanceTypes = $.instanceTypes;
         this.labels = $.labels;
         this.metadatas = $.metadatas;
@@ -457,6 +466,15 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
          */
         public Builder autoscaleHeadroomsAutomatics(OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs... autoscaleHeadroomsAutomatics) {
             return autoscaleHeadroomsAutomatics(List.of(autoscaleHeadroomsAutomatics));
+        }
+
+        public Builder createOptions(@Nullable Output<OceanLaunchSpecCreateOptionsArgs> createOptions) {
+            $.createOptions = createOptions;
+            return this;
+        }
+
+        public Builder createOptions(OceanLaunchSpecCreateOptionsArgs createOptions) {
+            return createOptions(Output.of(createOptions));
         }
 
         /**

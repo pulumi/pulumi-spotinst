@@ -47,6 +47,7 @@ __all__ = [
     'OceanImportUpdatePolicyRollConfigArgs',
     'OceanLaunchSpecAutoscaleHeadroomArgs',
     'OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs',
+    'OceanLaunchSpecCreateOptionsArgs',
     'OceanLaunchSpecLabelArgs',
     'OceanLaunchSpecMetadataArgs',
     'OceanLaunchSpecNetworkInterfaceArgs',
@@ -2035,6 +2036,29 @@ class OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs:
     @auto_headroom_percentage.setter
     def auto_headroom_percentage(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "auto_headroom_percentage", value)
+
+
+@pulumi.input_type
+class OceanLaunchSpecCreateOptionsArgs:
+    def __init__(__self__, *,
+                 initial_nodes: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] initial_nodes: When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group.
+        """
+        if initial_nodes is not None:
+            pulumi.set(__self__, "initial_nodes", initial_nodes)
+
+    @property
+    @pulumi.getter(name="initialNodes")
+    def initial_nodes(self) -> Optional[pulumi.Input[int]]:
+        """
+        When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group.
+        """
+        return pulumi.get(self, "initial_nodes")
+
+    @initial_nodes.setter
+    def initial_nodes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "initial_nodes", value)
 
 
 @pulumi.input_type

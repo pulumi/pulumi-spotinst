@@ -42,6 +42,10 @@ namespace Pulumi.SpotInst.Gke
     ///             "tag1",
     ///             "tag2",
     ///         },
+    ///         CreateOptions = new SpotInst.Gke.Inputs.OceanLaunchSpecCreateOptionsArgs
+    ///         {
+    ///             InitialNodes = 1,
+    ///         },
     ///         ShieldedInstanceConfig = new SpotInst.Gke.Inputs.OceanLaunchSpecShieldedInstanceConfigArgs
     ///         {
     ///             EnableSecureBoot = false,
@@ -168,6 +172,9 @@ namespace Pulumi.SpotInst.Gke
         /// </summary>
         [Output("autoscaleHeadroomsAutomatics")]
         public Output<ImmutableArray<Outputs.OceanLaunchSpecAutoscaleHeadroomsAutomatic>> AutoscaleHeadroomsAutomatics { get; private set; } = null!;
+
+        [Output("createOptions")]
+        public Output<Outputs.OceanLaunchSpecCreateOptions?> CreateOptions { get; private set; } = null!;
 
         /// <summary>
         /// List of supported machine types for the Launch Spec.
@@ -355,6 +362,9 @@ namespace Pulumi.SpotInst.Gke
             get => _autoscaleHeadroomsAutomatics ?? (_autoscaleHeadroomsAutomatics = new InputList<Inputs.OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs>());
             set => _autoscaleHeadroomsAutomatics = value;
         }
+
+        [Input("createOptions")]
+        public Input<Inputs.OceanLaunchSpecCreateOptionsArgs>? CreateOptions { get; set; }
 
         [Input("instanceTypes")]
         private InputList<string>? _instanceTypes;
@@ -552,6 +562,9 @@ namespace Pulumi.SpotInst.Gke
             get => _autoscaleHeadroomsAutomatics ?? (_autoscaleHeadroomsAutomatics = new InputList<Inputs.OceanLaunchSpecAutoscaleHeadroomsAutomaticGetArgs>());
             set => _autoscaleHeadroomsAutomatics = value;
         }
+
+        [Input("createOptions")]
+        public Input<Inputs.OceanLaunchSpecCreateOptionsGetArgs>? CreateOptions { get; set; }
 
         [Input("instanceTypes")]
         private InputList<string>? _instanceTypes;
