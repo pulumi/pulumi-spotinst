@@ -13,17 +13,33 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupIntegrationBeanstalk {
+    /**
+     * @return Preferences when performing a roll
+     * 
+     */
     private @Nullable ElastigroupIntegrationBeanstalkDeploymentPreferences deploymentPreferences;
     private @Nullable String environmentId;
+    /**
+     * @return Managed Actions parameters
+     * 
+     */
     private @Nullable ElastigroupIntegrationBeanstalkManagedActions managedActions;
 
     private ElastigroupIntegrationBeanstalk() {}
+    /**
+     * @return Preferences when performing a roll
+     * 
+     */
     public Optional<ElastigroupIntegrationBeanstalkDeploymentPreferences> deploymentPreferences() {
         return Optional.ofNullable(this.deploymentPreferences);
     }
     public Optional<String> environmentId() {
         return Optional.ofNullable(this.environmentId);
     }
+    /**
+     * @return Managed Actions parameters
+     * 
+     */
     public Optional<ElastigroupIntegrationBeanstalkManagedActions> managedActions() {
         return Optional.ofNullable(this.managedActions);
     }

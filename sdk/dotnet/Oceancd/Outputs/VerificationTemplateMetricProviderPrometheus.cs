@@ -13,6 +13,9 @@ namespace Pulumi.SpotInst.Oceancd.Outputs
     [OutputType]
     public sealed class VerificationTemplateMetricProviderPrometheus
     {
+        /// <summary>
+        /// A request for information retrieved from Prometheus.
+        /// </summary>
         public readonly string PrometheusQuery;
 
         [OutputConstructor]

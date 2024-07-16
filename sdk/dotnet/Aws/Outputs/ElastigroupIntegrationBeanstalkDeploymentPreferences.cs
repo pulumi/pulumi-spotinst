@@ -13,6 +13,9 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class ElastigroupIntegrationBeanstalkDeploymentPreferences
     {
+        /// <summary>
+        /// Should roll perform automatically
+        /// </summary>
         public readonly bool? AutomaticRoll;
         public readonly int? BatchSizePercentage;
         public readonly int? GracePeriod;

@@ -1481,7 +1481,8 @@ type HealthCheckCheck struct {
 	EndPoint *string `pulumi:"endPoint"`
 	// The destination for the request.
 	Endpoint *string `pulumi:"endpoint"`
-	Healthy  int     `pulumi:"healthy"`
+	// The number of consecutive successful health checks that must occur before declaring an instance healthy.
+	Healthy int `pulumi:"healthy"`
 	// The amount of time (in seconds) between each health check (minimum: 10).
 	Interval int `pulumi:"interval"`
 	// The port to use to connect with the instance.
@@ -1490,8 +1491,9 @@ type HealthCheckCheck struct {
 	Protocol string `pulumi:"protocol"`
 	TimeOut  *int   `pulumi:"timeOut"`
 	// the amount of time (in seconds) to wait when receiving a response from the health check.
-	Timeout   *int `pulumi:"timeout"`
-	Unhealthy int  `pulumi:"unhealthy"`
+	Timeout *int `pulumi:"timeout"`
+	// The number of consecutive failed health checks that must occur before declaring an instance unhealthy.
+	Unhealthy int `pulumi:"unhealthy"`
 }
 
 // HealthCheckCheckInput is an input type that accepts HealthCheckCheckArgs and HealthCheckCheckOutput values.
@@ -1509,7 +1511,8 @@ type HealthCheckCheckArgs struct {
 	EndPoint pulumi.StringPtrInput `pulumi:"endPoint"`
 	// The destination for the request.
 	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
-	Healthy  pulumi.IntInput       `pulumi:"healthy"`
+	// The number of consecutive successful health checks that must occur before declaring an instance healthy.
+	Healthy pulumi.IntInput `pulumi:"healthy"`
 	// The amount of time (in seconds) between each health check (minimum: 10).
 	Interval pulumi.IntInput `pulumi:"interval"`
 	// The port to use to connect with the instance.
@@ -1518,8 +1521,9 @@ type HealthCheckCheckArgs struct {
 	Protocol pulumi.StringInput `pulumi:"protocol"`
 	TimeOut  pulumi.IntPtrInput `pulumi:"timeOut"`
 	// the amount of time (in seconds) to wait when receiving a response from the health check.
-	Timeout   pulumi.IntPtrInput `pulumi:"timeout"`
-	Unhealthy pulumi.IntInput    `pulumi:"unhealthy"`
+	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
+	// The number of consecutive failed health checks that must occur before declaring an instance unhealthy.
+	Unhealthy pulumi.IntInput `pulumi:"unhealthy"`
 }
 
 func (HealthCheckCheckArgs) ElementType() reflect.Type {
@@ -1608,6 +1612,7 @@ func (o HealthCheckCheckOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HealthCheckCheck) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
 }
 
+// The number of consecutive successful health checks that must occur before declaring an instance healthy.
 func (o HealthCheckCheckOutput) Healthy() pulumi.IntOutput {
 	return o.ApplyT(func(v HealthCheckCheck) int { return v.Healthy }).(pulumi.IntOutput)
 }
@@ -1636,6 +1641,7 @@ func (o HealthCheckCheckOutput) Timeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v HealthCheckCheck) *int { return v.Timeout }).(pulumi.IntPtrOutput)
 }
 
+// The number of consecutive failed health checks that must occur before declaring an instance unhealthy.
 func (o HealthCheckCheckOutput) Unhealthy() pulumi.IntOutput {
 	return o.ApplyT(func(v HealthCheckCheck) int { return v.Unhealthy }).(pulumi.IntOutput)
 }
@@ -1683,6 +1689,7 @@ func (o HealthCheckCheckPtrOutput) Endpoint() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The number of consecutive successful health checks that must occur before declaring an instance healthy.
 func (o HealthCheckCheckPtrOutput) Healthy() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *HealthCheckCheck) *int {
 		if v == nil {
@@ -1741,6 +1748,7 @@ func (o HealthCheckCheckPtrOutput) Timeout() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The number of consecutive failed health checks that must occur before declaring an instance unhealthy.
 func (o HealthCheckCheckPtrOutput) Unhealthy() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *HealthCheckCheck) *int {
 		if v == nil {

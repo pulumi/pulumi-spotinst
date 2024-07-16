@@ -12,9 +12,17 @@ namespace Pulumi.SpotInst.Gcp.Inputs
 
     public sealed class ElastigroupIntegrationDockerSwarmArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// IP or FQDN of one of your swarm managers.
+        /// </summary>
         [Input("masterHost", required: true)]
         public Input<string> MasterHost { get; set; } = null!;
 
+        /// <summary>
+        /// Network port used by your swarm.
+        /// 
+        /// Usage:
+        /// </summary>
         [Input("masterPort", required: true)]
         public Input<int> MasterPort { get; set; } = null!;
 

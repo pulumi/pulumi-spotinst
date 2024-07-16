@@ -39,9 +39,17 @@ public final class HealthCheckCheckArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.endpoint);
     }
 
+    /**
+     * The number of consecutive successful health checks that must occur before declaring an instance healthy.
+     * 
+     */
     @Import(name="healthy", required=true)
     private Output<Integer> healthy;
 
+    /**
+     * @return The number of consecutive successful health checks that must occur before declaring an instance healthy.
+     * 
+     */
     public Output<Integer> healthy() {
         return this.healthy;
     }
@@ -113,9 +121,17 @@ public final class HealthCheckCheckArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.timeout);
     }
 
+    /**
+     * The number of consecutive failed health checks that must occur before declaring an instance unhealthy.
+     * 
+     */
     @Import(name="unhealthy", required=true)
     private Output<Integer> unhealthy;
 
+    /**
+     * @return The number of consecutive failed health checks that must occur before declaring an instance unhealthy.
+     * 
+     */
     public Output<Integer> unhealthy() {
         return this.unhealthy;
     }
@@ -182,11 +198,23 @@ public final class HealthCheckCheckArgs extends com.pulumi.resources.ResourceArg
             return endpoint(Output.of(endpoint));
         }
 
+        /**
+         * @param healthy The number of consecutive successful health checks that must occur before declaring an instance healthy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder healthy(Output<Integer> healthy) {
             $.healthy = healthy;
             return this;
         }
 
+        /**
+         * @param healthy The number of consecutive successful health checks that must occur before declaring an instance healthy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder healthy(Integer healthy) {
             return healthy(Output.of(healthy));
         }
@@ -284,11 +312,23 @@ public final class HealthCheckCheckArgs extends com.pulumi.resources.ResourceArg
             return timeout(Output.of(timeout));
         }
 
+        /**
+         * @param unhealthy The number of consecutive failed health checks that must occur before declaring an instance unhealthy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder unhealthy(Output<Integer> unhealthy) {
             $.unhealthy = unhealthy;
             return this;
         }
 
+        /**
+         * @param unhealthy The number of consecutive failed health checks that must occur before declaring an instance unhealthy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder unhealthy(Integer unhealthy) {
             return unhealthy(Output.of(unhealthy));
         }

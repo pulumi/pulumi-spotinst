@@ -22,16 +22,36 @@ public final class ElastigroupIntegrationNomadArgs extends com.pulumi.resources.
 
     public static final ElastigroupIntegrationNomadArgs Empty = new ElastigroupIntegrationNomadArgs();
 
+    /**
+     * Nomad ACL Token
+     * 
+     */
     @Import(name="aclToken")
     private @Nullable Output<String> aclToken;
 
+    /**
+     * @return Nomad ACL Token
+     * 
+     */
     public Optional<Output<String>> aclToken() {
         return Optional.ofNullable(this.aclToken);
     }
 
+    /**
+     * A key/value mapping of tags to assign to the resource.
+     * 
+     * Usage:
+     * 
+     */
     @Import(name="autoscaleConstraints")
     private @Nullable Output<List<ElastigroupIntegrationNomadAutoscaleConstraintArgs>> autoscaleConstraints;
 
+    /**
+     * @return A key/value mapping of tags to assign to the resource.
+     * 
+     * Usage:
+     * 
+     */
     public Optional<Output<List<ElastigroupIntegrationNomadAutoscaleConstraintArgs>>> autoscaleConstraints() {
         return Optional.ofNullable(this.autoscaleConstraints);
     }
@@ -109,24 +129,60 @@ public final class ElastigroupIntegrationNomadArgs extends com.pulumi.resources.
             $ = new ElastigroupIntegrationNomadArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param aclToken Nomad ACL Token
+         * 
+         * @return builder
+         * 
+         */
         public Builder aclToken(@Nullable Output<String> aclToken) {
             $.aclToken = aclToken;
             return this;
         }
 
+        /**
+         * @param aclToken Nomad ACL Token
+         * 
+         * @return builder
+         * 
+         */
         public Builder aclToken(String aclToken) {
             return aclToken(Output.of(aclToken));
         }
 
+        /**
+         * @param autoscaleConstraints A key/value mapping of tags to assign to the resource.
+         * 
+         * Usage:
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoscaleConstraints(@Nullable Output<List<ElastigroupIntegrationNomadAutoscaleConstraintArgs>> autoscaleConstraints) {
             $.autoscaleConstraints = autoscaleConstraints;
             return this;
         }
 
+        /**
+         * @param autoscaleConstraints A key/value mapping of tags to assign to the resource.
+         * 
+         * Usage:
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoscaleConstraints(List<ElastigroupIntegrationNomadAutoscaleConstraintArgs> autoscaleConstraints) {
             return autoscaleConstraints(Output.of(autoscaleConstraints));
         }
 
+        /**
+         * @param autoscaleConstraints A key/value mapping of tags to assign to the resource.
+         * 
+         * Usage:
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoscaleConstraints(ElastigroupIntegrationNomadAutoscaleConstraintArgs... autoscaleConstraints) {
             return autoscaleConstraints(List.of(autoscaleConstraints));
         }

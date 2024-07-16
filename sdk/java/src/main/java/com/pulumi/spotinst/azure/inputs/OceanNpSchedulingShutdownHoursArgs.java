@@ -17,9 +17,17 @@ public final class OceanNpSchedulingShutdownHoursArgs extends com.pulumi.resourc
 
     public static final OceanNpSchedulingShutdownHoursArgs Empty = new OceanNpSchedulingShutdownHoursArgs();
 
+    /**
+     * Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+     * 
+     */
     @Import(name="isEnabled")
     private @Nullable Output<Boolean> isEnabled;
 
+    /**
+     * @return Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+     * 
+     */
     public Optional<Output<Boolean>> isEnabled() {
         return Optional.ofNullable(this.isEnabled);
     }
@@ -56,11 +64,23 @@ public final class OceanNpSchedulingShutdownHoursArgs extends com.pulumi.resourc
             $ = new OceanNpSchedulingShutdownHoursArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param isEnabled Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isEnabled(@Nullable Output<Boolean> isEnabled) {
             $.isEnabled = isEnabled;
             return this;
         }
 
+        /**
+         * @param isEnabled Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isEnabled(Boolean isEnabled) {
             return isEnabled(Output.of(isEnabled));
         }

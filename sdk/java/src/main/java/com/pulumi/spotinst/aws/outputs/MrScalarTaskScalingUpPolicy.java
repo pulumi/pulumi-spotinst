@@ -16,53 +16,125 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MrScalarTaskScalingUpPolicy {
+    /**
+     * @return The type of action to perform. Allowed values are : &#39;adjustment&#39;, &#39;setMinTarget&#39;, &#39;setMaxTarget&#39;, &#39;updateCapacity&#39;, &#39;percentageAdjustment&#39;
+     * 
+     */
     private @Nullable String actionType;
+    /**
+     * @return The number of instances to add/remove to/from the target capacity when scale is needed.
+     * 
+     */
     private @Nullable String adjustment;
+    /**
+     * @return The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
+     * 
+     */
     private @Nullable Integer cooldown;
+    /**
+     * @return A mapping of dimensions describing qualities of the metric.
+     * 
+     */
     private @Nullable Map<String,Object> dimensions;
     private @Nullable Integer evaluationPeriods;
+    /**
+     * @return Max target capacity for scale down.
+     * 
+     */
     private @Nullable String maxTargetCapacity;
+    /**
+     * @return The maximum to set when scale is needed.
+     * 
+     */
     private @Nullable String maximum;
     private String metricName;
+    /**
+     * @return Min target capacity for scale up.
+     * 
+     */
     private @Nullable String minTargetCapacity;
+    /**
+     * @return The minimum to set when scale is needed.
+     * 
+     */
     private @Nullable String minimum;
     private String namespace;
     private @Nullable String operator;
     private @Nullable Integer period;
+    /**
+     * @return The name of the policy.
+     * 
+     */
     private String policyName;
     private @Nullable String statistic;
+    /**
+     * @return The number of instances to set when scale is needed.
+     * 
+     */
     private @Nullable String target;
     private Double threshold;
     private String unit;
 
     private MrScalarTaskScalingUpPolicy() {}
+    /**
+     * @return The type of action to perform. Allowed values are : &#39;adjustment&#39;, &#39;setMinTarget&#39;, &#39;setMaxTarget&#39;, &#39;updateCapacity&#39;, &#39;percentageAdjustment&#39;
+     * 
+     */
     public Optional<String> actionType() {
         return Optional.ofNullable(this.actionType);
     }
+    /**
+     * @return The number of instances to add/remove to/from the target capacity when scale is needed.
+     * 
+     */
     public Optional<String> adjustment() {
         return Optional.ofNullable(this.adjustment);
     }
+    /**
+     * @return The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
+     * 
+     */
     public Optional<Integer> cooldown() {
         return Optional.ofNullable(this.cooldown);
     }
+    /**
+     * @return A mapping of dimensions describing qualities of the metric.
+     * 
+     */
     public Map<String,Object> dimensions() {
         return this.dimensions == null ? Map.of() : this.dimensions;
     }
     public Optional<Integer> evaluationPeriods() {
         return Optional.ofNullable(this.evaluationPeriods);
     }
+    /**
+     * @return Max target capacity for scale down.
+     * 
+     */
     public Optional<String> maxTargetCapacity() {
         return Optional.ofNullable(this.maxTargetCapacity);
     }
+    /**
+     * @return The maximum to set when scale is needed.
+     * 
+     */
     public Optional<String> maximum() {
         return Optional.ofNullable(this.maximum);
     }
     public String metricName() {
         return this.metricName;
     }
+    /**
+     * @return Min target capacity for scale up.
+     * 
+     */
     public Optional<String> minTargetCapacity() {
         return Optional.ofNullable(this.minTargetCapacity);
     }
+    /**
+     * @return The minimum to set when scale is needed.
+     * 
+     */
     public Optional<String> minimum() {
         return Optional.ofNullable(this.minimum);
     }
@@ -75,12 +147,20 @@ public final class MrScalarTaskScalingUpPolicy {
     public Optional<Integer> period() {
         return Optional.ofNullable(this.period);
     }
+    /**
+     * @return The name of the policy.
+     * 
+     */
     public String policyName() {
         return this.policyName;
     }
     public Optional<String> statistic() {
         return Optional.ofNullable(this.statistic);
     }
+    /**
+     * @return The number of instances to set when scale is needed.
+     * 
+     */
     public Optional<String> target() {
         return Optional.ofNullable(this.target);
     }

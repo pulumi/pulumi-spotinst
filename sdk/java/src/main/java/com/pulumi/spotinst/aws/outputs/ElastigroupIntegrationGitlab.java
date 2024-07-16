@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupIntegrationGitlab {
+    /**
+     * @return Settings for Gitlab runner.
+     * 
+     */
     private @Nullable ElastigroupIntegrationGitlabRunner runner;
 
     private ElastigroupIntegrationGitlab() {}
+    /**
+     * @return Settings for Gitlab runner.
+     * 
+     */
     public Optional<ElastigroupIntegrationGitlabRunner> runner() {
         return Optional.ofNullable(this.runner);
     }

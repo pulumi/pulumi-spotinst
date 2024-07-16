@@ -13,7 +13,15 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class ElastigroupIntegrationNomad
     {
+        /// <summary>
+        /// Nomad ACL Token
+        /// </summary>
         public readonly string? AclToken;
+        /// <summary>
+        /// A key/value mapping of tags to assign to the resource.
+        /// 
+        /// Usage:
+        /// </summary>
         public readonly ImmutableArray<Outputs.ElastigroupIntegrationNomadAutoscaleConstraint> AutoscaleConstraints;
         public readonly int? AutoscaleCooldown;
         public readonly Outputs.ElastigroupIntegrationNomadAutoscaleDown? AutoscaleDown;

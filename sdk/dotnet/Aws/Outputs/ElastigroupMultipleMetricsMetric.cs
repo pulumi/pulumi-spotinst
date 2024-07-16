@@ -14,6 +14,9 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class ElastigroupMultipleMetricsMetric
     {
         public readonly ImmutableArray<Outputs.ElastigroupMultipleMetricsMetricDimension> Dimensions;
+        /// <summary>
+        /// Percentile statistic. Valid values: `"p0.1"` - `"p100"`.
+        /// </summary>
         public readonly string? ExtendedStatistic;
         public readonly string MetricName;
         /// <summary>

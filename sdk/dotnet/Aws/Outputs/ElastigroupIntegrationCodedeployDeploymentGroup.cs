@@ -13,7 +13,15 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class ElastigroupIntegrationCodedeployDeploymentGroup
     {
+        /// <summary>
+        /// The application name.
+        /// </summary>
         public readonly string ApplicationName;
+        /// <summary>
+        /// The deployment group name.
+        /// 
+        /// Usage:
+        /// </summary>
         public readonly string DeploymentGroupName;
 
         [OutputConstructor]

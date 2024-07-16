@@ -653,6 +653,9 @@ class OceanNpSchedulingShutdownHoursArgs:
     def __init__(__self__, *,
                  is_enabled: Optional[pulumi.Input[bool]] = None,
                  time_windows: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[bool] is_enabled: Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+        """
         if is_enabled is not None:
             pulumi.set(__self__, "is_enabled", is_enabled)
         if time_windows is not None:
@@ -661,6 +664,9 @@ class OceanNpSchedulingShutdownHoursArgs:
     @property
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+        """
         return pulumi.get(self, "is_enabled")
 
     @is_enabled.setter
@@ -684,6 +690,9 @@ class OceanNpSchedulingTaskArgs:
                  is_enabled: pulumi.Input[bool],
                  task_type: pulumi.Input[str],
                  parameters: Optional[pulumi.Input['OceanNpSchedulingTaskParametersArgs']] = None):
+        """
+        :param pulumi.Input[bool] is_enabled: Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+        """
         pulumi.set(__self__, "cron_expression", cron_expression)
         pulumi.set(__self__, "is_enabled", is_enabled)
         pulumi.set(__self__, "task_type", task_type)
@@ -702,6 +711,9 @@ class OceanNpSchedulingTaskArgs:
     @property
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> pulumi.Input[bool]:
+        """
+        Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+        """
         return pulumi.get(self, "is_enabled")
 
     @is_enabled.setter
@@ -753,6 +765,14 @@ class OceanNpSchedulingTaskParametersParametersClusterRollArgs:
                  respect_pdb: Optional[pulumi.Input[bool]] = None,
                  respect_restrict_scale_down: Optional[pulumi.Input[bool]] = None,
                  vng_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[int] batch_min_healthy_percentage: Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+        :param pulumi.Input[int] batch_size_percentage: Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.
+        :param pulumi.Input[str] comment: Add a comment description for the roll. The comment is limited to 256 chars and optional.
+        :param pulumi.Input[bool] respect_pdb: During the roll, if the parameter is set to true we honor PDB during the nodes replacement.
+        :param pulumi.Input[bool] respect_restrict_scale_down: During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vng_ids: List of virtual node group identifiers to be rolled. Each identifier is a string. vngIds can be null, and cannot be used together with nodeNames and nodePoolNames.
+        """
         if batch_min_healthy_percentage is not None:
             pulumi.set(__self__, "batch_min_healthy_percentage", batch_min_healthy_percentage)
         if batch_size_percentage is not None:
@@ -769,6 +789,9 @@ class OceanNpSchedulingTaskParametersParametersClusterRollArgs:
     @property
     @pulumi.getter(name="batchMinHealthyPercentage")
     def batch_min_healthy_percentage(self) -> Optional[pulumi.Input[int]]:
+        """
+        Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+        """
         return pulumi.get(self, "batch_min_healthy_percentage")
 
     @batch_min_healthy_percentage.setter
@@ -778,6 +801,9 @@ class OceanNpSchedulingTaskParametersParametersClusterRollArgs:
     @property
     @pulumi.getter(name="batchSizePercentage")
     def batch_size_percentage(self) -> Optional[pulumi.Input[int]]:
+        """
+        Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.
+        """
         return pulumi.get(self, "batch_size_percentage")
 
     @batch_size_percentage.setter
@@ -787,6 +813,9 @@ class OceanNpSchedulingTaskParametersParametersClusterRollArgs:
     @property
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
+        """
+        Add a comment description for the roll. The comment is limited to 256 chars and optional.
+        """
         return pulumi.get(self, "comment")
 
     @comment.setter
@@ -796,6 +825,9 @@ class OceanNpSchedulingTaskParametersParametersClusterRollArgs:
     @property
     @pulumi.getter(name="respectPdb")
     def respect_pdb(self) -> Optional[pulumi.Input[bool]]:
+        """
+        During the roll, if the parameter is set to true we honor PDB during the nodes replacement.
+        """
         return pulumi.get(self, "respect_pdb")
 
     @respect_pdb.setter
@@ -805,6 +837,9 @@ class OceanNpSchedulingTaskParametersParametersClusterRollArgs:
     @property
     @pulumi.getter(name="respectRestrictScaleDown")
     def respect_restrict_scale_down(self) -> Optional[pulumi.Input[bool]]:
+        """
+        During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.
+        """
         return pulumi.get(self, "respect_restrict_scale_down")
 
     @respect_restrict_scale_down.setter
@@ -814,6 +849,9 @@ class OceanNpSchedulingTaskParametersParametersClusterRollArgs:
     @property
     @pulumi.getter(name="vngIds")
     def vng_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of virtual node group identifiers to be rolled. Each identifier is a string. vngIds can be null, and cannot be used together with nodeNames and nodePoolNames.
+        """
         return pulumi.get(self, "vng_ids")
 
     @vng_ids.setter

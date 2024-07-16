@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ElastigroupMultipleMetricsMetric {
     private @Nullable List<ElastigroupMultipleMetricsMetricDimension> dimensions;
+    /**
+     * @return Percentile statistic. Valid values: `&#34;p0.1&#34;` - `&#34;p100&#34;`.
+     * 
+     */
     private @Nullable String extendedStatistic;
     private String metricName;
     /**
@@ -30,6 +34,10 @@ public final class ElastigroupMultipleMetricsMetric {
     public List<ElastigroupMultipleMetricsMetricDimension> dimensions() {
         return this.dimensions == null ? List.of() : this.dimensions;
     }
+    /**
+     * @return Percentile statistic. Valid values: `&#34;p0.1&#34;` - `&#34;p100&#34;`.
+     * 
+     */
     public Optional<String> extendedStatistic() {
         return Optional.ofNullable(this.extendedStatistic);
     }

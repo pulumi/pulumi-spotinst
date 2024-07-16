@@ -19,9 +19,20 @@ namespace Pulumi.SpotInst.Aws.Outputs
         public readonly Outputs.ElastigroupIntegrationKubernetesAutoscaleHeadroom? AutoscaleHeadroom;
         public readonly bool? AutoscaleIsAutoConfig;
         public readonly bool? AutoscaleIsEnabled;
+        /// <summary>
+        /// A key/value mapping of tags to assign to the resource.
+        /// 
+        /// Usage:
+        /// </summary>
         public readonly ImmutableArray<Outputs.ElastigroupIntegrationKubernetesAutoscaleLabel> AutoscaleLabels;
         public readonly string? ClusterIdentifier;
+        /// <summary>
+        /// Valid values: `"saas"`, `"pod"`.
+        /// </summary>
         public readonly string? IntegrationMode;
+        /// <summary>
+        /// Kubernetes Token
+        /// </summary>
         public readonly string? Token;
 
         [OutputConstructor]

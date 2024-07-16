@@ -746,8 +746,12 @@ func (o ElastigroupInstanceTypesCustomArrayOutput) Index(i pulumi.IntInput) Elas
 }
 
 type ElastigroupIntegrationDockerSwarm struct {
+	// IP or FQDN of one of your swarm managers.
 	MasterHost string `pulumi:"masterHost"`
-	MasterPort int    `pulumi:"masterPort"`
+	// Network port used by your swarm.
+	//
+	// Usage:
+	MasterPort int `pulumi:"masterPort"`
 }
 
 // ElastigroupIntegrationDockerSwarmInput is an input type that accepts ElastigroupIntegrationDockerSwarmArgs and ElastigroupIntegrationDockerSwarmOutput values.
@@ -762,8 +766,12 @@ type ElastigroupIntegrationDockerSwarmInput interface {
 }
 
 type ElastigroupIntegrationDockerSwarmArgs struct {
+	// IP or FQDN of one of your swarm managers.
 	MasterHost pulumi.StringInput `pulumi:"masterHost"`
-	MasterPort pulumi.IntInput    `pulumi:"masterPort"`
+	// Network port used by your swarm.
+	//
+	// Usage:
+	MasterPort pulumi.IntInput `pulumi:"masterPort"`
 }
 
 func (ElastigroupIntegrationDockerSwarmArgs) ElementType() reflect.Type {
@@ -843,10 +851,14 @@ func (o ElastigroupIntegrationDockerSwarmOutput) ToElastigroupIntegrationDockerS
 	}).(ElastigroupIntegrationDockerSwarmPtrOutput)
 }
 
+// IP or FQDN of one of your swarm managers.
 func (o ElastigroupIntegrationDockerSwarmOutput) MasterHost() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationDockerSwarm) string { return v.MasterHost }).(pulumi.StringOutput)
 }
 
+// Network port used by your swarm.
+//
+// Usage:
 func (o ElastigroupIntegrationDockerSwarmOutput) MasterPort() pulumi.IntOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationDockerSwarm) int { return v.MasterPort }).(pulumi.IntOutput)
 }
@@ -875,6 +887,7 @@ func (o ElastigroupIntegrationDockerSwarmPtrOutput) Elem() ElastigroupIntegratio
 	}).(ElastigroupIntegrationDockerSwarmOutput)
 }
 
+// IP or FQDN of one of your swarm managers.
 func (o ElastigroupIntegrationDockerSwarmPtrOutput) MasterHost() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationDockerSwarm) *string {
 		if v == nil {
@@ -884,6 +897,9 @@ func (o ElastigroupIntegrationDockerSwarmPtrOutput) MasterHost() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Network port used by your swarm.
+//
+// Usage:
 func (o ElastigroupIntegrationDockerSwarmPtrOutput) MasterPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationDockerSwarm) *int {
 		if v == nil {
@@ -1149,6 +1165,7 @@ func (o ElastigroupIntegrationGkePtrOutput) Location() pulumi.StringPtrOutput {
 }
 
 type ElastigroupIntegrationGkeAutoscaleDown struct {
+	// Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
 	EvaluationPeriods *int `pulumi:"evaluationPeriods"`
 }
 
@@ -1164,6 +1181,7 @@ type ElastigroupIntegrationGkeAutoscaleDownInput interface {
 }
 
 type ElastigroupIntegrationGkeAutoscaleDownArgs struct {
+	// Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
 	EvaluationPeriods pulumi.IntPtrInput `pulumi:"evaluationPeriods"`
 }
 
@@ -1244,6 +1262,7 @@ func (o ElastigroupIntegrationGkeAutoscaleDownOutput) ToElastigroupIntegrationGk
 	}).(ElastigroupIntegrationGkeAutoscaleDownPtrOutput)
 }
 
+// Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
 func (o ElastigroupIntegrationGkeAutoscaleDownOutput) EvaluationPeriods() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationGkeAutoscaleDown) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
 }
@@ -1272,6 +1291,7 @@ func (o ElastigroupIntegrationGkeAutoscaleDownPtrOutput) Elem() ElastigroupInteg
 	}).(ElastigroupIntegrationGkeAutoscaleDownOutput)
 }
 
+// Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
 func (o ElastigroupIntegrationGkeAutoscaleDownPtrOutput) EvaluationPeriods() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationGkeAutoscaleDown) *int {
 		if v == nil {
@@ -1757,9 +1777,11 @@ func (o ElastigroupMetadataArrayOutput) Index(i pulumi.IntInput) ElastigroupMeta
 }
 
 type ElastigroupNetworkInterface struct {
+	// Array of configurations.
 	AccessConfigs []ElastigroupNetworkInterfaceAccessConfig `pulumi:"accessConfigs"`
 	AliasIpRanges []ElastigroupNetworkInterfaceAliasIpRange `pulumi:"aliasIpRanges"`
-	Network       string                                    `pulumi:"network"`
+	// Network resource for this group.
+	Network string `pulumi:"network"`
 }
 
 // ElastigroupNetworkInterfaceInput is an input type that accepts ElastigroupNetworkInterfaceArgs and ElastigroupNetworkInterfaceOutput values.
@@ -1774,9 +1796,11 @@ type ElastigroupNetworkInterfaceInput interface {
 }
 
 type ElastigroupNetworkInterfaceArgs struct {
+	// Array of configurations.
 	AccessConfigs ElastigroupNetworkInterfaceAccessConfigArrayInput `pulumi:"accessConfigs"`
 	AliasIpRanges ElastigroupNetworkInterfaceAliasIpRangeArrayInput `pulumi:"aliasIpRanges"`
-	Network       pulumi.StringInput                                `pulumi:"network"`
+	// Network resource for this group.
+	Network pulumi.StringInput `pulumi:"network"`
 }
 
 func (ElastigroupNetworkInterfaceArgs) ElementType() reflect.Type {
@@ -1830,6 +1854,7 @@ func (o ElastigroupNetworkInterfaceOutput) ToElastigroupNetworkInterfaceOutputWi
 	return o
 }
 
+// Array of configurations.
 func (o ElastigroupNetworkInterfaceOutput) AccessConfigs() ElastigroupNetworkInterfaceAccessConfigArrayOutput {
 	return o.ApplyT(func(v ElastigroupNetworkInterface) []ElastigroupNetworkInterfaceAccessConfig { return v.AccessConfigs }).(ElastigroupNetworkInterfaceAccessConfigArrayOutput)
 }
@@ -1838,6 +1863,7 @@ func (o ElastigroupNetworkInterfaceOutput) AliasIpRanges() ElastigroupNetworkInt
 	return o.ApplyT(func(v ElastigroupNetworkInterface) []ElastigroupNetworkInterfaceAliasIpRange { return v.AliasIpRanges }).(ElastigroupNetworkInterfaceAliasIpRangeArrayOutput)
 }
 
+// Network resource for this group.
 func (o ElastigroupNetworkInterfaceOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupNetworkInterface) string { return v.Network }).(pulumi.StringOutput)
 }
@@ -2066,20 +2092,32 @@ func (o ElastigroupNetworkInterfaceAliasIpRangeArrayOutput) Index(i pulumi.IntIn
 }
 
 type ElastigroupScalingDownPolicy struct {
-	ActionType        *string                                 `pulumi:"actionType"`
-	Adjustment        *int                                    `pulumi:"adjustment"`
-	Cooldown          *int                                    `pulumi:"cooldown"`
-	Dimensions        []ElastigroupScalingDownPolicyDimension `pulumi:"dimensions"`
-	EvaluationPeriods *int                                    `pulumi:"evaluationPeriods"`
-	MetricName        string                                  `pulumi:"metricName"`
-	Namespace         string                                  `pulumi:"namespace"`
-	Operator          *string                                 `pulumi:"operator"`
-	Period            *int                                    `pulumi:"period"`
-	PolicyName        string                                  `pulumi:"policyName"`
-	Source            *string                                 `pulumi:"source"`
-	Statistic         *string                                 `pulumi:"statistic"`
-	Threshold         float64                                 `pulumi:"threshold"`
-	Unit              string                                  `pulumi:"unit"`
+	// Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
+	ActionType *string `pulumi:"actionType"`
+	// Value to which the action type will be adjusted. Required if using "numeric" or "percentageAdjustment" action types.
+	Adjustment *int `pulumi:"adjustment"`
+	// Time (seconds) to wait after a scaling action before resuming monitoring.
+	Cooldown *int `pulumi:"cooldown"`
+	// A list of dimensions describing qualities of the metric.
+	Dimensions []ElastigroupScalingDownPolicyDimension `pulumi:"dimensions"`
+	// Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
+	EvaluationPeriods *int `pulumi:"evaluationPeriods"`
+	// Metric to monitor. Valid values: "Percentage CPU", "Network In", "Network Out", "Disk Read Bytes", "Disk Write Bytes", "Disk Write Operations/Sec", "Disk Read Operations/Sec".
+	MetricName string `pulumi:"metricName"`
+	Namespace  string `pulumi:"namespace"`
+	// The operator used to evaluate the threshold against the current metric value. Valid values: "gt" (greater than), "get" (greater-than or equal), "lt" (less than), "lte" (less than or equal).
+	Operator *string `pulumi:"operator"`
+	// Amount of time (seconds) for which the threshold must be met in order to trigger the scaling action.
+	Period *int `pulumi:"period"`
+	// Name of scaling policy.
+	PolicyName string `pulumi:"policyName"`
+	// Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
+	Source *string `pulumi:"source"`
+	// Statistic by which to evaluate the selected metric. Valid values: "AVERAGE", "SAMPLE_COUNT", "SUM", "MINIMUM", "MAXIMUM", "PERCENTILE", "COUNT".
+	Statistic *string `pulumi:"statistic"`
+	// The value at which the scaling action is triggered.
+	Threshold float64 `pulumi:"threshold"`
+	Unit      string  `pulumi:"unit"`
 }
 
 // ElastigroupScalingDownPolicyInput is an input type that accepts ElastigroupScalingDownPolicyArgs and ElastigroupScalingDownPolicyOutput values.
@@ -2094,20 +2132,32 @@ type ElastigroupScalingDownPolicyInput interface {
 }
 
 type ElastigroupScalingDownPolicyArgs struct {
-	ActionType        pulumi.StringPtrInput                           `pulumi:"actionType"`
-	Adjustment        pulumi.IntPtrInput                              `pulumi:"adjustment"`
-	Cooldown          pulumi.IntPtrInput                              `pulumi:"cooldown"`
-	Dimensions        ElastigroupScalingDownPolicyDimensionArrayInput `pulumi:"dimensions"`
-	EvaluationPeriods pulumi.IntPtrInput                              `pulumi:"evaluationPeriods"`
-	MetricName        pulumi.StringInput                              `pulumi:"metricName"`
-	Namespace         pulumi.StringInput                              `pulumi:"namespace"`
-	Operator          pulumi.StringPtrInput                           `pulumi:"operator"`
-	Period            pulumi.IntPtrInput                              `pulumi:"period"`
-	PolicyName        pulumi.StringInput                              `pulumi:"policyName"`
-	Source            pulumi.StringPtrInput                           `pulumi:"source"`
-	Statistic         pulumi.StringPtrInput                           `pulumi:"statistic"`
-	Threshold         pulumi.Float64Input                             `pulumi:"threshold"`
-	Unit              pulumi.StringInput                              `pulumi:"unit"`
+	// Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
+	ActionType pulumi.StringPtrInput `pulumi:"actionType"`
+	// Value to which the action type will be adjusted. Required if using "numeric" or "percentageAdjustment" action types.
+	Adjustment pulumi.IntPtrInput `pulumi:"adjustment"`
+	// Time (seconds) to wait after a scaling action before resuming monitoring.
+	Cooldown pulumi.IntPtrInput `pulumi:"cooldown"`
+	// A list of dimensions describing qualities of the metric.
+	Dimensions ElastigroupScalingDownPolicyDimensionArrayInput `pulumi:"dimensions"`
+	// Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
+	EvaluationPeriods pulumi.IntPtrInput `pulumi:"evaluationPeriods"`
+	// Metric to monitor. Valid values: "Percentage CPU", "Network In", "Network Out", "Disk Read Bytes", "Disk Write Bytes", "Disk Write Operations/Sec", "Disk Read Operations/Sec".
+	MetricName pulumi.StringInput `pulumi:"metricName"`
+	Namespace  pulumi.StringInput `pulumi:"namespace"`
+	// The operator used to evaluate the threshold against the current metric value. Valid values: "gt" (greater than), "get" (greater-than or equal), "lt" (less than), "lte" (less than or equal).
+	Operator pulumi.StringPtrInput `pulumi:"operator"`
+	// Amount of time (seconds) for which the threshold must be met in order to trigger the scaling action.
+	Period pulumi.IntPtrInput `pulumi:"period"`
+	// Name of scaling policy.
+	PolicyName pulumi.StringInput `pulumi:"policyName"`
+	// Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
+	Source pulumi.StringPtrInput `pulumi:"source"`
+	// Statistic by which to evaluate the selected metric. Valid values: "AVERAGE", "SAMPLE_COUNT", "SUM", "MINIMUM", "MAXIMUM", "PERCENTILE", "COUNT".
+	Statistic pulumi.StringPtrInput `pulumi:"statistic"`
+	// The value at which the scaling action is triggered.
+	Threshold pulumi.Float64Input `pulumi:"threshold"`
+	Unit      pulumi.StringInput  `pulumi:"unit"`
 }
 
 func (ElastigroupScalingDownPolicyArgs) ElementType() reflect.Type {
@@ -2161,26 +2211,32 @@ func (o ElastigroupScalingDownPolicyOutput) ToElastigroupScalingDownPolicyOutput
 	return o
 }
 
+// Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
 func (o ElastigroupScalingDownPolicyOutput) ActionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *string { return v.ActionType }).(pulumi.StringPtrOutput)
 }
 
+// Value to which the action type will be adjusted. Required if using "numeric" or "percentageAdjustment" action types.
 func (o ElastigroupScalingDownPolicyOutput) Adjustment() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *int { return v.Adjustment }).(pulumi.IntPtrOutput)
 }
 
+// Time (seconds) to wait after a scaling action before resuming monitoring.
 func (o ElastigroupScalingDownPolicyOutput) Cooldown() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *int { return v.Cooldown }).(pulumi.IntPtrOutput)
 }
 
+// A list of dimensions describing qualities of the metric.
 func (o ElastigroupScalingDownPolicyOutput) Dimensions() ElastigroupScalingDownPolicyDimensionArrayOutput {
 	return o.ApplyT(func(v ElastigroupScalingDownPolicy) []ElastigroupScalingDownPolicyDimension { return v.Dimensions }).(ElastigroupScalingDownPolicyDimensionArrayOutput)
 }
 
+// Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
 func (o ElastigroupScalingDownPolicyOutput) EvaluationPeriods() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
 }
 
+// Metric to monitor. Valid values: "Percentage CPU", "Network In", "Network Out", "Disk Read Bytes", "Disk Write Bytes", "Disk Write Operations/Sec", "Disk Read Operations/Sec".
 func (o ElastigroupScalingDownPolicyOutput) MetricName() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupScalingDownPolicy) string { return v.MetricName }).(pulumi.StringOutput)
 }
@@ -2189,26 +2245,32 @@ func (o ElastigroupScalingDownPolicyOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupScalingDownPolicy) string { return v.Namespace }).(pulumi.StringOutput)
 }
 
+// The operator used to evaluate the threshold against the current metric value. Valid values: "gt" (greater than), "get" (greater-than or equal), "lt" (less than), "lte" (less than or equal).
 func (o ElastigroupScalingDownPolicyOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *string { return v.Operator }).(pulumi.StringPtrOutput)
 }
 
+// Amount of time (seconds) for which the threshold must be met in order to trigger the scaling action.
 func (o ElastigroupScalingDownPolicyOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *int { return v.Period }).(pulumi.IntPtrOutput)
 }
 
+// Name of scaling policy.
 func (o ElastigroupScalingDownPolicyOutput) PolicyName() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupScalingDownPolicy) string { return v.PolicyName }).(pulumi.StringOutput)
 }
 
+// Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
 func (o ElastigroupScalingDownPolicyOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
+// Statistic by which to evaluate the selected metric. Valid values: "AVERAGE", "SAMPLE_COUNT", "SUM", "MINIMUM", "MAXIMUM", "PERCENTILE", "COUNT".
 func (o ElastigroupScalingDownPolicyOutput) Statistic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *string { return v.Statistic }).(pulumi.StringPtrOutput)
 }
 
+// The value at which the scaling action is triggered.
 func (o ElastigroupScalingDownPolicyOutput) Threshold() pulumi.Float64Output {
 	return o.ApplyT(func(v ElastigroupScalingDownPolicy) float64 { return v.Threshold }).(pulumi.Float64Output)
 }
@@ -2359,8 +2421,9 @@ type ElastigroupScalingUpPolicy struct {
 	// Amount of time (seconds) for which the threshold must be met in order to trigger the scaling action.
 	Period *int `pulumi:"period"`
 	// Name of scaling policy.
-	PolicyName string  `pulumi:"policyName"`
-	Source     *string `pulumi:"source"`
+	PolicyName string `pulumi:"policyName"`
+	// Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
+	Source *string `pulumi:"source"`
 	// Statistic by which to evaluate the selected metric. Valid values: "AVERAGE", "SAMPLE_COUNT", "SUM", "MINIMUM", "MAXIMUM", "PERCENTILE", "COUNT".
 	Statistic *string `pulumi:"statistic"`
 	// The value at which the scaling action is triggered.
@@ -2398,8 +2461,9 @@ type ElastigroupScalingUpPolicyArgs struct {
 	// Amount of time (seconds) for which the threshold must be met in order to trigger the scaling action.
 	Period pulumi.IntPtrInput `pulumi:"period"`
 	// Name of scaling policy.
-	PolicyName pulumi.StringInput    `pulumi:"policyName"`
-	Source     pulumi.StringPtrInput `pulumi:"source"`
+	PolicyName pulumi.StringInput `pulumi:"policyName"`
+	// Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
+	Source pulumi.StringPtrInput `pulumi:"source"`
 	// Statistic by which to evaluate the selected metric. Valid values: "AVERAGE", "SAMPLE_COUNT", "SUM", "MINIMUM", "MAXIMUM", "PERCENTILE", "COUNT".
 	Statistic pulumi.StringPtrInput `pulumi:"statistic"`
 	// The value at which the scaling action is triggered.
@@ -2507,6 +2571,7 @@ func (o ElastigroupScalingUpPolicyOutput) PolicyName() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupScalingUpPolicy) string { return v.PolicyName }).(pulumi.StringOutput)
 }
 
+// Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
 func (o ElastigroupScalingUpPolicyOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *string { return v.Source }).(pulumi.StringPtrOutput)
 }

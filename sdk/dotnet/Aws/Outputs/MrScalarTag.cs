@@ -14,6 +14,11 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class MrScalarTag
     {
         public readonly string Key;
+        /// <summary>
+        /// Tag value.
+        /// 
+        /// &lt;a id="Optional Compute Parameters"&gt;&lt;/a&gt;
+        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

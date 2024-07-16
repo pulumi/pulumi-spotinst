@@ -63,9 +63,21 @@ public final class ElastigroupIntegrationKubernetesArgs extends com.pulumi.resou
         return Optional.ofNullable(this.autoscaleIsEnabled);
     }
 
+    /**
+     * A key/value mapping of tags to assign to the resource.
+     * 
+     * Usage:
+     * 
+     */
     @Import(name="autoscaleLabels")
     private @Nullable Output<List<ElastigroupIntegrationKubernetesAutoscaleLabelArgs>> autoscaleLabels;
 
+    /**
+     * @return A key/value mapping of tags to assign to the resource.
+     * 
+     * Usage:
+     * 
+     */
     public Optional<Output<List<ElastigroupIntegrationKubernetesAutoscaleLabelArgs>>> autoscaleLabels() {
         return Optional.ofNullable(this.autoscaleLabels);
     }
@@ -77,16 +89,32 @@ public final class ElastigroupIntegrationKubernetesArgs extends com.pulumi.resou
         return Optional.ofNullable(this.clusterIdentifier);
     }
 
+    /**
+     * Valid values: `&#34;saas&#34;`, `&#34;pod&#34;`.
+     * 
+     */
     @Import(name="integrationMode")
     private @Nullable Output<String> integrationMode;
 
+    /**
+     * @return Valid values: `&#34;saas&#34;`, `&#34;pod&#34;`.
+     * 
+     */
     public Optional<Output<String>> integrationMode() {
         return Optional.ofNullable(this.integrationMode);
     }
 
+    /**
+     * Kubernetes Token
+     * 
+     */
     @Import(name="token")
     private @Nullable Output<String> token;
 
+    /**
+     * @return Kubernetes Token
+     * 
+     */
     public Optional<Output<String>> token() {
         return Optional.ofNullable(this.token);
     }
@@ -178,15 +206,39 @@ public final class ElastigroupIntegrationKubernetesArgs extends com.pulumi.resou
             return autoscaleIsEnabled(Output.of(autoscaleIsEnabled));
         }
 
+        /**
+         * @param autoscaleLabels A key/value mapping of tags to assign to the resource.
+         * 
+         * Usage:
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoscaleLabels(@Nullable Output<List<ElastigroupIntegrationKubernetesAutoscaleLabelArgs>> autoscaleLabels) {
             $.autoscaleLabels = autoscaleLabels;
             return this;
         }
 
+        /**
+         * @param autoscaleLabels A key/value mapping of tags to assign to the resource.
+         * 
+         * Usage:
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoscaleLabels(List<ElastigroupIntegrationKubernetesAutoscaleLabelArgs> autoscaleLabels) {
             return autoscaleLabels(Output.of(autoscaleLabels));
         }
 
+        /**
+         * @param autoscaleLabels A key/value mapping of tags to assign to the resource.
+         * 
+         * Usage:
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoscaleLabels(ElastigroupIntegrationKubernetesAutoscaleLabelArgs... autoscaleLabels) {
             return autoscaleLabels(List.of(autoscaleLabels));
         }
@@ -200,20 +252,44 @@ public final class ElastigroupIntegrationKubernetesArgs extends com.pulumi.resou
             return clusterIdentifier(Output.of(clusterIdentifier));
         }
 
+        /**
+         * @param integrationMode Valid values: `&#34;saas&#34;`, `&#34;pod&#34;`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder integrationMode(@Nullable Output<String> integrationMode) {
             $.integrationMode = integrationMode;
             return this;
         }
 
+        /**
+         * @param integrationMode Valid values: `&#34;saas&#34;`, `&#34;pod&#34;`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder integrationMode(String integrationMode) {
             return integrationMode(Output.of(integrationMode));
         }
 
+        /**
+         * @param token Kubernetes Token
+         * 
+         * @return builder
+         * 
+         */
         public Builder token(@Nullable Output<String> token) {
             $.token = token;
             return this;
         }
 
+        /**
+         * @param token Kubernetes Token
+         * 
+         * @return builder
+         * 
+         */
         public Builder token(String token) {
             return token(Output.of(token));
         }

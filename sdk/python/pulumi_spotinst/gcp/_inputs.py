@@ -417,12 +417,21 @@ class ElastigroupIntegrationDockerSwarmArgs:
     def __init__(__self__, *,
                  master_host: pulumi.Input[str],
                  master_port: pulumi.Input[int]):
+        """
+        :param pulumi.Input[str] master_host: IP or FQDN of one of your swarm managers.
+        :param pulumi.Input[int] master_port: Network port used by your swarm.
+               
+               Usage:
+        """
         pulumi.set(__self__, "master_host", master_host)
         pulumi.set(__self__, "master_port", master_port)
 
     @property
     @pulumi.getter(name="masterHost")
     def master_host(self) -> pulumi.Input[str]:
+        """
+        IP or FQDN of one of your swarm managers.
+        """
         return pulumi.get(self, "master_host")
 
     @master_host.setter
@@ -432,6 +441,11 @@ class ElastigroupIntegrationDockerSwarmArgs:
     @property
     @pulumi.getter(name="masterPort")
     def master_port(self) -> pulumi.Input[int]:
+        """
+        Network port used by your swarm.
+
+        Usage:
+        """
         return pulumi.get(self, "master_port")
 
     @master_port.setter
@@ -556,12 +570,18 @@ class ElastigroupIntegrationGkeArgs:
 class ElastigroupIntegrationGkeAutoscaleDownArgs:
     def __init__(__self__, *,
                  evaluation_periods: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] evaluation_periods: Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
+        """
         if evaluation_periods is not None:
             pulumi.set(__self__, "evaluation_periods", evaluation_periods)
 
     @property
     @pulumi.getter(name="evaluationPeriods")
     def evaluation_periods(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
+        """
         return pulumi.get(self, "evaluation_periods")
 
     @evaluation_periods.setter
@@ -717,6 +737,10 @@ class ElastigroupNetworkInterfaceArgs:
                  network: pulumi.Input[str],
                  access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceAccessConfigArgs']]]] = None,
                  alias_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceAliasIpRangeArgs']]]] = None):
+        """
+        :param pulumi.Input[str] network: Network resource for this group.
+        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceAccessConfigArgs']]] access_configs: Array of configurations.
+        """
         pulumi.set(__self__, "network", network)
         if access_configs is not None:
             pulumi.set(__self__, "access_configs", access_configs)
@@ -726,6 +750,9 @@ class ElastigroupNetworkInterfaceArgs:
     @property
     @pulumi.getter
     def network(self) -> pulumi.Input[str]:
+        """
+        Network resource for this group.
+        """
         return pulumi.get(self, "network")
 
     @network.setter
@@ -735,6 +762,9 @@ class ElastigroupNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="accessConfigs")
     def access_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceAccessConfigArgs']]]]:
+        """
+        Array of configurations.
+        """
         return pulumi.get(self, "access_configs")
 
     @access_configs.setter
@@ -830,6 +860,20 @@ class ElastigroupScalingDownPolicyArgs:
                  period: Optional[pulumi.Input[int]] = None,
                  source: Optional[pulumi.Input[str]] = None,
                  statistic: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] metric_name: Metric to monitor. Valid values: "Percentage CPU", "Network In", "Network Out", "Disk Read Bytes", "Disk Write Bytes", "Disk Write Operations/Sec", "Disk Read Operations/Sec".
+        :param pulumi.Input[str] policy_name: Name of scaling policy.
+        :param pulumi.Input[float] threshold: The value at which the scaling action is triggered.
+        :param pulumi.Input[str] action_type: Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
+        :param pulumi.Input[int] adjustment: Value to which the action type will be adjusted. Required if using "numeric" or "percentageAdjustment" action types.
+        :param pulumi.Input[int] cooldown: Time (seconds) to wait after a scaling action before resuming monitoring.
+        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyDimensionArgs']]] dimensions: A list of dimensions describing qualities of the metric.
+        :param pulumi.Input[int] evaluation_periods: Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
+        :param pulumi.Input[str] operator: The operator used to evaluate the threshold against the current metric value. Valid values: "gt" (greater than), "get" (greater-than or equal), "lt" (less than), "lte" (less than or equal).
+        :param pulumi.Input[int] period: Amount of time (seconds) for which the threshold must be met in order to trigger the scaling action.
+        :param pulumi.Input[str] source: Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
+        :param pulumi.Input[str] statistic: Statistic by which to evaluate the selected metric. Valid values: "AVERAGE", "SAMPLE_COUNT", "SUM", "MINIMUM", "MAXIMUM", "PERCENTILE", "COUNT".
+        """
         pulumi.set(__self__, "metric_name", metric_name)
         pulumi.set(__self__, "namespace", namespace)
         pulumi.set(__self__, "policy_name", policy_name)
@@ -857,6 +901,9 @@ class ElastigroupScalingDownPolicyArgs:
     @property
     @pulumi.getter(name="metricName")
     def metric_name(self) -> pulumi.Input[str]:
+        """
+        Metric to monitor. Valid values: "Percentage CPU", "Network In", "Network Out", "Disk Read Bytes", "Disk Write Bytes", "Disk Write Operations/Sec", "Disk Read Operations/Sec".
+        """
         return pulumi.get(self, "metric_name")
 
     @metric_name.setter
@@ -875,6 +922,9 @@ class ElastigroupScalingDownPolicyArgs:
     @property
     @pulumi.getter(name="policyName")
     def policy_name(self) -> pulumi.Input[str]:
+        """
+        Name of scaling policy.
+        """
         return pulumi.get(self, "policy_name")
 
     @policy_name.setter
@@ -884,6 +934,9 @@ class ElastigroupScalingDownPolicyArgs:
     @property
     @pulumi.getter
     def threshold(self) -> pulumi.Input[float]:
+        """
+        The value at which the scaling action is triggered.
+        """
         return pulumi.get(self, "threshold")
 
     @threshold.setter
@@ -902,6 +955,9 @@ class ElastigroupScalingDownPolicyArgs:
     @property
     @pulumi.getter(name="actionType")
     def action_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
+        """
         return pulumi.get(self, "action_type")
 
     @action_type.setter
@@ -911,6 +967,9 @@ class ElastigroupScalingDownPolicyArgs:
     @property
     @pulumi.getter
     def adjustment(self) -> Optional[pulumi.Input[int]]:
+        """
+        Value to which the action type will be adjusted. Required if using "numeric" or "percentageAdjustment" action types.
+        """
         return pulumi.get(self, "adjustment")
 
     @adjustment.setter
@@ -920,6 +979,9 @@ class ElastigroupScalingDownPolicyArgs:
     @property
     @pulumi.getter
     def cooldown(self) -> Optional[pulumi.Input[int]]:
+        """
+        Time (seconds) to wait after a scaling action before resuming monitoring.
+        """
         return pulumi.get(self, "cooldown")
 
     @cooldown.setter
@@ -929,6 +991,9 @@ class ElastigroupScalingDownPolicyArgs:
     @property
     @pulumi.getter
     def dimensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyDimensionArgs']]]]:
+        """
+        A list of dimensions describing qualities of the metric.
+        """
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
@@ -938,6 +1003,9 @@ class ElastigroupScalingDownPolicyArgs:
     @property
     @pulumi.getter(name="evaluationPeriods")
     def evaluation_periods(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
+        """
         return pulumi.get(self, "evaluation_periods")
 
     @evaluation_periods.setter
@@ -947,6 +1015,9 @@ class ElastigroupScalingDownPolicyArgs:
     @property
     @pulumi.getter
     def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The operator used to evaluate the threshold against the current metric value. Valid values: "gt" (greater than), "get" (greater-than or equal), "lt" (less than), "lte" (less than or equal).
+        """
         return pulumi.get(self, "operator")
 
     @operator.setter
@@ -956,6 +1027,9 @@ class ElastigroupScalingDownPolicyArgs:
     @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        Amount of time (seconds) for which the threshold must be met in order to trigger the scaling action.
+        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -965,6 +1039,9 @@ class ElastigroupScalingDownPolicyArgs:
     @property
     @pulumi.getter
     def source(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
+        """
         return pulumi.get(self, "source")
 
     @source.setter
@@ -974,6 +1051,9 @@ class ElastigroupScalingDownPolicyArgs:
     @property
     @pulumi.getter
     def statistic(self) -> Optional[pulumi.Input[str]]:
+        """
+        Statistic by which to evaluate the selected metric. Valid values: "AVERAGE", "SAMPLE_COUNT", "SUM", "MINIMUM", "MAXIMUM", "PERCENTILE", "COUNT".
+        """
         return pulumi.get(self, "statistic")
 
     @statistic.setter
@@ -1043,6 +1123,7 @@ class ElastigroupScalingUpPolicyArgs:
         :param pulumi.Input[int] evaluation_periods: Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
         :param pulumi.Input[str] operator: The operator used to evaluate the threshold against the current metric value. Valid values: "gt" (greater than), "get" (greater-than or equal), "lt" (less than), "lte" (less than or equal).
         :param pulumi.Input[int] period: Amount of time (seconds) for which the threshold must be met in order to trigger the scaling action.
+        :param pulumi.Input[str] source: Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
         :param pulumi.Input[str] statistic: Statistic by which to evaluate the selected metric. Valid values: "AVERAGE", "SAMPLE_COUNT", "SUM", "MINIMUM", "MAXIMUM", "PERCENTILE", "COUNT".
         """
         pulumi.set(__self__, "metric_name", metric_name)
@@ -1210,6 +1291,9 @@ class ElastigroupScalingUpPolicyArgs:
     @property
     @pulumi.getter
     def source(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
+        """
         return pulumi.get(self, "source")
 
     @source.setter

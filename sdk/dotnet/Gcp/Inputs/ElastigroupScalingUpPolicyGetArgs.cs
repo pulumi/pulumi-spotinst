@@ -75,6 +75,9 @@ namespace Pulumi.SpotInst.Gcp.Inputs
         [Input("policyName", required: true)]
         public Input<string> PolicyName { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
+        /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }
 

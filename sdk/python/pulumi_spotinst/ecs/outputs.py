@@ -713,6 +713,25 @@ class OceanFilters(dict):
                  min_vcpu: Optional[int] = None,
                  root_device_types: Optional[Sequence[str]] = None,
                  virtualization_types: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] architectures: The filtered instance types will support at least one of the architectures from this list.
+        :param Sequence[str] categories: The filtered instance types will belong to one of the categories types from this list.
+        :param Sequence[str] disk_types: The filtered instance types will have one of the disk type from this list.
+        :param Sequence[str] exclude_families: Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
+        :param bool exclude_metal: In case excludeMetal is set to true, metal types will not be available for scaling.
+        :param Sequence[str] hypervisors: The filtered instance types will have a hypervisor type from this list.
+        :param Sequence[str] include_families: Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
+        :param str is_ena_supported: Ena is supported or not.
+        :param int max_gpu: Maximum total number of GPUs.
+        :param int max_network_performance: Maximum Bandwidth in Gib/s of network performance.
+        :param int min_enis: Minimum number of network interfaces (ENIs).
+        :param int min_gpu: Minimum total number of GPUs.
+        :param float min_memory_gib: Minimum amount of Memory (GiB).
+        :param int min_network_performance: Minimum Bandwidth in Gib/s of network performance.
+        :param int min_vcpu: Minimum number of vcpus available.
+        :param Sequence[str] root_device_types: The filtered instance types will have a root device types from this list.
+        :param Sequence[str] virtualization_types: The filtered instance types will support at least one of the virtualization types from this list.
+        """
         if architectures is not None:
             pulumi.set(__self__, "architectures", architectures)
         if categories is not None:
@@ -755,46 +774,73 @@ class OceanFilters(dict):
     @property
     @pulumi.getter
     def architectures(self) -> Optional[Sequence[str]]:
+        """
+        The filtered instance types will support at least one of the architectures from this list.
+        """
         return pulumi.get(self, "architectures")
 
     @property
     @pulumi.getter
     def categories(self) -> Optional[Sequence[str]]:
+        """
+        The filtered instance types will belong to one of the categories types from this list.
+        """
         return pulumi.get(self, "categories")
 
     @property
     @pulumi.getter(name="diskTypes")
     def disk_types(self) -> Optional[Sequence[str]]:
+        """
+        The filtered instance types will have one of the disk type from this list.
+        """
         return pulumi.get(self, "disk_types")
 
     @property
     @pulumi.getter(name="excludeFamilies")
     def exclude_families(self) -> Optional[Sequence[str]]:
+        """
+        Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
+        """
         return pulumi.get(self, "exclude_families")
 
     @property
     @pulumi.getter(name="excludeMetal")
     def exclude_metal(self) -> Optional[bool]:
+        """
+        In case excludeMetal is set to true, metal types will not be available for scaling.
+        """
         return pulumi.get(self, "exclude_metal")
 
     @property
     @pulumi.getter
     def hypervisors(self) -> Optional[Sequence[str]]:
+        """
+        The filtered instance types will have a hypervisor type from this list.
+        """
         return pulumi.get(self, "hypervisors")
 
     @property
     @pulumi.getter(name="includeFamilies")
     def include_families(self) -> Optional[Sequence[str]]:
+        """
+        Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
+        """
         return pulumi.get(self, "include_families")
 
     @property
     @pulumi.getter(name="isEnaSupported")
     def is_ena_supported(self) -> Optional[str]:
+        """
+        Ena is supported or not.
+        """
         return pulumi.get(self, "is_ena_supported")
 
     @property
     @pulumi.getter(name="maxGpu")
     def max_gpu(self) -> Optional[int]:
+        """
+        Maximum total number of GPUs.
+        """
         return pulumi.get(self, "max_gpu")
 
     @property
@@ -805,6 +851,9 @@ class OceanFilters(dict):
     @property
     @pulumi.getter(name="maxNetworkPerformance")
     def max_network_performance(self) -> Optional[int]:
+        """
+        Maximum Bandwidth in Gib/s of network performance.
+        """
         return pulumi.get(self, "max_network_performance")
 
     @property
@@ -815,36 +864,57 @@ class OceanFilters(dict):
     @property
     @pulumi.getter(name="minEnis")
     def min_enis(self) -> Optional[int]:
+        """
+        Minimum number of network interfaces (ENIs).
+        """
         return pulumi.get(self, "min_enis")
 
     @property
     @pulumi.getter(name="minGpu")
     def min_gpu(self) -> Optional[int]:
+        """
+        Minimum total number of GPUs.
+        """
         return pulumi.get(self, "min_gpu")
 
     @property
     @pulumi.getter(name="minMemoryGib")
     def min_memory_gib(self) -> Optional[float]:
+        """
+        Minimum amount of Memory (GiB).
+        """
         return pulumi.get(self, "min_memory_gib")
 
     @property
     @pulumi.getter(name="minNetworkPerformance")
     def min_network_performance(self) -> Optional[int]:
+        """
+        Minimum Bandwidth in Gib/s of network performance.
+        """
         return pulumi.get(self, "min_network_performance")
 
     @property
     @pulumi.getter(name="minVcpu")
     def min_vcpu(self) -> Optional[int]:
+        """
+        Minimum number of vcpus available.
+        """
         return pulumi.get(self, "min_vcpu")
 
     @property
     @pulumi.getter(name="rootDeviceTypes")
     def root_device_types(self) -> Optional[Sequence[str]]:
+        """
+        The filtered instance types will have a root device types from this list.
+        """
         return pulumi.get(self, "root_device_types")
 
     @property
     @pulumi.getter(name="virtualizationTypes")
     def virtualization_types(self) -> Optional[Sequence[str]]:
+        """
+        The filtered instance types will support at least one of the virtualization types from this list.
+        """
         return pulumi.get(self, "virtualization_types")
 
 
@@ -1020,6 +1090,7 @@ class OceanLaunchSpecBlockDeviceMapping(dict):
         """
         :param str device_name: String. Set device name. (Example: "/dev/xvda1").
         :param 'OceanLaunchSpecBlockDeviceMappingEbsArgs' ebs: Object. Set Elastic Block Store properties .
+        :param str no_device: String. suppresses the specified device included in the block device mapping of the AMI.
         """
         pulumi.set(__self__, "device_name", device_name)
         if ebs is not None:
@@ -1048,6 +1119,9 @@ class OceanLaunchSpecBlockDeviceMapping(dict):
     @property
     @pulumi.getter(name="noDevice")
     def no_device(self) -> Optional[str]:
+        """
+        String. suppresses the specified device included in the block device mapping of the AMI.
+        """
         return pulumi.get(self, "no_device")
 
     @property
@@ -1521,17 +1595,27 @@ class OceanLaunchSpecTag(dict):
     def __init__(__self__, *,
                  key: str,
                  value: str):
+        """
+        :param str key: The label key.
+        :param str value: The label value.
+        """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
     def key(self) -> str:
+        """
+        The label key.
+        """
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        The label value.
+        """
         return pulumi.get(self, "value")
 
 

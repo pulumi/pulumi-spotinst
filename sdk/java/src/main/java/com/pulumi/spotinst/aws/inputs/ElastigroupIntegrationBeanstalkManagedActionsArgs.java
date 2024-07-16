@@ -15,9 +15,17 @@ public final class ElastigroupIntegrationBeanstalkManagedActionsArgs extends com
 
     public static final ElastigroupIntegrationBeanstalkManagedActionsArgs Empty = new ElastigroupIntegrationBeanstalkManagedActionsArgs();
 
+    /**
+     * Platform Update parameters
+     * 
+     */
     @Import(name="platformUpdate")
     private @Nullable Output<ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs> platformUpdate;
 
+    /**
+     * @return Platform Update parameters
+     * 
+     */
     public Optional<Output<ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs>> platformUpdate() {
         return Optional.ofNullable(this.platformUpdate);
     }
@@ -46,11 +54,23 @@ public final class ElastigroupIntegrationBeanstalkManagedActionsArgs extends com
             $ = new ElastigroupIntegrationBeanstalkManagedActionsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param platformUpdate Platform Update parameters
+         * 
+         * @return builder
+         * 
+         */
         public Builder platformUpdate(@Nullable Output<ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs> platformUpdate) {
             $.platformUpdate = platformUpdate;
             return this;
         }
 
+        /**
+         * @param platformUpdate Platform Update parameters
+         * 
+         * @return builder
+         * 
+         */
         public Builder platformUpdate(ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs platformUpdate) {
             return platformUpdate(Output.of(platformUpdate));
         }

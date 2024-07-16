@@ -17,9 +17,17 @@ public final class ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs exte
 
     public static final ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs Empty = new ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs();
 
+    /**
+     * Should roll perform automatically
+     * 
+     */
     @Import(name="automaticRoll")
     private @Nullable Output<Boolean> automaticRoll;
 
+    /**
+     * @return Should roll perform automatically
+     * 
+     */
     public Optional<Output<Boolean>> automaticRoll() {
         return Optional.ofNullable(this.automaticRoll);
     }
@@ -72,11 +80,23 @@ public final class ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs exte
             $ = new ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param automaticRoll Should roll perform automatically
+         * 
+         * @return builder
+         * 
+         */
         public Builder automaticRoll(@Nullable Output<Boolean> automaticRoll) {
             $.automaticRoll = automaticRoll;
             return this;
         }
 
+        /**
+         * @param automaticRoll Should roll perform automatically
+         * 
+         * @return builder
+         * 
+         */
         public Builder automaticRoll(Boolean automaticRoll) {
             return automaticRoll(Output.of(automaticRoll));
         }

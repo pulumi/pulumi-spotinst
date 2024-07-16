@@ -16,9 +16,17 @@ public final class ElastigroupIntegrationRancherArgs extends com.pulumi.resource
 
     public static final ElastigroupIntegrationRancherArgs Empty = new ElastigroupIntegrationRancherArgs();
 
+    /**
+     * The access key of the Rancher API.
+     * 
+     */
     @Import(name="accessKey", required=true)
     private Output<String> accessKey;
 
+    /**
+     * @return The access key of the Rancher API.
+     * 
+     */
     public Output<String> accessKey() {
         return this.accessKey;
     }
@@ -30,16 +38,34 @@ public final class ElastigroupIntegrationRancherArgs extends com.pulumi.resource
         return this.masterHost;
     }
 
+    /**
+     * The secret key of the Rancher API.
+     * 
+     */
     @Import(name="secretKey", required=true)
     private Output<String> secretKey;
 
+    /**
+     * @return The secret key of the Rancher API.
+     * 
+     */
     public Output<String> secretKey() {
         return this.secretKey;
     }
 
+    /**
+     * The Rancher version. Must be `&#34;1&#34;` or `&#34;2&#34;`. If this field is omitted, it’s assumed that the Rancher cluster is version 1. Note that Kubernetes is required when using Rancher version 2^.
+     * Usage:
+     * 
+     */
     @Import(name="version")
     private @Nullable Output<String> version;
 
+    /**
+     * @return The Rancher version. Must be `&#34;1&#34;` or `&#34;2&#34;`. If this field is omitted, it’s assumed that the Rancher cluster is version 1. Note that Kubernetes is required when using Rancher version 2^.
+     * Usage:
+     * 
+     */
     public Optional<Output<String>> version() {
         return Optional.ofNullable(this.version);
     }
@@ -71,11 +97,23 @@ public final class ElastigroupIntegrationRancherArgs extends com.pulumi.resource
             $ = new ElastigroupIntegrationRancherArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accessKey The access key of the Rancher API.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessKey(Output<String> accessKey) {
             $.accessKey = accessKey;
             return this;
         }
 
+        /**
+         * @param accessKey The access key of the Rancher API.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessKey(String accessKey) {
             return accessKey(Output.of(accessKey));
         }
@@ -89,20 +127,46 @@ public final class ElastigroupIntegrationRancherArgs extends com.pulumi.resource
             return masterHost(Output.of(masterHost));
         }
 
+        /**
+         * @param secretKey The secret key of the Rancher API.
+         * 
+         * @return builder
+         * 
+         */
         public Builder secretKey(Output<String> secretKey) {
             $.secretKey = secretKey;
             return this;
         }
 
+        /**
+         * @param secretKey The secret key of the Rancher API.
+         * 
+         * @return builder
+         * 
+         */
         public Builder secretKey(String secretKey) {
             return secretKey(Output.of(secretKey));
         }
 
+        /**
+         * @param version The Rancher version. Must be `&#34;1&#34;` or `&#34;2&#34;`. If this field is omitted, it’s assumed that the Rancher cluster is version 1. Note that Kubernetes is required when using Rancher version 2^.
+         * Usage:
+         * 
+         * @return builder
+         * 
+         */
         public Builder version(@Nullable Output<String> version) {
             $.version = version;
             return this;
         }
 
+        /**
+         * @param version The Rancher version. Must be `&#34;1&#34;` or `&#34;2&#34;`. If this field is omitted, it’s assumed that the Rancher cluster is version 1. Note that Kubernetes is required when using Rancher version 2^.
+         * Usage:
+         * 
+         * @return builder
+         * 
+         */
         public Builder version(String version) {
             return version(Output.of(version));
         }

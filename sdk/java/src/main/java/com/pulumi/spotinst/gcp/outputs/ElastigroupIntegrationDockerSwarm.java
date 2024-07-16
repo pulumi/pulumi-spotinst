@@ -11,13 +11,33 @@ import java.util.Objects;
 
 @CustomType
 public final class ElastigroupIntegrationDockerSwarm {
+    /**
+     * @return IP or FQDN of one of your swarm managers.
+     * 
+     */
     private String masterHost;
+    /**
+     * @return Network port used by your swarm.
+     * 
+     * Usage:
+     * 
+     */
     private Integer masterPort;
 
     private ElastigroupIntegrationDockerSwarm() {}
+    /**
+     * @return IP or FQDN of one of your swarm managers.
+     * 
+     */
     public String masterHost() {
         return this.masterHost;
     }
+    /**
+     * @return Network port used by your swarm.
+     * 
+     * Usage:
+     * 
+     */
     public Integer masterPort() {
         return this.masterPort;
     }

@@ -19,9 +19,17 @@ public final class ElastigroupNetworkInterfaceArgs extends com.pulumi.resources.
 
     public static final ElastigroupNetworkInterfaceArgs Empty = new ElastigroupNetworkInterfaceArgs();
 
+    /**
+     * Array of configurations.
+     * 
+     */
     @Import(name="accessConfigs")
     private @Nullable Output<List<ElastigroupNetworkInterfaceAccessConfigArgs>> accessConfigs;
 
+    /**
+     * @return Array of configurations.
+     * 
+     */
     public Optional<Output<List<ElastigroupNetworkInterfaceAccessConfigArgs>>> accessConfigs() {
         return Optional.ofNullable(this.accessConfigs);
     }
@@ -33,9 +41,17 @@ public final class ElastigroupNetworkInterfaceArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.aliasIpRanges);
     }
 
+    /**
+     * Network resource for this group.
+     * 
+     */
     @Import(name="network", required=true)
     private Output<String> network;
 
+    /**
+     * @return Network resource for this group.
+     * 
+     */
     public Output<String> network() {
         return this.network;
     }
@@ -66,15 +82,33 @@ public final class ElastigroupNetworkInterfaceArgs extends com.pulumi.resources.
             $ = new ElastigroupNetworkInterfaceArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accessConfigs Array of configurations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessConfigs(@Nullable Output<List<ElastigroupNetworkInterfaceAccessConfigArgs>> accessConfigs) {
             $.accessConfigs = accessConfigs;
             return this;
         }
 
+        /**
+         * @param accessConfigs Array of configurations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessConfigs(List<ElastigroupNetworkInterfaceAccessConfigArgs> accessConfigs) {
             return accessConfigs(Output.of(accessConfigs));
         }
 
+        /**
+         * @param accessConfigs Array of configurations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessConfigs(ElastigroupNetworkInterfaceAccessConfigArgs... accessConfigs) {
             return accessConfigs(List.of(accessConfigs));
         }
@@ -92,11 +126,23 @@ public final class ElastigroupNetworkInterfaceArgs extends com.pulumi.resources.
             return aliasIpRanges(List.of(aliasIpRanges));
         }
 
+        /**
+         * @param network Network resource for this group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder network(Output<String> network) {
             $.network = network;
             return this;
         }
 
+        /**
+         * @param network Network resource for this group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder network(String network) {
             return network(Output.of(network));
         }

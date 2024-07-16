@@ -13,6 +13,11 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class ElastigroupIntegrationEcsBatch
     {
+        /// <summary>
+        /// Array of strings.
+        /// 
+        /// Usage:
+        /// </summary>
         public readonly ImmutableArray<string> JobQueueNames;
 
         [OutputConstructor]

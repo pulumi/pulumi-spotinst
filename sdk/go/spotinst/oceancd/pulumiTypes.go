@@ -9037,6 +9037,7 @@ func (o VerificationTemplateMetricProviderNewRelicPtrOutput) Profile() pulumi.St
 }
 
 type VerificationTemplateMetricProviderPrometheus struct {
+	// A request for information retrieved from Prometheus.
 	PrometheusQuery string `pulumi:"prometheusQuery"`
 }
 
@@ -9052,6 +9053,7 @@ type VerificationTemplateMetricProviderPrometheusInput interface {
 }
 
 type VerificationTemplateMetricProviderPrometheusArgs struct {
+	// A request for information retrieved from Prometheus.
 	PrometheusQuery pulumi.StringInput `pulumi:"prometheusQuery"`
 }
 
@@ -9132,6 +9134,7 @@ func (o VerificationTemplateMetricProviderPrometheusOutput) ToVerificationTempla
 	}).(VerificationTemplateMetricProviderPrometheusPtrOutput)
 }
 
+// A request for information retrieved from Prometheus.
 func (o VerificationTemplateMetricProviderPrometheusOutput) PrometheusQuery() pulumi.StringOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderPrometheus) string { return v.PrometheusQuery }).(pulumi.StringOutput)
 }
@@ -9160,6 +9163,7 @@ func (o VerificationTemplateMetricProviderPrometheusPtrOutput) Elem() Verificati
 	}).(VerificationTemplateMetricProviderPrometheusOutput)
 }
 
+// A request for information retrieved from Prometheus.
 func (o VerificationTemplateMetricProviderPrometheusPtrOutput) PrometheusQuery() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VerificationTemplateMetricProviderPrometheus) *string {
 		if v == nil {
