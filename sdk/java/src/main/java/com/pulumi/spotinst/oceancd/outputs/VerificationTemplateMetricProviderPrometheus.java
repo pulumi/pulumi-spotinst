@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class VerificationTemplateMetricProviderPrometheus {
+    /**
+     * @return A request for information retrieved from Prometheus.
+     * 
+     */
     private String prometheusQuery;
 
     private VerificationTemplateMetricProviderPrometheus() {}
+    /**
+     * @return A request for information retrieved from Prometheus.
+     * 
+     */
     public String prometheusQuery() {
         return this.prometheusQuery;
     }

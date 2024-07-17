@@ -162,9 +162,17 @@ public final class ElastigroupScalingUpPolicyArgs extends com.pulumi.resources.R
         return this.policyName;
     }
 
+    /**
+     * Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
+     * 
+     */
     @Import(name="source")
     private @Nullable Output<String> source;
 
+    /**
+     * @return Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
+     * 
+     */
     public Optional<Output<String>> source() {
         return Optional.ofNullable(this.source);
     }
@@ -451,11 +459,23 @@ public final class ElastigroupScalingUpPolicyArgs extends com.pulumi.resources.R
             return policyName(Output.of(policyName));
         }
 
+        /**
+         * @param source Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
+         * 
+         * @return builder
+         * 
+         */
         public Builder source(@Nullable Output<String> source) {
             $.source = source;
             return this;
         }
 
+        /**
+         * @param source Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
+         * 
+         * @return builder
+         * 
+         */
         public Builder source(String source) {
             return source(Output.of(source));
         }

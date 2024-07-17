@@ -13,6 +13,9 @@ namespace Pulumi.SpotInst.Gke.Outputs
     [OutputType]
     public sealed class ElastigroupIntegrationGkeAutoscaleDown
     {
+        /// <summary>
+        /// Amount of cooldown evaluation periods for scale down.
+        /// </summary>
         public readonly int? EvaluationPeriods;
 
         [OutputConstructor]

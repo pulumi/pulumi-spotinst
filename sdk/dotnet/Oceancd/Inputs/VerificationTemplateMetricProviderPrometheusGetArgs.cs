@@ -12,6 +12,9 @@ namespace Pulumi.SpotInst.Oceancd.Inputs
 
     public sealed class VerificationTemplateMetricProviderPrometheusGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A request for information retrieved from Prometheus.
+        /// </summary>
         [Input("prometheusQuery", required: true)]
         public Input<string> PrometheusQuery { get; set; } = null!;
 

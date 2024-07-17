@@ -15,23 +15,39 @@ namespace Pulumi.SpotInst.Gke.Inputs
         [Input("autoUpdate")]
         public Input<bool>? AutoUpdate { get; set; }
 
+        /// <summary>
+        /// The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
+        /// </summary>
         [Input("autoscaleCooldown")]
         public Input<int>? AutoscaleCooldown { get; set; }
 
+        /// <summary>
+        /// Enabling scale down.
+        /// </summary>
         [Input("autoscaleDown")]
         public Input<Inputs.ElastigroupIntegrationGkeAutoscaleDownArgs>? AutoscaleDown { get; set; }
 
+        /// <summary>
+        /// Headroom for the cluster.
+        /// </summary>
         [Input("autoscaleHeadroom")]
         public Input<Inputs.ElastigroupIntegrationGkeAutoscaleHeadroomArgs>? AutoscaleHeadroom { get; set; }
 
         [Input("autoscaleIsAutoConfig")]
         public Input<bool>? AutoscaleIsAutoConfig { get; set; }
 
+        /// <summary>
+        /// Specifies whether the auto scaling feature is enabled.
+        /// </summary>
         [Input("autoscaleIsEnabled")]
         public Input<bool>? AutoscaleIsEnabled { get; set; }
 
         [Input("autoscaleLabels")]
         private InputList<Inputs.ElastigroupIntegrationGkeAutoscaleLabelArgs>? _autoscaleLabels;
+
+        /// <summary>
+        /// Labels to assign to the resource.
+        /// </summary>
         public InputList<Inputs.ElastigroupIntegrationGkeAutoscaleLabelArgs> AutoscaleLabels
         {
             get => _autoscaleLabels ?? (_autoscaleLabels = new InputList<Inputs.ElastigroupIntegrationGkeAutoscaleLabelArgs>());
@@ -41,6 +57,9 @@ namespace Pulumi.SpotInst.Gke.Inputs
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
+        /// <summary>
+        /// The location of your GKE cluster.
+        /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 

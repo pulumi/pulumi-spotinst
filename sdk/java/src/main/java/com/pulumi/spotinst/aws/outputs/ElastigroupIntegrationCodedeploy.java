@@ -12,17 +12,41 @@ import java.util.Objects;
 
 @CustomType
 public final class ElastigroupIntegrationCodedeploy {
+    /**
+     * @return Cleanup automatically after a failed deploy.
+     * 
+     */
     private Boolean cleanupOnFailure;
+    /**
+     * @return Specify the deployment groups details.
+     * 
+     */
     private List<ElastigroupIntegrationCodedeployDeploymentGroup> deploymentGroups;
+    /**
+     * @return Terminate the instance automatically after a failed deploy.
+     * 
+     */
     private Boolean terminateInstanceOnFailure;
 
     private ElastigroupIntegrationCodedeploy() {}
+    /**
+     * @return Cleanup automatically after a failed deploy.
+     * 
+     */
     public Boolean cleanupOnFailure() {
         return this.cleanupOnFailure;
     }
+    /**
+     * @return Specify the deployment groups details.
+     * 
+     */
     public List<ElastigroupIntegrationCodedeployDeploymentGroup> deploymentGroups() {
         return this.deploymentGroups;
     }
+    /**
+     * @return Terminate the instance automatically after a failed deploy.
+     * 
+     */
     public Boolean terminateInstanceOnFailure() {
         return this.terminateInstanceOnFailure;
     }

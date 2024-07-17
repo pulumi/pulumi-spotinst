@@ -14,7 +14,15 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate
     {
         public readonly string? PerformAt;
+        /// <summary>
+        /// Time Window for when action occurs ex. Mon:23:50-Tue:00:20
+        /// </summary>
         public readonly string? TimeWindow;
+        /// <summary>
+        /// Level to update
+        /// 
+        /// Usage:
+        /// </summary>
         public readonly string? UpdateLevel;
 
         [OutputConstructor]

@@ -14,6 +14,12 @@ namespace Pulumi.SpotInst.Aws.Inputs
     {
         [Input("jobQueueNames", required: true)]
         private InputList<string>? _jobQueueNames;
+
+        /// <summary>
+        /// Array of strings.
+        /// 
+        /// Usage:
+        /// </summary>
         public InputList<string> JobQueueNames
         {
             get => _jobQueueNames ?? (_jobQueueNames = new InputList<string>());

@@ -17,16 +17,32 @@ public final class ElastigroupMultipleMetricsArgs extends com.pulumi.resources.R
 
     public static final ElastigroupMultipleMetricsArgs Empty = new ElastigroupMultipleMetricsArgs();
 
+    /**
+     * Array of objects (Expression config)
+     * 
+     */
     @Import(name="expressions")
     private @Nullable Output<List<ElastigroupMultipleMetricsExpressionArgs>> expressions;
 
+    /**
+     * @return Array of objects (Expression config)
+     * 
+     */
     public Optional<Output<List<ElastigroupMultipleMetricsExpressionArgs>>> expressions() {
         return Optional.ofNullable(this.expressions);
     }
 
+    /**
+     * Array of objects (Metric config)
+     * 
+     */
     @Import(name="metrics")
     private @Nullable Output<List<ElastigroupMultipleMetricsMetricArgs>> metrics;
 
+    /**
+     * @return Array of objects (Metric config)
+     * 
+     */
     public Optional<Output<List<ElastigroupMultipleMetricsMetricArgs>>> metrics() {
         return Optional.ofNullable(this.metrics);
     }
@@ -56,28 +72,64 @@ public final class ElastigroupMultipleMetricsArgs extends com.pulumi.resources.R
             $ = new ElastigroupMultipleMetricsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param expressions Array of objects (Expression config)
+         * 
+         * @return builder
+         * 
+         */
         public Builder expressions(@Nullable Output<List<ElastigroupMultipleMetricsExpressionArgs>> expressions) {
             $.expressions = expressions;
             return this;
         }
 
+        /**
+         * @param expressions Array of objects (Expression config)
+         * 
+         * @return builder
+         * 
+         */
         public Builder expressions(List<ElastigroupMultipleMetricsExpressionArgs> expressions) {
             return expressions(Output.of(expressions));
         }
 
+        /**
+         * @param expressions Array of objects (Expression config)
+         * 
+         * @return builder
+         * 
+         */
         public Builder expressions(ElastigroupMultipleMetricsExpressionArgs... expressions) {
             return expressions(List.of(expressions));
         }
 
+        /**
+         * @param metrics Array of objects (Metric config)
+         * 
+         * @return builder
+         * 
+         */
         public Builder metrics(@Nullable Output<List<ElastigroupMultipleMetricsMetricArgs>> metrics) {
             $.metrics = metrics;
             return this;
         }
 
+        /**
+         * @param metrics Array of objects (Metric config)
+         * 
+         * @return builder
+         * 
+         */
         public Builder metrics(List<ElastigroupMultipleMetricsMetricArgs> metrics) {
             return metrics(Output.of(metrics));
         }
 
+        /**
+         * @param metrics Array of objects (Metric config)
+         * 
+         * @return builder
+         * 
+         */
         public Builder metrics(ElastigroupMultipleMetricsMetricArgs... metrics) {
             return metrics(List.of(metrics));
         }

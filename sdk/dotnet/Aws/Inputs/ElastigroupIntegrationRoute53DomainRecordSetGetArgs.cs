@@ -18,9 +18,17 @@ namespace Pulumi.SpotInst.Aws.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// Designates whether the DNS address should be exposed to connections outside the VPC.
+        /// 
+        /// Usage:
+        /// </summary>
         [Input("usePublicDns")]
         public Input<bool>? UsePublicDns { get; set; }
 
+        /// <summary>
+        /// Designates whether the IP address should be exposed to connections outside the VPC.
+        /// </summary>
         [Input("usePublicIp")]
         public Input<bool>? UsePublicIp { get; set; }
 

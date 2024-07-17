@@ -12,16 +12,36 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate {
     private @Nullable String performAt;
+    /**
+     * @return Time Window for when action occurs ex. Mon:23:50-Tue:00:20
+     * 
+     */
     private @Nullable String timeWindow;
+    /**
+     * @return Level to update
+     * 
+     * Usage:
+     * 
+     */
     private @Nullable String updateLevel;
 
     private ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate() {}
     public Optional<String> performAt() {
         return Optional.ofNullable(this.performAt);
     }
+    /**
+     * @return Time Window for when action occurs ex. Mon:23:50-Tue:00:20
+     * 
+     */
     public Optional<String> timeWindow() {
         return Optional.ofNullable(this.timeWindow);
     }
+    /**
+     * @return Level to update
+     * 
+     * Usage:
+     * 
+     */
     public Optional<String> updateLevel() {
         return Optional.ofNullable(this.updateLevel);
     }

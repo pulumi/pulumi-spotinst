@@ -12,15 +12,25 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class ElastigroupIntegrationRancherArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The access key of the Rancher API.
+        /// </summary>
         [Input("accessKey", required: true)]
         public Input<string> AccessKey { get; set; } = null!;
 
         [Input("masterHost", required: true)]
         public Input<string> MasterHost { get; set; } = null!;
 
+        /// <summary>
+        /// The secret key of the Rancher API.
+        /// </summary>
         [Input("secretKey", required: true)]
         public Input<string> SecretKey { get; set; } = null!;
 
+        /// <summary>
+        /// The Rancher version. Must be `"1"` or `"2"`. If this field is omitted, it’s assumed that the Rancher cluster is version 1. Note that Kubernetes is required when using Rancher version 2^.
+        /// Usage:
+        /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
 

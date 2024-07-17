@@ -11,9 +11,21 @@ import java.util.Objects;
 
 @CustomType
 public final class ElastigroupIntegrationEcsBatch {
+    /**
+     * @return Array of strings.
+     * 
+     * Usage:
+     * 
+     */
     private List<String> jobQueueNames;
 
     private ElastigroupIntegrationEcsBatch() {}
+    /**
+     * @return Array of strings.
+     * 
+     * Usage:
+     * 
+     */
     public List<String> jobQueueNames() {
         return this.jobQueueNames;
     }

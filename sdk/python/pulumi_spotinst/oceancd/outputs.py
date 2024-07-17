@@ -3305,11 +3305,17 @@ class VerificationTemplateMetricProviderPrometheus(dict):
 
     def __init__(__self__, *,
                  prometheus_query: str):
+        """
+        :param str prometheus_query: A request for information retrieved from Prometheus.
+        """
         pulumi.set(__self__, "prometheus_query", prometheus_query)
 
     @property
     @pulumi.getter(name="prometheusQuery")
     def prometheus_query(self) -> str:
+        """
+        A request for information retrieved from Prometheus.
+        """
         return pulumi.get(self, "prometheus_query")
 
 

@@ -13,14 +13,26 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class ElastigroupIntegrationEcs
     {
+        /// <summary>
+        /// A key/value mapping of tags to assign to the resource.
+        /// </summary>
         public readonly ImmutableArray<Outputs.ElastigroupIntegrationEcsAutoscaleAttribute> AutoscaleAttributes;
         public readonly int? AutoscaleCooldown;
         public readonly Outputs.ElastigroupIntegrationEcsAutoscaleDown? AutoscaleDown;
         public readonly Outputs.ElastigroupIntegrationEcsAutoscaleHeadroom? AutoscaleHeadroom;
         public readonly bool? AutoscaleIsAutoConfig;
         public readonly bool? AutoscaleIsEnabled;
+        /// <summary>
+        /// Determines whether to scale down non-service tasks.
+        /// </summary>
         public readonly bool? AutoscaleScaleDownNonServiceTasks;
+        /// <summary>
+        /// Batch configuration object:
+        /// </summary>
         public readonly Outputs.ElastigroupIntegrationEcsBatch? Batch;
+        /// <summary>
+        /// The name of the EC2 Container Service cluster.
+        /// </summary>
         public readonly string ClusterName;
 
         [OutputConstructor]

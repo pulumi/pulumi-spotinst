@@ -14,6 +14,10 @@ namespace Pulumi.SpotInst.Aws.Inputs
     {
         [Input("expressions")]
         private InputList<Inputs.ElastigroupMultipleMetricsExpressionArgs>? _expressions;
+
+        /// <summary>
+        /// Array of objects (Expression config)
+        /// </summary>
         public InputList<Inputs.ElastigroupMultipleMetricsExpressionArgs> Expressions
         {
             get => _expressions ?? (_expressions = new InputList<Inputs.ElastigroupMultipleMetricsExpressionArgs>());
@@ -22,6 +26,10 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
         [Input("metrics")]
         private InputList<Inputs.ElastigroupMultipleMetricsMetricArgs>? _metrics;
+
+        /// <summary>
+        /// Array of objects (Metric config)
+        /// </summary>
         public InputList<Inputs.ElastigroupMultipleMetricsMetricArgs> Metrics
         {
             get => _metrics ?? (_metrics = new InputList<Inputs.ElastigroupMultipleMetricsMetricArgs>());

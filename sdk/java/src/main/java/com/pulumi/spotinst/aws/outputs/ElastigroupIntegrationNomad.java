@@ -18,7 +18,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupIntegrationNomad {
+    /**
+     * @return Nomad ACL Token
+     * 
+     */
     private @Nullable String aclToken;
+    /**
+     * @return A key/value mapping of tags to assign to the resource.
+     * 
+     * Usage:
+     * 
+     */
     private @Nullable List<ElastigroupIntegrationNomadAutoscaleConstraint> autoscaleConstraints;
     private @Nullable Integer autoscaleCooldown;
     private @Nullable ElastigroupIntegrationNomadAutoscaleDown autoscaleDown;
@@ -28,9 +38,19 @@ public final class ElastigroupIntegrationNomad {
     private Integer masterPort;
 
     private ElastigroupIntegrationNomad() {}
+    /**
+     * @return Nomad ACL Token
+     * 
+     */
     public Optional<String> aclToken() {
         return Optional.ofNullable(this.aclToken);
     }
+    /**
+     * @return A key/value mapping of tags to assign to the resource.
+     * 
+     * Usage:
+     * 
+     */
     public List<ElastigroupIntegrationNomadAutoscaleConstraint> autoscaleConstraints() {
         return this.autoscaleConstraints == null ? List.of() : this.autoscaleConstraints;
     }

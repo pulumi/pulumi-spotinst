@@ -32,6 +32,12 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
         [Input("autoscaleLabels")]
         private InputList<Inputs.ElastigroupIntegrationKubernetesAutoscaleLabelGetArgs>? _autoscaleLabels;
+
+        /// <summary>
+        /// A key/value mapping of tags to assign to the resource.
+        /// 
+        /// Usage:
+        /// </summary>
         public InputList<Inputs.ElastigroupIntegrationKubernetesAutoscaleLabelGetArgs> AutoscaleLabels
         {
             get => _autoscaleLabels ?? (_autoscaleLabels = new InputList<Inputs.ElastigroupIntegrationKubernetesAutoscaleLabelGetArgs>());
@@ -41,9 +47,15 @@ namespace Pulumi.SpotInst.Aws.Inputs
         [Input("clusterIdentifier")]
         public Input<string>? ClusterIdentifier { get; set; }
 
+        /// <summary>
+        /// Valid values: `"saas"`, `"pod"`.
+        /// </summary>
         [Input("integrationMode")]
         public Input<string>? IntegrationMode { get; set; }
 
+        /// <summary>
+        /// Kubernetes Token
+        /// </summary>
         [Input("token")]
         public Input<string>? Token { get; set; }
 

@@ -12,6 +12,9 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class ElastigroupIntegrationBeanstalkDeploymentPreferencesGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Should roll perform automatically
+        /// </summary>
         [Input("automaticRoll")]
         public Input<bool>? AutomaticRoll { get; set; }
 

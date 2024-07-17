@@ -15,23 +15,47 @@ public final class ElastigroupIntegrationGkeAutoscaleHeadroomArgs extends com.pu
 
     public static final ElastigroupIntegrationGkeAutoscaleHeadroomArgs Empty = new ElastigroupIntegrationGkeAutoscaleHeadroomArgs();
 
+    /**
+     * Cpu units for compute.
+     * 
+     */
     @Import(name="cpuPerUnit")
     private @Nullable Output<Integer> cpuPerUnit;
 
+    /**
+     * @return Cpu units for compute.
+     * 
+     */
     public Optional<Output<Integer>> cpuPerUnit() {
         return Optional.ofNullable(this.cpuPerUnit);
     }
 
+    /**
+     * RAM units for compute.
+     * 
+     */
     @Import(name="memoryPerUnit")
     private @Nullable Output<Integer> memoryPerUnit;
 
+    /**
+     * @return RAM units for compute.
+     * 
+     */
     public Optional<Output<Integer>> memoryPerUnit() {
         return Optional.ofNullable(this.memoryPerUnit);
     }
 
+    /**
+     * Amount of units for compute.
+     * 
+     */
     @Import(name="numOfUnits")
     private @Nullable Output<Integer> numOfUnits;
 
+    /**
+     * @return Amount of units for compute.
+     * 
+     */
     public Optional<Output<Integer>> numOfUnits() {
         return Optional.ofNullable(this.numOfUnits);
     }
@@ -62,29 +86,65 @@ public final class ElastigroupIntegrationGkeAutoscaleHeadroomArgs extends com.pu
             $ = new ElastigroupIntegrationGkeAutoscaleHeadroomArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param cpuPerUnit Cpu units for compute.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cpuPerUnit(@Nullable Output<Integer> cpuPerUnit) {
             $.cpuPerUnit = cpuPerUnit;
             return this;
         }
 
+        /**
+         * @param cpuPerUnit Cpu units for compute.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cpuPerUnit(Integer cpuPerUnit) {
             return cpuPerUnit(Output.of(cpuPerUnit));
         }
 
+        /**
+         * @param memoryPerUnit RAM units for compute.
+         * 
+         * @return builder
+         * 
+         */
         public Builder memoryPerUnit(@Nullable Output<Integer> memoryPerUnit) {
             $.memoryPerUnit = memoryPerUnit;
             return this;
         }
 
+        /**
+         * @param memoryPerUnit RAM units for compute.
+         * 
+         * @return builder
+         * 
+         */
         public Builder memoryPerUnit(Integer memoryPerUnit) {
             return memoryPerUnit(Output.of(memoryPerUnit));
         }
 
+        /**
+         * @param numOfUnits Amount of units for compute.
+         * 
+         * @return builder
+         * 
+         */
         public Builder numOfUnits(@Nullable Output<Integer> numOfUnits) {
             $.numOfUnits = numOfUnits;
             return this;
         }
 
+        /**
+         * @param numOfUnits Amount of units for compute.
+         * 
+         * @return builder
+         * 
+         */
         public Builder numOfUnits(Integer numOfUnits) {
             return numOfUnits(Output.of(numOfUnits));
         }

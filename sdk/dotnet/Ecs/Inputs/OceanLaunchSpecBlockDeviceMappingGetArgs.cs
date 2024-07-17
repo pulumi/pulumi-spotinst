@@ -24,6 +24,9 @@ namespace Pulumi.SpotInst.Ecs.Inputs
         [Input("ebs")]
         public Input<Inputs.OceanLaunchSpecBlockDeviceMappingEbsGetArgs>? Ebs { get; set; }
 
+        /// <summary>
+        /// String. suppresses the specified device included in the block device mapping of the AMI.
+        /// </summary>
         [Input("noDevice")]
         public Input<string>? NoDevice { get; set; }
 

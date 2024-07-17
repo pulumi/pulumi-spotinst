@@ -15,16 +15,32 @@ public final class MrScalarInstanceWeightArgs extends com.pulumi.resources.Resou
 
     public static final MrScalarInstanceWeightArgs Empty = new MrScalarInstanceWeightArgs();
 
+    /**
+     * The type of the instance.
+     * 
+     */
     @Import(name="instanceType", required=true)
     private Output<String> instanceType;
 
+    /**
+     * @return The type of the instance.
+     * 
+     */
     public Output<String> instanceType() {
         return this.instanceType;
     }
 
+    /**
+     * The weight given to the associated instance type.
+     * 
+     */
     @Import(name="weightedCapacity", required=true)
     private Output<Integer> weightedCapacity;
 
+    /**
+     * @return The weight given to the associated instance type.
+     * 
+     */
     public Output<Integer> weightedCapacity() {
         return this.weightedCapacity;
     }
@@ -54,20 +70,44 @@ public final class MrScalarInstanceWeightArgs extends com.pulumi.resources.Resou
             $ = new MrScalarInstanceWeightArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param instanceType The type of the instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceType(Output<String> instanceType) {
             $.instanceType = instanceType;
             return this;
         }
 
+        /**
+         * @param instanceType The type of the instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceType(String instanceType) {
             return instanceType(Output.of(instanceType));
         }
 
+        /**
+         * @param weightedCapacity The weight given to the associated instance type.
+         * 
+         * @return builder
+         * 
+         */
         public Builder weightedCapacity(Output<Integer> weightedCapacity) {
             $.weightedCapacity = weightedCapacity;
             return this;
         }
 
+        /**
+         * @param weightedCapacity The weight given to the associated instance type.
+         * 
+         * @return builder
+         * 
+         */
         public Builder weightedCapacity(Integer weightedCapacity) {
             return weightedCapacity(Output.of(weightedCapacity));
         }

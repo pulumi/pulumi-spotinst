@@ -14,9 +14,17 @@ public final class ElastigroupMultipleMetricsExpressionArgs extends com.pulumi.r
 
     public static final ElastigroupMultipleMetricsExpressionArgs Empty = new ElastigroupMultipleMetricsExpressionArgs();
 
+    /**
+     * An expression consisting of the metric names listed in the &#39;metrics&#39; array.
+     * 
+     */
     @Import(name="expression", required=true)
     private Output<String> expression;
 
+    /**
+     * @return An expression consisting of the metric names listed in the &#39;metrics&#39; array.
+     * 
+     */
     public Output<String> expression() {
         return this.expression;
     }
@@ -61,11 +69,23 @@ public final class ElastigroupMultipleMetricsExpressionArgs extends com.pulumi.r
             $ = new ElastigroupMultipleMetricsExpressionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param expression An expression consisting of the metric names listed in the &#39;metrics&#39; array.
+         * 
+         * @return builder
+         * 
+         */
         public Builder expression(Output<String> expression) {
             $.expression = expression;
             return this;
         }
 
+        /**
+         * @param expression An expression consisting of the metric names listed in the &#39;metrics&#39; array.
+         * 
+         * @return builder
+         * 
+         */
         public Builder expression(String expression) {
             return expression(Output.of(expression));
         }

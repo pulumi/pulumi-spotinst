@@ -918,6 +918,10 @@ class ElastigroupIntegrationBeanstalkArgs:
                  deployment_preferences: Optional[pulumi.Input['ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs']] = None,
                  environment_id: Optional[pulumi.Input[str]] = None,
                  managed_actions: Optional[pulumi.Input['ElastigroupIntegrationBeanstalkManagedActionsArgs']] = None):
+        """
+        :param pulumi.Input['ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs'] deployment_preferences: Preferences when performing a roll
+        :param pulumi.Input['ElastigroupIntegrationBeanstalkManagedActionsArgs'] managed_actions: Managed Actions parameters
+        """
         if deployment_preferences is not None:
             pulumi.set(__self__, "deployment_preferences", deployment_preferences)
         if environment_id is not None:
@@ -928,6 +932,9 @@ class ElastigroupIntegrationBeanstalkArgs:
     @property
     @pulumi.getter(name="deploymentPreferences")
     def deployment_preferences(self) -> Optional[pulumi.Input['ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs']]:
+        """
+        Preferences when performing a roll
+        """
         return pulumi.get(self, "deployment_preferences")
 
     @deployment_preferences.setter
@@ -946,6 +953,9 @@ class ElastigroupIntegrationBeanstalkArgs:
     @property
     @pulumi.getter(name="managedActions")
     def managed_actions(self) -> Optional[pulumi.Input['ElastigroupIntegrationBeanstalkManagedActionsArgs']]:
+        """
+        Managed Actions parameters
+        """
         return pulumi.get(self, "managed_actions")
 
     @managed_actions.setter
@@ -960,6 +970,9 @@ class ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs:
                  batch_size_percentage: Optional[pulumi.Input[int]] = None,
                  grace_period: Optional[pulumi.Input[int]] = None,
                  strategy: Optional[pulumi.Input['ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyArgs']] = None):
+        """
+        :param pulumi.Input[bool] automatic_roll: Should roll perform automatically
+        """
         if automatic_roll is not None:
             pulumi.set(__self__, "automatic_roll", automatic_roll)
         if batch_size_percentage is not None:
@@ -972,6 +985,9 @@ class ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs:
     @property
     @pulumi.getter(name="automaticRoll")
     def automatic_roll(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Should roll perform automatically
+        """
         return pulumi.get(self, "automatic_roll")
 
     @automatic_roll.setter
@@ -1039,12 +1055,18 @@ class ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyArgs:
 class ElastigroupIntegrationBeanstalkManagedActionsArgs:
     def __init__(__self__, *,
                  platform_update: Optional[pulumi.Input['ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs']] = None):
+        """
+        :param pulumi.Input['ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs'] platform_update: Platform Update parameters
+        """
         if platform_update is not None:
             pulumi.set(__self__, "platform_update", platform_update)
 
     @property
     @pulumi.getter(name="platformUpdate")
     def platform_update(self) -> Optional[pulumi.Input['ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs']]:
+        """
+        Platform Update parameters
+        """
         return pulumi.get(self, "platform_update")
 
     @platform_update.setter
@@ -1058,6 +1080,12 @@ class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs:
                  perform_at: Optional[pulumi.Input[str]] = None,
                  time_window: Optional[pulumi.Input[str]] = None,
                  update_level: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] time_window: Time Window for when action occurs ex. Mon:23:50-Tue:00:20
+        :param pulumi.Input[str] update_level: Level to update
+               
+               Usage:
+        """
         if perform_at is not None:
             pulumi.set(__self__, "perform_at", perform_at)
         if time_window is not None:
@@ -1077,6 +1105,9 @@ class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs:
     @property
     @pulumi.getter(name="timeWindow")
     def time_window(self) -> Optional[pulumi.Input[str]]:
+        """
+        Time Window for when action occurs ex. Mon:23:50-Tue:00:20
+        """
         return pulumi.get(self, "time_window")
 
     @time_window.setter
@@ -1086,6 +1117,11 @@ class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs:
     @property
     @pulumi.getter(name="updateLevel")
     def update_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Level to update
+
+        Usage:
+        """
         return pulumi.get(self, "update_level")
 
     @update_level.setter
@@ -1099,6 +1135,11 @@ class ElastigroupIntegrationCodedeployArgs:
                  cleanup_on_failure: pulumi.Input[bool],
                  deployment_groups: pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationCodedeployDeploymentGroupArgs']]],
                  terminate_instance_on_failure: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[bool] cleanup_on_failure: Cleanup automatically after a failed deploy.
+        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationCodedeployDeploymentGroupArgs']]] deployment_groups: Specify the deployment groups details.
+        :param pulumi.Input[bool] terminate_instance_on_failure: Terminate the instance automatically after a failed deploy.
+        """
         pulumi.set(__self__, "cleanup_on_failure", cleanup_on_failure)
         pulumi.set(__self__, "deployment_groups", deployment_groups)
         pulumi.set(__self__, "terminate_instance_on_failure", terminate_instance_on_failure)
@@ -1106,6 +1147,9 @@ class ElastigroupIntegrationCodedeployArgs:
     @property
     @pulumi.getter(name="cleanupOnFailure")
     def cleanup_on_failure(self) -> pulumi.Input[bool]:
+        """
+        Cleanup automatically after a failed deploy.
+        """
         return pulumi.get(self, "cleanup_on_failure")
 
     @cleanup_on_failure.setter
@@ -1115,6 +1159,9 @@ class ElastigroupIntegrationCodedeployArgs:
     @property
     @pulumi.getter(name="deploymentGroups")
     def deployment_groups(self) -> pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationCodedeployDeploymentGroupArgs']]]:
+        """
+        Specify the deployment groups details.
+        """
         return pulumi.get(self, "deployment_groups")
 
     @deployment_groups.setter
@@ -1124,6 +1171,9 @@ class ElastigroupIntegrationCodedeployArgs:
     @property
     @pulumi.getter(name="terminateInstanceOnFailure")
     def terminate_instance_on_failure(self) -> pulumi.Input[bool]:
+        """
+        Terminate the instance automatically after a failed deploy.
+        """
         return pulumi.get(self, "terminate_instance_on_failure")
 
     @terminate_instance_on_failure.setter
@@ -1136,12 +1186,21 @@ class ElastigroupIntegrationCodedeployDeploymentGroupArgs:
     def __init__(__self__, *,
                  application_name: pulumi.Input[str],
                  deployment_group_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] application_name: The application name.
+        :param pulumi.Input[str] deployment_group_name: The deployment group name.
+               
+               Usage:
+        """
         pulumi.set(__self__, "application_name", application_name)
         pulumi.set(__self__, "deployment_group_name", deployment_group_name)
 
     @property
     @pulumi.getter(name="applicationName")
     def application_name(self) -> pulumi.Input[str]:
+        """
+        The application name.
+        """
         return pulumi.get(self, "application_name")
 
     @application_name.setter
@@ -1151,6 +1210,11 @@ class ElastigroupIntegrationCodedeployDeploymentGroupArgs:
     @property
     @pulumi.getter(name="deploymentGroupName")
     def deployment_group_name(self) -> pulumi.Input[str]:
+        """
+        The deployment group name.
+
+        Usage:
+        """
         return pulumi.get(self, "deployment_group_name")
 
     @deployment_group_name.setter
@@ -1315,6 +1379,12 @@ class ElastigroupIntegrationEcsArgs:
                  autoscale_is_enabled: Optional[pulumi.Input[bool]] = None,
                  autoscale_scale_down_non_service_tasks: Optional[pulumi.Input[bool]] = None,
                  batch: Optional[pulumi.Input['ElastigroupIntegrationEcsBatchArgs']] = None):
+        """
+        :param pulumi.Input[str] cluster_name: The name of the EC2 Container Service cluster.
+        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationEcsAutoscaleAttributeArgs']]] autoscale_attributes: A key/value mapping of tags to assign to the resource.
+        :param pulumi.Input[bool] autoscale_scale_down_non_service_tasks: Determines whether to scale down non-service tasks.
+        :param pulumi.Input['ElastigroupIntegrationEcsBatchArgs'] batch: Batch configuration object:
+        """
         pulumi.set(__self__, "cluster_name", cluster_name)
         if autoscale_attributes is not None:
             pulumi.set(__self__, "autoscale_attributes", autoscale_attributes)
@@ -1336,6 +1406,9 @@ class ElastigroupIntegrationEcsArgs:
     @property
     @pulumi.getter(name="clusterName")
     def cluster_name(self) -> pulumi.Input[str]:
+        """
+        The name of the EC2 Container Service cluster.
+        """
         return pulumi.get(self, "cluster_name")
 
     @cluster_name.setter
@@ -1345,6 +1418,9 @@ class ElastigroupIntegrationEcsArgs:
     @property
     @pulumi.getter(name="autoscaleAttributes")
     def autoscale_attributes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationEcsAutoscaleAttributeArgs']]]]:
+        """
+        A key/value mapping of tags to assign to the resource.
+        """
         return pulumi.get(self, "autoscale_attributes")
 
     @autoscale_attributes.setter
@@ -1399,6 +1475,9 @@ class ElastigroupIntegrationEcsArgs:
     @property
     @pulumi.getter(name="autoscaleScaleDownNonServiceTasks")
     def autoscale_scale_down_non_service_tasks(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Determines whether to scale down non-service tasks.
+        """
         return pulumi.get(self, "autoscale_scale_down_non_service_tasks")
 
     @autoscale_scale_down_non_service_tasks.setter
@@ -1408,6 +1487,9 @@ class ElastigroupIntegrationEcsArgs:
     @property
     @pulumi.getter
     def batch(self) -> Optional[pulumi.Input['ElastigroupIntegrationEcsBatchArgs']]:
+        """
+        Batch configuration object:
+        """
         return pulumi.get(self, "batch")
 
     @batch.setter
@@ -1516,11 +1598,21 @@ class ElastigroupIntegrationEcsAutoscaleHeadroomArgs:
 class ElastigroupIntegrationEcsBatchArgs:
     def __init__(__self__, *,
                  job_queue_names: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] job_queue_names: Array of strings.
+               
+               Usage:
+        """
         pulumi.set(__self__, "job_queue_names", job_queue_names)
 
     @property
     @pulumi.getter(name="jobQueueNames")
     def job_queue_names(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Array of strings.
+
+        Usage:
+        """
         return pulumi.get(self, "job_queue_names")
 
     @job_queue_names.setter
@@ -1532,12 +1624,18 @@ class ElastigroupIntegrationEcsBatchArgs:
 class ElastigroupIntegrationGitlabArgs:
     def __init__(__self__, *,
                  runner: Optional[pulumi.Input['ElastigroupIntegrationGitlabRunnerArgs']] = None):
+        """
+        :param pulumi.Input['ElastigroupIntegrationGitlabRunnerArgs'] runner: Settings for Gitlab runner.
+        """
         if runner is not None:
             pulumi.set(__self__, "runner", runner)
 
     @property
     @pulumi.getter
     def runner(self) -> Optional[pulumi.Input['ElastigroupIntegrationGitlabRunnerArgs']]:
+        """
+        Settings for Gitlab runner.
+        """
         return pulumi.get(self, "runner")
 
     @runner.setter
@@ -1575,6 +1673,13 @@ class ElastigroupIntegrationKubernetesArgs:
                  cluster_identifier: Optional[pulumi.Input[str]] = None,
                  integration_mode: Optional[pulumi.Input[str]] = None,
                  token: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationKubernetesAutoscaleLabelArgs']]] autoscale_labels: A key/value mapping of tags to assign to the resource.
+               
+               Usage:
+        :param pulumi.Input[str] integration_mode: Valid values: `"saas"`, `"pod"`.
+        :param pulumi.Input[str] token: Kubernetes Token
+        """
         if api_server is not None:
             pulumi.set(__self__, "api_server", api_server)
         if autoscale_cooldown is not None:
@@ -1653,6 +1758,11 @@ class ElastigroupIntegrationKubernetesArgs:
     @property
     @pulumi.getter(name="autoscaleLabels")
     def autoscale_labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationKubernetesAutoscaleLabelArgs']]]]:
+        """
+        A key/value mapping of tags to assign to the resource.
+
+        Usage:
+        """
         return pulumi.get(self, "autoscale_labels")
 
     @autoscale_labels.setter
@@ -1671,6 +1781,9 @@ class ElastigroupIntegrationKubernetesArgs:
     @property
     @pulumi.getter(name="integrationMode")
     def integration_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Valid values: `"saas"`, `"pod"`.
+        """
         return pulumi.get(self, "integration_mode")
 
     @integration_mode.setter
@@ -1680,6 +1793,9 @@ class ElastigroupIntegrationKubernetesArgs:
     @property
     @pulumi.getter
     def token(self) -> Optional[pulumi.Input[str]]:
+        """
+        Kubernetes Token
+        """
         return pulumi.get(self, "token")
 
     @token.setter
@@ -1811,6 +1927,12 @@ class ElastigroupIntegrationNomadArgs:
                  autoscale_down: Optional[pulumi.Input['ElastigroupIntegrationNomadAutoscaleDownArgs']] = None,
                  autoscale_headroom: Optional[pulumi.Input['ElastigroupIntegrationNomadAutoscaleHeadroomArgs']] = None,
                  autoscale_is_enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] acl_token: Nomad ACL Token
+        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationNomadAutoscaleConstraintArgs']]] autoscale_constraints: A key/value mapping of tags to assign to the resource.
+               
+               Usage:
+        """
         pulumi.set(__self__, "master_host", master_host)
         pulumi.set(__self__, "master_port", master_port)
         if acl_token is not None:
@@ -1847,6 +1969,9 @@ class ElastigroupIntegrationNomadArgs:
     @property
     @pulumi.getter(name="aclToken")
     def acl_token(self) -> Optional[pulumi.Input[str]]:
+        """
+        Nomad ACL Token
+        """
         return pulumi.get(self, "acl_token")
 
     @acl_token.setter
@@ -1856,6 +1981,11 @@ class ElastigroupIntegrationNomadArgs:
     @property
     @pulumi.getter(name="autoscaleConstraints")
     def autoscale_constraints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationNomadAutoscaleConstraintArgs']]]]:
+        """
+        A key/value mapping of tags to assign to the resource.
+
+        Usage:
+        """
         return pulumi.get(self, "autoscale_constraints")
 
     @autoscale_constraints.setter
@@ -1991,6 +2121,12 @@ class ElastigroupIntegrationRancherArgs:
                  master_host: pulumi.Input[str],
                  secret_key: pulumi.Input[str],
                  version: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] access_key: The access key of the Rancher API.
+        :param pulumi.Input[str] secret_key: The secret key of the Rancher API.
+        :param pulumi.Input[str] version: The Rancher version. Must be `"1"` or `"2"`. If this field is omitted, it’s assumed that the Rancher cluster is version 1. Note that Kubernetes is required when using Rancher version 2^.
+               Usage:
+        """
         pulumi.set(__self__, "access_key", access_key)
         pulumi.set(__self__, "master_host", master_host)
         pulumi.set(__self__, "secret_key", secret_key)
@@ -2000,6 +2136,9 @@ class ElastigroupIntegrationRancherArgs:
     @property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> pulumi.Input[str]:
+        """
+        The access key of the Rancher API.
+        """
         return pulumi.get(self, "access_key")
 
     @access_key.setter
@@ -2018,6 +2157,9 @@ class ElastigroupIntegrationRancherArgs:
     @property
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> pulumi.Input[str]:
+        """
+        The secret key of the Rancher API.
+        """
         return pulumi.get(self, "secret_key")
 
     @secret_key.setter
@@ -2027,6 +2169,10 @@ class ElastigroupIntegrationRancherArgs:
     @property
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Rancher version. Must be `"1"` or `"2"`. If this field is omitted, it’s assumed that the Rancher cluster is version 1. Note that Kubernetes is required when using Rancher version 2^.
+        Usage:
+        """
         return pulumi.get(self, "version")
 
     @version.setter
@@ -2038,11 +2184,17 @@ class ElastigroupIntegrationRancherArgs:
 class ElastigroupIntegrationRoute53Args:
     def __init__(__self__, *,
                  domains: pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationRoute53DomainArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationRoute53DomainArgs']]] domains: Collection of one or more domains to register.
+        """
         pulumi.set(__self__, "domains", domains)
 
     @property
     @pulumi.getter
     def domains(self) -> pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationRoute53DomainArgs']]]:
+        """
+        Collection of one or more domains to register.
+        """
         return pulumi.get(self, "domains")
 
     @domains.setter
@@ -2057,6 +2209,12 @@ class ElastigroupIntegrationRoute53DomainArgs:
                  record_sets: pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationRoute53DomainRecordSetArgs']]],
                  record_set_type: Optional[pulumi.Input[str]] = None,
                  spotinst_acct_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] hosted_zone_id: The id associated with a hosted zone.
+        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationRoute53DomainRecordSetArgs']]] record_sets: Collection of records containing authoritative DNS information for the specified domain name.
+        :param pulumi.Input[str] record_set_type: The type of the record set. Valid values: `"a"`, `"cname"`.
+        :param pulumi.Input[str] spotinst_acct_id: The Spotinst account ID that is linked to the AWS account that holds the Route 53 Hosted Zone ID. The default is the user Spotinst account provided as a URL parameter.
+        """
         pulumi.set(__self__, "hosted_zone_id", hosted_zone_id)
         pulumi.set(__self__, "record_sets", record_sets)
         if record_set_type is not None:
@@ -2067,6 +2225,9 @@ class ElastigroupIntegrationRoute53DomainArgs:
     @property
     @pulumi.getter(name="hostedZoneId")
     def hosted_zone_id(self) -> pulumi.Input[str]:
+        """
+        The id associated with a hosted zone.
+        """
         return pulumi.get(self, "hosted_zone_id")
 
     @hosted_zone_id.setter
@@ -2076,6 +2237,9 @@ class ElastigroupIntegrationRoute53DomainArgs:
     @property
     @pulumi.getter(name="recordSets")
     def record_sets(self) -> pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationRoute53DomainRecordSetArgs']]]:
+        """
+        Collection of records containing authoritative DNS information for the specified domain name.
+        """
         return pulumi.get(self, "record_sets")
 
     @record_sets.setter
@@ -2085,6 +2249,9 @@ class ElastigroupIntegrationRoute53DomainArgs:
     @property
     @pulumi.getter(name="recordSetType")
     def record_set_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the record set. Valid values: `"a"`, `"cname"`.
+        """
         return pulumi.get(self, "record_set_type")
 
     @record_set_type.setter
@@ -2094,6 +2261,9 @@ class ElastigroupIntegrationRoute53DomainArgs:
     @property
     @pulumi.getter(name="spotinstAcctId")
     def spotinst_acct_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Spotinst account ID that is linked to the AWS account that holds the Route 53 Hosted Zone ID. The default is the user Spotinst account provided as a URL parameter.
+        """
         return pulumi.get(self, "spotinst_acct_id")
 
     @spotinst_acct_id.setter
@@ -2109,6 +2279,10 @@ class ElastigroupIntegrationRoute53DomainRecordSetArgs:
                  use_public_ip: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] name: The group name.
+        :param pulumi.Input[bool] use_public_dns: Designates whether the DNS address should be exposed to connections outside the VPC.
+               
+               Usage:
+        :param pulumi.Input[bool] use_public_ip: Designates whether the IP address should be exposed to connections outside the VPC.
         """
         pulumi.set(__self__, "name", name)
         if use_public_dns is not None:
@@ -2131,6 +2305,11 @@ class ElastigroupIntegrationRoute53DomainRecordSetArgs:
     @property
     @pulumi.getter(name="usePublicDns")
     def use_public_dns(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Designates whether the DNS address should be exposed to connections outside the VPC.
+
+        Usage:
+        """
         return pulumi.get(self, "use_public_dns")
 
     @use_public_dns.setter
@@ -2140,6 +2319,9 @@ class ElastigroupIntegrationRoute53DomainRecordSetArgs:
     @property
     @pulumi.getter(name="usePublicIp")
     def use_public_ip(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Designates whether the IP address should be exposed to connections outside the VPC.
+        """
         return pulumi.get(self, "use_public_ip")
 
     @use_public_ip.setter
@@ -2676,6 +2858,10 @@ class ElastigroupMultipleMetricsArgs:
     def __init__(__self__, *,
                  expressions: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupMultipleMetricsExpressionArgs']]]] = None,
                  metrics: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupMultipleMetricsMetricArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupMultipleMetricsExpressionArgs']]] expressions: Array of objects (Expression config)
+        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupMultipleMetricsMetricArgs']]] metrics: Array of objects (Metric config)
+        """
         if expressions is not None:
             pulumi.set(__self__, "expressions", expressions)
         if metrics is not None:
@@ -2684,6 +2870,9 @@ class ElastigroupMultipleMetricsArgs:
     @property
     @pulumi.getter
     def expressions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupMultipleMetricsExpressionArgs']]]]:
+        """
+        Array of objects (Expression config)
+        """
         return pulumi.get(self, "expressions")
 
     @expressions.setter
@@ -2693,6 +2882,9 @@ class ElastigroupMultipleMetricsArgs:
     @property
     @pulumi.getter
     def metrics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupMultipleMetricsMetricArgs']]]]:
+        """
+        Array of objects (Metric config)
+        """
         return pulumi.get(self, "metrics")
 
     @metrics.setter
@@ -2706,6 +2898,7 @@ class ElastigroupMultipleMetricsExpressionArgs:
                  expression: pulumi.Input[str],
                  name: pulumi.Input[str]):
         """
+        :param pulumi.Input[str] expression: An expression consisting of the metric names listed in the 'metrics' array.
         :param pulumi.Input[str] name: The group name.
         """
         pulumi.set(__self__, "expression", expression)
@@ -2714,6 +2907,9 @@ class ElastigroupMultipleMetricsExpressionArgs:
     @property
     @pulumi.getter
     def expression(self) -> pulumi.Input[str]:
+        """
+        An expression consisting of the metric names listed in the 'metrics' array.
+        """
         return pulumi.get(self, "expression")
 
     @expression.setter
@@ -2745,6 +2941,7 @@ class ElastigroupMultipleMetricsMetricArgs:
                  unit: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: The group name.
+        :param pulumi.Input[str] extended_statistic: Percentile statistic. Valid values: `"p0.1"` - `"p100"`.
         """
         pulumi.set(__self__, "metric_name", metric_name)
         pulumi.set(__self__, "name", name)
@@ -2800,6 +2997,9 @@ class ElastigroupMultipleMetricsMetricArgs:
     @property
     @pulumi.getter(name="extendedStatistic")
     def extended_statistic(self) -> Optional[pulumi.Input[str]]:
+        """
+        Percentile statistic. Valid values: `"p0.1"` - `"p100"`.
+        """
         return pulumi.get(self, "extended_statistic")
 
     @extended_statistic.setter
@@ -5858,6 +6058,8 @@ class MrScalarApplicationArgs:
                  version: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: The MrScaler name.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Arguments for EMR to pass to the application.
+        :param pulumi.Input[str] version: T he version of the application.
         """
         pulumi.set(__self__, "name", name)
         if args is not None:
@@ -5880,6 +6082,9 @@ class MrScalarApplicationArgs:
     @property
     @pulumi.getter
     def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Arguments for EMR to pass to the application.
+        """
         return pulumi.get(self, "args")
 
     @args.setter
@@ -5889,6 +6094,9 @@ class MrScalarApplicationArgs:
     @property
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        T he version of the application.
+        """
         return pulumi.get(self, "version")
 
     @version.setter
@@ -6022,6 +6230,18 @@ class MrScalarCoreScalingDownPolicyArgs:
                  period: Optional[pulumi.Input[int]] = None,
                  statistic: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] policy_name: The name of the policy.
+        :param pulumi.Input[str] action_type: The type of action to perform. Allowed values are : 'adjustment', 'setMinTarget', 'setMaxTarget', 'updateCapacity', 'percentageAdjustment'
+        :param pulumi.Input[str] adjustment: The number of instances to add/remove to/from the target capacity when scale is needed.
+        :param pulumi.Input[int] cooldown: The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
+        :param pulumi.Input[Mapping[str, Any]] dimensions: A mapping of dimensions describing qualities of the metric.
+        :param pulumi.Input[str] max_target_capacity: Max target capacity for scale down.
+        :param pulumi.Input[str] maximum: The maximum to set when scale is needed.
+        :param pulumi.Input[str] min_target_capacity: Min target capacity for scale up.
+        :param pulumi.Input[str] minimum: The minimum to set when scale is needed.
+        :param pulumi.Input[str] target: The number of instances to set when scale is needed.
+        """
         pulumi.set(__self__, "metric_name", metric_name)
         pulumi.set(__self__, "namespace", namespace)
         pulumi.set(__self__, "policy_name", policy_name)
@@ -6075,6 +6295,9 @@ class MrScalarCoreScalingDownPolicyArgs:
     @property
     @pulumi.getter(name="policyName")
     def policy_name(self) -> pulumi.Input[str]:
+        """
+        The name of the policy.
+        """
         return pulumi.get(self, "policy_name")
 
     @policy_name.setter
@@ -6102,6 +6325,9 @@ class MrScalarCoreScalingDownPolicyArgs:
     @property
     @pulumi.getter(name="actionType")
     def action_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of action to perform. Allowed values are : 'adjustment', 'setMinTarget', 'setMaxTarget', 'updateCapacity', 'percentageAdjustment'
+        """
         return pulumi.get(self, "action_type")
 
     @action_type.setter
@@ -6111,6 +6337,9 @@ class MrScalarCoreScalingDownPolicyArgs:
     @property
     @pulumi.getter
     def adjustment(self) -> Optional[pulumi.Input[str]]:
+        """
+        The number of instances to add/remove to/from the target capacity when scale is needed.
+        """
         return pulumi.get(self, "adjustment")
 
     @adjustment.setter
@@ -6120,6 +6349,9 @@ class MrScalarCoreScalingDownPolicyArgs:
     @property
     @pulumi.getter
     def cooldown(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
+        """
         return pulumi.get(self, "cooldown")
 
     @cooldown.setter
@@ -6129,6 +6361,9 @@ class MrScalarCoreScalingDownPolicyArgs:
     @property
     @pulumi.getter
     def dimensions(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of dimensions describing qualities of the metric.
+        """
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
@@ -6147,6 +6382,9 @@ class MrScalarCoreScalingDownPolicyArgs:
     @property
     @pulumi.getter(name="maxTargetCapacity")
     def max_target_capacity(self) -> Optional[pulumi.Input[str]]:
+        """
+        Max target capacity for scale down.
+        """
         return pulumi.get(self, "max_target_capacity")
 
     @max_target_capacity.setter
@@ -6156,6 +6394,9 @@ class MrScalarCoreScalingDownPolicyArgs:
     @property
     @pulumi.getter
     def maximum(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum to set when scale is needed.
+        """
         return pulumi.get(self, "maximum")
 
     @maximum.setter
@@ -6165,6 +6406,9 @@ class MrScalarCoreScalingDownPolicyArgs:
     @property
     @pulumi.getter(name="minTargetCapacity")
     def min_target_capacity(self) -> Optional[pulumi.Input[str]]:
+        """
+        Min target capacity for scale up.
+        """
         return pulumi.get(self, "min_target_capacity")
 
     @min_target_capacity.setter
@@ -6174,6 +6418,9 @@ class MrScalarCoreScalingDownPolicyArgs:
     @property
     @pulumi.getter
     def minimum(self) -> Optional[pulumi.Input[str]]:
+        """
+        The minimum to set when scale is needed.
+        """
         return pulumi.get(self, "minimum")
 
     @minimum.setter
@@ -6210,6 +6457,9 @@ class MrScalarCoreScalingDownPolicyArgs:
     @property
     @pulumi.getter
     def target(self) -> Optional[pulumi.Input[str]]:
+        """
+        The number of instances to set when scale is needed.
+        """
         return pulumi.get(self, "target")
 
     @target.setter
@@ -6238,6 +6488,18 @@ class MrScalarCoreScalingUpPolicyArgs:
                  period: Optional[pulumi.Input[int]] = None,
                  statistic: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] policy_name: The name of the policy.
+        :param pulumi.Input[str] action_type: The type of action to perform. Allowed values are : 'adjustment', 'setMinTarget', 'setMaxTarget', 'updateCapacity', 'percentageAdjustment'
+        :param pulumi.Input[str] adjustment: The number of instances to add/remove to/from the target capacity when scale is needed.
+        :param pulumi.Input[int] cooldown: The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
+        :param pulumi.Input[Mapping[str, Any]] dimensions: A mapping of dimensions describing qualities of the metric.
+        :param pulumi.Input[str] max_target_capacity: Max target capacity for scale down.
+        :param pulumi.Input[str] maximum: The maximum to set when scale is needed.
+        :param pulumi.Input[str] min_target_capacity: Min target capacity for scale up.
+        :param pulumi.Input[str] minimum: The minimum to set when scale is needed.
+        :param pulumi.Input[str] target: The number of instances to set when scale is needed.
+        """
         pulumi.set(__self__, "metric_name", metric_name)
         pulumi.set(__self__, "namespace", namespace)
         pulumi.set(__self__, "policy_name", policy_name)
@@ -6291,6 +6553,9 @@ class MrScalarCoreScalingUpPolicyArgs:
     @property
     @pulumi.getter(name="policyName")
     def policy_name(self) -> pulumi.Input[str]:
+        """
+        The name of the policy.
+        """
         return pulumi.get(self, "policy_name")
 
     @policy_name.setter
@@ -6318,6 +6583,9 @@ class MrScalarCoreScalingUpPolicyArgs:
     @property
     @pulumi.getter(name="actionType")
     def action_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of action to perform. Allowed values are : 'adjustment', 'setMinTarget', 'setMaxTarget', 'updateCapacity', 'percentageAdjustment'
+        """
         return pulumi.get(self, "action_type")
 
     @action_type.setter
@@ -6327,6 +6595,9 @@ class MrScalarCoreScalingUpPolicyArgs:
     @property
     @pulumi.getter
     def adjustment(self) -> Optional[pulumi.Input[str]]:
+        """
+        The number of instances to add/remove to/from the target capacity when scale is needed.
+        """
         return pulumi.get(self, "adjustment")
 
     @adjustment.setter
@@ -6336,6 +6607,9 @@ class MrScalarCoreScalingUpPolicyArgs:
     @property
     @pulumi.getter
     def cooldown(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
+        """
         return pulumi.get(self, "cooldown")
 
     @cooldown.setter
@@ -6345,6 +6619,9 @@ class MrScalarCoreScalingUpPolicyArgs:
     @property
     @pulumi.getter
     def dimensions(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of dimensions describing qualities of the metric.
+        """
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
@@ -6363,6 +6640,9 @@ class MrScalarCoreScalingUpPolicyArgs:
     @property
     @pulumi.getter(name="maxTargetCapacity")
     def max_target_capacity(self) -> Optional[pulumi.Input[str]]:
+        """
+        Max target capacity for scale down.
+        """
         return pulumi.get(self, "max_target_capacity")
 
     @max_target_capacity.setter
@@ -6372,6 +6652,9 @@ class MrScalarCoreScalingUpPolicyArgs:
     @property
     @pulumi.getter
     def maximum(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum to set when scale is needed.
+        """
         return pulumi.get(self, "maximum")
 
     @maximum.setter
@@ -6381,6 +6664,9 @@ class MrScalarCoreScalingUpPolicyArgs:
     @property
     @pulumi.getter(name="minTargetCapacity")
     def min_target_capacity(self) -> Optional[pulumi.Input[str]]:
+        """
+        Min target capacity for scale up.
+        """
         return pulumi.get(self, "min_target_capacity")
 
     @min_target_capacity.setter
@@ -6390,6 +6676,9 @@ class MrScalarCoreScalingUpPolicyArgs:
     @property
     @pulumi.getter
     def minimum(self) -> Optional[pulumi.Input[str]]:
+        """
+        The minimum to set when scale is needed.
+        """
         return pulumi.get(self, "minimum")
 
     @minimum.setter
@@ -6426,6 +6715,9 @@ class MrScalarCoreScalingUpPolicyArgs:
     @property
     @pulumi.getter
     def target(self) -> Optional[pulumi.Input[str]]:
+        """
+        The number of instances to set when scale is needed.
+        """
         return pulumi.get(self, "target")
 
     @target.setter
@@ -6438,12 +6730,19 @@ class MrScalarInstanceWeightArgs:
     def __init__(__self__, *,
                  instance_type: pulumi.Input[str],
                  weighted_capacity: pulumi.Input[int]):
+        """
+        :param pulumi.Input[str] instance_type: The type of the instance.
+        :param pulumi.Input[int] weighted_capacity: The weight given to the associated instance type.
+        """
         pulumi.set(__self__, "instance_type", instance_type)
         pulumi.set(__self__, "weighted_capacity", weighted_capacity)
 
     @property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> pulumi.Input[str]:
+        """
+        The type of the instance.
+        """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
@@ -6453,6 +6752,9 @@ class MrScalarInstanceWeightArgs:
     @property
     @pulumi.getter(name="weightedCapacity")
     def weighted_capacity(self) -> pulumi.Input[int]:
+        """
+        The weight given to the associated instance type.
+        """
         return pulumi.get(self, "weighted_capacity")
 
     @weighted_capacity.setter
@@ -6516,12 +6818,19 @@ class MrScalarProvisioningTimeoutArgs:
     def __init__(__self__, *,
                  timeout: pulumi.Input[int],
                  timeout_action: pulumi.Input[str]):
+        """
+        :param pulumi.Input[int] timeout: The amount of time (minutes) after which the cluster is automatically terminated if it's still in provisioning status. Minimum: '15'.
+        :param pulumi.Input[str] timeout_action: The action to take if the timeout is exceeded. Valid values: `terminate`, `terminateAndRetry`.
+        """
         pulumi.set(__self__, "timeout", timeout)
         pulumi.set(__self__, "timeout_action", timeout_action)
 
     @property
     @pulumi.getter
     def timeout(self) -> pulumi.Input[int]:
+        """
+        The amount of time (minutes) after which the cluster is automatically terminated if it's still in provisioning status. Minimum: '15'.
+        """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
@@ -6531,6 +6840,9 @@ class MrScalarProvisioningTimeoutArgs:
     @property
     @pulumi.getter(name="timeoutAction")
     def timeout_action(self) -> pulumi.Input[str]:
+        """
+        The action to take if the timeout is exceeded. Valid values: `terminate`, `terminateAndRetry`.
+        """
         return pulumi.get(self, "timeout_action")
 
     @timeout_action.setter
@@ -6548,6 +6860,15 @@ class MrScalarScheduledTaskArgs:
                  is_enabled: Optional[pulumi.Input[bool]] = None,
                  max_capacity: Optional[pulumi.Input[str]] = None,
                  min_capacity: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] cron: A cron expression representing the schedule for the task.
+        :param pulumi.Input[str] instance_group_type: Select the EMR instance groups to execute the scheduled task on. Valid values: `task`.
+        :param pulumi.Input[str] task_type: The type of task to be scheduled. Valid values: `setCapacity`.
+        :param pulumi.Input[str] desired_capacity: New desired capacity for the elastigroup.
+        :param pulumi.Input[bool] is_enabled: Enable/Disable the specified scheduling task.
+        :param pulumi.Input[str] max_capacity: New max capacity for the elastigroup.
+        :param pulumi.Input[str] min_capacity: New min capacity for the elastigroup.
+        """
         pulumi.set(__self__, "cron", cron)
         pulumi.set(__self__, "instance_group_type", instance_group_type)
         pulumi.set(__self__, "task_type", task_type)
@@ -6563,6 +6884,9 @@ class MrScalarScheduledTaskArgs:
     @property
     @pulumi.getter
     def cron(self) -> pulumi.Input[str]:
+        """
+        A cron expression representing the schedule for the task.
+        """
         return pulumi.get(self, "cron")
 
     @cron.setter
@@ -6572,6 +6896,9 @@ class MrScalarScheduledTaskArgs:
     @property
     @pulumi.getter(name="instanceGroupType")
     def instance_group_type(self) -> pulumi.Input[str]:
+        """
+        Select the EMR instance groups to execute the scheduled task on. Valid values: `task`.
+        """
         return pulumi.get(self, "instance_group_type")
 
     @instance_group_type.setter
@@ -6581,6 +6908,9 @@ class MrScalarScheduledTaskArgs:
     @property
     @pulumi.getter(name="taskType")
     def task_type(self) -> pulumi.Input[str]:
+        """
+        The type of task to be scheduled. Valid values: `setCapacity`.
+        """
         return pulumi.get(self, "task_type")
 
     @task_type.setter
@@ -6590,6 +6920,9 @@ class MrScalarScheduledTaskArgs:
     @property
     @pulumi.getter(name="desiredCapacity")
     def desired_capacity(self) -> Optional[pulumi.Input[str]]:
+        """
+        New desired capacity for the elastigroup.
+        """
         return pulumi.get(self, "desired_capacity")
 
     @desired_capacity.setter
@@ -6599,6 +6932,9 @@ class MrScalarScheduledTaskArgs:
     @property
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable/Disable the specified scheduling task.
+        """
         return pulumi.get(self, "is_enabled")
 
     @is_enabled.setter
@@ -6608,6 +6944,9 @@ class MrScalarScheduledTaskArgs:
     @property
     @pulumi.getter(name="maxCapacity")
     def max_capacity(self) -> Optional[pulumi.Input[str]]:
+        """
+        New max capacity for the elastigroup.
+        """
         return pulumi.get(self, "max_capacity")
 
     @max_capacity.setter
@@ -6617,6 +6956,9 @@ class MrScalarScheduledTaskArgs:
     @property
     @pulumi.getter(name="minCapacity")
     def min_capacity(self) -> Optional[pulumi.Input[str]]:
+        """
+        New min capacity for the elastigroup.
+        """
         return pulumi.get(self, "min_capacity")
 
     @min_capacity.setter
@@ -6656,6 +6998,11 @@ class MrScalarTagArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
                  value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] value: Tag value.
+               
+               <a id="Optional Compute Parameters"></a>
+        """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
 
@@ -6671,6 +7018,11 @@ class MrScalarTagArgs:
     @property
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
+        """
+        Tag value.
+
+        <a id="Optional Compute Parameters"></a>
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -6750,6 +7102,18 @@ class MrScalarTaskScalingDownPolicyArgs:
                  period: Optional[pulumi.Input[int]] = None,
                  statistic: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] policy_name: The name of the policy.
+        :param pulumi.Input[str] action_type: The type of action to perform. Allowed values are : 'adjustment', 'setMinTarget', 'setMaxTarget', 'updateCapacity', 'percentageAdjustment'
+        :param pulumi.Input[str] adjustment: The number of instances to add/remove to/from the target capacity when scale is needed.
+        :param pulumi.Input[int] cooldown: The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
+        :param pulumi.Input[Mapping[str, Any]] dimensions: A mapping of dimensions describing qualities of the metric.
+        :param pulumi.Input[str] max_target_capacity: Max target capacity for scale down.
+        :param pulumi.Input[str] maximum: The maximum to set when scale is needed.
+        :param pulumi.Input[str] min_target_capacity: Min target capacity for scale up.
+        :param pulumi.Input[str] minimum: The minimum to set when scale is needed.
+        :param pulumi.Input[str] target: The number of instances to set when scale is needed.
+        """
         pulumi.set(__self__, "metric_name", metric_name)
         pulumi.set(__self__, "namespace", namespace)
         pulumi.set(__self__, "policy_name", policy_name)
@@ -6803,6 +7167,9 @@ class MrScalarTaskScalingDownPolicyArgs:
     @property
     @pulumi.getter(name="policyName")
     def policy_name(self) -> pulumi.Input[str]:
+        """
+        The name of the policy.
+        """
         return pulumi.get(self, "policy_name")
 
     @policy_name.setter
@@ -6830,6 +7197,9 @@ class MrScalarTaskScalingDownPolicyArgs:
     @property
     @pulumi.getter(name="actionType")
     def action_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of action to perform. Allowed values are : 'adjustment', 'setMinTarget', 'setMaxTarget', 'updateCapacity', 'percentageAdjustment'
+        """
         return pulumi.get(self, "action_type")
 
     @action_type.setter
@@ -6839,6 +7209,9 @@ class MrScalarTaskScalingDownPolicyArgs:
     @property
     @pulumi.getter
     def adjustment(self) -> Optional[pulumi.Input[str]]:
+        """
+        The number of instances to add/remove to/from the target capacity when scale is needed.
+        """
         return pulumi.get(self, "adjustment")
 
     @adjustment.setter
@@ -6848,6 +7221,9 @@ class MrScalarTaskScalingDownPolicyArgs:
     @property
     @pulumi.getter
     def cooldown(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
+        """
         return pulumi.get(self, "cooldown")
 
     @cooldown.setter
@@ -6857,6 +7233,9 @@ class MrScalarTaskScalingDownPolicyArgs:
     @property
     @pulumi.getter
     def dimensions(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of dimensions describing qualities of the metric.
+        """
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
@@ -6875,6 +7254,9 @@ class MrScalarTaskScalingDownPolicyArgs:
     @property
     @pulumi.getter(name="maxTargetCapacity")
     def max_target_capacity(self) -> Optional[pulumi.Input[str]]:
+        """
+        Max target capacity for scale down.
+        """
         return pulumi.get(self, "max_target_capacity")
 
     @max_target_capacity.setter
@@ -6884,6 +7266,9 @@ class MrScalarTaskScalingDownPolicyArgs:
     @property
     @pulumi.getter
     def maximum(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum to set when scale is needed.
+        """
         return pulumi.get(self, "maximum")
 
     @maximum.setter
@@ -6893,6 +7278,9 @@ class MrScalarTaskScalingDownPolicyArgs:
     @property
     @pulumi.getter(name="minTargetCapacity")
     def min_target_capacity(self) -> Optional[pulumi.Input[str]]:
+        """
+        Min target capacity for scale up.
+        """
         return pulumi.get(self, "min_target_capacity")
 
     @min_target_capacity.setter
@@ -6902,6 +7290,9 @@ class MrScalarTaskScalingDownPolicyArgs:
     @property
     @pulumi.getter
     def minimum(self) -> Optional[pulumi.Input[str]]:
+        """
+        The minimum to set when scale is needed.
+        """
         return pulumi.get(self, "minimum")
 
     @minimum.setter
@@ -6938,6 +7329,9 @@ class MrScalarTaskScalingDownPolicyArgs:
     @property
     @pulumi.getter
     def target(self) -> Optional[pulumi.Input[str]]:
+        """
+        The number of instances to set when scale is needed.
+        """
         return pulumi.get(self, "target")
 
     @target.setter
@@ -6966,6 +7360,18 @@ class MrScalarTaskScalingUpPolicyArgs:
                  period: Optional[pulumi.Input[int]] = None,
                  statistic: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] policy_name: The name of the policy.
+        :param pulumi.Input[str] action_type: The type of action to perform. Allowed values are : 'adjustment', 'setMinTarget', 'setMaxTarget', 'updateCapacity', 'percentageAdjustment'
+        :param pulumi.Input[str] adjustment: The number of instances to add/remove to/from the target capacity when scale is needed.
+        :param pulumi.Input[int] cooldown: The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
+        :param pulumi.Input[Mapping[str, Any]] dimensions: A mapping of dimensions describing qualities of the metric.
+        :param pulumi.Input[str] max_target_capacity: Max target capacity for scale down.
+        :param pulumi.Input[str] maximum: The maximum to set when scale is needed.
+        :param pulumi.Input[str] min_target_capacity: Min target capacity for scale up.
+        :param pulumi.Input[str] minimum: The minimum to set when scale is needed.
+        :param pulumi.Input[str] target: The number of instances to set when scale is needed.
+        """
         pulumi.set(__self__, "metric_name", metric_name)
         pulumi.set(__self__, "namespace", namespace)
         pulumi.set(__self__, "policy_name", policy_name)
@@ -7019,6 +7425,9 @@ class MrScalarTaskScalingUpPolicyArgs:
     @property
     @pulumi.getter(name="policyName")
     def policy_name(self) -> pulumi.Input[str]:
+        """
+        The name of the policy.
+        """
         return pulumi.get(self, "policy_name")
 
     @policy_name.setter
@@ -7046,6 +7455,9 @@ class MrScalarTaskScalingUpPolicyArgs:
     @property
     @pulumi.getter(name="actionType")
     def action_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of action to perform. Allowed values are : 'adjustment', 'setMinTarget', 'setMaxTarget', 'updateCapacity', 'percentageAdjustment'
+        """
         return pulumi.get(self, "action_type")
 
     @action_type.setter
@@ -7055,6 +7467,9 @@ class MrScalarTaskScalingUpPolicyArgs:
     @property
     @pulumi.getter
     def adjustment(self) -> Optional[pulumi.Input[str]]:
+        """
+        The number of instances to add/remove to/from the target capacity when scale is needed.
+        """
         return pulumi.get(self, "adjustment")
 
     @adjustment.setter
@@ -7064,6 +7479,9 @@ class MrScalarTaskScalingUpPolicyArgs:
     @property
     @pulumi.getter
     def cooldown(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
+        """
         return pulumi.get(self, "cooldown")
 
     @cooldown.setter
@@ -7073,6 +7491,9 @@ class MrScalarTaskScalingUpPolicyArgs:
     @property
     @pulumi.getter
     def dimensions(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of dimensions describing qualities of the metric.
+        """
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
@@ -7091,6 +7512,9 @@ class MrScalarTaskScalingUpPolicyArgs:
     @property
     @pulumi.getter(name="maxTargetCapacity")
     def max_target_capacity(self) -> Optional[pulumi.Input[str]]:
+        """
+        Max target capacity for scale down.
+        """
         return pulumi.get(self, "max_target_capacity")
 
     @max_target_capacity.setter
@@ -7100,6 +7524,9 @@ class MrScalarTaskScalingUpPolicyArgs:
     @property
     @pulumi.getter
     def maximum(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum to set when scale is needed.
+        """
         return pulumi.get(self, "maximum")
 
     @maximum.setter
@@ -7109,6 +7536,9 @@ class MrScalarTaskScalingUpPolicyArgs:
     @property
     @pulumi.getter(name="minTargetCapacity")
     def min_target_capacity(self) -> Optional[pulumi.Input[str]]:
+        """
+        Min target capacity for scale up.
+        """
         return pulumi.get(self, "min_target_capacity")
 
     @min_target_capacity.setter
@@ -7118,6 +7548,9 @@ class MrScalarTaskScalingUpPolicyArgs:
     @property
     @pulumi.getter
     def minimum(self) -> Optional[pulumi.Input[str]]:
+        """
+        The minimum to set when scale is needed.
+        """
         return pulumi.get(self, "minimum")
 
     @minimum.setter
@@ -7154,6 +7587,9 @@ class MrScalarTaskScalingUpPolicyArgs:
     @property
     @pulumi.getter
     def target(self) -> Optional[pulumi.Input[str]]:
+        """
+        The number of instances to set when scale is needed.
+        """
         return pulumi.get(self, "target")
 
     @target.setter
@@ -8080,6 +8516,25 @@ class OceanFiltersArgs:
                  min_vcpu: Optional[pulumi.Input[int]] = None,
                  root_device_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  virtualization_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] architectures: The filtered instance types will support at least one of the architectures from this list.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] categories: The filtered instance types will belong to one of the categories types from this list.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] disk_types: The filtered instance types will have one of the disk type from this list.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_families: Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
+        :param pulumi.Input[bool] exclude_metal: In case excludeMetal is set to true, metal types will not be available for scaling.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] hypervisors: The filtered instance types will have a hypervisor type from this list.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] include_families: Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
+        :param pulumi.Input[str] is_ena_supported: Ena is supported or not.
+        :param pulumi.Input[int] max_gpu: Maximum total number of GPUs.
+        :param pulumi.Input[int] max_network_performance: Maximum Bandwidth in Gib/s of network performance.
+        :param pulumi.Input[int] min_enis: Minimum number of network interfaces (ENIs).
+        :param pulumi.Input[int] min_gpu: Minimum total number of GPUs.
+        :param pulumi.Input[float] min_memory_gib: Minimum amount of Memory (GiB).
+        :param pulumi.Input[int] min_network_performance: Minimum Bandwidth in Gib/s of network performance.
+        :param pulumi.Input[int] min_vcpu: Minimum number of vcpus available.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] root_device_types: The filtered instance types will have a root device types from this list.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] virtualization_types: The filtered instance types will support at least one of the virtualization types from this list.
+        """
         if architectures is not None:
             pulumi.set(__self__, "architectures", architectures)
         if categories is not None:
@@ -8122,6 +8577,9 @@ class OceanFiltersArgs:
     @property
     @pulumi.getter
     def architectures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The filtered instance types will support at least one of the architectures from this list.
+        """
         return pulumi.get(self, "architectures")
 
     @architectures.setter
@@ -8131,6 +8589,9 @@ class OceanFiltersArgs:
     @property
     @pulumi.getter
     def categories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The filtered instance types will belong to one of the categories types from this list.
+        """
         return pulumi.get(self, "categories")
 
     @categories.setter
@@ -8140,6 +8601,9 @@ class OceanFiltersArgs:
     @property
     @pulumi.getter(name="diskTypes")
     def disk_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The filtered instance types will have one of the disk type from this list.
+        """
         return pulumi.get(self, "disk_types")
 
     @disk_types.setter
@@ -8149,6 +8613,9 @@ class OceanFiltersArgs:
     @property
     @pulumi.getter(name="excludeFamilies")
     def exclude_families(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
+        """
         return pulumi.get(self, "exclude_families")
 
     @exclude_families.setter
@@ -8158,6 +8625,9 @@ class OceanFiltersArgs:
     @property
     @pulumi.getter(name="excludeMetal")
     def exclude_metal(self) -> Optional[pulumi.Input[bool]]:
+        """
+        In case excludeMetal is set to true, metal types will not be available for scaling.
+        """
         return pulumi.get(self, "exclude_metal")
 
     @exclude_metal.setter
@@ -8167,6 +8637,9 @@ class OceanFiltersArgs:
     @property
     @pulumi.getter
     def hypervisors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The filtered instance types will have a hypervisor type from this list.
+        """
         return pulumi.get(self, "hypervisors")
 
     @hypervisors.setter
@@ -8176,6 +8649,9 @@ class OceanFiltersArgs:
     @property
     @pulumi.getter(name="includeFamilies")
     def include_families(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
+        """
         return pulumi.get(self, "include_families")
 
     @include_families.setter
@@ -8185,6 +8661,9 @@ class OceanFiltersArgs:
     @property
     @pulumi.getter(name="isEnaSupported")
     def is_ena_supported(self) -> Optional[pulumi.Input[str]]:
+        """
+        Ena is supported or not.
+        """
         return pulumi.get(self, "is_ena_supported")
 
     @is_ena_supported.setter
@@ -8194,6 +8673,9 @@ class OceanFiltersArgs:
     @property
     @pulumi.getter(name="maxGpu")
     def max_gpu(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum total number of GPUs.
+        """
         return pulumi.get(self, "max_gpu")
 
     @max_gpu.setter
@@ -8212,6 +8694,9 @@ class OceanFiltersArgs:
     @property
     @pulumi.getter(name="maxNetworkPerformance")
     def max_network_performance(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum Bandwidth in Gib/s of network performance.
+        """
         return pulumi.get(self, "max_network_performance")
 
     @max_network_performance.setter
@@ -8230,6 +8715,9 @@ class OceanFiltersArgs:
     @property
     @pulumi.getter(name="minEnis")
     def min_enis(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum number of network interfaces (ENIs).
+        """
         return pulumi.get(self, "min_enis")
 
     @min_enis.setter
@@ -8239,6 +8727,9 @@ class OceanFiltersArgs:
     @property
     @pulumi.getter(name="minGpu")
     def min_gpu(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum total number of GPUs.
+        """
         return pulumi.get(self, "min_gpu")
 
     @min_gpu.setter
@@ -8248,6 +8739,9 @@ class OceanFiltersArgs:
     @property
     @pulumi.getter(name="minMemoryGib")
     def min_memory_gib(self) -> Optional[pulumi.Input[float]]:
+        """
+        Minimum amount of Memory (GiB).
+        """
         return pulumi.get(self, "min_memory_gib")
 
     @min_memory_gib.setter
@@ -8257,6 +8751,9 @@ class OceanFiltersArgs:
     @property
     @pulumi.getter(name="minNetworkPerformance")
     def min_network_performance(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum Bandwidth in Gib/s of network performance.
+        """
         return pulumi.get(self, "min_network_performance")
 
     @min_network_performance.setter
@@ -8266,6 +8763,9 @@ class OceanFiltersArgs:
     @property
     @pulumi.getter(name="minVcpu")
     def min_vcpu(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum number of vcpus available.
+        """
         return pulumi.get(self, "min_vcpu")
 
     @min_vcpu.setter
@@ -8275,6 +8775,9 @@ class OceanFiltersArgs:
     @property
     @pulumi.getter(name="rootDeviceTypes")
     def root_device_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The filtered instance types will have a root device types from this list.
+        """
         return pulumi.get(self, "root_device_types")
 
     @root_device_types.setter
@@ -8284,6 +8787,9 @@ class OceanFiltersArgs:
     @property
     @pulumi.getter(name="virtualizationTypes")
     def virtualization_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The filtered instance types will support at least one of the virtualization types from this list.
+        """
         return pulumi.get(self, "virtualization_types")
 
     @virtualization_types.setter
@@ -8455,6 +8961,7 @@ class OceanLaunchSpecBlockDeviceMappingArgs:
         """
         :param pulumi.Input[str] device_name: String. Set device name. (Example: `/dev/xvda`).
         :param pulumi.Input['OceanLaunchSpecBlockDeviceMappingEbsArgs'] ebs: Object. Set Elastic Block Store properties .
+        :param pulumi.Input[str] no_device: String. Suppresses the specified device included in the block device mapping of the AMI.
         """
         if device_name is not None:
             pulumi.set(__self__, "device_name", device_name)
@@ -8492,6 +8999,9 @@ class OceanLaunchSpecBlockDeviceMappingArgs:
     @property
     @pulumi.getter(name="noDevice")
     def no_device(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. Suppresses the specified device included in the block device mapping of the AMI.
+        """
         return pulumi.get(self, "no_device")
 
     @no_device.setter

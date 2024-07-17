@@ -11,9 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class ElastigroupIntegrationRoute53 {
+    /**
+     * @return Collection of one or more domains to register.
+     * 
+     */
     private List<ElastigroupIntegrationRoute53Domain> domains;
 
     private ElastigroupIntegrationRoute53() {}
+    /**
+     * @return Collection of one or more domains to register.
+     * 
+     */
     public List<ElastigroupIntegrationRoute53Domain> domains() {
         return this.domains;
     }

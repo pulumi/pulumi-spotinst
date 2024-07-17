@@ -13,6 +13,9 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class ElastigroupIntegrationBeanstalkManagedActions
     {
+        /// <summary>
+        /// Platform Update parameters
+        /// </summary>
         public readonly Outputs.ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate? PlatformUpdate;
 
         [OutputConstructor]

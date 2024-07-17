@@ -23,9 +23,17 @@ public final class ElastigroupIntegrationEcsArgs extends com.pulumi.resources.Re
 
     public static final ElastigroupIntegrationEcsArgs Empty = new ElastigroupIntegrationEcsArgs();
 
+    /**
+     * A key/value mapping of tags to assign to the resource.
+     * 
+     */
     @Import(name="autoscaleAttributes")
     private @Nullable Output<List<ElastigroupIntegrationEcsAutoscaleAttributeArgs>> autoscaleAttributes;
 
+    /**
+     * @return A key/value mapping of tags to assign to the resource.
+     * 
+     */
     public Optional<Output<List<ElastigroupIntegrationEcsAutoscaleAttributeArgs>>> autoscaleAttributes() {
         return Optional.ofNullable(this.autoscaleAttributes);
     }
@@ -65,23 +73,47 @@ public final class ElastigroupIntegrationEcsArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.autoscaleIsEnabled);
     }
 
+    /**
+     * Determines whether to scale down non-service tasks.
+     * 
+     */
     @Import(name="autoscaleScaleDownNonServiceTasks")
     private @Nullable Output<Boolean> autoscaleScaleDownNonServiceTasks;
 
+    /**
+     * @return Determines whether to scale down non-service tasks.
+     * 
+     */
     public Optional<Output<Boolean>> autoscaleScaleDownNonServiceTasks() {
         return Optional.ofNullable(this.autoscaleScaleDownNonServiceTasks);
     }
 
+    /**
+     * Batch configuration object:
+     * 
+     */
     @Import(name="batch")
     private @Nullable Output<ElastigroupIntegrationEcsBatchArgs> batch;
 
+    /**
+     * @return Batch configuration object:
+     * 
+     */
     public Optional<Output<ElastigroupIntegrationEcsBatchArgs>> batch() {
         return Optional.ofNullable(this.batch);
     }
 
+    /**
+     * The name of the EC2 Container Service cluster.
+     * 
+     */
     @Import(name="clusterName", required=true)
     private Output<String> clusterName;
 
+    /**
+     * @return The name of the EC2 Container Service cluster.
+     * 
+     */
     public Output<String> clusterName() {
         return this.clusterName;
     }
@@ -118,15 +150,33 @@ public final class ElastigroupIntegrationEcsArgs extends com.pulumi.resources.Re
             $ = new ElastigroupIntegrationEcsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param autoscaleAttributes A key/value mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoscaleAttributes(@Nullable Output<List<ElastigroupIntegrationEcsAutoscaleAttributeArgs>> autoscaleAttributes) {
             $.autoscaleAttributes = autoscaleAttributes;
             return this;
         }
 
+        /**
+         * @param autoscaleAttributes A key/value mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoscaleAttributes(List<ElastigroupIntegrationEcsAutoscaleAttributeArgs> autoscaleAttributes) {
             return autoscaleAttributes(Output.of(autoscaleAttributes));
         }
 
+        /**
+         * @param autoscaleAttributes A key/value mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoscaleAttributes(ElastigroupIntegrationEcsAutoscaleAttributeArgs... autoscaleAttributes) {
             return autoscaleAttributes(List.of(autoscaleAttributes));
         }
@@ -176,29 +226,65 @@ public final class ElastigroupIntegrationEcsArgs extends com.pulumi.resources.Re
             return autoscaleIsEnabled(Output.of(autoscaleIsEnabled));
         }
 
+        /**
+         * @param autoscaleScaleDownNonServiceTasks Determines whether to scale down non-service tasks.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoscaleScaleDownNonServiceTasks(@Nullable Output<Boolean> autoscaleScaleDownNonServiceTasks) {
             $.autoscaleScaleDownNonServiceTasks = autoscaleScaleDownNonServiceTasks;
             return this;
         }
 
+        /**
+         * @param autoscaleScaleDownNonServiceTasks Determines whether to scale down non-service tasks.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoscaleScaleDownNonServiceTasks(Boolean autoscaleScaleDownNonServiceTasks) {
             return autoscaleScaleDownNonServiceTasks(Output.of(autoscaleScaleDownNonServiceTasks));
         }
 
+        /**
+         * @param batch Batch configuration object:
+         * 
+         * @return builder
+         * 
+         */
         public Builder batch(@Nullable Output<ElastigroupIntegrationEcsBatchArgs> batch) {
             $.batch = batch;
             return this;
         }
 
+        /**
+         * @param batch Batch configuration object:
+         * 
+         * @return builder
+         * 
+         */
         public Builder batch(ElastigroupIntegrationEcsBatchArgs batch) {
             return batch(Output.of(batch));
         }
 
+        /**
+         * @param clusterName The name of the EC2 Container Service cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clusterName(Output<String> clusterName) {
             $.clusterName = clusterName;
             return this;
         }
 
+        /**
+         * @param clusterName The name of the EC2 Container Service cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clusterName(String clusterName) {
             return clusterName(Output.of(clusterName));
         }

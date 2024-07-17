@@ -13,11 +13,17 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class MrScalarApplication
     {
+        /// <summary>
+        /// Arguments for EMR to pass to the application.
+        /// </summary>
         public readonly ImmutableArray<string> Args;
         /// <summary>
         /// The MrScaler name.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// T he version of the application.
+        /// </summary>
         public readonly string? Version;
 
         [OutputConstructor]

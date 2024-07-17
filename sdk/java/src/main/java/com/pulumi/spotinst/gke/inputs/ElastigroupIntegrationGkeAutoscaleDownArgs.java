@@ -15,9 +15,17 @@ public final class ElastigroupIntegrationGkeAutoscaleDownArgs extends com.pulumi
 
     public static final ElastigroupIntegrationGkeAutoscaleDownArgs Empty = new ElastigroupIntegrationGkeAutoscaleDownArgs();
 
+    /**
+     * Amount of cooldown evaluation periods for scale down.
+     * 
+     */
     @Import(name="evaluationPeriods")
     private @Nullable Output<Integer> evaluationPeriods;
 
+    /**
+     * @return Amount of cooldown evaluation periods for scale down.
+     * 
+     */
     public Optional<Output<Integer>> evaluationPeriods() {
         return Optional.ofNullable(this.evaluationPeriods);
     }
@@ -46,11 +54,23 @@ public final class ElastigroupIntegrationGkeAutoscaleDownArgs extends com.pulumi
             $ = new ElastigroupIntegrationGkeAutoscaleDownArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param evaluationPeriods Amount of cooldown evaluation periods for scale down.
+         * 
+         * @return builder
+         * 
+         */
         public Builder evaluationPeriods(@Nullable Output<Integer> evaluationPeriods) {
             $.evaluationPeriods = evaluationPeriods;
             return this;
         }
 
+        /**
+         * @param evaluationPeriods Amount of cooldown evaluation periods for scale down.
+         * 
+         * @return builder
+         * 
+         */
         public Builder evaluationPeriods(Integer evaluationPeriods) {
             return evaluationPeriods(Output.of(evaluationPeriods));
         }

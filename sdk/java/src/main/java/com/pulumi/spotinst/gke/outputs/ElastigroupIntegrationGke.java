@@ -18,40 +18,88 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ElastigroupIntegrationGke {
     private @Nullable Boolean autoUpdate;
+    /**
+     * @return The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
+     * 
+     */
     private @Nullable Integer autoscaleCooldown;
+    /**
+     * @return Enabling scale down.
+     * 
+     */
     private @Nullable ElastigroupIntegrationGkeAutoscaleDown autoscaleDown;
+    /**
+     * @return Headroom for the cluster.
+     * 
+     */
     private @Nullable ElastigroupIntegrationGkeAutoscaleHeadroom autoscaleHeadroom;
     private @Nullable Boolean autoscaleIsAutoConfig;
+    /**
+     * @return Specifies whether the auto scaling feature is enabled.
+     * 
+     */
     private @Nullable Boolean autoscaleIsEnabled;
+    /**
+     * @return Labels to assign to the resource.
+     * 
+     */
     private @Nullable List<ElastigroupIntegrationGkeAutoscaleLabel> autoscaleLabels;
     private @Nullable String clusterId;
+    /**
+     * @return The location of your GKE cluster.
+     * 
+     */
     private @Nullable String location;
 
     private ElastigroupIntegrationGke() {}
     public Optional<Boolean> autoUpdate() {
         return Optional.ofNullable(this.autoUpdate);
     }
+    /**
+     * @return The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
+     * 
+     */
     public Optional<Integer> autoscaleCooldown() {
         return Optional.ofNullable(this.autoscaleCooldown);
     }
+    /**
+     * @return Enabling scale down.
+     * 
+     */
     public Optional<ElastigroupIntegrationGkeAutoscaleDown> autoscaleDown() {
         return Optional.ofNullable(this.autoscaleDown);
     }
+    /**
+     * @return Headroom for the cluster.
+     * 
+     */
     public Optional<ElastigroupIntegrationGkeAutoscaleHeadroom> autoscaleHeadroom() {
         return Optional.ofNullable(this.autoscaleHeadroom);
     }
     public Optional<Boolean> autoscaleIsAutoConfig() {
         return Optional.ofNullable(this.autoscaleIsAutoConfig);
     }
+    /**
+     * @return Specifies whether the auto scaling feature is enabled.
+     * 
+     */
     public Optional<Boolean> autoscaleIsEnabled() {
         return Optional.ofNullable(this.autoscaleIsEnabled);
     }
+    /**
+     * @return Labels to assign to the resource.
+     * 
+     */
     public List<ElastigroupIntegrationGkeAutoscaleLabel> autoscaleLabels() {
         return this.autoscaleLabels == null ? List.of() : this.autoscaleLabels;
     }
     public Optional<String> clusterId() {
         return Optional.ofNullable(this.clusterId);
     }
+    /**
+     * @return The location of your GKE cluster.
+     * 
+     */
     public Optional<String> location() {
         return Optional.ofNullable(this.location);
     }

@@ -20,6 +20,9 @@ namespace Pulumi.SpotInst.Aws.Inputs
             set => _dimensions = value;
         }
 
+        /// <summary>
+        /// Percentile statistic. Valid values: `"p0.1"` - `"p100"`.
+        /// </summary>
         [Input("extendedStatistic")]
         public Input<string>? ExtendedStatistic { get; set; }
 

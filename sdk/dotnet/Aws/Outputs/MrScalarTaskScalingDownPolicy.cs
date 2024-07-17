@@ -13,21 +13,51 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class MrScalarTaskScalingDownPolicy
     {
+        /// <summary>
+        /// The type of action to perform. Allowed values are : 'adjustment', 'setMinTarget', 'setMaxTarget', 'updateCapacity', 'percentageAdjustment'
+        /// </summary>
         public readonly string? ActionType;
+        /// <summary>
+        /// The number of instances to add/remove to/from the target capacity when scale is needed.
+        /// </summary>
         public readonly string? Adjustment;
+        /// <summary>
+        /// The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
+        /// </summary>
         public readonly int? Cooldown;
+        /// <summary>
+        /// A mapping of dimensions describing qualities of the metric.
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? Dimensions;
         public readonly int? EvaluationPeriods;
+        /// <summary>
+        /// Max target capacity for scale down.
+        /// </summary>
         public readonly string? MaxTargetCapacity;
+        /// <summary>
+        /// The maximum to set when scale is needed.
+        /// </summary>
         public readonly string? Maximum;
         public readonly string MetricName;
+        /// <summary>
+        /// Min target capacity for scale up.
+        /// </summary>
         public readonly string? MinTargetCapacity;
+        /// <summary>
+        /// The minimum to set when scale is needed.
+        /// </summary>
         public readonly string? Minimum;
         public readonly string Namespace;
         public readonly string? Operator;
         public readonly int? Period;
+        /// <summary>
+        /// The name of the policy.
+        /// </summary>
         public readonly string PolicyName;
         public readonly string? Statistic;
+        /// <summary>
+        /// The number of instances to set when scale is needed.
+        /// </summary>
         public readonly string? Target;
         public readonly double Threshold;
         public readonly string Unit;

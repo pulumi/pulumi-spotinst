@@ -13,8 +13,14 @@ namespace Pulumi.SpotInst.Gcp.Outputs
     [OutputType]
     public sealed class ElastigroupNetworkInterface
     {
+        /// <summary>
+        /// Array of configurations.
+        /// </summary>
         public readonly ImmutableArray<Outputs.ElastigroupNetworkInterfaceAccessConfig> AccessConfigs;
         public readonly ImmutableArray<Outputs.ElastigroupNetworkInterfaceAliasIpRange> AliasIpRanges;
+        /// <summary>
+        /// Network resource for this group.
+        /// </summary>
         public readonly string Network;
 
         [OutputConstructor]

@@ -1802,6 +1802,7 @@ func (o OceanNpSchedulingPtrOutput) Tasks() OceanNpSchedulingTaskArrayOutput {
 }
 
 type OceanNpSchedulingShutdownHours struct {
+	// Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
 	IsEnabled   *bool    `pulumi:"isEnabled"`
 	TimeWindows []string `pulumi:"timeWindows"`
 }
@@ -1818,6 +1819,7 @@ type OceanNpSchedulingShutdownHoursInput interface {
 }
 
 type OceanNpSchedulingShutdownHoursArgs struct {
+	// Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
 	IsEnabled   pulumi.BoolPtrInput     `pulumi:"isEnabled"`
 	TimeWindows pulumi.StringArrayInput `pulumi:"timeWindows"`
 }
@@ -1899,6 +1901,7 @@ func (o OceanNpSchedulingShutdownHoursOutput) ToOceanNpSchedulingShutdownHoursPt
 	}).(OceanNpSchedulingShutdownHoursPtrOutput)
 }
 
+// Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
 func (o OceanNpSchedulingShutdownHoursOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanNpSchedulingShutdownHours) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -1931,6 +1934,7 @@ func (o OceanNpSchedulingShutdownHoursPtrOutput) Elem() OceanNpSchedulingShutdow
 	}).(OceanNpSchedulingShutdownHoursOutput)
 }
 
+// Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
 func (o OceanNpSchedulingShutdownHoursPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanNpSchedulingShutdownHours) *bool {
 		if v == nil {
@@ -1950,10 +1954,11 @@ func (o OceanNpSchedulingShutdownHoursPtrOutput) TimeWindows() pulumi.StringArra
 }
 
 type OceanNpSchedulingTask struct {
-	CronExpression string                           `pulumi:"cronExpression"`
-	IsEnabled      bool                             `pulumi:"isEnabled"`
-	Parameters     *OceanNpSchedulingTaskParameters `pulumi:"parameters"`
-	TaskType       string                           `pulumi:"taskType"`
+	CronExpression string `pulumi:"cronExpression"`
+	// Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+	IsEnabled  bool                             `pulumi:"isEnabled"`
+	Parameters *OceanNpSchedulingTaskParameters `pulumi:"parameters"`
+	TaskType   string                           `pulumi:"taskType"`
 }
 
 // OceanNpSchedulingTaskInput is an input type that accepts OceanNpSchedulingTaskArgs and OceanNpSchedulingTaskOutput values.
@@ -1968,10 +1973,11 @@ type OceanNpSchedulingTaskInput interface {
 }
 
 type OceanNpSchedulingTaskArgs struct {
-	CronExpression pulumi.StringInput                      `pulumi:"cronExpression"`
-	IsEnabled      pulumi.BoolInput                        `pulumi:"isEnabled"`
-	Parameters     OceanNpSchedulingTaskParametersPtrInput `pulumi:"parameters"`
-	TaskType       pulumi.StringInput                      `pulumi:"taskType"`
+	CronExpression pulumi.StringInput `pulumi:"cronExpression"`
+	// Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+	IsEnabled  pulumi.BoolInput                        `pulumi:"isEnabled"`
+	Parameters OceanNpSchedulingTaskParametersPtrInput `pulumi:"parameters"`
+	TaskType   pulumi.StringInput                      `pulumi:"taskType"`
 }
 
 func (OceanNpSchedulingTaskArgs) ElementType() reflect.Type {
@@ -2029,6 +2035,7 @@ func (o OceanNpSchedulingTaskOutput) CronExpression() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanNpSchedulingTask) string { return v.CronExpression }).(pulumi.StringOutput)
 }
 
+// Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
 func (o OceanNpSchedulingTaskOutput) IsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v OceanNpSchedulingTask) bool { return v.IsEnabled }).(pulumi.BoolOutput)
 }
@@ -2197,12 +2204,18 @@ func (o OceanNpSchedulingTaskParametersPtrOutput) ParametersClusterRoll() OceanN
 }
 
 type OceanNpSchedulingTaskParametersParametersClusterRoll struct {
-	BatchMinHealthyPercentage *int     `pulumi:"batchMinHealthyPercentage"`
-	BatchSizePercentage       *int     `pulumi:"batchSizePercentage"`
-	Comment                   *string  `pulumi:"comment"`
-	RespectPdb                *bool    `pulumi:"respectPdb"`
-	RespectRestrictScaleDown  *bool    `pulumi:"respectRestrictScaleDown"`
-	VngIds                    []string `pulumi:"vngIds"`
+	// Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+	BatchMinHealthyPercentage *int `pulumi:"batchMinHealthyPercentage"`
+	// Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.
+	BatchSizePercentage *int `pulumi:"batchSizePercentage"`
+	// Add a comment description for the roll. The comment is limited to 256 chars and optional.
+	Comment *string `pulumi:"comment"`
+	// During the roll, if the parameter is set to true we honor PDB during the nodes replacement.
+	RespectPdb *bool `pulumi:"respectPdb"`
+	// During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.
+	RespectRestrictScaleDown *bool `pulumi:"respectRestrictScaleDown"`
+	// List of virtual node group identifiers to be rolled. Each identifier is a string. vngIds can be null, and cannot be used together with nodeNames and nodePoolNames.
+	VngIds []string `pulumi:"vngIds"`
 }
 
 // OceanNpSchedulingTaskParametersParametersClusterRollInput is an input type that accepts OceanNpSchedulingTaskParametersParametersClusterRollArgs and OceanNpSchedulingTaskParametersParametersClusterRollOutput values.
@@ -2217,12 +2230,18 @@ type OceanNpSchedulingTaskParametersParametersClusterRollInput interface {
 }
 
 type OceanNpSchedulingTaskParametersParametersClusterRollArgs struct {
-	BatchMinHealthyPercentage pulumi.IntPtrInput      `pulumi:"batchMinHealthyPercentage"`
-	BatchSizePercentage       pulumi.IntPtrInput      `pulumi:"batchSizePercentage"`
-	Comment                   pulumi.StringPtrInput   `pulumi:"comment"`
-	RespectPdb                pulumi.BoolPtrInput     `pulumi:"respectPdb"`
-	RespectRestrictScaleDown  pulumi.BoolPtrInput     `pulumi:"respectRestrictScaleDown"`
-	VngIds                    pulumi.StringArrayInput `pulumi:"vngIds"`
+	// Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+	BatchMinHealthyPercentage pulumi.IntPtrInput `pulumi:"batchMinHealthyPercentage"`
+	// Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.
+	BatchSizePercentage pulumi.IntPtrInput `pulumi:"batchSizePercentage"`
+	// Add a comment description for the roll. The comment is limited to 256 chars and optional.
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// During the roll, if the parameter is set to true we honor PDB during the nodes replacement.
+	RespectPdb pulumi.BoolPtrInput `pulumi:"respectPdb"`
+	// During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.
+	RespectRestrictScaleDown pulumi.BoolPtrInput `pulumi:"respectRestrictScaleDown"`
+	// List of virtual node group identifiers to be rolled. Each identifier is a string. vngIds can be null, and cannot be used together with nodeNames and nodePoolNames.
+	VngIds pulumi.StringArrayInput `pulumi:"vngIds"`
 }
 
 func (OceanNpSchedulingTaskParametersParametersClusterRollArgs) ElementType() reflect.Type {
@@ -2302,26 +2321,32 @@ func (o OceanNpSchedulingTaskParametersParametersClusterRollOutput) ToOceanNpSch
 	}).(OceanNpSchedulingTaskParametersParametersClusterRollPtrOutput)
 }
 
+// Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
 func (o OceanNpSchedulingTaskParametersParametersClusterRollOutput) BatchMinHealthyPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanNpSchedulingTaskParametersParametersClusterRoll) *int { return v.BatchMinHealthyPercentage }).(pulumi.IntPtrOutput)
 }
 
+// Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.
 func (o OceanNpSchedulingTaskParametersParametersClusterRollOutput) BatchSizePercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanNpSchedulingTaskParametersParametersClusterRoll) *int { return v.BatchSizePercentage }).(pulumi.IntPtrOutput)
 }
 
+// Add a comment description for the roll. The comment is limited to 256 chars and optional.
 func (o OceanNpSchedulingTaskParametersParametersClusterRollOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanNpSchedulingTaskParametersParametersClusterRoll) *string { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
+// During the roll, if the parameter is set to true we honor PDB during the nodes replacement.
 func (o OceanNpSchedulingTaskParametersParametersClusterRollOutput) RespectPdb() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanNpSchedulingTaskParametersParametersClusterRoll) *bool { return v.RespectPdb }).(pulumi.BoolPtrOutput)
 }
 
+// During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.
 func (o OceanNpSchedulingTaskParametersParametersClusterRollOutput) RespectRestrictScaleDown() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanNpSchedulingTaskParametersParametersClusterRoll) *bool { return v.RespectRestrictScaleDown }).(pulumi.BoolPtrOutput)
 }
 
+// List of virtual node group identifiers to be rolled. Each identifier is a string. vngIds can be null, and cannot be used together with nodeNames and nodePoolNames.
 func (o OceanNpSchedulingTaskParametersParametersClusterRollOutput) VngIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanNpSchedulingTaskParametersParametersClusterRoll) []string { return v.VngIds }).(pulumi.StringArrayOutput)
 }
@@ -2350,6 +2375,7 @@ func (o OceanNpSchedulingTaskParametersParametersClusterRollPtrOutput) Elem() Oc
 	}).(OceanNpSchedulingTaskParametersParametersClusterRollOutput)
 }
 
+// Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
 func (o OceanNpSchedulingTaskParametersParametersClusterRollPtrOutput) BatchMinHealthyPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanNpSchedulingTaskParametersParametersClusterRoll) *int {
 		if v == nil {
@@ -2359,6 +2385,7 @@ func (o OceanNpSchedulingTaskParametersParametersClusterRollPtrOutput) BatchMinH
 	}).(pulumi.IntPtrOutput)
 }
 
+// Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.
 func (o OceanNpSchedulingTaskParametersParametersClusterRollPtrOutput) BatchSizePercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanNpSchedulingTaskParametersParametersClusterRoll) *int {
 		if v == nil {
@@ -2368,6 +2395,7 @@ func (o OceanNpSchedulingTaskParametersParametersClusterRollPtrOutput) BatchSize
 	}).(pulumi.IntPtrOutput)
 }
 
+// Add a comment description for the roll. The comment is limited to 256 chars and optional.
 func (o OceanNpSchedulingTaskParametersParametersClusterRollPtrOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanNpSchedulingTaskParametersParametersClusterRoll) *string {
 		if v == nil {
@@ -2377,6 +2405,7 @@ func (o OceanNpSchedulingTaskParametersParametersClusterRollPtrOutput) Comment()
 	}).(pulumi.StringPtrOutput)
 }
 
+// During the roll, if the parameter is set to true we honor PDB during the nodes replacement.
 func (o OceanNpSchedulingTaskParametersParametersClusterRollPtrOutput) RespectPdb() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanNpSchedulingTaskParametersParametersClusterRoll) *bool {
 		if v == nil {
@@ -2386,6 +2415,7 @@ func (o OceanNpSchedulingTaskParametersParametersClusterRollPtrOutput) RespectPd
 	}).(pulumi.BoolPtrOutput)
 }
 
+// During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.
 func (o OceanNpSchedulingTaskParametersParametersClusterRollPtrOutput) RespectRestrictScaleDown() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanNpSchedulingTaskParametersParametersClusterRoll) *bool {
 		if v == nil {
@@ -2395,6 +2425,7 @@ func (o OceanNpSchedulingTaskParametersParametersClusterRollPtrOutput) RespectRe
 	}).(pulumi.BoolPtrOutput)
 }
 
+// List of virtual node group identifiers to be rolled. Each identifier is a string. vngIds can be null, and cannot be used together with nodeNames and nodePoolNames.
 func (o OceanNpSchedulingTaskParametersParametersClusterRollPtrOutput) VngIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanNpSchedulingTaskParametersParametersClusterRoll) []string {
 		if v == nil {

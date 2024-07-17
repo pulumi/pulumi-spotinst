@@ -21,6 +21,9 @@ namespace Pulumi.SpotInst.Ecs.Outputs
         /// Object. Set Elastic Block Store properties .
         /// </summary>
         public readonly Outputs.OceanLaunchSpecBlockDeviceMappingEbs? Ebs;
+        /// <summary>
+        /// String. suppresses the specified device included in the block device mapping of the AMI.
+        /// </summary>
         public readonly string? NoDevice;
         public readonly string? VirtualName;
 

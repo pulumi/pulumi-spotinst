@@ -20,30 +20,62 @@ public final class MrScalarTaskScalingUpPolicyArgs extends com.pulumi.resources.
 
     public static final MrScalarTaskScalingUpPolicyArgs Empty = new MrScalarTaskScalingUpPolicyArgs();
 
+    /**
+     * The type of action to perform. Allowed values are : &#39;adjustment&#39;, &#39;setMinTarget&#39;, &#39;setMaxTarget&#39;, &#39;updateCapacity&#39;, &#39;percentageAdjustment&#39;
+     * 
+     */
     @Import(name="actionType")
     private @Nullable Output<String> actionType;
 
+    /**
+     * @return The type of action to perform. Allowed values are : &#39;adjustment&#39;, &#39;setMinTarget&#39;, &#39;setMaxTarget&#39;, &#39;updateCapacity&#39;, &#39;percentageAdjustment&#39;
+     * 
+     */
     public Optional<Output<String>> actionType() {
         return Optional.ofNullable(this.actionType);
     }
 
+    /**
+     * The number of instances to add/remove to/from the target capacity when scale is needed.
+     * 
+     */
     @Import(name="adjustment")
     private @Nullable Output<String> adjustment;
 
+    /**
+     * @return The number of instances to add/remove to/from the target capacity when scale is needed.
+     * 
+     */
     public Optional<Output<String>> adjustment() {
         return Optional.ofNullable(this.adjustment);
     }
 
+    /**
+     * The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
+     * 
+     */
     @Import(name="cooldown")
     private @Nullable Output<Integer> cooldown;
 
+    /**
+     * @return The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
+     * 
+     */
     public Optional<Output<Integer>> cooldown() {
         return Optional.ofNullable(this.cooldown);
     }
 
+    /**
+     * A mapping of dimensions describing qualities of the metric.
+     * 
+     */
     @Import(name="dimensions")
     private @Nullable Output<Map<String,Object>> dimensions;
 
+    /**
+     * @return A mapping of dimensions describing qualities of the metric.
+     * 
+     */
     public Optional<Output<Map<String,Object>>> dimensions() {
         return Optional.ofNullable(this.dimensions);
     }
@@ -55,16 +87,32 @@ public final class MrScalarTaskScalingUpPolicyArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.evaluationPeriods);
     }
 
+    /**
+     * Max target capacity for scale down.
+     * 
+     */
     @Import(name="maxTargetCapacity")
     private @Nullable Output<String> maxTargetCapacity;
 
+    /**
+     * @return Max target capacity for scale down.
+     * 
+     */
     public Optional<Output<String>> maxTargetCapacity() {
         return Optional.ofNullable(this.maxTargetCapacity);
     }
 
+    /**
+     * The maximum to set when scale is needed.
+     * 
+     */
     @Import(name="maximum")
     private @Nullable Output<String> maximum;
 
+    /**
+     * @return The maximum to set when scale is needed.
+     * 
+     */
     public Optional<Output<String>> maximum() {
         return Optional.ofNullable(this.maximum);
     }
@@ -76,16 +124,32 @@ public final class MrScalarTaskScalingUpPolicyArgs extends com.pulumi.resources.
         return this.metricName;
     }
 
+    /**
+     * Min target capacity for scale up.
+     * 
+     */
     @Import(name="minTargetCapacity")
     private @Nullable Output<String> minTargetCapacity;
 
+    /**
+     * @return Min target capacity for scale up.
+     * 
+     */
     public Optional<Output<String>> minTargetCapacity() {
         return Optional.ofNullable(this.minTargetCapacity);
     }
 
+    /**
+     * The minimum to set when scale is needed.
+     * 
+     */
     @Import(name="minimum")
     private @Nullable Output<String> minimum;
 
+    /**
+     * @return The minimum to set when scale is needed.
+     * 
+     */
     public Optional<Output<String>> minimum() {
         return Optional.ofNullable(this.minimum);
     }
@@ -111,9 +175,17 @@ public final class MrScalarTaskScalingUpPolicyArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.period);
     }
 
+    /**
+     * The name of the policy.
+     * 
+     */
     @Import(name="policyName", required=true)
     private Output<String> policyName;
 
+    /**
+     * @return The name of the policy.
+     * 
+     */
     public Output<String> policyName() {
         return this.policyName;
     }
@@ -125,9 +197,17 @@ public final class MrScalarTaskScalingUpPolicyArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.statistic);
     }
 
+    /**
+     * The number of instances to set when scale is needed.
+     * 
+     */
     @Import(name="target")
     private @Nullable Output<String> target;
 
+    /**
+     * @return The number of instances to set when scale is needed.
+     * 
+     */
     public Optional<Output<String>> target() {
         return Optional.ofNullable(this.target);
     }
@@ -187,38 +267,86 @@ public final class MrScalarTaskScalingUpPolicyArgs extends com.pulumi.resources.
             $ = new MrScalarTaskScalingUpPolicyArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param actionType The type of action to perform. Allowed values are : &#39;adjustment&#39;, &#39;setMinTarget&#39;, &#39;setMaxTarget&#39;, &#39;updateCapacity&#39;, &#39;percentageAdjustment&#39;
+         * 
+         * @return builder
+         * 
+         */
         public Builder actionType(@Nullable Output<String> actionType) {
             $.actionType = actionType;
             return this;
         }
 
+        /**
+         * @param actionType The type of action to perform. Allowed values are : &#39;adjustment&#39;, &#39;setMinTarget&#39;, &#39;setMaxTarget&#39;, &#39;updateCapacity&#39;, &#39;percentageAdjustment&#39;
+         * 
+         * @return builder
+         * 
+         */
         public Builder actionType(String actionType) {
             return actionType(Output.of(actionType));
         }
 
+        /**
+         * @param adjustment The number of instances to add/remove to/from the target capacity when scale is needed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder adjustment(@Nullable Output<String> adjustment) {
             $.adjustment = adjustment;
             return this;
         }
 
+        /**
+         * @param adjustment The number of instances to add/remove to/from the target capacity when scale is needed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder adjustment(String adjustment) {
             return adjustment(Output.of(adjustment));
         }
 
+        /**
+         * @param cooldown The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cooldown(@Nullable Output<Integer> cooldown) {
             $.cooldown = cooldown;
             return this;
         }
 
+        /**
+         * @param cooldown The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cooldown(Integer cooldown) {
             return cooldown(Output.of(cooldown));
         }
 
+        /**
+         * @param dimensions A mapping of dimensions describing qualities of the metric.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dimensions(@Nullable Output<Map<String,Object>> dimensions) {
             $.dimensions = dimensions;
             return this;
         }
 
+        /**
+         * @param dimensions A mapping of dimensions describing qualities of the metric.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dimensions(Map<String,Object> dimensions) {
             return dimensions(Output.of(dimensions));
         }
@@ -232,20 +360,44 @@ public final class MrScalarTaskScalingUpPolicyArgs extends com.pulumi.resources.
             return evaluationPeriods(Output.of(evaluationPeriods));
         }
 
+        /**
+         * @param maxTargetCapacity Max target capacity for scale down.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxTargetCapacity(@Nullable Output<String> maxTargetCapacity) {
             $.maxTargetCapacity = maxTargetCapacity;
             return this;
         }
 
+        /**
+         * @param maxTargetCapacity Max target capacity for scale down.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxTargetCapacity(String maxTargetCapacity) {
             return maxTargetCapacity(Output.of(maxTargetCapacity));
         }
 
+        /**
+         * @param maximum The maximum to set when scale is needed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maximum(@Nullable Output<String> maximum) {
             $.maximum = maximum;
             return this;
         }
 
+        /**
+         * @param maximum The maximum to set when scale is needed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maximum(String maximum) {
             return maximum(Output.of(maximum));
         }
@@ -259,20 +411,44 @@ public final class MrScalarTaskScalingUpPolicyArgs extends com.pulumi.resources.
             return metricName(Output.of(metricName));
         }
 
+        /**
+         * @param minTargetCapacity Min target capacity for scale up.
+         * 
+         * @return builder
+         * 
+         */
         public Builder minTargetCapacity(@Nullable Output<String> minTargetCapacity) {
             $.minTargetCapacity = minTargetCapacity;
             return this;
         }
 
+        /**
+         * @param minTargetCapacity Min target capacity for scale up.
+         * 
+         * @return builder
+         * 
+         */
         public Builder minTargetCapacity(String minTargetCapacity) {
             return minTargetCapacity(Output.of(minTargetCapacity));
         }
 
+        /**
+         * @param minimum The minimum to set when scale is needed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder minimum(@Nullable Output<String> minimum) {
             $.minimum = minimum;
             return this;
         }
 
+        /**
+         * @param minimum The minimum to set when scale is needed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder minimum(String minimum) {
             return minimum(Output.of(minimum));
         }
@@ -304,11 +480,23 @@ public final class MrScalarTaskScalingUpPolicyArgs extends com.pulumi.resources.
             return period(Output.of(period));
         }
 
+        /**
+         * @param policyName The name of the policy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder policyName(Output<String> policyName) {
             $.policyName = policyName;
             return this;
         }
 
+        /**
+         * @param policyName The name of the policy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder policyName(String policyName) {
             return policyName(Output.of(policyName));
         }
@@ -322,11 +510,23 @@ public final class MrScalarTaskScalingUpPolicyArgs extends com.pulumi.resources.
             return statistic(Output.of(statistic));
         }
 
+        /**
+         * @param target The number of instances to set when scale is needed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder target(@Nullable Output<String> target) {
             $.target = target;
             return this;
         }
 
+        /**
+         * @param target The number of instances to set when scale is needed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder target(String target) {
             return target(Output.of(target));
         }

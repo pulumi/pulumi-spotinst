@@ -11,12 +11,24 @@ import java.util.Objects;
 @CustomType
 public final class MrScalarTag {
     private String key;
+    /**
+     * @return Tag value.
+     * 
+     * &lt;a id=&#34;Optional Compute Parameters&#34;&gt;&lt;/a&gt;
+     * 
+     */
     private String value;
 
     private MrScalarTag() {}
     public String key() {
         return this.key;
     }
+    /**
+     * @return Tag value.
+     * 
+     * &lt;a id=&#34;Optional Compute Parameters&#34;&gt;&lt;/a&gt;
+     * 
+     */
     public String value() {
         return this.value;
     }

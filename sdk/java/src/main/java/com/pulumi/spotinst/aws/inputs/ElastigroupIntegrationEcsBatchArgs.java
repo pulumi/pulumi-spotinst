@@ -15,9 +15,21 @@ public final class ElastigroupIntegrationEcsBatchArgs extends com.pulumi.resourc
 
     public static final ElastigroupIntegrationEcsBatchArgs Empty = new ElastigroupIntegrationEcsBatchArgs();
 
+    /**
+     * Array of strings.
+     * 
+     * Usage:
+     * 
+     */
     @Import(name="jobQueueNames", required=true)
     private Output<List<String>> jobQueueNames;
 
+    /**
+     * @return Array of strings.
+     * 
+     * Usage:
+     * 
+     */
     public Output<List<String>> jobQueueNames() {
         return this.jobQueueNames;
     }
@@ -46,15 +58,39 @@ public final class ElastigroupIntegrationEcsBatchArgs extends com.pulumi.resourc
             $ = new ElastigroupIntegrationEcsBatchArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param jobQueueNames Array of strings.
+         * 
+         * Usage:
+         * 
+         * @return builder
+         * 
+         */
         public Builder jobQueueNames(Output<List<String>> jobQueueNames) {
             $.jobQueueNames = jobQueueNames;
             return this;
         }
 
+        /**
+         * @param jobQueueNames Array of strings.
+         * 
+         * Usage:
+         * 
+         * @return builder
+         * 
+         */
         public Builder jobQueueNames(List<String> jobQueueNames) {
             return jobQueueNames(Output.of(jobQueueNames));
         }
 
+        /**
+         * @param jobQueueNames Array of strings.
+         * 
+         * Usage:
+         * 
+         * @return builder
+         * 
+         */
         public Builder jobQueueNames(String... jobQueueNames) {
             return jobQueueNames(List.of(jobQueueNames));
         }
