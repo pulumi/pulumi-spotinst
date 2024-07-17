@@ -22,6 +22,10 @@ public final class OceanLaunchSpecBlockDeviceMapping {
      * 
      */
     private @Nullable OceanLaunchSpecBlockDeviceMappingEbs ebs;
+    /**
+     * @return String. Suppresses the specified device included in the block device mapping of the AMI.
+     * 
+     */
     private @Nullable String noDevice;
     private @Nullable String virtualName;
 
@@ -40,6 +44,10 @@ public final class OceanLaunchSpecBlockDeviceMapping {
     public Optional<OceanLaunchSpecBlockDeviceMappingEbs> ebs() {
         return Optional.ofNullable(this.ebs);
     }
+    /**
+     * @return String. Suppresses the specified device included in the block device mapping of the AMI.
+     * 
+     */
     public Optional<String> noDevice() {
         return Optional.ofNullable(this.noDevice);
     }

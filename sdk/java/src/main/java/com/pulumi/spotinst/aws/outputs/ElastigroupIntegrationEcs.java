@@ -19,17 +19,37 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupIntegrationEcs {
+    /**
+     * @return A key/value mapping of tags to assign to the resource.
+     * 
+     */
     private @Nullable List<ElastigroupIntegrationEcsAutoscaleAttribute> autoscaleAttributes;
     private @Nullable Integer autoscaleCooldown;
     private @Nullable ElastigroupIntegrationEcsAutoscaleDown autoscaleDown;
     private @Nullable ElastigroupIntegrationEcsAutoscaleHeadroom autoscaleHeadroom;
     private @Nullable Boolean autoscaleIsAutoConfig;
     private @Nullable Boolean autoscaleIsEnabled;
+    /**
+     * @return Determines whether to scale down non-service tasks.
+     * 
+     */
     private @Nullable Boolean autoscaleScaleDownNonServiceTasks;
+    /**
+     * @return Batch configuration object:
+     * 
+     */
     private @Nullable ElastigroupIntegrationEcsBatch batch;
+    /**
+     * @return The name of the EC2 Container Service cluster.
+     * 
+     */
     private String clusterName;
 
     private ElastigroupIntegrationEcs() {}
+    /**
+     * @return A key/value mapping of tags to assign to the resource.
+     * 
+     */
     public List<ElastigroupIntegrationEcsAutoscaleAttribute> autoscaleAttributes() {
         return this.autoscaleAttributes == null ? List.of() : this.autoscaleAttributes;
     }
@@ -48,12 +68,24 @@ public final class ElastigroupIntegrationEcs {
     public Optional<Boolean> autoscaleIsEnabled() {
         return Optional.ofNullable(this.autoscaleIsEnabled);
     }
+    /**
+     * @return Determines whether to scale down non-service tasks.
+     * 
+     */
     public Optional<Boolean> autoscaleScaleDownNonServiceTasks() {
         return Optional.ofNullable(this.autoscaleScaleDownNonServiceTasks);
     }
+    /**
+     * @return Batch configuration object:
+     * 
+     */
     public Optional<ElastigroupIntegrationEcsBatch> batch() {
         return Optional.ofNullable(this.batch);
     }
+    /**
+     * @return The name of the EC2 Container Service cluster.
+     * 
+     */
     public String clusterName() {
         return this.clusterName;
     }

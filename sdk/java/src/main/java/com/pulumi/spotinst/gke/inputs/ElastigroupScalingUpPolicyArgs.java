@@ -48,9 +48,17 @@ public final class ElastigroupScalingUpPolicyArgs extends com.pulumi.resources.R
         return Optional.ofNullable(this.dimensions);
     }
 
+    /**
+     * Amount of cooldown evaluation periods for scale down.
+     * 
+     */
     @Import(name="evaluationPeriods")
     private @Nullable Output<Integer> evaluationPeriods;
 
+    /**
+     * @return Amount of cooldown evaluation periods for scale down.
+     * 
+     */
     public Optional<Output<Integer>> evaluationPeriods() {
         return Optional.ofNullable(this.evaluationPeriods);
     }
@@ -195,11 +203,23 @@ public final class ElastigroupScalingUpPolicyArgs extends com.pulumi.resources.R
             return dimensions(List.of(dimensions));
         }
 
+        /**
+         * @param evaluationPeriods Amount of cooldown evaluation periods for scale down.
+         * 
+         * @return builder
+         * 
+         */
         public Builder evaluationPeriods(@Nullable Output<Integer> evaluationPeriods) {
             $.evaluationPeriods = evaluationPeriods;
             return this;
         }
 
+        /**
+         * @param evaluationPeriods Amount of cooldown evaluation periods for scale down.
+         * 
+         * @return builder
+         * 
+         */
         public Builder evaluationPeriods(Integer evaluationPeriods) {
             return evaluationPeriods(Output.of(evaluationPeriods));
         }

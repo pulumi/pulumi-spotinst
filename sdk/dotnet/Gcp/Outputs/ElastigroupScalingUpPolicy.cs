@@ -50,6 +50,9 @@ namespace Pulumi.SpotInst.Gcp.Outputs
         /// Name of scaling policy.
         /// </summary>
         public readonly string PolicyName;
+        /// <summary>
+        /// Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
+        /// </summary>
         public readonly string? Source;
         /// <summary>
         /// Statistic by which to evaluate the selected metric. Valid values: "AVERAGE", "SAMPLE_COUNT", "SUM", "MINIMUM", "MAXIMUM", "PERCENTILE", "COUNT".

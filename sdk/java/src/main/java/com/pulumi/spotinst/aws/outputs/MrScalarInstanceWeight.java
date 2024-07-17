@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class MrScalarInstanceWeight {
+    /**
+     * @return The type of the instance.
+     * 
+     */
     private String instanceType;
+    /**
+     * @return The weight given to the associated instance type.
+     * 
+     */
     private Integer weightedCapacity;
 
     private MrScalarInstanceWeight() {}
+    /**
+     * @return The type of the instance.
+     * 
+     */
     public String instanceType() {
         return this.instanceType;
     }
+    /**
+     * @return The weight given to the associated instance type.
+     * 
+     */
     public Integer weightedCapacity() {
         return this.weightedCapacity;
     }

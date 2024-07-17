@@ -19,6 +19,10 @@ public final class HealthCheckCheck {
      * 
      */
     private @Nullable String endpoint;
+    /**
+     * @return The number of consecutive successful health checks that must occur before declaring an instance healthy.
+     * 
+     */
     private Integer healthy;
     /**
      * @return The amount of time (in seconds) between each health check (minimum: 10).
@@ -41,6 +45,10 @@ public final class HealthCheckCheck {
      * 
      */
     private @Nullable Integer timeout;
+    /**
+     * @return The number of consecutive failed health checks that must occur before declaring an instance unhealthy.
+     * 
+     */
     private Integer unhealthy;
 
     private HealthCheckCheck() {}
@@ -54,6 +62,10 @@ public final class HealthCheckCheck {
     public Optional<String> endpoint() {
         return Optional.ofNullable(this.endpoint);
     }
+    /**
+     * @return The number of consecutive successful health checks that must occur before declaring an instance healthy.
+     * 
+     */
     public Integer healthy() {
         return this.healthy;
     }
@@ -88,6 +100,10 @@ public final class HealthCheckCheck {
     public Optional<Integer> timeout() {
         return Optional.ofNullable(this.timeout);
     }
+    /**
+     * @return The number of consecutive failed health checks that must occur before declaring an instance unhealthy.
+     * 
+     */
     public Integer unhealthy() {
         return this.unhealthy;
     }

@@ -13,12 +13,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupIntegrationBeanstalkDeploymentPreferences {
+    /**
+     * @return Should roll perform automatically
+     * 
+     */
     private @Nullable Boolean automaticRoll;
     private @Nullable Integer batchSizePercentage;
     private @Nullable Integer gracePeriod;
     private @Nullable ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy strategy;
 
     private ElastigroupIntegrationBeanstalkDeploymentPreferences() {}
+    /**
+     * @return Should roll perform automatically
+     * 
+     */
     public Optional<Boolean> automaticRoll() {
         return Optional.ofNullable(this.automaticRoll);
     }

@@ -15,9 +15,17 @@ public final class ElastigroupIntegrationGkeAutoscaleDownArgs extends com.pulumi
 
     public static final ElastigroupIntegrationGkeAutoscaleDownArgs Empty = new ElastigroupIntegrationGkeAutoscaleDownArgs();
 
+    /**
+     * Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
+     * 
+     */
     @Import(name="evaluationPeriods")
     private @Nullable Output<Integer> evaluationPeriods;
 
+    /**
+     * @return Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
+     * 
+     */
     public Optional<Output<Integer>> evaluationPeriods() {
         return Optional.ofNullable(this.evaluationPeriods);
     }
@@ -46,11 +54,23 @@ public final class ElastigroupIntegrationGkeAutoscaleDownArgs extends com.pulumi
             $ = new ElastigroupIntegrationGkeAutoscaleDownArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param evaluationPeriods Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder evaluationPeriods(@Nullable Output<Integer> evaluationPeriods) {
             $.evaluationPeriods = evaluationPeriods;
             return this;
         }
 
+        /**
+         * @param evaluationPeriods Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder evaluationPeriods(Integer evaluationPeriods) {
             return evaluationPeriods(Output.of(evaluationPeriods));
         }

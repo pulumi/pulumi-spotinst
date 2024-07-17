@@ -12,9 +12,15 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class MrScalarInstanceWeightArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The type of the instance.
+        /// </summary>
         [Input("instanceType", required: true)]
         public Input<string> InstanceType { get; set; } = null!;
 
+        /// <summary>
+        /// The weight given to the associated instance type.
+        /// </summary>
         [Input("weightedCapacity", required: true)]
         public Input<int> WeightedCapacity { get; set; } = null!;
 

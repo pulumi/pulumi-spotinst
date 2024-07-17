@@ -15,9 +15,17 @@ namespace Pulumi.SpotInst.Aws.Inputs
         [Input("performAt")]
         public Input<string>? PerformAt { get; set; }
 
+        /// <summary>
+        /// Time Window for when action occurs ex. Mon:23:50-Tue:00:20
+        /// </summary>
         [Input("timeWindow")]
         public Input<string>? TimeWindow { get; set; }
 
+        /// <summary>
+        /// Level to update
+        /// 
+        /// Usage:
+        /// </summary>
         [Input("updateLevel")]
         public Input<string>? UpdateLevel { get; set; }
 

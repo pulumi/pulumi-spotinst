@@ -15,16 +15,32 @@ public final class MrScalarProvisioningTimeoutArgs extends com.pulumi.resources.
 
     public static final MrScalarProvisioningTimeoutArgs Empty = new MrScalarProvisioningTimeoutArgs();
 
+    /**
+     * The amount of time (minutes) after which the cluster is automatically terminated if it&#39;s still in provisioning status. Minimum: &#39;15&#39;.
+     * 
+     */
     @Import(name="timeout", required=true)
     private Output<Integer> timeout;
 
+    /**
+     * @return The amount of time (minutes) after which the cluster is automatically terminated if it&#39;s still in provisioning status. Minimum: &#39;15&#39;.
+     * 
+     */
     public Output<Integer> timeout() {
         return this.timeout;
     }
 
+    /**
+     * The action to take if the timeout is exceeded. Valid values: `terminate`, `terminateAndRetry`.
+     * 
+     */
     @Import(name="timeoutAction", required=true)
     private Output<String> timeoutAction;
 
+    /**
+     * @return The action to take if the timeout is exceeded. Valid values: `terminate`, `terminateAndRetry`.
+     * 
+     */
     public Output<String> timeoutAction() {
         return this.timeoutAction;
     }
@@ -54,20 +70,44 @@ public final class MrScalarProvisioningTimeoutArgs extends com.pulumi.resources.
             $ = new MrScalarProvisioningTimeoutArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param timeout The amount of time (minutes) after which the cluster is automatically terminated if it&#39;s still in provisioning status. Minimum: &#39;15&#39;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeout(Output<Integer> timeout) {
             $.timeout = timeout;
             return this;
         }
 
+        /**
+         * @param timeout The amount of time (minutes) after which the cluster is automatically terminated if it&#39;s still in provisioning status. Minimum: &#39;15&#39;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeout(Integer timeout) {
             return timeout(Output.of(timeout));
         }
 
+        /**
+         * @param timeoutAction The action to take if the timeout is exceeded. Valid values: `terminate`, `terminateAndRetry`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeoutAction(Output<String> timeoutAction) {
             $.timeoutAction = timeoutAction;
             return this;
         }
 
+        /**
+         * @param timeoutAction The action to take if the timeout is exceeded. Valid values: `terminate`, `terminateAndRetry`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeoutAction(String timeoutAction) {
             return timeoutAction(Output.of(timeoutAction));
         }

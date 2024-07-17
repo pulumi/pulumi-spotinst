@@ -28,23 +28,47 @@ public final class ElastigroupIntegrationGkeArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.autoUpdate);
     }
 
+    /**
+     * The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
+     * 
+     */
     @Import(name="autoscaleCooldown")
     private @Nullable Output<Integer> autoscaleCooldown;
 
+    /**
+     * @return The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
+     * 
+     */
     public Optional<Output<Integer>> autoscaleCooldown() {
         return Optional.ofNullable(this.autoscaleCooldown);
     }
 
+    /**
+     * Enabling scale down.
+     * 
+     */
     @Import(name="autoscaleDown")
     private @Nullable Output<ElastigroupIntegrationGkeAutoscaleDownArgs> autoscaleDown;
 
+    /**
+     * @return Enabling scale down.
+     * 
+     */
     public Optional<Output<ElastigroupIntegrationGkeAutoscaleDownArgs>> autoscaleDown() {
         return Optional.ofNullable(this.autoscaleDown);
     }
 
+    /**
+     * Headroom for the cluster.
+     * 
+     */
     @Import(name="autoscaleHeadroom")
     private @Nullable Output<ElastigroupIntegrationGkeAutoscaleHeadroomArgs> autoscaleHeadroom;
 
+    /**
+     * @return Headroom for the cluster.
+     * 
+     */
     public Optional<Output<ElastigroupIntegrationGkeAutoscaleHeadroomArgs>> autoscaleHeadroom() {
         return Optional.ofNullable(this.autoscaleHeadroom);
     }
@@ -56,16 +80,32 @@ public final class ElastigroupIntegrationGkeArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.autoscaleIsAutoConfig);
     }
 
+    /**
+     * Specifies whether the auto scaling feature is enabled.
+     * 
+     */
     @Import(name="autoscaleIsEnabled")
     private @Nullable Output<Boolean> autoscaleIsEnabled;
 
+    /**
+     * @return Specifies whether the auto scaling feature is enabled.
+     * 
+     */
     public Optional<Output<Boolean>> autoscaleIsEnabled() {
         return Optional.ofNullable(this.autoscaleIsEnabled);
     }
 
+    /**
+     * Labels to assign to the resource.
+     * 
+     */
     @Import(name="autoscaleLabels")
     private @Nullable Output<List<ElastigroupIntegrationGkeAutoscaleLabelArgs>> autoscaleLabels;
 
+    /**
+     * @return Labels to assign to the resource.
+     * 
+     */
     public Optional<Output<List<ElastigroupIntegrationGkeAutoscaleLabelArgs>>> autoscaleLabels() {
         return Optional.ofNullable(this.autoscaleLabels);
     }
@@ -77,9 +117,17 @@ public final class ElastigroupIntegrationGkeArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.clusterId);
     }
 
+    /**
+     * The location of your GKE cluster.
+     * 
+     */
     @Import(name="location")
     private @Nullable Output<String> location;
 
+    /**
+     * @return The location of your GKE cluster.
+     * 
+     */
     public Optional<Output<String>> location() {
         return Optional.ofNullable(this.location);
     }
@@ -125,29 +173,65 @@ public final class ElastigroupIntegrationGkeArgs extends com.pulumi.resources.Re
             return autoUpdate(Output.of(autoUpdate));
         }
 
+        /**
+         * @param autoscaleCooldown The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoscaleCooldown(@Nullable Output<Integer> autoscaleCooldown) {
             $.autoscaleCooldown = autoscaleCooldown;
             return this;
         }
 
+        /**
+         * @param autoscaleCooldown The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoscaleCooldown(Integer autoscaleCooldown) {
             return autoscaleCooldown(Output.of(autoscaleCooldown));
         }
 
+        /**
+         * @param autoscaleDown Enabling scale down.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoscaleDown(@Nullable Output<ElastigroupIntegrationGkeAutoscaleDownArgs> autoscaleDown) {
             $.autoscaleDown = autoscaleDown;
             return this;
         }
 
+        /**
+         * @param autoscaleDown Enabling scale down.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoscaleDown(ElastigroupIntegrationGkeAutoscaleDownArgs autoscaleDown) {
             return autoscaleDown(Output.of(autoscaleDown));
         }
 
+        /**
+         * @param autoscaleHeadroom Headroom for the cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoscaleHeadroom(@Nullable Output<ElastigroupIntegrationGkeAutoscaleHeadroomArgs> autoscaleHeadroom) {
             $.autoscaleHeadroom = autoscaleHeadroom;
             return this;
         }
 
+        /**
+         * @param autoscaleHeadroom Headroom for the cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoscaleHeadroom(ElastigroupIntegrationGkeAutoscaleHeadroomArgs autoscaleHeadroom) {
             return autoscaleHeadroom(Output.of(autoscaleHeadroom));
         }
@@ -161,24 +245,54 @@ public final class ElastigroupIntegrationGkeArgs extends com.pulumi.resources.Re
             return autoscaleIsAutoConfig(Output.of(autoscaleIsAutoConfig));
         }
 
+        /**
+         * @param autoscaleIsEnabled Specifies whether the auto scaling feature is enabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoscaleIsEnabled(@Nullable Output<Boolean> autoscaleIsEnabled) {
             $.autoscaleIsEnabled = autoscaleIsEnabled;
             return this;
         }
 
+        /**
+         * @param autoscaleIsEnabled Specifies whether the auto scaling feature is enabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoscaleIsEnabled(Boolean autoscaleIsEnabled) {
             return autoscaleIsEnabled(Output.of(autoscaleIsEnabled));
         }
 
+        /**
+         * @param autoscaleLabels Labels to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoscaleLabels(@Nullable Output<List<ElastigroupIntegrationGkeAutoscaleLabelArgs>> autoscaleLabels) {
             $.autoscaleLabels = autoscaleLabels;
             return this;
         }
 
+        /**
+         * @param autoscaleLabels Labels to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoscaleLabels(List<ElastigroupIntegrationGkeAutoscaleLabelArgs> autoscaleLabels) {
             return autoscaleLabels(Output.of(autoscaleLabels));
         }
 
+        /**
+         * @param autoscaleLabels Labels to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoscaleLabels(ElastigroupIntegrationGkeAutoscaleLabelArgs... autoscaleLabels) {
             return autoscaleLabels(List.of(autoscaleLabels));
         }
@@ -192,11 +306,23 @@ public final class ElastigroupIntegrationGkeArgs extends com.pulumi.resources.Re
             return clusterId(Output.of(clusterId));
         }
 
+        /**
+         * @param location The location of your GKE cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder location(@Nullable Output<String> location) {
             $.location = location;
             return this;
         }
 
+        /**
+         * @param location The location of your GKE cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder location(String location) {
             return location(Output.of(location));
         }

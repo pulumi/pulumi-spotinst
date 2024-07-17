@@ -12,11 +12,20 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class ElastigroupIntegrationNomadGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Nomad ACL Token
+        /// </summary>
         [Input("aclToken")]
         public Input<string>? AclToken { get; set; }
 
         [Input("autoscaleConstraints")]
         private InputList<Inputs.ElastigroupIntegrationNomadAutoscaleConstraintGetArgs>? _autoscaleConstraints;
+
+        /// <summary>
+        /// A key/value mapping of tags to assign to the resource.
+        /// 
+        /// Usage:
+        /// </summary>
         public InputList<Inputs.ElastigroupIntegrationNomadAutoscaleConstraintGetArgs> AutoscaleConstraints
         {
             get => _autoscaleConstraints ?? (_autoscaleConstraints = new InputList<Inputs.ElastigroupIntegrationNomadAutoscaleConstraintGetArgs>());

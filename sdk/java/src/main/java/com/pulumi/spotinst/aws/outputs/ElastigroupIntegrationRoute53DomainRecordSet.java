@@ -18,7 +18,17 @@ public final class ElastigroupIntegrationRoute53DomainRecordSet {
      * 
      */
     private String name;
+    /**
+     * @return Designates whether the DNS address should be exposed to connections outside the VPC.
+     * 
+     * Usage:
+     * 
+     */
     private @Nullable Boolean usePublicDns;
+    /**
+     * @return Designates whether the IP address should be exposed to connections outside the VPC.
+     * 
+     */
     private @Nullable Boolean usePublicIp;
 
     private ElastigroupIntegrationRoute53DomainRecordSet() {}
@@ -29,9 +39,19 @@ public final class ElastigroupIntegrationRoute53DomainRecordSet {
     public String name() {
         return this.name;
     }
+    /**
+     * @return Designates whether the DNS address should be exposed to connections outside the VPC.
+     * 
+     * Usage:
+     * 
+     */
     public Optional<Boolean> usePublicDns() {
         return Optional.ofNullable(this.usePublicDns);
     }
+    /**
+     * @return Designates whether the IP address should be exposed to connections outside the VPC.
+     * 
+     */
     public Optional<Boolean> usePublicIp() {
         return Optional.ofNullable(this.usePublicIp);
     }

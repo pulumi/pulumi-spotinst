@@ -12,9 +12,17 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class ElastigroupIntegrationCodedeployDeploymentGroupGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The application name.
+        /// </summary>
         [Input("applicationName", required: true)]
         public Input<string> ApplicationName { get; set; } = null!;
 
+        /// <summary>
+        /// The deployment group name.
+        /// 
+        /// Usage:
+        /// </summary>
         [Input("deploymentGroupName", required: true)]
         public Input<string> DeploymentGroupName { get; set; } = null!;
 

@@ -21,6 +21,9 @@ namespace Pulumi.SpotInst.Inputs
         [Input("endpoint")]
         public Input<string>? Endpoint { get; set; }
 
+        /// <summary>
+        /// The number of consecutive successful health checks that must occur before declaring an instance healthy.
+        /// </summary>
         [Input("healthy", required: true)]
         public Input<int> Healthy { get; set; } = null!;
 
@@ -51,6 +54,9 @@ namespace Pulumi.SpotInst.Inputs
         [Input("timeout")]
         public Input<int>? Timeout { get; set; }
 
+        /// <summary>
+        /// The number of consecutive failed health checks that must occur before declaring an instance unhealthy.
+        /// </summary>
         [Input("unhealthy", required: true)]
         public Input<int> Unhealthy { get; set; } = null!;
 

@@ -15,16 +15,36 @@ public final class ElastigroupIntegrationDockerSwarmArgs extends com.pulumi.reso
 
     public static final ElastigroupIntegrationDockerSwarmArgs Empty = new ElastigroupIntegrationDockerSwarmArgs();
 
+    /**
+     * IP or FQDN of one of your swarm managers.
+     * 
+     */
     @Import(name="masterHost", required=true)
     private Output<String> masterHost;
 
+    /**
+     * @return IP or FQDN of one of your swarm managers.
+     * 
+     */
     public Output<String> masterHost() {
         return this.masterHost;
     }
 
+    /**
+     * Network port used by your swarm.
+     * 
+     * Usage:
+     * 
+     */
     @Import(name="masterPort", required=true)
     private Output<Integer> masterPort;
 
+    /**
+     * @return Network port used by your swarm.
+     * 
+     * Usage:
+     * 
+     */
     public Output<Integer> masterPort() {
         return this.masterPort;
     }
@@ -54,20 +74,48 @@ public final class ElastigroupIntegrationDockerSwarmArgs extends com.pulumi.reso
             $ = new ElastigroupIntegrationDockerSwarmArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param masterHost IP or FQDN of one of your swarm managers.
+         * 
+         * @return builder
+         * 
+         */
         public Builder masterHost(Output<String> masterHost) {
             $.masterHost = masterHost;
             return this;
         }
 
+        /**
+         * @param masterHost IP or FQDN of one of your swarm managers.
+         * 
+         * @return builder
+         * 
+         */
         public Builder masterHost(String masterHost) {
             return masterHost(Output.of(masterHost));
         }
 
+        /**
+         * @param masterPort Network port used by your swarm.
+         * 
+         * Usage:
+         * 
+         * @return builder
+         * 
+         */
         public Builder masterPort(Output<Integer> masterPort) {
             $.masterPort = masterPort;
             return this;
         }
 
+        /**
+         * @param masterPort Network port used by your swarm.
+         * 
+         * Usage:
+         * 
+         * @return builder
+         * 
+         */
         public Builder masterPort(Integer masterPort) {
             return masterPort(Output.of(masterPort));
         }

@@ -62,6 +62,10 @@ public final class ElastigroupScalingUpPolicy {
      * 
      */
     private String policyName;
+    /**
+     * @return Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
+     * 
+     */
     private @Nullable String source;
     /**
      * @return Statistic by which to evaluate the selected metric. Valid values: &#34;AVERAGE&#34;, &#34;SAMPLE_COUNT&#34;, &#34;SUM&#34;, &#34;MINIMUM&#34;, &#34;MAXIMUM&#34;, &#34;PERCENTILE&#34;, &#34;COUNT&#34;.
@@ -142,6 +146,10 @@ public final class ElastigroupScalingUpPolicy {
     public String policyName() {
         return this.policyName;
     }
+    /**
+     * @return Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
+     * 
+     */
     public Optional<String> source() {
         return Optional.ofNullable(this.source);
     }

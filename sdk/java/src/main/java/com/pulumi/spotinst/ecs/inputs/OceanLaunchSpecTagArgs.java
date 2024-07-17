@@ -14,16 +14,32 @@ public final class OceanLaunchSpecTagArgs extends com.pulumi.resources.ResourceA
 
     public static final OceanLaunchSpecTagArgs Empty = new OceanLaunchSpecTagArgs();
 
+    /**
+     * The label key.
+     * 
+     */
     @Import(name="key", required=true)
     private Output<String> key;
 
+    /**
+     * @return The label key.
+     * 
+     */
     public Output<String> key() {
         return this.key;
     }
 
+    /**
+     * The label value.
+     * 
+     */
     @Import(name="value", required=true)
     private Output<String> value;
 
+    /**
+     * @return The label value.
+     * 
+     */
     public Output<String> value() {
         return this.value;
     }
@@ -53,20 +69,44 @@ public final class OceanLaunchSpecTagArgs extends com.pulumi.resources.ResourceA
             $ = new OceanLaunchSpecTagArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param key The label key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(Output<String> key) {
             $.key = key;
             return this;
         }
 
+        /**
+         * @param key The label key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(String key) {
             return key(Output.of(key));
         }
 
+        /**
+         * @param value The label value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(Output<String> value) {
             $.value = value;
             return this;
         }
 
+        /**
+         * @param value The label value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

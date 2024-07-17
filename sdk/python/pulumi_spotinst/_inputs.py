@@ -504,9 +504,11 @@ class HealthCheckCheckArgs:
                  time_out: Optional[pulumi.Input[int]] = None,
                  timeout: Optional[pulumi.Input[int]] = None):
         """
+        :param pulumi.Input[int] healthy: The number of consecutive successful health checks that must occur before declaring an instance healthy.
         :param pulumi.Input[int] interval: The amount of time (in seconds) between each health check (minimum: 10).
         :param pulumi.Input[int] port: The port to use to connect with the instance.
         :param pulumi.Input[str] protocol: The protocol to use to connect with the instance. Valid values: http, https.
+        :param pulumi.Input[int] unhealthy: The number of consecutive failed health checks that must occur before declaring an instance unhealthy.
         :param pulumi.Input[str] endpoint: The destination for the request.
         :param pulumi.Input[int] timeout: the amount of time (in seconds) to wait when receiving a response from the health check.
         """
@@ -527,6 +529,9 @@ class HealthCheckCheckArgs:
     @property
     @pulumi.getter
     def healthy(self) -> pulumi.Input[int]:
+        """
+        The number of consecutive successful health checks that must occur before declaring an instance healthy.
+        """
         return pulumi.get(self, "healthy")
 
     @healthy.setter
@@ -572,6 +577,9 @@ class HealthCheckCheckArgs:
     @property
     @pulumi.getter
     def unhealthy(self) -> pulumi.Input[int]:
+        """
+        The number of consecutive failed health checks that must occur before declaring an instance unhealthy.
+        """
         return pulumi.get(self, "unhealthy")
 
     @unhealthy.setter

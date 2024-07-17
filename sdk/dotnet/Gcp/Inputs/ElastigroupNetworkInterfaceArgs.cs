@@ -14,6 +14,10 @@ namespace Pulumi.SpotInst.Gcp.Inputs
     {
         [Input("accessConfigs")]
         private InputList<Inputs.ElastigroupNetworkInterfaceAccessConfigArgs>? _accessConfigs;
+
+        /// <summary>
+        /// Array of configurations.
+        /// </summary>
         public InputList<Inputs.ElastigroupNetworkInterfaceAccessConfigArgs> AccessConfigs
         {
             get => _accessConfigs ?? (_accessConfigs = new InputList<Inputs.ElastigroupNetworkInterfaceAccessConfigArgs>());
@@ -28,6 +32,9 @@ namespace Pulumi.SpotInst.Gcp.Inputs
             set => _aliasIpRanges = value;
         }
 
+        /// <summary>
+        /// Network resource for this group.
+        /// </summary>
         [Input("network", required: true)]
         public Input<string> Network { get; set; } = null!;
 

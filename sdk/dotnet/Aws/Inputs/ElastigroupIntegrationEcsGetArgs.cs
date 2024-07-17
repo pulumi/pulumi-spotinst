@@ -14,6 +14,10 @@ namespace Pulumi.SpotInst.Aws.Inputs
     {
         [Input("autoscaleAttributes")]
         private InputList<Inputs.ElastigroupIntegrationEcsAutoscaleAttributeGetArgs>? _autoscaleAttributes;
+
+        /// <summary>
+        /// A key/value mapping of tags to assign to the resource.
+        /// </summary>
         public InputList<Inputs.ElastigroupIntegrationEcsAutoscaleAttributeGetArgs> AutoscaleAttributes
         {
             get => _autoscaleAttributes ?? (_autoscaleAttributes = new InputList<Inputs.ElastigroupIntegrationEcsAutoscaleAttributeGetArgs>());
@@ -35,12 +39,21 @@ namespace Pulumi.SpotInst.Aws.Inputs
         [Input("autoscaleIsEnabled")]
         public Input<bool>? AutoscaleIsEnabled { get; set; }
 
+        /// <summary>
+        /// Determines whether to scale down non-service tasks.
+        /// </summary>
         [Input("autoscaleScaleDownNonServiceTasks")]
         public Input<bool>? AutoscaleScaleDownNonServiceTasks { get; set; }
 
+        /// <summary>
+        /// Batch configuration object:
+        /// </summary>
         [Input("batch")]
         public Input<Inputs.ElastigroupIntegrationEcsBatchGetArgs>? Batch { get; set; }
 
+        /// <summary>
+        /// The name of the EC2 Container Service cluster.
+        /// </summary>
         [Input("clusterName", required: true)]
         public Input<string> ClusterName { get; set; } = null!;
 

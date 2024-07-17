@@ -21,9 +21,21 @@ public final class MrScalarTagArgs extends com.pulumi.resources.ResourceArgs {
         return this.key;
     }
 
+    /**
+     * Tag value.
+     * 
+     * &lt;a id=&#34;Optional Compute Parameters&#34;&gt;&lt;/a&gt;
+     * 
+     */
     @Import(name="value", required=true)
     private Output<String> value;
 
+    /**
+     * @return Tag value.
+     * 
+     * &lt;a id=&#34;Optional Compute Parameters&#34;&gt;&lt;/a&gt;
+     * 
+     */
     public Output<String> value() {
         return this.value;
     }
@@ -62,11 +74,27 @@ public final class MrScalarTagArgs extends com.pulumi.resources.ResourceArgs {
             return key(Output.of(key));
         }
 
+        /**
+         * @param value Tag value.
+         * 
+         * &lt;a id=&#34;Optional Compute Parameters&#34;&gt;&lt;/a&gt;
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(Output<String> value) {
             $.value = value;
             return this;
         }
 
+        /**
+         * @param value Tag value.
+         * 
+         * &lt;a id=&#34;Optional Compute Parameters&#34;&gt;&lt;/a&gt;
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

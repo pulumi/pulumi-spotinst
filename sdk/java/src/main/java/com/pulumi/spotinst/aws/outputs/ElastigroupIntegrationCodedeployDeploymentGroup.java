@@ -10,13 +10,33 @@ import java.util.Objects;
 
 @CustomType
 public final class ElastigroupIntegrationCodedeployDeploymentGroup {
+    /**
+     * @return The application name.
+     * 
+     */
     private String applicationName;
+    /**
+     * @return The deployment group name.
+     * 
+     * Usage:
+     * 
+     */
     private String deploymentGroupName;
 
     private ElastigroupIntegrationCodedeployDeploymentGroup() {}
+    /**
+     * @return The application name.
+     * 
+     */
     public String applicationName() {
         return this.applicationName;
     }
+    /**
+     * @return The deployment group name.
+     * 
+     * Usage:
+     * 
+     */
     public String deploymentGroupName() {
         return this.deploymentGroupName;
     }

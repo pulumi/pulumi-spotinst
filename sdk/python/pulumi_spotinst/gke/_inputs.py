@@ -377,6 +377,14 @@ class ElastigroupIntegrationGkeArgs:
                  autoscale_labels: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationGkeAutoscaleLabelArgs']]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] autoscale_cooldown: The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
+        :param pulumi.Input['ElastigroupIntegrationGkeAutoscaleDownArgs'] autoscale_down: Enabling scale down.
+        :param pulumi.Input['ElastigroupIntegrationGkeAutoscaleHeadroomArgs'] autoscale_headroom: Headroom for the cluster.
+        :param pulumi.Input[bool] autoscale_is_enabled: Specifies whether the auto scaling feature is enabled.
+        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationGkeAutoscaleLabelArgs']]] autoscale_labels: Labels to assign to the resource.
+        :param pulumi.Input[str] location: The location of your GKE cluster.
+        """
         if auto_update is not None:
             pulumi.set(__self__, "auto_update", auto_update)
         if autoscale_cooldown is not None:
@@ -408,6 +416,9 @@ class ElastigroupIntegrationGkeArgs:
     @property
     @pulumi.getter(name="autoscaleCooldown")
     def autoscale_cooldown(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
+        """
         return pulumi.get(self, "autoscale_cooldown")
 
     @autoscale_cooldown.setter
@@ -417,6 +428,9 @@ class ElastigroupIntegrationGkeArgs:
     @property
     @pulumi.getter(name="autoscaleDown")
     def autoscale_down(self) -> Optional[pulumi.Input['ElastigroupIntegrationGkeAutoscaleDownArgs']]:
+        """
+        Enabling scale down.
+        """
         return pulumi.get(self, "autoscale_down")
 
     @autoscale_down.setter
@@ -426,6 +440,9 @@ class ElastigroupIntegrationGkeArgs:
     @property
     @pulumi.getter(name="autoscaleHeadroom")
     def autoscale_headroom(self) -> Optional[pulumi.Input['ElastigroupIntegrationGkeAutoscaleHeadroomArgs']]:
+        """
+        Headroom for the cluster.
+        """
         return pulumi.get(self, "autoscale_headroom")
 
     @autoscale_headroom.setter
@@ -444,6 +461,9 @@ class ElastigroupIntegrationGkeArgs:
     @property
     @pulumi.getter(name="autoscaleIsEnabled")
     def autoscale_is_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether the auto scaling feature is enabled.
+        """
         return pulumi.get(self, "autoscale_is_enabled")
 
     @autoscale_is_enabled.setter
@@ -453,6 +473,9 @@ class ElastigroupIntegrationGkeArgs:
     @property
     @pulumi.getter(name="autoscaleLabels")
     def autoscale_labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationGkeAutoscaleLabelArgs']]]]:
+        """
+        Labels to assign to the resource.
+        """
         return pulumi.get(self, "autoscale_labels")
 
     @autoscale_labels.setter
@@ -471,6 +494,9 @@ class ElastigroupIntegrationGkeArgs:
     @property
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The location of your GKE cluster.
+        """
         return pulumi.get(self, "location")
 
     @location.setter
@@ -482,12 +508,18 @@ class ElastigroupIntegrationGkeArgs:
 class ElastigroupIntegrationGkeAutoscaleDownArgs:
     def __init__(__self__, *,
                  evaluation_periods: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] evaluation_periods: Amount of cooldown evaluation periods for scale down.
+        """
         if evaluation_periods is not None:
             pulumi.set(__self__, "evaluation_periods", evaluation_periods)
 
     @property
     @pulumi.getter(name="evaluationPeriods")
     def evaluation_periods(self) -> Optional[pulumi.Input[int]]:
+        """
+        Amount of cooldown evaluation periods for scale down.
+        """
         return pulumi.get(self, "evaluation_periods")
 
     @evaluation_periods.setter
@@ -501,6 +533,11 @@ class ElastigroupIntegrationGkeAutoscaleHeadroomArgs:
                  cpu_per_unit: Optional[pulumi.Input[int]] = None,
                  memory_per_unit: Optional[pulumi.Input[int]] = None,
                  num_of_units: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] cpu_per_unit: Cpu units for compute.
+        :param pulumi.Input[int] memory_per_unit: RAM units for compute.
+        :param pulumi.Input[int] num_of_units: Amount of units for compute.
+        """
         if cpu_per_unit is not None:
             pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
         if memory_per_unit is not None:
@@ -511,6 +548,9 @@ class ElastigroupIntegrationGkeAutoscaleHeadroomArgs:
     @property
     @pulumi.getter(name="cpuPerUnit")
     def cpu_per_unit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Cpu units for compute.
+        """
         return pulumi.get(self, "cpu_per_unit")
 
     @cpu_per_unit.setter
@@ -520,6 +560,9 @@ class ElastigroupIntegrationGkeAutoscaleHeadroomArgs:
     @property
     @pulumi.getter(name="memoryPerUnit")
     def memory_per_unit(self) -> Optional[pulumi.Input[int]]:
+        """
+        RAM units for compute.
+        """
         return pulumi.get(self, "memory_per_unit")
 
     @memory_per_unit.setter
@@ -529,6 +572,9 @@ class ElastigroupIntegrationGkeAutoscaleHeadroomArgs:
     @property
     @pulumi.getter(name="numOfUnits")
     def num_of_units(self) -> Optional[pulumi.Input[int]]:
+        """
+        Amount of units for compute.
+        """
         return pulumi.get(self, "num_of_units")
 
     @num_of_units.setter
@@ -730,6 +776,9 @@ class ElastigroupScalingDownPolicyArgs:
                  period: Optional[pulumi.Input[int]] = None,
                  source: Optional[pulumi.Input[str]] = None,
                  statistic: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] evaluation_periods: Amount of cooldown evaluation periods for scale down.
+        """
         pulumi.set(__self__, "metric_name", metric_name)
         pulumi.set(__self__, "namespace", namespace)
         pulumi.set(__self__, "policy_name", policy_name)
@@ -838,6 +887,9 @@ class ElastigroupScalingDownPolicyArgs:
     @property
     @pulumi.getter(name="evaluationPeriods")
     def evaluation_periods(self) -> Optional[pulumi.Input[int]]:
+        """
+        Amount of cooldown evaluation periods for scale down.
+        """
         return pulumi.get(self, "evaluation_periods")
 
     @evaluation_periods.setter
@@ -926,6 +978,9 @@ class ElastigroupScalingUpPolicyArgs:
                  period: Optional[pulumi.Input[int]] = None,
                  source: Optional[pulumi.Input[str]] = None,
                  statistic: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] evaluation_periods: Amount of cooldown evaluation periods for scale down.
+        """
         pulumi.set(__self__, "metric_name", metric_name)
         pulumi.set(__self__, "namespace", namespace)
         pulumi.set(__self__, "policy_name", policy_name)
@@ -1034,6 +1089,9 @@ class ElastigroupScalingUpPolicyArgs:
     @property
     @pulumi.getter(name="evaluationPeriods")
     def evaluation_periods(self) -> Optional[pulumi.Input[int]]:
+        """
+        Amount of cooldown evaluation periods for scale down.
+        """
         return pulumi.get(self, "evaluation_periods")
 
     @evaluation_periods.setter
@@ -1460,6 +1518,9 @@ class OceanImportBackendServiceNamedPortArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  ports: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: A list of ports.
+        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "ports", ports)
 
@@ -1475,6 +1536,9 @@ class OceanImportBackendServiceNamedPortArgs:
     @property
     @pulumi.getter
     def ports(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        A list of ports.
+        """
         return pulumi.get(self, "ports")
 
     @ports.setter

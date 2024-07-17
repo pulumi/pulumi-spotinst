@@ -14,13 +14,31 @@ namespace Pulumi.SpotInst.Gke.Outputs
     public sealed class ElastigroupIntegrationGke
     {
         public readonly bool? AutoUpdate;
+        /// <summary>
+        /// The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
+        /// </summary>
         public readonly int? AutoscaleCooldown;
+        /// <summary>
+        /// Enabling scale down.
+        /// </summary>
         public readonly Outputs.ElastigroupIntegrationGkeAutoscaleDown? AutoscaleDown;
+        /// <summary>
+        /// Headroom for the cluster.
+        /// </summary>
         public readonly Outputs.ElastigroupIntegrationGkeAutoscaleHeadroom? AutoscaleHeadroom;
         public readonly bool? AutoscaleIsAutoConfig;
+        /// <summary>
+        /// Specifies whether the auto scaling feature is enabled.
+        /// </summary>
         public readonly bool? AutoscaleIsEnabled;
+        /// <summary>
+        /// Labels to assign to the resource.
+        /// </summary>
         public readonly ImmutableArray<Outputs.ElastigroupIntegrationGkeAutoscaleLabel> AutoscaleLabels;
         public readonly string? ClusterId;
+        /// <summary>
+        /// The location of your GKE cluster.
+        /// </summary>
         public readonly string? Location;
 
         [OutputConstructor]

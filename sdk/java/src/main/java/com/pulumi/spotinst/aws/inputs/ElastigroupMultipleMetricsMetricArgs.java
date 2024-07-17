@@ -25,9 +25,17 @@ public final class ElastigroupMultipleMetricsMetricArgs extends com.pulumi.resou
         return Optional.ofNullable(this.dimensions);
     }
 
+    /**
+     * Percentile statistic. Valid values: `&#34;p0.1&#34;` - `&#34;p100&#34;`.
+     * 
+     */
     @Import(name="extendedStatistic")
     private @Nullable Output<String> extendedStatistic;
 
+    /**
+     * @return Percentile statistic. Valid values: `&#34;p0.1&#34;` - `&#34;p100&#34;`.
+     * 
+     */
     public Optional<Output<String>> extendedStatistic() {
         return Optional.ofNullable(this.extendedStatistic);
     }
@@ -118,11 +126,23 @@ public final class ElastigroupMultipleMetricsMetricArgs extends com.pulumi.resou
             return dimensions(List.of(dimensions));
         }
 
+        /**
+         * @param extendedStatistic Percentile statistic. Valid values: `&#34;p0.1&#34;` - `&#34;p100&#34;`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder extendedStatistic(@Nullable Output<String> extendedStatistic) {
             $.extendedStatistic = extendedStatistic;
             return this;
         }
 
+        /**
+         * @param extendedStatistic Percentile statistic. Valid values: `&#34;p0.1&#34;` - `&#34;p100&#34;`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder extendedStatistic(String extendedStatistic) {
             return extendedStatistic(Output.of(extendedStatistic));
         }

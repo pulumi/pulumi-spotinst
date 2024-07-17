@@ -12,23 +12,42 @@ namespace Pulumi.SpotInst.Azure.Inputs
 
     public sealed class OceanNpSchedulingTaskParametersParametersClusterRollGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+        /// </summary>
         [Input("batchMinHealthyPercentage")]
         public Input<int>? BatchMinHealthyPercentage { get; set; }
 
+        /// <summary>
+        /// Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.
+        /// </summary>
         [Input("batchSizePercentage")]
         public Input<int>? BatchSizePercentage { get; set; }
 
+        /// <summary>
+        /// Add a comment description for the roll. The comment is limited to 256 chars and optional.
+        /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
+        /// <summary>
+        /// During the roll, if the parameter is set to true we honor PDB during the nodes replacement.
+        /// </summary>
         [Input("respectPdb")]
         public Input<bool>? RespectPdb { get; set; }
 
+        /// <summary>
+        /// During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.
+        /// </summary>
         [Input("respectRestrictScaleDown")]
         public Input<bool>? RespectRestrictScaleDown { get; set; }
 
         [Input("vngIds")]
         private InputList<string>? _vngIds;
+
+        /// <summary>
+        /// List of virtual node group identifiers to be rolled. Each identifier is a string. vngIds can be null, and cannot be used together with nodeNames and nodePoolNames.
+        /// </summary>
         public InputList<string> VngIds
         {
             get => _vngIds ?? (_vngIds = new InputList<string>());

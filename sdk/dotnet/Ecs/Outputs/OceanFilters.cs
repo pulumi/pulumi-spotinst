@@ -13,24 +13,75 @@ namespace Pulumi.SpotInst.Ecs.Outputs
     [OutputType]
     public sealed class OceanFilters
     {
+        /// <summary>
+        /// The filtered instance types will support at least one of the architectures from this list.
+        /// </summary>
         public readonly ImmutableArray<string> Architectures;
+        /// <summary>
+        /// The filtered instance types will belong to one of the categories types from this list.
+        /// </summary>
         public readonly ImmutableArray<string> Categories;
+        /// <summary>
+        /// The filtered instance types will have one of the disk type from this list.
+        /// </summary>
         public readonly ImmutableArray<string> DiskTypes;
+        /// <summary>
+        /// Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
+        /// </summary>
         public readonly ImmutableArray<string> ExcludeFamilies;
+        /// <summary>
+        /// In case excludeMetal is set to true, metal types will not be available for scaling.
+        /// </summary>
         public readonly bool? ExcludeMetal;
+        /// <summary>
+        /// The filtered instance types will have a hypervisor type from this list.
+        /// </summary>
         public readonly ImmutableArray<string> Hypervisors;
+        /// <summary>
+        /// Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
+        /// </summary>
         public readonly ImmutableArray<string> IncludeFamilies;
+        /// <summary>
+        /// Ena is supported or not.
+        /// </summary>
         public readonly string? IsEnaSupported;
+        /// <summary>
+        /// Maximum total number of GPUs.
+        /// </summary>
         public readonly int? MaxGpu;
         public readonly double? MaxMemoryGib;
+        /// <summary>
+        /// Maximum Bandwidth in Gib/s of network performance.
+        /// </summary>
         public readonly int? MaxNetworkPerformance;
         public readonly int? MaxVcpu;
+        /// <summary>
+        /// Minimum number of network interfaces (ENIs).
+        /// </summary>
         public readonly int? MinEnis;
+        /// <summary>
+        /// Minimum total number of GPUs.
+        /// </summary>
         public readonly int? MinGpu;
+        /// <summary>
+        /// Minimum amount of Memory (GiB).
+        /// </summary>
         public readonly double? MinMemoryGib;
+        /// <summary>
+        /// Minimum Bandwidth in Gib/s of network performance.
+        /// </summary>
         public readonly int? MinNetworkPerformance;
+        /// <summary>
+        /// Minimum number of vcpus available.
+        /// </summary>
         public readonly int? MinVcpu;
+        /// <summary>
+        /// The filtered instance types will have a root device types from this list.
+        /// </summary>
         public readonly ImmutableArray<string> RootDeviceTypes;
+        /// <summary>
+        /// The filtered instance types will support at least one of the virtualization types from this list.
+        /// </summary>
         public readonly ImmutableArray<string> VirtualizationTypes;
 
         [OutputConstructor]

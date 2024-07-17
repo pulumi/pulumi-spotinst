@@ -25,9 +25,17 @@ public final class OceanNpSchedulingTaskArgs extends com.pulumi.resources.Resour
         return this.cronExpression;
     }
 
+    /**
+     * Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+     * 
+     */
     @Import(name="isEnabled", required=true)
     private Output<Boolean> isEnabled;
 
+    /**
+     * @return Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+     * 
+     */
     public Output<Boolean> isEnabled() {
         return this.isEnabled;
     }
@@ -82,11 +90,23 @@ public final class OceanNpSchedulingTaskArgs extends com.pulumi.resources.Resour
             return cronExpression(Output.of(cronExpression));
         }
 
+        /**
+         * @param isEnabled Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isEnabled(Output<Boolean> isEnabled) {
             $.isEnabled = isEnabled;
             return this;
         }
 
+        /**
+         * @param isEnabled Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isEnabled(Boolean isEnabled) {
             return isEnabled(Output.of(isEnabled));
         }

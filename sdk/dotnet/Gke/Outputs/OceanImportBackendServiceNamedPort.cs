@@ -14,6 +14,9 @@ namespace Pulumi.SpotInst.Gke.Outputs
     public sealed class OceanImportBackendServiceNamedPort
     {
         public readonly string Name;
+        /// <summary>
+        /// A list of ports.
+        /// </summary>
         public readonly ImmutableArray<string> Ports;
 
         [OutputConstructor]

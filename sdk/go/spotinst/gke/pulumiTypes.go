@@ -816,15 +816,21 @@ func (o ElastigroupIntegrationDockerSwarmPtrOutput) MasterPort() pulumi.IntPtrOu
 }
 
 type ElastigroupIntegrationGke struct {
-	AutoUpdate            *bool                                       `pulumi:"autoUpdate"`
-	AutoscaleCooldown     *int                                        `pulumi:"autoscaleCooldown"`
-	AutoscaleDown         *ElastigroupIntegrationGkeAutoscaleDown     `pulumi:"autoscaleDown"`
+	AutoUpdate *bool `pulumi:"autoUpdate"`
+	// The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
+	AutoscaleCooldown *int `pulumi:"autoscaleCooldown"`
+	// Enabling scale down.
+	AutoscaleDown *ElastigroupIntegrationGkeAutoscaleDown `pulumi:"autoscaleDown"`
+	// Headroom for the cluster.
 	AutoscaleHeadroom     *ElastigroupIntegrationGkeAutoscaleHeadroom `pulumi:"autoscaleHeadroom"`
 	AutoscaleIsAutoConfig *bool                                       `pulumi:"autoscaleIsAutoConfig"`
-	AutoscaleIsEnabled    *bool                                       `pulumi:"autoscaleIsEnabled"`
-	AutoscaleLabels       []ElastigroupIntegrationGkeAutoscaleLabel   `pulumi:"autoscaleLabels"`
-	ClusterId             *string                                     `pulumi:"clusterId"`
-	Location              *string                                     `pulumi:"location"`
+	// Specifies whether the auto scaling feature is enabled.
+	AutoscaleIsEnabled *bool `pulumi:"autoscaleIsEnabled"`
+	// Labels to assign to the resource.
+	AutoscaleLabels []ElastigroupIntegrationGkeAutoscaleLabel `pulumi:"autoscaleLabels"`
+	ClusterId       *string                                   `pulumi:"clusterId"`
+	// The location of your GKE cluster.
+	Location *string `pulumi:"location"`
 }
 
 // ElastigroupIntegrationGkeInput is an input type that accepts ElastigroupIntegrationGkeArgs and ElastigroupIntegrationGkeOutput values.
@@ -839,15 +845,21 @@ type ElastigroupIntegrationGkeInput interface {
 }
 
 type ElastigroupIntegrationGkeArgs struct {
-	AutoUpdate            pulumi.BoolPtrInput                                `pulumi:"autoUpdate"`
-	AutoscaleCooldown     pulumi.IntPtrInput                                 `pulumi:"autoscaleCooldown"`
-	AutoscaleDown         ElastigroupIntegrationGkeAutoscaleDownPtrInput     `pulumi:"autoscaleDown"`
+	AutoUpdate pulumi.BoolPtrInput `pulumi:"autoUpdate"`
+	// The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
+	AutoscaleCooldown pulumi.IntPtrInput `pulumi:"autoscaleCooldown"`
+	// Enabling scale down.
+	AutoscaleDown ElastigroupIntegrationGkeAutoscaleDownPtrInput `pulumi:"autoscaleDown"`
+	// Headroom for the cluster.
 	AutoscaleHeadroom     ElastigroupIntegrationGkeAutoscaleHeadroomPtrInput `pulumi:"autoscaleHeadroom"`
 	AutoscaleIsAutoConfig pulumi.BoolPtrInput                                `pulumi:"autoscaleIsAutoConfig"`
-	AutoscaleIsEnabled    pulumi.BoolPtrInput                                `pulumi:"autoscaleIsEnabled"`
-	AutoscaleLabels       ElastigroupIntegrationGkeAutoscaleLabelArrayInput  `pulumi:"autoscaleLabels"`
-	ClusterId             pulumi.StringPtrInput                              `pulumi:"clusterId"`
-	Location              pulumi.StringPtrInput                              `pulumi:"location"`
+	// Specifies whether the auto scaling feature is enabled.
+	AutoscaleIsEnabled pulumi.BoolPtrInput `pulumi:"autoscaleIsEnabled"`
+	// Labels to assign to the resource.
+	AutoscaleLabels ElastigroupIntegrationGkeAutoscaleLabelArrayInput `pulumi:"autoscaleLabels"`
+	ClusterId       pulumi.StringPtrInput                             `pulumi:"clusterId"`
+	// The location of your GKE cluster.
+	Location pulumi.StringPtrInput `pulumi:"location"`
 }
 
 func (ElastigroupIntegrationGkeArgs) ElementType() reflect.Type {
@@ -931,14 +943,17 @@ func (o ElastigroupIntegrationGkeOutput) AutoUpdate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationGke) *bool { return v.AutoUpdate }).(pulumi.BoolPtrOutput)
 }
 
+// The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
 func (o ElastigroupIntegrationGkeOutput) AutoscaleCooldown() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationGke) *int { return v.AutoscaleCooldown }).(pulumi.IntPtrOutput)
 }
 
+// Enabling scale down.
 func (o ElastigroupIntegrationGkeOutput) AutoscaleDown() ElastigroupIntegrationGkeAutoscaleDownPtrOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationGke) *ElastigroupIntegrationGkeAutoscaleDown { return v.AutoscaleDown }).(ElastigroupIntegrationGkeAutoscaleDownPtrOutput)
 }
 
+// Headroom for the cluster.
 func (o ElastigroupIntegrationGkeOutput) AutoscaleHeadroom() ElastigroupIntegrationGkeAutoscaleHeadroomPtrOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationGke) *ElastigroupIntegrationGkeAutoscaleHeadroom {
 		return v.AutoscaleHeadroom
@@ -949,10 +964,12 @@ func (o ElastigroupIntegrationGkeOutput) AutoscaleIsAutoConfig() pulumi.BoolPtrO
 	return o.ApplyT(func(v ElastigroupIntegrationGke) *bool { return v.AutoscaleIsAutoConfig }).(pulumi.BoolPtrOutput)
 }
 
+// Specifies whether the auto scaling feature is enabled.
 func (o ElastigroupIntegrationGkeOutput) AutoscaleIsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationGke) *bool { return v.AutoscaleIsEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Labels to assign to the resource.
 func (o ElastigroupIntegrationGkeOutput) AutoscaleLabels() ElastigroupIntegrationGkeAutoscaleLabelArrayOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationGke) []ElastigroupIntegrationGkeAutoscaleLabel { return v.AutoscaleLabels }).(ElastigroupIntegrationGkeAutoscaleLabelArrayOutput)
 }
@@ -961,6 +978,7 @@ func (o ElastigroupIntegrationGkeOutput) ClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationGke) *string { return v.ClusterId }).(pulumi.StringPtrOutput)
 }
 
+// The location of your GKE cluster.
 func (o ElastigroupIntegrationGkeOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationGke) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
@@ -998,6 +1016,7 @@ func (o ElastigroupIntegrationGkePtrOutput) AutoUpdate() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
 func (o ElastigroupIntegrationGkePtrOutput) AutoscaleCooldown() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationGke) *int {
 		if v == nil {
@@ -1007,6 +1026,7 @@ func (o ElastigroupIntegrationGkePtrOutput) AutoscaleCooldown() pulumi.IntPtrOut
 	}).(pulumi.IntPtrOutput)
 }
 
+// Enabling scale down.
 func (o ElastigroupIntegrationGkePtrOutput) AutoscaleDown() ElastigroupIntegrationGkeAutoscaleDownPtrOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationGke) *ElastigroupIntegrationGkeAutoscaleDown {
 		if v == nil {
@@ -1016,6 +1036,7 @@ func (o ElastigroupIntegrationGkePtrOutput) AutoscaleDown() ElastigroupIntegrati
 	}).(ElastigroupIntegrationGkeAutoscaleDownPtrOutput)
 }
 
+// Headroom for the cluster.
 func (o ElastigroupIntegrationGkePtrOutput) AutoscaleHeadroom() ElastigroupIntegrationGkeAutoscaleHeadroomPtrOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationGke) *ElastigroupIntegrationGkeAutoscaleHeadroom {
 		if v == nil {
@@ -1034,6 +1055,7 @@ func (o ElastigroupIntegrationGkePtrOutput) AutoscaleIsAutoConfig() pulumi.BoolP
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Specifies whether the auto scaling feature is enabled.
 func (o ElastigroupIntegrationGkePtrOutput) AutoscaleIsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationGke) *bool {
 		if v == nil {
@@ -1043,6 +1065,7 @@ func (o ElastigroupIntegrationGkePtrOutput) AutoscaleIsEnabled() pulumi.BoolPtrO
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Labels to assign to the resource.
 func (o ElastigroupIntegrationGkePtrOutput) AutoscaleLabels() ElastigroupIntegrationGkeAutoscaleLabelArrayOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationGke) []ElastigroupIntegrationGkeAutoscaleLabel {
 		if v == nil {
@@ -1061,6 +1084,7 @@ func (o ElastigroupIntegrationGkePtrOutput) ClusterId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The location of your GKE cluster.
 func (o ElastigroupIntegrationGkePtrOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationGke) *string {
 		if v == nil {
@@ -1071,6 +1095,7 @@ func (o ElastigroupIntegrationGkePtrOutput) Location() pulumi.StringPtrOutput {
 }
 
 type ElastigroupIntegrationGkeAutoscaleDown struct {
+	// Amount of cooldown evaluation periods for scale down.
 	EvaluationPeriods *int `pulumi:"evaluationPeriods"`
 }
 
@@ -1086,6 +1111,7 @@ type ElastigroupIntegrationGkeAutoscaleDownInput interface {
 }
 
 type ElastigroupIntegrationGkeAutoscaleDownArgs struct {
+	// Amount of cooldown evaluation periods for scale down.
 	EvaluationPeriods pulumi.IntPtrInput `pulumi:"evaluationPeriods"`
 }
 
@@ -1166,6 +1192,7 @@ func (o ElastigroupIntegrationGkeAutoscaleDownOutput) ToElastigroupIntegrationGk
 	}).(ElastigroupIntegrationGkeAutoscaleDownPtrOutput)
 }
 
+// Amount of cooldown evaluation periods for scale down.
 func (o ElastigroupIntegrationGkeAutoscaleDownOutput) EvaluationPeriods() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationGkeAutoscaleDown) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
 }
@@ -1194,6 +1221,7 @@ func (o ElastigroupIntegrationGkeAutoscaleDownPtrOutput) Elem() ElastigroupInteg
 	}).(ElastigroupIntegrationGkeAutoscaleDownOutput)
 }
 
+// Amount of cooldown evaluation periods for scale down.
 func (o ElastigroupIntegrationGkeAutoscaleDownPtrOutput) EvaluationPeriods() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationGkeAutoscaleDown) *int {
 		if v == nil {
@@ -1204,9 +1232,12 @@ func (o ElastigroupIntegrationGkeAutoscaleDownPtrOutput) EvaluationPeriods() pul
 }
 
 type ElastigroupIntegrationGkeAutoscaleHeadroom struct {
-	CpuPerUnit    *int `pulumi:"cpuPerUnit"`
+	// Cpu units for compute.
+	CpuPerUnit *int `pulumi:"cpuPerUnit"`
+	// RAM units for compute.
 	MemoryPerUnit *int `pulumi:"memoryPerUnit"`
-	NumOfUnits    *int `pulumi:"numOfUnits"`
+	// Amount of units for compute.
+	NumOfUnits *int `pulumi:"numOfUnits"`
 }
 
 // ElastigroupIntegrationGkeAutoscaleHeadroomInput is an input type that accepts ElastigroupIntegrationGkeAutoscaleHeadroomArgs and ElastigroupIntegrationGkeAutoscaleHeadroomOutput values.
@@ -1221,9 +1252,12 @@ type ElastigroupIntegrationGkeAutoscaleHeadroomInput interface {
 }
 
 type ElastigroupIntegrationGkeAutoscaleHeadroomArgs struct {
-	CpuPerUnit    pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
+	// Cpu units for compute.
+	CpuPerUnit pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
+	// RAM units for compute.
 	MemoryPerUnit pulumi.IntPtrInput `pulumi:"memoryPerUnit"`
-	NumOfUnits    pulumi.IntPtrInput `pulumi:"numOfUnits"`
+	// Amount of units for compute.
+	NumOfUnits pulumi.IntPtrInput `pulumi:"numOfUnits"`
 }
 
 func (ElastigroupIntegrationGkeAutoscaleHeadroomArgs) ElementType() reflect.Type {
@@ -1303,14 +1337,17 @@ func (o ElastigroupIntegrationGkeAutoscaleHeadroomOutput) ToElastigroupIntegrati
 	}).(ElastigroupIntegrationGkeAutoscaleHeadroomPtrOutput)
 }
 
+// Cpu units for compute.
 func (o ElastigroupIntegrationGkeAutoscaleHeadroomOutput) CpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationGkeAutoscaleHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
+// RAM units for compute.
 func (o ElastigroupIntegrationGkeAutoscaleHeadroomOutput) MemoryPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationGkeAutoscaleHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
 }
 
+// Amount of units for compute.
 func (o ElastigroupIntegrationGkeAutoscaleHeadroomOutput) NumOfUnits() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationGkeAutoscaleHeadroom) *int { return v.NumOfUnits }).(pulumi.IntPtrOutput)
 }
@@ -1339,6 +1376,7 @@ func (o ElastigroupIntegrationGkeAutoscaleHeadroomPtrOutput) Elem() ElastigroupI
 	}).(ElastigroupIntegrationGkeAutoscaleHeadroomOutput)
 }
 
+// Cpu units for compute.
 func (o ElastigroupIntegrationGkeAutoscaleHeadroomPtrOutput) CpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationGkeAutoscaleHeadroom) *int {
 		if v == nil {
@@ -1348,6 +1386,7 @@ func (o ElastigroupIntegrationGkeAutoscaleHeadroomPtrOutput) CpuPerUnit() pulumi
 	}).(pulumi.IntPtrOutput)
 }
 
+// RAM units for compute.
 func (o ElastigroupIntegrationGkeAutoscaleHeadroomPtrOutput) MemoryPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationGkeAutoscaleHeadroom) *int {
 		if v == nil {
@@ -1357,6 +1396,7 @@ func (o ElastigroupIntegrationGkeAutoscaleHeadroomPtrOutput) MemoryPerUnit() pul
 	}).(pulumi.IntPtrOutput)
 }
 
+// Amount of units for compute.
 func (o ElastigroupIntegrationGkeAutoscaleHeadroomPtrOutput) NumOfUnits() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationGkeAutoscaleHeadroom) *int {
 		if v == nil {
@@ -1973,20 +2013,21 @@ func (o ElastigroupNetworkInterfaceAliasIpRangeArrayOutput) Index(i pulumi.IntIn
 }
 
 type ElastigroupScalingDownPolicy struct {
-	ActionType        *string                                 `pulumi:"actionType"`
-	Adjustment        *int                                    `pulumi:"adjustment"`
-	Cooldown          *int                                    `pulumi:"cooldown"`
-	Dimensions        []ElastigroupScalingDownPolicyDimension `pulumi:"dimensions"`
-	EvaluationPeriods *int                                    `pulumi:"evaluationPeriods"`
-	MetricName        string                                  `pulumi:"metricName"`
-	Namespace         string                                  `pulumi:"namespace"`
-	Operator          *string                                 `pulumi:"operator"`
-	Period            *int                                    `pulumi:"period"`
-	PolicyName        string                                  `pulumi:"policyName"`
-	Source            *string                                 `pulumi:"source"`
-	Statistic         *string                                 `pulumi:"statistic"`
-	Threshold         float64                                 `pulumi:"threshold"`
-	Unit              string                                  `pulumi:"unit"`
+	ActionType *string                                 `pulumi:"actionType"`
+	Adjustment *int                                    `pulumi:"adjustment"`
+	Cooldown   *int                                    `pulumi:"cooldown"`
+	Dimensions []ElastigroupScalingDownPolicyDimension `pulumi:"dimensions"`
+	// Amount of cooldown evaluation periods for scale down.
+	EvaluationPeriods *int    `pulumi:"evaluationPeriods"`
+	MetricName        string  `pulumi:"metricName"`
+	Namespace         string  `pulumi:"namespace"`
+	Operator          *string `pulumi:"operator"`
+	Period            *int    `pulumi:"period"`
+	PolicyName        string  `pulumi:"policyName"`
+	Source            *string `pulumi:"source"`
+	Statistic         *string `pulumi:"statistic"`
+	Threshold         float64 `pulumi:"threshold"`
+	Unit              string  `pulumi:"unit"`
 }
 
 // ElastigroupScalingDownPolicyInput is an input type that accepts ElastigroupScalingDownPolicyArgs and ElastigroupScalingDownPolicyOutput values.
@@ -2001,20 +2042,21 @@ type ElastigroupScalingDownPolicyInput interface {
 }
 
 type ElastigroupScalingDownPolicyArgs struct {
-	ActionType        pulumi.StringPtrInput                           `pulumi:"actionType"`
-	Adjustment        pulumi.IntPtrInput                              `pulumi:"adjustment"`
-	Cooldown          pulumi.IntPtrInput                              `pulumi:"cooldown"`
-	Dimensions        ElastigroupScalingDownPolicyDimensionArrayInput `pulumi:"dimensions"`
-	EvaluationPeriods pulumi.IntPtrInput                              `pulumi:"evaluationPeriods"`
-	MetricName        pulumi.StringInput                              `pulumi:"metricName"`
-	Namespace         pulumi.StringInput                              `pulumi:"namespace"`
-	Operator          pulumi.StringPtrInput                           `pulumi:"operator"`
-	Period            pulumi.IntPtrInput                              `pulumi:"period"`
-	PolicyName        pulumi.StringInput                              `pulumi:"policyName"`
-	Source            pulumi.StringPtrInput                           `pulumi:"source"`
-	Statistic         pulumi.StringPtrInput                           `pulumi:"statistic"`
-	Threshold         pulumi.Float64Input                             `pulumi:"threshold"`
-	Unit              pulumi.StringInput                              `pulumi:"unit"`
+	ActionType pulumi.StringPtrInput                           `pulumi:"actionType"`
+	Adjustment pulumi.IntPtrInput                              `pulumi:"adjustment"`
+	Cooldown   pulumi.IntPtrInput                              `pulumi:"cooldown"`
+	Dimensions ElastigroupScalingDownPolicyDimensionArrayInput `pulumi:"dimensions"`
+	// Amount of cooldown evaluation periods for scale down.
+	EvaluationPeriods pulumi.IntPtrInput    `pulumi:"evaluationPeriods"`
+	MetricName        pulumi.StringInput    `pulumi:"metricName"`
+	Namespace         pulumi.StringInput    `pulumi:"namespace"`
+	Operator          pulumi.StringPtrInput `pulumi:"operator"`
+	Period            pulumi.IntPtrInput    `pulumi:"period"`
+	PolicyName        pulumi.StringInput    `pulumi:"policyName"`
+	Source            pulumi.StringPtrInput `pulumi:"source"`
+	Statistic         pulumi.StringPtrInput `pulumi:"statistic"`
+	Threshold         pulumi.Float64Input   `pulumi:"threshold"`
+	Unit              pulumi.StringInput    `pulumi:"unit"`
 }
 
 func (ElastigroupScalingDownPolicyArgs) ElementType() reflect.Type {
@@ -2084,6 +2126,7 @@ func (o ElastigroupScalingDownPolicyOutput) Dimensions() ElastigroupScalingDownP
 	return o.ApplyT(func(v ElastigroupScalingDownPolicy) []ElastigroupScalingDownPolicyDimension { return v.Dimensions }).(ElastigroupScalingDownPolicyDimensionArrayOutput)
 }
 
+// Amount of cooldown evaluation periods for scale down.
 func (o ElastigroupScalingDownPolicyOutput) EvaluationPeriods() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
 }
@@ -2245,20 +2288,21 @@ func (o ElastigroupScalingDownPolicyDimensionArrayOutput) Index(i pulumi.IntInpu
 }
 
 type ElastigroupScalingUpPolicy struct {
-	ActionType        *string                               `pulumi:"actionType"`
-	Adjustment        *int                                  `pulumi:"adjustment"`
-	Cooldown          *int                                  `pulumi:"cooldown"`
-	Dimensions        []ElastigroupScalingUpPolicyDimension `pulumi:"dimensions"`
-	EvaluationPeriods *int                                  `pulumi:"evaluationPeriods"`
-	MetricName        string                                `pulumi:"metricName"`
-	Namespace         string                                `pulumi:"namespace"`
-	Operator          *string                               `pulumi:"operator"`
-	Period            *int                                  `pulumi:"period"`
-	PolicyName        string                                `pulumi:"policyName"`
-	Source            *string                               `pulumi:"source"`
-	Statistic         *string                               `pulumi:"statistic"`
-	Threshold         float64                               `pulumi:"threshold"`
-	Unit              string                                `pulumi:"unit"`
+	ActionType *string                               `pulumi:"actionType"`
+	Adjustment *int                                  `pulumi:"adjustment"`
+	Cooldown   *int                                  `pulumi:"cooldown"`
+	Dimensions []ElastigroupScalingUpPolicyDimension `pulumi:"dimensions"`
+	// Amount of cooldown evaluation periods for scale down.
+	EvaluationPeriods *int    `pulumi:"evaluationPeriods"`
+	MetricName        string  `pulumi:"metricName"`
+	Namespace         string  `pulumi:"namespace"`
+	Operator          *string `pulumi:"operator"`
+	Period            *int    `pulumi:"period"`
+	PolicyName        string  `pulumi:"policyName"`
+	Source            *string `pulumi:"source"`
+	Statistic         *string `pulumi:"statistic"`
+	Threshold         float64 `pulumi:"threshold"`
+	Unit              string  `pulumi:"unit"`
 }
 
 // ElastigroupScalingUpPolicyInput is an input type that accepts ElastigroupScalingUpPolicyArgs and ElastigroupScalingUpPolicyOutput values.
@@ -2273,20 +2317,21 @@ type ElastigroupScalingUpPolicyInput interface {
 }
 
 type ElastigroupScalingUpPolicyArgs struct {
-	ActionType        pulumi.StringPtrInput                         `pulumi:"actionType"`
-	Adjustment        pulumi.IntPtrInput                            `pulumi:"adjustment"`
-	Cooldown          pulumi.IntPtrInput                            `pulumi:"cooldown"`
-	Dimensions        ElastigroupScalingUpPolicyDimensionArrayInput `pulumi:"dimensions"`
-	EvaluationPeriods pulumi.IntPtrInput                            `pulumi:"evaluationPeriods"`
-	MetricName        pulumi.StringInput                            `pulumi:"metricName"`
-	Namespace         pulumi.StringInput                            `pulumi:"namespace"`
-	Operator          pulumi.StringPtrInput                         `pulumi:"operator"`
-	Period            pulumi.IntPtrInput                            `pulumi:"period"`
-	PolicyName        pulumi.StringInput                            `pulumi:"policyName"`
-	Source            pulumi.StringPtrInput                         `pulumi:"source"`
-	Statistic         pulumi.StringPtrInput                         `pulumi:"statistic"`
-	Threshold         pulumi.Float64Input                           `pulumi:"threshold"`
-	Unit              pulumi.StringInput                            `pulumi:"unit"`
+	ActionType pulumi.StringPtrInput                         `pulumi:"actionType"`
+	Adjustment pulumi.IntPtrInput                            `pulumi:"adjustment"`
+	Cooldown   pulumi.IntPtrInput                            `pulumi:"cooldown"`
+	Dimensions ElastigroupScalingUpPolicyDimensionArrayInput `pulumi:"dimensions"`
+	// Amount of cooldown evaluation periods for scale down.
+	EvaluationPeriods pulumi.IntPtrInput    `pulumi:"evaluationPeriods"`
+	MetricName        pulumi.StringInput    `pulumi:"metricName"`
+	Namespace         pulumi.StringInput    `pulumi:"namespace"`
+	Operator          pulumi.StringPtrInput `pulumi:"operator"`
+	Period            pulumi.IntPtrInput    `pulumi:"period"`
+	PolicyName        pulumi.StringInput    `pulumi:"policyName"`
+	Source            pulumi.StringPtrInput `pulumi:"source"`
+	Statistic         pulumi.StringPtrInput `pulumi:"statistic"`
+	Threshold         pulumi.Float64Input   `pulumi:"threshold"`
+	Unit              pulumi.StringInput    `pulumi:"unit"`
 }
 
 func (ElastigroupScalingUpPolicyArgs) ElementType() reflect.Type {
@@ -2356,6 +2401,7 @@ func (o ElastigroupScalingUpPolicyOutput) Dimensions() ElastigroupScalingUpPolic
 	return o.ApplyT(func(v ElastigroupScalingUpPolicy) []ElastigroupScalingUpPolicyDimension { return v.Dimensions }).(ElastigroupScalingUpPolicyDimensionArrayOutput)
 }
 
+// Amount of cooldown evaluation periods for scale down.
 func (o ElastigroupScalingUpPolicyOutput) EvaluationPeriods() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
 }
@@ -3414,7 +3460,8 @@ func (o OceanImportBackendServiceArrayOutput) Index(i pulumi.IntInput) OceanImpo
 }
 
 type OceanImportBackendServiceNamedPort struct {
-	Name  string   `pulumi:"name"`
+	Name string `pulumi:"name"`
+	// A list of ports.
 	Ports []string `pulumi:"ports"`
 }
 
@@ -3430,7 +3477,8 @@ type OceanImportBackendServiceNamedPortInput interface {
 }
 
 type OceanImportBackendServiceNamedPortArgs struct {
-	Name  pulumi.StringInput      `pulumi:"name"`
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of ports.
 	Ports pulumi.StringArrayInput `pulumi:"ports"`
 }
 
@@ -3489,6 +3537,7 @@ func (o OceanImportBackendServiceNamedPortOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanImportBackendServiceNamedPort) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// A list of ports.
 func (o OceanImportBackendServiceNamedPortOutput) Ports() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanImportBackendServiceNamedPort) []string { return v.Ports }).(pulumi.StringArrayOutput)
 }
