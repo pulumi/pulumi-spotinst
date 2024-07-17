@@ -343,13 +343,15 @@
         "spotinst:aws/ElastigroupIntegrationBeanstalk:ElastigroupIntegrationBeanstalk": {
             "properties": {
                 "deploymentPreferences": {
-                    "$ref": "#/types/spotinst:aws/ElastigroupIntegrationBeanstalkDeploymentPreferences:ElastigroupIntegrationBeanstalkDeploymentPreferences"
+                    "$ref": "#/types/spotinst:aws/ElastigroupIntegrationBeanstalkDeploymentPreferences:ElastigroupIntegrationBeanstalkDeploymentPreferences",
+                    "description": "Preferences when performing a roll\n"
                 },
                 "environmentId": {
                     "type": "string"
                 },
                 "managedActions": {
-                    "$ref": "#/types/spotinst:aws/ElastigroupIntegrationBeanstalkManagedActions:ElastigroupIntegrationBeanstalkManagedActions"
+                    "$ref": "#/types/spotinst:aws/ElastigroupIntegrationBeanstalkManagedActions:ElastigroupIntegrationBeanstalkManagedActions",
+                    "description": "Managed Actions parameters\n"
                 }
             },
             "type": "object"
@@ -357,7 +359,8 @@
         "spotinst:aws/ElastigroupIntegrationBeanstalkDeploymentPreferences:ElastigroupIntegrationBeanstalkDeploymentPreferences": {
             "properties": {
                 "automaticRoll": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Should roll perform automatically\n"
                 },
                 "batchSizePercentage": {
                     "type": "integer"
@@ -385,7 +388,8 @@
         "spotinst:aws/ElastigroupIntegrationBeanstalkManagedActions:ElastigroupIntegrationBeanstalkManagedActions": {
             "properties": {
                 "platformUpdate": {
-                    "$ref": "#/types/spotinst:aws/ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate:ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate"
+                    "$ref": "#/types/spotinst:aws/ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate:ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate",
+                    "description": "Platform Update parameters\n"
                 }
             },
             "type": "object"
@@ -396,10 +400,12 @@
                     "type": "string"
                 },
                 "timeWindow": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Time Window for when action occurs ex. Mon:23:50-Tue:00:20\n"
                 },
                 "updateLevel": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Level to update\n\nUsage:\n\n"
                 }
             },
             "type": "object"
@@ -407,16 +413,19 @@
         "spotinst:aws/ElastigroupIntegrationCodedeploy:ElastigroupIntegrationCodedeploy": {
             "properties": {
                 "cleanupOnFailure": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Cleanup automatically after a failed deploy.\n"
                 },
                 "deploymentGroups": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:aws/ElastigroupIntegrationCodedeployDeploymentGroup:ElastigroupIntegrationCodedeployDeploymentGroup"
-                    }
+                    },
+                    "description": "Specify the deployment groups details.\n"
                 },
                 "terminateInstanceOnFailure": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Terminate the instance automatically after a failed deploy.\n"
                 }
             },
             "type": "object",
@@ -429,10 +438,12 @@
         "spotinst:aws/ElastigroupIntegrationCodedeployDeploymentGroup:ElastigroupIntegrationCodedeployDeploymentGroup": {
             "properties": {
                 "applicationName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The application name.\n"
                 },
                 "deploymentGroupName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The deployment group name.\n\nUsage:\n\n"
                 }
             },
             "type": "object",
@@ -499,7 +510,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:aws/ElastigroupIntegrationEcsAutoscaleAttribute:ElastigroupIntegrationEcsAutoscaleAttribute"
-                    }
+                    },
+                    "description": "A key/value mapping of tags to assign to the resource.\n"
                 },
                 "autoscaleCooldown": {
                     "type": "integer"
@@ -517,13 +529,16 @@
                     "type": "boolean"
                 },
                 "autoscaleScaleDownNonServiceTasks": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Determines whether to scale down non-service tasks.\n"
                 },
                 "batch": {
-                    "$ref": "#/types/spotinst:aws/ElastigroupIntegrationEcsBatch:ElastigroupIntegrationEcsBatch"
+                    "$ref": "#/types/spotinst:aws/ElastigroupIntegrationEcsBatch:ElastigroupIntegrationEcsBatch",
+                    "description": "Batch configuration object:\n"
                 },
                 "clusterName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the EC2 Container Service cluster.\n"
                 }
             },
             "type": "object",
@@ -577,7 +592,8 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Array of strings.\n\nUsage:\n\n"
                 }
             },
             "type": "object",
@@ -588,7 +604,8 @@
         "spotinst:aws/ElastigroupIntegrationGitlab:ElastigroupIntegrationGitlab": {
             "properties": {
                 "runner": {
-                    "$ref": "#/types/spotinst:aws/ElastigroupIntegrationGitlabRunner:ElastigroupIntegrationGitlabRunner"
+                    "$ref": "#/types/spotinst:aws/ElastigroupIntegrationGitlabRunner:ElastigroupIntegrationGitlabRunner",
+                    "description": "Settings for Gitlab runner.\n"
                 }
             },
             "type": "object"
@@ -625,16 +642,19 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:aws/ElastigroupIntegrationKubernetesAutoscaleLabel:ElastigroupIntegrationKubernetesAutoscaleLabel"
-                    }
+                    },
+                    "description": "A key/value mapping of tags to assign to the resource.\n\nUsage:\n\n"
                 },
                 "clusterIdentifier": {
                     "type": "string"
                 },
                 "integrationMode": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Valid values: `\"saas\"`, `\"pod\"`.\n"
                 },
                 "token": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Kubernetes Token\n"
                 }
             },
             "type": "object"
@@ -693,13 +713,15 @@
         "spotinst:aws/ElastigroupIntegrationNomad:ElastigroupIntegrationNomad": {
             "properties": {
                 "aclToken": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Nomad ACL Token\n"
                 },
                 "autoscaleConstraints": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:aws/ElastigroupIntegrationNomadAutoscaleConstraint:ElastigroupIntegrationNomadAutoscaleConstraint"
-                    }
+                    },
+                    "description": "A key/value mapping of tags to assign to the resource.\n\nUsage:\n\n"
                 },
                 "autoscaleCooldown": {
                     "type": "integer"
@@ -766,16 +788,19 @@
         "spotinst:aws/ElastigroupIntegrationRancher:ElastigroupIntegrationRancher": {
             "properties": {
                 "accessKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The access key of the Rancher API.\n"
                 },
                 "masterHost": {
                     "type": "string"
                 },
                 "secretKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The secret key of the Rancher API.\n"
                 },
                 "version": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The Rancher version. Must be `\"1\"` or `\"2\"`. If this field is omitted, it’s assumed that the Rancher cluster is version 1. Note that Kubernetes is required when using Rancher version 2^.\nUsage:\n\n"
                 }
             },
             "type": "object",
@@ -791,7 +816,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:aws/ElastigroupIntegrationRoute53Domain:ElastigroupIntegrationRoute53Domain"
-                    }
+                    },
+                    "description": "Collection of one or more domains to register.\n"
                 }
             },
             "type": "object",
@@ -802,19 +828,23 @@
         "spotinst:aws/ElastigroupIntegrationRoute53Domain:ElastigroupIntegrationRoute53Domain": {
             "properties": {
                 "hostedZoneId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The id associated with a hosted zone.\n"
                 },
                 "recordSetType": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The type of the record set. Valid values: `\"a\"`, `\"cname\"`.\n"
                 },
                 "recordSets": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:aws/ElastigroupIntegrationRoute53DomainRecordSet:ElastigroupIntegrationRoute53DomainRecordSet"
-                    }
+                    },
+                    "description": "Collection of records containing authoritative DNS information for the specified domain name.\n"
                 },
                 "spotinstAcctId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The Spotinst account ID that is linked to the AWS account that holds the Route 53 Hosted Zone ID. The default is the user Spotinst account provided as a URL parameter.\n"
                 }
             },
             "type": "object",
@@ -830,10 +860,12 @@
                     "description": "The group name.\n"
                 },
                 "usePublicDns": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Designates whether the DNS address should be exposed to connections outside the VPC.\n\nUsage:\n\n"
                 },
                 "usePublicIp": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Designates whether the IP address should be exposed to connections outside the VPC.\n"
                 }
             },
             "type": "object",
@@ -1079,13 +1111,15 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:aws/ElastigroupMultipleMetricsExpression:ElastigroupMultipleMetricsExpression"
-                    }
+                    },
+                    "description": "Array of objects (Expression config)\n"
                 },
                 "metrics": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:aws/ElastigroupMultipleMetricsMetric:ElastigroupMultipleMetricsMetric"
-                    }
+                    },
+                    "description": "Array of objects (Metric config)\n"
                 }
             },
             "type": "object"
@@ -1093,7 +1127,8 @@
         "spotinst:aws/ElastigroupMultipleMetricsExpression:ElastigroupMultipleMetricsExpression": {
             "properties": {
                 "expression": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "An expression consisting of the metric names listed in the 'metrics' array.\n"
                 },
                 "name": {
                     "type": "string",
@@ -1115,7 +1150,8 @@
                     }
                 },
                 "extendedStatistic": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Percentile statistic. Valid values: `\"p0.1\"` - `\"p100\"`.\n"
                 },
                 "metricName": {
                     "type": "string"
@@ -2231,14 +2267,16 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Arguments for EMR to pass to the application.\n"
                 },
                 "name": {
                     "type": "string",
                     "description": "The MrScaler name.\n"
                 },
                 "version": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "T he version of the application.\n"
                 }
             },
             "type": "object",
@@ -2300,37 +2338,45 @@
         "spotinst:aws/MrScalarCoreScalingDownPolicy:MrScalarCoreScalingDownPolicy": {
             "properties": {
                 "actionType": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The type of action to perform. Allowed values are : 'adjustment', 'setMinTarget', 'setMaxTarget', 'updateCapacity', 'percentageAdjustment'\n"
                 },
                 "adjustment": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The number of instances to add/remove to/from the target capacity when scale is needed.\n"
                 },
                 "cooldown": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.\n"
                 },
                 "dimensions": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
-                    }
+                    },
+                    "description": "A mapping of dimensions describing qualities of the metric.\n"
                 },
                 "evaluationPeriods": {
                     "type": "integer"
                 },
                 "maxTargetCapacity": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Max target capacity for scale down.\n"
                 },
                 "maximum": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The maximum to set when scale is needed.\n"
                 },
                 "metricName": {
                     "type": "string"
                 },
                 "minTargetCapacity": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Min target capacity for scale up.\n"
                 },
                 "minimum": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The minimum to set when scale is needed.\n"
                 },
                 "namespace": {
                     "type": "string"
@@ -2342,13 +2388,15 @@
                     "type": "integer"
                 },
                 "policyName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the policy.\n"
                 },
                 "statistic": {
                     "type": "string"
                 },
                 "target": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The number of instances to set when scale is needed.\n"
                 },
                 "threshold": {
                     "type": "number"
@@ -2385,37 +2433,45 @@
         "spotinst:aws/MrScalarCoreScalingUpPolicy:MrScalarCoreScalingUpPolicy": {
             "properties": {
                 "actionType": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The type of action to perform. Allowed values are : 'adjustment', 'setMinTarget', 'setMaxTarget', 'updateCapacity', 'percentageAdjustment'\n"
                 },
                 "adjustment": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The number of instances to add/remove to/from the target capacity when scale is needed.\n"
                 },
                 "cooldown": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.\n"
                 },
                 "dimensions": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
-                    }
+                    },
+                    "description": "A mapping of dimensions describing qualities of the metric.\n"
                 },
                 "evaluationPeriods": {
                     "type": "integer"
                 },
                 "maxTargetCapacity": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Max target capacity for scale down.\n"
                 },
                 "maximum": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The maximum to set when scale is needed.\n"
                 },
                 "metricName": {
                     "type": "string"
                 },
                 "minTargetCapacity": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Min target capacity for scale up.\n"
                 },
                 "minimum": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The minimum to set when scale is needed.\n"
                 },
                 "namespace": {
                     "type": "string"
@@ -2427,13 +2483,15 @@
                     "type": "integer"
                 },
                 "policyName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the policy.\n"
                 },
                 "statistic": {
                     "type": "string"
                 },
                 "target": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The number of instances to set when scale is needed.\n"
                 },
                 "threshold": {
                     "type": "number"
@@ -2470,10 +2528,12 @@
         "spotinst:aws/MrScalarInstanceWeight:MrScalarInstanceWeight": {
             "properties": {
                 "instanceType": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The type of the instance.\n"
                 },
                 "weightedCapacity": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The weight given to the associated instance type.\n"
                 }
             },
             "type": "object",
@@ -2506,10 +2566,12 @@
         "spotinst:aws/MrScalarProvisioningTimeout:MrScalarProvisioningTimeout": {
             "properties": {
                 "timeout": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The amount of time (minutes) after which the cluster is automatically terminated if it's still in provisioning status. Minimum: '15'.\n"
                 },
                 "timeoutAction": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The action to take if the timeout is exceeded. Valid values: `terminate`, `terminateAndRetry`.\n"
                 }
             },
             "type": "object",
@@ -2521,25 +2583,32 @@
         "spotinst:aws/MrScalarScheduledTask:MrScalarScheduledTask": {
             "properties": {
                 "cron": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A cron expression representing the schedule for the task.\n"
                 },
                 "desiredCapacity": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "New desired capacity for the elastigroup.\n"
                 },
                 "instanceGroupType": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Select the EMR instance groups to execute the scheduled task on. Valid values: `task`.\n"
                 },
                 "isEnabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable/Disable the specified scheduling task.\n"
                 },
                 "maxCapacity": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "New max capacity for the elastigroup.\n"
                 },
                 "minCapacity": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "New min capacity for the elastigroup.\n"
                 },
                 "taskType": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The type of task to be scheduled. Valid values: `setCapacity`.\n"
                 }
             },
             "type": "object",
@@ -2570,7 +2639,8 @@
                     "type": "string"
                 },
                 "value": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Tag value.\n\n\u003ca id=\"Optional Compute Parameters\"\u003e\u003c/a\u003e\n"
                 }
             },
             "type": "object",
@@ -2603,37 +2673,45 @@
         "spotinst:aws/MrScalarTaskScalingDownPolicy:MrScalarTaskScalingDownPolicy": {
             "properties": {
                 "actionType": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The type of action to perform. Allowed values are : 'adjustment', 'setMinTarget', 'setMaxTarget', 'updateCapacity', 'percentageAdjustment'\n"
                 },
                 "adjustment": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The number of instances to add/remove to/from the target capacity when scale is needed.\n"
                 },
                 "cooldown": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.\n"
                 },
                 "dimensions": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
-                    }
+                    },
+                    "description": "A mapping of dimensions describing qualities of the metric.\n"
                 },
                 "evaluationPeriods": {
                     "type": "integer"
                 },
                 "maxTargetCapacity": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Max target capacity for scale down.\n"
                 },
                 "maximum": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The maximum to set when scale is needed.\n"
                 },
                 "metricName": {
                     "type": "string"
                 },
                 "minTargetCapacity": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Min target capacity for scale up.\n"
                 },
                 "minimum": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The minimum to set when scale is needed.\n"
                 },
                 "namespace": {
                     "type": "string"
@@ -2645,13 +2723,15 @@
                     "type": "integer"
                 },
                 "policyName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the policy.\n"
                 },
                 "statistic": {
                     "type": "string"
                 },
                 "target": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The number of instances to set when scale is needed.\n"
                 },
                 "threshold": {
                     "type": "number"
@@ -2688,37 +2768,45 @@
         "spotinst:aws/MrScalarTaskScalingUpPolicy:MrScalarTaskScalingUpPolicy": {
             "properties": {
                 "actionType": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The type of action to perform. Allowed values are : 'adjustment', 'setMinTarget', 'setMaxTarget', 'updateCapacity', 'percentageAdjustment'\n"
                 },
                 "adjustment": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The number of instances to add/remove to/from the target capacity when scale is needed.\n"
                 },
                 "cooldown": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.\n"
                 },
                 "dimensions": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
-                    }
+                    },
+                    "description": "A mapping of dimensions describing qualities of the metric.\n"
                 },
                 "evaluationPeriods": {
                     "type": "integer"
                 },
                 "maxTargetCapacity": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Max target capacity for scale down.\n"
                 },
                 "maximum": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The maximum to set when scale is needed.\n"
                 },
                 "metricName": {
                     "type": "string"
                 },
                 "minTargetCapacity": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Min target capacity for scale up.\n"
                 },
                 "minimum": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The minimum to set when scale is needed.\n"
                 },
                 "namespace": {
                     "type": "string"
@@ -2730,13 +2818,15 @@
                     "type": "integer"
                 },
                 "policyName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the policy.\n"
                 },
                 "statistic": {
                     "type": "string"
                 },
                 "target": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The number of instances to set when scale is needed.\n"
                 },
                 "threshold": {
                     "type": "number"
@@ -3085,82 +3175,99 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The filtered instance types will support at least one of the architectures from this list.\n"
                 },
                 "categories": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The filtered instance types will belong to one of the categories types from this list.\n"
                 },
                 "diskTypes": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The filtered instance types will have one of the disk type from this list.\n"
                 },
                 "excludeFamilies": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.\n"
                 },
                 "excludeMetal": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "In case excludeMetal is set to true, metal types will not be available for scaling.\n"
                 },
                 "hypervisors": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The filtered instance types will have a hypervisor type from this list.\n"
                 },
                 "includeFamilies": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.\n"
                 },
                 "isEnaSupported": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Ena is supported or not.\n"
                 },
                 "maxGpu": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Maximum total number of GPUs.\n"
                 },
                 "maxMemoryGib": {
                     "type": "number"
                 },
                 "maxNetworkPerformance": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Maximum Bandwidth in Gib/s of network performance.\n"
                 },
                 "maxVcpu": {
                     "type": "integer"
                 },
                 "minEnis": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Minimum number of network interfaces (ENIs).\n"
                 },
                 "minGpu": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Minimum total number of GPUs.\n"
                 },
                 "minMemoryGib": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "Minimum amount of Memory (GiB).\n"
                 },
                 "minNetworkPerformance": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Minimum Bandwidth in Gib/s of network performance.\n"
                 },
                 "minVcpu": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Minimum number of vcpus available.\n"
                 },
                 "rootDeviceTypes": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The filtered instance types will have a root device types from this list.\n"
                 },
                 "virtualizationTypes": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The filtered instance types will support at least one of the virtualization types from this list.\n"
                 }
             },
             "type": "object"
@@ -3234,7 +3341,8 @@
                     "description": "Object. Set Elastic Block Store properties .\n"
                 },
                 "noDevice": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "String. Suppresses the specified device included in the block device mapping of the AMI.\n"
                 },
                 "virtualName": {
                     "type": "string"
@@ -4168,7 +4276,8 @@
         "spotinst:azure/OceanNpSchedulingShutdownHours:OceanNpSchedulingShutdownHours": {
             "properties": {
                 "isEnabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.\n"
                 },
                 "timeWindows": {
                     "type": "array",
@@ -4185,7 +4294,8 @@
                     "type": "string"
                 },
                 "isEnabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.\n"
                 },
                 "parameters": {
                     "$ref": "#/types/spotinst:azure/OceanNpSchedulingTaskParameters:OceanNpSchedulingTaskParameters"
@@ -4212,25 +4322,31 @@
         "spotinst:azure/OceanNpSchedulingTaskParametersParametersClusterRoll:OceanNpSchedulingTaskParametersParametersClusterRoll": {
             "properties": {
                 "batchMinHealthyPercentage": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.\n"
                 },
                 "batchSizePercentage": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.\n"
                 },
                 "comment": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Add a comment description for the roll. The comment is limited to 256 chars and optional.\n"
                 },
                 "respectPdb": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "During the roll, if the parameter is set to true we honor PDB during the nodes replacement.\n"
                 },
                 "respectRestrictScaleDown": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.\n"
                 },
                 "vngIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "List of virtual node group identifiers to be rolled. Each identifier is a string. vngIds can be null, and cannot be used together with nodeNames and nodePoolNames.\n"
                 }
             },
             "type": "object"
@@ -4723,82 +4839,99 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The filtered instance types will support at least one of the architectures from this list.\n"
                 },
                 "categories": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The filtered instance types will belong to one of the categories types from this list.\n"
                 },
                 "diskTypes": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The filtered instance types will have one of the disk type from this list.\n"
                 },
                 "excludeFamilies": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.\n"
                 },
                 "excludeMetal": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "In case excludeMetal is set to true, metal types will not be available for scaling.\n"
                 },
                 "hypervisors": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The filtered instance types will have a hypervisor type from this list.\n"
                 },
                 "includeFamilies": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.\n"
                 },
                 "isEnaSupported": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Ena is supported or not.\n"
                 },
                 "maxGpu": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Maximum total number of GPUs.\n"
                 },
                 "maxMemoryGib": {
                     "type": "number"
                 },
                 "maxNetworkPerformance": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Maximum Bandwidth in Gib/s of network performance.\n"
                 },
                 "maxVcpu": {
                     "type": "integer"
                 },
                 "minEnis": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Minimum number of network interfaces (ENIs).\n"
                 },
                 "minGpu": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Minimum total number of GPUs.\n"
                 },
                 "minMemoryGib": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "Minimum amount of Memory (GiB).\n"
                 },
                 "minNetworkPerformance": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Minimum Bandwidth in Gib/s of network performance.\n"
                 },
                 "minVcpu": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Minimum number of vcpus available.\n"
                 },
                 "rootDeviceTypes": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The filtered instance types will have a root device types from this list.\n"
                 },
                 "virtualizationTypes": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The filtered instance types will support at least one of the virtualization types from this list.\n"
                 }
             },
             "type": "object"
@@ -4867,7 +5000,8 @@
                     "description": "Object. Set Elastic Block Store properties .\n"
                 },
                 "noDevice": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "String. suppresses the specified device included in the block device mapping of the AMI.\n"
                 },
                 "virtualName": {
                     "type": "string"
@@ -5036,10 +5170,12 @@
         "spotinst:ecs/OceanLaunchSpecTag:OceanLaunchSpecTag": {
             "properties": {
                 "key": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The label key.\n"
                 },
                 "value": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The label value.\n"
                 }
             },
             "type": "object",
@@ -5361,10 +5497,12 @@
         "spotinst:gcp/ElastigroupIntegrationDockerSwarm:ElastigroupIntegrationDockerSwarm": {
             "properties": {
                 "masterHost": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "IP or FQDN of one of your swarm managers.\n"
                 },
                 "masterPort": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Network port used by your swarm.\n\nUsage:\n\n"
                 }
             },
             "type": "object",
@@ -5411,7 +5549,8 @@
         "spotinst:gcp/ElastigroupIntegrationGkeAutoscaleDown:ElastigroupIntegrationGkeAutoscaleDown": {
             "properties": {
                 "evaluationPeriods": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.\n"
                 }
             },
             "type": "object"
@@ -5485,7 +5624,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:gcp/ElastigroupNetworkInterfaceAccessConfig:ElastigroupNetworkInterfaceAccessConfig"
-                    }
+                    },
+                    "description": "Array of configurations.\n"
                 },
                 "aliasIpRanges": {
                     "type": "array",
@@ -5494,7 +5634,8 @@
                     }
                 },
                 "network": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Network resource for this group.\n"
                 }
             },
             "type": "object",
@@ -5532,46 +5673,58 @@
         "spotinst:gcp/ElastigroupScalingDownPolicy:ElastigroupScalingDownPolicy": {
             "properties": {
                 "actionType": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Type of scaling action to take when the scaling policy is triggered. Valid values: \"adjustment\", \"setMinTarget\", \"updateCapacity\", \"percentageAdjustment\"\n"
                 },
                 "adjustment": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Value to which the action type will be adjusted. Required if using \"numeric\" or \"percentageAdjustment\" action types.\n"
                 },
                 "cooldown": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Time (seconds) to wait after a scaling action before resuming monitoring.\n"
                 },
                 "dimensions": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:gcp/ElastigroupScalingDownPolicyDimension:ElastigroupScalingDownPolicyDimension"
-                    }
+                    },
+                    "description": "A list of dimensions describing qualities of the metric.\n"
                 },
                 "evaluationPeriods": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.\n"
                 },
                 "metricName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Metric to monitor. Valid values: \"Percentage CPU\", \"Network In\", \"Network Out\", \"Disk Read Bytes\", \"Disk Write Bytes\", \"Disk Write Operations/Sec\", \"Disk Read Operations/Sec\".\n"
                 },
                 "namespace": {
                     "type": "string"
                 },
                 "operator": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The operator used to evaluate the threshold against the current metric value. Valid values: \"gt\" (greater than), \"get\" (greater-than or equal), \"lt\" (less than), \"lte\" (less than or equal).\n"
                 },
                 "period": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Amount of time (seconds) for which the threshold must be met in order to trigger the scaling action.\n"
                 },
                 "policyName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Name of scaling policy.\n"
                 },
                 "source": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.\n"
                 },
                 "statistic": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Statistic by which to evaluate the selected metric. Valid values: \"AVERAGE\", \"SAMPLE_COUNT\", \"SUM\", \"MINIMUM\", \"MAXIMUM\", \"PERCENTILE\", \"COUNT\".\n"
                 },
                 "threshold": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "The value at which the scaling action is triggered.\n"
                 },
                 "unit": {
                     "type": "string"
@@ -5663,7 +5816,8 @@
                     "description": "Name of scaling policy.\n"
                 },
                 "source": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.\n"
                 },
                 "statistic": {
                     "type": "string",
@@ -5912,31 +6066,37 @@
                     "type": "boolean"
                 },
                 "autoscaleCooldown": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.\n"
                 },
                 "autoscaleDown": {
-                    "$ref": "#/types/spotinst:gke/ElastigroupIntegrationGkeAutoscaleDown:ElastigroupIntegrationGkeAutoscaleDown"
+                    "$ref": "#/types/spotinst:gke/ElastigroupIntegrationGkeAutoscaleDown:ElastigroupIntegrationGkeAutoscaleDown",
+                    "description": "Enabling scale down.\n"
                 },
                 "autoscaleHeadroom": {
-                    "$ref": "#/types/spotinst:gke/ElastigroupIntegrationGkeAutoscaleHeadroom:ElastigroupIntegrationGkeAutoscaleHeadroom"
+                    "$ref": "#/types/spotinst:gke/ElastigroupIntegrationGkeAutoscaleHeadroom:ElastigroupIntegrationGkeAutoscaleHeadroom",
+                    "description": "Headroom for the cluster.\n"
                 },
                 "autoscaleIsAutoConfig": {
                     "type": "boolean"
                 },
                 "autoscaleIsEnabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Specifies whether the auto scaling feature is enabled.\n"
                 },
                 "autoscaleLabels": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:gke/ElastigroupIntegrationGkeAutoscaleLabel:ElastigroupIntegrationGkeAutoscaleLabel"
-                    }
+                    },
+                    "description": "Labels to assign to the resource.\n"
                 },
                 "clusterId": {
                     "type": "string"
                 },
                 "location": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The location of your GKE cluster.\n"
                 }
             },
             "type": "object"
@@ -5944,7 +6104,8 @@
         "spotinst:gke/ElastigroupIntegrationGkeAutoscaleDown:ElastigroupIntegrationGkeAutoscaleDown": {
             "properties": {
                 "evaluationPeriods": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Amount of cooldown evaluation periods for scale down.\n"
                 }
             },
             "type": "object"
@@ -5952,13 +6113,16 @@
         "spotinst:gke/ElastigroupIntegrationGkeAutoscaleHeadroom:ElastigroupIntegrationGkeAutoscaleHeadroom": {
             "properties": {
                 "cpuPerUnit": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Cpu units for compute.\n"
                 },
                 "memoryPerUnit": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "RAM units for compute.\n"
                 },
                 "numOfUnits": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Amount of units for compute.\n"
                 }
             },
             "type": "object"
@@ -6075,7 +6239,8 @@
                     }
                 },
                 "evaluationPeriods": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Amount of cooldown evaluation periods for scale down.\n"
                 },
                 "metricName": {
                     "type": "string"
@@ -6163,7 +6328,8 @@
                     }
                 },
                 "evaluationPeriods": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Amount of cooldown evaluation periods for scale down.\n"
                 },
                 "metricName": {
                     "type": "string"
@@ -6352,7 +6518,8 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "A list of ports.\n"
                 }
             },
             "type": "object",
@@ -7077,7 +7244,8 @@
                     "description": "The destination for the request.\n"
                 },
                 "healthy": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The number of consecutive successful health checks that must occur before declaring an instance healthy.\n"
                 },
                 "interval": {
                     "type": "integer",
@@ -7099,7 +7267,8 @@
                     "description": "the amount of time (in seconds) to wait when receiving a response from the health check.\n"
                 },
                 "unhealthy": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The number of consecutive failed health checks that must occur before declaring an instance unhealthy.\n"
                 }
             },
             "type": "object",
@@ -9354,7 +9523,8 @@
         "spotinst:oceancd/VerificationTemplateMetricProviderPrometheus:VerificationTemplateMetricProviderPrometheus": {
             "properties": {
                 "prometheusQuery": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A request for information retrieved from Prometheus.\n"
                 }
             },
             "type": "object",
