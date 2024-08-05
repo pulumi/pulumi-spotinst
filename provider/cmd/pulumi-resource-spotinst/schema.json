@@ -17203,6 +17203,227 @@
                 "type": "object"
             }
         },
+        "spotinst:index/account:Account": {
+            "description": "Provides a Spotinst account resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\n// Create a Account\nconst myAcct = new spotinst.Account(\"my_acct\", {name: \"my_acct\"});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\n# Create a Account\nmy_acct = spotinst.Account(\"my_acct\", name=\"my_acct\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SpotInst = Pulumi.SpotInst;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Create a Account\n    var myAcct = new SpotInst.Account(\"my_acct\", new()\n    {\n        Name = \"my_acct\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Create a Account\n\t\t_, err := spotinst.NewAccount(ctx, \"my_acct\", \u0026spotinst.AccountArgs{\n\t\t\tName: pulumi.String(\"my_acct\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.spotinst.Account;\nimport com.pulumi.spotinst.AccountArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Create a Account\n        var myAcct = new Account(\"myAcct\", AccountArgs.builder()\n            .name(\"my_acct\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Create a Account\n  myAcct:\n    type: spotinst:Account\n    name: my_acct\n    properties:\n      name: my_acct\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Provide a name for your account. The account name must contain at least one character that is a-z or A-Z.\n"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string",
+                    "description": "Provide a name for your account. The account name must contain at least one character that is a-z or A-Z.\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Account resources.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Provide a name for your account. The account name must contain at least one character that is a-z or A-Z.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "spotinst:index/credentialsGcp:CredentialsGcp": {
+            "description": "Provides a Spotinst credential GCP resource.\n\n",
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The ID of the account associated with your token.\n"
+                },
+                "authProviderX509CertUrl": {
+                    "type": "string",
+                    "description": ".\n"
+                },
+                "authUri": {
+                    "type": "string",
+                    "description": "Authentication uri.\n"
+                },
+                "clientEmail": {
+                    "type": "string",
+                    "description": "Email associated with service account.\n"
+                },
+                "clientId": {
+                    "type": "string",
+                    "description": "Client ID of service account.\n"
+                },
+                "clientX509CertUrl": {
+                    "type": "string",
+                    "description": "Should be in following format - \"https://www.googleapis.com/robot/v1/metadata/x509/\".\n"
+                },
+                "privateKey": {
+                    "type": "string",
+                    "description": "Private key of JSON key created during prerequisites stage.\n"
+                },
+                "privateKeyId": {
+                    "type": "string",
+                    "description": "Private key ID of JSON key created during prerequisites stage.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Name of project in GCP.\n"
+                },
+                "tokenUri": {
+                    "type": "string",
+                    "description": "Token uri.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Valid values - service_account.\n"
+                }
+            },
+            "required": [
+                "accountId",
+                "authProviderX509CertUrl",
+                "authUri",
+                "clientEmail",
+                "clientId",
+                "clientX509CertUrl",
+                "privateKey",
+                "privateKeyId",
+                "projectId",
+                "tokenUri",
+                "type"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The ID of the account associated with your token.\n",
+                    "willReplaceOnChanges": true
+                },
+                "authProviderX509CertUrl": {
+                    "type": "string",
+                    "description": ".\n",
+                    "willReplaceOnChanges": true
+                },
+                "authUri": {
+                    "type": "string",
+                    "description": "Authentication uri.\n",
+                    "willReplaceOnChanges": true
+                },
+                "clientEmail": {
+                    "type": "string",
+                    "description": "Email associated with service account.\n",
+                    "willReplaceOnChanges": true
+                },
+                "clientId": {
+                    "type": "string",
+                    "description": "Client ID of service account.\n",
+                    "willReplaceOnChanges": true
+                },
+                "clientX509CertUrl": {
+                    "type": "string",
+                    "description": "Should be in following format - \"https://www.googleapis.com/robot/v1/metadata/x509/\".\n",
+                    "willReplaceOnChanges": true
+                },
+                "privateKey": {
+                    "type": "string",
+                    "description": "Private key of JSON key created during prerequisites stage.\n",
+                    "willReplaceOnChanges": true
+                },
+                "privateKeyId": {
+                    "type": "string",
+                    "description": "Private key ID of JSON key created during prerequisites stage.\n",
+                    "willReplaceOnChanges": true
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Name of project in GCP.\n",
+                    "willReplaceOnChanges": true
+                },
+                "tokenUri": {
+                    "type": "string",
+                    "description": "Token uri.\n",
+                    "willReplaceOnChanges": true
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Valid values - service_account.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "accountId",
+                "authProviderX509CertUrl",
+                "authUri",
+                "clientEmail",
+                "clientId",
+                "clientX509CertUrl",
+                "privateKey",
+                "privateKeyId",
+                "projectId",
+                "tokenUri",
+                "type"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering CredentialsGcp resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The ID of the account associated with your token.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "authProviderX509CertUrl": {
+                        "type": "string",
+                        "description": ".\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "authUri": {
+                        "type": "string",
+                        "description": "Authentication uri.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "clientEmail": {
+                        "type": "string",
+                        "description": "Email associated with service account.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "clientId": {
+                        "type": "string",
+                        "description": "Client ID of service account.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "clientX509CertUrl": {
+                        "type": "string",
+                        "description": "Should be in following format - \"https://www.googleapis.com/robot/v1/metadata/x509/\".\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "privateKey": {
+                        "type": "string",
+                        "description": "Private key of JSON key created during prerequisites stage.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "privateKeyId": {
+                        "type": "string",
+                        "description": "Private key ID of JSON key created during prerequisites stage.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "Name of project in GCP.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "tokenUri": {
+                        "type": "string",
+                        "description": "Token uri.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Valid values - service_account.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
         "spotinst:index/dataIntegration:DataIntegration": {
             "description": "Provides a Spotinst Data Integration resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\nconst example = new spotinst.DataIntegration(\"example\", {\n    name: \"foo\",\n    status: \"enabled\",\n    s3: {\n        bucketName: \"terraform-test-do-not-delete\",\n        subdir: \"terraform-test-data-integration\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\nexample = spotinst.DataIntegration(\"example\",\n    name=\"foo\",\n    status=\"enabled\",\n    s3=spotinst.DataIntegrationS3Args(\n        bucket_name=\"terraform-test-do-not-delete\",\n        subdir=\"terraform-test-data-integration\",\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SpotInst = Pulumi.SpotInst;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new SpotInst.DataIntegration(\"example\", new()\n    {\n        Name = \"foo\",\n        Status = \"enabled\",\n        S3 = new SpotInst.Inputs.DataIntegrationS3Args\n        {\n            BucketName = \"terraform-test-do-not-delete\",\n            Subdir = \"terraform-test-data-integration\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := spotinst.NewDataIntegration(ctx, \"example\", \u0026spotinst.DataIntegrationArgs{\n\t\t\tName:   pulumi.String(\"foo\"),\n\t\t\tStatus: pulumi.String(\"enabled\"),\n\t\t\tS3: \u0026spotinst.DataIntegrationS3Args{\n\t\t\t\tBucketName: pulumi.String(\"terraform-test-do-not-delete\"),\n\t\t\t\tSubdir:     pulumi.String(\"terraform-test-data-integration\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.spotinst.DataIntegration;\nimport com.pulumi.spotinst.DataIntegrationArgs;\nimport com.pulumi.spotinst.inputs.DataIntegrationS3Args;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new DataIntegration(\"example\", DataIntegrationArgs.builder()\n            .name(\"foo\")\n            .status(\"enabled\")\n            .s3(DataIntegrationS3Args.builder()\n                .bucketName(\"terraform-test-do-not-delete\")\n                .subdir(\"terraform-test-data-integration\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: spotinst:DataIntegration\n    properties:\n      name: foo\n      status: enabled\n      s3:\n        bucketName: terraform-test-do-not-delete\n        subdir: terraform-test-data-integration\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
