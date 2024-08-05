@@ -5,6 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export { AccountArgs, AccountState } from "./account";
+export type Account = import("./account").Account;
+export const Account: typeof import("./account").Account = null as any;
+utilities.lazyLoad(exports, ["Account"], () => require("./account"));
+
+export { CredentialsGcpArgs, CredentialsGcpState } from "./credentialsGcp";
+export type CredentialsGcp = import("./credentialsGcp").CredentialsGcp;
+export const CredentialsGcp: typeof import("./credentialsGcp").CredentialsGcp = null as any;
+utilities.lazyLoad(exports, ["CredentialsGcp"], () => require("./credentialsGcp"));
+
 export { DataIntegrationArgs, DataIntegrationState } from "./dataIntegration";
 export type DataIntegration = import("./dataIntegration").DataIntegration;
 export const DataIntegration: typeof import("./dataIntegration").DataIntegration = null as any;
@@ -70,6 +80,10 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "spotinst:index/account:Account":
+                return new Account(name, <any>undefined, { urn })
+            case "spotinst:index/credentialsGcp:CredentialsGcp":
+                return new CredentialsGcp(name, <any>undefined, { urn })
             case "spotinst:index/dataIntegration:DataIntegration":
                 return new DataIntegration(name, <any>undefined, { urn })
             case "spotinst:index/elastigroupAzureV3:ElastigroupAzureV3":
@@ -87,6 +101,8 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("spotinst", "index/account", _module)
+pulumi.runtime.registerResourceModule("spotinst", "index/credentialsGcp", _module)
 pulumi.runtime.registerResourceModule("spotinst", "index/dataIntegration", _module)
 pulumi.runtime.registerResourceModule("spotinst", "index/elastigroupAzureV3", _module)
 pulumi.runtime.registerResourceModule("spotinst", "index/healthCheck", _module)

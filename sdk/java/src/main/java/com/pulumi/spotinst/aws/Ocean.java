@@ -607,11 +607,18 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Ocean(String name, OceanArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("spotinst:aws/ocean:Ocean", name, args == null ? OceanArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("spotinst:aws/ocean:Ocean", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Ocean(String name, Output<String> id, @Nullable OceanState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("spotinst:aws/ocean:Ocean", name, state, makeResourceOptions(options, id));
+    }
+
+    private static OceanArgs makeArgs(OceanArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? OceanArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

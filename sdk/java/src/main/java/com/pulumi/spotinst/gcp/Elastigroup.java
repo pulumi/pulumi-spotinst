@@ -574,11 +574,18 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Elastigroup(String name, ElastigroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("spotinst:gcp/elastigroup:Elastigroup", name, args == null ? ElastigroupArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("spotinst:gcp/elastigroup:Elastigroup", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Elastigroup(String name, Output<String> id, @Nullable ElastigroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("spotinst:gcp/elastigroup:Elastigroup", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ElastigroupArgs makeArgs(ElastigroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ElastigroupArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
