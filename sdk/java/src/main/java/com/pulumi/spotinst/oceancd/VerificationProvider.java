@@ -214,11 +214,18 @@ public class VerificationProvider extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public VerificationProvider(String name, VerificationProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("spotinst:oceancd/verificationProvider:VerificationProvider", name, args == null ? VerificationProviderArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("spotinst:oceancd/verificationProvider:VerificationProvider", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private VerificationProvider(String name, Output<String> id, @Nullable VerificationProviderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("spotinst:oceancd/verificationProvider:VerificationProvider", name, state, makeResourceOptions(options, id));
+    }
+
+    private static VerificationProviderArgs makeArgs(VerificationProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? VerificationProviderArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

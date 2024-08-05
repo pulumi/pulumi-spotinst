@@ -469,11 +469,18 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public OceanLaunchSpec(String name, OceanLaunchSpecArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("spotinst:aws/oceanLaunchSpec:OceanLaunchSpec", name, args == null ? OceanLaunchSpecArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("spotinst:aws/oceanLaunchSpec:OceanLaunchSpec", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private OceanLaunchSpec(String name, Output<String> id, @Nullable OceanLaunchSpecState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("spotinst:aws/oceanLaunchSpec:OceanLaunchSpec", name, state, makeResourceOptions(options, id));
+    }
+
+    private static OceanLaunchSpecArgs makeArgs(OceanLaunchSpecArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? OceanLaunchSpecArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

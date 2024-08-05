@@ -5,6 +5,8 @@
 from . import _utilities
 import typing
 # Export this package's modules as members:
+from .account import *
+from .credentials_gcp import *
 from .data_integration import *
 from .elastigroup_azure_v3 import *
 from .health_check import *
@@ -199,6 +201,22 @@ _utilities.register(
   "fqn": "pulumi_spotinst.gke",
   "classes": {
    "spotinst:gke/oceanLaunchSpecImport:OceanLaunchSpecImport": "OceanLaunchSpecImport"
+  }
+ },
+ {
+  "pkg": "spotinst",
+  "mod": "index/account",
+  "fqn": "pulumi_spotinst",
+  "classes": {
+   "spotinst:index/account:Account": "Account"
+  }
+ },
+ {
+  "pkg": "spotinst",
+  "mod": "index/credentialsGcp",
+  "fqn": "pulumi_spotinst",
+  "classes": {
+   "spotinst:index/credentialsGcp:CredentialsGcp": "CredentialsGcp"
   }
  },
  {

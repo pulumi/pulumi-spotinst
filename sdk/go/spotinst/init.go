@@ -21,6 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "spotinst:index/account:Account":
+		r = &Account{}
+	case "spotinst:index/credentialsGcp:CredentialsGcp":
+		r = &CredentialsGcp{}
 	case "spotinst:index/dataIntegration:DataIntegration":
 		r = &DataIntegration{}
 	case "spotinst:index/elastigroupAzureV3:ElastigroupAzureV3":
@@ -64,6 +68,16 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"spotinst",
+		"index/account",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"spotinst",
+		"index/credentialsGcp",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"spotinst",
 		"index/dataIntegration",
