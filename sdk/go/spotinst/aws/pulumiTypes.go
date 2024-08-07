@@ -13252,6 +13252,169 @@ func (o ManagedInstanceManagedInstanceActionPtrOutput) Type() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+type ManagedInstanceMetadataOptions struct {
+	HttpPutResponseHopLimit *int    `pulumi:"httpPutResponseHopLimit"`
+	HttpTokens              string  `pulumi:"httpTokens"`
+	InstanceMetadataTags    *string `pulumi:"instanceMetadataTags"`
+}
+
+// ManagedInstanceMetadataOptionsInput is an input type that accepts ManagedInstanceMetadataOptionsArgs and ManagedInstanceMetadataOptionsOutput values.
+// You can construct a concrete instance of `ManagedInstanceMetadataOptionsInput` via:
+//
+//	ManagedInstanceMetadataOptionsArgs{...}
+type ManagedInstanceMetadataOptionsInput interface {
+	pulumi.Input
+
+	ToManagedInstanceMetadataOptionsOutput() ManagedInstanceMetadataOptionsOutput
+	ToManagedInstanceMetadataOptionsOutputWithContext(context.Context) ManagedInstanceMetadataOptionsOutput
+}
+
+type ManagedInstanceMetadataOptionsArgs struct {
+	HttpPutResponseHopLimit pulumi.IntPtrInput    `pulumi:"httpPutResponseHopLimit"`
+	HttpTokens              pulumi.StringInput    `pulumi:"httpTokens"`
+	InstanceMetadataTags    pulumi.StringPtrInput `pulumi:"instanceMetadataTags"`
+}
+
+func (ManagedInstanceMetadataOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedInstanceMetadataOptions)(nil)).Elem()
+}
+
+func (i ManagedInstanceMetadataOptionsArgs) ToManagedInstanceMetadataOptionsOutput() ManagedInstanceMetadataOptionsOutput {
+	return i.ToManagedInstanceMetadataOptionsOutputWithContext(context.Background())
+}
+
+func (i ManagedInstanceMetadataOptionsArgs) ToManagedInstanceMetadataOptionsOutputWithContext(ctx context.Context) ManagedInstanceMetadataOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedInstanceMetadataOptionsOutput)
+}
+
+func (i ManagedInstanceMetadataOptionsArgs) ToManagedInstanceMetadataOptionsPtrOutput() ManagedInstanceMetadataOptionsPtrOutput {
+	return i.ToManagedInstanceMetadataOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedInstanceMetadataOptionsArgs) ToManagedInstanceMetadataOptionsPtrOutputWithContext(ctx context.Context) ManagedInstanceMetadataOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedInstanceMetadataOptionsOutput).ToManagedInstanceMetadataOptionsPtrOutputWithContext(ctx)
+}
+
+// ManagedInstanceMetadataOptionsPtrInput is an input type that accepts ManagedInstanceMetadataOptionsArgs, ManagedInstanceMetadataOptionsPtr and ManagedInstanceMetadataOptionsPtrOutput values.
+// You can construct a concrete instance of `ManagedInstanceMetadataOptionsPtrInput` via:
+//
+//	        ManagedInstanceMetadataOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ManagedInstanceMetadataOptionsPtrInput interface {
+	pulumi.Input
+
+	ToManagedInstanceMetadataOptionsPtrOutput() ManagedInstanceMetadataOptionsPtrOutput
+	ToManagedInstanceMetadataOptionsPtrOutputWithContext(context.Context) ManagedInstanceMetadataOptionsPtrOutput
+}
+
+type managedInstanceMetadataOptionsPtrType ManagedInstanceMetadataOptionsArgs
+
+func ManagedInstanceMetadataOptionsPtr(v *ManagedInstanceMetadataOptionsArgs) ManagedInstanceMetadataOptionsPtrInput {
+	return (*managedInstanceMetadataOptionsPtrType)(v)
+}
+
+func (*managedInstanceMetadataOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedInstanceMetadataOptions)(nil)).Elem()
+}
+
+func (i *managedInstanceMetadataOptionsPtrType) ToManagedInstanceMetadataOptionsPtrOutput() ManagedInstanceMetadataOptionsPtrOutput {
+	return i.ToManagedInstanceMetadataOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *managedInstanceMetadataOptionsPtrType) ToManagedInstanceMetadataOptionsPtrOutputWithContext(ctx context.Context) ManagedInstanceMetadataOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedInstanceMetadataOptionsPtrOutput)
+}
+
+type ManagedInstanceMetadataOptionsOutput struct{ *pulumi.OutputState }
+
+func (ManagedInstanceMetadataOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedInstanceMetadataOptions)(nil)).Elem()
+}
+
+func (o ManagedInstanceMetadataOptionsOutput) ToManagedInstanceMetadataOptionsOutput() ManagedInstanceMetadataOptionsOutput {
+	return o
+}
+
+func (o ManagedInstanceMetadataOptionsOutput) ToManagedInstanceMetadataOptionsOutputWithContext(ctx context.Context) ManagedInstanceMetadataOptionsOutput {
+	return o
+}
+
+func (o ManagedInstanceMetadataOptionsOutput) ToManagedInstanceMetadataOptionsPtrOutput() ManagedInstanceMetadataOptionsPtrOutput {
+	return o.ToManagedInstanceMetadataOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedInstanceMetadataOptionsOutput) ToManagedInstanceMetadataOptionsPtrOutputWithContext(ctx context.Context) ManagedInstanceMetadataOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedInstanceMetadataOptions) *ManagedInstanceMetadataOptions {
+		return &v
+	}).(ManagedInstanceMetadataOptionsPtrOutput)
+}
+
+func (o ManagedInstanceMetadataOptionsOutput) HttpPutResponseHopLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ManagedInstanceMetadataOptions) *int { return v.HttpPutResponseHopLimit }).(pulumi.IntPtrOutput)
+}
+
+func (o ManagedInstanceMetadataOptionsOutput) HttpTokens() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedInstanceMetadataOptions) string { return v.HttpTokens }).(pulumi.StringOutput)
+}
+
+func (o ManagedInstanceMetadataOptionsOutput) InstanceMetadataTags() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedInstanceMetadataOptions) *string { return v.InstanceMetadataTags }).(pulumi.StringPtrOutput)
+}
+
+type ManagedInstanceMetadataOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedInstanceMetadataOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedInstanceMetadataOptions)(nil)).Elem()
+}
+
+func (o ManagedInstanceMetadataOptionsPtrOutput) ToManagedInstanceMetadataOptionsPtrOutput() ManagedInstanceMetadataOptionsPtrOutput {
+	return o
+}
+
+func (o ManagedInstanceMetadataOptionsPtrOutput) ToManagedInstanceMetadataOptionsPtrOutputWithContext(ctx context.Context) ManagedInstanceMetadataOptionsPtrOutput {
+	return o
+}
+
+func (o ManagedInstanceMetadataOptionsPtrOutput) Elem() ManagedInstanceMetadataOptionsOutput {
+	return o.ApplyT(func(v *ManagedInstanceMetadataOptions) ManagedInstanceMetadataOptions {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedInstanceMetadataOptions
+		return ret
+	}).(ManagedInstanceMetadataOptionsOutput)
+}
+
+func (o ManagedInstanceMetadataOptionsPtrOutput) HttpPutResponseHopLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ManagedInstanceMetadataOptions) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HttpPutResponseHopLimit
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ManagedInstanceMetadataOptionsPtrOutput) HttpTokens() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedInstanceMetadataOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.HttpTokens
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ManagedInstanceMetadataOptionsPtrOutput) InstanceMetadataTags() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedInstanceMetadataOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceMetadataTags
+	}).(pulumi.StringPtrOutput)
+}
+
 type ManagedInstanceNetworkInterface struct {
 	AssociateIpv6Address     *bool  `pulumi:"associateIpv6Address"`
 	AssociatePublicIpAddress *bool  `pulumi:"associatePublicIpAddress"`
@@ -24770,6 +24933,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceLoadBalancerArrayInput)(nil)).Elem(), ManagedInstanceLoadBalancerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceManagedInstanceActionInput)(nil)).Elem(), ManagedInstanceManagedInstanceActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceManagedInstanceActionPtrInput)(nil)).Elem(), ManagedInstanceManagedInstanceActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceMetadataOptionsInput)(nil)).Elem(), ManagedInstanceMetadataOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceMetadataOptionsPtrInput)(nil)).Elem(), ManagedInstanceMetadataOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceNetworkInterfaceInput)(nil)).Elem(), ManagedInstanceNetworkInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceNetworkInterfaceArrayInput)(nil)).Elem(), ManagedInstanceNetworkInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceResourceTagSpecificationInput)(nil)).Elem(), ManagedInstanceResourceTagSpecificationArgs{})
@@ -25096,6 +25261,8 @@ func init() {
 	pulumi.RegisterOutputType(ManagedInstanceLoadBalancerArrayOutput{})
 	pulumi.RegisterOutputType(ManagedInstanceManagedInstanceActionOutput{})
 	pulumi.RegisterOutputType(ManagedInstanceManagedInstanceActionPtrOutput{})
+	pulumi.RegisterOutputType(ManagedInstanceMetadataOptionsOutput{})
+	pulumi.RegisterOutputType(ManagedInstanceMetadataOptionsPtrOutput{})
 	pulumi.RegisterOutputType(ManagedInstanceNetworkInterfaceOutput{})
 	pulumi.RegisterOutputType(ManagedInstanceNetworkInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(ManagedInstanceResourceTagSpecificationOutput{})

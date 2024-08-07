@@ -99,6 +99,7 @@ __all__ = [
     'ManagedInstanceIntegrationRoute53DomainRecordSetArgs',
     'ManagedInstanceLoadBalancerArgs',
     'ManagedInstanceManagedInstanceActionArgs',
+    'ManagedInstanceMetadataOptionsArgs',
     'ManagedInstanceNetworkInterfaceArgs',
     'ManagedInstanceResourceTagSpecificationArgs',
     'ManagedInstanceRevertToSpotArgs',
@@ -5846,6 +5847,46 @@ class ManagedInstanceManagedInstanceActionArgs:
     @type.setter
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class ManagedInstanceMetadataOptionsArgs:
+    def __init__(__self__, *,
+                 http_tokens: pulumi.Input[str],
+                 http_put_response_hop_limit: Optional[pulumi.Input[int]] = None,
+                 instance_metadata_tags: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "http_tokens", http_tokens)
+        if http_put_response_hop_limit is not None:
+            pulumi.set(__self__, "http_put_response_hop_limit", http_put_response_hop_limit)
+        if instance_metadata_tags is not None:
+            pulumi.set(__self__, "instance_metadata_tags", instance_metadata_tags)
+
+    @property
+    @pulumi.getter(name="httpTokens")
+    def http_tokens(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "http_tokens")
+
+    @http_tokens.setter
+    def http_tokens(self, value: pulumi.Input[str]):
+        pulumi.set(self, "http_tokens", value)
+
+    @property
+    @pulumi.getter(name="httpPutResponseHopLimit")
+    def http_put_response_hop_limit(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "http_put_response_hop_limit")
+
+    @http_put_response_hop_limit.setter
+    def http_put_response_hop_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "http_put_response_hop_limit", value)
+
+    @property
+    @pulumi.getter(name="instanceMetadataTags")
+    def instance_metadata_tags(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "instance_metadata_tags")
+
+    @instance_metadata_tags.setter
+    def instance_metadata_tags(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_metadata_tags", value)
 
 
 @pulumi.input_type

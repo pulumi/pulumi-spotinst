@@ -16,6 +16,20 @@ public final class StatefulNodeAzureSecurityArgs extends com.pulumi.resources.Re
 
     public static final StatefulNodeAzureSecurityArgs Empty = new StatefulNodeAzureSecurityArgs();
 
+    @Import(name="confidentialOsDiskEncryption")
+    private @Nullable Output<Boolean> confidentialOsDiskEncryption;
+
+    public Optional<Output<Boolean>> confidentialOsDiskEncryption() {
+        return Optional.ofNullable(this.confidentialOsDiskEncryption);
+    }
+
+    @Import(name="encryptionAtHost")
+    private @Nullable Output<Boolean> encryptionAtHost;
+
+    public Optional<Output<Boolean>> encryptionAtHost() {
+        return Optional.ofNullable(this.encryptionAtHost);
+    }
+
     @Import(name="secureBootEnabled")
     private @Nullable Output<Boolean> secureBootEnabled;
 
@@ -40,6 +54,8 @@ public final class StatefulNodeAzureSecurityArgs extends com.pulumi.resources.Re
     private StatefulNodeAzureSecurityArgs() {}
 
     private StatefulNodeAzureSecurityArgs(StatefulNodeAzureSecurityArgs $) {
+        this.confidentialOsDiskEncryption = $.confidentialOsDiskEncryption;
+        this.encryptionAtHost = $.encryptionAtHost;
         this.secureBootEnabled = $.secureBootEnabled;
         this.securityType = $.securityType;
         this.vtpmEnabled = $.vtpmEnabled;
@@ -61,6 +77,24 @@ public final class StatefulNodeAzureSecurityArgs extends com.pulumi.resources.Re
 
         public Builder(StatefulNodeAzureSecurityArgs defaults) {
             $ = new StatefulNodeAzureSecurityArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder confidentialOsDiskEncryption(@Nullable Output<Boolean> confidentialOsDiskEncryption) {
+            $.confidentialOsDiskEncryption = confidentialOsDiskEncryption;
+            return this;
+        }
+
+        public Builder confidentialOsDiskEncryption(Boolean confidentialOsDiskEncryption) {
+            return confidentialOsDiskEncryption(Output.of(confidentialOsDiskEncryption));
+        }
+
+        public Builder encryptionAtHost(@Nullable Output<Boolean> encryptionAtHost) {
+            $.encryptionAtHost = encryptionAtHost;
+            return this;
+        }
+
+        public Builder encryptionAtHost(Boolean encryptionAtHost) {
+            return encryptionAtHost(Output.of(encryptionAtHost));
         }
 
         public Builder secureBootEnabled(@Nullable Output<Boolean> secureBootEnabled) {

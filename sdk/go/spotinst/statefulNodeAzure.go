@@ -231,9 +231,11 @@ import (
 //					},
 //				},
 //				Security: &spotinst.StatefulNodeAzureSecurityArgs{
-//					SecurityType:      pulumi.String("Standard"),
-//					SecureBootEnabled: pulumi.Bool(false),
-//					VtpmEnabled:       pulumi.Bool(false),
+//					SecurityType:                 pulumi.String("ConfidentialVM"),
+//					SecureBootEnabled:            pulumi.Bool(true),
+//					VtpmEnabled:                  pulumi.Bool(true),
+//					EncryptionAtHost:             pulumi.Bool(false),
+//					ConfidentialOsDiskEncryption: pulumi.Bool(true),
 //				},
 //				Tags: spotinst.StatefulNodeAzureTagArray{
 //					&spotinst.StatefulNodeAzureTagArgs{
@@ -485,8 +487,10 @@ import (
 //
 // * `security` - (Optional) Specifies the Security related profile settings for the virtual machine.
 //   - `secureBootEnabled` - (Optional) Specifies whether secure boot should be enabled on the virtual machine.
-//   - `securityType` - (Optional) Enum: `"Standard", "TrustedLaunch"` Security type refers to the different security features of a virtual machine. Security features like Trusted launch virtual machines help to improve the security of Azure generation 2 virtual machines.
+//   - `securityType` - (Optional) Enum: `"Standard", "TrustedLaunch", "ConfidentialVM"` Security type refers to the different security features of a virtual machine. Security features like Trusted launch virtual machines help to improve the security of Azure generation 2 virtual machines.
 //   - `vtpmEnabled` - (Optional) Specifies whether vTPM should be enabled on the virtual machine.
+//   - `encryptionAtHost` - (Optional) Enables the Host Encryption for the virtual machine. The Encryption at host will be disabled unless this property is set to true for the resource.
+//   - `confidentialOsDiskEncryption` - (Optional) Confidential disk encryption binds the disk encryption keys to the VM's TPM, ensuring VM-only access. The security type must be "ConfidentialVM" to enable defining this preference as “true”.
 //
 // ## Tag
 //

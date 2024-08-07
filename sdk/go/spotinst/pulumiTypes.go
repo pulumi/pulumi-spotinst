@@ -6627,9 +6627,11 @@ func (o StatefulNodeAzureSecretVaultCertificateArrayOutput) Index(i pulumi.IntIn
 }
 
 type StatefulNodeAzureSecurity struct {
-	SecureBootEnabled *bool   `pulumi:"secureBootEnabled"`
-	SecurityType      *string `pulumi:"securityType"`
-	VtpmEnabled       *bool   `pulumi:"vtpmEnabled"`
+	ConfidentialOsDiskEncryption *bool   `pulumi:"confidentialOsDiskEncryption"`
+	EncryptionAtHost             *bool   `pulumi:"encryptionAtHost"`
+	SecureBootEnabled            *bool   `pulumi:"secureBootEnabled"`
+	SecurityType                 *string `pulumi:"securityType"`
+	VtpmEnabled                  *bool   `pulumi:"vtpmEnabled"`
 }
 
 // StatefulNodeAzureSecurityInput is an input type that accepts StatefulNodeAzureSecurityArgs and StatefulNodeAzureSecurityOutput values.
@@ -6644,9 +6646,11 @@ type StatefulNodeAzureSecurityInput interface {
 }
 
 type StatefulNodeAzureSecurityArgs struct {
-	SecureBootEnabled pulumi.BoolPtrInput   `pulumi:"secureBootEnabled"`
-	SecurityType      pulumi.StringPtrInput `pulumi:"securityType"`
-	VtpmEnabled       pulumi.BoolPtrInput   `pulumi:"vtpmEnabled"`
+	ConfidentialOsDiskEncryption pulumi.BoolPtrInput   `pulumi:"confidentialOsDiskEncryption"`
+	EncryptionAtHost             pulumi.BoolPtrInput   `pulumi:"encryptionAtHost"`
+	SecureBootEnabled            pulumi.BoolPtrInput   `pulumi:"secureBootEnabled"`
+	SecurityType                 pulumi.StringPtrInput `pulumi:"securityType"`
+	VtpmEnabled                  pulumi.BoolPtrInput   `pulumi:"vtpmEnabled"`
 }
 
 func (StatefulNodeAzureSecurityArgs) ElementType() reflect.Type {
@@ -6726,6 +6730,14 @@ func (o StatefulNodeAzureSecurityOutput) ToStatefulNodeAzureSecurityPtrOutputWit
 	}).(StatefulNodeAzureSecurityPtrOutput)
 }
 
+func (o StatefulNodeAzureSecurityOutput) ConfidentialOsDiskEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureSecurity) *bool { return v.ConfidentialOsDiskEncryption }).(pulumi.BoolPtrOutput)
+}
+
+func (o StatefulNodeAzureSecurityOutput) EncryptionAtHost() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureSecurity) *bool { return v.EncryptionAtHost }).(pulumi.BoolPtrOutput)
+}
+
 func (o StatefulNodeAzureSecurityOutput) SecureBootEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v StatefulNodeAzureSecurity) *bool { return v.SecureBootEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -6760,6 +6772,24 @@ func (o StatefulNodeAzureSecurityPtrOutput) Elem() StatefulNodeAzureSecurityOutp
 		var ret StatefulNodeAzureSecurity
 		return ret
 	}).(StatefulNodeAzureSecurityOutput)
+}
+
+func (o StatefulNodeAzureSecurityPtrOutput) ConfidentialOsDiskEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureSecurity) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ConfidentialOsDiskEncryption
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o StatefulNodeAzureSecurityPtrOutput) EncryptionAtHost() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureSecurity) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptionAtHost
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o StatefulNodeAzureSecurityPtrOutput) SecureBootEnabled() pulumi.BoolPtrOutput {

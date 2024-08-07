@@ -36,6 +36,7 @@ type ManagedInstance struct {
 	LifeCycle                 pulumi.StringPtrOutput                             `pulumi:"lifeCycle"`
 	LoadBalancers             ManagedInstanceLoadBalancerArrayOutput             `pulumi:"loadBalancers"`
 	ManagedInstanceAction     ManagedInstanceManagedInstanceActionPtrOutput      `pulumi:"managedInstanceAction"`
+	MetadataOptions           ManagedInstanceMetadataOptionsPtrOutput            `pulumi:"metadataOptions"`
 	MinimumInstanceLifetime   pulumi.IntPtrOutput                                `pulumi:"minimumInstanceLifetime"`
 	Name                      pulumi.StringOutput                                `pulumi:"name"`
 	NetworkInterfaces         ManagedInstanceNetworkInterfaceArrayOutput         `pulumi:"networkInterfaces"`
@@ -131,6 +132,7 @@ type managedInstanceState struct {
 	LifeCycle                 *string                                   `pulumi:"lifeCycle"`
 	LoadBalancers             []ManagedInstanceLoadBalancer             `pulumi:"loadBalancers"`
 	ManagedInstanceAction     *ManagedInstanceManagedInstanceAction     `pulumi:"managedInstanceAction"`
+	MetadataOptions           *ManagedInstanceMetadataOptions           `pulumi:"metadataOptions"`
 	MinimumInstanceLifetime   *int                                      `pulumi:"minimumInstanceLifetime"`
 	Name                      *string                                   `pulumi:"name"`
 	NetworkInterfaces         []ManagedInstanceNetworkInterface         `pulumi:"networkInterfaces"`
@@ -179,6 +181,7 @@ type ManagedInstanceState struct {
 	LifeCycle                 pulumi.StringPtrInput
 	LoadBalancers             ManagedInstanceLoadBalancerArrayInput
 	ManagedInstanceAction     ManagedInstanceManagedInstanceActionPtrInput
+	MetadataOptions           ManagedInstanceMetadataOptionsPtrInput
 	MinimumInstanceLifetime   pulumi.IntPtrInput
 	Name                      pulumi.StringPtrInput
 	NetworkInterfaces         ManagedInstanceNetworkInterfaceArrayInput
@@ -231,6 +234,7 @@ type managedInstanceArgs struct {
 	LifeCycle                 *string                                   `pulumi:"lifeCycle"`
 	LoadBalancers             []ManagedInstanceLoadBalancer             `pulumi:"loadBalancers"`
 	ManagedInstanceAction     *ManagedInstanceManagedInstanceAction     `pulumi:"managedInstanceAction"`
+	MetadataOptions           *ManagedInstanceMetadataOptions           `pulumi:"metadataOptions"`
 	MinimumInstanceLifetime   *int                                      `pulumi:"minimumInstanceLifetime"`
 	Name                      *string                                   `pulumi:"name"`
 	NetworkInterfaces         []ManagedInstanceNetworkInterface         `pulumi:"networkInterfaces"`
@@ -280,6 +284,7 @@ type ManagedInstanceArgs struct {
 	LifeCycle                 pulumi.StringPtrInput
 	LoadBalancers             ManagedInstanceLoadBalancerArrayInput
 	ManagedInstanceAction     ManagedInstanceManagedInstanceActionPtrInput
+	MetadataOptions           ManagedInstanceMetadataOptionsPtrInput
 	MinimumInstanceLifetime   pulumi.IntPtrInput
 	Name                      pulumi.StringPtrInput
 	NetworkInterfaces         ManagedInstanceNetworkInterfaceArrayInput
@@ -475,6 +480,10 @@ func (o ManagedInstanceOutput) LoadBalancers() ManagedInstanceLoadBalancerArrayO
 
 func (o ManagedInstanceOutput) ManagedInstanceAction() ManagedInstanceManagedInstanceActionPtrOutput {
 	return o.ApplyT(func(v *ManagedInstance) ManagedInstanceManagedInstanceActionPtrOutput { return v.ManagedInstanceAction }).(ManagedInstanceManagedInstanceActionPtrOutput)
+}
+
+func (o ManagedInstanceOutput) MetadataOptions() ManagedInstanceMetadataOptionsPtrOutput {
+	return o.ApplyT(func(v *ManagedInstance) ManagedInstanceMetadataOptionsPtrOutput { return v.MetadataOptions }).(ManagedInstanceMetadataOptionsPtrOutput)
 }
 
 func (o ManagedInstanceOutput) MinimumInstanceLifetime() pulumi.IntPtrOutput {

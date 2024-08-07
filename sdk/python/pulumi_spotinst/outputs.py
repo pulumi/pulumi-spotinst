@@ -2653,7 +2653,11 @@ class StatefulNodeAzureSecurity(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "secureBootEnabled":
+        if key == "confidentialOsDiskEncryption":
+            suggest = "confidential_os_disk_encryption"
+        elif key == "encryptionAtHost":
+            suggest = "encryption_at_host"
+        elif key == "secureBootEnabled":
             suggest = "secure_boot_enabled"
         elif key == "securityType":
             suggest = "security_type"
@@ -2672,15 +2676,31 @@ class StatefulNodeAzureSecurity(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 confidential_os_disk_encryption: Optional[bool] = None,
+                 encryption_at_host: Optional[bool] = None,
                  secure_boot_enabled: Optional[bool] = None,
                  security_type: Optional[str] = None,
                  vtpm_enabled: Optional[bool] = None):
+        if confidential_os_disk_encryption is not None:
+            pulumi.set(__self__, "confidential_os_disk_encryption", confidential_os_disk_encryption)
+        if encryption_at_host is not None:
+            pulumi.set(__self__, "encryption_at_host", encryption_at_host)
         if secure_boot_enabled is not None:
             pulumi.set(__self__, "secure_boot_enabled", secure_boot_enabled)
         if security_type is not None:
             pulumi.set(__self__, "security_type", security_type)
         if vtpm_enabled is not None:
             pulumi.set(__self__, "vtpm_enabled", vtpm_enabled)
+
+    @property
+    @pulumi.getter(name="confidentialOsDiskEncryption")
+    def confidential_os_disk_encryption(self) -> Optional[bool]:
+        return pulumi.get(self, "confidential_os_disk_encryption")
+
+    @property
+    @pulumi.getter(name="encryptionAtHost")
+    def encryption_at_host(self) -> Optional[bool]:
+        return pulumi.get(self, "encryption_at_host")
 
     @property
     @pulumi.getter(name="secureBootEnabled")

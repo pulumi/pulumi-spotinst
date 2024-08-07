@@ -75,6 +75,9 @@ namespace Pulumi.SpotInst.Aws
         [Output("managedInstanceAction")]
         public Output<Outputs.ManagedInstanceManagedInstanceAction?> ManagedInstanceAction { get; private set; } = null!;
 
+        [Output("metadataOptions")]
+        public Output<Outputs.ManagedInstanceMetadataOptions?> MetadataOptions { get; private set; } = null!;
+
         [Output("minimumInstanceLifetime")]
         public Output<int?> MinimumInstanceLifetime { get; private set; } = null!;
 
@@ -276,6 +279,9 @@ namespace Pulumi.SpotInst.Aws
         [Input("managedInstanceAction")]
         public Input<Inputs.ManagedInstanceManagedInstanceActionArgs>? ManagedInstanceAction { get; set; }
 
+        [Input("metadataOptions")]
+        public Input<Inputs.ManagedInstanceMetadataOptionsArgs>? MetadataOptions { get; set; }
+
         [Input("minimumInstanceLifetime")]
         public Input<int>? MinimumInstanceLifetime { get; set; }
 
@@ -473,6 +479,9 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("managedInstanceAction")]
         public Input<Inputs.ManagedInstanceManagedInstanceActionGetArgs>? ManagedInstanceAction { get; set; }
+
+        [Input("metadataOptions")]
+        public Input<Inputs.ManagedInstanceMetadataOptionsGetArgs>? MetadataOptions { get; set; }
 
         [Input("minimumInstanceLifetime")]
         public Input<int>? MinimumInstanceLifetime { get; set; }

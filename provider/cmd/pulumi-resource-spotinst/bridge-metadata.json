@@ -795,6 +795,9 @@
                     "managed_instance_action": {
                         "maxItemsOne": true
                     },
+                    "metadata_options": {
+                        "maxItemsOne": true
+                    },
                     "network_interface": {
                         "maxItemsOne": false
                     },
