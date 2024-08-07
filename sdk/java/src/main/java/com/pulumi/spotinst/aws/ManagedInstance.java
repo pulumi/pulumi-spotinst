@@ -15,6 +15,7 @@ import com.pulumi.spotinst.aws.outputs.ManagedInstanceDelete;
 import com.pulumi.spotinst.aws.outputs.ManagedInstanceIntegrationRoute53;
 import com.pulumi.spotinst.aws.outputs.ManagedInstanceLoadBalancer;
 import com.pulumi.spotinst.aws.outputs.ManagedInstanceManagedInstanceAction;
+import com.pulumi.spotinst.aws.outputs.ManagedInstanceMetadataOptions;
 import com.pulumi.spotinst.aws.outputs.ManagedInstanceNetworkInterface;
 import com.pulumi.spotinst.aws.outputs.ManagedInstanceResourceTagSpecification;
 import com.pulumi.spotinst.aws.outputs.ManagedInstanceRevertToSpot;
@@ -154,6 +155,12 @@ public class ManagedInstance extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<ManagedInstanceManagedInstanceAction>> managedInstanceAction() {
         return Codegen.optional(this.managedInstanceAction);
+    }
+    @Export(name="metadataOptions", refs={ManagedInstanceMetadataOptions.class}, tree="[0]")
+    private Output</* @Nullable */ ManagedInstanceMetadataOptions> metadataOptions;
+
+    public Output<Optional<ManagedInstanceMetadataOptions>> metadataOptions() {
+        return Codegen.optional(this.metadataOptions);
     }
     @Export(name="minimumInstanceLifetime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> minimumInstanceLifetime;

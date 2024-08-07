@@ -11,6 +11,7 @@ import com.pulumi.spotinst.aws.inputs.ManagedInstanceDeleteArgs;
 import com.pulumi.spotinst.aws.inputs.ManagedInstanceIntegrationRoute53Args;
 import com.pulumi.spotinst.aws.inputs.ManagedInstanceLoadBalancerArgs;
 import com.pulumi.spotinst.aws.inputs.ManagedInstanceManagedInstanceActionArgs;
+import com.pulumi.spotinst.aws.inputs.ManagedInstanceMetadataOptionsArgs;
 import com.pulumi.spotinst.aws.inputs.ManagedInstanceNetworkInterfaceArgs;
 import com.pulumi.spotinst.aws.inputs.ManagedInstanceResourceTagSpecificationArgs;
 import com.pulumi.spotinst.aws.inputs.ManagedInstanceRevertToSpotArgs;
@@ -174,6 +175,13 @@ public final class ManagedInstanceArgs extends com.pulumi.resources.ResourceArgs
 
     public Optional<Output<ManagedInstanceManagedInstanceActionArgs>> managedInstanceAction() {
         return Optional.ofNullable(this.managedInstanceAction);
+    }
+
+    @Import(name="metadataOptions")
+    private @Nullable Output<ManagedInstanceMetadataOptionsArgs> metadataOptions;
+
+    public Optional<Output<ManagedInstanceMetadataOptionsArgs>> metadataOptions() {
+        return Optional.ofNullable(this.metadataOptions);
     }
 
     @Import(name="minimumInstanceLifetime")
@@ -368,6 +376,7 @@ public final class ManagedInstanceArgs extends com.pulumi.resources.ResourceArgs
         this.lifeCycle = $.lifeCycle;
         this.loadBalancers = $.loadBalancers;
         this.managedInstanceAction = $.managedInstanceAction;
+        this.metadataOptions = $.metadataOptions;
         this.minimumInstanceLifetime = $.minimumInstanceLifetime;
         this.name = $.name;
         this.networkInterfaces = $.networkInterfaces;
@@ -615,6 +624,15 @@ public final class ManagedInstanceArgs extends com.pulumi.resources.ResourceArgs
 
         public Builder managedInstanceAction(ManagedInstanceManagedInstanceActionArgs managedInstanceAction) {
             return managedInstanceAction(Output.of(managedInstanceAction));
+        }
+
+        public Builder metadataOptions(@Nullable Output<ManagedInstanceMetadataOptionsArgs> metadataOptions) {
+            $.metadataOptions = metadataOptions;
+            return this;
+        }
+
+        public Builder metadataOptions(ManagedInstanceMetadataOptionsArgs metadataOptions) {
+            return metadataOptions(Output.of(metadataOptions));
         }
 
         public Builder minimumInstanceLifetime(@Nullable Output<Integer> minimumInstanceLifetime) {

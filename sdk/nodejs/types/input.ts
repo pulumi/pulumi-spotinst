@@ -373,6 +373,8 @@ export interface StatefulNodeAzureSecretVaultCertificate {
 }
 
 export interface StatefulNodeAzureSecurity {
+    confidentialOsDiskEncryption?: pulumi.Input<boolean>;
+    encryptionAtHost?: pulumi.Input<boolean>;
     secureBootEnabled?: pulumi.Input<boolean>;
     securityType?: pulumi.Input<string>;
     vtpmEnabled?: pulumi.Input<boolean>;
@@ -1715,6 +1717,12 @@ export namespace aws {
 
     export interface ManagedInstanceManagedInstanceAction {
         type: pulumi.Input<string>;
+    }
+
+    export interface ManagedInstanceMetadataOptions {
+        httpPutResponseHopLimit?: pulumi.Input<number>;
+        httpTokens: pulumi.Input<string>;
+        instanceMetadataTags?: pulumi.Input<string>;
     }
 
     export interface ManagedInstanceNetworkInterface {

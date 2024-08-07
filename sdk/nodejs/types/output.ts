@@ -373,6 +373,8 @@ export interface StatefulNodeAzureSecretVaultCertificate {
 }
 
 export interface StatefulNodeAzureSecurity {
+    confidentialOsDiskEncryption?: boolean;
+    encryptionAtHost?: boolean;
     secureBootEnabled?: boolean;
     securityType?: string;
     vtpmEnabled?: boolean;
@@ -1716,6 +1718,12 @@ export namespace aws {
 
     export interface ManagedInstanceManagedInstanceAction {
         type: string;
+    }
+
+    export interface ManagedInstanceMetadataOptions {
+        httpPutResponseHopLimit?: number;
+        httpTokens: string;
+        instanceMetadataTags?: string;
     }
 
     export interface ManagedInstanceNetworkInterface {

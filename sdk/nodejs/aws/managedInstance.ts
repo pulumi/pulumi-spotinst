@@ -55,6 +55,7 @@ export class ManagedInstance extends pulumi.CustomResource {
     public readonly lifeCycle!: pulumi.Output<string | undefined>;
     public readonly loadBalancers!: pulumi.Output<outputs.aws.ManagedInstanceLoadBalancer[] | undefined>;
     public readonly managedInstanceAction!: pulumi.Output<outputs.aws.ManagedInstanceManagedInstanceAction | undefined>;
+    public readonly metadataOptions!: pulumi.Output<outputs.aws.ManagedInstanceMetadataOptions | undefined>;
     public readonly minimumInstanceLifetime!: pulumi.Output<number | undefined>;
     public readonly name!: pulumi.Output<string>;
     public readonly networkInterfaces!: pulumi.Output<outputs.aws.ManagedInstanceNetworkInterface[] | undefined>;
@@ -114,6 +115,7 @@ export class ManagedInstance extends pulumi.CustomResource {
             resourceInputs["lifeCycle"] = state ? state.lifeCycle : undefined;
             resourceInputs["loadBalancers"] = state ? state.loadBalancers : undefined;
             resourceInputs["managedInstanceAction"] = state ? state.managedInstanceAction : undefined;
+            resourceInputs["metadataOptions"] = state ? state.metadataOptions : undefined;
             resourceInputs["minimumInstanceLifetime"] = state ? state.minimumInstanceLifetime : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
@@ -179,6 +181,7 @@ export class ManagedInstance extends pulumi.CustomResource {
             resourceInputs["lifeCycle"] = args ? args.lifeCycle : undefined;
             resourceInputs["loadBalancers"] = args ? args.loadBalancers : undefined;
             resourceInputs["managedInstanceAction"] = args ? args.managedInstanceAction : undefined;
+            resourceInputs["metadataOptions"] = args ? args.metadataOptions : undefined;
             resourceInputs["minimumInstanceLifetime"] = args ? args.minimumInstanceLifetime : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
@@ -234,6 +237,7 @@ export interface ManagedInstanceState {
     lifeCycle?: pulumi.Input<string>;
     loadBalancers?: pulumi.Input<pulumi.Input<inputs.aws.ManagedInstanceLoadBalancer>[]>;
     managedInstanceAction?: pulumi.Input<inputs.aws.ManagedInstanceManagedInstanceAction>;
+    metadataOptions?: pulumi.Input<inputs.aws.ManagedInstanceMetadataOptions>;
     minimumInstanceLifetime?: pulumi.Input<number>;
     name?: pulumi.Input<string>;
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.aws.ManagedInstanceNetworkInterface>[]>;
@@ -285,6 +289,7 @@ export interface ManagedInstanceArgs {
     lifeCycle?: pulumi.Input<string>;
     loadBalancers?: pulumi.Input<pulumi.Input<inputs.aws.ManagedInstanceLoadBalancer>[]>;
     managedInstanceAction?: pulumi.Input<inputs.aws.ManagedInstanceManagedInstanceAction>;
+    metadataOptions?: pulumi.Input<inputs.aws.ManagedInstanceMetadataOptions>;
     minimumInstanceLifetime?: pulumi.Input<number>;
     name?: pulumi.Input<string>;
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.aws.ManagedInstanceNetworkInterface>[]>;

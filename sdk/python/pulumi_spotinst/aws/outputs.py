@@ -100,6 +100,7 @@ __all__ = [
     'ManagedInstanceIntegrationRoute53DomainRecordSet',
     'ManagedInstanceLoadBalancer',
     'ManagedInstanceManagedInstanceAction',
+    'ManagedInstanceMetadataOptions',
     'ManagedInstanceNetworkInterface',
     'ManagedInstanceResourceTagSpecification',
     'ManagedInstanceRevertToSpot',
@@ -5849,6 +5850,55 @@ class ManagedInstanceManagedInstanceAction(dict):
     @pulumi.getter
     def type(self) -> str:
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class ManagedInstanceMetadataOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "httpTokens":
+            suggest = "http_tokens"
+        elif key == "httpPutResponseHopLimit":
+            suggest = "http_put_response_hop_limit"
+        elif key == "instanceMetadataTags":
+            suggest = "instance_metadata_tags"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ManagedInstanceMetadataOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ManagedInstanceMetadataOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ManagedInstanceMetadataOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 http_tokens: str,
+                 http_put_response_hop_limit: Optional[int] = None,
+                 instance_metadata_tags: Optional[str] = None):
+        pulumi.set(__self__, "http_tokens", http_tokens)
+        if http_put_response_hop_limit is not None:
+            pulumi.set(__self__, "http_put_response_hop_limit", http_put_response_hop_limit)
+        if instance_metadata_tags is not None:
+            pulumi.set(__self__, "instance_metadata_tags", instance_metadata_tags)
+
+    @property
+    @pulumi.getter(name="httpTokens")
+    def http_tokens(self) -> str:
+        return pulumi.get(self, "http_tokens")
+
+    @property
+    @pulumi.getter(name="httpPutResponseHopLimit")
+    def http_put_response_hop_limit(self) -> Optional[int]:
+        return pulumi.get(self, "http_put_response_hop_limit")
+
+    @property
+    @pulumi.getter(name="instanceMetadataTags")
+    def instance_metadata_tags(self) -> Optional[str]:
+        return pulumi.get(self, "instance_metadata_tags")
 
 
 @pulumi.output_type
