@@ -2708,6 +2708,10 @@ export namespace aws {
 
     export interface OceanLaunchSpecStrategy {
         /**
+         * The configurable amount of time that Ocean will wait for the draining process to complete before terminating an instance. If you have not defined a draining timeout, the default of 300 seconds will be used.
+         */
+        drainingTimeout?: number;
+        /**
          * The desired percentage of the Spot instances out of all running instances for this VNG. Only available when the field is not set in the cluster directly (cluster.strategy.spotPercentage).
          */
         spotPercentage?: number;

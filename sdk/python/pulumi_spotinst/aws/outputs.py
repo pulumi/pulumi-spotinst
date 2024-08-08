@@ -9980,7 +9980,9 @@ class OceanLaunchSpecStrategy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "spotPercentage":
+        if key == "drainingTimeout":
+            suggest = "draining_timeout"
+        elif key == "spotPercentage":
             suggest = "spot_percentage"
 
         if suggest:
@@ -9995,12 +9997,24 @@ class OceanLaunchSpecStrategy(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 draining_timeout: Optional[int] = None,
                  spot_percentage: Optional[int] = None):
         """
+        :param int draining_timeout: The configurable amount of time that Ocean will wait for the draining process to complete before terminating an instance. If you have not defined a draining timeout, the default of 300 seconds will be used.
         :param int spot_percentage: The desired percentage of the Spot instances out of all running instances for this VNG. Only available when the field is not set in the cluster directly (cluster.strategy.spotPercentage).
         """
+        if draining_timeout is not None:
+            pulumi.set(__self__, "draining_timeout", draining_timeout)
         if spot_percentage is not None:
             pulumi.set(__self__, "spot_percentage", spot_percentage)
+
+    @property
+    @pulumi.getter(name="drainingTimeout")
+    def draining_timeout(self) -> Optional[int]:
+        """
+        The configurable amount of time that Ocean will wait for the draining process to complete before terminating an instance. If you have not defined a draining timeout, the default of 300 seconds will be used.
+        """
+        return pulumi.get(self, "draining_timeout")
 
     @property
     @pulumi.getter(name="spotPercentage")

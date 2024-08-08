@@ -16,6 +16,21 @@ public final class OceanLaunchSpecStrategyArgs extends com.pulumi.resources.Reso
     public static final OceanLaunchSpecStrategyArgs Empty = new OceanLaunchSpecStrategyArgs();
 
     /**
+     * The configurable amount of time that Ocean will wait for the draining process to complete before terminating an instance. If you have not defined a draining timeout, the default of 300 seconds will be used.
+     * 
+     */
+    @Import(name="drainingTimeout")
+    private @Nullable Output<Integer> drainingTimeout;
+
+    /**
+     * @return The configurable amount of time that Ocean will wait for the draining process to complete before terminating an instance. If you have not defined a draining timeout, the default of 300 seconds will be used.
+     * 
+     */
+    public Optional<Output<Integer>> drainingTimeout() {
+        return Optional.ofNullable(this.drainingTimeout);
+    }
+
+    /**
      * The desired percentage of the Spot instances out of all running instances for this VNG. Only available when the field is not set in the cluster directly (cluster.strategy.spotPercentage).
      * 
      */
@@ -33,6 +48,7 @@ public final class OceanLaunchSpecStrategyArgs extends com.pulumi.resources.Reso
     private OceanLaunchSpecStrategyArgs() {}
 
     private OceanLaunchSpecStrategyArgs(OceanLaunchSpecStrategyArgs $) {
+        this.drainingTimeout = $.drainingTimeout;
         this.spotPercentage = $.spotPercentage;
     }
 
@@ -52,6 +68,27 @@ public final class OceanLaunchSpecStrategyArgs extends com.pulumi.resources.Reso
 
         public Builder(OceanLaunchSpecStrategyArgs defaults) {
             $ = new OceanLaunchSpecStrategyArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param drainingTimeout The configurable amount of time that Ocean will wait for the draining process to complete before terminating an instance. If you have not defined a draining timeout, the default of 300 seconds will be used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder drainingTimeout(@Nullable Output<Integer> drainingTimeout) {
+            $.drainingTimeout = drainingTimeout;
+            return this;
+        }
+
+        /**
+         * @param drainingTimeout The configurable amount of time that Ocean will wait for the draining process to complete before terminating an instance. If you have not defined a draining timeout, the default of 300 seconds will be used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder drainingTimeout(Integer drainingTimeout) {
+            return drainingTimeout(Output.of(drainingTimeout));
         }
 
         /**
