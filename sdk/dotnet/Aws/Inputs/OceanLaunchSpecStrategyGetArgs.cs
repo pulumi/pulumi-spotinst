@@ -13,6 +13,12 @@ namespace Pulumi.SpotInst.Aws.Inputs
     public sealed class OceanLaunchSpecStrategyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The configurable amount of time that Ocean will wait for the draining process to complete before terminating an instance. If you have not defined a draining timeout, the default of 300 seconds will be used.
+        /// </summary>
+        [Input("drainingTimeout")]
+        public Input<int>? DrainingTimeout { get; set; }
+
+        /// <summary>
         /// The desired percentage of the Spot instances out of all running instances for this VNG. Only available when the field is not set in the cluster directly (cluster.strategy.spotPercentage).
         /// </summary>
         [Input("spotPercentage")]

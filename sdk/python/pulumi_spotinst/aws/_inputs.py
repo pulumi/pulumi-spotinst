@@ -10018,12 +10018,28 @@ class OceanLaunchSpecSchedulingTaskTaskHeadroomArgs:
 @pulumi.input_type
 class OceanLaunchSpecStrategyArgs:
     def __init__(__self__, *,
+                 draining_timeout: Optional[pulumi.Input[int]] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None):
         """
+        :param pulumi.Input[int] draining_timeout: The configurable amount of time that Ocean will wait for the draining process to complete before terminating an instance. If you have not defined a draining timeout, the default of 300 seconds will be used.
         :param pulumi.Input[int] spot_percentage: The desired percentage of the Spot instances out of all running instances for this VNG. Only available when the field is not set in the cluster directly (cluster.strategy.spotPercentage).
         """
+        if draining_timeout is not None:
+            pulumi.set(__self__, "draining_timeout", draining_timeout)
         if spot_percentage is not None:
             pulumi.set(__self__, "spot_percentage", spot_percentage)
+
+    @property
+    @pulumi.getter(name="drainingTimeout")
+    def draining_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        The configurable amount of time that Ocean will wait for the draining process to complete before terminating an instance. If you have not defined a draining timeout, the default of 300 seconds will be used.
+        """
+        return pulumi.get(self, "draining_timeout")
+
+    @draining_timeout.setter
+    def draining_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "draining_timeout", value)
 
     @property
     @pulumi.getter(name="spotPercentage")

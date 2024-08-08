@@ -12,12 +12,24 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OceanLaunchSpecStrategy {
     /**
+     * @return The configurable amount of time that Ocean will wait for the draining process to complete before terminating an instance. If you have not defined a draining timeout, the default of 300 seconds will be used.
+     * 
+     */
+    private @Nullable Integer drainingTimeout;
+    /**
      * @return The desired percentage of the Spot instances out of all running instances for this VNG. Only available when the field is not set in the cluster directly (cluster.strategy.spotPercentage).
      * 
      */
     private @Nullable Integer spotPercentage;
 
     private OceanLaunchSpecStrategy() {}
+    /**
+     * @return The configurable amount of time that Ocean will wait for the draining process to complete before terminating an instance. If you have not defined a draining timeout, the default of 300 seconds will be used.
+     * 
+     */
+    public Optional<Integer> drainingTimeout() {
+        return Optional.ofNullable(this.drainingTimeout);
+    }
     /**
      * @return The desired percentage of the Spot instances out of all running instances for this VNG. Only available when the field is not set in the cluster directly (cluster.strategy.spotPercentage).
      * 
@@ -35,13 +47,21 @@ public final class OceanLaunchSpecStrategy {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Integer drainingTimeout;
         private @Nullable Integer spotPercentage;
         public Builder() {}
         public Builder(OceanLaunchSpecStrategy defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.drainingTimeout = defaults.drainingTimeout;
     	      this.spotPercentage = defaults.spotPercentage;
         }
 
+        @CustomType.Setter
+        public Builder drainingTimeout(@Nullable Integer drainingTimeout) {
+
+            this.drainingTimeout = drainingTimeout;
+            return this;
+        }
         @CustomType.Setter
         public Builder spotPercentage(@Nullable Integer spotPercentage) {
 
@@ -50,6 +70,7 @@ public final class OceanLaunchSpecStrategy {
         }
         public OceanLaunchSpecStrategy build() {
             final var _resultValue = new OceanLaunchSpecStrategy();
+            _resultValue.drainingTimeout = drainingTimeout;
             _resultValue.spotPercentage = spotPercentage;
             return _resultValue;
         }

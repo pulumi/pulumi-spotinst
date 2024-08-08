@@ -21821,6 +21821,8 @@ func (o OceanLaunchSpecSchedulingTaskTaskHeadroomArrayOutput) Index(i pulumi.Int
 }
 
 type OceanLaunchSpecStrategy struct {
+	// The configurable amount of time that Ocean will wait for the draining process to complete before terminating an instance. If you have not defined a draining timeout, the default of 300 seconds will be used.
+	DrainingTimeout *int `pulumi:"drainingTimeout"`
 	// The desired percentage of the Spot instances out of all running instances for this VNG. Only available when the field is not set in the cluster directly (cluster.strategy.spotPercentage).
 	SpotPercentage *int `pulumi:"spotPercentage"`
 }
@@ -21837,6 +21839,8 @@ type OceanLaunchSpecStrategyInput interface {
 }
 
 type OceanLaunchSpecStrategyArgs struct {
+	// The configurable amount of time that Ocean will wait for the draining process to complete before terminating an instance. If you have not defined a draining timeout, the default of 300 seconds will be used.
+	DrainingTimeout pulumi.IntPtrInput `pulumi:"drainingTimeout"`
 	// The desired percentage of the Spot instances out of all running instances for this VNG. Only available when the field is not set in the cluster directly (cluster.strategy.spotPercentage).
 	SpotPercentage pulumi.IntPtrInput `pulumi:"spotPercentage"`
 }
@@ -21890,6 +21894,11 @@ func (o OceanLaunchSpecStrategyOutput) ToOceanLaunchSpecStrategyOutput() OceanLa
 
 func (o OceanLaunchSpecStrategyOutput) ToOceanLaunchSpecStrategyOutputWithContext(ctx context.Context) OceanLaunchSpecStrategyOutput {
 	return o
+}
+
+// The configurable amount of time that Ocean will wait for the draining process to complete before terminating an instance. If you have not defined a draining timeout, the default of 300 seconds will be used.
+func (o OceanLaunchSpecStrategyOutput) DrainingTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecStrategy) *int { return v.DrainingTimeout }).(pulumi.IntPtrOutput)
 }
 
 // The desired percentage of the Spot instances out of all running instances for this VNG. Only available when the field is not set in the cluster directly (cluster.strategy.spotPercentage).
