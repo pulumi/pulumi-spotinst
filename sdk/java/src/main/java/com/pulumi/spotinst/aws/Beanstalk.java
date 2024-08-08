@@ -198,7 +198,7 @@ public class Beanstalk extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Beanstalk(String name) {
+    public Beanstalk(java.lang.String name) {
         this(name, BeanstalkArgs.Empty);
     }
     /**
@@ -206,7 +206,7 @@ public class Beanstalk extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Beanstalk(String name, BeanstalkArgs args) {
+    public Beanstalk(java.lang.String name, BeanstalkArgs args) {
         this(name, args, null);
     }
     /**
@@ -215,12 +215,12 @@ public class Beanstalk extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Beanstalk(String name, BeanstalkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("spotinst:aws/beanstalk:Beanstalk", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Beanstalk(java.lang.String name, BeanstalkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("spotinst:aws/beanstalk:Beanstalk", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Beanstalk(String name, Output<String> id, @Nullable BeanstalkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("spotinst:aws/beanstalk:Beanstalk", name, state, makeResourceOptions(options, id));
+    private Beanstalk(java.lang.String name, Output<java.lang.String> id, @Nullable BeanstalkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("spotinst:aws/beanstalk:Beanstalk", name, state, makeResourceOptions(options, id), false);
     }
 
     private static BeanstalkArgs makeArgs(BeanstalkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -230,7 +230,7 @@ public class Beanstalk extends com.pulumi.resources.CustomResource {
         return args == null ? BeanstalkArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -246,7 +246,7 @@ public class Beanstalk extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Beanstalk get(String name, Output<String> id, @Nullable BeanstalkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Beanstalk get(java.lang.String name, Output<java.lang.String> id, @Nullable BeanstalkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Beanstalk(name, id, state, options);
     }
 }

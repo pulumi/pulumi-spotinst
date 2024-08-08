@@ -61,7 +61,7 @@ public class Strategy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Strategy(String name) {
+    public Strategy(java.lang.String name) {
         this(name, StrategyArgs.Empty);
     }
     /**
@@ -69,7 +69,7 @@ public class Strategy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Strategy(String name, StrategyArgs args) {
+    public Strategy(java.lang.String name, StrategyArgs args) {
         this(name, args, null);
     }
     /**
@@ -78,12 +78,12 @@ public class Strategy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Strategy(String name, StrategyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("spotinst:oceancd/strategy:Strategy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Strategy(java.lang.String name, StrategyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("spotinst:oceancd/strategy:Strategy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Strategy(String name, Output<String> id, @Nullable StrategyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("spotinst:oceancd/strategy:Strategy", name, state, makeResourceOptions(options, id));
+    private Strategy(java.lang.String name, Output<java.lang.String> id, @Nullable StrategyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("spotinst:oceancd/strategy:Strategy", name, state, makeResourceOptions(options, id), false);
     }
 
     private static StrategyArgs makeArgs(StrategyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -93,7 +93,7 @@ public class Strategy extends com.pulumi.resources.CustomResource {
         return args == null ? StrategyArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -109,7 +109,7 @@ public class Strategy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Strategy get(String name, Output<String> id, @Nullable StrategyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Strategy get(java.lang.String name, Output<java.lang.String> id, @Nullable StrategyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Strategy(name, id, state, options);
     }
 }

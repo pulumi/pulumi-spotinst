@@ -469,7 +469,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Ocean(String name) {
+    public Ocean(java.lang.String name) {
         this(name, OceanArgs.Empty);
     }
     /**
@@ -477,7 +477,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Ocean(String name, OceanArgs args) {
+    public Ocean(java.lang.String name, OceanArgs args) {
         this(name, args, null);
     }
     /**
@@ -486,12 +486,12 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Ocean(String name, OceanArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("spotinst:ecs/ocean:Ocean", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Ocean(java.lang.String name, OceanArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("spotinst:ecs/ocean:Ocean", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Ocean(String name, Output<String> id, @Nullable OceanState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("spotinst:ecs/ocean:Ocean", name, state, makeResourceOptions(options, id));
+    private Ocean(java.lang.String name, Output<java.lang.String> id, @Nullable OceanState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("spotinst:ecs/ocean:Ocean", name, state, makeResourceOptions(options, id), false);
     }
 
     private static OceanArgs makeArgs(OceanArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -501,7 +501,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
         return args == null ? OceanArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -517,7 +517,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Ocean get(String name, Output<String> id, @Nullable OceanState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Ocean get(java.lang.String name, Output<java.lang.String> id, @Nullable OceanState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Ocean(name, id, state, options);
     }
 }

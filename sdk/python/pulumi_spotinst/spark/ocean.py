@@ -185,12 +185,12 @@ class Ocean(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 compute: Optional[pulumi.Input[pulumi.InputType['OceanComputeArgs']]] = None,
-                 ingress: Optional[pulumi.Input[pulumi.InputType['OceanIngressArgs']]] = None,
-                 log_collection: Optional[pulumi.Input[pulumi.InputType['OceanLogCollectionArgs']]] = None,
+                 compute: Optional[pulumi.Input[Union['OceanComputeArgs', 'OceanComputeArgsDict']]] = None,
+                 ingress: Optional[pulumi.Input[Union['OceanIngressArgs', 'OceanIngressArgsDict']]] = None,
+                 log_collection: Optional[pulumi.Input[Union['OceanLogCollectionArgs', 'OceanLogCollectionArgsDict']]] = None,
                  ocean_cluster_id: Optional[pulumi.Input[str]] = None,
-                 spark: Optional[pulumi.Input[pulumi.InputType['OceanSparkArgs']]] = None,
-                 webhook: Optional[pulumi.Input[pulumi.InputType['OceanWebhookArgs']]] = None,
+                 spark: Optional[pulumi.Input[Union['OceanSparkArgs', 'OceanSparkArgsDict']]] = None,
+                 webhook: Optional[pulumi.Input[Union['OceanWebhookArgs', 'OceanWebhookArgsDict']]] = None,
                  __props__=None):
         """
         Manages a Spotinst Ocean Spark resource on AWS or GCP.
@@ -207,44 +207,44 @@ class Ocean(pulumi.CustomResource):
 
         example = spotinst.spark.Ocean("example",
             ocean_cluster_id="ocean-cluster-id",
-            ingress=spotinst.spark.OceanIngressArgs(
-                controller=spotinst.spark.OceanIngressControllerArgs(
-                    managed=True,
-                ),
-                load_balancer=spotinst.spark.OceanIngressLoadBalancerArgs(
-                    managed=True,
-                    target_group_arn="arn:aws:elasticloadbalancing:eu-north-1:XXXXXXXXXXXX:targetgroup/my-spark-cluster-nlb-tg/a38c2b83XXXXXXXX",
-                    service_annotations={
-                        "service.beta.kubernetes.io/aws-load-balancer-security-groups": "sg-XXXXXXXXXXXXXXXXX",
-                        "some-service-annotation-2": "some-service-annotation-value-2",
+            ingress={
+                "controller": {
+                    "managed": True,
+                },
+                "load_balancer": {
+                    "managed": True,
+                    "target_group_arn": "arn:aws:elasticloadbalancing:eu-north-1:XXXXXXXXXXXX:targetgroup/my-spark-cluster-nlb-tg/a38c2b83XXXXXXXX",
+                    "service_annotations": {
+                        "service_beta_kubernetes_io_aws_load_balancer_security_groups": "sg-XXXXXXXXXXXXXXXXX",
+                        "some_service_annotation_2": "some-service-annotation-value-2",
                     },
-                ),
-                custom_endpoint=spotinst.spark.OceanIngressCustomEndpointArgs(
-                    enabled=False,
-                    address="my-spark-cluster-nlb-8cbb8da7XXXXXXXX.elb.us-east-1.amazonaws.com",
-                ),
-                private_link=spotinst.spark.OceanIngressPrivateLinkArgs(
-                    enabled=False,
-                    vpc_endpoint_service="com.amazonaws.vpce.eu-north-1.vpce-svc-XXXXXXXXXXXXXXXXX",
-                ),
-            ),
-            compute=spotinst.spark.OceanComputeArgs(
-                create_vngs=True,
-                use_taints=True,
-            ),
-            log_collection=spotinst.spark.OceanLogCollectionArgs(
-                collect_app_logs=True,
-            ),
-            webhook=spotinst.spark.OceanWebhookArgs(
-                use_host_network=False,
-                host_network_ports=[25554],
-            ),
-            spark=spotinst.spark.OceanSparkArgs(
-                additional_app_namespaces=[
+                },
+                "custom_endpoint": {
+                    "enabled": False,
+                    "address": "my-spark-cluster-nlb-8cbb8da7XXXXXXXX.elb.us-east-1.amazonaws.com",
+                },
+                "private_link": {
+                    "enabled": False,
+                    "vpc_endpoint_service": "com.amazonaws.vpce.eu-north-1.vpce-svc-XXXXXXXXXXXXXXXXX",
+                },
+            },
+            compute={
+                "create_vngs": True,
+                "use_taints": True,
+            },
+            log_collection={
+                "collect_app_logs": True,
+            },
+            webhook={
+                "use_host_network": False,
+                "host_network_ports": [25554],
+            },
+            spark={
+                "additional_app_namespaces": [
                     "extra-spark-app-ns-1",
                     "extra-spark-app-ns-2",
                 ],
-            ))
+            })
         ```
 
         :param str resource_name: The name of the resource.
@@ -272,44 +272,44 @@ class Ocean(pulumi.CustomResource):
 
         example = spotinst.spark.Ocean("example",
             ocean_cluster_id="ocean-cluster-id",
-            ingress=spotinst.spark.OceanIngressArgs(
-                controller=spotinst.spark.OceanIngressControllerArgs(
-                    managed=True,
-                ),
-                load_balancer=spotinst.spark.OceanIngressLoadBalancerArgs(
-                    managed=True,
-                    target_group_arn="arn:aws:elasticloadbalancing:eu-north-1:XXXXXXXXXXXX:targetgroup/my-spark-cluster-nlb-tg/a38c2b83XXXXXXXX",
-                    service_annotations={
-                        "service.beta.kubernetes.io/aws-load-balancer-security-groups": "sg-XXXXXXXXXXXXXXXXX",
-                        "some-service-annotation-2": "some-service-annotation-value-2",
+            ingress={
+                "controller": {
+                    "managed": True,
+                },
+                "load_balancer": {
+                    "managed": True,
+                    "target_group_arn": "arn:aws:elasticloadbalancing:eu-north-1:XXXXXXXXXXXX:targetgroup/my-spark-cluster-nlb-tg/a38c2b83XXXXXXXX",
+                    "service_annotations": {
+                        "service_beta_kubernetes_io_aws_load_balancer_security_groups": "sg-XXXXXXXXXXXXXXXXX",
+                        "some_service_annotation_2": "some-service-annotation-value-2",
                     },
-                ),
-                custom_endpoint=spotinst.spark.OceanIngressCustomEndpointArgs(
-                    enabled=False,
-                    address="my-spark-cluster-nlb-8cbb8da7XXXXXXXX.elb.us-east-1.amazonaws.com",
-                ),
-                private_link=spotinst.spark.OceanIngressPrivateLinkArgs(
-                    enabled=False,
-                    vpc_endpoint_service="com.amazonaws.vpce.eu-north-1.vpce-svc-XXXXXXXXXXXXXXXXX",
-                ),
-            ),
-            compute=spotinst.spark.OceanComputeArgs(
-                create_vngs=True,
-                use_taints=True,
-            ),
-            log_collection=spotinst.spark.OceanLogCollectionArgs(
-                collect_app_logs=True,
-            ),
-            webhook=spotinst.spark.OceanWebhookArgs(
-                use_host_network=False,
-                host_network_ports=[25554],
-            ),
-            spark=spotinst.spark.OceanSparkArgs(
-                additional_app_namespaces=[
+                },
+                "custom_endpoint": {
+                    "enabled": False,
+                    "address": "my-spark-cluster-nlb-8cbb8da7XXXXXXXX.elb.us-east-1.amazonaws.com",
+                },
+                "private_link": {
+                    "enabled": False,
+                    "vpc_endpoint_service": "com.amazonaws.vpce.eu-north-1.vpce-svc-XXXXXXXXXXXXXXXXX",
+                },
+            },
+            compute={
+                "create_vngs": True,
+                "use_taints": True,
+            },
+            log_collection={
+                "collect_app_logs": True,
+            },
+            webhook={
+                "use_host_network": False,
+                "host_network_ports": [25554],
+            },
+            spark={
+                "additional_app_namespaces": [
                     "extra-spark-app-ns-1",
                     "extra-spark-app-ns-2",
                 ],
-            ))
+            })
         ```
 
         :param str resource_name: The name of the resource.
@@ -327,12 +327,12 @@ class Ocean(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 compute: Optional[pulumi.Input[pulumi.InputType['OceanComputeArgs']]] = None,
-                 ingress: Optional[pulumi.Input[pulumi.InputType['OceanIngressArgs']]] = None,
-                 log_collection: Optional[pulumi.Input[pulumi.InputType['OceanLogCollectionArgs']]] = None,
+                 compute: Optional[pulumi.Input[Union['OceanComputeArgs', 'OceanComputeArgsDict']]] = None,
+                 ingress: Optional[pulumi.Input[Union['OceanIngressArgs', 'OceanIngressArgsDict']]] = None,
+                 log_collection: Optional[pulumi.Input[Union['OceanLogCollectionArgs', 'OceanLogCollectionArgsDict']]] = None,
                  ocean_cluster_id: Optional[pulumi.Input[str]] = None,
-                 spark: Optional[pulumi.Input[pulumi.InputType['OceanSparkArgs']]] = None,
-                 webhook: Optional[pulumi.Input[pulumi.InputType['OceanWebhookArgs']]] = None,
+                 spark: Optional[pulumi.Input[Union['OceanSparkArgs', 'OceanSparkArgsDict']]] = None,
+                 webhook: Optional[pulumi.Input[Union['OceanWebhookArgs', 'OceanWebhookArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -360,12 +360,12 @@ class Ocean(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            compute: Optional[pulumi.Input[pulumi.InputType['OceanComputeArgs']]] = None,
-            ingress: Optional[pulumi.Input[pulumi.InputType['OceanIngressArgs']]] = None,
-            log_collection: Optional[pulumi.Input[pulumi.InputType['OceanLogCollectionArgs']]] = None,
+            compute: Optional[pulumi.Input[Union['OceanComputeArgs', 'OceanComputeArgsDict']]] = None,
+            ingress: Optional[pulumi.Input[Union['OceanIngressArgs', 'OceanIngressArgsDict']]] = None,
+            log_collection: Optional[pulumi.Input[Union['OceanLogCollectionArgs', 'OceanLogCollectionArgsDict']]] = None,
             ocean_cluster_id: Optional[pulumi.Input[str]] = None,
-            spark: Optional[pulumi.Input[pulumi.InputType['OceanSparkArgs']]] = None,
-            webhook: Optional[pulumi.Input[pulumi.InputType['OceanWebhookArgs']]] = None) -> 'Ocean':
+            spark: Optional[pulumi.Input[Union['OceanSparkArgs', 'OceanSparkArgsDict']]] = None,
+            webhook: Optional[pulumi.Input[Union['OceanWebhookArgs', 'OceanWebhookArgsDict']]] = None) -> 'Ocean':
         """
         Get an existing Ocean resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -196,7 +196,7 @@ public class VerificationProvider extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public VerificationProvider(String name) {
+    public VerificationProvider(java.lang.String name) {
         this(name, VerificationProviderArgs.Empty);
     }
     /**
@@ -204,7 +204,7 @@ public class VerificationProvider extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public VerificationProvider(String name, VerificationProviderArgs args) {
+    public VerificationProvider(java.lang.String name, VerificationProviderArgs args) {
         this(name, args, null);
     }
     /**
@@ -213,12 +213,12 @@ public class VerificationProvider extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public VerificationProvider(String name, VerificationProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("spotinst:oceancd/verificationProvider:VerificationProvider", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public VerificationProvider(java.lang.String name, VerificationProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("spotinst:oceancd/verificationProvider:VerificationProvider", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private VerificationProvider(String name, Output<String> id, @Nullable VerificationProviderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("spotinst:oceancd/verificationProvider:VerificationProvider", name, state, makeResourceOptions(options, id));
+    private VerificationProvider(java.lang.String name, Output<java.lang.String> id, @Nullable VerificationProviderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("spotinst:oceancd/verificationProvider:VerificationProvider", name, state, makeResourceOptions(options, id), false);
     }
 
     private static VerificationProviderArgs makeArgs(VerificationProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -228,7 +228,7 @@ public class VerificationProvider extends com.pulumi.resources.CustomResource {
         return args == null ? VerificationProviderArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -244,7 +244,7 @@ public class VerificationProvider extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static VerificationProvider get(String name, Output<String> id, @Nullable VerificationProviderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static VerificationProvider get(java.lang.String name, Output<java.lang.String> id, @Nullable VerificationProviderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new VerificationProvider(name, id, state, options);
     }
 }

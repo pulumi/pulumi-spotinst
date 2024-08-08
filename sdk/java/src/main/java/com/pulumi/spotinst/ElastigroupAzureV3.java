@@ -138,7 +138,7 @@ public class ElastigroupAzureV3 extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ElastigroupAzureV3(String name) {
+    public ElastigroupAzureV3(java.lang.String name) {
         this(name, ElastigroupAzureV3Args.Empty);
     }
     /**
@@ -146,7 +146,7 @@ public class ElastigroupAzureV3 extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ElastigroupAzureV3(String name, ElastigroupAzureV3Args args) {
+    public ElastigroupAzureV3(java.lang.String name, ElastigroupAzureV3Args args) {
         this(name, args, null);
     }
     /**
@@ -155,12 +155,12 @@ public class ElastigroupAzureV3 extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ElastigroupAzureV3(String name, ElastigroupAzureV3Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("spotinst:index/elastigroupAzureV3:ElastigroupAzureV3", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ElastigroupAzureV3(java.lang.String name, ElastigroupAzureV3Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("spotinst:index/elastigroupAzureV3:ElastigroupAzureV3", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ElastigroupAzureV3(String name, Output<String> id, @Nullable ElastigroupAzureV3State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("spotinst:index/elastigroupAzureV3:ElastigroupAzureV3", name, state, makeResourceOptions(options, id));
+    private ElastigroupAzureV3(java.lang.String name, Output<java.lang.String> id, @Nullable ElastigroupAzureV3State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("spotinst:index/elastigroupAzureV3:ElastigroupAzureV3", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ElastigroupAzureV3Args makeArgs(ElastigroupAzureV3Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -170,7 +170,7 @@ public class ElastigroupAzureV3 extends com.pulumi.resources.CustomResource {
         return args == null ? ElastigroupAzureV3Args.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -186,7 +186,7 @@ public class ElastigroupAzureV3 extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ElastigroupAzureV3 get(String name, Output<String> id, @Nullable ElastigroupAzureV3State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ElastigroupAzureV3 get(java.lang.String name, Output<java.lang.String> id, @Nullable ElastigroupAzureV3State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ElastigroupAzureV3(name, id, state, options);
     }
 }

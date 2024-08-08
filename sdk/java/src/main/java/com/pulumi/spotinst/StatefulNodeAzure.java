@@ -832,7 +832,7 @@ public class StatefulNodeAzure extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public StatefulNodeAzure(String name) {
+    public StatefulNodeAzure(java.lang.String name) {
         this(name, StatefulNodeAzureArgs.Empty);
     }
     /**
@@ -840,7 +840,7 @@ public class StatefulNodeAzure extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public StatefulNodeAzure(String name, StatefulNodeAzureArgs args) {
+    public StatefulNodeAzure(java.lang.String name, StatefulNodeAzureArgs args) {
         this(name, args, null);
     }
     /**
@@ -849,12 +849,12 @@ public class StatefulNodeAzure extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public StatefulNodeAzure(String name, StatefulNodeAzureArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("spotinst:index/statefulNodeAzure:StatefulNodeAzure", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public StatefulNodeAzure(java.lang.String name, StatefulNodeAzureArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("spotinst:index/statefulNodeAzure:StatefulNodeAzure", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private StatefulNodeAzure(String name, Output<String> id, @Nullable StatefulNodeAzureState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("spotinst:index/statefulNodeAzure:StatefulNodeAzure", name, state, makeResourceOptions(options, id));
+    private StatefulNodeAzure(java.lang.String name, Output<java.lang.String> id, @Nullable StatefulNodeAzureState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("spotinst:index/statefulNodeAzure:StatefulNodeAzure", name, state, makeResourceOptions(options, id), false);
     }
 
     private static StatefulNodeAzureArgs makeArgs(StatefulNodeAzureArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -864,7 +864,7 @@ public class StatefulNodeAzure extends com.pulumi.resources.CustomResource {
         return args == null ? StatefulNodeAzureArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -880,7 +880,7 @@ public class StatefulNodeAzure extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static StatefulNodeAzure get(String name, Output<String> id, @Nullable StatefulNodeAzureState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static StatefulNodeAzure get(java.lang.String name, Output<java.lang.String> id, @Nullable StatefulNodeAzureState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new StatefulNodeAzure(name, id, state, options);
     }
 }
