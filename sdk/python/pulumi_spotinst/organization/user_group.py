@@ -172,7 +172,7 @@ class UserGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserGroupPolicyArgs']]]]] = None,
+                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserGroupPolicyArgs', 'UserGroupPolicyArgsDict']]]]] = None,
                  user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -188,17 +188,17 @@ class UserGroup(pulumi.CustomResource):
             name="test_user_group",
             description="user group by terraform",
             user_ids=["u-372gf6ae"],
-            policies=[spotinst.organization.UserGroupPolicyArgs(
-                account_ids=["act-a1b2c3d4"],
-                policy_id="pol-vv7d8c06",
-            )])
+            policies=[{
+                "account_ids": ["act-a1b2c3d4"],
+                "policy_id": "pol-vv7d8c06",
+            }])
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: User group description.
         :param pulumi.Input[str] name: User group name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserGroupPolicyArgs']]]] policies: The policies to register under the given group
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserGroupPolicyArgs', 'UserGroupPolicyArgsDict']]]] policies: The policies to register under the given group
                (should be existing policies only).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_ids: The users to register under the created group
                (should be existing users only).
@@ -222,10 +222,10 @@ class UserGroup(pulumi.CustomResource):
             name="test_user_group",
             description="user group by terraform",
             user_ids=["u-372gf6ae"],
-            policies=[spotinst.organization.UserGroupPolicyArgs(
-                account_ids=["act-a1b2c3d4"],
-                policy_id="pol-vv7d8c06",
-            )])
+            policies=[{
+                "account_ids": ["act-a1b2c3d4"],
+                "policy_id": "pol-vv7d8c06",
+            }])
         ```
 
         :param str resource_name: The name of the resource.
@@ -245,7 +245,7 @@ class UserGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserGroupPolicyArgs']]]]] = None,
+                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserGroupPolicyArgs', 'UserGroupPolicyArgsDict']]]]] = None,
                  user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -272,7 +272,7 @@ class UserGroup(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserGroupPolicyArgs']]]]] = None,
+            policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserGroupPolicyArgs', 'UserGroupPolicyArgsDict']]]]] = None,
             user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'UserGroup':
         """
         Get an existing UserGroup resource's state with the given name, id, and optional extra
@@ -283,7 +283,7 @@ class UserGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: User group description.
         :param pulumi.Input[str] name: User group name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserGroupPolicyArgs']]]] policies: The policies to register under the given group
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserGroupPolicyArgs', 'UserGroupPolicyArgsDict']]]] policies: The policies to register under the given group
                (should be existing policies only).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_ids: The users to register under the created group
                (should be existing users only).

@@ -130,8 +130,8 @@ class VerificationTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 args: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VerificationTemplateArgArgs']]]]] = None,
-                 metrics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VerificationTemplateMetricArgs']]]]] = None,
+                 args: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VerificationTemplateArgArgs', 'VerificationTemplateArgArgsDict']]]]] = None,
+                 metrics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VerificationTemplateMetricArgs', 'VerificationTemplateMetricArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -145,127 +145,127 @@ class VerificationTemplate(pulumi.CustomResource):
 
         test = spotinst.oceancd.VerificationTemplate("test",
             name="test-verification-template-tes",
-            args=[spotinst.oceancd.VerificationTemplateArgArgs(
-                arg_name="test-arg",
-                value="test",
-                value_from=spotinst.oceancd.VerificationTemplateArgValueFromArgs(
-                    secret_key_ref=spotinst.oceancd.VerificationTemplateArgValueFromSecretKeyRefArgs(
-                        name="test_key",
-                        key="key-value-test",
-                    ),
-                ),
-            )],
-            metrics=[spotinst.oceancd.VerificationTemplateMetricArgs(
-                metrics_name="test-metrics-names",
-                dry_run=False,
-                interval="10m",
-                initial_delay="1m",
-                count=10,
-                success_condition="result[0] <= 0.95",
-                failure_condition="result[0] >= 0.95",
-                failure_limit=2,
-                consecutive_error_limit=1,
-                providers=[spotinst.oceancd.VerificationTemplateMetricProviderArgs(
-                    prometheus=spotinst.oceancd.VerificationTemplateMetricProviderPrometheusArgs(
-                        prometheus_query="http_requests_new",
-                    ),
-                    datadog=spotinst.oceancd.VerificationTemplateMetricProviderDatadogArgs(
-                        duration="1m",
-                        datadog_query="avg:kubernetes.cpu.user.total",
-                    ),
-                    new_relic=spotinst.oceancd.VerificationTemplateMetricProviderNewRelicArgs(
-                        profile="test",
-                        new_relic_query="FROM Metric SELECT count",
-                    ),
-                    cloud_watch=spotinst.oceancd.VerificationTemplateMetricProviderCloudWatchArgs(
-                        duration="5m",
-                        metric_data_queries=[spotinst.oceancd.VerificationTemplateMetricProviderCloudWatchMetricDataQueryArgs(
-                            id="utilization",
-                            metric_stat=spotinst.oceancd.VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatArgs(
-                                metric=spotinst.oceancd.VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricArgs(
-                                    metric_name="Test",
-                                    namespace="AWS/EC2",
-                                    dimensions=[spotinst.oceancd.VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArgs(
-                                        dimension_name="instandId",
-                                        dimension_value="i-123044",
-                                    )],
-                                ),
-                                metric_period=400,
-                                stat="average",
-                                unit="None",
-                            ),
-                            expression="SELECT AVG(CPUUtilization) FROM SCHEMA",
-                            label="TestLabel",
-                            return_data=False,
-                            period=300,
-                        )],
-                    ),
-                    web=spotinst.oceancd.VerificationTemplateMetricProviderWebArgs(
-                        method="GET",
-                        url="https://oceancd.com/api/v1/metrics?clusterId= args.clusterId",
-                        web_headers=[spotinst.oceancd.VerificationTemplateMetricProviderWebWebHeaderArgs(
-                            web_header_key="Autorization",
-                            web_header_value="Bearer=args.token",
-                        )],
-                        body="{\\"key\\": \\"test\\"}",
-                        timeout_seconds=20,
-                        json_path="$.data",
-                        insecure=False,
-                    ),
-                    job=spotinst.oceancd.VerificationTemplateMetricProviderJobArgs(
-                        specs=[spotinst.oceancd.VerificationTemplateMetricProviderJobSpecArgs(
-                            backoff_limit=1,
-                            job_templates=[spotinst.oceancd.VerificationTemplateMetricProviderJobSpecJobTemplateArgs(
-                                template_specs=[spotinst.oceancd.VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArgs(
-                                    containers=[spotinst.oceancd.VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArgs(
-                                        container_name="hello",
-                                        commands=[
+            args=[{
+                "arg_name": "test-arg",
+                "value": "test",
+                "value_from": {
+                    "secret_key_ref": {
+                        "name": "test_key",
+                        "key": "key-value-test",
+                    },
+                },
+            }],
+            metrics=[{
+                "metrics_name": "test-metrics-names",
+                "dry_run": False,
+                "interval": "10m",
+                "initial_delay": "1m",
+                "count": 10,
+                "success_condition": "result[0] <= 0.95",
+                "failure_condition": "result[0] >= 0.95",
+                "failure_limit": 2,
+                "consecutive_error_limit": 1,
+                "providers": [{
+                    "prometheus": {
+                        "prometheus_query": "http_requests_new",
+                    },
+                    "datadog": {
+                        "duration": "1m",
+                        "datadog_query": "avg:kubernetes.cpu.user.total",
+                    },
+                    "new_relic": {
+                        "profile": "test",
+                        "new_relic_query": "FROM Metric SELECT count",
+                    },
+                    "cloud_watch": {
+                        "duration": "5m",
+                        "metric_data_queries": [{
+                            "id": "utilization",
+                            "metric_stat": {
+                                "metric": {
+                                    "metric_name": "Test",
+                                    "namespace": "AWS/EC2",
+                                    "dimensions": [{
+                                        "dimension_name": "instandId",
+                                        "dimension_value": "i-123044",
+                                    }],
+                                },
+                                "metric_period": 400,
+                                "stat": "average",
+                                "unit": "None",
+                            },
+                            "expression": "SELECT AVG(CPUUtilization) FROM SCHEMA",
+                            "label": "TestLabel",
+                            "return_data": False,
+                            "period": 300,
+                        }],
+                    },
+                    "web": {
+                        "method": "GET",
+                        "url": "https://oceancd.com/api/v1/metrics?clusterId= args.clusterId",
+                        "web_headers": [{
+                            "web_header_key": "Autorization",
+                            "web_header_value": "Bearer=args.token",
+                        }],
+                        "body": "{\\"key\\": \\"test\\"}",
+                        "timeout_seconds": 20,
+                        "json_path": "$.data",
+                        "insecure": False,
+                    },
+                    "job": {
+                        "specs": [{
+                            "backoff_limit": 1,
+                            "job_templates": [{
+                                "template_specs": [{
+                                    "containers": [{
+                                        "container_name": "hello",
+                                        "commands": [
                                             "sh",
                                             "-c",
                                         ],
-                                        image="nginx.2.1",
-                                    )],
-                                    restart_policy="never",
-                                )],
-                            )],
-                        )],
-                    ),
-                    jenkins=spotinst.oceancd.VerificationTemplateMetricProviderJenkinsArgs(
-                        pipeline_name="testPipelineName",
-                        tls_verification=True,
-                        timeout="2m",
-                        jenkins_interval="5s",
-                        jenkins_parameters=spotinst.oceancd.VerificationTemplateMetricProviderJenkinsJenkinsParametersArgs(
-                            parameter_key="app",
-                            parameter_value="my-app",
-                        ),
-                    ),
-                )],
-                baseline=spotinst.oceancd.VerificationTemplateMetricBaselineArgs(
-                    baseline_providers=[spotinst.oceancd.VerificationTemplateMetricBaselineBaselineProviderArgs(
-                        prometheus=spotinst.oceancd.VerificationTemplateMetricBaselineBaselineProviderPrometheusArgs(
-                            prometheus_query="http_requests_total.status!",
-                        ),
-                        datadog=spotinst.oceancd.VerificationTemplateMetricBaselineBaselineProviderDatadogArgs(
-                            duration="2m",
-                            datadog_query="avg:kubernetes.cpu.user",
-                        ),
-                        new_relic=spotinst.oceancd.VerificationTemplateMetricBaselineBaselineProviderNewRelicArgs(
-                            profile="test",
-                            new_relic_query="FROM Metric SELECT count*",
-                        ),
-                    )],
-                    min_range=40,
-                    max_range=50,
-                    threshold="range",
-                ),
-            )])
+                                        "image": "nginx.2.1",
+                                    }],
+                                    "restart_policy": "never",
+                                }],
+                            }],
+                        }],
+                    },
+                    "jenkins": {
+                        "pipeline_name": "testPipelineName",
+                        "tls_verification": True,
+                        "timeout": "2m",
+                        "jenkins_interval": "5s",
+                        "jenkins_parameters": {
+                            "parameter_key": "app",
+                            "parameter_value": "my-app",
+                        },
+                    },
+                }],
+                "baseline": {
+                    "baseline_providers": [{
+                        "prometheus": {
+                            "prometheus_query": "http_requests_total.status!",
+                        },
+                        "datadog": {
+                            "duration": "2m",
+                            "datadog_query": "avg:kubernetes.cpu.user",
+                        },
+                        "new_relic": {
+                            "profile": "test",
+                            "new_relic_query": "FROM Metric SELECT count*",
+                        },
+                    }],
+                    "min_range": 40,
+                    "max_range": 50,
+                    "threshold": "range",
+                },
+            }])
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VerificationTemplateArgArgs']]]] args: List of verification arguments. You may specify either `value` OR `valueFrom` but not both.In case `args`:`value` is already defined in the RolloutSpec entity, there is no need to also specify it in the VerificationTemplate entity.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VerificationTemplateMetricArgs']]]] metrics: List of verification metrics.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VerificationTemplateArgArgs', 'VerificationTemplateArgArgsDict']]]] args: List of verification arguments. You may specify either `value` OR `valueFrom` but not both.In case `args`:`value` is already defined in the RolloutSpec entity, there is no need to also specify it in the VerificationTemplate entity.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VerificationTemplateMetricArgs', 'VerificationTemplateMetricArgsDict']]]] metrics: List of verification metrics.
         :param pulumi.Input[str] name: Identifier name for Ocean CD Verification Template. Must be unique.
         """
         ...
@@ -285,121 +285,121 @@ class VerificationTemplate(pulumi.CustomResource):
 
         test = spotinst.oceancd.VerificationTemplate("test",
             name="test-verification-template-tes",
-            args=[spotinst.oceancd.VerificationTemplateArgArgs(
-                arg_name="test-arg",
-                value="test",
-                value_from=spotinst.oceancd.VerificationTemplateArgValueFromArgs(
-                    secret_key_ref=spotinst.oceancd.VerificationTemplateArgValueFromSecretKeyRefArgs(
-                        name="test_key",
-                        key="key-value-test",
-                    ),
-                ),
-            )],
-            metrics=[spotinst.oceancd.VerificationTemplateMetricArgs(
-                metrics_name="test-metrics-names",
-                dry_run=False,
-                interval="10m",
-                initial_delay="1m",
-                count=10,
-                success_condition="result[0] <= 0.95",
-                failure_condition="result[0] >= 0.95",
-                failure_limit=2,
-                consecutive_error_limit=1,
-                providers=[spotinst.oceancd.VerificationTemplateMetricProviderArgs(
-                    prometheus=spotinst.oceancd.VerificationTemplateMetricProviderPrometheusArgs(
-                        prometheus_query="http_requests_new",
-                    ),
-                    datadog=spotinst.oceancd.VerificationTemplateMetricProviderDatadogArgs(
-                        duration="1m",
-                        datadog_query="avg:kubernetes.cpu.user.total",
-                    ),
-                    new_relic=spotinst.oceancd.VerificationTemplateMetricProviderNewRelicArgs(
-                        profile="test",
-                        new_relic_query="FROM Metric SELECT count",
-                    ),
-                    cloud_watch=spotinst.oceancd.VerificationTemplateMetricProviderCloudWatchArgs(
-                        duration="5m",
-                        metric_data_queries=[spotinst.oceancd.VerificationTemplateMetricProviderCloudWatchMetricDataQueryArgs(
-                            id="utilization",
-                            metric_stat=spotinst.oceancd.VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatArgs(
-                                metric=spotinst.oceancd.VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricArgs(
-                                    metric_name="Test",
-                                    namespace="AWS/EC2",
-                                    dimensions=[spotinst.oceancd.VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArgs(
-                                        dimension_name="instandId",
-                                        dimension_value="i-123044",
-                                    )],
-                                ),
-                                metric_period=400,
-                                stat="average",
-                                unit="None",
-                            ),
-                            expression="SELECT AVG(CPUUtilization) FROM SCHEMA",
-                            label="TestLabel",
-                            return_data=False,
-                            period=300,
-                        )],
-                    ),
-                    web=spotinst.oceancd.VerificationTemplateMetricProviderWebArgs(
-                        method="GET",
-                        url="https://oceancd.com/api/v1/metrics?clusterId= args.clusterId",
-                        web_headers=[spotinst.oceancd.VerificationTemplateMetricProviderWebWebHeaderArgs(
-                            web_header_key="Autorization",
-                            web_header_value="Bearer=args.token",
-                        )],
-                        body="{\\"key\\": \\"test\\"}",
-                        timeout_seconds=20,
-                        json_path="$.data",
-                        insecure=False,
-                    ),
-                    job=spotinst.oceancd.VerificationTemplateMetricProviderJobArgs(
-                        specs=[spotinst.oceancd.VerificationTemplateMetricProviderJobSpecArgs(
-                            backoff_limit=1,
-                            job_templates=[spotinst.oceancd.VerificationTemplateMetricProviderJobSpecJobTemplateArgs(
-                                template_specs=[spotinst.oceancd.VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArgs(
-                                    containers=[spotinst.oceancd.VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArgs(
-                                        container_name="hello",
-                                        commands=[
+            args=[{
+                "arg_name": "test-arg",
+                "value": "test",
+                "value_from": {
+                    "secret_key_ref": {
+                        "name": "test_key",
+                        "key": "key-value-test",
+                    },
+                },
+            }],
+            metrics=[{
+                "metrics_name": "test-metrics-names",
+                "dry_run": False,
+                "interval": "10m",
+                "initial_delay": "1m",
+                "count": 10,
+                "success_condition": "result[0] <= 0.95",
+                "failure_condition": "result[0] >= 0.95",
+                "failure_limit": 2,
+                "consecutive_error_limit": 1,
+                "providers": [{
+                    "prometheus": {
+                        "prometheus_query": "http_requests_new",
+                    },
+                    "datadog": {
+                        "duration": "1m",
+                        "datadog_query": "avg:kubernetes.cpu.user.total",
+                    },
+                    "new_relic": {
+                        "profile": "test",
+                        "new_relic_query": "FROM Metric SELECT count",
+                    },
+                    "cloud_watch": {
+                        "duration": "5m",
+                        "metric_data_queries": [{
+                            "id": "utilization",
+                            "metric_stat": {
+                                "metric": {
+                                    "metric_name": "Test",
+                                    "namespace": "AWS/EC2",
+                                    "dimensions": [{
+                                        "dimension_name": "instandId",
+                                        "dimension_value": "i-123044",
+                                    }],
+                                },
+                                "metric_period": 400,
+                                "stat": "average",
+                                "unit": "None",
+                            },
+                            "expression": "SELECT AVG(CPUUtilization) FROM SCHEMA",
+                            "label": "TestLabel",
+                            "return_data": False,
+                            "period": 300,
+                        }],
+                    },
+                    "web": {
+                        "method": "GET",
+                        "url": "https://oceancd.com/api/v1/metrics?clusterId= args.clusterId",
+                        "web_headers": [{
+                            "web_header_key": "Autorization",
+                            "web_header_value": "Bearer=args.token",
+                        }],
+                        "body": "{\\"key\\": \\"test\\"}",
+                        "timeout_seconds": 20,
+                        "json_path": "$.data",
+                        "insecure": False,
+                    },
+                    "job": {
+                        "specs": [{
+                            "backoff_limit": 1,
+                            "job_templates": [{
+                                "template_specs": [{
+                                    "containers": [{
+                                        "container_name": "hello",
+                                        "commands": [
                                             "sh",
                                             "-c",
                                         ],
-                                        image="nginx.2.1",
-                                    )],
-                                    restart_policy="never",
-                                )],
-                            )],
-                        )],
-                    ),
-                    jenkins=spotinst.oceancd.VerificationTemplateMetricProviderJenkinsArgs(
-                        pipeline_name="testPipelineName",
-                        tls_verification=True,
-                        timeout="2m",
-                        jenkins_interval="5s",
-                        jenkins_parameters=spotinst.oceancd.VerificationTemplateMetricProviderJenkinsJenkinsParametersArgs(
-                            parameter_key="app",
-                            parameter_value="my-app",
-                        ),
-                    ),
-                )],
-                baseline=spotinst.oceancd.VerificationTemplateMetricBaselineArgs(
-                    baseline_providers=[spotinst.oceancd.VerificationTemplateMetricBaselineBaselineProviderArgs(
-                        prometheus=spotinst.oceancd.VerificationTemplateMetricBaselineBaselineProviderPrometheusArgs(
-                            prometheus_query="http_requests_total.status!",
-                        ),
-                        datadog=spotinst.oceancd.VerificationTemplateMetricBaselineBaselineProviderDatadogArgs(
-                            duration="2m",
-                            datadog_query="avg:kubernetes.cpu.user",
-                        ),
-                        new_relic=spotinst.oceancd.VerificationTemplateMetricBaselineBaselineProviderNewRelicArgs(
-                            profile="test",
-                            new_relic_query="FROM Metric SELECT count*",
-                        ),
-                    )],
-                    min_range=40,
-                    max_range=50,
-                    threshold="range",
-                ),
-            )])
+                                        "image": "nginx.2.1",
+                                    }],
+                                    "restart_policy": "never",
+                                }],
+                            }],
+                        }],
+                    },
+                    "jenkins": {
+                        "pipeline_name": "testPipelineName",
+                        "tls_verification": True,
+                        "timeout": "2m",
+                        "jenkins_interval": "5s",
+                        "jenkins_parameters": {
+                            "parameter_key": "app",
+                            "parameter_value": "my-app",
+                        },
+                    },
+                }],
+                "baseline": {
+                    "baseline_providers": [{
+                        "prometheus": {
+                            "prometheus_query": "http_requests_total.status!",
+                        },
+                        "datadog": {
+                            "duration": "2m",
+                            "datadog_query": "avg:kubernetes.cpu.user",
+                        },
+                        "new_relic": {
+                            "profile": "test",
+                            "new_relic_query": "FROM Metric SELECT count*",
+                        },
+                    }],
+                    "min_range": 40,
+                    "max_range": 50,
+                    "threshold": "range",
+                },
+            }])
         ```
 
         :param str resource_name: The name of the resource.
@@ -417,8 +417,8 @@ class VerificationTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 args: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VerificationTemplateArgArgs']]]]] = None,
-                 metrics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VerificationTemplateMetricArgs']]]]] = None,
+                 args: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VerificationTemplateArgArgs', 'VerificationTemplateArgArgsDict']]]]] = None,
+                 metrics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VerificationTemplateMetricArgs', 'VerificationTemplateMetricArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -442,8 +442,8 @@ class VerificationTemplate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            args: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VerificationTemplateArgArgs']]]]] = None,
-            metrics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VerificationTemplateMetricArgs']]]]] = None,
+            args: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VerificationTemplateArgArgs', 'VerificationTemplateArgArgsDict']]]]] = None,
+            metrics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VerificationTemplateMetricArgs', 'VerificationTemplateMetricArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None) -> 'VerificationTemplate':
         """
         Get an existing VerificationTemplate resource's state with the given name, id, and optional extra
@@ -452,8 +452,8 @@ class VerificationTemplate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VerificationTemplateArgArgs']]]] args: List of verification arguments. You may specify either `value` OR `valueFrom` but not both.In case `args`:`value` is already defined in the RolloutSpec entity, there is no need to also specify it in the VerificationTemplate entity.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VerificationTemplateMetricArgs']]]] metrics: List of verification metrics.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VerificationTemplateArgArgs', 'VerificationTemplateArgArgsDict']]]] args: List of verification arguments. You may specify either `value` OR `valueFrom` but not both.In case `args`:`value` is already defined in the RolloutSpec entity, there is no need to also specify it in the VerificationTemplate entity.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VerificationTemplateMetricArgs', 'VerificationTemplateMetricArgsDict']]]] metrics: List of verification metrics.
         :param pulumi.Input[str] name: Identifier name for Ocean CD Verification Template. Must be unique.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

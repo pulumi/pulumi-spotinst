@@ -451,7 +451,7 @@ public class OceanNpVirtualNodeGroup extends com.pulumi.resources.CustomResource
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public OceanNpVirtualNodeGroup(String name) {
+    public OceanNpVirtualNodeGroup(java.lang.String name) {
         this(name, OceanNpVirtualNodeGroupArgs.Empty);
     }
     /**
@@ -459,7 +459,7 @@ public class OceanNpVirtualNodeGroup extends com.pulumi.resources.CustomResource
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public OceanNpVirtualNodeGroup(String name, OceanNpVirtualNodeGroupArgs args) {
+    public OceanNpVirtualNodeGroup(java.lang.String name, OceanNpVirtualNodeGroupArgs args) {
         this(name, args, null);
     }
     /**
@@ -468,12 +468,12 @@ public class OceanNpVirtualNodeGroup extends com.pulumi.resources.CustomResource
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public OceanNpVirtualNodeGroup(String name, OceanNpVirtualNodeGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("spotinst:azure/oceanNpVirtualNodeGroup:OceanNpVirtualNodeGroup", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public OceanNpVirtualNodeGroup(java.lang.String name, OceanNpVirtualNodeGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("spotinst:azure/oceanNpVirtualNodeGroup:OceanNpVirtualNodeGroup", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private OceanNpVirtualNodeGroup(String name, Output<String> id, @Nullable OceanNpVirtualNodeGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("spotinst:azure/oceanNpVirtualNodeGroup:OceanNpVirtualNodeGroup", name, state, makeResourceOptions(options, id));
+    private OceanNpVirtualNodeGroup(java.lang.String name, Output<java.lang.String> id, @Nullable OceanNpVirtualNodeGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("spotinst:azure/oceanNpVirtualNodeGroup:OceanNpVirtualNodeGroup", name, state, makeResourceOptions(options, id), false);
     }
 
     private static OceanNpVirtualNodeGroupArgs makeArgs(OceanNpVirtualNodeGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -483,7 +483,7 @@ public class OceanNpVirtualNodeGroup extends com.pulumi.resources.CustomResource
         return args == null ? OceanNpVirtualNodeGroupArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -499,7 +499,7 @@ public class OceanNpVirtualNodeGroup extends com.pulumi.resources.CustomResource
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static OceanNpVirtualNodeGroup get(String name, Output<String> id, @Nullable OceanNpVirtualNodeGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static OceanNpVirtualNodeGroup get(java.lang.String name, Output<java.lang.String> id, @Nullable OceanNpVirtualNodeGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new OceanNpVirtualNodeGroup(name, id, state, options);
     }
 }
