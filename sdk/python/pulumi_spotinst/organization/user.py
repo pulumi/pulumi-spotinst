@@ -263,7 +263,7 @@ class User(pulumi.CustomResource):
                  first_name: Optional[pulumi.Input[str]] = None,
                  last_name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserPolicyArgs']]]]] = None,
+                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserPolicyArgs', 'UserPolicyArgsDict']]]]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  user_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
@@ -282,10 +282,10 @@ class User(pulumi.CustomResource):
             last_name="user",
             password="testUser@123",
             role="viewer",
-            policies=[spotinst.organization.UserPolicyArgs(
-                policy_id="pol-abcd1236",
-                policy_account_ids=["act-abcf4245"],
-            )],
+            policies=[{
+                "policy_id": "pol-abcd1236",
+                "policy_account_ids": ["act-abcf4245"],
+            }],
             user_group_ids=[
                 "ugr-abcd1234",
                 "ugr-defg8763",
@@ -298,7 +298,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] first_name: The first name of the user.
         :param pulumi.Input[str] last_name: The last name of the user.
         :param pulumi.Input[str] password: Password.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserPolicyArgs']]]] policies: The policies to register under the given group
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserPolicyArgs', 'UserPolicyArgsDict']]]] policies: The policies to register under the given group
                (should be existing policies only).
         :param pulumi.Input[str] role: User's role.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_group_ids: A list of the user groups to register the given user to (should be existing user groups only)
@@ -324,10 +324,10 @@ class User(pulumi.CustomResource):
             last_name="user",
             password="testUser@123",
             role="viewer",
-            policies=[spotinst.organization.UserPolicyArgs(
-                policy_id="pol-abcd1236",
-                policy_account_ids=["act-abcf4245"],
-            )],
+            policies=[{
+                "policy_id": "pol-abcd1236",
+                "policy_account_ids": ["act-abcf4245"],
+            }],
             user_group_ids=[
                 "ugr-abcd1234",
                 "ugr-defg8763",
@@ -353,7 +353,7 @@ class User(pulumi.CustomResource):
                  first_name: Optional[pulumi.Input[str]] = None,
                  last_name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserPolicyArgs']]]]] = None,
+                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserPolicyArgs', 'UserPolicyArgsDict']]]]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  user_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
@@ -392,7 +392,7 @@ class User(pulumi.CustomResource):
             first_name: Optional[pulumi.Input[str]] = None,
             last_name: Optional[pulumi.Input[str]] = None,
             password: Optional[pulumi.Input[str]] = None,
-            policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserPolicyArgs']]]]] = None,
+            policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserPolicyArgs', 'UserPolicyArgsDict']]]]] = None,
             role: Optional[pulumi.Input[str]] = None,
             user_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'User':
         """
@@ -406,7 +406,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] first_name: The first name of the user.
         :param pulumi.Input[str] last_name: The last name of the user.
         :param pulumi.Input[str] password: Password.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserPolicyArgs']]]] policies: The policies to register under the given group
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserPolicyArgs', 'UserPolicyArgsDict']]]] policies: The policies to register under the given group
                (should be existing policies only).
         :param pulumi.Input[str] role: User's role.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_group_ids: A list of the user groups to register the given user to (should be existing user groups only)

@@ -146,7 +146,7 @@ public class ProgrammaticUser extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ProgrammaticUser(String name) {
+    public ProgrammaticUser(java.lang.String name) {
         this(name, ProgrammaticUserArgs.Empty);
     }
     /**
@@ -154,7 +154,7 @@ public class ProgrammaticUser extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ProgrammaticUser(String name, @Nullable ProgrammaticUserArgs args) {
+    public ProgrammaticUser(java.lang.String name, @Nullable ProgrammaticUserArgs args) {
         this(name, args, null);
     }
     /**
@@ -163,12 +163,12 @@ public class ProgrammaticUser extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ProgrammaticUser(String name, @Nullable ProgrammaticUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("spotinst:organization/programmaticUser:ProgrammaticUser", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ProgrammaticUser(java.lang.String name, @Nullable ProgrammaticUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("spotinst:organization/programmaticUser:ProgrammaticUser", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ProgrammaticUser(String name, Output<String> id, @Nullable ProgrammaticUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("spotinst:organization/programmaticUser:ProgrammaticUser", name, state, makeResourceOptions(options, id));
+    private ProgrammaticUser(java.lang.String name, Output<java.lang.String> id, @Nullable ProgrammaticUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("spotinst:organization/programmaticUser:ProgrammaticUser", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ProgrammaticUserArgs makeArgs(@Nullable ProgrammaticUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -178,7 +178,7 @@ public class ProgrammaticUser extends com.pulumi.resources.CustomResource {
         return args == null ? ProgrammaticUserArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -194,7 +194,7 @@ public class ProgrammaticUser extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ProgrammaticUser get(String name, Output<String> id, @Nullable ProgrammaticUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ProgrammaticUser get(java.lang.String name, Output<java.lang.String> id, @Nullable ProgrammaticUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ProgrammaticUser(name, id, state, options);
     }
 }

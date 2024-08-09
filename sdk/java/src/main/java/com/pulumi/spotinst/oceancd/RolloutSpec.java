@@ -114,7 +114,7 @@ public class RolloutSpec extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RolloutSpec(String name) {
+    public RolloutSpec(java.lang.String name) {
         this(name, RolloutSpecArgs.Empty);
     }
     /**
@@ -122,7 +122,7 @@ public class RolloutSpec extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RolloutSpec(String name, RolloutSpecArgs args) {
+    public RolloutSpec(java.lang.String name, RolloutSpecArgs args) {
         this(name, args, null);
     }
     /**
@@ -131,12 +131,12 @@ public class RolloutSpec extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RolloutSpec(String name, RolloutSpecArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("spotinst:oceancd/rolloutSpec:RolloutSpec", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public RolloutSpec(java.lang.String name, RolloutSpecArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("spotinst:oceancd/rolloutSpec:RolloutSpec", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RolloutSpec(String name, Output<String> id, @Nullable RolloutSpecState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("spotinst:oceancd/rolloutSpec:RolloutSpec", name, state, makeResourceOptions(options, id));
+    private RolloutSpec(java.lang.String name, Output<java.lang.String> id, @Nullable RolloutSpecState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("spotinst:oceancd/rolloutSpec:RolloutSpec", name, state, makeResourceOptions(options, id), false);
     }
 
     private static RolloutSpecArgs makeArgs(RolloutSpecArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -146,7 +146,7 @@ public class RolloutSpec extends com.pulumi.resources.CustomResource {
         return args == null ? RolloutSpecArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -162,7 +162,7 @@ public class RolloutSpec extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RolloutSpec get(String name, Output<String> id, @Nullable RolloutSpecState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RolloutSpec get(java.lang.String name, Output<java.lang.String> id, @Nullable RolloutSpecState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RolloutSpec(name, id, state, options);
     }
 }

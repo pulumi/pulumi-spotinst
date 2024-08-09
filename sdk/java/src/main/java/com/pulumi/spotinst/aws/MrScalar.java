@@ -786,7 +786,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public MrScalar(String name) {
+    public MrScalar(java.lang.String name) {
         this(name, MrScalarArgs.Empty);
     }
     /**
@@ -794,7 +794,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public MrScalar(String name, MrScalarArgs args) {
+    public MrScalar(java.lang.String name, MrScalarArgs args) {
         this(name, args, null);
     }
     /**
@@ -803,12 +803,12 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public MrScalar(String name, MrScalarArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("spotinst:aws/mrScalar:MrScalar", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public MrScalar(java.lang.String name, MrScalarArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("spotinst:aws/mrScalar:MrScalar", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private MrScalar(String name, Output<String> id, @Nullable MrScalarState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("spotinst:aws/mrScalar:MrScalar", name, state, makeResourceOptions(options, id));
+    private MrScalar(java.lang.String name, Output<java.lang.String> id, @Nullable MrScalarState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("spotinst:aws/mrScalar:MrScalar", name, state, makeResourceOptions(options, id), false);
     }
 
     private static MrScalarArgs makeArgs(MrScalarArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -818,7 +818,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
         return args == null ? MrScalarArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -834,7 +834,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static MrScalar get(String name, Output<String> id, @Nullable MrScalarState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static MrScalar get(java.lang.String name, Output<java.lang.String> id, @Nullable MrScalarState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new MrScalar(name, id, state, options);
     }
 }

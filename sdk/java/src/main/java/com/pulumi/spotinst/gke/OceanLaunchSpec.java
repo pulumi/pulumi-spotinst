@@ -469,7 +469,7 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public OceanLaunchSpec(String name) {
+    public OceanLaunchSpec(java.lang.String name) {
         this(name, OceanLaunchSpecArgs.Empty);
     }
     /**
@@ -477,7 +477,7 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public OceanLaunchSpec(String name, OceanLaunchSpecArgs args) {
+    public OceanLaunchSpec(java.lang.String name, OceanLaunchSpecArgs args) {
         this(name, args, null);
     }
     /**
@@ -486,12 +486,12 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public OceanLaunchSpec(String name, OceanLaunchSpecArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("spotinst:gke/oceanLaunchSpec:OceanLaunchSpec", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public OceanLaunchSpec(java.lang.String name, OceanLaunchSpecArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("spotinst:gke/oceanLaunchSpec:OceanLaunchSpec", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private OceanLaunchSpec(String name, Output<String> id, @Nullable OceanLaunchSpecState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("spotinst:gke/oceanLaunchSpec:OceanLaunchSpec", name, state, makeResourceOptions(options, id));
+    private OceanLaunchSpec(java.lang.String name, Output<java.lang.String> id, @Nullable OceanLaunchSpecState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("spotinst:gke/oceanLaunchSpec:OceanLaunchSpec", name, state, makeResourceOptions(options, id), false);
     }
 
     private static OceanLaunchSpecArgs makeArgs(OceanLaunchSpecArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -501,7 +501,7 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
         return args == null ? OceanLaunchSpecArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -517,7 +517,7 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static OceanLaunchSpec get(String name, Output<String> id, @Nullable OceanLaunchSpecState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static OceanLaunchSpec get(java.lang.String name, Output<java.lang.String> id, @Nullable OceanLaunchSpecState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new OceanLaunchSpec(name, id, state, options);
     }
 }

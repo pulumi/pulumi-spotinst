@@ -2415,49 +2415,49 @@ class Elastigroup(pulumi.CustomResource):
                  capacity_unit: Optional[pulumi.Input[str]] = None,
                  consider_od_pricing: Optional[pulumi.Input[bool]] = None,
                  cpu_credits: Optional[pulumi.Input[str]] = None,
-                 cpu_options: Optional[pulumi.Input[pulumi.InputType['ElastigroupCpuOptionsArgs']]] = None,
+                 cpu_options: Optional[pulumi.Input[Union['ElastigroupCpuOptionsArgs', 'ElastigroupCpuOptionsArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
                  draining_timeout: Optional[pulumi.Input[int]] = None,
-                 ebs_block_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupEbsBlockDeviceArgs']]]]] = None,
+                 ebs_block_devices: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupEbsBlockDeviceArgs', 'ElastigroupEbsBlockDeviceArgsDict']]]]] = None,
                  ebs_optimized: Optional[pulumi.Input[bool]] = None,
                  elastic_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  elastic_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enable_monitoring: Optional[pulumi.Input[bool]] = None,
-                 ephemeral_block_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupEphemeralBlockDeviceArgs']]]]] = None,
+                 ephemeral_block_devices: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupEphemeralBlockDeviceArgs', 'ElastigroupEphemeralBlockDeviceArgsDict']]]]] = None,
                  fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
                  health_check_grace_period: Optional[pulumi.Input[int]] = None,
                  health_check_type: Optional[pulumi.Input[str]] = None,
                  health_check_unhealthy_duration_before_replacement: Optional[pulumi.Input[int]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
-                 images: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupImageArgs']]]]] = None,
+                 images: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupImageArgs', 'ElastigroupImageArgsDict']]]]] = None,
                  immediate_od_recover_threshold: Optional[pulumi.Input[int]] = None,
                  instance_types_ondemand: Optional[pulumi.Input[str]] = None,
                  instance_types_preferred_spots: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  instance_types_spots: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 instance_types_weights: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesWeightArgs']]]]] = None,
-                 integration_beanstalk: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationBeanstalkArgs']]] = None,
-                 integration_codedeploy: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationCodedeployArgs']]] = None,
-                 integration_docker_swarm: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationDockerSwarmArgs']]] = None,
-                 integration_ecs: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationEcsArgs']]] = None,
-                 integration_gitlab: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationGitlabArgs']]] = None,
-                 integration_kubernetes: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationKubernetesArgs']]] = None,
-                 integration_mesosphere: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationMesosphereArgs']]] = None,
-                 integration_nomad: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationNomadArgs']]] = None,
-                 integration_rancher: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationRancherArgs']]] = None,
-                 integration_route53: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationRoute53Args']]] = None,
-                 itfs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupItfArgs']]]]] = None,
+                 instance_types_weights: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupInstanceTypesWeightArgs', 'ElastigroupInstanceTypesWeightArgsDict']]]]] = None,
+                 integration_beanstalk: Optional[pulumi.Input[Union['ElastigroupIntegrationBeanstalkArgs', 'ElastigroupIntegrationBeanstalkArgsDict']]] = None,
+                 integration_codedeploy: Optional[pulumi.Input[Union['ElastigroupIntegrationCodedeployArgs', 'ElastigroupIntegrationCodedeployArgsDict']]] = None,
+                 integration_docker_swarm: Optional[pulumi.Input[Union['ElastigroupIntegrationDockerSwarmArgs', 'ElastigroupIntegrationDockerSwarmArgsDict']]] = None,
+                 integration_ecs: Optional[pulumi.Input[Union['ElastigroupIntegrationEcsArgs', 'ElastigroupIntegrationEcsArgsDict']]] = None,
+                 integration_gitlab: Optional[pulumi.Input[Union['ElastigroupIntegrationGitlabArgs', 'ElastigroupIntegrationGitlabArgsDict']]] = None,
+                 integration_kubernetes: Optional[pulumi.Input[Union['ElastigroupIntegrationKubernetesArgs', 'ElastigroupIntegrationKubernetesArgsDict']]] = None,
+                 integration_mesosphere: Optional[pulumi.Input[Union['ElastigroupIntegrationMesosphereArgs', 'ElastigroupIntegrationMesosphereArgsDict']]] = None,
+                 integration_nomad: Optional[pulumi.Input[Union['ElastigroupIntegrationNomadArgs', 'ElastigroupIntegrationNomadArgsDict']]] = None,
+                 integration_rancher: Optional[pulumi.Input[Union['ElastigroupIntegrationRancherArgs', 'ElastigroupIntegrationRancherArgsDict']]] = None,
+                 integration_route53: Optional[pulumi.Input[Union['ElastigroupIntegrationRoute53Args', 'ElastigroupIntegrationRoute53ArgsDict']]] = None,
+                 itfs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupItfArgs', 'ElastigroupItfArgsDict']]]]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  lifetime_period: Optional[pulumi.Input[str]] = None,
-                 logging: Optional[pulumi.Input[pulumi.InputType['ElastigroupLoggingArgs']]] = None,
+                 logging: Optional[pulumi.Input[Union['ElastigroupLoggingArgs', 'ElastigroupLoggingArgsDict']]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
-                 metadata_options: Optional[pulumi.Input[pulumi.InputType['ElastigroupMetadataOptionsArgs']]] = None,
+                 metadata_options: Optional[pulumi.Input[Union['ElastigroupMetadataOptionsArgs', 'ElastigroupMetadataOptionsArgsDict']]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
                  minimum_instance_lifetime: Optional[pulumi.Input[int]] = None,
-                 multiple_metrics: Optional[pulumi.Input[pulumi.InputType['ElastigroupMultipleMetricsArgs']]] = None,
+                 multiple_metrics: Optional[pulumi.Input[Union['ElastigroupMultipleMetricsArgs', 'ElastigroupMultipleMetricsArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupNetworkInterfaceArgs']]]]] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupNetworkInterfaceArgs', 'ElastigroupNetworkInterfaceArgsDict']]]]] = None,
                  on_demand_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ondemand_count: Optional[pulumi.Input[int]] = None,
                  orientation: Optional[pulumi.Input[str]] = None,
@@ -2469,24 +2469,24 @@ class Elastigroup(pulumi.CustomResource):
                  private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  product: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 resource_requirements: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupResourceRequirementArgs']]]]] = None,
-                 resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupResourceTagSpecificationArgs']]]]] = None,
-                 revert_to_spot: Optional[pulumi.Input[pulumi.InputType['ElastigroupRevertToSpotArgs']]] = None,
-                 scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingDownPolicyArgs']]]]] = None,
-                 scaling_strategies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingStrategyArgs']]]]] = None,
-                 scaling_target_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingTargetPolicyArgs']]]]] = None,
-                 scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingUpPolicyArgs']]]]] = None,
-                 scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScheduledTaskArgs']]]]] = None,
+                 resource_requirements: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupResourceRequirementArgs', 'ElastigroupResourceRequirementArgsDict']]]]] = None,
+                 resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupResourceTagSpecificationArgs', 'ElastigroupResourceTagSpecificationArgsDict']]]]] = None,
+                 revert_to_spot: Optional[pulumi.Input[Union['ElastigroupRevertToSpotArgs', 'ElastigroupRevertToSpotArgsDict']]] = None,
+                 scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingDownPolicyArgs', 'ElastigroupScalingDownPolicyArgsDict']]]]] = None,
+                 scaling_strategies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingStrategyArgs', 'ElastigroupScalingStrategyArgsDict']]]]] = None,
+                 scaling_target_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingTargetPolicyArgs', 'ElastigroupScalingTargetPolicyArgsDict']]]]] = None,
+                 scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingUpPolicyArgs', 'ElastigroupScalingUpPolicyArgsDict']]]]] = None,
+                 scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScheduledTaskArgs', 'ElastigroupScheduledTaskArgsDict']]]]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  shutdown_script: Optional[pulumi.Input[str]] = None,
-                 signals: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupSignalArgs']]]]] = None,
+                 signals: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupSignalArgs', 'ElastigroupSignalArgsDict']]]]] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
-                 stateful_deallocation: Optional[pulumi.Input[pulumi.InputType['ElastigroupStatefulDeallocationArgs']]] = None,
-                 stateful_instance_actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupStatefulInstanceActionArgs']]]]] = None,
+                 stateful_deallocation: Optional[pulumi.Input[Union['ElastigroupStatefulDeallocationArgs', 'ElastigroupStatefulDeallocationArgsDict']]] = None,
+                 stateful_instance_actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupStatefulInstanceActionArgs', 'ElastigroupStatefulInstanceActionArgsDict']]]]] = None,
                  subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupTagArgs']]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupTagArgs', 'ElastigroupTagArgsDict']]]]] = None,
                  target_group_arns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 update_policy: Optional[pulumi.Input[pulumi.InputType['ElastigroupUpdatePolicyArgs']]] = None,
+                 update_policy: Optional[pulumi.Input[Union['ElastigroupUpdatePolicyArgs', 'ElastigroupUpdatePolicyArgsDict']]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  utilize_commitments: Optional[pulumi.Input[bool]] = None,
                  utilize_reserved_instances: Optional[pulumi.Input[bool]] = None,
@@ -2524,14 +2524,14 @@ class Elastigroup(pulumi.CustomResource):
             enable_monitoring=False,
             ebs_optimized=False,
             placement_tenancy="default",
-            metadata_options=spotinst.aws.ElastigroupMetadataOptionsArgs(
-                http_tokens="optional",
-                http_put_response_hop_limit=10,
-                instance_metadata_tags="enabled",
-            ),
-            cpu_options=spotinst.aws.ElastigroupCpuOptionsArgs(
-                threads_per_core=1,
-            ),
+            metadata_options={
+                "http_tokens": "optional",
+                "http_put_response_hop_limit": 10,
+                "instance_metadata_tags": "enabled",
+            },
+            cpu_options={
+                "threads_per_core": 1,
+            },
             instance_types_ondemand="m3.2xlarge",
             instance_types_spots=[
                 "m3.xlarge",
@@ -2540,93 +2540,93 @@ class Elastigroup(pulumi.CustomResource):
             instance_types_preferred_spots=["m3.xlarge"],
             on_demand_types=["c3.large"],
             instance_types_weights=[
-                spotinst.aws.ElastigroupInstanceTypesWeightArgs(
-                    instance_type="m3.xlarge",
-                    weight=10,
-                ),
-                spotinst.aws.ElastigroupInstanceTypesWeightArgs(
-                    instance_type="m3.2xlarge",
-                    weight=16,
-                ),
+                {
+                    "instance_type": "m3.xlarge",
+                    "weight": 10,
+                },
+                {
+                    "instance_type": "m3.2xlarge",
+                    "weight": 16,
+                },
             ],
-            resource_requirements=[spotinst.aws.ElastigroupResourceRequirementArgs(
-                excluded_instance_families=[
+            resource_requirements=[{
+                "excluded_instance_families": [
                     "a",
                     "m",
                 ],
-                excluded_instance_types=["m3.large"],
-                excluded_instance_generations=[
+                "excluded_instance_types": ["m3.large"],
+                "excluded_instance_generations": [
                     "1",
                     "2",
                 ],
-                required_gpu_minimum=1,
-                required_gpu_maximum=16,
-                required_memory_minimum=1,
-                required_memory_maximum=512,
-                required_vcpu_minimum=1,
-                required_vcpu_maximum=64,
-            )],
+                "required_gpu_minimum": 1,
+                "required_gpu_maximum": 16,
+                "required_memory_minimum": 1,
+                "required_memory_maximum": 512,
+                "required_vcpu_minimum": 1,
+                "required_vcpu_maximum": 64,
+            }],
             orientation="balanced",
             fallback_to_ondemand=False,
             cpu_credits="unlimited",
             minimum_instance_lifetime=12,
             wait_for_capacity=5,
             wait_for_capacity_timeout=300,
-            scaling_strategies=[spotinst.aws.ElastigroupScalingStrategyArgs(
-                terminate_at_end_of_billing_hour=True,
-                termination_policy="default",
-            )],
-            scaling_up_policies=[spotinst.aws.ElastigroupScalingUpPolicyArgs(
-                policy_name="Default Scaling Up Policy",
-                metric_name="DefaultQueuesDepth",
-                statistic="average",
-                unit="none",
-                adjustment="1",
-                namespace="custom",
-                threshold=100,
-                period=60,
-                evaluation_periods=5,
-                cooldown=300,
-            )],
-            scaling_down_policies=[spotinst.aws.ElastigroupScalingDownPolicyArgs(
-                policy_name="Default Scaling Down Policy",
-                metric_name="DefaultQueuesDepth",
-                statistic="average",
-                unit="none",
-                adjustment="1",
-                namespace="custom",
-                threshold=10,
-                period=60,
-                evaluation_periods=10,
-                cooldown=300,
-            )],
+            scaling_strategies=[{
+                "terminate_at_end_of_billing_hour": True,
+                "termination_policy": "default",
+            }],
+            scaling_up_policies=[{
+                "policy_name": "Default Scaling Up Policy",
+                "metric_name": "DefaultQueuesDepth",
+                "statistic": "average",
+                "unit": "none",
+                "adjustment": "1",
+                "namespace": "custom",
+                "threshold": 100,
+                "period": 60,
+                "evaluation_periods": 5,
+                "cooldown": 300,
+            }],
+            scaling_down_policies=[{
+                "policy_name": "Default Scaling Down Policy",
+                "metric_name": "DefaultQueuesDepth",
+                "statistic": "average",
+                "unit": "none",
+                "adjustment": "1",
+                "namespace": "custom",
+                "threshold": 10,
+                "period": 60,
+                "evaluation_periods": 10,
+                "cooldown": 300,
+            }],
             tags=[
-                spotinst.aws.ElastigroupTagArgs(
-                    key="Env",
-                    value="production",
-                ),
-                spotinst.aws.ElastigroupTagArgs(
-                    key="Name",
-                    value="default-production",
-                ),
-                spotinst.aws.ElastigroupTagArgs(
-                    key="Project",
-                    value="app_v2",
-                ),
+                {
+                    "key": "Env",
+                    "value": "production",
+                },
+                {
+                    "key": "Name",
+                    "value": "default-production",
+                },
+                {
+                    "key": "Project",
+                    "value": "app_v2",
+                },
             ],
-            resource_tag_specifications=[spotinst.aws.ElastigroupResourceTagSpecificationArgs(
-                should_tag_enis=True,
-                should_tag_volumes=True,
-                should_tag_snapshots=True,
-                should_tag_amis=True,
-            )],
-            logging=spotinst.aws.ElastigroupLoggingArgs(
-                export=spotinst.aws.ElastigroupLoggingExportArgs(
-                    s3s=[spotinst.aws.ElastigroupLoggingExportS3Args(
-                        id="di-123456",
-                    )],
-                ),
-            ))
+            resource_tag_specifications=[{
+                "should_tag_enis": True,
+                "should_tag_volumes": True,
+                "should_tag_snapshots": True,
+                "should_tag_amis": True,
+            }],
+            logging={
+                "export": {
+                    "s3s": [{
+                        "id": "di-123456",
+                    }],
+                },
+            })
         ```
 
         :param str resource_name: The name of the resource.
@@ -2636,7 +2636,7 @@ class Elastigroup(pulumi.CustomResource):
                `availability_zones = ["us-east-1a:subnet-123456:ClusterI03"]`
         :param pulumi.Input[str] capacity_unit: The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
         :param pulumi.Input[str] cpu_credits: Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
-        :param pulumi.Input[pulumi.InputType['ElastigroupCpuOptionsArgs']] cpu_options: The CPU options for the instances that are launched within the group:
+        :param pulumi.Input[Union['ElastigroupCpuOptionsArgs', 'ElastigroupCpuOptionsArgsDict']] cpu_options: The CPU options for the instances that are launched within the group:
         :param pulumi.Input[str] description: The group description.
         :param pulumi.Input[int] desired_capacity: The desired number of instances the group should have at any time.
         :param pulumi.Input[int] draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
@@ -2649,16 +2649,16 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[int] health_check_unhealthy_duration_before_replacement: The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
         :param pulumi.Input[str] iam_instance_profile: The ARN or name of an IAM instance profile to associate with launched instances.
         :param pulumi.Input[str] image_id: The ID of the AMI used to launch the instance.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupImageArgs']]]] images: An array of image objects. 
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupImageArgs', 'ElastigroupImageArgsDict']]]] images: An array of image objects. 
                Note: Elastigroup can be configured with either imageId or images, but not both.
         :param pulumi.Input[str] instance_types_ondemand: The type of instance determines your instance's CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_preferred_spots: Prioritize a subset of spot instance types. Must be a subset of the selected spot instance types.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_spots: One or more instance types. Note: Cannot be defined if 'resourceRequirements' is defined.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesWeightArgs']]]] instance_types_weights: List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupInstanceTypesWeightArgs', 'ElastigroupInstanceTypesWeightArgsDict']]]] instance_types_weights: List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
         :param pulumi.Input[str] key_name: The key name that should be used for the instance.
-        :param pulumi.Input[pulumi.InputType['ElastigroupLoggingArgs']] logging: Logging configuration.
+        :param pulumi.Input[Union['ElastigroupLoggingArgs', 'ElastigroupLoggingArgsDict']] logging: Logging configuration.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
-        :param pulumi.Input[pulumi.InputType['ElastigroupMetadataOptionsArgs']] metadata_options: Data that used to configure or manage the running instances:
+        :param pulumi.Input[Union['ElastigroupMetadataOptionsArgs', 'ElastigroupMetadataOptionsArgsDict']] metadata_options: Data that used to configure or manage the running instances:
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
         :param pulumi.Input[int] minimum_instance_lifetime: Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
         :param pulumi.Input[str] name: The group name.
@@ -2672,16 +2672,16 @@ class Elastigroup(pulumi.CustomResource):
                For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         :param pulumi.Input[str] region: The AWS region your group will be created in.
                Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupResourceRequirementArgs']]]] resource_requirements: Required instance attributes. Instance types will be selected based on these requirements.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupResourceTagSpecificationArgs']]]] resource_tag_specifications: User will specify which resources should be tagged with group tags.
-        :param pulumi.Input[pulumi.InputType['ElastigroupRevertToSpotArgs']] revert_to_spot: Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingStrategyArgs']]]] scaling_strategies: Set termination policy.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupResourceRequirementArgs', 'ElastigroupResourceRequirementArgsDict']]]] resource_requirements: Required instance attributes. Instance types will be selected based on these requirements.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupResourceTagSpecificationArgs', 'ElastigroupResourceTagSpecificationArgsDict']]]] resource_tag_specifications: User will specify which resources should be tagged with group tags.
+        :param pulumi.Input[Union['ElastigroupRevertToSpotArgs', 'ElastigroupRevertToSpotArgsDict']] revert_to_spot: Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingStrategyArgs', 'ElastigroupScalingStrategyArgsDict']]]] scaling_strategies: Set termination policy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: A list of associated security group IDS.
         :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
         :param pulumi.Input[int] spot_percentage: The percentage of Spot instances that would spin up from the `desired_capacity` number.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: List of Strings of subnet identifiers.
                Note: When this parameter is set, `availability_zones` should be left unused.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupTagArgs']]]] tags: A key/value mapping of tags to assign to the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupTagArgs', 'ElastigroupTagArgsDict']]]] tags: A key/value mapping of tags to assign to the resource.
         :param pulumi.Input[str] user_data: The user data to provide when launching the instance.
         :param pulumi.Input[bool] utilize_reserved_instances: In a case of any available reserved instances, Elastigroup will utilize them first before purchasing Spot instances.
         :param pulumi.Input[int] wait_for_capacity: Minimum number of instances in a 'HEALTHY' status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desired_capacity`.
@@ -2724,14 +2724,14 @@ class Elastigroup(pulumi.CustomResource):
             enable_monitoring=False,
             ebs_optimized=False,
             placement_tenancy="default",
-            metadata_options=spotinst.aws.ElastigroupMetadataOptionsArgs(
-                http_tokens="optional",
-                http_put_response_hop_limit=10,
-                instance_metadata_tags="enabled",
-            ),
-            cpu_options=spotinst.aws.ElastigroupCpuOptionsArgs(
-                threads_per_core=1,
-            ),
+            metadata_options={
+                "http_tokens": "optional",
+                "http_put_response_hop_limit": 10,
+                "instance_metadata_tags": "enabled",
+            },
+            cpu_options={
+                "threads_per_core": 1,
+            },
             instance_types_ondemand="m3.2xlarge",
             instance_types_spots=[
                 "m3.xlarge",
@@ -2740,93 +2740,93 @@ class Elastigroup(pulumi.CustomResource):
             instance_types_preferred_spots=["m3.xlarge"],
             on_demand_types=["c3.large"],
             instance_types_weights=[
-                spotinst.aws.ElastigroupInstanceTypesWeightArgs(
-                    instance_type="m3.xlarge",
-                    weight=10,
-                ),
-                spotinst.aws.ElastigroupInstanceTypesWeightArgs(
-                    instance_type="m3.2xlarge",
-                    weight=16,
-                ),
+                {
+                    "instance_type": "m3.xlarge",
+                    "weight": 10,
+                },
+                {
+                    "instance_type": "m3.2xlarge",
+                    "weight": 16,
+                },
             ],
-            resource_requirements=[spotinst.aws.ElastigroupResourceRequirementArgs(
-                excluded_instance_families=[
+            resource_requirements=[{
+                "excluded_instance_families": [
                     "a",
                     "m",
                 ],
-                excluded_instance_types=["m3.large"],
-                excluded_instance_generations=[
+                "excluded_instance_types": ["m3.large"],
+                "excluded_instance_generations": [
                     "1",
                     "2",
                 ],
-                required_gpu_minimum=1,
-                required_gpu_maximum=16,
-                required_memory_minimum=1,
-                required_memory_maximum=512,
-                required_vcpu_minimum=1,
-                required_vcpu_maximum=64,
-            )],
+                "required_gpu_minimum": 1,
+                "required_gpu_maximum": 16,
+                "required_memory_minimum": 1,
+                "required_memory_maximum": 512,
+                "required_vcpu_minimum": 1,
+                "required_vcpu_maximum": 64,
+            }],
             orientation="balanced",
             fallback_to_ondemand=False,
             cpu_credits="unlimited",
             minimum_instance_lifetime=12,
             wait_for_capacity=5,
             wait_for_capacity_timeout=300,
-            scaling_strategies=[spotinst.aws.ElastigroupScalingStrategyArgs(
-                terminate_at_end_of_billing_hour=True,
-                termination_policy="default",
-            )],
-            scaling_up_policies=[spotinst.aws.ElastigroupScalingUpPolicyArgs(
-                policy_name="Default Scaling Up Policy",
-                metric_name="DefaultQueuesDepth",
-                statistic="average",
-                unit="none",
-                adjustment="1",
-                namespace="custom",
-                threshold=100,
-                period=60,
-                evaluation_periods=5,
-                cooldown=300,
-            )],
-            scaling_down_policies=[spotinst.aws.ElastigroupScalingDownPolicyArgs(
-                policy_name="Default Scaling Down Policy",
-                metric_name="DefaultQueuesDepth",
-                statistic="average",
-                unit="none",
-                adjustment="1",
-                namespace="custom",
-                threshold=10,
-                period=60,
-                evaluation_periods=10,
-                cooldown=300,
-            )],
+            scaling_strategies=[{
+                "terminate_at_end_of_billing_hour": True,
+                "termination_policy": "default",
+            }],
+            scaling_up_policies=[{
+                "policy_name": "Default Scaling Up Policy",
+                "metric_name": "DefaultQueuesDepth",
+                "statistic": "average",
+                "unit": "none",
+                "adjustment": "1",
+                "namespace": "custom",
+                "threshold": 100,
+                "period": 60,
+                "evaluation_periods": 5,
+                "cooldown": 300,
+            }],
+            scaling_down_policies=[{
+                "policy_name": "Default Scaling Down Policy",
+                "metric_name": "DefaultQueuesDepth",
+                "statistic": "average",
+                "unit": "none",
+                "adjustment": "1",
+                "namespace": "custom",
+                "threshold": 10,
+                "period": 60,
+                "evaluation_periods": 10,
+                "cooldown": 300,
+            }],
             tags=[
-                spotinst.aws.ElastigroupTagArgs(
-                    key="Env",
-                    value="production",
-                ),
-                spotinst.aws.ElastigroupTagArgs(
-                    key="Name",
-                    value="default-production",
-                ),
-                spotinst.aws.ElastigroupTagArgs(
-                    key="Project",
-                    value="app_v2",
-                ),
+                {
+                    "key": "Env",
+                    "value": "production",
+                },
+                {
+                    "key": "Name",
+                    "value": "default-production",
+                },
+                {
+                    "key": "Project",
+                    "value": "app_v2",
+                },
             ],
-            resource_tag_specifications=[spotinst.aws.ElastigroupResourceTagSpecificationArgs(
-                should_tag_enis=True,
-                should_tag_volumes=True,
-                should_tag_snapshots=True,
-                should_tag_amis=True,
-            )],
-            logging=spotinst.aws.ElastigroupLoggingArgs(
-                export=spotinst.aws.ElastigroupLoggingExportArgs(
-                    s3s=[spotinst.aws.ElastigroupLoggingExportS3Args(
-                        id="di-123456",
-                    )],
-                ),
-            ))
+            resource_tag_specifications=[{
+                "should_tag_enis": True,
+                "should_tag_volumes": True,
+                "should_tag_snapshots": True,
+                "should_tag_amis": True,
+            }],
+            logging={
+                "export": {
+                    "s3s": [{
+                        "id": "di-123456",
+                    }],
+                },
+            })
         ```
 
         :param str resource_name: The name of the resource.
@@ -2849,49 +2849,49 @@ class Elastigroup(pulumi.CustomResource):
                  capacity_unit: Optional[pulumi.Input[str]] = None,
                  consider_od_pricing: Optional[pulumi.Input[bool]] = None,
                  cpu_credits: Optional[pulumi.Input[str]] = None,
-                 cpu_options: Optional[pulumi.Input[pulumi.InputType['ElastigroupCpuOptionsArgs']]] = None,
+                 cpu_options: Optional[pulumi.Input[Union['ElastigroupCpuOptionsArgs', 'ElastigroupCpuOptionsArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
                  draining_timeout: Optional[pulumi.Input[int]] = None,
-                 ebs_block_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupEbsBlockDeviceArgs']]]]] = None,
+                 ebs_block_devices: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupEbsBlockDeviceArgs', 'ElastigroupEbsBlockDeviceArgsDict']]]]] = None,
                  ebs_optimized: Optional[pulumi.Input[bool]] = None,
                  elastic_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  elastic_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enable_monitoring: Optional[pulumi.Input[bool]] = None,
-                 ephemeral_block_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupEphemeralBlockDeviceArgs']]]]] = None,
+                 ephemeral_block_devices: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupEphemeralBlockDeviceArgs', 'ElastigroupEphemeralBlockDeviceArgsDict']]]]] = None,
                  fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
                  health_check_grace_period: Optional[pulumi.Input[int]] = None,
                  health_check_type: Optional[pulumi.Input[str]] = None,
                  health_check_unhealthy_duration_before_replacement: Optional[pulumi.Input[int]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
-                 images: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupImageArgs']]]]] = None,
+                 images: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupImageArgs', 'ElastigroupImageArgsDict']]]]] = None,
                  immediate_od_recover_threshold: Optional[pulumi.Input[int]] = None,
                  instance_types_ondemand: Optional[pulumi.Input[str]] = None,
                  instance_types_preferred_spots: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  instance_types_spots: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 instance_types_weights: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesWeightArgs']]]]] = None,
-                 integration_beanstalk: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationBeanstalkArgs']]] = None,
-                 integration_codedeploy: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationCodedeployArgs']]] = None,
-                 integration_docker_swarm: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationDockerSwarmArgs']]] = None,
-                 integration_ecs: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationEcsArgs']]] = None,
-                 integration_gitlab: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationGitlabArgs']]] = None,
-                 integration_kubernetes: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationKubernetesArgs']]] = None,
-                 integration_mesosphere: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationMesosphereArgs']]] = None,
-                 integration_nomad: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationNomadArgs']]] = None,
-                 integration_rancher: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationRancherArgs']]] = None,
-                 integration_route53: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationRoute53Args']]] = None,
-                 itfs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupItfArgs']]]]] = None,
+                 instance_types_weights: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupInstanceTypesWeightArgs', 'ElastigroupInstanceTypesWeightArgsDict']]]]] = None,
+                 integration_beanstalk: Optional[pulumi.Input[Union['ElastigroupIntegrationBeanstalkArgs', 'ElastigroupIntegrationBeanstalkArgsDict']]] = None,
+                 integration_codedeploy: Optional[pulumi.Input[Union['ElastigroupIntegrationCodedeployArgs', 'ElastigroupIntegrationCodedeployArgsDict']]] = None,
+                 integration_docker_swarm: Optional[pulumi.Input[Union['ElastigroupIntegrationDockerSwarmArgs', 'ElastigroupIntegrationDockerSwarmArgsDict']]] = None,
+                 integration_ecs: Optional[pulumi.Input[Union['ElastigroupIntegrationEcsArgs', 'ElastigroupIntegrationEcsArgsDict']]] = None,
+                 integration_gitlab: Optional[pulumi.Input[Union['ElastigroupIntegrationGitlabArgs', 'ElastigroupIntegrationGitlabArgsDict']]] = None,
+                 integration_kubernetes: Optional[pulumi.Input[Union['ElastigroupIntegrationKubernetesArgs', 'ElastigroupIntegrationKubernetesArgsDict']]] = None,
+                 integration_mesosphere: Optional[pulumi.Input[Union['ElastigroupIntegrationMesosphereArgs', 'ElastigroupIntegrationMesosphereArgsDict']]] = None,
+                 integration_nomad: Optional[pulumi.Input[Union['ElastigroupIntegrationNomadArgs', 'ElastigroupIntegrationNomadArgsDict']]] = None,
+                 integration_rancher: Optional[pulumi.Input[Union['ElastigroupIntegrationRancherArgs', 'ElastigroupIntegrationRancherArgsDict']]] = None,
+                 integration_route53: Optional[pulumi.Input[Union['ElastigroupIntegrationRoute53Args', 'ElastigroupIntegrationRoute53ArgsDict']]] = None,
+                 itfs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupItfArgs', 'ElastigroupItfArgsDict']]]]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  lifetime_period: Optional[pulumi.Input[str]] = None,
-                 logging: Optional[pulumi.Input[pulumi.InputType['ElastigroupLoggingArgs']]] = None,
+                 logging: Optional[pulumi.Input[Union['ElastigroupLoggingArgs', 'ElastigroupLoggingArgsDict']]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
-                 metadata_options: Optional[pulumi.Input[pulumi.InputType['ElastigroupMetadataOptionsArgs']]] = None,
+                 metadata_options: Optional[pulumi.Input[Union['ElastigroupMetadataOptionsArgs', 'ElastigroupMetadataOptionsArgsDict']]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
                  minimum_instance_lifetime: Optional[pulumi.Input[int]] = None,
-                 multiple_metrics: Optional[pulumi.Input[pulumi.InputType['ElastigroupMultipleMetricsArgs']]] = None,
+                 multiple_metrics: Optional[pulumi.Input[Union['ElastigroupMultipleMetricsArgs', 'ElastigroupMultipleMetricsArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupNetworkInterfaceArgs']]]]] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupNetworkInterfaceArgs', 'ElastigroupNetworkInterfaceArgsDict']]]]] = None,
                  on_demand_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ondemand_count: Optional[pulumi.Input[int]] = None,
                  orientation: Optional[pulumi.Input[str]] = None,
@@ -2903,24 +2903,24 @@ class Elastigroup(pulumi.CustomResource):
                  private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  product: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 resource_requirements: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupResourceRequirementArgs']]]]] = None,
-                 resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupResourceTagSpecificationArgs']]]]] = None,
-                 revert_to_spot: Optional[pulumi.Input[pulumi.InputType['ElastigroupRevertToSpotArgs']]] = None,
-                 scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingDownPolicyArgs']]]]] = None,
-                 scaling_strategies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingStrategyArgs']]]]] = None,
-                 scaling_target_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingTargetPolicyArgs']]]]] = None,
-                 scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingUpPolicyArgs']]]]] = None,
-                 scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScheduledTaskArgs']]]]] = None,
+                 resource_requirements: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupResourceRequirementArgs', 'ElastigroupResourceRequirementArgsDict']]]]] = None,
+                 resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupResourceTagSpecificationArgs', 'ElastigroupResourceTagSpecificationArgsDict']]]]] = None,
+                 revert_to_spot: Optional[pulumi.Input[Union['ElastigroupRevertToSpotArgs', 'ElastigroupRevertToSpotArgsDict']]] = None,
+                 scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingDownPolicyArgs', 'ElastigroupScalingDownPolicyArgsDict']]]]] = None,
+                 scaling_strategies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingStrategyArgs', 'ElastigroupScalingStrategyArgsDict']]]]] = None,
+                 scaling_target_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingTargetPolicyArgs', 'ElastigroupScalingTargetPolicyArgsDict']]]]] = None,
+                 scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingUpPolicyArgs', 'ElastigroupScalingUpPolicyArgsDict']]]]] = None,
+                 scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScheduledTaskArgs', 'ElastigroupScheduledTaskArgsDict']]]]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  shutdown_script: Optional[pulumi.Input[str]] = None,
-                 signals: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupSignalArgs']]]]] = None,
+                 signals: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupSignalArgs', 'ElastigroupSignalArgsDict']]]]] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
-                 stateful_deallocation: Optional[pulumi.Input[pulumi.InputType['ElastigroupStatefulDeallocationArgs']]] = None,
-                 stateful_instance_actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupStatefulInstanceActionArgs']]]]] = None,
+                 stateful_deallocation: Optional[pulumi.Input[Union['ElastigroupStatefulDeallocationArgs', 'ElastigroupStatefulDeallocationArgsDict']]] = None,
+                 stateful_instance_actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupStatefulInstanceActionArgs', 'ElastigroupStatefulInstanceActionArgsDict']]]]] = None,
                  subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupTagArgs']]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupTagArgs', 'ElastigroupTagArgsDict']]]]] = None,
                  target_group_arns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 update_policy: Optional[pulumi.Input[pulumi.InputType['ElastigroupUpdatePolicyArgs']]] = None,
+                 update_policy: Optional[pulumi.Input[Union['ElastigroupUpdatePolicyArgs', 'ElastigroupUpdatePolicyArgsDict']]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  utilize_commitments: Optional[pulumi.Input[bool]] = None,
                  utilize_reserved_instances: Optional[pulumi.Input[bool]] = None,
@@ -3040,49 +3040,49 @@ class Elastigroup(pulumi.CustomResource):
             capacity_unit: Optional[pulumi.Input[str]] = None,
             consider_od_pricing: Optional[pulumi.Input[bool]] = None,
             cpu_credits: Optional[pulumi.Input[str]] = None,
-            cpu_options: Optional[pulumi.Input[pulumi.InputType['ElastigroupCpuOptionsArgs']]] = None,
+            cpu_options: Optional[pulumi.Input[Union['ElastigroupCpuOptionsArgs', 'ElastigroupCpuOptionsArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             desired_capacity: Optional[pulumi.Input[int]] = None,
             draining_timeout: Optional[pulumi.Input[int]] = None,
-            ebs_block_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupEbsBlockDeviceArgs']]]]] = None,
+            ebs_block_devices: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupEbsBlockDeviceArgs', 'ElastigroupEbsBlockDeviceArgsDict']]]]] = None,
             ebs_optimized: Optional[pulumi.Input[bool]] = None,
             elastic_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             elastic_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             enable_monitoring: Optional[pulumi.Input[bool]] = None,
-            ephemeral_block_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupEphemeralBlockDeviceArgs']]]]] = None,
+            ephemeral_block_devices: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupEphemeralBlockDeviceArgs', 'ElastigroupEphemeralBlockDeviceArgsDict']]]]] = None,
             fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
             health_check_grace_period: Optional[pulumi.Input[int]] = None,
             health_check_type: Optional[pulumi.Input[str]] = None,
             health_check_unhealthy_duration_before_replacement: Optional[pulumi.Input[int]] = None,
             iam_instance_profile: Optional[pulumi.Input[str]] = None,
             image_id: Optional[pulumi.Input[str]] = None,
-            images: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupImageArgs']]]]] = None,
+            images: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupImageArgs', 'ElastigroupImageArgsDict']]]]] = None,
             immediate_od_recover_threshold: Optional[pulumi.Input[int]] = None,
             instance_types_ondemand: Optional[pulumi.Input[str]] = None,
             instance_types_preferred_spots: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             instance_types_spots: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            instance_types_weights: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesWeightArgs']]]]] = None,
-            integration_beanstalk: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationBeanstalkArgs']]] = None,
-            integration_codedeploy: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationCodedeployArgs']]] = None,
-            integration_docker_swarm: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationDockerSwarmArgs']]] = None,
-            integration_ecs: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationEcsArgs']]] = None,
-            integration_gitlab: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationGitlabArgs']]] = None,
-            integration_kubernetes: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationKubernetesArgs']]] = None,
-            integration_mesosphere: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationMesosphereArgs']]] = None,
-            integration_nomad: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationNomadArgs']]] = None,
-            integration_rancher: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationRancherArgs']]] = None,
-            integration_route53: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationRoute53Args']]] = None,
-            itfs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupItfArgs']]]]] = None,
+            instance_types_weights: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupInstanceTypesWeightArgs', 'ElastigroupInstanceTypesWeightArgsDict']]]]] = None,
+            integration_beanstalk: Optional[pulumi.Input[Union['ElastigroupIntegrationBeanstalkArgs', 'ElastigroupIntegrationBeanstalkArgsDict']]] = None,
+            integration_codedeploy: Optional[pulumi.Input[Union['ElastigroupIntegrationCodedeployArgs', 'ElastigroupIntegrationCodedeployArgsDict']]] = None,
+            integration_docker_swarm: Optional[pulumi.Input[Union['ElastigroupIntegrationDockerSwarmArgs', 'ElastigroupIntegrationDockerSwarmArgsDict']]] = None,
+            integration_ecs: Optional[pulumi.Input[Union['ElastigroupIntegrationEcsArgs', 'ElastigroupIntegrationEcsArgsDict']]] = None,
+            integration_gitlab: Optional[pulumi.Input[Union['ElastigroupIntegrationGitlabArgs', 'ElastigroupIntegrationGitlabArgsDict']]] = None,
+            integration_kubernetes: Optional[pulumi.Input[Union['ElastigroupIntegrationKubernetesArgs', 'ElastigroupIntegrationKubernetesArgsDict']]] = None,
+            integration_mesosphere: Optional[pulumi.Input[Union['ElastigroupIntegrationMesosphereArgs', 'ElastigroupIntegrationMesosphereArgsDict']]] = None,
+            integration_nomad: Optional[pulumi.Input[Union['ElastigroupIntegrationNomadArgs', 'ElastigroupIntegrationNomadArgsDict']]] = None,
+            integration_rancher: Optional[pulumi.Input[Union['ElastigroupIntegrationRancherArgs', 'ElastigroupIntegrationRancherArgsDict']]] = None,
+            integration_route53: Optional[pulumi.Input[Union['ElastigroupIntegrationRoute53Args', 'ElastigroupIntegrationRoute53ArgsDict']]] = None,
+            itfs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupItfArgs', 'ElastigroupItfArgsDict']]]]] = None,
             key_name: Optional[pulumi.Input[str]] = None,
             lifetime_period: Optional[pulumi.Input[str]] = None,
-            logging: Optional[pulumi.Input[pulumi.InputType['ElastigroupLoggingArgs']]] = None,
+            logging: Optional[pulumi.Input[Union['ElastigroupLoggingArgs', 'ElastigroupLoggingArgsDict']]] = None,
             max_size: Optional[pulumi.Input[int]] = None,
-            metadata_options: Optional[pulumi.Input[pulumi.InputType['ElastigroupMetadataOptionsArgs']]] = None,
+            metadata_options: Optional[pulumi.Input[Union['ElastigroupMetadataOptionsArgs', 'ElastigroupMetadataOptionsArgsDict']]] = None,
             min_size: Optional[pulumi.Input[int]] = None,
             minimum_instance_lifetime: Optional[pulumi.Input[int]] = None,
-            multiple_metrics: Optional[pulumi.Input[pulumi.InputType['ElastigroupMultipleMetricsArgs']]] = None,
+            multiple_metrics: Optional[pulumi.Input[Union['ElastigroupMultipleMetricsArgs', 'ElastigroupMultipleMetricsArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupNetworkInterfaceArgs']]]]] = None,
+            network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupNetworkInterfaceArgs', 'ElastigroupNetworkInterfaceArgsDict']]]]] = None,
             on_demand_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             ondemand_count: Optional[pulumi.Input[int]] = None,
             orientation: Optional[pulumi.Input[str]] = None,
@@ -3094,24 +3094,24 @@ class Elastigroup(pulumi.CustomResource):
             private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             product: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            resource_requirements: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupResourceRequirementArgs']]]]] = None,
-            resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupResourceTagSpecificationArgs']]]]] = None,
-            revert_to_spot: Optional[pulumi.Input[pulumi.InputType['ElastigroupRevertToSpotArgs']]] = None,
-            scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingDownPolicyArgs']]]]] = None,
-            scaling_strategies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingStrategyArgs']]]]] = None,
-            scaling_target_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingTargetPolicyArgs']]]]] = None,
-            scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingUpPolicyArgs']]]]] = None,
-            scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScheduledTaskArgs']]]]] = None,
+            resource_requirements: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupResourceRequirementArgs', 'ElastigroupResourceRequirementArgsDict']]]]] = None,
+            resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupResourceTagSpecificationArgs', 'ElastigroupResourceTagSpecificationArgsDict']]]]] = None,
+            revert_to_spot: Optional[pulumi.Input[Union['ElastigroupRevertToSpotArgs', 'ElastigroupRevertToSpotArgsDict']]] = None,
+            scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingDownPolicyArgs', 'ElastigroupScalingDownPolicyArgsDict']]]]] = None,
+            scaling_strategies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingStrategyArgs', 'ElastigroupScalingStrategyArgsDict']]]]] = None,
+            scaling_target_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingTargetPolicyArgs', 'ElastigroupScalingTargetPolicyArgsDict']]]]] = None,
+            scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingUpPolicyArgs', 'ElastigroupScalingUpPolicyArgsDict']]]]] = None,
+            scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScheduledTaskArgs', 'ElastigroupScheduledTaskArgsDict']]]]] = None,
             security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             shutdown_script: Optional[pulumi.Input[str]] = None,
-            signals: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupSignalArgs']]]]] = None,
+            signals: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupSignalArgs', 'ElastigroupSignalArgsDict']]]]] = None,
             spot_percentage: Optional[pulumi.Input[int]] = None,
-            stateful_deallocation: Optional[pulumi.Input[pulumi.InputType['ElastigroupStatefulDeallocationArgs']]] = None,
-            stateful_instance_actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupStatefulInstanceActionArgs']]]]] = None,
+            stateful_deallocation: Optional[pulumi.Input[Union['ElastigroupStatefulDeallocationArgs', 'ElastigroupStatefulDeallocationArgsDict']]] = None,
+            stateful_instance_actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupStatefulInstanceActionArgs', 'ElastigroupStatefulInstanceActionArgsDict']]]]] = None,
             subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupTagArgs']]]]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupTagArgs', 'ElastigroupTagArgsDict']]]]] = None,
             target_group_arns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            update_policy: Optional[pulumi.Input[pulumi.InputType['ElastigroupUpdatePolicyArgs']]] = None,
+            update_policy: Optional[pulumi.Input[Union['ElastigroupUpdatePolicyArgs', 'ElastigroupUpdatePolicyArgsDict']]] = None,
             user_data: Optional[pulumi.Input[str]] = None,
             utilize_commitments: Optional[pulumi.Input[bool]] = None,
             utilize_reserved_instances: Optional[pulumi.Input[bool]] = None,
@@ -3129,7 +3129,7 @@ class Elastigroup(pulumi.CustomResource):
                `availability_zones = ["us-east-1a:subnet-123456:ClusterI03"]`
         :param pulumi.Input[str] capacity_unit: The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
         :param pulumi.Input[str] cpu_credits: Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
-        :param pulumi.Input[pulumi.InputType['ElastigroupCpuOptionsArgs']] cpu_options: The CPU options for the instances that are launched within the group:
+        :param pulumi.Input[Union['ElastigroupCpuOptionsArgs', 'ElastigroupCpuOptionsArgsDict']] cpu_options: The CPU options for the instances that are launched within the group:
         :param pulumi.Input[str] description: The group description.
         :param pulumi.Input[int] desired_capacity: The desired number of instances the group should have at any time.
         :param pulumi.Input[int] draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
@@ -3142,16 +3142,16 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[int] health_check_unhealthy_duration_before_replacement: The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
         :param pulumi.Input[str] iam_instance_profile: The ARN or name of an IAM instance profile to associate with launched instances.
         :param pulumi.Input[str] image_id: The ID of the AMI used to launch the instance.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupImageArgs']]]] images: An array of image objects. 
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupImageArgs', 'ElastigroupImageArgsDict']]]] images: An array of image objects. 
                Note: Elastigroup can be configured with either imageId or images, but not both.
         :param pulumi.Input[str] instance_types_ondemand: The type of instance determines your instance's CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_preferred_spots: Prioritize a subset of spot instance types. Must be a subset of the selected spot instance types.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_spots: One or more instance types. Note: Cannot be defined if 'resourceRequirements' is defined.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesWeightArgs']]]] instance_types_weights: List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupInstanceTypesWeightArgs', 'ElastigroupInstanceTypesWeightArgsDict']]]] instance_types_weights: List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
         :param pulumi.Input[str] key_name: The key name that should be used for the instance.
-        :param pulumi.Input[pulumi.InputType['ElastigroupLoggingArgs']] logging: Logging configuration.
+        :param pulumi.Input[Union['ElastigroupLoggingArgs', 'ElastigroupLoggingArgsDict']] logging: Logging configuration.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
-        :param pulumi.Input[pulumi.InputType['ElastigroupMetadataOptionsArgs']] metadata_options: Data that used to configure or manage the running instances:
+        :param pulumi.Input[Union['ElastigroupMetadataOptionsArgs', 'ElastigroupMetadataOptionsArgsDict']] metadata_options: Data that used to configure or manage the running instances:
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
         :param pulumi.Input[int] minimum_instance_lifetime: Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
         :param pulumi.Input[str] name: The group name.
@@ -3165,16 +3165,16 @@ class Elastigroup(pulumi.CustomResource):
                For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         :param pulumi.Input[str] region: The AWS region your group will be created in.
                Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupResourceRequirementArgs']]]] resource_requirements: Required instance attributes. Instance types will be selected based on these requirements.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupResourceTagSpecificationArgs']]]] resource_tag_specifications: User will specify which resources should be tagged with group tags.
-        :param pulumi.Input[pulumi.InputType['ElastigroupRevertToSpotArgs']] revert_to_spot: Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingStrategyArgs']]]] scaling_strategies: Set termination policy.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupResourceRequirementArgs', 'ElastigroupResourceRequirementArgsDict']]]] resource_requirements: Required instance attributes. Instance types will be selected based on these requirements.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupResourceTagSpecificationArgs', 'ElastigroupResourceTagSpecificationArgsDict']]]] resource_tag_specifications: User will specify which resources should be tagged with group tags.
+        :param pulumi.Input[Union['ElastigroupRevertToSpotArgs', 'ElastigroupRevertToSpotArgsDict']] revert_to_spot: Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingStrategyArgs', 'ElastigroupScalingStrategyArgsDict']]]] scaling_strategies: Set termination policy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: A list of associated security group IDS.
         :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
         :param pulumi.Input[int] spot_percentage: The percentage of Spot instances that would spin up from the `desired_capacity` number.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: List of Strings of subnet identifiers.
                Note: When this parameter is set, `availability_zones` should be left unused.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupTagArgs']]]] tags: A key/value mapping of tags to assign to the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupTagArgs', 'ElastigroupTagArgsDict']]]] tags: A key/value mapping of tags to assign to the resource.
         :param pulumi.Input[str] user_data: The user data to provide when launching the instance.
         :param pulumi.Input[bool] utilize_reserved_instances: In a case of any available reserved instances, Elastigroup will utilize them first before purchasing Spot instances.
         :param pulumi.Input[int] wait_for_capacity: Minimum number of instances in a 'HEALTHY' status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desired_capacity`.

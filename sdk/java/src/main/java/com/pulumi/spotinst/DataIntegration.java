@@ -111,7 +111,7 @@ public class DataIntegration extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DataIntegration(String name) {
+    public DataIntegration(java.lang.String name) {
         this(name, DataIntegrationArgs.Empty);
     }
     /**
@@ -119,7 +119,7 @@ public class DataIntegration extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DataIntegration(String name, @Nullable DataIntegrationArgs args) {
+    public DataIntegration(java.lang.String name, @Nullable DataIntegrationArgs args) {
         this(name, args, null);
     }
     /**
@@ -128,12 +128,12 @@ public class DataIntegration extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DataIntegration(String name, @Nullable DataIntegrationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("spotinst:index/dataIntegration:DataIntegration", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public DataIntegration(java.lang.String name, @Nullable DataIntegrationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("spotinst:index/dataIntegration:DataIntegration", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DataIntegration(String name, Output<String> id, @Nullable DataIntegrationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("spotinst:index/dataIntegration:DataIntegration", name, state, makeResourceOptions(options, id));
+    private DataIntegration(java.lang.String name, Output<java.lang.String> id, @Nullable DataIntegrationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("spotinst:index/dataIntegration:DataIntegration", name, state, makeResourceOptions(options, id), false);
     }
 
     private static DataIntegrationArgs makeArgs(@Nullable DataIntegrationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -143,7 +143,7 @@ public class DataIntegration extends com.pulumi.resources.CustomResource {
         return args == null ? DataIntegrationArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -159,7 +159,7 @@ public class DataIntegration extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DataIntegration get(String name, Output<String> id, @Nullable DataIntegrationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DataIntegration get(java.lang.String name, Output<java.lang.String> id, @Nullable DataIntegrationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DataIntegration(name, id, state, options);
     }
 }

@@ -131,7 +131,7 @@ class Policy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 policy_contents: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyPolicyContentArgs']]]]] = None,
+                 policy_contents: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PolicyPolicyContentArgs', 'PolicyPolicyContentArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a Spotinst access policy.
@@ -145,33 +145,33 @@ class Policy(pulumi.CustomResource):
         terraform_policy = spotinst.organization.Policy("terraform_policy",
             name="test-policy",
             description="policy by terraform",
-            policy_contents=[spotinst.organization.PolicyPolicyContentArgs(
-                statements=[
-                    spotinst.organization.PolicyPolicyContentStatementArgs(
-                        actions=["ocean:deleteCluster"],
-                        effect="DENY",
-                        resources=[
+            policy_contents=[{
+                "statements": [
+                    {
+                        "actions": ["ocean:deleteCluster"],
+                        "effect": "DENY",
+                        "resources": [
                             "o-abcd1234",
                             "o-defg6789",
                         ],
-                    ),
-                    spotinst.organization.PolicyPolicyContentStatementArgs(
-                        actions=["ocean:createCluster"],
-                        effect="DENY",
-                        resources=[
+                    },
+                    {
+                        "actions": ["ocean:createCluster"],
+                        "effect": "DENY",
+                        "resources": [
                             "o-fhau4752",
                             "o-761owf4r3",
                         ],
-                    ),
+                    },
                 ],
-            )])
+            }])
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Short description of policy.
         :param pulumi.Input[str] name: Name of the Policy.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyPolicyContentArgs']]]] policy_contents: Set permissions objects list.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyPolicyContentArgs', 'PolicyPolicyContentArgsDict']]]] policy_contents: Set permissions objects list.
         """
         ...
     @overload
@@ -191,26 +191,26 @@ class Policy(pulumi.CustomResource):
         terraform_policy = spotinst.organization.Policy("terraform_policy",
             name="test-policy",
             description="policy by terraform",
-            policy_contents=[spotinst.organization.PolicyPolicyContentArgs(
-                statements=[
-                    spotinst.organization.PolicyPolicyContentStatementArgs(
-                        actions=["ocean:deleteCluster"],
-                        effect="DENY",
-                        resources=[
+            policy_contents=[{
+                "statements": [
+                    {
+                        "actions": ["ocean:deleteCluster"],
+                        "effect": "DENY",
+                        "resources": [
                             "o-abcd1234",
                             "o-defg6789",
                         ],
-                    ),
-                    spotinst.organization.PolicyPolicyContentStatementArgs(
-                        actions=["ocean:createCluster"],
-                        effect="DENY",
-                        resources=[
+                    },
+                    {
+                        "actions": ["ocean:createCluster"],
+                        "effect": "DENY",
+                        "resources": [
                             "o-fhau4752",
                             "o-761owf4r3",
                         ],
-                    ),
+                    },
                 ],
-            )])
+            }])
         ```
 
         :param str resource_name: The name of the resource.
@@ -230,7 +230,7 @@ class Policy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 policy_contents: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyPolicyContentArgs']]]]] = None,
+                 policy_contents: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PolicyPolicyContentArgs', 'PolicyPolicyContentArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -257,7 +257,7 @@ class Policy(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            policy_contents: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyPolicyContentArgs']]]]] = None) -> 'Policy':
+            policy_contents: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PolicyPolicyContentArgs', 'PolicyPolicyContentArgsDict']]]]] = None) -> 'Policy':
         """
         Get an existing Policy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -267,7 +267,7 @@ class Policy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Short description of policy.
         :param pulumi.Input[str] name: Name of the Policy.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyPolicyContentArgs']]]] policy_contents: Set permissions objects list.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyPolicyContentArgs', 'PolicyPolicyContentArgsDict']]]] policy_contents: Set permissions objects list.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

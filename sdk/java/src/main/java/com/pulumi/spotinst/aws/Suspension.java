@@ -99,7 +99,7 @@ public class Suspension extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Suspension(String name) {
+    public Suspension(java.lang.String name) {
         this(name, SuspensionArgs.Empty);
     }
     /**
@@ -107,7 +107,7 @@ public class Suspension extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Suspension(String name, SuspensionArgs args) {
+    public Suspension(java.lang.String name, SuspensionArgs args) {
         this(name, args, null);
     }
     /**
@@ -116,12 +116,12 @@ public class Suspension extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Suspension(String name, SuspensionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("spotinst:aws/suspension:Suspension", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Suspension(java.lang.String name, SuspensionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("spotinst:aws/suspension:Suspension", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Suspension(String name, Output<String> id, @Nullable SuspensionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("spotinst:aws/suspension:Suspension", name, state, makeResourceOptions(options, id));
+    private Suspension(java.lang.String name, Output<java.lang.String> id, @Nullable SuspensionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("spotinst:aws/suspension:Suspension", name, state, makeResourceOptions(options, id), false);
     }
 
     private static SuspensionArgs makeArgs(SuspensionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -131,7 +131,7 @@ public class Suspension extends com.pulumi.resources.CustomResource {
         return args == null ? SuspensionArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -147,7 +147,7 @@ public class Suspension extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Suspension get(String name, Output<String> id, @Nullable SuspensionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Suspension get(java.lang.String name, Output<java.lang.String> id, @Nullable SuspensionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Suspension(name, id, state, options);
     }
 }

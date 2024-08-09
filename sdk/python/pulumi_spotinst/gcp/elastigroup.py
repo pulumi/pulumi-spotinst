@@ -1087,38 +1087,38 @@ class Elastigroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_healing: Optional[pulumi.Input[bool]] = None,
                  availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 backend_services: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupBackendServiceArgs']]]]] = None,
+                 backend_services: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupBackendServiceArgs', 'ElastigroupBackendServiceArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
-                 disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupDiskArgs']]]]] = None,
+                 disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupDiskArgs', 'ElastigroupDiskArgsDict']]]]] = None,
                  draining_timeout: Optional[pulumi.Input[int]] = None,
                  fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
-                 gpu: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupGpuArgs']]]]] = None,
+                 gpu: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupGpuArgs', 'ElastigroupGpuArgsDict']]]]] = None,
                  health_check_grace_period: Optional[pulumi.Input[int]] = None,
                  health_check_type: Optional[pulumi.Input[str]] = None,
                  instance_name_prefix: Optional[pulumi.Input[str]] = None,
-                 instance_types_customs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesCustomArgs']]]]] = None,
+                 instance_types_customs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupInstanceTypesCustomArgs', 'ElastigroupInstanceTypesCustomArgsDict']]]]] = None,
                  instance_types_ondemand: Optional[pulumi.Input[str]] = None,
                  instance_types_preemptibles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 integration_docker_swarm: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationDockerSwarmArgs']]] = None,
-                 integration_gke: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationGkeArgs']]] = None,
+                 integration_docker_swarm: Optional[pulumi.Input[Union['ElastigroupIntegrationDockerSwarmArgs', 'ElastigroupIntegrationDockerSwarmArgsDict']]] = None,
+                 integration_gke: Optional[pulumi.Input[Union['ElastigroupIntegrationGkeArgs', 'ElastigroupIntegrationGkeArgsDict']]] = None,
                  ip_forwarding: Optional[pulumi.Input[bool]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupLabelArgs']]]]] = None,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupLabelArgs', 'ElastigroupLabelArgsDict']]]]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
-                 metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupMetadataArgs']]]]] = None,
+                 metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupMetadataArgs', 'ElastigroupMetadataArgsDict']]]]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupNetworkInterfaceArgs']]]]] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupNetworkInterfaceArgs', 'ElastigroupNetworkInterfaceArgsDict']]]]] = None,
                  ondemand_count: Optional[pulumi.Input[int]] = None,
                  preemptible_percentage: Optional[pulumi.Input[int]] = None,
                  provisioning_model: Optional[pulumi.Input[str]] = None,
-                 scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingDownPolicyArgs']]]]] = None,
-                 scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingUpPolicyArgs']]]]] = None,
-                 scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScheduledTaskArgs']]]]] = None,
+                 scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingDownPolicyArgs', 'ElastigroupScalingDownPolicyArgsDict']]]]] = None,
+                 scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingUpPolicyArgs', 'ElastigroupScalingUpPolicyArgsDict']]]]] = None,
+                 scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScheduledTaskArgs', 'ElastigroupScheduledTaskArgsDict']]]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  shutdown_script: Optional[pulumi.Input[str]] = None,
                  startup_script: Optional[pulumi.Input[str]] = None,
-                 subnets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupSubnetArgs']]]]] = None,
+                 subnets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupSubnetArgs', 'ElastigroupSubnetArgsDict']]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  unhealthy_duration: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -1148,74 +1148,74 @@ class Elastigroup(pulumi.CustomResource):
             fallback_to_ondemand=True,
             draining_timeout=180,
             provisioning_model="SPOT",
-            labels=[spotinst.gcp.ElastigroupLabelArgs(
-                key="test_key",
-                value="test_value",
-            )],
+            labels=[{
+                "key": "test_key",
+                "value": "test_value",
+            }],
             tags=[
                 "http",
                 "https",
             ],
-            backend_services=[spotinst.gcp.ElastigroupBackendServiceArgs(
-                service_name="spotinst-elb-backend-service",
-                location_type="regional",
-                scheme="INTERNAL",
-                named_ports=[spotinst.gcp.ElastigroupBackendServiceNamedPortArgs(
-                    name="port-name",
-                    ports=[
+            backend_services=[{
+                "service_name": "spotinst-elb-backend-service",
+                "location_type": "regional",
+                "scheme": "INTERNAL",
+                "named_ports": [{
+                    "name": "port-name",
+                    "ports": [
                         "8000",
                         "6000",
                     ],
-                )],
-            )],
-            disks=[spotinst.gcp.ElastigroupDiskArgs(
-                device_name="device",
-                mode="READ_WRITE",
-                type="PERSISTENT",
-                auto_delete=True,
-                boot=True,
-                interface="SCSI",
-                initialize_params=[spotinst.gcp.ElastigroupDiskInitializeParamArgs(
-                    disk_size_gb="10",
-                    disk_type="pd-standard",
-                    source_image="",
-                )],
-            )],
-            network_interfaces=[spotinst.gcp.ElastigroupNetworkInterfaceArgs(
-                network="spot-network",
-            )],
+                }],
+            }],
+            disks=[{
+                "device_name": "device",
+                "mode": "READ_WRITE",
+                "type": "PERSISTENT",
+                "auto_delete": True,
+                "boot": True,
+                "interface": "SCSI",
+                "initialize_params": [{
+                    "disk_size_gb": "10",
+                    "disk_type": "pd-standard",
+                    "source_image": "",
+                }],
+            }],
+            network_interfaces=[{
+                "network": "spot-network",
+            }],
             instance_types_ondemand="n1-standard-1",
             instance_types_preemptibles=[
                 "n1-standard-1",
                 "n1-standard-2",
             ],
-            instance_types_customs=[spotinst.gcp.ElastigroupInstanceTypesCustomArgs(
-                vcpu=2,
-                memory_gib=7,
-            )],
-            subnets=[spotinst.gcp.ElastigroupSubnetArgs(
-                region="asia-east1",
-                subnet_names=["default"],
-            )],
-            scaling_up_policies=[spotinst.gcp.ElastigroupScalingUpPolicyArgs(
-                policy_name="scale_up_1",
-                source="stackdriver",
-                metric_name="instance/disk/read_ops_count",
-                namespace="compute",
-                statistic="average",
-                unit="percent",
-                threshold=10000,
-                period=300,
-                cooldown=300,
-                operator="gte",
-                evaluation_periods=1,
-                action_type="adjustment",
-                adjustment=1,
-                dimensions=[spotinst.gcp.ElastigroupScalingUpPolicyDimensionArgs(
-                    name="storage_type",
-                    value="pd-ssd",
-                )],
-            )])
+            instance_types_customs=[{
+                "vcpu": 2,
+                "memory_gib": 7,
+            }],
+            subnets=[{
+                "region": "asia-east1",
+                "subnet_names": ["default"],
+            }],
+            scaling_up_policies=[{
+                "policy_name": "scale_up_1",
+                "source": "stackdriver",
+                "metric_name": "instance/disk/read_ops_count",
+                "namespace": "compute",
+                "statistic": "average",
+                "unit": "percent",
+                "threshold": 10000,
+                "period": 300,
+                "cooldown": 300,
+                "operator": "gte",
+                "evaluation_periods": 1,
+                "action_type": "adjustment",
+                "adjustment": 1,
+                "dimensions": [{
+                    "name": "storage_type",
+                    "value": "pd-ssd",
+                }],
+            }])
         ```
 
         :param str resource_name: The name of the resource.
@@ -1228,13 +1228,13 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[str] instance_name_prefix: Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
                * A maximal length of 25 characters.
                * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesCustomArgs']]]] instance_types_customs: Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupInstanceTypesCustomArgs', 'ElastigroupInstanceTypesCustomArgsDict']]]] instance_types_customs: Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
                * `vCPU` - (Optional) The number of vCPUs in the custom instance type. GCP has a number of limitations on accepted vCPU values. For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
         :param pulumi.Input[str] instance_types_ondemand: The regular VM instance type to use for mixed-type groups and when falling back to on-demand. Required if instance_types_preemptible is not set.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_preemptibles: The preemptible VMs instance type. To maximize cost savings and market availability, select as many types as possible. Required if instance_types_ondemand is not set.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupLabelArgs']]]] labels: Array of objects with key-value pairs.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupLabelArgs', 'ElastigroupLabelArgsDict']]]] labels: Array of objects with key-value pairs.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupMetadataArgs']]]] metadatas: Array of objects with key-value pairs.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupMetadataArgs', 'ElastigroupMetadataArgsDict']]]] metadatas: Array of objects with key-value pairs.
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
         :param pulumi.Input[str] name: The group name.
         :param pulumi.Input[int] preemptible_percentage: Percentage of Preemptible VMs to spin up from the "desired_capacity".
@@ -1242,7 +1242,7 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[str] service_account: The email of the service account in which the group instances will be launched.
         :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
         :param pulumi.Input[str] startup_script: Create and run your own startup scripts on your virtual machines to perform automated tasks every time your instance boots up.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupSubnetArgs']]]] subnets: A list of regions and subnets.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupSubnetArgs', 'ElastigroupSubnetArgsDict']]]] subnets: A list of regions and subnets.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to mark created instances.
         """
         ...
@@ -1277,74 +1277,74 @@ class Elastigroup(pulumi.CustomResource):
             fallback_to_ondemand=True,
             draining_timeout=180,
             provisioning_model="SPOT",
-            labels=[spotinst.gcp.ElastigroupLabelArgs(
-                key="test_key",
-                value="test_value",
-            )],
+            labels=[{
+                "key": "test_key",
+                "value": "test_value",
+            }],
             tags=[
                 "http",
                 "https",
             ],
-            backend_services=[spotinst.gcp.ElastigroupBackendServiceArgs(
-                service_name="spotinst-elb-backend-service",
-                location_type="regional",
-                scheme="INTERNAL",
-                named_ports=[spotinst.gcp.ElastigroupBackendServiceNamedPortArgs(
-                    name="port-name",
-                    ports=[
+            backend_services=[{
+                "service_name": "spotinst-elb-backend-service",
+                "location_type": "regional",
+                "scheme": "INTERNAL",
+                "named_ports": [{
+                    "name": "port-name",
+                    "ports": [
                         "8000",
                         "6000",
                     ],
-                )],
-            )],
-            disks=[spotinst.gcp.ElastigroupDiskArgs(
-                device_name="device",
-                mode="READ_WRITE",
-                type="PERSISTENT",
-                auto_delete=True,
-                boot=True,
-                interface="SCSI",
-                initialize_params=[spotinst.gcp.ElastigroupDiskInitializeParamArgs(
-                    disk_size_gb="10",
-                    disk_type="pd-standard",
-                    source_image="",
-                )],
-            )],
-            network_interfaces=[spotinst.gcp.ElastigroupNetworkInterfaceArgs(
-                network="spot-network",
-            )],
+                }],
+            }],
+            disks=[{
+                "device_name": "device",
+                "mode": "READ_WRITE",
+                "type": "PERSISTENT",
+                "auto_delete": True,
+                "boot": True,
+                "interface": "SCSI",
+                "initialize_params": [{
+                    "disk_size_gb": "10",
+                    "disk_type": "pd-standard",
+                    "source_image": "",
+                }],
+            }],
+            network_interfaces=[{
+                "network": "spot-network",
+            }],
             instance_types_ondemand="n1-standard-1",
             instance_types_preemptibles=[
                 "n1-standard-1",
                 "n1-standard-2",
             ],
-            instance_types_customs=[spotinst.gcp.ElastigroupInstanceTypesCustomArgs(
-                vcpu=2,
-                memory_gib=7,
-            )],
-            subnets=[spotinst.gcp.ElastigroupSubnetArgs(
-                region="asia-east1",
-                subnet_names=["default"],
-            )],
-            scaling_up_policies=[spotinst.gcp.ElastigroupScalingUpPolicyArgs(
-                policy_name="scale_up_1",
-                source="stackdriver",
-                metric_name="instance/disk/read_ops_count",
-                namespace="compute",
-                statistic="average",
-                unit="percent",
-                threshold=10000,
-                period=300,
-                cooldown=300,
-                operator="gte",
-                evaluation_periods=1,
-                action_type="adjustment",
-                adjustment=1,
-                dimensions=[spotinst.gcp.ElastigroupScalingUpPolicyDimensionArgs(
-                    name="storage_type",
-                    value="pd-ssd",
-                )],
-            )])
+            instance_types_customs=[{
+                "vcpu": 2,
+                "memory_gib": 7,
+            }],
+            subnets=[{
+                "region": "asia-east1",
+                "subnet_names": ["default"],
+            }],
+            scaling_up_policies=[{
+                "policy_name": "scale_up_1",
+                "source": "stackdriver",
+                "metric_name": "instance/disk/read_ops_count",
+                "namespace": "compute",
+                "statistic": "average",
+                "unit": "percent",
+                "threshold": 10000,
+                "period": 300,
+                "cooldown": 300,
+                "operator": "gte",
+                "evaluation_periods": 1,
+                "action_type": "adjustment",
+                "adjustment": 1,
+                "dimensions": [{
+                    "name": "storage_type",
+                    "value": "pd-ssd",
+                }],
+            }])
         ```
 
         :param str resource_name: The name of the resource.
@@ -1364,38 +1364,38 @@ class Elastigroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_healing: Optional[pulumi.Input[bool]] = None,
                  availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 backend_services: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupBackendServiceArgs']]]]] = None,
+                 backend_services: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupBackendServiceArgs', 'ElastigroupBackendServiceArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
-                 disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupDiskArgs']]]]] = None,
+                 disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupDiskArgs', 'ElastigroupDiskArgsDict']]]]] = None,
                  draining_timeout: Optional[pulumi.Input[int]] = None,
                  fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
-                 gpu: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupGpuArgs']]]]] = None,
+                 gpu: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupGpuArgs', 'ElastigroupGpuArgsDict']]]]] = None,
                  health_check_grace_period: Optional[pulumi.Input[int]] = None,
                  health_check_type: Optional[pulumi.Input[str]] = None,
                  instance_name_prefix: Optional[pulumi.Input[str]] = None,
-                 instance_types_customs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesCustomArgs']]]]] = None,
+                 instance_types_customs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupInstanceTypesCustomArgs', 'ElastigroupInstanceTypesCustomArgsDict']]]]] = None,
                  instance_types_ondemand: Optional[pulumi.Input[str]] = None,
                  instance_types_preemptibles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 integration_docker_swarm: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationDockerSwarmArgs']]] = None,
-                 integration_gke: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationGkeArgs']]] = None,
+                 integration_docker_swarm: Optional[pulumi.Input[Union['ElastigroupIntegrationDockerSwarmArgs', 'ElastigroupIntegrationDockerSwarmArgsDict']]] = None,
+                 integration_gke: Optional[pulumi.Input[Union['ElastigroupIntegrationGkeArgs', 'ElastigroupIntegrationGkeArgsDict']]] = None,
                  ip_forwarding: Optional[pulumi.Input[bool]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupLabelArgs']]]]] = None,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupLabelArgs', 'ElastigroupLabelArgsDict']]]]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
-                 metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupMetadataArgs']]]]] = None,
+                 metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupMetadataArgs', 'ElastigroupMetadataArgsDict']]]]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupNetworkInterfaceArgs']]]]] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupNetworkInterfaceArgs', 'ElastigroupNetworkInterfaceArgsDict']]]]] = None,
                  ondemand_count: Optional[pulumi.Input[int]] = None,
                  preemptible_percentage: Optional[pulumi.Input[int]] = None,
                  provisioning_model: Optional[pulumi.Input[str]] = None,
-                 scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingDownPolicyArgs']]]]] = None,
-                 scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingUpPolicyArgs']]]]] = None,
-                 scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScheduledTaskArgs']]]]] = None,
+                 scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingDownPolicyArgs', 'ElastigroupScalingDownPolicyArgsDict']]]]] = None,
+                 scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingUpPolicyArgs', 'ElastigroupScalingUpPolicyArgsDict']]]]] = None,
+                 scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScheduledTaskArgs', 'ElastigroupScheduledTaskArgsDict']]]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  shutdown_script: Optional[pulumi.Input[str]] = None,
                  startup_script: Optional[pulumi.Input[str]] = None,
-                 subnets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupSubnetArgs']]]]] = None,
+                 subnets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupSubnetArgs', 'ElastigroupSubnetArgsDict']]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  unhealthy_duration: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -1457,38 +1457,38 @@ class Elastigroup(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_healing: Optional[pulumi.Input[bool]] = None,
             availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            backend_services: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupBackendServiceArgs']]]]] = None,
+            backend_services: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupBackendServiceArgs', 'ElastigroupBackendServiceArgsDict']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             desired_capacity: Optional[pulumi.Input[int]] = None,
-            disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupDiskArgs']]]]] = None,
+            disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupDiskArgs', 'ElastigroupDiskArgsDict']]]]] = None,
             draining_timeout: Optional[pulumi.Input[int]] = None,
             fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
-            gpu: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupGpuArgs']]]]] = None,
+            gpu: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupGpuArgs', 'ElastigroupGpuArgsDict']]]]] = None,
             health_check_grace_period: Optional[pulumi.Input[int]] = None,
             health_check_type: Optional[pulumi.Input[str]] = None,
             instance_name_prefix: Optional[pulumi.Input[str]] = None,
-            instance_types_customs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesCustomArgs']]]]] = None,
+            instance_types_customs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupInstanceTypesCustomArgs', 'ElastigroupInstanceTypesCustomArgsDict']]]]] = None,
             instance_types_ondemand: Optional[pulumi.Input[str]] = None,
             instance_types_preemptibles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            integration_docker_swarm: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationDockerSwarmArgs']]] = None,
-            integration_gke: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationGkeArgs']]] = None,
+            integration_docker_swarm: Optional[pulumi.Input[Union['ElastigroupIntegrationDockerSwarmArgs', 'ElastigroupIntegrationDockerSwarmArgsDict']]] = None,
+            integration_gke: Optional[pulumi.Input[Union['ElastigroupIntegrationGkeArgs', 'ElastigroupIntegrationGkeArgsDict']]] = None,
             ip_forwarding: Optional[pulumi.Input[bool]] = None,
-            labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupLabelArgs']]]]] = None,
+            labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupLabelArgs', 'ElastigroupLabelArgsDict']]]]] = None,
             max_size: Optional[pulumi.Input[int]] = None,
-            metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupMetadataArgs']]]]] = None,
+            metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupMetadataArgs', 'ElastigroupMetadataArgsDict']]]]] = None,
             min_size: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupNetworkInterfaceArgs']]]]] = None,
+            network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupNetworkInterfaceArgs', 'ElastigroupNetworkInterfaceArgsDict']]]]] = None,
             ondemand_count: Optional[pulumi.Input[int]] = None,
             preemptible_percentage: Optional[pulumi.Input[int]] = None,
             provisioning_model: Optional[pulumi.Input[str]] = None,
-            scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingDownPolicyArgs']]]]] = None,
-            scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingUpPolicyArgs']]]]] = None,
-            scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScheduledTaskArgs']]]]] = None,
+            scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingDownPolicyArgs', 'ElastigroupScalingDownPolicyArgsDict']]]]] = None,
+            scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingUpPolicyArgs', 'ElastigroupScalingUpPolicyArgsDict']]]]] = None,
+            scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScheduledTaskArgs', 'ElastigroupScheduledTaskArgsDict']]]]] = None,
             service_account: Optional[pulumi.Input[str]] = None,
             shutdown_script: Optional[pulumi.Input[str]] = None,
             startup_script: Optional[pulumi.Input[str]] = None,
-            subnets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupSubnetArgs']]]]] = None,
+            subnets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupSubnetArgs', 'ElastigroupSubnetArgsDict']]]]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             unhealthy_duration: Optional[pulumi.Input[int]] = None) -> 'Elastigroup':
         """
@@ -1506,13 +1506,13 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[str] instance_name_prefix: Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
                * A maximal length of 25 characters.
                * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesCustomArgs']]]] instance_types_customs: Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupInstanceTypesCustomArgs', 'ElastigroupInstanceTypesCustomArgsDict']]]] instance_types_customs: Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
                * `vCPU` - (Optional) The number of vCPUs in the custom instance type. GCP has a number of limitations on accepted vCPU values. For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
         :param pulumi.Input[str] instance_types_ondemand: The regular VM instance type to use for mixed-type groups and when falling back to on-demand. Required if instance_types_preemptible is not set.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_preemptibles: The preemptible VMs instance type. To maximize cost savings and market availability, select as many types as possible. Required if instance_types_ondemand is not set.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupLabelArgs']]]] labels: Array of objects with key-value pairs.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupLabelArgs', 'ElastigroupLabelArgsDict']]]] labels: Array of objects with key-value pairs.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupMetadataArgs']]]] metadatas: Array of objects with key-value pairs.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupMetadataArgs', 'ElastigroupMetadataArgsDict']]]] metadatas: Array of objects with key-value pairs.
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
         :param pulumi.Input[str] name: The group name.
         :param pulumi.Input[int] preemptible_percentage: Percentage of Preemptible VMs to spin up from the "desired_capacity".
@@ -1520,7 +1520,7 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[str] service_account: The email of the service account in which the group instances will be launched.
         :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
         :param pulumi.Input[str] startup_script: Create and run your own startup scripts on your virtual machines to perform automated tasks every time your instance boots up.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupSubnetArgs']]]] subnets: A list of regions and subnets.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupSubnetArgs', 'ElastigroupSubnetArgsDict']]]] subnets: A list of regions and subnets.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to mark created instances.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

@@ -76,7 +76,7 @@ public class OceanVirtualNodeGroup extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public OceanVirtualNodeGroup(String name) {
+    public OceanVirtualNodeGroup(java.lang.String name) {
         this(name, OceanVirtualNodeGroupArgs.Empty);
     }
     /**
@@ -84,7 +84,7 @@ public class OceanVirtualNodeGroup extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public OceanVirtualNodeGroup(String name, OceanVirtualNodeGroupArgs args) {
+    public OceanVirtualNodeGroup(java.lang.String name, OceanVirtualNodeGroupArgs args) {
         this(name, args, null);
     }
     /**
@@ -93,12 +93,12 @@ public class OceanVirtualNodeGroup extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public OceanVirtualNodeGroup(String name, OceanVirtualNodeGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("spotinst:spark/oceanVirtualNodeGroup:OceanVirtualNodeGroup", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public OceanVirtualNodeGroup(java.lang.String name, OceanVirtualNodeGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("spotinst:spark/oceanVirtualNodeGroup:OceanVirtualNodeGroup", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private OceanVirtualNodeGroup(String name, Output<String> id, @Nullable OceanVirtualNodeGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("spotinst:spark/oceanVirtualNodeGroup:OceanVirtualNodeGroup", name, state, makeResourceOptions(options, id));
+    private OceanVirtualNodeGroup(java.lang.String name, Output<java.lang.String> id, @Nullable OceanVirtualNodeGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("spotinst:spark/oceanVirtualNodeGroup:OceanVirtualNodeGroup", name, state, makeResourceOptions(options, id), false);
     }
 
     private static OceanVirtualNodeGroupArgs makeArgs(OceanVirtualNodeGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -108,7 +108,7 @@ public class OceanVirtualNodeGroup extends com.pulumi.resources.CustomResource {
         return args == null ? OceanVirtualNodeGroupArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -124,7 +124,7 @@ public class OceanVirtualNodeGroup extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static OceanVirtualNodeGroup get(String name, Output<String> id, @Nullable OceanVirtualNodeGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static OceanVirtualNodeGroup get(java.lang.String name, Output<java.lang.String> id, @Nullable OceanVirtualNodeGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new OceanVirtualNodeGroup(name, id, state, options);
     }
 }

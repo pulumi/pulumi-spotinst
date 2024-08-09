@@ -135,7 +135,7 @@ class DataIntegration(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 s3: Optional[pulumi.Input[pulumi.InputType['DataIntegrationS3Args']]] = None,
+                 s3: Optional[pulumi.Input[Union['DataIntegrationS3Args', 'DataIntegrationS3ArgsDict']]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -150,16 +150,16 @@ class DataIntegration(pulumi.CustomResource):
         example = spotinst.DataIntegration("example",
             name="foo",
             status="enabled",
-            s3=spotinst.DataIntegrationS3Args(
-                bucket_name="terraform-test-do-not-delete",
-                subdir="terraform-test-data-integration",
-            ))
+            s3={
+                "bucket_name": "terraform-test-do-not-delete",
+                "subdir": "terraform-test-data-integration",
+            })
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the data integration.
-        :param pulumi.Input[pulumi.InputType['DataIntegrationS3Args']] s3: When vendor value is s3, the following fields are included:
+        :param pulumi.Input[Union['DataIntegrationS3Args', 'DataIntegrationS3ArgsDict']] s3: When vendor value is s3, the following fields are included:
                * `bucketName` - (Required) The name of the bucket to use. Your spot IAM Role policy needs to include s3:putObject permissions for this bucket. Can't be null.
         :param pulumi.Input[str] status: Determines if this data integration is on or off. Valid values: `"enabled"`, `"disabled"`
         """
@@ -181,10 +181,10 @@ class DataIntegration(pulumi.CustomResource):
         example = spotinst.DataIntegration("example",
             name="foo",
             status="enabled",
-            s3=spotinst.DataIntegrationS3Args(
-                bucket_name="terraform-test-do-not-delete",
-                subdir="terraform-test-data-integration",
-            ))
+            s3={
+                "bucket_name": "terraform-test-do-not-delete",
+                "subdir": "terraform-test-data-integration",
+            })
         ```
 
         :param str resource_name: The name of the resource.
@@ -203,7 +203,7 @@ class DataIntegration(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 s3: Optional[pulumi.Input[pulumi.InputType['DataIntegrationS3Args']]] = None,
+                 s3: Optional[pulumi.Input[Union['DataIntegrationS3Args', 'DataIntegrationS3ArgsDict']]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -228,7 +228,7 @@ class DataIntegration(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             name: Optional[pulumi.Input[str]] = None,
-            s3: Optional[pulumi.Input[pulumi.InputType['DataIntegrationS3Args']]] = None,
+            s3: Optional[pulumi.Input[Union['DataIntegrationS3Args', 'DataIntegrationS3ArgsDict']]] = None,
             status: Optional[pulumi.Input[str]] = None) -> 'DataIntegration':
         """
         Get an existing DataIntegration resource's state with the given name, id, and optional extra
@@ -238,7 +238,7 @@ class DataIntegration(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the data integration.
-        :param pulumi.Input[pulumi.InputType['DataIntegrationS3Args']] s3: When vendor value is s3, the following fields are included:
+        :param pulumi.Input[Union['DataIntegrationS3Args', 'DataIntegrationS3ArgsDict']] s3: When vendor value is s3, the following fields are included:
                * `bucketName` - (Required) The name of the bucket to use. Your spot IAM Role policy needs to include s3:putObject permissions for this bucket. Can't be null.
         :param pulumi.Input[str] status: Determines if this data integration is on or off. Valid values: `"enabled"`, `"disabled"`
         """

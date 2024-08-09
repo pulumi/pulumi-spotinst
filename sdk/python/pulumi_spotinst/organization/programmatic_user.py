@@ -202,10 +202,10 @@ class ProgrammaticUser(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accounts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProgrammaticUserAccountArgs']]]]] = None,
+                 accounts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProgrammaticUserAccountArgs', 'ProgrammaticUserAccountArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProgrammaticUserPolicyArgs']]]]] = None,
+                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProgrammaticUserPolicyArgs', 'ProgrammaticUserPolicyArgsDict']]]]] = None,
                  user_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -220,10 +220,10 @@ class ProgrammaticUser(pulumi.CustomResource):
         terraform_prog_user = spotinst.organization.ProgrammaticUser("terraform_prog_user",
             name="test-prog-user",
             description="creating programmatic user",
-            policies=[spotinst.organization.ProgrammaticUserPolicyArgs(
-                policy_id="pol-g75d8c06",
-                policy_account_ids=["act-a1b2c3d4"],
-            )],
+            policies=[{
+                "policy_id": "pol-g75d8c06",
+                "policy_account_ids": ["act-a1b2c3d4"],
+            }],
             user_group_ids=[
                 "ugr-abcd1234",
                 "ugr-defg8763",
@@ -232,11 +232,11 @@ class ProgrammaticUser(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProgrammaticUserAccountArgs']]]] accounts: All the accounts the programmatic user will have access to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProgrammaticUserAccountArgs', 'ProgrammaticUserAccountArgsDict']]]] accounts: All the accounts the programmatic user will have access to.
                If used - Cannot be empty.
         :param pulumi.Input[str] description: Brief description of the user.
         :param pulumi.Input[str] name: Name of the programmatic user.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProgrammaticUserPolicyArgs']]]] policies: All the policies the programmatic user will have access to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProgrammaticUserPolicyArgs', 'ProgrammaticUserPolicyArgsDict']]]] policies: All the policies the programmatic user will have access to.
                If used - Cannot be empty.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_group_ids: A list of the user groups to register the given user to (should be existing user groups only)
         """
@@ -258,10 +258,10 @@ class ProgrammaticUser(pulumi.CustomResource):
         terraform_prog_user = spotinst.organization.ProgrammaticUser("terraform_prog_user",
             name="test-prog-user",
             description="creating programmatic user",
-            policies=[spotinst.organization.ProgrammaticUserPolicyArgs(
-                policy_id="pol-g75d8c06",
-                policy_account_ids=["act-a1b2c3d4"],
-            )],
+            policies=[{
+                "policy_id": "pol-g75d8c06",
+                "policy_account_ids": ["act-a1b2c3d4"],
+            }],
             user_group_ids=[
                 "ugr-abcd1234",
                 "ugr-defg8763",
@@ -283,10 +283,10 @@ class ProgrammaticUser(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accounts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProgrammaticUserAccountArgs']]]]] = None,
+                 accounts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProgrammaticUserAccountArgs', 'ProgrammaticUserAccountArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProgrammaticUserPolicyArgs']]]]] = None,
+                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProgrammaticUserPolicyArgs', 'ProgrammaticUserPolicyArgsDict']]]]] = None,
                  user_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -312,10 +312,10 @@ class ProgrammaticUser(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            accounts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProgrammaticUserAccountArgs']]]]] = None,
+            accounts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProgrammaticUserAccountArgs', 'ProgrammaticUserAccountArgsDict']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProgrammaticUserPolicyArgs']]]]] = None,
+            policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProgrammaticUserPolicyArgs', 'ProgrammaticUserPolicyArgsDict']]]]] = None,
             user_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'ProgrammaticUser':
         """
         Get an existing ProgrammaticUser resource's state with the given name, id, and optional extra
@@ -324,11 +324,11 @@ class ProgrammaticUser(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProgrammaticUserAccountArgs']]]] accounts: All the accounts the programmatic user will have access to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProgrammaticUserAccountArgs', 'ProgrammaticUserAccountArgsDict']]]] accounts: All the accounts the programmatic user will have access to.
                If used - Cannot be empty.
         :param pulumi.Input[str] description: Brief description of the user.
         :param pulumi.Input[str] name: Name of the programmatic user.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProgrammaticUserPolicyArgs']]]] policies: All the policies the programmatic user will have access to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProgrammaticUserPolicyArgs', 'ProgrammaticUserPolicyArgsDict']]]] policies: All the policies the programmatic user will have access to.
                If used - Cannot be empty.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_group_ids: A list of the user groups to register the given user to (should be existing user groups only)
         """
