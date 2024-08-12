@@ -89,7 +89,7 @@ public class Credentials extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Credentials(String name) {
+    public Credentials(java.lang.String name) {
         this(name, CredentialsArgs.Empty);
     }
     /**
@@ -97,7 +97,7 @@ public class Credentials extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Credentials(String name, CredentialsArgs args) {
+    public Credentials(java.lang.String name, CredentialsArgs args) {
         this(name, args, null);
     }
     /**
@@ -106,12 +106,12 @@ public class Credentials extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Credentials(String name, CredentialsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("spotinst:aws/credentials:Credentials", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Credentials(java.lang.String name, CredentialsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("spotinst:aws/credentials:Credentials", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Credentials(String name, Output<String> id, @Nullable CredentialsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("spotinst:aws/credentials:Credentials", name, state, makeResourceOptions(options, id));
+    private Credentials(java.lang.String name, Output<java.lang.String> id, @Nullable CredentialsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("spotinst:aws/credentials:Credentials", name, state, makeResourceOptions(options, id), false);
     }
 
     private static CredentialsArgs makeArgs(CredentialsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -121,7 +121,7 @@ public class Credentials extends com.pulumi.resources.CustomResource {
         return args == null ? CredentialsArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -137,7 +137,7 @@ public class Credentials extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Credentials get(String name, Output<String> id, @Nullable CredentialsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Credentials get(java.lang.String name, Output<java.lang.String> id, @Nullable CredentialsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Credentials(name, id, state, options);
     }
 }

@@ -224,24 +224,24 @@ class RolloutSpec(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 failure_policy: Optional[pulumi.Input[pulumi.InputType['RolloutSpecFailurePolicyArgs']]] = None,
+                 failure_policy: Optional[pulumi.Input[Union['RolloutSpecFailurePolicyArgs', 'RolloutSpecFailurePolicyArgsDict']]] = None,
                  rollout_spec_name: Optional[pulumi.Input[str]] = None,
-                 spot_deployment: Optional[pulumi.Input[pulumi.InputType['RolloutSpecSpotDeploymentArgs']]] = None,
-                 spot_deployments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RolloutSpecSpotDeploymentArgs']]]]] = None,
-                 strategy: Optional[pulumi.Input[pulumi.InputType['RolloutSpecStrategyArgs']]] = None,
-                 traffic: Optional[pulumi.Input[pulumi.InputType['RolloutSpecTrafficArgs']]] = None,
+                 spot_deployment: Optional[pulumi.Input[Union['RolloutSpecSpotDeploymentArgs', 'RolloutSpecSpotDeploymentArgsDict']]] = None,
+                 spot_deployments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RolloutSpecSpotDeploymentArgs', 'RolloutSpecSpotDeploymentArgsDict']]]]] = None,
+                 strategy: Optional[pulumi.Input[Union['RolloutSpecStrategyArgs', 'RolloutSpecStrategyArgsDict']]] = None,
+                 traffic: Optional[pulumi.Input[Union['RolloutSpecTrafficArgs', 'RolloutSpecTrafficArgsDict']]] = None,
                  __props__=None):
         """
         Manages a Spotinst OceanCD Rollout Spec resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['RolloutSpecFailurePolicyArgs']] failure_policy: Holds information on how to react when failure happens.
+        :param pulumi.Input[Union['RolloutSpecFailurePolicyArgs', 'RolloutSpecFailurePolicyArgsDict']] failure_policy: Holds information on how to react when failure happens.
         :param pulumi.Input[str] rollout_spec_name: Identifier name for Ocean CD Rollout Spec. Must be unique
-        :param pulumi.Input[pulumi.InputType['RolloutSpecSpotDeploymentArgs']] spot_deployment: Represents the SpotDeployment selector.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RolloutSpecSpotDeploymentArgs']]]] spot_deployments: You must specify either `spotDeployment` OR `spotDeployments` but not both. Every SpotDeployment has to be unique. If more than one `SpotDeployment` has been configured, no `traffic` managers can be set as part of the RolloutSpec.For such case ensure that each of the chosen SpotDeployments are being exposed with different Kubernetes services.
-        :param pulumi.Input[pulumi.InputType['RolloutSpecStrategyArgs']] strategy: Determines the Ocean CD strategy
-        :param pulumi.Input[pulumi.InputType['RolloutSpecTrafficArgs']] traffic: Hosts all of the supported service meshes needed to enable more fine-grained traffic routing. In case `SpotDeployments` contains more than one SpotDeployment the `traffic` manager may not be configured.
+        :param pulumi.Input[Union['RolloutSpecSpotDeploymentArgs', 'RolloutSpecSpotDeploymentArgsDict']] spot_deployment: Represents the SpotDeployment selector.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RolloutSpecSpotDeploymentArgs', 'RolloutSpecSpotDeploymentArgsDict']]]] spot_deployments: You must specify either `spotDeployment` OR `spotDeployments` but not both. Every SpotDeployment has to be unique. If more than one `SpotDeployment` has been configured, no `traffic` managers can be set as part of the RolloutSpec.For such case ensure that each of the chosen SpotDeployments are being exposed with different Kubernetes services.
+        :param pulumi.Input[Union['RolloutSpecStrategyArgs', 'RolloutSpecStrategyArgsDict']] strategy: Determines the Ocean CD strategy
+        :param pulumi.Input[Union['RolloutSpecTrafficArgs', 'RolloutSpecTrafficArgsDict']] traffic: Hosts all of the supported service meshes needed to enable more fine-grained traffic routing. In case `SpotDeployments` contains more than one SpotDeployment the `traffic` manager may not be configured.
         """
         ...
     @overload
@@ -267,12 +267,12 @@ class RolloutSpec(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 failure_policy: Optional[pulumi.Input[pulumi.InputType['RolloutSpecFailurePolicyArgs']]] = None,
+                 failure_policy: Optional[pulumi.Input[Union['RolloutSpecFailurePolicyArgs', 'RolloutSpecFailurePolicyArgsDict']]] = None,
                  rollout_spec_name: Optional[pulumi.Input[str]] = None,
-                 spot_deployment: Optional[pulumi.Input[pulumi.InputType['RolloutSpecSpotDeploymentArgs']]] = None,
-                 spot_deployments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RolloutSpecSpotDeploymentArgs']]]]] = None,
-                 strategy: Optional[pulumi.Input[pulumi.InputType['RolloutSpecStrategyArgs']]] = None,
-                 traffic: Optional[pulumi.Input[pulumi.InputType['RolloutSpecTrafficArgs']]] = None,
+                 spot_deployment: Optional[pulumi.Input[Union['RolloutSpecSpotDeploymentArgs', 'RolloutSpecSpotDeploymentArgsDict']]] = None,
+                 spot_deployments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RolloutSpecSpotDeploymentArgs', 'RolloutSpecSpotDeploymentArgsDict']]]]] = None,
+                 strategy: Optional[pulumi.Input[Union['RolloutSpecStrategyArgs', 'RolloutSpecStrategyArgsDict']]] = None,
+                 traffic: Optional[pulumi.Input[Union['RolloutSpecTrafficArgs', 'RolloutSpecTrafficArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -302,12 +302,12 @@ class RolloutSpec(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            failure_policy: Optional[pulumi.Input[pulumi.InputType['RolloutSpecFailurePolicyArgs']]] = None,
+            failure_policy: Optional[pulumi.Input[Union['RolloutSpecFailurePolicyArgs', 'RolloutSpecFailurePolicyArgsDict']]] = None,
             rollout_spec_name: Optional[pulumi.Input[str]] = None,
-            spot_deployment: Optional[pulumi.Input[pulumi.InputType['RolloutSpecSpotDeploymentArgs']]] = None,
-            spot_deployments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RolloutSpecSpotDeploymentArgs']]]]] = None,
-            strategy: Optional[pulumi.Input[pulumi.InputType['RolloutSpecStrategyArgs']]] = None,
-            traffic: Optional[pulumi.Input[pulumi.InputType['RolloutSpecTrafficArgs']]] = None) -> 'RolloutSpec':
+            spot_deployment: Optional[pulumi.Input[Union['RolloutSpecSpotDeploymentArgs', 'RolloutSpecSpotDeploymentArgsDict']]] = None,
+            spot_deployments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RolloutSpecSpotDeploymentArgs', 'RolloutSpecSpotDeploymentArgsDict']]]]] = None,
+            strategy: Optional[pulumi.Input[Union['RolloutSpecStrategyArgs', 'RolloutSpecStrategyArgsDict']]] = None,
+            traffic: Optional[pulumi.Input[Union['RolloutSpecTrafficArgs', 'RolloutSpecTrafficArgsDict']]] = None) -> 'RolloutSpec':
         """
         Get an existing RolloutSpec resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -315,12 +315,12 @@ class RolloutSpec(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['RolloutSpecFailurePolicyArgs']] failure_policy: Holds information on how to react when failure happens.
+        :param pulumi.Input[Union['RolloutSpecFailurePolicyArgs', 'RolloutSpecFailurePolicyArgsDict']] failure_policy: Holds information on how to react when failure happens.
         :param pulumi.Input[str] rollout_spec_name: Identifier name for Ocean CD Rollout Spec. Must be unique
-        :param pulumi.Input[pulumi.InputType['RolloutSpecSpotDeploymentArgs']] spot_deployment: Represents the SpotDeployment selector.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RolloutSpecSpotDeploymentArgs']]]] spot_deployments: You must specify either `spotDeployment` OR `spotDeployments` but not both. Every SpotDeployment has to be unique. If more than one `SpotDeployment` has been configured, no `traffic` managers can be set as part of the RolloutSpec.For such case ensure that each of the chosen SpotDeployments are being exposed with different Kubernetes services.
-        :param pulumi.Input[pulumi.InputType['RolloutSpecStrategyArgs']] strategy: Determines the Ocean CD strategy
-        :param pulumi.Input[pulumi.InputType['RolloutSpecTrafficArgs']] traffic: Hosts all of the supported service meshes needed to enable more fine-grained traffic routing. In case `SpotDeployments` contains more than one SpotDeployment the `traffic` manager may not be configured.
+        :param pulumi.Input[Union['RolloutSpecSpotDeploymentArgs', 'RolloutSpecSpotDeploymentArgsDict']] spot_deployment: Represents the SpotDeployment selector.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RolloutSpecSpotDeploymentArgs', 'RolloutSpecSpotDeploymentArgsDict']]]] spot_deployments: You must specify either `spotDeployment` OR `spotDeployments` but not both. Every SpotDeployment has to be unique. If more than one `SpotDeployment` has been configured, no `traffic` managers can be set as part of the RolloutSpec.For such case ensure that each of the chosen SpotDeployments are being exposed with different Kubernetes services.
+        :param pulumi.Input[Union['RolloutSpecStrategyArgs', 'RolloutSpecStrategyArgsDict']] strategy: Determines the Ocean CD strategy
+        :param pulumi.Input[Union['RolloutSpecTrafficArgs', 'RolloutSpecTrafficArgsDict']] traffic: Hosts all of the supported service meshes needed to enable more fine-grained traffic routing. In case `SpotDeployments` contains more than one SpotDeployment the `traffic` manager may not be configured.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
