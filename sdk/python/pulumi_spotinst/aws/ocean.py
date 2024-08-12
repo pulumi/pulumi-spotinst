@@ -1313,40 +1313,40 @@ class Ocean(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  associate_ipv6_address: Optional[pulumi.Input[bool]] = None,
                  associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
-                 attach_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanAttachLoadBalancerArgs']]]]] = None,
-                 autoscaler: Optional[pulumi.Input[pulumi.InputType['OceanAutoscalerArgs']]] = None,
+                 attach_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanAttachLoadBalancerArgs', 'OceanAttachLoadBalancerArgsDict']]]]] = None,
+                 autoscaler: Optional[pulumi.Input[Union['OceanAutoscalerArgs', 'OceanAutoscalerArgsDict']]] = None,
                  blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanBlockDeviceMappingArgs']]]]] = None,
-                 cluster_orientations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanClusterOrientationArgs']]]]] = None,
+                 block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanBlockDeviceMappingArgs', 'OceanBlockDeviceMappingArgsDict']]]]] = None,
+                 cluster_orientations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanClusterOrientationArgs', 'OceanClusterOrientationArgsDict']]]]] = None,
                  controller_id: Optional[pulumi.Input[str]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
-                 detach_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanDetachLoadBalancerArgs']]]]] = None,
+                 detach_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanDetachLoadBalancerArgs', 'OceanDetachLoadBalancerArgsDict']]]]] = None,
                  draining_timeout: Optional[pulumi.Input[int]] = None,
                  ebs_optimized: Optional[pulumi.Input[bool]] = None,
                  fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
-                 filters: Optional[pulumi.Input[pulumi.InputType['OceanFiltersArgs']]] = None,
+                 filters: Optional[pulumi.Input[Union['OceanFiltersArgs', 'OceanFiltersArgsDict']]] = None,
                  grace_period: Optional[pulumi.Input[int]] = None,
                  health_check_unhealthy_duration_before_replacement: Optional[pulumi.Input[int]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
-                 instance_metadata_options: Optional[pulumi.Input[pulumi.InputType['OceanInstanceMetadataOptionsArgs']]] = None,
+                 instance_metadata_options: Optional[pulumi.Input[Union['OceanInstanceMetadataOptionsArgs', 'OceanInstanceMetadataOptionsArgsDict']]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
-                 load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLoadBalancerArgs']]]]] = None,
-                 logging: Optional[pulumi.Input[pulumi.InputType['OceanLoggingArgs']]] = None,
+                 load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLoadBalancerArgs', 'OceanLoadBalancerArgsDict']]]]] = None,
+                 logging: Optional[pulumi.Input[Union['OceanLoggingArgs', 'OceanLoggingArgsDict']]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
                  monitoring: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanResourceTagSpecificationArgs']]]]] = None,
+                 resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanResourceTagSpecificationArgs', 'OceanResourceTagSpecificationArgsDict']]]]] = None,
                  root_volume_size: Optional[pulumi.Input[int]] = None,
-                 scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanScheduledTaskArgs']]]]] = None,
+                 scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanScheduledTaskArgs', 'OceanScheduledTaskArgsDict']]]]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
                  spread_nodes_by: Optional[pulumi.Input[str]] = None,
                  subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]]] = None,
-                 update_policy: Optional[pulumi.Input[pulumi.InputType['OceanUpdatePolicyArgs']]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanTagArgs', 'OceanTagArgsDict']]]]] = None,
+                 update_policy: Optional[pulumi.Input[Union['OceanUpdatePolicyArgs', 'OceanUpdatePolicyArgsDict']]] = None,
                  use_as_template_only: Optional[pulumi.Input[bool]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  utilize_commitments: Optional[pulumi.Input[bool]] = None,
@@ -1370,12 +1370,12 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] associate_ipv6_address: Configure IPv6 address allocation.
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanAttachLoadBalancerArgs']]]] attach_load_balancers: Attach load balancers to the cluster.
-        :param pulumi.Input[pulumi.InputType['OceanAutoscalerArgs']] autoscaler: Describes the Ocean Kubernetes Auto Scaler.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanBlockDeviceMappingArgs']]]] block_device_mappings: Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanAttachLoadBalancerArgs', 'OceanAttachLoadBalancerArgsDict']]]] attach_load_balancers: Attach load balancers to the cluster.
+        :param pulumi.Input[Union['OceanAutoscalerArgs', 'OceanAutoscalerArgsDict']] autoscaler: Describes the Ocean Kubernetes Auto Scaler.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanBlockDeviceMappingArgs', 'OceanBlockDeviceMappingArgsDict']]]] block_device_mappings: Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
         :param pulumi.Input[str] controller_id: A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
         :param pulumi.Input[int] desired_capacity: The number of instances to launch and maintain in the cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanDetachLoadBalancerArgs']]]] detach_load_balancers: Detach load balancers from the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanDetachLoadBalancerArgs', 'OceanDetachLoadBalancerArgsDict']]]] detach_load_balancers: Detach load balancers from the cluster.
         :param pulumi.Input[int] draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
         :param pulumi.Input[bool] ebs_optimized: Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
         :param pulumi.Input[bool] fallback_to_ondemand: If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
@@ -1383,24 +1383,24 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[int] health_check_unhealthy_duration_before_replacement: The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced. The minimum value allowed is 60, and it must be a multiple of 60.
         :param pulumi.Input[str] iam_instance_profile: The instance profile iam role.
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
-        :param pulumi.Input[pulumi.InputType['OceanInstanceMetadataOptionsArgs']] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
+        :param pulumi.Input[Union['OceanInstanceMetadataOptionsArgs', 'OceanInstanceMetadataOptionsArgsDict']] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
         :param pulumi.Input[str] key_name: The key pair to attach the instances.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLoadBalancerArgs']]]] load_balancers: Array of load balancer objects to add to ocean cluster
-        :param pulumi.Input[pulumi.InputType['OceanLoggingArgs']] logging: Logging configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLoadBalancerArgs', 'OceanLoadBalancerArgsDict']]]] load_balancers: Array of load balancer objects to add to ocean cluster
+        :param pulumi.Input[Union['OceanLoggingArgs', 'OceanLoggingArgsDict']] logging: Logging configuration.
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
         :param pulumi.Input[bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
         :param pulumi.Input[str] name: The cluster name.
         :param pulumi.Input[str] region: The region the cluster will run in.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanResourceTagSpecificationArgs']]]] resource_tag_specifications: Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanResourceTagSpecificationArgs', 'OceanResourceTagSpecificationArgsDict']]]] resource_tag_specifications: Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
         :param pulumi.Input[int] root_volume_size: The size (in Gb) to allocate for the root volume. Minimum `20`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanScheduledTaskArgs']]]] scheduled_tasks: Set scheduling object.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanScheduledTaskArgs', 'OceanScheduledTaskArgsDict']]]] scheduled_tasks: Set scheduling object.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: One or more security group ids.
         :param pulumi.Input[int] spot_percentage: The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
         :param pulumi.Input[str] spread_nodes_by: Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
                * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]] tags: Optionally adds tags to instances launched in an Ocean cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanTagArgs', 'OceanTagArgsDict']]]] tags: Optionally adds tags to instances launched in an Ocean cluster.
         :param pulumi.Input[bool] use_as_template_only: launch specification defined on the Ocean object will function only as a template for virtual node groups.
                When set to true, on Ocean resource creation please make sure your custom VNG has an initial_nodes parameter to create nodes for your VNG.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
@@ -1443,40 +1443,40 @@ class Ocean(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  associate_ipv6_address: Optional[pulumi.Input[bool]] = None,
                  associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
-                 attach_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanAttachLoadBalancerArgs']]]]] = None,
-                 autoscaler: Optional[pulumi.Input[pulumi.InputType['OceanAutoscalerArgs']]] = None,
+                 attach_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanAttachLoadBalancerArgs', 'OceanAttachLoadBalancerArgsDict']]]]] = None,
+                 autoscaler: Optional[pulumi.Input[Union['OceanAutoscalerArgs', 'OceanAutoscalerArgsDict']]] = None,
                  blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanBlockDeviceMappingArgs']]]]] = None,
-                 cluster_orientations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanClusterOrientationArgs']]]]] = None,
+                 block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanBlockDeviceMappingArgs', 'OceanBlockDeviceMappingArgsDict']]]]] = None,
+                 cluster_orientations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanClusterOrientationArgs', 'OceanClusterOrientationArgsDict']]]]] = None,
                  controller_id: Optional[pulumi.Input[str]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
-                 detach_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanDetachLoadBalancerArgs']]]]] = None,
+                 detach_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanDetachLoadBalancerArgs', 'OceanDetachLoadBalancerArgsDict']]]]] = None,
                  draining_timeout: Optional[pulumi.Input[int]] = None,
                  ebs_optimized: Optional[pulumi.Input[bool]] = None,
                  fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
-                 filters: Optional[pulumi.Input[pulumi.InputType['OceanFiltersArgs']]] = None,
+                 filters: Optional[pulumi.Input[Union['OceanFiltersArgs', 'OceanFiltersArgsDict']]] = None,
                  grace_period: Optional[pulumi.Input[int]] = None,
                  health_check_unhealthy_duration_before_replacement: Optional[pulumi.Input[int]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
-                 instance_metadata_options: Optional[pulumi.Input[pulumi.InputType['OceanInstanceMetadataOptionsArgs']]] = None,
+                 instance_metadata_options: Optional[pulumi.Input[Union['OceanInstanceMetadataOptionsArgs', 'OceanInstanceMetadataOptionsArgsDict']]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
-                 load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLoadBalancerArgs']]]]] = None,
-                 logging: Optional[pulumi.Input[pulumi.InputType['OceanLoggingArgs']]] = None,
+                 load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLoadBalancerArgs', 'OceanLoadBalancerArgsDict']]]]] = None,
+                 logging: Optional[pulumi.Input[Union['OceanLoggingArgs', 'OceanLoggingArgsDict']]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
                  monitoring: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanResourceTagSpecificationArgs']]]]] = None,
+                 resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanResourceTagSpecificationArgs', 'OceanResourceTagSpecificationArgsDict']]]]] = None,
                  root_volume_size: Optional[pulumi.Input[int]] = None,
-                 scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanScheduledTaskArgs']]]]] = None,
+                 scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanScheduledTaskArgs', 'OceanScheduledTaskArgsDict']]]]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
                  spread_nodes_by: Optional[pulumi.Input[str]] = None,
                  subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]]] = None,
-                 update_policy: Optional[pulumi.Input[pulumi.InputType['OceanUpdatePolicyArgs']]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanTagArgs', 'OceanTagArgsDict']]]]] = None,
+                 update_policy: Optional[pulumi.Input[Union['OceanUpdatePolicyArgs', 'OceanUpdatePolicyArgsDict']]] = None,
                  use_as_template_only: Optional[pulumi.Input[bool]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  utilize_commitments: Optional[pulumi.Input[bool]] = None,
@@ -1550,40 +1550,40 @@ class Ocean(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             associate_ipv6_address: Optional[pulumi.Input[bool]] = None,
             associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
-            attach_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanAttachLoadBalancerArgs']]]]] = None,
-            autoscaler: Optional[pulumi.Input[pulumi.InputType['OceanAutoscalerArgs']]] = None,
+            attach_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanAttachLoadBalancerArgs', 'OceanAttachLoadBalancerArgsDict']]]]] = None,
+            autoscaler: Optional[pulumi.Input[Union['OceanAutoscalerArgs', 'OceanAutoscalerArgsDict']]] = None,
             blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanBlockDeviceMappingArgs']]]]] = None,
-            cluster_orientations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanClusterOrientationArgs']]]]] = None,
+            block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanBlockDeviceMappingArgs', 'OceanBlockDeviceMappingArgsDict']]]]] = None,
+            cluster_orientations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanClusterOrientationArgs', 'OceanClusterOrientationArgsDict']]]]] = None,
             controller_id: Optional[pulumi.Input[str]] = None,
             desired_capacity: Optional[pulumi.Input[int]] = None,
-            detach_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanDetachLoadBalancerArgs']]]]] = None,
+            detach_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanDetachLoadBalancerArgs', 'OceanDetachLoadBalancerArgsDict']]]]] = None,
             draining_timeout: Optional[pulumi.Input[int]] = None,
             ebs_optimized: Optional[pulumi.Input[bool]] = None,
             fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
-            filters: Optional[pulumi.Input[pulumi.InputType['OceanFiltersArgs']]] = None,
+            filters: Optional[pulumi.Input[Union['OceanFiltersArgs', 'OceanFiltersArgsDict']]] = None,
             grace_period: Optional[pulumi.Input[int]] = None,
             health_check_unhealthy_duration_before_replacement: Optional[pulumi.Input[int]] = None,
             iam_instance_profile: Optional[pulumi.Input[str]] = None,
             image_id: Optional[pulumi.Input[str]] = None,
-            instance_metadata_options: Optional[pulumi.Input[pulumi.InputType['OceanInstanceMetadataOptionsArgs']]] = None,
+            instance_metadata_options: Optional[pulumi.Input[Union['OceanInstanceMetadataOptionsArgs', 'OceanInstanceMetadataOptionsArgsDict']]] = None,
             key_name: Optional[pulumi.Input[str]] = None,
-            load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLoadBalancerArgs']]]]] = None,
-            logging: Optional[pulumi.Input[pulumi.InputType['OceanLoggingArgs']]] = None,
+            load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLoadBalancerArgs', 'OceanLoadBalancerArgsDict']]]]] = None,
+            logging: Optional[pulumi.Input[Union['OceanLoggingArgs', 'OceanLoggingArgsDict']]] = None,
             max_size: Optional[pulumi.Input[int]] = None,
             min_size: Optional[pulumi.Input[int]] = None,
             monitoring: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanResourceTagSpecificationArgs']]]]] = None,
+            resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanResourceTagSpecificationArgs', 'OceanResourceTagSpecificationArgsDict']]]]] = None,
             root_volume_size: Optional[pulumi.Input[int]] = None,
-            scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanScheduledTaskArgs']]]]] = None,
+            scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanScheduledTaskArgs', 'OceanScheduledTaskArgsDict']]]]] = None,
             security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             spot_percentage: Optional[pulumi.Input[int]] = None,
             spread_nodes_by: Optional[pulumi.Input[str]] = None,
             subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]]] = None,
-            update_policy: Optional[pulumi.Input[pulumi.InputType['OceanUpdatePolicyArgs']]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanTagArgs', 'OceanTagArgsDict']]]]] = None,
+            update_policy: Optional[pulumi.Input[Union['OceanUpdatePolicyArgs', 'OceanUpdatePolicyArgsDict']]] = None,
             use_as_template_only: Optional[pulumi.Input[bool]] = None,
             user_data: Optional[pulumi.Input[str]] = None,
             utilize_commitments: Optional[pulumi.Input[bool]] = None,
@@ -1598,12 +1598,12 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] associate_ipv6_address: Configure IPv6 address allocation.
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanAttachLoadBalancerArgs']]]] attach_load_balancers: Attach load balancers to the cluster.
-        :param pulumi.Input[pulumi.InputType['OceanAutoscalerArgs']] autoscaler: Describes the Ocean Kubernetes Auto Scaler.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanBlockDeviceMappingArgs']]]] block_device_mappings: Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanAttachLoadBalancerArgs', 'OceanAttachLoadBalancerArgsDict']]]] attach_load_balancers: Attach load balancers to the cluster.
+        :param pulumi.Input[Union['OceanAutoscalerArgs', 'OceanAutoscalerArgsDict']] autoscaler: Describes the Ocean Kubernetes Auto Scaler.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanBlockDeviceMappingArgs', 'OceanBlockDeviceMappingArgsDict']]]] block_device_mappings: Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
         :param pulumi.Input[str] controller_id: A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
         :param pulumi.Input[int] desired_capacity: The number of instances to launch and maintain in the cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanDetachLoadBalancerArgs']]]] detach_load_balancers: Detach load balancers from the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanDetachLoadBalancerArgs', 'OceanDetachLoadBalancerArgsDict']]]] detach_load_balancers: Detach load balancers from the cluster.
         :param pulumi.Input[int] draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
         :param pulumi.Input[bool] ebs_optimized: Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
         :param pulumi.Input[bool] fallback_to_ondemand: If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
@@ -1611,24 +1611,24 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[int] health_check_unhealthy_duration_before_replacement: The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced. The minimum value allowed is 60, and it must be a multiple of 60.
         :param pulumi.Input[str] iam_instance_profile: The instance profile iam role.
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
-        :param pulumi.Input[pulumi.InputType['OceanInstanceMetadataOptionsArgs']] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
+        :param pulumi.Input[Union['OceanInstanceMetadataOptionsArgs', 'OceanInstanceMetadataOptionsArgsDict']] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
         :param pulumi.Input[str] key_name: The key pair to attach the instances.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLoadBalancerArgs']]]] load_balancers: Array of load balancer objects to add to ocean cluster
-        :param pulumi.Input[pulumi.InputType['OceanLoggingArgs']] logging: Logging configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLoadBalancerArgs', 'OceanLoadBalancerArgsDict']]]] load_balancers: Array of load balancer objects to add to ocean cluster
+        :param pulumi.Input[Union['OceanLoggingArgs', 'OceanLoggingArgsDict']] logging: Logging configuration.
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
         :param pulumi.Input[bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
         :param pulumi.Input[str] name: The cluster name.
         :param pulumi.Input[str] region: The region the cluster will run in.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanResourceTagSpecificationArgs']]]] resource_tag_specifications: Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanResourceTagSpecificationArgs', 'OceanResourceTagSpecificationArgsDict']]]] resource_tag_specifications: Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
         :param pulumi.Input[int] root_volume_size: The size (in Gb) to allocate for the root volume. Minimum `20`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanScheduledTaskArgs']]]] scheduled_tasks: Set scheduling object.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanScheduledTaskArgs', 'OceanScheduledTaskArgsDict']]]] scheduled_tasks: Set scheduling object.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: One or more security group ids.
         :param pulumi.Input[int] spot_percentage: The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
         :param pulumi.Input[str] spread_nodes_by: Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
                * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]] tags: Optionally adds tags to instances launched in an Ocean cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanTagArgs', 'OceanTagArgsDict']]]] tags: Optionally adds tags to instances launched in an Ocean cluster.
         :param pulumi.Input[bool] use_as_template_only: launch specification defined on the Ocean object will function only as a template for virtual node groups.
                When set to true, on Ocean resource creation please make sure your custom VNG has an initial_nodes parameter to create nodes for your VNG.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
