@@ -39,8 +39,10 @@ class ElastigroupArgs:
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceArgs']]]] = None,
                  node_image: Optional[pulumi.Input[str]] = None,
                  ondemand_count: Optional[pulumi.Input[int]] = None,
+                 optimization_windows: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preemptible_percentage: Optional[pulumi.Input[int]] = None,
                  provisioning_model: Optional[pulumi.Input[str]] = None,
+                 revert_to_preemptibles: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupRevertToPreemptibleArgs']]]] = None,
                  scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]] = None,
                  scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
@@ -97,10 +99,14 @@ class ElastigroupArgs:
             pulumi.set(__self__, "node_image", node_image)
         if ondemand_count is not None:
             pulumi.set(__self__, "ondemand_count", ondemand_count)
+        if optimization_windows is not None:
+            pulumi.set(__self__, "optimization_windows", optimization_windows)
         if preemptible_percentage is not None:
             pulumi.set(__self__, "preemptible_percentage", preemptible_percentage)
         if provisioning_model is not None:
             pulumi.set(__self__, "provisioning_model", provisioning_model)
+        if revert_to_preemptibles is not None:
+            pulumi.set(__self__, "revert_to_preemptibles", revert_to_preemptibles)
         if scaling_down_policies is not None:
             pulumi.set(__self__, "scaling_down_policies", scaling_down_policies)
         if scaling_up_policies is not None:
@@ -323,6 +329,15 @@ class ElastigroupArgs:
         pulumi.set(self, "ondemand_count", value)
 
     @property
+    @pulumi.getter(name="optimizationWindows")
+    def optimization_windows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "optimization_windows")
+
+    @optimization_windows.setter
+    def optimization_windows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "optimization_windows", value)
+
+    @property
     @pulumi.getter(name="preemptiblePercentage")
     def preemptible_percentage(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "preemptible_percentage")
@@ -339,6 +354,15 @@ class ElastigroupArgs:
     @provisioning_model.setter
     def provisioning_model(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "provisioning_model", value)
+
+    @property
+    @pulumi.getter(name="revertToPreemptibles")
+    def revert_to_preemptibles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupRevertToPreemptibleArgs']]]]:
+        return pulumi.get(self, "revert_to_preemptibles")
+
+    @revert_to_preemptibles.setter
+    def revert_to_preemptibles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupRevertToPreemptibleArgs']]]]):
+        pulumi.set(self, "revert_to_preemptibles", value)
 
     @property
     @pulumi.getter(name="scalingDownPolicies")
@@ -421,8 +445,10 @@ class _ElastigroupState:
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceArgs']]]] = None,
                  node_image: Optional[pulumi.Input[str]] = None,
                  ondemand_count: Optional[pulumi.Input[int]] = None,
+                 optimization_windows: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preemptible_percentage: Optional[pulumi.Input[int]] = None,
                  provisioning_model: Optional[pulumi.Input[str]] = None,
+                 revert_to_preemptibles: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupRevertToPreemptibleArgs']]]] = None,
                  scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]] = None,
                  scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
@@ -481,10 +507,14 @@ class _ElastigroupState:
             pulumi.set(__self__, "node_image", node_image)
         if ondemand_count is not None:
             pulumi.set(__self__, "ondemand_count", ondemand_count)
+        if optimization_windows is not None:
+            pulumi.set(__self__, "optimization_windows", optimization_windows)
         if preemptible_percentage is not None:
             pulumi.set(__self__, "preemptible_percentage", preemptible_percentage)
         if provisioning_model is not None:
             pulumi.set(__self__, "provisioning_model", provisioning_model)
+        if revert_to_preemptibles is not None:
+            pulumi.set(__self__, "revert_to_preemptibles", revert_to_preemptibles)
         if scaling_down_policies is not None:
             pulumi.set(__self__, "scaling_down_policies", scaling_down_policies)
         if scaling_up_policies is not None:
@@ -707,6 +737,15 @@ class _ElastigroupState:
         pulumi.set(self, "ondemand_count", value)
 
     @property
+    @pulumi.getter(name="optimizationWindows")
+    def optimization_windows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "optimization_windows")
+
+    @optimization_windows.setter
+    def optimization_windows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "optimization_windows", value)
+
+    @property
     @pulumi.getter(name="preemptiblePercentage")
     def preemptible_percentage(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "preemptible_percentage")
@@ -723,6 +762,15 @@ class _ElastigroupState:
     @provisioning_model.setter
     def provisioning_model(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "provisioning_model", value)
+
+    @property
+    @pulumi.getter(name="revertToPreemptibles")
+    def revert_to_preemptibles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupRevertToPreemptibleArgs']]]]:
+        return pulumi.get(self, "revert_to_preemptibles")
+
+    @revert_to_preemptibles.setter
+    def revert_to_preemptibles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupRevertToPreemptibleArgs']]]]):
+        pulumi.set(self, "revert_to_preemptibles", value)
 
     @property
     @pulumi.getter(name="scalingDownPolicies")
@@ -807,8 +855,10 @@ class Elastigroup(pulumi.CustomResource):
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupNetworkInterfaceArgs', 'ElastigroupNetworkInterfaceArgsDict']]]]] = None,
                  node_image: Optional[pulumi.Input[str]] = None,
                  ondemand_count: Optional[pulumi.Input[int]] = None,
+                 optimization_windows: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preemptible_percentage: Optional[pulumi.Input[int]] = None,
                  provisioning_model: Optional[pulumi.Input[str]] = None,
+                 revert_to_preemptibles: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupRevertToPreemptibleArgs', 'ElastigroupRevertToPreemptibleArgsDict']]]]] = None,
                  scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingDownPolicyArgs', 'ElastigroupScalingDownPolicyArgsDict']]]]] = None,
                  scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingUpPolicyArgs', 'ElastigroupScalingUpPolicyArgsDict']]]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
@@ -985,8 +1035,10 @@ class Elastigroup(pulumi.CustomResource):
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupNetworkInterfaceArgs', 'ElastigroupNetworkInterfaceArgsDict']]]]] = None,
                  node_image: Optional[pulumi.Input[str]] = None,
                  ondemand_count: Optional[pulumi.Input[int]] = None,
+                 optimization_windows: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preemptible_percentage: Optional[pulumi.Input[int]] = None,
                  provisioning_model: Optional[pulumi.Input[str]] = None,
+                 revert_to_preemptibles: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupRevertToPreemptibleArgs', 'ElastigroupRevertToPreemptibleArgsDict']]]]] = None,
                  scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingDownPolicyArgs', 'ElastigroupScalingDownPolicyArgsDict']]]]] = None,
                  scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingUpPolicyArgs', 'ElastigroupScalingUpPolicyArgsDict']]]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
@@ -1029,8 +1081,10 @@ class Elastigroup(pulumi.CustomResource):
             __props__.__dict__["network_interfaces"] = network_interfaces
             __props__.__dict__["node_image"] = node_image
             __props__.__dict__["ondemand_count"] = ondemand_count
+            __props__.__dict__["optimization_windows"] = optimization_windows
             __props__.__dict__["preemptible_percentage"] = preemptible_percentage
             __props__.__dict__["provisioning_model"] = provisioning_model
+            __props__.__dict__["revert_to_preemptibles"] = revert_to_preemptibles
             __props__.__dict__["scaling_down_policies"] = scaling_down_policies
             __props__.__dict__["scaling_up_policies"] = scaling_up_policies
             __props__.__dict__["service_account"] = service_account
@@ -1070,8 +1124,10 @@ class Elastigroup(pulumi.CustomResource):
             network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupNetworkInterfaceArgs', 'ElastigroupNetworkInterfaceArgsDict']]]]] = None,
             node_image: Optional[pulumi.Input[str]] = None,
             ondemand_count: Optional[pulumi.Input[int]] = None,
+            optimization_windows: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             preemptible_percentage: Optional[pulumi.Input[int]] = None,
             provisioning_model: Optional[pulumi.Input[str]] = None,
+            revert_to_preemptibles: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupRevertToPreemptibleArgs', 'ElastigroupRevertToPreemptibleArgsDict']]]]] = None,
             scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingDownPolicyArgs', 'ElastigroupScalingDownPolicyArgsDict']]]]] = None,
             scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingUpPolicyArgs', 'ElastigroupScalingUpPolicyArgsDict']]]]] = None,
             service_account: Optional[pulumi.Input[str]] = None,
@@ -1113,8 +1169,10 @@ class Elastigroup(pulumi.CustomResource):
         __props__.__dict__["network_interfaces"] = network_interfaces
         __props__.__dict__["node_image"] = node_image
         __props__.__dict__["ondemand_count"] = ondemand_count
+        __props__.__dict__["optimization_windows"] = optimization_windows
         __props__.__dict__["preemptible_percentage"] = preemptible_percentage
         __props__.__dict__["provisioning_model"] = provisioning_model
+        __props__.__dict__["revert_to_preemptibles"] = revert_to_preemptibles
         __props__.__dict__["scaling_down_policies"] = scaling_down_policies
         __props__.__dict__["scaling_up_policies"] = scaling_up_policies
         __props__.__dict__["service_account"] = service_account
@@ -1240,6 +1298,11 @@ class Elastigroup(pulumi.CustomResource):
         return pulumi.get(self, "ondemand_count")
 
     @property
+    @pulumi.getter(name="optimizationWindows")
+    def optimization_windows(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        return pulumi.get(self, "optimization_windows")
+
+    @property
     @pulumi.getter(name="preemptiblePercentage")
     def preemptible_percentage(self) -> pulumi.Output[Optional[int]]:
         return pulumi.get(self, "preemptible_percentage")
@@ -1248,6 +1311,11 @@ class Elastigroup(pulumi.CustomResource):
     @pulumi.getter(name="provisioningModel")
     def provisioning_model(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "provisioning_model")
+
+    @property
+    @pulumi.getter(name="revertToPreemptibles")
+    def revert_to_preemptibles(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupRevertToPreemptible']]]:
+        return pulumi.get(self, "revert_to_preemptibles")
 
     @property
     @pulumi.getter(name="scalingDownPolicies")

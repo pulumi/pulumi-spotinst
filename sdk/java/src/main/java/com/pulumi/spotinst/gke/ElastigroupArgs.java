@@ -15,6 +15,7 @@ import com.pulumi.spotinst.gke.inputs.ElastigroupIntegrationGkeArgs;
 import com.pulumi.spotinst.gke.inputs.ElastigroupLabelArgs;
 import com.pulumi.spotinst.gke.inputs.ElastigroupMetadataArgs;
 import com.pulumi.spotinst.gke.inputs.ElastigroupNetworkInterfaceArgs;
+import com.pulumi.spotinst.gke.inputs.ElastigroupRevertToPreemptibleArgs;
 import com.pulumi.spotinst.gke.inputs.ElastigroupScalingDownPolicyArgs;
 import com.pulumi.spotinst.gke.inputs.ElastigroupScalingUpPolicyArgs;
 import java.lang.Boolean;
@@ -203,6 +204,13 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.ondemandCount);
     }
 
+    @Import(name="optimizationWindows")
+    private @Nullable Output<List<String>> optimizationWindows;
+
+    public Optional<Output<List<String>>> optimizationWindows() {
+        return Optional.ofNullable(this.optimizationWindows);
+    }
+
     @Import(name="preemptiblePercentage")
     private @Nullable Output<Integer> preemptiblePercentage;
 
@@ -215,6 +223,13 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> provisioningModel() {
         return Optional.ofNullable(this.provisioningModel);
+    }
+
+    @Import(name="revertToPreemptibles")
+    private @Nullable Output<List<ElastigroupRevertToPreemptibleArgs>> revertToPreemptibles;
+
+    public Optional<Output<List<ElastigroupRevertToPreemptibleArgs>>> revertToPreemptibles() {
+        return Optional.ofNullable(this.revertToPreemptibles);
     }
 
     @Import(name="scalingDownPolicies")
@@ -285,8 +300,10 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         this.networkInterfaces = $.networkInterfaces;
         this.nodeImage = $.nodeImage;
         this.ondemandCount = $.ondemandCount;
+        this.optimizationWindows = $.optimizationWindows;
         this.preemptiblePercentage = $.preemptiblePercentage;
         this.provisioningModel = $.provisioningModel;
+        this.revertToPreemptibles = $.revertToPreemptibles;
         this.scalingDownPolicies = $.scalingDownPolicies;
         this.scalingUpPolicies = $.scalingUpPolicies;
         this.serviceAccount = $.serviceAccount;
@@ -568,6 +585,19 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
             return ondemandCount(Output.of(ondemandCount));
         }
 
+        public Builder optimizationWindows(@Nullable Output<List<String>> optimizationWindows) {
+            $.optimizationWindows = optimizationWindows;
+            return this;
+        }
+
+        public Builder optimizationWindows(List<String> optimizationWindows) {
+            return optimizationWindows(Output.of(optimizationWindows));
+        }
+
+        public Builder optimizationWindows(String... optimizationWindows) {
+            return optimizationWindows(List.of(optimizationWindows));
+        }
+
         public Builder preemptiblePercentage(@Nullable Output<Integer> preemptiblePercentage) {
             $.preemptiblePercentage = preemptiblePercentage;
             return this;
@@ -584,6 +614,19 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder provisioningModel(String provisioningModel) {
             return provisioningModel(Output.of(provisioningModel));
+        }
+
+        public Builder revertToPreemptibles(@Nullable Output<List<ElastigroupRevertToPreemptibleArgs>> revertToPreemptibles) {
+            $.revertToPreemptibles = revertToPreemptibles;
+            return this;
+        }
+
+        public Builder revertToPreemptibles(List<ElastigroupRevertToPreemptibleArgs> revertToPreemptibles) {
+            return revertToPreemptibles(Output.of(revertToPreemptibles));
+        }
+
+        public Builder revertToPreemptibles(ElastigroupRevertToPreemptibleArgs... revertToPreemptibles) {
+            return revertToPreemptibles(List.of(revertToPreemptibles));
         }
 
         public Builder scalingDownPolicies(@Nullable Output<List<ElastigroupScalingDownPolicyArgs>> scalingDownPolicies) {

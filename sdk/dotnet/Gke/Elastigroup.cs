@@ -167,11 +167,17 @@ namespace Pulumi.SpotInst.Gke
         [Output("ondemandCount")]
         public Output<int?> OndemandCount { get; private set; } = null!;
 
+        [Output("optimizationWindows")]
+        public Output<ImmutableArray<string>> OptimizationWindows { get; private set; } = null!;
+
         [Output("preemptiblePercentage")]
         public Output<int?> PreemptiblePercentage { get; private set; } = null!;
 
         [Output("provisioningModel")]
         public Output<string?> ProvisioningModel { get; private set; } = null!;
+
+        [Output("revertToPreemptibles")]
+        public Output<ImmutableArray<Outputs.ElastigroupRevertToPreemptible>> RevertToPreemptibles { get; private set; } = null!;
 
         [Output("scalingDownPolicies")]
         public Output<ImmutableArray<Outputs.ElastigroupScalingDownPolicy>> ScalingDownPolicies { get; private set; } = null!;
@@ -346,11 +352,27 @@ namespace Pulumi.SpotInst.Gke
         [Input("ondemandCount")]
         public Input<int>? OndemandCount { get; set; }
 
+        [Input("optimizationWindows")]
+        private InputList<string>? _optimizationWindows;
+        public InputList<string> OptimizationWindows
+        {
+            get => _optimizationWindows ?? (_optimizationWindows = new InputList<string>());
+            set => _optimizationWindows = value;
+        }
+
         [Input("preemptiblePercentage")]
         public Input<int>? PreemptiblePercentage { get; set; }
 
         [Input("provisioningModel")]
         public Input<string>? ProvisioningModel { get; set; }
+
+        [Input("revertToPreemptibles")]
+        private InputList<Inputs.ElastigroupRevertToPreemptibleArgs>? _revertToPreemptibles;
+        public InputList<Inputs.ElastigroupRevertToPreemptibleArgs> RevertToPreemptibles
+        {
+            get => _revertToPreemptibles ?? (_revertToPreemptibles = new InputList<Inputs.ElastigroupRevertToPreemptibleArgs>());
+            set => _revertToPreemptibles = value;
+        }
 
         [Input("scalingDownPolicies")]
         private InputList<Inputs.ElastigroupScalingDownPolicyArgs>? _scalingDownPolicies;
@@ -502,11 +524,27 @@ namespace Pulumi.SpotInst.Gke
         [Input("ondemandCount")]
         public Input<int>? OndemandCount { get; set; }
 
+        [Input("optimizationWindows")]
+        private InputList<string>? _optimizationWindows;
+        public InputList<string> OptimizationWindows
+        {
+            get => _optimizationWindows ?? (_optimizationWindows = new InputList<string>());
+            set => _optimizationWindows = value;
+        }
+
         [Input("preemptiblePercentage")]
         public Input<int>? PreemptiblePercentage { get; set; }
 
         [Input("provisioningModel")]
         public Input<string>? ProvisioningModel { get; set; }
+
+        [Input("revertToPreemptibles")]
+        private InputList<Inputs.ElastigroupRevertToPreemptibleGetArgs>? _revertToPreemptibles;
+        public InputList<Inputs.ElastigroupRevertToPreemptibleGetArgs> RevertToPreemptibles
+        {
+            get => _revertToPreemptibles ?? (_revertToPreemptibles = new InputList<Inputs.ElastigroupRevertToPreemptibleGetArgs>());
+            set => _revertToPreemptibles = value;
+        }
 
         [Input("scalingDownPolicies")]
         private InputList<Inputs.ElastigroupScalingDownPolicyGetArgs>? _scalingDownPolicies;

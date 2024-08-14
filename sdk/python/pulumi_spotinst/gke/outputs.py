@@ -27,6 +27,7 @@ __all__ = [
     'ElastigroupNetworkInterface',
     'ElastigroupNetworkInterfaceAccessConfig',
     'ElastigroupNetworkInterfaceAliasIpRange',
+    'ElastigroupRevertToPreemptible',
     'ElastigroupScalingDownPolicy',
     'ElastigroupScalingDownPolicyDimension',
     'ElastigroupScalingUpPolicy',
@@ -768,6 +769,35 @@ class ElastigroupNetworkInterfaceAliasIpRange(dict):
     @pulumi.getter(name="subnetworkRangeName")
     def subnetwork_range_name(self) -> str:
         return pulumi.get(self, "subnetwork_range_name")
+
+
+@pulumi.output_type
+class ElastigroupRevertToPreemptible(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "performAt":
+            suggest = "perform_at"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupRevertToPreemptible. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupRevertToPreemptible.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupRevertToPreemptible.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 perform_at: str):
+        pulumi.set(__self__, "perform_at", perform_at)
+
+    @property
+    @pulumi.getter(name="performAt")
+    def perform_at(self) -> str:
+        return pulumi.get(self, "perform_at")
 
 
 @pulumi.output_type

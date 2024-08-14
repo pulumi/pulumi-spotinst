@@ -26,6 +26,7 @@ __all__ = [
     'ElastigroupNetworkInterfaceArgs',
     'ElastigroupNetworkInterfaceAccessConfigArgs',
     'ElastigroupNetworkInterfaceAliasIpRangeArgs',
+    'ElastigroupRevertToPreemptibleArgs',
     'ElastigroupScalingDownPolicyArgs',
     'ElastigroupScalingDownPolicyDimensionArgs',
     'ElastigroupScalingUpPolicyArgs',
@@ -841,6 +842,28 @@ class ElastigroupNetworkInterfaceAliasIpRangeArgs:
     @subnetwork_range_name.setter
     def subnetwork_range_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "subnetwork_range_name", value)
+
+
+@pulumi.input_type
+class ElastigroupRevertToPreemptibleArgs:
+    def __init__(__self__, *,
+                 perform_at: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] perform_at: Valid values: "always", "never", "timeWindow". Required on strategy.revertToPreemptible object.
+        """
+        pulumi.set(__self__, "perform_at", perform_at)
+
+    @property
+    @pulumi.getter(name="performAt")
+    def perform_at(self) -> pulumi.Input[str]:
+        """
+        Valid values: "always", "never", "timeWindow". Required on strategy.revertToPreemptible object.
+        """
+        return pulumi.get(self, "perform_at")
+
+    @perform_at.setter
+    def perform_at(self, value: pulumi.Input[str]):
+        pulumi.set(self, "perform_at", value)
 
 
 @pulumi.input_type

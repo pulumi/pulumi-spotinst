@@ -19,6 +19,7 @@ import com.pulumi.spotinst.gke.outputs.ElastigroupIntegrationGke;
 import com.pulumi.spotinst.gke.outputs.ElastigroupLabel;
 import com.pulumi.spotinst.gke.outputs.ElastigroupMetadata;
 import com.pulumi.spotinst.gke.outputs.ElastigroupNetworkInterface;
+import com.pulumi.spotinst.gke.outputs.ElastigroupRevertToPreemptible;
 import com.pulumi.spotinst.gke.outputs.ElastigroupScalingDownPolicy;
 import com.pulumi.spotinst.gke.outputs.ElastigroupScalingUpPolicy;
 import java.lang.Boolean;
@@ -263,6 +264,12 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> ondemandCount() {
         return Codegen.optional(this.ondemandCount);
     }
+    @Export(name="optimizationWindows", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> optimizationWindows;
+
+    public Output<Optional<List<String>>> optimizationWindows() {
+        return Codegen.optional(this.optimizationWindows);
+    }
     @Export(name="preemptiblePercentage", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> preemptiblePercentage;
 
@@ -274,6 +281,12 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<String>> provisioningModel() {
         return Codegen.optional(this.provisioningModel);
+    }
+    @Export(name="revertToPreemptibles", refs={List.class,ElastigroupRevertToPreemptible.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ElastigroupRevertToPreemptible>> revertToPreemptibles;
+
+    public Output<Optional<List<ElastigroupRevertToPreemptible>>> revertToPreemptibles() {
+        return Codegen.optional(this.revertToPreemptibles);
     }
     @Export(name="scalingDownPolicies", refs={List.class,ElastigroupScalingDownPolicy.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ElastigroupScalingDownPolicy>> scalingDownPolicies;
