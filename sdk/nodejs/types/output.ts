@@ -4120,6 +4120,13 @@ export namespace gcp {
         subnetworkRangeName: string;
     }
 
+    export interface ElastigroupRevertToPreemptible {
+        /**
+         * Valid values: "always", "never", "timeWindow". Required on strategy.revertToPreemptible object.
+         */
+        performAt: string;
+    }
+
     export interface ElastigroupScalingDownPolicy {
         /**
          * Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
@@ -4415,6 +4422,10 @@ export namespace gke {
     export interface ElastigroupNetworkInterfaceAliasIpRange {
         ipCidrRange: string;
         subnetworkRangeName: string;
+    }
+
+    export interface ElastigroupRevertToPreemptible {
+        performAt: string;
     }
 
     export interface ElastigroupScalingDownPolicy {

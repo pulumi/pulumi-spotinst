@@ -38,6 +38,17 @@ namespace Pulumi.SpotInst.Gcp
     ///             "us-central1-a",
     ///         },
     ///         PreemptiblePercentage = 50,
+    ///         RevertToPreemptibles = new[]
+    ///         {
+    ///             new SpotInst.Gcp.Inputs.ElastigroupRevertToPreemptibleArgs
+    ///             {
+    ///                 PerformAt = "timeWindow",
+    ///             },
+    ///         },
+    ///         OptimizationWindows = new[]
+    ///         {
+    ///             "Mon:01:00-Mon:03:00",
+    ///         },
     ///         FallbackToOndemand = true,
     ///         DrainingTimeout = 180,
     ///         ProvisioningModel = "SPOT",
@@ -284,6 +295,12 @@ namespace Pulumi.SpotInst.Gcp
         public Output<int?> OndemandCount { get; private set; } = null!;
 
         /// <summary>
+        /// Set time window to perform the revert to preemptible. Time windows must be at least 120 minutes. Format: DayInWeek:HH-DayInWeek:HH. Required when strategy.revertToPreemptible.performAt is 'timeWindow'.
+        /// </summary>
+        [Output("optimizationWindows")]
+        public Output<ImmutableArray<string>> OptimizationWindows { get; private set; } = null!;
+
+        /// <summary>
         /// Percentage of Preemptible VMs to spin up from the "desired_capacity".
         /// </summary>
         [Output("preemptiblePercentage")]
@@ -294,6 +311,12 @@ namespace Pulumi.SpotInst.Gcp
         /// </summary>
         [Output("provisioningModel")]
         public Output<string?> ProvisioningModel { get; private set; } = null!;
+
+        /// <summary>
+        /// Setting for revert to preemptible option.
+        /// </summary>
+        [Output("revertToPreemptibles")]
+        public Output<ImmutableArray<Outputs.ElastigroupRevertToPreemptible>> RevertToPreemptibles { get; private set; } = null!;
 
         [Output("scalingDownPolicies")]
         public Output<ImmutableArray<Outputs.ElastigroupScalingDownPolicy>> ScalingDownPolicies { get; private set; } = null!;
@@ -554,6 +577,18 @@ namespace Pulumi.SpotInst.Gcp
         [Input("ondemandCount")]
         public Input<int>? OndemandCount { get; set; }
 
+        [Input("optimizationWindows")]
+        private InputList<string>? _optimizationWindows;
+
+        /// <summary>
+        /// Set time window to perform the revert to preemptible. Time windows must be at least 120 minutes. Format: DayInWeek:HH-DayInWeek:HH. Required when strategy.revertToPreemptible.performAt is 'timeWindow'.
+        /// </summary>
+        public InputList<string> OptimizationWindows
+        {
+            get => _optimizationWindows ?? (_optimizationWindows = new InputList<string>());
+            set => _optimizationWindows = value;
+        }
+
         /// <summary>
         /// Percentage of Preemptible VMs to spin up from the "desired_capacity".
         /// </summary>
@@ -565,6 +600,18 @@ namespace Pulumi.SpotInst.Gcp
         /// </summary>
         [Input("provisioningModel")]
         public Input<string>? ProvisioningModel { get; set; }
+
+        [Input("revertToPreemptibles")]
+        private InputList<Inputs.ElastigroupRevertToPreemptibleArgs>? _revertToPreemptibles;
+
+        /// <summary>
+        /// Setting for revert to preemptible option.
+        /// </summary>
+        public InputList<Inputs.ElastigroupRevertToPreemptibleArgs> RevertToPreemptibles
+        {
+            get => _revertToPreemptibles ?? (_revertToPreemptibles = new InputList<Inputs.ElastigroupRevertToPreemptibleArgs>());
+            set => _revertToPreemptibles = value;
+        }
 
         [Input("scalingDownPolicies")]
         private InputList<Inputs.ElastigroupScalingDownPolicyArgs>? _scalingDownPolicies;
@@ -814,6 +861,18 @@ namespace Pulumi.SpotInst.Gcp
         [Input("ondemandCount")]
         public Input<int>? OndemandCount { get; set; }
 
+        [Input("optimizationWindows")]
+        private InputList<string>? _optimizationWindows;
+
+        /// <summary>
+        /// Set time window to perform the revert to preemptible. Time windows must be at least 120 minutes. Format: DayInWeek:HH-DayInWeek:HH. Required when strategy.revertToPreemptible.performAt is 'timeWindow'.
+        /// </summary>
+        public InputList<string> OptimizationWindows
+        {
+            get => _optimizationWindows ?? (_optimizationWindows = new InputList<string>());
+            set => _optimizationWindows = value;
+        }
+
         /// <summary>
         /// Percentage of Preemptible VMs to spin up from the "desired_capacity".
         /// </summary>
@@ -825,6 +884,18 @@ namespace Pulumi.SpotInst.Gcp
         /// </summary>
         [Input("provisioningModel")]
         public Input<string>? ProvisioningModel { get; set; }
+
+        [Input("revertToPreemptibles")]
+        private InputList<Inputs.ElastigroupRevertToPreemptibleGetArgs>? _revertToPreemptibles;
+
+        /// <summary>
+        /// Setting for revert to preemptible option.
+        /// </summary>
+        public InputList<Inputs.ElastigroupRevertToPreemptibleGetArgs> RevertToPreemptibles
+        {
+            get => _revertToPreemptibles ?? (_revertToPreemptibles = new InputList<Inputs.ElastigroupRevertToPreemptibleGetArgs>());
+            set => _revertToPreemptibles = value;
+        }
 
         [Input("scalingDownPolicies")]
         private InputList<Inputs.ElastigroupScalingDownPolicyGetArgs>? _scalingDownPolicies;

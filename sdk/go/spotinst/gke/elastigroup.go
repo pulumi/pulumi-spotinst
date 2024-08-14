@@ -120,8 +120,10 @@ type Elastigroup struct {
 	NetworkInterfaces         ElastigroupNetworkInterfaceArrayOutput     `pulumi:"networkInterfaces"`
 	NodeImage                 pulumi.StringPtrOutput                     `pulumi:"nodeImage"`
 	OndemandCount             pulumi.IntPtrOutput                        `pulumi:"ondemandCount"`
+	OptimizationWindows       pulumi.StringArrayOutput                   `pulumi:"optimizationWindows"`
 	PreemptiblePercentage     pulumi.IntPtrOutput                        `pulumi:"preemptiblePercentage"`
 	ProvisioningModel         pulumi.StringPtrOutput                     `pulumi:"provisioningModel"`
+	RevertToPreemptibles      ElastigroupRevertToPreemptibleArrayOutput  `pulumi:"revertToPreemptibles"`
 	ScalingDownPolicies       ElastigroupScalingDownPolicyArrayOutput    `pulumi:"scalingDownPolicies"`
 	ScalingUpPolicies         ElastigroupScalingUpPolicyArrayOutput      `pulumi:"scalingUpPolicies"`
 	ServiceAccount            pulumi.StringPtrOutput                     `pulumi:"serviceAccount"`
@@ -190,8 +192,10 @@ type elastigroupState struct {
 	NetworkInterfaces         []ElastigroupNetworkInterface      `pulumi:"networkInterfaces"`
 	NodeImage                 *string                            `pulumi:"nodeImage"`
 	OndemandCount             *int                               `pulumi:"ondemandCount"`
+	OptimizationWindows       []string                           `pulumi:"optimizationWindows"`
 	PreemptiblePercentage     *int                               `pulumi:"preemptiblePercentage"`
 	ProvisioningModel         *string                            `pulumi:"provisioningModel"`
+	RevertToPreemptibles      []ElastigroupRevertToPreemptible   `pulumi:"revertToPreemptibles"`
 	ScalingDownPolicies       []ElastigroupScalingDownPolicy     `pulumi:"scalingDownPolicies"`
 	ScalingUpPolicies         []ElastigroupScalingUpPolicy       `pulumi:"scalingUpPolicies"`
 	ServiceAccount            *string                            `pulumi:"serviceAccount"`
@@ -225,8 +229,10 @@ type ElastigroupState struct {
 	NetworkInterfaces         ElastigroupNetworkInterfaceArrayInput
 	NodeImage                 pulumi.StringPtrInput
 	OndemandCount             pulumi.IntPtrInput
+	OptimizationWindows       pulumi.StringArrayInput
 	PreemptiblePercentage     pulumi.IntPtrInput
 	ProvisioningModel         pulumi.StringPtrInput
+	RevertToPreemptibles      ElastigroupRevertToPreemptibleArrayInput
 	ScalingDownPolicies       ElastigroupScalingDownPolicyArrayInput
 	ScalingUpPolicies         ElastigroupScalingUpPolicyArrayInput
 	ServiceAccount            pulumi.StringPtrInput
@@ -264,8 +270,10 @@ type elastigroupArgs struct {
 	NetworkInterfaces         []ElastigroupNetworkInterface      `pulumi:"networkInterfaces"`
 	NodeImage                 *string                            `pulumi:"nodeImage"`
 	OndemandCount             *int                               `pulumi:"ondemandCount"`
+	OptimizationWindows       []string                           `pulumi:"optimizationWindows"`
 	PreemptiblePercentage     *int                               `pulumi:"preemptiblePercentage"`
 	ProvisioningModel         *string                            `pulumi:"provisioningModel"`
+	RevertToPreemptibles      []ElastigroupRevertToPreemptible   `pulumi:"revertToPreemptibles"`
 	ScalingDownPolicies       []ElastigroupScalingDownPolicy     `pulumi:"scalingDownPolicies"`
 	ScalingUpPolicies         []ElastigroupScalingUpPolicy       `pulumi:"scalingUpPolicies"`
 	ServiceAccount            *string                            `pulumi:"serviceAccount"`
@@ -300,8 +308,10 @@ type ElastigroupArgs struct {
 	NetworkInterfaces         ElastigroupNetworkInterfaceArrayInput
 	NodeImage                 pulumi.StringPtrInput
 	OndemandCount             pulumi.IntPtrInput
+	OptimizationWindows       pulumi.StringArrayInput
 	PreemptiblePercentage     pulumi.IntPtrInput
 	ProvisioningModel         pulumi.StringPtrInput
+	RevertToPreemptibles      ElastigroupRevertToPreemptibleArrayInput
 	ScalingDownPolicies       ElastigroupScalingDownPolicyArrayInput
 	ScalingUpPolicies         ElastigroupScalingUpPolicyArrayInput
 	ServiceAccount            pulumi.StringPtrInput
@@ -490,12 +500,20 @@ func (o ElastigroupOutput) OndemandCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.IntPtrOutput { return v.OndemandCount }).(pulumi.IntPtrOutput)
 }
 
+func (o ElastigroupOutput) OptimizationWindows() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.StringArrayOutput { return v.OptimizationWindows }).(pulumi.StringArrayOutput)
+}
+
 func (o ElastigroupOutput) PreemptiblePercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.IntPtrOutput { return v.PreemptiblePercentage }).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupOutput) ProvisioningModel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.StringPtrOutput { return v.ProvisioningModel }).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupOutput) RevertToPreemptibles() ElastigroupRevertToPreemptibleArrayOutput {
+	return o.ApplyT(func(v *Elastigroup) ElastigroupRevertToPreemptibleArrayOutput { return v.RevertToPreemptibles }).(ElastigroupRevertToPreemptibleArrayOutput)
 }
 
 func (o ElastigroupOutput) ScalingDownPolicies() ElastigroupScalingDownPolicyArrayOutput {

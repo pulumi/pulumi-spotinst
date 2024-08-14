@@ -41,8 +41,10 @@ class ElastigroupArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceArgs']]]] = None,
                  ondemand_count: Optional[pulumi.Input[int]] = None,
+                 optimization_windows: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preemptible_percentage: Optional[pulumi.Input[int]] = None,
                  provisioning_model: Optional[pulumi.Input[str]] = None,
+                 revert_to_preemptibles: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupRevertToPreemptibleArgs']]]] = None,
                  scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]] = None,
                  scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScheduledTaskArgs']]]] = None,
@@ -71,8 +73,10 @@ class ElastigroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupMetadataArgs']]] metadatas: Array of objects with key-value pairs.
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
         :param pulumi.Input[str] name: The group name.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] optimization_windows: Set time window to perform the revert to preemptible. Time windows must be at least 120 minutes. Format: DayInWeek:HH-DayInWeek:HH. Required when strategy.revertToPreemptible.performAt is 'timeWindow'.
         :param pulumi.Input[int] preemptible_percentage: Percentage of Preemptible VMs to spin up from the "desired_capacity".
         :param pulumi.Input[str] provisioning_model: Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
+        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupRevertToPreemptibleArgs']]] revert_to_preemptibles: Setting for revert to preemptible option.
         :param pulumi.Input[str] service_account: The email of the service account in which the group instances will be launched.
         :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
         :param pulumi.Input[str] startup_script: Create and run your own startup scripts on your virtual machines to perform automated tasks every time your instance boots up.
@@ -131,10 +135,14 @@ class ElastigroupArgs:
             pulumi.set(__self__, "network_interfaces", network_interfaces)
         if ondemand_count is not None:
             pulumi.set(__self__, "ondemand_count", ondemand_count)
+        if optimization_windows is not None:
+            pulumi.set(__self__, "optimization_windows", optimization_windows)
         if preemptible_percentage is not None:
             pulumi.set(__self__, "preemptible_percentage", preemptible_percentage)
         if provisioning_model is not None:
             pulumi.set(__self__, "provisioning_model", provisioning_model)
+        if revert_to_preemptibles is not None:
+            pulumi.set(__self__, "revert_to_preemptibles", revert_to_preemptibles)
         if scaling_down_policies is not None:
             pulumi.set(__self__, "scaling_down_policies", scaling_down_policies)
         if scaling_up_policies is not None:
@@ -426,6 +434,18 @@ class ElastigroupArgs:
         pulumi.set(self, "ondemand_count", value)
 
     @property
+    @pulumi.getter(name="optimizationWindows")
+    def optimization_windows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Set time window to perform the revert to preemptible. Time windows must be at least 120 minutes. Format: DayInWeek:HH-DayInWeek:HH. Required when strategy.revertToPreemptible.performAt is 'timeWindow'.
+        """
+        return pulumi.get(self, "optimization_windows")
+
+    @optimization_windows.setter
+    def optimization_windows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "optimization_windows", value)
+
+    @property
     @pulumi.getter(name="preemptiblePercentage")
     def preemptible_percentage(self) -> Optional[pulumi.Input[int]]:
         """
@@ -448,6 +468,18 @@ class ElastigroupArgs:
     @provisioning_model.setter
     def provisioning_model(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "provisioning_model", value)
+
+    @property
+    @pulumi.getter(name="revertToPreemptibles")
+    def revert_to_preemptibles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupRevertToPreemptibleArgs']]]]:
+        """
+        Setting for revert to preemptible option.
+        """
+        return pulumi.get(self, "revert_to_preemptibles")
+
+    @revert_to_preemptibles.setter
+    def revert_to_preemptibles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupRevertToPreemptibleArgs']]]]):
+        pulumi.set(self, "revert_to_preemptibles", value)
 
     @property
     @pulumi.getter(name="scalingDownPolicies")
@@ -574,8 +606,10 @@ class _ElastigroupState:
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceArgs']]]] = None,
                  ondemand_count: Optional[pulumi.Input[int]] = None,
+                 optimization_windows: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preemptible_percentage: Optional[pulumi.Input[int]] = None,
                  provisioning_model: Optional[pulumi.Input[str]] = None,
+                 revert_to_preemptibles: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupRevertToPreemptibleArgs']]]] = None,
                  scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]] = None,
                  scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScheduledTaskArgs']]]] = None,
@@ -604,8 +638,10 @@ class _ElastigroupState:
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupMetadataArgs']]] metadatas: Array of objects with key-value pairs.
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
         :param pulumi.Input[str] name: The group name.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] optimization_windows: Set time window to perform the revert to preemptible. Time windows must be at least 120 minutes. Format: DayInWeek:HH-DayInWeek:HH. Required when strategy.revertToPreemptible.performAt is 'timeWindow'.
         :param pulumi.Input[int] preemptible_percentage: Percentage of Preemptible VMs to spin up from the "desired_capacity".
         :param pulumi.Input[str] provisioning_model: Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
+        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupRevertToPreemptibleArgs']]] revert_to_preemptibles: Setting for revert to preemptible option.
         :param pulumi.Input[str] service_account: The email of the service account in which the group instances will be launched.
         :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
         :param pulumi.Input[str] startup_script: Create and run your own startup scripts on your virtual machines to perform automated tasks every time your instance boots up.
@@ -665,10 +701,14 @@ class _ElastigroupState:
             pulumi.set(__self__, "network_interfaces", network_interfaces)
         if ondemand_count is not None:
             pulumi.set(__self__, "ondemand_count", ondemand_count)
+        if optimization_windows is not None:
+            pulumi.set(__self__, "optimization_windows", optimization_windows)
         if preemptible_percentage is not None:
             pulumi.set(__self__, "preemptible_percentage", preemptible_percentage)
         if provisioning_model is not None:
             pulumi.set(__self__, "provisioning_model", provisioning_model)
+        if revert_to_preemptibles is not None:
+            pulumi.set(__self__, "revert_to_preemptibles", revert_to_preemptibles)
         if scaling_down_policies is not None:
             pulumi.set(__self__, "scaling_down_policies", scaling_down_policies)
         if scaling_up_policies is not None:
@@ -960,6 +1000,18 @@ class _ElastigroupState:
         pulumi.set(self, "ondemand_count", value)
 
     @property
+    @pulumi.getter(name="optimizationWindows")
+    def optimization_windows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Set time window to perform the revert to preemptible. Time windows must be at least 120 minutes. Format: DayInWeek:HH-DayInWeek:HH. Required when strategy.revertToPreemptible.performAt is 'timeWindow'.
+        """
+        return pulumi.get(self, "optimization_windows")
+
+    @optimization_windows.setter
+    def optimization_windows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "optimization_windows", value)
+
+    @property
     @pulumi.getter(name="preemptiblePercentage")
     def preemptible_percentage(self) -> Optional[pulumi.Input[int]]:
         """
@@ -982,6 +1034,18 @@ class _ElastigroupState:
     @provisioning_model.setter
     def provisioning_model(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "provisioning_model", value)
+
+    @property
+    @pulumi.getter(name="revertToPreemptibles")
+    def revert_to_preemptibles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupRevertToPreemptibleArgs']]]]:
+        """
+        Setting for revert to preemptible option.
+        """
+        return pulumi.get(self, "revert_to_preemptibles")
+
+    @revert_to_preemptibles.setter
+    def revert_to_preemptibles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupRevertToPreemptibleArgs']]]]):
+        pulumi.set(self, "revert_to_preemptibles", value)
 
     @property
     @pulumi.getter(name="scalingDownPolicies")
@@ -1110,8 +1174,10 @@ class Elastigroup(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupNetworkInterfaceArgs', 'ElastigroupNetworkInterfaceArgsDict']]]]] = None,
                  ondemand_count: Optional[pulumi.Input[int]] = None,
+                 optimization_windows: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preemptible_percentage: Optional[pulumi.Input[int]] = None,
                  provisioning_model: Optional[pulumi.Input[str]] = None,
+                 revert_to_preemptibles: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupRevertToPreemptibleArgs', 'ElastigroupRevertToPreemptibleArgsDict']]]]] = None,
                  scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingDownPolicyArgs', 'ElastigroupScalingDownPolicyArgsDict']]]]] = None,
                  scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingUpPolicyArgs', 'ElastigroupScalingUpPolicyArgsDict']]]]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScheduledTaskArgs', 'ElastigroupScheduledTaskArgsDict']]]]] = None,
@@ -1145,6 +1211,10 @@ class Elastigroup(pulumi.CustomResource):
                 "us-central1-a",
             ],
             preemptible_percentage=50,
+            revert_to_preemptibles=[{
+                "perform_at": "timeWindow",
+            }],
+            optimization_windows=["Mon:01:00-Mon:03:00"],
             fallback_to_ondemand=True,
             draining_timeout=180,
             provisioning_model="SPOT",
@@ -1237,8 +1307,10 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupMetadataArgs', 'ElastigroupMetadataArgsDict']]]] metadatas: Array of objects with key-value pairs.
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
         :param pulumi.Input[str] name: The group name.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] optimization_windows: Set time window to perform the revert to preemptible. Time windows must be at least 120 minutes. Format: DayInWeek:HH-DayInWeek:HH. Required when strategy.revertToPreemptible.performAt is 'timeWindow'.
         :param pulumi.Input[int] preemptible_percentage: Percentage of Preemptible VMs to spin up from the "desired_capacity".
         :param pulumi.Input[str] provisioning_model: Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupRevertToPreemptibleArgs', 'ElastigroupRevertToPreemptibleArgsDict']]]] revert_to_preemptibles: Setting for revert to preemptible option.
         :param pulumi.Input[str] service_account: The email of the service account in which the group instances will be launched.
         :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
         :param pulumi.Input[str] startup_script: Create and run your own startup scripts on your virtual machines to perform automated tasks every time your instance boots up.
@@ -1274,6 +1346,10 @@ class Elastigroup(pulumi.CustomResource):
                 "us-central1-a",
             ],
             preemptible_percentage=50,
+            revert_to_preemptibles=[{
+                "perform_at": "timeWindow",
+            }],
+            optimization_windows=["Mon:01:00-Mon:03:00"],
             fallback_to_ondemand=True,
             draining_timeout=180,
             provisioning_model="SPOT",
@@ -1387,8 +1463,10 @@ class Elastigroup(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupNetworkInterfaceArgs', 'ElastigroupNetworkInterfaceArgsDict']]]]] = None,
                  ondemand_count: Optional[pulumi.Input[int]] = None,
+                 optimization_windows: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preemptible_percentage: Optional[pulumi.Input[int]] = None,
                  provisioning_model: Optional[pulumi.Input[str]] = None,
+                 revert_to_preemptibles: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupRevertToPreemptibleArgs', 'ElastigroupRevertToPreemptibleArgsDict']]]]] = None,
                  scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingDownPolicyArgs', 'ElastigroupScalingDownPolicyArgsDict']]]]] = None,
                  scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingUpPolicyArgs', 'ElastigroupScalingUpPolicyArgsDict']]]]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScheduledTaskArgs', 'ElastigroupScheduledTaskArgsDict']]]]] = None,
@@ -1434,8 +1512,10 @@ class Elastigroup(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["network_interfaces"] = network_interfaces
             __props__.__dict__["ondemand_count"] = ondemand_count
+            __props__.__dict__["optimization_windows"] = optimization_windows
             __props__.__dict__["preemptible_percentage"] = preemptible_percentage
             __props__.__dict__["provisioning_model"] = provisioning_model
+            __props__.__dict__["revert_to_preemptibles"] = revert_to_preemptibles
             __props__.__dict__["scaling_down_policies"] = scaling_down_policies
             __props__.__dict__["scaling_up_policies"] = scaling_up_policies
             __props__.__dict__["scheduled_tasks"] = scheduled_tasks
@@ -1480,8 +1560,10 @@ class Elastigroup(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupNetworkInterfaceArgs', 'ElastigroupNetworkInterfaceArgsDict']]]]] = None,
             ondemand_count: Optional[pulumi.Input[int]] = None,
+            optimization_windows: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             preemptible_percentage: Optional[pulumi.Input[int]] = None,
             provisioning_model: Optional[pulumi.Input[str]] = None,
+            revert_to_preemptibles: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupRevertToPreemptibleArgs', 'ElastigroupRevertToPreemptibleArgsDict']]]]] = None,
             scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingDownPolicyArgs', 'ElastigroupScalingDownPolicyArgsDict']]]]] = None,
             scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingUpPolicyArgs', 'ElastigroupScalingUpPolicyArgsDict']]]]] = None,
             scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScheduledTaskArgs', 'ElastigroupScheduledTaskArgsDict']]]]] = None,
@@ -1515,8 +1597,10 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupMetadataArgs', 'ElastigroupMetadataArgsDict']]]] metadatas: Array of objects with key-value pairs.
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
         :param pulumi.Input[str] name: The group name.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] optimization_windows: Set time window to perform the revert to preemptible. Time windows must be at least 120 minutes. Format: DayInWeek:HH-DayInWeek:HH. Required when strategy.revertToPreemptible.performAt is 'timeWindow'.
         :param pulumi.Input[int] preemptible_percentage: Percentage of Preemptible VMs to spin up from the "desired_capacity".
         :param pulumi.Input[str] provisioning_model: Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupRevertToPreemptibleArgs', 'ElastigroupRevertToPreemptibleArgsDict']]]] revert_to_preemptibles: Setting for revert to preemptible option.
         :param pulumi.Input[str] service_account: The email of the service account in which the group instances will be launched.
         :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
         :param pulumi.Input[str] startup_script: Create and run your own startup scripts on your virtual machines to perform automated tasks every time your instance boots up.
@@ -1552,8 +1636,10 @@ class Elastigroup(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["network_interfaces"] = network_interfaces
         __props__.__dict__["ondemand_count"] = ondemand_count
+        __props__.__dict__["optimization_windows"] = optimization_windows
         __props__.__dict__["preemptible_percentage"] = preemptible_percentage
         __props__.__dict__["provisioning_model"] = provisioning_model
+        __props__.__dict__["revert_to_preemptibles"] = revert_to_preemptibles
         __props__.__dict__["scaling_down_policies"] = scaling_down_policies
         __props__.__dict__["scaling_up_policies"] = scaling_up_policies
         __props__.__dict__["scheduled_tasks"] = scheduled_tasks
@@ -1737,6 +1823,14 @@ class Elastigroup(pulumi.CustomResource):
         return pulumi.get(self, "ondemand_count")
 
     @property
+    @pulumi.getter(name="optimizationWindows")
+    def optimization_windows(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Set time window to perform the revert to preemptible. Time windows must be at least 120 minutes. Format: DayInWeek:HH-DayInWeek:HH. Required when strategy.revertToPreemptible.performAt is 'timeWindow'.
+        """
+        return pulumi.get(self, "optimization_windows")
+
+    @property
     @pulumi.getter(name="preemptiblePercentage")
     def preemptible_percentage(self) -> pulumi.Output[Optional[int]]:
         """
@@ -1751,6 +1845,14 @@ class Elastigroup(pulumi.CustomResource):
         Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
         """
         return pulumi.get(self, "provisioning_model")
+
+    @property
+    @pulumi.getter(name="revertToPreemptibles")
+    def revert_to_preemptibles(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupRevertToPreemptible']]]:
+        """
+        Setting for revert to preemptible option.
+        """
+        return pulumi.get(self, "revert_to_preemptibles")
 
     @property
     @pulumi.getter(name="scalingDownPolicies")

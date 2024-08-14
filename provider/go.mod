@@ -5,7 +5,7 @@ go 1.21.12
 require (
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.89.0
 	github.com/pulumi/pulumi/sdk/v3 v3.128.0
-	github.com/spotinst/terraform-provider-spotinst v1.185.0
+	github.com/spotinst/terraform-provider-spotinst v1.186.0
 )
 
 replace (
@@ -198,7 +198,7 @@ require (
 	github.com/spf13/cast v1.5.0 // indirect
 	github.com/spf13/cobra v1.8.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
-	github.com/spotinst/spotinst-sdk-go v1.362.0 // indirect
+	github.com/spotinst/spotinst-sdk-go v1.363.0 // indirect
 	github.com/stretchr/testify v1.9.0 // indirect
 	github.com/texttheater/golang-levenshtein v1.0.1 // indirect
 	github.com/tweekmonster/luser v0.0.0-20161003172636-3fa38070dbd7 // indirect

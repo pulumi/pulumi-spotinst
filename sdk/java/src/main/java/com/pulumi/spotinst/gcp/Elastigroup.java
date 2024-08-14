@@ -19,6 +19,7 @@ import com.pulumi.spotinst.gcp.outputs.ElastigroupIntegrationGke;
 import com.pulumi.spotinst.gcp.outputs.ElastigroupLabel;
 import com.pulumi.spotinst.gcp.outputs.ElastigroupMetadata;
 import com.pulumi.spotinst.gcp.outputs.ElastigroupNetworkInterface;
+import com.pulumi.spotinst.gcp.outputs.ElastigroupRevertToPreemptible;
 import com.pulumi.spotinst.gcp.outputs.ElastigroupScalingDownPolicy;
 import com.pulumi.spotinst.gcp.outputs.ElastigroupScalingUpPolicy;
 import com.pulumi.spotinst.gcp.outputs.ElastigroupScheduledTask;
@@ -45,6 +46,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.spotinst.gcp.Elastigroup;
  * import com.pulumi.spotinst.gcp.ElastigroupArgs;
+ * import com.pulumi.spotinst.gcp.inputs.ElastigroupRevertToPreemptibleArgs;
  * import com.pulumi.spotinst.gcp.inputs.ElastigroupLabelArgs;
  * import com.pulumi.spotinst.gcp.inputs.ElastigroupBackendServiceArgs;
  * import com.pulumi.spotinst.gcp.inputs.ElastigroupDiskArgs;
@@ -78,6 +80,10 @@ import javax.annotation.Nullable;
  *                 "asia-east1-c",
  *                 "us-central1-a")
  *             .preemptiblePercentage(50)
+ *             .revertToPreemptibles(ElastigroupRevertToPreemptibleArgs.builder()
+ *                 .performAt("timeWindow")
+ *                 .build())
+ *             .optimizationWindows("Mon:01:00-Mon:03:00")
  *             .fallbackToOndemand(true)
  *             .drainingTimeout(180)
  *             .provisioningModel("SPOT")
@@ -430,6 +436,20 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ondemandCount);
     }
     /**
+     * Set time window to perform the revert to preemptible. Time windows must be at least 120 minutes. Format: DayInWeek:HH-DayInWeek:HH. Required when strategy.revertToPreemptible.performAt is &#39;timeWindow&#39;.
+     * 
+     */
+    @Export(name="optimizationWindows", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> optimizationWindows;
+
+    /**
+     * @return Set time window to perform the revert to preemptible. Time windows must be at least 120 minutes. Format: DayInWeek:HH-DayInWeek:HH. Required when strategy.revertToPreemptible.performAt is &#39;timeWindow&#39;.
+     * 
+     */
+    public Output<Optional<List<String>>> optimizationWindows() {
+        return Codegen.optional(this.optimizationWindows);
+    }
+    /**
      * Percentage of Preemptible VMs to spin up from the &#34;desired_capacity&#34;.
      * 
      */
@@ -456,6 +476,20 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> provisioningModel() {
         return Codegen.optional(this.provisioningModel);
+    }
+    /**
+     * Setting for revert to preemptible option.
+     * 
+     */
+    @Export(name="revertToPreemptibles", refs={List.class,ElastigroupRevertToPreemptible.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ElastigroupRevertToPreemptible>> revertToPreemptibles;
+
+    /**
+     * @return Setting for revert to preemptible option.
+     * 
+     */
+    public Output<Optional<List<ElastigroupRevertToPreemptible>>> revertToPreemptibles() {
+        return Codegen.optional(this.revertToPreemptibles);
     }
     @Export(name="scalingDownPolicies", refs={List.class,ElastigroupScalingDownPolicy.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ElastigroupScalingDownPolicy>> scalingDownPolicies;

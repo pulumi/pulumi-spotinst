@@ -29,6 +29,10 @@ import * as utilities from "../utilities";
  *         "us-central1-a",
  *     ],
  *     preemptiblePercentage: 50,
+ *     revertToPreemptibles: [{
+ *         performAt: "timeWindow",
+ *     }],
+ *     optimizationWindows: ["Mon:01:00-Mon:03:00"],
  *     fallbackToOndemand: true,
  *     drainingTimeout: 180,
  *     provisioningModel: "SPOT",
@@ -204,6 +208,10 @@ export class Elastigroup extends pulumi.CustomResource {
     public readonly networkInterfaces!: pulumi.Output<outputs.gcp.ElastigroupNetworkInterface[] | undefined>;
     public readonly ondemandCount!: pulumi.Output<number | undefined>;
     /**
+     * Set time window to perform the revert to preemptible. Time windows must be at least 120 minutes. Format: DayInWeek:HH-DayInWeek:HH. Required when strategy.revertToPreemptible.performAt is 'timeWindow'.
+     */
+    public readonly optimizationWindows!: pulumi.Output<string[] | undefined>;
+    /**
      * Percentage of Preemptible VMs to spin up from the "desiredCapacity".
      */
     public readonly preemptiblePercentage!: pulumi.Output<number | undefined>;
@@ -211,6 +219,10 @@ export class Elastigroup extends pulumi.CustomResource {
      * Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
      */
     public readonly provisioningModel!: pulumi.Output<string | undefined>;
+    /**
+     * Setting for revert to preemptible option.
+     */
+    public readonly revertToPreemptibles!: pulumi.Output<outputs.gcp.ElastigroupRevertToPreemptible[] | undefined>;
     public readonly scalingDownPolicies!: pulumi.Output<outputs.gcp.ElastigroupScalingDownPolicy[] | undefined>;
     public readonly scalingUpPolicies!: pulumi.Output<outputs.gcp.ElastigroupScalingUpPolicy[] | undefined>;
     public readonly scheduledTasks!: pulumi.Output<outputs.gcp.ElastigroupScheduledTask[] | undefined>;
@@ -274,8 +286,10 @@ export class Elastigroup extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
             resourceInputs["ondemandCount"] = state ? state.ondemandCount : undefined;
+            resourceInputs["optimizationWindows"] = state ? state.optimizationWindows : undefined;
             resourceInputs["preemptiblePercentage"] = state ? state.preemptiblePercentage : undefined;
             resourceInputs["provisioningModel"] = state ? state.provisioningModel : undefined;
+            resourceInputs["revertToPreemptibles"] = state ? state.revertToPreemptibles : undefined;
             resourceInputs["scalingDownPolicies"] = state ? state.scalingDownPolicies : undefined;
             resourceInputs["scalingUpPolicies"] = state ? state.scalingUpPolicies : undefined;
             resourceInputs["scheduledTasks"] = state ? state.scheduledTasks : undefined;
@@ -315,8 +329,10 @@ export class Elastigroup extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
             resourceInputs["ondemandCount"] = args ? args.ondemandCount : undefined;
+            resourceInputs["optimizationWindows"] = args ? args.optimizationWindows : undefined;
             resourceInputs["preemptiblePercentage"] = args ? args.preemptiblePercentage : undefined;
             resourceInputs["provisioningModel"] = args ? args.provisioningModel : undefined;
+            resourceInputs["revertToPreemptibles"] = args ? args.revertToPreemptibles : undefined;
             resourceInputs["scalingDownPolicies"] = args ? args.scalingDownPolicies : undefined;
             resourceInputs["scalingUpPolicies"] = args ? args.scalingUpPolicies : undefined;
             resourceInputs["scheduledTasks"] = args ? args.scheduledTasks : undefined;
@@ -409,6 +425,10 @@ export interface ElastigroupState {
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupNetworkInterface>[]>;
     ondemandCount?: pulumi.Input<number>;
     /**
+     * Set time window to perform the revert to preemptible. Time windows must be at least 120 minutes. Format: DayInWeek:HH-DayInWeek:HH. Required when strategy.revertToPreemptible.performAt is 'timeWindow'.
+     */
+    optimizationWindows?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Percentage of Preemptible VMs to spin up from the "desiredCapacity".
      */
     preemptiblePercentage?: pulumi.Input<number>;
@@ -416,6 +436,10 @@ export interface ElastigroupState {
      * Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
      */
     provisioningModel?: pulumi.Input<string>;
+    /**
+     * Setting for revert to preemptible option.
+     */
+    revertToPreemptibles?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupRevertToPreemptible>[]>;
     scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupScalingDownPolicy>[]>;
     scalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupScalingUpPolicy>[]>;
     scheduledTasks?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupScheduledTask>[]>;
@@ -519,6 +543,10 @@ export interface ElastigroupArgs {
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupNetworkInterface>[]>;
     ondemandCount?: pulumi.Input<number>;
     /**
+     * Set time window to perform the revert to preemptible. Time windows must be at least 120 minutes. Format: DayInWeek:HH-DayInWeek:HH. Required when strategy.revertToPreemptible.performAt is 'timeWindow'.
+     */
+    optimizationWindows?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Percentage of Preemptible VMs to spin up from the "desiredCapacity".
      */
     preemptiblePercentage?: pulumi.Input<number>;
@@ -526,6 +554,10 @@ export interface ElastigroupArgs {
      * Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
      */
     provisioningModel?: pulumi.Input<string>;
+    /**
+     * Setting for revert to preemptible option.
+     */
+    revertToPreemptibles?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupRevertToPreemptible>[]>;
     scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupScalingDownPolicy>[]>;
     scalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupScalingUpPolicy>[]>;
     scheduledTasks?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupScheduledTask>[]>;

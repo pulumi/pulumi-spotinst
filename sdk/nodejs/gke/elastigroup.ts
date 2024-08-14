@@ -122,8 +122,10 @@ export class Elastigroup extends pulumi.CustomResource {
     public readonly networkInterfaces!: pulumi.Output<outputs.gke.ElastigroupNetworkInterface[] | undefined>;
     public readonly nodeImage!: pulumi.Output<string | undefined>;
     public readonly ondemandCount!: pulumi.Output<number | undefined>;
+    public readonly optimizationWindows!: pulumi.Output<string[] | undefined>;
     public readonly preemptiblePercentage!: pulumi.Output<number | undefined>;
     public readonly provisioningModel!: pulumi.Output<string | undefined>;
+    public readonly revertToPreemptibles!: pulumi.Output<outputs.gke.ElastigroupRevertToPreemptible[] | undefined>;
     public readonly scalingDownPolicies!: pulumi.Output<outputs.gke.ElastigroupScalingDownPolicy[] | undefined>;
     public readonly scalingUpPolicies!: pulumi.Output<outputs.gke.ElastigroupScalingUpPolicy[] | undefined>;
     public readonly serviceAccount!: pulumi.Output<string | undefined>;
@@ -167,8 +169,10 @@ export class Elastigroup extends pulumi.CustomResource {
             resourceInputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
             resourceInputs["nodeImage"] = state ? state.nodeImage : undefined;
             resourceInputs["ondemandCount"] = state ? state.ondemandCount : undefined;
+            resourceInputs["optimizationWindows"] = state ? state.optimizationWindows : undefined;
             resourceInputs["preemptiblePercentage"] = state ? state.preemptiblePercentage : undefined;
             resourceInputs["provisioningModel"] = state ? state.provisioningModel : undefined;
+            resourceInputs["revertToPreemptibles"] = state ? state.revertToPreemptibles : undefined;
             resourceInputs["scalingDownPolicies"] = state ? state.scalingDownPolicies : undefined;
             resourceInputs["scalingUpPolicies"] = state ? state.scalingUpPolicies : undefined;
             resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
@@ -206,8 +210,10 @@ export class Elastigroup extends pulumi.CustomResource {
             resourceInputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
             resourceInputs["nodeImage"] = args ? args.nodeImage : undefined;
             resourceInputs["ondemandCount"] = args ? args.ondemandCount : undefined;
+            resourceInputs["optimizationWindows"] = args ? args.optimizationWindows : undefined;
             resourceInputs["preemptiblePercentage"] = args ? args.preemptiblePercentage : undefined;
             resourceInputs["provisioningModel"] = args ? args.provisioningModel : undefined;
+            resourceInputs["revertToPreemptibles"] = args ? args.revertToPreemptibles : undefined;
             resourceInputs["scalingDownPolicies"] = args ? args.scalingDownPolicies : undefined;
             resourceInputs["scalingUpPolicies"] = args ? args.scalingUpPolicies : undefined;
             resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
@@ -250,8 +256,10 @@ export interface ElastigroupState {
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupNetworkInterface>[]>;
     nodeImage?: pulumi.Input<string>;
     ondemandCount?: pulumi.Input<number>;
+    optimizationWindows?: pulumi.Input<pulumi.Input<string>[]>;
     preemptiblePercentage?: pulumi.Input<number>;
     provisioningModel?: pulumi.Input<string>;
+    revertToPreemptibles?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupRevertToPreemptible>[]>;
     scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupScalingDownPolicy>[]>;
     scalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupScalingUpPolicy>[]>;
     serviceAccount?: pulumi.Input<string>;
@@ -290,8 +298,10 @@ export interface ElastigroupArgs {
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupNetworkInterface>[]>;
     nodeImage?: pulumi.Input<string>;
     ondemandCount?: pulumi.Input<number>;
+    optimizationWindows?: pulumi.Input<pulumi.Input<string>[]>;
     preemptiblePercentage?: pulumi.Input<number>;
     provisioningModel?: pulumi.Input<string>;
+    revertToPreemptibles?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupRevertToPreemptible>[]>;
     scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupScalingDownPolicy>[]>;
     scalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupScalingUpPolicy>[]>;
     serviceAccount?: pulumi.Input<string>;

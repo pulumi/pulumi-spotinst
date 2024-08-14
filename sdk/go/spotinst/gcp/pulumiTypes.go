@@ -2091,6 +2091,103 @@ func (o ElastigroupNetworkInterfaceAliasIpRangeArrayOutput) Index(i pulumi.IntIn
 	}).(ElastigroupNetworkInterfaceAliasIpRangeOutput)
 }
 
+type ElastigroupRevertToPreemptible struct {
+	// Valid values: "always", "never", "timeWindow". Required on strategy.revertToPreemptible object.
+	PerformAt string `pulumi:"performAt"`
+}
+
+// ElastigroupRevertToPreemptibleInput is an input type that accepts ElastigroupRevertToPreemptibleArgs and ElastigroupRevertToPreemptibleOutput values.
+// You can construct a concrete instance of `ElastigroupRevertToPreemptibleInput` via:
+//
+//	ElastigroupRevertToPreemptibleArgs{...}
+type ElastigroupRevertToPreemptibleInput interface {
+	pulumi.Input
+
+	ToElastigroupRevertToPreemptibleOutput() ElastigroupRevertToPreemptibleOutput
+	ToElastigroupRevertToPreemptibleOutputWithContext(context.Context) ElastigroupRevertToPreemptibleOutput
+}
+
+type ElastigroupRevertToPreemptibleArgs struct {
+	// Valid values: "always", "never", "timeWindow". Required on strategy.revertToPreemptible object.
+	PerformAt pulumi.StringInput `pulumi:"performAt"`
+}
+
+func (ElastigroupRevertToPreemptibleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupRevertToPreemptible)(nil)).Elem()
+}
+
+func (i ElastigroupRevertToPreemptibleArgs) ToElastigroupRevertToPreemptibleOutput() ElastigroupRevertToPreemptibleOutput {
+	return i.ToElastigroupRevertToPreemptibleOutputWithContext(context.Background())
+}
+
+func (i ElastigroupRevertToPreemptibleArgs) ToElastigroupRevertToPreemptibleOutputWithContext(ctx context.Context) ElastigroupRevertToPreemptibleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupRevertToPreemptibleOutput)
+}
+
+// ElastigroupRevertToPreemptibleArrayInput is an input type that accepts ElastigroupRevertToPreemptibleArray and ElastigroupRevertToPreemptibleArrayOutput values.
+// You can construct a concrete instance of `ElastigroupRevertToPreemptibleArrayInput` via:
+//
+//	ElastigroupRevertToPreemptibleArray{ ElastigroupRevertToPreemptibleArgs{...} }
+type ElastigroupRevertToPreemptibleArrayInput interface {
+	pulumi.Input
+
+	ToElastigroupRevertToPreemptibleArrayOutput() ElastigroupRevertToPreemptibleArrayOutput
+	ToElastigroupRevertToPreemptibleArrayOutputWithContext(context.Context) ElastigroupRevertToPreemptibleArrayOutput
+}
+
+type ElastigroupRevertToPreemptibleArray []ElastigroupRevertToPreemptibleInput
+
+func (ElastigroupRevertToPreemptibleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupRevertToPreemptible)(nil)).Elem()
+}
+
+func (i ElastigroupRevertToPreemptibleArray) ToElastigroupRevertToPreemptibleArrayOutput() ElastigroupRevertToPreemptibleArrayOutput {
+	return i.ToElastigroupRevertToPreemptibleArrayOutputWithContext(context.Background())
+}
+
+func (i ElastigroupRevertToPreemptibleArray) ToElastigroupRevertToPreemptibleArrayOutputWithContext(ctx context.Context) ElastigroupRevertToPreemptibleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupRevertToPreemptibleArrayOutput)
+}
+
+type ElastigroupRevertToPreemptibleOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupRevertToPreemptibleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupRevertToPreemptible)(nil)).Elem()
+}
+
+func (o ElastigroupRevertToPreemptibleOutput) ToElastigroupRevertToPreemptibleOutput() ElastigroupRevertToPreemptibleOutput {
+	return o
+}
+
+func (o ElastigroupRevertToPreemptibleOutput) ToElastigroupRevertToPreemptibleOutputWithContext(ctx context.Context) ElastigroupRevertToPreemptibleOutput {
+	return o
+}
+
+// Valid values: "always", "never", "timeWindow". Required on strategy.revertToPreemptible object.
+func (o ElastigroupRevertToPreemptibleOutput) PerformAt() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupRevertToPreemptible) string { return v.PerformAt }).(pulumi.StringOutput)
+}
+
+type ElastigroupRevertToPreemptibleArrayOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupRevertToPreemptibleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupRevertToPreemptible)(nil)).Elem()
+}
+
+func (o ElastigroupRevertToPreemptibleArrayOutput) ToElastigroupRevertToPreemptibleArrayOutput() ElastigroupRevertToPreemptibleArrayOutput {
+	return o
+}
+
+func (o ElastigroupRevertToPreemptibleArrayOutput) ToElastigroupRevertToPreemptibleArrayOutputWithContext(ctx context.Context) ElastigroupRevertToPreemptibleArrayOutput {
+	return o
+}
+
+func (o ElastigroupRevertToPreemptibleArrayOutput) Index(i pulumi.IntInput) ElastigroupRevertToPreemptibleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupRevertToPreemptible {
+		return vs[0].([]ElastigroupRevertToPreemptible)[vs[1].(int)]
+	}).(ElastigroupRevertToPreemptibleOutput)
+}
+
 type ElastigroupScalingDownPolicy struct {
 	// Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
 	ActionType *string `pulumi:"actionType"`
@@ -3009,6 +3106,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupNetworkInterfaceAccessConfigArrayInput)(nil)).Elem(), ElastigroupNetworkInterfaceAccessConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupNetworkInterfaceAliasIpRangeInput)(nil)).Elem(), ElastigroupNetworkInterfaceAliasIpRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupNetworkInterfaceAliasIpRangeArrayInput)(nil)).Elem(), ElastigroupNetworkInterfaceAliasIpRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupRevertToPreemptibleInput)(nil)).Elem(), ElastigroupRevertToPreemptibleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupRevertToPreemptibleArrayInput)(nil)).Elem(), ElastigroupRevertToPreemptibleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingDownPolicyInput)(nil)).Elem(), ElastigroupScalingDownPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingDownPolicyArrayInput)(nil)).Elem(), ElastigroupScalingDownPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingDownPolicyDimensionInput)(nil)).Elem(), ElastigroupScalingDownPolicyDimensionArgs{})
@@ -3053,6 +3152,8 @@ func init() {
 	pulumi.RegisterOutputType(ElastigroupNetworkInterfaceAccessConfigArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupNetworkInterfaceAliasIpRangeOutput{})
 	pulumi.RegisterOutputType(ElastigroupNetworkInterfaceAliasIpRangeArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupRevertToPreemptibleOutput{})
+	pulumi.RegisterOutputType(ElastigroupRevertToPreemptibleArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupScalingDownPolicyOutput{})
 	pulumi.RegisterOutputType(ElastigroupScalingDownPolicyArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupScalingDownPolicyDimensionOutput{})

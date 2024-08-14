@@ -4116,6 +4116,13 @@ export namespace gcp {
         subnetworkRangeName: pulumi.Input<string>;
     }
 
+    export interface ElastigroupRevertToPreemptible {
+        /**
+         * Valid values: "always", "never", "timeWindow". Required on strategy.revertToPreemptible object.
+         */
+        performAt: pulumi.Input<string>;
+    }
+
     export interface ElastigroupScalingDownPolicy {
         /**
          * Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
@@ -4410,6 +4417,10 @@ export namespace gke {
     export interface ElastigroupNetworkInterfaceAliasIpRange {
         ipCidrRange: pulumi.Input<string>;
         subnetworkRangeName: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupRevertToPreemptible {
+        performAt: pulumi.Input<string>;
     }
 
     export interface ElastigroupScalingDownPolicy {

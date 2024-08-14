@@ -15,6 +15,7 @@ import com.pulumi.spotinst.gcp.inputs.ElastigroupIntegrationGkeArgs;
 import com.pulumi.spotinst.gcp.inputs.ElastigroupLabelArgs;
 import com.pulumi.spotinst.gcp.inputs.ElastigroupMetadataArgs;
 import com.pulumi.spotinst.gcp.inputs.ElastigroupNetworkInterfaceArgs;
+import com.pulumi.spotinst.gcp.inputs.ElastigroupRevertToPreemptibleArgs;
 import com.pulumi.spotinst.gcp.inputs.ElastigroupScalingDownPolicyArgs;
 import com.pulumi.spotinst.gcp.inputs.ElastigroupScalingUpPolicyArgs;
 import com.pulumi.spotinst.gcp.inputs.ElastigroupScheduledTaskArgs;
@@ -334,6 +335,21 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Set time window to perform the revert to preemptible. Time windows must be at least 120 minutes. Format: DayInWeek:HH-DayInWeek:HH. Required when strategy.revertToPreemptible.performAt is &#39;timeWindow&#39;.
+     * 
+     */
+    @Import(name="optimizationWindows")
+    private @Nullable Output<List<String>> optimizationWindows;
+
+    /**
+     * @return Set time window to perform the revert to preemptible. Time windows must be at least 120 minutes. Format: DayInWeek:HH-DayInWeek:HH. Required when strategy.revertToPreemptible.performAt is &#39;timeWindow&#39;.
+     * 
+     */
+    public Optional<Output<List<String>>> optimizationWindows() {
+        return Optional.ofNullable(this.optimizationWindows);
+    }
+
+    /**
      * Percentage of Preemptible VMs to spin up from the &#34;desired_capacity&#34;.
      * 
      */
@@ -361,6 +377,21 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> provisioningModel() {
         return Optional.ofNullable(this.provisioningModel);
+    }
+
+    /**
+     * Setting for revert to preemptible option.
+     * 
+     */
+    @Import(name="revertToPreemptibles")
+    private @Nullable Output<List<ElastigroupRevertToPreemptibleArgs>> revertToPreemptibles;
+
+    /**
+     * @return Setting for revert to preemptible option.
+     * 
+     */
+    public Optional<Output<List<ElastigroupRevertToPreemptibleArgs>>> revertToPreemptibles() {
+        return Optional.ofNullable(this.revertToPreemptibles);
     }
 
     @Import(name="scalingDownPolicies")
@@ -494,8 +525,10 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.networkInterfaces = $.networkInterfaces;
         this.ondemandCount = $.ondemandCount;
+        this.optimizationWindows = $.optimizationWindows;
         this.preemptiblePercentage = $.preemptiblePercentage;
         this.provisioningModel = $.provisioningModel;
+        this.revertToPreemptibles = $.revertToPreemptibles;
         this.scalingDownPolicies = $.scalingDownPolicies;
         this.scalingUpPolicies = $.scalingUpPolicies;
         this.scheduledTasks = $.scheduledTasks;
@@ -1004,6 +1037,37 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param optimizationWindows Set time window to perform the revert to preemptible. Time windows must be at least 120 minutes. Format: DayInWeek:HH-DayInWeek:HH. Required when strategy.revertToPreemptible.performAt is &#39;timeWindow&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder optimizationWindows(@Nullable Output<List<String>> optimizationWindows) {
+            $.optimizationWindows = optimizationWindows;
+            return this;
+        }
+
+        /**
+         * @param optimizationWindows Set time window to perform the revert to preemptible. Time windows must be at least 120 minutes. Format: DayInWeek:HH-DayInWeek:HH. Required when strategy.revertToPreemptible.performAt is &#39;timeWindow&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder optimizationWindows(List<String> optimizationWindows) {
+            return optimizationWindows(Output.of(optimizationWindows));
+        }
+
+        /**
+         * @param optimizationWindows Set time window to perform the revert to preemptible. Time windows must be at least 120 minutes. Format: DayInWeek:HH-DayInWeek:HH. Required when strategy.revertToPreemptible.performAt is &#39;timeWindow&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder optimizationWindows(String... optimizationWindows) {
+            return optimizationWindows(List.of(optimizationWindows));
+        }
+
+        /**
          * @param preemptiblePercentage Percentage of Preemptible VMs to spin up from the &#34;desired_capacity&#34;.
          * 
          * @return builder
@@ -1043,6 +1107,37 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder provisioningModel(String provisioningModel) {
             return provisioningModel(Output.of(provisioningModel));
+        }
+
+        /**
+         * @param revertToPreemptibles Setting for revert to preemptible option.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder revertToPreemptibles(@Nullable Output<List<ElastigroupRevertToPreemptibleArgs>> revertToPreemptibles) {
+            $.revertToPreemptibles = revertToPreemptibles;
+            return this;
+        }
+
+        /**
+         * @param revertToPreemptibles Setting for revert to preemptible option.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder revertToPreemptibles(List<ElastigroupRevertToPreemptibleArgs> revertToPreemptibles) {
+            return revertToPreemptibles(Output.of(revertToPreemptibles));
+        }
+
+        /**
+         * @param revertToPreemptibles Setting for revert to preemptible option.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder revertToPreemptibles(ElastigroupRevertToPreemptibleArgs... revertToPreemptibles) {
+            return revertToPreemptibles(List.of(revertToPreemptibles));
         }
 
         public Builder scalingDownPolicies(@Nullable Output<List<ElastigroupScalingDownPolicyArgs>> scalingDownPolicies) {

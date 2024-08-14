@@ -42,9 +42,17 @@ import (
 //					pulumi.String("us-central1-a"),
 //				},
 //				PreemptiblePercentage: pulumi.Int(50),
-//				FallbackToOndemand:    pulumi.Bool(true),
-//				DrainingTimeout:       pulumi.Int(180),
-//				ProvisioningModel:     pulumi.String("SPOT"),
+//				RevertToPreemptibles: gcp.ElastigroupRevertToPreemptibleArray{
+//					&gcp.ElastigroupRevertToPreemptibleArgs{
+//						PerformAt: pulumi.String("timeWindow"),
+//					},
+//				},
+//				OptimizationWindows: pulumi.StringArray{
+//					pulumi.String("Mon:01:00-Mon:03:00"),
+//				},
+//				FallbackToOndemand: pulumi.Bool(true),
+//				DrainingTimeout:    pulumi.Int(180),
+//				ProvisioningModel:  pulumi.String("SPOT"),
 //				Labels: gcp.ElastigroupLabelArray{
 //					&gcp.ElastigroupLabelArgs{
 //						Key:   pulumi.String("test_key"),
@@ -191,13 +199,17 @@ type Elastigroup struct {
 	Name              pulumi.StringOutput                    `pulumi:"name"`
 	NetworkInterfaces ElastigroupNetworkInterfaceArrayOutput `pulumi:"networkInterfaces"`
 	OndemandCount     pulumi.IntPtrOutput                    `pulumi:"ondemandCount"`
+	// Set time window to perform the revert to preemptible. Time windows must be at least 120 minutes. Format: DayInWeek:HH-DayInWeek:HH. Required when strategy.revertToPreemptible.performAt is 'timeWindow'.
+	OptimizationWindows pulumi.StringArrayOutput `pulumi:"optimizationWindows"`
 	// Percentage of Preemptible VMs to spin up from the "desiredCapacity".
 	PreemptiblePercentage pulumi.IntPtrOutput `pulumi:"preemptiblePercentage"`
 	// Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
-	ProvisioningModel   pulumi.StringPtrOutput                  `pulumi:"provisioningModel"`
-	ScalingDownPolicies ElastigroupScalingDownPolicyArrayOutput `pulumi:"scalingDownPolicies"`
-	ScalingUpPolicies   ElastigroupScalingUpPolicyArrayOutput   `pulumi:"scalingUpPolicies"`
-	ScheduledTasks      ElastigroupScheduledTaskArrayOutput     `pulumi:"scheduledTasks"`
+	ProvisioningModel pulumi.StringPtrOutput `pulumi:"provisioningModel"`
+	// Setting for revert to preemptible option.
+	RevertToPreemptibles ElastigroupRevertToPreemptibleArrayOutput `pulumi:"revertToPreemptibles"`
+	ScalingDownPolicies  ElastigroupScalingDownPolicyArrayOutput   `pulumi:"scalingDownPolicies"`
+	ScalingUpPolicies    ElastigroupScalingUpPolicyArrayOutput     `pulumi:"scalingUpPolicies"`
+	ScheduledTasks       ElastigroupScheduledTaskArrayOutput       `pulumi:"scheduledTasks"`
 	// The email of the service account in which the group instances will be launched.
 	ServiceAccount pulumi.StringPtrOutput `pulumi:"serviceAccount"`
 	// The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
@@ -288,13 +300,17 @@ type elastigroupState struct {
 	Name              *string                       `pulumi:"name"`
 	NetworkInterfaces []ElastigroupNetworkInterface `pulumi:"networkInterfaces"`
 	OndemandCount     *int                          `pulumi:"ondemandCount"`
+	// Set time window to perform the revert to preemptible. Time windows must be at least 120 minutes. Format: DayInWeek:HH-DayInWeek:HH. Required when strategy.revertToPreemptible.performAt is 'timeWindow'.
+	OptimizationWindows []string `pulumi:"optimizationWindows"`
 	// Percentage of Preemptible VMs to spin up from the "desiredCapacity".
 	PreemptiblePercentage *int `pulumi:"preemptiblePercentage"`
 	// Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
-	ProvisioningModel   *string                        `pulumi:"provisioningModel"`
-	ScalingDownPolicies []ElastigroupScalingDownPolicy `pulumi:"scalingDownPolicies"`
-	ScalingUpPolicies   []ElastigroupScalingUpPolicy   `pulumi:"scalingUpPolicies"`
-	ScheduledTasks      []ElastigroupScheduledTask     `pulumi:"scheduledTasks"`
+	ProvisioningModel *string `pulumi:"provisioningModel"`
+	// Setting for revert to preemptible option.
+	RevertToPreemptibles []ElastigroupRevertToPreemptible `pulumi:"revertToPreemptibles"`
+	ScalingDownPolicies  []ElastigroupScalingDownPolicy   `pulumi:"scalingDownPolicies"`
+	ScalingUpPolicies    []ElastigroupScalingUpPolicy     `pulumi:"scalingUpPolicies"`
+	ScheduledTasks       []ElastigroupScheduledTask       `pulumi:"scheduledTasks"`
 	// The email of the service account in which the group instances will be launched.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
@@ -353,13 +369,17 @@ type ElastigroupState struct {
 	Name              pulumi.StringPtrInput
 	NetworkInterfaces ElastigroupNetworkInterfaceArrayInput
 	OndemandCount     pulumi.IntPtrInput
+	// Set time window to perform the revert to preemptible. Time windows must be at least 120 minutes. Format: DayInWeek:HH-DayInWeek:HH. Required when strategy.revertToPreemptible.performAt is 'timeWindow'.
+	OptimizationWindows pulumi.StringArrayInput
 	// Percentage of Preemptible VMs to spin up from the "desiredCapacity".
 	PreemptiblePercentage pulumi.IntPtrInput
 	// Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
-	ProvisioningModel   pulumi.StringPtrInput
-	ScalingDownPolicies ElastigroupScalingDownPolicyArrayInput
-	ScalingUpPolicies   ElastigroupScalingUpPolicyArrayInput
-	ScheduledTasks      ElastigroupScheduledTaskArrayInput
+	ProvisioningModel pulumi.StringPtrInput
+	// Setting for revert to preemptible option.
+	RevertToPreemptibles ElastigroupRevertToPreemptibleArrayInput
+	ScalingDownPolicies  ElastigroupScalingDownPolicyArrayInput
+	ScalingUpPolicies    ElastigroupScalingUpPolicyArrayInput
+	ScheduledTasks       ElastigroupScheduledTaskArrayInput
 	// The email of the service account in which the group instances will be launched.
 	ServiceAccount pulumi.StringPtrInput
 	// The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
@@ -422,13 +442,17 @@ type elastigroupArgs struct {
 	Name              *string                       `pulumi:"name"`
 	NetworkInterfaces []ElastigroupNetworkInterface `pulumi:"networkInterfaces"`
 	OndemandCount     *int                          `pulumi:"ondemandCount"`
+	// Set time window to perform the revert to preemptible. Time windows must be at least 120 minutes. Format: DayInWeek:HH-DayInWeek:HH. Required when strategy.revertToPreemptible.performAt is 'timeWindow'.
+	OptimizationWindows []string `pulumi:"optimizationWindows"`
 	// Percentage of Preemptible VMs to spin up from the "desiredCapacity".
 	PreemptiblePercentage *int `pulumi:"preemptiblePercentage"`
 	// Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
-	ProvisioningModel   *string                        `pulumi:"provisioningModel"`
-	ScalingDownPolicies []ElastigroupScalingDownPolicy `pulumi:"scalingDownPolicies"`
-	ScalingUpPolicies   []ElastigroupScalingUpPolicy   `pulumi:"scalingUpPolicies"`
-	ScheduledTasks      []ElastigroupScheduledTask     `pulumi:"scheduledTasks"`
+	ProvisioningModel *string `pulumi:"provisioningModel"`
+	// Setting for revert to preemptible option.
+	RevertToPreemptibles []ElastigroupRevertToPreemptible `pulumi:"revertToPreemptibles"`
+	ScalingDownPolicies  []ElastigroupScalingDownPolicy   `pulumi:"scalingDownPolicies"`
+	ScalingUpPolicies    []ElastigroupScalingUpPolicy     `pulumi:"scalingUpPolicies"`
+	ScheduledTasks       []ElastigroupScheduledTask       `pulumi:"scheduledTasks"`
 	// The email of the service account in which the group instances will be launched.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
@@ -488,13 +512,17 @@ type ElastigroupArgs struct {
 	Name              pulumi.StringPtrInput
 	NetworkInterfaces ElastigroupNetworkInterfaceArrayInput
 	OndemandCount     pulumi.IntPtrInput
+	// Set time window to perform the revert to preemptible. Time windows must be at least 120 minutes. Format: DayInWeek:HH-DayInWeek:HH. Required when strategy.revertToPreemptible.performAt is 'timeWindow'.
+	OptimizationWindows pulumi.StringArrayInput
 	// Percentage of Preemptible VMs to spin up from the "desiredCapacity".
 	PreemptiblePercentage pulumi.IntPtrInput
 	// Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
-	ProvisioningModel   pulumi.StringPtrInput
-	ScalingDownPolicies ElastigroupScalingDownPolicyArrayInput
-	ScalingUpPolicies   ElastigroupScalingUpPolicyArrayInput
-	ScheduledTasks      ElastigroupScheduledTaskArrayInput
+	ProvisioningModel pulumi.StringPtrInput
+	// Setting for revert to preemptible option.
+	RevertToPreemptibles ElastigroupRevertToPreemptibleArrayInput
+	ScalingDownPolicies  ElastigroupScalingDownPolicyArrayInput
+	ScalingUpPolicies    ElastigroupScalingUpPolicyArrayInput
+	ScheduledTasks       ElastigroupScheduledTaskArrayInput
 	// The email of the service account in which the group instances will be launched.
 	ServiceAccount pulumi.StringPtrInput
 	// The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
@@ -714,6 +742,11 @@ func (o ElastigroupOutput) OndemandCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.IntPtrOutput { return v.OndemandCount }).(pulumi.IntPtrOutput)
 }
 
+// Set time window to perform the revert to preemptible. Time windows must be at least 120 minutes. Format: DayInWeek:HH-DayInWeek:HH. Required when strategy.revertToPreemptible.performAt is 'timeWindow'.
+func (o ElastigroupOutput) OptimizationWindows() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.StringArrayOutput { return v.OptimizationWindows }).(pulumi.StringArrayOutput)
+}
+
 // Percentage of Preemptible VMs to spin up from the "desiredCapacity".
 func (o ElastigroupOutput) PreemptiblePercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.IntPtrOutput { return v.PreemptiblePercentage }).(pulumi.IntPtrOutput)
@@ -722,6 +755,11 @@ func (o ElastigroupOutput) PreemptiblePercentage() pulumi.IntPtrOutput {
 // Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
 func (o ElastigroupOutput) ProvisioningModel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.StringPtrOutput { return v.ProvisioningModel }).(pulumi.StringPtrOutput)
+}
+
+// Setting for revert to preemptible option.
+func (o ElastigroupOutput) RevertToPreemptibles() ElastigroupRevertToPreemptibleArrayOutput {
+	return o.ApplyT(func(v *Elastigroup) ElastigroupRevertToPreemptibleArrayOutput { return v.RevertToPreemptibles }).(ElastigroupRevertToPreemptibleArrayOutput)
 }
 
 func (o ElastigroupOutput) ScalingDownPolicies() ElastigroupScalingDownPolicyArrayOutput {
