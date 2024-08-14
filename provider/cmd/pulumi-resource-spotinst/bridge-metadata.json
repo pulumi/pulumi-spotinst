@@ -605,6 +605,12 @@
                             }
                         }
                     },
+                    "optimization_windows": {
+                        "maxItemsOne": false
+                    },
+                    "revert_to_preemptible": {
+                        "maxItemsOne": false
+                    },
                     "scaling_down_policy": {
                         "maxItemsOne": false,
                         "elem": {
@@ -719,6 +725,12 @@
                                 }
                             }
                         }
+                    },
+                    "optimization_windows": {
+                        "maxItemsOne": false
+                    },
+                    "revert_to_preemptible": {
+                        "maxItemsOne": false
                     },
                     "scaling_down_policy": {
                         "maxItemsOne": false,
