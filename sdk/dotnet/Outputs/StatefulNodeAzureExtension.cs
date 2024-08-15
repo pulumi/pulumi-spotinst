@@ -16,8 +16,8 @@ namespace Pulumi.SpotInst.Outputs
         public readonly string ApiVersion;
         public readonly bool MinorVersionAutoUpgrade;
         public readonly string Name;
-        public readonly ImmutableDictionary<string, object>? ProtectedSettings;
-        public readonly ImmutableDictionary<string, object>? PublicSettings;
+        public readonly ImmutableDictionary<string, string>? ProtectedSettings;
+        public readonly ImmutableDictionary<string, string>? PublicSettings;
         public readonly string Publisher;
         public readonly string Type;
 
@@ -29,9 +29,9 @@ namespace Pulumi.SpotInst.Outputs
 
             string name,
 
-            ImmutableDictionary<string, object>? protectedSettings,
+            ImmutableDictionary<string, string>? protectedSettings,
 
-            ImmutableDictionary<string, object>? publicSettings,
+            ImmutableDictionary<string, string>? publicSettings,
 
             string publisher,
 

@@ -31,14 +31,14 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<int>? Cooldown { get; set; }
 
         [Input("dimensions")]
-        private InputMap<object>? _dimensions;
+        private InputMap<string>? _dimensions;
 
         /// <summary>
         /// A mapping of dimensions describing qualities of the metric.
         /// </summary>
-        public InputMap<object> Dimensions
+        public InputMap<string> Dimensions
         {
-            get => _dimensions ?? (_dimensions = new InputMap<object>());
+            get => _dimensions ?? (_dimensions = new InputMap<string>());
             set => _dimensions = value;
         }
 

@@ -182,7 +182,7 @@ namespace Pulumi.SpotInst.Azure
         /// An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
         /// </summary>
         [Output("labels")]
-        public Output<ImmutableDictionary<string, object>?> Labels { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
         /// Custom Linux OS configuration.
@@ -257,7 +257,7 @@ namespace Pulumi.SpotInst.Azure
         public Output<int?> SpotPercentage { get; private set; } = null!;
 
         [Output("tags")]
-        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// Add taints to a virtual node group.
@@ -369,14 +369,14 @@ namespace Pulumi.SpotInst.Azure
         public Input<string>? KubernetesVersion { get; set; }
 
         [Input("labels")]
-        private InputMap<object>? _labels;
+        private InputMap<string>? _labels;
 
         /// <summary>
         /// An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
         /// </summary>
-        public InputMap<object> Labels
+        public InputMap<string> Labels
         {
-            get => _labels ?? (_labels = new InputMap<object>());
+            get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 
@@ -465,10 +465,10 @@ namespace Pulumi.SpotInst.Azure
         public Input<int>? SpotPercentage { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
-        public InputMap<object> Tags
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -556,14 +556,14 @@ namespace Pulumi.SpotInst.Azure
         public Input<string>? KubernetesVersion { get; set; }
 
         [Input("labels")]
-        private InputMap<object>? _labels;
+        private InputMap<string>? _labels;
 
         /// <summary>
         /// An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
         /// </summary>
-        public InputMap<object> Labels
+        public InputMap<string> Labels
         {
-            get => _labels ?? (_labels = new InputMap<object>());
+            get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 
@@ -652,10 +652,10 @@ namespace Pulumi.SpotInst.Azure
         public Input<int>? SpotPercentage { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
-        public InputMap<object> Tags
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 

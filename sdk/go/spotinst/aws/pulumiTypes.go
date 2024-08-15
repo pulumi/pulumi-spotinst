@@ -14419,8 +14419,8 @@ type MrScalarCoreScalingDownPolicy struct {
 	// The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
 	Cooldown *int `pulumi:"cooldown"`
 	// A mapping of dimensions describing qualities of the metric.
-	Dimensions        map[string]interface{} `pulumi:"dimensions"`
-	EvaluationPeriods *int                   `pulumi:"evaluationPeriods"`
+	Dimensions        map[string]string `pulumi:"dimensions"`
+	EvaluationPeriods *int              `pulumi:"evaluationPeriods"`
 	// Max target capacity for scale down.
 	MaxTargetCapacity *string `pulumi:"maxTargetCapacity"`
 	// The maximum to set when scale is needed.
@@ -14461,8 +14461,8 @@ type MrScalarCoreScalingDownPolicyArgs struct {
 	// The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
 	Cooldown pulumi.IntPtrInput `pulumi:"cooldown"`
 	// A mapping of dimensions describing qualities of the metric.
-	Dimensions        pulumi.MapInput    `pulumi:"dimensions"`
-	EvaluationPeriods pulumi.IntPtrInput `pulumi:"evaluationPeriods"`
+	Dimensions        pulumi.StringMapInput `pulumi:"dimensions"`
+	EvaluationPeriods pulumi.IntPtrInput    `pulumi:"evaluationPeriods"`
 	// Max target capacity for scale down.
 	MaxTargetCapacity pulumi.StringPtrInput `pulumi:"maxTargetCapacity"`
 	// The maximum to set when scale is needed.
@@ -14551,8 +14551,8 @@ func (o MrScalarCoreScalingDownPolicyOutput) Cooldown() pulumi.IntPtrOutput {
 }
 
 // A mapping of dimensions describing qualities of the metric.
-func (o MrScalarCoreScalingDownPolicyOutput) Dimensions() pulumi.MapOutput {
-	return o.ApplyT(func(v MrScalarCoreScalingDownPolicy) map[string]interface{} { return v.Dimensions }).(pulumi.MapOutput)
+func (o MrScalarCoreScalingDownPolicyOutput) Dimensions() pulumi.StringMapOutput {
+	return o.ApplyT(func(v MrScalarCoreScalingDownPolicy) map[string]string { return v.Dimensions }).(pulumi.StringMapOutput)
 }
 
 func (o MrScalarCoreScalingDownPolicyOutput) EvaluationPeriods() pulumi.IntPtrOutput {
@@ -14645,8 +14645,8 @@ type MrScalarCoreScalingUpPolicy struct {
 	// The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
 	Cooldown *int `pulumi:"cooldown"`
 	// A mapping of dimensions describing qualities of the metric.
-	Dimensions        map[string]interface{} `pulumi:"dimensions"`
-	EvaluationPeriods *int                   `pulumi:"evaluationPeriods"`
+	Dimensions        map[string]string `pulumi:"dimensions"`
+	EvaluationPeriods *int              `pulumi:"evaluationPeriods"`
 	// Max target capacity for scale down.
 	MaxTargetCapacity *string `pulumi:"maxTargetCapacity"`
 	// The maximum to set when scale is needed.
@@ -14687,8 +14687,8 @@ type MrScalarCoreScalingUpPolicyArgs struct {
 	// The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
 	Cooldown pulumi.IntPtrInput `pulumi:"cooldown"`
 	// A mapping of dimensions describing qualities of the metric.
-	Dimensions        pulumi.MapInput    `pulumi:"dimensions"`
-	EvaluationPeriods pulumi.IntPtrInput `pulumi:"evaluationPeriods"`
+	Dimensions        pulumi.StringMapInput `pulumi:"dimensions"`
+	EvaluationPeriods pulumi.IntPtrInput    `pulumi:"evaluationPeriods"`
 	// Max target capacity for scale down.
 	MaxTargetCapacity pulumi.StringPtrInput `pulumi:"maxTargetCapacity"`
 	// The maximum to set when scale is needed.
@@ -14777,8 +14777,8 @@ func (o MrScalarCoreScalingUpPolicyOutput) Cooldown() pulumi.IntPtrOutput {
 }
 
 // A mapping of dimensions describing qualities of the metric.
-func (o MrScalarCoreScalingUpPolicyOutput) Dimensions() pulumi.MapOutput {
-	return o.ApplyT(func(v MrScalarCoreScalingUpPolicy) map[string]interface{} { return v.Dimensions }).(pulumi.MapOutput)
+func (o MrScalarCoreScalingUpPolicyOutput) Dimensions() pulumi.StringMapOutput {
+	return o.ApplyT(func(v MrScalarCoreScalingUpPolicy) map[string]string { return v.Dimensions }).(pulumi.StringMapOutput)
 }
 
 func (o MrScalarCoreScalingUpPolicyOutput) EvaluationPeriods() pulumi.IntPtrOutput {
@@ -15717,8 +15717,8 @@ type MrScalarTaskScalingDownPolicy struct {
 	// The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
 	Cooldown *int `pulumi:"cooldown"`
 	// A mapping of dimensions describing qualities of the metric.
-	Dimensions        map[string]interface{} `pulumi:"dimensions"`
-	EvaluationPeriods *int                   `pulumi:"evaluationPeriods"`
+	Dimensions        map[string]string `pulumi:"dimensions"`
+	EvaluationPeriods *int              `pulumi:"evaluationPeriods"`
 	// Max target capacity for scale down.
 	MaxTargetCapacity *string `pulumi:"maxTargetCapacity"`
 	// The maximum to set when scale is needed.
@@ -15759,8 +15759,8 @@ type MrScalarTaskScalingDownPolicyArgs struct {
 	// The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
 	Cooldown pulumi.IntPtrInput `pulumi:"cooldown"`
 	// A mapping of dimensions describing qualities of the metric.
-	Dimensions        pulumi.MapInput    `pulumi:"dimensions"`
-	EvaluationPeriods pulumi.IntPtrInput `pulumi:"evaluationPeriods"`
+	Dimensions        pulumi.StringMapInput `pulumi:"dimensions"`
+	EvaluationPeriods pulumi.IntPtrInput    `pulumi:"evaluationPeriods"`
 	// Max target capacity for scale down.
 	MaxTargetCapacity pulumi.StringPtrInput `pulumi:"maxTargetCapacity"`
 	// The maximum to set when scale is needed.
@@ -15849,8 +15849,8 @@ func (o MrScalarTaskScalingDownPolicyOutput) Cooldown() pulumi.IntPtrOutput {
 }
 
 // A mapping of dimensions describing qualities of the metric.
-func (o MrScalarTaskScalingDownPolicyOutput) Dimensions() pulumi.MapOutput {
-	return o.ApplyT(func(v MrScalarTaskScalingDownPolicy) map[string]interface{} { return v.Dimensions }).(pulumi.MapOutput)
+func (o MrScalarTaskScalingDownPolicyOutput) Dimensions() pulumi.StringMapOutput {
+	return o.ApplyT(func(v MrScalarTaskScalingDownPolicy) map[string]string { return v.Dimensions }).(pulumi.StringMapOutput)
 }
 
 func (o MrScalarTaskScalingDownPolicyOutput) EvaluationPeriods() pulumi.IntPtrOutput {
@@ -15943,8 +15943,8 @@ type MrScalarTaskScalingUpPolicy struct {
 	// The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
 	Cooldown *int `pulumi:"cooldown"`
 	// A mapping of dimensions describing qualities of the metric.
-	Dimensions        map[string]interface{} `pulumi:"dimensions"`
-	EvaluationPeriods *int                   `pulumi:"evaluationPeriods"`
+	Dimensions        map[string]string `pulumi:"dimensions"`
+	EvaluationPeriods *int              `pulumi:"evaluationPeriods"`
 	// Max target capacity for scale down.
 	MaxTargetCapacity *string `pulumi:"maxTargetCapacity"`
 	// The maximum to set when scale is needed.
@@ -15985,8 +15985,8 @@ type MrScalarTaskScalingUpPolicyArgs struct {
 	// The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
 	Cooldown pulumi.IntPtrInput `pulumi:"cooldown"`
 	// A mapping of dimensions describing qualities of the metric.
-	Dimensions        pulumi.MapInput    `pulumi:"dimensions"`
-	EvaluationPeriods pulumi.IntPtrInput `pulumi:"evaluationPeriods"`
+	Dimensions        pulumi.StringMapInput `pulumi:"dimensions"`
+	EvaluationPeriods pulumi.IntPtrInput    `pulumi:"evaluationPeriods"`
 	// Max target capacity for scale down.
 	MaxTargetCapacity pulumi.StringPtrInput `pulumi:"maxTargetCapacity"`
 	// The maximum to set when scale is needed.
@@ -16075,8 +16075,8 @@ func (o MrScalarTaskScalingUpPolicyOutput) Cooldown() pulumi.IntPtrOutput {
 }
 
 // A mapping of dimensions describing qualities of the metric.
-func (o MrScalarTaskScalingUpPolicyOutput) Dimensions() pulumi.MapOutput {
-	return o.ApplyT(func(v MrScalarTaskScalingUpPolicy) map[string]interface{} { return v.Dimensions }).(pulumi.MapOutput)
+func (o MrScalarTaskScalingUpPolicyOutput) Dimensions() pulumi.StringMapOutput {
+	return o.ApplyT(func(v MrScalarTaskScalingUpPolicy) map[string]string { return v.Dimensions }).(pulumi.StringMapOutput)
 }
 
 func (o MrScalarTaskScalingUpPolicyOutput) EvaluationPeriods() pulumi.IntPtrOutput {

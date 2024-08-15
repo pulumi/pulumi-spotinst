@@ -6,7 +6,6 @@ package com.pulumi.spotinst.aws;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -40,13 +39,13 @@ public final class OceanExtendedResourceDefinitionArgs extends com.pulumi.resour
      * 
      */
     @Import(name="resourceMapping", required=true)
-    private Output<Map<String,Object>> resourceMapping;
+    private Output<Map<String,String>> resourceMapping;
 
     /**
      * @return A mapping between AWS instanceType or * as default and its value for the given extended resource.
      * 
      */
-    public Output<Map<String,Object>> resourceMapping() {
+    public Output<Map<String,String>> resourceMapping() {
         return this.resourceMapping;
     }
 
@@ -104,7 +103,7 @@ public final class OceanExtendedResourceDefinitionArgs extends com.pulumi.resour
          * @return builder
          * 
          */
-        public Builder resourceMapping(Output<Map<String,Object>> resourceMapping) {
+        public Builder resourceMapping(Output<Map<String,String>> resourceMapping) {
             $.resourceMapping = resourceMapping;
             return this;
         }
@@ -115,7 +114,7 @@ public final class OceanExtendedResourceDefinitionArgs extends com.pulumi.resour
          * @return builder
          * 
          */
-        public Builder resourceMapping(Map<String,Object> resourceMapping) {
+        public Builder resourceMapping(Map<String,String> resourceMapping) {
             return resourceMapping(Output.of(resourceMapping));
         }
 

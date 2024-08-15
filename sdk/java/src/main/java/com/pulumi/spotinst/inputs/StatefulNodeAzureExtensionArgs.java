@@ -7,7 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -41,16 +40,16 @@ public final class StatefulNodeAzureExtensionArgs extends com.pulumi.resources.R
     }
 
     @Import(name="protectedSettings")
-    private @Nullable Output<Map<String,Object>> protectedSettings;
+    private @Nullable Output<Map<String,String>> protectedSettings;
 
-    public Optional<Output<Map<String,Object>>> protectedSettings() {
+    public Optional<Output<Map<String,String>>> protectedSettings() {
         return Optional.ofNullable(this.protectedSettings);
     }
 
     @Import(name="publicSettings")
-    private @Nullable Output<Map<String,Object>> publicSettings;
+    private @Nullable Output<Map<String,String>> publicSettings;
 
-    public Optional<Output<Map<String,Object>>> publicSettings() {
+    public Optional<Output<Map<String,String>>> publicSettings() {
         return Optional.ofNullable(this.publicSettings);
     }
 
@@ -125,21 +124,21 @@ public final class StatefulNodeAzureExtensionArgs extends com.pulumi.resources.R
             return name(Output.of(name));
         }
 
-        public Builder protectedSettings(@Nullable Output<Map<String,Object>> protectedSettings) {
+        public Builder protectedSettings(@Nullable Output<Map<String,String>> protectedSettings) {
             $.protectedSettings = protectedSettings;
             return this;
         }
 
-        public Builder protectedSettings(Map<String,Object> protectedSettings) {
+        public Builder protectedSettings(Map<String,String> protectedSettings) {
             return protectedSettings(Output.of(protectedSettings));
         }
 
-        public Builder publicSettings(@Nullable Output<Map<String,Object>> publicSettings) {
+        public Builder publicSettings(@Nullable Output<Map<String,String>> publicSettings) {
             $.publicSettings = publicSettings;
             return this;
         }
 
-        public Builder publicSettings(Map<String,Object> publicSettings) {
+        public Builder publicSettings(Map<String,String> publicSettings) {
             return publicSettings(Output.of(publicSettings));
         }
 

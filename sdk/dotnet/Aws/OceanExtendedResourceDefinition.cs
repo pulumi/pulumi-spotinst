@@ -49,7 +49,7 @@ namespace Pulumi.SpotInst.Aws
         /// A mapping between AWS instanceType or * as default and its value for the given extended resource.
         /// </summary>
         [Output("resourceMapping")]
-        public Output<ImmutableDictionary<string, object>> ResourceMapping { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> ResourceMapping { get; private set; } = null!;
 
 
         /// <summary>
@@ -105,14 +105,14 @@ namespace Pulumi.SpotInst.Aws
         public Input<string>? Name { get; set; }
 
         [Input("resourceMapping", required: true)]
-        private InputMap<object>? _resourceMapping;
+        private InputMap<string>? _resourceMapping;
 
         /// <summary>
         /// A mapping between AWS instanceType or * as default and its value for the given extended resource.
         /// </summary>
-        public InputMap<object> ResourceMapping
+        public InputMap<string> ResourceMapping
         {
-            get => _resourceMapping ?? (_resourceMapping = new InputMap<object>());
+            get => _resourceMapping ?? (_resourceMapping = new InputMap<string>());
             set => _resourceMapping = value;
         }
 
@@ -132,14 +132,14 @@ namespace Pulumi.SpotInst.Aws
         public Input<string>? Name { get; set; }
 
         [Input("resourceMapping")]
-        private InputMap<object>? _resourceMapping;
+        private InputMap<string>? _resourceMapping;
 
         /// <summary>
         /// A mapping between AWS instanceType or * as default and its value for the given extended resource.
         /// </summary>
-        public InputMap<object> ResourceMapping
+        public InputMap<string> ResourceMapping
         {
-            get => _resourceMapping ?? (_resourceMapping = new InputMap<object>());
+            get => _resourceMapping ?? (_resourceMapping = new InputMap<string>());
             set => _resourceMapping = value;
         }
 

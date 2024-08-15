@@ -17,7 +17,6 @@ import com.pulumi.spotinst.azure.outputs.OceanNpVirtualNodeGroupTaint;
 import com.pulumi.spotinst.azure.outputs.OceanNpVirtualNodeGroupUpdatePolicy;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -228,14 +227,14 @@ public class OceanNpVirtualNodeGroup extends com.pulumi.resources.CustomResource
      * An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> labels;
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
      * @return An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
      * 
      */
-    public Output<Optional<Map<String,Object>>> labels() {
+    public Output<Optional<Map<String,String>>> labels() {
         return Codegen.optional(this.labels);
     }
     /**
@@ -406,10 +405,10 @@ public class OceanNpVirtualNodeGroup extends com.pulumi.resources.CustomResource
     public Output<Optional<Integer>> spotPercentage() {
         return Codegen.optional(this.spotPercentage);
     }
-    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> tags;
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
 
-    public Output<Optional<Map<String,Object>>> tags() {
+    public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**

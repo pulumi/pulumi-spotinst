@@ -14,11 +14,11 @@ __all__ = ['OceanExtendedResourceDefinitionArgs', 'OceanExtendedResourceDefiniti
 @pulumi.input_type
 class OceanExtendedResourceDefinitionArgs:
     def __init__(__self__, *,
-                 resource_mapping: pulumi.Input[Mapping[str, Any]],
+                 resource_mapping: pulumi.Input[Mapping[str, pulumi.Input[str]]],
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a OceanExtendedResourceDefinition resource.
-        :param pulumi.Input[Mapping[str, Any]] resource_mapping: A mapping between AWS instanceType or * as default and its value for the given extended resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_mapping: A mapping between AWS instanceType or * as default and its value for the given extended resource.
         :param pulumi.Input[str] name: The extended resource name as should be requested by your pods and registered to the nodes. Cannot be updated.
                The name should be a valid Kubernetes extended resource name.
         """
@@ -28,14 +28,14 @@ class OceanExtendedResourceDefinitionArgs:
 
     @property
     @pulumi.getter(name="resourceMapping")
-    def resource_mapping(self) -> pulumi.Input[Mapping[str, Any]]:
+    def resource_mapping(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
         """
         A mapping between AWS instanceType or * as default and its value for the given extended resource.
         """
         return pulumi.get(self, "resource_mapping")
 
     @resource_mapping.setter
-    def resource_mapping(self, value: pulumi.Input[Mapping[str, Any]]):
+    def resource_mapping(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
         pulumi.set(self, "resource_mapping", value)
 
     @property
@@ -56,12 +56,12 @@ class OceanExtendedResourceDefinitionArgs:
 class _OceanExtendedResourceDefinitionState:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
-                 resource_mapping: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 resource_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering OceanExtendedResourceDefinition resources.
         :param pulumi.Input[str] name: The extended resource name as should be requested by your pods and registered to the nodes. Cannot be updated.
                The name should be a valid Kubernetes extended resource name.
-        :param pulumi.Input[Mapping[str, Any]] resource_mapping: A mapping between AWS instanceType or * as default and its value for the given extended resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_mapping: A mapping between AWS instanceType or * as default and its value for the given extended resource.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -83,14 +83,14 @@ class _OceanExtendedResourceDefinitionState:
 
     @property
     @pulumi.getter(name="resourceMapping")
-    def resource_mapping(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def resource_mapping(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping between AWS instanceType or * as default and its value for the given extended resource.
         """
         return pulumi.get(self, "resource_mapping")
 
     @resource_mapping.setter
-    def resource_mapping(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def resource_mapping(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "resource_mapping", value)
 
 
@@ -100,7 +100,7 @@ class OceanExtendedResourceDefinition(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 resource_mapping: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 resource_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Provides a Spotinst Ocean AWS Extended Resource Definition resource.
@@ -123,7 +123,7 @@ class OceanExtendedResourceDefinition(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The extended resource name as should be requested by your pods and registered to the nodes. Cannot be updated.
                The name should be a valid Kubernetes extended resource name.
-        :param pulumi.Input[Mapping[str, Any]] resource_mapping: A mapping between AWS instanceType or * as default and its value for the given extended resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_mapping: A mapping between AWS instanceType or * as default and its value for the given extended resource.
         """
         ...
     @overload
@@ -164,7 +164,7 @@ class OceanExtendedResourceDefinition(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 resource_mapping: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 resource_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -189,7 +189,7 @@ class OceanExtendedResourceDefinition(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             name: Optional[pulumi.Input[str]] = None,
-            resource_mapping: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'OceanExtendedResourceDefinition':
+            resource_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'OceanExtendedResourceDefinition':
         """
         Get an existing OceanExtendedResourceDefinition resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -199,7 +199,7 @@ class OceanExtendedResourceDefinition(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The extended resource name as should be requested by your pods and registered to the nodes. Cannot be updated.
                The name should be a valid Kubernetes extended resource name.
-        :param pulumi.Input[Mapping[str, Any]] resource_mapping: A mapping between AWS instanceType or * as default and its value for the given extended resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_mapping: A mapping between AWS instanceType or * as default and its value for the given extended resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -220,7 +220,7 @@ class OceanExtendedResourceDefinition(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceMapping")
-    def resource_mapping(self) -> pulumi.Output[Mapping[str, Any]]:
+    def resource_mapping(self) -> pulumi.Output[Mapping[str, str]]:
         """
         A mapping between AWS instanceType or * as default and its value for the given extended resource.
         """

@@ -6,7 +6,6 @@ package com.pulumi.spotinst;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -77,7 +76,7 @@ public final class SubscriptionArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="format")
-    private @Nullable Output<Map<String,Object>> format;
+    private @Nullable Output<Map<String,String>> format;
 
     /**
      * @return The format of the notification content (JSON Format - Key+Value). Valid Values : `&#34;instance-id&#34;`, `&#34;event&#34;`, `&#34;resource-id&#34;`, `&#34;resource-name&#34;`, `&#34;subnet-id&#34;`, `&#34;availability-zone&#34;`, `&#34;reason&#34;`, `&#34;private-ip&#34;`, `&#34;launchspec-id&#34;`
@@ -85,7 +84,7 @@ public final class SubscriptionArgs extends com.pulumi.resources.ResourceArgs {
      * Default: {`&#34;event&#34;`: `&#34;&lt;event&gt;&#34;`, `&#34;instanceId&#34;`: `&#34;&lt;instance-id&gt;&#34;`, `&#34;resourceId&#34;`: `&#34;&lt;resource-id&gt;&#34;`, `&#34;resourceName&#34;`: `&#34;&lt;resource-name&gt;&#34;` }.
      * 
      */
-    public Optional<Output<Map<String,Object>>> format() {
+    public Optional<Output<Map<String,String>>> format() {
         return Optional.ofNullable(this.format);
     }
 
@@ -225,7 +224,7 @@ public final class SubscriptionArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder format(@Nullable Output<Map<String,Object>> format) {
+        public Builder format(@Nullable Output<Map<String,String>> format) {
             $.format = format;
             return this;
         }
@@ -238,7 +237,7 @@ public final class SubscriptionArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder format(Map<String,Object> format) {
+        public Builder format(Map<String,String> format) {
             return format(Output.of(format));
         }
 

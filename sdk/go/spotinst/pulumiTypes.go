@@ -3937,13 +3937,13 @@ func (o StatefulNodeAzureDetachDataDiskArrayOutput) Index(i pulumi.IntInput) Sta
 }
 
 type StatefulNodeAzureExtension struct {
-	ApiVersion              string                 `pulumi:"apiVersion"`
-	MinorVersionAutoUpgrade bool                   `pulumi:"minorVersionAutoUpgrade"`
-	Name                    string                 `pulumi:"name"`
-	ProtectedSettings       map[string]interface{} `pulumi:"protectedSettings"`
-	PublicSettings          map[string]interface{} `pulumi:"publicSettings"`
-	Publisher               string                 `pulumi:"publisher"`
-	Type                    string                 `pulumi:"type"`
+	ApiVersion              string            `pulumi:"apiVersion"`
+	MinorVersionAutoUpgrade bool              `pulumi:"minorVersionAutoUpgrade"`
+	Name                    string            `pulumi:"name"`
+	ProtectedSettings       map[string]string `pulumi:"protectedSettings"`
+	PublicSettings          map[string]string `pulumi:"publicSettings"`
+	Publisher               string            `pulumi:"publisher"`
+	Type                    string            `pulumi:"type"`
 }
 
 // StatefulNodeAzureExtensionInput is an input type that accepts StatefulNodeAzureExtensionArgs and StatefulNodeAzureExtensionOutput values.
@@ -3958,13 +3958,13 @@ type StatefulNodeAzureExtensionInput interface {
 }
 
 type StatefulNodeAzureExtensionArgs struct {
-	ApiVersion              pulumi.StringInput `pulumi:"apiVersion"`
-	MinorVersionAutoUpgrade pulumi.BoolInput   `pulumi:"minorVersionAutoUpgrade"`
-	Name                    pulumi.StringInput `pulumi:"name"`
-	ProtectedSettings       pulumi.MapInput    `pulumi:"protectedSettings"`
-	PublicSettings          pulumi.MapInput    `pulumi:"publicSettings"`
-	Publisher               pulumi.StringInput `pulumi:"publisher"`
-	Type                    pulumi.StringInput `pulumi:"type"`
+	ApiVersion              pulumi.StringInput    `pulumi:"apiVersion"`
+	MinorVersionAutoUpgrade pulumi.BoolInput      `pulumi:"minorVersionAutoUpgrade"`
+	Name                    pulumi.StringInput    `pulumi:"name"`
+	ProtectedSettings       pulumi.StringMapInput `pulumi:"protectedSettings"`
+	PublicSettings          pulumi.StringMapInput `pulumi:"publicSettings"`
+	Publisher               pulumi.StringInput    `pulumi:"publisher"`
+	Type                    pulumi.StringInput    `pulumi:"type"`
 }
 
 func (StatefulNodeAzureExtensionArgs) ElementType() reflect.Type {
@@ -4030,12 +4030,12 @@ func (o StatefulNodeAzureExtensionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v StatefulNodeAzureExtension) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o StatefulNodeAzureExtensionOutput) ProtectedSettings() pulumi.MapOutput {
-	return o.ApplyT(func(v StatefulNodeAzureExtension) map[string]interface{} { return v.ProtectedSettings }).(pulumi.MapOutput)
+func (o StatefulNodeAzureExtensionOutput) ProtectedSettings() pulumi.StringMapOutput {
+	return o.ApplyT(func(v StatefulNodeAzureExtension) map[string]string { return v.ProtectedSettings }).(pulumi.StringMapOutput)
 }
 
-func (o StatefulNodeAzureExtensionOutput) PublicSettings() pulumi.MapOutput {
-	return o.ApplyT(func(v StatefulNodeAzureExtension) map[string]interface{} { return v.PublicSettings }).(pulumi.MapOutput)
+func (o StatefulNodeAzureExtensionOutput) PublicSettings() pulumi.StringMapOutput {
+	return o.ApplyT(func(v StatefulNodeAzureExtension) map[string]string { return v.PublicSettings }).(pulumi.StringMapOutput)
 }
 
 func (o StatefulNodeAzureExtensionOutput) Publisher() pulumi.StringOutput {

@@ -8,7 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -70,13 +69,13 @@ public final class MrScalarCoreScalingUpPolicyArgs extends com.pulumi.resources.
      * 
      */
     @Import(name="dimensions")
-    private @Nullable Output<Map<String,Object>> dimensions;
+    private @Nullable Output<Map<String,String>> dimensions;
 
     /**
      * @return A mapping of dimensions describing qualities of the metric.
      * 
      */
-    public Optional<Output<Map<String,Object>>> dimensions() {
+    public Optional<Output<Map<String,String>>> dimensions() {
         return Optional.ofNullable(this.dimensions);
     }
 
@@ -336,7 +335,7 @@ public final class MrScalarCoreScalingUpPolicyArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder dimensions(@Nullable Output<Map<String,Object>> dimensions) {
+        public Builder dimensions(@Nullable Output<Map<String,String>> dimensions) {
             $.dimensions = dimensions;
             return this;
         }
@@ -347,7 +346,7 @@ public final class MrScalarCoreScalingUpPolicyArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder dimensions(Map<String,Object> dimensions) {
+        public Builder dimensions(Map<String,String> dimensions) {
             return dimensions(Output.of(dimensions));
         }
 
