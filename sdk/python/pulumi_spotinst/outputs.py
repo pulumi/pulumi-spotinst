@@ -1607,8 +1607,8 @@ class StatefulNodeAzureExtension(dict):
                  name: str,
                  publisher: str,
                  type: str,
-                 protected_settings: Optional[Mapping[str, Any]] = None,
-                 public_settings: Optional[Mapping[str, Any]] = None):
+                 protected_settings: Optional[Mapping[str, str]] = None,
+                 public_settings: Optional[Mapping[str, str]] = None):
         pulumi.set(__self__, "api_version", api_version)
         pulumi.set(__self__, "minor_version_auto_upgrade", minor_version_auto_upgrade)
         pulumi.set(__self__, "name", name)
@@ -1646,12 +1646,12 @@ class StatefulNodeAzureExtension(dict):
 
     @property
     @pulumi.getter(name="protectedSettings")
-    def protected_settings(self) -> Optional[Mapping[str, Any]]:
+    def protected_settings(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "protected_settings")
 
     @property
     @pulumi.getter(name="publicSettings")
-    def public_settings(self) -> Optional[Mapping[str, Any]]:
+    def public_settings(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "public_settings")
 
 

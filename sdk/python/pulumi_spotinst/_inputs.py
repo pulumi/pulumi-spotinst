@@ -1471,8 +1471,8 @@ class StatefulNodeAzureExtensionArgs:
                  name: pulumi.Input[str],
                  publisher: pulumi.Input[str],
                  type: pulumi.Input[str],
-                 protected_settings: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 public_settings: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 protected_settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 public_settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         pulumi.set(__self__, "api_version", api_version)
         pulumi.set(__self__, "minor_version_auto_upgrade", minor_version_auto_upgrade)
         pulumi.set(__self__, "name", name)
@@ -1530,20 +1530,20 @@ class StatefulNodeAzureExtensionArgs:
 
     @property
     @pulumi.getter(name="protectedSettings")
-    def protected_settings(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def protected_settings(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "protected_settings")
 
     @protected_settings.setter
-    def protected_settings(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def protected_settings(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "protected_settings", value)
 
     @property
     @pulumi.getter(name="publicSettings")
-    def public_settings(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def public_settings(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "public_settings")
 
     @public_settings.setter
-    def public_settings(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def public_settings(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "public_settings", value)
 
 

@@ -6,7 +6,6 @@ package com.pulumi.spotinst.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -17,8 +16,8 @@ public final class StatefulNodeAzureExtension {
     private String apiVersion;
     private Boolean minorVersionAutoUpgrade;
     private String name;
-    private @Nullable Map<String,Object> protectedSettings;
-    private @Nullable Map<String,Object> publicSettings;
+    private @Nullable Map<String,String> protectedSettings;
+    private @Nullable Map<String,String> publicSettings;
     private String publisher;
     private String type;
 
@@ -32,10 +31,10 @@ public final class StatefulNodeAzureExtension {
     public String name() {
         return this.name;
     }
-    public Map<String,Object> protectedSettings() {
+    public Map<String,String> protectedSettings() {
         return this.protectedSettings == null ? Map.of() : this.protectedSettings;
     }
-    public Map<String,Object> publicSettings() {
+    public Map<String,String> publicSettings() {
         return this.publicSettings == null ? Map.of() : this.publicSettings;
     }
     public String publisher() {
@@ -57,8 +56,8 @@ public final class StatefulNodeAzureExtension {
         private String apiVersion;
         private Boolean minorVersionAutoUpgrade;
         private String name;
-        private @Nullable Map<String,Object> protectedSettings;
-        private @Nullable Map<String,Object> publicSettings;
+        private @Nullable Map<String,String> protectedSettings;
+        private @Nullable Map<String,String> publicSettings;
         private String publisher;
         private String type;
         public Builder() {}
@@ -98,13 +97,13 @@ public final class StatefulNodeAzureExtension {
             return this;
         }
         @CustomType.Setter
-        public Builder protectedSettings(@Nullable Map<String,Object> protectedSettings) {
+        public Builder protectedSettings(@Nullable Map<String,String> protectedSettings) {
 
             this.protectedSettings = protectedSettings;
             return this;
         }
         @CustomType.Setter
-        public Builder publicSettings(@Nullable Map<String,Object> publicSettings) {
+        public Builder publicSettings(@Nullable Map<String,String> publicSettings) {
 
             this.publicSettings = publicSettings;
             return this;

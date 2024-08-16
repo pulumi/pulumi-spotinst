@@ -6261,7 +6261,7 @@ class MrScalarCoreScalingDownPolicyArgs:
                  action_type: Optional[pulumi.Input[str]] = None,
                  adjustment: Optional[pulumi.Input[str]] = None,
                  cooldown: Optional[pulumi.Input[int]] = None,
-                 dimensions: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 dimensions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  evaluation_periods: Optional[pulumi.Input[int]] = None,
                  max_target_capacity: Optional[pulumi.Input[str]] = None,
                  maximum: Optional[pulumi.Input[str]] = None,
@@ -6276,7 +6276,7 @@ class MrScalarCoreScalingDownPolicyArgs:
         :param pulumi.Input[str] action_type: The type of action to perform. Allowed values are : 'adjustment', 'setMinTarget', 'setMaxTarget', 'updateCapacity', 'percentageAdjustment'
         :param pulumi.Input[str] adjustment: The number of instances to add/remove to/from the target capacity when scale is needed.
         :param pulumi.Input[int] cooldown: The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
-        :param pulumi.Input[Mapping[str, Any]] dimensions: A mapping of dimensions describing qualities of the metric.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] dimensions: A mapping of dimensions describing qualities of the metric.
         :param pulumi.Input[str] max_target_capacity: Max target capacity for scale down.
         :param pulumi.Input[str] maximum: The maximum to set when scale is needed.
         :param pulumi.Input[str] min_target_capacity: Min target capacity for scale up.
@@ -6401,14 +6401,14 @@ class MrScalarCoreScalingDownPolicyArgs:
 
     @property
     @pulumi.getter
-    def dimensions(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def dimensions(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of dimensions describing qualities of the metric.
         """
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
-    def dimensions(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def dimensions(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "dimensions", value)
 
     @property
@@ -6519,7 +6519,7 @@ class MrScalarCoreScalingUpPolicyArgs:
                  action_type: Optional[pulumi.Input[str]] = None,
                  adjustment: Optional[pulumi.Input[str]] = None,
                  cooldown: Optional[pulumi.Input[int]] = None,
-                 dimensions: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 dimensions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  evaluation_periods: Optional[pulumi.Input[int]] = None,
                  max_target_capacity: Optional[pulumi.Input[str]] = None,
                  maximum: Optional[pulumi.Input[str]] = None,
@@ -6534,7 +6534,7 @@ class MrScalarCoreScalingUpPolicyArgs:
         :param pulumi.Input[str] action_type: The type of action to perform. Allowed values are : 'adjustment', 'setMinTarget', 'setMaxTarget', 'updateCapacity', 'percentageAdjustment'
         :param pulumi.Input[str] adjustment: The number of instances to add/remove to/from the target capacity when scale is needed.
         :param pulumi.Input[int] cooldown: The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
-        :param pulumi.Input[Mapping[str, Any]] dimensions: A mapping of dimensions describing qualities of the metric.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] dimensions: A mapping of dimensions describing qualities of the metric.
         :param pulumi.Input[str] max_target_capacity: Max target capacity for scale down.
         :param pulumi.Input[str] maximum: The maximum to set when scale is needed.
         :param pulumi.Input[str] min_target_capacity: Min target capacity for scale up.
@@ -6659,14 +6659,14 @@ class MrScalarCoreScalingUpPolicyArgs:
 
     @property
     @pulumi.getter
-    def dimensions(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def dimensions(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of dimensions describing qualities of the metric.
         """
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
-    def dimensions(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def dimensions(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "dimensions", value)
 
     @property
@@ -7133,7 +7133,7 @@ class MrScalarTaskScalingDownPolicyArgs:
                  action_type: Optional[pulumi.Input[str]] = None,
                  adjustment: Optional[pulumi.Input[str]] = None,
                  cooldown: Optional[pulumi.Input[int]] = None,
-                 dimensions: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 dimensions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  evaluation_periods: Optional[pulumi.Input[int]] = None,
                  max_target_capacity: Optional[pulumi.Input[str]] = None,
                  maximum: Optional[pulumi.Input[str]] = None,
@@ -7148,7 +7148,7 @@ class MrScalarTaskScalingDownPolicyArgs:
         :param pulumi.Input[str] action_type: The type of action to perform. Allowed values are : 'adjustment', 'setMinTarget', 'setMaxTarget', 'updateCapacity', 'percentageAdjustment'
         :param pulumi.Input[str] adjustment: The number of instances to add/remove to/from the target capacity when scale is needed.
         :param pulumi.Input[int] cooldown: The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
-        :param pulumi.Input[Mapping[str, Any]] dimensions: A mapping of dimensions describing qualities of the metric.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] dimensions: A mapping of dimensions describing qualities of the metric.
         :param pulumi.Input[str] max_target_capacity: Max target capacity for scale down.
         :param pulumi.Input[str] maximum: The maximum to set when scale is needed.
         :param pulumi.Input[str] min_target_capacity: Min target capacity for scale up.
@@ -7273,14 +7273,14 @@ class MrScalarTaskScalingDownPolicyArgs:
 
     @property
     @pulumi.getter
-    def dimensions(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def dimensions(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of dimensions describing qualities of the metric.
         """
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
-    def dimensions(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def dimensions(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "dimensions", value)
 
     @property
@@ -7391,7 +7391,7 @@ class MrScalarTaskScalingUpPolicyArgs:
                  action_type: Optional[pulumi.Input[str]] = None,
                  adjustment: Optional[pulumi.Input[str]] = None,
                  cooldown: Optional[pulumi.Input[int]] = None,
-                 dimensions: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 dimensions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  evaluation_periods: Optional[pulumi.Input[int]] = None,
                  max_target_capacity: Optional[pulumi.Input[str]] = None,
                  maximum: Optional[pulumi.Input[str]] = None,
@@ -7406,7 +7406,7 @@ class MrScalarTaskScalingUpPolicyArgs:
         :param pulumi.Input[str] action_type: The type of action to perform. Allowed values are : 'adjustment', 'setMinTarget', 'setMaxTarget', 'updateCapacity', 'percentageAdjustment'
         :param pulumi.Input[str] adjustment: The number of instances to add/remove to/from the target capacity when scale is needed.
         :param pulumi.Input[int] cooldown: The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
-        :param pulumi.Input[Mapping[str, Any]] dimensions: A mapping of dimensions describing qualities of the metric.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] dimensions: A mapping of dimensions describing qualities of the metric.
         :param pulumi.Input[str] max_target_capacity: Max target capacity for scale down.
         :param pulumi.Input[str] maximum: The maximum to set when scale is needed.
         :param pulumi.Input[str] min_target_capacity: Min target capacity for scale up.
@@ -7531,14 +7531,14 @@ class MrScalarTaskScalingUpPolicyArgs:
 
     @property
     @pulumi.getter
-    def dimensions(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def dimensions(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of dimensions describing qualities of the metric.
         """
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
-    def dimensions(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def dimensions(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "dimensions", value)
 
     @property

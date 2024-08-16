@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -35,7 +34,7 @@ public final class MrScalarTaskScalingDownPolicy {
      * @return A mapping of dimensions describing qualities of the metric.
      * 
      */
-    private @Nullable Map<String,Object> dimensions;
+    private @Nullable Map<String,String> dimensions;
     private @Nullable Integer evaluationPeriods;
     /**
      * @return Max target capacity for scale down.
@@ -101,7 +100,7 @@ public final class MrScalarTaskScalingDownPolicy {
      * @return A mapping of dimensions describing qualities of the metric.
      * 
      */
-    public Map<String,Object> dimensions() {
+    public Map<String,String> dimensions() {
         return this.dimensions == null ? Map.of() : this.dimensions;
     }
     public Optional<Integer> evaluationPeriods() {
@@ -183,7 +182,7 @@ public final class MrScalarTaskScalingDownPolicy {
         private @Nullable String actionType;
         private @Nullable String adjustment;
         private @Nullable Integer cooldown;
-        private @Nullable Map<String,Object> dimensions;
+        private @Nullable Map<String,String> dimensions;
         private @Nullable Integer evaluationPeriods;
         private @Nullable String maxTargetCapacity;
         private @Nullable String maximum;
@@ -240,7 +239,7 @@ public final class MrScalarTaskScalingDownPolicy {
             return this;
         }
         @CustomType.Setter
-        public Builder dimensions(@Nullable Map<String,Object> dimensions) {
+        public Builder dimensions(@Nullable Map<String,String> dimensions) {
 
             this.dimensions = dimensions;
             return this;

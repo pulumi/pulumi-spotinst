@@ -5,7 +5,6 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -39,13 +38,13 @@ public final class OceanExtendedResourceDefinitionState extends com.pulumi.resou
      * 
      */
     @Import(name="resourceMapping")
-    private @Nullable Output<Map<String,Object>> resourceMapping;
+    private @Nullable Output<Map<String,String>> resourceMapping;
 
     /**
      * @return A mapping between AWS instanceType or * as default and its value for the given extended resource.
      * 
      */
-    public Optional<Output<Map<String,Object>>> resourceMapping() {
+    public Optional<Output<Map<String,String>>> resourceMapping() {
         return Optional.ofNullable(this.resourceMapping);
     }
 
@@ -103,7 +102,7 @@ public final class OceanExtendedResourceDefinitionState extends com.pulumi.resou
          * @return builder
          * 
          */
-        public Builder resourceMapping(@Nullable Output<Map<String,Object>> resourceMapping) {
+        public Builder resourceMapping(@Nullable Output<Map<String,String>> resourceMapping) {
             $.resourceMapping = resourceMapping;
             return this;
         }
@@ -114,7 +113,7 @@ public final class OceanExtendedResourceDefinitionState extends com.pulumi.resou
          * @return builder
          * 
          */
-        public Builder resourceMapping(Map<String,Object> resourceMapping) {
+        public Builder resourceMapping(Map<String,String> resourceMapping) {
             return resourceMapping(Output.of(resourceMapping));
         }
 

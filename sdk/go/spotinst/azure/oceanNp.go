@@ -77,7 +77,7 @@ type OceanNp struct {
 	// The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
 	KubernetesVersion pulumi.StringPtrOutput `pulumi:"kubernetesVersion"`
 	// An array of labels to add to the virtual node group. Only custom user labels are allowed, and not [Kubernetes well-known labels](https://kubernetes.io/docs/reference/labels-annotations-taints/) or [ Azure AKS labels](https://learn.microsoft.com/en-us/azure/aks/use-labels) or [Spot labels](https://docs.spot.io/ocean/features/labels-and-taints?id=spot-labels).
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Custom Linux OS configuration.
 	LinuxOsConfigs OceanNpLinuxOsConfigArrayOutput `pulumi:"linuxOsConfigs"`
 	// Maximum node count limit.
@@ -100,8 +100,8 @@ type OceanNp struct {
 	PodSubnetIds pulumi.StringArrayOutput   `pulumi:"podSubnetIds"`
 	Scheduling   OceanNpSchedulingPtrOutput `pulumi:"scheduling"`
 	// Percentage of spot VMs to maintain.
-	SpotPercentage pulumi.IntPtrOutput `pulumi:"spotPercentage"`
-	Tags           pulumi.MapOutput    `pulumi:"tags"`
+	SpotPercentage pulumi.IntPtrOutput    `pulumi:"spotPercentage"`
+	Tags           pulumi.StringMapOutput `pulumi:"tags"`
 	// Add taints to a virtual node group. Only custom user taints are allowed, and not [Kubernetes well-known taints](https://kubernetes.io/docs/reference/labels-annotations-taints/) or Azure AKS [ScaleSetPrioirty (Spot VM) taint](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool). For all Spot VMs, AKS injects a taint kubernetes.azure.com/scalesetpriority=spot:NoSchedule, to ensure that only workloads that can handle interruptions are scheduled on Spot nodes. To [schedule a pod to run on Spot node](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool#schedule-a-pod-to-run-on-the-spot-node), add a toleration but dont include the nodeAffinity (not supported for Spot Ocean), this will prevent the pod from being scheduled using Spot Ocean.
 	Taints       OceanNpTaintArrayOutput      `pulumi:"taints"`
 	UpdatePolicy OceanNpUpdatePolicyPtrOutput `pulumi:"updatePolicy"`
@@ -180,7 +180,7 @@ type oceanNpState struct {
 	// The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
 	KubernetesVersion *string `pulumi:"kubernetesVersion"`
 	// An array of labels to add to the virtual node group. Only custom user labels are allowed, and not [Kubernetes well-known labels](https://kubernetes.io/docs/reference/labels-annotations-taints/) or [ Azure AKS labels](https://learn.microsoft.com/en-us/azure/aks/use-labels) or [Spot labels](https://docs.spot.io/ocean/features/labels-and-taints?id=spot-labels).
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// Custom Linux OS configuration.
 	LinuxOsConfigs []OceanNpLinuxOsConfig `pulumi:"linuxOsConfigs"`
 	// Maximum node count limit.
@@ -203,8 +203,8 @@ type oceanNpState struct {
 	PodSubnetIds []string           `pulumi:"podSubnetIds"`
 	Scheduling   *OceanNpScheduling `pulumi:"scheduling"`
 	// Percentage of spot VMs to maintain.
-	SpotPercentage *int                   `pulumi:"spotPercentage"`
-	Tags           map[string]interface{} `pulumi:"tags"`
+	SpotPercentage *int              `pulumi:"spotPercentage"`
+	Tags           map[string]string `pulumi:"tags"`
 	// Add taints to a virtual node group. Only custom user taints are allowed, and not [Kubernetes well-known taints](https://kubernetes.io/docs/reference/labels-annotations-taints/) or Azure AKS [ScaleSetPrioirty (Spot VM) taint](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool). For all Spot VMs, AKS injects a taint kubernetes.azure.com/scalesetpriority=spot:NoSchedule, to ensure that only workloads that can handle interruptions are scheduled on Spot nodes. To [schedule a pod to run on Spot node](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool#schedule-a-pod-to-run-on-the-spot-node), add a toleration but dont include the nodeAffinity (not supported for Spot Ocean), this will prevent the pod from being scheduled using Spot Ocean.
 	Taints       []OceanNpTaint       `pulumi:"taints"`
 	UpdatePolicy *OceanNpUpdatePolicy `pulumi:"updatePolicy"`
@@ -236,7 +236,7 @@ type OceanNpState struct {
 	// The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
 	KubernetesVersion pulumi.StringPtrInput
 	// An array of labels to add to the virtual node group. Only custom user labels are allowed, and not [Kubernetes well-known labels](https://kubernetes.io/docs/reference/labels-annotations-taints/) or [ Azure AKS labels](https://learn.microsoft.com/en-us/azure/aks/use-labels) or [Spot labels](https://docs.spot.io/ocean/features/labels-and-taints?id=spot-labels).
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// Custom Linux OS configuration.
 	LinuxOsConfigs OceanNpLinuxOsConfigArrayInput
 	// Maximum node count limit.
@@ -260,7 +260,7 @@ type OceanNpState struct {
 	Scheduling   OceanNpSchedulingPtrInput
 	// Percentage of spot VMs to maintain.
 	SpotPercentage pulumi.IntPtrInput
-	Tags           pulumi.MapInput
+	Tags           pulumi.StringMapInput
 	// Add taints to a virtual node group. Only custom user taints are allowed, and not [Kubernetes well-known taints](https://kubernetes.io/docs/reference/labels-annotations-taints/) or Azure AKS [ScaleSetPrioirty (Spot VM) taint](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool). For all Spot VMs, AKS injects a taint kubernetes.azure.com/scalesetpriority=spot:NoSchedule, to ensure that only workloads that can handle interruptions are scheduled on Spot nodes. To [schedule a pod to run on Spot node](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool#schedule-a-pod-to-run-on-the-spot-node), add a toleration but dont include the nodeAffinity (not supported for Spot Ocean), this will prevent the pod from being scheduled using Spot Ocean.
 	Taints       OceanNpTaintArrayInput
 	UpdatePolicy OceanNpUpdatePolicyPtrInput
@@ -296,7 +296,7 @@ type oceanNpArgs struct {
 	// The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
 	KubernetesVersion *string `pulumi:"kubernetesVersion"`
 	// An array of labels to add to the virtual node group. Only custom user labels are allowed, and not [Kubernetes well-known labels](https://kubernetes.io/docs/reference/labels-annotations-taints/) or [ Azure AKS labels](https://learn.microsoft.com/en-us/azure/aks/use-labels) or [Spot labels](https://docs.spot.io/ocean/features/labels-and-taints?id=spot-labels).
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// Custom Linux OS configuration.
 	LinuxOsConfigs []OceanNpLinuxOsConfig `pulumi:"linuxOsConfigs"`
 	// Maximum node count limit.
@@ -319,8 +319,8 @@ type oceanNpArgs struct {
 	PodSubnetIds []string           `pulumi:"podSubnetIds"`
 	Scheduling   *OceanNpScheduling `pulumi:"scheduling"`
 	// Percentage of spot VMs to maintain.
-	SpotPercentage *int                   `pulumi:"spotPercentage"`
-	Tags           map[string]interface{} `pulumi:"tags"`
+	SpotPercentage *int              `pulumi:"spotPercentage"`
+	Tags           map[string]string `pulumi:"tags"`
 	// Add taints to a virtual node group. Only custom user taints are allowed, and not [Kubernetes well-known taints](https://kubernetes.io/docs/reference/labels-annotations-taints/) or Azure AKS [ScaleSetPrioirty (Spot VM) taint](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool). For all Spot VMs, AKS injects a taint kubernetes.azure.com/scalesetpriority=spot:NoSchedule, to ensure that only workloads that can handle interruptions are scheduled on Spot nodes. To [schedule a pod to run on Spot node](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool#schedule-a-pod-to-run-on-the-spot-node), add a toleration but dont include the nodeAffinity (not supported for Spot Ocean), this will prevent the pod from being scheduled using Spot Ocean.
 	Taints       []OceanNpTaint       `pulumi:"taints"`
 	UpdatePolicy *OceanNpUpdatePolicy `pulumi:"updatePolicy"`
@@ -353,7 +353,7 @@ type OceanNpArgs struct {
 	// The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
 	KubernetesVersion pulumi.StringPtrInput
 	// An array of labels to add to the virtual node group. Only custom user labels are allowed, and not [Kubernetes well-known labels](https://kubernetes.io/docs/reference/labels-annotations-taints/) or [ Azure AKS labels](https://learn.microsoft.com/en-us/azure/aks/use-labels) or [Spot labels](https://docs.spot.io/ocean/features/labels-and-taints?id=spot-labels).
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// Custom Linux OS configuration.
 	LinuxOsConfigs OceanNpLinuxOsConfigArrayInput
 	// Maximum node count limit.
@@ -377,7 +377,7 @@ type OceanNpArgs struct {
 	Scheduling   OceanNpSchedulingPtrInput
 	// Percentage of spot VMs to maintain.
 	SpotPercentage pulumi.IntPtrInput
-	Tags           pulumi.MapInput
+	Tags           pulumi.StringMapInput
 	// Add taints to a virtual node group. Only custom user taints are allowed, and not [Kubernetes well-known taints](https://kubernetes.io/docs/reference/labels-annotations-taints/) or Azure AKS [ScaleSetPrioirty (Spot VM) taint](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool). For all Spot VMs, AKS injects a taint kubernetes.azure.com/scalesetpriority=spot:NoSchedule, to ensure that only workloads that can handle interruptions are scheduled on Spot nodes. To [schedule a pod to run on Spot node](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool#schedule-a-pod-to-run-on-the-spot-node), add a toleration but dont include the nodeAffinity (not supported for Spot Ocean), this will prevent the pod from being scheduled using Spot Ocean.
 	Taints       OceanNpTaintArrayInput
 	UpdatePolicy OceanNpUpdatePolicyPtrInput
@@ -534,8 +534,8 @@ func (o OceanNpOutput) KubernetesVersion() pulumi.StringPtrOutput {
 }
 
 // An array of labels to add to the virtual node group. Only custom user labels are allowed, and not [Kubernetes well-known labels](https://kubernetes.io/docs/reference/labels-annotations-taints/) or [ Azure AKS labels](https://learn.microsoft.com/en-us/azure/aks/use-labels) or [Spot labels](https://docs.spot.io/ocean/features/labels-and-taints?id=spot-labels).
-func (o OceanNpOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *OceanNp) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o OceanNpOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *OceanNp) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // Custom Linux OS configuration.
@@ -597,8 +597,8 @@ func (o OceanNpOutput) SpotPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanNp) pulumi.IntPtrOutput { return v.SpotPercentage }).(pulumi.IntPtrOutput)
 }
 
-func (o OceanNpOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *OceanNp) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o OceanNpOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *OceanNp) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Add taints to a virtual node group. Only custom user taints are allowed, and not [Kubernetes well-known taints](https://kubernetes.io/docs/reference/labels-annotations-taints/) or Azure AKS [ScaleSetPrioirty (Spot VM) taint](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool). For all Spot VMs, AKS injects a taint kubernetes.azure.com/scalesetpriority=spot:NoSchedule, to ensure that only workloads that can handle interruptions are scheduled on Spot nodes. To [schedule a pod to run on Spot node](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool#schedule-a-pod-to-run-on-the-spot-node), add a toleration but dont include the nodeAffinity (not supported for Spot Ocean), this will prevent the pod from being scheduled using Spot Ocean.
