@@ -151,7 +151,7 @@ export class OceanNpVirtualNodeGroup extends pulumi.CustomResource {
     /**
      * An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Custom Linux OS configuration.
      */
@@ -200,7 +200,7 @@ export class OceanNpVirtualNodeGroup extends pulumi.CustomResource {
      * Percentage of spot VMs to maintain.
      */
     public readonly spotPercentage!: pulumi.Output<number | undefined>;
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Add taints to a virtual node group.
      */
@@ -312,7 +312,7 @@ export interface OceanNpVirtualNodeGroupState {
     /**
      * An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Custom Linux OS configuration.
      */
@@ -361,7 +361,7 @@ export interface OceanNpVirtualNodeGroupState {
      * Percentage of spot VMs to maintain.
      */
     spotPercentage?: pulumi.Input<number>;
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Add taints to a virtual node group.
      */
@@ -404,7 +404,7 @@ export interface OceanNpVirtualNodeGroupArgs {
     /**
      * An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Custom Linux OS configuration.
      */
@@ -453,7 +453,7 @@ export interface OceanNpVirtualNodeGroupArgs {
      * Percentage of spot VMs to maintain.
      */
     spotPercentage?: pulumi.Input<number>;
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Add taints to a virtual node group.
      */

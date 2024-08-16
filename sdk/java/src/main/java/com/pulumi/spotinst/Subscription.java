@@ -10,7 +10,6 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.spotinst.SubscriptionArgs;
 import com.pulumi.spotinst.Utilities;
 import com.pulumi.spotinst.inputs.SubscriptionState;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -124,8 +123,8 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * Default: {`&#34;event&#34;`: `&#34;&lt;event&gt;&#34;`, `&#34;instanceId&#34;`: `&#34;&lt;instance-id&gt;&#34;`, `&#34;resourceId&#34;`: `&#34;&lt;resource-id&gt;&#34;`, `&#34;resourceName&#34;`: `&#34;&lt;resource-name&gt;&#34;` }.
      * 
      */
-    @Export(name="format", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> format;
+    @Export(name="format", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> format;
 
     /**
      * @return The format of the notification content (JSON Format - Key+Value). Valid Values : `&#34;instance-id&#34;`, `&#34;event&#34;`, `&#34;resource-id&#34;`, `&#34;resource-name&#34;`, `&#34;subnet-id&#34;`, `&#34;availability-zone&#34;`, `&#34;reason&#34;`, `&#34;private-ip&#34;`, `&#34;launchspec-id&#34;`
@@ -133,7 +132,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * Default: {`&#34;event&#34;`: `&#34;&lt;event&gt;&#34;`, `&#34;instanceId&#34;`: `&#34;&lt;instance-id&gt;&#34;`, `&#34;resourceId&#34;`: `&#34;&lt;resource-id&gt;&#34;`, `&#34;resourceName&#34;`: `&#34;&lt;resource-name&gt;&#34;` }.
      * 
      */
-    public Output<Optional<Map<String,Object>>> format() {
+    public Output<Optional<Map<String,String>>> format() {
         return Codegen.optional(this.format);
     }
     /**

@@ -18,7 +18,7 @@ class SubscriptionArgs:
                  event_type: pulumi.Input[str],
                  protocol: pulumi.Input[str],
                  resource_id: pulumi.Input[str],
-                 format: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 format: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Subscription resource.
         :param pulumi.Input[str] endpoint: The endpoint the notification will be sent to. url in case of `"http"`/`"https"`/`"web"`, email address in case of `"email"`/`"email-json"` and sns-topic-arn in case of `"aws-sns"`.
@@ -39,7 +39,7 @@ class SubscriptionArgs:
                You can use the generic `"web"` protocol instead.
                `"aws-sns"` is only supported with AWS provider
         :param pulumi.Input[str] resource_id: Spotinst Resource id (Elastigroup or Ocean ID).
-        :param pulumi.Input[Mapping[str, Any]] format: The format of the notification content (JSON Format - Key+Value). Valid Values : `"instance-id"`, `"event"`, `"resource-id"`, `"resource-name"`, `"subnet-id"`, `"availability-zone"`, `"reason"`, `"private-ip"`, `"launchspec-id"`
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] format: The format of the notification content (JSON Format - Key+Value). Valid Values : `"instance-id"`, `"event"`, `"resource-id"`, `"resource-name"`, `"subnet-id"`, `"availability-zone"`, `"reason"`, `"private-ip"`, `"launchspec-id"`
                Example: {"event": `"event"`, `"resourceId"`: `"resource-id"`, `"resourceName"`: `"resource-name"`", `"myCustomKey"`: `"My content is set here"` }
                Default: {`"event"`: `"<event>"`, `"instanceId"`: `"<instance-id>"`, `"resourceId"`: `"<resource-id>"`, `"resourceName"`: `"<resource-name>"` }.
         """
@@ -114,7 +114,7 @@ class SubscriptionArgs:
 
     @property
     @pulumi.getter
-    def format(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def format(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The format of the notification content (JSON Format - Key+Value). Valid Values : `"instance-id"`, `"event"`, `"resource-id"`, `"resource-name"`, `"subnet-id"`, `"availability-zone"`, `"reason"`, `"private-ip"`, `"launchspec-id"`
         Example: {"event": `"event"`, `"resourceId"`: `"resource-id"`, `"resourceName"`: `"resource-name"`", `"myCustomKey"`: `"My content is set here"` }
@@ -123,7 +123,7 @@ class SubscriptionArgs:
         return pulumi.get(self, "format")
 
     @format.setter
-    def format(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def format(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "format", value)
 
 
@@ -132,7 +132,7 @@ class _SubscriptionState:
     def __init__(__self__, *,
                  endpoint: Optional[pulumi.Input[str]] = None,
                  event_type: Optional[pulumi.Input[str]] = None,
-                 format: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 format: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  resource_id: Optional[pulumi.Input[str]] = None):
         """
@@ -150,7 +150,7 @@ class _SubscriptionState:
                `"AWS_EC2_MANAGED_INSTANCE_RECYCLING"`,`"AWS_EC2_MANAGED_INSTANCE_DELETING"`.
                Ocean Events:`"CLUSTER_ROLL_FINISHED"`,`"GROUP_ROLL_FAILED"`,`"OCEAN_CANT_SCALE_UP_MAX_RESOURCES"`
                `"OCEAN_LAUNCH_SPEC_CANT_SCALE_UP_MAX_INSTANCES"`,`"OCEAN_K8S_NODE_REMOVED"`.
-        :param pulumi.Input[Mapping[str, Any]] format: The format of the notification content (JSON Format - Key+Value). Valid Values : `"instance-id"`, `"event"`, `"resource-id"`, `"resource-name"`, `"subnet-id"`, `"availability-zone"`, `"reason"`, `"private-ip"`, `"launchspec-id"`
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] format: The format of the notification content (JSON Format - Key+Value). Valid Values : `"instance-id"`, `"event"`, `"resource-id"`, `"resource-name"`, `"subnet-id"`, `"availability-zone"`, `"reason"`, `"private-ip"`, `"launchspec-id"`
                Example: {"event": `"event"`, `"resourceId"`: `"resource-id"`, `"resourceName"`: `"resource-name"`", `"myCustomKey"`: `"My content is set here"` }
                Default: {`"event"`: `"<event>"`, `"instanceId"`: `"<instance-id>"`, `"resourceId"`: `"<resource-id>"`, `"resourceName"`: `"<resource-name>"` }.
         :param pulumi.Input[str] protocol: The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`. 
@@ -207,7 +207,7 @@ class _SubscriptionState:
 
     @property
     @pulumi.getter
-    def format(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def format(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The format of the notification content (JSON Format - Key+Value). Valid Values : `"instance-id"`, `"event"`, `"resource-id"`, `"resource-name"`, `"subnet-id"`, `"availability-zone"`, `"reason"`, `"private-ip"`, `"launchspec-id"`
         Example: {"event": `"event"`, `"resourceId"`: `"resource-id"`, `"resourceName"`: `"resource-name"`", `"myCustomKey"`: `"My content is set here"` }
@@ -216,7 +216,7 @@ class _SubscriptionState:
         return pulumi.get(self, "format")
 
     @format.setter
-    def format(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def format(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "format", value)
 
     @property
@@ -254,7 +254,7 @@ class Subscription(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
                  event_type: Optional[pulumi.Input[str]] = None,
-                 format: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 format: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  resource_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -297,7 +297,7 @@ class Subscription(pulumi.CustomResource):
                `"AWS_EC2_MANAGED_INSTANCE_RECYCLING"`,`"AWS_EC2_MANAGED_INSTANCE_DELETING"`.
                Ocean Events:`"CLUSTER_ROLL_FINISHED"`,`"GROUP_ROLL_FAILED"`,`"OCEAN_CANT_SCALE_UP_MAX_RESOURCES"`
                `"OCEAN_LAUNCH_SPEC_CANT_SCALE_UP_MAX_INSTANCES"`,`"OCEAN_K8S_NODE_REMOVED"`.
-        :param pulumi.Input[Mapping[str, Any]] format: The format of the notification content (JSON Format - Key+Value). Valid Values : `"instance-id"`, `"event"`, `"resource-id"`, `"resource-name"`, `"subnet-id"`, `"availability-zone"`, `"reason"`, `"private-ip"`, `"launchspec-id"`
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] format: The format of the notification content (JSON Format - Key+Value). Valid Values : `"instance-id"`, `"event"`, `"resource-id"`, `"resource-name"`, `"subnet-id"`, `"availability-zone"`, `"reason"`, `"private-ip"`, `"launchspec-id"`
                Example: {"event": `"event"`, `"resourceId"`: `"resource-id"`, `"resourceName"`: `"resource-name"`", `"myCustomKey"`: `"My content is set here"` }
                Default: {`"event"`: `"<event>"`, `"instanceId"`: `"<instance-id>"`, `"resourceId"`: `"<resource-id>"`, `"resourceName"`: `"<resource-name>"` }.
         :param pulumi.Input[str] protocol: The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`. 
@@ -353,7 +353,7 @@ class Subscription(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
                  event_type: Optional[pulumi.Input[str]] = None,
-                 format: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 format: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  resource_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -390,7 +390,7 @@ class Subscription(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             endpoint: Optional[pulumi.Input[str]] = None,
             event_type: Optional[pulumi.Input[str]] = None,
-            format: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            format: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             protocol: Optional[pulumi.Input[str]] = None,
             resource_id: Optional[pulumi.Input[str]] = None) -> 'Subscription':
         """
@@ -413,7 +413,7 @@ class Subscription(pulumi.CustomResource):
                `"AWS_EC2_MANAGED_INSTANCE_RECYCLING"`,`"AWS_EC2_MANAGED_INSTANCE_DELETING"`.
                Ocean Events:`"CLUSTER_ROLL_FINISHED"`,`"GROUP_ROLL_FAILED"`,`"OCEAN_CANT_SCALE_UP_MAX_RESOURCES"`
                `"OCEAN_LAUNCH_SPEC_CANT_SCALE_UP_MAX_INSTANCES"`,`"OCEAN_K8S_NODE_REMOVED"`.
-        :param pulumi.Input[Mapping[str, Any]] format: The format of the notification content (JSON Format - Key+Value). Valid Values : `"instance-id"`, `"event"`, `"resource-id"`, `"resource-name"`, `"subnet-id"`, `"availability-zone"`, `"reason"`, `"private-ip"`, `"launchspec-id"`
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] format: The format of the notification content (JSON Format - Key+Value). Valid Values : `"instance-id"`, `"event"`, `"resource-id"`, `"resource-name"`, `"subnet-id"`, `"availability-zone"`, `"reason"`, `"private-ip"`, `"launchspec-id"`
                Example: {"event": `"event"`, `"resourceId"`: `"resource-id"`, `"resourceName"`: `"resource-name"`", `"myCustomKey"`: `"My content is set here"` }
                Default: {`"event"`: `"<event>"`, `"instanceId"`: `"<instance-id>"`, `"resourceId"`: `"<resource-id>"`, `"resourceName"`: `"<resource-name>"` }.
         :param pulumi.Input[str] protocol: The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`. 
@@ -462,7 +462,7 @@ class Subscription(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def format(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def format(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The format of the notification content (JSON Format - Key+Value). Valid Values : `"instance-id"`, `"event"`, `"resource-id"`, `"resource-name"`, `"subnet-id"`, `"availability-zone"`, `"reason"`, `"private-ip"`, `"launchspec-id"`
         Example: {"event": `"event"`, `"resourceId"`: `"resource-id"`, `"resourceName"`: `"resource-name"`", `"myCustomKey"`: `"My content is set here"` }

@@ -28,7 +28,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// <summary>
         /// A mapping of dimensions describing qualities of the metric.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Dimensions;
+        public readonly ImmutableDictionary<string, string>? Dimensions;
         public readonly int? EvaluationPeriods;
         /// <summary>
         /// Max target capacity for scale down.
@@ -70,7 +70,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
 
             int? cooldown,
 
-            ImmutableDictionary<string, object>? dimensions,
+            ImmutableDictionary<string, string>? dimensions,
 
             int? evaluationPeriods,
 

@@ -30,9 +30,9 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aws.NewOceanExtendedResourceDefinition(ctx, "example", &aws.OceanExtendedResourceDefinitionArgs{
 //				Name: pulumi.String("terraform_extended_resource_definition"),
-//				ResourceMapping: pulumi.Map{
-//					"c3.large":  pulumi.Any("2Ki"),
-//					"c3.xlarge": pulumi.Any("4Ki"),
+//				ResourceMapping: pulumi.StringMap{
+//					"c3.large":  pulumi.String("2Ki"),
+//					"c3.xlarge": pulumi.String("4Ki"),
 //				},
 //			})
 //			if err != nil {
@@ -50,7 +50,7 @@ type OceanExtendedResourceDefinition struct {
 	// The name should be a valid Kubernetes extended resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A mapping between AWS instanceType or * as default and its value for the given extended resource.
-	ResourceMapping pulumi.MapOutput `pulumi:"resourceMapping"`
+	ResourceMapping pulumi.StringMapOutput `pulumi:"resourceMapping"`
 }
 
 // NewOceanExtendedResourceDefinition registers a new resource with the given unique name, arguments, and options.
@@ -90,7 +90,7 @@ type oceanExtendedResourceDefinitionState struct {
 	// The name should be a valid Kubernetes extended resource name.
 	Name *string `pulumi:"name"`
 	// A mapping between AWS instanceType or * as default and its value for the given extended resource.
-	ResourceMapping map[string]interface{} `pulumi:"resourceMapping"`
+	ResourceMapping map[string]string `pulumi:"resourceMapping"`
 }
 
 type OceanExtendedResourceDefinitionState struct {
@@ -98,7 +98,7 @@ type OceanExtendedResourceDefinitionState struct {
 	// The name should be a valid Kubernetes extended resource name.
 	Name pulumi.StringPtrInput
 	// A mapping between AWS instanceType or * as default and its value for the given extended resource.
-	ResourceMapping pulumi.MapInput
+	ResourceMapping pulumi.StringMapInput
 }
 
 func (OceanExtendedResourceDefinitionState) ElementType() reflect.Type {
@@ -110,7 +110,7 @@ type oceanExtendedResourceDefinitionArgs struct {
 	// The name should be a valid Kubernetes extended resource name.
 	Name *string `pulumi:"name"`
 	// A mapping between AWS instanceType or * as default and its value for the given extended resource.
-	ResourceMapping map[string]interface{} `pulumi:"resourceMapping"`
+	ResourceMapping map[string]string `pulumi:"resourceMapping"`
 }
 
 // The set of arguments for constructing a OceanExtendedResourceDefinition resource.
@@ -119,7 +119,7 @@ type OceanExtendedResourceDefinitionArgs struct {
 	// The name should be a valid Kubernetes extended resource name.
 	Name pulumi.StringPtrInput
 	// A mapping between AWS instanceType or * as default and its value for the given extended resource.
-	ResourceMapping pulumi.MapInput
+	ResourceMapping pulumi.StringMapInput
 }
 
 func (OceanExtendedResourceDefinitionArgs) ElementType() reflect.Type {
@@ -216,8 +216,8 @@ func (o OceanExtendedResourceDefinitionOutput) Name() pulumi.StringOutput {
 }
 
 // A mapping between AWS instanceType or * as default and its value for the given extended resource.
-func (o OceanExtendedResourceDefinitionOutput) ResourceMapping() pulumi.MapOutput {
-	return o.ApplyT(func(v *OceanExtendedResourceDefinition) pulumi.MapOutput { return v.ResourceMapping }).(pulumi.MapOutput)
+func (o OceanExtendedResourceDefinitionOutput) ResourceMapping() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *OceanExtendedResourceDefinition) pulumi.StringMapOutput { return v.ResourceMapping }).(pulumi.StringMapOutput)
 }
 
 type OceanExtendedResourceDefinitionArrayOutput struct{ *pulumi.OutputState }

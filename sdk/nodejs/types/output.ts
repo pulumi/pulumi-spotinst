@@ -236,8 +236,8 @@ export interface StatefulNodeAzureExtension {
     apiVersion: string;
     minorVersionAutoUpgrade: boolean;
     name: string;
-    protectedSettings: {[key: string]: any};
-    publicSettings: {[key: string]: any};
+    protectedSettings: {[key: string]: string};
+    publicSettings: {[key: string]: string};
     publisher: string;
     type: string;
 }
@@ -1804,7 +1804,7 @@ export namespace aws {
         /**
          * A mapping of dimensions describing qualities of the metric.
          */
-        dimensions?: {[key: string]: any};
+        dimensions?: {[key: string]: string};
         evaluationPeriods: number;
         /**
          * Max target capacity for scale down.
@@ -1855,7 +1855,7 @@ export namespace aws {
         /**
          * A mapping of dimensions describing qualities of the metric.
          */
-        dimensions?: {[key: string]: any};
+        dimensions?: {[key: string]: string};
         evaluationPeriods: number;
         /**
          * Max target capacity for scale down.
@@ -1988,7 +1988,7 @@ export namespace aws {
         /**
          * A mapping of dimensions describing qualities of the metric.
          */
-        dimensions?: {[key: string]: any};
+        dimensions?: {[key: string]: string};
         evaluationPeriods: number;
         /**
          * Max target capacity for scale down.
@@ -2039,7 +2039,7 @@ export namespace aws {
         /**
          * A mapping of dimensions describing qualities of the metric.
          */
-        dimensions?: {[key: string]: any};
+        dimensions?: {[key: string]: string};
         evaluationPeriods: number;
         /**
          * Max target capacity for scale down.

@@ -34,12 +34,12 @@ import (
 //				EventType:  pulumi.String("AWS_EC2_INSTANCE_LAUNCH"),
 //				Protocol:   pulumi.String("http"),
 //				Endpoint:   pulumi.String("http://endpoint.com"),
-//				Format: pulumi.Map{
-//					"event":         pulumi.Any("%event%"),
-//					"instance_id":   pulumi.Any("%instance-id%"),
-//					"resource_id":   pulumi.Any("%resource-id%"),
-//					"resource_name": pulumi.Any("%resource-name%"),
-//					"tags":          pulumi.Any("foo,baz,baz"),
+//				Format: pulumi.StringMap{
+//					"event":         pulumi.String("%event%"),
+//					"instance_id":   pulumi.String("%instance-id%"),
+//					"resource_id":   pulumi.String("%resource-id%"),
+//					"resource_name": pulumi.String("%resource-name%"),
+//					"tags":          pulumi.String("foo,baz,baz"),
 //				},
 //			})
 //			if err != nil {
@@ -71,7 +71,7 @@ type Subscription struct {
 	// The format of the notification content (JSON Format - Key+Value). Valid Values : `"instance-id"`, `"event"`, `"resource-id"`, `"resource-name"`, `"subnet-id"`, `"availability-zone"`, `"reason"`, `"private-ip"`, `"launchspec-id"`
 	// Example: {"event": `"event"`, `"resourceId"`: `"resource-id"`, `"resourceName"`: `"resource-name"`", `"myCustomKey"`: `"My content is set here"` }
 	// Default: {`"event"`: `"<event>"`, `"instanceId"`: `"<instance-id>"`, `"resourceId"`: `"<resource-id>"`, `"resourceName"`: `"<resource-name>"` }.
-	Format pulumi.MapOutput `pulumi:"format"`
+	Format pulumi.StringMapOutput `pulumi:"format"`
 	// The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`.
 	// The following values are deprecated: `"http"` , `"https"`
 	// You can use the generic `"web"` protocol instead.
@@ -141,7 +141,7 @@ type subscriptionState struct {
 	// The format of the notification content (JSON Format - Key+Value). Valid Values : `"instance-id"`, `"event"`, `"resource-id"`, `"resource-name"`, `"subnet-id"`, `"availability-zone"`, `"reason"`, `"private-ip"`, `"launchspec-id"`
 	// Example: {"event": `"event"`, `"resourceId"`: `"resource-id"`, `"resourceName"`: `"resource-name"`", `"myCustomKey"`: `"My content is set here"` }
 	// Default: {`"event"`: `"<event>"`, `"instanceId"`: `"<instance-id>"`, `"resourceId"`: `"<resource-id>"`, `"resourceName"`: `"<resource-name>"` }.
-	Format map[string]interface{} `pulumi:"format"`
+	Format map[string]string `pulumi:"format"`
 	// The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`.
 	// The following values are deprecated: `"http"` , `"https"`
 	// You can use the generic `"web"` protocol instead.
@@ -170,7 +170,7 @@ type SubscriptionState struct {
 	// The format of the notification content (JSON Format - Key+Value). Valid Values : `"instance-id"`, `"event"`, `"resource-id"`, `"resource-name"`, `"subnet-id"`, `"availability-zone"`, `"reason"`, `"private-ip"`, `"launchspec-id"`
 	// Example: {"event": `"event"`, `"resourceId"`: `"resource-id"`, `"resourceName"`: `"resource-name"`", `"myCustomKey"`: `"My content is set here"` }
 	// Default: {`"event"`: `"<event>"`, `"instanceId"`: `"<instance-id>"`, `"resourceId"`: `"<resource-id>"`, `"resourceName"`: `"<resource-name>"` }.
-	Format pulumi.MapInput
+	Format pulumi.StringMapInput
 	// The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`.
 	// The following values are deprecated: `"http"` , `"https"`
 	// You can use the generic `"web"` protocol instead.
@@ -203,7 +203,7 @@ type subscriptionArgs struct {
 	// The format of the notification content (JSON Format - Key+Value). Valid Values : `"instance-id"`, `"event"`, `"resource-id"`, `"resource-name"`, `"subnet-id"`, `"availability-zone"`, `"reason"`, `"private-ip"`, `"launchspec-id"`
 	// Example: {"event": `"event"`, `"resourceId"`: `"resource-id"`, `"resourceName"`: `"resource-name"`", `"myCustomKey"`: `"My content is set here"` }
 	// Default: {`"event"`: `"<event>"`, `"instanceId"`: `"<instance-id>"`, `"resourceId"`: `"<resource-id>"`, `"resourceName"`: `"<resource-name>"` }.
-	Format map[string]interface{} `pulumi:"format"`
+	Format map[string]string `pulumi:"format"`
 	// The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`.
 	// The following values are deprecated: `"http"` , `"https"`
 	// You can use the generic `"web"` protocol instead.
@@ -233,7 +233,7 @@ type SubscriptionArgs struct {
 	// The format of the notification content (JSON Format - Key+Value). Valid Values : `"instance-id"`, `"event"`, `"resource-id"`, `"resource-name"`, `"subnet-id"`, `"availability-zone"`, `"reason"`, `"private-ip"`, `"launchspec-id"`
 	// Example: {"event": `"event"`, `"resourceId"`: `"resource-id"`, `"resourceName"`: `"resource-name"`", `"myCustomKey"`: `"My content is set here"` }
 	// Default: {`"event"`: `"<event>"`, `"instanceId"`: `"<instance-id>"`, `"resourceId"`: `"<resource-id>"`, `"resourceName"`: `"<resource-name>"` }.
-	Format pulumi.MapInput
+	Format pulumi.StringMapInput
 	// The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`.
 	// The following values are deprecated: `"http"` , `"https"`
 	// You can use the generic `"web"` protocol instead.
@@ -354,8 +354,8 @@ func (o SubscriptionOutput) EventType() pulumi.StringOutput {
 // The format of the notification content (JSON Format - Key+Value). Valid Values : `"instance-id"`, `"event"`, `"resource-id"`, `"resource-name"`, `"subnet-id"`, `"availability-zone"`, `"reason"`, `"private-ip"`, `"launchspec-id"`
 // Example: {"event": `"event"`, `"resourceId"`: `"resource-id"`, `"resourceName"`: `"resource-name"`", `"myCustomKey"`: `"My content is set here"` }
 // Default: {`"event"`: `"<event>"`, `"instanceId"`: `"<instance-id>"`, `"resourceId"`: `"<resource-id>"`, `"resourceName"`: `"<resource-name>"` }.
-func (o SubscriptionOutput) Format() pulumi.MapOutput {
-	return o.ApplyT(func(v *Subscription) pulumi.MapOutput { return v.Format }).(pulumi.MapOutput)
+func (o SubscriptionOutput) Format() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Subscription) pulumi.StringMapOutput { return v.Format }).(pulumi.StringMapOutput)
 }
 
 // The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`.

@@ -13,7 +13,6 @@ import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupTaintArgs;
 import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupUpdatePolicyArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -121,13 +120,13 @@ public final class OceanNpVirtualNodeGroupArgs extends com.pulumi.resources.Reso
      * 
      */
     @Import(name="labels")
-    private @Nullable Output<Map<String,Object>> labels;
+    private @Nullable Output<Map<String,String>> labels;
 
     /**
      * @return An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
      * 
      */
-    public Optional<Output<Map<String,Object>>> labels() {
+    public Optional<Output<Map<String,String>>> labels() {
         return Optional.ofNullable(this.labels);
     }
 
@@ -312,9 +311,9 @@ public final class OceanNpVirtualNodeGroupArgs extends com.pulumi.resources.Reso
     }
 
     @Import(name="tags")
-    private @Nullable Output<Map<String,Object>> tags;
+    private @Nullable Output<Map<String,String>> tags;
 
-    public Optional<Output<Map<String,Object>>> tags() {
+    public Optional<Output<Map<String,String>>> tags() {
         return Optional.ofNullable(this.tags);
     }
 
@@ -553,7 +552,7 @@ public final class OceanNpVirtualNodeGroupArgs extends com.pulumi.resources.Reso
          * @return builder
          * 
          */
-        public Builder labels(@Nullable Output<Map<String,Object>> labels) {
+        public Builder labels(@Nullable Output<Map<String,String>> labels) {
             $.labels = labels;
             return this;
         }
@@ -564,7 +563,7 @@ public final class OceanNpVirtualNodeGroupArgs extends com.pulumi.resources.Reso
          * @return builder
          * 
          */
-        public Builder labels(Map<String,Object> labels) {
+        public Builder labels(Map<String,String> labels) {
             return labels(Output.of(labels));
         }
 
@@ -840,12 +839,12 @@ public final class OceanNpVirtualNodeGroupArgs extends com.pulumi.resources.Reso
             return spotPercentage(Output.of(spotPercentage));
         }
 
-        public Builder tags(@Nullable Output<Map<String,Object>> tags) {
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
             $.tags = tags;
             return this;
         }
 
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             return tags(Output.of(tags));
         }
 

@@ -44,9 +44,9 @@ import (
 //					pulumi.String("2"),
 //					pulumi.String("3"),
 //				},
-//				Labels: pulumi.Map{
-//					"key":   pulumi.Any("env"),
-//					"value": pulumi.Any("test"),
+//				Labels: pulumi.StringMap{
+//					"key":   pulumi.String("env"),
+//					"value": pulumi.String("test"),
 //				},
 //				MinCount:           pulumi.Int(1),
 //				MaxCount:           pulumi.Int(100),
@@ -81,9 +81,9 @@ import (
 //						Effect: pulumi.String("NoSchedule"),
 //					},
 //				},
-//				Tags: pulumi.Map{
-//					"tagKey":   pulumi.Any("env"),
-//					"tagValue": pulumi.Any("staging"),
+//				Tags: pulumi.StringMap{
+//					"tagKey":   pulumi.String("env"),
+//					"tagValue": pulumi.String("staging"),
 //				},
 //				Filters: &azure.OceanNpVirtualNodeGroupFiltersArgs{
 //					MinVcpu:      pulumi.Int(2),
@@ -145,7 +145,7 @@ type OceanNpVirtualNodeGroup struct {
 	// The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
 	KubernetesVersion pulumi.StringPtrOutput `pulumi:"kubernetesVersion"`
 	// An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Custom Linux OS configuration.
 	LinuxOsConfigs OceanNpVirtualNodeGroupLinuxOsConfigArrayOutput `pulumi:"linuxOsConfigs"`
 	// Maximum node count limit.
@@ -169,8 +169,8 @@ type OceanNpVirtualNodeGroup struct {
 	// The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
 	PodSubnetIds pulumi.StringArrayOutput `pulumi:"podSubnetIds"`
 	// Percentage of spot VMs to maintain.
-	SpotPercentage pulumi.IntPtrOutput `pulumi:"spotPercentage"`
-	Tags           pulumi.MapOutput    `pulumi:"tags"`
+	SpotPercentage pulumi.IntPtrOutput    `pulumi:"spotPercentage"`
+	Tags           pulumi.StringMapOutput `pulumi:"tags"`
 	// Add taints to a virtual node group.
 	Taints       OceanNpVirtualNodeGroupTaintArrayOutput      `pulumi:"taints"`
 	UpdatePolicy OceanNpVirtualNodeGroupUpdatePolicyPtrOutput `pulumi:"updatePolicy"`
@@ -224,7 +224,7 @@ type oceanNpVirtualNodeGroupState struct {
 	// The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
 	KubernetesVersion *string `pulumi:"kubernetesVersion"`
 	// An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// Custom Linux OS configuration.
 	LinuxOsConfigs []OceanNpVirtualNodeGroupLinuxOsConfig `pulumi:"linuxOsConfigs"`
 	// Maximum node count limit.
@@ -248,8 +248,8 @@ type oceanNpVirtualNodeGroupState struct {
 	// The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
 	PodSubnetIds []string `pulumi:"podSubnetIds"`
 	// Percentage of spot VMs to maintain.
-	SpotPercentage *int                   `pulumi:"spotPercentage"`
-	Tags           map[string]interface{} `pulumi:"tags"`
+	SpotPercentage *int              `pulumi:"spotPercentage"`
+	Tags           map[string]string `pulumi:"tags"`
 	// Add taints to a virtual node group.
 	Taints       []OceanNpVirtualNodeGroupTaint       `pulumi:"taints"`
 	UpdatePolicy *OceanNpVirtualNodeGroupUpdatePolicy `pulumi:"updatePolicy"`
@@ -271,7 +271,7 @@ type OceanNpVirtualNodeGroupState struct {
 	// The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
 	KubernetesVersion pulumi.StringPtrInput
 	// An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// Custom Linux OS configuration.
 	LinuxOsConfigs OceanNpVirtualNodeGroupLinuxOsConfigArrayInput
 	// Maximum node count limit.
@@ -296,7 +296,7 @@ type OceanNpVirtualNodeGroupState struct {
 	PodSubnetIds pulumi.StringArrayInput
 	// Percentage of spot VMs to maintain.
 	SpotPercentage pulumi.IntPtrInput
-	Tags           pulumi.MapInput
+	Tags           pulumi.StringMapInput
 	// Add taints to a virtual node group.
 	Taints       OceanNpVirtualNodeGroupTaintArrayInput
 	UpdatePolicy OceanNpVirtualNodeGroupUpdatePolicyPtrInput
@@ -322,7 +322,7 @@ type oceanNpVirtualNodeGroupArgs struct {
 	// The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
 	KubernetesVersion *string `pulumi:"kubernetesVersion"`
 	// An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// Custom Linux OS configuration.
 	LinuxOsConfigs []OceanNpVirtualNodeGroupLinuxOsConfig `pulumi:"linuxOsConfigs"`
 	// Maximum node count limit.
@@ -346,8 +346,8 @@ type oceanNpVirtualNodeGroupArgs struct {
 	// The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
 	PodSubnetIds []string `pulumi:"podSubnetIds"`
 	// Percentage of spot VMs to maintain.
-	SpotPercentage *int                   `pulumi:"spotPercentage"`
-	Tags           map[string]interface{} `pulumi:"tags"`
+	SpotPercentage *int              `pulumi:"spotPercentage"`
+	Tags           map[string]string `pulumi:"tags"`
 	// Add taints to a virtual node group.
 	Taints       []OceanNpVirtualNodeGroupTaint       `pulumi:"taints"`
 	UpdatePolicy *OceanNpVirtualNodeGroupUpdatePolicy `pulumi:"updatePolicy"`
@@ -370,7 +370,7 @@ type OceanNpVirtualNodeGroupArgs struct {
 	// The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
 	KubernetesVersion pulumi.StringPtrInput
 	// An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// Custom Linux OS configuration.
 	LinuxOsConfigs OceanNpVirtualNodeGroupLinuxOsConfigArrayInput
 	// Maximum node count limit.
@@ -395,7 +395,7 @@ type OceanNpVirtualNodeGroupArgs struct {
 	PodSubnetIds pulumi.StringArrayInput
 	// Percentage of spot VMs to maintain.
 	SpotPercentage pulumi.IntPtrInput
-	Tags           pulumi.MapInput
+	Tags           pulumi.StringMapInput
 	// Add taints to a virtual node group.
 	Taints       OceanNpVirtualNodeGroupTaintArrayInput
 	UpdatePolicy OceanNpVirtualNodeGroupUpdatePolicyPtrInput
@@ -521,8 +521,8 @@ func (o OceanNpVirtualNodeGroupOutput) KubernetesVersion() pulumi.StringPtrOutpu
 }
 
 // An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
-func (o OceanNpVirtualNodeGroupOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *OceanNpVirtualNodeGroup) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o OceanNpVirtualNodeGroupOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroup) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // Custom Linux OS configuration.
@@ -587,8 +587,8 @@ func (o OceanNpVirtualNodeGroupOutput) SpotPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroup) pulumi.IntPtrOutput { return v.SpotPercentage }).(pulumi.IntPtrOutput)
 }
 
-func (o OceanNpVirtualNodeGroupOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *OceanNpVirtualNodeGroup) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o OceanNpVirtualNodeGroupOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroup) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Add taints to a virtual node group.

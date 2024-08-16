@@ -81,7 +81,7 @@ export class Subscription extends pulumi.CustomResource {
      * Example: {"event": `"event"`, `"resourceId"`: `"resource-id"`, `"resourceName"`: `"resource-name"`", `"myCustomKey"`: `"My content is set here"` }
      * Default: {`"event"`: `"<event>"`, `"instanceId"`: `"<instance-id>"`, `"resourceId"`: `"<resource-id>"`, `"resourceName"`: `"<resource-name>"` }.
      */
-    public readonly format!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly format!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`. 
      * The following values are deprecated: `"http"` , `"https"`
@@ -165,7 +165,7 @@ export interface SubscriptionState {
      * Example: {"event": `"event"`, `"resourceId"`: `"resource-id"`, `"resourceName"`: `"resource-name"`", `"myCustomKey"`: `"My content is set here"` }
      * Default: {`"event"`: `"<event>"`, `"instanceId"`: `"<instance-id>"`, `"resourceId"`: `"<resource-id>"`, `"resourceName"`: `"<resource-name>"` }.
      */
-    format?: pulumi.Input<{[key: string]: any}>;
+    format?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`. 
      * The following values are deprecated: `"http"` , `"https"`
@@ -207,7 +207,7 @@ export interface SubscriptionArgs {
      * Example: {"event": `"event"`, `"resourceId"`: `"resource-id"`, `"resourceName"`: `"resource-name"`", `"myCustomKey"`: `"My content is set here"` }
      * Default: {`"event"`: `"<event>"`, `"instanceId"`: `"<instance-id>"`, `"resourceId"`: `"<resource-id>"`, `"resourceName"`: `"<resource-name>"` }.
      */
-    format?: pulumi.Input<{[key: string]: any}>;
+    format?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`. 
      * The following values are deprecated: `"http"` , `"https"`

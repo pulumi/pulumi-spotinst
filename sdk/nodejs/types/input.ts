@@ -236,8 +236,8 @@ export interface StatefulNodeAzureExtension {
     apiVersion: pulumi.Input<string>;
     minorVersionAutoUpgrade: pulumi.Input<boolean>;
     name: pulumi.Input<string>;
-    protectedSettings?: pulumi.Input<{[key: string]: any}>;
-    publicSettings?: pulumi.Input<{[key: string]: any}>;
+    protectedSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    publicSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     publisher: pulumi.Input<string>;
     type: pulumi.Input<string>;
 }
@@ -1803,7 +1803,7 @@ export namespace aws {
         /**
          * A mapping of dimensions describing qualities of the metric.
          */
-        dimensions?: pulumi.Input<{[key: string]: any}>;
+        dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         evaluationPeriods?: pulumi.Input<number>;
         /**
          * Max target capacity for scale down.
@@ -1854,7 +1854,7 @@ export namespace aws {
         /**
          * A mapping of dimensions describing qualities of the metric.
          */
-        dimensions?: pulumi.Input<{[key: string]: any}>;
+        dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         evaluationPeriods?: pulumi.Input<number>;
         /**
          * Max target capacity for scale down.
@@ -1987,7 +1987,7 @@ export namespace aws {
         /**
          * A mapping of dimensions describing qualities of the metric.
          */
-        dimensions?: pulumi.Input<{[key: string]: any}>;
+        dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         evaluationPeriods?: pulumi.Input<number>;
         /**
          * Max target capacity for scale down.
@@ -2038,7 +2038,7 @@ export namespace aws {
         /**
          * A mapping of dimensions describing qualities of the metric.
          */
-        dimensions?: pulumi.Input<{[key: string]: any}>;
+        dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         evaluationPeriods?: pulumi.Input<number>;
         /**
          * Max target capacity for scale down.

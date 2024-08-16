@@ -58,7 +58,7 @@ export class OceanExtendedResourceDefinition extends pulumi.CustomResource {
     /**
      * A mapping between AWS instanceType or * as default and its value for the given extended resource.
      */
-    public readonly resourceMapping!: pulumi.Output<{[key: string]: any}>;
+    public readonly resourceMapping!: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a OceanExtendedResourceDefinition resource with the given unique name, arguments, and options.
@@ -100,7 +100,7 @@ export interface OceanExtendedResourceDefinitionState {
     /**
      * A mapping between AWS instanceType or * as default and its value for the given extended resource.
      */
-    resourceMapping?: pulumi.Input<{[key: string]: any}>;
+    resourceMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -115,5 +115,5 @@ export interface OceanExtendedResourceDefinitionArgs {
     /**
      * A mapping between AWS instanceType or * as default and its value for the given extended resource.
      */
-    resourceMapping: pulumi.Input<{[key: string]: any}>;
+    resourceMapping: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

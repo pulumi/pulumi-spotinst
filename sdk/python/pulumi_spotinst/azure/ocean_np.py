@@ -29,7 +29,7 @@ class OceanNpArgs:
                  headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpHeadroomArgs']]]] = None,
                  health: Optional[pulumi.Input['OceanNpHealthArgs']] = None,
                  kubernetes_version: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  linux_os_configs: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpLinuxOsConfigArgs']]]] = None,
                  max_count: Optional[pulumi.Input[int]] = None,
                  max_pods_per_node: Optional[pulumi.Input[int]] = None,
@@ -42,7 +42,7 @@ class OceanNpArgs:
                  pod_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  scheduling: Optional[pulumi.Input['OceanNpSchedulingArgs']] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpTaintArgs']]]] = None,
                  update_policy: Optional[pulumi.Input['OceanNpUpdatePolicyArgs']] = None,
                  vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -57,7 +57,7 @@ class OceanNpArgs:
         :param pulumi.Input[Sequence[pulumi.Input['OceanNpHeadroomArgs']]] headrooms: Specify the custom headroom per VNG. Provide a list of headroom objects.
         :param pulumi.Input['OceanNpHealthArgs'] health: The Ocean AKS Health object.
         :param pulumi.Input[str] kubernetes_version: The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
-        :param pulumi.Input[Mapping[str, Any]] labels: An array of labels to add to the virtual node group. Only custom user labels are allowed, and not [Kubernetes well-known labels](https://kubernetes.io/docs/reference/labels-annotations-taints/) or [ Azure AKS labels](https://learn.microsoft.com/en-us/azure/aks/use-labels) or [Spot labels](https://docs.spot.io/ocean/features/labels-and-taints?id=spot-labels).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: An array of labels to add to the virtual node group. Only custom user labels are allowed, and not [Kubernetes well-known labels](https://kubernetes.io/docs/reference/labels-annotations-taints/) or [ Azure AKS labels](https://learn.microsoft.com/en-us/azure/aks/use-labels) or [Spot labels](https://docs.spot.io/ocean/features/labels-and-taints?id=spot-labels).
         :param pulumi.Input[Sequence[pulumi.Input['OceanNpLinuxOsConfigArgs']]] linux_os_configs: Custom Linux OS configuration.
         :param pulumi.Input[int] max_count: Maximum node count limit.
         :param pulumi.Input[int] max_pods_per_node: The maximum number of pods per node in the node pools.
@@ -273,14 +273,14 @@ class OceanNpArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         An array of labels to add to the virtual node group. Only custom user labels are allowed, and not [Kubernetes well-known labels](https://kubernetes.io/docs/reference/labels-annotations-taints/) or [ Azure AKS labels](https://learn.microsoft.com/en-us/azure/aks/use-labels) or [Spot labels](https://docs.spot.io/ocean/features/labels-and-taints?id=spot-labels).
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -426,11 +426,11 @@ class OceanNpArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -483,7 +483,7 @@ class _OceanNpState:
                  headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpHeadroomArgs']]]] = None,
                  health: Optional[pulumi.Input['OceanNpHealthArgs']] = None,
                  kubernetes_version: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  linux_os_configs: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpLinuxOsConfigArgs']]]] = None,
                  max_count: Optional[pulumi.Input[int]] = None,
                  max_pods_per_node: Optional[pulumi.Input[int]] = None,
@@ -496,7 +496,7 @@ class _OceanNpState:
                  pod_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  scheduling: Optional[pulumi.Input['OceanNpSchedulingArgs']] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpTaintArgs']]]] = None,
                  update_policy: Optional[pulumi.Input['OceanNpUpdatePolicyArgs']] = None,
                  vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -511,7 +511,7 @@ class _OceanNpState:
         :param pulumi.Input[Sequence[pulumi.Input['OceanNpHeadroomArgs']]] headrooms: Specify the custom headroom per VNG. Provide a list of headroom objects.
         :param pulumi.Input['OceanNpHealthArgs'] health: The Ocean AKS Health object.
         :param pulumi.Input[str] kubernetes_version: The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
-        :param pulumi.Input[Mapping[str, Any]] labels: An array of labels to add to the virtual node group. Only custom user labels are allowed, and not [Kubernetes well-known labels](https://kubernetes.io/docs/reference/labels-annotations-taints/) or [ Azure AKS labels](https://learn.microsoft.com/en-us/azure/aks/use-labels) or [Spot labels](https://docs.spot.io/ocean/features/labels-and-taints?id=spot-labels).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: An array of labels to add to the virtual node group. Only custom user labels are allowed, and not [Kubernetes well-known labels](https://kubernetes.io/docs/reference/labels-annotations-taints/) or [ Azure AKS labels](https://learn.microsoft.com/en-us/azure/aks/use-labels) or [Spot labels](https://docs.spot.io/ocean/features/labels-and-taints?id=spot-labels).
         :param pulumi.Input[Sequence[pulumi.Input['OceanNpLinuxOsConfigArgs']]] linux_os_configs: Custom Linux OS configuration.
         :param pulumi.Input[int] max_count: Maximum node count limit.
         :param pulumi.Input[int] max_pods_per_node: The maximum number of pods per node in the node pools.
@@ -733,14 +733,14 @@ class _OceanNpState:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         An array of labels to add to the virtual node group. Only custom user labels are allowed, and not [Kubernetes well-known labels](https://kubernetes.io/docs/reference/labels-annotations-taints/) or [ Azure AKS labels](https://learn.microsoft.com/en-us/azure/aks/use-labels) or [Spot labels](https://docs.spot.io/ocean/features/labels-and-taints?id=spot-labels).
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -886,11 +886,11 @@ class _OceanNpState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -945,7 +945,7 @@ class OceanNp(pulumi.CustomResource):
                  headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanNpHeadroomArgs', 'OceanNpHeadroomArgsDict']]]]] = None,
                  health: Optional[pulumi.Input[Union['OceanNpHealthArgs', 'OceanNpHealthArgsDict']]] = None,
                  kubernetes_version: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  linux_os_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanNpLinuxOsConfigArgs', 'OceanNpLinuxOsConfigArgsDict']]]]] = None,
                  max_count: Optional[pulumi.Input[int]] = None,
                  max_pods_per_node: Optional[pulumi.Input[int]] = None,
@@ -958,7 +958,7 @@ class OceanNp(pulumi.CustomResource):
                  pod_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  scheduling: Optional[pulumi.Input[Union['OceanNpSchedulingArgs', 'OceanNpSchedulingArgsDict']]] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanNpTaintArgs', 'OceanNpTaintArgsDict']]]]] = None,
                  update_policy: Optional[pulumi.Input[Union['OceanNpUpdatePolicyArgs', 'OceanNpUpdatePolicyArgsDict']]] = None,
                  vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -999,7 +999,7 @@ class OceanNp(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpHeadroomArgs', 'OceanNpHeadroomArgsDict']]]] headrooms: Specify the custom headroom per VNG. Provide a list of headroom objects.
         :param pulumi.Input[Union['OceanNpHealthArgs', 'OceanNpHealthArgsDict']] health: The Ocean AKS Health object.
         :param pulumi.Input[str] kubernetes_version: The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
-        :param pulumi.Input[Mapping[str, Any]] labels: An array of labels to add to the virtual node group. Only custom user labels are allowed, and not [Kubernetes well-known labels](https://kubernetes.io/docs/reference/labels-annotations-taints/) or [ Azure AKS labels](https://learn.microsoft.com/en-us/azure/aks/use-labels) or [Spot labels](https://docs.spot.io/ocean/features/labels-and-taints?id=spot-labels).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: An array of labels to add to the virtual node group. Only custom user labels are allowed, and not [Kubernetes well-known labels](https://kubernetes.io/docs/reference/labels-annotations-taints/) or [ Azure AKS labels](https://learn.microsoft.com/en-us/azure/aks/use-labels) or [Spot labels](https://docs.spot.io/ocean/features/labels-and-taints?id=spot-labels).
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpLinuxOsConfigArgs', 'OceanNpLinuxOsConfigArgsDict']]]] linux_os_configs: Custom Linux OS configuration.
         :param pulumi.Input[int] max_count: Maximum node count limit.
         :param pulumi.Input[int] max_pods_per_node: The maximum number of pods per node in the node pools.
@@ -1073,7 +1073,7 @@ class OceanNp(pulumi.CustomResource):
                  headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanNpHeadroomArgs', 'OceanNpHeadroomArgsDict']]]]] = None,
                  health: Optional[pulumi.Input[Union['OceanNpHealthArgs', 'OceanNpHealthArgsDict']]] = None,
                  kubernetes_version: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  linux_os_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanNpLinuxOsConfigArgs', 'OceanNpLinuxOsConfigArgsDict']]]]] = None,
                  max_count: Optional[pulumi.Input[int]] = None,
                  max_pods_per_node: Optional[pulumi.Input[int]] = None,
@@ -1086,7 +1086,7 @@ class OceanNp(pulumi.CustomResource):
                  pod_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  scheduling: Optional[pulumi.Input[Union['OceanNpSchedulingArgs', 'OceanNpSchedulingArgsDict']]] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanNpTaintArgs', 'OceanNpTaintArgsDict']]]]] = None,
                  update_policy: Optional[pulumi.Input[Union['OceanNpUpdatePolicyArgs', 'OceanNpUpdatePolicyArgsDict']]] = None,
                  vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1164,7 +1164,7 @@ class OceanNp(pulumi.CustomResource):
             headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanNpHeadroomArgs', 'OceanNpHeadroomArgsDict']]]]] = None,
             health: Optional[pulumi.Input[Union['OceanNpHealthArgs', 'OceanNpHealthArgsDict']]] = None,
             kubernetes_version: Optional[pulumi.Input[str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             linux_os_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanNpLinuxOsConfigArgs', 'OceanNpLinuxOsConfigArgsDict']]]]] = None,
             max_count: Optional[pulumi.Input[int]] = None,
             max_pods_per_node: Optional[pulumi.Input[int]] = None,
@@ -1177,7 +1177,7 @@ class OceanNp(pulumi.CustomResource):
             pod_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             scheduling: Optional[pulumi.Input[Union['OceanNpSchedulingArgs', 'OceanNpSchedulingArgsDict']]] = None,
             spot_percentage: Optional[pulumi.Input[int]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanNpTaintArgs', 'OceanNpTaintArgsDict']]]]] = None,
             update_policy: Optional[pulumi.Input[Union['OceanNpUpdatePolicyArgs', 'OceanNpUpdatePolicyArgsDict']]] = None,
             vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'OceanNp':
@@ -1197,7 +1197,7 @@ class OceanNp(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpHeadroomArgs', 'OceanNpHeadroomArgsDict']]]] headrooms: Specify the custom headroom per VNG. Provide a list of headroom objects.
         :param pulumi.Input[Union['OceanNpHealthArgs', 'OceanNpHealthArgsDict']] health: The Ocean AKS Health object.
         :param pulumi.Input[str] kubernetes_version: The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
-        :param pulumi.Input[Mapping[str, Any]] labels: An array of labels to add to the virtual node group. Only custom user labels are allowed, and not [Kubernetes well-known labels](https://kubernetes.io/docs/reference/labels-annotations-taints/) or [ Azure AKS labels](https://learn.microsoft.com/en-us/azure/aks/use-labels) or [Spot labels](https://docs.spot.io/ocean/features/labels-and-taints?id=spot-labels).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: An array of labels to add to the virtual node group. Only custom user labels are allowed, and not [Kubernetes well-known labels](https://kubernetes.io/docs/reference/labels-annotations-taints/) or [ Azure AKS labels](https://learn.microsoft.com/en-us/azure/aks/use-labels) or [Spot labels](https://docs.spot.io/ocean/features/labels-and-taints?id=spot-labels).
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpLinuxOsConfigArgs', 'OceanNpLinuxOsConfigArgsDict']]]] linux_os_configs: Custom Linux OS configuration.
         :param pulumi.Input[int] max_count: Maximum node count limit.
         :param pulumi.Input[int] max_pods_per_node: The maximum number of pods per node in the node pools.
@@ -1342,7 +1342,7 @@ class OceanNp(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         An array of labels to add to the virtual node group. Only custom user labels are allowed, and not [Kubernetes well-known labels](https://kubernetes.io/docs/reference/labels-annotations-taints/) or [ Azure AKS labels](https://learn.microsoft.com/en-us/azure/aks/use-labels) or [Spot labels](https://docs.spot.io/ocean/features/labels-and-taints?id=spot-labels).
         """
@@ -1443,7 +1443,7 @@ class OceanNp(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         return pulumi.get(self, "tags")
 
     @property

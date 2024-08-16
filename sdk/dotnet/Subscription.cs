@@ -74,7 +74,7 @@ namespace Pulumi.SpotInst
         /// Default: {`"event"`: `"&lt;event&gt;"`, `"instanceId"`: `"&lt;instance-id&gt;"`, `"resourceId"`: `"&lt;resource-id&gt;"`, `"resourceName"`: `"&lt;resource-name&gt;"` }.
         /// </summary>
         [Output("format")]
-        public Output<ImmutableDictionary<string, object>?> Format { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Format { get; private set; } = null!;
 
         /// <summary>
         /// The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`. 
@@ -161,16 +161,16 @@ namespace Pulumi.SpotInst
         public Input<string> EventType { get; set; } = null!;
 
         [Input("format")]
-        private InputMap<object>? _format;
+        private InputMap<string>? _format;
 
         /// <summary>
         /// The format of the notification content (JSON Format - Key+Value). Valid Values : `"instance-id"`, `"event"`, `"resource-id"`, `"resource-name"`, `"subnet-id"`, `"availability-zone"`, `"reason"`, `"private-ip"`, `"launchspec-id"`
         /// Example: {"event": `"event"`, `"resourceId"`: `"resource-id"`, `"resourceName"`: `"resource-name"`", `"myCustomKey"`: `"My content is set here"` }
         /// Default: {`"event"`: `"&lt;event&gt;"`, `"instanceId"`: `"&lt;instance-id&gt;"`, `"resourceId"`: `"&lt;resource-id&gt;"`, `"resourceName"`: `"&lt;resource-name&gt;"` }.
         /// </summary>
-        public InputMap<object> Format
+        public InputMap<string> Format
         {
-            get => _format ?? (_format = new InputMap<object>());
+            get => _format ?? (_format = new InputMap<string>());
             set => _format = value;
         }
 
@@ -221,16 +221,16 @@ namespace Pulumi.SpotInst
         public Input<string>? EventType { get; set; }
 
         [Input("format")]
-        private InputMap<object>? _format;
+        private InputMap<string>? _format;
 
         /// <summary>
         /// The format of the notification content (JSON Format - Key+Value). Valid Values : `"instance-id"`, `"event"`, `"resource-id"`, `"resource-name"`, `"subnet-id"`, `"availability-zone"`, `"reason"`, `"private-ip"`, `"launchspec-id"`
         /// Example: {"event": `"event"`, `"resourceId"`: `"resource-id"`, `"resourceName"`: `"resource-name"`", `"myCustomKey"`: `"My content is set here"` }
         /// Default: {`"event"`: `"&lt;event&gt;"`, `"instanceId"`: `"&lt;instance-id&gt;"`, `"resourceId"`: `"&lt;resource-id&gt;"`, `"resourceName"`: `"&lt;resource-name&gt;"` }.
         /// </summary>
-        public InputMap<object> Format
+        public InputMap<string> Format
         {
-            get => _format ?? (_format = new InputMap<object>());
+            get => _format ?? (_format = new InputMap<string>());
             set => _format = value;
         }
 
