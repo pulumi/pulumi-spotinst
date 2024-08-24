@@ -208,6 +208,12 @@ namespace Pulumi.SpotInst.Aws
     public partial class Elastigroup : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Auto-healing replacement won't be triggered if this parameter value is "false". In a case of a stateful group - no recycling will start if this parameter value is "false".
+        /// </summary>
+        [Output("autoHealing")]
+        public Output<bool?> AutoHealing { get; private set; } = null!;
+
+        /// <summary>
         /// List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
         /// Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
         /// `availability_zones = ["us-east-1a:subnet-123456:ClusterI03"]`
@@ -508,6 +514,12 @@ namespace Pulumi.SpotInst.Aws
         public Output<ImmutableArray<Outputs.ElastigroupResourceTagSpecification>> ResourceTagSpecifications { get; private set; } = null!;
 
         /// <summary>
+        /// Elastigroup will automatically scale your instances in the most available and cost efficient availability zone. Every evaluation will be done when there are no active instances in the group.
+        /// </summary>
+        [Output("restrictSingleAz")]
+        public Output<bool?> RestrictSingleAz { get; private set; } = null!;
+
+        /// <summary>
         /// Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
         /// </summary>
         [Output("revertToSpot")]
@@ -650,6 +662,12 @@ namespace Pulumi.SpotInst.Aws
 
     public sealed class ElastigroupArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Auto-healing replacement won't be triggered if this parameter value is "false". In a case of a stateful group - no recycling will start if this parameter value is "false".
+        /// </summary>
+        [Input("autoHealing")]
+        public Input<bool>? AutoHealing { get; set; }
+
         [Input("availabilityZones")]
         private InputList<string>? _availabilityZones;
 
@@ -1041,6 +1059,12 @@ namespace Pulumi.SpotInst.Aws
         }
 
         /// <summary>
+        /// Elastigroup will automatically scale your instances in the most available and cost efficient availability zone. Every evaluation will be done when there are no active instances in the group.
+        /// </summary>
+        [Input("restrictSingleAz")]
+        public Input<bool>? RestrictSingleAz { get; set; }
+
+        /// <summary>
         /// Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
         /// </summary>
         [Input("revertToSpot")]
@@ -1204,6 +1228,12 @@ namespace Pulumi.SpotInst.Aws
 
     public sealed class ElastigroupState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Auto-healing replacement won't be triggered if this parameter value is "false". In a case of a stateful group - no recycling will start if this parameter value is "false".
+        /// </summary>
+        [Input("autoHealing")]
+        public Input<bool>? AutoHealing { get; set; }
+
         [Input("availabilityZones")]
         private InputList<string>? _availabilityZones;
 
@@ -1593,6 +1623,12 @@ namespace Pulumi.SpotInst.Aws
             get => _resourceTagSpecifications ?? (_resourceTagSpecifications = new InputList<Inputs.ElastigroupResourceTagSpecificationGetArgs>());
             set => _resourceTagSpecifications = value;
         }
+
+        /// <summary>
+        /// Elastigroup will automatically scale your instances in the most available and cost efficient availability zone. Every evaluation will be done when there are no active instances in the group.
+        /// </summary>
+        [Input("restrictSingleAz")]
+        public Input<bool>? RestrictSingleAz { get; set; }
 
         /// <summary>
         /// Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`

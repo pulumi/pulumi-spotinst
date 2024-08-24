@@ -5,6 +5,8 @@ package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.spotinst.aws.outputs.ElastigroupEbsBlockDeviceDynamicIops;
+import com.pulumi.spotinst.aws.outputs.ElastigroupEbsBlockDeviceDynamicVolumeSize;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -24,6 +26,16 @@ public final class ElastigroupEbsBlockDevice {
      * 
      */
     private String deviceName;
+    /**
+     * @return Set dynamic IOPS properties. When using this object, you cannot use the `iops` object. You must use one or the other.
+     * 
+     */
+    private @Nullable ElastigroupEbsBlockDeviceDynamicIops dynamicIops;
+    /**
+     * @return Set dynamic volume size properties. When using this object, you cannot use `volume_size`. You must use one or the other.
+     * 
+     */
+    private @Nullable ElastigroupEbsBlockDeviceDynamicVolumeSize dynamicVolumeSize;
     /**
      * @return Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
      * 
@@ -46,10 +58,6 @@ public final class ElastigroupEbsBlockDevice {
     private @Nullable String snapshotId;
     /**
      * @return The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.
-     * 
-     * Modifying any `ebs_block_device` currently requires resource replacement.
-     * 
-     * Usage:
      * 
      */
     private @Nullable Integer throughput;
@@ -78,6 +86,20 @@ public final class ElastigroupEbsBlockDevice {
      */
     public String deviceName() {
         return this.deviceName;
+    }
+    /**
+     * @return Set dynamic IOPS properties. When using this object, you cannot use the `iops` object. You must use one or the other.
+     * 
+     */
+    public Optional<ElastigroupEbsBlockDeviceDynamicIops> dynamicIops() {
+        return Optional.ofNullable(this.dynamicIops);
+    }
+    /**
+     * @return Set dynamic volume size properties. When using this object, you cannot use `volume_size`. You must use one or the other.
+     * 
+     */
+    public Optional<ElastigroupEbsBlockDeviceDynamicVolumeSize> dynamicVolumeSize() {
+        return Optional.ofNullable(this.dynamicVolumeSize);
     }
     /**
      * @return Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
@@ -110,10 +132,6 @@ public final class ElastigroupEbsBlockDevice {
     /**
      * @return The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.
      * 
-     * Modifying any `ebs_block_device` currently requires resource replacement.
-     * 
-     * Usage:
-     * 
      */
     public Optional<Integer> throughput() {
         return Optional.ofNullable(this.throughput);
@@ -144,6 +162,8 @@ public final class ElastigroupEbsBlockDevice {
     public static final class Builder {
         private @Nullable Boolean deleteOnTermination;
         private String deviceName;
+        private @Nullable ElastigroupEbsBlockDeviceDynamicIops dynamicIops;
+        private @Nullable ElastigroupEbsBlockDeviceDynamicVolumeSize dynamicVolumeSize;
         private @Nullable Boolean encrypted;
         private @Nullable Integer iops;
         private @Nullable String kmsKeyId;
@@ -156,6 +176,8 @@ public final class ElastigroupEbsBlockDevice {
     	      Objects.requireNonNull(defaults);
     	      this.deleteOnTermination = defaults.deleteOnTermination;
     	      this.deviceName = defaults.deviceName;
+    	      this.dynamicIops = defaults.dynamicIops;
+    	      this.dynamicVolumeSize = defaults.dynamicVolumeSize;
     	      this.encrypted = defaults.encrypted;
     	      this.iops = defaults.iops;
     	      this.kmsKeyId = defaults.kmsKeyId;
@@ -177,6 +199,18 @@ public final class ElastigroupEbsBlockDevice {
               throw new MissingRequiredPropertyException("ElastigroupEbsBlockDevice", "deviceName");
             }
             this.deviceName = deviceName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dynamicIops(@Nullable ElastigroupEbsBlockDeviceDynamicIops dynamicIops) {
+
+            this.dynamicIops = dynamicIops;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dynamicVolumeSize(@Nullable ElastigroupEbsBlockDeviceDynamicVolumeSize dynamicVolumeSize) {
+
+            this.dynamicVolumeSize = dynamicVolumeSize;
             return this;
         }
         @CustomType.Setter
@@ -225,6 +259,8 @@ public final class ElastigroupEbsBlockDevice {
             final var _resultValue = new ElastigroupEbsBlockDevice();
             _resultValue.deleteOnTermination = deleteOnTermination;
             _resultValue.deviceName = deviceName;
+            _resultValue.dynamicIops = dynamicIops;
+            _resultValue.dynamicVolumeSize = dynamicVolumeSize;
             _resultValue.encrypted = encrypted;
             _resultValue.iops = iops;
             _resultValue.kmsKeyId = kmsKeyId;

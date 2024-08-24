@@ -562,6 +562,14 @@ export namespace aws {
          */
         deviceName: string;
         /**
+         * Set dynamic IOPS properties. When using this object, you cannot use the `iops` object. You must use one or the other.
+         */
+        dynamicIops?: outputs.aws.ElastigroupEbsBlockDeviceDynamicIops;
+        /**
+         * Set dynamic volume size properties. When using this object, you cannot use `volumeSize`. You must use one or the other.
+         */
+        dynamicVolumeSize?: outputs.aws.ElastigroupEbsBlockDeviceDynamicVolumeSize;
+        /**
          * Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
          */
         encrypted: boolean;
@@ -579,10 +587,6 @@ export namespace aws {
         snapshotId?: string;
         /**
          * The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
-         *
-         * Modifying any `ebsBlockDevice` currently requires resource replacement.
-         *
-         * Usage:
          */
         throughput?: number;
         /**
@@ -593,6 +597,40 @@ export namespace aws {
          * The type of volume. Can be `"standard"`, `"gp2"`, `"gp3"`, `"io1"`, `"st1"` or `"sc1"`.
          */
         volumeType: string;
+    }
+
+    export interface ElastigroupEbsBlockDeviceDynamicIops {
+        /**
+         * Initial size for IOPS.
+         */
+        baseSize?: number;
+        /**
+         * Type of resource, valid values: `"CPU", "MEMORY"`.
+         */
+        resource?: string;
+        /**
+         * Additional size per resource unit (in IOPS).
+         *
+         * Modifying any `ebsBlockDevice` currently requires resource replacement.
+         *
+         * Usage:
+         */
+        sizePerResourceUnit?: number;
+    }
+
+    export interface ElastigroupEbsBlockDeviceDynamicVolumeSize {
+        /**
+         * Initial size for volume.
+         */
+        baseSize?: number;
+        /**
+         * Type of resource, valid values: `"CPU", "MEMORY"`.
+         */
+        resource?: string;
+        /**
+         * Additional size per resource unit (in GB).
+         */
+        sizePerResourceUnit?: number;
     }
 
     export interface ElastigroupEphemeralBlockDevice {

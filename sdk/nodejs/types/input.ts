@@ -561,6 +561,14 @@ export namespace aws {
          */
         deviceName: pulumi.Input<string>;
         /**
+         * Set dynamic IOPS properties. When using this object, you cannot use the `iops` object. You must use one or the other.
+         */
+        dynamicIops?: pulumi.Input<inputs.aws.ElastigroupEbsBlockDeviceDynamicIops>;
+        /**
+         * Set dynamic volume size properties. When using this object, you cannot use `volumeSize`. You must use one or the other.
+         */
+        dynamicVolumeSize?: pulumi.Input<inputs.aws.ElastigroupEbsBlockDeviceDynamicVolumeSize>;
+        /**
          * Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
          */
         encrypted?: pulumi.Input<boolean>;
@@ -578,10 +586,6 @@ export namespace aws {
         snapshotId?: pulumi.Input<string>;
         /**
          * The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
-         *
-         * Modifying any `ebsBlockDevice` currently requires resource replacement.
-         *
-         * Usage:
          */
         throughput?: pulumi.Input<number>;
         /**
@@ -592,6 +596,40 @@ export namespace aws {
          * The type of volume. Can be `"standard"`, `"gp2"`, `"gp3"`, `"io1"`, `"st1"` or `"sc1"`.
          */
         volumeType?: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupEbsBlockDeviceDynamicIops {
+        /**
+         * Initial size for IOPS.
+         */
+        baseSize?: pulumi.Input<number>;
+        /**
+         * Type of resource, valid values: `"CPU", "MEMORY"`.
+         */
+        resource?: pulumi.Input<string>;
+        /**
+         * Additional size per resource unit (in IOPS).
+         *
+         * Modifying any `ebsBlockDevice` currently requires resource replacement.
+         *
+         * Usage:
+         */
+        sizePerResourceUnit?: pulumi.Input<number>;
+    }
+
+    export interface ElastigroupEbsBlockDeviceDynamicVolumeSize {
+        /**
+         * Initial size for volume.
+         */
+        baseSize?: pulumi.Input<number>;
+        /**
+         * Type of resource, valid values: `"CPU", "MEMORY"`.
+         */
+        resource?: pulumi.Input<string>;
+        /**
+         * Additional size per resource unit (in GB).
+         */
+        sizePerResourceUnit?: pulumi.Input<number>;
     }
 
     export interface ElastigroupEphemeralBlockDevice {

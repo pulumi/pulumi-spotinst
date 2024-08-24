@@ -18,6 +18,8 @@ __all__ = [
     'BeanstalkScheduledTask',
     'ElastigroupCpuOptions',
     'ElastigroupEbsBlockDevice',
+    'ElastigroupEbsBlockDeviceDynamicIops',
+    'ElastigroupEbsBlockDeviceDynamicVolumeSize',
     'ElastigroupEphemeralBlockDevice',
     'ElastigroupImage',
     'ElastigroupImageImage',
@@ -677,6 +679,10 @@ class ElastigroupEbsBlockDevice(dict):
             suggest = "device_name"
         elif key == "deleteOnTermination":
             suggest = "delete_on_termination"
+        elif key == "dynamicIops":
+            suggest = "dynamic_iops"
+        elif key == "dynamicVolumeSize":
+            suggest = "dynamic_volume_size"
         elif key == "kmsKeyId":
             suggest = "kms_key_id"
         elif key == "snapshotId":
@@ -700,6 +706,8 @@ class ElastigroupEbsBlockDevice(dict):
     def __init__(__self__, *,
                  device_name: str,
                  delete_on_termination: Optional[bool] = None,
+                 dynamic_iops: Optional['outputs.ElastigroupEbsBlockDeviceDynamicIops'] = None,
+                 dynamic_volume_size: Optional['outputs.ElastigroupEbsBlockDeviceDynamicVolumeSize'] = None,
                  encrypted: Optional[bool] = None,
                  iops: Optional[int] = None,
                  kms_key_id: Optional[str] = None,
@@ -710,21 +718,23 @@ class ElastigroupEbsBlockDevice(dict):
         """
         :param str device_name: The name of the device to mount.
         :param bool delete_on_termination: Whether the volume should be destroyed on instance termination.
+        :param 'ElastigroupEbsBlockDeviceDynamicIopsArgs' dynamic_iops: Set dynamic IOPS properties. When using this object, you cannot use the `iops` object. You must use one or the other.
+        :param 'ElastigroupEbsBlockDeviceDynamicVolumeSizeArgs' dynamic_volume_size: Set dynamic volume size properties. When using this object, you cannot use `volume_size`. You must use one or the other.
         :param bool encrypted: Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
         :param int iops: The amount of provisioned [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html). This must be set with a `volume_type` of `"io1"`.
         :param str kms_key_id: ID for a user managed CMK under which the EBS Volume is encrypted
         :param str snapshot_id: The Snapshot ID to mount.
         :param int throughput: The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.
-               
-               Modifying any `ebs_block_device` currently requires resource replacement.
-               
-               Usage:
         :param int volume_size: The size of the volume in gigabytes.
         :param str volume_type: The type of volume. Can be `"standard"`, `"gp2"`, `"gp3"`, `"io1"`, `"st1"` or `"sc1"`.
         """
         pulumi.set(__self__, "device_name", device_name)
         if delete_on_termination is not None:
             pulumi.set(__self__, "delete_on_termination", delete_on_termination)
+        if dynamic_iops is not None:
+            pulumi.set(__self__, "dynamic_iops", dynamic_iops)
+        if dynamic_volume_size is not None:
+            pulumi.set(__self__, "dynamic_volume_size", dynamic_volume_size)
         if encrypted is not None:
             pulumi.set(__self__, "encrypted", encrypted)
         if iops is not None:
@@ -755,6 +765,22 @@ class ElastigroupEbsBlockDevice(dict):
         Whether the volume should be destroyed on instance termination.
         """
         return pulumi.get(self, "delete_on_termination")
+
+    @property
+    @pulumi.getter(name="dynamicIops")
+    def dynamic_iops(self) -> Optional['outputs.ElastigroupEbsBlockDeviceDynamicIops']:
+        """
+        Set dynamic IOPS properties. When using this object, you cannot use the `iops` object. You must use one or the other.
+        """
+        return pulumi.get(self, "dynamic_iops")
+
+    @property
+    @pulumi.getter(name="dynamicVolumeSize")
+    def dynamic_volume_size(self) -> Optional['outputs.ElastigroupEbsBlockDeviceDynamicVolumeSize']:
+        """
+        Set dynamic volume size properties. When using this object, you cannot use `volume_size`. You must use one or the other.
+        """
+        return pulumi.get(self, "dynamic_volume_size")
 
     @property
     @pulumi.getter
@@ -793,10 +819,6 @@ class ElastigroupEbsBlockDevice(dict):
     def throughput(self) -> Optional[int]:
         """
         The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.
-
-        Modifying any `ebs_block_device` currently requires resource replacement.
-
-        Usage:
         """
         return pulumi.get(self, "throughput")
 
@@ -815,6 +837,138 @@ class ElastigroupEbsBlockDevice(dict):
         The type of volume. Can be `"standard"`, `"gp2"`, `"gp3"`, `"io1"`, `"st1"` or `"sc1"`.
         """
         return pulumi.get(self, "volume_type")
+
+
+@pulumi.output_type
+class ElastigroupEbsBlockDeviceDynamicIops(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "baseSize":
+            suggest = "base_size"
+        elif key == "sizePerResourceUnit":
+            suggest = "size_per_resource_unit"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupEbsBlockDeviceDynamicIops. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupEbsBlockDeviceDynamicIops.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupEbsBlockDeviceDynamicIops.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 base_size: Optional[int] = None,
+                 resource: Optional[str] = None,
+                 size_per_resource_unit: Optional[int] = None):
+        """
+        :param int base_size: Initial size for IOPS.
+        :param str resource: Type of resource, valid values: `"CPU", "MEMORY"`.
+        :param int size_per_resource_unit: Additional size per resource unit (in IOPS).
+               
+               Modifying any `ebs_block_device` currently requires resource replacement.
+               
+               Usage:
+        """
+        if base_size is not None:
+            pulumi.set(__self__, "base_size", base_size)
+        if resource is not None:
+            pulumi.set(__self__, "resource", resource)
+        if size_per_resource_unit is not None:
+            pulumi.set(__self__, "size_per_resource_unit", size_per_resource_unit)
+
+    @property
+    @pulumi.getter(name="baseSize")
+    def base_size(self) -> Optional[int]:
+        """
+        Initial size for IOPS.
+        """
+        return pulumi.get(self, "base_size")
+
+    @property
+    @pulumi.getter
+    def resource(self) -> Optional[str]:
+        """
+        Type of resource, valid values: `"CPU", "MEMORY"`.
+        """
+        return pulumi.get(self, "resource")
+
+    @property
+    @pulumi.getter(name="sizePerResourceUnit")
+    def size_per_resource_unit(self) -> Optional[int]:
+        """
+        Additional size per resource unit (in IOPS).
+
+        Modifying any `ebs_block_device` currently requires resource replacement.
+
+        Usage:
+        """
+        return pulumi.get(self, "size_per_resource_unit")
+
+
+@pulumi.output_type
+class ElastigroupEbsBlockDeviceDynamicVolumeSize(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "baseSize":
+            suggest = "base_size"
+        elif key == "sizePerResourceUnit":
+            suggest = "size_per_resource_unit"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupEbsBlockDeviceDynamicVolumeSize. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupEbsBlockDeviceDynamicVolumeSize.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupEbsBlockDeviceDynamicVolumeSize.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 base_size: Optional[int] = None,
+                 resource: Optional[str] = None,
+                 size_per_resource_unit: Optional[int] = None):
+        """
+        :param int base_size: Initial size for volume.
+        :param str resource: Type of resource, valid values: `"CPU", "MEMORY"`.
+        :param int size_per_resource_unit: Additional size per resource unit (in GB).
+        """
+        if base_size is not None:
+            pulumi.set(__self__, "base_size", base_size)
+        if resource is not None:
+            pulumi.set(__self__, "resource", resource)
+        if size_per_resource_unit is not None:
+            pulumi.set(__self__, "size_per_resource_unit", size_per_resource_unit)
+
+    @property
+    @pulumi.getter(name="baseSize")
+    def base_size(self) -> Optional[int]:
+        """
+        Initial size for volume.
+        """
+        return pulumi.get(self, "base_size")
+
+    @property
+    @pulumi.getter
+    def resource(self) -> Optional[str]:
+        """
+        Type of resource, valid values: `"CPU", "MEMORY"`.
+        """
+        return pulumi.get(self, "resource")
+
+    @property
+    @pulumi.getter(name="sizePerResourceUnit")
+    def size_per_resource_unit(self) -> Optional[int]:
+        """
+        Additional size per resource unit (in GB).
+        """
+        return pulumi.get(self, "size_per_resource_unit")
 
 
 @pulumi.output_type

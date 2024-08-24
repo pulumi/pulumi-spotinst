@@ -996,6 +996,10 @@ type ElastigroupEbsBlockDevice struct {
 	DeleteOnTermination *bool `pulumi:"deleteOnTermination"`
 	// The name of the device to mount.
 	DeviceName string `pulumi:"deviceName"`
+	// Set dynamic IOPS properties. When using this object, you cannot use the `iops` object. You must use one or the other.
+	DynamicIops *ElastigroupEbsBlockDeviceDynamicIops `pulumi:"dynamicIops"`
+	// Set dynamic volume size properties. When using this object, you cannot use `volumeSize`. You must use one or the other.
+	DynamicVolumeSize *ElastigroupEbsBlockDeviceDynamicVolumeSize `pulumi:"dynamicVolumeSize"`
 	// Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
 	Encrypted *bool `pulumi:"encrypted"`
 	// The amount of provisioned [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html). This must be set with a `volumeType` of `"io1"`.
@@ -1005,10 +1009,6 @@ type ElastigroupEbsBlockDevice struct {
 	// The Snapshot ID to mount.
 	SnapshotId *string `pulumi:"snapshotId"`
 	// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
-	//
-	// Modifying any `ebsBlockDevice` currently requires resource replacement.
-	//
-	// Usage:
 	Throughput *int `pulumi:"throughput"`
 	// The size of the volume in gigabytes.
 	VolumeSize *int `pulumi:"volumeSize"`
@@ -1032,6 +1032,10 @@ type ElastigroupEbsBlockDeviceArgs struct {
 	DeleteOnTermination pulumi.BoolPtrInput `pulumi:"deleteOnTermination"`
 	// The name of the device to mount.
 	DeviceName pulumi.StringInput `pulumi:"deviceName"`
+	// Set dynamic IOPS properties. When using this object, you cannot use the `iops` object. You must use one or the other.
+	DynamicIops ElastigroupEbsBlockDeviceDynamicIopsPtrInput `pulumi:"dynamicIops"`
+	// Set dynamic volume size properties. When using this object, you cannot use `volumeSize`. You must use one or the other.
+	DynamicVolumeSize ElastigroupEbsBlockDeviceDynamicVolumeSizePtrInput `pulumi:"dynamicVolumeSize"`
 	// Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
 	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
 	// The amount of provisioned [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html). This must be set with a `volumeType` of `"io1"`.
@@ -1041,10 +1045,6 @@ type ElastigroupEbsBlockDeviceArgs struct {
 	// The Snapshot ID to mount.
 	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
 	// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
-	//
-	// Modifying any `ebsBlockDevice` currently requires resource replacement.
-	//
-	// Usage:
 	Throughput pulumi.IntPtrInput `pulumi:"throughput"`
 	// The size of the volume in gigabytes.
 	VolumeSize pulumi.IntPtrInput `pulumi:"volumeSize"`
@@ -1113,6 +1113,18 @@ func (o ElastigroupEbsBlockDeviceOutput) DeviceName() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupEbsBlockDevice) string { return v.DeviceName }).(pulumi.StringOutput)
 }
 
+// Set dynamic IOPS properties. When using this object, you cannot use the `iops` object. You must use one or the other.
+func (o ElastigroupEbsBlockDeviceOutput) DynamicIops() ElastigroupEbsBlockDeviceDynamicIopsPtrOutput {
+	return o.ApplyT(func(v ElastigroupEbsBlockDevice) *ElastigroupEbsBlockDeviceDynamicIops { return v.DynamicIops }).(ElastigroupEbsBlockDeviceDynamicIopsPtrOutput)
+}
+
+// Set dynamic volume size properties. When using this object, you cannot use `volumeSize`. You must use one or the other.
+func (o ElastigroupEbsBlockDeviceOutput) DynamicVolumeSize() ElastigroupEbsBlockDeviceDynamicVolumeSizePtrOutput {
+	return o.ApplyT(func(v ElastigroupEbsBlockDevice) *ElastigroupEbsBlockDeviceDynamicVolumeSize {
+		return v.DynamicVolumeSize
+	}).(ElastigroupEbsBlockDeviceDynamicVolumeSizePtrOutput)
+}
+
 // Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
 func (o ElastigroupEbsBlockDeviceOutput) Encrypted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ElastigroupEbsBlockDevice) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
@@ -1134,10 +1146,6 @@ func (o ElastigroupEbsBlockDeviceOutput) SnapshotId() pulumi.StringPtrOutput {
 }
 
 // The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
-//
-// Modifying any `ebsBlockDevice` currently requires resource replacement.
-//
-// Usage:
 func (o ElastigroupEbsBlockDeviceOutput) Throughput() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ElastigroupEbsBlockDevice) *int { return v.Throughput }).(pulumi.IntPtrOutput)
 }
@@ -1170,6 +1178,372 @@ func (o ElastigroupEbsBlockDeviceArrayOutput) Index(i pulumi.IntInput) Elastigro
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupEbsBlockDevice {
 		return vs[0].([]ElastigroupEbsBlockDevice)[vs[1].(int)]
 	}).(ElastigroupEbsBlockDeviceOutput)
+}
+
+type ElastigroupEbsBlockDeviceDynamicIops struct {
+	// Initial size for IOPS.
+	BaseSize *int `pulumi:"baseSize"`
+	// Type of resource, valid values: `"CPU", "MEMORY"`.
+	Resource *string `pulumi:"resource"`
+	// Additional size per resource unit (in IOPS).
+	//
+	// Modifying any `ebsBlockDevice` currently requires resource replacement.
+	//
+	// Usage:
+	SizePerResourceUnit *int `pulumi:"sizePerResourceUnit"`
+}
+
+// ElastigroupEbsBlockDeviceDynamicIopsInput is an input type that accepts ElastigroupEbsBlockDeviceDynamicIopsArgs and ElastigroupEbsBlockDeviceDynamicIopsOutput values.
+// You can construct a concrete instance of `ElastigroupEbsBlockDeviceDynamicIopsInput` via:
+//
+//	ElastigroupEbsBlockDeviceDynamicIopsArgs{...}
+type ElastigroupEbsBlockDeviceDynamicIopsInput interface {
+	pulumi.Input
+
+	ToElastigroupEbsBlockDeviceDynamicIopsOutput() ElastigroupEbsBlockDeviceDynamicIopsOutput
+	ToElastigroupEbsBlockDeviceDynamicIopsOutputWithContext(context.Context) ElastigroupEbsBlockDeviceDynamicIopsOutput
+}
+
+type ElastigroupEbsBlockDeviceDynamicIopsArgs struct {
+	// Initial size for IOPS.
+	BaseSize pulumi.IntPtrInput `pulumi:"baseSize"`
+	// Type of resource, valid values: `"CPU", "MEMORY"`.
+	Resource pulumi.StringPtrInput `pulumi:"resource"`
+	// Additional size per resource unit (in IOPS).
+	//
+	// Modifying any `ebsBlockDevice` currently requires resource replacement.
+	//
+	// Usage:
+	SizePerResourceUnit pulumi.IntPtrInput `pulumi:"sizePerResourceUnit"`
+}
+
+func (ElastigroupEbsBlockDeviceDynamicIopsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupEbsBlockDeviceDynamicIops)(nil)).Elem()
+}
+
+func (i ElastigroupEbsBlockDeviceDynamicIopsArgs) ToElastigroupEbsBlockDeviceDynamicIopsOutput() ElastigroupEbsBlockDeviceDynamicIopsOutput {
+	return i.ToElastigroupEbsBlockDeviceDynamicIopsOutputWithContext(context.Background())
+}
+
+func (i ElastigroupEbsBlockDeviceDynamicIopsArgs) ToElastigroupEbsBlockDeviceDynamicIopsOutputWithContext(ctx context.Context) ElastigroupEbsBlockDeviceDynamicIopsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupEbsBlockDeviceDynamicIopsOutput)
+}
+
+func (i ElastigroupEbsBlockDeviceDynamicIopsArgs) ToElastigroupEbsBlockDeviceDynamicIopsPtrOutput() ElastigroupEbsBlockDeviceDynamicIopsPtrOutput {
+	return i.ToElastigroupEbsBlockDeviceDynamicIopsPtrOutputWithContext(context.Background())
+}
+
+func (i ElastigroupEbsBlockDeviceDynamicIopsArgs) ToElastigroupEbsBlockDeviceDynamicIopsPtrOutputWithContext(ctx context.Context) ElastigroupEbsBlockDeviceDynamicIopsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupEbsBlockDeviceDynamicIopsOutput).ToElastigroupEbsBlockDeviceDynamicIopsPtrOutputWithContext(ctx)
+}
+
+// ElastigroupEbsBlockDeviceDynamicIopsPtrInput is an input type that accepts ElastigroupEbsBlockDeviceDynamicIopsArgs, ElastigroupEbsBlockDeviceDynamicIopsPtr and ElastigroupEbsBlockDeviceDynamicIopsPtrOutput values.
+// You can construct a concrete instance of `ElastigroupEbsBlockDeviceDynamicIopsPtrInput` via:
+//
+//	        ElastigroupEbsBlockDeviceDynamicIopsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ElastigroupEbsBlockDeviceDynamicIopsPtrInput interface {
+	pulumi.Input
+
+	ToElastigroupEbsBlockDeviceDynamicIopsPtrOutput() ElastigroupEbsBlockDeviceDynamicIopsPtrOutput
+	ToElastigroupEbsBlockDeviceDynamicIopsPtrOutputWithContext(context.Context) ElastigroupEbsBlockDeviceDynamicIopsPtrOutput
+}
+
+type elastigroupEbsBlockDeviceDynamicIopsPtrType ElastigroupEbsBlockDeviceDynamicIopsArgs
+
+func ElastigroupEbsBlockDeviceDynamicIopsPtr(v *ElastigroupEbsBlockDeviceDynamicIopsArgs) ElastigroupEbsBlockDeviceDynamicIopsPtrInput {
+	return (*elastigroupEbsBlockDeviceDynamicIopsPtrType)(v)
+}
+
+func (*elastigroupEbsBlockDeviceDynamicIopsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupEbsBlockDeviceDynamicIops)(nil)).Elem()
+}
+
+func (i *elastigroupEbsBlockDeviceDynamicIopsPtrType) ToElastigroupEbsBlockDeviceDynamicIopsPtrOutput() ElastigroupEbsBlockDeviceDynamicIopsPtrOutput {
+	return i.ToElastigroupEbsBlockDeviceDynamicIopsPtrOutputWithContext(context.Background())
+}
+
+func (i *elastigroupEbsBlockDeviceDynamicIopsPtrType) ToElastigroupEbsBlockDeviceDynamicIopsPtrOutputWithContext(ctx context.Context) ElastigroupEbsBlockDeviceDynamicIopsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupEbsBlockDeviceDynamicIopsPtrOutput)
+}
+
+type ElastigroupEbsBlockDeviceDynamicIopsOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupEbsBlockDeviceDynamicIopsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupEbsBlockDeviceDynamicIops)(nil)).Elem()
+}
+
+func (o ElastigroupEbsBlockDeviceDynamicIopsOutput) ToElastigroupEbsBlockDeviceDynamicIopsOutput() ElastigroupEbsBlockDeviceDynamicIopsOutput {
+	return o
+}
+
+func (o ElastigroupEbsBlockDeviceDynamicIopsOutput) ToElastigroupEbsBlockDeviceDynamicIopsOutputWithContext(ctx context.Context) ElastigroupEbsBlockDeviceDynamicIopsOutput {
+	return o
+}
+
+func (o ElastigroupEbsBlockDeviceDynamicIopsOutput) ToElastigroupEbsBlockDeviceDynamicIopsPtrOutput() ElastigroupEbsBlockDeviceDynamicIopsPtrOutput {
+	return o.ToElastigroupEbsBlockDeviceDynamicIopsPtrOutputWithContext(context.Background())
+}
+
+func (o ElastigroupEbsBlockDeviceDynamicIopsOutput) ToElastigroupEbsBlockDeviceDynamicIopsPtrOutputWithContext(ctx context.Context) ElastigroupEbsBlockDeviceDynamicIopsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupEbsBlockDeviceDynamicIops) *ElastigroupEbsBlockDeviceDynamicIops {
+		return &v
+	}).(ElastigroupEbsBlockDeviceDynamicIopsPtrOutput)
+}
+
+// Initial size for IOPS.
+func (o ElastigroupEbsBlockDeviceDynamicIopsOutput) BaseSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElastigroupEbsBlockDeviceDynamicIops) *int { return v.BaseSize }).(pulumi.IntPtrOutput)
+}
+
+// Type of resource, valid values: `"CPU", "MEMORY"`.
+func (o ElastigroupEbsBlockDeviceDynamicIopsOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupEbsBlockDeviceDynamicIops) *string { return v.Resource }).(pulumi.StringPtrOutput)
+}
+
+// Additional size per resource unit (in IOPS).
+//
+// Modifying any `ebsBlockDevice` currently requires resource replacement.
+//
+// Usage:
+func (o ElastigroupEbsBlockDeviceDynamicIopsOutput) SizePerResourceUnit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElastigroupEbsBlockDeviceDynamicIops) *int { return v.SizePerResourceUnit }).(pulumi.IntPtrOutput)
+}
+
+type ElastigroupEbsBlockDeviceDynamicIopsPtrOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupEbsBlockDeviceDynamicIopsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupEbsBlockDeviceDynamicIops)(nil)).Elem()
+}
+
+func (o ElastigroupEbsBlockDeviceDynamicIopsPtrOutput) ToElastigroupEbsBlockDeviceDynamicIopsPtrOutput() ElastigroupEbsBlockDeviceDynamicIopsPtrOutput {
+	return o
+}
+
+func (o ElastigroupEbsBlockDeviceDynamicIopsPtrOutput) ToElastigroupEbsBlockDeviceDynamicIopsPtrOutputWithContext(ctx context.Context) ElastigroupEbsBlockDeviceDynamicIopsPtrOutput {
+	return o
+}
+
+func (o ElastigroupEbsBlockDeviceDynamicIopsPtrOutput) Elem() ElastigroupEbsBlockDeviceDynamicIopsOutput {
+	return o.ApplyT(func(v *ElastigroupEbsBlockDeviceDynamicIops) ElastigroupEbsBlockDeviceDynamicIops {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupEbsBlockDeviceDynamicIops
+		return ret
+	}).(ElastigroupEbsBlockDeviceDynamicIopsOutput)
+}
+
+// Initial size for IOPS.
+func (o ElastigroupEbsBlockDeviceDynamicIopsPtrOutput) BaseSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElastigroupEbsBlockDeviceDynamicIops) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BaseSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// Type of resource, valid values: `"CPU", "MEMORY"`.
+func (o ElastigroupEbsBlockDeviceDynamicIopsPtrOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElastigroupEbsBlockDeviceDynamicIops) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Resource
+	}).(pulumi.StringPtrOutput)
+}
+
+// Additional size per resource unit (in IOPS).
+//
+// Modifying any `ebsBlockDevice` currently requires resource replacement.
+//
+// Usage:
+func (o ElastigroupEbsBlockDeviceDynamicIopsPtrOutput) SizePerResourceUnit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElastigroupEbsBlockDeviceDynamicIops) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SizePerResourceUnit
+	}).(pulumi.IntPtrOutput)
+}
+
+type ElastigroupEbsBlockDeviceDynamicVolumeSize struct {
+	// Initial size for volume.
+	BaseSize *int `pulumi:"baseSize"`
+	// Type of resource, valid values: `"CPU", "MEMORY"`.
+	Resource *string `pulumi:"resource"`
+	// Additional size per resource unit (in GB).
+	SizePerResourceUnit *int `pulumi:"sizePerResourceUnit"`
+}
+
+// ElastigroupEbsBlockDeviceDynamicVolumeSizeInput is an input type that accepts ElastigroupEbsBlockDeviceDynamicVolumeSizeArgs and ElastigroupEbsBlockDeviceDynamicVolumeSizeOutput values.
+// You can construct a concrete instance of `ElastigroupEbsBlockDeviceDynamicVolumeSizeInput` via:
+//
+//	ElastigroupEbsBlockDeviceDynamicVolumeSizeArgs{...}
+type ElastigroupEbsBlockDeviceDynamicVolumeSizeInput interface {
+	pulumi.Input
+
+	ToElastigroupEbsBlockDeviceDynamicVolumeSizeOutput() ElastigroupEbsBlockDeviceDynamicVolumeSizeOutput
+	ToElastigroupEbsBlockDeviceDynamicVolumeSizeOutputWithContext(context.Context) ElastigroupEbsBlockDeviceDynamicVolumeSizeOutput
+}
+
+type ElastigroupEbsBlockDeviceDynamicVolumeSizeArgs struct {
+	// Initial size for volume.
+	BaseSize pulumi.IntPtrInput `pulumi:"baseSize"`
+	// Type of resource, valid values: `"CPU", "MEMORY"`.
+	Resource pulumi.StringPtrInput `pulumi:"resource"`
+	// Additional size per resource unit (in GB).
+	SizePerResourceUnit pulumi.IntPtrInput `pulumi:"sizePerResourceUnit"`
+}
+
+func (ElastigroupEbsBlockDeviceDynamicVolumeSizeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupEbsBlockDeviceDynamicVolumeSize)(nil)).Elem()
+}
+
+func (i ElastigroupEbsBlockDeviceDynamicVolumeSizeArgs) ToElastigroupEbsBlockDeviceDynamicVolumeSizeOutput() ElastigroupEbsBlockDeviceDynamicVolumeSizeOutput {
+	return i.ToElastigroupEbsBlockDeviceDynamicVolumeSizeOutputWithContext(context.Background())
+}
+
+func (i ElastigroupEbsBlockDeviceDynamicVolumeSizeArgs) ToElastigroupEbsBlockDeviceDynamicVolumeSizeOutputWithContext(ctx context.Context) ElastigroupEbsBlockDeviceDynamicVolumeSizeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupEbsBlockDeviceDynamicVolumeSizeOutput)
+}
+
+func (i ElastigroupEbsBlockDeviceDynamicVolumeSizeArgs) ToElastigroupEbsBlockDeviceDynamicVolumeSizePtrOutput() ElastigroupEbsBlockDeviceDynamicVolumeSizePtrOutput {
+	return i.ToElastigroupEbsBlockDeviceDynamicVolumeSizePtrOutputWithContext(context.Background())
+}
+
+func (i ElastigroupEbsBlockDeviceDynamicVolumeSizeArgs) ToElastigroupEbsBlockDeviceDynamicVolumeSizePtrOutputWithContext(ctx context.Context) ElastigroupEbsBlockDeviceDynamicVolumeSizePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupEbsBlockDeviceDynamicVolumeSizeOutput).ToElastigroupEbsBlockDeviceDynamicVolumeSizePtrOutputWithContext(ctx)
+}
+
+// ElastigroupEbsBlockDeviceDynamicVolumeSizePtrInput is an input type that accepts ElastigroupEbsBlockDeviceDynamicVolumeSizeArgs, ElastigroupEbsBlockDeviceDynamicVolumeSizePtr and ElastigroupEbsBlockDeviceDynamicVolumeSizePtrOutput values.
+// You can construct a concrete instance of `ElastigroupEbsBlockDeviceDynamicVolumeSizePtrInput` via:
+//
+//	        ElastigroupEbsBlockDeviceDynamicVolumeSizeArgs{...}
+//
+//	or:
+//
+//	        nil
+type ElastigroupEbsBlockDeviceDynamicVolumeSizePtrInput interface {
+	pulumi.Input
+
+	ToElastigroupEbsBlockDeviceDynamicVolumeSizePtrOutput() ElastigroupEbsBlockDeviceDynamicVolumeSizePtrOutput
+	ToElastigroupEbsBlockDeviceDynamicVolumeSizePtrOutputWithContext(context.Context) ElastigroupEbsBlockDeviceDynamicVolumeSizePtrOutput
+}
+
+type elastigroupEbsBlockDeviceDynamicVolumeSizePtrType ElastigroupEbsBlockDeviceDynamicVolumeSizeArgs
+
+func ElastigroupEbsBlockDeviceDynamicVolumeSizePtr(v *ElastigroupEbsBlockDeviceDynamicVolumeSizeArgs) ElastigroupEbsBlockDeviceDynamicVolumeSizePtrInput {
+	return (*elastigroupEbsBlockDeviceDynamicVolumeSizePtrType)(v)
+}
+
+func (*elastigroupEbsBlockDeviceDynamicVolumeSizePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupEbsBlockDeviceDynamicVolumeSize)(nil)).Elem()
+}
+
+func (i *elastigroupEbsBlockDeviceDynamicVolumeSizePtrType) ToElastigroupEbsBlockDeviceDynamicVolumeSizePtrOutput() ElastigroupEbsBlockDeviceDynamicVolumeSizePtrOutput {
+	return i.ToElastigroupEbsBlockDeviceDynamicVolumeSizePtrOutputWithContext(context.Background())
+}
+
+func (i *elastigroupEbsBlockDeviceDynamicVolumeSizePtrType) ToElastigroupEbsBlockDeviceDynamicVolumeSizePtrOutputWithContext(ctx context.Context) ElastigroupEbsBlockDeviceDynamicVolumeSizePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupEbsBlockDeviceDynamicVolumeSizePtrOutput)
+}
+
+type ElastigroupEbsBlockDeviceDynamicVolumeSizeOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupEbsBlockDeviceDynamicVolumeSizeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupEbsBlockDeviceDynamicVolumeSize)(nil)).Elem()
+}
+
+func (o ElastigroupEbsBlockDeviceDynamicVolumeSizeOutput) ToElastigroupEbsBlockDeviceDynamicVolumeSizeOutput() ElastigroupEbsBlockDeviceDynamicVolumeSizeOutput {
+	return o
+}
+
+func (o ElastigroupEbsBlockDeviceDynamicVolumeSizeOutput) ToElastigroupEbsBlockDeviceDynamicVolumeSizeOutputWithContext(ctx context.Context) ElastigroupEbsBlockDeviceDynamicVolumeSizeOutput {
+	return o
+}
+
+func (o ElastigroupEbsBlockDeviceDynamicVolumeSizeOutput) ToElastigroupEbsBlockDeviceDynamicVolumeSizePtrOutput() ElastigroupEbsBlockDeviceDynamicVolumeSizePtrOutput {
+	return o.ToElastigroupEbsBlockDeviceDynamicVolumeSizePtrOutputWithContext(context.Background())
+}
+
+func (o ElastigroupEbsBlockDeviceDynamicVolumeSizeOutput) ToElastigroupEbsBlockDeviceDynamicVolumeSizePtrOutputWithContext(ctx context.Context) ElastigroupEbsBlockDeviceDynamicVolumeSizePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupEbsBlockDeviceDynamicVolumeSize) *ElastigroupEbsBlockDeviceDynamicVolumeSize {
+		return &v
+	}).(ElastigroupEbsBlockDeviceDynamicVolumeSizePtrOutput)
+}
+
+// Initial size for volume.
+func (o ElastigroupEbsBlockDeviceDynamicVolumeSizeOutput) BaseSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElastigroupEbsBlockDeviceDynamicVolumeSize) *int { return v.BaseSize }).(pulumi.IntPtrOutput)
+}
+
+// Type of resource, valid values: `"CPU", "MEMORY"`.
+func (o ElastigroupEbsBlockDeviceDynamicVolumeSizeOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupEbsBlockDeviceDynamicVolumeSize) *string { return v.Resource }).(pulumi.StringPtrOutput)
+}
+
+// Additional size per resource unit (in GB).
+func (o ElastigroupEbsBlockDeviceDynamicVolumeSizeOutput) SizePerResourceUnit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElastigroupEbsBlockDeviceDynamicVolumeSize) *int { return v.SizePerResourceUnit }).(pulumi.IntPtrOutput)
+}
+
+type ElastigroupEbsBlockDeviceDynamicVolumeSizePtrOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupEbsBlockDeviceDynamicVolumeSizePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupEbsBlockDeviceDynamicVolumeSize)(nil)).Elem()
+}
+
+func (o ElastigroupEbsBlockDeviceDynamicVolumeSizePtrOutput) ToElastigroupEbsBlockDeviceDynamicVolumeSizePtrOutput() ElastigroupEbsBlockDeviceDynamicVolumeSizePtrOutput {
+	return o
+}
+
+func (o ElastigroupEbsBlockDeviceDynamicVolumeSizePtrOutput) ToElastigroupEbsBlockDeviceDynamicVolumeSizePtrOutputWithContext(ctx context.Context) ElastigroupEbsBlockDeviceDynamicVolumeSizePtrOutput {
+	return o
+}
+
+func (o ElastigroupEbsBlockDeviceDynamicVolumeSizePtrOutput) Elem() ElastigroupEbsBlockDeviceDynamicVolumeSizeOutput {
+	return o.ApplyT(func(v *ElastigroupEbsBlockDeviceDynamicVolumeSize) ElastigroupEbsBlockDeviceDynamicVolumeSize {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupEbsBlockDeviceDynamicVolumeSize
+		return ret
+	}).(ElastigroupEbsBlockDeviceDynamicVolumeSizeOutput)
+}
+
+// Initial size for volume.
+func (o ElastigroupEbsBlockDeviceDynamicVolumeSizePtrOutput) BaseSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElastigroupEbsBlockDeviceDynamicVolumeSize) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BaseSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// Type of resource, valid values: `"CPU", "MEMORY"`.
+func (o ElastigroupEbsBlockDeviceDynamicVolumeSizePtrOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElastigroupEbsBlockDeviceDynamicVolumeSize) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Resource
+	}).(pulumi.StringPtrOutput)
+}
+
+// Additional size per resource unit (in GB).
+func (o ElastigroupEbsBlockDeviceDynamicVolumeSizePtrOutput) SizePerResourceUnit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElastigroupEbsBlockDeviceDynamicVolumeSize) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SizePerResourceUnit
+	}).(pulumi.IntPtrOutput)
 }
 
 type ElastigroupEphemeralBlockDevice struct {
@@ -24780,6 +25154,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupCpuOptionsPtrInput)(nil)).Elem(), ElastigroupCpuOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupEbsBlockDeviceInput)(nil)).Elem(), ElastigroupEbsBlockDeviceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupEbsBlockDeviceArrayInput)(nil)).Elem(), ElastigroupEbsBlockDeviceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupEbsBlockDeviceDynamicIopsInput)(nil)).Elem(), ElastigroupEbsBlockDeviceDynamicIopsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupEbsBlockDeviceDynamicIopsPtrInput)(nil)).Elem(), ElastigroupEbsBlockDeviceDynamicIopsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupEbsBlockDeviceDynamicVolumeSizeInput)(nil)).Elem(), ElastigroupEbsBlockDeviceDynamicVolumeSizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupEbsBlockDeviceDynamicVolumeSizePtrInput)(nil)).Elem(), ElastigroupEbsBlockDeviceDynamicVolumeSizeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupEphemeralBlockDeviceInput)(nil)).Elem(), ElastigroupEphemeralBlockDeviceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupEphemeralBlockDeviceArrayInput)(nil)).Elem(), ElastigroupEphemeralBlockDeviceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupImageInput)(nil)).Elem(), ElastigroupImageArgs{})
@@ -25108,6 +25486,10 @@ func init() {
 	pulumi.RegisterOutputType(ElastigroupCpuOptionsPtrOutput{})
 	pulumi.RegisterOutputType(ElastigroupEbsBlockDeviceOutput{})
 	pulumi.RegisterOutputType(ElastigroupEbsBlockDeviceArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupEbsBlockDeviceDynamicIopsOutput{})
+	pulumi.RegisterOutputType(ElastigroupEbsBlockDeviceDynamicIopsPtrOutput{})
+	pulumi.RegisterOutputType(ElastigroupEbsBlockDeviceDynamicVolumeSizeOutput{})
+	pulumi.RegisterOutputType(ElastigroupEbsBlockDeviceDynamicVolumeSizePtrOutput{})
 	pulumi.RegisterOutputType(ElastigroupEphemeralBlockDeviceOutput{})
 	pulumi.RegisterOutputType(ElastigroupEphemeralBlockDeviceArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupImageOutput{})
