@@ -236,6 +236,14 @@
                     "type": "string",
                     "description": "The name of the device to mount.\n"
                 },
+                "dynamicIops": {
+                    "$ref": "#/types/spotinst:aws/ElastigroupEbsBlockDeviceDynamicIops:ElastigroupEbsBlockDeviceDynamicIops",
+                    "description": "Set dynamic IOPS properties. When using this object, you cannot use the `iops` object. You must use one or the other.\n"
+                },
+                "dynamicVolumeSize": {
+                    "$ref": "#/types/spotinst:aws/ElastigroupEbsBlockDeviceDynamicVolumeSize:ElastigroupEbsBlockDeviceDynamicVolumeSize",
+                    "description": "Set dynamic volume size properties. When using this object, you cannot use `volume_size`. You must use one or the other.\n"
+                },
                 "encrypted": {
                     "type": "boolean",
                     "description": "Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.\n"
@@ -254,7 +262,7 @@
                 },
                 "throughput": {
                     "type": "integer",
-                    "description": "The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.\n\nModifying any `ebs_block_device` currently requires resource replacement.\n\nUsage:\n\n"
+                    "description": "The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.\n"
                 },
                 "volumeSize": {
                     "type": "integer",
@@ -279,6 +287,40 @@
                     ]
                 }
             }
+        },
+        "spotinst:aws/ElastigroupEbsBlockDeviceDynamicIops:ElastigroupEbsBlockDeviceDynamicIops": {
+            "properties": {
+                "baseSize": {
+                    "type": "integer",
+                    "description": "Initial size for IOPS.\n"
+                },
+                "resource": {
+                    "type": "string",
+                    "description": "Type of resource, valid values: `\"CPU\", \"MEMORY\"`.\n"
+                },
+                "sizePerResourceUnit": {
+                    "type": "integer",
+                    "description": "Additional size per resource unit (in IOPS).\n\nModifying any `ebs_block_device` currently requires resource replacement.\n\nUsage:\n\n"
+                }
+            },
+            "type": "object"
+        },
+        "spotinst:aws/ElastigroupEbsBlockDeviceDynamicVolumeSize:ElastigroupEbsBlockDeviceDynamicVolumeSize": {
+            "properties": {
+                "baseSize": {
+                    "type": "integer",
+                    "description": "Initial size for volume.\n"
+                },
+                "resource": {
+                    "type": "string",
+                    "description": "Type of resource, valid values: `\"CPU\", \"MEMORY\"`.\n"
+                },
+                "sizePerResourceUnit": {
+                    "type": "integer",
+                    "description": "Additional size per resource unit (in GB).\n"
+                }
+            },
+            "type": "object"
         },
         "spotinst:aws/ElastigroupEphemeralBlockDevice:ElastigroupEphemeralBlockDevice": {
             "properties": {
@@ -3655,7 +3697,7 @@
             "properties": {
                 "isEnabled": {
                     "type": "boolean",
-                    "description": "Flag to enable or disable the shutdown hours mechanism. When False, the mechanism is deactivated, and the virtual node group remains in its current state.\n"
+                    "description": "Flag to enable or disable the shutdown hours mechanism. When `false`, the mechanism is deactivated, and the virtual node group remains in its current state.\n"
                 },
                 "timeWindows": {
                     "type": "array",
@@ -3678,7 +3720,7 @@
                 },
                 "isEnabled": {
                     "type": "boolean",
-                    "description": "Describes whether the task is enabled. When True, the task runs. When False, it does not run.\n"
+                    "description": "Describes whether the task is enabled. When `true`, the task runs. When `false`, it does not run.\n"
                 },
                 "taskHeadrooms": {
                     "type": "array",
@@ -4064,7 +4106,7 @@
                 },
                 "respectPdb": {
                     "type": "boolean",
-                    "description": "During the roll, if the parameter is set to True we honor PDB during the instance replacement.\n"
+                    "description": "During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.\n"
                 }
             },
             "type": "object",
@@ -4127,7 +4169,7 @@
             "properties": {
                 "isEnabled": {
                     "type": "boolean",
-                    "description": "Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.\n"
+                    "description": "Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.\n"
                 },
                 "percentage": {
                     "type": "integer",
@@ -4298,7 +4340,7 @@
             "properties": {
                 "isEnabled": {
                     "type": "boolean",
-                    "description": "Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.\n"
+                    "description": "Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.\n"
                 },
                 "timeWindows": {
                     "type": "array",
@@ -4316,7 +4358,7 @@
                 },
                 "isEnabled": {
                     "type": "boolean",
-                    "description": "Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.\n"
+                    "description": "Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.\n"
                 },
                 "parameters": {
                     "$ref": "#/types/spotinst:azure/OceanNpSchedulingTaskParameters:OceanNpSchedulingTaskParameters"
@@ -5138,7 +5180,7 @@
                 },
                 "isEnabled": {
                     "type": "boolean",
-                    "description": "Describes whether the task is enabled. When True, the task runs. When False, it does not run.\n"
+                    "description": "Describes whether the task is enabled. When `true`, the task runs. When `false`, it does not run.\n"
                 },
                 "taskHeadrooms": {
                     "type": "array",
@@ -6592,14 +6634,14 @@
             "properties": {
                 "isEnabled": {
                     "type": "boolean",
-                    "description": "Flag to enable / disable the shutdown hours.\nExample: True\n"
+                    "description": "Flag to enable / disable the shutdown hours.\nExample: `true`\n"
                 },
                 "timeWindows": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC\nExample: Fri:15:30-Wed:14:30\n"
+                    "description": "Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = `true`. API Times are in UTC\nExample: Fri:15:30-Wed:14:30\n"
                 }
             },
             "type": "object",
@@ -6740,7 +6782,7 @@
                 },
                 "respectPdb": {
                     "type": "boolean",
-                    "description": "Default: False. During the roll, if the parameter is set to True we honor PDB during the instance replacement.\n\n"
+                    "description": "Default: `false`. During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.\n\n"
                 }
             },
             "type": "object",
@@ -6913,7 +6955,7 @@
                 },
                 "isEnabled": {
                     "type": "boolean",
-                    "description": "Describes whether the task is enabled. When True, the task runs. When False, it does not run.\n"
+                    "description": "Describes whether the task is enabled. When `true`, the task runs. When `false`, it does not run.\n"
                 },
                 "taskHeadrooms": {
                     "type": "array",
@@ -9331,7 +9373,7 @@
                 },
                 "returnData": {
                     "type": "boolean",
-                    "description": "This option indicates whether to return the timestamps and raw data values of this metric. If you are performing this call just to do math expressions and do not also need the raw data returned, you can specify False . If you omit this, the default of True is used.\n"
+                    "description": "This option indicates whether to return the timestamps and raw data values of this metric. If you are performing this call just to do math expressions and do not also need the raw data returned, you can specify `false`. If you omit this, the default of `true` is used.\n"
                 }
             },
             "type": "object",
@@ -10243,6 +10285,10 @@
         "spotinst:aws/elastigroup:Elastigroup": {
             "description": "Provides a Spotinst AWS group resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\n// Create an Elastigroup\nconst default_elastigroup = new spotinst.aws.Elastigroup(\"default-elastigroup\", {\n    name: \"default-elastigroup\",\n    description: \"created by Pulumi\",\n    product: \"Linux/UNIX\",\n    maxSize: 0,\n    minSize: 0,\n    desiredCapacity: 0,\n    capacityUnit: \"weight\",\n    region: \"us-west-2\",\n    subnetIds: [\n        \"sb-123456\",\n        \"sb-456789\",\n    ],\n    imageId: \"ami-a27d8fda\",\n    iamInstanceProfile: \"iam-profile\",\n    keyName: \"my-key.ssh\",\n    securityGroups: [\"sg-123456\"],\n    userData: \"echo hello world\",\n    enableMonitoring: false,\n    ebsOptimized: false,\n    placementTenancy: \"default\",\n    metadataOptions: {\n        httpTokens: \"optional\",\n        httpPutResponseHopLimit: 10,\n        instanceMetadataTags: \"enabled\",\n    },\n    cpuOptions: {\n        threadsPerCore: 1,\n    },\n    instanceTypesOndemand: \"m3.2xlarge\",\n    instanceTypesSpots: [\n        \"m3.xlarge\",\n        \"m3.2xlarge\",\n    ],\n    instanceTypesPreferredSpots: [\"m3.xlarge\"],\n    onDemandTypes: [\"c3.large\"],\n    instanceTypesWeights: [\n        {\n            instanceType: \"m3.xlarge\",\n            weight: 10,\n        },\n        {\n            instanceType: \"m3.2xlarge\",\n            weight: 16,\n        },\n    ],\n    resourceRequirements: [{\n        excludedInstanceFamilies: [\n            \"a\",\n            \"m\",\n        ],\n        excludedInstanceTypes: [\"m3.large\"],\n        excludedInstanceGenerations: [\n            \"1\",\n            \"2\",\n        ],\n        requiredGpuMinimum: 1,\n        requiredGpuMaximum: 16,\n        requiredMemoryMinimum: 1,\n        requiredMemoryMaximum: 512,\n        requiredVcpuMinimum: 1,\n        requiredVcpuMaximum: 64,\n    }],\n    orientation: \"balanced\",\n    fallbackToOndemand: false,\n    cpuCredits: \"unlimited\",\n    minimumInstanceLifetime: 12,\n    waitForCapacity: 5,\n    waitForCapacityTimeout: 300,\n    scalingStrategies: [{\n        terminateAtEndOfBillingHour: true,\n        terminationPolicy: \"default\",\n    }],\n    scalingUpPolicies: [{\n        policyName: \"Default Scaling Up Policy\",\n        metricName: \"DefaultQueuesDepth\",\n        statistic: \"average\",\n        unit: \"none\",\n        adjustment: \"1\",\n        namespace: \"custom\",\n        threshold: 100,\n        period: 60,\n        evaluationPeriods: 5,\n        cooldown: 300,\n    }],\n    scalingDownPolicies: [{\n        policyName: \"Default Scaling Down Policy\",\n        metricName: \"DefaultQueuesDepth\",\n        statistic: \"average\",\n        unit: \"none\",\n        adjustment: \"1\",\n        namespace: \"custom\",\n        threshold: 10,\n        period: 60,\n        evaluationPeriods: 10,\n        cooldown: 300,\n    }],\n    tags: [\n        {\n            key: \"Env\",\n            value: \"production\",\n        },\n        {\n            key: \"Name\",\n            value: \"default-production\",\n        },\n        {\n            key: \"Project\",\n            value: \"app_v2\",\n        },\n    ],\n    resourceTagSpecifications: [{\n        shouldTagEnis: true,\n        shouldTagVolumes: true,\n        shouldTagSnapshots: true,\n        shouldTagAmis: true,\n    }],\n    logging: {\n        \"export\": {\n            s3s: [{\n                id: \"di-123456\",\n            }],\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\n# Create an Elastigroup\ndefault_elastigroup = spotinst.aws.Elastigroup(\"default-elastigroup\",\n    name=\"default-elastigroup\",\n    description=\"created by Pulumi\",\n    product=\"Linux/UNIX\",\n    max_size=0,\n    min_size=0,\n    desired_capacity=0,\n    capacity_unit=\"weight\",\n    region=\"us-west-2\",\n    subnet_ids=[\n        \"sb-123456\",\n        \"sb-456789\",\n    ],\n    image_id=\"ami-a27d8fda\",\n    iam_instance_profile=\"iam-profile\",\n    key_name=\"my-key.ssh\",\n    security_groups=[\"sg-123456\"],\n    user_data=\"echo hello world\",\n    enable_monitoring=False,\n    ebs_optimized=False,\n    placement_tenancy=\"default\",\n    metadata_options={\n        \"http_tokens\": \"optional\",\n        \"http_put_response_hop_limit\": 10,\n        \"instance_metadata_tags\": \"enabled\",\n    },\n    cpu_options={\n        \"threads_per_core\": 1,\n    },\n    instance_types_ondemand=\"m3.2xlarge\",\n    instance_types_spots=[\n        \"m3.xlarge\",\n        \"m3.2xlarge\",\n    ],\n    instance_types_preferred_spots=[\"m3.xlarge\"],\n    on_demand_types=[\"c3.large\"],\n    instance_types_weights=[\n        {\n            \"instance_type\": \"m3.xlarge\",\n            \"weight\": 10,\n        },\n        {\n            \"instance_type\": \"m3.2xlarge\",\n            \"weight\": 16,\n        },\n    ],\n    resource_requirements=[{\n        \"excluded_instance_families\": [\n            \"a\",\n            \"m\",\n        ],\n        \"excluded_instance_types\": [\"m3.large\"],\n        \"excluded_instance_generations\": [\n            \"1\",\n            \"2\",\n        ],\n        \"required_gpu_minimum\": 1,\n        \"required_gpu_maximum\": 16,\n        \"required_memory_minimum\": 1,\n        \"required_memory_maximum\": 512,\n        \"required_vcpu_minimum\": 1,\n        \"required_vcpu_maximum\": 64,\n    }],\n    orientation=\"balanced\",\n    fallback_to_ondemand=False,\n    cpu_credits=\"unlimited\",\n    minimum_instance_lifetime=12,\n    wait_for_capacity=5,\n    wait_for_capacity_timeout=300,\n    scaling_strategies=[{\n        \"terminate_at_end_of_billing_hour\": True,\n        \"termination_policy\": \"default\",\n    }],\n    scaling_up_policies=[{\n        \"policy_name\": \"Default Scaling Up Policy\",\n        \"metric_name\": \"DefaultQueuesDepth\",\n        \"statistic\": \"average\",\n        \"unit\": \"none\",\n        \"adjustment\": \"1\",\n        \"namespace\": \"custom\",\n        \"threshold\": 100,\n        \"period\": 60,\n        \"evaluation_periods\": 5,\n        \"cooldown\": 300,\n    }],\n    scaling_down_policies=[{\n        \"policy_name\": \"Default Scaling Down Policy\",\n        \"metric_name\": \"DefaultQueuesDepth\",\n        \"statistic\": \"average\",\n        \"unit\": \"none\",\n        \"adjustment\": \"1\",\n        \"namespace\": \"custom\",\n        \"threshold\": 10,\n        \"period\": 60,\n        \"evaluation_periods\": 10,\n        \"cooldown\": 300,\n    }],\n    tags=[\n        {\n            \"key\": \"Env\",\n            \"value\": \"production\",\n        },\n        {\n            \"key\": \"Name\",\n            \"value\": \"default-production\",\n        },\n        {\n            \"key\": \"Project\",\n            \"value\": \"app_v2\",\n        },\n    ],\n    resource_tag_specifications=[{\n        \"should_tag_enis\": True,\n        \"should_tag_volumes\": True,\n        \"should_tag_snapshots\": True,\n        \"should_tag_amis\": True,\n    }],\n    logging={\n        \"export\": {\n            \"s3s\": [{\n                \"id\": \"di-123456\",\n            }],\n        },\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SpotInst = Pulumi.SpotInst;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Create an Elastigroup\n    var default_elastigroup = new SpotInst.Aws.Elastigroup(\"default-elastigroup\", new()\n    {\n        Name = \"default-elastigroup\",\n        Description = \"created by Pulumi\",\n        Product = \"Linux/UNIX\",\n        MaxSize = 0,\n        MinSize = 0,\n        DesiredCapacity = 0,\n        CapacityUnit = \"weight\",\n        Region = \"us-west-2\",\n        SubnetIds = new[]\n        {\n            \"sb-123456\",\n            \"sb-456789\",\n        },\n        ImageId = \"ami-a27d8fda\",\n        IamInstanceProfile = \"iam-profile\",\n        KeyName = \"my-key.ssh\",\n        SecurityGroups = new[]\n        {\n            \"sg-123456\",\n        },\n        UserData = \"echo hello world\",\n        EnableMonitoring = false,\n        EbsOptimized = false,\n        PlacementTenancy = \"default\",\n        MetadataOptions = new SpotInst.Aws.Inputs.ElastigroupMetadataOptionsArgs\n        {\n            HttpTokens = \"optional\",\n            HttpPutResponseHopLimit = 10,\n            InstanceMetadataTags = \"enabled\",\n        },\n        CpuOptions = new SpotInst.Aws.Inputs.ElastigroupCpuOptionsArgs\n        {\n            ThreadsPerCore = 1,\n        },\n        InstanceTypesOndemand = \"m3.2xlarge\",\n        InstanceTypesSpots = new[]\n        {\n            \"m3.xlarge\",\n            \"m3.2xlarge\",\n        },\n        InstanceTypesPreferredSpots = new[]\n        {\n            \"m3.xlarge\",\n        },\n        OnDemandTypes = new[]\n        {\n            \"c3.large\",\n        },\n        InstanceTypesWeights = new[]\n        {\n            new SpotInst.Aws.Inputs.ElastigroupInstanceTypesWeightArgs\n            {\n                InstanceType = \"m3.xlarge\",\n                Weight = 10,\n            },\n            new SpotInst.Aws.Inputs.ElastigroupInstanceTypesWeightArgs\n            {\n                InstanceType = \"m3.2xlarge\",\n                Weight = 16,\n            },\n        },\n        ResourceRequirements = new[]\n        {\n            new SpotInst.Aws.Inputs.ElastigroupResourceRequirementArgs\n            {\n                ExcludedInstanceFamilies = new[]\n                {\n                    \"a\",\n                    \"m\",\n                },\n                ExcludedInstanceTypes = new[]\n                {\n                    \"m3.large\",\n                },\n                ExcludedInstanceGenerations = new[]\n                {\n                    \"1\",\n                    \"2\",\n                },\n                RequiredGpuMinimum = 1,\n                RequiredGpuMaximum = 16,\n                RequiredMemoryMinimum = 1,\n                RequiredMemoryMaximum = 512,\n                RequiredVcpuMinimum = 1,\n                RequiredVcpuMaximum = 64,\n            },\n        },\n        Orientation = \"balanced\",\n        FallbackToOndemand = false,\n        CpuCredits = \"unlimited\",\n        MinimumInstanceLifetime = 12,\n        WaitForCapacity = 5,\n        WaitForCapacityTimeout = 300,\n        ScalingStrategies = new[]\n        {\n            new SpotInst.Aws.Inputs.ElastigroupScalingStrategyArgs\n            {\n                TerminateAtEndOfBillingHour = true,\n                TerminationPolicy = \"default\",\n            },\n        },\n        ScalingUpPolicies = new[]\n        {\n            new SpotInst.Aws.Inputs.ElastigroupScalingUpPolicyArgs\n            {\n                PolicyName = \"Default Scaling Up Policy\",\n                MetricName = \"DefaultQueuesDepth\",\n                Statistic = \"average\",\n                Unit = \"none\",\n                Adjustment = \"1\",\n                Namespace = \"custom\",\n                Threshold = 100,\n                Period = 60,\n                EvaluationPeriods = 5,\n                Cooldown = 300,\n            },\n        },\n        ScalingDownPolicies = new[]\n        {\n            new SpotInst.Aws.Inputs.ElastigroupScalingDownPolicyArgs\n            {\n                PolicyName = \"Default Scaling Down Policy\",\n                MetricName = \"DefaultQueuesDepth\",\n                Statistic = \"average\",\n                Unit = \"none\",\n                Adjustment = \"1\",\n                Namespace = \"custom\",\n                Threshold = 10,\n                Period = 60,\n                EvaluationPeriods = 10,\n                Cooldown = 300,\n            },\n        },\n        Tags = new[]\n        {\n            new SpotInst.Aws.Inputs.ElastigroupTagArgs\n            {\n                Key = \"Env\",\n                Value = \"production\",\n            },\n            new SpotInst.Aws.Inputs.ElastigroupTagArgs\n            {\n                Key = \"Name\",\n                Value = \"default-production\",\n            },\n            new SpotInst.Aws.Inputs.ElastigroupTagArgs\n            {\n                Key = \"Project\",\n                Value = \"app_v2\",\n            },\n        },\n        ResourceTagSpecifications = new[]\n        {\n            new SpotInst.Aws.Inputs.ElastigroupResourceTagSpecificationArgs\n            {\n                ShouldTagEnis = true,\n                ShouldTagVolumes = true,\n                ShouldTagSnapshots = true,\n                ShouldTagAmis = true,\n            },\n        },\n        Logging = new SpotInst.Aws.Inputs.ElastigroupLoggingArgs\n        {\n            Export = new SpotInst.Aws.Inputs.ElastigroupLoggingExportArgs\n            {\n                S3s = new[]\n                {\n                    new SpotInst.Aws.Inputs.ElastigroupLoggingExportS3Args\n                    {\n                        Id = \"di-123456\",\n                    },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/aws\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Create an Elastigroup\n\t\t_, err := aws.NewElastigroup(ctx, \"default-elastigroup\", \u0026aws.ElastigroupArgs{\n\t\t\tName:            pulumi.String(\"default-elastigroup\"),\n\t\t\tDescription:     pulumi.String(\"created by Pulumi\"),\n\t\t\tProduct:         pulumi.String(\"Linux/UNIX\"),\n\t\t\tMaxSize:         pulumi.Int(0),\n\t\t\tMinSize:         pulumi.Int(0),\n\t\t\tDesiredCapacity: pulumi.Int(0),\n\t\t\tCapacityUnit:    pulumi.String(\"weight\"),\n\t\t\tRegion:          pulumi.String(\"us-west-2\"),\n\t\t\tSubnetIds: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"sb-123456\"),\n\t\t\t\tpulumi.String(\"sb-456789\"),\n\t\t\t},\n\t\t\tImageId:            pulumi.String(\"ami-a27d8fda\"),\n\t\t\tIamInstanceProfile: pulumi.String(\"iam-profile\"),\n\t\t\tKeyName:            pulumi.String(\"my-key.ssh\"),\n\t\t\tSecurityGroups: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"sg-123456\"),\n\t\t\t},\n\t\t\tUserData:         pulumi.String(\"echo hello world\"),\n\t\t\tEnableMonitoring: pulumi.Bool(false),\n\t\t\tEbsOptimized:     pulumi.Bool(false),\n\t\t\tPlacementTenancy: pulumi.String(\"default\"),\n\t\t\tMetadataOptions: \u0026aws.ElastigroupMetadataOptionsArgs{\n\t\t\t\tHttpTokens:              pulumi.String(\"optional\"),\n\t\t\t\tHttpPutResponseHopLimit: pulumi.Int(10),\n\t\t\t\tInstanceMetadataTags:    pulumi.String(\"enabled\"),\n\t\t\t},\n\t\t\tCpuOptions: \u0026aws.ElastigroupCpuOptionsArgs{\n\t\t\t\tThreadsPerCore: pulumi.Int(1),\n\t\t\t},\n\t\t\tInstanceTypesOndemand: pulumi.String(\"m3.2xlarge\"),\n\t\t\tInstanceTypesSpots: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"m3.xlarge\"),\n\t\t\t\tpulumi.String(\"m3.2xlarge\"),\n\t\t\t},\n\t\t\tInstanceTypesPreferredSpots: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"m3.xlarge\"),\n\t\t\t},\n\t\t\tOnDemandTypes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"c3.large\"),\n\t\t\t},\n\t\t\tInstanceTypesWeights: aws.ElastigroupInstanceTypesWeightArray{\n\t\t\t\t\u0026aws.ElastigroupInstanceTypesWeightArgs{\n\t\t\t\t\tInstanceType: pulumi.String(\"m3.xlarge\"),\n\t\t\t\t\tWeight:       pulumi.Int(10),\n\t\t\t\t},\n\t\t\t\t\u0026aws.ElastigroupInstanceTypesWeightArgs{\n\t\t\t\t\tInstanceType: pulumi.String(\"m3.2xlarge\"),\n\t\t\t\t\tWeight:       pulumi.Int(16),\n\t\t\t\t},\n\t\t\t},\n\t\t\tResourceRequirements: aws.ElastigroupResourceRequirementArray{\n\t\t\t\t\u0026aws.ElastigroupResourceRequirementArgs{\n\t\t\t\t\tExcludedInstanceFamilies: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"a\"),\n\t\t\t\t\t\tpulumi.String(\"m\"),\n\t\t\t\t\t},\n\t\t\t\t\tExcludedInstanceTypes: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"m3.large\"),\n\t\t\t\t\t},\n\t\t\t\t\tExcludedInstanceGenerations: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"1\"),\n\t\t\t\t\t\tpulumi.String(\"2\"),\n\t\t\t\t\t},\n\t\t\t\t\tRequiredGpuMinimum:    pulumi.Int(1),\n\t\t\t\t\tRequiredGpuMaximum:    pulumi.Int(16),\n\t\t\t\t\tRequiredMemoryMinimum: pulumi.Int(1),\n\t\t\t\t\tRequiredMemoryMaximum: pulumi.Int(512),\n\t\t\t\t\tRequiredVcpuMinimum:   pulumi.Int(1),\n\t\t\t\t\tRequiredVcpuMaximum:   pulumi.Int(64),\n\t\t\t\t},\n\t\t\t},\n\t\t\tOrientation:             pulumi.String(\"balanced\"),\n\t\t\tFallbackToOndemand:      pulumi.Bool(false),\n\t\t\tCpuCredits:              pulumi.String(\"unlimited\"),\n\t\t\tMinimumInstanceLifetime: pulumi.Int(12),\n\t\t\tWaitForCapacity:         pulumi.Int(5),\n\t\t\tWaitForCapacityTimeout:  pulumi.Int(300),\n\t\t\tScalingStrategies: aws.ElastigroupScalingStrategyArray{\n\t\t\t\t\u0026aws.ElastigroupScalingStrategyArgs{\n\t\t\t\t\tTerminateAtEndOfBillingHour: pulumi.Bool(true),\n\t\t\t\t\tTerminationPolicy:           pulumi.String(\"default\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tScalingUpPolicies: aws.ElastigroupScalingUpPolicyArray{\n\t\t\t\t\u0026aws.ElastigroupScalingUpPolicyArgs{\n\t\t\t\t\tPolicyName:        pulumi.String(\"Default Scaling Up Policy\"),\n\t\t\t\t\tMetricName:        pulumi.String(\"DefaultQueuesDepth\"),\n\t\t\t\t\tStatistic:         pulumi.String(\"average\"),\n\t\t\t\t\tUnit:              pulumi.String(\"none\"),\n\t\t\t\t\tAdjustment:        pulumi.String(\"1\"),\n\t\t\t\t\tNamespace:         pulumi.String(\"custom\"),\n\t\t\t\t\tThreshold:         pulumi.Float64(100),\n\t\t\t\t\tPeriod:            pulumi.Int(60),\n\t\t\t\t\tEvaluationPeriods: pulumi.Int(5),\n\t\t\t\t\tCooldown:          pulumi.Int(300),\n\t\t\t\t},\n\t\t\t},\n\t\t\tScalingDownPolicies: aws.ElastigroupScalingDownPolicyArray{\n\t\t\t\t\u0026aws.ElastigroupScalingDownPolicyArgs{\n\t\t\t\t\tPolicyName:        pulumi.String(\"Default Scaling Down Policy\"),\n\t\t\t\t\tMetricName:        pulumi.String(\"DefaultQueuesDepth\"),\n\t\t\t\t\tStatistic:         pulumi.String(\"average\"),\n\t\t\t\t\tUnit:              pulumi.String(\"none\"),\n\t\t\t\t\tAdjustment:        pulumi.String(\"1\"),\n\t\t\t\t\tNamespace:         pulumi.String(\"custom\"),\n\t\t\t\t\tThreshold:         pulumi.Float64(10),\n\t\t\t\t\tPeriod:            pulumi.Int(60),\n\t\t\t\t\tEvaluationPeriods: pulumi.Int(10),\n\t\t\t\t\tCooldown:          pulumi.Int(300),\n\t\t\t\t},\n\t\t\t},\n\t\t\tTags: aws.ElastigroupTagArray{\n\t\t\t\t\u0026aws.ElastigroupTagArgs{\n\t\t\t\t\tKey:   pulumi.String(\"Env\"),\n\t\t\t\t\tValue: pulumi.String(\"production\"),\n\t\t\t\t},\n\t\t\t\t\u0026aws.ElastigroupTagArgs{\n\t\t\t\t\tKey:   pulumi.String(\"Name\"),\n\t\t\t\t\tValue: pulumi.String(\"default-production\"),\n\t\t\t\t},\n\t\t\t\t\u0026aws.ElastigroupTagArgs{\n\t\t\t\t\tKey:   pulumi.String(\"Project\"),\n\t\t\t\t\tValue: pulumi.String(\"app_v2\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tResourceTagSpecifications: aws.ElastigroupResourceTagSpecificationArray{\n\t\t\t\t\u0026aws.ElastigroupResourceTagSpecificationArgs{\n\t\t\t\t\tShouldTagEnis:      pulumi.Bool(true),\n\t\t\t\t\tShouldTagVolumes:   pulumi.Bool(true),\n\t\t\t\t\tShouldTagSnapshots: pulumi.Bool(true),\n\t\t\t\t\tShouldTagAmis:      pulumi.Bool(true),\n\t\t\t\t},\n\t\t\t},\n\t\t\tLogging: \u0026aws.ElastigroupLoggingArgs{\n\t\t\t\tExport: \u0026aws.ElastigroupLoggingExportArgs{\n\t\t\t\t\tS3s: aws.ElastigroupLoggingExportS3Array{\n\t\t\t\t\t\t\u0026aws.ElastigroupLoggingExportS3Args{\n\t\t\t\t\t\t\tId: pulumi.String(\"di-123456\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.spotinst.aws.Elastigroup;\nimport com.pulumi.spotinst.aws.ElastigroupArgs;\nimport com.pulumi.spotinst.aws.inputs.ElastigroupMetadataOptionsArgs;\nimport com.pulumi.spotinst.aws.inputs.ElastigroupCpuOptionsArgs;\nimport com.pulumi.spotinst.aws.inputs.ElastigroupInstanceTypesWeightArgs;\nimport com.pulumi.spotinst.aws.inputs.ElastigroupResourceRequirementArgs;\nimport com.pulumi.spotinst.aws.inputs.ElastigroupScalingStrategyArgs;\nimport com.pulumi.spotinst.aws.inputs.ElastigroupScalingUpPolicyArgs;\nimport com.pulumi.spotinst.aws.inputs.ElastigroupScalingDownPolicyArgs;\nimport com.pulumi.spotinst.aws.inputs.ElastigroupTagArgs;\nimport com.pulumi.spotinst.aws.inputs.ElastigroupResourceTagSpecificationArgs;\nimport com.pulumi.spotinst.aws.inputs.ElastigroupLoggingArgs;\nimport com.pulumi.spotinst.aws.inputs.ElastigroupLoggingExportArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Create an Elastigroup\n        var default_elastigroup = new Elastigroup(\"default-elastigroup\", ElastigroupArgs.builder()\n            .name(\"default-elastigroup\")\n            .description(\"created by Pulumi\")\n            .product(\"Linux/UNIX\")\n            .maxSize(0)\n            .minSize(0)\n            .desiredCapacity(0)\n            .capacityUnit(\"weight\")\n            .region(\"us-west-2\")\n            .subnetIds(            \n                \"sb-123456\",\n                \"sb-456789\")\n            .imageId(\"ami-a27d8fda\")\n            .iamInstanceProfile(\"iam-profile\")\n            .keyName(\"my-key.ssh\")\n            .securityGroups(\"sg-123456\")\n            .userData(\"echo hello world\")\n            .enableMonitoring(false)\n            .ebsOptimized(false)\n            .placementTenancy(\"default\")\n            .metadataOptions(ElastigroupMetadataOptionsArgs.builder()\n                .httpTokens(\"optional\")\n                .httpPutResponseHopLimit(10)\n                .instanceMetadataTags(\"enabled\")\n                .build())\n            .cpuOptions(ElastigroupCpuOptionsArgs.builder()\n                .threadsPerCore(1)\n                .build())\n            .instanceTypesOndemand(\"m3.2xlarge\")\n            .instanceTypesSpots(            \n                \"m3.xlarge\",\n                \"m3.2xlarge\")\n            .instanceTypesPreferredSpots(\"m3.xlarge\")\n            .onDemandTypes(\"c3.large\")\n            .instanceTypesWeights(            \n                ElastigroupInstanceTypesWeightArgs.builder()\n                    .instanceType(\"m3.xlarge\")\n                    .weight(10)\n                    .build(),\n                ElastigroupInstanceTypesWeightArgs.builder()\n                    .instanceType(\"m3.2xlarge\")\n                    .weight(16)\n                    .build())\n            .resourceRequirements(ElastigroupResourceRequirementArgs.builder()\n                .excludedInstanceFamilies(                \n                    \"a\",\n                    \"m\")\n                .excludedInstanceTypes(\"m3.large\")\n                .excludedInstanceGenerations(                \n                    \"1\",\n                    \"2\")\n                .requiredGpuMinimum(1)\n                .requiredGpuMaximum(16)\n                .requiredMemoryMinimum(1)\n                .requiredMemoryMaximum(512)\n                .requiredVcpuMinimum(1)\n                .requiredVcpuMaximum(64)\n                .build())\n            .orientation(\"balanced\")\n            .fallbackToOndemand(false)\n            .cpuCredits(\"unlimited\")\n            .minimumInstanceLifetime(12)\n            .waitForCapacity(5)\n            .waitForCapacityTimeout(300)\n            .scalingStrategies(ElastigroupScalingStrategyArgs.builder()\n                .terminateAtEndOfBillingHour(true)\n                .terminationPolicy(\"default\")\n                .build())\n            .scalingUpPolicies(ElastigroupScalingUpPolicyArgs.builder()\n                .policyName(\"Default Scaling Up Policy\")\n                .metricName(\"DefaultQueuesDepth\")\n                .statistic(\"average\")\n                .unit(\"none\")\n                .adjustment(1)\n                .namespace(\"custom\")\n                .threshold(100)\n                .period(60)\n                .evaluationPeriods(5)\n                .cooldown(300)\n                .build())\n            .scalingDownPolicies(ElastigroupScalingDownPolicyArgs.builder()\n                .policyName(\"Default Scaling Down Policy\")\n                .metricName(\"DefaultQueuesDepth\")\n                .statistic(\"average\")\n                .unit(\"none\")\n                .adjustment(1)\n                .namespace(\"custom\")\n                .threshold(10)\n                .period(60)\n                .evaluationPeriods(10)\n                .cooldown(300)\n                .build())\n            .tags(            \n                ElastigroupTagArgs.builder()\n                    .key(\"Env\")\n                    .value(\"production\")\n                    .build(),\n                ElastigroupTagArgs.builder()\n                    .key(\"Name\")\n                    .value(\"default-production\")\n                    .build(),\n                ElastigroupTagArgs.builder()\n                    .key(\"Project\")\n                    .value(\"app_v2\")\n                    .build())\n            .resourceTagSpecifications(ElastigroupResourceTagSpecificationArgs.builder()\n                .shouldTagEnis(true)\n                .shouldTagVolumes(true)\n                .shouldTagSnapshots(true)\n                .shouldTagAmis(true)\n                .build())\n            .logging(ElastigroupLoggingArgs.builder()\n                .export(ElastigroupLoggingExportArgs.builder()\n                    .s3s(ElastigroupLoggingExportS3Args.builder()\n                        .id(\"di-123456\")\n                        .build())\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Create an Elastigroup\n  default-elastigroup:\n    type: spotinst:aws:Elastigroup\n    properties:\n      name: default-elastigroup\n      description: created by Pulumi\n      product: Linux/UNIX\n      maxSize: 0\n      minSize: 0\n      desiredCapacity: 0\n      capacityUnit: weight\n      region: us-west-2\n      subnetIds:\n        - sb-123456\n        - sb-456789\n      imageId: ami-a27d8fda\n      iamInstanceProfile: iam-profile\n      keyName: my-key.ssh\n      securityGroups:\n        - sg-123456\n      userData: echo hello world\n      enableMonitoring: false\n      ebsOptimized: false\n      placementTenancy: default\n      metadataOptions:\n        httpTokens: optional\n        httpPutResponseHopLimit: 10\n        instanceMetadataTags: enabled\n      cpuOptions:\n        threadsPerCore: 1\n      instanceTypesOndemand: m3.2xlarge\n      instanceTypesSpots:\n        - m3.xlarge\n        - m3.2xlarge\n      instanceTypesPreferredSpots:\n        - m3.xlarge\n      onDemandTypes:\n        - c3.large\n      instanceTypesWeights:\n        - instanceType: m3.xlarge\n          weight: 10\n        - instanceType: m3.2xlarge\n          weight: 16\n      resourceRequirements:\n        - excludedInstanceFamilies:\n            - a\n            - m\n          excludedInstanceTypes:\n            - m3.large\n          excludedInstanceGenerations:\n            - '1'\n            - '2'\n          requiredGpuMinimum: 1\n          requiredGpuMaximum: 16\n          requiredMemoryMinimum: 1\n          requiredMemoryMaximum: 512\n          requiredVcpuMinimum: 1\n          requiredVcpuMaximum: 64\n      orientation: balanced\n      fallbackToOndemand: false\n      cpuCredits: unlimited\n      minimumInstanceLifetime: 12\n      waitForCapacity: 5\n      waitForCapacityTimeout: 300\n      scalingStrategies:\n        - terminateAtEndOfBillingHour: true\n          terminationPolicy: default\n      scalingUpPolicies:\n        - policyName: Default Scaling Up Policy\n          metricName: DefaultQueuesDepth\n          statistic: average\n          unit: none\n          adjustment: 1\n          namespace: custom\n          threshold: 100\n          period: 60\n          evaluationPeriods: 5\n          cooldown: 300\n      scalingDownPolicies:\n        - policyName: Default Scaling Down Policy\n          metricName: DefaultQueuesDepth\n          statistic: average\n          unit: none\n          adjustment: 1\n          namespace: custom\n          threshold: 10\n          period: 60\n          evaluationPeriods: 10\n          cooldown: 300\n      tags:\n        - key: Env\n          value: production\n        - key: Name\n          value: default-production\n        - key: Project\n          value: app_v2\n      resourceTagSpecifications:\n        - shouldTagEnis: true\n          shouldTagVolumes: true\n          shouldTagSnapshots: true\n          shouldTagAmis: true\n      logging:\n        export:\n          s3s:\n            - id: di-123456\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
+                "autoHealing": {
+                    "type": "boolean",
+                    "description": "Auto-healing replacement won't be triggered if this parameter value is \"false\". In a case of a stateful group - no recycling will start if this parameter value is \"false\".\n"
+                },
                 "availabilityZones": {
                     "type": "array",
                     "items": {
@@ -10510,6 +10556,10 @@
                         "$ref": "#/types/spotinst:aws/ElastigroupResourceTagSpecification:ElastigroupResourceTagSpecification"
                     },
                     "description": "User will specify which resources should be tagged with group tags.\n"
+                },
+                "restrictSingleAz": {
+                    "type": "boolean",
+                    "description": "Elastigroup will automatically scale your instances in the most available and cost efficient availability zone. Every evaluation will be done when there are no active instances in the group.\n"
                 },
                 "revertToSpot": {
                     "$ref": "#/types/spotinst:aws/ElastigroupRevertToSpot:ElastigroupRevertToSpot",
@@ -10632,6 +10682,10 @@
                 "securityGroups"
             ],
             "inputProperties": {
+                "autoHealing": {
+                    "type": "boolean",
+                    "description": "Auto-healing replacement won't be triggered if this parameter value is \"false\". In a case of a stateful group - no recycling will start if this parameter value is \"false\".\n"
+                },
                 "availabilityZones": {
                     "type": "array",
                     "items": {
@@ -10900,6 +10954,10 @@
                     },
                     "description": "User will specify which resources should be tagged with group tags.\n"
                 },
+                "restrictSingleAz": {
+                    "type": "boolean",
+                    "description": "Elastigroup will automatically scale your instances in the most available and cost efficient availability zone. Every evaluation will be done when there are no active instances in the group.\n"
+                },
                 "revertToSpot": {
                     "$ref": "#/types/spotinst:aws/ElastigroupRevertToSpot:ElastigroupRevertToSpot",
                     "description": "Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `\"never\"`, `\"always\"`, `\"timeWindow\"`\n"
@@ -11017,6 +11075,10 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Elastigroup resources.\n",
                 "properties": {
+                    "autoHealing": {
+                        "type": "boolean",
+                        "description": "Auto-healing replacement won't be triggered if this parameter value is \"false\". In a case of a stateful group - no recycling will start if this parameter value is \"false\".\n"
+                    },
                     "availabilityZones": {
                         "type": "array",
                         "items": {
@@ -11284,6 +11346,10 @@
                             "$ref": "#/types/spotinst:aws/ElastigroupResourceTagSpecification:ElastigroupResourceTagSpecification"
                         },
                         "description": "User will specify which resources should be tagged with group tags.\n"
+                    },
+                    "restrictSingleAz": {
+                        "type": "boolean",
+                        "description": "Elastigroup will automatically scale your instances in the most available and cost efficient availability zone. Every evaluation will be done when there are no active instances in the group.\n"
                     },
                     "revertToSpot": {
                         "$ref": "#/types/spotinst:aws/ElastigroupRevertToSpot:ElastigroupRevertToSpot",
@@ -13510,7 +13576,7 @@
                 },
                 "restrictScaleDown": {
                     "type": "boolean",
-                    "description": "Boolean. When set to `True`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.\n"
+                    "description": "Boolean. When set to `true`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.\n"
                 },
                 "rootVolumeSize": {
                     "type": "integer",
@@ -13693,7 +13759,7 @@
                 },
                 "restrictScaleDown": {
                     "type": "boolean",
-                    "description": "Boolean. When set to `True`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.\n"
+                    "description": "Boolean. When set to `true`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.\n"
                 },
                 "rootVolumeSize": {
                     "type": "integer",
@@ -13877,7 +13943,7 @@
                     },
                     "restrictScaleDown": {
                         "type": "boolean",
-                        "description": "Boolean. When set to `True`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.\n"
+                        "description": "Boolean. When set to `true`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.\n"
                     },
                     "rootVolumeSize": {
                         "type": "integer",
@@ -15340,7 +15406,7 @@
                 },
                 "restrictScaleDown": {
                     "type": "boolean",
-                    "description": "Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.\n"
+                    "description": "Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.\n"
                 },
                 "schedulingTasks": {
                     "type": "array",
@@ -15451,7 +15517,7 @@
                 },
                 "restrictScaleDown": {
                     "type": "boolean",
-                    "description": "Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.\n"
+                    "description": "Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.\n"
                 },
                 "schedulingTasks": {
                     "type": "array",
@@ -15563,7 +15629,7 @@
                     },
                     "restrictScaleDown": {
                         "type": "boolean",
-                        "description": "Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.\n"
+                        "description": "Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.\n"
                     },
                     "schedulingTasks": {
                         "type": "array",

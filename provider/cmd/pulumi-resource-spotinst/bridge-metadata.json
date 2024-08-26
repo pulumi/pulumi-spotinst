@@ -31,7 +31,17 @@
                         "maxItemsOne": true
                     },
                     "ebs_block_device": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "dynamic_iops": {
+                                    "maxItemsOne": true
+                                },
+                                "dynamic_volume_size": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
                     },
                     "elastic_ips": {
                         "maxItemsOne": false
