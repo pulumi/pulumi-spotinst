@@ -95,14 +95,14 @@ public final class VerificationTemplateMetricProviderCloudWatchMetricDataQueryAr
     }
 
     /**
-     * This option indicates whether to return the timestamps and raw data values of this metric. If you are performing this call just to do math expressions and do not also need the raw data returned, you can specify False . If you omit this, the default of True is used.
+     * This option indicates whether to return the timestamps and raw data values of this metric. If you are performing this call just to do math expressions and do not also need the raw data returned, you can specify `false`. If you omit this, the default of `true` is used.
      * 
      */
     @Import(name="returnData")
     private @Nullable Output<Boolean> returnData;
 
     /**
-     * @return This option indicates whether to return the timestamps and raw data values of this metric. If you are performing this call just to do math expressions and do not also need the raw data returned, you can specify False . If you omit this, the default of True is used.
+     * @return This option indicates whether to return the timestamps and raw data values of this metric. If you are performing this call just to do math expressions and do not also need the raw data returned, you can specify `false`. If you omit this, the default of `true` is used.
      * 
      */
     public Optional<Output<Boolean>> returnData() {
@@ -244,7 +244,7 @@ public final class VerificationTemplateMetricProviderCloudWatchMetricDataQueryAr
         }
 
         /**
-         * @param returnData This option indicates whether to return the timestamps and raw data values of this metric. If you are performing this call just to do math expressions and do not also need the raw data returned, you can specify False . If you omit this, the default of True is used.
+         * @param returnData This option indicates whether to return the timestamps and raw data values of this metric. If you are performing this call just to do math expressions and do not also need the raw data returned, you can specify `false`. If you omit this, the default of `true` is used.
          * 
          * @return builder
          * 
@@ -255,7 +255,7 @@ public final class VerificationTemplateMetricProviderCloudWatchMetricDataQueryAr
         }
 
         /**
-         * @param returnData This option indicates whether to return the timestamps and raw data values of this metric. If you are performing this call just to do math expressions and do not also need the raw data returned, you can specify False . If you omit this, the default of True is used.
+         * @param returnData This option indicates whether to return the timestamps and raw data values of this metric. If you are performing this call just to do math expressions and do not also need the raw data returned, you can specify `false`. If you omit this, the default of `true` is used.
          * 
          * @return builder
          * 

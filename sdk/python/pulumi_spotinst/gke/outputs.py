@@ -1597,10 +1597,10 @@ class OceanImportScheduledTaskShutdownHours(dict):
                  time_windows: Sequence[str],
                  is_enabled: Optional[bool] = None):
         """
-        :param Sequence[str] time_windows: Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
+        :param Sequence[str] time_windows: Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = `true`. API Times are in UTC
                Example: Fri:15:30-Wed:14:30
         :param bool is_enabled: Flag to enable / disable the shutdown hours.
-               Example: True
+               Example: `true`
         """
         pulumi.set(__self__, "time_windows", time_windows)
         if is_enabled is not None:
@@ -1610,7 +1610,7 @@ class OceanImportScheduledTaskShutdownHours(dict):
     @pulumi.getter(name="timeWindows")
     def time_windows(self) -> Sequence[str]:
         """
-        Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
+        Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = `true`. API Times are in UTC
         Example: Fri:15:30-Wed:14:30
         """
         return pulumi.get(self, "time_windows")
@@ -1620,7 +1620,7 @@ class OceanImportScheduledTaskShutdownHours(dict):
     def is_enabled(self) -> Optional[bool]:
         """
         Flag to enable / disable the shutdown hours.
-        Example: True
+        Example: `true`
         """
         return pulumi.get(self, "is_enabled")
 
@@ -2025,7 +2025,7 @@ class OceanImportUpdatePolicyRollConfig(dict):
         :param int batch_size_percentage: Sets the percentage of the instances to deploy in each batch.
         :param int batch_min_healthy_percentage: Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
         :param Sequence[str] launch_spec_ids: List of Virtual Node Group identifiers to be rolled.
-        :param bool respect_pdb: Default: False. During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+        :param bool respect_pdb: Default: `false`. During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.
         """
         pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
         if batch_min_healthy_percentage is not None:
@@ -2063,7 +2063,7 @@ class OceanImportUpdatePolicyRollConfig(dict):
     @pulumi.getter(name="respectPdb")
     def respect_pdb(self) -> Optional[bool]:
         """
-        Default: False. During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+        Default: `false`. During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.
         """
         return pulumi.get(self, "respect_pdb")
 
@@ -2515,7 +2515,7 @@ class OceanLaunchSpecSchedulingTask(dict):
                  task_headrooms: Optional[Sequence['outputs.OceanLaunchSpecSchedulingTaskTaskHeadroom']] = None):
         """
         :param str cron_expression: A valid cron expression. For example : " * * * * * ". The cron job runs in UTC time and is in Unix cron format.
-        :param bool is_enabled: Describes whether the task is enabled. When True, the task runs. When False, it does not run.
+        :param bool is_enabled: Describes whether the task is enabled. When `true`, the task runs. When `false`, it does not run.
         :param str task_type: The activity that you are scheduling. Valid values: "manualHeadroomUpdate".
         :param Sequence['OceanLaunchSpecSchedulingTaskTaskHeadroomArgs'] task_headrooms: The config of this scheduled task. Depends on the value of taskType.
         """
@@ -2537,7 +2537,7 @@ class OceanLaunchSpecSchedulingTask(dict):
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> bool:
         """
-        Describes whether the task is enabled. When True, the task runs. When False, it does not run.
+        Describes whether the task is enabled. When `true`, the task runs. When `false`, it does not run.
         """
         return pulumi.get(self, "is_enabled")
 

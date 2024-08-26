@@ -65,14 +65,14 @@ public final class OceanImportUpdatePolicyRollConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * Default: False. During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+     * Default: `false`. During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.
      * 
      */
     @Import(name="respectPdb")
     private @Nullable Output<Boolean> respectPdb;
 
     /**
-     * @return Default: False. During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+     * @return Default: `false`. During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.
      * 
      */
     public Optional<Output<Boolean>> respectPdb() {
@@ -180,7 +180,7 @@ public final class OceanImportUpdatePolicyRollConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param respectPdb Default: False. During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+         * @param respectPdb Default: `false`. During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.
          * 
          * @return builder
          * 
@@ -191,7 +191,7 @@ public final class OceanImportUpdatePolicyRollConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param respectPdb Default: False. During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+         * @param respectPdb Default: `false`. During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.
          * 
          * @return builder
          * 

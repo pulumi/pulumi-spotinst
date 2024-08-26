@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OceanLaunchSpecSchedulingShutdownHours {
     /**
-     * @return Flag to enable or disable the shutdown hours mechanism. When False, the mechanism is deactivated, and the virtual node group remains in its current state.
+     * @return Flag to enable or disable the shutdown hours mechanism. When `false`, the mechanism is deactivated, and the virtual node group remains in its current state.
      * 
      */
     private @Nullable Boolean isEnabled;
@@ -27,7 +27,7 @@ public final class OceanLaunchSpecSchedulingShutdownHours {
 
     private OceanLaunchSpecSchedulingShutdownHours() {}
     /**
-     * @return Flag to enable or disable the shutdown hours mechanism. When False, the mechanism is deactivated, and the virtual node group remains in its current state.
+     * @return Flag to enable or disable the shutdown hours mechanism. When `false`, the mechanism is deactivated, and the virtual node group remains in its current state.
      * 
      */
     public Optional<Boolean> isEnabled() {

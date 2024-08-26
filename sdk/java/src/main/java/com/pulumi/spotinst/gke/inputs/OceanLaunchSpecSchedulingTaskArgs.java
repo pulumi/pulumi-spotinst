@@ -35,14 +35,14 @@ public final class OceanLaunchSpecSchedulingTaskArgs extends com.pulumi.resource
     }
 
     /**
-     * Describes whether the task is enabled. When True, the task runs. When False, it does not run.
+     * Describes whether the task is enabled. When `true`, the task runs. When `false`, it does not run.
      * 
      */
     @Import(name="isEnabled", required=true)
     private Output<Boolean> isEnabled;
 
     /**
-     * @return Describes whether the task is enabled. When True, the task runs. When False, it does not run.
+     * @return Describes whether the task is enabled. When `true`, the task runs. When `false`, it does not run.
      * 
      */
     public Output<Boolean> isEnabled() {
@@ -128,7 +128,7 @@ public final class OceanLaunchSpecSchedulingTaskArgs extends com.pulumi.resource
         }
 
         /**
-         * @param isEnabled Describes whether the task is enabled. When True, the task runs. When False, it does not run.
+         * @param isEnabled Describes whether the task is enabled. When `true`, the task runs. When `false`, it does not run.
          * 
          * @return builder
          * 
@@ -139,7 +139,7 @@ public final class OceanLaunchSpecSchedulingTaskArgs extends com.pulumi.resource
         }
 
         /**
-         * @param isEnabled Describes whether the task is enabled. When True, the task runs. When False, it does not run.
+         * @param isEnabled Describes whether the task is enabled. When `true`, the task runs. When `false`, it does not run.
          * 
          * @return builder
          * 

@@ -484,7 +484,7 @@ func (o OceanNpAutoscalerAutoscaleHeadroomPtrOutput) Automatic() OceanNpAutoscal
 }
 
 type OceanNpAutoscalerAutoscaleHeadroomAutomatic struct {
-	// Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+	// Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
 	IsEnabled *bool `pulumi:"isEnabled"`
 	// Optionally set a number between 0-100 to control the percentage of total cluster resources dedicated to headroom.
 	Percentage *int `pulumi:"percentage"`
@@ -502,7 +502,7 @@ type OceanNpAutoscalerAutoscaleHeadroomAutomaticInput interface {
 }
 
 type OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs struct {
-	// Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+	// Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
 	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
 	// Optionally set a number between 0-100 to control the percentage of total cluster resources dedicated to headroom.
 	Percentage pulumi.IntPtrInput `pulumi:"percentage"`
@@ -585,7 +585,7 @@ func (o OceanNpAutoscalerAutoscaleHeadroomAutomaticOutput) ToOceanNpAutoscalerAu
 	}).(OceanNpAutoscalerAutoscaleHeadroomAutomaticPtrOutput)
 }
 
-// Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+// Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
 func (o OceanNpAutoscalerAutoscaleHeadroomAutomaticOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanNpAutoscalerAutoscaleHeadroomAutomatic) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -619,7 +619,7 @@ func (o OceanNpAutoscalerAutoscaleHeadroomAutomaticPtrOutput) Elem() OceanNpAuto
 	}).(OceanNpAutoscalerAutoscaleHeadroomAutomaticOutput)
 }
 
-// Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+// Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
 func (o OceanNpAutoscalerAutoscaleHeadroomAutomaticPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanNpAutoscalerAutoscaleHeadroomAutomatic) *bool {
 		if v == nil {
@@ -1802,7 +1802,7 @@ func (o OceanNpSchedulingPtrOutput) Tasks() OceanNpSchedulingTaskArrayOutput {
 }
 
 type OceanNpSchedulingShutdownHours struct {
-	// Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+	// Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
 	IsEnabled   *bool    `pulumi:"isEnabled"`
 	TimeWindows []string `pulumi:"timeWindows"`
 }
@@ -1819,7 +1819,7 @@ type OceanNpSchedulingShutdownHoursInput interface {
 }
 
 type OceanNpSchedulingShutdownHoursArgs struct {
-	// Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+	// Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
 	IsEnabled   pulumi.BoolPtrInput     `pulumi:"isEnabled"`
 	TimeWindows pulumi.StringArrayInput `pulumi:"timeWindows"`
 }
@@ -1901,7 +1901,7 @@ func (o OceanNpSchedulingShutdownHoursOutput) ToOceanNpSchedulingShutdownHoursPt
 	}).(OceanNpSchedulingShutdownHoursPtrOutput)
 }
 
-// Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+// Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
 func (o OceanNpSchedulingShutdownHoursOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanNpSchedulingShutdownHours) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -1934,7 +1934,7 @@ func (o OceanNpSchedulingShutdownHoursPtrOutput) Elem() OceanNpSchedulingShutdow
 	}).(OceanNpSchedulingShutdownHoursOutput)
 }
 
-// Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+// Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
 func (o OceanNpSchedulingShutdownHoursPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanNpSchedulingShutdownHours) *bool {
 		if v == nil {
@@ -1955,7 +1955,7 @@ func (o OceanNpSchedulingShutdownHoursPtrOutput) TimeWindows() pulumi.StringArra
 
 type OceanNpSchedulingTask struct {
 	CronExpression string `pulumi:"cronExpression"`
-	// Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+	// Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
 	IsEnabled  bool                             `pulumi:"isEnabled"`
 	Parameters *OceanNpSchedulingTaskParameters `pulumi:"parameters"`
 	TaskType   string                           `pulumi:"taskType"`
@@ -1974,7 +1974,7 @@ type OceanNpSchedulingTaskInput interface {
 
 type OceanNpSchedulingTaskArgs struct {
 	CronExpression pulumi.StringInput `pulumi:"cronExpression"`
-	// Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+	// Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
 	IsEnabled  pulumi.BoolInput                        `pulumi:"isEnabled"`
 	Parameters OceanNpSchedulingTaskParametersPtrInput `pulumi:"parameters"`
 	TaskType   pulumi.StringInput                      `pulumi:"taskType"`
@@ -2035,7 +2035,7 @@ func (o OceanNpSchedulingTaskOutput) CronExpression() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanNpSchedulingTask) string { return v.CronExpression }).(pulumi.StringOutput)
 }
 
-// Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+// Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
 func (o OceanNpSchedulingTaskOutput) IsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v OceanNpSchedulingTask) bool { return v.IsEnabled }).(pulumi.BoolOutput)
 }

@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OceanNpAutoscalerAutoscaleHeadroomAutomatic {
     /**
-     * @return Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+     * @return Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
      * 
      */
     private @Nullable Boolean isEnabled;
@@ -25,7 +25,7 @@ public final class OceanNpAutoscalerAutoscaleHeadroomAutomatic {
 
     private OceanNpAutoscalerAutoscaleHeadroomAutomatic() {}
     /**
-     * @return Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+     * @return Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
      * 
      */
     public Optional<Boolean> isEnabled() {

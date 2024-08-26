@@ -20,7 +20,7 @@ public final class OceanLaunchSpecSchedulingTask {
      */
     private String cronExpression;
     /**
-     * @return Describes whether the task is enabled. When True, the task runs. When False, it does not run.
+     * @return Describes whether the task is enabled. When `true`, the task runs. When `false`, it does not run.
      * 
      */
     private Boolean isEnabled;
@@ -44,7 +44,7 @@ public final class OceanLaunchSpecSchedulingTask {
         return this.cronExpression;
     }
     /**
-     * @return Describes whether the task is enabled. When True, the task runs. When False, it does not run.
+     * @return Describes whether the task is enabled. When `true`, the task runs. When `false`, it does not run.
      * 
      */
     public Boolean isEnabled() {

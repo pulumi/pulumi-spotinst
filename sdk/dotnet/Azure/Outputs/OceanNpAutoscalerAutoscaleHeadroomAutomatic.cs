@@ -14,7 +14,7 @@ namespace Pulumi.SpotInst.Azure.Outputs
     public sealed class OceanNpAutoscalerAutoscaleHeadroomAutomatic
     {
         /// <summary>
-        /// Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+        /// Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
         /// </summary>
         public readonly bool? IsEnabled;
         /// <summary>

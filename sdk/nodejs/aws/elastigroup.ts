@@ -172,6 +172,10 @@ export class Elastigroup extends pulumi.CustomResource {
     }
 
     /**
+     * Auto-healing replacement won't be triggered if this parameter value is "false". In a case of a stateful group - no recycling will start if this parameter value is "false".
+     */
+    public readonly autoHealing!: pulumi.Output<boolean | undefined>;
+    /**
      * List of Strings of availability zones. When this parameter is set, `subnetIds` should be left unused.
      * Note: `availabilityZones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
      * `availabilityZones = ["us-east-1a:subnet-123456:ClusterI03"]`
@@ -350,6 +354,10 @@ export class Elastigroup extends pulumi.CustomResource {
      */
     public readonly resourceTagSpecifications!: pulumi.Output<outputs.aws.ElastigroupResourceTagSpecification[] | undefined>;
     /**
+     * Elastigroup will automatically scale your instances in the most available and cost efficient availability zone. Every evaluation will be done when there are no active instances in the group.
+     */
+    public readonly restrictSingleAz!: pulumi.Output<boolean | undefined>;
+    /**
      * Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
      */
     public readonly revertToSpot!: pulumi.Output<outputs.aws.ElastigroupRevertToSpot | undefined>;
@@ -418,6 +426,7 @@ export class Elastigroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ElastigroupState | undefined;
+            resourceInputs["autoHealing"] = state ? state.autoHealing : undefined;
             resourceInputs["availabilityZones"] = state ? state.availabilityZones : undefined;
             resourceInputs["blockDevicesMode"] = state ? state.blockDevicesMode : undefined;
             resourceInputs["capacityUnit"] = state ? state.capacityUnit : undefined;
@@ -479,6 +488,7 @@ export class Elastigroup extends pulumi.CustomResource {
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["resourceRequirements"] = state ? state.resourceRequirements : undefined;
             resourceInputs["resourceTagSpecifications"] = state ? state.resourceTagSpecifications : undefined;
+            resourceInputs["restrictSingleAz"] = state ? state.restrictSingleAz : undefined;
             resourceInputs["revertToSpot"] = state ? state.revertToSpot : undefined;
             resourceInputs["scalingDownPolicies"] = state ? state.scalingDownPolicies : undefined;
             resourceInputs["scalingStrategies"] = state ? state.scalingStrategies : undefined;
@@ -514,6 +524,7 @@ export class Elastigroup extends pulumi.CustomResource {
             if ((!args || args.securityGroups === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'securityGroups'");
             }
+            resourceInputs["autoHealing"] = args ? args.autoHealing : undefined;
             resourceInputs["availabilityZones"] = args ? args.availabilityZones : undefined;
             resourceInputs["blockDevicesMode"] = args ? args.blockDevicesMode : undefined;
             resourceInputs["capacityUnit"] = args ? args.capacityUnit : undefined;
@@ -575,6 +586,7 @@ export class Elastigroup extends pulumi.CustomResource {
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["resourceRequirements"] = args ? args.resourceRequirements : undefined;
             resourceInputs["resourceTagSpecifications"] = args ? args.resourceTagSpecifications : undefined;
+            resourceInputs["restrictSingleAz"] = args ? args.restrictSingleAz : undefined;
             resourceInputs["revertToSpot"] = args ? args.revertToSpot : undefined;
             resourceInputs["scalingDownPolicies"] = args ? args.scalingDownPolicies : undefined;
             resourceInputs["scalingStrategies"] = args ? args.scalingStrategies : undefined;
@@ -606,6 +618,10 @@ export class Elastigroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Elastigroup resources.
  */
 export interface ElastigroupState {
+    /**
+     * Auto-healing replacement won't be triggered if this parameter value is "false". In a case of a stateful group - no recycling will start if this parameter value is "false".
+     */
+    autoHealing?: pulumi.Input<boolean>;
     /**
      * List of Strings of availability zones. When this parameter is set, `subnetIds` should be left unused.
      * Note: `availabilityZones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
@@ -785,6 +801,10 @@ export interface ElastigroupState {
      */
     resourceTagSpecifications?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupResourceTagSpecification>[]>;
     /**
+     * Elastigroup will automatically scale your instances in the most available and cost efficient availability zone. Every evaluation will be done when there are no active instances in the group.
+     */
+    restrictSingleAz?: pulumi.Input<boolean>;
+    /**
      * Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
      */
     revertToSpot?: pulumi.Input<inputs.aws.ElastigroupRevertToSpot>;
@@ -845,6 +865,10 @@ export interface ElastigroupState {
  * The set of arguments for constructing a Elastigroup resource.
  */
 export interface ElastigroupArgs {
+    /**
+     * Auto-healing replacement won't be triggered if this parameter value is "false". In a case of a stateful group - no recycling will start if this parameter value is "false".
+     */
+    autoHealing?: pulumi.Input<boolean>;
     /**
      * List of Strings of availability zones. When this parameter is set, `subnetIds` should be left unused.
      * Note: `availabilityZones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
@@ -1023,6 +1047,10 @@ export interface ElastigroupArgs {
      * User will specify which resources should be tagged with group tags.
      */
     resourceTagSpecifications?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupResourceTagSpecification>[]>;
+    /**
+     * Elastigroup will automatically scale your instances in the most available and cost efficient availability zone. Every evaluation will be done when there are no active instances in the group.
+     */
+    restrictSingleAz?: pulumi.Input<boolean>;
     /**
      * Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
      */

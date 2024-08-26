@@ -31,7 +31,7 @@ public final class OceanUpdatePolicyRollConfig {
      */
     private @Nullable List<String> launchSpecIds;
     /**
-     * @return During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+     * @return During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.
      * 
      */
     private @Nullable Boolean respectPdb;
@@ -59,7 +59,7 @@ public final class OceanUpdatePolicyRollConfig {
         return this.launchSpecIds == null ? List.of() : this.launchSpecIds;
     }
     /**
-     * @return During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+     * @return During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.
      * 
      */
     public Optional<Boolean> respectPdb() {

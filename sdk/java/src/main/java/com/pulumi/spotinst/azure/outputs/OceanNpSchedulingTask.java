@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 public final class OceanNpSchedulingTask {
     private String cronExpression;
     /**
-     * @return Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+     * @return Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
      * 
      */
     private Boolean isEnabled;
@@ -28,7 +28,7 @@ public final class OceanNpSchedulingTask {
         return this.cronExpression;
     }
     /**
-     * @return Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+     * @return Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
      * 
      */
     public Boolean isEnabled() {

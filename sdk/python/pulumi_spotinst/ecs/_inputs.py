@@ -1374,7 +1374,7 @@ class OceanLaunchSpecSchedulingTaskArgs:
                  task_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskTaskHeadroomArgs']]]] = None):
         """
         :param pulumi.Input[str] cron_expression: A valid cron expression. For example : " * * * * * ". The cron job runs in UTC time and is in Unix cron format.
-        :param pulumi.Input[bool] is_enabled: Describes whether the task is enabled. When True, the task runs. When False, it does not run.
+        :param pulumi.Input[bool] is_enabled: Describes whether the task is enabled. When `true`, the task runs. When `false`, it does not run.
         :param pulumi.Input[str] task_type: The activity that you are scheduling. Valid values: "manualHeadroomUpdate".
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskTaskHeadroomArgs']]] task_headrooms: The config of this scheduled task. Depends on the value of taskType.
         """
@@ -1400,7 +1400,7 @@ class OceanLaunchSpecSchedulingTaskArgs:
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> pulumi.Input[bool]:
         """
-        Describes whether the task is enabled. When True, the task runs. When False, it does not run.
+        Describes whether the task is enabled. When `true`, the task runs. When `false`, it does not run.
         """
         return pulumi.get(self, "is_enabled")
 

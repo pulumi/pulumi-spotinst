@@ -561,6 +561,14 @@ export namespace aws {
          */
         deviceName: pulumi.Input<string>;
         /**
+         * Set dynamic IOPS properties. When using this object, you cannot use the `iops` object. You must use one or the other.
+         */
+        dynamicIops?: pulumi.Input<inputs.aws.ElastigroupEbsBlockDeviceDynamicIops>;
+        /**
+         * Set dynamic volume size properties. When using this object, you cannot use `volumeSize`. You must use one or the other.
+         */
+        dynamicVolumeSize?: pulumi.Input<inputs.aws.ElastigroupEbsBlockDeviceDynamicVolumeSize>;
+        /**
          * Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
          */
         encrypted?: pulumi.Input<boolean>;
@@ -578,10 +586,6 @@ export namespace aws {
         snapshotId?: pulumi.Input<string>;
         /**
          * The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
-         *
-         * Modifying any `ebsBlockDevice` currently requires resource replacement.
-         *
-         * Usage:
          */
         throughput?: pulumi.Input<number>;
         /**
@@ -592,6 +596,40 @@ export namespace aws {
          * The type of volume. Can be `"standard"`, `"gp2"`, `"gp3"`, `"io1"`, `"st1"` or `"sc1"`.
          */
         volumeType?: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupEbsBlockDeviceDynamicIops {
+        /**
+         * Initial size for IOPS.
+         */
+        baseSize?: pulumi.Input<number>;
+        /**
+         * Type of resource, valid values: `"CPU", "MEMORY"`.
+         */
+        resource?: pulumi.Input<string>;
+        /**
+         * Additional size per resource unit (in IOPS).
+         *
+         * Modifying any `ebsBlockDevice` currently requires resource replacement.
+         *
+         * Usage:
+         */
+        sizePerResourceUnit?: pulumi.Input<number>;
+    }
+
+    export interface ElastigroupEbsBlockDeviceDynamicVolumeSize {
+        /**
+         * Initial size for volume.
+         */
+        baseSize?: pulumi.Input<number>;
+        /**
+         * Type of resource, valid values: `"CPU", "MEMORY"`.
+         */
+        resource?: pulumi.Input<string>;
+        /**
+         * Additional size per resource unit (in GB).
+         */
+        sizePerResourceUnit?: pulumi.Input<number>;
     }
 
     export interface ElastigroupEphemeralBlockDevice {
@@ -2658,7 +2696,7 @@ export namespace aws {
 
     export interface OceanLaunchSpecSchedulingShutdownHours {
         /**
-         * Flag to enable or disable the shutdown hours mechanism. When False, the mechanism is deactivated, and the virtual node group remains in its current state.
+         * Flag to enable or disable the shutdown hours mechanism. When `false`, the mechanism is deactivated, and the virtual node group remains in its current state.
          */
         isEnabled?: pulumi.Input<boolean>;
         /**
@@ -2673,7 +2711,7 @@ export namespace aws {
          */
         cronExpression: pulumi.Input<string>;
         /**
-         * Describes whether the task is enabled. When True, the task runs. When False, it does not run.
+         * Describes whether the task is enabled. When `true`, the task runs. When `false`, it does not run.
          */
         isEnabled: pulumi.Input<boolean>;
         /**
@@ -2954,7 +2992,7 @@ export namespace aws {
          */
         launchSpecIds?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+         * During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.
          */
         respectPdb?: pulumi.Input<boolean>;
     }
@@ -3003,7 +3041,7 @@ export namespace azure {
 
     export interface OceanNpAutoscalerAutoscaleHeadroomAutomatic {
         /**
-         * Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+         * Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
          */
         isEnabled?: pulumi.Input<boolean>;
         /**
@@ -3133,7 +3171,7 @@ export namespace azure {
 
     export interface OceanNpSchedulingShutdownHours {
         /**
-         * Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+         * Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
          */
         isEnabled?: pulumi.Input<boolean>;
         timeWindows?: pulumi.Input<pulumi.Input<string>[]>;
@@ -3142,7 +3180,7 @@ export namespace azure {
     export interface OceanNpSchedulingTask {
         cronExpression: pulumi.Input<string>;
         /**
-         * Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+         * Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
          */
         isEnabled: pulumi.Input<boolean>;
         parameters?: pulumi.Input<inputs.azure.OceanNpSchedulingTaskParameters>;
@@ -3761,7 +3799,7 @@ export namespace ecs {
          */
         cronExpression: pulumi.Input<string>;
         /**
-         * Describes whether the task is enabled. When True, the task runs. When False, it does not run.
+         * Describes whether the task is enabled. When `true`, the task runs. When `false`, it does not run.
          */
         isEnabled: pulumi.Input<boolean>;
         /**
@@ -4587,11 +4625,11 @@ export namespace gke {
     export interface OceanImportScheduledTaskShutdownHours {
         /**
          * Flag to enable / disable the shutdown hours.
-         * Example: True
+         * Example: `true`
          */
         isEnabled?: pulumi.Input<boolean>;
         /**
-         * Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
+         * Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = `true`. API Times are in UTC
          * Example: Fri:15:30-Wed:14:30
          */
         timeWindows: pulumi.Input<pulumi.Input<string>[]>;
@@ -4698,7 +4736,7 @@ export namespace gke {
          */
         launchSpecIds?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Default: False. During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+         * Default: `false`. During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.
          */
         respectPdb?: pulumi.Input<boolean>;
     }
@@ -4816,7 +4854,7 @@ export namespace gke {
          */
         cronExpression: pulumi.Input<string>;
         /**
-         * Describes whether the task is enabled. When True, the task runs. When False, it does not run.
+         * Describes whether the task is enabled. When `true`, the task runs. When `false`, it does not run.
          */
         isEnabled: pulumi.Input<boolean>;
         /**
@@ -5558,7 +5596,7 @@ export namespace oceancd {
          */
         period?: pulumi.Input<number>;
         /**
-         * This option indicates whether to return the timestamps and raw data values of this metric. If you are performing this call just to do math expressions and do not also need the raw data returned, you can specify False . If you omit this, the default of True is used.
+         * This option indicates whether to return the timestamps and raw data values of this metric. If you are performing this call just to do math expressions and do not also need the raw data returned, you can specify `false`. If you omit this, the default of `true` is used.
          */
         returnData?: pulumi.Input<boolean>;
     }

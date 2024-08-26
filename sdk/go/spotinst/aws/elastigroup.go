@@ -185,6 +185,8 @@ import (
 type Elastigroup struct {
 	pulumi.CustomResourceState
 
+	// Auto-healing replacement won't be triggered if this parameter value is "false". In a case of a stateful group - no recycling will start if this parameter value is "false".
+	AutoHealing pulumi.BoolPtrOutput `pulumi:"autoHealing"`
 	// List of Strings of availability zones. When this parameter is set, `subnetIds` should be left unused.
 	// Note: `availabilityZones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
 	// `availabilityZones = ["us-east-1a:subnet-123456:ClusterI03"]`
@@ -289,6 +291,8 @@ type Elastigroup struct {
 	ResourceRequirements ElastigroupResourceRequirementArrayOutput `pulumi:"resourceRequirements"`
 	// User will specify which resources should be tagged with group tags.
 	ResourceTagSpecifications ElastigroupResourceTagSpecificationArrayOutput `pulumi:"resourceTagSpecifications"`
+	// Elastigroup will automatically scale your instances in the most available and cost efficient availability zone. Every evaluation will be done when there are no active instances in the group.
+	RestrictSingleAz pulumi.BoolPtrOutput `pulumi:"restrictSingleAz"`
 	// Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
 	RevertToSpot        ElastigroupRevertToSpotPtrOutput        `pulumi:"revertToSpot"`
 	ScalingDownPolicies ElastigroupScalingDownPolicyArrayOutput `pulumi:"scalingDownPolicies"`
@@ -366,6 +370,8 @@ func GetElastigroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Elastigroup resources.
 type elastigroupState struct {
+	// Auto-healing replacement won't be triggered if this parameter value is "false". In a case of a stateful group - no recycling will start if this parameter value is "false".
+	AutoHealing *bool `pulumi:"autoHealing"`
 	// List of Strings of availability zones. When this parameter is set, `subnetIds` should be left unused.
 	// Note: `availabilityZones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
 	// `availabilityZones = ["us-east-1a:subnet-123456:ClusterI03"]`
@@ -470,6 +476,8 @@ type elastigroupState struct {
 	ResourceRequirements []ElastigroupResourceRequirement `pulumi:"resourceRequirements"`
 	// User will specify which resources should be tagged with group tags.
 	ResourceTagSpecifications []ElastigroupResourceTagSpecification `pulumi:"resourceTagSpecifications"`
+	// Elastigroup will automatically scale your instances in the most available and cost efficient availability zone. Every evaluation will be done when there are no active instances in the group.
+	RestrictSingleAz *bool `pulumi:"restrictSingleAz"`
 	// Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
 	RevertToSpot        *ElastigroupRevertToSpot       `pulumi:"revertToSpot"`
 	ScalingDownPolicies []ElastigroupScalingDownPolicy `pulumi:"scalingDownPolicies"`
@@ -506,6 +514,8 @@ type elastigroupState struct {
 }
 
 type ElastigroupState struct {
+	// Auto-healing replacement won't be triggered if this parameter value is "false". In a case of a stateful group - no recycling will start if this parameter value is "false".
+	AutoHealing pulumi.BoolPtrInput
 	// List of Strings of availability zones. When this parameter is set, `subnetIds` should be left unused.
 	// Note: `availabilityZones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
 	// `availabilityZones = ["us-east-1a:subnet-123456:ClusterI03"]`
@@ -610,6 +620,8 @@ type ElastigroupState struct {
 	ResourceRequirements ElastigroupResourceRequirementArrayInput
 	// User will specify which resources should be tagged with group tags.
 	ResourceTagSpecifications ElastigroupResourceTagSpecificationArrayInput
+	// Elastigroup will automatically scale your instances in the most available and cost efficient availability zone. Every evaluation will be done when there are no active instances in the group.
+	RestrictSingleAz pulumi.BoolPtrInput
 	// Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
 	RevertToSpot        ElastigroupRevertToSpotPtrInput
 	ScalingDownPolicies ElastigroupScalingDownPolicyArrayInput
@@ -650,6 +662,8 @@ func (ElastigroupState) ElementType() reflect.Type {
 }
 
 type elastigroupArgs struct {
+	// Auto-healing replacement won't be triggered if this parameter value is "false". In a case of a stateful group - no recycling will start if this parameter value is "false".
+	AutoHealing *bool `pulumi:"autoHealing"`
 	// List of Strings of availability zones. When this parameter is set, `subnetIds` should be left unused.
 	// Note: `availabilityZones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
 	// `availabilityZones = ["us-east-1a:subnet-123456:ClusterI03"]`
@@ -754,6 +768,8 @@ type elastigroupArgs struct {
 	ResourceRequirements []ElastigroupResourceRequirement `pulumi:"resourceRequirements"`
 	// User will specify which resources should be tagged with group tags.
 	ResourceTagSpecifications []ElastigroupResourceTagSpecification `pulumi:"resourceTagSpecifications"`
+	// Elastigroup will automatically scale your instances in the most available and cost efficient availability zone. Every evaluation will be done when there are no active instances in the group.
+	RestrictSingleAz *bool `pulumi:"restrictSingleAz"`
 	// Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
 	RevertToSpot        *ElastigroupRevertToSpot       `pulumi:"revertToSpot"`
 	ScalingDownPolicies []ElastigroupScalingDownPolicy `pulumi:"scalingDownPolicies"`
@@ -791,6 +807,8 @@ type elastigroupArgs struct {
 
 // The set of arguments for constructing a Elastigroup resource.
 type ElastigroupArgs struct {
+	// Auto-healing replacement won't be triggered if this parameter value is "false". In a case of a stateful group - no recycling will start if this parameter value is "false".
+	AutoHealing pulumi.BoolPtrInput
 	// List of Strings of availability zones. When this parameter is set, `subnetIds` should be left unused.
 	// Note: `availabilityZones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
 	// `availabilityZones = ["us-east-1a:subnet-123456:ClusterI03"]`
@@ -895,6 +913,8 @@ type ElastigroupArgs struct {
 	ResourceRequirements ElastigroupResourceRequirementArrayInput
 	// User will specify which resources should be tagged with group tags.
 	ResourceTagSpecifications ElastigroupResourceTagSpecificationArrayInput
+	// Elastigroup will automatically scale your instances in the most available and cost efficient availability zone. Every evaluation will be done when there are no active instances in the group.
+	RestrictSingleAz pulumi.BoolPtrInput
 	// Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
 	RevertToSpot        ElastigroupRevertToSpotPtrInput
 	ScalingDownPolicies ElastigroupScalingDownPolicyArrayInput
@@ -1015,6 +1035,11 @@ func (o ElastigroupOutput) ToElastigroupOutput() ElastigroupOutput {
 
 func (o ElastigroupOutput) ToElastigroupOutputWithContext(ctx context.Context) ElastigroupOutput {
 	return o
+}
+
+// Auto-healing replacement won't be triggered if this parameter value is "false". In a case of a stateful group - no recycling will start if this parameter value is "false".
+func (o ElastigroupOutput) AutoHealing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.BoolPtrOutput { return v.AutoHealing }).(pulumi.BoolPtrOutput)
 }
 
 // List of Strings of availability zones. When this parameter is set, `subnetIds` should be left unused.
@@ -1304,6 +1329,11 @@ func (o ElastigroupOutput) ResourceTagSpecifications() ElastigroupResourceTagSpe
 	return o.ApplyT(func(v *Elastigroup) ElastigroupResourceTagSpecificationArrayOutput {
 		return v.ResourceTagSpecifications
 	}).(ElastigroupResourceTagSpecificationArrayOutput)
+}
+
+// Elastigroup will automatically scale your instances in the most available and cost efficient availability zone. Every evaluation will be done when there are no active instances in the group.
+func (o ElastigroupOutput) RestrictSingleAz() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.BoolPtrOutput { return v.RestrictSingleAz }).(pulumi.BoolPtrOutput)
 }
 
 // Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`

@@ -7154,7 +7154,7 @@ type VerificationTemplateMetricProviderCloudWatchMetricDataQuery struct {
 	MetricStat *VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat `pulumi:"metricStat"`
 	// The granularity, in seconds, of the returned data points.
 	Period *int `pulumi:"period"`
-	// This option indicates whether to return the timestamps and raw data values of this metric. If you are performing this call just to do math expressions and do not also need the raw data returned, you can specify False . If you omit this, the default of True is used.
+	// This option indicates whether to return the timestamps and raw data values of this metric. If you are performing this call just to do math expressions and do not also need the raw data returned, you can specify `false`. If you omit this, the default of `true` is used.
 	ReturnData *bool `pulumi:"returnData"`
 }
 
@@ -7180,7 +7180,7 @@ type VerificationTemplateMetricProviderCloudWatchMetricDataQueryArgs struct {
 	MetricStat VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatPtrInput `pulumi:"metricStat"`
 	// The granularity, in seconds, of the returned data points.
 	Period pulumi.IntPtrInput `pulumi:"period"`
-	// This option indicates whether to return the timestamps and raw data values of this metric. If you are performing this call just to do math expressions and do not also need the raw data returned, you can specify False . If you omit this, the default of True is used.
+	// This option indicates whether to return the timestamps and raw data values of this metric. If you are performing this call just to do math expressions and do not also need the raw data returned, you can specify `false`. If you omit this, the default of `true` is used.
 	ReturnData pulumi.BoolPtrInput `pulumi:"returnData"`
 }
 
@@ -7262,7 +7262,7 @@ func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryOutput) Perio
 	return o.ApplyT(func(v VerificationTemplateMetricProviderCloudWatchMetricDataQuery) *int { return v.Period }).(pulumi.IntPtrOutput)
 }
 
-// This option indicates whether to return the timestamps and raw data values of this metric. If you are performing this call just to do math expressions and do not also need the raw data returned, you can specify False . If you omit this, the default of True is used.
+// This option indicates whether to return the timestamps and raw data values of this metric. If you are performing this call just to do math expressions and do not also need the raw data returned, you can specify `false`. If you omit this, the default of `true` is used.
 func (o VerificationTemplateMetricProviderCloudWatchMetricDataQueryOutput) ReturnData() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VerificationTemplateMetricProviderCloudWatchMetricDataQuery) *bool { return v.ReturnData }).(pulumi.BoolPtrOutput)
 }

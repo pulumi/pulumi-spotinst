@@ -176,7 +176,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     public readonly preferredSpotTypes!: pulumi.Output<string[] | undefined>;
     /**
-     * Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+     * Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
      */
     public readonly restrictScaleDown!: pulumi.Output<boolean | undefined>;
     /**
@@ -313,7 +313,7 @@ export interface OceanLaunchSpecState {
      */
     preferredSpotTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+     * Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
      */
     restrictScaleDown?: pulumi.Input<boolean>;
     /**
@@ -391,7 +391,7 @@ export interface OceanLaunchSpecArgs {
      */
     preferredSpotTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+     * Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
      */
     restrictScaleDown?: pulumi.Input<boolean>;
     /**

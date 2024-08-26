@@ -52,6 +52,21 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
     public static final ElastigroupState Empty = new ElastigroupState();
 
     /**
+     * Auto-healing replacement won&#39;t be triggered if this parameter value is &#34;false&#34;. In a case of a stateful group - no recycling will start if this parameter value is &#34;false&#34;.
+     * 
+     */
+    @Import(name="autoHealing")
+    private @Nullable Output<Boolean> autoHealing;
+
+    /**
+     * @return Auto-healing replacement won&#39;t be triggered if this parameter value is &#34;false&#34;. In a case of a stateful group - no recycling will start if this parameter value is &#34;false&#34;.
+     * 
+     */
+    public Optional<Output<Boolean>> autoHealing() {
+        return Optional.ofNullable(this.autoHealing);
+    }
+
+    /**
      * List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
      * Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
      * `availability_zones = [&#34;us-east-1a:subnet-123456:ClusterI03&#34;]`
@@ -787,6 +802,21 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Elastigroup will automatically scale your instances in the most available and cost efficient availability zone. Every evaluation will be done when there are no active instances in the group.
+     * 
+     */
+    @Import(name="restrictSingleAz")
+    private @Nullable Output<Boolean> restrictSingleAz;
+
+    /**
+     * @return Elastigroup will automatically scale your instances in the most available and cost efficient availability zone. Every evaluation will be done when there are no active instances in the group.
+     * 
+     */
+    public Optional<Output<Boolean>> restrictSingleAz() {
+        return Optional.ofNullable(this.restrictSingleAz);
+    }
+
+    /**
      * Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `&#34;never&#34;`, `&#34;always&#34;`, `&#34;timeWindow&#34;`
      * 
      */
@@ -1026,6 +1056,7 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
     private ElastigroupState() {}
 
     private ElastigroupState(ElastigroupState $) {
+        this.autoHealing = $.autoHealing;
         this.availabilityZones = $.availabilityZones;
         this.blockDevicesMode = $.blockDevicesMode;
         this.capacityUnit = $.capacityUnit;
@@ -1087,6 +1118,7 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
         this.region = $.region;
         this.resourceRequirements = $.resourceRequirements;
         this.resourceTagSpecifications = $.resourceTagSpecifications;
+        this.restrictSingleAz = $.restrictSingleAz;
         this.revertToSpot = $.revertToSpot;
         this.scalingDownPolicies = $.scalingDownPolicies;
         this.scalingStrategies = $.scalingStrategies;
@@ -1126,6 +1158,27 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ElastigroupState defaults) {
             $ = new ElastigroupState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param autoHealing Auto-healing replacement won&#39;t be triggered if this parameter value is &#34;false&#34;. In a case of a stateful group - no recycling will start if this parameter value is &#34;false&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoHealing(@Nullable Output<Boolean> autoHealing) {
+            $.autoHealing = autoHealing;
+            return this;
+        }
+
+        /**
+         * @param autoHealing Auto-healing replacement won&#39;t be triggered if this parameter value is &#34;false&#34;. In a case of a stateful group - no recycling will start if this parameter value is &#34;false&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoHealing(Boolean autoHealing) {
+            return autoHealing(Output.of(autoHealing));
         }
 
         /**
@@ -2259,6 +2312,27 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder resourceTagSpecifications(ElastigroupResourceTagSpecificationArgs... resourceTagSpecifications) {
             return resourceTagSpecifications(List.of(resourceTagSpecifications));
+        }
+
+        /**
+         * @param restrictSingleAz Elastigroup will automatically scale your instances in the most available and cost efficient availability zone. Every evaluation will be done when there are no active instances in the group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restrictSingleAz(@Nullable Output<Boolean> restrictSingleAz) {
+            $.restrictSingleAz = restrictSingleAz;
+            return this;
+        }
+
+        /**
+         * @param restrictSingleAz Elastigroup will automatically scale your instances in the most available and cost efficient availability zone. Every evaluation will be done when there are no active instances in the group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restrictSingleAz(Boolean restrictSingleAz) {
+            return restrictSingleAz(Output.of(restrictSingleAz));
         }
 
         /**

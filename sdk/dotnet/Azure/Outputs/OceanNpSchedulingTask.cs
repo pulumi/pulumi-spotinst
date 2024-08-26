@@ -15,7 +15,7 @@ namespace Pulumi.SpotInst.Azure.Outputs
     {
         public readonly string CronExpression;
         /// <summary>
-        /// Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+        /// Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
         /// </summary>
         public readonly bool IsEnabled;
         public readonly Outputs.OceanNpSchedulingTaskParameters? Parameters;

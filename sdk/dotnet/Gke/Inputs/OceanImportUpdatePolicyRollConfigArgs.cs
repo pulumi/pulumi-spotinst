@@ -37,7 +37,7 @@ namespace Pulumi.SpotInst.Gke.Inputs
         }
 
         /// <summary>
-        /// Default: False. During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+        /// Default: `false`. During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.
         /// </summary>
         [Input("respectPdb")]
         public Input<bool>? RespectPdb { get; set; }
