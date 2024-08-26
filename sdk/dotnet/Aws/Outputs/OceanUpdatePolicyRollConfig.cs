@@ -26,7 +26,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly ImmutableArray<string> LaunchSpecIds;
         /// <summary>
-        /// During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+        /// During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.
         /// </summary>
         public readonly bool? RespectPdb;
 

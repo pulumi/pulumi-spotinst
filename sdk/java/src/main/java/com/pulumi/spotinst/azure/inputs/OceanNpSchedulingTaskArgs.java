@@ -26,14 +26,14 @@ public final class OceanNpSchedulingTaskArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+     * Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
      * 
      */
     @Import(name="isEnabled", required=true)
     private Output<Boolean> isEnabled;
 
     /**
-     * @return Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+     * @return Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
      * 
      */
     public Output<Boolean> isEnabled() {
@@ -91,7 +91,7 @@ public final class OceanNpSchedulingTaskArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param isEnabled Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+         * @param isEnabled Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class OceanNpSchedulingTaskArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param isEnabled Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+         * @param isEnabled Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
          * 
          * @return builder
          * 

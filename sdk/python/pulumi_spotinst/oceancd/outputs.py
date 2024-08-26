@@ -2607,7 +2607,7 @@ class VerificationTemplateMetricProviderCloudWatchMetricDataQuery(dict):
         :param str label: A human-readable label for this metric or expression. If the metric or expression is shown in a CloudWatch dashboard widget, the label is shown
         :param 'VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatArgs' metric_stat: The metric to be returned, along with statistics, period, and units. Use this parameter only if this object is retrieving a metric and not performing a math expression on returned data.Within one metricdataquery object, you must specify either expression or metricstat but not both.
         :param int period: The granularity, in seconds, of the returned data points.
-        :param bool return_data: This option indicates whether to return the timestamps and raw data values of this metric. If you are performing this call just to do math expressions and do not also need the raw data returned, you can specify False . If you omit this, the default of True is used.
+        :param bool return_data: This option indicates whether to return the timestamps and raw data values of this metric. If you are performing this call just to do math expressions and do not also need the raw data returned, you can specify `false`. If you omit this, the default of `true` is used.
         """
         pulumi.set(__self__, "id", id)
         if expression is not None:
@@ -2665,7 +2665,7 @@ class VerificationTemplateMetricProviderCloudWatchMetricDataQuery(dict):
     @pulumi.getter(name="returnData")
     def return_data(self) -> Optional[bool]:
         """
-        This option indicates whether to return the timestamps and raw data values of this metric. If you are performing this call just to do math expressions and do not also need the raw data returned, you can specify False . If you omit this, the default of True is used.
+        This option indicates whether to return the timestamps and raw data values of this metric. If you are performing this call just to do math expressions and do not also need the raw data returned, you can specify `false`. If you omit this, the default of `true` is used.
         """
         return pulumi.get(self, "return_data")
 

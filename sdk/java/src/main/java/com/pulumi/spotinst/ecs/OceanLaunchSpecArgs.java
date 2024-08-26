@@ -192,14 +192,14 @@ public final class OceanLaunchSpecArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+     * Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
      * 
      */
     @Import(name="restrictScaleDown")
     private @Nullable Output<Boolean> restrictScaleDown;
 
     /**
-     * @return Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+     * @return Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
      * 
      */
     public Optional<Output<Boolean>> restrictScaleDown() {
@@ -629,7 +629,7 @@ public final class OceanLaunchSpecArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param restrictScaleDown Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+         * @param restrictScaleDown Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
          * 
          * @return builder
          * 
@@ -640,7 +640,7 @@ public final class OceanLaunchSpecArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param restrictScaleDown Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+         * @param restrictScaleDown Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
          * 
          * @return builder
          * 

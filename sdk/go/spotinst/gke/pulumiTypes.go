@@ -3764,9 +3764,9 @@ func (o OceanImportScheduledTaskArrayOutput) Index(i pulumi.IntInput) OceanImpor
 
 type OceanImportScheduledTaskShutdownHours struct {
 	// Flag to enable / disable the shutdown hours.
-	// Example: True
+	// Example: `true`
 	IsEnabled *bool `pulumi:"isEnabled"`
-	// Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
+	// Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = `true`. API Times are in UTC
 	// Example: Fri:15:30-Wed:14:30
 	TimeWindows []string `pulumi:"timeWindows"`
 }
@@ -3784,9 +3784,9 @@ type OceanImportScheduledTaskShutdownHoursInput interface {
 
 type OceanImportScheduledTaskShutdownHoursArgs struct {
 	// Flag to enable / disable the shutdown hours.
-	// Example: True
+	// Example: `true`
 	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
-	// Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
+	// Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = `true`. API Times are in UTC
 	// Example: Fri:15:30-Wed:14:30
 	TimeWindows pulumi.StringArrayInput `pulumi:"timeWindows"`
 }
@@ -3869,12 +3869,12 @@ func (o OceanImportScheduledTaskShutdownHoursOutput) ToOceanImportScheduledTaskS
 }
 
 // Flag to enable / disable the shutdown hours.
-// Example: True
+// Example: `true`
 func (o OceanImportScheduledTaskShutdownHoursOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanImportScheduledTaskShutdownHours) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
+// Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = `true`. API Times are in UTC
 // Example: Fri:15:30-Wed:14:30
 func (o OceanImportScheduledTaskShutdownHoursOutput) TimeWindows() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanImportScheduledTaskShutdownHours) []string { return v.TimeWindows }).(pulumi.StringArrayOutput)
@@ -3905,7 +3905,7 @@ func (o OceanImportScheduledTaskShutdownHoursPtrOutput) Elem() OceanImportSchedu
 }
 
 // Flag to enable / disable the shutdown hours.
-// Example: True
+// Example: `true`
 func (o OceanImportScheduledTaskShutdownHoursPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanImportScheduledTaskShutdownHours) *bool {
 		if v == nil {
@@ -3915,7 +3915,7 @@ func (o OceanImportScheduledTaskShutdownHoursPtrOutput) IsEnabled() pulumi.BoolP
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
+// Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = `true`. API Times are in UTC
 // Example: Fri:15:30-Wed:14:30
 func (o OceanImportScheduledTaskShutdownHoursPtrOutput) TimeWindows() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanImportScheduledTaskShutdownHours) []string {
@@ -4841,7 +4841,7 @@ type OceanImportUpdatePolicyRollConfig struct {
 	BatchSizePercentage int `pulumi:"batchSizePercentage"`
 	// List of Virtual Node Group identifiers to be rolled.
 	LaunchSpecIds []string `pulumi:"launchSpecIds"`
-	// Default: False. During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+	// Default: `false`. During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.
 	RespectPdb *bool `pulumi:"respectPdb"`
 }
 
@@ -4863,7 +4863,7 @@ type OceanImportUpdatePolicyRollConfigArgs struct {
 	BatchSizePercentage pulumi.IntInput `pulumi:"batchSizePercentage"`
 	// List of Virtual Node Group identifiers to be rolled.
 	LaunchSpecIds pulumi.StringArrayInput `pulumi:"launchSpecIds"`
-	// Default: False. During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+	// Default: `false`. During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.
 	RespectPdb pulumi.BoolPtrInput `pulumi:"respectPdb"`
 }
 
@@ -4959,7 +4959,7 @@ func (o OceanImportUpdatePolicyRollConfigOutput) LaunchSpecIds() pulumi.StringAr
 	return o.ApplyT(func(v OceanImportUpdatePolicyRollConfig) []string { return v.LaunchSpecIds }).(pulumi.StringArrayOutput)
 }
 
-// Default: False. During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+// Default: `false`. During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.
 func (o OceanImportUpdatePolicyRollConfigOutput) RespectPdb() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanImportUpdatePolicyRollConfig) *bool { return v.RespectPdb }).(pulumi.BoolPtrOutput)
 }
@@ -5018,7 +5018,7 @@ func (o OceanImportUpdatePolicyRollConfigPtrOutput) LaunchSpecIds() pulumi.Strin
 	}).(pulumi.StringArrayOutput)
 }
 
-// Default: False. During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+// Default: `false`. During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.
 func (o OceanImportUpdatePolicyRollConfigPtrOutput) RespectPdb() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanImportUpdatePolicyRollConfig) *bool {
 		if v == nil {
@@ -6097,7 +6097,7 @@ func (o OceanLaunchSpecResourceLimitsPtrOutput) MinInstanceCount() pulumi.IntPtr
 type OceanLaunchSpecSchedulingTask struct {
 	// A valid cron expression. For example : " * * * * * ". The cron job runs in UTC time and is in Unix cron format.
 	CronExpression string `pulumi:"cronExpression"`
-	// Describes whether the task is enabled. When True, the task runs. When False, it does not run.
+	// Describes whether the task is enabled. When `true`, the task runs. When `false`, it does not run.
 	IsEnabled bool `pulumi:"isEnabled"`
 	// The config of this scheduled task. Depends on the value of taskType.
 	TaskHeadrooms []OceanLaunchSpecSchedulingTaskTaskHeadroom `pulumi:"taskHeadrooms"`
@@ -6119,7 +6119,7 @@ type OceanLaunchSpecSchedulingTaskInput interface {
 type OceanLaunchSpecSchedulingTaskArgs struct {
 	// A valid cron expression. For example : " * * * * * ". The cron job runs in UTC time and is in Unix cron format.
 	CronExpression pulumi.StringInput `pulumi:"cronExpression"`
-	// Describes whether the task is enabled. When True, the task runs. When False, it does not run.
+	// Describes whether the task is enabled. When `true`, the task runs. When `false`, it does not run.
 	IsEnabled pulumi.BoolInput `pulumi:"isEnabled"`
 	// The config of this scheduled task. Depends on the value of taskType.
 	TaskHeadrooms OceanLaunchSpecSchedulingTaskTaskHeadroomArrayInput `pulumi:"taskHeadrooms"`
@@ -6183,7 +6183,7 @@ func (o OceanLaunchSpecSchedulingTaskOutput) CronExpression() pulumi.StringOutpu
 	return o.ApplyT(func(v OceanLaunchSpecSchedulingTask) string { return v.CronExpression }).(pulumi.StringOutput)
 }
 
-// Describes whether the task is enabled. When True, the task runs. When False, it does not run.
+// Describes whether the task is enabled. When `true`, the task runs. When `false`, it does not run.
 func (o OceanLaunchSpecSchedulingTaskOutput) IsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v OceanLaunchSpecSchedulingTask) bool { return v.IsEnabled }).(pulumi.BoolOutput)
 }

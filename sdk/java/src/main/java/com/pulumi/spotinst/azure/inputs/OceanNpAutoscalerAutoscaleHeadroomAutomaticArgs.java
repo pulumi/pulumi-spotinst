@@ -17,14 +17,14 @@ public final class OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs extends com.p
     public static final OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs Empty = new OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs();
 
     /**
-     * Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+     * Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
      * 
      */
     @Import(name="isEnabled")
     private @Nullable Output<Boolean> isEnabled;
 
     /**
-     * @return Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+     * @return Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
      * 
      */
     public Optional<Output<Boolean>> isEnabled() {
@@ -72,7 +72,7 @@ public final class OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs extends com.p
         }
 
         /**
-         * @param isEnabled Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+         * @param isEnabled Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs extends com.p
         }
 
         /**
-         * @param isEnabled Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+         * @param isEnabled Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
          * 
          * @return builder
          * 

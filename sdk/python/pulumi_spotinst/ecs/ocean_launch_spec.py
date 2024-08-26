@@ -47,7 +47,7 @@ class OceanLaunchSpecArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
         :param pulumi.Input[str] name: The Ocean Launch Specification name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_spot_types: When Ocean scales up instances, it takes your preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
-        :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskArgs']]] scheduling_tasks: Used to define scheduled tasks such as a manual headroom update.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: One or more security group ids.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecStrategyArgs']]] strategies: Similar to a strategy for an Ocean cluster, but applying only to a virtual node group.
@@ -227,7 +227,7 @@ class OceanLaunchSpecArgs:
     @pulumi.getter(name="restrictScaleDown")
     def restrict_scale_down(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         """
         return pulumi.get(self, "restrict_scale_down")
 
@@ -342,7 +342,7 @@ class _OceanLaunchSpecState:
         :param pulumi.Input[str] name: The Ocean Launch Specification name.
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID .
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_spot_types: When Ocean scales up instances, it takes your preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
-        :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskArgs']]] scheduling_tasks: Used to define scheduled tasks such as a manual headroom update.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: One or more security group ids.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecStrategyArgs']]] strategies: Similar to a strategy for an Ocean cluster, but applying only to a virtual node group.
@@ -523,7 +523,7 @@ class _OceanLaunchSpecState:
     @pulumi.getter(name="restrictScaleDown")
     def restrict_scale_down(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         """
         return pulumi.get(self, "restrict_scale_down")
 
@@ -737,7 +737,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[str] name: The Ocean Launch Specification name.
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID .
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_spot_types: When Ocean scales up instances, it takes your preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
-        :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecSchedulingTaskArgs', 'OceanLaunchSpecSchedulingTaskArgsDict']]]] scheduling_tasks: Used to define scheduled tasks such as a manual headroom update.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: One or more security group ids.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecStrategyArgs', 'OceanLaunchSpecStrategyArgsDict']]]] strategies: Similar to a strategy for an Ocean cluster, but applying only to a virtual node group.
@@ -955,7 +955,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[str] name: The Ocean Launch Specification name.
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID .
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_spot_types: When Ocean scales up instances, it takes your preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
-        :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecSchedulingTaskArgs', 'OceanLaunchSpecSchedulingTaskArgsDict']]]] scheduling_tasks: Used to define scheduled tasks such as a manual headroom update.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: One or more security group ids.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecStrategyArgs', 'OceanLaunchSpecStrategyArgsDict']]]] strategies: Similar to a strategy for an Ocean cluster, but applying only to a virtual node group.
@@ -1079,7 +1079,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
     @pulumi.getter(name="restrictScaleDown")
     def restrict_scale_down(self) -> pulumi.Output[Optional[bool]]:
         """
-        Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         """
         return pulumi.get(self, "restrict_scale_down")
 

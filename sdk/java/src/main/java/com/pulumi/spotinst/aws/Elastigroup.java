@@ -220,6 +220,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="spotinst:aws/elastigroup:Elastigroup")
 public class Elastigroup extends com.pulumi.resources.CustomResource {
     /**
+     * Auto-healing replacement won&#39;t be triggered if this parameter value is &#34;false&#34;. In a case of a stateful group - no recycling will start if this parameter value is &#34;false&#34;.
+     * 
+     */
+    @Export(name="autoHealing", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> autoHealing;
+
+    /**
+     * @return Auto-healing replacement won&#39;t be triggered if this parameter value is &#34;false&#34;. In a case of a stateful group - no recycling will start if this parameter value is &#34;false&#34;.
+     * 
+     */
+    public Output<Optional<Boolean>> autoHealing() {
+        return Codegen.optional(this.autoHealing);
+    }
+    /**
      * List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
      * Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
      * `availability_zones = [&#34;us-east-1a:subnet-123456:ClusterI03&#34;]`
@@ -892,6 +906,20 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<ElastigroupResourceTagSpecification>>> resourceTagSpecifications() {
         return Codegen.optional(this.resourceTagSpecifications);
+    }
+    /**
+     * Elastigroup will automatically scale your instances in the most available and cost efficient availability zone. Every evaluation will be done when there are no active instances in the group.
+     * 
+     */
+    @Export(name="restrictSingleAz", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> restrictSingleAz;
+
+    /**
+     * @return Elastigroup will automatically scale your instances in the most available and cost efficient availability zone. Every evaluation will be done when there are no active instances in the group.
+     * 
+     */
+    public Output<Optional<Boolean>> restrictSingleAz() {
+        return Codegen.optional(this.restrictSingleAz);
     }
     /**
      * Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `&#34;never&#34;`, `&#34;always&#34;`, `&#34;timeWindow&#34;`

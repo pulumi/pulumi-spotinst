@@ -19,14 +19,14 @@ public final class OceanLaunchSpecSchedulingShutdownHoursArgs extends com.pulumi
     public static final OceanLaunchSpecSchedulingShutdownHoursArgs Empty = new OceanLaunchSpecSchedulingShutdownHoursArgs();
 
     /**
-     * Flag to enable or disable the shutdown hours mechanism. When False, the mechanism is deactivated, and the virtual node group remains in its current state.
+     * Flag to enable or disable the shutdown hours mechanism. When `false`, the mechanism is deactivated, and the virtual node group remains in its current state.
      * 
      */
     @Import(name="isEnabled")
     private @Nullable Output<Boolean> isEnabled;
 
     /**
-     * @return Flag to enable or disable the shutdown hours mechanism. When False, the mechanism is deactivated, and the virtual node group remains in its current state.
+     * @return Flag to enable or disable the shutdown hours mechanism. When `false`, the mechanism is deactivated, and the virtual node group remains in its current state.
      * 
      */
     public Optional<Output<Boolean>> isEnabled() {
@@ -74,7 +74,7 @@ public final class OceanLaunchSpecSchedulingShutdownHoursArgs extends com.pulumi
         }
 
         /**
-         * @param isEnabled Flag to enable or disable the shutdown hours mechanism. When False, the mechanism is deactivated, and the virtual node group remains in its current state.
+         * @param isEnabled Flag to enable or disable the shutdown hours mechanism. When `false`, the mechanism is deactivated, and the virtual node group remains in its current state.
          * 
          * @return builder
          * 
@@ -85,7 +85,7 @@ public final class OceanLaunchSpecSchedulingShutdownHoursArgs extends com.pulumi
         }
 
         /**
-         * @param isEnabled Flag to enable or disable the shutdown hours mechanism. When False, the mechanism is deactivated, and the virtual node group remains in its current state.
+         * @param isEnabled Flag to enable or disable the shutdown hours mechanism. When `false`, the mechanism is deactivated, and the virtual node group remains in its current state.
          * 
          * @return builder
          * 

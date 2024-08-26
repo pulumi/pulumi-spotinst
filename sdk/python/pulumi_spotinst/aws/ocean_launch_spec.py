@@ -69,7 +69,7 @@ class OceanLaunchSpecArgs:
         :param pulumi.Input[str] name: The name of the Virtual Node Group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_od_types: A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_spot_types: A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
-        :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to `True`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to `true`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[int] root_volume_size: Set root volume size (in GB).
         :param pulumi.Input['OceanLaunchSpecSchedulingShutdownHoursArgs'] scheduling_shutdown_hours: Used to specify times that the nodes in the virtual node group will be taken down.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskArgs']]] scheduling_tasks: Used to define scheduled tasks such as a manual headroom update.
@@ -389,7 +389,7 @@ class OceanLaunchSpecArgs:
     @pulumi.getter(name="restrictScaleDown")
     def restrict_scale_down(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean. When set to `True`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        Boolean. When set to `true`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         """
         return pulumi.get(self, "restrict_scale_down")
 
@@ -568,7 +568,7 @@ class _OceanLaunchSpecState:
         :param pulumi.Input[str] ocean_id: The ID of the Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_od_types: A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_spot_types: A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
-        :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to `True`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to `true`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[int] root_volume_size: Set root volume size (in GB).
         :param pulumi.Input['OceanLaunchSpecSchedulingShutdownHoursArgs'] scheduling_shutdown_hours: Used to specify times that the nodes in the virtual node group will be taken down.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskArgs']]] scheduling_tasks: Used to define scheduled tasks such as a manual headroom update.
@@ -889,7 +889,7 @@ class _OceanLaunchSpecState:
     @pulumi.getter(name="restrictScaleDown")
     def restrict_scale_down(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean. When set to `True`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        Boolean. When set to `true`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         """
         return pulumi.get(self, "restrict_scale_down")
 
@@ -1074,7 +1074,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[str] ocean_id: The ID of the Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_od_types: A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_spot_types: A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
-        :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to `True`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to `true`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[int] root_volume_size: Set root volume size (in GB).
         :param pulumi.Input[Union['OceanLaunchSpecSchedulingShutdownHoursArgs', 'OceanLaunchSpecSchedulingShutdownHoursArgsDict']] scheduling_shutdown_hours: Used to specify times that the nodes in the virtual node group will be taken down.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecSchedulingTaskArgs', 'OceanLaunchSpecSchedulingTaskArgsDict']]]] scheduling_tasks: Used to define scheduled tasks such as a manual headroom update.
@@ -1251,7 +1251,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[str] ocean_id: The ID of the Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_od_types: A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_spot_types: A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
-        :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to `True`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to `true`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[int] root_volume_size: Set root volume size (in GB).
         :param pulumi.Input[Union['OceanLaunchSpecSchedulingShutdownHoursArgs', 'OceanLaunchSpecSchedulingShutdownHoursArgsDict']] scheduling_shutdown_hours: Used to specify times that the nodes in the virtual node group will be taken down.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecSchedulingTaskArgs', 'OceanLaunchSpecSchedulingTaskArgsDict']]]] scheduling_tasks: Used to define scheduled tasks such as a manual headroom update.
@@ -1461,7 +1461,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
     @pulumi.getter(name="restrictScaleDown")
     def restrict_scale_down(self) -> pulumi.Output[Optional[bool]]:
         """
-        Boolean. When set to `True`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        Boolean. When set to `true`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         """
         return pulumi.get(self, "restrict_scale_down")
 

@@ -309,14 +309,14 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.resourceLimits);
     }
     /**
-     * Boolean. When set to `True`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+     * Boolean. When set to `true`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
      * 
      */
     @Export(name="restrictScaleDown", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> restrictScaleDown;
 
     /**
-     * @return Boolean. When set to `True`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+     * @return Boolean. When set to `true`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
      * 
      */
     public Output<Optional<Boolean>> restrictScaleDown() {

@@ -132,7 +132,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<ImmutableArray<Outputs.OceanLaunchSpecResourceLimit>> ResourceLimits { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean. When set to `True`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        /// Boolean. When set to `true`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         /// </summary>
         [Output("restrictScaleDown")]
         public Output<bool?> RestrictScaleDown { get; private set; } = null!;
@@ -424,7 +424,7 @@ namespace Pulumi.SpotInst.Aws
         }
 
         /// <summary>
-        /// Boolean. When set to `True`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        /// Boolean. When set to `true`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         /// </summary>
         [Input("restrictScaleDown")]
         public Input<bool>? RestrictScaleDown { get; set; }
@@ -713,7 +713,7 @@ namespace Pulumi.SpotInst.Aws
         }
 
         /// <summary>
-        /// Boolean. When set to `True`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        /// Boolean. When set to `true`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         /// </summary>
         [Input("restrictScaleDown")]
         public Input<bool>? RestrictScaleDown { get; set; }

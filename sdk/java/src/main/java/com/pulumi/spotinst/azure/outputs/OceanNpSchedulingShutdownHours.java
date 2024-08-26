@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OceanNpSchedulingShutdownHours {
     /**
-     * @return Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+     * @return Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
      * 
      */
     private @Nullable Boolean isEnabled;
@@ -22,7 +22,7 @@ public final class OceanNpSchedulingShutdownHours {
 
     private OceanNpSchedulingShutdownHours() {}
     /**
-     * @return Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+     * @return Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
      * 
      */
     public Optional<Boolean> isEnabled() {

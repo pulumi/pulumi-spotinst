@@ -19,7 +19,7 @@ namespace Pulumi.SpotInst.Ecs.Inputs
         public Input<string> CronExpression { get; set; } = null!;
 
         /// <summary>
-        /// Describes whether the task is enabled. When True, the task runs. When False, it does not run.
+        /// Describes whether the task is enabled. When `true`, the task runs. When `false`, it does not run.
         /// </summary>
         [Input("isEnabled", required: true)]
         public Input<bool> IsEnabled { get; set; } = null!;

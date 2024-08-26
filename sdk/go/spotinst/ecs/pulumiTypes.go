@@ -3145,7 +3145,7 @@ func (o OceanLaunchSpecInstanceMetadataOptionsPtrOutput) HttpTokens() pulumi.Str
 type OceanLaunchSpecSchedulingTask struct {
 	// A valid cron expression. For example : " * * * * * ". The cron job runs in UTC time and is in Unix cron format.
 	CronExpression string `pulumi:"cronExpression"`
-	// Describes whether the task is enabled. When True, the task runs. When False, it does not run.
+	// Describes whether the task is enabled. When `true`, the task runs. When `false`, it does not run.
 	IsEnabled bool `pulumi:"isEnabled"`
 	// The config of this scheduled task. Depends on the value of taskType.
 	TaskHeadrooms []OceanLaunchSpecSchedulingTaskTaskHeadroom `pulumi:"taskHeadrooms"`
@@ -3167,7 +3167,7 @@ type OceanLaunchSpecSchedulingTaskInput interface {
 type OceanLaunchSpecSchedulingTaskArgs struct {
 	// A valid cron expression. For example : " * * * * * ". The cron job runs in UTC time and is in Unix cron format.
 	CronExpression pulumi.StringInput `pulumi:"cronExpression"`
-	// Describes whether the task is enabled. When True, the task runs. When False, it does not run.
+	// Describes whether the task is enabled. When `true`, the task runs. When `false`, it does not run.
 	IsEnabled pulumi.BoolInput `pulumi:"isEnabled"`
 	// The config of this scheduled task. Depends on the value of taskType.
 	TaskHeadrooms OceanLaunchSpecSchedulingTaskTaskHeadroomArrayInput `pulumi:"taskHeadrooms"`
@@ -3231,7 +3231,7 @@ func (o OceanLaunchSpecSchedulingTaskOutput) CronExpression() pulumi.StringOutpu
 	return o.ApplyT(func(v OceanLaunchSpecSchedulingTask) string { return v.CronExpression }).(pulumi.StringOutput)
 }
 
-// Describes whether the task is enabled. When True, the task runs. When False, it does not run.
+// Describes whether the task is enabled. When `true`, the task runs. When `false`, it does not run.
 func (o OceanLaunchSpecSchedulingTaskOutput) IsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v OceanLaunchSpecSchedulingTask) bool { return v.IsEnabled }).(pulumi.BoolOutput)
 }

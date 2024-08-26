@@ -194,7 +194,7 @@ class OceanNpAutoscalerAutoscaleHeadroomAutomatic(dict):
                  is_enabled: Optional[bool] = None,
                  percentage: Optional[int] = None):
         """
-        :param bool is_enabled: Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+        :param bool is_enabled: Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
         :param int percentage: Optionally set a number between 0-100 to control the percentage of total cluster resources dedicated to headroom.
         """
         if is_enabled is not None:
@@ -206,7 +206,7 @@ class OceanNpAutoscalerAutoscaleHeadroomAutomatic(dict):
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> Optional[bool]:
         """
-        Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+        Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
         """
         return pulumi.get(self, "is_enabled")
 
@@ -729,7 +729,7 @@ class OceanNpSchedulingShutdownHours(dict):
                  is_enabled: Optional[bool] = None,
                  time_windows: Optional[Sequence[str]] = None):
         """
-        :param bool is_enabled: Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+        :param bool is_enabled: Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
         """
         if is_enabled is not None:
             pulumi.set(__self__, "is_enabled", is_enabled)
@@ -740,7 +740,7 @@ class OceanNpSchedulingShutdownHours(dict):
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> Optional[bool]:
         """
-        Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+        Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
         """
         return pulumi.get(self, "is_enabled")
 
@@ -779,7 +779,7 @@ class OceanNpSchedulingTask(dict):
                  task_type: str,
                  parameters: Optional['outputs.OceanNpSchedulingTaskParameters'] = None):
         """
-        :param bool is_enabled: Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+        :param bool is_enabled: Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
         """
         pulumi.set(__self__, "cron_expression", cron_expression)
         pulumi.set(__self__, "is_enabled", is_enabled)
@@ -796,7 +796,7 @@ class OceanNpSchedulingTask(dict):
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> bool:
         """
-        Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+        Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
         """
         return pulumi.get(self, "is_enabled")
 

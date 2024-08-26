@@ -20,7 +20,7 @@ public final class OceanImportScheduledTaskShutdownHoursArgs extends com.pulumi.
 
     /**
      * Flag to enable / disable the shutdown hours.
-     * Example: True
+     * Example: `true`
      * 
      */
     @Import(name="isEnabled")
@@ -28,7 +28,7 @@ public final class OceanImportScheduledTaskShutdownHoursArgs extends com.pulumi.
 
     /**
      * @return Flag to enable / disable the shutdown hours.
-     * Example: True
+     * Example: `true`
      * 
      */
     public Optional<Output<Boolean>> isEnabled() {
@@ -36,7 +36,7 @@ public final class OceanImportScheduledTaskShutdownHoursArgs extends com.pulumi.
     }
 
     /**
-     * Set time windows for shutdown hours. specify a list of &#39;timeWindows&#39; with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
+     * Set time windows for shutdown hours. specify a list of &#39;timeWindows&#39; with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = `true`. API Times are in UTC
      * Example: Fri:15:30-Wed:14:30
      * 
      */
@@ -44,7 +44,7 @@ public final class OceanImportScheduledTaskShutdownHoursArgs extends com.pulumi.
     private Output<List<String>> timeWindows;
 
     /**
-     * @return Set time windows for shutdown hours. specify a list of &#39;timeWindows&#39; with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
+     * @return Set time windows for shutdown hours. specify a list of &#39;timeWindows&#39; with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = `true`. API Times are in UTC
      * Example: Fri:15:30-Wed:14:30
      * 
      */
@@ -79,7 +79,7 @@ public final class OceanImportScheduledTaskShutdownHoursArgs extends com.pulumi.
 
         /**
          * @param isEnabled Flag to enable / disable the shutdown hours.
-         * Example: True
+         * Example: `true`
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class OceanImportScheduledTaskShutdownHoursArgs extends com.pulumi.
 
         /**
          * @param isEnabled Flag to enable / disable the shutdown hours.
-         * Example: True
+         * Example: `true`
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class OceanImportScheduledTaskShutdownHoursArgs extends com.pulumi.
         }
 
         /**
-         * @param timeWindows Set time windows for shutdown hours. specify a list of &#39;timeWindows&#39; with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
+         * @param timeWindows Set time windows for shutdown hours. specify a list of &#39;timeWindows&#39; with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = `true`. API Times are in UTC
          * Example: Fri:15:30-Wed:14:30
          * 
          * @return builder
@@ -113,7 +113,7 @@ public final class OceanImportScheduledTaskShutdownHoursArgs extends com.pulumi.
         }
 
         /**
-         * @param timeWindows Set time windows for shutdown hours. specify a list of &#39;timeWindows&#39; with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
+         * @param timeWindows Set time windows for shutdown hours. specify a list of &#39;timeWindows&#39; with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = `true`. API Times are in UTC
          * Example: Fri:15:30-Wed:14:30
          * 
          * @return builder
@@ -124,7 +124,7 @@ public final class OceanImportScheduledTaskShutdownHoursArgs extends com.pulumi.
         }
 
         /**
-         * @param timeWindows Set time windows for shutdown hours. specify a list of &#39;timeWindows&#39; with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
+         * @param timeWindows Set time windows for shutdown hours. specify a list of &#39;timeWindows&#39; with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = `true`. API Times are in UTC
          * Example: Fri:15:30-Wed:14:30
          * 
          * @return builder

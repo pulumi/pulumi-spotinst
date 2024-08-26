@@ -43,7 +43,7 @@ namespace Pulumi.SpotInst.Oceancd.Inputs
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// This option indicates whether to return the timestamps and raw data values of this metric. If you are performing this call just to do math expressions and do not also need the raw data returned, you can specify False . If you omit this, the default of True is used.
+        /// This option indicates whether to return the timestamps and raw data values of this metric. If you are performing this call just to do math expressions and do not also need the raw data returned, you can specify `false`. If you omit this, the default of `true` is used.
         /// </summary>
         [Input("returnData")]
         public Input<bool>? ReturnData { get; set; }

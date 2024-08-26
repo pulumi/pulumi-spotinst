@@ -6,6 +6,8 @@ package com.pulumi.spotinst.aws.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.spotinst.aws.inputs.ElastigroupEbsBlockDeviceDynamicIopsArgs;
+import com.pulumi.spotinst.aws.inputs.ElastigroupEbsBlockDeviceDynamicVolumeSizeArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -46,6 +48,36 @@ public final class ElastigroupEbsBlockDeviceArgs extends com.pulumi.resources.Re
      */
     public Output<String> deviceName() {
         return this.deviceName;
+    }
+
+    /**
+     * Set dynamic IOPS properties. When using this object, you cannot use the `iops` object. You must use one or the other.
+     * 
+     */
+    @Import(name="dynamicIops")
+    private @Nullable Output<ElastigroupEbsBlockDeviceDynamicIopsArgs> dynamicIops;
+
+    /**
+     * @return Set dynamic IOPS properties. When using this object, you cannot use the `iops` object. You must use one or the other.
+     * 
+     */
+    public Optional<Output<ElastigroupEbsBlockDeviceDynamicIopsArgs>> dynamicIops() {
+        return Optional.ofNullable(this.dynamicIops);
+    }
+
+    /**
+     * Set dynamic volume size properties. When using this object, you cannot use `volume_size`. You must use one or the other.
+     * 
+     */
+    @Import(name="dynamicVolumeSize")
+    private @Nullable Output<ElastigroupEbsBlockDeviceDynamicVolumeSizeArgs> dynamicVolumeSize;
+
+    /**
+     * @return Set dynamic volume size properties. When using this object, you cannot use `volume_size`. You must use one or the other.
+     * 
+     */
+    public Optional<Output<ElastigroupEbsBlockDeviceDynamicVolumeSizeArgs>> dynamicVolumeSize() {
+        return Optional.ofNullable(this.dynamicVolumeSize);
     }
 
     /**
@@ -111,20 +143,12 @@ public final class ElastigroupEbsBlockDeviceArgs extends com.pulumi.resources.Re
     /**
      * The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.
      * 
-     * Modifying any `ebs_block_device` currently requires resource replacement.
-     * 
-     * Usage:
-     * 
      */
     @Import(name="throughput")
     private @Nullable Output<Integer> throughput;
 
     /**
      * @return The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.
-     * 
-     * Modifying any `ebs_block_device` currently requires resource replacement.
-     * 
-     * Usage:
      * 
      */
     public Optional<Output<Integer>> throughput() {
@@ -166,6 +190,8 @@ public final class ElastigroupEbsBlockDeviceArgs extends com.pulumi.resources.Re
     private ElastigroupEbsBlockDeviceArgs(ElastigroupEbsBlockDeviceArgs $) {
         this.deleteOnTermination = $.deleteOnTermination;
         this.deviceName = $.deviceName;
+        this.dynamicIops = $.dynamicIops;
+        this.dynamicVolumeSize = $.dynamicVolumeSize;
         this.encrypted = $.encrypted;
         this.iops = $.iops;
         this.kmsKeyId = $.kmsKeyId;
@@ -233,6 +259,48 @@ public final class ElastigroupEbsBlockDeviceArgs extends com.pulumi.resources.Re
          */
         public Builder deviceName(String deviceName) {
             return deviceName(Output.of(deviceName));
+        }
+
+        /**
+         * @param dynamicIops Set dynamic IOPS properties. When using this object, you cannot use the `iops` object. You must use one or the other.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dynamicIops(@Nullable Output<ElastigroupEbsBlockDeviceDynamicIopsArgs> dynamicIops) {
+            $.dynamicIops = dynamicIops;
+            return this;
+        }
+
+        /**
+         * @param dynamicIops Set dynamic IOPS properties. When using this object, you cannot use the `iops` object. You must use one or the other.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dynamicIops(ElastigroupEbsBlockDeviceDynamicIopsArgs dynamicIops) {
+            return dynamicIops(Output.of(dynamicIops));
+        }
+
+        /**
+         * @param dynamicVolumeSize Set dynamic volume size properties. When using this object, you cannot use `volume_size`. You must use one or the other.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dynamicVolumeSize(@Nullable Output<ElastigroupEbsBlockDeviceDynamicVolumeSizeArgs> dynamicVolumeSize) {
+            $.dynamicVolumeSize = dynamicVolumeSize;
+            return this;
+        }
+
+        /**
+         * @param dynamicVolumeSize Set dynamic volume size properties. When using this object, you cannot use `volume_size`. You must use one or the other.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dynamicVolumeSize(ElastigroupEbsBlockDeviceDynamicVolumeSizeArgs dynamicVolumeSize) {
+            return dynamicVolumeSize(Output.of(dynamicVolumeSize));
         }
 
         /**
@@ -322,10 +390,6 @@ public final class ElastigroupEbsBlockDeviceArgs extends com.pulumi.resources.Re
         /**
          * @param throughput The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.
          * 
-         * Modifying any `ebs_block_device` currently requires resource replacement.
-         * 
-         * Usage:
-         * 
          * @return builder
          * 
          */
@@ -336,10 +400,6 @@ public final class ElastigroupEbsBlockDeviceArgs extends com.pulumi.resources.Re
 
         /**
          * @param throughput The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.
-         * 
-         * Modifying any `ebs_block_device` currently requires resource replacement.
-         * 
-         * Usage:
          * 
          * @return builder
          * 

@@ -25,6 +25,18 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<string> DeviceName { get; set; } = null!;
 
         /// <summary>
+        /// Set dynamic IOPS properties. When using this object, you cannot use the `iops` object. You must use one or the other.
+        /// </summary>
+        [Input("dynamicIops")]
+        public Input<Inputs.ElastigroupEbsBlockDeviceDynamicIopsGetArgs>? DynamicIops { get; set; }
+
+        /// <summary>
+        /// Set dynamic volume size properties. When using this object, you cannot use `volume_size`. You must use one or the other.
+        /// </summary>
+        [Input("dynamicVolumeSize")]
+        public Input<Inputs.ElastigroupEbsBlockDeviceDynamicVolumeSizeGetArgs>? DynamicVolumeSize { get; set; }
+
+        /// <summary>
         /// Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
         /// </summary>
         [Input("encrypted")]
@@ -50,10 +62,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
         /// <summary>
         /// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.
-        /// 
-        /// Modifying any `ebs_block_device` currently requires resource replacement.
-        /// 
-        /// Usage:
         /// </summary>
         [Input("throughput")]
         public Input<int>? Throughput { get; set; }

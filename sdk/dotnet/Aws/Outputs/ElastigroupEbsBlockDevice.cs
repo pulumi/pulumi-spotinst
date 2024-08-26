@@ -22,6 +22,14 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly string DeviceName;
         /// <summary>
+        /// Set dynamic IOPS properties. When using this object, you cannot use the `iops` object. You must use one or the other.
+        /// </summary>
+        public readonly Outputs.ElastigroupEbsBlockDeviceDynamicIops? DynamicIops;
+        /// <summary>
+        /// Set dynamic volume size properties. When using this object, you cannot use `volume_size`. You must use one or the other.
+        /// </summary>
+        public readonly Outputs.ElastigroupEbsBlockDeviceDynamicVolumeSize? DynamicVolumeSize;
+        /// <summary>
         /// Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
         /// </summary>
         public readonly bool? Encrypted;
@@ -39,10 +47,6 @@ namespace Pulumi.SpotInst.Aws.Outputs
         public readonly string? SnapshotId;
         /// <summary>
         /// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.
-        /// 
-        /// Modifying any `ebs_block_device` currently requires resource replacement.
-        /// 
-        /// Usage:
         /// </summary>
         public readonly int? Throughput;
         /// <summary>
@@ -60,6 +64,10 @@ namespace Pulumi.SpotInst.Aws.Outputs
 
             string deviceName,
 
+            Outputs.ElastigroupEbsBlockDeviceDynamicIops? dynamicIops,
+
+            Outputs.ElastigroupEbsBlockDeviceDynamicVolumeSize? dynamicVolumeSize,
+
             bool? encrypted,
 
             int? iops,
@@ -76,6 +84,8 @@ namespace Pulumi.SpotInst.Aws.Outputs
         {
             DeleteOnTermination = deleteOnTermination;
             DeviceName = deviceName;
+            DynamicIops = dynamicIops;
+            DynamicVolumeSize = dynamicVolumeSize;
             Encrypted = encrypted;
             Iops = iops;
             KmsKeyId = kmsKeyId;

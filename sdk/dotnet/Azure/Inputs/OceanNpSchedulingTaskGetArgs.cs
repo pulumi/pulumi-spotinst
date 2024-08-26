@@ -16,7 +16,7 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public Input<string> CronExpression { get; set; } = null!;
 
         /// <summary>
-        /// Enable automatic headroom. When set to True, Ocean configures and optimizes headroom automatically.
+        /// Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
         /// </summary>
         [Input("isEnabled", required: true)]
         public Input<bool> IsEnabled { get; set; } = null!;

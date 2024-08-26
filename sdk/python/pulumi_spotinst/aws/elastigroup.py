@@ -20,6 +20,7 @@ class ElastigroupArgs:
                  orientation: pulumi.Input[str],
                  product: pulumi.Input[str],
                  security_groups: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 auto_healing: Optional[pulumi.Input[bool]] = None,
                  availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  block_devices_mode: Optional[pulumi.Input[str]] = None,
                  capacity_unit: Optional[pulumi.Input[str]] = None,
@@ -78,6 +79,7 @@ class ElastigroupArgs:
                  region: Optional[pulumi.Input[str]] = None,
                  resource_requirements: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupResourceRequirementArgs']]]] = None,
                  resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupResourceTagSpecificationArgs']]]] = None,
+                 restrict_single_az: Optional[pulumi.Input[bool]] = None,
                  revert_to_spot: Optional[pulumi.Input['ElastigroupRevertToSpotArgs']] = None,
                  scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]] = None,
                  scaling_strategies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingStrategyArgs']]]] = None,
@@ -105,6 +107,7 @@ class ElastigroupArgs:
         :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
                For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: A list of associated security group IDS.
+        :param pulumi.Input[bool] auto_healing: Auto-healing replacement won't be triggered if this parameter value is "false". In a case of a stateful group - no recycling will start if this parameter value is "false".
         :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zones: List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
                Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
                `availability_zones = ["us-east-1a:subnet-123456:ClusterI03"]`
@@ -144,6 +147,7 @@ class ElastigroupArgs:
                Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupResourceRequirementArgs']]] resource_requirements: Required instance attributes. Instance types will be selected based on these requirements.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupResourceTagSpecificationArgs']]] resource_tag_specifications: User will specify which resources should be tagged with group tags.
+        :param pulumi.Input[bool] restrict_single_az: Elastigroup will automatically scale your instances in the most available and cost efficient availability zone. Every evaluation will be done when there are no active instances in the group.
         :param pulumi.Input['ElastigroupRevertToSpotArgs'] revert_to_spot: Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingStrategyArgs']]] scaling_strategies: Set termination policy.
         :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
@@ -160,6 +164,8 @@ class ElastigroupArgs:
         pulumi.set(__self__, "orientation", orientation)
         pulumi.set(__self__, "product", product)
         pulumi.set(__self__, "security_groups", security_groups)
+        if auto_healing is not None:
+            pulumi.set(__self__, "auto_healing", auto_healing)
         if availability_zones is not None:
             pulumi.set(__self__, "availability_zones", availability_zones)
         if block_devices_mode is not None:
@@ -276,6 +282,8 @@ class ElastigroupArgs:
             pulumi.set(__self__, "resource_requirements", resource_requirements)
         if resource_tag_specifications is not None:
             pulumi.set(__self__, "resource_tag_specifications", resource_tag_specifications)
+        if restrict_single_az is not None:
+            pulumi.set(__self__, "restrict_single_az", restrict_single_az)
         if revert_to_spot is not None:
             pulumi.set(__self__, "revert_to_spot", revert_to_spot)
         if scaling_down_policies is not None:
@@ -365,6 +373,18 @@ class ElastigroupArgs:
     @security_groups.setter
     def security_groups(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "security_groups", value)
+
+    @property
+    @pulumi.getter(name="autoHealing")
+    def auto_healing(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Auto-healing replacement won't be triggered if this parameter value is "false". In a case of a stateful group - no recycling will start if this parameter value is "false".
+        """
+        return pulumi.get(self, "auto_healing")
+
+    @auto_healing.setter
+    def auto_healing(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_healing", value)
 
     @property
     @pulumi.getter(name="availabilityZones")
@@ -996,6 +1016,18 @@ class ElastigroupArgs:
         pulumi.set(self, "resource_tag_specifications", value)
 
     @property
+    @pulumi.getter(name="restrictSingleAz")
+    def restrict_single_az(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Elastigroup will automatically scale your instances in the most available and cost efficient availability zone. Every evaluation will be done when there are no active instances in the group.
+        """
+        return pulumi.get(self, "restrict_single_az")
+
+    @restrict_single_az.setter
+    def restrict_single_az(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "restrict_single_az", value)
+
+    @property
     @pulumi.getter(name="revertToSpot")
     def revert_to_spot(self) -> Optional[pulumi.Input['ElastigroupRevertToSpotArgs']]:
         """
@@ -1210,6 +1242,7 @@ class ElastigroupArgs:
 @pulumi.input_type
 class _ElastigroupState:
     def __init__(__self__, *,
+                 auto_healing: Optional[pulumi.Input[bool]] = None,
                  availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  block_devices_mode: Optional[pulumi.Input[str]] = None,
                  capacity_unit: Optional[pulumi.Input[str]] = None,
@@ -1271,6 +1304,7 @@ class _ElastigroupState:
                  region: Optional[pulumi.Input[str]] = None,
                  resource_requirements: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupResourceRequirementArgs']]]] = None,
                  resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupResourceTagSpecificationArgs']]]] = None,
+                 restrict_single_az: Optional[pulumi.Input[bool]] = None,
                  revert_to_spot: Optional[pulumi.Input['ElastigroupRevertToSpotArgs']] = None,
                  scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]] = None,
                  scaling_strategies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingStrategyArgs']]]] = None,
@@ -1294,6 +1328,7 @@ class _ElastigroupState:
                  wait_for_capacity_timeout: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering Elastigroup resources.
+        :param pulumi.Input[bool] auto_healing: Auto-healing replacement won't be triggered if this parameter value is "false". In a case of a stateful group - no recycling will start if this parameter value is "false".
         :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zones: List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
                Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
                `availability_zones = ["us-east-1a:subnet-123456:ClusterI03"]`
@@ -1337,6 +1372,7 @@ class _ElastigroupState:
                Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupResourceRequirementArgs']]] resource_requirements: Required instance attributes. Instance types will be selected based on these requirements.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupResourceTagSpecificationArgs']]] resource_tag_specifications: User will specify which resources should be tagged with group tags.
+        :param pulumi.Input[bool] restrict_single_az: Elastigroup will automatically scale your instances in the most available and cost efficient availability zone. Every evaluation will be done when there are no active instances in the group.
         :param pulumi.Input['ElastigroupRevertToSpotArgs'] revert_to_spot: Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingStrategyArgs']]] scaling_strategies: Set termination policy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: A list of associated security group IDS.
@@ -1350,6 +1386,8 @@ class _ElastigroupState:
         :param pulumi.Input[int] wait_for_capacity: Minimum number of instances in a 'HEALTHY' status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desired_capacity`.
         :param pulumi.Input[int] wait_for_capacity_timeout: Time (seconds) to wait for instances to report a 'HEALTHY' status. Useful for plans with multiple dependencies that take some time to initialize. Leave undefined or set to `0` to indicate no wait. This is ignored when updating with blue/green deployment.
         """
+        if auto_healing is not None:
+            pulumi.set(__self__, "auto_healing", auto_healing)
         if availability_zones is not None:
             pulumi.set(__self__, "availability_zones", availability_zones)
         if block_devices_mode is not None:
@@ -1472,6 +1510,8 @@ class _ElastigroupState:
             pulumi.set(__self__, "resource_requirements", resource_requirements)
         if resource_tag_specifications is not None:
             pulumi.set(__self__, "resource_tag_specifications", resource_tag_specifications)
+        if restrict_single_az is not None:
+            pulumi.set(__self__, "restrict_single_az", restrict_single_az)
         if revert_to_spot is not None:
             pulumi.set(__self__, "revert_to_spot", revert_to_spot)
         if scaling_down_policies is not None:
@@ -1514,6 +1554,18 @@ class _ElastigroupState:
             pulumi.set(__self__, "wait_for_capacity", wait_for_capacity)
         if wait_for_capacity_timeout is not None:
             pulumi.set(__self__, "wait_for_capacity_timeout", wait_for_capacity_timeout)
+
+    @property
+    @pulumi.getter(name="autoHealing")
+    def auto_healing(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Auto-healing replacement won't be triggered if this parameter value is "false". In a case of a stateful group - no recycling will start if this parameter value is "false".
+        """
+        return pulumi.get(self, "auto_healing")
+
+    @auto_healing.setter
+    def auto_healing(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_healing", value)
 
     @property
     @pulumi.getter(name="availabilityZones")
@@ -2182,6 +2234,18 @@ class _ElastigroupState:
         pulumi.set(self, "resource_tag_specifications", value)
 
     @property
+    @pulumi.getter(name="restrictSingleAz")
+    def restrict_single_az(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Elastigroup will automatically scale your instances in the most available and cost efficient availability zone. Every evaluation will be done when there are no active instances in the group.
+        """
+        return pulumi.get(self, "restrict_single_az")
+
+    @restrict_single_az.setter
+    def restrict_single_az(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "restrict_single_az", value)
+
+    @property
     @pulumi.getter(name="revertToSpot")
     def revert_to_spot(self) -> Optional[pulumi.Input['ElastigroupRevertToSpotArgs']]:
         """
@@ -2410,6 +2474,7 @@ class Elastigroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_healing: Optional[pulumi.Input[bool]] = None,
                  availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  block_devices_mode: Optional[pulumi.Input[str]] = None,
                  capacity_unit: Optional[pulumi.Input[str]] = None,
@@ -2471,6 +2536,7 @@ class Elastigroup(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  resource_requirements: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupResourceRequirementArgs', 'ElastigroupResourceRequirementArgsDict']]]]] = None,
                  resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupResourceTagSpecificationArgs', 'ElastigroupResourceTagSpecificationArgsDict']]]]] = None,
+                 restrict_single_az: Optional[pulumi.Input[bool]] = None,
                  revert_to_spot: Optional[pulumi.Input[Union['ElastigroupRevertToSpotArgs', 'ElastigroupRevertToSpotArgsDict']]] = None,
                  scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingDownPolicyArgs', 'ElastigroupScalingDownPolicyArgsDict']]]]] = None,
                  scaling_strategies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingStrategyArgs', 'ElastigroupScalingStrategyArgsDict']]]]] = None,
@@ -2631,6 +2697,7 @@ class Elastigroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] auto_healing: Auto-healing replacement won't be triggered if this parameter value is "false". In a case of a stateful group - no recycling will start if this parameter value is "false".
         :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zones: List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
                Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
                `availability_zones = ["us-east-1a:subnet-123456:ClusterI03"]`
@@ -2674,6 +2741,7 @@ class Elastigroup(pulumi.CustomResource):
                Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
         :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupResourceRequirementArgs', 'ElastigroupResourceRequirementArgsDict']]]] resource_requirements: Required instance attributes. Instance types will be selected based on these requirements.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupResourceTagSpecificationArgs', 'ElastigroupResourceTagSpecificationArgsDict']]]] resource_tag_specifications: User will specify which resources should be tagged with group tags.
+        :param pulumi.Input[bool] restrict_single_az: Elastigroup will automatically scale your instances in the most available and cost efficient availability zone. Every evaluation will be done when there are no active instances in the group.
         :param pulumi.Input[Union['ElastigroupRevertToSpotArgs', 'ElastigroupRevertToSpotArgsDict']] revert_to_spot: Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
         :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingStrategyArgs', 'ElastigroupScalingStrategyArgsDict']]]] scaling_strategies: Set termination policy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: A list of associated security group IDS.
@@ -2844,6 +2912,7 @@ class Elastigroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_healing: Optional[pulumi.Input[bool]] = None,
                  availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  block_devices_mode: Optional[pulumi.Input[str]] = None,
                  capacity_unit: Optional[pulumi.Input[str]] = None,
@@ -2905,6 +2974,7 @@ class Elastigroup(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  resource_requirements: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupResourceRequirementArgs', 'ElastigroupResourceRequirementArgsDict']]]]] = None,
                  resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupResourceTagSpecificationArgs', 'ElastigroupResourceTagSpecificationArgsDict']]]]] = None,
+                 restrict_single_az: Optional[pulumi.Input[bool]] = None,
                  revert_to_spot: Optional[pulumi.Input[Union['ElastigroupRevertToSpotArgs', 'ElastigroupRevertToSpotArgsDict']]] = None,
                  scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingDownPolicyArgs', 'ElastigroupScalingDownPolicyArgsDict']]]]] = None,
                  scaling_strategies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingStrategyArgs', 'ElastigroupScalingStrategyArgsDict']]]]] = None,
@@ -2935,6 +3005,7 @@ class Elastigroup(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ElastigroupArgs.__new__(ElastigroupArgs)
 
+            __props__.__dict__["auto_healing"] = auto_healing
             __props__.__dict__["availability_zones"] = availability_zones
             __props__.__dict__["block_devices_mode"] = block_devices_mode
             __props__.__dict__["capacity_unit"] = capacity_unit
@@ -3002,6 +3073,7 @@ class Elastigroup(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["resource_requirements"] = resource_requirements
             __props__.__dict__["resource_tag_specifications"] = resource_tag_specifications
+            __props__.__dict__["restrict_single_az"] = restrict_single_az
             __props__.__dict__["revert_to_spot"] = revert_to_spot
             __props__.__dict__["scaling_down_policies"] = scaling_down_policies
             __props__.__dict__["scaling_strategies"] = scaling_strategies
@@ -3035,6 +3107,7 @@ class Elastigroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            auto_healing: Optional[pulumi.Input[bool]] = None,
             availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             block_devices_mode: Optional[pulumi.Input[str]] = None,
             capacity_unit: Optional[pulumi.Input[str]] = None,
@@ -3096,6 +3169,7 @@ class Elastigroup(pulumi.CustomResource):
             region: Optional[pulumi.Input[str]] = None,
             resource_requirements: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupResourceRequirementArgs', 'ElastigroupResourceRequirementArgsDict']]]]] = None,
             resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupResourceTagSpecificationArgs', 'ElastigroupResourceTagSpecificationArgsDict']]]]] = None,
+            restrict_single_az: Optional[pulumi.Input[bool]] = None,
             revert_to_spot: Optional[pulumi.Input[Union['ElastigroupRevertToSpotArgs', 'ElastigroupRevertToSpotArgsDict']]] = None,
             scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingDownPolicyArgs', 'ElastigroupScalingDownPolicyArgsDict']]]]] = None,
             scaling_strategies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingStrategyArgs', 'ElastigroupScalingStrategyArgsDict']]]]] = None,
@@ -3124,6 +3198,7 @@ class Elastigroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] auto_healing: Auto-healing replacement won't be triggered if this parameter value is "false". In a case of a stateful group - no recycling will start if this parameter value is "false".
         :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zones: List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
                Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
                `availability_zones = ["us-east-1a:subnet-123456:ClusterI03"]`
@@ -3167,6 +3242,7 @@ class Elastigroup(pulumi.CustomResource):
                Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
         :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupResourceRequirementArgs', 'ElastigroupResourceRequirementArgsDict']]]] resource_requirements: Required instance attributes. Instance types will be selected based on these requirements.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupResourceTagSpecificationArgs', 'ElastigroupResourceTagSpecificationArgsDict']]]] resource_tag_specifications: User will specify which resources should be tagged with group tags.
+        :param pulumi.Input[bool] restrict_single_az: Elastigroup will automatically scale your instances in the most available and cost efficient availability zone. Every evaluation will be done when there are no active instances in the group.
         :param pulumi.Input[Union['ElastigroupRevertToSpotArgs', 'ElastigroupRevertToSpotArgsDict']] revert_to_spot: Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
         :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingStrategyArgs', 'ElastigroupScalingStrategyArgsDict']]]] scaling_strategies: Set termination policy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: A list of associated security group IDS.
@@ -3184,6 +3260,7 @@ class Elastigroup(pulumi.CustomResource):
 
         __props__ = _ElastigroupState.__new__(_ElastigroupState)
 
+        __props__.__dict__["auto_healing"] = auto_healing
         __props__.__dict__["availability_zones"] = availability_zones
         __props__.__dict__["block_devices_mode"] = block_devices_mode
         __props__.__dict__["capacity_unit"] = capacity_unit
@@ -3245,6 +3322,7 @@ class Elastigroup(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         __props__.__dict__["resource_requirements"] = resource_requirements
         __props__.__dict__["resource_tag_specifications"] = resource_tag_specifications
+        __props__.__dict__["restrict_single_az"] = restrict_single_az
         __props__.__dict__["revert_to_spot"] = revert_to_spot
         __props__.__dict__["scaling_down_policies"] = scaling_down_policies
         __props__.__dict__["scaling_strategies"] = scaling_strategies
@@ -3267,6 +3345,14 @@ class Elastigroup(pulumi.CustomResource):
         __props__.__dict__["wait_for_capacity"] = wait_for_capacity
         __props__.__dict__["wait_for_capacity_timeout"] = wait_for_capacity_timeout
         return Elastigroup(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="autoHealing")
+    def auto_healing(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Auto-healing replacement won't be triggered if this parameter value is "false". In a case of a stateful group - no recycling will start if this parameter value is "false".
+        """
+        return pulumi.get(self, "auto_healing")
 
     @property
     @pulumi.getter(name="availabilityZones")
@@ -3689,6 +3775,14 @@ class Elastigroup(pulumi.CustomResource):
         User will specify which resources should be tagged with group tags.
         """
         return pulumi.get(self, "resource_tag_specifications")
+
+    @property
+    @pulumi.getter(name="restrictSingleAz")
+    def restrict_single_az(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Elastigroup will automatically scale your instances in the most available and cost efficient availability zone. Every evaluation will be done when there are no active instances in the group.
+        """
+        return pulumi.get(self, "restrict_single_az")
 
     @property
     @pulumi.getter(name="revertToSpot")
