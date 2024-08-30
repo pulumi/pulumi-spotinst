@@ -41,7 +41,6 @@ export class OceanRightSizingRule extends pulumi.CustomResource {
     public readonly recommendationApplicationIntervals!: pulumi.Output<outputs.OceanRightSizingRuleRecommendationApplicationInterval[]>;
     public readonly recommendationApplicationMinThresholds!: pulumi.Output<outputs.OceanRightSizingRuleRecommendationApplicationMinThreshold[] | undefined>;
     public readonly recommendationApplicationOverheadValues!: pulumi.Output<outputs.OceanRightSizingRuleRecommendationApplicationOverheadValue[] | undefined>;
-    public readonly restartPods!: pulumi.Output<boolean | undefined>;
     public readonly ruleName!: pulumi.Output<string>;
 
     /**
@@ -64,7 +63,6 @@ export class OceanRightSizingRule extends pulumi.CustomResource {
             resourceInputs["recommendationApplicationIntervals"] = state ? state.recommendationApplicationIntervals : undefined;
             resourceInputs["recommendationApplicationMinThresholds"] = state ? state.recommendationApplicationMinThresholds : undefined;
             resourceInputs["recommendationApplicationOverheadValues"] = state ? state.recommendationApplicationOverheadValues : undefined;
-            resourceInputs["restartPods"] = state ? state.restartPods : undefined;
             resourceInputs["ruleName"] = state ? state.ruleName : undefined;
         } else {
             const args = argsOrState as OceanRightSizingRuleArgs | undefined;
@@ -81,7 +79,6 @@ export class OceanRightSizingRule extends pulumi.CustomResource {
             resourceInputs["recommendationApplicationIntervals"] = args ? args.recommendationApplicationIntervals : undefined;
             resourceInputs["recommendationApplicationMinThresholds"] = args ? args.recommendationApplicationMinThresholds : undefined;
             resourceInputs["recommendationApplicationOverheadValues"] = args ? args.recommendationApplicationOverheadValues : undefined;
-            resourceInputs["restartPods"] = args ? args.restartPods : undefined;
             resourceInputs["ruleName"] = args ? args.ruleName : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -100,7 +97,6 @@ export interface OceanRightSizingRuleState {
     recommendationApplicationIntervals?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleRecommendationApplicationInterval>[]>;
     recommendationApplicationMinThresholds?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleRecommendationApplicationMinThreshold>[]>;
     recommendationApplicationOverheadValues?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleRecommendationApplicationOverheadValue>[]>;
-    restartPods?: pulumi.Input<boolean>;
     ruleName?: pulumi.Input<string>;
 }
 
@@ -115,6 +111,5 @@ export interface OceanRightSizingRuleArgs {
     recommendationApplicationIntervals: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleRecommendationApplicationInterval>[]>;
     recommendationApplicationMinThresholds?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleRecommendationApplicationMinThreshold>[]>;
     recommendationApplicationOverheadValues?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleRecommendationApplicationOverheadValue>[]>;
-    restartPods?: pulumi.Input<boolean>;
     ruleName: pulumi.Input<string>;
 }

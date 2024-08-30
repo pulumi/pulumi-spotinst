@@ -22,7 +22,6 @@ type OceanRightSizingRule struct {
 	RecommendationApplicationIntervals      OceanRightSizingRuleRecommendationApplicationIntervalArrayOutput      `pulumi:"recommendationApplicationIntervals"`
 	RecommendationApplicationMinThresholds  OceanRightSizingRuleRecommendationApplicationMinThresholdArrayOutput  `pulumi:"recommendationApplicationMinThresholds"`
 	RecommendationApplicationOverheadValues OceanRightSizingRuleRecommendationApplicationOverheadValueArrayOutput `pulumi:"recommendationApplicationOverheadValues"`
-	RestartPods                             pulumi.BoolPtrOutput                                                  `pulumi:"restartPods"`
 	RuleName                                pulumi.StringOutput                                                   `pulumi:"ruleName"`
 }
 
@@ -69,7 +68,6 @@ type oceanRightSizingRuleState struct {
 	RecommendationApplicationIntervals      []OceanRightSizingRuleRecommendationApplicationInterval      `pulumi:"recommendationApplicationIntervals"`
 	RecommendationApplicationMinThresholds  []OceanRightSizingRuleRecommendationApplicationMinThreshold  `pulumi:"recommendationApplicationMinThresholds"`
 	RecommendationApplicationOverheadValues []OceanRightSizingRuleRecommendationApplicationOverheadValue `pulumi:"recommendationApplicationOverheadValues"`
-	RestartPods                             *bool                                                        `pulumi:"restartPods"`
 	RuleName                                *string                                                      `pulumi:"ruleName"`
 }
 
@@ -81,7 +79,6 @@ type OceanRightSizingRuleState struct {
 	RecommendationApplicationIntervals      OceanRightSizingRuleRecommendationApplicationIntervalArrayInput
 	RecommendationApplicationMinThresholds  OceanRightSizingRuleRecommendationApplicationMinThresholdArrayInput
 	RecommendationApplicationOverheadValues OceanRightSizingRuleRecommendationApplicationOverheadValueArrayInput
-	RestartPods                             pulumi.BoolPtrInput
 	RuleName                                pulumi.StringPtrInput
 }
 
@@ -97,7 +94,6 @@ type oceanRightSizingRuleArgs struct {
 	RecommendationApplicationIntervals      []OceanRightSizingRuleRecommendationApplicationInterval      `pulumi:"recommendationApplicationIntervals"`
 	RecommendationApplicationMinThresholds  []OceanRightSizingRuleRecommendationApplicationMinThreshold  `pulumi:"recommendationApplicationMinThresholds"`
 	RecommendationApplicationOverheadValues []OceanRightSizingRuleRecommendationApplicationOverheadValue `pulumi:"recommendationApplicationOverheadValues"`
-	RestartPods                             *bool                                                        `pulumi:"restartPods"`
 	RuleName                                string                                                       `pulumi:"ruleName"`
 }
 
@@ -110,7 +106,6 @@ type OceanRightSizingRuleArgs struct {
 	RecommendationApplicationIntervals      OceanRightSizingRuleRecommendationApplicationIntervalArrayInput
 	RecommendationApplicationMinThresholds  OceanRightSizingRuleRecommendationApplicationMinThresholdArrayInput
 	RecommendationApplicationOverheadValues OceanRightSizingRuleRecommendationApplicationOverheadValueArrayInput
-	RestartPods                             pulumi.BoolPtrInput
 	RuleName                                pulumi.StringInput
 }
 
@@ -235,10 +230,6 @@ func (o OceanRightSizingRuleOutput) RecommendationApplicationOverheadValues() Oc
 	return o.ApplyT(func(v *OceanRightSizingRule) OceanRightSizingRuleRecommendationApplicationOverheadValueArrayOutput {
 		return v.RecommendationApplicationOverheadValues
 	}).(OceanRightSizingRuleRecommendationApplicationOverheadValueArrayOutput)
-}
-
-func (o OceanRightSizingRuleOutput) RestartPods() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *OceanRightSizingRule) pulumi.BoolPtrOutput { return v.RestartPods }).(pulumi.BoolPtrOutput)
 }
 
 func (o OceanRightSizingRuleOutput) RuleName() pulumi.StringOutput {

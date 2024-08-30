@@ -25,6 +25,7 @@ public final class StatefulNodeAzureStrategy {
     private @Nullable List<String> optimizationWindows;
     private @Nullable String preferredLifeCycle;
     private @Nullable StatefulNodeAzureStrategyRevertToSpot revertToSpot;
+    private @Nullable List<String> vmAdmins;
 
     private StatefulNodeAzureStrategy() {}
     public Optional<Integer> availabilityVsCost() {
@@ -51,6 +52,9 @@ public final class StatefulNodeAzureStrategy {
     public Optional<StatefulNodeAzureStrategyRevertToSpot> revertToSpot() {
         return Optional.ofNullable(this.revertToSpot);
     }
+    public List<String> vmAdmins() {
+        return this.vmAdmins == null ? List.of() : this.vmAdmins;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -69,6 +73,7 @@ public final class StatefulNodeAzureStrategy {
         private @Nullable List<String> optimizationWindows;
         private @Nullable String preferredLifeCycle;
         private @Nullable StatefulNodeAzureStrategyRevertToSpot revertToSpot;
+        private @Nullable List<String> vmAdmins;
         public Builder() {}
         public Builder(StatefulNodeAzureStrategy defaults) {
     	      Objects.requireNonNull(defaults);
@@ -80,6 +85,7 @@ public final class StatefulNodeAzureStrategy {
     	      this.optimizationWindows = defaults.optimizationWindows;
     	      this.preferredLifeCycle = defaults.preferredLifeCycle;
     	      this.revertToSpot = defaults.revertToSpot;
+    	      this.vmAdmins = defaults.vmAdmins;
         }
 
         @CustomType.Setter
@@ -141,6 +147,15 @@ public final class StatefulNodeAzureStrategy {
             this.revertToSpot = revertToSpot;
             return this;
         }
+        @CustomType.Setter
+        public Builder vmAdmins(@Nullable List<String> vmAdmins) {
+
+            this.vmAdmins = vmAdmins;
+            return this;
+        }
+        public Builder vmAdmins(String... vmAdmins) {
+            return vmAdmins(List.of(vmAdmins));
+        }
         public StatefulNodeAzureStrategy build() {
             final var _resultValue = new StatefulNodeAzureStrategy();
             _resultValue.availabilityVsCost = availabilityVsCost;
@@ -151,6 +166,7 @@ public final class StatefulNodeAzureStrategy {
             _resultValue.optimizationWindows = optimizationWindows;
             _resultValue.preferredLifeCycle = preferredLifeCycle;
             _resultValue.revertToSpot = revertToSpot;
+            _resultValue.vmAdmins = vmAdmins;
             return _resultValue;
         }
     }

@@ -21,6 +21,7 @@ namespace Pulumi.SpotInst.Outputs
         public readonly ImmutableArray<string> OptimizationWindows;
         public readonly string? PreferredLifeCycle;
         public readonly Outputs.StatefulNodeAzureStrategyRevertToSpot? RevertToSpot;
+        public readonly ImmutableArray<string> VmAdmins;
 
         [OutputConstructor]
         private StatefulNodeAzureStrategy(
@@ -38,7 +39,9 @@ namespace Pulumi.SpotInst.Outputs
 
             string? preferredLifeCycle,
 
-            Outputs.StatefulNodeAzureStrategyRevertToSpot? revertToSpot)
+            Outputs.StatefulNodeAzureStrategyRevertToSpot? revertToSpot,
+
+            ImmutableArray<string> vmAdmins)
         {
             AvailabilityVsCost = availabilityVsCost;
             CapacityReservations = capacityReservations;
@@ -48,6 +51,7 @@ namespace Pulumi.SpotInst.Outputs
             OptimizationWindows = optimizationWindows;
             PreferredLifeCycle = preferredLifeCycle;
             RevertToSpot = revertToSpot;
+            VmAdmins = vmAdmins;
         }
     }
 }

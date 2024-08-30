@@ -394,6 +394,7 @@ export interface StatefulNodeAzureStrategy {
     optimizationWindows?: string[];
     preferredLifeCycle: string;
     revertToSpot: outputs.StatefulNodeAzureStrategyRevertToSpot;
+    vmAdmins?: string[];
 }
 
 export interface StatefulNodeAzureStrategyCapacityReservation {

@@ -394,6 +394,7 @@ export interface StatefulNodeAzureStrategy {
     optimizationWindows?: pulumi.Input<pulumi.Input<string>[]>;
     preferredLifeCycle?: pulumi.Input<string>;
     revertToSpot?: pulumi.Input<inputs.StatefulNodeAzureStrategyRevertToSpot>;
+    vmAdmins?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface StatefulNodeAzureStrategyCapacityReservation {

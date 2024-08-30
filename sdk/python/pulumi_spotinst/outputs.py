@@ -2758,6 +2758,8 @@ class StatefulNodeAzureStrategy(dict):
             suggest = "preferred_life_cycle"
         elif key == "revertToSpot":
             suggest = "revert_to_spot"
+        elif key == "vmAdmins":
+            suggest = "vm_admins"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in StatefulNodeAzureStrategy. Access the value via the '{suggest}' property getter instead.")
@@ -2778,7 +2780,8 @@ class StatefulNodeAzureStrategy(dict):
                  od_windows: Optional[Sequence[str]] = None,
                  optimization_windows: Optional[Sequence[str]] = None,
                  preferred_life_cycle: Optional[str] = None,
-                 revert_to_spot: Optional['outputs.StatefulNodeAzureStrategyRevertToSpot'] = None):
+                 revert_to_spot: Optional['outputs.StatefulNodeAzureStrategyRevertToSpot'] = None,
+                 vm_admins: Optional[Sequence[str]] = None):
         pulumi.set(__self__, "fallback_to_on_demand", fallback_to_on_demand)
         if availability_vs_cost is not None:
             pulumi.set(__self__, "availability_vs_cost", availability_vs_cost)
@@ -2794,6 +2797,8 @@ class StatefulNodeAzureStrategy(dict):
             pulumi.set(__self__, "preferred_life_cycle", preferred_life_cycle)
         if revert_to_spot is not None:
             pulumi.set(__self__, "revert_to_spot", revert_to_spot)
+        if vm_admins is not None:
+            pulumi.set(__self__, "vm_admins", vm_admins)
 
     @property
     @pulumi.getter(name="fallbackToOnDemand")
@@ -2834,6 +2839,11 @@ class StatefulNodeAzureStrategy(dict):
     @pulumi.getter(name="revertToSpot")
     def revert_to_spot(self) -> Optional['outputs.StatefulNodeAzureStrategyRevertToSpot']:
         return pulumi.get(self, "revert_to_spot")
+
+    @property
+    @pulumi.getter(name="vmAdmins")
+    def vm_admins(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "vm_admins")
 
 
 @pulumi.output_type

@@ -33,9 +33,6 @@ namespace Pulumi.SpotInst
         [Output("recommendationApplicationOverheadValues")]
         public Output<ImmutableArray<Outputs.OceanRightSizingRuleRecommendationApplicationOverheadValue>> RecommendationApplicationOverheadValues { get; private set; } = null!;
 
-        [Output("restartPods")]
-        public Output<bool?> RestartPods { get; private set; } = null!;
-
         [Output("ruleName")]
         public Output<string> RuleName { get; private set; } = null!;
 
@@ -136,9 +133,6 @@ namespace Pulumi.SpotInst
             set => _recommendationApplicationOverheadValues = value;
         }
 
-        [Input("restartPods")]
-        public Input<bool>? RestartPods { get; set; }
-
         [Input("ruleName", required: true)]
         public Input<string> RuleName { get; set; } = null!;
 
@@ -200,9 +194,6 @@ namespace Pulumi.SpotInst
             get => _recommendationApplicationOverheadValues ?? (_recommendationApplicationOverheadValues = new InputList<Inputs.OceanRightSizingRuleRecommendationApplicationOverheadValueGetArgs>());
             set => _recommendationApplicationOverheadValues = value;
         }
-
-        [Input("restartPods")]
-        public Input<bool>? RestartPods { get; set; }
 
         [Input("ruleName")]
         public Input<string>? RuleName { get; set; }

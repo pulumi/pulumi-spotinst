@@ -16,7 +16,6 @@ import com.pulumi.spotinst.outputs.OceanRightSizingRuleRecommendationApplication
 import com.pulumi.spotinst.outputs.OceanRightSizingRuleRecommendationApplicationInterval;
 import com.pulumi.spotinst.outputs.OceanRightSizingRuleRecommendationApplicationMinThreshold;
 import com.pulumi.spotinst.outputs.OceanRightSizingRuleRecommendationApplicationOverheadValue;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -65,12 +64,6 @@ public class OceanRightSizingRule extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<List<OceanRightSizingRuleRecommendationApplicationOverheadValue>>> recommendationApplicationOverheadValues() {
         return Codegen.optional(this.recommendationApplicationOverheadValues);
-    }
-    @Export(name="restartPods", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> restartPods;
-
-    public Output<Optional<Boolean>> restartPods() {
-        return Codegen.optional(this.restartPods);
     }
     @Export(name="ruleName", refs={String.class}, tree="[0]")
     private Output<String> ruleName;
