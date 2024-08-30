@@ -77,6 +77,13 @@ public final class StatefulNodeAzureStrategyArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.revertToSpot);
     }
 
+    @Import(name="vmAdmins")
+    private @Nullable Output<List<String>> vmAdmins;
+
+    public Optional<Output<List<String>>> vmAdmins() {
+        return Optional.ofNullable(this.vmAdmins);
+    }
+
     private StatefulNodeAzureStrategyArgs() {}
 
     private StatefulNodeAzureStrategyArgs(StatefulNodeAzureStrategyArgs $) {
@@ -88,6 +95,7 @@ public final class StatefulNodeAzureStrategyArgs extends com.pulumi.resources.Re
         this.optimizationWindows = $.optimizationWindows;
         this.preferredLifeCycle = $.preferredLifeCycle;
         this.revertToSpot = $.revertToSpot;
+        this.vmAdmins = $.vmAdmins;
     }
 
     public static Builder builder() {
@@ -190,6 +198,19 @@ public final class StatefulNodeAzureStrategyArgs extends com.pulumi.resources.Re
 
         public Builder revertToSpot(StatefulNodeAzureStrategyRevertToSpotArgs revertToSpot) {
             return revertToSpot(Output.of(revertToSpot));
+        }
+
+        public Builder vmAdmins(@Nullable Output<List<String>> vmAdmins) {
+            $.vmAdmins = vmAdmins;
+            return this;
+        }
+
+        public Builder vmAdmins(List<String> vmAdmins) {
+            return vmAdmins(Output.of(vmAdmins));
+        }
+
+        public Builder vmAdmins(String... vmAdmins) {
+            return vmAdmins(List.of(vmAdmins));
         }
 
         public StatefulNodeAzureStrategyArgs build() {

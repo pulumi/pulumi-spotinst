@@ -11,7 +11,6 @@ import com.pulumi.spotinst.inputs.OceanRightSizingRuleRecommendationApplicationB
 import com.pulumi.spotinst.inputs.OceanRightSizingRuleRecommendationApplicationIntervalArgs;
 import com.pulumi.spotinst.inputs.OceanRightSizingRuleRecommendationApplicationMinThresholdArgs;
 import com.pulumi.spotinst.inputs.OceanRightSizingRuleRecommendationApplicationOverheadValueArgs;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -72,13 +71,6 @@ public final class OceanRightSizingRuleState extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.recommendationApplicationOverheadValues);
     }
 
-    @Import(name="restartPods")
-    private @Nullable Output<Boolean> restartPods;
-
-    public Optional<Output<Boolean>> restartPods() {
-        return Optional.ofNullable(this.restartPods);
-    }
-
     @Import(name="ruleName")
     private @Nullable Output<String> ruleName;
 
@@ -96,7 +88,6 @@ public final class OceanRightSizingRuleState extends com.pulumi.resources.Resour
         this.recommendationApplicationIntervals = $.recommendationApplicationIntervals;
         this.recommendationApplicationMinThresholds = $.recommendationApplicationMinThresholds;
         this.recommendationApplicationOverheadValues = $.recommendationApplicationOverheadValues;
-        this.restartPods = $.restartPods;
         this.ruleName = $.ruleName;
     }
 
@@ -203,15 +194,6 @@ public final class OceanRightSizingRuleState extends com.pulumi.resources.Resour
 
         public Builder recommendationApplicationOverheadValues(OceanRightSizingRuleRecommendationApplicationOverheadValueArgs... recommendationApplicationOverheadValues) {
             return recommendationApplicationOverheadValues(List.of(recommendationApplicationOverheadValues));
-        }
-
-        public Builder restartPods(@Nullable Output<Boolean> restartPods) {
-            $.restartPods = restartPods;
-            return this;
-        }
-
-        public Builder restartPods(Boolean restartPods) {
-            return restartPods(Output.of(restartPods));
         }
 
         public Builder ruleName(@Nullable Output<String> ruleName) {

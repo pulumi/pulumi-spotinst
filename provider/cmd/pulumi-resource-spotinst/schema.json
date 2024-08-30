@@ -8346,6 +8346,12 @@
                 },
                 "revertToSpot": {
                     "$ref": "#/types/spotinst:index/StatefulNodeAzureStrategyRevertToSpot:StatefulNodeAzureStrategyRevertToSpot"
+                },
+                "vmAdmins": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
                 }
             },
             "type": "object",
@@ -18017,9 +18023,6 @@
                         "$ref": "#/types/spotinst:index/OceanRightSizingRuleRecommendationApplicationOverheadValue:OceanRightSizingRuleRecommendationApplicationOverheadValue"
                     }
                 },
-                "restartPods": {
-                    "type": "boolean"
-                },
                 "ruleName": {
                     "type": "string"
                 }
@@ -18067,9 +18070,6 @@
                     "items": {
                         "$ref": "#/types/spotinst:index/OceanRightSizingRuleRecommendationApplicationOverheadValue:OceanRightSizingRuleRecommendationApplicationOverheadValue"
                     }
-                },
-                "restartPods": {
-                    "type": "boolean"
                 },
                 "ruleName": {
                     "type": "string"
@@ -18120,9 +18120,6 @@
                         "items": {
                             "$ref": "#/types/spotinst:index/OceanRightSizingRuleRecommendationApplicationOverheadValue:OceanRightSizingRuleRecommendationApplicationOverheadValue"
                         }
-                    },
-                    "restartPods": {
-                        "type": "boolean"
                     },
                     "ruleName": {
                         "type": "string"

@@ -51,6 +51,14 @@ namespace Pulumi.SpotInst.Inputs
         [Input("revertToSpot")]
         public Input<Inputs.StatefulNodeAzureStrategyRevertToSpotGetArgs>? RevertToSpot { get; set; }
 
+        [Input("vmAdmins")]
+        private InputList<string>? _vmAdmins;
+        public InputList<string> VmAdmins
+        {
+            get => _vmAdmins ?? (_vmAdmins = new InputList<string>());
+            set => _vmAdmins = value;
+        }
+
         public StatefulNodeAzureStrategyGetArgs()
         {
         }

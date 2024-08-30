@@ -2625,6 +2625,9 @@
                                 },
                                 "revert_to_spot": {
                                     "maxItemsOne": true
+                                },
+                                "vm_admins": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }

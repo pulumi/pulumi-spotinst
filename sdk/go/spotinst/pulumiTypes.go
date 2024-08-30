@@ -6928,6 +6928,7 @@ type StatefulNodeAzureStrategy struct {
 	OptimizationWindows  []string                                       `pulumi:"optimizationWindows"`
 	PreferredLifeCycle   *string                                        `pulumi:"preferredLifeCycle"`
 	RevertToSpot         *StatefulNodeAzureStrategyRevertToSpot         `pulumi:"revertToSpot"`
+	VmAdmins             []string                                       `pulumi:"vmAdmins"`
 }
 
 // StatefulNodeAzureStrategyInput is an input type that accepts StatefulNodeAzureStrategyArgs and StatefulNodeAzureStrategyOutput values.
@@ -6950,6 +6951,7 @@ type StatefulNodeAzureStrategyArgs struct {
 	OptimizationWindows  pulumi.StringArrayInput                                `pulumi:"optimizationWindows"`
 	PreferredLifeCycle   pulumi.StringPtrInput                                  `pulumi:"preferredLifeCycle"`
 	RevertToSpot         StatefulNodeAzureStrategyRevertToSpotPtrInput          `pulumi:"revertToSpot"`
+	VmAdmins             pulumi.StringArrayInput                                `pulumi:"vmAdmins"`
 }
 
 func (StatefulNodeAzureStrategyArgs) ElementType() reflect.Type {
@@ -7063,6 +7065,10 @@ func (o StatefulNodeAzureStrategyOutput) RevertToSpot() StatefulNodeAzureStrateg
 	return o.ApplyT(func(v StatefulNodeAzureStrategy) *StatefulNodeAzureStrategyRevertToSpot { return v.RevertToSpot }).(StatefulNodeAzureStrategyRevertToSpotPtrOutput)
 }
 
+func (o StatefulNodeAzureStrategyOutput) VmAdmins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StatefulNodeAzureStrategy) []string { return v.VmAdmins }).(pulumi.StringArrayOutput)
+}
+
 type StatefulNodeAzureStrategyPtrOutput struct{ *pulumi.OutputState }
 
 func (StatefulNodeAzureStrategyPtrOutput) ElementType() reflect.Type {
@@ -7157,6 +7163,15 @@ func (o StatefulNodeAzureStrategyPtrOutput) RevertToSpot() StatefulNodeAzureStra
 		}
 		return v.RevertToSpot
 	}).(StatefulNodeAzureStrategyRevertToSpotPtrOutput)
+}
+
+func (o StatefulNodeAzureStrategyPtrOutput) VmAdmins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureStrategy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.VmAdmins
+	}).(pulumi.StringArrayOutput)
 }
 
 type StatefulNodeAzureStrategyCapacityReservation struct {

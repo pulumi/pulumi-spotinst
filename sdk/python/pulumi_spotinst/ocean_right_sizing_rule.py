@@ -23,8 +23,7 @@ class OceanRightSizingRuleArgs:
                  ocean_id: Optional[pulumi.Input[str]] = None,
                  recommendation_application_boundaries: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationBoundaryArgs']]]] = None,
                  recommendation_application_min_thresholds: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationMinThresholdArgs']]]] = None,
-                 recommendation_application_overhead_values: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationOverheadValueArgs']]]] = None,
-                 restart_pods: Optional[pulumi.Input[bool]] = None):
+                 recommendation_application_overhead_values: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationOverheadValueArgs']]]] = None):
         """
         The set of arguments for constructing a OceanRightSizingRule resource.
         """
@@ -42,8 +41,6 @@ class OceanRightSizingRuleArgs:
             pulumi.set(__self__, "recommendation_application_min_thresholds", recommendation_application_min_thresholds)
         if recommendation_application_overhead_values is not None:
             pulumi.set(__self__, "recommendation_application_overhead_values", recommendation_application_overhead_values)
-        if restart_pods is not None:
-            pulumi.set(__self__, "restart_pods", restart_pods)
 
     @property
     @pulumi.getter(name="recommendationApplicationIntervals")
@@ -117,15 +114,6 @@ class OceanRightSizingRuleArgs:
     def recommendation_application_overhead_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationOverheadValueArgs']]]]):
         pulumi.set(self, "recommendation_application_overhead_values", value)
 
-    @property
-    @pulumi.getter(name="restartPods")
-    def restart_pods(self) -> Optional[pulumi.Input[bool]]:
-        return pulumi.get(self, "restart_pods")
-
-    @restart_pods.setter
-    def restart_pods(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "restart_pods", value)
-
 
 @pulumi.input_type
 class _OceanRightSizingRuleState:
@@ -137,7 +125,6 @@ class _OceanRightSizingRuleState:
                  recommendation_application_intervals: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalArgs']]]] = None,
                  recommendation_application_min_thresholds: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationMinThresholdArgs']]]] = None,
                  recommendation_application_overhead_values: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationOverheadValueArgs']]]] = None,
-                 restart_pods: Optional[pulumi.Input[bool]] = None,
                  rule_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering OceanRightSizingRule resources.
@@ -156,8 +143,6 @@ class _OceanRightSizingRuleState:
             pulumi.set(__self__, "recommendation_application_min_thresholds", recommendation_application_min_thresholds)
         if recommendation_application_overhead_values is not None:
             pulumi.set(__self__, "recommendation_application_overhead_values", recommendation_application_overhead_values)
-        if restart_pods is not None:
-            pulumi.set(__self__, "restart_pods", restart_pods)
         if rule_name is not None:
             pulumi.set(__self__, "rule_name", rule_name)
 
@@ -225,15 +210,6 @@ class _OceanRightSizingRuleState:
         pulumi.set(self, "recommendation_application_overhead_values", value)
 
     @property
-    @pulumi.getter(name="restartPods")
-    def restart_pods(self) -> Optional[pulumi.Input[bool]]:
-        return pulumi.get(self, "restart_pods")
-
-    @restart_pods.setter
-    def restart_pods(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "restart_pods", value)
-
-    @property
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "rule_name")
@@ -255,7 +231,6 @@ class OceanRightSizingRule(pulumi.CustomResource):
                  recommendation_application_intervals: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationIntervalArgs', 'OceanRightSizingRuleRecommendationApplicationIntervalArgsDict']]]]] = None,
                  recommendation_application_min_thresholds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationMinThresholdArgs', 'OceanRightSizingRuleRecommendationApplicationMinThresholdArgsDict']]]]] = None,
                  recommendation_application_overhead_values: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationOverheadValueArgs', 'OceanRightSizingRuleRecommendationApplicationOverheadValueArgsDict']]]]] = None,
-                 restart_pods: Optional[pulumi.Input[bool]] = None,
                  rule_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -293,7 +268,6 @@ class OceanRightSizingRule(pulumi.CustomResource):
                  recommendation_application_intervals: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationIntervalArgs', 'OceanRightSizingRuleRecommendationApplicationIntervalArgsDict']]]]] = None,
                  recommendation_application_min_thresholds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationMinThresholdArgs', 'OceanRightSizingRuleRecommendationApplicationMinThresholdArgsDict']]]]] = None,
                  recommendation_application_overhead_values: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationOverheadValueArgs', 'OceanRightSizingRuleRecommendationApplicationOverheadValueArgsDict']]]]] = None,
-                 restart_pods: Optional[pulumi.Input[bool]] = None,
                  rule_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -313,7 +287,6 @@ class OceanRightSizingRule(pulumi.CustomResource):
             __props__.__dict__["recommendation_application_intervals"] = recommendation_application_intervals
             __props__.__dict__["recommendation_application_min_thresholds"] = recommendation_application_min_thresholds
             __props__.__dict__["recommendation_application_overhead_values"] = recommendation_application_overhead_values
-            __props__.__dict__["restart_pods"] = restart_pods
             if rule_name is None and not opts.urn:
                 raise TypeError("Missing required property 'rule_name'")
             __props__.__dict__["rule_name"] = rule_name
@@ -334,7 +307,6 @@ class OceanRightSizingRule(pulumi.CustomResource):
             recommendation_application_intervals: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationIntervalArgs', 'OceanRightSizingRuleRecommendationApplicationIntervalArgsDict']]]]] = None,
             recommendation_application_min_thresholds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationMinThresholdArgs', 'OceanRightSizingRuleRecommendationApplicationMinThresholdArgsDict']]]]] = None,
             recommendation_application_overhead_values: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationOverheadValueArgs', 'OceanRightSizingRuleRecommendationApplicationOverheadValueArgsDict']]]]] = None,
-            restart_pods: Optional[pulumi.Input[bool]] = None,
             rule_name: Optional[pulumi.Input[str]] = None) -> 'OceanRightSizingRule':
         """
         Get an existing OceanRightSizingRule resource's state with the given name, id, and optional extra
@@ -355,7 +327,6 @@ class OceanRightSizingRule(pulumi.CustomResource):
         __props__.__dict__["recommendation_application_intervals"] = recommendation_application_intervals
         __props__.__dict__["recommendation_application_min_thresholds"] = recommendation_application_min_thresholds
         __props__.__dict__["recommendation_application_overhead_values"] = recommendation_application_overhead_values
-        __props__.__dict__["restart_pods"] = restart_pods
         __props__.__dict__["rule_name"] = rule_name
         return OceanRightSizingRule(resource_name, opts=opts, __props__=__props__)
 
@@ -393,11 +364,6 @@ class OceanRightSizingRule(pulumi.CustomResource):
     @pulumi.getter(name="recommendationApplicationOverheadValues")
     def recommendation_application_overhead_values(self) -> pulumi.Output[Optional[Sequence['outputs.OceanRightSizingRuleRecommendationApplicationOverheadValue']]]:
         return pulumi.get(self, "recommendation_application_overhead_values")
-
-    @property
-    @pulumi.getter(name="restartPods")
-    def restart_pods(self) -> pulumi.Output[Optional[bool]]:
-        return pulumi.get(self, "restart_pods")
 
     @property
     @pulumi.getter(name="ruleName")

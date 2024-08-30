@@ -2516,7 +2516,8 @@ class StatefulNodeAzureStrategyArgs:
                  od_windows: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  optimization_windows: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preferred_life_cycle: Optional[pulumi.Input[str]] = None,
-                 revert_to_spot: Optional[pulumi.Input['StatefulNodeAzureStrategyRevertToSpotArgs']] = None):
+                 revert_to_spot: Optional[pulumi.Input['StatefulNodeAzureStrategyRevertToSpotArgs']] = None,
+                 vm_admins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         pulumi.set(__self__, "fallback_to_on_demand", fallback_to_on_demand)
         if availability_vs_cost is not None:
             pulumi.set(__self__, "availability_vs_cost", availability_vs_cost)
@@ -2532,6 +2533,8 @@ class StatefulNodeAzureStrategyArgs:
             pulumi.set(__self__, "preferred_life_cycle", preferred_life_cycle)
         if revert_to_spot is not None:
             pulumi.set(__self__, "revert_to_spot", revert_to_spot)
+        if vm_admins is not None:
+            pulumi.set(__self__, "vm_admins", vm_admins)
 
     @property
     @pulumi.getter(name="fallbackToOnDemand")
@@ -2604,6 +2607,15 @@ class StatefulNodeAzureStrategyArgs:
     @revert_to_spot.setter
     def revert_to_spot(self, value: Optional[pulumi.Input['StatefulNodeAzureStrategyRevertToSpotArgs']]):
         pulumi.set(self, "revert_to_spot", value)
+
+    @property
+    @pulumi.getter(name="vmAdmins")
+    def vm_admins(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "vm_admins")
+
+    @vm_admins.setter
+    def vm_admins(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "vm_admins", value)
 
 
 @pulumi.input_type
