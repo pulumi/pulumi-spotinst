@@ -15,12 +15,21 @@ export interface DataIntegrationS3 {
 
 export interface ElastigroupAzureV3Image {
     customs?: outputs.ElastigroupAzureV3ImageCustom[];
+    galleryImages?: outputs.ElastigroupAzureV3ImageGalleryImage[];
     marketplaces?: outputs.ElastigroupAzureV3ImageMarketplace[];
 }
 
 export interface ElastigroupAzureV3ImageCustom {
     imageName: string;
     resourceGroupName: string;
+}
+
+export interface ElastigroupAzureV3ImageGalleryImage {
+    galleryName: string;
+    imageName: string;
+    resourceGroupName: string;
+    spotAccountId?: string;
+    version: string;
 }
 
 export interface ElastigroupAzureV3ImageMarketplace {

@@ -14,15 +14,19 @@ namespace Pulumi.SpotInst.Outputs
     public sealed class ElastigroupAzureV3Image
     {
         public readonly ImmutableArray<Outputs.ElastigroupAzureV3ImageCustom> Customs;
+        public readonly ImmutableArray<Outputs.ElastigroupAzureV3ImageGalleryImage> GalleryImages;
         public readonly ImmutableArray<Outputs.ElastigroupAzureV3ImageMarketplace> Marketplaces;
 
         [OutputConstructor]
         private ElastigroupAzureV3Image(
             ImmutableArray<Outputs.ElastigroupAzureV3ImageCustom> customs,
 
+            ImmutableArray<Outputs.ElastigroupAzureV3ImageGalleryImage> galleryImages,
+
             ImmutableArray<Outputs.ElastigroupAzureV3ImageMarketplace> marketplaces)
         {
             Customs = customs;
+            GalleryImages = galleryImages;
             Marketplaces = marketplaces;
         }
     }

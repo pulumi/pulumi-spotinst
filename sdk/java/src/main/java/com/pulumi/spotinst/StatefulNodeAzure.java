@@ -98,6 +98,9 @@ import javax.annotation.Nullable;
  *                 .optimizationWindows("Tue:19:46-Tue:20:46")
  *                 .odWindows("Wed:19:46-Wed:21:46")
  *                 .availabilityVsCost(100)
+ *                 .vmAdmins(                
+ *                     "UbuntuUser",
+ *                     "TestUser")
  *                 .revertToSpot(StatefulNodeAzureStrategyRevertToSpotArgs.builder()
  *                     .performAt("timeWindow")
  *                     .build())
@@ -335,6 +338,7 @@ import javax.annotation.Nullable;
  *       * `crg_name` - (Required) The name of the CRG.
  *       * `crg_resource_group_name` - (Required) Azure resource group name
  *       * `crg_should_prioritize` - The desired CRG to utilize ahead of other CRGs in the subscription.
+ *   * `vm_admins` - (Optional) Defines Azure identities that are considered VM admins. If the list is empty, the defined behavior is `NONE`, If the list is null, the defined behavior is `ALL`. This applies if the object is not defined. If an identity contains the string, it will be considered permitted to perform the following actions: Stop VM: VM admins can move the VM to a &#34;stopped (deallocated)&#34; state using the Azure console. If triggered by someone else, it is considered an interruption.
  * 
  * ## Compute
  * 
