@@ -485,6 +485,9 @@
                                 "custom": {
                                     "maxItemsOne": false
                                 },
+                                "gallery_image": {
+                                    "maxItemsOne": false
+                                },
                                 "marketplace": {
                                     "maxItemsOne": false
                                 }
