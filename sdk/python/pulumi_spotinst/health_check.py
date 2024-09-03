@@ -187,6 +187,26 @@ class HealthCheck(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        http_check = spotinst.HealthCheck("http_check",
+            name="sample_health_check",
+            resource_id="sig-123",
+            check={
+                "protocol": "http",
+                "endpoint": "http://endpoint.com",
+                "port": 1337,
+                "interval": 10,
+                "timeout": 10,
+                "healthy": 1,
+                "unhealthy": 1,
+            },
+            proxy_address="http://proxy.com",
+            proxy_port=80)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['HealthCheckCheckArgs', 'HealthCheckCheckArgsDict']] check: Describes the check to execute.
@@ -203,6 +223,26 @@ class HealthCheck(pulumi.CustomResource):
         Provides a Spotinst Health Check resource.
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        http_check = spotinst.HealthCheck("http_check",
+            name="sample_health_check",
+            resource_id="sig-123",
+            check={
+                "protocol": "http",
+                "endpoint": "http://endpoint.com",
+                "port": 1337,
+                "interval": 10,
+                "timeout": 10,
+                "healthy": 1,
+                "unhealthy": 1,
+            },
+            proxy_address="http://proxy.com",
+            proxy_port=80)
+        ```
 
         :param str resource_name: The name of the resource.
         :param HealthCheckArgs args: The arguments to use to populate this resource's properties.

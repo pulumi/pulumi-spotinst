@@ -340,9 +340,9 @@ import javax.annotation.Nullable;
  * 
  * * `os` - (Required, Enum `&#34;Linux&#34;, &#34;Windows&#34;`) Type of operating system.
  * * `vm_sizes` - (Required) Defines the VM sizes to use when launching VMs.
- *     * `od_sizes` - (Required) Available On-Demand sizes.
- *     * `spot_sizes` - (Required) Available Spot-VM sizes.
- *     * `preferred_spot_sizes` - (Optional) Prioritize Spot VM sizes when launching Spot VMs for the group. If set, must be a sublist of compute.vmSizes.spotSizes.
+ *   * `od_sizes` - (Required) Available On-Demand sizes.
+ *   * `spot_sizes` - (Required) Available Spot-VM sizes.
+ *   * `preferred_spot_sizes` - (Optional) Prioritize Spot VM sizes when launching Spot VMs for the group. If set, must be a sublist of compute.vmSizes.spotSizes.
  * * `zones` - (Optional, Enum `&#34;1&#34;, &#34;2&#34;, &#34;3&#34;`) List of Azure Availability Zones in the defined region. If not defined, Virtual machines will be launched regionally.
  * * `preferred_zone` - (Optional, Enum `&#34;1&#34;, &#34;2&#34;, &#34;3&#34;`) The AZ to prioritize when launching VMs. If no markets are available in the Preferred AZ, VMs are launched in the non-preferred AZ. Must be a sublist of compute.zones.
  * * `custom_data` - (Optional) This value will hold the YAML in base64 and will be executed upon VM launch.
@@ -353,6 +353,7 @@ import javax.annotation.Nullable;
  * * `license_type` - (Optional) Specify an existing Azure license type to use when launching new VMs. Valid values for Windows OS: &#34;Windows_Server&#34;, &#34;Windows_Client&#34;, Valid values for Linux OS: &#34;RHEL_BYOS&#34;, &#34;SLES_BYOS&#34;
  * 
  * &lt;a id=&#34;boot_diagnostics&#34;&gt;&lt;/a&gt;
+ * 
  * ## Boot Diagnostics
  * 
  * * `boot_diagnostics`
@@ -361,6 +362,7 @@ import javax.annotation.Nullable;
  *   * `type` - (Optional, Enum `&#34;managed&#34;, &#34;unmanaged&#34;`) Defines the storage type on VM launch in Azure.
  * 
  * &lt;a id=&#34;data_disks&#34;&gt;&lt;/a&gt;
+ * 
  * ## Data Disks
  * 
  * * `data_disk` - (Optional) The definitions of data disks that will be created and attached to the stateful node&#39;s VM.
@@ -398,6 +400,7 @@ import javax.annotation.Nullable;
  *     * `name` - (Required) The name of the custom image.
  * 
  * &lt;a id=&#34;load balancer&#34;&gt;&lt;/a&gt;
+ * 
  * ## Load Balancer
  * 
  * * `load_balancer` - (Optional) Add a load balancer. For Azure Gateway, each Backend Pool is a separate load balancer.
@@ -418,6 +421,7 @@ import javax.annotation.Nullable;
  *   * `password` - (Optional) Password for admin access to Windows VMs. Required for Windows.
  * 
  * &lt;a id=&#34;managed_service_identities&#34;&gt;&lt;/a&gt;
+ * 
  * ## Managed Service Identities
  * 
  * * `managed_service_identities` - (Optional) Add a user-assigned managed identity to the Stateful Node&#39;s VM.
@@ -425,6 +429,7 @@ import javax.annotation.Nullable;
  *   * `resource_group_name` - (Required) The Resource Group that the user-assigned managed identity resides in.
  * 
  * &lt;a id=&#34;proximity_placement_groups&#34;&gt;&lt;/a&gt;
+ * 
  * ## Proximity Placement Groups
  * 
  * * `proximity_placement_groups` - (Optional) Defines the proximity placement group in which the VM will be launched.
@@ -457,6 +462,7 @@ import javax.annotation.Nullable;
  *       * `name` - (Required) Requires valid resource group name.
  * 
  * &lt;a id=&#34;os_disk&#34;&gt;&lt;/a&gt;
+ * 
  * ## OS Disk
  * 
  * * `os_disk` - (Optional) Specify OS disk specification other than default.
@@ -479,11 +485,11 @@ import javax.annotation.Nullable;
  * ## Security
  * 
  * * `security` - (Optional) Specifies the Security related profile settings for the virtual machine.
- *     * `secure_boot_enabled` - (Optional) Specifies whether secure boot should be enabled on the virtual machine.
- *     * `security_type` - (Optional) Enum: `&#34;Standard&#34;, &#34;TrustedLaunch&#34;, &#34;ConfidentialVM&#34;` Security type refers to the different security features of a virtual machine. Security features like Trusted launch virtual machines help to improve the security of Azure generation 2 virtual machines.
- *     * `vtpm_enabled` - (Optional) Specifies whether vTPM should be enabled on the virtual machine.
- *     * `encryption_at_host` - (Optional) Enables the Host Encryption for the virtual machine. The Encryption at host will be disabled unless this property is set to true for the resource.
- *     * `confidential_os_disk_encryption` - (Optional) Confidential disk encryption binds the disk encryption keys to the VM&#39;s TPM, ensuring VM-only access. The security type must be &#34;ConfidentialVM&#34; to enable defining this preference as “true”.
+ *   * `secure_boot_enabled` - (Optional) Specifies whether secure boot should be enabled on the virtual machine.
+ *   * `security_type` - (Optional) Enum: `&#34;Standard&#34;, &#34;TrustedLaunch&#34;, &#34;ConfidentialVM&#34;` Security type refers to the different security features of a virtual machine. Security features like Trusted launch virtual machines help to improve the security of Azure generation 2 virtual machines.
+ *   * `vtpm_enabled` - (Optional) Specifies whether vTPM should be enabled on the virtual machine.
+ *   * `encryption_at_host` - (Optional) Enables the Host Encryption for the virtual machine. The Encryption at host will be disabled unless this property is set to true for the resource.
+ *   * `confidential_os_disk_encryption` - (Optional) Confidential disk encryption binds the disk encryption keys to the VM&#39;s TPM, ensuring VM-only access. The security type must be &#34;ConfidentialVM&#34; to enable defining this preference as “true”.
  * 
  * ## Tag
  * 
@@ -508,6 +514,7 @@ import javax.annotation.Nullable;
  * * `should_persist_network` - (Required) Should persist network.
  * 
  * &lt;a id=&#34;scheduling_tasks&#34;&gt;&lt;/a&gt;
+ * 
  * ## Scheduling Tasks
  * 
  * * `scheduling_task` - (Optional) Scheduling settings object for stateful node.
@@ -524,6 +531,7 @@ import javax.annotation.Nullable;
  * ***
  * 
  * &lt;a id=&#34;attach_data_disk&#34;&gt;&lt;/a&gt;
+ * 
  * ## Attach Data Disk
  * 
  * * `attach_data_disk` - (Optional) Create a new data disk and attach it to the stateful node.
@@ -535,6 +543,7 @@ import javax.annotation.Nullable;
  *   * `lun` - (Optional, Default `&#34;orginal&#34;`) The LUN of the data disk. If not defined, the LUN will be set in order.
  * 
  * &lt;a id=&#34;detach_data_disk&#34;&gt;&lt;/a&gt;
+ * 
  * ## Detach Data Disk
  * 
  * * `detach_data_disk` - (Optional) Detach a data disk from a stateful node.
@@ -544,12 +553,14 @@ import javax.annotation.Nullable;
  *   * `ttl_in_hours` - (Required, Default `&#34;0&#34;`) Hours to keep the disk alive before deletion.
  * 
  * &lt;a id=&#34;update_state&#34;&gt;&lt;/a&gt;
+ * 
  * ## Update State
  * 
  * * `update_state` - (Optional) Update the stateful node state.
  *   * `state` - (Required, Enum `&#34;pause&#34;, &#34;resume&#34;, &#34;recycle&#34;`) New state for the stateful node.
  * 
  * &lt;a id=&#34;import_vm&#34;&gt;&lt;/a&gt;
+ * 
  * ## Import VM
  * 
  * * `import_vm` - (Optional) Import an Azure VM and create a stateful node by providing a node configuration.
@@ -561,16 +572,16 @@ import javax.annotation.Nullable;
  * ## Deallocation Config
  * 
  * * `delete` - (Required) Specify deallocation parameters for stateful node deletion.
- *     * `should_terminate_vm` - (Required) Indicates whether to delete the stateful node&#39;s VM.
- *     * `network_should_deallocate` - (Required) Indicates whether to delete the stateful node&#39;s network resources.
- *     * `network_ttl_in_hours` - (Optional, Default: 96) Hours to keep the network resource alive before deletion.
- *     * `disk_should_deallocate` - (Required) Indicates whether to delete the stateful node&#39;s disk resources.
- *     * `disk_ttl_in_hours` - (Optional, Default: 96) Hours to keep the disk resource alive before deletion.
- *     * `snapshot_should_deallocate` - (Required) Indicates whether to delete the stateful node&#39;s snapshot resources.
- *     * `snapshot_ttl_in_hours` - (Optional, Default: 96) Hours to keep the snapshots alive before deletion.
- *     * `public_ip_should_deallocate` - (Required) Indicates whether to delete the stateful node&#39;s public ip resources.
- *     * `public_ip_ttl_in_hours` - (Optional, Default: 96) Hours to keep the public ip alive before deletion.
- *     * `should_deregister_from_lb` - (Optional, Default: true) Indicates whether to deregister the stateful node&#39;s VM from any type of load balancer. Can be changed to false only when shouldTerminateVms is &#39;false&#39;.
+ *   * `should_terminate_vm` - (Required) Indicates whether to delete the stateful node&#39;s VM.
+ *   * `network_should_deallocate` - (Required) Indicates whether to delete the stateful node&#39;s network resources.
+ *   * `network_ttl_in_hours` - (Optional, Default: 96) Hours to keep the network resource alive before deletion.
+ *   * `disk_should_deallocate` - (Required) Indicates whether to delete the stateful node&#39;s disk resources.
+ *   * `disk_ttl_in_hours` - (Optional, Default: 96) Hours to keep the disk resource alive before deletion.
+ *   * `snapshot_should_deallocate` - (Required) Indicates whether to delete the stateful node&#39;s snapshot resources.
+ *   * `snapshot_ttl_in_hours` - (Optional, Default: 96) Hours to keep the snapshots alive before deletion.
+ *   * `public_ip_should_deallocate` - (Required) Indicates whether to delete the stateful node&#39;s public ip resources.
+ *   * `public_ip_ttl_in_hours` - (Optional, Default: 96) Hours to keep the public ip alive before deletion.
+ *   * `should_deregister_from_lb` - (Optional, Default: true) Indicates whether to deregister the stateful node&#39;s VM from any type of load balancer. Can be changed to false only when shouldTerminateVms is &#39;false&#39;.
  * 
  */
 @ResourceType(type="spotinst:index/statefulNodeAzure:StatefulNodeAzure")

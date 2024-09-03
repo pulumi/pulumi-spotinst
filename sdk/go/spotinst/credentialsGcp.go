@@ -18,7 +18,7 @@ type CredentialsGcp struct {
 
 	// The ID of the account associated with your token.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// .
+	// > .
 	AuthProviderX509CertUrl pulumi.StringOutput `pulumi:"authProviderX509CertUrl"`
 	// Authentication uri.
 	AuthUri pulumi.StringOutput `pulumi:"authUri"`
@@ -105,7 +105,7 @@ func GetCredentialsGcp(ctx *pulumi.Context,
 type credentialsGcpState struct {
 	// The ID of the account associated with your token.
 	AccountId *string `pulumi:"accountId"`
-	// .
+	// > .
 	AuthProviderX509CertUrl *string `pulumi:"authProviderX509CertUrl"`
 	// Authentication uri.
 	AuthUri *string `pulumi:"authUri"`
@@ -130,7 +130,7 @@ type credentialsGcpState struct {
 type CredentialsGcpState struct {
 	// The ID of the account associated with your token.
 	AccountId pulumi.StringPtrInput
-	// .
+	// > .
 	AuthProviderX509CertUrl pulumi.StringPtrInput
 	// Authentication uri.
 	AuthUri pulumi.StringPtrInput
@@ -159,7 +159,7 @@ func (CredentialsGcpState) ElementType() reflect.Type {
 type credentialsGcpArgs struct {
 	// The ID of the account associated with your token.
 	AccountId string `pulumi:"accountId"`
-	// .
+	// > .
 	AuthProviderX509CertUrl string `pulumi:"authProviderX509CertUrl"`
 	// Authentication uri.
 	AuthUri string `pulumi:"authUri"`
@@ -185,7 +185,7 @@ type credentialsGcpArgs struct {
 type CredentialsGcpArgs struct {
 	// The ID of the account associated with your token.
 	AccountId pulumi.StringInput
-	// .
+	// > .
 	AuthProviderX509CertUrl pulumi.StringInput
 	// Authentication uri.
 	AuthUri pulumi.StringInput
@@ -299,7 +299,7 @@ func (o CredentialsGcpOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *CredentialsGcp) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// .
+// > .
 func (o CredentialsGcpOutput) AuthProviderX509CertUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *CredentialsGcp) pulumi.StringOutput { return v.AuthProviderX509CertUrl }).(pulumi.StringOutput)
 }

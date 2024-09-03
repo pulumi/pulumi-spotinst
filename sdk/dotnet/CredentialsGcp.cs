@@ -22,7 +22,7 @@ namespace Pulumi.SpotInst
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// .
+        /// &gt;.
         /// </summary>
         [Output("authProviderX509CertUrl")]
         public Output<string> AuthProviderX509CertUrl { get; private set; } = null!;
@@ -134,7 +134,7 @@ namespace Pulumi.SpotInst
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// .
+        /// &gt;.
         /// </summary>
         [Input("authProviderX509CertUrl", required: true)]
         public Input<string> AuthProviderX509CertUrl { get; set; } = null!;
@@ -208,7 +208,7 @@ namespace Pulumi.SpotInst
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// .
+        /// &gt;.
         /// </summary>
         [Input("authProviderX509CertUrl")]
         public Input<string>? AuthProviderX509CertUrl { get; set; }

@@ -111,7 +111,7 @@ class ElastigroupBackendServiceNamedPortArgs:
                  name: pulumi.Input[str],
                  ports: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param pulumi.Input[str] name: The name of the port.
+        :param pulumi.Input[str] name: The group name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: A list of ports.
                
                Usage:
@@ -123,7 +123,7 @@ class ElastigroupBackendServiceNamedPortArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The name of the port.
+        The group name.
         """
         return pulumi.get(self, "name")
 

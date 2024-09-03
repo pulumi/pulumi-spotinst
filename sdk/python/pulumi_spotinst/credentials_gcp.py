@@ -28,7 +28,7 @@ class CredentialsGcpArgs:
         """
         The set of arguments for constructing a CredentialsGcp resource.
         :param pulumi.Input[str] account_id: The ID of the account associated with your token.
-        :param pulumi.Input[str] auth_provider_x509_cert_url: .
+        :param pulumi.Input[str] auth_provider_x509_cert_url: >.
         :param pulumi.Input[str] auth_uri: Authentication uri.
         :param pulumi.Input[str] client_email: Email associated with service account.
         :param pulumi.Input[str] client_id: Client ID of service account.
@@ -67,7 +67,7 @@ class CredentialsGcpArgs:
     @pulumi.getter(name="authProviderX509CertUrl")
     def auth_provider_x509_cert_url(self) -> pulumi.Input[str]:
         """
-        .
+        >.
         """
         return pulumi.get(self, "auth_provider_x509_cert_url")
 
@@ -201,7 +201,7 @@ class _CredentialsGcpState:
         """
         Input properties used for looking up and filtering CredentialsGcp resources.
         :param pulumi.Input[str] account_id: The ID of the account associated with your token.
-        :param pulumi.Input[str] auth_provider_x509_cert_url: .
+        :param pulumi.Input[str] auth_provider_x509_cert_url: >.
         :param pulumi.Input[str] auth_uri: Authentication uri.
         :param pulumi.Input[str] client_email: Email associated with service account.
         :param pulumi.Input[str] client_id: Client ID of service account.
@@ -251,7 +251,7 @@ class _CredentialsGcpState:
     @pulumi.getter(name="authProviderX509CertUrl")
     def auth_provider_x509_cert_url(self) -> Optional[pulumi.Input[str]]:
         """
-        .
+        >.
         """
         return pulumi.get(self, "auth_provider_x509_cert_url")
 
@@ -391,7 +391,7 @@ class CredentialsGcp(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The ID of the account associated with your token.
-        :param pulumi.Input[str] auth_provider_x509_cert_url: .
+        :param pulumi.Input[str] auth_provider_x509_cert_url: >.
         :param pulumi.Input[str] auth_uri: Authentication uri.
         :param pulumi.Input[str] client_email: Email associated with service account.
         :param pulumi.Input[str] client_id: Client ID of service account.
@@ -508,7 +508,7 @@ class CredentialsGcp(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The ID of the account associated with your token.
-        :param pulumi.Input[str] auth_provider_x509_cert_url: .
+        :param pulumi.Input[str] auth_provider_x509_cert_url: >.
         :param pulumi.Input[str] auth_uri: Authentication uri.
         :param pulumi.Input[str] client_email: Email associated with service account.
         :param pulumi.Input[str] client_id: Client ID of service account.
@@ -548,7 +548,7 @@ class CredentialsGcp(pulumi.CustomResource):
     @pulumi.getter(name="authProviderX509CertUrl")
     def auth_provider_x509_cert_url(self) -> pulumi.Output[str]:
         """
-        .
+        >.
         """
         return pulumi.get(self, "auth_provider_x509_cert_url")
 

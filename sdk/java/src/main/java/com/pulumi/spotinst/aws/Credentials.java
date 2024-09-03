@@ -71,14 +71,14 @@ public class Credentials extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     /**
-     * Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - https://docs.spot.io/administration/api/spot-policy-in-aws
+     * Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - &lt;https://docs.spot.io/administration/api/spot-policy-in-aws&gt;
      * 
      */
     @Export(name="iamrole", refs={String.class}, tree="[0]")
     private Output<String> iamrole;
 
     /**
-     * @return Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - https://docs.spot.io/administration/api/spot-policy-in-aws
+     * @return Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - &lt;https://docs.spot.io/administration/api/spot-policy-in-aws&gt;
      * 
      */
     public Output<String> iamrole() {

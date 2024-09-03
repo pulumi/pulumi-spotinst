@@ -51,6 +51,143 @@ import (
 // ```
 //
 // ## Detailed Ocean Cluster Creation Usage Example - using all available parameters with sample values
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/azure"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := azure.NewOceanNp(ctx, "example", &azure.OceanNpArgs{
+//				Name:                               pulumi.String("test"),
+//				AksRegion:                          pulumi.String("eastus"),
+//				AksClusterName:                     pulumi.String("test-cluster"),
+//				AksInfrastructureResourceGroupName: pulumi.String("MC_TestResourceGroup_test-cluster_eastus"),
+//				AksResourceGroupName:               pulumi.String("TestResourceGroup"),
+//				ControllerClusterId:                pulumi.String("test-123124"),
+//				Autoscaler: &azure.OceanNpAutoscalerArgs{
+//					AutoscaleIsEnabled: pulumi.Bool(true),
+//					ResourceLimits: &azure.OceanNpAutoscalerResourceLimitsArgs{
+//						MaxVcpu:      pulumi.Int(750),
+//						MaxMemoryGib: pulumi.Int(1500),
+//					},
+//					AutoscaleDown: &azure.OceanNpAutoscalerAutoscaleDownArgs{
+//						MaxScaleDownPercentage: pulumi.Int(30),
+//					},
+//					AutoscaleHeadroom: &azure.OceanNpAutoscalerAutoscaleHeadroomArgs{
+//						Automatic: &azure.OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs{
+//							IsEnabled:  pulumi.Bool(true),
+//							Percentage: pulumi.Int(5),
+//						},
+//					},
+//				},
+//				Health: &azure.OceanNpHealthArgs{
+//					GracePeriod: pulumi.Int(600),
+//				},
+//				Headrooms: azure.OceanNpHeadroomArray{
+//					&azure.OceanNpHeadroomArgs{
+//						CpuPerUnit:    pulumi.Int(1024),
+//						MemoryPerUnit: pulumi.Int(512),
+//						GpuPerUnit:    pulumi.Int(0),
+//						NumOfUnits:    pulumi.Int(2),
+//					},
+//				},
+//				AvailabilityZones: pulumi.StringArray{
+//					pulumi.String("1"),
+//					pulumi.String("2"),
+//					pulumi.String("3"),
+//				},
+//				Labels: pulumi.StringMap{
+//					"key":   pulumi.String("env"),
+//					"value": pulumi.String("test"),
+//				},
+//				MinCount:           pulumi.Int(1),
+//				MaxCount:           pulumi.Int(100),
+//				MaxPodsPerNode:     pulumi.Int(30),
+//				EnableNodePublicIp: pulumi.Bool(true),
+//				OsDiskSizeGb:       pulumi.Int(30),
+//				OsDiskType:         pulumi.String("Managed"),
+//				OsType:             pulumi.String("Windows"),
+//				OsSku:              pulumi.String("Windows2022"),
+//				KubernetesVersion:  pulumi.String("1.26"),
+//				PodSubnetIds: pulumi.StringArray{
+//					pulumi.String("/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default"),
+//				},
+//				VnetSubnetIds: pulumi.StringArray{
+//					pulumi.String("/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default"),
+//				},
+//				LinuxOsConfigs: azure.OceanNpLinuxOsConfigArray{
+//					&azure.OceanNpLinuxOsConfigArgs{
+//						Sysctls: azure.OceanNpLinuxOsConfigSysctlArray{
+//							&azure.OceanNpLinuxOsConfigSysctlArgs{
+//								VmMaxMapCount: pulumi.Int(79550),
+//							},
+//						},
+//					},
+//				},
+//				SpotPercentage:     pulumi.Int(50),
+//				FallbackToOndemand: pulumi.Bool(true),
+//				Taints: azure.OceanNpTaintArray{
+//					&azure.OceanNpTaintArgs{
+//						Key:    pulumi.String("taintKey"),
+//						Value:  pulumi.String("taintValue"),
+//						Effect: pulumi.String("NoSchedule"),
+//					},
+//				},
+//				Tags: pulumi.StringMap{
+//					"tagKey":   pulumi.String("env"),
+//					"tagValue": pulumi.String("staging"),
+//				},
+//				Filters: &azure.OceanNpFiltersArgs{
+//					MinVcpu:      pulumi.Int(2),
+//					MaxVcpu:      pulumi.Int(16),
+//					MinMemoryGib: pulumi.Float64(8),
+//					MaxMemoryGib: pulumi.Float64(128),
+//					Architectures: pulumi.StringArray{
+//						pulumi.String("x86_64"),
+//						pulumi.String("arm64"),
+//					},
+//					Series: pulumi.StringArray{
+//						pulumi.String("D v3"),
+//						pulumi.String("Dds_v4"),
+//						pulumi.String("Dsv2"),
+//					},
+//					ExcludeSeries: pulumi.StringArray{
+//						pulumi.String("Av2"),
+//						pulumi.String("A"),
+//						pulumi.String("Bs"),
+//						pulumi.String("D"),
+//						pulumi.String("E"),
+//					},
+//					AcceleratedNetworking: pulumi.String("Enabled"),
+//					DiskPerformance:       pulumi.String("Premium"),
+//					MinGpu:                pulumi.Float64(1),
+//					MaxGpu:                pulumi.Float64(2),
+//					MinNics:               pulumi.Int(1),
+//					VmTypes: pulumi.StringArray{
+//						pulumi.String("generalPurpose"),
+//						pulumi.String("GPU"),
+//					},
+//					MinDisk: pulumi.Int(1),
+//					GpuTypes: pulumi.StringArray{
+//						pulumi.String("nvidia-tesla-t4"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type OceanNp struct {
 	pulumi.CustomResourceState
 

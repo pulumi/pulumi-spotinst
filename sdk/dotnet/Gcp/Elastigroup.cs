@@ -223,7 +223,7 @@ namespace Pulumi.SpotInst.Gcp
         public Output<string?> HealthCheckType { get; private set; } = null!;
 
         /// <summary>
-        /// Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
+        /// Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations:
         /// * A maximal length of 25 characters.
         /// * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
         /// </summary>
@@ -477,7 +477,7 @@ namespace Pulumi.SpotInst.Gcp
         public Input<string>? HealthCheckType { get; set; }
 
         /// <summary>
-        /// Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
+        /// Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations:
         /// * A maximal length of 25 characters.
         /// * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
         /// </summary>
@@ -761,7 +761,7 @@ namespace Pulumi.SpotInst.Gcp
         public Input<string>? HealthCheckType { get; set; }
 
         /// <summary>
-        /// Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
+        /// Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations:
         /// * A maximal length of 25 characters.
         /// * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
         /// </summary>

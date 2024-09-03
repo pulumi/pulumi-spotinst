@@ -83,7 +83,7 @@ export class Subscription extends pulumi.CustomResource {
      */
     public readonly format!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`. 
+     * The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`.
      * The following values are deprecated: `"http"` , `"https"`
      * You can use the generic `"web"` protocol instead.
      * `"aws-sns"` is only supported with AWS provider
@@ -167,7 +167,7 @@ export interface SubscriptionState {
      */
     format?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`. 
+     * The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`.
      * The following values are deprecated: `"http"` , `"https"`
      * You can use the generic `"web"` protocol instead.
      * `"aws-sns"` is only supported with AWS provider
@@ -209,7 +209,7 @@ export interface SubscriptionArgs {
      */
     format?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`. 
+     * The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`.
      * The following values are deprecated: `"http"` , `"https"`
      * You can use the generic `"web"` protocol instead.
      * `"aws-sns"` is only supported with AWS provider

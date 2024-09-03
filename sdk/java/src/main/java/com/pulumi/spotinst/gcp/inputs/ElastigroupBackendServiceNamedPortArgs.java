@@ -16,14 +16,14 @@ public final class ElastigroupBackendServiceNamedPortArgs extends com.pulumi.res
     public static final ElastigroupBackendServiceNamedPortArgs Empty = new ElastigroupBackendServiceNamedPortArgs();
 
     /**
-     * The name of the port.
+     * The group name.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the port.
+     * @return The group name.
      * 
      */
     public Output<String> name() {
@@ -75,7 +75,7 @@ public final class ElastigroupBackendServiceNamedPortArgs extends com.pulumi.res
         }
 
         /**
-         * @param name The name of the port.
+         * @param name The group name.
          * 
          * @return builder
          * 
@@ -86,7 +86,7 @@ public final class ElastigroupBackendServiceNamedPortArgs extends com.pulumi.res
         }
 
         /**
-         * @param name The name of the port.
+         * @param name The group name.
          * 
          * @return builder
          * 

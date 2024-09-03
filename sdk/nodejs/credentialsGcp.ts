@@ -40,7 +40,7 @@ export class CredentialsGcp extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * .
+     * >.
      */
     public readonly authProviderX509CertUrl!: pulumi.Output<string>;
     /**
@@ -165,7 +165,7 @@ export interface CredentialsGcpState {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * .
+     * >.
      */
     authProviderX509CertUrl?: pulumi.Input<string>;
     /**
@@ -215,7 +215,7 @@ export interface CredentialsGcpArgs {
      */
     accountId: pulumi.Input<string>;
     /**
-     * .
+     * >.
      */
     authProviderX509CertUrl: pulumi.Input<string>;
     /**

@@ -31,14 +31,14 @@ public final class CredentialsGcpState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * .
+     * &gt; .
      * 
      */
     @Import(name="authProviderX509CertUrl")
     private @Nullable Output<String> authProviderX509CertUrl;
 
     /**
-     * @return .
+     * @return &gt;.
      * 
      */
     public Optional<Output<String>> authProviderX509CertUrl() {
@@ -236,7 +236,7 @@ public final class CredentialsGcpState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param authProviderX509CertUrl .
+         * @param authProviderX509CertUrl &gt;.
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class CredentialsGcpState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param authProviderX509CertUrl .
+         * @param authProviderX509CertUrl &gt;.
          * 
          * @return builder
          * 

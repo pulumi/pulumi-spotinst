@@ -31,14 +31,14 @@ public final class CredentialsState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - https://docs.spot.io/administration/api/spot-policy-in-aws
+     * Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - &lt;https://docs.spot.io/administration/api/spot-policy-in-aws&gt;
      * 
      */
     @Import(name="iamrole")
     private @Nullable Output<String> iamrole;
 
     /**
-     * @return Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - https://docs.spot.io/administration/api/spot-policy-in-aws
+     * @return Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - &lt;https://docs.spot.io/administration/api/spot-policy-in-aws&gt;
      * 
      */
     public Optional<Output<String>> iamrole() {
@@ -92,7 +92,7 @@ public final class CredentialsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param iamrole Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - https://docs.spot.io/administration/api/spot-policy-in-aws
+         * @param iamrole Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - &lt;https://docs.spot.io/administration/api/spot-policy-in-aws&gt;
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class CredentialsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param iamrole Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - https://docs.spot.io/administration/api/spot-policy-in-aws
+         * @param iamrole Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - &lt;https://docs.spot.io/administration/api/spot-policy-in-aws&gt;
          * 
          * @return builder
          * 

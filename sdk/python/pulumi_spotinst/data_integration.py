@@ -139,6 +139,15 @@ class DataIntegration(pulumi.CustomResource):
                  status: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        layout: "spotinst"
+        page_title: "Spotinst: data_integration"
+        subcategory: "Data Integration"
+        description: |-
+        Manages an Data Integration resource.
+        <!-- yaml: line 6: could not find expected ':' -->
+
+        # spotinst\\_data\\_integration
+
         Provides a Spotinst Data Integration resource.
 
         ## Example Usage
@@ -170,6 +179,15 @@ class DataIntegration(pulumi.CustomResource):
                  args: Optional[DataIntegrationArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        layout: "spotinst"
+        page_title: "Spotinst: data_integration"
+        subcategory: "Data Integration"
+        description: |-
+        Manages an Data Integration resource.
+        <!-- yaml: line 6: could not find expected ':' -->
+
+        # spotinst\\_data\\_integration
+
         Provides a Spotinst Data Integration resource.
 
         ## Example Usage

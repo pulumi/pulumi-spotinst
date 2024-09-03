@@ -42,7 +42,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - https://docs.spot.io/administration/api/spot-policy-in-aws
+        /// Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - &lt;https://docs.spot.io/administration/api/spot-policy-in-aws&gt;
         /// </summary>
         [Output("iamrole")]
         public Output<string> Iamrole { get; private set; } = null!;
@@ -100,7 +100,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - https://docs.spot.io/administration/api/spot-policy-in-aws
+        /// Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - &lt;https://docs.spot.io/administration/api/spot-policy-in-aws&gt;
         /// </summary>
         [Input("iamrole", required: true)]
         public Input<string> Iamrole { get; set; } = null!;
@@ -120,7 +120,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - https://docs.spot.io/administration/api/spot-policy-in-aws
+        /// Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - &lt;https://docs.spot.io/administration/api/spot-policy-in-aws&gt;
         /// </summary>
         [Input("iamrole")]
         public Input<string>? Iamrole { get; set; }
