@@ -16,6 +16,15 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * layout: &#34;spotinst&#34;
+ * page_title: &#34;Spotinst: data_integration&#34;
+ * subcategory: &#34;Data Integration&#34;
+ * description: |-
+ * Manages an Data Integration resource.
+ * &lt;!-- yaml: line 6: could not find expected &#39;:&#39; --&gt;
+ * 
+ * # spotinst\_data\_integration
+ * 
  * Provides a Spotinst Data Integration resource.
  * 
  * ## Example Usage

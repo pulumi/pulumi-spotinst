@@ -30,14 +30,14 @@ public final class CredentialsGcpArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * .
+     * &gt; .
      * 
      */
     @Import(name="authProviderX509CertUrl", required=true)
     private Output<String> authProviderX509CertUrl;
 
     /**
-     * @return .
+     * @return &gt;.
      * 
      */
     public Output<String> authProviderX509CertUrl() {
@@ -235,7 +235,7 @@ public final class CredentialsGcpArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param authProviderX509CertUrl .
+         * @param authProviderX509CertUrl &gt;.
          * 
          * @return builder
          * 
@@ -246,7 +246,7 @@ public final class CredentialsGcpArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param authProviderX509CertUrl .
+         * @param authProviderX509CertUrl &gt;.
          * 
          * @return builder
          * 

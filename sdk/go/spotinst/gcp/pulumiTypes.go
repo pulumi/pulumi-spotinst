@@ -138,7 +138,7 @@ func (o ElastigroupBackendServiceArrayOutput) Index(i pulumi.IntInput) Elastigro
 }
 
 type ElastigroupBackendServiceNamedPort struct {
-	// The name of the port.
+	// The group name.
 	Name string `pulumi:"name"`
 	// A list of ports.
 	//
@@ -158,7 +158,7 @@ type ElastigroupBackendServiceNamedPortInput interface {
 }
 
 type ElastigroupBackendServiceNamedPortArgs struct {
-	// The name of the port.
+	// The group name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// A list of ports.
 	//
@@ -217,7 +217,7 @@ func (o ElastigroupBackendServiceNamedPortOutput) ToElastigroupBackendServiceNam
 	return o
 }
 
-// The name of the port.
+// The group name.
 func (o ElastigroupBackendServiceNamedPortOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupBackendServiceNamedPort) string { return v.Name }).(pulumi.StringOutput)
 }

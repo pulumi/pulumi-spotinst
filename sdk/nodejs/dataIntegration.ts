@@ -7,6 +7,15 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * layout: "spotinst"
+ * page_title: "Spotinst: dataIntegration"
+ * subcategory: "Data Integration"
+ * description: |-
+ * Manages an Data Integration resource.
+ * <!-- yaml: line 6: could not find expected ':' -->
+ *
+ * # spotinst\_data\_integration
+ *
  * Provides a Spotinst Data Integration resource.
  *
  * ## Example Usage

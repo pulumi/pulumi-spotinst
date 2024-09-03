@@ -53,7 +53,7 @@ export class Credentials extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - https://docs.spot.io/administration/api/spot-policy-in-aws
+     * Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - <https://docs.spot.io/administration/api/spot-policy-in-aws>
      */
     public readonly iamrole!: pulumi.Output<string>;
 
@@ -97,7 +97,7 @@ export interface CredentialsState {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - https://docs.spot.io/administration/api/spot-policy-in-aws
+     * Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - <https://docs.spot.io/administration/api/spot-policy-in-aws>
      */
     iamrole?: pulumi.Input<string>;
 }
@@ -111,7 +111,7 @@ export interface CredentialsArgs {
      */
     accountId: pulumi.Input<string>;
     /**
-     * Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - https://docs.spot.io/administration/api/spot-policy-in-aws
+     * Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - <https://docs.spot.io/administration/api/spot-policy-in-aws>
      */
     iamrole: pulumi.Input<string>;
 }

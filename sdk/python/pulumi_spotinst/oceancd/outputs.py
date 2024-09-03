@@ -867,7 +867,7 @@ class RolloutSpecTrafficNginx(dict):
                  nginx_annotation_prefix: Optional[str] = None):
         """
         :param str stable_ingress: Refers to the name of an `Ingress` resource in the same namespace as the `SpotDeployment`.
-        :param 'RolloutSpecTrafficNginxAdditionalIngressAnnotationArgs' additional_ingress_annotation: Provides additional features to add to the canary ingress (such as routing by header, cookie, etc). You can add these Kubernetes annotations to specific Ingress objects to customize their behavior. Above are found examples of accepted k8s keys.For the full list of supported keys, you may reach the following documentation - https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#canary.
+        :param 'RolloutSpecTrafficNginxAdditionalIngressAnnotationArgs' additional_ingress_annotation: Provides additional features to add to the canary ingress (such as routing by header, cookie, etc). You can add these Kubernetes annotations to specific Ingress objects to customize their behavior. Above are found examples of accepted k8s keys.For the full list of supported keys, you may reach the following documentation - <https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#canary>.
         :param str nginx_annotation_prefix: Has to match the configured annotation prefix on the Nginx ingress controller.
         """
         pulumi.set(__self__, "stable_ingress", stable_ingress)
@@ -888,7 +888,7 @@ class RolloutSpecTrafficNginx(dict):
     @pulumi.getter(name="additionalIngressAnnotation")
     def additional_ingress_annotation(self) -> Optional['outputs.RolloutSpecTrafficNginxAdditionalIngressAnnotation']:
         """
-        Provides additional features to add to the canary ingress (such as routing by header, cookie, etc). You can add these Kubernetes annotations to specific Ingress objects to customize their behavior. Above are found examples of accepted k8s keys.For the full list of supported keys, you may reach the following documentation - https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#canary.
+        Provides additional features to add to the canary ingress (such as routing by header, cookie, etc). You can add these Kubernetes annotations to specific Ingress objects to customize their behavior. Above are found examples of accepted k8s keys.For the full list of supported keys, you may reach the following documentation - <https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#canary>.
         """
         return pulumi.get(self, "additional_ingress_annotation")
 

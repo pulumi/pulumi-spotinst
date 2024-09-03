@@ -19,7 +19,7 @@ class CredentialsArgs:
         """
         The set of arguments for constructing a Credentials resource.
         :param pulumi.Input[str] account_id: The ID of the account associated with your token.
-        :param pulumi.Input[str] iamrole: Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - https://docs.spot.io/administration/api/spot-policy-in-aws
+        :param pulumi.Input[str] iamrole: Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - <https://docs.spot.io/administration/api/spot-policy-in-aws>
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "iamrole", iamrole)
@@ -40,7 +40,7 @@ class CredentialsArgs:
     @pulumi.getter
     def iamrole(self) -> pulumi.Input[str]:
         """
-        Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - https://docs.spot.io/administration/api/spot-policy-in-aws
+        Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - <https://docs.spot.io/administration/api/spot-policy-in-aws>
         """
         return pulumi.get(self, "iamrole")
 
@@ -57,7 +57,7 @@ class _CredentialsState:
         """
         Input properties used for looking up and filtering Credentials resources.
         :param pulumi.Input[str] account_id: The ID of the account associated with your token.
-        :param pulumi.Input[str] iamrole: Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - https://docs.spot.io/administration/api/spot-policy-in-aws
+        :param pulumi.Input[str] iamrole: Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - <https://docs.spot.io/administration/api/spot-policy-in-aws>
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -80,7 +80,7 @@ class _CredentialsState:
     @pulumi.getter
     def iamrole(self) -> Optional[pulumi.Input[str]]:
         """
-        Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - https://docs.spot.io/administration/api/spot-policy-in-aws
+        Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - <https://docs.spot.io/administration/api/spot-policy-in-aws>
         """
         return pulumi.get(self, "iamrole")
 
@@ -115,7 +115,7 @@ class Credentials(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The ID of the account associated with your token.
-        :param pulumi.Input[str] iamrole: Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - https://docs.spot.io/administration/api/spot-policy-in-aws
+        :param pulumi.Input[str] iamrole: Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - <https://docs.spot.io/administration/api/spot-policy-in-aws>
         """
         ...
     @overload
@@ -190,7 +190,7 @@ class Credentials(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The ID of the account associated with your token.
-        :param pulumi.Input[str] iamrole: Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - https://docs.spot.io/administration/api/spot-policy-in-aws
+        :param pulumi.Input[str] iamrole: Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - <https://docs.spot.io/administration/api/spot-policy-in-aws>
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -212,7 +212,7 @@ class Credentials(pulumi.CustomResource):
     @pulumi.getter
     def iamrole(self) -> pulumi.Output[str]:
         """
-        Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - https://docs.spot.io/administration/api/spot-policy-in-aws
+        Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - <https://docs.spot.io/administration/api/spot-policy-in-aws>
         """
         return pulumi.get(self, "iamrole")
 

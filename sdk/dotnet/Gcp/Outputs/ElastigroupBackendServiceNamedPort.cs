@@ -14,7 +14,7 @@ namespace Pulumi.SpotInst.Gcp.Outputs
     public sealed class ElastigroupBackendServiceNamedPort
     {
         /// <summary>
-        /// The name of the port.
+        /// The group name.
         /// </summary>
         public readonly string Name;
         /// <summary>

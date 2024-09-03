@@ -117,7 +117,7 @@ class ElastigroupBackendServiceNamedPort(dict):
                  name: str,
                  ports: Sequence[str]):
         """
-        :param str name: The name of the port.
+        :param str name: The group name.
         :param Sequence[str] ports: A list of ports.
                
                Usage:
@@ -129,7 +129,7 @@ class ElastigroupBackendServiceNamedPort(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the port.
+        The group name.
         """
         return pulumi.get(self, "name")
 

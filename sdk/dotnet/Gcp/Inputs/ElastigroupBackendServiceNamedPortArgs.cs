@@ -13,7 +13,7 @@ namespace Pulumi.SpotInst.Gcp.Inputs
     public sealed class ElastigroupBackendServiceNamedPortArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the port.
+        /// The group name.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

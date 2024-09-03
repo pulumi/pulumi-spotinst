@@ -10,6 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst
 {
     /// <summary>
+    /// layout: "spotinst"
+    /// page_title: "Spotinst: data_integration"
+    /// subcategory: "Data Integration"
+    /// description: |-
+    /// Manages an Data Integration resource.
+    /// &lt;!-- yaml: line 6: could not find expected ':' --&gt;
+    /// 
+    /// # spotinst\_data\_integration
+    /// 
     /// Provides a Spotinst Data Integration resource.
     /// 
     /// ## Example Usage

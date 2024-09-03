@@ -247,7 +247,7 @@ export class Elastigroup extends pulumi.CustomResource {
      */
     public readonly imageId!: pulumi.Output<string | undefined>;
     /**
-     * An array of image objects. 
+     * An array of image objects.
      * Note: Elastigroup can be configured with either imageId or images, but not both.
      */
     public readonly images!: pulumi.Output<outputs.aws.ElastigroupImage[] | undefined>;
@@ -330,13 +330,13 @@ export class Elastigroup extends pulumi.CustomResource {
      */
     public readonly placementTenancy!: pulumi.Output<string | undefined>;
     /**
-     * The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
+     * The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
      * Note: Must be a sublist of `availabilityZones` and `orientation` value must not be `"equalAzDistribution"`.
      */
     public readonly preferredAvailabilityZones!: pulumi.Output<string[] | undefined>;
     public readonly privateIps!: pulumi.Output<string[] | undefined>;
     /**
-     * Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
+     * Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
      * For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
      */
     public readonly product!: pulumi.Output<string>;
@@ -694,7 +694,7 @@ export interface ElastigroupState {
      */
     imageId?: pulumi.Input<string>;
     /**
-     * An array of image objects. 
+     * An array of image objects.
      * Note: Elastigroup can be configured with either imageId or images, but not both.
      */
     images?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupImage>[]>;
@@ -777,13 +777,13 @@ export interface ElastigroupState {
      */
     placementTenancy?: pulumi.Input<string>;
     /**
-     * The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
+     * The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
      * Note: Must be a sublist of `availabilityZones` and `orientation` value must not be `"equalAzDistribution"`.
      */
     preferredAvailabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
     privateIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
+     * Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
      * For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
      */
     product?: pulumi.Input<string>;
@@ -941,7 +941,7 @@ export interface ElastigroupArgs {
      */
     imageId?: pulumi.Input<string>;
     /**
-     * An array of image objects. 
+     * An array of image objects.
      * Note: Elastigroup can be configured with either imageId or images, but not both.
      */
     images?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupImage>[]>;
@@ -1024,13 +1024,13 @@ export interface ElastigroupArgs {
      */
     placementTenancy?: pulumi.Input<string>;
     /**
-     * The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
+     * The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
      * Note: Must be a sublist of `availabilityZones` and `orientation` value must not be `"equalAzDistribution"`.
      */
     preferredAvailabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
     privateIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
+     * Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
      * For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
      */
     product: pulumi.Input<string>;

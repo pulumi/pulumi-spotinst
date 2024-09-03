@@ -18,14 +18,14 @@ public final class RolloutSpecTrafficNginxArgs extends com.pulumi.resources.Reso
     public static final RolloutSpecTrafficNginxArgs Empty = new RolloutSpecTrafficNginxArgs();
 
     /**
-     * Provides additional features to add to the canary ingress (such as routing by header, cookie, etc). You can add these Kubernetes annotations to specific Ingress objects to customize their behavior. Above are found examples of accepted k8s keys.For the full list of supported keys, you may reach the following documentation - https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#canary.
+     * Provides additional features to add to the canary ingress (such as routing by header, cookie, etc). You can add these Kubernetes annotations to specific Ingress objects to customize their behavior. Above are found examples of accepted k8s keys.For the full list of supported keys, you may reach the following documentation - &lt;https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#canary&gt;.
      * 
      */
     @Import(name="additionalIngressAnnotation")
     private @Nullable Output<RolloutSpecTrafficNginxAdditionalIngressAnnotationArgs> additionalIngressAnnotation;
 
     /**
-     * @return Provides additional features to add to the canary ingress (such as routing by header, cookie, etc). You can add these Kubernetes annotations to specific Ingress objects to customize their behavior. Above are found examples of accepted k8s keys.For the full list of supported keys, you may reach the following documentation - https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#canary.
+     * @return Provides additional features to add to the canary ingress (such as routing by header, cookie, etc). You can add these Kubernetes annotations to specific Ingress objects to customize their behavior. Above are found examples of accepted k8s keys.For the full list of supported keys, you may reach the following documentation - &lt;https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#canary&gt;.
      * 
      */
     public Optional<Output<RolloutSpecTrafficNginxAdditionalIngressAnnotationArgs>> additionalIngressAnnotation() {
@@ -89,7 +89,7 @@ public final class RolloutSpecTrafficNginxArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param additionalIngressAnnotation Provides additional features to add to the canary ingress (such as routing by header, cookie, etc). You can add these Kubernetes annotations to specific Ingress objects to customize their behavior. Above are found examples of accepted k8s keys.For the full list of supported keys, you may reach the following documentation - https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#canary.
+         * @param additionalIngressAnnotation Provides additional features to add to the canary ingress (such as routing by header, cookie, etc). You can add these Kubernetes annotations to specific Ingress objects to customize their behavior. Above are found examples of accepted k8s keys.For the full list of supported keys, you may reach the following documentation - &lt;https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#canary&gt;.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class RolloutSpecTrafficNginxArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param additionalIngressAnnotation Provides additional features to add to the canary ingress (such as routing by header, cookie, etc). You can add these Kubernetes annotations to specific Ingress objects to customize their behavior. Above are found examples of accepted k8s keys.For the full list of supported keys, you may reach the following documentation - https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#canary.
+         * @param additionalIngressAnnotation Provides additional features to add to the canary ingress (such as routing by header, cookie, etc). You can add these Kubernetes annotations to specific Ingress objects to customize their behavior. Above are found examples of accepted k8s keys.For the full list of supported keys, you may reach the following documentation - &lt;https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#canary&gt;.
          * 
          * @return builder
          * 

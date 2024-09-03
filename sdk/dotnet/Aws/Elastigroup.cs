@@ -327,7 +327,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<string?> ImageId { get; private set; } = null!;
 
         /// <summary>
-        /// An array of image objects. 
+        /// An array of image objects.
         /// Note: Elastigroup can be configured with either imageId or images, but not both.
         /// </summary>
         [Output("images")]
@@ -478,7 +478,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<string?> PlacementTenancy { get; private set; } = null!;
 
         /// <summary>
-        /// The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
+        /// The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
         /// Note: Must be a sublist of `availability_zones` and `orientation` value must not be `"equalAzDistribution"`.
         /// </summary>
         [Output("preferredAvailabilityZones")]
@@ -488,7 +488,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<ImmutableArray<string>> PrivateIps { get; private set; } = null!;
 
         /// <summary>
-        /// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
+        /// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
         /// For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         /// </summary>
         [Output("product")]
@@ -812,7 +812,7 @@ namespace Pulumi.SpotInst.Aws
         private InputList<Inputs.ElastigroupImageArgs>? _images;
 
         /// <summary>
-        /// An array of image objects. 
+        /// An array of image objects.
         /// Note: Elastigroup can be configured with either imageId or images, but not both.
         /// </summary>
         public InputList<Inputs.ElastigroupImageArgs> Images
@@ -1003,7 +1003,7 @@ namespace Pulumi.SpotInst.Aws
         private InputList<string>? _preferredAvailabilityZones;
 
         /// <summary>
-        /// The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
+        /// The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
         /// Note: Must be a sublist of `availability_zones` and `orientation` value must not be `"equalAzDistribution"`.
         /// </summary>
         public InputList<string> PreferredAvailabilityZones
@@ -1021,7 +1021,7 @@ namespace Pulumi.SpotInst.Aws
         }
 
         /// <summary>
-        /// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
+        /// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
         /// For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         /// </summary>
         [Input("product", required: true)]
@@ -1378,7 +1378,7 @@ namespace Pulumi.SpotInst.Aws
         private InputList<Inputs.ElastigroupImageGetArgs>? _images;
 
         /// <summary>
-        /// An array of image objects. 
+        /// An array of image objects.
         /// Note: Elastigroup can be configured with either imageId or images, but not both.
         /// </summary>
         public InputList<Inputs.ElastigroupImageGetArgs> Images
@@ -1569,7 +1569,7 @@ namespace Pulumi.SpotInst.Aws
         private InputList<string>? _preferredAvailabilityZones;
 
         /// <summary>
-        /// The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
+        /// The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
         /// Note: Must be a sublist of `availability_zones` and `orientation` value must not be `"equalAzDistribution"`.
         /// </summary>
         public InputList<string> PreferredAvailabilityZones
@@ -1587,7 +1587,7 @@ namespace Pulumi.SpotInst.Aws
         }
 
         /// <summary>
-        /// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
+        /// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
         /// For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         /// </summary>
         [Input("product")]

@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class ElastigroupBackendServiceNamedPort {
     /**
-     * @return The name of the port.
+     * @return The group name.
      * 
      */
     private String name;
@@ -26,7 +26,7 @@ public final class ElastigroupBackendServiceNamedPort {
 
     private ElastigroupBackendServiceNamedPort() {}
     /**
-     * @return The name of the port.
+     * @return The group name.
      * 
      */
     public String name() {

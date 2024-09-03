@@ -46,7 +46,7 @@ type Credentials struct {
 
 	// The ID of the account associated with your token.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - https://docs.spot.io/administration/api/spot-policy-in-aws
+	// Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - <https://docs.spot.io/administration/api/spot-policy-in-aws>
 	Iamrole pulumi.StringOutput `pulumi:"iamrole"`
 }
 
@@ -88,14 +88,14 @@ func GetCredentials(ctx *pulumi.Context,
 type credentialsState struct {
 	// The ID of the account associated with your token.
 	AccountId *string `pulumi:"accountId"`
-	// Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - https://docs.spot.io/administration/api/spot-policy-in-aws
+	// Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - <https://docs.spot.io/administration/api/spot-policy-in-aws>
 	Iamrole *string `pulumi:"iamrole"`
 }
 
 type CredentialsState struct {
 	// The ID of the account associated with your token.
 	AccountId pulumi.StringPtrInput
-	// Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - https://docs.spot.io/administration/api/spot-policy-in-aws
+	// Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - <https://docs.spot.io/administration/api/spot-policy-in-aws>
 	Iamrole pulumi.StringPtrInput
 }
 
@@ -106,7 +106,7 @@ func (CredentialsState) ElementType() reflect.Type {
 type credentialsArgs struct {
 	// The ID of the account associated with your token.
 	AccountId string `pulumi:"accountId"`
-	// Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - https://docs.spot.io/administration/api/spot-policy-in-aws
+	// Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - <https://docs.spot.io/administration/api/spot-policy-in-aws>
 	Iamrole string `pulumi:"iamrole"`
 }
 
@@ -114,7 +114,7 @@ type credentialsArgs struct {
 type CredentialsArgs struct {
 	// The ID of the account associated with your token.
 	AccountId pulumi.StringInput
-	// Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - https://docs.spot.io/administration/api/spot-policy-in-aws
+	// Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - <https://docs.spot.io/administration/api/spot-policy-in-aws>
 	Iamrole pulumi.StringInput
 }
 
@@ -210,7 +210,7 @@ func (o CredentialsOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Credentials) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - https://docs.spot.io/administration/api/spot-policy-in-aws
+// Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - <https://docs.spot.io/administration/api/spot-policy-in-aws>
 func (o CredentialsOutput) Iamrole() pulumi.StringOutput {
 	return o.ApplyT(func(v *Credentials) pulumi.StringOutput { return v.Iamrole }).(pulumi.StringOutput)
 }

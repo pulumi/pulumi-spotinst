@@ -31,6 +31,114 @@ import * as utilities from "../utilities";
  * ```
  *
  * ## Detailed Ocean Cluster Creation Usage Example - using all available parameters with sample values
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as spotinst from "@pulumi/spotinst";
+ *
+ * const example = new spotinst.azure.OceanNp("example", {
+ *     name: "test",
+ *     aksRegion: "eastus",
+ *     aksClusterName: "test-cluster",
+ *     aksInfrastructureResourceGroupName: "MC_TestResourceGroup_test-cluster_eastus",
+ *     aksResourceGroupName: "TestResourceGroup",
+ *     controllerClusterId: "test-123124",
+ *     autoscaler: {
+ *         autoscaleIsEnabled: true,
+ *         resourceLimits: {
+ *             maxVcpu: 750,
+ *             maxMemoryGib: 1500,
+ *         },
+ *         autoscaleDown: {
+ *             maxScaleDownPercentage: 30,
+ *         },
+ *         autoscaleHeadroom: {
+ *             automatic: {
+ *                 isEnabled: true,
+ *                 percentage: 5,
+ *             },
+ *         },
+ *     },
+ *     health: {
+ *         gracePeriod: 600,
+ *     },
+ *     headrooms: [{
+ *         cpuPerUnit: 1024,
+ *         memoryPerUnit: 512,
+ *         gpuPerUnit: 0,
+ *         numOfUnits: 2,
+ *     }],
+ *     availabilityZones: [
+ *         "1",
+ *         "2",
+ *         "3",
+ *     ],
+ *     labels: {
+ *         key: "env",
+ *         value: "test",
+ *     },
+ *     minCount: 1,
+ *     maxCount: 100,
+ *     maxPodsPerNode: 30,
+ *     enableNodePublicIp: true,
+ *     osDiskSizeGb: 30,
+ *     osDiskType: "Managed",
+ *     osType: "Windows",
+ *     osSku: "Windows2022",
+ *     kubernetesVersion: "1.26",
+ *     podSubnetIds: ["/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default"],
+ *     vnetSubnetIds: ["/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default"],
+ *     linuxOsConfigs: [{
+ *         sysctls: [{
+ *             vmMaxMapCount: 79550,
+ *         }],
+ *     }],
+ *     spotPercentage: 50,
+ *     fallbackToOndemand: true,
+ *     taints: [{
+ *         key: "taintKey",
+ *         value: "taintValue",
+ *         effect: "NoSchedule",
+ *     }],
+ *     tags: {
+ *         tagKey: "env",
+ *         tagValue: "staging",
+ *     },
+ *     filters: {
+ *         minVcpu: 2,
+ *         maxVcpu: 16,
+ *         minMemoryGib: 8,
+ *         maxMemoryGib: 128,
+ *         architectures: [
+ *             "x86_64",
+ *             "arm64",
+ *         ],
+ *         series: [
+ *             "D v3",
+ *             "Dds_v4",
+ *             "Dsv2",
+ *         ],
+ *         excludeSeries: [
+ *             "Av2",
+ *             "A",
+ *             "Bs",
+ *             "D",
+ *             "E",
+ *         ],
+ *         acceleratedNetworking: "Enabled",
+ *         diskPerformance: "Premium",
+ *         minGpu: 1,
+ *         maxGpu: 2,
+ *         minNics: 1,
+ *         vmTypes: [
+ *             "generalPurpose",
+ *             "GPU",
+ *         ],
+ *         minDisk: 1,
+ *         gpuTypes: ["nvidia-tesla-t4"],
+ *     },
+ * });
+ * ```
  */
 export class OceanNp extends pulumi.CustomResource {
     /**

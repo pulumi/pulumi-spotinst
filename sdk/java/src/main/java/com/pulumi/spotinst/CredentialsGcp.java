@@ -34,14 +34,14 @@ public class CredentialsGcp extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     /**
-     * .
+     * &gt; .
      * 
      */
     @Export(name="authProviderX509CertUrl", refs={String.class}, tree="[0]")
     private Output<String> authProviderX509CertUrl;
 
     /**
-     * @return .
+     * @return &gt;.
      * 
      */
     public Output<String> authProviderX509CertUrl() {

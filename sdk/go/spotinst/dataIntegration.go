@@ -11,6 +11,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// layout: "spotinst"
+// page_title: "Spotinst: dataIntegration"
+// subcategory: "Data Integration"
+// description: |-
+// Manages an Data Integration resource.
+// <!-- yaml: line 6: could not find expected ':' -->
+//
+// # spotinst\_data\_integration
+//
 // Provides a Spotinst Data Integration resource.
 //
 // ## Example Usage

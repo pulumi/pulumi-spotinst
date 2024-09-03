@@ -14,7 +14,7 @@ namespace Pulumi.SpotInst.Oceancd.Outputs
     public sealed class RolloutSpecTrafficNginx
     {
         /// <summary>
-        /// Provides additional features to add to the canary ingress (such as routing by header, cookie, etc). You can add these Kubernetes annotations to specific Ingress objects to customize their behavior. Above are found examples of accepted k8s keys.For the full list of supported keys, you may reach the following documentation - https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#canary.
+        /// Provides additional features to add to the canary ingress (such as routing by header, cookie, etc). You can add these Kubernetes annotations to specific Ingress objects to customize their behavior. Above are found examples of accepted k8s keys.For the full list of supported keys, you may reach the following documentation - &lt;https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#canary&gt;.
         /// </summary>
         public readonly Outputs.RolloutSpecTrafficNginxAdditionalIngressAnnotation? AdditionalIngressAnnotation;
         /// <summary>
