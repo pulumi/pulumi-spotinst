@@ -14,6 +14,7 @@ __all__ = [
     'DataIntegrationS3',
     'ElastigroupAzureV3Image',
     'ElastigroupAzureV3ImageCustom',
+    'ElastigroupAzureV3ImageGalleryImage',
     'ElastigroupAzureV3ImageMarketplace',
     'ElastigroupAzureV3Login',
     'ElastigroupAzureV3ManagedServiceIdentity',
@@ -122,11 +123,31 @@ class DataIntegrationS3(dict):
 
 @pulumi.output_type
 class ElastigroupAzureV3Image(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "galleryImages":
+            suggest = "gallery_images"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupAzureV3Image. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupAzureV3Image.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupAzureV3Image.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  customs: Optional[Sequence['outputs.ElastigroupAzureV3ImageCustom']] = None,
+                 gallery_images: Optional[Sequence['outputs.ElastigroupAzureV3ImageGalleryImage']] = None,
                  marketplaces: Optional[Sequence['outputs.ElastigroupAzureV3ImageMarketplace']] = None):
         if customs is not None:
             pulumi.set(__self__, "customs", customs)
+        if gallery_images is not None:
+            pulumi.set(__self__, "gallery_images", gallery_images)
         if marketplaces is not None:
             pulumi.set(__self__, "marketplaces", marketplaces)
 
@@ -134,6 +155,11 @@ class ElastigroupAzureV3Image(dict):
     @pulumi.getter
     def customs(self) -> Optional[Sequence['outputs.ElastigroupAzureV3ImageCustom']]:
         return pulumi.get(self, "customs")
+
+    @property
+    @pulumi.getter(name="galleryImages")
+    def gallery_images(self) -> Optional[Sequence['outputs.ElastigroupAzureV3ImageGalleryImage']]:
+        return pulumi.get(self, "gallery_images")
 
     @property
     @pulumi.getter
@@ -177,6 +203,70 @@ class ElastigroupAzureV3ImageCustom(dict):
     @pulumi.getter(name="resourceGroupName")
     def resource_group_name(self) -> str:
         return pulumi.get(self, "resource_group_name")
+
+
+@pulumi.output_type
+class ElastigroupAzureV3ImageGalleryImage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "galleryName":
+            suggest = "gallery_name"
+        elif key == "imageName":
+            suggest = "image_name"
+        elif key == "resourceGroupName":
+            suggest = "resource_group_name"
+        elif key == "spotAccountId":
+            suggest = "spot_account_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupAzureV3ImageGalleryImage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupAzureV3ImageGalleryImage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupAzureV3ImageGalleryImage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gallery_name: str,
+                 image_name: str,
+                 resource_group_name: str,
+                 version: str,
+                 spot_account_id: Optional[str] = None):
+        pulumi.set(__self__, "gallery_name", gallery_name)
+        pulumi.set(__self__, "image_name", image_name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        pulumi.set(__self__, "version", version)
+        if spot_account_id is not None:
+            pulumi.set(__self__, "spot_account_id", spot_account_id)
+
+    @property
+    @pulumi.getter(name="galleryName")
+    def gallery_name(self) -> str:
+        return pulumi.get(self, "gallery_name")
+
+    @property
+    @pulumi.getter(name="imageName")
+    def image_name(self) -> str:
+        return pulumi.get(self, "image_name")
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> str:
+        return pulumi.get(self, "resource_group_name")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        return pulumi.get(self, "version")
+
+    @property
+    @pulumi.getter(name="spotAccountId")
+    def spot_account_id(self) -> Optional[str]:
+        return pulumi.get(self, "spot_account_id")
 
 
 @pulumi.output_type

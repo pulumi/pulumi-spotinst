@@ -166,8 +166,9 @@ func (o DataIntegrationS3PtrOutput) Subdir() pulumi.StringPtrOutput {
 }
 
 type ElastigroupAzureV3Image struct {
-	Customs      []ElastigroupAzureV3ImageCustom      `pulumi:"customs"`
-	Marketplaces []ElastigroupAzureV3ImageMarketplace `pulumi:"marketplaces"`
+	Customs       []ElastigroupAzureV3ImageCustom       `pulumi:"customs"`
+	GalleryImages []ElastigroupAzureV3ImageGalleryImage `pulumi:"galleryImages"`
+	Marketplaces  []ElastigroupAzureV3ImageMarketplace  `pulumi:"marketplaces"`
 }
 
 // ElastigroupAzureV3ImageInput is an input type that accepts ElastigroupAzureV3ImageArgs and ElastigroupAzureV3ImageOutput values.
@@ -182,8 +183,9 @@ type ElastigroupAzureV3ImageInput interface {
 }
 
 type ElastigroupAzureV3ImageArgs struct {
-	Customs      ElastigroupAzureV3ImageCustomArrayInput      `pulumi:"customs"`
-	Marketplaces ElastigroupAzureV3ImageMarketplaceArrayInput `pulumi:"marketplaces"`
+	Customs       ElastigroupAzureV3ImageCustomArrayInput       `pulumi:"customs"`
+	GalleryImages ElastigroupAzureV3ImageGalleryImageArrayInput `pulumi:"galleryImages"`
+	Marketplaces  ElastigroupAzureV3ImageMarketplaceArrayInput  `pulumi:"marketplaces"`
 }
 
 func (ElastigroupAzureV3ImageArgs) ElementType() reflect.Type {
@@ -239,6 +241,10 @@ func (o ElastigroupAzureV3ImageOutput) ToElastigroupAzureV3ImageOutputWithContex
 
 func (o ElastigroupAzureV3ImageOutput) Customs() ElastigroupAzureV3ImageCustomArrayOutput {
 	return o.ApplyT(func(v ElastigroupAzureV3Image) []ElastigroupAzureV3ImageCustom { return v.Customs }).(ElastigroupAzureV3ImageCustomArrayOutput)
+}
+
+func (o ElastigroupAzureV3ImageOutput) GalleryImages() ElastigroupAzureV3ImageGalleryImageArrayOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3Image) []ElastigroupAzureV3ImageGalleryImage { return v.GalleryImages }).(ElastigroupAzureV3ImageGalleryImageArrayOutput)
 }
 
 func (o ElastigroupAzureV3ImageOutput) Marketplaces() ElastigroupAzureV3ImageMarketplaceArrayOutput {
@@ -363,6 +369,124 @@ func (o ElastigroupAzureV3ImageCustomArrayOutput) Index(i pulumi.IntInput) Elast
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupAzureV3ImageCustom {
 		return vs[0].([]ElastigroupAzureV3ImageCustom)[vs[1].(int)]
 	}).(ElastigroupAzureV3ImageCustomOutput)
+}
+
+type ElastigroupAzureV3ImageGalleryImage struct {
+	GalleryName       string  `pulumi:"galleryName"`
+	ImageName         string  `pulumi:"imageName"`
+	ResourceGroupName string  `pulumi:"resourceGroupName"`
+	SpotAccountId     *string `pulumi:"spotAccountId"`
+	Version           string  `pulumi:"version"`
+}
+
+// ElastigroupAzureV3ImageGalleryImageInput is an input type that accepts ElastigroupAzureV3ImageGalleryImageArgs and ElastigroupAzureV3ImageGalleryImageOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3ImageGalleryImageInput` via:
+//
+//	ElastigroupAzureV3ImageGalleryImageArgs{...}
+type ElastigroupAzureV3ImageGalleryImageInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3ImageGalleryImageOutput() ElastigroupAzureV3ImageGalleryImageOutput
+	ToElastigroupAzureV3ImageGalleryImageOutputWithContext(context.Context) ElastigroupAzureV3ImageGalleryImageOutput
+}
+
+type ElastigroupAzureV3ImageGalleryImageArgs struct {
+	GalleryName       pulumi.StringInput    `pulumi:"galleryName"`
+	ImageName         pulumi.StringInput    `pulumi:"imageName"`
+	ResourceGroupName pulumi.StringInput    `pulumi:"resourceGroupName"`
+	SpotAccountId     pulumi.StringPtrInput `pulumi:"spotAccountId"`
+	Version           pulumi.StringInput    `pulumi:"version"`
+}
+
+func (ElastigroupAzureV3ImageGalleryImageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3ImageGalleryImage)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3ImageGalleryImageArgs) ToElastigroupAzureV3ImageGalleryImageOutput() ElastigroupAzureV3ImageGalleryImageOutput {
+	return i.ToElastigroupAzureV3ImageGalleryImageOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3ImageGalleryImageArgs) ToElastigroupAzureV3ImageGalleryImageOutputWithContext(ctx context.Context) ElastigroupAzureV3ImageGalleryImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3ImageGalleryImageOutput)
+}
+
+// ElastigroupAzureV3ImageGalleryImageArrayInput is an input type that accepts ElastigroupAzureV3ImageGalleryImageArray and ElastigroupAzureV3ImageGalleryImageArrayOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3ImageGalleryImageArrayInput` via:
+//
+//	ElastigroupAzureV3ImageGalleryImageArray{ ElastigroupAzureV3ImageGalleryImageArgs{...} }
+type ElastigroupAzureV3ImageGalleryImageArrayInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3ImageGalleryImageArrayOutput() ElastigroupAzureV3ImageGalleryImageArrayOutput
+	ToElastigroupAzureV3ImageGalleryImageArrayOutputWithContext(context.Context) ElastigroupAzureV3ImageGalleryImageArrayOutput
+}
+
+type ElastigroupAzureV3ImageGalleryImageArray []ElastigroupAzureV3ImageGalleryImageInput
+
+func (ElastigroupAzureV3ImageGalleryImageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3ImageGalleryImage)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3ImageGalleryImageArray) ToElastigroupAzureV3ImageGalleryImageArrayOutput() ElastigroupAzureV3ImageGalleryImageArrayOutput {
+	return i.ToElastigroupAzureV3ImageGalleryImageArrayOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3ImageGalleryImageArray) ToElastigroupAzureV3ImageGalleryImageArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3ImageGalleryImageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3ImageGalleryImageArrayOutput)
+}
+
+type ElastigroupAzureV3ImageGalleryImageOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3ImageGalleryImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3ImageGalleryImage)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3ImageGalleryImageOutput) ToElastigroupAzureV3ImageGalleryImageOutput() ElastigroupAzureV3ImageGalleryImageOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ImageGalleryImageOutput) ToElastigroupAzureV3ImageGalleryImageOutputWithContext(ctx context.Context) ElastigroupAzureV3ImageGalleryImageOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ImageGalleryImageOutput) GalleryName() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ImageGalleryImage) string { return v.GalleryName }).(pulumi.StringOutput)
+}
+
+func (o ElastigroupAzureV3ImageGalleryImageOutput) ImageName() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ImageGalleryImage) string { return v.ImageName }).(pulumi.StringOutput)
+}
+
+func (o ElastigroupAzureV3ImageGalleryImageOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ImageGalleryImage) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+func (o ElastigroupAzureV3ImageGalleryImageOutput) SpotAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ImageGalleryImage) *string { return v.SpotAccountId }).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupAzureV3ImageGalleryImageOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ImageGalleryImage) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type ElastigroupAzureV3ImageGalleryImageArrayOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3ImageGalleryImageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3ImageGalleryImage)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3ImageGalleryImageArrayOutput) ToElastigroupAzureV3ImageGalleryImageArrayOutput() ElastigroupAzureV3ImageGalleryImageArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ImageGalleryImageArrayOutput) ToElastigroupAzureV3ImageGalleryImageArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3ImageGalleryImageArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ImageGalleryImageArrayOutput) Index(i pulumi.IntInput) ElastigroupAzureV3ImageGalleryImageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupAzureV3ImageGalleryImage {
+		return vs[0].([]ElastigroupAzureV3ImageGalleryImage)[vs[1].(int)]
+	}).(ElastigroupAzureV3ImageGalleryImageOutput)
 }
 
 type ElastigroupAzureV3ImageMarketplace struct {
@@ -7889,6 +8013,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ImageArrayInput)(nil)).Elem(), ElastigroupAzureV3ImageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ImageCustomInput)(nil)).Elem(), ElastigroupAzureV3ImageCustomArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ImageCustomArrayInput)(nil)).Elem(), ElastigroupAzureV3ImageCustomArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ImageGalleryImageInput)(nil)).Elem(), ElastigroupAzureV3ImageGalleryImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ImageGalleryImageArrayInput)(nil)).Elem(), ElastigroupAzureV3ImageGalleryImageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ImageMarketplaceInput)(nil)).Elem(), ElastigroupAzureV3ImageMarketplaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ImageMarketplaceArrayInput)(nil)).Elem(), ElastigroupAzureV3ImageMarketplaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3LoginInput)(nil)).Elem(), ElastigroupAzureV3LoginArgs{})
@@ -8017,6 +8143,8 @@ func init() {
 	pulumi.RegisterOutputType(ElastigroupAzureV3ImageArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3ImageCustomOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3ImageCustomArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3ImageGalleryImageOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3ImageGalleryImageArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3ImageMarketplaceOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3ImageMarketplaceArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3LoginOutput{})

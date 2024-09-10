@@ -20,6 +20,14 @@ namespace Pulumi.SpotInst.Inputs
             set => _customs = value;
         }
 
+        [Input("galleryImages")]
+        private InputList<Inputs.ElastigroupAzureV3ImageGalleryImageGetArgs>? _galleryImages;
+        public InputList<Inputs.ElastigroupAzureV3ImageGalleryImageGetArgs> GalleryImages
+        {
+            get => _galleryImages ?? (_galleryImages = new InputList<Inputs.ElastigroupAzureV3ImageGalleryImageGetArgs>());
+            set => _galleryImages = value;
+        }
+
         [Input("marketplaces")]
         private InputList<Inputs.ElastigroupAzureV3ImageMarketplaceGetArgs>? _marketplaces;
         public InputList<Inputs.ElastigroupAzureV3ImageMarketplaceGetArgs> Marketplaces

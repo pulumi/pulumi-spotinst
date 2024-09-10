@@ -6,6 +6,7 @@ package com.pulumi.spotinst.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.spotinst.inputs.ElastigroupAzureV3ImageCustomArgs;
+import com.pulumi.spotinst.inputs.ElastigroupAzureV3ImageGalleryImageArgs;
 import com.pulumi.spotinst.inputs.ElastigroupAzureV3ImageMarketplaceArgs;
 import java.util.List;
 import java.util.Objects;
@@ -24,6 +25,13 @@ public final class ElastigroupAzureV3ImageArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.customs);
     }
 
+    @Import(name="galleryImages")
+    private @Nullable Output<List<ElastigroupAzureV3ImageGalleryImageArgs>> galleryImages;
+
+    public Optional<Output<List<ElastigroupAzureV3ImageGalleryImageArgs>>> galleryImages() {
+        return Optional.ofNullable(this.galleryImages);
+    }
+
     @Import(name="marketplaces")
     private @Nullable Output<List<ElastigroupAzureV3ImageMarketplaceArgs>> marketplaces;
 
@@ -35,6 +43,7 @@ public final class ElastigroupAzureV3ImageArgs extends com.pulumi.resources.Reso
 
     private ElastigroupAzureV3ImageArgs(ElastigroupAzureV3ImageArgs $) {
         this.customs = $.customs;
+        this.galleryImages = $.galleryImages;
         this.marketplaces = $.marketplaces;
     }
 
@@ -67,6 +76,19 @@ public final class ElastigroupAzureV3ImageArgs extends com.pulumi.resources.Reso
 
         public Builder customs(ElastigroupAzureV3ImageCustomArgs... customs) {
             return customs(List.of(customs));
+        }
+
+        public Builder galleryImages(@Nullable Output<List<ElastigroupAzureV3ImageGalleryImageArgs>> galleryImages) {
+            $.galleryImages = galleryImages;
+            return this;
+        }
+
+        public Builder galleryImages(List<ElastigroupAzureV3ImageGalleryImageArgs> galleryImages) {
+            return galleryImages(Output.of(galleryImages));
+        }
+
+        public Builder galleryImages(ElastigroupAzureV3ImageGalleryImageArgs... galleryImages) {
+            return galleryImages(List.of(galleryImages));
         }
 
         public Builder marketplaces(@Nullable Output<List<ElastigroupAzureV3ImageMarketplaceArgs>> marketplaces) {

@@ -15,12 +15,21 @@ export interface DataIntegrationS3 {
 
 export interface ElastigroupAzureV3Image {
     customs?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3ImageCustom>[]>;
+    galleryImages?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3ImageGalleryImage>[]>;
     marketplaces?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3ImageMarketplace>[]>;
 }
 
 export interface ElastigroupAzureV3ImageCustom {
     imageName: pulumi.Input<string>;
     resourceGroupName: pulumi.Input<string>;
+}
+
+export interface ElastigroupAzureV3ImageGalleryImage {
+    galleryName: pulumi.Input<string>;
+    imageName: pulumi.Input<string>;
+    resourceGroupName: pulumi.Input<string>;
+    spotAccountId?: pulumi.Input<string>;
+    version: pulumi.Input<string>;
 }
 
 export interface ElastigroupAzureV3ImageMarketplace {

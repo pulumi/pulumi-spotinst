@@ -13,6 +13,7 @@ __all__ = [
     'DataIntegrationS3Args',
     'ElastigroupAzureV3ImageArgs',
     'ElastigroupAzureV3ImageCustomArgs',
+    'ElastigroupAzureV3ImageGalleryImageArgs',
     'ElastigroupAzureV3ImageMarketplaceArgs',
     'ElastigroupAzureV3LoginArgs',
     'ElastigroupAzureV3ManagedServiceIdentityArgs',
@@ -114,9 +115,12 @@ class DataIntegrationS3Args:
 class ElastigroupAzureV3ImageArgs:
     def __init__(__self__, *,
                  customs: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageCustomArgs']]]] = None,
+                 gallery_images: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageGalleryImageArgs']]]] = None,
                  marketplaces: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageMarketplaceArgs']]]] = None):
         if customs is not None:
             pulumi.set(__self__, "customs", customs)
+        if gallery_images is not None:
+            pulumi.set(__self__, "gallery_images", gallery_images)
         if marketplaces is not None:
             pulumi.set(__self__, "marketplaces", marketplaces)
 
@@ -128,6 +132,15 @@ class ElastigroupAzureV3ImageArgs:
     @customs.setter
     def customs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageCustomArgs']]]]):
         pulumi.set(self, "customs", value)
+
+    @property
+    @pulumi.getter(name="galleryImages")
+    def gallery_images(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageGalleryImageArgs']]]]:
+        return pulumi.get(self, "gallery_images")
+
+    @gallery_images.setter
+    def gallery_images(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageGalleryImageArgs']]]]):
+        pulumi.set(self, "gallery_images", value)
 
     @property
     @pulumi.getter
@@ -164,6 +177,67 @@ class ElastigroupAzureV3ImageCustomArgs:
     @resource_group_name.setter
     def resource_group_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "resource_group_name", value)
+
+
+@pulumi.input_type
+class ElastigroupAzureV3ImageGalleryImageArgs:
+    def __init__(__self__, *,
+                 gallery_name: pulumi.Input[str],
+                 image_name: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str],
+                 version: pulumi.Input[str],
+                 spot_account_id: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "gallery_name", gallery_name)
+        pulumi.set(__self__, "image_name", image_name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        pulumi.set(__self__, "version", version)
+        if spot_account_id is not None:
+            pulumi.set(__self__, "spot_account_id", spot_account_id)
+
+    @property
+    @pulumi.getter(name="galleryName")
+    def gallery_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "gallery_name")
+
+    @gallery_name.setter
+    def gallery_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "gallery_name", value)
+
+    @property
+    @pulumi.getter(name="imageName")
+    def image_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "image_name")
+
+    @image_name.setter
+    def image_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "image_name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "version", value)
+
+    @property
+    @pulumi.getter(name="spotAccountId")
+    def spot_account_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "spot_account_id")
+
+    @spot_account_id.setter
+    def spot_account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "spot_account_id", value)
 
 
 @pulumi.input_type
