@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
@@ -45,11 +46,43 @@ public final class OceanLaunchSpecStrategyArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.spotPercentage);
     }
 
+    /**
+     * When set as ‘true’, if savings plans commitments have available capacity, Ocean will utilize them alongside RIs (if exist) to maximize cost efficiency. If the value is set as &#39;null&#39;, it will automatically be inherited from the cluster level.
+     * 
+     */
+    @Import(name="utilizeCommitments")
+    private @Nullable Output<Boolean> utilizeCommitments;
+
+    /**
+     * @return When set as ‘true’, if savings plans commitments have available capacity, Ocean will utilize them alongside RIs (if exist) to maximize cost efficiency. If the value is set as &#39;null&#39;, it will automatically be inherited from the cluster level.
+     * 
+     */
+    public Optional<Output<Boolean>> utilizeCommitments() {
+        return Optional.ofNullable(this.utilizeCommitments);
+    }
+
+    /**
+     * When set as ‘true’, if reserved instances exist, Ocean will utilize them before launching spot instances. If the value is set as &#39;null&#39;, it will automatically be inherited from the cluster level.
+     * 
+     */
+    @Import(name="utilizeReservedInstances")
+    private @Nullable Output<Boolean> utilizeReservedInstances;
+
+    /**
+     * @return When set as ‘true’, if reserved instances exist, Ocean will utilize them before launching spot instances. If the value is set as &#39;null&#39;, it will automatically be inherited from the cluster level.
+     * 
+     */
+    public Optional<Output<Boolean>> utilizeReservedInstances() {
+        return Optional.ofNullable(this.utilizeReservedInstances);
+    }
+
     private OceanLaunchSpecStrategyArgs() {}
 
     private OceanLaunchSpecStrategyArgs(OceanLaunchSpecStrategyArgs $) {
         this.drainingTimeout = $.drainingTimeout;
         this.spotPercentage = $.spotPercentage;
+        this.utilizeCommitments = $.utilizeCommitments;
+        this.utilizeReservedInstances = $.utilizeReservedInstances;
     }
 
     public static Builder builder() {
@@ -110,6 +143,48 @@ public final class OceanLaunchSpecStrategyArgs extends com.pulumi.resources.Reso
          */
         public Builder spotPercentage(Integer spotPercentage) {
             return spotPercentage(Output.of(spotPercentage));
+        }
+
+        /**
+         * @param utilizeCommitments When set as ‘true’, if savings plans commitments have available capacity, Ocean will utilize them alongside RIs (if exist) to maximize cost efficiency. If the value is set as &#39;null&#39;, it will automatically be inherited from the cluster level.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder utilizeCommitments(@Nullable Output<Boolean> utilizeCommitments) {
+            $.utilizeCommitments = utilizeCommitments;
+            return this;
+        }
+
+        /**
+         * @param utilizeCommitments When set as ‘true’, if savings plans commitments have available capacity, Ocean will utilize them alongside RIs (if exist) to maximize cost efficiency. If the value is set as &#39;null&#39;, it will automatically be inherited from the cluster level.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder utilizeCommitments(Boolean utilizeCommitments) {
+            return utilizeCommitments(Output.of(utilizeCommitments));
+        }
+
+        /**
+         * @param utilizeReservedInstances When set as ‘true’, if reserved instances exist, Ocean will utilize them before launching spot instances. If the value is set as &#39;null&#39;, it will automatically be inherited from the cluster level.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder utilizeReservedInstances(@Nullable Output<Boolean> utilizeReservedInstances) {
+            $.utilizeReservedInstances = utilizeReservedInstances;
+            return this;
+        }
+
+        /**
+         * @param utilizeReservedInstances When set as ‘true’, if reserved instances exist, Ocean will utilize them before launching spot instances. If the value is set as &#39;null&#39;, it will automatically be inherited from the cluster level.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder utilizeReservedInstances(Boolean utilizeReservedInstances) {
+            return utilizeReservedInstances(Output.of(utilizeReservedInstances));
         }
 
         public OceanLaunchSpecStrategyArgs build() {

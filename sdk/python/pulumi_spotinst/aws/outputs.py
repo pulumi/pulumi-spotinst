@@ -10138,6 +10138,10 @@ class OceanLaunchSpecStrategy(dict):
             suggest = "draining_timeout"
         elif key == "spotPercentage":
             suggest = "spot_percentage"
+        elif key == "utilizeCommitments":
+            suggest = "utilize_commitments"
+        elif key == "utilizeReservedInstances":
+            suggest = "utilize_reserved_instances"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in OceanLaunchSpecStrategy. Access the value via the '{suggest}' property getter instead.")
@@ -10152,15 +10156,23 @@ class OceanLaunchSpecStrategy(dict):
 
     def __init__(__self__, *,
                  draining_timeout: Optional[int] = None,
-                 spot_percentage: Optional[int] = None):
+                 spot_percentage: Optional[int] = None,
+                 utilize_commitments: Optional[bool] = None,
+                 utilize_reserved_instances: Optional[bool] = None):
         """
         :param int draining_timeout: The configurable amount of time that Ocean will wait for the draining process to complete before terminating an instance. If you have not defined a draining timeout, the default of 300 seconds will be used.
         :param int spot_percentage: The desired percentage of the Spot instances out of all running instances for this VNG. Only available when the field is not set in the cluster directly (cluster.strategy.spotPercentage).
+        :param bool utilize_commitments: When set as ‘true’, if savings plans commitments have available capacity, Ocean will utilize them alongside RIs (if exist) to maximize cost efficiency. If the value is set as 'null', it will automatically be inherited from the cluster level.
+        :param bool utilize_reserved_instances: When set as ‘true’, if reserved instances exist, Ocean will utilize them before launching spot instances. If the value is set as 'null', it will automatically be inherited from the cluster level.
         """
         if draining_timeout is not None:
             pulumi.set(__self__, "draining_timeout", draining_timeout)
         if spot_percentage is not None:
             pulumi.set(__self__, "spot_percentage", spot_percentage)
+        if utilize_commitments is not None:
+            pulumi.set(__self__, "utilize_commitments", utilize_commitments)
+        if utilize_reserved_instances is not None:
+            pulumi.set(__self__, "utilize_reserved_instances", utilize_reserved_instances)
 
     @property
     @pulumi.getter(name="drainingTimeout")
@@ -10177,6 +10189,22 @@ class OceanLaunchSpecStrategy(dict):
         The desired percentage of the Spot instances out of all running instances for this VNG. Only available when the field is not set in the cluster directly (cluster.strategy.spotPercentage).
         """
         return pulumi.get(self, "spot_percentage")
+
+    @property
+    @pulumi.getter(name="utilizeCommitments")
+    def utilize_commitments(self) -> Optional[bool]:
+        """
+        When set as ‘true’, if savings plans commitments have available capacity, Ocean will utilize them alongside RIs (if exist) to maximize cost efficiency. If the value is set as 'null', it will automatically be inherited from the cluster level.
+        """
+        return pulumi.get(self, "utilize_commitments")
+
+    @property
+    @pulumi.getter(name="utilizeReservedInstances")
+    def utilize_reserved_instances(self) -> Optional[bool]:
+        """
+        When set as ‘true’, if reserved instances exist, Ocean will utilize them before launching spot instances. If the value is set as 'null', it will automatically be inherited from the cluster level.
+        """
+        return pulumi.get(self, "utilize_reserved_instances")
 
 
 @pulumi.output_type

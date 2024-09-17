@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
@@ -21,6 +22,16 @@ public final class OceanLaunchSpecStrategy {
      * 
      */
     private @Nullable Integer spotPercentage;
+    /**
+     * @return When set as ‘true’, if savings plans commitments have available capacity, Ocean will utilize them alongside RIs (if exist) to maximize cost efficiency. If the value is set as &#39;null&#39;, it will automatically be inherited from the cluster level.
+     * 
+     */
+    private @Nullable Boolean utilizeCommitments;
+    /**
+     * @return When set as ‘true’, if reserved instances exist, Ocean will utilize them before launching spot instances. If the value is set as &#39;null&#39;, it will automatically be inherited from the cluster level.
+     * 
+     */
+    private @Nullable Boolean utilizeReservedInstances;
 
     private OceanLaunchSpecStrategy() {}
     /**
@@ -37,6 +48,20 @@ public final class OceanLaunchSpecStrategy {
     public Optional<Integer> spotPercentage() {
         return Optional.ofNullable(this.spotPercentage);
     }
+    /**
+     * @return When set as ‘true’, if savings plans commitments have available capacity, Ocean will utilize them alongside RIs (if exist) to maximize cost efficiency. If the value is set as &#39;null&#39;, it will automatically be inherited from the cluster level.
+     * 
+     */
+    public Optional<Boolean> utilizeCommitments() {
+        return Optional.ofNullable(this.utilizeCommitments);
+    }
+    /**
+     * @return When set as ‘true’, if reserved instances exist, Ocean will utilize them before launching spot instances. If the value is set as &#39;null&#39;, it will automatically be inherited from the cluster level.
+     * 
+     */
+    public Optional<Boolean> utilizeReservedInstances() {
+        return Optional.ofNullable(this.utilizeReservedInstances);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -49,11 +74,15 @@ public final class OceanLaunchSpecStrategy {
     public static final class Builder {
         private @Nullable Integer drainingTimeout;
         private @Nullable Integer spotPercentage;
+        private @Nullable Boolean utilizeCommitments;
+        private @Nullable Boolean utilizeReservedInstances;
         public Builder() {}
         public Builder(OceanLaunchSpecStrategy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.drainingTimeout = defaults.drainingTimeout;
     	      this.spotPercentage = defaults.spotPercentage;
+    	      this.utilizeCommitments = defaults.utilizeCommitments;
+    	      this.utilizeReservedInstances = defaults.utilizeReservedInstances;
         }
 
         @CustomType.Setter
@@ -68,10 +97,24 @@ public final class OceanLaunchSpecStrategy {
             this.spotPercentage = spotPercentage;
             return this;
         }
+        @CustomType.Setter
+        public Builder utilizeCommitments(@Nullable Boolean utilizeCommitments) {
+
+            this.utilizeCommitments = utilizeCommitments;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder utilizeReservedInstances(@Nullable Boolean utilizeReservedInstances) {
+
+            this.utilizeReservedInstances = utilizeReservedInstances;
+            return this;
+        }
         public OceanLaunchSpecStrategy build() {
             final var _resultValue = new OceanLaunchSpecStrategy();
             _resultValue.drainingTimeout = drainingTimeout;
             _resultValue.spotPercentage = spotPercentage;
+            _resultValue.utilizeCommitments = utilizeCommitments;
+            _resultValue.utilizeReservedInstances = utilizeReservedInstances;
             return _resultValue;
         }
     }

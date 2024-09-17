@@ -2763,6 +2763,14 @@ export namespace aws {
          * The desired percentage of the Spot instances out of all running instances for this VNG. Only available when the field is not set in the cluster directly (cluster.strategy.spotPercentage).
          */
         spotPercentage?: number;
+        /**
+         * When set as ‘true’, if savings plans commitments have available capacity, Ocean will utilize them alongside RIs (if exist) to maximize cost efficiency. If the value is set as 'null', it will automatically be inherited from the cluster level.
+         */
+        utilizeCommitments?: boolean;
+        /**
+         * When set as ‘true’, if reserved instances exist, Ocean will utilize them before launching spot instances. If the value is set as 'null', it will automatically be inherited from the cluster level.
+         */
+        utilizeReservedInstances?: boolean;
     }
 
     export interface OceanLaunchSpecTag {
