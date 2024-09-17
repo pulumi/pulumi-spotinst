@@ -21,15 +21,29 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// The desired percentage of the Spot instances out of all running instances for this VNG. Only available when the field is not set in the cluster directly (cluster.strategy.spotPercentage).
         /// </summary>
         public readonly int? SpotPercentage;
+        /// <summary>
+        /// When set as ‘true’, if savings plans commitments have available capacity, Ocean will utilize them alongside RIs (if exist) to maximize cost efficiency. If the value is set as 'null', it will automatically be inherited from the cluster level.
+        /// </summary>
+        public readonly bool? UtilizeCommitments;
+        /// <summary>
+        /// When set as ‘true’, if reserved instances exist, Ocean will utilize them before launching spot instances. If the value is set as 'null', it will automatically be inherited from the cluster level.
+        /// </summary>
+        public readonly bool? UtilizeReservedInstances;
 
         [OutputConstructor]
         private OceanLaunchSpecStrategy(
             int? drainingTimeout,
 
-            int? spotPercentage)
+            int? spotPercentage,
+
+            bool? utilizeCommitments,
+
+            bool? utilizeReservedInstances)
         {
             DrainingTimeout = drainingTimeout;
             SpotPercentage = spotPercentage;
+            UtilizeCommitments = utilizeCommitments;
+            UtilizeReservedInstances = utilizeReservedInstances;
         }
     }
 }

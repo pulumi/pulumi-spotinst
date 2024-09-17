@@ -24,6 +24,18 @@ namespace Pulumi.SpotInst.Aws.Inputs
         [Input("spotPercentage")]
         public Input<int>? SpotPercentage { get; set; }
 
+        /// <summary>
+        /// When set as ‘true’, if savings plans commitments have available capacity, Ocean will utilize them alongside RIs (if exist) to maximize cost efficiency. If the value is set as 'null', it will automatically be inherited from the cluster level.
+        /// </summary>
+        [Input("utilizeCommitments")]
+        public Input<bool>? UtilizeCommitments { get; set; }
+
+        /// <summary>
+        /// When set as ‘true’, if reserved instances exist, Ocean will utilize them before launching spot instances. If the value is set as 'null', it will automatically be inherited from the cluster level.
+        /// </summary>
+        [Input("utilizeReservedInstances")]
+        public Input<bool>? UtilizeReservedInstances { get; set; }
+
         public OceanLaunchSpecStrategyGetArgs()
         {
         }

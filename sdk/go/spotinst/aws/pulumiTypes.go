@@ -22199,6 +22199,10 @@ type OceanLaunchSpecStrategy struct {
 	DrainingTimeout *int `pulumi:"drainingTimeout"`
 	// The desired percentage of the Spot instances out of all running instances for this VNG. Only available when the field is not set in the cluster directly (cluster.strategy.spotPercentage).
 	SpotPercentage *int `pulumi:"spotPercentage"`
+	// When set as ‘true’, if savings plans commitments have available capacity, Ocean will utilize them alongside RIs (if exist) to maximize cost efficiency. If the value is set as 'null', it will automatically be inherited from the cluster level.
+	UtilizeCommitments *bool `pulumi:"utilizeCommitments"`
+	// When set as ‘true’, if reserved instances exist, Ocean will utilize them before launching spot instances. If the value is set as 'null', it will automatically be inherited from the cluster level.
+	UtilizeReservedInstances *bool `pulumi:"utilizeReservedInstances"`
 }
 
 // OceanLaunchSpecStrategyInput is an input type that accepts OceanLaunchSpecStrategyArgs and OceanLaunchSpecStrategyOutput values.
@@ -22217,6 +22221,10 @@ type OceanLaunchSpecStrategyArgs struct {
 	DrainingTimeout pulumi.IntPtrInput `pulumi:"drainingTimeout"`
 	// The desired percentage of the Spot instances out of all running instances for this VNG. Only available when the field is not set in the cluster directly (cluster.strategy.spotPercentage).
 	SpotPercentage pulumi.IntPtrInput `pulumi:"spotPercentage"`
+	// When set as ‘true’, if savings plans commitments have available capacity, Ocean will utilize them alongside RIs (if exist) to maximize cost efficiency. If the value is set as 'null', it will automatically be inherited from the cluster level.
+	UtilizeCommitments pulumi.BoolPtrInput `pulumi:"utilizeCommitments"`
+	// When set as ‘true’, if reserved instances exist, Ocean will utilize them before launching spot instances. If the value is set as 'null', it will automatically be inherited from the cluster level.
+	UtilizeReservedInstances pulumi.BoolPtrInput `pulumi:"utilizeReservedInstances"`
 }
 
 func (OceanLaunchSpecStrategyArgs) ElementType() reflect.Type {
@@ -22278,6 +22286,16 @@ func (o OceanLaunchSpecStrategyOutput) DrainingTimeout() pulumi.IntPtrOutput {
 // The desired percentage of the Spot instances out of all running instances for this VNG. Only available when the field is not set in the cluster directly (cluster.strategy.spotPercentage).
 func (o OceanLaunchSpecStrategyOutput) SpotPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecStrategy) *int { return v.SpotPercentage }).(pulumi.IntPtrOutput)
+}
+
+// When set as ‘true’, if savings plans commitments have available capacity, Ocean will utilize them alongside RIs (if exist) to maximize cost efficiency. If the value is set as 'null', it will automatically be inherited from the cluster level.
+func (o OceanLaunchSpecStrategyOutput) UtilizeCommitments() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecStrategy) *bool { return v.UtilizeCommitments }).(pulumi.BoolPtrOutput)
+}
+
+// When set as ‘true’, if reserved instances exist, Ocean will utilize them before launching spot instances. If the value is set as 'null', it will automatically be inherited from the cluster level.
+func (o OceanLaunchSpecStrategyOutput) UtilizeReservedInstances() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecStrategy) *bool { return v.UtilizeReservedInstances }).(pulumi.BoolPtrOutput)
 }
 
 type OceanLaunchSpecStrategyArrayOutput struct{ *pulumi.OutputState }
