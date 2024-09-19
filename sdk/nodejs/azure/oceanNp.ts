@@ -6,32 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manages a Spotinst Ocean AKS resource.
- *
- * ## Basic Ocean Cluster Creation Usage Example - using minimum configuration with only required parameters
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as spotinst from "@pulumi/spotinst";
- *
- * const example = new spotinst.azure.OceanNp("example", {
- *     name: "test",
- *     aksRegion: "eastus",
- *     aksClusterName: "test-cluster",
- *     aksInfrastructureResourceGroupName: "MC_TestResourceGroup_test-cluster_eastus",
- *     aksResourceGroupName: "TestResourceGroup",
- *     controllerClusterId: "test-123124",
- *     availabilityZones: [
- *         "1",
- *         "2",
- *         "3",
- *     ],
- * });
- * ```
- *
- * ## Detailed Ocean Cluster Creation Usage Example - using all available parameters with sample values
- */
 export class OceanNp extends pulumi.CustomResource {
     /**
      * Get an existing OceanNp resource's state with the given name, ID, and optional extra

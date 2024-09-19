@@ -9,40 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.SpotInst.Azure
 {
-    /// <summary>
-    /// Manages a Spotinst Ocean AKS resource.
-    /// 
-    /// ## Basic Ocean Cluster Creation Usage Example - using minimum configuration with only required parameters
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using SpotInst = Pulumi.SpotInst;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new SpotInst.Azure.OceanNp("example", new()
-    ///     {
-    ///         Name = "test",
-    ///         AksRegion = "eastus",
-    ///         AksClusterName = "test-cluster",
-    ///         AksInfrastructureResourceGroupName = "MC_TestResourceGroup_test-cluster_eastus",
-    ///         AksResourceGroupName = "TestResourceGroup",
-    ///         ControllerClusterId = "test-123124",
-    ///         AvailabilityZones = new[]
-    ///         {
-    ///             "1",
-    ///             "2",
-    ///             "3",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Detailed Ocean Cluster Creation Usage Example - using all available parameters with sample values
-    /// </summary>
     [SpotInstResourceType("spotinst:azure/oceanNp:OceanNp")]
     public partial class OceanNp : global::Pulumi.CustomResource
     {
