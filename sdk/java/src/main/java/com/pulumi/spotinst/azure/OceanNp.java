@@ -26,56 +26,6 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-/**
- * Manages a Spotinst Ocean AKS resource.
- * 
- * ## Basic Ocean Cluster Creation Usage Example - using minimum configuration with only required parameters
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.spotinst.azure.OceanNp;
- * import com.pulumi.spotinst.azure.OceanNpArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new OceanNp("example", OceanNpArgs.builder()
- *             .name("test")
- *             .aksRegion("eastus")
- *             .aksClusterName("test-cluster")
- *             .aksInfrastructureResourceGroupName("MC_TestResourceGroup_test-cluster_eastus")
- *             .aksResourceGroupName("TestResourceGroup")
- *             .controllerClusterId("test-123124")
- *             .availabilityZones(            
- *                 "1",
- *                 "2",
- *                 "3")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;  
- * 
- * ## Detailed Ocean Cluster Creation Usage Example - using all available parameters with sample values
- * 
- */
 @ResourceType(type="spotinst:azure/oceanNp:OceanNp")
 public class OceanNp extends com.pulumi.resources.CustomResource {
     @Export(name="aksClusterName", refs={String.class}, tree="[0]")

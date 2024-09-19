@@ -12,8 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Manages a Spotinst Ocean GKE resource.
-//
 // ## Example Usage
 //
 // ```go

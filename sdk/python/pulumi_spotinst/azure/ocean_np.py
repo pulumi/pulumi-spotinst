@@ -964,30 +964,7 @@ class OceanNp(pulumi.CustomResource):
                  vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Manages a Spotinst Ocean AKS resource.
-
-        ## Basic Ocean Cluster Creation Usage Example - using minimum configuration with only required parameters
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        example = spotinst.azure.OceanNp("example",
-            name="test",
-            aks_region="eastus",
-            aks_cluster_name="test-cluster",
-            aks_infrastructure_resource_group_name="MC_TestResourceGroup_test-cluster_eastus",
-            aks_resource_group_name="TestResourceGroup",
-            controller_cluster_id="test-123124",
-            availability_zones=[
-                "1",
-                "2",
-                "3",
-            ])
-        ```
-
-        ## Detailed Ocean Cluster Creation Usage Example - using all available parameters with sample values
-
+        Create a OceanNp resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['OceanNpAutoscalerArgs', 'OceanNpAutoscalerArgsDict']] autoscaler: The Ocean Kubernetes Autoscaler object.
@@ -1021,30 +998,7 @@ class OceanNp(pulumi.CustomResource):
                  args: OceanNpArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a Spotinst Ocean AKS resource.
-
-        ## Basic Ocean Cluster Creation Usage Example - using minimum configuration with only required parameters
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        example = spotinst.azure.OceanNp("example",
-            name="test",
-            aks_region="eastus",
-            aks_cluster_name="test-cluster",
-            aks_infrastructure_resource_group_name="MC_TestResourceGroup_test-cluster_eastus",
-            aks_resource_group_name="TestResourceGroup",
-            controller_cluster_id="test-123124",
-            availability_zones=[
-                "1",
-                "2",
-                "3",
-            ])
-        ```
-
-        ## Detailed Ocean Cluster Creation Usage Example - using all available parameters with sample values
-
+        Create a OceanNp resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param OceanNpArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

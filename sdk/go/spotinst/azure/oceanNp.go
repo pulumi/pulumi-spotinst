@@ -12,45 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Manages a Spotinst Ocean AKS resource.
-//
-// ## Basic Ocean Cluster Creation Usage Example - using minimum configuration with only required parameters
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/azure"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azure.NewOceanNp(ctx, "example", &azure.OceanNpArgs{
-//				Name:                               pulumi.String("test"),
-//				AksRegion:                          pulumi.String("eastus"),
-//				AksClusterName:                     pulumi.String("test-cluster"),
-//				AksInfrastructureResourceGroupName: pulumi.String("MC_TestResourceGroup_test-cluster_eastus"),
-//				AksResourceGroupName:               pulumi.String("TestResourceGroup"),
-//				ControllerClusterId:                pulumi.String("test-123124"),
-//				AvailabilityZones: pulumi.StringArray{
-//					pulumi.String("1"),
-//					pulumi.String("2"),
-//					pulumi.String("3"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Detailed Ocean Cluster Creation Usage Example - using all available parameters with sample values
 type OceanNp struct {
 	pulumi.CustomResourceState
 

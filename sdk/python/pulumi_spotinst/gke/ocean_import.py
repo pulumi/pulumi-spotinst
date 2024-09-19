@@ -566,8 +566,6 @@ class OceanImport(pulumi.CustomResource):
                  whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Manages a Spotinst Ocean GKE resource.
-
         ## Example Usage
 
         ```python
@@ -630,8 +628,6 @@ class OceanImport(pulumi.CustomResource):
                  args: OceanImportArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a Spotinst Ocean GKE resource.
-
         ## Example Usage
 
         ```python
