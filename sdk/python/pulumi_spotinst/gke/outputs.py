@@ -1875,6 +1875,8 @@ class OceanImportStrategy(dict):
             suggest = "preemptible_percentage"
         elif key == "provisioningModel":
             suggest = "provisioning_model"
+        elif key == "shouldUtilizeCommitments":
+            suggest = "should_utilize_commitments"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in OceanImportStrategy. Access the value via the '{suggest}' property getter instead.")
@@ -1890,11 +1892,13 @@ class OceanImportStrategy(dict):
     def __init__(__self__, *,
                  draining_timeout: Optional[int] = None,
                  preemptible_percentage: Optional[int] = None,
-                 provisioning_model: Optional[str] = None):
+                 provisioning_model: Optional[str] = None,
+                 should_utilize_commitments: Optional[bool] = None):
         """
         :param int draining_timeout: The draining timeout (in seconds) before terminating the instance. If no draining timeout is defined, the default draining timeout will be used.
         :param int preemptible_percentage: Defines the desired preemptible percentage for the cluster.
         :param str provisioning_model: Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
+        :param bool should_utilize_commitments: Enable committed use discounts utilization.
         """
         if draining_timeout is not None:
             pulumi.set(__self__, "draining_timeout", draining_timeout)
@@ -1902,6 +1906,8 @@ class OceanImportStrategy(dict):
             pulumi.set(__self__, "preemptible_percentage", preemptible_percentage)
         if provisioning_model is not None:
             pulumi.set(__self__, "provisioning_model", provisioning_model)
+        if should_utilize_commitments is not None:
+            pulumi.set(__self__, "should_utilize_commitments", should_utilize_commitments)
 
     @property
     @pulumi.getter(name="drainingTimeout")
@@ -1926,6 +1932,14 @@ class OceanImportStrategy(dict):
         Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
         """
         return pulumi.get(self, "provisioning_model")
+
+    @property
+    @pulumi.getter(name="shouldUtilizeCommitments")
+    def should_utilize_commitments(self) -> Optional[bool]:
+        """
+        Enable committed use discounts utilization.
+        """
+        return pulumi.get(self, "should_utilize_commitments")
 
 
 @pulumi.output_type

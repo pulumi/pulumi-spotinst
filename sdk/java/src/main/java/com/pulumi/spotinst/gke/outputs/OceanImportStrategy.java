@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.gke.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -27,6 +28,11 @@ public final class OceanImportStrategy {
      * 
      */
     private @Nullable String provisioningModel;
+    /**
+     * @return Enable committed use discounts utilization.
+     * 
+     */
+    private @Nullable Boolean shouldUtilizeCommitments;
 
     private OceanImportStrategy() {}
     /**
@@ -50,6 +56,13 @@ public final class OceanImportStrategy {
     public Optional<String> provisioningModel() {
         return Optional.ofNullable(this.provisioningModel);
     }
+    /**
+     * @return Enable committed use discounts utilization.
+     * 
+     */
+    public Optional<Boolean> shouldUtilizeCommitments() {
+        return Optional.ofNullable(this.shouldUtilizeCommitments);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -63,12 +76,14 @@ public final class OceanImportStrategy {
         private @Nullable Integer drainingTimeout;
         private @Nullable Integer preemptiblePercentage;
         private @Nullable String provisioningModel;
+        private @Nullable Boolean shouldUtilizeCommitments;
         public Builder() {}
         public Builder(OceanImportStrategy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.drainingTimeout = defaults.drainingTimeout;
     	      this.preemptiblePercentage = defaults.preemptiblePercentage;
     	      this.provisioningModel = defaults.provisioningModel;
+    	      this.shouldUtilizeCommitments = defaults.shouldUtilizeCommitments;
         }
 
         @CustomType.Setter
@@ -89,11 +104,18 @@ public final class OceanImportStrategy {
             this.provisioningModel = provisioningModel;
             return this;
         }
+        @CustomType.Setter
+        public Builder shouldUtilizeCommitments(@Nullable Boolean shouldUtilizeCommitments) {
+
+            this.shouldUtilizeCommitments = shouldUtilizeCommitments;
+            return this;
+        }
         public OceanImportStrategy build() {
             final var _resultValue = new OceanImportStrategy();
             _resultValue.drainingTimeout = drainingTimeout;
             _resultValue.preemptiblePercentage = preemptiblePercentage;
             _resultValue.provisioningModel = provisioningModel;
+            _resultValue.shouldUtilizeCommitments = shouldUtilizeCommitments;
             return _resultValue;
         }
     }

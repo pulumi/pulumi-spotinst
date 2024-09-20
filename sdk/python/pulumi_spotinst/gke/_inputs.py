@@ -1852,11 +1852,13 @@ class OceanImportStrategyArgs:
     def __init__(__self__, *,
                  draining_timeout: Optional[pulumi.Input[int]] = None,
                  preemptible_percentage: Optional[pulumi.Input[int]] = None,
-                 provisioning_model: Optional[pulumi.Input[str]] = None):
+                 provisioning_model: Optional[pulumi.Input[str]] = None,
+                 should_utilize_commitments: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[int] draining_timeout: The draining timeout (in seconds) before terminating the instance. If no draining timeout is defined, the default draining timeout will be used.
         :param pulumi.Input[int] preemptible_percentage: Defines the desired preemptible percentage for the cluster.
         :param pulumi.Input[str] provisioning_model: Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
+        :param pulumi.Input[bool] should_utilize_commitments: Enable committed use discounts utilization.
         """
         if draining_timeout is not None:
             pulumi.set(__self__, "draining_timeout", draining_timeout)
@@ -1864,6 +1866,8 @@ class OceanImportStrategyArgs:
             pulumi.set(__self__, "preemptible_percentage", preemptible_percentage)
         if provisioning_model is not None:
             pulumi.set(__self__, "provisioning_model", provisioning_model)
+        if should_utilize_commitments is not None:
+            pulumi.set(__self__, "should_utilize_commitments", should_utilize_commitments)
 
     @property
     @pulumi.getter(name="drainingTimeout")
@@ -1900,6 +1904,18 @@ class OceanImportStrategyArgs:
     @provisioning_model.setter
     def provisioning_model(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "provisioning_model", value)
+
+    @property
+    @pulumi.getter(name="shouldUtilizeCommitments")
+    def should_utilize_commitments(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable committed use discounts utilization.
+        """
+        return pulumi.get(self, "should_utilize_commitments")
+
+    @should_utilize_commitments.setter
+    def should_utilize_commitments(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "should_utilize_commitments", value)
 
 
 @pulumi.input_type

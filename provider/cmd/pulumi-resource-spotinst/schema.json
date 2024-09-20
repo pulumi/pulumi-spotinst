@@ -6742,11 +6742,15 @@
                 },
                 "preemptiblePercentage": {
                     "type": "integer",
-                    "description": "Defines the desired preemptible percentage for the cluster.\n\n"
+                    "description": "Defines the desired preemptible percentage for the cluster.\n"
                 },
                 "provisioningModel": {
                     "type": "string",
                     "description": "Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.\n"
+                },
+                "shouldUtilizeCommitments": {
+                    "type": "boolean",
+                    "description": "Enable committed use discounts utilization.\n\n"
                 }
             },
             "type": "object"

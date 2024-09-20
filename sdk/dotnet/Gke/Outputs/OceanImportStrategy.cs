@@ -25,6 +25,10 @@ namespace Pulumi.SpotInst.Gke.Outputs
         /// Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
         /// </summary>
         public readonly string? ProvisioningModel;
+        /// <summary>
+        /// Enable committed use discounts utilization.
+        /// </summary>
+        public readonly bool? ShouldUtilizeCommitments;
 
         [OutputConstructor]
         private OceanImportStrategy(
@@ -32,11 +36,14 @@ namespace Pulumi.SpotInst.Gke.Outputs
 
             int? preemptiblePercentage,
 
-            string? provisioningModel)
+            string? provisioningModel,
+
+            bool? shouldUtilizeCommitments)
         {
             DrainingTimeout = drainingTimeout;
             PreemptiblePercentage = preemptiblePercentage;
             ProvisioningModel = provisioningModel;
+            ShouldUtilizeCommitments = shouldUtilizeCommitments;
         }
     }
 }
