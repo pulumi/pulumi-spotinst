@@ -30,6 +30,12 @@ namespace Pulumi.SpotInst.Gke.Inputs
         [Input("provisioningModel")]
         public Input<string>? ProvisioningModel { get; set; }
 
+        /// <summary>
+        /// Enable committed use discounts utilization.
+        /// </summary>
+        [Input("shouldUtilizeCommitments")]
+        public Input<bool>? ShouldUtilizeCommitments { get; set; }
+
         public OceanImportStrategyGetArgs()
         {
         }

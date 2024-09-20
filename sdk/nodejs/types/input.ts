@@ -4723,6 +4723,10 @@ export namespace gke {
          * Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
          */
         provisioningModel?: pulumi.Input<string>;
+        /**
+         * Enable committed use discounts utilization.
+         */
+        shouldUtilizeCommitments?: pulumi.Input<boolean>;
     }
 
     export interface OceanImportUpdatePolicy {

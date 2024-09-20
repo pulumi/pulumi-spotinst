@@ -4728,6 +4728,10 @@ export namespace gke {
          * Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
          */
         provisioningModel?: string;
+        /**
+         * Enable committed use discounts utilization.
+         */
+        shouldUtilizeCommitments?: boolean;
     }
 
     export interface OceanImportUpdatePolicy {

@@ -4551,6 +4551,8 @@ type OceanImportStrategy struct {
 	PreemptiblePercentage *int `pulumi:"preemptiblePercentage"`
 	// Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
 	ProvisioningModel *string `pulumi:"provisioningModel"`
+	// Enable committed use discounts utilization.
+	ShouldUtilizeCommitments *bool `pulumi:"shouldUtilizeCommitments"`
 }
 
 // OceanImportStrategyInput is an input type that accepts OceanImportStrategyArgs and OceanImportStrategyOutput values.
@@ -4571,6 +4573,8 @@ type OceanImportStrategyArgs struct {
 	PreemptiblePercentage pulumi.IntPtrInput `pulumi:"preemptiblePercentage"`
 	// Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
 	ProvisioningModel pulumi.StringPtrInput `pulumi:"provisioningModel"`
+	// Enable committed use discounts utilization.
+	ShouldUtilizeCommitments pulumi.BoolPtrInput `pulumi:"shouldUtilizeCommitments"`
 }
 
 func (OceanImportStrategyArgs) ElementType() reflect.Type {
@@ -4637,6 +4641,11 @@ func (o OceanImportStrategyOutput) PreemptiblePercentage() pulumi.IntPtrOutput {
 // Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
 func (o OceanImportStrategyOutput) ProvisioningModel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanImportStrategy) *string { return v.ProvisioningModel }).(pulumi.StringPtrOutput)
+}
+
+// Enable committed use discounts utilization.
+func (o OceanImportStrategyOutput) ShouldUtilizeCommitments() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanImportStrategy) *bool { return v.ShouldUtilizeCommitments }).(pulumi.BoolPtrOutput)
 }
 
 type OceanImportStrategyArrayOutput struct{ *pulumi.OutputState }

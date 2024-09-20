@@ -5,6 +5,7 @@ package com.pulumi.spotinst.gke.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -61,12 +62,28 @@ public final class OceanImportStrategyArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.provisioningModel);
     }
 
+    /**
+     * Enable committed use discounts utilization.
+     * 
+     */
+    @Import(name="shouldUtilizeCommitments")
+    private @Nullable Output<Boolean> shouldUtilizeCommitments;
+
+    /**
+     * @return Enable committed use discounts utilization.
+     * 
+     */
+    public Optional<Output<Boolean>> shouldUtilizeCommitments() {
+        return Optional.ofNullable(this.shouldUtilizeCommitments);
+    }
+
     private OceanImportStrategyArgs() {}
 
     private OceanImportStrategyArgs(OceanImportStrategyArgs $) {
         this.drainingTimeout = $.drainingTimeout;
         this.preemptiblePercentage = $.preemptiblePercentage;
         this.provisioningModel = $.provisioningModel;
+        this.shouldUtilizeCommitments = $.shouldUtilizeCommitments;
     }
 
     public static Builder builder() {
@@ -148,6 +165,27 @@ public final class OceanImportStrategyArgs extends com.pulumi.resources.Resource
          */
         public Builder provisioningModel(String provisioningModel) {
             return provisioningModel(Output.of(provisioningModel));
+        }
+
+        /**
+         * @param shouldUtilizeCommitments Enable committed use discounts utilization.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shouldUtilizeCommitments(@Nullable Output<Boolean> shouldUtilizeCommitments) {
+            $.shouldUtilizeCommitments = shouldUtilizeCommitments;
+            return this;
+        }
+
+        /**
+         * @param shouldUtilizeCommitments Enable committed use discounts utilization.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shouldUtilizeCommitments(Boolean shouldUtilizeCommitments) {
+            return shouldUtilizeCommitments(Output.of(shouldUtilizeCommitments));
         }
 
         public OceanImportStrategyArgs build() {
