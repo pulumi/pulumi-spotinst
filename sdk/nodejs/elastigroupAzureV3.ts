@@ -49,6 +49,8 @@ export class ElastigroupAzureV3 extends pulumi.CustomResource {
     public readonly os!: pulumi.Output<string>;
     public readonly region!: pulumi.Output<string>;
     public readonly resourceGroupName!: pulumi.Output<string>;
+    public readonly scalingDownPolicies!: pulumi.Output<outputs.ElastigroupAzureV3ScalingDownPolicy[] | undefined>;
+    public readonly scalingUpPolicies!: pulumi.Output<outputs.ElastigroupAzureV3ScalingUpPolicy[] | undefined>;
     public readonly spotPercentage!: pulumi.Output<number | undefined>;
     public readonly tags!: pulumi.Output<outputs.ElastigroupAzureV3Tag[] | undefined>;
     public readonly vmSizes!: pulumi.Output<outputs.ElastigroupAzureV3VmSizes>;
@@ -81,6 +83,8 @@ export class ElastigroupAzureV3 extends pulumi.CustomResource {
             resourceInputs["os"] = state ? state.os : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["resourceGroupName"] = state ? state.resourceGroupName : undefined;
+            resourceInputs["scalingDownPolicies"] = state ? state.scalingDownPolicies : undefined;
+            resourceInputs["scalingUpPolicies"] = state ? state.scalingUpPolicies : undefined;
             resourceInputs["spotPercentage"] = state ? state.spotPercentage : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["vmSizes"] = state ? state.vmSizes : undefined;
@@ -119,6 +123,8 @@ export class ElastigroupAzureV3 extends pulumi.CustomResource {
             resourceInputs["os"] = args ? args.os : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["scalingDownPolicies"] = args ? args.scalingDownPolicies : undefined;
+            resourceInputs["scalingUpPolicies"] = args ? args.scalingUpPolicies : undefined;
             resourceInputs["spotPercentage"] = args ? args.spotPercentage : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["vmSizes"] = args ? args.vmSizes : undefined;
@@ -147,6 +153,8 @@ export interface ElastigroupAzureV3State {
     os?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
     resourceGroupName?: pulumi.Input<string>;
+    scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3ScalingDownPolicy>[]>;
+    scalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3ScalingUpPolicy>[]>;
     spotPercentage?: pulumi.Input<number>;
     tags?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3Tag>[]>;
     vmSizes?: pulumi.Input<inputs.ElastigroupAzureV3VmSizes>;
@@ -171,6 +179,8 @@ export interface ElastigroupAzureV3Args {
     os: pulumi.Input<string>;
     region: pulumi.Input<string>;
     resourceGroupName: pulumi.Input<string>;
+    scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3ScalingDownPolicy>[]>;
+    scalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3ScalingUpPolicy>[]>;
     spotPercentage?: pulumi.Input<number>;
     tags?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3Tag>[]>;
     vmSizes: pulumi.Input<inputs.ElastigroupAzureV3VmSizes>;

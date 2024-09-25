@@ -14,6 +14,8 @@ import com.pulumi.spotinst.outputs.ElastigroupAzureV3Image;
 import com.pulumi.spotinst.outputs.ElastigroupAzureV3Login;
 import com.pulumi.spotinst.outputs.ElastigroupAzureV3ManagedServiceIdentity;
 import com.pulumi.spotinst.outputs.ElastigroupAzureV3Network;
+import com.pulumi.spotinst.outputs.ElastigroupAzureV3ScalingDownPolicy;
+import com.pulumi.spotinst.outputs.ElastigroupAzureV3ScalingUpPolicy;
 import com.pulumi.spotinst.outputs.ElastigroupAzureV3Tag;
 import com.pulumi.spotinst.outputs.ElastigroupAzureV3VmSizes;
 import java.lang.Boolean;
@@ -114,6 +116,18 @@ public class ElastigroupAzureV3 extends com.pulumi.resources.CustomResource {
 
     public Output<String> resourceGroupName() {
         return this.resourceGroupName;
+    }
+    @Export(name="scalingDownPolicies", refs={List.class,ElastigroupAzureV3ScalingDownPolicy.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ElastigroupAzureV3ScalingDownPolicy>> scalingDownPolicies;
+
+    public Output<Optional<List<ElastigroupAzureV3ScalingDownPolicy>>> scalingDownPolicies() {
+        return Codegen.optional(this.scalingDownPolicies);
+    }
+    @Export(name="scalingUpPolicies", refs={List.class,ElastigroupAzureV3ScalingUpPolicy.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ElastigroupAzureV3ScalingUpPolicy>> scalingUpPolicies;
+
+    public Output<Optional<List<ElastigroupAzureV3ScalingUpPolicy>>> scalingUpPolicies() {
+        return Codegen.optional(this.scalingUpPolicies);
     }
     @Export(name="spotPercentage", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> spotPercentage;

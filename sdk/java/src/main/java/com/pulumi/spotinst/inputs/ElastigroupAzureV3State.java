@@ -9,6 +9,8 @@ import com.pulumi.spotinst.inputs.ElastigroupAzureV3ImageArgs;
 import com.pulumi.spotinst.inputs.ElastigroupAzureV3LoginArgs;
 import com.pulumi.spotinst.inputs.ElastigroupAzureV3ManagedServiceIdentityArgs;
 import com.pulumi.spotinst.inputs.ElastigroupAzureV3NetworkArgs;
+import com.pulumi.spotinst.inputs.ElastigroupAzureV3ScalingDownPolicyArgs;
+import com.pulumi.spotinst.inputs.ElastigroupAzureV3ScalingUpPolicyArgs;
 import com.pulumi.spotinst.inputs.ElastigroupAzureV3TagArgs;
 import com.pulumi.spotinst.inputs.ElastigroupAzureV3VmSizesArgs;
 import java.lang.Boolean;
@@ -129,6 +131,20 @@ public final class ElastigroupAzureV3State extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.resourceGroupName);
     }
 
+    @Import(name="scalingDownPolicies")
+    private @Nullable Output<List<ElastigroupAzureV3ScalingDownPolicyArgs>> scalingDownPolicies;
+
+    public Optional<Output<List<ElastigroupAzureV3ScalingDownPolicyArgs>>> scalingDownPolicies() {
+        return Optional.ofNullable(this.scalingDownPolicies);
+    }
+
+    @Import(name="scalingUpPolicies")
+    private @Nullable Output<List<ElastigroupAzureV3ScalingUpPolicyArgs>> scalingUpPolicies;
+
+    public Optional<Output<List<ElastigroupAzureV3ScalingUpPolicyArgs>>> scalingUpPolicies() {
+        return Optional.ofNullable(this.scalingUpPolicies);
+    }
+
     @Import(name="spotPercentage")
     private @Nullable Output<Integer> spotPercentage;
 
@@ -168,6 +184,8 @@ public final class ElastigroupAzureV3State extends com.pulumi.resources.Resource
         this.os = $.os;
         this.region = $.region;
         this.resourceGroupName = $.resourceGroupName;
+        this.scalingDownPolicies = $.scalingDownPolicies;
+        this.scalingUpPolicies = $.scalingUpPolicies;
         this.spotPercentage = $.spotPercentage;
         this.tags = $.tags;
         this.vmSizes = $.vmSizes;
@@ -332,6 +350,32 @@ public final class ElastigroupAzureV3State extends com.pulumi.resources.Resource
 
         public Builder resourceGroupName(String resourceGroupName) {
             return resourceGroupName(Output.of(resourceGroupName));
+        }
+
+        public Builder scalingDownPolicies(@Nullable Output<List<ElastigroupAzureV3ScalingDownPolicyArgs>> scalingDownPolicies) {
+            $.scalingDownPolicies = scalingDownPolicies;
+            return this;
+        }
+
+        public Builder scalingDownPolicies(List<ElastigroupAzureV3ScalingDownPolicyArgs> scalingDownPolicies) {
+            return scalingDownPolicies(Output.of(scalingDownPolicies));
+        }
+
+        public Builder scalingDownPolicies(ElastigroupAzureV3ScalingDownPolicyArgs... scalingDownPolicies) {
+            return scalingDownPolicies(List.of(scalingDownPolicies));
+        }
+
+        public Builder scalingUpPolicies(@Nullable Output<List<ElastigroupAzureV3ScalingUpPolicyArgs>> scalingUpPolicies) {
+            $.scalingUpPolicies = scalingUpPolicies;
+            return this;
+        }
+
+        public Builder scalingUpPolicies(List<ElastigroupAzureV3ScalingUpPolicyArgs> scalingUpPolicies) {
+            return scalingUpPolicies(Output.of(scalingUpPolicies));
+        }
+
+        public Builder scalingUpPolicies(ElastigroupAzureV3ScalingUpPolicyArgs... scalingUpPolicies) {
+            return scalingUpPolicies(List.of(scalingUpPolicies));
         }
 
         public Builder spotPercentage(@Nullable Output<Integer> spotPercentage) {

@@ -32,6 +32,8 @@ class ElastigroupAzureV3Args:
                  min_size: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  on_demand_count: Optional[pulumi.Input[int]] = None,
+                 scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ScalingDownPolicyArgs']]]] = None,
+                 scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ScalingUpPolicyArgs']]]] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3TagArgs']]]] = None):
         """
@@ -63,6 +65,10 @@ class ElastigroupAzureV3Args:
             pulumi.set(__self__, "name", name)
         if on_demand_count is not None:
             pulumi.set(__self__, "on_demand_count", on_demand_count)
+        if scaling_down_policies is not None:
+            pulumi.set(__self__, "scaling_down_policies", scaling_down_policies)
+        if scaling_up_policies is not None:
+            pulumi.set(__self__, "scaling_up_policies", scaling_up_policies)
         if spot_percentage is not None:
             pulumi.set(__self__, "spot_percentage", spot_percentage)
         if tags is not None:
@@ -213,6 +219,24 @@ class ElastigroupAzureV3Args:
         pulumi.set(self, "on_demand_count", value)
 
     @property
+    @pulumi.getter(name="scalingDownPolicies")
+    def scaling_down_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ScalingDownPolicyArgs']]]]:
+        return pulumi.get(self, "scaling_down_policies")
+
+    @scaling_down_policies.setter
+    def scaling_down_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ScalingDownPolicyArgs']]]]):
+        pulumi.set(self, "scaling_down_policies", value)
+
+    @property
+    @pulumi.getter(name="scalingUpPolicies")
+    def scaling_up_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ScalingUpPolicyArgs']]]]:
+        return pulumi.get(self, "scaling_up_policies")
+
+    @scaling_up_policies.setter
+    def scaling_up_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ScalingUpPolicyArgs']]]]):
+        pulumi.set(self, "scaling_up_policies", value)
+
+    @property
     @pulumi.getter(name="spotPercentage")
     def spot_percentage(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "spot_percentage")
@@ -249,6 +273,8 @@ class _ElastigroupAzureV3State:
                  os: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
+                 scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ScalingDownPolicyArgs']]]] = None,
+                 scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ScalingUpPolicyArgs']]]] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3TagArgs']]]] = None,
                  vm_sizes: Optional[pulumi.Input['ElastigroupAzureV3VmSizesArgs']] = None):
@@ -285,6 +311,10 @@ class _ElastigroupAzureV3State:
             pulumi.set(__self__, "region", region)
         if resource_group_name is not None:
             pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if scaling_down_policies is not None:
+            pulumi.set(__self__, "scaling_down_policies", scaling_down_policies)
+        if scaling_up_policies is not None:
+            pulumi.set(__self__, "scaling_up_policies", scaling_up_policies)
         if spot_percentage is not None:
             pulumi.set(__self__, "spot_percentage", spot_percentage)
         if tags is not None:
@@ -428,6 +458,24 @@ class _ElastigroupAzureV3State:
         pulumi.set(self, "resource_group_name", value)
 
     @property
+    @pulumi.getter(name="scalingDownPolicies")
+    def scaling_down_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ScalingDownPolicyArgs']]]]:
+        return pulumi.get(self, "scaling_down_policies")
+
+    @scaling_down_policies.setter
+    def scaling_down_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ScalingDownPolicyArgs']]]]):
+        pulumi.set(self, "scaling_down_policies", value)
+
+    @property
+    @pulumi.getter(name="scalingUpPolicies")
+    def scaling_up_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ScalingUpPolicyArgs']]]]:
+        return pulumi.get(self, "scaling_up_policies")
+
+    @scaling_up_policies.setter
+    def scaling_up_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ScalingUpPolicyArgs']]]]):
+        pulumi.set(self, "scaling_up_policies", value)
+
+    @property
     @pulumi.getter(name="spotPercentage")
     def spot_percentage(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "spot_percentage")
@@ -475,6 +523,8 @@ class ElastigroupAzureV3(pulumi.CustomResource):
                  os: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
+                 scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3ScalingDownPolicyArgs', 'ElastigroupAzureV3ScalingDownPolicyArgsDict']]]]] = None,
+                 scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3ScalingUpPolicyArgs', 'ElastigroupAzureV3ScalingUpPolicyArgsDict']]]]] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3TagArgs', 'ElastigroupAzureV3TagArgsDict']]]]] = None,
                  vm_sizes: Optional[pulumi.Input[Union['ElastigroupAzureV3VmSizesArgs', 'ElastigroupAzureV3VmSizesArgsDict']]] = None,
@@ -522,6 +572,8 @@ class ElastigroupAzureV3(pulumi.CustomResource):
                  os: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
+                 scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3ScalingDownPolicyArgs', 'ElastigroupAzureV3ScalingDownPolicyArgsDict']]]]] = None,
+                 scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3ScalingUpPolicyArgs', 'ElastigroupAzureV3ScalingUpPolicyArgsDict']]]]] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3TagArgs', 'ElastigroupAzureV3TagArgsDict']]]]] = None,
                  vm_sizes: Optional[pulumi.Input[Union['ElastigroupAzureV3VmSizesArgs', 'ElastigroupAzureV3VmSizesArgsDict']]] = None,
@@ -559,6 +611,8 @@ class ElastigroupAzureV3(pulumi.CustomResource):
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
             __props__.__dict__["resource_group_name"] = resource_group_name
+            __props__.__dict__["scaling_down_policies"] = scaling_down_policies
+            __props__.__dict__["scaling_up_policies"] = scaling_up_policies
             __props__.__dict__["spot_percentage"] = spot_percentage
             __props__.__dict__["tags"] = tags
             if vm_sizes is None and not opts.urn:
@@ -589,6 +643,8 @@ class ElastigroupAzureV3(pulumi.CustomResource):
             os: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             resource_group_name: Optional[pulumi.Input[str]] = None,
+            scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3ScalingDownPolicyArgs', 'ElastigroupAzureV3ScalingDownPolicyArgsDict']]]]] = None,
+            scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3ScalingUpPolicyArgs', 'ElastigroupAzureV3ScalingUpPolicyArgsDict']]]]] = None,
             spot_percentage: Optional[pulumi.Input[int]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3TagArgs', 'ElastigroupAzureV3TagArgsDict']]]]] = None,
             vm_sizes: Optional[pulumi.Input[Union['ElastigroupAzureV3VmSizesArgs', 'ElastigroupAzureV3VmSizesArgsDict']]] = None) -> 'ElastigroupAzureV3':
@@ -619,6 +675,8 @@ class ElastigroupAzureV3(pulumi.CustomResource):
         __props__.__dict__["os"] = os
         __props__.__dict__["region"] = region
         __props__.__dict__["resource_group_name"] = resource_group_name
+        __props__.__dict__["scaling_down_policies"] = scaling_down_policies
+        __props__.__dict__["scaling_up_policies"] = scaling_up_policies
         __props__.__dict__["spot_percentage"] = spot_percentage
         __props__.__dict__["tags"] = tags
         __props__.__dict__["vm_sizes"] = vm_sizes
@@ -698,6 +756,16 @@ class ElastigroupAzureV3(pulumi.CustomResource):
     @pulumi.getter(name="resourceGroupName")
     def resource_group_name(self) -> pulumi.Output[str]:
         return pulumi.get(self, "resource_group_name")
+
+    @property
+    @pulumi.getter(name="scalingDownPolicies")
+    def scaling_down_policies(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupAzureV3ScalingDownPolicy']]]:
+        return pulumi.get(self, "scaling_down_policies")
+
+    @property
+    @pulumi.getter(name="scalingUpPolicies")
+    def scaling_up_policies(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupAzureV3ScalingUpPolicy']]]:
+        return pulumi.get(self, "scaling_up_policies")
 
     @property
     @pulumi.getter(name="spotPercentage")

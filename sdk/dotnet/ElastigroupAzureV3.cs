@@ -57,6 +57,12 @@ namespace Pulumi.SpotInst
         [Output("resourceGroupName")]
         public Output<string> ResourceGroupName { get; private set; } = null!;
 
+        [Output("scalingDownPolicies")]
+        public Output<ImmutableArray<Outputs.ElastigroupAzureV3ScalingDownPolicy>> ScalingDownPolicies { get; private set; } = null!;
+
+        [Output("scalingUpPolicies")]
+        public Output<ImmutableArray<Outputs.ElastigroupAzureV3ScalingUpPolicy>> ScalingUpPolicies { get; private set; } = null!;
+
         [Output("spotPercentage")]
         public Output<int?> SpotPercentage { get; private set; } = null!;
 
@@ -167,6 +173,22 @@ namespace Pulumi.SpotInst
         [Input("resourceGroupName", required: true)]
         public Input<string> ResourceGroupName { get; set; } = null!;
 
+        [Input("scalingDownPolicies")]
+        private InputList<Inputs.ElastigroupAzureV3ScalingDownPolicyArgs>? _scalingDownPolicies;
+        public InputList<Inputs.ElastigroupAzureV3ScalingDownPolicyArgs> ScalingDownPolicies
+        {
+            get => _scalingDownPolicies ?? (_scalingDownPolicies = new InputList<Inputs.ElastigroupAzureV3ScalingDownPolicyArgs>());
+            set => _scalingDownPolicies = value;
+        }
+
+        [Input("scalingUpPolicies")]
+        private InputList<Inputs.ElastigroupAzureV3ScalingUpPolicyArgs>? _scalingUpPolicies;
+        public InputList<Inputs.ElastigroupAzureV3ScalingUpPolicyArgs> ScalingUpPolicies
+        {
+            get => _scalingUpPolicies ?? (_scalingUpPolicies = new InputList<Inputs.ElastigroupAzureV3ScalingUpPolicyArgs>());
+            set => _scalingUpPolicies = value;
+        }
+
         [Input("spotPercentage")]
         public Input<int>? SpotPercentage { get; set; }
 
@@ -243,6 +265,22 @@ namespace Pulumi.SpotInst
 
         [Input("resourceGroupName")]
         public Input<string>? ResourceGroupName { get; set; }
+
+        [Input("scalingDownPolicies")]
+        private InputList<Inputs.ElastigroupAzureV3ScalingDownPolicyGetArgs>? _scalingDownPolicies;
+        public InputList<Inputs.ElastigroupAzureV3ScalingDownPolicyGetArgs> ScalingDownPolicies
+        {
+            get => _scalingDownPolicies ?? (_scalingDownPolicies = new InputList<Inputs.ElastigroupAzureV3ScalingDownPolicyGetArgs>());
+            set => _scalingDownPolicies = value;
+        }
+
+        [Input("scalingUpPolicies")]
+        private InputList<Inputs.ElastigroupAzureV3ScalingUpPolicyGetArgs>? _scalingUpPolicies;
+        public InputList<Inputs.ElastigroupAzureV3ScalingUpPolicyGetArgs> ScalingUpPolicies
+        {
+            get => _scalingUpPolicies ?? (_scalingUpPolicies = new InputList<Inputs.ElastigroupAzureV3ScalingUpPolicyGetArgs>());
+            set => _scalingUpPolicies = value;
+        }
 
         [Input("spotPercentage")]
         public Input<int>? SpotPercentage { get; set; }

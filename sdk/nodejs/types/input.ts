@@ -74,6 +74,66 @@ export interface ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGro
     resourceGroupName: pulumi.Input<string>;
 }
 
+export interface ElastigroupAzureV3ScalingDownPolicy {
+    action: pulumi.Input<inputs.ElastigroupAzureV3ScalingDownPolicyAction>;
+    cooldown: pulumi.Input<number>;
+    dimensions?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3ScalingDownPolicyDimension>[]>;
+    evaluationPeriods: pulumi.Input<number>;
+    isEnabled?: pulumi.Input<boolean>;
+    metricName: pulumi.Input<string>;
+    namespace: pulumi.Input<string>;
+    operator: pulumi.Input<string>;
+    period: pulumi.Input<number>;
+    policyName: pulumi.Input<string>;
+    source?: pulumi.Input<string>;
+    statistic: pulumi.Input<string>;
+    threshold: pulumi.Input<number>;
+    unit?: pulumi.Input<string>;
+}
+
+export interface ElastigroupAzureV3ScalingDownPolicyAction {
+    adjustment?: pulumi.Input<string>;
+    maximum?: pulumi.Input<string>;
+    minimum?: pulumi.Input<string>;
+    target?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
+}
+
+export interface ElastigroupAzureV3ScalingDownPolicyDimension {
+    name?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
+}
+
+export interface ElastigroupAzureV3ScalingUpPolicy {
+    action: pulumi.Input<inputs.ElastigroupAzureV3ScalingUpPolicyAction>;
+    cooldown: pulumi.Input<number>;
+    dimensions?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3ScalingUpPolicyDimension>[]>;
+    evaluationPeriods: pulumi.Input<number>;
+    isEnabled?: pulumi.Input<boolean>;
+    metricName: pulumi.Input<string>;
+    namespace: pulumi.Input<string>;
+    operator: pulumi.Input<string>;
+    period: pulumi.Input<number>;
+    policyName: pulumi.Input<string>;
+    source?: pulumi.Input<string>;
+    statistic: pulumi.Input<string>;
+    threshold: pulumi.Input<number>;
+    unit?: pulumi.Input<string>;
+}
+
+export interface ElastigroupAzureV3ScalingUpPolicyAction {
+    adjustment?: pulumi.Input<string>;
+    maximum?: pulumi.Input<string>;
+    minimum?: pulumi.Input<string>;
+    target?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
+}
+
+export interface ElastigroupAzureV3ScalingUpPolicyDimension {
+    name?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
+}
+
 export interface ElastigroupAzureV3Tag {
     key: pulumi.Input<string>;
     value: pulumi.Input<string>;

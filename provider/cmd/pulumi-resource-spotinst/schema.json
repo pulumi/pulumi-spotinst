@@ -7328,6 +7328,226 @@
                 "resourceGroupName"
             ]
         },
+        "spotinst:index/ElastigroupAzureV3ScalingDownPolicy:ElastigroupAzureV3ScalingDownPolicy": {
+            "properties": {
+                "action": {
+                    "$ref": "#/types/spotinst:index/ElastigroupAzureV3ScalingDownPolicyAction:ElastigroupAzureV3ScalingDownPolicyAction"
+                },
+                "cooldown": {
+                    "type": "integer"
+                },
+                "dimensions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:index/ElastigroupAzureV3ScalingDownPolicyDimension:ElastigroupAzureV3ScalingDownPolicyDimension"
+                    }
+                },
+                "evaluationPeriods": {
+                    "type": "integer"
+                },
+                "isEnabled": {
+                    "type": "boolean"
+                },
+                "metricName": {
+                    "type": "string"
+                },
+                "namespace": {
+                    "type": "string"
+                },
+                "operator": {
+                    "type": "string"
+                },
+                "period": {
+                    "type": "integer"
+                },
+                "policyName": {
+                    "type": "string"
+                },
+                "source": {
+                    "type": "string"
+                },
+                "statistic": {
+                    "type": "string"
+                },
+                "threshold": {
+                    "type": "number"
+                },
+                "unit": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "action",
+                "cooldown",
+                "evaluationPeriods",
+                "metricName",
+                "namespace",
+                "operator",
+                "period",
+                "policyName",
+                "statistic",
+                "threshold"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "action",
+                        "cooldown",
+                        "evaluationPeriods",
+                        "metricName",
+                        "namespace",
+                        "operator",
+                        "period",
+                        "policyName",
+                        "source",
+                        "statistic",
+                        "threshold"
+                    ]
+                }
+            }
+        },
+        "spotinst:index/ElastigroupAzureV3ScalingDownPolicyAction:ElastigroupAzureV3ScalingDownPolicyAction": {
+            "properties": {
+                "adjustment": {
+                    "type": "string"
+                },
+                "maximum": {
+                    "type": "string"
+                },
+                "minimum": {
+                    "type": "string"
+                },
+                "target": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "spotinst:index/ElastigroupAzureV3ScalingDownPolicyDimension:ElastigroupAzureV3ScalingDownPolicyDimension": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "spotinst:index/ElastigroupAzureV3ScalingUpPolicy:ElastigroupAzureV3ScalingUpPolicy": {
+            "properties": {
+                "action": {
+                    "$ref": "#/types/spotinst:index/ElastigroupAzureV3ScalingUpPolicyAction:ElastigroupAzureV3ScalingUpPolicyAction"
+                },
+                "cooldown": {
+                    "type": "integer"
+                },
+                "dimensions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:index/ElastigroupAzureV3ScalingUpPolicyDimension:ElastigroupAzureV3ScalingUpPolicyDimension"
+                    }
+                },
+                "evaluationPeriods": {
+                    "type": "integer"
+                },
+                "isEnabled": {
+                    "type": "boolean"
+                },
+                "metricName": {
+                    "type": "string"
+                },
+                "namespace": {
+                    "type": "string"
+                },
+                "operator": {
+                    "type": "string"
+                },
+                "period": {
+                    "type": "integer"
+                },
+                "policyName": {
+                    "type": "string"
+                },
+                "source": {
+                    "type": "string"
+                },
+                "statistic": {
+                    "type": "string"
+                },
+                "threshold": {
+                    "type": "number"
+                },
+                "unit": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "action",
+                "cooldown",
+                "evaluationPeriods",
+                "metricName",
+                "namespace",
+                "operator",
+                "period",
+                "policyName",
+                "statistic",
+                "threshold"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "action",
+                        "cooldown",
+                        "evaluationPeriods",
+                        "metricName",
+                        "namespace",
+                        "operator",
+                        "period",
+                        "policyName",
+                        "source",
+                        "statistic",
+                        "threshold"
+                    ]
+                }
+            }
+        },
+        "spotinst:index/ElastigroupAzureV3ScalingUpPolicyAction:ElastigroupAzureV3ScalingUpPolicyAction": {
+            "properties": {
+                "adjustment": {
+                    "type": "string"
+                },
+                "maximum": {
+                    "type": "string"
+                },
+                "minimum": {
+                    "type": "string"
+                },
+                "target": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "spotinst:index/ElastigroupAzureV3ScalingUpPolicyDimension:ElastigroupAzureV3ScalingUpPolicyDimension": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "spotinst:index/ElastigroupAzureV3Tag:ElastigroupAzureV3Tag": {
             "properties": {
                 "key": {
@@ -17781,6 +18001,18 @@
                 "resourceGroupName": {
                     "type": "string"
                 },
+                "scalingDownPolicies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:index/ElastigroupAzureV3ScalingDownPolicy:ElastigroupAzureV3ScalingDownPolicy"
+                    }
+                },
+                "scalingUpPolicies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:index/ElastigroupAzureV3ScalingUpPolicy:ElastigroupAzureV3ScalingUpPolicy"
+                    }
+                },
                 "spotPercentage": {
                     "type": "integer"
                 },
@@ -17858,6 +18090,18 @@
                 "resourceGroupName": {
                     "type": "string"
                 },
+                "scalingDownPolicies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:index/ElastigroupAzureV3ScalingDownPolicy:ElastigroupAzureV3ScalingDownPolicy"
+                    }
+                },
+                "scalingUpPolicies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:index/ElastigroupAzureV3ScalingUpPolicy:ElastigroupAzureV3ScalingUpPolicy"
+                    }
+                },
                 "spotPercentage": {
                     "type": "integer"
                 },
@@ -17932,6 +18176,18 @@
                     },
                     "resourceGroupName": {
                         "type": "string"
+                    },
+                    "scalingDownPolicies": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/spotinst:index/ElastigroupAzureV3ScalingDownPolicy:ElastigroupAzureV3ScalingDownPolicy"
+                        }
+                    },
+                    "scalingUpPolicies": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/spotinst:index/ElastigroupAzureV3ScalingUpPolicy:ElastigroupAzureV3ScalingUpPolicy"
+                        }
                     },
                     "spotPercentage": {
                         "type": "integer"

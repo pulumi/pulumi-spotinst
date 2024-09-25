@@ -74,6 +74,66 @@ export interface ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGro
     resourceGroupName: string;
 }
 
+export interface ElastigroupAzureV3ScalingDownPolicy {
+    action: outputs.ElastigroupAzureV3ScalingDownPolicyAction;
+    cooldown: number;
+    dimensions?: outputs.ElastigroupAzureV3ScalingDownPolicyDimension[];
+    evaluationPeriods: number;
+    isEnabled?: boolean;
+    metricName: string;
+    namespace: string;
+    operator: string;
+    period: number;
+    policyName: string;
+    source: string;
+    statistic: string;
+    threshold: number;
+    unit?: string;
+}
+
+export interface ElastigroupAzureV3ScalingDownPolicyAction {
+    adjustment?: string;
+    maximum?: string;
+    minimum?: string;
+    target?: string;
+    type?: string;
+}
+
+export interface ElastigroupAzureV3ScalingDownPolicyDimension {
+    name?: string;
+    value?: string;
+}
+
+export interface ElastigroupAzureV3ScalingUpPolicy {
+    action: outputs.ElastigroupAzureV3ScalingUpPolicyAction;
+    cooldown: number;
+    dimensions?: outputs.ElastigroupAzureV3ScalingUpPolicyDimension[];
+    evaluationPeriods: number;
+    isEnabled?: boolean;
+    metricName: string;
+    namespace: string;
+    operator: string;
+    period: number;
+    policyName: string;
+    source: string;
+    statistic: string;
+    threshold: number;
+    unit?: string;
+}
+
+export interface ElastigroupAzureV3ScalingUpPolicyAction {
+    adjustment?: string;
+    maximum?: string;
+    minimum?: string;
+    target?: string;
+    type?: string;
+}
+
+export interface ElastigroupAzureV3ScalingUpPolicyDimension {
+    name?: string;
+    value?: string;
+}
+
 export interface ElastigroupAzureV3Tag {
     key: string;
     value: string;

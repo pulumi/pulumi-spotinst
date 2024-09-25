@@ -1353,6 +1353,700 @@ func (o ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayOu
 	}).(ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupOutput)
 }
 
+type ElastigroupAzureV3ScalingDownPolicy struct {
+	Action            ElastigroupAzureV3ScalingDownPolicyAction      `pulumi:"action"`
+	Cooldown          int                                            `pulumi:"cooldown"`
+	Dimensions        []ElastigroupAzureV3ScalingDownPolicyDimension `pulumi:"dimensions"`
+	EvaluationPeriods int                                            `pulumi:"evaluationPeriods"`
+	IsEnabled         *bool                                          `pulumi:"isEnabled"`
+	MetricName        string                                         `pulumi:"metricName"`
+	Namespace         string                                         `pulumi:"namespace"`
+	Operator          string                                         `pulumi:"operator"`
+	Period            int                                            `pulumi:"period"`
+	PolicyName        string                                         `pulumi:"policyName"`
+	Source            *string                                        `pulumi:"source"`
+	Statistic         string                                         `pulumi:"statistic"`
+	Threshold         float64                                        `pulumi:"threshold"`
+	Unit              *string                                        `pulumi:"unit"`
+}
+
+// ElastigroupAzureV3ScalingDownPolicyInput is an input type that accepts ElastigroupAzureV3ScalingDownPolicyArgs and ElastigroupAzureV3ScalingDownPolicyOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3ScalingDownPolicyInput` via:
+//
+//	ElastigroupAzureV3ScalingDownPolicyArgs{...}
+type ElastigroupAzureV3ScalingDownPolicyInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3ScalingDownPolicyOutput() ElastigroupAzureV3ScalingDownPolicyOutput
+	ToElastigroupAzureV3ScalingDownPolicyOutputWithContext(context.Context) ElastigroupAzureV3ScalingDownPolicyOutput
+}
+
+type ElastigroupAzureV3ScalingDownPolicyArgs struct {
+	Action            ElastigroupAzureV3ScalingDownPolicyActionInput         `pulumi:"action"`
+	Cooldown          pulumi.IntInput                                        `pulumi:"cooldown"`
+	Dimensions        ElastigroupAzureV3ScalingDownPolicyDimensionArrayInput `pulumi:"dimensions"`
+	EvaluationPeriods pulumi.IntInput                                        `pulumi:"evaluationPeriods"`
+	IsEnabled         pulumi.BoolPtrInput                                    `pulumi:"isEnabled"`
+	MetricName        pulumi.StringInput                                     `pulumi:"metricName"`
+	Namespace         pulumi.StringInput                                     `pulumi:"namespace"`
+	Operator          pulumi.StringInput                                     `pulumi:"operator"`
+	Period            pulumi.IntInput                                        `pulumi:"period"`
+	PolicyName        pulumi.StringInput                                     `pulumi:"policyName"`
+	Source            pulumi.StringPtrInput                                  `pulumi:"source"`
+	Statistic         pulumi.StringInput                                     `pulumi:"statistic"`
+	Threshold         pulumi.Float64Input                                    `pulumi:"threshold"`
+	Unit              pulumi.StringPtrInput                                  `pulumi:"unit"`
+}
+
+func (ElastigroupAzureV3ScalingDownPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3ScalingDownPolicy)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3ScalingDownPolicyArgs) ToElastigroupAzureV3ScalingDownPolicyOutput() ElastigroupAzureV3ScalingDownPolicyOutput {
+	return i.ToElastigroupAzureV3ScalingDownPolicyOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3ScalingDownPolicyArgs) ToElastigroupAzureV3ScalingDownPolicyOutputWithContext(ctx context.Context) ElastigroupAzureV3ScalingDownPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3ScalingDownPolicyOutput)
+}
+
+// ElastigroupAzureV3ScalingDownPolicyArrayInput is an input type that accepts ElastigroupAzureV3ScalingDownPolicyArray and ElastigroupAzureV3ScalingDownPolicyArrayOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3ScalingDownPolicyArrayInput` via:
+//
+//	ElastigroupAzureV3ScalingDownPolicyArray{ ElastigroupAzureV3ScalingDownPolicyArgs{...} }
+type ElastigroupAzureV3ScalingDownPolicyArrayInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3ScalingDownPolicyArrayOutput() ElastigroupAzureV3ScalingDownPolicyArrayOutput
+	ToElastigroupAzureV3ScalingDownPolicyArrayOutputWithContext(context.Context) ElastigroupAzureV3ScalingDownPolicyArrayOutput
+}
+
+type ElastigroupAzureV3ScalingDownPolicyArray []ElastigroupAzureV3ScalingDownPolicyInput
+
+func (ElastigroupAzureV3ScalingDownPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3ScalingDownPolicy)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3ScalingDownPolicyArray) ToElastigroupAzureV3ScalingDownPolicyArrayOutput() ElastigroupAzureV3ScalingDownPolicyArrayOutput {
+	return i.ToElastigroupAzureV3ScalingDownPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3ScalingDownPolicyArray) ToElastigroupAzureV3ScalingDownPolicyArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3ScalingDownPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3ScalingDownPolicyArrayOutput)
+}
+
+type ElastigroupAzureV3ScalingDownPolicyOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3ScalingDownPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3ScalingDownPolicy)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3ScalingDownPolicyOutput) ToElastigroupAzureV3ScalingDownPolicyOutput() ElastigroupAzureV3ScalingDownPolicyOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ScalingDownPolicyOutput) ToElastigroupAzureV3ScalingDownPolicyOutputWithContext(ctx context.Context) ElastigroupAzureV3ScalingDownPolicyOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ScalingDownPolicyOutput) Action() ElastigroupAzureV3ScalingDownPolicyActionOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ScalingDownPolicy) ElastigroupAzureV3ScalingDownPolicyAction { return v.Action }).(ElastigroupAzureV3ScalingDownPolicyActionOutput)
+}
+
+func (o ElastigroupAzureV3ScalingDownPolicyOutput) Cooldown() pulumi.IntOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ScalingDownPolicy) int { return v.Cooldown }).(pulumi.IntOutput)
+}
+
+func (o ElastigroupAzureV3ScalingDownPolicyOutput) Dimensions() ElastigroupAzureV3ScalingDownPolicyDimensionArrayOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ScalingDownPolicy) []ElastigroupAzureV3ScalingDownPolicyDimension {
+		return v.Dimensions
+	}).(ElastigroupAzureV3ScalingDownPolicyDimensionArrayOutput)
+}
+
+func (o ElastigroupAzureV3ScalingDownPolicyOutput) EvaluationPeriods() pulumi.IntOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ScalingDownPolicy) int { return v.EvaluationPeriods }).(pulumi.IntOutput)
+}
+
+func (o ElastigroupAzureV3ScalingDownPolicyOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ScalingDownPolicy) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o ElastigroupAzureV3ScalingDownPolicyOutput) MetricName() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ScalingDownPolicy) string { return v.MetricName }).(pulumi.StringOutput)
+}
+
+func (o ElastigroupAzureV3ScalingDownPolicyOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ScalingDownPolicy) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+func (o ElastigroupAzureV3ScalingDownPolicyOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ScalingDownPolicy) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+func (o ElastigroupAzureV3ScalingDownPolicyOutput) Period() pulumi.IntOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ScalingDownPolicy) int { return v.Period }).(pulumi.IntOutput)
+}
+
+func (o ElastigroupAzureV3ScalingDownPolicyOutput) PolicyName() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ScalingDownPolicy) string { return v.PolicyName }).(pulumi.StringOutput)
+}
+
+func (o ElastigroupAzureV3ScalingDownPolicyOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ScalingDownPolicy) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupAzureV3ScalingDownPolicyOutput) Statistic() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ScalingDownPolicy) string { return v.Statistic }).(pulumi.StringOutput)
+}
+
+func (o ElastigroupAzureV3ScalingDownPolicyOutput) Threshold() pulumi.Float64Output {
+	return o.ApplyT(func(v ElastigroupAzureV3ScalingDownPolicy) float64 { return v.Threshold }).(pulumi.Float64Output)
+}
+
+func (o ElastigroupAzureV3ScalingDownPolicyOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ScalingDownPolicy) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+type ElastigroupAzureV3ScalingDownPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3ScalingDownPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3ScalingDownPolicy)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3ScalingDownPolicyArrayOutput) ToElastigroupAzureV3ScalingDownPolicyArrayOutput() ElastigroupAzureV3ScalingDownPolicyArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ScalingDownPolicyArrayOutput) ToElastigroupAzureV3ScalingDownPolicyArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3ScalingDownPolicyArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ScalingDownPolicyArrayOutput) Index(i pulumi.IntInput) ElastigroupAzureV3ScalingDownPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupAzureV3ScalingDownPolicy {
+		return vs[0].([]ElastigroupAzureV3ScalingDownPolicy)[vs[1].(int)]
+	}).(ElastigroupAzureV3ScalingDownPolicyOutput)
+}
+
+type ElastigroupAzureV3ScalingDownPolicyAction struct {
+	Adjustment *string `pulumi:"adjustment"`
+	Maximum    *string `pulumi:"maximum"`
+	Minimum    *string `pulumi:"minimum"`
+	Target     *string `pulumi:"target"`
+	Type       *string `pulumi:"type"`
+}
+
+// ElastigroupAzureV3ScalingDownPolicyActionInput is an input type that accepts ElastigroupAzureV3ScalingDownPolicyActionArgs and ElastigroupAzureV3ScalingDownPolicyActionOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3ScalingDownPolicyActionInput` via:
+//
+//	ElastigroupAzureV3ScalingDownPolicyActionArgs{...}
+type ElastigroupAzureV3ScalingDownPolicyActionInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3ScalingDownPolicyActionOutput() ElastigroupAzureV3ScalingDownPolicyActionOutput
+	ToElastigroupAzureV3ScalingDownPolicyActionOutputWithContext(context.Context) ElastigroupAzureV3ScalingDownPolicyActionOutput
+}
+
+type ElastigroupAzureV3ScalingDownPolicyActionArgs struct {
+	Adjustment pulumi.StringPtrInput `pulumi:"adjustment"`
+	Maximum    pulumi.StringPtrInput `pulumi:"maximum"`
+	Minimum    pulumi.StringPtrInput `pulumi:"minimum"`
+	Target     pulumi.StringPtrInput `pulumi:"target"`
+	Type       pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (ElastigroupAzureV3ScalingDownPolicyActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3ScalingDownPolicyAction)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3ScalingDownPolicyActionArgs) ToElastigroupAzureV3ScalingDownPolicyActionOutput() ElastigroupAzureV3ScalingDownPolicyActionOutput {
+	return i.ToElastigroupAzureV3ScalingDownPolicyActionOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3ScalingDownPolicyActionArgs) ToElastigroupAzureV3ScalingDownPolicyActionOutputWithContext(ctx context.Context) ElastigroupAzureV3ScalingDownPolicyActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3ScalingDownPolicyActionOutput)
+}
+
+type ElastigroupAzureV3ScalingDownPolicyActionOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3ScalingDownPolicyActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3ScalingDownPolicyAction)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3ScalingDownPolicyActionOutput) ToElastigroupAzureV3ScalingDownPolicyActionOutput() ElastigroupAzureV3ScalingDownPolicyActionOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ScalingDownPolicyActionOutput) ToElastigroupAzureV3ScalingDownPolicyActionOutputWithContext(ctx context.Context) ElastigroupAzureV3ScalingDownPolicyActionOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ScalingDownPolicyActionOutput) Adjustment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ScalingDownPolicyAction) *string { return v.Adjustment }).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupAzureV3ScalingDownPolicyActionOutput) Maximum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ScalingDownPolicyAction) *string { return v.Maximum }).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupAzureV3ScalingDownPolicyActionOutput) Minimum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ScalingDownPolicyAction) *string { return v.Minimum }).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupAzureV3ScalingDownPolicyActionOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ScalingDownPolicyAction) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupAzureV3ScalingDownPolicyActionOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ScalingDownPolicyAction) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type ElastigroupAzureV3ScalingDownPolicyDimension struct {
+	Name  *string `pulumi:"name"`
+	Value *string `pulumi:"value"`
+}
+
+// ElastigroupAzureV3ScalingDownPolicyDimensionInput is an input type that accepts ElastigroupAzureV3ScalingDownPolicyDimensionArgs and ElastigroupAzureV3ScalingDownPolicyDimensionOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3ScalingDownPolicyDimensionInput` via:
+//
+//	ElastigroupAzureV3ScalingDownPolicyDimensionArgs{...}
+type ElastigroupAzureV3ScalingDownPolicyDimensionInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3ScalingDownPolicyDimensionOutput() ElastigroupAzureV3ScalingDownPolicyDimensionOutput
+	ToElastigroupAzureV3ScalingDownPolicyDimensionOutputWithContext(context.Context) ElastigroupAzureV3ScalingDownPolicyDimensionOutput
+}
+
+type ElastigroupAzureV3ScalingDownPolicyDimensionArgs struct {
+	Name  pulumi.StringPtrInput `pulumi:"name"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (ElastigroupAzureV3ScalingDownPolicyDimensionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3ScalingDownPolicyDimension)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3ScalingDownPolicyDimensionArgs) ToElastigroupAzureV3ScalingDownPolicyDimensionOutput() ElastigroupAzureV3ScalingDownPolicyDimensionOutput {
+	return i.ToElastigroupAzureV3ScalingDownPolicyDimensionOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3ScalingDownPolicyDimensionArgs) ToElastigroupAzureV3ScalingDownPolicyDimensionOutputWithContext(ctx context.Context) ElastigroupAzureV3ScalingDownPolicyDimensionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3ScalingDownPolicyDimensionOutput)
+}
+
+// ElastigroupAzureV3ScalingDownPolicyDimensionArrayInput is an input type that accepts ElastigroupAzureV3ScalingDownPolicyDimensionArray and ElastigroupAzureV3ScalingDownPolicyDimensionArrayOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3ScalingDownPolicyDimensionArrayInput` via:
+//
+//	ElastigroupAzureV3ScalingDownPolicyDimensionArray{ ElastigroupAzureV3ScalingDownPolicyDimensionArgs{...} }
+type ElastigroupAzureV3ScalingDownPolicyDimensionArrayInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3ScalingDownPolicyDimensionArrayOutput() ElastigroupAzureV3ScalingDownPolicyDimensionArrayOutput
+	ToElastigroupAzureV3ScalingDownPolicyDimensionArrayOutputWithContext(context.Context) ElastigroupAzureV3ScalingDownPolicyDimensionArrayOutput
+}
+
+type ElastigroupAzureV3ScalingDownPolicyDimensionArray []ElastigroupAzureV3ScalingDownPolicyDimensionInput
+
+func (ElastigroupAzureV3ScalingDownPolicyDimensionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3ScalingDownPolicyDimension)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3ScalingDownPolicyDimensionArray) ToElastigroupAzureV3ScalingDownPolicyDimensionArrayOutput() ElastigroupAzureV3ScalingDownPolicyDimensionArrayOutput {
+	return i.ToElastigroupAzureV3ScalingDownPolicyDimensionArrayOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3ScalingDownPolicyDimensionArray) ToElastigroupAzureV3ScalingDownPolicyDimensionArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3ScalingDownPolicyDimensionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3ScalingDownPolicyDimensionArrayOutput)
+}
+
+type ElastigroupAzureV3ScalingDownPolicyDimensionOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3ScalingDownPolicyDimensionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3ScalingDownPolicyDimension)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3ScalingDownPolicyDimensionOutput) ToElastigroupAzureV3ScalingDownPolicyDimensionOutput() ElastigroupAzureV3ScalingDownPolicyDimensionOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ScalingDownPolicyDimensionOutput) ToElastigroupAzureV3ScalingDownPolicyDimensionOutputWithContext(ctx context.Context) ElastigroupAzureV3ScalingDownPolicyDimensionOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ScalingDownPolicyDimensionOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ScalingDownPolicyDimension) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupAzureV3ScalingDownPolicyDimensionOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ScalingDownPolicyDimension) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type ElastigroupAzureV3ScalingDownPolicyDimensionArrayOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3ScalingDownPolicyDimensionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3ScalingDownPolicyDimension)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3ScalingDownPolicyDimensionArrayOutput) ToElastigroupAzureV3ScalingDownPolicyDimensionArrayOutput() ElastigroupAzureV3ScalingDownPolicyDimensionArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ScalingDownPolicyDimensionArrayOutput) ToElastigroupAzureV3ScalingDownPolicyDimensionArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3ScalingDownPolicyDimensionArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ScalingDownPolicyDimensionArrayOutput) Index(i pulumi.IntInput) ElastigroupAzureV3ScalingDownPolicyDimensionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupAzureV3ScalingDownPolicyDimension {
+		return vs[0].([]ElastigroupAzureV3ScalingDownPolicyDimension)[vs[1].(int)]
+	}).(ElastigroupAzureV3ScalingDownPolicyDimensionOutput)
+}
+
+type ElastigroupAzureV3ScalingUpPolicy struct {
+	Action            ElastigroupAzureV3ScalingUpPolicyAction      `pulumi:"action"`
+	Cooldown          int                                          `pulumi:"cooldown"`
+	Dimensions        []ElastigroupAzureV3ScalingUpPolicyDimension `pulumi:"dimensions"`
+	EvaluationPeriods int                                          `pulumi:"evaluationPeriods"`
+	IsEnabled         *bool                                        `pulumi:"isEnabled"`
+	MetricName        string                                       `pulumi:"metricName"`
+	Namespace         string                                       `pulumi:"namespace"`
+	Operator          string                                       `pulumi:"operator"`
+	Period            int                                          `pulumi:"period"`
+	PolicyName        string                                       `pulumi:"policyName"`
+	Source            *string                                      `pulumi:"source"`
+	Statistic         string                                       `pulumi:"statistic"`
+	Threshold         float64                                      `pulumi:"threshold"`
+	Unit              *string                                      `pulumi:"unit"`
+}
+
+// ElastigroupAzureV3ScalingUpPolicyInput is an input type that accepts ElastigroupAzureV3ScalingUpPolicyArgs and ElastigroupAzureV3ScalingUpPolicyOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3ScalingUpPolicyInput` via:
+//
+//	ElastigroupAzureV3ScalingUpPolicyArgs{...}
+type ElastigroupAzureV3ScalingUpPolicyInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3ScalingUpPolicyOutput() ElastigroupAzureV3ScalingUpPolicyOutput
+	ToElastigroupAzureV3ScalingUpPolicyOutputWithContext(context.Context) ElastigroupAzureV3ScalingUpPolicyOutput
+}
+
+type ElastigroupAzureV3ScalingUpPolicyArgs struct {
+	Action            ElastigroupAzureV3ScalingUpPolicyActionInput         `pulumi:"action"`
+	Cooldown          pulumi.IntInput                                      `pulumi:"cooldown"`
+	Dimensions        ElastigroupAzureV3ScalingUpPolicyDimensionArrayInput `pulumi:"dimensions"`
+	EvaluationPeriods pulumi.IntInput                                      `pulumi:"evaluationPeriods"`
+	IsEnabled         pulumi.BoolPtrInput                                  `pulumi:"isEnabled"`
+	MetricName        pulumi.StringInput                                   `pulumi:"metricName"`
+	Namespace         pulumi.StringInput                                   `pulumi:"namespace"`
+	Operator          pulumi.StringInput                                   `pulumi:"operator"`
+	Period            pulumi.IntInput                                      `pulumi:"period"`
+	PolicyName        pulumi.StringInput                                   `pulumi:"policyName"`
+	Source            pulumi.StringPtrInput                                `pulumi:"source"`
+	Statistic         pulumi.StringInput                                   `pulumi:"statistic"`
+	Threshold         pulumi.Float64Input                                  `pulumi:"threshold"`
+	Unit              pulumi.StringPtrInput                                `pulumi:"unit"`
+}
+
+func (ElastigroupAzureV3ScalingUpPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3ScalingUpPolicy)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3ScalingUpPolicyArgs) ToElastigroupAzureV3ScalingUpPolicyOutput() ElastigroupAzureV3ScalingUpPolicyOutput {
+	return i.ToElastigroupAzureV3ScalingUpPolicyOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3ScalingUpPolicyArgs) ToElastigroupAzureV3ScalingUpPolicyOutputWithContext(ctx context.Context) ElastigroupAzureV3ScalingUpPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3ScalingUpPolicyOutput)
+}
+
+// ElastigroupAzureV3ScalingUpPolicyArrayInput is an input type that accepts ElastigroupAzureV3ScalingUpPolicyArray and ElastigroupAzureV3ScalingUpPolicyArrayOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3ScalingUpPolicyArrayInput` via:
+//
+//	ElastigroupAzureV3ScalingUpPolicyArray{ ElastigroupAzureV3ScalingUpPolicyArgs{...} }
+type ElastigroupAzureV3ScalingUpPolicyArrayInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3ScalingUpPolicyArrayOutput() ElastigroupAzureV3ScalingUpPolicyArrayOutput
+	ToElastigroupAzureV3ScalingUpPolicyArrayOutputWithContext(context.Context) ElastigroupAzureV3ScalingUpPolicyArrayOutput
+}
+
+type ElastigroupAzureV3ScalingUpPolicyArray []ElastigroupAzureV3ScalingUpPolicyInput
+
+func (ElastigroupAzureV3ScalingUpPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3ScalingUpPolicy)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3ScalingUpPolicyArray) ToElastigroupAzureV3ScalingUpPolicyArrayOutput() ElastigroupAzureV3ScalingUpPolicyArrayOutput {
+	return i.ToElastigroupAzureV3ScalingUpPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3ScalingUpPolicyArray) ToElastigroupAzureV3ScalingUpPolicyArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3ScalingUpPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3ScalingUpPolicyArrayOutput)
+}
+
+type ElastigroupAzureV3ScalingUpPolicyOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3ScalingUpPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3ScalingUpPolicy)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3ScalingUpPolicyOutput) ToElastigroupAzureV3ScalingUpPolicyOutput() ElastigroupAzureV3ScalingUpPolicyOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ScalingUpPolicyOutput) ToElastigroupAzureV3ScalingUpPolicyOutputWithContext(ctx context.Context) ElastigroupAzureV3ScalingUpPolicyOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ScalingUpPolicyOutput) Action() ElastigroupAzureV3ScalingUpPolicyActionOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ScalingUpPolicy) ElastigroupAzureV3ScalingUpPolicyAction { return v.Action }).(ElastigroupAzureV3ScalingUpPolicyActionOutput)
+}
+
+func (o ElastigroupAzureV3ScalingUpPolicyOutput) Cooldown() pulumi.IntOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ScalingUpPolicy) int { return v.Cooldown }).(pulumi.IntOutput)
+}
+
+func (o ElastigroupAzureV3ScalingUpPolicyOutput) Dimensions() ElastigroupAzureV3ScalingUpPolicyDimensionArrayOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ScalingUpPolicy) []ElastigroupAzureV3ScalingUpPolicyDimension {
+		return v.Dimensions
+	}).(ElastigroupAzureV3ScalingUpPolicyDimensionArrayOutput)
+}
+
+func (o ElastigroupAzureV3ScalingUpPolicyOutput) EvaluationPeriods() pulumi.IntOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ScalingUpPolicy) int { return v.EvaluationPeriods }).(pulumi.IntOutput)
+}
+
+func (o ElastigroupAzureV3ScalingUpPolicyOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ScalingUpPolicy) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o ElastigroupAzureV3ScalingUpPolicyOutput) MetricName() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ScalingUpPolicy) string { return v.MetricName }).(pulumi.StringOutput)
+}
+
+func (o ElastigroupAzureV3ScalingUpPolicyOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ScalingUpPolicy) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+func (o ElastigroupAzureV3ScalingUpPolicyOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ScalingUpPolicy) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+func (o ElastigroupAzureV3ScalingUpPolicyOutput) Period() pulumi.IntOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ScalingUpPolicy) int { return v.Period }).(pulumi.IntOutput)
+}
+
+func (o ElastigroupAzureV3ScalingUpPolicyOutput) PolicyName() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ScalingUpPolicy) string { return v.PolicyName }).(pulumi.StringOutput)
+}
+
+func (o ElastigroupAzureV3ScalingUpPolicyOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ScalingUpPolicy) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupAzureV3ScalingUpPolicyOutput) Statistic() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ScalingUpPolicy) string { return v.Statistic }).(pulumi.StringOutput)
+}
+
+func (o ElastigroupAzureV3ScalingUpPolicyOutput) Threshold() pulumi.Float64Output {
+	return o.ApplyT(func(v ElastigroupAzureV3ScalingUpPolicy) float64 { return v.Threshold }).(pulumi.Float64Output)
+}
+
+func (o ElastigroupAzureV3ScalingUpPolicyOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ScalingUpPolicy) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+type ElastigroupAzureV3ScalingUpPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3ScalingUpPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3ScalingUpPolicy)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3ScalingUpPolicyArrayOutput) ToElastigroupAzureV3ScalingUpPolicyArrayOutput() ElastigroupAzureV3ScalingUpPolicyArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ScalingUpPolicyArrayOutput) ToElastigroupAzureV3ScalingUpPolicyArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3ScalingUpPolicyArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ScalingUpPolicyArrayOutput) Index(i pulumi.IntInput) ElastigroupAzureV3ScalingUpPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupAzureV3ScalingUpPolicy {
+		return vs[0].([]ElastigroupAzureV3ScalingUpPolicy)[vs[1].(int)]
+	}).(ElastigroupAzureV3ScalingUpPolicyOutput)
+}
+
+type ElastigroupAzureV3ScalingUpPolicyAction struct {
+	Adjustment *string `pulumi:"adjustment"`
+	Maximum    *string `pulumi:"maximum"`
+	Minimum    *string `pulumi:"minimum"`
+	Target     *string `pulumi:"target"`
+	Type       *string `pulumi:"type"`
+}
+
+// ElastigroupAzureV3ScalingUpPolicyActionInput is an input type that accepts ElastigroupAzureV3ScalingUpPolicyActionArgs and ElastigroupAzureV3ScalingUpPolicyActionOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3ScalingUpPolicyActionInput` via:
+//
+//	ElastigroupAzureV3ScalingUpPolicyActionArgs{...}
+type ElastigroupAzureV3ScalingUpPolicyActionInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3ScalingUpPolicyActionOutput() ElastigroupAzureV3ScalingUpPolicyActionOutput
+	ToElastigroupAzureV3ScalingUpPolicyActionOutputWithContext(context.Context) ElastigroupAzureV3ScalingUpPolicyActionOutput
+}
+
+type ElastigroupAzureV3ScalingUpPolicyActionArgs struct {
+	Adjustment pulumi.StringPtrInput `pulumi:"adjustment"`
+	Maximum    pulumi.StringPtrInput `pulumi:"maximum"`
+	Minimum    pulumi.StringPtrInput `pulumi:"minimum"`
+	Target     pulumi.StringPtrInput `pulumi:"target"`
+	Type       pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (ElastigroupAzureV3ScalingUpPolicyActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3ScalingUpPolicyAction)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3ScalingUpPolicyActionArgs) ToElastigroupAzureV3ScalingUpPolicyActionOutput() ElastigroupAzureV3ScalingUpPolicyActionOutput {
+	return i.ToElastigroupAzureV3ScalingUpPolicyActionOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3ScalingUpPolicyActionArgs) ToElastigroupAzureV3ScalingUpPolicyActionOutputWithContext(ctx context.Context) ElastigroupAzureV3ScalingUpPolicyActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3ScalingUpPolicyActionOutput)
+}
+
+type ElastigroupAzureV3ScalingUpPolicyActionOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3ScalingUpPolicyActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3ScalingUpPolicyAction)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3ScalingUpPolicyActionOutput) ToElastigroupAzureV3ScalingUpPolicyActionOutput() ElastigroupAzureV3ScalingUpPolicyActionOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ScalingUpPolicyActionOutput) ToElastigroupAzureV3ScalingUpPolicyActionOutputWithContext(ctx context.Context) ElastigroupAzureV3ScalingUpPolicyActionOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ScalingUpPolicyActionOutput) Adjustment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ScalingUpPolicyAction) *string { return v.Adjustment }).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupAzureV3ScalingUpPolicyActionOutput) Maximum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ScalingUpPolicyAction) *string { return v.Maximum }).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupAzureV3ScalingUpPolicyActionOutput) Minimum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ScalingUpPolicyAction) *string { return v.Minimum }).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupAzureV3ScalingUpPolicyActionOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ScalingUpPolicyAction) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupAzureV3ScalingUpPolicyActionOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ScalingUpPolicyAction) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type ElastigroupAzureV3ScalingUpPolicyDimension struct {
+	Name  *string `pulumi:"name"`
+	Value *string `pulumi:"value"`
+}
+
+// ElastigroupAzureV3ScalingUpPolicyDimensionInput is an input type that accepts ElastigroupAzureV3ScalingUpPolicyDimensionArgs and ElastigroupAzureV3ScalingUpPolicyDimensionOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3ScalingUpPolicyDimensionInput` via:
+//
+//	ElastigroupAzureV3ScalingUpPolicyDimensionArgs{...}
+type ElastigroupAzureV3ScalingUpPolicyDimensionInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3ScalingUpPolicyDimensionOutput() ElastigroupAzureV3ScalingUpPolicyDimensionOutput
+	ToElastigroupAzureV3ScalingUpPolicyDimensionOutputWithContext(context.Context) ElastigroupAzureV3ScalingUpPolicyDimensionOutput
+}
+
+type ElastigroupAzureV3ScalingUpPolicyDimensionArgs struct {
+	Name  pulumi.StringPtrInput `pulumi:"name"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (ElastigroupAzureV3ScalingUpPolicyDimensionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3ScalingUpPolicyDimension)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3ScalingUpPolicyDimensionArgs) ToElastigroupAzureV3ScalingUpPolicyDimensionOutput() ElastigroupAzureV3ScalingUpPolicyDimensionOutput {
+	return i.ToElastigroupAzureV3ScalingUpPolicyDimensionOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3ScalingUpPolicyDimensionArgs) ToElastigroupAzureV3ScalingUpPolicyDimensionOutputWithContext(ctx context.Context) ElastigroupAzureV3ScalingUpPolicyDimensionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3ScalingUpPolicyDimensionOutput)
+}
+
+// ElastigroupAzureV3ScalingUpPolicyDimensionArrayInput is an input type that accepts ElastigroupAzureV3ScalingUpPolicyDimensionArray and ElastigroupAzureV3ScalingUpPolicyDimensionArrayOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3ScalingUpPolicyDimensionArrayInput` via:
+//
+//	ElastigroupAzureV3ScalingUpPolicyDimensionArray{ ElastigroupAzureV3ScalingUpPolicyDimensionArgs{...} }
+type ElastigroupAzureV3ScalingUpPolicyDimensionArrayInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3ScalingUpPolicyDimensionArrayOutput() ElastigroupAzureV3ScalingUpPolicyDimensionArrayOutput
+	ToElastigroupAzureV3ScalingUpPolicyDimensionArrayOutputWithContext(context.Context) ElastigroupAzureV3ScalingUpPolicyDimensionArrayOutput
+}
+
+type ElastigroupAzureV3ScalingUpPolicyDimensionArray []ElastigroupAzureV3ScalingUpPolicyDimensionInput
+
+func (ElastigroupAzureV3ScalingUpPolicyDimensionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3ScalingUpPolicyDimension)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3ScalingUpPolicyDimensionArray) ToElastigroupAzureV3ScalingUpPolicyDimensionArrayOutput() ElastigroupAzureV3ScalingUpPolicyDimensionArrayOutput {
+	return i.ToElastigroupAzureV3ScalingUpPolicyDimensionArrayOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3ScalingUpPolicyDimensionArray) ToElastigroupAzureV3ScalingUpPolicyDimensionArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3ScalingUpPolicyDimensionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3ScalingUpPolicyDimensionArrayOutput)
+}
+
+type ElastigroupAzureV3ScalingUpPolicyDimensionOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3ScalingUpPolicyDimensionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3ScalingUpPolicyDimension)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3ScalingUpPolicyDimensionOutput) ToElastigroupAzureV3ScalingUpPolicyDimensionOutput() ElastigroupAzureV3ScalingUpPolicyDimensionOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ScalingUpPolicyDimensionOutput) ToElastigroupAzureV3ScalingUpPolicyDimensionOutputWithContext(ctx context.Context) ElastigroupAzureV3ScalingUpPolicyDimensionOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ScalingUpPolicyDimensionOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ScalingUpPolicyDimension) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupAzureV3ScalingUpPolicyDimensionOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ScalingUpPolicyDimension) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type ElastigroupAzureV3ScalingUpPolicyDimensionArrayOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3ScalingUpPolicyDimensionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3ScalingUpPolicyDimension)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3ScalingUpPolicyDimensionArrayOutput) ToElastigroupAzureV3ScalingUpPolicyDimensionArrayOutput() ElastigroupAzureV3ScalingUpPolicyDimensionArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ScalingUpPolicyDimensionArrayOutput) ToElastigroupAzureV3ScalingUpPolicyDimensionArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3ScalingUpPolicyDimensionArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ScalingUpPolicyDimensionArrayOutput) Index(i pulumi.IntInput) ElastigroupAzureV3ScalingUpPolicyDimensionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupAzureV3ScalingUpPolicyDimension {
+		return vs[0].([]ElastigroupAzureV3ScalingUpPolicyDimension)[vs[1].(int)]
+	}).(ElastigroupAzureV3ScalingUpPolicyDimensionOutput)
+}
+
 type ElastigroupAzureV3Tag struct {
 	Key   string `pulumi:"key"`
 	Value string `pulumi:"value"`
@@ -8029,6 +8723,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayInput)(nil)).Elem(), ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupInput)(nil)).Elem(), ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayInput)(nil)).Elem(), ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ScalingDownPolicyInput)(nil)).Elem(), ElastigroupAzureV3ScalingDownPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ScalingDownPolicyArrayInput)(nil)).Elem(), ElastigroupAzureV3ScalingDownPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ScalingDownPolicyActionInput)(nil)).Elem(), ElastigroupAzureV3ScalingDownPolicyActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ScalingDownPolicyDimensionInput)(nil)).Elem(), ElastigroupAzureV3ScalingDownPolicyDimensionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ScalingDownPolicyDimensionArrayInput)(nil)).Elem(), ElastigroupAzureV3ScalingDownPolicyDimensionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ScalingUpPolicyInput)(nil)).Elem(), ElastigroupAzureV3ScalingUpPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ScalingUpPolicyArrayInput)(nil)).Elem(), ElastigroupAzureV3ScalingUpPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ScalingUpPolicyActionInput)(nil)).Elem(), ElastigroupAzureV3ScalingUpPolicyActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ScalingUpPolicyDimensionInput)(nil)).Elem(), ElastigroupAzureV3ScalingUpPolicyDimensionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ScalingUpPolicyDimensionArrayInput)(nil)).Elem(), ElastigroupAzureV3ScalingUpPolicyDimensionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3TagInput)(nil)).Elem(), ElastigroupAzureV3TagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3TagArrayInput)(nil)).Elem(), ElastigroupAzureV3TagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3VmSizesInput)(nil)).Elem(), ElastigroupAzureV3VmSizesArgs{})
@@ -8159,6 +8863,16 @@ func init() {
 	pulumi.RegisterOutputType(ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3ScalingDownPolicyOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3ScalingDownPolicyArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3ScalingDownPolicyActionOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3ScalingDownPolicyDimensionOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3ScalingDownPolicyDimensionArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3ScalingUpPolicyOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3ScalingUpPolicyArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3ScalingUpPolicyActionOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3ScalingUpPolicyDimensionOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3ScalingUpPolicyDimensionArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3TagOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3TagArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3VmSizesOutput{})
