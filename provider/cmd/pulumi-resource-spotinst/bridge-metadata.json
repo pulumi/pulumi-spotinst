@@ -520,6 +520,32 @@
                             }
                         }
                     },
+                    "scaling_down_policy": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "action": {
+                                    "maxItemsOne": true
+                                },
+                                "dimensions": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "scaling_up_policy": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "action": {
+                                    "maxItemsOne": true
+                                },
+                                "dimensions": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "tags": {
                         "maxItemsOne": false
                     },
