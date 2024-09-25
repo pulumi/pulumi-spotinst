@@ -30,6 +30,8 @@ type ElastigroupAzureV3 struct {
 	Os                       pulumi.StringOutput                                 `pulumi:"os"`
 	Region                   pulumi.StringOutput                                 `pulumi:"region"`
 	ResourceGroupName        pulumi.StringOutput                                 `pulumi:"resourceGroupName"`
+	ScalingDownPolicies      ElastigroupAzureV3ScalingDownPolicyArrayOutput      `pulumi:"scalingDownPolicies"`
+	ScalingUpPolicies        ElastigroupAzureV3ScalingUpPolicyArrayOutput        `pulumi:"scalingUpPolicies"`
 	SpotPercentage           pulumi.IntPtrOutput                                 `pulumi:"spotPercentage"`
 	Tags                     ElastigroupAzureV3TagArrayOutput                    `pulumi:"tags"`
 	VmSizes                  ElastigroupAzureV3VmSizesOutput                     `pulumi:"vmSizes"`
@@ -98,6 +100,8 @@ type elastigroupAzureV3State struct {
 	Os                       *string                                    `pulumi:"os"`
 	Region                   *string                                    `pulumi:"region"`
 	ResourceGroupName        *string                                    `pulumi:"resourceGroupName"`
+	ScalingDownPolicies      []ElastigroupAzureV3ScalingDownPolicy      `pulumi:"scalingDownPolicies"`
+	ScalingUpPolicies        []ElastigroupAzureV3ScalingUpPolicy        `pulumi:"scalingUpPolicies"`
 	SpotPercentage           *int                                       `pulumi:"spotPercentage"`
 	Tags                     []ElastigroupAzureV3Tag                    `pulumi:"tags"`
 	VmSizes                  *ElastigroupAzureV3VmSizes                 `pulumi:"vmSizes"`
@@ -119,6 +123,8 @@ type ElastigroupAzureV3State struct {
 	Os                       pulumi.StringPtrInput
 	Region                   pulumi.StringPtrInput
 	ResourceGroupName        pulumi.StringPtrInput
+	ScalingDownPolicies      ElastigroupAzureV3ScalingDownPolicyArrayInput
+	ScalingUpPolicies        ElastigroupAzureV3ScalingUpPolicyArrayInput
 	SpotPercentage           pulumi.IntPtrInput
 	Tags                     ElastigroupAzureV3TagArrayInput
 	VmSizes                  ElastigroupAzureV3VmSizesPtrInput
@@ -144,6 +150,8 @@ type elastigroupAzureV3Args struct {
 	Os                       string                                     `pulumi:"os"`
 	Region                   string                                     `pulumi:"region"`
 	ResourceGroupName        string                                     `pulumi:"resourceGroupName"`
+	ScalingDownPolicies      []ElastigroupAzureV3ScalingDownPolicy      `pulumi:"scalingDownPolicies"`
+	ScalingUpPolicies        []ElastigroupAzureV3ScalingUpPolicy        `pulumi:"scalingUpPolicies"`
 	SpotPercentage           *int                                       `pulumi:"spotPercentage"`
 	Tags                     []ElastigroupAzureV3Tag                    `pulumi:"tags"`
 	VmSizes                  ElastigroupAzureV3VmSizes                  `pulumi:"vmSizes"`
@@ -166,6 +174,8 @@ type ElastigroupAzureV3Args struct {
 	Os                       pulumi.StringInput
 	Region                   pulumi.StringInput
 	ResourceGroupName        pulumi.StringInput
+	ScalingDownPolicies      ElastigroupAzureV3ScalingDownPolicyArrayInput
+	ScalingUpPolicies        ElastigroupAzureV3ScalingUpPolicyArrayInput
 	SpotPercentage           pulumi.IntPtrInput
 	Tags                     ElastigroupAzureV3TagArrayInput
 	VmSizes                  ElastigroupAzureV3VmSizesInput
@@ -318,6 +328,16 @@ func (o ElastigroupAzureV3Output) Region() pulumi.StringOutput {
 
 func (o ElastigroupAzureV3Output) ResourceGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.StringOutput { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+func (o ElastigroupAzureV3Output) ScalingDownPolicies() ElastigroupAzureV3ScalingDownPolicyArrayOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3) ElastigroupAzureV3ScalingDownPolicyArrayOutput {
+		return v.ScalingDownPolicies
+	}).(ElastigroupAzureV3ScalingDownPolicyArrayOutput)
+}
+
+func (o ElastigroupAzureV3Output) ScalingUpPolicies() ElastigroupAzureV3ScalingUpPolicyArrayOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3) ElastigroupAzureV3ScalingUpPolicyArrayOutput { return v.ScalingUpPolicies }).(ElastigroupAzureV3ScalingUpPolicyArrayOutput)
 }
 
 func (o ElastigroupAzureV3Output) SpotPercentage() pulumi.IntPtrOutput {

@@ -21,6 +21,12 @@ __all__ = [
     'ElastigroupAzureV3NetworkNetworkInterfaceArgs',
     'ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs',
     'ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs',
+    'ElastigroupAzureV3ScalingDownPolicyArgs',
+    'ElastigroupAzureV3ScalingDownPolicyActionArgs',
+    'ElastigroupAzureV3ScalingDownPolicyDimensionArgs',
+    'ElastigroupAzureV3ScalingUpPolicyArgs',
+    'ElastigroupAzureV3ScalingUpPolicyActionArgs',
+    'ElastigroupAzureV3ScalingUpPolicyDimensionArgs',
     'ElastigroupAzureV3TagArgs',
     'ElastigroupAzureV3VmSizesArgs',
     'HealthCheckCheckArgs',
@@ -509,6 +515,520 @@ class ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs:
     @resource_group_name.setter
     def resource_group_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "resource_group_name", value)
+
+
+@pulumi.input_type
+class ElastigroupAzureV3ScalingDownPolicyArgs:
+    def __init__(__self__, *,
+                 action: pulumi.Input['ElastigroupAzureV3ScalingDownPolicyActionArgs'],
+                 cooldown: pulumi.Input[int],
+                 evaluation_periods: pulumi.Input[int],
+                 metric_name: pulumi.Input[str],
+                 namespace: pulumi.Input[str],
+                 operator: pulumi.Input[str],
+                 period: pulumi.Input[int],
+                 policy_name: pulumi.Input[str],
+                 statistic: pulumi.Input[str],
+                 threshold: pulumi.Input[float],
+                 dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ScalingDownPolicyDimensionArgs']]]] = None,
+                 is_enabled: Optional[pulumi.Input[bool]] = None,
+                 source: Optional[pulumi.Input[str]] = None,
+                 unit: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "cooldown", cooldown)
+        pulumi.set(__self__, "evaluation_periods", evaluation_periods)
+        pulumi.set(__self__, "metric_name", metric_name)
+        pulumi.set(__self__, "namespace", namespace)
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "period", period)
+        pulumi.set(__self__, "policy_name", policy_name)
+        pulumi.set(__self__, "statistic", statistic)
+        pulumi.set(__self__, "threshold", threshold)
+        if dimensions is not None:
+            pulumi.set(__self__, "dimensions", dimensions)
+        if is_enabled is not None:
+            pulumi.set(__self__, "is_enabled", is_enabled)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+
+    @property
+    @pulumi.getter
+    def action(self) -> pulumi.Input['ElastigroupAzureV3ScalingDownPolicyActionArgs']:
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: pulumi.Input['ElastigroupAzureV3ScalingDownPolicyActionArgs']):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter
+    def cooldown(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "cooldown")
+
+    @cooldown.setter
+    def cooldown(self, value: pulumi.Input[int]):
+        pulumi.set(self, "cooldown", value)
+
+    @property
+    @pulumi.getter(name="evaluationPeriods")
+    def evaluation_periods(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "evaluation_periods")
+
+    @evaluation_periods.setter
+    def evaluation_periods(self, value: pulumi.Input[int]):
+        pulumi.set(self, "evaluation_periods", value)
+
+    @property
+    @pulumi.getter(name="metricName")
+    def metric_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "metric_name")
+
+    @metric_name.setter
+    def metric_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "metric_name", value)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: pulumi.Input[str]):
+        pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: pulumi.Input[str]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def period(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: pulumi.Input[int]):
+        pulumi.set(self, "period", value)
+
+    @property
+    @pulumi.getter(name="policyName")
+    def policy_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "policy_name")
+
+    @policy_name.setter
+    def policy_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "policy_name", value)
+
+    @property
+    @pulumi.getter
+    def statistic(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "statistic")
+
+    @statistic.setter
+    def statistic(self, value: pulumi.Input[str]):
+        pulumi.set(self, "statistic", value)
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> pulumi.Input[float]:
+        return pulumi.get(self, "threshold")
+
+    @threshold.setter
+    def threshold(self, value: pulumi.Input[float]):
+        pulumi.set(self, "threshold", value)
+
+    @property
+    @pulumi.getter
+    def dimensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ScalingDownPolicyDimensionArgs']]]]:
+        return pulumi.get(self, "dimensions")
+
+    @dimensions.setter
+    def dimensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ScalingDownPolicyDimensionArgs']]]]):
+        pulumi.set(self, "dimensions", value)
+
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "is_enabled")
+
+    @is_enabled.setter
+    def is_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_enabled", value)
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source", value)
+
+    @property
+    @pulumi.getter
+    def unit(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "unit")
+
+    @unit.setter
+    def unit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "unit", value)
+
+
+@pulumi.input_type
+class ElastigroupAzureV3ScalingDownPolicyActionArgs:
+    def __init__(__self__, *,
+                 adjustment: Optional[pulumi.Input[str]] = None,
+                 maximum: Optional[pulumi.Input[str]] = None,
+                 minimum: Optional[pulumi.Input[str]] = None,
+                 target: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        if adjustment is not None:
+            pulumi.set(__self__, "adjustment", adjustment)
+        if maximum is not None:
+            pulumi.set(__self__, "maximum", maximum)
+        if minimum is not None:
+            pulumi.set(__self__, "minimum", minimum)
+        if target is not None:
+            pulumi.set(__self__, "target", target)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def adjustment(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "adjustment")
+
+    @adjustment.setter
+    def adjustment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "adjustment", value)
+
+    @property
+    @pulumi.getter
+    def maximum(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "maximum")
+
+    @maximum.setter
+    def maximum(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maximum", value)
+
+    @property
+    @pulumi.getter
+    def minimum(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "minimum")
+
+    @minimum.setter
+    def minimum(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "minimum", value)
+
+    @property
+    @pulumi.getter
+    def target(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "target")
+
+    @target.setter
+    def target(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class ElastigroupAzureV3ScalingDownPolicyDimensionArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class ElastigroupAzureV3ScalingUpPolicyArgs:
+    def __init__(__self__, *,
+                 action: pulumi.Input['ElastigroupAzureV3ScalingUpPolicyActionArgs'],
+                 cooldown: pulumi.Input[int],
+                 evaluation_periods: pulumi.Input[int],
+                 metric_name: pulumi.Input[str],
+                 namespace: pulumi.Input[str],
+                 operator: pulumi.Input[str],
+                 period: pulumi.Input[int],
+                 policy_name: pulumi.Input[str],
+                 statistic: pulumi.Input[str],
+                 threshold: pulumi.Input[float],
+                 dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ScalingUpPolicyDimensionArgs']]]] = None,
+                 is_enabled: Optional[pulumi.Input[bool]] = None,
+                 source: Optional[pulumi.Input[str]] = None,
+                 unit: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "cooldown", cooldown)
+        pulumi.set(__self__, "evaluation_periods", evaluation_periods)
+        pulumi.set(__self__, "metric_name", metric_name)
+        pulumi.set(__self__, "namespace", namespace)
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "period", period)
+        pulumi.set(__self__, "policy_name", policy_name)
+        pulumi.set(__self__, "statistic", statistic)
+        pulumi.set(__self__, "threshold", threshold)
+        if dimensions is not None:
+            pulumi.set(__self__, "dimensions", dimensions)
+        if is_enabled is not None:
+            pulumi.set(__self__, "is_enabled", is_enabled)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+
+    @property
+    @pulumi.getter
+    def action(self) -> pulumi.Input['ElastigroupAzureV3ScalingUpPolicyActionArgs']:
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: pulumi.Input['ElastigroupAzureV3ScalingUpPolicyActionArgs']):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter
+    def cooldown(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "cooldown")
+
+    @cooldown.setter
+    def cooldown(self, value: pulumi.Input[int]):
+        pulumi.set(self, "cooldown", value)
+
+    @property
+    @pulumi.getter(name="evaluationPeriods")
+    def evaluation_periods(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "evaluation_periods")
+
+    @evaluation_periods.setter
+    def evaluation_periods(self, value: pulumi.Input[int]):
+        pulumi.set(self, "evaluation_periods", value)
+
+    @property
+    @pulumi.getter(name="metricName")
+    def metric_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "metric_name")
+
+    @metric_name.setter
+    def metric_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "metric_name", value)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: pulumi.Input[str]):
+        pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: pulumi.Input[str]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def period(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: pulumi.Input[int]):
+        pulumi.set(self, "period", value)
+
+    @property
+    @pulumi.getter(name="policyName")
+    def policy_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "policy_name")
+
+    @policy_name.setter
+    def policy_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "policy_name", value)
+
+    @property
+    @pulumi.getter
+    def statistic(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "statistic")
+
+    @statistic.setter
+    def statistic(self, value: pulumi.Input[str]):
+        pulumi.set(self, "statistic", value)
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> pulumi.Input[float]:
+        return pulumi.get(self, "threshold")
+
+    @threshold.setter
+    def threshold(self, value: pulumi.Input[float]):
+        pulumi.set(self, "threshold", value)
+
+    @property
+    @pulumi.getter
+    def dimensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ScalingUpPolicyDimensionArgs']]]]:
+        return pulumi.get(self, "dimensions")
+
+    @dimensions.setter
+    def dimensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ScalingUpPolicyDimensionArgs']]]]):
+        pulumi.set(self, "dimensions", value)
+
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "is_enabled")
+
+    @is_enabled.setter
+    def is_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_enabled", value)
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source", value)
+
+    @property
+    @pulumi.getter
+    def unit(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "unit")
+
+    @unit.setter
+    def unit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "unit", value)
+
+
+@pulumi.input_type
+class ElastigroupAzureV3ScalingUpPolicyActionArgs:
+    def __init__(__self__, *,
+                 adjustment: Optional[pulumi.Input[str]] = None,
+                 maximum: Optional[pulumi.Input[str]] = None,
+                 minimum: Optional[pulumi.Input[str]] = None,
+                 target: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        if adjustment is not None:
+            pulumi.set(__self__, "adjustment", adjustment)
+        if maximum is not None:
+            pulumi.set(__self__, "maximum", maximum)
+        if minimum is not None:
+            pulumi.set(__self__, "minimum", minimum)
+        if target is not None:
+            pulumi.set(__self__, "target", target)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def adjustment(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "adjustment")
+
+    @adjustment.setter
+    def adjustment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "adjustment", value)
+
+    @property
+    @pulumi.getter
+    def maximum(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "maximum")
+
+    @maximum.setter
+    def maximum(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maximum", value)
+
+    @property
+    @pulumi.getter
+    def minimum(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "minimum")
+
+    @minimum.setter
+    def minimum(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "minimum", value)
+
+    @property
+    @pulumi.getter
+    def target(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "target")
+
+    @target.setter
+    def target(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class ElastigroupAzureV3ScalingUpPolicyDimensionArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type
