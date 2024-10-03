@@ -4,180 +4,375 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'BeanstalkDeploymentPreferencesArgs',
+    'BeanstalkDeploymentPreferencesArgsDict',
     'BeanstalkDeploymentPreferencesStrategyArgs',
+    'BeanstalkDeploymentPreferencesStrategyArgsDict',
     'BeanstalkManagedActionsArgs',
+    'BeanstalkManagedActionsArgsDict',
     'BeanstalkManagedActionsPlatformUpdateArgs',
+    'BeanstalkManagedActionsPlatformUpdateArgsDict',
     'BeanstalkScheduledTaskArgs',
+    'BeanstalkScheduledTaskArgsDict',
     'ElastigroupCpuOptionsArgs',
+    'ElastigroupCpuOptionsArgsDict',
     'ElastigroupEbsBlockDeviceArgs',
+    'ElastigroupEbsBlockDeviceArgsDict',
     'ElastigroupEbsBlockDeviceDynamicIopsArgs',
+    'ElastigroupEbsBlockDeviceDynamicIopsArgsDict',
     'ElastigroupEbsBlockDeviceDynamicVolumeSizeArgs',
+    'ElastigroupEbsBlockDeviceDynamicVolumeSizeArgsDict',
     'ElastigroupEphemeralBlockDeviceArgs',
+    'ElastigroupEphemeralBlockDeviceArgsDict',
     'ElastigroupImageArgs',
+    'ElastigroupImageArgsDict',
     'ElastigroupImageImageArgs',
+    'ElastigroupImageImageArgsDict',
     'ElastigroupInstanceTypesWeightArgs',
+    'ElastigroupInstanceTypesWeightArgsDict',
     'ElastigroupIntegrationBeanstalkArgs',
+    'ElastigroupIntegrationBeanstalkArgsDict',
     'ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs',
+    'ElastigroupIntegrationBeanstalkDeploymentPreferencesArgsDict',
     'ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyArgs',
+    'ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyArgsDict',
     'ElastigroupIntegrationBeanstalkManagedActionsArgs',
+    'ElastigroupIntegrationBeanstalkManagedActionsArgsDict',
     'ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs',
+    'ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgsDict',
     'ElastigroupIntegrationCodedeployArgs',
+    'ElastigroupIntegrationCodedeployArgsDict',
     'ElastigroupIntegrationCodedeployDeploymentGroupArgs',
+    'ElastigroupIntegrationCodedeployDeploymentGroupArgsDict',
     'ElastigroupIntegrationDockerSwarmArgs',
+    'ElastigroupIntegrationDockerSwarmArgsDict',
     'ElastigroupIntegrationDockerSwarmAutoscaleDownArgs',
+    'ElastigroupIntegrationDockerSwarmAutoscaleDownArgsDict',
     'ElastigroupIntegrationDockerSwarmAutoscaleHeadroomArgs',
+    'ElastigroupIntegrationDockerSwarmAutoscaleHeadroomArgsDict',
     'ElastigroupIntegrationEcsArgs',
+    'ElastigroupIntegrationEcsArgsDict',
     'ElastigroupIntegrationEcsAutoscaleAttributeArgs',
+    'ElastigroupIntegrationEcsAutoscaleAttributeArgsDict',
     'ElastigroupIntegrationEcsAutoscaleDownArgs',
+    'ElastigroupIntegrationEcsAutoscaleDownArgsDict',
     'ElastigroupIntegrationEcsAutoscaleHeadroomArgs',
+    'ElastigroupIntegrationEcsAutoscaleHeadroomArgsDict',
     'ElastigroupIntegrationEcsBatchArgs',
+    'ElastigroupIntegrationEcsBatchArgsDict',
     'ElastigroupIntegrationGitlabArgs',
+    'ElastigroupIntegrationGitlabArgsDict',
     'ElastigroupIntegrationGitlabRunnerArgs',
+    'ElastigroupIntegrationGitlabRunnerArgsDict',
     'ElastigroupIntegrationKubernetesArgs',
+    'ElastigroupIntegrationKubernetesArgsDict',
     'ElastigroupIntegrationKubernetesAutoscaleDownArgs',
+    'ElastigroupIntegrationKubernetesAutoscaleDownArgsDict',
     'ElastigroupIntegrationKubernetesAutoscaleHeadroomArgs',
+    'ElastigroupIntegrationKubernetesAutoscaleHeadroomArgsDict',
     'ElastigroupIntegrationKubernetesAutoscaleLabelArgs',
+    'ElastigroupIntegrationKubernetesAutoscaleLabelArgsDict',
     'ElastigroupIntegrationMesosphereArgs',
+    'ElastigroupIntegrationMesosphereArgsDict',
     'ElastigroupIntegrationNomadArgs',
+    'ElastigroupIntegrationNomadArgsDict',
     'ElastigroupIntegrationNomadAutoscaleConstraintArgs',
+    'ElastigroupIntegrationNomadAutoscaleConstraintArgsDict',
     'ElastigroupIntegrationNomadAutoscaleDownArgs',
+    'ElastigroupIntegrationNomadAutoscaleDownArgsDict',
     'ElastigroupIntegrationNomadAutoscaleHeadroomArgs',
+    'ElastigroupIntegrationNomadAutoscaleHeadroomArgsDict',
     'ElastigroupIntegrationRancherArgs',
+    'ElastigroupIntegrationRancherArgsDict',
     'ElastigroupIntegrationRoute53Args',
+    'ElastigroupIntegrationRoute53ArgsDict',
     'ElastigroupIntegrationRoute53DomainArgs',
+    'ElastigroupIntegrationRoute53DomainArgsDict',
     'ElastigroupIntegrationRoute53DomainRecordSetArgs',
+    'ElastigroupIntegrationRoute53DomainRecordSetArgsDict',
     'ElastigroupItfArgs',
+    'ElastigroupItfArgsDict',
     'ElastigroupItfDefaultStaticTargetGroupArgs',
+    'ElastigroupItfDefaultStaticTargetGroupArgsDict',
     'ElastigroupItfLoadBalancerArgs',
+    'ElastigroupItfLoadBalancerArgsDict',
     'ElastigroupItfLoadBalancerListenerRuleArgs',
+    'ElastigroupItfLoadBalancerListenerRuleArgsDict',
     'ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupArgs',
+    'ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupArgsDict',
     'ElastigroupItfTargetGroupConfigArgs',
+    'ElastigroupItfTargetGroupConfigArgsDict',
     'ElastigroupItfTargetGroupConfigMatcherArgs',
+    'ElastigroupItfTargetGroupConfigMatcherArgsDict',
     'ElastigroupItfTargetGroupConfigTagArgs',
+    'ElastigroupItfTargetGroupConfigTagArgsDict',
     'ElastigroupLoggingArgs',
+    'ElastigroupLoggingArgsDict',
     'ElastigroupLoggingExportArgs',
+    'ElastigroupLoggingExportArgsDict',
     'ElastigroupLoggingExportS3Args',
+    'ElastigroupLoggingExportS3ArgsDict',
     'ElastigroupMetadataOptionsArgs',
+    'ElastigroupMetadataOptionsArgsDict',
     'ElastigroupMultipleMetricsArgs',
+    'ElastigroupMultipleMetricsArgsDict',
     'ElastigroupMultipleMetricsExpressionArgs',
+    'ElastigroupMultipleMetricsExpressionArgsDict',
     'ElastigroupMultipleMetricsMetricArgs',
+    'ElastigroupMultipleMetricsMetricArgsDict',
     'ElastigroupMultipleMetricsMetricDimensionArgs',
+    'ElastigroupMultipleMetricsMetricDimensionArgsDict',
     'ElastigroupNetworkInterfaceArgs',
+    'ElastigroupNetworkInterfaceArgsDict',
     'ElastigroupResourceRequirementArgs',
+    'ElastigroupResourceRequirementArgsDict',
     'ElastigroupResourceTagSpecificationArgs',
+    'ElastigroupResourceTagSpecificationArgsDict',
     'ElastigroupRevertToSpotArgs',
+    'ElastigroupRevertToSpotArgsDict',
     'ElastigroupScalingDownPolicyArgs',
+    'ElastigroupScalingDownPolicyArgsDict',
     'ElastigroupScalingDownPolicyDimensionArgs',
+    'ElastigroupScalingDownPolicyDimensionArgsDict',
     'ElastigroupScalingDownPolicyStepAdjustmentArgs',
+    'ElastigroupScalingDownPolicyStepAdjustmentArgsDict',
     'ElastigroupScalingDownPolicyStepAdjustmentActionArgs',
+    'ElastigroupScalingDownPolicyStepAdjustmentActionArgsDict',
     'ElastigroupScalingStrategyArgs',
+    'ElastigroupScalingStrategyArgsDict',
     'ElastigroupScalingTargetPolicyArgs',
+    'ElastigroupScalingTargetPolicyArgsDict',
     'ElastigroupScalingTargetPolicyDimensionArgs',
+    'ElastigroupScalingTargetPolicyDimensionArgsDict',
     'ElastigroupScalingUpPolicyArgs',
+    'ElastigroupScalingUpPolicyArgsDict',
     'ElastigroupScalingUpPolicyDimensionArgs',
+    'ElastigroupScalingUpPolicyDimensionArgsDict',
     'ElastigroupScalingUpPolicyStepAdjustmentArgs',
+    'ElastigroupScalingUpPolicyStepAdjustmentArgsDict',
     'ElastigroupScalingUpPolicyStepAdjustmentActionArgs',
+    'ElastigroupScalingUpPolicyStepAdjustmentActionArgsDict',
     'ElastigroupScheduledTaskArgs',
+    'ElastigroupScheduledTaskArgsDict',
     'ElastigroupSignalArgs',
+    'ElastigroupSignalArgsDict',
     'ElastigroupStatefulDeallocationArgs',
+    'ElastigroupStatefulDeallocationArgsDict',
     'ElastigroupStatefulInstanceActionArgs',
+    'ElastigroupStatefulInstanceActionArgsDict',
     'ElastigroupTagArgs',
+    'ElastigroupTagArgsDict',
     'ElastigroupUpdatePolicyArgs',
+    'ElastigroupUpdatePolicyArgsDict',
     'ElastigroupUpdatePolicyRollConfigArgs',
+    'ElastigroupUpdatePolicyRollConfigArgsDict',
     'ElastigroupUpdatePolicyRollConfigStrategyArgs',
+    'ElastigroupUpdatePolicyRollConfigStrategyArgsDict',
     'ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs',
+    'ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgsDict',
     'ManagedInstanceBlockDeviceMappingArgs',
+    'ManagedInstanceBlockDeviceMappingArgsDict',
     'ManagedInstanceBlockDeviceMappingEbsArgs',
+    'ManagedInstanceBlockDeviceMappingEbsArgsDict',
     'ManagedInstanceDeleteArgs',
+    'ManagedInstanceDeleteArgsDict',
     'ManagedInstanceIntegrationRoute53Args',
+    'ManagedInstanceIntegrationRoute53ArgsDict',
     'ManagedInstanceIntegrationRoute53DomainArgs',
+    'ManagedInstanceIntegrationRoute53DomainArgsDict',
     'ManagedInstanceIntegrationRoute53DomainRecordSetArgs',
+    'ManagedInstanceIntegrationRoute53DomainRecordSetArgsDict',
     'ManagedInstanceLoadBalancerArgs',
+    'ManagedInstanceLoadBalancerArgsDict',
     'ManagedInstanceManagedInstanceActionArgs',
+    'ManagedInstanceManagedInstanceActionArgsDict',
     'ManagedInstanceMetadataOptionsArgs',
+    'ManagedInstanceMetadataOptionsArgsDict',
     'ManagedInstanceNetworkInterfaceArgs',
+    'ManagedInstanceNetworkInterfaceArgsDict',
     'ManagedInstanceResourceTagSpecificationArgs',
+    'ManagedInstanceResourceTagSpecificationArgsDict',
     'ManagedInstanceRevertToSpotArgs',
+    'ManagedInstanceRevertToSpotArgsDict',
     'ManagedInstanceScheduledTaskArgs',
+    'ManagedInstanceScheduledTaskArgsDict',
     'ManagedInstanceTagArgs',
+    'ManagedInstanceTagArgsDict',
     'MrScalarApplicationArgs',
+    'MrScalarApplicationArgsDict',
     'MrScalarBootstrapActionsFileArgs',
+    'MrScalarBootstrapActionsFileArgsDict',
     'MrScalarConfigurationsFileArgs',
+    'MrScalarConfigurationsFileArgsDict',
     'MrScalarCoreEbsBlockDeviceArgs',
+    'MrScalarCoreEbsBlockDeviceArgsDict',
     'MrScalarCoreScalingDownPolicyArgs',
+    'MrScalarCoreScalingDownPolicyArgsDict',
     'MrScalarCoreScalingUpPolicyArgs',
+    'MrScalarCoreScalingUpPolicyArgsDict',
     'MrScalarInstanceWeightArgs',
+    'MrScalarInstanceWeightArgsDict',
     'MrScalarMasterEbsBlockDeviceArgs',
+    'MrScalarMasterEbsBlockDeviceArgsDict',
     'MrScalarProvisioningTimeoutArgs',
+    'MrScalarProvisioningTimeoutArgsDict',
     'MrScalarScheduledTaskArgs',
+    'MrScalarScheduledTaskArgsDict',
     'MrScalarStepsFileArgs',
+    'MrScalarStepsFileArgsDict',
     'MrScalarTagArgs',
+    'MrScalarTagArgsDict',
     'MrScalarTaskEbsBlockDeviceArgs',
+    'MrScalarTaskEbsBlockDeviceArgsDict',
     'MrScalarTaskScalingDownPolicyArgs',
+    'MrScalarTaskScalingDownPolicyArgsDict',
     'MrScalarTaskScalingUpPolicyArgs',
+    'MrScalarTaskScalingUpPolicyArgsDict',
     'MrScalarTerminationPolicyArgs',
+    'MrScalarTerminationPolicyArgsDict',
     'MrScalarTerminationPolicyStatementArgs',
+    'MrScalarTerminationPolicyStatementArgsDict',
     'OceanAttachLoadBalancerArgs',
+    'OceanAttachLoadBalancerArgsDict',
     'OceanAutoscalerArgs',
+    'OceanAutoscalerArgsDict',
     'OceanAutoscalerAutoscaleDownArgs',
+    'OceanAutoscalerAutoscaleDownArgsDict',
     'OceanAutoscalerAutoscaleHeadroomArgs',
+    'OceanAutoscalerAutoscaleHeadroomArgsDict',
     'OceanAutoscalerResourceLimitsArgs',
+    'OceanAutoscalerResourceLimitsArgsDict',
     'OceanBlockDeviceMappingArgs',
+    'OceanBlockDeviceMappingArgsDict',
     'OceanBlockDeviceMappingEbsArgs',
+    'OceanBlockDeviceMappingEbsArgsDict',
     'OceanBlockDeviceMappingEbsDynamicIopsArgs',
+    'OceanBlockDeviceMappingEbsDynamicIopsArgsDict',
     'OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs',
+    'OceanBlockDeviceMappingEbsDynamicVolumeSizeArgsDict',
     'OceanClusterOrientationArgs',
+    'OceanClusterOrientationArgsDict',
     'OceanDetachLoadBalancerArgs',
+    'OceanDetachLoadBalancerArgsDict',
     'OceanFiltersArgs',
+    'OceanFiltersArgsDict',
     'OceanInstanceMetadataOptionsArgs',
+    'OceanInstanceMetadataOptionsArgsDict',
     'OceanLaunchSpecAutoscaleDownArgs',
+    'OceanLaunchSpecAutoscaleDownArgsDict',
     'OceanLaunchSpecAutoscaleHeadroomArgs',
+    'OceanLaunchSpecAutoscaleHeadroomArgsDict',
     'OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs',
+    'OceanLaunchSpecAutoscaleHeadroomsAutomaticArgsDict',
     'OceanLaunchSpecBlockDeviceMappingArgs',
+    'OceanLaunchSpecBlockDeviceMappingArgsDict',
     'OceanLaunchSpecBlockDeviceMappingEbsArgs',
+    'OceanLaunchSpecBlockDeviceMappingEbsArgsDict',
     'OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs',
+    'OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgsDict',
     'OceanLaunchSpecCreateOptionsArgs',
+    'OceanLaunchSpecCreateOptionsArgsDict',
     'OceanLaunchSpecDeleteOptionsArgs',
+    'OceanLaunchSpecDeleteOptionsArgsDict',
     'OceanLaunchSpecElasticIpPoolArgs',
+    'OceanLaunchSpecElasticIpPoolArgsDict',
     'OceanLaunchSpecElasticIpPoolTagSelectorArgs',
+    'OceanLaunchSpecElasticIpPoolTagSelectorArgsDict',
     'OceanLaunchSpecEphemeralStorageArgs',
+    'OceanLaunchSpecEphemeralStorageArgsDict',
     'OceanLaunchSpecImageArgs',
+    'OceanLaunchSpecImageArgsDict',
     'OceanLaunchSpecInstanceMetadataOptionsArgs',
+    'OceanLaunchSpecInstanceMetadataOptionsArgsDict',
     'OceanLaunchSpecInstanceTypesFiltersArgs',
+    'OceanLaunchSpecInstanceTypesFiltersArgsDict',
     'OceanLaunchSpecLabelArgs',
+    'OceanLaunchSpecLabelArgsDict',
     'OceanLaunchSpecResourceLimitArgs',
+    'OceanLaunchSpecResourceLimitArgsDict',
     'OceanLaunchSpecSchedulingShutdownHoursArgs',
+    'OceanLaunchSpecSchedulingShutdownHoursArgsDict',
     'OceanLaunchSpecSchedulingTaskArgs',
+    'OceanLaunchSpecSchedulingTaskArgsDict',
     'OceanLaunchSpecSchedulingTaskTaskHeadroomArgs',
+    'OceanLaunchSpecSchedulingTaskTaskHeadroomArgsDict',
     'OceanLaunchSpecStrategyArgs',
+    'OceanLaunchSpecStrategyArgsDict',
     'OceanLaunchSpecTagArgs',
+    'OceanLaunchSpecTagArgsDict',
     'OceanLaunchSpecTaintArgs',
+    'OceanLaunchSpecTaintArgsDict',
     'OceanLaunchSpecUpdatePolicyArgs',
+    'OceanLaunchSpecUpdatePolicyArgsDict',
     'OceanLaunchSpecUpdatePolicyRollConfigArgs',
+    'OceanLaunchSpecUpdatePolicyRollConfigArgsDict',
     'OceanLoadBalancerArgs',
+    'OceanLoadBalancerArgsDict',
     'OceanLoggingArgs',
+    'OceanLoggingArgsDict',
     'OceanLoggingExportArgs',
+    'OceanLoggingExportArgsDict',
     'OceanLoggingExportS3Args',
+    'OceanLoggingExportS3ArgsDict',
     'OceanResourceTagSpecificationArgs',
+    'OceanResourceTagSpecificationArgsDict',
     'OceanScheduledTaskArgs',
+    'OceanScheduledTaskArgsDict',
     'OceanScheduledTaskShutdownHoursArgs',
+    'OceanScheduledTaskShutdownHoursArgsDict',
     'OceanScheduledTaskTaskArgs',
+    'OceanScheduledTaskTaskArgsDict',
     'OceanScheduledTaskTaskParametersArgs',
+    'OceanScheduledTaskTaskParametersArgsDict',
     'OceanScheduledTaskTaskParametersAmiAutoUpdateArgs',
+    'OceanScheduledTaskTaskParametersAmiAutoUpdateArgsDict',
     'OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollArgs',
+    'OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollArgsDict',
     'OceanScheduledTaskTaskParametersParametersClusterRollArgs',
+    'OceanScheduledTaskTaskParametersParametersClusterRollArgsDict',
     'OceanTagArgs',
+    'OceanTagArgsDict',
     'OceanUpdatePolicyArgs',
+    'OceanUpdatePolicyArgsDict',
     'OceanUpdatePolicyRollConfigArgs',
+    'OceanUpdatePolicyRollConfigArgsDict',
     'SuspensionSuspensionArgs',
+    'SuspensionSuspensionArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class BeanstalkDeploymentPreferencesArgsDict(TypedDict):
+        automatic_roll: NotRequired[pulumi.Input[bool]]
+        """
+        Should roll perform automatically
+        """
+        batch_size_percentage: NotRequired[pulumi.Input[int]]
+        """
+        Percent size of each batch
+        """
+        grace_period: NotRequired[pulumi.Input[int]]
+        """
+        Amount of time to wait between batches
+        """
+        strategies: NotRequired[pulumi.Input[Sequence[pulumi.Input['BeanstalkDeploymentPreferencesStrategyArgsDict']]]]
+        """
+        Strategy parameters
+        """
+elif False:
+    BeanstalkDeploymentPreferencesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BeanstalkDeploymentPreferencesArgs:
@@ -250,6 +445,19 @@ class BeanstalkDeploymentPreferencesArgs:
         pulumi.set(self, "strategies", value)
 
 
+if not MYPY:
+    class BeanstalkDeploymentPreferencesStrategyArgsDict(TypedDict):
+        action: NotRequired[pulumi.Input[str]]
+        """
+        Action to take
+        """
+        should_drain_instances: NotRequired[pulumi.Input[bool]]
+        """
+        Bool value if to wait to drain instance
+        """
+elif False:
+    BeanstalkDeploymentPreferencesStrategyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BeanstalkDeploymentPreferencesStrategyArgs:
     def __init__(__self__, *,
@@ -289,6 +497,15 @@ class BeanstalkDeploymentPreferencesStrategyArgs:
         pulumi.set(self, "should_drain_instances", value)
 
 
+if not MYPY:
+    class BeanstalkManagedActionsArgsDict(TypedDict):
+        platform_update: NotRequired[pulumi.Input['BeanstalkManagedActionsPlatformUpdateArgsDict']]
+        """
+        Platform Update parameters
+        """
+elif False:
+    BeanstalkManagedActionsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BeanstalkManagedActionsArgs:
     def __init__(__self__, *,
@@ -311,6 +528,23 @@ class BeanstalkManagedActionsArgs:
     def platform_update(self, value: Optional[pulumi.Input['BeanstalkManagedActionsPlatformUpdateArgs']]):
         pulumi.set(self, "platform_update", value)
 
+
+if not MYPY:
+    class BeanstalkManagedActionsPlatformUpdateArgsDict(TypedDict):
+        perform_at: NotRequired[pulumi.Input[str]]
+        """
+        Actions to perform (options: timeWindow, never)
+        """
+        time_window: NotRequired[pulumi.Input[str]]
+        """
+        Time Window for when action occurs ex. Mon:23:50-Tue:00:20
+        """
+        update_level: NotRequired[pulumi.Input[str]]
+        """
+        Level to update
+        """
+elif False:
+    BeanstalkManagedActionsPlatformUpdateArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BeanstalkManagedActionsPlatformUpdateArgs:
@@ -366,6 +600,73 @@ class BeanstalkManagedActionsPlatformUpdateArgs:
     def update_level(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "update_level", value)
 
+
+if not MYPY:
+    class BeanstalkScheduledTaskArgsDict(TypedDict):
+        task_type: pulumi.Input[str]
+        """
+        The task type to run. Supported task types are: `"scale"`, `"backup_ami"`, `"roll"`, `"scaleUp"`, `"percentageScaleUp"`, `"scaleDown"`, `"percentageScaleDown"`, `"statefulUpdateCapacity"`.
+        """
+        adjustment: NotRequired[pulumi.Input[str]]
+        """
+        The number of instances to add or remove.
+        """
+        adjustment_percentage: NotRequired[pulumi.Input[str]]
+        """
+        The percentage of instances to add or remove.
+
+        Usage:
+        """
+        batch_size_percentage: NotRequired[pulumi.Input[str]]
+        """
+        The percentage size of each batch in the scheduled deployment roll.
+        """
+        cron_expression: NotRequired[pulumi.Input[str]]
+        """
+        A valid cron expression. The cron is running in UTC time zone and is in [Unix cron format](https://en.wikipedia.org/wiki/Cron).
+        """
+        frequency: NotRequired[pulumi.Input[str]]
+        """
+        The recurrence frequency to run this task. Supported values are `"hourly"`, `"daily"`, `"weekly"` and `"continuous"`.
+        """
+        grace_period: NotRequired[pulumi.Input[str]]
+        """
+        The period of time (seconds) to wait before checking a batch's health after it's deployment.
+        """
+        is_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Setting the task to being enabled or disabled.
+        """
+        max_capacity: NotRequired[pulumi.Input[str]]
+        """
+        The maximum number of instances the group should have.
+        """
+        min_capacity: NotRequired[pulumi.Input[str]]
+        """
+        The minimum number of instances the group should have.
+        """
+        scale_max_capacity: NotRequired[pulumi.Input[str]]
+        """
+        The maximum number of instances the group should have.
+        """
+        scale_min_capacity: NotRequired[pulumi.Input[str]]
+        """
+        The minimum number of instances the group should have.
+        """
+        scale_target_capacity: NotRequired[pulumi.Input[str]]
+        """
+        The desired number of instances the group should have.
+        """
+        start_time: NotRequired[pulumi.Input[str]]
+        """
+        Set a start time for one time tasks.
+        """
+        target_capacity: NotRequired[pulumi.Input[str]]
+        """
+        The desired number of instances the group should have.
+        """
+elif False:
+    BeanstalkScheduledTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BeanstalkScheduledTaskArgs:
@@ -617,6 +918,15 @@ class BeanstalkScheduledTaskArgs:
         pulumi.set(self, "target_capacity", value)
 
 
+if not MYPY:
+    class ElastigroupCpuOptionsArgsDict(TypedDict):
+        threads_per_core: pulumi.Input[int]
+        """
+        The ability to define the number of threads per core in instances that allow this.
+        """
+elif False:
+    ElastigroupCpuOptionsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupCpuOptionsArgs:
     def __init__(__self__, *,
@@ -638,6 +948,55 @@ class ElastigroupCpuOptionsArgs:
     def threads_per_core(self, value: pulumi.Input[int]):
         pulumi.set(self, "threads_per_core", value)
 
+
+if not MYPY:
+    class ElastigroupEbsBlockDeviceArgsDict(TypedDict):
+        device_name: pulumi.Input[str]
+        """
+        The name of the device to mount.
+        """
+        delete_on_termination: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the volume should be destroyed on instance termination.
+        """
+        dynamic_iops: NotRequired[pulumi.Input['ElastigroupEbsBlockDeviceDynamicIopsArgsDict']]
+        """
+        Set dynamic IOPS properties. When using this object, you cannot use the `iops` object. You must use one or the other.
+        """
+        dynamic_volume_size: NotRequired[pulumi.Input['ElastigroupEbsBlockDeviceDynamicVolumeSizeArgsDict']]
+        """
+        Set dynamic volume size properties. When using this object, you cannot use `volume_size`. You must use one or the other.
+        """
+        encrypted: NotRequired[pulumi.Input[bool]]
+        """
+        Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+        """
+        iops: NotRequired[pulumi.Input[int]]
+        """
+        The amount of provisioned [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html). This must be set with a `volume_type` of `"io1"`.
+        """
+        kms_key_id: NotRequired[pulumi.Input[str]]
+        """
+        ID for a user managed CMK under which the EBS Volume is encrypted
+        """
+        snapshot_id: NotRequired[pulumi.Input[str]]
+        """
+        The Snapshot ID to mount.
+        """
+        throughput: NotRequired[pulumi.Input[int]]
+        """
+        The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.
+        """
+        volume_size: NotRequired[pulumi.Input[int]]
+        """
+        The size of the volume in gigabytes.
+        """
+        volume_type: NotRequired[pulumi.Input[str]]
+        """
+        The type of volume. Can be `"standard"`, `"gp2"`, `"gp3"`, `"io1"`, `"st1"` or `"sc1"`.
+        """
+elif False:
+    ElastigroupEbsBlockDeviceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupEbsBlockDeviceArgs:
@@ -821,6 +1180,27 @@ class ElastigroupEbsBlockDeviceArgs:
         pulumi.set(self, "volume_type", value)
 
 
+if not MYPY:
+    class ElastigroupEbsBlockDeviceDynamicIopsArgsDict(TypedDict):
+        base_size: NotRequired[pulumi.Input[int]]
+        """
+        Initial size for IOPS.
+        """
+        resource: NotRequired[pulumi.Input[str]]
+        """
+        Type of resource, valid values: `"CPU", "MEMORY"`.
+        """
+        size_per_resource_unit: NotRequired[pulumi.Input[int]]
+        """
+        Additional size per resource unit (in IOPS).
+
+        Modifying any `ebs_block_device` currently requires resource replacement.
+
+        Usage:
+        """
+elif False:
+    ElastigroupEbsBlockDeviceDynamicIopsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupEbsBlockDeviceDynamicIopsArgs:
     def __init__(__self__, *,
@@ -884,6 +1264,23 @@ class ElastigroupEbsBlockDeviceDynamicIopsArgs:
         pulumi.set(self, "size_per_resource_unit", value)
 
 
+if not MYPY:
+    class ElastigroupEbsBlockDeviceDynamicVolumeSizeArgsDict(TypedDict):
+        base_size: NotRequired[pulumi.Input[int]]
+        """
+        Initial size for volume.
+        """
+        resource: NotRequired[pulumi.Input[str]]
+        """
+        Type of resource, valid values: `"CPU", "MEMORY"`.
+        """
+        size_per_resource_unit: NotRequired[pulumi.Input[int]]
+        """
+        Additional size per resource unit (in GB).
+        """
+elif False:
+    ElastigroupEbsBlockDeviceDynamicVolumeSizeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupEbsBlockDeviceDynamicVolumeSizeArgs:
     def __init__(__self__, *,
@@ -939,6 +1336,22 @@ class ElastigroupEbsBlockDeviceDynamicVolumeSizeArgs:
         pulumi.set(self, "size_per_resource_unit", value)
 
 
+if not MYPY:
+    class ElastigroupEphemeralBlockDeviceArgsDict(TypedDict):
+        device_name: pulumi.Input[str]
+        """
+        The name of the block device to mount on the instance.
+        """
+        virtual_name: pulumi.Input[str]
+        """
+        The [Instance Store Device Name](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#InstanceStoreDeviceNames)
+        (e.g. `"ephemeral0"`).
+
+        Usage:
+        """
+elif False:
+    ElastigroupEphemeralBlockDeviceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupEphemeralBlockDeviceArgs:
     def __init__(__self__, *,
@@ -982,6 +1395,12 @@ class ElastigroupEphemeralBlockDeviceArgs:
         pulumi.set(self, "virtual_name", value)
 
 
+if not MYPY:
+    class ElastigroupImageArgsDict(TypedDict):
+        images: pulumi.Input[Sequence[pulumi.Input['ElastigroupImageImageArgsDict']]]
+elif False:
+    ElastigroupImageArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupImageArgs:
     def __init__(__self__, *,
@@ -997,6 +1416,15 @@ class ElastigroupImageArgs:
     def images(self, value: pulumi.Input[Sequence[pulumi.Input['ElastigroupImageImageArgs']]]):
         pulumi.set(self, "images", value)
 
+
+if not MYPY:
+    class ElastigroupImageImageArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The group ID.
+        """
+elif False:
+    ElastigroupImageImageArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupImageImageArgs:
@@ -1019,6 +1447,19 @@ class ElastigroupImageImageArgs:
     def id(self, value: pulumi.Input[str]):
         pulumi.set(self, "id", value)
 
+
+if not MYPY:
+    class ElastigroupInstanceTypesWeightArgsDict(TypedDict):
+        instance_type: pulumi.Input[str]
+        """
+        Name of instance type (String).
+        """
+        weight: pulumi.Input[int]
+        """
+        Weight per instance type (Integer).
+        """
+elif False:
+    ElastigroupInstanceTypesWeightArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupInstanceTypesWeightArgs:
@@ -1056,6 +1497,20 @@ class ElastigroupInstanceTypesWeightArgs:
     def weight(self, value: pulumi.Input[int]):
         pulumi.set(self, "weight", value)
 
+
+if not MYPY:
+    class ElastigroupIntegrationBeanstalkArgsDict(TypedDict):
+        deployment_preferences: NotRequired[pulumi.Input['ElastigroupIntegrationBeanstalkDeploymentPreferencesArgsDict']]
+        """
+        Preferences when performing a roll
+        """
+        environment_id: NotRequired[pulumi.Input[str]]
+        managed_actions: NotRequired[pulumi.Input['ElastigroupIntegrationBeanstalkManagedActionsArgsDict']]
+        """
+        Managed Actions parameters
+        """
+elif False:
+    ElastigroupIntegrationBeanstalkArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupIntegrationBeanstalkArgs:
@@ -1107,6 +1562,18 @@ class ElastigroupIntegrationBeanstalkArgs:
     def managed_actions(self, value: Optional[pulumi.Input['ElastigroupIntegrationBeanstalkManagedActionsArgs']]):
         pulumi.set(self, "managed_actions", value)
 
+
+if not MYPY:
+    class ElastigroupIntegrationBeanstalkDeploymentPreferencesArgsDict(TypedDict):
+        automatic_roll: NotRequired[pulumi.Input[bool]]
+        """
+        Should roll perform automatically
+        """
+        batch_size_percentage: NotRequired[pulumi.Input[int]]
+        grace_period: NotRequired[pulumi.Input[int]]
+        strategy: NotRequired[pulumi.Input['ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyArgsDict']]
+elif False:
+    ElastigroupIntegrationBeanstalkDeploymentPreferencesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs:
@@ -1167,6 +1634,13 @@ class ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs:
         pulumi.set(self, "strategy", value)
 
 
+if not MYPY:
+    class ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyArgsDict(TypedDict):
+        action: NotRequired[pulumi.Input[str]]
+        should_drain_instances: NotRequired[pulumi.Input[bool]]
+elif False:
+    ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyArgs:
     def __init__(__self__, *,
@@ -1196,6 +1670,15 @@ class ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyArgs:
         pulumi.set(self, "should_drain_instances", value)
 
 
+if not MYPY:
+    class ElastigroupIntegrationBeanstalkManagedActionsArgsDict(TypedDict):
+        platform_update: NotRequired[pulumi.Input['ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgsDict']]
+        """
+        Platform Update parameters
+        """
+elif False:
+    ElastigroupIntegrationBeanstalkManagedActionsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupIntegrationBeanstalkManagedActionsArgs:
     def __init__(__self__, *,
@@ -1218,6 +1701,22 @@ class ElastigroupIntegrationBeanstalkManagedActionsArgs:
     def platform_update(self, value: Optional[pulumi.Input['ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs']]):
         pulumi.set(self, "platform_update", value)
 
+
+if not MYPY:
+    class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgsDict(TypedDict):
+        perform_at: NotRequired[pulumi.Input[str]]
+        time_window: NotRequired[pulumi.Input[str]]
+        """
+        Time Window for when action occurs ex. Mon:23:50-Tue:00:20
+        """
+        update_level: NotRequired[pulumi.Input[str]]
+        """
+        Level to update
+
+        Usage:
+        """
+elif False:
+    ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs:
@@ -1274,6 +1773,23 @@ class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs:
         pulumi.set(self, "update_level", value)
 
 
+if not MYPY:
+    class ElastigroupIntegrationCodedeployArgsDict(TypedDict):
+        cleanup_on_failure: pulumi.Input[bool]
+        """
+        Cleanup automatically after a failed deploy.
+        """
+        deployment_groups: pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationCodedeployDeploymentGroupArgsDict']]]
+        """
+        Specify the deployment groups details.
+        """
+        terminate_instance_on_failure: pulumi.Input[bool]
+        """
+        Terminate the instance automatically after a failed deploy.
+        """
+elif False:
+    ElastigroupIntegrationCodedeployArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupIntegrationCodedeployArgs:
     def __init__(__self__, *,
@@ -1326,6 +1842,21 @@ class ElastigroupIntegrationCodedeployArgs:
         pulumi.set(self, "terminate_instance_on_failure", value)
 
 
+if not MYPY:
+    class ElastigroupIntegrationCodedeployDeploymentGroupArgsDict(TypedDict):
+        application_name: pulumi.Input[str]
+        """
+        The application name.
+        """
+        deployment_group_name: pulumi.Input[str]
+        """
+        The deployment group name.
+
+        Usage:
+        """
+elif False:
+    ElastigroupIntegrationCodedeployDeploymentGroupArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupIntegrationCodedeployDeploymentGroupArgs:
     def __init__(__self__, *,
@@ -1366,6 +1897,17 @@ class ElastigroupIntegrationCodedeployDeploymentGroupArgs:
     def deployment_group_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "deployment_group_name", value)
 
+
+if not MYPY:
+    class ElastigroupIntegrationDockerSwarmArgsDict(TypedDict):
+        master_host: pulumi.Input[str]
+        master_port: pulumi.Input[int]
+        autoscale_cooldown: NotRequired[pulumi.Input[int]]
+        autoscale_down: NotRequired[pulumi.Input['ElastigroupIntegrationDockerSwarmAutoscaleDownArgsDict']]
+        autoscale_headroom: NotRequired[pulumi.Input['ElastigroupIntegrationDockerSwarmAutoscaleHeadroomArgsDict']]
+        autoscale_is_enabled: NotRequired[pulumi.Input[bool]]
+elif False:
+    ElastigroupIntegrationDockerSwarmArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupIntegrationDockerSwarmArgs:
@@ -1442,6 +1984,13 @@ class ElastigroupIntegrationDockerSwarmArgs:
         pulumi.set(self, "autoscale_is_enabled", value)
 
 
+if not MYPY:
+    class ElastigroupIntegrationDockerSwarmAutoscaleDownArgsDict(TypedDict):
+        evaluation_periods: NotRequired[pulumi.Input[int]]
+        max_scale_down_percentage: NotRequired[pulumi.Input[float]]
+elif False:
+    ElastigroupIntegrationDockerSwarmAutoscaleDownArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupIntegrationDockerSwarmAutoscaleDownArgs:
     def __init__(__self__, *,
@@ -1470,6 +2019,14 @@ class ElastigroupIntegrationDockerSwarmAutoscaleDownArgs:
     def max_scale_down_percentage(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "max_scale_down_percentage", value)
 
+
+if not MYPY:
+    class ElastigroupIntegrationDockerSwarmAutoscaleHeadroomArgsDict(TypedDict):
+        cpu_per_unit: NotRequired[pulumi.Input[int]]
+        memory_per_unit: NotRequired[pulumi.Input[int]]
+        num_of_units: NotRequired[pulumi.Input[int]]
+elif False:
+    ElastigroupIntegrationDockerSwarmAutoscaleHeadroomArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupIntegrationDockerSwarmAutoscaleHeadroomArgs:
@@ -1511,6 +2068,32 @@ class ElastigroupIntegrationDockerSwarmAutoscaleHeadroomArgs:
     def num_of_units(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "num_of_units", value)
 
+
+if not MYPY:
+    class ElastigroupIntegrationEcsArgsDict(TypedDict):
+        cluster_name: pulumi.Input[str]
+        """
+        The name of the EC2 Container Service cluster.
+        """
+        autoscale_attributes: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationEcsAutoscaleAttributeArgsDict']]]]
+        """
+        A key/value mapping of tags to assign to the resource.
+        """
+        autoscale_cooldown: NotRequired[pulumi.Input[int]]
+        autoscale_down: NotRequired[pulumi.Input['ElastigroupIntegrationEcsAutoscaleDownArgsDict']]
+        autoscale_headroom: NotRequired[pulumi.Input['ElastigroupIntegrationEcsAutoscaleHeadroomArgsDict']]
+        autoscale_is_auto_config: NotRequired[pulumi.Input[bool]]
+        autoscale_is_enabled: NotRequired[pulumi.Input[bool]]
+        autoscale_scale_down_non_service_tasks: NotRequired[pulumi.Input[bool]]
+        """
+        Determines whether to scale down non-service tasks.
+        """
+        batch: NotRequired[pulumi.Input['ElastigroupIntegrationEcsBatchArgsDict']]
+        """
+        Batch configuration object:
+        """
+elif False:
+    ElastigroupIntegrationEcsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupIntegrationEcsArgs:
@@ -1642,6 +2225,13 @@ class ElastigroupIntegrationEcsArgs:
         pulumi.set(self, "batch", value)
 
 
+if not MYPY:
+    class ElastigroupIntegrationEcsAutoscaleAttributeArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        value: pulumi.Input[str]
+elif False:
+    ElastigroupIntegrationEcsAutoscaleAttributeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupIntegrationEcsAutoscaleAttributeArgs:
     def __init__(__self__, *,
@@ -1668,6 +2258,13 @@ class ElastigroupIntegrationEcsAutoscaleAttributeArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class ElastigroupIntegrationEcsAutoscaleDownArgsDict(TypedDict):
+        evaluation_periods: NotRequired[pulumi.Input[int]]
+        max_scale_down_percentage: NotRequired[pulumi.Input[float]]
+elif False:
+    ElastigroupIntegrationEcsAutoscaleDownArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupIntegrationEcsAutoscaleDownArgs:
@@ -1697,6 +2294,14 @@ class ElastigroupIntegrationEcsAutoscaleDownArgs:
     def max_scale_down_percentage(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "max_scale_down_percentage", value)
 
+
+if not MYPY:
+    class ElastigroupIntegrationEcsAutoscaleHeadroomArgsDict(TypedDict):
+        cpu_per_unit: NotRequired[pulumi.Input[int]]
+        memory_per_unit: NotRequired[pulumi.Input[int]]
+        num_of_units: NotRequired[pulumi.Input[int]]
+elif False:
+    ElastigroupIntegrationEcsAutoscaleHeadroomArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupIntegrationEcsAutoscaleHeadroomArgs:
@@ -1739,6 +2344,17 @@ class ElastigroupIntegrationEcsAutoscaleHeadroomArgs:
         pulumi.set(self, "num_of_units", value)
 
 
+if not MYPY:
+    class ElastigroupIntegrationEcsBatchArgsDict(TypedDict):
+        job_queue_names: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Array of strings.
+
+        Usage:
+        """
+elif False:
+    ElastigroupIntegrationEcsBatchArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupIntegrationEcsBatchArgs:
     def __init__(__self__, *,
@@ -1765,6 +2381,15 @@ class ElastigroupIntegrationEcsBatchArgs:
         pulumi.set(self, "job_queue_names", value)
 
 
+if not MYPY:
+    class ElastigroupIntegrationGitlabArgsDict(TypedDict):
+        runner: NotRequired[pulumi.Input['ElastigroupIntegrationGitlabRunnerArgsDict']]
+        """
+        Settings for Gitlab runner.
+        """
+elif False:
+    ElastigroupIntegrationGitlabArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupIntegrationGitlabArgs:
     def __init__(__self__, *,
@@ -1788,6 +2413,12 @@ class ElastigroupIntegrationGitlabArgs:
         pulumi.set(self, "runner", value)
 
 
+if not MYPY:
+    class ElastigroupIntegrationGitlabRunnerArgsDict(TypedDict):
+        is_enabled: NotRequired[pulumi.Input[bool]]
+elif False:
+    ElastigroupIntegrationGitlabRunnerArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupIntegrationGitlabRunnerArgs:
     def __init__(__self__, *,
@@ -1804,6 +2435,32 @@ class ElastigroupIntegrationGitlabRunnerArgs:
     def is_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "is_enabled", value)
 
+
+if not MYPY:
+    class ElastigroupIntegrationKubernetesArgsDict(TypedDict):
+        api_server: NotRequired[pulumi.Input[str]]
+        autoscale_cooldown: NotRequired[pulumi.Input[int]]
+        autoscale_down: NotRequired[pulumi.Input['ElastigroupIntegrationKubernetesAutoscaleDownArgsDict']]
+        autoscale_headroom: NotRequired[pulumi.Input['ElastigroupIntegrationKubernetesAutoscaleHeadroomArgsDict']]
+        autoscale_is_auto_config: NotRequired[pulumi.Input[bool]]
+        autoscale_is_enabled: NotRequired[pulumi.Input[bool]]
+        autoscale_labels: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationKubernetesAutoscaleLabelArgsDict']]]]
+        """
+        A key/value mapping of tags to assign to the resource.
+
+        Usage:
+        """
+        cluster_identifier: NotRequired[pulumi.Input[str]]
+        integration_mode: NotRequired[pulumi.Input[str]]
+        """
+        Valid values: `"saas"`, `"pod"`.
+        """
+        token: NotRequired[pulumi.Input[str]]
+        """
+        Kubernetes Token
+        """
+elif False:
+    ElastigroupIntegrationKubernetesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupIntegrationKubernetesArgs:
@@ -1948,6 +2605,13 @@ class ElastigroupIntegrationKubernetesArgs:
         pulumi.set(self, "token", value)
 
 
+if not MYPY:
+    class ElastigroupIntegrationKubernetesAutoscaleDownArgsDict(TypedDict):
+        evaluation_periods: NotRequired[pulumi.Input[int]]
+        max_scale_down_percentage: NotRequired[pulumi.Input[float]]
+elif False:
+    ElastigroupIntegrationKubernetesAutoscaleDownArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupIntegrationKubernetesAutoscaleDownArgs:
     def __init__(__self__, *,
@@ -1976,6 +2640,14 @@ class ElastigroupIntegrationKubernetesAutoscaleDownArgs:
     def max_scale_down_percentage(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "max_scale_down_percentage", value)
 
+
+if not MYPY:
+    class ElastigroupIntegrationKubernetesAutoscaleHeadroomArgsDict(TypedDict):
+        cpu_per_unit: NotRequired[pulumi.Input[int]]
+        memory_per_unit: NotRequired[pulumi.Input[int]]
+        num_of_units: NotRequired[pulumi.Input[int]]
+elif False:
+    ElastigroupIntegrationKubernetesAutoscaleHeadroomArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupIntegrationKubernetesAutoscaleHeadroomArgs:
@@ -2018,6 +2690,13 @@ class ElastigroupIntegrationKubernetesAutoscaleHeadroomArgs:
         pulumi.set(self, "num_of_units", value)
 
 
+if not MYPY:
+    class ElastigroupIntegrationKubernetesAutoscaleLabelArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        value: pulumi.Input[str]
+elif False:
+    ElastigroupIntegrationKubernetesAutoscaleLabelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupIntegrationKubernetesAutoscaleLabelArgs:
     def __init__(__self__, *,
@@ -2045,6 +2724,12 @@ class ElastigroupIntegrationKubernetesAutoscaleLabelArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class ElastigroupIntegrationMesosphereArgsDict(TypedDict):
+        api_server: pulumi.Input[str]
+elif False:
+    ElastigroupIntegrationMesosphereArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupIntegrationMesosphereArgs:
     def __init__(__self__, *,
@@ -2060,6 +2745,27 @@ class ElastigroupIntegrationMesosphereArgs:
     def api_server(self, value: pulumi.Input[str]):
         pulumi.set(self, "api_server", value)
 
+
+if not MYPY:
+    class ElastigroupIntegrationNomadArgsDict(TypedDict):
+        master_host: pulumi.Input[str]
+        master_port: pulumi.Input[int]
+        acl_token: NotRequired[pulumi.Input[str]]
+        """
+        Nomad ACL Token
+        """
+        autoscale_constraints: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationNomadAutoscaleConstraintArgsDict']]]]
+        """
+        A key/value mapping of tags to assign to the resource.
+
+        Usage:
+        """
+        autoscale_cooldown: NotRequired[pulumi.Input[int]]
+        autoscale_down: NotRequired[pulumi.Input['ElastigroupIntegrationNomadAutoscaleDownArgsDict']]
+        autoscale_headroom: NotRequired[pulumi.Input['ElastigroupIntegrationNomadAutoscaleHeadroomArgsDict']]
+        autoscale_is_enabled: NotRequired[pulumi.Input[bool]]
+elif False:
+    ElastigroupIntegrationNomadArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupIntegrationNomadArgs:
@@ -2174,6 +2880,13 @@ class ElastigroupIntegrationNomadArgs:
         pulumi.set(self, "autoscale_is_enabled", value)
 
 
+if not MYPY:
+    class ElastigroupIntegrationNomadAutoscaleConstraintArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        value: pulumi.Input[str]
+elif False:
+    ElastigroupIntegrationNomadAutoscaleConstraintArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupIntegrationNomadAutoscaleConstraintArgs:
     def __init__(__self__, *,
@@ -2201,6 +2914,12 @@ class ElastigroupIntegrationNomadAutoscaleConstraintArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class ElastigroupIntegrationNomadAutoscaleDownArgsDict(TypedDict):
+        evaluation_periods: NotRequired[pulumi.Input[int]]
+elif False:
+    ElastigroupIntegrationNomadAutoscaleDownArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupIntegrationNomadAutoscaleDownArgs:
     def __init__(__self__, *,
@@ -2217,6 +2936,14 @@ class ElastigroupIntegrationNomadAutoscaleDownArgs:
     def evaluation_periods(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "evaluation_periods", value)
 
+
+if not MYPY:
+    class ElastigroupIntegrationNomadAutoscaleHeadroomArgsDict(TypedDict):
+        cpu_per_unit: NotRequired[pulumi.Input[int]]
+        memory_per_unit: NotRequired[pulumi.Input[int]]
+        num_of_units: NotRequired[pulumi.Input[int]]
+elif False:
+    ElastigroupIntegrationNomadAutoscaleHeadroomArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupIntegrationNomadAutoscaleHeadroomArgs:
@@ -2258,6 +2985,25 @@ class ElastigroupIntegrationNomadAutoscaleHeadroomArgs:
     def num_of_units(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "num_of_units", value)
 
+
+if not MYPY:
+    class ElastigroupIntegrationRancherArgsDict(TypedDict):
+        access_key: pulumi.Input[str]
+        """
+        The access key of the Rancher API.
+        """
+        master_host: pulumi.Input[str]
+        secret_key: pulumi.Input[str]
+        """
+        The secret key of the Rancher API.
+        """
+        version: NotRequired[pulumi.Input[str]]
+        """
+        The Rancher version. Must be `"1"` or `"2"`. If this field is omitted, it’s assumed that the Rancher cluster is version 1. Note that Kubernetes is required when using Rancher version 2^.
+        Usage:
+        """
+elif False:
+    ElastigroupIntegrationRancherArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupIntegrationRancherArgs:
@@ -2325,6 +3071,15 @@ class ElastigroupIntegrationRancherArgs:
         pulumi.set(self, "version", value)
 
 
+if not MYPY:
+    class ElastigroupIntegrationRoute53ArgsDict(TypedDict):
+        domains: pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationRoute53DomainArgsDict']]]
+        """
+        Collection of one or more domains to register.
+        """
+elif False:
+    ElastigroupIntegrationRoute53ArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupIntegrationRoute53Args:
     def __init__(__self__, *,
@@ -2346,6 +3101,27 @@ class ElastigroupIntegrationRoute53Args:
     def domains(self, value: pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationRoute53DomainArgs']]]):
         pulumi.set(self, "domains", value)
 
+
+if not MYPY:
+    class ElastigroupIntegrationRoute53DomainArgsDict(TypedDict):
+        hosted_zone_id: pulumi.Input[str]
+        """
+        The id associated with a hosted zone.
+        """
+        record_sets: pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationRoute53DomainRecordSetArgsDict']]]
+        """
+        Collection of records containing authoritative DNS information for the specified domain name.
+        """
+        record_set_type: NotRequired[pulumi.Input[str]]
+        """
+        The type of the record set. Valid values: `"a"`, `"cname"`.
+        """
+        spotinst_acct_id: NotRequired[pulumi.Input[str]]
+        """
+        The Spotinst account ID that is linked to the AWS account that holds the Route 53 Hosted Zone ID. The default is the user Spotinst account provided as a URL parameter.
+        """
+elif False:
+    ElastigroupIntegrationRoute53DomainArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupIntegrationRoute53DomainArgs:
@@ -2416,6 +3192,25 @@ class ElastigroupIntegrationRoute53DomainArgs:
         pulumi.set(self, "spotinst_acct_id", value)
 
 
+if not MYPY:
+    class ElastigroupIntegrationRoute53DomainRecordSetArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The group name.
+        """
+        use_public_dns: NotRequired[pulumi.Input[bool]]
+        """
+        Designates whether the DNS address should be exposed to connections outside the VPC.
+
+        Usage:
+        """
+        use_public_ip: NotRequired[pulumi.Input[bool]]
+        """
+        Designates whether the IP address should be exposed to connections outside the VPC.
+        """
+elif False:
+    ElastigroupIntegrationRoute53DomainRecordSetArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupIntegrationRoute53DomainRecordSetArgs:
     def __init__(__self__, *,
@@ -2473,6 +3268,17 @@ class ElastigroupIntegrationRoute53DomainRecordSetArgs:
     def use_public_ip(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "use_public_ip", value)
 
+
+if not MYPY:
+    class ElastigroupItfArgsDict(TypedDict):
+        fixed_target_groups: pulumi.Input[bool]
+        load_balancers: pulumi.Input[Sequence[pulumi.Input['ElastigroupItfLoadBalancerArgsDict']]]
+        target_group_configs: pulumi.Input[Sequence[pulumi.Input['ElastigroupItfTargetGroupConfigArgsDict']]]
+        weight_strategy: pulumi.Input[str]
+        default_static_target_group: NotRequired[pulumi.Input['ElastigroupItfDefaultStaticTargetGroupArgsDict']]
+        migration_healthiness_threshold: NotRequired[pulumi.Input[int]]
+elif False:
+    ElastigroupItfArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupItfArgs:
@@ -2547,6 +3353,13 @@ class ElastigroupItfArgs:
         pulumi.set(self, "migration_healthiness_threshold", value)
 
 
+if not MYPY:
+    class ElastigroupItfDefaultStaticTargetGroupArgsDict(TypedDict):
+        arn: pulumi.Input[str]
+        percentage: pulumi.Input[float]
+elif False:
+    ElastigroupItfDefaultStaticTargetGroupArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupItfDefaultStaticTargetGroupArgs:
     def __init__(__self__, *,
@@ -2574,6 +3387,13 @@ class ElastigroupItfDefaultStaticTargetGroupArgs:
         pulumi.set(self, "percentage", value)
 
 
+if not MYPY:
+    class ElastigroupItfLoadBalancerArgsDict(TypedDict):
+        listener_rules: pulumi.Input[Sequence[pulumi.Input['ElastigroupItfLoadBalancerListenerRuleArgsDict']]]
+        load_balancer_arn: pulumi.Input[str]
+elif False:
+    ElastigroupItfLoadBalancerArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupItfLoadBalancerArgs:
     def __init__(__self__, *,
@@ -2600,6 +3420,13 @@ class ElastigroupItfLoadBalancerArgs:
     def load_balancer_arn(self, value: pulumi.Input[str]):
         pulumi.set(self, "load_balancer_arn", value)
 
+
+if not MYPY:
+    class ElastigroupItfLoadBalancerListenerRuleArgsDict(TypedDict):
+        rule_arn: pulumi.Input[str]
+        static_target_group: NotRequired[pulumi.Input['ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupArgsDict']]
+elif False:
+    ElastigroupItfLoadBalancerListenerRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupItfLoadBalancerListenerRuleArgs:
@@ -2629,6 +3456,13 @@ class ElastigroupItfLoadBalancerListenerRuleArgs:
         pulumi.set(self, "static_target_group", value)
 
 
+if not MYPY:
+    class ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupArgsDict(TypedDict):
+        arn: pulumi.Input[str]
+        percentage: pulumi.Input[float]
+elif False:
+    ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupArgs:
     def __init__(__self__, *,
@@ -2655,6 +3489,27 @@ class ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupArgs:
     def percentage(self, value: pulumi.Input[float]):
         pulumi.set(self, "percentage", value)
 
+
+if not MYPY:
+    class ElastigroupItfTargetGroupConfigArgsDict(TypedDict):
+        health_check_path: pulumi.Input[str]
+        port: pulumi.Input[int]
+        protocol: pulumi.Input[str]
+        vpc_id: pulumi.Input[str]
+        health_check_interval_seconds: NotRequired[pulumi.Input[int]]
+        health_check_port: NotRequired[pulumi.Input[str]]
+        health_check_protocol: NotRequired[pulumi.Input[str]]
+        health_check_timeout_seconds: NotRequired[pulumi.Input[int]]
+        healthy_threshold_count: NotRequired[pulumi.Input[int]]
+        matchers: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupItfTargetGroupConfigMatcherArgsDict']]]]
+        protocol_version: NotRequired[pulumi.Input[str]]
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupItfTargetGroupConfigTagArgsDict']]]]
+        """
+        A key/value mapping of tags to assign to the resource.
+        """
+        unhealthy_threshold_count: NotRequired[pulumi.Input[int]]
+elif False:
+    ElastigroupItfTargetGroupConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupItfTargetGroupConfigArgs:
@@ -2819,6 +3674,13 @@ class ElastigroupItfTargetGroupConfigArgs:
         pulumi.set(self, "unhealthy_threshold_count", value)
 
 
+if not MYPY:
+    class ElastigroupItfTargetGroupConfigMatcherArgsDict(TypedDict):
+        grpc_code: NotRequired[pulumi.Input[str]]
+        http_code: NotRequired[pulumi.Input[str]]
+elif False:
+    ElastigroupItfTargetGroupConfigMatcherArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupItfTargetGroupConfigMatcherArgs:
     def __init__(__self__, *,
@@ -2848,6 +3710,13 @@ class ElastigroupItfTargetGroupConfigMatcherArgs:
         pulumi.set(self, "http_code", value)
 
 
+if not MYPY:
+    class ElastigroupItfTargetGroupConfigTagArgsDict(TypedDict):
+        tag_key: pulumi.Input[str]
+        tag_value: NotRequired[pulumi.Input[str]]
+elif False:
+    ElastigroupItfTargetGroupConfigTagArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupItfTargetGroupConfigTagArgs:
     def __init__(__self__, *,
@@ -2876,6 +3745,15 @@ class ElastigroupItfTargetGroupConfigTagArgs:
         pulumi.set(self, "tag_value", value)
 
 
+if not MYPY:
+    class ElastigroupLoggingArgsDict(TypedDict):
+        export: NotRequired[pulumi.Input['ElastigroupLoggingExportArgsDict']]
+        """
+        Logging Export configuration.
+        """
+elif False:
+    ElastigroupLoggingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupLoggingArgs:
     def __init__(__self__, *,
@@ -2898,6 +3776,15 @@ class ElastigroupLoggingArgs:
     def export(self, value: Optional[pulumi.Input['ElastigroupLoggingExportArgs']]):
         pulumi.set(self, "export", value)
 
+
+if not MYPY:
+    class ElastigroupLoggingExportArgsDict(TypedDict):
+        s3s: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupLoggingExportS3ArgsDict']]]]
+        """
+        Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
+        """
+elif False:
+    ElastigroupLoggingExportArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupLoggingExportArgs:
@@ -2922,6 +3809,15 @@ class ElastigroupLoggingExportArgs:
         pulumi.set(self, "s3s", value)
 
 
+if not MYPY:
+    class ElastigroupLoggingExportS3ArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The identifier of The S3 data integration to export the logs to.
+        """
+elif False:
+    ElastigroupLoggingExportS3ArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupLoggingExportS3Args:
     def __init__(__self__, *,
@@ -2943,6 +3839,23 @@ class ElastigroupLoggingExportS3Args:
     def id(self, value: pulumi.Input[str]):
         pulumi.set(self, "id", value)
 
+
+if not MYPY:
+    class ElastigroupMetadataOptionsArgsDict(TypedDict):
+        http_tokens: pulumi.Input[str]
+        """
+        The state of token usage for your instance metadata requests. Valid values: `optional` or `required`.
+        """
+        http_put_response_hop_limit: NotRequired[pulumi.Input[int]]
+        """
+        The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further instance metadata requests can travel. Valid values: Integers from `1` to `64`.
+        """
+        instance_metadata_tags: NotRequired[pulumi.Input[str]]
+        """
+        Indicates whether access to instance tags from the instance metadata is enabled or disabled. Can’t be null.
+        """
+elif False:
+    ElastigroupMetadataOptionsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupMetadataOptionsArgs:
@@ -2998,6 +3911,19 @@ class ElastigroupMetadataOptionsArgs:
         pulumi.set(self, "instance_metadata_tags", value)
 
 
+if not MYPY:
+    class ElastigroupMultipleMetricsArgsDict(TypedDict):
+        expressions: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupMultipleMetricsExpressionArgsDict']]]]
+        """
+        Array of objects (Expression config)
+        """
+        metrics: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupMultipleMetricsMetricArgsDict']]]]
+        """
+        Array of objects (Metric config)
+        """
+elif False:
+    ElastigroupMultipleMetricsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupMultipleMetricsArgs:
     def __init__(__self__, *,
@@ -3037,6 +3963,19 @@ class ElastigroupMultipleMetricsArgs:
         pulumi.set(self, "metrics", value)
 
 
+if not MYPY:
+    class ElastigroupMultipleMetricsExpressionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        An expression consisting of the metric names listed in the 'metrics' array.
+        """
+        name: pulumi.Input[str]
+        """
+        The group name.
+        """
+elif False:
+    ElastigroupMultipleMetricsExpressionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupMultipleMetricsExpressionArgs:
     def __init__(__self__, *,
@@ -3073,6 +4012,24 @@ class ElastigroupMultipleMetricsExpressionArgs:
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class ElastigroupMultipleMetricsMetricArgsDict(TypedDict):
+        metric_name: pulumi.Input[str]
+        name: pulumi.Input[str]
+        """
+        The group name.
+        """
+        namespace: pulumi.Input[str]
+        dimensions: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupMultipleMetricsMetricDimensionArgsDict']]]]
+        extended_statistic: NotRequired[pulumi.Input[str]]
+        """
+        Percentile statistic. Valid values: `"p0.1"` - `"p100"`.
+        """
+        statistic: NotRequired[pulumi.Input[str]]
+        unit: NotRequired[pulumi.Input[str]]
+elif False:
+    ElastigroupMultipleMetricsMetricArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupMultipleMetricsMetricArgs:
@@ -3170,6 +4127,16 @@ class ElastigroupMultipleMetricsMetricArgs:
         pulumi.set(self, "unit", value)
 
 
+if not MYPY:
+    class ElastigroupMultipleMetricsMetricDimensionArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The group name.
+        """
+        value: NotRequired[pulumi.Input[str]]
+elif False:
+    ElastigroupMultipleMetricsMetricDimensionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupMultipleMetricsMetricDimensionArgs:
     def __init__(__self__, *,
@@ -3203,6 +4170,45 @@ class ElastigroupMultipleMetricsMetricDimensionArgs:
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class ElastigroupNetworkInterfaceArgsDict(TypedDict):
+        device_index: pulumi.Input[str]
+        """
+        The index of the device on the instance for the network interface attachment.
+        """
+        associate_ipv6_address: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether to assign IPV6 addresses to your instance. Requires a subnet with IPV6 CIDR block ranges.
+
+        Usage:
+        """
+        associate_public_ip_address: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether to assign a public IP address to an instance you launch in a VPC. The public IP address can only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an existing one.
+        """
+        delete_on_termination: NotRequired[pulumi.Input[bool]]
+        """
+        If set to true, the interface is deleted when the instance is terminated.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description of the network interface.
+        """
+        network_interface_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the network interface.
+        """
+        private_ip_address: NotRequired[pulumi.Input[str]]
+        """
+        The private IP address of the network interface.
+        """
+        secondary_private_ip_address_count: NotRequired[pulumi.Input[str]]
+        """
+        The number of secondary private IP addresses.
+        """
+elif False:
+    ElastigroupNetworkInterfaceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupNetworkInterfaceArgs:
@@ -3341,6 +4347,47 @@ class ElastigroupNetworkInterfaceArgs:
     def secondary_private_ip_address_count(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secondary_private_ip_address_count", value)
 
+
+if not MYPY:
+    class ElastigroupResourceRequirementArgsDict(TypedDict):
+        required_memory_maximum: pulumi.Input[int]
+        """
+        Required maximum instance memory (<=512)
+        """
+        required_memory_minimum: pulumi.Input[int]
+        """
+        Required minimum instance memory (>=1)
+        """
+        required_vcpu_maximum: pulumi.Input[int]
+        """
+        Required maximum instance vCPU (<=64)
+        """
+        required_vcpu_minimum: pulumi.Input[int]
+        """
+        Required minimum instance vCPU (>=1)
+        """
+        excluded_instance_families: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Instance families to exclude
+        """
+        excluded_instance_generations: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Instance generations to exclude
+        """
+        excluded_instance_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Instance types to exclude
+        """
+        required_gpu_maximum: NotRequired[pulumi.Input[int]]
+        """
+        Required maximum instance GPU (<=16)
+        """
+        required_gpu_minimum: NotRequired[pulumi.Input[int]]
+        """
+        Required minimum instance GPU (>=1)
+        """
+elif False:
+    ElastigroupResourceRequirementArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupResourceRequirementArgs:
@@ -3489,6 +4536,27 @@ class ElastigroupResourceRequirementArgs:
         pulumi.set(self, "required_gpu_minimum", value)
 
 
+if not MYPY:
+    class ElastigroupResourceTagSpecificationArgsDict(TypedDict):
+        should_tag_amis: NotRequired[pulumi.Input[bool]]
+        """
+        Tag specification for AMI resources.
+        """
+        should_tag_enis: NotRequired[pulumi.Input[bool]]
+        """
+        Tag specification for ENI resources.
+        """
+        should_tag_snapshots: NotRequired[pulumi.Input[bool]]
+        """
+        Tag specification for Snapshot resources.
+        """
+        should_tag_volumes: NotRequired[pulumi.Input[bool]]
+        """
+        Tag specification for Volume resources.
+        """
+elif False:
+    ElastigroupResourceTagSpecificationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupResourceTagSpecificationArgs:
     def __init__(__self__, *,
@@ -3560,6 +4628,19 @@ class ElastigroupResourceTagSpecificationArgs:
         pulumi.set(self, "should_tag_volumes", value)
 
 
+if not MYPY:
+    class ElastigroupRevertToSpotArgsDict(TypedDict):
+        perform_at: pulumi.Input[str]
+        """
+        In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
+        """
+        time_windows: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specify a list of time windows for to execute revertToSpot strategy. Time window format: `ddd:hh:mm-ddd:hh:mm`. Example: `Mon:03:00-Wed:02:30`
+        """
+elif False:
+    ElastigroupRevertToSpotArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupRevertToSpotArgs:
     def __init__(__self__, *,
@@ -3597,6 +4678,89 @@ class ElastigroupRevertToSpotArgs:
     def time_windows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "time_windows", value)
 
+
+if not MYPY:
+    class ElastigroupScalingDownPolicyArgsDict(TypedDict):
+        metric_name: pulumi.Input[str]
+        """
+        The name of the metric, with or without spaces.
+        """
+        namespace: pulumi.Input[str]
+        """
+        The namespace for the alarm's associated metric.
+        """
+        policy_name: pulumi.Input[str]
+        """
+        The name of the policy.
+        """
+        action_type: NotRequired[pulumi.Input[str]]
+        """
+        The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`. If a `step_adjustment` object is defined, then it cannot be specified.
+        """
+        adjustment: NotRequired[pulumi.Input[str]]
+        """
+        The number of instances to add/remove to/from the target capacity when scale is needed. Can be used as advanced expression for scaling of instances to add/remove to/from the target capacity when scale is needed. You can see more information here: Advanced expression. Example value: `"MAX(currCapacity / 5, value * 10)"`
+        """
+        cooldown: NotRequired[pulumi.Input[int]]
+        """
+        The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start. If this parameter is not specified, the default cooldown period for the group applies.
+        """
+        dimensions: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyDimensionArgsDict']]]]
+        """
+        A list of dimensions describing qualities of the metric.
+        """
+        evaluation_periods: NotRequired[pulumi.Input[int]]
+        """
+        The number of periods over which data is compared to the specified threshold.
+        """
+        is_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Specifies whether the scaling policy described in this block is enabled.
+        """
+        max_target_capacity: NotRequired[pulumi.Input[str]]
+        """
+        . The number of the desired target (and maximum) capacity
+        """
+        maximum: NotRequired[pulumi.Input[str]]
+        """
+        The maximal number of instances to have in the group.
+        """
+        min_target_capacity: NotRequired[pulumi.Input[str]]
+        minimum: NotRequired[pulumi.Input[str]]
+        """
+        The minimal number of instances to have in the group.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        The operator to use in order to determine if the scaling policy is applicable. Valid values: `"gt"`, `"gte"`, `"lt"`, `"lte"`.
+        """
+        period: NotRequired[pulumi.Input[int]]
+        """
+        The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
+        """
+        source: NotRequired[pulumi.Input[str]]
+        """
+        The source of the metric. Valid values: `"cloudWatch"`, `"spectrum"`.
+        """
+        statistic: NotRequired[pulumi.Input[str]]
+        """
+        The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
+        """
+        step_adjustments: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyStepAdjustmentArgsDict']]]]
+        target: NotRequired[pulumi.Input[str]]
+        """
+        The target number of instances to have in the group.
+        """
+        threshold: NotRequired[pulumi.Input[float]]
+        """
+        The value against which the specified statistic is compared. If a `step_adjustment` object is defined, then it cannot be specified.
+        """
+        unit: NotRequired[pulumi.Input[str]]
+        """
+        The unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
+        """
+elif False:
+    ElastigroupScalingDownPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupScalingDownPolicyArgs:
@@ -3930,6 +5094,19 @@ class ElastigroupScalingDownPolicyArgs:
         pulumi.set(self, "unit", value)
 
 
+if not MYPY:
+    class ElastigroupScalingDownPolicyDimensionArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The dimension name.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The dimension value.
+        """
+elif False:
+    ElastigroupScalingDownPolicyDimensionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupScalingDownPolicyDimensionArgs:
     def __init__(__self__, *,
@@ -3968,6 +5145,13 @@ class ElastigroupScalingDownPolicyDimensionArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class ElastigroupScalingDownPolicyStepAdjustmentArgsDict(TypedDict):
+        action: pulumi.Input['ElastigroupScalingDownPolicyStepAdjustmentActionArgsDict']
+        threshold: pulumi.Input[int]
+elif False:
+    ElastigroupScalingDownPolicyStepAdjustmentArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupScalingDownPolicyStepAdjustmentArgs:
     def __init__(__self__, *,
@@ -3994,6 +5178,18 @@ class ElastigroupScalingDownPolicyStepAdjustmentArgs:
     def threshold(self, value: pulumi.Input[int]):
         pulumi.set(self, "threshold", value)
 
+
+if not MYPY:
+    class ElastigroupScalingDownPolicyStepAdjustmentActionArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        adjustment: NotRequired[pulumi.Input[str]]
+        max_target_capacity: NotRequired[pulumi.Input[str]]
+        maximum: NotRequired[pulumi.Input[str]]
+        min_target_capacity: NotRequired[pulumi.Input[str]]
+        minimum: NotRequired[pulumi.Input[str]]
+        target: NotRequired[pulumi.Input[str]]
+elif False:
+    ElastigroupScalingDownPolicyStepAdjustmentActionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupScalingDownPolicyStepAdjustmentActionArgs:
@@ -4083,6 +5279,19 @@ class ElastigroupScalingDownPolicyStepAdjustmentActionArgs:
         pulumi.set(self, "target", value)
 
 
+if not MYPY:
+    class ElastigroupScalingStrategyArgsDict(TypedDict):
+        terminate_at_end_of_billing_hour: NotRequired[pulumi.Input[bool]]
+        """
+        Specify whether to terminate instances at the end of each billing hour.
+        """
+        termination_policy: NotRequired[pulumi.Input[str]]
+        """
+        Determines whether to terminate the newest instances when performing a scaling action. Valid values: `"default"`, `"newestInstance"`.
+        """
+elif False:
+    ElastigroupScalingStrategyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupScalingStrategyArgs:
     def __init__(__self__, *,
@@ -4121,6 +5330,67 @@ class ElastigroupScalingStrategyArgs:
     def termination_policy(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "termination_policy", value)
 
+
+if not MYPY:
+    class ElastigroupScalingTargetPolicyArgsDict(TypedDict):
+        metric_name: pulumi.Input[str]
+        """
+        String, the name of the metric, with or without spaces.
+        """
+        namespace: pulumi.Input[str]
+        """
+        String, the namespace for the alarm's associated metric.
+        """
+        policy_name: pulumi.Input[str]
+        """
+        String, the name of the policy.
+        """
+        target: pulumi.Input[float]
+        """
+        The target number of instances to have in the group.
+        """
+        cooldown: NotRequired[pulumi.Input[int]]
+        """
+        Integer the amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start. If this parameter is not specified, the default cooldown period for the group applies.
+        """
+        dimensions: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingTargetPolicyDimensionArgsDict']]]]
+        """
+        A list of dimensions describing qualities of the metric.
+        """
+        evaluation_periods: NotRequired[pulumi.Input[int]]
+        """
+        The number of periods over which data is compared to the specified threshold.
+        """
+        max_capacity_per_scale: NotRequired[pulumi.Input[str]]
+        """
+        String, restrict the maximal number of instances which can be added in each scale-up action.
+
+        `scaling_target_policies` support predictive scaling:
+        """
+        period: NotRequired[pulumi.Input[int]]
+        """
+        The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
+        """
+        predictive_mode: NotRequired[pulumi.Input[str]]
+        """
+        Start a metric prediction process to determine the expected target metric value within the next two days. See [Predictive Autoscaling](https://api.spotinst.com/elastigroup-for-aws/concepts/scaling-concepts/predictive-autoscaling/) documentation for more info. Valid values: `FORECAST_AND_SCALE`, `FORECAST_ONLY`.
+
+        Usage:
+        """
+        source: NotRequired[pulumi.Input[str]]
+        """
+        String, the source of the metric. Valid values: `"cloudWatch"`, `"spectrum"`.
+        """
+        statistic: NotRequired[pulumi.Input[str]]
+        """
+        String, the metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
+        """
+        unit: NotRequired[pulumi.Input[str]]
+        """
+        String, tThe unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
+        """
+elif False:
+    ElastigroupScalingTargetPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupScalingTargetPolicyArgs:
@@ -4341,6 +5611,19 @@ class ElastigroupScalingTargetPolicyArgs:
         pulumi.set(self, "unit", value)
 
 
+if not MYPY:
+    class ElastigroupScalingTargetPolicyDimensionArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        String, the dimension name.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        String, the dimension value.
+        """
+elif False:
+    ElastigroupScalingTargetPolicyDimensionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupScalingTargetPolicyDimensionArgs:
     def __init__(__self__, *,
@@ -4378,6 +5661,89 @@ class ElastigroupScalingTargetPolicyDimensionArgs:
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class ElastigroupScalingUpPolicyArgsDict(TypedDict):
+        metric_name: pulumi.Input[str]
+        """
+        The name of the metric, with or without spaces.
+        """
+        namespace: pulumi.Input[str]
+        """
+        The namespace for the alarm's associated metric.
+        """
+        policy_name: pulumi.Input[str]
+        """
+        The name of the policy.
+        """
+        action_type: NotRequired[pulumi.Input[str]]
+        """
+        The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`. If a `step_adjustment` object is defined, then it cannot be specified.
+        """
+        adjustment: NotRequired[pulumi.Input[str]]
+        """
+        The number of instances to add/remove to/from the target capacity when scale is needed. Can be used as advanced expression for scaling of instances to add/remove to/from the target capacity when scale is needed. You can see more information here: Advanced expression. Example value: `"MAX(currCapacity / 5, value * 10)"`
+        """
+        cooldown: NotRequired[pulumi.Input[int]]
+        """
+        The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start. If this parameter is not specified, the default cooldown period for the group applies.
+        """
+        dimensions: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyDimensionArgsDict']]]]
+        """
+        A list of dimensions describing qualities of the metric.
+        """
+        evaluation_periods: NotRequired[pulumi.Input[int]]
+        """
+        The number of periods over which data is compared to the specified threshold.
+        """
+        is_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Specifies whether the scaling policy described in this block is enabled.
+        """
+        max_target_capacity: NotRequired[pulumi.Input[str]]
+        maximum: NotRequired[pulumi.Input[str]]
+        """
+        The maximal number of instances to have in the group.
+        """
+        min_target_capacity: NotRequired[pulumi.Input[str]]
+        """
+        . The number of the desired target (and minimum) capacity
+        """
+        minimum: NotRequired[pulumi.Input[str]]
+        """
+        The minimal number of instances to have in the group.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        The operator to use in order to determine if the scaling policy is applicable. Valid values: `"gt"`, `"gte"`, `"lt"`, `"lte"`.
+        """
+        period: NotRequired[pulumi.Input[int]]
+        """
+        The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
+        """
+        source: NotRequired[pulumi.Input[str]]
+        """
+        The source of the metric. Valid values: `"cloudWatch"`, `"spectrum"`.
+        """
+        statistic: NotRequired[pulumi.Input[str]]
+        """
+        The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
+        """
+        step_adjustments: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyStepAdjustmentArgsDict']]]]
+        target: NotRequired[pulumi.Input[str]]
+        """
+        The target number of instances to have in the group.
+        """
+        threshold: NotRequired[pulumi.Input[float]]
+        """
+        The value against which the specified statistic is compared. If a `step_adjustment` object is defined, then it cannot be specified.
+        """
+        unit: NotRequired[pulumi.Input[str]]
+        """
+        The unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
+        """
+elif False:
+    ElastigroupScalingUpPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupScalingUpPolicyArgs:
@@ -4711,6 +6077,19 @@ class ElastigroupScalingUpPolicyArgs:
         pulumi.set(self, "unit", value)
 
 
+if not MYPY:
+    class ElastigroupScalingUpPolicyDimensionArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The dimension name.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The dimension value.
+        """
+elif False:
+    ElastigroupScalingUpPolicyDimensionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupScalingUpPolicyDimensionArgs:
     def __init__(__self__, *,
@@ -4749,6 +6128,13 @@ class ElastigroupScalingUpPolicyDimensionArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class ElastigroupScalingUpPolicyStepAdjustmentArgsDict(TypedDict):
+        action: pulumi.Input['ElastigroupScalingUpPolicyStepAdjustmentActionArgsDict']
+        threshold: pulumi.Input[int]
+elif False:
+    ElastigroupScalingUpPolicyStepAdjustmentArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupScalingUpPolicyStepAdjustmentArgs:
     def __init__(__self__, *,
@@ -4775,6 +6161,18 @@ class ElastigroupScalingUpPolicyStepAdjustmentArgs:
     def threshold(self, value: pulumi.Input[int]):
         pulumi.set(self, "threshold", value)
 
+
+if not MYPY:
+    class ElastigroupScalingUpPolicyStepAdjustmentActionArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        adjustment: NotRequired[pulumi.Input[str]]
+        max_target_capacity: NotRequired[pulumi.Input[str]]
+        maximum: NotRequired[pulumi.Input[str]]
+        min_target_capacity: NotRequired[pulumi.Input[str]]
+        minimum: NotRequired[pulumi.Input[str]]
+        target: NotRequired[pulumi.Input[str]]
+elif False:
+    ElastigroupScalingUpPolicyStepAdjustmentActionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupScalingUpPolicyStepAdjustmentActionArgs:
@@ -4863,6 +6261,73 @@ class ElastigroupScalingUpPolicyStepAdjustmentActionArgs:
     def target(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "target", value)
 
+
+if not MYPY:
+    class ElastigroupScheduledTaskArgsDict(TypedDict):
+        task_type: pulumi.Input[str]
+        """
+        The task type to run. Supported task types are: `"scale"`, `"backup_ami"`, `"roll"`, `"scaleUp"`, `"percentageScaleUp"`, `"scaleDown"`, `"percentageScaleDown"`, `"statefulUpdateCapacity"`.
+        """
+        adjustment: NotRequired[pulumi.Input[str]]
+        """
+        The number of instances to add or remove.
+        """
+        adjustment_percentage: NotRequired[pulumi.Input[str]]
+        """
+        The percentage of instances to add or remove.
+
+        Usage:
+        """
+        batch_size_percentage: NotRequired[pulumi.Input[str]]
+        """
+        The percentage size of each batch in the scheduled deployment roll.
+        """
+        cron_expression: NotRequired[pulumi.Input[str]]
+        """
+        A valid cron expression. The cron is running in UTC time zone and is in [Unix cron format](https://en.wikipedia.org/wiki/Cron).
+        """
+        frequency: NotRequired[pulumi.Input[str]]
+        """
+        The recurrence frequency to run this task. Supported values are `"hourly"`, `"daily"`, `"weekly"` and `"continuous"`.
+        """
+        grace_period: NotRequired[pulumi.Input[str]]
+        """
+        The period of time (seconds) to wait before checking a batch's health after it's deployment.
+        """
+        is_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Setting the task to being enabled or disabled.
+        """
+        max_capacity: NotRequired[pulumi.Input[str]]
+        """
+        The maximum number of instances the group should have.
+        """
+        min_capacity: NotRequired[pulumi.Input[str]]
+        """
+        The minimum number of instances the group should have.
+        """
+        scale_max_capacity: NotRequired[pulumi.Input[str]]
+        """
+        The maximum number of instances the group should have.
+        """
+        scale_min_capacity: NotRequired[pulumi.Input[str]]
+        """
+        The minimum number of instances the group should have.
+        """
+        scale_target_capacity: NotRequired[pulumi.Input[str]]
+        """
+        The desired number of instances the group should have.
+        """
+        start_time: NotRequired[pulumi.Input[str]]
+        """
+        Set a start time for one time tasks.
+        """
+        target_capacity: NotRequired[pulumi.Input[str]]
+        """
+        The desired number of instances the group should have.
+        """
+elif False:
+    ElastigroupScheduledTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupScheduledTaskArgs:
@@ -5114,6 +6579,21 @@ class ElastigroupScheduledTaskArgs:
         pulumi.set(self, "target_capacity", value)
 
 
+if not MYPY:
+    class ElastigroupSignalArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The name of the signal defined for the group. Valid Values: `"INSTANCE_READY"`, `"INSTANCE_READY_TO_SHUTDOWN"`
+        """
+        timeout: NotRequired[pulumi.Input[int]]
+        """
+        The signals defined timeout- default is 40 minutes (1800 seconds).
+
+        Usage:
+        """
+elif False:
+    ElastigroupSignalArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupSignalArgs:
     def __init__(__self__, *,
@@ -5155,6 +6635,29 @@ class ElastigroupSignalArgs:
     def timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "timeout", value)
 
+
+if not MYPY:
+    class ElastigroupStatefulDeallocationArgsDict(TypedDict):
+        should_delete_images: NotRequired[pulumi.Input[bool]]
+        """
+        For stateful groups: remove persistent images.
+        """
+        should_delete_network_interfaces: NotRequired[pulumi.Input[bool]]
+        """
+        For stateful groups: remove network interfaces.
+        """
+        should_delete_snapshots: NotRequired[pulumi.Input[bool]]
+        """
+        For stateful groups: remove snapshots.
+
+        Usage:
+        """
+        should_delete_volumes: NotRequired[pulumi.Input[bool]]
+        """
+        For stateful groups: remove persistent volumes.
+        """
+elif False:
+    ElastigroupStatefulDeallocationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupStatefulDeallocationArgs:
@@ -5231,6 +6734,21 @@ class ElastigroupStatefulDeallocationArgs:
         pulumi.set(self, "should_delete_volumes", value)
 
 
+if not MYPY:
+    class ElastigroupStatefulInstanceActionArgsDict(TypedDict):
+        stateful_instance_id: pulumi.Input[str]
+        """
+        String, Stateful Instance ID on which the action should be performed.
+        """
+        type: pulumi.Input[str]
+        """
+        String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+
+        Usage:
+        """
+elif False:
+    ElastigroupStatefulInstanceActionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupStatefulInstanceActionArgs:
     def __init__(__self__, *,
@@ -5272,6 +6790,13 @@ class ElastigroupStatefulInstanceActionArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class ElastigroupTagArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        value: NotRequired[pulumi.Input[str]]
+elif False:
+    ElastigroupTagArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupTagArgs:
     def __init__(__self__, *,
@@ -5300,6 +6825,27 @@ class ElastigroupTagArgs:
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class ElastigroupUpdatePolicyArgsDict(TypedDict):
+        should_resume_stateful: pulumi.Input[bool]
+        """
+        This will apply resuming action for Stateful instances in the Elastigroup upon scale up or capacity changes. Example usage will be for Elastigroups that will have scheduling rules to set a target capacity of 0 instances in the night and automatically restore the same state of the instances in the morning.
+        """
+        should_roll: pulumi.Input[bool]
+        """
+        Sets the enablement of the roll option.
+        """
+        auto_apply_tags: NotRequired[pulumi.Input[bool]]
+        """
+        Enables updates to tags without rolling the group when set to `true`.
+        """
+        roll_config: NotRequired[pulumi.Input['ElastigroupUpdatePolicyRollConfigArgsDict']]
+        """
+        While used, you can control whether the group should perform a deployment after an update to the configuration.
+        """
+elif False:
+    ElastigroupUpdatePolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupUpdatePolicyArgs:
@@ -5369,6 +6915,35 @@ class ElastigroupUpdatePolicyArgs:
     def roll_config(self, value: Optional[pulumi.Input['ElastigroupUpdatePolicyRollConfigArgs']]):
         pulumi.set(self, "roll_config", value)
 
+
+if not MYPY:
+    class ElastigroupUpdatePolicyRollConfigArgsDict(TypedDict):
+        batch_size_percentage: pulumi.Input[int]
+        """
+        Sets the percentage of the instances to deploy in each batch.
+        """
+        grace_period: NotRequired[pulumi.Input[int]]
+        """
+        Sets the grace period for new instances to become healthy.
+        """
+        health_check_type: NotRequired[pulumi.Input[str]]
+        """
+        Sets the health check type to use. Valid values: `"EC2"`, `"ECS_CLUSTER_INSTANCE"`, `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"NONE"`.
+        """
+        strategy: NotRequired[pulumi.Input['ElastigroupUpdatePolicyRollConfigStrategyArgsDict']]
+        """
+        Strategy parameters
+        """
+        wait_for_roll_percentage: NotRequired[pulumi.Input[float]]
+        """
+        For use with `should_roll`. Sets minimum % of roll required to complete before continuing the plan. Required if `wait_for_roll_timeout` is set.
+        """
+        wait_for_roll_timeout: NotRequired[pulumi.Input[int]]
+        """
+        For use with `should_roll`. Sets how long to wait for the deployed % of a roll to exceed `wait_for_roll_percentage` before continuing the plan. Required if `wait_for_roll_percentage` is set.
+        """
+elif False:
+    ElastigroupUpdatePolicyRollConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupUpdatePolicyRollConfigArgs:
@@ -5472,6 +7047,27 @@ class ElastigroupUpdatePolicyRollConfigArgs:
         pulumi.set(self, "wait_for_roll_timeout", value)
 
 
+if not MYPY:
+    class ElastigroupUpdatePolicyRollConfigStrategyArgsDict(TypedDict):
+        action: pulumi.Input[str]
+        """
+        Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
+        """
+        batch_min_healthy_percentage: NotRequired[pulumi.Input[int]]
+        """
+        Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the deployment will fail. Range `1` - `100`.
+        """
+        on_failure: NotRequired[pulumi.Input['ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgsDict']]
+        """
+        Set detach options to the deployment.
+        """
+        should_drain_instances: NotRequired[pulumi.Input[bool]]
+        """
+        Specify whether to drain incoming TCP connections before terminating a server.
+        """
+elif False:
+    ElastigroupUpdatePolicyRollConfigStrategyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupUpdatePolicyRollConfigStrategyArgs:
     def __init__(__self__, *,
@@ -5541,6 +7137,28 @@ class ElastigroupUpdatePolicyRollConfigStrategyArgs:
     def should_drain_instances(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "should_drain_instances", value)
 
+
+if not MYPY:
+    class ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgsDict(TypedDict):
+        action_type: pulumi.Input[str]
+        """
+        Sets the action that will take place, Accepted values are: `DETACH_OLD`, `DETACH_NEW`.
+        """
+        batch_num: NotRequired[pulumi.Input[int]]
+        draining_timeout: NotRequired[pulumi.Input[int]]
+        """
+        Indicates (in seconds) the timeout to wait until instance are detached.
+        """
+        should_decrement_target_capacity: NotRequired[pulumi.Input[bool]]
+        """
+        Decrementing the group target capacity after detaching the instances.
+        """
+        should_handle_all_batches: NotRequired[pulumi.Input[bool]]
+        """
+        Indicator if the action should apply to all batches of the deployment or only the latest batch.
+        """
+elif False:
+    ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs:
@@ -5624,6 +7242,13 @@ class ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs:
         pulumi.set(self, "should_handle_all_batches", value)
 
 
+if not MYPY:
+    class ManagedInstanceBlockDeviceMappingArgsDict(TypedDict):
+        device_name: pulumi.Input[str]
+        ebs: NotRequired[pulumi.Input['ManagedInstanceBlockDeviceMappingEbsArgsDict']]
+elif False:
+    ManagedInstanceBlockDeviceMappingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ManagedInstanceBlockDeviceMappingArgs:
     def __init__(__self__, *,
@@ -5651,6 +7276,19 @@ class ManagedInstanceBlockDeviceMappingArgs:
     def ebs(self, value: Optional[pulumi.Input['ManagedInstanceBlockDeviceMappingEbsArgs']]):
         pulumi.set(self, "ebs", value)
 
+
+if not MYPY:
+    class ManagedInstanceBlockDeviceMappingEbsArgsDict(TypedDict):
+        delete_on_termination: NotRequired[pulumi.Input[bool]]
+        encrypted: NotRequired[pulumi.Input[bool]]
+        iops: NotRequired[pulumi.Input[int]]
+        kms_key_id: NotRequired[pulumi.Input[str]]
+        snapshot_id: NotRequired[pulumi.Input[str]]
+        throughput: NotRequired[pulumi.Input[int]]
+        volume_size: NotRequired[pulumi.Input[int]]
+        volume_type: NotRequired[pulumi.Input[str]]
+elif False:
+    ManagedInstanceBlockDeviceMappingEbsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ManagedInstanceBlockDeviceMappingEbsArgs:
@@ -5753,6 +7391,17 @@ class ManagedInstanceBlockDeviceMappingEbsArgs:
         pulumi.set(self, "volume_type", value)
 
 
+if not MYPY:
+    class ManagedInstanceDeleteArgsDict(TypedDict):
+        ami_backup_should_delete_images: NotRequired[pulumi.Input[bool]]
+        deallocation_config_should_delete_images: NotRequired[pulumi.Input[bool]]
+        should_delete_network_interfaces: NotRequired[pulumi.Input[bool]]
+        should_delete_snapshots: NotRequired[pulumi.Input[bool]]
+        should_delete_volumes: NotRequired[pulumi.Input[bool]]
+        should_terminate_instance: NotRequired[pulumi.Input[bool]]
+elif False:
+    ManagedInstanceDeleteArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ManagedInstanceDeleteArgs:
     def __init__(__self__, *,
@@ -5830,6 +7479,12 @@ class ManagedInstanceDeleteArgs:
         pulumi.set(self, "should_terminate_instance", value)
 
 
+if not MYPY:
+    class ManagedInstanceIntegrationRoute53ArgsDict(TypedDict):
+        domains: pulumi.Input[Sequence[pulumi.Input['ManagedInstanceIntegrationRoute53DomainArgsDict']]]
+elif False:
+    ManagedInstanceIntegrationRoute53ArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ManagedInstanceIntegrationRoute53Args:
     def __init__(__self__, *,
@@ -5845,6 +7500,15 @@ class ManagedInstanceIntegrationRoute53Args:
     def domains(self, value: pulumi.Input[Sequence[pulumi.Input['ManagedInstanceIntegrationRoute53DomainArgs']]]):
         pulumi.set(self, "domains", value)
 
+
+if not MYPY:
+    class ManagedInstanceIntegrationRoute53DomainArgsDict(TypedDict):
+        hosted_zone_id: pulumi.Input[str]
+        record_sets: pulumi.Input[Sequence[pulumi.Input['ManagedInstanceIntegrationRoute53DomainRecordSetArgsDict']]]
+        record_set_type: NotRequired[pulumi.Input[str]]
+        spotinst_acct_id: NotRequired[pulumi.Input[str]]
+elif False:
+    ManagedInstanceIntegrationRoute53DomainArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ManagedInstanceIntegrationRoute53DomainArgs:
@@ -5897,6 +7561,14 @@ class ManagedInstanceIntegrationRoute53DomainArgs:
         pulumi.set(self, "spotinst_acct_id", value)
 
 
+if not MYPY:
+    class ManagedInstanceIntegrationRoute53DomainRecordSetArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        use_public_dns: NotRequired[pulumi.Input[bool]]
+        use_public_ip: NotRequired[pulumi.Input[bool]]
+elif False:
+    ManagedInstanceIntegrationRoute53DomainRecordSetArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ManagedInstanceIntegrationRoute53DomainRecordSetArgs:
     def __init__(__self__, *,
@@ -5936,6 +7608,14 @@ class ManagedInstanceIntegrationRoute53DomainRecordSetArgs:
     def use_public_ip(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "use_public_ip", value)
 
+
+if not MYPY:
+    class ManagedInstanceLoadBalancerArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        arn: NotRequired[pulumi.Input[str]]
+        name: NotRequired[pulumi.Input[str]]
+elif False:
+    ManagedInstanceLoadBalancerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ManagedInstanceLoadBalancerArgs:
@@ -5977,6 +7657,12 @@ class ManagedInstanceLoadBalancerArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class ManagedInstanceManagedInstanceActionArgsDict(TypedDict):
+        type: pulumi.Input[str]
+elif False:
+    ManagedInstanceManagedInstanceActionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ManagedInstanceManagedInstanceActionArgs:
     def __init__(__self__, *,
@@ -5992,6 +7678,14 @@ class ManagedInstanceManagedInstanceActionArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class ManagedInstanceMetadataOptionsArgsDict(TypedDict):
+        http_tokens: pulumi.Input[str]
+        http_put_response_hop_limit: NotRequired[pulumi.Input[int]]
+        instance_metadata_tags: NotRequired[pulumi.Input[str]]
+elif False:
+    ManagedInstanceMetadataOptionsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ManagedInstanceMetadataOptionsArgs:
@@ -6033,6 +7727,14 @@ class ManagedInstanceMetadataOptionsArgs:
         pulumi.set(self, "instance_metadata_tags", value)
 
 
+if not MYPY:
+    class ManagedInstanceNetworkInterfaceArgsDict(TypedDict):
+        device_index: pulumi.Input[str]
+        associate_ipv6_address: NotRequired[pulumi.Input[bool]]
+        associate_public_ip_address: NotRequired[pulumi.Input[bool]]
+elif False:
+    ManagedInstanceNetworkInterfaceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ManagedInstanceNetworkInterfaceArgs:
     def __init__(__self__, *,
@@ -6072,6 +7774,15 @@ class ManagedInstanceNetworkInterfaceArgs:
     def associate_public_ip_address(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "associate_public_ip_address", value)
 
+
+if not MYPY:
+    class ManagedInstanceResourceTagSpecificationArgsDict(TypedDict):
+        should_tag_amis: NotRequired[pulumi.Input[bool]]
+        should_tag_enis: NotRequired[pulumi.Input[bool]]
+        should_tag_snapshots: NotRequired[pulumi.Input[bool]]
+        should_tag_volumes: NotRequired[pulumi.Input[bool]]
+elif False:
+    ManagedInstanceResourceTagSpecificationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ManagedInstanceResourceTagSpecificationArgs:
@@ -6126,6 +7837,12 @@ class ManagedInstanceResourceTagSpecificationArgs:
         pulumi.set(self, "should_tag_volumes", value)
 
 
+if not MYPY:
+    class ManagedInstanceRevertToSpotArgsDict(TypedDict):
+        perform_at: pulumi.Input[str]
+elif False:
+    ManagedInstanceRevertToSpotArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ManagedInstanceRevertToSpotArgs:
     def __init__(__self__, *,
@@ -6141,6 +7858,16 @@ class ManagedInstanceRevertToSpotArgs:
     def perform_at(self, value: pulumi.Input[str]):
         pulumi.set(self, "perform_at", value)
 
+
+if not MYPY:
+    class ManagedInstanceScheduledTaskArgsDict(TypedDict):
+        task_type: pulumi.Input[str]
+        cron_expression: NotRequired[pulumi.Input[str]]
+        frequency: NotRequired[pulumi.Input[str]]
+        is_enabled: NotRequired[pulumi.Input[bool]]
+        start_time: NotRequired[pulumi.Input[str]]
+elif False:
+    ManagedInstanceScheduledTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ManagedInstanceScheduledTaskArgs:
@@ -6206,6 +7933,13 @@ class ManagedInstanceScheduledTaskArgs:
         pulumi.set(self, "start_time", value)
 
 
+if not MYPY:
+    class ManagedInstanceTagArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        value: NotRequired[pulumi.Input[str]]
+elif False:
+    ManagedInstanceTagArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ManagedInstanceTagArgs:
     def __init__(__self__, *,
@@ -6234,6 +7968,23 @@ class ManagedInstanceTagArgs:
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class MrScalarApplicationArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The MrScaler name.
+        """
+        args: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Arguments for EMR to pass to the application.
+        """
+        version: NotRequired[pulumi.Input[str]]
+        """
+        T he version of the application.
+        """
+elif False:
+    MrScalarApplicationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MrScalarApplicationArgs:
@@ -6289,6 +8040,13 @@ class MrScalarApplicationArgs:
         pulumi.set(self, "version", value)
 
 
+if not MYPY:
+    class MrScalarBootstrapActionsFileArgsDict(TypedDict):
+        bucket: pulumi.Input[str]
+        key: pulumi.Input[str]
+elif False:
+    MrScalarBootstrapActionsFileArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MrScalarBootstrapActionsFileArgs:
     def __init__(__self__, *,
@@ -6316,6 +8074,13 @@ class MrScalarBootstrapActionsFileArgs:
         pulumi.set(self, "key", value)
 
 
+if not MYPY:
+    class MrScalarConfigurationsFileArgsDict(TypedDict):
+        bucket: pulumi.Input[str]
+        key: pulumi.Input[str]
+elif False:
+    MrScalarConfigurationsFileArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MrScalarConfigurationsFileArgs:
     def __init__(__self__, *,
@@ -6342,6 +8107,15 @@ class MrScalarConfigurationsFileArgs:
     def key(self, value: pulumi.Input[str]):
         pulumi.set(self, "key", value)
 
+
+if not MYPY:
+    class MrScalarCoreEbsBlockDeviceArgsDict(TypedDict):
+        size_in_gb: pulumi.Input[int]
+        volume_type: pulumi.Input[str]
+        iops: NotRequired[pulumi.Input[int]]
+        volumes_per_instance: NotRequired[pulumi.Input[int]]
+elif False:
+    MrScalarCoreEbsBlockDeviceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MrScalarCoreEbsBlockDeviceArgs:
@@ -6393,6 +8167,59 @@ class MrScalarCoreEbsBlockDeviceArgs:
     def volumes_per_instance(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "volumes_per_instance", value)
 
+
+if not MYPY:
+    class MrScalarCoreScalingDownPolicyArgsDict(TypedDict):
+        metric_name: pulumi.Input[str]
+        namespace: pulumi.Input[str]
+        policy_name: pulumi.Input[str]
+        """
+        The name of the policy.
+        """
+        threshold: pulumi.Input[float]
+        unit: pulumi.Input[str]
+        action_type: NotRequired[pulumi.Input[str]]
+        """
+        The type of action to perform. Allowed values are : 'adjustment', 'setMinTarget', 'setMaxTarget', 'updateCapacity', 'percentageAdjustment'
+        """
+        adjustment: NotRequired[pulumi.Input[str]]
+        """
+        The number of instances to add/remove to/from the target capacity when scale is needed.
+        """
+        cooldown: NotRequired[pulumi.Input[int]]
+        """
+        The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
+        """
+        dimensions: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        A mapping of dimensions describing qualities of the metric.
+        """
+        evaluation_periods: NotRequired[pulumi.Input[int]]
+        max_target_capacity: NotRequired[pulumi.Input[str]]
+        """
+        Max target capacity for scale down.
+        """
+        maximum: NotRequired[pulumi.Input[str]]
+        """
+        The maximum to set when scale is needed.
+        """
+        min_target_capacity: NotRequired[pulumi.Input[str]]
+        """
+        Min target capacity for scale up.
+        """
+        minimum: NotRequired[pulumi.Input[str]]
+        """
+        The minimum to set when scale is needed.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        period: NotRequired[pulumi.Input[int]]
+        statistic: NotRequired[pulumi.Input[str]]
+        target: NotRequired[pulumi.Input[str]]
+        """
+        The number of instances to set when scale is needed.
+        """
+elif False:
+    MrScalarCoreScalingDownPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MrScalarCoreScalingDownPolicyArgs:
@@ -6652,6 +8479,59 @@ class MrScalarCoreScalingDownPolicyArgs:
         pulumi.set(self, "target", value)
 
 
+if not MYPY:
+    class MrScalarCoreScalingUpPolicyArgsDict(TypedDict):
+        metric_name: pulumi.Input[str]
+        namespace: pulumi.Input[str]
+        policy_name: pulumi.Input[str]
+        """
+        The name of the policy.
+        """
+        threshold: pulumi.Input[float]
+        unit: pulumi.Input[str]
+        action_type: NotRequired[pulumi.Input[str]]
+        """
+        The type of action to perform. Allowed values are : 'adjustment', 'setMinTarget', 'setMaxTarget', 'updateCapacity', 'percentageAdjustment'
+        """
+        adjustment: NotRequired[pulumi.Input[str]]
+        """
+        The number of instances to add/remove to/from the target capacity when scale is needed.
+        """
+        cooldown: NotRequired[pulumi.Input[int]]
+        """
+        The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
+        """
+        dimensions: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        A mapping of dimensions describing qualities of the metric.
+        """
+        evaluation_periods: NotRequired[pulumi.Input[int]]
+        max_target_capacity: NotRequired[pulumi.Input[str]]
+        """
+        Max target capacity for scale down.
+        """
+        maximum: NotRequired[pulumi.Input[str]]
+        """
+        The maximum to set when scale is needed.
+        """
+        min_target_capacity: NotRequired[pulumi.Input[str]]
+        """
+        Min target capacity for scale up.
+        """
+        minimum: NotRequired[pulumi.Input[str]]
+        """
+        The minimum to set when scale is needed.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        period: NotRequired[pulumi.Input[int]]
+        statistic: NotRequired[pulumi.Input[str]]
+        target: NotRequired[pulumi.Input[str]]
+        """
+        The number of instances to set when scale is needed.
+        """
+elif False:
+    MrScalarCoreScalingUpPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MrScalarCoreScalingUpPolicyArgs:
     def __init__(__self__, *,
@@ -6910,6 +8790,19 @@ class MrScalarCoreScalingUpPolicyArgs:
         pulumi.set(self, "target", value)
 
 
+if not MYPY:
+    class MrScalarInstanceWeightArgsDict(TypedDict):
+        instance_type: pulumi.Input[str]
+        """
+        The type of the instance.
+        """
+        weighted_capacity: pulumi.Input[int]
+        """
+        The weight given to the associated instance type.
+        """
+elif False:
+    MrScalarInstanceWeightArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MrScalarInstanceWeightArgs:
     def __init__(__self__, *,
@@ -6946,6 +8839,15 @@ class MrScalarInstanceWeightArgs:
     def weighted_capacity(self, value: pulumi.Input[int]):
         pulumi.set(self, "weighted_capacity", value)
 
+
+if not MYPY:
+    class MrScalarMasterEbsBlockDeviceArgsDict(TypedDict):
+        size_in_gb: pulumi.Input[int]
+        volume_type: pulumi.Input[str]
+        iops: NotRequired[pulumi.Input[int]]
+        volumes_per_instance: NotRequired[pulumi.Input[int]]
+elif False:
+    MrScalarMasterEbsBlockDeviceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MrScalarMasterEbsBlockDeviceArgs:
@@ -6998,6 +8900,19 @@ class MrScalarMasterEbsBlockDeviceArgs:
         pulumi.set(self, "volumes_per_instance", value)
 
 
+if not MYPY:
+    class MrScalarProvisioningTimeoutArgsDict(TypedDict):
+        timeout: pulumi.Input[int]
+        """
+        The amount of time (minutes) after which the cluster is automatically terminated if it's still in provisioning status. Minimum: '15'.
+        """
+        timeout_action: pulumi.Input[str]
+        """
+        The action to take if the timeout is exceeded. Valid values: `terminate`, `terminateAndRetry`.
+        """
+elif False:
+    MrScalarProvisioningTimeoutArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MrScalarProvisioningTimeoutArgs:
     def __init__(__self__, *,
@@ -7034,6 +8949,39 @@ class MrScalarProvisioningTimeoutArgs:
     def timeout_action(self, value: pulumi.Input[str]):
         pulumi.set(self, "timeout_action", value)
 
+
+if not MYPY:
+    class MrScalarScheduledTaskArgsDict(TypedDict):
+        cron: pulumi.Input[str]
+        """
+        A cron expression representing the schedule for the task.
+        """
+        instance_group_type: pulumi.Input[str]
+        """
+        Select the EMR instance groups to execute the scheduled task on. Valid values: `task`.
+        """
+        task_type: pulumi.Input[str]
+        """
+        The type of task to be scheduled. Valid values: `setCapacity`.
+        """
+        desired_capacity: NotRequired[pulumi.Input[str]]
+        """
+        New desired capacity for the elastigroup.
+        """
+        is_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable/Disable the specified scheduling task.
+        """
+        max_capacity: NotRequired[pulumi.Input[str]]
+        """
+        New max capacity for the elastigroup.
+        """
+        min_capacity: NotRequired[pulumi.Input[str]]
+        """
+        New min capacity for the elastigroup.
+        """
+elif False:
+    MrScalarScheduledTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MrScalarScheduledTaskArgs:
@@ -7151,6 +9099,13 @@ class MrScalarScheduledTaskArgs:
         pulumi.set(self, "min_capacity", value)
 
 
+if not MYPY:
+    class MrScalarStepsFileArgsDict(TypedDict):
+        bucket: pulumi.Input[str]
+        key: pulumi.Input[str]
+elif False:
+    MrScalarStepsFileArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MrScalarStepsFileArgs:
     def __init__(__self__, *,
@@ -7177,6 +9132,18 @@ class MrScalarStepsFileArgs:
     def key(self, value: pulumi.Input[str]):
         pulumi.set(self, "key", value)
 
+
+if not MYPY:
+    class MrScalarTagArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        value: pulumi.Input[str]
+        """
+        Tag value.
+
+        <a id="Optional Compute Parameters"></a>
+        """
+elif False:
+    MrScalarTagArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MrScalarTagArgs:
@@ -7214,6 +9181,15 @@ class MrScalarTagArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class MrScalarTaskEbsBlockDeviceArgsDict(TypedDict):
+        size_in_gb: pulumi.Input[int]
+        volume_type: pulumi.Input[str]
+        iops: NotRequired[pulumi.Input[int]]
+        volumes_per_instance: NotRequired[pulumi.Input[int]]
+elif False:
+    MrScalarTaskEbsBlockDeviceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MrScalarTaskEbsBlockDeviceArgs:
@@ -7265,6 +9241,59 @@ class MrScalarTaskEbsBlockDeviceArgs:
     def volumes_per_instance(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "volumes_per_instance", value)
 
+
+if not MYPY:
+    class MrScalarTaskScalingDownPolicyArgsDict(TypedDict):
+        metric_name: pulumi.Input[str]
+        namespace: pulumi.Input[str]
+        policy_name: pulumi.Input[str]
+        """
+        The name of the policy.
+        """
+        threshold: pulumi.Input[float]
+        unit: pulumi.Input[str]
+        action_type: NotRequired[pulumi.Input[str]]
+        """
+        The type of action to perform. Allowed values are : 'adjustment', 'setMinTarget', 'setMaxTarget', 'updateCapacity', 'percentageAdjustment'
+        """
+        adjustment: NotRequired[pulumi.Input[str]]
+        """
+        The number of instances to add/remove to/from the target capacity when scale is needed.
+        """
+        cooldown: NotRequired[pulumi.Input[int]]
+        """
+        The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
+        """
+        dimensions: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        A mapping of dimensions describing qualities of the metric.
+        """
+        evaluation_periods: NotRequired[pulumi.Input[int]]
+        max_target_capacity: NotRequired[pulumi.Input[str]]
+        """
+        Max target capacity for scale down.
+        """
+        maximum: NotRequired[pulumi.Input[str]]
+        """
+        The maximum to set when scale is needed.
+        """
+        min_target_capacity: NotRequired[pulumi.Input[str]]
+        """
+        Min target capacity for scale up.
+        """
+        minimum: NotRequired[pulumi.Input[str]]
+        """
+        The minimum to set when scale is needed.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        period: NotRequired[pulumi.Input[int]]
+        statistic: NotRequired[pulumi.Input[str]]
+        target: NotRequired[pulumi.Input[str]]
+        """
+        The number of instances to set when scale is needed.
+        """
+elif False:
+    MrScalarTaskScalingDownPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MrScalarTaskScalingDownPolicyArgs:
@@ -7524,6 +9553,59 @@ class MrScalarTaskScalingDownPolicyArgs:
         pulumi.set(self, "target", value)
 
 
+if not MYPY:
+    class MrScalarTaskScalingUpPolicyArgsDict(TypedDict):
+        metric_name: pulumi.Input[str]
+        namespace: pulumi.Input[str]
+        policy_name: pulumi.Input[str]
+        """
+        The name of the policy.
+        """
+        threshold: pulumi.Input[float]
+        unit: pulumi.Input[str]
+        action_type: NotRequired[pulumi.Input[str]]
+        """
+        The type of action to perform. Allowed values are : 'adjustment', 'setMinTarget', 'setMaxTarget', 'updateCapacity', 'percentageAdjustment'
+        """
+        adjustment: NotRequired[pulumi.Input[str]]
+        """
+        The number of instances to add/remove to/from the target capacity when scale is needed.
+        """
+        cooldown: NotRequired[pulumi.Input[int]]
+        """
+        The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
+        """
+        dimensions: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        A mapping of dimensions describing qualities of the metric.
+        """
+        evaluation_periods: NotRequired[pulumi.Input[int]]
+        max_target_capacity: NotRequired[pulumi.Input[str]]
+        """
+        Max target capacity for scale down.
+        """
+        maximum: NotRequired[pulumi.Input[str]]
+        """
+        The maximum to set when scale is needed.
+        """
+        min_target_capacity: NotRequired[pulumi.Input[str]]
+        """
+        Min target capacity for scale up.
+        """
+        minimum: NotRequired[pulumi.Input[str]]
+        """
+        The minimum to set when scale is needed.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        period: NotRequired[pulumi.Input[int]]
+        statistic: NotRequired[pulumi.Input[str]]
+        target: NotRequired[pulumi.Input[str]]
+        """
+        The number of instances to set when scale is needed.
+        """
+elif False:
+    MrScalarTaskScalingUpPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MrScalarTaskScalingUpPolicyArgs:
     def __init__(__self__, *,
@@ -7782,6 +9864,12 @@ class MrScalarTaskScalingUpPolicyArgs:
         pulumi.set(self, "target", value)
 
 
+if not MYPY:
+    class MrScalarTerminationPolicyArgsDict(TypedDict):
+        statements: pulumi.Input[Sequence[pulumi.Input['MrScalarTerminationPolicyStatementArgsDict']]]
+elif False:
+    MrScalarTerminationPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MrScalarTerminationPolicyArgs:
     def __init__(__self__, *,
@@ -7797,6 +9885,43 @@ class MrScalarTerminationPolicyArgs:
     def statements(self, value: pulumi.Input[Sequence[pulumi.Input['MrScalarTerminationPolicyStatementArgs']]]):
         pulumi.set(self, "statements", value)
 
+
+if not MYPY:
+    class MrScalarTerminationPolicyStatementArgsDict(TypedDict):
+        metric_name: pulumi.Input[str]
+        """
+        The name of the metric in CloudWatch which the statement will be based on.
+        """
+        namespace: pulumi.Input[str]
+        """
+        Must contain the value: `AWS/ElasticMapReduce`.
+        """
+        threshold: pulumi.Input[float]
+        """
+        The value that the specified statistic is compared to.
+        """
+        evaluation_periods: NotRequired[pulumi.Input[int]]
+        """
+        The number of periods over which data is compared to the specified threshold.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+        """
+        period: NotRequired[pulumi.Input[int]]
+        """
+        The time window in seconds over which the statistic is applied.
+        """
+        statistic: NotRequired[pulumi.Input[str]]
+        """
+        The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
+        """
+        unit: NotRequired[pulumi.Input[str]]
+        """
+        The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+        """
+elif False:
+    MrScalarTerminationPolicyStatementArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MrScalarTerminationPolicyStatementArgs:
@@ -7930,6 +10055,23 @@ class MrScalarTerminationPolicyStatementArgs:
         pulumi.set(self, "unit", value)
 
 
+if not MYPY:
+    class OceanAttachLoadBalancerArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Type of load balancer to use.
+        """
+        arn: NotRequired[pulumi.Input[str]]
+        """
+        If type is "TARGET_GROUP" then an ARN is required. Otherwise is not allowed.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        If type is "CLASSIC" then a name is required. Otherwise is not allowed.
+        """
+elif False:
+    OceanAttachLoadBalancerArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanAttachLoadBalancerArgs:
     def __init__(__self__, *,
@@ -7983,6 +10125,47 @@ class OceanAttachLoadBalancerArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class OceanAutoscalerArgsDict(TypedDict):
+        auto_headroom_percentage: NotRequired[pulumi.Input[int]]
+        """
+        Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscale_is_auto_config` toggled on.
+        """
+        autoscale_cooldown: NotRequired[pulumi.Input[int]]
+        """
+        Cooldown period between scaling actions.
+        """
+        autoscale_down: NotRequired[pulumi.Input['OceanAutoscalerAutoscaleDownArgsDict']]
+        """
+        Auto Scaling scale down operations.
+        """
+        autoscale_headroom: NotRequired[pulumi.Input['OceanAutoscalerAutoscaleHeadroomArgsDict']]
+        """
+        Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
+        """
+        autoscale_is_auto_config: NotRequired[pulumi.Input[bool]]
+        """
+        Automatically configure and optimize headroom resources.
+        """
+        autoscale_is_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable the Ocean Kubernetes Auto Scaler.
+        """
+        enable_automatic_and_manual_headroom: NotRequired[pulumi.Input[bool]]
+        """
+        enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
+        """
+        extended_resource_definitions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of Ocean extended resource definitions to use in this cluster.
+        """
+        resource_limits: NotRequired[pulumi.Input['OceanAutoscalerResourceLimitsArgsDict']]
+        """
+        Optionally set upper and lower bounds on the resource usage of the cluster.
+        """
+elif False:
+    OceanAutoscalerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanAutoscalerArgs:
@@ -8135,6 +10318,20 @@ class OceanAutoscalerArgs:
         pulumi.set(self, "resource_limits", value)
 
 
+if not MYPY:
+    class OceanAutoscalerAutoscaleDownArgsDict(TypedDict):
+        evaluation_periods: NotRequired[pulumi.Input[int]]
+        is_aggressive_scale_down_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        When set to 'true', the Aggressive Scale Down feature is enabled.
+        """
+        max_scale_down_percentage: NotRequired[pulumi.Input[float]]
+        """
+        Would represent the maximum % to scale-down. Number between 1-100.
+        """
+elif False:
+    OceanAutoscalerAutoscaleDownArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanAutoscalerAutoscaleDownArgs:
     def __init__(__self__, *,
@@ -8185,6 +10382,27 @@ class OceanAutoscalerAutoscaleDownArgs:
     def max_scale_down_percentage(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "max_scale_down_percentage", value)
 
+
+if not MYPY:
+    class OceanAutoscalerAutoscaleHeadroomArgsDict(TypedDict):
+        cpu_per_unit: NotRequired[pulumi.Input[int]]
+        """
+        Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        """
+        gpu_per_unit: NotRequired[pulumi.Input[int]]
+        """
+        Optionally configure the number of GPUs to allocate the headroom.
+        """
+        memory_per_unit: NotRequired[pulumi.Input[int]]
+        """
+        Optionally configure the amount of memory (MB) to allocate the headroom.
+        """
+        num_of_units: NotRequired[pulumi.Input[int]]
+        """
+        The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+        """
+elif False:
+    OceanAutoscalerAutoscaleHeadroomArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanAutoscalerAutoscaleHeadroomArgs:
@@ -8257,6 +10475,19 @@ class OceanAutoscalerAutoscaleHeadroomArgs:
         pulumi.set(self, "num_of_units", value)
 
 
+if not MYPY:
+    class OceanAutoscalerResourceLimitsArgsDict(TypedDict):
+        max_memory_gib: NotRequired[pulumi.Input[int]]
+        """
+        The maximum memory in GiB units that can be allocated to the cluster.
+        """
+        max_vcpu: NotRequired[pulumi.Input[int]]
+        """
+        The maximum cpu in vCPU units that can be allocated to the cluster.
+        """
+elif False:
+    OceanAutoscalerResourceLimitsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanAutoscalerResourceLimitsArgs:
     def __init__(__self__, *,
@@ -8296,6 +10527,19 @@ class OceanAutoscalerResourceLimitsArgs:
         pulumi.set(self, "max_vcpu", value)
 
 
+if not MYPY:
+    class OceanBlockDeviceMappingArgsDict(TypedDict):
+        device_name: NotRequired[pulumi.Input[str]]
+        """
+        String. Set device name. (Example: `/dev/xvda`).
+        """
+        ebs: NotRequired[pulumi.Input['OceanBlockDeviceMappingEbsArgsDict']]
+        """
+        Object. Set Elastic Block Store properties .
+        """
+elif False:
+    OceanBlockDeviceMappingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanBlockDeviceMappingArgs:
     def __init__(__self__, *,
@@ -8334,6 +10578,51 @@ class OceanBlockDeviceMappingArgs:
     def ebs(self, value: Optional[pulumi.Input['OceanBlockDeviceMappingEbsArgs']]):
         pulumi.set(self, "ebs", value)
 
+
+if not MYPY:
+    class OceanBlockDeviceMappingEbsArgsDict(TypedDict):
+        delete_on_termination: NotRequired[pulumi.Input[bool]]
+        """
+        Boolean. Flag to delete the EBS on instance termination.
+        """
+        dynamic_iops: NotRequired[pulumi.Input['OceanBlockDeviceMappingEbsDynamicIopsArgsDict']]
+        """
+        Set dynamic IOPS properties. When using this object, you cannot use the `iops` attribute. You must use one or the other.
+        """
+        dynamic_volume_size: NotRequired[pulumi.Input['OceanBlockDeviceMappingEbsDynamicVolumeSizeArgsDict']]
+        """
+        Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
+        """
+        encrypted: NotRequired[pulumi.Input[bool]]
+        """
+        Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+        """
+        iops: NotRequired[pulumi.Input[int]]
+        """
+        Must be greater than or equal to 0.
+        """
+        kms_key_id: NotRequired[pulumi.Input[str]]
+        """
+        String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+        """
+        snapshot_id: NotRequired[pulumi.Input[str]]
+        """
+        (Optional) String. The Snapshot ID to mount by.
+        """
+        throughput: NotRequired[pulumi.Input[int]]
+        """
+        The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = `gp3`.
+        """
+        volume_size: NotRequired[pulumi.Input[int]]
+        """
+        Int. The size, in GB of the volume.
+        """
+        volume_type: NotRequired[pulumi.Input[str]]
+        """
+        String. The type of the volume. (Example: `gp2`).
+        """
+elif False:
+    OceanBlockDeviceMappingEbsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanBlockDeviceMappingEbsArgs:
@@ -8502,6 +10791,20 @@ class OceanBlockDeviceMappingEbsArgs:
         pulumi.set(self, "volume_type", value)
 
 
+if not MYPY:
+    class OceanBlockDeviceMappingEbsDynamicIopsArgsDict(TypedDict):
+        base_size: pulumi.Input[int]
+        """
+        Initial size for IOPS.
+        """
+        resource: pulumi.Input[str]
+        size_per_resource_unit: pulumi.Input[int]
+        """
+        Additional size per resource unit (in IOPS). (Example: `baseSize=50`, `sizePerResourceUnit=20`, and an instance with 2 CPU is launched; its IOPS size will be: 90).
+        """
+elif False:
+    OceanBlockDeviceMappingEbsDynamicIopsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanBlockDeviceMappingEbsDynamicIopsArgs:
     def __init__(__self__, *,
@@ -8549,6 +10852,23 @@ class OceanBlockDeviceMappingEbsDynamicIopsArgs:
     def size_per_resource_unit(self, value: pulumi.Input[int]):
         pulumi.set(self, "size_per_resource_unit", value)
 
+
+if not MYPY:
+    class OceanBlockDeviceMappingEbsDynamicVolumeSizeArgsDict(TypedDict):
+        base_size: pulumi.Input[int]
+        """
+        Int. Initial size for volume. (Example: 50)
+        """
+        resource: pulumi.Input[str]
+        """
+        String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)
+        """
+        size_per_resource_unit: pulumi.Input[int]
+        """
+        Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB).
+        """
+elif False:
+    OceanBlockDeviceMappingEbsDynamicVolumeSizeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs:
@@ -8602,6 +10922,15 @@ class OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs:
         pulumi.set(self, "size_per_resource_unit", value)
 
 
+if not MYPY:
+    class OceanClusterOrientationArgsDict(TypedDict):
+        availability_vs_cost: NotRequired[pulumi.Input[str]]
+        """
+        You can control the approach that Ocean takes while launching nodes by configuring this value. Possible values: `costOriented`,`balanced`,`cheapest`.
+        """
+elif False:
+    OceanClusterOrientationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanClusterOrientationArgs:
     def __init__(__self__, *,
@@ -8624,6 +10953,23 @@ class OceanClusterOrientationArgs:
     def availability_vs_cost(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "availability_vs_cost", value)
 
+
+if not MYPY:
+    class OceanDetachLoadBalancerArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Type of load balancer to use.
+        """
+        arn: NotRequired[pulumi.Input[str]]
+        """
+        If type is "TARGET_GROUP" then an ARN is required. Otherwise is not allowed.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        If type is "CLASSIC" then a name is required. Otherwise is not allowed.
+        """
+elif False:
+    OceanDetachLoadBalancerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanDetachLoadBalancerArgs:
@@ -8678,6 +11024,81 @@ class OceanDetachLoadBalancerArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class OceanFiltersArgsDict(TypedDict):
+        architectures: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The filtered instance types will support at least one of the architectures from this list.
+        """
+        categories: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The filtered instance types will belong to one of the categories types from this list.
+        """
+        disk_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The filtered instance types will have one of the disk type from this list.
+        """
+        exclude_families: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
+        """
+        exclude_metal: NotRequired[pulumi.Input[bool]]
+        """
+        In case excludeMetal is set to true, metal types will not be available for scaling.
+        """
+        hypervisors: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The filtered instance types will have a hypervisor type from this list.
+        """
+        include_families: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
+        """
+        is_ena_supported: NotRequired[pulumi.Input[str]]
+        """
+        Ena is supported or not.
+        """
+        max_gpu: NotRequired[pulumi.Input[int]]
+        """
+        Maximum total number of GPUs.
+        """
+        max_memory_gib: NotRequired[pulumi.Input[float]]
+        max_network_performance: NotRequired[pulumi.Input[int]]
+        """
+        Maximum Bandwidth in Gib/s of network performance.
+        """
+        max_vcpu: NotRequired[pulumi.Input[int]]
+        min_enis: NotRequired[pulumi.Input[int]]
+        """
+        Minimum number of network interfaces (ENIs).
+        """
+        min_gpu: NotRequired[pulumi.Input[int]]
+        """
+        Minimum total number of GPUs.
+        """
+        min_memory_gib: NotRequired[pulumi.Input[float]]
+        """
+        Minimum amount of Memory (GiB).
+        """
+        min_network_performance: NotRequired[pulumi.Input[int]]
+        """
+        Minimum Bandwidth in Gib/s of network performance.
+        """
+        min_vcpu: NotRequired[pulumi.Input[int]]
+        """
+        Minimum number of vcpus available.
+        """
+        root_device_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The filtered instance types will have a root device types from this list.
+        """
+        virtualization_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The filtered instance types will support at least one of the virtualization types from this list.
+        """
+elif False:
+    OceanFiltersArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanFiltersArgs:
@@ -8982,6 +11403,19 @@ class OceanFiltersArgs:
         pulumi.set(self, "virtualization_types", value)
 
 
+if not MYPY:
+    class OceanInstanceMetadataOptionsArgsDict(TypedDict):
+        http_tokens: pulumi.Input[str]
+        """
+        Determines if a signed token is required or not. Valid values: `optional` or `required`.
+        """
+        http_put_response_hop_limit: NotRequired[pulumi.Input[int]]
+        """
+        An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
+        """
+elif False:
+    OceanInstanceMetadataOptionsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanInstanceMetadataOptionsArgs:
     def __init__(__self__, *,
@@ -9020,6 +11454,15 @@ class OceanInstanceMetadataOptionsArgs:
         pulumi.set(self, "http_put_response_hop_limit", value)
 
 
+if not MYPY:
+    class OceanLaunchSpecAutoscaleDownArgsDict(TypedDict):
+        max_scale_down_percentage: NotRequired[pulumi.Input[float]]
+        """
+        The maximum percentage allowed to scale down in a single scaling action on the nodes running in a specific VNG. Allowed only if maxScaleDownPercentage is set to null at the cluster level. Number between [0.1-100].
+        """
+elif False:
+    OceanLaunchSpecAutoscaleDownArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanLaunchSpecAutoscaleDownArgs:
     def __init__(__self__, *,
@@ -9042,6 +11485,27 @@ class OceanLaunchSpecAutoscaleDownArgs:
     def max_scale_down_percentage(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "max_scale_down_percentage", value)
 
+
+if not MYPY:
+    class OceanLaunchSpecAutoscaleHeadroomArgsDict(TypedDict):
+        num_of_units: pulumi.Input[int]
+        """
+        The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+        """
+        cpu_per_unit: NotRequired[pulumi.Input[int]]
+        """
+        Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        """
+        gpu_per_unit: NotRequired[pulumi.Input[int]]
+        """
+        Optionally configure the number of GPUS to allocate for each headroom unit.
+        """
+        memory_per_unit: NotRequired[pulumi.Input[int]]
+        """
+        Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
+        """
+elif False:
+    OceanLaunchSpecAutoscaleHeadroomArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanLaunchSpecAutoscaleHeadroomArgs:
@@ -9113,6 +11577,15 @@ class OceanLaunchSpecAutoscaleHeadroomArgs:
         pulumi.set(self, "memory_per_unit", value)
 
 
+if not MYPY:
+    class OceanLaunchSpecAutoscaleHeadroomsAutomaticArgsDict(TypedDict):
+        auto_headroom_percentage: NotRequired[pulumi.Input[int]]
+        """
+        Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`is_enabled` = true is set on the Ocean cluster.
+        """
+elif False:
+    OceanLaunchSpecAutoscaleHeadroomsAutomaticArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs:
     def __init__(__self__, *,
@@ -9135,6 +11608,24 @@ class OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs:
     def auto_headroom_percentage(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "auto_headroom_percentage", value)
 
+
+if not MYPY:
+    class OceanLaunchSpecBlockDeviceMappingArgsDict(TypedDict):
+        device_name: NotRequired[pulumi.Input[str]]
+        """
+        String. Set device name. (Example: `/dev/xvda`).
+        """
+        ebs: NotRequired[pulumi.Input['OceanLaunchSpecBlockDeviceMappingEbsArgsDict']]
+        """
+        Object. Set Elastic Block Store properties .
+        """
+        no_device: NotRequired[pulumi.Input[str]]
+        """
+        String. Suppresses the specified device included in the block device mapping of the AMI.
+        """
+        virtual_name: NotRequired[pulumi.Input[str]]
+elif False:
+    OceanLaunchSpecBlockDeviceMappingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanLaunchSpecBlockDeviceMappingArgs:
@@ -9202,6 +11693,47 @@ class OceanLaunchSpecBlockDeviceMappingArgs:
     def virtual_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "virtual_name", value)
 
+
+if not MYPY:
+    class OceanLaunchSpecBlockDeviceMappingEbsArgsDict(TypedDict):
+        delete_on_termination: NotRequired[pulumi.Input[bool]]
+        """
+        Boolean. Flag to delete the EBS on instance termination.
+        """
+        dynamic_volume_size: NotRequired[pulumi.Input['OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgsDict']]
+        """
+        Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
+        """
+        encrypted: NotRequired[pulumi.Input[bool]]
+        """
+        Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+        """
+        iops: NotRequired[pulumi.Input[int]]
+        """
+        Int. The number of I/O operations per second (IOPS) that the volume supports.
+        """
+        kms_key_id: NotRequired[pulumi.Input[str]]
+        """
+        String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+        """
+        snapshot_id: NotRequired[pulumi.Input[str]]
+        """
+        (Optional) String. The Snapshot ID to mount by.
+        """
+        throughput: NotRequired[pulumi.Input[int]]
+        """
+        The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = `gp3`.
+        """
+        volume_size: NotRequired[pulumi.Input[int]]
+        """
+        Int. The size, in GB of the volume.
+        """
+        volume_type: NotRequired[pulumi.Input[str]]
+        """
+        String. The type of the volume. (Example: `gp2`).
+        """
+elif False:
+    OceanLaunchSpecBlockDeviceMappingEbsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanLaunchSpecBlockDeviceMappingEbsArgs:
@@ -9354,6 +11886,23 @@ class OceanLaunchSpecBlockDeviceMappingEbsArgs:
         pulumi.set(self, "volume_type", value)
 
 
+if not MYPY:
+    class OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgsDict(TypedDict):
+        base_size: pulumi.Input[int]
+        """
+        Int. Initial size for volume. (Example: 50)
+        """
+        resource: pulumi.Input[str]
+        """
+        String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)
+        """
+        size_per_resource_unit: pulumi.Input[int]
+        """
+        Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB)
+        """
+elif False:
+    OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs:
     def __init__(__self__, *,
@@ -9406,6 +11955,15 @@ class OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs:
         pulumi.set(self, "size_per_resource_unit", value)
 
 
+if not MYPY:
+    class OceanLaunchSpecCreateOptionsArgsDict(TypedDict):
+        initial_nodes: NotRequired[pulumi.Input[int]]
+        """
+        When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group. The parameter is recommended in case the use_as_template_only (in aws.Ocean resource) is set to true during Ocean resource creation.
+        """
+elif False:
+    OceanLaunchSpecCreateOptionsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanLaunchSpecCreateOptionsArgs:
     def __init__(__self__, *,
@@ -9428,6 +11986,19 @@ class OceanLaunchSpecCreateOptionsArgs:
     def initial_nodes(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "initial_nodes", value)
 
+
+if not MYPY:
+    class OceanLaunchSpecDeleteOptionsArgsDict(TypedDict):
+        force_delete: pulumi.Input[bool]
+        """
+        When set to `true`, delete even if it is the last Virtual Node Group (also, the default Virtual Node Group must be configured with `useAsTemlateOnly = true`). Should be set at creation or update, but will be used only at deletion.
+        """
+        delete_nodes: NotRequired[pulumi.Input[bool]]
+        """
+        When set to "true", all instances belonging to the deleted launch specification will be drained, detached, and terminated.
+        """
+elif False:
+    OceanLaunchSpecDeleteOptionsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanLaunchSpecDeleteOptionsArgs:
@@ -9467,6 +12038,15 @@ class OceanLaunchSpecDeleteOptionsArgs:
         pulumi.set(self, "delete_nodes", value)
 
 
+if not MYPY:
+    class OceanLaunchSpecElasticIpPoolArgsDict(TypedDict):
+        tag_selector: NotRequired[pulumi.Input['OceanLaunchSpecElasticIpPoolTagSelectorArgsDict']]
+        """
+        A key-value pair, which defines an Elastic IP from the customer pool. Can be null.
+        """
+elif False:
+    OceanLaunchSpecElasticIpPoolArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanLaunchSpecElasticIpPoolArgs:
     def __init__(__self__, *,
@@ -9489,6 +12069,19 @@ class OceanLaunchSpecElasticIpPoolArgs:
     def tag_selector(self, value: Optional[pulumi.Input['OceanLaunchSpecElasticIpPoolTagSelectorArgs']]):
         pulumi.set(self, "tag_selector", value)
 
+
+if not MYPY:
+    class OceanLaunchSpecElasticIpPoolTagSelectorArgsDict(TypedDict):
+        tag_key: pulumi.Input[str]
+        """
+        Elastic IP tag key. The Virtual Node Group will consider all Elastic IPs tagged with this tag as a part of the Elastic IP pool to use.
+        """
+        tag_value: NotRequired[pulumi.Input[str]]
+        """
+        Elastic IP tag value. Can be null.
+        """
+elif False:
+    OceanLaunchSpecElasticIpPoolTagSelectorArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanLaunchSpecElasticIpPoolTagSelectorArgs:
@@ -9528,6 +12121,15 @@ class OceanLaunchSpecElasticIpPoolTagSelectorArgs:
         pulumi.set(self, "tag_value", value)
 
 
+if not MYPY:
+    class OceanLaunchSpecEphemeralStorageArgsDict(TypedDict):
+        ephemeral_storage_device_name: NotRequired[pulumi.Input[str]]
+        """
+        Specify an alternative device name from which ephemeral storage calculations should be derived. This parameter is used when the ephemeral storage should not utilize the root device. Provide the device name configured in the VNG's BDM or AMI's BDM that differs from the default root device.
+        """
+elif False:
+    OceanLaunchSpecEphemeralStorageArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanLaunchSpecEphemeralStorageArgs:
     def __init__(__self__, *,
@@ -9551,6 +12153,15 @@ class OceanLaunchSpecEphemeralStorageArgs:
         pulumi.set(self, "ephemeral_storage_device_name", value)
 
 
+if not MYPY:
+    class OceanLaunchSpecImageArgsDict(TypedDict):
+        image_id: NotRequired[pulumi.Input[str]]
+        """
+        Identifier of the image in AWS. Valid values: any string which is not empty or null.
+        """
+elif False:
+    OceanLaunchSpecImageArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanLaunchSpecImageArgs:
     def __init__(__self__, *,
@@ -9573,6 +12184,19 @@ class OceanLaunchSpecImageArgs:
     def image_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "image_id", value)
 
+
+if not MYPY:
+    class OceanLaunchSpecInstanceMetadataOptionsArgsDict(TypedDict):
+        http_tokens: pulumi.Input[str]
+        """
+        Determines if a signed token is required or not. Valid values: `optional` or `required`.
+        """
+        http_put_response_hop_limit: NotRequired[pulumi.Input[int]]
+        """
+        An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
+        """
+elif False:
+    OceanLaunchSpecInstanceMetadataOptionsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanLaunchSpecInstanceMetadataOptionsArgs:
@@ -9611,6 +12235,83 @@ class OceanLaunchSpecInstanceMetadataOptionsArgs:
     def http_put_response_hop_limit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "http_put_response_hop_limit", value)
 
+
+if not MYPY:
+    class OceanLaunchSpecInstanceTypesFiltersArgsDict(TypedDict):
+        categories: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The filtered instance types will belong to one of the categories types from this list. Valid values: `Accelerated_computing`, `Compute_optimized`, `General_purpose`, `Memory_optimized`, `Storage_optimized`.
+        """
+        disk_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The filtered instance types will have one of the disk type from this list. Valid values: `NVMe`, `EBS`, `SSD`, `HDD`.
+        """
+        exclude_families: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
+        """
+        exclude_metal: NotRequired[pulumi.Input[bool]]
+        """
+        In case excludeMetal is set to true, metal types will not be available for scaling.
+        """
+        hypervisors: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The filtered instance types will have a hypervisor type from this list. Valid values: `nitro`, `xen`.
+        """
+        include_families: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
+        """
+        is_ena_supported: NotRequired[pulumi.Input[str]]
+        """
+        Ena is supported or not.
+        """
+        max_gpu: NotRequired[pulumi.Input[int]]
+        """
+        Maximum total number of GPUs.
+        """
+        max_memory_gib: NotRequired[pulumi.Input[float]]
+        """
+        Maximum amount of Memory (GiB).
+        """
+        max_network_performance: NotRequired[pulumi.Input[int]]
+        """
+        Maximum Bandwidth in Gib/s of network performance.
+        """
+        max_vcpu: NotRequired[pulumi.Input[int]]
+        """
+        Maximum number of vcpus available.
+        """
+        min_enis: NotRequired[pulumi.Input[int]]
+        """
+        Minimum number of network interfaces (ENIs).
+        """
+        min_gpu: NotRequired[pulumi.Input[int]]
+        """
+        Minimum total number of GPUs.
+        """
+        min_memory_gib: NotRequired[pulumi.Input[float]]
+        """
+        Minimum amount of Memory (GiB).
+        """
+        min_network_performance: NotRequired[pulumi.Input[int]]
+        """
+        Minimum Bandwidth in Gib/s of network performance.
+        """
+        min_vcpu: NotRequired[pulumi.Input[int]]
+        """
+        Minimum number of vcpus available.
+        """
+        root_device_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The filtered instance types will have a root device types from this list. Valid values: `ebs`, or `instance-store`.
+        """
+        virtualization_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The filtered instance types will support at least one of the virtualization types from this list. Valid values: `hvm`, `paravirtual`.
+        """
+elif False:
+    OceanLaunchSpecInstanceTypesFiltersArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanLaunchSpecInstanceTypesFiltersArgs:
@@ -9907,6 +12608,19 @@ class OceanLaunchSpecInstanceTypesFiltersArgs:
         pulumi.set(self, "virtualization_types", value)
 
 
+if not MYPY:
+    class OceanLaunchSpecLabelArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        The label key.
+        """
+        value: pulumi.Input[str]
+        """
+        The label value.
+        """
+elif False:
+    OceanLaunchSpecLabelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanLaunchSpecLabelArgs:
     def __init__(__self__, *,
@@ -9943,6 +12657,19 @@ class OceanLaunchSpecLabelArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class OceanLaunchSpecResourceLimitArgsDict(TypedDict):
+        max_instance_count: NotRequired[pulumi.Input[int]]
+        """
+        Set a maximum number of instances per Virtual Node Group. Can be null. If set, value must be greater than or equal to 0.
+        """
+        min_instance_count: NotRequired[pulumi.Input[int]]
+        """
+        Set a minimum number of instances per Virtual Node Group. Can be null. If set, value must be greater than or equal to 0.
+        """
+elif False:
+    OceanLaunchSpecResourceLimitArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanLaunchSpecResourceLimitArgs:
@@ -9983,6 +12710,19 @@ class OceanLaunchSpecResourceLimitArgs:
         pulumi.set(self, "min_instance_count", value)
 
 
+if not MYPY:
+    class OceanLaunchSpecSchedulingShutdownHoursArgsDict(TypedDict):
+        time_windows: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The times that the shutdown hours will apply.
+        """
+        is_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Flag to enable or disable the shutdown hours mechanism. When `false`, the mechanism is deactivated, and the virtual node group remains in its current state.
+        """
+elif False:
+    OceanLaunchSpecSchedulingShutdownHoursArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanLaunchSpecSchedulingShutdownHoursArgs:
     def __init__(__self__, *,
@@ -10020,6 +12760,27 @@ class OceanLaunchSpecSchedulingShutdownHoursArgs:
     def is_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "is_enabled", value)
 
+
+if not MYPY:
+    class OceanLaunchSpecSchedulingTaskArgsDict(TypedDict):
+        cron_expression: pulumi.Input[str]
+        """
+        A valid cron expression. For example : " * * * * * ". The cron job runs in UTC time and is in Unix cron format.
+        """
+        is_enabled: pulumi.Input[bool]
+        """
+        Describes whether the task is enabled. When `true`, the task runs. When `false`, it does not run.
+        """
+        task_type: pulumi.Input[str]
+        """
+        The activity that you are scheduling. Valid values: "manualHeadroomUpdate".
+        """
+        task_headrooms: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskTaskHeadroomArgsDict']]]]
+        """
+        The config of this scheduled task. Depends on the value of taskType.
+        """
+elif False:
+    OceanLaunchSpecSchedulingTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanLaunchSpecSchedulingTaskArgs:
@@ -10088,6 +12849,27 @@ class OceanLaunchSpecSchedulingTaskArgs:
     def task_headrooms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskTaskHeadroomArgs']]]]):
         pulumi.set(self, "task_headrooms", value)
 
+
+if not MYPY:
+    class OceanLaunchSpecSchedulingTaskTaskHeadroomArgsDict(TypedDict):
+        num_of_units: pulumi.Input[int]
+        """
+        The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+        """
+        cpu_per_unit: NotRequired[pulumi.Input[int]]
+        """
+        Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        """
+        gpu_per_unit: NotRequired[pulumi.Input[int]]
+        """
+        Optionally configure the number of GPUS to allocate for each headroom unit.
+        """
+        memory_per_unit: NotRequired[pulumi.Input[int]]
+        """
+        Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
+        """
+elif False:
+    OceanLaunchSpecSchedulingTaskTaskHeadroomArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanLaunchSpecSchedulingTaskTaskHeadroomArgs:
@@ -10158,6 +12940,27 @@ class OceanLaunchSpecSchedulingTaskTaskHeadroomArgs:
     def memory_per_unit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "memory_per_unit", value)
 
+
+if not MYPY:
+    class OceanLaunchSpecStrategyArgsDict(TypedDict):
+        draining_timeout: NotRequired[pulumi.Input[int]]
+        """
+        The configurable amount of time that Ocean will wait for the draining process to complete before terminating an instance. If you have not defined a draining timeout, the default of 300 seconds will be used.
+        """
+        spot_percentage: NotRequired[pulumi.Input[int]]
+        """
+        The desired percentage of the Spot instances out of all running instances for this VNG. Only available when the field is not set in the cluster directly (cluster.strategy.spotPercentage).
+        """
+        utilize_commitments: NotRequired[pulumi.Input[bool]]
+        """
+        When set as ‘true’, if savings plans commitments have available capacity, Ocean will utilize them alongside RIs (if exist) to maximize cost efficiency. If the value is set as 'null', it will automatically be inherited from the cluster level.
+        """
+        utilize_reserved_instances: NotRequired[pulumi.Input[bool]]
+        """
+        When set as ‘true’, if reserved instances exist, Ocean will utilize them before launching spot instances. If the value is set as 'null', it will automatically be inherited from the cluster level.
+        """
+elif False:
+    OceanLaunchSpecStrategyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanLaunchSpecStrategyArgs:
@@ -10230,6 +13033,13 @@ class OceanLaunchSpecStrategyArgs:
         pulumi.set(self, "utilize_reserved_instances", value)
 
 
+if not MYPY:
+    class OceanLaunchSpecTagArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        value: pulumi.Input[str]
+elif False:
+    OceanLaunchSpecTagArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanLaunchSpecTagArgs:
     def __init__(__self__, *,
@@ -10256,6 +13066,23 @@ class OceanLaunchSpecTagArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class OceanLaunchSpecTaintArgsDict(TypedDict):
+        effect: pulumi.Input[str]
+        """
+        The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`.
+        """
+        key: pulumi.Input[str]
+        """
+        The taint key.
+        """
+        value: pulumi.Input[str]
+        """
+        The taint value.
+        """
+elif False:
+    OceanLaunchSpecTaintArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanLaunchSpecTaintArgs:
@@ -10309,6 +13136,19 @@ class OceanLaunchSpecTaintArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class OceanLaunchSpecUpdatePolicyArgsDict(TypedDict):
+        should_roll: pulumi.Input[bool]
+        """
+        Enables the roll.
+        """
+        roll_config: NotRequired[pulumi.Input['OceanLaunchSpecUpdatePolicyRollConfigArgsDict']]
+        """
+        Holds the roll configuration.
+        """
+elif False:
+    OceanLaunchSpecUpdatePolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanLaunchSpecUpdatePolicyArgs:
     def __init__(__self__, *,
@@ -10347,6 +13187,15 @@ class OceanLaunchSpecUpdatePolicyArgs:
         pulumi.set(self, "roll_config", value)
 
 
+if not MYPY:
+    class OceanLaunchSpecUpdatePolicyRollConfigArgsDict(TypedDict):
+        batch_size_percentage: pulumi.Input[int]
+        """
+        Sets the percentage of the instances to deploy in each batch.
+        """
+elif False:
+    OceanLaunchSpecUpdatePolicyRollConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanLaunchSpecUpdatePolicyRollConfigArgs:
     def __init__(__self__, *,
@@ -10368,6 +13217,23 @@ class OceanLaunchSpecUpdatePolicyRollConfigArgs:
     def batch_size_percentage(self, value: pulumi.Input[int]):
         pulumi.set(self, "batch_size_percentage", value)
 
+
+if not MYPY:
+    class OceanLoadBalancerArgsDict(TypedDict):
+        arn: NotRequired[pulumi.Input[str]]
+        """
+        Required if type is set to `TARGET_GROUP`
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Required if type is set to `CLASSIC`
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Can be set to `CLASSIC` or `TARGET_GROUP`
+        """
+elif False:
+    OceanLoadBalancerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanLoadBalancerArgs:
@@ -10424,6 +13290,15 @@ class OceanLoadBalancerArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class OceanLoggingArgsDict(TypedDict):
+        export: NotRequired[pulumi.Input['OceanLoggingExportArgsDict']]
+        """
+        Logging Export configuration.
+        """
+elif False:
+    OceanLoggingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanLoggingArgs:
     def __init__(__self__, *,
@@ -10446,6 +13321,15 @@ class OceanLoggingArgs:
     def export(self, value: Optional[pulumi.Input['OceanLoggingExportArgs']]):
         pulumi.set(self, "export", value)
 
+
+if not MYPY:
+    class OceanLoggingExportArgsDict(TypedDict):
+        s3s: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanLoggingExportS3ArgsDict']]]]
+        """
+        Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
+        """
+elif False:
+    OceanLoggingExportArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanLoggingExportArgs:
@@ -10470,6 +13354,15 @@ class OceanLoggingExportArgs:
         pulumi.set(self, "s3s", value)
 
 
+if not MYPY:
+    class OceanLoggingExportS3ArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The identifier of The S3 data integration to export the logs to.
+        """
+elif False:
+    OceanLoggingExportS3ArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanLoggingExportS3Args:
     def __init__(__self__, *,
@@ -10491,6 +13384,15 @@ class OceanLoggingExportS3Args:
     def id(self, value: pulumi.Input[str]):
         pulumi.set(self, "id", value)
 
+
+if not MYPY:
+    class OceanResourceTagSpecificationArgsDict(TypedDict):
+        should_tag_volumes: NotRequired[pulumi.Input[bool]]
+        """
+        Specify if Volume resources will be tagged with Virtual Node Group tags or Ocean tags.
+        """
+elif False:
+    OceanResourceTagSpecificationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanResourceTagSpecificationArgs:
@@ -10514,6 +13416,19 @@ class OceanResourceTagSpecificationArgs:
     def should_tag_volumes(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "should_tag_volumes", value)
 
+
+if not MYPY:
+    class OceanScheduledTaskArgsDict(TypedDict):
+        shutdown_hours: NotRequired[pulumi.Input['OceanScheduledTaskShutdownHoursArgsDict']]
+        """
+        Set shutdown hours for cluster object.
+        """
+        tasks: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskTaskArgsDict']]]]
+        """
+        The scheduling tasks for the cluster.
+        """
+elif False:
+    OceanScheduledTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanScheduledTaskArgs:
@@ -10554,6 +13469,19 @@ class OceanScheduledTaskArgs:
         pulumi.set(self, "tasks", value)
 
 
+if not MYPY:
+    class OceanScheduledTaskShutdownHoursArgsDict(TypedDict):
+        time_windows: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of: `ddd:hh:mm-ddd:hh:mm` where `ddd` = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat, `hh` = hour 24 = 0 -23, `mm` = minute = 0 - 59. Time windows should not overlap. Required if `cluster.scheduling.isEnabled` is `true`. (Example: `Fri:15:30-Wed:14:30`).
+        """
+        is_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Toggle the shutdown hours task. (Example: `true`).
+        """
+elif False:
+    OceanScheduledTaskShutdownHoursArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanScheduledTaskShutdownHoursArgs:
     def __init__(__self__, *,
@@ -10591,6 +13519,27 @@ class OceanScheduledTaskShutdownHoursArgs:
     def is_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "is_enabled", value)
 
+
+if not MYPY:
+    class OceanScheduledTaskTaskArgsDict(TypedDict):
+        cron_expression: pulumi.Input[str]
+        """
+        A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. (Example: `0 1 * * *`).
+        """
+        is_enabled: pulumi.Input[bool]
+        """
+        Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
+        """
+        task_type: pulumi.Input[str]
+        """
+        Valid values: `clusterRoll` `amiAutoUpdate`. Required for `cluster.scheduling.tasks`
+        """
+        parameters: NotRequired[pulumi.Input['OceanScheduledTaskTaskParametersArgsDict']]
+        """
+        This filed will be compatible to the `task_type` field. If `task_type` is defined as `clusterRoll`, user cluster roll object in parameters.
+        """
+elif False:
+    OceanScheduledTaskTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanScheduledTaskTaskArgs:
@@ -10660,6 +13609,19 @@ class OceanScheduledTaskTaskArgs:
         pulumi.set(self, "parameters", value)
 
 
+if not MYPY:
+    class OceanScheduledTaskTaskParametersArgsDict(TypedDict):
+        ami_auto_update: NotRequired[pulumi.Input['OceanScheduledTaskTaskParametersAmiAutoUpdateArgsDict']]
+        """
+        Set amiAutoUpdate object
+        """
+        parameters_cluster_roll: NotRequired[pulumi.Input['OceanScheduledTaskTaskParametersParametersClusterRollArgsDict']]
+        """
+        Set clusterRoll object
+        """
+elif False:
+    OceanScheduledTaskTaskParametersArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanScheduledTaskTaskParametersArgs:
     def __init__(__self__, *,
@@ -10698,6 +13660,27 @@ class OceanScheduledTaskTaskParametersArgs:
     def parameters_cluster_roll(self, value: Optional[pulumi.Input['OceanScheduledTaskTaskParametersParametersClusterRollArgs']]):
         pulumi.set(self, "parameters_cluster_roll", value)
 
+
+if not MYPY:
+    class OceanScheduledTaskTaskParametersAmiAutoUpdateArgsDict(TypedDict):
+        ami_auto_update_cluster_roll: NotRequired[pulumi.Input['OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollArgsDict']]
+        """
+        Set clusterRoll object
+        """
+        apply_roll: NotRequired[pulumi.Input[bool]]
+        """
+        When the AMI is updated according to the configuration set, a cluster roll can be triggered
+        """
+        minor_version: NotRequired[pulumi.Input[bool]]
+        """
+        When set to 'true', the auto-update process will update the VNGs’ AMI with the AMI to match the Kubernetes control plane version. either "patch" or "minor_version" must be true.
+        """
+        patch: NotRequired[pulumi.Input[bool]]
+        """
+        When set to 'true', the auto-update process will update the VNGs’ images with the latest security patches. either "patch" or "minorVersion" must be true.
+        """
+elif False:
+    OceanScheduledTaskTaskParametersAmiAutoUpdateArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanScheduledTaskTaskParametersAmiAutoUpdateArgs:
@@ -10770,6 +13753,27 @@ class OceanScheduledTaskTaskParametersAmiAutoUpdateArgs:
         pulumi.set(self, "patch", value)
 
 
+if not MYPY:
+    class OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollArgsDict(TypedDict):
+        batch_min_healthy_percentage: NotRequired[pulumi.Input[int]]
+        """
+        Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+        """
+        batch_size_percentage: NotRequired[pulumi.Input[int]]
+        """
+        Value as a percent to set the size of a batch in a roll. Valid values are 0-100.
+        """
+        comment: NotRequired[pulumi.Input[str]]
+        """
+        Add a `comment` description for the roll. The `comment` is limited to 256 chars
+        """
+        respect_pdb: NotRequired[pulumi.Input[bool]]
+        """
+        During the roll, if the parameter is set to true we honor PDB during the instance replacement.
+        """
+elif False:
+    OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollArgs:
     def __init__(__self__, *,
@@ -10840,6 +13844,27 @@ class OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollArgs:
     def respect_pdb(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "respect_pdb", value)
 
+
+if not MYPY:
+    class OceanScheduledTaskTaskParametersParametersClusterRollArgsDict(TypedDict):
+        batch_min_healthy_percentage: NotRequired[pulumi.Input[int]]
+        """
+        Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+        """
+        batch_size_percentage: NotRequired[pulumi.Input[int]]
+        """
+        Value as a percent to set the size of a batch in a roll. Valid values are 0-100.
+        """
+        comment: NotRequired[pulumi.Input[str]]
+        """
+        Add a `comment` description for the roll. The `comment` is limited to 256 chars
+        """
+        respect_pdb: NotRequired[pulumi.Input[bool]]
+        """
+        During the roll, if the parameter is set to true we honor PDB during the instance replacement.
+        """
+elif False:
+    OceanScheduledTaskTaskParametersParametersClusterRollArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanScheduledTaskTaskParametersParametersClusterRollArgs:
@@ -10912,6 +13937,19 @@ class OceanScheduledTaskTaskParametersParametersClusterRollArgs:
         pulumi.set(self, "respect_pdb", value)
 
 
+if not MYPY:
+    class OceanTagArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        The tag key.
+        """
+        value: pulumi.Input[str]
+        """
+        The tag value.
+        """
+elif False:
+    OceanTagArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanTagArgs:
     def __init__(__self__, *,
@@ -10948,6 +13986,31 @@ class OceanTagArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class OceanUpdatePolicyArgsDict(TypedDict):
+        should_roll: pulumi.Input[bool]
+        """
+        Enables the roll.
+        """
+        auto_apply_tags: NotRequired[pulumi.Input[bool]]
+        """
+        will update instance tags on the fly without rolling the cluster.
+        """
+        conditioned_roll: NotRequired[pulumi.Input[bool]]
+        """
+        Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
+        """
+        conditioned_roll_params: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A custom list of attributes will trigger the cluster roll operation (overrides the predefined list of parameters). Valid only when the `conditioned_roll` parameter is set to true. (Valid values: `"subnet_ids"`,`"whitelist"`,`"blacklist"`,`"user_data"`,`"image_id"`,`"security_groups"`,`"key_name"`,`"iam_instance_profile"`,`"associate_public_ip_address"`,`"load_balancers"`,`"instance_metadata_options"`,`"ebs_optimized"`,`"root_volume_size"`)
+        """
+        roll_config: NotRequired[pulumi.Input['OceanUpdatePolicyRollConfigArgsDict']]
+        """
+        While used, you can control whether the group should perform a deployment after an update to the configuration.
+        """
+elif False:
+    OceanUpdatePolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanUpdatePolicyArgs:
@@ -11035,6 +14098,27 @@ class OceanUpdatePolicyArgs:
         pulumi.set(self, "roll_config", value)
 
 
+if not MYPY:
+    class OceanUpdatePolicyRollConfigArgsDict(TypedDict):
+        batch_size_percentage: pulumi.Input[int]
+        """
+        Sets the percentage of the instances to deploy in each batch.
+        """
+        batch_min_healthy_percentage: NotRequired[pulumi.Input[int]]
+        """
+        Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+        """
+        launch_spec_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of virtual node group identifiers to be rolled.
+        """
+        respect_pdb: NotRequired[pulumi.Input[bool]]
+        """
+        During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.
+        """
+elif False:
+    OceanUpdatePolicyRollConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanUpdatePolicyRollConfigArgs:
     def __init__(__self__, *,
@@ -11104,6 +14188,15 @@ class OceanUpdatePolicyRollConfigArgs:
     def respect_pdb(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "respect_pdb", value)
 
+
+if not MYPY:
+    class SuspensionSuspensionArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The name of process to suspend. Valid values: `"AUTO_HEALING" , "OUT_OF_STRATEGY", "PREVENTIVE_REPLACEMENT", "REVERT_PREFERRED", or "SCHEDULING"`.
+        """
+elif False:
+    SuspensionSuspensionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SuspensionSuspensionArgs:
