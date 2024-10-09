@@ -25,6 +25,7 @@ class ElastigroupAzureV3Args:
                  custom_data: Optional[pulumi.Input[str]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
                  draining_timeout: Optional[pulumi.Input[int]] = None,
+                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ExtensionArgs']]]] = None,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageArgs']]]] = None,
                  login: Optional[pulumi.Input['ElastigroupAzureV3LoginArgs']] = None,
                  managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ManagedServiceIdentityArgs']]]] = None,
@@ -51,6 +52,8 @@ class ElastigroupAzureV3Args:
             pulumi.set(__self__, "desired_capacity", desired_capacity)
         if draining_timeout is not None:
             pulumi.set(__self__, "draining_timeout", draining_timeout)
+        if extensions is not None:
+            pulumi.set(__self__, "extensions", extensions)
         if images is not None:
             pulumi.set(__self__, "images", images)
         if login is not None:
@@ -154,6 +157,15 @@ class ElastigroupAzureV3Args:
     @draining_timeout.setter
     def draining_timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "draining_timeout", value)
+
+    @property
+    @pulumi.getter
+    def extensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ExtensionArgs']]]]:
+        return pulumi.get(self, "extensions")
+
+    @extensions.setter
+    def extensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ExtensionArgs']]]]):
+        pulumi.set(self, "extensions", value)
 
     @property
     @pulumi.getter
@@ -261,6 +273,7 @@ class _ElastigroupAzureV3State:
                  custom_data: Optional[pulumi.Input[str]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
                  draining_timeout: Optional[pulumi.Input[int]] = None,
+                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ExtensionArgs']]]] = None,
                  fallback_to_on_demand: Optional[pulumi.Input[bool]] = None,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageArgs']]]] = None,
                  login: Optional[pulumi.Input['ElastigroupAzureV3LoginArgs']] = None,
@@ -287,6 +300,8 @@ class _ElastigroupAzureV3State:
             pulumi.set(__self__, "desired_capacity", desired_capacity)
         if draining_timeout is not None:
             pulumi.set(__self__, "draining_timeout", draining_timeout)
+        if extensions is not None:
+            pulumi.set(__self__, "extensions", extensions)
         if fallback_to_on_demand is not None:
             pulumi.set(__self__, "fallback_to_on_demand", fallback_to_on_demand)
         if images is not None:
@@ -348,6 +363,15 @@ class _ElastigroupAzureV3State:
     @draining_timeout.setter
     def draining_timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "draining_timeout", value)
+
+    @property
+    @pulumi.getter
+    def extensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ExtensionArgs']]]]:
+        return pulumi.get(self, "extensions")
+
+    @extensions.setter
+    def extensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ExtensionArgs']]]]):
+        pulumi.set(self, "extensions", value)
 
     @property
     @pulumi.getter(name="fallbackToOnDemand")
@@ -511,6 +535,7 @@ class ElastigroupAzureV3(pulumi.CustomResource):
                  custom_data: Optional[pulumi.Input[str]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
                  draining_timeout: Optional[pulumi.Input[int]] = None,
+                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3ExtensionArgs', 'ElastigroupAzureV3ExtensionArgsDict']]]]] = None,
                  fallback_to_on_demand: Optional[pulumi.Input[bool]] = None,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3ImageArgs', 'ElastigroupAzureV3ImageArgsDict']]]]] = None,
                  login: Optional[pulumi.Input[Union['ElastigroupAzureV3LoginArgs', 'ElastigroupAzureV3LoginArgsDict']]] = None,
@@ -560,6 +585,7 @@ class ElastigroupAzureV3(pulumi.CustomResource):
                  custom_data: Optional[pulumi.Input[str]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
                  draining_timeout: Optional[pulumi.Input[int]] = None,
+                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3ExtensionArgs', 'ElastigroupAzureV3ExtensionArgsDict']]]]] = None,
                  fallback_to_on_demand: Optional[pulumi.Input[bool]] = None,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3ImageArgs', 'ElastigroupAzureV3ImageArgsDict']]]]] = None,
                  login: Optional[pulumi.Input[Union['ElastigroupAzureV3LoginArgs', 'ElastigroupAzureV3LoginArgsDict']]] = None,
@@ -589,6 +615,7 @@ class ElastigroupAzureV3(pulumi.CustomResource):
             __props__.__dict__["custom_data"] = custom_data
             __props__.__dict__["desired_capacity"] = desired_capacity
             __props__.__dict__["draining_timeout"] = draining_timeout
+            __props__.__dict__["extensions"] = extensions
             if fallback_to_on_demand is None and not opts.urn:
                 raise TypeError("Missing required property 'fallback_to_on_demand'")
             __props__.__dict__["fallback_to_on_demand"] = fallback_to_on_demand
@@ -631,6 +658,7 @@ class ElastigroupAzureV3(pulumi.CustomResource):
             custom_data: Optional[pulumi.Input[str]] = None,
             desired_capacity: Optional[pulumi.Input[int]] = None,
             draining_timeout: Optional[pulumi.Input[int]] = None,
+            extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3ExtensionArgs', 'ElastigroupAzureV3ExtensionArgsDict']]]]] = None,
             fallback_to_on_demand: Optional[pulumi.Input[bool]] = None,
             images: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3ImageArgs', 'ElastigroupAzureV3ImageArgsDict']]]]] = None,
             login: Optional[pulumi.Input[Union['ElastigroupAzureV3LoginArgs', 'ElastigroupAzureV3LoginArgsDict']]] = None,
@@ -663,6 +691,7 @@ class ElastigroupAzureV3(pulumi.CustomResource):
         __props__.__dict__["custom_data"] = custom_data
         __props__.__dict__["desired_capacity"] = desired_capacity
         __props__.__dict__["draining_timeout"] = draining_timeout
+        __props__.__dict__["extensions"] = extensions
         __props__.__dict__["fallback_to_on_demand"] = fallback_to_on_demand
         __props__.__dict__["images"] = images
         __props__.__dict__["login"] = login
@@ -696,6 +725,11 @@ class ElastigroupAzureV3(pulumi.CustomResource):
     @pulumi.getter(name="drainingTimeout")
     def draining_timeout(self) -> pulumi.Output[int]:
         return pulumi.get(self, "draining_timeout")
+
+    @property
+    @pulumi.getter
+    def extensions(self) -> pulumi.Output[Sequence['outputs.ElastigroupAzureV3Extension']]:
+        return pulumi.get(self, "extensions")
 
     @property
     @pulumi.getter(name="fallbackToOnDemand")

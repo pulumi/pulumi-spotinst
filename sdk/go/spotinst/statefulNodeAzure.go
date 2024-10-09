@@ -13,6 +13,574 @@ import (
 )
 
 // Provides a Spotinst stateful node Azure resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := spotinst.NewStatefulNodeAzure(ctx, "test_stateful_node_azure", &spotinst.StatefulNodeAzureArgs{
+//				Name:              pulumi.String("example_stateful_node_azure"),
+//				Region:            pulumi.String("eastus"),
+//				ResourceGroupName: pulumi.String("spotinst-azure"),
+//				Description:       pulumi.String("example_stateful_node_azure_description"),
+//				Strategy: &spotinst.StatefulNodeAzureStrategyArgs{
+//					DrainingTimeout:    pulumi.Int(30),
+//					FallbackToOnDemand: pulumi.Bool(true),
+//					OptimizationWindows: pulumi.StringArray{
+//						pulumi.String("Tue:19:46-Tue:20:46"),
+//					},
+//					OdWindows: pulumi.StringArray{
+//						pulumi.String("Wed:19:46-Wed:21:46"),
+//					},
+//					AvailabilityVsCost: pulumi.Int(100),
+//					VmAdmins: pulumi.StringArray{
+//						pulumi.String("UbuntuUser"),
+//						pulumi.String("TestUser"),
+//					},
+//					RevertToSpot: &spotinst.StatefulNodeAzureStrategyRevertToSpotArgs{
+//						PerformAt: pulumi.String("timeWindow"),
+//					},
+//					PreferredLifeCycle: pulumi.String("od"),
+//					CapacityReservations: spotinst.StatefulNodeAzureStrategyCapacityReservationArray{
+//						&spotinst.StatefulNodeAzureStrategyCapacityReservationArgs{
+//							ShouldUtilize:       pulumi.Bool(true),
+//							UtilizationStrategy: pulumi.String("utilizeOverOD"),
+//							CapacityReservationGroups: spotinst.StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArray{
+//								&spotinst.StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs{
+//									CrgName:              pulumi.String("crg name"),
+//									CrgResourceGroupName: pulumi.String("resourceGroupName"),
+//									CrgShouldPrioritize:  pulumi.Bool(true),
+//								},
+//							},
+//						},
+//					},
+//				},
+//				Os: pulumi.String("Linux"),
+//				VmSizes: &spotinst.StatefulNodeAzureVmSizesArgs{
+//					OdSizes: pulumi.StringArray{
+//						pulumi.String("standard_ds1_v2"),
+//						pulumi.String("standard_ds2_v2"),
+//					},
+//					SpotSizes: pulumi.StringArray{
+//						pulumi.String("standard_ds1_v2"),
+//						pulumi.String("standard_ds2_v2"),
+//					},
+//					PreferredSpotSizes: pulumi.StringArray{
+//						pulumi.String("standard_ds1_v2"),
+//					},
+//				},
+//				Zones: pulumi.StringArray{
+//					pulumi.String("1"),
+//					pulumi.String("3"),
+//				},
+//				PreferredZone:  pulumi.String("1"),
+//				CustomData:     pulumi.String(""),
+//				ShutdownScript: pulumi.String(""),
+//				UserData:       pulumi.String(""),
+//				VmName:         pulumi.String("VMName"),
+//				VmNamePrefix:   pulumi.String("VMNamePrefix"),
+//				LicenseType:    pulumi.String("SLES_BYOS"),
+//				BootDiagnostics: spotinst.StatefulNodeAzureBootDiagnosticArray{
+//					&spotinst.StatefulNodeAzureBootDiagnosticArgs{
+//						IsEnabled:  pulumi.Bool(true),
+//						StorageUrl: pulumi.String("https://.blob.core.windows.net/test"),
+//						Type:       pulumi.String("unmanaged"),
+//					},
+//				},
+//				DataDisks: spotinst.StatefulNodeAzureDataDiskArray{
+//					&spotinst.StatefulNodeAzureDataDiskArgs{
+//						SizeGb: pulumi.Int(1),
+//						Lun:    pulumi.Int(1),
+//						Type:   pulumi.String("Standard_LRS"),
+//					},
+//					&spotinst.StatefulNodeAzureDataDiskArgs{
+//						SizeGb: pulumi.Int(10),
+//						Lun:    pulumi.Int(2),
+//						Type:   pulumi.String("Standard_LRS"),
+//					},
+//				},
+//				Extensions: spotinst.StatefulNodeAzureExtensionArray{
+//					&spotinst.StatefulNodeAzureExtensionArgs{
+//						Name:                    pulumi.String("extensionName"),
+//						Type:                    pulumi.String("customScript"),
+//						Publisher:               pulumi.String("Microsoft.Azure.Extensions"),
+//						ApiVersion:              pulumi.String("2.0"),
+//						MinorVersionAutoUpgrade: pulumi.Bool(true),
+//						ProtectedSettings: pulumi.StringMap{
+//							"script": pulumi.String("IyEvYmluL2Jhc2gKZWNobyAibmlyIiA+IC9ob29uaXIudHh0Cg=="),
+//						},
+//						PublicSettings: pulumi.StringMap{
+//							"fileUris": pulumi.String("https://testspot/Azuretest.sh"),
+//						},
+//					},
+//				},
+//				Image: &spotinst.StatefulNodeAzureImageArgs{
+//					MarketplaceImages: spotinst.StatefulNodeAzureImageMarketplaceImageArray{
+//						&spotinst.StatefulNodeAzureImageMarketplaceImageArgs{
+//							Publisher: pulumi.String("Canonical"),
+//							Offer:     pulumi.String("UbuntuServer"),
+//							Sku:       pulumi.String("16.04-LTS"),
+//							Version:   pulumi.String("latest"),
+//						},
+//					},
+//					CustomImages: spotinst.StatefulNodeAzureImageCustomImageArray{
+//						&spotinst.StatefulNodeAzureImageCustomImageArgs{
+//							CustomImageResourceGroupName: pulumi.String("resourceGroupName"),
+//							Name:                         pulumi.String("imageName"),
+//						},
+//					},
+//					Galleries: spotinst.StatefulNodeAzureImageGalleryArray{
+//						&spotinst.StatefulNodeAzureImageGalleryArgs{
+//							GalleryResourceGroupName: pulumi.String("resourceGroupName"),
+//							GalleryName:              pulumi.String("galleryName"),
+//							ImageName:                pulumi.String("imageName"),
+//							VersionName:              pulumi.String("1.1.0"),
+//							SpotAccountId:            pulumi.String("act-123456"),
+//						},
+//					},
+//				},
+//				LoadBalancers: spotinst.StatefulNodeAzureLoadBalancerArray{
+//					&spotinst.StatefulNodeAzureLoadBalancerArgs{
+//						Type:              pulumi.String("loadBalancer"),
+//						ResourceGroupName: pulumi.String("testResourceGroup"),
+//						Name:              pulumi.String("testLoadBalancer"),
+//						Sku:               pulumi.String("Standard"),
+//						BackendPoolNames: pulumi.StringArray{
+//							pulumi.String("testBackendPool1"),
+//							pulumi.String("testBackendPool2"),
+//						},
+//					},
+//				},
+//				Login: &spotinst.StatefulNodeAzureLoginArgs{
+//					UserName:     pulumi.String("admin"),
+//					SshPublicKey: pulumi.String("33a2s1f3g5a1df5g1ad3f2g1adfg56dfg=="),
+//				},
+//				ManagedServiceIdentities: spotinst.StatefulNodeAzureManagedServiceIdentityArray{
+//					&spotinst.StatefulNodeAzureManagedServiceIdentityArgs{
+//						Name:              pulumi.String("mySI2"),
+//						ResourceGroupName: pulumi.String("myResourceGroup"),
+//					},
+//				},
+//				Network: &spotinst.StatefulNodeAzureNetworkArgs{
+//					NetworkResourceGroupName: pulumi.String("subnetResourceGroup"),
+//					VirtualNetworkName:       pulumi.String("vname"),
+//					NetworkInterfaces: spotinst.StatefulNodeAzureNetworkNetworkInterfaceArray{
+//						&spotinst.StatefulNodeAzureNetworkNetworkInterfaceArgs{
+//							IsPrimary:      pulumi.Bool(true),
+//							SubnetName:     pulumi.String("testSubnet"),
+//							AssignPublicIp: pulumi.Bool(true),
+//							PublicIpSku:    pulumi.String("Standard"),
+//							NetworkSecurityGroups: spotinst.StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArray{
+//								&spotinst.StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs{
+//									NetworkResourceGroupName: pulumi.String("test"),
+//									Name:                     pulumi.String("test"),
+//								},
+//							},
+//							EnableIpForwarding: pulumi.Bool(true),
+//							PrivateIpAddresses: pulumi.StringArray{
+//								pulumi.String("172.23.4.20"),
+//							},
+//							AdditionalIpConfigurations: spotinst.StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArray{
+//								&spotinst.StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgs{
+//									Name:                    pulumi.String("test"),
+//									PrivateIpAddressVersion: pulumi.String("IPv4"),
+//								},
+//							},
+//							PublicIps: spotinst.StatefulNodeAzureNetworkNetworkInterfacePublicIpArray{
+//								&spotinst.StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs{
+//									NetworkResourceGroupName: pulumi.String("resourceGroup"),
+//									Name:                     pulumi.String("test"),
+//								},
+//							},
+//							ApplicationSecurityGroups: spotinst.StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArray{
+//								&spotinst.StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs{
+//									NetworkResourceGroupName: pulumi.String("AsgResourceGroup"),
+//									Name:                     pulumi.String("AsgName"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//				OsDisk: &spotinst.StatefulNodeAzureOsDiskArgs{
+//					SizeGb:  pulumi.Int(30),
+//					Type:    pulumi.String("Standard_LRS"),
+//					Caching: pulumi.String("ReadOnly"),
+//				},
+//				Secrets: spotinst.StatefulNodeAzureSecretArray{
+//					&spotinst.StatefulNodeAzureSecretArgs{
+//						SourceVaults: spotinst.StatefulNodeAzureSecretSourceVaultArray{
+//							&spotinst.StatefulNodeAzureSecretSourceVaultArgs{
+//								Name:              pulumi.String("string"),
+//								ResourceGroupName: pulumi.String("string"),
+//							},
+//						},
+//						VaultCertificates: spotinst.StatefulNodeAzureSecretVaultCertificateArray{
+//							&spotinst.StatefulNodeAzureSecretVaultCertificateArgs{
+//								CertificateUrl:   pulumi.String("string"),
+//								CertificateStore: pulumi.String("string"),
+//							},
+//						},
+//					},
+//				},
+//				Security: &spotinst.StatefulNodeAzureSecurityArgs{
+//					SecurityType:                 pulumi.String("ConfidentialVM"),
+//					SecureBootEnabled:            pulumi.Bool(true),
+//					VtpmEnabled:                  pulumi.Bool(true),
+//					EncryptionAtHost:             pulumi.Bool(false),
+//					ConfidentialOsDiskEncryption: pulumi.Bool(true),
+//				},
+//				Tags: spotinst.StatefulNodeAzureTagArray{
+//					&spotinst.StatefulNodeAzureTagArgs{
+//						TagKey:   pulumi.String("Creator"),
+//						TagValue: pulumi.String("string"),
+//					},
+//				},
+//				Health: &spotinst.StatefulNodeAzureHealthArgs{
+//					HealthCheckTypes: pulumi.StringArray{
+//						pulumi.String("vmState"),
+//					},
+//					UnhealthyDuration: pulumi.Int(300),
+//					GracePeriod:       pulumi.Int(120),
+//					AutoHealing:       pulumi.Bool(true),
+//				},
+//				ShouldPersistOsDisk:      pulumi.Bool(false),
+//				OsDiskPersistenceMode:    pulumi.String("reattach"),
+//				ShouldPersistDataDisks:   pulumi.Bool(true),
+//				DataDisksPersistenceMode: pulumi.String("reattach"),
+//				ShouldPersistNetwork:     pulumi.Bool(true),
+//				SchedulingTasks: spotinst.StatefulNodeAzureSchedulingTaskArray{
+//					&spotinst.StatefulNodeAzureSchedulingTaskArgs{
+//						IsEnabled:      pulumi.Bool(true),
+//						Type:           pulumi.String("pause"),
+//						CronExpression: pulumi.String("44 10 * * *"),
+//					},
+//					&spotinst.StatefulNodeAzureSchedulingTaskArgs{
+//						IsEnabled:      pulumi.Bool(true),
+//						Type:           pulumi.String("resume"),
+//						CronExpression: pulumi.String("48 10 * * *"),
+//					},
+//					&spotinst.StatefulNodeAzureSchedulingTaskArgs{
+//						IsEnabled:      pulumi.Bool(true),
+//						Type:           pulumi.String("recycle"),
+//						CronExpression: pulumi.String("52 10 * * *"),
+//					},
+//				},
+//				Signals: spotinst.StatefulNodeAzureSignalArray{
+//					&spotinst.StatefulNodeAzureSignalArgs{
+//						Type:    pulumi.String("vmReady"),
+//						Timeout: pulumi.Int(20),
+//					},
+//					&spotinst.StatefulNodeAzureSignalArgs{
+//						Type:    pulumi.String("vmReady"),
+//						Timeout: pulumi.Int(40),
+//					},
+//				},
+//				ProximityPlacementGroups: spotinst.StatefulNodeAzureProximityPlacementGroupArray{
+//					&spotinst.StatefulNodeAzureProximityPlacementGroupArgs{
+//						Name:              pulumi.String("TestPPG"),
+//						ResourceGroupName: pulumi.String("TestResourceGroup"),
+//					},
+//				},
+//				Deletes: spotinst.StatefulNodeAzureDeleteArray{
+//					&spotinst.StatefulNodeAzureDeleteArgs{
+//						ShouldTerminateVm:        pulumi.Bool(true),
+//						NetworkShouldDeallocate:  pulumi.Bool(true),
+//						NetworkTtlInHours:        pulumi.Int(0),
+//						DiskShouldDeallocate:     pulumi.Bool(true),
+//						DiskTtlInHours:           pulumi.Int(0),
+//						SnapshotShouldDeallocate: pulumi.Bool(true),
+//						SnapshotTtlInHours:       pulumi.Int(0),
+//						PublicIpShouldDeallocate: pulumi.Bool(true),
+//						PublicIpTtlInHours:       pulumi.Int(0),
+//						ShouldDeregisterFromLb:   pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// # Argument Reference
+//
+// The following arguments are supported:
+//
+// * `name` - (Required) Azure stateful node name.
+// * `region` - (Required) The Azure region your stateful node will be created in.
+// * `resourceGroupName` - (Required) Name of the Resource Group for stateful node.
+// * `description` - (Optional) Describe your Azure stateful node.
+//
+// ## Strategy
+//
+// * `strategy` - (Required) Strategy for stateful node.
+//   - `drainingTimeout` - (Optional, Default `120`) Time (in seconds) to allow the VM be drained from incoming TCP connections and detached from MLB before terminating it during a scale down operation.
+//   - `availabilityVsCost` - (Optional) Set the desired preference for the Spot market VM selection. (100- Availability, 0- cost).
+//   - `fallbackToOnDemand` - (Required) In case of no spots available, Stateful Node will launch an On-demand instance instead.
+//   - `optimizationWindows` - (Optional) Valid format: "ddd:hh:mm-ddd:hh:mm (day:hour(0-23):minute(0-59))", not empty if revertToSpot.performAt = timeWindow.
+//   - `odWindows` - (Optional) Define the time windows in which the underlying VM will be set as an on-demand lifecycle type. During the entire time window, the rest of the strategy processes will be paused.
+//     Switching between on-demand and Spot VM types at the enter/exit of the time window will trigger the recycling of the stateful node. Valid format: "ddd:hh:mm-ddd:hh:mm (day:hour(0-23):minute(0-59))".
+//   - `preferredLifeCycle` - (Optional, Enum `"od", "spot"`, Default `"spot"`) The desired type of VM.
+//   - `revertToSpot` - (Optional) Hold settings for strategy correction - replacing On-Demand for Spot VMs.
+//   - `performAt` - (Required, Enum `"timeWindow", "never", "always"`, Default `"always"`) Settings for maintenance strategy.
+//   - `capacityReservation` - (Optional) On-demand Capacity Reservation group enables you to reserve Compute capacity in an Azure region or an Availability Zone for any duration of time. [CRG can only be created on the Azure end.](https://learn.microsoft.com/en-us/azure/virtual-machines/capacity-reservation-create)
+//   - `shouldUtilize` - (Required) Determines whether capacity reservations should be utilized.
+//   - `utilizationStrategy` - (Required, Enum `"utilizeOverSpot", "utilizeOverOD"`) The priority requested for using CRG. This value will determine if CRG is used ahead of spot VMs or On-demand VMs. (`"utilizeOverOD"`- If picked, we will use CRG only in case On demand should be launched. `"utilizeOverSpot"`- CRG will be preferred over Spot. Only after CRG is fully used, spot VMs can be used.)
+//   - `capacityReservationGroups` - (Optional) List of the desired CRGs to use under the associated Azure subscription. When null we will utilize any available reservation that matches the launch specification.
+//   - `crgName` - (Required) The name of the CRG.
+//   - `crgResourceGroupName` - (Required) Azure resource group name
+//   - `crgShouldPrioritize` - The desired CRG to utilize ahead of other CRGs in the subscription.
+//   - `vmAdmins` - (Optional) Defines Azure identities that are considered VM admins. If the list is empty, the defined behavior is `NONE`, If the list is null, the defined behavior is `ALL`. This applies if the object is not defined. If an identity contains the string, it will be considered permitted to perform the following actions: Stop VM: VM admins can move the VM to a "stopped (deallocated)" state using the Azure console. If triggered by someone else, it is considered an interruption.
+//
+// ## Compute
+//
+// * `os` - (Required, Enum `"Linux", "Windows"`) Type of operating system.
+// * `vmSizes` - (Required) Defines the VM sizes to use when launching VMs.
+//   - `odSizes` - (Required) Available On-Demand sizes.
+//   - `spotSizes` - (Required) Available Spot-VM sizes.
+//   - `preferredSpotSizes` - (Optional) Prioritize Spot VM sizes when launching Spot VMs for the group. If set, must be a sublist of compute.vmSizes.spotSizes.
+//
+// * `zones` - (Optional, Enum `"1", "2", "3"`) List of Azure Availability Zones in the defined region. If not defined, Virtual machines will be launched regionally.
+// * `preferredZone` - (Optional, Enum `"1", "2", "3"`) The AZ to prioritize when launching VMs. If no markets are available in the Preferred AZ, VMs are launched in the non-preferred AZ. Must be a sublist of compute.zones.
+// * `customData` - (Optional) This value will hold the YAML in base64 and will be executed upon VM launch.
+// * `shutdownScript` - (Optional) Shutdown script for the stateful node. Value should be passed as a string encoded at Base64 only.
+// * `userData` - (Optional) Define a set of scripts or other metadata that's inserted to an Azure virtual machine at provision time. (Base64 encoded)
+// * `vmName` - (Optional) Set a VM name that will be persisted throughout the entire node lifecycle. This can't be set if `vmNamePrefix` is set.
+// * `vmNamePrefix` - (Optional) Set a VM name prefix to be used for all launched VMs and the VM resources. This can't be set if `vmName` is set.
+// * `licenseType` - (Optional) Specify an existing Azure license type to use when launching new VMs. Valid values for Windows OS: "Windows_Server", "Windows_Client", Valid values for Linux OS: "RHEL_BYOS", "SLES_BYOS"
+//
+// <a id="bootDiagnostics"></a>
+// ## Boot Diagnostics
+//
+// * `bootDiagnostics`
+//   - `isEnabled` - (Optional) Allows you to enable and disable the configuration of boot diagnostics at launch.
+//   - `storageUrl` - (Optional) The storage URI that is used if a type is unmanaged. The storage URI must follow the blob storage URI format ("https://.blob.core.windows.net/"). StorageUri is required if the type is unmanaged. StorageUri must be ‘null’ in case the boot diagnostics type is managed.
+//   - `type` - (Optional, Enum `"managed", "unmanaged"`) Defines the storage type on VM launch in Azure.
+//
+// <a id="dataDisks"></a>
+// ## Data Disks
+//
+// * `dataDisk` - (Optional) The definitions of data disks that will be created and attached to the stateful node's VM.
+//   - `sizeGb` - (Required) The size of the data disk in GB, required if dataDisks is specified.
+//   - `lun` - (Required) The LUN of the data disk.
+//   - `type` - (Required, Enum `"Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "UltraSSD_LRS"`) The type of the data disk.
+//
+// ## Extensions
+//
+// * `extension` - (Optional) An object for an azure extension.
+//   - `name` - (Required) Required on compute.launchSpecification.extensions object.
+//   - `type` - (Required) Required on compute.launchSpecification.extensions object.
+//   - `publisher` - (Required) Required on compute.launchSpecification.extensions object.
+//   - `apiVersion` - (Required) The API version of the extension. Required if extension specified.
+//   - `minorVersionAutoUpgrade` - (Required) Required on compute.launchSpecification.extensions object.
+//   - `protectedSettings` - (Optional) Object for protected settings.
+//   - `publicSettings` - (Optional) Object for public settings.
+//
+// ## Image
+//
+// * `image`
+//   - `marketplaceImage` - (Optional) Select an image from Azure's Marketplace image catalogue. Required if the custom image or gallery image are not specified.
+//   - `publisher` - (Required) Image publisher.
+//   - `offer` - (Required) Image offer.
+//   - `sku` - (Required) Image Stock Keeping Unit, which is the specific version of the image.
+//   - `version` - (Required, Default `"latest"`) Image's version. if version not provided we use "latest".
+//   - `gallery` - (Optional) Gallery image definitions. Required if custom image or marketplace image are not specified.
+//   - `galleryResourceGroupName` - (Required) The resource group name for gallery image.
+//   - `galleryName` - (Required) Name of the gallery.
+//   - `imageName` - (Required) Name of the gallery image.
+//   - `versionName` - (Required) Image's version. Can be in the format x.x.x or 'latest'.
+//   - `spotAccountId` - (Optional) The Spot account ID that connected to the Azure subscription to which the gallery belongs. Relevant only in case of cross-subscription shared galleries. [Read more](https://docs.spot.io/elastigroup/features-azure/shared-image-galleries) about cross-subscription shared galleries in Elastigroup.
+//   - `customImage` - (Optional) Custom image definitions. Required if marketplace image or gallery image are not specified.
+//   - `customImageResourceGroupName` - (Required) The resource group name for custom image.
+//   - `name` - (Required) The name of the custom image.
+//
+// <a id="load balancer"></a>
+// ## Load Balancer
+//
+// * `loadBalancer` - (Optional) Add a load balancer. For Azure Gateway, each Backend Pool is a separate load balancer.
+//   - `type` - (Required, Enum `"loadBalancer", "applicationGateway"`) The type of load balancer.
+//   - `resourceGroupName` - (Required) The Resource Group name of the Load Balancer.
+//   - `name` - (Required) Name of the Application Gateway/Load Balancer.
+//   - `sku` - (Optional)
+//   - if type is `"LoadBalancer"` then possible values are `“Standard", "Basic”`.
+//   - If ApplicationGateway then possible values are
+//     `“Standard_Large”, “Standard_Medium”, “Standard_Small”, “Standard_v2", “WAF_Large”, “WAF_Medium", “WAF_v2"`.
+//   - `backendPoolNames` - (Optional) Name of the Backend Pool to register the Stateful Node VMs to. Each Backend Pool is a separate load balancer. Required if Type is APPLICATION_GATEWAY.
+//
+// ## Login
+//
+// * `login` - (Required) Set admin access for accessing your VMs. Password/SSH is required for Linux.
+//   - `userName` - (Required) username for admin access to VMs.
+//   - `sshPublicKey` - (Optional) SSH for admin access to Linux VMs. Optional for Linux.
+//   - `password` - (Optional) Password for admin access to Windows VMs. Required for Windows.
+//
+// <a id="managedServiceIdentities"></a>
+// ## Managed Service Identities
+//
+// * `managedServiceIdentities` - (Optional) Add a user-assigned managed identity to the Stateful Node's VM.
+//   - `name` - (Required) name of the managed identity.
+//   - `resourceGroupName` - (Required) The Resource Group that the user-assigned managed identity resides in.
+//
+// <a id="proximityPlacementGroups"></a>
+// ## Proximity Placement Groups
+//
+// * `proximityPlacementGroups` - (Optional) Defines the proximity placement group in which the VM will be launched.
+//   - `name` - (Required) name of the proximity placement group.
+//   - `resourceGroupName` - (Required) The Resource Group name of the proximity placement group.
+//
+// ## Network
+//
+// * `network` - (Required) Define the Virtual Network and Subnet for your Stateful Node.
+//   - `networkResourceGroupName` - (Required) Vnet Resource Group Name.
+//   - `virtualNetworkName` - (Required) Virtual Network.
+//   - `networkInterface` - (Required) Define a network interface
+//   - `isPrimary` - (Required) Defines whether the network interface is primary or not.
+//   - `subnetName` - (Required) Subnet name.
+//   - `assignPublicIp` - (Optional) Assign public IP.
+//   - `publicIpSku` - (Optional) Required if assignPublicIp=true values=[Standard/Basic].
+//   - `networkSecurityGroup` - (Optional) Network Security Group.
+//   - `networkResourceGroupName` - (Required) Requires valid security group name.
+//   - `name` - (Required) Requires valid resource group name.
+//   - `enableIpForwarding` - (Optional) Enable IP Forwarding.
+//   - `privateIpAddresses` - (Optional) A list with unique items that every item is a valid IP.
+//   - `additionalIpConfigurations` - (Optional) Additional configuration of network interface.
+//   - `name` - (Required) Configuration name.
+//   - `privateIpAddressVersion` - (Required, Enum `"IPv4", "IPv6"` Default `"IPv4"`) Version of the private IP address.
+//   - `publicIps` - (Optional) Defined a pool of Public Ips (from Azure), that will be associated to the network interface. We will associate one public ip per instance until the pool is exhausted, in which case, we will create a new one.
+//   - `resourceGroupName` - (Required) The resource group of the public ip.
+//   - `name` - (Required) - The name of the public ip.
+//   - `applicationSecurityGroups` - (Optional) Network Security Group.
+//   - `resourceGroupName` - (Required) Requires valid security group name.
+//   - `name` - (Required) Requires valid resource group name.
+//
+// <a id="osDisk"></a>
+// ## OS Disk
+//
+// * `osDisk` - (Optional) Specify OS disk specification other than default.
+//   - `sizeGb` - (Optional, Default `"30"`) The size of the data disk in GB.
+//   - `type` - (Required, Enum `"Standard_LRS", "Premium_LRS", "StandardSSD_LRS"`) The type of the OS disk.
+//   - `caching` - (Optional, Enum `"None", "ReadOnly", "ReadWrite"`) Specifies the host caching requirements. With disk caching enabled, VMs can achieve higher levels of performance. If not specified, the Azure default behavior will be applied.
+//
+// ## Secret
+//
+// * `secret` - (Optional) Set of certificates that should be installed on the VM.
+//   - `sourceVault` - (Required) The key vault reference, contains the required certificates.
+//   - `name` - (Required) The name of the key vault.
+//   - `resourceGroupName` - (Required) The resource group name of the key vault.
+//   - `vaultCertificates` - (Required) The required certificate references.
+//   - `certificateUrl` - (Optional) The URL of the certificate under the key vault.
+//   - `certificateStore` - (Required) The certificate store directory the VM. The directory is created in the LocalMachine account.
+//   - This field is required only when using Windows OS type
+//   - This field must be ‘null’ when the OS type is Linux
+//
+// ## Security
+//
+// * `security` - (Optional) Specifies the Security related profile settings for the virtual machine.
+//   - `secureBootEnabled` - (Optional) Specifies whether secure boot should be enabled on the virtual machine.
+//   - `securityType` - (Optional) Enum: `"Standard", "TrustedLaunch", "ConfidentialVM"` Security type refers to the different security features of a virtual machine. Security features like Trusted launch virtual machines help to improve the security of Azure generation 2 virtual machines.
+//   - `vtpmEnabled` - (Optional) Specifies whether vTPM should be enabled on the virtual machine.
+//   - `encryptionAtHost` - (Optional) Enables the Host Encryption for the virtual machine. The Encryption at host will be disabled unless this property is set to true for the resource.
+//   - `confidentialOsDiskEncryption` - (Optional) Confidential disk encryption binds the disk encryption keys to the VM's TPM, ensuring VM-only access. The security type must be "ConfidentialVM" to enable defining this preference as “true”.
+//
+// ## Tag
+//
+// * `tag` - (Optional) Unique Key-Value pair for all Stateful Node Resources.
+//   - `tagKey` - (Optional) Tag Key for Stateful Node Resources.
+//   - `tagValue` - (Optional) Tag Value for Stateful Node Resources.
+//
+// ## Health
+//
+// * `health` - (Optional) Set the auto healing preferences for unhealthy VMs.
+//   - `healthCheckTypes` - (Optional, Enum `"vmState", "applicationGateway"`) Healthcheck to use to validate VM health.
+//   - `unhealthyDuration` - (Optional) Amount of time to be unhealthy before a replacement is triggered.
+//   - `autoHealing` - (Required) Enable Autohealing of unhealthy VMs.
+//   - `gracePeriod` - (Optional) Period of time to wait for VM to reach healthiness before monitoring for unhealthiness.
+//
+// ## Persistence
+//
+// * `shouldPersistOsDisk` - (Required) Should persist os disk.
+// * `osDiskPersistenceMode` - (Optional, Enum `"reattach", "onLaunch"`)
+// * `shouldPersistDataDisks` - (Required) Should persist data disks.
+// * `dataDisksPersistenceMode` - (Optional, Enum `"reattach", "onLaunch"`)
+// * `shouldPersistNetwork` - (Required) Should persist network.
+//
+// <a id="schedulingTasks"></a>
+// ## Scheduling Tasks
+//
+// * `schedulingTask` - (Optional) Scheduling settings object for stateful node.
+//   - `isEnabled` - (Required) Is scheduled task enabled for stateful node.
+//   - `type` - (Required, Enum `"pause", "resume", "recycle") The type of the scheduled task
+//   - `cronExpression` (Required) A expression which describes when to execute the scheduled task (UTC).
+//
+// ## Signals
+//
+// * `signal` - (Optional) A signal object defined for the stateful node.
+//   - `type` - (Required, Enum `"vmReady", "vmReadyToShutdown"`) The type of the signal defined for the stateful node.
+//   - `timeout` - (Required, Default `"1800"`) The timeout in seconds to hold the vm until a signal is sent. If no signal is sent the vm will be replaced (vmReady) or we will terminate the vm (vmReadyToShutdown) after the timeout.
+//
+// ***
+//
+// <a id="attachDataDisk"></a>
+// ## Attach Data Disk
+//
+// * `attachDataDisk` - (Optional) Create a new data disk and attach it to the stateful node.
+//   - `dataDiskName` - (Required) The name of the created data disk.
+//   - `dataDiskResourceGroupName` - (Required) The resource group name in which the data disk will be created.
+//   - `storageAccountType` - (Required, Enum `"Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "UltraSSD_LRS"`) The type of the data disk.
+//   - `sizeGb` - (Required) The size of the data disk in GB, Required if dataDisks is specified.
+//   - `zone` - (Optional, Enum `"1", "2", "3"`) The Availability Zone in which the data disk will be created. If not defined, the data disk will be created regionally.
+//   - `lun` - (Optional, Default `"orginal"`) The LUN of the data disk. If not defined, the LUN will be set in order.
+//
+// <a id="detachDataDisk"></a>
+// ## Detach Data Disk
+//
+// * `detachDataDisk` - (Optional) Detach a data disk from a stateful node.
+//   - `dataDiskName` - (Required) The name of the detached data disk.
+//   - `dataDiskResourceGroupName` - (Required) The resource group name in which the data disk exists.
+//   - `shouldDeallocate` - (Required) Indicates whether to delete the data disk in addition to detach.
+//   - `ttlInHours` - (Required, Default `"0"`) Hours to keep the disk alive before deletion.
+//
+// <a id="updateState"></a>
+// ## Update State
+//
+// * `updateState` - (Optional) Update the stateful node state.
+//   - `state` - (Required, Enum `"pause", "resume", "recycle"`) New state for the stateful node.
+//
+// <a id="importVm"></a>
+// ## Import VM
+//
+// * `importVm` - (Optional) Import an Azure VM and create a stateful node by providing a node configuration.
+//   - `resourceGroupName` - (Required) Name of the Resource Group for Stateful Node.
+//   - `originalVmName` - (Required) Azure Import Stateful Node Name.
+//   - `drainingTimeout` - (Optional) Hours to keep resources alive.
+//   - `resourcesRetentionTime` - (Optional) Hours to keep resources alive.
+//
+// ## Deallocation Config
+//
+// * `delete` - (Required) Specify deallocation parameters for stateful node deletion.
+//   - `shouldTerminateVm` - (Required) Indicates whether to delete the stateful node's VM.
+//   - `networkShouldDeallocate` - (Required) Indicates whether to delete the stateful node's network resources.
+//   - `networkTtlInHours` - (Optional, Default: 96) Hours to keep the network resource alive before deletion.
+//   - `diskShouldDeallocate` - (Required) Indicates whether to delete the stateful node's disk resources.
+//   - `diskTtlInHours` - (Optional, Default: 96) Hours to keep the disk resource alive before deletion.
+//   - `snapshotShouldDeallocate` - (Required) Indicates whether to delete the stateful node's snapshot resources.
+//   - `snapshotTtlInHours` - (Optional, Default: 96) Hours to keep the snapshots alive before deletion.
+//   - `publicIpShouldDeallocate` - (Required) Indicates whether to delete the stateful node's public ip resources.
+//   - `publicIpTtlInHours` - (Optional, Default: 96) Hours to keep the public ip alive before deletion.
+//   - `shouldDeregisterFromLb` - (Optional, Default: true) Indicates whether to deregister the stateful node's VM from any type of load balancer. Can be changed to false only when shouldTerminateVms is 'false'.
 type StatefulNodeAzure struct {
 	pulumi.CustomResourceState
 

@@ -21,6 +21,9 @@ namespace Pulumi.SpotInst
         [Output("drainingTimeout")]
         public Output<int> DrainingTimeout { get; private set; } = null!;
 
+        [Output("extensions")]
+        public Output<ImmutableArray<Outputs.ElastigroupAzureV3Extension>> Extensions { get; private set; } = null!;
+
         [Output("fallbackToOnDemand")]
         public Output<bool> FallbackToOnDemand { get; private set; } = null!;
 
@@ -127,6 +130,14 @@ namespace Pulumi.SpotInst
         [Input("drainingTimeout")]
         public Input<int>? DrainingTimeout { get; set; }
 
+        [Input("extensions")]
+        private InputList<Inputs.ElastigroupAzureV3ExtensionArgs>? _extensions;
+        public InputList<Inputs.ElastigroupAzureV3ExtensionArgs> Extensions
+        {
+            get => _extensions ?? (_extensions = new InputList<Inputs.ElastigroupAzureV3ExtensionArgs>());
+            set => _extensions = value;
+        }
+
         [Input("fallbackToOnDemand", required: true)]
         public Input<bool> FallbackToOnDemand { get; set; } = null!;
 
@@ -219,6 +230,14 @@ namespace Pulumi.SpotInst
 
         [Input("drainingTimeout")]
         public Input<int>? DrainingTimeout { get; set; }
+
+        [Input("extensions")]
+        private InputList<Inputs.ElastigroupAzureV3ExtensionGetArgs>? _extensions;
+        public InputList<Inputs.ElastigroupAzureV3ExtensionGetArgs> Extensions
+        {
+            get => _extensions ?? (_extensions = new InputList<Inputs.ElastigroupAzureV3ExtensionGetArgs>());
+            set => _extensions = value;
+        }
 
         [Input("fallbackToOnDemand")]
         public Input<bool>? FallbackToOnDemand { get; set; }
