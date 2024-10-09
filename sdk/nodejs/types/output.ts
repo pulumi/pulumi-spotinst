@@ -13,6 +13,23 @@ export interface DataIntegrationS3 {
     subdir?: string;
 }
 
+export interface ElastigroupAzureV3Extension {
+    apiVersion: string;
+    enableAutomaticUpgrade?: boolean;
+    minorVersionAutoUpgrade: boolean;
+    name: string;
+    protectedSettings: {[key: string]: string};
+    protectedSettingsFromKeyVault?: outputs.ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVault;
+    publicSettings: {[key: string]: string};
+    publisher: string;
+    type: string;
+}
+
+export interface ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVault {
+    secretUrl: string;
+    sourceVault: string;
+}
+
 export interface ElastigroupAzureV3Image {
     customs?: outputs.ElastigroupAzureV3ImageCustom[];
     galleryImages?: outputs.ElastigroupAzureV3ImageGalleryImage[];

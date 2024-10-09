@@ -478,6 +478,16 @@
             "spotinst_elastigroup_azure_v3": {
                 "current": "spotinst:index/elastigroupAzureV3:ElastigroupAzureV3",
                 "fields": {
+                    "extensions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "protected_settings_from_key_vault": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
                     "image": {
                         "maxItemsOne": false,
                         "elem": {

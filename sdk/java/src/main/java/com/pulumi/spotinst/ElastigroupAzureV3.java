@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.spotinst.ElastigroupAzureV3Args;
 import com.pulumi.spotinst.Utilities;
 import com.pulumi.spotinst.inputs.ElastigroupAzureV3State;
+import com.pulumi.spotinst.outputs.ElastigroupAzureV3Extension;
 import com.pulumi.spotinst.outputs.ElastigroupAzureV3Image;
 import com.pulumi.spotinst.outputs.ElastigroupAzureV3Login;
 import com.pulumi.spotinst.outputs.ElastigroupAzureV3ManagedServiceIdentity;
@@ -44,6 +45,12 @@ public class ElastigroupAzureV3 extends com.pulumi.resources.CustomResource {
 
     public Output<Integer> drainingTimeout() {
         return this.drainingTimeout;
+    }
+    @Export(name="extensions", refs={List.class,ElastigroupAzureV3Extension.class}, tree="[0,1]")
+    private Output<List<ElastigroupAzureV3Extension>> extensions;
+
+    public Output<List<ElastigroupAzureV3Extension>> extensions() {
+        return this.extensions;
     }
     @Export(name="fallbackToOnDemand", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> fallbackToOnDemand;

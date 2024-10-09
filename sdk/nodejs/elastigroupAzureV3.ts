@@ -37,6 +37,7 @@ export class ElastigroupAzureV3 extends pulumi.CustomResource {
     public readonly customData!: pulumi.Output<string | undefined>;
     public readonly desiredCapacity!: pulumi.Output<number | undefined>;
     public readonly drainingTimeout!: pulumi.Output<number>;
+    public readonly extensions!: pulumi.Output<outputs.ElastigroupAzureV3Extension[]>;
     public readonly fallbackToOnDemand!: pulumi.Output<boolean>;
     public readonly images!: pulumi.Output<outputs.ElastigroupAzureV3Image[] | undefined>;
     public readonly login!: pulumi.Output<outputs.ElastigroupAzureV3Login | undefined>;
@@ -71,6 +72,7 @@ export class ElastigroupAzureV3 extends pulumi.CustomResource {
             resourceInputs["customData"] = state ? state.customData : undefined;
             resourceInputs["desiredCapacity"] = state ? state.desiredCapacity : undefined;
             resourceInputs["drainingTimeout"] = state ? state.drainingTimeout : undefined;
+            resourceInputs["extensions"] = state ? state.extensions : undefined;
             resourceInputs["fallbackToOnDemand"] = state ? state.fallbackToOnDemand : undefined;
             resourceInputs["images"] = state ? state.images : undefined;
             resourceInputs["login"] = state ? state.login : undefined;
@@ -111,6 +113,7 @@ export class ElastigroupAzureV3 extends pulumi.CustomResource {
             resourceInputs["customData"] = args ? args.customData : undefined;
             resourceInputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
             resourceInputs["drainingTimeout"] = args ? args.drainingTimeout : undefined;
+            resourceInputs["extensions"] = args ? args.extensions : undefined;
             resourceInputs["fallbackToOnDemand"] = args ? args.fallbackToOnDemand : undefined;
             resourceInputs["images"] = args ? args.images : undefined;
             resourceInputs["login"] = args ? args.login : undefined;
@@ -141,6 +144,7 @@ export interface ElastigroupAzureV3State {
     customData?: pulumi.Input<string>;
     desiredCapacity?: pulumi.Input<number>;
     drainingTimeout?: pulumi.Input<number>;
+    extensions?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3Extension>[]>;
     fallbackToOnDemand?: pulumi.Input<boolean>;
     images?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3Image>[]>;
     login?: pulumi.Input<inputs.ElastigroupAzureV3Login>;
@@ -167,6 +171,7 @@ export interface ElastigroupAzureV3Args {
     customData?: pulumi.Input<string>;
     desiredCapacity?: pulumi.Input<number>;
     drainingTimeout?: pulumi.Input<number>;
+    extensions?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3Extension>[]>;
     fallbackToOnDemand: pulumi.Input<boolean>;
     images?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3Image>[]>;
     login?: pulumi.Input<inputs.ElastigroupAzureV3Login>;

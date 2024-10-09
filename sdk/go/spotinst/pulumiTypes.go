@@ -165,6 +165,298 @@ func (o DataIntegrationS3PtrOutput) Subdir() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ElastigroupAzureV3Extension struct {
+	ApiVersion                    string                                                    `pulumi:"apiVersion"`
+	EnableAutomaticUpgrade        *bool                                                     `pulumi:"enableAutomaticUpgrade"`
+	MinorVersionAutoUpgrade       bool                                                      `pulumi:"minorVersionAutoUpgrade"`
+	Name                          string                                                    `pulumi:"name"`
+	ProtectedSettings             map[string]string                                         `pulumi:"protectedSettings"`
+	ProtectedSettingsFromKeyVault *ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVault `pulumi:"protectedSettingsFromKeyVault"`
+	PublicSettings                map[string]string                                         `pulumi:"publicSettings"`
+	Publisher                     string                                                    `pulumi:"publisher"`
+	Type                          string                                                    `pulumi:"type"`
+}
+
+// ElastigroupAzureV3ExtensionInput is an input type that accepts ElastigroupAzureV3ExtensionArgs and ElastigroupAzureV3ExtensionOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3ExtensionInput` via:
+//
+//	ElastigroupAzureV3ExtensionArgs{...}
+type ElastigroupAzureV3ExtensionInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3ExtensionOutput() ElastigroupAzureV3ExtensionOutput
+	ToElastigroupAzureV3ExtensionOutputWithContext(context.Context) ElastigroupAzureV3ExtensionOutput
+}
+
+type ElastigroupAzureV3ExtensionArgs struct {
+	ApiVersion                    pulumi.StringInput                                               `pulumi:"apiVersion"`
+	EnableAutomaticUpgrade        pulumi.BoolPtrInput                                              `pulumi:"enableAutomaticUpgrade"`
+	MinorVersionAutoUpgrade       pulumi.BoolInput                                                 `pulumi:"minorVersionAutoUpgrade"`
+	Name                          pulumi.StringInput                                               `pulumi:"name"`
+	ProtectedSettings             pulumi.StringMapInput                                            `pulumi:"protectedSettings"`
+	ProtectedSettingsFromKeyVault ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrInput `pulumi:"protectedSettingsFromKeyVault"`
+	PublicSettings                pulumi.StringMapInput                                            `pulumi:"publicSettings"`
+	Publisher                     pulumi.StringInput                                               `pulumi:"publisher"`
+	Type                          pulumi.StringInput                                               `pulumi:"type"`
+}
+
+func (ElastigroupAzureV3ExtensionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3Extension)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3ExtensionArgs) ToElastigroupAzureV3ExtensionOutput() ElastigroupAzureV3ExtensionOutput {
+	return i.ToElastigroupAzureV3ExtensionOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3ExtensionArgs) ToElastigroupAzureV3ExtensionOutputWithContext(ctx context.Context) ElastigroupAzureV3ExtensionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3ExtensionOutput)
+}
+
+// ElastigroupAzureV3ExtensionArrayInput is an input type that accepts ElastigroupAzureV3ExtensionArray and ElastigroupAzureV3ExtensionArrayOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3ExtensionArrayInput` via:
+//
+//	ElastigroupAzureV3ExtensionArray{ ElastigroupAzureV3ExtensionArgs{...} }
+type ElastigroupAzureV3ExtensionArrayInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3ExtensionArrayOutput() ElastigroupAzureV3ExtensionArrayOutput
+	ToElastigroupAzureV3ExtensionArrayOutputWithContext(context.Context) ElastigroupAzureV3ExtensionArrayOutput
+}
+
+type ElastigroupAzureV3ExtensionArray []ElastigroupAzureV3ExtensionInput
+
+func (ElastigroupAzureV3ExtensionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3Extension)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3ExtensionArray) ToElastigroupAzureV3ExtensionArrayOutput() ElastigroupAzureV3ExtensionArrayOutput {
+	return i.ToElastigroupAzureV3ExtensionArrayOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3ExtensionArray) ToElastigroupAzureV3ExtensionArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3ExtensionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3ExtensionArrayOutput)
+}
+
+type ElastigroupAzureV3ExtensionOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3ExtensionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3Extension)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3ExtensionOutput) ToElastigroupAzureV3ExtensionOutput() ElastigroupAzureV3ExtensionOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ExtensionOutput) ToElastigroupAzureV3ExtensionOutputWithContext(ctx context.Context) ElastigroupAzureV3ExtensionOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ExtensionOutput) ApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3Extension) string { return v.ApiVersion }).(pulumi.StringOutput)
+}
+
+func (o ElastigroupAzureV3ExtensionOutput) EnableAutomaticUpgrade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3Extension) *bool { return v.EnableAutomaticUpgrade }).(pulumi.BoolPtrOutput)
+}
+
+func (o ElastigroupAzureV3ExtensionOutput) MinorVersionAutoUpgrade() pulumi.BoolOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3Extension) bool { return v.MinorVersionAutoUpgrade }).(pulumi.BoolOutput)
+}
+
+func (o ElastigroupAzureV3ExtensionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3Extension) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ElastigroupAzureV3ExtensionOutput) ProtectedSettings() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3Extension) map[string]string { return v.ProtectedSettings }).(pulumi.StringMapOutput)
+}
+
+func (o ElastigroupAzureV3ExtensionOutput) ProtectedSettingsFromKeyVault() ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3Extension) *ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVault {
+		return v.ProtectedSettingsFromKeyVault
+	}).(ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrOutput)
+}
+
+func (o ElastigroupAzureV3ExtensionOutput) PublicSettings() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3Extension) map[string]string { return v.PublicSettings }).(pulumi.StringMapOutput)
+}
+
+func (o ElastigroupAzureV3ExtensionOutput) Publisher() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3Extension) string { return v.Publisher }).(pulumi.StringOutput)
+}
+
+func (o ElastigroupAzureV3ExtensionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3Extension) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ElastigroupAzureV3ExtensionArrayOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3ExtensionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3Extension)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3ExtensionArrayOutput) ToElastigroupAzureV3ExtensionArrayOutput() ElastigroupAzureV3ExtensionArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ExtensionArrayOutput) ToElastigroupAzureV3ExtensionArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3ExtensionArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ExtensionArrayOutput) Index(i pulumi.IntInput) ElastigroupAzureV3ExtensionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupAzureV3Extension {
+		return vs[0].([]ElastigroupAzureV3Extension)[vs[1].(int)]
+	}).(ElastigroupAzureV3ExtensionOutput)
+}
+
+type ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVault struct {
+	SecretUrl   string `pulumi:"secretUrl"`
+	SourceVault string `pulumi:"sourceVault"`
+}
+
+// ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultInput is an input type that accepts ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultArgs and ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultInput` via:
+//
+//	ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultArgs{...}
+type ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultOutput() ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultOutput
+	ToElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultOutputWithContext(context.Context) ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultOutput
+}
+
+type ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultArgs struct {
+	SecretUrl   pulumi.StringInput `pulumi:"secretUrl"`
+	SourceVault pulumi.StringInput `pulumi:"sourceVault"`
+}
+
+func (ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVault)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultArgs) ToElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultOutput() ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultOutput {
+	return i.ToElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultArgs) ToElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultOutputWithContext(ctx context.Context) ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultOutput)
+}
+
+func (i ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultArgs) ToElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrOutput() ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrOutput {
+	return i.ToElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultArgs) ToElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultOutput).ToElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrOutputWithContext(ctx)
+}
+
+// ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrInput is an input type that accepts ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultArgs, ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtr and ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrInput` via:
+//
+//	        ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultArgs{...}
+//
+//	or:
+//
+//	        nil
+type ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrOutput() ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrOutput
+	ToElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrOutputWithContext(context.Context) ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrOutput
+}
+
+type elastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrType ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultArgs
+
+func ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtr(v *ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultArgs) ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrInput {
+	return (*elastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrType)(v)
+}
+
+func (*elastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVault)(nil)).Elem()
+}
+
+func (i *elastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrType) ToElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrOutput() ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrOutput {
+	return i.ToElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrOutputWithContext(context.Background())
+}
+
+func (i *elastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrType) ToElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrOutput)
+}
+
+type ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVault)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultOutput) ToElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultOutput() ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultOutput) ToElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultOutputWithContext(ctx context.Context) ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultOutput) ToElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrOutput() ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrOutput {
+	return o.ToElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrOutputWithContext(context.Background())
+}
+
+func (o ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultOutput) ToElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVault) *ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVault {
+		return &v
+	}).(ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrOutput)
+}
+
+func (o ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultOutput) SecretUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVault) string { return v.SecretUrl }).(pulumi.StringOutput)
+}
+
+func (o ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultOutput) SourceVault() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVault) string { return v.SourceVault }).(pulumi.StringOutput)
+}
+
+type ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVault)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrOutput) ToElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrOutput() ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrOutput) ToElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrOutput) Elem() ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVault) ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVault {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVault
+		return ret
+	}).(ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultOutput)
+}
+
+func (o ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrOutput) SecretUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVault) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrOutput) SourceVault() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVault) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SourceVault
+	}).(pulumi.StringPtrOutput)
+}
+
 type ElastigroupAzureV3Image struct {
 	Customs       []ElastigroupAzureV3ImageCustom       `pulumi:"customs"`
 	GalleryImages []ElastigroupAzureV3ImageGalleryImage `pulumi:"galleryImages"`
@@ -8703,6 +8995,10 @@ func (o StatefulNodeAzureVmSizesPtrOutput) SpotSizes() pulumi.StringArrayOutput 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DataIntegrationS3Input)(nil)).Elem(), DataIntegrationS3Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataIntegrationS3PtrInput)(nil)).Elem(), DataIntegrationS3Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ExtensionInput)(nil)).Elem(), ElastigroupAzureV3ExtensionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ExtensionArrayInput)(nil)).Elem(), ElastigroupAzureV3ExtensionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultInput)(nil)).Elem(), ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrInput)(nil)).Elem(), ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ImageInput)(nil)).Elem(), ElastigroupAzureV3ImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ImageArrayInput)(nil)).Elem(), ElastigroupAzureV3ImageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ImageCustomInput)(nil)).Elem(), ElastigroupAzureV3ImageCustomArgs{})
@@ -8843,6 +9139,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureVmSizesPtrInput)(nil)).Elem(), StatefulNodeAzureVmSizesArgs{})
 	pulumi.RegisterOutputType(DataIntegrationS3Output{})
 	pulumi.RegisterOutputType(DataIntegrationS3PtrOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3ExtensionOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3ExtensionArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3ImageOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3ImageArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3ImageCustomOutput{})

@@ -13,6 +13,23 @@ export interface DataIntegrationS3 {
     subdir?: pulumi.Input<string>;
 }
 
+export interface ElastigroupAzureV3Extension {
+    apiVersion: pulumi.Input<string>;
+    enableAutomaticUpgrade?: pulumi.Input<boolean>;
+    minorVersionAutoUpgrade: pulumi.Input<boolean>;
+    name: pulumi.Input<string>;
+    protectedSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    protectedSettingsFromKeyVault?: pulumi.Input<inputs.ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVault>;
+    publicSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    publisher: pulumi.Input<string>;
+    type: pulumi.Input<string>;
+}
+
+export interface ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVault {
+    secretUrl: pulumi.Input<string>;
+    sourceVault: pulumi.Input<string>;
+}
+
 export interface ElastigroupAzureV3Image {
     customs?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3ImageCustom>[]>;
     galleryImages?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3ImageGalleryImage>[]>;

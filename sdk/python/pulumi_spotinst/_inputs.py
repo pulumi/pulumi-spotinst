@@ -11,6 +11,8 @@ from . import _utilities
 
 __all__ = [
     'DataIntegrationS3Args',
+    'ElastigroupAzureV3ExtensionArgs',
+    'ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultArgs',
     'ElastigroupAzureV3ImageArgs',
     'ElastigroupAzureV3ImageCustomArgs',
     'ElastigroupAzureV3ImageGalleryImageArgs',
@@ -115,6 +117,141 @@ class DataIntegrationS3Args:
     @subdir.setter
     def subdir(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subdir", value)
+
+
+@pulumi.input_type
+class ElastigroupAzureV3ExtensionArgs:
+    def __init__(__self__, *,
+                 api_version: pulumi.Input[str],
+                 minor_version_auto_upgrade: pulumi.Input[bool],
+                 name: pulumi.Input[str],
+                 publisher: pulumi.Input[str],
+                 type: pulumi.Input[str],
+                 enable_automatic_upgrade: Optional[pulumi.Input[bool]] = None,
+                 protected_settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 protected_settings_from_key_vault: Optional[pulumi.Input['ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultArgs']] = None,
+                 public_settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        pulumi.set(__self__, "api_version", api_version)
+        pulumi.set(__self__, "minor_version_auto_upgrade", minor_version_auto_upgrade)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "publisher", publisher)
+        pulumi.set(__self__, "type", type)
+        if enable_automatic_upgrade is not None:
+            pulumi.set(__self__, "enable_automatic_upgrade", enable_automatic_upgrade)
+        if protected_settings is not None:
+            pulumi.set(__self__, "protected_settings", protected_settings)
+        if protected_settings_from_key_vault is not None:
+            pulumi.set(__self__, "protected_settings_from_key_vault", protected_settings_from_key_vault)
+        if public_settings is not None:
+            pulumi.set(__self__, "public_settings", public_settings)
+
+    @property
+    @pulumi.getter(name="apiVersion")
+    def api_version(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "api_version")
+
+    @api_version.setter
+    def api_version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "api_version", value)
+
+    @property
+    @pulumi.getter(name="minorVersionAutoUpgrade")
+    def minor_version_auto_upgrade(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "minor_version_auto_upgrade")
+
+    @minor_version_auto_upgrade.setter
+    def minor_version_auto_upgrade(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "minor_version_auto_upgrade", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def publisher(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "publisher")
+
+    @publisher.setter
+    def publisher(self, value: pulumi.Input[str]):
+        pulumi.set(self, "publisher", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="enableAutomaticUpgrade")
+    def enable_automatic_upgrade(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enable_automatic_upgrade")
+
+    @enable_automatic_upgrade.setter
+    def enable_automatic_upgrade(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_automatic_upgrade", value)
+
+    @property
+    @pulumi.getter(name="protectedSettings")
+    def protected_settings(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        return pulumi.get(self, "protected_settings")
+
+    @protected_settings.setter
+    def protected_settings(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "protected_settings", value)
+
+    @property
+    @pulumi.getter(name="protectedSettingsFromKeyVault")
+    def protected_settings_from_key_vault(self) -> Optional[pulumi.Input['ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultArgs']]:
+        return pulumi.get(self, "protected_settings_from_key_vault")
+
+    @protected_settings_from_key_vault.setter
+    def protected_settings_from_key_vault(self, value: Optional[pulumi.Input['ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultArgs']]):
+        pulumi.set(self, "protected_settings_from_key_vault", value)
+
+    @property
+    @pulumi.getter(name="publicSettings")
+    def public_settings(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        return pulumi.get(self, "public_settings")
+
+    @public_settings.setter
+    def public_settings(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "public_settings", value)
+
+
+@pulumi.input_type
+class ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultArgs:
+    def __init__(__self__, *,
+                 secret_url: pulumi.Input[str],
+                 source_vault: pulumi.Input[str]):
+        pulumi.set(__self__, "secret_url", secret_url)
+        pulumi.set(__self__, "source_vault", source_vault)
+
+    @property
+    @pulumi.getter(name="secretUrl")
+    def secret_url(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "secret_url")
+
+    @secret_url.setter
+    def secret_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "secret_url", value)
+
+    @property
+    @pulumi.getter(name="sourceVault")
+    def source_vault(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "source_vault")
+
+    @source_vault.setter
+    def source_vault(self, value: pulumi.Input[str]):
+        pulumi.set(self, "source_vault", value)
 
 
 @pulumi.input_type

@@ -18,6 +18,7 @@ type ElastigroupAzureV3 struct {
 	CustomData               pulumi.StringPtrOutput                              `pulumi:"customData"`
 	DesiredCapacity          pulumi.IntPtrOutput                                 `pulumi:"desiredCapacity"`
 	DrainingTimeout          pulumi.IntOutput                                    `pulumi:"drainingTimeout"`
+	Extensions               ElastigroupAzureV3ExtensionArrayOutput              `pulumi:"extensions"`
 	FallbackToOnDemand       pulumi.BoolOutput                                   `pulumi:"fallbackToOnDemand"`
 	Images                   ElastigroupAzureV3ImageArrayOutput                  `pulumi:"images"`
 	Login                    ElastigroupAzureV3LoginPtrOutput                    `pulumi:"login"`
@@ -88,6 +89,7 @@ type elastigroupAzureV3State struct {
 	CustomData               *string                                    `pulumi:"customData"`
 	DesiredCapacity          *int                                       `pulumi:"desiredCapacity"`
 	DrainingTimeout          *int                                       `pulumi:"drainingTimeout"`
+	Extensions               []ElastigroupAzureV3Extension              `pulumi:"extensions"`
 	FallbackToOnDemand       *bool                                      `pulumi:"fallbackToOnDemand"`
 	Images                   []ElastigroupAzureV3Image                  `pulumi:"images"`
 	Login                    *ElastigroupAzureV3Login                   `pulumi:"login"`
@@ -111,6 +113,7 @@ type ElastigroupAzureV3State struct {
 	CustomData               pulumi.StringPtrInput
 	DesiredCapacity          pulumi.IntPtrInput
 	DrainingTimeout          pulumi.IntPtrInput
+	Extensions               ElastigroupAzureV3ExtensionArrayInput
 	FallbackToOnDemand       pulumi.BoolPtrInput
 	Images                   ElastigroupAzureV3ImageArrayInput
 	Login                    ElastigroupAzureV3LoginPtrInput
@@ -138,6 +141,7 @@ type elastigroupAzureV3Args struct {
 	CustomData               *string                                    `pulumi:"customData"`
 	DesiredCapacity          *int                                       `pulumi:"desiredCapacity"`
 	DrainingTimeout          *int                                       `pulumi:"drainingTimeout"`
+	Extensions               []ElastigroupAzureV3Extension              `pulumi:"extensions"`
 	FallbackToOnDemand       bool                                       `pulumi:"fallbackToOnDemand"`
 	Images                   []ElastigroupAzureV3Image                  `pulumi:"images"`
 	Login                    *ElastigroupAzureV3Login                   `pulumi:"login"`
@@ -162,6 +166,7 @@ type ElastigroupAzureV3Args struct {
 	CustomData               pulumi.StringPtrInput
 	DesiredCapacity          pulumi.IntPtrInput
 	DrainingTimeout          pulumi.IntPtrInput
+	Extensions               ElastigroupAzureV3ExtensionArrayInput
 	FallbackToOnDemand       pulumi.BoolInput
 	Images                   ElastigroupAzureV3ImageArrayInput
 	Login                    ElastigroupAzureV3LoginPtrInput
@@ -278,6 +283,10 @@ func (o ElastigroupAzureV3Output) DesiredCapacity() pulumi.IntPtrOutput {
 
 func (o ElastigroupAzureV3Output) DrainingTimeout() pulumi.IntOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.IntOutput { return v.DrainingTimeout }).(pulumi.IntOutput)
+}
+
+func (o ElastigroupAzureV3Output) Extensions() ElastigroupAzureV3ExtensionArrayOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3) ElastigroupAzureV3ExtensionArrayOutput { return v.Extensions }).(ElastigroupAzureV3ExtensionArrayOutput)
 }
 
 func (o ElastigroupAzureV3Output) FallbackToOnDemand() pulumi.BoolOutput {

@@ -6,6 +6,7 @@ package com.pulumi.spotinst;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.spotinst.inputs.ElastigroupAzureV3ExtensionArgs;
 import com.pulumi.spotinst.inputs.ElastigroupAzureV3ImageArgs;
 import com.pulumi.spotinst.inputs.ElastigroupAzureV3LoginArgs;
 import com.pulumi.spotinst.inputs.ElastigroupAzureV3ManagedServiceIdentityArgs;
@@ -46,6 +47,13 @@ public final class ElastigroupAzureV3Args extends com.pulumi.resources.ResourceA
 
     public Optional<Output<Integer>> drainingTimeout() {
         return Optional.ofNullable(this.drainingTimeout);
+    }
+
+    @Import(name="extensions")
+    private @Nullable Output<List<ElastigroupAzureV3ExtensionArgs>> extensions;
+
+    public Optional<Output<List<ElastigroupAzureV3ExtensionArgs>>> extensions() {
+        return Optional.ofNullable(this.extensions);
     }
 
     @Import(name="fallbackToOnDemand", required=true)
@@ -173,6 +181,7 @@ public final class ElastigroupAzureV3Args extends com.pulumi.resources.ResourceA
         this.customData = $.customData;
         this.desiredCapacity = $.desiredCapacity;
         this.drainingTimeout = $.drainingTimeout;
+        this.extensions = $.extensions;
         this.fallbackToOnDemand = $.fallbackToOnDemand;
         this.images = $.images;
         this.login = $.login;
@@ -235,6 +244,19 @@ public final class ElastigroupAzureV3Args extends com.pulumi.resources.ResourceA
 
         public Builder drainingTimeout(Integer drainingTimeout) {
             return drainingTimeout(Output.of(drainingTimeout));
+        }
+
+        public Builder extensions(@Nullable Output<List<ElastigroupAzureV3ExtensionArgs>> extensions) {
+            $.extensions = extensions;
+            return this;
+        }
+
+        public Builder extensions(List<ElastigroupAzureV3ExtensionArgs> extensions) {
+            return extensions(Output.of(extensions));
+        }
+
+        public Builder extensions(ElastigroupAzureV3ExtensionArgs... extensions) {
+            return extensions(List.of(extensions));
         }
 
         public Builder fallbackToOnDemand(Output<Boolean> fallbackToOnDemand) {

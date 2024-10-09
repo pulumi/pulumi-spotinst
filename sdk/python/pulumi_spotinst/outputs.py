@@ -12,6 +12,8 @@ from . import outputs
 
 __all__ = [
     'DataIntegrationS3',
+    'ElastigroupAzureV3Extension',
+    'ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVault',
     'ElastigroupAzureV3Image',
     'ElastigroupAzureV3ImageCustom',
     'ElastigroupAzureV3ImageGalleryImage',
@@ -125,6 +127,143 @@ class DataIntegrationS3(dict):
         The subdirectory in which your files will be stored within the bucket. Adds the prefix subdir/ to new objects' keys. Can't be null or contain '/'.
         """
         return pulumi.get(self, "subdir")
+
+
+@pulumi.output_type
+class ElastigroupAzureV3Extension(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "apiVersion":
+            suggest = "api_version"
+        elif key == "minorVersionAutoUpgrade":
+            suggest = "minor_version_auto_upgrade"
+        elif key == "enableAutomaticUpgrade":
+            suggest = "enable_automatic_upgrade"
+        elif key == "protectedSettings":
+            suggest = "protected_settings"
+        elif key == "protectedSettingsFromKeyVault":
+            suggest = "protected_settings_from_key_vault"
+        elif key == "publicSettings":
+            suggest = "public_settings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupAzureV3Extension. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupAzureV3Extension.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupAzureV3Extension.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 api_version: str,
+                 minor_version_auto_upgrade: bool,
+                 name: str,
+                 publisher: str,
+                 type: str,
+                 enable_automatic_upgrade: Optional[bool] = None,
+                 protected_settings: Optional[Mapping[str, str]] = None,
+                 protected_settings_from_key_vault: Optional['outputs.ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVault'] = None,
+                 public_settings: Optional[Mapping[str, str]] = None):
+        pulumi.set(__self__, "api_version", api_version)
+        pulumi.set(__self__, "minor_version_auto_upgrade", minor_version_auto_upgrade)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "publisher", publisher)
+        pulumi.set(__self__, "type", type)
+        if enable_automatic_upgrade is not None:
+            pulumi.set(__self__, "enable_automatic_upgrade", enable_automatic_upgrade)
+        if protected_settings is not None:
+            pulumi.set(__self__, "protected_settings", protected_settings)
+        if protected_settings_from_key_vault is not None:
+            pulumi.set(__self__, "protected_settings_from_key_vault", protected_settings_from_key_vault)
+        if public_settings is not None:
+            pulumi.set(__self__, "public_settings", public_settings)
+
+    @property
+    @pulumi.getter(name="apiVersion")
+    def api_version(self) -> str:
+        return pulumi.get(self, "api_version")
+
+    @property
+    @pulumi.getter(name="minorVersionAutoUpgrade")
+    def minor_version_auto_upgrade(self) -> bool:
+        return pulumi.get(self, "minor_version_auto_upgrade")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def publisher(self) -> str:
+        return pulumi.get(self, "publisher")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="enableAutomaticUpgrade")
+    def enable_automatic_upgrade(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_automatic_upgrade")
+
+    @property
+    @pulumi.getter(name="protectedSettings")
+    def protected_settings(self) -> Optional[Mapping[str, str]]:
+        return pulumi.get(self, "protected_settings")
+
+    @property
+    @pulumi.getter(name="protectedSettingsFromKeyVault")
+    def protected_settings_from_key_vault(self) -> Optional['outputs.ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVault']:
+        return pulumi.get(self, "protected_settings_from_key_vault")
+
+    @property
+    @pulumi.getter(name="publicSettings")
+    def public_settings(self) -> Optional[Mapping[str, str]]:
+        return pulumi.get(self, "public_settings")
+
+
+@pulumi.output_type
+class ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVault(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "secretUrl":
+            suggest = "secret_url"
+        elif key == "sourceVault":
+            suggest = "source_vault"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVault. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVault.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVault.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 secret_url: str,
+                 source_vault: str):
+        pulumi.set(__self__, "secret_url", secret_url)
+        pulumi.set(__self__, "source_vault", source_vault)
+
+    @property
+    @pulumi.getter(name="secretUrl")
+    def secret_url(self) -> str:
+        return pulumi.get(self, "secret_url")
+
+    @property
+    @pulumi.getter(name="sourceVault")
+    def source_vault(self) -> str:
+        return pulumi.get(self, "source_vault")
 
 
 @pulumi.output_type
