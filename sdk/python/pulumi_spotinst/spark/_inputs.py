@@ -4,22 +4,51 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'OceanComputeArgs',
+    'OceanComputeArgsDict',
     'OceanIngressArgs',
+    'OceanIngressArgsDict',
     'OceanIngressControllerArgs',
+    'OceanIngressControllerArgsDict',
     'OceanIngressCustomEndpointArgs',
+    'OceanIngressCustomEndpointArgsDict',
     'OceanIngressLoadBalancerArgs',
+    'OceanIngressLoadBalancerArgsDict',
     'OceanIngressPrivateLinkArgs',
+    'OceanIngressPrivateLinkArgsDict',
     'OceanLogCollectionArgs',
+    'OceanLogCollectionArgsDict',
     'OceanSparkArgs',
+    'OceanSparkArgsDict',
     'OceanWebhookArgs',
+    'OceanWebhookArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class OceanComputeArgsDict(TypedDict):
+        create_vngs: NotRequired[pulumi.Input[bool]]
+        """
+        - Enable/disable the creation of Ocean Spark VNGs during cluster creation.
+        """
+        use_taints: NotRequired[pulumi.Input[bool]]
+        """
+        - Enable/disable Ocean Spark taints on the Ocean Spark VNGs. By default, Ocean Spark uses taints to prevent non-Spark workloads from running on Ocean Spark VNGs.
+        """
+elif False:
+    OceanComputeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanComputeArgs:
@@ -59,6 +88,19 @@ class OceanComputeArgs:
     def use_taints(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "use_taints", value)
 
+
+if not MYPY:
+    class OceanIngressArgsDict(TypedDict):
+        controller: NotRequired[pulumi.Input['OceanIngressControllerArgsDict']]
+        custom_endpoint: NotRequired[pulumi.Input['OceanIngressCustomEndpointArgsDict']]
+        load_balancer: NotRequired[pulumi.Input['OceanIngressLoadBalancerArgsDict']]
+        private_link: NotRequired[pulumi.Input['OceanIngressPrivateLinkArgsDict']]
+        service_annotations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        - **DEPRECATED**: Use `load_balancer.service_annotations` instead.
+        """
+elif False:
+    OceanIngressArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanIngressArgs:
@@ -131,6 +173,15 @@ class OceanIngressArgs:
         pulumi.set(self, "service_annotations", value)
 
 
+if not MYPY:
+    class OceanIngressControllerArgsDict(TypedDict):
+        managed: NotRequired[pulumi.Input[bool]]
+        """
+        - Should an ingress controller managed by Ocean for Apache Spark be installed on the cluster.
+        """
+elif False:
+    OceanIngressControllerArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanIngressControllerArgs:
     def __init__(__self__, *,
@@ -153,6 +204,19 @@ class OceanIngressControllerArgs:
     def managed(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "managed", value)
 
+
+if not MYPY:
+    class OceanIngressCustomEndpointArgsDict(TypedDict):
+        address: NotRequired[pulumi.Input[str]]
+        """
+        - The address the Ocean for Apache Spark control plane will use when addressing the cluster.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        - Should the Ocean for Apache Spark control plane address the cluster using a custom endpoint. Use this to specify the DNS address of an externally provisioned (unmanaged) load balancer.
+        """
+elif False:
+    OceanIngressCustomEndpointArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanIngressCustomEndpointArgs:
@@ -192,6 +256,23 @@ class OceanIngressCustomEndpointArgs:
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
 
+
+if not MYPY:
+    class OceanIngressLoadBalancerArgsDict(TypedDict):
+        managed: NotRequired[pulumi.Input[bool]]
+        """
+        - Should a load balancer managed by Ocean for Apache Spark be provisioned for the cluster. Set this to false if you want to use an existing load balancer (only available on AWS).
+        """
+        service_annotations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        - Annotations to add to the ingress controller load balancer service. This is useful to configure properties of the managed load balancer, like the nature of the load balancer (e.g. ELB, NLB, ALB on AWS), the security groups, or various timeouts.
+        """
+        target_group_arn: NotRequired[pulumi.Input[str]]
+        """
+        - The ARN of a target group that the Ocean for Apache Spark ingress controller will be bound to. Set this to use an existing load balancer with Ocean for Apache Spark. Has no effect if using a managed load balancer. Only available on AWS.
+        """
+elif False:
+    OceanIngressLoadBalancerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanIngressLoadBalancerArgs:
@@ -248,6 +329,19 @@ class OceanIngressLoadBalancerArgs:
         pulumi.set(self, "target_group_arn", value)
 
 
+if not MYPY:
+    class OceanIngressPrivateLinkArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        - Should the Ocean for Apache Spark control plane address the cluster via an AWS Private Link. Only available on AWS.
+        """
+        vpc_endpoint_service: NotRequired[pulumi.Input[str]]
+        """
+        - The name of the VPC Endpoint Service the Ocean for Apache Spark control plane should bind to.
+        """
+elif False:
+    OceanIngressPrivateLinkArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanIngressPrivateLinkArgs:
     def __init__(__self__, *,
@@ -287,6 +381,15 @@ class OceanIngressPrivateLinkArgs:
         pulumi.set(self, "vpc_endpoint_service", value)
 
 
+if not MYPY:
+    class OceanLogCollectionArgsDict(TypedDict):
+        collect_app_logs: NotRequired[pulumi.Input[bool]]
+        """
+        - Enable/Disable collecting driver and executor logs. When enabled, logs are stored by NetApp and can be downloaded from the Spot console web interface. The logs are deleted after 30 days.
+        """
+elif False:
+    OceanLogCollectionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanLogCollectionArgs:
     def __init__(__self__, *,
@@ -310,6 +413,15 @@ class OceanLogCollectionArgs:
         pulumi.set(self, "collect_app_logs", value)
 
 
+if not MYPY:
+    class OceanSparkArgsDict(TypedDict):
+        additional_app_namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        - List of Kubernetes namespaces that should be configured to run Spark applications, in addition to the default Spark application namespace `spark-apps`.
+        """
+elif False:
+    OceanSparkArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanSparkArgs:
     def __init__(__self__, *,
@@ -332,6 +444,19 @@ class OceanSparkArgs:
     def additional_app_namespaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "additional_app_namespaces", value)
 
+
+if not MYPY:
+    class OceanWebhookArgsDict(TypedDict):
+        host_network_ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
+        """
+        - List of ports allowed to use on the host network - if empty default is `25554`.
+        """
+        use_host_network: NotRequired[pulumi.Input[bool]]
+        """
+        - Enable/disable host networking for the Spark Operator. Host networking can be useful when using custom CNI plugins like Calico on EKS.
+        """
+elif False:
+    OceanWebhookArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanWebhookArgs:

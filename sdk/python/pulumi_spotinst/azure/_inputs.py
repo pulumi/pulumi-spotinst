@@ -4,38 +4,91 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'OceanNpAutoscalerArgs',
+    'OceanNpAutoscalerArgsDict',
     'OceanNpAutoscalerAutoscaleDownArgs',
+    'OceanNpAutoscalerAutoscaleDownArgsDict',
     'OceanNpAutoscalerAutoscaleHeadroomArgs',
+    'OceanNpAutoscalerAutoscaleHeadroomArgsDict',
     'OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs',
+    'OceanNpAutoscalerAutoscaleHeadroomAutomaticArgsDict',
     'OceanNpAutoscalerResourceLimitsArgs',
+    'OceanNpAutoscalerResourceLimitsArgsDict',
     'OceanNpFiltersArgs',
+    'OceanNpFiltersArgsDict',
     'OceanNpHeadroomArgs',
+    'OceanNpHeadroomArgsDict',
     'OceanNpHealthArgs',
+    'OceanNpHealthArgsDict',
     'OceanNpLinuxOsConfigArgs',
+    'OceanNpLinuxOsConfigArgsDict',
     'OceanNpLinuxOsConfigSysctlArgs',
+    'OceanNpLinuxOsConfigSysctlArgsDict',
     'OceanNpSchedulingArgs',
+    'OceanNpSchedulingArgsDict',
     'OceanNpSchedulingShutdownHoursArgs',
+    'OceanNpSchedulingShutdownHoursArgsDict',
     'OceanNpSchedulingTaskArgs',
+    'OceanNpSchedulingTaskArgsDict',
     'OceanNpSchedulingTaskParametersArgs',
+    'OceanNpSchedulingTaskParametersArgsDict',
     'OceanNpSchedulingTaskParametersParametersClusterRollArgs',
+    'OceanNpSchedulingTaskParametersParametersClusterRollArgsDict',
     'OceanNpTaintArgs',
+    'OceanNpTaintArgsDict',
     'OceanNpUpdatePolicyArgs',
+    'OceanNpUpdatePolicyArgsDict',
     'OceanNpUpdatePolicyRollConfigArgs',
+    'OceanNpUpdatePolicyRollConfigArgsDict',
     'OceanNpVirtualNodeGroupFiltersArgs',
+    'OceanNpVirtualNodeGroupFiltersArgsDict',
     'OceanNpVirtualNodeGroupHeadroomArgs',
+    'OceanNpVirtualNodeGroupHeadroomArgsDict',
     'OceanNpVirtualNodeGroupLinuxOsConfigArgs',
+    'OceanNpVirtualNodeGroupLinuxOsConfigArgsDict',
     'OceanNpVirtualNodeGroupLinuxOsConfigSysctlArgs',
+    'OceanNpVirtualNodeGroupLinuxOsConfigSysctlArgsDict',
     'OceanNpVirtualNodeGroupTaintArgs',
+    'OceanNpVirtualNodeGroupTaintArgsDict',
     'OceanNpVirtualNodeGroupUpdatePolicyArgs',
+    'OceanNpVirtualNodeGroupUpdatePolicyArgsDict',
     'OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs',
+    'OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class OceanNpAutoscalerArgsDict(TypedDict):
+        autoscale_down: NotRequired[pulumi.Input['OceanNpAutoscalerAutoscaleDownArgsDict']]
+        """
+        Auto Scaling scale down operations.
+        """
+        autoscale_headroom: NotRequired[pulumi.Input['OceanNpAutoscalerAutoscaleHeadroomArgsDict']]
+        """
+        Spare resource capacity management enabling fast assignment of pods without waiting for new resources to launch.
+        """
+        autoscale_is_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable the Ocean Kubernetes Autoscaler.
+        """
+        resource_limits: NotRequired[pulumi.Input['OceanNpAutoscalerResourceLimitsArgsDict']]
+        """
+        Optionally set upper and lower bounds on the resource usage of the cluster.
+        """
+elif False:
+    OceanNpAutoscalerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanNpAutoscalerArgs:
@@ -108,6 +161,15 @@ class OceanNpAutoscalerArgs:
         pulumi.set(self, "resource_limits", value)
 
 
+if not MYPY:
+    class OceanNpAutoscalerAutoscaleDownArgsDict(TypedDict):
+        max_scale_down_percentage: NotRequired[pulumi.Input[int]]
+        """
+        The maximum percentage allowed to scale down in a single scaling action.
+        """
+elif False:
+    OceanNpAutoscalerAutoscaleDownArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanNpAutoscalerAutoscaleDownArgs:
     def __init__(__self__, *,
@@ -131,6 +193,15 @@ class OceanNpAutoscalerAutoscaleDownArgs:
         pulumi.set(self, "max_scale_down_percentage", value)
 
 
+if not MYPY:
+    class OceanNpAutoscalerAutoscaleHeadroomArgsDict(TypedDict):
+        automatic: NotRequired[pulumi.Input['OceanNpAutoscalerAutoscaleHeadroomAutomaticArgsDict']]
+        """
+        [Automatic headroom](https://docs.spot.io/ocean/features/headroom?id=automatic-headroom) configuration.
+        """
+elif False:
+    OceanNpAutoscalerAutoscaleHeadroomArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanNpAutoscalerAutoscaleHeadroomArgs:
     def __init__(__self__, *,
@@ -153,6 +224,19 @@ class OceanNpAutoscalerAutoscaleHeadroomArgs:
     def automatic(self, value: Optional[pulumi.Input['OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs']]):
         pulumi.set(self, "automatic", value)
 
+
+if not MYPY:
+    class OceanNpAutoscalerAutoscaleHeadroomAutomaticArgsDict(TypedDict):
+        is_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
+        """
+        percentage: NotRequired[pulumi.Input[int]]
+        """
+        Optionally set a number between 0-100 to control the percentage of total cluster resources dedicated to headroom.
+        """
+elif False:
+    OceanNpAutoscalerAutoscaleHeadroomAutomaticArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs:
@@ -193,6 +277,19 @@ class OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs:
         pulumi.set(self, "percentage", value)
 
 
+if not MYPY:
+    class OceanNpAutoscalerResourceLimitsArgsDict(TypedDict):
+        max_memory_gib: NotRequired[pulumi.Input[int]]
+        """
+        The maximum memory in GiB units that can be allocated to the cluster.
+        """
+        max_vcpu: NotRequired[pulumi.Input[int]]
+        """
+        The maximum cpu in vCpu units that can be allocated to the cluster.
+        """
+elif False:
+    OceanNpAutoscalerResourceLimitsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanNpAutoscalerResourceLimitsArgs:
     def __init__(__self__, *,
@@ -231,6 +328,71 @@ class OceanNpAutoscalerResourceLimitsArgs:
     def max_vcpu(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_vcpu", value)
 
+
+if not MYPY:
+    class OceanNpFiltersArgsDict(TypedDict):
+        accelerated_networking: NotRequired[pulumi.Input[str]]
+        """
+        In case acceleratedNetworking is set to Enabled, accelerated networking applies only to the VM that enables it.
+        """
+        architectures: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The filtered vm sizes will support at least one of the architectures from this list. x86_64 includes both intel64 and amd64.
+        """
+        disk_performance: NotRequired[pulumi.Input[str]]
+        """
+        The filtered vm sizes will support at least one of the classes from this list.
+        """
+        exclude_series: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Vm sizes belonging to a series from the list will not be available for scaling
+        """
+        gpu_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The filtered gpu types will belong to one of the gpu types from this list.
+        """
+        max_gpu: NotRequired[pulumi.Input[float]]
+        """
+        Maximum number of GPUs available.
+        """
+        max_memory_gib: NotRequired[pulumi.Input[float]]
+        """
+        Maximum amount of Memory (GiB).
+        """
+        max_vcpu: NotRequired[pulumi.Input[int]]
+        """
+        Maximum number of vcpus available.
+        """
+        min_disk: NotRequired[pulumi.Input[int]]
+        """
+        Minimum number of data disks available.
+        """
+        min_gpu: NotRequired[pulumi.Input[float]]
+        """
+        Minimum number of GPUs available.
+        """
+        min_memory_gib: NotRequired[pulumi.Input[float]]
+        """
+        Minimum amount of Memory (GiB).
+        """
+        min_nics: NotRequired[pulumi.Input[int]]
+        """
+        Minimum number of network interfaces.
+        """
+        min_vcpu: NotRequired[pulumi.Input[int]]
+        """
+        Minimum number of vcpus available.
+        """
+        series: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Vm sizes belonging to a series from the list will be available for scaling. We can specify include list and series can be specified with capital or small letters, with space, without space or with underscore '_' .  For example all of these "DSv2", "Ds v2", "ds_v2" refer to same DS_v2 series.
+        """
+        vm_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The filtered vm types will belong to one of the vm types from this list.
+        """
+elif False:
+    OceanNpFiltersArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanNpFiltersArgs:
@@ -479,6 +641,27 @@ class OceanNpFiltersArgs:
         pulumi.set(self, "vm_types", value)
 
 
+if not MYPY:
+    class OceanNpHeadroomArgsDict(TypedDict):
+        cpu_per_unit: NotRequired[pulumi.Input[int]]
+        """
+        Configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        """
+        gpu_per_unit: NotRequired[pulumi.Input[int]]
+        """
+        Amount of GPU to allocate for headroom unit.
+        """
+        memory_per_unit: NotRequired[pulumi.Input[int]]
+        """
+        Configure the amount of memory (MiB) to allocate the headroom.
+        """
+        num_of_units: NotRequired[pulumi.Input[int]]
+        """
+        The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+        """
+elif False:
+    OceanNpHeadroomArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanNpHeadroomArgs:
     def __init__(__self__, *,
@@ -550,6 +733,15 @@ class OceanNpHeadroomArgs:
         pulumi.set(self, "num_of_units", value)
 
 
+if not MYPY:
+    class OceanNpHealthArgsDict(TypedDict):
+        grace_period: NotRequired[pulumi.Input[int]]
+        """
+        The amount of time to wait, in seconds, from the moment the instance has launched until monitoring of its health checks begins.
+        """
+elif False:
+    OceanNpHealthArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanNpHealthArgs:
     def __init__(__self__, *,
@@ -572,6 +764,15 @@ class OceanNpHealthArgs:
     def grace_period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "grace_period", value)
 
+
+if not MYPY:
+    class OceanNpLinuxOsConfigArgsDict(TypedDict):
+        sysctls: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanNpLinuxOsConfigSysctlArgsDict']]]]
+        """
+        System Controls
+        """
+elif False:
+    OceanNpLinuxOsConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanNpLinuxOsConfigArgs:
@@ -596,6 +797,15 @@ class OceanNpLinuxOsConfigArgs:
         pulumi.set(self, "sysctls", value)
 
 
+if not MYPY:
+    class OceanNpLinuxOsConfigSysctlArgsDict(TypedDict):
+        vm_max_map_count: NotRequired[pulumi.Input[int]]
+        """
+        Maximum number of memory map areas a process may have. Can be configured only if OS type is Linux.
+        """
+elif False:
+    OceanNpLinuxOsConfigSysctlArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanNpLinuxOsConfigSysctlArgs:
     def __init__(__self__, *,
@@ -618,6 +828,13 @@ class OceanNpLinuxOsConfigSysctlArgs:
     def vm_max_map_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "vm_max_map_count", value)
 
+
+if not MYPY:
+    class OceanNpSchedulingArgsDict(TypedDict):
+        shutdown_hours: NotRequired[pulumi.Input['OceanNpSchedulingShutdownHoursArgsDict']]
+        tasks: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanNpSchedulingTaskArgsDict']]]]
+elif False:
+    OceanNpSchedulingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanNpSchedulingArgs:
@@ -647,6 +864,16 @@ class OceanNpSchedulingArgs:
     def tasks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpSchedulingTaskArgs']]]]):
         pulumi.set(self, "tasks", value)
 
+
+if not MYPY:
+    class OceanNpSchedulingShutdownHoursArgsDict(TypedDict):
+        is_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
+        """
+        time_windows: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+elif False:
+    OceanNpSchedulingShutdownHoursArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanNpSchedulingShutdownHoursArgs:
@@ -682,6 +909,18 @@ class OceanNpSchedulingShutdownHoursArgs:
     def time_windows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "time_windows", value)
 
+
+if not MYPY:
+    class OceanNpSchedulingTaskArgsDict(TypedDict):
+        cron_expression: pulumi.Input[str]
+        is_enabled: pulumi.Input[bool]
+        """
+        Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
+        """
+        task_type: pulumi.Input[str]
+        parameters: NotRequired[pulumi.Input['OceanNpSchedulingTaskParametersArgsDict']]
+elif False:
+    OceanNpSchedulingTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanNpSchedulingTaskArgs:
@@ -739,6 +978,12 @@ class OceanNpSchedulingTaskArgs:
         pulumi.set(self, "parameters", value)
 
 
+if not MYPY:
+    class OceanNpSchedulingTaskParametersArgsDict(TypedDict):
+        parameters_cluster_roll: NotRequired[pulumi.Input['OceanNpSchedulingTaskParametersParametersClusterRollArgsDict']]
+elif False:
+    OceanNpSchedulingTaskParametersArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanNpSchedulingTaskParametersArgs:
     def __init__(__self__, *,
@@ -755,6 +1000,35 @@ class OceanNpSchedulingTaskParametersArgs:
     def parameters_cluster_roll(self, value: Optional[pulumi.Input['OceanNpSchedulingTaskParametersParametersClusterRollArgs']]):
         pulumi.set(self, "parameters_cluster_roll", value)
 
+
+if not MYPY:
+    class OceanNpSchedulingTaskParametersParametersClusterRollArgsDict(TypedDict):
+        batch_min_healthy_percentage: NotRequired[pulumi.Input[int]]
+        """
+        Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+        """
+        batch_size_percentage: NotRequired[pulumi.Input[int]]
+        """
+        Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.
+        """
+        comment: NotRequired[pulumi.Input[str]]
+        """
+        Add a comment description for the roll. The comment is limited to 256 chars and optional.
+        """
+        respect_pdb: NotRequired[pulumi.Input[bool]]
+        """
+        During the roll, if the parameter is set to true we honor PDB during the nodes replacement.
+        """
+        respect_restrict_scale_down: NotRequired[pulumi.Input[bool]]
+        """
+        During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.
+        """
+        vng_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of virtual node group identifiers to be rolled. Each identifier is a string. vngIds can be null, and cannot be used together with nodeNames and nodePoolNames.
+        """
+elif False:
+    OceanNpSchedulingTaskParametersParametersClusterRollArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanNpSchedulingTaskParametersParametersClusterRollArgs:
@@ -859,6 +1133,23 @@ class OceanNpSchedulingTaskParametersParametersClusterRollArgs:
         pulumi.set(self, "vng_ids", value)
 
 
+if not MYPY:
+    class OceanNpTaintArgsDict(TypedDict):
+        effect: pulumi.Input[str]
+        """
+        Set taint effect.
+        """
+        key: pulumi.Input[str]
+        """
+        Set taint key. The following taint keys are not allowed: ["node.kubernetes.io/not-ready",  "node.kubernetes.io/unreachable", "node.kubernetes.io/unschedulable",  "node.kubernetes.io/memory-pressure",  "node.kubernetes.io/disk-pressure",  "node.kubernetes.io/network-unavailable",  "node.kubernetes.io/pid-pressure",  "node.kubernetes.io/out-of-service",  "node.cloudprovider.kubernetes.io/uninitialized",  "node.cloudprovider.kubernetes.io/shutdown", "kubernetes.azure.com/scalesetpriority"]
+        """
+        value: pulumi.Input[str]
+        """
+        Set taint value.
+        """
+elif False:
+    OceanNpTaintArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanNpTaintArgs:
     def __init__(__self__, *,
@@ -910,6 +1201,23 @@ class OceanNpTaintArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class OceanNpUpdatePolicyArgsDict(TypedDict):
+        should_roll: pulumi.Input[bool]
+        """
+        If set to true along with the cluster update, roll will be triggered.
+        """
+        conditioned_roll: NotRequired[pulumi.Input[bool]]
+        """
+        Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as availability_zones, max_pods_per_node, enable_node_public_ip, os_disk_size_gb, os_disk_type, os_sku, kubernetes_version, vnet_subnet_ids, pod_subnet_ids, labels, taints and tags).
+        """
+        roll_config: NotRequired[pulumi.Input['OceanNpUpdatePolicyRollConfigArgsDict']]
+        """
+        While used, you can control whether the group should perform a deployment after an update to the configuration.
+        """
+elif False:
+    OceanNpUpdatePolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanNpUpdatePolicyArgs:
@@ -964,6 +1272,43 @@ class OceanNpUpdatePolicyArgs:
     def roll_config(self, value: Optional[pulumi.Input['OceanNpUpdatePolicyRollConfigArgs']]):
         pulumi.set(self, "roll_config", value)
 
+
+if not MYPY:
+    class OceanNpUpdatePolicyRollConfigArgsDict(TypedDict):
+        batch_min_healthy_percentage: NotRequired[pulumi.Input[int]]
+        """
+        Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+        """
+        batch_size_percentage: NotRequired[pulumi.Input[int]]
+        """
+        Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.
+        """
+        comment: NotRequired[pulumi.Input[str]]
+        """
+        Add a comment description for the roll. The comment is limited to 256 chars and optional.
+        """
+        node_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of node names to be rolled. Each identifier is a string. nodeNames can be null, and cannot be used together with nodePoolNames and vngIds.
+        """
+        node_pool_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of node pools to be rolled. Each node pool name is a string. nodePoolNames can be null, and cannot be used together with nodeNames and vngIds.
+        """
+        respect_pdb: NotRequired[pulumi.Input[bool]]
+        """
+        During the roll, if the parameter is set to true we honor PDB during the nodes replacement.
+        """
+        respect_restrict_scale_down: NotRequired[pulumi.Input[bool]]
+        """
+        During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.
+        """
+        vng_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of virtual node group identifiers to be rolled. Each identifier is a string. vngIds can be null, and cannot be used together with nodeNames and nodePoolNames.
+        """
+elif False:
+    OceanNpUpdatePolicyRollConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanNpUpdatePolicyRollConfigArgs:
@@ -1099,6 +1444,71 @@ class OceanNpUpdatePolicyRollConfigArgs:
     def vng_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "vng_ids", value)
 
+
+if not MYPY:
+    class OceanNpVirtualNodeGroupFiltersArgsDict(TypedDict):
+        accelerated_networking: NotRequired[pulumi.Input[str]]
+        """
+        In case acceleratedNetworking is set to Enabled, accelerated networking applies only to the VM that enables it.
+        """
+        architectures: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The filtered vm sizes will support at least one of the architectures from this list. x86_64 includes both intel64 and amd64.
+        """
+        disk_performance: NotRequired[pulumi.Input[str]]
+        """
+        The filtered vm sizes will support at least one of the classes from this list.
+        """
+        exclude_series: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Vm sizes belonging to a series from the list will not be available for scaling.
+        """
+        gpu_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The filtered gpu types will belong to one of the gpu types from this list.
+        """
+        max_gpu: NotRequired[pulumi.Input[float]]
+        """
+        Maximum number of GPUs available.
+        """
+        max_memory_gib: NotRequired[pulumi.Input[float]]
+        """
+        Maximum amount of Memory (GiB).
+        """
+        max_vcpu: NotRequired[pulumi.Input[int]]
+        """
+        Maximum number of vcpus available.
+        """
+        min_disk: NotRequired[pulumi.Input[int]]
+        """
+        Minimum number of data disks available.
+        """
+        min_gpu: NotRequired[pulumi.Input[float]]
+        """
+        Minimum number of GPUs available.
+        """
+        min_memory_gib: NotRequired[pulumi.Input[float]]
+        """
+        Minimum amount of Memory (GiB).
+        """
+        min_nics: NotRequired[pulumi.Input[int]]
+        """
+        Minimum number of network interfaces.
+        """
+        min_vcpu: NotRequired[pulumi.Input[int]]
+        """
+        Minimum number of vcpus available.
+        """
+        series: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Vm sizes belonging to a series from the list will be available for scaling.
+        """
+        vm_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The filtered vm types will belong to one of the vm types from this list.
+        """
+elif False:
+    OceanNpVirtualNodeGroupFiltersArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanNpVirtualNodeGroupFiltersArgs:
@@ -1347,6 +1757,27 @@ class OceanNpVirtualNodeGroupFiltersArgs:
         pulumi.set(self, "vm_types", value)
 
 
+if not MYPY:
+    class OceanNpVirtualNodeGroupHeadroomArgsDict(TypedDict):
+        cpu_per_unit: NotRequired[pulumi.Input[int]]
+        """
+        Configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        """
+        gpu_per_unit: NotRequired[pulumi.Input[int]]
+        """
+        Amount of GPU to allocate for headroom unit.
+        """
+        memory_per_unit: NotRequired[pulumi.Input[int]]
+        """
+        Configure the amount of memory (MiB) to allocate the headroom.
+        """
+        num_of_units: NotRequired[pulumi.Input[int]]
+        """
+        The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+        """
+elif False:
+    OceanNpVirtualNodeGroupHeadroomArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanNpVirtualNodeGroupHeadroomArgs:
     def __init__(__self__, *,
@@ -1418,6 +1849,15 @@ class OceanNpVirtualNodeGroupHeadroomArgs:
         pulumi.set(self, "num_of_units", value)
 
 
+if not MYPY:
+    class OceanNpVirtualNodeGroupLinuxOsConfigArgsDict(TypedDict):
+        sysctls: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLinuxOsConfigSysctlArgsDict']]]]
+        """
+        System Controls
+        """
+elif False:
+    OceanNpVirtualNodeGroupLinuxOsConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanNpVirtualNodeGroupLinuxOsConfigArgs:
     def __init__(__self__, *,
@@ -1441,6 +1881,15 @@ class OceanNpVirtualNodeGroupLinuxOsConfigArgs:
         pulumi.set(self, "sysctls", value)
 
 
+if not MYPY:
+    class OceanNpVirtualNodeGroupLinuxOsConfigSysctlArgsDict(TypedDict):
+        vm_max_map_count: NotRequired[pulumi.Input[int]]
+        """
+        Maximum number of memory map areas a process may have. Can be configured only if OS type is Linux.
+        """
+elif False:
+    OceanNpVirtualNodeGroupLinuxOsConfigSysctlArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanNpVirtualNodeGroupLinuxOsConfigSysctlArgs:
     def __init__(__self__, *,
@@ -1463,6 +1912,23 @@ class OceanNpVirtualNodeGroupLinuxOsConfigSysctlArgs:
     def vm_max_map_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "vm_max_map_count", value)
 
+
+if not MYPY:
+    class OceanNpVirtualNodeGroupTaintArgsDict(TypedDict):
+        effect: pulumi.Input[str]
+        """
+        Set taint effect.
+        """
+        key: pulumi.Input[str]
+        """
+        Set taint key. The following are not allowed: "kubernetes.azure.com/scalesetpriority".
+        """
+        value: pulumi.Input[str]
+        """
+        Set taint value.
+        """
+elif False:
+    OceanNpVirtualNodeGroupTaintArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanNpVirtualNodeGroupTaintArgs:
@@ -1515,6 +1981,23 @@ class OceanNpVirtualNodeGroupTaintArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class OceanNpVirtualNodeGroupUpdatePolicyArgsDict(TypedDict):
+        should_roll: pulumi.Input[bool]
+        """
+        If set to true along with the vng update, roll will be triggered.
+        """
+        conditioned_roll: NotRequired[pulumi.Input[bool]]
+        """
+        Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as availability_zones, max_pods_per_node, enable_node_public_ip, os_disk_size_gb, os_disk_type, os_sku, kubernetes_version, vnet_subnet_ids, pod_subnet_ids, labels, taints and tags).
+        """
+        roll_config: NotRequired[pulumi.Input['OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgsDict']]
+        """
+        While used, you can control whether the group should perform a deployment after an update to the configuration.
+        """
+elif False:
+    OceanNpVirtualNodeGroupUpdatePolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanNpVirtualNodeGroupUpdatePolicyArgs:
@@ -1569,6 +2052,43 @@ class OceanNpVirtualNodeGroupUpdatePolicyArgs:
     def roll_config(self, value: Optional[pulumi.Input['OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs']]):
         pulumi.set(self, "roll_config", value)
 
+
+if not MYPY:
+    class OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgsDict(TypedDict):
+        batch_min_healthy_percentage: NotRequired[pulumi.Input[int]]
+        """
+        Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+        """
+        batch_size_percentage: NotRequired[pulumi.Input[int]]
+        """
+        Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.
+        """
+        comment: NotRequired[pulumi.Input[str]]
+        """
+        Add a comment description for the roll. The comment is limited to 256 chars and optional.
+        """
+        node_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of node names to be rolled. Each identifier is a string. nodeNames can be null, and cannot be used together with nodePoolNames and vngIds.
+        """
+        node_pool_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of node pools to be rolled. Each node pool name is a string. nodePoolNames can be null, and cannot be used together with nodeNames and vngIds.
+        """
+        respect_pdb: NotRequired[pulumi.Input[bool]]
+        """
+        During the roll, if the parameter is set to true we honor PDB during the nodes replacement.
+        """
+        respect_restrict_scale_down: NotRequired[pulumi.Input[bool]]
+        """
+        During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.
+        """
+        vng_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of virtual node group identifiers to be rolled. Each identifier is a string. vngIds can be null, and cannot be used together with nodeNames and nodePoolNames.
+        """
+elif False:
+    OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs:
