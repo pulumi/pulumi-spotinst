@@ -4,66 +4,135 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'ElastigroupBackendServiceArgs',
+    'ElastigroupBackendServiceArgsDict',
     'ElastigroupBackendServiceNamedPortArgs',
+    'ElastigroupBackendServiceNamedPortArgsDict',
     'ElastigroupDiskArgs',
+    'ElastigroupDiskArgsDict',
     'ElastigroupDiskInitializeParamArgs',
+    'ElastigroupDiskInitializeParamArgsDict',
     'ElastigroupGpuArgs',
+    'ElastigroupGpuArgsDict',
     'ElastigroupInstanceTypesCustomArgs',
+    'ElastigroupInstanceTypesCustomArgsDict',
     'ElastigroupIntegrationDockerSwarmArgs',
+    'ElastigroupIntegrationDockerSwarmArgsDict',
     'ElastigroupIntegrationGkeArgs',
+    'ElastigroupIntegrationGkeArgsDict',
     'ElastigroupIntegrationGkeAutoscaleDownArgs',
+    'ElastigroupIntegrationGkeAutoscaleDownArgsDict',
     'ElastigroupIntegrationGkeAutoscaleHeadroomArgs',
+    'ElastigroupIntegrationGkeAutoscaleHeadroomArgsDict',
     'ElastigroupIntegrationGkeAutoscaleLabelArgs',
+    'ElastigroupIntegrationGkeAutoscaleLabelArgsDict',
     'ElastigroupLabelArgs',
+    'ElastigroupLabelArgsDict',
     'ElastigroupMetadataArgs',
+    'ElastigroupMetadataArgsDict',
     'ElastigroupNetworkInterfaceArgs',
+    'ElastigroupNetworkInterfaceArgsDict',
     'ElastigroupNetworkInterfaceAccessConfigArgs',
+    'ElastigroupNetworkInterfaceAccessConfigArgsDict',
     'ElastigroupNetworkInterfaceAliasIpRangeArgs',
+    'ElastigroupNetworkInterfaceAliasIpRangeArgsDict',
     'ElastigroupRevertToPreemptibleArgs',
+    'ElastigroupRevertToPreemptibleArgsDict',
     'ElastigroupScalingDownPolicyArgs',
+    'ElastigroupScalingDownPolicyArgsDict',
     'ElastigroupScalingDownPolicyDimensionArgs',
+    'ElastigroupScalingDownPolicyDimensionArgsDict',
     'ElastigroupScalingUpPolicyArgs',
+    'ElastigroupScalingUpPolicyArgsDict',
     'ElastigroupScalingUpPolicyDimensionArgs',
+    'ElastigroupScalingUpPolicyDimensionArgsDict',
     'OceanImportAutoscalerArgs',
+    'OceanImportAutoscalerArgsDict',
     'OceanImportAutoscalerDownArgs',
+    'OceanImportAutoscalerDownArgsDict',
     'OceanImportAutoscalerHeadroomArgs',
+    'OceanImportAutoscalerHeadroomArgsDict',
     'OceanImportAutoscalerResourceLimitsArgs',
+    'OceanImportAutoscalerResourceLimitsArgsDict',
     'OceanImportBackendServiceArgs',
+    'OceanImportBackendServiceArgsDict',
     'OceanImportBackendServiceNamedPortArgs',
+    'OceanImportBackendServiceNamedPortArgsDict',
     'OceanImportScheduledTaskArgs',
+    'OceanImportScheduledTaskArgsDict',
     'OceanImportScheduledTaskShutdownHoursArgs',
+    'OceanImportScheduledTaskShutdownHoursArgsDict',
     'OceanImportScheduledTaskTaskArgs',
+    'OceanImportScheduledTaskTaskArgsDict',
     'OceanImportScheduledTaskTaskTaskParametersArgs',
+    'OceanImportScheduledTaskTaskTaskParametersArgsDict',
     'OceanImportScheduledTaskTaskTaskParametersClusterRollArgs',
+    'OceanImportScheduledTaskTaskTaskParametersClusterRollArgsDict',
     'OceanImportShieldedInstanceConfigArgs',
+    'OceanImportShieldedInstanceConfigArgsDict',
     'OceanImportStrategyArgs',
+    'OceanImportStrategyArgsDict',
     'OceanImportUpdatePolicyArgs',
+    'OceanImportUpdatePolicyArgsDict',
     'OceanImportUpdatePolicyRollConfigArgs',
+    'OceanImportUpdatePolicyRollConfigArgsDict',
     'OceanLaunchSpecAutoscaleHeadroomArgs',
+    'OceanLaunchSpecAutoscaleHeadroomArgsDict',
     'OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs',
+    'OceanLaunchSpecAutoscaleHeadroomsAutomaticArgsDict',
     'OceanLaunchSpecCreateOptionsArgs',
+    'OceanLaunchSpecCreateOptionsArgsDict',
     'OceanLaunchSpecLabelArgs',
+    'OceanLaunchSpecLabelArgsDict',
     'OceanLaunchSpecMetadataArgs',
+    'OceanLaunchSpecMetadataArgsDict',
     'OceanLaunchSpecNetworkInterfaceArgs',
+    'OceanLaunchSpecNetworkInterfaceArgsDict',
     'OceanLaunchSpecNetworkInterfaceAccessConfigArgs',
+    'OceanLaunchSpecNetworkInterfaceAccessConfigArgsDict',
     'OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs',
+    'OceanLaunchSpecNetworkInterfaceAliasIpRangeArgsDict',
     'OceanLaunchSpecResourceLimitsArgs',
+    'OceanLaunchSpecResourceLimitsArgsDict',
     'OceanLaunchSpecSchedulingTaskArgs',
+    'OceanLaunchSpecSchedulingTaskArgsDict',
     'OceanLaunchSpecSchedulingTaskTaskHeadroomArgs',
+    'OceanLaunchSpecSchedulingTaskTaskHeadroomArgsDict',
     'OceanLaunchSpecShieldedInstanceConfigArgs',
+    'OceanLaunchSpecShieldedInstanceConfigArgsDict',
     'OceanLaunchSpecStorageArgs',
+    'OceanLaunchSpecStorageArgsDict',
     'OceanLaunchSpecStrategyArgs',
+    'OceanLaunchSpecStrategyArgsDict',
     'OceanLaunchSpecTaintArgs',
+    'OceanLaunchSpecTaintArgsDict',
     'OceanLaunchSpecUpdatePolicyArgs',
+    'OceanLaunchSpecUpdatePolicyArgsDict',
     'OceanLaunchSpecUpdatePolicyRollConfigArgs',
+    'OceanLaunchSpecUpdatePolicyRollConfigArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class ElastigroupBackendServiceArgsDict(TypedDict):
+        service_name: pulumi.Input[str]
+        location_type: NotRequired[pulumi.Input[str]]
+        named_ports: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupBackendServiceNamedPortArgsDict']]]]
+        scheme: NotRequired[pulumi.Input[str]]
+elif False:
+    ElastigroupBackendServiceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupBackendServiceArgs:
@@ -117,6 +186,13 @@ class ElastigroupBackendServiceArgs:
         pulumi.set(self, "scheme", value)
 
 
+if not MYPY:
+    class ElastigroupBackendServiceNamedPortArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        ports: pulumi.Input[Sequence[pulumi.Input[str]]]
+elif False:
+    ElastigroupBackendServiceNamedPortArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupBackendServiceNamedPortArgs:
     def __init__(__self__, *,
@@ -143,6 +219,19 @@ class ElastigroupBackendServiceNamedPortArgs:
     def ports(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "ports", value)
 
+
+if not MYPY:
+    class ElastigroupDiskArgsDict(TypedDict):
+        auto_delete: NotRequired[pulumi.Input[bool]]
+        boot: NotRequired[pulumi.Input[bool]]
+        device_name: NotRequired[pulumi.Input[str]]
+        initialize_params: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupDiskInitializeParamArgsDict']]]]
+        interface: NotRequired[pulumi.Input[str]]
+        mode: NotRequired[pulumi.Input[str]]
+        source: NotRequired[pulumi.Input[str]]
+        type: NotRequired[pulumi.Input[str]]
+elif False:
+    ElastigroupDiskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupDiskArgs:
@@ -245,6 +334,14 @@ class ElastigroupDiskArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class ElastigroupDiskInitializeParamArgsDict(TypedDict):
+        source_image: pulumi.Input[str]
+        disk_size_gb: NotRequired[pulumi.Input[str]]
+        disk_type: NotRequired[pulumi.Input[str]]
+elif False:
+    ElastigroupDiskInitializeParamArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupDiskInitializeParamArgs:
     def __init__(__self__, *,
@@ -285,6 +382,13 @@ class ElastigroupDiskInitializeParamArgs:
         pulumi.set(self, "disk_type", value)
 
 
+if not MYPY:
+    class ElastigroupGpuArgsDict(TypedDict):
+        count: pulumi.Input[int]
+        type: pulumi.Input[str]
+elif False:
+    ElastigroupGpuArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupGpuArgs:
     def __init__(__self__, *,
@@ -311,6 +415,13 @@ class ElastigroupGpuArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class ElastigroupInstanceTypesCustomArgsDict(TypedDict):
+        memory_gib: pulumi.Input[int]
+        vcpu: pulumi.Input[int]
+elif False:
+    ElastigroupInstanceTypesCustomArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupInstanceTypesCustomArgs:
@@ -339,6 +450,13 @@ class ElastigroupInstanceTypesCustomArgs:
         pulumi.set(self, "vcpu", value)
 
 
+if not MYPY:
+    class ElastigroupIntegrationDockerSwarmArgsDict(TypedDict):
+        master_host: pulumi.Input[str]
+        master_port: pulumi.Input[int]
+elif False:
+    ElastigroupIntegrationDockerSwarmArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupIntegrationDockerSwarmArgs:
     def __init__(__self__, *,
@@ -365,6 +483,38 @@ class ElastigroupIntegrationDockerSwarmArgs:
     def master_port(self, value: pulumi.Input[int]):
         pulumi.set(self, "master_port", value)
 
+
+if not MYPY:
+    class ElastigroupIntegrationGkeArgsDict(TypedDict):
+        auto_update: NotRequired[pulumi.Input[bool]]
+        autoscale_cooldown: NotRequired[pulumi.Input[int]]
+        """
+        The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
+        """
+        autoscale_down: NotRequired[pulumi.Input['ElastigroupIntegrationGkeAutoscaleDownArgsDict']]
+        """
+        Enabling scale down.
+        """
+        autoscale_headroom: NotRequired[pulumi.Input['ElastigroupIntegrationGkeAutoscaleHeadroomArgsDict']]
+        """
+        Headroom for the cluster.
+        """
+        autoscale_is_auto_config: NotRequired[pulumi.Input[bool]]
+        autoscale_is_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Specifies whether the auto scaling feature is enabled.
+        """
+        autoscale_labels: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationGkeAutoscaleLabelArgsDict']]]]
+        """
+        Labels to assign to the resource.
+        """
+        cluster_id: NotRequired[pulumi.Input[str]]
+        location: NotRequired[pulumi.Input[str]]
+        """
+        The location of your GKE cluster.
+        """
+elif False:
+    ElastigroupIntegrationGkeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupIntegrationGkeArgs:
@@ -505,6 +655,15 @@ class ElastigroupIntegrationGkeArgs:
         pulumi.set(self, "location", value)
 
 
+if not MYPY:
+    class ElastigroupIntegrationGkeAutoscaleDownArgsDict(TypedDict):
+        evaluation_periods: NotRequired[pulumi.Input[int]]
+        """
+        Amount of cooldown evaluation periods for scale down.
+        """
+elif False:
+    ElastigroupIntegrationGkeAutoscaleDownArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupIntegrationGkeAutoscaleDownArgs:
     def __init__(__self__, *,
@@ -527,6 +686,23 @@ class ElastigroupIntegrationGkeAutoscaleDownArgs:
     def evaluation_periods(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "evaluation_periods", value)
 
+
+if not MYPY:
+    class ElastigroupIntegrationGkeAutoscaleHeadroomArgsDict(TypedDict):
+        cpu_per_unit: NotRequired[pulumi.Input[int]]
+        """
+        Cpu units for compute.
+        """
+        memory_per_unit: NotRequired[pulumi.Input[int]]
+        """
+        RAM units for compute.
+        """
+        num_of_units: NotRequired[pulumi.Input[int]]
+        """
+        Amount of units for compute.
+        """
+elif False:
+    ElastigroupIntegrationGkeAutoscaleHeadroomArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupIntegrationGkeAutoscaleHeadroomArgs:
@@ -583,6 +759,13 @@ class ElastigroupIntegrationGkeAutoscaleHeadroomArgs:
         pulumi.set(self, "num_of_units", value)
 
 
+if not MYPY:
+    class ElastigroupIntegrationGkeAutoscaleLabelArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        value: pulumi.Input[str]
+elif False:
+    ElastigroupIntegrationGkeAutoscaleLabelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupIntegrationGkeAutoscaleLabelArgs:
     def __init__(__self__, *,
@@ -609,6 +792,13 @@ class ElastigroupIntegrationGkeAutoscaleLabelArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class ElastigroupLabelArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        value: pulumi.Input[str]
+elif False:
+    ElastigroupLabelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupLabelArgs:
@@ -637,6 +827,13 @@ class ElastigroupLabelArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class ElastigroupMetadataArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        value: pulumi.Input[str]
+elif False:
+    ElastigroupMetadataArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupMetadataArgs:
     def __init__(__self__, *,
@@ -663,6 +860,14 @@ class ElastigroupMetadataArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class ElastigroupNetworkInterfaceArgsDict(TypedDict):
+        network: pulumi.Input[str]
+        access_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceAccessConfigArgsDict']]]]
+        alias_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceAliasIpRangeArgsDict']]]]
+elif False:
+    ElastigroupNetworkInterfaceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupNetworkInterfaceArgs:
@@ -704,6 +909,13 @@ class ElastigroupNetworkInterfaceArgs:
         pulumi.set(self, "alias_ip_ranges", value)
 
 
+if not MYPY:
+    class ElastigroupNetworkInterfaceAccessConfigArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        type: NotRequired[pulumi.Input[str]]
+elif False:
+    ElastigroupNetworkInterfaceAccessConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupNetworkInterfaceAccessConfigArgs:
     def __init__(__self__, *,
@@ -733,6 +945,13 @@ class ElastigroupNetworkInterfaceAccessConfigArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class ElastigroupNetworkInterfaceAliasIpRangeArgsDict(TypedDict):
+        ip_cidr_range: pulumi.Input[str]
+        subnetwork_range_name: pulumi.Input[str]
+elif False:
+    ElastigroupNetworkInterfaceAliasIpRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupNetworkInterfaceAliasIpRangeArgs:
     def __init__(__self__, *,
@@ -760,6 +979,12 @@ class ElastigroupNetworkInterfaceAliasIpRangeArgs:
         pulumi.set(self, "subnetwork_range_name", value)
 
 
+if not MYPY:
+    class ElastigroupRevertToPreemptibleArgsDict(TypedDict):
+        perform_at: pulumi.Input[str]
+elif False:
+    ElastigroupRevertToPreemptibleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupRevertToPreemptibleArgs:
     def __init__(__self__, *,
@@ -775,6 +1000,28 @@ class ElastigroupRevertToPreemptibleArgs:
     def perform_at(self, value: pulumi.Input[str]):
         pulumi.set(self, "perform_at", value)
 
+
+if not MYPY:
+    class ElastigroupScalingDownPolicyArgsDict(TypedDict):
+        metric_name: pulumi.Input[str]
+        namespace: pulumi.Input[str]
+        policy_name: pulumi.Input[str]
+        threshold: pulumi.Input[float]
+        unit: pulumi.Input[str]
+        action_type: NotRequired[pulumi.Input[str]]
+        adjustment: NotRequired[pulumi.Input[int]]
+        cooldown: NotRequired[pulumi.Input[int]]
+        dimensions: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyDimensionArgsDict']]]]
+        evaluation_periods: NotRequired[pulumi.Input[int]]
+        """
+        Amount of cooldown evaluation periods for scale down.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        period: NotRequired[pulumi.Input[int]]
+        source: NotRequired[pulumi.Input[str]]
+        statistic: NotRequired[pulumi.Input[str]]
+elif False:
+    ElastigroupScalingDownPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupScalingDownPolicyArgs:
@@ -950,6 +1197,13 @@ class ElastigroupScalingDownPolicyArgs:
         pulumi.set(self, "statistic", value)
 
 
+if not MYPY:
+    class ElastigroupScalingDownPolicyDimensionArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        value: NotRequired[pulumi.Input[str]]
+elif False:
+    ElastigroupScalingDownPolicyDimensionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupScalingDownPolicyDimensionArgs:
     def __init__(__self__, *,
@@ -977,6 +1231,28 @@ class ElastigroupScalingDownPolicyDimensionArgs:
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class ElastigroupScalingUpPolicyArgsDict(TypedDict):
+        metric_name: pulumi.Input[str]
+        namespace: pulumi.Input[str]
+        policy_name: pulumi.Input[str]
+        threshold: pulumi.Input[float]
+        unit: pulumi.Input[str]
+        action_type: NotRequired[pulumi.Input[str]]
+        adjustment: NotRequired[pulumi.Input[int]]
+        cooldown: NotRequired[pulumi.Input[int]]
+        dimensions: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyDimensionArgsDict']]]]
+        evaluation_periods: NotRequired[pulumi.Input[int]]
+        """
+        Amount of cooldown evaluation periods for scale down.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        period: NotRequired[pulumi.Input[int]]
+        source: NotRequired[pulumi.Input[str]]
+        statistic: NotRequired[pulumi.Input[str]]
+elif False:
+    ElastigroupScalingUpPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupScalingUpPolicyArgs:
@@ -1152,6 +1428,13 @@ class ElastigroupScalingUpPolicyArgs:
         pulumi.set(self, "statistic", value)
 
 
+if not MYPY:
+    class ElastigroupScalingUpPolicyDimensionArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        value: NotRequired[pulumi.Input[str]]
+elif False:
+    ElastigroupScalingUpPolicyDimensionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupScalingUpPolicyDimensionArgs:
     def __init__(__self__, *,
@@ -1179,6 +1462,43 @@ class ElastigroupScalingUpPolicyDimensionArgs:
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class OceanImportAutoscalerArgsDict(TypedDict):
+        auto_headroom_percentage: NotRequired[pulumi.Input[int]]
+        """
+        Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom % from the cluster. Relevant when isAutoConfig=true.
+        """
+        cooldown: NotRequired[pulumi.Input[int]]
+        """
+        Cooldown period between scaling actions.
+        """
+        down: NotRequired[pulumi.Input['OceanImportAutoscalerDownArgsDict']]
+        """
+        Auto Scaling scale down operations.
+        """
+        enable_automatic_and_manual_headroom: NotRequired[pulumi.Input[bool]]
+        """
+        enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
+        """
+        headroom: NotRequired[pulumi.Input['OceanImportAutoscalerHeadroomArgsDict']]
+        """
+        Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
+        """
+        is_auto_config: NotRequired[pulumi.Input[bool]]
+        """
+        Automatically configure and optimize headroom resources.
+        """
+        is_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable the Ocean Kubernetes Autoscaler.
+        """
+        resource_limits: NotRequired[pulumi.Input['OceanImportAutoscalerResourceLimitsArgsDict']]
+        """
+        Optionally set upper and lower bounds on the resource usage of the cluster.
+        """
+elif False:
+    OceanImportAutoscalerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanImportAutoscalerArgs:
@@ -1315,6 +1635,19 @@ class OceanImportAutoscalerArgs:
         pulumi.set(self, "resource_limits", value)
 
 
+if not MYPY:
+    class OceanImportAutoscalerDownArgsDict(TypedDict):
+        evaluation_periods: NotRequired[pulumi.Input[int]]
+        """
+        The number of evaluation periods that should accumulate before a scale down action takes place.
+        """
+        max_scale_down_percentage: NotRequired[pulumi.Input[float]]
+        """
+        Would represent the maximum % to scale-down. Number between 1-100.
+        """
+elif False:
+    OceanImportAutoscalerDownArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanImportAutoscalerDownArgs:
     def __init__(__self__, *,
@@ -1353,6 +1686,27 @@ class OceanImportAutoscalerDownArgs:
     def max_scale_down_percentage(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "max_scale_down_percentage", value)
 
+
+if not MYPY:
+    class OceanImportAutoscalerHeadroomArgsDict(TypedDict):
+        cpu_per_unit: NotRequired[pulumi.Input[int]]
+        """
+        Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        """
+        gpu_per_unit: NotRequired[pulumi.Input[int]]
+        """
+        How much GPU allocate for headroom unit.
+        """
+        memory_per_unit: NotRequired[pulumi.Input[int]]
+        """
+        Optionally configure the amount of memory (MiB) to allocate the headroom.
+        """
+        num_of_units: NotRequired[pulumi.Input[int]]
+        """
+        The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+        """
+elif False:
+    OceanImportAutoscalerHeadroomArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanImportAutoscalerHeadroomArgs:
@@ -1425,6 +1779,19 @@ class OceanImportAutoscalerHeadroomArgs:
         pulumi.set(self, "num_of_units", value)
 
 
+if not MYPY:
+    class OceanImportAutoscalerResourceLimitsArgsDict(TypedDict):
+        max_memory_gib: NotRequired[pulumi.Input[int]]
+        """
+        The maximum memory in GiB units that can be allocated to the cluster.
+        """
+        max_vcpu: NotRequired[pulumi.Input[int]]
+        """
+        The maximum cpu in vCpu units that can be allocated to the cluster.
+        """
+elif False:
+    OceanImportAutoscalerResourceLimitsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanImportAutoscalerResourceLimitsArgs:
     def __init__(__self__, *,
@@ -1463,6 +1830,24 @@ class OceanImportAutoscalerResourceLimitsArgs:
     def max_vcpu(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_vcpu", value)
 
+
+if not MYPY:
+    class OceanImportBackendServiceArgsDict(TypedDict):
+        service_name: pulumi.Input[str]
+        """
+        The name of the backend service.
+        """
+        location_type: NotRequired[pulumi.Input[str]]
+        """
+        Sets which location the backend services will be active. Valid values: `regional`, `global`.
+        """
+        named_ports: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanImportBackendServiceNamedPortArgsDict']]]]
+        scheme: NotRequired[pulumi.Input[str]]
+        """
+        Use when `location_type` is `regional`. Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
+        """
+elif False:
+    OceanImportBackendServiceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanImportBackendServiceArgs:
@@ -1530,6 +1915,16 @@ class OceanImportBackendServiceArgs:
         pulumi.set(self, "scheme", value)
 
 
+if not MYPY:
+    class OceanImportBackendServiceNamedPortArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        ports: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        A list of ports.
+        """
+elif False:
+    OceanImportBackendServiceNamedPortArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanImportBackendServiceNamedPortArgs:
     def __init__(__self__, *,
@@ -1562,6 +1957,19 @@ class OceanImportBackendServiceNamedPortArgs:
     def ports(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "ports", value)
 
+
+if not MYPY:
+    class OceanImportScheduledTaskArgsDict(TypedDict):
+        shutdown_hours: NotRequired[pulumi.Input['OceanImportScheduledTaskShutdownHoursArgsDict']]
+        """
+        Set shutdown hours for cluster object.
+        """
+        tasks: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanImportScheduledTaskTaskArgsDict']]]]
+        """
+        The scheduling tasks for the cluster.
+        """
+elif False:
+    OceanImportScheduledTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanImportScheduledTaskArgs:
@@ -1601,6 +2009,21 @@ class OceanImportScheduledTaskArgs:
     def tasks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportScheduledTaskTaskArgs']]]]):
         pulumi.set(self, "tasks", value)
 
+
+if not MYPY:
+    class OceanImportScheduledTaskShutdownHoursArgsDict(TypedDict):
+        time_windows: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = `true`. API Times are in UTC
+        Example: Fri:15:30-Wed:14:30
+        """
+        is_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Flag to enable / disable the shutdown hours.
+        Example: `true`
+        """
+elif False:
+    OceanImportScheduledTaskShutdownHoursArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanImportScheduledTaskShutdownHoursArgs:
@@ -1643,6 +2066,28 @@ class OceanImportScheduledTaskShutdownHoursArgs:
     def is_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "is_enabled", value)
 
+
+if not MYPY:
+    class OceanImportScheduledTaskTaskArgsDict(TypedDict):
+        cron_expression: pulumi.Input[str]
+        """
+        A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
+        Example: 0 1 * * *
+        """
+        is_enabled: pulumi.Input[bool]
+        """
+        Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
+        """
+        task_type: pulumi.Input[str]
+        """
+        Valid values: "clusterRoll". Required for cluster.scheduling.tasks object.
+        """
+        task_parameters: NotRequired[pulumi.Input['OceanImportScheduledTaskTaskTaskParametersArgsDict']]
+        """
+        The scheduling parameters for the cluster.
+        """
+elif False:
+    OceanImportScheduledTaskTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanImportScheduledTaskTaskArgs:
@@ -1714,6 +2159,15 @@ class OceanImportScheduledTaskTaskArgs:
         pulumi.set(self, "task_parameters", value)
 
 
+if not MYPY:
+    class OceanImportScheduledTaskTaskTaskParametersArgsDict(TypedDict):
+        cluster_roll: NotRequired[pulumi.Input['OceanImportScheduledTaskTaskTaskParametersClusterRollArgsDict']]
+        """
+        The cluster roll parameters for the cluster.
+        """
+elif False:
+    OceanImportScheduledTaskTaskTaskParametersArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanImportScheduledTaskTaskTaskParametersArgs:
     def __init__(__self__, *,
@@ -1736,6 +2190,27 @@ class OceanImportScheduledTaskTaskTaskParametersArgs:
     def cluster_roll(self, value: Optional[pulumi.Input['OceanImportScheduledTaskTaskTaskParametersClusterRollArgs']]):
         pulumi.set(self, "cluster_roll", value)
 
+
+if not MYPY:
+    class OceanImportScheduledTaskTaskTaskParametersClusterRollArgsDict(TypedDict):
+        batch_min_healthy_percentage: NotRequired[pulumi.Input[int]]
+        """
+        Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+        """
+        batch_size_percentage: NotRequired[pulumi.Input[int]]
+        """
+        Value as a percent to set the size of a batch in a roll. Valid values are 0-100.
+        """
+        comment: NotRequired[pulumi.Input[str]]
+        """
+        Add a comment description for the roll. The comment is limited to 256 chars.
+        """
+        respect_pdb: NotRequired[pulumi.Input[bool]]
+        """
+        During the roll, if the parameter is set to true we honor PDB during the instance replacement.
+        """
+elif False:
+    OceanImportScheduledTaskTaskTaskParametersClusterRollArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanImportScheduledTaskTaskTaskParametersClusterRollArgs:
@@ -1808,6 +2283,19 @@ class OceanImportScheduledTaskTaskTaskParametersClusterRollArgs:
         pulumi.set(self, "respect_pdb", value)
 
 
+if not MYPY:
+    class OceanImportShieldedInstanceConfigArgsDict(TypedDict):
+        enable_integrity_monitoring: NotRequired[pulumi.Input[bool]]
+        """
+        Boolean. Enable the integrity monitoring parameter on the GCP instances.
+        """
+        enable_secure_boot: NotRequired[pulumi.Input[bool]]
+        """
+        Boolean. Enable the secure boot parameter on the GCP instances.
+        """
+elif False:
+    OceanImportShieldedInstanceConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanImportShieldedInstanceConfigArgs:
     def __init__(__self__, *,
@@ -1846,6 +2334,27 @@ class OceanImportShieldedInstanceConfigArgs:
     def enable_secure_boot(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_secure_boot", value)
 
+
+if not MYPY:
+    class OceanImportStrategyArgsDict(TypedDict):
+        draining_timeout: NotRequired[pulumi.Input[int]]
+        """
+        The draining timeout (in seconds) before terminating the instance. If no draining timeout is defined, the default draining timeout will be used.
+        """
+        preemptible_percentage: NotRequired[pulumi.Input[int]]
+        """
+        Defines the desired preemptible percentage for the cluster.
+        """
+        provisioning_model: NotRequired[pulumi.Input[str]]
+        """
+        Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
+        """
+        should_utilize_commitments: NotRequired[pulumi.Input[bool]]
+        """
+        Enable committed use discounts utilization.
+        """
+elif False:
+    OceanImportStrategyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanImportStrategyArgs:
@@ -1918,6 +2427,23 @@ class OceanImportStrategyArgs:
         pulumi.set(self, "should_utilize_commitments", value)
 
 
+if not MYPY:
+    class OceanImportUpdatePolicyArgsDict(TypedDict):
+        should_roll: pulumi.Input[bool]
+        """
+        Enables the roll.
+        """
+        conditioned_roll: NotRequired[pulumi.Input[bool]]
+        """
+        Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
+        """
+        roll_config: NotRequired[pulumi.Input['OceanImportUpdatePolicyRollConfigArgsDict']]
+        """
+        Holds the roll configuration.
+        """
+elif False:
+    OceanImportUpdatePolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanImportUpdatePolicyArgs:
     def __init__(__self__, *,
@@ -1971,6 +2497,27 @@ class OceanImportUpdatePolicyArgs:
     def roll_config(self, value: Optional[pulumi.Input['OceanImportUpdatePolicyRollConfigArgs']]):
         pulumi.set(self, "roll_config", value)
 
+
+if not MYPY:
+    class OceanImportUpdatePolicyRollConfigArgsDict(TypedDict):
+        batch_size_percentage: pulumi.Input[int]
+        """
+        Sets the percentage of the instances to deploy in each batch.
+        """
+        batch_min_healthy_percentage: NotRequired[pulumi.Input[int]]
+        """
+        Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+        """
+        launch_spec_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of Virtual Node Group identifiers to be rolled.
+        """
+        respect_pdb: NotRequired[pulumi.Input[bool]]
+        """
+        Default: `false`. During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.
+        """
+elif False:
+    OceanImportUpdatePolicyRollConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanImportUpdatePolicyRollConfigArgs:
@@ -2042,6 +2589,27 @@ class OceanImportUpdatePolicyRollConfigArgs:
         pulumi.set(self, "respect_pdb", value)
 
 
+if not MYPY:
+    class OceanLaunchSpecAutoscaleHeadroomArgsDict(TypedDict):
+        num_of_units: pulumi.Input[int]
+        """
+        The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+        """
+        cpu_per_unit: NotRequired[pulumi.Input[int]]
+        """
+        Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        """
+        gpu_per_unit: NotRequired[pulumi.Input[int]]
+        """
+        Optionally configure the number of GPUS to allocate for each headroom unit.
+        """
+        memory_per_unit: NotRequired[pulumi.Input[int]]
+        """
+        Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
+        """
+elif False:
+    OceanLaunchSpecAutoscaleHeadroomArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanLaunchSpecAutoscaleHeadroomArgs:
     def __init__(__self__, *,
@@ -2112,6 +2680,15 @@ class OceanLaunchSpecAutoscaleHeadroomArgs:
         pulumi.set(self, "memory_per_unit", value)
 
 
+if not MYPY:
+    class OceanLaunchSpecAutoscaleHeadroomsAutomaticArgsDict(TypedDict):
+        auto_headroom_percentage: NotRequired[pulumi.Input[int]]
+        """
+        Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`is_enabled` = true is set on the Ocean cluster.
+        """
+elif False:
+    OceanLaunchSpecAutoscaleHeadroomsAutomaticArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs:
     def __init__(__self__, *,
@@ -2135,6 +2712,15 @@ class OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs:
         pulumi.set(self, "auto_headroom_percentage", value)
 
 
+if not MYPY:
+    class OceanLaunchSpecCreateOptionsArgsDict(TypedDict):
+        initial_nodes: NotRequired[pulumi.Input[int]]
+        """
+        When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group.
+        """
+elif False:
+    OceanLaunchSpecCreateOptionsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanLaunchSpecCreateOptionsArgs:
     def __init__(__self__, *,
@@ -2157,6 +2743,19 @@ class OceanLaunchSpecCreateOptionsArgs:
     def initial_nodes(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "initial_nodes", value)
 
+
+if not MYPY:
+    class OceanLaunchSpecLabelArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        """
+        The label key.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The label value.
+        """
+elif False:
+    OceanLaunchSpecLabelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanLaunchSpecLabelArgs:
@@ -2197,6 +2796,19 @@ class OceanLaunchSpecLabelArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class OceanLaunchSpecMetadataArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        """
+        The metadata key.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The metadata value.
+        """
+elif False:
+    OceanLaunchSpecMetadataArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanLaunchSpecMetadataArgs:
     def __init__(__self__, *,
@@ -2235,6 +2847,27 @@ class OceanLaunchSpecMetadataArgs:
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class OceanLaunchSpecNetworkInterfaceArgsDict(TypedDict):
+        network: pulumi.Input[str]
+        """
+        The name of the network.
+        """
+        access_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecNetworkInterfaceAccessConfigArgsDict']]]]
+        """
+        The network protocol of the VNG.
+        """
+        alias_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecNetworkInterfaceAliasIpRangeArgsDict']]]]
+        """
+        use the imported node pool’s associated aliasIpRange to assign secondary IP addresses to the nodes. Cannot be changed after VNG creation.
+        """
+        project_id: NotRequired[pulumi.Input[str]]
+        """
+        Use a network resource from a different project. Set the project identifier to use its network resource. This parameter is relevant only if the network resource is in a different project.
+        """
+elif False:
+    OceanLaunchSpecNetworkInterfaceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanLaunchSpecNetworkInterfaceArgs:
@@ -2306,6 +2939,19 @@ class OceanLaunchSpecNetworkInterfaceArgs:
         pulumi.set(self, "project_id", value)
 
 
+if not MYPY:
+    class OceanLaunchSpecNetworkInterfaceAccessConfigArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the access configuration.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The type of the access configuration.
+        """
+elif False:
+    OceanLaunchSpecNetworkInterfaceAccessConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanLaunchSpecNetworkInterfaceAccessConfigArgs:
     def __init__(__self__, *,
@@ -2345,6 +2991,19 @@ class OceanLaunchSpecNetworkInterfaceAccessConfigArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class OceanLaunchSpecNetworkInterfaceAliasIpRangeArgsDict(TypedDict):
+        ip_cidr_range: pulumi.Input[str]
+        """
+        specify the IP address range in CIDR notation that can be used for the alias IP addresses associated with the imported node pool.
+        """
+        subnetwork_range_name: pulumi.Input[str]
+        """
+        specify the IP address range for the subnet secondary IP range.
+        """
+elif False:
+    OceanLaunchSpecNetworkInterfaceAliasIpRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs:
     def __init__(__self__, *,
@@ -2381,6 +3040,19 @@ class OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs:
     def subnetwork_range_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "subnetwork_range_name", value)
 
+
+if not MYPY:
+    class OceanLaunchSpecResourceLimitsArgsDict(TypedDict):
+        max_instance_count: NotRequired[pulumi.Input[int]]
+        """
+        Option to set a maximum number of instances per virtual node group. Can be null. If set, the value must be greater than or equal to 0.
+        """
+        min_instance_count: NotRequired[pulumi.Input[int]]
+        """
+        Option to set a minimum number of instances per virtual node group. Can be null. If set, the value must be greater than or equal to 0.
+        """
+elif False:
+    OceanLaunchSpecResourceLimitsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanLaunchSpecResourceLimitsArgs:
@@ -2420,6 +3092,27 @@ class OceanLaunchSpecResourceLimitsArgs:
     def min_instance_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min_instance_count", value)
 
+
+if not MYPY:
+    class OceanLaunchSpecSchedulingTaskArgsDict(TypedDict):
+        cron_expression: pulumi.Input[str]
+        """
+        A valid cron expression. For example : " * * * * * ". The cron job runs in UTC time and is in Unix cron format.
+        """
+        is_enabled: pulumi.Input[bool]
+        """
+        Describes whether the task is enabled. When `true`, the task runs. When `false`, it does not run.
+        """
+        task_type: pulumi.Input[str]
+        """
+        The activity that you are scheduling. Valid values: "manualHeadroomUpdate".
+        """
+        task_headrooms: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskTaskHeadroomArgsDict']]]]
+        """
+        The config of this scheduled task. Depends on the value of taskType.
+        """
+elif False:
+    OceanLaunchSpecSchedulingTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanLaunchSpecSchedulingTaskArgs:
@@ -2488,6 +3181,27 @@ class OceanLaunchSpecSchedulingTaskArgs:
     def task_headrooms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskTaskHeadroomArgs']]]]):
         pulumi.set(self, "task_headrooms", value)
 
+
+if not MYPY:
+    class OceanLaunchSpecSchedulingTaskTaskHeadroomArgsDict(TypedDict):
+        num_of_units: pulumi.Input[int]
+        """
+        The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+        """
+        cpu_per_unit: NotRequired[pulumi.Input[int]]
+        """
+        Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        """
+        gpu_per_unit: NotRequired[pulumi.Input[int]]
+        """
+        Optionally configure the number of GPUS to allocate for each headroom unit.
+        """
+        memory_per_unit: NotRequired[pulumi.Input[int]]
+        """
+        Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
+        """
+elif False:
+    OceanLaunchSpecSchedulingTaskTaskHeadroomArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanLaunchSpecSchedulingTaskTaskHeadroomArgs:
@@ -2559,6 +3273,19 @@ class OceanLaunchSpecSchedulingTaskTaskHeadroomArgs:
         pulumi.set(self, "memory_per_unit", value)
 
 
+if not MYPY:
+    class OceanLaunchSpecShieldedInstanceConfigArgsDict(TypedDict):
+        enable_integrity_monitoring: NotRequired[pulumi.Input[bool]]
+        """
+        Boolean. Enable the integrity monitoring parameter on the GCP instances.
+        """
+        enable_secure_boot: NotRequired[pulumi.Input[bool]]
+        """
+        Boolean. Enable the secure boot parameter on the GCP instances.
+        """
+elif False:
+    OceanLaunchSpecShieldedInstanceConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanLaunchSpecShieldedInstanceConfigArgs:
     def __init__(__self__, *,
@@ -2598,6 +3325,15 @@ class OceanLaunchSpecShieldedInstanceConfigArgs:
         pulumi.set(self, "enable_secure_boot", value)
 
 
+if not MYPY:
+    class OceanLaunchSpecStorageArgsDict(TypedDict):
+        local_ssd_count: NotRequired[pulumi.Input[int]]
+        """
+        Defines the number of local SSDs to be attached per node for this VNG.
+        """
+elif False:
+    OceanLaunchSpecStorageArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanLaunchSpecStorageArgs:
     def __init__(__self__, *,
@@ -2621,6 +3357,15 @@ class OceanLaunchSpecStorageArgs:
         pulumi.set(self, "local_ssd_count", value)
 
 
+if not MYPY:
+    class OceanLaunchSpecStrategyArgsDict(TypedDict):
+        preemptible_percentage: NotRequired[pulumi.Input[int]]
+        """
+        Defines the desired preemptible percentage for this launch specification.
+        """
+elif False:
+    OceanLaunchSpecStrategyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanLaunchSpecStrategyArgs:
     def __init__(__self__, *,
@@ -2643,6 +3388,23 @@ class OceanLaunchSpecStrategyArgs:
     def preemptible_percentage(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "preemptible_percentage", value)
 
+
+if not MYPY:
+    class OceanLaunchSpecTaintArgsDict(TypedDict):
+        effect: NotRequired[pulumi.Input[str]]
+        """
+        The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`.
+        """
+        key: NotRequired[pulumi.Input[str]]
+        """
+        The taint key.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The taint value.
+        """
+elif False:
+    OceanLaunchSpecTaintArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanLaunchSpecTaintArgs:
@@ -2699,6 +3461,19 @@ class OceanLaunchSpecTaintArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class OceanLaunchSpecUpdatePolicyArgsDict(TypedDict):
+        should_roll: pulumi.Input[bool]
+        """
+        Enables the roll.
+        """
+        roll_config: NotRequired[pulumi.Input['OceanLaunchSpecUpdatePolicyRollConfigArgsDict']]
+        """
+        Holds the roll configuration.
+        """
+elif False:
+    OceanLaunchSpecUpdatePolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanLaunchSpecUpdatePolicyArgs:
     def __init__(__self__, *,
@@ -2736,6 +3511,15 @@ class OceanLaunchSpecUpdatePolicyArgs:
     def roll_config(self, value: Optional[pulumi.Input['OceanLaunchSpecUpdatePolicyRollConfigArgs']]):
         pulumi.set(self, "roll_config", value)
 
+
+if not MYPY:
+    class OceanLaunchSpecUpdatePolicyRollConfigArgsDict(TypedDict):
+        batch_size_percentage: pulumi.Input[int]
+        """
+        Sets the percentage of the instances to deploy in each batch.
+        """
+elif False:
+    OceanLaunchSpecUpdatePolicyRollConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanLaunchSpecUpdatePolicyRollConfigArgs:

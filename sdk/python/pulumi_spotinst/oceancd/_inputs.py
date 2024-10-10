@@ -4,76 +4,155 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'RolloutSpecFailurePolicyArgs',
+    'RolloutSpecFailurePolicyArgsDict',
     'RolloutSpecSpotDeploymentArgs',
+    'RolloutSpecSpotDeploymentArgsDict',
     'RolloutSpecStrategyArgs',
+    'RolloutSpecStrategyArgsDict',
     'RolloutSpecStrategyArgArgs',
+    'RolloutSpecStrategyArgArgsDict',
     'RolloutSpecStrategyArgValueFromArgs',
+    'RolloutSpecStrategyArgValueFromArgsDict',
     'RolloutSpecStrategyArgValueFromFieldRefArgs',
+    'RolloutSpecStrategyArgValueFromFieldRefArgsDict',
     'RolloutSpecTrafficArgs',
+    'RolloutSpecTrafficArgsDict',
     'RolloutSpecTrafficAlbArgs',
+    'RolloutSpecTrafficAlbArgsDict',
     'RolloutSpecTrafficAlbStickinessConfigArgs',
+    'RolloutSpecTrafficAlbStickinessConfigArgsDict',
     'RolloutSpecTrafficAmbassadorArgs',
+    'RolloutSpecTrafficAmbassadorArgsDict',
     'RolloutSpecTrafficIstioArgs',
+    'RolloutSpecTrafficIstioArgsDict',
     'RolloutSpecTrafficIstioDestinationRuleArgs',
+    'RolloutSpecTrafficIstioDestinationRuleArgsDict',
     'RolloutSpecTrafficIstioVirtualServiceArgs',
+    'RolloutSpecTrafficIstioVirtualServiceArgsDict',
     'RolloutSpecTrafficIstioVirtualServiceTlsRouteArgs',
+    'RolloutSpecTrafficIstioVirtualServiceTlsRouteArgsDict',
     'RolloutSpecTrafficNginxArgs',
+    'RolloutSpecTrafficNginxArgsDict',
     'RolloutSpecTrafficNginxAdditionalIngressAnnotationArgs',
+    'RolloutSpecTrafficNginxAdditionalIngressAnnotationArgsDict',
     'RolloutSpecTrafficPingPongArgs',
+    'RolloutSpecTrafficPingPongArgsDict',
     'RolloutSpecTrafficSmiArgs',
+    'RolloutSpecTrafficSmiArgsDict',
     'StrategyCanaryArgs',
+    'StrategyCanaryArgsDict',
     'StrategyCanaryBackgroundVerificationArgs',
+    'StrategyCanaryBackgroundVerificationArgsDict',
     'StrategyCanaryStepArgs',
+    'StrategyCanaryStepArgsDict',
     'StrategyCanaryStepPauseArgs',
+    'StrategyCanaryStepPauseArgsDict',
     'StrategyCanaryStepSetCanaryScaleArgs',
+    'StrategyCanaryStepSetCanaryScaleArgsDict',
     'StrategyCanaryStepSetHeaderRouteArgs',
+    'StrategyCanaryStepSetHeaderRouteArgsDict',
     'StrategyCanaryStepSetHeaderRouteMatchArgs',
+    'StrategyCanaryStepSetHeaderRouteMatchArgsDict',
     'StrategyCanaryStepSetHeaderRouteMatchHeaderValueArgs',
+    'StrategyCanaryStepSetHeaderRouteMatchHeaderValueArgsDict',
     'StrategyCanaryStepVerificationArgs',
+    'StrategyCanaryStepVerificationArgsDict',
     'StrategyRollingArgs',
+    'StrategyRollingArgsDict',
     'StrategyRollingStepArgs',
+    'StrategyRollingStepArgsDict',
     'StrategyRollingStepPauseArgs',
+    'StrategyRollingStepPauseArgsDict',
     'StrategyRollingStepVerificationArgs',
+    'StrategyRollingStepVerificationArgsDict',
     'VerificationProviderCloudWatchArgs',
+    'VerificationProviderCloudWatchArgsDict',
     'VerificationProviderDatadogArgs',
+    'VerificationProviderDatadogArgsDict',
     'VerificationProviderJenkinsArgs',
+    'VerificationProviderJenkinsArgsDict',
     'VerificationProviderNewRelicArgs',
+    'VerificationProviderNewRelicArgsDict',
     'VerificationProviderPrometheusArgs',
+    'VerificationProviderPrometheusArgsDict',
     'VerificationTemplateArgArgs',
+    'VerificationTemplateArgArgsDict',
     'VerificationTemplateArgValueFromArgs',
+    'VerificationTemplateArgValueFromArgsDict',
     'VerificationTemplateArgValueFromSecretKeyRefArgs',
+    'VerificationTemplateArgValueFromSecretKeyRefArgsDict',
     'VerificationTemplateMetricArgs',
+    'VerificationTemplateMetricArgsDict',
     'VerificationTemplateMetricBaselineArgs',
+    'VerificationTemplateMetricBaselineArgsDict',
     'VerificationTemplateMetricBaselineBaselineProviderArgs',
+    'VerificationTemplateMetricBaselineBaselineProviderArgsDict',
     'VerificationTemplateMetricBaselineBaselineProviderDatadogArgs',
+    'VerificationTemplateMetricBaselineBaselineProviderDatadogArgsDict',
     'VerificationTemplateMetricBaselineBaselineProviderNewRelicArgs',
+    'VerificationTemplateMetricBaselineBaselineProviderNewRelicArgsDict',
     'VerificationTemplateMetricBaselineBaselineProviderPrometheusArgs',
+    'VerificationTemplateMetricBaselineBaselineProviderPrometheusArgsDict',
     'VerificationTemplateMetricProviderArgs',
+    'VerificationTemplateMetricProviderArgsDict',
     'VerificationTemplateMetricProviderCloudWatchArgs',
+    'VerificationTemplateMetricProviderCloudWatchArgsDict',
     'VerificationTemplateMetricProviderCloudWatchMetricDataQueryArgs',
+    'VerificationTemplateMetricProviderCloudWatchMetricDataQueryArgsDict',
     'VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatArgs',
+    'VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatArgsDict',
     'VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricArgs',
+    'VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricArgsDict',
     'VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArgs',
+    'VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArgsDict',
     'VerificationTemplateMetricProviderDatadogArgs',
+    'VerificationTemplateMetricProviderDatadogArgsDict',
     'VerificationTemplateMetricProviderJenkinsArgs',
+    'VerificationTemplateMetricProviderJenkinsArgsDict',
     'VerificationTemplateMetricProviderJenkinsJenkinsParametersArgs',
+    'VerificationTemplateMetricProviderJenkinsJenkinsParametersArgsDict',
     'VerificationTemplateMetricProviderJobArgs',
+    'VerificationTemplateMetricProviderJobArgsDict',
     'VerificationTemplateMetricProviderJobSpecArgs',
+    'VerificationTemplateMetricProviderJobSpecArgsDict',
     'VerificationTemplateMetricProviderJobSpecJobTemplateArgs',
+    'VerificationTemplateMetricProviderJobSpecJobTemplateArgsDict',
     'VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArgs',
+    'VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArgsDict',
     'VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArgs',
+    'VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArgsDict',
     'VerificationTemplateMetricProviderNewRelicArgs',
+    'VerificationTemplateMetricProviderNewRelicArgsDict',
     'VerificationTemplateMetricProviderPrometheusArgs',
+    'VerificationTemplateMetricProviderPrometheusArgsDict',
     'VerificationTemplateMetricProviderWebArgs',
+    'VerificationTemplateMetricProviderWebArgsDict',
     'VerificationTemplateMetricProviderWebWebHeaderArgs',
+    'VerificationTemplateMetricProviderWebWebHeaderArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class RolloutSpecFailurePolicyArgsDict(TypedDict):
+        action: pulumi.Input[str]
+        """
+        Choose an action to perform on failure. Default is `abort`.  Enum: "abort" "pause" "promote".
+        """
+elif False:
+    RolloutSpecFailurePolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RolloutSpecFailurePolicyArgs:
@@ -96,6 +175,23 @@ class RolloutSpecFailurePolicyArgs:
     def action(self, value: pulumi.Input[str]):
         pulumi.set(self, "action", value)
 
+
+if not MYPY:
+    class RolloutSpecSpotDeploymentArgsDict(TypedDict):
+        spot_deployments_cluster_id: NotRequired[pulumi.Input[str]]
+        """
+        Ocean CD cluster identifier for the references `SpotDeployment`.
+        """
+        spot_deployments_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the `SpotDeployment` resource
+        """
+        spot_deployments_namespace: NotRequired[pulumi.Input[str]]
+        """
+        The namespace which the `SpotDeployment` resource exists within.
+        """
+elif False:
+    RolloutSpecSpotDeploymentArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RolloutSpecSpotDeploymentArgs:
@@ -152,6 +248,19 @@ class RolloutSpecSpotDeploymentArgs:
         pulumi.set(self, "spot_deployments_namespace", value)
 
 
+if not MYPY:
+    class RolloutSpecStrategyArgsDict(TypedDict):
+        strategy_name: pulumi.Input[str]
+        """
+        Ocean CD strategy name identifier.
+        """
+        args: NotRequired[pulumi.Input[Sequence[pulumi.Input['RolloutSpecStrategyArgArgsDict']]]]
+        """
+        Arguments defined in Verification Templates.
+        """
+elif False:
+    RolloutSpecStrategyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RolloutSpecStrategyArgs:
     def __init__(__self__, *,
@@ -189,6 +298,23 @@ class RolloutSpecStrategyArgs:
     def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RolloutSpecStrategyArgArgs']]]]):
         pulumi.set(self, "args", value)
 
+
+if not MYPY:
+    class RolloutSpecStrategyArgArgsDict(TypedDict):
+        arg_name: pulumi.Input[str]
+        """
+        Name of an argument.
+        """
+        arg_value: NotRequired[pulumi.Input[str]]
+        """
+        Value of an argument.
+        """
+        value_from: NotRequired[pulumi.Input['RolloutSpecStrategyArgValueFromArgsDict']]
+        """
+        Defines from where to get the value of an argument.
+        """
+elif False:
+    RolloutSpecStrategyArgArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RolloutSpecStrategyArgArgs:
@@ -244,6 +370,15 @@ class RolloutSpecStrategyArgArgs:
         pulumi.set(self, "value_from", value)
 
 
+if not MYPY:
+    class RolloutSpecStrategyArgValueFromArgsDict(TypedDict):
+        field_ref: pulumi.Input['RolloutSpecStrategyArgValueFromFieldRefArgsDict']
+        """
+        Defines the field path from where to get the value of an argument.
+        """
+elif False:
+    RolloutSpecStrategyArgValueFromArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RolloutSpecStrategyArgValueFromArgs:
     def __init__(__self__, *,
@@ -266,6 +401,15 @@ class RolloutSpecStrategyArgValueFromArgs:
         pulumi.set(self, "field_ref", value)
 
 
+if not MYPY:
+    class RolloutSpecStrategyArgValueFromFieldRefArgsDict(TypedDict):
+        field_path: pulumi.Input[str]
+        """
+        Path to SpotDeployment's field from where to get the value of an argument.
+        """
+elif False:
+    RolloutSpecStrategyArgValueFromFieldRefArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RolloutSpecStrategyArgValueFromFieldRefArgs:
     def __init__(__self__, *,
@@ -287,6 +431,43 @@ class RolloutSpecStrategyArgValueFromFieldRefArgs:
     def field_path(self, value: pulumi.Input[str]):
         pulumi.set(self, "field_path", value)
 
+
+if not MYPY:
+    class RolloutSpecTrafficArgsDict(TypedDict):
+        alb: NotRequired[pulumi.Input['RolloutSpecTrafficAlbArgsDict']]
+        """
+        Holds ALB Ingress specific configuration to route traffic.
+        """
+        ambassador: NotRequired[pulumi.Input['RolloutSpecTrafficAmbassadorArgsDict']]
+        """
+        Holds specific configuration to use Ambassador to route traffic.
+        """
+        canary_service: NotRequired[pulumi.Input[str]]
+        """
+        The canary service name.
+        """
+        istio: NotRequired[pulumi.Input['RolloutSpecTrafficIstioArgsDict']]
+        """
+        Holds Istio specific configuration to route traffic.
+        """
+        nginx: NotRequired[pulumi.Input['RolloutSpecTrafficNginxArgsDict']]
+        """
+        Holds Nginx Ingress specific configuration to route traffic.
+        """
+        ping_pong: NotRequired[pulumi.Input['RolloutSpecTrafficPingPongArgsDict']]
+        """
+        Holds the ping and pong services. You can use `pingPong` field only when using ALB as a traffic manager with the IP Mode approach.
+        """
+        smi: NotRequired[pulumi.Input['RolloutSpecTrafficSmiArgsDict']]
+        """
+        Holds TrafficSplit specific configuration to route traffic.
+        """
+        stable_service: NotRequired[pulumi.Input[str]]
+        """
+        The stable service name.
+        """
+elif False:
+    RolloutSpecTrafficArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RolloutSpecTrafficArgs:
@@ -423,6 +604,31 @@ class RolloutSpecTrafficArgs:
         pulumi.set(self, "stable_service", value)
 
 
+if not MYPY:
+    class RolloutSpecTrafficAlbArgsDict(TypedDict):
+        alb_ingress: pulumi.Input[str]
+        """
+        Refers to the name of an `Ingress` resource in the same namespace as the `SpotDeployment`.
+        """
+        alb_root_service: pulumi.Input[str]
+        """
+        References the service in the ingress to the controller should add the action to.
+        """
+        service_port: pulumi.Input[int]
+        """
+        Refers to the port that the Ingress action should route traffic to.
+        """
+        alb_annotation_prefix: NotRequired[pulumi.Input[str]]
+        """
+        Has to match the configured annotation prefix on the alb ingress controller.
+        """
+        stickiness_config: NotRequired[pulumi.Input['RolloutSpecTrafficAlbStickinessConfigArgsDict']]
+        """
+        Allows to specify further settings on the ForwardConfig.
+        """
+elif False:
+    RolloutSpecTrafficAlbArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RolloutSpecTrafficAlbArgs:
     def __init__(__self__, *,
@@ -507,6 +713,19 @@ class RolloutSpecTrafficAlbArgs:
         pulumi.set(self, "stickiness_config", value)
 
 
+if not MYPY:
+    class RolloutSpecTrafficAlbStickinessConfigArgsDict(TypedDict):
+        duration_seconds: NotRequired[pulumi.Input[int]]
+        """
+        Defines how long the load balancer should consistently route the user's request to the same target.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enables the load balancer to bind a user's session to a specific target.
+        """
+elif False:
+    RolloutSpecTrafficAlbStickinessConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RolloutSpecTrafficAlbStickinessConfigArgs:
     def __init__(__self__, *,
@@ -546,6 +765,15 @@ class RolloutSpecTrafficAlbStickinessConfigArgs:
         pulumi.set(self, "enabled", value)
 
 
+if not MYPY:
+    class RolloutSpecTrafficAmbassadorArgsDict(TypedDict):
+        mappings: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        A list of names of the Ambassador Mappings used to route traffic to the service.
+        """
+elif False:
+    RolloutSpecTrafficAmbassadorArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RolloutSpecTrafficAmbassadorArgs:
     def __init__(__self__, *,
@@ -567,6 +795,19 @@ class RolloutSpecTrafficAmbassadorArgs:
     def mappings(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "mappings", value)
 
+
+if not MYPY:
+    class RolloutSpecTrafficIstioArgsDict(TypedDict):
+        virtual_services: pulumi.Input[Sequence[pulumi.Input['RolloutSpecTrafficIstioVirtualServiceArgsDict']]]
+        """
+        Defines a set of traffic routing rules to apply when a host is addressed.
+        """
+        destination_rule: NotRequired[pulumi.Input['RolloutSpecTrafficIstioDestinationRuleArgsDict']]
+        """
+        It references to an Istio DestinationRule to modify and shape traffic. `DestinationRule` field belongs only to the Subset Level approach.
+        """
+elif False:
+    RolloutSpecTrafficIstioArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RolloutSpecTrafficIstioArgs:
@@ -605,6 +846,23 @@ class RolloutSpecTrafficIstioArgs:
     def destination_rule(self, value: Optional[pulumi.Input['RolloutSpecTrafficIstioDestinationRuleArgs']]):
         pulumi.set(self, "destination_rule", value)
 
+
+if not MYPY:
+    class RolloutSpecTrafficIstioDestinationRuleArgsDict(TypedDict):
+        canary_subset_name: pulumi.Input[str]
+        """
+        The subset name to modify labels with the canary version.
+        """
+        destination_rule_name: pulumi.Input[str]
+        """
+        Holds the name of the DestinationRule.
+        """
+        stable_subset_name: pulumi.Input[str]
+        """
+        The subset name to modify labels with the stable version.
+        """
+elif False:
+    RolloutSpecTrafficIstioDestinationRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RolloutSpecTrafficIstioDestinationRuleArgs:
@@ -657,6 +915,23 @@ class RolloutSpecTrafficIstioDestinationRuleArgs:
     def stable_subset_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "stable_subset_name", value)
 
+
+if not MYPY:
+    class RolloutSpecTrafficIstioVirtualServiceArgsDict(TypedDict):
+        virtual_service_name: pulumi.Input[str]
+        """
+        Holds the name of the VirtualService.
+        """
+        tls_routes: NotRequired[pulumi.Input[Sequence[pulumi.Input['RolloutSpecTrafficIstioVirtualServiceTlsRouteArgsDict']]]]
+        """
+        A list of HTTPS routes within VirtualService.
+        """
+        virtual_service_routes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of HTTP routes within VirtualService.
+        """
+elif False:
+    RolloutSpecTrafficIstioVirtualServiceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RolloutSpecTrafficIstioVirtualServiceArgs:
@@ -712,6 +987,19 @@ class RolloutSpecTrafficIstioVirtualServiceArgs:
         pulumi.set(self, "virtual_service_routes", value)
 
 
+if not MYPY:
+    class RolloutSpecTrafficIstioVirtualServiceTlsRouteArgsDict(TypedDict):
+        port: NotRequired[pulumi.Input[int]]
+        """
+        The port of the TLS Route desired to be matched in the given Istio VirtualService.
+        """
+        sni_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of all the SNI Hosts of the TLS Route desired to be matched in the given Istio VirtualService.
+        """
+elif False:
+    RolloutSpecTrafficIstioVirtualServiceTlsRouteArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RolloutSpecTrafficIstioVirtualServiceTlsRouteArgs:
     def __init__(__self__, *,
@@ -750,6 +1038,23 @@ class RolloutSpecTrafficIstioVirtualServiceTlsRouteArgs:
     def sni_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "sni_hosts", value)
 
+
+if not MYPY:
+    class RolloutSpecTrafficNginxArgsDict(TypedDict):
+        stable_ingress: pulumi.Input[str]
+        """
+        Refers to the name of an `Ingress` resource in the same namespace as the `SpotDeployment`.
+        """
+        additional_ingress_annotation: NotRequired[pulumi.Input['RolloutSpecTrafficNginxAdditionalIngressAnnotationArgsDict']]
+        """
+        Provides additional features to add to the canary ingress (such as routing by header, cookie, etc). You can add these Kubernetes annotations to specific Ingress objects to customize their behavior. Above are found examples of accepted k8s keys.For the full list of supported keys, you may reach the following documentation - https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#canary.
+        """
+        nginx_annotation_prefix: NotRequired[pulumi.Input[str]]
+        """
+        Has to match the configured annotation prefix on the Nginx ingress controller.
+        """
+elif False:
+    RolloutSpecTrafficNginxArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RolloutSpecTrafficNginxArgs:
@@ -805,6 +1110,19 @@ class RolloutSpecTrafficNginxArgs:
         pulumi.set(self, "nginx_annotation_prefix", value)
 
 
+if not MYPY:
+    class RolloutSpecTrafficNginxAdditionalIngressAnnotationArgsDict(TypedDict):
+        canary_by_header: NotRequired[pulumi.Input[str]]
+        """
+        Allows customizing the header value instead of using hardcoded values.
+        """
+        key1: NotRequired[pulumi.Input[str]]
+        """
+        Any of supported annotations.
+        """
+elif False:
+    RolloutSpecTrafficNginxAdditionalIngressAnnotationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RolloutSpecTrafficNginxAdditionalIngressAnnotationArgs:
     def __init__(__self__, *,
@@ -844,6 +1162,19 @@ class RolloutSpecTrafficNginxAdditionalIngressAnnotationArgs:
         pulumi.set(self, "key1", value)
 
 
+if not MYPY:
+    class RolloutSpecTrafficPingPongArgsDict(TypedDict):
+        ping_service: pulumi.Input[str]
+        """
+        Holds the name of the ping service.
+        """
+        pong_service: pulumi.Input[str]
+        """
+        Holds the name of the pong service.
+        """
+elif False:
+    RolloutSpecTrafficPingPongArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RolloutSpecTrafficPingPongArgs:
     def __init__(__self__, *,
@@ -880,6 +1211,19 @@ class RolloutSpecTrafficPingPongArgs:
     def pong_service(self, value: pulumi.Input[str]):
         pulumi.set(self, "pong_service", value)
 
+
+if not MYPY:
+    class RolloutSpecTrafficSmiArgsDict(TypedDict):
+        smi_root_service: NotRequired[pulumi.Input[str]]
+        """
+        Holds the name of service that clients use to communicate.
+        """
+        traffic_split_name: NotRequired[pulumi.Input[str]]
+        """
+        Holds the name of the TrafficSplit.
+        """
+elif False:
+    RolloutSpecTrafficSmiArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RolloutSpecTrafficSmiArgs:
@@ -920,6 +1264,19 @@ class RolloutSpecTrafficSmiArgs:
         pulumi.set(self, "traffic_split_name", value)
 
 
+if not MYPY:
+    class StrategyCanaryArgsDict(TypedDict):
+        steps: pulumi.Input[Sequence[pulumi.Input['StrategyCanaryStepArgsDict']]]
+        """
+        A set of separate conditions of rollout processing.
+        """
+        background_verification: NotRequired[pulumi.Input['StrategyCanaryBackgroundVerificationArgsDict']]
+        """
+        A list of background verifications.
+        """
+elif False:
+    StrategyCanaryArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class StrategyCanaryArgs:
     def __init__(__self__, *,
@@ -958,6 +1315,15 @@ class StrategyCanaryArgs:
         pulumi.set(self, "background_verification", value)
 
 
+if not MYPY:
+    class StrategyCanaryBackgroundVerificationArgsDict(TypedDict):
+        template_names: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        List of Verification Template names.
+        """
+elif False:
+    StrategyCanaryBackgroundVerificationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class StrategyCanaryBackgroundVerificationArgs:
     def __init__(__self__, *,
@@ -979,6 +1345,32 @@ class StrategyCanaryBackgroundVerificationArgs:
     def template_names(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "template_names", value)
 
+
+if not MYPY:
+    class StrategyCanaryStepArgsDict(TypedDict):
+        pause: NotRequired[pulumi.Input['StrategyCanaryStepPauseArgsDict']]
+        """
+        Defines the duration of time to freeze the rollout.
+        """
+        set_canary_scale: NotRequired[pulumi.Input['StrategyCanaryStepSetCanaryScaleArgsDict']]
+        """
+        Defines how to scale the version without traffic weight changing.
+        """
+        set_header_route: NotRequired[pulumi.Input['StrategyCanaryStepSetHeaderRouteArgsDict']]
+        """
+        Defines the list of HeaderRoutes to add to the Rollout.
+        """
+        set_weight: NotRequired[pulumi.Input[int]]
+        """
+        Defines the percentage that the new version should receive.
+        """
+        step_name: NotRequired[pulumi.Input[str]]
+        verification: NotRequired[pulumi.Input['StrategyCanaryStepVerificationArgsDict']]
+        """
+        Represents the list of verifications to run in a step.
+        """
+elif False:
+    StrategyCanaryStepArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class StrategyCanaryStepArgs:
@@ -1079,6 +1471,15 @@ class StrategyCanaryStepArgs:
         pulumi.set(self, "verification", value)
 
 
+if not MYPY:
+    class StrategyCanaryStepPauseArgsDict(TypedDict):
+        duration: NotRequired[pulumi.Input[str]]
+        """
+        The amount of time to wait before moving to the next step.
+        """
+elif False:
+    StrategyCanaryStepPauseArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class StrategyCanaryStepPauseArgs:
     def __init__(__self__, *,
@@ -1101,6 +1502,23 @@ class StrategyCanaryStepPauseArgs:
     def duration(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "duration", value)
 
+
+if not MYPY:
+    class StrategyCanaryStepSetCanaryScaleArgsDict(TypedDict):
+        match_traffic_weight: NotRequired[pulumi.Input[bool]]
+        """
+        Defines whether a rollout should match the current canary's setWeight step.
+        """
+        replicas: NotRequired[pulumi.Input[int]]
+        """
+        Sets the number of replicas the new version should have.
+        """
+        weight: NotRequired[pulumi.Input[int]]
+        """
+        Sets the percentage of replicas the new version should have.
+        """
+elif False:
+    StrategyCanaryStepSetCanaryScaleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class StrategyCanaryStepSetCanaryScaleArgs:
@@ -1157,6 +1575,19 @@ class StrategyCanaryStepSetCanaryScaleArgs:
         pulumi.set(self, "weight", value)
 
 
+if not MYPY:
+    class StrategyCanaryStepSetHeaderRouteArgsDict(TypedDict):
+        header_route_name: pulumi.Input[str]
+        """
+        The name of the HeaderRoute group.
+        """
+        matches: pulumi.Input[Sequence[pulumi.Input['StrategyCanaryStepSetHeaderRouteMatchArgsDict']]]
+        """
+        The matching rules for the header route.
+        """
+elif False:
+    StrategyCanaryStepSetHeaderRouteArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class StrategyCanaryStepSetHeaderRouteArgs:
     def __init__(__self__, *,
@@ -1194,6 +1625,19 @@ class StrategyCanaryStepSetHeaderRouteArgs:
         pulumi.set(self, "matches", value)
 
 
+if not MYPY:
+    class StrategyCanaryStepSetHeaderRouteMatchArgsDict(TypedDict):
+        header_name: pulumi.Input[str]
+        """
+        The name of the header.
+        """
+        header_value: pulumi.Input['StrategyCanaryStepSetHeaderRouteMatchHeaderValueArgsDict']
+        """
+        Defines a single header to add to the Rollout. Must be only one initialized from the following (exact, prefix, regex).
+        """
+elif False:
+    StrategyCanaryStepSetHeaderRouteMatchArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class StrategyCanaryStepSetHeaderRouteMatchArgs:
     def __init__(__self__, *,
@@ -1230,6 +1674,23 @@ class StrategyCanaryStepSetHeaderRouteMatchArgs:
     def header_value(self, value: pulumi.Input['StrategyCanaryStepSetHeaderRouteMatchHeaderValueArgs']):
         pulumi.set(self, "header_value", value)
 
+
+if not MYPY:
+    class StrategyCanaryStepSetHeaderRouteMatchHeaderValueArgsDict(TypedDict):
+        exact: NotRequired[pulumi.Input[str]]
+        """
+        The exact header value.
+        """
+        prefix: NotRequired[pulumi.Input[str]]
+        """
+        The prefix of the value.
+        """
+        regex: NotRequired[pulumi.Input[str]]
+        """
+        The value in a regex format.
+        """
+elif False:
+    StrategyCanaryStepSetHeaderRouteMatchHeaderValueArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class StrategyCanaryStepSetHeaderRouteMatchHeaderValueArgs:
@@ -1286,6 +1747,15 @@ class StrategyCanaryStepSetHeaderRouteMatchHeaderValueArgs:
         pulumi.set(self, "regex", value)
 
 
+if not MYPY:
+    class StrategyCanaryStepVerificationArgsDict(TypedDict):
+        template_names: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        List of Verification Template names.
+        """
+elif False:
+    StrategyCanaryStepVerificationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class StrategyCanaryStepVerificationArgs:
     def __init__(__self__, *,
@@ -1308,6 +1778,15 @@ class StrategyCanaryStepVerificationArgs:
         pulumi.set(self, "template_names", value)
 
 
+if not MYPY:
+    class StrategyRollingArgsDict(TypedDict):
+        steps: pulumi.Input[Sequence[pulumi.Input['StrategyRollingStepArgsDict']]]
+        """
+        A set of separate conditions of rollout processing.
+        """
+elif False:
+    StrategyRollingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class StrategyRollingArgs:
     def __init__(__self__, *,
@@ -1329,6 +1808,20 @@ class StrategyRollingArgs:
     def steps(self, value: pulumi.Input[Sequence[pulumi.Input['StrategyRollingStepArgs']]]):
         pulumi.set(self, "steps", value)
 
+
+if not MYPY:
+    class StrategyRollingStepArgsDict(TypedDict):
+        pause: NotRequired[pulumi.Input['StrategyRollingStepPauseArgsDict']]
+        """
+        Defines the duration of time to freeze the rollout.
+        """
+        steps_name: NotRequired[pulumi.Input[str]]
+        verification: NotRequired[pulumi.Input['StrategyRollingStepVerificationArgsDict']]
+        """
+        Represents the list of verifications to run in a step.
+        """
+elif False:
+    StrategyRollingStepArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class StrategyRollingStepArgs:
@@ -1381,6 +1874,15 @@ class StrategyRollingStepArgs:
         pulumi.set(self, "verification", value)
 
 
+if not MYPY:
+    class StrategyRollingStepPauseArgsDict(TypedDict):
+        duration: NotRequired[pulumi.Input[str]]
+        """
+        The amount of time to wait before moving to the next step.
+        """
+elif False:
+    StrategyRollingStepPauseArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class StrategyRollingStepPauseArgs:
     def __init__(__self__, *,
@@ -1404,6 +1906,15 @@ class StrategyRollingStepPauseArgs:
         pulumi.set(self, "duration", value)
 
 
+if not MYPY:
+    class StrategyRollingStepVerificationArgsDict(TypedDict):
+        template_names: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        List of Verification Template names.
+        """
+elif False:
+    StrategyRollingStepVerificationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class StrategyRollingStepVerificationArgs:
     def __init__(__self__, *,
@@ -1426,6 +1937,15 @@ class StrategyRollingStepVerificationArgs:
         pulumi.set(self, "template_names", value)
 
 
+if not MYPY:
+    class VerificationProviderCloudWatchArgsDict(TypedDict):
+        iam_arn: pulumi.Input[str]
+        """
+        Set label key.
+        """
+elif False:
+    VerificationProviderCloudWatchArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VerificationProviderCloudWatchArgs:
     def __init__(__self__, *,
@@ -1447,6 +1967,23 @@ class VerificationProviderCloudWatchArgs:
     def iam_arn(self, value: pulumi.Input[str]):
         pulumi.set(self, "iam_arn", value)
 
+
+if not MYPY:
+    class VerificationProviderDatadogArgsDict(TypedDict):
+        address: pulumi.Input[str]
+        """
+        DataDog API URL.
+        """
+        api_key: pulumi.Input[str]
+        """
+        API key required by the Datadog Agent to submit metrics and events to Datadog.
+        """
+        app_key: pulumi.Input[str]
+        """
+        API key that gives users access to Datadog’s programmatic API.
+        """
+elif False:
+    VerificationProviderDatadogArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VerificationProviderDatadogArgs:
@@ -1500,6 +2037,23 @@ class VerificationProviderDatadogArgs:
         pulumi.set(self, "app_key", value)
 
 
+if not MYPY:
+    class VerificationProviderJenkinsArgsDict(TypedDict):
+        api_token: pulumi.Input[str]
+        """
+        The Jenkins server’s access apiToken.
+        """
+        base_url: pulumi.Input[str]
+        """
+        The address of the Jenkins server within the cluster.
+        """
+        username: pulumi.Input[str]
+        """
+        The Jenkins server’s access username.
+        """
+elif False:
+    VerificationProviderJenkinsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VerificationProviderJenkinsArgs:
     def __init__(__self__, *,
@@ -1551,6 +2105,28 @@ class VerificationProviderJenkinsArgs:
     def username(self, value: pulumi.Input[str]):
         pulumi.set(self, "username", value)
 
+
+if not MYPY:
+    class VerificationProviderNewRelicArgsDict(TypedDict):
+        account_id: pulumi.Input[str]
+        personal_api_key: pulumi.Input[str]
+        """
+        The NewRelic user key
+        """
+        base_url_nerd_graph: NotRequired[pulumi.Input[str]]
+        """
+        The base URL for NerdGraph for a proxy.
+        """
+        base_url_rest: NotRequired[pulumi.Input[str]]
+        """
+        The base URL of the New Relic REST API for a proxy.
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        A region which the account is attached to. Default is "us".
+        """
+elif False:
+    VerificationProviderNewRelicArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VerificationProviderNewRelicArgs:
@@ -1633,6 +2209,15 @@ class VerificationProviderNewRelicArgs:
         pulumi.set(self, "region", value)
 
 
+if not MYPY:
+    class VerificationProviderPrometheusArgsDict(TypedDict):
+        address: pulumi.Input[str]
+        """
+        The address which the Prometheus server available on.
+        """
+elif False:
+    VerificationProviderPrometheusArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VerificationProviderPrometheusArgs:
     def __init__(__self__, *,
@@ -1654,6 +2239,23 @@ class VerificationProviderPrometheusArgs:
     def address(self, value: pulumi.Input[str]):
         pulumi.set(self, "address", value)
 
+
+if not MYPY:
+    class VerificationTemplateArgArgsDict(TypedDict):
+        arg_name: pulumi.Input[str]
+        """
+        Name of an argument.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        String representation of data.
+        """
+        value_from: NotRequired[pulumi.Input['VerificationTemplateArgValueFromArgsDict']]
+        """
+        ValueFrom object.
+        """
+elif False:
+    VerificationTemplateArgArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VerificationTemplateArgArgs:
@@ -1709,6 +2311,15 @@ class VerificationTemplateArgArgs:
         pulumi.set(self, "value_from", value)
 
 
+if not MYPY:
+    class VerificationTemplateArgValueFromArgsDict(TypedDict):
+        secret_key_ref: NotRequired[pulumi.Input['VerificationTemplateArgValueFromSecretKeyRefArgsDict']]
+        """
+        Secret key to use.
+        """
+elif False:
+    VerificationTemplateArgValueFromArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VerificationTemplateArgValueFromArgs:
     def __init__(__self__, *,
@@ -1731,6 +2342,19 @@ class VerificationTemplateArgValueFromArgs:
     def secret_key_ref(self, value: Optional[pulumi.Input['VerificationTemplateArgValueFromSecretKeyRefArgs']]):
         pulumi.set(self, "secret_key_ref", value)
 
+
+if not MYPY:
+    class VerificationTemplateArgValueFromSecretKeyRefArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        The name of the field inside the secret.
+        """
+        name: pulumi.Input[str]
+        """
+        The name of the secret.
+        """
+elif False:
+    VerificationTemplateArgValueFromSecretKeyRefArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VerificationTemplateArgValueFromSecretKeyRefArgs:
@@ -1768,6 +2392,55 @@ class VerificationTemplateArgValueFromSecretKeyRefArgs:
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class VerificationTemplateMetricArgsDict(TypedDict):
+        metrics_name: pulumi.Input[str]
+        """
+        The name of the verification metric.
+        """
+        providers: pulumi.Input[Sequence[pulumi.Input['VerificationTemplateMetricProviderArgsDict']]]
+        """
+        The name of the monitoring tool chosen for the metric.
+        """
+        baseline: NotRequired[pulumi.Input['VerificationTemplateMetricBaselineArgsDict']]
+        """
+        Baseline Object.
+        """
+        consecutive_error_limit: NotRequired[pulumi.Input[int]]
+        """
+        The maximum number of times the measurement is allowed to error in succession, before the metric is considered error.Default is 4.When choosing `Jenkins` as the provider, there is no need to send this variable.
+        """
+        count: NotRequired[pulumi.Input[int]]
+        """
+        The number of times to run the measurement. If both interval and count are omitted, the effective count is 1. If only interval is specified, metric runs indefinitely. If count > 1, interval must be specified. When choosing `Jenkins` as the provider, there is no need to send this variable.
+        """
+        dry_run: NotRequired[pulumi.Input[bool]]
+        """
+        Defines whether the metric should have an impact on the result of the rollout.
+        """
+        failure_condition: NotRequired[pulumi.Input[str]]
+        """
+        An expression which determines if a measurement is considered failed.If failureCondition is set, then successCondition is not allowed. When choosing Jenkins as the provider, there is no need to send this variable.
+        """
+        failure_limit: NotRequired[pulumi.Input[int]]
+        """
+        The maximum number of times the measurement is allowed to fail, before the entire metric is considered failed.Default is 0. When choosing `Jenkins` as the provider, there is no need to send this variable.
+        """
+        initial_delay: NotRequired[pulumi.Input[str]]
+        """
+        How long to wait before starting this metric measurements. When choosing Jenkins as the provider, there is no need to send this variable.
+        """
+        interval: NotRequired[pulumi.Input[str]]
+        """
+        Defines an interval string (30s, 5m, 1h) between each verification measurements. If omitted, will perform a single measurement.When choosing Jenkins as the provider, there is no need to send this variable.
+        """
+        success_condition: NotRequired[pulumi.Input[str]]
+        """
+        An expression which determines if a measurement is considered successful. The keyword `result` is a variable reference to the value of measurement. Results can be both structured data or primitive. If successCondition is set, then failureCondition is not allowed. When choosing `Jenkins` as the provider, there is no need to send this variable.
+        """
+elif False:
+    VerificationTemplateMetricArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VerificationTemplateMetricArgs:
@@ -1950,6 +2623,27 @@ class VerificationTemplateMetricArgs:
         pulumi.set(self, "success_condition", value)
 
 
+if not MYPY:
+    class VerificationTemplateMetricBaselineArgsDict(TypedDict):
+        baseline_providers: pulumi.Input[Sequence[pulumi.Input['VerificationTemplateMetricBaselineBaselineProviderArgsDict']]]
+        """
+        The name of the monitoring tool chosen for the metric.
+        """
+        threshold: pulumi.Input[str]
+        """
+        A mathematical expression needed for the comparison. Enum: "<" ">" "<=" ">=" "=" "range"
+        """
+        max_range: NotRequired[pulumi.Input[int]]
+        """
+        Number in percent we allow the new version’s data result to be under baseline data result.
+        """
+        min_range: NotRequired[pulumi.Input[int]]
+        """
+        Number in percent we allow the new version’s data result to be under baseline data result.*
+        """
+elif False:
+    VerificationTemplateMetricBaselineArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VerificationTemplateMetricBaselineArgs:
     def __init__(__self__, *,
@@ -2019,6 +2713,23 @@ class VerificationTemplateMetricBaselineArgs:
         pulumi.set(self, "min_range", value)
 
 
+if not MYPY:
+    class VerificationTemplateMetricBaselineBaselineProviderArgsDict(TypedDict):
+        datadog: NotRequired[pulumi.Input['VerificationTemplateMetricBaselineBaselineProviderDatadogArgsDict']]
+        """
+        The datadog provider.
+        """
+        new_relic: NotRequired[pulumi.Input['VerificationTemplateMetricBaselineBaselineProviderNewRelicArgsDict']]
+        """
+        The New Relic provider.
+        """
+        prometheus: NotRequired[pulumi.Input['VerificationTemplateMetricBaselineBaselineProviderPrometheusArgsDict']]
+        """
+        The Prometheus provider.
+        """
+elif False:
+    VerificationTemplateMetricBaselineBaselineProviderArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VerificationTemplateMetricBaselineBaselineProviderArgs:
     def __init__(__self__, *,
@@ -2074,6 +2785,19 @@ class VerificationTemplateMetricBaselineBaselineProviderArgs:
         pulumi.set(self, "prometheus", value)
 
 
+if not MYPY:
+    class VerificationTemplateMetricBaselineBaselineProviderDatadogArgsDict(TypedDict):
+        datadog_query: pulumi.Input[str]
+        """
+        A request for information retrieved from Datadog.
+        """
+        duration: NotRequired[pulumi.Input[str]]
+        """
+        The window of time we are looking at in DataDog.
+        """
+elif False:
+    VerificationTemplateMetricBaselineBaselineProviderDatadogArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VerificationTemplateMetricBaselineBaselineProviderDatadogArgs:
     def __init__(__self__, *,
@@ -2111,6 +2835,19 @@ class VerificationTemplateMetricBaselineBaselineProviderDatadogArgs:
     def duration(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "duration", value)
 
+
+if not MYPY:
+    class VerificationTemplateMetricBaselineBaselineProviderNewRelicArgsDict(TypedDict):
+        new_relic_query: pulumi.Input[str]
+        """
+        A raw newrelic NRQL query to perform.
+        """
+        profile: NotRequired[pulumi.Input[str]]
+        """
+        The name of the secret holding NR account configuration.
+        """
+elif False:
+    VerificationTemplateMetricBaselineBaselineProviderNewRelicArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VerificationTemplateMetricBaselineBaselineProviderNewRelicArgs:
@@ -2150,6 +2887,15 @@ class VerificationTemplateMetricBaselineBaselineProviderNewRelicArgs:
         pulumi.set(self, "profile", value)
 
 
+if not MYPY:
+    class VerificationTemplateMetricBaselineBaselineProviderPrometheusArgsDict(TypedDict):
+        prometheus_query: pulumi.Input[str]
+        """
+        A request for information retrieved from Prometheus.
+        """
+elif False:
+    VerificationTemplateMetricBaselineBaselineProviderPrometheusArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VerificationTemplateMetricBaselineBaselineProviderPrometheusArgs:
     def __init__(__self__, *,
@@ -2171,6 +2917,39 @@ class VerificationTemplateMetricBaselineBaselineProviderPrometheusArgs:
     def prometheus_query(self, value: pulumi.Input[str]):
         pulumi.set(self, "prometheus_query", value)
 
+
+if not MYPY:
+    class VerificationTemplateMetricProviderArgsDict(TypedDict):
+        cloud_watch: NotRequired[pulumi.Input['VerificationTemplateMetricProviderCloudWatchArgsDict']]
+        """
+        The CloudWatch provider.
+        """
+        datadog: NotRequired[pulumi.Input['VerificationTemplateMetricProviderDatadogArgsDict']]
+        """
+        The datadog provider.
+        """
+        jenkins: NotRequired[pulumi.Input['VerificationTemplateMetricProviderJenkinsArgsDict']]
+        """
+        The Jenkins provider. Default is "{$}"
+        """
+        job: NotRequired[pulumi.Input['VerificationTemplateMetricProviderJobArgsDict']]
+        """
+        The Job provider.
+        """
+        new_relic: NotRequired[pulumi.Input['VerificationTemplateMetricProviderNewRelicArgsDict']]
+        """
+        The New Relic provider.
+        """
+        prometheus: NotRequired[pulumi.Input['VerificationTemplateMetricProviderPrometheusArgsDict']]
+        """
+        The Prometheus provider.
+        """
+        web: NotRequired[pulumi.Input['VerificationTemplateMetricProviderWebArgsDict']]
+        """
+        The Web provider.
+        """
+elif False:
+    VerificationTemplateMetricProviderArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VerificationTemplateMetricProviderArgs:
@@ -2291,6 +3070,19 @@ class VerificationTemplateMetricProviderArgs:
         pulumi.set(self, "web", value)
 
 
+if not MYPY:
+    class VerificationTemplateMetricProviderCloudWatchArgsDict(TypedDict):
+        metric_data_queries: pulumi.Input[Sequence[pulumi.Input['VerificationTemplateMetricProviderCloudWatchMetricDataQueryArgsDict']]]
+        """
+        The metric queries to be returned. A single MetricData call can include as many as 500 MetricDataQuery structures. Each of these structures can specify either a metric to retrieve, a Metrics Insights query, or a math expression to perform on retrieved data.
+        """
+        duration: NotRequired[pulumi.Input[str]]
+        """
+        The window of time we are looking at in CloudWatch.
+        """
+elif False:
+    VerificationTemplateMetricProviderCloudWatchArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VerificationTemplateMetricProviderCloudWatchArgs:
     def __init__(__self__, *,
@@ -2328,6 +3120,35 @@ class VerificationTemplateMetricProviderCloudWatchArgs:
     def duration(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "duration", value)
 
+
+if not MYPY:
+    class VerificationTemplateMetricProviderCloudWatchMetricDataQueryArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The response ID. Must be unique and not null. This object can contain characters, letters, numbers and underscore. The first letter must be a lowercase letter.
+        """
+        expression: NotRequired[pulumi.Input[str]]
+        """
+        This field can contain either a Metrics Insights query, or a metric math expression to be performed on the returned data. Within one metricdataquery object, you must specify either expression or metricstat but not both.
+        """
+        label: NotRequired[pulumi.Input[str]]
+        """
+        A human-readable label for this metric or expression. If the metric or expression is shown in a CloudWatch dashboard widget, the label is shown
+        """
+        metric_stat: NotRequired[pulumi.Input['VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatArgsDict']]
+        """
+        The metric to be returned, along with statistics, period, and units. Use this parameter only if this object is retrieving a metric and not performing a math expression on returned data.Within one metricdataquery object, you must specify either expression or metricstat but not both.
+        """
+        period: NotRequired[pulumi.Input[int]]
+        """
+        The granularity, in seconds, of the returned data points.
+        """
+        return_data: NotRequired[pulumi.Input[bool]]
+        """
+        This option indicates whether to return the timestamps and raw data values of this metric. If you are performing this call just to do math expressions and do not also need the raw data returned, you can specify `false`. If you omit this, the default of `true` is used.
+        """
+elif False:
+    VerificationTemplateMetricProviderCloudWatchMetricDataQueryArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VerificationTemplateMetricProviderCloudWatchMetricDataQueryArgs:
@@ -2431,6 +3252,27 @@ class VerificationTemplateMetricProviderCloudWatchMetricDataQueryArgs:
         pulumi.set(self, "return_data", value)
 
 
+if not MYPY:
+    class VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatArgsDict(TypedDict):
+        metric: NotRequired[pulumi.Input['VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricArgsDict']]
+        """
+        The metric to return, including the metric name, namespace, and dimensions.
+        """
+        metric_period: NotRequired[pulumi.Input[int]]
+        """
+        The granularity, in seconds, of the returned data points.
+        """
+        stat: NotRequired[pulumi.Input[str]]
+        """
+        The statistic to return. It can include any CloudWatch statistic or extended statistic.
+        """
+        unit: NotRequired[pulumi.Input[str]]
+        """
+        This defines what unit you want to use when storing the metric.  Enum: `"Seconds" "Microseconds" "Milliseconds" "Bytes" "Kilobytes" "Megabytes" "Gigabytes" "Terabytes" "Bits" "Kilobits" "Megabits" "Gigabits" "Terabits" "Percent" "Count" "Bytes/Second" "Kilobytes/Second" "Megabytes/Second" "Gigabytes/Second" "Terabytes/Second" "Bits/Second" "Kilobits/Second" "Megabits/Second" "Gigabits/Second" "Terabits/Second" "Count/Second" "None"`
+        """
+elif False:
+    VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatArgs:
     def __init__(__self__, *,
@@ -2502,6 +3344,23 @@ class VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatArgs:
         pulumi.set(self, "unit", value)
 
 
+if not MYPY:
+    class VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricArgsDict(TypedDict):
+        metric_name: pulumi.Input[str]
+        """
+        The name of the metric.
+        """
+        dimensions: NotRequired[pulumi.Input[Sequence[pulumi.Input['VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArgsDict']]]]
+        """
+        A dimension is a name/value pair that is part of the identity of a metric.You can assign upto 30 dimensions to a metric
+        """
+        namespace: NotRequired[pulumi.Input[str]]
+        """
+        The namespace of the metric.
+        """
+elif False:
+    VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricArgs:
     def __init__(__self__, *,
@@ -2556,6 +3415,19 @@ class VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetri
         pulumi.set(self, "namespace", value)
 
 
+if not MYPY:
+    class VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArgsDict(TypedDict):
+        dimension_name: pulumi.Input[str]
+        """
+        The name of the dimensions. These values must contain only ASCII characters and must include at least one non-whitespace characte
+        """
+        dimension_value: pulumi.Input[str]
+        """
+        The value of the dimensions.These values must contain only ASCII characters and must include at least one non-whitespace characte
+        """
+elif False:
+    VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArgs:
     def __init__(__self__, *,
@@ -2592,6 +3464,19 @@ class VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetri
     def dimension_value(self, value: pulumi.Input[str]):
         pulumi.set(self, "dimension_value", value)
 
+
+if not MYPY:
+    class VerificationTemplateMetricProviderDatadogArgsDict(TypedDict):
+        datadog_query: NotRequired[pulumi.Input[str]]
+        """
+        A request for information retrieved from Datadog.
+        """
+        duration: NotRequired[pulumi.Input[str]]
+        """
+        The window of time we are looking at in DataDog.
+        """
+elif False:
+    VerificationTemplateMetricProviderDatadogArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VerificationTemplateMetricProviderDatadogArgs:
@@ -2631,6 +3516,31 @@ class VerificationTemplateMetricProviderDatadogArgs:
     def duration(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "duration", value)
 
+
+if not MYPY:
+    class VerificationTemplateMetricProviderJenkinsArgsDict(TypedDict):
+        jenkins_interval: pulumi.Input[str]
+        """
+        The interval time to poll status.
+        """
+        pipeline_name: pulumi.Input[str]
+        """
+        The Jenkins pipeline name.
+        """
+        timeout: pulumi.Input[str]
+        """
+        The total jenkins timeout.
+        """
+        jenkins_parameters: NotRequired[pulumi.Input['VerificationTemplateMetricProviderJenkinsJenkinsParametersArgsDict']]
+        """
+        List of parameters.
+        """
+        tls_verification: NotRequired[pulumi.Input[bool]]
+        """
+        Host TLS verification.
+        """
+elif False:
+    VerificationTemplateMetricProviderJenkinsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VerificationTemplateMetricProviderJenkinsArgs:
@@ -2716,6 +3626,19 @@ class VerificationTemplateMetricProviderJenkinsArgs:
         pulumi.set(self, "tls_verification", value)
 
 
+if not MYPY:
+    class VerificationTemplateMetricProviderJenkinsJenkinsParametersArgsDict(TypedDict):
+        parameter_key: pulumi.Input[str]
+        """
+        Key of an argument.
+        """
+        parameter_value: pulumi.Input[str]
+        """
+        Value of an argument.
+        """
+elif False:
+    VerificationTemplateMetricProviderJenkinsJenkinsParametersArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VerificationTemplateMetricProviderJenkinsJenkinsParametersArgs:
     def __init__(__self__, *,
@@ -2753,6 +3676,15 @@ class VerificationTemplateMetricProviderJenkinsJenkinsParametersArgs:
         pulumi.set(self, "parameter_value", value)
 
 
+if not MYPY:
+    class VerificationTemplateMetricProviderJobArgsDict(TypedDict):
+        specs: pulumi.Input[Sequence[pulumi.Input['VerificationTemplateMetricProviderJobSpecArgsDict']]]
+        """
+        The job spec require to run the metric.
+        """
+elif False:
+    VerificationTemplateMetricProviderJobArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VerificationTemplateMetricProviderJobArgs:
     def __init__(__self__, *,
@@ -2774,6 +3706,19 @@ class VerificationTemplateMetricProviderJobArgs:
     def specs(self, value: pulumi.Input[Sequence[pulumi.Input['VerificationTemplateMetricProviderJobSpecArgs']]]):
         pulumi.set(self, "specs", value)
 
+
+if not MYPY:
+    class VerificationTemplateMetricProviderJobSpecArgsDict(TypedDict):
+        job_templates: pulumi.Input[Sequence[pulumi.Input['VerificationTemplateMetricProviderJobSpecJobTemplateArgsDict']]]
+        """
+        Describes the pod that will be created when executing a job.
+        """
+        backoff_limit: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the number of retries before marking this job failed.
+        """
+elif False:
+    VerificationTemplateMetricProviderJobSpecArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VerificationTemplateMetricProviderJobSpecArgs:
@@ -2813,6 +3758,15 @@ class VerificationTemplateMetricProviderJobSpecArgs:
         pulumi.set(self, "backoff_limit", value)
 
 
+if not MYPY:
+    class VerificationTemplateMetricProviderJobSpecJobTemplateArgsDict(TypedDict):
+        template_specs: pulumi.Input[Sequence[pulumi.Input['VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArgsDict']]]
+        """
+        Specification of the desired behavior of the pod.
+        """
+elif False:
+    VerificationTemplateMetricProviderJobSpecJobTemplateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VerificationTemplateMetricProviderJobSpecJobTemplateArgs:
     def __init__(__self__, *,
@@ -2834,6 +3788,19 @@ class VerificationTemplateMetricProviderJobSpecJobTemplateArgs:
     def template_specs(self, value: pulumi.Input[Sequence[pulumi.Input['VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArgs']]]):
         pulumi.set(self, "template_specs", value)
 
+
+if not MYPY:
+    class VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArgsDict(TypedDict):
+        containers: pulumi.Input[Sequence[pulumi.Input['VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArgsDict']]]
+        """
+        A list of containers belonging to the pod.
+        """
+        restart_policy: pulumi.Input[str]
+        """
+        Restart policy for all containers within the pod. Enum: `"Never" "OnFailure"`
+        """
+elif False:
+    VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArgs:
@@ -2871,6 +3838,23 @@ class VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecArgs:
     def restart_policy(self, value: pulumi.Input[str]):
         pulumi.set(self, "restart_policy", value)
 
+
+if not MYPY:
+    class VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArgsDict(TypedDict):
+        commands: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The entry point of a container.
+        """
+        container_name: pulumi.Input[str]
+        """
+        The name of a container.
+        """
+        image: pulumi.Input[str]
+        """
+        The image name of a container.
+        """
+elif False:
+    VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerArgs:
@@ -2924,6 +3908,19 @@ class VerificationTemplateMetricProviderJobSpecJobTemplateTemplateSpecContainerA
         pulumi.set(self, "image", value)
 
 
+if not MYPY:
+    class VerificationTemplateMetricProviderNewRelicArgsDict(TypedDict):
+        new_relic_query: pulumi.Input[str]
+        """
+        A raw newrelic NRQL query to perform.
+        """
+        profile: NotRequired[pulumi.Input[str]]
+        """
+        The name of the secret holding NR account configuration.
+        """
+elif False:
+    VerificationTemplateMetricProviderNewRelicArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VerificationTemplateMetricProviderNewRelicArgs:
     def __init__(__self__, *,
@@ -2962,6 +3959,15 @@ class VerificationTemplateMetricProviderNewRelicArgs:
         pulumi.set(self, "profile", value)
 
 
+if not MYPY:
+    class VerificationTemplateMetricProviderPrometheusArgsDict(TypedDict):
+        prometheus_query: pulumi.Input[str]
+        """
+        A request for information retrieved from Prometheus.
+        """
+elif False:
+    VerificationTemplateMetricProviderPrometheusArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VerificationTemplateMetricProviderPrometheusArgs:
     def __init__(__self__, *,
@@ -2983,6 +3989,39 @@ class VerificationTemplateMetricProviderPrometheusArgs:
     def prometheus_query(self, value: pulumi.Input[str]):
         pulumi.set(self, "prometheus_query", value)
 
+
+if not MYPY:
+    class VerificationTemplateMetricProviderWebArgsDict(TypedDict):
+        url: pulumi.Input[str]
+        """
+        The address of the web metric.
+        """
+        body: NotRequired[pulumi.Input[str]]
+        """
+        The body of the web metric.
+        """
+        insecure: NotRequired[pulumi.Input[bool]]
+        """
+        Skips host TLS verification.
+        """
+        json_path: NotRequired[pulumi.Input[str]]
+        """
+        A JSON Path to use as the result variable. Default is "{$}"
+        """
+        method: NotRequired[pulumi.Input[str]]
+        """
+        The method of the web metric.  Enum: "GET" "POST" "PUT"
+        """
+        timeout_seconds: NotRequired[pulumi.Input[int]]
+        """
+        The timeout for the request in seconds. Default is 10.
+        """
+        web_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['VerificationTemplateMetricProviderWebWebHeaderArgsDict']]]]
+        """
+        Optional HTTP headers to use in the request.
+        """
+elif False:
+    VerificationTemplateMetricProviderWebArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VerificationTemplateMetricProviderWebArgs:
@@ -3101,6 +4140,19 @@ class VerificationTemplateMetricProviderWebArgs:
     def web_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VerificationTemplateMetricProviderWebWebHeaderArgs']]]]):
         pulumi.set(self, "web_headers", value)
 
+
+if not MYPY:
+    class VerificationTemplateMetricProviderWebWebHeaderArgsDict(TypedDict):
+        web_header_key: pulumi.Input[str]
+        """
+        The name of a header
+        """
+        web_header_value: pulumi.Input[str]
+        """
+        The value of a header
+        """
+elif False:
+    VerificationTemplateMetricProviderWebWebHeaderArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VerificationTemplateMetricProviderWebWebHeaderArgs:
