@@ -4,86 +4,176 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
     'DataIntegrationS3Args',
+    'DataIntegrationS3ArgsDict',
     'ElastigroupAzureV3ExtensionArgs',
+    'ElastigroupAzureV3ExtensionArgsDict',
     'ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultArgs',
+    'ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultArgsDict',
     'ElastigroupAzureV3ImageArgs',
+    'ElastigroupAzureV3ImageArgsDict',
     'ElastigroupAzureV3ImageCustomArgs',
+    'ElastigroupAzureV3ImageCustomArgsDict',
     'ElastigroupAzureV3ImageGalleryImageArgs',
+    'ElastigroupAzureV3ImageGalleryImageArgsDict',
     'ElastigroupAzureV3ImageMarketplaceArgs',
+    'ElastigroupAzureV3ImageMarketplaceArgsDict',
     'ElastigroupAzureV3LoginArgs',
+    'ElastigroupAzureV3LoginArgsDict',
     'ElastigroupAzureV3ManagedServiceIdentityArgs',
+    'ElastigroupAzureV3ManagedServiceIdentityArgsDict',
     'ElastigroupAzureV3NetworkArgs',
+    'ElastigroupAzureV3NetworkArgsDict',
     'ElastigroupAzureV3NetworkNetworkInterfaceArgs',
+    'ElastigroupAzureV3NetworkNetworkInterfaceArgsDict',
     'ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs',
+    'ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgsDict',
     'ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs',
+    'ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgsDict',
     'ElastigroupAzureV3ScalingDownPolicyArgs',
+    'ElastigroupAzureV3ScalingDownPolicyArgsDict',
     'ElastigroupAzureV3ScalingDownPolicyActionArgs',
+    'ElastigroupAzureV3ScalingDownPolicyActionArgsDict',
     'ElastigroupAzureV3ScalingDownPolicyDimensionArgs',
+    'ElastigroupAzureV3ScalingDownPolicyDimensionArgsDict',
     'ElastigroupAzureV3ScalingUpPolicyArgs',
+    'ElastigroupAzureV3ScalingUpPolicyArgsDict',
     'ElastigroupAzureV3ScalingUpPolicyActionArgs',
+    'ElastigroupAzureV3ScalingUpPolicyActionArgsDict',
     'ElastigroupAzureV3ScalingUpPolicyDimensionArgs',
+    'ElastigroupAzureV3ScalingUpPolicyDimensionArgsDict',
     'ElastigroupAzureV3TagArgs',
+    'ElastigroupAzureV3TagArgsDict',
     'ElastigroupAzureV3VmSizesArgs',
+    'ElastigroupAzureV3VmSizesArgsDict',
     'HealthCheckCheckArgs',
+    'HealthCheckCheckArgsDict',
     'OceanRightSizingRuleAttachWorkloadArgs',
+    'OceanRightSizingRuleAttachWorkloadArgsDict',
     'OceanRightSizingRuleAttachWorkloadNamespaceArgs',
+    'OceanRightSizingRuleAttachWorkloadNamespaceArgsDict',
     'OceanRightSizingRuleAttachWorkloadNamespaceLabelArgs',
+    'OceanRightSizingRuleAttachWorkloadNamespaceLabelArgsDict',
     'OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArgs',
+    'OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArgsDict',
     'OceanRightSizingRuleDetachWorkloadArgs',
+    'OceanRightSizingRuleDetachWorkloadArgsDict',
     'OceanRightSizingRuleDetachWorkloadNamespaceArgs',
+    'OceanRightSizingRuleDetachWorkloadNamespaceArgsDict',
     'OceanRightSizingRuleDetachWorkloadNamespaceLabelArgs',
+    'OceanRightSizingRuleDetachWorkloadNamespaceLabelArgsDict',
     'OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArgs',
+    'OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArgsDict',
     'OceanRightSizingRuleRecommendationApplicationBoundaryArgs',
+    'OceanRightSizingRuleRecommendationApplicationBoundaryArgsDict',
     'OceanRightSizingRuleRecommendationApplicationIntervalArgs',
+    'OceanRightSizingRuleRecommendationApplicationIntervalArgsDict',
     'OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs',
+    'OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgsDict',
     'OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgs',
+    'OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgsDict',
     'OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgs',
+    'OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgsDict',
     'OceanRightSizingRuleRecommendationApplicationMinThresholdArgs',
+    'OceanRightSizingRuleRecommendationApplicationMinThresholdArgsDict',
     'OceanRightSizingRuleRecommendationApplicationOverheadValueArgs',
+    'OceanRightSizingRuleRecommendationApplicationOverheadValueArgsDict',
     'StatefulNodeAzureAttachDataDiskArgs',
+    'StatefulNodeAzureAttachDataDiskArgsDict',
     'StatefulNodeAzureBootDiagnosticArgs',
+    'StatefulNodeAzureBootDiagnosticArgsDict',
     'StatefulNodeAzureDataDiskArgs',
+    'StatefulNodeAzureDataDiskArgsDict',
     'StatefulNodeAzureDeleteArgs',
+    'StatefulNodeAzureDeleteArgsDict',
     'StatefulNodeAzureDetachDataDiskArgs',
+    'StatefulNodeAzureDetachDataDiskArgsDict',
     'StatefulNodeAzureExtensionArgs',
+    'StatefulNodeAzureExtensionArgsDict',
     'StatefulNodeAzureHealthArgs',
+    'StatefulNodeAzureHealthArgsDict',
     'StatefulNodeAzureImageArgs',
+    'StatefulNodeAzureImageArgsDict',
     'StatefulNodeAzureImageCustomImageArgs',
+    'StatefulNodeAzureImageCustomImageArgsDict',
     'StatefulNodeAzureImageGalleryArgs',
+    'StatefulNodeAzureImageGalleryArgsDict',
     'StatefulNodeAzureImageMarketplaceImageArgs',
+    'StatefulNodeAzureImageMarketplaceImageArgsDict',
     'StatefulNodeAzureImportVmArgs',
+    'StatefulNodeAzureImportVmArgsDict',
     'StatefulNodeAzureLoadBalancerArgs',
+    'StatefulNodeAzureLoadBalancerArgsDict',
     'StatefulNodeAzureLoginArgs',
+    'StatefulNodeAzureLoginArgsDict',
     'StatefulNodeAzureManagedServiceIdentityArgs',
+    'StatefulNodeAzureManagedServiceIdentityArgsDict',
     'StatefulNodeAzureNetworkArgs',
+    'StatefulNodeAzureNetworkArgsDict',
     'StatefulNodeAzureNetworkNetworkInterfaceArgs',
+    'StatefulNodeAzureNetworkNetworkInterfaceArgsDict',
     'StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgs',
+    'StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgsDict',
     'StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs',
+    'StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgsDict',
     'StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs',
+    'StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgsDict',
     'StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs',
+    'StatefulNodeAzureNetworkNetworkInterfacePublicIpArgsDict',
     'StatefulNodeAzureOsDiskArgs',
+    'StatefulNodeAzureOsDiskArgsDict',
     'StatefulNodeAzureProximityPlacementGroupArgs',
+    'StatefulNodeAzureProximityPlacementGroupArgsDict',
     'StatefulNodeAzureSchedulingTaskArgs',
+    'StatefulNodeAzureSchedulingTaskArgsDict',
     'StatefulNodeAzureSecretArgs',
+    'StatefulNodeAzureSecretArgsDict',
     'StatefulNodeAzureSecretSourceVaultArgs',
+    'StatefulNodeAzureSecretSourceVaultArgsDict',
     'StatefulNodeAzureSecretVaultCertificateArgs',
+    'StatefulNodeAzureSecretVaultCertificateArgsDict',
     'StatefulNodeAzureSecurityArgs',
+    'StatefulNodeAzureSecurityArgsDict',
     'StatefulNodeAzureSignalArgs',
+    'StatefulNodeAzureSignalArgsDict',
     'StatefulNodeAzureStrategyArgs',
+    'StatefulNodeAzureStrategyArgsDict',
     'StatefulNodeAzureStrategyCapacityReservationArgs',
+    'StatefulNodeAzureStrategyCapacityReservationArgsDict',
     'StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs',
+    'StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgsDict',
     'StatefulNodeAzureStrategyRevertToSpotArgs',
+    'StatefulNodeAzureStrategyRevertToSpotArgsDict',
     'StatefulNodeAzureTagArgs',
+    'StatefulNodeAzureTagArgsDict',
     'StatefulNodeAzureUpdateStateArgs',
+    'StatefulNodeAzureUpdateStateArgsDict',
     'StatefulNodeAzureVmSizesArgs',
+    'StatefulNodeAzureVmSizesArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class DataIntegrationS3ArgsDict(TypedDict):
+        bucket_name: pulumi.Input[str]
+        subdir: NotRequired[pulumi.Input[str]]
+        """
+        The subdirectory in which your files will be stored within the bucket. Adds the prefix subdir/ to new objects' keys. Can't be null or contain '/'.
+        """
+elif False:
+    DataIntegrationS3ArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DataIntegrationS3Args:
@@ -118,6 +208,20 @@ class DataIntegrationS3Args:
     def subdir(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subdir", value)
 
+
+if not MYPY:
+    class ElastigroupAzureV3ExtensionArgsDict(TypedDict):
+        api_version: pulumi.Input[str]
+        minor_version_auto_upgrade: pulumi.Input[bool]
+        name: pulumi.Input[str]
+        publisher: pulumi.Input[str]
+        type: pulumi.Input[str]
+        enable_automatic_upgrade: NotRequired[pulumi.Input[bool]]
+        protected_settings: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        protected_settings_from_key_vault: NotRequired[pulumi.Input['ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultArgsDict']]
+        public_settings: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+elif False:
+    ElastigroupAzureV3ExtensionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupAzureV3ExtensionArgs:
@@ -227,6 +331,13 @@ class ElastigroupAzureV3ExtensionArgs:
         pulumi.set(self, "public_settings", value)
 
 
+if not MYPY:
+    class ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultArgsDict(TypedDict):
+        secret_url: pulumi.Input[str]
+        source_vault: pulumi.Input[str]
+elif False:
+    ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultArgs:
     def __init__(__self__, *,
@@ -253,6 +364,14 @@ class ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultArgs:
     def source_vault(self, value: pulumi.Input[str]):
         pulumi.set(self, "source_vault", value)
 
+
+if not MYPY:
+    class ElastigroupAzureV3ImageArgsDict(TypedDict):
+        customs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageCustomArgsDict']]]]
+        gallery_images: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageGalleryImageArgsDict']]]]
+        marketplaces: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageMarketplaceArgsDict']]]]
+elif False:
+    ElastigroupAzureV3ImageArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupAzureV3ImageArgs:
@@ -295,6 +414,13 @@ class ElastigroupAzureV3ImageArgs:
         pulumi.set(self, "marketplaces", value)
 
 
+if not MYPY:
+    class ElastigroupAzureV3ImageCustomArgsDict(TypedDict):
+        image_name: pulumi.Input[str]
+        resource_group_name: pulumi.Input[str]
+elif False:
+    ElastigroupAzureV3ImageCustomArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupAzureV3ImageCustomArgs:
     def __init__(__self__, *,
@@ -321,6 +447,16 @@ class ElastigroupAzureV3ImageCustomArgs:
     def resource_group_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "resource_group_name", value)
 
+
+if not MYPY:
+    class ElastigroupAzureV3ImageGalleryImageArgsDict(TypedDict):
+        gallery_name: pulumi.Input[str]
+        image_name: pulumi.Input[str]
+        resource_group_name: pulumi.Input[str]
+        version: pulumi.Input[str]
+        spot_account_id: NotRequired[pulumi.Input[str]]
+elif False:
+    ElastigroupAzureV3ImageGalleryImageArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupAzureV3ImageGalleryImageArgs:
@@ -383,6 +519,15 @@ class ElastigroupAzureV3ImageGalleryImageArgs:
         pulumi.set(self, "spot_account_id", value)
 
 
+if not MYPY:
+    class ElastigroupAzureV3ImageMarketplaceArgsDict(TypedDict):
+        offer: pulumi.Input[str]
+        publisher: pulumi.Input[str]
+        sku: pulumi.Input[str]
+        version: pulumi.Input[str]
+elif False:
+    ElastigroupAzureV3ImageMarketplaceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupAzureV3ImageMarketplaceArgs:
     def __init__(__self__, *,
@@ -432,6 +577,14 @@ class ElastigroupAzureV3ImageMarketplaceArgs:
         pulumi.set(self, "version", value)
 
 
+if not MYPY:
+    class ElastigroupAzureV3LoginArgsDict(TypedDict):
+        user_name: pulumi.Input[str]
+        password: NotRequired[pulumi.Input[str]]
+        ssh_public_key: NotRequired[pulumi.Input[str]]
+elif False:
+    ElastigroupAzureV3LoginArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupAzureV3LoginArgs:
     def __init__(__self__, *,
@@ -472,6 +625,13 @@ class ElastigroupAzureV3LoginArgs:
         pulumi.set(self, "ssh_public_key", value)
 
 
+if not MYPY:
+    class ElastigroupAzureV3ManagedServiceIdentityArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        resource_group_name: pulumi.Input[str]
+elif False:
+    ElastigroupAzureV3ManagedServiceIdentityArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupAzureV3ManagedServiceIdentityArgs:
     def __init__(__self__, *,
@@ -498,6 +658,14 @@ class ElastigroupAzureV3ManagedServiceIdentityArgs:
     def resource_group_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "resource_group_name", value)
 
+
+if not MYPY:
+    class ElastigroupAzureV3NetworkArgsDict(TypedDict):
+        network_interfaces: pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceArgsDict']]]
+        resource_group_name: pulumi.Input[str]
+        virtual_network_name: pulumi.Input[str]
+elif False:
+    ElastigroupAzureV3NetworkArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupAzureV3NetworkArgs:
@@ -536,6 +704,16 @@ class ElastigroupAzureV3NetworkArgs:
     def virtual_network_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "virtual_network_name", value)
 
+
+if not MYPY:
+    class ElastigroupAzureV3NetworkNetworkInterfaceArgsDict(TypedDict):
+        assign_public_ip: pulumi.Input[bool]
+        is_primary: pulumi.Input[bool]
+        subnet_name: pulumi.Input[str]
+        additional_ip_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgsDict']]]]
+        application_security_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgsDict']]]]
+elif False:
+    ElastigroupAzureV3NetworkNetworkInterfaceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupAzureV3NetworkNetworkInterfaceArgs:
@@ -599,6 +777,13 @@ class ElastigroupAzureV3NetworkNetworkInterfaceArgs:
         pulumi.set(self, "application_security_groups", value)
 
 
+if not MYPY:
+    class ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        private_ip_version: NotRequired[pulumi.Input[str]]
+elif False:
+    ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs:
     def __init__(__self__, *,
@@ -627,6 +812,13 @@ class ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs:
         pulumi.set(self, "private_ip_version", value)
 
 
+if not MYPY:
+    class ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        resource_group_name: pulumi.Input[str]
+elif False:
+    ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs:
     def __init__(__self__, *,
@@ -653,6 +845,25 @@ class ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs:
     def resource_group_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "resource_group_name", value)
 
+
+if not MYPY:
+    class ElastigroupAzureV3ScalingDownPolicyArgsDict(TypedDict):
+        action: pulumi.Input['ElastigroupAzureV3ScalingDownPolicyActionArgsDict']
+        cooldown: pulumi.Input[int]
+        evaluation_periods: pulumi.Input[int]
+        metric_name: pulumi.Input[str]
+        namespace: pulumi.Input[str]
+        operator: pulumi.Input[str]
+        period: pulumi.Input[int]
+        policy_name: pulumi.Input[str]
+        statistic: pulumi.Input[str]
+        threshold: pulumi.Input[float]
+        dimensions: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ScalingDownPolicyDimensionArgsDict']]]]
+        is_enabled: NotRequired[pulumi.Input[bool]]
+        source: NotRequired[pulumi.Input[str]]
+        unit: NotRequired[pulumi.Input[str]]
+elif False:
+    ElastigroupAzureV3ScalingDownPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupAzureV3ScalingDownPolicyArgs:
@@ -817,6 +1028,16 @@ class ElastigroupAzureV3ScalingDownPolicyArgs:
         pulumi.set(self, "unit", value)
 
 
+if not MYPY:
+    class ElastigroupAzureV3ScalingDownPolicyActionArgsDict(TypedDict):
+        adjustment: NotRequired[pulumi.Input[str]]
+        maximum: NotRequired[pulumi.Input[str]]
+        minimum: NotRequired[pulumi.Input[str]]
+        target: NotRequired[pulumi.Input[str]]
+        type: NotRequired[pulumi.Input[str]]
+elif False:
+    ElastigroupAzureV3ScalingDownPolicyActionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupAzureV3ScalingDownPolicyActionArgs:
     def __init__(__self__, *,
@@ -882,6 +1103,13 @@ class ElastigroupAzureV3ScalingDownPolicyActionArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class ElastigroupAzureV3ScalingDownPolicyDimensionArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        value: NotRequired[pulumi.Input[str]]
+elif False:
+    ElastigroupAzureV3ScalingDownPolicyDimensionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupAzureV3ScalingDownPolicyDimensionArgs:
     def __init__(__self__, *,
@@ -910,6 +1138,25 @@ class ElastigroupAzureV3ScalingDownPolicyDimensionArgs:
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class ElastigroupAzureV3ScalingUpPolicyArgsDict(TypedDict):
+        action: pulumi.Input['ElastigroupAzureV3ScalingUpPolicyActionArgsDict']
+        cooldown: pulumi.Input[int]
+        evaluation_periods: pulumi.Input[int]
+        metric_name: pulumi.Input[str]
+        namespace: pulumi.Input[str]
+        operator: pulumi.Input[str]
+        period: pulumi.Input[int]
+        policy_name: pulumi.Input[str]
+        statistic: pulumi.Input[str]
+        threshold: pulumi.Input[float]
+        dimensions: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ScalingUpPolicyDimensionArgsDict']]]]
+        is_enabled: NotRequired[pulumi.Input[bool]]
+        source: NotRequired[pulumi.Input[str]]
+        unit: NotRequired[pulumi.Input[str]]
+elif False:
+    ElastigroupAzureV3ScalingUpPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElastigroupAzureV3ScalingUpPolicyArgs:
@@ -1074,6 +1321,16 @@ class ElastigroupAzureV3ScalingUpPolicyArgs:
         pulumi.set(self, "unit", value)
 
 
+if not MYPY:
+    class ElastigroupAzureV3ScalingUpPolicyActionArgsDict(TypedDict):
+        adjustment: NotRequired[pulumi.Input[str]]
+        maximum: NotRequired[pulumi.Input[str]]
+        minimum: NotRequired[pulumi.Input[str]]
+        target: NotRequired[pulumi.Input[str]]
+        type: NotRequired[pulumi.Input[str]]
+elif False:
+    ElastigroupAzureV3ScalingUpPolicyActionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupAzureV3ScalingUpPolicyActionArgs:
     def __init__(__self__, *,
@@ -1139,6 +1396,13 @@ class ElastigroupAzureV3ScalingUpPolicyActionArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class ElastigroupAzureV3ScalingUpPolicyDimensionArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        value: NotRequired[pulumi.Input[str]]
+elif False:
+    ElastigroupAzureV3ScalingUpPolicyDimensionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupAzureV3ScalingUpPolicyDimensionArgs:
     def __init__(__self__, *,
@@ -1168,6 +1432,13 @@ class ElastigroupAzureV3ScalingUpPolicyDimensionArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class ElastigroupAzureV3TagArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        value: pulumi.Input[str]
+elif False:
+    ElastigroupAzureV3TagArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupAzureV3TagArgs:
     def __init__(__self__, *,
@@ -1195,6 +1466,13 @@ class ElastigroupAzureV3TagArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class ElastigroupAzureV3VmSizesArgsDict(TypedDict):
+        od_sizes: pulumi.Input[Sequence[pulumi.Input[str]]]
+        spot_sizes: pulumi.Input[Sequence[pulumi.Input[str]]]
+elif False:
+    ElastigroupAzureV3VmSizesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElastigroupAzureV3VmSizesArgs:
     def __init__(__self__, *,
@@ -1221,6 +1499,41 @@ class ElastigroupAzureV3VmSizesArgs:
     def spot_sizes(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "spot_sizes", value)
 
+
+if not MYPY:
+    class HealthCheckCheckArgsDict(TypedDict):
+        healthy: pulumi.Input[int]
+        """
+        The number of consecutive successful health checks that must occur before declaring an instance healthy.
+        """
+        interval: pulumi.Input[int]
+        """
+        The amount of time (in seconds) between each health check (minimum: 10).
+        """
+        port: pulumi.Input[int]
+        """
+        The port to use to connect with the instance.
+        """
+        protocol: pulumi.Input[str]
+        """
+        The protocol to use to connect with the instance. Valid values: http, https.
+        """
+        unhealthy: pulumi.Input[int]
+        """
+        The number of consecutive failed health checks that must occur before declaring an instance unhealthy.
+        """
+        end_point: NotRequired[pulumi.Input[str]]
+        endpoint: NotRequired[pulumi.Input[str]]
+        """
+        The destination for the request.
+        """
+        time_out: NotRequired[pulumi.Input[int]]
+        timeout: NotRequired[pulumi.Input[int]]
+        """
+        the amount of time (in seconds) to wait when receiving a response from the health check.
+        """
+elif False:
+    HealthCheckCheckArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HealthCheckCheckArgs:
@@ -1360,6 +1673,12 @@ class HealthCheckCheckArgs:
         pulumi.set(self, "timeout", value)
 
 
+if not MYPY:
+    class OceanRightSizingRuleAttachWorkloadArgsDict(TypedDict):
+        namespaces: pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadNamespaceArgsDict']]]
+elif False:
+    OceanRightSizingRuleAttachWorkloadArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanRightSizingRuleAttachWorkloadArgs:
     def __init__(__self__, *,
@@ -1375,6 +1694,14 @@ class OceanRightSizingRuleAttachWorkloadArgs:
     def namespaces(self, value: pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadNamespaceArgs']]]):
         pulumi.set(self, "namespaces", value)
 
+
+if not MYPY:
+    class OceanRightSizingRuleAttachWorkloadNamespaceArgsDict(TypedDict):
+        namespace_name: pulumi.Input[str]
+        labels: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadNamespaceLabelArgsDict']]]]
+        workloads: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArgsDict']]]]
+elif False:
+    OceanRightSizingRuleAttachWorkloadNamespaceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanRightSizingRuleAttachWorkloadNamespaceArgs:
@@ -1416,6 +1743,13 @@ class OceanRightSizingRuleAttachWorkloadNamespaceArgs:
         pulumi.set(self, "workloads", value)
 
 
+if not MYPY:
+    class OceanRightSizingRuleAttachWorkloadNamespaceLabelArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        value: pulumi.Input[str]
+elif False:
+    OceanRightSizingRuleAttachWorkloadNamespaceLabelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanRightSizingRuleAttachWorkloadNamespaceLabelArgs:
     def __init__(__self__, *,
@@ -1442,6 +1776,14 @@ class OceanRightSizingRuleAttachWorkloadNamespaceLabelArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArgsDict(TypedDict):
+        workload_type: pulumi.Input[str]
+        regex_name: NotRequired[pulumi.Input[str]]
+        workload_name: NotRequired[pulumi.Input[str]]
+elif False:
+    OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArgs:
@@ -1483,6 +1825,12 @@ class OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArgs:
         pulumi.set(self, "workload_name", value)
 
 
+if not MYPY:
+    class OceanRightSizingRuleDetachWorkloadArgsDict(TypedDict):
+        namespaces: pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadNamespaceArgsDict']]]
+elif False:
+    OceanRightSizingRuleDetachWorkloadArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanRightSizingRuleDetachWorkloadArgs:
     def __init__(__self__, *,
@@ -1498,6 +1846,14 @@ class OceanRightSizingRuleDetachWorkloadArgs:
     def namespaces(self, value: pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadNamespaceArgs']]]):
         pulumi.set(self, "namespaces", value)
 
+
+if not MYPY:
+    class OceanRightSizingRuleDetachWorkloadNamespaceArgsDict(TypedDict):
+        namespace_name: pulumi.Input[str]
+        labels: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadNamespaceLabelArgsDict']]]]
+        workloads: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArgsDict']]]]
+elif False:
+    OceanRightSizingRuleDetachWorkloadNamespaceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanRightSizingRuleDetachWorkloadNamespaceArgs:
@@ -1539,6 +1895,13 @@ class OceanRightSizingRuleDetachWorkloadNamespaceArgs:
         pulumi.set(self, "workloads", value)
 
 
+if not MYPY:
+    class OceanRightSizingRuleDetachWorkloadNamespaceLabelArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        value: pulumi.Input[str]
+elif False:
+    OceanRightSizingRuleDetachWorkloadNamespaceLabelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanRightSizingRuleDetachWorkloadNamespaceLabelArgs:
     def __init__(__self__, *,
@@ -1565,6 +1928,14 @@ class OceanRightSizingRuleDetachWorkloadNamespaceLabelArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArgsDict(TypedDict):
+        workload_type: pulumi.Input[str]
+        regex_name: NotRequired[pulumi.Input[str]]
+        workload_name: NotRequired[pulumi.Input[str]]
+elif False:
+    OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArgs:
@@ -1605,6 +1976,15 @@ class OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArgs:
     def workload_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "workload_name", value)
 
+
+if not MYPY:
+    class OceanRightSizingRuleRecommendationApplicationBoundaryArgsDict(TypedDict):
+        cpu_max: NotRequired[pulumi.Input[float]]
+        cpu_min: NotRequired[pulumi.Input[float]]
+        memory_max: NotRequired[pulumi.Input[int]]
+        memory_min: NotRequired[pulumi.Input[int]]
+elif False:
+    OceanRightSizingRuleRecommendationApplicationBoundaryArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanRightSizingRuleRecommendationApplicationBoundaryArgs:
@@ -1659,6 +2039,14 @@ class OceanRightSizingRuleRecommendationApplicationBoundaryArgs:
         pulumi.set(self, "memory_min", value)
 
 
+if not MYPY:
+    class OceanRightSizingRuleRecommendationApplicationIntervalArgsDict(TypedDict):
+        repetition_basis: pulumi.Input[str]
+        monthly_repetition_bases: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgsDict']]]]
+        weekly_repetition_bases: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgsDict']]]]
+elif False:
+    OceanRightSizingRuleRecommendationApplicationIntervalArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanRightSizingRuleRecommendationApplicationIntervalArgs:
     def __init__(__self__, *,
@@ -1699,6 +2087,14 @@ class OceanRightSizingRuleRecommendationApplicationIntervalArgs:
         pulumi.set(self, "weekly_repetition_bases", value)
 
 
+if not MYPY:
+    class OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgsDict(TypedDict):
+        interval_months: pulumi.Input[Sequence[pulumi.Input[int]]]
+        week_of_the_months: pulumi.Input[Sequence[pulumi.Input[str]]]
+        weekly_repetition_bases: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgsDict']]]]
+elif False:
+    OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs:
     def __init__(__self__, *,
@@ -1738,6 +2134,14 @@ class OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase
         pulumi.set(self, "weekly_repetition_bases", value)
 
 
+if not MYPY:
+    class OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgsDict(TypedDict):
+        interval_days: pulumi.Input[Sequence[pulumi.Input[str]]]
+        interval_hours_end_time: pulumi.Input[str]
+        interval_hours_start_time: pulumi.Input[str]
+elif False:
+    OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgs:
     def __init__(__self__, *,
@@ -1775,6 +2179,14 @@ class OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase
     def interval_hours_start_time(self, value: pulumi.Input[str]):
         pulumi.set(self, "interval_hours_start_time", value)
 
+
+if not MYPY:
+    class OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgsDict(TypedDict):
+        interval_days: pulumi.Input[Sequence[pulumi.Input[str]]]
+        interval_hours_end_time: pulumi.Input[str]
+        interval_hours_start_time: pulumi.Input[str]
+elif False:
+    OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgs:
@@ -1814,6 +2226,13 @@ class OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseA
         pulumi.set(self, "interval_hours_start_time", value)
 
 
+if not MYPY:
+    class OceanRightSizingRuleRecommendationApplicationMinThresholdArgsDict(TypedDict):
+        cpu_percentage: NotRequired[pulumi.Input[float]]
+        memory_percentage: NotRequired[pulumi.Input[float]]
+elif False:
+    OceanRightSizingRuleRecommendationApplicationMinThresholdArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanRightSizingRuleRecommendationApplicationMinThresholdArgs:
     def __init__(__self__, *,
@@ -1843,6 +2262,13 @@ class OceanRightSizingRuleRecommendationApplicationMinThresholdArgs:
         pulumi.set(self, "memory_percentage", value)
 
 
+if not MYPY:
+    class OceanRightSizingRuleRecommendationApplicationOverheadValueArgsDict(TypedDict):
+        cpu_percentage: NotRequired[pulumi.Input[float]]
+        memory_percentage: NotRequired[pulumi.Input[float]]
+elif False:
+    OceanRightSizingRuleRecommendationApplicationOverheadValueArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OceanRightSizingRuleRecommendationApplicationOverheadValueArgs:
     def __init__(__self__, *,
@@ -1871,6 +2297,17 @@ class OceanRightSizingRuleRecommendationApplicationOverheadValueArgs:
     def memory_percentage(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "memory_percentage", value)
 
+
+if not MYPY:
+    class StatefulNodeAzureAttachDataDiskArgsDict(TypedDict):
+        data_disk_name: pulumi.Input[str]
+        data_disk_resource_group_name: pulumi.Input[str]
+        size_gb: pulumi.Input[int]
+        storage_account_type: pulumi.Input[str]
+        lun: NotRequired[pulumi.Input[int]]
+        zone: NotRequired[pulumi.Input[str]]
+elif False:
+    StatefulNodeAzureAttachDataDiskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class StatefulNodeAzureAttachDataDiskArgs:
@@ -1945,6 +2382,14 @@ class StatefulNodeAzureAttachDataDiskArgs:
         pulumi.set(self, "zone", value)
 
 
+if not MYPY:
+    class StatefulNodeAzureBootDiagnosticArgsDict(TypedDict):
+        is_enabled: NotRequired[pulumi.Input[bool]]
+        storage_url: NotRequired[pulumi.Input[str]]
+        type: NotRequired[pulumi.Input[str]]
+elif False:
+    StatefulNodeAzureBootDiagnosticArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class StatefulNodeAzureBootDiagnosticArgs:
     def __init__(__self__, *,
@@ -1986,6 +2431,14 @@ class StatefulNodeAzureBootDiagnosticArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class StatefulNodeAzureDataDiskArgsDict(TypedDict):
+        lun: pulumi.Input[int]
+        size_gb: pulumi.Input[int]
+        type: pulumi.Input[str]
+elif False:
+    StatefulNodeAzureDataDiskArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class StatefulNodeAzureDataDiskArgs:
     def __init__(__self__, *,
@@ -2023,6 +2476,21 @@ class StatefulNodeAzureDataDiskArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class StatefulNodeAzureDeleteArgsDict(TypedDict):
+        disk_should_deallocate: pulumi.Input[bool]
+        network_should_deallocate: pulumi.Input[bool]
+        public_ip_should_deallocate: pulumi.Input[bool]
+        should_terminate_vm: pulumi.Input[bool]
+        snapshot_should_deallocate: pulumi.Input[bool]
+        disk_ttl_in_hours: NotRequired[pulumi.Input[int]]
+        network_ttl_in_hours: NotRequired[pulumi.Input[int]]
+        public_ip_ttl_in_hours: NotRequired[pulumi.Input[int]]
+        should_deregister_from_lb: NotRequired[pulumi.Input[bool]]
+        snapshot_ttl_in_hours: NotRequired[pulumi.Input[int]]
+elif False:
+    StatefulNodeAzureDeleteArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class StatefulNodeAzureDeleteArgs:
@@ -2144,6 +2612,15 @@ class StatefulNodeAzureDeleteArgs:
         pulumi.set(self, "snapshot_ttl_in_hours", value)
 
 
+if not MYPY:
+    class StatefulNodeAzureDetachDataDiskArgsDict(TypedDict):
+        data_disk_name: pulumi.Input[str]
+        data_disk_resource_group_name: pulumi.Input[str]
+        should_deallocate: pulumi.Input[bool]
+        ttl_in_hours: NotRequired[pulumi.Input[int]]
+elif False:
+    StatefulNodeAzureDetachDataDiskArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class StatefulNodeAzureDetachDataDiskArgs:
     def __init__(__self__, *,
@@ -2193,6 +2670,18 @@ class StatefulNodeAzureDetachDataDiskArgs:
     def ttl_in_hours(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "ttl_in_hours", value)
 
+
+if not MYPY:
+    class StatefulNodeAzureExtensionArgsDict(TypedDict):
+        api_version: pulumi.Input[str]
+        minor_version_auto_upgrade: pulumi.Input[bool]
+        name: pulumi.Input[str]
+        publisher: pulumi.Input[str]
+        type: pulumi.Input[str]
+        protected_settings: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        public_settings: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+elif False:
+    StatefulNodeAzureExtensionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class StatefulNodeAzureExtensionArgs:
@@ -2278,6 +2767,15 @@ class StatefulNodeAzureExtensionArgs:
         pulumi.set(self, "public_settings", value)
 
 
+if not MYPY:
+    class StatefulNodeAzureHealthArgsDict(TypedDict):
+        auto_healing: pulumi.Input[bool]
+        health_check_types: pulumi.Input[Sequence[pulumi.Input[str]]]
+        grace_period: NotRequired[pulumi.Input[int]]
+        unhealthy_duration: NotRequired[pulumi.Input[int]]
+elif False:
+    StatefulNodeAzureHealthArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class StatefulNodeAzureHealthArgs:
     def __init__(__self__, *,
@@ -2329,6 +2827,14 @@ class StatefulNodeAzureHealthArgs:
         pulumi.set(self, "unhealthy_duration", value)
 
 
+if not MYPY:
+    class StatefulNodeAzureImageArgsDict(TypedDict):
+        custom_images: NotRequired[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureImageCustomImageArgsDict']]]]
+        galleries: NotRequired[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureImageGalleryArgsDict']]]]
+        marketplace_images: NotRequired[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureImageMarketplaceImageArgsDict']]]]
+elif False:
+    StatefulNodeAzureImageArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class StatefulNodeAzureImageArgs:
     def __init__(__self__, *,
@@ -2370,6 +2876,13 @@ class StatefulNodeAzureImageArgs:
         pulumi.set(self, "marketplace_images", value)
 
 
+if not MYPY:
+    class StatefulNodeAzureImageCustomImageArgsDict(TypedDict):
+        custom_image_resource_group_name: pulumi.Input[str]
+        name: pulumi.Input[str]
+elif False:
+    StatefulNodeAzureImageCustomImageArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class StatefulNodeAzureImageCustomImageArgs:
     def __init__(__self__, *,
@@ -2396,6 +2909,16 @@ class StatefulNodeAzureImageCustomImageArgs:
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class StatefulNodeAzureImageGalleryArgsDict(TypedDict):
+        gallery_name: pulumi.Input[str]
+        gallery_resource_group_name: pulumi.Input[str]
+        image_name: pulumi.Input[str]
+        version_name: pulumi.Input[str]
+        spot_account_id: NotRequired[pulumi.Input[str]]
+elif False:
+    StatefulNodeAzureImageGalleryArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class StatefulNodeAzureImageGalleryArgs:
@@ -2458,6 +2981,15 @@ class StatefulNodeAzureImageGalleryArgs:
         pulumi.set(self, "spot_account_id", value)
 
 
+if not MYPY:
+    class StatefulNodeAzureImageMarketplaceImageArgsDict(TypedDict):
+        offer: pulumi.Input[str]
+        publisher: pulumi.Input[str]
+        sku: pulumi.Input[str]
+        version: pulumi.Input[str]
+elif False:
+    StatefulNodeAzureImageMarketplaceImageArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class StatefulNodeAzureImageMarketplaceImageArgs:
     def __init__(__self__, *,
@@ -2506,6 +3038,15 @@ class StatefulNodeAzureImageMarketplaceImageArgs:
     def version(self, value: pulumi.Input[str]):
         pulumi.set(self, "version", value)
 
+
+if not MYPY:
+    class StatefulNodeAzureImportVmArgsDict(TypedDict):
+        original_vm_name: pulumi.Input[str]
+        resource_group_name: pulumi.Input[str]
+        draining_timeout: NotRequired[pulumi.Input[int]]
+        resources_retention_time: NotRequired[pulumi.Input[int]]
+elif False:
+    StatefulNodeAzureImportVmArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class StatefulNodeAzureImportVmArgs:
@@ -2557,6 +3098,16 @@ class StatefulNodeAzureImportVmArgs:
     def resources_retention_time(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "resources_retention_time", value)
 
+
+if not MYPY:
+    class StatefulNodeAzureLoadBalancerArgsDict(TypedDict):
+        backend_pool_names: pulumi.Input[Sequence[pulumi.Input[str]]]
+        name: pulumi.Input[str]
+        resource_group_name: pulumi.Input[str]
+        type: pulumi.Input[str]
+        sku: NotRequired[pulumi.Input[str]]
+elif False:
+    StatefulNodeAzureLoadBalancerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class StatefulNodeAzureLoadBalancerArgs:
@@ -2619,6 +3170,14 @@ class StatefulNodeAzureLoadBalancerArgs:
         pulumi.set(self, "sku", value)
 
 
+if not MYPY:
+    class StatefulNodeAzureLoginArgsDict(TypedDict):
+        user_name: pulumi.Input[str]
+        password: NotRequired[pulumi.Input[str]]
+        ssh_public_key: NotRequired[pulumi.Input[str]]
+elif False:
+    StatefulNodeAzureLoginArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class StatefulNodeAzureLoginArgs:
     def __init__(__self__, *,
@@ -2659,6 +3218,13 @@ class StatefulNodeAzureLoginArgs:
         pulumi.set(self, "ssh_public_key", value)
 
 
+if not MYPY:
+    class StatefulNodeAzureManagedServiceIdentityArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        resource_group_name: pulumi.Input[str]
+elif False:
+    StatefulNodeAzureManagedServiceIdentityArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class StatefulNodeAzureManagedServiceIdentityArgs:
     def __init__(__self__, *,
@@ -2685,6 +3251,14 @@ class StatefulNodeAzureManagedServiceIdentityArgs:
     def resource_group_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "resource_group_name", value)
 
+
+if not MYPY:
+    class StatefulNodeAzureNetworkArgsDict(TypedDict):
+        network_interfaces: pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceArgsDict']]]
+        network_resource_group_name: pulumi.Input[str]
+        virtual_network_name: pulumi.Input[str]
+elif False:
+    StatefulNodeAzureNetworkArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class StatefulNodeAzureNetworkArgs:
@@ -2723,6 +3297,21 @@ class StatefulNodeAzureNetworkArgs:
     def virtual_network_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "virtual_network_name", value)
 
+
+if not MYPY:
+    class StatefulNodeAzureNetworkNetworkInterfaceArgsDict(TypedDict):
+        is_primary: pulumi.Input[bool]
+        subnet_name: pulumi.Input[str]
+        additional_ip_configurations: NotRequired[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgsDict']]]]
+        application_security_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgsDict']]]]
+        assign_public_ip: NotRequired[pulumi.Input[bool]]
+        enable_ip_forwarding: NotRequired[pulumi.Input[bool]]
+        network_security_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgsDict']]]]
+        private_ip_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        public_ip_sku: NotRequired[pulumi.Input[str]]
+        public_ips: NotRequired[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfacePublicIpArgsDict']]]]
+elif False:
+    StatefulNodeAzureNetworkNetworkInterfaceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class StatefulNodeAzureNetworkNetworkInterfaceArgs:
@@ -2847,6 +3436,13 @@ class StatefulNodeAzureNetworkNetworkInterfaceArgs:
         pulumi.set(self, "public_ips", value)
 
 
+if not MYPY:
+    class StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        private_ip_address_version: pulumi.Input[str]
+elif False:
+    StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgs:
     def __init__(__self__, *,
@@ -2874,6 +3470,13 @@ class StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgs:
         pulumi.set(self, "private_ip_address_version", value)
 
 
+if not MYPY:
+    class StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        network_resource_group_name: pulumi.Input[str]
+elif False:
+    StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs:
     def __init__(__self__, *,
@@ -2900,6 +3503,13 @@ class StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs:
     def network_resource_group_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "network_resource_group_name", value)
 
+
+if not MYPY:
+    class StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        network_resource_group_name: NotRequired[pulumi.Input[str]]
+elif False:
+    StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs:
@@ -2930,6 +3540,13 @@ class StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs:
         pulumi.set(self, "network_resource_group_name", value)
 
 
+if not MYPY:
+    class StatefulNodeAzureNetworkNetworkInterfacePublicIpArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        network_resource_group_name: pulumi.Input[str]
+elif False:
+    StatefulNodeAzureNetworkNetworkInterfacePublicIpArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs:
     def __init__(__self__, *,
@@ -2956,6 +3573,14 @@ class StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs:
     def network_resource_group_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "network_resource_group_name", value)
 
+
+if not MYPY:
+    class StatefulNodeAzureOsDiskArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        caching: NotRequired[pulumi.Input[str]]
+        size_gb: NotRequired[pulumi.Input[int]]
+elif False:
+    StatefulNodeAzureOsDiskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class StatefulNodeAzureOsDiskArgs:
@@ -2997,6 +3622,13 @@ class StatefulNodeAzureOsDiskArgs:
         pulumi.set(self, "size_gb", value)
 
 
+if not MYPY:
+    class StatefulNodeAzureProximityPlacementGroupArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        resource_group_name: pulumi.Input[str]
+elif False:
+    StatefulNodeAzureProximityPlacementGroupArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class StatefulNodeAzureProximityPlacementGroupArgs:
     def __init__(__self__, *,
@@ -3023,6 +3655,14 @@ class StatefulNodeAzureProximityPlacementGroupArgs:
     def resource_group_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "resource_group_name", value)
 
+
+if not MYPY:
+    class StatefulNodeAzureSchedulingTaskArgsDict(TypedDict):
+        cron_expression: pulumi.Input[str]
+        is_enabled: pulumi.Input[bool]
+        type: pulumi.Input[str]
+elif False:
+    StatefulNodeAzureSchedulingTaskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class StatefulNodeAzureSchedulingTaskArgs:
@@ -3062,6 +3702,13 @@ class StatefulNodeAzureSchedulingTaskArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class StatefulNodeAzureSecretArgsDict(TypedDict):
+        source_vaults: pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSecretSourceVaultArgsDict']]]
+        vault_certificates: pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSecretVaultCertificateArgsDict']]]
+elif False:
+    StatefulNodeAzureSecretArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class StatefulNodeAzureSecretArgs:
     def __init__(__self__, *,
@@ -3089,6 +3736,13 @@ class StatefulNodeAzureSecretArgs:
         pulumi.set(self, "vault_certificates", value)
 
 
+if not MYPY:
+    class StatefulNodeAzureSecretSourceVaultArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        resource_group_name: pulumi.Input[str]
+elif False:
+    StatefulNodeAzureSecretSourceVaultArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class StatefulNodeAzureSecretSourceVaultArgs:
     def __init__(__self__, *,
@@ -3115,6 +3769,13 @@ class StatefulNodeAzureSecretSourceVaultArgs:
     def resource_group_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "resource_group_name", value)
 
+
+if not MYPY:
+    class StatefulNodeAzureSecretVaultCertificateArgsDict(TypedDict):
+        certificate_store: NotRequired[pulumi.Input[str]]
+        certificate_url: NotRequired[pulumi.Input[str]]
+elif False:
+    StatefulNodeAzureSecretVaultCertificateArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class StatefulNodeAzureSecretVaultCertificateArgs:
@@ -3144,6 +3805,16 @@ class StatefulNodeAzureSecretVaultCertificateArgs:
     def certificate_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "certificate_url", value)
 
+
+if not MYPY:
+    class StatefulNodeAzureSecurityArgsDict(TypedDict):
+        confidential_os_disk_encryption: NotRequired[pulumi.Input[bool]]
+        encryption_at_host: NotRequired[pulumi.Input[bool]]
+        secure_boot_enabled: NotRequired[pulumi.Input[bool]]
+        security_type: NotRequired[pulumi.Input[str]]
+        vtpm_enabled: NotRequired[pulumi.Input[bool]]
+elif False:
+    StatefulNodeAzureSecurityArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class StatefulNodeAzureSecurityArgs:
@@ -3210,6 +3881,13 @@ class StatefulNodeAzureSecurityArgs:
         pulumi.set(self, "vtpm_enabled", value)
 
 
+if not MYPY:
+    class StatefulNodeAzureSignalArgsDict(TypedDict):
+        timeout: pulumi.Input[int]
+        type: pulumi.Input[str]
+elif False:
+    StatefulNodeAzureSignalArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class StatefulNodeAzureSignalArgs:
     def __init__(__self__, *,
@@ -3236,6 +3914,20 @@ class StatefulNodeAzureSignalArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class StatefulNodeAzureStrategyArgsDict(TypedDict):
+        fallback_to_on_demand: pulumi.Input[bool]
+        availability_vs_cost: NotRequired[pulumi.Input[int]]
+        capacity_reservations: NotRequired[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureStrategyCapacityReservationArgsDict']]]]
+        draining_timeout: NotRequired[pulumi.Input[int]]
+        od_windows: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        optimization_windows: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        preferred_life_cycle: NotRequired[pulumi.Input[str]]
+        revert_to_spot: NotRequired[pulumi.Input['StatefulNodeAzureStrategyRevertToSpotArgsDict']]
+        vm_admins: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+elif False:
+    StatefulNodeAzureStrategyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class StatefulNodeAzureStrategyArgs:
@@ -3349,6 +4041,14 @@ class StatefulNodeAzureStrategyArgs:
         pulumi.set(self, "vm_admins", value)
 
 
+if not MYPY:
+    class StatefulNodeAzureStrategyCapacityReservationArgsDict(TypedDict):
+        should_utilize: pulumi.Input[bool]
+        utilization_strategy: pulumi.Input[str]
+        capacity_reservation_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgsDict']]]]
+elif False:
+    StatefulNodeAzureStrategyCapacityReservationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class StatefulNodeAzureStrategyCapacityReservationArgs:
     def __init__(__self__, *,
@@ -3387,6 +4087,14 @@ class StatefulNodeAzureStrategyCapacityReservationArgs:
     def capacity_reservation_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs']]]]):
         pulumi.set(self, "capacity_reservation_groups", value)
 
+
+if not MYPY:
+    class StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgsDict(TypedDict):
+        crg_name: pulumi.Input[str]
+        crg_resource_group_name: pulumi.Input[str]
+        crg_should_prioritize: NotRequired[pulumi.Input[bool]]
+elif False:
+    StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs:
@@ -3427,6 +4135,12 @@ class StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs:
         pulumi.set(self, "crg_should_prioritize", value)
 
 
+if not MYPY:
+    class StatefulNodeAzureStrategyRevertToSpotArgsDict(TypedDict):
+        perform_at: pulumi.Input[str]
+elif False:
+    StatefulNodeAzureStrategyRevertToSpotArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class StatefulNodeAzureStrategyRevertToSpotArgs:
     def __init__(__self__, *,
@@ -3442,6 +4156,13 @@ class StatefulNodeAzureStrategyRevertToSpotArgs:
     def perform_at(self, value: pulumi.Input[str]):
         pulumi.set(self, "perform_at", value)
 
+
+if not MYPY:
+    class StatefulNodeAzureTagArgsDict(TypedDict):
+        tag_key: pulumi.Input[str]
+        tag_value: NotRequired[pulumi.Input[str]]
+elif False:
+    StatefulNodeAzureTagArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class StatefulNodeAzureTagArgs:
@@ -3471,6 +4192,12 @@ class StatefulNodeAzureTagArgs:
         pulumi.set(self, "tag_value", value)
 
 
+if not MYPY:
+    class StatefulNodeAzureUpdateStateArgsDict(TypedDict):
+        state: pulumi.Input[str]
+elif False:
+    StatefulNodeAzureUpdateStateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class StatefulNodeAzureUpdateStateArgs:
     def __init__(__self__, *,
@@ -3486,6 +4213,14 @@ class StatefulNodeAzureUpdateStateArgs:
     def state(self, value: pulumi.Input[str]):
         pulumi.set(self, "state", value)
 
+
+if not MYPY:
+    class StatefulNodeAzureVmSizesArgsDict(TypedDict):
+        od_sizes: pulumi.Input[Sequence[pulumi.Input[str]]]
+        spot_sizes: pulumi.Input[Sequence[pulumi.Input[str]]]
+        preferred_spot_sizes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+elif False:
+    StatefulNodeAzureVmSizesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class StatefulNodeAzureVmSizesArgs:
