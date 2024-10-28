@@ -2886,6 +2886,10 @@ export namespace aws {
          * Sets the percentage of the instances to deploy in each batch.
          */
         batchSizePercentage: number;
+        /**
+         * During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.
+         */
+        respectPdb?: boolean;
     }
 
     export interface OceanLoadBalancer {

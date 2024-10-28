@@ -18,6 +18,12 @@ namespace Pulumi.SpotInst.Aws.Inputs
         [Input("batchSizePercentage", required: true)]
         public Input<int> BatchSizePercentage { get; set; } = null!;
 
+        /// <summary>
+        /// During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.
+        /// </summary>
+        [Input("respectPdb")]
+        public Input<bool>? RespectPdb { get; set; }
+
         public OceanLaunchSpecUpdatePolicyRollConfigGetArgs()
         {
         }

@@ -13193,17 +13193,25 @@ if not MYPY:
         """
         Sets the percentage of the instances to deploy in each batch.
         """
+        respect_pdb: NotRequired[pulumi.Input[bool]]
+        """
+        During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.
+        """
 elif False:
     OceanLaunchSpecUpdatePolicyRollConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanLaunchSpecUpdatePolicyRollConfigArgs:
     def __init__(__self__, *,
-                 batch_size_percentage: pulumi.Input[int]):
+                 batch_size_percentage: pulumi.Input[int],
+                 respect_pdb: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[int] batch_size_percentage: Sets the percentage of the instances to deploy in each batch.
+        :param pulumi.Input[bool] respect_pdb: During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.
         """
         pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
+        if respect_pdb is not None:
+            pulumi.set(__self__, "respect_pdb", respect_pdb)
 
     @property
     @pulumi.getter(name="batchSizePercentage")
@@ -13216,6 +13224,18 @@ class OceanLaunchSpecUpdatePolicyRollConfigArgs:
     @batch_size_percentage.setter
     def batch_size_percentage(self, value: pulumi.Input[int]):
         pulumi.set(self, "batch_size_percentage", value)
+
+    @property
+    @pulumi.getter(name="respectPdb")
+    def respect_pdb(self) -> Optional[pulumi.Input[bool]]:
+        """
+        During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.
+        """
+        return pulumi.get(self, "respect_pdb")
+
+    @respect_pdb.setter
+    def respect_pdb(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "respect_pdb", value)
 
 
 if not MYPY:
