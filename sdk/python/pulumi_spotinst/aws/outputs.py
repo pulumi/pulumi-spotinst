@@ -10327,6 +10327,8 @@ class OceanLaunchSpecUpdatePolicyRollConfig(dict):
         suggest = None
         if key == "batchSizePercentage":
             suggest = "batch_size_percentage"
+        elif key == "respectPdb":
+            suggest = "respect_pdb"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in OceanLaunchSpecUpdatePolicyRollConfig. Access the value via the '{suggest}' property getter instead.")
@@ -10340,11 +10342,15 @@ class OceanLaunchSpecUpdatePolicyRollConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 batch_size_percentage: int):
+                 batch_size_percentage: int,
+                 respect_pdb: Optional[bool] = None):
         """
         :param int batch_size_percentage: Sets the percentage of the instances to deploy in each batch.
+        :param bool respect_pdb: During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.
         """
         pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
+        if respect_pdb is not None:
+            pulumi.set(__self__, "respect_pdb", respect_pdb)
 
     @property
     @pulumi.getter(name="batchSizePercentage")
@@ -10353,6 +10359,14 @@ class OceanLaunchSpecUpdatePolicyRollConfig(dict):
         Sets the percentage of the instances to deploy in each batch.
         """
         return pulumi.get(self, "batch_size_percentage")
+
+    @property
+    @pulumi.getter(name="respectPdb")
+    def respect_pdb(self) -> Optional[bool]:
+        """
+        During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.
+        """
+        return pulumi.get(self, "respect_pdb")
 
 
 @pulumi.output_type

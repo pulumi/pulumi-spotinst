@@ -5,13 +5,25 @@ package com.pulumi.spotinst.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.spotinst.inputs.ElastigroupAzureV3BootDiagnosticArgs;
+import com.pulumi.spotinst.inputs.ElastigroupAzureV3CapacityReservationArgs;
+import com.pulumi.spotinst.inputs.ElastigroupAzureV3DataDiskArgs;
 import com.pulumi.spotinst.inputs.ElastigroupAzureV3ExtensionArgs;
+import com.pulumi.spotinst.inputs.ElastigroupAzureV3HealthArgs;
 import com.pulumi.spotinst.inputs.ElastigroupAzureV3ImageArgs;
+import com.pulumi.spotinst.inputs.ElastigroupAzureV3LoadBalancerArgs;
 import com.pulumi.spotinst.inputs.ElastigroupAzureV3LoginArgs;
 import com.pulumi.spotinst.inputs.ElastigroupAzureV3ManagedServiceIdentityArgs;
 import com.pulumi.spotinst.inputs.ElastigroupAzureV3NetworkArgs;
+import com.pulumi.spotinst.inputs.ElastigroupAzureV3OsDiskArgs;
+import com.pulumi.spotinst.inputs.ElastigroupAzureV3ProximityPlacementGroupArgs;
+import com.pulumi.spotinst.inputs.ElastigroupAzureV3RevertToSpotArgs;
 import com.pulumi.spotinst.inputs.ElastigroupAzureV3ScalingDownPolicyArgs;
 import com.pulumi.spotinst.inputs.ElastigroupAzureV3ScalingUpPolicyArgs;
+import com.pulumi.spotinst.inputs.ElastigroupAzureV3SchedulingTaskArgs;
+import com.pulumi.spotinst.inputs.ElastigroupAzureV3SecretArgs;
+import com.pulumi.spotinst.inputs.ElastigroupAzureV3SecurityArgs;
+import com.pulumi.spotinst.inputs.ElastigroupAzureV3SignalArgs;
 import com.pulumi.spotinst.inputs.ElastigroupAzureV3TagArgs;
 import com.pulumi.spotinst.inputs.ElastigroupAzureV3VmSizesArgs;
 import java.lang.Boolean;
@@ -27,11 +39,46 @@ public final class ElastigroupAzureV3State extends com.pulumi.resources.Resource
 
     public static final ElastigroupAzureV3State Empty = new ElastigroupAzureV3State();
 
+    @Import(name="availabilityVsCost")
+    private @Nullable Output<Integer> availabilityVsCost;
+
+    public Optional<Output<Integer>> availabilityVsCost() {
+        return Optional.ofNullable(this.availabilityVsCost);
+    }
+
+    @Import(name="bootDiagnostics")
+    private @Nullable Output<List<ElastigroupAzureV3BootDiagnosticArgs>> bootDiagnostics;
+
+    public Optional<Output<List<ElastigroupAzureV3BootDiagnosticArgs>>> bootDiagnostics() {
+        return Optional.ofNullable(this.bootDiagnostics);
+    }
+
+    @Import(name="capacityReservation")
+    private @Nullable Output<ElastigroupAzureV3CapacityReservationArgs> capacityReservation;
+
+    public Optional<Output<ElastigroupAzureV3CapacityReservationArgs>> capacityReservation() {
+        return Optional.ofNullable(this.capacityReservation);
+    }
+
     @Import(name="customData")
     private @Nullable Output<String> customData;
 
     public Optional<Output<String>> customData() {
         return Optional.ofNullable(this.customData);
+    }
+
+    @Import(name="dataDisks")
+    private @Nullable Output<List<ElastigroupAzureV3DataDiskArgs>> dataDisks;
+
+    public Optional<Output<List<ElastigroupAzureV3DataDiskArgs>>> dataDisks() {
+        return Optional.ofNullable(this.dataDisks);
+    }
+
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
     }
 
     @Import(name="desiredCapacity")
@@ -62,11 +109,25 @@ public final class ElastigroupAzureV3State extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.fallbackToOnDemand);
     }
 
+    @Import(name="health")
+    private @Nullable Output<ElastigroupAzureV3HealthArgs> health;
+
+    public Optional<Output<ElastigroupAzureV3HealthArgs>> health() {
+        return Optional.ofNullable(this.health);
+    }
+
     @Import(name="images")
     private @Nullable Output<List<ElastigroupAzureV3ImageArgs>> images;
 
     public Optional<Output<List<ElastigroupAzureV3ImageArgs>>> images() {
         return Optional.ofNullable(this.images);
+    }
+
+    @Import(name="loadBalancers")
+    private @Nullable Output<List<ElastigroupAzureV3LoadBalancerArgs>> loadBalancers;
+
+    public Optional<Output<List<ElastigroupAzureV3LoadBalancerArgs>>> loadBalancers() {
+        return Optional.ofNullable(this.loadBalancers);
     }
 
     @Import(name="login")
@@ -118,11 +179,39 @@ public final class ElastigroupAzureV3State extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.onDemandCount);
     }
 
+    @Import(name="optimizationWindows")
+    private @Nullable Output<List<String>> optimizationWindows;
+
+    public Optional<Output<List<String>>> optimizationWindows() {
+        return Optional.ofNullable(this.optimizationWindows);
+    }
+
     @Import(name="os")
     private @Nullable Output<String> os;
 
     public Optional<Output<String>> os() {
         return Optional.ofNullable(this.os);
+    }
+
+    @Import(name="osDisk")
+    private @Nullable Output<ElastigroupAzureV3OsDiskArgs> osDisk;
+
+    public Optional<Output<ElastigroupAzureV3OsDiskArgs>> osDisk() {
+        return Optional.ofNullable(this.osDisk);
+    }
+
+    @Import(name="preferredZones")
+    private @Nullable Output<List<String>> preferredZones;
+
+    public Optional<Output<List<String>>> preferredZones() {
+        return Optional.ofNullable(this.preferredZones);
+    }
+
+    @Import(name="proximityPlacementGroups")
+    private @Nullable Output<List<ElastigroupAzureV3ProximityPlacementGroupArgs>> proximityPlacementGroups;
+
+    public Optional<Output<List<ElastigroupAzureV3ProximityPlacementGroupArgs>>> proximityPlacementGroups() {
+        return Optional.ofNullable(this.proximityPlacementGroups);
     }
 
     @Import(name="region")
@@ -139,6 +228,13 @@ public final class ElastigroupAzureV3State extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.resourceGroupName);
     }
 
+    @Import(name="revertToSpot")
+    private @Nullable Output<ElastigroupAzureV3RevertToSpotArgs> revertToSpot;
+
+    public Optional<Output<ElastigroupAzureV3RevertToSpotArgs>> revertToSpot() {
+        return Optional.ofNullable(this.revertToSpot);
+    }
+
     @Import(name="scalingDownPolicies")
     private @Nullable Output<List<ElastigroupAzureV3ScalingDownPolicyArgs>> scalingDownPolicies;
 
@@ -151,6 +247,41 @@ public final class ElastigroupAzureV3State extends com.pulumi.resources.Resource
 
     public Optional<Output<List<ElastigroupAzureV3ScalingUpPolicyArgs>>> scalingUpPolicies() {
         return Optional.ofNullable(this.scalingUpPolicies);
+    }
+
+    @Import(name="schedulingTasks")
+    private @Nullable Output<List<ElastigroupAzureV3SchedulingTaskArgs>> schedulingTasks;
+
+    public Optional<Output<List<ElastigroupAzureV3SchedulingTaskArgs>>> schedulingTasks() {
+        return Optional.ofNullable(this.schedulingTasks);
+    }
+
+    @Import(name="secrets")
+    private @Nullable Output<List<ElastigroupAzureV3SecretArgs>> secrets;
+
+    public Optional<Output<List<ElastigroupAzureV3SecretArgs>>> secrets() {
+        return Optional.ofNullable(this.secrets);
+    }
+
+    @Import(name="security")
+    private @Nullable Output<ElastigroupAzureV3SecurityArgs> security;
+
+    public Optional<Output<ElastigroupAzureV3SecurityArgs>> security() {
+        return Optional.ofNullable(this.security);
+    }
+
+    @Import(name="shutdownScript")
+    private @Nullable Output<String> shutdownScript;
+
+    public Optional<Output<String>> shutdownScript() {
+        return Optional.ofNullable(this.shutdownScript);
+    }
+
+    @Import(name="signals")
+    private @Nullable Output<List<ElastigroupAzureV3SignalArgs>> signals;
+
+    public Optional<Output<List<ElastigroupAzureV3SignalArgs>>> signals() {
+        return Optional.ofNullable(this.signals);
     }
 
     @Import(name="spotPercentage")
@@ -167,6 +298,20 @@ public final class ElastigroupAzureV3State extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.tags);
     }
 
+    @Import(name="userData")
+    private @Nullable Output<String> userData;
+
+    public Optional<Output<String>> userData() {
+        return Optional.ofNullable(this.userData);
+    }
+
+    @Import(name="vmNamePrefix")
+    private @Nullable Output<String> vmNamePrefix;
+
+    public Optional<Output<String>> vmNamePrefix() {
+        return Optional.ofNullable(this.vmNamePrefix);
+    }
+
     @Import(name="vmSizes")
     private @Nullable Output<ElastigroupAzureV3VmSizesArgs> vmSizes;
 
@@ -174,15 +319,29 @@ public final class ElastigroupAzureV3State extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.vmSizes);
     }
 
+    @Import(name="zones")
+    private @Nullable Output<List<String>> zones;
+
+    public Optional<Output<List<String>>> zones() {
+        return Optional.ofNullable(this.zones);
+    }
+
     private ElastigroupAzureV3State() {}
 
     private ElastigroupAzureV3State(ElastigroupAzureV3State $) {
+        this.availabilityVsCost = $.availabilityVsCost;
+        this.bootDiagnostics = $.bootDiagnostics;
+        this.capacityReservation = $.capacityReservation;
         this.customData = $.customData;
+        this.dataDisks = $.dataDisks;
+        this.description = $.description;
         this.desiredCapacity = $.desiredCapacity;
         this.drainingTimeout = $.drainingTimeout;
         this.extensions = $.extensions;
         this.fallbackToOnDemand = $.fallbackToOnDemand;
+        this.health = $.health;
         this.images = $.images;
+        this.loadBalancers = $.loadBalancers;
         this.login = $.login;
         this.managedServiceIdentities = $.managedServiceIdentities;
         this.maxSize = $.maxSize;
@@ -190,14 +349,27 @@ public final class ElastigroupAzureV3State extends com.pulumi.resources.Resource
         this.name = $.name;
         this.network = $.network;
         this.onDemandCount = $.onDemandCount;
+        this.optimizationWindows = $.optimizationWindows;
         this.os = $.os;
+        this.osDisk = $.osDisk;
+        this.preferredZones = $.preferredZones;
+        this.proximityPlacementGroups = $.proximityPlacementGroups;
         this.region = $.region;
         this.resourceGroupName = $.resourceGroupName;
+        this.revertToSpot = $.revertToSpot;
         this.scalingDownPolicies = $.scalingDownPolicies;
         this.scalingUpPolicies = $.scalingUpPolicies;
+        this.schedulingTasks = $.schedulingTasks;
+        this.secrets = $.secrets;
+        this.security = $.security;
+        this.shutdownScript = $.shutdownScript;
+        this.signals = $.signals;
         this.spotPercentage = $.spotPercentage;
         this.tags = $.tags;
+        this.userData = $.userData;
+        this.vmNamePrefix = $.vmNamePrefix;
         this.vmSizes = $.vmSizes;
+        this.zones = $.zones;
     }
 
     public static Builder builder() {
@@ -218,6 +390,37 @@ public final class ElastigroupAzureV3State extends com.pulumi.resources.Resource
             $ = new ElastigroupAzureV3State(Objects.requireNonNull(defaults));
         }
 
+        public Builder availabilityVsCost(@Nullable Output<Integer> availabilityVsCost) {
+            $.availabilityVsCost = availabilityVsCost;
+            return this;
+        }
+
+        public Builder availabilityVsCost(Integer availabilityVsCost) {
+            return availabilityVsCost(Output.of(availabilityVsCost));
+        }
+
+        public Builder bootDiagnostics(@Nullable Output<List<ElastigroupAzureV3BootDiagnosticArgs>> bootDiagnostics) {
+            $.bootDiagnostics = bootDiagnostics;
+            return this;
+        }
+
+        public Builder bootDiagnostics(List<ElastigroupAzureV3BootDiagnosticArgs> bootDiagnostics) {
+            return bootDiagnostics(Output.of(bootDiagnostics));
+        }
+
+        public Builder bootDiagnostics(ElastigroupAzureV3BootDiagnosticArgs... bootDiagnostics) {
+            return bootDiagnostics(List.of(bootDiagnostics));
+        }
+
+        public Builder capacityReservation(@Nullable Output<ElastigroupAzureV3CapacityReservationArgs> capacityReservation) {
+            $.capacityReservation = capacityReservation;
+            return this;
+        }
+
+        public Builder capacityReservation(ElastigroupAzureV3CapacityReservationArgs capacityReservation) {
+            return capacityReservation(Output.of(capacityReservation));
+        }
+
         public Builder customData(@Nullable Output<String> customData) {
             $.customData = customData;
             return this;
@@ -225,6 +428,28 @@ public final class ElastigroupAzureV3State extends com.pulumi.resources.Resource
 
         public Builder customData(String customData) {
             return customData(Output.of(customData));
+        }
+
+        public Builder dataDisks(@Nullable Output<List<ElastigroupAzureV3DataDiskArgs>> dataDisks) {
+            $.dataDisks = dataDisks;
+            return this;
+        }
+
+        public Builder dataDisks(List<ElastigroupAzureV3DataDiskArgs> dataDisks) {
+            return dataDisks(Output.of(dataDisks));
+        }
+
+        public Builder dataDisks(ElastigroupAzureV3DataDiskArgs... dataDisks) {
+            return dataDisks(List.of(dataDisks));
+        }
+
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        public Builder description(String description) {
+            return description(Output.of(description));
         }
 
         public Builder desiredCapacity(@Nullable Output<Integer> desiredCapacity) {
@@ -267,6 +492,15 @@ public final class ElastigroupAzureV3State extends com.pulumi.resources.Resource
             return fallbackToOnDemand(Output.of(fallbackToOnDemand));
         }
 
+        public Builder health(@Nullable Output<ElastigroupAzureV3HealthArgs> health) {
+            $.health = health;
+            return this;
+        }
+
+        public Builder health(ElastigroupAzureV3HealthArgs health) {
+            return health(Output.of(health));
+        }
+
         public Builder images(@Nullable Output<List<ElastigroupAzureV3ImageArgs>> images) {
             $.images = images;
             return this;
@@ -278,6 +512,19 @@ public final class ElastigroupAzureV3State extends com.pulumi.resources.Resource
 
         public Builder images(ElastigroupAzureV3ImageArgs... images) {
             return images(List.of(images));
+        }
+
+        public Builder loadBalancers(@Nullable Output<List<ElastigroupAzureV3LoadBalancerArgs>> loadBalancers) {
+            $.loadBalancers = loadBalancers;
+            return this;
+        }
+
+        public Builder loadBalancers(List<ElastigroupAzureV3LoadBalancerArgs> loadBalancers) {
+            return loadBalancers(Output.of(loadBalancers));
+        }
+
+        public Builder loadBalancers(ElastigroupAzureV3LoadBalancerArgs... loadBalancers) {
+            return loadBalancers(List.of(loadBalancers));
         }
 
         public Builder login(@Nullable Output<ElastigroupAzureV3LoginArgs> login) {
@@ -347,6 +594,19 @@ public final class ElastigroupAzureV3State extends com.pulumi.resources.Resource
             return onDemandCount(Output.of(onDemandCount));
         }
 
+        public Builder optimizationWindows(@Nullable Output<List<String>> optimizationWindows) {
+            $.optimizationWindows = optimizationWindows;
+            return this;
+        }
+
+        public Builder optimizationWindows(List<String> optimizationWindows) {
+            return optimizationWindows(Output.of(optimizationWindows));
+        }
+
+        public Builder optimizationWindows(String... optimizationWindows) {
+            return optimizationWindows(List.of(optimizationWindows));
+        }
+
         public Builder os(@Nullable Output<String> os) {
             $.os = os;
             return this;
@@ -354,6 +614,41 @@ public final class ElastigroupAzureV3State extends com.pulumi.resources.Resource
 
         public Builder os(String os) {
             return os(Output.of(os));
+        }
+
+        public Builder osDisk(@Nullable Output<ElastigroupAzureV3OsDiskArgs> osDisk) {
+            $.osDisk = osDisk;
+            return this;
+        }
+
+        public Builder osDisk(ElastigroupAzureV3OsDiskArgs osDisk) {
+            return osDisk(Output.of(osDisk));
+        }
+
+        public Builder preferredZones(@Nullable Output<List<String>> preferredZones) {
+            $.preferredZones = preferredZones;
+            return this;
+        }
+
+        public Builder preferredZones(List<String> preferredZones) {
+            return preferredZones(Output.of(preferredZones));
+        }
+
+        public Builder preferredZones(String... preferredZones) {
+            return preferredZones(List.of(preferredZones));
+        }
+
+        public Builder proximityPlacementGroups(@Nullable Output<List<ElastigroupAzureV3ProximityPlacementGroupArgs>> proximityPlacementGroups) {
+            $.proximityPlacementGroups = proximityPlacementGroups;
+            return this;
+        }
+
+        public Builder proximityPlacementGroups(List<ElastigroupAzureV3ProximityPlacementGroupArgs> proximityPlacementGroups) {
+            return proximityPlacementGroups(Output.of(proximityPlacementGroups));
+        }
+
+        public Builder proximityPlacementGroups(ElastigroupAzureV3ProximityPlacementGroupArgs... proximityPlacementGroups) {
+            return proximityPlacementGroups(List.of(proximityPlacementGroups));
         }
 
         public Builder region(@Nullable Output<String> region) {
@@ -372,6 +667,15 @@ public final class ElastigroupAzureV3State extends com.pulumi.resources.Resource
 
         public Builder resourceGroupName(String resourceGroupName) {
             return resourceGroupName(Output.of(resourceGroupName));
+        }
+
+        public Builder revertToSpot(@Nullable Output<ElastigroupAzureV3RevertToSpotArgs> revertToSpot) {
+            $.revertToSpot = revertToSpot;
+            return this;
+        }
+
+        public Builder revertToSpot(ElastigroupAzureV3RevertToSpotArgs revertToSpot) {
+            return revertToSpot(Output.of(revertToSpot));
         }
 
         public Builder scalingDownPolicies(@Nullable Output<List<ElastigroupAzureV3ScalingDownPolicyArgs>> scalingDownPolicies) {
@@ -400,6 +704,63 @@ public final class ElastigroupAzureV3State extends com.pulumi.resources.Resource
             return scalingUpPolicies(List.of(scalingUpPolicies));
         }
 
+        public Builder schedulingTasks(@Nullable Output<List<ElastigroupAzureV3SchedulingTaskArgs>> schedulingTasks) {
+            $.schedulingTasks = schedulingTasks;
+            return this;
+        }
+
+        public Builder schedulingTasks(List<ElastigroupAzureV3SchedulingTaskArgs> schedulingTasks) {
+            return schedulingTasks(Output.of(schedulingTasks));
+        }
+
+        public Builder schedulingTasks(ElastigroupAzureV3SchedulingTaskArgs... schedulingTasks) {
+            return schedulingTasks(List.of(schedulingTasks));
+        }
+
+        public Builder secrets(@Nullable Output<List<ElastigroupAzureV3SecretArgs>> secrets) {
+            $.secrets = secrets;
+            return this;
+        }
+
+        public Builder secrets(List<ElastigroupAzureV3SecretArgs> secrets) {
+            return secrets(Output.of(secrets));
+        }
+
+        public Builder secrets(ElastigroupAzureV3SecretArgs... secrets) {
+            return secrets(List.of(secrets));
+        }
+
+        public Builder security(@Nullable Output<ElastigroupAzureV3SecurityArgs> security) {
+            $.security = security;
+            return this;
+        }
+
+        public Builder security(ElastigroupAzureV3SecurityArgs security) {
+            return security(Output.of(security));
+        }
+
+        public Builder shutdownScript(@Nullable Output<String> shutdownScript) {
+            $.shutdownScript = shutdownScript;
+            return this;
+        }
+
+        public Builder shutdownScript(String shutdownScript) {
+            return shutdownScript(Output.of(shutdownScript));
+        }
+
+        public Builder signals(@Nullable Output<List<ElastigroupAzureV3SignalArgs>> signals) {
+            $.signals = signals;
+            return this;
+        }
+
+        public Builder signals(List<ElastigroupAzureV3SignalArgs> signals) {
+            return signals(Output.of(signals));
+        }
+
+        public Builder signals(ElastigroupAzureV3SignalArgs... signals) {
+            return signals(List.of(signals));
+        }
+
         public Builder spotPercentage(@Nullable Output<Integer> spotPercentage) {
             $.spotPercentage = spotPercentage;
             return this;
@@ -422,6 +783,24 @@ public final class ElastigroupAzureV3State extends com.pulumi.resources.Resource
             return tags(List.of(tags));
         }
 
+        public Builder userData(@Nullable Output<String> userData) {
+            $.userData = userData;
+            return this;
+        }
+
+        public Builder userData(String userData) {
+            return userData(Output.of(userData));
+        }
+
+        public Builder vmNamePrefix(@Nullable Output<String> vmNamePrefix) {
+            $.vmNamePrefix = vmNamePrefix;
+            return this;
+        }
+
+        public Builder vmNamePrefix(String vmNamePrefix) {
+            return vmNamePrefix(Output.of(vmNamePrefix));
+        }
+
         public Builder vmSizes(@Nullable Output<ElastigroupAzureV3VmSizesArgs> vmSizes) {
             $.vmSizes = vmSizes;
             return this;
@@ -429,6 +808,19 @@ public final class ElastigroupAzureV3State extends com.pulumi.resources.Resource
 
         public Builder vmSizes(ElastigroupAzureV3VmSizesArgs vmSizes) {
             return vmSizes(Output.of(vmSizes));
+        }
+
+        public Builder zones(@Nullable Output<List<String>> zones) {
+            $.zones = zones;
+            return this;
+        }
+
+        public Builder zones(List<String> zones) {
+            return zones(Output.of(zones));
+        }
+
+        public Builder zones(String... zones) {
+            return zones(List.of(zones));
         }
 
         public ElastigroupAzureV3State build() {

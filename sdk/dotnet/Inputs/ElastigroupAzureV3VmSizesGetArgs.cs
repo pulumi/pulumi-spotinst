@@ -20,6 +20,14 @@ namespace Pulumi.SpotInst.Inputs
             set => _odSizes = value;
         }
 
+        [Input("preferredSpotSizes")]
+        private InputList<string>? _preferredSpotSizes;
+        public InputList<string> PreferredSpotSizes
+        {
+            get => _preferredSpotSizes ?? (_preferredSpotSizes = new InputList<string>());
+            set => _preferredSpotSizes = value;
+        }
+
         [Input("spotSizes", required: true)]
         private InputList<string>? _spotSizes;
         public InputList<string> SpotSizes

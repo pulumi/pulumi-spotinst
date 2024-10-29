@@ -6,8 +6,11 @@ package com.pulumi.spotinst.aws.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class OceanLaunchSpecUpdatePolicyRollConfigArgs extends com.pulumi.resources.ResourceArgs {
@@ -29,10 +32,26 @@ public final class OceanLaunchSpecUpdatePolicyRollConfigArgs extends com.pulumi.
         return this.batchSizePercentage;
     }
 
+    /**
+     * During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.
+     * 
+     */
+    @Import(name="respectPdb")
+    private @Nullable Output<Boolean> respectPdb;
+
+    /**
+     * @return During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.
+     * 
+     */
+    public Optional<Output<Boolean>> respectPdb() {
+        return Optional.ofNullable(this.respectPdb);
+    }
+
     private OceanLaunchSpecUpdatePolicyRollConfigArgs() {}
 
     private OceanLaunchSpecUpdatePolicyRollConfigArgs(OceanLaunchSpecUpdatePolicyRollConfigArgs $) {
         this.batchSizePercentage = $.batchSizePercentage;
+        this.respectPdb = $.respectPdb;
     }
 
     public static Builder builder() {
@@ -72,6 +91,27 @@ public final class OceanLaunchSpecUpdatePolicyRollConfigArgs extends com.pulumi.
          */
         public Builder batchSizePercentage(Integer batchSizePercentage) {
             return batchSizePercentage(Output.of(batchSizePercentage));
+        }
+
+        /**
+         * @param respectPdb During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder respectPdb(@Nullable Output<Boolean> respectPdb) {
+            $.respectPdb = respectPdb;
+            return this;
+        }
+
+        /**
+         * @param respectPdb During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder respectPdb(Boolean respectPdb) {
+            return respectPdb(Output.of(respectPdb));
         }
 
         public OceanLaunchSpecUpdatePolicyRollConfigArgs build() {

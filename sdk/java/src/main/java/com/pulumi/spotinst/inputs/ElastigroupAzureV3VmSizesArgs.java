@@ -9,6 +9,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ElastigroupAzureV3VmSizesArgs extends com.pulumi.resources.ResourceArgs {
@@ -22,6 +24,13 @@ public final class ElastigroupAzureV3VmSizesArgs extends com.pulumi.resources.Re
         return this.odSizes;
     }
 
+    @Import(name="preferredSpotSizes")
+    private @Nullable Output<List<String>> preferredSpotSizes;
+
+    public Optional<Output<List<String>>> preferredSpotSizes() {
+        return Optional.ofNullable(this.preferredSpotSizes);
+    }
+
     @Import(name="spotSizes", required=true)
     private Output<List<String>> spotSizes;
 
@@ -33,6 +42,7 @@ public final class ElastigroupAzureV3VmSizesArgs extends com.pulumi.resources.Re
 
     private ElastigroupAzureV3VmSizesArgs(ElastigroupAzureV3VmSizesArgs $) {
         this.odSizes = $.odSizes;
+        this.preferredSpotSizes = $.preferredSpotSizes;
         this.spotSizes = $.spotSizes;
     }
 
@@ -65,6 +75,19 @@ public final class ElastigroupAzureV3VmSizesArgs extends com.pulumi.resources.Re
 
         public Builder odSizes(String... odSizes) {
             return odSizes(List.of(odSizes));
+        }
+
+        public Builder preferredSpotSizes(@Nullable Output<List<String>> preferredSpotSizes) {
+            $.preferredSpotSizes = preferredSpotSizes;
+            return this;
+        }
+
+        public Builder preferredSpotSizes(List<String> preferredSpotSizes) {
+            return preferredSpotSizes(Output.of(preferredSpotSizes));
+        }
+
+        public Builder preferredSpotSizes(String... preferredSpotSizes) {
+            return preferredSpotSizes(List.of(preferredSpotSizes));
         }
 
         public Builder spotSizes(Output<List<String>> spotSizes) {

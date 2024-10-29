@@ -31,8 +31,30 @@ namespace Pulumi.SpotInst.Inputs
         [Input("assignPublicIp", required: true)]
         public Input<bool> AssignPublicIp { get; set; } = null!;
 
+        [Input("enableIpForwarding")]
+        public Input<bool>? EnableIpForwarding { get; set; }
+
         [Input("isPrimary", required: true)]
         public Input<bool> IsPrimary { get; set; } = null!;
+
+        [Input("privateIpAddresses")]
+        private InputList<string>? _privateIpAddresses;
+        public InputList<string> PrivateIpAddresses
+        {
+            get => _privateIpAddresses ?? (_privateIpAddresses = new InputList<string>());
+            set => _privateIpAddresses = value;
+        }
+
+        [Input("publicIpSku")]
+        public Input<string>? PublicIpSku { get; set; }
+
+        [Input("securityGroups")]
+        private InputList<Inputs.ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupGetArgs>? _securityGroups;
+        public InputList<Inputs.ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupGetArgs> SecurityGroups
+        {
+            get => _securityGroups ?? (_securityGroups = new InputList<Inputs.ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupGetArgs>());
+            set => _securityGroups = value;
+        }
 
         [Input("subnetName", required: true)]
         public Input<string> SubnetName { get; set; } = null!;

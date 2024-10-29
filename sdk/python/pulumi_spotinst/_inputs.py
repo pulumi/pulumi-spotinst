@@ -17,10 +17,20 @@ from . import _utilities
 __all__ = [
     'DataIntegrationS3Args',
     'DataIntegrationS3ArgsDict',
+    'ElastigroupAzureV3BootDiagnosticArgs',
+    'ElastigroupAzureV3BootDiagnosticArgsDict',
+    'ElastigroupAzureV3CapacityReservationArgs',
+    'ElastigroupAzureV3CapacityReservationArgsDict',
+    'ElastigroupAzureV3CapacityReservationCapacityReservationGroupsArgs',
+    'ElastigroupAzureV3CapacityReservationCapacityReservationGroupsArgsDict',
+    'ElastigroupAzureV3DataDiskArgs',
+    'ElastigroupAzureV3DataDiskArgsDict',
     'ElastigroupAzureV3ExtensionArgs',
     'ElastigroupAzureV3ExtensionArgsDict',
     'ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultArgs',
     'ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultArgsDict',
+    'ElastigroupAzureV3HealthArgs',
+    'ElastigroupAzureV3HealthArgsDict',
     'ElastigroupAzureV3ImageArgs',
     'ElastigroupAzureV3ImageArgsDict',
     'ElastigroupAzureV3ImageCustomArgs',
@@ -29,6 +39,8 @@ __all__ = [
     'ElastigroupAzureV3ImageGalleryImageArgsDict',
     'ElastigroupAzureV3ImageMarketplaceArgs',
     'ElastigroupAzureV3ImageMarketplaceArgsDict',
+    'ElastigroupAzureV3LoadBalancerArgs',
+    'ElastigroupAzureV3LoadBalancerArgsDict',
     'ElastigroupAzureV3LoginArgs',
     'ElastigroupAzureV3LoginArgsDict',
     'ElastigroupAzureV3ManagedServiceIdentityArgs',
@@ -41,6 +53,14 @@ __all__ = [
     'ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgsDict',
     'ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs',
     'ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgsDict',
+    'ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArgs',
+    'ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArgsDict',
+    'ElastigroupAzureV3OsDiskArgs',
+    'ElastigroupAzureV3OsDiskArgsDict',
+    'ElastigroupAzureV3ProximityPlacementGroupArgs',
+    'ElastigroupAzureV3ProximityPlacementGroupArgsDict',
+    'ElastigroupAzureV3RevertToSpotArgs',
+    'ElastigroupAzureV3RevertToSpotArgsDict',
     'ElastigroupAzureV3ScalingDownPolicyArgs',
     'ElastigroupAzureV3ScalingDownPolicyArgsDict',
     'ElastigroupAzureV3ScalingDownPolicyActionArgs',
@@ -53,6 +73,18 @@ __all__ = [
     'ElastigroupAzureV3ScalingUpPolicyActionArgsDict',
     'ElastigroupAzureV3ScalingUpPolicyDimensionArgs',
     'ElastigroupAzureV3ScalingUpPolicyDimensionArgsDict',
+    'ElastigroupAzureV3SchedulingTaskArgs',
+    'ElastigroupAzureV3SchedulingTaskArgsDict',
+    'ElastigroupAzureV3SecretArgs',
+    'ElastigroupAzureV3SecretArgsDict',
+    'ElastigroupAzureV3SecretSourceVaultArgs',
+    'ElastigroupAzureV3SecretSourceVaultArgsDict',
+    'ElastigroupAzureV3SecretVaultCertificateArgs',
+    'ElastigroupAzureV3SecretVaultCertificateArgsDict',
+    'ElastigroupAzureV3SecurityArgs',
+    'ElastigroupAzureV3SecurityArgsDict',
+    'ElastigroupAzureV3SignalArgs',
+    'ElastigroupAzureV3SignalArgsDict',
     'ElastigroupAzureV3TagArgs',
     'ElastigroupAzureV3TagArgsDict',
     'ElastigroupAzureV3VmSizesArgs',
@@ -210,6 +242,193 @@ class DataIntegrationS3Args:
 
 
 if not MYPY:
+    class ElastigroupAzureV3BootDiagnosticArgsDict(TypedDict):
+        is_enabled: pulumi.Input[bool]
+        type: pulumi.Input[str]
+        storage_url: NotRequired[pulumi.Input[str]]
+elif False:
+    ElastigroupAzureV3BootDiagnosticArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ElastigroupAzureV3BootDiagnosticArgs:
+    def __init__(__self__, *,
+                 is_enabled: pulumi.Input[bool],
+                 type: pulumi.Input[str],
+                 storage_url: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "is_enabled", is_enabled)
+        pulumi.set(__self__, "type", type)
+        if storage_url is not None:
+            pulumi.set(__self__, "storage_url", storage_url)
+
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "is_enabled")
+
+    @is_enabled.setter
+    def is_enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "is_enabled", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="storageUrl")
+    def storage_url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "storage_url")
+
+    @storage_url.setter
+    def storage_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_url", value)
+
+
+if not MYPY:
+    class ElastigroupAzureV3CapacityReservationArgsDict(TypedDict):
+        should_utilize: pulumi.Input[bool]
+        utilization_strategy: pulumi.Input[str]
+        capacity_reservation_groups: NotRequired[pulumi.Input['ElastigroupAzureV3CapacityReservationCapacityReservationGroupsArgsDict']]
+elif False:
+    ElastigroupAzureV3CapacityReservationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ElastigroupAzureV3CapacityReservationArgs:
+    def __init__(__self__, *,
+                 should_utilize: pulumi.Input[bool],
+                 utilization_strategy: pulumi.Input[str],
+                 capacity_reservation_groups: Optional[pulumi.Input['ElastigroupAzureV3CapacityReservationCapacityReservationGroupsArgs']] = None):
+        pulumi.set(__self__, "should_utilize", should_utilize)
+        pulumi.set(__self__, "utilization_strategy", utilization_strategy)
+        if capacity_reservation_groups is not None:
+            pulumi.set(__self__, "capacity_reservation_groups", capacity_reservation_groups)
+
+    @property
+    @pulumi.getter(name="shouldUtilize")
+    def should_utilize(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "should_utilize")
+
+    @should_utilize.setter
+    def should_utilize(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "should_utilize", value)
+
+    @property
+    @pulumi.getter(name="utilizationStrategy")
+    def utilization_strategy(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "utilization_strategy")
+
+    @utilization_strategy.setter
+    def utilization_strategy(self, value: pulumi.Input[str]):
+        pulumi.set(self, "utilization_strategy", value)
+
+    @property
+    @pulumi.getter(name="capacityReservationGroups")
+    def capacity_reservation_groups(self) -> Optional[pulumi.Input['ElastigroupAzureV3CapacityReservationCapacityReservationGroupsArgs']]:
+        return pulumi.get(self, "capacity_reservation_groups")
+
+    @capacity_reservation_groups.setter
+    def capacity_reservation_groups(self, value: Optional[pulumi.Input['ElastigroupAzureV3CapacityReservationCapacityReservationGroupsArgs']]):
+        pulumi.set(self, "capacity_reservation_groups", value)
+
+
+if not MYPY:
+    class ElastigroupAzureV3CapacityReservationCapacityReservationGroupsArgsDict(TypedDict):
+        crg_name: pulumi.Input[str]
+        crg_resource_group_name: pulumi.Input[str]
+        crg_should_prioritize: NotRequired[pulumi.Input[bool]]
+elif False:
+    ElastigroupAzureV3CapacityReservationCapacityReservationGroupsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ElastigroupAzureV3CapacityReservationCapacityReservationGroupsArgs:
+    def __init__(__self__, *,
+                 crg_name: pulumi.Input[str],
+                 crg_resource_group_name: pulumi.Input[str],
+                 crg_should_prioritize: Optional[pulumi.Input[bool]] = None):
+        pulumi.set(__self__, "crg_name", crg_name)
+        pulumi.set(__self__, "crg_resource_group_name", crg_resource_group_name)
+        if crg_should_prioritize is not None:
+            pulumi.set(__self__, "crg_should_prioritize", crg_should_prioritize)
+
+    @property
+    @pulumi.getter(name="crgName")
+    def crg_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "crg_name")
+
+    @crg_name.setter
+    def crg_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "crg_name", value)
+
+    @property
+    @pulumi.getter(name="crgResourceGroupName")
+    def crg_resource_group_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "crg_resource_group_name")
+
+    @crg_resource_group_name.setter
+    def crg_resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "crg_resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="crgShouldPrioritize")
+    def crg_should_prioritize(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "crg_should_prioritize")
+
+    @crg_should_prioritize.setter
+    def crg_should_prioritize(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "crg_should_prioritize", value)
+
+
+if not MYPY:
+    class ElastigroupAzureV3DataDiskArgsDict(TypedDict):
+        lun: pulumi.Input[int]
+        size_gb: pulumi.Input[int]
+        type: pulumi.Input[str]
+elif False:
+    ElastigroupAzureV3DataDiskArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ElastigroupAzureV3DataDiskArgs:
+    def __init__(__self__, *,
+                 lun: pulumi.Input[int],
+                 size_gb: pulumi.Input[int],
+                 type: pulumi.Input[str]):
+        pulumi.set(__self__, "lun", lun)
+        pulumi.set(__self__, "size_gb", size_gb)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def lun(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "lun")
+
+    @lun.setter
+    def lun(self, value: pulumi.Input[int]):
+        pulumi.set(self, "lun", value)
+
+    @property
+    @pulumi.getter(name="sizeGb")
+    def size_gb(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "size_gb")
+
+    @size_gb.setter
+    def size_gb(self, value: pulumi.Input[int]):
+        pulumi.set(self, "size_gb", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
     class ElastigroupAzureV3ExtensionArgsDict(TypedDict):
         api_version: pulumi.Input[str]
         minor_version_auto_upgrade: pulumi.Input[bool]
@@ -363,6 +582,68 @@ class ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultArgs:
     @source_vault.setter
     def source_vault(self, value: pulumi.Input[str]):
         pulumi.set(self, "source_vault", value)
+
+
+if not MYPY:
+    class ElastigroupAzureV3HealthArgsDict(TypedDict):
+        auto_healing: NotRequired[pulumi.Input[bool]]
+        grace_period: NotRequired[pulumi.Input[int]]
+        health_check_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        unhealthy_duration: NotRequired[pulumi.Input[int]]
+elif False:
+    ElastigroupAzureV3HealthArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ElastigroupAzureV3HealthArgs:
+    def __init__(__self__, *,
+                 auto_healing: Optional[pulumi.Input[bool]] = None,
+                 grace_period: Optional[pulumi.Input[int]] = None,
+                 health_check_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 unhealthy_duration: Optional[pulumi.Input[int]] = None):
+        if auto_healing is not None:
+            pulumi.set(__self__, "auto_healing", auto_healing)
+        if grace_period is not None:
+            pulumi.set(__self__, "grace_period", grace_period)
+        if health_check_types is not None:
+            pulumi.set(__self__, "health_check_types", health_check_types)
+        if unhealthy_duration is not None:
+            pulumi.set(__self__, "unhealthy_duration", unhealthy_duration)
+
+    @property
+    @pulumi.getter(name="autoHealing")
+    def auto_healing(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "auto_healing")
+
+    @auto_healing.setter
+    def auto_healing(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_healing", value)
+
+    @property
+    @pulumi.getter(name="gracePeriod")
+    def grace_period(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "grace_period")
+
+    @grace_period.setter
+    def grace_period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "grace_period", value)
+
+    @property
+    @pulumi.getter(name="healthCheckTypes")
+    def health_check_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "health_check_types")
+
+    @health_check_types.setter
+    def health_check_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "health_check_types", value)
+
+    @property
+    @pulumi.getter(name="unhealthyDuration")
+    def unhealthy_duration(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "unhealthy_duration")
+
+    @unhealthy_duration.setter
+    def unhealthy_duration(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "unhealthy_duration", value)
 
 
 if not MYPY:
@@ -578,6 +859,78 @@ class ElastigroupAzureV3ImageMarketplaceArgs:
 
 
 if not MYPY:
+    class ElastigroupAzureV3LoadBalancerArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        resource_group_name: pulumi.Input[str]
+        type: pulumi.Input[str]
+        backend_pool_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        sku: NotRequired[pulumi.Input[str]]
+elif False:
+    ElastigroupAzureV3LoadBalancerArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ElastigroupAzureV3LoadBalancerArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str],
+                 type: pulumi.Input[str],
+                 backend_pool_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 sku: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        pulumi.set(__self__, "type", type)
+        if backend_pool_names is not None:
+            pulumi.set(__self__, "backend_pool_names", backend_pool_names)
+        if sku is not None:
+            pulumi.set(__self__, "sku", sku)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="backendPoolNames")
+    def backend_pool_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "backend_pool_names")
+
+    @backend_pool_names.setter
+    def backend_pool_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "backend_pool_names", value)
+
+    @property
+    @pulumi.getter
+    def sku(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "sku")
+
+    @sku.setter
+    def sku(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sku", value)
+
+
+if not MYPY:
     class ElastigroupAzureV3LoginArgsDict(TypedDict):
         user_name: pulumi.Input[str]
         password: NotRequired[pulumi.Input[str]]
@@ -712,6 +1065,10 @@ if not MYPY:
         subnet_name: pulumi.Input[str]
         additional_ip_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgsDict']]]]
         application_security_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgsDict']]]]
+        enable_ip_forwarding: NotRequired[pulumi.Input[bool]]
+        private_ip_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        public_ip_sku: NotRequired[pulumi.Input[str]]
+        security_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArgsDict']]]]
 elif False:
     ElastigroupAzureV3NetworkNetworkInterfaceArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -722,7 +1079,11 @@ class ElastigroupAzureV3NetworkNetworkInterfaceArgs:
                  is_primary: pulumi.Input[bool],
                  subnet_name: pulumi.Input[str],
                  additional_ip_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs']]]] = None,
-                 application_security_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs']]]] = None):
+                 application_security_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs']]]] = None,
+                 enable_ip_forwarding: Optional[pulumi.Input[bool]] = None,
+                 private_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 public_ip_sku: Optional[pulumi.Input[str]] = None,
+                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArgs']]]] = None):
         pulumi.set(__self__, "assign_public_ip", assign_public_ip)
         pulumi.set(__self__, "is_primary", is_primary)
         pulumi.set(__self__, "subnet_name", subnet_name)
@@ -730,6 +1091,14 @@ class ElastigroupAzureV3NetworkNetworkInterfaceArgs:
             pulumi.set(__self__, "additional_ip_configs", additional_ip_configs)
         if application_security_groups is not None:
             pulumi.set(__self__, "application_security_groups", application_security_groups)
+        if enable_ip_forwarding is not None:
+            pulumi.set(__self__, "enable_ip_forwarding", enable_ip_forwarding)
+        if private_ip_addresses is not None:
+            pulumi.set(__self__, "private_ip_addresses", private_ip_addresses)
+        if public_ip_sku is not None:
+            pulumi.set(__self__, "public_ip_sku", public_ip_sku)
+        if security_groups is not None:
+            pulumi.set(__self__, "security_groups", security_groups)
 
     @property
     @pulumi.getter(name="assignPublicIp")
@@ -775,6 +1144,42 @@ class ElastigroupAzureV3NetworkNetworkInterfaceArgs:
     @application_security_groups.setter
     def application_security_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs']]]]):
         pulumi.set(self, "application_security_groups", value)
+
+    @property
+    @pulumi.getter(name="enableIpForwarding")
+    def enable_ip_forwarding(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enable_ip_forwarding")
+
+    @enable_ip_forwarding.setter
+    def enable_ip_forwarding(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_ip_forwarding", value)
+
+    @property
+    @pulumi.getter(name="privateIpAddresses")
+    def private_ip_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "private_ip_addresses")
+
+    @private_ip_addresses.setter
+    def private_ip_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "private_ip_addresses", value)
+
+    @property
+    @pulumi.getter(name="publicIpSku")
+    def public_ip_sku(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "public_ip_sku")
+
+    @public_ip_sku.setter
+    def public_ip_sku(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "public_ip_sku", value)
+
+    @property
+    @pulumi.getter(name="securityGroups")
+    def security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArgs']]]]:
+        return pulumi.get(self, "security_groups")
+
+    @security_groups.setter
+    def security_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArgs']]]]):
+        pulumi.set(self, "security_groups", value)
 
 
 if not MYPY:
@@ -844,6 +1249,133 @@ class ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs:
     @resource_group_name.setter
     def resource_group_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "resource_group_name", value)
+
+
+if not MYPY:
+    class ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        resource_group_name: NotRequired[pulumi.Input[str]]
+elif False:
+    ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None):
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if resource_group_name is not None:
+            pulumi.set(__self__, "resource_group_name", resource_group_name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_name", value)
+
+
+if not MYPY:
+    class ElastigroupAzureV3OsDiskArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        size_gb: NotRequired[pulumi.Input[int]]
+elif False:
+    ElastigroupAzureV3OsDiskArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ElastigroupAzureV3OsDiskArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 size_gb: Optional[pulumi.Input[int]] = None):
+        pulumi.set(__self__, "type", type)
+        if size_gb is not None:
+            pulumi.set(__self__, "size_gb", size_gb)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="sizeGb")
+    def size_gb(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "size_gb")
+
+    @size_gb.setter
+    def size_gb(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "size_gb", value)
+
+
+if not MYPY:
+    class ElastigroupAzureV3ProximityPlacementGroupArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        resource_group_name: pulumi.Input[str]
+elif False:
+    ElastigroupAzureV3ProximityPlacementGroupArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ElastigroupAzureV3ProximityPlacementGroupArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str]):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+
+if not MYPY:
+    class ElastigroupAzureV3RevertToSpotArgsDict(TypedDict):
+        perform_at: pulumi.Input[str]
+elif False:
+    ElastigroupAzureV3RevertToSpotArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ElastigroupAzureV3RevertToSpotArgs:
+    def __init__(__self__, *,
+                 perform_at: pulumi.Input[str]):
+        pulumi.set(__self__, "perform_at", perform_at)
+
+    @property
+    @pulumi.getter(name="performAt")
+    def perform_at(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "perform_at")
+
+    @perform_at.setter
+    def perform_at(self, value: pulumi.Input[str]):
+        pulumi.set(self, "perform_at", value)
 
 
 if not MYPY:
@@ -1433,6 +1965,341 @@ class ElastigroupAzureV3ScalingUpPolicyDimensionArgs:
 
 
 if not MYPY:
+    class ElastigroupAzureV3SchedulingTaskArgsDict(TypedDict):
+        cron_expression: pulumi.Input[str]
+        is_enabled: pulumi.Input[bool]
+        type: pulumi.Input[str]
+        adjustment: NotRequired[pulumi.Input[str]]
+        adjustment_percentage: NotRequired[pulumi.Input[str]]
+        batch_size_percentage: NotRequired[pulumi.Input[str]]
+        grace_period: NotRequired[pulumi.Input[str]]
+        scale_max_capacity: NotRequired[pulumi.Input[str]]
+        scale_min_capacity: NotRequired[pulumi.Input[str]]
+        scale_target_capacity: NotRequired[pulumi.Input[str]]
+elif False:
+    ElastigroupAzureV3SchedulingTaskArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ElastigroupAzureV3SchedulingTaskArgs:
+    def __init__(__self__, *,
+                 cron_expression: pulumi.Input[str],
+                 is_enabled: pulumi.Input[bool],
+                 type: pulumi.Input[str],
+                 adjustment: Optional[pulumi.Input[str]] = None,
+                 adjustment_percentage: Optional[pulumi.Input[str]] = None,
+                 batch_size_percentage: Optional[pulumi.Input[str]] = None,
+                 grace_period: Optional[pulumi.Input[str]] = None,
+                 scale_max_capacity: Optional[pulumi.Input[str]] = None,
+                 scale_min_capacity: Optional[pulumi.Input[str]] = None,
+                 scale_target_capacity: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "cron_expression", cron_expression)
+        pulumi.set(__self__, "is_enabled", is_enabled)
+        pulumi.set(__self__, "type", type)
+        if adjustment is not None:
+            pulumi.set(__self__, "adjustment", adjustment)
+        if adjustment_percentage is not None:
+            pulumi.set(__self__, "adjustment_percentage", adjustment_percentage)
+        if batch_size_percentage is not None:
+            pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
+        if grace_period is not None:
+            pulumi.set(__self__, "grace_period", grace_period)
+        if scale_max_capacity is not None:
+            pulumi.set(__self__, "scale_max_capacity", scale_max_capacity)
+        if scale_min_capacity is not None:
+            pulumi.set(__self__, "scale_min_capacity", scale_min_capacity)
+        if scale_target_capacity is not None:
+            pulumi.set(__self__, "scale_target_capacity", scale_target_capacity)
+
+    @property
+    @pulumi.getter(name="cronExpression")
+    def cron_expression(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "cron_expression")
+
+    @cron_expression.setter
+    def cron_expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cron_expression", value)
+
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "is_enabled")
+
+    @is_enabled.setter
+    def is_enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "is_enabled", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def adjustment(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "adjustment")
+
+    @adjustment.setter
+    def adjustment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "adjustment", value)
+
+    @property
+    @pulumi.getter(name="adjustmentPercentage")
+    def adjustment_percentage(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "adjustment_percentage")
+
+    @adjustment_percentage.setter
+    def adjustment_percentage(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "adjustment_percentage", value)
+
+    @property
+    @pulumi.getter(name="batchSizePercentage")
+    def batch_size_percentage(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "batch_size_percentage")
+
+    @batch_size_percentage.setter
+    def batch_size_percentage(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "batch_size_percentage", value)
+
+    @property
+    @pulumi.getter(name="gracePeriod")
+    def grace_period(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "grace_period")
+
+    @grace_period.setter
+    def grace_period(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "grace_period", value)
+
+    @property
+    @pulumi.getter(name="scaleMaxCapacity")
+    def scale_max_capacity(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "scale_max_capacity")
+
+    @scale_max_capacity.setter
+    def scale_max_capacity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scale_max_capacity", value)
+
+    @property
+    @pulumi.getter(name="scaleMinCapacity")
+    def scale_min_capacity(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "scale_min_capacity")
+
+    @scale_min_capacity.setter
+    def scale_min_capacity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scale_min_capacity", value)
+
+    @property
+    @pulumi.getter(name="scaleTargetCapacity")
+    def scale_target_capacity(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "scale_target_capacity")
+
+    @scale_target_capacity.setter
+    def scale_target_capacity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scale_target_capacity", value)
+
+
+if not MYPY:
+    class ElastigroupAzureV3SecretArgsDict(TypedDict):
+        source_vaults: pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3SecretSourceVaultArgsDict']]]
+        vault_certificates: pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3SecretVaultCertificateArgsDict']]]
+elif False:
+    ElastigroupAzureV3SecretArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ElastigroupAzureV3SecretArgs:
+    def __init__(__self__, *,
+                 source_vaults: pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3SecretSourceVaultArgs']]],
+                 vault_certificates: pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3SecretVaultCertificateArgs']]]):
+        pulumi.set(__self__, "source_vaults", source_vaults)
+        pulumi.set(__self__, "vault_certificates", vault_certificates)
+
+    @property
+    @pulumi.getter(name="sourceVaults")
+    def source_vaults(self) -> pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3SecretSourceVaultArgs']]]:
+        return pulumi.get(self, "source_vaults")
+
+    @source_vaults.setter
+    def source_vaults(self, value: pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3SecretSourceVaultArgs']]]):
+        pulumi.set(self, "source_vaults", value)
+
+    @property
+    @pulumi.getter(name="vaultCertificates")
+    def vault_certificates(self) -> pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3SecretVaultCertificateArgs']]]:
+        return pulumi.get(self, "vault_certificates")
+
+    @vault_certificates.setter
+    def vault_certificates(self, value: pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3SecretVaultCertificateArgs']]]):
+        pulumi.set(self, "vault_certificates", value)
+
+
+if not MYPY:
+    class ElastigroupAzureV3SecretSourceVaultArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        resource_group_name: pulumi.Input[str]
+elif False:
+    ElastigroupAzureV3SecretSourceVaultArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ElastigroupAzureV3SecretSourceVaultArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str]):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+
+if not MYPY:
+    class ElastigroupAzureV3SecretVaultCertificateArgsDict(TypedDict):
+        certificate_store: pulumi.Input[str]
+        certificate_url: pulumi.Input[str]
+elif False:
+    ElastigroupAzureV3SecretVaultCertificateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ElastigroupAzureV3SecretVaultCertificateArgs:
+    def __init__(__self__, *,
+                 certificate_store: pulumi.Input[str],
+                 certificate_url: pulumi.Input[str]):
+        pulumi.set(__self__, "certificate_store", certificate_store)
+        pulumi.set(__self__, "certificate_url", certificate_url)
+
+    @property
+    @pulumi.getter(name="certificateStore")
+    def certificate_store(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "certificate_store")
+
+    @certificate_store.setter
+    def certificate_store(self, value: pulumi.Input[str]):
+        pulumi.set(self, "certificate_store", value)
+
+    @property
+    @pulumi.getter(name="certificateUrl")
+    def certificate_url(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "certificate_url")
+
+    @certificate_url.setter
+    def certificate_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "certificate_url", value)
+
+
+if not MYPY:
+    class ElastigroupAzureV3SecurityArgsDict(TypedDict):
+        confidential_os_disk_encryption: NotRequired[pulumi.Input[bool]]
+        secure_boot_enabled: NotRequired[pulumi.Input[bool]]
+        security_type: NotRequired[pulumi.Input[str]]
+        vtpm_enabled: NotRequired[pulumi.Input[bool]]
+elif False:
+    ElastigroupAzureV3SecurityArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ElastigroupAzureV3SecurityArgs:
+    def __init__(__self__, *,
+                 confidential_os_disk_encryption: Optional[pulumi.Input[bool]] = None,
+                 secure_boot_enabled: Optional[pulumi.Input[bool]] = None,
+                 security_type: Optional[pulumi.Input[str]] = None,
+                 vtpm_enabled: Optional[pulumi.Input[bool]] = None):
+        if confidential_os_disk_encryption is not None:
+            pulumi.set(__self__, "confidential_os_disk_encryption", confidential_os_disk_encryption)
+        if secure_boot_enabled is not None:
+            pulumi.set(__self__, "secure_boot_enabled", secure_boot_enabled)
+        if security_type is not None:
+            pulumi.set(__self__, "security_type", security_type)
+        if vtpm_enabled is not None:
+            pulumi.set(__self__, "vtpm_enabled", vtpm_enabled)
+
+    @property
+    @pulumi.getter(name="confidentialOsDiskEncryption")
+    def confidential_os_disk_encryption(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "confidential_os_disk_encryption")
+
+    @confidential_os_disk_encryption.setter
+    def confidential_os_disk_encryption(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "confidential_os_disk_encryption", value)
+
+    @property
+    @pulumi.getter(name="secureBootEnabled")
+    def secure_boot_enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "secure_boot_enabled")
+
+    @secure_boot_enabled.setter
+    def secure_boot_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "secure_boot_enabled", value)
+
+    @property
+    @pulumi.getter(name="securityType")
+    def security_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "security_type")
+
+    @security_type.setter
+    def security_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_type", value)
+
+    @property
+    @pulumi.getter(name="vtpmEnabled")
+    def vtpm_enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "vtpm_enabled")
+
+    @vtpm_enabled.setter
+    def vtpm_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "vtpm_enabled", value)
+
+
+if not MYPY:
+    class ElastigroupAzureV3SignalArgsDict(TypedDict):
+        timeout: pulumi.Input[int]
+        type: pulumi.Input[str]
+elif False:
+    ElastigroupAzureV3SignalArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ElastigroupAzureV3SignalArgs:
+    def __init__(__self__, *,
+                 timeout: pulumi.Input[int],
+                 type: pulumi.Input[str]):
+        pulumi.set(__self__, "timeout", timeout)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "timeout")
+
+    @timeout.setter
+    def timeout(self, value: pulumi.Input[int]):
+        pulumi.set(self, "timeout", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
     class ElastigroupAzureV3TagArgsDict(TypedDict):
         key: pulumi.Input[str]
         value: pulumi.Input[str]
@@ -1470,6 +2337,7 @@ if not MYPY:
     class ElastigroupAzureV3VmSizesArgsDict(TypedDict):
         od_sizes: pulumi.Input[Sequence[pulumi.Input[str]]]
         spot_sizes: pulumi.Input[Sequence[pulumi.Input[str]]]
+        preferred_spot_sizes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
 elif False:
     ElastigroupAzureV3VmSizesArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -1477,9 +2345,12 @@ elif False:
 class ElastigroupAzureV3VmSizesArgs:
     def __init__(__self__, *,
                  od_sizes: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 spot_sizes: pulumi.Input[Sequence[pulumi.Input[str]]]):
+                 spot_sizes: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 preferred_spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         pulumi.set(__self__, "od_sizes", od_sizes)
         pulumi.set(__self__, "spot_sizes", spot_sizes)
+        if preferred_spot_sizes is not None:
+            pulumi.set(__self__, "preferred_spot_sizes", preferred_spot_sizes)
 
     @property
     @pulumi.getter(name="odSizes")
@@ -1498,6 +2369,15 @@ class ElastigroupAzureV3VmSizesArgs:
     @spot_sizes.setter
     def spot_sizes(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "spot_sizes", value)
+
+    @property
+    @pulumi.getter(name="preferredSpotSizes")
+    def preferred_spot_sizes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "preferred_spot_sizes")
+
+    @preferred_spot_sizes.setter
+    def preferred_spot_sizes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "preferred_spot_sizes", value)
 
 
 if not MYPY:

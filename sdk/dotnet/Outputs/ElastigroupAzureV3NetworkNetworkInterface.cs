@@ -16,7 +16,11 @@ namespace Pulumi.SpotInst.Outputs
         public readonly ImmutableArray<Outputs.ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig> AdditionalIpConfigs;
         public readonly ImmutableArray<Outputs.ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup> ApplicationSecurityGroups;
         public readonly bool AssignPublicIp;
+        public readonly bool? EnableIpForwarding;
         public readonly bool IsPrimary;
+        public readonly ImmutableArray<string> PrivateIpAddresses;
+        public readonly string? PublicIpSku;
+        public readonly ImmutableArray<Outputs.ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroup> SecurityGroups;
         public readonly string SubnetName;
 
         [OutputConstructor]
@@ -27,14 +31,26 @@ namespace Pulumi.SpotInst.Outputs
 
             bool assignPublicIp,
 
+            bool? enableIpForwarding,
+
             bool isPrimary,
+
+            ImmutableArray<string> privateIpAddresses,
+
+            string? publicIpSku,
+
+            ImmutableArray<Outputs.ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroup> securityGroups,
 
             string subnetName)
         {
             AdditionalIpConfigs = additionalIpConfigs;
             ApplicationSecurityGroups = applicationSecurityGroups;
             AssignPublicIp = assignPublicIp;
+            EnableIpForwarding = enableIpForwarding;
             IsPrimary = isPrimary;
+            PrivateIpAddresses = privateIpAddresses;
+            PublicIpSku = publicIpSku;
+            SecurityGroups = securityGroups;
             SubnetName = subnetName;
         }
     }
