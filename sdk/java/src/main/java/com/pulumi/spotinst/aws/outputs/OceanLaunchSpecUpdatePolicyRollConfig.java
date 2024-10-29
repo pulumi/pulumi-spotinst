@@ -5,8 +5,11 @@ package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanLaunchSpecUpdatePolicyRollConfig {
@@ -15,6 +18,11 @@ public final class OceanLaunchSpecUpdatePolicyRollConfig {
      * 
      */
     private Integer batchSizePercentage;
+    /**
+     * @return During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.
+     * 
+     */
+    private @Nullable Boolean respectPdb;
 
     private OceanLaunchSpecUpdatePolicyRollConfig() {}
     /**
@@ -23,6 +31,13 @@ public final class OceanLaunchSpecUpdatePolicyRollConfig {
      */
     public Integer batchSizePercentage() {
         return this.batchSizePercentage;
+    }
+    /**
+     * @return During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.
+     * 
+     */
+    public Optional<Boolean> respectPdb() {
+        return Optional.ofNullable(this.respectPdb);
     }
 
     public static Builder builder() {
@@ -35,10 +50,12 @@ public final class OceanLaunchSpecUpdatePolicyRollConfig {
     @CustomType.Builder
     public static final class Builder {
         private Integer batchSizePercentage;
+        private @Nullable Boolean respectPdb;
         public Builder() {}
         public Builder(OceanLaunchSpecUpdatePolicyRollConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.batchSizePercentage = defaults.batchSizePercentage;
+    	      this.respectPdb = defaults.respectPdb;
         }
 
         @CustomType.Setter
@@ -49,9 +66,16 @@ public final class OceanLaunchSpecUpdatePolicyRollConfig {
             this.batchSizePercentage = batchSizePercentage;
             return this;
         }
+        @CustomType.Setter
+        public Builder respectPdb(@Nullable Boolean respectPdb) {
+
+            this.respectPdb = respectPdb;
+            return this;
+        }
         public OceanLaunchSpecUpdatePolicyRollConfig build() {
             final var _resultValue = new OceanLaunchSpecUpdatePolicyRollConfig();
             _resultValue.batchSizePercentage = batchSizePercentage;
+            _resultValue.respectPdb = respectPdb;
             return _resultValue;
         }
     }

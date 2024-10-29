@@ -15,27 +15,47 @@ import (
 type ElastigroupAzureV3 struct {
 	pulumi.CustomResourceState
 
-	CustomData               pulumi.StringPtrOutput                              `pulumi:"customData"`
-	DesiredCapacity          pulumi.IntPtrOutput                                 `pulumi:"desiredCapacity"`
-	DrainingTimeout          pulumi.IntOutput                                    `pulumi:"drainingTimeout"`
-	Extensions               ElastigroupAzureV3ExtensionArrayOutput              `pulumi:"extensions"`
-	FallbackToOnDemand       pulumi.BoolOutput                                   `pulumi:"fallbackToOnDemand"`
-	Images                   ElastigroupAzureV3ImageArrayOutput                  `pulumi:"images"`
-	Login                    ElastigroupAzureV3LoginPtrOutput                    `pulumi:"login"`
-	ManagedServiceIdentities ElastigroupAzureV3ManagedServiceIdentityArrayOutput `pulumi:"managedServiceIdentities"`
-	MaxSize                  pulumi.IntOutput                                    `pulumi:"maxSize"`
-	MinSize                  pulumi.IntOutput                                    `pulumi:"minSize"`
-	Name                     pulumi.StringOutput                                 `pulumi:"name"`
-	Network                  ElastigroupAzureV3NetworkOutput                     `pulumi:"network"`
-	OnDemandCount            pulumi.IntPtrOutput                                 `pulumi:"onDemandCount"`
-	Os                       pulumi.StringOutput                                 `pulumi:"os"`
-	Region                   pulumi.StringOutput                                 `pulumi:"region"`
-	ResourceGroupName        pulumi.StringOutput                                 `pulumi:"resourceGroupName"`
-	ScalingDownPolicies      ElastigroupAzureV3ScalingDownPolicyArrayOutput      `pulumi:"scalingDownPolicies"`
-	ScalingUpPolicies        ElastigroupAzureV3ScalingUpPolicyArrayOutput        `pulumi:"scalingUpPolicies"`
-	SpotPercentage           pulumi.IntPtrOutput                                 `pulumi:"spotPercentage"`
-	Tags                     ElastigroupAzureV3TagArrayOutput                    `pulumi:"tags"`
-	VmSizes                  ElastigroupAzureV3VmSizesOutput                     `pulumi:"vmSizes"`
+	AvailabilityVsCost       pulumi.IntPtrOutput                                  `pulumi:"availabilityVsCost"`
+	BootDiagnostics          ElastigroupAzureV3BootDiagnosticArrayOutput          `pulumi:"bootDiagnostics"`
+	CapacityReservation      ElastigroupAzureV3CapacityReservationPtrOutput       `pulumi:"capacityReservation"`
+	CustomData               pulumi.StringPtrOutput                               `pulumi:"customData"`
+	DataDisks                ElastigroupAzureV3DataDiskArrayOutput                `pulumi:"dataDisks"`
+	Description              pulumi.StringPtrOutput                               `pulumi:"description"`
+	DesiredCapacity          pulumi.IntPtrOutput                                  `pulumi:"desiredCapacity"`
+	DrainingTimeout          pulumi.IntOutput                                     `pulumi:"drainingTimeout"`
+	Extensions               ElastigroupAzureV3ExtensionArrayOutput               `pulumi:"extensions"`
+	FallbackToOnDemand       pulumi.BoolOutput                                    `pulumi:"fallbackToOnDemand"`
+	Health                   ElastigroupAzureV3HealthPtrOutput                    `pulumi:"health"`
+	Images                   ElastigroupAzureV3ImageArrayOutput                   `pulumi:"images"`
+	LoadBalancers            ElastigroupAzureV3LoadBalancerArrayOutput            `pulumi:"loadBalancers"`
+	Login                    ElastigroupAzureV3LoginPtrOutput                     `pulumi:"login"`
+	ManagedServiceIdentities ElastigroupAzureV3ManagedServiceIdentityArrayOutput  `pulumi:"managedServiceIdentities"`
+	MaxSize                  pulumi.IntOutput                                     `pulumi:"maxSize"`
+	MinSize                  pulumi.IntOutput                                     `pulumi:"minSize"`
+	Name                     pulumi.StringOutput                                  `pulumi:"name"`
+	Network                  ElastigroupAzureV3NetworkOutput                      `pulumi:"network"`
+	OnDemandCount            pulumi.IntPtrOutput                                  `pulumi:"onDemandCount"`
+	OptimizationWindows      pulumi.StringArrayOutput                             `pulumi:"optimizationWindows"`
+	Os                       pulumi.StringOutput                                  `pulumi:"os"`
+	OsDisk                   ElastigroupAzureV3OsDiskPtrOutput                    `pulumi:"osDisk"`
+	PreferredZones           pulumi.StringArrayOutput                             `pulumi:"preferredZones"`
+	ProximityPlacementGroups ElastigroupAzureV3ProximityPlacementGroupArrayOutput `pulumi:"proximityPlacementGroups"`
+	Region                   pulumi.StringOutput                                  `pulumi:"region"`
+	ResourceGroupName        pulumi.StringOutput                                  `pulumi:"resourceGroupName"`
+	RevertToSpot             ElastigroupAzureV3RevertToSpotPtrOutput              `pulumi:"revertToSpot"`
+	ScalingDownPolicies      ElastigroupAzureV3ScalingDownPolicyArrayOutput       `pulumi:"scalingDownPolicies"`
+	ScalingUpPolicies        ElastigroupAzureV3ScalingUpPolicyArrayOutput         `pulumi:"scalingUpPolicies"`
+	SchedulingTasks          ElastigroupAzureV3SchedulingTaskArrayOutput          `pulumi:"schedulingTasks"`
+	Secrets                  ElastigroupAzureV3SecretArrayOutput                  `pulumi:"secrets"`
+	Security                 ElastigroupAzureV3SecurityPtrOutput                  `pulumi:"security"`
+	ShutdownScript           pulumi.StringPtrOutput                               `pulumi:"shutdownScript"`
+	Signals                  ElastigroupAzureV3SignalArrayOutput                  `pulumi:"signals"`
+	SpotPercentage           pulumi.IntPtrOutput                                  `pulumi:"spotPercentage"`
+	Tags                     ElastigroupAzureV3TagArrayOutput                     `pulumi:"tags"`
+	UserData                 pulumi.StringPtrOutput                               `pulumi:"userData"`
+	VmNamePrefix             pulumi.StringPtrOutput                               `pulumi:"vmNamePrefix"`
+	VmSizes                  ElastigroupAzureV3VmSizesOutput                      `pulumi:"vmSizes"`
+	Zones                    pulumi.StringArrayOutput                             `pulumi:"zones"`
 }
 
 // NewElastigroupAzureV3 registers a new resource with the given unique name, arguments, and options.
@@ -86,36 +106,63 @@ func GetElastigroupAzureV3(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ElastigroupAzureV3 resources.
 type elastigroupAzureV3State struct {
-	CustomData               *string                                    `pulumi:"customData"`
-	DesiredCapacity          *int                                       `pulumi:"desiredCapacity"`
-	DrainingTimeout          *int                                       `pulumi:"drainingTimeout"`
-	Extensions               []ElastigroupAzureV3Extension              `pulumi:"extensions"`
-	FallbackToOnDemand       *bool                                      `pulumi:"fallbackToOnDemand"`
-	Images                   []ElastigroupAzureV3Image                  `pulumi:"images"`
-	Login                    *ElastigroupAzureV3Login                   `pulumi:"login"`
-	ManagedServiceIdentities []ElastigroupAzureV3ManagedServiceIdentity `pulumi:"managedServiceIdentities"`
-	MaxSize                  *int                                       `pulumi:"maxSize"`
-	MinSize                  *int                                       `pulumi:"minSize"`
-	Name                     *string                                    `pulumi:"name"`
-	Network                  *ElastigroupAzureV3Network                 `pulumi:"network"`
-	OnDemandCount            *int                                       `pulumi:"onDemandCount"`
-	Os                       *string                                    `pulumi:"os"`
-	Region                   *string                                    `pulumi:"region"`
-	ResourceGroupName        *string                                    `pulumi:"resourceGroupName"`
-	ScalingDownPolicies      []ElastigroupAzureV3ScalingDownPolicy      `pulumi:"scalingDownPolicies"`
-	ScalingUpPolicies        []ElastigroupAzureV3ScalingUpPolicy        `pulumi:"scalingUpPolicies"`
-	SpotPercentage           *int                                       `pulumi:"spotPercentage"`
-	Tags                     []ElastigroupAzureV3Tag                    `pulumi:"tags"`
-	VmSizes                  *ElastigroupAzureV3VmSizes                 `pulumi:"vmSizes"`
+	AvailabilityVsCost       *int                                        `pulumi:"availabilityVsCost"`
+	BootDiagnostics          []ElastigroupAzureV3BootDiagnostic          `pulumi:"bootDiagnostics"`
+	CapacityReservation      *ElastigroupAzureV3CapacityReservation      `pulumi:"capacityReservation"`
+	CustomData               *string                                     `pulumi:"customData"`
+	DataDisks                []ElastigroupAzureV3DataDisk                `pulumi:"dataDisks"`
+	Description              *string                                     `pulumi:"description"`
+	DesiredCapacity          *int                                        `pulumi:"desiredCapacity"`
+	DrainingTimeout          *int                                        `pulumi:"drainingTimeout"`
+	Extensions               []ElastigroupAzureV3Extension               `pulumi:"extensions"`
+	FallbackToOnDemand       *bool                                       `pulumi:"fallbackToOnDemand"`
+	Health                   *ElastigroupAzureV3Health                   `pulumi:"health"`
+	Images                   []ElastigroupAzureV3Image                   `pulumi:"images"`
+	LoadBalancers            []ElastigroupAzureV3LoadBalancer            `pulumi:"loadBalancers"`
+	Login                    *ElastigroupAzureV3Login                    `pulumi:"login"`
+	ManagedServiceIdentities []ElastigroupAzureV3ManagedServiceIdentity  `pulumi:"managedServiceIdentities"`
+	MaxSize                  *int                                        `pulumi:"maxSize"`
+	MinSize                  *int                                        `pulumi:"minSize"`
+	Name                     *string                                     `pulumi:"name"`
+	Network                  *ElastigroupAzureV3Network                  `pulumi:"network"`
+	OnDemandCount            *int                                        `pulumi:"onDemandCount"`
+	OptimizationWindows      []string                                    `pulumi:"optimizationWindows"`
+	Os                       *string                                     `pulumi:"os"`
+	OsDisk                   *ElastigroupAzureV3OsDisk                   `pulumi:"osDisk"`
+	PreferredZones           []string                                    `pulumi:"preferredZones"`
+	ProximityPlacementGroups []ElastigroupAzureV3ProximityPlacementGroup `pulumi:"proximityPlacementGroups"`
+	Region                   *string                                     `pulumi:"region"`
+	ResourceGroupName        *string                                     `pulumi:"resourceGroupName"`
+	RevertToSpot             *ElastigroupAzureV3RevertToSpot             `pulumi:"revertToSpot"`
+	ScalingDownPolicies      []ElastigroupAzureV3ScalingDownPolicy       `pulumi:"scalingDownPolicies"`
+	ScalingUpPolicies        []ElastigroupAzureV3ScalingUpPolicy         `pulumi:"scalingUpPolicies"`
+	SchedulingTasks          []ElastigroupAzureV3SchedulingTask          `pulumi:"schedulingTasks"`
+	Secrets                  []ElastigroupAzureV3Secret                  `pulumi:"secrets"`
+	Security                 *ElastigroupAzureV3Security                 `pulumi:"security"`
+	ShutdownScript           *string                                     `pulumi:"shutdownScript"`
+	Signals                  []ElastigroupAzureV3Signal                  `pulumi:"signals"`
+	SpotPercentage           *int                                        `pulumi:"spotPercentage"`
+	Tags                     []ElastigroupAzureV3Tag                     `pulumi:"tags"`
+	UserData                 *string                                     `pulumi:"userData"`
+	VmNamePrefix             *string                                     `pulumi:"vmNamePrefix"`
+	VmSizes                  *ElastigroupAzureV3VmSizes                  `pulumi:"vmSizes"`
+	Zones                    []string                                    `pulumi:"zones"`
 }
 
 type ElastigroupAzureV3State struct {
+	AvailabilityVsCost       pulumi.IntPtrInput
+	BootDiagnostics          ElastigroupAzureV3BootDiagnosticArrayInput
+	CapacityReservation      ElastigroupAzureV3CapacityReservationPtrInput
 	CustomData               pulumi.StringPtrInput
+	DataDisks                ElastigroupAzureV3DataDiskArrayInput
+	Description              pulumi.StringPtrInput
 	DesiredCapacity          pulumi.IntPtrInput
 	DrainingTimeout          pulumi.IntPtrInput
 	Extensions               ElastigroupAzureV3ExtensionArrayInput
 	FallbackToOnDemand       pulumi.BoolPtrInput
+	Health                   ElastigroupAzureV3HealthPtrInput
 	Images                   ElastigroupAzureV3ImageArrayInput
+	LoadBalancers            ElastigroupAzureV3LoadBalancerArrayInput
 	Login                    ElastigroupAzureV3LoginPtrInput
 	ManagedServiceIdentities ElastigroupAzureV3ManagedServiceIdentityArrayInput
 	MaxSize                  pulumi.IntPtrInput
@@ -123,14 +170,27 @@ type ElastigroupAzureV3State struct {
 	Name                     pulumi.StringPtrInput
 	Network                  ElastigroupAzureV3NetworkPtrInput
 	OnDemandCount            pulumi.IntPtrInput
+	OptimizationWindows      pulumi.StringArrayInput
 	Os                       pulumi.StringPtrInput
+	OsDisk                   ElastigroupAzureV3OsDiskPtrInput
+	PreferredZones           pulumi.StringArrayInput
+	ProximityPlacementGroups ElastigroupAzureV3ProximityPlacementGroupArrayInput
 	Region                   pulumi.StringPtrInput
 	ResourceGroupName        pulumi.StringPtrInput
+	RevertToSpot             ElastigroupAzureV3RevertToSpotPtrInput
 	ScalingDownPolicies      ElastigroupAzureV3ScalingDownPolicyArrayInput
 	ScalingUpPolicies        ElastigroupAzureV3ScalingUpPolicyArrayInput
+	SchedulingTasks          ElastigroupAzureV3SchedulingTaskArrayInput
+	Secrets                  ElastigroupAzureV3SecretArrayInput
+	Security                 ElastigroupAzureV3SecurityPtrInput
+	ShutdownScript           pulumi.StringPtrInput
+	Signals                  ElastigroupAzureV3SignalArrayInput
 	SpotPercentage           pulumi.IntPtrInput
 	Tags                     ElastigroupAzureV3TagArrayInput
+	UserData                 pulumi.StringPtrInput
+	VmNamePrefix             pulumi.StringPtrInput
 	VmSizes                  ElastigroupAzureV3VmSizesPtrInput
+	Zones                    pulumi.StringArrayInput
 }
 
 func (ElastigroupAzureV3State) ElementType() reflect.Type {
@@ -138,37 +198,64 @@ func (ElastigroupAzureV3State) ElementType() reflect.Type {
 }
 
 type elastigroupAzureV3Args struct {
-	CustomData               *string                                    `pulumi:"customData"`
-	DesiredCapacity          *int                                       `pulumi:"desiredCapacity"`
-	DrainingTimeout          *int                                       `pulumi:"drainingTimeout"`
-	Extensions               []ElastigroupAzureV3Extension              `pulumi:"extensions"`
-	FallbackToOnDemand       bool                                       `pulumi:"fallbackToOnDemand"`
-	Images                   []ElastigroupAzureV3Image                  `pulumi:"images"`
-	Login                    *ElastigroupAzureV3Login                   `pulumi:"login"`
-	ManagedServiceIdentities []ElastigroupAzureV3ManagedServiceIdentity `pulumi:"managedServiceIdentities"`
-	MaxSize                  *int                                       `pulumi:"maxSize"`
-	MinSize                  *int                                       `pulumi:"minSize"`
-	Name                     *string                                    `pulumi:"name"`
-	Network                  ElastigroupAzureV3Network                  `pulumi:"network"`
-	OnDemandCount            *int                                       `pulumi:"onDemandCount"`
-	Os                       string                                     `pulumi:"os"`
-	Region                   string                                     `pulumi:"region"`
-	ResourceGroupName        string                                     `pulumi:"resourceGroupName"`
-	ScalingDownPolicies      []ElastigroupAzureV3ScalingDownPolicy      `pulumi:"scalingDownPolicies"`
-	ScalingUpPolicies        []ElastigroupAzureV3ScalingUpPolicy        `pulumi:"scalingUpPolicies"`
-	SpotPercentage           *int                                       `pulumi:"spotPercentage"`
-	Tags                     []ElastigroupAzureV3Tag                    `pulumi:"tags"`
-	VmSizes                  ElastigroupAzureV3VmSizes                  `pulumi:"vmSizes"`
+	AvailabilityVsCost       *int                                        `pulumi:"availabilityVsCost"`
+	BootDiagnostics          []ElastigroupAzureV3BootDiagnostic          `pulumi:"bootDiagnostics"`
+	CapacityReservation      *ElastigroupAzureV3CapacityReservation      `pulumi:"capacityReservation"`
+	CustomData               *string                                     `pulumi:"customData"`
+	DataDisks                []ElastigroupAzureV3DataDisk                `pulumi:"dataDisks"`
+	Description              *string                                     `pulumi:"description"`
+	DesiredCapacity          *int                                        `pulumi:"desiredCapacity"`
+	DrainingTimeout          *int                                        `pulumi:"drainingTimeout"`
+	Extensions               []ElastigroupAzureV3Extension               `pulumi:"extensions"`
+	FallbackToOnDemand       bool                                        `pulumi:"fallbackToOnDemand"`
+	Health                   *ElastigroupAzureV3Health                   `pulumi:"health"`
+	Images                   []ElastigroupAzureV3Image                   `pulumi:"images"`
+	LoadBalancers            []ElastigroupAzureV3LoadBalancer            `pulumi:"loadBalancers"`
+	Login                    *ElastigroupAzureV3Login                    `pulumi:"login"`
+	ManagedServiceIdentities []ElastigroupAzureV3ManagedServiceIdentity  `pulumi:"managedServiceIdentities"`
+	MaxSize                  *int                                        `pulumi:"maxSize"`
+	MinSize                  *int                                        `pulumi:"minSize"`
+	Name                     *string                                     `pulumi:"name"`
+	Network                  ElastigroupAzureV3Network                   `pulumi:"network"`
+	OnDemandCount            *int                                        `pulumi:"onDemandCount"`
+	OptimizationWindows      []string                                    `pulumi:"optimizationWindows"`
+	Os                       string                                      `pulumi:"os"`
+	OsDisk                   *ElastigroupAzureV3OsDisk                   `pulumi:"osDisk"`
+	PreferredZones           []string                                    `pulumi:"preferredZones"`
+	ProximityPlacementGroups []ElastigroupAzureV3ProximityPlacementGroup `pulumi:"proximityPlacementGroups"`
+	Region                   string                                      `pulumi:"region"`
+	ResourceGroupName        string                                      `pulumi:"resourceGroupName"`
+	RevertToSpot             *ElastigroupAzureV3RevertToSpot             `pulumi:"revertToSpot"`
+	ScalingDownPolicies      []ElastigroupAzureV3ScalingDownPolicy       `pulumi:"scalingDownPolicies"`
+	ScalingUpPolicies        []ElastigroupAzureV3ScalingUpPolicy         `pulumi:"scalingUpPolicies"`
+	SchedulingTasks          []ElastigroupAzureV3SchedulingTask          `pulumi:"schedulingTasks"`
+	Secrets                  []ElastigroupAzureV3Secret                  `pulumi:"secrets"`
+	Security                 *ElastigroupAzureV3Security                 `pulumi:"security"`
+	ShutdownScript           *string                                     `pulumi:"shutdownScript"`
+	Signals                  []ElastigroupAzureV3Signal                  `pulumi:"signals"`
+	SpotPercentage           *int                                        `pulumi:"spotPercentage"`
+	Tags                     []ElastigroupAzureV3Tag                     `pulumi:"tags"`
+	UserData                 *string                                     `pulumi:"userData"`
+	VmNamePrefix             *string                                     `pulumi:"vmNamePrefix"`
+	VmSizes                  ElastigroupAzureV3VmSizes                   `pulumi:"vmSizes"`
+	Zones                    []string                                    `pulumi:"zones"`
 }
 
 // The set of arguments for constructing a ElastigroupAzureV3 resource.
 type ElastigroupAzureV3Args struct {
+	AvailabilityVsCost       pulumi.IntPtrInput
+	BootDiagnostics          ElastigroupAzureV3BootDiagnosticArrayInput
+	CapacityReservation      ElastigroupAzureV3CapacityReservationPtrInput
 	CustomData               pulumi.StringPtrInput
+	DataDisks                ElastigroupAzureV3DataDiskArrayInput
+	Description              pulumi.StringPtrInput
 	DesiredCapacity          pulumi.IntPtrInput
 	DrainingTimeout          pulumi.IntPtrInput
 	Extensions               ElastigroupAzureV3ExtensionArrayInput
 	FallbackToOnDemand       pulumi.BoolInput
+	Health                   ElastigroupAzureV3HealthPtrInput
 	Images                   ElastigroupAzureV3ImageArrayInput
+	LoadBalancers            ElastigroupAzureV3LoadBalancerArrayInput
 	Login                    ElastigroupAzureV3LoginPtrInput
 	ManagedServiceIdentities ElastigroupAzureV3ManagedServiceIdentityArrayInput
 	MaxSize                  pulumi.IntPtrInput
@@ -176,14 +263,27 @@ type ElastigroupAzureV3Args struct {
 	Name                     pulumi.StringPtrInput
 	Network                  ElastigroupAzureV3NetworkInput
 	OnDemandCount            pulumi.IntPtrInput
+	OptimizationWindows      pulumi.StringArrayInput
 	Os                       pulumi.StringInput
+	OsDisk                   ElastigroupAzureV3OsDiskPtrInput
+	PreferredZones           pulumi.StringArrayInput
+	ProximityPlacementGroups ElastigroupAzureV3ProximityPlacementGroupArrayInput
 	Region                   pulumi.StringInput
 	ResourceGroupName        pulumi.StringInput
+	RevertToSpot             ElastigroupAzureV3RevertToSpotPtrInput
 	ScalingDownPolicies      ElastigroupAzureV3ScalingDownPolicyArrayInput
 	ScalingUpPolicies        ElastigroupAzureV3ScalingUpPolicyArrayInput
+	SchedulingTasks          ElastigroupAzureV3SchedulingTaskArrayInput
+	Secrets                  ElastigroupAzureV3SecretArrayInput
+	Security                 ElastigroupAzureV3SecurityPtrInput
+	ShutdownScript           pulumi.StringPtrInput
+	Signals                  ElastigroupAzureV3SignalArrayInput
 	SpotPercentage           pulumi.IntPtrInput
 	Tags                     ElastigroupAzureV3TagArrayInput
+	UserData                 pulumi.StringPtrInput
+	VmNamePrefix             pulumi.StringPtrInput
 	VmSizes                  ElastigroupAzureV3VmSizesInput
+	Zones                    pulumi.StringArrayInput
 }
 
 func (ElastigroupAzureV3Args) ElementType() reflect.Type {
@@ -273,8 +373,30 @@ func (o ElastigroupAzureV3Output) ToElastigroupAzureV3OutputWithContext(ctx cont
 	return o
 }
 
+func (o ElastigroupAzureV3Output) AvailabilityVsCost() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.IntPtrOutput { return v.AvailabilityVsCost }).(pulumi.IntPtrOutput)
+}
+
+func (o ElastigroupAzureV3Output) BootDiagnostics() ElastigroupAzureV3BootDiagnosticArrayOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3) ElastigroupAzureV3BootDiagnosticArrayOutput { return v.BootDiagnostics }).(ElastigroupAzureV3BootDiagnosticArrayOutput)
+}
+
+func (o ElastigroupAzureV3Output) CapacityReservation() ElastigroupAzureV3CapacityReservationPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3) ElastigroupAzureV3CapacityReservationPtrOutput {
+		return v.CapacityReservation
+	}).(ElastigroupAzureV3CapacityReservationPtrOutput)
+}
+
 func (o ElastigroupAzureV3Output) CustomData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.StringPtrOutput { return v.CustomData }).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupAzureV3Output) DataDisks() ElastigroupAzureV3DataDiskArrayOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3) ElastigroupAzureV3DataDiskArrayOutput { return v.DataDisks }).(ElastigroupAzureV3DataDiskArrayOutput)
+}
+
+func (o ElastigroupAzureV3Output) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupAzureV3Output) DesiredCapacity() pulumi.IntPtrOutput {
@@ -293,8 +415,16 @@ func (o ElastigroupAzureV3Output) FallbackToOnDemand() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.BoolOutput { return v.FallbackToOnDemand }).(pulumi.BoolOutput)
 }
 
+func (o ElastigroupAzureV3Output) Health() ElastigroupAzureV3HealthPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3) ElastigroupAzureV3HealthPtrOutput { return v.Health }).(ElastigroupAzureV3HealthPtrOutput)
+}
+
 func (o ElastigroupAzureV3Output) Images() ElastigroupAzureV3ImageArrayOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3) ElastigroupAzureV3ImageArrayOutput { return v.Images }).(ElastigroupAzureV3ImageArrayOutput)
+}
+
+func (o ElastigroupAzureV3Output) LoadBalancers() ElastigroupAzureV3LoadBalancerArrayOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3) ElastigroupAzureV3LoadBalancerArrayOutput { return v.LoadBalancers }).(ElastigroupAzureV3LoadBalancerArrayOutput)
 }
 
 func (o ElastigroupAzureV3Output) Login() ElastigroupAzureV3LoginPtrOutput {
@@ -327,8 +457,26 @@ func (o ElastigroupAzureV3Output) OnDemandCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.IntPtrOutput { return v.OnDemandCount }).(pulumi.IntPtrOutput)
 }
 
+func (o ElastigroupAzureV3Output) OptimizationWindows() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.StringArrayOutput { return v.OptimizationWindows }).(pulumi.StringArrayOutput)
+}
+
 func (o ElastigroupAzureV3Output) Os() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.StringOutput { return v.Os }).(pulumi.StringOutput)
+}
+
+func (o ElastigroupAzureV3Output) OsDisk() ElastigroupAzureV3OsDiskPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3) ElastigroupAzureV3OsDiskPtrOutput { return v.OsDisk }).(ElastigroupAzureV3OsDiskPtrOutput)
+}
+
+func (o ElastigroupAzureV3Output) PreferredZones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.StringArrayOutput { return v.PreferredZones }).(pulumi.StringArrayOutput)
+}
+
+func (o ElastigroupAzureV3Output) ProximityPlacementGroups() ElastigroupAzureV3ProximityPlacementGroupArrayOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3) ElastigroupAzureV3ProximityPlacementGroupArrayOutput {
+		return v.ProximityPlacementGroups
+	}).(ElastigroupAzureV3ProximityPlacementGroupArrayOutput)
 }
 
 func (o ElastigroupAzureV3Output) Region() pulumi.StringOutput {
@@ -337,6 +485,10 @@ func (o ElastigroupAzureV3Output) Region() pulumi.StringOutput {
 
 func (o ElastigroupAzureV3Output) ResourceGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.StringOutput { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+func (o ElastigroupAzureV3Output) RevertToSpot() ElastigroupAzureV3RevertToSpotPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3) ElastigroupAzureV3RevertToSpotPtrOutput { return v.RevertToSpot }).(ElastigroupAzureV3RevertToSpotPtrOutput)
 }
 
 func (o ElastigroupAzureV3Output) ScalingDownPolicies() ElastigroupAzureV3ScalingDownPolicyArrayOutput {
@@ -349,6 +501,26 @@ func (o ElastigroupAzureV3Output) ScalingUpPolicies() ElastigroupAzureV3ScalingU
 	return o.ApplyT(func(v *ElastigroupAzureV3) ElastigroupAzureV3ScalingUpPolicyArrayOutput { return v.ScalingUpPolicies }).(ElastigroupAzureV3ScalingUpPolicyArrayOutput)
 }
 
+func (o ElastigroupAzureV3Output) SchedulingTasks() ElastigroupAzureV3SchedulingTaskArrayOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3) ElastigroupAzureV3SchedulingTaskArrayOutput { return v.SchedulingTasks }).(ElastigroupAzureV3SchedulingTaskArrayOutput)
+}
+
+func (o ElastigroupAzureV3Output) Secrets() ElastigroupAzureV3SecretArrayOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3) ElastigroupAzureV3SecretArrayOutput { return v.Secrets }).(ElastigroupAzureV3SecretArrayOutput)
+}
+
+func (o ElastigroupAzureV3Output) Security() ElastigroupAzureV3SecurityPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3) ElastigroupAzureV3SecurityPtrOutput { return v.Security }).(ElastigroupAzureV3SecurityPtrOutput)
+}
+
+func (o ElastigroupAzureV3Output) ShutdownScript() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.StringPtrOutput { return v.ShutdownScript }).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupAzureV3Output) Signals() ElastigroupAzureV3SignalArrayOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3) ElastigroupAzureV3SignalArrayOutput { return v.Signals }).(ElastigroupAzureV3SignalArrayOutput)
+}
+
 func (o ElastigroupAzureV3Output) SpotPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.IntPtrOutput { return v.SpotPercentage }).(pulumi.IntPtrOutput)
 }
@@ -357,8 +529,20 @@ func (o ElastigroupAzureV3Output) Tags() ElastigroupAzureV3TagArrayOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3) ElastigroupAzureV3TagArrayOutput { return v.Tags }).(ElastigroupAzureV3TagArrayOutput)
 }
 
+func (o ElastigroupAzureV3Output) UserData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.StringPtrOutput { return v.UserData }).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupAzureV3Output) VmNamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.StringPtrOutput { return v.VmNamePrefix }).(pulumi.StringPtrOutput)
+}
+
 func (o ElastigroupAzureV3Output) VmSizes() ElastigroupAzureV3VmSizesOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3) ElastigroupAzureV3VmSizesOutput { return v.VmSizes }).(ElastigroupAzureV3VmSizesOutput)
+}
+
+func (o ElastigroupAzureV3Output) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.StringArrayOutput { return v.Zones }).(pulumi.StringArrayOutput)
 }
 
 type ElastigroupAzureV3ArrayOutput struct{ *pulumi.OutputState }

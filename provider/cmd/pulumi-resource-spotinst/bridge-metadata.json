@@ -478,12 +478,38 @@
             "spotinst_elastigroup_azure_v3": {
                 "current": "spotinst:index/elastigroupAzureV3:ElastigroupAzureV3",
                 "fields": {
+                    "boot_diagnostics": {
+                        "maxItemsOne": false
+                    },
+                    "capacity_reservation": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "capacity_reservation_groups": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "data_disk": {
+                        "maxItemsOne": false
+                    },
                     "extensions": {
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
                                 "protected_settings_from_key_vault": {
                                     "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "health": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "health_check_types": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -499,6 +525,16 @@
                                     "maxItemsOne": false
                                 },
                                 "marketplace": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "load_balancer": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "backend_pool_names": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -523,12 +559,33 @@
                                             },
                                             "application_security_group": {
                                                 "maxItemsOne": false
+                                            },
+                                            "private_ip_addresses": {
+                                                "maxItemsOne": false
+                                            },
+                                            "security_group": {
+                                                "maxItemsOne": false
                                             }
                                         }
                                     }
                                 }
                             }
                         }
+                    },
+                    "optimization_windows": {
+                        "maxItemsOne": false
+                    },
+                    "os_disk": {
+                        "maxItemsOne": true
+                    },
+                    "preferred_zones": {
+                        "maxItemsOne": false
+                    },
+                    "proximity_placement_groups": {
+                        "maxItemsOne": false
+                    },
+                    "revert_to_spot": {
+                        "maxItemsOne": true
                     },
                     "scaling_down_policy": {
                         "maxItemsOne": false,
@@ -556,6 +613,28 @@
                             }
                         }
                     },
+                    "scheduling_task": {
+                        "maxItemsOne": false
+                    },
+                    "secret": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "source_vault": {
+                                    "maxItemsOne": false
+                                },
+                                "vault_certificates": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "security": {
+                        "maxItemsOne": true
+                    },
+                    "signal": {
+                        "maxItemsOne": false
+                    },
                     "tags": {
                         "maxItemsOne": false
                     },
@@ -566,11 +645,17 @@
                                 "od_sizes": {
                                     "maxItemsOne": false
                                 },
+                                "preferred_spot_sizes": {
+                                    "maxItemsOne": false
+                                },
                                 "spot_sizes": {
                                     "maxItemsOne": false
                                 }
                             }
                         }
+                    },
+                    "zones": {
+                        "maxItemsOne": false
                     }
                 }
             },

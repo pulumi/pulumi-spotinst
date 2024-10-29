@@ -10,13 +10,25 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.spotinst.ElastigroupAzureV3Args;
 import com.pulumi.spotinst.Utilities;
 import com.pulumi.spotinst.inputs.ElastigroupAzureV3State;
+import com.pulumi.spotinst.outputs.ElastigroupAzureV3BootDiagnostic;
+import com.pulumi.spotinst.outputs.ElastigroupAzureV3CapacityReservation;
+import com.pulumi.spotinst.outputs.ElastigroupAzureV3DataDisk;
 import com.pulumi.spotinst.outputs.ElastigroupAzureV3Extension;
+import com.pulumi.spotinst.outputs.ElastigroupAzureV3Health;
 import com.pulumi.spotinst.outputs.ElastigroupAzureV3Image;
+import com.pulumi.spotinst.outputs.ElastigroupAzureV3LoadBalancer;
 import com.pulumi.spotinst.outputs.ElastigroupAzureV3Login;
 import com.pulumi.spotinst.outputs.ElastigroupAzureV3ManagedServiceIdentity;
 import com.pulumi.spotinst.outputs.ElastigroupAzureV3Network;
+import com.pulumi.spotinst.outputs.ElastigroupAzureV3OsDisk;
+import com.pulumi.spotinst.outputs.ElastigroupAzureV3ProximityPlacementGroup;
+import com.pulumi.spotinst.outputs.ElastigroupAzureV3RevertToSpot;
 import com.pulumi.spotinst.outputs.ElastigroupAzureV3ScalingDownPolicy;
 import com.pulumi.spotinst.outputs.ElastigroupAzureV3ScalingUpPolicy;
+import com.pulumi.spotinst.outputs.ElastigroupAzureV3SchedulingTask;
+import com.pulumi.spotinst.outputs.ElastigroupAzureV3Secret;
+import com.pulumi.spotinst.outputs.ElastigroupAzureV3Security;
+import com.pulumi.spotinst.outputs.ElastigroupAzureV3Signal;
 import com.pulumi.spotinst.outputs.ElastigroupAzureV3Tag;
 import com.pulumi.spotinst.outputs.ElastigroupAzureV3VmSizes;
 import java.lang.Boolean;
@@ -28,11 +40,41 @@ import javax.annotation.Nullable;
 
 @ResourceType(type="spotinst:index/elastigroupAzureV3:ElastigroupAzureV3")
 public class ElastigroupAzureV3 extends com.pulumi.resources.CustomResource {
+    @Export(name="availabilityVsCost", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> availabilityVsCost;
+
+    public Output<Optional<Integer>> availabilityVsCost() {
+        return Codegen.optional(this.availabilityVsCost);
+    }
+    @Export(name="bootDiagnostics", refs={List.class,ElastigroupAzureV3BootDiagnostic.class}, tree="[0,1]")
+    private Output<List<ElastigroupAzureV3BootDiagnostic>> bootDiagnostics;
+
+    public Output<List<ElastigroupAzureV3BootDiagnostic>> bootDiagnostics() {
+        return this.bootDiagnostics;
+    }
+    @Export(name="capacityReservation", refs={ElastigroupAzureV3CapacityReservation.class}, tree="[0]")
+    private Output</* @Nullable */ ElastigroupAzureV3CapacityReservation> capacityReservation;
+
+    public Output<Optional<ElastigroupAzureV3CapacityReservation>> capacityReservation() {
+        return Codegen.optional(this.capacityReservation);
+    }
     @Export(name="customData", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customData;
 
     public Output<Optional<String>> customData() {
         return Codegen.optional(this.customData);
+    }
+    @Export(name="dataDisks", refs={List.class,ElastigroupAzureV3DataDisk.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ElastigroupAzureV3DataDisk>> dataDisks;
+
+    public Output<Optional<List<ElastigroupAzureV3DataDisk>>> dataDisks() {
+        return Codegen.optional(this.dataDisks);
+    }
+    @Export(name="description", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> description;
+
+    public Output<Optional<String>> description() {
+        return Codegen.optional(this.description);
     }
     @Export(name="desiredCapacity", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> desiredCapacity;
@@ -58,11 +100,23 @@ public class ElastigroupAzureV3 extends com.pulumi.resources.CustomResource {
     public Output<Boolean> fallbackToOnDemand() {
         return this.fallbackToOnDemand;
     }
+    @Export(name="health", refs={ElastigroupAzureV3Health.class}, tree="[0]")
+    private Output</* @Nullable */ ElastigroupAzureV3Health> health;
+
+    public Output<Optional<ElastigroupAzureV3Health>> health() {
+        return Codegen.optional(this.health);
+    }
     @Export(name="images", refs={List.class,ElastigroupAzureV3Image.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ElastigroupAzureV3Image>> images;
 
     public Output<Optional<List<ElastigroupAzureV3Image>>> images() {
         return Codegen.optional(this.images);
+    }
+    @Export(name="loadBalancers", refs={List.class,ElastigroupAzureV3LoadBalancer.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ElastigroupAzureV3LoadBalancer>> loadBalancers;
+
+    public Output<Optional<List<ElastigroupAzureV3LoadBalancer>>> loadBalancers() {
+        return Codegen.optional(this.loadBalancers);
     }
     @Export(name="login", refs={ElastigroupAzureV3Login.class}, tree="[0]")
     private Output</* @Nullable */ ElastigroupAzureV3Login> login;
@@ -106,11 +160,35 @@ public class ElastigroupAzureV3 extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> onDemandCount() {
         return Codegen.optional(this.onDemandCount);
     }
+    @Export(name="optimizationWindows", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> optimizationWindows;
+
+    public Output<Optional<List<String>>> optimizationWindows() {
+        return Codegen.optional(this.optimizationWindows);
+    }
     @Export(name="os", refs={String.class}, tree="[0]")
     private Output<String> os;
 
     public Output<String> os() {
         return this.os;
+    }
+    @Export(name="osDisk", refs={ElastigroupAzureV3OsDisk.class}, tree="[0]")
+    private Output</* @Nullable */ ElastigroupAzureV3OsDisk> osDisk;
+
+    public Output<Optional<ElastigroupAzureV3OsDisk>> osDisk() {
+        return Codegen.optional(this.osDisk);
+    }
+    @Export(name="preferredZones", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> preferredZones;
+
+    public Output<Optional<List<String>>> preferredZones() {
+        return Codegen.optional(this.preferredZones);
+    }
+    @Export(name="proximityPlacementGroups", refs={List.class,ElastigroupAzureV3ProximityPlacementGroup.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ElastigroupAzureV3ProximityPlacementGroup>> proximityPlacementGroups;
+
+    public Output<Optional<List<ElastigroupAzureV3ProximityPlacementGroup>>> proximityPlacementGroups() {
+        return Codegen.optional(this.proximityPlacementGroups);
     }
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
@@ -124,6 +202,12 @@ public class ElastigroupAzureV3 extends com.pulumi.resources.CustomResource {
     public Output<String> resourceGroupName() {
         return this.resourceGroupName;
     }
+    @Export(name="revertToSpot", refs={ElastigroupAzureV3RevertToSpot.class}, tree="[0]")
+    private Output</* @Nullable */ ElastigroupAzureV3RevertToSpot> revertToSpot;
+
+    public Output<Optional<ElastigroupAzureV3RevertToSpot>> revertToSpot() {
+        return Codegen.optional(this.revertToSpot);
+    }
     @Export(name="scalingDownPolicies", refs={List.class,ElastigroupAzureV3ScalingDownPolicy.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ElastigroupAzureV3ScalingDownPolicy>> scalingDownPolicies;
 
@@ -135,6 +219,36 @@ public class ElastigroupAzureV3 extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<List<ElastigroupAzureV3ScalingUpPolicy>>> scalingUpPolicies() {
         return Codegen.optional(this.scalingUpPolicies);
+    }
+    @Export(name="schedulingTasks", refs={List.class,ElastigroupAzureV3SchedulingTask.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ElastigroupAzureV3SchedulingTask>> schedulingTasks;
+
+    public Output<Optional<List<ElastigroupAzureV3SchedulingTask>>> schedulingTasks() {
+        return Codegen.optional(this.schedulingTasks);
+    }
+    @Export(name="secrets", refs={List.class,ElastigroupAzureV3Secret.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ElastigroupAzureV3Secret>> secrets;
+
+    public Output<Optional<List<ElastigroupAzureV3Secret>>> secrets() {
+        return Codegen.optional(this.secrets);
+    }
+    @Export(name="security", refs={ElastigroupAzureV3Security.class}, tree="[0]")
+    private Output</* @Nullable */ ElastigroupAzureV3Security> security;
+
+    public Output<Optional<ElastigroupAzureV3Security>> security() {
+        return Codegen.optional(this.security);
+    }
+    @Export(name="shutdownScript", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> shutdownScript;
+
+    public Output<Optional<String>> shutdownScript() {
+        return Codegen.optional(this.shutdownScript);
+    }
+    @Export(name="signals", refs={List.class,ElastigroupAzureV3Signal.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ElastigroupAzureV3Signal>> signals;
+
+    public Output<Optional<List<ElastigroupAzureV3Signal>>> signals() {
+        return Codegen.optional(this.signals);
     }
     @Export(name="spotPercentage", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> spotPercentage;
@@ -148,11 +262,29 @@ public class ElastigroupAzureV3 extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<ElastigroupAzureV3Tag>>> tags() {
         return Codegen.optional(this.tags);
     }
+    @Export(name="userData", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> userData;
+
+    public Output<Optional<String>> userData() {
+        return Codegen.optional(this.userData);
+    }
+    @Export(name="vmNamePrefix", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> vmNamePrefix;
+
+    public Output<Optional<String>> vmNamePrefix() {
+        return Codegen.optional(this.vmNamePrefix);
+    }
     @Export(name="vmSizes", refs={ElastigroupAzureV3VmSizes.class}, tree="[0]")
     private Output<ElastigroupAzureV3VmSizes> vmSizes;
 
     public Output<ElastigroupAzureV3VmSizes> vmSizes() {
         return this.vmSizes;
+    }
+    @Export(name="zones", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> zones;
+
+    public Output<Optional<List<String>>> zones() {
+        return Codegen.optional(this.zones);
     }
 
     /**

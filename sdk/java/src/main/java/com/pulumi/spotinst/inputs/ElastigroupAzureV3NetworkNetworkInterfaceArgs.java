@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.inputs.ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs;
 import com.pulumi.spotinst.inputs.ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs;
+import com.pulumi.spotinst.inputs.ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -41,11 +42,39 @@ public final class ElastigroupAzureV3NetworkNetworkInterfaceArgs extends com.pul
         return this.assignPublicIp;
     }
 
+    @Import(name="enableIpForwarding")
+    private @Nullable Output<Boolean> enableIpForwarding;
+
+    public Optional<Output<Boolean>> enableIpForwarding() {
+        return Optional.ofNullable(this.enableIpForwarding);
+    }
+
     @Import(name="isPrimary", required=true)
     private Output<Boolean> isPrimary;
 
     public Output<Boolean> isPrimary() {
         return this.isPrimary;
+    }
+
+    @Import(name="privateIpAddresses")
+    private @Nullable Output<List<String>> privateIpAddresses;
+
+    public Optional<Output<List<String>>> privateIpAddresses() {
+        return Optional.ofNullable(this.privateIpAddresses);
+    }
+
+    @Import(name="publicIpSku")
+    private @Nullable Output<String> publicIpSku;
+
+    public Optional<Output<String>> publicIpSku() {
+        return Optional.ofNullable(this.publicIpSku);
+    }
+
+    @Import(name="securityGroups")
+    private @Nullable Output<List<ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArgs>> securityGroups;
+
+    public Optional<Output<List<ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArgs>>> securityGroups() {
+        return Optional.ofNullable(this.securityGroups);
     }
 
     @Import(name="subnetName", required=true)
@@ -61,7 +90,11 @@ public final class ElastigroupAzureV3NetworkNetworkInterfaceArgs extends com.pul
         this.additionalIpConfigs = $.additionalIpConfigs;
         this.applicationSecurityGroups = $.applicationSecurityGroups;
         this.assignPublicIp = $.assignPublicIp;
+        this.enableIpForwarding = $.enableIpForwarding;
         this.isPrimary = $.isPrimary;
+        this.privateIpAddresses = $.privateIpAddresses;
+        this.publicIpSku = $.publicIpSku;
+        this.securityGroups = $.securityGroups;
         this.subnetName = $.subnetName;
     }
 
@@ -118,6 +151,15 @@ public final class ElastigroupAzureV3NetworkNetworkInterfaceArgs extends com.pul
             return assignPublicIp(Output.of(assignPublicIp));
         }
 
+        public Builder enableIpForwarding(@Nullable Output<Boolean> enableIpForwarding) {
+            $.enableIpForwarding = enableIpForwarding;
+            return this;
+        }
+
+        public Builder enableIpForwarding(Boolean enableIpForwarding) {
+            return enableIpForwarding(Output.of(enableIpForwarding));
+        }
+
         public Builder isPrimary(Output<Boolean> isPrimary) {
             $.isPrimary = isPrimary;
             return this;
@@ -125,6 +167,41 @@ public final class ElastigroupAzureV3NetworkNetworkInterfaceArgs extends com.pul
 
         public Builder isPrimary(Boolean isPrimary) {
             return isPrimary(Output.of(isPrimary));
+        }
+
+        public Builder privateIpAddresses(@Nullable Output<List<String>> privateIpAddresses) {
+            $.privateIpAddresses = privateIpAddresses;
+            return this;
+        }
+
+        public Builder privateIpAddresses(List<String> privateIpAddresses) {
+            return privateIpAddresses(Output.of(privateIpAddresses));
+        }
+
+        public Builder privateIpAddresses(String... privateIpAddresses) {
+            return privateIpAddresses(List.of(privateIpAddresses));
+        }
+
+        public Builder publicIpSku(@Nullable Output<String> publicIpSku) {
+            $.publicIpSku = publicIpSku;
+            return this;
+        }
+
+        public Builder publicIpSku(String publicIpSku) {
+            return publicIpSku(Output.of(publicIpSku));
+        }
+
+        public Builder securityGroups(@Nullable Output<List<ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArgs>> securityGroups) {
+            $.securityGroups = securityGroups;
+            return this;
+        }
+
+        public Builder securityGroups(List<ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArgs> securityGroups) {
+            return securityGroups(Output.of(securityGroups));
+        }
+
+        public Builder securityGroups(ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArgs... securityGroups) {
+            return securityGroups(List.of(securityGroups));
         }
 
         public Builder subnetName(Output<String> subnetName) {

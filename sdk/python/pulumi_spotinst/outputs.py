@@ -17,24 +17,40 @@ from . import outputs
 
 __all__ = [
     'DataIntegrationS3',
+    'ElastigroupAzureV3BootDiagnostic',
+    'ElastigroupAzureV3CapacityReservation',
+    'ElastigroupAzureV3CapacityReservationCapacityReservationGroups',
+    'ElastigroupAzureV3DataDisk',
     'ElastigroupAzureV3Extension',
     'ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVault',
+    'ElastigroupAzureV3Health',
     'ElastigroupAzureV3Image',
     'ElastigroupAzureV3ImageCustom',
     'ElastigroupAzureV3ImageGalleryImage',
     'ElastigroupAzureV3ImageMarketplace',
+    'ElastigroupAzureV3LoadBalancer',
     'ElastigroupAzureV3Login',
     'ElastigroupAzureV3ManagedServiceIdentity',
     'ElastigroupAzureV3Network',
     'ElastigroupAzureV3NetworkNetworkInterface',
     'ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig',
     'ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup',
+    'ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroup',
+    'ElastigroupAzureV3OsDisk',
+    'ElastigroupAzureV3ProximityPlacementGroup',
+    'ElastigroupAzureV3RevertToSpot',
     'ElastigroupAzureV3ScalingDownPolicy',
     'ElastigroupAzureV3ScalingDownPolicyAction',
     'ElastigroupAzureV3ScalingDownPolicyDimension',
     'ElastigroupAzureV3ScalingUpPolicy',
     'ElastigroupAzureV3ScalingUpPolicyAction',
     'ElastigroupAzureV3ScalingUpPolicyDimension',
+    'ElastigroupAzureV3SchedulingTask',
+    'ElastigroupAzureV3Secret',
+    'ElastigroupAzureV3SecretSourceVault',
+    'ElastigroupAzureV3SecretVaultCertificate',
+    'ElastigroupAzureV3Security',
+    'ElastigroupAzureV3Signal',
     'ElastigroupAzureV3Tag',
     'ElastigroupAzureV3VmSizes',
     'HealthCheckCheck',
@@ -132,6 +148,191 @@ class DataIntegrationS3(dict):
         The subdirectory in which your files will be stored within the bucket. Adds the prefix subdir/ to new objects' keys. Can't be null or contain '/'.
         """
         return pulumi.get(self, "subdir")
+
+
+@pulumi.output_type
+class ElastigroupAzureV3BootDiagnostic(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isEnabled":
+            suggest = "is_enabled"
+        elif key == "storageUrl":
+            suggest = "storage_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupAzureV3BootDiagnostic. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupAzureV3BootDiagnostic.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupAzureV3BootDiagnostic.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 is_enabled: bool,
+                 type: str,
+                 storage_url: Optional[str] = None):
+        pulumi.set(__self__, "is_enabled", is_enabled)
+        pulumi.set(__self__, "type", type)
+        if storage_url is not None:
+            pulumi.set(__self__, "storage_url", storage_url)
+
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> bool:
+        return pulumi.get(self, "is_enabled")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="storageUrl")
+    def storage_url(self) -> Optional[str]:
+        return pulumi.get(self, "storage_url")
+
+
+@pulumi.output_type
+class ElastigroupAzureV3CapacityReservation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "shouldUtilize":
+            suggest = "should_utilize"
+        elif key == "utilizationStrategy":
+            suggest = "utilization_strategy"
+        elif key == "capacityReservationGroups":
+            suggest = "capacity_reservation_groups"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupAzureV3CapacityReservation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupAzureV3CapacityReservation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupAzureV3CapacityReservation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 should_utilize: bool,
+                 utilization_strategy: str,
+                 capacity_reservation_groups: Optional['outputs.ElastigroupAzureV3CapacityReservationCapacityReservationGroups'] = None):
+        pulumi.set(__self__, "should_utilize", should_utilize)
+        pulumi.set(__self__, "utilization_strategy", utilization_strategy)
+        if capacity_reservation_groups is not None:
+            pulumi.set(__self__, "capacity_reservation_groups", capacity_reservation_groups)
+
+    @property
+    @pulumi.getter(name="shouldUtilize")
+    def should_utilize(self) -> bool:
+        return pulumi.get(self, "should_utilize")
+
+    @property
+    @pulumi.getter(name="utilizationStrategy")
+    def utilization_strategy(self) -> str:
+        return pulumi.get(self, "utilization_strategy")
+
+    @property
+    @pulumi.getter(name="capacityReservationGroups")
+    def capacity_reservation_groups(self) -> Optional['outputs.ElastigroupAzureV3CapacityReservationCapacityReservationGroups']:
+        return pulumi.get(self, "capacity_reservation_groups")
+
+
+@pulumi.output_type
+class ElastigroupAzureV3CapacityReservationCapacityReservationGroups(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "crgName":
+            suggest = "crg_name"
+        elif key == "crgResourceGroupName":
+            suggest = "crg_resource_group_name"
+        elif key == "crgShouldPrioritize":
+            suggest = "crg_should_prioritize"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupAzureV3CapacityReservationCapacityReservationGroups. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupAzureV3CapacityReservationCapacityReservationGroups.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupAzureV3CapacityReservationCapacityReservationGroups.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 crg_name: str,
+                 crg_resource_group_name: str,
+                 crg_should_prioritize: Optional[bool] = None):
+        pulumi.set(__self__, "crg_name", crg_name)
+        pulumi.set(__self__, "crg_resource_group_name", crg_resource_group_name)
+        if crg_should_prioritize is not None:
+            pulumi.set(__self__, "crg_should_prioritize", crg_should_prioritize)
+
+    @property
+    @pulumi.getter(name="crgName")
+    def crg_name(self) -> str:
+        return pulumi.get(self, "crg_name")
+
+    @property
+    @pulumi.getter(name="crgResourceGroupName")
+    def crg_resource_group_name(self) -> str:
+        return pulumi.get(self, "crg_resource_group_name")
+
+    @property
+    @pulumi.getter(name="crgShouldPrioritize")
+    def crg_should_prioritize(self) -> Optional[bool]:
+        return pulumi.get(self, "crg_should_prioritize")
+
+
+@pulumi.output_type
+class ElastigroupAzureV3DataDisk(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sizeGb":
+            suggest = "size_gb"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupAzureV3DataDisk. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupAzureV3DataDisk.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupAzureV3DataDisk.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 lun: int,
+                 size_gb: int,
+                 type: str):
+        pulumi.set(__self__, "lun", lun)
+        pulumi.set(__self__, "size_gb", size_gb)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def lun(self) -> int:
+        return pulumi.get(self, "lun")
+
+    @property
+    @pulumi.getter(name="sizeGb")
+    def size_gb(self) -> int:
+        return pulumi.get(self, "size_gb")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -269,6 +470,66 @@ class ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVault(dict):
     @pulumi.getter(name="sourceVault")
     def source_vault(self) -> str:
         return pulumi.get(self, "source_vault")
+
+
+@pulumi.output_type
+class ElastigroupAzureV3Health(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoHealing":
+            suggest = "auto_healing"
+        elif key == "gracePeriod":
+            suggest = "grace_period"
+        elif key == "healthCheckTypes":
+            suggest = "health_check_types"
+        elif key == "unhealthyDuration":
+            suggest = "unhealthy_duration"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupAzureV3Health. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupAzureV3Health.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupAzureV3Health.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 auto_healing: Optional[bool] = None,
+                 grace_period: Optional[int] = None,
+                 health_check_types: Optional[Sequence[str]] = None,
+                 unhealthy_duration: Optional[int] = None):
+        if auto_healing is not None:
+            pulumi.set(__self__, "auto_healing", auto_healing)
+        if grace_period is not None:
+            pulumi.set(__self__, "grace_period", grace_period)
+        if health_check_types is not None:
+            pulumi.set(__self__, "health_check_types", health_check_types)
+        if unhealthy_duration is not None:
+            pulumi.set(__self__, "unhealthy_duration", unhealthy_duration)
+
+    @property
+    @pulumi.getter(name="autoHealing")
+    def auto_healing(self) -> Optional[bool]:
+        return pulumi.get(self, "auto_healing")
+
+    @property
+    @pulumi.getter(name="gracePeriod")
+    def grace_period(self) -> Optional[int]:
+        return pulumi.get(self, "grace_period")
+
+    @property
+    @pulumi.getter(name="healthCheckTypes")
+    def health_check_types(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "health_check_types")
+
+    @property
+    @pulumi.getter(name="unhealthyDuration")
+    def unhealthy_duration(self) -> Optional[int]:
+        return pulumi.get(self, "unhealthy_duration")
 
 
 @pulumi.output_type
@@ -453,6 +714,67 @@ class ElastigroupAzureV3ImageMarketplace(dict):
 
 
 @pulumi.output_type
+class ElastigroupAzureV3LoadBalancer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceGroupName":
+            suggest = "resource_group_name"
+        elif key == "backendPoolNames":
+            suggest = "backend_pool_names"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupAzureV3LoadBalancer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupAzureV3LoadBalancer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupAzureV3LoadBalancer.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 resource_group_name: str,
+                 type: str,
+                 backend_pool_names: Optional[Sequence[str]] = None,
+                 sku: Optional[str] = None):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        pulumi.set(__self__, "type", type)
+        if backend_pool_names is not None:
+            pulumi.set(__self__, "backend_pool_names", backend_pool_names)
+        if sku is not None:
+            pulumi.set(__self__, "sku", sku)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> str:
+        return pulumi.get(self, "resource_group_name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="backendPoolNames")
+    def backend_pool_names(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "backend_pool_names")
+
+    @property
+    @pulumi.getter
+    def sku(self) -> Optional[str]:
+        return pulumi.get(self, "sku")
+
+
+@pulumi.output_type
 class ElastigroupAzureV3Login(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -597,6 +919,14 @@ class ElastigroupAzureV3NetworkNetworkInterface(dict):
             suggest = "additional_ip_configs"
         elif key == "applicationSecurityGroups":
             suggest = "application_security_groups"
+        elif key == "enableIpForwarding":
+            suggest = "enable_ip_forwarding"
+        elif key == "privateIpAddresses":
+            suggest = "private_ip_addresses"
+        elif key == "publicIpSku":
+            suggest = "public_ip_sku"
+        elif key == "securityGroups":
+            suggest = "security_groups"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ElastigroupAzureV3NetworkNetworkInterface. Access the value via the '{suggest}' property getter instead.")
@@ -614,7 +944,11 @@ class ElastigroupAzureV3NetworkNetworkInterface(dict):
                  is_primary: bool,
                  subnet_name: str,
                  additional_ip_configs: Optional[Sequence['outputs.ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig']] = None,
-                 application_security_groups: Optional[Sequence['outputs.ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup']] = None):
+                 application_security_groups: Optional[Sequence['outputs.ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup']] = None,
+                 enable_ip_forwarding: Optional[bool] = None,
+                 private_ip_addresses: Optional[Sequence[str]] = None,
+                 public_ip_sku: Optional[str] = None,
+                 security_groups: Optional[Sequence['outputs.ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroup']] = None):
         pulumi.set(__self__, "assign_public_ip", assign_public_ip)
         pulumi.set(__self__, "is_primary", is_primary)
         pulumi.set(__self__, "subnet_name", subnet_name)
@@ -622,6 +956,14 @@ class ElastigroupAzureV3NetworkNetworkInterface(dict):
             pulumi.set(__self__, "additional_ip_configs", additional_ip_configs)
         if application_security_groups is not None:
             pulumi.set(__self__, "application_security_groups", application_security_groups)
+        if enable_ip_forwarding is not None:
+            pulumi.set(__self__, "enable_ip_forwarding", enable_ip_forwarding)
+        if private_ip_addresses is not None:
+            pulumi.set(__self__, "private_ip_addresses", private_ip_addresses)
+        if public_ip_sku is not None:
+            pulumi.set(__self__, "public_ip_sku", public_ip_sku)
+        if security_groups is not None:
+            pulumi.set(__self__, "security_groups", security_groups)
 
     @property
     @pulumi.getter(name="assignPublicIp")
@@ -647,6 +989,26 @@ class ElastigroupAzureV3NetworkNetworkInterface(dict):
     @pulumi.getter(name="applicationSecurityGroups")
     def application_security_groups(self) -> Optional[Sequence['outputs.ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup']]:
         return pulumi.get(self, "application_security_groups")
+
+    @property
+    @pulumi.getter(name="enableIpForwarding")
+    def enable_ip_forwarding(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_ip_forwarding")
+
+    @property
+    @pulumi.getter(name="privateIpAddresses")
+    def private_ip_addresses(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "private_ip_addresses")
+
+    @property
+    @pulumi.getter(name="publicIpSku")
+    def public_ip_sku(self) -> Optional[str]:
+        return pulumi.get(self, "public_ip_sku")
+
+    @property
+    @pulumi.getter(name="securityGroups")
+    def security_groups(self) -> Optional[Sequence['outputs.ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroup']]:
+        return pulumi.get(self, "security_groups")
 
 
 @pulumi.output_type
@@ -720,6 +1082,146 @@ class ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup(dict):
     @pulumi.getter(name="resourceGroupName")
     def resource_group_name(self) -> str:
         return pulumi.get(self, "resource_group_name")
+
+
+@pulumi.output_type
+class ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroup(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceGroupName":
+            suggest = "resource_group_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroup. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroup.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroup.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 resource_group_name: Optional[str] = None):
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if resource_group_name is not None:
+            pulumi.set(__self__, "resource_group_name", resource_group_name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> Optional[str]:
+        return pulumi.get(self, "resource_group_name")
+
+
+@pulumi.output_type
+class ElastigroupAzureV3OsDisk(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sizeGb":
+            suggest = "size_gb"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupAzureV3OsDisk. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupAzureV3OsDisk.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupAzureV3OsDisk.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 type: str,
+                 size_gb: Optional[int] = None):
+        pulumi.set(__self__, "type", type)
+        if size_gb is not None:
+            pulumi.set(__self__, "size_gb", size_gb)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="sizeGb")
+    def size_gb(self) -> Optional[int]:
+        return pulumi.get(self, "size_gb")
+
+
+@pulumi.output_type
+class ElastigroupAzureV3ProximityPlacementGroup(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceGroupName":
+            suggest = "resource_group_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupAzureV3ProximityPlacementGroup. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupAzureV3ProximityPlacementGroup.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupAzureV3ProximityPlacementGroup.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 resource_group_name: str):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> str:
+        return pulumi.get(self, "resource_group_name")
+
+
+@pulumi.output_type
+class ElastigroupAzureV3RevertToSpot(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "performAt":
+            suggest = "perform_at"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupAzureV3RevertToSpot. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupAzureV3RevertToSpot.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupAzureV3RevertToSpot.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 perform_at: str):
+        pulumi.set(__self__, "perform_at", perform_at)
+
+    @property
+    @pulumi.getter(name="performAt")
+    def perform_at(self) -> str:
+        return pulumi.get(self, "perform_at")
 
 
 @pulumi.output_type
@@ -1115,6 +1617,310 @@ class ElastigroupAzureV3ScalingUpPolicyDimension(dict):
 
 
 @pulumi.output_type
+class ElastigroupAzureV3SchedulingTask(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cronExpression":
+            suggest = "cron_expression"
+        elif key == "isEnabled":
+            suggest = "is_enabled"
+        elif key == "adjustmentPercentage":
+            suggest = "adjustment_percentage"
+        elif key == "batchSizePercentage":
+            suggest = "batch_size_percentage"
+        elif key == "gracePeriod":
+            suggest = "grace_period"
+        elif key == "scaleMaxCapacity":
+            suggest = "scale_max_capacity"
+        elif key == "scaleMinCapacity":
+            suggest = "scale_min_capacity"
+        elif key == "scaleTargetCapacity":
+            suggest = "scale_target_capacity"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupAzureV3SchedulingTask. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupAzureV3SchedulingTask.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupAzureV3SchedulingTask.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cron_expression: str,
+                 is_enabled: bool,
+                 type: str,
+                 adjustment: Optional[str] = None,
+                 adjustment_percentage: Optional[str] = None,
+                 batch_size_percentage: Optional[str] = None,
+                 grace_period: Optional[str] = None,
+                 scale_max_capacity: Optional[str] = None,
+                 scale_min_capacity: Optional[str] = None,
+                 scale_target_capacity: Optional[str] = None):
+        pulumi.set(__self__, "cron_expression", cron_expression)
+        pulumi.set(__self__, "is_enabled", is_enabled)
+        pulumi.set(__self__, "type", type)
+        if adjustment is not None:
+            pulumi.set(__self__, "adjustment", adjustment)
+        if adjustment_percentage is not None:
+            pulumi.set(__self__, "adjustment_percentage", adjustment_percentage)
+        if batch_size_percentage is not None:
+            pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
+        if grace_period is not None:
+            pulumi.set(__self__, "grace_period", grace_period)
+        if scale_max_capacity is not None:
+            pulumi.set(__self__, "scale_max_capacity", scale_max_capacity)
+        if scale_min_capacity is not None:
+            pulumi.set(__self__, "scale_min_capacity", scale_min_capacity)
+        if scale_target_capacity is not None:
+            pulumi.set(__self__, "scale_target_capacity", scale_target_capacity)
+
+    @property
+    @pulumi.getter(name="cronExpression")
+    def cron_expression(self) -> str:
+        return pulumi.get(self, "cron_expression")
+
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> bool:
+        return pulumi.get(self, "is_enabled")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def adjustment(self) -> Optional[str]:
+        return pulumi.get(self, "adjustment")
+
+    @property
+    @pulumi.getter(name="adjustmentPercentage")
+    def adjustment_percentage(self) -> Optional[str]:
+        return pulumi.get(self, "adjustment_percentage")
+
+    @property
+    @pulumi.getter(name="batchSizePercentage")
+    def batch_size_percentage(self) -> Optional[str]:
+        return pulumi.get(self, "batch_size_percentage")
+
+    @property
+    @pulumi.getter(name="gracePeriod")
+    def grace_period(self) -> Optional[str]:
+        return pulumi.get(self, "grace_period")
+
+    @property
+    @pulumi.getter(name="scaleMaxCapacity")
+    def scale_max_capacity(self) -> Optional[str]:
+        return pulumi.get(self, "scale_max_capacity")
+
+    @property
+    @pulumi.getter(name="scaleMinCapacity")
+    def scale_min_capacity(self) -> Optional[str]:
+        return pulumi.get(self, "scale_min_capacity")
+
+    @property
+    @pulumi.getter(name="scaleTargetCapacity")
+    def scale_target_capacity(self) -> Optional[str]:
+        return pulumi.get(self, "scale_target_capacity")
+
+
+@pulumi.output_type
+class ElastigroupAzureV3Secret(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceVaults":
+            suggest = "source_vaults"
+        elif key == "vaultCertificates":
+            suggest = "vault_certificates"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupAzureV3Secret. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupAzureV3Secret.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupAzureV3Secret.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 source_vaults: Sequence['outputs.ElastigroupAzureV3SecretSourceVault'],
+                 vault_certificates: Sequence['outputs.ElastigroupAzureV3SecretVaultCertificate']):
+        pulumi.set(__self__, "source_vaults", source_vaults)
+        pulumi.set(__self__, "vault_certificates", vault_certificates)
+
+    @property
+    @pulumi.getter(name="sourceVaults")
+    def source_vaults(self) -> Sequence['outputs.ElastigroupAzureV3SecretSourceVault']:
+        return pulumi.get(self, "source_vaults")
+
+    @property
+    @pulumi.getter(name="vaultCertificates")
+    def vault_certificates(self) -> Sequence['outputs.ElastigroupAzureV3SecretVaultCertificate']:
+        return pulumi.get(self, "vault_certificates")
+
+
+@pulumi.output_type
+class ElastigroupAzureV3SecretSourceVault(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceGroupName":
+            suggest = "resource_group_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupAzureV3SecretSourceVault. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupAzureV3SecretSourceVault.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupAzureV3SecretSourceVault.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 resource_group_name: str):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> str:
+        return pulumi.get(self, "resource_group_name")
+
+
+@pulumi.output_type
+class ElastigroupAzureV3SecretVaultCertificate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "certificateStore":
+            suggest = "certificate_store"
+        elif key == "certificateUrl":
+            suggest = "certificate_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupAzureV3SecretVaultCertificate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupAzureV3SecretVaultCertificate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupAzureV3SecretVaultCertificate.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 certificate_store: str,
+                 certificate_url: str):
+        pulumi.set(__self__, "certificate_store", certificate_store)
+        pulumi.set(__self__, "certificate_url", certificate_url)
+
+    @property
+    @pulumi.getter(name="certificateStore")
+    def certificate_store(self) -> str:
+        return pulumi.get(self, "certificate_store")
+
+    @property
+    @pulumi.getter(name="certificateUrl")
+    def certificate_url(self) -> str:
+        return pulumi.get(self, "certificate_url")
+
+
+@pulumi.output_type
+class ElastigroupAzureV3Security(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "confidentialOsDiskEncryption":
+            suggest = "confidential_os_disk_encryption"
+        elif key == "secureBootEnabled":
+            suggest = "secure_boot_enabled"
+        elif key == "securityType":
+            suggest = "security_type"
+        elif key == "vtpmEnabled":
+            suggest = "vtpm_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupAzureV3Security. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupAzureV3Security.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupAzureV3Security.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 confidential_os_disk_encryption: Optional[bool] = None,
+                 secure_boot_enabled: Optional[bool] = None,
+                 security_type: Optional[str] = None,
+                 vtpm_enabled: Optional[bool] = None):
+        if confidential_os_disk_encryption is not None:
+            pulumi.set(__self__, "confidential_os_disk_encryption", confidential_os_disk_encryption)
+        if secure_boot_enabled is not None:
+            pulumi.set(__self__, "secure_boot_enabled", secure_boot_enabled)
+        if security_type is not None:
+            pulumi.set(__self__, "security_type", security_type)
+        if vtpm_enabled is not None:
+            pulumi.set(__self__, "vtpm_enabled", vtpm_enabled)
+
+    @property
+    @pulumi.getter(name="confidentialOsDiskEncryption")
+    def confidential_os_disk_encryption(self) -> Optional[bool]:
+        return pulumi.get(self, "confidential_os_disk_encryption")
+
+    @property
+    @pulumi.getter(name="secureBootEnabled")
+    def secure_boot_enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "secure_boot_enabled")
+
+    @property
+    @pulumi.getter(name="securityType")
+    def security_type(self) -> Optional[str]:
+        return pulumi.get(self, "security_type")
+
+    @property
+    @pulumi.getter(name="vtpmEnabled")
+    def vtpm_enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "vtpm_enabled")
+
+
+@pulumi.output_type
+class ElastigroupAzureV3Signal(dict):
+    def __init__(__self__, *,
+                 timeout: int,
+                 type: str):
+        pulumi.set(__self__, "timeout", timeout)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> int:
+        return pulumi.get(self, "timeout")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
 class ElastigroupAzureV3Tag(dict):
     def __init__(__self__, *,
                  key: str,
@@ -1142,6 +1948,8 @@ class ElastigroupAzureV3VmSizes(dict):
             suggest = "od_sizes"
         elif key == "spotSizes":
             suggest = "spot_sizes"
+        elif key == "preferredSpotSizes":
+            suggest = "preferred_spot_sizes"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ElastigroupAzureV3VmSizes. Access the value via the '{suggest}' property getter instead.")
@@ -1156,9 +1964,12 @@ class ElastigroupAzureV3VmSizes(dict):
 
     def __init__(__self__, *,
                  od_sizes: Sequence[str],
-                 spot_sizes: Sequence[str]):
+                 spot_sizes: Sequence[str],
+                 preferred_spot_sizes: Optional[Sequence[str]] = None):
         pulumi.set(__self__, "od_sizes", od_sizes)
         pulumi.set(__self__, "spot_sizes", spot_sizes)
+        if preferred_spot_sizes is not None:
+            pulumi.set(__self__, "preferred_spot_sizes", preferred_spot_sizes)
 
     @property
     @pulumi.getter(name="odSizes")
@@ -1169,6 +1980,11 @@ class ElastigroupAzureV3VmSizes(dict):
     @pulumi.getter(name="spotSizes")
     def spot_sizes(self) -> Sequence[str]:
         return pulumi.get(self, "spot_sizes")
+
+    @property
+    @pulumi.getter(name="preferredSpotSizes")
+    def preferred_spot_sizes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "preferred_spot_sizes")
 
 
 @pulumi.output_type

@@ -8,15 +8,20 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupAzureV3VmSizes {
     private List<String> odSizes;
+    private @Nullable List<String> preferredSpotSizes;
     private List<String> spotSizes;
 
     private ElastigroupAzureV3VmSizes() {}
     public List<String> odSizes() {
         return this.odSizes;
+    }
+    public List<String> preferredSpotSizes() {
+        return this.preferredSpotSizes == null ? List.of() : this.preferredSpotSizes;
     }
     public List<String> spotSizes() {
         return this.spotSizes;
@@ -32,11 +37,13 @@ public final class ElastigroupAzureV3VmSizes {
     @CustomType.Builder
     public static final class Builder {
         private List<String> odSizes;
+        private @Nullable List<String> preferredSpotSizes;
         private List<String> spotSizes;
         public Builder() {}
         public Builder(ElastigroupAzureV3VmSizes defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.odSizes = defaults.odSizes;
+    	      this.preferredSpotSizes = defaults.preferredSpotSizes;
     	      this.spotSizes = defaults.spotSizes;
         }
 
@@ -52,6 +59,15 @@ public final class ElastigroupAzureV3VmSizes {
             return odSizes(List.of(odSizes));
         }
         @CustomType.Setter
+        public Builder preferredSpotSizes(@Nullable List<String> preferredSpotSizes) {
+
+            this.preferredSpotSizes = preferredSpotSizes;
+            return this;
+        }
+        public Builder preferredSpotSizes(String... preferredSpotSizes) {
+            return preferredSpotSizes(List.of(preferredSpotSizes));
+        }
+        @CustomType.Setter
         public Builder spotSizes(List<String> spotSizes) {
             if (spotSizes == null) {
               throw new MissingRequiredPropertyException("ElastigroupAzureV3VmSizes", "spotSizes");
@@ -65,6 +81,7 @@ public final class ElastigroupAzureV3VmSizes {
         public ElastigroupAzureV3VmSizes build() {
             final var _resultValue = new ElastigroupAzureV3VmSizes();
             _resultValue.odSizes = odSizes;
+            _resultValue.preferredSpotSizes = preferredSpotSizes;
             _resultValue.spotSizes = spotSizes;
             return _resultValue;
         }

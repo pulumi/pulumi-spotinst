@@ -17,11 +17,19 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// Sets the percentage of the instances to deploy in each batch.
         /// </summary>
         public readonly int BatchSizePercentage;
+        /// <summary>
+        /// During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.
+        /// </summary>
+        public readonly bool? RespectPdb;
 
         [OutputConstructor]
-        private OceanLaunchSpecUpdatePolicyRollConfig(int batchSizePercentage)
+        private OceanLaunchSpecUpdatePolicyRollConfig(
+            int batchSizePercentage,
+
+            bool? respectPdb)
         {
             BatchSizePercentage = batchSizePercentage;
+            RespectPdb = respectPdb;
         }
     }
 }

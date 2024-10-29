@@ -13,6 +13,30 @@ export interface DataIntegrationS3 {
     subdir?: pulumi.Input<string>;
 }
 
+export interface ElastigroupAzureV3BootDiagnostic {
+    isEnabled: pulumi.Input<boolean>;
+    storageUrl?: pulumi.Input<string>;
+    type: pulumi.Input<string>;
+}
+
+export interface ElastigroupAzureV3CapacityReservation {
+    capacityReservationGroups?: pulumi.Input<inputs.ElastigroupAzureV3CapacityReservationCapacityReservationGroups>;
+    shouldUtilize: pulumi.Input<boolean>;
+    utilizationStrategy: pulumi.Input<string>;
+}
+
+export interface ElastigroupAzureV3CapacityReservationCapacityReservationGroups {
+    crgName: pulumi.Input<string>;
+    crgResourceGroupName: pulumi.Input<string>;
+    crgShouldPrioritize?: pulumi.Input<boolean>;
+}
+
+export interface ElastigroupAzureV3DataDisk {
+    lun: pulumi.Input<number>;
+    sizeGb: pulumi.Input<number>;
+    type: pulumi.Input<string>;
+}
+
 export interface ElastigroupAzureV3Extension {
     apiVersion: pulumi.Input<string>;
     enableAutomaticUpgrade?: pulumi.Input<boolean>;
@@ -28,6 +52,13 @@ export interface ElastigroupAzureV3Extension {
 export interface ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVault {
     secretUrl: pulumi.Input<string>;
     sourceVault: pulumi.Input<string>;
+}
+
+export interface ElastigroupAzureV3Health {
+    autoHealing?: pulumi.Input<boolean>;
+    gracePeriod?: pulumi.Input<number>;
+    healthCheckTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    unhealthyDuration?: pulumi.Input<number>;
 }
 
 export interface ElastigroupAzureV3Image {
@@ -56,6 +87,14 @@ export interface ElastigroupAzureV3ImageMarketplace {
     version: pulumi.Input<string>;
 }
 
+export interface ElastigroupAzureV3LoadBalancer {
+    backendPoolNames?: pulumi.Input<pulumi.Input<string>[]>;
+    name: pulumi.Input<string>;
+    resourceGroupName: pulumi.Input<string>;
+    sku?: pulumi.Input<string>;
+    type: pulumi.Input<string>;
+}
+
 export interface ElastigroupAzureV3Login {
     password?: pulumi.Input<string>;
     sshPublicKey?: pulumi.Input<string>;
@@ -77,7 +116,11 @@ export interface ElastigroupAzureV3NetworkNetworkInterface {
     additionalIpConfigs?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig>[]>;
     applicationSecurityGroups?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup>[]>;
     assignPublicIp: pulumi.Input<boolean>;
+    enableIpForwarding?: pulumi.Input<boolean>;
     isPrimary: pulumi.Input<boolean>;
+    privateIpAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    publicIpSku?: pulumi.Input<string>;
+    securityGroups?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroup>[]>;
     subnetName: pulumi.Input<string>;
 }
 
@@ -89,6 +132,25 @@ export interface ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig {
 export interface ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup {
     name: pulumi.Input<string>;
     resourceGroupName: pulumi.Input<string>;
+}
+
+export interface ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroup {
+    name?: pulumi.Input<string>;
+    resourceGroupName?: pulumi.Input<string>;
+}
+
+export interface ElastigroupAzureV3OsDisk {
+    sizeGb?: pulumi.Input<number>;
+    type: pulumi.Input<string>;
+}
+
+export interface ElastigroupAzureV3ProximityPlacementGroup {
+    name: pulumi.Input<string>;
+    resourceGroupName: pulumi.Input<string>;
+}
+
+export interface ElastigroupAzureV3RevertToSpot {
+    performAt: pulumi.Input<string>;
 }
 
 export interface ElastigroupAzureV3ScalingDownPolicy {
@@ -151,6 +213,46 @@ export interface ElastigroupAzureV3ScalingUpPolicyDimension {
     value?: pulumi.Input<string>;
 }
 
+export interface ElastigroupAzureV3SchedulingTask {
+    adjustment?: pulumi.Input<string>;
+    adjustmentPercentage?: pulumi.Input<string>;
+    batchSizePercentage?: pulumi.Input<string>;
+    cronExpression: pulumi.Input<string>;
+    gracePeriod?: pulumi.Input<string>;
+    isEnabled: pulumi.Input<boolean>;
+    scaleMaxCapacity?: pulumi.Input<string>;
+    scaleMinCapacity?: pulumi.Input<string>;
+    scaleTargetCapacity?: pulumi.Input<string>;
+    type: pulumi.Input<string>;
+}
+
+export interface ElastigroupAzureV3Secret {
+    sourceVaults: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3SecretSourceVault>[]>;
+    vaultCertificates: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3SecretVaultCertificate>[]>;
+}
+
+export interface ElastigroupAzureV3SecretSourceVault {
+    name: pulumi.Input<string>;
+    resourceGroupName: pulumi.Input<string>;
+}
+
+export interface ElastigroupAzureV3SecretVaultCertificate {
+    certificateStore: pulumi.Input<string>;
+    certificateUrl: pulumi.Input<string>;
+}
+
+export interface ElastigroupAzureV3Security {
+    confidentialOsDiskEncryption?: pulumi.Input<boolean>;
+    secureBootEnabled?: pulumi.Input<boolean>;
+    securityType?: pulumi.Input<string>;
+    vtpmEnabled?: pulumi.Input<boolean>;
+}
+
+export interface ElastigroupAzureV3Signal {
+    timeout: pulumi.Input<number>;
+    type: pulumi.Input<string>;
+}
+
 export interface ElastigroupAzureV3Tag {
     key: pulumi.Input<string>;
     value: pulumi.Input<string>;
@@ -158,6 +260,7 @@ export interface ElastigroupAzureV3Tag {
 
 export interface ElastigroupAzureV3VmSizes {
     odSizes: pulumi.Input<pulumi.Input<string>[]>;
+    preferredSpotSizes?: pulumi.Input<pulumi.Input<string>[]>;
     spotSizes: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -2885,6 +2988,10 @@ export namespace aws {
          * Sets the percentage of the instances to deploy in each batch.
          */
         batchSizePercentage: pulumi.Input<number>;
+        /**
+         * During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.
+         */
+        respectPdb?: pulumi.Input<boolean>;
     }
 
     export interface OceanLoadBalancer {

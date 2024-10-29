@@ -165,6 +165,550 @@ func (o DataIntegrationS3PtrOutput) Subdir() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ElastigroupAzureV3BootDiagnostic struct {
+	IsEnabled  bool    `pulumi:"isEnabled"`
+	StorageUrl *string `pulumi:"storageUrl"`
+	Type       string  `pulumi:"type"`
+}
+
+// ElastigroupAzureV3BootDiagnosticInput is an input type that accepts ElastigroupAzureV3BootDiagnosticArgs and ElastigroupAzureV3BootDiagnosticOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3BootDiagnosticInput` via:
+//
+//	ElastigroupAzureV3BootDiagnosticArgs{...}
+type ElastigroupAzureV3BootDiagnosticInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3BootDiagnosticOutput() ElastigroupAzureV3BootDiagnosticOutput
+	ToElastigroupAzureV3BootDiagnosticOutputWithContext(context.Context) ElastigroupAzureV3BootDiagnosticOutput
+}
+
+type ElastigroupAzureV3BootDiagnosticArgs struct {
+	IsEnabled  pulumi.BoolInput      `pulumi:"isEnabled"`
+	StorageUrl pulumi.StringPtrInput `pulumi:"storageUrl"`
+	Type       pulumi.StringInput    `pulumi:"type"`
+}
+
+func (ElastigroupAzureV3BootDiagnosticArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3BootDiagnostic)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3BootDiagnosticArgs) ToElastigroupAzureV3BootDiagnosticOutput() ElastigroupAzureV3BootDiagnosticOutput {
+	return i.ToElastigroupAzureV3BootDiagnosticOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3BootDiagnosticArgs) ToElastigroupAzureV3BootDiagnosticOutputWithContext(ctx context.Context) ElastigroupAzureV3BootDiagnosticOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3BootDiagnosticOutput)
+}
+
+// ElastigroupAzureV3BootDiagnosticArrayInput is an input type that accepts ElastigroupAzureV3BootDiagnosticArray and ElastigroupAzureV3BootDiagnosticArrayOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3BootDiagnosticArrayInput` via:
+//
+//	ElastigroupAzureV3BootDiagnosticArray{ ElastigroupAzureV3BootDiagnosticArgs{...} }
+type ElastigroupAzureV3BootDiagnosticArrayInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3BootDiagnosticArrayOutput() ElastigroupAzureV3BootDiagnosticArrayOutput
+	ToElastigroupAzureV3BootDiagnosticArrayOutputWithContext(context.Context) ElastigroupAzureV3BootDiagnosticArrayOutput
+}
+
+type ElastigroupAzureV3BootDiagnosticArray []ElastigroupAzureV3BootDiagnosticInput
+
+func (ElastigroupAzureV3BootDiagnosticArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3BootDiagnostic)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3BootDiagnosticArray) ToElastigroupAzureV3BootDiagnosticArrayOutput() ElastigroupAzureV3BootDiagnosticArrayOutput {
+	return i.ToElastigroupAzureV3BootDiagnosticArrayOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3BootDiagnosticArray) ToElastigroupAzureV3BootDiagnosticArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3BootDiagnosticArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3BootDiagnosticArrayOutput)
+}
+
+type ElastigroupAzureV3BootDiagnosticOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3BootDiagnosticOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3BootDiagnostic)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3BootDiagnosticOutput) ToElastigroupAzureV3BootDiagnosticOutput() ElastigroupAzureV3BootDiagnosticOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3BootDiagnosticOutput) ToElastigroupAzureV3BootDiagnosticOutputWithContext(ctx context.Context) ElastigroupAzureV3BootDiagnosticOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3BootDiagnosticOutput) IsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3BootDiagnostic) bool { return v.IsEnabled }).(pulumi.BoolOutput)
+}
+
+func (o ElastigroupAzureV3BootDiagnosticOutput) StorageUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3BootDiagnostic) *string { return v.StorageUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupAzureV3BootDiagnosticOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3BootDiagnostic) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ElastigroupAzureV3BootDiagnosticArrayOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3BootDiagnosticArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3BootDiagnostic)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3BootDiagnosticArrayOutput) ToElastigroupAzureV3BootDiagnosticArrayOutput() ElastigroupAzureV3BootDiagnosticArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3BootDiagnosticArrayOutput) ToElastigroupAzureV3BootDiagnosticArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3BootDiagnosticArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3BootDiagnosticArrayOutput) Index(i pulumi.IntInput) ElastigroupAzureV3BootDiagnosticOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupAzureV3BootDiagnostic {
+		return vs[0].([]ElastigroupAzureV3BootDiagnostic)[vs[1].(int)]
+	}).(ElastigroupAzureV3BootDiagnosticOutput)
+}
+
+type ElastigroupAzureV3CapacityReservation struct {
+	CapacityReservationGroups *ElastigroupAzureV3CapacityReservationCapacityReservationGroups `pulumi:"capacityReservationGroups"`
+	ShouldUtilize             bool                                                            `pulumi:"shouldUtilize"`
+	UtilizationStrategy       string                                                          `pulumi:"utilizationStrategy"`
+}
+
+// ElastigroupAzureV3CapacityReservationInput is an input type that accepts ElastigroupAzureV3CapacityReservationArgs and ElastigroupAzureV3CapacityReservationOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3CapacityReservationInput` via:
+//
+//	ElastigroupAzureV3CapacityReservationArgs{...}
+type ElastigroupAzureV3CapacityReservationInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3CapacityReservationOutput() ElastigroupAzureV3CapacityReservationOutput
+	ToElastigroupAzureV3CapacityReservationOutputWithContext(context.Context) ElastigroupAzureV3CapacityReservationOutput
+}
+
+type ElastigroupAzureV3CapacityReservationArgs struct {
+	CapacityReservationGroups ElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrInput `pulumi:"capacityReservationGroups"`
+	ShouldUtilize             pulumi.BoolInput                                                       `pulumi:"shouldUtilize"`
+	UtilizationStrategy       pulumi.StringInput                                                     `pulumi:"utilizationStrategy"`
+}
+
+func (ElastigroupAzureV3CapacityReservationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3CapacityReservation)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3CapacityReservationArgs) ToElastigroupAzureV3CapacityReservationOutput() ElastigroupAzureV3CapacityReservationOutput {
+	return i.ToElastigroupAzureV3CapacityReservationOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3CapacityReservationArgs) ToElastigroupAzureV3CapacityReservationOutputWithContext(ctx context.Context) ElastigroupAzureV3CapacityReservationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3CapacityReservationOutput)
+}
+
+func (i ElastigroupAzureV3CapacityReservationArgs) ToElastigroupAzureV3CapacityReservationPtrOutput() ElastigroupAzureV3CapacityReservationPtrOutput {
+	return i.ToElastigroupAzureV3CapacityReservationPtrOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3CapacityReservationArgs) ToElastigroupAzureV3CapacityReservationPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3CapacityReservationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3CapacityReservationOutput).ToElastigroupAzureV3CapacityReservationPtrOutputWithContext(ctx)
+}
+
+// ElastigroupAzureV3CapacityReservationPtrInput is an input type that accepts ElastigroupAzureV3CapacityReservationArgs, ElastigroupAzureV3CapacityReservationPtr and ElastigroupAzureV3CapacityReservationPtrOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3CapacityReservationPtrInput` via:
+//
+//	        ElastigroupAzureV3CapacityReservationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ElastigroupAzureV3CapacityReservationPtrInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3CapacityReservationPtrOutput() ElastigroupAzureV3CapacityReservationPtrOutput
+	ToElastigroupAzureV3CapacityReservationPtrOutputWithContext(context.Context) ElastigroupAzureV3CapacityReservationPtrOutput
+}
+
+type elastigroupAzureV3CapacityReservationPtrType ElastigroupAzureV3CapacityReservationArgs
+
+func ElastigroupAzureV3CapacityReservationPtr(v *ElastigroupAzureV3CapacityReservationArgs) ElastigroupAzureV3CapacityReservationPtrInput {
+	return (*elastigroupAzureV3CapacityReservationPtrType)(v)
+}
+
+func (*elastigroupAzureV3CapacityReservationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupAzureV3CapacityReservation)(nil)).Elem()
+}
+
+func (i *elastigroupAzureV3CapacityReservationPtrType) ToElastigroupAzureV3CapacityReservationPtrOutput() ElastigroupAzureV3CapacityReservationPtrOutput {
+	return i.ToElastigroupAzureV3CapacityReservationPtrOutputWithContext(context.Background())
+}
+
+func (i *elastigroupAzureV3CapacityReservationPtrType) ToElastigroupAzureV3CapacityReservationPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3CapacityReservationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3CapacityReservationPtrOutput)
+}
+
+type ElastigroupAzureV3CapacityReservationOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3CapacityReservationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3CapacityReservation)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3CapacityReservationOutput) ToElastigroupAzureV3CapacityReservationOutput() ElastigroupAzureV3CapacityReservationOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3CapacityReservationOutput) ToElastigroupAzureV3CapacityReservationOutputWithContext(ctx context.Context) ElastigroupAzureV3CapacityReservationOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3CapacityReservationOutput) ToElastigroupAzureV3CapacityReservationPtrOutput() ElastigroupAzureV3CapacityReservationPtrOutput {
+	return o.ToElastigroupAzureV3CapacityReservationPtrOutputWithContext(context.Background())
+}
+
+func (o ElastigroupAzureV3CapacityReservationOutput) ToElastigroupAzureV3CapacityReservationPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3CapacityReservationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupAzureV3CapacityReservation) *ElastigroupAzureV3CapacityReservation {
+		return &v
+	}).(ElastigroupAzureV3CapacityReservationPtrOutput)
+}
+
+func (o ElastigroupAzureV3CapacityReservationOutput) CapacityReservationGroups() ElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3CapacityReservation) *ElastigroupAzureV3CapacityReservationCapacityReservationGroups {
+		return v.CapacityReservationGroups
+	}).(ElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrOutput)
+}
+
+func (o ElastigroupAzureV3CapacityReservationOutput) ShouldUtilize() pulumi.BoolOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3CapacityReservation) bool { return v.ShouldUtilize }).(pulumi.BoolOutput)
+}
+
+func (o ElastigroupAzureV3CapacityReservationOutput) UtilizationStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3CapacityReservation) string { return v.UtilizationStrategy }).(pulumi.StringOutput)
+}
+
+type ElastigroupAzureV3CapacityReservationPtrOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3CapacityReservationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupAzureV3CapacityReservation)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3CapacityReservationPtrOutput) ToElastigroupAzureV3CapacityReservationPtrOutput() ElastigroupAzureV3CapacityReservationPtrOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3CapacityReservationPtrOutput) ToElastigroupAzureV3CapacityReservationPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3CapacityReservationPtrOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3CapacityReservationPtrOutput) Elem() ElastigroupAzureV3CapacityReservationOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3CapacityReservation) ElastigroupAzureV3CapacityReservation {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupAzureV3CapacityReservation
+		return ret
+	}).(ElastigroupAzureV3CapacityReservationOutput)
+}
+
+func (o ElastigroupAzureV3CapacityReservationPtrOutput) CapacityReservationGroups() ElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3CapacityReservation) *ElastigroupAzureV3CapacityReservationCapacityReservationGroups {
+		if v == nil {
+			return nil
+		}
+		return v.CapacityReservationGroups
+	}).(ElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrOutput)
+}
+
+func (o ElastigroupAzureV3CapacityReservationPtrOutput) ShouldUtilize() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3CapacityReservation) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.ShouldUtilize
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ElastigroupAzureV3CapacityReservationPtrOutput) UtilizationStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3CapacityReservation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.UtilizationStrategy
+	}).(pulumi.StringPtrOutput)
+}
+
+type ElastigroupAzureV3CapacityReservationCapacityReservationGroups struct {
+	CrgName              string `pulumi:"crgName"`
+	CrgResourceGroupName string `pulumi:"crgResourceGroupName"`
+	CrgShouldPrioritize  *bool  `pulumi:"crgShouldPrioritize"`
+}
+
+// ElastigroupAzureV3CapacityReservationCapacityReservationGroupsInput is an input type that accepts ElastigroupAzureV3CapacityReservationCapacityReservationGroupsArgs and ElastigroupAzureV3CapacityReservationCapacityReservationGroupsOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3CapacityReservationCapacityReservationGroupsInput` via:
+//
+//	ElastigroupAzureV3CapacityReservationCapacityReservationGroupsArgs{...}
+type ElastigroupAzureV3CapacityReservationCapacityReservationGroupsInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3CapacityReservationCapacityReservationGroupsOutput() ElastigroupAzureV3CapacityReservationCapacityReservationGroupsOutput
+	ToElastigroupAzureV3CapacityReservationCapacityReservationGroupsOutputWithContext(context.Context) ElastigroupAzureV3CapacityReservationCapacityReservationGroupsOutput
+}
+
+type ElastigroupAzureV3CapacityReservationCapacityReservationGroupsArgs struct {
+	CrgName              pulumi.StringInput  `pulumi:"crgName"`
+	CrgResourceGroupName pulumi.StringInput  `pulumi:"crgResourceGroupName"`
+	CrgShouldPrioritize  pulumi.BoolPtrInput `pulumi:"crgShouldPrioritize"`
+}
+
+func (ElastigroupAzureV3CapacityReservationCapacityReservationGroupsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3CapacityReservationCapacityReservationGroups)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3CapacityReservationCapacityReservationGroupsArgs) ToElastigroupAzureV3CapacityReservationCapacityReservationGroupsOutput() ElastigroupAzureV3CapacityReservationCapacityReservationGroupsOutput {
+	return i.ToElastigroupAzureV3CapacityReservationCapacityReservationGroupsOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3CapacityReservationCapacityReservationGroupsArgs) ToElastigroupAzureV3CapacityReservationCapacityReservationGroupsOutputWithContext(ctx context.Context) ElastigroupAzureV3CapacityReservationCapacityReservationGroupsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3CapacityReservationCapacityReservationGroupsOutput)
+}
+
+func (i ElastigroupAzureV3CapacityReservationCapacityReservationGroupsArgs) ToElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrOutput() ElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrOutput {
+	return i.ToElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3CapacityReservationCapacityReservationGroupsArgs) ToElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3CapacityReservationCapacityReservationGroupsOutput).ToElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrOutputWithContext(ctx)
+}
+
+// ElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrInput is an input type that accepts ElastigroupAzureV3CapacityReservationCapacityReservationGroupsArgs, ElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtr and ElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrInput` via:
+//
+//	        ElastigroupAzureV3CapacityReservationCapacityReservationGroupsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrOutput() ElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrOutput
+	ToElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrOutputWithContext(context.Context) ElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrOutput
+}
+
+type elastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrType ElastigroupAzureV3CapacityReservationCapacityReservationGroupsArgs
+
+func ElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtr(v *ElastigroupAzureV3CapacityReservationCapacityReservationGroupsArgs) ElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrInput {
+	return (*elastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrType)(v)
+}
+
+func (*elastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupAzureV3CapacityReservationCapacityReservationGroups)(nil)).Elem()
+}
+
+func (i *elastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrType) ToElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrOutput() ElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrOutput {
+	return i.ToElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrOutputWithContext(context.Background())
+}
+
+func (i *elastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrType) ToElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrOutput)
+}
+
+type ElastigroupAzureV3CapacityReservationCapacityReservationGroupsOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3CapacityReservationCapacityReservationGroupsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3CapacityReservationCapacityReservationGroups)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3CapacityReservationCapacityReservationGroupsOutput) ToElastigroupAzureV3CapacityReservationCapacityReservationGroupsOutput() ElastigroupAzureV3CapacityReservationCapacityReservationGroupsOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3CapacityReservationCapacityReservationGroupsOutput) ToElastigroupAzureV3CapacityReservationCapacityReservationGroupsOutputWithContext(ctx context.Context) ElastigroupAzureV3CapacityReservationCapacityReservationGroupsOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3CapacityReservationCapacityReservationGroupsOutput) ToElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrOutput() ElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrOutput {
+	return o.ToElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrOutputWithContext(context.Background())
+}
+
+func (o ElastigroupAzureV3CapacityReservationCapacityReservationGroupsOutput) ToElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupAzureV3CapacityReservationCapacityReservationGroups) *ElastigroupAzureV3CapacityReservationCapacityReservationGroups {
+		return &v
+	}).(ElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrOutput)
+}
+
+func (o ElastigroupAzureV3CapacityReservationCapacityReservationGroupsOutput) CrgName() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3CapacityReservationCapacityReservationGroups) string { return v.CrgName }).(pulumi.StringOutput)
+}
+
+func (o ElastigroupAzureV3CapacityReservationCapacityReservationGroupsOutput) CrgResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3CapacityReservationCapacityReservationGroups) string {
+		return v.CrgResourceGroupName
+	}).(pulumi.StringOutput)
+}
+
+func (o ElastigroupAzureV3CapacityReservationCapacityReservationGroupsOutput) CrgShouldPrioritize() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3CapacityReservationCapacityReservationGroups) *bool {
+		return v.CrgShouldPrioritize
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupAzureV3CapacityReservationCapacityReservationGroups)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrOutput) ToElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrOutput() ElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrOutput) ToElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrOutput) Elem() ElastigroupAzureV3CapacityReservationCapacityReservationGroupsOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3CapacityReservationCapacityReservationGroups) ElastigroupAzureV3CapacityReservationCapacityReservationGroups {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupAzureV3CapacityReservationCapacityReservationGroups
+		return ret
+	}).(ElastigroupAzureV3CapacityReservationCapacityReservationGroupsOutput)
+}
+
+func (o ElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrOutput) CrgName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3CapacityReservationCapacityReservationGroups) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CrgName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrOutput) CrgResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3CapacityReservationCapacityReservationGroups) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CrgResourceGroupName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrOutput) CrgShouldPrioritize() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3CapacityReservationCapacityReservationGroups) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CrgShouldPrioritize
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ElastigroupAzureV3DataDisk struct {
+	Lun    int    `pulumi:"lun"`
+	SizeGb int    `pulumi:"sizeGb"`
+	Type   string `pulumi:"type"`
+}
+
+// ElastigroupAzureV3DataDiskInput is an input type that accepts ElastigroupAzureV3DataDiskArgs and ElastigroupAzureV3DataDiskOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3DataDiskInput` via:
+//
+//	ElastigroupAzureV3DataDiskArgs{...}
+type ElastigroupAzureV3DataDiskInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3DataDiskOutput() ElastigroupAzureV3DataDiskOutput
+	ToElastigroupAzureV3DataDiskOutputWithContext(context.Context) ElastigroupAzureV3DataDiskOutput
+}
+
+type ElastigroupAzureV3DataDiskArgs struct {
+	Lun    pulumi.IntInput    `pulumi:"lun"`
+	SizeGb pulumi.IntInput    `pulumi:"sizeGb"`
+	Type   pulumi.StringInput `pulumi:"type"`
+}
+
+func (ElastigroupAzureV3DataDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3DataDisk)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3DataDiskArgs) ToElastigroupAzureV3DataDiskOutput() ElastigroupAzureV3DataDiskOutput {
+	return i.ToElastigroupAzureV3DataDiskOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3DataDiskArgs) ToElastigroupAzureV3DataDiskOutputWithContext(ctx context.Context) ElastigroupAzureV3DataDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3DataDiskOutput)
+}
+
+// ElastigroupAzureV3DataDiskArrayInput is an input type that accepts ElastigroupAzureV3DataDiskArray and ElastigroupAzureV3DataDiskArrayOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3DataDiskArrayInput` via:
+//
+//	ElastigroupAzureV3DataDiskArray{ ElastigroupAzureV3DataDiskArgs{...} }
+type ElastigroupAzureV3DataDiskArrayInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3DataDiskArrayOutput() ElastigroupAzureV3DataDiskArrayOutput
+	ToElastigroupAzureV3DataDiskArrayOutputWithContext(context.Context) ElastigroupAzureV3DataDiskArrayOutput
+}
+
+type ElastigroupAzureV3DataDiskArray []ElastigroupAzureV3DataDiskInput
+
+func (ElastigroupAzureV3DataDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3DataDisk)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3DataDiskArray) ToElastigroupAzureV3DataDiskArrayOutput() ElastigroupAzureV3DataDiskArrayOutput {
+	return i.ToElastigroupAzureV3DataDiskArrayOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3DataDiskArray) ToElastigroupAzureV3DataDiskArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3DataDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3DataDiskArrayOutput)
+}
+
+type ElastigroupAzureV3DataDiskOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3DataDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3DataDisk)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3DataDiskOutput) ToElastigroupAzureV3DataDiskOutput() ElastigroupAzureV3DataDiskOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3DataDiskOutput) ToElastigroupAzureV3DataDiskOutputWithContext(ctx context.Context) ElastigroupAzureV3DataDiskOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3DataDiskOutput) Lun() pulumi.IntOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3DataDisk) int { return v.Lun }).(pulumi.IntOutput)
+}
+
+func (o ElastigroupAzureV3DataDiskOutput) SizeGb() pulumi.IntOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3DataDisk) int { return v.SizeGb }).(pulumi.IntOutput)
+}
+
+func (o ElastigroupAzureV3DataDiskOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3DataDisk) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ElastigroupAzureV3DataDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3DataDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3DataDisk)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3DataDiskArrayOutput) ToElastigroupAzureV3DataDiskArrayOutput() ElastigroupAzureV3DataDiskArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3DataDiskArrayOutput) ToElastigroupAzureV3DataDiskArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3DataDiskArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3DataDiskArrayOutput) Index(i pulumi.IntInput) ElastigroupAzureV3DataDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupAzureV3DataDisk {
+		return vs[0].([]ElastigroupAzureV3DataDisk)[vs[1].(int)]
+	}).(ElastigroupAzureV3DataDiskOutput)
+}
+
 type ElastigroupAzureV3Extension struct {
 	ApiVersion                    string                                                    `pulumi:"apiVersion"`
 	EnableAutomaticUpgrade        *bool                                                     `pulumi:"enableAutomaticUpgrade"`
@@ -455,6 +999,184 @@ func (o ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrOutput) Sourc
 		}
 		return &v.SourceVault
 	}).(pulumi.StringPtrOutput)
+}
+
+type ElastigroupAzureV3Health struct {
+	AutoHealing       *bool    `pulumi:"autoHealing"`
+	GracePeriod       *int     `pulumi:"gracePeriod"`
+	HealthCheckTypes  []string `pulumi:"healthCheckTypes"`
+	UnhealthyDuration *int     `pulumi:"unhealthyDuration"`
+}
+
+// ElastigroupAzureV3HealthInput is an input type that accepts ElastigroupAzureV3HealthArgs and ElastigroupAzureV3HealthOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3HealthInput` via:
+//
+//	ElastigroupAzureV3HealthArgs{...}
+type ElastigroupAzureV3HealthInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3HealthOutput() ElastigroupAzureV3HealthOutput
+	ToElastigroupAzureV3HealthOutputWithContext(context.Context) ElastigroupAzureV3HealthOutput
+}
+
+type ElastigroupAzureV3HealthArgs struct {
+	AutoHealing       pulumi.BoolPtrInput     `pulumi:"autoHealing"`
+	GracePeriod       pulumi.IntPtrInput      `pulumi:"gracePeriod"`
+	HealthCheckTypes  pulumi.StringArrayInput `pulumi:"healthCheckTypes"`
+	UnhealthyDuration pulumi.IntPtrInput      `pulumi:"unhealthyDuration"`
+}
+
+func (ElastigroupAzureV3HealthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3Health)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3HealthArgs) ToElastigroupAzureV3HealthOutput() ElastigroupAzureV3HealthOutput {
+	return i.ToElastigroupAzureV3HealthOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3HealthArgs) ToElastigroupAzureV3HealthOutputWithContext(ctx context.Context) ElastigroupAzureV3HealthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3HealthOutput)
+}
+
+func (i ElastigroupAzureV3HealthArgs) ToElastigroupAzureV3HealthPtrOutput() ElastigroupAzureV3HealthPtrOutput {
+	return i.ToElastigroupAzureV3HealthPtrOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3HealthArgs) ToElastigroupAzureV3HealthPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3HealthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3HealthOutput).ToElastigroupAzureV3HealthPtrOutputWithContext(ctx)
+}
+
+// ElastigroupAzureV3HealthPtrInput is an input type that accepts ElastigroupAzureV3HealthArgs, ElastigroupAzureV3HealthPtr and ElastigroupAzureV3HealthPtrOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3HealthPtrInput` via:
+//
+//	        ElastigroupAzureV3HealthArgs{...}
+//
+//	or:
+//
+//	        nil
+type ElastigroupAzureV3HealthPtrInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3HealthPtrOutput() ElastigroupAzureV3HealthPtrOutput
+	ToElastigroupAzureV3HealthPtrOutputWithContext(context.Context) ElastigroupAzureV3HealthPtrOutput
+}
+
+type elastigroupAzureV3HealthPtrType ElastigroupAzureV3HealthArgs
+
+func ElastigroupAzureV3HealthPtr(v *ElastigroupAzureV3HealthArgs) ElastigroupAzureV3HealthPtrInput {
+	return (*elastigroupAzureV3HealthPtrType)(v)
+}
+
+func (*elastigroupAzureV3HealthPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupAzureV3Health)(nil)).Elem()
+}
+
+func (i *elastigroupAzureV3HealthPtrType) ToElastigroupAzureV3HealthPtrOutput() ElastigroupAzureV3HealthPtrOutput {
+	return i.ToElastigroupAzureV3HealthPtrOutputWithContext(context.Background())
+}
+
+func (i *elastigroupAzureV3HealthPtrType) ToElastigroupAzureV3HealthPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3HealthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3HealthPtrOutput)
+}
+
+type ElastigroupAzureV3HealthOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3HealthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3Health)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3HealthOutput) ToElastigroupAzureV3HealthOutput() ElastigroupAzureV3HealthOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3HealthOutput) ToElastigroupAzureV3HealthOutputWithContext(ctx context.Context) ElastigroupAzureV3HealthOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3HealthOutput) ToElastigroupAzureV3HealthPtrOutput() ElastigroupAzureV3HealthPtrOutput {
+	return o.ToElastigroupAzureV3HealthPtrOutputWithContext(context.Background())
+}
+
+func (o ElastigroupAzureV3HealthOutput) ToElastigroupAzureV3HealthPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3HealthPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupAzureV3Health) *ElastigroupAzureV3Health {
+		return &v
+	}).(ElastigroupAzureV3HealthPtrOutput)
+}
+
+func (o ElastigroupAzureV3HealthOutput) AutoHealing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3Health) *bool { return v.AutoHealing }).(pulumi.BoolPtrOutput)
+}
+
+func (o ElastigroupAzureV3HealthOutput) GracePeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3Health) *int { return v.GracePeriod }).(pulumi.IntPtrOutput)
+}
+
+func (o ElastigroupAzureV3HealthOutput) HealthCheckTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3Health) []string { return v.HealthCheckTypes }).(pulumi.StringArrayOutput)
+}
+
+func (o ElastigroupAzureV3HealthOutput) UnhealthyDuration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3Health) *int { return v.UnhealthyDuration }).(pulumi.IntPtrOutput)
+}
+
+type ElastigroupAzureV3HealthPtrOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3HealthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupAzureV3Health)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3HealthPtrOutput) ToElastigroupAzureV3HealthPtrOutput() ElastigroupAzureV3HealthPtrOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3HealthPtrOutput) ToElastigroupAzureV3HealthPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3HealthPtrOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3HealthPtrOutput) Elem() ElastigroupAzureV3HealthOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3Health) ElastigroupAzureV3Health {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupAzureV3Health
+		return ret
+	}).(ElastigroupAzureV3HealthOutput)
+}
+
+func (o ElastigroupAzureV3HealthPtrOutput) AutoHealing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3Health) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoHealing
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ElastigroupAzureV3HealthPtrOutput) GracePeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3Health) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GracePeriod
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ElastigroupAzureV3HealthPtrOutput) HealthCheckTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3Health) []string {
+		if v == nil {
+			return nil
+		}
+		return v.HealthCheckTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o ElastigroupAzureV3HealthPtrOutput) UnhealthyDuration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3Health) *int {
+		if v == nil {
+			return nil
+		}
+		return v.UnhealthyDuration
+	}).(pulumi.IntPtrOutput)
 }
 
 type ElastigroupAzureV3Image struct {
@@ -893,6 +1615,124 @@ func (o ElastigroupAzureV3ImageMarketplaceArrayOutput) Index(i pulumi.IntInput) 
 	}).(ElastigroupAzureV3ImageMarketplaceOutput)
 }
 
+type ElastigroupAzureV3LoadBalancer struct {
+	BackendPoolNames  []string `pulumi:"backendPoolNames"`
+	Name              string   `pulumi:"name"`
+	ResourceGroupName string   `pulumi:"resourceGroupName"`
+	Sku               *string  `pulumi:"sku"`
+	Type              string   `pulumi:"type"`
+}
+
+// ElastigroupAzureV3LoadBalancerInput is an input type that accepts ElastigroupAzureV3LoadBalancerArgs and ElastigroupAzureV3LoadBalancerOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3LoadBalancerInput` via:
+//
+//	ElastigroupAzureV3LoadBalancerArgs{...}
+type ElastigroupAzureV3LoadBalancerInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3LoadBalancerOutput() ElastigroupAzureV3LoadBalancerOutput
+	ToElastigroupAzureV3LoadBalancerOutputWithContext(context.Context) ElastigroupAzureV3LoadBalancerOutput
+}
+
+type ElastigroupAzureV3LoadBalancerArgs struct {
+	BackendPoolNames  pulumi.StringArrayInput `pulumi:"backendPoolNames"`
+	Name              pulumi.StringInput      `pulumi:"name"`
+	ResourceGroupName pulumi.StringInput      `pulumi:"resourceGroupName"`
+	Sku               pulumi.StringPtrInput   `pulumi:"sku"`
+	Type              pulumi.StringInput      `pulumi:"type"`
+}
+
+func (ElastigroupAzureV3LoadBalancerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3LoadBalancer)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3LoadBalancerArgs) ToElastigroupAzureV3LoadBalancerOutput() ElastigroupAzureV3LoadBalancerOutput {
+	return i.ToElastigroupAzureV3LoadBalancerOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3LoadBalancerArgs) ToElastigroupAzureV3LoadBalancerOutputWithContext(ctx context.Context) ElastigroupAzureV3LoadBalancerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3LoadBalancerOutput)
+}
+
+// ElastigroupAzureV3LoadBalancerArrayInput is an input type that accepts ElastigroupAzureV3LoadBalancerArray and ElastigroupAzureV3LoadBalancerArrayOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3LoadBalancerArrayInput` via:
+//
+//	ElastigroupAzureV3LoadBalancerArray{ ElastigroupAzureV3LoadBalancerArgs{...} }
+type ElastigroupAzureV3LoadBalancerArrayInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3LoadBalancerArrayOutput() ElastigroupAzureV3LoadBalancerArrayOutput
+	ToElastigroupAzureV3LoadBalancerArrayOutputWithContext(context.Context) ElastigroupAzureV3LoadBalancerArrayOutput
+}
+
+type ElastigroupAzureV3LoadBalancerArray []ElastigroupAzureV3LoadBalancerInput
+
+func (ElastigroupAzureV3LoadBalancerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3LoadBalancer)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3LoadBalancerArray) ToElastigroupAzureV3LoadBalancerArrayOutput() ElastigroupAzureV3LoadBalancerArrayOutput {
+	return i.ToElastigroupAzureV3LoadBalancerArrayOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3LoadBalancerArray) ToElastigroupAzureV3LoadBalancerArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3LoadBalancerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3LoadBalancerArrayOutput)
+}
+
+type ElastigroupAzureV3LoadBalancerOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3LoadBalancerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3LoadBalancer)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3LoadBalancerOutput) ToElastigroupAzureV3LoadBalancerOutput() ElastigroupAzureV3LoadBalancerOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3LoadBalancerOutput) ToElastigroupAzureV3LoadBalancerOutputWithContext(ctx context.Context) ElastigroupAzureV3LoadBalancerOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3LoadBalancerOutput) BackendPoolNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3LoadBalancer) []string { return v.BackendPoolNames }).(pulumi.StringArrayOutput)
+}
+
+func (o ElastigroupAzureV3LoadBalancerOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3LoadBalancer) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ElastigroupAzureV3LoadBalancerOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3LoadBalancer) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+func (o ElastigroupAzureV3LoadBalancerOutput) Sku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3LoadBalancer) *string { return v.Sku }).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupAzureV3LoadBalancerOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3LoadBalancer) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ElastigroupAzureV3LoadBalancerArrayOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3LoadBalancerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3LoadBalancer)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3LoadBalancerArrayOutput) ToElastigroupAzureV3LoadBalancerArrayOutput() ElastigroupAzureV3LoadBalancerArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3LoadBalancerArrayOutput) ToElastigroupAzureV3LoadBalancerArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3LoadBalancerArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3LoadBalancerArrayOutput) Index(i pulumi.IntInput) ElastigroupAzureV3LoadBalancerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupAzureV3LoadBalancer {
+		return vs[0].([]ElastigroupAzureV3LoadBalancer)[vs[1].(int)]
+	}).(ElastigroupAzureV3LoadBalancerOutput)
+}
+
 type ElastigroupAzureV3Login struct {
 	Password     *string `pulumi:"password"`
 	SshPublicKey *string `pulumi:"sshPublicKey"`
@@ -1325,7 +2165,11 @@ type ElastigroupAzureV3NetworkNetworkInterface struct {
 	AdditionalIpConfigs       []ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig       `pulumi:"additionalIpConfigs"`
 	ApplicationSecurityGroups []ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup `pulumi:"applicationSecurityGroups"`
 	AssignPublicIp            bool                                                                `pulumi:"assignPublicIp"`
+	EnableIpForwarding        *bool                                                               `pulumi:"enableIpForwarding"`
 	IsPrimary                 bool                                                                `pulumi:"isPrimary"`
+	PrivateIpAddresses        []string                                                            `pulumi:"privateIpAddresses"`
+	PublicIpSku               *string                                                             `pulumi:"publicIpSku"`
+	SecurityGroups            []ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroup            `pulumi:"securityGroups"`
 	SubnetName                string                                                              `pulumi:"subnetName"`
 }
 
@@ -1344,7 +2188,11 @@ type ElastigroupAzureV3NetworkNetworkInterfaceArgs struct {
 	AdditionalIpConfigs       ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayInput       `pulumi:"additionalIpConfigs"`
 	ApplicationSecurityGroups ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayInput `pulumi:"applicationSecurityGroups"`
 	AssignPublicIp            pulumi.BoolInput                                                            `pulumi:"assignPublicIp"`
+	EnableIpForwarding        pulumi.BoolPtrInput                                                         `pulumi:"enableIpForwarding"`
 	IsPrimary                 pulumi.BoolInput                                                            `pulumi:"isPrimary"`
+	PrivateIpAddresses        pulumi.StringArrayInput                                                     `pulumi:"privateIpAddresses"`
+	PublicIpSku               pulumi.StringPtrInput                                                       `pulumi:"publicIpSku"`
+	SecurityGroups            ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArrayInput            `pulumi:"securityGroups"`
 	SubnetName                pulumi.StringInput                                                          `pulumi:"subnetName"`
 }
 
@@ -1415,8 +2263,26 @@ func (o ElastigroupAzureV3NetworkNetworkInterfaceOutput) AssignPublicIp() pulumi
 	return o.ApplyT(func(v ElastigroupAzureV3NetworkNetworkInterface) bool { return v.AssignPublicIp }).(pulumi.BoolOutput)
 }
 
+func (o ElastigroupAzureV3NetworkNetworkInterfaceOutput) EnableIpForwarding() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3NetworkNetworkInterface) *bool { return v.EnableIpForwarding }).(pulumi.BoolPtrOutput)
+}
+
 func (o ElastigroupAzureV3NetworkNetworkInterfaceOutput) IsPrimary() pulumi.BoolOutput {
 	return o.ApplyT(func(v ElastigroupAzureV3NetworkNetworkInterface) bool { return v.IsPrimary }).(pulumi.BoolOutput)
+}
+
+func (o ElastigroupAzureV3NetworkNetworkInterfaceOutput) PrivateIpAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3NetworkNetworkInterface) []string { return v.PrivateIpAddresses }).(pulumi.StringArrayOutput)
+}
+
+func (o ElastigroupAzureV3NetworkNetworkInterfaceOutput) PublicIpSku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3NetworkNetworkInterface) *string { return v.PublicIpSku }).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupAzureV3NetworkNetworkInterfaceOutput) SecurityGroups() ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArrayOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3NetworkNetworkInterface) []ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroup {
+		return v.SecurityGroups
+	}).(ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArrayOutput)
 }
 
 func (o ElastigroupAzureV3NetworkNetworkInterfaceOutput) SubnetName() pulumi.StringOutput {
@@ -1643,6 +2509,487 @@ func (o ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup {
 		return vs[0].([]ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup)[vs[1].(int)]
 	}).(ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupOutput)
+}
+
+type ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroup struct {
+	Name              *string `pulumi:"name"`
+	ResourceGroupName *string `pulumi:"resourceGroupName"`
+}
+
+// ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupInput is an input type that accepts ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArgs and ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupInput` via:
+//
+//	ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArgs{...}
+type ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupOutput() ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupOutput
+	ToElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupOutputWithContext(context.Context) ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupOutput
+}
+
+type ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArgs struct {
+	Name              pulumi.StringPtrInput `pulumi:"name"`
+	ResourceGroupName pulumi.StringPtrInput `pulumi:"resourceGroupName"`
+}
+
+func (ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroup)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArgs) ToElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupOutput() ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupOutput {
+	return i.ToElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArgs) ToElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupOutputWithContext(ctx context.Context) ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupOutput)
+}
+
+// ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArrayInput is an input type that accepts ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArray and ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArrayOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArrayInput` via:
+//
+//	ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArray{ ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArgs{...} }
+type ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArrayInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArrayOutput() ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArrayOutput
+	ToElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArrayOutputWithContext(context.Context) ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArrayOutput
+}
+
+type ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArray []ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupInput
+
+func (ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroup)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArray) ToElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArrayOutput() ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArrayOutput {
+	return i.ToElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArrayOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArray) ToElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArrayOutput)
+}
+
+type ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroup)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupOutput) ToElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupOutput() ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupOutput) ToElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupOutputWithContext(ctx context.Context) ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroup) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupOutput) ResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroup) *string { return v.ResourceGroupName }).(pulumi.StringPtrOutput)
+}
+
+type ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroup)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArrayOutput) ToElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArrayOutput() ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArrayOutput) ToElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArrayOutput) Index(i pulumi.IntInput) ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroup {
+		return vs[0].([]ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroup)[vs[1].(int)]
+	}).(ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupOutput)
+}
+
+type ElastigroupAzureV3OsDisk struct {
+	SizeGb *int   `pulumi:"sizeGb"`
+	Type   string `pulumi:"type"`
+}
+
+// ElastigroupAzureV3OsDiskInput is an input type that accepts ElastigroupAzureV3OsDiskArgs and ElastigroupAzureV3OsDiskOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3OsDiskInput` via:
+//
+//	ElastigroupAzureV3OsDiskArgs{...}
+type ElastigroupAzureV3OsDiskInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3OsDiskOutput() ElastigroupAzureV3OsDiskOutput
+	ToElastigroupAzureV3OsDiskOutputWithContext(context.Context) ElastigroupAzureV3OsDiskOutput
+}
+
+type ElastigroupAzureV3OsDiskArgs struct {
+	SizeGb pulumi.IntPtrInput `pulumi:"sizeGb"`
+	Type   pulumi.StringInput `pulumi:"type"`
+}
+
+func (ElastigroupAzureV3OsDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3OsDisk)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3OsDiskArgs) ToElastigroupAzureV3OsDiskOutput() ElastigroupAzureV3OsDiskOutput {
+	return i.ToElastigroupAzureV3OsDiskOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3OsDiskArgs) ToElastigroupAzureV3OsDiskOutputWithContext(ctx context.Context) ElastigroupAzureV3OsDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3OsDiskOutput)
+}
+
+func (i ElastigroupAzureV3OsDiskArgs) ToElastigroupAzureV3OsDiskPtrOutput() ElastigroupAzureV3OsDiskPtrOutput {
+	return i.ToElastigroupAzureV3OsDiskPtrOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3OsDiskArgs) ToElastigroupAzureV3OsDiskPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3OsDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3OsDiskOutput).ToElastigroupAzureV3OsDiskPtrOutputWithContext(ctx)
+}
+
+// ElastigroupAzureV3OsDiskPtrInput is an input type that accepts ElastigroupAzureV3OsDiskArgs, ElastigroupAzureV3OsDiskPtr and ElastigroupAzureV3OsDiskPtrOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3OsDiskPtrInput` via:
+//
+//	        ElastigroupAzureV3OsDiskArgs{...}
+//
+//	or:
+//
+//	        nil
+type ElastigroupAzureV3OsDiskPtrInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3OsDiskPtrOutput() ElastigroupAzureV3OsDiskPtrOutput
+	ToElastigroupAzureV3OsDiskPtrOutputWithContext(context.Context) ElastigroupAzureV3OsDiskPtrOutput
+}
+
+type elastigroupAzureV3OsDiskPtrType ElastigroupAzureV3OsDiskArgs
+
+func ElastigroupAzureV3OsDiskPtr(v *ElastigroupAzureV3OsDiskArgs) ElastigroupAzureV3OsDiskPtrInput {
+	return (*elastigroupAzureV3OsDiskPtrType)(v)
+}
+
+func (*elastigroupAzureV3OsDiskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupAzureV3OsDisk)(nil)).Elem()
+}
+
+func (i *elastigroupAzureV3OsDiskPtrType) ToElastigroupAzureV3OsDiskPtrOutput() ElastigroupAzureV3OsDiskPtrOutput {
+	return i.ToElastigroupAzureV3OsDiskPtrOutputWithContext(context.Background())
+}
+
+func (i *elastigroupAzureV3OsDiskPtrType) ToElastigroupAzureV3OsDiskPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3OsDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3OsDiskPtrOutput)
+}
+
+type ElastigroupAzureV3OsDiskOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3OsDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3OsDisk)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3OsDiskOutput) ToElastigroupAzureV3OsDiskOutput() ElastigroupAzureV3OsDiskOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3OsDiskOutput) ToElastigroupAzureV3OsDiskOutputWithContext(ctx context.Context) ElastigroupAzureV3OsDiskOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3OsDiskOutput) ToElastigroupAzureV3OsDiskPtrOutput() ElastigroupAzureV3OsDiskPtrOutput {
+	return o.ToElastigroupAzureV3OsDiskPtrOutputWithContext(context.Background())
+}
+
+func (o ElastigroupAzureV3OsDiskOutput) ToElastigroupAzureV3OsDiskPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3OsDiskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupAzureV3OsDisk) *ElastigroupAzureV3OsDisk {
+		return &v
+	}).(ElastigroupAzureV3OsDiskPtrOutput)
+}
+
+func (o ElastigroupAzureV3OsDiskOutput) SizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3OsDisk) *int { return v.SizeGb }).(pulumi.IntPtrOutput)
+}
+
+func (o ElastigroupAzureV3OsDiskOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3OsDisk) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ElastigroupAzureV3OsDiskPtrOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3OsDiskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupAzureV3OsDisk)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3OsDiskPtrOutput) ToElastigroupAzureV3OsDiskPtrOutput() ElastigroupAzureV3OsDiskPtrOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3OsDiskPtrOutput) ToElastigroupAzureV3OsDiskPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3OsDiskPtrOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3OsDiskPtrOutput) Elem() ElastigroupAzureV3OsDiskOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3OsDisk) ElastigroupAzureV3OsDisk {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupAzureV3OsDisk
+		return ret
+	}).(ElastigroupAzureV3OsDiskOutput)
+}
+
+func (o ElastigroupAzureV3OsDiskPtrOutput) SizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3OsDisk) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ElastigroupAzureV3OsDiskPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3OsDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type ElastigroupAzureV3ProximityPlacementGroup struct {
+	Name              string `pulumi:"name"`
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+}
+
+// ElastigroupAzureV3ProximityPlacementGroupInput is an input type that accepts ElastigroupAzureV3ProximityPlacementGroupArgs and ElastigroupAzureV3ProximityPlacementGroupOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3ProximityPlacementGroupInput` via:
+//
+//	ElastigroupAzureV3ProximityPlacementGroupArgs{...}
+type ElastigroupAzureV3ProximityPlacementGroupInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3ProximityPlacementGroupOutput() ElastigroupAzureV3ProximityPlacementGroupOutput
+	ToElastigroupAzureV3ProximityPlacementGroupOutputWithContext(context.Context) ElastigroupAzureV3ProximityPlacementGroupOutput
+}
+
+type ElastigroupAzureV3ProximityPlacementGroupArgs struct {
+	Name              pulumi.StringInput `pulumi:"name"`
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (ElastigroupAzureV3ProximityPlacementGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3ProximityPlacementGroup)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3ProximityPlacementGroupArgs) ToElastigroupAzureV3ProximityPlacementGroupOutput() ElastigroupAzureV3ProximityPlacementGroupOutput {
+	return i.ToElastigroupAzureV3ProximityPlacementGroupOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3ProximityPlacementGroupArgs) ToElastigroupAzureV3ProximityPlacementGroupOutputWithContext(ctx context.Context) ElastigroupAzureV3ProximityPlacementGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3ProximityPlacementGroupOutput)
+}
+
+// ElastigroupAzureV3ProximityPlacementGroupArrayInput is an input type that accepts ElastigroupAzureV3ProximityPlacementGroupArray and ElastigroupAzureV3ProximityPlacementGroupArrayOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3ProximityPlacementGroupArrayInput` via:
+//
+//	ElastigroupAzureV3ProximityPlacementGroupArray{ ElastigroupAzureV3ProximityPlacementGroupArgs{...} }
+type ElastigroupAzureV3ProximityPlacementGroupArrayInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3ProximityPlacementGroupArrayOutput() ElastigroupAzureV3ProximityPlacementGroupArrayOutput
+	ToElastigroupAzureV3ProximityPlacementGroupArrayOutputWithContext(context.Context) ElastigroupAzureV3ProximityPlacementGroupArrayOutput
+}
+
+type ElastigroupAzureV3ProximityPlacementGroupArray []ElastigroupAzureV3ProximityPlacementGroupInput
+
+func (ElastigroupAzureV3ProximityPlacementGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3ProximityPlacementGroup)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3ProximityPlacementGroupArray) ToElastigroupAzureV3ProximityPlacementGroupArrayOutput() ElastigroupAzureV3ProximityPlacementGroupArrayOutput {
+	return i.ToElastigroupAzureV3ProximityPlacementGroupArrayOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3ProximityPlacementGroupArray) ToElastigroupAzureV3ProximityPlacementGroupArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3ProximityPlacementGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3ProximityPlacementGroupArrayOutput)
+}
+
+type ElastigroupAzureV3ProximityPlacementGroupOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3ProximityPlacementGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3ProximityPlacementGroup)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3ProximityPlacementGroupOutput) ToElastigroupAzureV3ProximityPlacementGroupOutput() ElastigroupAzureV3ProximityPlacementGroupOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ProximityPlacementGroupOutput) ToElastigroupAzureV3ProximityPlacementGroupOutputWithContext(ctx context.Context) ElastigroupAzureV3ProximityPlacementGroupOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ProximityPlacementGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ProximityPlacementGroup) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ElastigroupAzureV3ProximityPlacementGroupOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ProximityPlacementGroup) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+type ElastigroupAzureV3ProximityPlacementGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3ProximityPlacementGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3ProximityPlacementGroup)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3ProximityPlacementGroupArrayOutput) ToElastigroupAzureV3ProximityPlacementGroupArrayOutput() ElastigroupAzureV3ProximityPlacementGroupArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ProximityPlacementGroupArrayOutput) ToElastigroupAzureV3ProximityPlacementGroupArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3ProximityPlacementGroupArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ProximityPlacementGroupArrayOutput) Index(i pulumi.IntInput) ElastigroupAzureV3ProximityPlacementGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupAzureV3ProximityPlacementGroup {
+		return vs[0].([]ElastigroupAzureV3ProximityPlacementGroup)[vs[1].(int)]
+	}).(ElastigroupAzureV3ProximityPlacementGroupOutput)
+}
+
+type ElastigroupAzureV3RevertToSpot struct {
+	PerformAt string `pulumi:"performAt"`
+}
+
+// ElastigroupAzureV3RevertToSpotInput is an input type that accepts ElastigroupAzureV3RevertToSpotArgs and ElastigroupAzureV3RevertToSpotOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3RevertToSpotInput` via:
+//
+//	ElastigroupAzureV3RevertToSpotArgs{...}
+type ElastigroupAzureV3RevertToSpotInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3RevertToSpotOutput() ElastigroupAzureV3RevertToSpotOutput
+	ToElastigroupAzureV3RevertToSpotOutputWithContext(context.Context) ElastigroupAzureV3RevertToSpotOutput
+}
+
+type ElastigroupAzureV3RevertToSpotArgs struct {
+	PerformAt pulumi.StringInput `pulumi:"performAt"`
+}
+
+func (ElastigroupAzureV3RevertToSpotArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3RevertToSpot)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3RevertToSpotArgs) ToElastigroupAzureV3RevertToSpotOutput() ElastigroupAzureV3RevertToSpotOutput {
+	return i.ToElastigroupAzureV3RevertToSpotOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3RevertToSpotArgs) ToElastigroupAzureV3RevertToSpotOutputWithContext(ctx context.Context) ElastigroupAzureV3RevertToSpotOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3RevertToSpotOutput)
+}
+
+func (i ElastigroupAzureV3RevertToSpotArgs) ToElastigroupAzureV3RevertToSpotPtrOutput() ElastigroupAzureV3RevertToSpotPtrOutput {
+	return i.ToElastigroupAzureV3RevertToSpotPtrOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3RevertToSpotArgs) ToElastigroupAzureV3RevertToSpotPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3RevertToSpotPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3RevertToSpotOutput).ToElastigroupAzureV3RevertToSpotPtrOutputWithContext(ctx)
+}
+
+// ElastigroupAzureV3RevertToSpotPtrInput is an input type that accepts ElastigroupAzureV3RevertToSpotArgs, ElastigroupAzureV3RevertToSpotPtr and ElastigroupAzureV3RevertToSpotPtrOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3RevertToSpotPtrInput` via:
+//
+//	        ElastigroupAzureV3RevertToSpotArgs{...}
+//
+//	or:
+//
+//	        nil
+type ElastigroupAzureV3RevertToSpotPtrInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3RevertToSpotPtrOutput() ElastigroupAzureV3RevertToSpotPtrOutput
+	ToElastigroupAzureV3RevertToSpotPtrOutputWithContext(context.Context) ElastigroupAzureV3RevertToSpotPtrOutput
+}
+
+type elastigroupAzureV3RevertToSpotPtrType ElastigroupAzureV3RevertToSpotArgs
+
+func ElastigroupAzureV3RevertToSpotPtr(v *ElastigroupAzureV3RevertToSpotArgs) ElastigroupAzureV3RevertToSpotPtrInput {
+	return (*elastigroupAzureV3RevertToSpotPtrType)(v)
+}
+
+func (*elastigroupAzureV3RevertToSpotPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupAzureV3RevertToSpot)(nil)).Elem()
+}
+
+func (i *elastigroupAzureV3RevertToSpotPtrType) ToElastigroupAzureV3RevertToSpotPtrOutput() ElastigroupAzureV3RevertToSpotPtrOutput {
+	return i.ToElastigroupAzureV3RevertToSpotPtrOutputWithContext(context.Background())
+}
+
+func (i *elastigroupAzureV3RevertToSpotPtrType) ToElastigroupAzureV3RevertToSpotPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3RevertToSpotPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3RevertToSpotPtrOutput)
+}
+
+type ElastigroupAzureV3RevertToSpotOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3RevertToSpotOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3RevertToSpot)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3RevertToSpotOutput) ToElastigroupAzureV3RevertToSpotOutput() ElastigroupAzureV3RevertToSpotOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3RevertToSpotOutput) ToElastigroupAzureV3RevertToSpotOutputWithContext(ctx context.Context) ElastigroupAzureV3RevertToSpotOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3RevertToSpotOutput) ToElastigroupAzureV3RevertToSpotPtrOutput() ElastigroupAzureV3RevertToSpotPtrOutput {
+	return o.ToElastigroupAzureV3RevertToSpotPtrOutputWithContext(context.Background())
+}
+
+func (o ElastigroupAzureV3RevertToSpotOutput) ToElastigroupAzureV3RevertToSpotPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3RevertToSpotPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupAzureV3RevertToSpot) *ElastigroupAzureV3RevertToSpot {
+		return &v
+	}).(ElastigroupAzureV3RevertToSpotPtrOutput)
+}
+
+func (o ElastigroupAzureV3RevertToSpotOutput) PerformAt() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3RevertToSpot) string { return v.PerformAt }).(pulumi.StringOutput)
+}
+
+type ElastigroupAzureV3RevertToSpotPtrOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3RevertToSpotPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupAzureV3RevertToSpot)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3RevertToSpotPtrOutput) ToElastigroupAzureV3RevertToSpotPtrOutput() ElastigroupAzureV3RevertToSpotPtrOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3RevertToSpotPtrOutput) ToElastigroupAzureV3RevertToSpotPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3RevertToSpotPtrOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3RevertToSpotPtrOutput) Elem() ElastigroupAzureV3RevertToSpotOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3RevertToSpot) ElastigroupAzureV3RevertToSpot {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupAzureV3RevertToSpot
+		return ret
+	}).(ElastigroupAzureV3RevertToSpotOutput)
+}
+
+func (o ElastigroupAzureV3RevertToSpotPtrOutput) PerformAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3RevertToSpot) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PerformAt
+	}).(pulumi.StringPtrOutput)
 }
 
 type ElastigroupAzureV3ScalingDownPolicy struct {
@@ -2339,6 +3686,734 @@ func (o ElastigroupAzureV3ScalingUpPolicyDimensionArrayOutput) Index(i pulumi.In
 	}).(ElastigroupAzureV3ScalingUpPolicyDimensionOutput)
 }
 
+type ElastigroupAzureV3SchedulingTask struct {
+	Adjustment           *string `pulumi:"adjustment"`
+	AdjustmentPercentage *string `pulumi:"adjustmentPercentage"`
+	BatchSizePercentage  *string `pulumi:"batchSizePercentage"`
+	CronExpression       string  `pulumi:"cronExpression"`
+	GracePeriod          *string `pulumi:"gracePeriod"`
+	IsEnabled            bool    `pulumi:"isEnabled"`
+	ScaleMaxCapacity     *string `pulumi:"scaleMaxCapacity"`
+	ScaleMinCapacity     *string `pulumi:"scaleMinCapacity"`
+	ScaleTargetCapacity  *string `pulumi:"scaleTargetCapacity"`
+	Type                 string  `pulumi:"type"`
+}
+
+// ElastigroupAzureV3SchedulingTaskInput is an input type that accepts ElastigroupAzureV3SchedulingTaskArgs and ElastigroupAzureV3SchedulingTaskOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3SchedulingTaskInput` via:
+//
+//	ElastigroupAzureV3SchedulingTaskArgs{...}
+type ElastigroupAzureV3SchedulingTaskInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3SchedulingTaskOutput() ElastigroupAzureV3SchedulingTaskOutput
+	ToElastigroupAzureV3SchedulingTaskOutputWithContext(context.Context) ElastigroupAzureV3SchedulingTaskOutput
+}
+
+type ElastigroupAzureV3SchedulingTaskArgs struct {
+	Adjustment           pulumi.StringPtrInput `pulumi:"adjustment"`
+	AdjustmentPercentage pulumi.StringPtrInput `pulumi:"adjustmentPercentage"`
+	BatchSizePercentage  pulumi.StringPtrInput `pulumi:"batchSizePercentage"`
+	CronExpression       pulumi.StringInput    `pulumi:"cronExpression"`
+	GracePeriod          pulumi.StringPtrInput `pulumi:"gracePeriod"`
+	IsEnabled            pulumi.BoolInput      `pulumi:"isEnabled"`
+	ScaleMaxCapacity     pulumi.StringPtrInput `pulumi:"scaleMaxCapacity"`
+	ScaleMinCapacity     pulumi.StringPtrInput `pulumi:"scaleMinCapacity"`
+	ScaleTargetCapacity  pulumi.StringPtrInput `pulumi:"scaleTargetCapacity"`
+	Type                 pulumi.StringInput    `pulumi:"type"`
+}
+
+func (ElastigroupAzureV3SchedulingTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3SchedulingTask)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3SchedulingTaskArgs) ToElastigroupAzureV3SchedulingTaskOutput() ElastigroupAzureV3SchedulingTaskOutput {
+	return i.ToElastigroupAzureV3SchedulingTaskOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3SchedulingTaskArgs) ToElastigroupAzureV3SchedulingTaskOutputWithContext(ctx context.Context) ElastigroupAzureV3SchedulingTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3SchedulingTaskOutput)
+}
+
+// ElastigroupAzureV3SchedulingTaskArrayInput is an input type that accepts ElastigroupAzureV3SchedulingTaskArray and ElastigroupAzureV3SchedulingTaskArrayOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3SchedulingTaskArrayInput` via:
+//
+//	ElastigroupAzureV3SchedulingTaskArray{ ElastigroupAzureV3SchedulingTaskArgs{...} }
+type ElastigroupAzureV3SchedulingTaskArrayInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3SchedulingTaskArrayOutput() ElastigroupAzureV3SchedulingTaskArrayOutput
+	ToElastigroupAzureV3SchedulingTaskArrayOutputWithContext(context.Context) ElastigroupAzureV3SchedulingTaskArrayOutput
+}
+
+type ElastigroupAzureV3SchedulingTaskArray []ElastigroupAzureV3SchedulingTaskInput
+
+func (ElastigroupAzureV3SchedulingTaskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3SchedulingTask)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3SchedulingTaskArray) ToElastigroupAzureV3SchedulingTaskArrayOutput() ElastigroupAzureV3SchedulingTaskArrayOutput {
+	return i.ToElastigroupAzureV3SchedulingTaskArrayOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3SchedulingTaskArray) ToElastigroupAzureV3SchedulingTaskArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3SchedulingTaskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3SchedulingTaskArrayOutput)
+}
+
+type ElastigroupAzureV3SchedulingTaskOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3SchedulingTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3SchedulingTask)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3SchedulingTaskOutput) ToElastigroupAzureV3SchedulingTaskOutput() ElastigroupAzureV3SchedulingTaskOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3SchedulingTaskOutput) ToElastigroupAzureV3SchedulingTaskOutputWithContext(ctx context.Context) ElastigroupAzureV3SchedulingTaskOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3SchedulingTaskOutput) Adjustment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3SchedulingTask) *string { return v.Adjustment }).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupAzureV3SchedulingTaskOutput) AdjustmentPercentage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3SchedulingTask) *string { return v.AdjustmentPercentage }).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupAzureV3SchedulingTaskOutput) BatchSizePercentage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3SchedulingTask) *string { return v.BatchSizePercentage }).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupAzureV3SchedulingTaskOutput) CronExpression() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3SchedulingTask) string { return v.CronExpression }).(pulumi.StringOutput)
+}
+
+func (o ElastigroupAzureV3SchedulingTaskOutput) GracePeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3SchedulingTask) *string { return v.GracePeriod }).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupAzureV3SchedulingTaskOutput) IsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3SchedulingTask) bool { return v.IsEnabled }).(pulumi.BoolOutput)
+}
+
+func (o ElastigroupAzureV3SchedulingTaskOutput) ScaleMaxCapacity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3SchedulingTask) *string { return v.ScaleMaxCapacity }).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupAzureV3SchedulingTaskOutput) ScaleMinCapacity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3SchedulingTask) *string { return v.ScaleMinCapacity }).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupAzureV3SchedulingTaskOutput) ScaleTargetCapacity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3SchedulingTask) *string { return v.ScaleTargetCapacity }).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupAzureV3SchedulingTaskOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3SchedulingTask) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ElastigroupAzureV3SchedulingTaskArrayOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3SchedulingTaskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3SchedulingTask)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3SchedulingTaskArrayOutput) ToElastigroupAzureV3SchedulingTaskArrayOutput() ElastigroupAzureV3SchedulingTaskArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3SchedulingTaskArrayOutput) ToElastigroupAzureV3SchedulingTaskArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3SchedulingTaskArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3SchedulingTaskArrayOutput) Index(i pulumi.IntInput) ElastigroupAzureV3SchedulingTaskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupAzureV3SchedulingTask {
+		return vs[0].([]ElastigroupAzureV3SchedulingTask)[vs[1].(int)]
+	}).(ElastigroupAzureV3SchedulingTaskOutput)
+}
+
+type ElastigroupAzureV3Secret struct {
+	SourceVaults      []ElastigroupAzureV3SecretSourceVault      `pulumi:"sourceVaults"`
+	VaultCertificates []ElastigroupAzureV3SecretVaultCertificate `pulumi:"vaultCertificates"`
+}
+
+// ElastigroupAzureV3SecretInput is an input type that accepts ElastigroupAzureV3SecretArgs and ElastigroupAzureV3SecretOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3SecretInput` via:
+//
+//	ElastigroupAzureV3SecretArgs{...}
+type ElastigroupAzureV3SecretInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3SecretOutput() ElastigroupAzureV3SecretOutput
+	ToElastigroupAzureV3SecretOutputWithContext(context.Context) ElastigroupAzureV3SecretOutput
+}
+
+type ElastigroupAzureV3SecretArgs struct {
+	SourceVaults      ElastigroupAzureV3SecretSourceVaultArrayInput      `pulumi:"sourceVaults"`
+	VaultCertificates ElastigroupAzureV3SecretVaultCertificateArrayInput `pulumi:"vaultCertificates"`
+}
+
+func (ElastigroupAzureV3SecretArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3Secret)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3SecretArgs) ToElastigroupAzureV3SecretOutput() ElastigroupAzureV3SecretOutput {
+	return i.ToElastigroupAzureV3SecretOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3SecretArgs) ToElastigroupAzureV3SecretOutputWithContext(ctx context.Context) ElastigroupAzureV3SecretOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3SecretOutput)
+}
+
+// ElastigroupAzureV3SecretArrayInput is an input type that accepts ElastigroupAzureV3SecretArray and ElastigroupAzureV3SecretArrayOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3SecretArrayInput` via:
+//
+//	ElastigroupAzureV3SecretArray{ ElastigroupAzureV3SecretArgs{...} }
+type ElastigroupAzureV3SecretArrayInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3SecretArrayOutput() ElastigroupAzureV3SecretArrayOutput
+	ToElastigroupAzureV3SecretArrayOutputWithContext(context.Context) ElastigroupAzureV3SecretArrayOutput
+}
+
+type ElastigroupAzureV3SecretArray []ElastigroupAzureV3SecretInput
+
+func (ElastigroupAzureV3SecretArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3Secret)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3SecretArray) ToElastigroupAzureV3SecretArrayOutput() ElastigroupAzureV3SecretArrayOutput {
+	return i.ToElastigroupAzureV3SecretArrayOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3SecretArray) ToElastigroupAzureV3SecretArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3SecretArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3SecretArrayOutput)
+}
+
+type ElastigroupAzureV3SecretOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3SecretOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3Secret)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3SecretOutput) ToElastigroupAzureV3SecretOutput() ElastigroupAzureV3SecretOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3SecretOutput) ToElastigroupAzureV3SecretOutputWithContext(ctx context.Context) ElastigroupAzureV3SecretOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3SecretOutput) SourceVaults() ElastigroupAzureV3SecretSourceVaultArrayOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3Secret) []ElastigroupAzureV3SecretSourceVault { return v.SourceVaults }).(ElastigroupAzureV3SecretSourceVaultArrayOutput)
+}
+
+func (o ElastigroupAzureV3SecretOutput) VaultCertificates() ElastigroupAzureV3SecretVaultCertificateArrayOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3Secret) []ElastigroupAzureV3SecretVaultCertificate {
+		return v.VaultCertificates
+	}).(ElastigroupAzureV3SecretVaultCertificateArrayOutput)
+}
+
+type ElastigroupAzureV3SecretArrayOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3SecretArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3Secret)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3SecretArrayOutput) ToElastigroupAzureV3SecretArrayOutput() ElastigroupAzureV3SecretArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3SecretArrayOutput) ToElastigroupAzureV3SecretArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3SecretArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3SecretArrayOutput) Index(i pulumi.IntInput) ElastigroupAzureV3SecretOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupAzureV3Secret {
+		return vs[0].([]ElastigroupAzureV3Secret)[vs[1].(int)]
+	}).(ElastigroupAzureV3SecretOutput)
+}
+
+type ElastigroupAzureV3SecretSourceVault struct {
+	Name              string `pulumi:"name"`
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+}
+
+// ElastigroupAzureV3SecretSourceVaultInput is an input type that accepts ElastigroupAzureV3SecretSourceVaultArgs and ElastigroupAzureV3SecretSourceVaultOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3SecretSourceVaultInput` via:
+//
+//	ElastigroupAzureV3SecretSourceVaultArgs{...}
+type ElastigroupAzureV3SecretSourceVaultInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3SecretSourceVaultOutput() ElastigroupAzureV3SecretSourceVaultOutput
+	ToElastigroupAzureV3SecretSourceVaultOutputWithContext(context.Context) ElastigroupAzureV3SecretSourceVaultOutput
+}
+
+type ElastigroupAzureV3SecretSourceVaultArgs struct {
+	Name              pulumi.StringInput `pulumi:"name"`
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (ElastigroupAzureV3SecretSourceVaultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3SecretSourceVault)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3SecretSourceVaultArgs) ToElastigroupAzureV3SecretSourceVaultOutput() ElastigroupAzureV3SecretSourceVaultOutput {
+	return i.ToElastigroupAzureV3SecretSourceVaultOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3SecretSourceVaultArgs) ToElastigroupAzureV3SecretSourceVaultOutputWithContext(ctx context.Context) ElastigroupAzureV3SecretSourceVaultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3SecretSourceVaultOutput)
+}
+
+// ElastigroupAzureV3SecretSourceVaultArrayInput is an input type that accepts ElastigroupAzureV3SecretSourceVaultArray and ElastigroupAzureV3SecretSourceVaultArrayOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3SecretSourceVaultArrayInput` via:
+//
+//	ElastigroupAzureV3SecretSourceVaultArray{ ElastigroupAzureV3SecretSourceVaultArgs{...} }
+type ElastigroupAzureV3SecretSourceVaultArrayInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3SecretSourceVaultArrayOutput() ElastigroupAzureV3SecretSourceVaultArrayOutput
+	ToElastigroupAzureV3SecretSourceVaultArrayOutputWithContext(context.Context) ElastigroupAzureV3SecretSourceVaultArrayOutput
+}
+
+type ElastigroupAzureV3SecretSourceVaultArray []ElastigroupAzureV3SecretSourceVaultInput
+
+func (ElastigroupAzureV3SecretSourceVaultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3SecretSourceVault)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3SecretSourceVaultArray) ToElastigroupAzureV3SecretSourceVaultArrayOutput() ElastigroupAzureV3SecretSourceVaultArrayOutput {
+	return i.ToElastigroupAzureV3SecretSourceVaultArrayOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3SecretSourceVaultArray) ToElastigroupAzureV3SecretSourceVaultArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3SecretSourceVaultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3SecretSourceVaultArrayOutput)
+}
+
+type ElastigroupAzureV3SecretSourceVaultOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3SecretSourceVaultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3SecretSourceVault)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3SecretSourceVaultOutput) ToElastigroupAzureV3SecretSourceVaultOutput() ElastigroupAzureV3SecretSourceVaultOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3SecretSourceVaultOutput) ToElastigroupAzureV3SecretSourceVaultOutputWithContext(ctx context.Context) ElastigroupAzureV3SecretSourceVaultOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3SecretSourceVaultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3SecretSourceVault) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ElastigroupAzureV3SecretSourceVaultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3SecretSourceVault) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+type ElastigroupAzureV3SecretSourceVaultArrayOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3SecretSourceVaultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3SecretSourceVault)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3SecretSourceVaultArrayOutput) ToElastigroupAzureV3SecretSourceVaultArrayOutput() ElastigroupAzureV3SecretSourceVaultArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3SecretSourceVaultArrayOutput) ToElastigroupAzureV3SecretSourceVaultArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3SecretSourceVaultArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3SecretSourceVaultArrayOutput) Index(i pulumi.IntInput) ElastigroupAzureV3SecretSourceVaultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupAzureV3SecretSourceVault {
+		return vs[0].([]ElastigroupAzureV3SecretSourceVault)[vs[1].(int)]
+	}).(ElastigroupAzureV3SecretSourceVaultOutput)
+}
+
+type ElastigroupAzureV3SecretVaultCertificate struct {
+	CertificateStore string `pulumi:"certificateStore"`
+	CertificateUrl   string `pulumi:"certificateUrl"`
+}
+
+// ElastigroupAzureV3SecretVaultCertificateInput is an input type that accepts ElastigroupAzureV3SecretVaultCertificateArgs and ElastigroupAzureV3SecretVaultCertificateOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3SecretVaultCertificateInput` via:
+//
+//	ElastigroupAzureV3SecretVaultCertificateArgs{...}
+type ElastigroupAzureV3SecretVaultCertificateInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3SecretVaultCertificateOutput() ElastigroupAzureV3SecretVaultCertificateOutput
+	ToElastigroupAzureV3SecretVaultCertificateOutputWithContext(context.Context) ElastigroupAzureV3SecretVaultCertificateOutput
+}
+
+type ElastigroupAzureV3SecretVaultCertificateArgs struct {
+	CertificateStore pulumi.StringInput `pulumi:"certificateStore"`
+	CertificateUrl   pulumi.StringInput `pulumi:"certificateUrl"`
+}
+
+func (ElastigroupAzureV3SecretVaultCertificateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3SecretVaultCertificate)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3SecretVaultCertificateArgs) ToElastigroupAzureV3SecretVaultCertificateOutput() ElastigroupAzureV3SecretVaultCertificateOutput {
+	return i.ToElastigroupAzureV3SecretVaultCertificateOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3SecretVaultCertificateArgs) ToElastigroupAzureV3SecretVaultCertificateOutputWithContext(ctx context.Context) ElastigroupAzureV3SecretVaultCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3SecretVaultCertificateOutput)
+}
+
+// ElastigroupAzureV3SecretVaultCertificateArrayInput is an input type that accepts ElastigroupAzureV3SecretVaultCertificateArray and ElastigroupAzureV3SecretVaultCertificateArrayOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3SecretVaultCertificateArrayInput` via:
+//
+//	ElastigroupAzureV3SecretVaultCertificateArray{ ElastigroupAzureV3SecretVaultCertificateArgs{...} }
+type ElastigroupAzureV3SecretVaultCertificateArrayInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3SecretVaultCertificateArrayOutput() ElastigroupAzureV3SecretVaultCertificateArrayOutput
+	ToElastigroupAzureV3SecretVaultCertificateArrayOutputWithContext(context.Context) ElastigroupAzureV3SecretVaultCertificateArrayOutput
+}
+
+type ElastigroupAzureV3SecretVaultCertificateArray []ElastigroupAzureV3SecretVaultCertificateInput
+
+func (ElastigroupAzureV3SecretVaultCertificateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3SecretVaultCertificate)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3SecretVaultCertificateArray) ToElastigroupAzureV3SecretVaultCertificateArrayOutput() ElastigroupAzureV3SecretVaultCertificateArrayOutput {
+	return i.ToElastigroupAzureV3SecretVaultCertificateArrayOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3SecretVaultCertificateArray) ToElastigroupAzureV3SecretVaultCertificateArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3SecretVaultCertificateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3SecretVaultCertificateArrayOutput)
+}
+
+type ElastigroupAzureV3SecretVaultCertificateOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3SecretVaultCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3SecretVaultCertificate)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3SecretVaultCertificateOutput) ToElastigroupAzureV3SecretVaultCertificateOutput() ElastigroupAzureV3SecretVaultCertificateOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3SecretVaultCertificateOutput) ToElastigroupAzureV3SecretVaultCertificateOutputWithContext(ctx context.Context) ElastigroupAzureV3SecretVaultCertificateOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3SecretVaultCertificateOutput) CertificateStore() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3SecretVaultCertificate) string { return v.CertificateStore }).(pulumi.StringOutput)
+}
+
+func (o ElastigroupAzureV3SecretVaultCertificateOutput) CertificateUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3SecretVaultCertificate) string { return v.CertificateUrl }).(pulumi.StringOutput)
+}
+
+type ElastigroupAzureV3SecretVaultCertificateArrayOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3SecretVaultCertificateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3SecretVaultCertificate)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3SecretVaultCertificateArrayOutput) ToElastigroupAzureV3SecretVaultCertificateArrayOutput() ElastigroupAzureV3SecretVaultCertificateArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3SecretVaultCertificateArrayOutput) ToElastigroupAzureV3SecretVaultCertificateArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3SecretVaultCertificateArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3SecretVaultCertificateArrayOutput) Index(i pulumi.IntInput) ElastigroupAzureV3SecretVaultCertificateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupAzureV3SecretVaultCertificate {
+		return vs[0].([]ElastigroupAzureV3SecretVaultCertificate)[vs[1].(int)]
+	}).(ElastigroupAzureV3SecretVaultCertificateOutput)
+}
+
+type ElastigroupAzureV3Security struct {
+	ConfidentialOsDiskEncryption *bool   `pulumi:"confidentialOsDiskEncryption"`
+	SecureBootEnabled            *bool   `pulumi:"secureBootEnabled"`
+	SecurityType                 *string `pulumi:"securityType"`
+	VtpmEnabled                  *bool   `pulumi:"vtpmEnabled"`
+}
+
+// ElastigroupAzureV3SecurityInput is an input type that accepts ElastigroupAzureV3SecurityArgs and ElastigroupAzureV3SecurityOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3SecurityInput` via:
+//
+//	ElastigroupAzureV3SecurityArgs{...}
+type ElastigroupAzureV3SecurityInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3SecurityOutput() ElastigroupAzureV3SecurityOutput
+	ToElastigroupAzureV3SecurityOutputWithContext(context.Context) ElastigroupAzureV3SecurityOutput
+}
+
+type ElastigroupAzureV3SecurityArgs struct {
+	ConfidentialOsDiskEncryption pulumi.BoolPtrInput   `pulumi:"confidentialOsDiskEncryption"`
+	SecureBootEnabled            pulumi.BoolPtrInput   `pulumi:"secureBootEnabled"`
+	SecurityType                 pulumi.StringPtrInput `pulumi:"securityType"`
+	VtpmEnabled                  pulumi.BoolPtrInput   `pulumi:"vtpmEnabled"`
+}
+
+func (ElastigroupAzureV3SecurityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3Security)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3SecurityArgs) ToElastigroupAzureV3SecurityOutput() ElastigroupAzureV3SecurityOutput {
+	return i.ToElastigroupAzureV3SecurityOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3SecurityArgs) ToElastigroupAzureV3SecurityOutputWithContext(ctx context.Context) ElastigroupAzureV3SecurityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3SecurityOutput)
+}
+
+func (i ElastigroupAzureV3SecurityArgs) ToElastigroupAzureV3SecurityPtrOutput() ElastigroupAzureV3SecurityPtrOutput {
+	return i.ToElastigroupAzureV3SecurityPtrOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3SecurityArgs) ToElastigroupAzureV3SecurityPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3SecurityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3SecurityOutput).ToElastigroupAzureV3SecurityPtrOutputWithContext(ctx)
+}
+
+// ElastigroupAzureV3SecurityPtrInput is an input type that accepts ElastigroupAzureV3SecurityArgs, ElastigroupAzureV3SecurityPtr and ElastigroupAzureV3SecurityPtrOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3SecurityPtrInput` via:
+//
+//	        ElastigroupAzureV3SecurityArgs{...}
+//
+//	or:
+//
+//	        nil
+type ElastigroupAzureV3SecurityPtrInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3SecurityPtrOutput() ElastigroupAzureV3SecurityPtrOutput
+	ToElastigroupAzureV3SecurityPtrOutputWithContext(context.Context) ElastigroupAzureV3SecurityPtrOutput
+}
+
+type elastigroupAzureV3SecurityPtrType ElastigroupAzureV3SecurityArgs
+
+func ElastigroupAzureV3SecurityPtr(v *ElastigroupAzureV3SecurityArgs) ElastigroupAzureV3SecurityPtrInput {
+	return (*elastigroupAzureV3SecurityPtrType)(v)
+}
+
+func (*elastigroupAzureV3SecurityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupAzureV3Security)(nil)).Elem()
+}
+
+func (i *elastigroupAzureV3SecurityPtrType) ToElastigroupAzureV3SecurityPtrOutput() ElastigroupAzureV3SecurityPtrOutput {
+	return i.ToElastigroupAzureV3SecurityPtrOutputWithContext(context.Background())
+}
+
+func (i *elastigroupAzureV3SecurityPtrType) ToElastigroupAzureV3SecurityPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3SecurityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3SecurityPtrOutput)
+}
+
+type ElastigroupAzureV3SecurityOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3SecurityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3Security)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3SecurityOutput) ToElastigroupAzureV3SecurityOutput() ElastigroupAzureV3SecurityOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3SecurityOutput) ToElastigroupAzureV3SecurityOutputWithContext(ctx context.Context) ElastigroupAzureV3SecurityOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3SecurityOutput) ToElastigroupAzureV3SecurityPtrOutput() ElastigroupAzureV3SecurityPtrOutput {
+	return o.ToElastigroupAzureV3SecurityPtrOutputWithContext(context.Background())
+}
+
+func (o ElastigroupAzureV3SecurityOutput) ToElastigroupAzureV3SecurityPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3SecurityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupAzureV3Security) *ElastigroupAzureV3Security {
+		return &v
+	}).(ElastigroupAzureV3SecurityPtrOutput)
+}
+
+func (o ElastigroupAzureV3SecurityOutput) ConfidentialOsDiskEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3Security) *bool { return v.ConfidentialOsDiskEncryption }).(pulumi.BoolPtrOutput)
+}
+
+func (o ElastigroupAzureV3SecurityOutput) SecureBootEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3Security) *bool { return v.SecureBootEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o ElastigroupAzureV3SecurityOutput) SecurityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3Security) *string { return v.SecurityType }).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupAzureV3SecurityOutput) VtpmEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3Security) *bool { return v.VtpmEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type ElastigroupAzureV3SecurityPtrOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3SecurityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupAzureV3Security)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3SecurityPtrOutput) ToElastigroupAzureV3SecurityPtrOutput() ElastigroupAzureV3SecurityPtrOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3SecurityPtrOutput) ToElastigroupAzureV3SecurityPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3SecurityPtrOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3SecurityPtrOutput) Elem() ElastigroupAzureV3SecurityOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3Security) ElastigroupAzureV3Security {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupAzureV3Security
+		return ret
+	}).(ElastigroupAzureV3SecurityOutput)
+}
+
+func (o ElastigroupAzureV3SecurityPtrOutput) ConfidentialOsDiskEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3Security) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ConfidentialOsDiskEncryption
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ElastigroupAzureV3SecurityPtrOutput) SecureBootEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3Security) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SecureBootEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ElastigroupAzureV3SecurityPtrOutput) SecurityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3Security) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupAzureV3SecurityPtrOutput) VtpmEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3Security) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.VtpmEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ElastigroupAzureV3Signal struct {
+	Timeout int    `pulumi:"timeout"`
+	Type    string `pulumi:"type"`
+}
+
+// ElastigroupAzureV3SignalInput is an input type that accepts ElastigroupAzureV3SignalArgs and ElastigroupAzureV3SignalOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3SignalInput` via:
+//
+//	ElastigroupAzureV3SignalArgs{...}
+type ElastigroupAzureV3SignalInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3SignalOutput() ElastigroupAzureV3SignalOutput
+	ToElastigroupAzureV3SignalOutputWithContext(context.Context) ElastigroupAzureV3SignalOutput
+}
+
+type ElastigroupAzureV3SignalArgs struct {
+	Timeout pulumi.IntInput    `pulumi:"timeout"`
+	Type    pulumi.StringInput `pulumi:"type"`
+}
+
+func (ElastigroupAzureV3SignalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3Signal)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3SignalArgs) ToElastigroupAzureV3SignalOutput() ElastigroupAzureV3SignalOutput {
+	return i.ToElastigroupAzureV3SignalOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3SignalArgs) ToElastigroupAzureV3SignalOutputWithContext(ctx context.Context) ElastigroupAzureV3SignalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3SignalOutput)
+}
+
+// ElastigroupAzureV3SignalArrayInput is an input type that accepts ElastigroupAzureV3SignalArray and ElastigroupAzureV3SignalArrayOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3SignalArrayInput` via:
+//
+//	ElastigroupAzureV3SignalArray{ ElastigroupAzureV3SignalArgs{...} }
+type ElastigroupAzureV3SignalArrayInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3SignalArrayOutput() ElastigroupAzureV3SignalArrayOutput
+	ToElastigroupAzureV3SignalArrayOutputWithContext(context.Context) ElastigroupAzureV3SignalArrayOutput
+}
+
+type ElastigroupAzureV3SignalArray []ElastigroupAzureV3SignalInput
+
+func (ElastigroupAzureV3SignalArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3Signal)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3SignalArray) ToElastigroupAzureV3SignalArrayOutput() ElastigroupAzureV3SignalArrayOutput {
+	return i.ToElastigroupAzureV3SignalArrayOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3SignalArray) ToElastigroupAzureV3SignalArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3SignalArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3SignalArrayOutput)
+}
+
+type ElastigroupAzureV3SignalOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3SignalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3Signal)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3SignalOutput) ToElastigroupAzureV3SignalOutput() ElastigroupAzureV3SignalOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3SignalOutput) ToElastigroupAzureV3SignalOutputWithContext(ctx context.Context) ElastigroupAzureV3SignalOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3SignalOutput) Timeout() pulumi.IntOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3Signal) int { return v.Timeout }).(pulumi.IntOutput)
+}
+
+func (o ElastigroupAzureV3SignalOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3Signal) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ElastigroupAzureV3SignalArrayOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3SignalArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3Signal)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3SignalArrayOutput) ToElastigroupAzureV3SignalArrayOutput() ElastigroupAzureV3SignalArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3SignalArrayOutput) ToElastigroupAzureV3SignalArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3SignalArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3SignalArrayOutput) Index(i pulumi.IntInput) ElastigroupAzureV3SignalOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupAzureV3Signal {
+		return vs[0].([]ElastigroupAzureV3Signal)[vs[1].(int)]
+	}).(ElastigroupAzureV3SignalOutput)
+}
+
 type ElastigroupAzureV3Tag struct {
 	Key   string `pulumi:"key"`
 	Value string `pulumi:"value"`
@@ -2440,8 +4515,9 @@ func (o ElastigroupAzureV3TagArrayOutput) Index(i pulumi.IntInput) ElastigroupAz
 }
 
 type ElastigroupAzureV3VmSizes struct {
-	OdSizes   []string `pulumi:"odSizes"`
-	SpotSizes []string `pulumi:"spotSizes"`
+	OdSizes            []string `pulumi:"odSizes"`
+	PreferredSpotSizes []string `pulumi:"preferredSpotSizes"`
+	SpotSizes          []string `pulumi:"spotSizes"`
 }
 
 // ElastigroupAzureV3VmSizesInput is an input type that accepts ElastigroupAzureV3VmSizesArgs and ElastigroupAzureV3VmSizesOutput values.
@@ -2456,8 +4532,9 @@ type ElastigroupAzureV3VmSizesInput interface {
 }
 
 type ElastigroupAzureV3VmSizesArgs struct {
-	OdSizes   pulumi.StringArrayInput `pulumi:"odSizes"`
-	SpotSizes pulumi.StringArrayInput `pulumi:"spotSizes"`
+	OdSizes            pulumi.StringArrayInput `pulumi:"odSizes"`
+	PreferredSpotSizes pulumi.StringArrayInput `pulumi:"preferredSpotSizes"`
+	SpotSizes          pulumi.StringArrayInput `pulumi:"spotSizes"`
 }
 
 func (ElastigroupAzureV3VmSizesArgs) ElementType() reflect.Type {
@@ -2541,6 +4618,10 @@ func (o ElastigroupAzureV3VmSizesOutput) OdSizes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ElastigroupAzureV3VmSizes) []string { return v.OdSizes }).(pulumi.StringArrayOutput)
 }
 
+func (o ElastigroupAzureV3VmSizesOutput) PreferredSpotSizes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3VmSizes) []string { return v.PreferredSpotSizes }).(pulumi.StringArrayOutput)
+}
+
 func (o ElastigroupAzureV3VmSizesOutput) SpotSizes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ElastigroupAzureV3VmSizes) []string { return v.SpotSizes }).(pulumi.StringArrayOutput)
 }
@@ -2575,6 +4656,15 @@ func (o ElastigroupAzureV3VmSizesPtrOutput) OdSizes() pulumi.StringArrayOutput {
 			return nil
 		}
 		return v.OdSizes
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o ElastigroupAzureV3VmSizesPtrOutput) PreferredSpotSizes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3VmSizes) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PreferredSpotSizes
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -8995,10 +11085,20 @@ func (o StatefulNodeAzureVmSizesPtrOutput) SpotSizes() pulumi.StringArrayOutput 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DataIntegrationS3Input)(nil)).Elem(), DataIntegrationS3Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataIntegrationS3PtrInput)(nil)).Elem(), DataIntegrationS3Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3BootDiagnosticInput)(nil)).Elem(), ElastigroupAzureV3BootDiagnosticArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3BootDiagnosticArrayInput)(nil)).Elem(), ElastigroupAzureV3BootDiagnosticArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3CapacityReservationInput)(nil)).Elem(), ElastigroupAzureV3CapacityReservationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3CapacityReservationPtrInput)(nil)).Elem(), ElastigroupAzureV3CapacityReservationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3CapacityReservationCapacityReservationGroupsInput)(nil)).Elem(), ElastigroupAzureV3CapacityReservationCapacityReservationGroupsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrInput)(nil)).Elem(), ElastigroupAzureV3CapacityReservationCapacityReservationGroupsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3DataDiskInput)(nil)).Elem(), ElastigroupAzureV3DataDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3DataDiskArrayInput)(nil)).Elem(), ElastigroupAzureV3DataDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ExtensionInput)(nil)).Elem(), ElastigroupAzureV3ExtensionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ExtensionArrayInput)(nil)).Elem(), ElastigroupAzureV3ExtensionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultInput)(nil)).Elem(), ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrInput)(nil)).Elem(), ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3HealthInput)(nil)).Elem(), ElastigroupAzureV3HealthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3HealthPtrInput)(nil)).Elem(), ElastigroupAzureV3HealthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ImageInput)(nil)).Elem(), ElastigroupAzureV3ImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ImageArrayInput)(nil)).Elem(), ElastigroupAzureV3ImageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ImageCustomInput)(nil)).Elem(), ElastigroupAzureV3ImageCustomArgs{})
@@ -9007,6 +11107,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ImageGalleryImageArrayInput)(nil)).Elem(), ElastigroupAzureV3ImageGalleryImageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ImageMarketplaceInput)(nil)).Elem(), ElastigroupAzureV3ImageMarketplaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ImageMarketplaceArrayInput)(nil)).Elem(), ElastigroupAzureV3ImageMarketplaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3LoadBalancerInput)(nil)).Elem(), ElastigroupAzureV3LoadBalancerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3LoadBalancerArrayInput)(nil)).Elem(), ElastigroupAzureV3LoadBalancerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3LoginInput)(nil)).Elem(), ElastigroupAzureV3LoginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3LoginPtrInput)(nil)).Elem(), ElastigroupAzureV3LoginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ManagedServiceIdentityInput)(nil)).Elem(), ElastigroupAzureV3ManagedServiceIdentityArgs{})
@@ -9019,6 +11121,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayInput)(nil)).Elem(), ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupInput)(nil)).Elem(), ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayInput)(nil)).Elem(), ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupInput)(nil)).Elem(), ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArrayInput)(nil)).Elem(), ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3OsDiskInput)(nil)).Elem(), ElastigroupAzureV3OsDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3OsDiskPtrInput)(nil)).Elem(), ElastigroupAzureV3OsDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ProximityPlacementGroupInput)(nil)).Elem(), ElastigroupAzureV3ProximityPlacementGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ProximityPlacementGroupArrayInput)(nil)).Elem(), ElastigroupAzureV3ProximityPlacementGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3RevertToSpotInput)(nil)).Elem(), ElastigroupAzureV3RevertToSpotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3RevertToSpotPtrInput)(nil)).Elem(), ElastigroupAzureV3RevertToSpotArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ScalingDownPolicyInput)(nil)).Elem(), ElastigroupAzureV3ScalingDownPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ScalingDownPolicyArrayInput)(nil)).Elem(), ElastigroupAzureV3ScalingDownPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ScalingDownPolicyActionInput)(nil)).Elem(), ElastigroupAzureV3ScalingDownPolicyActionArgs{})
@@ -9029,6 +11139,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ScalingUpPolicyActionInput)(nil)).Elem(), ElastigroupAzureV3ScalingUpPolicyActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ScalingUpPolicyDimensionInput)(nil)).Elem(), ElastigroupAzureV3ScalingUpPolicyDimensionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ScalingUpPolicyDimensionArrayInput)(nil)).Elem(), ElastigroupAzureV3ScalingUpPolicyDimensionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3SchedulingTaskInput)(nil)).Elem(), ElastigroupAzureV3SchedulingTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3SchedulingTaskArrayInput)(nil)).Elem(), ElastigroupAzureV3SchedulingTaskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3SecretInput)(nil)).Elem(), ElastigroupAzureV3SecretArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3SecretArrayInput)(nil)).Elem(), ElastigroupAzureV3SecretArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3SecretSourceVaultInput)(nil)).Elem(), ElastigroupAzureV3SecretSourceVaultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3SecretSourceVaultArrayInput)(nil)).Elem(), ElastigroupAzureV3SecretSourceVaultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3SecretVaultCertificateInput)(nil)).Elem(), ElastigroupAzureV3SecretVaultCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3SecretVaultCertificateArrayInput)(nil)).Elem(), ElastigroupAzureV3SecretVaultCertificateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3SecurityInput)(nil)).Elem(), ElastigroupAzureV3SecurityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3SecurityPtrInput)(nil)).Elem(), ElastigroupAzureV3SecurityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3SignalInput)(nil)).Elem(), ElastigroupAzureV3SignalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3SignalArrayInput)(nil)).Elem(), ElastigroupAzureV3SignalArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3TagInput)(nil)).Elem(), ElastigroupAzureV3TagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3TagArrayInput)(nil)).Elem(), ElastigroupAzureV3TagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3VmSizesInput)(nil)).Elem(), ElastigroupAzureV3VmSizesArgs{})
@@ -9139,10 +11261,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureVmSizesPtrInput)(nil)).Elem(), StatefulNodeAzureVmSizesArgs{})
 	pulumi.RegisterOutputType(DataIntegrationS3Output{})
 	pulumi.RegisterOutputType(DataIntegrationS3PtrOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3BootDiagnosticOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3BootDiagnosticArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3CapacityReservationOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3CapacityReservationPtrOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3CapacityReservationCapacityReservationGroupsOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3CapacityReservationCapacityReservationGroupsPtrOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3DataDiskOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3DataDiskArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3ExtensionOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3ExtensionArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultPtrOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3HealthOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3HealthPtrOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3ImageOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3ImageArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3ImageCustomOutput{})
@@ -9151,6 +11283,8 @@ func init() {
 	pulumi.RegisterOutputType(ElastigroupAzureV3ImageGalleryImageArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3ImageMarketplaceOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3ImageMarketplaceArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3LoadBalancerOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3LoadBalancerArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3LoginOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3LoginPtrOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3ManagedServiceIdentityOutput{})
@@ -9163,6 +11297,14 @@ func init() {
 	pulumi.RegisterOutputType(ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3OsDiskOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3OsDiskPtrOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3ProximityPlacementGroupOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3ProximityPlacementGroupArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3RevertToSpotOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3RevertToSpotPtrOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3ScalingDownPolicyOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3ScalingDownPolicyArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3ScalingDownPolicyActionOutput{})
@@ -9173,6 +11315,18 @@ func init() {
 	pulumi.RegisterOutputType(ElastigroupAzureV3ScalingUpPolicyActionOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3ScalingUpPolicyDimensionOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3ScalingUpPolicyDimensionArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3SchedulingTaskOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3SchedulingTaskArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3SecretOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3SecretArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3SecretSourceVaultOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3SecretSourceVaultArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3SecretVaultCertificateOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3SecretVaultCertificateArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3SecurityOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3SecurityPtrOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3SignalOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3SignalArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3TagOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3TagArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3VmSizesOutput{})

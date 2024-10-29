@@ -14,15 +14,19 @@ namespace Pulumi.SpotInst.Outputs
     public sealed class ElastigroupAzureV3VmSizes
     {
         public readonly ImmutableArray<string> OdSizes;
+        public readonly ImmutableArray<string> PreferredSpotSizes;
         public readonly ImmutableArray<string> SpotSizes;
 
         [OutputConstructor]
         private ElastigroupAzureV3VmSizes(
             ImmutableArray<string> odSizes,
 
+            ImmutableArray<string> preferredSpotSizes,
+
             ImmutableArray<string> spotSizes)
         {
             OdSizes = odSizes;
+            PreferredSpotSizes = preferredSpotSizes;
             SpotSizes = spotSizes;
         }
     }

@@ -13,6 +13,30 @@ export interface DataIntegrationS3 {
     subdir?: string;
 }
 
+export interface ElastigroupAzureV3BootDiagnostic {
+    isEnabled: boolean;
+    storageUrl: string;
+    type: string;
+}
+
+export interface ElastigroupAzureV3CapacityReservation {
+    capacityReservationGroups?: outputs.ElastigroupAzureV3CapacityReservationCapacityReservationGroups;
+    shouldUtilize: boolean;
+    utilizationStrategy: string;
+}
+
+export interface ElastigroupAzureV3CapacityReservationCapacityReservationGroups {
+    crgName: string;
+    crgResourceGroupName: string;
+    crgShouldPrioritize?: boolean;
+}
+
+export interface ElastigroupAzureV3DataDisk {
+    lun: number;
+    sizeGb: number;
+    type: string;
+}
+
 export interface ElastigroupAzureV3Extension {
     apiVersion: string;
     enableAutomaticUpgrade?: boolean;
@@ -28,6 +52,13 @@ export interface ElastigroupAzureV3Extension {
 export interface ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVault {
     secretUrl: string;
     sourceVault: string;
+}
+
+export interface ElastigroupAzureV3Health {
+    autoHealing?: boolean;
+    gracePeriod?: number;
+    healthCheckTypes?: string[];
+    unhealthyDuration?: number;
 }
 
 export interface ElastigroupAzureV3Image {
@@ -56,6 +87,14 @@ export interface ElastigroupAzureV3ImageMarketplace {
     version: string;
 }
 
+export interface ElastigroupAzureV3LoadBalancer {
+    backendPoolNames?: string[];
+    name: string;
+    resourceGroupName: string;
+    sku?: string;
+    type: string;
+}
+
 export interface ElastigroupAzureV3Login {
     password?: string;
     sshPublicKey?: string;
@@ -77,7 +116,11 @@ export interface ElastigroupAzureV3NetworkNetworkInterface {
     additionalIpConfigs?: outputs.ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig[];
     applicationSecurityGroups?: outputs.ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup[];
     assignPublicIp: boolean;
+    enableIpForwarding?: boolean;
     isPrimary: boolean;
+    privateIpAddresses?: string[];
+    publicIpSku?: string;
+    securityGroups?: outputs.ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroup[];
     subnetName: string;
 }
 
@@ -89,6 +132,25 @@ export interface ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig {
 export interface ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup {
     name: string;
     resourceGroupName: string;
+}
+
+export interface ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroup {
+    name?: string;
+    resourceGroupName?: string;
+}
+
+export interface ElastigroupAzureV3OsDisk {
+    sizeGb?: number;
+    type: string;
+}
+
+export interface ElastigroupAzureV3ProximityPlacementGroup {
+    name: string;
+    resourceGroupName: string;
+}
+
+export interface ElastigroupAzureV3RevertToSpot {
+    performAt: string;
 }
 
 export interface ElastigroupAzureV3ScalingDownPolicy {
@@ -151,6 +213,46 @@ export interface ElastigroupAzureV3ScalingUpPolicyDimension {
     value?: string;
 }
 
+export interface ElastigroupAzureV3SchedulingTask {
+    adjustment?: string;
+    adjustmentPercentage?: string;
+    batchSizePercentage?: string;
+    cronExpression: string;
+    gracePeriod?: string;
+    isEnabled: boolean;
+    scaleMaxCapacity?: string;
+    scaleMinCapacity?: string;
+    scaleTargetCapacity?: string;
+    type: string;
+}
+
+export interface ElastigroupAzureV3Secret {
+    sourceVaults: outputs.ElastigroupAzureV3SecretSourceVault[];
+    vaultCertificates: outputs.ElastigroupAzureV3SecretVaultCertificate[];
+}
+
+export interface ElastigroupAzureV3SecretSourceVault {
+    name: string;
+    resourceGroupName: string;
+}
+
+export interface ElastigroupAzureV3SecretVaultCertificate {
+    certificateStore: string;
+    certificateUrl: string;
+}
+
+export interface ElastigroupAzureV3Security {
+    confidentialOsDiskEncryption?: boolean;
+    secureBootEnabled?: boolean;
+    securityType?: string;
+    vtpmEnabled?: boolean;
+}
+
+export interface ElastigroupAzureV3Signal {
+    timeout: number;
+    type: string;
+}
+
 export interface ElastigroupAzureV3Tag {
     key: string;
     value: string;
@@ -158,6 +260,7 @@ export interface ElastigroupAzureV3Tag {
 
 export interface ElastigroupAzureV3VmSizes {
     odSizes: string[];
+    preferredSpotSizes?: string[];
     spotSizes: string[];
 }
 
@@ -2886,6 +2989,10 @@ export namespace aws {
          * Sets the percentage of the instances to deploy in each batch.
          */
         batchSizePercentage: number;
+        /**
+         * During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.
+         */
+        respectPdb?: boolean;
     }
 
     export interface OceanLoadBalancer {

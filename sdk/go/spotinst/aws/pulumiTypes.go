@@ -22692,6 +22692,8 @@ func (o OceanLaunchSpecUpdatePolicyPtrOutput) ShouldRoll() pulumi.BoolPtrOutput 
 type OceanLaunchSpecUpdatePolicyRollConfig struct {
 	// Sets the percentage of the instances to deploy in each batch.
 	BatchSizePercentage int `pulumi:"batchSizePercentage"`
+	// During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.
+	RespectPdb *bool `pulumi:"respectPdb"`
 }
 
 // OceanLaunchSpecUpdatePolicyRollConfigInput is an input type that accepts OceanLaunchSpecUpdatePolicyRollConfigArgs and OceanLaunchSpecUpdatePolicyRollConfigOutput values.
@@ -22708,6 +22710,8 @@ type OceanLaunchSpecUpdatePolicyRollConfigInput interface {
 type OceanLaunchSpecUpdatePolicyRollConfigArgs struct {
 	// Sets the percentage of the instances to deploy in each batch.
 	BatchSizePercentage pulumi.IntInput `pulumi:"batchSizePercentage"`
+	// During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.
+	RespectPdb pulumi.BoolPtrInput `pulumi:"respectPdb"`
 }
 
 func (OceanLaunchSpecUpdatePolicyRollConfigArgs) ElementType() reflect.Type {
@@ -22792,6 +22796,11 @@ func (o OceanLaunchSpecUpdatePolicyRollConfigOutput) BatchSizePercentage() pulum
 	return o.ApplyT(func(v OceanLaunchSpecUpdatePolicyRollConfig) int { return v.BatchSizePercentage }).(pulumi.IntOutput)
 }
 
+// During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.
+func (o OceanLaunchSpecUpdatePolicyRollConfigOutput) RespectPdb() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecUpdatePolicyRollConfig) *bool { return v.RespectPdb }).(pulumi.BoolPtrOutput)
+}
+
 type OceanLaunchSpecUpdatePolicyRollConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (OceanLaunchSpecUpdatePolicyRollConfigPtrOutput) ElementType() reflect.Type {
@@ -22824,6 +22833,16 @@ func (o OceanLaunchSpecUpdatePolicyRollConfigPtrOutput) BatchSizePercentage() pu
 		}
 		return &v.BatchSizePercentage
 	}).(pulumi.IntPtrOutput)
+}
+
+// During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.
+func (o OceanLaunchSpecUpdatePolicyRollConfigPtrOutput) RespectPdb() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecUpdatePolicyRollConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RespectPdb
+	}).(pulumi.BoolPtrOutput)
 }
 
 type OceanLoadBalancer struct {

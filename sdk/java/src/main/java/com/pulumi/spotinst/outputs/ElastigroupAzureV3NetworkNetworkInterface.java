@@ -7,10 +7,12 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.outputs.ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig;
 import com.pulumi.spotinst.outputs.ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup;
+import com.pulumi.spotinst.outputs.ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroup;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
@@ -18,7 +20,11 @@ public final class ElastigroupAzureV3NetworkNetworkInterface {
     private @Nullable List<ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig> additionalIpConfigs;
     private @Nullable List<ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup> applicationSecurityGroups;
     private Boolean assignPublicIp;
+    private @Nullable Boolean enableIpForwarding;
     private Boolean isPrimary;
+    private @Nullable List<String> privateIpAddresses;
+    private @Nullable String publicIpSku;
+    private @Nullable List<ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroup> securityGroups;
     private String subnetName;
 
     private ElastigroupAzureV3NetworkNetworkInterface() {}
@@ -31,8 +37,20 @@ public final class ElastigroupAzureV3NetworkNetworkInterface {
     public Boolean assignPublicIp() {
         return this.assignPublicIp;
     }
+    public Optional<Boolean> enableIpForwarding() {
+        return Optional.ofNullable(this.enableIpForwarding);
+    }
     public Boolean isPrimary() {
         return this.isPrimary;
+    }
+    public List<String> privateIpAddresses() {
+        return this.privateIpAddresses == null ? List.of() : this.privateIpAddresses;
+    }
+    public Optional<String> publicIpSku() {
+        return Optional.ofNullable(this.publicIpSku);
+    }
+    public List<ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroup> securityGroups() {
+        return this.securityGroups == null ? List.of() : this.securityGroups;
     }
     public String subnetName() {
         return this.subnetName;
@@ -50,7 +68,11 @@ public final class ElastigroupAzureV3NetworkNetworkInterface {
         private @Nullable List<ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig> additionalIpConfigs;
         private @Nullable List<ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup> applicationSecurityGroups;
         private Boolean assignPublicIp;
+        private @Nullable Boolean enableIpForwarding;
         private Boolean isPrimary;
+        private @Nullable List<String> privateIpAddresses;
+        private @Nullable String publicIpSku;
+        private @Nullable List<ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroup> securityGroups;
         private String subnetName;
         public Builder() {}
         public Builder(ElastigroupAzureV3NetworkNetworkInterface defaults) {
@@ -58,7 +80,11 @@ public final class ElastigroupAzureV3NetworkNetworkInterface {
     	      this.additionalIpConfigs = defaults.additionalIpConfigs;
     	      this.applicationSecurityGroups = defaults.applicationSecurityGroups;
     	      this.assignPublicIp = defaults.assignPublicIp;
+    	      this.enableIpForwarding = defaults.enableIpForwarding;
     	      this.isPrimary = defaults.isPrimary;
+    	      this.privateIpAddresses = defaults.privateIpAddresses;
+    	      this.publicIpSku = defaults.publicIpSku;
+    	      this.securityGroups = defaults.securityGroups;
     	      this.subnetName = defaults.subnetName;
         }
 
@@ -89,12 +115,42 @@ public final class ElastigroupAzureV3NetworkNetworkInterface {
             return this;
         }
         @CustomType.Setter
+        public Builder enableIpForwarding(@Nullable Boolean enableIpForwarding) {
+
+            this.enableIpForwarding = enableIpForwarding;
+            return this;
+        }
+        @CustomType.Setter
         public Builder isPrimary(Boolean isPrimary) {
             if (isPrimary == null) {
               throw new MissingRequiredPropertyException("ElastigroupAzureV3NetworkNetworkInterface", "isPrimary");
             }
             this.isPrimary = isPrimary;
             return this;
+        }
+        @CustomType.Setter
+        public Builder privateIpAddresses(@Nullable List<String> privateIpAddresses) {
+
+            this.privateIpAddresses = privateIpAddresses;
+            return this;
+        }
+        public Builder privateIpAddresses(String... privateIpAddresses) {
+            return privateIpAddresses(List.of(privateIpAddresses));
+        }
+        @CustomType.Setter
+        public Builder publicIpSku(@Nullable String publicIpSku) {
+
+            this.publicIpSku = publicIpSku;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder securityGroups(@Nullable List<ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroup> securityGroups) {
+
+            this.securityGroups = securityGroups;
+            return this;
+        }
+        public Builder securityGroups(ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroup... securityGroups) {
+            return securityGroups(List.of(securityGroups));
         }
         @CustomType.Setter
         public Builder subnetName(String subnetName) {
@@ -109,7 +165,11 @@ public final class ElastigroupAzureV3NetworkNetworkInterface {
             _resultValue.additionalIpConfigs = additionalIpConfigs;
             _resultValue.applicationSecurityGroups = applicationSecurityGroups;
             _resultValue.assignPublicIp = assignPublicIp;
+            _resultValue.enableIpForwarding = enableIpForwarding;
             _resultValue.isPrimary = isPrimary;
+            _resultValue.privateIpAddresses = privateIpAddresses;
+            _resultValue.publicIpSku = publicIpSku;
+            _resultValue.securityGroups = securityGroups;
             _resultValue.subnetName = subnetName;
             return _resultValue;
         }
