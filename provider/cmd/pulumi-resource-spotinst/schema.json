@@ -3837,7 +3837,11 @@
             "properties": {
                 "batchSizePercentage": {
                     "type": "integer",
-                    "description": "Sets the percentage of the instances to deploy in each batch.\n\n"
+                    "description": "Sets the percentage of the instances to deploy in each batch.\n"
+                },
+                "respectPdb": {
+                    "type": "boolean",
+                    "description": "During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.\n\n\n"
                 }
             },
             "type": "object",
@@ -7121,6 +7125,88 @@
                 "bucketName"
             ]
         },
+        "spotinst:index/ElastigroupAzureV3BootDiagnostic:ElastigroupAzureV3BootDiagnostic": {
+            "properties": {
+                "isEnabled": {
+                    "type": "boolean"
+                },
+                "storageUrl": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "isEnabled",
+                "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "isEnabled",
+                        "storageUrl",
+                        "type"
+                    ]
+                }
+            }
+        },
+        "spotinst:index/ElastigroupAzureV3CapacityReservation:ElastigroupAzureV3CapacityReservation": {
+            "properties": {
+                "capacityReservationGroups": {
+                    "$ref": "#/types/spotinst:index/ElastigroupAzureV3CapacityReservationCapacityReservationGroups:ElastigroupAzureV3CapacityReservationCapacityReservationGroups"
+                },
+                "shouldUtilize": {
+                    "type": "boolean"
+                },
+                "utilizationStrategy": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "shouldUtilize",
+                "utilizationStrategy"
+            ]
+        },
+        "spotinst:index/ElastigroupAzureV3CapacityReservationCapacityReservationGroups:ElastigroupAzureV3CapacityReservationCapacityReservationGroups": {
+            "properties": {
+                "crgName": {
+                    "type": "string"
+                },
+                "crgResourceGroupName": {
+                    "type": "string"
+                },
+                "crgShouldPrioritize": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "crgName",
+                "crgResourceGroupName"
+            ]
+        },
+        "spotinst:index/ElastigroupAzureV3DataDisk:ElastigroupAzureV3DataDisk": {
+            "properties": {
+                "lun": {
+                    "type": "integer"
+                },
+                "sizeGb": {
+                    "type": "integer"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "lun",
+                "sizeGb",
+                "type"
+            ]
+        },
         "spotinst:index/ElastigroupAzureV3Extension:ElastigroupAzureV3Extension": {
             "properties": {
                 "apiVersion": {
@@ -7193,6 +7279,26 @@
                 "secretUrl",
                 "sourceVault"
             ]
+        },
+        "spotinst:index/ElastigroupAzureV3Health:ElastigroupAzureV3Health": {
+            "properties": {
+                "autoHealing": {
+                    "type": "boolean"
+                },
+                "gracePeriod": {
+                    "type": "integer"
+                },
+                "healthCheckTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "unhealthyDuration": {
+                    "type": "integer"
+                }
+            },
+            "type": "object"
         },
         "spotinst:index/ElastigroupAzureV3Image:ElastigroupAzureV3Image": {
             "properties": {
@@ -7281,6 +7387,34 @@
                 "version"
             ]
         },
+        "spotinst:index/ElastigroupAzureV3LoadBalancer:ElastigroupAzureV3LoadBalancer": {
+            "properties": {
+                "backendPoolNames": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "name": {
+                    "type": "string"
+                },
+                "resourceGroupName": {
+                    "type": "string"
+                },
+                "sku": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "resourceGroupName",
+                "type"
+            ]
+        },
         "spotinst:index/ElastigroupAzureV3Login:ElastigroupAzureV3Login": {
             "properties": {
                 "password": {
@@ -7352,8 +7486,26 @@
                 "assignPublicIp": {
                     "type": "boolean"
                 },
+                "enableIpForwarding": {
+                    "type": "boolean"
+                },
                 "isPrimary": {
                     "type": "boolean"
+                },
+                "privateIpAddresses": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "publicIpSku": {
+                    "type": "string"
+                },
+                "securityGroups": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:index/ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroup:ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroup"
+                    }
                 },
                 "subnetName": {
                     "type": "string"
@@ -7393,6 +7545,57 @@
             "required": [
                 "name",
                 "resourceGroupName"
+            ]
+        },
+        "spotinst:index/ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroup:ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroup": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "resourceGroupName": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "spotinst:index/ElastigroupAzureV3OsDisk:ElastigroupAzureV3OsDisk": {
+            "properties": {
+                "sizeGb": {
+                    "type": "integer"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "type"
+            ]
+        },
+        "spotinst:index/ElastigroupAzureV3ProximityPlacementGroup:ElastigroupAzureV3ProximityPlacementGroup": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "resourceGroupName": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "resourceGroupName"
+            ]
+        },
+        "spotinst:index/ElastigroupAzureV3RevertToSpot:ElastigroupAzureV3RevertToSpot": {
+            "properties": {
+                "performAt": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "performAt"
             ]
         },
         "spotinst:index/ElastigroupAzureV3ScalingDownPolicy:ElastigroupAzureV3ScalingDownPolicy": {
@@ -7615,6 +7818,129 @@
             },
             "type": "object"
         },
+        "spotinst:index/ElastigroupAzureV3SchedulingTask:ElastigroupAzureV3SchedulingTask": {
+            "properties": {
+                "adjustment": {
+                    "type": "string"
+                },
+                "adjustmentPercentage": {
+                    "type": "string"
+                },
+                "batchSizePercentage": {
+                    "type": "string"
+                },
+                "cronExpression": {
+                    "type": "string"
+                },
+                "gracePeriod": {
+                    "type": "string"
+                },
+                "isEnabled": {
+                    "type": "boolean"
+                },
+                "scaleMaxCapacity": {
+                    "type": "string"
+                },
+                "scaleMinCapacity": {
+                    "type": "string"
+                },
+                "scaleTargetCapacity": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "cronExpression",
+                "isEnabled",
+                "type"
+            ]
+        },
+        "spotinst:index/ElastigroupAzureV3Secret:ElastigroupAzureV3Secret": {
+            "properties": {
+                "sourceVaults": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:index/ElastigroupAzureV3SecretSourceVault:ElastigroupAzureV3SecretSourceVault"
+                    }
+                },
+                "vaultCertificates": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:index/ElastigroupAzureV3SecretVaultCertificate:ElastigroupAzureV3SecretVaultCertificate"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "sourceVaults",
+                "vaultCertificates"
+            ]
+        },
+        "spotinst:index/ElastigroupAzureV3SecretSourceVault:ElastigroupAzureV3SecretSourceVault": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "resourceGroupName": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "resourceGroupName"
+            ]
+        },
+        "spotinst:index/ElastigroupAzureV3SecretVaultCertificate:ElastigroupAzureV3SecretVaultCertificate": {
+            "properties": {
+                "certificateStore": {
+                    "type": "string"
+                },
+                "certificateUrl": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "certificateStore",
+                "certificateUrl"
+            ]
+        },
+        "spotinst:index/ElastigroupAzureV3Security:ElastigroupAzureV3Security": {
+            "properties": {
+                "confidentialOsDiskEncryption": {
+                    "type": "boolean"
+                },
+                "secureBootEnabled": {
+                    "type": "boolean"
+                },
+                "securityType": {
+                    "type": "string"
+                },
+                "vtpmEnabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "spotinst:index/ElastigroupAzureV3Signal:ElastigroupAzureV3Signal": {
+            "properties": {
+                "timeout": {
+                    "type": "integer"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "timeout",
+                "type"
+            ]
+        },
         "spotinst:index/ElastigroupAzureV3Tag:ElastigroupAzureV3Tag": {
             "properties": {
                 "key": {
@@ -7633,6 +7959,12 @@
         "spotinst:index/ElastigroupAzureV3VmSizes:ElastigroupAzureV3VmSizes": {
             "properties": {
                 "odSizes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "preferredSpotSizes": {
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -18017,7 +18349,28 @@
         },
         "spotinst:index/elastigroupAzureV3:ElastigroupAzureV3": {
             "properties": {
+                "availabilityVsCost": {
+                    "type": "integer"
+                },
+                "bootDiagnostics": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:index/ElastigroupAzureV3BootDiagnostic:ElastigroupAzureV3BootDiagnostic"
+                    }
+                },
+                "capacityReservation": {
+                    "$ref": "#/types/spotinst:index/ElastigroupAzureV3CapacityReservation:ElastigroupAzureV3CapacityReservation"
+                },
                 "customData": {
+                    "type": "string"
+                },
+                "dataDisks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:index/ElastigroupAzureV3DataDisk:ElastigroupAzureV3DataDisk"
+                    }
+                },
+                "description": {
                     "type": "string"
                 },
                 "desiredCapacity": {
@@ -18035,10 +18388,19 @@
                 "fallbackToOnDemand": {
                     "type": "boolean"
                 },
+                "health": {
+                    "$ref": "#/types/spotinst:index/ElastigroupAzureV3Health:ElastigroupAzureV3Health"
+                },
                 "images": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:index/ElastigroupAzureV3Image:ElastigroupAzureV3Image"
+                    }
+                },
+                "loadBalancers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:index/ElastigroupAzureV3LoadBalancer:ElastigroupAzureV3LoadBalancer"
                     }
                 },
                 "login": {
@@ -18065,14 +18427,38 @@
                 "onDemandCount": {
                     "type": "integer"
                 },
+                "optimizationWindows": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "os": {
                     "type": "string"
+                },
+                "osDisk": {
+                    "$ref": "#/types/spotinst:index/ElastigroupAzureV3OsDisk:ElastigroupAzureV3OsDisk"
+                },
+                "preferredZones": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "proximityPlacementGroups": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:index/ElastigroupAzureV3ProximityPlacementGroup:ElastigroupAzureV3ProximityPlacementGroup"
+                    }
                 },
                 "region": {
                     "type": "string"
                 },
                 "resourceGroupName": {
                     "type": "string"
+                },
+                "revertToSpot": {
+                    "$ref": "#/types/spotinst:index/ElastigroupAzureV3RevertToSpot:ElastigroupAzureV3RevertToSpot"
                 },
                 "scalingDownPolicies": {
                     "type": "array",
@@ -18086,6 +18472,30 @@
                         "$ref": "#/types/spotinst:index/ElastigroupAzureV3ScalingUpPolicy:ElastigroupAzureV3ScalingUpPolicy"
                     }
                 },
+                "schedulingTasks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:index/ElastigroupAzureV3SchedulingTask:ElastigroupAzureV3SchedulingTask"
+                    }
+                },
+                "secrets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:index/ElastigroupAzureV3Secret:ElastigroupAzureV3Secret"
+                    }
+                },
+                "security": {
+                    "$ref": "#/types/spotinst:index/ElastigroupAzureV3Security:ElastigroupAzureV3Security"
+                },
+                "shutdownScript": {
+                    "type": "string"
+                },
+                "signals": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:index/ElastigroupAzureV3Signal:ElastigroupAzureV3Signal"
+                    }
+                },
                 "spotPercentage": {
                     "type": "integer"
                 },
@@ -18095,11 +18505,24 @@
                         "$ref": "#/types/spotinst:index/ElastigroupAzureV3Tag:ElastigroupAzureV3Tag"
                     }
                 },
+                "userData": {
+                    "type": "string"
+                },
+                "vmNamePrefix": {
+                    "type": "string"
+                },
                 "vmSizes": {
                     "$ref": "#/types/spotinst:index/ElastigroupAzureV3VmSizes:ElastigroupAzureV3VmSizes"
+                },
+                "zones": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
                 }
             },
             "required": [
+                "bootDiagnostics",
                 "drainingTimeout",
                 "extensions",
                 "fallbackToOnDemand",
@@ -18113,7 +18536,28 @@
                 "vmSizes"
             ],
             "inputProperties": {
+                "availabilityVsCost": {
+                    "type": "integer"
+                },
+                "bootDiagnostics": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:index/ElastigroupAzureV3BootDiagnostic:ElastigroupAzureV3BootDiagnostic"
+                    }
+                },
+                "capacityReservation": {
+                    "$ref": "#/types/spotinst:index/ElastigroupAzureV3CapacityReservation:ElastigroupAzureV3CapacityReservation"
+                },
                 "customData": {
+                    "type": "string"
+                },
+                "dataDisks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:index/ElastigroupAzureV3DataDisk:ElastigroupAzureV3DataDisk"
+                    }
+                },
+                "description": {
                     "type": "string"
                 },
                 "desiredCapacity": {
@@ -18131,10 +18575,19 @@
                 "fallbackToOnDemand": {
                     "type": "boolean"
                 },
+                "health": {
+                    "$ref": "#/types/spotinst:index/ElastigroupAzureV3Health:ElastigroupAzureV3Health"
+                },
                 "images": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:index/ElastigroupAzureV3Image:ElastigroupAzureV3Image"
+                    }
+                },
+                "loadBalancers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:index/ElastigroupAzureV3LoadBalancer:ElastigroupAzureV3LoadBalancer"
                     }
                 },
                 "login": {
@@ -18161,14 +18614,38 @@
                 "onDemandCount": {
                     "type": "integer"
                 },
+                "optimizationWindows": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "os": {
                     "type": "string"
+                },
+                "osDisk": {
+                    "$ref": "#/types/spotinst:index/ElastigroupAzureV3OsDisk:ElastigroupAzureV3OsDisk"
+                },
+                "preferredZones": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "proximityPlacementGroups": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:index/ElastigroupAzureV3ProximityPlacementGroup:ElastigroupAzureV3ProximityPlacementGroup"
+                    }
                 },
                 "region": {
                     "type": "string"
                 },
                 "resourceGroupName": {
                     "type": "string"
+                },
+                "revertToSpot": {
+                    "$ref": "#/types/spotinst:index/ElastigroupAzureV3RevertToSpot:ElastigroupAzureV3RevertToSpot"
                 },
                 "scalingDownPolicies": {
                     "type": "array",
@@ -18182,6 +18659,30 @@
                         "$ref": "#/types/spotinst:index/ElastigroupAzureV3ScalingUpPolicy:ElastigroupAzureV3ScalingUpPolicy"
                     }
                 },
+                "schedulingTasks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:index/ElastigroupAzureV3SchedulingTask:ElastigroupAzureV3SchedulingTask"
+                    }
+                },
+                "secrets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:index/ElastigroupAzureV3Secret:ElastigroupAzureV3Secret"
+                    }
+                },
+                "security": {
+                    "$ref": "#/types/spotinst:index/ElastigroupAzureV3Security:ElastigroupAzureV3Security"
+                },
+                "shutdownScript": {
+                    "type": "string"
+                },
+                "signals": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:index/ElastigroupAzureV3Signal:ElastigroupAzureV3Signal"
+                    }
+                },
                 "spotPercentage": {
                     "type": "integer"
                 },
@@ -18191,8 +18692,20 @@
                         "$ref": "#/types/spotinst:index/ElastigroupAzureV3Tag:ElastigroupAzureV3Tag"
                     }
                 },
+                "userData": {
+                    "type": "string"
+                },
+                "vmNamePrefix": {
+                    "type": "string"
+                },
                 "vmSizes": {
                     "$ref": "#/types/spotinst:index/ElastigroupAzureV3VmSizes:ElastigroupAzureV3VmSizes"
+                },
+                "zones": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
                 }
             },
             "requiredInputs": [
@@ -18206,7 +18719,28 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering ElastigroupAzureV3 resources.\n",
                 "properties": {
+                    "availabilityVsCost": {
+                        "type": "integer"
+                    },
+                    "bootDiagnostics": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/spotinst:index/ElastigroupAzureV3BootDiagnostic:ElastigroupAzureV3BootDiagnostic"
+                        }
+                    },
+                    "capacityReservation": {
+                        "$ref": "#/types/spotinst:index/ElastigroupAzureV3CapacityReservation:ElastigroupAzureV3CapacityReservation"
+                    },
                     "customData": {
+                        "type": "string"
+                    },
+                    "dataDisks": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/spotinst:index/ElastigroupAzureV3DataDisk:ElastigroupAzureV3DataDisk"
+                        }
+                    },
+                    "description": {
                         "type": "string"
                     },
                     "desiredCapacity": {
@@ -18224,10 +18758,19 @@
                     "fallbackToOnDemand": {
                         "type": "boolean"
                     },
+                    "health": {
+                        "$ref": "#/types/spotinst:index/ElastigroupAzureV3Health:ElastigroupAzureV3Health"
+                    },
                     "images": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/spotinst:index/ElastigroupAzureV3Image:ElastigroupAzureV3Image"
+                        }
+                    },
+                    "loadBalancers": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/spotinst:index/ElastigroupAzureV3LoadBalancer:ElastigroupAzureV3LoadBalancer"
                         }
                     },
                     "login": {
@@ -18254,14 +18797,38 @@
                     "onDemandCount": {
                         "type": "integer"
                     },
+                    "optimizationWindows": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
                     "os": {
                         "type": "string"
+                    },
+                    "osDisk": {
+                        "$ref": "#/types/spotinst:index/ElastigroupAzureV3OsDisk:ElastigroupAzureV3OsDisk"
+                    },
+                    "preferredZones": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "proximityPlacementGroups": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/spotinst:index/ElastigroupAzureV3ProximityPlacementGroup:ElastigroupAzureV3ProximityPlacementGroup"
+                        }
                     },
                     "region": {
                         "type": "string"
                     },
                     "resourceGroupName": {
                         "type": "string"
+                    },
+                    "revertToSpot": {
+                        "$ref": "#/types/spotinst:index/ElastigroupAzureV3RevertToSpot:ElastigroupAzureV3RevertToSpot"
                     },
                     "scalingDownPolicies": {
                         "type": "array",
@@ -18275,6 +18842,30 @@
                             "$ref": "#/types/spotinst:index/ElastigroupAzureV3ScalingUpPolicy:ElastigroupAzureV3ScalingUpPolicy"
                         }
                     },
+                    "schedulingTasks": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/spotinst:index/ElastigroupAzureV3SchedulingTask:ElastigroupAzureV3SchedulingTask"
+                        }
+                    },
+                    "secrets": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/spotinst:index/ElastigroupAzureV3Secret:ElastigroupAzureV3Secret"
+                        }
+                    },
+                    "security": {
+                        "$ref": "#/types/spotinst:index/ElastigroupAzureV3Security:ElastigroupAzureV3Security"
+                    },
+                    "shutdownScript": {
+                        "type": "string"
+                    },
+                    "signals": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/spotinst:index/ElastigroupAzureV3Signal:ElastigroupAzureV3Signal"
+                        }
+                    },
                     "spotPercentage": {
                         "type": "integer"
                     },
@@ -18284,8 +18875,20 @@
                             "$ref": "#/types/spotinst:index/ElastigroupAzureV3Tag:ElastigroupAzureV3Tag"
                         }
                     },
+                    "userData": {
+                        "type": "string"
+                    },
+                    "vmNamePrefix": {
+                        "type": "string"
+                    },
                     "vmSizes": {
                         "$ref": "#/types/spotinst:index/ElastigroupAzureV3VmSizes:ElastigroupAzureV3VmSizes"
+                    },
+                    "zones": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     }
                 },
                 "type": "object"
