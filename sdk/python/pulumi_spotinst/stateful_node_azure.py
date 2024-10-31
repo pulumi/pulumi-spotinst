@@ -1170,7 +1170,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
                     "script": "IyEvYmluL2Jhc2gKZWNobyAibmlyIiA+IC9ob29uaXIudHh0Cg==",
                 },
                 "public_settings": {
-                    "file_uris": "https://testspot/Azuretest.sh",
+                    "fileUris": "https://testspot/Azuretest.sh",
                 },
             }],
             image={
@@ -1683,7 +1683,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
                     "script": "IyEvYmluL2Jhc2gKZWNobyAibmlyIiA+IC9ob29uaXIudHh0Cg==",
                 },
                 "public_settings": {
-                    "file_uris": "https://testspot/Azuretest.sh",
+                    "fileUris": "https://testspot/Azuretest.sh",
                 },
             }],
             image={
