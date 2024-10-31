@@ -220,8 +220,8 @@ class Ocean(pulumi.CustomResource):
                     "managed": True,
                     "target_group_arn": "arn:aws:elasticloadbalancing:eu-north-1:XXXXXXXXXXXX:targetgroup/my-spark-cluster-nlb-tg/a38c2b83XXXXXXXX",
                     "service_annotations": {
-                        "service_beta_kubernetes_io_aws_load_balancer_security_groups": "sg-XXXXXXXXXXXXXXXXX",
-                        "some_service_annotation_2": "some-service-annotation-value-2",
+                        "service.beta.kubernetes.io/aws-load-balancer-security-groups": "sg-XXXXXXXXXXXXXXXXX",
+                        "some-service-annotation-2": "some-service-annotation-value-2",
                     },
                 },
                 "custom_endpoint": {
@@ -285,8 +285,8 @@ class Ocean(pulumi.CustomResource):
                     "managed": True,
                     "target_group_arn": "arn:aws:elasticloadbalancing:eu-north-1:XXXXXXXXXXXX:targetgroup/my-spark-cluster-nlb-tg/a38c2b83XXXXXXXX",
                     "service_annotations": {
-                        "service_beta_kubernetes_io_aws_load_balancer_security_groups": "sg-XXXXXXXXXXXXXXXXX",
-                        "some_service_annotation_2": "some-service-annotation-value-2",
+                        "service.beta.kubernetes.io/aws-load-balancer-security-groups": "sg-XXXXXXXXXXXXXXXXX",
+                        "some-service-annotation-2": "some-service-annotation-value-2",
                     },
                 },
                 "custom_endpoint": {
