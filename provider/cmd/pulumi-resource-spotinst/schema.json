@@ -8184,6 +8184,14 @@
             },
             "type": "object"
         },
+        "spotinst:index/OceanRightSizingRuleRecommendationApplicationHpa:OceanRightSizingRuleRecommendationApplicationHpa": {
+            "properties": {
+                "allowHpaRecommendations": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
         "spotinst:index/OceanRightSizingRuleRecommendationApplicationInterval:OceanRightSizingRuleRecommendationApplicationInterval": {
             "properties": {
                 "monthlyRepetitionBases": {
@@ -18984,6 +18992,9 @@
                         "$ref": "#/types/spotinst:index/OceanRightSizingRuleDetachWorkload:OceanRightSizingRuleDetachWorkload"
                     }
                 },
+                "excludePreliminaryRecommendations": {
+                    "type": "boolean"
+                },
                 "oceanId": {
                     "type": "string"
                 },
@@ -18991,6 +19002,12 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:index/OceanRightSizingRuleRecommendationApplicationBoundary:OceanRightSizingRuleRecommendationApplicationBoundary"
+                    }
+                },
+                "recommendationApplicationHpas": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:index/OceanRightSizingRuleRecommendationApplicationHpa:OceanRightSizingRuleRecommendationApplicationHpa"
                     }
                 },
                 "recommendationApplicationIntervals": {
@@ -19010,6 +19027,9 @@
                     "items": {
                         "$ref": "#/types/spotinst:index/OceanRightSizingRuleRecommendationApplicationOverheadValue:OceanRightSizingRuleRecommendationApplicationOverheadValue"
                     }
+                },
+                "restartReplicas": {
+                    "type": "string"
                 },
                 "ruleName": {
                     "type": "string"
@@ -19032,6 +19052,9 @@
                         "$ref": "#/types/spotinst:index/OceanRightSizingRuleDetachWorkload:OceanRightSizingRuleDetachWorkload"
                     }
                 },
+                "excludePreliminaryRecommendations": {
+                    "type": "boolean"
+                },
                 "oceanId": {
                     "type": "string"
                 },
@@ -19039,6 +19062,12 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:index/OceanRightSizingRuleRecommendationApplicationBoundary:OceanRightSizingRuleRecommendationApplicationBoundary"
+                    }
+                },
+                "recommendationApplicationHpas": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:index/OceanRightSizingRuleRecommendationApplicationHpa:OceanRightSizingRuleRecommendationApplicationHpa"
                     }
                 },
                 "recommendationApplicationIntervals": {
@@ -19058,6 +19087,9 @@
                     "items": {
                         "$ref": "#/types/spotinst:index/OceanRightSizingRuleRecommendationApplicationOverheadValue:OceanRightSizingRuleRecommendationApplicationOverheadValue"
                     }
+                },
+                "restartReplicas": {
+                    "type": "string"
                 },
                 "ruleName": {
                     "type": "string"
@@ -19082,6 +19114,9 @@
                             "$ref": "#/types/spotinst:index/OceanRightSizingRuleDetachWorkload:OceanRightSizingRuleDetachWorkload"
                         }
                     },
+                    "excludePreliminaryRecommendations": {
+                        "type": "boolean"
+                    },
                     "oceanId": {
                         "type": "string"
                     },
@@ -19089,6 +19124,12 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/types/spotinst:index/OceanRightSizingRuleRecommendationApplicationBoundary:OceanRightSizingRuleRecommendationApplicationBoundary"
+                        }
+                    },
+                    "recommendationApplicationHpas": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/spotinst:index/OceanRightSizingRuleRecommendationApplicationHpa:OceanRightSizingRuleRecommendationApplicationHpa"
                         }
                     },
                     "recommendationApplicationIntervals": {
@@ -19108,6 +19149,9 @@
                         "items": {
                             "$ref": "#/types/spotinst:index/OceanRightSizingRuleRecommendationApplicationOverheadValue:OceanRightSizingRuleRecommendationApplicationOverheadValue"
                         }
+                    },
+                    "restartReplicas": {
+                        "type": "string"
                     },
                     "ruleName": {
                         "type": "string"
