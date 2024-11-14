@@ -346,6 +346,10 @@ export interface OceanRightSizingRuleRecommendationApplicationBoundary {
     memoryMin?: number;
 }
 
+export interface OceanRightSizingRuleRecommendationApplicationHpa {
+    allowHpaRecommendations?: boolean;
+}
+
 export interface OceanRightSizingRuleRecommendationApplicationInterval {
     monthlyRepetitionBases?: outputs.OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase[];
     repetitionBasis: string;

@@ -13,9 +13,11 @@ import com.pulumi.spotinst.inputs.OceanRightSizingRuleState;
 import com.pulumi.spotinst.outputs.OceanRightSizingRuleAttachWorkload;
 import com.pulumi.spotinst.outputs.OceanRightSizingRuleDetachWorkload;
 import com.pulumi.spotinst.outputs.OceanRightSizingRuleRecommendationApplicationBoundary;
+import com.pulumi.spotinst.outputs.OceanRightSizingRuleRecommendationApplicationHpa;
 import com.pulumi.spotinst.outputs.OceanRightSizingRuleRecommendationApplicationInterval;
 import com.pulumi.spotinst.outputs.OceanRightSizingRuleRecommendationApplicationMinThreshold;
 import com.pulumi.spotinst.outputs.OceanRightSizingRuleRecommendationApplicationOverheadValue;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -35,6 +37,12 @@ public class OceanRightSizingRule extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<OceanRightSizingRuleDetachWorkload>>> detachWorkloads() {
         return Codegen.optional(this.detachWorkloads);
     }
+    @Export(name="excludePreliminaryRecommendations", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> excludePreliminaryRecommendations;
+
+    public Output<Optional<Boolean>> excludePreliminaryRecommendations() {
+        return Codegen.optional(this.excludePreliminaryRecommendations);
+    }
     @Export(name="oceanId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> oceanId;
 
@@ -46,6 +54,12 @@ public class OceanRightSizingRule extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<List<OceanRightSizingRuleRecommendationApplicationBoundary>>> recommendationApplicationBoundaries() {
         return Codegen.optional(this.recommendationApplicationBoundaries);
+    }
+    @Export(name="recommendationApplicationHpas", refs={List.class,OceanRightSizingRuleRecommendationApplicationHpa.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<OceanRightSizingRuleRecommendationApplicationHpa>> recommendationApplicationHpas;
+
+    public Output<Optional<List<OceanRightSizingRuleRecommendationApplicationHpa>>> recommendationApplicationHpas() {
+        return Codegen.optional(this.recommendationApplicationHpas);
     }
     @Export(name="recommendationApplicationIntervals", refs={List.class,OceanRightSizingRuleRecommendationApplicationInterval.class}, tree="[0,1]")
     private Output<List<OceanRightSizingRuleRecommendationApplicationInterval>> recommendationApplicationIntervals;
@@ -64,6 +78,12 @@ public class OceanRightSizingRule extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<List<OceanRightSizingRuleRecommendationApplicationOverheadValue>>> recommendationApplicationOverheadValues() {
         return Codegen.optional(this.recommendationApplicationOverheadValues);
+    }
+    @Export(name="restartReplicas", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> restartReplicas;
+
+    public Output<Optional<String>> restartReplicas() {
+        return Codegen.optional(this.restartReplicas);
     }
     @Export(name="ruleName", refs={String.class}, tree="[0]")
     private Output<String> ruleName;

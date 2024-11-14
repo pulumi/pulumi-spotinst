@@ -346,6 +346,10 @@ export interface OceanRightSizingRuleRecommendationApplicationBoundary {
     memoryMin?: pulumi.Input<number>;
 }
 
+export interface OceanRightSizingRuleRecommendationApplicationHpa {
+    allowHpaRecommendations?: pulumi.Input<boolean>;
+}
+
 export interface OceanRightSizingRuleRecommendationApplicationInterval {
     monthlyRepetitionBases?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase>[]>;
     repetitionBasis: pulumi.Input<string>;
