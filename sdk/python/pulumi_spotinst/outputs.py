@@ -63,6 +63,7 @@ __all__ = [
     'OceanRightSizingRuleDetachWorkloadNamespaceLabel',
     'OceanRightSizingRuleDetachWorkloadNamespaceWorkload',
     'OceanRightSizingRuleRecommendationApplicationBoundary',
+    'OceanRightSizingRuleRecommendationApplicationHpa',
     'OceanRightSizingRuleRecommendationApplicationInterval',
     'OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase',
     'OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBase',
@@ -2416,6 +2417,36 @@ class OceanRightSizingRuleRecommendationApplicationBoundary(dict):
     @pulumi.getter(name="memoryMin")
     def memory_min(self) -> Optional[int]:
         return pulumi.get(self, "memory_min")
+
+
+@pulumi.output_type
+class OceanRightSizingRuleRecommendationApplicationHpa(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowHpaRecommendations":
+            suggest = "allow_hpa_recommendations"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanRightSizingRuleRecommendationApplicationHpa. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanRightSizingRuleRecommendationApplicationHpa.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanRightSizingRuleRecommendationApplicationHpa.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_hpa_recommendations: Optional[bool] = None):
+        if allow_hpa_recommendations is not None:
+            pulumi.set(__self__, "allow_hpa_recommendations", allow_hpa_recommendations)
+
+    @property
+    @pulumi.getter(name="allowHpaRecommendations")
+    def allow_hpa_recommendations(self) -> Optional[bool]:
+        return pulumi.get(self, "allow_hpa_recommendations")
 
 
 @pulumi.output_type

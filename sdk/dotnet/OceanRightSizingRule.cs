@@ -18,11 +18,17 @@ namespace Pulumi.SpotInst
         [Output("detachWorkloads")]
         public Output<ImmutableArray<Outputs.OceanRightSizingRuleDetachWorkload>> DetachWorkloads { get; private set; } = null!;
 
+        [Output("excludePreliminaryRecommendations")]
+        public Output<bool?> ExcludePreliminaryRecommendations { get; private set; } = null!;
+
         [Output("oceanId")]
         public Output<string?> OceanId { get; private set; } = null!;
 
         [Output("recommendationApplicationBoundaries")]
         public Output<ImmutableArray<Outputs.OceanRightSizingRuleRecommendationApplicationBoundary>> RecommendationApplicationBoundaries { get; private set; } = null!;
+
+        [Output("recommendationApplicationHpas")]
+        public Output<ImmutableArray<Outputs.OceanRightSizingRuleRecommendationApplicationHpa>> RecommendationApplicationHpas { get; private set; } = null!;
 
         [Output("recommendationApplicationIntervals")]
         public Output<ImmutableArray<Outputs.OceanRightSizingRuleRecommendationApplicationInterval>> RecommendationApplicationIntervals { get; private set; } = null!;
@@ -32,6 +38,9 @@ namespace Pulumi.SpotInst
 
         [Output("recommendationApplicationOverheadValues")]
         public Output<ImmutableArray<Outputs.OceanRightSizingRuleRecommendationApplicationOverheadValue>> RecommendationApplicationOverheadValues { get; private set; } = null!;
+
+        [Output("restartReplicas")]
+        public Output<string?> RestartReplicas { get; private set; } = null!;
 
         [Output("ruleName")]
         public Output<string> RuleName { get; private set; } = null!;
@@ -98,6 +107,9 @@ namespace Pulumi.SpotInst
             set => _detachWorkloads = value;
         }
 
+        [Input("excludePreliminaryRecommendations")]
+        public Input<bool>? ExcludePreliminaryRecommendations { get; set; }
+
         [Input("oceanId")]
         public Input<string>? OceanId { get; set; }
 
@@ -107,6 +119,14 @@ namespace Pulumi.SpotInst
         {
             get => _recommendationApplicationBoundaries ?? (_recommendationApplicationBoundaries = new InputList<Inputs.OceanRightSizingRuleRecommendationApplicationBoundaryArgs>());
             set => _recommendationApplicationBoundaries = value;
+        }
+
+        [Input("recommendationApplicationHpas")]
+        private InputList<Inputs.OceanRightSizingRuleRecommendationApplicationHpaArgs>? _recommendationApplicationHpas;
+        public InputList<Inputs.OceanRightSizingRuleRecommendationApplicationHpaArgs> RecommendationApplicationHpas
+        {
+            get => _recommendationApplicationHpas ?? (_recommendationApplicationHpas = new InputList<Inputs.OceanRightSizingRuleRecommendationApplicationHpaArgs>());
+            set => _recommendationApplicationHpas = value;
         }
 
         [Input("recommendationApplicationIntervals", required: true)]
@@ -132,6 +152,9 @@ namespace Pulumi.SpotInst
             get => _recommendationApplicationOverheadValues ?? (_recommendationApplicationOverheadValues = new InputList<Inputs.OceanRightSizingRuleRecommendationApplicationOverheadValueArgs>());
             set => _recommendationApplicationOverheadValues = value;
         }
+
+        [Input("restartReplicas")]
+        public Input<string>? RestartReplicas { get; set; }
 
         [Input("ruleName", required: true)]
         public Input<string> RuleName { get; set; } = null!;
@@ -160,6 +183,9 @@ namespace Pulumi.SpotInst
             set => _detachWorkloads = value;
         }
 
+        [Input("excludePreliminaryRecommendations")]
+        public Input<bool>? ExcludePreliminaryRecommendations { get; set; }
+
         [Input("oceanId")]
         public Input<string>? OceanId { get; set; }
 
@@ -169,6 +195,14 @@ namespace Pulumi.SpotInst
         {
             get => _recommendationApplicationBoundaries ?? (_recommendationApplicationBoundaries = new InputList<Inputs.OceanRightSizingRuleRecommendationApplicationBoundaryGetArgs>());
             set => _recommendationApplicationBoundaries = value;
+        }
+
+        [Input("recommendationApplicationHpas")]
+        private InputList<Inputs.OceanRightSizingRuleRecommendationApplicationHpaGetArgs>? _recommendationApplicationHpas;
+        public InputList<Inputs.OceanRightSizingRuleRecommendationApplicationHpaGetArgs> RecommendationApplicationHpas
+        {
+            get => _recommendationApplicationHpas ?? (_recommendationApplicationHpas = new InputList<Inputs.OceanRightSizingRuleRecommendationApplicationHpaGetArgs>());
+            set => _recommendationApplicationHpas = value;
         }
 
         [Input("recommendationApplicationIntervals")]
@@ -194,6 +228,9 @@ namespace Pulumi.SpotInst
             get => _recommendationApplicationOverheadValues ?? (_recommendationApplicationOverheadValues = new InputList<Inputs.OceanRightSizingRuleRecommendationApplicationOverheadValueGetArgs>());
             set => _recommendationApplicationOverheadValues = value;
         }
+
+        [Input("restartReplicas")]
+        public Input<string>? RestartReplicas { get; set; }
 
         [Input("ruleName")]
         public Input<string>? RuleName { get; set; }

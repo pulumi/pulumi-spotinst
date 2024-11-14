@@ -17,11 +17,14 @@ type OceanRightSizingRule struct {
 
 	AttachWorkloads                         OceanRightSizingRuleAttachWorkloadArrayOutput                         `pulumi:"attachWorkloads"`
 	DetachWorkloads                         OceanRightSizingRuleDetachWorkloadArrayOutput                         `pulumi:"detachWorkloads"`
+	ExcludePreliminaryRecommendations       pulumi.BoolPtrOutput                                                  `pulumi:"excludePreliminaryRecommendations"`
 	OceanId                                 pulumi.StringPtrOutput                                                `pulumi:"oceanId"`
 	RecommendationApplicationBoundaries     OceanRightSizingRuleRecommendationApplicationBoundaryArrayOutput      `pulumi:"recommendationApplicationBoundaries"`
+	RecommendationApplicationHpas           OceanRightSizingRuleRecommendationApplicationHpaArrayOutput           `pulumi:"recommendationApplicationHpas"`
 	RecommendationApplicationIntervals      OceanRightSizingRuleRecommendationApplicationIntervalArrayOutput      `pulumi:"recommendationApplicationIntervals"`
 	RecommendationApplicationMinThresholds  OceanRightSizingRuleRecommendationApplicationMinThresholdArrayOutput  `pulumi:"recommendationApplicationMinThresholds"`
 	RecommendationApplicationOverheadValues OceanRightSizingRuleRecommendationApplicationOverheadValueArrayOutput `pulumi:"recommendationApplicationOverheadValues"`
+	RestartReplicas                         pulumi.StringPtrOutput                                                `pulumi:"restartReplicas"`
 	RuleName                                pulumi.StringOutput                                                   `pulumi:"ruleName"`
 }
 
@@ -63,22 +66,28 @@ func GetOceanRightSizingRule(ctx *pulumi.Context,
 type oceanRightSizingRuleState struct {
 	AttachWorkloads                         []OceanRightSizingRuleAttachWorkload                         `pulumi:"attachWorkloads"`
 	DetachWorkloads                         []OceanRightSizingRuleDetachWorkload                         `pulumi:"detachWorkloads"`
+	ExcludePreliminaryRecommendations       *bool                                                        `pulumi:"excludePreliminaryRecommendations"`
 	OceanId                                 *string                                                      `pulumi:"oceanId"`
 	RecommendationApplicationBoundaries     []OceanRightSizingRuleRecommendationApplicationBoundary      `pulumi:"recommendationApplicationBoundaries"`
+	RecommendationApplicationHpas           []OceanRightSizingRuleRecommendationApplicationHpa           `pulumi:"recommendationApplicationHpas"`
 	RecommendationApplicationIntervals      []OceanRightSizingRuleRecommendationApplicationInterval      `pulumi:"recommendationApplicationIntervals"`
 	RecommendationApplicationMinThresholds  []OceanRightSizingRuleRecommendationApplicationMinThreshold  `pulumi:"recommendationApplicationMinThresholds"`
 	RecommendationApplicationOverheadValues []OceanRightSizingRuleRecommendationApplicationOverheadValue `pulumi:"recommendationApplicationOverheadValues"`
+	RestartReplicas                         *string                                                      `pulumi:"restartReplicas"`
 	RuleName                                *string                                                      `pulumi:"ruleName"`
 }
 
 type OceanRightSizingRuleState struct {
 	AttachWorkloads                         OceanRightSizingRuleAttachWorkloadArrayInput
 	DetachWorkloads                         OceanRightSizingRuleDetachWorkloadArrayInput
+	ExcludePreliminaryRecommendations       pulumi.BoolPtrInput
 	OceanId                                 pulumi.StringPtrInput
 	RecommendationApplicationBoundaries     OceanRightSizingRuleRecommendationApplicationBoundaryArrayInput
+	RecommendationApplicationHpas           OceanRightSizingRuleRecommendationApplicationHpaArrayInput
 	RecommendationApplicationIntervals      OceanRightSizingRuleRecommendationApplicationIntervalArrayInput
 	RecommendationApplicationMinThresholds  OceanRightSizingRuleRecommendationApplicationMinThresholdArrayInput
 	RecommendationApplicationOverheadValues OceanRightSizingRuleRecommendationApplicationOverheadValueArrayInput
+	RestartReplicas                         pulumi.StringPtrInput
 	RuleName                                pulumi.StringPtrInput
 }
 
@@ -89,11 +98,14 @@ func (OceanRightSizingRuleState) ElementType() reflect.Type {
 type oceanRightSizingRuleArgs struct {
 	AttachWorkloads                         []OceanRightSizingRuleAttachWorkload                         `pulumi:"attachWorkloads"`
 	DetachWorkloads                         []OceanRightSizingRuleDetachWorkload                         `pulumi:"detachWorkloads"`
+	ExcludePreliminaryRecommendations       *bool                                                        `pulumi:"excludePreliminaryRecommendations"`
 	OceanId                                 *string                                                      `pulumi:"oceanId"`
 	RecommendationApplicationBoundaries     []OceanRightSizingRuleRecommendationApplicationBoundary      `pulumi:"recommendationApplicationBoundaries"`
+	RecommendationApplicationHpas           []OceanRightSizingRuleRecommendationApplicationHpa           `pulumi:"recommendationApplicationHpas"`
 	RecommendationApplicationIntervals      []OceanRightSizingRuleRecommendationApplicationInterval      `pulumi:"recommendationApplicationIntervals"`
 	RecommendationApplicationMinThresholds  []OceanRightSizingRuleRecommendationApplicationMinThreshold  `pulumi:"recommendationApplicationMinThresholds"`
 	RecommendationApplicationOverheadValues []OceanRightSizingRuleRecommendationApplicationOverheadValue `pulumi:"recommendationApplicationOverheadValues"`
+	RestartReplicas                         *string                                                      `pulumi:"restartReplicas"`
 	RuleName                                string                                                       `pulumi:"ruleName"`
 }
 
@@ -101,11 +113,14 @@ type oceanRightSizingRuleArgs struct {
 type OceanRightSizingRuleArgs struct {
 	AttachWorkloads                         OceanRightSizingRuleAttachWorkloadArrayInput
 	DetachWorkloads                         OceanRightSizingRuleDetachWorkloadArrayInput
+	ExcludePreliminaryRecommendations       pulumi.BoolPtrInput
 	OceanId                                 pulumi.StringPtrInput
 	RecommendationApplicationBoundaries     OceanRightSizingRuleRecommendationApplicationBoundaryArrayInput
+	RecommendationApplicationHpas           OceanRightSizingRuleRecommendationApplicationHpaArrayInput
 	RecommendationApplicationIntervals      OceanRightSizingRuleRecommendationApplicationIntervalArrayInput
 	RecommendationApplicationMinThresholds  OceanRightSizingRuleRecommendationApplicationMinThresholdArrayInput
 	RecommendationApplicationOverheadValues OceanRightSizingRuleRecommendationApplicationOverheadValueArrayInput
+	RestartReplicas                         pulumi.StringPtrInput
 	RuleName                                pulumi.StringInput
 }
 
@@ -204,6 +219,10 @@ func (o OceanRightSizingRuleOutput) DetachWorkloads() OceanRightSizingRuleDetach
 	return o.ApplyT(func(v *OceanRightSizingRule) OceanRightSizingRuleDetachWorkloadArrayOutput { return v.DetachWorkloads }).(OceanRightSizingRuleDetachWorkloadArrayOutput)
 }
 
+func (o OceanRightSizingRuleOutput) ExcludePreliminaryRecommendations() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanRightSizingRule) pulumi.BoolPtrOutput { return v.ExcludePreliminaryRecommendations }).(pulumi.BoolPtrOutput)
+}
+
 func (o OceanRightSizingRuleOutput) OceanId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanRightSizingRule) pulumi.StringPtrOutput { return v.OceanId }).(pulumi.StringPtrOutput)
 }
@@ -212,6 +231,12 @@ func (o OceanRightSizingRuleOutput) RecommendationApplicationBoundaries() OceanR
 	return o.ApplyT(func(v *OceanRightSizingRule) OceanRightSizingRuleRecommendationApplicationBoundaryArrayOutput {
 		return v.RecommendationApplicationBoundaries
 	}).(OceanRightSizingRuleRecommendationApplicationBoundaryArrayOutput)
+}
+
+func (o OceanRightSizingRuleOutput) RecommendationApplicationHpas() OceanRightSizingRuleRecommendationApplicationHpaArrayOutput {
+	return o.ApplyT(func(v *OceanRightSizingRule) OceanRightSizingRuleRecommendationApplicationHpaArrayOutput {
+		return v.RecommendationApplicationHpas
+	}).(OceanRightSizingRuleRecommendationApplicationHpaArrayOutput)
 }
 
 func (o OceanRightSizingRuleOutput) RecommendationApplicationIntervals() OceanRightSizingRuleRecommendationApplicationIntervalArrayOutput {
@@ -230,6 +255,10 @@ func (o OceanRightSizingRuleOutput) RecommendationApplicationOverheadValues() Oc
 	return o.ApplyT(func(v *OceanRightSizingRule) OceanRightSizingRuleRecommendationApplicationOverheadValueArrayOutput {
 		return v.RecommendationApplicationOverheadValues
 	}).(OceanRightSizingRuleRecommendationApplicationOverheadValueArrayOutput)
+}
+
+func (o OceanRightSizingRuleOutput) RestartReplicas() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanRightSizingRule) pulumi.StringPtrOutput { return v.RestartReplicas }).(pulumi.StringPtrOutput)
 }
 
 func (o OceanRightSizingRuleOutput) RuleName() pulumi.StringOutput {

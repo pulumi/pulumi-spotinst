@@ -109,6 +109,8 @@ __all__ = [
     'OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArgsDict',
     'OceanRightSizingRuleRecommendationApplicationBoundaryArgs',
     'OceanRightSizingRuleRecommendationApplicationBoundaryArgsDict',
+    'OceanRightSizingRuleRecommendationApplicationHpaArgs',
+    'OceanRightSizingRuleRecommendationApplicationHpaArgsDict',
     'OceanRightSizingRuleRecommendationApplicationIntervalArgs',
     'OceanRightSizingRuleRecommendationApplicationIntervalArgsDict',
     'OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs',
@@ -2917,6 +2919,29 @@ class OceanRightSizingRuleRecommendationApplicationBoundaryArgs:
     @memory_min.setter
     def memory_min(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "memory_min", value)
+
+
+if not MYPY:
+    class OceanRightSizingRuleRecommendationApplicationHpaArgsDict(TypedDict):
+        allow_hpa_recommendations: NotRequired[pulumi.Input[bool]]
+elif False:
+    OceanRightSizingRuleRecommendationApplicationHpaArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OceanRightSizingRuleRecommendationApplicationHpaArgs:
+    def __init__(__self__, *,
+                 allow_hpa_recommendations: Optional[pulumi.Input[bool]] = None):
+        if allow_hpa_recommendations is not None:
+            pulumi.set(__self__, "allow_hpa_recommendations", allow_hpa_recommendations)
+
+    @property
+    @pulumi.getter(name="allowHpaRecommendations")
+    def allow_hpa_recommendations(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "allow_hpa_recommendations")
+
+    @allow_hpa_recommendations.setter
+    def allow_hpa_recommendations(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_hpa_recommendations", value)
 
 
 if not MYPY:

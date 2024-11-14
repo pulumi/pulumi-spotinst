@@ -5894,6 +5894,100 @@ func (o OceanRightSizingRuleRecommendationApplicationBoundaryArrayOutput) Index(
 	}).(OceanRightSizingRuleRecommendationApplicationBoundaryOutput)
 }
 
+type OceanRightSizingRuleRecommendationApplicationHpa struct {
+	AllowHpaRecommendations *bool `pulumi:"allowHpaRecommendations"`
+}
+
+// OceanRightSizingRuleRecommendationApplicationHpaInput is an input type that accepts OceanRightSizingRuleRecommendationApplicationHpaArgs and OceanRightSizingRuleRecommendationApplicationHpaOutput values.
+// You can construct a concrete instance of `OceanRightSizingRuleRecommendationApplicationHpaInput` via:
+//
+//	OceanRightSizingRuleRecommendationApplicationHpaArgs{...}
+type OceanRightSizingRuleRecommendationApplicationHpaInput interface {
+	pulumi.Input
+
+	ToOceanRightSizingRuleRecommendationApplicationHpaOutput() OceanRightSizingRuleRecommendationApplicationHpaOutput
+	ToOceanRightSizingRuleRecommendationApplicationHpaOutputWithContext(context.Context) OceanRightSizingRuleRecommendationApplicationHpaOutput
+}
+
+type OceanRightSizingRuleRecommendationApplicationHpaArgs struct {
+	AllowHpaRecommendations pulumi.BoolPtrInput `pulumi:"allowHpaRecommendations"`
+}
+
+func (OceanRightSizingRuleRecommendationApplicationHpaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanRightSizingRuleRecommendationApplicationHpa)(nil)).Elem()
+}
+
+func (i OceanRightSizingRuleRecommendationApplicationHpaArgs) ToOceanRightSizingRuleRecommendationApplicationHpaOutput() OceanRightSizingRuleRecommendationApplicationHpaOutput {
+	return i.ToOceanRightSizingRuleRecommendationApplicationHpaOutputWithContext(context.Background())
+}
+
+func (i OceanRightSizingRuleRecommendationApplicationHpaArgs) ToOceanRightSizingRuleRecommendationApplicationHpaOutputWithContext(ctx context.Context) OceanRightSizingRuleRecommendationApplicationHpaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanRightSizingRuleRecommendationApplicationHpaOutput)
+}
+
+// OceanRightSizingRuleRecommendationApplicationHpaArrayInput is an input type that accepts OceanRightSizingRuleRecommendationApplicationHpaArray and OceanRightSizingRuleRecommendationApplicationHpaArrayOutput values.
+// You can construct a concrete instance of `OceanRightSizingRuleRecommendationApplicationHpaArrayInput` via:
+//
+//	OceanRightSizingRuleRecommendationApplicationHpaArray{ OceanRightSizingRuleRecommendationApplicationHpaArgs{...} }
+type OceanRightSizingRuleRecommendationApplicationHpaArrayInput interface {
+	pulumi.Input
+
+	ToOceanRightSizingRuleRecommendationApplicationHpaArrayOutput() OceanRightSizingRuleRecommendationApplicationHpaArrayOutput
+	ToOceanRightSizingRuleRecommendationApplicationHpaArrayOutputWithContext(context.Context) OceanRightSizingRuleRecommendationApplicationHpaArrayOutput
+}
+
+type OceanRightSizingRuleRecommendationApplicationHpaArray []OceanRightSizingRuleRecommendationApplicationHpaInput
+
+func (OceanRightSizingRuleRecommendationApplicationHpaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanRightSizingRuleRecommendationApplicationHpa)(nil)).Elem()
+}
+
+func (i OceanRightSizingRuleRecommendationApplicationHpaArray) ToOceanRightSizingRuleRecommendationApplicationHpaArrayOutput() OceanRightSizingRuleRecommendationApplicationHpaArrayOutput {
+	return i.ToOceanRightSizingRuleRecommendationApplicationHpaArrayOutputWithContext(context.Background())
+}
+
+func (i OceanRightSizingRuleRecommendationApplicationHpaArray) ToOceanRightSizingRuleRecommendationApplicationHpaArrayOutputWithContext(ctx context.Context) OceanRightSizingRuleRecommendationApplicationHpaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanRightSizingRuleRecommendationApplicationHpaArrayOutput)
+}
+
+type OceanRightSizingRuleRecommendationApplicationHpaOutput struct{ *pulumi.OutputState }
+
+func (OceanRightSizingRuleRecommendationApplicationHpaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanRightSizingRuleRecommendationApplicationHpa)(nil)).Elem()
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationHpaOutput) ToOceanRightSizingRuleRecommendationApplicationHpaOutput() OceanRightSizingRuleRecommendationApplicationHpaOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationHpaOutput) ToOceanRightSizingRuleRecommendationApplicationHpaOutputWithContext(ctx context.Context) OceanRightSizingRuleRecommendationApplicationHpaOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationHpaOutput) AllowHpaRecommendations() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanRightSizingRuleRecommendationApplicationHpa) *bool { return v.AllowHpaRecommendations }).(pulumi.BoolPtrOutput)
+}
+
+type OceanRightSizingRuleRecommendationApplicationHpaArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanRightSizingRuleRecommendationApplicationHpaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanRightSizingRuleRecommendationApplicationHpa)(nil)).Elem()
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationHpaArrayOutput) ToOceanRightSizingRuleRecommendationApplicationHpaArrayOutput() OceanRightSizingRuleRecommendationApplicationHpaArrayOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationHpaArrayOutput) ToOceanRightSizingRuleRecommendationApplicationHpaArrayOutputWithContext(ctx context.Context) OceanRightSizingRuleRecommendationApplicationHpaArrayOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleRecommendationApplicationHpaArrayOutput) Index(i pulumi.IntInput) OceanRightSizingRuleRecommendationApplicationHpaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanRightSizingRuleRecommendationApplicationHpa {
+		return vs[0].([]OceanRightSizingRuleRecommendationApplicationHpa)[vs[1].(int)]
+	}).(OceanRightSizingRuleRecommendationApplicationHpaOutput)
+}
+
 type OceanRightSizingRuleRecommendationApplicationInterval struct {
 	MonthlyRepetitionBases []OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase `pulumi:"monthlyRepetitionBases"`
 	RepetitionBasis        string                                                                       `pulumi:"repetitionBasis"`
@@ -11175,6 +11269,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArrayInput)(nil)).Elem(), OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleRecommendationApplicationBoundaryInput)(nil)).Elem(), OceanRightSizingRuleRecommendationApplicationBoundaryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleRecommendationApplicationBoundaryArrayInput)(nil)).Elem(), OceanRightSizingRuleRecommendationApplicationBoundaryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleRecommendationApplicationHpaInput)(nil)).Elem(), OceanRightSizingRuleRecommendationApplicationHpaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleRecommendationApplicationHpaArrayInput)(nil)).Elem(), OceanRightSizingRuleRecommendationApplicationHpaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleRecommendationApplicationIntervalInput)(nil)).Elem(), OceanRightSizingRuleRecommendationApplicationIntervalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleRecommendationApplicationIntervalArrayInput)(nil)).Elem(), OceanRightSizingRuleRecommendationApplicationIntervalArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseInput)(nil)).Elem(), OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs{})
@@ -11351,6 +11447,8 @@ func init() {
 	pulumi.RegisterOutputType(OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArrayOutput{})
 	pulumi.RegisterOutputType(OceanRightSizingRuleRecommendationApplicationBoundaryOutput{})
 	pulumi.RegisterOutputType(OceanRightSizingRuleRecommendationApplicationBoundaryArrayOutput{})
+	pulumi.RegisterOutputType(OceanRightSizingRuleRecommendationApplicationHpaOutput{})
+	pulumi.RegisterOutputType(OceanRightSizingRuleRecommendationApplicationHpaArrayOutput{})
 	pulumi.RegisterOutputType(OceanRightSizingRuleRecommendationApplicationIntervalOutput{})
 	pulumi.RegisterOutputType(OceanRightSizingRuleRecommendationApplicationIntervalArrayOutput{})
 	pulumi.RegisterOutputType(OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseOutput{})

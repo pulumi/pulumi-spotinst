@@ -9,9 +9,11 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.inputs.OceanRightSizingRuleAttachWorkloadArgs;
 import com.pulumi.spotinst.inputs.OceanRightSizingRuleDetachWorkloadArgs;
 import com.pulumi.spotinst.inputs.OceanRightSizingRuleRecommendationApplicationBoundaryArgs;
+import com.pulumi.spotinst.inputs.OceanRightSizingRuleRecommendationApplicationHpaArgs;
 import com.pulumi.spotinst.inputs.OceanRightSizingRuleRecommendationApplicationIntervalArgs;
 import com.pulumi.spotinst.inputs.OceanRightSizingRuleRecommendationApplicationMinThresholdArgs;
 import com.pulumi.spotinst.inputs.OceanRightSizingRuleRecommendationApplicationOverheadValueArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -37,6 +39,13 @@ public final class OceanRightSizingRuleArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.detachWorkloads);
     }
 
+    @Import(name="excludePreliminaryRecommendations")
+    private @Nullable Output<Boolean> excludePreliminaryRecommendations;
+
+    public Optional<Output<Boolean>> excludePreliminaryRecommendations() {
+        return Optional.ofNullable(this.excludePreliminaryRecommendations);
+    }
+
     @Import(name="oceanId")
     private @Nullable Output<String> oceanId;
 
@@ -49,6 +58,13 @@ public final class OceanRightSizingRuleArgs extends com.pulumi.resources.Resourc
 
     public Optional<Output<List<OceanRightSizingRuleRecommendationApplicationBoundaryArgs>>> recommendationApplicationBoundaries() {
         return Optional.ofNullable(this.recommendationApplicationBoundaries);
+    }
+
+    @Import(name="recommendationApplicationHpas")
+    private @Nullable Output<List<OceanRightSizingRuleRecommendationApplicationHpaArgs>> recommendationApplicationHpas;
+
+    public Optional<Output<List<OceanRightSizingRuleRecommendationApplicationHpaArgs>>> recommendationApplicationHpas() {
+        return Optional.ofNullable(this.recommendationApplicationHpas);
     }
 
     @Import(name="recommendationApplicationIntervals", required=true)
@@ -72,6 +88,13 @@ public final class OceanRightSizingRuleArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.recommendationApplicationOverheadValues);
     }
 
+    @Import(name="restartReplicas")
+    private @Nullable Output<String> restartReplicas;
+
+    public Optional<Output<String>> restartReplicas() {
+        return Optional.ofNullable(this.restartReplicas);
+    }
+
     @Import(name="ruleName", required=true)
     private Output<String> ruleName;
 
@@ -84,11 +107,14 @@ public final class OceanRightSizingRuleArgs extends com.pulumi.resources.Resourc
     private OceanRightSizingRuleArgs(OceanRightSizingRuleArgs $) {
         this.attachWorkloads = $.attachWorkloads;
         this.detachWorkloads = $.detachWorkloads;
+        this.excludePreliminaryRecommendations = $.excludePreliminaryRecommendations;
         this.oceanId = $.oceanId;
         this.recommendationApplicationBoundaries = $.recommendationApplicationBoundaries;
+        this.recommendationApplicationHpas = $.recommendationApplicationHpas;
         this.recommendationApplicationIntervals = $.recommendationApplicationIntervals;
         this.recommendationApplicationMinThresholds = $.recommendationApplicationMinThresholds;
         this.recommendationApplicationOverheadValues = $.recommendationApplicationOverheadValues;
+        this.restartReplicas = $.restartReplicas;
         this.ruleName = $.ruleName;
     }
 
@@ -136,6 +162,15 @@ public final class OceanRightSizingRuleArgs extends com.pulumi.resources.Resourc
             return detachWorkloads(List.of(detachWorkloads));
         }
 
+        public Builder excludePreliminaryRecommendations(@Nullable Output<Boolean> excludePreliminaryRecommendations) {
+            $.excludePreliminaryRecommendations = excludePreliminaryRecommendations;
+            return this;
+        }
+
+        public Builder excludePreliminaryRecommendations(Boolean excludePreliminaryRecommendations) {
+            return excludePreliminaryRecommendations(Output.of(excludePreliminaryRecommendations));
+        }
+
         public Builder oceanId(@Nullable Output<String> oceanId) {
             $.oceanId = oceanId;
             return this;
@@ -156,6 +191,19 @@ public final class OceanRightSizingRuleArgs extends com.pulumi.resources.Resourc
 
         public Builder recommendationApplicationBoundaries(OceanRightSizingRuleRecommendationApplicationBoundaryArgs... recommendationApplicationBoundaries) {
             return recommendationApplicationBoundaries(List.of(recommendationApplicationBoundaries));
+        }
+
+        public Builder recommendationApplicationHpas(@Nullable Output<List<OceanRightSizingRuleRecommendationApplicationHpaArgs>> recommendationApplicationHpas) {
+            $.recommendationApplicationHpas = recommendationApplicationHpas;
+            return this;
+        }
+
+        public Builder recommendationApplicationHpas(List<OceanRightSizingRuleRecommendationApplicationHpaArgs> recommendationApplicationHpas) {
+            return recommendationApplicationHpas(Output.of(recommendationApplicationHpas));
+        }
+
+        public Builder recommendationApplicationHpas(OceanRightSizingRuleRecommendationApplicationHpaArgs... recommendationApplicationHpas) {
+            return recommendationApplicationHpas(List.of(recommendationApplicationHpas));
         }
 
         public Builder recommendationApplicationIntervals(Output<List<OceanRightSizingRuleRecommendationApplicationIntervalArgs>> recommendationApplicationIntervals) {
@@ -195,6 +243,15 @@ public final class OceanRightSizingRuleArgs extends com.pulumi.resources.Resourc
 
         public Builder recommendationApplicationOverheadValues(OceanRightSizingRuleRecommendationApplicationOverheadValueArgs... recommendationApplicationOverheadValues) {
             return recommendationApplicationOverheadValues(List.of(recommendationApplicationOverheadValues));
+        }
+
+        public Builder restartReplicas(@Nullable Output<String> restartReplicas) {
+            $.restartReplicas = restartReplicas;
+            return this;
+        }
+
+        public Builder restartReplicas(String restartReplicas) {
+            return restartReplicas(Output.of(restartReplicas));
         }
 
         public Builder ruleName(Output<String> ruleName) {

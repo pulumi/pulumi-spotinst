@@ -2041,6 +2041,9 @@
                     "recommendation_application_boundaries": {
                         "maxItemsOne": false
                     },
+                    "recommendation_application_hpa": {
+                        "maxItemsOne": false
+                    },
                     "recommendation_application_intervals": {
                         "maxItemsOne": false,
                         "elem": {
