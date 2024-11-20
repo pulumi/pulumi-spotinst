@@ -33,6 +33,22 @@ namespace Pulumi.SpotInst.Gke
     ///             "n1-standard-1",
     ///             "n1-standard-2",
     ///         },
+    ///         Filters = new SpotInst.Gke.Inputs.OceanImportFiltersArgs
+    ///         {
+    ///             ExcludeFamilies = new[]
+    ///             {
+    ///                 "n2",
+    ///             },
+    ///             IncludeFamilies = new[]
+    ///             {
+    ///                 "c2",
+    ///                 "c3",
+    ///             },
+    ///             MinMemoryGib = 8,
+    ///             MaxMemoryGib = 16,
+    ///             MinVcpu = 2,
+    ///             MaxVcpu = 16,
+    ///         },
     ///         BackendServices = new[]
     ///         {
     ///             new SpotInst.Gke.Inputs.OceanImportBackendServiceArgs
@@ -107,6 +123,12 @@ namespace Pulumi.SpotInst.Gke
         /// </summary>
         [Output("desiredCapacity")]
         public Output<int> DesiredCapacity { get; private set; } = null!;
+
+        /// <summary>
+        /// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
+        /// </summary>
+        [Output("filters")]
+        public Output<Outputs.OceanImportFilters?> Filters { get; private set; } = null!;
 
         /// <summary>
         /// The zone the master cluster is located in.
@@ -260,6 +282,12 @@ namespace Pulumi.SpotInst.Gke
         public Input<int>? DesiredCapacity { get; set; }
 
         /// <summary>
+        /// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
+        /// </summary>
+        [Input("filters")]
+        public Input<Inputs.OceanImportFiltersArgs>? Filters { get; set; }
+
+        /// <summary>
         /// The zone the master cluster is located in.
         /// </summary>
         [Input("location", required: true)]
@@ -392,6 +420,12 @@ namespace Pulumi.SpotInst.Gke
         /// </summary>
         [Input("desiredCapacity")]
         public Input<int>? DesiredCapacity { get; set; }
+
+        /// <summary>
+        /// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
+        /// </summary>
+        [Input("filters")]
+        public Input<Inputs.OceanImportFiltersGetArgs>? Filters { get; set; }
 
         /// <summary>
         /// The zone the master cluster is located in.

@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.gke.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
 import java.util.Objects;
@@ -18,6 +19,11 @@ public final class OceanImportAutoscalerDown {
      */
     private @Nullable Integer evaluationPeriods;
     /**
+     * @return When set to &#39;true&#39;, the Aggressive Scale Down feature is enabled.
+     * 
+     */
+    private @Nullable Boolean isAggressiveScaleDownEnabled;
+    /**
      * @return Would represent the maximum % to scale-down. Number between 1-100.
      * 
      */
@@ -30,6 +36,13 @@ public final class OceanImportAutoscalerDown {
      */
     public Optional<Integer> evaluationPeriods() {
         return Optional.ofNullable(this.evaluationPeriods);
+    }
+    /**
+     * @return When set to &#39;true&#39;, the Aggressive Scale Down feature is enabled.
+     * 
+     */
+    public Optional<Boolean> isAggressiveScaleDownEnabled() {
+        return Optional.ofNullable(this.isAggressiveScaleDownEnabled);
     }
     /**
      * @return Would represent the maximum % to scale-down. Number between 1-100.
@@ -49,11 +62,13 @@ public final class OceanImportAutoscalerDown {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer evaluationPeriods;
+        private @Nullable Boolean isAggressiveScaleDownEnabled;
         private @Nullable Double maxScaleDownPercentage;
         public Builder() {}
         public Builder(OceanImportAutoscalerDown defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.evaluationPeriods = defaults.evaluationPeriods;
+    	      this.isAggressiveScaleDownEnabled = defaults.isAggressiveScaleDownEnabled;
     	      this.maxScaleDownPercentage = defaults.maxScaleDownPercentage;
         }
 
@@ -61,6 +76,12 @@ public final class OceanImportAutoscalerDown {
         public Builder evaluationPeriods(@Nullable Integer evaluationPeriods) {
 
             this.evaluationPeriods = evaluationPeriods;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder isAggressiveScaleDownEnabled(@Nullable Boolean isAggressiveScaleDownEnabled) {
+
+            this.isAggressiveScaleDownEnabled = isAggressiveScaleDownEnabled;
             return this;
         }
         @CustomType.Setter
@@ -72,6 +93,7 @@ public final class OceanImportAutoscalerDown {
         public OceanImportAutoscalerDown build() {
             final var _resultValue = new OceanImportAutoscalerDown();
             _resultValue.evaluationPeriods = evaluationPeriods;
+            _resultValue.isAggressiveScaleDownEnabled = isAggressiveScaleDownEnabled;
             _resultValue.maxScaleDownPercentage = maxScaleDownPercentage;
             return _resultValue;
         }

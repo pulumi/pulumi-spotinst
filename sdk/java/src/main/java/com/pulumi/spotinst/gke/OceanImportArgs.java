@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.gke.inputs.OceanImportAutoscalerArgs;
 import com.pulumi.spotinst.gke.inputs.OceanImportBackendServiceArgs;
+import com.pulumi.spotinst.gke.inputs.OceanImportFiltersArgs;
 import com.pulumi.spotinst.gke.inputs.OceanImportScheduledTaskArgs;
 import com.pulumi.spotinst.gke.inputs.OceanImportShieldedInstanceConfigArgs;
 import com.pulumi.spotinst.gke.inputs.OceanImportStrategyArgs;
@@ -113,6 +114,21 @@ public final class OceanImportArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Integer>> desiredCapacity() {
         return Optional.ofNullable(this.desiredCapacity);
+    }
+
+    /**
+     * List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured together with whitelist/blacklist.
+     * 
+     */
+    @Import(name="filters")
+    private @Nullable Output<OceanImportFiltersArgs> filters;
+
+    /**
+     * @return List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured together with whitelist/blacklist.
+     * 
+     */
+    public Optional<Output<OceanImportFiltersArgs>> filters() {
+        return Optional.ofNullable(this.filters);
     }
 
     /**
@@ -266,6 +282,7 @@ public final class OceanImportArgs extends com.pulumi.resources.ResourceArgs {
         this.clusterName = $.clusterName;
         this.controllerClusterId = $.controllerClusterId;
         this.desiredCapacity = $.desiredCapacity;
+        this.filters = $.filters;
         this.location = $.location;
         this.maxSize = $.maxSize;
         this.minSize = $.minSize;
@@ -440,6 +457,27 @@ public final class OceanImportArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder desiredCapacity(Integer desiredCapacity) {
             return desiredCapacity(Output.of(desiredCapacity));
+        }
+
+        /**
+         * @param filters List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured together with whitelist/blacklist.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filters(@Nullable Output<OceanImportFiltersArgs> filters) {
+            $.filters = filters;
+            return this;
+        }
+
+        /**
+         * @param filters List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured together with whitelist/blacklist.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filters(OceanImportFiltersArgs filters) {
+            return filters(Output.of(filters));
         }
 
         /**

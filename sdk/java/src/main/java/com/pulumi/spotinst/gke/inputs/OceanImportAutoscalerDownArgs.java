@@ -5,6 +5,7 @@ package com.pulumi.spotinst.gke.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
 import java.util.Objects;
@@ -32,6 +33,21 @@ public final class OceanImportAutoscalerDownArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * When set to &#39;true&#39;, the Aggressive Scale Down feature is enabled.
+     * 
+     */
+    @Import(name="isAggressiveScaleDownEnabled")
+    private @Nullable Output<Boolean> isAggressiveScaleDownEnabled;
+
+    /**
+     * @return When set to &#39;true&#39;, the Aggressive Scale Down feature is enabled.
+     * 
+     */
+    public Optional<Output<Boolean>> isAggressiveScaleDownEnabled() {
+        return Optional.ofNullable(this.isAggressiveScaleDownEnabled);
+    }
+
+    /**
      * Would represent the maximum % to scale-down. Number between 1-100.
      * 
      */
@@ -50,6 +66,7 @@ public final class OceanImportAutoscalerDownArgs extends com.pulumi.resources.Re
 
     private OceanImportAutoscalerDownArgs(OceanImportAutoscalerDownArgs $) {
         this.evaluationPeriods = $.evaluationPeriods;
+        this.isAggressiveScaleDownEnabled = $.isAggressiveScaleDownEnabled;
         this.maxScaleDownPercentage = $.maxScaleDownPercentage;
     }
 
@@ -90,6 +107,27 @@ public final class OceanImportAutoscalerDownArgs extends com.pulumi.resources.Re
          */
         public Builder evaluationPeriods(Integer evaluationPeriods) {
             return evaluationPeriods(Output.of(evaluationPeriods));
+        }
+
+        /**
+         * @param isAggressiveScaleDownEnabled When set to &#39;true&#39;, the Aggressive Scale Down feature is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isAggressiveScaleDownEnabled(@Nullable Output<Boolean> isAggressiveScaleDownEnabled) {
+            $.isAggressiveScaleDownEnabled = isAggressiveScaleDownEnabled;
+            return this;
+        }
+
+        /**
+         * @param isAggressiveScaleDownEnabled When set to &#39;true&#39;, the Aggressive Scale Down feature is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isAggressiveScaleDownEnabled(Boolean isAggressiveScaleDownEnabled) {
+            return isAggressiveScaleDownEnabled(Output.of(isAggressiveScaleDownEnabled));
         }
 
         /**

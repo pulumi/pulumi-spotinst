@@ -2929,6 +2929,8 @@ func (o OceanImportAutoscalerPtrOutput) ResourceLimits() OceanImportAutoscalerRe
 type OceanImportAutoscalerDown struct {
 	// The number of evaluation periods that should accumulate before a scale down action takes place.
 	EvaluationPeriods *int `pulumi:"evaluationPeriods"`
+	// When set to 'true', the Aggressive Scale Down feature is enabled.
+	IsAggressiveScaleDownEnabled *bool `pulumi:"isAggressiveScaleDownEnabled"`
 	// Would represent the maximum % to scale-down. Number between 1-100.
 	MaxScaleDownPercentage *float64 `pulumi:"maxScaleDownPercentage"`
 }
@@ -2947,6 +2949,8 @@ type OceanImportAutoscalerDownInput interface {
 type OceanImportAutoscalerDownArgs struct {
 	// The number of evaluation periods that should accumulate before a scale down action takes place.
 	EvaluationPeriods pulumi.IntPtrInput `pulumi:"evaluationPeriods"`
+	// When set to 'true', the Aggressive Scale Down feature is enabled.
+	IsAggressiveScaleDownEnabled pulumi.BoolPtrInput `pulumi:"isAggressiveScaleDownEnabled"`
 	// Would represent the maximum % to scale-down. Number between 1-100.
 	MaxScaleDownPercentage pulumi.Float64PtrInput `pulumi:"maxScaleDownPercentage"`
 }
@@ -3033,6 +3037,11 @@ func (o OceanImportAutoscalerDownOutput) EvaluationPeriods() pulumi.IntPtrOutput
 	return o.ApplyT(func(v OceanImportAutoscalerDown) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
 }
 
+// When set to 'true', the Aggressive Scale Down feature is enabled.
+func (o OceanImportAutoscalerDownOutput) IsAggressiveScaleDownEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanImportAutoscalerDown) *bool { return v.IsAggressiveScaleDownEnabled }).(pulumi.BoolPtrOutput)
+}
+
 // Would represent the maximum % to scale-down. Number between 1-100.
 func (o OceanImportAutoscalerDownOutput) MaxScaleDownPercentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v OceanImportAutoscalerDown) *float64 { return v.MaxScaleDownPercentage }).(pulumi.Float64PtrOutput)
@@ -3070,6 +3079,16 @@ func (o OceanImportAutoscalerDownPtrOutput) EvaluationPeriods() pulumi.IntPtrOut
 		}
 		return v.EvaluationPeriods
 	}).(pulumi.IntPtrOutput)
+}
+
+// When set to 'true', the Aggressive Scale Down feature is enabled.
+func (o OceanImportAutoscalerDownPtrOutput) IsAggressiveScaleDownEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanImportAutoscalerDown) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsAggressiveScaleDownEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Would represent the maximum % to scale-down. Number between 1-100.
@@ -3654,6 +3673,238 @@ func (o OceanImportBackendServiceNamedPortArrayOutput) Index(i pulumi.IntInput) 
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanImportBackendServiceNamedPort {
 		return vs[0].([]OceanImportBackendServiceNamedPort)[vs[1].(int)]
 	}).(OceanImportBackendServiceNamedPortOutput)
+}
+
+type OceanImportFilters struct {
+	// Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
+	ExcludeFamilies []string `pulumi:"excludeFamilies"`
+	// Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
+	IncludeFamilies []string `pulumi:"includeFamilies"`
+	// Maximum amount of Memory (GiB).
+	MaxMemoryGib *float64 `pulumi:"maxMemoryGib"`
+	// Maximum number of vcpus available.
+	MaxVcpu *int `pulumi:"maxVcpu"`
+	// Minimum amount of Memory (GiB).
+	MinMemoryGib *float64 `pulumi:"minMemoryGib"`
+	// Minimum number of vcpus available.
+	MinVcpu *int `pulumi:"minVcpu"`
+}
+
+// OceanImportFiltersInput is an input type that accepts OceanImportFiltersArgs and OceanImportFiltersOutput values.
+// You can construct a concrete instance of `OceanImportFiltersInput` via:
+//
+//	OceanImportFiltersArgs{...}
+type OceanImportFiltersInput interface {
+	pulumi.Input
+
+	ToOceanImportFiltersOutput() OceanImportFiltersOutput
+	ToOceanImportFiltersOutputWithContext(context.Context) OceanImportFiltersOutput
+}
+
+type OceanImportFiltersArgs struct {
+	// Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
+	ExcludeFamilies pulumi.StringArrayInput `pulumi:"excludeFamilies"`
+	// Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
+	IncludeFamilies pulumi.StringArrayInput `pulumi:"includeFamilies"`
+	// Maximum amount of Memory (GiB).
+	MaxMemoryGib pulumi.Float64PtrInput `pulumi:"maxMemoryGib"`
+	// Maximum number of vcpus available.
+	MaxVcpu pulumi.IntPtrInput `pulumi:"maxVcpu"`
+	// Minimum amount of Memory (GiB).
+	MinMemoryGib pulumi.Float64PtrInput `pulumi:"minMemoryGib"`
+	// Minimum number of vcpus available.
+	MinVcpu pulumi.IntPtrInput `pulumi:"minVcpu"`
+}
+
+func (OceanImportFiltersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanImportFilters)(nil)).Elem()
+}
+
+func (i OceanImportFiltersArgs) ToOceanImportFiltersOutput() OceanImportFiltersOutput {
+	return i.ToOceanImportFiltersOutputWithContext(context.Background())
+}
+
+func (i OceanImportFiltersArgs) ToOceanImportFiltersOutputWithContext(ctx context.Context) OceanImportFiltersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanImportFiltersOutput)
+}
+
+func (i OceanImportFiltersArgs) ToOceanImportFiltersPtrOutput() OceanImportFiltersPtrOutput {
+	return i.ToOceanImportFiltersPtrOutputWithContext(context.Background())
+}
+
+func (i OceanImportFiltersArgs) ToOceanImportFiltersPtrOutputWithContext(ctx context.Context) OceanImportFiltersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanImportFiltersOutput).ToOceanImportFiltersPtrOutputWithContext(ctx)
+}
+
+// OceanImportFiltersPtrInput is an input type that accepts OceanImportFiltersArgs, OceanImportFiltersPtr and OceanImportFiltersPtrOutput values.
+// You can construct a concrete instance of `OceanImportFiltersPtrInput` via:
+//
+//	        OceanImportFiltersArgs{...}
+//
+//	or:
+//
+//	        nil
+type OceanImportFiltersPtrInput interface {
+	pulumi.Input
+
+	ToOceanImportFiltersPtrOutput() OceanImportFiltersPtrOutput
+	ToOceanImportFiltersPtrOutputWithContext(context.Context) OceanImportFiltersPtrOutput
+}
+
+type oceanImportFiltersPtrType OceanImportFiltersArgs
+
+func OceanImportFiltersPtr(v *OceanImportFiltersArgs) OceanImportFiltersPtrInput {
+	return (*oceanImportFiltersPtrType)(v)
+}
+
+func (*oceanImportFiltersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanImportFilters)(nil)).Elem()
+}
+
+func (i *oceanImportFiltersPtrType) ToOceanImportFiltersPtrOutput() OceanImportFiltersPtrOutput {
+	return i.ToOceanImportFiltersPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanImportFiltersPtrType) ToOceanImportFiltersPtrOutputWithContext(ctx context.Context) OceanImportFiltersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanImportFiltersPtrOutput)
+}
+
+type OceanImportFiltersOutput struct{ *pulumi.OutputState }
+
+func (OceanImportFiltersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanImportFilters)(nil)).Elem()
+}
+
+func (o OceanImportFiltersOutput) ToOceanImportFiltersOutput() OceanImportFiltersOutput {
+	return o
+}
+
+func (o OceanImportFiltersOutput) ToOceanImportFiltersOutputWithContext(ctx context.Context) OceanImportFiltersOutput {
+	return o
+}
+
+func (o OceanImportFiltersOutput) ToOceanImportFiltersPtrOutput() OceanImportFiltersPtrOutput {
+	return o.ToOceanImportFiltersPtrOutputWithContext(context.Background())
+}
+
+func (o OceanImportFiltersOutput) ToOceanImportFiltersPtrOutputWithContext(ctx context.Context) OceanImportFiltersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanImportFilters) *OceanImportFilters {
+		return &v
+	}).(OceanImportFiltersPtrOutput)
+}
+
+// Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
+func (o OceanImportFiltersOutput) ExcludeFamilies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanImportFilters) []string { return v.ExcludeFamilies }).(pulumi.StringArrayOutput)
+}
+
+// Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
+func (o OceanImportFiltersOutput) IncludeFamilies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanImportFilters) []string { return v.IncludeFamilies }).(pulumi.StringArrayOutput)
+}
+
+// Maximum amount of Memory (GiB).
+func (o OceanImportFiltersOutput) MaxMemoryGib() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v OceanImportFilters) *float64 { return v.MaxMemoryGib }).(pulumi.Float64PtrOutput)
+}
+
+// Maximum number of vcpus available.
+func (o OceanImportFiltersOutput) MaxVcpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanImportFilters) *int { return v.MaxVcpu }).(pulumi.IntPtrOutput)
+}
+
+// Minimum amount of Memory (GiB).
+func (o OceanImportFiltersOutput) MinMemoryGib() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v OceanImportFilters) *float64 { return v.MinMemoryGib }).(pulumi.Float64PtrOutput)
+}
+
+// Minimum number of vcpus available.
+func (o OceanImportFiltersOutput) MinVcpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanImportFilters) *int { return v.MinVcpu }).(pulumi.IntPtrOutput)
+}
+
+type OceanImportFiltersPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanImportFiltersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanImportFilters)(nil)).Elem()
+}
+
+func (o OceanImportFiltersPtrOutput) ToOceanImportFiltersPtrOutput() OceanImportFiltersPtrOutput {
+	return o
+}
+
+func (o OceanImportFiltersPtrOutput) ToOceanImportFiltersPtrOutputWithContext(ctx context.Context) OceanImportFiltersPtrOutput {
+	return o
+}
+
+func (o OceanImportFiltersPtrOutput) Elem() OceanImportFiltersOutput {
+	return o.ApplyT(func(v *OceanImportFilters) OceanImportFilters {
+		if v != nil {
+			return *v
+		}
+		var ret OceanImportFilters
+		return ret
+	}).(OceanImportFiltersOutput)
+}
+
+// Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
+func (o OceanImportFiltersPtrOutput) ExcludeFamilies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanImportFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeFamilies
+	}).(pulumi.StringArrayOutput)
+}
+
+// Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
+func (o OceanImportFiltersPtrOutput) IncludeFamilies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanImportFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeFamilies
+	}).(pulumi.StringArrayOutput)
+}
+
+// Maximum amount of Memory (GiB).
+func (o OceanImportFiltersPtrOutput) MaxMemoryGib() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *OceanImportFilters) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MaxMemoryGib
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Maximum number of vcpus available.
+func (o OceanImportFiltersPtrOutput) MaxVcpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanImportFilters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxVcpu
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minimum amount of Memory (GiB).
+func (o OceanImportFiltersPtrOutput) MinMemoryGib() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *OceanImportFilters) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MinMemoryGib
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Minimum number of vcpus available.
+func (o OceanImportFiltersPtrOutput) MinVcpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanImportFilters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinVcpu
+	}).(pulumi.IntPtrOutput)
 }
 
 type OceanImportScheduledTask struct {
@@ -7206,6 +7457,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportBackendServiceArrayInput)(nil)).Elem(), OceanImportBackendServiceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportBackendServiceNamedPortInput)(nil)).Elem(), OceanImportBackendServiceNamedPortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportBackendServiceNamedPortArrayInput)(nil)).Elem(), OceanImportBackendServiceNamedPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportFiltersInput)(nil)).Elem(), OceanImportFiltersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportFiltersPtrInput)(nil)).Elem(), OceanImportFiltersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportScheduledTaskInput)(nil)).Elem(), OceanImportScheduledTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportScheduledTaskArrayInput)(nil)).Elem(), OceanImportScheduledTaskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportScheduledTaskShutdownHoursInput)(nil)).Elem(), OceanImportScheduledTaskShutdownHoursArgs{})
@@ -7312,6 +7565,8 @@ func init() {
 	pulumi.RegisterOutputType(OceanImportBackendServiceArrayOutput{})
 	pulumi.RegisterOutputType(OceanImportBackendServiceNamedPortOutput{})
 	pulumi.RegisterOutputType(OceanImportBackendServiceNamedPortArrayOutput{})
+	pulumi.RegisterOutputType(OceanImportFiltersOutput{})
+	pulumi.RegisterOutputType(OceanImportFiltersPtrOutput{})
 	pulumi.RegisterOutputType(OceanImportScheduledTaskOutput{})
 	pulumi.RegisterOutputType(OceanImportScheduledTaskArrayOutput{})
 	pulumi.RegisterOutputType(OceanImportScheduledTaskShutdownHoursOutput{})

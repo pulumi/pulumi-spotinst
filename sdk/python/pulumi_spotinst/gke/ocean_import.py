@@ -28,6 +28,7 @@ class OceanImportArgs:
                  blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  controller_cluster_id: Optional[pulumi.Input[str]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
+                 filters: Optional[pulumi.Input['OceanImportFiltersArgs']] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
                  root_volume_type: Optional[pulumi.Input[str]] = None,
@@ -46,6 +47,7 @@ class OceanImportArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklists: Instance types to avoid launching in the Ocean cluster. Cannot be configured if whitelist list is configured.
         :param pulumi.Input[str] controller_cluster_id: A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
         :param pulumi.Input[int] desired_capacity: The number of instances to launch and maintain in the cluster.
+        :param pulumi.Input['OceanImportFiltersArgs'] filters: List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
         :param pulumi.Input[str] root_volume_type: The root volume disk type.
@@ -67,6 +69,8 @@ class OceanImportArgs:
             pulumi.set(__self__, "controller_cluster_id", controller_cluster_id)
         if desired_capacity is not None:
             pulumi.set(__self__, "desired_capacity", desired_capacity)
+        if filters is not None:
+            pulumi.set(__self__, "filters", filters)
         if max_size is not None:
             pulumi.set(__self__, "max_size", max_size)
         if min_size is not None:
@@ -169,6 +173,18 @@ class OceanImportArgs:
     @desired_capacity.setter
     def desired_capacity(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "desired_capacity", value)
+
+    @property
+    @pulumi.getter
+    def filters(self) -> Optional[pulumi.Input['OceanImportFiltersArgs']]:
+        """
+        List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
+        """
+        return pulumi.get(self, "filters")
+
+    @filters.setter
+    def filters(self, value: Optional[pulumi.Input['OceanImportFiltersArgs']]):
+        pulumi.set(self, "filters", value)
 
     @property
     @pulumi.getter(name="maxSize")
@@ -286,6 +302,7 @@ class _OceanImportState:
                  cluster_name: Optional[pulumi.Input[str]] = None,
                  controller_cluster_id: Optional[pulumi.Input[str]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
+                 filters: Optional[pulumi.Input['OceanImportFiltersArgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
@@ -304,6 +321,7 @@ class _OceanImportState:
         :param pulumi.Input[str] cluster_name: The GKE cluster name.
         :param pulumi.Input[str] controller_cluster_id: A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
         :param pulumi.Input[int] desired_capacity: The number of instances to launch and maintain in the cluster.
+        :param pulumi.Input['OceanImportFiltersArgs'] filters: List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
         :param pulumi.Input[str] location: The zone the master cluster is located in.
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
@@ -328,6 +346,8 @@ class _OceanImportState:
             pulumi.set(__self__, "controller_cluster_id", controller_cluster_id)
         if desired_capacity is not None:
             pulumi.set(__self__, "desired_capacity", desired_capacity)
+        if filters is not None:
+            pulumi.set(__self__, "filters", filters)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if max_size is not None:
@@ -429,6 +449,18 @@ class _OceanImportState:
     @desired_capacity.setter
     def desired_capacity(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "desired_capacity", value)
+
+    @property
+    @pulumi.getter
+    def filters(self) -> Optional[pulumi.Input['OceanImportFiltersArgs']]:
+        """
+        List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
+        """
+        return pulumi.get(self, "filters")
+
+    @filters.setter
+    def filters(self, value: Optional[pulumi.Input['OceanImportFiltersArgs']]):
+        pulumi.set(self, "filters", value)
 
     @property
     @pulumi.getter
@@ -559,6 +591,7 @@ class OceanImport(pulumi.CustomResource):
                  cluster_name: Optional[pulumi.Input[str]] = None,
                  controller_cluster_id: Optional[pulumi.Input[str]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
+                 filters: Optional[pulumi.Input[Union['OceanImportFiltersArgs', 'OceanImportFiltersArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
@@ -588,6 +621,17 @@ class OceanImport(pulumi.CustomResource):
                 "n1-standard-1",
                 "n1-standard-2",
             ],
+            filters={
+                "exclude_families": ["n2"],
+                "include_families": [
+                    "c2",
+                    "c3",
+                ],
+                "min_memory_gib": 8,
+                "max_memory_gib": 16,
+                "min_vcpu": 2,
+                "max_vcpu": 16,
+            },
             backend_services=[{
                 "service_name": "example-backend-service",
                 "location_type": "regional",
@@ -616,6 +660,7 @@ class OceanImport(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_name: The GKE cluster name.
         :param pulumi.Input[str] controller_cluster_id: A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
         :param pulumi.Input[int] desired_capacity: The number of instances to launch and maintain in the cluster.
+        :param pulumi.Input[Union['OceanImportFiltersArgs', 'OceanImportFiltersArgsDict']] filters: List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
         :param pulumi.Input[str] location: The zone the master cluster is located in.
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
@@ -650,6 +695,17 @@ class OceanImport(pulumi.CustomResource):
                 "n1-standard-1",
                 "n1-standard-2",
             ],
+            filters={
+                "exclude_families": ["n2"],
+                "include_families": [
+                    "c2",
+                    "c3",
+                ],
+                "min_memory_gib": 8,
+                "max_memory_gib": 16,
+                "min_vcpu": 2,
+                "max_vcpu": 16,
+            },
             backend_services=[{
                 "service_name": "example-backend-service",
                 "location_type": "regional",
@@ -691,6 +747,7 @@ class OceanImport(pulumi.CustomResource):
                  cluster_name: Optional[pulumi.Input[str]] = None,
                  controller_cluster_id: Optional[pulumi.Input[str]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
+                 filters: Optional[pulumi.Input[Union['OceanImportFiltersArgs', 'OceanImportFiltersArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
@@ -718,6 +775,7 @@ class OceanImport(pulumi.CustomResource):
             __props__.__dict__["cluster_name"] = cluster_name
             __props__.__dict__["controller_cluster_id"] = controller_cluster_id
             __props__.__dict__["desired_capacity"] = desired_capacity
+            __props__.__dict__["filters"] = filters
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
@@ -748,6 +806,7 @@ class OceanImport(pulumi.CustomResource):
             cluster_name: Optional[pulumi.Input[str]] = None,
             controller_cluster_id: Optional[pulumi.Input[str]] = None,
             desired_capacity: Optional[pulumi.Input[int]] = None,
+            filters: Optional[pulumi.Input[Union['OceanImportFiltersArgs', 'OceanImportFiltersArgsDict']]] = None,
             location: Optional[pulumi.Input[str]] = None,
             max_size: Optional[pulumi.Input[int]] = None,
             min_size: Optional[pulumi.Input[int]] = None,
@@ -771,6 +830,7 @@ class OceanImport(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_name: The GKE cluster name.
         :param pulumi.Input[str] controller_cluster_id: A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
         :param pulumi.Input[int] desired_capacity: The number of instances to launch and maintain in the cluster.
+        :param pulumi.Input[Union['OceanImportFiltersArgs', 'OceanImportFiltersArgsDict']] filters: List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
         :param pulumi.Input[str] location: The zone the master cluster is located in.
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
@@ -792,6 +852,7 @@ class OceanImport(pulumi.CustomResource):
         __props__.__dict__["cluster_name"] = cluster_name
         __props__.__dict__["controller_cluster_id"] = controller_cluster_id
         __props__.__dict__["desired_capacity"] = desired_capacity
+        __props__.__dict__["filters"] = filters
         __props__.__dict__["location"] = location
         __props__.__dict__["max_size"] = max_size
         __props__.__dict__["min_size"] = min_size
@@ -856,6 +917,14 @@ class OceanImport(pulumi.CustomResource):
         The number of instances to launch and maintain in the cluster.
         """
         return pulumi.get(self, "desired_capacity")
+
+    @property
+    @pulumi.getter
+    def filters(self) -> pulumi.Output[Optional['outputs.OceanImportFilters']]:
+        """
+        List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
+        """
+        return pulumi.get(self, "filters")
 
     @property
     @pulumi.getter

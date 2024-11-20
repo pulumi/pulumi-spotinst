@@ -18,6 +18,10 @@ namespace Pulumi.SpotInst.Gke.Outputs
         /// </summary>
         public readonly int? EvaluationPeriods;
         /// <summary>
+        /// When set to 'true', the Aggressive Scale Down feature is enabled.
+        /// </summary>
+        public readonly bool? IsAggressiveScaleDownEnabled;
+        /// <summary>
         /// Would represent the maximum % to scale-down. Number between 1-100.
         /// </summary>
         public readonly double? MaxScaleDownPercentage;
@@ -26,9 +30,12 @@ namespace Pulumi.SpotInst.Gke.Outputs
         private OceanImportAutoscalerDown(
             int? evaluationPeriods,
 
+            bool? isAggressiveScaleDownEnabled,
+
             double? maxScaleDownPercentage)
         {
             EvaluationPeriods = evaluationPeriods;
+            IsAggressiveScaleDownEnabled = isAggressiveScaleDownEnabled;
             MaxScaleDownPercentage = maxScaleDownPercentage;
         }
     }

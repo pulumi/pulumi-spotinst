@@ -43,6 +43,7 @@ __all__ = [
     'OceanImportAutoscalerResourceLimits',
     'OceanImportBackendService',
     'OceanImportBackendServiceNamedPort',
+    'OceanImportFilters',
     'OceanImportScheduledTask',
     'OceanImportScheduledTaskShutdownHours',
     'OceanImportScheduledTaskTask',
@@ -1262,6 +1263,8 @@ class OceanImportAutoscalerDown(dict):
         suggest = None
         if key == "evaluationPeriods":
             suggest = "evaluation_periods"
+        elif key == "isAggressiveScaleDownEnabled":
+            suggest = "is_aggressive_scale_down_enabled"
         elif key == "maxScaleDownPercentage":
             suggest = "max_scale_down_percentage"
 
@@ -1278,13 +1281,17 @@ class OceanImportAutoscalerDown(dict):
 
     def __init__(__self__, *,
                  evaluation_periods: Optional[int] = None,
+                 is_aggressive_scale_down_enabled: Optional[bool] = None,
                  max_scale_down_percentage: Optional[float] = None):
         """
         :param int evaluation_periods: The number of evaluation periods that should accumulate before a scale down action takes place.
+        :param bool is_aggressive_scale_down_enabled: When set to 'true', the Aggressive Scale Down feature is enabled.
         :param float max_scale_down_percentage: Would represent the maximum % to scale-down. Number between 1-100.
         """
         if evaluation_periods is not None:
             pulumi.set(__self__, "evaluation_periods", evaluation_periods)
+        if is_aggressive_scale_down_enabled is not None:
+            pulumi.set(__self__, "is_aggressive_scale_down_enabled", is_aggressive_scale_down_enabled)
         if max_scale_down_percentage is not None:
             pulumi.set(__self__, "max_scale_down_percentage", max_scale_down_percentage)
 
@@ -1295,6 +1302,14 @@ class OceanImportAutoscalerDown(dict):
         The number of evaluation periods that should accumulate before a scale down action takes place.
         """
         return pulumi.get(self, "evaluation_periods")
+
+    @property
+    @pulumi.getter(name="isAggressiveScaleDownEnabled")
+    def is_aggressive_scale_down_enabled(self) -> Optional[bool]:
+        """
+        When set to 'true', the Aggressive Scale Down feature is enabled.
+        """
+        return pulumi.get(self, "is_aggressive_scale_down_enabled")
 
     @property
     @pulumi.getter(name="maxScaleDownPercentage")
@@ -1527,6 +1542,112 @@ class OceanImportBackendServiceNamedPort(dict):
         A list of ports.
         """
         return pulumi.get(self, "ports")
+
+
+@pulumi.output_type
+class OceanImportFilters(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "excludeFamilies":
+            suggest = "exclude_families"
+        elif key == "includeFamilies":
+            suggest = "include_families"
+        elif key == "maxMemoryGib":
+            suggest = "max_memory_gib"
+        elif key == "maxVcpu":
+            suggest = "max_vcpu"
+        elif key == "minMemoryGib":
+            suggest = "min_memory_gib"
+        elif key == "minVcpu":
+            suggest = "min_vcpu"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanImportFilters. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanImportFilters.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanImportFilters.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 exclude_families: Optional[Sequence[str]] = None,
+                 include_families: Optional[Sequence[str]] = None,
+                 max_memory_gib: Optional[float] = None,
+                 max_vcpu: Optional[int] = None,
+                 min_memory_gib: Optional[float] = None,
+                 min_vcpu: Optional[int] = None):
+        """
+        :param Sequence[str] exclude_families: Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
+        :param Sequence[str] include_families: Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
+        :param float max_memory_gib: Maximum amount of Memory (GiB).
+        :param int max_vcpu: Maximum number of vcpus available.
+        :param float min_memory_gib: Minimum amount of Memory (GiB).
+        :param int min_vcpu: Minimum number of vcpus available.
+        """
+        if exclude_families is not None:
+            pulumi.set(__self__, "exclude_families", exclude_families)
+        if include_families is not None:
+            pulumi.set(__self__, "include_families", include_families)
+        if max_memory_gib is not None:
+            pulumi.set(__self__, "max_memory_gib", max_memory_gib)
+        if max_vcpu is not None:
+            pulumi.set(__self__, "max_vcpu", max_vcpu)
+        if min_memory_gib is not None:
+            pulumi.set(__self__, "min_memory_gib", min_memory_gib)
+        if min_vcpu is not None:
+            pulumi.set(__self__, "min_vcpu", min_vcpu)
+
+    @property
+    @pulumi.getter(name="excludeFamilies")
+    def exclude_families(self) -> Optional[Sequence[str]]:
+        """
+        Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
+        """
+        return pulumi.get(self, "exclude_families")
+
+    @property
+    @pulumi.getter(name="includeFamilies")
+    def include_families(self) -> Optional[Sequence[str]]:
+        """
+        Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
+        """
+        return pulumi.get(self, "include_families")
+
+    @property
+    @pulumi.getter(name="maxMemoryGib")
+    def max_memory_gib(self) -> Optional[float]:
+        """
+        Maximum amount of Memory (GiB).
+        """
+        return pulumi.get(self, "max_memory_gib")
+
+    @property
+    @pulumi.getter(name="maxVcpu")
+    def max_vcpu(self) -> Optional[int]:
+        """
+        Maximum number of vcpus available.
+        """
+        return pulumi.get(self, "max_vcpu")
+
+    @property
+    @pulumi.getter(name="minMemoryGib")
+    def min_memory_gib(self) -> Optional[float]:
+        """
+        Minimum amount of Memory (GiB).
+        """
+        return pulumi.get(self, "min_memory_gib")
+
+    @property
+    @pulumi.getter(name="minVcpu")
+    def min_vcpu(self) -> Optional[int]:
+        """
+        Minimum number of vcpus available.
+        """
+        return pulumi.get(self, "min_vcpu")
 
 
 @pulumi.output_type

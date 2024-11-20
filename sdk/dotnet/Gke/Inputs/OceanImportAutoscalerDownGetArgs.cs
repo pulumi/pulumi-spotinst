@@ -19,6 +19,12 @@ namespace Pulumi.SpotInst.Gke.Inputs
         public Input<int>? EvaluationPeriods { get; set; }
 
         /// <summary>
+        /// When set to 'true', the Aggressive Scale Down feature is enabled.
+        /// </summary>
+        [Input("isAggressiveScaleDownEnabled")]
+        public Input<bool>? IsAggressiveScaleDownEnabled { get; set; }
+
+        /// <summary>
         /// Would represent the maximum % to scale-down. Number between 1-100.
         /// </summary>
         [Input("maxScaleDownPercentage")]
