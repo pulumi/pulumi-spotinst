@@ -12,6 +12,7 @@ import com.pulumi.spotinst.gke.OceanImportArgs;
 import com.pulumi.spotinst.gke.inputs.OceanImportState;
 import com.pulumi.spotinst.gke.outputs.OceanImportAutoscaler;
 import com.pulumi.spotinst.gke.outputs.OceanImportBackendService;
+import com.pulumi.spotinst.gke.outputs.OceanImportFilters;
 import com.pulumi.spotinst.gke.outputs.OceanImportScheduledTask;
 import com.pulumi.spotinst.gke.outputs.OceanImportShieldedInstanceConfig;
 import com.pulumi.spotinst.gke.outputs.OceanImportStrategy;
@@ -36,6 +37,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.spotinst.gke.OceanImport;
  * import com.pulumi.spotinst.gke.OceanImportArgs;
+ * import com.pulumi.spotinst.gke.inputs.OceanImportFiltersArgs;
  * import com.pulumi.spotinst.gke.inputs.OceanImportBackendServiceArgs;
  * import com.pulumi.spotinst.gke.inputs.OceanImportShieldedInstanceConfigArgs;
  * import java.util.List;
@@ -61,6 +63,16 @@ import javax.annotation.Nullable;
  *             .whitelists(            
  *                 "n1-standard-1",
  *                 "n1-standard-2")
+ *             .filters(OceanImportFiltersArgs.builder()
+ *                 .excludeFamilies("n2")
+ *                 .includeFamilies(                
+ *                     "c2",
+ *                     "c3")
+ *                 .minMemoryGib(8)
+ *                 .maxMemoryGib(16)
+ *                 .minVcpu(2)
+ *                 .maxVcpu(16)
+ *                 .build())
  *             .backendServices(OceanImportBackendServiceArgs.builder()
  *                 .serviceName("example-backend-service")
  *                 .locationType("regional")
@@ -178,6 +190,20 @@ public class OceanImport extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> desiredCapacity() {
         return this.desiredCapacity;
+    }
+    /**
+     * List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured together with whitelist/blacklist.
+     * 
+     */
+    @Export(name="filters", refs={OceanImportFilters.class}, tree="[0]")
+    private Output</* @Nullable */ OceanImportFilters> filters;
+
+    /**
+     * @return List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured together with whitelist/blacklist.
+     * 
+     */
+    public Output<Optional<OceanImportFilters>> filters() {
+        return Codegen.optional(this.filters);
     }
     /**
      * The zone the master cluster is located in.

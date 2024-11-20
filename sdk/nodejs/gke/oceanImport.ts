@@ -24,6 +24,17 @@ import * as utilities from "../utilities";
  *         "n1-standard-1",
  *         "n1-standard-2",
  *     ],
+ *     filters: {
+ *         excludeFamilies: ["n2"],
+ *         includeFamilies: [
+ *             "c2",
+ *             "c3",
+ *         ],
+ *         minMemoryGib: 8,
+ *         maxMemoryGib: 16,
+ *         minVcpu: 2,
+ *         maxVcpu: 16,
+ *     },
  *     backendServices: [{
  *         serviceName: "example-backend-service",
  *         locationType: "regional",
@@ -99,6 +110,10 @@ export class OceanImport extends pulumi.CustomResource {
      */
     public readonly desiredCapacity!: pulumi.Output<number>;
     /**
+     * List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
+     */
+    public readonly filters!: pulumi.Output<outputs.gke.OceanImportFilters | undefined>;
+    /**
      * The zone the master cluster is located in.
      */
     public readonly location!: pulumi.Output<string>;
@@ -156,6 +171,7 @@ export class OceanImport extends pulumi.CustomResource {
             resourceInputs["clusterName"] = state ? state.clusterName : undefined;
             resourceInputs["controllerClusterId"] = state ? state.controllerClusterId : undefined;
             resourceInputs["desiredCapacity"] = state ? state.desiredCapacity : undefined;
+            resourceInputs["filters"] = state ? state.filters : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["maxSize"] = state ? state.maxSize : undefined;
             resourceInputs["minSize"] = state ? state.minSize : undefined;
@@ -180,6 +196,7 @@ export class OceanImport extends pulumi.CustomResource {
             resourceInputs["clusterName"] = args ? args.clusterName : undefined;
             resourceInputs["controllerClusterId"] = args ? args.controllerClusterId : undefined;
             resourceInputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
+            resourceInputs["filters"] = args ? args.filters : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["maxSize"] = args ? args.maxSize : undefined;
             resourceInputs["minSize"] = args ? args.minSize : undefined;
@@ -226,6 +243,10 @@ export interface OceanImportState {
      * The number of instances to launch and maintain in the cluster.
      */
     desiredCapacity?: pulumi.Input<number>;
+    /**
+     * List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
+     */
+    filters?: pulumi.Input<inputs.gke.OceanImportFilters>;
     /**
      * The zone the master cluster is located in.
      */
@@ -293,6 +314,10 @@ export interface OceanImportArgs {
      * The number of instances to launch and maintain in the cluster.
      */
     desiredCapacity?: pulumi.Input<number>;
+    /**
+     * List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
+     */
+    filters?: pulumi.Input<inputs.gke.OceanImportFilters>;
     /**
      * The zone the master cluster is located in.
      */

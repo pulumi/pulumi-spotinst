@@ -69,6 +69,8 @@ __all__ = [
     'OceanImportBackendServiceArgsDict',
     'OceanImportBackendServiceNamedPortArgs',
     'OceanImportBackendServiceNamedPortArgsDict',
+    'OceanImportFiltersArgs',
+    'OceanImportFiltersArgsDict',
     'OceanImportScheduledTaskArgs',
     'OceanImportScheduledTaskArgsDict',
     'OceanImportScheduledTaskShutdownHoursArgs',
@@ -1641,6 +1643,10 @@ if not MYPY:
         """
         The number of evaluation periods that should accumulate before a scale down action takes place.
         """
+        is_aggressive_scale_down_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        When set to 'true', the Aggressive Scale Down feature is enabled.
+        """
         max_scale_down_percentage: NotRequired[pulumi.Input[float]]
         """
         Would represent the maximum % to scale-down. Number between 1-100.
@@ -1652,13 +1658,17 @@ elif False:
 class OceanImportAutoscalerDownArgs:
     def __init__(__self__, *,
                  evaluation_periods: Optional[pulumi.Input[int]] = None,
+                 is_aggressive_scale_down_enabled: Optional[pulumi.Input[bool]] = None,
                  max_scale_down_percentage: Optional[pulumi.Input[float]] = None):
         """
         :param pulumi.Input[int] evaluation_periods: The number of evaluation periods that should accumulate before a scale down action takes place.
+        :param pulumi.Input[bool] is_aggressive_scale_down_enabled: When set to 'true', the Aggressive Scale Down feature is enabled.
         :param pulumi.Input[float] max_scale_down_percentage: Would represent the maximum % to scale-down. Number between 1-100.
         """
         if evaluation_periods is not None:
             pulumi.set(__self__, "evaluation_periods", evaluation_periods)
+        if is_aggressive_scale_down_enabled is not None:
+            pulumi.set(__self__, "is_aggressive_scale_down_enabled", is_aggressive_scale_down_enabled)
         if max_scale_down_percentage is not None:
             pulumi.set(__self__, "max_scale_down_percentage", max_scale_down_percentage)
 
@@ -1673,6 +1683,18 @@ class OceanImportAutoscalerDownArgs:
     @evaluation_periods.setter
     def evaluation_periods(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "evaluation_periods", value)
+
+    @property
+    @pulumi.getter(name="isAggressiveScaleDownEnabled")
+    def is_aggressive_scale_down_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When set to 'true', the Aggressive Scale Down feature is enabled.
+        """
+        return pulumi.get(self, "is_aggressive_scale_down_enabled")
+
+    @is_aggressive_scale_down_enabled.setter
+    def is_aggressive_scale_down_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_aggressive_scale_down_enabled", value)
 
     @property
     @pulumi.getter(name="maxScaleDownPercentage")
@@ -1956,6 +1978,138 @@ class OceanImportBackendServiceNamedPortArgs:
     @ports.setter
     def ports(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "ports", value)
+
+
+if not MYPY:
+    class OceanImportFiltersArgsDict(TypedDict):
+        exclude_families: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
+        """
+        include_families: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
+        """
+        max_memory_gib: NotRequired[pulumi.Input[float]]
+        """
+        Maximum amount of Memory (GiB).
+        """
+        max_vcpu: NotRequired[pulumi.Input[int]]
+        """
+        Maximum number of vcpus available.
+        """
+        min_memory_gib: NotRequired[pulumi.Input[float]]
+        """
+        Minimum amount of Memory (GiB).
+        """
+        min_vcpu: NotRequired[pulumi.Input[int]]
+        """
+        Minimum number of vcpus available.
+        """
+elif False:
+    OceanImportFiltersArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OceanImportFiltersArgs:
+    def __init__(__self__, *,
+                 exclude_families: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 include_families: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 max_memory_gib: Optional[pulumi.Input[float]] = None,
+                 max_vcpu: Optional[pulumi.Input[int]] = None,
+                 min_memory_gib: Optional[pulumi.Input[float]] = None,
+                 min_vcpu: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_families: Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] include_families: Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
+        :param pulumi.Input[float] max_memory_gib: Maximum amount of Memory (GiB).
+        :param pulumi.Input[int] max_vcpu: Maximum number of vcpus available.
+        :param pulumi.Input[float] min_memory_gib: Minimum amount of Memory (GiB).
+        :param pulumi.Input[int] min_vcpu: Minimum number of vcpus available.
+        """
+        if exclude_families is not None:
+            pulumi.set(__self__, "exclude_families", exclude_families)
+        if include_families is not None:
+            pulumi.set(__self__, "include_families", include_families)
+        if max_memory_gib is not None:
+            pulumi.set(__self__, "max_memory_gib", max_memory_gib)
+        if max_vcpu is not None:
+            pulumi.set(__self__, "max_vcpu", max_vcpu)
+        if min_memory_gib is not None:
+            pulumi.set(__self__, "min_memory_gib", min_memory_gib)
+        if min_vcpu is not None:
+            pulumi.set(__self__, "min_vcpu", min_vcpu)
+
+    @property
+    @pulumi.getter(name="excludeFamilies")
+    def exclude_families(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
+        """
+        return pulumi.get(self, "exclude_families")
+
+    @exclude_families.setter
+    def exclude_families(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "exclude_families", value)
+
+    @property
+    @pulumi.getter(name="includeFamilies")
+    def include_families(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
+        """
+        return pulumi.get(self, "include_families")
+
+    @include_families.setter
+    def include_families(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "include_families", value)
+
+    @property
+    @pulumi.getter(name="maxMemoryGib")
+    def max_memory_gib(self) -> Optional[pulumi.Input[float]]:
+        """
+        Maximum amount of Memory (GiB).
+        """
+        return pulumi.get(self, "max_memory_gib")
+
+    @max_memory_gib.setter
+    def max_memory_gib(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "max_memory_gib", value)
+
+    @property
+    @pulumi.getter(name="maxVcpu")
+    def max_vcpu(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of vcpus available.
+        """
+        return pulumi.get(self, "max_vcpu")
+
+    @max_vcpu.setter
+    def max_vcpu(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_vcpu", value)
+
+    @property
+    @pulumi.getter(name="minMemoryGib")
+    def min_memory_gib(self) -> Optional[pulumi.Input[float]]:
+        """
+        Minimum amount of Memory (GiB).
+        """
+        return pulumi.get(self, "min_memory_gib")
+
+    @min_memory_gib.setter
+    def min_memory_gib(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "min_memory_gib", value)
+
+    @property
+    @pulumi.getter(name="minVcpu")
+    def min_vcpu(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum number of vcpus available.
+        """
+        return pulumi.get(self, "min_vcpu")
+
+    @min_vcpu.setter
+    def min_vcpu(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_vcpu", value)
 
 
 if not MYPY:

@@ -37,6 +37,19 @@ import (
 //					pulumi.String("n1-standard-1"),
 //					pulumi.String("n1-standard-2"),
 //				},
+//				Filters: &gke.OceanImportFiltersArgs{
+//					ExcludeFamilies: pulumi.StringArray{
+//						pulumi.String("n2"),
+//					},
+//					IncludeFamilies: pulumi.StringArray{
+//						pulumi.String("c2"),
+//						pulumi.String("c3"),
+//					},
+//					MinMemoryGib: pulumi.Float64(8),
+//					MaxMemoryGib: pulumi.Float64(16),
+//					MinVcpu:      pulumi.Int(2),
+//					MaxVcpu:      pulumi.Int(16),
+//				},
 //				BackendServices: gke.OceanImportBackendServiceArray{
 //					&gke.OceanImportBackendServiceArgs{
 //						ServiceName:  pulumi.String("example-backend-service"),
@@ -84,6 +97,8 @@ type OceanImport struct {
 	ControllerClusterId pulumi.StringOutput `pulumi:"controllerClusterId"`
 	// The number of instances to launch and maintain in the cluster.
 	DesiredCapacity pulumi.IntOutput `pulumi:"desiredCapacity"`
+	// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
+	Filters OceanImportFiltersPtrOutput `pulumi:"filters"`
 	// The zone the master cluster is located in.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The upper limit of instances the cluster can scale up to.
@@ -154,6 +169,8 @@ type oceanImportState struct {
 	ControllerClusterId *string `pulumi:"controllerClusterId"`
 	// The number of instances to launch and maintain in the cluster.
 	DesiredCapacity *int `pulumi:"desiredCapacity"`
+	// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
+	Filters *OceanImportFilters `pulumi:"filters"`
 	// The zone the master cluster is located in.
 	Location *string `pulumi:"location"`
 	// The upper limit of instances the cluster can scale up to.
@@ -189,6 +206,8 @@ type OceanImportState struct {
 	ControllerClusterId pulumi.StringPtrInput
 	// The number of instances to launch and maintain in the cluster.
 	DesiredCapacity pulumi.IntPtrInput
+	// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
+	Filters OceanImportFiltersPtrInput
 	// The zone the master cluster is located in.
 	Location pulumi.StringPtrInput
 	// The upper limit of instances the cluster can scale up to.
@@ -227,6 +246,8 @@ type oceanImportArgs struct {
 	ControllerClusterId *string `pulumi:"controllerClusterId"`
 	// The number of instances to launch and maintain in the cluster.
 	DesiredCapacity *int `pulumi:"desiredCapacity"`
+	// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
+	Filters *OceanImportFilters `pulumi:"filters"`
 	// The zone the master cluster is located in.
 	Location string `pulumi:"location"`
 	// The upper limit of instances the cluster can scale up to.
@@ -262,6 +283,8 @@ type OceanImportArgs struct {
 	ControllerClusterId pulumi.StringPtrInput
 	// The number of instances to launch and maintain in the cluster.
 	DesiredCapacity pulumi.IntPtrInput
+	// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
+	Filters OceanImportFiltersPtrInput
 	// The zone the master cluster is located in.
 	Location pulumi.StringInput
 	// The upper limit of instances the cluster can scale up to.
@@ -402,6 +425,11 @@ func (o OceanImportOutput) ControllerClusterId() pulumi.StringOutput {
 // The number of instances to launch and maintain in the cluster.
 func (o OceanImportOutput) DesiredCapacity() pulumi.IntOutput {
 	return o.ApplyT(func(v *OceanImport) pulumi.IntOutput { return v.DesiredCapacity }).(pulumi.IntOutput)
+}
+
+// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
+func (o OceanImportOutput) Filters() OceanImportFiltersPtrOutput {
+	return o.ApplyT(func(v *OceanImport) OceanImportFiltersPtrOutput { return v.Filters }).(OceanImportFiltersPtrOutput)
 }
 
 // The zone the master cluster is located in.

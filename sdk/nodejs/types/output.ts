@@ -4763,6 +4763,10 @@ export namespace gke {
          */
         evaluationPeriods?: number;
         /**
+         * When set to 'true', the Aggressive Scale Down feature is enabled.
+         */
+        isAggressiveScaleDownEnabled?: boolean;
+        /**
          * Would represent the maximum % to scale-down. Number between 1-100.
          */
         maxScaleDownPercentage?: number;
@@ -4820,6 +4824,33 @@ export namespace gke {
          * A list of ports.
          */
         ports: string[];
+    }
+
+    export interface OceanImportFilters {
+        /**
+         * Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
+         */
+        excludeFamilies?: string[];
+        /**
+         * Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
+         */
+        includeFamilies?: string[];
+        /**
+         * Maximum amount of Memory (GiB).
+         */
+        maxMemoryGib?: number;
+        /**
+         * Maximum number of vcpus available.
+         */
+        maxVcpu?: number;
+        /**
+         * Minimum amount of Memory (GiB).
+         */
+        minMemoryGib?: number;
+        /**
+         * Minimum number of vcpus available.
+         */
+        minVcpu?: number;
     }
 
     export interface OceanImportScheduledTask {
