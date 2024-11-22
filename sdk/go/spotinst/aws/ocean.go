@@ -77,6 +77,8 @@ type Ocean struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The region the cluster will run in.
 	Region pulumi.StringPtrOutput `pulumi:"region"`
+	// Specifies the count of ENIs to reserve per instance type for scaling purposes.
+	ReservedEnis pulumi.IntPtrOutput `pulumi:"reservedEnis"`
 	// Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
 	ResourceTagSpecifications OceanResourceTagSpecificationArrayOutput `pulumi:"resourceTagSpecifications"`
 	// The size (in Gb) to allocate for the root volume. Minimum `20`.
@@ -197,6 +199,8 @@ type oceanState struct {
 	Name *string `pulumi:"name"`
 	// The region the cluster will run in.
 	Region *string `pulumi:"region"`
+	// Specifies the count of ENIs to reserve per instance type for scaling purposes.
+	ReservedEnis *int `pulumi:"reservedEnis"`
 	// Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
 	ResourceTagSpecifications []OceanResourceTagSpecification `pulumi:"resourceTagSpecifications"`
 	// The size (in Gb) to allocate for the root volume. Minimum `20`.
@@ -279,6 +283,8 @@ type OceanState struct {
 	Name pulumi.StringPtrInput
 	// The region the cluster will run in.
 	Region pulumi.StringPtrInput
+	// Specifies the count of ENIs to reserve per instance type for scaling purposes.
+	ReservedEnis pulumi.IntPtrInput
 	// Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
 	ResourceTagSpecifications OceanResourceTagSpecificationArrayInput
 	// The size (in Gb) to allocate for the root volume. Minimum `20`.
@@ -365,6 +371,8 @@ type oceanArgs struct {
 	Name *string `pulumi:"name"`
 	// The region the cluster will run in.
 	Region *string `pulumi:"region"`
+	// Specifies the count of ENIs to reserve per instance type for scaling purposes.
+	ReservedEnis *int `pulumi:"reservedEnis"`
 	// Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
 	ResourceTagSpecifications []OceanResourceTagSpecification `pulumi:"resourceTagSpecifications"`
 	// The size (in Gb) to allocate for the root volume. Minimum `20`.
@@ -448,6 +456,8 @@ type OceanArgs struct {
 	Name pulumi.StringPtrInput
 	// The region the cluster will run in.
 	Region pulumi.StringPtrInput
+	// Specifies the count of ENIs to reserve per instance type for scaling purposes.
+	ReservedEnis pulumi.IntPtrInput
 	// Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
 	ResourceTagSpecifications OceanResourceTagSpecificationArrayInput
 	// The size (in Gb) to allocate for the root volume. Minimum `20`.
@@ -695,6 +705,11 @@ func (o OceanOutput) Name() pulumi.StringOutput {
 // The region the cluster will run in.
 func (o OceanOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Ocean) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the count of ENIs to reserve per instance type for scaling purposes.
+func (o OceanOutput) ReservedEnis() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Ocean) pulumi.IntPtrOutput { return v.ReservedEnis }).(pulumi.IntPtrOutput)
 }
 
 // Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.

@@ -179,6 +179,12 @@ namespace Pulumi.SpotInst.Aws
         public Output<string?> Region { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies the count of ENIs to reserve per instance type for scaling purposes.
+        /// </summary>
+        [Output("reservedEnis")]
+        public Output<int?> ReservedEnis { get; private set; } = null!;
+
+        /// <summary>
         /// Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
         /// </summary>
         [Output("resourceTagSpecifications")]
@@ -491,6 +497,12 @@ namespace Pulumi.SpotInst.Aws
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        /// <summary>
+        /// Specifies the count of ENIs to reserve per instance type for scaling purposes.
+        /// </summary>
+        [Input("reservedEnis")]
+        public Input<int>? ReservedEnis { get; set; }
+
         [Input("resourceTagSpecifications")]
         private InputList<Inputs.OceanResourceTagSpecificationArgs>? _resourceTagSpecifications;
 
@@ -800,6 +812,12 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// Specifies the count of ENIs to reserve per instance type for scaling purposes.
+        /// </summary>
+        [Input("reservedEnis")]
+        public Input<int>? ReservedEnis { get; set; }
 
         [Input("resourceTagSpecifications")]
         private InputList<Inputs.OceanResourceTagSpecificationGetArgs>? _resourceTagSpecifications;

@@ -317,6 +317,21 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.preferredSpotTypes);
     }
 
+    /**
+     * Specifies the count of ENIs to reserve per instance type for scaling purposes.
+     * 
+     */
+    @Import(name="reservedEnis")
+    private @Nullable Output<Integer> reservedEnis;
+
+    /**
+     * @return Specifies the count of ENIs to reserve per instance type for scaling purposes.
+     * 
+     */
+    public Optional<Output<Integer>> reservedEnis() {
+        return Optional.ofNullable(this.reservedEnis);
+    }
+
     @Import(name="resourceLimits")
     private @Nullable Output<List<OceanLaunchSpecResourceLimitArgs>> resourceLimits;
 
@@ -496,6 +511,7 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
         this.oceanId = $.oceanId;
         this.preferredOdTypes = $.preferredOdTypes;
         this.preferredSpotTypes = $.preferredSpotTypes;
+        this.reservedEnis = $.reservedEnis;
         this.resourceLimits = $.resourceLimits;
         this.restrictScaleDown = $.restrictScaleDown;
         this.rootVolumeSize = $.rootVolumeSize;
@@ -1019,6 +1035,27 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
          */
         public Builder preferredSpotTypes(String... preferredSpotTypes) {
             return preferredSpotTypes(List.of(preferredSpotTypes));
+        }
+
+        /**
+         * @param reservedEnis Specifies the count of ENIs to reserve per instance type for scaling purposes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservedEnis(@Nullable Output<Integer> reservedEnis) {
+            $.reservedEnis = reservedEnis;
+            return this;
+        }
+
+        /**
+         * @param reservedEnis Specifies the count of ENIs to reserve per instance type for scaling purposes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservedEnis(Integer reservedEnis) {
+            return reservedEnis(Output.of(reservedEnis));
         }
 
         public Builder resourceLimits(@Nullable Output<List<OceanLaunchSpecResourceLimitArgs>> resourceLimits) {

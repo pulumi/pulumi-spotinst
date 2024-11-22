@@ -41,6 +41,7 @@ class OceanLaunchSpecArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  preferred_od_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preferred_spot_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 reserved_enis: Optional[pulumi.Input[int]] = None,
                  resource_limits: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecResourceLimitArgs']]]] = None,
                  restrict_scale_down: Optional[pulumi.Input[bool]] = None,
                  root_volume_size: Optional[pulumi.Input[int]] = None,
@@ -74,6 +75,7 @@ class OceanLaunchSpecArgs:
         :param pulumi.Input[str] name: The name of the Virtual Node Group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_od_types: A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_spot_types: A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+        :param pulumi.Input[int] reserved_enis: Specifies the count of ENIs to reserve per instance type for scaling purposes.
         :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to `true`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[int] root_volume_size: Set root volume size (in GB).
         :param pulumi.Input['OceanLaunchSpecSchedulingShutdownHoursArgs'] scheduling_shutdown_hours: Used to specify times that the nodes in the virtual node group will be taken down.
@@ -123,6 +125,8 @@ class OceanLaunchSpecArgs:
             pulumi.set(__self__, "preferred_od_types", preferred_od_types)
         if preferred_spot_types is not None:
             pulumi.set(__self__, "preferred_spot_types", preferred_spot_types)
+        if reserved_enis is not None:
+            pulumi.set(__self__, "reserved_enis", reserved_enis)
         if resource_limits is not None:
             pulumi.set(__self__, "resource_limits", resource_limits)
         if restrict_scale_down is not None:
@@ -382,6 +386,18 @@ class OceanLaunchSpecArgs:
         pulumi.set(self, "preferred_spot_types", value)
 
     @property
+    @pulumi.getter(name="reservedEnis")
+    def reserved_enis(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies the count of ENIs to reserve per instance type for scaling purposes.
+        """
+        return pulumi.get(self, "reserved_enis")
+
+    @reserved_enis.setter
+    def reserved_enis(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "reserved_enis", value)
+
+    @property
     @pulumi.getter(name="resourceLimits")
     def resource_limits(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecResourceLimitArgs']]]]:
         return pulumi.get(self, "resource_limits")
@@ -540,6 +556,7 @@ class _OceanLaunchSpecState:
                  ocean_id: Optional[pulumi.Input[str]] = None,
                  preferred_od_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preferred_spot_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 reserved_enis: Optional[pulumi.Input[int]] = None,
                  resource_limits: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecResourceLimitArgs']]]] = None,
                  restrict_scale_down: Optional[pulumi.Input[bool]] = None,
                  root_volume_size: Optional[pulumi.Input[int]] = None,
@@ -573,6 +590,7 @@ class _OceanLaunchSpecState:
         :param pulumi.Input[str] ocean_id: The ID of the Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_od_types: A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_spot_types: A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+        :param pulumi.Input[int] reserved_enis: Specifies the count of ENIs to reserve per instance type for scaling purposes.
         :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to `true`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[int] root_volume_size: Set root volume size (in GB).
         :param pulumi.Input['OceanLaunchSpecSchedulingShutdownHoursArgs'] scheduling_shutdown_hours: Used to specify times that the nodes in the virtual node group will be taken down.
@@ -623,6 +641,8 @@ class _OceanLaunchSpecState:
             pulumi.set(__self__, "preferred_od_types", preferred_od_types)
         if preferred_spot_types is not None:
             pulumi.set(__self__, "preferred_spot_types", preferred_spot_types)
+        if reserved_enis is not None:
+            pulumi.set(__self__, "reserved_enis", reserved_enis)
         if resource_limits is not None:
             pulumi.set(__self__, "resource_limits", resource_limits)
         if restrict_scale_down is not None:
@@ -882,6 +902,18 @@ class _OceanLaunchSpecState:
         pulumi.set(self, "preferred_spot_types", value)
 
     @property
+    @pulumi.getter(name="reservedEnis")
+    def reserved_enis(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies the count of ENIs to reserve per instance type for scaling purposes.
+        """
+        return pulumi.get(self, "reserved_enis")
+
+    @reserved_enis.setter
+    def reserved_enis(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "reserved_enis", value)
+
+    @property
     @pulumi.getter(name="resourceLimits")
     def resource_limits(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecResourceLimitArgs']]]]:
         return pulumi.get(self, "resource_limits")
@@ -1042,6 +1074,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  ocean_id: Optional[pulumi.Input[str]] = None,
                  preferred_od_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preferred_spot_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 reserved_enis: Optional[pulumi.Input[int]] = None,
                  resource_limits: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecResourceLimitArgs', 'OceanLaunchSpecResourceLimitArgsDict']]]]] = None,
                  restrict_scale_down: Optional[pulumi.Input[bool]] = None,
                  root_volume_size: Optional[pulumi.Input[int]] = None,
@@ -1079,6 +1112,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[str] ocean_id: The ID of the Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_od_types: A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_spot_types: A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+        :param pulumi.Input[int] reserved_enis: Specifies the count of ENIs to reserve per instance type for scaling purposes.
         :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to `true`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[int] root_volume_size: Set root volume size (in GB).
         :param pulumi.Input[Union['OceanLaunchSpecSchedulingShutdownHoursArgs', 'OceanLaunchSpecSchedulingShutdownHoursArgsDict']] scheduling_shutdown_hours: Used to specify times that the nodes in the virtual node group will be taken down.
@@ -1133,6 +1167,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  ocean_id: Optional[pulumi.Input[str]] = None,
                  preferred_od_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preferred_spot_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 reserved_enis: Optional[pulumi.Input[int]] = None,
                  resource_limits: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecResourceLimitArgs', 'OceanLaunchSpecResourceLimitArgsDict']]]]] = None,
                  restrict_scale_down: Optional[pulumi.Input[bool]] = None,
                  root_volume_size: Optional[pulumi.Input[int]] = None,
@@ -1176,6 +1211,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             __props__.__dict__["ocean_id"] = ocean_id
             __props__.__dict__["preferred_od_types"] = preferred_od_types
             __props__.__dict__["preferred_spot_types"] = preferred_spot_types
+            __props__.__dict__["reserved_enis"] = reserved_enis
             __props__.__dict__["resource_limits"] = resource_limits
             __props__.__dict__["restrict_scale_down"] = restrict_scale_down
             __props__.__dict__["root_volume_size"] = root_volume_size
@@ -1218,6 +1254,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             ocean_id: Optional[pulumi.Input[str]] = None,
             preferred_od_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             preferred_spot_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            reserved_enis: Optional[pulumi.Input[int]] = None,
             resource_limits: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecResourceLimitArgs', 'OceanLaunchSpecResourceLimitArgsDict']]]]] = None,
             restrict_scale_down: Optional[pulumi.Input[bool]] = None,
             root_volume_size: Optional[pulumi.Input[int]] = None,
@@ -1256,6 +1293,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[str] ocean_id: The ID of the Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_od_types: A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_spot_types: A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+        :param pulumi.Input[int] reserved_enis: Specifies the count of ENIs to reserve per instance type for scaling purposes.
         :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to `true`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[int] root_volume_size: Set root volume size (in GB).
         :param pulumi.Input[Union['OceanLaunchSpecSchedulingShutdownHoursArgs', 'OceanLaunchSpecSchedulingShutdownHoursArgsDict']] scheduling_shutdown_hours: Used to specify times that the nodes in the virtual node group will be taken down.
@@ -1290,6 +1328,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         __props__.__dict__["ocean_id"] = ocean_id
         __props__.__dict__["preferred_od_types"] = preferred_od_types
         __props__.__dict__["preferred_spot_types"] = preferred_spot_types
+        __props__.__dict__["reserved_enis"] = reserved_enis
         __props__.__dict__["resource_limits"] = resource_limits
         __props__.__dict__["restrict_scale_down"] = restrict_scale_down
         __props__.__dict__["root_volume_size"] = root_volume_size
@@ -1456,6 +1495,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
         A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
         """
         return pulumi.get(self, "preferred_spot_types")
+
+    @property
+    @pulumi.getter(name="reservedEnis")
+    def reserved_enis(self) -> pulumi.Output[Optional[int]]:
+        """
+        Specifies the count of ENIs to reserve per instance type for scaling purposes.
+        """
+        return pulumi.get(self, "reserved_enis")
 
     @property
     @pulumi.getter(name="resourceLimits")

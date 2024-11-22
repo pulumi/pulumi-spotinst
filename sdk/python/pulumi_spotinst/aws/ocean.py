@@ -50,6 +50,7 @@ class OceanArgs:
                  monitoring: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 reserved_enis: Optional[pulumi.Input[int]] = None,
                  resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input['OceanResourceTagSpecificationArgs']]]] = None,
                  root_volume_size: Optional[pulumi.Input[int]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskArgs']]]] = None,
@@ -91,6 +92,7 @@ class OceanArgs:
         :param pulumi.Input[bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
         :param pulumi.Input[str] name: The cluster name.
         :param pulumi.Input[str] region: The region the cluster will run in.
+        :param pulumi.Input[int] reserved_enis: Specifies the count of ENIs to reserve per instance type for scaling purposes.
         :param pulumi.Input[Sequence[pulumi.Input['OceanResourceTagSpecificationArgs']]] resource_tag_specifications: Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
         :param pulumi.Input[int] root_volume_size: The size (in Gb) to allocate for the root volume. Minimum `20`.
         :param pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskArgs']]] scheduled_tasks: Set scheduling object.
@@ -158,6 +160,8 @@ class OceanArgs:
             pulumi.set(__self__, "name", name)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if reserved_enis is not None:
+            pulumi.set(__self__, "reserved_enis", reserved_enis)
         if resource_tag_specifications is not None:
             pulumi.set(__self__, "resource_tag_specifications", resource_tag_specifications)
         if root_volume_size is not None:
@@ -524,6 +528,18 @@ class OceanArgs:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter(name="reservedEnis")
+    def reserved_enis(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies the count of ENIs to reserve per instance type for scaling purposes.
+        """
+        return pulumi.get(self, "reserved_enis")
+
+    @reserved_enis.setter
+    def reserved_enis(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "reserved_enis", value)
+
+    @property
     @pulumi.getter(name="resourceTagSpecifications")
     def resource_tag_specifications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanResourceTagSpecificationArgs']]]]:
         """
@@ -693,6 +709,7 @@ class _OceanState:
                  monitoring: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 reserved_enis: Optional[pulumi.Input[int]] = None,
                  resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input['OceanResourceTagSpecificationArgs']]]] = None,
                  root_volume_size: Optional[pulumi.Input[int]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskArgs']]]] = None,
@@ -733,6 +750,7 @@ class _OceanState:
         :param pulumi.Input[bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
         :param pulumi.Input[str] name: The cluster name.
         :param pulumi.Input[str] region: The region the cluster will run in.
+        :param pulumi.Input[int] reserved_enis: Specifies the count of ENIs to reserve per instance type for scaling purposes.
         :param pulumi.Input[Sequence[pulumi.Input['OceanResourceTagSpecificationArgs']]] resource_tag_specifications: Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
         :param pulumi.Input[int] root_volume_size: The size (in Gb) to allocate for the root volume. Minimum `20`.
         :param pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskArgs']]] scheduled_tasks: Set scheduling object.
@@ -802,6 +820,8 @@ class _OceanState:
             pulumi.set(__self__, "name", name)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if reserved_enis is not None:
+            pulumi.set(__self__, "reserved_enis", reserved_enis)
         if resource_tag_specifications is not None:
             pulumi.set(__self__, "resource_tag_specifications", resource_tag_specifications)
         if root_volume_size is not None:
@@ -1147,6 +1167,18 @@ class _OceanState:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter(name="reservedEnis")
+    def reserved_enis(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies the count of ENIs to reserve per instance type for scaling purposes.
+        """
+        return pulumi.get(self, "reserved_enis")
+
+    @reserved_enis.setter
+    def reserved_enis(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "reserved_enis", value)
+
+    @property
     @pulumi.getter(name="resourceTagSpecifications")
     def resource_tag_specifications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanResourceTagSpecificationArgs']]]]:
         """
@@ -1343,6 +1375,7 @@ class Ocean(pulumi.CustomResource):
                  monitoring: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 reserved_enis: Optional[pulumi.Input[int]] = None,
                  resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanResourceTagSpecificationArgs', 'OceanResourceTagSpecificationArgsDict']]]]] = None,
                  root_volume_size: Optional[pulumi.Input[int]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanScheduledTaskArgs', 'OceanScheduledTaskArgsDict']]]]] = None,
@@ -1397,6 +1430,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
         :param pulumi.Input[str] name: The cluster name.
         :param pulumi.Input[str] region: The region the cluster will run in.
+        :param pulumi.Input[int] reserved_enis: Specifies the count of ENIs to reserve per instance type for scaling purposes.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanResourceTagSpecificationArgs', 'OceanResourceTagSpecificationArgsDict']]]] resource_tag_specifications: Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
         :param pulumi.Input[int] root_volume_size: The size (in Gb) to allocate for the root volume. Minimum `20`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanScheduledTaskArgs', 'OceanScheduledTaskArgsDict']]]] scheduled_tasks: Set scheduling object.
@@ -1473,6 +1507,7 @@ class Ocean(pulumi.CustomResource):
                  monitoring: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 reserved_enis: Optional[pulumi.Input[int]] = None,
                  resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanResourceTagSpecificationArgs', 'OceanResourceTagSpecificationArgsDict']]]]] = None,
                  root_volume_size: Optional[pulumi.Input[int]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanScheduledTaskArgs', 'OceanScheduledTaskArgsDict']]]]] = None,
@@ -1525,6 +1560,7 @@ class Ocean(pulumi.CustomResource):
             __props__.__dict__["monitoring"] = monitoring
             __props__.__dict__["name"] = name
             __props__.__dict__["region"] = region
+            __props__.__dict__["reserved_enis"] = reserved_enis
             __props__.__dict__["resource_tag_specifications"] = resource_tag_specifications
             __props__.__dict__["root_volume_size"] = root_volume_size
             __props__.__dict__["scheduled_tasks"] = scheduled_tasks
@@ -1580,6 +1616,7 @@ class Ocean(pulumi.CustomResource):
             monitoring: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
+            reserved_enis: Optional[pulumi.Input[int]] = None,
             resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanResourceTagSpecificationArgs', 'OceanResourceTagSpecificationArgsDict']]]]] = None,
             root_volume_size: Optional[pulumi.Input[int]] = None,
             scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanScheduledTaskArgs', 'OceanScheduledTaskArgsDict']]]]] = None,
@@ -1625,6 +1662,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
         :param pulumi.Input[str] name: The cluster name.
         :param pulumi.Input[str] region: The region the cluster will run in.
+        :param pulumi.Input[int] reserved_enis: Specifies the count of ENIs to reserve per instance type for scaling purposes.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanResourceTagSpecificationArgs', 'OceanResourceTagSpecificationArgsDict']]]] resource_tag_specifications: Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
         :param pulumi.Input[int] root_volume_size: The size (in Gb) to allocate for the root volume. Minimum `20`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanScheduledTaskArgs', 'OceanScheduledTaskArgsDict']]]] scheduled_tasks: Set scheduling object.
@@ -1671,6 +1709,7 @@ class Ocean(pulumi.CustomResource):
         __props__.__dict__["monitoring"] = monitoring
         __props__.__dict__["name"] = name
         __props__.__dict__["region"] = region
+        __props__.__dict__["reserved_enis"] = reserved_enis
         __props__.__dict__["resource_tag_specifications"] = resource_tag_specifications
         __props__.__dict__["root_volume_size"] = root_volume_size
         __props__.__dict__["scheduled_tasks"] = scheduled_tasks
@@ -1893,6 +1932,14 @@ class Ocean(pulumi.CustomResource):
         The region the cluster will run in.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="reservedEnis")
+    def reserved_enis(self) -> pulumi.Output[Optional[int]]:
+        """
+        Specifies the count of ENIs to reserve per instance type for scaling purposes.
+        """
+        return pulumi.get(self, "reserved_enis")
 
     @property
     @pulumi.getter(name="resourceTagSpecifications")

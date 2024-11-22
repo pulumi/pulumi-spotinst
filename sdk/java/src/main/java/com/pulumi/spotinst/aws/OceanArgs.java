@@ -414,6 +414,21 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specifies the count of ENIs to reserve per instance type for scaling purposes.
+     * 
+     */
+    @Import(name="reservedEnis")
+    private @Nullable Output<Integer> reservedEnis;
+
+    /**
+     * @return Specifies the count of ENIs to reserve per instance type for scaling purposes.
+     * 
+     */
+    public Optional<Output<Integer>> reservedEnis() {
+        return Optional.ofNullable(this.reservedEnis);
+    }
+
+    /**
      * Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
      * 
      */
@@ -641,6 +656,7 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
         this.monitoring = $.monitoring;
         this.name = $.name;
         this.region = $.region;
+        this.reservedEnis = $.reservedEnis;
         this.resourceTagSpecifications = $.resourceTagSpecifications;
         this.rootVolumeSize = $.rootVolumeSize;
         this.scheduledTasks = $.scheduledTasks;
@@ -1252,6 +1268,27 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder region(String region) {
             return region(Output.of(region));
+        }
+
+        /**
+         * @param reservedEnis Specifies the count of ENIs to reserve per instance type for scaling purposes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservedEnis(@Nullable Output<Integer> reservedEnis) {
+            $.reservedEnis = reservedEnis;
+            return this;
+        }
+
+        /**
+         * @param reservedEnis Specifies the count of ENIs to reserve per instance type for scaling purposes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservedEnis(Integer reservedEnis) {
+            return reservedEnis(Output.of(reservedEnis));
         }
 
         /**

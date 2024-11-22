@@ -54,8 +54,10 @@ type OceanLaunchSpec struct {
 	// A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
 	PreferredOdTypes pulumi.StringArrayOutput `pulumi:"preferredOdTypes"`
 	// A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
-	PreferredSpotTypes pulumi.StringArrayOutput                `pulumi:"preferredSpotTypes"`
-	ResourceLimits     OceanLaunchSpecResourceLimitArrayOutput `pulumi:"resourceLimits"`
+	PreferredSpotTypes pulumi.StringArrayOutput `pulumi:"preferredSpotTypes"`
+	// Specifies the count of ENIs to reserve per instance type for scaling purposes.
+	ReservedEnis   pulumi.IntPtrOutput                     `pulumi:"reservedEnis"`
+	ResourceLimits OceanLaunchSpecResourceLimitArrayOutput `pulumi:"resourceLimits"`
 	// Boolean. When set to `true`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown pulumi.BoolPtrOutput `pulumi:"restrictScaleDown"`
 	// Set root volume size (in GB).
@@ -149,8 +151,10 @@ type oceanLaunchSpecState struct {
 	// A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
 	PreferredOdTypes []string `pulumi:"preferredOdTypes"`
 	// A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
-	PreferredSpotTypes []string                       `pulumi:"preferredSpotTypes"`
-	ResourceLimits     []OceanLaunchSpecResourceLimit `pulumi:"resourceLimits"`
+	PreferredSpotTypes []string `pulumi:"preferredSpotTypes"`
+	// Specifies the count of ENIs to reserve per instance type for scaling purposes.
+	ReservedEnis   *int                           `pulumi:"reservedEnis"`
+	ResourceLimits []OceanLaunchSpecResourceLimit `pulumi:"resourceLimits"`
 	// Boolean. When set to `true`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown *bool `pulumi:"restrictScaleDown"`
 	// Set root volume size (in GB).
@@ -213,7 +217,9 @@ type OceanLaunchSpecState struct {
 	PreferredOdTypes pulumi.StringArrayInput
 	// A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
 	PreferredSpotTypes pulumi.StringArrayInput
-	ResourceLimits     OceanLaunchSpecResourceLimitArrayInput
+	// Specifies the count of ENIs to reserve per instance type for scaling purposes.
+	ReservedEnis   pulumi.IntPtrInput
+	ResourceLimits OceanLaunchSpecResourceLimitArrayInput
 	// Boolean. When set to `true`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown pulumi.BoolPtrInput
 	// Set root volume size (in GB).
@@ -279,8 +285,10 @@ type oceanLaunchSpecArgs struct {
 	// A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
 	PreferredOdTypes []string `pulumi:"preferredOdTypes"`
 	// A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
-	PreferredSpotTypes []string                       `pulumi:"preferredSpotTypes"`
-	ResourceLimits     []OceanLaunchSpecResourceLimit `pulumi:"resourceLimits"`
+	PreferredSpotTypes []string `pulumi:"preferredSpotTypes"`
+	// Specifies the count of ENIs to reserve per instance type for scaling purposes.
+	ReservedEnis   *int                           `pulumi:"reservedEnis"`
+	ResourceLimits []OceanLaunchSpecResourceLimit `pulumi:"resourceLimits"`
 	// Boolean. When set to `true`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown *bool `pulumi:"restrictScaleDown"`
 	// Set root volume size (in GB).
@@ -344,7 +352,9 @@ type OceanLaunchSpecArgs struct {
 	PreferredOdTypes pulumi.StringArrayInput
 	// A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
 	PreferredSpotTypes pulumi.StringArrayInput
-	ResourceLimits     OceanLaunchSpecResourceLimitArrayInput
+	// Specifies the count of ENIs to reserve per instance type for scaling purposes.
+	ReservedEnis   pulumi.IntPtrInput
+	ResourceLimits OceanLaunchSpecResourceLimitArrayInput
 	// Boolean. When set to `true`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown pulumi.BoolPtrInput
 	// Set root volume size (in GB).
@@ -555,6 +565,11 @@ func (o OceanLaunchSpecOutput) PreferredOdTypes() pulumi.StringArrayOutput {
 // A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
 func (o OceanLaunchSpecOutput) PreferredSpotTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.StringArrayOutput { return v.PreferredSpotTypes }).(pulumi.StringArrayOutput)
+}
+
+// Specifies the count of ENIs to reserve per instance type for scaling purposes.
+func (o OceanLaunchSpecOutput) ReservedEnis() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.IntPtrOutput { return v.ReservedEnis }).(pulumi.IntPtrOutput)
 }
 
 func (o OceanLaunchSpecOutput) ResourceLimits() OceanLaunchSpecResourceLimitArrayOutput {

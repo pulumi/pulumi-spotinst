@@ -128,6 +128,12 @@ namespace Pulumi.SpotInst.Aws
         [Output("preferredSpotTypes")]
         public Output<ImmutableArray<string>> PreferredSpotTypes { get; private set; } = null!;
 
+        /// <summary>
+        /// Specifies the count of ENIs to reserve per instance type for scaling purposes.
+        /// </summary>
+        [Output("reservedEnis")]
+        public Output<int?> ReservedEnis { get; private set; } = null!;
+
         [Output("resourceLimits")]
         public Output<ImmutableArray<Outputs.OceanLaunchSpecResourceLimit>> ResourceLimits { get; private set; } = null!;
 
@@ -414,6 +420,12 @@ namespace Pulumi.SpotInst.Aws
             get => _preferredSpotTypes ?? (_preferredSpotTypes = new InputList<string>());
             set => _preferredSpotTypes = value;
         }
+
+        /// <summary>
+        /// Specifies the count of ENIs to reserve per instance type for scaling purposes.
+        /// </summary>
+        [Input("reservedEnis")]
+        public Input<int>? ReservedEnis { get; set; }
 
         [Input("resourceLimits")]
         private InputList<Inputs.OceanLaunchSpecResourceLimitArgs>? _resourceLimits;
@@ -703,6 +715,12 @@ namespace Pulumi.SpotInst.Aws
             get => _preferredSpotTypes ?? (_preferredSpotTypes = new InputList<string>());
             set => _preferredSpotTypes = value;
         }
+
+        /// <summary>
+        /// Specifies the count of ENIs to reserve per instance type for scaling purposes.
+        /// </summary>
+        [Input("reservedEnis")]
+        public Input<int>? ReservedEnis { get; set; }
 
         [Input("resourceLimits")]
         private InputList<Inputs.OceanLaunchSpecResourceLimitGetArgs>? _resourceLimits;

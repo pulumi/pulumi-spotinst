@@ -401,6 +401,20 @@ public class Ocean extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.region);
     }
     /**
+     * Specifies the count of ENIs to reserve per instance type for scaling purposes.
+     * 
+     */
+    @Export(name="reservedEnis", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> reservedEnis;
+
+    /**
+     * @return Specifies the count of ENIs to reserve per instance type for scaling purposes.
+     * 
+     */
+    public Output<Optional<Integer>> reservedEnis() {
+        return Codegen.optional(this.reservedEnis);
+    }
+    /**
      * Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
      * 
      */

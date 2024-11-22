@@ -302,6 +302,20 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<String>>> preferredSpotTypes() {
         return Codegen.optional(this.preferredSpotTypes);
     }
+    /**
+     * Specifies the count of ENIs to reserve per instance type for scaling purposes.
+     * 
+     */
+    @Export(name="reservedEnis", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> reservedEnis;
+
+    /**
+     * @return Specifies the count of ENIs to reserve per instance type for scaling purposes.
+     * 
+     */
+    public Output<Optional<Integer>> reservedEnis() {
+        return Codegen.optional(this.reservedEnis);
+    }
     @Export(name="resourceLimits", refs={List.class,OceanLaunchSpecResourceLimit.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OceanLaunchSpecResourceLimit>> resourceLimits;
 
