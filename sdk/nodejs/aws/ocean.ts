@@ -147,6 +147,10 @@ export class Ocean extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string | undefined>;
     /**
+     * Specifies the count of ENIs to reserve per instance type for scaling purposes.
+     */
+    public readonly reservedEnis!: pulumi.Output<number | undefined>;
+    /**
      * Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
      */
     public readonly resourceTagSpecifications!: pulumi.Output<outputs.aws.OceanResourceTagSpecification[] | undefined>;
@@ -239,6 +243,7 @@ export class Ocean extends pulumi.CustomResource {
             resourceInputs["monitoring"] = state ? state.monitoring : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["reservedEnis"] = state ? state.reservedEnis : undefined;
             resourceInputs["resourceTagSpecifications"] = state ? state.resourceTagSpecifications : undefined;
             resourceInputs["rootVolumeSize"] = state ? state.rootVolumeSize : undefined;
             resourceInputs["scheduledTasks"] = state ? state.scheduledTasks : undefined;
@@ -291,6 +296,7 @@ export class Ocean extends pulumi.CustomResource {
             resourceInputs["monitoring"] = args ? args.monitoring : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["reservedEnis"] = args ? args.reservedEnis : undefined;
             resourceInputs["resourceTagSpecifications"] = args ? args.resourceTagSpecifications : undefined;
             resourceInputs["rootVolumeSize"] = args ? args.rootVolumeSize : undefined;
             resourceInputs["scheduledTasks"] = args ? args.scheduledTasks : undefined;
@@ -414,6 +420,10 @@ export interface OceanState {
      * The region the cluster will run in.
      */
     region?: pulumi.Input<string>;
+    /**
+     * Specifies the count of ENIs to reserve per instance type for scaling purposes.
+     */
+    reservedEnis?: pulumi.Input<number>;
     /**
      * Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
      */
@@ -571,6 +581,10 @@ export interface OceanArgs {
      * The region the cluster will run in.
      */
     region?: pulumi.Input<string>;
+    /**
+     * Specifies the count of ENIs to reserve per instance type for scaling purposes.
+     */
+    reservedEnis?: pulumi.Input<number>;
     /**
      * Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
      */
