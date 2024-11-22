@@ -13633,6 +13633,10 @@
                     "type": "string",
                     "description": "The region the cluster will run in.\n"
                 },
+                "reservedEnis": {
+                    "type": "integer",
+                    "description": "Specifies the count of ENIs to reserve per instance type for scaling purposes.\n"
+                },
                 "resourceTagSpecifications": {
                     "type": "array",
                     "items": {
@@ -13838,6 +13842,10 @@
                     "type": "string",
                     "description": "The region the cluster will run in.\n"
                 },
+                "reservedEnis": {
+                    "type": "integer",
+                    "description": "Specifies the count of ENIs to reserve per instance type for scaling purposes.\n"
+                },
                 "resourceTagSpecifications": {
                     "type": "array",
                     "items": {
@@ -14041,6 +14049,10 @@
                     "region": {
                         "type": "string",
                         "description": "The region the cluster will run in.\n"
+                    },
+                    "reservedEnis": {
+                        "type": "integer",
+                        "description": "Specifies the count of ENIs to reserve per instance type for scaling purposes.\n"
                     },
                     "resourceTagSpecifications": {
                         "type": "array",
@@ -14284,6 +14296,10 @@
                     },
                     "description": "A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.\n"
                 },
+                "reservedEnis": {
+                    "type": "integer",
+                    "description": "Specifies the count of ENIs to reserve per instance type for scaling purposes.\n"
+                },
                 "resourceLimits": {
                     "type": "array",
                     "items": {
@@ -14466,6 +14482,10 @@
                         "type": "string"
                     },
                     "description": "A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.\n"
+                },
+                "reservedEnis": {
+                    "type": "integer",
+                    "description": "Specifies the count of ENIs to reserve per instance type for scaling purposes.\n"
                 },
                 "resourceLimits": {
                     "type": "array",
@@ -14650,6 +14670,10 @@
                             "type": "string"
                         },
                         "description": "A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.\n"
+                    },
+                    "reservedEnis": {
+                        "type": "integer",
+                        "description": "Specifies the count of ENIs to reserve per instance type for scaling purposes.\n"
                     },
                     "resourceLimits": {
                         "type": "array",
