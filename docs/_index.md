@@ -6,7 +6,7 @@ layout: package
 ---
 ## Installation
 
-The spotinst provider is available as a package in all Pulumi languages:
+The Spotinst provider is available as a package in all Pulumi languages:
 
 * JavaScript/TypeScript: [`@pulumi/spotinst`](https://www.npmjs.com/package/@pulumi/spotinst)
 * Python: [`pulumi-spotinst`](https://pypi.org/project/pulumi-spotinst/)
