@@ -17528,10 +17528,7 @@
                 "clusterControllerId",
                 "clusterName",
                 "controllerClusterId",
-                "desiredCapacity",
                 "location",
-                "maxSize",
-                "minSize",
                 "shieldedInstanceConfig"
             ],
             "inputProperties": {
