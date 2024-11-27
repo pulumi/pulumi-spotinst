@@ -182,14 +182,14 @@ public class OceanImport extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="desiredCapacity", refs={Integer.class}, tree="[0]")
-    private Output<Integer> desiredCapacity;
+    private Output</* @Nullable */ Integer> desiredCapacity;
 
     /**
      * @return The number of instances to launch and maintain in the cluster.
      * 
      */
-    public Output<Integer> desiredCapacity() {
-        return this.desiredCapacity;
+    public Output<Optional<Integer>> desiredCapacity() {
+        return Codegen.optional(this.desiredCapacity);
     }
     /**
      * List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured together with whitelist/blacklist.
@@ -224,28 +224,28 @@ public class OceanImport extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="maxSize", refs={Integer.class}, tree="[0]")
-    private Output<Integer> maxSize;
+    private Output</* @Nullable */ Integer> maxSize;
 
     /**
      * @return The upper limit of instances the cluster can scale up to.
      * 
      */
-    public Output<Integer> maxSize() {
-        return this.maxSize;
+    public Output<Optional<Integer>> maxSize() {
+        return Codegen.optional(this.maxSize);
     }
     /**
      * The lower limit of instances the cluster can scale down to.
      * 
      */
     @Export(name="minSize", refs={Integer.class}, tree="[0]")
-    private Output<Integer> minSize;
+    private Output</* @Nullable */ Integer> minSize;
 
     /**
      * @return The lower limit of instances the cluster can scale down to.
      * 
      */
-    public Output<Integer> minSize() {
-        return this.minSize;
+    public Output<Optional<Integer>> minSize() {
+        return Codegen.optional(this.minSize);
     }
     /**
      * The root volume disk type.
