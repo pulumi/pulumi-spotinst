@@ -7,7 +7,7 @@ toolchain go1.22.7
 require (
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.96.0
 	github.com/pulumi/pulumi/sdk/v3 v3.140.0
-	github.com/spotinst/terraform-provider-spotinst v1.199.0
+	github.com/spotinst/terraform-provider-spotinst v1.199.2
 )
 
 replace (

@@ -108,7 +108,7 @@ export class OceanImport extends pulumi.CustomResource {
     /**
      * The number of instances to launch and maintain in the cluster.
      */
-    public readonly desiredCapacity!: pulumi.Output<number>;
+    public readonly desiredCapacity!: pulumi.Output<number | undefined>;
     /**
      * List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
      */
@@ -120,11 +120,11 @@ export class OceanImport extends pulumi.CustomResource {
     /**
      * The upper limit of instances the cluster can scale up to.
      */
-    public readonly maxSize!: pulumi.Output<number>;
+    public readonly maxSize!: pulumi.Output<number | undefined>;
     /**
      * The lower limit of instances the cluster can scale down to.
      */
-    public readonly minSize!: pulumi.Output<number>;
+    public readonly minSize!: pulumi.Output<number | undefined>;
     /**
      * The root volume disk type.
      */

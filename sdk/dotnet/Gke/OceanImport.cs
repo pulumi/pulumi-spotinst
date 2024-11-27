@@ -122,7 +122,7 @@ namespace Pulumi.SpotInst.Gke
         /// The number of instances to launch and maintain in the cluster.
         /// </summary>
         [Output("desiredCapacity")]
-        public Output<int> DesiredCapacity { get; private set; } = null!;
+        public Output<int?> DesiredCapacity { get; private set; } = null!;
 
         /// <summary>
         /// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
@@ -140,13 +140,13 @@ namespace Pulumi.SpotInst.Gke
         /// The upper limit of instances the cluster can scale up to.
         /// </summary>
         [Output("maxSize")]
-        public Output<int> MaxSize { get; private set; } = null!;
+        public Output<int?> MaxSize { get; private set; } = null!;
 
         /// <summary>
         /// The lower limit of instances the cluster can scale down to.
         /// </summary>
         [Output("minSize")]
-        public Output<int> MinSize { get; private set; } = null!;
+        public Output<int?> MinSize { get; private set; } = null!;
 
         /// <summary>
         /// The root volume disk type.

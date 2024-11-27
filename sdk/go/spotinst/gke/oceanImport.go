@@ -96,15 +96,15 @@ type OceanImport struct {
 	// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
 	ControllerClusterId pulumi.StringOutput `pulumi:"controllerClusterId"`
 	// The number of instances to launch and maintain in the cluster.
-	DesiredCapacity pulumi.IntOutput `pulumi:"desiredCapacity"`
+	DesiredCapacity pulumi.IntPtrOutput `pulumi:"desiredCapacity"`
 	// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
 	Filters OceanImportFiltersPtrOutput `pulumi:"filters"`
 	// The zone the master cluster is located in.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The upper limit of instances the cluster can scale up to.
-	MaxSize pulumi.IntOutput `pulumi:"maxSize"`
+	MaxSize pulumi.IntPtrOutput `pulumi:"maxSize"`
 	// The lower limit of instances the cluster can scale down to.
-	MinSize pulumi.IntOutput `pulumi:"minSize"`
+	MinSize pulumi.IntPtrOutput `pulumi:"minSize"`
 	// The root volume disk type.
 	RootVolumeType pulumi.StringPtrOutput `pulumi:"rootVolumeType"`
 	// Set scheduling object.
@@ -423,8 +423,8 @@ func (o OceanImportOutput) ControllerClusterId() pulumi.StringOutput {
 }
 
 // The number of instances to launch and maintain in the cluster.
-func (o OceanImportOutput) DesiredCapacity() pulumi.IntOutput {
-	return o.ApplyT(func(v *OceanImport) pulumi.IntOutput { return v.DesiredCapacity }).(pulumi.IntOutput)
+func (o OceanImportOutput) DesiredCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanImport) pulumi.IntPtrOutput { return v.DesiredCapacity }).(pulumi.IntPtrOutput)
 }
 
 // List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
@@ -438,13 +438,13 @@ func (o OceanImportOutput) Location() pulumi.StringOutput {
 }
 
 // The upper limit of instances the cluster can scale up to.
-func (o OceanImportOutput) MaxSize() pulumi.IntOutput {
-	return o.ApplyT(func(v *OceanImport) pulumi.IntOutput { return v.MaxSize }).(pulumi.IntOutput)
+func (o OceanImportOutput) MaxSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanImport) pulumi.IntPtrOutput { return v.MaxSize }).(pulumi.IntPtrOutput)
 }
 
 // The lower limit of instances the cluster can scale down to.
-func (o OceanImportOutput) MinSize() pulumi.IntOutput {
-	return o.ApplyT(func(v *OceanImport) pulumi.IntOutput { return v.MinSize }).(pulumi.IntOutput)
+func (o OceanImportOutput) MinSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanImport) pulumi.IntPtrOutput { return v.MinSize }).(pulumi.IntPtrOutput)
 }
 
 // The root volume disk type.

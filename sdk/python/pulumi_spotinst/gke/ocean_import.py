@@ -912,7 +912,7 @@ class OceanImport(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="desiredCapacity")
-    def desired_capacity(self) -> pulumi.Output[int]:
+    def desired_capacity(self) -> pulumi.Output[Optional[int]]:
         """
         The number of instances to launch and maintain in the cluster.
         """
@@ -936,7 +936,7 @@ class OceanImport(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxSize")
-    def max_size(self) -> pulumi.Output[int]:
+    def max_size(self) -> pulumi.Output[Optional[int]]:
         """
         The upper limit of instances the cluster can scale up to.
         """
@@ -944,7 +944,7 @@ class OceanImport(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minSize")
-    def min_size(self) -> pulumi.Output[int]:
+    def min_size(self) -> pulumi.Output[Optional[int]]:
         """
         The lower limit of instances the cluster can scale down to.
         """
