@@ -57,6 +57,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.spotinst.inputs.StatefulNodeAzureStrategyArgs;
  * import com.pulumi.spotinst.inputs.StatefulNodeAzureStrategyRevertToSpotArgs;
  * import com.pulumi.spotinst.inputs.StatefulNodeAzureVmSizesArgs;
+ * import com.pulumi.spotinst.inputs.StatefulNodeAzureVmSizesSpotSizeAttributesArgs;
  * import com.pulumi.spotinst.inputs.StatefulNodeAzureBootDiagnosticArgs;
  * import com.pulumi.spotinst.inputs.StatefulNodeAzureDataDiskArgs;
  * import com.pulumi.spotinst.inputs.StatefulNodeAzureExtensionArgs;
@@ -124,6 +125,15 @@ import javax.annotation.Nullable;
  *                     "standard_ds1_v2",
  *                     "standard_ds2_v2")
  *                 .preferredSpotSizes("standard_ds1_v2")
+ *                 .excludedVmSizes("standard_ds2_v3")
+ *                 .spotSizeAttributes(StatefulNodeAzureVmSizesSpotSizeAttributesArgs.builder()
+ *                     .maxCpu(16)
+ *                     .minCpu(2)
+ *                     .maxMemory(48)
+ *                     .minMemory(2)
+ *                     .maxStorage(1000)
+ *                     .minStorage(50)
+ *                     .build())
  *                 .build())
  *             .zones(            
  *                 "1",
@@ -345,8 +355,16 @@ import javax.annotation.Nullable;
  * * `os` - (Required, Enum `&#34;Linux&#34;, &#34;Windows&#34;`) Type of operating system.
  * * `vm_sizes` - (Required) Defines the VM sizes to use when launching VMs.
  *     * `od_sizes` - (Required) Available On-Demand sizes.
- *     * `spot_sizes` - (Required) Available Spot-VM sizes.
+ *     * `spot_sizes` - (Optional) Available Spot-VM sizes. Required if spotSizeAttributes isn&#39;t specified.
  *     * `preferred_spot_sizes` - (Optional) Prioritize Spot VM sizes when launching Spot VMs for the group. If set, must be a sublist of compute.vmSizes.spotSizes.
+ *     * `excluded_vm_sizes` - (Optional) Defines the VM sizes to exclude when defining spot types with spotSizeAttributes.
+ *     * `spot_size_attributes` - (Optional) Defines values and ranges for attributes of the spot sizes to use when launching VMs. Required if spotSizes isn&#39;t specified.
+ *       * `max_cpu` - (Optional) Maximum amount of vCPU units.
+ *       * `min_cpu` - (Optional) Minimum amount of vCPU units.
+ *       * `max_memory` - (Optional) Maximum amount of memory in GiB.
+ *       * `min_memory` - (Optional) Minimum amount of memory in GiB.
+ *       * `max_storage` - (Optional) Maximum amount of storage in GiB.
+ *       * `min_storage` - (optional) Minimum amount of storage in GiB.
  * * `zones` - (Optional, Enum `&#34;1&#34;, &#34;2&#34;, &#34;3&#34;`) List of Azure Availability Zones in the defined region. If not defined, Virtual machines will be launched regionally.
  * * `preferred_zone` - (Optional, Enum `&#34;1&#34;, &#34;2&#34;, &#34;3&#34;`) The AZ to prioritize when launching VMs. If no markets are available in the Preferred AZ, VMs are launched in the non-preferred AZ. Must be a sublist of compute.zones.
  * * `custom_data` - (Optional) This value will hold the YAML in base64 and will be executed upon VM launch.

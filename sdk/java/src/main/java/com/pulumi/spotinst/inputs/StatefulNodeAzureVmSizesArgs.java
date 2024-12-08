@@ -6,6 +6,7 @@ package com.pulumi.spotinst.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.spotinst.inputs.StatefulNodeAzureVmSizesSpotSizeAttributesArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -16,6 +17,13 @@ import javax.annotation.Nullable;
 public final class StatefulNodeAzureVmSizesArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final StatefulNodeAzureVmSizesArgs Empty = new StatefulNodeAzureVmSizesArgs();
+
+    @Import(name="excludedVmSizes")
+    private @Nullable Output<List<String>> excludedVmSizes;
+
+    public Optional<Output<List<String>>> excludedVmSizes() {
+        return Optional.ofNullable(this.excludedVmSizes);
+    }
 
     @Import(name="odSizes", required=true)
     private Output<List<String>> odSizes;
@@ -31,18 +39,27 @@ public final class StatefulNodeAzureVmSizesArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.preferredSpotSizes);
     }
 
-    @Import(name="spotSizes", required=true)
-    private Output<List<String>> spotSizes;
+    @Import(name="spotSizeAttributes")
+    private @Nullable Output<StatefulNodeAzureVmSizesSpotSizeAttributesArgs> spotSizeAttributes;
 
-    public Output<List<String>> spotSizes() {
-        return this.spotSizes;
+    public Optional<Output<StatefulNodeAzureVmSizesSpotSizeAttributesArgs>> spotSizeAttributes() {
+        return Optional.ofNullable(this.spotSizeAttributes);
+    }
+
+    @Import(name="spotSizes")
+    private @Nullable Output<List<String>> spotSizes;
+
+    public Optional<Output<List<String>>> spotSizes() {
+        return Optional.ofNullable(this.spotSizes);
     }
 
     private StatefulNodeAzureVmSizesArgs() {}
 
     private StatefulNodeAzureVmSizesArgs(StatefulNodeAzureVmSizesArgs $) {
+        this.excludedVmSizes = $.excludedVmSizes;
         this.odSizes = $.odSizes;
         this.preferredSpotSizes = $.preferredSpotSizes;
+        this.spotSizeAttributes = $.spotSizeAttributes;
         this.spotSizes = $.spotSizes;
     }
 
@@ -62,6 +79,19 @@ public final class StatefulNodeAzureVmSizesArgs extends com.pulumi.resources.Res
 
         public Builder(StatefulNodeAzureVmSizesArgs defaults) {
             $ = new StatefulNodeAzureVmSizesArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder excludedVmSizes(@Nullable Output<List<String>> excludedVmSizes) {
+            $.excludedVmSizes = excludedVmSizes;
+            return this;
+        }
+
+        public Builder excludedVmSizes(List<String> excludedVmSizes) {
+            return excludedVmSizes(Output.of(excludedVmSizes));
+        }
+
+        public Builder excludedVmSizes(String... excludedVmSizes) {
+            return excludedVmSizes(List.of(excludedVmSizes));
         }
 
         public Builder odSizes(Output<List<String>> odSizes) {
@@ -90,7 +120,16 @@ public final class StatefulNodeAzureVmSizesArgs extends com.pulumi.resources.Res
             return preferredSpotSizes(List.of(preferredSpotSizes));
         }
 
-        public Builder spotSizes(Output<List<String>> spotSizes) {
+        public Builder spotSizeAttributes(@Nullable Output<StatefulNodeAzureVmSizesSpotSizeAttributesArgs> spotSizeAttributes) {
+            $.spotSizeAttributes = spotSizeAttributes;
+            return this;
+        }
+
+        public Builder spotSizeAttributes(StatefulNodeAzureVmSizesSpotSizeAttributesArgs spotSizeAttributes) {
+            return spotSizeAttributes(Output.of(spotSizeAttributes));
+        }
+
+        public Builder spotSizes(@Nullable Output<List<String>> spotSizes) {
             $.spotSizes = spotSizes;
             return this;
         }
@@ -106,9 +145,6 @@ public final class StatefulNodeAzureVmSizesArgs extends com.pulumi.resources.Res
         public StatefulNodeAzureVmSizesArgs build() {
             if ($.odSizes == null) {
                 throw new MissingRequiredPropertyException("StatefulNodeAzureVmSizesArgs", "odSizes");
-            }
-            if ($.spotSizes == null) {
-                throw new MissingRequiredPropertyException("StatefulNodeAzureVmSizesArgs", "spotSizes");
             }
             return $;
         }

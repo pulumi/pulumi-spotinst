@@ -13,20 +13,28 @@ namespace Pulumi.SpotInst.Outputs
     [OutputType]
     public sealed class StatefulNodeAzureVmSizes
     {
+        public readonly ImmutableArray<string> ExcludedVmSizes;
         public readonly ImmutableArray<string> OdSizes;
         public readonly ImmutableArray<string> PreferredSpotSizes;
+        public readonly Outputs.StatefulNodeAzureVmSizesSpotSizeAttributes? SpotSizeAttributes;
         public readonly ImmutableArray<string> SpotSizes;
 
         [OutputConstructor]
         private StatefulNodeAzureVmSizes(
+            ImmutableArray<string> excludedVmSizes,
+
             ImmutableArray<string> odSizes,
 
             ImmutableArray<string> preferredSpotSizes,
 
+            Outputs.StatefulNodeAzureVmSizesSpotSizeAttributes? spotSizeAttributes,
+
             ImmutableArray<string> spotSizes)
         {
+            ExcludedVmSizes = excludedVmSizes;
             OdSizes = odSizes;
             PreferredSpotSizes = preferredSpotSizes;
+            SpotSizeAttributes = spotSizeAttributes;
             SpotSizes = spotSizes;
         }
     }

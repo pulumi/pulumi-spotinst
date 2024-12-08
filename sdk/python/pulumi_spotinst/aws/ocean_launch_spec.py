@@ -1091,6 +1091,16 @@ class OceanLaunchSpec(pulumi.CustomResource):
         """
         Manages a Spotinst Ocean AWS [Virtual Node Group](https://docs.spot.io/ocean/features/launch-specifications) resource.
 
+        ## Import
+
+        Launch_Specs can be imported using the Launch_Spec `id`, e.g.,
+
+        hcl
+
+        ```sh
+        $ pulumi import spotinst:aws/oceanLaunchSpec:OceanLaunchSpec nameOfTheResource ols-1a2b576
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
@@ -1131,6 +1141,16 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a Spotinst Ocean AWS [Virtual Node Group](https://docs.spot.io/ocean/features/launch-specifications) resource.
+
+        ## Import
+
+        Launch_Specs can be imported using the Launch_Spec `id`, e.g.,
+
+        hcl
+
+        ```sh
+        $ pulumi import spotinst:aws/oceanLaunchSpec:OceanLaunchSpec nameOfTheResource ols-1a2b576
+        ```
 
         :param str resource_name: The name of the resource.
         :param OceanLaunchSpecArgs args: The arguments to use to populate this resource's properties.
