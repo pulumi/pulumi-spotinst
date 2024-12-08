@@ -1069,7 +1069,7 @@ class Ocean(pulumi.CustomResource):
         hcl
 
         ```sh
-        $ pulumi import spotinst:ecs/ocean:Ocean this o-12345678
+        $ pulumi import spotinst:ecs/ocean:Ocean nameOfTheResource o-12345678
         ```
 
         :param str resource_name: The name of the resource.
@@ -1119,7 +1119,7 @@ class Ocean(pulumi.CustomResource):
         hcl
 
         ```sh
-        $ pulumi import spotinst:ecs/ocean:Ocean this o-12345678
+        $ pulumi import spotinst:ecs/ocean:Ocean nameOfTheResource o-12345678
         ```
 
         :param str resource_name: The name of the resource.

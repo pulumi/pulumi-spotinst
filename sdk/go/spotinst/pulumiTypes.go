@@ -11014,9 +11014,11 @@ func (o StatefulNodeAzureUpdateStateArrayOutput) Index(i pulumi.IntInput) Statef
 }
 
 type StatefulNodeAzureVmSizes struct {
-	OdSizes            []string `pulumi:"odSizes"`
-	PreferredSpotSizes []string `pulumi:"preferredSpotSizes"`
-	SpotSizes          []string `pulumi:"spotSizes"`
+	ExcludedVmSizes    []string                                    `pulumi:"excludedVmSizes"`
+	OdSizes            []string                                    `pulumi:"odSizes"`
+	PreferredSpotSizes []string                                    `pulumi:"preferredSpotSizes"`
+	SpotSizeAttributes *StatefulNodeAzureVmSizesSpotSizeAttributes `pulumi:"spotSizeAttributes"`
+	SpotSizes          []string                                    `pulumi:"spotSizes"`
 }
 
 // StatefulNodeAzureVmSizesInput is an input type that accepts StatefulNodeAzureVmSizesArgs and StatefulNodeAzureVmSizesOutput values.
@@ -11031,9 +11033,11 @@ type StatefulNodeAzureVmSizesInput interface {
 }
 
 type StatefulNodeAzureVmSizesArgs struct {
-	OdSizes            pulumi.StringArrayInput `pulumi:"odSizes"`
-	PreferredSpotSizes pulumi.StringArrayInput `pulumi:"preferredSpotSizes"`
-	SpotSizes          pulumi.StringArrayInput `pulumi:"spotSizes"`
+	ExcludedVmSizes    pulumi.StringArrayInput                            `pulumi:"excludedVmSizes"`
+	OdSizes            pulumi.StringArrayInput                            `pulumi:"odSizes"`
+	PreferredSpotSizes pulumi.StringArrayInput                            `pulumi:"preferredSpotSizes"`
+	SpotSizeAttributes StatefulNodeAzureVmSizesSpotSizeAttributesPtrInput `pulumi:"spotSizeAttributes"`
+	SpotSizes          pulumi.StringArrayInput                            `pulumi:"spotSizes"`
 }
 
 func (StatefulNodeAzureVmSizesArgs) ElementType() reflect.Type {
@@ -11113,12 +11117,22 @@ func (o StatefulNodeAzureVmSizesOutput) ToStatefulNodeAzureVmSizesPtrOutputWithC
 	}).(StatefulNodeAzureVmSizesPtrOutput)
 }
 
+func (o StatefulNodeAzureVmSizesOutput) ExcludedVmSizes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StatefulNodeAzureVmSizes) []string { return v.ExcludedVmSizes }).(pulumi.StringArrayOutput)
+}
+
 func (o StatefulNodeAzureVmSizesOutput) OdSizes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v StatefulNodeAzureVmSizes) []string { return v.OdSizes }).(pulumi.StringArrayOutput)
 }
 
 func (o StatefulNodeAzureVmSizesOutput) PreferredSpotSizes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v StatefulNodeAzureVmSizes) []string { return v.PreferredSpotSizes }).(pulumi.StringArrayOutput)
+}
+
+func (o StatefulNodeAzureVmSizesOutput) SpotSizeAttributes() StatefulNodeAzureVmSizesSpotSizeAttributesPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureVmSizes) *StatefulNodeAzureVmSizesSpotSizeAttributes {
+		return v.SpotSizeAttributes
+	}).(StatefulNodeAzureVmSizesSpotSizeAttributesPtrOutput)
 }
 
 func (o StatefulNodeAzureVmSizesOutput) SpotSizes() pulumi.StringArrayOutput {
@@ -11149,6 +11163,15 @@ func (o StatefulNodeAzureVmSizesPtrOutput) Elem() StatefulNodeAzureVmSizesOutput
 	}).(StatefulNodeAzureVmSizesOutput)
 }
 
+func (o StatefulNodeAzureVmSizesPtrOutput) ExcludedVmSizes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureVmSizes) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedVmSizes
+	}).(pulumi.StringArrayOutput)
+}
+
 func (o StatefulNodeAzureVmSizesPtrOutput) OdSizes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *StatefulNodeAzureVmSizes) []string {
 		if v == nil {
@@ -11167,6 +11190,15 @@ func (o StatefulNodeAzureVmSizesPtrOutput) PreferredSpotSizes() pulumi.StringArr
 	}).(pulumi.StringArrayOutput)
 }
 
+func (o StatefulNodeAzureVmSizesPtrOutput) SpotSizeAttributes() StatefulNodeAzureVmSizesSpotSizeAttributesPtrOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureVmSizes) *StatefulNodeAzureVmSizesSpotSizeAttributes {
+		if v == nil {
+			return nil
+		}
+		return v.SpotSizeAttributes
+	}).(StatefulNodeAzureVmSizesSpotSizeAttributesPtrOutput)
+}
+
 func (o StatefulNodeAzureVmSizesPtrOutput) SpotSizes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *StatefulNodeAzureVmSizes) []string {
 		if v == nil {
@@ -11174,6 +11206,214 @@ func (o StatefulNodeAzureVmSizesPtrOutput) SpotSizes() pulumi.StringArrayOutput 
 		}
 		return v.SpotSizes
 	}).(pulumi.StringArrayOutput)
+}
+
+type StatefulNodeAzureVmSizesSpotSizeAttributes struct {
+	MaxCpu     *int `pulumi:"maxCpu"`
+	MaxMemory  *int `pulumi:"maxMemory"`
+	MaxStorage *int `pulumi:"maxStorage"`
+	MinCpu     *int `pulumi:"minCpu"`
+	MinMemory  *int `pulumi:"minMemory"`
+	MinStorage *int `pulumi:"minStorage"`
+}
+
+// StatefulNodeAzureVmSizesSpotSizeAttributesInput is an input type that accepts StatefulNodeAzureVmSizesSpotSizeAttributesArgs and StatefulNodeAzureVmSizesSpotSizeAttributesOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureVmSizesSpotSizeAttributesInput` via:
+//
+//	StatefulNodeAzureVmSizesSpotSizeAttributesArgs{...}
+type StatefulNodeAzureVmSizesSpotSizeAttributesInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureVmSizesSpotSizeAttributesOutput() StatefulNodeAzureVmSizesSpotSizeAttributesOutput
+	ToStatefulNodeAzureVmSizesSpotSizeAttributesOutputWithContext(context.Context) StatefulNodeAzureVmSizesSpotSizeAttributesOutput
+}
+
+type StatefulNodeAzureVmSizesSpotSizeAttributesArgs struct {
+	MaxCpu     pulumi.IntPtrInput `pulumi:"maxCpu"`
+	MaxMemory  pulumi.IntPtrInput `pulumi:"maxMemory"`
+	MaxStorage pulumi.IntPtrInput `pulumi:"maxStorage"`
+	MinCpu     pulumi.IntPtrInput `pulumi:"minCpu"`
+	MinMemory  pulumi.IntPtrInput `pulumi:"minMemory"`
+	MinStorage pulumi.IntPtrInput `pulumi:"minStorage"`
+}
+
+func (StatefulNodeAzureVmSizesSpotSizeAttributesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureVmSizesSpotSizeAttributes)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureVmSizesSpotSizeAttributesArgs) ToStatefulNodeAzureVmSizesSpotSizeAttributesOutput() StatefulNodeAzureVmSizesSpotSizeAttributesOutput {
+	return i.ToStatefulNodeAzureVmSizesSpotSizeAttributesOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureVmSizesSpotSizeAttributesArgs) ToStatefulNodeAzureVmSizesSpotSizeAttributesOutputWithContext(ctx context.Context) StatefulNodeAzureVmSizesSpotSizeAttributesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureVmSizesSpotSizeAttributesOutput)
+}
+
+func (i StatefulNodeAzureVmSizesSpotSizeAttributesArgs) ToStatefulNodeAzureVmSizesSpotSizeAttributesPtrOutput() StatefulNodeAzureVmSizesSpotSizeAttributesPtrOutput {
+	return i.ToStatefulNodeAzureVmSizesSpotSizeAttributesPtrOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureVmSizesSpotSizeAttributesArgs) ToStatefulNodeAzureVmSizesSpotSizeAttributesPtrOutputWithContext(ctx context.Context) StatefulNodeAzureVmSizesSpotSizeAttributesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureVmSizesSpotSizeAttributesOutput).ToStatefulNodeAzureVmSizesSpotSizeAttributesPtrOutputWithContext(ctx)
+}
+
+// StatefulNodeAzureVmSizesSpotSizeAttributesPtrInput is an input type that accepts StatefulNodeAzureVmSizesSpotSizeAttributesArgs, StatefulNodeAzureVmSizesSpotSizeAttributesPtr and StatefulNodeAzureVmSizesSpotSizeAttributesPtrOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureVmSizesSpotSizeAttributesPtrInput` via:
+//
+//	        StatefulNodeAzureVmSizesSpotSizeAttributesArgs{...}
+//
+//	or:
+//
+//	        nil
+type StatefulNodeAzureVmSizesSpotSizeAttributesPtrInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureVmSizesSpotSizeAttributesPtrOutput() StatefulNodeAzureVmSizesSpotSizeAttributesPtrOutput
+	ToStatefulNodeAzureVmSizesSpotSizeAttributesPtrOutputWithContext(context.Context) StatefulNodeAzureVmSizesSpotSizeAttributesPtrOutput
+}
+
+type statefulNodeAzureVmSizesSpotSizeAttributesPtrType StatefulNodeAzureVmSizesSpotSizeAttributesArgs
+
+func StatefulNodeAzureVmSizesSpotSizeAttributesPtr(v *StatefulNodeAzureVmSizesSpotSizeAttributesArgs) StatefulNodeAzureVmSizesSpotSizeAttributesPtrInput {
+	return (*statefulNodeAzureVmSizesSpotSizeAttributesPtrType)(v)
+}
+
+func (*statefulNodeAzureVmSizesSpotSizeAttributesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatefulNodeAzureVmSizesSpotSizeAttributes)(nil)).Elem()
+}
+
+func (i *statefulNodeAzureVmSizesSpotSizeAttributesPtrType) ToStatefulNodeAzureVmSizesSpotSizeAttributesPtrOutput() StatefulNodeAzureVmSizesSpotSizeAttributesPtrOutput {
+	return i.ToStatefulNodeAzureVmSizesSpotSizeAttributesPtrOutputWithContext(context.Background())
+}
+
+func (i *statefulNodeAzureVmSizesSpotSizeAttributesPtrType) ToStatefulNodeAzureVmSizesSpotSizeAttributesPtrOutputWithContext(ctx context.Context) StatefulNodeAzureVmSizesSpotSizeAttributesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureVmSizesSpotSizeAttributesPtrOutput)
+}
+
+type StatefulNodeAzureVmSizesSpotSizeAttributesOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureVmSizesSpotSizeAttributesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureVmSizesSpotSizeAttributes)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureVmSizesSpotSizeAttributesOutput) ToStatefulNodeAzureVmSizesSpotSizeAttributesOutput() StatefulNodeAzureVmSizesSpotSizeAttributesOutput {
+	return o
+}
+
+func (o StatefulNodeAzureVmSizesSpotSizeAttributesOutput) ToStatefulNodeAzureVmSizesSpotSizeAttributesOutputWithContext(ctx context.Context) StatefulNodeAzureVmSizesSpotSizeAttributesOutput {
+	return o
+}
+
+func (o StatefulNodeAzureVmSizesSpotSizeAttributesOutput) ToStatefulNodeAzureVmSizesSpotSizeAttributesPtrOutput() StatefulNodeAzureVmSizesSpotSizeAttributesPtrOutput {
+	return o.ToStatefulNodeAzureVmSizesSpotSizeAttributesPtrOutputWithContext(context.Background())
+}
+
+func (o StatefulNodeAzureVmSizesSpotSizeAttributesOutput) ToStatefulNodeAzureVmSizesSpotSizeAttributesPtrOutputWithContext(ctx context.Context) StatefulNodeAzureVmSizesSpotSizeAttributesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatefulNodeAzureVmSizesSpotSizeAttributes) *StatefulNodeAzureVmSizesSpotSizeAttributes {
+		return &v
+	}).(StatefulNodeAzureVmSizesSpotSizeAttributesPtrOutput)
+}
+
+func (o StatefulNodeAzureVmSizesSpotSizeAttributesOutput) MaxCpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureVmSizesSpotSizeAttributes) *int { return v.MaxCpu }).(pulumi.IntPtrOutput)
+}
+
+func (o StatefulNodeAzureVmSizesSpotSizeAttributesOutput) MaxMemory() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureVmSizesSpotSizeAttributes) *int { return v.MaxMemory }).(pulumi.IntPtrOutput)
+}
+
+func (o StatefulNodeAzureVmSizesSpotSizeAttributesOutput) MaxStorage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureVmSizesSpotSizeAttributes) *int { return v.MaxStorage }).(pulumi.IntPtrOutput)
+}
+
+func (o StatefulNodeAzureVmSizesSpotSizeAttributesOutput) MinCpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureVmSizesSpotSizeAttributes) *int { return v.MinCpu }).(pulumi.IntPtrOutput)
+}
+
+func (o StatefulNodeAzureVmSizesSpotSizeAttributesOutput) MinMemory() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureVmSizesSpotSizeAttributes) *int { return v.MinMemory }).(pulumi.IntPtrOutput)
+}
+
+func (o StatefulNodeAzureVmSizesSpotSizeAttributesOutput) MinStorage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureVmSizesSpotSizeAttributes) *int { return v.MinStorage }).(pulumi.IntPtrOutput)
+}
+
+type StatefulNodeAzureVmSizesSpotSizeAttributesPtrOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureVmSizesSpotSizeAttributesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatefulNodeAzureVmSizesSpotSizeAttributes)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureVmSizesSpotSizeAttributesPtrOutput) ToStatefulNodeAzureVmSizesSpotSizeAttributesPtrOutput() StatefulNodeAzureVmSizesSpotSizeAttributesPtrOutput {
+	return o
+}
+
+func (o StatefulNodeAzureVmSizesSpotSizeAttributesPtrOutput) ToStatefulNodeAzureVmSizesSpotSizeAttributesPtrOutputWithContext(ctx context.Context) StatefulNodeAzureVmSizesSpotSizeAttributesPtrOutput {
+	return o
+}
+
+func (o StatefulNodeAzureVmSizesSpotSizeAttributesPtrOutput) Elem() StatefulNodeAzureVmSizesSpotSizeAttributesOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureVmSizesSpotSizeAttributes) StatefulNodeAzureVmSizesSpotSizeAttributes {
+		if v != nil {
+			return *v
+		}
+		var ret StatefulNodeAzureVmSizesSpotSizeAttributes
+		return ret
+	}).(StatefulNodeAzureVmSizesSpotSizeAttributesOutput)
+}
+
+func (o StatefulNodeAzureVmSizesSpotSizeAttributesPtrOutput) MaxCpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureVmSizesSpotSizeAttributes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxCpu
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o StatefulNodeAzureVmSizesSpotSizeAttributesPtrOutput) MaxMemory() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureVmSizesSpotSizeAttributes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxMemory
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o StatefulNodeAzureVmSizesSpotSizeAttributesPtrOutput) MaxStorage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureVmSizesSpotSizeAttributes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxStorage
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o StatefulNodeAzureVmSizesSpotSizeAttributesPtrOutput) MinCpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureVmSizesSpotSizeAttributes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinCpu
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o StatefulNodeAzureVmSizesSpotSizeAttributesPtrOutput) MinMemory() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureVmSizesSpotSizeAttributes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinMemory
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o StatefulNodeAzureVmSizesSpotSizeAttributesPtrOutput) MinStorage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureVmSizesSpotSizeAttributes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinStorage
+	}).(pulumi.IntPtrOutput)
 }
 
 func init() {
@@ -11355,6 +11595,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureUpdateStateArrayInput)(nil)).Elem(), StatefulNodeAzureUpdateStateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureVmSizesInput)(nil)).Elem(), StatefulNodeAzureVmSizesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureVmSizesPtrInput)(nil)).Elem(), StatefulNodeAzureVmSizesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureVmSizesSpotSizeAttributesInput)(nil)).Elem(), StatefulNodeAzureVmSizesSpotSizeAttributesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureVmSizesSpotSizeAttributesPtrInput)(nil)).Elem(), StatefulNodeAzureVmSizesSpotSizeAttributesArgs{})
 	pulumi.RegisterOutputType(DataIntegrationS3Output{})
 	pulumi.RegisterOutputType(DataIntegrationS3PtrOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3BootDiagnosticOutput{})
@@ -11533,4 +11775,6 @@ func init() {
 	pulumi.RegisterOutputType(StatefulNodeAzureUpdateStateArrayOutput{})
 	pulumi.RegisterOutputType(StatefulNodeAzureVmSizesOutput{})
 	pulumi.RegisterOutputType(StatefulNodeAzureVmSizesPtrOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureVmSizesSpotSizeAttributesOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureVmSizesSpotSizeAttributesPtrOutput{})
 }

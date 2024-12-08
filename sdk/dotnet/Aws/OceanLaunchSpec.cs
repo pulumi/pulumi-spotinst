@@ -11,6 +11,16 @@ namespace Pulumi.SpotInst.Aws
 {
     /// <summary>
     /// Manages a Spotinst Ocean AWS [Virtual Node Group](https://docs.spot.io/ocean/features/launch-specifications) resource.
+    /// 
+    /// ## Import
+    /// 
+    /// Launch_Specs can be imported using the Launch_Spec `id`, e.g.,
+    /// 
+    /// hcl
+    /// 
+    /// ```sh
+    /// $ pulumi import spotinst:aws/oceanLaunchSpec:OceanLaunchSpec nameOfTheResource ols-1a2b576
+    /// ```
     /// </summary>
     [SpotInstResourceType("spotinst:aws/oceanLaunchSpec:OceanLaunchSpec")]
     public partial class OceanLaunchSpec : global::Pulumi.CustomResource

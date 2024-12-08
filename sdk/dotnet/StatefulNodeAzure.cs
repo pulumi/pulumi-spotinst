@@ -86,6 +86,19 @@ namespace Pulumi.SpotInst
     ///             {
     ///                 "standard_ds1_v2",
     ///             },
+    ///             ExcludedVmSizes = new[]
+    ///             {
+    ///                 "standard_ds2_v3",
+    ///             },
+    ///             SpotSizeAttributes = new SpotInst.Inputs.StatefulNodeAzureVmSizesSpotSizeAttributesArgs
+    ///             {
+    ///                 MaxCpu = 16,
+    ///                 MinCpu = 2,
+    ///                 MaxMemory = 48,
+    ///                 MinMemory = 2,
+    ///                 MaxStorage = 1000,
+    ///                 MinStorage = 50,
+    ///             },
     ///         },
     ///         Zones = new[]
     ///         {
@@ -411,8 +424,16 @@ namespace Pulumi.SpotInst
     /// * `os` - (Required, Enum `"Linux", "Windows"`) Type of operating system.
     /// * `vm_sizes` - (Required) Defines the VM sizes to use when launching VMs.
     ///     * `od_sizes` - (Required) Available On-Demand sizes.
-    ///     * `spot_sizes` - (Required) Available Spot-VM sizes.
+    ///     * `spot_sizes` - (Optional) Available Spot-VM sizes. Required if spotSizeAttributes isn't specified.
     ///     * `preferred_spot_sizes` - (Optional) Prioritize Spot VM sizes when launching Spot VMs for the group. If set, must be a sublist of compute.vmSizes.spotSizes.
+    ///     * `excluded_vm_sizes` - (Optional) Defines the VM sizes to exclude when defining spot types with spotSizeAttributes.
+    ///     * `spot_size_attributes` - (Optional) Defines values and ranges for attributes of the spot sizes to use when launching VMs. Required if spotSizes isn't specified.
+    ///       * `max_cpu` - (Optional) Maximum amount of vCPU units.
+    ///       * `min_cpu` - (Optional) Minimum amount of vCPU units.
+    ///       * `max_memory` - (Optional) Maximum amount of memory in GiB.
+    ///       * `min_memory` - (Optional) Minimum amount of memory in GiB.
+    ///       * `max_storage` - (Optional) Maximum amount of storage in GiB.
+    ///       * `min_storage` - (optional) Minimum amount of storage in GiB.
     /// * `zones` - (Optional, Enum `"1", "2", "3"`) List of Azure Availability Zones in the defined region. If not defined, Virtual machines will be launched regionally.
     /// * `preferred_zone` - (Optional, Enum `"1", "2", "3"`) The AZ to prioritize when launching VMs. If no markets are available in the Preferred AZ, VMs are launched in the non-preferred AZ. Must be a sublist of compute.zones.
     /// * `custom_data` - (Optional) This value will hold the YAML in base64 and will be executed upon VM launch.

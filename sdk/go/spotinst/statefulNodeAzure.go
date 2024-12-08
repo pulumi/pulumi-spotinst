@@ -78,6 +78,17 @@ import (
 //					PreferredSpotSizes: pulumi.StringArray{
 //						pulumi.String("standard_ds1_v2"),
 //					},
+//					ExcludedVmSizes: pulumi.StringArray{
+//						pulumi.String("standard_ds2_v3"),
+//					},
+//					SpotSizeAttributes: &spotinst.StatefulNodeAzureVmSizesSpotSizeAttributesArgs{
+//						MaxCpu:     pulumi.Int(16),
+//						MinCpu:     pulumi.Int(2),
+//						MaxMemory:  pulumi.Int(48),
+//						MinMemory:  pulumi.Int(2),
+//						MaxStorage: pulumi.Int(1000),
+//						MinStorage: pulumi.Int(50),
+//					},
 //				},
 //				Zones: pulumi.StringArray{
 //					pulumi.String("1"),
@@ -350,8 +361,16 @@ import (
 // * `os` - (Required, Enum `"Linux", "Windows"`) Type of operating system.
 // * `vmSizes` - (Required) Defines the VM sizes to use when launching VMs.
 //   - `odSizes` - (Required) Available On-Demand sizes.
-//   - `spotSizes` - (Required) Available Spot-VM sizes.
+//   - `spotSizes` - (Optional) Available Spot-VM sizes. Required if spotSizeAttributes isn't specified.
 //   - `preferredSpotSizes` - (Optional) Prioritize Spot VM sizes when launching Spot VMs for the group. If set, must be a sublist of compute.vmSizes.spotSizes.
+//   - `excludedVmSizes` - (Optional) Defines the VM sizes to exclude when defining spot types with spotSizeAttributes.
+//   - `spotSizeAttributes` - (Optional) Defines values and ranges for attributes of the spot sizes to use when launching VMs. Required if spotSizes isn't specified.
+//   - `maxCpu` - (Optional) Maximum amount of vCPU units.
+//   - `minCpu` - (Optional) Minimum amount of vCPU units.
+//   - `maxMemory` - (Optional) Maximum amount of memory in GiB.
+//   - `minMemory` - (Optional) Minimum amount of memory in GiB.
+//   - `maxStorage` - (Optional) Maximum amount of storage in GiB.
+//   - `minStorage` - (optional) Minimum amount of storage in GiB.
 //
 // * `zones` - (Optional, Enum `"1", "2", "3"`) List of Azure Availability Zones in the defined region. If not defined, Virtual machines will be launched regionally.
 // * `preferredZone` - (Optional, Enum `"1", "2", "3"`) The AZ to prioritize when launching VMs. If no markets are available in the Preferred AZ, VMs are launched in the non-preferred AZ. Must be a sublist of compute.zones.

@@ -616,9 +616,20 @@ export interface StatefulNodeAzureUpdateState {
 }
 
 export interface StatefulNodeAzureVmSizes {
+    excludedVmSizes?: pulumi.Input<pulumi.Input<string>[]>;
     odSizes: pulumi.Input<pulumi.Input<string>[]>;
     preferredSpotSizes?: pulumi.Input<pulumi.Input<string>[]>;
-    spotSizes: pulumi.Input<pulumi.Input<string>[]>;
+    spotSizeAttributes?: pulumi.Input<inputs.StatefulNodeAzureVmSizesSpotSizeAttributes>;
+    spotSizes?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface StatefulNodeAzureVmSizesSpotSizeAttributes {
+    maxCpu?: pulumi.Input<number>;
+    maxMemory?: pulumi.Input<number>;
+    maxStorage?: pulumi.Input<number>;
+    minCpu?: pulumi.Input<number>;
+    minMemory?: pulumi.Input<number>;
+    minStorage?: pulumi.Input<number>;
 }
 export namespace aws {
     export interface BeanstalkDeploymentPreferences {
