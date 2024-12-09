@@ -19,7 +19,7 @@ namespace Pulumi.SpotInst.Ecs
     /// hcl
     /// 
     /// ```sh
-    /// $ pulumi import spotinst:ecs/ocean:Ocean this o-12345678
+    /// $ pulumi import spotinst:ecs/ocean:Ocean nameOfTheResource o-12345678
     /// ```
     /// </summary>
     [SpotInstResourceType("spotinst:ecs/ocean:Ocean")]

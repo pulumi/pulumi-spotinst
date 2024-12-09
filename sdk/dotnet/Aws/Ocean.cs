@@ -19,7 +19,7 @@ namespace Pulumi.SpotInst.Aws
     /// hcl
     /// 
     /// ```sh
-    /// $ pulumi import spotinst:aws/ocean:Ocean this o-12345678
+    /// $ pulumi import spotinst:aws/ocean:Ocean nameOfTheResource o-12345678
     /// ```
     /// </summary>
     [SpotInstResourceType("spotinst:aws/ocean:Ocean")]
