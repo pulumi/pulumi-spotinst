@@ -2782,11 +2782,17 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "excluded_vm_sizes": {
+                                    "maxItemsOne": false
+                                },
                                 "od_sizes": {
                                     "maxItemsOne": false
                                 },
                                 "preferred_spot_sizes": {
                                     "maxItemsOne": false
+                                },
+                                "spot_size_attributes": {
+                                    "maxItemsOne": true
                                 },
                                 "spot_sizes": {
                                     "maxItemsOne": false

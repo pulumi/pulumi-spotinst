@@ -154,6 +154,16 @@ namespace Pulumi.SpotInst.Ecs
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Launch_Specs can be imported using the Launch_Spec `id`, e.g.,
+    /// 
+    /// hcl
+    /// 
+    /// ```sh
+    /// $ pulumi import spotinst:ecs/oceanLaunchSpec:OceanLaunchSpec nameOfTheResource ols-1a2345
+    /// ```
     /// </summary>
     [SpotInstResourceType("spotinst:ecs/oceanLaunchSpec:OceanLaunchSpec")]
     public partial class OceanLaunchSpec : global::Pulumi.CustomResource

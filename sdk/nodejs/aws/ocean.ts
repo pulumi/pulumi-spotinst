@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * hcl
  *
  * ```sh
- * $ pulumi import spotinst:aws/ocean:Ocean this o-12345678
+ * $ pulumi import spotinst:aws/ocean:Ocean nameOfTheResource o-12345678
  * ```
  */
 export class Ocean extends pulumi.CustomResource {

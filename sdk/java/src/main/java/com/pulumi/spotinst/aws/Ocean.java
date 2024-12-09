@@ -40,7 +40,7 @@ import javax.annotation.Nullable;
  * hcl
  * 
  * ```sh
- * $ pulumi import spotinst:aws/ocean:Ocean this o-12345678
+ * $ pulumi import spotinst:aws/ocean:Ocean nameOfTheResource o-12345678
  * ```
  * 
  */

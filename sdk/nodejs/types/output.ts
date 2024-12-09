@@ -616,9 +616,20 @@ export interface StatefulNodeAzureUpdateState {
 }
 
 export interface StatefulNodeAzureVmSizes {
+    excludedVmSizes?: string[];
     odSizes: string[];
     preferredSpotSizes?: string[];
-    spotSizes: string[];
+    spotSizeAttributes?: outputs.StatefulNodeAzureVmSizesSpotSizeAttributes;
+    spotSizes?: string[];
+}
+
+export interface StatefulNodeAzureVmSizesSpotSizeAttributes {
+    maxCpu?: number;
+    maxMemory?: number;
+    maxStorage?: number;
+    minCpu?: number;
+    minMemory?: number;
+    minStorage?: number;
 }
 
 export namespace aws {
