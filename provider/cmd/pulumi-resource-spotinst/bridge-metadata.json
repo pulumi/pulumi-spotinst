@@ -1241,6 +1241,23 @@
                     "pod_subnet_ids": {
                         "maxItemsOne": false
                     },
+                    "scheduling": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "shutdown_hours": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "time_windows": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "taints": {
                         "maxItemsOne": false
                     },
