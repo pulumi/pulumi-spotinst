@@ -93,6 +93,15 @@ import * as utilities from "../utilities";
  *         minDisk: 1,
  *         gpuTypes: ["nvidia-tesla-t4"],
  *     },
+ *     scheduling: {
+ *         shutdownHours: {
+ *             isEnabled: true,
+ *             timeWindows: [
+ *                 "Fri:15:30-Sat:20:30",
+ *                 "Sun:08:30-Mon:08:30",
+ *             ],
+ *         },
+ *     },
  * });
  * ```
  */
@@ -197,6 +206,10 @@ export class OceanNpVirtualNodeGroup extends pulumi.CustomResource {
      */
     public readonly podSubnetIds!: pulumi.Output<string[] | undefined>;
     /**
+     * An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
+     */
+    public readonly scheduling!: pulumi.Output<outputs.azure.OceanNpVirtualNodeGroupScheduling | undefined>;
+    /**
      * Percentage of spot VMs to maintain.
      */
     public readonly spotPercentage!: pulumi.Output<number | undefined>;
@@ -242,6 +255,7 @@ export class OceanNpVirtualNodeGroup extends pulumi.CustomResource {
             resourceInputs["osSku"] = state ? state.osSku : undefined;
             resourceInputs["osType"] = state ? state.osType : undefined;
             resourceInputs["podSubnetIds"] = state ? state.podSubnetIds : undefined;
+            resourceInputs["scheduling"] = state ? state.scheduling : undefined;
             resourceInputs["spotPercentage"] = state ? state.spotPercentage : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["taints"] = state ? state.taints : undefined;
@@ -270,6 +284,7 @@ export class OceanNpVirtualNodeGroup extends pulumi.CustomResource {
             resourceInputs["osSku"] = args ? args.osSku : undefined;
             resourceInputs["osType"] = args ? args.osType : undefined;
             resourceInputs["podSubnetIds"] = args ? args.podSubnetIds : undefined;
+            resourceInputs["scheduling"] = args ? args.scheduling : undefined;
             resourceInputs["spotPercentage"] = args ? args.spotPercentage : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["taints"] = args ? args.taints : undefined;
@@ -357,6 +372,10 @@ export interface OceanNpVirtualNodeGroupState {
      * The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
      */
     podSubnetIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
+     */
+    scheduling?: pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupScheduling>;
     /**
      * Percentage of spot VMs to maintain.
      */
@@ -449,6 +468,10 @@ export interface OceanNpVirtualNodeGroupArgs {
      * The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
      */
     podSubnetIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
+     */
+    scheduling?: pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupScheduling>;
     /**
      * Percentage of spot VMs to maintain.
      */

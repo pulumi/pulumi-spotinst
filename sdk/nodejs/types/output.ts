@@ -3598,6 +3598,24 @@ export namespace azure {
         vmMaxMapCount?: number;
     }
 
+    export interface OceanNpVirtualNodeGroupScheduling {
+        /**
+         * An object used to specify times that the nodes in the virtual node group will be stopped.
+         */
+        shutdownHours?: outputs.azure.OceanNpVirtualNodeGroupSchedulingShutdownHours;
+    }
+
+    export interface OceanNpVirtualNodeGroupSchedulingShutdownHours {
+        /**
+         * Flag to enable or disable the shutdown hours mechanism. When `false`, the mechanism is deactivated, and the virtual node gorup remains in its current state.
+         */
+        isEnabled?: boolean;
+        /**
+         * The times that the shutdown hours will apply. Required if isEnabled is true.
+         */
+        timeWindows?: string[];
+    }
+
     export interface OceanNpVirtualNodeGroupTaint {
         /**
          * Set taint effect.

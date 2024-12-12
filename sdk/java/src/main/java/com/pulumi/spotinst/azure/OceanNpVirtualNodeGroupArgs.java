@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupFiltersArgs;
 import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupHeadroomArgs;
 import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupLinuxOsConfigArgs;
+import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupSchedulingArgs;
 import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupTaintArgs;
 import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupUpdatePolicyArgs;
 import java.lang.Boolean;
@@ -296,6 +297,21 @@ public final class OceanNpVirtualNodeGroupArgs extends com.pulumi.resources.Reso
     }
 
     /**
+     * An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
+     * 
+     */
+    @Import(name="scheduling")
+    private @Nullable Output<OceanNpVirtualNodeGroupSchedulingArgs> scheduling;
+
+    /**
+     * @return An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
+     * 
+     */
+    public Optional<Output<OceanNpVirtualNodeGroupSchedulingArgs>> scheduling() {
+        return Optional.ofNullable(this.scheduling);
+    }
+
+    /**
      * Percentage of spot VMs to maintain.
      * 
      */
@@ -375,6 +391,7 @@ public final class OceanNpVirtualNodeGroupArgs extends com.pulumi.resources.Reso
         this.osSku = $.osSku;
         this.osType = $.osType;
         this.podSubnetIds = $.podSubnetIds;
+        this.scheduling = $.scheduling;
         this.spotPercentage = $.spotPercentage;
         this.tags = $.tags;
         this.taints = $.taints;
@@ -816,6 +833,27 @@ public final class OceanNpVirtualNodeGroupArgs extends com.pulumi.resources.Reso
          */
         public Builder podSubnetIds(String... podSubnetIds) {
             return podSubnetIds(List.of(podSubnetIds));
+        }
+
+        /**
+         * @param scheduling An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scheduling(@Nullable Output<OceanNpVirtualNodeGroupSchedulingArgs> scheduling) {
+            $.scheduling = scheduling;
+            return this;
+        }
+
+        /**
+         * @param scheduling An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scheduling(OceanNpVirtualNodeGroupSchedulingArgs scheduling) {
+            return scheduling(Output.of(scheduling));
         }
 
         /**

@@ -134,6 +134,18 @@ namespace Pulumi.SpotInst.Azure
     ///                 "nvidia-tesla-t4",
     ///             },
     ///         },
+    ///         Scheduling = new SpotInst.Azure.Inputs.OceanNpVirtualNodeGroupSchedulingArgs
+    ///         {
+    ///             ShutdownHours = new SpotInst.Azure.Inputs.OceanNpVirtualNodeGroupSchedulingShutdownHoursArgs
+    ///             {
+    ///                 IsEnabled = true,
+    ///                 TimeWindows = new[]
+    ///                 {
+    ///                     "Fri:15:30-Sat:20:30",
+    ///                     "Sun:08:30-Mon:08:30",
+    ///                 },
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });
@@ -249,6 +261,12 @@ namespace Pulumi.SpotInst.Azure
         /// </summary>
         [Output("podSubnetIds")]
         public Output<ImmutableArray<string>> PodSubnetIds { get; private set; } = null!;
+
+        /// <summary>
+        /// An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
+        /// </summary>
+        [Output("scheduling")]
+        public Output<Outputs.OceanNpVirtualNodeGroupScheduling?> Scheduling { get; private set; } = null!;
 
         /// <summary>
         /// Percentage of spot VMs to maintain.
@@ -459,6 +477,12 @@ namespace Pulumi.SpotInst.Azure
         }
 
         /// <summary>
+        /// An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
+        /// </summary>
+        [Input("scheduling")]
+        public Input<Inputs.OceanNpVirtualNodeGroupSchedulingArgs>? Scheduling { get; set; }
+
+        /// <summary>
         /// Percentage of spot VMs to maintain.
         /// </summary>
         [Input("spotPercentage")]
@@ -644,6 +668,12 @@ namespace Pulumi.SpotInst.Azure
             get => _podSubnetIds ?? (_podSubnetIds = new InputList<string>());
             set => _podSubnetIds = value;
         }
+
+        /// <summary>
+        /// An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
+        /// </summary>
+        [Input("scheduling")]
+        public Input<Inputs.OceanNpVirtualNodeGroupSchedulingGetArgs>? Scheduling { get; set; }
 
         /// <summary>
         /// Percentage of spot VMs to maintain.
