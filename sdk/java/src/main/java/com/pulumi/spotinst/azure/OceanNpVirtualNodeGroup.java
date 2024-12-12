@@ -13,6 +13,7 @@ import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupState;
 import com.pulumi.spotinst.azure.outputs.OceanNpVirtualNodeGroupFilters;
 import com.pulumi.spotinst.azure.outputs.OceanNpVirtualNodeGroupHeadroom;
 import com.pulumi.spotinst.azure.outputs.OceanNpVirtualNodeGroupLinuxOsConfig;
+import com.pulumi.spotinst.azure.outputs.OceanNpVirtualNodeGroupScheduling;
 import com.pulumi.spotinst.azure.outputs.OceanNpVirtualNodeGroupTaint;
 import com.pulumi.spotinst.azure.outputs.OceanNpVirtualNodeGroupUpdatePolicy;
 import java.lang.Boolean;
@@ -42,6 +43,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupLinuxOsConfigArgs;
  * import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupTaintArgs;
  * import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupFiltersArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupSchedulingArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupSchedulingShutdownHoursArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -127,6 +130,14 @@ import javax.annotation.Nullable;
  *                     "GPU")
  *                 .minDisk(1)
  *                 .gpuTypes("nvidia-tesla-t4")
+ *                 .build())
+ *             .scheduling(OceanNpVirtualNodeGroupSchedulingArgs.builder()
+ *                 .shutdownHours(OceanNpVirtualNodeGroupSchedulingShutdownHoursArgs.builder()
+ *                     .isEnabled(true)
+ *                     .timeWindows(                    
+ *                         "Fri:15:30-Sat:20:30",
+ *                         "Sun:08:30-Mon:08:30")
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -390,6 +401,20 @@ public class OceanNpVirtualNodeGroup extends com.pulumi.resources.CustomResource
      */
     public Output<Optional<List<String>>> podSubnetIds() {
         return Codegen.optional(this.podSubnetIds);
+    }
+    /**
+     * An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
+     * 
+     */
+    @Export(name="scheduling", refs={OceanNpVirtualNodeGroupScheduling.class}, tree="[0]")
+    private Output</* @Nullable */ OceanNpVirtualNodeGroupScheduling> scheduling;
+
+    /**
+     * @return An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
+     * 
+     */
+    public Output<Optional<OceanNpVirtualNodeGroupScheduling>> scheduling() {
+        return Codegen.optional(this.scheduling);
     }
     /**
      * Percentage of spot VMs to maintain.

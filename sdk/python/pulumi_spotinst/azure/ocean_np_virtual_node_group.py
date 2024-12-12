@@ -39,6 +39,7 @@ class OceanNpVirtualNodeGroupArgs:
                  os_sku: Optional[pulumi.Input[str]] = None,
                  os_type: Optional[pulumi.Input[str]] = None,
                  pod_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 scheduling: Optional[pulumi.Input['OceanNpVirtualNodeGroupSchedulingArgs']] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupTaintArgs']]]] = None,
@@ -64,6 +65,7 @@ class OceanNpVirtualNodeGroupArgs:
         :param pulumi.Input[str] os_sku: The OS SKU of the OS type. Must correlate with the os type.
         :param pulumi.Input[str] os_type: The OS type of the OS disk. Can't be modified once set.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_subnet_ids: The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
+        :param pulumi.Input['OceanNpVirtualNodeGroupSchedulingArgs'] scheduling: An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
         :param pulumi.Input[int] spot_percentage: Percentage of spot VMs to maintain.
         :param pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupTaintArgs']]] taints: Add taints to a virtual node group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vnet_subnet_ids: The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
@@ -103,6 +105,8 @@ class OceanNpVirtualNodeGroupArgs:
             pulumi.set(__self__, "os_type", os_type)
         if pod_subnet_ids is not None:
             pulumi.set(__self__, "pod_subnet_ids", pod_subnet_ids)
+        if scheduling is not None:
+            pulumi.set(__self__, "scheduling", scheduling)
         if spot_percentage is not None:
             pulumi.set(__self__, "spot_percentage", spot_percentage)
         if tags is not None:
@@ -331,6 +335,18 @@ class OceanNpVirtualNodeGroupArgs:
         pulumi.set(self, "pod_subnet_ids", value)
 
     @property
+    @pulumi.getter
+    def scheduling(self) -> Optional[pulumi.Input['OceanNpVirtualNodeGroupSchedulingArgs']]:
+        """
+        An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
+        """
+        return pulumi.get(self, "scheduling")
+
+    @scheduling.setter
+    def scheduling(self, value: Optional[pulumi.Input['OceanNpVirtualNodeGroupSchedulingArgs']]):
+        pulumi.set(self, "scheduling", value)
+
+    @property
     @pulumi.getter(name="spotPercentage")
     def spot_percentage(self) -> Optional[pulumi.Input[int]]:
         """
@@ -406,6 +422,7 @@ class _OceanNpVirtualNodeGroupState:
                  os_sku: Optional[pulumi.Input[str]] = None,
                  os_type: Optional[pulumi.Input[str]] = None,
                  pod_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 scheduling: Optional[pulumi.Input['OceanNpVirtualNodeGroupSchedulingArgs']] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupTaintArgs']]]] = None,
@@ -431,6 +448,7 @@ class _OceanNpVirtualNodeGroupState:
         :param pulumi.Input[str] os_sku: The OS SKU of the OS type. Must correlate with the os type.
         :param pulumi.Input[str] os_type: The OS type of the OS disk. Can't be modified once set.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_subnet_ids: The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
+        :param pulumi.Input['OceanNpVirtualNodeGroupSchedulingArgs'] scheduling: An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
         :param pulumi.Input[int] spot_percentage: Percentage of spot VMs to maintain.
         :param pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupTaintArgs']]] taints: Add taints to a virtual node group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vnet_subnet_ids: The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
@@ -471,6 +489,8 @@ class _OceanNpVirtualNodeGroupState:
             pulumi.set(__self__, "os_type", os_type)
         if pod_subnet_ids is not None:
             pulumi.set(__self__, "pod_subnet_ids", pod_subnet_ids)
+        if scheduling is not None:
+            pulumi.set(__self__, "scheduling", scheduling)
         if spot_percentage is not None:
             pulumi.set(__self__, "spot_percentage", spot_percentage)
         if tags is not None:
@@ -699,6 +719,18 @@ class _OceanNpVirtualNodeGroupState:
         pulumi.set(self, "pod_subnet_ids", value)
 
     @property
+    @pulumi.getter
+    def scheduling(self) -> Optional[pulumi.Input['OceanNpVirtualNodeGroupSchedulingArgs']]:
+        """
+        An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
+        """
+        return pulumi.get(self, "scheduling")
+
+    @scheduling.setter
+    def scheduling(self, value: Optional[pulumi.Input['OceanNpVirtualNodeGroupSchedulingArgs']]):
+        pulumi.set(self, "scheduling", value)
+
+    @property
     @pulumi.getter(name="spotPercentage")
     def spot_percentage(self) -> Optional[pulumi.Input[int]]:
         """
@@ -776,6 +808,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
                  os_sku: Optional[pulumi.Input[str]] = None,
                  os_type: Optional[pulumi.Input[str]] = None,
                  pod_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 scheduling: Optional[pulumi.Input[Union['OceanNpVirtualNodeGroupSchedulingArgs', 'OceanNpVirtualNodeGroupSchedulingArgsDict']]] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupTaintArgs', 'OceanNpVirtualNodeGroupTaintArgsDict']]]]] = None,
@@ -868,6 +901,15 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
                 ],
                 "min_disk": 1,
                 "gpu_types": ["nvidia-tesla-t4"],
+            },
+            scheduling={
+                "shutdown_hours": {
+                    "is_enabled": True,
+                    "time_windows": [
+                        "Fri:15:30-Sat:20:30",
+                        "Sun:08:30-Mon:08:30",
+                    ],
+                },
             })
         ```
 
@@ -891,6 +933,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         :param pulumi.Input[str] os_sku: The OS SKU of the OS type. Must correlate with the os type.
         :param pulumi.Input[str] os_type: The OS type of the OS disk. Can't be modified once set.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_subnet_ids: The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
+        :param pulumi.Input[Union['OceanNpVirtualNodeGroupSchedulingArgs', 'OceanNpVirtualNodeGroupSchedulingArgsDict']] scheduling: An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
         :param pulumi.Input[int] spot_percentage: Percentage of spot VMs to maintain.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupTaintArgs', 'OceanNpVirtualNodeGroupTaintArgsDict']]]] taints: Add taints to a virtual node group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vnet_subnet_ids: The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
@@ -987,6 +1030,15 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
                 ],
                 "min_disk": 1,
                 "gpu_types": ["nvidia-tesla-t4"],
+            },
+            scheduling={
+                "shutdown_hours": {
+                    "is_enabled": True,
+                    "time_windows": [
+                        "Fri:15:30-Sat:20:30",
+                        "Sun:08:30-Mon:08:30",
+                    ],
+                },
             })
         ```
 
@@ -1023,6 +1075,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
                  os_sku: Optional[pulumi.Input[str]] = None,
                  os_type: Optional[pulumi.Input[str]] = None,
                  pod_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 scheduling: Optional[pulumi.Input[Union['OceanNpVirtualNodeGroupSchedulingArgs', 'OceanNpVirtualNodeGroupSchedulingArgsDict']]] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupTaintArgs', 'OceanNpVirtualNodeGroupTaintArgsDict']]]]] = None,
@@ -1057,6 +1110,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
             __props__.__dict__["os_sku"] = os_sku
             __props__.__dict__["os_type"] = os_type
             __props__.__dict__["pod_subnet_ids"] = pod_subnet_ids
+            __props__.__dict__["scheduling"] = scheduling
             __props__.__dict__["spot_percentage"] = spot_percentage
             __props__.__dict__["tags"] = tags
             __props__.__dict__["taints"] = taints
@@ -1090,6 +1144,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
             os_sku: Optional[pulumi.Input[str]] = None,
             os_type: Optional[pulumi.Input[str]] = None,
             pod_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            scheduling: Optional[pulumi.Input[Union['OceanNpVirtualNodeGroupSchedulingArgs', 'OceanNpVirtualNodeGroupSchedulingArgsDict']]] = None,
             spot_percentage: Optional[pulumi.Input[int]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupTaintArgs', 'OceanNpVirtualNodeGroupTaintArgsDict']]]]] = None,
@@ -1120,6 +1175,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         :param pulumi.Input[str] os_sku: The OS SKU of the OS type. Must correlate with the os type.
         :param pulumi.Input[str] os_type: The OS type of the OS disk. Can't be modified once set.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_subnet_ids: The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
+        :param pulumi.Input[Union['OceanNpVirtualNodeGroupSchedulingArgs', 'OceanNpVirtualNodeGroupSchedulingArgsDict']] scheduling: An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
         :param pulumi.Input[int] spot_percentage: Percentage of spot VMs to maintain.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupTaintArgs', 'OceanNpVirtualNodeGroupTaintArgsDict']]]] taints: Add taints to a virtual node group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vnet_subnet_ids: The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
@@ -1146,6 +1202,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         __props__.__dict__["os_sku"] = os_sku
         __props__.__dict__["os_type"] = os_type
         __props__.__dict__["pod_subnet_ids"] = pod_subnet_ids
+        __props__.__dict__["scheduling"] = scheduling
         __props__.__dict__["spot_percentage"] = spot_percentage
         __props__.__dict__["tags"] = tags
         __props__.__dict__["taints"] = taints
@@ -1296,6 +1353,14 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
         """
         return pulumi.get(self, "pod_subnet_ids")
+
+    @property
+    @pulumi.getter
+    def scheduling(self) -> pulumi.Output[Optional['outputs.OceanNpVirtualNodeGroupScheduling']]:
+        """
+        An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
+        """
+        return pulumi.get(self, "scheduling")
 
     @property
     @pulumi.getter(name="spotPercentage")

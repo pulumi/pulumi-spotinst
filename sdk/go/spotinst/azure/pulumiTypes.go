@@ -3718,6 +3718,301 @@ func (o OceanNpVirtualNodeGroupLinuxOsConfigSysctlArrayOutput) Index(i pulumi.In
 	}).(OceanNpVirtualNodeGroupLinuxOsConfigSysctlOutput)
 }
 
+type OceanNpVirtualNodeGroupScheduling struct {
+	// An object used to specify times that the nodes in the virtual node group will be stopped.
+	ShutdownHours *OceanNpVirtualNodeGroupSchedulingShutdownHours `pulumi:"shutdownHours"`
+}
+
+// OceanNpVirtualNodeGroupSchedulingInput is an input type that accepts OceanNpVirtualNodeGroupSchedulingArgs and OceanNpVirtualNodeGroupSchedulingOutput values.
+// You can construct a concrete instance of `OceanNpVirtualNodeGroupSchedulingInput` via:
+//
+//	OceanNpVirtualNodeGroupSchedulingArgs{...}
+type OceanNpVirtualNodeGroupSchedulingInput interface {
+	pulumi.Input
+
+	ToOceanNpVirtualNodeGroupSchedulingOutput() OceanNpVirtualNodeGroupSchedulingOutput
+	ToOceanNpVirtualNodeGroupSchedulingOutputWithContext(context.Context) OceanNpVirtualNodeGroupSchedulingOutput
+}
+
+type OceanNpVirtualNodeGroupSchedulingArgs struct {
+	// An object used to specify times that the nodes in the virtual node group will be stopped.
+	ShutdownHours OceanNpVirtualNodeGroupSchedulingShutdownHoursPtrInput `pulumi:"shutdownHours"`
+}
+
+func (OceanNpVirtualNodeGroupSchedulingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpVirtualNodeGroupScheduling)(nil)).Elem()
+}
+
+func (i OceanNpVirtualNodeGroupSchedulingArgs) ToOceanNpVirtualNodeGroupSchedulingOutput() OceanNpVirtualNodeGroupSchedulingOutput {
+	return i.ToOceanNpVirtualNodeGroupSchedulingOutputWithContext(context.Background())
+}
+
+func (i OceanNpVirtualNodeGroupSchedulingArgs) ToOceanNpVirtualNodeGroupSchedulingOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupSchedulingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpVirtualNodeGroupSchedulingOutput)
+}
+
+func (i OceanNpVirtualNodeGroupSchedulingArgs) ToOceanNpVirtualNodeGroupSchedulingPtrOutput() OceanNpVirtualNodeGroupSchedulingPtrOutput {
+	return i.ToOceanNpVirtualNodeGroupSchedulingPtrOutputWithContext(context.Background())
+}
+
+func (i OceanNpVirtualNodeGroupSchedulingArgs) ToOceanNpVirtualNodeGroupSchedulingPtrOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupSchedulingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpVirtualNodeGroupSchedulingOutput).ToOceanNpVirtualNodeGroupSchedulingPtrOutputWithContext(ctx)
+}
+
+// OceanNpVirtualNodeGroupSchedulingPtrInput is an input type that accepts OceanNpVirtualNodeGroupSchedulingArgs, OceanNpVirtualNodeGroupSchedulingPtr and OceanNpVirtualNodeGroupSchedulingPtrOutput values.
+// You can construct a concrete instance of `OceanNpVirtualNodeGroupSchedulingPtrInput` via:
+//
+//	        OceanNpVirtualNodeGroupSchedulingArgs{...}
+//
+//	or:
+//
+//	        nil
+type OceanNpVirtualNodeGroupSchedulingPtrInput interface {
+	pulumi.Input
+
+	ToOceanNpVirtualNodeGroupSchedulingPtrOutput() OceanNpVirtualNodeGroupSchedulingPtrOutput
+	ToOceanNpVirtualNodeGroupSchedulingPtrOutputWithContext(context.Context) OceanNpVirtualNodeGroupSchedulingPtrOutput
+}
+
+type oceanNpVirtualNodeGroupSchedulingPtrType OceanNpVirtualNodeGroupSchedulingArgs
+
+func OceanNpVirtualNodeGroupSchedulingPtr(v *OceanNpVirtualNodeGroupSchedulingArgs) OceanNpVirtualNodeGroupSchedulingPtrInput {
+	return (*oceanNpVirtualNodeGroupSchedulingPtrType)(v)
+}
+
+func (*oceanNpVirtualNodeGroupSchedulingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanNpVirtualNodeGroupScheduling)(nil)).Elem()
+}
+
+func (i *oceanNpVirtualNodeGroupSchedulingPtrType) ToOceanNpVirtualNodeGroupSchedulingPtrOutput() OceanNpVirtualNodeGroupSchedulingPtrOutput {
+	return i.ToOceanNpVirtualNodeGroupSchedulingPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanNpVirtualNodeGroupSchedulingPtrType) ToOceanNpVirtualNodeGroupSchedulingPtrOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupSchedulingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpVirtualNodeGroupSchedulingPtrOutput)
+}
+
+type OceanNpVirtualNodeGroupSchedulingOutput struct{ *pulumi.OutputState }
+
+func (OceanNpVirtualNodeGroupSchedulingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpVirtualNodeGroupScheduling)(nil)).Elem()
+}
+
+func (o OceanNpVirtualNodeGroupSchedulingOutput) ToOceanNpVirtualNodeGroupSchedulingOutput() OceanNpVirtualNodeGroupSchedulingOutput {
+	return o
+}
+
+func (o OceanNpVirtualNodeGroupSchedulingOutput) ToOceanNpVirtualNodeGroupSchedulingOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupSchedulingOutput {
+	return o
+}
+
+func (o OceanNpVirtualNodeGroupSchedulingOutput) ToOceanNpVirtualNodeGroupSchedulingPtrOutput() OceanNpVirtualNodeGroupSchedulingPtrOutput {
+	return o.ToOceanNpVirtualNodeGroupSchedulingPtrOutputWithContext(context.Background())
+}
+
+func (o OceanNpVirtualNodeGroupSchedulingOutput) ToOceanNpVirtualNodeGroupSchedulingPtrOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupSchedulingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanNpVirtualNodeGroupScheduling) *OceanNpVirtualNodeGroupScheduling {
+		return &v
+	}).(OceanNpVirtualNodeGroupSchedulingPtrOutput)
+}
+
+// An object used to specify times that the nodes in the virtual node group will be stopped.
+func (o OceanNpVirtualNodeGroupSchedulingOutput) ShutdownHours() OceanNpVirtualNodeGroupSchedulingShutdownHoursPtrOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupScheduling) *OceanNpVirtualNodeGroupSchedulingShutdownHours {
+		return v.ShutdownHours
+	}).(OceanNpVirtualNodeGroupSchedulingShutdownHoursPtrOutput)
+}
+
+type OceanNpVirtualNodeGroupSchedulingPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanNpVirtualNodeGroupSchedulingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanNpVirtualNodeGroupScheduling)(nil)).Elem()
+}
+
+func (o OceanNpVirtualNodeGroupSchedulingPtrOutput) ToOceanNpVirtualNodeGroupSchedulingPtrOutput() OceanNpVirtualNodeGroupSchedulingPtrOutput {
+	return o
+}
+
+func (o OceanNpVirtualNodeGroupSchedulingPtrOutput) ToOceanNpVirtualNodeGroupSchedulingPtrOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupSchedulingPtrOutput {
+	return o
+}
+
+func (o OceanNpVirtualNodeGroupSchedulingPtrOutput) Elem() OceanNpVirtualNodeGroupSchedulingOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroupScheduling) OceanNpVirtualNodeGroupScheduling {
+		if v != nil {
+			return *v
+		}
+		var ret OceanNpVirtualNodeGroupScheduling
+		return ret
+	}).(OceanNpVirtualNodeGroupSchedulingOutput)
+}
+
+// An object used to specify times that the nodes in the virtual node group will be stopped.
+func (o OceanNpVirtualNodeGroupSchedulingPtrOutput) ShutdownHours() OceanNpVirtualNodeGroupSchedulingShutdownHoursPtrOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroupScheduling) *OceanNpVirtualNodeGroupSchedulingShutdownHours {
+		if v == nil {
+			return nil
+		}
+		return v.ShutdownHours
+	}).(OceanNpVirtualNodeGroupSchedulingShutdownHoursPtrOutput)
+}
+
+type OceanNpVirtualNodeGroupSchedulingShutdownHours struct {
+	// Flag to enable or disable the shutdown hours mechanism. When `false`, the mechanism is deactivated, and the virtual node gorup remains in its current state.
+	IsEnabled *bool `pulumi:"isEnabled"`
+	// The times that the shutdown hours will apply. Required if isEnabled is true.
+	TimeWindows []string `pulumi:"timeWindows"`
+}
+
+// OceanNpVirtualNodeGroupSchedulingShutdownHoursInput is an input type that accepts OceanNpVirtualNodeGroupSchedulingShutdownHoursArgs and OceanNpVirtualNodeGroupSchedulingShutdownHoursOutput values.
+// You can construct a concrete instance of `OceanNpVirtualNodeGroupSchedulingShutdownHoursInput` via:
+//
+//	OceanNpVirtualNodeGroupSchedulingShutdownHoursArgs{...}
+type OceanNpVirtualNodeGroupSchedulingShutdownHoursInput interface {
+	pulumi.Input
+
+	ToOceanNpVirtualNodeGroupSchedulingShutdownHoursOutput() OceanNpVirtualNodeGroupSchedulingShutdownHoursOutput
+	ToOceanNpVirtualNodeGroupSchedulingShutdownHoursOutputWithContext(context.Context) OceanNpVirtualNodeGroupSchedulingShutdownHoursOutput
+}
+
+type OceanNpVirtualNodeGroupSchedulingShutdownHoursArgs struct {
+	// Flag to enable or disable the shutdown hours mechanism. When `false`, the mechanism is deactivated, and the virtual node gorup remains in its current state.
+	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
+	// The times that the shutdown hours will apply. Required if isEnabled is true.
+	TimeWindows pulumi.StringArrayInput `pulumi:"timeWindows"`
+}
+
+func (OceanNpVirtualNodeGroupSchedulingShutdownHoursArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpVirtualNodeGroupSchedulingShutdownHours)(nil)).Elem()
+}
+
+func (i OceanNpVirtualNodeGroupSchedulingShutdownHoursArgs) ToOceanNpVirtualNodeGroupSchedulingShutdownHoursOutput() OceanNpVirtualNodeGroupSchedulingShutdownHoursOutput {
+	return i.ToOceanNpVirtualNodeGroupSchedulingShutdownHoursOutputWithContext(context.Background())
+}
+
+func (i OceanNpVirtualNodeGroupSchedulingShutdownHoursArgs) ToOceanNpVirtualNodeGroupSchedulingShutdownHoursOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupSchedulingShutdownHoursOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpVirtualNodeGroupSchedulingShutdownHoursOutput)
+}
+
+func (i OceanNpVirtualNodeGroupSchedulingShutdownHoursArgs) ToOceanNpVirtualNodeGroupSchedulingShutdownHoursPtrOutput() OceanNpVirtualNodeGroupSchedulingShutdownHoursPtrOutput {
+	return i.ToOceanNpVirtualNodeGroupSchedulingShutdownHoursPtrOutputWithContext(context.Background())
+}
+
+func (i OceanNpVirtualNodeGroupSchedulingShutdownHoursArgs) ToOceanNpVirtualNodeGroupSchedulingShutdownHoursPtrOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupSchedulingShutdownHoursPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpVirtualNodeGroupSchedulingShutdownHoursOutput).ToOceanNpVirtualNodeGroupSchedulingShutdownHoursPtrOutputWithContext(ctx)
+}
+
+// OceanNpVirtualNodeGroupSchedulingShutdownHoursPtrInput is an input type that accepts OceanNpVirtualNodeGroupSchedulingShutdownHoursArgs, OceanNpVirtualNodeGroupSchedulingShutdownHoursPtr and OceanNpVirtualNodeGroupSchedulingShutdownHoursPtrOutput values.
+// You can construct a concrete instance of `OceanNpVirtualNodeGroupSchedulingShutdownHoursPtrInput` via:
+//
+//	        OceanNpVirtualNodeGroupSchedulingShutdownHoursArgs{...}
+//
+//	or:
+//
+//	        nil
+type OceanNpVirtualNodeGroupSchedulingShutdownHoursPtrInput interface {
+	pulumi.Input
+
+	ToOceanNpVirtualNodeGroupSchedulingShutdownHoursPtrOutput() OceanNpVirtualNodeGroupSchedulingShutdownHoursPtrOutput
+	ToOceanNpVirtualNodeGroupSchedulingShutdownHoursPtrOutputWithContext(context.Context) OceanNpVirtualNodeGroupSchedulingShutdownHoursPtrOutput
+}
+
+type oceanNpVirtualNodeGroupSchedulingShutdownHoursPtrType OceanNpVirtualNodeGroupSchedulingShutdownHoursArgs
+
+func OceanNpVirtualNodeGroupSchedulingShutdownHoursPtr(v *OceanNpVirtualNodeGroupSchedulingShutdownHoursArgs) OceanNpVirtualNodeGroupSchedulingShutdownHoursPtrInput {
+	return (*oceanNpVirtualNodeGroupSchedulingShutdownHoursPtrType)(v)
+}
+
+func (*oceanNpVirtualNodeGroupSchedulingShutdownHoursPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanNpVirtualNodeGroupSchedulingShutdownHours)(nil)).Elem()
+}
+
+func (i *oceanNpVirtualNodeGroupSchedulingShutdownHoursPtrType) ToOceanNpVirtualNodeGroupSchedulingShutdownHoursPtrOutput() OceanNpVirtualNodeGroupSchedulingShutdownHoursPtrOutput {
+	return i.ToOceanNpVirtualNodeGroupSchedulingShutdownHoursPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanNpVirtualNodeGroupSchedulingShutdownHoursPtrType) ToOceanNpVirtualNodeGroupSchedulingShutdownHoursPtrOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupSchedulingShutdownHoursPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpVirtualNodeGroupSchedulingShutdownHoursPtrOutput)
+}
+
+type OceanNpVirtualNodeGroupSchedulingShutdownHoursOutput struct{ *pulumi.OutputState }
+
+func (OceanNpVirtualNodeGroupSchedulingShutdownHoursOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpVirtualNodeGroupSchedulingShutdownHours)(nil)).Elem()
+}
+
+func (o OceanNpVirtualNodeGroupSchedulingShutdownHoursOutput) ToOceanNpVirtualNodeGroupSchedulingShutdownHoursOutput() OceanNpVirtualNodeGroupSchedulingShutdownHoursOutput {
+	return o
+}
+
+func (o OceanNpVirtualNodeGroupSchedulingShutdownHoursOutput) ToOceanNpVirtualNodeGroupSchedulingShutdownHoursOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupSchedulingShutdownHoursOutput {
+	return o
+}
+
+func (o OceanNpVirtualNodeGroupSchedulingShutdownHoursOutput) ToOceanNpVirtualNodeGroupSchedulingShutdownHoursPtrOutput() OceanNpVirtualNodeGroupSchedulingShutdownHoursPtrOutput {
+	return o.ToOceanNpVirtualNodeGroupSchedulingShutdownHoursPtrOutputWithContext(context.Background())
+}
+
+func (o OceanNpVirtualNodeGroupSchedulingShutdownHoursOutput) ToOceanNpVirtualNodeGroupSchedulingShutdownHoursPtrOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupSchedulingShutdownHoursPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanNpVirtualNodeGroupSchedulingShutdownHours) *OceanNpVirtualNodeGroupSchedulingShutdownHours {
+		return &v
+	}).(OceanNpVirtualNodeGroupSchedulingShutdownHoursPtrOutput)
+}
+
+// Flag to enable or disable the shutdown hours mechanism. When `false`, the mechanism is deactivated, and the virtual node gorup remains in its current state.
+func (o OceanNpVirtualNodeGroupSchedulingShutdownHoursOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupSchedulingShutdownHours) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The times that the shutdown hours will apply. Required if isEnabled is true.
+func (o OceanNpVirtualNodeGroupSchedulingShutdownHoursOutput) TimeWindows() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupSchedulingShutdownHours) []string { return v.TimeWindows }).(pulumi.StringArrayOutput)
+}
+
+type OceanNpVirtualNodeGroupSchedulingShutdownHoursPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanNpVirtualNodeGroupSchedulingShutdownHoursPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanNpVirtualNodeGroupSchedulingShutdownHours)(nil)).Elem()
+}
+
+func (o OceanNpVirtualNodeGroupSchedulingShutdownHoursPtrOutput) ToOceanNpVirtualNodeGroupSchedulingShutdownHoursPtrOutput() OceanNpVirtualNodeGroupSchedulingShutdownHoursPtrOutput {
+	return o
+}
+
+func (o OceanNpVirtualNodeGroupSchedulingShutdownHoursPtrOutput) ToOceanNpVirtualNodeGroupSchedulingShutdownHoursPtrOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupSchedulingShutdownHoursPtrOutput {
+	return o
+}
+
+func (o OceanNpVirtualNodeGroupSchedulingShutdownHoursPtrOutput) Elem() OceanNpVirtualNodeGroupSchedulingShutdownHoursOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroupSchedulingShutdownHours) OceanNpVirtualNodeGroupSchedulingShutdownHours {
+		if v != nil {
+			return *v
+		}
+		var ret OceanNpVirtualNodeGroupSchedulingShutdownHours
+		return ret
+	}).(OceanNpVirtualNodeGroupSchedulingShutdownHoursOutput)
+}
+
+// Flag to enable or disable the shutdown hours mechanism. When `false`, the mechanism is deactivated, and the virtual node gorup remains in its current state.
+func (o OceanNpVirtualNodeGroupSchedulingShutdownHoursPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroupSchedulingShutdownHours) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The times that the shutdown hours will apply. Required if isEnabled is true.
+func (o OceanNpVirtualNodeGroupSchedulingShutdownHoursPtrOutput) TimeWindows() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroupSchedulingShutdownHours) []string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeWindows
+	}).(pulumi.StringArrayOutput)
+}
+
 type OceanNpVirtualNodeGroupTaint struct {
 	// Set taint effect.
 	Effect string `pulumi:"effect"`
@@ -4325,6 +4620,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVirtualNodeGroupLinuxOsConfigArrayInput)(nil)).Elem(), OceanNpVirtualNodeGroupLinuxOsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVirtualNodeGroupLinuxOsConfigSysctlInput)(nil)).Elem(), OceanNpVirtualNodeGroupLinuxOsConfigSysctlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVirtualNodeGroupLinuxOsConfigSysctlArrayInput)(nil)).Elem(), OceanNpVirtualNodeGroupLinuxOsConfigSysctlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVirtualNodeGroupSchedulingInput)(nil)).Elem(), OceanNpVirtualNodeGroupSchedulingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVirtualNodeGroupSchedulingPtrInput)(nil)).Elem(), OceanNpVirtualNodeGroupSchedulingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVirtualNodeGroupSchedulingShutdownHoursInput)(nil)).Elem(), OceanNpVirtualNodeGroupSchedulingShutdownHoursArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVirtualNodeGroupSchedulingShutdownHoursPtrInput)(nil)).Elem(), OceanNpVirtualNodeGroupSchedulingShutdownHoursArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVirtualNodeGroupTaintInput)(nil)).Elem(), OceanNpVirtualNodeGroupTaintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVirtualNodeGroupTaintArrayInput)(nil)).Elem(), OceanNpVirtualNodeGroupTaintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVirtualNodeGroupUpdatePolicyInput)(nil)).Elem(), OceanNpVirtualNodeGroupUpdatePolicyArgs{})
@@ -4375,6 +4674,10 @@ func init() {
 	pulumi.RegisterOutputType(OceanNpVirtualNodeGroupLinuxOsConfigArrayOutput{})
 	pulumi.RegisterOutputType(OceanNpVirtualNodeGroupLinuxOsConfigSysctlOutput{})
 	pulumi.RegisterOutputType(OceanNpVirtualNodeGroupLinuxOsConfigSysctlArrayOutput{})
+	pulumi.RegisterOutputType(OceanNpVirtualNodeGroupSchedulingOutput{})
+	pulumi.RegisterOutputType(OceanNpVirtualNodeGroupSchedulingPtrOutput{})
+	pulumi.RegisterOutputType(OceanNpVirtualNodeGroupSchedulingShutdownHoursOutput{})
+	pulumi.RegisterOutputType(OceanNpVirtualNodeGroupSchedulingShutdownHoursPtrOutput{})
 	pulumi.RegisterOutputType(OceanNpVirtualNodeGroupTaintOutput{})
 	pulumi.RegisterOutputType(OceanNpVirtualNodeGroupTaintArrayOutput{})
 	pulumi.RegisterOutputType(OceanNpVirtualNodeGroupUpdatePolicyOutput{})

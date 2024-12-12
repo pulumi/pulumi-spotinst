@@ -38,6 +38,8 @@ __all__ = [
     'OceanNpVirtualNodeGroupHeadroom',
     'OceanNpVirtualNodeGroupLinuxOsConfig',
     'OceanNpVirtualNodeGroupLinuxOsConfigSysctl',
+    'OceanNpVirtualNodeGroupScheduling',
+    'OceanNpVirtualNodeGroupSchedulingShutdownHours',
     'OceanNpVirtualNodeGroupTaint',
     'OceanNpVirtualNodeGroupUpdatePolicy',
     'OceanNpVirtualNodeGroupUpdatePolicyRollConfig',
@@ -1544,6 +1546,92 @@ class OceanNpVirtualNodeGroupLinuxOsConfigSysctl(dict):
         Maximum number of memory map areas a process may have. Can be configured only if OS type is Linux.
         """
         return pulumi.get(self, "vm_max_map_count")
+
+
+@pulumi.output_type
+class OceanNpVirtualNodeGroupScheduling(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "shutdownHours":
+            suggest = "shutdown_hours"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanNpVirtualNodeGroupScheduling. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanNpVirtualNodeGroupScheduling.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanNpVirtualNodeGroupScheduling.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 shutdown_hours: Optional['outputs.OceanNpVirtualNodeGroupSchedulingShutdownHours'] = None):
+        """
+        :param 'OceanNpVirtualNodeGroupSchedulingShutdownHoursArgs' shutdown_hours: An object used to specify times that the nodes in the virtual node group will be stopped.
+        """
+        if shutdown_hours is not None:
+            pulumi.set(__self__, "shutdown_hours", shutdown_hours)
+
+    @property
+    @pulumi.getter(name="shutdownHours")
+    def shutdown_hours(self) -> Optional['outputs.OceanNpVirtualNodeGroupSchedulingShutdownHours']:
+        """
+        An object used to specify times that the nodes in the virtual node group will be stopped.
+        """
+        return pulumi.get(self, "shutdown_hours")
+
+
+@pulumi.output_type
+class OceanNpVirtualNodeGroupSchedulingShutdownHours(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isEnabled":
+            suggest = "is_enabled"
+        elif key == "timeWindows":
+            suggest = "time_windows"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanNpVirtualNodeGroupSchedulingShutdownHours. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanNpVirtualNodeGroupSchedulingShutdownHours.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanNpVirtualNodeGroupSchedulingShutdownHours.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 is_enabled: Optional[bool] = None,
+                 time_windows: Optional[Sequence[str]] = None):
+        """
+        :param bool is_enabled: Flag to enable or disable the shutdown hours mechanism. When `false`, the mechanism is deactivated, and the virtual node gorup remains in its current state.
+        :param Sequence[str] time_windows: The times that the shutdown hours will apply. Required if isEnabled is true.
+        """
+        if is_enabled is not None:
+            pulumi.set(__self__, "is_enabled", is_enabled)
+        if time_windows is not None:
+            pulumi.set(__self__, "time_windows", time_windows)
+
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> Optional[bool]:
+        """
+        Flag to enable or disable the shutdown hours mechanism. When `false`, the mechanism is deactivated, and the virtual node gorup remains in its current state.
+        """
+        return pulumi.get(self, "is_enabled")
+
+    @property
+    @pulumi.getter(name="timeWindows")
+    def time_windows(self) -> Optional[Sequence[str]]:
+        """
+        The times that the shutdown hours will apply. Required if isEnabled is true.
+        """
+        return pulumi.get(self, "time_windows")
 
 
 @pulumi.output_type
