@@ -406,15 +406,16 @@ export interface StatefulNodeAzureDataDisk {
 }
 
 export interface StatefulNodeAzureDelete {
-    diskShouldDeallocate: boolean;
+    diskShouldDeallocate?: boolean;
     diskTtlInHours?: number;
-    networkShouldDeallocate: boolean;
+    networkShouldDeallocate?: boolean;
     networkTtlInHours?: number;
-    publicIpShouldDeallocate: boolean;
+    publicIpShouldDeallocate?: boolean;
     publicIpTtlInHours?: number;
     shouldDeregisterFromLb?: boolean;
+    shouldRevertToOd?: boolean;
     shouldTerminateVm: boolean;
-    snapshotShouldDeallocate: boolean;
+    snapshotShouldDeallocate?: boolean;
     snapshotTtlInHours?: number;
 }
 

@@ -13,36 +13,39 @@ namespace Pulumi.SpotInst.Outputs
     [OutputType]
     public sealed class StatefulNodeAzureDelete
     {
-        public readonly bool DiskShouldDeallocate;
+        public readonly bool? DiskShouldDeallocate;
         public readonly int? DiskTtlInHours;
-        public readonly bool NetworkShouldDeallocate;
+        public readonly bool? NetworkShouldDeallocate;
         public readonly int? NetworkTtlInHours;
-        public readonly bool PublicIpShouldDeallocate;
+        public readonly bool? PublicIpShouldDeallocate;
         public readonly int? PublicIpTtlInHours;
         public readonly bool? ShouldDeregisterFromLb;
+        public readonly bool? ShouldRevertToOd;
         public readonly bool ShouldTerminateVm;
-        public readonly bool SnapshotShouldDeallocate;
+        public readonly bool? SnapshotShouldDeallocate;
         public readonly int? SnapshotTtlInHours;
 
         [OutputConstructor]
         private StatefulNodeAzureDelete(
-            bool diskShouldDeallocate,
+            bool? diskShouldDeallocate,
 
             int? diskTtlInHours,
 
-            bool networkShouldDeallocate,
+            bool? networkShouldDeallocate,
 
             int? networkTtlInHours,
 
-            bool publicIpShouldDeallocate,
+            bool? publicIpShouldDeallocate,
 
             int? publicIpTtlInHours,
 
             bool? shouldDeregisterFromLb,
 
+            bool? shouldRevertToOd,
+
             bool shouldTerminateVm,
 
-            bool snapshotShouldDeallocate,
+            bool? snapshotShouldDeallocate,
 
             int? snapshotTtlInHours)
         {
@@ -53,6 +56,7 @@ namespace Pulumi.SpotInst.Outputs
             PublicIpShouldDeallocate = publicIpShouldDeallocate;
             PublicIpTtlInHours = publicIpTtlInHours;
             ShouldDeregisterFromLb = shouldDeregisterFromLb;
+            ShouldRevertToOd = shouldRevertToOd;
             ShouldTerminateVm = shouldTerminateVm;
             SnapshotShouldDeallocate = snapshotShouldDeallocate;
             SnapshotTtlInHours = snapshotTtlInHours;

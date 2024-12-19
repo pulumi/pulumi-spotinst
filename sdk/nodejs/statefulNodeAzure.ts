@@ -250,6 +250,7 @@ import * as utilities from "./utilities";
  *         publicIpShouldDeallocate: true,
  *         publicIpTtlInHours: 0,
  *         shouldDeregisterFromLb: true,
+ *         shouldRevertToOd: false,
  *     }],
  * });
  * ```
@@ -518,15 +519,16 @@ import * as utilities from "./utilities";
  *
  * * `delete` - (Required) Specify deallocation parameters for stateful node deletion.
  *     * `shouldTerminateVm` - (Required) Indicates whether to delete the stateful node's VM.
- *     * `networkShouldDeallocate` - (Required) Indicates whether to delete the stateful node's network resources.
+ *     * `networkShouldDeallocate` - (Optional) Indicates whether to delete the stateful node's network resources.
  *     * `networkTtlInHours` - (Optional, Default: 96) Hours to keep the network resource alive before deletion.
- *     * `diskShouldDeallocate` - (Required) Indicates whether to delete the stateful node's disk resources.
+ *     * `diskShouldDeallocate` - (Optional) Indicates whether to delete the stateful node's disk resources.
  *     * `diskTtlInHours` - (Optional, Default: 96) Hours to keep the disk resource alive before deletion.
- *     * `snapshotShouldDeallocate` - (Required) Indicates whether to delete the stateful node's snapshot resources.
+ *     * `snapshotShouldDeallocate` - (Optional) Indicates whether to delete the stateful node's snapshot resources.
  *     * `snapshotTtlInHours` - (Optional, Default: 96) Hours to keep the snapshots alive before deletion.
- *     * `publicIpShouldDeallocate` - (Required) Indicates whether to delete the stateful node's public ip resources.
+ *     * `publicIpShouldDeallocate` - (Optional) Indicates whether to delete the stateful node's public ip resources.
  *     * `publicIpTtlInHours` - (Optional, Default: 96) Hours to keep the public ip alive before deletion.
  *     * `shouldDeregisterFromLb` - (Optional, Default: true) Indicates whether to deregister the stateful node's VM from any type of load balancer. Can be changed to false only when shouldTerminateVms is 'false'.
+ *     * `shouldRevertToOd` - (Optional, Default: false) Indicates whether to change the stateful node's VM lifecycle to on-demand. Can be changed to true only when `shouldTerminateVm` is 'false'.
  */
 export class StatefulNodeAzure extends pulumi.CustomResource {
     /**

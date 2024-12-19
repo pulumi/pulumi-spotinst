@@ -406,15 +406,16 @@ export interface StatefulNodeAzureDataDisk {
 }
 
 export interface StatefulNodeAzureDelete {
-    diskShouldDeallocate: pulumi.Input<boolean>;
+    diskShouldDeallocate?: pulumi.Input<boolean>;
     diskTtlInHours?: pulumi.Input<number>;
-    networkShouldDeallocate: pulumi.Input<boolean>;
+    networkShouldDeallocate?: pulumi.Input<boolean>;
     networkTtlInHours?: pulumi.Input<number>;
-    publicIpShouldDeallocate: pulumi.Input<boolean>;
+    publicIpShouldDeallocate?: pulumi.Input<boolean>;
     publicIpTtlInHours?: pulumi.Input<number>;
     shouldDeregisterFromLb?: pulumi.Input<boolean>;
+    shouldRevertToOd?: pulumi.Input<boolean>;
     shouldTerminateVm: pulumi.Input<boolean>;
-    snapshotShouldDeallocate: pulumi.Input<boolean>;
+    snapshotShouldDeallocate?: pulumi.Input<boolean>;
     snapshotTtlInHours?: pulumi.Input<number>;
 }
 

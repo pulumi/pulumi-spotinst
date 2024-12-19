@@ -13,32 +13,33 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class StatefulNodeAzureDelete {
-    private Boolean diskShouldDeallocate;
+    private @Nullable Boolean diskShouldDeallocate;
     private @Nullable Integer diskTtlInHours;
-    private Boolean networkShouldDeallocate;
+    private @Nullable Boolean networkShouldDeallocate;
     private @Nullable Integer networkTtlInHours;
-    private Boolean publicIpShouldDeallocate;
+    private @Nullable Boolean publicIpShouldDeallocate;
     private @Nullable Integer publicIpTtlInHours;
     private @Nullable Boolean shouldDeregisterFromLb;
+    private @Nullable Boolean shouldRevertToOd;
     private Boolean shouldTerminateVm;
-    private Boolean snapshotShouldDeallocate;
+    private @Nullable Boolean snapshotShouldDeallocate;
     private @Nullable Integer snapshotTtlInHours;
 
     private StatefulNodeAzureDelete() {}
-    public Boolean diskShouldDeallocate() {
-        return this.diskShouldDeallocate;
+    public Optional<Boolean> diskShouldDeallocate() {
+        return Optional.ofNullable(this.diskShouldDeallocate);
     }
     public Optional<Integer> diskTtlInHours() {
         return Optional.ofNullable(this.diskTtlInHours);
     }
-    public Boolean networkShouldDeallocate() {
-        return this.networkShouldDeallocate;
+    public Optional<Boolean> networkShouldDeallocate() {
+        return Optional.ofNullable(this.networkShouldDeallocate);
     }
     public Optional<Integer> networkTtlInHours() {
         return Optional.ofNullable(this.networkTtlInHours);
     }
-    public Boolean publicIpShouldDeallocate() {
-        return this.publicIpShouldDeallocate;
+    public Optional<Boolean> publicIpShouldDeallocate() {
+        return Optional.ofNullable(this.publicIpShouldDeallocate);
     }
     public Optional<Integer> publicIpTtlInHours() {
         return Optional.ofNullable(this.publicIpTtlInHours);
@@ -46,11 +47,14 @@ public final class StatefulNodeAzureDelete {
     public Optional<Boolean> shouldDeregisterFromLb() {
         return Optional.ofNullable(this.shouldDeregisterFromLb);
     }
+    public Optional<Boolean> shouldRevertToOd() {
+        return Optional.ofNullable(this.shouldRevertToOd);
+    }
     public Boolean shouldTerminateVm() {
         return this.shouldTerminateVm;
     }
-    public Boolean snapshotShouldDeallocate() {
-        return this.snapshotShouldDeallocate;
+    public Optional<Boolean> snapshotShouldDeallocate() {
+        return Optional.ofNullable(this.snapshotShouldDeallocate);
     }
     public Optional<Integer> snapshotTtlInHours() {
         return Optional.ofNullable(this.snapshotTtlInHours);
@@ -65,15 +69,16 @@ public final class StatefulNodeAzureDelete {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Boolean diskShouldDeallocate;
+        private @Nullable Boolean diskShouldDeallocate;
         private @Nullable Integer diskTtlInHours;
-        private Boolean networkShouldDeallocate;
+        private @Nullable Boolean networkShouldDeallocate;
         private @Nullable Integer networkTtlInHours;
-        private Boolean publicIpShouldDeallocate;
+        private @Nullable Boolean publicIpShouldDeallocate;
         private @Nullable Integer publicIpTtlInHours;
         private @Nullable Boolean shouldDeregisterFromLb;
+        private @Nullable Boolean shouldRevertToOd;
         private Boolean shouldTerminateVm;
-        private Boolean snapshotShouldDeallocate;
+        private @Nullable Boolean snapshotShouldDeallocate;
         private @Nullable Integer snapshotTtlInHours;
         public Builder() {}
         public Builder(StatefulNodeAzureDelete defaults) {
@@ -85,16 +90,15 @@ public final class StatefulNodeAzureDelete {
     	      this.publicIpShouldDeallocate = defaults.publicIpShouldDeallocate;
     	      this.publicIpTtlInHours = defaults.publicIpTtlInHours;
     	      this.shouldDeregisterFromLb = defaults.shouldDeregisterFromLb;
+    	      this.shouldRevertToOd = defaults.shouldRevertToOd;
     	      this.shouldTerminateVm = defaults.shouldTerminateVm;
     	      this.snapshotShouldDeallocate = defaults.snapshotShouldDeallocate;
     	      this.snapshotTtlInHours = defaults.snapshotTtlInHours;
         }
 
         @CustomType.Setter
-        public Builder diskShouldDeallocate(Boolean diskShouldDeallocate) {
-            if (diskShouldDeallocate == null) {
-              throw new MissingRequiredPropertyException("StatefulNodeAzureDelete", "diskShouldDeallocate");
-            }
+        public Builder diskShouldDeallocate(@Nullable Boolean diskShouldDeallocate) {
+
             this.diskShouldDeallocate = diskShouldDeallocate;
             return this;
         }
@@ -105,10 +109,8 @@ public final class StatefulNodeAzureDelete {
             return this;
         }
         @CustomType.Setter
-        public Builder networkShouldDeallocate(Boolean networkShouldDeallocate) {
-            if (networkShouldDeallocate == null) {
-              throw new MissingRequiredPropertyException("StatefulNodeAzureDelete", "networkShouldDeallocate");
-            }
+        public Builder networkShouldDeallocate(@Nullable Boolean networkShouldDeallocate) {
+
             this.networkShouldDeallocate = networkShouldDeallocate;
             return this;
         }
@@ -119,10 +121,8 @@ public final class StatefulNodeAzureDelete {
             return this;
         }
         @CustomType.Setter
-        public Builder publicIpShouldDeallocate(Boolean publicIpShouldDeallocate) {
-            if (publicIpShouldDeallocate == null) {
-              throw new MissingRequiredPropertyException("StatefulNodeAzureDelete", "publicIpShouldDeallocate");
-            }
+        public Builder publicIpShouldDeallocate(@Nullable Boolean publicIpShouldDeallocate) {
+
             this.publicIpShouldDeallocate = publicIpShouldDeallocate;
             return this;
         }
@@ -139,6 +139,12 @@ public final class StatefulNodeAzureDelete {
             return this;
         }
         @CustomType.Setter
+        public Builder shouldRevertToOd(@Nullable Boolean shouldRevertToOd) {
+
+            this.shouldRevertToOd = shouldRevertToOd;
+            return this;
+        }
+        @CustomType.Setter
         public Builder shouldTerminateVm(Boolean shouldTerminateVm) {
             if (shouldTerminateVm == null) {
               throw new MissingRequiredPropertyException("StatefulNodeAzureDelete", "shouldTerminateVm");
@@ -147,10 +153,8 @@ public final class StatefulNodeAzureDelete {
             return this;
         }
         @CustomType.Setter
-        public Builder snapshotShouldDeallocate(Boolean snapshotShouldDeallocate) {
-            if (snapshotShouldDeallocate == null) {
-              throw new MissingRequiredPropertyException("StatefulNodeAzureDelete", "snapshotShouldDeallocate");
-            }
+        public Builder snapshotShouldDeallocate(@Nullable Boolean snapshotShouldDeallocate) {
+
             this.snapshotShouldDeallocate = snapshotShouldDeallocate;
             return this;
         }
@@ -169,6 +173,7 @@ public final class StatefulNodeAzureDelete {
             _resultValue.publicIpShouldDeallocate = publicIpShouldDeallocate;
             _resultValue.publicIpTtlInHours = publicIpTtlInHours;
             _resultValue.shouldDeregisterFromLb = shouldDeregisterFromLb;
+            _resultValue.shouldRevertToOd = shouldRevertToOd;
             _resultValue.shouldTerminateVm = shouldTerminateVm;
             _resultValue.snapshotShouldDeallocate = snapshotShouldDeallocate;
             _resultValue.snapshotTtlInHours = snapshotTtlInHours;

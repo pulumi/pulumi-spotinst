@@ -311,6 +311,7 @@ import javax.annotation.Nullable;
  *                 .publicIpShouldDeallocate(true)
  *                 .publicIpTtlInHours(0)
  *                 .shouldDeregisterFromLb(true)
+ *                 .shouldRevertToOd(false)
  *                 .build())
  *             .build());
  * 
@@ -584,15 +585,16 @@ import javax.annotation.Nullable;
  * 
  * * `delete` - (Required) Specify deallocation parameters for stateful node deletion.
  *     * `should_terminate_vm` - (Required) Indicates whether to delete the stateful node&#39;s VM.
- *     * `network_should_deallocate` - (Required) Indicates whether to delete the stateful node&#39;s network resources.
+ *     * `network_should_deallocate` - (Optional) Indicates whether to delete the stateful node&#39;s network resources.
  *     * `network_ttl_in_hours` - (Optional, Default: 96) Hours to keep the network resource alive before deletion.
- *     * `disk_should_deallocate` - (Required) Indicates whether to delete the stateful node&#39;s disk resources.
+ *     * `disk_should_deallocate` - (Optional) Indicates whether to delete the stateful node&#39;s disk resources.
  *     * `disk_ttl_in_hours` - (Optional, Default: 96) Hours to keep the disk resource alive before deletion.
- *     * `snapshot_should_deallocate` - (Required) Indicates whether to delete the stateful node&#39;s snapshot resources.
+ *     * `snapshot_should_deallocate` - (Optional) Indicates whether to delete the stateful node&#39;s snapshot resources.
  *     * `snapshot_ttl_in_hours` - (Optional, Default: 96) Hours to keep the snapshots alive before deletion.
- *     * `public_ip_should_deallocate` - (Required) Indicates whether to delete the stateful node&#39;s public ip resources.
+ *     * `public_ip_should_deallocate` - (Optional) Indicates whether to delete the stateful node&#39;s public ip resources.
  *     * `public_ip_ttl_in_hours` - (Optional, Default: 96) Hours to keep the public ip alive before deletion.
  *     * `should_deregister_from_lb` - (Optional, Default: true) Indicates whether to deregister the stateful node&#39;s VM from any type of load balancer. Can be changed to false only when shouldTerminateVms is &#39;false&#39;.
+ *     * `should_revert_to_od` - (Optional, Default: false) Indicates whether to change the stateful node&#39;s VM lifecycle to on-demand. Can be changed to true only when `should_terminate_vm` is &#39;false&#39;.
  * 
  */
 @ResourceType(type="spotinst:index/statefulNodeAzure:StatefulNodeAzure")
