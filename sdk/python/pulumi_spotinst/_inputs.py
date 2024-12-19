@@ -3386,15 +3386,16 @@ class StatefulNodeAzureDataDiskArgs:
 
 if not MYPY:
     class StatefulNodeAzureDeleteArgsDict(TypedDict):
-        disk_should_deallocate: pulumi.Input[bool]
-        network_should_deallocate: pulumi.Input[bool]
-        public_ip_should_deallocate: pulumi.Input[bool]
         should_terminate_vm: pulumi.Input[bool]
-        snapshot_should_deallocate: pulumi.Input[bool]
+        disk_should_deallocate: NotRequired[pulumi.Input[bool]]
         disk_ttl_in_hours: NotRequired[pulumi.Input[int]]
+        network_should_deallocate: NotRequired[pulumi.Input[bool]]
         network_ttl_in_hours: NotRequired[pulumi.Input[int]]
+        public_ip_should_deallocate: NotRequired[pulumi.Input[bool]]
         public_ip_ttl_in_hours: NotRequired[pulumi.Input[int]]
         should_deregister_from_lb: NotRequired[pulumi.Input[bool]]
+        should_revert_to_od: NotRequired[pulumi.Input[bool]]
+        snapshot_should_deallocate: NotRequired[pulumi.Input[bool]]
         snapshot_ttl_in_hours: NotRequired[pulumi.Input[int]]
 elif False:
     StatefulNodeAzureDeleteArgsDict: TypeAlias = Mapping[str, Any]
@@ -3402,58 +3403,38 @@ elif False:
 @pulumi.input_type
 class StatefulNodeAzureDeleteArgs:
     def __init__(__self__, *,
-                 disk_should_deallocate: pulumi.Input[bool],
-                 network_should_deallocate: pulumi.Input[bool],
-                 public_ip_should_deallocate: pulumi.Input[bool],
                  should_terminate_vm: pulumi.Input[bool],
-                 snapshot_should_deallocate: pulumi.Input[bool],
+                 disk_should_deallocate: Optional[pulumi.Input[bool]] = None,
                  disk_ttl_in_hours: Optional[pulumi.Input[int]] = None,
+                 network_should_deallocate: Optional[pulumi.Input[bool]] = None,
                  network_ttl_in_hours: Optional[pulumi.Input[int]] = None,
+                 public_ip_should_deallocate: Optional[pulumi.Input[bool]] = None,
                  public_ip_ttl_in_hours: Optional[pulumi.Input[int]] = None,
                  should_deregister_from_lb: Optional[pulumi.Input[bool]] = None,
+                 should_revert_to_od: Optional[pulumi.Input[bool]] = None,
+                 snapshot_should_deallocate: Optional[pulumi.Input[bool]] = None,
                  snapshot_ttl_in_hours: Optional[pulumi.Input[int]] = None):
-        pulumi.set(__self__, "disk_should_deallocate", disk_should_deallocate)
-        pulumi.set(__self__, "network_should_deallocate", network_should_deallocate)
-        pulumi.set(__self__, "public_ip_should_deallocate", public_ip_should_deallocate)
         pulumi.set(__self__, "should_terminate_vm", should_terminate_vm)
-        pulumi.set(__self__, "snapshot_should_deallocate", snapshot_should_deallocate)
+        if disk_should_deallocate is not None:
+            pulumi.set(__self__, "disk_should_deallocate", disk_should_deallocate)
         if disk_ttl_in_hours is not None:
             pulumi.set(__self__, "disk_ttl_in_hours", disk_ttl_in_hours)
+        if network_should_deallocate is not None:
+            pulumi.set(__self__, "network_should_deallocate", network_should_deallocate)
         if network_ttl_in_hours is not None:
             pulumi.set(__self__, "network_ttl_in_hours", network_ttl_in_hours)
+        if public_ip_should_deallocate is not None:
+            pulumi.set(__self__, "public_ip_should_deallocate", public_ip_should_deallocate)
         if public_ip_ttl_in_hours is not None:
             pulumi.set(__self__, "public_ip_ttl_in_hours", public_ip_ttl_in_hours)
         if should_deregister_from_lb is not None:
             pulumi.set(__self__, "should_deregister_from_lb", should_deregister_from_lb)
+        if should_revert_to_od is not None:
+            pulumi.set(__self__, "should_revert_to_od", should_revert_to_od)
+        if snapshot_should_deallocate is not None:
+            pulumi.set(__self__, "snapshot_should_deallocate", snapshot_should_deallocate)
         if snapshot_ttl_in_hours is not None:
             pulumi.set(__self__, "snapshot_ttl_in_hours", snapshot_ttl_in_hours)
-
-    @property
-    @pulumi.getter(name="diskShouldDeallocate")
-    def disk_should_deallocate(self) -> pulumi.Input[bool]:
-        return pulumi.get(self, "disk_should_deallocate")
-
-    @disk_should_deallocate.setter
-    def disk_should_deallocate(self, value: pulumi.Input[bool]):
-        pulumi.set(self, "disk_should_deallocate", value)
-
-    @property
-    @pulumi.getter(name="networkShouldDeallocate")
-    def network_should_deallocate(self) -> pulumi.Input[bool]:
-        return pulumi.get(self, "network_should_deallocate")
-
-    @network_should_deallocate.setter
-    def network_should_deallocate(self, value: pulumi.Input[bool]):
-        pulumi.set(self, "network_should_deallocate", value)
-
-    @property
-    @pulumi.getter(name="publicIpShouldDeallocate")
-    def public_ip_should_deallocate(self) -> pulumi.Input[bool]:
-        return pulumi.get(self, "public_ip_should_deallocate")
-
-    @public_ip_should_deallocate.setter
-    def public_ip_should_deallocate(self, value: pulumi.Input[bool]):
-        pulumi.set(self, "public_ip_should_deallocate", value)
 
     @property
     @pulumi.getter(name="shouldTerminateVm")
@@ -3465,13 +3446,13 @@ class StatefulNodeAzureDeleteArgs:
         pulumi.set(self, "should_terminate_vm", value)
 
     @property
-    @pulumi.getter(name="snapshotShouldDeallocate")
-    def snapshot_should_deallocate(self) -> pulumi.Input[bool]:
-        return pulumi.get(self, "snapshot_should_deallocate")
+    @pulumi.getter(name="diskShouldDeallocate")
+    def disk_should_deallocate(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "disk_should_deallocate")
 
-    @snapshot_should_deallocate.setter
-    def snapshot_should_deallocate(self, value: pulumi.Input[bool]):
-        pulumi.set(self, "snapshot_should_deallocate", value)
+    @disk_should_deallocate.setter
+    def disk_should_deallocate(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disk_should_deallocate", value)
 
     @property
     @pulumi.getter(name="diskTtlInHours")
@@ -3483,6 +3464,15 @@ class StatefulNodeAzureDeleteArgs:
         pulumi.set(self, "disk_ttl_in_hours", value)
 
     @property
+    @pulumi.getter(name="networkShouldDeallocate")
+    def network_should_deallocate(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "network_should_deallocate")
+
+    @network_should_deallocate.setter
+    def network_should_deallocate(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "network_should_deallocate", value)
+
+    @property
     @pulumi.getter(name="networkTtlInHours")
     def network_ttl_in_hours(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "network_ttl_in_hours")
@@ -3490,6 +3480,15 @@ class StatefulNodeAzureDeleteArgs:
     @network_ttl_in_hours.setter
     def network_ttl_in_hours(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "network_ttl_in_hours", value)
+
+    @property
+    @pulumi.getter(name="publicIpShouldDeallocate")
+    def public_ip_should_deallocate(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "public_ip_should_deallocate")
+
+    @public_ip_should_deallocate.setter
+    def public_ip_should_deallocate(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "public_ip_should_deallocate", value)
 
     @property
     @pulumi.getter(name="publicIpTtlInHours")
@@ -3508,6 +3507,24 @@ class StatefulNodeAzureDeleteArgs:
     @should_deregister_from_lb.setter
     def should_deregister_from_lb(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "should_deregister_from_lb", value)
+
+    @property
+    @pulumi.getter(name="shouldRevertToOd")
+    def should_revert_to_od(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "should_revert_to_od")
+
+    @should_revert_to_od.setter
+    def should_revert_to_od(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "should_revert_to_od", value)
+
+    @property
+    @pulumi.getter(name="snapshotShouldDeallocate")
+    def snapshot_should_deallocate(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "snapshot_should_deallocate")
+
+    @snapshot_should_deallocate.setter
+    def snapshot_should_deallocate(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "snapshot_should_deallocate", value)
 
     @property
     @pulumi.getter(name="snapshotTtlInHours")
