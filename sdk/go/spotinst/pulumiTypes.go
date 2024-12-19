@@ -6971,15 +6971,16 @@ func (o StatefulNodeAzureDataDiskArrayOutput) Index(i pulumi.IntInput) StatefulN
 }
 
 type StatefulNodeAzureDelete struct {
-	DiskShouldDeallocate     bool  `pulumi:"diskShouldDeallocate"`
+	DiskShouldDeallocate     *bool `pulumi:"diskShouldDeallocate"`
 	DiskTtlInHours           *int  `pulumi:"diskTtlInHours"`
-	NetworkShouldDeallocate  bool  `pulumi:"networkShouldDeallocate"`
+	NetworkShouldDeallocate  *bool `pulumi:"networkShouldDeallocate"`
 	NetworkTtlInHours        *int  `pulumi:"networkTtlInHours"`
-	PublicIpShouldDeallocate bool  `pulumi:"publicIpShouldDeallocate"`
+	PublicIpShouldDeallocate *bool `pulumi:"publicIpShouldDeallocate"`
 	PublicIpTtlInHours       *int  `pulumi:"publicIpTtlInHours"`
 	ShouldDeregisterFromLb   *bool `pulumi:"shouldDeregisterFromLb"`
+	ShouldRevertToOd         *bool `pulumi:"shouldRevertToOd"`
 	ShouldTerminateVm        bool  `pulumi:"shouldTerminateVm"`
-	SnapshotShouldDeallocate bool  `pulumi:"snapshotShouldDeallocate"`
+	SnapshotShouldDeallocate *bool `pulumi:"snapshotShouldDeallocate"`
 	SnapshotTtlInHours       *int  `pulumi:"snapshotTtlInHours"`
 }
 
@@ -6995,15 +6996,16 @@ type StatefulNodeAzureDeleteInput interface {
 }
 
 type StatefulNodeAzureDeleteArgs struct {
-	DiskShouldDeallocate     pulumi.BoolInput    `pulumi:"diskShouldDeallocate"`
+	DiskShouldDeallocate     pulumi.BoolPtrInput `pulumi:"diskShouldDeallocate"`
 	DiskTtlInHours           pulumi.IntPtrInput  `pulumi:"diskTtlInHours"`
-	NetworkShouldDeallocate  pulumi.BoolInput    `pulumi:"networkShouldDeallocate"`
+	NetworkShouldDeallocate  pulumi.BoolPtrInput `pulumi:"networkShouldDeallocate"`
 	NetworkTtlInHours        pulumi.IntPtrInput  `pulumi:"networkTtlInHours"`
-	PublicIpShouldDeallocate pulumi.BoolInput    `pulumi:"publicIpShouldDeallocate"`
+	PublicIpShouldDeallocate pulumi.BoolPtrInput `pulumi:"publicIpShouldDeallocate"`
 	PublicIpTtlInHours       pulumi.IntPtrInput  `pulumi:"publicIpTtlInHours"`
 	ShouldDeregisterFromLb   pulumi.BoolPtrInput `pulumi:"shouldDeregisterFromLb"`
+	ShouldRevertToOd         pulumi.BoolPtrInput `pulumi:"shouldRevertToOd"`
 	ShouldTerminateVm        pulumi.BoolInput    `pulumi:"shouldTerminateVm"`
-	SnapshotShouldDeallocate pulumi.BoolInput    `pulumi:"snapshotShouldDeallocate"`
+	SnapshotShouldDeallocate pulumi.BoolPtrInput `pulumi:"snapshotShouldDeallocate"`
 	SnapshotTtlInHours       pulumi.IntPtrInput  `pulumi:"snapshotTtlInHours"`
 }
 
@@ -7058,24 +7060,24 @@ func (o StatefulNodeAzureDeleteOutput) ToStatefulNodeAzureDeleteOutputWithContex
 	return o
 }
 
-func (o StatefulNodeAzureDeleteOutput) DiskShouldDeallocate() pulumi.BoolOutput {
-	return o.ApplyT(func(v StatefulNodeAzureDelete) bool { return v.DiskShouldDeallocate }).(pulumi.BoolOutput)
+func (o StatefulNodeAzureDeleteOutput) DiskShouldDeallocate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureDelete) *bool { return v.DiskShouldDeallocate }).(pulumi.BoolPtrOutput)
 }
 
 func (o StatefulNodeAzureDeleteOutput) DiskTtlInHours() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StatefulNodeAzureDelete) *int { return v.DiskTtlInHours }).(pulumi.IntPtrOutput)
 }
 
-func (o StatefulNodeAzureDeleteOutput) NetworkShouldDeallocate() pulumi.BoolOutput {
-	return o.ApplyT(func(v StatefulNodeAzureDelete) bool { return v.NetworkShouldDeallocate }).(pulumi.BoolOutput)
+func (o StatefulNodeAzureDeleteOutput) NetworkShouldDeallocate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureDelete) *bool { return v.NetworkShouldDeallocate }).(pulumi.BoolPtrOutput)
 }
 
 func (o StatefulNodeAzureDeleteOutput) NetworkTtlInHours() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StatefulNodeAzureDelete) *int { return v.NetworkTtlInHours }).(pulumi.IntPtrOutput)
 }
 
-func (o StatefulNodeAzureDeleteOutput) PublicIpShouldDeallocate() pulumi.BoolOutput {
-	return o.ApplyT(func(v StatefulNodeAzureDelete) bool { return v.PublicIpShouldDeallocate }).(pulumi.BoolOutput)
+func (o StatefulNodeAzureDeleteOutput) PublicIpShouldDeallocate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureDelete) *bool { return v.PublicIpShouldDeallocate }).(pulumi.BoolPtrOutput)
 }
 
 func (o StatefulNodeAzureDeleteOutput) PublicIpTtlInHours() pulumi.IntPtrOutput {
@@ -7086,12 +7088,16 @@ func (o StatefulNodeAzureDeleteOutput) ShouldDeregisterFromLb() pulumi.BoolPtrOu
 	return o.ApplyT(func(v StatefulNodeAzureDelete) *bool { return v.ShouldDeregisterFromLb }).(pulumi.BoolPtrOutput)
 }
 
+func (o StatefulNodeAzureDeleteOutput) ShouldRevertToOd() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureDelete) *bool { return v.ShouldRevertToOd }).(pulumi.BoolPtrOutput)
+}
+
 func (o StatefulNodeAzureDeleteOutput) ShouldTerminateVm() pulumi.BoolOutput {
 	return o.ApplyT(func(v StatefulNodeAzureDelete) bool { return v.ShouldTerminateVm }).(pulumi.BoolOutput)
 }
 
-func (o StatefulNodeAzureDeleteOutput) SnapshotShouldDeallocate() pulumi.BoolOutput {
-	return o.ApplyT(func(v StatefulNodeAzureDelete) bool { return v.SnapshotShouldDeallocate }).(pulumi.BoolOutput)
+func (o StatefulNodeAzureDeleteOutput) SnapshotShouldDeallocate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureDelete) *bool { return v.SnapshotShouldDeallocate }).(pulumi.BoolPtrOutput)
 }
 
 func (o StatefulNodeAzureDeleteOutput) SnapshotTtlInHours() pulumi.IntPtrOutput {

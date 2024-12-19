@@ -12,20 +12,20 @@ namespace Pulumi.SpotInst.Inputs
 
     public sealed class StatefulNodeAzureDeleteGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("diskShouldDeallocate", required: true)]
-        public Input<bool> DiskShouldDeallocate { get; set; } = null!;
+        [Input("diskShouldDeallocate")]
+        public Input<bool>? DiskShouldDeallocate { get; set; }
 
         [Input("diskTtlInHours")]
         public Input<int>? DiskTtlInHours { get; set; }
 
-        [Input("networkShouldDeallocate", required: true)]
-        public Input<bool> NetworkShouldDeallocate { get; set; } = null!;
+        [Input("networkShouldDeallocate")]
+        public Input<bool>? NetworkShouldDeallocate { get; set; }
 
         [Input("networkTtlInHours")]
         public Input<int>? NetworkTtlInHours { get; set; }
 
-        [Input("publicIpShouldDeallocate", required: true)]
-        public Input<bool> PublicIpShouldDeallocate { get; set; } = null!;
+        [Input("publicIpShouldDeallocate")]
+        public Input<bool>? PublicIpShouldDeallocate { get; set; }
 
         [Input("publicIpTtlInHours")]
         public Input<int>? PublicIpTtlInHours { get; set; }
@@ -33,11 +33,14 @@ namespace Pulumi.SpotInst.Inputs
         [Input("shouldDeregisterFromLb")]
         public Input<bool>? ShouldDeregisterFromLb { get; set; }
 
+        [Input("shouldRevertToOd")]
+        public Input<bool>? ShouldRevertToOd { get; set; }
+
         [Input("shouldTerminateVm", required: true)]
         public Input<bool> ShouldTerminateVm { get; set; } = null!;
 
-        [Input("snapshotShouldDeallocate", required: true)]
-        public Input<bool> SnapshotShouldDeallocate { get; set; } = null!;
+        [Input("snapshotShouldDeallocate")]
+        public Input<bool>? SnapshotShouldDeallocate { get; set; }
 
         [Input("snapshotTtlInHours")]
         public Input<int>? SnapshotTtlInHours { get; set; }

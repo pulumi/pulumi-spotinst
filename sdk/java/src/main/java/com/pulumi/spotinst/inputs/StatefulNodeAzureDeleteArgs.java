@@ -17,11 +17,11 @@ public final class StatefulNodeAzureDeleteArgs extends com.pulumi.resources.Reso
 
     public static final StatefulNodeAzureDeleteArgs Empty = new StatefulNodeAzureDeleteArgs();
 
-    @Import(name="diskShouldDeallocate", required=true)
-    private Output<Boolean> diskShouldDeallocate;
+    @Import(name="diskShouldDeallocate")
+    private @Nullable Output<Boolean> diskShouldDeallocate;
 
-    public Output<Boolean> diskShouldDeallocate() {
-        return this.diskShouldDeallocate;
+    public Optional<Output<Boolean>> diskShouldDeallocate() {
+        return Optional.ofNullable(this.diskShouldDeallocate);
     }
 
     @Import(name="diskTtlInHours")
@@ -31,11 +31,11 @@ public final class StatefulNodeAzureDeleteArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.diskTtlInHours);
     }
 
-    @Import(name="networkShouldDeallocate", required=true)
-    private Output<Boolean> networkShouldDeallocate;
+    @Import(name="networkShouldDeallocate")
+    private @Nullable Output<Boolean> networkShouldDeallocate;
 
-    public Output<Boolean> networkShouldDeallocate() {
-        return this.networkShouldDeallocate;
+    public Optional<Output<Boolean>> networkShouldDeallocate() {
+        return Optional.ofNullable(this.networkShouldDeallocate);
     }
 
     @Import(name="networkTtlInHours")
@@ -45,11 +45,11 @@ public final class StatefulNodeAzureDeleteArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.networkTtlInHours);
     }
 
-    @Import(name="publicIpShouldDeallocate", required=true)
-    private Output<Boolean> publicIpShouldDeallocate;
+    @Import(name="publicIpShouldDeallocate")
+    private @Nullable Output<Boolean> publicIpShouldDeallocate;
 
-    public Output<Boolean> publicIpShouldDeallocate() {
-        return this.publicIpShouldDeallocate;
+    public Optional<Output<Boolean>> publicIpShouldDeallocate() {
+        return Optional.ofNullable(this.publicIpShouldDeallocate);
     }
 
     @Import(name="publicIpTtlInHours")
@@ -66,6 +66,13 @@ public final class StatefulNodeAzureDeleteArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.shouldDeregisterFromLb);
     }
 
+    @Import(name="shouldRevertToOd")
+    private @Nullable Output<Boolean> shouldRevertToOd;
+
+    public Optional<Output<Boolean>> shouldRevertToOd() {
+        return Optional.ofNullable(this.shouldRevertToOd);
+    }
+
     @Import(name="shouldTerminateVm", required=true)
     private Output<Boolean> shouldTerminateVm;
 
@@ -73,11 +80,11 @@ public final class StatefulNodeAzureDeleteArgs extends com.pulumi.resources.Reso
         return this.shouldTerminateVm;
     }
 
-    @Import(name="snapshotShouldDeallocate", required=true)
-    private Output<Boolean> snapshotShouldDeallocate;
+    @Import(name="snapshotShouldDeallocate")
+    private @Nullable Output<Boolean> snapshotShouldDeallocate;
 
-    public Output<Boolean> snapshotShouldDeallocate() {
-        return this.snapshotShouldDeallocate;
+    public Optional<Output<Boolean>> snapshotShouldDeallocate() {
+        return Optional.ofNullable(this.snapshotShouldDeallocate);
     }
 
     @Import(name="snapshotTtlInHours")
@@ -97,6 +104,7 @@ public final class StatefulNodeAzureDeleteArgs extends com.pulumi.resources.Reso
         this.publicIpShouldDeallocate = $.publicIpShouldDeallocate;
         this.publicIpTtlInHours = $.publicIpTtlInHours;
         this.shouldDeregisterFromLb = $.shouldDeregisterFromLb;
+        this.shouldRevertToOd = $.shouldRevertToOd;
         this.shouldTerminateVm = $.shouldTerminateVm;
         this.snapshotShouldDeallocate = $.snapshotShouldDeallocate;
         this.snapshotTtlInHours = $.snapshotTtlInHours;
@@ -120,7 +128,7 @@ public final class StatefulNodeAzureDeleteArgs extends com.pulumi.resources.Reso
             $ = new StatefulNodeAzureDeleteArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder diskShouldDeallocate(Output<Boolean> diskShouldDeallocate) {
+        public Builder diskShouldDeallocate(@Nullable Output<Boolean> diskShouldDeallocate) {
             $.diskShouldDeallocate = diskShouldDeallocate;
             return this;
         }
@@ -138,7 +146,7 @@ public final class StatefulNodeAzureDeleteArgs extends com.pulumi.resources.Reso
             return diskTtlInHours(Output.of(diskTtlInHours));
         }
 
-        public Builder networkShouldDeallocate(Output<Boolean> networkShouldDeallocate) {
+        public Builder networkShouldDeallocate(@Nullable Output<Boolean> networkShouldDeallocate) {
             $.networkShouldDeallocate = networkShouldDeallocate;
             return this;
         }
@@ -156,7 +164,7 @@ public final class StatefulNodeAzureDeleteArgs extends com.pulumi.resources.Reso
             return networkTtlInHours(Output.of(networkTtlInHours));
         }
 
-        public Builder publicIpShouldDeallocate(Output<Boolean> publicIpShouldDeallocate) {
+        public Builder publicIpShouldDeallocate(@Nullable Output<Boolean> publicIpShouldDeallocate) {
             $.publicIpShouldDeallocate = publicIpShouldDeallocate;
             return this;
         }
@@ -183,6 +191,15 @@ public final class StatefulNodeAzureDeleteArgs extends com.pulumi.resources.Reso
             return shouldDeregisterFromLb(Output.of(shouldDeregisterFromLb));
         }
 
+        public Builder shouldRevertToOd(@Nullable Output<Boolean> shouldRevertToOd) {
+            $.shouldRevertToOd = shouldRevertToOd;
+            return this;
+        }
+
+        public Builder shouldRevertToOd(Boolean shouldRevertToOd) {
+            return shouldRevertToOd(Output.of(shouldRevertToOd));
+        }
+
         public Builder shouldTerminateVm(Output<Boolean> shouldTerminateVm) {
             $.shouldTerminateVm = shouldTerminateVm;
             return this;
@@ -192,7 +209,7 @@ public final class StatefulNodeAzureDeleteArgs extends com.pulumi.resources.Reso
             return shouldTerminateVm(Output.of(shouldTerminateVm));
         }
 
-        public Builder snapshotShouldDeallocate(Output<Boolean> snapshotShouldDeallocate) {
+        public Builder snapshotShouldDeallocate(@Nullable Output<Boolean> snapshotShouldDeallocate) {
             $.snapshotShouldDeallocate = snapshotShouldDeallocate;
             return this;
         }
@@ -211,20 +228,8 @@ public final class StatefulNodeAzureDeleteArgs extends com.pulumi.resources.Reso
         }
 
         public StatefulNodeAzureDeleteArgs build() {
-            if ($.diskShouldDeallocate == null) {
-                throw new MissingRequiredPropertyException("StatefulNodeAzureDeleteArgs", "diskShouldDeallocate");
-            }
-            if ($.networkShouldDeallocate == null) {
-                throw new MissingRequiredPropertyException("StatefulNodeAzureDeleteArgs", "networkShouldDeallocate");
-            }
-            if ($.publicIpShouldDeallocate == null) {
-                throw new MissingRequiredPropertyException("StatefulNodeAzureDeleteArgs", "publicIpShouldDeallocate");
-            }
             if ($.shouldTerminateVm == null) {
                 throw new MissingRequiredPropertyException("StatefulNodeAzureDeleteArgs", "shouldTerminateVm");
-            }
-            if ($.snapshotShouldDeallocate == null) {
-                throw new MissingRequiredPropertyException("StatefulNodeAzureDeleteArgs", "snapshotShouldDeallocate");
             }
             return $;
         }
