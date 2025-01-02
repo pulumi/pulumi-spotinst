@@ -41,8 +41,10 @@ type Ocean struct {
 	// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
 	DrainingTimeout pulumi.IntPtrOutput `pulumi:"drainingTimeout"`
 	// Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
-	EbsOptimized pulumi.BoolPtrOutput  `pulumi:"ebsOptimized"`
-	Filters      OceanFiltersPtrOutput `pulumi:"filters"`
+	EbsOptimized pulumi.BoolPtrOutput `pulumi:"ebsOptimized"`
+	// If no Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
+	FallbackToOndemand pulumi.BoolPtrOutput  `pulumi:"fallbackToOndemand"`
+	Filters            OceanFiltersPtrOutput `pulumi:"filters"`
 	// The instance profile iam role.
 	IamInstanceProfile pulumi.StringPtrOutput `pulumi:"iamInstanceProfile"`
 	// ID of the image used to launch the instances.
@@ -148,8 +150,10 @@ type oceanState struct {
 	// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
 	DrainingTimeout *int `pulumi:"drainingTimeout"`
 	// Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
-	EbsOptimized *bool         `pulumi:"ebsOptimized"`
-	Filters      *OceanFilters `pulumi:"filters"`
+	EbsOptimized *bool `pulumi:"ebsOptimized"`
+	// If no Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
+	FallbackToOndemand *bool         `pulumi:"fallbackToOndemand"`
+	Filters            *OceanFilters `pulumi:"filters"`
 	// The instance profile iam role.
 	IamInstanceProfile *string `pulumi:"iamInstanceProfile"`
 	// ID of the image used to launch the instances.
@@ -212,7 +216,9 @@ type OceanState struct {
 	DrainingTimeout pulumi.IntPtrInput
 	// Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
 	EbsOptimized pulumi.BoolPtrInput
-	Filters      OceanFiltersPtrInput
+	// If no Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
+	FallbackToOndemand pulumi.BoolPtrInput
+	Filters            OceanFiltersPtrInput
 	// The instance profile iam role.
 	IamInstanceProfile pulumi.StringPtrInput
 	// ID of the image used to launch the instances.
@@ -278,8 +284,10 @@ type oceanArgs struct {
 	// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
 	DrainingTimeout *int `pulumi:"drainingTimeout"`
 	// Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
-	EbsOptimized *bool         `pulumi:"ebsOptimized"`
-	Filters      *OceanFilters `pulumi:"filters"`
+	EbsOptimized *bool `pulumi:"ebsOptimized"`
+	// If no Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
+	FallbackToOndemand *bool         `pulumi:"fallbackToOndemand"`
+	Filters            *OceanFilters `pulumi:"filters"`
 	// The instance profile iam role.
 	IamInstanceProfile *string `pulumi:"iamInstanceProfile"`
 	// ID of the image used to launch the instances.
@@ -343,7 +351,9 @@ type OceanArgs struct {
 	DrainingTimeout pulumi.IntPtrInput
 	// Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
 	EbsOptimized pulumi.BoolPtrInput
-	Filters      OceanFiltersPtrInput
+	// If no Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
+	FallbackToOndemand pulumi.BoolPtrInput
+	Filters            OceanFiltersPtrInput
 	// The instance profile iam role.
 	IamInstanceProfile pulumi.StringPtrInput
 	// ID of the image used to launch the instances.
@@ -517,6 +527,11 @@ func (o OceanOutput) DrainingTimeout() pulumi.IntPtrOutput {
 // Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
 func (o OceanOutput) EbsOptimized() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Ocean) pulumi.BoolPtrOutput { return v.EbsOptimized }).(pulumi.BoolPtrOutput)
+}
+
+// If no Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
+func (o OceanOutput) FallbackToOndemand() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Ocean) pulumi.BoolPtrOutput { return v.FallbackToOndemand }).(pulumi.BoolPtrOutput)
 }
 
 func (o OceanOutput) Filters() OceanFiltersPtrOutput {

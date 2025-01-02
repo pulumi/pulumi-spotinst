@@ -147,6 +147,21 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.ebsOptimized);
     }
 
+    /**
+     * If no Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
+     * 
+     */
+    @Import(name="fallbackToOndemand")
+    private @Nullable Output<Boolean> fallbackToOndemand;
+
+    /**
+     * @return If no Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
+     * 
+     */
+    public Optional<Output<Boolean>> fallbackToOndemand() {
+        return Optional.ofNullable(this.fallbackToOndemand);
+    }
+
     @Import(name="filters")
     private @Nullable Output<OceanFiltersArgs> filters;
 
@@ -488,6 +503,7 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
         this.desiredCapacity = $.desiredCapacity;
         this.drainingTimeout = $.drainingTimeout;
         this.ebsOptimized = $.ebsOptimized;
+        this.fallbackToOndemand = $.fallbackToOndemand;
         this.filters = $.filters;
         this.iamInstanceProfile = $.iamInstanceProfile;
         this.imageId = $.imageId;
@@ -712,6 +728,27 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder ebsOptimized(Boolean ebsOptimized) {
             return ebsOptimized(Output.of(ebsOptimized));
+        }
+
+        /**
+         * @param fallbackToOndemand If no Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fallbackToOndemand(@Nullable Output<Boolean> fallbackToOndemand) {
+            $.fallbackToOndemand = fallbackToOndemand;
+            return this;
+        }
+
+        /**
+         * @param fallbackToOndemand If no Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fallbackToOndemand(Boolean fallbackToOndemand) {
+            return fallbackToOndemand(Output.of(fallbackToOndemand));
         }
 
         public Builder filters(@Nullable Output<OceanFiltersArgs> filters) {

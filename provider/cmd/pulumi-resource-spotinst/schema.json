@@ -15671,7 +15671,7 @@
             }
         },
         "spotinst:ecs/ocean:Ocean": {
-            "description": "Manages a Spotinst Ocean ECS resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  example:\n    type: spotinst:ecs:Ocean\n    properties:\n      region: us-west-2\n      name: sample-ecs-cluster\n      clusterName: sample-ecs-cluster\n      minSize: '0'\n      maxSize: '1'\n      desiredCapacity: '0'\n      subnetIds:\n        - subnet-12345\n      instanceTypes:\n        - filters:\n            - architectures:\n                - x86_64\n                - i386\n              categories:\n                - Accelerated_computing\n                - Compute_optimized\n              diskTypes:\n                - EBS\n                - SSD\n              excludeFamilies:\n                - m*\n              excludeMetal: false\n              hypervisor:\n                - xen\n              includeFamilies:\n                - c*\n                - t*\n              isEnaSupported: false\n              maxGpu: 4\n              minGpu: 0\n              maxMemoryGib: 16\n              maxNetworkPerformance: 20\n              maxVcpu: 16\n              minEnis: 2\n              minMemoryGib: 8\n              minNetworkPerformance: 2\n              minVcpu: 2\n              rootDeviceTypes:\n                - ebs\n              virtualizationTypes:\n                - hvm\n      securityGroupIds:\n        - sg-12345\n      imageId: ami-12345\n      iamInstanceProfile: iam-profile\n      keyPair: KeyPair\n      userData: echo hello world\n      associatePublicIpAddress: false\n      utilizeReservedInstances: false\n      drainingTimeout: 120\n      monitoring: true\n      ebsOptimized: true\n      useAsTemplateOnly: true\n      spotPercentage: 100\n      utilizeCommitments: false\n      clusterOrientations:\n        - availabilityVsCost: balanced\n      instanceMetadataOptions:\n        httpTokens: required\n        httpPutResponseHopLimit: 10\n      blockDeviceMappings:\n        - deviceName: /dev/xvda1\n          ebs:\n            deleteOnTermination: 'true'\n            encrypted: 'false'\n            volumeType: gp2\n            volumeSize: 50\n            throughput: 500\n            dynamicVolumeSize:\n              baseSize: 50\n              resource: CPU\n              sizePerResourceUnit: 20\n      optimizeImages:\n        performAt: timeWindow\n        timeWindows:\n          - Sun:02:00-Sun:12:00\n          - Sun:05:00-Sun:16:00\n        shouldOptimizeEcsAmi: true\n      tags:\n        - key: fakeKey\n          value: fakeValue\n      logging:\n        export:\n          s3s:\n            - id: di-abcd123\n```\n\u003c!--End PulumiCodeChooser --\u003e\n```\noutput \"ocean_id\" {\n  value = spotinst_ocean_ecs.example.id\n}\n```\n\n## Import\n\nClusters can be imported using the Ocean `id`, e.g.,\n\nhcl\n\n```sh\n$ pulumi import spotinst:ecs/ocean:Ocean nameOfTheResource o-12345678\n```\n\n",
+            "description": "Manages a Spotinst Ocean ECS resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  example:\n    type: spotinst:ecs:Ocean\n    properties:\n      region: us-west-2\n      name: sample-ecs-cluster\n      clusterName: sample-ecs-cluster\n      minSize: '0'\n      maxSize: '1'\n      desiredCapacity: '0'\n      subnetIds:\n        - subnet-12345\n      instanceTypes:\n        - filters:\n            - architectures:\n                - x86_64\n                - i386\n              categories:\n                - Accelerated_computing\n                - Compute_optimized\n              diskTypes:\n                - EBS\n                - SSD\n              excludeFamilies:\n                - m*\n              excludeMetal: false\n              hypervisor:\n                - xen\n              includeFamilies:\n                - c*\n                - t*\n              isEnaSupported: false\n              maxGpu: 4\n              minGpu: 0\n              maxMemoryGib: 16\n              maxNetworkPerformance: 20\n              maxVcpu: 16\n              minEnis: 2\n              minMemoryGib: 8\n              minNetworkPerformance: 2\n              minVcpu: 2\n              rootDeviceTypes:\n                - ebs\n              virtualizationTypes:\n                - hvm\n      securityGroupIds:\n        - sg-12345\n      imageId: ami-12345\n      iamInstanceProfile: iam-profile\n      keyPair: KeyPair\n      userData: echo hello world\n      associatePublicIpAddress: false\n      utilizeReservedInstances: false\n      drainingTimeout: 120\n      monitoring: true\n      ebsOptimized: true\n      useAsTemplateOnly: true\n      spotPercentage: 100\n      utilizeCommitments: false\n      fallbackToOndemand: true\n      clusterOrientations:\n        - availabilityVsCost: balanced\n      instanceMetadataOptions:\n        httpTokens: required\n        httpPutResponseHopLimit: 10\n      blockDeviceMappings:\n        - deviceName: /dev/xvda1\n          ebs:\n            deleteOnTermination: 'true'\n            encrypted: 'false'\n            volumeType: gp2\n            volumeSize: 50\n            throughput: 500\n            dynamicVolumeSize:\n              baseSize: 50\n              resource: CPU\n              sizePerResourceUnit: 20\n      optimizeImages:\n        performAt: timeWindow\n        timeWindows:\n          - Sun:02:00-Sun:12:00\n          - Sun:05:00-Sun:16:00\n        shouldOptimizeEcsAmi: true\n      tags:\n        - key: fakeKey\n          value: fakeValue\n      logging:\n        export:\n          s3s:\n            - id: di-abcd123\n```\n\u003c!--End PulumiCodeChooser --\u003e\n```\noutput \"ocean_id\" {\n  value = spotinst_ocean_ecs.example.id\n}\n```\n\n## Import\n\nClusters can be imported using the Ocean `id`, e.g.,\n\nhcl\n\n```sh\n$ pulumi import spotinst:ecs/ocean:Ocean nameOfTheResource o-12345678\n```\n\n",
             "properties": {
                 "associatePublicIpAddress": {
                     "type": "boolean",
@@ -15715,6 +15715,10 @@
                 "ebsOptimized": {
                     "type": "boolean",
                     "description": "Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.\n"
+                },
+                "fallbackToOndemand": {
+                    "type": "boolean",
+                    "description": "If no Spot instance markets are available, enable Ocean to launch On-Demand instances instead.\n"
                 },
                 "filters": {
                     "$ref": "#/types/spotinst:ecs/OceanFilters:OceanFilters"
@@ -15877,6 +15881,10 @@
                     "type": "boolean",
                     "description": "Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.\n"
                 },
+                "fallbackToOndemand": {
+                    "type": "boolean",
+                    "description": "If no Spot instance markets are available, enable Ocean to launch On-Demand instances instead.\n"
+                },
                 "filters": {
                     "$ref": "#/types/spotinst:ecs/OceanFilters:OceanFilters"
                 },
@@ -16035,6 +16043,10 @@
                     "ebsOptimized": {
                         "type": "boolean",
                         "description": "Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.\n"
+                    },
+                    "fallbackToOndemand": {
+                        "type": "boolean",
+                        "description": "If no Spot instance markets are available, enable Ocean to launch On-Demand instances instead.\n"
                     },
                     "filters": {
                         "$ref": "#/types/spotinst:ecs/OceanFilters:OceanFilters"
