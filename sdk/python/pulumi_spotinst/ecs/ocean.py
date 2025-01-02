@@ -34,6 +34,7 @@ class OceanArgs:
                  desired_capacity: Optional[pulumi.Input[int]] = None,
                  draining_timeout: Optional[pulumi.Input[int]] = None,
                  ebs_optimized: Optional[pulumi.Input[bool]] = None,
+                 fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
                  filters: Optional[pulumi.Input['OceanFiltersArgs']] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  instance_metadata_options: Optional[pulumi.Input['OceanInstanceMetadataOptionsArgs']] = None,
@@ -66,6 +67,7 @@ class OceanArgs:
         :param pulumi.Input[int] desired_capacity: The number of instances to launch and maintain in the cluster.
         :param pulumi.Input[int] draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
         :param pulumi.Input[bool] ebs_optimized: Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
+        :param pulumi.Input[bool] fallback_to_ondemand: If no Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
         :param pulumi.Input[str] iam_instance_profile: The instance profile iam role.
         :param pulumi.Input['OceanInstanceMetadataOptionsArgs'] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
         :param pulumi.Input[str] key_pair: The key pair to attach the instances.
@@ -105,6 +107,8 @@ class OceanArgs:
             pulumi.set(__self__, "draining_timeout", draining_timeout)
         if ebs_optimized is not None:
             pulumi.set(__self__, "ebs_optimized", ebs_optimized)
+        if fallback_to_ondemand is not None:
+            pulumi.set(__self__, "fallback_to_ondemand", fallback_to_ondemand)
         if filters is not None:
             pulumi.set(__self__, "filters", filters)
         if iam_instance_profile is not None:
@@ -293,6 +297,18 @@ class OceanArgs:
     @ebs_optimized.setter
     def ebs_optimized(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "ebs_optimized", value)
+
+    @property
+    @pulumi.getter(name="fallbackToOndemand")
+    def fallback_to_ondemand(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If no Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
+        """
+        return pulumi.get(self, "fallback_to_ondemand")
+
+    @fallback_to_ondemand.setter
+    def fallback_to_ondemand(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "fallback_to_ondemand", value)
 
     @property
     @pulumi.getter
@@ -529,6 +545,7 @@ class _OceanState:
                  desired_capacity: Optional[pulumi.Input[int]] = None,
                  draining_timeout: Optional[pulumi.Input[int]] = None,
                  ebs_optimized: Optional[pulumi.Input[bool]] = None,
+                 fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
                  filters: Optional[pulumi.Input['OceanFiltersArgs']] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
@@ -561,6 +578,7 @@ class _OceanState:
         :param pulumi.Input[int] desired_capacity: The number of instances to launch and maintain in the cluster.
         :param pulumi.Input[int] draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
         :param pulumi.Input[bool] ebs_optimized: Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
+        :param pulumi.Input[bool] fallback_to_ondemand: If no Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
         :param pulumi.Input[str] iam_instance_profile: The instance profile iam role.
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
         :param pulumi.Input['OceanInstanceMetadataOptionsArgs'] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
@@ -601,6 +619,8 @@ class _OceanState:
             pulumi.set(__self__, "draining_timeout", draining_timeout)
         if ebs_optimized is not None:
             pulumi.set(__self__, "ebs_optimized", ebs_optimized)
+        if fallback_to_ondemand is not None:
+            pulumi.set(__self__, "fallback_to_ondemand", fallback_to_ondemand)
         if filters is not None:
             pulumi.set(__self__, "filters", filters)
         if iam_instance_profile is not None:
@@ -749,6 +769,18 @@ class _OceanState:
     @ebs_optimized.setter
     def ebs_optimized(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "ebs_optimized", value)
+
+    @property
+    @pulumi.getter(name="fallbackToOndemand")
+    def fallback_to_ondemand(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If no Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
+        """
+        return pulumi.get(self, "fallback_to_ondemand")
+
+    @fallback_to_ondemand.setter
+    def fallback_to_ondemand(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "fallback_to_ondemand", value)
 
     @property
     @pulumi.getter
@@ -1035,6 +1067,7 @@ class Ocean(pulumi.CustomResource):
                  desired_capacity: Optional[pulumi.Input[int]] = None,
                  draining_timeout: Optional[pulumi.Input[int]] = None,
                  ebs_optimized: Optional[pulumi.Input[bool]] = None,
+                 fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
                  filters: Optional[pulumi.Input[Union['OceanFiltersArgs', 'OceanFiltersArgsDict']]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
@@ -1081,6 +1114,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[int] desired_capacity: The number of instances to launch and maintain in the cluster.
         :param pulumi.Input[int] draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
         :param pulumi.Input[bool] ebs_optimized: Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
+        :param pulumi.Input[bool] fallback_to_ondemand: If no Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
         :param pulumi.Input[str] iam_instance_profile: The instance profile iam role.
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
         :param pulumi.Input[Union['OceanInstanceMetadataOptionsArgs', 'OceanInstanceMetadataOptionsArgsDict']] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
@@ -1146,6 +1180,7 @@ class Ocean(pulumi.CustomResource):
                  desired_capacity: Optional[pulumi.Input[int]] = None,
                  draining_timeout: Optional[pulumi.Input[int]] = None,
                  ebs_optimized: Optional[pulumi.Input[bool]] = None,
+                 fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
                  filters: Optional[pulumi.Input[Union['OceanFiltersArgs', 'OceanFiltersArgsDict']]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
@@ -1189,6 +1224,7 @@ class Ocean(pulumi.CustomResource):
             __props__.__dict__["desired_capacity"] = desired_capacity
             __props__.__dict__["draining_timeout"] = draining_timeout
             __props__.__dict__["ebs_optimized"] = ebs_optimized
+            __props__.__dict__["fallback_to_ondemand"] = fallback_to_ondemand
             __props__.__dict__["filters"] = filters
             __props__.__dict__["iam_instance_profile"] = iam_instance_profile
             if image_id is None and not opts.urn:
@@ -1239,6 +1275,7 @@ class Ocean(pulumi.CustomResource):
             desired_capacity: Optional[pulumi.Input[int]] = None,
             draining_timeout: Optional[pulumi.Input[int]] = None,
             ebs_optimized: Optional[pulumi.Input[bool]] = None,
+            fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
             filters: Optional[pulumi.Input[Union['OceanFiltersArgs', 'OceanFiltersArgsDict']]] = None,
             iam_instance_profile: Optional[pulumi.Input[str]] = None,
             image_id: Optional[pulumi.Input[str]] = None,
@@ -1276,6 +1313,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[int] desired_capacity: The number of instances to launch and maintain in the cluster.
         :param pulumi.Input[int] draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
         :param pulumi.Input[bool] ebs_optimized: Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
+        :param pulumi.Input[bool] fallback_to_ondemand: If no Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
         :param pulumi.Input[str] iam_instance_profile: The instance profile iam role.
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
         :param pulumi.Input[Union['OceanInstanceMetadataOptionsArgs', 'OceanInstanceMetadataOptionsArgsDict']] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
@@ -1311,6 +1349,7 @@ class Ocean(pulumi.CustomResource):
         __props__.__dict__["desired_capacity"] = desired_capacity
         __props__.__dict__["draining_timeout"] = draining_timeout
         __props__.__dict__["ebs_optimized"] = ebs_optimized
+        __props__.__dict__["fallback_to_ondemand"] = fallback_to_ondemand
         __props__.__dict__["filters"] = filters
         __props__.__dict__["iam_instance_profile"] = iam_instance_profile
         __props__.__dict__["image_id"] = image_id
@@ -1401,6 +1440,14 @@ class Ocean(pulumi.CustomResource):
         Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
         """
         return pulumi.get(self, "ebs_optimized")
+
+    @property
+    @pulumi.getter(name="fallbackToOndemand")
+    def fallback_to_ondemand(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If no Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
+        """
+        return pulumi.get(self, "fallback_to_ondemand")
 
     @property
     @pulumi.getter

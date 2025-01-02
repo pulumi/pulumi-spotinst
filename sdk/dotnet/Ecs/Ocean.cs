@@ -73,6 +73,12 @@ namespace Pulumi.SpotInst.Ecs
         [Output("ebsOptimized")]
         public Output<bool?> EbsOptimized { get; private set; } = null!;
 
+        /// <summary>
+        /// If no Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
+        /// </summary>
+        [Output("fallbackToOndemand")]
+        public Output<bool?> FallbackToOndemand { get; private set; } = null!;
+
         [Output("filters")]
         public Output<Outputs.OceanFilters?> Filters { get; private set; } = null!;
 
@@ -315,6 +321,12 @@ namespace Pulumi.SpotInst.Ecs
         [Input("ebsOptimized")]
         public Input<bool>? EbsOptimized { get; set; }
 
+        /// <summary>
+        /// If no Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
+        /// </summary>
+        [Input("fallbackToOndemand")]
+        public Input<bool>? FallbackToOndemand { get; set; }
+
         [Input("filters")]
         public Input<Inputs.OceanFiltersArgs>? Filters { get; set; }
 
@@ -547,6 +559,12 @@ namespace Pulumi.SpotInst.Ecs
         /// </summary>
         [Input("ebsOptimized")]
         public Input<bool>? EbsOptimized { get; set; }
+
+        /// <summary>
+        /// If no Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
+        /// </summary>
+        [Input("fallbackToOndemand")]
+        public Input<bool>? FallbackToOndemand { get; set; }
 
         [Input("filters")]
         public Input<Inputs.OceanFiltersGetArgs>? Filters { get; set; }

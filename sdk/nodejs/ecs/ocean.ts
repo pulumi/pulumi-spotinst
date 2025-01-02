@@ -77,6 +77,10 @@ export class Ocean extends pulumi.CustomResource {
      * Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
      */
     public readonly ebsOptimized!: pulumi.Output<boolean | undefined>;
+    /**
+     * If no Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
+     */
+    public readonly fallbackToOndemand!: pulumi.Output<boolean | undefined>;
     public readonly filters!: pulumi.Output<outputs.ecs.OceanFilters | undefined>;
     /**
      * The instance profile iam role.
@@ -186,6 +190,7 @@ export class Ocean extends pulumi.CustomResource {
             resourceInputs["desiredCapacity"] = state ? state.desiredCapacity : undefined;
             resourceInputs["drainingTimeout"] = state ? state.drainingTimeout : undefined;
             resourceInputs["ebsOptimized"] = state ? state.ebsOptimized : undefined;
+            resourceInputs["fallbackToOndemand"] = state ? state.fallbackToOndemand : undefined;
             resourceInputs["filters"] = state ? state.filters : undefined;
             resourceInputs["iamInstanceProfile"] = state ? state.iamInstanceProfile : undefined;
             resourceInputs["imageId"] = state ? state.imageId : undefined;
@@ -235,6 +240,7 @@ export class Ocean extends pulumi.CustomResource {
             resourceInputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
             resourceInputs["drainingTimeout"] = args ? args.drainingTimeout : undefined;
             resourceInputs["ebsOptimized"] = args ? args.ebsOptimized : undefined;
+            resourceInputs["fallbackToOndemand"] = args ? args.fallbackToOndemand : undefined;
             resourceInputs["filters"] = args ? args.filters : undefined;
             resourceInputs["iamInstanceProfile"] = args ? args.iamInstanceProfile : undefined;
             resourceInputs["imageId"] = args ? args.imageId : undefined;
@@ -298,6 +304,10 @@ export interface OceanState {
      * Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
      */
     ebsOptimized?: pulumi.Input<boolean>;
+    /**
+     * If no Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
+     */
+    fallbackToOndemand?: pulumi.Input<boolean>;
     filters?: pulumi.Input<inputs.ecs.OceanFilters>;
     /**
      * The instance profile iam role.
@@ -420,6 +430,10 @@ export interface OceanArgs {
      * Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
      */
     ebsOptimized?: pulumi.Input<boolean>;
+    /**
+     * If no Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
+     */
+    fallbackToOndemand?: pulumi.Input<boolean>;
     filters?: pulumi.Input<inputs.ecs.OceanFilters>;
     /**
      * The instance profile iam role.

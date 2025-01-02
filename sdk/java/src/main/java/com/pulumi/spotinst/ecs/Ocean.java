@@ -158,6 +158,20 @@ public class Ocean extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> ebsOptimized() {
         return Codegen.optional(this.ebsOptimized);
     }
+    /**
+     * If no Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
+     * 
+     */
+    @Export(name="fallbackToOndemand", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> fallbackToOndemand;
+
+    /**
+     * @return If no Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
+     * 
+     */
+    public Output<Optional<Boolean>> fallbackToOndemand() {
+        return Codegen.optional(this.fallbackToOndemand);
+    }
     @Export(name="filters", refs={OceanFilters.class}, tree="[0]")
     private Output</* @Nullable */ OceanFilters> filters;
 
