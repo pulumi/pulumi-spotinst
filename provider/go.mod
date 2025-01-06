@@ -1,13 +1,13 @@
 module github.com/pulumi/pulumi-spotinst/provider/v3
 
-go 1.22.3
+go 1.23
 
-toolchain go1.22.7
+toolchain go1.23.4
 
 require (
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.99.0
 	github.com/pulumi/pulumi/sdk/v3 v3.143.0
-	github.com/spotinst/terraform-provider-spotinst v1.203.0
+	github.com/spotinst/terraform-provider-spotinst v1.205.0
 )
 
 replace (
@@ -160,7 +160,7 @@ require (
 	github.com/spf13/cast v1.5.0 // indirect
 	github.com/spf13/cobra v1.8.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
-	github.com/spotinst/spotinst-sdk-go v1.379.0 // indirect
+	github.com/spotinst/spotinst-sdk-go v1.380.0 // indirect
 	github.com/stretchr/objx v0.5.2 // indirect
 	github.com/teekennedy/goldmark-markdown v0.3.0 // indirect
 	github.com/texttheater/golang-levenshtein v1.0.1 // indirect
@@ -183,7 +183,7 @@ require (
 	golang.org/x/crypto v0.31.0 // indirect
 	golang.org/x/exp v0.0.0-20240604190554-fc45aab8b7f8 // indirect
 	golang.org/x/mod v0.18.0 // indirect
-	golang.org/x/net v0.28.0 // indirect
+	golang.org/x/net v0.33.0 // indirect
 	golang.org/x/oauth2 v0.22.0 // indirect
 	golang.org/x/sync v0.10.0 // indirect
 	golang.org/x/sys v0.28.0 // indirect
