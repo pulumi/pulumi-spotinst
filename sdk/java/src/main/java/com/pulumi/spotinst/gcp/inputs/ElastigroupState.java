@@ -290,6 +290,21 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Select a minimum CPU platform for the compute instance.
+     * 
+     */
+    @Import(name="minCpuPlatform")
+    private @Nullable Output<String> minCpuPlatform;
+
+    /**
+     * @return Select a minimum CPU platform for the compute instance.
+     * 
+     */
+    public Optional<Output<String>> minCpuPlatform() {
+        return Optional.ofNullable(this.minCpuPlatform);
+    }
+
+    /**
      * The minimum number of instances the group should have at any time.
      * 
      */
@@ -364,6 +379,21 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * prioritize availability zones when launching instances for the group. Must be a sublist of `availability_zones`.
+     * 
+     */
+    @Import(name="preferredAvailabilityZones")
+    private @Nullable Output<List<String>> preferredAvailabilityZones;
+
+    /**
+     * @return prioritize availability zones when launching instances for the group. Must be a sublist of `availability_zones`.
+     * 
+     */
+    public Optional<Output<List<String>>> preferredAvailabilityZones() {
+        return Optional.ofNullable(this.preferredAvailabilityZones);
+    }
+
+    /**
      * Valid values: &#34;SPOT&#34;, &#34;PREEMPTIBLE&#34;. Define the provisioning model of the launched instances. Default value is &#34;PREEMPTIBLE&#34;.
      * 
      */
@@ -427,6 +457,21 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> serviceAccount() {
         return Optional.ofNullable(this.serviceAccount);
+    }
+
+    /**
+     * Enable committed use discounts utilization.
+     * 
+     */
+    @Import(name="shouldUtilizeCommitments")
+    private @Nullable Output<Boolean> shouldUtilizeCommitments;
+
+    /**
+     * @return Enable committed use discounts utilization.
+     * 
+     */
+    public Optional<Output<Boolean>> shouldUtilizeCommitments() {
+        return Optional.ofNullable(this.shouldUtilizeCommitments);
     }
 
     /**
@@ -520,18 +565,21 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
         this.labels = $.labels;
         this.maxSize = $.maxSize;
         this.metadatas = $.metadatas;
+        this.minCpuPlatform = $.minCpuPlatform;
         this.minSize = $.minSize;
         this.name = $.name;
         this.networkInterfaces = $.networkInterfaces;
         this.ondemandCount = $.ondemandCount;
         this.optimizationWindows = $.optimizationWindows;
         this.preemptiblePercentage = $.preemptiblePercentage;
+        this.preferredAvailabilityZones = $.preferredAvailabilityZones;
         this.provisioningModel = $.provisioningModel;
         this.revertToPreemptibles = $.revertToPreemptibles;
         this.scalingDownPolicies = $.scalingDownPolicies;
         this.scalingUpPolicies = $.scalingUpPolicies;
         this.scheduledTasks = $.scheduledTasks;
         this.serviceAccount = $.serviceAccount;
+        this.shouldUtilizeCommitments = $.shouldUtilizeCommitments;
         this.shutdownScript = $.shutdownScript;
         this.startupScript = $.startupScript;
         this.subnets = $.subnets;
@@ -972,6 +1020,27 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param minCpuPlatform Select a minimum CPU platform for the compute instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minCpuPlatform(@Nullable Output<String> minCpuPlatform) {
+            $.minCpuPlatform = minCpuPlatform;
+            return this;
+        }
+
+        /**
+         * @param minCpuPlatform Select a minimum CPU platform for the compute instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minCpuPlatform(String minCpuPlatform) {
+            return minCpuPlatform(Output.of(minCpuPlatform));
+        }
+
+        /**
          * @param minSize The minimum number of instances the group should have at any time.
          * 
          * @return builder
@@ -1088,6 +1157,37 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param preferredAvailabilityZones prioritize availability zones when launching instances for the group. Must be a sublist of `availability_zones`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preferredAvailabilityZones(@Nullable Output<List<String>> preferredAvailabilityZones) {
+            $.preferredAvailabilityZones = preferredAvailabilityZones;
+            return this;
+        }
+
+        /**
+         * @param preferredAvailabilityZones prioritize availability zones when launching instances for the group. Must be a sublist of `availability_zones`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preferredAvailabilityZones(List<String> preferredAvailabilityZones) {
+            return preferredAvailabilityZones(Output.of(preferredAvailabilityZones));
+        }
+
+        /**
+         * @param preferredAvailabilityZones prioritize availability zones when launching instances for the group. Must be a sublist of `availability_zones`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preferredAvailabilityZones(String... preferredAvailabilityZones) {
+            return preferredAvailabilityZones(List.of(preferredAvailabilityZones));
+        }
+
+        /**
          * @param provisioningModel Valid values: &#34;SPOT&#34;, &#34;PREEMPTIBLE&#34;. Define the provisioning model of the launched instances. Default value is &#34;PREEMPTIBLE&#34;.
          * 
          * @return builder
@@ -1197,6 +1297,27 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder serviceAccount(String serviceAccount) {
             return serviceAccount(Output.of(serviceAccount));
+        }
+
+        /**
+         * @param shouldUtilizeCommitments Enable committed use discounts utilization.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shouldUtilizeCommitments(@Nullable Output<Boolean> shouldUtilizeCommitments) {
+            $.shouldUtilizeCommitments = shouldUtilizeCommitments;
+            return this;
+        }
+
+        /**
+         * @param shouldUtilizeCommitments Enable committed use discounts utilization.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shouldUtilizeCommitments(Boolean shouldUtilizeCommitments) {
+            return shouldUtilizeCommitments(Output.of(shouldUtilizeCommitments));
         }
 
         /**

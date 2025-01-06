@@ -73,12 +73,14 @@ import javax.annotation.Nullable;
  *             .serviceAccount("example}{@literal @}{@code myProject.iam.gservicecct.com")
  *             .startupScript("")
  *             .instanceNamePrefix("test-123a")
+ *             .minCpuPlatform("Intel Sandy Bridge")
  *             .minSize(0)
  *             .maxSize(1)
  *             .desiredCapacity(1)
  *             .availabilityZones(            
  *                 "asia-east1-c",
  *                 "us-central1-a")
+ *             .preferredAvailabilityZones("us-central1-a")
  *             .preemptiblePercentage(50)
  *             .revertToPreemptibles(ElastigroupRevertToPreemptibleArgs.builder()
  *                 .performAt("timeWindow")
@@ -87,6 +89,7 @@ import javax.annotation.Nullable;
  *             .fallbackToOndemand(true)
  *             .drainingTimeout(180)
  *             .provisioningModel("SPOT")
+ *             .shouldUtilizeCommitments(true)
  *             .labels(ElastigroupLabelArgs.builder()
  *                 .key("test_key")
  *                 .value("test_value")
@@ -396,6 +399,20 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.metadatas);
     }
     /**
+     * Select a minimum CPU platform for the compute instance.
+     * 
+     */
+    @Export(name="minCpuPlatform", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> minCpuPlatform;
+
+    /**
+     * @return Select a minimum CPU platform for the compute instance.
+     * 
+     */
+    public Output<Optional<String>> minCpuPlatform() {
+        return Codegen.optional(this.minCpuPlatform);
+    }
+    /**
      * The minimum number of instances the group should have at any time.
      * 
      */
@@ -464,6 +481,20 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.preemptiblePercentage);
     }
     /**
+     * prioritize availability zones when launching instances for the group. Must be a sublist of `availability_zones`.
+     * 
+     */
+    @Export(name="preferredAvailabilityZones", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> preferredAvailabilityZones;
+
+    /**
+     * @return prioritize availability zones when launching instances for the group. Must be a sublist of `availability_zones`.
+     * 
+     */
+    public Output<Optional<List<String>>> preferredAvailabilityZones() {
+        return Codegen.optional(this.preferredAvailabilityZones);
+    }
+    /**
      * Valid values: &#34;SPOT&#34;, &#34;PREEMPTIBLE&#34;. Define the provisioning model of the launched instances. Default value is &#34;PREEMPTIBLE&#34;.
      * 
      */
@@ -522,6 +553,20 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> serviceAccount() {
         return Codegen.optional(this.serviceAccount);
+    }
+    /**
+     * Enable committed use discounts utilization.
+     * 
+     */
+    @Export(name="shouldUtilizeCommitments", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> shouldUtilizeCommitments;
+
+    /**
+     * @return Enable committed use discounts utilization.
+     * 
+     */
+    public Output<Optional<Boolean>> shouldUtilizeCommitments() {
+        return Codegen.optional(this.shouldUtilizeCommitments);
     }
     /**
      * The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)

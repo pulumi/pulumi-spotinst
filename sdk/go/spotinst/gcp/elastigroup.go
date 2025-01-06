@@ -34,11 +34,15 @@ import (
 //				ServiceAccount:     pulumi.String("example@myProject.iam.gservicecct.com"),
 //				StartupScript:      pulumi.String(""),
 //				InstanceNamePrefix: pulumi.String("test-123a"),
+//				MinCpuPlatform:     pulumi.String("Intel Sandy Bridge"),
 //				MinSize:            pulumi.Int(0),
 //				MaxSize:            pulumi.Int(1),
 //				DesiredCapacity:    pulumi.Int(1),
 //				AvailabilityZones: pulumi.StringArray{
 //					pulumi.String("asia-east1-c"),
+//					pulumi.String("us-central1-a"),
+//				},
+//				PreferredAvailabilityZones: pulumi.StringArray{
 //					pulumi.String("us-central1-a"),
 //				},
 //				PreemptiblePercentage: pulumi.Int(50),
@@ -50,9 +54,10 @@ import (
 //				OptimizationWindows: pulumi.StringArray{
 //					pulumi.String("Mon:01:00-Mon:03:00"),
 //				},
-//				FallbackToOndemand: pulumi.Bool(true),
-//				DrainingTimeout:    pulumi.Int(180),
-//				ProvisioningModel:  pulumi.String("SPOT"),
+//				FallbackToOndemand:       pulumi.Bool(true),
+//				DrainingTimeout:          pulumi.Int(180),
+//				ProvisioningModel:        pulumi.String("SPOT"),
+//				ShouldUtilizeCommitments: pulumi.Bool(true),
 //				Labels: gcp.ElastigroupLabelArray{
 //					&gcp.ElastigroupLabelArgs{
 //						Key:   pulumi.String("test_key"),
@@ -193,6 +198,8 @@ type Elastigroup struct {
 	MaxSize pulumi.IntOutput `pulumi:"maxSize"`
 	// Array of objects with key-value pairs.
 	Metadatas ElastigroupMetadataArrayOutput `pulumi:"metadatas"`
+	// Select a minimum CPU platform for the compute instance.
+	MinCpuPlatform pulumi.StringPtrOutput `pulumi:"minCpuPlatform"`
 	// The minimum number of instances the group should have at any time.
 	MinSize pulumi.IntOutput `pulumi:"minSize"`
 	// The group name.
@@ -203,6 +210,8 @@ type Elastigroup struct {
 	OptimizationWindows pulumi.StringArrayOutput `pulumi:"optimizationWindows"`
 	// Percentage of Preemptible VMs to spin up from the "desiredCapacity".
 	PreemptiblePercentage pulumi.IntPtrOutput `pulumi:"preemptiblePercentage"`
+	// prioritize availability zones when launching instances for the group. Must be a sublist of `availabilityZones`.
+	PreferredAvailabilityZones pulumi.StringArrayOutput `pulumi:"preferredAvailabilityZones"`
 	// Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
 	ProvisioningModel pulumi.StringPtrOutput `pulumi:"provisioningModel"`
 	// Setting for revert to preemptible option.
@@ -212,6 +221,8 @@ type Elastigroup struct {
 	ScheduledTasks       ElastigroupScheduledTaskArrayOutput       `pulumi:"scheduledTasks"`
 	// The email of the service account in which the group instances will be launched.
 	ServiceAccount pulumi.StringPtrOutput `pulumi:"serviceAccount"`
+	// Enable committed use discounts utilization.
+	ShouldUtilizeCommitments pulumi.BoolPtrOutput `pulumi:"shouldUtilizeCommitments"`
 	// The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
 	ShutdownScript pulumi.StringPtrOutput `pulumi:"shutdownScript"`
 	// Create and run your own startup scripts on your virtual machines to perform automated tasks every time your instance boots up.
@@ -294,6 +305,8 @@ type elastigroupState struct {
 	MaxSize *int `pulumi:"maxSize"`
 	// Array of objects with key-value pairs.
 	Metadatas []ElastigroupMetadata `pulumi:"metadatas"`
+	// Select a minimum CPU platform for the compute instance.
+	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
 	// The minimum number of instances the group should have at any time.
 	MinSize *int `pulumi:"minSize"`
 	// The group name.
@@ -304,6 +317,8 @@ type elastigroupState struct {
 	OptimizationWindows []string `pulumi:"optimizationWindows"`
 	// Percentage of Preemptible VMs to spin up from the "desiredCapacity".
 	PreemptiblePercentage *int `pulumi:"preemptiblePercentage"`
+	// prioritize availability zones when launching instances for the group. Must be a sublist of `availabilityZones`.
+	PreferredAvailabilityZones []string `pulumi:"preferredAvailabilityZones"`
 	// Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
 	ProvisioningModel *string `pulumi:"provisioningModel"`
 	// Setting for revert to preemptible option.
@@ -313,6 +328,8 @@ type elastigroupState struct {
 	ScheduledTasks       []ElastigroupScheduledTask       `pulumi:"scheduledTasks"`
 	// The email of the service account in which the group instances will be launched.
 	ServiceAccount *string `pulumi:"serviceAccount"`
+	// Enable committed use discounts utilization.
+	ShouldUtilizeCommitments *bool `pulumi:"shouldUtilizeCommitments"`
 	// The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
 	ShutdownScript *string `pulumi:"shutdownScript"`
 	// Create and run your own startup scripts on your virtual machines to perform automated tasks every time your instance boots up.
@@ -363,6 +380,8 @@ type ElastigroupState struct {
 	MaxSize pulumi.IntPtrInput
 	// Array of objects with key-value pairs.
 	Metadatas ElastigroupMetadataArrayInput
+	// Select a minimum CPU platform for the compute instance.
+	MinCpuPlatform pulumi.StringPtrInput
 	// The minimum number of instances the group should have at any time.
 	MinSize pulumi.IntPtrInput
 	// The group name.
@@ -373,6 +392,8 @@ type ElastigroupState struct {
 	OptimizationWindows pulumi.StringArrayInput
 	// Percentage of Preemptible VMs to spin up from the "desiredCapacity".
 	PreemptiblePercentage pulumi.IntPtrInput
+	// prioritize availability zones when launching instances for the group. Must be a sublist of `availabilityZones`.
+	PreferredAvailabilityZones pulumi.StringArrayInput
 	// Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
 	ProvisioningModel pulumi.StringPtrInput
 	// Setting for revert to preemptible option.
@@ -382,6 +403,8 @@ type ElastigroupState struct {
 	ScheduledTasks       ElastigroupScheduledTaskArrayInput
 	// The email of the service account in which the group instances will be launched.
 	ServiceAccount pulumi.StringPtrInput
+	// Enable committed use discounts utilization.
+	ShouldUtilizeCommitments pulumi.BoolPtrInput
 	// The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
 	ShutdownScript pulumi.StringPtrInput
 	// Create and run your own startup scripts on your virtual machines to perform automated tasks every time your instance boots up.
@@ -436,6 +459,8 @@ type elastigroupArgs struct {
 	MaxSize *int `pulumi:"maxSize"`
 	// Array of objects with key-value pairs.
 	Metadatas []ElastigroupMetadata `pulumi:"metadatas"`
+	// Select a minimum CPU platform for the compute instance.
+	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
 	// The minimum number of instances the group should have at any time.
 	MinSize *int `pulumi:"minSize"`
 	// The group name.
@@ -446,6 +471,8 @@ type elastigroupArgs struct {
 	OptimizationWindows []string `pulumi:"optimizationWindows"`
 	// Percentage of Preemptible VMs to spin up from the "desiredCapacity".
 	PreemptiblePercentage *int `pulumi:"preemptiblePercentage"`
+	// prioritize availability zones when launching instances for the group. Must be a sublist of `availabilityZones`.
+	PreferredAvailabilityZones []string `pulumi:"preferredAvailabilityZones"`
 	// Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
 	ProvisioningModel *string `pulumi:"provisioningModel"`
 	// Setting for revert to preemptible option.
@@ -455,6 +482,8 @@ type elastigroupArgs struct {
 	ScheduledTasks       []ElastigroupScheduledTask       `pulumi:"scheduledTasks"`
 	// The email of the service account in which the group instances will be launched.
 	ServiceAccount *string `pulumi:"serviceAccount"`
+	// Enable committed use discounts utilization.
+	ShouldUtilizeCommitments *bool `pulumi:"shouldUtilizeCommitments"`
 	// The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
 	ShutdownScript *string `pulumi:"shutdownScript"`
 	// Create and run your own startup scripts on your virtual machines to perform automated tasks every time your instance boots up.
@@ -506,6 +535,8 @@ type ElastigroupArgs struct {
 	MaxSize pulumi.IntPtrInput
 	// Array of objects with key-value pairs.
 	Metadatas ElastigroupMetadataArrayInput
+	// Select a minimum CPU platform for the compute instance.
+	MinCpuPlatform pulumi.StringPtrInput
 	// The minimum number of instances the group should have at any time.
 	MinSize pulumi.IntPtrInput
 	// The group name.
@@ -516,6 +547,8 @@ type ElastigroupArgs struct {
 	OptimizationWindows pulumi.StringArrayInput
 	// Percentage of Preemptible VMs to spin up from the "desiredCapacity".
 	PreemptiblePercentage pulumi.IntPtrInput
+	// prioritize availability zones when launching instances for the group. Must be a sublist of `availabilityZones`.
+	PreferredAvailabilityZones pulumi.StringArrayInput
 	// Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
 	ProvisioningModel pulumi.StringPtrInput
 	// Setting for revert to preemptible option.
@@ -525,6 +558,8 @@ type ElastigroupArgs struct {
 	ScheduledTasks       ElastigroupScheduledTaskArrayInput
 	// The email of the service account in which the group instances will be launched.
 	ServiceAccount pulumi.StringPtrInput
+	// Enable committed use discounts utilization.
+	ShouldUtilizeCommitments pulumi.BoolPtrInput
 	// The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
 	ShutdownScript pulumi.StringPtrInput
 	// Create and run your own startup scripts on your virtual machines to perform automated tasks every time your instance boots up.
@@ -724,6 +759,11 @@ func (o ElastigroupOutput) Metadatas() ElastigroupMetadataArrayOutput {
 	return o.ApplyT(func(v *Elastigroup) ElastigroupMetadataArrayOutput { return v.Metadatas }).(ElastigroupMetadataArrayOutput)
 }
 
+// Select a minimum CPU platform for the compute instance.
+func (o ElastigroupOutput) MinCpuPlatform() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.StringPtrOutput { return v.MinCpuPlatform }).(pulumi.StringPtrOutput)
+}
+
 // The minimum number of instances the group should have at any time.
 func (o ElastigroupOutput) MinSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.IntOutput { return v.MinSize }).(pulumi.IntOutput)
@@ -752,6 +792,11 @@ func (o ElastigroupOutput) PreemptiblePercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.IntPtrOutput { return v.PreemptiblePercentage }).(pulumi.IntPtrOutput)
 }
 
+// prioritize availability zones when launching instances for the group. Must be a sublist of `availabilityZones`.
+func (o ElastigroupOutput) PreferredAvailabilityZones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.StringArrayOutput { return v.PreferredAvailabilityZones }).(pulumi.StringArrayOutput)
+}
+
 // Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
 func (o ElastigroupOutput) ProvisioningModel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.StringPtrOutput { return v.ProvisioningModel }).(pulumi.StringPtrOutput)
@@ -777,6 +822,11 @@ func (o ElastigroupOutput) ScheduledTasks() ElastigroupScheduledTaskArrayOutput 
 // The email of the service account in which the group instances will be launched.
 func (o ElastigroupOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.StringPtrOutput { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+// Enable committed use discounts utilization.
+func (o ElastigroupOutput) ShouldUtilizeCommitments() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.BoolPtrOutput { return v.ShouldUtilizeCommitments }).(pulumi.BoolPtrOutput)
 }
 
 // The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)

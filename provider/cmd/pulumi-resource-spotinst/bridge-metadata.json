@@ -742,6 +742,9 @@
                     "optimization_windows": {
                         "maxItemsOne": false
                     },
+                    "preferred_availability_zones": {
+                        "maxItemsOne": false
+                    },
                     "revert_to_preemptible": {
                         "maxItemsOne": false
                     },

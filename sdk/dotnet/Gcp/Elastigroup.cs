@@ -29,12 +29,17 @@ namespace Pulumi.SpotInst.Gcp
     ///         ServiceAccount = "example@myProject.iam.gservicecct.com",
     ///         StartupScript = "",
     ///         InstanceNamePrefix = "test-123a",
+    ///         MinCpuPlatform = "Intel Sandy Bridge",
     ///         MinSize = 0,
     ///         MaxSize = 1,
     ///         DesiredCapacity = 1,
     ///         AvailabilityZones = new[]
     ///         {
     ///             "asia-east1-c",
+    ///             "us-central1-a",
+    ///         },
+    ///         PreferredAvailabilityZones = new[]
+    ///         {
     ///             "us-central1-a",
     ///         },
     ///         PreemptiblePercentage = 50,
@@ -52,6 +57,7 @@ namespace Pulumi.SpotInst.Gcp
     ///         FallbackToOndemand = true,
     ///         DrainingTimeout = 180,
     ///         ProvisioningModel = "SPOT",
+    ///         ShouldUtilizeCommitments = true,
     ///         Labels = new[]
     ///         {
     ///             new SpotInst.Gcp.Inputs.ElastigroupLabelArgs
@@ -277,6 +283,12 @@ namespace Pulumi.SpotInst.Gcp
         public Output<ImmutableArray<Outputs.ElastigroupMetadata>> Metadatas { get; private set; } = null!;
 
         /// <summary>
+        /// Select a minimum CPU platform for the compute instance.
+        /// </summary>
+        [Output("minCpuPlatform")]
+        public Output<string?> MinCpuPlatform { get; private set; } = null!;
+
+        /// <summary>
         /// The minimum number of instances the group should have at any time.
         /// </summary>
         [Output("minSize")]
@@ -307,6 +319,12 @@ namespace Pulumi.SpotInst.Gcp
         public Output<int?> PreemptiblePercentage { get; private set; } = null!;
 
         /// <summary>
+        /// prioritize availability zones when launching instances for the group. Must be a sublist of `availability_zones`.
+        /// </summary>
+        [Output("preferredAvailabilityZones")]
+        public Output<ImmutableArray<string>> PreferredAvailabilityZones { get; private set; } = null!;
+
+        /// <summary>
         /// Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
         /// </summary>
         [Output("provisioningModel")]
@@ -332,6 +350,12 @@ namespace Pulumi.SpotInst.Gcp
         /// </summary>
         [Output("serviceAccount")]
         public Output<string?> ServiceAccount { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable committed use discounts utilization.
+        /// </summary>
+        [Output("shouldUtilizeCommitments")]
+        public Output<bool?> ShouldUtilizeCommitments { get; private set; } = null!;
 
         /// <summary>
         /// The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
@@ -555,6 +579,12 @@ namespace Pulumi.SpotInst.Gcp
         }
 
         /// <summary>
+        /// Select a minimum CPU platform for the compute instance.
+        /// </summary>
+        [Input("minCpuPlatform")]
+        public Input<string>? MinCpuPlatform { get; set; }
+
+        /// <summary>
         /// The minimum number of instances the group should have at any time.
         /// </summary>
         [Input("minSize")]
@@ -594,6 +624,18 @@ namespace Pulumi.SpotInst.Gcp
         /// </summary>
         [Input("preemptiblePercentage")]
         public Input<int>? PreemptiblePercentage { get; set; }
+
+        [Input("preferredAvailabilityZones")]
+        private InputList<string>? _preferredAvailabilityZones;
+
+        /// <summary>
+        /// prioritize availability zones when launching instances for the group. Must be a sublist of `availability_zones`.
+        /// </summary>
+        public InputList<string> PreferredAvailabilityZones
+        {
+            get => _preferredAvailabilityZones ?? (_preferredAvailabilityZones = new InputList<string>());
+            set => _preferredAvailabilityZones = value;
+        }
 
         /// <summary>
         /// Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
@@ -642,6 +684,12 @@ namespace Pulumi.SpotInst.Gcp
         /// </summary>
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }
+
+        /// <summary>
+        /// Enable committed use discounts utilization.
+        /// </summary>
+        [Input("shouldUtilizeCommitments")]
+        public Input<bool>? ShouldUtilizeCommitments { get; set; }
 
         /// <summary>
         /// The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
@@ -839,6 +887,12 @@ namespace Pulumi.SpotInst.Gcp
         }
 
         /// <summary>
+        /// Select a minimum CPU platform for the compute instance.
+        /// </summary>
+        [Input("minCpuPlatform")]
+        public Input<string>? MinCpuPlatform { get; set; }
+
+        /// <summary>
         /// The minimum number of instances the group should have at any time.
         /// </summary>
         [Input("minSize")]
@@ -878,6 +932,18 @@ namespace Pulumi.SpotInst.Gcp
         /// </summary>
         [Input("preemptiblePercentage")]
         public Input<int>? PreemptiblePercentage { get; set; }
+
+        [Input("preferredAvailabilityZones")]
+        private InputList<string>? _preferredAvailabilityZones;
+
+        /// <summary>
+        /// prioritize availability zones when launching instances for the group. Must be a sublist of `availability_zones`.
+        /// </summary>
+        public InputList<string> PreferredAvailabilityZones
+        {
+            get => _preferredAvailabilityZones ?? (_preferredAvailabilityZones = new InputList<string>());
+            set => _preferredAvailabilityZones = value;
+        }
 
         /// <summary>
         /// Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
@@ -926,6 +992,12 @@ namespace Pulumi.SpotInst.Gcp
         /// </summary>
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }
+
+        /// <summary>
+        /// Enable committed use discounts utilization.
+        /// </summary>
+        [Input("shouldUtilizeCommitments")]
+        public Input<bool>? ShouldUtilizeCommitments { get; set; }
 
         /// <summary>
         /// The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)

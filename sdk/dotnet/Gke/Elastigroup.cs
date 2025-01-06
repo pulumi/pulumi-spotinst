@@ -152,6 +152,9 @@ namespace Pulumi.SpotInst.Gke
         [Output("metadatas")]
         public Output<ImmutableArray<Outputs.ElastigroupMetadata>> Metadatas { get; private set; } = null!;
 
+        [Output("minCpuPlatform")]
+        public Output<string?> MinCpuPlatform { get; private set; } = null!;
+
         [Output("minSize")]
         public Output<int> MinSize { get; private set; } = null!;
 
@@ -187,6 +190,9 @@ namespace Pulumi.SpotInst.Gke
 
         [Output("serviceAccount")]
         public Output<string?> ServiceAccount { get; private set; } = null!;
+
+        [Output("shouldUtilizeCommitments")]
+        public Output<bool?> ShouldUtilizeCommitments { get; private set; } = null!;
 
         [Output("shutdownScript")]
         public Output<string?> ShutdownScript { get; private set; } = null!;
@@ -332,6 +338,9 @@ namespace Pulumi.SpotInst.Gke
             set => _metadatas = value;
         }
 
+        [Input("minCpuPlatform")]
+        public Input<string>? MinCpuPlatform { get; set; }
+
         [Input("minSize")]
         public Input<int>? MinSize { get; set; }
 
@@ -392,6 +401,9 @@ namespace Pulumi.SpotInst.Gke
 
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }
+
+        [Input("shouldUtilizeCommitments")]
+        public Input<bool>? ShouldUtilizeCommitments { get; set; }
 
         [Input("shutdownScript")]
         public Input<string>? ShutdownScript { get; set; }
@@ -504,6 +516,9 @@ namespace Pulumi.SpotInst.Gke
             set => _metadatas = value;
         }
 
+        [Input("minCpuPlatform")]
+        public Input<string>? MinCpuPlatform { get; set; }
+
         [Input("minSize")]
         public Input<int>? MinSize { get; set; }
 
@@ -564,6 +579,9 @@ namespace Pulumi.SpotInst.Gke
 
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }
+
+        [Input("shouldUtilizeCommitments")]
+        public Input<bool>? ShouldUtilizeCommitments { get; set; }
 
         [Input("shutdownScript")]
         public Input<string>? ShutdownScript { get; set; }

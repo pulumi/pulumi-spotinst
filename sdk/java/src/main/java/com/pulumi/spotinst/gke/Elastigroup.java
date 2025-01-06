@@ -234,6 +234,12 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<ElastigroupMetadata>>> metadatas() {
         return Codegen.optional(this.metadatas);
     }
+    @Export(name="minCpuPlatform", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> minCpuPlatform;
+
+    public Output<Optional<String>> minCpuPlatform() {
+        return Codegen.optional(this.minCpuPlatform);
+    }
     @Export(name="minSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> minSize;
 
@@ -305,6 +311,12 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<String>> serviceAccount() {
         return Codegen.optional(this.serviceAccount);
+    }
+    @Export(name="shouldUtilizeCommitments", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> shouldUtilizeCommitments;
+
+    public Output<Optional<Boolean>> shouldUtilizeCommitments() {
+        return Codegen.optional(this.shouldUtilizeCommitments);
     }
     @Export(name="shutdownScript", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> shutdownScript;

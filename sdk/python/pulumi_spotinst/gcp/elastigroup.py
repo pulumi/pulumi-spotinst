@@ -42,18 +42,21 @@ class ElastigroupArgs:
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupLabelArgs']]]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupMetadataArgs']]]] = None,
+                 min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceArgs']]]] = None,
                  ondemand_count: Optional[pulumi.Input[int]] = None,
                  optimization_windows: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preemptible_percentage: Optional[pulumi.Input[int]] = None,
+                 preferred_availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  provisioning_model: Optional[pulumi.Input[str]] = None,
                  revert_to_preemptibles: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupRevertToPreemptibleArgs']]]] = None,
                  scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]] = None,
                  scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScheduledTaskArgs']]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
+                 should_utilize_commitments: Optional[pulumi.Input[bool]] = None,
                  shutdown_script: Optional[pulumi.Input[str]] = None,
                  startup_script: Optional[pulumi.Input[str]] = None,
                  subnets: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupSubnetArgs']]]] = None,
@@ -76,13 +79,16 @@ class ElastigroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupLabelArgs']]] labels: Array of objects with key-value pairs.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupMetadataArgs']]] metadatas: Array of objects with key-value pairs.
+        :param pulumi.Input[str] min_cpu_platform: Select a minimum CPU platform for the compute instance.
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
         :param pulumi.Input[str] name: The group name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] optimization_windows: Set time window to perform the revert to preemptible. Time windows must be at least 120 minutes. Format: DayInWeek:HH-DayInWeek:HH. Required when strategy.revertToPreemptible.performAt is 'timeWindow'.
         :param pulumi.Input[int] preemptible_percentage: Percentage of Preemptible VMs to spin up from the "desired_capacity".
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_availability_zones: prioritize availability zones when launching instances for the group. Must be a sublist of `availability_zones`.
         :param pulumi.Input[str] provisioning_model: Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupRevertToPreemptibleArgs']]] revert_to_preemptibles: Setting for revert to preemptible option.
         :param pulumi.Input[str] service_account: The email of the service account in which the group instances will be launched.
+        :param pulumi.Input[bool] should_utilize_commitments: Enable committed use discounts utilization.
         :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
         :param pulumi.Input[str] startup_script: Create and run your own startup scripts on your virtual machines to perform automated tasks every time your instance boots up.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupSubnetArgs']]] subnets: A list of regions and subnets.
@@ -132,6 +138,8 @@ class ElastigroupArgs:
             pulumi.set(__self__, "max_size", max_size)
         if metadatas is not None:
             pulumi.set(__self__, "metadatas", metadatas)
+        if min_cpu_platform is not None:
+            pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
         if min_size is not None:
             pulumi.set(__self__, "min_size", min_size)
         if name is not None:
@@ -144,6 +152,8 @@ class ElastigroupArgs:
             pulumi.set(__self__, "optimization_windows", optimization_windows)
         if preemptible_percentage is not None:
             pulumi.set(__self__, "preemptible_percentage", preemptible_percentage)
+        if preferred_availability_zones is not None:
+            pulumi.set(__self__, "preferred_availability_zones", preferred_availability_zones)
         if provisioning_model is not None:
             pulumi.set(__self__, "provisioning_model", provisioning_model)
         if revert_to_preemptibles is not None:
@@ -156,6 +166,8 @@ class ElastigroupArgs:
             pulumi.set(__self__, "scheduled_tasks", scheduled_tasks)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
+        if should_utilize_commitments is not None:
+            pulumi.set(__self__, "should_utilize_commitments", should_utilize_commitments)
         if shutdown_script is not None:
             pulumi.set(__self__, "shutdown_script", shutdown_script)
         if startup_script is not None:
@@ -397,6 +409,18 @@ class ElastigroupArgs:
         pulumi.set(self, "metadatas", value)
 
     @property
+    @pulumi.getter(name="minCpuPlatform")
+    def min_cpu_platform(self) -> Optional[pulumi.Input[str]]:
+        """
+        Select a minimum CPU platform for the compute instance.
+        """
+        return pulumi.get(self, "min_cpu_platform")
+
+    @min_cpu_platform.setter
+    def min_cpu_platform(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "min_cpu_platform", value)
+
+    @property
     @pulumi.getter(name="minSize")
     def min_size(self) -> Optional[pulumi.Input[int]]:
         """
@@ -463,6 +487,18 @@ class ElastigroupArgs:
         pulumi.set(self, "preemptible_percentage", value)
 
     @property
+    @pulumi.getter(name="preferredAvailabilityZones")
+    def preferred_availability_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        prioritize availability zones when launching instances for the group. Must be a sublist of `availability_zones`.
+        """
+        return pulumi.get(self, "preferred_availability_zones")
+
+    @preferred_availability_zones.setter
+    def preferred_availability_zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "preferred_availability_zones", value)
+
+    @property
     @pulumi.getter(name="provisioningModel")
     def provisioning_model(self) -> Optional[pulumi.Input[str]]:
         """
@@ -524,6 +560,18 @@ class ElastigroupArgs:
     @service_account.setter
     def service_account(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service_account", value)
+
+    @property
+    @pulumi.getter(name="shouldUtilizeCommitments")
+    def should_utilize_commitments(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable committed use discounts utilization.
+        """
+        return pulumi.get(self, "should_utilize_commitments")
+
+    @should_utilize_commitments.setter
+    def should_utilize_commitments(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "should_utilize_commitments", value)
 
     @property
     @pulumi.getter(name="shutdownScript")
@@ -607,18 +655,21 @@ class _ElastigroupState:
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupLabelArgs']]]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupMetadataArgs']]]] = None,
+                 min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceArgs']]]] = None,
                  ondemand_count: Optional[pulumi.Input[int]] = None,
                  optimization_windows: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preemptible_percentage: Optional[pulumi.Input[int]] = None,
+                 preferred_availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  provisioning_model: Optional[pulumi.Input[str]] = None,
                  revert_to_preemptibles: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupRevertToPreemptibleArgs']]]] = None,
                  scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]] = None,
                  scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScheduledTaskArgs']]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
+                 should_utilize_commitments: Optional[pulumi.Input[bool]] = None,
                  shutdown_script: Optional[pulumi.Input[str]] = None,
                  startup_script: Optional[pulumi.Input[str]] = None,
                  subnets: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupSubnetArgs']]]] = None,
@@ -641,13 +692,16 @@ class _ElastigroupState:
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupLabelArgs']]] labels: Array of objects with key-value pairs.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupMetadataArgs']]] metadatas: Array of objects with key-value pairs.
+        :param pulumi.Input[str] min_cpu_platform: Select a minimum CPU platform for the compute instance.
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
         :param pulumi.Input[str] name: The group name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] optimization_windows: Set time window to perform the revert to preemptible. Time windows must be at least 120 minutes. Format: DayInWeek:HH-DayInWeek:HH. Required when strategy.revertToPreemptible.performAt is 'timeWindow'.
         :param pulumi.Input[int] preemptible_percentage: Percentage of Preemptible VMs to spin up from the "desired_capacity".
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_availability_zones: prioritize availability zones when launching instances for the group. Must be a sublist of `availability_zones`.
         :param pulumi.Input[str] provisioning_model: Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupRevertToPreemptibleArgs']]] revert_to_preemptibles: Setting for revert to preemptible option.
         :param pulumi.Input[str] service_account: The email of the service account in which the group instances will be launched.
+        :param pulumi.Input[bool] should_utilize_commitments: Enable committed use discounts utilization.
         :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
         :param pulumi.Input[str] startup_script: Create and run your own startup scripts on your virtual machines to perform automated tasks every time your instance boots up.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupSubnetArgs']]] subnets: A list of regions and subnets.
@@ -698,6 +752,8 @@ class _ElastigroupState:
             pulumi.set(__self__, "max_size", max_size)
         if metadatas is not None:
             pulumi.set(__self__, "metadatas", metadatas)
+        if min_cpu_platform is not None:
+            pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
         if min_size is not None:
             pulumi.set(__self__, "min_size", min_size)
         if name is not None:
@@ -710,6 +766,8 @@ class _ElastigroupState:
             pulumi.set(__self__, "optimization_windows", optimization_windows)
         if preemptible_percentage is not None:
             pulumi.set(__self__, "preemptible_percentage", preemptible_percentage)
+        if preferred_availability_zones is not None:
+            pulumi.set(__self__, "preferred_availability_zones", preferred_availability_zones)
         if provisioning_model is not None:
             pulumi.set(__self__, "provisioning_model", provisioning_model)
         if revert_to_preemptibles is not None:
@@ -722,6 +780,8 @@ class _ElastigroupState:
             pulumi.set(__self__, "scheduled_tasks", scheduled_tasks)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
+        if should_utilize_commitments is not None:
+            pulumi.set(__self__, "should_utilize_commitments", should_utilize_commitments)
         if shutdown_script is not None:
             pulumi.set(__self__, "shutdown_script", shutdown_script)
         if startup_script is not None:
@@ -963,6 +1023,18 @@ class _ElastigroupState:
         pulumi.set(self, "metadatas", value)
 
     @property
+    @pulumi.getter(name="minCpuPlatform")
+    def min_cpu_platform(self) -> Optional[pulumi.Input[str]]:
+        """
+        Select a minimum CPU platform for the compute instance.
+        """
+        return pulumi.get(self, "min_cpu_platform")
+
+    @min_cpu_platform.setter
+    def min_cpu_platform(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "min_cpu_platform", value)
+
+    @property
     @pulumi.getter(name="minSize")
     def min_size(self) -> Optional[pulumi.Input[int]]:
         """
@@ -1029,6 +1101,18 @@ class _ElastigroupState:
         pulumi.set(self, "preemptible_percentage", value)
 
     @property
+    @pulumi.getter(name="preferredAvailabilityZones")
+    def preferred_availability_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        prioritize availability zones when launching instances for the group. Must be a sublist of `availability_zones`.
+        """
+        return pulumi.get(self, "preferred_availability_zones")
+
+    @preferred_availability_zones.setter
+    def preferred_availability_zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "preferred_availability_zones", value)
+
+    @property
     @pulumi.getter(name="provisioningModel")
     def provisioning_model(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1090,6 +1174,18 @@ class _ElastigroupState:
     @service_account.setter
     def service_account(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service_account", value)
+
+    @property
+    @pulumi.getter(name="shouldUtilizeCommitments")
+    def should_utilize_commitments(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable committed use discounts utilization.
+        """
+        return pulumi.get(self, "should_utilize_commitments")
+
+    @should_utilize_commitments.setter
+    def should_utilize_commitments(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "should_utilize_commitments", value)
 
     @property
     @pulumi.getter(name="shutdownScript")
@@ -1175,18 +1271,21 @@ class Elastigroup(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupLabelArgs', 'ElastigroupLabelArgsDict']]]]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupMetadataArgs', 'ElastigroupMetadataArgsDict']]]]] = None,
+                 min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupNetworkInterfaceArgs', 'ElastigroupNetworkInterfaceArgsDict']]]]] = None,
                  ondemand_count: Optional[pulumi.Input[int]] = None,
                  optimization_windows: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preemptible_percentage: Optional[pulumi.Input[int]] = None,
+                 preferred_availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  provisioning_model: Optional[pulumi.Input[str]] = None,
                  revert_to_preemptibles: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupRevertToPreemptibleArgs', 'ElastigroupRevertToPreemptibleArgsDict']]]]] = None,
                  scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingDownPolicyArgs', 'ElastigroupScalingDownPolicyArgsDict']]]]] = None,
                  scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingUpPolicyArgs', 'ElastigroupScalingUpPolicyArgsDict']]]]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScheduledTaskArgs', 'ElastigroupScheduledTaskArgsDict']]]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
+                 should_utilize_commitments: Optional[pulumi.Input[bool]] = None,
                  shutdown_script: Optional[pulumi.Input[str]] = None,
                  startup_script: Optional[pulumi.Input[str]] = None,
                  subnets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupSubnetArgs', 'ElastigroupSubnetArgsDict']]]]] = None,
@@ -1208,6 +1307,7 @@ class Elastigroup(pulumi.CustomResource):
             service_account="example@myProject.iam.gservicecct.com",
             startup_script="",
             instance_name_prefix="test-123a",
+            min_cpu_platform="Intel Sandy Bridge",
             min_size=0,
             max_size=1,
             desired_capacity=1,
@@ -1215,6 +1315,7 @@ class Elastigroup(pulumi.CustomResource):
                 "asia-east1-c",
                 "us-central1-a",
             ],
+            preferred_availability_zones=["us-central1-a"],
             preemptible_percentage=50,
             revert_to_preemptibles=[{
                 "perform_at": "timeWindow",
@@ -1223,6 +1324,7 @@ class Elastigroup(pulumi.CustomResource):
             fallback_to_ondemand=True,
             draining_timeout=180,
             provisioning_model="SPOT",
+            should_utilize_commitments=True,
             labels=[{
                 "key": "test_key",
                 "value": "test_value",
@@ -1310,13 +1412,16 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupLabelArgs', 'ElastigroupLabelArgsDict']]]] labels: Array of objects with key-value pairs.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupMetadataArgs', 'ElastigroupMetadataArgsDict']]]] metadatas: Array of objects with key-value pairs.
+        :param pulumi.Input[str] min_cpu_platform: Select a minimum CPU platform for the compute instance.
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
         :param pulumi.Input[str] name: The group name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] optimization_windows: Set time window to perform the revert to preemptible. Time windows must be at least 120 minutes. Format: DayInWeek:HH-DayInWeek:HH. Required when strategy.revertToPreemptible.performAt is 'timeWindow'.
         :param pulumi.Input[int] preemptible_percentage: Percentage of Preemptible VMs to spin up from the "desired_capacity".
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_availability_zones: prioritize availability zones when launching instances for the group. Must be a sublist of `availability_zones`.
         :param pulumi.Input[str] provisioning_model: Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
         :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupRevertToPreemptibleArgs', 'ElastigroupRevertToPreemptibleArgsDict']]]] revert_to_preemptibles: Setting for revert to preemptible option.
         :param pulumi.Input[str] service_account: The email of the service account in which the group instances will be launched.
+        :param pulumi.Input[bool] should_utilize_commitments: Enable committed use discounts utilization.
         :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
         :param pulumi.Input[str] startup_script: Create and run your own startup scripts on your virtual machines to perform automated tasks every time your instance boots up.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupSubnetArgs', 'ElastigroupSubnetArgsDict']]]] subnets: A list of regions and subnets.
@@ -1343,6 +1448,7 @@ class Elastigroup(pulumi.CustomResource):
             service_account="example@myProject.iam.gservicecct.com",
             startup_script="",
             instance_name_prefix="test-123a",
+            min_cpu_platform="Intel Sandy Bridge",
             min_size=0,
             max_size=1,
             desired_capacity=1,
@@ -1350,6 +1456,7 @@ class Elastigroup(pulumi.CustomResource):
                 "asia-east1-c",
                 "us-central1-a",
             ],
+            preferred_availability_zones=["us-central1-a"],
             preemptible_percentage=50,
             revert_to_preemptibles=[{
                 "perform_at": "timeWindow",
@@ -1358,6 +1465,7 @@ class Elastigroup(pulumi.CustomResource):
             fallback_to_ondemand=True,
             draining_timeout=180,
             provisioning_model="SPOT",
+            should_utilize_commitments=True,
             labels=[{
                 "key": "test_key",
                 "value": "test_value",
@@ -1464,18 +1572,21 @@ class Elastigroup(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupLabelArgs', 'ElastigroupLabelArgsDict']]]]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupMetadataArgs', 'ElastigroupMetadataArgsDict']]]]] = None,
+                 min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupNetworkInterfaceArgs', 'ElastigroupNetworkInterfaceArgsDict']]]]] = None,
                  ondemand_count: Optional[pulumi.Input[int]] = None,
                  optimization_windows: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preemptible_percentage: Optional[pulumi.Input[int]] = None,
+                 preferred_availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  provisioning_model: Optional[pulumi.Input[str]] = None,
                  revert_to_preemptibles: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupRevertToPreemptibleArgs', 'ElastigroupRevertToPreemptibleArgsDict']]]]] = None,
                  scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingDownPolicyArgs', 'ElastigroupScalingDownPolicyArgsDict']]]]] = None,
                  scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingUpPolicyArgs', 'ElastigroupScalingUpPolicyArgsDict']]]]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScheduledTaskArgs', 'ElastigroupScheduledTaskArgsDict']]]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
+                 should_utilize_commitments: Optional[pulumi.Input[bool]] = None,
                  shutdown_script: Optional[pulumi.Input[str]] = None,
                  startup_script: Optional[pulumi.Input[str]] = None,
                  subnets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupSubnetArgs', 'ElastigroupSubnetArgsDict']]]]] = None,
@@ -1513,18 +1624,21 @@ class Elastigroup(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["max_size"] = max_size
             __props__.__dict__["metadatas"] = metadatas
+            __props__.__dict__["min_cpu_platform"] = min_cpu_platform
             __props__.__dict__["min_size"] = min_size
             __props__.__dict__["name"] = name
             __props__.__dict__["network_interfaces"] = network_interfaces
             __props__.__dict__["ondemand_count"] = ondemand_count
             __props__.__dict__["optimization_windows"] = optimization_windows
             __props__.__dict__["preemptible_percentage"] = preemptible_percentage
+            __props__.__dict__["preferred_availability_zones"] = preferred_availability_zones
             __props__.__dict__["provisioning_model"] = provisioning_model
             __props__.__dict__["revert_to_preemptibles"] = revert_to_preemptibles
             __props__.__dict__["scaling_down_policies"] = scaling_down_policies
             __props__.__dict__["scaling_up_policies"] = scaling_up_policies
             __props__.__dict__["scheduled_tasks"] = scheduled_tasks
             __props__.__dict__["service_account"] = service_account
+            __props__.__dict__["should_utilize_commitments"] = should_utilize_commitments
             __props__.__dict__["shutdown_script"] = shutdown_script
             __props__.__dict__["startup_script"] = startup_script
             __props__.__dict__["subnets"] = subnets
@@ -1561,18 +1675,21 @@ class Elastigroup(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupLabelArgs', 'ElastigroupLabelArgsDict']]]]] = None,
             max_size: Optional[pulumi.Input[int]] = None,
             metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupMetadataArgs', 'ElastigroupMetadataArgsDict']]]]] = None,
+            min_cpu_platform: Optional[pulumi.Input[str]] = None,
             min_size: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupNetworkInterfaceArgs', 'ElastigroupNetworkInterfaceArgsDict']]]]] = None,
             ondemand_count: Optional[pulumi.Input[int]] = None,
             optimization_windows: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             preemptible_percentage: Optional[pulumi.Input[int]] = None,
+            preferred_availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             provisioning_model: Optional[pulumi.Input[str]] = None,
             revert_to_preemptibles: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupRevertToPreemptibleArgs', 'ElastigroupRevertToPreemptibleArgsDict']]]]] = None,
             scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingDownPolicyArgs', 'ElastigroupScalingDownPolicyArgsDict']]]]] = None,
             scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingUpPolicyArgs', 'ElastigroupScalingUpPolicyArgsDict']]]]] = None,
             scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScheduledTaskArgs', 'ElastigroupScheduledTaskArgsDict']]]]] = None,
             service_account: Optional[pulumi.Input[str]] = None,
+            should_utilize_commitments: Optional[pulumi.Input[bool]] = None,
             shutdown_script: Optional[pulumi.Input[str]] = None,
             startup_script: Optional[pulumi.Input[str]] = None,
             subnets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupSubnetArgs', 'ElastigroupSubnetArgsDict']]]]] = None,
@@ -1600,13 +1717,16 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupLabelArgs', 'ElastigroupLabelArgsDict']]]] labels: Array of objects with key-value pairs.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupMetadataArgs', 'ElastigroupMetadataArgsDict']]]] metadatas: Array of objects with key-value pairs.
+        :param pulumi.Input[str] min_cpu_platform: Select a minimum CPU platform for the compute instance.
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
         :param pulumi.Input[str] name: The group name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] optimization_windows: Set time window to perform the revert to preemptible. Time windows must be at least 120 minutes. Format: DayInWeek:HH-DayInWeek:HH. Required when strategy.revertToPreemptible.performAt is 'timeWindow'.
         :param pulumi.Input[int] preemptible_percentage: Percentage of Preemptible VMs to spin up from the "desired_capacity".
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_availability_zones: prioritize availability zones when launching instances for the group. Must be a sublist of `availability_zones`.
         :param pulumi.Input[str] provisioning_model: Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
         :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupRevertToPreemptibleArgs', 'ElastigroupRevertToPreemptibleArgsDict']]]] revert_to_preemptibles: Setting for revert to preemptible option.
         :param pulumi.Input[str] service_account: The email of the service account in which the group instances will be launched.
+        :param pulumi.Input[bool] should_utilize_commitments: Enable committed use discounts utilization.
         :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
         :param pulumi.Input[str] startup_script: Create and run your own startup scripts on your virtual machines to perform automated tasks every time your instance boots up.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupSubnetArgs', 'ElastigroupSubnetArgsDict']]]] subnets: A list of regions and subnets.
@@ -1637,18 +1757,21 @@ class Elastigroup(pulumi.CustomResource):
         __props__.__dict__["labels"] = labels
         __props__.__dict__["max_size"] = max_size
         __props__.__dict__["metadatas"] = metadatas
+        __props__.__dict__["min_cpu_platform"] = min_cpu_platform
         __props__.__dict__["min_size"] = min_size
         __props__.__dict__["name"] = name
         __props__.__dict__["network_interfaces"] = network_interfaces
         __props__.__dict__["ondemand_count"] = ondemand_count
         __props__.__dict__["optimization_windows"] = optimization_windows
         __props__.__dict__["preemptible_percentage"] = preemptible_percentage
+        __props__.__dict__["preferred_availability_zones"] = preferred_availability_zones
         __props__.__dict__["provisioning_model"] = provisioning_model
         __props__.__dict__["revert_to_preemptibles"] = revert_to_preemptibles
         __props__.__dict__["scaling_down_policies"] = scaling_down_policies
         __props__.__dict__["scaling_up_policies"] = scaling_up_policies
         __props__.__dict__["scheduled_tasks"] = scheduled_tasks
         __props__.__dict__["service_account"] = service_account
+        __props__.__dict__["should_utilize_commitments"] = should_utilize_commitments
         __props__.__dict__["shutdown_script"] = shutdown_script
         __props__.__dict__["startup_script"] = startup_script
         __props__.__dict__["subnets"] = subnets
@@ -1802,6 +1925,14 @@ class Elastigroup(pulumi.CustomResource):
         return pulumi.get(self, "metadatas")
 
     @property
+    @pulumi.getter(name="minCpuPlatform")
+    def min_cpu_platform(self) -> pulumi.Output[Optional[str]]:
+        """
+        Select a minimum CPU platform for the compute instance.
+        """
+        return pulumi.get(self, "min_cpu_platform")
+
+    @property
     @pulumi.getter(name="minSize")
     def min_size(self) -> pulumi.Output[int]:
         """
@@ -1844,6 +1975,14 @@ class Elastigroup(pulumi.CustomResource):
         return pulumi.get(self, "preemptible_percentage")
 
     @property
+    @pulumi.getter(name="preferredAvailabilityZones")
+    def preferred_availability_zones(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        prioritize availability zones when launching instances for the group. Must be a sublist of `availability_zones`.
+        """
+        return pulumi.get(self, "preferred_availability_zones")
+
+    @property
     @pulumi.getter(name="provisioningModel")
     def provisioning_model(self) -> pulumi.Output[Optional[str]]:
         """
@@ -1881,6 +2020,14 @@ class Elastigroup(pulumi.CustomResource):
         The email of the service account in which the group instances will be launched.
         """
         return pulumi.get(self, "service_account")
+
+    @property
+    @pulumi.getter(name="shouldUtilizeCommitments")
+    def should_utilize_commitments(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Enable committed use discounts utilization.
+        """
+        return pulumi.get(self, "should_utilize_commitments")
 
     @property
     @pulumi.getter(name="shutdownScript")

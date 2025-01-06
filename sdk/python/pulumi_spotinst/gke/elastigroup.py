@@ -39,6 +39,7 @@ class ElastigroupArgs:
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupLabelArgs']]]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupMetadataArgs']]]] = None,
+                 min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceArgs']]]] = None,
@@ -51,6 +52,7 @@ class ElastigroupArgs:
                  scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]] = None,
                  scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
+                 should_utilize_commitments: Optional[pulumi.Input[bool]] = None,
                  shutdown_script: Optional[pulumi.Input[str]] = None,
                  startup_script: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -94,6 +96,8 @@ class ElastigroupArgs:
             pulumi.set(__self__, "max_size", max_size)
         if metadatas is not None:
             pulumi.set(__self__, "metadatas", metadatas)
+        if min_cpu_platform is not None:
+            pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
         if min_size is not None:
             pulumi.set(__self__, "min_size", min_size)
         if name is not None:
@@ -118,6 +122,8 @@ class ElastigroupArgs:
             pulumi.set(__self__, "scaling_up_policies", scaling_up_policies)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
+        if should_utilize_commitments is not None:
+            pulumi.set(__self__, "should_utilize_commitments", should_utilize_commitments)
         if shutdown_script is not None:
             pulumi.set(__self__, "shutdown_script", shutdown_script)
         if startup_script is not None:
@@ -289,6 +295,15 @@ class ElastigroupArgs:
         pulumi.set(self, "metadatas", value)
 
     @property
+    @pulumi.getter(name="minCpuPlatform")
+    def min_cpu_platform(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "min_cpu_platform")
+
+    @min_cpu_platform.setter
+    def min_cpu_platform(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "min_cpu_platform", value)
+
+    @property
     @pulumi.getter(name="minSize")
     def min_size(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "min_size")
@@ -397,6 +412,15 @@ class ElastigroupArgs:
         pulumi.set(self, "service_account", value)
 
     @property
+    @pulumi.getter(name="shouldUtilizeCommitments")
+    def should_utilize_commitments(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "should_utilize_commitments")
+
+    @should_utilize_commitments.setter
+    def should_utilize_commitments(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "should_utilize_commitments", value)
+
+    @property
     @pulumi.getter(name="shutdownScript")
     def shutdown_script(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "shutdown_script")
@@ -445,6 +469,7 @@ class _ElastigroupState:
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupLabelArgs']]]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupMetadataArgs']]]] = None,
+                 min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceArgs']]]] = None,
@@ -457,6 +482,7 @@ class _ElastigroupState:
                  scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]] = None,
                  scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
+                 should_utilize_commitments: Optional[pulumi.Input[bool]] = None,
                  shutdown_script: Optional[pulumi.Input[str]] = None,
                  startup_script: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -502,6 +528,8 @@ class _ElastigroupState:
             pulumi.set(__self__, "max_size", max_size)
         if metadatas is not None:
             pulumi.set(__self__, "metadatas", metadatas)
+        if min_cpu_platform is not None:
+            pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
         if min_size is not None:
             pulumi.set(__self__, "min_size", min_size)
         if name is not None:
@@ -526,6 +554,8 @@ class _ElastigroupState:
             pulumi.set(__self__, "scaling_up_policies", scaling_up_policies)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
+        if should_utilize_commitments is not None:
+            pulumi.set(__self__, "should_utilize_commitments", should_utilize_commitments)
         if shutdown_script is not None:
             pulumi.set(__self__, "shutdown_script", shutdown_script)
         if startup_script is not None:
@@ -697,6 +727,15 @@ class _ElastigroupState:
         pulumi.set(self, "metadatas", value)
 
     @property
+    @pulumi.getter(name="minCpuPlatform")
+    def min_cpu_platform(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "min_cpu_platform")
+
+    @min_cpu_platform.setter
+    def min_cpu_platform(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "min_cpu_platform", value)
+
+    @property
     @pulumi.getter(name="minSize")
     def min_size(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "min_size")
@@ -805,6 +844,15 @@ class _ElastigroupState:
         pulumi.set(self, "service_account", value)
 
     @property
+    @pulumi.getter(name="shouldUtilizeCommitments")
+    def should_utilize_commitments(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "should_utilize_commitments")
+
+    @should_utilize_commitments.setter
+    def should_utilize_commitments(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "should_utilize_commitments", value)
+
+    @property
     @pulumi.getter(name="shutdownScript")
     def shutdown_script(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "shutdown_script")
@@ -855,6 +903,7 @@ class Elastigroup(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupLabelArgs', 'ElastigroupLabelArgsDict']]]]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupMetadataArgs', 'ElastigroupMetadataArgsDict']]]]] = None,
+                 min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupNetworkInterfaceArgs', 'ElastigroupNetworkInterfaceArgsDict']]]]] = None,
@@ -867,6 +916,7 @@ class Elastigroup(pulumi.CustomResource):
                  scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingDownPolicyArgs', 'ElastigroupScalingDownPolicyArgsDict']]]]] = None,
                  scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingUpPolicyArgs', 'ElastigroupScalingUpPolicyArgsDict']]]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
+                 should_utilize_commitments: Optional[pulumi.Input[bool]] = None,
                  shutdown_script: Optional[pulumi.Input[str]] = None,
                  startup_script: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1035,6 +1085,7 @@ class Elastigroup(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupLabelArgs', 'ElastigroupLabelArgsDict']]]]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupMetadataArgs', 'ElastigroupMetadataArgsDict']]]]] = None,
+                 min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupNetworkInterfaceArgs', 'ElastigroupNetworkInterfaceArgsDict']]]]] = None,
@@ -1047,6 +1098,7 @@ class Elastigroup(pulumi.CustomResource):
                  scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingDownPolicyArgs', 'ElastigroupScalingDownPolicyArgsDict']]]]] = None,
                  scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingUpPolicyArgs', 'ElastigroupScalingUpPolicyArgsDict']]]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
+                 should_utilize_commitments: Optional[pulumi.Input[bool]] = None,
                  shutdown_script: Optional[pulumi.Input[str]] = None,
                  startup_script: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1081,6 +1133,7 @@ class Elastigroup(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["max_size"] = max_size
             __props__.__dict__["metadatas"] = metadatas
+            __props__.__dict__["min_cpu_platform"] = min_cpu_platform
             __props__.__dict__["min_size"] = min_size
             __props__.__dict__["name"] = name
             __props__.__dict__["network_interfaces"] = network_interfaces
@@ -1093,6 +1146,7 @@ class Elastigroup(pulumi.CustomResource):
             __props__.__dict__["scaling_down_policies"] = scaling_down_policies
             __props__.__dict__["scaling_up_policies"] = scaling_up_policies
             __props__.__dict__["service_account"] = service_account
+            __props__.__dict__["should_utilize_commitments"] = should_utilize_commitments
             __props__.__dict__["shutdown_script"] = shutdown_script
             __props__.__dict__["startup_script"] = startup_script
             __props__.__dict__["tags"] = tags
@@ -1124,6 +1178,7 @@ class Elastigroup(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupLabelArgs', 'ElastigroupLabelArgsDict']]]]] = None,
             max_size: Optional[pulumi.Input[int]] = None,
             metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupMetadataArgs', 'ElastigroupMetadataArgsDict']]]]] = None,
+            min_cpu_platform: Optional[pulumi.Input[str]] = None,
             min_size: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupNetworkInterfaceArgs', 'ElastigroupNetworkInterfaceArgsDict']]]]] = None,
@@ -1136,6 +1191,7 @@ class Elastigroup(pulumi.CustomResource):
             scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingDownPolicyArgs', 'ElastigroupScalingDownPolicyArgsDict']]]]] = None,
             scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingUpPolicyArgs', 'ElastigroupScalingUpPolicyArgsDict']]]]] = None,
             service_account: Optional[pulumi.Input[str]] = None,
+            should_utilize_commitments: Optional[pulumi.Input[bool]] = None,
             shutdown_script: Optional[pulumi.Input[str]] = None,
             startup_script: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Elastigroup':
@@ -1169,6 +1225,7 @@ class Elastigroup(pulumi.CustomResource):
         __props__.__dict__["labels"] = labels
         __props__.__dict__["max_size"] = max_size
         __props__.__dict__["metadatas"] = metadatas
+        __props__.__dict__["min_cpu_platform"] = min_cpu_platform
         __props__.__dict__["min_size"] = min_size
         __props__.__dict__["name"] = name
         __props__.__dict__["network_interfaces"] = network_interfaces
@@ -1181,6 +1238,7 @@ class Elastigroup(pulumi.CustomResource):
         __props__.__dict__["scaling_down_policies"] = scaling_down_policies
         __props__.__dict__["scaling_up_policies"] = scaling_up_policies
         __props__.__dict__["service_account"] = service_account
+        __props__.__dict__["should_utilize_commitments"] = should_utilize_commitments
         __props__.__dict__["shutdown_script"] = shutdown_script
         __props__.__dict__["startup_script"] = startup_script
         __props__.__dict__["tags"] = tags
@@ -1278,6 +1336,11 @@ class Elastigroup(pulumi.CustomResource):
         return pulumi.get(self, "metadatas")
 
     @property
+    @pulumi.getter(name="minCpuPlatform")
+    def min_cpu_platform(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "min_cpu_platform")
+
+    @property
     @pulumi.getter(name="minSize")
     def min_size(self) -> pulumi.Output[int]:
         return pulumi.get(self, "min_size")
@@ -1336,6 +1399,11 @@ class Elastigroup(pulumi.CustomResource):
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "service_account")
+
+    @property
+    @pulumi.getter(name="shouldUtilizeCommitments")
+    def should_utilize_commitments(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "should_utilize_commitments")
 
     @property
     @pulumi.getter(name="shutdownScript")

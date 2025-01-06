@@ -168,6 +168,13 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.metadatas);
     }
 
+    @Import(name="minCpuPlatform")
+    private @Nullable Output<String> minCpuPlatform;
+
+    public Optional<Output<String>> minCpuPlatform() {
+        return Optional.ofNullable(this.minCpuPlatform);
+    }
+
     @Import(name="minSize")
     private @Nullable Output<Integer> minSize;
 
@@ -252,6 +259,13 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.serviceAccount);
     }
 
+    @Import(name="shouldUtilizeCommitments")
+    private @Nullable Output<Boolean> shouldUtilizeCommitments;
+
+    public Optional<Output<Boolean>> shouldUtilizeCommitments() {
+        return Optional.ofNullable(this.shouldUtilizeCommitments);
+    }
+
     @Import(name="shutdownScript")
     private @Nullable Output<String> shutdownScript;
 
@@ -294,6 +308,7 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
         this.labels = $.labels;
         this.maxSize = $.maxSize;
         this.metadatas = $.metadatas;
+        this.minCpuPlatform = $.minCpuPlatform;
         this.minSize = $.minSize;
         this.name = $.name;
         this.networkInterfaces = $.networkInterfaces;
@@ -306,6 +321,7 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
         this.scalingDownPolicies = $.scalingDownPolicies;
         this.scalingUpPolicies = $.scalingUpPolicies;
         this.serviceAccount = $.serviceAccount;
+        this.shouldUtilizeCommitments = $.shouldUtilizeCommitments;
         this.shutdownScript = $.shutdownScript;
         this.startupScript = $.startupScript;
         this.tags = $.tags;
@@ -535,6 +551,15 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
             return metadatas(List.of(metadatas));
         }
 
+        public Builder minCpuPlatform(@Nullable Output<String> minCpuPlatform) {
+            $.minCpuPlatform = minCpuPlatform;
+            return this;
+        }
+
+        public Builder minCpuPlatform(String minCpuPlatform) {
+            return minCpuPlatform(Output.of(minCpuPlatform));
+        }
+
         public Builder minSize(@Nullable Output<Integer> minSize) {
             $.minSize = minSize;
             return this;
@@ -661,6 +686,15 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
 
         public Builder serviceAccount(String serviceAccount) {
             return serviceAccount(Output.of(serviceAccount));
+        }
+
+        public Builder shouldUtilizeCommitments(@Nullable Output<Boolean> shouldUtilizeCommitments) {
+            $.shouldUtilizeCommitments = shouldUtilizeCommitments;
+            return this;
+        }
+
+        public Builder shouldUtilizeCommitments(Boolean shouldUtilizeCommitments) {
+            return shouldUtilizeCommitments(Output.of(shouldUtilizeCommitments));
         }
 
         public Builder shutdownScript(@Nullable Output<String> shutdownScript) {

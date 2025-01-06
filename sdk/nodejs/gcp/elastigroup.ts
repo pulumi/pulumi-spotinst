@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  *     serviceAccount: "example@myProject.iam.gservicecct.com",
  *     startupScript: "",
  *     instanceNamePrefix: "test-123a",
+ *     minCpuPlatform: "Intel Sandy Bridge",
  *     minSize: 0,
  *     maxSize: 1,
  *     desiredCapacity: 1,
@@ -28,6 +29,7 @@ import * as utilities from "../utilities";
  *         "asia-east1-c",
  *         "us-central1-a",
  *     ],
+ *     preferredAvailabilityZones: ["us-central1-a"],
  *     preemptiblePercentage: 50,
  *     revertToPreemptibles: [{
  *         performAt: "timeWindow",
@@ -36,6 +38,7 @@ import * as utilities from "../utilities";
  *     fallbackToOndemand: true,
  *     drainingTimeout: 180,
  *     provisioningModel: "SPOT",
+ *     shouldUtilizeCommitments: true,
  *     labels: [{
  *         key: "test_key",
  *         value: "test_value",
@@ -198,6 +201,10 @@ export class Elastigroup extends pulumi.CustomResource {
      */
     public readonly metadatas!: pulumi.Output<outputs.gcp.ElastigroupMetadata[] | undefined>;
     /**
+     * Select a minimum CPU platform for the compute instance.
+     */
+    public readonly minCpuPlatform!: pulumi.Output<string | undefined>;
+    /**
      * The minimum number of instances the group should have at any time.
      */
     public readonly minSize!: pulumi.Output<number>;
@@ -216,6 +223,10 @@ export class Elastigroup extends pulumi.CustomResource {
      */
     public readonly preemptiblePercentage!: pulumi.Output<number | undefined>;
     /**
+     * prioritize availability zones when launching instances for the group. Must be a sublist of `availabilityZones`.
+     */
+    public readonly preferredAvailabilityZones!: pulumi.Output<string[] | undefined>;
+    /**
      * Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
      */
     public readonly provisioningModel!: pulumi.Output<string | undefined>;
@@ -230,6 +241,10 @@ export class Elastigroup extends pulumi.CustomResource {
      * The email of the service account in which the group instances will be launched.
      */
     public readonly serviceAccount!: pulumi.Output<string | undefined>;
+    /**
+     * Enable committed use discounts utilization.
+     */
+    public readonly shouldUtilizeCommitments!: pulumi.Output<boolean | undefined>;
     /**
      * The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
      */
@@ -282,18 +297,21 @@ export class Elastigroup extends pulumi.CustomResource {
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["maxSize"] = state ? state.maxSize : undefined;
             resourceInputs["metadatas"] = state ? state.metadatas : undefined;
+            resourceInputs["minCpuPlatform"] = state ? state.minCpuPlatform : undefined;
             resourceInputs["minSize"] = state ? state.minSize : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
             resourceInputs["ondemandCount"] = state ? state.ondemandCount : undefined;
             resourceInputs["optimizationWindows"] = state ? state.optimizationWindows : undefined;
             resourceInputs["preemptiblePercentage"] = state ? state.preemptiblePercentage : undefined;
+            resourceInputs["preferredAvailabilityZones"] = state ? state.preferredAvailabilityZones : undefined;
             resourceInputs["provisioningModel"] = state ? state.provisioningModel : undefined;
             resourceInputs["revertToPreemptibles"] = state ? state.revertToPreemptibles : undefined;
             resourceInputs["scalingDownPolicies"] = state ? state.scalingDownPolicies : undefined;
             resourceInputs["scalingUpPolicies"] = state ? state.scalingUpPolicies : undefined;
             resourceInputs["scheduledTasks"] = state ? state.scheduledTasks : undefined;
             resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
+            resourceInputs["shouldUtilizeCommitments"] = state ? state.shouldUtilizeCommitments : undefined;
             resourceInputs["shutdownScript"] = state ? state.shutdownScript : undefined;
             resourceInputs["startupScript"] = state ? state.startupScript : undefined;
             resourceInputs["subnets"] = state ? state.subnets : undefined;
@@ -325,18 +343,21 @@ export class Elastigroup extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["maxSize"] = args ? args.maxSize : undefined;
             resourceInputs["metadatas"] = args ? args.metadatas : undefined;
+            resourceInputs["minCpuPlatform"] = args ? args.minCpuPlatform : undefined;
             resourceInputs["minSize"] = args ? args.minSize : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
             resourceInputs["ondemandCount"] = args ? args.ondemandCount : undefined;
             resourceInputs["optimizationWindows"] = args ? args.optimizationWindows : undefined;
             resourceInputs["preemptiblePercentage"] = args ? args.preemptiblePercentage : undefined;
+            resourceInputs["preferredAvailabilityZones"] = args ? args.preferredAvailabilityZones : undefined;
             resourceInputs["provisioningModel"] = args ? args.provisioningModel : undefined;
             resourceInputs["revertToPreemptibles"] = args ? args.revertToPreemptibles : undefined;
             resourceInputs["scalingDownPolicies"] = args ? args.scalingDownPolicies : undefined;
             resourceInputs["scalingUpPolicies"] = args ? args.scalingUpPolicies : undefined;
             resourceInputs["scheduledTasks"] = args ? args.scheduledTasks : undefined;
             resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
+            resourceInputs["shouldUtilizeCommitments"] = args ? args.shouldUtilizeCommitments : undefined;
             resourceInputs["shutdownScript"] = args ? args.shutdownScript : undefined;
             resourceInputs["startupScript"] = args ? args.startupScript : undefined;
             resourceInputs["subnets"] = args ? args.subnets : undefined;
@@ -415,6 +436,10 @@ export interface ElastigroupState {
      */
     metadatas?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupMetadata>[]>;
     /**
+     * Select a minimum CPU platform for the compute instance.
+     */
+    minCpuPlatform?: pulumi.Input<string>;
+    /**
      * The minimum number of instances the group should have at any time.
      */
     minSize?: pulumi.Input<number>;
@@ -433,6 +458,10 @@ export interface ElastigroupState {
      */
     preemptiblePercentage?: pulumi.Input<number>;
     /**
+     * prioritize availability zones when launching instances for the group. Must be a sublist of `availabilityZones`.
+     */
+    preferredAvailabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
      */
     provisioningModel?: pulumi.Input<string>;
@@ -447,6 +476,10 @@ export interface ElastigroupState {
      * The email of the service account in which the group instances will be launched.
      */
     serviceAccount?: pulumi.Input<string>;
+    /**
+     * Enable committed use discounts utilization.
+     */
+    shouldUtilizeCommitments?: pulumi.Input<boolean>;
     /**
      * The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
      */
@@ -533,6 +566,10 @@ export interface ElastigroupArgs {
      */
     metadatas?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupMetadata>[]>;
     /**
+     * Select a minimum CPU platform for the compute instance.
+     */
+    minCpuPlatform?: pulumi.Input<string>;
+    /**
      * The minimum number of instances the group should have at any time.
      */
     minSize?: pulumi.Input<number>;
@@ -551,6 +588,10 @@ export interface ElastigroupArgs {
      */
     preemptiblePercentage?: pulumi.Input<number>;
     /**
+     * prioritize availability zones when launching instances for the group. Must be a sublist of `availabilityZones`.
+     */
+    preferredAvailabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
      */
     provisioningModel?: pulumi.Input<string>;
@@ -565,6 +606,10 @@ export interface ElastigroupArgs {
      * The email of the service account in which the group instances will be launched.
      */
     serviceAccount?: pulumi.Input<string>;
+    /**
+     * Enable committed use discounts utilization.
+     */
+    shouldUtilizeCommitments?: pulumi.Input<boolean>;
     /**
      * The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
      */
