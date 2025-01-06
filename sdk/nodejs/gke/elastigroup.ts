@@ -117,6 +117,7 @@ export class Elastigroup extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<outputs.gke.ElastigroupLabel[] | undefined>;
     public readonly maxSize!: pulumi.Output<number>;
     public readonly metadatas!: pulumi.Output<outputs.gke.ElastigroupMetadata[] | undefined>;
+    public readonly minCpuPlatform!: pulumi.Output<string | undefined>;
     public readonly minSize!: pulumi.Output<number>;
     public readonly name!: pulumi.Output<string>;
     public readonly networkInterfaces!: pulumi.Output<outputs.gke.ElastigroupNetworkInterface[] | undefined>;
@@ -129,6 +130,7 @@ export class Elastigroup extends pulumi.CustomResource {
     public readonly scalingDownPolicies!: pulumi.Output<outputs.gke.ElastigroupScalingDownPolicy[] | undefined>;
     public readonly scalingUpPolicies!: pulumi.Output<outputs.gke.ElastigroupScalingUpPolicy[] | undefined>;
     public readonly serviceAccount!: pulumi.Output<string | undefined>;
+    public readonly shouldUtilizeCommitments!: pulumi.Output<boolean | undefined>;
     public readonly shutdownScript!: pulumi.Output<string | undefined>;
     public readonly startupScript!: pulumi.Output<string | undefined>;
     public readonly tags!: pulumi.Output<string[] | undefined>;
@@ -164,6 +166,7 @@ export class Elastigroup extends pulumi.CustomResource {
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["maxSize"] = state ? state.maxSize : undefined;
             resourceInputs["metadatas"] = state ? state.metadatas : undefined;
+            resourceInputs["minCpuPlatform"] = state ? state.minCpuPlatform : undefined;
             resourceInputs["minSize"] = state ? state.minSize : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
@@ -176,6 +179,7 @@ export class Elastigroup extends pulumi.CustomResource {
             resourceInputs["scalingDownPolicies"] = state ? state.scalingDownPolicies : undefined;
             resourceInputs["scalingUpPolicies"] = state ? state.scalingUpPolicies : undefined;
             resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
+            resourceInputs["shouldUtilizeCommitments"] = state ? state.shouldUtilizeCommitments : undefined;
             resourceInputs["shutdownScript"] = state ? state.shutdownScript : undefined;
             resourceInputs["startupScript"] = state ? state.startupScript : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
@@ -205,6 +209,7 @@ export class Elastigroup extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["maxSize"] = args ? args.maxSize : undefined;
             resourceInputs["metadatas"] = args ? args.metadatas : undefined;
+            resourceInputs["minCpuPlatform"] = args ? args.minCpuPlatform : undefined;
             resourceInputs["minSize"] = args ? args.minSize : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
@@ -217,6 +222,7 @@ export class Elastigroup extends pulumi.CustomResource {
             resourceInputs["scalingDownPolicies"] = args ? args.scalingDownPolicies : undefined;
             resourceInputs["scalingUpPolicies"] = args ? args.scalingUpPolicies : undefined;
             resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
+            resourceInputs["shouldUtilizeCommitments"] = args ? args.shouldUtilizeCommitments : undefined;
             resourceInputs["shutdownScript"] = args ? args.shutdownScript : undefined;
             resourceInputs["startupScript"] = args ? args.startupScript : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -251,6 +257,7 @@ export interface ElastigroupState {
     labels?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupLabel>[]>;
     maxSize?: pulumi.Input<number>;
     metadatas?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupMetadata>[]>;
+    minCpuPlatform?: pulumi.Input<string>;
     minSize?: pulumi.Input<number>;
     name?: pulumi.Input<string>;
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupNetworkInterface>[]>;
@@ -263,6 +270,7 @@ export interface ElastigroupState {
     scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupScalingDownPolicy>[]>;
     scalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupScalingUpPolicy>[]>;
     serviceAccount?: pulumi.Input<string>;
+    shouldUtilizeCommitments?: pulumi.Input<boolean>;
     shutdownScript?: pulumi.Input<string>;
     startupScript?: pulumi.Input<string>;
     tags?: pulumi.Input<pulumi.Input<string>[]>;
@@ -293,6 +301,7 @@ export interface ElastigroupArgs {
     labels?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupLabel>[]>;
     maxSize?: pulumi.Input<number>;
     metadatas?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupMetadata>[]>;
+    minCpuPlatform?: pulumi.Input<string>;
     minSize?: pulumi.Input<number>;
     name?: pulumi.Input<string>;
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupNetworkInterface>[]>;
@@ -305,6 +314,7 @@ export interface ElastigroupArgs {
     scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupScalingDownPolicy>[]>;
     scalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupScalingUpPolicy>[]>;
     serviceAccount?: pulumi.Input<string>;
+    shouldUtilizeCommitments?: pulumi.Input<boolean>;
     shutdownScript?: pulumi.Input<string>;
     startupScript?: pulumi.Input<string>;
     tags?: pulumi.Input<pulumi.Input<string>[]>;

@@ -115,6 +115,7 @@ type Elastigroup struct {
 	Labels                    ElastigroupLabelArrayOutput                `pulumi:"labels"`
 	MaxSize                   pulumi.IntOutput                           `pulumi:"maxSize"`
 	Metadatas                 ElastigroupMetadataArrayOutput             `pulumi:"metadatas"`
+	MinCpuPlatform            pulumi.StringPtrOutput                     `pulumi:"minCpuPlatform"`
 	MinSize                   pulumi.IntOutput                           `pulumi:"minSize"`
 	Name                      pulumi.StringOutput                        `pulumi:"name"`
 	NetworkInterfaces         ElastigroupNetworkInterfaceArrayOutput     `pulumi:"networkInterfaces"`
@@ -127,6 +128,7 @@ type Elastigroup struct {
 	ScalingDownPolicies       ElastigroupScalingDownPolicyArrayOutput    `pulumi:"scalingDownPolicies"`
 	ScalingUpPolicies         ElastigroupScalingUpPolicyArrayOutput      `pulumi:"scalingUpPolicies"`
 	ServiceAccount            pulumi.StringPtrOutput                     `pulumi:"serviceAccount"`
+	ShouldUtilizeCommitments  pulumi.BoolPtrOutput                       `pulumi:"shouldUtilizeCommitments"`
 	ShutdownScript            pulumi.StringPtrOutput                     `pulumi:"shutdownScript"`
 	StartupScript             pulumi.StringPtrOutput                     `pulumi:"startupScript"`
 	Tags                      pulumi.StringArrayOutput                   `pulumi:"tags"`
@@ -187,6 +189,7 @@ type elastigroupState struct {
 	Labels                    []ElastigroupLabel                 `pulumi:"labels"`
 	MaxSize                   *int                               `pulumi:"maxSize"`
 	Metadatas                 []ElastigroupMetadata              `pulumi:"metadatas"`
+	MinCpuPlatform            *string                            `pulumi:"minCpuPlatform"`
 	MinSize                   *int                               `pulumi:"minSize"`
 	Name                      *string                            `pulumi:"name"`
 	NetworkInterfaces         []ElastigroupNetworkInterface      `pulumi:"networkInterfaces"`
@@ -199,6 +202,7 @@ type elastigroupState struct {
 	ScalingDownPolicies       []ElastigroupScalingDownPolicy     `pulumi:"scalingDownPolicies"`
 	ScalingUpPolicies         []ElastigroupScalingUpPolicy       `pulumi:"scalingUpPolicies"`
 	ServiceAccount            *string                            `pulumi:"serviceAccount"`
+	ShouldUtilizeCommitments  *bool                              `pulumi:"shouldUtilizeCommitments"`
 	ShutdownScript            *string                            `pulumi:"shutdownScript"`
 	StartupScript             *string                            `pulumi:"startupScript"`
 	Tags                      []string                           `pulumi:"tags"`
@@ -224,6 +228,7 @@ type ElastigroupState struct {
 	Labels                    ElastigroupLabelArrayInput
 	MaxSize                   pulumi.IntPtrInput
 	Metadatas                 ElastigroupMetadataArrayInput
+	MinCpuPlatform            pulumi.StringPtrInput
 	MinSize                   pulumi.IntPtrInput
 	Name                      pulumi.StringPtrInput
 	NetworkInterfaces         ElastigroupNetworkInterfaceArrayInput
@@ -236,6 +241,7 @@ type ElastigroupState struct {
 	ScalingDownPolicies       ElastigroupScalingDownPolicyArrayInput
 	ScalingUpPolicies         ElastigroupScalingUpPolicyArrayInput
 	ServiceAccount            pulumi.StringPtrInput
+	ShouldUtilizeCommitments  pulumi.BoolPtrInput
 	ShutdownScript            pulumi.StringPtrInput
 	StartupScript             pulumi.StringPtrInput
 	Tags                      pulumi.StringArrayInput
@@ -265,6 +271,7 @@ type elastigroupArgs struct {
 	Labels                    []ElastigroupLabel                 `pulumi:"labels"`
 	MaxSize                   *int                               `pulumi:"maxSize"`
 	Metadatas                 []ElastigroupMetadata              `pulumi:"metadatas"`
+	MinCpuPlatform            *string                            `pulumi:"minCpuPlatform"`
 	MinSize                   *int                               `pulumi:"minSize"`
 	Name                      *string                            `pulumi:"name"`
 	NetworkInterfaces         []ElastigroupNetworkInterface      `pulumi:"networkInterfaces"`
@@ -277,6 +284,7 @@ type elastigroupArgs struct {
 	ScalingDownPolicies       []ElastigroupScalingDownPolicy     `pulumi:"scalingDownPolicies"`
 	ScalingUpPolicies         []ElastigroupScalingUpPolicy       `pulumi:"scalingUpPolicies"`
 	ServiceAccount            *string                            `pulumi:"serviceAccount"`
+	ShouldUtilizeCommitments  *bool                              `pulumi:"shouldUtilizeCommitments"`
 	ShutdownScript            *string                            `pulumi:"shutdownScript"`
 	StartupScript             *string                            `pulumi:"startupScript"`
 	Tags                      []string                           `pulumi:"tags"`
@@ -303,6 +311,7 @@ type ElastigroupArgs struct {
 	Labels                    ElastigroupLabelArrayInput
 	MaxSize                   pulumi.IntPtrInput
 	Metadatas                 ElastigroupMetadataArrayInput
+	MinCpuPlatform            pulumi.StringPtrInput
 	MinSize                   pulumi.IntPtrInput
 	Name                      pulumi.StringPtrInput
 	NetworkInterfaces         ElastigroupNetworkInterfaceArrayInput
@@ -315,6 +324,7 @@ type ElastigroupArgs struct {
 	ScalingDownPolicies       ElastigroupScalingDownPolicyArrayInput
 	ScalingUpPolicies         ElastigroupScalingUpPolicyArrayInput
 	ServiceAccount            pulumi.StringPtrInput
+	ShouldUtilizeCommitments  pulumi.BoolPtrInput
 	ShutdownScript            pulumi.StringPtrInput
 	StartupScript             pulumi.StringPtrInput
 	Tags                      pulumi.StringArrayInput
@@ -480,6 +490,10 @@ func (o ElastigroupOutput) Metadatas() ElastigroupMetadataArrayOutput {
 	return o.ApplyT(func(v *Elastigroup) ElastigroupMetadataArrayOutput { return v.Metadatas }).(ElastigroupMetadataArrayOutput)
 }
 
+func (o ElastigroupOutput) MinCpuPlatform() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.StringPtrOutput { return v.MinCpuPlatform }).(pulumi.StringPtrOutput)
+}
+
 func (o ElastigroupOutput) MinSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.IntOutput { return v.MinSize }).(pulumi.IntOutput)
 }
@@ -526,6 +540,10 @@ func (o ElastigroupOutput) ScalingUpPolicies() ElastigroupScalingUpPolicyArrayOu
 
 func (o ElastigroupOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.StringPtrOutput { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupOutput) ShouldUtilizeCommitments() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.BoolPtrOutput { return v.ShouldUtilizeCommitments }).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupOutput) ShutdownScript() pulumi.StringPtrOutput {
