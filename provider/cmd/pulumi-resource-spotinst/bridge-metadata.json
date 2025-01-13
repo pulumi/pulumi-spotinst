@@ -1840,6 +1840,9 @@
             "spotinst_ocean_gke_import": {
                 "current": "spotinst:gke/oceanImport:OceanImport",
                 "fields": {
+                    "auto_update": {
+                        "maxItemsOne": false
+                    },
                     "autoscaler": {
                         "maxItemsOne": true,
                         "elem": {
