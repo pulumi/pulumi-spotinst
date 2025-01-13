@@ -2656,6 +2656,103 @@ func (o ElastigroupScalingUpPolicyDimensionArrayOutput) Index(i pulumi.IntInput)
 	}).(ElastigroupScalingUpPolicyDimensionOutput)
 }
 
+type OceanImportAutoUpdate struct {
+	// Enable the Ocean Kubernetes AutoUpdate.
+	IsEnabled *bool `pulumi:"isEnabled"`
+}
+
+// OceanImportAutoUpdateInput is an input type that accepts OceanImportAutoUpdateArgs and OceanImportAutoUpdateOutput values.
+// You can construct a concrete instance of `OceanImportAutoUpdateInput` via:
+//
+//	OceanImportAutoUpdateArgs{...}
+type OceanImportAutoUpdateInput interface {
+	pulumi.Input
+
+	ToOceanImportAutoUpdateOutput() OceanImportAutoUpdateOutput
+	ToOceanImportAutoUpdateOutputWithContext(context.Context) OceanImportAutoUpdateOutput
+}
+
+type OceanImportAutoUpdateArgs struct {
+	// Enable the Ocean Kubernetes AutoUpdate.
+	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
+}
+
+func (OceanImportAutoUpdateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanImportAutoUpdate)(nil)).Elem()
+}
+
+func (i OceanImportAutoUpdateArgs) ToOceanImportAutoUpdateOutput() OceanImportAutoUpdateOutput {
+	return i.ToOceanImportAutoUpdateOutputWithContext(context.Background())
+}
+
+func (i OceanImportAutoUpdateArgs) ToOceanImportAutoUpdateOutputWithContext(ctx context.Context) OceanImportAutoUpdateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanImportAutoUpdateOutput)
+}
+
+// OceanImportAutoUpdateArrayInput is an input type that accepts OceanImportAutoUpdateArray and OceanImportAutoUpdateArrayOutput values.
+// You can construct a concrete instance of `OceanImportAutoUpdateArrayInput` via:
+//
+//	OceanImportAutoUpdateArray{ OceanImportAutoUpdateArgs{...} }
+type OceanImportAutoUpdateArrayInput interface {
+	pulumi.Input
+
+	ToOceanImportAutoUpdateArrayOutput() OceanImportAutoUpdateArrayOutput
+	ToOceanImportAutoUpdateArrayOutputWithContext(context.Context) OceanImportAutoUpdateArrayOutput
+}
+
+type OceanImportAutoUpdateArray []OceanImportAutoUpdateInput
+
+func (OceanImportAutoUpdateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanImportAutoUpdate)(nil)).Elem()
+}
+
+func (i OceanImportAutoUpdateArray) ToOceanImportAutoUpdateArrayOutput() OceanImportAutoUpdateArrayOutput {
+	return i.ToOceanImportAutoUpdateArrayOutputWithContext(context.Background())
+}
+
+func (i OceanImportAutoUpdateArray) ToOceanImportAutoUpdateArrayOutputWithContext(ctx context.Context) OceanImportAutoUpdateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanImportAutoUpdateArrayOutput)
+}
+
+type OceanImportAutoUpdateOutput struct{ *pulumi.OutputState }
+
+func (OceanImportAutoUpdateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanImportAutoUpdate)(nil)).Elem()
+}
+
+func (o OceanImportAutoUpdateOutput) ToOceanImportAutoUpdateOutput() OceanImportAutoUpdateOutput {
+	return o
+}
+
+func (o OceanImportAutoUpdateOutput) ToOceanImportAutoUpdateOutputWithContext(ctx context.Context) OceanImportAutoUpdateOutput {
+	return o
+}
+
+// Enable the Ocean Kubernetes AutoUpdate.
+func (o OceanImportAutoUpdateOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanImportAutoUpdate) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type OceanImportAutoUpdateArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanImportAutoUpdateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanImportAutoUpdate)(nil)).Elem()
+}
+
+func (o OceanImportAutoUpdateArrayOutput) ToOceanImportAutoUpdateArrayOutput() OceanImportAutoUpdateArrayOutput {
+	return o
+}
+
+func (o OceanImportAutoUpdateArrayOutput) ToOceanImportAutoUpdateArrayOutputWithContext(ctx context.Context) OceanImportAutoUpdateArrayOutput {
+	return o
+}
+
+func (o OceanImportAutoUpdateArrayOutput) Index(i pulumi.IntInput) OceanImportAutoUpdateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanImportAutoUpdate {
+		return vs[0].([]OceanImportAutoUpdate)[vs[1].(int)]
+	}).(OceanImportAutoUpdateOutput)
+}
+
 type OceanImportAutoscaler struct {
 	// Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom % from the cluster. Relevant when isAutoConfig=true.
 	AutoHeadroomPercentage *int `pulumi:"autoHeadroomPercentage"`
@@ -7445,6 +7542,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingUpPolicyArrayInput)(nil)).Elem(), ElastigroupScalingUpPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingUpPolicyDimensionInput)(nil)).Elem(), ElastigroupScalingUpPolicyDimensionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingUpPolicyDimensionArrayInput)(nil)).Elem(), ElastigroupScalingUpPolicyDimensionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportAutoUpdateInput)(nil)).Elem(), OceanImportAutoUpdateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportAutoUpdateArrayInput)(nil)).Elem(), OceanImportAutoUpdateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportAutoscalerInput)(nil)).Elem(), OceanImportAutoscalerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportAutoscalerPtrInput)(nil)).Elem(), OceanImportAutoscalerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportAutoscalerDownInput)(nil)).Elem(), OceanImportAutoscalerDownArgs{})
@@ -7553,6 +7652,8 @@ func init() {
 	pulumi.RegisterOutputType(ElastigroupScalingUpPolicyArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupScalingUpPolicyDimensionOutput{})
 	pulumi.RegisterOutputType(ElastigroupScalingUpPolicyDimensionArrayOutput{})
+	pulumi.RegisterOutputType(OceanImportAutoUpdateOutput{})
+	pulumi.RegisterOutputType(OceanImportAutoUpdateArrayOutput{})
 	pulumi.RegisterOutputType(OceanImportAutoscalerOutput{})
 	pulumi.RegisterOutputType(OceanImportAutoscalerPtrOutput{})
 	pulumi.RegisterOutputType(OceanImportAutoscalerDownOutput{})

@@ -37,6 +37,7 @@ __all__ = [
     'ElastigroupScalingDownPolicyDimension',
     'ElastigroupScalingUpPolicy',
     'ElastigroupScalingUpPolicyDimension',
+    'OceanImportAutoUpdate',
     'OceanImportAutoscaler',
     'OceanImportAutoscalerDown',
     'OceanImportAutoscalerHeadroom',
@@ -1126,6 +1127,42 @@ class ElastigroupScalingUpPolicyDimension(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class OceanImportAutoUpdate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isEnabled":
+            suggest = "is_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanImportAutoUpdate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanImportAutoUpdate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanImportAutoUpdate.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 is_enabled: Optional[bool] = None):
+        """
+        :param bool is_enabled: Enable the Ocean Kubernetes AutoUpdate.
+        """
+        if is_enabled is not None:
+            pulumi.set(__self__, "is_enabled", is_enabled)
+
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> Optional[bool]:
+        """
+        Enable the Ocean Kubernetes AutoUpdate.
+        """
+        return pulumi.get(self, "is_enabled")
 
 
 @pulumi.output_type

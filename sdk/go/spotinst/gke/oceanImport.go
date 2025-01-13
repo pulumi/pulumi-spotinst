@@ -33,6 +33,11 @@ import (
 //				MinSize:             pulumi.Int(0),
 //				MaxSize:             pulumi.Int(2),
 //				DesiredCapacity:     pulumi.Int(0),
+//				AutoUpdates: gke.OceanImportAutoUpdateArray{
+//					&gke.OceanImportAutoUpdateArgs{
+//						IsEnabled: pulumi.Bool(true),
+//					},
+//				},
 //				Whitelists: pulumi.StringArray{
 //					pulumi.String("n1-standard-1"),
 //					pulumi.String("n1-standard-2"),
@@ -84,6 +89,8 @@ import (
 type OceanImport struct {
 	pulumi.CustomResourceState
 
+	// The Ocean Kubernetes AutoUpdate object. If set to 'true', Ocean will ensure that your clusters have an up-to-date configuration according to the respective GKE cluster.
+	AutoUpdates OceanImportAutoUpdateArrayOutput `pulumi:"autoUpdates"`
 	// The Ocean Kubernetes Autoscaler object.
 	Autoscaler OceanImportAutoscalerOutput `pulumi:"autoscaler"`
 	// Describes the backend service configurations.
@@ -156,6 +163,8 @@ func GetOceanImport(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OceanImport resources.
 type oceanImportState struct {
+	// The Ocean Kubernetes AutoUpdate object. If set to 'true', Ocean will ensure that your clusters have an up-to-date configuration according to the respective GKE cluster.
+	AutoUpdates []OceanImportAutoUpdate `pulumi:"autoUpdates"`
 	// The Ocean Kubernetes Autoscaler object.
 	Autoscaler *OceanImportAutoscaler `pulumi:"autoscaler"`
 	// Describes the backend service configurations.
@@ -193,6 +202,8 @@ type oceanImportState struct {
 }
 
 type OceanImportState struct {
+	// The Ocean Kubernetes AutoUpdate object. If set to 'true', Ocean will ensure that your clusters have an up-to-date configuration according to the respective GKE cluster.
+	AutoUpdates OceanImportAutoUpdateArrayInput
 	// The Ocean Kubernetes Autoscaler object.
 	Autoscaler OceanImportAutoscalerPtrInput
 	// Describes the backend service configurations.
@@ -234,6 +245,8 @@ func (OceanImportState) ElementType() reflect.Type {
 }
 
 type oceanImportArgs struct {
+	// The Ocean Kubernetes AutoUpdate object. If set to 'true', Ocean will ensure that your clusters have an up-to-date configuration according to the respective GKE cluster.
+	AutoUpdates []OceanImportAutoUpdate `pulumi:"autoUpdates"`
 	// The Ocean Kubernetes Autoscaler object.
 	Autoscaler *OceanImportAutoscaler `pulumi:"autoscaler"`
 	// Describes the backend service configurations.
@@ -271,6 +284,8 @@ type oceanImportArgs struct {
 
 // The set of arguments for constructing a OceanImport resource.
 type OceanImportArgs struct {
+	// The Ocean Kubernetes AutoUpdate object. If set to 'true', Ocean will ensure that your clusters have an up-to-date configuration according to the respective GKE cluster.
+	AutoUpdates OceanImportAutoUpdateArrayInput
 	// The Ocean Kubernetes Autoscaler object.
 	Autoscaler OceanImportAutoscalerPtrInput
 	// Describes the backend service configurations.
@@ -391,6 +406,11 @@ func (o OceanImportOutput) ToOceanImportOutput() OceanImportOutput {
 
 func (o OceanImportOutput) ToOceanImportOutputWithContext(ctx context.Context) OceanImportOutput {
 	return o
+}
+
+// The Ocean Kubernetes AutoUpdate object. If set to 'true', Ocean will ensure that your clusters have an up-to-date configuration according to the respective GKE cluster.
+func (o OceanImportOutput) AutoUpdates() OceanImportAutoUpdateArrayOutput {
+	return o.ApplyT(func(v *OceanImport) OceanImportAutoUpdateArrayOutput { return v.AutoUpdates }).(OceanImportAutoUpdateArrayOutput)
 }
 
 // The Ocean Kubernetes Autoscaler object.

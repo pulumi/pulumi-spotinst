@@ -20,6 +20,9 @@ import * as utilities from "../utilities";
  *     minSize: 0,
  *     maxSize: 2,
  *     desiredCapacity: 0,
+ *     autoUpdates: [{
+ *         isEnabled: true,
+ *     }],
  *     whitelists: [
  *         "n1-standard-1",
  *         "n1-standard-2",
@@ -84,6 +87,10 @@ export class OceanImport extends pulumi.CustomResource {
         return obj['__pulumiType'] === OceanImport.__pulumiType;
     }
 
+    /**
+     * The Ocean Kubernetes AutoUpdate object. If set to 'true', Ocean will ensure that your clusters have an up-to-date configuration according to the respective GKE cluster.
+     */
+    public readonly autoUpdates!: pulumi.Output<outputs.gke.OceanImportAutoUpdate[] | undefined>;
     /**
      * The Ocean Kubernetes Autoscaler object.
      */
@@ -164,6 +171,7 @@ export class OceanImport extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OceanImportState | undefined;
+            resourceInputs["autoUpdates"] = state ? state.autoUpdates : undefined;
             resourceInputs["autoscaler"] = state ? state.autoscaler : undefined;
             resourceInputs["backendServices"] = state ? state.backendServices : undefined;
             resourceInputs["blacklists"] = state ? state.blacklists : undefined;
@@ -190,6 +198,7 @@ export class OceanImport extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
+            resourceInputs["autoUpdates"] = args ? args.autoUpdates : undefined;
             resourceInputs["autoscaler"] = args ? args.autoscaler : undefined;
             resourceInputs["backendServices"] = args ? args.backendServices : undefined;
             resourceInputs["blacklists"] = args ? args.blacklists : undefined;
@@ -218,6 +227,10 @@ export class OceanImport extends pulumi.CustomResource {
  * Input properties used for looking up and filtering OceanImport resources.
  */
 export interface OceanImportState {
+    /**
+     * The Ocean Kubernetes AutoUpdate object. If set to 'true', Ocean will ensure that your clusters have an up-to-date configuration according to the respective GKE cluster.
+     */
+    autoUpdates?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportAutoUpdate>[]>;
     /**
      * The Ocean Kubernetes Autoscaler object.
      */
@@ -290,6 +303,10 @@ export interface OceanImportState {
  * The set of arguments for constructing a OceanImport resource.
  */
 export interface OceanImportArgs {
+    /**
+     * The Ocean Kubernetes AutoUpdate object. If set to 'true', Ocean will ensure that your clusters have an up-to-date configuration according to the respective GKE cluster.
+     */
+    autoUpdates?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportAutoUpdate>[]>;
     /**
      * The Ocean Kubernetes Autoscaler object.
      */
