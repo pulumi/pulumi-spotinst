@@ -6,6 +6,7 @@ package com.pulumi.spotinst.gke;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.spotinst.gke.inputs.OceanImportAutoUpdateArgs;
 import com.pulumi.spotinst.gke.inputs.OceanImportAutoscalerArgs;
 import com.pulumi.spotinst.gke.inputs.OceanImportBackendServiceArgs;
 import com.pulumi.spotinst.gke.inputs.OceanImportFiltersArgs;
@@ -25,6 +26,21 @@ import javax.annotation.Nullable;
 public final class OceanImportArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final OceanImportArgs Empty = new OceanImportArgs();
+
+    /**
+     * The Ocean Kubernetes AutoUpdate object. If set to &#39;true&#39;, Ocean will ensure that your clusters have an up-to-date configuration according to the respective GKE cluster.
+     * 
+     */
+    @Import(name="autoUpdates")
+    private @Nullable Output<List<OceanImportAutoUpdateArgs>> autoUpdates;
+
+    /**
+     * @return The Ocean Kubernetes AutoUpdate object. If set to &#39;true&#39;, Ocean will ensure that your clusters have an up-to-date configuration according to the respective GKE cluster.
+     * 
+     */
+    public Optional<Output<List<OceanImportAutoUpdateArgs>>> autoUpdates() {
+        return Optional.ofNullable(this.autoUpdates);
+    }
 
     /**
      * The Ocean Kubernetes Autoscaler object.
@@ -276,6 +292,7 @@ public final class OceanImportArgs extends com.pulumi.resources.ResourceArgs {
     private OceanImportArgs() {}
 
     private OceanImportArgs(OceanImportArgs $) {
+        this.autoUpdates = $.autoUpdates;
         this.autoscaler = $.autoscaler;
         this.backendServices = $.backendServices;
         this.blacklists = $.blacklists;
@@ -311,6 +328,37 @@ public final class OceanImportArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(OceanImportArgs defaults) {
             $ = new OceanImportArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param autoUpdates The Ocean Kubernetes AutoUpdate object. If set to &#39;true&#39;, Ocean will ensure that your clusters have an up-to-date configuration according to the respective GKE cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoUpdates(@Nullable Output<List<OceanImportAutoUpdateArgs>> autoUpdates) {
+            $.autoUpdates = autoUpdates;
+            return this;
+        }
+
+        /**
+         * @param autoUpdates The Ocean Kubernetes AutoUpdate object. If set to &#39;true&#39;, Ocean will ensure that your clusters have an up-to-date configuration according to the respective GKE cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoUpdates(List<OceanImportAutoUpdateArgs> autoUpdates) {
+            return autoUpdates(Output.of(autoUpdates));
+        }
+
+        /**
+         * @param autoUpdates The Ocean Kubernetes AutoUpdate object. If set to &#39;true&#39;, Ocean will ensure that your clusters have an up-to-date configuration according to the respective GKE cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoUpdates(OceanImportAutoUpdateArgs... autoUpdates) {
+            return autoUpdates(List.of(autoUpdates));
         }
 
         /**

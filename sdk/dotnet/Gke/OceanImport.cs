@@ -28,6 +28,13 @@ namespace Pulumi.SpotInst.Gke
     ///         MinSize = 0,
     ///         MaxSize = 2,
     ///         DesiredCapacity = 0,
+    ///         AutoUpdates = new[]
+    ///         {
+    ///             new SpotInst.Gke.Inputs.OceanImportAutoUpdateArgs
+    ///             {
+    ///                 IsEnabled = true,
+    ///             },
+    ///         },
     ///         Whitelists = new[]
     ///         {
     ///             "n1-standard-1",
@@ -85,6 +92,12 @@ namespace Pulumi.SpotInst.Gke
     [SpotInstResourceType("spotinst:gke/oceanImport:OceanImport")]
     public partial class OceanImport : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The Ocean Kubernetes AutoUpdate object. If set to 'true', Ocean will ensure that your clusters have an up-to-date configuration according to the respective GKE cluster.
+        /// </summary>
+        [Output("autoUpdates")]
+        public Output<ImmutableArray<Outputs.OceanImportAutoUpdate>> AutoUpdates { get; private set; } = null!;
+
         /// <summary>
         /// The Ocean Kubernetes Autoscaler object.
         /// </summary>
@@ -233,6 +246,18 @@ namespace Pulumi.SpotInst.Gke
 
     public sealed class OceanImportArgs : global::Pulumi.ResourceArgs
     {
+        [Input("autoUpdates")]
+        private InputList<Inputs.OceanImportAutoUpdateArgs>? _autoUpdates;
+
+        /// <summary>
+        /// The Ocean Kubernetes AutoUpdate object. If set to 'true', Ocean will ensure that your clusters have an up-to-date configuration according to the respective GKE cluster.
+        /// </summary>
+        public InputList<Inputs.OceanImportAutoUpdateArgs> AutoUpdates
+        {
+            get => _autoUpdates ?? (_autoUpdates = new InputList<Inputs.OceanImportAutoUpdateArgs>());
+            set => _autoUpdates = value;
+        }
+
         /// <summary>
         /// The Ocean Kubernetes Autoscaler object.
         /// </summary>
@@ -370,6 +395,18 @@ namespace Pulumi.SpotInst.Gke
 
     public sealed class OceanImportState : global::Pulumi.ResourceArgs
     {
+        [Input("autoUpdates")]
+        private InputList<Inputs.OceanImportAutoUpdateGetArgs>? _autoUpdates;
+
+        /// <summary>
+        /// The Ocean Kubernetes AutoUpdate object. If set to 'true', Ocean will ensure that your clusters have an up-to-date configuration according to the respective GKE cluster.
+        /// </summary>
+        public InputList<Inputs.OceanImportAutoUpdateGetArgs> AutoUpdates
+        {
+            get => _autoUpdates ?? (_autoUpdates = new InputList<Inputs.OceanImportAutoUpdateGetArgs>());
+            set => _autoUpdates = value;
+        }
+
         /// <summary>
         /// The Ocean Kubernetes Autoscaler object.
         /// </summary>

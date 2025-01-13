@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.spotinst.Utilities;
 import com.pulumi.spotinst.gke.OceanImportArgs;
 import com.pulumi.spotinst.gke.inputs.OceanImportState;
+import com.pulumi.spotinst.gke.outputs.OceanImportAutoUpdate;
 import com.pulumi.spotinst.gke.outputs.OceanImportAutoscaler;
 import com.pulumi.spotinst.gke.outputs.OceanImportBackendService;
 import com.pulumi.spotinst.gke.outputs.OceanImportFilters;
@@ -37,6 +38,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.spotinst.gke.OceanImport;
  * import com.pulumi.spotinst.gke.OceanImportArgs;
+ * import com.pulumi.spotinst.gke.inputs.OceanImportAutoUpdateArgs;
  * import com.pulumi.spotinst.gke.inputs.OceanImportFiltersArgs;
  * import com.pulumi.spotinst.gke.inputs.OceanImportBackendServiceArgs;
  * import com.pulumi.spotinst.gke.inputs.OceanImportShieldedInstanceConfigArgs;
@@ -60,6 +62,9 @@ import javax.annotation.Nullable;
  *             .minSize(0)
  *             .maxSize(2)
  *             .desiredCapacity(0)
+ *             .autoUpdates(OceanImportAutoUpdateArgs.builder()
+ *                 .isEnabled(true)
+ *                 .build())
  *             .whitelists(            
  *                 "n1-standard-1",
  *                 "n1-standard-2")
@@ -101,6 +106,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="spotinst:gke/oceanImport:OceanImport")
 public class OceanImport extends com.pulumi.resources.CustomResource {
+    /**
+     * The Ocean Kubernetes AutoUpdate object. If set to &#39;true&#39;, Ocean will ensure that your clusters have an up-to-date configuration according to the respective GKE cluster.
+     * 
+     */
+    @Export(name="autoUpdates", refs={List.class,OceanImportAutoUpdate.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<OceanImportAutoUpdate>> autoUpdates;
+
+    /**
+     * @return The Ocean Kubernetes AutoUpdate object. If set to &#39;true&#39;, Ocean will ensure that your clusters have an up-to-date configuration according to the respective GKE cluster.
+     * 
+     */
+    public Output<Optional<List<OceanImportAutoUpdate>>> autoUpdates() {
+        return Codegen.optional(this.autoUpdates);
+    }
     /**
      * The Ocean Kubernetes Autoscaler object.
      * 

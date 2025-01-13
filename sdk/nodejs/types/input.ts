@@ -4747,6 +4747,13 @@ export namespace gke {
         value?: pulumi.Input<string>;
     }
 
+    export interface OceanImportAutoUpdate {
+        /**
+         * Enable the Ocean Kubernetes AutoUpdate.
+         */
+        isEnabled?: pulumi.Input<boolean>;
+    }
+
     export interface OceanImportAutoscaler {
         /**
          * Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom % from the cluster. Relevant when isAutoConfig=true.

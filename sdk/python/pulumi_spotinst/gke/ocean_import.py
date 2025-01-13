@@ -23,6 +23,7 @@ class OceanImportArgs:
     def __init__(__self__, *,
                  cluster_name: pulumi.Input[str],
                  location: pulumi.Input[str],
+                 auto_updates: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportAutoUpdateArgs']]]] = None,
                  autoscaler: Optional[pulumi.Input['OceanImportAutoscalerArgs']] = None,
                  backend_services: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportBackendServiceArgs']]]] = None,
                  blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -42,6 +43,7 @@ class OceanImportArgs:
         The set of arguments for constructing a OceanImport resource.
         :param pulumi.Input[str] cluster_name: The GKE cluster name.
         :param pulumi.Input[str] location: The zone the master cluster is located in.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanImportAutoUpdateArgs']]] auto_updates: The Ocean Kubernetes AutoUpdate object. If set to 'true', Ocean will ensure that your clusters have an up-to-date configuration according to the respective GKE cluster.
         :param pulumi.Input['OceanImportAutoscalerArgs'] autoscaler: The Ocean Kubernetes Autoscaler object.
         :param pulumi.Input[Sequence[pulumi.Input['OceanImportBackendServiceArgs']]] backend_services: Describes the backend service configurations.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklists: Instance types to avoid launching in the Ocean cluster. Cannot be configured if whitelist list is configured.
@@ -59,6 +61,8 @@ class OceanImportArgs:
         """
         pulumi.set(__self__, "cluster_name", cluster_name)
         pulumi.set(__self__, "location", location)
+        if auto_updates is not None:
+            pulumi.set(__self__, "auto_updates", auto_updates)
         if autoscaler is not None:
             pulumi.set(__self__, "autoscaler", autoscaler)
         if backend_services is not None:
@@ -113,6 +117,18 @@ class OceanImportArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="autoUpdates")
+    def auto_updates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportAutoUpdateArgs']]]]:
+        """
+        The Ocean Kubernetes AutoUpdate object. If set to 'true', Ocean will ensure that your clusters have an up-to-date configuration according to the respective GKE cluster.
+        """
+        return pulumi.get(self, "auto_updates")
+
+    @auto_updates.setter
+    def auto_updates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportAutoUpdateArgs']]]]):
+        pulumi.set(self, "auto_updates", value)
 
     @property
     @pulumi.getter
@@ -295,6 +311,7 @@ class OceanImportArgs:
 @pulumi.input_type
 class _OceanImportState:
     def __init__(__self__, *,
+                 auto_updates: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportAutoUpdateArgs']]]] = None,
                  autoscaler: Optional[pulumi.Input['OceanImportAutoscalerArgs']] = None,
                  backend_services: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportBackendServiceArgs']]]] = None,
                  blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -315,6 +332,7 @@ class _OceanImportState:
                  whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering OceanImport resources.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanImportAutoUpdateArgs']]] auto_updates: The Ocean Kubernetes AutoUpdate object. If set to 'true', Ocean will ensure that your clusters have an up-to-date configuration according to the respective GKE cluster.
         :param pulumi.Input['OceanImportAutoscalerArgs'] autoscaler: The Ocean Kubernetes Autoscaler object.
         :param pulumi.Input[Sequence[pulumi.Input['OceanImportBackendServiceArgs']]] backend_services: Describes the backend service configurations.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklists: Instance types to avoid launching in the Ocean cluster. Cannot be configured if whitelist list is configured.
@@ -332,6 +350,8 @@ class _OceanImportState:
         :param pulumi.Input[bool] use_as_template_only: launch specification defined on the Ocean object will function only as a template for virtual node groups.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: Instance types allowed in the Ocean cluster. Cannot be configured if blacklist list is configured.
         """
+        if auto_updates is not None:
+            pulumi.set(__self__, "auto_updates", auto_updates)
         if autoscaler is not None:
             pulumi.set(__self__, "autoscaler", autoscaler)
         if backend_services is not None:
@@ -368,6 +388,18 @@ class _OceanImportState:
             pulumi.set(__self__, "use_as_template_only", use_as_template_only)
         if whitelists is not None:
             pulumi.set(__self__, "whitelists", whitelists)
+
+    @property
+    @pulumi.getter(name="autoUpdates")
+    def auto_updates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportAutoUpdateArgs']]]]:
+        """
+        The Ocean Kubernetes AutoUpdate object. If set to 'true', Ocean will ensure that your clusters have an up-to-date configuration according to the respective GKE cluster.
+        """
+        return pulumi.get(self, "auto_updates")
+
+    @auto_updates.setter
+    def auto_updates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportAutoUpdateArgs']]]]):
+        pulumi.set(self, "auto_updates", value)
 
     @property
     @pulumi.getter
@@ -585,6 +617,7 @@ class OceanImport(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_updates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanImportAutoUpdateArgs', 'OceanImportAutoUpdateArgsDict']]]]] = None,
                  autoscaler: Optional[pulumi.Input[Union['OceanImportAutoscalerArgs', 'OceanImportAutoscalerArgsDict']]] = None,
                  backend_services: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanImportBackendServiceArgs', 'OceanImportBackendServiceArgsDict']]]]] = None,
                  blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -617,6 +650,9 @@ class OceanImport(pulumi.CustomResource):
             min_size=0,
             max_size=2,
             desired_capacity=0,
+            auto_updates=[{
+                "is_enabled": True,
+            }],
             whitelists=[
                 "n1-standard-1",
                 "n1-standard-2",
@@ -654,6 +690,7 @@ class OceanImport(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanImportAutoUpdateArgs', 'OceanImportAutoUpdateArgsDict']]]] auto_updates: The Ocean Kubernetes AutoUpdate object. If set to 'true', Ocean will ensure that your clusters have an up-to-date configuration according to the respective GKE cluster.
         :param pulumi.Input[Union['OceanImportAutoscalerArgs', 'OceanImportAutoscalerArgsDict']] autoscaler: The Ocean Kubernetes Autoscaler object.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanImportBackendServiceArgs', 'OceanImportBackendServiceArgsDict']]]] backend_services: Describes the backend service configurations.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklists: Instance types to avoid launching in the Ocean cluster. Cannot be configured if whitelist list is configured.
@@ -691,6 +728,9 @@ class OceanImport(pulumi.CustomResource):
             min_size=0,
             max_size=2,
             desired_capacity=0,
+            auto_updates=[{
+                "is_enabled": True,
+            }],
             whitelists=[
                 "n1-standard-1",
                 "n1-standard-2",
@@ -741,6 +781,7 @@ class OceanImport(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_updates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanImportAutoUpdateArgs', 'OceanImportAutoUpdateArgsDict']]]]] = None,
                  autoscaler: Optional[pulumi.Input[Union['OceanImportAutoscalerArgs', 'OceanImportAutoscalerArgsDict']]] = None,
                  backend_services: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanImportBackendServiceArgs', 'OceanImportBackendServiceArgsDict']]]]] = None,
                  blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -767,6 +808,7 @@ class OceanImport(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OceanImportArgs.__new__(OceanImportArgs)
 
+            __props__.__dict__["auto_updates"] = auto_updates
             __props__.__dict__["autoscaler"] = autoscaler
             __props__.__dict__["backend_services"] = backend_services
             __props__.__dict__["blacklists"] = blacklists
@@ -799,6 +841,7 @@ class OceanImport(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            auto_updates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanImportAutoUpdateArgs', 'OceanImportAutoUpdateArgsDict']]]]] = None,
             autoscaler: Optional[pulumi.Input[Union['OceanImportAutoscalerArgs', 'OceanImportAutoscalerArgsDict']]] = None,
             backend_services: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanImportBackendServiceArgs', 'OceanImportBackendServiceArgsDict']]]]] = None,
             blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -824,6 +867,7 @@ class OceanImport(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanImportAutoUpdateArgs', 'OceanImportAutoUpdateArgsDict']]]] auto_updates: The Ocean Kubernetes AutoUpdate object. If set to 'true', Ocean will ensure that your clusters have an up-to-date configuration according to the respective GKE cluster.
         :param pulumi.Input[Union['OceanImportAutoscalerArgs', 'OceanImportAutoscalerArgsDict']] autoscaler: The Ocean Kubernetes Autoscaler object.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanImportBackendServiceArgs', 'OceanImportBackendServiceArgsDict']]]] backend_services: Describes the backend service configurations.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklists: Instance types to avoid launching in the Ocean cluster. Cannot be configured if whitelist list is configured.
@@ -845,6 +889,7 @@ class OceanImport(pulumi.CustomResource):
 
         __props__ = _OceanImportState.__new__(_OceanImportState)
 
+        __props__.__dict__["auto_updates"] = auto_updates
         __props__.__dict__["autoscaler"] = autoscaler
         __props__.__dict__["backend_services"] = backend_services
         __props__.__dict__["blacklists"] = blacklists
@@ -864,6 +909,14 @@ class OceanImport(pulumi.CustomResource):
         __props__.__dict__["use_as_template_only"] = use_as_template_only
         __props__.__dict__["whitelists"] = whitelists
         return OceanImport(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="autoUpdates")
+    def auto_updates(self) -> pulumi.Output[Optional[Sequence['outputs.OceanImportAutoUpdate']]]:
+        """
+        The Ocean Kubernetes AutoUpdate object. If set to 'true', Ocean will ensure that your clusters have an up-to-date configuration according to the respective GKE cluster.
+        """
+        return pulumi.get(self, "auto_updates")
 
     @property
     @pulumi.getter

@@ -57,6 +57,8 @@ __all__ = [
     'ElastigroupScalingUpPolicyArgsDict',
     'ElastigroupScalingUpPolicyDimensionArgs',
     'ElastigroupScalingUpPolicyDimensionArgsDict',
+    'OceanImportAutoUpdateArgs',
+    'OceanImportAutoUpdateArgsDict',
     'OceanImportAutoscalerArgs',
     'OceanImportAutoscalerArgsDict',
     'OceanImportAutoscalerDownArgs',
@@ -1463,6 +1465,38 @@ class ElastigroupScalingUpPolicyDimensionArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class OceanImportAutoUpdateArgsDict(TypedDict):
+        is_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable the Ocean Kubernetes AutoUpdate.
+        """
+elif False:
+    OceanImportAutoUpdateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OceanImportAutoUpdateArgs:
+    def __init__(__self__, *,
+                 is_enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] is_enabled: Enable the Ocean Kubernetes AutoUpdate.
+        """
+        if is_enabled is not None:
+            pulumi.set(__self__, "is_enabled", is_enabled)
+
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable the Ocean Kubernetes AutoUpdate.
+        """
+        return pulumi.get(self, "is_enabled")
+
+    @is_enabled.setter
+    def is_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_enabled", value)
 
 
 if not MYPY:
