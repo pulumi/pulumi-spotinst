@@ -14,9 +14,6 @@ namespace Pulumi.SpotInst.Azure.Outputs
     public sealed class OceanNpSchedulingTask
     {
         public readonly string CronExpression;
-        /// <summary>
-        /// Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
-        /// </summary>
         public readonly bool IsEnabled;
         public readonly Outputs.OceanNpSchedulingTaskParameters? Parameters;
         public readonly string TaskType;

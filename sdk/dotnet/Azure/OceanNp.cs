@@ -91,6 +91,12 @@ namespace Pulumi.SpotInst.Azure
         public Output<ImmutableArray<Outputs.OceanNpLinuxOsConfig>> LinuxOsConfigs { get; private set; } = null!;
 
         /// <summary>
+        /// The OCean AKS Logging Object.
+        /// </summary>
+        [Output("logging")]
+        public Output<Outputs.OceanNpLogging?> Logging { get; private set; } = null!;
+
+        /// <summary>
         /// Maximum node count limit.
         /// </summary>
         [Output("maxCount")]
@@ -170,6 +176,12 @@ namespace Pulumi.SpotInst.Azure
         /// </summary>
         [Output("vnetSubnetIds")]
         public Output<ImmutableArray<string>> VnetSubnetIds { get; private set; } = null!;
+
+        /// <summary>
+        /// An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
+        /// </summary>
+        [Output("vngTemplateScheduling")]
+        public Output<Outputs.OceanNpVngTemplateScheduling?> VngTemplateScheduling { get; private set; } = null!;
 
 
         /// <summary>
@@ -320,6 +332,12 @@ namespace Pulumi.SpotInst.Azure
         }
 
         /// <summary>
+        /// The OCean AKS Logging Object.
+        /// </summary>
+        [Input("logging")]
+        public Input<Inputs.OceanNpLoggingArgs>? Logging { get; set; }
+
+        /// <summary>
         /// Maximum node count limit.
         /// </summary>
         [Input("maxCount")]
@@ -422,6 +440,12 @@ namespace Pulumi.SpotInst.Azure
             get => _vnetSubnetIds ?? (_vnetSubnetIds = new InputList<string>());
             set => _vnetSubnetIds = value;
         }
+
+        /// <summary>
+        /// An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
+        /// </summary>
+        [Input("vngTemplateScheduling")]
+        public Input<Inputs.OceanNpVngTemplateSchedulingArgs>? VngTemplateScheduling { get; set; }
 
         public OceanNpArgs()
         {
@@ -534,6 +558,12 @@ namespace Pulumi.SpotInst.Azure
         }
 
         /// <summary>
+        /// The OCean AKS Logging Object.
+        /// </summary>
+        [Input("logging")]
+        public Input<Inputs.OceanNpLoggingGetArgs>? Logging { get; set; }
+
+        /// <summary>
         /// Maximum node count limit.
         /// </summary>
         [Input("maxCount")]
@@ -636,6 +666,12 @@ namespace Pulumi.SpotInst.Azure
             get => _vnetSubnetIds ?? (_vnetSubnetIds = new InputList<string>());
             set => _vnetSubnetIds = value;
         }
+
+        /// <summary>
+        /// An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
+        /// </summary>
+        [Input("vngTemplateScheduling")]
+        public Input<Inputs.OceanNpVngTemplateSchedulingGetArgs>? VngTemplateScheduling { get; set; }
 
         public OceanNpState()
         {

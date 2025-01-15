@@ -15,6 +15,9 @@ namespace Pulumi.SpotInst.Azure.Inputs
         [Input("parametersClusterRoll")]
         public Input<Inputs.OceanNpSchedulingTaskParametersParametersClusterRollArgs>? ParametersClusterRoll { get; set; }
 
+        [Input("parametersUpgradeConfig")]
+        public Input<Inputs.OceanNpSchedulingTaskParametersParametersUpgradeConfigArgs>? ParametersUpgradeConfig { get; set; }
+
         public OceanNpSchedulingTaskParametersArgs()
         {
         }

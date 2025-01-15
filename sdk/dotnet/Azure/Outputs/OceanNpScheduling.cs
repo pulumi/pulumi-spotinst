@@ -13,16 +13,23 @@ namespace Pulumi.SpotInst.Azure.Outputs
     [OutputType]
     public sealed class OceanNpScheduling
     {
+        /// <summary>
+        /// An object used to specify times that the nodes in the virtual node group will be stopped.
+        /// </summary>
         public readonly Outputs.OceanNpSchedulingShutdownHours? ShutdownHours;
+        public readonly Outputs.OceanNpSchedulingSuspensionHours? SuspensionHours;
         public readonly ImmutableArray<Outputs.OceanNpSchedulingTask> Tasks;
 
         [OutputConstructor]
         private OceanNpScheduling(
             Outputs.OceanNpSchedulingShutdownHours? shutdownHours,
 
+            Outputs.OceanNpSchedulingSuspensionHours? suspensionHours,
+
             ImmutableArray<Outputs.OceanNpSchedulingTask> tasks)
         {
             ShutdownHours = shutdownHours;
+            SuspensionHours = suspensionHours;
             Tasks = tasks;
         }
     }

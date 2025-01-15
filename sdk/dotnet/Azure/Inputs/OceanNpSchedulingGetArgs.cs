@@ -12,8 +12,14 @@ namespace Pulumi.SpotInst.Azure.Inputs
 
     public sealed class OceanNpSchedulingGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// An object used to specify times that the nodes in the virtual node group will be stopped.
+        /// </summary>
         [Input("shutdownHours")]
         public Input<Inputs.OceanNpSchedulingShutdownHoursGetArgs>? ShutdownHours { get; set; }
+
+        [Input("suspensionHours")]
+        public Input<Inputs.OceanNpSchedulingSuspensionHoursGetArgs>? SuspensionHours { get; set; }
 
         [Input("tasks")]
         private InputList<Inputs.OceanNpSchedulingTaskGetArgs>? _tasks;

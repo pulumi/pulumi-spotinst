@@ -10,9 +10,11 @@ import com.pulumi.spotinst.azure.inputs.OceanNpFiltersArgs;
 import com.pulumi.spotinst.azure.inputs.OceanNpHeadroomArgs;
 import com.pulumi.spotinst.azure.inputs.OceanNpHealthArgs;
 import com.pulumi.spotinst.azure.inputs.OceanNpLinuxOsConfigArgs;
+import com.pulumi.spotinst.azure.inputs.OceanNpLoggingArgs;
 import com.pulumi.spotinst.azure.inputs.OceanNpSchedulingArgs;
 import com.pulumi.spotinst.azure.inputs.OceanNpTaintArgs;
 import com.pulumi.spotinst.azure.inputs.OceanNpUpdatePolicyArgs;
+import com.pulumi.spotinst.azure.inputs.OceanNpVngTemplateSchedulingArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -221,6 +223,21 @@ public final class OceanNpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The OCean AKS Logging Object.
+     * 
+     */
+    @Import(name="logging")
+    private @Nullable Output<OceanNpLoggingArgs> logging;
+
+    /**
+     * @return The OCean AKS Logging Object.
+     * 
+     */
+    public Optional<Output<OceanNpLoggingArgs>> logging() {
+        return Optional.ofNullable(this.logging);
+    }
+
+    /**
      * Maximum node count limit.
      * 
      */
@@ -421,6 +438,21 @@ public final class OceanNpState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.vnetSubnetIds);
     }
 
+    /**
+     * An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
+     * 
+     */
+    @Import(name="vngTemplateScheduling")
+    private @Nullable Output<OceanNpVngTemplateSchedulingArgs> vngTemplateScheduling;
+
+    /**
+     * @return An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
+     * 
+     */
+    public Optional<Output<OceanNpVngTemplateSchedulingArgs>> vngTemplateScheduling() {
+        return Optional.ofNullable(this.vngTemplateScheduling);
+    }
+
     private OceanNpState() {}
 
     private OceanNpState(OceanNpState $) {
@@ -439,6 +471,7 @@ public final class OceanNpState extends com.pulumi.resources.ResourceArgs {
         this.kubernetesVersion = $.kubernetesVersion;
         this.labels = $.labels;
         this.linuxOsConfigs = $.linuxOsConfigs;
+        this.logging = $.logging;
         this.maxCount = $.maxCount;
         this.maxPodsPerNode = $.maxPodsPerNode;
         this.minCount = $.minCount;
@@ -454,6 +487,7 @@ public final class OceanNpState extends com.pulumi.resources.ResourceArgs {
         this.taints = $.taints;
         this.updatePolicy = $.updatePolicy;
         this.vnetSubnetIds = $.vnetSubnetIds;
+        this.vngTemplateScheduling = $.vngTemplateScheduling;
     }
 
     public static Builder builder() {
@@ -772,6 +806,27 @@ public final class OceanNpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param logging The OCean AKS Logging Object.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logging(@Nullable Output<OceanNpLoggingArgs> logging) {
+            $.logging = logging;
+            return this;
+        }
+
+        /**
+         * @param logging The OCean AKS Logging Object.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logging(OceanNpLoggingArgs logging) {
+            return logging(Output.of(logging));
+        }
+
+        /**
          * @param maxCount Maximum node count limit.
          * 
          * @return builder
@@ -1078,6 +1133,27 @@ public final class OceanNpState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder vnetSubnetIds(String... vnetSubnetIds) {
             return vnetSubnetIds(List.of(vnetSubnetIds));
+        }
+
+        /**
+         * @param vngTemplateScheduling An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vngTemplateScheduling(@Nullable Output<OceanNpVngTemplateSchedulingArgs> vngTemplateScheduling) {
+            $.vngTemplateScheduling = vngTemplateScheduling;
+            return this;
+        }
+
+        /**
+         * @param vngTemplateScheduling An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vngTemplateScheduling(OceanNpVngTemplateSchedulingArgs vngTemplateScheduling) {
+            return vngTemplateScheduling(Output.of(vngTemplateScheduling));
         }
 
         public OceanNpState build() {

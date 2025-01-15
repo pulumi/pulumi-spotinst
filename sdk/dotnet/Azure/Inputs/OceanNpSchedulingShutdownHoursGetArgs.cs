@@ -12,14 +12,15 @@ namespace Pulumi.SpotInst.Azure.Inputs
 
     public sealed class OceanNpSchedulingShutdownHoursGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
-        /// </summary>
         [Input("isEnabled")]
         public Input<bool>? IsEnabled { get; set; }
 
         [Input("timeWindows")]
         private InputList<string>? _timeWindows;
+
+        /// <summary>
+        /// The times that the shutdown hours will apply. Required if `is_enabled` is true.
+        /// </summary>
         public InputList<string> TimeWindows
         {
             get => _timeWindows ?? (_timeWindows = new InputList<string>());

@@ -83,6 +83,10 @@ export class OceanNp extends pulumi.CustomResource {
      */
     public readonly linuxOsConfigs!: pulumi.Output<outputs.azure.OceanNpLinuxOsConfig[] | undefined>;
     /**
+     * The OCean AKS Logging Object.
+     */
+    public readonly logging!: pulumi.Output<outputs.azure.OceanNpLogging | undefined>;
+    /**
      * Maximum node count limit.
      */
     public readonly maxCount!: pulumi.Output<number | undefined>;
@@ -133,6 +137,10 @@ export class OceanNp extends pulumi.CustomResource {
      * The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
      */
     public readonly vnetSubnetIds!: pulumi.Output<string[] | undefined>;
+    /**
+     * An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
+     */
+    public readonly vngTemplateScheduling!: pulumi.Output<outputs.azure.OceanNpVngTemplateScheduling | undefined>;
 
     /**
      * Create a OceanNp resource with the given unique name, arguments, and options.
@@ -162,6 +170,7 @@ export class OceanNp extends pulumi.CustomResource {
             resourceInputs["kubernetesVersion"] = state ? state.kubernetesVersion : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["linuxOsConfigs"] = state ? state.linuxOsConfigs : undefined;
+            resourceInputs["logging"] = state ? state.logging : undefined;
             resourceInputs["maxCount"] = state ? state.maxCount : undefined;
             resourceInputs["maxPodsPerNode"] = state ? state.maxPodsPerNode : undefined;
             resourceInputs["minCount"] = state ? state.minCount : undefined;
@@ -177,6 +186,7 @@ export class OceanNp extends pulumi.CustomResource {
             resourceInputs["taints"] = state ? state.taints : undefined;
             resourceInputs["updatePolicy"] = state ? state.updatePolicy : undefined;
             resourceInputs["vnetSubnetIds"] = state ? state.vnetSubnetIds : undefined;
+            resourceInputs["vngTemplateScheduling"] = state ? state.vngTemplateScheduling : undefined;
         } else {
             const args = argsOrState as OceanNpArgs | undefined;
             if ((!args || args.aksClusterName === undefined) && !opts.urn) {
@@ -212,6 +222,7 @@ export class OceanNp extends pulumi.CustomResource {
             resourceInputs["kubernetesVersion"] = args ? args.kubernetesVersion : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["linuxOsConfigs"] = args ? args.linuxOsConfigs : undefined;
+            resourceInputs["logging"] = args ? args.logging : undefined;
             resourceInputs["maxCount"] = args ? args.maxCount : undefined;
             resourceInputs["maxPodsPerNode"] = args ? args.maxPodsPerNode : undefined;
             resourceInputs["minCount"] = args ? args.minCount : undefined;
@@ -227,6 +238,7 @@ export class OceanNp extends pulumi.CustomResource {
             resourceInputs["taints"] = args ? args.taints : undefined;
             resourceInputs["updatePolicy"] = args ? args.updatePolicy : undefined;
             resourceInputs["vnetSubnetIds"] = args ? args.vnetSubnetIds : undefined;
+            resourceInputs["vngTemplateScheduling"] = args ? args.vngTemplateScheduling : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(OceanNp.__pulumiType, name, resourceInputs, opts);
@@ -286,6 +298,10 @@ export interface OceanNpState {
      */
     linuxOsConfigs?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpLinuxOsConfig>[]>;
     /**
+     * The OCean AKS Logging Object.
+     */
+    logging?: pulumi.Input<inputs.azure.OceanNpLogging>;
+    /**
      * Maximum node count limit.
      */
     maxCount?: pulumi.Input<number>;
@@ -336,6 +352,10 @@ export interface OceanNpState {
      * The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
      */
     vnetSubnetIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
+     */
+    vngTemplateScheduling?: pulumi.Input<inputs.azure.OceanNpVngTemplateScheduling>;
 }
 
 /**
@@ -391,6 +411,10 @@ export interface OceanNpArgs {
      */
     linuxOsConfigs?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpLinuxOsConfig>[]>;
     /**
+     * The OCean AKS Logging Object.
+     */
+    logging?: pulumi.Input<inputs.azure.OceanNpLogging>;
+    /**
      * Maximum node count limit.
      */
     maxCount?: pulumi.Input<number>;
@@ -441,4 +465,8 @@ export interface OceanNpArgs {
      * The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
      */
     vnetSubnetIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
+     */
+    vngTemplateScheduling?: pulumi.Input<inputs.azure.OceanNpVngTemplateScheduling>;
 }

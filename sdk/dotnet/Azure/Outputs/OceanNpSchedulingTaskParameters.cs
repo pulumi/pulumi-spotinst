@@ -14,11 +14,16 @@ namespace Pulumi.SpotInst.Azure.Outputs
     public sealed class OceanNpSchedulingTaskParameters
     {
         public readonly Outputs.OceanNpSchedulingTaskParametersParametersClusterRoll? ParametersClusterRoll;
+        public readonly Outputs.OceanNpSchedulingTaskParametersParametersUpgradeConfig? ParametersUpgradeConfig;
 
         [OutputConstructor]
-        private OceanNpSchedulingTaskParameters(Outputs.OceanNpSchedulingTaskParametersParametersClusterRoll? parametersClusterRoll)
+        private OceanNpSchedulingTaskParameters(
+            Outputs.OceanNpSchedulingTaskParametersParametersClusterRoll? parametersClusterRoll,
+
+            Outputs.OceanNpSchedulingTaskParametersParametersUpgradeConfig? parametersUpgradeConfig)
         {
             ParametersClusterRoll = parametersClusterRoll;
+            ParametersUpgradeConfig = parametersUpgradeConfig;
         }
     }
 }
