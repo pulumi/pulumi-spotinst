@@ -1653,9 +1653,382 @@ func (o OceanNpLinuxOsConfigSysctlArrayOutput) Index(i pulumi.IntInput) OceanNpL
 	}).(OceanNpLinuxOsConfigSysctlOutput)
 }
 
+type OceanNpLogging struct {
+	// The Ocean AKS Logging Export object.
+	Export *OceanNpLoggingExport `pulumi:"export"`
+}
+
+// OceanNpLoggingInput is an input type that accepts OceanNpLoggingArgs and OceanNpLoggingOutput values.
+// You can construct a concrete instance of `OceanNpLoggingInput` via:
+//
+//	OceanNpLoggingArgs{...}
+type OceanNpLoggingInput interface {
+	pulumi.Input
+
+	ToOceanNpLoggingOutput() OceanNpLoggingOutput
+	ToOceanNpLoggingOutputWithContext(context.Context) OceanNpLoggingOutput
+}
+
+type OceanNpLoggingArgs struct {
+	// The Ocean AKS Logging Export object.
+	Export OceanNpLoggingExportPtrInput `pulumi:"export"`
+}
+
+func (OceanNpLoggingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpLogging)(nil)).Elem()
+}
+
+func (i OceanNpLoggingArgs) ToOceanNpLoggingOutput() OceanNpLoggingOutput {
+	return i.ToOceanNpLoggingOutputWithContext(context.Background())
+}
+
+func (i OceanNpLoggingArgs) ToOceanNpLoggingOutputWithContext(ctx context.Context) OceanNpLoggingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpLoggingOutput)
+}
+
+func (i OceanNpLoggingArgs) ToOceanNpLoggingPtrOutput() OceanNpLoggingPtrOutput {
+	return i.ToOceanNpLoggingPtrOutputWithContext(context.Background())
+}
+
+func (i OceanNpLoggingArgs) ToOceanNpLoggingPtrOutputWithContext(ctx context.Context) OceanNpLoggingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpLoggingOutput).ToOceanNpLoggingPtrOutputWithContext(ctx)
+}
+
+// OceanNpLoggingPtrInput is an input type that accepts OceanNpLoggingArgs, OceanNpLoggingPtr and OceanNpLoggingPtrOutput values.
+// You can construct a concrete instance of `OceanNpLoggingPtrInput` via:
+//
+//	        OceanNpLoggingArgs{...}
+//
+//	or:
+//
+//	        nil
+type OceanNpLoggingPtrInput interface {
+	pulumi.Input
+
+	ToOceanNpLoggingPtrOutput() OceanNpLoggingPtrOutput
+	ToOceanNpLoggingPtrOutputWithContext(context.Context) OceanNpLoggingPtrOutput
+}
+
+type oceanNpLoggingPtrType OceanNpLoggingArgs
+
+func OceanNpLoggingPtr(v *OceanNpLoggingArgs) OceanNpLoggingPtrInput {
+	return (*oceanNpLoggingPtrType)(v)
+}
+
+func (*oceanNpLoggingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanNpLogging)(nil)).Elem()
+}
+
+func (i *oceanNpLoggingPtrType) ToOceanNpLoggingPtrOutput() OceanNpLoggingPtrOutput {
+	return i.ToOceanNpLoggingPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanNpLoggingPtrType) ToOceanNpLoggingPtrOutputWithContext(ctx context.Context) OceanNpLoggingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpLoggingPtrOutput)
+}
+
+type OceanNpLoggingOutput struct{ *pulumi.OutputState }
+
+func (OceanNpLoggingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpLogging)(nil)).Elem()
+}
+
+func (o OceanNpLoggingOutput) ToOceanNpLoggingOutput() OceanNpLoggingOutput {
+	return o
+}
+
+func (o OceanNpLoggingOutput) ToOceanNpLoggingOutputWithContext(ctx context.Context) OceanNpLoggingOutput {
+	return o
+}
+
+func (o OceanNpLoggingOutput) ToOceanNpLoggingPtrOutput() OceanNpLoggingPtrOutput {
+	return o.ToOceanNpLoggingPtrOutputWithContext(context.Background())
+}
+
+func (o OceanNpLoggingOutput) ToOceanNpLoggingPtrOutputWithContext(ctx context.Context) OceanNpLoggingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanNpLogging) *OceanNpLogging {
+		return &v
+	}).(OceanNpLoggingPtrOutput)
+}
+
+// The Ocean AKS Logging Export object.
+func (o OceanNpLoggingOutput) Export() OceanNpLoggingExportPtrOutput {
+	return o.ApplyT(func(v OceanNpLogging) *OceanNpLoggingExport { return v.Export }).(OceanNpLoggingExportPtrOutput)
+}
+
+type OceanNpLoggingPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanNpLoggingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanNpLogging)(nil)).Elem()
+}
+
+func (o OceanNpLoggingPtrOutput) ToOceanNpLoggingPtrOutput() OceanNpLoggingPtrOutput {
+	return o
+}
+
+func (o OceanNpLoggingPtrOutput) ToOceanNpLoggingPtrOutputWithContext(ctx context.Context) OceanNpLoggingPtrOutput {
+	return o
+}
+
+func (o OceanNpLoggingPtrOutput) Elem() OceanNpLoggingOutput {
+	return o.ApplyT(func(v *OceanNpLogging) OceanNpLogging {
+		if v != nil {
+			return *v
+		}
+		var ret OceanNpLogging
+		return ret
+	}).(OceanNpLoggingOutput)
+}
+
+// The Ocean AKS Logging Export object.
+func (o OceanNpLoggingPtrOutput) Export() OceanNpLoggingExportPtrOutput {
+	return o.ApplyT(func(v *OceanNpLogging) *OceanNpLoggingExport {
+		if v == nil {
+			return nil
+		}
+		return v.Export
+	}).(OceanNpLoggingExportPtrOutput)
+}
+
+type OceanNpLoggingExport struct {
+	// Exports your cluster's logs to the storage account and container configured on the storage account [data integration](https://docs.spot.io/#operation/DataIntegrationCreate) given. Each file contains logs of 3 minutes where each log is separated by a new line and saved as a JSON. The file formats are `container`/`accountId``oceanId``oceanName`_`startTime`.log
+	AzureBlobs []OceanNpLoggingExportAzureBlob `pulumi:"azureBlobs"`
+}
+
+// OceanNpLoggingExportInput is an input type that accepts OceanNpLoggingExportArgs and OceanNpLoggingExportOutput values.
+// You can construct a concrete instance of `OceanNpLoggingExportInput` via:
+//
+//	OceanNpLoggingExportArgs{...}
+type OceanNpLoggingExportInput interface {
+	pulumi.Input
+
+	ToOceanNpLoggingExportOutput() OceanNpLoggingExportOutput
+	ToOceanNpLoggingExportOutputWithContext(context.Context) OceanNpLoggingExportOutput
+}
+
+type OceanNpLoggingExportArgs struct {
+	// Exports your cluster's logs to the storage account and container configured on the storage account [data integration](https://docs.spot.io/#operation/DataIntegrationCreate) given. Each file contains logs of 3 minutes where each log is separated by a new line and saved as a JSON. The file formats are `container`/`accountId``oceanId``oceanName`_`startTime`.log
+	AzureBlobs OceanNpLoggingExportAzureBlobArrayInput `pulumi:"azureBlobs"`
+}
+
+func (OceanNpLoggingExportArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpLoggingExport)(nil)).Elem()
+}
+
+func (i OceanNpLoggingExportArgs) ToOceanNpLoggingExportOutput() OceanNpLoggingExportOutput {
+	return i.ToOceanNpLoggingExportOutputWithContext(context.Background())
+}
+
+func (i OceanNpLoggingExportArgs) ToOceanNpLoggingExportOutputWithContext(ctx context.Context) OceanNpLoggingExportOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpLoggingExportOutput)
+}
+
+func (i OceanNpLoggingExportArgs) ToOceanNpLoggingExportPtrOutput() OceanNpLoggingExportPtrOutput {
+	return i.ToOceanNpLoggingExportPtrOutputWithContext(context.Background())
+}
+
+func (i OceanNpLoggingExportArgs) ToOceanNpLoggingExportPtrOutputWithContext(ctx context.Context) OceanNpLoggingExportPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpLoggingExportOutput).ToOceanNpLoggingExportPtrOutputWithContext(ctx)
+}
+
+// OceanNpLoggingExportPtrInput is an input type that accepts OceanNpLoggingExportArgs, OceanNpLoggingExportPtr and OceanNpLoggingExportPtrOutput values.
+// You can construct a concrete instance of `OceanNpLoggingExportPtrInput` via:
+//
+//	        OceanNpLoggingExportArgs{...}
+//
+//	or:
+//
+//	        nil
+type OceanNpLoggingExportPtrInput interface {
+	pulumi.Input
+
+	ToOceanNpLoggingExportPtrOutput() OceanNpLoggingExportPtrOutput
+	ToOceanNpLoggingExportPtrOutputWithContext(context.Context) OceanNpLoggingExportPtrOutput
+}
+
+type oceanNpLoggingExportPtrType OceanNpLoggingExportArgs
+
+func OceanNpLoggingExportPtr(v *OceanNpLoggingExportArgs) OceanNpLoggingExportPtrInput {
+	return (*oceanNpLoggingExportPtrType)(v)
+}
+
+func (*oceanNpLoggingExportPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanNpLoggingExport)(nil)).Elem()
+}
+
+func (i *oceanNpLoggingExportPtrType) ToOceanNpLoggingExportPtrOutput() OceanNpLoggingExportPtrOutput {
+	return i.ToOceanNpLoggingExportPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanNpLoggingExportPtrType) ToOceanNpLoggingExportPtrOutputWithContext(ctx context.Context) OceanNpLoggingExportPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpLoggingExportPtrOutput)
+}
+
+type OceanNpLoggingExportOutput struct{ *pulumi.OutputState }
+
+func (OceanNpLoggingExportOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpLoggingExport)(nil)).Elem()
+}
+
+func (o OceanNpLoggingExportOutput) ToOceanNpLoggingExportOutput() OceanNpLoggingExportOutput {
+	return o
+}
+
+func (o OceanNpLoggingExportOutput) ToOceanNpLoggingExportOutputWithContext(ctx context.Context) OceanNpLoggingExportOutput {
+	return o
+}
+
+func (o OceanNpLoggingExportOutput) ToOceanNpLoggingExportPtrOutput() OceanNpLoggingExportPtrOutput {
+	return o.ToOceanNpLoggingExportPtrOutputWithContext(context.Background())
+}
+
+func (o OceanNpLoggingExportOutput) ToOceanNpLoggingExportPtrOutputWithContext(ctx context.Context) OceanNpLoggingExportPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanNpLoggingExport) *OceanNpLoggingExport {
+		return &v
+	}).(OceanNpLoggingExportPtrOutput)
+}
+
+// Exports your cluster's logs to the storage account and container configured on the storage account [data integration](https://docs.spot.io/#operation/DataIntegrationCreate) given. Each file contains logs of 3 minutes where each log is separated by a new line and saved as a JSON. The file formats are `container`/`accountId“oceanId“oceanName`_`startTime`.log
+func (o OceanNpLoggingExportOutput) AzureBlobs() OceanNpLoggingExportAzureBlobArrayOutput {
+	return o.ApplyT(func(v OceanNpLoggingExport) []OceanNpLoggingExportAzureBlob { return v.AzureBlobs }).(OceanNpLoggingExportAzureBlobArrayOutput)
+}
+
+type OceanNpLoggingExportPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanNpLoggingExportPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanNpLoggingExport)(nil)).Elem()
+}
+
+func (o OceanNpLoggingExportPtrOutput) ToOceanNpLoggingExportPtrOutput() OceanNpLoggingExportPtrOutput {
+	return o
+}
+
+func (o OceanNpLoggingExportPtrOutput) ToOceanNpLoggingExportPtrOutputWithContext(ctx context.Context) OceanNpLoggingExportPtrOutput {
+	return o
+}
+
+func (o OceanNpLoggingExportPtrOutput) Elem() OceanNpLoggingExportOutput {
+	return o.ApplyT(func(v *OceanNpLoggingExport) OceanNpLoggingExport {
+		if v != nil {
+			return *v
+		}
+		var ret OceanNpLoggingExport
+		return ret
+	}).(OceanNpLoggingExportOutput)
+}
+
+// Exports your cluster's logs to the storage account and container configured on the storage account [data integration](https://docs.spot.io/#operation/DataIntegrationCreate) given. Each file contains logs of 3 minutes where each log is separated by a new line and saved as a JSON. The file formats are `container`/`accountId“oceanId“oceanName`_`startTime`.log
+func (o OceanNpLoggingExportPtrOutput) AzureBlobs() OceanNpLoggingExportAzureBlobArrayOutput {
+	return o.ApplyT(func(v *OceanNpLoggingExport) []OceanNpLoggingExportAzureBlob {
+		if v == nil {
+			return nil
+		}
+		return v.AzureBlobs
+	}).(OceanNpLoggingExportAzureBlobArrayOutput)
+}
+
+type OceanNpLoggingExportAzureBlob struct {
+	// The identifier of The Azure Blob data integration to export the logs to.
+	Id *string `pulumi:"id"`
+}
+
+// OceanNpLoggingExportAzureBlobInput is an input type that accepts OceanNpLoggingExportAzureBlobArgs and OceanNpLoggingExportAzureBlobOutput values.
+// You can construct a concrete instance of `OceanNpLoggingExportAzureBlobInput` via:
+//
+//	OceanNpLoggingExportAzureBlobArgs{...}
+type OceanNpLoggingExportAzureBlobInput interface {
+	pulumi.Input
+
+	ToOceanNpLoggingExportAzureBlobOutput() OceanNpLoggingExportAzureBlobOutput
+	ToOceanNpLoggingExportAzureBlobOutputWithContext(context.Context) OceanNpLoggingExportAzureBlobOutput
+}
+
+type OceanNpLoggingExportAzureBlobArgs struct {
+	// The identifier of The Azure Blob data integration to export the logs to.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (OceanNpLoggingExportAzureBlobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpLoggingExportAzureBlob)(nil)).Elem()
+}
+
+func (i OceanNpLoggingExportAzureBlobArgs) ToOceanNpLoggingExportAzureBlobOutput() OceanNpLoggingExportAzureBlobOutput {
+	return i.ToOceanNpLoggingExportAzureBlobOutputWithContext(context.Background())
+}
+
+func (i OceanNpLoggingExportAzureBlobArgs) ToOceanNpLoggingExportAzureBlobOutputWithContext(ctx context.Context) OceanNpLoggingExportAzureBlobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpLoggingExportAzureBlobOutput)
+}
+
+// OceanNpLoggingExportAzureBlobArrayInput is an input type that accepts OceanNpLoggingExportAzureBlobArray and OceanNpLoggingExportAzureBlobArrayOutput values.
+// You can construct a concrete instance of `OceanNpLoggingExportAzureBlobArrayInput` via:
+//
+//	OceanNpLoggingExportAzureBlobArray{ OceanNpLoggingExportAzureBlobArgs{...} }
+type OceanNpLoggingExportAzureBlobArrayInput interface {
+	pulumi.Input
+
+	ToOceanNpLoggingExportAzureBlobArrayOutput() OceanNpLoggingExportAzureBlobArrayOutput
+	ToOceanNpLoggingExportAzureBlobArrayOutputWithContext(context.Context) OceanNpLoggingExportAzureBlobArrayOutput
+}
+
+type OceanNpLoggingExportAzureBlobArray []OceanNpLoggingExportAzureBlobInput
+
+func (OceanNpLoggingExportAzureBlobArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanNpLoggingExportAzureBlob)(nil)).Elem()
+}
+
+func (i OceanNpLoggingExportAzureBlobArray) ToOceanNpLoggingExportAzureBlobArrayOutput() OceanNpLoggingExportAzureBlobArrayOutput {
+	return i.ToOceanNpLoggingExportAzureBlobArrayOutputWithContext(context.Background())
+}
+
+func (i OceanNpLoggingExportAzureBlobArray) ToOceanNpLoggingExportAzureBlobArrayOutputWithContext(ctx context.Context) OceanNpLoggingExportAzureBlobArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpLoggingExportAzureBlobArrayOutput)
+}
+
+type OceanNpLoggingExportAzureBlobOutput struct{ *pulumi.OutputState }
+
+func (OceanNpLoggingExportAzureBlobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpLoggingExportAzureBlob)(nil)).Elem()
+}
+
+func (o OceanNpLoggingExportAzureBlobOutput) ToOceanNpLoggingExportAzureBlobOutput() OceanNpLoggingExportAzureBlobOutput {
+	return o
+}
+
+func (o OceanNpLoggingExportAzureBlobOutput) ToOceanNpLoggingExportAzureBlobOutputWithContext(ctx context.Context) OceanNpLoggingExportAzureBlobOutput {
+	return o
+}
+
+// The identifier of The Azure Blob data integration to export the logs to.
+func (o OceanNpLoggingExportAzureBlobOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanNpLoggingExportAzureBlob) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type OceanNpLoggingExportAzureBlobArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanNpLoggingExportAzureBlobArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanNpLoggingExportAzureBlob)(nil)).Elem()
+}
+
+func (o OceanNpLoggingExportAzureBlobArrayOutput) ToOceanNpLoggingExportAzureBlobArrayOutput() OceanNpLoggingExportAzureBlobArrayOutput {
+	return o
+}
+
+func (o OceanNpLoggingExportAzureBlobArrayOutput) ToOceanNpLoggingExportAzureBlobArrayOutputWithContext(ctx context.Context) OceanNpLoggingExportAzureBlobArrayOutput {
+	return o
+}
+
+func (o OceanNpLoggingExportAzureBlobArrayOutput) Index(i pulumi.IntInput) OceanNpLoggingExportAzureBlobOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanNpLoggingExportAzureBlob {
+		return vs[0].([]OceanNpLoggingExportAzureBlob)[vs[1].(int)]
+	}).(OceanNpLoggingExportAzureBlobOutput)
+}
+
 type OceanNpScheduling struct {
-	ShutdownHours *OceanNpSchedulingShutdownHours `pulumi:"shutdownHours"`
-	Tasks         []OceanNpSchedulingTask         `pulumi:"tasks"`
+	// An object used to specify times that the nodes in the virtual node group will be stopped.
+	ShutdownHours   *OceanNpSchedulingShutdownHours   `pulumi:"shutdownHours"`
+	SuspensionHours *OceanNpSchedulingSuspensionHours `pulumi:"suspensionHours"`
+	Tasks           []OceanNpSchedulingTask           `pulumi:"tasks"`
 }
 
 // OceanNpSchedulingInput is an input type that accepts OceanNpSchedulingArgs and OceanNpSchedulingOutput values.
@@ -1670,8 +2043,10 @@ type OceanNpSchedulingInput interface {
 }
 
 type OceanNpSchedulingArgs struct {
-	ShutdownHours OceanNpSchedulingShutdownHoursPtrInput `pulumi:"shutdownHours"`
-	Tasks         OceanNpSchedulingTaskArrayInput        `pulumi:"tasks"`
+	// An object used to specify times that the nodes in the virtual node group will be stopped.
+	ShutdownHours   OceanNpSchedulingShutdownHoursPtrInput   `pulumi:"shutdownHours"`
+	SuspensionHours OceanNpSchedulingSuspensionHoursPtrInput `pulumi:"suspensionHours"`
+	Tasks           OceanNpSchedulingTaskArrayInput          `pulumi:"tasks"`
 }
 
 func (OceanNpSchedulingArgs) ElementType() reflect.Type {
@@ -1751,8 +2126,13 @@ func (o OceanNpSchedulingOutput) ToOceanNpSchedulingPtrOutputWithContext(ctx con
 	}).(OceanNpSchedulingPtrOutput)
 }
 
+// An object used to specify times that the nodes in the virtual node group will be stopped.
 func (o OceanNpSchedulingOutput) ShutdownHours() OceanNpSchedulingShutdownHoursPtrOutput {
 	return o.ApplyT(func(v OceanNpScheduling) *OceanNpSchedulingShutdownHours { return v.ShutdownHours }).(OceanNpSchedulingShutdownHoursPtrOutput)
+}
+
+func (o OceanNpSchedulingOutput) SuspensionHours() OceanNpSchedulingSuspensionHoursPtrOutput {
+	return o.ApplyT(func(v OceanNpScheduling) *OceanNpSchedulingSuspensionHours { return v.SuspensionHours }).(OceanNpSchedulingSuspensionHoursPtrOutput)
 }
 
 func (o OceanNpSchedulingOutput) Tasks() OceanNpSchedulingTaskArrayOutput {
@@ -1783,6 +2163,7 @@ func (o OceanNpSchedulingPtrOutput) Elem() OceanNpSchedulingOutput {
 	}).(OceanNpSchedulingOutput)
 }
 
+// An object used to specify times that the nodes in the virtual node group will be stopped.
 func (o OceanNpSchedulingPtrOutput) ShutdownHours() OceanNpSchedulingShutdownHoursPtrOutput {
 	return o.ApplyT(func(v *OceanNpScheduling) *OceanNpSchedulingShutdownHours {
 		if v == nil {
@@ -1790,6 +2171,15 @@ func (o OceanNpSchedulingPtrOutput) ShutdownHours() OceanNpSchedulingShutdownHou
 		}
 		return v.ShutdownHours
 	}).(OceanNpSchedulingShutdownHoursPtrOutput)
+}
+
+func (o OceanNpSchedulingPtrOutput) SuspensionHours() OceanNpSchedulingSuspensionHoursPtrOutput {
+	return o.ApplyT(func(v *OceanNpScheduling) *OceanNpSchedulingSuspensionHours {
+		if v == nil {
+			return nil
+		}
+		return v.SuspensionHours
+	}).(OceanNpSchedulingSuspensionHoursPtrOutput)
 }
 
 func (o OceanNpSchedulingPtrOutput) Tasks() OceanNpSchedulingTaskArrayOutput {
@@ -1802,8 +2192,8 @@ func (o OceanNpSchedulingPtrOutput) Tasks() OceanNpSchedulingTaskArrayOutput {
 }
 
 type OceanNpSchedulingShutdownHours struct {
-	// Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
-	IsEnabled   *bool    `pulumi:"isEnabled"`
+	IsEnabled *bool `pulumi:"isEnabled"`
+	// The times that the shutdown hours will apply. Required if `isEnabled` is true.
 	TimeWindows []string `pulumi:"timeWindows"`
 }
 
@@ -1819,8 +2209,8 @@ type OceanNpSchedulingShutdownHoursInput interface {
 }
 
 type OceanNpSchedulingShutdownHoursArgs struct {
-	// Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
-	IsEnabled   pulumi.BoolPtrInput     `pulumi:"isEnabled"`
+	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
+	// The times that the shutdown hours will apply. Required if `isEnabled` is true.
 	TimeWindows pulumi.StringArrayInput `pulumi:"timeWindows"`
 }
 
@@ -1901,11 +2291,11 @@ func (o OceanNpSchedulingShutdownHoursOutput) ToOceanNpSchedulingShutdownHoursPt
 	}).(OceanNpSchedulingShutdownHoursPtrOutput)
 }
 
-// Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
 func (o OceanNpSchedulingShutdownHoursOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanNpSchedulingShutdownHours) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// The times that the shutdown hours will apply. Required if `isEnabled` is true.
 func (o OceanNpSchedulingShutdownHoursOutput) TimeWindows() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanNpSchedulingShutdownHours) []string { return v.TimeWindows }).(pulumi.StringArrayOutput)
 }
@@ -1934,7 +2324,6 @@ func (o OceanNpSchedulingShutdownHoursPtrOutput) Elem() OceanNpSchedulingShutdow
 	}).(OceanNpSchedulingShutdownHoursOutput)
 }
 
-// Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
 func (o OceanNpSchedulingShutdownHoursPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanNpSchedulingShutdownHours) *bool {
 		if v == nil {
@@ -1944,6 +2333,7 @@ func (o OceanNpSchedulingShutdownHoursPtrOutput) IsEnabled() pulumi.BoolPtrOutpu
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The times that the shutdown hours will apply. Required if `isEnabled` is true.
 func (o OceanNpSchedulingShutdownHoursPtrOutput) TimeWindows() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanNpSchedulingShutdownHours) []string {
 		if v == nil {
@@ -1953,12 +2343,163 @@ func (o OceanNpSchedulingShutdownHoursPtrOutput) TimeWindows() pulumi.StringArra
 	}).(pulumi.StringArrayOutput)
 }
 
+type OceanNpSchedulingSuspensionHours struct {
+	IsEnabled *bool `pulumi:"isEnabled"`
+	// The times that the shutdown hours will apply. Required if `isEnabled` is true.
+	TimeWindows []string `pulumi:"timeWindows"`
+}
+
+// OceanNpSchedulingSuspensionHoursInput is an input type that accepts OceanNpSchedulingSuspensionHoursArgs and OceanNpSchedulingSuspensionHoursOutput values.
+// You can construct a concrete instance of `OceanNpSchedulingSuspensionHoursInput` via:
+//
+//	OceanNpSchedulingSuspensionHoursArgs{...}
+type OceanNpSchedulingSuspensionHoursInput interface {
+	pulumi.Input
+
+	ToOceanNpSchedulingSuspensionHoursOutput() OceanNpSchedulingSuspensionHoursOutput
+	ToOceanNpSchedulingSuspensionHoursOutputWithContext(context.Context) OceanNpSchedulingSuspensionHoursOutput
+}
+
+type OceanNpSchedulingSuspensionHoursArgs struct {
+	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
+	// The times that the shutdown hours will apply. Required if `isEnabled` is true.
+	TimeWindows pulumi.StringArrayInput `pulumi:"timeWindows"`
+}
+
+func (OceanNpSchedulingSuspensionHoursArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpSchedulingSuspensionHours)(nil)).Elem()
+}
+
+func (i OceanNpSchedulingSuspensionHoursArgs) ToOceanNpSchedulingSuspensionHoursOutput() OceanNpSchedulingSuspensionHoursOutput {
+	return i.ToOceanNpSchedulingSuspensionHoursOutputWithContext(context.Background())
+}
+
+func (i OceanNpSchedulingSuspensionHoursArgs) ToOceanNpSchedulingSuspensionHoursOutputWithContext(ctx context.Context) OceanNpSchedulingSuspensionHoursOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpSchedulingSuspensionHoursOutput)
+}
+
+func (i OceanNpSchedulingSuspensionHoursArgs) ToOceanNpSchedulingSuspensionHoursPtrOutput() OceanNpSchedulingSuspensionHoursPtrOutput {
+	return i.ToOceanNpSchedulingSuspensionHoursPtrOutputWithContext(context.Background())
+}
+
+func (i OceanNpSchedulingSuspensionHoursArgs) ToOceanNpSchedulingSuspensionHoursPtrOutputWithContext(ctx context.Context) OceanNpSchedulingSuspensionHoursPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpSchedulingSuspensionHoursOutput).ToOceanNpSchedulingSuspensionHoursPtrOutputWithContext(ctx)
+}
+
+// OceanNpSchedulingSuspensionHoursPtrInput is an input type that accepts OceanNpSchedulingSuspensionHoursArgs, OceanNpSchedulingSuspensionHoursPtr and OceanNpSchedulingSuspensionHoursPtrOutput values.
+// You can construct a concrete instance of `OceanNpSchedulingSuspensionHoursPtrInput` via:
+//
+//	        OceanNpSchedulingSuspensionHoursArgs{...}
+//
+//	or:
+//
+//	        nil
+type OceanNpSchedulingSuspensionHoursPtrInput interface {
+	pulumi.Input
+
+	ToOceanNpSchedulingSuspensionHoursPtrOutput() OceanNpSchedulingSuspensionHoursPtrOutput
+	ToOceanNpSchedulingSuspensionHoursPtrOutputWithContext(context.Context) OceanNpSchedulingSuspensionHoursPtrOutput
+}
+
+type oceanNpSchedulingSuspensionHoursPtrType OceanNpSchedulingSuspensionHoursArgs
+
+func OceanNpSchedulingSuspensionHoursPtr(v *OceanNpSchedulingSuspensionHoursArgs) OceanNpSchedulingSuspensionHoursPtrInput {
+	return (*oceanNpSchedulingSuspensionHoursPtrType)(v)
+}
+
+func (*oceanNpSchedulingSuspensionHoursPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanNpSchedulingSuspensionHours)(nil)).Elem()
+}
+
+func (i *oceanNpSchedulingSuspensionHoursPtrType) ToOceanNpSchedulingSuspensionHoursPtrOutput() OceanNpSchedulingSuspensionHoursPtrOutput {
+	return i.ToOceanNpSchedulingSuspensionHoursPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanNpSchedulingSuspensionHoursPtrType) ToOceanNpSchedulingSuspensionHoursPtrOutputWithContext(ctx context.Context) OceanNpSchedulingSuspensionHoursPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpSchedulingSuspensionHoursPtrOutput)
+}
+
+type OceanNpSchedulingSuspensionHoursOutput struct{ *pulumi.OutputState }
+
+func (OceanNpSchedulingSuspensionHoursOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpSchedulingSuspensionHours)(nil)).Elem()
+}
+
+func (o OceanNpSchedulingSuspensionHoursOutput) ToOceanNpSchedulingSuspensionHoursOutput() OceanNpSchedulingSuspensionHoursOutput {
+	return o
+}
+
+func (o OceanNpSchedulingSuspensionHoursOutput) ToOceanNpSchedulingSuspensionHoursOutputWithContext(ctx context.Context) OceanNpSchedulingSuspensionHoursOutput {
+	return o
+}
+
+func (o OceanNpSchedulingSuspensionHoursOutput) ToOceanNpSchedulingSuspensionHoursPtrOutput() OceanNpSchedulingSuspensionHoursPtrOutput {
+	return o.ToOceanNpSchedulingSuspensionHoursPtrOutputWithContext(context.Background())
+}
+
+func (o OceanNpSchedulingSuspensionHoursOutput) ToOceanNpSchedulingSuspensionHoursPtrOutputWithContext(ctx context.Context) OceanNpSchedulingSuspensionHoursPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanNpSchedulingSuspensionHours) *OceanNpSchedulingSuspensionHours {
+		return &v
+	}).(OceanNpSchedulingSuspensionHoursPtrOutput)
+}
+
+func (o OceanNpSchedulingSuspensionHoursOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanNpSchedulingSuspensionHours) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The times that the shutdown hours will apply. Required if `isEnabled` is true.
+func (o OceanNpSchedulingSuspensionHoursOutput) TimeWindows() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanNpSchedulingSuspensionHours) []string { return v.TimeWindows }).(pulumi.StringArrayOutput)
+}
+
+type OceanNpSchedulingSuspensionHoursPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanNpSchedulingSuspensionHoursPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanNpSchedulingSuspensionHours)(nil)).Elem()
+}
+
+func (o OceanNpSchedulingSuspensionHoursPtrOutput) ToOceanNpSchedulingSuspensionHoursPtrOutput() OceanNpSchedulingSuspensionHoursPtrOutput {
+	return o
+}
+
+func (o OceanNpSchedulingSuspensionHoursPtrOutput) ToOceanNpSchedulingSuspensionHoursPtrOutputWithContext(ctx context.Context) OceanNpSchedulingSuspensionHoursPtrOutput {
+	return o
+}
+
+func (o OceanNpSchedulingSuspensionHoursPtrOutput) Elem() OceanNpSchedulingSuspensionHoursOutput {
+	return o.ApplyT(func(v *OceanNpSchedulingSuspensionHours) OceanNpSchedulingSuspensionHours {
+		if v != nil {
+			return *v
+		}
+		var ret OceanNpSchedulingSuspensionHours
+		return ret
+	}).(OceanNpSchedulingSuspensionHoursOutput)
+}
+
+func (o OceanNpSchedulingSuspensionHoursPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanNpSchedulingSuspensionHours) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The times that the shutdown hours will apply. Required if `isEnabled` is true.
+func (o OceanNpSchedulingSuspensionHoursPtrOutput) TimeWindows() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanNpSchedulingSuspensionHours) []string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeWindows
+	}).(pulumi.StringArrayOutput)
+}
+
 type OceanNpSchedulingTask struct {
-	CronExpression string `pulumi:"cronExpression"`
-	// Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
-	IsEnabled  bool                             `pulumi:"isEnabled"`
-	Parameters *OceanNpSchedulingTaskParameters `pulumi:"parameters"`
-	TaskType   string                           `pulumi:"taskType"`
+	CronExpression string                           `pulumi:"cronExpression"`
+	IsEnabled      bool                             `pulumi:"isEnabled"`
+	Parameters     *OceanNpSchedulingTaskParameters `pulumi:"parameters"`
+	TaskType       string                           `pulumi:"taskType"`
 }
 
 // OceanNpSchedulingTaskInput is an input type that accepts OceanNpSchedulingTaskArgs and OceanNpSchedulingTaskOutput values.
@@ -1973,11 +2514,10 @@ type OceanNpSchedulingTaskInput interface {
 }
 
 type OceanNpSchedulingTaskArgs struct {
-	CronExpression pulumi.StringInput `pulumi:"cronExpression"`
-	// Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
-	IsEnabled  pulumi.BoolInput                        `pulumi:"isEnabled"`
-	Parameters OceanNpSchedulingTaskParametersPtrInput `pulumi:"parameters"`
-	TaskType   pulumi.StringInput                      `pulumi:"taskType"`
+	CronExpression pulumi.StringInput                      `pulumi:"cronExpression"`
+	IsEnabled      pulumi.BoolInput                        `pulumi:"isEnabled"`
+	Parameters     OceanNpSchedulingTaskParametersPtrInput `pulumi:"parameters"`
+	TaskType       pulumi.StringInput                      `pulumi:"taskType"`
 }
 
 func (OceanNpSchedulingTaskArgs) ElementType() reflect.Type {
@@ -2035,7 +2575,6 @@ func (o OceanNpSchedulingTaskOutput) CronExpression() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanNpSchedulingTask) string { return v.CronExpression }).(pulumi.StringOutput)
 }
 
-// Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
 func (o OceanNpSchedulingTaskOutput) IsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v OceanNpSchedulingTask) bool { return v.IsEnabled }).(pulumi.BoolOutput)
 }
@@ -2069,7 +2608,8 @@ func (o OceanNpSchedulingTaskArrayOutput) Index(i pulumi.IntInput) OceanNpSchedu
 }
 
 type OceanNpSchedulingTaskParameters struct {
-	ParametersClusterRoll *OceanNpSchedulingTaskParametersParametersClusterRoll `pulumi:"parametersClusterRoll"`
+	ParametersClusterRoll   *OceanNpSchedulingTaskParametersParametersClusterRoll   `pulumi:"parametersClusterRoll"`
+	ParametersUpgradeConfig *OceanNpSchedulingTaskParametersParametersUpgradeConfig `pulumi:"parametersUpgradeConfig"`
 }
 
 // OceanNpSchedulingTaskParametersInput is an input type that accepts OceanNpSchedulingTaskParametersArgs and OceanNpSchedulingTaskParametersOutput values.
@@ -2084,7 +2624,8 @@ type OceanNpSchedulingTaskParametersInput interface {
 }
 
 type OceanNpSchedulingTaskParametersArgs struct {
-	ParametersClusterRoll OceanNpSchedulingTaskParametersParametersClusterRollPtrInput `pulumi:"parametersClusterRoll"`
+	ParametersClusterRoll   OceanNpSchedulingTaskParametersParametersClusterRollPtrInput   `pulumi:"parametersClusterRoll"`
+	ParametersUpgradeConfig OceanNpSchedulingTaskParametersParametersUpgradeConfigPtrInput `pulumi:"parametersUpgradeConfig"`
 }
 
 func (OceanNpSchedulingTaskParametersArgs) ElementType() reflect.Type {
@@ -2170,6 +2711,12 @@ func (o OceanNpSchedulingTaskParametersOutput) ParametersClusterRoll() OceanNpSc
 	}).(OceanNpSchedulingTaskParametersParametersClusterRollPtrOutput)
 }
 
+func (o OceanNpSchedulingTaskParametersOutput) ParametersUpgradeConfig() OceanNpSchedulingTaskParametersParametersUpgradeConfigPtrOutput {
+	return o.ApplyT(func(v OceanNpSchedulingTaskParameters) *OceanNpSchedulingTaskParametersParametersUpgradeConfig {
+		return v.ParametersUpgradeConfig
+	}).(OceanNpSchedulingTaskParametersParametersUpgradeConfigPtrOutput)
+}
+
 type OceanNpSchedulingTaskParametersPtrOutput struct{ *pulumi.OutputState }
 
 func (OceanNpSchedulingTaskParametersPtrOutput) ElementType() reflect.Type {
@@ -2201,6 +2748,15 @@ func (o OceanNpSchedulingTaskParametersPtrOutput) ParametersClusterRoll() OceanN
 		}
 		return v.ParametersClusterRoll
 	}).(OceanNpSchedulingTaskParametersParametersClusterRollPtrOutput)
+}
+
+func (o OceanNpSchedulingTaskParametersPtrOutput) ParametersUpgradeConfig() OceanNpSchedulingTaskParametersParametersUpgradeConfigPtrOutput {
+	return o.ApplyT(func(v *OceanNpSchedulingTaskParameters) *OceanNpSchedulingTaskParametersParametersUpgradeConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ParametersUpgradeConfig
+	}).(OceanNpSchedulingTaskParametersParametersUpgradeConfigPtrOutput)
 }
 
 type OceanNpSchedulingTaskParametersParametersClusterRoll struct {
@@ -2433,6 +2989,392 @@ func (o OceanNpSchedulingTaskParametersParametersClusterRollPtrOutput) VngIds() 
 		}
 		return v.VngIds
 	}).(pulumi.StringArrayOutput)
+}
+
+type OceanNpSchedulingTaskParametersParametersUpgradeConfig struct {
+	ApplyRoll      *bool                                                                 `pulumi:"applyRoll"`
+	RollParameters *OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParameters `pulumi:"rollParameters"`
+	ScopeVersion   *string                                                               `pulumi:"scopeVersion"`
+}
+
+// OceanNpSchedulingTaskParametersParametersUpgradeConfigInput is an input type that accepts OceanNpSchedulingTaskParametersParametersUpgradeConfigArgs and OceanNpSchedulingTaskParametersParametersUpgradeConfigOutput values.
+// You can construct a concrete instance of `OceanNpSchedulingTaskParametersParametersUpgradeConfigInput` via:
+//
+//	OceanNpSchedulingTaskParametersParametersUpgradeConfigArgs{...}
+type OceanNpSchedulingTaskParametersParametersUpgradeConfigInput interface {
+	pulumi.Input
+
+	ToOceanNpSchedulingTaskParametersParametersUpgradeConfigOutput() OceanNpSchedulingTaskParametersParametersUpgradeConfigOutput
+	ToOceanNpSchedulingTaskParametersParametersUpgradeConfigOutputWithContext(context.Context) OceanNpSchedulingTaskParametersParametersUpgradeConfigOutput
+}
+
+type OceanNpSchedulingTaskParametersParametersUpgradeConfigArgs struct {
+	ApplyRoll      pulumi.BoolPtrInput                                                          `pulumi:"applyRoll"`
+	RollParameters OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrInput `pulumi:"rollParameters"`
+	ScopeVersion   pulumi.StringPtrInput                                                        `pulumi:"scopeVersion"`
+}
+
+func (OceanNpSchedulingTaskParametersParametersUpgradeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpSchedulingTaskParametersParametersUpgradeConfig)(nil)).Elem()
+}
+
+func (i OceanNpSchedulingTaskParametersParametersUpgradeConfigArgs) ToOceanNpSchedulingTaskParametersParametersUpgradeConfigOutput() OceanNpSchedulingTaskParametersParametersUpgradeConfigOutput {
+	return i.ToOceanNpSchedulingTaskParametersParametersUpgradeConfigOutputWithContext(context.Background())
+}
+
+func (i OceanNpSchedulingTaskParametersParametersUpgradeConfigArgs) ToOceanNpSchedulingTaskParametersParametersUpgradeConfigOutputWithContext(ctx context.Context) OceanNpSchedulingTaskParametersParametersUpgradeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpSchedulingTaskParametersParametersUpgradeConfigOutput)
+}
+
+func (i OceanNpSchedulingTaskParametersParametersUpgradeConfigArgs) ToOceanNpSchedulingTaskParametersParametersUpgradeConfigPtrOutput() OceanNpSchedulingTaskParametersParametersUpgradeConfigPtrOutput {
+	return i.ToOceanNpSchedulingTaskParametersParametersUpgradeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i OceanNpSchedulingTaskParametersParametersUpgradeConfigArgs) ToOceanNpSchedulingTaskParametersParametersUpgradeConfigPtrOutputWithContext(ctx context.Context) OceanNpSchedulingTaskParametersParametersUpgradeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpSchedulingTaskParametersParametersUpgradeConfigOutput).ToOceanNpSchedulingTaskParametersParametersUpgradeConfigPtrOutputWithContext(ctx)
+}
+
+// OceanNpSchedulingTaskParametersParametersUpgradeConfigPtrInput is an input type that accepts OceanNpSchedulingTaskParametersParametersUpgradeConfigArgs, OceanNpSchedulingTaskParametersParametersUpgradeConfigPtr and OceanNpSchedulingTaskParametersParametersUpgradeConfigPtrOutput values.
+// You can construct a concrete instance of `OceanNpSchedulingTaskParametersParametersUpgradeConfigPtrInput` via:
+//
+//	        OceanNpSchedulingTaskParametersParametersUpgradeConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type OceanNpSchedulingTaskParametersParametersUpgradeConfigPtrInput interface {
+	pulumi.Input
+
+	ToOceanNpSchedulingTaskParametersParametersUpgradeConfigPtrOutput() OceanNpSchedulingTaskParametersParametersUpgradeConfigPtrOutput
+	ToOceanNpSchedulingTaskParametersParametersUpgradeConfigPtrOutputWithContext(context.Context) OceanNpSchedulingTaskParametersParametersUpgradeConfigPtrOutput
+}
+
+type oceanNpSchedulingTaskParametersParametersUpgradeConfigPtrType OceanNpSchedulingTaskParametersParametersUpgradeConfigArgs
+
+func OceanNpSchedulingTaskParametersParametersUpgradeConfigPtr(v *OceanNpSchedulingTaskParametersParametersUpgradeConfigArgs) OceanNpSchedulingTaskParametersParametersUpgradeConfigPtrInput {
+	return (*oceanNpSchedulingTaskParametersParametersUpgradeConfigPtrType)(v)
+}
+
+func (*oceanNpSchedulingTaskParametersParametersUpgradeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanNpSchedulingTaskParametersParametersUpgradeConfig)(nil)).Elem()
+}
+
+func (i *oceanNpSchedulingTaskParametersParametersUpgradeConfigPtrType) ToOceanNpSchedulingTaskParametersParametersUpgradeConfigPtrOutput() OceanNpSchedulingTaskParametersParametersUpgradeConfigPtrOutput {
+	return i.ToOceanNpSchedulingTaskParametersParametersUpgradeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanNpSchedulingTaskParametersParametersUpgradeConfigPtrType) ToOceanNpSchedulingTaskParametersParametersUpgradeConfigPtrOutputWithContext(ctx context.Context) OceanNpSchedulingTaskParametersParametersUpgradeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpSchedulingTaskParametersParametersUpgradeConfigPtrOutput)
+}
+
+type OceanNpSchedulingTaskParametersParametersUpgradeConfigOutput struct{ *pulumi.OutputState }
+
+func (OceanNpSchedulingTaskParametersParametersUpgradeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpSchedulingTaskParametersParametersUpgradeConfig)(nil)).Elem()
+}
+
+func (o OceanNpSchedulingTaskParametersParametersUpgradeConfigOutput) ToOceanNpSchedulingTaskParametersParametersUpgradeConfigOutput() OceanNpSchedulingTaskParametersParametersUpgradeConfigOutput {
+	return o
+}
+
+func (o OceanNpSchedulingTaskParametersParametersUpgradeConfigOutput) ToOceanNpSchedulingTaskParametersParametersUpgradeConfigOutputWithContext(ctx context.Context) OceanNpSchedulingTaskParametersParametersUpgradeConfigOutput {
+	return o
+}
+
+func (o OceanNpSchedulingTaskParametersParametersUpgradeConfigOutput) ToOceanNpSchedulingTaskParametersParametersUpgradeConfigPtrOutput() OceanNpSchedulingTaskParametersParametersUpgradeConfigPtrOutput {
+	return o.ToOceanNpSchedulingTaskParametersParametersUpgradeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o OceanNpSchedulingTaskParametersParametersUpgradeConfigOutput) ToOceanNpSchedulingTaskParametersParametersUpgradeConfigPtrOutputWithContext(ctx context.Context) OceanNpSchedulingTaskParametersParametersUpgradeConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanNpSchedulingTaskParametersParametersUpgradeConfig) *OceanNpSchedulingTaskParametersParametersUpgradeConfig {
+		return &v
+	}).(OceanNpSchedulingTaskParametersParametersUpgradeConfigPtrOutput)
+}
+
+func (o OceanNpSchedulingTaskParametersParametersUpgradeConfigOutput) ApplyRoll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanNpSchedulingTaskParametersParametersUpgradeConfig) *bool { return v.ApplyRoll }).(pulumi.BoolPtrOutput)
+}
+
+func (o OceanNpSchedulingTaskParametersParametersUpgradeConfigOutput) RollParameters() OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrOutput {
+	return o.ApplyT(func(v OceanNpSchedulingTaskParametersParametersUpgradeConfig) *OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParameters {
+		return v.RollParameters
+	}).(OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrOutput)
+}
+
+func (o OceanNpSchedulingTaskParametersParametersUpgradeConfigOutput) ScopeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanNpSchedulingTaskParametersParametersUpgradeConfig) *string { return v.ScopeVersion }).(pulumi.StringPtrOutput)
+}
+
+type OceanNpSchedulingTaskParametersParametersUpgradeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanNpSchedulingTaskParametersParametersUpgradeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanNpSchedulingTaskParametersParametersUpgradeConfig)(nil)).Elem()
+}
+
+func (o OceanNpSchedulingTaskParametersParametersUpgradeConfigPtrOutput) ToOceanNpSchedulingTaskParametersParametersUpgradeConfigPtrOutput() OceanNpSchedulingTaskParametersParametersUpgradeConfigPtrOutput {
+	return o
+}
+
+func (o OceanNpSchedulingTaskParametersParametersUpgradeConfigPtrOutput) ToOceanNpSchedulingTaskParametersParametersUpgradeConfigPtrOutputWithContext(ctx context.Context) OceanNpSchedulingTaskParametersParametersUpgradeConfigPtrOutput {
+	return o
+}
+
+func (o OceanNpSchedulingTaskParametersParametersUpgradeConfigPtrOutput) Elem() OceanNpSchedulingTaskParametersParametersUpgradeConfigOutput {
+	return o.ApplyT(func(v *OceanNpSchedulingTaskParametersParametersUpgradeConfig) OceanNpSchedulingTaskParametersParametersUpgradeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret OceanNpSchedulingTaskParametersParametersUpgradeConfig
+		return ret
+	}).(OceanNpSchedulingTaskParametersParametersUpgradeConfigOutput)
+}
+
+func (o OceanNpSchedulingTaskParametersParametersUpgradeConfigPtrOutput) ApplyRoll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanNpSchedulingTaskParametersParametersUpgradeConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ApplyRoll
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o OceanNpSchedulingTaskParametersParametersUpgradeConfigPtrOutput) RollParameters() OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrOutput {
+	return o.ApplyT(func(v *OceanNpSchedulingTaskParametersParametersUpgradeConfig) *OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParameters {
+		if v == nil {
+			return nil
+		}
+		return v.RollParameters
+	}).(OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrOutput)
+}
+
+func (o OceanNpSchedulingTaskParametersParametersUpgradeConfigPtrOutput) ScopeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanNpSchedulingTaskParametersParametersUpgradeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ScopeVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+type OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParameters struct {
+	// Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+	BatchMinHealthyPercentage *int `pulumi:"batchMinHealthyPercentage"`
+	// Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.
+	BatchSizePercentage *int `pulumi:"batchSizePercentage"`
+	// Add a comment description for the roll. The comment is limited to 256 chars and optional.
+	Comment *string `pulumi:"comment"`
+	// During the roll, if the parameter is set to true we honor PDB during the nodes replacement.
+	RespectPdb *bool `pulumi:"respectPdb"`
+	// During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.
+	RespectRestrictScaleDown *bool `pulumi:"respectRestrictScaleDown"`
+}
+
+// OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersInput is an input type that accepts OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersArgs and OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersOutput values.
+// You can construct a concrete instance of `OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersInput` via:
+//
+//	OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersArgs{...}
+type OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersInput interface {
+	pulumi.Input
+
+	ToOceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersOutput() OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersOutput
+	ToOceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersOutputWithContext(context.Context) OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersOutput
+}
+
+type OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersArgs struct {
+	// Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+	BatchMinHealthyPercentage pulumi.IntPtrInput `pulumi:"batchMinHealthyPercentage"`
+	// Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.
+	BatchSizePercentage pulumi.IntPtrInput `pulumi:"batchSizePercentage"`
+	// Add a comment description for the roll. The comment is limited to 256 chars and optional.
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// During the roll, if the parameter is set to true we honor PDB during the nodes replacement.
+	RespectPdb pulumi.BoolPtrInput `pulumi:"respectPdb"`
+	// During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.
+	RespectRestrictScaleDown pulumi.BoolPtrInput `pulumi:"respectRestrictScaleDown"`
+}
+
+func (OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParameters)(nil)).Elem()
+}
+
+func (i OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersArgs) ToOceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersOutput() OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersOutput {
+	return i.ToOceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersOutputWithContext(context.Background())
+}
+
+func (i OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersArgs) ToOceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersOutputWithContext(ctx context.Context) OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersOutput)
+}
+
+func (i OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersArgs) ToOceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrOutput() OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrOutput {
+	return i.ToOceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrOutputWithContext(context.Background())
+}
+
+func (i OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersArgs) ToOceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrOutputWithContext(ctx context.Context) OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersOutput).ToOceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrOutputWithContext(ctx)
+}
+
+// OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrInput is an input type that accepts OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersArgs, OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtr and OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrOutput values.
+// You can construct a concrete instance of `OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrInput` via:
+//
+//	        OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersArgs{...}
+//
+//	or:
+//
+//	        nil
+type OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrInput interface {
+	pulumi.Input
+
+	ToOceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrOutput() OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrOutput
+	ToOceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrOutputWithContext(context.Context) OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrOutput
+}
+
+type oceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrType OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersArgs
+
+func OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtr(v *OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersArgs) OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrInput {
+	return (*oceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrType)(v)
+}
+
+func (*oceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParameters)(nil)).Elem()
+}
+
+func (i *oceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrType) ToOceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrOutput() OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrOutput {
+	return i.ToOceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrType) ToOceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrOutputWithContext(ctx context.Context) OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrOutput)
+}
+
+type OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersOutput struct{ *pulumi.OutputState }
+
+func (OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParameters)(nil)).Elem()
+}
+
+func (o OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersOutput) ToOceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersOutput() OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersOutput {
+	return o
+}
+
+func (o OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersOutput) ToOceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersOutputWithContext(ctx context.Context) OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersOutput {
+	return o
+}
+
+func (o OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersOutput) ToOceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrOutput() OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrOutput {
+	return o.ToOceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrOutputWithContext(context.Background())
+}
+
+func (o OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersOutput) ToOceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrOutputWithContext(ctx context.Context) OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParameters) *OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParameters {
+		return &v
+	}).(OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrOutput)
+}
+
+// Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+func (o OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersOutput) BatchMinHealthyPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParameters) *int {
+		return v.BatchMinHealthyPercentage
+	}).(pulumi.IntPtrOutput)
+}
+
+// Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.
+func (o OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersOutput) BatchSizePercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParameters) *int {
+		return v.BatchSizePercentage
+	}).(pulumi.IntPtrOutput)
+}
+
+// Add a comment description for the roll. The comment is limited to 256 chars and optional.
+func (o OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParameters) *string { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+// During the roll, if the parameter is set to true we honor PDB during the nodes replacement.
+func (o OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersOutput) RespectPdb() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParameters) *bool {
+		return v.RespectPdb
+	}).(pulumi.BoolPtrOutput)
+}
+
+// During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.
+func (o OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersOutput) RespectRestrictScaleDown() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParameters) *bool {
+		return v.RespectRestrictScaleDown
+	}).(pulumi.BoolPtrOutput)
+}
+
+type OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParameters)(nil)).Elem()
+}
+
+func (o OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrOutput) ToOceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrOutput() OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrOutput {
+	return o
+}
+
+func (o OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrOutput) ToOceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrOutputWithContext(ctx context.Context) OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrOutput {
+	return o
+}
+
+func (o OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrOutput) Elem() OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersOutput {
+	return o.ApplyT(func(v *OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParameters) OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParameters {
+		if v != nil {
+			return *v
+		}
+		var ret OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParameters
+		return ret
+	}).(OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersOutput)
+}
+
+// Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+func (o OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrOutput) BatchMinHealthyPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParameters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BatchMinHealthyPercentage
+	}).(pulumi.IntPtrOutput)
+}
+
+// Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.
+func (o OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrOutput) BatchSizePercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParameters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BatchSizePercentage
+	}).(pulumi.IntPtrOutput)
+}
+
+// Add a comment description for the roll. The comment is limited to 256 chars and optional.
+func (o OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Comment
+	}).(pulumi.StringPtrOutput)
+}
+
+// During the roll, if the parameter is set to true we honor PDB during the nodes replacement.
+func (o OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrOutput) RespectPdb() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParameters) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RespectPdb
+	}).(pulumi.BoolPtrOutput)
+}
+
+// During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.
+func (o OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrOutput) RespectRestrictScaleDown() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParameters) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RespectRestrictScaleDown
+	}).(pulumi.BoolPtrOutput)
 }
 
 type OceanNpTaint struct {
@@ -4575,6 +5517,293 @@ func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput) VngIds() pulumi.
 	}).(pulumi.StringArrayOutput)
 }
 
+type OceanNpVngTemplateScheduling struct {
+	VngTemplateShutdownHours *OceanNpVngTemplateSchedulingVngTemplateShutdownHours `pulumi:"vngTemplateShutdownHours"`
+}
+
+// OceanNpVngTemplateSchedulingInput is an input type that accepts OceanNpVngTemplateSchedulingArgs and OceanNpVngTemplateSchedulingOutput values.
+// You can construct a concrete instance of `OceanNpVngTemplateSchedulingInput` via:
+//
+//	OceanNpVngTemplateSchedulingArgs{...}
+type OceanNpVngTemplateSchedulingInput interface {
+	pulumi.Input
+
+	ToOceanNpVngTemplateSchedulingOutput() OceanNpVngTemplateSchedulingOutput
+	ToOceanNpVngTemplateSchedulingOutputWithContext(context.Context) OceanNpVngTemplateSchedulingOutput
+}
+
+type OceanNpVngTemplateSchedulingArgs struct {
+	VngTemplateShutdownHours OceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrInput `pulumi:"vngTemplateShutdownHours"`
+}
+
+func (OceanNpVngTemplateSchedulingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpVngTemplateScheduling)(nil)).Elem()
+}
+
+func (i OceanNpVngTemplateSchedulingArgs) ToOceanNpVngTemplateSchedulingOutput() OceanNpVngTemplateSchedulingOutput {
+	return i.ToOceanNpVngTemplateSchedulingOutputWithContext(context.Background())
+}
+
+func (i OceanNpVngTemplateSchedulingArgs) ToOceanNpVngTemplateSchedulingOutputWithContext(ctx context.Context) OceanNpVngTemplateSchedulingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpVngTemplateSchedulingOutput)
+}
+
+func (i OceanNpVngTemplateSchedulingArgs) ToOceanNpVngTemplateSchedulingPtrOutput() OceanNpVngTemplateSchedulingPtrOutput {
+	return i.ToOceanNpVngTemplateSchedulingPtrOutputWithContext(context.Background())
+}
+
+func (i OceanNpVngTemplateSchedulingArgs) ToOceanNpVngTemplateSchedulingPtrOutputWithContext(ctx context.Context) OceanNpVngTemplateSchedulingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpVngTemplateSchedulingOutput).ToOceanNpVngTemplateSchedulingPtrOutputWithContext(ctx)
+}
+
+// OceanNpVngTemplateSchedulingPtrInput is an input type that accepts OceanNpVngTemplateSchedulingArgs, OceanNpVngTemplateSchedulingPtr and OceanNpVngTemplateSchedulingPtrOutput values.
+// You can construct a concrete instance of `OceanNpVngTemplateSchedulingPtrInput` via:
+//
+//	        OceanNpVngTemplateSchedulingArgs{...}
+//
+//	or:
+//
+//	        nil
+type OceanNpVngTemplateSchedulingPtrInput interface {
+	pulumi.Input
+
+	ToOceanNpVngTemplateSchedulingPtrOutput() OceanNpVngTemplateSchedulingPtrOutput
+	ToOceanNpVngTemplateSchedulingPtrOutputWithContext(context.Context) OceanNpVngTemplateSchedulingPtrOutput
+}
+
+type oceanNpVngTemplateSchedulingPtrType OceanNpVngTemplateSchedulingArgs
+
+func OceanNpVngTemplateSchedulingPtr(v *OceanNpVngTemplateSchedulingArgs) OceanNpVngTemplateSchedulingPtrInput {
+	return (*oceanNpVngTemplateSchedulingPtrType)(v)
+}
+
+func (*oceanNpVngTemplateSchedulingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanNpVngTemplateScheduling)(nil)).Elem()
+}
+
+func (i *oceanNpVngTemplateSchedulingPtrType) ToOceanNpVngTemplateSchedulingPtrOutput() OceanNpVngTemplateSchedulingPtrOutput {
+	return i.ToOceanNpVngTemplateSchedulingPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanNpVngTemplateSchedulingPtrType) ToOceanNpVngTemplateSchedulingPtrOutputWithContext(ctx context.Context) OceanNpVngTemplateSchedulingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpVngTemplateSchedulingPtrOutput)
+}
+
+type OceanNpVngTemplateSchedulingOutput struct{ *pulumi.OutputState }
+
+func (OceanNpVngTemplateSchedulingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpVngTemplateScheduling)(nil)).Elem()
+}
+
+func (o OceanNpVngTemplateSchedulingOutput) ToOceanNpVngTemplateSchedulingOutput() OceanNpVngTemplateSchedulingOutput {
+	return o
+}
+
+func (o OceanNpVngTemplateSchedulingOutput) ToOceanNpVngTemplateSchedulingOutputWithContext(ctx context.Context) OceanNpVngTemplateSchedulingOutput {
+	return o
+}
+
+func (o OceanNpVngTemplateSchedulingOutput) ToOceanNpVngTemplateSchedulingPtrOutput() OceanNpVngTemplateSchedulingPtrOutput {
+	return o.ToOceanNpVngTemplateSchedulingPtrOutputWithContext(context.Background())
+}
+
+func (o OceanNpVngTemplateSchedulingOutput) ToOceanNpVngTemplateSchedulingPtrOutputWithContext(ctx context.Context) OceanNpVngTemplateSchedulingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanNpVngTemplateScheduling) *OceanNpVngTemplateScheduling {
+		return &v
+	}).(OceanNpVngTemplateSchedulingPtrOutput)
+}
+
+func (o OceanNpVngTemplateSchedulingOutput) VngTemplateShutdownHours() OceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrOutput {
+	return o.ApplyT(func(v OceanNpVngTemplateScheduling) *OceanNpVngTemplateSchedulingVngTemplateShutdownHours {
+		return v.VngTemplateShutdownHours
+	}).(OceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrOutput)
+}
+
+type OceanNpVngTemplateSchedulingPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanNpVngTemplateSchedulingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanNpVngTemplateScheduling)(nil)).Elem()
+}
+
+func (o OceanNpVngTemplateSchedulingPtrOutput) ToOceanNpVngTemplateSchedulingPtrOutput() OceanNpVngTemplateSchedulingPtrOutput {
+	return o
+}
+
+func (o OceanNpVngTemplateSchedulingPtrOutput) ToOceanNpVngTemplateSchedulingPtrOutputWithContext(ctx context.Context) OceanNpVngTemplateSchedulingPtrOutput {
+	return o
+}
+
+func (o OceanNpVngTemplateSchedulingPtrOutput) Elem() OceanNpVngTemplateSchedulingOutput {
+	return o.ApplyT(func(v *OceanNpVngTemplateScheduling) OceanNpVngTemplateScheduling {
+		if v != nil {
+			return *v
+		}
+		var ret OceanNpVngTemplateScheduling
+		return ret
+	}).(OceanNpVngTemplateSchedulingOutput)
+}
+
+func (o OceanNpVngTemplateSchedulingPtrOutput) VngTemplateShutdownHours() OceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrOutput {
+	return o.ApplyT(func(v *OceanNpVngTemplateScheduling) *OceanNpVngTemplateSchedulingVngTemplateShutdownHours {
+		if v == nil {
+			return nil
+		}
+		return v.VngTemplateShutdownHours
+	}).(OceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrOutput)
+}
+
+type OceanNpVngTemplateSchedulingVngTemplateShutdownHours struct {
+	IsEnabled *bool `pulumi:"isEnabled"`
+	// The times that the shutdown hours will apply. Required if `isEnabled` is true.
+	TimeWindows []string `pulumi:"timeWindows"`
+}
+
+// OceanNpVngTemplateSchedulingVngTemplateShutdownHoursInput is an input type that accepts OceanNpVngTemplateSchedulingVngTemplateShutdownHoursArgs and OceanNpVngTemplateSchedulingVngTemplateShutdownHoursOutput values.
+// You can construct a concrete instance of `OceanNpVngTemplateSchedulingVngTemplateShutdownHoursInput` via:
+//
+//	OceanNpVngTemplateSchedulingVngTemplateShutdownHoursArgs{...}
+type OceanNpVngTemplateSchedulingVngTemplateShutdownHoursInput interface {
+	pulumi.Input
+
+	ToOceanNpVngTemplateSchedulingVngTemplateShutdownHoursOutput() OceanNpVngTemplateSchedulingVngTemplateShutdownHoursOutput
+	ToOceanNpVngTemplateSchedulingVngTemplateShutdownHoursOutputWithContext(context.Context) OceanNpVngTemplateSchedulingVngTemplateShutdownHoursOutput
+}
+
+type OceanNpVngTemplateSchedulingVngTemplateShutdownHoursArgs struct {
+	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
+	// The times that the shutdown hours will apply. Required if `isEnabled` is true.
+	TimeWindows pulumi.StringArrayInput `pulumi:"timeWindows"`
+}
+
+func (OceanNpVngTemplateSchedulingVngTemplateShutdownHoursArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpVngTemplateSchedulingVngTemplateShutdownHours)(nil)).Elem()
+}
+
+func (i OceanNpVngTemplateSchedulingVngTemplateShutdownHoursArgs) ToOceanNpVngTemplateSchedulingVngTemplateShutdownHoursOutput() OceanNpVngTemplateSchedulingVngTemplateShutdownHoursOutput {
+	return i.ToOceanNpVngTemplateSchedulingVngTemplateShutdownHoursOutputWithContext(context.Background())
+}
+
+func (i OceanNpVngTemplateSchedulingVngTemplateShutdownHoursArgs) ToOceanNpVngTemplateSchedulingVngTemplateShutdownHoursOutputWithContext(ctx context.Context) OceanNpVngTemplateSchedulingVngTemplateShutdownHoursOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpVngTemplateSchedulingVngTemplateShutdownHoursOutput)
+}
+
+func (i OceanNpVngTemplateSchedulingVngTemplateShutdownHoursArgs) ToOceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrOutput() OceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrOutput {
+	return i.ToOceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrOutputWithContext(context.Background())
+}
+
+func (i OceanNpVngTemplateSchedulingVngTemplateShutdownHoursArgs) ToOceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrOutputWithContext(ctx context.Context) OceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpVngTemplateSchedulingVngTemplateShutdownHoursOutput).ToOceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrOutputWithContext(ctx)
+}
+
+// OceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrInput is an input type that accepts OceanNpVngTemplateSchedulingVngTemplateShutdownHoursArgs, OceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtr and OceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrOutput values.
+// You can construct a concrete instance of `OceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrInput` via:
+//
+//	        OceanNpVngTemplateSchedulingVngTemplateShutdownHoursArgs{...}
+//
+//	or:
+//
+//	        nil
+type OceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrInput interface {
+	pulumi.Input
+
+	ToOceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrOutput() OceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrOutput
+	ToOceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrOutputWithContext(context.Context) OceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrOutput
+}
+
+type oceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrType OceanNpVngTemplateSchedulingVngTemplateShutdownHoursArgs
+
+func OceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtr(v *OceanNpVngTemplateSchedulingVngTemplateShutdownHoursArgs) OceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrInput {
+	return (*oceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrType)(v)
+}
+
+func (*oceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanNpVngTemplateSchedulingVngTemplateShutdownHours)(nil)).Elem()
+}
+
+func (i *oceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrType) ToOceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrOutput() OceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrOutput {
+	return i.ToOceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrType) ToOceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrOutputWithContext(ctx context.Context) OceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrOutput)
+}
+
+type OceanNpVngTemplateSchedulingVngTemplateShutdownHoursOutput struct{ *pulumi.OutputState }
+
+func (OceanNpVngTemplateSchedulingVngTemplateShutdownHoursOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpVngTemplateSchedulingVngTemplateShutdownHours)(nil)).Elem()
+}
+
+func (o OceanNpVngTemplateSchedulingVngTemplateShutdownHoursOutput) ToOceanNpVngTemplateSchedulingVngTemplateShutdownHoursOutput() OceanNpVngTemplateSchedulingVngTemplateShutdownHoursOutput {
+	return o
+}
+
+func (o OceanNpVngTemplateSchedulingVngTemplateShutdownHoursOutput) ToOceanNpVngTemplateSchedulingVngTemplateShutdownHoursOutputWithContext(ctx context.Context) OceanNpVngTemplateSchedulingVngTemplateShutdownHoursOutput {
+	return o
+}
+
+func (o OceanNpVngTemplateSchedulingVngTemplateShutdownHoursOutput) ToOceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrOutput() OceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrOutput {
+	return o.ToOceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrOutputWithContext(context.Background())
+}
+
+func (o OceanNpVngTemplateSchedulingVngTemplateShutdownHoursOutput) ToOceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrOutputWithContext(ctx context.Context) OceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanNpVngTemplateSchedulingVngTemplateShutdownHours) *OceanNpVngTemplateSchedulingVngTemplateShutdownHours {
+		return &v
+	}).(OceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrOutput)
+}
+
+func (o OceanNpVngTemplateSchedulingVngTemplateShutdownHoursOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanNpVngTemplateSchedulingVngTemplateShutdownHours) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The times that the shutdown hours will apply. Required if `isEnabled` is true.
+func (o OceanNpVngTemplateSchedulingVngTemplateShutdownHoursOutput) TimeWindows() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanNpVngTemplateSchedulingVngTemplateShutdownHours) []string { return v.TimeWindows }).(pulumi.StringArrayOutput)
+}
+
+type OceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanNpVngTemplateSchedulingVngTemplateShutdownHours)(nil)).Elem()
+}
+
+func (o OceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrOutput) ToOceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrOutput() OceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrOutput {
+	return o
+}
+
+func (o OceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrOutput) ToOceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrOutputWithContext(ctx context.Context) OceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrOutput {
+	return o
+}
+
+func (o OceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrOutput) Elem() OceanNpVngTemplateSchedulingVngTemplateShutdownHoursOutput {
+	return o.ApplyT(func(v *OceanNpVngTemplateSchedulingVngTemplateShutdownHours) OceanNpVngTemplateSchedulingVngTemplateShutdownHours {
+		if v != nil {
+			return *v
+		}
+		var ret OceanNpVngTemplateSchedulingVngTemplateShutdownHours
+		return ret
+	}).(OceanNpVngTemplateSchedulingVngTemplateShutdownHoursOutput)
+}
+
+func (o OceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanNpVngTemplateSchedulingVngTemplateShutdownHours) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The times that the shutdown hours will apply. Required if `isEnabled` is true.
+func (o OceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrOutput) TimeWindows() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanNpVngTemplateSchedulingVngTemplateShutdownHours) []string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeWindows
+	}).(pulumi.StringArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpAutoscalerInput)(nil)).Elem(), OceanNpAutoscalerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpAutoscalerPtrInput)(nil)).Elem(), OceanNpAutoscalerArgs{})
@@ -4596,16 +5825,28 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpLinuxOsConfigArrayInput)(nil)).Elem(), OceanNpLinuxOsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpLinuxOsConfigSysctlInput)(nil)).Elem(), OceanNpLinuxOsConfigSysctlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpLinuxOsConfigSysctlArrayInput)(nil)).Elem(), OceanNpLinuxOsConfigSysctlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpLoggingInput)(nil)).Elem(), OceanNpLoggingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpLoggingPtrInput)(nil)).Elem(), OceanNpLoggingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpLoggingExportInput)(nil)).Elem(), OceanNpLoggingExportArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpLoggingExportPtrInput)(nil)).Elem(), OceanNpLoggingExportArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpLoggingExportAzureBlobInput)(nil)).Elem(), OceanNpLoggingExportAzureBlobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpLoggingExportAzureBlobArrayInput)(nil)).Elem(), OceanNpLoggingExportAzureBlobArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpSchedulingInput)(nil)).Elem(), OceanNpSchedulingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpSchedulingPtrInput)(nil)).Elem(), OceanNpSchedulingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpSchedulingShutdownHoursInput)(nil)).Elem(), OceanNpSchedulingShutdownHoursArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpSchedulingShutdownHoursPtrInput)(nil)).Elem(), OceanNpSchedulingShutdownHoursArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpSchedulingSuspensionHoursInput)(nil)).Elem(), OceanNpSchedulingSuspensionHoursArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpSchedulingSuspensionHoursPtrInput)(nil)).Elem(), OceanNpSchedulingSuspensionHoursArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpSchedulingTaskInput)(nil)).Elem(), OceanNpSchedulingTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpSchedulingTaskArrayInput)(nil)).Elem(), OceanNpSchedulingTaskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpSchedulingTaskParametersInput)(nil)).Elem(), OceanNpSchedulingTaskParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpSchedulingTaskParametersPtrInput)(nil)).Elem(), OceanNpSchedulingTaskParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpSchedulingTaskParametersParametersClusterRollInput)(nil)).Elem(), OceanNpSchedulingTaskParametersParametersClusterRollArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpSchedulingTaskParametersParametersClusterRollPtrInput)(nil)).Elem(), OceanNpSchedulingTaskParametersParametersClusterRollArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpSchedulingTaskParametersParametersUpgradeConfigInput)(nil)).Elem(), OceanNpSchedulingTaskParametersParametersUpgradeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpSchedulingTaskParametersParametersUpgradeConfigPtrInput)(nil)).Elem(), OceanNpSchedulingTaskParametersParametersUpgradeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersInput)(nil)).Elem(), OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrInput)(nil)).Elem(), OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpTaintInput)(nil)).Elem(), OceanNpTaintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpTaintArrayInput)(nil)).Elem(), OceanNpTaintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpUpdatePolicyInput)(nil)).Elem(), OceanNpUpdatePolicyArgs{})
@@ -4630,6 +5871,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVirtualNodeGroupUpdatePolicyPtrInput)(nil)).Elem(), OceanNpVirtualNodeGroupUpdatePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVirtualNodeGroupUpdatePolicyRollConfigInput)(nil)).Elem(), OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrInput)(nil)).Elem(), OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVngTemplateSchedulingInput)(nil)).Elem(), OceanNpVngTemplateSchedulingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVngTemplateSchedulingPtrInput)(nil)).Elem(), OceanNpVngTemplateSchedulingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVngTemplateSchedulingVngTemplateShutdownHoursInput)(nil)).Elem(), OceanNpVngTemplateSchedulingVngTemplateShutdownHoursArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrInput)(nil)).Elem(), OceanNpVngTemplateSchedulingVngTemplateShutdownHoursArgs{})
 	pulumi.RegisterOutputType(OceanNpAutoscalerOutput{})
 	pulumi.RegisterOutputType(OceanNpAutoscalerPtrOutput{})
 	pulumi.RegisterOutputType(OceanNpAutoscalerAutoscaleDownOutput{})
@@ -4650,16 +5895,28 @@ func init() {
 	pulumi.RegisterOutputType(OceanNpLinuxOsConfigArrayOutput{})
 	pulumi.RegisterOutputType(OceanNpLinuxOsConfigSysctlOutput{})
 	pulumi.RegisterOutputType(OceanNpLinuxOsConfigSysctlArrayOutput{})
+	pulumi.RegisterOutputType(OceanNpLoggingOutput{})
+	pulumi.RegisterOutputType(OceanNpLoggingPtrOutput{})
+	pulumi.RegisterOutputType(OceanNpLoggingExportOutput{})
+	pulumi.RegisterOutputType(OceanNpLoggingExportPtrOutput{})
+	pulumi.RegisterOutputType(OceanNpLoggingExportAzureBlobOutput{})
+	pulumi.RegisterOutputType(OceanNpLoggingExportAzureBlobArrayOutput{})
 	pulumi.RegisterOutputType(OceanNpSchedulingOutput{})
 	pulumi.RegisterOutputType(OceanNpSchedulingPtrOutput{})
 	pulumi.RegisterOutputType(OceanNpSchedulingShutdownHoursOutput{})
 	pulumi.RegisterOutputType(OceanNpSchedulingShutdownHoursPtrOutput{})
+	pulumi.RegisterOutputType(OceanNpSchedulingSuspensionHoursOutput{})
+	pulumi.RegisterOutputType(OceanNpSchedulingSuspensionHoursPtrOutput{})
 	pulumi.RegisterOutputType(OceanNpSchedulingTaskOutput{})
 	pulumi.RegisterOutputType(OceanNpSchedulingTaskArrayOutput{})
 	pulumi.RegisterOutputType(OceanNpSchedulingTaskParametersOutput{})
 	pulumi.RegisterOutputType(OceanNpSchedulingTaskParametersPtrOutput{})
 	pulumi.RegisterOutputType(OceanNpSchedulingTaskParametersParametersClusterRollOutput{})
 	pulumi.RegisterOutputType(OceanNpSchedulingTaskParametersParametersClusterRollPtrOutput{})
+	pulumi.RegisterOutputType(OceanNpSchedulingTaskParametersParametersUpgradeConfigOutput{})
+	pulumi.RegisterOutputType(OceanNpSchedulingTaskParametersParametersUpgradeConfigPtrOutput{})
+	pulumi.RegisterOutputType(OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersOutput{})
+	pulumi.RegisterOutputType(OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersPtrOutput{})
 	pulumi.RegisterOutputType(OceanNpTaintOutput{})
 	pulumi.RegisterOutputType(OceanNpTaintArrayOutput{})
 	pulumi.RegisterOutputType(OceanNpUpdatePolicyOutput{})
@@ -4684,4 +5941,8 @@ func init() {
 	pulumi.RegisterOutputType(OceanNpVirtualNodeGroupUpdatePolicyPtrOutput{})
 	pulumi.RegisterOutputType(OceanNpVirtualNodeGroupUpdatePolicyRollConfigOutput{})
 	pulumi.RegisterOutputType(OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput{})
+	pulumi.RegisterOutputType(OceanNpVngTemplateSchedulingOutput{})
+	pulumi.RegisterOutputType(OceanNpVngTemplateSchedulingPtrOutput{})
+	pulumi.RegisterOutputType(OceanNpVngTemplateSchedulingVngTemplateShutdownHoursOutput{})
+	pulumi.RegisterOutputType(OceanNpVngTemplateSchedulingVngTemplateShutdownHoursPtrOutput{})
 }

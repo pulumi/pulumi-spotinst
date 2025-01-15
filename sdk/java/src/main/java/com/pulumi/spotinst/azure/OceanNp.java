@@ -15,9 +15,11 @@ import com.pulumi.spotinst.azure.outputs.OceanNpFilters;
 import com.pulumi.spotinst.azure.outputs.OceanNpHeadroom;
 import com.pulumi.spotinst.azure.outputs.OceanNpHealth;
 import com.pulumi.spotinst.azure.outputs.OceanNpLinuxOsConfig;
+import com.pulumi.spotinst.azure.outputs.OceanNpLogging;
 import com.pulumi.spotinst.azure.outputs.OceanNpScheduling;
 import com.pulumi.spotinst.azure.outputs.OceanNpTaint;
 import com.pulumi.spotinst.azure.outputs.OceanNpUpdatePolicy;
+import com.pulumi.spotinst.azure.outputs.OceanNpVngTemplateScheduling;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -207,6 +209,20 @@ public class OceanNp extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.linuxOsConfigs);
     }
     /**
+     * The OCean AKS Logging Object.
+     * 
+     */
+    @Export(name="logging", refs={OceanNpLogging.class}, tree="[0]")
+    private Output</* @Nullable */ OceanNpLogging> logging;
+
+    /**
+     * @return The OCean AKS Logging Object.
+     * 
+     */
+    public Output<Optional<OceanNpLogging>> logging() {
+        return Codegen.optional(this.logging);
+    }
+    /**
      * Maximum node count limit.
      * 
      */
@@ -391,6 +407,20 @@ public class OceanNp extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<String>>> vnetSubnetIds() {
         return Codegen.optional(this.vnetSubnetIds);
+    }
+    /**
+     * An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
+     * 
+     */
+    @Export(name="vngTemplateScheduling", refs={OceanNpVngTemplateScheduling.class}, tree="[0]")
+    private Output</* @Nullable */ OceanNpVngTemplateScheduling> vngTemplateScheduling;
+
+    /**
+     * @return An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
+     * 
+     */
+    public Output<Optional<OceanNpVngTemplateScheduling>> vngTemplateScheduling() {
+        return Codegen.optional(this.vngTemplateScheduling);
     }
 
     /**

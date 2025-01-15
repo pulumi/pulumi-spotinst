@@ -35,16 +35,28 @@ __all__ = [
     'OceanNpLinuxOsConfigArgsDict',
     'OceanNpLinuxOsConfigSysctlArgs',
     'OceanNpLinuxOsConfigSysctlArgsDict',
+    'OceanNpLoggingArgs',
+    'OceanNpLoggingArgsDict',
+    'OceanNpLoggingExportArgs',
+    'OceanNpLoggingExportArgsDict',
+    'OceanNpLoggingExportAzureBlobArgs',
+    'OceanNpLoggingExportAzureBlobArgsDict',
     'OceanNpSchedulingArgs',
     'OceanNpSchedulingArgsDict',
     'OceanNpSchedulingShutdownHoursArgs',
     'OceanNpSchedulingShutdownHoursArgsDict',
+    'OceanNpSchedulingSuspensionHoursArgs',
+    'OceanNpSchedulingSuspensionHoursArgsDict',
     'OceanNpSchedulingTaskArgs',
     'OceanNpSchedulingTaskArgsDict',
     'OceanNpSchedulingTaskParametersArgs',
     'OceanNpSchedulingTaskParametersArgsDict',
     'OceanNpSchedulingTaskParametersParametersClusterRollArgs',
     'OceanNpSchedulingTaskParametersParametersClusterRollArgsDict',
+    'OceanNpSchedulingTaskParametersParametersUpgradeConfigArgs',
+    'OceanNpSchedulingTaskParametersParametersUpgradeConfigArgsDict',
+    'OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersArgs',
+    'OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersArgsDict',
     'OceanNpTaintArgs',
     'OceanNpTaintArgsDict',
     'OceanNpUpdatePolicyArgs',
@@ -69,6 +81,10 @@ __all__ = [
     'OceanNpVirtualNodeGroupUpdatePolicyArgsDict',
     'OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs',
     'OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgsDict',
+    'OceanNpVngTemplateSchedulingArgs',
+    'OceanNpVngTemplateSchedulingArgsDict',
+    'OceanNpVngTemplateSchedulingVngTemplateShutdownHoursArgs',
+    'OceanNpVngTemplateSchedulingVngTemplateShutdownHoursArgsDict',
 ]
 
 MYPY = False
@@ -834,8 +850,108 @@ class OceanNpLinuxOsConfigSysctlArgs:
 
 
 if not MYPY:
+    class OceanNpLoggingArgsDict(TypedDict):
+        export: NotRequired[pulumi.Input['OceanNpLoggingExportArgsDict']]
+        """
+        The Ocean AKS Logging Export object.
+        """
+elif False:
+    OceanNpLoggingArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OceanNpLoggingArgs:
+    def __init__(__self__, *,
+                 export: Optional[pulumi.Input['OceanNpLoggingExportArgs']] = None):
+        """
+        :param pulumi.Input['OceanNpLoggingExportArgs'] export: The Ocean AKS Logging Export object.
+        """
+        if export is not None:
+            pulumi.set(__self__, "export", export)
+
+    @property
+    @pulumi.getter
+    def export(self) -> Optional[pulumi.Input['OceanNpLoggingExportArgs']]:
+        """
+        The Ocean AKS Logging Export object.
+        """
+        return pulumi.get(self, "export")
+
+    @export.setter
+    def export(self, value: Optional[pulumi.Input['OceanNpLoggingExportArgs']]):
+        pulumi.set(self, "export", value)
+
+
+if not MYPY:
+    class OceanNpLoggingExportArgsDict(TypedDict):
+        azure_blobs: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanNpLoggingExportAzureBlobArgsDict']]]]
+        """
+        Exports your cluster's logs to the storage account and container configured on the storage account [data integration](https://docs.spot.io/#operation/DataIntegrationCreate) given. Each file contains logs of 3 minutes where each log is separated by a new line and saved as a JSON. The file formats are `container`/`accountId``oceanId``oceanName`_`startTime`.log
+        """
+elif False:
+    OceanNpLoggingExportArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OceanNpLoggingExportArgs:
+    def __init__(__self__, *,
+                 azure_blobs: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpLoggingExportAzureBlobArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['OceanNpLoggingExportAzureBlobArgs']]] azure_blobs: Exports your cluster's logs to the storage account and container configured on the storage account [data integration](https://docs.spot.io/#operation/DataIntegrationCreate) given. Each file contains logs of 3 minutes where each log is separated by a new line and saved as a JSON. The file formats are `container`/`accountId``oceanId``oceanName`_`startTime`.log
+        """
+        if azure_blobs is not None:
+            pulumi.set(__self__, "azure_blobs", azure_blobs)
+
+    @property
+    @pulumi.getter(name="azureBlobs")
+    def azure_blobs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpLoggingExportAzureBlobArgs']]]]:
+        """
+        Exports your cluster's logs to the storage account and container configured on the storage account [data integration](https://docs.spot.io/#operation/DataIntegrationCreate) given. Each file contains logs of 3 minutes where each log is separated by a new line and saved as a JSON. The file formats are `container`/`accountId``oceanId``oceanName`_`startTime`.log
+        """
+        return pulumi.get(self, "azure_blobs")
+
+    @azure_blobs.setter
+    def azure_blobs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpLoggingExportAzureBlobArgs']]]]):
+        pulumi.set(self, "azure_blobs", value)
+
+
+if not MYPY:
+    class OceanNpLoggingExportAzureBlobArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        The identifier of The Azure Blob data integration to export the logs to.
+        """
+elif False:
+    OceanNpLoggingExportAzureBlobArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OceanNpLoggingExportAzureBlobArgs:
+    def __init__(__self__, *,
+                 id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] id: The identifier of The Azure Blob data integration to export the logs to.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The identifier of The Azure Blob data integration to export the logs to.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+
+if not MYPY:
     class OceanNpSchedulingArgsDict(TypedDict):
         shutdown_hours: NotRequired[pulumi.Input['OceanNpSchedulingShutdownHoursArgsDict']]
+        """
+        An object used to specify times that the nodes in the virtual node group will be stopped.
+        """
+        suspension_hours: NotRequired[pulumi.Input['OceanNpSchedulingSuspensionHoursArgsDict']]
         tasks: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanNpSchedulingTaskArgsDict']]]]
 elif False:
     OceanNpSchedulingArgsDict: TypeAlias = Mapping[str, Any]
@@ -844,20 +960,38 @@ elif False:
 class OceanNpSchedulingArgs:
     def __init__(__self__, *,
                  shutdown_hours: Optional[pulumi.Input['OceanNpSchedulingShutdownHoursArgs']] = None,
+                 suspension_hours: Optional[pulumi.Input['OceanNpSchedulingSuspensionHoursArgs']] = None,
                  tasks: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpSchedulingTaskArgs']]]] = None):
+        """
+        :param pulumi.Input['OceanNpSchedulingShutdownHoursArgs'] shutdown_hours: An object used to specify times that the nodes in the virtual node group will be stopped.
+        """
         if shutdown_hours is not None:
             pulumi.set(__self__, "shutdown_hours", shutdown_hours)
+        if suspension_hours is not None:
+            pulumi.set(__self__, "suspension_hours", suspension_hours)
         if tasks is not None:
             pulumi.set(__self__, "tasks", tasks)
 
     @property
     @pulumi.getter(name="shutdownHours")
     def shutdown_hours(self) -> Optional[pulumi.Input['OceanNpSchedulingShutdownHoursArgs']]:
+        """
+        An object used to specify times that the nodes in the virtual node group will be stopped.
+        """
         return pulumi.get(self, "shutdown_hours")
 
     @shutdown_hours.setter
     def shutdown_hours(self, value: Optional[pulumi.Input['OceanNpSchedulingShutdownHoursArgs']]):
         pulumi.set(self, "shutdown_hours", value)
+
+    @property
+    @pulumi.getter(name="suspensionHours")
+    def suspension_hours(self) -> Optional[pulumi.Input['OceanNpSchedulingSuspensionHoursArgs']]:
+        return pulumi.get(self, "suspension_hours")
+
+    @suspension_hours.setter
+    def suspension_hours(self, value: Optional[pulumi.Input['OceanNpSchedulingSuspensionHoursArgs']]):
+        pulumi.set(self, "suspension_hours", value)
 
     @property
     @pulumi.getter
@@ -872,10 +1006,10 @@ class OceanNpSchedulingArgs:
 if not MYPY:
     class OceanNpSchedulingShutdownHoursArgsDict(TypedDict):
         is_enabled: NotRequired[pulumi.Input[bool]]
-        """
-        Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
-        """
         time_windows: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The times that the shutdown hours will apply. Required if `is_enabled` is true.
+        """
 elif False:
     OceanNpSchedulingShutdownHoursArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -885,7 +1019,7 @@ class OceanNpSchedulingShutdownHoursArgs:
                  is_enabled: Optional[pulumi.Input[bool]] = None,
                  time_windows: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[bool] is_enabled: Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] time_windows: The times that the shutdown hours will apply. Required if `is_enabled` is true.
         """
         if is_enabled is not None:
             pulumi.set(__self__, "is_enabled", is_enabled)
@@ -895,9 +1029,6 @@ class OceanNpSchedulingShutdownHoursArgs:
     @property
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
-        """
         return pulumi.get(self, "is_enabled")
 
     @is_enabled.setter
@@ -907,6 +1038,54 @@ class OceanNpSchedulingShutdownHoursArgs:
     @property
     @pulumi.getter(name="timeWindows")
     def time_windows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The times that the shutdown hours will apply. Required if `is_enabled` is true.
+        """
+        return pulumi.get(self, "time_windows")
+
+    @time_windows.setter
+    def time_windows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "time_windows", value)
+
+
+if not MYPY:
+    class OceanNpSchedulingSuspensionHoursArgsDict(TypedDict):
+        is_enabled: NotRequired[pulumi.Input[bool]]
+        time_windows: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The times that the shutdown hours will apply. Required if `is_enabled` is true.
+        """
+elif False:
+    OceanNpSchedulingSuspensionHoursArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OceanNpSchedulingSuspensionHoursArgs:
+    def __init__(__self__, *,
+                 is_enabled: Optional[pulumi.Input[bool]] = None,
+                 time_windows: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] time_windows: The times that the shutdown hours will apply. Required if `is_enabled` is true.
+        """
+        if is_enabled is not None:
+            pulumi.set(__self__, "is_enabled", is_enabled)
+        if time_windows is not None:
+            pulumi.set(__self__, "time_windows", time_windows)
+
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "is_enabled")
+
+    @is_enabled.setter
+    def is_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_enabled", value)
+
+    @property
+    @pulumi.getter(name="timeWindows")
+    def time_windows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The times that the shutdown hours will apply. Required if `is_enabled` is true.
+        """
         return pulumi.get(self, "time_windows")
 
     @time_windows.setter
@@ -918,9 +1097,6 @@ if not MYPY:
     class OceanNpSchedulingTaskArgsDict(TypedDict):
         cron_expression: pulumi.Input[str]
         is_enabled: pulumi.Input[bool]
-        """
-        Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
-        """
         task_type: pulumi.Input[str]
         parameters: NotRequired[pulumi.Input['OceanNpSchedulingTaskParametersArgsDict']]
 elif False:
@@ -933,9 +1109,6 @@ class OceanNpSchedulingTaskArgs:
                  is_enabled: pulumi.Input[bool],
                  task_type: pulumi.Input[str],
                  parameters: Optional[pulumi.Input['OceanNpSchedulingTaskParametersArgs']] = None):
-        """
-        :param pulumi.Input[bool] is_enabled: Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
-        """
         pulumi.set(__self__, "cron_expression", cron_expression)
         pulumi.set(__self__, "is_enabled", is_enabled)
         pulumi.set(__self__, "task_type", task_type)
@@ -954,9 +1127,6 @@ class OceanNpSchedulingTaskArgs:
     @property
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> pulumi.Input[bool]:
-        """
-        Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
-        """
         return pulumi.get(self, "is_enabled")
 
     @is_enabled.setter
@@ -985,15 +1155,19 @@ class OceanNpSchedulingTaskArgs:
 if not MYPY:
     class OceanNpSchedulingTaskParametersArgsDict(TypedDict):
         parameters_cluster_roll: NotRequired[pulumi.Input['OceanNpSchedulingTaskParametersParametersClusterRollArgsDict']]
+        parameters_upgrade_config: NotRequired[pulumi.Input['OceanNpSchedulingTaskParametersParametersUpgradeConfigArgsDict']]
 elif False:
     OceanNpSchedulingTaskParametersArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OceanNpSchedulingTaskParametersArgs:
     def __init__(__self__, *,
-                 parameters_cluster_roll: Optional[pulumi.Input['OceanNpSchedulingTaskParametersParametersClusterRollArgs']] = None):
+                 parameters_cluster_roll: Optional[pulumi.Input['OceanNpSchedulingTaskParametersParametersClusterRollArgs']] = None,
+                 parameters_upgrade_config: Optional[pulumi.Input['OceanNpSchedulingTaskParametersParametersUpgradeConfigArgs']] = None):
         if parameters_cluster_roll is not None:
             pulumi.set(__self__, "parameters_cluster_roll", parameters_cluster_roll)
+        if parameters_upgrade_config is not None:
+            pulumi.set(__self__, "parameters_upgrade_config", parameters_upgrade_config)
 
     @property
     @pulumi.getter(name="parametersClusterRoll")
@@ -1003,6 +1177,15 @@ class OceanNpSchedulingTaskParametersArgs:
     @parameters_cluster_roll.setter
     def parameters_cluster_roll(self, value: Optional[pulumi.Input['OceanNpSchedulingTaskParametersParametersClusterRollArgs']]):
         pulumi.set(self, "parameters_cluster_roll", value)
+
+    @property
+    @pulumi.getter(name="parametersUpgradeConfig")
+    def parameters_upgrade_config(self) -> Optional[pulumi.Input['OceanNpSchedulingTaskParametersParametersUpgradeConfigArgs']]:
+        return pulumi.get(self, "parameters_upgrade_config")
+
+    @parameters_upgrade_config.setter
+    def parameters_upgrade_config(self, value: Optional[pulumi.Input['OceanNpSchedulingTaskParametersParametersUpgradeConfigArgs']]):
+        pulumi.set(self, "parameters_upgrade_config", value)
 
 
 if not MYPY:
@@ -1135,6 +1318,167 @@ class OceanNpSchedulingTaskParametersParametersClusterRollArgs:
     @vng_ids.setter
     def vng_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "vng_ids", value)
+
+
+if not MYPY:
+    class OceanNpSchedulingTaskParametersParametersUpgradeConfigArgsDict(TypedDict):
+        apply_roll: NotRequired[pulumi.Input[bool]]
+        roll_parameters: NotRequired[pulumi.Input['OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersArgsDict']]
+        scope_version: NotRequired[pulumi.Input[str]]
+elif False:
+    OceanNpSchedulingTaskParametersParametersUpgradeConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OceanNpSchedulingTaskParametersParametersUpgradeConfigArgs:
+    def __init__(__self__, *,
+                 apply_roll: Optional[pulumi.Input[bool]] = None,
+                 roll_parameters: Optional[pulumi.Input['OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersArgs']] = None,
+                 scope_version: Optional[pulumi.Input[str]] = None):
+        if apply_roll is not None:
+            pulumi.set(__self__, "apply_roll", apply_roll)
+        if roll_parameters is not None:
+            pulumi.set(__self__, "roll_parameters", roll_parameters)
+        if scope_version is not None:
+            pulumi.set(__self__, "scope_version", scope_version)
+
+    @property
+    @pulumi.getter(name="applyRoll")
+    def apply_roll(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "apply_roll")
+
+    @apply_roll.setter
+    def apply_roll(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "apply_roll", value)
+
+    @property
+    @pulumi.getter(name="rollParameters")
+    def roll_parameters(self) -> Optional[pulumi.Input['OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersArgs']]:
+        return pulumi.get(self, "roll_parameters")
+
+    @roll_parameters.setter
+    def roll_parameters(self, value: Optional[pulumi.Input['OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersArgs']]):
+        pulumi.set(self, "roll_parameters", value)
+
+    @property
+    @pulumi.getter(name="scopeVersion")
+    def scope_version(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "scope_version")
+
+    @scope_version.setter
+    def scope_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scope_version", value)
+
+
+if not MYPY:
+    class OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersArgsDict(TypedDict):
+        batch_min_healthy_percentage: NotRequired[pulumi.Input[int]]
+        """
+        Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+        """
+        batch_size_percentage: NotRequired[pulumi.Input[int]]
+        """
+        Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.
+        """
+        comment: NotRequired[pulumi.Input[str]]
+        """
+        Add a comment description for the roll. The comment is limited to 256 chars and optional.
+        """
+        respect_pdb: NotRequired[pulumi.Input[bool]]
+        """
+        During the roll, if the parameter is set to true we honor PDB during the nodes replacement.
+        """
+        respect_restrict_scale_down: NotRequired[pulumi.Input[bool]]
+        """
+        During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.
+        """
+elif False:
+    OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersArgs:
+    def __init__(__self__, *,
+                 batch_min_healthy_percentage: Optional[pulumi.Input[int]] = None,
+                 batch_size_percentage: Optional[pulumi.Input[int]] = None,
+                 comment: Optional[pulumi.Input[str]] = None,
+                 respect_pdb: Optional[pulumi.Input[bool]] = None,
+                 respect_restrict_scale_down: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[int] batch_min_healthy_percentage: Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+        :param pulumi.Input[int] batch_size_percentage: Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.
+        :param pulumi.Input[str] comment: Add a comment description for the roll. The comment is limited to 256 chars and optional.
+        :param pulumi.Input[bool] respect_pdb: During the roll, if the parameter is set to true we honor PDB during the nodes replacement.
+        :param pulumi.Input[bool] respect_restrict_scale_down: During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.
+        """
+        if batch_min_healthy_percentage is not None:
+            pulumi.set(__self__, "batch_min_healthy_percentage", batch_min_healthy_percentage)
+        if batch_size_percentage is not None:
+            pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if respect_pdb is not None:
+            pulumi.set(__self__, "respect_pdb", respect_pdb)
+        if respect_restrict_scale_down is not None:
+            pulumi.set(__self__, "respect_restrict_scale_down", respect_restrict_scale_down)
+
+    @property
+    @pulumi.getter(name="batchMinHealthyPercentage")
+    def batch_min_healthy_percentage(self) -> Optional[pulumi.Input[int]]:
+        """
+        Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+        """
+        return pulumi.get(self, "batch_min_healthy_percentage")
+
+    @batch_min_healthy_percentage.setter
+    def batch_min_healthy_percentage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "batch_min_healthy_percentage", value)
+
+    @property
+    @pulumi.getter(name="batchSizePercentage")
+    def batch_size_percentage(self) -> Optional[pulumi.Input[int]]:
+        """
+        Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.
+        """
+        return pulumi.get(self, "batch_size_percentage")
+
+    @batch_size_percentage.setter
+    def batch_size_percentage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "batch_size_percentage", value)
+
+    @property
+    @pulumi.getter
+    def comment(self) -> Optional[pulumi.Input[str]]:
+        """
+        Add a comment description for the roll. The comment is limited to 256 chars and optional.
+        """
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter(name="respectPdb")
+    def respect_pdb(self) -> Optional[pulumi.Input[bool]]:
+        """
+        During the roll, if the parameter is set to true we honor PDB during the nodes replacement.
+        """
+        return pulumi.get(self, "respect_pdb")
+
+    @respect_pdb.setter
+    def respect_pdb(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "respect_pdb", value)
+
+    @property
+    @pulumi.getter(name="respectRestrictScaleDown")
+    def respect_restrict_scale_down(self) -> Optional[pulumi.Input[bool]]:
+        """
+        During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.
+        """
+        return pulumi.get(self, "respect_restrict_scale_down")
+
+    @respect_restrict_scale_down.setter
+    def respect_restrict_scale_down(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "respect_restrict_scale_down", value)
 
 
 if not MYPY:
@@ -2311,5 +2655,73 @@ class OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs:
     @vng_ids.setter
     def vng_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "vng_ids", value)
+
+
+if not MYPY:
+    class OceanNpVngTemplateSchedulingArgsDict(TypedDict):
+        vng_template_shutdown_hours: NotRequired[pulumi.Input['OceanNpVngTemplateSchedulingVngTemplateShutdownHoursArgsDict']]
+elif False:
+    OceanNpVngTemplateSchedulingArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OceanNpVngTemplateSchedulingArgs:
+    def __init__(__self__, *,
+                 vng_template_shutdown_hours: Optional[pulumi.Input['OceanNpVngTemplateSchedulingVngTemplateShutdownHoursArgs']] = None):
+        if vng_template_shutdown_hours is not None:
+            pulumi.set(__self__, "vng_template_shutdown_hours", vng_template_shutdown_hours)
+
+    @property
+    @pulumi.getter(name="vngTemplateShutdownHours")
+    def vng_template_shutdown_hours(self) -> Optional[pulumi.Input['OceanNpVngTemplateSchedulingVngTemplateShutdownHoursArgs']]:
+        return pulumi.get(self, "vng_template_shutdown_hours")
+
+    @vng_template_shutdown_hours.setter
+    def vng_template_shutdown_hours(self, value: Optional[pulumi.Input['OceanNpVngTemplateSchedulingVngTemplateShutdownHoursArgs']]):
+        pulumi.set(self, "vng_template_shutdown_hours", value)
+
+
+if not MYPY:
+    class OceanNpVngTemplateSchedulingVngTemplateShutdownHoursArgsDict(TypedDict):
+        is_enabled: NotRequired[pulumi.Input[bool]]
+        time_windows: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The times that the shutdown hours will apply. Required if `is_enabled` is true.
+        """
+elif False:
+    OceanNpVngTemplateSchedulingVngTemplateShutdownHoursArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OceanNpVngTemplateSchedulingVngTemplateShutdownHoursArgs:
+    def __init__(__self__, *,
+                 is_enabled: Optional[pulumi.Input[bool]] = None,
+                 time_windows: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] time_windows: The times that the shutdown hours will apply. Required if `is_enabled` is true.
+        """
+        if is_enabled is not None:
+            pulumi.set(__self__, "is_enabled", is_enabled)
+        if time_windows is not None:
+            pulumi.set(__self__, "time_windows", time_windows)
+
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "is_enabled")
+
+    @is_enabled.setter
+    def is_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_enabled", value)
+
+    @property
+    @pulumi.getter(name="timeWindows")
+    def time_windows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The times that the shutdown hours will apply. Required if `is_enabled` is true.
+        """
+        return pulumi.get(self, "time_windows")
+
+    @time_windows.setter
+    def time_windows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "time_windows", value)
 
 

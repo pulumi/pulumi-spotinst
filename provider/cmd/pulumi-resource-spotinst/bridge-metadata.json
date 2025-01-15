@@ -1125,6 +1125,23 @@
                             }
                         }
                     },
+                    "logging": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "export": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "azure_blob": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "pod_subnet_ids": {
                         "maxItemsOne": false
                     },
@@ -1133,6 +1150,16 @@
                         "elem": {
                             "fields": {
                                 "shutdown_hours": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "time_windows": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "suspension_hours": {
                                     "maxItemsOne": true,
                                     "elem": {
                                         "fields": {
@@ -1156,6 +1183,16 @@
                                                                 "fields": {
                                                                     "vng_ids": {
                                                                         "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "parameters_upgrade_config": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "roll_parameters": {
+                                                                        "maxItemsOne": true
                                                                     }
                                                                 }
                                                             }
@@ -1197,6 +1234,23 @@
                     },
                     "vnet_subnet_ids": {
                         "maxItemsOne": false
+                    },
+                    "vng_template_scheduling": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "vng_template_shutdown_hours": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "time_windows": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },

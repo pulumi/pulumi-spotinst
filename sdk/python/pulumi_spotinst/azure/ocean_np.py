@@ -36,6 +36,7 @@ class OceanNpArgs:
                  kubernetes_version: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  linux_os_configs: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpLinuxOsConfigArgs']]]] = None,
+                 logging: Optional[pulumi.Input['OceanNpLoggingArgs']] = None,
                  max_count: Optional[pulumi.Input[int]] = None,
                  max_pods_per_node: Optional[pulumi.Input[int]] = None,
                  min_count: Optional[pulumi.Input[int]] = None,
@@ -50,7 +51,8 @@ class OceanNpArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpTaintArgs']]]] = None,
                  update_policy: Optional[pulumi.Input['OceanNpUpdatePolicyArgs']] = None,
-                 vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 vng_template_scheduling: Optional[pulumi.Input['OceanNpVngTemplateSchedulingArgs']] = None):
         """
         The set of arguments for constructing a OceanNp resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zones: An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
@@ -64,6 +66,7 @@ class OceanNpArgs:
         :param pulumi.Input[str] kubernetes_version: The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: An array of labels to add to the virtual node group. Only custom user labels are allowed, and not [Kubernetes well-known labels](https://kubernetes.io/docs/reference/labels-annotations-taints/) or [ Azure AKS labels](https://learn.microsoft.com/en-us/azure/aks/use-labels) or [Spot labels](https://docs.spot.io/ocean/features/labels-and-taints?id=spot-labels).
         :param pulumi.Input[Sequence[pulumi.Input['OceanNpLinuxOsConfigArgs']]] linux_os_configs: Custom Linux OS configuration.
+        :param pulumi.Input['OceanNpLoggingArgs'] logging: The OCean AKS Logging Object.
         :param pulumi.Input[int] max_count: Maximum node count limit.
         :param pulumi.Input[int] max_pods_per_node: The maximum number of pods per node in the node pools.
         :param pulumi.Input[int] min_count: Minimum node count limit.
@@ -76,6 +79,7 @@ class OceanNpArgs:
         :param pulumi.Input[int] spot_percentage: Percentage of spot VMs to maintain.
         :param pulumi.Input[Sequence[pulumi.Input['OceanNpTaintArgs']]] taints: Add taints to a virtual node group. Only custom user taints are allowed, and not [Kubernetes well-known taints](https://kubernetes.io/docs/reference/labels-annotations-taints/) or Azure AKS [ScaleSetPrioirty (Spot VM) taint](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool). For all Spot VMs, AKS injects a taint kubernetes.azure.com/scalesetpriority=spot:NoSchedule, to ensure that only workloads that can handle interruptions are scheduled on Spot nodes. To [schedule a pod to run on Spot node](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool#schedule-a-pod-to-run-on-the-spot-node), add a toleration but dont include the nodeAffinity (not supported for Spot Ocean), this will prevent the pod from being scheduled using Spot Ocean.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vnet_subnet_ids: The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
+        :param pulumi.Input['OceanNpVngTemplateSchedulingArgs'] vng_template_scheduling: An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
         """
         pulumi.set(__self__, "aks_cluster_name", aks_cluster_name)
         pulumi.set(__self__, "aks_infrastructure_resource_group_name", aks_infrastructure_resource_group_name)
@@ -101,6 +105,8 @@ class OceanNpArgs:
             pulumi.set(__self__, "labels", labels)
         if linux_os_configs is not None:
             pulumi.set(__self__, "linux_os_configs", linux_os_configs)
+        if logging is not None:
+            pulumi.set(__self__, "logging", logging)
         if max_count is not None:
             pulumi.set(__self__, "max_count", max_count)
         if max_pods_per_node is not None:
@@ -131,6 +137,8 @@ class OceanNpArgs:
             pulumi.set(__self__, "update_policy", update_policy)
         if vnet_subnet_ids is not None:
             pulumi.set(__self__, "vnet_subnet_ids", vnet_subnet_ids)
+        if vng_template_scheduling is not None:
+            pulumi.set(__self__, "vng_template_scheduling", vng_template_scheduling)
 
     @property
     @pulumi.getter(name="aksClusterName")
@@ -301,6 +309,18 @@ class OceanNpArgs:
         pulumi.set(self, "linux_os_configs", value)
 
     @property
+    @pulumi.getter
+    def logging(self) -> Optional[pulumi.Input['OceanNpLoggingArgs']]:
+        """
+        The OCean AKS Logging Object.
+        """
+        return pulumi.get(self, "logging")
+
+    @logging.setter
+    def logging(self, value: Optional[pulumi.Input['OceanNpLoggingArgs']]):
+        pulumi.set(self, "logging", value)
+
+    @property
     @pulumi.getter(name="maxCount")
     def max_count(self) -> Optional[pulumi.Input[int]]:
         """
@@ -471,6 +491,18 @@ class OceanNpArgs:
     def vnet_subnet_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "vnet_subnet_ids", value)
 
+    @property
+    @pulumi.getter(name="vngTemplateScheduling")
+    def vng_template_scheduling(self) -> Optional[pulumi.Input['OceanNpVngTemplateSchedulingArgs']]:
+        """
+        An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
+        """
+        return pulumi.get(self, "vng_template_scheduling")
+
+    @vng_template_scheduling.setter
+    def vng_template_scheduling(self, value: Optional[pulumi.Input['OceanNpVngTemplateSchedulingArgs']]):
+        pulumi.set(self, "vng_template_scheduling", value)
+
 
 @pulumi.input_type
 class _OceanNpState:
@@ -490,6 +522,7 @@ class _OceanNpState:
                  kubernetes_version: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  linux_os_configs: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpLinuxOsConfigArgs']]]] = None,
+                 logging: Optional[pulumi.Input['OceanNpLoggingArgs']] = None,
                  max_count: Optional[pulumi.Input[int]] = None,
                  max_pods_per_node: Optional[pulumi.Input[int]] = None,
                  min_count: Optional[pulumi.Input[int]] = None,
@@ -504,7 +537,8 @@ class _OceanNpState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpTaintArgs']]]] = None,
                  update_policy: Optional[pulumi.Input['OceanNpUpdatePolicyArgs']] = None,
-                 vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 vng_template_scheduling: Optional[pulumi.Input['OceanNpVngTemplateSchedulingArgs']] = None):
         """
         Input properties used for looking up and filtering OceanNp resources.
         :param pulumi.Input['OceanNpAutoscalerArgs'] autoscaler: The Ocean Kubernetes Autoscaler object.
@@ -518,6 +552,7 @@ class _OceanNpState:
         :param pulumi.Input[str] kubernetes_version: The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: An array of labels to add to the virtual node group. Only custom user labels are allowed, and not [Kubernetes well-known labels](https://kubernetes.io/docs/reference/labels-annotations-taints/) or [ Azure AKS labels](https://learn.microsoft.com/en-us/azure/aks/use-labels) or [Spot labels](https://docs.spot.io/ocean/features/labels-and-taints?id=spot-labels).
         :param pulumi.Input[Sequence[pulumi.Input['OceanNpLinuxOsConfigArgs']]] linux_os_configs: Custom Linux OS configuration.
+        :param pulumi.Input['OceanNpLoggingArgs'] logging: The OCean AKS Logging Object.
         :param pulumi.Input[int] max_count: Maximum node count limit.
         :param pulumi.Input[int] max_pods_per_node: The maximum number of pods per node in the node pools.
         :param pulumi.Input[int] min_count: Minimum node count limit.
@@ -530,6 +565,7 @@ class _OceanNpState:
         :param pulumi.Input[int] spot_percentage: Percentage of spot VMs to maintain.
         :param pulumi.Input[Sequence[pulumi.Input['OceanNpTaintArgs']]] taints: Add taints to a virtual node group. Only custom user taints are allowed, and not [Kubernetes well-known taints](https://kubernetes.io/docs/reference/labels-annotations-taints/) or Azure AKS [ScaleSetPrioirty (Spot VM) taint](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool). For all Spot VMs, AKS injects a taint kubernetes.azure.com/scalesetpriority=spot:NoSchedule, to ensure that only workloads that can handle interruptions are scheduled on Spot nodes. To [schedule a pod to run on Spot node](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool#schedule-a-pod-to-run-on-the-spot-node), add a toleration but dont include the nodeAffinity (not supported for Spot Ocean), this will prevent the pod from being scheduled using Spot Ocean.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vnet_subnet_ids: The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
+        :param pulumi.Input['OceanNpVngTemplateSchedulingArgs'] vng_template_scheduling: An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
         """
         if aks_cluster_name is not None:
             pulumi.set(__self__, "aks_cluster_name", aks_cluster_name)
@@ -561,6 +597,8 @@ class _OceanNpState:
             pulumi.set(__self__, "labels", labels)
         if linux_os_configs is not None:
             pulumi.set(__self__, "linux_os_configs", linux_os_configs)
+        if logging is not None:
+            pulumi.set(__self__, "logging", logging)
         if max_count is not None:
             pulumi.set(__self__, "max_count", max_count)
         if max_pods_per_node is not None:
@@ -591,6 +629,8 @@ class _OceanNpState:
             pulumi.set(__self__, "update_policy", update_policy)
         if vnet_subnet_ids is not None:
             pulumi.set(__self__, "vnet_subnet_ids", vnet_subnet_ids)
+        if vng_template_scheduling is not None:
+            pulumi.set(__self__, "vng_template_scheduling", vng_template_scheduling)
 
     @property
     @pulumi.getter(name="aksClusterName")
@@ -761,6 +801,18 @@ class _OceanNpState:
         pulumi.set(self, "linux_os_configs", value)
 
     @property
+    @pulumi.getter
+    def logging(self) -> Optional[pulumi.Input['OceanNpLoggingArgs']]:
+        """
+        The OCean AKS Logging Object.
+        """
+        return pulumi.get(self, "logging")
+
+    @logging.setter
+    def logging(self, value: Optional[pulumi.Input['OceanNpLoggingArgs']]):
+        pulumi.set(self, "logging", value)
+
+    @property
     @pulumi.getter(name="maxCount")
     def max_count(self) -> Optional[pulumi.Input[int]]:
         """
@@ -931,6 +983,18 @@ class _OceanNpState:
     def vnet_subnet_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "vnet_subnet_ids", value)
 
+    @property
+    @pulumi.getter(name="vngTemplateScheduling")
+    def vng_template_scheduling(self) -> Optional[pulumi.Input['OceanNpVngTemplateSchedulingArgs']]:
+        """
+        An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
+        """
+        return pulumi.get(self, "vng_template_scheduling")
+
+    @vng_template_scheduling.setter
+    def vng_template_scheduling(self, value: Optional[pulumi.Input['OceanNpVngTemplateSchedulingArgs']]):
+        pulumi.set(self, "vng_template_scheduling", value)
+
 
 class OceanNp(pulumi.CustomResource):
     @overload
@@ -952,6 +1016,7 @@ class OceanNp(pulumi.CustomResource):
                  kubernetes_version: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  linux_os_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanNpLinuxOsConfigArgs', 'OceanNpLinuxOsConfigArgsDict']]]]] = None,
+                 logging: Optional[pulumi.Input[Union['OceanNpLoggingArgs', 'OceanNpLoggingArgsDict']]] = None,
                  max_count: Optional[pulumi.Input[int]] = None,
                  max_pods_per_node: Optional[pulumi.Input[int]] = None,
                  min_count: Optional[pulumi.Input[int]] = None,
@@ -967,6 +1032,7 @@ class OceanNp(pulumi.CustomResource):
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanNpTaintArgs', 'OceanNpTaintArgsDict']]]]] = None,
                  update_policy: Optional[pulumi.Input[Union['OceanNpUpdatePolicyArgs', 'OceanNpUpdatePolicyArgsDict']]] = None,
                  vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 vng_template_scheduling: Optional[pulumi.Input[Union['OceanNpVngTemplateSchedulingArgs', 'OceanNpVngTemplateSchedulingArgsDict']]] = None,
                  __props__=None):
         """
         Create a OceanNp resource with the given unique name, props, and options.
@@ -983,6 +1049,7 @@ class OceanNp(pulumi.CustomResource):
         :param pulumi.Input[str] kubernetes_version: The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: An array of labels to add to the virtual node group. Only custom user labels are allowed, and not [Kubernetes well-known labels](https://kubernetes.io/docs/reference/labels-annotations-taints/) or [ Azure AKS labels](https://learn.microsoft.com/en-us/azure/aks/use-labels) or [Spot labels](https://docs.spot.io/ocean/features/labels-and-taints?id=spot-labels).
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpLinuxOsConfigArgs', 'OceanNpLinuxOsConfigArgsDict']]]] linux_os_configs: Custom Linux OS configuration.
+        :param pulumi.Input[Union['OceanNpLoggingArgs', 'OceanNpLoggingArgsDict']] logging: The OCean AKS Logging Object.
         :param pulumi.Input[int] max_count: Maximum node count limit.
         :param pulumi.Input[int] max_pods_per_node: The maximum number of pods per node in the node pools.
         :param pulumi.Input[int] min_count: Minimum node count limit.
@@ -995,6 +1062,7 @@ class OceanNp(pulumi.CustomResource):
         :param pulumi.Input[int] spot_percentage: Percentage of spot VMs to maintain.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpTaintArgs', 'OceanNpTaintArgsDict']]]] taints: Add taints to a virtual node group. Only custom user taints are allowed, and not [Kubernetes well-known taints](https://kubernetes.io/docs/reference/labels-annotations-taints/) or Azure AKS [ScaleSetPrioirty (Spot VM) taint](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool). For all Spot VMs, AKS injects a taint kubernetes.azure.com/scalesetpriority=spot:NoSchedule, to ensure that only workloads that can handle interruptions are scheduled on Spot nodes. To [schedule a pod to run on Spot node](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool#schedule-a-pod-to-run-on-the-spot-node), add a toleration but dont include the nodeAffinity (not supported for Spot Ocean), this will prevent the pod from being scheduled using Spot Ocean.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vnet_subnet_ids: The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
+        :param pulumi.Input[Union['OceanNpVngTemplateSchedulingArgs', 'OceanNpVngTemplateSchedulingArgsDict']] vng_template_scheduling: An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
         """
         ...
     @overload
@@ -1034,6 +1102,7 @@ class OceanNp(pulumi.CustomResource):
                  kubernetes_version: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  linux_os_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanNpLinuxOsConfigArgs', 'OceanNpLinuxOsConfigArgsDict']]]]] = None,
+                 logging: Optional[pulumi.Input[Union['OceanNpLoggingArgs', 'OceanNpLoggingArgsDict']]] = None,
                  max_count: Optional[pulumi.Input[int]] = None,
                  max_pods_per_node: Optional[pulumi.Input[int]] = None,
                  min_count: Optional[pulumi.Input[int]] = None,
@@ -1049,6 +1118,7 @@ class OceanNp(pulumi.CustomResource):
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanNpTaintArgs', 'OceanNpTaintArgsDict']]]]] = None,
                  update_policy: Optional[pulumi.Input[Union['OceanNpUpdatePolicyArgs', 'OceanNpUpdatePolicyArgsDict']]] = None,
                  vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 vng_template_scheduling: Optional[pulumi.Input[Union['OceanNpVngTemplateSchedulingArgs', 'OceanNpVngTemplateSchedulingArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1085,6 +1155,7 @@ class OceanNp(pulumi.CustomResource):
             __props__.__dict__["kubernetes_version"] = kubernetes_version
             __props__.__dict__["labels"] = labels
             __props__.__dict__["linux_os_configs"] = linux_os_configs
+            __props__.__dict__["logging"] = logging
             __props__.__dict__["max_count"] = max_count
             __props__.__dict__["max_pods_per_node"] = max_pods_per_node
             __props__.__dict__["min_count"] = min_count
@@ -1100,6 +1171,7 @@ class OceanNp(pulumi.CustomResource):
             __props__.__dict__["taints"] = taints
             __props__.__dict__["update_policy"] = update_policy
             __props__.__dict__["vnet_subnet_ids"] = vnet_subnet_ids
+            __props__.__dict__["vng_template_scheduling"] = vng_template_scheduling
         super(OceanNp, __self__).__init__(
             'spotinst:azure/oceanNp:OceanNp',
             resource_name,
@@ -1125,6 +1197,7 @@ class OceanNp(pulumi.CustomResource):
             kubernetes_version: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             linux_os_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanNpLinuxOsConfigArgs', 'OceanNpLinuxOsConfigArgsDict']]]]] = None,
+            logging: Optional[pulumi.Input[Union['OceanNpLoggingArgs', 'OceanNpLoggingArgsDict']]] = None,
             max_count: Optional[pulumi.Input[int]] = None,
             max_pods_per_node: Optional[pulumi.Input[int]] = None,
             min_count: Optional[pulumi.Input[int]] = None,
@@ -1139,7 +1212,8 @@ class OceanNp(pulumi.CustomResource):
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanNpTaintArgs', 'OceanNpTaintArgsDict']]]]] = None,
             update_policy: Optional[pulumi.Input[Union['OceanNpUpdatePolicyArgs', 'OceanNpUpdatePolicyArgsDict']]] = None,
-            vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'OceanNp':
+            vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            vng_template_scheduling: Optional[pulumi.Input[Union['OceanNpVngTemplateSchedulingArgs', 'OceanNpVngTemplateSchedulingArgsDict']]] = None) -> 'OceanNp':
         """
         Get an existing OceanNp resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1158,6 +1232,7 @@ class OceanNp(pulumi.CustomResource):
         :param pulumi.Input[str] kubernetes_version: The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: An array of labels to add to the virtual node group. Only custom user labels are allowed, and not [Kubernetes well-known labels](https://kubernetes.io/docs/reference/labels-annotations-taints/) or [ Azure AKS labels](https://learn.microsoft.com/en-us/azure/aks/use-labels) or [Spot labels](https://docs.spot.io/ocean/features/labels-and-taints?id=spot-labels).
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpLinuxOsConfigArgs', 'OceanNpLinuxOsConfigArgsDict']]]] linux_os_configs: Custom Linux OS configuration.
+        :param pulumi.Input[Union['OceanNpLoggingArgs', 'OceanNpLoggingArgsDict']] logging: The OCean AKS Logging Object.
         :param pulumi.Input[int] max_count: Maximum node count limit.
         :param pulumi.Input[int] max_pods_per_node: The maximum number of pods per node in the node pools.
         :param pulumi.Input[int] min_count: Minimum node count limit.
@@ -1170,6 +1245,7 @@ class OceanNp(pulumi.CustomResource):
         :param pulumi.Input[int] spot_percentage: Percentage of spot VMs to maintain.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpTaintArgs', 'OceanNpTaintArgsDict']]]] taints: Add taints to a virtual node group. Only custom user taints are allowed, and not [Kubernetes well-known taints](https://kubernetes.io/docs/reference/labels-annotations-taints/) or Azure AKS [ScaleSetPrioirty (Spot VM) taint](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool). For all Spot VMs, AKS injects a taint kubernetes.azure.com/scalesetpriority=spot:NoSchedule, to ensure that only workloads that can handle interruptions are scheduled on Spot nodes. To [schedule a pod to run on Spot node](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool#schedule-a-pod-to-run-on-the-spot-node), add a toleration but dont include the nodeAffinity (not supported for Spot Ocean), this will prevent the pod from being scheduled using Spot Ocean.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vnet_subnet_ids: The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
+        :param pulumi.Input[Union['OceanNpVngTemplateSchedulingArgs', 'OceanNpVngTemplateSchedulingArgsDict']] vng_template_scheduling: An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1190,6 +1266,7 @@ class OceanNp(pulumi.CustomResource):
         __props__.__dict__["kubernetes_version"] = kubernetes_version
         __props__.__dict__["labels"] = labels
         __props__.__dict__["linux_os_configs"] = linux_os_configs
+        __props__.__dict__["logging"] = logging
         __props__.__dict__["max_count"] = max_count
         __props__.__dict__["max_pods_per_node"] = max_pods_per_node
         __props__.__dict__["min_count"] = min_count
@@ -1205,6 +1282,7 @@ class OceanNp(pulumi.CustomResource):
         __props__.__dict__["taints"] = taints
         __props__.__dict__["update_policy"] = update_policy
         __props__.__dict__["vnet_subnet_ids"] = vnet_subnet_ids
+        __props__.__dict__["vng_template_scheduling"] = vng_template_scheduling
         return OceanNp(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1316,6 +1394,14 @@ class OceanNp(pulumi.CustomResource):
         return pulumi.get(self, "linux_os_configs")
 
     @property
+    @pulumi.getter
+    def logging(self) -> pulumi.Output[Optional['outputs.OceanNpLogging']]:
+        """
+        The OCean AKS Logging Object.
+        """
+        return pulumi.get(self, "logging")
+
+    @property
     @pulumi.getter(name="maxCount")
     def max_count(self) -> pulumi.Output[Optional[int]]:
         """
@@ -1425,4 +1511,12 @@ class OceanNp(pulumi.CustomResource):
         The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
         """
         return pulumi.get(self, "vnet_subnet_ids")
+
+    @property
+    @pulumi.getter(name="vngTemplateScheduling")
+    def vng_template_scheduling(self) -> pulumi.Output[Optional['outputs.OceanNpVngTemplateScheduling']]:
+        """
+        An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
+        """
+        return pulumi.get(self, "vng_template_scheduling")
 

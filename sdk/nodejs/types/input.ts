@@ -3382,24 +3382,54 @@ export namespace azure {
         vmMaxMapCount?: pulumi.Input<number>;
     }
 
+    export interface OceanNpLogging {
+        /**
+         * The Ocean AKS Logging Export object.
+         */
+        export?: pulumi.Input<inputs.azure.OceanNpLoggingExport>;
+    }
+
+    export interface OceanNpLoggingExport {
+        /**
+         * Exports your cluster's logs to the storage account and container configured on the storage account [data integration](https://docs.spot.io/#operation/DataIntegrationCreate) given. Each file contains logs of 3 minutes where each log is separated by a new line and saved as a JSON. The file formats are `container`/`accountId``oceanId``oceanName`_`startTime`.log
+         */
+        azureBlobs?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpLoggingExportAzureBlob>[]>;
+    }
+
+    export interface OceanNpLoggingExportAzureBlob {
+        /**
+         * The identifier of The Azure Blob data integration to export the logs to.
+         */
+        id?: pulumi.Input<string>;
+    }
+
     export interface OceanNpScheduling {
+        /**
+         * An object used to specify times that the nodes in the virtual node group will be stopped.
+         */
         shutdownHours?: pulumi.Input<inputs.azure.OceanNpSchedulingShutdownHours>;
+        suspensionHours?: pulumi.Input<inputs.azure.OceanNpSchedulingSuspensionHours>;
         tasks?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpSchedulingTask>[]>;
     }
 
     export interface OceanNpSchedulingShutdownHours {
-        /**
-         * Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
-         */
         isEnabled?: pulumi.Input<boolean>;
+        /**
+         * The times that the shutdown hours will apply. Required if `isEnabled` is true.
+         */
+        timeWindows?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface OceanNpSchedulingSuspensionHours {
+        isEnabled?: pulumi.Input<boolean>;
+        /**
+         * The times that the shutdown hours will apply. Required if `isEnabled` is true.
+         */
         timeWindows?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface OceanNpSchedulingTask {
         cronExpression: pulumi.Input<string>;
-        /**
-         * Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
-         */
         isEnabled: pulumi.Input<boolean>;
         parameters?: pulumi.Input<inputs.azure.OceanNpSchedulingTaskParameters>;
         taskType: pulumi.Input<string>;
@@ -3407,6 +3437,7 @@ export namespace azure {
 
     export interface OceanNpSchedulingTaskParameters {
         parametersClusterRoll?: pulumi.Input<inputs.azure.OceanNpSchedulingTaskParametersParametersClusterRoll>;
+        parametersUpgradeConfig?: pulumi.Input<inputs.azure.OceanNpSchedulingTaskParametersParametersUpgradeConfig>;
     }
 
     export interface OceanNpSchedulingTaskParametersParametersClusterRoll {
@@ -3434,6 +3465,35 @@ export namespace azure {
          * List of virtual node group identifiers to be rolled. Each identifier is a string. vngIds can be null, and cannot be used together with nodeNames and nodePoolNames.
          */
         vngIds?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface OceanNpSchedulingTaskParametersParametersUpgradeConfig {
+        applyRoll?: pulumi.Input<boolean>;
+        rollParameters?: pulumi.Input<inputs.azure.OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParameters>;
+        scopeVersion?: pulumi.Input<string>;
+    }
+
+    export interface OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParameters {
+        /**
+         * Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+         */
+        batchMinHealthyPercentage?: pulumi.Input<number>;
+        /**
+         * Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.
+         */
+        batchSizePercentage?: pulumi.Input<number>;
+        /**
+         * Add a comment description for the roll. The comment is limited to 256 chars and optional.
+         */
+        comment?: pulumi.Input<string>;
+        /**
+         * During the roll, if the parameter is set to true we honor PDB during the nodes replacement.
+         */
+        respectPdb?: pulumi.Input<boolean>;
+        /**
+         * During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.
+         */
+        respectRestrictScaleDown?: pulumi.Input<boolean>;
     }
 
     export interface OceanNpTaint {
@@ -3678,6 +3738,18 @@ export namespace azure {
          * List of virtual node group identifiers to be rolled. Each identifier is a string. vngIds can be null, and cannot be used together with nodeNames and nodePoolNames.
          */
         vngIds?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface OceanNpVngTemplateScheduling {
+        vngTemplateShutdownHours?: pulumi.Input<inputs.azure.OceanNpVngTemplateSchedulingVngTemplateShutdownHours>;
+    }
+
+    export interface OceanNpVngTemplateSchedulingVngTemplateShutdownHours {
+        isEnabled?: pulumi.Input<boolean>;
+        /**
+         * The times that the shutdown hours will apply. Required if `isEnabled` is true.
+         */
+        timeWindows?: pulumi.Input<pulumi.Input<string>[]>;
     }
 }
 

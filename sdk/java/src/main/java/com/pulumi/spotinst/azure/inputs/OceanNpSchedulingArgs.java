@@ -6,6 +6,7 @@ package com.pulumi.spotinst.azure.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.spotinst.azure.inputs.OceanNpSchedulingShutdownHoursArgs;
+import com.pulumi.spotinst.azure.inputs.OceanNpSchedulingSuspensionHoursArgs;
 import com.pulumi.spotinst.azure.inputs.OceanNpSchedulingTaskArgs;
 import java.util.List;
 import java.util.Objects;
@@ -17,11 +18,26 @@ public final class OceanNpSchedulingArgs extends com.pulumi.resources.ResourceAr
 
     public static final OceanNpSchedulingArgs Empty = new OceanNpSchedulingArgs();
 
+    /**
+     * An object used to specify times that the nodes in the virtual node group will be stopped.
+     * 
+     */
     @Import(name="shutdownHours")
     private @Nullable Output<OceanNpSchedulingShutdownHoursArgs> shutdownHours;
 
+    /**
+     * @return An object used to specify times that the nodes in the virtual node group will be stopped.
+     * 
+     */
     public Optional<Output<OceanNpSchedulingShutdownHoursArgs>> shutdownHours() {
         return Optional.ofNullable(this.shutdownHours);
+    }
+
+    @Import(name="suspensionHours")
+    private @Nullable Output<OceanNpSchedulingSuspensionHoursArgs> suspensionHours;
+
+    public Optional<Output<OceanNpSchedulingSuspensionHoursArgs>> suspensionHours() {
+        return Optional.ofNullable(this.suspensionHours);
     }
 
     @Import(name="tasks")
@@ -35,6 +51,7 @@ public final class OceanNpSchedulingArgs extends com.pulumi.resources.ResourceAr
 
     private OceanNpSchedulingArgs(OceanNpSchedulingArgs $) {
         this.shutdownHours = $.shutdownHours;
+        this.suspensionHours = $.suspensionHours;
         this.tasks = $.tasks;
     }
 
@@ -56,13 +73,34 @@ public final class OceanNpSchedulingArgs extends com.pulumi.resources.ResourceAr
             $ = new OceanNpSchedulingArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param shutdownHours An object used to specify times that the nodes in the virtual node group will be stopped.
+         * 
+         * @return builder
+         * 
+         */
         public Builder shutdownHours(@Nullable Output<OceanNpSchedulingShutdownHoursArgs> shutdownHours) {
             $.shutdownHours = shutdownHours;
             return this;
         }
 
+        /**
+         * @param shutdownHours An object used to specify times that the nodes in the virtual node group will be stopped.
+         * 
+         * @return builder
+         * 
+         */
         public Builder shutdownHours(OceanNpSchedulingShutdownHoursArgs shutdownHours) {
             return shutdownHours(Output.of(shutdownHours));
+        }
+
+        public Builder suspensionHours(@Nullable Output<OceanNpSchedulingSuspensionHoursArgs> suspensionHours) {
+            $.suspensionHours = suspensionHours;
+            return this;
+        }
+
+        public Builder suspensionHours(OceanNpSchedulingSuspensionHoursArgs suspensionHours) {
+            return suspensionHours(Output.of(suspensionHours));
         }
 
         public Builder tasks(@Nullable Output<List<OceanNpSchedulingTaskArgs>> tasks) {

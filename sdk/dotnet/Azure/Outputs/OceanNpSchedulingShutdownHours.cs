@@ -13,10 +13,10 @@ namespace Pulumi.SpotInst.Azure.Outputs
     [OutputType]
     public sealed class OceanNpSchedulingShutdownHours
     {
-        /// <summary>
-        /// Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
-        /// </summary>
         public readonly bool? IsEnabled;
+        /// <summary>
+        /// The times that the shutdown hours will apply. Required if `is_enabled` is true.
+        /// </summary>
         public readonly ImmutableArray<string> TimeWindows;
 
         [OutputConstructor]

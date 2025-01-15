@@ -5,6 +5,7 @@ package com.pulumi.spotinst.azure.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.spotinst.azure.outputs.OceanNpSchedulingTaskParametersParametersClusterRoll;
+import com.pulumi.spotinst.azure.outputs.OceanNpSchedulingTaskParametersParametersUpgradeConfig;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -12,10 +13,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OceanNpSchedulingTaskParameters {
     private @Nullable OceanNpSchedulingTaskParametersParametersClusterRoll parametersClusterRoll;
+    private @Nullable OceanNpSchedulingTaskParametersParametersUpgradeConfig parametersUpgradeConfig;
 
     private OceanNpSchedulingTaskParameters() {}
     public Optional<OceanNpSchedulingTaskParametersParametersClusterRoll> parametersClusterRoll() {
         return Optional.ofNullable(this.parametersClusterRoll);
+    }
+    public Optional<OceanNpSchedulingTaskParametersParametersUpgradeConfig> parametersUpgradeConfig() {
+        return Optional.ofNullable(this.parametersUpgradeConfig);
     }
 
     public static Builder builder() {
@@ -28,10 +33,12 @@ public final class OceanNpSchedulingTaskParameters {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable OceanNpSchedulingTaskParametersParametersClusterRoll parametersClusterRoll;
+        private @Nullable OceanNpSchedulingTaskParametersParametersUpgradeConfig parametersUpgradeConfig;
         public Builder() {}
         public Builder(OceanNpSchedulingTaskParameters defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.parametersClusterRoll = defaults.parametersClusterRoll;
+    	      this.parametersUpgradeConfig = defaults.parametersUpgradeConfig;
         }
 
         @CustomType.Setter
@@ -40,9 +47,16 @@ public final class OceanNpSchedulingTaskParameters {
             this.parametersClusterRoll = parametersClusterRoll;
             return this;
         }
+        @CustomType.Setter
+        public Builder parametersUpgradeConfig(@Nullable OceanNpSchedulingTaskParametersParametersUpgradeConfig parametersUpgradeConfig) {
+
+            this.parametersUpgradeConfig = parametersUpgradeConfig;
+            return this;
+        }
         public OceanNpSchedulingTaskParameters build() {
             final var _resultValue = new OceanNpSchedulingTaskParameters();
             _resultValue.parametersClusterRoll = parametersClusterRoll;
+            _resultValue.parametersUpgradeConfig = parametersUpgradeConfig;
             return _resultValue;
         }
     }

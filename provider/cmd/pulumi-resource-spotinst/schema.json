@@ -4328,10 +4328,44 @@
             },
             "type": "object"
         },
+        "spotinst:azure/OceanNpLogging:OceanNpLogging": {
+            "properties": {
+                "export": {
+                    "$ref": "#/types/spotinst:azure/OceanNpLoggingExport:OceanNpLoggingExport",
+                    "description": "The Ocean AKS Logging Export object.\n"
+                }
+            },
+            "type": "object"
+        },
+        "spotinst:azure/OceanNpLoggingExport:OceanNpLoggingExport": {
+            "properties": {
+                "azureBlobs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:azure/OceanNpLoggingExportAzureBlob:OceanNpLoggingExportAzureBlob"
+                    },
+                    "description": "Exports your cluster's logs to the storage account and container configured on the storage account [data integration](https://docs.spot.io/#operation/DataIntegrationCreate) given. Each file contains logs of 3 minutes where each log is separated by a new line and saved as a JSON. The file formats are `container`/`accountId``oceanId``oceanName`_`startTime`.log\n"
+                }
+            },
+            "type": "object"
+        },
+        "spotinst:azure/OceanNpLoggingExportAzureBlob:OceanNpLoggingExportAzureBlob": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The identifier of The Azure Blob data integration to export the logs to.\n"
+                }
+            },
+            "type": "object"
+        },
         "spotinst:azure/OceanNpScheduling:OceanNpScheduling": {
             "properties": {
                 "shutdownHours": {
-                    "$ref": "#/types/spotinst:azure/OceanNpSchedulingShutdownHours:OceanNpSchedulingShutdownHours"
+                    "$ref": "#/types/spotinst:azure/OceanNpSchedulingShutdownHours:OceanNpSchedulingShutdownHours",
+                    "description": "An object used to specify times that the nodes in the virtual node group will be stopped.\n"
+                },
+                "suspensionHours": {
+                    "$ref": "#/types/spotinst:azure/OceanNpSchedulingSuspensionHours:OceanNpSchedulingSuspensionHours"
                 },
                 "tasks": {
                     "type": "array",
@@ -4345,14 +4379,29 @@
         "spotinst:azure/OceanNpSchedulingShutdownHours:OceanNpSchedulingShutdownHours": {
             "properties": {
                 "isEnabled": {
-                    "type": "boolean",
-                    "description": "Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.\n"
+                    "type": "boolean"
                 },
                 "timeWindows": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The times that the shutdown hours will apply. Required if `is_enabled` is true.\n"
+                }
+            },
+            "type": "object"
+        },
+        "spotinst:azure/OceanNpSchedulingSuspensionHours:OceanNpSchedulingSuspensionHours": {
+            "properties": {
+                "isEnabled": {
+                    "type": "boolean"
+                },
+                "timeWindows": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The times that the shutdown hours will apply. Required if `is_enabled` is true.\n"
                 }
             },
             "type": "object"
@@ -4363,8 +4412,7 @@
                     "type": "string"
                 },
                 "isEnabled": {
-                    "type": "boolean",
-                    "description": "Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.\n"
+                    "type": "boolean"
                 },
                 "parameters": {
                     "$ref": "#/types/spotinst:azure/OceanNpSchedulingTaskParameters:OceanNpSchedulingTaskParameters"
@@ -4384,6 +4432,9 @@
             "properties": {
                 "parametersClusterRoll": {
                     "$ref": "#/types/spotinst:azure/OceanNpSchedulingTaskParametersParametersClusterRoll:OceanNpSchedulingTaskParametersParametersClusterRoll"
+                },
+                "parametersUpgradeConfig": {
+                    "$ref": "#/types/spotinst:azure/OceanNpSchedulingTaskParametersParametersUpgradeConfig:OceanNpSchedulingTaskParametersParametersUpgradeConfig"
                 }
             },
             "type": "object"
@@ -4416,6 +4467,45 @@
                         "type": "string"
                     },
                     "description": "List of virtual node group identifiers to be rolled. Each identifier is a string. vngIds can be null, and cannot be used together with nodeNames and nodePoolNames.\n"
+                }
+            },
+            "type": "object"
+        },
+        "spotinst:azure/OceanNpSchedulingTaskParametersParametersUpgradeConfig:OceanNpSchedulingTaskParametersParametersUpgradeConfig": {
+            "properties": {
+                "applyRoll": {
+                    "type": "boolean"
+                },
+                "rollParameters": {
+                    "$ref": "#/types/spotinst:azure/OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParameters:OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParameters"
+                },
+                "scopeVersion": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "spotinst:azure/OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParameters:OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParameters": {
+            "properties": {
+                "batchMinHealthyPercentage": {
+                    "type": "integer",
+                    "description": "Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.\n"
+                },
+                "batchSizePercentage": {
+                    "type": "integer",
+                    "description": "Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.\n"
+                },
+                "comment": {
+                    "type": "string",
+                    "description": "Add a comment description for the roll. The comment is limited to 256 chars and optional.\n"
+                },
+                "respectPdb": {
+                    "type": "boolean",
+                    "description": "During the roll, if the parameter is set to true we honor PDB during the nodes replacement.\n"
+                },
+                "respectRestrictScaleDown": {
+                    "type": "boolean",
+                    "description": "During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.\n"
                 }
             },
             "type": "object"
@@ -4739,6 +4829,29 @@
                         "type": "string"
                     },
                     "description": "List of virtual node group identifiers to be rolled. Each identifier is a string. vngIds can be null, and cannot be used together with nodeNames and nodePoolNames.\n"
+                }
+            },
+            "type": "object"
+        },
+        "spotinst:azure/OceanNpVngTemplateScheduling:OceanNpVngTemplateScheduling": {
+            "properties": {
+                "vngTemplateShutdownHours": {
+                    "$ref": "#/types/spotinst:azure/OceanNpVngTemplateSchedulingVngTemplateShutdownHours:OceanNpVngTemplateSchedulingVngTemplateShutdownHours"
+                }
+            },
+            "type": "object"
+        },
+        "spotinst:azure/OceanNpVngTemplateSchedulingVngTemplateShutdownHours:OceanNpVngTemplateSchedulingVngTemplateShutdownHours": {
+            "properties": {
+                "isEnabled": {
+                    "type": "boolean"
+                },
+                "timeWindows": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The times that the shutdown hours will apply. Required if `is_enabled` is true.\n"
                 }
             },
             "type": "object"
@@ -14935,6 +15048,10 @@
                     },
                     "description": "Custom Linux OS configuration.\n"
                 },
+                "logging": {
+                    "$ref": "#/types/spotinst:azure/OceanNpLogging:OceanNpLogging",
+                    "description": "The OCean AKS Logging Object.\n"
+                },
                 "maxCount": {
                     "type": "integer",
                     "description": "Maximum node count limit.\n"
@@ -15003,6 +15120,10 @@
                         "type": "string"
                     },
                     "description": "The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).\n"
+                },
+                "vngTemplateScheduling": {
+                    "$ref": "#/types/spotinst:azure/OceanNpVngTemplateScheduling:OceanNpVngTemplateScheduling",
+                    "description": "An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.\n"
                 }
             },
             "required": [
@@ -15083,6 +15204,10 @@
                     },
                     "description": "Custom Linux OS configuration.\n"
                 },
+                "logging": {
+                    "$ref": "#/types/spotinst:azure/OceanNpLogging:OceanNpLogging",
+                    "description": "The OCean AKS Logging Object.\n"
+                },
                 "maxCount": {
                     "type": "integer",
                     "description": "Maximum node count limit.\n"
@@ -15151,6 +15276,10 @@
                         "type": "string"
                     },
                     "description": "The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).\n"
+                },
+                "vngTemplateScheduling": {
+                    "$ref": "#/types/spotinst:azure/OceanNpVngTemplateScheduling:OceanNpVngTemplateScheduling",
+                    "description": "An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.\n"
                 }
             },
             "requiredInputs": [
@@ -15232,6 +15361,10 @@
                         },
                         "description": "Custom Linux OS configuration.\n"
                     },
+                    "logging": {
+                        "$ref": "#/types/spotinst:azure/OceanNpLogging:OceanNpLogging",
+                        "description": "The OCean AKS Logging Object.\n"
+                    },
                     "maxCount": {
                         "type": "integer",
                         "description": "Maximum node count limit.\n"
@@ -15300,6 +15433,10 @@
                             "type": "string"
                         },
                         "description": "The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).\n"
+                    },
+                    "vngTemplateScheduling": {
+                        "$ref": "#/types/spotinst:azure/OceanNpVngTemplateScheduling:OceanNpVngTemplateScheduling",
+                        "description": "An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.\n"
                     }
                 },
                 "type": "object"

@@ -41,6 +41,8 @@ type OceanNp struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Custom Linux OS configuration.
 	LinuxOsConfigs OceanNpLinuxOsConfigArrayOutput `pulumi:"linuxOsConfigs"`
+	// The OCean AKS Logging Object.
+	Logging OceanNpLoggingPtrOutput `pulumi:"logging"`
 	// Maximum node count limit.
 	MaxCount pulumi.IntPtrOutput `pulumi:"maxCount"`
 	// The maximum number of pods per node in the node pools.
@@ -68,6 +70,8 @@ type OceanNp struct {
 	UpdatePolicy OceanNpUpdatePolicyPtrOutput `pulumi:"updatePolicy"`
 	// The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
 	VnetSubnetIds pulumi.StringArrayOutput `pulumi:"vnetSubnetIds"`
+	// An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
+	VngTemplateScheduling OceanNpVngTemplateSchedulingPtrOutput `pulumi:"vngTemplateScheduling"`
 }
 
 // NewOceanNp registers a new resource with the given unique name, arguments, and options.
@@ -144,6 +148,8 @@ type oceanNpState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Custom Linux OS configuration.
 	LinuxOsConfigs []OceanNpLinuxOsConfig `pulumi:"linuxOsConfigs"`
+	// The OCean AKS Logging Object.
+	Logging *OceanNpLogging `pulumi:"logging"`
 	// Maximum node count limit.
 	MaxCount *int `pulumi:"maxCount"`
 	// The maximum number of pods per node in the node pools.
@@ -171,6 +177,8 @@ type oceanNpState struct {
 	UpdatePolicy *OceanNpUpdatePolicy `pulumi:"updatePolicy"`
 	// The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
 	VnetSubnetIds []string `pulumi:"vnetSubnetIds"`
+	// An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
+	VngTemplateScheduling *OceanNpVngTemplateScheduling `pulumi:"vngTemplateScheduling"`
 }
 
 type OceanNpState struct {
@@ -200,6 +208,8 @@ type OceanNpState struct {
 	Labels pulumi.StringMapInput
 	// Custom Linux OS configuration.
 	LinuxOsConfigs OceanNpLinuxOsConfigArrayInput
+	// The OCean AKS Logging Object.
+	Logging OceanNpLoggingPtrInput
 	// Maximum node count limit.
 	MaxCount pulumi.IntPtrInput
 	// The maximum number of pods per node in the node pools.
@@ -227,6 +237,8 @@ type OceanNpState struct {
 	UpdatePolicy OceanNpUpdatePolicyPtrInput
 	// The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
 	VnetSubnetIds pulumi.StringArrayInput
+	// An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
+	VngTemplateScheduling OceanNpVngTemplateSchedulingPtrInput
 }
 
 func (OceanNpState) ElementType() reflect.Type {
@@ -260,6 +272,8 @@ type oceanNpArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Custom Linux OS configuration.
 	LinuxOsConfigs []OceanNpLinuxOsConfig `pulumi:"linuxOsConfigs"`
+	// The OCean AKS Logging Object.
+	Logging *OceanNpLogging `pulumi:"logging"`
 	// Maximum node count limit.
 	MaxCount *int `pulumi:"maxCount"`
 	// The maximum number of pods per node in the node pools.
@@ -287,6 +301,8 @@ type oceanNpArgs struct {
 	UpdatePolicy *OceanNpUpdatePolicy `pulumi:"updatePolicy"`
 	// The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
 	VnetSubnetIds []string `pulumi:"vnetSubnetIds"`
+	// An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
+	VngTemplateScheduling *OceanNpVngTemplateScheduling `pulumi:"vngTemplateScheduling"`
 }
 
 // The set of arguments for constructing a OceanNp resource.
@@ -317,6 +333,8 @@ type OceanNpArgs struct {
 	Labels pulumi.StringMapInput
 	// Custom Linux OS configuration.
 	LinuxOsConfigs OceanNpLinuxOsConfigArrayInput
+	// The OCean AKS Logging Object.
+	Logging OceanNpLoggingPtrInput
 	// Maximum node count limit.
 	MaxCount pulumi.IntPtrInput
 	// The maximum number of pods per node in the node pools.
@@ -344,6 +362,8 @@ type OceanNpArgs struct {
 	UpdatePolicy OceanNpUpdatePolicyPtrInput
 	// The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
 	VnetSubnetIds pulumi.StringArrayInput
+	// An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
+	VngTemplateScheduling OceanNpVngTemplateSchedulingPtrInput
 }
 
 func (OceanNpArgs) ElementType() reflect.Type {
@@ -504,6 +524,11 @@ func (o OceanNpOutput) LinuxOsConfigs() OceanNpLinuxOsConfigArrayOutput {
 	return o.ApplyT(func(v *OceanNp) OceanNpLinuxOsConfigArrayOutput { return v.LinuxOsConfigs }).(OceanNpLinuxOsConfigArrayOutput)
 }
 
+// The OCean AKS Logging Object.
+func (o OceanNpOutput) Logging() OceanNpLoggingPtrOutput {
+	return o.ApplyT(func(v *OceanNp) OceanNpLoggingPtrOutput { return v.Logging }).(OceanNpLoggingPtrOutput)
+}
+
 // Maximum node count limit.
 func (o OceanNpOutput) MaxCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanNp) pulumi.IntPtrOutput { return v.MaxCount }).(pulumi.IntPtrOutput)
@@ -574,6 +599,11 @@ func (o OceanNpOutput) UpdatePolicy() OceanNpUpdatePolicyPtrOutput {
 // The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
 func (o OceanNpOutput) VnetSubnetIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanNp) pulumi.StringArrayOutput { return v.VnetSubnetIds }).(pulumi.StringArrayOutput)
+}
+
+// An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
+func (o OceanNpOutput) VngTemplateScheduling() OceanNpVngTemplateSchedulingPtrOutput {
+	return o.ApplyT(func(v *OceanNp) OceanNpVngTemplateSchedulingPtrOutput { return v.VngTemplateScheduling }).(OceanNpVngTemplateSchedulingPtrOutput)
 }
 
 type OceanNpArrayOutput struct{ *pulumi.OutputState }

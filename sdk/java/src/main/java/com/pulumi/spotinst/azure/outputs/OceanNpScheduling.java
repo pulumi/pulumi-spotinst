@@ -5,6 +5,7 @@ package com.pulumi.spotinst.azure.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.spotinst.azure.outputs.OceanNpSchedulingShutdownHours;
+import com.pulumi.spotinst.azure.outputs.OceanNpSchedulingSuspensionHours;
 import com.pulumi.spotinst.azure.outputs.OceanNpSchedulingTask;
 import java.util.List;
 import java.util.Objects;
@@ -13,12 +14,24 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanNpScheduling {
+    /**
+     * @return An object used to specify times that the nodes in the virtual node group will be stopped.
+     * 
+     */
     private @Nullable OceanNpSchedulingShutdownHours shutdownHours;
+    private @Nullable OceanNpSchedulingSuspensionHours suspensionHours;
     private @Nullable List<OceanNpSchedulingTask> tasks;
 
     private OceanNpScheduling() {}
+    /**
+     * @return An object used to specify times that the nodes in the virtual node group will be stopped.
+     * 
+     */
     public Optional<OceanNpSchedulingShutdownHours> shutdownHours() {
         return Optional.ofNullable(this.shutdownHours);
+    }
+    public Optional<OceanNpSchedulingSuspensionHours> suspensionHours() {
+        return Optional.ofNullable(this.suspensionHours);
     }
     public List<OceanNpSchedulingTask> tasks() {
         return this.tasks == null ? List.of() : this.tasks;
@@ -34,11 +47,13 @@ public final class OceanNpScheduling {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable OceanNpSchedulingShutdownHours shutdownHours;
+        private @Nullable OceanNpSchedulingSuspensionHours suspensionHours;
         private @Nullable List<OceanNpSchedulingTask> tasks;
         public Builder() {}
         public Builder(OceanNpScheduling defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.shutdownHours = defaults.shutdownHours;
+    	      this.suspensionHours = defaults.suspensionHours;
     	      this.tasks = defaults.tasks;
         }
 
@@ -46,6 +61,12 @@ public final class OceanNpScheduling {
         public Builder shutdownHours(@Nullable OceanNpSchedulingShutdownHours shutdownHours) {
 
             this.shutdownHours = shutdownHours;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder suspensionHours(@Nullable OceanNpSchedulingSuspensionHours suspensionHours) {
+
+            this.suspensionHours = suspensionHours;
             return this;
         }
         @CustomType.Setter
@@ -60,6 +81,7 @@ public final class OceanNpScheduling {
         public OceanNpScheduling build() {
             final var _resultValue = new OceanNpScheduling();
             _resultValue.shutdownHours = shutdownHours;
+            _resultValue.suspensionHours = suspensionHours;
             _resultValue.tasks = tasks;
             return _resultValue;
         }

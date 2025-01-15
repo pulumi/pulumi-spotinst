@@ -17,24 +17,24 @@ public final class OceanNpSchedulingShutdownHoursArgs extends com.pulumi.resourc
 
     public static final OceanNpSchedulingShutdownHoursArgs Empty = new OceanNpSchedulingShutdownHoursArgs();
 
-    /**
-     * Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
-     * 
-     */
     @Import(name="isEnabled")
     private @Nullable Output<Boolean> isEnabled;
 
-    /**
-     * @return Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
-     * 
-     */
     public Optional<Output<Boolean>> isEnabled() {
         return Optional.ofNullable(this.isEnabled);
     }
 
+    /**
+     * The times that the shutdown hours will apply. Required if `is_enabled` is true.
+     * 
+     */
     @Import(name="timeWindows")
     private @Nullable Output<List<String>> timeWindows;
 
+    /**
+     * @return The times that the shutdown hours will apply. Required if `is_enabled` is true.
+     * 
+     */
     public Optional<Output<List<String>>> timeWindows() {
         return Optional.ofNullable(this.timeWindows);
     }
@@ -64,36 +64,42 @@ public final class OceanNpSchedulingShutdownHoursArgs extends com.pulumi.resourc
             $ = new OceanNpSchedulingShutdownHoursArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param isEnabled Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
-         * 
-         * @return builder
-         * 
-         */
         public Builder isEnabled(@Nullable Output<Boolean> isEnabled) {
             $.isEnabled = isEnabled;
             return this;
         }
 
-        /**
-         * @param isEnabled Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
-         * 
-         * @return builder
-         * 
-         */
         public Builder isEnabled(Boolean isEnabled) {
             return isEnabled(Output.of(isEnabled));
         }
 
+        /**
+         * @param timeWindows The times that the shutdown hours will apply. Required if `is_enabled` is true.
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeWindows(@Nullable Output<List<String>> timeWindows) {
             $.timeWindows = timeWindows;
             return this;
         }
 
+        /**
+         * @param timeWindows The times that the shutdown hours will apply. Required if `is_enabled` is true.
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeWindows(List<String> timeWindows) {
             return timeWindows(Output.of(timeWindows));
         }
 
+        /**
+         * @param timeWindows The times that the shutdown hours will apply. Required if `is_enabled` is true.
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeWindows(String... timeWindows) {
             return timeWindows(List.of(timeWindows));
         }
