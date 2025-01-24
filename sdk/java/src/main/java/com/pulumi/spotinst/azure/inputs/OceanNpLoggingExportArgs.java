@@ -17,14 +17,14 @@ public final class OceanNpLoggingExportArgs extends com.pulumi.resources.Resourc
     public static final OceanNpLoggingExportArgs Empty = new OceanNpLoggingExportArgs();
 
     /**
-     * Exports your cluster&#39;s logs to the storage account and container configured on the storage account [data integration](https://docs.spot.io/#operation/DataIntegrationCreate) given. Each file contains logs of 3 minutes where each log is separated by a new line and saved as a JSON. The file formats are `container`/`accountId``oceanId``oceanName`_`startTime`.log
+     * Exports your cluster&#39;s logs to the storage account and container configured on the storage account [data integration](https://docs.spot.io/ocean/features/log-integration-with-azure-blob?id=log-integration-with-azure-blob) given. Each file contains logs of 3 minutes where each log is separated by a new line and saved as a JSON. The file formats are `container`/`accountId``oceanId``oceanName`_`startTime`.log
      * 
      */
     @Import(name="azureBlobs")
     private @Nullable Output<List<OceanNpLoggingExportAzureBlobArgs>> azureBlobs;
 
     /**
-     * @return Exports your cluster&#39;s logs to the storage account and container configured on the storage account [data integration](https://docs.spot.io/#operation/DataIntegrationCreate) given. Each file contains logs of 3 minutes where each log is separated by a new line and saved as a JSON. The file formats are `container`/`accountId``oceanId``oceanName`_`startTime`.log
+     * @return Exports your cluster&#39;s logs to the storage account and container configured on the storage account [data integration](https://docs.spot.io/ocean/features/log-integration-with-azure-blob?id=log-integration-with-azure-blob) given. Each file contains logs of 3 minutes where each log is separated by a new line and saved as a JSON. The file formats are `container`/`accountId``oceanId``oceanName`_`startTime`.log
      * 
      */
     public Optional<Output<List<OceanNpLoggingExportAzureBlobArgs>>> azureBlobs() {
@@ -56,7 +56,7 @@ public final class OceanNpLoggingExportArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param azureBlobs Exports your cluster&#39;s logs to the storage account and container configured on the storage account [data integration](https://docs.spot.io/#operation/DataIntegrationCreate) given. Each file contains logs of 3 minutes where each log is separated by a new line and saved as a JSON. The file formats are `container`/`accountId``oceanId``oceanName`_`startTime`.log
+         * @param azureBlobs Exports your cluster&#39;s logs to the storage account and container configured on the storage account [data integration](https://docs.spot.io/ocean/features/log-integration-with-azure-blob?id=log-integration-with-azure-blob) given. Each file contains logs of 3 minutes where each log is separated by a new line and saved as a JSON. The file formats are `container`/`accountId``oceanId``oceanName`_`startTime`.log
          * 
          * @return builder
          * 
@@ -67,7 +67,7 @@ public final class OceanNpLoggingExportArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param azureBlobs Exports your cluster&#39;s logs to the storage account and container configured on the storage account [data integration](https://docs.spot.io/#operation/DataIntegrationCreate) given. Each file contains logs of 3 minutes where each log is separated by a new line and saved as a JSON. The file formats are `container`/`accountId``oceanId``oceanName`_`startTime`.log
+         * @param azureBlobs Exports your cluster&#39;s logs to the storage account and container configured on the storage account [data integration](https://docs.spot.io/ocean/features/log-integration-with-azure-blob?id=log-integration-with-azure-blob) given. Each file contains logs of 3 minutes where each log is separated by a new line and saved as a JSON. The file formats are `container`/`accountId``oceanId``oceanName`_`startTime`.log
          * 
          * @return builder
          * 
@@ -77,7 +77,7 @@ public final class OceanNpLoggingExportArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param azureBlobs Exports your cluster&#39;s logs to the storage account and container configured on the storage account [data integration](https://docs.spot.io/#operation/DataIntegrationCreate) given. Each file contains logs of 3 minutes where each log is separated by a new line and saved as a JSON. The file formats are `container`/`accountId``oceanId``oceanName`_`startTime`.log
+         * @param azureBlobs Exports your cluster&#39;s logs to the storage account and container configured on the storage account [data integration](https://docs.spot.io/ocean/features/log-integration-with-azure-blob?id=log-integration-with-azure-blob) given. Each file contains logs of 3 minutes where each log is separated by a new line and saved as a JSON. The file formats are `container`/`accountId``oceanId``oceanName`_`startTime`.log
          * 
          * @return builder
          * 

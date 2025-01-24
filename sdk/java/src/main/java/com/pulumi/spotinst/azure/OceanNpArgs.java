@@ -224,14 +224,14 @@ public final class OceanNpArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The OCean AKS Logging Object.
+     * The Ocean AKS Logging Object.
      * 
      */
     @Import(name="logging")
     private @Nullable Output<OceanNpLoggingArgs> logging;
 
     /**
-     * @return The OCean AKS Logging Object.
+     * @return The Ocean AKS Logging Object.
      * 
      */
     public Optional<Output<OceanNpLoggingArgs>> logging() {
@@ -807,7 +807,7 @@ public final class OceanNpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logging The OCean AKS Logging Object.
+         * @param logging The Ocean AKS Logging Object.
          * 
          * @return builder
          * 
@@ -818,7 +818,7 @@ public final class OceanNpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logging The OCean AKS Logging Object.
+         * @param logging The Ocean AKS Logging Object.
          * 
          * @return builder
          * 

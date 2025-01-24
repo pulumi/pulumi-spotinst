@@ -6,6 +6,7 @@ from . import _utilities
 import typing
 # Export this package's modules as members:
 from .account import *
+from .credentials_azure import *
 from .credentials_gcp import *
 from .data_integration import *
 from .elastigroup_azure_v3 import *
@@ -209,6 +210,14 @@ _utilities.register(
   "fqn": "pulumi_spotinst",
   "classes": {
    "spotinst:index/account:Account": "Account"
+  }
+ },
+ {
+  "pkg": "spotinst",
+  "mod": "index/credentialsAzure",
+  "fqn": "pulumi_spotinst",
+  "classes": {
+   "spotinst:index/credentialsAzure:CredentialsAzure": "CredentialsAzure"
   }
  },
  {

@@ -41,7 +41,7 @@ type OceanNp struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Custom Linux OS configuration.
 	LinuxOsConfigs OceanNpLinuxOsConfigArrayOutput `pulumi:"linuxOsConfigs"`
-	// The OCean AKS Logging Object.
+	// The Ocean AKS Logging Object.
 	Logging OceanNpLoggingPtrOutput `pulumi:"logging"`
 	// Maximum node count limit.
 	MaxCount pulumi.IntPtrOutput `pulumi:"maxCount"`
@@ -148,7 +148,7 @@ type oceanNpState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Custom Linux OS configuration.
 	LinuxOsConfigs []OceanNpLinuxOsConfig `pulumi:"linuxOsConfigs"`
-	// The OCean AKS Logging Object.
+	// The Ocean AKS Logging Object.
 	Logging *OceanNpLogging `pulumi:"logging"`
 	// Maximum node count limit.
 	MaxCount *int `pulumi:"maxCount"`
@@ -208,7 +208,7 @@ type OceanNpState struct {
 	Labels pulumi.StringMapInput
 	// Custom Linux OS configuration.
 	LinuxOsConfigs OceanNpLinuxOsConfigArrayInput
-	// The OCean AKS Logging Object.
+	// The Ocean AKS Logging Object.
 	Logging OceanNpLoggingPtrInput
 	// Maximum node count limit.
 	MaxCount pulumi.IntPtrInput
@@ -272,7 +272,7 @@ type oceanNpArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Custom Linux OS configuration.
 	LinuxOsConfigs []OceanNpLinuxOsConfig `pulumi:"linuxOsConfigs"`
-	// The OCean AKS Logging Object.
+	// The Ocean AKS Logging Object.
 	Logging *OceanNpLogging `pulumi:"logging"`
 	// Maximum node count limit.
 	MaxCount *int `pulumi:"maxCount"`
@@ -333,7 +333,7 @@ type OceanNpArgs struct {
 	Labels pulumi.StringMapInput
 	// Custom Linux OS configuration.
 	LinuxOsConfigs OceanNpLinuxOsConfigArrayInput
-	// The OCean AKS Logging Object.
+	// The Ocean AKS Logging Object.
 	Logging OceanNpLoggingPtrInput
 	// Maximum node count limit.
 	MaxCount pulumi.IntPtrInput
@@ -524,7 +524,7 @@ func (o OceanNpOutput) LinuxOsConfigs() OceanNpLinuxOsConfigArrayOutput {
 	return o.ApplyT(func(v *OceanNp) OceanNpLinuxOsConfigArrayOutput { return v.LinuxOsConfigs }).(OceanNpLinuxOsConfigArrayOutput)
 }
 
-// The OCean AKS Logging Object.
+// The Ocean AKS Logging Object.
 func (o OceanNpOutput) Logging() OceanNpLoggingPtrOutput {
 	return o.ApplyT(func(v *OceanNp) OceanNpLoggingPtrOutput { return v.Logging }).(OceanNpLoggingPtrOutput)
 }

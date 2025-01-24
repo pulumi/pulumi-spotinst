@@ -91,7 +91,7 @@ namespace Pulumi.SpotInst.Azure
         public Output<ImmutableArray<Outputs.OceanNpLinuxOsConfig>> LinuxOsConfigs { get; private set; } = null!;
 
         /// <summary>
-        /// The OCean AKS Logging Object.
+        /// The Ocean AKS Logging Object.
         /// </summary>
         [Output("logging")]
         public Output<Outputs.OceanNpLogging?> Logging { get; private set; } = null!;
@@ -332,7 +332,7 @@ namespace Pulumi.SpotInst.Azure
         }
 
         /// <summary>
-        /// The OCean AKS Logging Object.
+        /// The Ocean AKS Logging Object.
         /// </summary>
         [Input("logging")]
         public Input<Inputs.OceanNpLoggingArgs>? Logging { get; set; }
@@ -558,7 +558,7 @@ namespace Pulumi.SpotInst.Azure
         }
 
         /// <summary>
-        /// The OCean AKS Logging Object.
+        /// The Ocean AKS Logging Object.
         /// </summary>
         [Input("logging")]
         public Input<Inputs.OceanNpLoggingGetArgs>? Logging { get; set; }

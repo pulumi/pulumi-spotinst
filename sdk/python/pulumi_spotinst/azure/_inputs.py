@@ -885,7 +885,7 @@ if not MYPY:
     class OceanNpLoggingExportArgsDict(TypedDict):
         azure_blobs: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanNpLoggingExportAzureBlobArgsDict']]]]
         """
-        Exports your cluster's logs to the storage account and container configured on the storage account [data integration](https://docs.spot.io/#operation/DataIntegrationCreate) given. Each file contains logs of 3 minutes where each log is separated by a new line and saved as a JSON. The file formats are `container`/`accountId``oceanId``oceanName`_`startTime`.log
+        Exports your cluster's logs to the storage account and container configured on the storage account [data integration](https://docs.spot.io/ocean/features/log-integration-with-azure-blob?id=log-integration-with-azure-blob) given. Each file contains logs of 3 minutes where each log is separated by a new line and saved as a JSON. The file formats are `container`/`accountId``oceanId``oceanName`_`startTime`.log
         """
 elif False:
     OceanNpLoggingExportArgsDict: TypeAlias = Mapping[str, Any]
@@ -895,7 +895,7 @@ class OceanNpLoggingExportArgs:
     def __init__(__self__, *,
                  azure_blobs: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpLoggingExportAzureBlobArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['OceanNpLoggingExportAzureBlobArgs']]] azure_blobs: Exports your cluster's logs to the storage account and container configured on the storage account [data integration](https://docs.spot.io/#operation/DataIntegrationCreate) given. Each file contains logs of 3 minutes where each log is separated by a new line and saved as a JSON. The file formats are `container`/`accountId``oceanId``oceanName`_`startTime`.log
+        :param pulumi.Input[Sequence[pulumi.Input['OceanNpLoggingExportAzureBlobArgs']]] azure_blobs: Exports your cluster's logs to the storage account and container configured on the storage account [data integration](https://docs.spot.io/ocean/features/log-integration-with-azure-blob?id=log-integration-with-azure-blob) given. Each file contains logs of 3 minutes where each log is separated by a new line and saved as a JSON. The file formats are `container`/`accountId``oceanId``oceanName`_`startTime`.log
         """
         if azure_blobs is not None:
             pulumi.set(__self__, "azure_blobs", azure_blobs)
@@ -904,7 +904,7 @@ class OceanNpLoggingExportArgs:
     @pulumi.getter(name="azureBlobs")
     def azure_blobs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpLoggingExportAzureBlobArgs']]]]:
         """
-        Exports your cluster's logs to the storage account and container configured on the storage account [data integration](https://docs.spot.io/#operation/DataIntegrationCreate) given. Each file contains logs of 3 minutes where each log is separated by a new line and saved as a JSON. The file formats are `container`/`accountId``oceanId``oceanName`_`startTime`.log
+        Exports your cluster's logs to the storage account and container configured on the storage account [data integration](https://docs.spot.io/ocean/features/log-integration-with-azure-blob?id=log-integration-with-azure-blob) given. Each file contains logs of 3 minutes where each log is separated by a new line and saved as a JSON. The file formats are `container`/`accountId``oceanId``oceanName`_`startTime`.log
         """
         return pulumi.get(self, "azure_blobs")
 
