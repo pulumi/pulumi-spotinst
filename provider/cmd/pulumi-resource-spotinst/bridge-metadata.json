@@ -10,6 +10,9 @@
             "spotinst_credentials_aws": {
                 "current": "spotinst:aws/credentials:Credentials"
             },
+            "spotinst_credentials_azure": {
+                "current": "spotinst:index/credentialsAzure:CredentialsAzure"
+            },
             "spotinst_credentials_gcp": {
                 "current": "spotinst:index/credentialsGcp:CredentialsGcp"
             },

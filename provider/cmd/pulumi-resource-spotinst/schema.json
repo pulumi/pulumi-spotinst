@@ -4344,7 +4344,7 @@
                     "items": {
                         "$ref": "#/types/spotinst:azure/OceanNpLoggingExportAzureBlob:OceanNpLoggingExportAzureBlob"
                     },
-                    "description": "Exports your cluster's logs to the storage account and container configured on the storage account [data integration](https://docs.spot.io/#operation/DataIntegrationCreate) given. Each file contains logs of 3 minutes where each log is separated by a new line and saved as a JSON. The file formats are `container`/`accountId``oceanId``oceanName`_`startTime`.log\n"
+                    "description": "Exports your cluster's logs to the storage account and container configured on the storage account [data integration](https://docs.spot.io/ocean/features/log-integration-with-azure-blob?id=log-integration-with-azure-blob) given. Each file contains logs of 3 minutes where each log is separated by a new line and saved as a JSON. The file formats are `container`/`accountId``oceanId``oceanName`_`startTime`.log\n"
                 }
             },
             "type": "object"
@@ -15050,7 +15050,7 @@
                 },
                 "logging": {
                     "$ref": "#/types/spotinst:azure/OceanNpLogging:OceanNpLogging",
-                    "description": "The OCean AKS Logging Object.\n"
+                    "description": "The Ocean AKS Logging Object.\n"
                 },
                 "maxCount": {
                     "type": "integer",
@@ -15206,7 +15206,7 @@
                 },
                 "logging": {
                     "$ref": "#/types/spotinst:azure/OceanNpLogging:OceanNpLogging",
-                    "description": "The OCean AKS Logging Object.\n"
+                    "description": "The Ocean AKS Logging Object.\n"
                 },
                 "maxCount": {
                     "type": "integer",
@@ -15363,7 +15363,7 @@
                     },
                     "logging": {
                         "$ref": "#/types/spotinst:azure/OceanNpLogging:OceanNpLogging",
-                        "description": "The OCean AKS Logging Object.\n"
+                        "description": "The Ocean AKS Logging Object.\n"
                     },
                     "maxCount": {
                         "type": "integer",
@@ -18486,6 +18486,103 @@
                     "name": {
                         "type": "string",
                         "description": "Provide a name for your account. The account name must contain at least one character that is a-z or A-Z.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "spotinst:index/credentialsAzure:CredentialsAzure": {
+            "description": "Provides a Spotinst credential Azure resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\n// set credential Azure\nconst credential = new spotinst.CredentialsAzure(\"credential\", {\n    accountId: \"act-123456\",\n    clientId: \"redacted\",\n    clientSecret: \"redacted\",\n    tenantId: \"redacted\",\n    subscriptionId: \"redacted\",\n});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\n# set credential Azure\ncredential = spotinst.CredentialsAzure(\"credential\",\n    account_id=\"act-123456\",\n    client_id=\"redacted\",\n    client_secret=\"redacted\",\n    tenant_id=\"redacted\",\n    subscription_id=\"redacted\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SpotInst = Pulumi.SpotInst;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // set credential Azure\n    var credential = new SpotInst.CredentialsAzure(\"credential\", new()\n    {\n        AccountId = \"act-123456\",\n        ClientId = \"redacted\",\n        ClientSecret = \"redacted\",\n        TenantId = \"redacted\",\n        SubscriptionId = \"redacted\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// set credential Azure\n\t\t_, err := spotinst.NewCredentialsAzure(ctx, \"credential\", \u0026spotinst.CredentialsAzureArgs{\n\t\t\tAccountId:      pulumi.String(\"act-123456\"),\n\t\t\tClientId:       pulumi.String(\"redacted\"),\n\t\t\tClientSecret:   pulumi.String(\"redacted\"),\n\t\t\tTenantId:       pulumi.String(\"redacted\"),\n\t\t\tSubscriptionId: pulumi.String(\"redacted\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.spotinst.CredentialsAzure;\nimport com.pulumi.spotinst.CredentialsAzureArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // set credential Azure\n        var credential = new CredentialsAzure(\"credential\", CredentialsAzureArgs.builder()\n            .accountId(\"act-123456\")\n            .clientId(\"redacted\")\n            .clientSecret(\"redacted\")\n            .tenantId(\"redacted\")\n            .subscriptionId(\"redacted\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # set credential Azure\n  credential:\n    type: spotinst:CredentialsAzure\n    properties:\n      accountId: act-123456\n      clientId: redacted\n      clientSecret: redacted\n      tenantId: redacted\n      subscriptionId: redacted\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The ID of the account associated with your token.\n"
+                },
+                "clientId": {
+                    "type": "string",
+                    "description": "Set the application ID.\n"
+                },
+                "clientSecret": {
+                    "type": "string",
+                    "description": "Set the key secret.\n"
+                },
+                "subscriptionId": {
+                    "type": "string",
+                    "description": "Set the subscription ID.\n"
+                },
+                "tenantId": {
+                    "type": "string",
+                    "description": "Set the directory ID.\n"
+                }
+            },
+            "required": [
+                "accountId",
+                "clientId",
+                "clientSecret",
+                "subscriptionId",
+                "tenantId"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The ID of the account associated with your token.\n",
+                    "willReplaceOnChanges": true
+                },
+                "clientId": {
+                    "type": "string",
+                    "description": "Set the application ID.\n",
+                    "willReplaceOnChanges": true
+                },
+                "clientSecret": {
+                    "type": "string",
+                    "description": "Set the key secret.\n",
+                    "willReplaceOnChanges": true
+                },
+                "subscriptionId": {
+                    "type": "string",
+                    "description": "Set the subscription ID.\n",
+                    "willReplaceOnChanges": true
+                },
+                "tenantId": {
+                    "type": "string",
+                    "description": "Set the directory ID.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "accountId",
+                "clientId",
+                "clientSecret",
+                "subscriptionId",
+                "tenantId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering CredentialsAzure resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The ID of the account associated with your token.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "clientId": {
+                        "type": "string",
+                        "description": "Set the application ID.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "clientSecret": {
+                        "type": "string",
+                        "description": "Set the key secret.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "subscriptionId": {
+                        "type": "string",
+                        "description": "Set the subscription ID.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "tenantId": {
+                        "type": "string",
+                        "description": "Set the directory ID.\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
