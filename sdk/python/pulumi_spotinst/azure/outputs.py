@@ -722,7 +722,7 @@ class OceanNpLoggingExport(dict):
     def __init__(__self__, *,
                  azure_blobs: Optional[Sequence['outputs.OceanNpLoggingExportAzureBlob']] = None):
         """
-        :param Sequence['OceanNpLoggingExportAzureBlobArgs'] azure_blobs: Exports your cluster's logs to the storage account and container configured on the storage account [data integration](https://docs.spot.io/#operation/DataIntegrationCreate) given. Each file contains logs of 3 minutes where each log is separated by a new line and saved as a JSON. The file formats are `container`/`accountId``oceanId``oceanName`_`startTime`.log
+        :param Sequence['OceanNpLoggingExportAzureBlobArgs'] azure_blobs: Exports your cluster's logs to the storage account and container configured on the storage account [data integration](https://docs.spot.io/ocean/features/log-integration-with-azure-blob?id=log-integration-with-azure-blob) given. Each file contains logs of 3 minutes where each log is separated by a new line and saved as a JSON. The file formats are `container`/`accountId``oceanId``oceanName`_`startTime`.log
         """
         if azure_blobs is not None:
             pulumi.set(__self__, "azure_blobs", azure_blobs)
@@ -731,7 +731,7 @@ class OceanNpLoggingExport(dict):
     @pulumi.getter(name="azureBlobs")
     def azure_blobs(self) -> Optional[Sequence['outputs.OceanNpLoggingExportAzureBlob']]:
         """
-        Exports your cluster's logs to the storage account and container configured on the storage account [data integration](https://docs.spot.io/#operation/DataIntegrationCreate) given. Each file contains logs of 3 minutes where each log is separated by a new line and saved as a JSON. The file formats are `container`/`accountId``oceanId``oceanName`_`startTime`.log
+        Exports your cluster's logs to the storage account and container configured on the storage account [data integration](https://docs.spot.io/ocean/features/log-integration-with-azure-blob?id=log-integration-with-azure-blob) given. Each file contains logs of 3 minutes where each log is separated by a new line and saved as a JSON. The file formats are `container`/`accountId``oceanId``oceanName`_`startTime`.log
         """
         return pulumi.get(self, "azure_blobs")
 

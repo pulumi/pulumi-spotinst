@@ -3391,7 +3391,7 @@ export namespace azure {
 
     export interface OceanNpLoggingExport {
         /**
-         * Exports your cluster's logs to the storage account and container configured on the storage account [data integration](https://docs.spot.io/#operation/DataIntegrationCreate) given. Each file contains logs of 3 minutes where each log is separated by a new line and saved as a JSON. The file formats are `container`/`accountId``oceanId``oceanName`_`startTime`.log
+         * Exports your cluster's logs to the storage account and container configured on the storage account [data integration](https://docs.spot.io/ocean/features/log-integration-with-azure-blob?id=log-integration-with-azure-blob) given. Each file contains logs of 3 minutes where each log is separated by a new line and saved as a JSON. The file formats are `container`/`accountId``oceanId``oceanName`_`startTime`.log
          */
         azureBlobs?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpLoggingExportAzureBlob>[]>;
     }

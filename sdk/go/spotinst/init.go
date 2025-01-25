@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "spotinst:index/account:Account":
 		r = &Account{}
+	case "spotinst:index/credentialsAzure:CredentialsAzure":
+		r = &CredentialsAzure{}
 	case "spotinst:index/credentialsGcp:CredentialsGcp":
 		r = &CredentialsGcp{}
 	case "spotinst:index/dataIntegration:DataIntegration":
@@ -71,6 +73,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"spotinst",
 		"index/account",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"spotinst",
+		"index/credentialsAzure",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

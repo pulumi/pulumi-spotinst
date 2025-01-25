@@ -66,7 +66,7 @@ class OceanNpArgs:
         :param pulumi.Input[str] kubernetes_version: The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: An array of labels to add to the virtual node group. Only custom user labels are allowed, and not [Kubernetes well-known labels](https://kubernetes.io/docs/reference/labels-annotations-taints/) or [ Azure AKS labels](https://learn.microsoft.com/en-us/azure/aks/use-labels) or [Spot labels](https://docs.spot.io/ocean/features/labels-and-taints?id=spot-labels).
         :param pulumi.Input[Sequence[pulumi.Input['OceanNpLinuxOsConfigArgs']]] linux_os_configs: Custom Linux OS configuration.
-        :param pulumi.Input['OceanNpLoggingArgs'] logging: The OCean AKS Logging Object.
+        :param pulumi.Input['OceanNpLoggingArgs'] logging: The Ocean AKS Logging Object.
         :param pulumi.Input[int] max_count: Maximum node count limit.
         :param pulumi.Input[int] max_pods_per_node: The maximum number of pods per node in the node pools.
         :param pulumi.Input[int] min_count: Minimum node count limit.
@@ -312,7 +312,7 @@ class OceanNpArgs:
     @pulumi.getter
     def logging(self) -> Optional[pulumi.Input['OceanNpLoggingArgs']]:
         """
-        The OCean AKS Logging Object.
+        The Ocean AKS Logging Object.
         """
         return pulumi.get(self, "logging")
 
@@ -552,7 +552,7 @@ class _OceanNpState:
         :param pulumi.Input[str] kubernetes_version: The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: An array of labels to add to the virtual node group. Only custom user labels are allowed, and not [Kubernetes well-known labels](https://kubernetes.io/docs/reference/labels-annotations-taints/) or [ Azure AKS labels](https://learn.microsoft.com/en-us/azure/aks/use-labels) or [Spot labels](https://docs.spot.io/ocean/features/labels-and-taints?id=spot-labels).
         :param pulumi.Input[Sequence[pulumi.Input['OceanNpLinuxOsConfigArgs']]] linux_os_configs: Custom Linux OS configuration.
-        :param pulumi.Input['OceanNpLoggingArgs'] logging: The OCean AKS Logging Object.
+        :param pulumi.Input['OceanNpLoggingArgs'] logging: The Ocean AKS Logging Object.
         :param pulumi.Input[int] max_count: Maximum node count limit.
         :param pulumi.Input[int] max_pods_per_node: The maximum number of pods per node in the node pools.
         :param pulumi.Input[int] min_count: Minimum node count limit.
@@ -804,7 +804,7 @@ class _OceanNpState:
     @pulumi.getter
     def logging(self) -> Optional[pulumi.Input['OceanNpLoggingArgs']]:
         """
-        The OCean AKS Logging Object.
+        The Ocean AKS Logging Object.
         """
         return pulumi.get(self, "logging")
 
@@ -1049,7 +1049,7 @@ class OceanNp(pulumi.CustomResource):
         :param pulumi.Input[str] kubernetes_version: The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: An array of labels to add to the virtual node group. Only custom user labels are allowed, and not [Kubernetes well-known labels](https://kubernetes.io/docs/reference/labels-annotations-taints/) or [ Azure AKS labels](https://learn.microsoft.com/en-us/azure/aks/use-labels) or [Spot labels](https://docs.spot.io/ocean/features/labels-and-taints?id=spot-labels).
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpLinuxOsConfigArgs', 'OceanNpLinuxOsConfigArgsDict']]]] linux_os_configs: Custom Linux OS configuration.
-        :param pulumi.Input[Union['OceanNpLoggingArgs', 'OceanNpLoggingArgsDict']] logging: The OCean AKS Logging Object.
+        :param pulumi.Input[Union['OceanNpLoggingArgs', 'OceanNpLoggingArgsDict']] logging: The Ocean AKS Logging Object.
         :param pulumi.Input[int] max_count: Maximum node count limit.
         :param pulumi.Input[int] max_pods_per_node: The maximum number of pods per node in the node pools.
         :param pulumi.Input[int] min_count: Minimum node count limit.
@@ -1232,7 +1232,7 @@ class OceanNp(pulumi.CustomResource):
         :param pulumi.Input[str] kubernetes_version: The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: An array of labels to add to the virtual node group. Only custom user labels are allowed, and not [Kubernetes well-known labels](https://kubernetes.io/docs/reference/labels-annotations-taints/) or [ Azure AKS labels](https://learn.microsoft.com/en-us/azure/aks/use-labels) or [Spot labels](https://docs.spot.io/ocean/features/labels-and-taints?id=spot-labels).
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpLinuxOsConfigArgs', 'OceanNpLinuxOsConfigArgsDict']]]] linux_os_configs: Custom Linux OS configuration.
-        :param pulumi.Input[Union['OceanNpLoggingArgs', 'OceanNpLoggingArgsDict']] logging: The OCean AKS Logging Object.
+        :param pulumi.Input[Union['OceanNpLoggingArgs', 'OceanNpLoggingArgsDict']] logging: The Ocean AKS Logging Object.
         :param pulumi.Input[int] max_count: Maximum node count limit.
         :param pulumi.Input[int] max_pods_per_node: The maximum number of pods per node in the node pools.
         :param pulumi.Input[int] min_count: Minimum node count limit.
@@ -1397,7 +1397,7 @@ class OceanNp(pulumi.CustomResource):
     @pulumi.getter
     def logging(self) -> pulumi.Output[Optional['outputs.OceanNpLogging']]:
         """
-        The OCean AKS Logging Object.
+        The Ocean AKS Logging Object.
         """
         return pulumi.get(self, "logging")
 

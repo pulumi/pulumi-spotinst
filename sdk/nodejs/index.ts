@@ -10,6 +10,11 @@ export type Account = import("./account").Account;
 export const Account: typeof import("./account").Account = null as any;
 utilities.lazyLoad(exports, ["Account"], () => require("./account"));
 
+export { CredentialsAzureArgs, CredentialsAzureState } from "./credentialsAzure";
+export type CredentialsAzure = import("./credentialsAzure").CredentialsAzure;
+export const CredentialsAzure: typeof import("./credentialsAzure").CredentialsAzure = null as any;
+utilities.lazyLoad(exports, ["CredentialsAzure"], () => require("./credentialsAzure"));
+
 export { CredentialsGcpArgs, CredentialsGcpState } from "./credentialsGcp";
 export type CredentialsGcp = import("./credentialsGcp").CredentialsGcp;
 export const CredentialsGcp: typeof import("./credentialsGcp").CredentialsGcp = null as any;
@@ -82,6 +87,8 @@ const _module = {
         switch (type) {
             case "spotinst:index/account:Account":
                 return new Account(name, <any>undefined, { urn })
+            case "spotinst:index/credentialsAzure:CredentialsAzure":
+                return new CredentialsAzure(name, <any>undefined, { urn })
             case "spotinst:index/credentialsGcp:CredentialsGcp":
                 return new CredentialsGcp(name, <any>undefined, { urn })
             case "spotinst:index/dataIntegration:DataIntegration":
@@ -102,6 +109,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("spotinst", "index/account", _module)
+pulumi.runtime.registerResourceModule("spotinst", "index/credentialsAzure", _module)
 pulumi.runtime.registerResourceModule("spotinst", "index/credentialsGcp", _module)
 pulumi.runtime.registerResourceModule("spotinst", "index/dataIntegration", _module)
 pulumi.runtime.registerResourceModule("spotinst", "index/elastigroupAzureV3", _module)

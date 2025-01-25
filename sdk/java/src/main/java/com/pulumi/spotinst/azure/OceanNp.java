@@ -209,14 +209,14 @@ public class OceanNp extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.linuxOsConfigs);
     }
     /**
-     * The OCean AKS Logging Object.
+     * The Ocean AKS Logging Object.
      * 
      */
     @Export(name="logging", refs={OceanNpLogging.class}, tree="[0]")
     private Output</* @Nullable */ OceanNpLogging> logging;
 
     /**
-     * @return The OCean AKS Logging Object.
+     * @return The Ocean AKS Logging Object.
      * 
      */
     public Output<Optional<OceanNpLogging>> logging() {

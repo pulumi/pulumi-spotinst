@@ -83,7 +83,7 @@ export class OceanNp extends pulumi.CustomResource {
      */
     public readonly linuxOsConfigs!: pulumi.Output<outputs.azure.OceanNpLinuxOsConfig[] | undefined>;
     /**
-     * The OCean AKS Logging Object.
+     * The Ocean AKS Logging Object.
      */
     public readonly logging!: pulumi.Output<outputs.azure.OceanNpLogging | undefined>;
     /**
@@ -298,7 +298,7 @@ export interface OceanNpState {
      */
     linuxOsConfigs?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpLinuxOsConfig>[]>;
     /**
-     * The OCean AKS Logging Object.
+     * The Ocean AKS Logging Object.
      */
     logging?: pulumi.Input<inputs.azure.OceanNpLogging>;
     /**
@@ -411,7 +411,7 @@ export interface OceanNpArgs {
      */
     linuxOsConfigs?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpLinuxOsConfig>[]>;
     /**
-     * The OCean AKS Logging Object.
+     * The Ocean AKS Logging Object.
      */
     logging?: pulumi.Input<inputs.azure.OceanNpLogging>;
     /**
