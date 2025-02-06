@@ -59,6 +59,13 @@ import * as utilities from "../utilities";
  *             "extra-spark-app-ns-2",
  *         ],
  *     },
+ *     workspaces: {
+ *         storage: {
+ *             defaults: {
+ *                 storageClassName: "my-custom-storage-class",
+ *             },
+ *         },
+ *     },
  * });
  * ```
  */
@@ -99,6 +106,7 @@ export class Ocean extends pulumi.CustomResource {
     public readonly oceanClusterId!: pulumi.Output<string>;
     public readonly spark!: pulumi.Output<outputs.spark.OceanSpark>;
     public readonly webhook!: pulumi.Output<outputs.spark.OceanWebhook>;
+    public readonly workspaces!: pulumi.Output<outputs.spark.OceanWorkspaces>;
 
     /**
      * Create a Ocean resource with the given unique name, arguments, and options.
@@ -119,6 +127,7 @@ export class Ocean extends pulumi.CustomResource {
             resourceInputs["oceanClusterId"] = state ? state.oceanClusterId : undefined;
             resourceInputs["spark"] = state ? state.spark : undefined;
             resourceInputs["webhook"] = state ? state.webhook : undefined;
+            resourceInputs["workspaces"] = state ? state.workspaces : undefined;
         } else {
             const args = argsOrState as OceanArgs | undefined;
             if ((!args || args.oceanClusterId === undefined) && !opts.urn) {
@@ -130,6 +139,7 @@ export class Ocean extends pulumi.CustomResource {
             resourceInputs["oceanClusterId"] = args ? args.oceanClusterId : undefined;
             resourceInputs["spark"] = args ? args.spark : undefined;
             resourceInputs["webhook"] = args ? args.webhook : undefined;
+            resourceInputs["workspaces"] = args ? args.workspaces : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Ocean.__pulumiType, name, resourceInputs, opts);
@@ -149,6 +159,7 @@ export interface OceanState {
     oceanClusterId?: pulumi.Input<string>;
     spark?: pulumi.Input<inputs.spark.OceanSpark>;
     webhook?: pulumi.Input<inputs.spark.OceanWebhook>;
+    workspaces?: pulumi.Input<inputs.spark.OceanWorkspaces>;
 }
 
 /**
@@ -164,4 +175,5 @@ export interface OceanArgs {
     oceanClusterId: pulumi.Input<string>;
     spark?: pulumi.Input<inputs.spark.OceanSpark>;
     webhook?: pulumi.Input<inputs.spark.OceanWebhook>;
+    workspaces?: pulumi.Input<inputs.spark.OceanWorkspaces>;
 }

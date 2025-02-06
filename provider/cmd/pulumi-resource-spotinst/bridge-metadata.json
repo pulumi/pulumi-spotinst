@@ -2232,6 +2232,23 @@
                                 }
                             }
                         }
+                    },
+                    "workspaces": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "storage": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "defaults": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
