@@ -1420,6 +1420,409 @@ func (o OceanWebhookPtrOutput) UseHostNetwork() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+type OceanWorkspaces struct {
+	Storage *OceanWorkspacesStorage `pulumi:"storage"`
+}
+
+// OceanWorkspacesInput is an input type that accepts OceanWorkspacesArgs and OceanWorkspacesOutput values.
+// You can construct a concrete instance of `OceanWorkspacesInput` via:
+//
+//	OceanWorkspacesArgs{...}
+type OceanWorkspacesInput interface {
+	pulumi.Input
+
+	ToOceanWorkspacesOutput() OceanWorkspacesOutput
+	ToOceanWorkspacesOutputWithContext(context.Context) OceanWorkspacesOutput
+}
+
+type OceanWorkspacesArgs struct {
+	Storage OceanWorkspacesStoragePtrInput `pulumi:"storage"`
+}
+
+func (OceanWorkspacesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanWorkspaces)(nil)).Elem()
+}
+
+func (i OceanWorkspacesArgs) ToOceanWorkspacesOutput() OceanWorkspacesOutput {
+	return i.ToOceanWorkspacesOutputWithContext(context.Background())
+}
+
+func (i OceanWorkspacesArgs) ToOceanWorkspacesOutputWithContext(ctx context.Context) OceanWorkspacesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanWorkspacesOutput)
+}
+
+func (i OceanWorkspacesArgs) ToOceanWorkspacesPtrOutput() OceanWorkspacesPtrOutput {
+	return i.ToOceanWorkspacesPtrOutputWithContext(context.Background())
+}
+
+func (i OceanWorkspacesArgs) ToOceanWorkspacesPtrOutputWithContext(ctx context.Context) OceanWorkspacesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanWorkspacesOutput).ToOceanWorkspacesPtrOutputWithContext(ctx)
+}
+
+// OceanWorkspacesPtrInput is an input type that accepts OceanWorkspacesArgs, OceanWorkspacesPtr and OceanWorkspacesPtrOutput values.
+// You can construct a concrete instance of `OceanWorkspacesPtrInput` via:
+//
+//	        OceanWorkspacesArgs{...}
+//
+//	or:
+//
+//	        nil
+type OceanWorkspacesPtrInput interface {
+	pulumi.Input
+
+	ToOceanWorkspacesPtrOutput() OceanWorkspacesPtrOutput
+	ToOceanWorkspacesPtrOutputWithContext(context.Context) OceanWorkspacesPtrOutput
+}
+
+type oceanWorkspacesPtrType OceanWorkspacesArgs
+
+func OceanWorkspacesPtr(v *OceanWorkspacesArgs) OceanWorkspacesPtrInput {
+	return (*oceanWorkspacesPtrType)(v)
+}
+
+func (*oceanWorkspacesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanWorkspaces)(nil)).Elem()
+}
+
+func (i *oceanWorkspacesPtrType) ToOceanWorkspacesPtrOutput() OceanWorkspacesPtrOutput {
+	return i.ToOceanWorkspacesPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanWorkspacesPtrType) ToOceanWorkspacesPtrOutputWithContext(ctx context.Context) OceanWorkspacesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanWorkspacesPtrOutput)
+}
+
+type OceanWorkspacesOutput struct{ *pulumi.OutputState }
+
+func (OceanWorkspacesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanWorkspaces)(nil)).Elem()
+}
+
+func (o OceanWorkspacesOutput) ToOceanWorkspacesOutput() OceanWorkspacesOutput {
+	return o
+}
+
+func (o OceanWorkspacesOutput) ToOceanWorkspacesOutputWithContext(ctx context.Context) OceanWorkspacesOutput {
+	return o
+}
+
+func (o OceanWorkspacesOutput) ToOceanWorkspacesPtrOutput() OceanWorkspacesPtrOutput {
+	return o.ToOceanWorkspacesPtrOutputWithContext(context.Background())
+}
+
+func (o OceanWorkspacesOutput) ToOceanWorkspacesPtrOutputWithContext(ctx context.Context) OceanWorkspacesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanWorkspaces) *OceanWorkspaces {
+		return &v
+	}).(OceanWorkspacesPtrOutput)
+}
+
+func (o OceanWorkspacesOutput) Storage() OceanWorkspacesStoragePtrOutput {
+	return o.ApplyT(func(v OceanWorkspaces) *OceanWorkspacesStorage { return v.Storage }).(OceanWorkspacesStoragePtrOutput)
+}
+
+type OceanWorkspacesPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanWorkspacesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanWorkspaces)(nil)).Elem()
+}
+
+func (o OceanWorkspacesPtrOutput) ToOceanWorkspacesPtrOutput() OceanWorkspacesPtrOutput {
+	return o
+}
+
+func (o OceanWorkspacesPtrOutput) ToOceanWorkspacesPtrOutputWithContext(ctx context.Context) OceanWorkspacesPtrOutput {
+	return o
+}
+
+func (o OceanWorkspacesPtrOutput) Elem() OceanWorkspacesOutput {
+	return o.ApplyT(func(v *OceanWorkspaces) OceanWorkspaces {
+		if v != nil {
+			return *v
+		}
+		var ret OceanWorkspaces
+		return ret
+	}).(OceanWorkspacesOutput)
+}
+
+func (o OceanWorkspacesPtrOutput) Storage() OceanWorkspacesStoragePtrOutput {
+	return o.ApplyT(func(v *OceanWorkspaces) *OceanWorkspacesStorage {
+		if v == nil {
+			return nil
+		}
+		return v.Storage
+	}).(OceanWorkspacesStoragePtrOutput)
+}
+
+type OceanWorkspacesStorage struct {
+	Defaults *OceanWorkspacesStorageDefaults `pulumi:"defaults"`
+}
+
+// OceanWorkspacesStorageInput is an input type that accepts OceanWorkspacesStorageArgs and OceanWorkspacesStorageOutput values.
+// You can construct a concrete instance of `OceanWorkspacesStorageInput` via:
+//
+//	OceanWorkspacesStorageArgs{...}
+type OceanWorkspacesStorageInput interface {
+	pulumi.Input
+
+	ToOceanWorkspacesStorageOutput() OceanWorkspacesStorageOutput
+	ToOceanWorkspacesStorageOutputWithContext(context.Context) OceanWorkspacesStorageOutput
+}
+
+type OceanWorkspacesStorageArgs struct {
+	Defaults OceanWorkspacesStorageDefaultsPtrInput `pulumi:"defaults"`
+}
+
+func (OceanWorkspacesStorageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanWorkspacesStorage)(nil)).Elem()
+}
+
+func (i OceanWorkspacesStorageArgs) ToOceanWorkspacesStorageOutput() OceanWorkspacesStorageOutput {
+	return i.ToOceanWorkspacesStorageOutputWithContext(context.Background())
+}
+
+func (i OceanWorkspacesStorageArgs) ToOceanWorkspacesStorageOutputWithContext(ctx context.Context) OceanWorkspacesStorageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanWorkspacesStorageOutput)
+}
+
+func (i OceanWorkspacesStorageArgs) ToOceanWorkspacesStoragePtrOutput() OceanWorkspacesStoragePtrOutput {
+	return i.ToOceanWorkspacesStoragePtrOutputWithContext(context.Background())
+}
+
+func (i OceanWorkspacesStorageArgs) ToOceanWorkspacesStoragePtrOutputWithContext(ctx context.Context) OceanWorkspacesStoragePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanWorkspacesStorageOutput).ToOceanWorkspacesStoragePtrOutputWithContext(ctx)
+}
+
+// OceanWorkspacesStoragePtrInput is an input type that accepts OceanWorkspacesStorageArgs, OceanWorkspacesStoragePtr and OceanWorkspacesStoragePtrOutput values.
+// You can construct a concrete instance of `OceanWorkspacesStoragePtrInput` via:
+//
+//	        OceanWorkspacesStorageArgs{...}
+//
+//	or:
+//
+//	        nil
+type OceanWorkspacesStoragePtrInput interface {
+	pulumi.Input
+
+	ToOceanWorkspacesStoragePtrOutput() OceanWorkspacesStoragePtrOutput
+	ToOceanWorkspacesStoragePtrOutputWithContext(context.Context) OceanWorkspacesStoragePtrOutput
+}
+
+type oceanWorkspacesStoragePtrType OceanWorkspacesStorageArgs
+
+func OceanWorkspacesStoragePtr(v *OceanWorkspacesStorageArgs) OceanWorkspacesStoragePtrInput {
+	return (*oceanWorkspacesStoragePtrType)(v)
+}
+
+func (*oceanWorkspacesStoragePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanWorkspacesStorage)(nil)).Elem()
+}
+
+func (i *oceanWorkspacesStoragePtrType) ToOceanWorkspacesStoragePtrOutput() OceanWorkspacesStoragePtrOutput {
+	return i.ToOceanWorkspacesStoragePtrOutputWithContext(context.Background())
+}
+
+func (i *oceanWorkspacesStoragePtrType) ToOceanWorkspacesStoragePtrOutputWithContext(ctx context.Context) OceanWorkspacesStoragePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanWorkspacesStoragePtrOutput)
+}
+
+type OceanWorkspacesStorageOutput struct{ *pulumi.OutputState }
+
+func (OceanWorkspacesStorageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanWorkspacesStorage)(nil)).Elem()
+}
+
+func (o OceanWorkspacesStorageOutput) ToOceanWorkspacesStorageOutput() OceanWorkspacesStorageOutput {
+	return o
+}
+
+func (o OceanWorkspacesStorageOutput) ToOceanWorkspacesStorageOutputWithContext(ctx context.Context) OceanWorkspacesStorageOutput {
+	return o
+}
+
+func (o OceanWorkspacesStorageOutput) ToOceanWorkspacesStoragePtrOutput() OceanWorkspacesStoragePtrOutput {
+	return o.ToOceanWorkspacesStoragePtrOutputWithContext(context.Background())
+}
+
+func (o OceanWorkspacesStorageOutput) ToOceanWorkspacesStoragePtrOutputWithContext(ctx context.Context) OceanWorkspacesStoragePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanWorkspacesStorage) *OceanWorkspacesStorage {
+		return &v
+	}).(OceanWorkspacesStoragePtrOutput)
+}
+
+func (o OceanWorkspacesStorageOutput) Defaults() OceanWorkspacesStorageDefaultsPtrOutput {
+	return o.ApplyT(func(v OceanWorkspacesStorage) *OceanWorkspacesStorageDefaults { return v.Defaults }).(OceanWorkspacesStorageDefaultsPtrOutput)
+}
+
+type OceanWorkspacesStoragePtrOutput struct{ *pulumi.OutputState }
+
+func (OceanWorkspacesStoragePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanWorkspacesStorage)(nil)).Elem()
+}
+
+func (o OceanWorkspacesStoragePtrOutput) ToOceanWorkspacesStoragePtrOutput() OceanWorkspacesStoragePtrOutput {
+	return o
+}
+
+func (o OceanWorkspacesStoragePtrOutput) ToOceanWorkspacesStoragePtrOutputWithContext(ctx context.Context) OceanWorkspacesStoragePtrOutput {
+	return o
+}
+
+func (o OceanWorkspacesStoragePtrOutput) Elem() OceanWorkspacesStorageOutput {
+	return o.ApplyT(func(v *OceanWorkspacesStorage) OceanWorkspacesStorage {
+		if v != nil {
+			return *v
+		}
+		var ret OceanWorkspacesStorage
+		return ret
+	}).(OceanWorkspacesStorageOutput)
+}
+
+func (o OceanWorkspacesStoragePtrOutput) Defaults() OceanWorkspacesStorageDefaultsPtrOutput {
+	return o.ApplyT(func(v *OceanWorkspacesStorage) *OceanWorkspacesStorageDefaults {
+		if v == nil {
+			return nil
+		}
+		return v.Defaults
+	}).(OceanWorkspacesStorageDefaultsPtrOutput)
+}
+
+type OceanWorkspacesStorageDefaults struct {
+	// - The name of the default storage class to use for new workspaces. If not specified, the default storage class of the Kubernetes cluster will be used.
+	StorageClassName *string `pulumi:"storageClassName"`
+}
+
+// OceanWorkspacesStorageDefaultsInput is an input type that accepts OceanWorkspacesStorageDefaultsArgs and OceanWorkspacesStorageDefaultsOutput values.
+// You can construct a concrete instance of `OceanWorkspacesStorageDefaultsInput` via:
+//
+//	OceanWorkspacesStorageDefaultsArgs{...}
+type OceanWorkspacesStorageDefaultsInput interface {
+	pulumi.Input
+
+	ToOceanWorkspacesStorageDefaultsOutput() OceanWorkspacesStorageDefaultsOutput
+	ToOceanWorkspacesStorageDefaultsOutputWithContext(context.Context) OceanWorkspacesStorageDefaultsOutput
+}
+
+type OceanWorkspacesStorageDefaultsArgs struct {
+	// - The name of the default storage class to use for new workspaces. If not specified, the default storage class of the Kubernetes cluster will be used.
+	StorageClassName pulumi.StringPtrInput `pulumi:"storageClassName"`
+}
+
+func (OceanWorkspacesStorageDefaultsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanWorkspacesStorageDefaults)(nil)).Elem()
+}
+
+func (i OceanWorkspacesStorageDefaultsArgs) ToOceanWorkspacesStorageDefaultsOutput() OceanWorkspacesStorageDefaultsOutput {
+	return i.ToOceanWorkspacesStorageDefaultsOutputWithContext(context.Background())
+}
+
+func (i OceanWorkspacesStorageDefaultsArgs) ToOceanWorkspacesStorageDefaultsOutputWithContext(ctx context.Context) OceanWorkspacesStorageDefaultsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanWorkspacesStorageDefaultsOutput)
+}
+
+func (i OceanWorkspacesStorageDefaultsArgs) ToOceanWorkspacesStorageDefaultsPtrOutput() OceanWorkspacesStorageDefaultsPtrOutput {
+	return i.ToOceanWorkspacesStorageDefaultsPtrOutputWithContext(context.Background())
+}
+
+func (i OceanWorkspacesStorageDefaultsArgs) ToOceanWorkspacesStorageDefaultsPtrOutputWithContext(ctx context.Context) OceanWorkspacesStorageDefaultsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanWorkspacesStorageDefaultsOutput).ToOceanWorkspacesStorageDefaultsPtrOutputWithContext(ctx)
+}
+
+// OceanWorkspacesStorageDefaultsPtrInput is an input type that accepts OceanWorkspacesStorageDefaultsArgs, OceanWorkspacesStorageDefaultsPtr and OceanWorkspacesStorageDefaultsPtrOutput values.
+// You can construct a concrete instance of `OceanWorkspacesStorageDefaultsPtrInput` via:
+//
+//	        OceanWorkspacesStorageDefaultsArgs{...}
+//
+//	or:
+//
+//	        nil
+type OceanWorkspacesStorageDefaultsPtrInput interface {
+	pulumi.Input
+
+	ToOceanWorkspacesStorageDefaultsPtrOutput() OceanWorkspacesStorageDefaultsPtrOutput
+	ToOceanWorkspacesStorageDefaultsPtrOutputWithContext(context.Context) OceanWorkspacesStorageDefaultsPtrOutput
+}
+
+type oceanWorkspacesStorageDefaultsPtrType OceanWorkspacesStorageDefaultsArgs
+
+func OceanWorkspacesStorageDefaultsPtr(v *OceanWorkspacesStorageDefaultsArgs) OceanWorkspacesStorageDefaultsPtrInput {
+	return (*oceanWorkspacesStorageDefaultsPtrType)(v)
+}
+
+func (*oceanWorkspacesStorageDefaultsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanWorkspacesStorageDefaults)(nil)).Elem()
+}
+
+func (i *oceanWorkspacesStorageDefaultsPtrType) ToOceanWorkspacesStorageDefaultsPtrOutput() OceanWorkspacesStorageDefaultsPtrOutput {
+	return i.ToOceanWorkspacesStorageDefaultsPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanWorkspacesStorageDefaultsPtrType) ToOceanWorkspacesStorageDefaultsPtrOutputWithContext(ctx context.Context) OceanWorkspacesStorageDefaultsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanWorkspacesStorageDefaultsPtrOutput)
+}
+
+type OceanWorkspacesStorageDefaultsOutput struct{ *pulumi.OutputState }
+
+func (OceanWorkspacesStorageDefaultsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanWorkspacesStorageDefaults)(nil)).Elem()
+}
+
+func (o OceanWorkspacesStorageDefaultsOutput) ToOceanWorkspacesStorageDefaultsOutput() OceanWorkspacesStorageDefaultsOutput {
+	return o
+}
+
+func (o OceanWorkspacesStorageDefaultsOutput) ToOceanWorkspacesStorageDefaultsOutputWithContext(ctx context.Context) OceanWorkspacesStorageDefaultsOutput {
+	return o
+}
+
+func (o OceanWorkspacesStorageDefaultsOutput) ToOceanWorkspacesStorageDefaultsPtrOutput() OceanWorkspacesStorageDefaultsPtrOutput {
+	return o.ToOceanWorkspacesStorageDefaultsPtrOutputWithContext(context.Background())
+}
+
+func (o OceanWorkspacesStorageDefaultsOutput) ToOceanWorkspacesStorageDefaultsPtrOutputWithContext(ctx context.Context) OceanWorkspacesStorageDefaultsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanWorkspacesStorageDefaults) *OceanWorkspacesStorageDefaults {
+		return &v
+	}).(OceanWorkspacesStorageDefaultsPtrOutput)
+}
+
+// - The name of the default storage class to use for new workspaces. If not specified, the default storage class of the Kubernetes cluster will be used.
+func (o OceanWorkspacesStorageDefaultsOutput) StorageClassName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanWorkspacesStorageDefaults) *string { return v.StorageClassName }).(pulumi.StringPtrOutput)
+}
+
+type OceanWorkspacesStorageDefaultsPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanWorkspacesStorageDefaultsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanWorkspacesStorageDefaults)(nil)).Elem()
+}
+
+func (o OceanWorkspacesStorageDefaultsPtrOutput) ToOceanWorkspacesStorageDefaultsPtrOutput() OceanWorkspacesStorageDefaultsPtrOutput {
+	return o
+}
+
+func (o OceanWorkspacesStorageDefaultsPtrOutput) ToOceanWorkspacesStorageDefaultsPtrOutputWithContext(ctx context.Context) OceanWorkspacesStorageDefaultsPtrOutput {
+	return o
+}
+
+func (o OceanWorkspacesStorageDefaultsPtrOutput) Elem() OceanWorkspacesStorageDefaultsOutput {
+	return o.ApplyT(func(v *OceanWorkspacesStorageDefaults) OceanWorkspacesStorageDefaults {
+		if v != nil {
+			return *v
+		}
+		var ret OceanWorkspacesStorageDefaults
+		return ret
+	}).(OceanWorkspacesStorageDefaultsOutput)
+}
+
+// - The name of the default storage class to use for new workspaces. If not specified, the default storage class of the Kubernetes cluster will be used.
+func (o OceanWorkspacesStorageDefaultsPtrOutput) StorageClassName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanWorkspacesStorageDefaults) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageClassName
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanComputeInput)(nil)).Elem(), OceanComputeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanComputePtrInput)(nil)).Elem(), OceanComputeArgs{})
@@ -1439,6 +1842,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanSparkPtrInput)(nil)).Elem(), OceanSparkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanWebhookInput)(nil)).Elem(), OceanWebhookArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanWebhookPtrInput)(nil)).Elem(), OceanWebhookArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanWorkspacesInput)(nil)).Elem(), OceanWorkspacesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanWorkspacesPtrInput)(nil)).Elem(), OceanWorkspacesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanWorkspacesStorageInput)(nil)).Elem(), OceanWorkspacesStorageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanWorkspacesStoragePtrInput)(nil)).Elem(), OceanWorkspacesStorageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanWorkspacesStorageDefaultsInput)(nil)).Elem(), OceanWorkspacesStorageDefaultsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanWorkspacesStorageDefaultsPtrInput)(nil)).Elem(), OceanWorkspacesStorageDefaultsArgs{})
 	pulumi.RegisterOutputType(OceanComputeOutput{})
 	pulumi.RegisterOutputType(OceanComputePtrOutput{})
 	pulumi.RegisterOutputType(OceanIngressOutput{})
@@ -1457,4 +1866,10 @@ func init() {
 	pulumi.RegisterOutputType(OceanSparkPtrOutput{})
 	pulumi.RegisterOutputType(OceanWebhookOutput{})
 	pulumi.RegisterOutputType(OceanWebhookPtrOutput{})
+	pulumi.RegisterOutputType(OceanWorkspacesOutput{})
+	pulumi.RegisterOutputType(OceanWorkspacesPtrOutput{})
+	pulumi.RegisterOutputType(OceanWorkspacesStorageOutput{})
+	pulumi.RegisterOutputType(OceanWorkspacesStoragePtrOutput{})
+	pulumi.RegisterOutputType(OceanWorkspacesStorageDefaultsOutput{})
+	pulumi.RegisterOutputType(OceanWorkspacesStorageDefaultsPtrOutput{})
 }

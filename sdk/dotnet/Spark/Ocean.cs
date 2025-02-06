@@ -81,6 +81,16 @@ namespace Pulumi.SpotInst.Spark
     ///                 "extra-spark-app-ns-2",
     ///             },
     ///         },
+    ///         Workspaces = new SpotInst.Spark.Inputs.OceanWorkspacesArgs
+    ///         {
+    ///             Storage = new SpotInst.Spark.Inputs.OceanWorkspacesStorageArgs
+    ///             {
+    ///                 Defaults = new SpotInst.Spark.Inputs.OceanWorkspacesStorageDefaultsArgs
+    ///                 {
+    ///                     StorageClassName = "my-custom-storage-class",
+    ///                 },
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });
@@ -109,6 +119,9 @@ namespace Pulumi.SpotInst.Spark
 
         [Output("webhook")]
         public Output<Outputs.OceanWebhook> Webhook { get; private set; } = null!;
+
+        [Output("workspaces")]
+        public Output<Outputs.OceanWorkspaces> Workspaces { get; private set; } = null!;
 
 
         /// <summary>
@@ -177,6 +190,9 @@ namespace Pulumi.SpotInst.Spark
         [Input("webhook")]
         public Input<Inputs.OceanWebhookArgs>? Webhook { get; set; }
 
+        [Input("workspaces")]
+        public Input<Inputs.OceanWorkspacesArgs>? Workspaces { get; set; }
+
         public OceanArgs()
         {
         }
@@ -205,6 +221,9 @@ namespace Pulumi.SpotInst.Spark
 
         [Input("webhook")]
         public Input<Inputs.OceanWebhookGetArgs>? Webhook { get; set; }
+
+        [Input("workspaces")]
+        public Input<Inputs.OceanWorkspacesGetArgs>? Workspaces { get; set; }
 
         public OceanState()
         {

@@ -26,7 +26,8 @@ class OceanArgs:
                  ingress: Optional[pulumi.Input['OceanIngressArgs']] = None,
                  log_collection: Optional[pulumi.Input['OceanLogCollectionArgs']] = None,
                  spark: Optional[pulumi.Input['OceanSparkArgs']] = None,
-                 webhook: Optional[pulumi.Input['OceanWebhookArgs']] = None):
+                 webhook: Optional[pulumi.Input['OceanWebhookArgs']] = None,
+                 workspaces: Optional[pulumi.Input['OceanWorkspacesArgs']] = None):
         """
         The set of arguments for constructing a Ocean resource.
         :param pulumi.Input[str] ocean_cluster_id: - The ID of the Ocean cluster that Ocean for Apache Spark should be installed on.
@@ -42,6 +43,8 @@ class OceanArgs:
             pulumi.set(__self__, "spark", spark)
         if webhook is not None:
             pulumi.set(__self__, "webhook", webhook)
+        if workspaces is not None:
+            pulumi.set(__self__, "workspaces", workspaces)
 
     @property
     @pulumi.getter(name="oceanClusterId")
@@ -100,6 +103,15 @@ class OceanArgs:
     def webhook(self, value: Optional[pulumi.Input['OceanWebhookArgs']]):
         pulumi.set(self, "webhook", value)
 
+    @property
+    @pulumi.getter
+    def workspaces(self) -> Optional[pulumi.Input['OceanWorkspacesArgs']]:
+        return pulumi.get(self, "workspaces")
+
+    @workspaces.setter
+    def workspaces(self, value: Optional[pulumi.Input['OceanWorkspacesArgs']]):
+        pulumi.set(self, "workspaces", value)
+
 
 @pulumi.input_type
 class _OceanState:
@@ -109,7 +121,8 @@ class _OceanState:
                  log_collection: Optional[pulumi.Input['OceanLogCollectionArgs']] = None,
                  ocean_cluster_id: Optional[pulumi.Input[str]] = None,
                  spark: Optional[pulumi.Input['OceanSparkArgs']] = None,
-                 webhook: Optional[pulumi.Input['OceanWebhookArgs']] = None):
+                 webhook: Optional[pulumi.Input['OceanWebhookArgs']] = None,
+                 workspaces: Optional[pulumi.Input['OceanWorkspacesArgs']] = None):
         """
         Input properties used for looking up and filtering Ocean resources.
         :param pulumi.Input[str] ocean_cluster_id: - The ID of the Ocean cluster that Ocean for Apache Spark should be installed on.
@@ -126,6 +139,8 @@ class _OceanState:
             pulumi.set(__self__, "spark", spark)
         if webhook is not None:
             pulumi.set(__self__, "webhook", webhook)
+        if workspaces is not None:
+            pulumi.set(__self__, "workspaces", workspaces)
 
     @property
     @pulumi.getter
@@ -184,6 +199,15 @@ class _OceanState:
     def webhook(self, value: Optional[pulumi.Input['OceanWebhookArgs']]):
         pulumi.set(self, "webhook", value)
 
+    @property
+    @pulumi.getter
+    def workspaces(self) -> Optional[pulumi.Input['OceanWorkspacesArgs']]:
+        return pulumi.get(self, "workspaces")
+
+    @workspaces.setter
+    def workspaces(self, value: Optional[pulumi.Input['OceanWorkspacesArgs']]):
+        pulumi.set(self, "workspaces", value)
+
 
 class Ocean(pulumi.CustomResource):
     @overload
@@ -196,6 +220,7 @@ class Ocean(pulumi.CustomResource):
                  ocean_cluster_id: Optional[pulumi.Input[str]] = None,
                  spark: Optional[pulumi.Input[Union['OceanSparkArgs', 'OceanSparkArgsDict']]] = None,
                  webhook: Optional[pulumi.Input[Union['OceanWebhookArgs', 'OceanWebhookArgsDict']]] = None,
+                 workspaces: Optional[pulumi.Input[Union['OceanWorkspacesArgs', 'OceanWorkspacesArgsDict']]] = None,
                  __props__=None):
         """
         Manages a Spotinst Ocean Spark resource on AWS or GCP.
@@ -249,6 +274,13 @@ class Ocean(pulumi.CustomResource):
                     "extra-spark-app-ns-1",
                     "extra-spark-app-ns-2",
                 ],
+            },
+            workspaces={
+                "storage": {
+                    "defaults": {
+                        "storage_class_name": "my-custom-storage-class",
+                    },
+                },
             })
         ```
 
@@ -314,6 +346,13 @@ class Ocean(pulumi.CustomResource):
                     "extra-spark-app-ns-1",
                     "extra-spark-app-ns-2",
                 ],
+            },
+            workspaces={
+                "storage": {
+                    "defaults": {
+                        "storage_class_name": "my-custom-storage-class",
+                    },
+                },
             })
         ```
 
@@ -338,6 +377,7 @@ class Ocean(pulumi.CustomResource):
                  ocean_cluster_id: Optional[pulumi.Input[str]] = None,
                  spark: Optional[pulumi.Input[Union['OceanSparkArgs', 'OceanSparkArgsDict']]] = None,
                  webhook: Optional[pulumi.Input[Union['OceanWebhookArgs', 'OceanWebhookArgsDict']]] = None,
+                 workspaces: Optional[pulumi.Input[Union['OceanWorkspacesArgs', 'OceanWorkspacesArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -355,6 +395,7 @@ class Ocean(pulumi.CustomResource):
             __props__.__dict__["ocean_cluster_id"] = ocean_cluster_id
             __props__.__dict__["spark"] = spark
             __props__.__dict__["webhook"] = webhook
+            __props__.__dict__["workspaces"] = workspaces
         super(Ocean, __self__).__init__(
             'spotinst:spark/ocean:Ocean',
             resource_name,
@@ -370,7 +411,8 @@ class Ocean(pulumi.CustomResource):
             log_collection: Optional[pulumi.Input[Union['OceanLogCollectionArgs', 'OceanLogCollectionArgsDict']]] = None,
             ocean_cluster_id: Optional[pulumi.Input[str]] = None,
             spark: Optional[pulumi.Input[Union['OceanSparkArgs', 'OceanSparkArgsDict']]] = None,
-            webhook: Optional[pulumi.Input[Union['OceanWebhookArgs', 'OceanWebhookArgsDict']]] = None) -> 'Ocean':
+            webhook: Optional[pulumi.Input[Union['OceanWebhookArgs', 'OceanWebhookArgsDict']]] = None,
+            workspaces: Optional[pulumi.Input[Union['OceanWorkspacesArgs', 'OceanWorkspacesArgsDict']]] = None) -> 'Ocean':
         """
         Get an existing Ocean resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -390,6 +432,7 @@ class Ocean(pulumi.CustomResource):
         __props__.__dict__["ocean_cluster_id"] = ocean_cluster_id
         __props__.__dict__["spark"] = spark
         __props__.__dict__["webhook"] = webhook
+        __props__.__dict__["workspaces"] = workspaces
         return Ocean(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -424,4 +467,9 @@ class Ocean(pulumi.CustomResource):
     @pulumi.getter
     def webhook(self) -> pulumi.Output['outputs.OceanWebhook']:
         return pulumi.get(self, "webhook")
+
+    @property
+    @pulumi.getter
+    def workspaces(self) -> pulumi.Output['outputs.OceanWorkspaces']:
+        return pulumi.get(self, "workspaces")
 

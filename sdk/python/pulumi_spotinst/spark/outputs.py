@@ -25,6 +25,9 @@ __all__ = [
     'OceanLogCollection',
     'OceanSpark',
     'OceanWebhook',
+    'OceanWorkspaces',
+    'OceanWorkspacesStorage',
+    'OceanWorkspacesStorageDefaults',
 ]
 
 @pulumi.output_type
@@ -431,5 +434,67 @@ class OceanWebhook(dict):
         - Enable/disable host networking for the Spark Operator. Host networking can be useful when using custom CNI plugins like Calico on EKS.
         """
         return pulumi.get(self, "use_host_network")
+
+
+@pulumi.output_type
+class OceanWorkspaces(dict):
+    def __init__(__self__, *,
+                 storage: Optional['outputs.OceanWorkspacesStorage'] = None):
+        if storage is not None:
+            pulumi.set(__self__, "storage", storage)
+
+    @property
+    @pulumi.getter
+    def storage(self) -> Optional['outputs.OceanWorkspacesStorage']:
+        return pulumi.get(self, "storage")
+
+
+@pulumi.output_type
+class OceanWorkspacesStorage(dict):
+    def __init__(__self__, *,
+                 defaults: Optional['outputs.OceanWorkspacesStorageDefaults'] = None):
+        if defaults is not None:
+            pulumi.set(__self__, "defaults", defaults)
+
+    @property
+    @pulumi.getter
+    def defaults(self) -> Optional['outputs.OceanWorkspacesStorageDefaults']:
+        return pulumi.get(self, "defaults")
+
+
+@pulumi.output_type
+class OceanWorkspacesStorageDefaults(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "storageClassName":
+            suggest = "storage_class_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanWorkspacesStorageDefaults. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanWorkspacesStorageDefaults.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanWorkspacesStorageDefaults.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 storage_class_name: Optional[str] = None):
+        """
+        :param str storage_class_name: - The name of the default storage class to use for new workspaces. If not specified, the default storage class of the Kubernetes cluster will be used.
+        """
+        if storage_class_name is not None:
+            pulumi.set(__self__, "storage_class_name", storage_class_name)
+
+    @property
+    @pulumi.getter(name="storageClassName")
+    def storage_class_name(self) -> Optional[str]:
+        """
+        - The name of the default storage class to use for new workspaces. If not specified, the default storage class of the Kubernetes cluster will be used.
+        """
+        return pulumi.get(self, "storage_class_name")
 
 

@@ -6324,4 +6324,19 @@ export namespace spark {
         useHostNetwork: boolean;
     }
 
+    export interface OceanWorkspaces {
+        storage: outputs.spark.OceanWorkspacesStorage;
+    }
+
+    export interface OceanWorkspacesStorage {
+        defaults: outputs.spark.OceanWorkspacesStorageDefaults;
+    }
+
+    export interface OceanWorkspacesStorageDefaults {
+        /**
+         * - The name of the default storage class to use for new workspaces. If not specified, the default storage class of the Kubernetes cluster will be used.
+         */
+        storageClassName?: string;
+    }
+
 }

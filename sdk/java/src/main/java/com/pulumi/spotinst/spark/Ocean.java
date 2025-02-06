@@ -15,6 +15,7 @@ import com.pulumi.spotinst.spark.outputs.OceanIngress;
 import com.pulumi.spotinst.spark.outputs.OceanLogCollection;
 import com.pulumi.spotinst.spark.outputs.OceanSpark;
 import com.pulumi.spotinst.spark.outputs.OceanWebhook;
+import com.pulumi.spotinst.spark.outputs.OceanWorkspaces;
 import java.lang.String;
 import javax.annotation.Nullable;
 
@@ -46,6 +47,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.spotinst.spark.inputs.OceanLogCollectionArgs;
  * import com.pulumi.spotinst.spark.inputs.OceanWebhookArgs;
  * import com.pulumi.spotinst.spark.inputs.OceanSparkArgs;
+ * import com.pulumi.spotinst.spark.inputs.OceanWorkspacesArgs;
+ * import com.pulumi.spotinst.spark.inputs.OceanWorkspacesStorageArgs;
+ * import com.pulumi.spotinst.spark.inputs.OceanWorkspacesStorageDefaultsArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -97,6 +101,13 @@ import javax.annotation.Nullable;
  *                 .additionalAppNamespaces(                
  *                     "extra-spark-app-ns-1",
  *                     "extra-spark-app-ns-2")
+ *                 .build())
+ *             .workspaces(OceanWorkspacesArgs.builder()
+ *                 .storage(OceanWorkspacesStorageArgs.builder()
+ *                     .defaults(OceanWorkspacesStorageDefaultsArgs.builder()
+ *                         .storageClassName("my-custom-storage-class")
+ *                         .build())
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -152,6 +163,12 @@ public class Ocean extends com.pulumi.resources.CustomResource {
 
     public Output<OceanWebhook> webhook() {
         return this.webhook;
+    }
+    @Export(name="workspaces", refs={OceanWorkspaces.class}, tree="[0]")
+    private Output<OceanWorkspaces> workspaces;
+
+    public Output<OceanWorkspaces> workspaces() {
+        return this.workspaces;
     }
 
     /**

@@ -33,6 +33,12 @@ __all__ = [
     'OceanSparkArgsDict',
     'OceanWebhookArgs',
     'OceanWebhookArgsDict',
+    'OceanWorkspacesArgs',
+    'OceanWorkspacesArgsDict',
+    'OceanWorkspacesStorageArgs',
+    'OceanWorkspacesStorageArgsDict',
+    'OceanWorkspacesStorageDefaultsArgs',
+    'OceanWorkspacesStorageDefaultsArgsDict',
 ]
 
 MYPY = False
@@ -495,5 +501,83 @@ class OceanWebhookArgs:
     @use_host_network.setter
     def use_host_network(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "use_host_network", value)
+
+
+if not MYPY:
+    class OceanWorkspacesArgsDict(TypedDict):
+        storage: NotRequired[pulumi.Input['OceanWorkspacesStorageArgsDict']]
+elif False:
+    OceanWorkspacesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OceanWorkspacesArgs:
+    def __init__(__self__, *,
+                 storage: Optional[pulumi.Input['OceanWorkspacesStorageArgs']] = None):
+        if storage is not None:
+            pulumi.set(__self__, "storage", storage)
+
+    @property
+    @pulumi.getter
+    def storage(self) -> Optional[pulumi.Input['OceanWorkspacesStorageArgs']]:
+        return pulumi.get(self, "storage")
+
+    @storage.setter
+    def storage(self, value: Optional[pulumi.Input['OceanWorkspacesStorageArgs']]):
+        pulumi.set(self, "storage", value)
+
+
+if not MYPY:
+    class OceanWorkspacesStorageArgsDict(TypedDict):
+        defaults: NotRequired[pulumi.Input['OceanWorkspacesStorageDefaultsArgsDict']]
+elif False:
+    OceanWorkspacesStorageArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OceanWorkspacesStorageArgs:
+    def __init__(__self__, *,
+                 defaults: Optional[pulumi.Input['OceanWorkspacesStorageDefaultsArgs']] = None):
+        if defaults is not None:
+            pulumi.set(__self__, "defaults", defaults)
+
+    @property
+    @pulumi.getter
+    def defaults(self) -> Optional[pulumi.Input['OceanWorkspacesStorageDefaultsArgs']]:
+        return pulumi.get(self, "defaults")
+
+    @defaults.setter
+    def defaults(self, value: Optional[pulumi.Input['OceanWorkspacesStorageDefaultsArgs']]):
+        pulumi.set(self, "defaults", value)
+
+
+if not MYPY:
+    class OceanWorkspacesStorageDefaultsArgsDict(TypedDict):
+        storage_class_name: NotRequired[pulumi.Input[str]]
+        """
+        - The name of the default storage class to use for new workspaces. If not specified, the default storage class of the Kubernetes cluster will be used.
+        """
+elif False:
+    OceanWorkspacesStorageDefaultsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OceanWorkspacesStorageDefaultsArgs:
+    def __init__(__self__, *,
+                 storage_class_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] storage_class_name: - The name of the default storage class to use for new workspaces. If not specified, the default storage class of the Kubernetes cluster will be used.
+        """
+        if storage_class_name is not None:
+            pulumi.set(__self__, "storage_class_name", storage_class_name)
+
+    @property
+    @pulumi.getter(name="storageClassName")
+    def storage_class_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        - The name of the default storage class to use for new workspaces. If not specified, the default storage class of the Kubernetes cluster will be used.
+        """
+        return pulumi.get(self, "storage_class_name")
+
+    @storage_class_name.setter
+    def storage_class_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_class_name", value)
 
 

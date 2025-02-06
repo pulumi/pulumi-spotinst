@@ -74,6 +74,13 @@ import (
 //						pulumi.String("extra-spark-app-ns-2"),
 //					},
 //				},
+//				Workspaces: &spark.OceanWorkspacesArgs{
+//					Storage: &spark.OceanWorkspacesStorageArgs{
+//						Defaults: &spark.OceanWorkspacesStorageDefaultsArgs{
+//							StorageClassName: pulumi.String("my-custom-storage-class"),
+//						},
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -90,9 +97,10 @@ type Ocean struct {
 	Ingress       OceanIngressOutput       `pulumi:"ingress"`
 	LogCollection OceanLogCollectionOutput `pulumi:"logCollection"`
 	// - The ID of the Ocean cluster that Ocean for Apache Spark should be installed on.
-	OceanClusterId pulumi.StringOutput `pulumi:"oceanClusterId"`
-	Spark          OceanSparkOutput    `pulumi:"spark"`
-	Webhook        OceanWebhookOutput  `pulumi:"webhook"`
+	OceanClusterId pulumi.StringOutput   `pulumi:"oceanClusterId"`
+	Spark          OceanSparkOutput      `pulumi:"spark"`
+	Webhook        OceanWebhookOutput    `pulumi:"webhook"`
+	Workspaces     OceanWorkspacesOutput `pulumi:"workspaces"`
 }
 
 // NewOcean registers a new resource with the given unique name, arguments, and options.
@@ -132,9 +140,10 @@ type oceanState struct {
 	Ingress       *OceanIngress       `pulumi:"ingress"`
 	LogCollection *OceanLogCollection `pulumi:"logCollection"`
 	// - The ID of the Ocean cluster that Ocean for Apache Spark should be installed on.
-	OceanClusterId *string       `pulumi:"oceanClusterId"`
-	Spark          *OceanSpark   `pulumi:"spark"`
-	Webhook        *OceanWebhook `pulumi:"webhook"`
+	OceanClusterId *string          `pulumi:"oceanClusterId"`
+	Spark          *OceanSpark      `pulumi:"spark"`
+	Webhook        *OceanWebhook    `pulumi:"webhook"`
+	Workspaces     *OceanWorkspaces `pulumi:"workspaces"`
 }
 
 type OceanState struct {
@@ -145,6 +154,7 @@ type OceanState struct {
 	OceanClusterId pulumi.StringPtrInput
 	Spark          OceanSparkPtrInput
 	Webhook        OceanWebhookPtrInput
+	Workspaces     OceanWorkspacesPtrInput
 }
 
 func (OceanState) ElementType() reflect.Type {
@@ -156,9 +166,10 @@ type oceanArgs struct {
 	Ingress       *OceanIngress       `pulumi:"ingress"`
 	LogCollection *OceanLogCollection `pulumi:"logCollection"`
 	// - The ID of the Ocean cluster that Ocean for Apache Spark should be installed on.
-	OceanClusterId string        `pulumi:"oceanClusterId"`
-	Spark          *OceanSpark   `pulumi:"spark"`
-	Webhook        *OceanWebhook `pulumi:"webhook"`
+	OceanClusterId string           `pulumi:"oceanClusterId"`
+	Spark          *OceanSpark      `pulumi:"spark"`
+	Webhook        *OceanWebhook    `pulumi:"webhook"`
+	Workspaces     *OceanWorkspaces `pulumi:"workspaces"`
 }
 
 // The set of arguments for constructing a Ocean resource.
@@ -170,6 +181,7 @@ type OceanArgs struct {
 	OceanClusterId pulumi.StringInput
 	Spark          OceanSparkPtrInput
 	Webhook        OceanWebhookPtrInput
+	Workspaces     OceanWorkspacesPtrInput
 }
 
 func (OceanArgs) ElementType() reflect.Type {
@@ -282,6 +294,10 @@ func (o OceanOutput) Spark() OceanSparkOutput {
 
 func (o OceanOutput) Webhook() OceanWebhookOutput {
 	return o.ApplyT(func(v *Ocean) OceanWebhookOutput { return v.Webhook }).(OceanWebhookOutput)
+}
+
+func (o OceanOutput) Workspaces() OceanWorkspacesOutput {
+	return o.ApplyT(func(v *Ocean) OceanWorkspacesOutput { return v.Workspaces }).(OceanWorkspacesOutput)
 }
 
 type OceanArrayOutput struct{ *pulumi.OutputState }
