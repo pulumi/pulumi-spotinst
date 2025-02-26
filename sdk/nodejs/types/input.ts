@@ -1975,6 +1975,18 @@ export namespace aws {
         deviceIndex: pulumi.Input<string>;
     }
 
+    export interface ManagedInstanceResourceRequirement {
+        excludedInstanceFamilies?: pulumi.Input<pulumi.Input<string>[]>;
+        excludedInstanceGenerations?: pulumi.Input<pulumi.Input<string>[]>;
+        excludedInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+        requiredGpuMaximum?: pulumi.Input<number>;
+        requiredGpuMinimum?: pulumi.Input<number>;
+        requiredMemoryMaximum: pulumi.Input<number>;
+        requiredMemoryMinimum: pulumi.Input<number>;
+        requiredVcpuMaximum: pulumi.Input<number>;
+        requiredVcpuMinimum: pulumi.Input<number>;
+    }
+
     export interface ManagedInstanceResourceTagSpecification {
         shouldTagAmis?: pulumi.Input<boolean>;
         shouldTagEnis?: pulumi.Input<boolean>;

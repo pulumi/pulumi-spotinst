@@ -109,6 +109,7 @@ __all__ = [
     'ManagedInstanceManagedInstanceAction',
     'ManagedInstanceMetadataOptions',
     'ManagedInstanceNetworkInterface',
+    'ManagedInstanceResourceRequirement',
     'ManagedInstanceResourceTagSpecification',
     'ManagedInstanceRevertToSpot',
     'ManagedInstanceScheduledTask',
@@ -6107,6 +6108,112 @@ class ManagedInstanceNetworkInterface(dict):
     @pulumi.getter(name="associatePublicIpAddress")
     def associate_public_ip_address(self) -> Optional[bool]:
         return pulumi.get(self, "associate_public_ip_address")
+
+
+@pulumi.output_type
+class ManagedInstanceResourceRequirement(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "requiredMemoryMaximum":
+            suggest = "required_memory_maximum"
+        elif key == "requiredMemoryMinimum":
+            suggest = "required_memory_minimum"
+        elif key == "requiredVcpuMaximum":
+            suggest = "required_vcpu_maximum"
+        elif key == "requiredVcpuMinimum":
+            suggest = "required_vcpu_minimum"
+        elif key == "excludedInstanceFamilies":
+            suggest = "excluded_instance_families"
+        elif key == "excludedInstanceGenerations":
+            suggest = "excluded_instance_generations"
+        elif key == "excludedInstanceTypes":
+            suggest = "excluded_instance_types"
+        elif key == "requiredGpuMaximum":
+            suggest = "required_gpu_maximum"
+        elif key == "requiredGpuMinimum":
+            suggest = "required_gpu_minimum"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ManagedInstanceResourceRequirement. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ManagedInstanceResourceRequirement.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ManagedInstanceResourceRequirement.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 required_memory_maximum: int,
+                 required_memory_minimum: int,
+                 required_vcpu_maximum: int,
+                 required_vcpu_minimum: int,
+                 excluded_instance_families: Optional[Sequence[str]] = None,
+                 excluded_instance_generations: Optional[Sequence[str]] = None,
+                 excluded_instance_types: Optional[Sequence[str]] = None,
+                 required_gpu_maximum: Optional[int] = None,
+                 required_gpu_minimum: Optional[int] = None):
+        pulumi.set(__self__, "required_memory_maximum", required_memory_maximum)
+        pulumi.set(__self__, "required_memory_minimum", required_memory_minimum)
+        pulumi.set(__self__, "required_vcpu_maximum", required_vcpu_maximum)
+        pulumi.set(__self__, "required_vcpu_minimum", required_vcpu_minimum)
+        if excluded_instance_families is not None:
+            pulumi.set(__self__, "excluded_instance_families", excluded_instance_families)
+        if excluded_instance_generations is not None:
+            pulumi.set(__self__, "excluded_instance_generations", excluded_instance_generations)
+        if excluded_instance_types is not None:
+            pulumi.set(__self__, "excluded_instance_types", excluded_instance_types)
+        if required_gpu_maximum is not None:
+            pulumi.set(__self__, "required_gpu_maximum", required_gpu_maximum)
+        if required_gpu_minimum is not None:
+            pulumi.set(__self__, "required_gpu_minimum", required_gpu_minimum)
+
+    @property
+    @pulumi.getter(name="requiredMemoryMaximum")
+    def required_memory_maximum(self) -> int:
+        return pulumi.get(self, "required_memory_maximum")
+
+    @property
+    @pulumi.getter(name="requiredMemoryMinimum")
+    def required_memory_minimum(self) -> int:
+        return pulumi.get(self, "required_memory_minimum")
+
+    @property
+    @pulumi.getter(name="requiredVcpuMaximum")
+    def required_vcpu_maximum(self) -> int:
+        return pulumi.get(self, "required_vcpu_maximum")
+
+    @property
+    @pulumi.getter(name="requiredVcpuMinimum")
+    def required_vcpu_minimum(self) -> int:
+        return pulumi.get(self, "required_vcpu_minimum")
+
+    @property
+    @pulumi.getter(name="excludedInstanceFamilies")
+    def excluded_instance_families(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "excluded_instance_families")
+
+    @property
+    @pulumi.getter(name="excludedInstanceGenerations")
+    def excluded_instance_generations(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "excluded_instance_generations")
+
+    @property
+    @pulumi.getter(name="excludedInstanceTypes")
+    def excluded_instance_types(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "excluded_instance_types")
+
+    @property
+    @pulumi.getter(name="requiredGpuMaximum")
+    def required_gpu_maximum(self) -> Optional[int]:
+        return pulumi.get(self, "required_gpu_maximum")
+
+    @property
+    @pulumi.getter(name="requiredGpuMinimum")
+    def required_gpu_minimum(self) -> Optional[int]:
+        return pulumi.get(self, "required_gpu_minimum")
 
 
 @pulumi.output_type

@@ -17,6 +17,7 @@ import com.pulumi.spotinst.aws.outputs.ManagedInstanceLoadBalancer;
 import com.pulumi.spotinst.aws.outputs.ManagedInstanceManagedInstanceAction;
 import com.pulumi.spotinst.aws.outputs.ManagedInstanceMetadataOptions;
 import com.pulumi.spotinst.aws.outputs.ManagedInstanceNetworkInterface;
+import com.pulumi.spotinst.aws.outputs.ManagedInstanceResourceRequirement;
 import com.pulumi.spotinst.aws.outputs.ManagedInstanceResourceTagSpecification;
 import com.pulumi.spotinst.aws.outputs.ManagedInstanceRevertToSpot;
 import com.pulumi.spotinst.aws.outputs.ManagedInstanceScheduledTask;
@@ -121,10 +122,10 @@ public class ManagedInstance extends com.pulumi.resources.CustomResource {
         return this.imageId;
     }
     @Export(name="instanceTypes", refs={List.class,String.class}, tree="[0,1]")
-    private Output<List<String>> instanceTypes;
+    private Output</* @Nullable */ List<String>> instanceTypes;
 
-    public Output<List<String>> instanceTypes() {
-        return this.instanceTypes;
+    public Output<Optional<List<String>>> instanceTypes() {
+        return Codegen.optional(this.instanceTypes);
     }
     @Export(name="integrationRoute53", refs={ManagedInstanceIntegrationRoute53.class}, tree="[0]")
     private Output</* @Nullable */ ManagedInstanceIntegrationRoute53> integrationRoute53;
@@ -222,6 +223,12 @@ public class ManagedInstance extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> preferredType() {
         return Codegen.optional(this.preferredType);
     }
+    @Export(name="preferredTypes", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> preferredTypes;
+
+    public Output<Optional<List<String>>> preferredTypes() {
+        return Codegen.optional(this.preferredTypes);
+    }
     @Export(name="privateIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> privateIp;
 
@@ -239,6 +246,12 @@ public class ManagedInstance extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<String>> region() {
         return Codegen.optional(this.region);
+    }
+    @Export(name="resourceRequirements", refs={List.class,ManagedInstanceResourceRequirement.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ManagedInstanceResourceRequirement>> resourceRequirements;
+
+    public Output<Optional<List<ManagedInstanceResourceRequirement>>> resourceRequirements() {
+        return Codegen.optional(this.resourceRequirements);
     }
     @Export(name="resourceTagSpecifications", refs={List.class,ManagedInstanceResourceTagSpecification.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ManagedInstanceResourceTagSpecification>> resourceTagSpecifications;

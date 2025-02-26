@@ -47,9 +47,11 @@ type ManagedInstance struct {
 	PersistRootDevice         pulumi.BoolPtrOutput                               `pulumi:"persistRootDevice"`
 	PlacementTenancy          pulumi.StringPtrOutput                             `pulumi:"placementTenancy"`
 	PreferredType             pulumi.StringPtrOutput                             `pulumi:"preferredType"`
+	PreferredTypes            pulumi.StringArrayOutput                           `pulumi:"preferredTypes"`
 	PrivateIp                 pulumi.StringPtrOutput                             `pulumi:"privateIp"`
 	Product                   pulumi.StringOutput                                `pulumi:"product"`
 	Region                    pulumi.StringPtrOutput                             `pulumi:"region"`
+	ResourceRequirements      ManagedInstanceResourceRequirementArrayOutput      `pulumi:"resourceRequirements"`
 	ResourceTagSpecifications ManagedInstanceResourceTagSpecificationArrayOutput `pulumi:"resourceTagSpecifications"`
 	RevertToSpot              ManagedInstanceRevertToSpotPtrOutput               `pulumi:"revertToSpot"`
 	ScheduledTasks            ManagedInstanceScheduledTaskArrayOutput            `pulumi:"scheduledTasks"`
@@ -72,9 +74,6 @@ func NewManagedInstance(ctx *pulumi.Context,
 
 	if args.ImageId == nil {
 		return nil, errors.New("invalid value for required argument 'ImageId'")
-	}
-	if args.InstanceTypes == nil {
-		return nil, errors.New("invalid value for required argument 'InstanceTypes'")
 	}
 	if args.PersistBlockDevices == nil {
 		return nil, errors.New("invalid value for required argument 'PersistBlockDevices'")
@@ -143,9 +142,11 @@ type managedInstanceState struct {
 	PersistRootDevice         *bool                                     `pulumi:"persistRootDevice"`
 	PlacementTenancy          *string                                   `pulumi:"placementTenancy"`
 	PreferredType             *string                                   `pulumi:"preferredType"`
+	PreferredTypes            []string                                  `pulumi:"preferredTypes"`
 	PrivateIp                 *string                                   `pulumi:"privateIp"`
 	Product                   *string                                   `pulumi:"product"`
 	Region                    *string                                   `pulumi:"region"`
+	ResourceRequirements      []ManagedInstanceResourceRequirement      `pulumi:"resourceRequirements"`
 	ResourceTagSpecifications []ManagedInstanceResourceTagSpecification `pulumi:"resourceTagSpecifications"`
 	RevertToSpot              *ManagedInstanceRevertToSpot              `pulumi:"revertToSpot"`
 	ScheduledTasks            []ManagedInstanceScheduledTask            `pulumi:"scheduledTasks"`
@@ -192,9 +193,11 @@ type ManagedInstanceState struct {
 	PersistRootDevice         pulumi.BoolPtrInput
 	PlacementTenancy          pulumi.StringPtrInput
 	PreferredType             pulumi.StringPtrInput
+	PreferredTypes            pulumi.StringArrayInput
 	PrivateIp                 pulumi.StringPtrInput
 	Product                   pulumi.StringPtrInput
 	Region                    pulumi.StringPtrInput
+	ResourceRequirements      ManagedInstanceResourceRequirementArrayInput
 	ResourceTagSpecifications ManagedInstanceResourceTagSpecificationArrayInput
 	RevertToSpot              ManagedInstanceRevertToSpotPtrInput
 	ScheduledTasks            ManagedInstanceScheduledTaskArrayInput
@@ -245,9 +248,11 @@ type managedInstanceArgs struct {
 	PersistRootDevice         *bool                                     `pulumi:"persistRootDevice"`
 	PlacementTenancy          *string                                   `pulumi:"placementTenancy"`
 	PreferredType             *string                                   `pulumi:"preferredType"`
+	PreferredTypes            []string                                  `pulumi:"preferredTypes"`
 	PrivateIp                 *string                                   `pulumi:"privateIp"`
 	Product                   string                                    `pulumi:"product"`
 	Region                    *string                                   `pulumi:"region"`
+	ResourceRequirements      []ManagedInstanceResourceRequirement      `pulumi:"resourceRequirements"`
 	ResourceTagSpecifications []ManagedInstanceResourceTagSpecification `pulumi:"resourceTagSpecifications"`
 	RevertToSpot              *ManagedInstanceRevertToSpot              `pulumi:"revertToSpot"`
 	ScheduledTasks            []ManagedInstanceScheduledTask            `pulumi:"scheduledTasks"`
@@ -295,9 +300,11 @@ type ManagedInstanceArgs struct {
 	PersistRootDevice         pulumi.BoolPtrInput
 	PlacementTenancy          pulumi.StringPtrInput
 	PreferredType             pulumi.StringPtrInput
+	PreferredTypes            pulumi.StringArrayInput
 	PrivateIp                 pulumi.StringPtrInput
 	Product                   pulumi.StringInput
 	Region                    pulumi.StringPtrInput
+	ResourceRequirements      ManagedInstanceResourceRequirementArrayInput
 	ResourceTagSpecifications ManagedInstanceResourceTagSpecificationArrayInput
 	RevertToSpot              ManagedInstanceRevertToSpotPtrInput
 	ScheduledTasks            ManagedInstanceScheduledTaskArrayInput
@@ -526,6 +533,10 @@ func (o ManagedInstanceOutput) PreferredType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.StringPtrOutput { return v.PreferredType }).(pulumi.StringPtrOutput)
 }
 
+func (o ManagedInstanceOutput) PreferredTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ManagedInstance) pulumi.StringArrayOutput { return v.PreferredTypes }).(pulumi.StringArrayOutput)
+}
+
 func (o ManagedInstanceOutput) PrivateIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.StringPtrOutput { return v.PrivateIp }).(pulumi.StringPtrOutput)
 }
@@ -536,6 +547,10 @@ func (o ManagedInstanceOutput) Product() pulumi.StringOutput {
 
 func (o ManagedInstanceOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+func (o ManagedInstanceOutput) ResourceRequirements() ManagedInstanceResourceRequirementArrayOutput {
+	return o.ApplyT(func(v *ManagedInstance) ManagedInstanceResourceRequirementArrayOutput { return v.ResourceRequirements }).(ManagedInstanceResourceRequirementArrayOutput)
 }
 
 func (o ManagedInstanceOutput) ResourceTagSpecifications() ManagedInstanceResourceTagSpecificationArrayOutput {

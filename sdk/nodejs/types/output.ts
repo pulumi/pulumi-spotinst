@@ -1976,6 +1976,18 @@ export namespace aws {
         deviceIndex: string;
     }
 
+    export interface ManagedInstanceResourceRequirement {
+        excludedInstanceFamilies?: string[];
+        excludedInstanceGenerations?: string[];
+        excludedInstanceTypes?: string[];
+        requiredGpuMaximum?: number;
+        requiredGpuMinimum?: number;
+        requiredMemoryMaximum: number;
+        requiredMemoryMinimum: number;
+        requiredVcpuMaximum: number;
+        requiredVcpuMinimum: number;
+    }
+
     export interface ManagedInstanceResourceTagSpecification {
         shouldTagAmis?: boolean;
         shouldTagEnis?: boolean;
