@@ -2252,6 +2252,53 @@
                 "deviceIndex"
             ]
         },
+        "spotinst:aws/ManagedInstanceResourceRequirement:ManagedInstanceResourceRequirement": {
+            "properties": {
+                "excludedInstanceFamilies": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "excludedInstanceGenerations": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "excludedInstanceTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "requiredGpuMaximum": {
+                    "type": "integer"
+                },
+                "requiredGpuMinimum": {
+                    "type": "integer"
+                },
+                "requiredMemoryMaximum": {
+                    "type": "integer"
+                },
+                "requiredMemoryMinimum": {
+                    "type": "integer"
+                },
+                "requiredVcpuMaximum": {
+                    "type": "integer"
+                },
+                "requiredVcpuMinimum": {
+                    "type": "integer"
+                }
+            },
+            "type": "object",
+            "required": [
+                "requiredMemoryMaximum",
+                "requiredMemoryMinimum",
+                "requiredVcpuMaximum",
+                "requiredVcpuMinimum"
+            ]
+        },
         "spotinst:aws/ManagedInstanceResourceTagSpecification:ManagedInstanceResourceTagSpecification": {
             "properties": {
                 "shouldTagAmis": {
@@ -12510,6 +12557,12 @@
                 "preferredType": {
                     "type": "string"
                 },
+                "preferredTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "privateIp": {
                     "type": "string"
                 },
@@ -12518,6 +12571,12 @@
                 },
                 "region": {
                     "type": "string"
+                },
+                "resourceRequirements": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:aws/ManagedInstanceResourceRequirement:ManagedInstanceResourceRequirement"
+                    }
                 },
                 "resourceTagSpecifications": {
                     "type": "array",
@@ -12571,7 +12630,6 @@
             "required": [
                 "ebsOptimized",
                 "imageId",
-                "instanceTypes",
                 "name",
                 "persistBlockDevices",
                 "product",
@@ -12693,6 +12751,12 @@
                 "preferredType": {
                     "type": "string"
                 },
+                "preferredTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "privateIp": {
                     "type": "string"
                 },
@@ -12701,6 +12765,12 @@
                 },
                 "region": {
                     "type": "string"
+                },
+                "resourceRequirements": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:aws/ManagedInstanceResourceRequirement:ManagedInstanceResourceRequirement"
+                    }
                 },
                 "resourceTagSpecifications": {
                     "type": "array",
@@ -12753,7 +12823,6 @@
             },
             "requiredInputs": [
                 "imageId",
-                "instanceTypes",
                 "persistBlockDevices",
                 "product",
                 "subnetIds",
@@ -12876,6 +12945,12 @@
                     "preferredType": {
                         "type": "string"
                     },
+                    "preferredTypes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
                     "privateIp": {
                         "type": "string"
                     },
@@ -12884,6 +12959,12 @@
                     },
                     "region": {
                         "type": "string"
+                    },
+                    "resourceRequirements": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/spotinst:aws/ManagedInstanceResourceRequirement:ManagedInstanceResourceRequirement"
+                        }
                     },
                     "resourceTagSpecifications": {
                         "type": "array",

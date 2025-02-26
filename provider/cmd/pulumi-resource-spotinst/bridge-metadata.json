@@ -956,6 +956,25 @@
                     "optimization_windows": {
                         "maxItemsOne": false
                     },
+                    "preferred_types": {
+                        "maxItemsOne": false
+                    },
+                    "resource_requirements": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "excluded_instance_families": {
+                                    "maxItemsOne": false
+                                },
+                                "excluded_instance_generations": {
+                                    "maxItemsOne": false
+                                },
+                                "excluded_instance_types": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "resource_tag_specification": {
                         "maxItemsOne": false
                     },
