@@ -13895,6 +13895,148 @@ func (o ManagedInstanceNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) Man
 	}).(ManagedInstanceNetworkInterfaceOutput)
 }
 
+type ManagedInstanceResourceRequirement struct {
+	ExcludedInstanceFamilies    []string `pulumi:"excludedInstanceFamilies"`
+	ExcludedInstanceGenerations []string `pulumi:"excludedInstanceGenerations"`
+	ExcludedInstanceTypes       []string `pulumi:"excludedInstanceTypes"`
+	RequiredGpuMaximum          *int     `pulumi:"requiredGpuMaximum"`
+	RequiredGpuMinimum          *int     `pulumi:"requiredGpuMinimum"`
+	RequiredMemoryMaximum       int      `pulumi:"requiredMemoryMaximum"`
+	RequiredMemoryMinimum       int      `pulumi:"requiredMemoryMinimum"`
+	RequiredVcpuMaximum         int      `pulumi:"requiredVcpuMaximum"`
+	RequiredVcpuMinimum         int      `pulumi:"requiredVcpuMinimum"`
+}
+
+// ManagedInstanceResourceRequirementInput is an input type that accepts ManagedInstanceResourceRequirementArgs and ManagedInstanceResourceRequirementOutput values.
+// You can construct a concrete instance of `ManagedInstanceResourceRequirementInput` via:
+//
+//	ManagedInstanceResourceRequirementArgs{...}
+type ManagedInstanceResourceRequirementInput interface {
+	pulumi.Input
+
+	ToManagedInstanceResourceRequirementOutput() ManagedInstanceResourceRequirementOutput
+	ToManagedInstanceResourceRequirementOutputWithContext(context.Context) ManagedInstanceResourceRequirementOutput
+}
+
+type ManagedInstanceResourceRequirementArgs struct {
+	ExcludedInstanceFamilies    pulumi.StringArrayInput `pulumi:"excludedInstanceFamilies"`
+	ExcludedInstanceGenerations pulumi.StringArrayInput `pulumi:"excludedInstanceGenerations"`
+	ExcludedInstanceTypes       pulumi.StringArrayInput `pulumi:"excludedInstanceTypes"`
+	RequiredGpuMaximum          pulumi.IntPtrInput      `pulumi:"requiredGpuMaximum"`
+	RequiredGpuMinimum          pulumi.IntPtrInput      `pulumi:"requiredGpuMinimum"`
+	RequiredMemoryMaximum       pulumi.IntInput         `pulumi:"requiredMemoryMaximum"`
+	RequiredMemoryMinimum       pulumi.IntInput         `pulumi:"requiredMemoryMinimum"`
+	RequiredVcpuMaximum         pulumi.IntInput         `pulumi:"requiredVcpuMaximum"`
+	RequiredVcpuMinimum         pulumi.IntInput         `pulumi:"requiredVcpuMinimum"`
+}
+
+func (ManagedInstanceResourceRequirementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedInstanceResourceRequirement)(nil)).Elem()
+}
+
+func (i ManagedInstanceResourceRequirementArgs) ToManagedInstanceResourceRequirementOutput() ManagedInstanceResourceRequirementOutput {
+	return i.ToManagedInstanceResourceRequirementOutputWithContext(context.Background())
+}
+
+func (i ManagedInstanceResourceRequirementArgs) ToManagedInstanceResourceRequirementOutputWithContext(ctx context.Context) ManagedInstanceResourceRequirementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedInstanceResourceRequirementOutput)
+}
+
+// ManagedInstanceResourceRequirementArrayInput is an input type that accepts ManagedInstanceResourceRequirementArray and ManagedInstanceResourceRequirementArrayOutput values.
+// You can construct a concrete instance of `ManagedInstanceResourceRequirementArrayInput` via:
+//
+//	ManagedInstanceResourceRequirementArray{ ManagedInstanceResourceRequirementArgs{...} }
+type ManagedInstanceResourceRequirementArrayInput interface {
+	pulumi.Input
+
+	ToManagedInstanceResourceRequirementArrayOutput() ManagedInstanceResourceRequirementArrayOutput
+	ToManagedInstanceResourceRequirementArrayOutputWithContext(context.Context) ManagedInstanceResourceRequirementArrayOutput
+}
+
+type ManagedInstanceResourceRequirementArray []ManagedInstanceResourceRequirementInput
+
+func (ManagedInstanceResourceRequirementArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedInstanceResourceRequirement)(nil)).Elem()
+}
+
+func (i ManagedInstanceResourceRequirementArray) ToManagedInstanceResourceRequirementArrayOutput() ManagedInstanceResourceRequirementArrayOutput {
+	return i.ToManagedInstanceResourceRequirementArrayOutputWithContext(context.Background())
+}
+
+func (i ManagedInstanceResourceRequirementArray) ToManagedInstanceResourceRequirementArrayOutputWithContext(ctx context.Context) ManagedInstanceResourceRequirementArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedInstanceResourceRequirementArrayOutput)
+}
+
+type ManagedInstanceResourceRequirementOutput struct{ *pulumi.OutputState }
+
+func (ManagedInstanceResourceRequirementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedInstanceResourceRequirement)(nil)).Elem()
+}
+
+func (o ManagedInstanceResourceRequirementOutput) ToManagedInstanceResourceRequirementOutput() ManagedInstanceResourceRequirementOutput {
+	return o
+}
+
+func (o ManagedInstanceResourceRequirementOutput) ToManagedInstanceResourceRequirementOutputWithContext(ctx context.Context) ManagedInstanceResourceRequirementOutput {
+	return o
+}
+
+func (o ManagedInstanceResourceRequirementOutput) ExcludedInstanceFamilies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ManagedInstanceResourceRequirement) []string { return v.ExcludedInstanceFamilies }).(pulumi.StringArrayOutput)
+}
+
+func (o ManagedInstanceResourceRequirementOutput) ExcludedInstanceGenerations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ManagedInstanceResourceRequirement) []string { return v.ExcludedInstanceGenerations }).(pulumi.StringArrayOutput)
+}
+
+func (o ManagedInstanceResourceRequirementOutput) ExcludedInstanceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ManagedInstanceResourceRequirement) []string { return v.ExcludedInstanceTypes }).(pulumi.StringArrayOutput)
+}
+
+func (o ManagedInstanceResourceRequirementOutput) RequiredGpuMaximum() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ManagedInstanceResourceRequirement) *int { return v.RequiredGpuMaximum }).(pulumi.IntPtrOutput)
+}
+
+func (o ManagedInstanceResourceRequirementOutput) RequiredGpuMinimum() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ManagedInstanceResourceRequirement) *int { return v.RequiredGpuMinimum }).(pulumi.IntPtrOutput)
+}
+
+func (o ManagedInstanceResourceRequirementOutput) RequiredMemoryMaximum() pulumi.IntOutput {
+	return o.ApplyT(func(v ManagedInstanceResourceRequirement) int { return v.RequiredMemoryMaximum }).(pulumi.IntOutput)
+}
+
+func (o ManagedInstanceResourceRequirementOutput) RequiredMemoryMinimum() pulumi.IntOutput {
+	return o.ApplyT(func(v ManagedInstanceResourceRequirement) int { return v.RequiredMemoryMinimum }).(pulumi.IntOutput)
+}
+
+func (o ManagedInstanceResourceRequirementOutput) RequiredVcpuMaximum() pulumi.IntOutput {
+	return o.ApplyT(func(v ManagedInstanceResourceRequirement) int { return v.RequiredVcpuMaximum }).(pulumi.IntOutput)
+}
+
+func (o ManagedInstanceResourceRequirementOutput) RequiredVcpuMinimum() pulumi.IntOutput {
+	return o.ApplyT(func(v ManagedInstanceResourceRequirement) int { return v.RequiredVcpuMinimum }).(pulumi.IntOutput)
+}
+
+type ManagedInstanceResourceRequirementArrayOutput struct{ *pulumi.OutputState }
+
+func (ManagedInstanceResourceRequirementArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedInstanceResourceRequirement)(nil)).Elem()
+}
+
+func (o ManagedInstanceResourceRequirementArrayOutput) ToManagedInstanceResourceRequirementArrayOutput() ManagedInstanceResourceRequirementArrayOutput {
+	return o
+}
+
+func (o ManagedInstanceResourceRequirementArrayOutput) ToManagedInstanceResourceRequirementArrayOutputWithContext(ctx context.Context) ManagedInstanceResourceRequirementArrayOutput {
+	return o
+}
+
+func (o ManagedInstanceResourceRequirementArrayOutput) Index(i pulumi.IntInput) ManagedInstanceResourceRequirementOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedInstanceResourceRequirement {
+		return vs[0].([]ManagedInstanceResourceRequirement)[vs[1].(int)]
+	}).(ManagedInstanceResourceRequirementOutput)
+}
+
 type ManagedInstanceResourceTagSpecification struct {
 	ShouldTagAmis      *bool `pulumi:"shouldTagAmis"`
 	ShouldTagEnis      *bool `pulumi:"shouldTagEnis"`
@@ -25361,6 +25503,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceMetadataOptionsPtrInput)(nil)).Elem(), ManagedInstanceMetadataOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceNetworkInterfaceInput)(nil)).Elem(), ManagedInstanceNetworkInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceNetworkInterfaceArrayInput)(nil)).Elem(), ManagedInstanceNetworkInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceResourceRequirementInput)(nil)).Elem(), ManagedInstanceResourceRequirementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceResourceRequirementArrayInput)(nil)).Elem(), ManagedInstanceResourceRequirementArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceResourceTagSpecificationInput)(nil)).Elem(), ManagedInstanceResourceTagSpecificationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceResourceTagSpecificationArrayInput)(nil)).Elem(), ManagedInstanceResourceTagSpecificationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceRevertToSpotInput)(nil)).Elem(), ManagedInstanceRevertToSpotArgs{})
@@ -25693,6 +25837,8 @@ func init() {
 	pulumi.RegisterOutputType(ManagedInstanceMetadataOptionsPtrOutput{})
 	pulumi.RegisterOutputType(ManagedInstanceNetworkInterfaceOutput{})
 	pulumi.RegisterOutputType(ManagedInstanceNetworkInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(ManagedInstanceResourceRequirementOutput{})
+	pulumi.RegisterOutputType(ManagedInstanceResourceRequirementArrayOutput{})
 	pulumi.RegisterOutputType(ManagedInstanceResourceTagSpecificationOutput{})
 	pulumi.RegisterOutputType(ManagedInstanceResourceTagSpecificationArrayOutput{})
 	pulumi.RegisterOutputType(ManagedInstanceRevertToSpotOutput{})

@@ -49,7 +49,7 @@ export class ManagedInstance extends pulumi.CustomResource {
     public readonly healthCheckType!: pulumi.Output<string | undefined>;
     public readonly iamInstanceProfile!: pulumi.Output<string | undefined>;
     public readonly imageId!: pulumi.Output<string>;
-    public readonly instanceTypes!: pulumi.Output<string[]>;
+    public readonly instanceTypes!: pulumi.Output<string[] | undefined>;
     public readonly integrationRoute53!: pulumi.Output<outputs.aws.ManagedInstanceIntegrationRoute53 | undefined>;
     public readonly keyPair!: pulumi.Output<string | undefined>;
     public readonly lifeCycle!: pulumi.Output<string | undefined>;
@@ -66,9 +66,11 @@ export class ManagedInstance extends pulumi.CustomResource {
     public readonly persistRootDevice!: pulumi.Output<boolean | undefined>;
     public readonly placementTenancy!: pulumi.Output<string | undefined>;
     public readonly preferredType!: pulumi.Output<string | undefined>;
+    public readonly preferredTypes!: pulumi.Output<string[] | undefined>;
     public readonly privateIp!: pulumi.Output<string | undefined>;
     public readonly product!: pulumi.Output<string>;
     public readonly region!: pulumi.Output<string | undefined>;
+    public readonly resourceRequirements!: pulumi.Output<outputs.aws.ManagedInstanceResourceRequirement[] | undefined>;
     public readonly resourceTagSpecifications!: pulumi.Output<outputs.aws.ManagedInstanceResourceTagSpecification[] | undefined>;
     public readonly revertToSpot!: pulumi.Output<outputs.aws.ManagedInstanceRevertToSpot | undefined>;
     public readonly scheduledTasks!: pulumi.Output<outputs.aws.ManagedInstanceScheduledTask[] | undefined>;
@@ -126,9 +128,11 @@ export class ManagedInstance extends pulumi.CustomResource {
             resourceInputs["persistRootDevice"] = state ? state.persistRootDevice : undefined;
             resourceInputs["placementTenancy"] = state ? state.placementTenancy : undefined;
             resourceInputs["preferredType"] = state ? state.preferredType : undefined;
+            resourceInputs["preferredTypes"] = state ? state.preferredTypes : undefined;
             resourceInputs["privateIp"] = state ? state.privateIp : undefined;
             resourceInputs["product"] = state ? state.product : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["resourceRequirements"] = state ? state.resourceRequirements : undefined;
             resourceInputs["resourceTagSpecifications"] = state ? state.resourceTagSpecifications : undefined;
             resourceInputs["revertToSpot"] = state ? state.revertToSpot : undefined;
             resourceInputs["scheduledTasks"] = state ? state.scheduledTasks : undefined;
@@ -144,9 +148,6 @@ export class ManagedInstance extends pulumi.CustomResource {
             const args = argsOrState as ManagedInstanceArgs | undefined;
             if ((!args || args.imageId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'imageId'");
-            }
-            if ((!args || args.instanceTypes === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'instanceTypes'");
             }
             if ((!args || args.persistBlockDevices === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'persistBlockDevices'");
@@ -192,9 +193,11 @@ export class ManagedInstance extends pulumi.CustomResource {
             resourceInputs["persistRootDevice"] = args ? args.persistRootDevice : undefined;
             resourceInputs["placementTenancy"] = args ? args.placementTenancy : undefined;
             resourceInputs["preferredType"] = args ? args.preferredType : undefined;
+            resourceInputs["preferredTypes"] = args ? args.preferredTypes : undefined;
             resourceInputs["privateIp"] = args ? args.privateIp : undefined;
             resourceInputs["product"] = args ? args.product : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["resourceRequirements"] = args ? args.resourceRequirements : undefined;
             resourceInputs["resourceTagSpecifications"] = args ? args.resourceTagSpecifications : undefined;
             resourceInputs["revertToSpot"] = args ? args.revertToSpot : undefined;
             resourceInputs["scheduledTasks"] = args ? args.scheduledTasks : undefined;
@@ -248,9 +251,11 @@ export interface ManagedInstanceState {
     persistRootDevice?: pulumi.Input<boolean>;
     placementTenancy?: pulumi.Input<string>;
     preferredType?: pulumi.Input<string>;
+    preferredTypes?: pulumi.Input<pulumi.Input<string>[]>;
     privateIp?: pulumi.Input<string>;
     product?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
+    resourceRequirements?: pulumi.Input<pulumi.Input<inputs.aws.ManagedInstanceResourceRequirement>[]>;
     resourceTagSpecifications?: pulumi.Input<pulumi.Input<inputs.aws.ManagedInstanceResourceTagSpecification>[]>;
     revertToSpot?: pulumi.Input<inputs.aws.ManagedInstanceRevertToSpot>;
     scheduledTasks?: pulumi.Input<pulumi.Input<inputs.aws.ManagedInstanceScheduledTask>[]>;
@@ -283,7 +288,7 @@ export interface ManagedInstanceArgs {
     healthCheckType?: pulumi.Input<string>;
     iamInstanceProfile?: pulumi.Input<string>;
     imageId: pulumi.Input<string>;
-    instanceTypes: pulumi.Input<pulumi.Input<string>[]>;
+    instanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     integrationRoute53?: pulumi.Input<inputs.aws.ManagedInstanceIntegrationRoute53>;
     keyPair?: pulumi.Input<string>;
     lifeCycle?: pulumi.Input<string>;
@@ -300,9 +305,11 @@ export interface ManagedInstanceArgs {
     persistRootDevice?: pulumi.Input<boolean>;
     placementTenancy?: pulumi.Input<string>;
     preferredType?: pulumi.Input<string>;
+    preferredTypes?: pulumi.Input<pulumi.Input<string>[]>;
     privateIp?: pulumi.Input<string>;
     product: pulumi.Input<string>;
     region?: pulumi.Input<string>;
+    resourceRequirements?: pulumi.Input<pulumi.Input<inputs.aws.ManagedInstanceResourceRequirement>[]>;
     resourceTagSpecifications?: pulumi.Input<pulumi.Input<inputs.aws.ManagedInstanceResourceTagSpecification>[]>;
     revertToSpot?: pulumi.Input<inputs.aws.ManagedInstanceRevertToSpot>;
     scheduledTasks?: pulumi.Input<pulumi.Input<inputs.aws.ManagedInstanceScheduledTask>[]>;

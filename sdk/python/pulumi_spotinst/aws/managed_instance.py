@@ -22,7 +22,6 @@ __all__ = ['ManagedInstanceArgs', 'ManagedInstance']
 class ManagedInstanceArgs:
     def __init__(__self__, *,
                  image_id: pulumi.Input[str],
-                 instance_types: pulumi.Input[Sequence[pulumi.Input[str]]],
                  persist_block_devices: pulumi.Input[bool],
                  product: pulumi.Input[str],
                  subnet_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
@@ -41,6 +40,7 @@ class ManagedInstanceArgs:
                  grace_period: Optional[pulumi.Input[int]] = None,
                  health_check_type: Optional[pulumi.Input[str]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
+                 instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  integration_route53: Optional[pulumi.Input['ManagedInstanceIntegrationRoute53Args']] = None,
                  key_pair: Optional[pulumi.Input[str]] = None,
                  life_cycle: Optional[pulumi.Input[str]] = None,
@@ -56,8 +56,10 @@ class ManagedInstanceArgs:
                  persist_root_device: Optional[pulumi.Input[bool]] = None,
                  placement_tenancy: Optional[pulumi.Input[str]] = None,
                  preferred_type: Optional[pulumi.Input[str]] = None,
+                 preferred_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  private_ip: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 resource_requirements: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceResourceRequirementArgs']]]] = None,
                  resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceResourceTagSpecificationArgs']]]] = None,
                  revert_to_spot: Optional[pulumi.Input['ManagedInstanceRevertToSpotArgs']] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceScheduledTaskArgs']]]] = None,
@@ -71,7 +73,6 @@ class ManagedInstanceArgs:
         The set of arguments for constructing a ManagedInstance resource.
         """
         pulumi.set(__self__, "image_id", image_id)
-        pulumi.set(__self__, "instance_types", instance_types)
         pulumi.set(__self__, "persist_block_devices", persist_block_devices)
         pulumi.set(__self__, "product", product)
         pulumi.set(__self__, "subnet_ids", subnet_ids)
@@ -104,6 +105,8 @@ class ManagedInstanceArgs:
             pulumi.set(__self__, "health_check_type", health_check_type)
         if iam_instance_profile is not None:
             pulumi.set(__self__, "iam_instance_profile", iam_instance_profile)
+        if instance_types is not None:
+            pulumi.set(__self__, "instance_types", instance_types)
         if integration_route53 is not None:
             pulumi.set(__self__, "integration_route53", integration_route53)
         if key_pair is not None:
@@ -134,10 +137,14 @@ class ManagedInstanceArgs:
             pulumi.set(__self__, "placement_tenancy", placement_tenancy)
         if preferred_type is not None:
             pulumi.set(__self__, "preferred_type", preferred_type)
+        if preferred_types is not None:
+            pulumi.set(__self__, "preferred_types", preferred_types)
         if private_ip is not None:
             pulumi.set(__self__, "private_ip", private_ip)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if resource_requirements is not None:
+            pulumi.set(__self__, "resource_requirements", resource_requirements)
         if resource_tag_specifications is not None:
             pulumi.set(__self__, "resource_tag_specifications", resource_tag_specifications)
         if revert_to_spot is not None:
@@ -165,15 +172,6 @@ class ManagedInstanceArgs:
     @image_id.setter
     def image_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "image_id", value)
-
-    @property
-    @pulumi.getter(name="instanceTypes")
-    def instance_types(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        return pulumi.get(self, "instance_types")
-
-    @instance_types.setter
-    def instance_types(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
-        pulumi.set(self, "instance_types", value)
 
     @property
     @pulumi.getter(name="persistBlockDevices")
@@ -338,6 +336,15 @@ class ManagedInstanceArgs:
         pulumi.set(self, "iam_instance_profile", value)
 
     @property
+    @pulumi.getter(name="instanceTypes")
+    def instance_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "instance_types")
+
+    @instance_types.setter
+    def instance_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "instance_types", value)
+
+    @property
     @pulumi.getter(name="integrationRoute53")
     def integration_route53(self) -> Optional[pulumi.Input['ManagedInstanceIntegrationRoute53Args']]:
         return pulumi.get(self, "integration_route53")
@@ -473,6 +480,15 @@ class ManagedInstanceArgs:
         pulumi.set(self, "preferred_type", value)
 
     @property
+    @pulumi.getter(name="preferredTypes")
+    def preferred_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "preferred_types")
+
+    @preferred_types.setter
+    def preferred_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "preferred_types", value)
+
+    @property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "private_ip")
@@ -489,6 +505,15 @@ class ManagedInstanceArgs:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="resourceRequirements")
+    def resource_requirements(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceResourceRequirementArgs']]]]:
+        return pulumi.get(self, "resource_requirements")
+
+    @resource_requirements.setter
+    def resource_requirements(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceResourceRequirementArgs']]]]):
+        pulumi.set(self, "resource_requirements", value)
 
     @property
     @pulumi.getter(name="resourceTagSpecifications")
@@ -607,9 +632,11 @@ class _ManagedInstanceState:
                  persist_root_device: Optional[pulumi.Input[bool]] = None,
                  placement_tenancy: Optional[pulumi.Input[str]] = None,
                  preferred_type: Optional[pulumi.Input[str]] = None,
+                 preferred_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  private_ip: Optional[pulumi.Input[str]] = None,
                  product: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 resource_requirements: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceResourceRequirementArgs']]]] = None,
                  resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceResourceTagSpecificationArgs']]]] = None,
                  revert_to_spot: Optional[pulumi.Input['ManagedInstanceRevertToSpotArgs']] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceScheduledTaskArgs']]]] = None,
@@ -688,12 +715,16 @@ class _ManagedInstanceState:
             pulumi.set(__self__, "placement_tenancy", placement_tenancy)
         if preferred_type is not None:
             pulumi.set(__self__, "preferred_type", preferred_type)
+        if preferred_types is not None:
+            pulumi.set(__self__, "preferred_types", preferred_types)
         if private_ip is not None:
             pulumi.set(__self__, "private_ip", private_ip)
         if product is not None:
             pulumi.set(__self__, "product", product)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if resource_requirements is not None:
+            pulumi.set(__self__, "resource_requirements", resource_requirements)
         if resource_tag_specifications is not None:
             pulumi.set(__self__, "resource_tag_specifications", resource_tag_specifications)
         if revert_to_spot is not None:
@@ -1006,6 +1037,15 @@ class _ManagedInstanceState:
         pulumi.set(self, "preferred_type", value)
 
     @property
+    @pulumi.getter(name="preferredTypes")
+    def preferred_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "preferred_types")
+
+    @preferred_types.setter
+    def preferred_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "preferred_types", value)
+
+    @property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "private_ip")
@@ -1031,6 +1071,15 @@ class _ManagedInstanceState:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="resourceRequirements")
+    def resource_requirements(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceResourceRequirementArgs']]]]:
+        return pulumi.get(self, "resource_requirements")
+
+    @resource_requirements.setter
+    def resource_requirements(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceResourceRequirementArgs']]]]):
+        pulumi.set(self, "resource_requirements", value)
 
     @property
     @pulumi.getter(name="resourceTagSpecifications")
@@ -1169,9 +1218,11 @@ class ManagedInstance(pulumi.CustomResource):
                  persist_root_device: Optional[pulumi.Input[bool]] = None,
                  placement_tenancy: Optional[pulumi.Input[str]] = None,
                  preferred_type: Optional[pulumi.Input[str]] = None,
+                 preferred_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  private_ip: Optional[pulumi.Input[str]] = None,
                  product: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 resource_requirements: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedInstanceResourceRequirementArgs', 'ManagedInstanceResourceRequirementArgsDict']]]]] = None,
                  resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedInstanceResourceTagSpecificationArgs', 'ManagedInstanceResourceTagSpecificationArgsDict']]]]] = None,
                  revert_to_spot: Optional[pulumi.Input[Union['ManagedInstanceRevertToSpotArgs', 'ManagedInstanceRevertToSpotArgsDict']]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedInstanceScheduledTaskArgs', 'ManagedInstanceScheduledTaskArgsDict']]]]] = None,
@@ -1244,9 +1295,11 @@ class ManagedInstance(pulumi.CustomResource):
                  persist_root_device: Optional[pulumi.Input[bool]] = None,
                  placement_tenancy: Optional[pulumi.Input[str]] = None,
                  preferred_type: Optional[pulumi.Input[str]] = None,
+                 preferred_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  private_ip: Optional[pulumi.Input[str]] = None,
                  product: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 resource_requirements: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedInstanceResourceRequirementArgs', 'ManagedInstanceResourceRequirementArgsDict']]]]] = None,
                  resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedInstanceResourceTagSpecificationArgs', 'ManagedInstanceResourceTagSpecificationArgsDict']]]]] = None,
                  revert_to_spot: Optional[pulumi.Input[Union['ManagedInstanceRevertToSpotArgs', 'ManagedInstanceRevertToSpotArgsDict']]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedInstanceScheduledTaskArgs', 'ManagedInstanceScheduledTaskArgsDict']]]]] = None,
@@ -1284,8 +1337,6 @@ class ManagedInstance(pulumi.CustomResource):
             if image_id is None and not opts.urn:
                 raise TypeError("Missing required property 'image_id'")
             __props__.__dict__["image_id"] = image_id
-            if instance_types is None and not opts.urn:
-                raise TypeError("Missing required property 'instance_types'")
             __props__.__dict__["instance_types"] = instance_types
             __props__.__dict__["integration_route53"] = integration_route53
             __props__.__dict__["key_pair"] = key_pair
@@ -1305,11 +1356,13 @@ class ManagedInstance(pulumi.CustomResource):
             __props__.__dict__["persist_root_device"] = persist_root_device
             __props__.__dict__["placement_tenancy"] = placement_tenancy
             __props__.__dict__["preferred_type"] = preferred_type
+            __props__.__dict__["preferred_types"] = preferred_types
             __props__.__dict__["private_ip"] = private_ip
             if product is None and not opts.urn:
                 raise TypeError("Missing required property 'product'")
             __props__.__dict__["product"] = product
             __props__.__dict__["region"] = region
+            __props__.__dict__["resource_requirements"] = resource_requirements
             __props__.__dict__["resource_tag_specifications"] = resource_tag_specifications
             __props__.__dict__["revert_to_spot"] = revert_to_spot
             __props__.__dict__["scheduled_tasks"] = scheduled_tasks
@@ -1367,9 +1420,11 @@ class ManagedInstance(pulumi.CustomResource):
             persist_root_device: Optional[pulumi.Input[bool]] = None,
             placement_tenancy: Optional[pulumi.Input[str]] = None,
             preferred_type: Optional[pulumi.Input[str]] = None,
+            preferred_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             private_ip: Optional[pulumi.Input[str]] = None,
             product: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
+            resource_requirements: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedInstanceResourceRequirementArgs', 'ManagedInstanceResourceRequirementArgsDict']]]]] = None,
             resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedInstanceResourceTagSpecificationArgs', 'ManagedInstanceResourceTagSpecificationArgsDict']]]]] = None,
             revert_to_spot: Optional[pulumi.Input[Union['ManagedInstanceRevertToSpotArgs', 'ManagedInstanceRevertToSpotArgsDict']]] = None,
             scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedInstanceScheduledTaskArgs', 'ManagedInstanceScheduledTaskArgsDict']]]]] = None,
@@ -1425,9 +1480,11 @@ class ManagedInstance(pulumi.CustomResource):
         __props__.__dict__["persist_root_device"] = persist_root_device
         __props__.__dict__["placement_tenancy"] = placement_tenancy
         __props__.__dict__["preferred_type"] = preferred_type
+        __props__.__dict__["preferred_types"] = preferred_types
         __props__.__dict__["private_ip"] = private_ip
         __props__.__dict__["product"] = product
         __props__.__dict__["region"] = region
+        __props__.__dict__["resource_requirements"] = resource_requirements
         __props__.__dict__["resource_tag_specifications"] = resource_tag_specifications
         __props__.__dict__["revert_to_spot"] = revert_to_spot
         __props__.__dict__["scheduled_tasks"] = scheduled_tasks
@@ -1518,7 +1575,7 @@ class ManagedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceTypes")
-    def instance_types(self) -> pulumi.Output[Sequence[str]]:
+    def instance_types(self) -> pulumi.Output[Optional[Sequence[str]]]:
         return pulumi.get(self, "instance_types")
 
     @property
@@ -1602,6 +1659,11 @@ class ManagedInstance(pulumi.CustomResource):
         return pulumi.get(self, "preferred_type")
 
     @property
+    @pulumi.getter(name="preferredTypes")
+    def preferred_types(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        return pulumi.get(self, "preferred_types")
+
+    @property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "private_ip")
@@ -1615,6 +1677,11 @@ class ManagedInstance(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="resourceRequirements")
+    def resource_requirements(self) -> pulumi.Output[Optional[Sequence['outputs.ManagedInstanceResourceRequirement']]]:
+        return pulumi.get(self, "resource_requirements")
 
     @property
     @pulumi.getter(name="resourceTagSpecifications")

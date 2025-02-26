@@ -12,6 +12,7 @@ import com.pulumi.spotinst.aws.inputs.ManagedInstanceLoadBalancerArgs;
 import com.pulumi.spotinst.aws.inputs.ManagedInstanceManagedInstanceActionArgs;
 import com.pulumi.spotinst.aws.inputs.ManagedInstanceMetadataOptionsArgs;
 import com.pulumi.spotinst.aws.inputs.ManagedInstanceNetworkInterfaceArgs;
+import com.pulumi.spotinst.aws.inputs.ManagedInstanceResourceRequirementArgs;
 import com.pulumi.spotinst.aws.inputs.ManagedInstanceResourceTagSpecificationArgs;
 import com.pulumi.spotinst.aws.inputs.ManagedInstanceRevertToSpotArgs;
 import com.pulumi.spotinst.aws.inputs.ManagedInstanceScheduledTaskArgs;
@@ -253,6 +254,13 @@ public final class ManagedInstanceState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.preferredType);
     }
 
+    @Import(name="preferredTypes")
+    private @Nullable Output<List<String>> preferredTypes;
+
+    public Optional<Output<List<String>>> preferredTypes() {
+        return Optional.ofNullable(this.preferredTypes);
+    }
+
     @Import(name="privateIp")
     private @Nullable Output<String> privateIp;
 
@@ -272,6 +280,13 @@ public final class ManagedInstanceState extends com.pulumi.resources.ResourceArg
 
     public Optional<Output<String>> region() {
         return Optional.ofNullable(this.region);
+    }
+
+    @Import(name="resourceRequirements")
+    private @Nullable Output<List<ManagedInstanceResourceRequirementArgs>> resourceRequirements;
+
+    public Optional<Output<List<ManagedInstanceResourceRequirementArgs>>> resourceRequirements() {
+        return Optional.ofNullable(this.resourceRequirements);
     }
 
     @Import(name="resourceTagSpecifications")
@@ -386,9 +401,11 @@ public final class ManagedInstanceState extends com.pulumi.resources.ResourceArg
         this.persistRootDevice = $.persistRootDevice;
         this.placementTenancy = $.placementTenancy;
         this.preferredType = $.preferredType;
+        this.preferredTypes = $.preferredTypes;
         this.privateIp = $.privateIp;
         this.product = $.product;
         this.region = $.region;
+        this.resourceRequirements = $.resourceRequirements;
         this.resourceTagSpecifications = $.resourceTagSpecifications;
         this.revertToSpot = $.revertToSpot;
         this.scheduledTasks = $.scheduledTasks;
@@ -732,6 +749,19 @@ public final class ManagedInstanceState extends com.pulumi.resources.ResourceArg
             return preferredType(Output.of(preferredType));
         }
 
+        public Builder preferredTypes(@Nullable Output<List<String>> preferredTypes) {
+            $.preferredTypes = preferredTypes;
+            return this;
+        }
+
+        public Builder preferredTypes(List<String> preferredTypes) {
+            return preferredTypes(Output.of(preferredTypes));
+        }
+
+        public Builder preferredTypes(String... preferredTypes) {
+            return preferredTypes(List.of(preferredTypes));
+        }
+
         public Builder privateIp(@Nullable Output<String> privateIp) {
             $.privateIp = privateIp;
             return this;
@@ -757,6 +787,19 @@ public final class ManagedInstanceState extends com.pulumi.resources.ResourceArg
 
         public Builder region(String region) {
             return region(Output.of(region));
+        }
+
+        public Builder resourceRequirements(@Nullable Output<List<ManagedInstanceResourceRequirementArgs>> resourceRequirements) {
+            $.resourceRequirements = resourceRequirements;
+            return this;
+        }
+
+        public Builder resourceRequirements(List<ManagedInstanceResourceRequirementArgs> resourceRequirements) {
+            return resourceRequirements(Output.of(resourceRequirements));
+        }
+
+        public Builder resourceRequirements(ManagedInstanceResourceRequirementArgs... resourceRequirements) {
+            return resourceRequirements(List.of(resourceRequirements));
         }
 
         public Builder resourceTagSpecifications(@Nullable Output<List<ManagedInstanceResourceTagSpecificationArgs>> resourceTagSpecifications) {

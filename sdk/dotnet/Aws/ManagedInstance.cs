@@ -108,6 +108,9 @@ namespace Pulumi.SpotInst.Aws
         [Output("preferredType")]
         public Output<string?> PreferredType { get; private set; } = null!;
 
+        [Output("preferredTypes")]
+        public Output<ImmutableArray<string>> PreferredTypes { get; private set; } = null!;
+
         [Output("privateIp")]
         public Output<string?> PrivateIp { get; private set; } = null!;
 
@@ -116,6 +119,9 @@ namespace Pulumi.SpotInst.Aws
 
         [Output("region")]
         public Output<string?> Region { get; private set; } = null!;
+
+        [Output("resourceRequirements")]
+        public Output<ImmutableArray<Outputs.ManagedInstanceResourceRequirement>> ResourceRequirements { get; private set; } = null!;
 
         [Output("resourceTagSpecifications")]
         public Output<ImmutableArray<Outputs.ManagedInstanceResourceTagSpecification>> ResourceTagSpecifications { get; private set; } = null!;
@@ -251,7 +257,7 @@ namespace Pulumi.SpotInst.Aws
         [Input("imageId", required: true)]
         public Input<string> ImageId { get; set; } = null!;
 
-        [Input("instanceTypes", required: true)]
+        [Input("instanceTypes")]
         private InputList<string>? _instanceTypes;
         public InputList<string> InstanceTypes
         {
@@ -322,6 +328,14 @@ namespace Pulumi.SpotInst.Aws
         [Input("preferredType")]
         public Input<string>? PreferredType { get; set; }
 
+        [Input("preferredTypes")]
+        private InputList<string>? _preferredTypes;
+        public InputList<string> PreferredTypes
+        {
+            get => _preferredTypes ?? (_preferredTypes = new InputList<string>());
+            set => _preferredTypes = value;
+        }
+
         [Input("privateIp")]
         public Input<string>? PrivateIp { get; set; }
 
@@ -330,6 +344,14 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        [Input("resourceRequirements")]
+        private InputList<Inputs.ManagedInstanceResourceRequirementArgs>? _resourceRequirements;
+        public InputList<Inputs.ManagedInstanceResourceRequirementArgs> ResourceRequirements
+        {
+            get => _resourceRequirements ?? (_resourceRequirements = new InputList<Inputs.ManagedInstanceResourceRequirementArgs>());
+            set => _resourceRequirements = value;
+        }
 
         [Input("resourceTagSpecifications")]
         private InputList<Inputs.ManagedInstanceResourceTagSpecificationArgs>? _resourceTagSpecifications;
@@ -523,6 +545,14 @@ namespace Pulumi.SpotInst.Aws
         [Input("preferredType")]
         public Input<string>? PreferredType { get; set; }
 
+        [Input("preferredTypes")]
+        private InputList<string>? _preferredTypes;
+        public InputList<string> PreferredTypes
+        {
+            get => _preferredTypes ?? (_preferredTypes = new InputList<string>());
+            set => _preferredTypes = value;
+        }
+
         [Input("privateIp")]
         public Input<string>? PrivateIp { get; set; }
 
@@ -531,6 +561,14 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        [Input("resourceRequirements")]
+        private InputList<Inputs.ManagedInstanceResourceRequirementGetArgs>? _resourceRequirements;
+        public InputList<Inputs.ManagedInstanceResourceRequirementGetArgs> ResourceRequirements
+        {
+            get => _resourceRequirements ?? (_resourceRequirements = new InputList<Inputs.ManagedInstanceResourceRequirementGetArgs>());
+            set => _resourceRequirements = value;
+        }
 
         [Input("resourceTagSpecifications")]
         private InputList<Inputs.ManagedInstanceResourceTagSpecificationGetArgs>? _resourceTagSpecifications;
