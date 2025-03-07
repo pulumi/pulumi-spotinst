@@ -849,7 +849,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     }
     /**
      * Operation system type. Valid values: `&#34;Linux/UNIX&#34;`, `&#34;SUSE Linux&#34;`, `&#34;Windows&#34;`.
-     * For EC2 Classic instances:  `&#34;Linux/UNIX (Amazon VPC)&#34;`, `&#34;SUSE Linux (Amazon VPC)&#34;`, `&#34;Windows (Amazon VPC)&#34;`.
+     * For EC2 Classic instances: `&#34;SUSE Linux (Amazon VPC)&#34;`, `&#34;Windows (Amazon VPC)&#34;`.
      * 
      */
     @Export(name="product", refs={String.class}, tree="[0]")
@@ -857,7 +857,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Operation system type. Valid values: `&#34;Linux/UNIX&#34;`, `&#34;SUSE Linux&#34;`, `&#34;Windows&#34;`.
-     * For EC2 Classic instances:  `&#34;Linux/UNIX (Amazon VPC)&#34;`, `&#34;SUSE Linux (Amazon VPC)&#34;`, `&#34;Windows (Amazon VPC)&#34;`.
+     * For EC2 Classic instances: `&#34;SUSE Linux (Amazon VPC)&#34;`, `&#34;Windows (Amazon VPC)&#34;`.
      * 
      */
     public Output<String> product() {

@@ -57,6 +57,8 @@ __all__ = [
     'ElastigroupScalingUpPolicyArgsDict',
     'ElastigroupScalingUpPolicyDimensionArgs',
     'ElastigroupScalingUpPolicyDimensionArgsDict',
+    'ElastigroupShieldedInstanceConfigArgs',
+    'ElastigroupShieldedInstanceConfigArgsDict',
     'OceanImportAutoUpdateArgs',
     'OceanImportAutoUpdateArgsDict',
     'OceanImportAutoscalerArgs',
@@ -1465,6 +1467,42 @@ class ElastigroupScalingUpPolicyDimensionArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class ElastigroupShieldedInstanceConfigArgsDict(TypedDict):
+        enable_integrity_monitoring: NotRequired[pulumi.Input[bool]]
+        enable_secure_boot: NotRequired[pulumi.Input[bool]]
+elif False:
+    ElastigroupShieldedInstanceConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ElastigroupShieldedInstanceConfigArgs:
+    def __init__(__self__, *,
+                 enable_integrity_monitoring: Optional[pulumi.Input[bool]] = None,
+                 enable_secure_boot: Optional[pulumi.Input[bool]] = None):
+        if enable_integrity_monitoring is not None:
+            pulumi.set(__self__, "enable_integrity_monitoring", enable_integrity_monitoring)
+        if enable_secure_boot is not None:
+            pulumi.set(__self__, "enable_secure_boot", enable_secure_boot)
+
+    @property
+    @pulumi.getter(name="enableIntegrityMonitoring")
+    def enable_integrity_monitoring(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enable_integrity_monitoring")
+
+    @enable_integrity_monitoring.setter
+    def enable_integrity_monitoring(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_integrity_monitoring", value)
+
+    @property
+    @pulumi.getter(name="enableSecureBoot")
+    def enable_secure_boot(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enable_secure_boot")
+
+    @enable_secure_boot.setter
+    def enable_secure_boot(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_secure_boot", value)
 
 
 if not MYPY:

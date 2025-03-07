@@ -23,6 +23,7 @@ import com.pulumi.spotinst.gcp.outputs.ElastigroupRevertToPreemptible;
 import com.pulumi.spotinst.gcp.outputs.ElastigroupScalingDownPolicy;
 import com.pulumi.spotinst.gcp.outputs.ElastigroupScalingUpPolicy;
 import com.pulumi.spotinst.gcp.outputs.ElastigroupScheduledTask;
+import com.pulumi.spotinst.gcp.outputs.ElastigroupShieldedInstanceConfig;
 import com.pulumi.spotinst.gcp.outputs.ElastigroupSubnet;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -50,6 +51,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.spotinst.gcp.inputs.ElastigroupLabelArgs;
  * import com.pulumi.spotinst.gcp.inputs.ElastigroupBackendServiceArgs;
  * import com.pulumi.spotinst.gcp.inputs.ElastigroupDiskArgs;
+ * import com.pulumi.spotinst.gcp.inputs.ElastigroupShieldedInstanceConfigArgs;
  * import com.pulumi.spotinst.gcp.inputs.ElastigroupNetworkInterfaceArgs;
  * import com.pulumi.spotinst.gcp.inputs.ElastigroupInstanceTypesCustomArgs;
  * import com.pulumi.spotinst.gcp.inputs.ElastigroupSubnetArgs;
@@ -120,6 +122,10 @@ import javax.annotation.Nullable;
  *                     .diskType("pd-standard")
  *                     .sourceImage("")
  *                     .build())
+ *                 .build())
+ *             .shieldedInstanceConfig(ElastigroupShieldedInstanceConfigArgs.builder()
+ *                 .enableSecureBoot(true)
+ *                 .enableIntegrityMonitoring(false)
  *                 .build())
  *             .networkInterfaces(ElastigroupNetworkInterfaceArgs.builder()
  *                 .network("spot-network")
@@ -553,6 +559,20 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> serviceAccount() {
         return Codegen.optional(this.serviceAccount);
+    }
+    /**
+     * You can use secure boot when you launch VMs using Elastigroup. This helps you comply with your security policies. In the instance configuration, use ‘secureBootEnabled’ set to True to enforce UEFI with secure boot. Elastigroup provisions VMs with secure boot, as long as the images supports UEFI.
+     * 
+     */
+    @Export(name="shieldedInstanceConfig", refs={ElastigroupShieldedInstanceConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ElastigroupShieldedInstanceConfig> shieldedInstanceConfig;
+
+    /**
+     * @return You can use secure boot when you launch VMs using Elastigroup. This helps you comply with your security policies. In the instance configuration, use ‘secureBootEnabled’ set to True to enforce UEFI with secure boot. Elastigroup provisions VMs with secure boot, as long as the images supports UEFI.
+     * 
+     */
+    public Output<Optional<ElastigroupShieldedInstanceConfig>> shieldedInstanceConfig() {
+        return Codegen.optional(this.shieldedInstanceConfig);
     }
     /**
      * Enable committed use discounts utilization.

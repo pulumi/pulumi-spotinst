@@ -2967,6 +2967,162 @@ func (o ElastigroupScheduledTaskArrayOutput) Index(i pulumi.IntInput) Elastigrou
 	}).(ElastigroupScheduledTaskOutput)
 }
 
+type ElastigroupShieldedInstanceConfig struct {
+	// Default: false
+	EnableIntegrityMonitoring *bool `pulumi:"enableIntegrityMonitoring"`
+	// Default: false
+	EnableSecureBoot *bool `pulumi:"enableSecureBoot"`
+}
+
+// ElastigroupShieldedInstanceConfigInput is an input type that accepts ElastigroupShieldedInstanceConfigArgs and ElastigroupShieldedInstanceConfigOutput values.
+// You can construct a concrete instance of `ElastigroupShieldedInstanceConfigInput` via:
+//
+//	ElastigroupShieldedInstanceConfigArgs{...}
+type ElastigroupShieldedInstanceConfigInput interface {
+	pulumi.Input
+
+	ToElastigroupShieldedInstanceConfigOutput() ElastigroupShieldedInstanceConfigOutput
+	ToElastigroupShieldedInstanceConfigOutputWithContext(context.Context) ElastigroupShieldedInstanceConfigOutput
+}
+
+type ElastigroupShieldedInstanceConfigArgs struct {
+	// Default: false
+	EnableIntegrityMonitoring pulumi.BoolPtrInput `pulumi:"enableIntegrityMonitoring"`
+	// Default: false
+	EnableSecureBoot pulumi.BoolPtrInput `pulumi:"enableSecureBoot"`
+}
+
+func (ElastigroupShieldedInstanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (i ElastigroupShieldedInstanceConfigArgs) ToElastigroupShieldedInstanceConfigOutput() ElastigroupShieldedInstanceConfigOutput {
+	return i.ToElastigroupShieldedInstanceConfigOutputWithContext(context.Background())
+}
+
+func (i ElastigroupShieldedInstanceConfigArgs) ToElastigroupShieldedInstanceConfigOutputWithContext(ctx context.Context) ElastigroupShieldedInstanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupShieldedInstanceConfigOutput)
+}
+
+func (i ElastigroupShieldedInstanceConfigArgs) ToElastigroupShieldedInstanceConfigPtrOutput() ElastigroupShieldedInstanceConfigPtrOutput {
+	return i.ToElastigroupShieldedInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ElastigroupShieldedInstanceConfigArgs) ToElastigroupShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) ElastigroupShieldedInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupShieldedInstanceConfigOutput).ToElastigroupShieldedInstanceConfigPtrOutputWithContext(ctx)
+}
+
+// ElastigroupShieldedInstanceConfigPtrInput is an input type that accepts ElastigroupShieldedInstanceConfigArgs, ElastigroupShieldedInstanceConfigPtr and ElastigroupShieldedInstanceConfigPtrOutput values.
+// You can construct a concrete instance of `ElastigroupShieldedInstanceConfigPtrInput` via:
+//
+//	        ElastigroupShieldedInstanceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ElastigroupShieldedInstanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToElastigroupShieldedInstanceConfigPtrOutput() ElastigroupShieldedInstanceConfigPtrOutput
+	ToElastigroupShieldedInstanceConfigPtrOutputWithContext(context.Context) ElastigroupShieldedInstanceConfigPtrOutput
+}
+
+type elastigroupShieldedInstanceConfigPtrType ElastigroupShieldedInstanceConfigArgs
+
+func ElastigroupShieldedInstanceConfigPtr(v *ElastigroupShieldedInstanceConfigArgs) ElastigroupShieldedInstanceConfigPtrInput {
+	return (*elastigroupShieldedInstanceConfigPtrType)(v)
+}
+
+func (*elastigroupShieldedInstanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (i *elastigroupShieldedInstanceConfigPtrType) ToElastigroupShieldedInstanceConfigPtrOutput() ElastigroupShieldedInstanceConfigPtrOutput {
+	return i.ToElastigroupShieldedInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *elastigroupShieldedInstanceConfigPtrType) ToElastigroupShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) ElastigroupShieldedInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupShieldedInstanceConfigPtrOutput)
+}
+
+type ElastigroupShieldedInstanceConfigOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupShieldedInstanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (o ElastigroupShieldedInstanceConfigOutput) ToElastigroupShieldedInstanceConfigOutput() ElastigroupShieldedInstanceConfigOutput {
+	return o
+}
+
+func (o ElastigroupShieldedInstanceConfigOutput) ToElastigroupShieldedInstanceConfigOutputWithContext(ctx context.Context) ElastigroupShieldedInstanceConfigOutput {
+	return o
+}
+
+func (o ElastigroupShieldedInstanceConfigOutput) ToElastigroupShieldedInstanceConfigPtrOutput() ElastigroupShieldedInstanceConfigPtrOutput {
+	return o.ToElastigroupShieldedInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ElastigroupShieldedInstanceConfigOutput) ToElastigroupShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) ElastigroupShieldedInstanceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupShieldedInstanceConfig) *ElastigroupShieldedInstanceConfig {
+		return &v
+	}).(ElastigroupShieldedInstanceConfigPtrOutput)
+}
+
+// Default: false
+func (o ElastigroupShieldedInstanceConfigOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ElastigroupShieldedInstanceConfig) *bool { return v.EnableIntegrityMonitoring }).(pulumi.BoolPtrOutput)
+}
+
+// Default: false
+func (o ElastigroupShieldedInstanceConfigOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ElastigroupShieldedInstanceConfig) *bool { return v.EnableSecureBoot }).(pulumi.BoolPtrOutput)
+}
+
+type ElastigroupShieldedInstanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupShieldedInstanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (o ElastigroupShieldedInstanceConfigPtrOutput) ToElastigroupShieldedInstanceConfigPtrOutput() ElastigroupShieldedInstanceConfigPtrOutput {
+	return o
+}
+
+func (o ElastigroupShieldedInstanceConfigPtrOutput) ToElastigroupShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) ElastigroupShieldedInstanceConfigPtrOutput {
+	return o
+}
+
+func (o ElastigroupShieldedInstanceConfigPtrOutput) Elem() ElastigroupShieldedInstanceConfigOutput {
+	return o.ApplyT(func(v *ElastigroupShieldedInstanceConfig) ElastigroupShieldedInstanceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupShieldedInstanceConfig
+		return ret
+	}).(ElastigroupShieldedInstanceConfigOutput)
+}
+
+// Default: false
+func (o ElastigroupShieldedInstanceConfigPtrOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ElastigroupShieldedInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableIntegrityMonitoring
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Default: false
+func (o ElastigroupShieldedInstanceConfigPtrOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ElastigroupShieldedInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableSecureBoot
+	}).(pulumi.BoolPtrOutput)
+}
+
 type ElastigroupSubnet struct {
 	// The region for the group of subnets.
 	Region string `pulumi:"region"`
@@ -3118,6 +3274,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingUpPolicyDimensionArrayInput)(nil)).Elem(), ElastigroupScalingUpPolicyDimensionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScheduledTaskInput)(nil)).Elem(), ElastigroupScheduledTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScheduledTaskArrayInput)(nil)).Elem(), ElastigroupScheduledTaskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupShieldedInstanceConfigInput)(nil)).Elem(), ElastigroupShieldedInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupShieldedInstanceConfigPtrInput)(nil)).Elem(), ElastigroupShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupSubnetInput)(nil)).Elem(), ElastigroupSubnetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupSubnetArrayInput)(nil)).Elem(), ElastigroupSubnetArray{})
 	pulumi.RegisterOutputType(ElastigroupBackendServiceOutput{})
@@ -3164,6 +3322,8 @@ func init() {
 	pulumi.RegisterOutputType(ElastigroupScalingUpPolicyDimensionArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupScheduledTaskOutput{})
 	pulumi.RegisterOutputType(ElastigroupScheduledTaskArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupShieldedInstanceConfigOutput{})
+	pulumi.RegisterOutputType(ElastigroupShieldedInstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(ElastigroupSubnetOutput{})
 	pulumi.RegisterOutputType(ElastigroupSubnetArrayOutput{})
 }

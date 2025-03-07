@@ -191,6 +191,9 @@ namespace Pulumi.SpotInst.Gke
         [Output("serviceAccount")]
         public Output<string?> ServiceAccount { get; private set; } = null!;
 
+        [Output("shieldedInstanceConfig")]
+        public Output<Outputs.ElastigroupShieldedInstanceConfig?> ShieldedInstanceConfig { get; private set; } = null!;
+
         [Output("shouldUtilizeCommitments")]
         public Output<bool?> ShouldUtilizeCommitments { get; private set; } = null!;
 
@@ -402,6 +405,9 @@ namespace Pulumi.SpotInst.Gke
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }
 
+        [Input("shieldedInstanceConfig")]
+        public Input<Inputs.ElastigroupShieldedInstanceConfigArgs>? ShieldedInstanceConfig { get; set; }
+
         [Input("shouldUtilizeCommitments")]
         public Input<bool>? ShouldUtilizeCommitments { get; set; }
 
@@ -579,6 +585,9 @@ namespace Pulumi.SpotInst.Gke
 
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }
+
+        [Input("shieldedInstanceConfig")]
+        public Input<Inputs.ElastigroupShieldedInstanceConfigGetArgs>? ShieldedInstanceConfig { get; set; }
 
         [Input("shouldUtilizeCommitments")]
         public Input<bool>? ShouldUtilizeCommitments { get; set; }

@@ -489,7 +489,7 @@ namespace Pulumi.SpotInst.Aws
 
         /// <summary>
         /// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
-        /// For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
+        /// For EC2 Classic instances: `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         /// </summary>
         [Output("product")]
         public Output<string> Product { get; private set; } = null!;
@@ -1022,7 +1022,7 @@ namespace Pulumi.SpotInst.Aws
 
         /// <summary>
         /// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
-        /// For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
+        /// For EC2 Classic instances: `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         /// </summary>
         [Input("product", required: true)]
         public Input<string> Product { get; set; } = null!;
@@ -1588,7 +1588,7 @@ namespace Pulumi.SpotInst.Aws
 
         /// <summary>
         /// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
-        /// For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
+        /// For EC2 Classic instances: `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         /// </summary>
         [Input("product")]
         public Input<string>? Product { get; set; }

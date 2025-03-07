@@ -2656,6 +2656,154 @@ func (o ElastigroupScalingUpPolicyDimensionArrayOutput) Index(i pulumi.IntInput)
 	}).(ElastigroupScalingUpPolicyDimensionOutput)
 }
 
+type ElastigroupShieldedInstanceConfig struct {
+	EnableIntegrityMonitoring *bool `pulumi:"enableIntegrityMonitoring"`
+	EnableSecureBoot          *bool `pulumi:"enableSecureBoot"`
+}
+
+// ElastigroupShieldedInstanceConfigInput is an input type that accepts ElastigroupShieldedInstanceConfigArgs and ElastigroupShieldedInstanceConfigOutput values.
+// You can construct a concrete instance of `ElastigroupShieldedInstanceConfigInput` via:
+//
+//	ElastigroupShieldedInstanceConfigArgs{...}
+type ElastigroupShieldedInstanceConfigInput interface {
+	pulumi.Input
+
+	ToElastigroupShieldedInstanceConfigOutput() ElastigroupShieldedInstanceConfigOutput
+	ToElastigroupShieldedInstanceConfigOutputWithContext(context.Context) ElastigroupShieldedInstanceConfigOutput
+}
+
+type ElastigroupShieldedInstanceConfigArgs struct {
+	EnableIntegrityMonitoring pulumi.BoolPtrInput `pulumi:"enableIntegrityMonitoring"`
+	EnableSecureBoot          pulumi.BoolPtrInput `pulumi:"enableSecureBoot"`
+}
+
+func (ElastigroupShieldedInstanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (i ElastigroupShieldedInstanceConfigArgs) ToElastigroupShieldedInstanceConfigOutput() ElastigroupShieldedInstanceConfigOutput {
+	return i.ToElastigroupShieldedInstanceConfigOutputWithContext(context.Background())
+}
+
+func (i ElastigroupShieldedInstanceConfigArgs) ToElastigroupShieldedInstanceConfigOutputWithContext(ctx context.Context) ElastigroupShieldedInstanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupShieldedInstanceConfigOutput)
+}
+
+func (i ElastigroupShieldedInstanceConfigArgs) ToElastigroupShieldedInstanceConfigPtrOutput() ElastigroupShieldedInstanceConfigPtrOutput {
+	return i.ToElastigroupShieldedInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ElastigroupShieldedInstanceConfigArgs) ToElastigroupShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) ElastigroupShieldedInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupShieldedInstanceConfigOutput).ToElastigroupShieldedInstanceConfigPtrOutputWithContext(ctx)
+}
+
+// ElastigroupShieldedInstanceConfigPtrInput is an input type that accepts ElastigroupShieldedInstanceConfigArgs, ElastigroupShieldedInstanceConfigPtr and ElastigroupShieldedInstanceConfigPtrOutput values.
+// You can construct a concrete instance of `ElastigroupShieldedInstanceConfigPtrInput` via:
+//
+//	        ElastigroupShieldedInstanceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ElastigroupShieldedInstanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToElastigroupShieldedInstanceConfigPtrOutput() ElastigroupShieldedInstanceConfigPtrOutput
+	ToElastigroupShieldedInstanceConfigPtrOutputWithContext(context.Context) ElastigroupShieldedInstanceConfigPtrOutput
+}
+
+type elastigroupShieldedInstanceConfigPtrType ElastigroupShieldedInstanceConfigArgs
+
+func ElastigroupShieldedInstanceConfigPtr(v *ElastigroupShieldedInstanceConfigArgs) ElastigroupShieldedInstanceConfigPtrInput {
+	return (*elastigroupShieldedInstanceConfigPtrType)(v)
+}
+
+func (*elastigroupShieldedInstanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (i *elastigroupShieldedInstanceConfigPtrType) ToElastigroupShieldedInstanceConfigPtrOutput() ElastigroupShieldedInstanceConfigPtrOutput {
+	return i.ToElastigroupShieldedInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *elastigroupShieldedInstanceConfigPtrType) ToElastigroupShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) ElastigroupShieldedInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupShieldedInstanceConfigPtrOutput)
+}
+
+type ElastigroupShieldedInstanceConfigOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupShieldedInstanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (o ElastigroupShieldedInstanceConfigOutput) ToElastigroupShieldedInstanceConfigOutput() ElastigroupShieldedInstanceConfigOutput {
+	return o
+}
+
+func (o ElastigroupShieldedInstanceConfigOutput) ToElastigroupShieldedInstanceConfigOutputWithContext(ctx context.Context) ElastigroupShieldedInstanceConfigOutput {
+	return o
+}
+
+func (o ElastigroupShieldedInstanceConfigOutput) ToElastigroupShieldedInstanceConfigPtrOutput() ElastigroupShieldedInstanceConfigPtrOutput {
+	return o.ToElastigroupShieldedInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ElastigroupShieldedInstanceConfigOutput) ToElastigroupShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) ElastigroupShieldedInstanceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupShieldedInstanceConfig) *ElastigroupShieldedInstanceConfig {
+		return &v
+	}).(ElastigroupShieldedInstanceConfigPtrOutput)
+}
+
+func (o ElastigroupShieldedInstanceConfigOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ElastigroupShieldedInstanceConfig) *bool { return v.EnableIntegrityMonitoring }).(pulumi.BoolPtrOutput)
+}
+
+func (o ElastigroupShieldedInstanceConfigOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ElastigroupShieldedInstanceConfig) *bool { return v.EnableSecureBoot }).(pulumi.BoolPtrOutput)
+}
+
+type ElastigroupShieldedInstanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupShieldedInstanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (o ElastigroupShieldedInstanceConfigPtrOutput) ToElastigroupShieldedInstanceConfigPtrOutput() ElastigroupShieldedInstanceConfigPtrOutput {
+	return o
+}
+
+func (o ElastigroupShieldedInstanceConfigPtrOutput) ToElastigroupShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) ElastigroupShieldedInstanceConfigPtrOutput {
+	return o
+}
+
+func (o ElastigroupShieldedInstanceConfigPtrOutput) Elem() ElastigroupShieldedInstanceConfigOutput {
+	return o.ApplyT(func(v *ElastigroupShieldedInstanceConfig) ElastigroupShieldedInstanceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupShieldedInstanceConfig
+		return ret
+	}).(ElastigroupShieldedInstanceConfigOutput)
+}
+
+func (o ElastigroupShieldedInstanceConfigPtrOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ElastigroupShieldedInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableIntegrityMonitoring
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ElastigroupShieldedInstanceConfigPtrOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ElastigroupShieldedInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableSecureBoot
+	}).(pulumi.BoolPtrOutput)
+}
+
 type OceanImportAutoUpdate struct {
 	// Enable the Ocean Kubernetes AutoUpdate.
 	IsEnabled *bool `pulumi:"isEnabled"`
@@ -7542,6 +7690,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingUpPolicyArrayInput)(nil)).Elem(), ElastigroupScalingUpPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingUpPolicyDimensionInput)(nil)).Elem(), ElastigroupScalingUpPolicyDimensionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingUpPolicyDimensionArrayInput)(nil)).Elem(), ElastigroupScalingUpPolicyDimensionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupShieldedInstanceConfigInput)(nil)).Elem(), ElastigroupShieldedInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupShieldedInstanceConfigPtrInput)(nil)).Elem(), ElastigroupShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportAutoUpdateInput)(nil)).Elem(), OceanImportAutoUpdateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportAutoUpdateArrayInput)(nil)).Elem(), OceanImportAutoUpdateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportAutoscalerInput)(nil)).Elem(), OceanImportAutoscalerArgs{})
@@ -7652,6 +7802,8 @@ func init() {
 	pulumi.RegisterOutputType(ElastigroupScalingUpPolicyArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupScalingUpPolicyDimensionOutput{})
 	pulumi.RegisterOutputType(ElastigroupScalingUpPolicyDimensionArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupShieldedInstanceConfigOutput{})
+	pulumi.RegisterOutputType(ElastigroupShieldedInstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(OceanImportAutoUpdateOutput{})
 	pulumi.RegisterOutputType(OceanImportAutoUpdateArrayOutput{})
 	pulumi.RegisterOutputType(OceanImportAutoscalerOutput{})

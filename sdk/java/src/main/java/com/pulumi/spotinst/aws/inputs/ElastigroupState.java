@@ -739,7 +739,7 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Operation system type. Valid values: `&#34;Linux/UNIX&#34;`, `&#34;SUSE Linux&#34;`, `&#34;Windows&#34;`.
-     * For EC2 Classic instances:  `&#34;Linux/UNIX (Amazon VPC)&#34;`, `&#34;SUSE Linux (Amazon VPC)&#34;`, `&#34;Windows (Amazon VPC)&#34;`.
+     * For EC2 Classic instances: `&#34;SUSE Linux (Amazon VPC)&#34;`, `&#34;Windows (Amazon VPC)&#34;`.
      * 
      */
     @Import(name="product")
@@ -747,7 +747,7 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Operation system type. Valid values: `&#34;Linux/UNIX&#34;`, `&#34;SUSE Linux&#34;`, `&#34;Windows&#34;`.
-     * For EC2 Classic instances:  `&#34;Linux/UNIX (Amazon VPC)&#34;`, `&#34;SUSE Linux (Amazon VPC)&#34;`, `&#34;Windows (Amazon VPC)&#34;`.
+     * For EC2 Classic instances: `&#34;SUSE Linux (Amazon VPC)&#34;`, `&#34;Windows (Amazon VPC)&#34;`.
      * 
      */
     public Optional<Output<String>> product() {
@@ -2208,7 +2208,7 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param product Operation system type. Valid values: `&#34;Linux/UNIX&#34;`, `&#34;SUSE Linux&#34;`, `&#34;Windows&#34;`.
-         * For EC2 Classic instances:  `&#34;Linux/UNIX (Amazon VPC)&#34;`, `&#34;SUSE Linux (Amazon VPC)&#34;`, `&#34;Windows (Amazon VPC)&#34;`.
+         * For EC2 Classic instances: `&#34;SUSE Linux (Amazon VPC)&#34;`, `&#34;Windows (Amazon VPC)&#34;`.
          * 
          * @return builder
          * 
@@ -2220,7 +2220,7 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param product Operation system type. Valid values: `&#34;Linux/UNIX&#34;`, `&#34;SUSE Linux&#34;`, `&#34;Windows&#34;`.
-         * For EC2 Classic instances:  `&#34;Linux/UNIX (Amazon VPC)&#34;`, `&#34;SUSE Linux (Amazon VPC)&#34;`, `&#34;Windows (Amazon VPC)&#34;`.
+         * For EC2 Classic instances: `&#34;SUSE Linux (Amazon VPC)&#34;`, `&#34;Windows (Amazon VPC)&#34;`.
          * 
          * @return builder
          * 

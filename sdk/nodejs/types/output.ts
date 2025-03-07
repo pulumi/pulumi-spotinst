@@ -4641,6 +4641,17 @@ export namespace gcp {
         taskType: string;
     }
 
+    export interface ElastigroupShieldedInstanceConfig {
+        /**
+         * Default: false
+         */
+        enableIntegrityMonitoring?: boolean;
+        /**
+         * Default: false
+         */
+        enableSecureBoot?: boolean;
+    }
+
     export interface ElastigroupSubnet {
         /**
          * The region for the group of subnets.
@@ -4834,6 +4845,11 @@ export namespace gke {
     export interface ElastigroupScalingUpPolicyDimension {
         name: string;
         value?: string;
+    }
+
+    export interface ElastigroupShieldedInstanceConfig {
+        enableIntegrityMonitoring?: boolean;
+        enableSecureBoot?: boolean;
     }
 
     export interface OceanImportAutoUpdate {

@@ -130,6 +130,7 @@ export class Elastigroup extends pulumi.CustomResource {
     public readonly scalingDownPolicies!: pulumi.Output<outputs.gke.ElastigroupScalingDownPolicy[] | undefined>;
     public readonly scalingUpPolicies!: pulumi.Output<outputs.gke.ElastigroupScalingUpPolicy[] | undefined>;
     public readonly serviceAccount!: pulumi.Output<string | undefined>;
+    public readonly shieldedInstanceConfig!: pulumi.Output<outputs.gke.ElastigroupShieldedInstanceConfig | undefined>;
     public readonly shouldUtilizeCommitments!: pulumi.Output<boolean | undefined>;
     public readonly shutdownScript!: pulumi.Output<string | undefined>;
     public readonly startupScript!: pulumi.Output<string | undefined>;
@@ -179,6 +180,7 @@ export class Elastigroup extends pulumi.CustomResource {
             resourceInputs["scalingDownPolicies"] = state ? state.scalingDownPolicies : undefined;
             resourceInputs["scalingUpPolicies"] = state ? state.scalingUpPolicies : undefined;
             resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
+            resourceInputs["shieldedInstanceConfig"] = state ? state.shieldedInstanceConfig : undefined;
             resourceInputs["shouldUtilizeCommitments"] = state ? state.shouldUtilizeCommitments : undefined;
             resourceInputs["shutdownScript"] = state ? state.shutdownScript : undefined;
             resourceInputs["startupScript"] = state ? state.startupScript : undefined;
@@ -222,6 +224,7 @@ export class Elastigroup extends pulumi.CustomResource {
             resourceInputs["scalingDownPolicies"] = args ? args.scalingDownPolicies : undefined;
             resourceInputs["scalingUpPolicies"] = args ? args.scalingUpPolicies : undefined;
             resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
+            resourceInputs["shieldedInstanceConfig"] = args ? args.shieldedInstanceConfig : undefined;
             resourceInputs["shouldUtilizeCommitments"] = args ? args.shouldUtilizeCommitments : undefined;
             resourceInputs["shutdownScript"] = args ? args.shutdownScript : undefined;
             resourceInputs["startupScript"] = args ? args.startupScript : undefined;
@@ -270,6 +273,7 @@ export interface ElastigroupState {
     scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupScalingDownPolicy>[]>;
     scalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupScalingUpPolicy>[]>;
     serviceAccount?: pulumi.Input<string>;
+    shieldedInstanceConfig?: pulumi.Input<inputs.gke.ElastigroupShieldedInstanceConfig>;
     shouldUtilizeCommitments?: pulumi.Input<boolean>;
     shutdownScript?: pulumi.Input<string>;
     startupScript?: pulumi.Input<string>;
@@ -314,6 +318,7 @@ export interface ElastigroupArgs {
     scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupScalingDownPolicy>[]>;
     scalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupScalingUpPolicy>[]>;
     serviceAccount?: pulumi.Input<string>;
+    shieldedInstanceConfig?: pulumi.Input<inputs.gke.ElastigroupShieldedInstanceConfig>;
     shouldUtilizeCommitments?: pulumi.Input<boolean>;
     shutdownScript?: pulumi.Input<string>;
     startupScript?: pulumi.Input<string>;

@@ -101,6 +101,10 @@ import (
 //						},
 //					},
 //				},
+//				ShieldedInstanceConfig: &gcp.ElastigroupShieldedInstanceConfigArgs{
+//					EnableSecureBoot:          pulumi.Bool(true),
+//					EnableIntegrityMonitoring: pulumi.Bool(false),
+//				},
 //				NetworkInterfaces: gcp.ElastigroupNetworkInterfaceArray{
 //					&gcp.ElastigroupNetworkInterfaceArgs{
 //						Network: pulumi.String("spot-network"),
@@ -221,6 +225,8 @@ type Elastigroup struct {
 	ScheduledTasks       ElastigroupScheduledTaskArrayOutput       `pulumi:"scheduledTasks"`
 	// The email of the service account in which the group instances will be launched.
 	ServiceAccount pulumi.StringPtrOutput `pulumi:"serviceAccount"`
+	// You can use secure boot when you launch VMs using Elastigroup. This helps you comply with your security policies. In the instance configuration, use ‘secureBootEnabled’ set to True to enforce UEFI with secure boot. Elastigroup provisions VMs with secure boot, as long as the images supports UEFI.
+	ShieldedInstanceConfig ElastigroupShieldedInstanceConfigPtrOutput `pulumi:"shieldedInstanceConfig"`
 	// Enable committed use discounts utilization.
 	ShouldUtilizeCommitments pulumi.BoolPtrOutput `pulumi:"shouldUtilizeCommitments"`
 	// The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
@@ -328,6 +334,8 @@ type elastigroupState struct {
 	ScheduledTasks       []ElastigroupScheduledTask       `pulumi:"scheduledTasks"`
 	// The email of the service account in which the group instances will be launched.
 	ServiceAccount *string `pulumi:"serviceAccount"`
+	// You can use secure boot when you launch VMs using Elastigroup. This helps you comply with your security policies. In the instance configuration, use ‘secureBootEnabled’ set to True to enforce UEFI with secure boot. Elastigroup provisions VMs with secure boot, as long as the images supports UEFI.
+	ShieldedInstanceConfig *ElastigroupShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
 	// Enable committed use discounts utilization.
 	ShouldUtilizeCommitments *bool `pulumi:"shouldUtilizeCommitments"`
 	// The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
@@ -403,6 +411,8 @@ type ElastigroupState struct {
 	ScheduledTasks       ElastigroupScheduledTaskArrayInput
 	// The email of the service account in which the group instances will be launched.
 	ServiceAccount pulumi.StringPtrInput
+	// You can use secure boot when you launch VMs using Elastigroup. This helps you comply with your security policies. In the instance configuration, use ‘secureBootEnabled’ set to True to enforce UEFI with secure boot. Elastigroup provisions VMs with secure boot, as long as the images supports UEFI.
+	ShieldedInstanceConfig ElastigroupShieldedInstanceConfigPtrInput
 	// Enable committed use discounts utilization.
 	ShouldUtilizeCommitments pulumi.BoolPtrInput
 	// The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
@@ -482,6 +492,8 @@ type elastigroupArgs struct {
 	ScheduledTasks       []ElastigroupScheduledTask       `pulumi:"scheduledTasks"`
 	// The email of the service account in which the group instances will be launched.
 	ServiceAccount *string `pulumi:"serviceAccount"`
+	// You can use secure boot when you launch VMs using Elastigroup. This helps you comply with your security policies. In the instance configuration, use ‘secureBootEnabled’ set to True to enforce UEFI with secure boot. Elastigroup provisions VMs with secure boot, as long as the images supports UEFI.
+	ShieldedInstanceConfig *ElastigroupShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
 	// Enable committed use discounts utilization.
 	ShouldUtilizeCommitments *bool `pulumi:"shouldUtilizeCommitments"`
 	// The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
@@ -558,6 +570,8 @@ type ElastigroupArgs struct {
 	ScheduledTasks       ElastigroupScheduledTaskArrayInput
 	// The email of the service account in which the group instances will be launched.
 	ServiceAccount pulumi.StringPtrInput
+	// You can use secure boot when you launch VMs using Elastigroup. This helps you comply with your security policies. In the instance configuration, use ‘secureBootEnabled’ set to True to enforce UEFI with secure boot. Elastigroup provisions VMs with secure boot, as long as the images supports UEFI.
+	ShieldedInstanceConfig ElastigroupShieldedInstanceConfigPtrInput
 	// Enable committed use discounts utilization.
 	ShouldUtilizeCommitments pulumi.BoolPtrInput
 	// The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
@@ -822,6 +836,11 @@ func (o ElastigroupOutput) ScheduledTasks() ElastigroupScheduledTaskArrayOutput 
 // The email of the service account in which the group instances will be launched.
 func (o ElastigroupOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.StringPtrOutput { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+// You can use secure boot when you launch VMs using Elastigroup. This helps you comply with your security policies. In the instance configuration, use ‘secureBootEnabled’ set to True to enforce UEFI with secure boot. Elastigroup provisions VMs with secure boot, as long as the images supports UEFI.
+func (o ElastigroupOutput) ShieldedInstanceConfig() ElastigroupShieldedInstanceConfigPtrOutput {
+	return o.ApplyT(func(v *Elastigroup) ElastigroupShieldedInstanceConfigPtrOutput { return v.ShieldedInstanceConfig }).(ElastigroupShieldedInstanceConfigPtrOutput)
 }
 
 // Enable committed use discounts utilization.
