@@ -774,6 +774,9 @@
                     "scheduled_task": {
                         "maxItemsOne": false
                     },
+                    "shielded_instance_config": {
+                        "maxItemsOne": true
+                    },
                     "subnets": {
                         "maxItemsOne": false,
                         "elem": {
@@ -891,6 +894,9 @@
                                 }
                             }
                         }
+                    },
+                    "shielded_instance_config": {
+                        "maxItemsOne": true
                     },
                     "tags": {
                         "maxItemsOne": false
