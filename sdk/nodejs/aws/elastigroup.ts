@@ -337,7 +337,7 @@ export class Elastigroup extends pulumi.CustomResource {
     public readonly privateIps!: pulumi.Output<string[] | undefined>;
     /**
      * Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
-     * For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
+     * For EC2 Classic instances: `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
      */
     public readonly product!: pulumi.Output<string>;
     /**
@@ -784,7 +784,7 @@ export interface ElastigroupState {
     privateIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
-     * For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
+     * For EC2 Classic instances: `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
      */
     product?: pulumi.Input<string>;
     /**
@@ -1031,7 +1031,7 @@ export interface ElastigroupArgs {
     privateIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
-     * For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
+     * For EC2 Classic instances: `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
      */
     product: pulumi.Input<string>;
     /**

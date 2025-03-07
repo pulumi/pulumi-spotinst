@@ -19,6 +19,7 @@ import com.pulumi.spotinst.gcp.inputs.ElastigroupRevertToPreemptibleArgs;
 import com.pulumi.spotinst.gcp.inputs.ElastigroupScalingDownPolicyArgs;
 import com.pulumi.spotinst.gcp.inputs.ElastigroupScalingUpPolicyArgs;
 import com.pulumi.spotinst.gcp.inputs.ElastigroupScheduledTaskArgs;
+import com.pulumi.spotinst.gcp.inputs.ElastigroupShieldedInstanceConfigArgs;
 import com.pulumi.spotinst.gcp.inputs.ElastigroupSubnetArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -461,6 +462,21 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * You can use secure boot when you launch VMs using Elastigroup. This helps you comply with your security policies. In the instance configuration, use ‘secureBootEnabled’ set to True to enforce UEFI with secure boot. Elastigroup provisions VMs with secure boot, as long as the images supports UEFI.
+     * 
+     */
+    @Import(name="shieldedInstanceConfig")
+    private @Nullable Output<ElastigroupShieldedInstanceConfigArgs> shieldedInstanceConfig;
+
+    /**
+     * @return You can use secure boot when you launch VMs using Elastigroup. This helps you comply with your security policies. In the instance configuration, use ‘secureBootEnabled’ set to True to enforce UEFI with secure boot. Elastigroup provisions VMs with secure boot, as long as the images supports UEFI.
+     * 
+     */
+    public Optional<Output<ElastigroupShieldedInstanceConfigArgs>> shieldedInstanceConfig() {
+        return Optional.ofNullable(this.shieldedInstanceConfig);
+    }
+
+    /**
      * Enable committed use discounts utilization.
      * 
      */
@@ -580,6 +596,7 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         this.scalingUpPolicies = $.scalingUpPolicies;
         this.scheduledTasks = $.scheduledTasks;
         this.serviceAccount = $.serviceAccount;
+        this.shieldedInstanceConfig = $.shieldedInstanceConfig;
         this.shouldUtilizeCommitments = $.shouldUtilizeCommitments;
         this.shutdownScript = $.shutdownScript;
         this.startupScript = $.startupScript;
@@ -1298,6 +1315,27 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder serviceAccount(String serviceAccount) {
             return serviceAccount(Output.of(serviceAccount));
+        }
+
+        /**
+         * @param shieldedInstanceConfig You can use secure boot when you launch VMs using Elastigroup. This helps you comply with your security policies. In the instance configuration, use ‘secureBootEnabled’ set to True to enforce UEFI with secure boot. Elastigroup provisions VMs with secure boot, as long as the images supports UEFI.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shieldedInstanceConfig(@Nullable Output<ElastigroupShieldedInstanceConfigArgs> shieldedInstanceConfig) {
+            $.shieldedInstanceConfig = shieldedInstanceConfig;
+            return this;
+        }
+
+        /**
+         * @param shieldedInstanceConfig You can use secure boot when you launch VMs using Elastigroup. This helps you comply with your security policies. In the instance configuration, use ‘secureBootEnabled’ set to True to enforce UEFI with secure boot. Elastigroup provisions VMs with secure boot, as long as the images supports UEFI.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shieldedInstanceConfig(ElastigroupShieldedInstanceConfigArgs shieldedInstanceConfig) {
+            return shieldedInstanceConfig(Output.of(shieldedInstanceConfig));
         }
 
         /**

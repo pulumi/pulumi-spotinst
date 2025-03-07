@@ -282,7 +282,7 @@ type Elastigroup struct {
 	PreferredAvailabilityZones pulumi.StringArrayOutput `pulumi:"preferredAvailabilityZones"`
 	PrivateIps                 pulumi.StringArrayOutput `pulumi:"privateIps"`
 	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
-	// For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
+	// For EC2 Classic instances: `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
 	Product pulumi.StringOutput `pulumi:"product"`
 	// The AWS region your group will be created in.
 	// Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
@@ -467,7 +467,7 @@ type elastigroupState struct {
 	PreferredAvailabilityZones []string `pulumi:"preferredAvailabilityZones"`
 	PrivateIps                 []string `pulumi:"privateIps"`
 	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
-	// For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
+	// For EC2 Classic instances: `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
 	Product *string `pulumi:"product"`
 	// The AWS region your group will be created in.
 	// Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
@@ -611,7 +611,7 @@ type ElastigroupState struct {
 	PreferredAvailabilityZones pulumi.StringArrayInput
 	PrivateIps                 pulumi.StringArrayInput
 	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
-	// For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
+	// For EC2 Classic instances: `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
 	Product pulumi.StringPtrInput
 	// The AWS region your group will be created in.
 	// Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
@@ -759,7 +759,7 @@ type elastigroupArgs struct {
 	PreferredAvailabilityZones []string `pulumi:"preferredAvailabilityZones"`
 	PrivateIps                 []string `pulumi:"privateIps"`
 	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
-	// For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
+	// For EC2 Classic instances: `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
 	Product string `pulumi:"product"`
 	// The AWS region your group will be created in.
 	// Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
@@ -904,7 +904,7 @@ type ElastigroupArgs struct {
 	PreferredAvailabilityZones pulumi.StringArrayInput
 	PrivateIps                 pulumi.StringArrayInput
 	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
-	// For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
+	// For EC2 Classic instances: `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
 	Product pulumi.StringInput
 	// The AWS region your group will be created in.
 	// Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
@@ -1308,7 +1308,7 @@ func (o ElastigroupOutput) PrivateIps() pulumi.StringArrayOutput {
 }
 
 // Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
-// For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
+// For EC2 Classic instances: `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
 func (o ElastigroupOutput) Product() pulumi.StringOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.StringOutput { return v.Product }).(pulumi.StringOutput)
 }

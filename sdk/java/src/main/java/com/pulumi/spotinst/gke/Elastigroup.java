@@ -22,6 +22,7 @@ import com.pulumi.spotinst.gke.outputs.ElastigroupNetworkInterface;
 import com.pulumi.spotinst.gke.outputs.ElastigroupRevertToPreemptible;
 import com.pulumi.spotinst.gke.outputs.ElastigroupScalingDownPolicy;
 import com.pulumi.spotinst.gke.outputs.ElastigroupScalingUpPolicy;
+import com.pulumi.spotinst.gke.outputs.ElastigroupShieldedInstanceConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -311,6 +312,12 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<String>> serviceAccount() {
         return Codegen.optional(this.serviceAccount);
+    }
+    @Export(name="shieldedInstanceConfig", refs={ElastigroupShieldedInstanceConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ElastigroupShieldedInstanceConfig> shieldedInstanceConfig;
+
+    public Output<Optional<ElastigroupShieldedInstanceConfig>> shieldedInstanceConfig() {
+        return Codegen.optional(this.shieldedInstanceConfig);
     }
     @Export(name="shouldUtilizeCommitments", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> shouldUtilizeCommitments;

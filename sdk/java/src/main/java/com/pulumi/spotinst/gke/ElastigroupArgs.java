@@ -18,6 +18,7 @@ import com.pulumi.spotinst.gke.inputs.ElastigroupNetworkInterfaceArgs;
 import com.pulumi.spotinst.gke.inputs.ElastigroupRevertToPreemptibleArgs;
 import com.pulumi.spotinst.gke.inputs.ElastigroupScalingDownPolicyArgs;
 import com.pulumi.spotinst.gke.inputs.ElastigroupScalingUpPolicyArgs;
+import com.pulumi.spotinst.gke.inputs.ElastigroupShieldedInstanceConfigArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -260,6 +261,13 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.serviceAccount);
     }
 
+    @Import(name="shieldedInstanceConfig")
+    private @Nullable Output<ElastigroupShieldedInstanceConfigArgs> shieldedInstanceConfig;
+
+    public Optional<Output<ElastigroupShieldedInstanceConfigArgs>> shieldedInstanceConfig() {
+        return Optional.ofNullable(this.shieldedInstanceConfig);
+    }
+
     @Import(name="shouldUtilizeCommitments")
     private @Nullable Output<Boolean> shouldUtilizeCommitments;
 
@@ -322,6 +330,7 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         this.scalingDownPolicies = $.scalingDownPolicies;
         this.scalingUpPolicies = $.scalingUpPolicies;
         this.serviceAccount = $.serviceAccount;
+        this.shieldedInstanceConfig = $.shieldedInstanceConfig;
         this.shouldUtilizeCommitments = $.shouldUtilizeCommitments;
         this.shutdownScript = $.shutdownScript;
         this.startupScript = $.startupScript;
@@ -687,6 +696,15 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder serviceAccount(String serviceAccount) {
             return serviceAccount(Output.of(serviceAccount));
+        }
+
+        public Builder shieldedInstanceConfig(@Nullable Output<ElastigroupShieldedInstanceConfigArgs> shieldedInstanceConfig) {
+            $.shieldedInstanceConfig = shieldedInstanceConfig;
+            return this;
+        }
+
+        public Builder shieldedInstanceConfig(ElastigroupShieldedInstanceConfigArgs shieldedInstanceConfig) {
+            return shieldedInstanceConfig(Output.of(shieldedInstanceConfig));
         }
 
         public Builder shouldUtilizeCommitments(@Nullable Output<Boolean> shouldUtilizeCommitments) {

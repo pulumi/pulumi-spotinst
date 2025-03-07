@@ -4637,6 +4637,17 @@ export namespace gcp {
         taskType: pulumi.Input<string>;
     }
 
+    export interface ElastigroupShieldedInstanceConfig {
+        /**
+         * Default: false
+         */
+        enableIntegrityMonitoring?: pulumi.Input<boolean>;
+        /**
+         * Default: false
+         */
+        enableSecureBoot?: pulumi.Input<boolean>;
+    }
+
     export interface ElastigroupSubnet {
         /**
          * The region for the group of subnets.
@@ -4829,6 +4840,11 @@ export namespace gke {
     export interface ElastigroupScalingUpPolicyDimension {
         name: pulumi.Input<string>;
         value?: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupShieldedInstanceConfig {
+        enableIntegrityMonitoring?: pulumi.Input<boolean>;
+        enableSecureBoot?: pulumi.Input<boolean>;
     }
 
     export interface OceanImportAutoUpdate {

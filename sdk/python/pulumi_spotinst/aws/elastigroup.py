@@ -110,7 +110,7 @@ class ElastigroupArgs:
         :param pulumi.Input[bool] fallback_to_ondemand: In a case of no Spot instances available, Elastigroup will launch on-demand instances instead.
         :param pulumi.Input[str] orientation: Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
         :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
-               For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
+               For EC2 Classic instances: `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: A list of associated security group IDS.
         :param pulumi.Input[bool] auto_healing: Auto-healing replacement won't be triggered if this parameter value is "false". In a case of a stateful group - no recycling will start if this parameter value is "false".
         :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zones: List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
@@ -359,7 +359,7 @@ class ElastigroupArgs:
     def product(self) -> pulumi.Input[str]:
         """
         Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
-        For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
+        For EC2 Classic instances: `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         """
         return pulumi.get(self, "product")
 
@@ -1372,7 +1372,7 @@ class _ElastigroupState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_availability_zones: The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
                Note: Must be a sublist of `availability_zones` and `orientation` value must not be `"equalAzDistribution"`.
         :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
-               For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
+               For EC2 Classic instances: `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         :param pulumi.Input[str] region: The AWS region your group will be created in.
                Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupResourceRequirementArgs']]] resource_requirements: Required instance attributes. Instance types will be selected based on these requirements.
@@ -2193,7 +2193,7 @@ class _ElastigroupState:
     def product(self) -> Optional[pulumi.Input[str]]:
         """
         Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
-        For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
+        For EC2 Classic instances: `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         """
         return pulumi.get(self, "product")
 
@@ -2741,7 +2741,7 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_availability_zones: The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
                Note: Must be a sublist of `availability_zones` and `orientation` value must not be `"equalAzDistribution"`.
         :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
-               For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
+               For EC2 Classic instances: `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         :param pulumi.Input[str] region: The AWS region your group will be created in.
                Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
         :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupResourceRequirementArgs', 'ElastigroupResourceRequirementArgsDict']]]] resource_requirements: Required instance attributes. Instance types will be selected based on these requirements.
@@ -3242,7 +3242,7 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_availability_zones: The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
                Note: Must be a sublist of `availability_zones` and `orientation` value must not be `"equalAzDistribution"`.
         :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
-               For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
+               For EC2 Classic instances: `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         :param pulumi.Input[str] region: The AWS region your group will be created in.
                Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
         :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupResourceRequirementArgs', 'ElastigroupResourceRequirementArgsDict']]]] resource_requirements: Required instance attributes. Instance types will be selected based on these requirements.
@@ -3752,7 +3752,7 @@ class Elastigroup(pulumi.CustomResource):
     def product(self) -> pulumi.Output[str]:
         """
         Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
-        For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
+        For EC2 Classic instances: `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         """
         return pulumi.get(self, "product")
 

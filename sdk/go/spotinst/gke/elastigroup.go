@@ -128,6 +128,7 @@ type Elastigroup struct {
 	ScalingDownPolicies       ElastigroupScalingDownPolicyArrayOutput    `pulumi:"scalingDownPolicies"`
 	ScalingUpPolicies         ElastigroupScalingUpPolicyArrayOutput      `pulumi:"scalingUpPolicies"`
 	ServiceAccount            pulumi.StringPtrOutput                     `pulumi:"serviceAccount"`
+	ShieldedInstanceConfig    ElastigroupShieldedInstanceConfigPtrOutput `pulumi:"shieldedInstanceConfig"`
 	ShouldUtilizeCommitments  pulumi.BoolPtrOutput                       `pulumi:"shouldUtilizeCommitments"`
 	ShutdownScript            pulumi.StringPtrOutput                     `pulumi:"shutdownScript"`
 	StartupScript             pulumi.StringPtrOutput                     `pulumi:"startupScript"`
@@ -202,6 +203,7 @@ type elastigroupState struct {
 	ScalingDownPolicies       []ElastigroupScalingDownPolicy     `pulumi:"scalingDownPolicies"`
 	ScalingUpPolicies         []ElastigroupScalingUpPolicy       `pulumi:"scalingUpPolicies"`
 	ServiceAccount            *string                            `pulumi:"serviceAccount"`
+	ShieldedInstanceConfig    *ElastigroupShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
 	ShouldUtilizeCommitments  *bool                              `pulumi:"shouldUtilizeCommitments"`
 	ShutdownScript            *string                            `pulumi:"shutdownScript"`
 	StartupScript             *string                            `pulumi:"startupScript"`
@@ -241,6 +243,7 @@ type ElastigroupState struct {
 	ScalingDownPolicies       ElastigroupScalingDownPolicyArrayInput
 	ScalingUpPolicies         ElastigroupScalingUpPolicyArrayInput
 	ServiceAccount            pulumi.StringPtrInput
+	ShieldedInstanceConfig    ElastigroupShieldedInstanceConfigPtrInput
 	ShouldUtilizeCommitments  pulumi.BoolPtrInput
 	ShutdownScript            pulumi.StringPtrInput
 	StartupScript             pulumi.StringPtrInput
@@ -284,6 +287,7 @@ type elastigroupArgs struct {
 	ScalingDownPolicies       []ElastigroupScalingDownPolicy     `pulumi:"scalingDownPolicies"`
 	ScalingUpPolicies         []ElastigroupScalingUpPolicy       `pulumi:"scalingUpPolicies"`
 	ServiceAccount            *string                            `pulumi:"serviceAccount"`
+	ShieldedInstanceConfig    *ElastigroupShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
 	ShouldUtilizeCommitments  *bool                              `pulumi:"shouldUtilizeCommitments"`
 	ShutdownScript            *string                            `pulumi:"shutdownScript"`
 	StartupScript             *string                            `pulumi:"startupScript"`
@@ -324,6 +328,7 @@ type ElastigroupArgs struct {
 	ScalingDownPolicies       ElastigroupScalingDownPolicyArrayInput
 	ScalingUpPolicies         ElastigroupScalingUpPolicyArrayInput
 	ServiceAccount            pulumi.StringPtrInput
+	ShieldedInstanceConfig    ElastigroupShieldedInstanceConfigPtrInput
 	ShouldUtilizeCommitments  pulumi.BoolPtrInput
 	ShutdownScript            pulumi.StringPtrInput
 	StartupScript             pulumi.StringPtrInput
@@ -540,6 +545,10 @@ func (o ElastigroupOutput) ScalingUpPolicies() ElastigroupScalingUpPolicyArrayOu
 
 func (o ElastigroupOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.StringPtrOutput { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupOutput) ShieldedInstanceConfig() ElastigroupShieldedInstanceConfigPtrOutput {
+	return o.ApplyT(func(v *Elastigroup) ElastigroupShieldedInstanceConfigPtrOutput { return v.ShieldedInstanceConfig }).(ElastigroupShieldedInstanceConfigPtrOutput)
 }
 
 func (o ElastigroupOutput) ShouldUtilizeCommitments() pulumi.BoolPtrOutput {

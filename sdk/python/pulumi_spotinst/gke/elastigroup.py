@@ -52,6 +52,7 @@ class ElastigroupArgs:
                  scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]] = None,
                  scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
+                 shielded_instance_config: Optional[pulumi.Input['ElastigroupShieldedInstanceConfigArgs']] = None,
                  should_utilize_commitments: Optional[pulumi.Input[bool]] = None,
                  shutdown_script: Optional[pulumi.Input[str]] = None,
                  startup_script: Optional[pulumi.Input[str]] = None,
@@ -122,6 +123,8 @@ class ElastigroupArgs:
             pulumi.set(__self__, "scaling_up_policies", scaling_up_policies)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
+        if shielded_instance_config is not None:
+            pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
         if should_utilize_commitments is not None:
             pulumi.set(__self__, "should_utilize_commitments", should_utilize_commitments)
         if shutdown_script is not None:
@@ -412,6 +415,15 @@ class ElastigroupArgs:
         pulumi.set(self, "service_account", value)
 
     @property
+    @pulumi.getter(name="shieldedInstanceConfig")
+    def shielded_instance_config(self) -> Optional[pulumi.Input['ElastigroupShieldedInstanceConfigArgs']]:
+        return pulumi.get(self, "shielded_instance_config")
+
+    @shielded_instance_config.setter
+    def shielded_instance_config(self, value: Optional[pulumi.Input['ElastigroupShieldedInstanceConfigArgs']]):
+        pulumi.set(self, "shielded_instance_config", value)
+
+    @property
     @pulumi.getter(name="shouldUtilizeCommitments")
     def should_utilize_commitments(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "should_utilize_commitments")
@@ -482,6 +494,7 @@ class _ElastigroupState:
                  scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]] = None,
                  scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
+                 shielded_instance_config: Optional[pulumi.Input['ElastigroupShieldedInstanceConfigArgs']] = None,
                  should_utilize_commitments: Optional[pulumi.Input[bool]] = None,
                  shutdown_script: Optional[pulumi.Input[str]] = None,
                  startup_script: Optional[pulumi.Input[str]] = None,
@@ -554,6 +567,8 @@ class _ElastigroupState:
             pulumi.set(__self__, "scaling_up_policies", scaling_up_policies)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
+        if shielded_instance_config is not None:
+            pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
         if should_utilize_commitments is not None:
             pulumi.set(__self__, "should_utilize_commitments", should_utilize_commitments)
         if shutdown_script is not None:
@@ -844,6 +859,15 @@ class _ElastigroupState:
         pulumi.set(self, "service_account", value)
 
     @property
+    @pulumi.getter(name="shieldedInstanceConfig")
+    def shielded_instance_config(self) -> Optional[pulumi.Input['ElastigroupShieldedInstanceConfigArgs']]:
+        return pulumi.get(self, "shielded_instance_config")
+
+    @shielded_instance_config.setter
+    def shielded_instance_config(self, value: Optional[pulumi.Input['ElastigroupShieldedInstanceConfigArgs']]):
+        pulumi.set(self, "shielded_instance_config", value)
+
+    @property
     @pulumi.getter(name="shouldUtilizeCommitments")
     def should_utilize_commitments(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "should_utilize_commitments")
@@ -916,6 +940,7 @@ class Elastigroup(pulumi.CustomResource):
                  scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingDownPolicyArgs', 'ElastigroupScalingDownPolicyArgsDict']]]]] = None,
                  scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingUpPolicyArgs', 'ElastigroupScalingUpPolicyArgsDict']]]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
+                 shielded_instance_config: Optional[pulumi.Input[Union['ElastigroupShieldedInstanceConfigArgs', 'ElastigroupShieldedInstanceConfigArgsDict']]] = None,
                  should_utilize_commitments: Optional[pulumi.Input[bool]] = None,
                  shutdown_script: Optional[pulumi.Input[str]] = None,
                  startup_script: Optional[pulumi.Input[str]] = None,
@@ -1098,6 +1123,7 @@ class Elastigroup(pulumi.CustomResource):
                  scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingDownPolicyArgs', 'ElastigroupScalingDownPolicyArgsDict']]]]] = None,
                  scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingUpPolicyArgs', 'ElastigroupScalingUpPolicyArgsDict']]]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
+                 shielded_instance_config: Optional[pulumi.Input[Union['ElastigroupShieldedInstanceConfigArgs', 'ElastigroupShieldedInstanceConfigArgsDict']]] = None,
                  should_utilize_commitments: Optional[pulumi.Input[bool]] = None,
                  shutdown_script: Optional[pulumi.Input[str]] = None,
                  startup_script: Optional[pulumi.Input[str]] = None,
@@ -1146,6 +1172,7 @@ class Elastigroup(pulumi.CustomResource):
             __props__.__dict__["scaling_down_policies"] = scaling_down_policies
             __props__.__dict__["scaling_up_policies"] = scaling_up_policies
             __props__.__dict__["service_account"] = service_account
+            __props__.__dict__["shielded_instance_config"] = shielded_instance_config
             __props__.__dict__["should_utilize_commitments"] = should_utilize_commitments
             __props__.__dict__["shutdown_script"] = shutdown_script
             __props__.__dict__["startup_script"] = startup_script
@@ -1191,6 +1218,7 @@ class Elastigroup(pulumi.CustomResource):
             scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingDownPolicyArgs', 'ElastigroupScalingDownPolicyArgsDict']]]]] = None,
             scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingUpPolicyArgs', 'ElastigroupScalingUpPolicyArgsDict']]]]] = None,
             service_account: Optional[pulumi.Input[str]] = None,
+            shielded_instance_config: Optional[pulumi.Input[Union['ElastigroupShieldedInstanceConfigArgs', 'ElastigroupShieldedInstanceConfigArgsDict']]] = None,
             should_utilize_commitments: Optional[pulumi.Input[bool]] = None,
             shutdown_script: Optional[pulumi.Input[str]] = None,
             startup_script: Optional[pulumi.Input[str]] = None,
@@ -1238,6 +1266,7 @@ class Elastigroup(pulumi.CustomResource):
         __props__.__dict__["scaling_down_policies"] = scaling_down_policies
         __props__.__dict__["scaling_up_policies"] = scaling_up_policies
         __props__.__dict__["service_account"] = service_account
+        __props__.__dict__["shielded_instance_config"] = shielded_instance_config
         __props__.__dict__["should_utilize_commitments"] = should_utilize_commitments
         __props__.__dict__["shutdown_script"] = shutdown_script
         __props__.__dict__["startup_script"] = startup_script
@@ -1399,6 +1428,11 @@ class Elastigroup(pulumi.CustomResource):
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "service_account")
+
+    @property
+    @pulumi.getter(name="shieldedInstanceConfig")
+    def shielded_instance_config(self) -> pulumi.Output[Optional['outputs.ElastigroupShieldedInstanceConfig']]:
+        return pulumi.get(self, "shielded_instance_config")
 
     @property
     @pulumi.getter(name="shouldUtilizeCommitments")

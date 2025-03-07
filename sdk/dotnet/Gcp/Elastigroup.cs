@@ -113,6 +113,11 @@ namespace Pulumi.SpotInst.Gcp
     ///                 },
     ///             },
     ///         },
+    ///         ShieldedInstanceConfig = new SpotInst.Gcp.Inputs.ElastigroupShieldedInstanceConfigArgs
+    ///         {
+    ///             EnableSecureBoot = true,
+    ///             EnableIntegrityMonitoring = false,
+    ///         },
     ///         NetworkInterfaces = new[]
     ///         {
     ///             new SpotInst.Gcp.Inputs.ElastigroupNetworkInterfaceArgs
@@ -350,6 +355,12 @@ namespace Pulumi.SpotInst.Gcp
         /// </summary>
         [Output("serviceAccount")]
         public Output<string?> ServiceAccount { get; private set; } = null!;
+
+        /// <summary>
+        /// You can use secure boot when you launch VMs using Elastigroup. This helps you comply with your security policies. In the instance configuration, use ‘secureBootEnabled’ set to True to enforce UEFI with secure boot. Elastigroup provisions VMs with secure boot, as long as the images supports UEFI.
+        /// </summary>
+        [Output("shieldedInstanceConfig")]
+        public Output<Outputs.ElastigroupShieldedInstanceConfig?> ShieldedInstanceConfig { get; private set; } = null!;
 
         /// <summary>
         /// Enable committed use discounts utilization.
@@ -686,6 +697,12 @@ namespace Pulumi.SpotInst.Gcp
         public Input<string>? ServiceAccount { get; set; }
 
         /// <summary>
+        /// You can use secure boot when you launch VMs using Elastigroup. This helps you comply with your security policies. In the instance configuration, use ‘secureBootEnabled’ set to True to enforce UEFI with secure boot. Elastigroup provisions VMs with secure boot, as long as the images supports UEFI.
+        /// </summary>
+        [Input("shieldedInstanceConfig")]
+        public Input<Inputs.ElastigroupShieldedInstanceConfigArgs>? ShieldedInstanceConfig { get; set; }
+
+        /// <summary>
         /// Enable committed use discounts utilization.
         /// </summary>
         [Input("shouldUtilizeCommitments")]
@@ -992,6 +1009,12 @@ namespace Pulumi.SpotInst.Gcp
         /// </summary>
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }
+
+        /// <summary>
+        /// You can use secure boot when you launch VMs using Elastigroup. This helps you comply with your security policies. In the instance configuration, use ‘secureBootEnabled’ set to True to enforce UEFI with secure boot. Elastigroup provisions VMs with secure boot, as long as the images supports UEFI.
+        /// </summary>
+        [Input("shieldedInstanceConfig")]
+        public Input<Inputs.ElastigroupShieldedInstanceConfigGetArgs>? ShieldedInstanceConfig { get; set; }
 
         /// <summary>
         /// Enable committed use discounts utilization.

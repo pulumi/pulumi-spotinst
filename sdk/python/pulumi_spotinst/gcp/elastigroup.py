@@ -56,6 +56,7 @@ class ElastigroupArgs:
                  scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScheduledTaskArgs']]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
+                 shielded_instance_config: Optional[pulumi.Input['ElastigroupShieldedInstanceConfigArgs']] = None,
                  should_utilize_commitments: Optional[pulumi.Input[bool]] = None,
                  shutdown_script: Optional[pulumi.Input[str]] = None,
                  startup_script: Optional[pulumi.Input[str]] = None,
@@ -88,6 +89,7 @@ class ElastigroupArgs:
         :param pulumi.Input[str] provisioning_model: Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupRevertToPreemptibleArgs']]] revert_to_preemptibles: Setting for revert to preemptible option.
         :param pulumi.Input[str] service_account: The email of the service account in which the group instances will be launched.
+        :param pulumi.Input['ElastigroupShieldedInstanceConfigArgs'] shielded_instance_config: You can use secure boot when you launch VMs using Elastigroup. This helps you comply with your security policies. In the instance configuration, use ‘secureBootEnabled’ set to True to enforce UEFI with secure boot. Elastigroup provisions VMs with secure boot, as long as the images supports UEFI.
         :param pulumi.Input[bool] should_utilize_commitments: Enable committed use discounts utilization.
         :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
         :param pulumi.Input[str] startup_script: Create and run your own startup scripts on your virtual machines to perform automated tasks every time your instance boots up.
@@ -166,6 +168,8 @@ class ElastigroupArgs:
             pulumi.set(__self__, "scheduled_tasks", scheduled_tasks)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
+        if shielded_instance_config is not None:
+            pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
         if should_utilize_commitments is not None:
             pulumi.set(__self__, "should_utilize_commitments", should_utilize_commitments)
         if shutdown_script is not None:
@@ -562,6 +566,18 @@ class ElastigroupArgs:
         pulumi.set(self, "service_account", value)
 
     @property
+    @pulumi.getter(name="shieldedInstanceConfig")
+    def shielded_instance_config(self) -> Optional[pulumi.Input['ElastigroupShieldedInstanceConfigArgs']]:
+        """
+        You can use secure boot when you launch VMs using Elastigroup. This helps you comply with your security policies. In the instance configuration, use ‘secureBootEnabled’ set to True to enforce UEFI with secure boot. Elastigroup provisions VMs with secure boot, as long as the images supports UEFI.
+        """
+        return pulumi.get(self, "shielded_instance_config")
+
+    @shielded_instance_config.setter
+    def shielded_instance_config(self, value: Optional[pulumi.Input['ElastigroupShieldedInstanceConfigArgs']]):
+        pulumi.set(self, "shielded_instance_config", value)
+
+    @property
     @pulumi.getter(name="shouldUtilizeCommitments")
     def should_utilize_commitments(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -669,6 +685,7 @@ class _ElastigroupState:
                  scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScheduledTaskArgs']]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
+                 shielded_instance_config: Optional[pulumi.Input['ElastigroupShieldedInstanceConfigArgs']] = None,
                  should_utilize_commitments: Optional[pulumi.Input[bool]] = None,
                  shutdown_script: Optional[pulumi.Input[str]] = None,
                  startup_script: Optional[pulumi.Input[str]] = None,
@@ -701,6 +718,7 @@ class _ElastigroupState:
         :param pulumi.Input[str] provisioning_model: Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupRevertToPreemptibleArgs']]] revert_to_preemptibles: Setting for revert to preemptible option.
         :param pulumi.Input[str] service_account: The email of the service account in which the group instances will be launched.
+        :param pulumi.Input['ElastigroupShieldedInstanceConfigArgs'] shielded_instance_config: You can use secure boot when you launch VMs using Elastigroup. This helps you comply with your security policies. In the instance configuration, use ‘secureBootEnabled’ set to True to enforce UEFI with secure boot. Elastigroup provisions VMs with secure boot, as long as the images supports UEFI.
         :param pulumi.Input[bool] should_utilize_commitments: Enable committed use discounts utilization.
         :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
         :param pulumi.Input[str] startup_script: Create and run your own startup scripts on your virtual machines to perform automated tasks every time your instance boots up.
@@ -780,6 +798,8 @@ class _ElastigroupState:
             pulumi.set(__self__, "scheduled_tasks", scheduled_tasks)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
+        if shielded_instance_config is not None:
+            pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
         if should_utilize_commitments is not None:
             pulumi.set(__self__, "should_utilize_commitments", should_utilize_commitments)
         if shutdown_script is not None:
@@ -1176,6 +1196,18 @@ class _ElastigroupState:
         pulumi.set(self, "service_account", value)
 
     @property
+    @pulumi.getter(name="shieldedInstanceConfig")
+    def shielded_instance_config(self) -> Optional[pulumi.Input['ElastigroupShieldedInstanceConfigArgs']]:
+        """
+        You can use secure boot when you launch VMs using Elastigroup. This helps you comply with your security policies. In the instance configuration, use ‘secureBootEnabled’ set to True to enforce UEFI with secure boot. Elastigroup provisions VMs with secure boot, as long as the images supports UEFI.
+        """
+        return pulumi.get(self, "shielded_instance_config")
+
+    @shielded_instance_config.setter
+    def shielded_instance_config(self, value: Optional[pulumi.Input['ElastigroupShieldedInstanceConfigArgs']]):
+        pulumi.set(self, "shielded_instance_config", value)
+
+    @property
     @pulumi.getter(name="shouldUtilizeCommitments")
     def should_utilize_commitments(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -1285,6 +1317,7 @@ class Elastigroup(pulumi.CustomResource):
                  scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingUpPolicyArgs', 'ElastigroupScalingUpPolicyArgsDict']]]]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScheduledTaskArgs', 'ElastigroupScheduledTaskArgsDict']]]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
+                 shielded_instance_config: Optional[pulumi.Input[Union['ElastigroupShieldedInstanceConfigArgs', 'ElastigroupShieldedInstanceConfigArgsDict']]] = None,
                  should_utilize_commitments: Optional[pulumi.Input[bool]] = None,
                  shutdown_script: Optional[pulumi.Input[str]] = None,
                  startup_script: Optional[pulumi.Input[str]] = None,
@@ -1358,6 +1391,10 @@ class Elastigroup(pulumi.CustomResource):
                     "source_image": "",
                 }],
             }],
+            shielded_instance_config={
+                "enable_secure_boot": True,
+                "enable_integrity_monitoring": False,
+            },
             network_interfaces=[{
                 "network": "spot-network",
             }],
@@ -1421,6 +1458,7 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[str] provisioning_model: Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
         :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupRevertToPreemptibleArgs', 'ElastigroupRevertToPreemptibleArgsDict']]]] revert_to_preemptibles: Setting for revert to preemptible option.
         :param pulumi.Input[str] service_account: The email of the service account in which the group instances will be launched.
+        :param pulumi.Input[Union['ElastigroupShieldedInstanceConfigArgs', 'ElastigroupShieldedInstanceConfigArgsDict']] shielded_instance_config: You can use secure boot when you launch VMs using Elastigroup. This helps you comply with your security policies. In the instance configuration, use ‘secureBootEnabled’ set to True to enforce UEFI with secure boot. Elastigroup provisions VMs with secure boot, as long as the images supports UEFI.
         :param pulumi.Input[bool] should_utilize_commitments: Enable committed use discounts utilization.
         :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
         :param pulumi.Input[str] startup_script: Create and run your own startup scripts on your virtual machines to perform automated tasks every time your instance boots up.
@@ -1499,6 +1537,10 @@ class Elastigroup(pulumi.CustomResource):
                     "source_image": "",
                 }],
             }],
+            shielded_instance_config={
+                "enable_secure_boot": True,
+                "enable_integrity_monitoring": False,
+            },
             network_interfaces=[{
                 "network": "spot-network",
             }],
@@ -1586,6 +1628,7 @@ class Elastigroup(pulumi.CustomResource):
                  scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingUpPolicyArgs', 'ElastigroupScalingUpPolicyArgsDict']]]]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScheduledTaskArgs', 'ElastigroupScheduledTaskArgsDict']]]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
+                 shielded_instance_config: Optional[pulumi.Input[Union['ElastigroupShieldedInstanceConfigArgs', 'ElastigroupShieldedInstanceConfigArgsDict']]] = None,
                  should_utilize_commitments: Optional[pulumi.Input[bool]] = None,
                  shutdown_script: Optional[pulumi.Input[str]] = None,
                  startup_script: Optional[pulumi.Input[str]] = None,
@@ -1638,6 +1681,7 @@ class Elastigroup(pulumi.CustomResource):
             __props__.__dict__["scaling_up_policies"] = scaling_up_policies
             __props__.__dict__["scheduled_tasks"] = scheduled_tasks
             __props__.__dict__["service_account"] = service_account
+            __props__.__dict__["shielded_instance_config"] = shielded_instance_config
             __props__.__dict__["should_utilize_commitments"] = should_utilize_commitments
             __props__.__dict__["shutdown_script"] = shutdown_script
             __props__.__dict__["startup_script"] = startup_script
@@ -1689,6 +1733,7 @@ class Elastigroup(pulumi.CustomResource):
             scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingUpPolicyArgs', 'ElastigroupScalingUpPolicyArgsDict']]]]] = None,
             scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScheduledTaskArgs', 'ElastigroupScheduledTaskArgsDict']]]]] = None,
             service_account: Optional[pulumi.Input[str]] = None,
+            shielded_instance_config: Optional[pulumi.Input[Union['ElastigroupShieldedInstanceConfigArgs', 'ElastigroupShieldedInstanceConfigArgsDict']]] = None,
             should_utilize_commitments: Optional[pulumi.Input[bool]] = None,
             shutdown_script: Optional[pulumi.Input[str]] = None,
             startup_script: Optional[pulumi.Input[str]] = None,
@@ -1726,6 +1771,7 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[str] provisioning_model: Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
         :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupRevertToPreemptibleArgs', 'ElastigroupRevertToPreemptibleArgsDict']]]] revert_to_preemptibles: Setting for revert to preemptible option.
         :param pulumi.Input[str] service_account: The email of the service account in which the group instances will be launched.
+        :param pulumi.Input[Union['ElastigroupShieldedInstanceConfigArgs', 'ElastigroupShieldedInstanceConfigArgsDict']] shielded_instance_config: You can use secure boot when you launch VMs using Elastigroup. This helps you comply with your security policies. In the instance configuration, use ‘secureBootEnabled’ set to True to enforce UEFI with secure boot. Elastigroup provisions VMs with secure boot, as long as the images supports UEFI.
         :param pulumi.Input[bool] should_utilize_commitments: Enable committed use discounts utilization.
         :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
         :param pulumi.Input[str] startup_script: Create and run your own startup scripts on your virtual machines to perform automated tasks every time your instance boots up.
@@ -1771,6 +1817,7 @@ class Elastigroup(pulumi.CustomResource):
         __props__.__dict__["scaling_up_policies"] = scaling_up_policies
         __props__.__dict__["scheduled_tasks"] = scheduled_tasks
         __props__.__dict__["service_account"] = service_account
+        __props__.__dict__["shielded_instance_config"] = shielded_instance_config
         __props__.__dict__["should_utilize_commitments"] = should_utilize_commitments
         __props__.__dict__["shutdown_script"] = shutdown_script
         __props__.__dict__["startup_script"] = startup_script
@@ -2020,6 +2067,14 @@ class Elastigroup(pulumi.CustomResource):
         The email of the service account in which the group instances will be launched.
         """
         return pulumi.get(self, "service_account")
+
+    @property
+    @pulumi.getter(name="shieldedInstanceConfig")
+    def shielded_instance_config(self) -> pulumi.Output[Optional['outputs.ElastigroupShieldedInstanceConfig']]:
+        """
+        You can use secure boot when you launch VMs using Elastigroup. This helps you comply with your security policies. In the instance configuration, use ‘secureBootEnabled’ set to True to enforce UEFI with secure boot. Elastigroup provisions VMs with secure boot, as long as the images supports UEFI.
+        """
+        return pulumi.get(self, "shielded_instance_config")
 
     @property
     @pulumi.getter(name="shouldUtilizeCommitments")

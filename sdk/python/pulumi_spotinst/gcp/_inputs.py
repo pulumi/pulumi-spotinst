@@ -59,6 +59,8 @@ __all__ = [
     'ElastigroupScalingUpPolicyDimensionArgsDict',
     'ElastigroupScheduledTaskArgs',
     'ElastigroupScheduledTaskArgsDict',
+    'ElastigroupShieldedInstanceConfigArgs',
+    'ElastigroupShieldedInstanceConfigArgsDict',
     'ElastigroupSubnetArgs',
     'ElastigroupSubnetArgsDict',
 ]
@@ -1914,6 +1916,58 @@ class ElastigroupScheduledTaskArgs:
     @target_capacity.setter
     def target_capacity(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "target_capacity", value)
+
+
+if not MYPY:
+    class ElastigroupShieldedInstanceConfigArgsDict(TypedDict):
+        enable_integrity_monitoring: NotRequired[pulumi.Input[bool]]
+        """
+        Default: false
+        """
+        enable_secure_boot: NotRequired[pulumi.Input[bool]]
+        """
+        Default: false
+        """
+elif False:
+    ElastigroupShieldedInstanceConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ElastigroupShieldedInstanceConfigArgs:
+    def __init__(__self__, *,
+                 enable_integrity_monitoring: Optional[pulumi.Input[bool]] = None,
+                 enable_secure_boot: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enable_integrity_monitoring: Default: false
+        :param pulumi.Input[bool] enable_secure_boot: Default: false
+        """
+        if enable_integrity_monitoring is not None:
+            pulumi.set(__self__, "enable_integrity_monitoring", enable_integrity_monitoring)
+        if enable_secure_boot is not None:
+            pulumi.set(__self__, "enable_secure_boot", enable_secure_boot)
+
+    @property
+    @pulumi.getter(name="enableIntegrityMonitoring")
+    def enable_integrity_monitoring(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Default: false
+        """
+        return pulumi.get(self, "enable_integrity_monitoring")
+
+    @enable_integrity_monitoring.setter
+    def enable_integrity_monitoring(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_integrity_monitoring", value)
+
+    @property
+    @pulumi.getter(name="enableSecureBoot")
+    def enable_secure_boot(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Default: false
+        """
+        return pulumi.get(self, "enable_secure_boot")
+
+    @enable_secure_boot.setter
+    def enable_secure_boot(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_secure_boot", value)
 
 
 if not MYPY:

@@ -72,6 +72,10 @@ import * as utilities from "../utilities";
  *             sourceImage: "",
  *         }],
  *     }],
+ *     shieldedInstanceConfig: {
+ *         enableSecureBoot: true,
+ *         enableIntegrityMonitoring: false,
+ *     },
  *     networkInterfaces: [{
  *         network: "spot-network",
  *     }],
@@ -242,6 +246,10 @@ export class Elastigroup extends pulumi.CustomResource {
      */
     public readonly serviceAccount!: pulumi.Output<string | undefined>;
     /**
+     * You can use secure boot when you launch VMs using Elastigroup. This helps you comply with your security policies. In the instance configuration, use ‘secureBootEnabled’ set to True to enforce UEFI with secure boot. Elastigroup provisions VMs with secure boot, as long as the images supports UEFI.
+     */
+    public readonly shieldedInstanceConfig!: pulumi.Output<outputs.gcp.ElastigroupShieldedInstanceConfig | undefined>;
+    /**
      * Enable committed use discounts utilization.
      */
     public readonly shouldUtilizeCommitments!: pulumi.Output<boolean | undefined>;
@@ -311,6 +319,7 @@ export class Elastigroup extends pulumi.CustomResource {
             resourceInputs["scalingUpPolicies"] = state ? state.scalingUpPolicies : undefined;
             resourceInputs["scheduledTasks"] = state ? state.scheduledTasks : undefined;
             resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
+            resourceInputs["shieldedInstanceConfig"] = state ? state.shieldedInstanceConfig : undefined;
             resourceInputs["shouldUtilizeCommitments"] = state ? state.shouldUtilizeCommitments : undefined;
             resourceInputs["shutdownScript"] = state ? state.shutdownScript : undefined;
             resourceInputs["startupScript"] = state ? state.startupScript : undefined;
@@ -357,6 +366,7 @@ export class Elastigroup extends pulumi.CustomResource {
             resourceInputs["scalingUpPolicies"] = args ? args.scalingUpPolicies : undefined;
             resourceInputs["scheduledTasks"] = args ? args.scheduledTasks : undefined;
             resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
+            resourceInputs["shieldedInstanceConfig"] = args ? args.shieldedInstanceConfig : undefined;
             resourceInputs["shouldUtilizeCommitments"] = args ? args.shouldUtilizeCommitments : undefined;
             resourceInputs["shutdownScript"] = args ? args.shutdownScript : undefined;
             resourceInputs["startupScript"] = args ? args.startupScript : undefined;
@@ -476,6 +486,10 @@ export interface ElastigroupState {
      * The email of the service account in which the group instances will be launched.
      */
     serviceAccount?: pulumi.Input<string>;
+    /**
+     * You can use secure boot when you launch VMs using Elastigroup. This helps you comply with your security policies. In the instance configuration, use ‘secureBootEnabled’ set to True to enforce UEFI with secure boot. Elastigroup provisions VMs with secure boot, as long as the images supports UEFI.
+     */
+    shieldedInstanceConfig?: pulumi.Input<inputs.gcp.ElastigroupShieldedInstanceConfig>;
     /**
      * Enable committed use discounts utilization.
      */
@@ -606,6 +620,10 @@ export interface ElastigroupArgs {
      * The email of the service account in which the group instances will be launched.
      */
     serviceAccount?: pulumi.Input<string>;
+    /**
+     * You can use secure boot when you launch VMs using Elastigroup. This helps you comply with your security policies. In the instance configuration, use ‘secureBootEnabled’ set to True to enforce UEFI with secure boot. Elastigroup provisions VMs with secure boot, as long as the images supports UEFI.
+     */
+    shieldedInstanceConfig?: pulumi.Input<inputs.gcp.ElastigroupShieldedInstanceConfig>;
     /**
      * Enable committed use discounts utilization.
      */
