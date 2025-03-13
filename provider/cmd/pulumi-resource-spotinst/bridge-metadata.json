@@ -28,7 +28,14 @@
                 "current": "spotinst:aws/elastigroup:Elastigroup",
                 "fields": {
                     "availability_zones": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "subnet_ids": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "cpu_options": {
                         "maxItemsOne": true
