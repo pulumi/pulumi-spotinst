@@ -27,7 +27,10 @@ class ElastiGroupStack : Stack
                 sg.Id
             },
             Region = "us-west-2",
-            AvailabilityZones = azs.Result.Names,
+            AvailabilityZones = azs.Result.Names.Select((name, i) => new SpotInst.Aws.Inputs.ElastigroupAvailabilityZoneArgs
+            {
+                AvailabilityZonesName = name,
+            }).ToArray(),
             ImageId = "ami-e251209a",
         });
     }

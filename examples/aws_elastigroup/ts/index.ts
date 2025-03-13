@@ -1,10 +1,9 @@
 import * as spotinst from "@pulumi/spotinst";
-import * as pulumi from "@pulumi/pulumi";
 import * as aws from "@pulumi/aws";
 
 const sg = new aws.ec2.SecurityGroup("my-security-group");
 
-const azs = pulumi.output(aws.getAvailabilityZones()).names;
+const azs = aws.getAvailabilityZonesOutput().names;
 
 const elastiGroup = new spotinst.aws.Elastigroup("my-elastigroup", {
     fallbackToOndemand: false,
@@ -13,8 +12,12 @@ const elastiGroup = new spotinst.aws.Elastigroup("my-elastigroup", {
     orientation: "balanced",
     product: "Linux/UNIX",
     securityGroups: [sg.id],
+    availabilityZones: azs.apply(az => az.map(name => {
+        return {
+            availabilityZonesName: name,
+        }
+    })),
     region: "us-west-2",
-    availabilityZones: azs,
     imageId: "ami-e251209a",
 });
 
