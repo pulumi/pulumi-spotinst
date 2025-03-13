@@ -26,7 +26,7 @@ class ElastigroupArgs:
                  product: pulumi.Input[str],
                  security_groups: pulumi.Input[Sequence[pulumi.Input[str]]],
                  auto_healing: Optional[pulumi.Input[bool]] = None,
-                 availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAvailabilityZoneArgs']]]] = None,
                  block_devices_mode: Optional[pulumi.Input[str]] = None,
                  capacity_unit: Optional[pulumi.Input[str]] = None,
                  consider_od_pricing: Optional[pulumi.Input[bool]] = None,
@@ -113,9 +113,7 @@ class ElastigroupArgs:
                For EC2 Classic instances: `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: A list of associated security group IDS.
         :param pulumi.Input[bool] auto_healing: Auto-healing replacement won't be triggered if this parameter value is "false". In a case of a stateful group - no recycling will start if this parameter value is "false".
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zones: List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
-               Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
-               `availability_zones = ["us-east-1a:subnet-123456:ClusterI03"]`
+        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupAvailabilityZoneArgs']]] availability_zones: One or more availability Zones for the group. When this parameter is set, compute.subnetIds should be left unused.
         :param pulumi.Input[str] capacity_unit: The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
         :param pulumi.Input[str] cpu_credits: Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
         :param pulumi.Input['ElastigroupCpuOptionsArgs'] cpu_options: The CPU options for the instances that are launched within the group:
@@ -312,6 +310,9 @@ class ElastigroupArgs:
         if stateful_instance_actions is not None:
             pulumi.set(__self__, "stateful_instance_actions", stateful_instance_actions)
         if subnet_ids is not None:
+            warnings.warn("""This field will soon be deprecated and handled by availability_zones""", DeprecationWarning)
+            pulumi.log.warn("""subnet_ids is deprecated: This field will soon be deprecated and handled by availability_zones""")
+        if subnet_ids is not None:
             pulumi.set(__self__, "subnet_ids", subnet_ids)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
@@ -393,16 +394,14 @@ class ElastigroupArgs:
 
     @property
     @pulumi.getter(name="availabilityZones")
-    def availability_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def availability_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAvailabilityZoneArgs']]]]:
         """
-        List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
-        Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
-        `availability_zones = ["us-east-1a:subnet-123456:ClusterI03"]`
+        One or more availability Zones for the group. When this parameter is set, compute.subnetIds should be left unused.
         """
         return pulumi.get(self, "availability_zones")
 
     @availability_zones.setter
-    def availability_zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def availability_zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAvailabilityZoneArgs']]]]):
         pulumi.set(self, "availability_zones", value)
 
     @property
@@ -1145,6 +1144,7 @@ class ElastigroupArgs:
 
     @property
     @pulumi.getter(name="subnetIds")
+    @_utilities.deprecated("""This field will soon be deprecated and handled by availability_zones""")
     def subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of Strings of subnet identifiers.
@@ -1248,7 +1248,7 @@ class ElastigroupArgs:
 class _ElastigroupState:
     def __init__(__self__, *,
                  auto_healing: Optional[pulumi.Input[bool]] = None,
-                 availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAvailabilityZoneArgs']]]] = None,
                  block_devices_mode: Optional[pulumi.Input[str]] = None,
                  capacity_unit: Optional[pulumi.Input[str]] = None,
                  consider_od_pricing: Optional[pulumi.Input[bool]] = None,
@@ -1334,9 +1334,7 @@ class _ElastigroupState:
         """
         Input properties used for looking up and filtering Elastigroup resources.
         :param pulumi.Input[bool] auto_healing: Auto-healing replacement won't be triggered if this parameter value is "false". In a case of a stateful group - no recycling will start if this parameter value is "false".
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zones: List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
-               Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
-               `availability_zones = ["us-east-1a:subnet-123456:ClusterI03"]`
+        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupAvailabilityZoneArgs']]] availability_zones: One or more availability Zones for the group. When this parameter is set, compute.subnetIds should be left unused.
         :param pulumi.Input[str] capacity_unit: The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
         :param pulumi.Input[str] cpu_credits: Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
         :param pulumi.Input['ElastigroupCpuOptionsArgs'] cpu_options: The CPU options for the instances that are launched within the group:
@@ -1542,6 +1540,9 @@ class _ElastigroupState:
         if stateful_instance_actions is not None:
             pulumi.set(__self__, "stateful_instance_actions", stateful_instance_actions)
         if subnet_ids is not None:
+            warnings.warn("""This field will soon be deprecated and handled by availability_zones""", DeprecationWarning)
+            pulumi.log.warn("""subnet_ids is deprecated: This field will soon be deprecated and handled by availability_zones""")
+        if subnet_ids is not None:
             pulumi.set(__self__, "subnet_ids", subnet_ids)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
@@ -1574,16 +1575,14 @@ class _ElastigroupState:
 
     @property
     @pulumi.getter(name="availabilityZones")
-    def availability_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def availability_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAvailabilityZoneArgs']]]]:
         """
-        List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
-        Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
-        `availability_zones = ["us-east-1a:subnet-123456:ClusterI03"]`
+        One or more availability Zones for the group. When this parameter is set, compute.subnetIds should be left unused.
         """
         return pulumi.get(self, "availability_zones")
 
     @availability_zones.setter
-    def availability_zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def availability_zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAvailabilityZoneArgs']]]]):
         pulumi.set(self, "availability_zones", value)
 
     @property
@@ -2375,6 +2374,7 @@ class _ElastigroupState:
 
     @property
     @pulumi.getter(name="subnetIds")
+    @_utilities.deprecated("""This field will soon be deprecated and handled by availability_zones""")
     def subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of Strings of subnet identifiers.
@@ -2480,7 +2480,7 @@ class Elastigroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_healing: Optional[pulumi.Input[bool]] = None,
-                 availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAvailabilityZoneArgs', 'ElastigroupAvailabilityZoneArgsDict']]]]] = None,
                  block_devices_mode: Optional[pulumi.Input[str]] = None,
                  capacity_unit: Optional[pulumi.Input[str]] = None,
                  consider_od_pricing: Optional[pulumi.Input[bool]] = None,
@@ -2587,6 +2587,11 @@ class Elastigroup(pulumi.CustomResource):
                 "sb-123456",
                 "sb-456789",
             ],
+            availability_zones=[{
+                "availability_zones_name": "us-west-2a",
+                "subnet_ids": ["subnet-123456"],
+                "placement_group_name": "placementGroupName",
+            }],
             image_id="ami-a27d8fda",
             iam_instance_profile="iam-profile",
             key_name="my-key.ssh",
@@ -2703,9 +2708,7 @@ class Elastigroup(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_healing: Auto-healing replacement won't be triggered if this parameter value is "false". In a case of a stateful group - no recycling will start if this parameter value is "false".
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zones: List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
-               Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
-               `availability_zones = ["us-east-1a:subnet-123456:ClusterI03"]`
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAvailabilityZoneArgs', 'ElastigroupAvailabilityZoneArgsDict']]]] availability_zones: One or more availability Zones for the group. When this parameter is set, compute.subnetIds should be left unused.
         :param pulumi.Input[str] capacity_unit: The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
         :param pulumi.Input[str] cpu_credits: Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
         :param pulumi.Input[Union['ElastigroupCpuOptionsArgs', 'ElastigroupCpuOptionsArgsDict']] cpu_options: The CPU options for the instances that are launched within the group:
@@ -2789,6 +2792,11 @@ class Elastigroup(pulumi.CustomResource):
                 "sb-123456",
                 "sb-456789",
             ],
+            availability_zones=[{
+                "availability_zones_name": "us-west-2a",
+                "subnet_ids": ["subnet-123456"],
+                "placement_group_name": "placementGroupName",
+            }],
             image_id="ami-a27d8fda",
             iam_instance_profile="iam-profile",
             key_name="my-key.ssh",
@@ -2918,7 +2926,7 @@ class Elastigroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_healing: Optional[pulumi.Input[bool]] = None,
-                 availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAvailabilityZoneArgs', 'ElastigroupAvailabilityZoneArgsDict']]]]] = None,
                  block_devices_mode: Optional[pulumi.Input[str]] = None,
                  capacity_unit: Optional[pulumi.Input[str]] = None,
                  consider_od_pricing: Optional[pulumi.Input[bool]] = None,
@@ -3113,7 +3121,7 @@ class Elastigroup(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_healing: Optional[pulumi.Input[bool]] = None,
-            availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAvailabilityZoneArgs', 'ElastigroupAvailabilityZoneArgsDict']]]]] = None,
             block_devices_mode: Optional[pulumi.Input[str]] = None,
             capacity_unit: Optional[pulumi.Input[str]] = None,
             consider_od_pricing: Optional[pulumi.Input[bool]] = None,
@@ -3204,9 +3212,7 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_healing: Auto-healing replacement won't be triggered if this parameter value is "false". In a case of a stateful group - no recycling will start if this parameter value is "false".
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zones: List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
-               Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
-               `availability_zones = ["us-east-1a:subnet-123456:ClusterI03"]`
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAvailabilityZoneArgs', 'ElastigroupAvailabilityZoneArgsDict']]]] availability_zones: One or more availability Zones for the group. When this parameter is set, compute.subnetIds should be left unused.
         :param pulumi.Input[str] capacity_unit: The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
         :param pulumi.Input[str] cpu_credits: Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
         :param pulumi.Input[Union['ElastigroupCpuOptionsArgs', 'ElastigroupCpuOptionsArgsDict']] cpu_options: The CPU options for the instances that are launched within the group:
@@ -3361,11 +3367,9 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="availabilityZones")
-    def availability_zones(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def availability_zones(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupAvailabilityZone']]]:
         """
-        List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
-        Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
-        `availability_zones = ["us-east-1a:subnet-123456:ClusterI03"]`
+        One or more availability Zones for the group. When this parameter is set, compute.subnetIds should be left unused.
         """
         return pulumi.get(self, "availability_zones")
 
@@ -3866,6 +3870,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="subnetIds")
+    @_utilities.deprecated("""This field will soon be deprecated and handled by availability_zones""")
     def subnet_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         List of Strings of subnet identifiers.

@@ -42,6 +42,15 @@ import (
 //					pulumi.String("sb-123456"),
 //					pulumi.String("sb-456789"),
 //				},
+//				AvailabilityZones: aws.ElastigroupAvailabilityZoneArray{
+//					&aws.ElastigroupAvailabilityZoneArgs{
+//						AvailabilityZonesName: pulumi.String("us-west-2a"),
+//						SubnetIds: pulumi.StringArray{
+//							pulumi.String("subnet-123456"),
+//						},
+//						PlacementGroupName: pulumi.String("placementGroupName"),
+//					},
+//				},
 //				ImageId:            pulumi.String("ami-a27d8fda"),
 //				IamInstanceProfile: pulumi.String("iam-profile"),
 //				KeyName:            pulumi.String("my-key.ssh"),
@@ -187,11 +196,9 @@ type Elastigroup struct {
 
 	// Auto-healing replacement won't be triggered if this parameter value is "false". In a case of a stateful group - no recycling will start if this parameter value is "false".
 	AutoHealing pulumi.BoolPtrOutput `pulumi:"autoHealing"`
-	// List of Strings of availability zones. When this parameter is set, `subnetIds` should be left unused.
-	// Note: `availabilityZones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
-	// `availabilityZones = ["us-east-1a:subnet-123456:ClusterI03"]`
-	AvailabilityZones pulumi.StringArrayOutput `pulumi:"availabilityZones"`
-	BlockDevicesMode  pulumi.StringPtrOutput   `pulumi:"blockDevicesMode"`
+	// One or more availability Zones for the group. When this parameter is set, compute.subnetIds should be left unused.
+	AvailabilityZones ElastigroupAvailabilityZoneArrayOutput `pulumi:"availabilityZones"`
+	BlockDevicesMode  pulumi.StringPtrOutput                 `pulumi:"blockDevicesMode"`
 	// The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
 	CapacityUnit      pulumi.StringOutput  `pulumi:"capacityUnit"`
 	ConsiderOdPricing pulumi.BoolPtrOutput `pulumi:"considerOdPricing"`
@@ -312,6 +319,8 @@ type Elastigroup struct {
 	StatefulInstanceActions ElastigroupStatefulInstanceActionArrayOutput `pulumi:"statefulInstanceActions"`
 	// List of Strings of subnet identifiers.
 	// Note: When this parameter is set, `availabilityZones` should be left unused.
+	//
+	// Deprecated: This field will soon be deprecated and handled by availability_zones
 	SubnetIds pulumi.StringArrayOutput `pulumi:"subnetIds"`
 	// A key/value mapping of tags to assign to the resource.
 	Tags            ElastigroupTagArrayOutput        `pulumi:"tags"`
@@ -372,11 +381,9 @@ func GetElastigroup(ctx *pulumi.Context,
 type elastigroupState struct {
 	// Auto-healing replacement won't be triggered if this parameter value is "false". In a case of a stateful group - no recycling will start if this parameter value is "false".
 	AutoHealing *bool `pulumi:"autoHealing"`
-	// List of Strings of availability zones. When this parameter is set, `subnetIds` should be left unused.
-	// Note: `availabilityZones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
-	// `availabilityZones = ["us-east-1a:subnet-123456:ClusterI03"]`
-	AvailabilityZones []string `pulumi:"availabilityZones"`
-	BlockDevicesMode  *string  `pulumi:"blockDevicesMode"`
+	// One or more availability Zones for the group. When this parameter is set, compute.subnetIds should be left unused.
+	AvailabilityZones []ElastigroupAvailabilityZone `pulumi:"availabilityZones"`
+	BlockDevicesMode  *string                       `pulumi:"blockDevicesMode"`
 	// The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
 	CapacityUnit      *string `pulumi:"capacityUnit"`
 	ConsiderOdPricing *bool   `pulumi:"considerOdPricing"`
@@ -497,6 +504,8 @@ type elastigroupState struct {
 	StatefulInstanceActions []ElastigroupStatefulInstanceAction `pulumi:"statefulInstanceActions"`
 	// List of Strings of subnet identifiers.
 	// Note: When this parameter is set, `availabilityZones` should be left unused.
+	//
+	// Deprecated: This field will soon be deprecated and handled by availability_zones
 	SubnetIds []string `pulumi:"subnetIds"`
 	// A key/value mapping of tags to assign to the resource.
 	Tags            []ElastigroupTag         `pulumi:"tags"`
@@ -516,10 +525,8 @@ type elastigroupState struct {
 type ElastigroupState struct {
 	// Auto-healing replacement won't be triggered if this parameter value is "false". In a case of a stateful group - no recycling will start if this parameter value is "false".
 	AutoHealing pulumi.BoolPtrInput
-	// List of Strings of availability zones. When this parameter is set, `subnetIds` should be left unused.
-	// Note: `availabilityZones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
-	// `availabilityZones = ["us-east-1a:subnet-123456:ClusterI03"]`
-	AvailabilityZones pulumi.StringArrayInput
+	// One or more availability Zones for the group. When this parameter is set, compute.subnetIds should be left unused.
+	AvailabilityZones ElastigroupAvailabilityZoneArrayInput
 	BlockDevicesMode  pulumi.StringPtrInput
 	// The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
 	CapacityUnit      pulumi.StringPtrInput
@@ -641,6 +648,8 @@ type ElastigroupState struct {
 	StatefulInstanceActions ElastigroupStatefulInstanceActionArrayInput
 	// List of Strings of subnet identifiers.
 	// Note: When this parameter is set, `availabilityZones` should be left unused.
+	//
+	// Deprecated: This field will soon be deprecated and handled by availability_zones
 	SubnetIds pulumi.StringArrayInput
 	// A key/value mapping of tags to assign to the resource.
 	Tags            ElastigroupTagArrayInput
@@ -664,11 +673,9 @@ func (ElastigroupState) ElementType() reflect.Type {
 type elastigroupArgs struct {
 	// Auto-healing replacement won't be triggered if this parameter value is "false". In a case of a stateful group - no recycling will start if this parameter value is "false".
 	AutoHealing *bool `pulumi:"autoHealing"`
-	// List of Strings of availability zones. When this parameter is set, `subnetIds` should be left unused.
-	// Note: `availabilityZones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
-	// `availabilityZones = ["us-east-1a:subnet-123456:ClusterI03"]`
-	AvailabilityZones []string `pulumi:"availabilityZones"`
-	BlockDevicesMode  *string  `pulumi:"blockDevicesMode"`
+	// One or more availability Zones for the group. When this parameter is set, compute.subnetIds should be left unused.
+	AvailabilityZones []ElastigroupAvailabilityZone `pulumi:"availabilityZones"`
+	BlockDevicesMode  *string                       `pulumi:"blockDevicesMode"`
 	// The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
 	CapacityUnit      *string `pulumi:"capacityUnit"`
 	ConsiderOdPricing *bool   `pulumi:"considerOdPricing"`
@@ -789,6 +796,8 @@ type elastigroupArgs struct {
 	StatefulInstanceActions []ElastigroupStatefulInstanceAction `pulumi:"statefulInstanceActions"`
 	// List of Strings of subnet identifiers.
 	// Note: When this parameter is set, `availabilityZones` should be left unused.
+	//
+	// Deprecated: This field will soon be deprecated and handled by availability_zones
 	SubnetIds []string `pulumi:"subnetIds"`
 	// A key/value mapping of tags to assign to the resource.
 	Tags            []ElastigroupTag         `pulumi:"tags"`
@@ -809,10 +818,8 @@ type elastigroupArgs struct {
 type ElastigroupArgs struct {
 	// Auto-healing replacement won't be triggered if this parameter value is "false". In a case of a stateful group - no recycling will start if this parameter value is "false".
 	AutoHealing pulumi.BoolPtrInput
-	// List of Strings of availability zones. When this parameter is set, `subnetIds` should be left unused.
-	// Note: `availabilityZones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
-	// `availabilityZones = ["us-east-1a:subnet-123456:ClusterI03"]`
-	AvailabilityZones pulumi.StringArrayInput
+	// One or more availability Zones for the group. When this parameter is set, compute.subnetIds should be left unused.
+	AvailabilityZones ElastigroupAvailabilityZoneArrayInput
 	BlockDevicesMode  pulumi.StringPtrInput
 	// The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
 	CapacityUnit      pulumi.StringPtrInput
@@ -934,6 +941,8 @@ type ElastigroupArgs struct {
 	StatefulInstanceActions ElastigroupStatefulInstanceActionArrayInput
 	// List of Strings of subnet identifiers.
 	// Note: When this parameter is set, `availabilityZones` should be left unused.
+	//
+	// Deprecated: This field will soon be deprecated and handled by availability_zones
 	SubnetIds pulumi.StringArrayInput
 	// A key/value mapping of tags to assign to the resource.
 	Tags            ElastigroupTagArrayInput
@@ -1042,11 +1051,9 @@ func (o ElastigroupOutput) AutoHealing() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.BoolPtrOutput { return v.AutoHealing }).(pulumi.BoolPtrOutput)
 }
 
-// List of Strings of availability zones. When this parameter is set, `subnetIds` should be left unused.
-// Note: `availabilityZones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
-// `availabilityZones = ["us-east-1a:subnet-123456:ClusterI03"]`
-func (o ElastigroupOutput) AvailabilityZones() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *Elastigroup) pulumi.StringArrayOutput { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
+// One or more availability Zones for the group. When this parameter is set, compute.subnetIds should be left unused.
+func (o ElastigroupOutput) AvailabilityZones() ElastigroupAvailabilityZoneArrayOutput {
+	return o.ApplyT(func(v *Elastigroup) ElastigroupAvailabilityZoneArrayOutput { return v.AvailabilityZones }).(ElastigroupAvailabilityZoneArrayOutput)
 }
 
 func (o ElastigroupOutput) BlockDevicesMode() pulumi.StringPtrOutput {
@@ -1391,6 +1398,8 @@ func (o ElastigroupOutput) StatefulInstanceActions() ElastigroupStatefulInstance
 
 // List of Strings of subnet identifiers.
 // Note: When this parameter is set, `availabilityZones` should be left unused.
+//
+// Deprecated: This field will soon be deprecated and handled by availability_zones
 func (o ElastigroupOutput) SubnetIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.StringArrayOutput { return v.SubnetIds }).(pulumi.StringArrayOutput)
 }

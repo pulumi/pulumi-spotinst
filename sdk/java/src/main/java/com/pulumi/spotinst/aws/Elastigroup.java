@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.spotinst.Utilities;
 import com.pulumi.spotinst.aws.ElastigroupArgs;
 import com.pulumi.spotinst.aws.inputs.ElastigroupState;
+import com.pulumi.spotinst.aws.outputs.ElastigroupAvailabilityZone;
 import com.pulumi.spotinst.aws.outputs.ElastigroupCpuOptions;
 import com.pulumi.spotinst.aws.outputs.ElastigroupEbsBlockDevice;
 import com.pulumi.spotinst.aws.outputs.ElastigroupEphemeralBlockDevice;
@@ -65,6 +66,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.spotinst.aws.Elastigroup;
  * import com.pulumi.spotinst.aws.ElastigroupArgs;
+ * import com.pulumi.spotinst.aws.inputs.ElastigroupAvailabilityZoneArgs;
  * import com.pulumi.spotinst.aws.inputs.ElastigroupMetadataOptionsArgs;
  * import com.pulumi.spotinst.aws.inputs.ElastigroupCpuOptionsArgs;
  * import com.pulumi.spotinst.aws.inputs.ElastigroupInstanceTypesWeightArgs;
@@ -102,6 +104,11 @@ import javax.annotation.Nullable;
  *             .subnetIds(            
  *                 "sb-123456",
  *                 "sb-456789")
+ *             .availabilityZones(ElastigroupAvailabilityZoneArgs.builder()
+ *                 .availabilityZonesName("us-west-2a")
+ *                 .subnetIds("subnet-123456")
+ *                 .placementGroupName("placementGroupName")
+ *                 .build())
  *             .imageId("ami-a27d8fda")
  *             .iamInstanceProfile("iam-profile")
  *             .keyName("my-key.ssh")
@@ -234,21 +241,17 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoHealing);
     }
     /**
-     * List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
-     * Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
-     * `availability_zones = [&#34;us-east-1a:subnet-123456:ClusterI03&#34;]`
+     * One or more availability Zones for the group. When this parameter is set, compute.subnetIds should be left unused.
      * 
      */
-    @Export(name="availabilityZones", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> availabilityZones;
+    @Export(name="availabilityZones", refs={List.class,ElastigroupAvailabilityZone.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ElastigroupAvailabilityZone>> availabilityZones;
 
     /**
-     * @return List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
-     * Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
-     * `availability_zones = [&#34;us-east-1a:subnet-123456:ClusterI03&#34;]`
+     * @return One or more availability Zones for the group. When this parameter is set, compute.subnetIds should be left unused.
      * 
      */
-    public Output<Optional<List<String>>> availabilityZones() {
+    public Output<Optional<List<ElastigroupAvailabilityZone>>> availabilityZones() {
         return Codegen.optional(this.availabilityZones);
     }
     @Export(name="blockDevicesMode", refs={String.class}, tree="[0]")
@@ -1037,7 +1040,11 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      * List of Strings of subnet identifiers.
      * Note: When this parameter is set, `availability_zones` should be left unused.
      * 
+     * @deprecated
+     * This field will soon be deprecated and handled by availability_zones
+     * 
      */
+    @Deprecated /* This field will soon be deprecated and handled by availability_zones */
     @Export(name="subnetIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> subnetIds;
 

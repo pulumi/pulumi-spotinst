@@ -21,6 +21,7 @@ __all__ = [
     'BeanstalkManagedActions',
     'BeanstalkManagedActionsPlatformUpdate',
     'BeanstalkScheduledTask',
+    'ElastigroupAvailabilityZone',
     'ElastigroupCpuOptions',
     'ElastigroupEbsBlockDevice',
     'ElastigroupEbsBlockDeviceDynamicIops',
@@ -639,6 +640,69 @@ class BeanstalkScheduledTask(dict):
         The desired number of instances the group should have.
         """
         return pulumi.get(self, "target_capacity")
+
+
+@pulumi.output_type
+class ElastigroupAvailabilityZone(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "availabilityZonesName":
+            suggest = "availability_zones_name"
+        elif key == "placementGroupName":
+            suggest = "placement_group_name"
+        elif key == "subnetIds":
+            suggest = "subnet_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupAvailabilityZone. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupAvailabilityZone.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupAvailabilityZone.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 availability_zones_name: str,
+                 placement_group_name: Optional[str] = None,
+                 subnet_ids: Optional[Sequence[str]] = None):
+        """
+        :param str availability_zones_name: The Availability Zone name.
+        :param str placement_group_name: specify a Placement Group name, the instances will be launched in the Placement Group for the AZ.
+        :param Sequence[str] subnet_ids: A comma-separated list of subnet identifiers for your group.
+        """
+        pulumi.set(__self__, "availability_zones_name", availability_zones_name)
+        if placement_group_name is not None:
+            pulumi.set(__self__, "placement_group_name", placement_group_name)
+        if subnet_ids is not None:
+            pulumi.set(__self__, "subnet_ids", subnet_ids)
+
+    @property
+    @pulumi.getter(name="availabilityZonesName")
+    def availability_zones_name(self) -> str:
+        """
+        The Availability Zone name.
+        """
+        return pulumi.get(self, "availability_zones_name")
+
+    @property
+    @pulumi.getter(name="placementGroupName")
+    def placement_group_name(self) -> Optional[str]:
+        """
+        specify a Placement Group name, the instances will be launched in the Placement Group for the AZ.
+        """
+        return pulumi.get(self, "placement_group_name")
+
+    @property
+    @pulumi.getter(name="subnetIds")
+    def subnet_ids(self) -> Optional[Sequence[str]]:
+        """
+        A comma-separated list of subnet identifiers for your group.
+        """
+        return pulumi.get(self, "subnet_ids")
 
 
 @pulumi.output_type

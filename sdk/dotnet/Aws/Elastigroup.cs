@@ -38,6 +38,18 @@ namespace Pulumi.SpotInst.Aws
     ///             "sb-123456",
     ///             "sb-456789",
     ///         },
+    ///         AvailabilityZones = new[]
+    ///         {
+    ///             new SpotInst.Aws.Inputs.ElastigroupAvailabilityZoneArgs
+    ///             {
+    ///                 AvailabilityZonesName = "us-west-2a",
+    ///                 SubnetIds = new[]
+    ///                 {
+    ///                     "subnet-123456",
+    ///                 },
+    ///                 PlacementGroupName = "placementGroupName",
+    ///             },
+    ///         },
     ///         ImageId = "ami-a27d8fda",
     ///         IamInstanceProfile = "iam-profile",
     ///         KeyName = "my-key.ssh",
@@ -214,12 +226,10 @@ namespace Pulumi.SpotInst.Aws
         public Output<bool?> AutoHealing { get; private set; } = null!;
 
         /// <summary>
-        /// List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
-        /// Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
-        /// `availability_zones = ["us-east-1a:subnet-123456:ClusterI03"]`
+        /// One or more availability Zones for the group. When this parameter is set, compute.subnetIds should be left unused.
         /// </summary>
         [Output("availabilityZones")]
-        public Output<ImmutableArray<string>> AvailabilityZones { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ElastigroupAvailabilityZone>> AvailabilityZones { get; private set; } = null!;
 
         [Output("blockDevicesMode")]
         public Output<string?> BlockDevicesMode { get; private set; } = null!;
@@ -669,16 +679,14 @@ namespace Pulumi.SpotInst.Aws
         public Input<bool>? AutoHealing { get; set; }
 
         [Input("availabilityZones")]
-        private InputList<string>? _availabilityZones;
+        private InputList<Inputs.ElastigroupAvailabilityZoneArgs>? _availabilityZones;
 
         /// <summary>
-        /// List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
-        /// Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
-        /// `availability_zones = ["us-east-1a:subnet-123456:ClusterI03"]`
+        /// One or more availability Zones for the group. When this parameter is set, compute.subnetIds should be left unused.
         /// </summary>
-        public InputList<string> AvailabilityZones
+        public InputList<Inputs.ElastigroupAvailabilityZoneArgs> AvailabilityZones
         {
-            get => _availabilityZones ?? (_availabilityZones = new InputList<string>());
+            get => _availabilityZones ?? (_availabilityZones = new InputList<Inputs.ElastigroupAvailabilityZoneArgs>());
             set => _availabilityZones = value;
         }
 
@@ -1164,6 +1172,7 @@ namespace Pulumi.SpotInst.Aws
         /// List of Strings of subnet identifiers.
         /// Note: When this parameter is set, `availability_zones` should be left unused.
         /// </summary>
+        [Obsolete(@"This field will soon be deprecated and handled by availability_zones")]
         public InputList<string> SubnetIds
         {
             get => _subnetIds ?? (_subnetIds = new InputList<string>());
@@ -1235,16 +1244,14 @@ namespace Pulumi.SpotInst.Aws
         public Input<bool>? AutoHealing { get; set; }
 
         [Input("availabilityZones")]
-        private InputList<string>? _availabilityZones;
+        private InputList<Inputs.ElastigroupAvailabilityZoneGetArgs>? _availabilityZones;
 
         /// <summary>
-        /// List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
-        /// Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
-        /// `availability_zones = ["us-east-1a:subnet-123456:ClusterI03"]`
+        /// One or more availability Zones for the group. When this parameter is set, compute.subnetIds should be left unused.
         /// </summary>
-        public InputList<string> AvailabilityZones
+        public InputList<Inputs.ElastigroupAvailabilityZoneGetArgs> AvailabilityZones
         {
-            get => _availabilityZones ?? (_availabilityZones = new InputList<string>());
+            get => _availabilityZones ?? (_availabilityZones = new InputList<Inputs.ElastigroupAvailabilityZoneGetArgs>());
             set => _availabilityZones = value;
         }
 
@@ -1730,6 +1737,7 @@ namespace Pulumi.SpotInst.Aws
         /// List of Strings of subnet identifiers.
         /// Note: When this parameter is set, `availability_zones` should be left unused.
         /// </summary>
+        [Obsolete(@"This field will soon be deprecated and handled by availability_zones")]
         public InputList<string> SubnetIds
         {
             get => _subnetIds ?? (_subnetIds = new InputList<string>());

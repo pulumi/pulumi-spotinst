@@ -854,6 +854,121 @@ func (o BeanstalkScheduledTaskArrayOutput) Index(i pulumi.IntInput) BeanstalkSch
 	}).(BeanstalkScheduledTaskOutput)
 }
 
+type ElastigroupAvailabilityZone struct {
+	// The Availability Zone name.
+	AvailabilityZonesName string `pulumi:"availabilityZonesName"`
+	// specify a Placement Group name, the instances will be launched in the Placement Group for the AZ.
+	PlacementGroupName *string `pulumi:"placementGroupName"`
+	// A comma-separated list of subnet identifiers for your group.
+	SubnetIds []string `pulumi:"subnetIds"`
+}
+
+// ElastigroupAvailabilityZoneInput is an input type that accepts ElastigroupAvailabilityZoneArgs and ElastigroupAvailabilityZoneOutput values.
+// You can construct a concrete instance of `ElastigroupAvailabilityZoneInput` via:
+//
+//	ElastigroupAvailabilityZoneArgs{...}
+type ElastigroupAvailabilityZoneInput interface {
+	pulumi.Input
+
+	ToElastigroupAvailabilityZoneOutput() ElastigroupAvailabilityZoneOutput
+	ToElastigroupAvailabilityZoneOutputWithContext(context.Context) ElastigroupAvailabilityZoneOutput
+}
+
+type ElastigroupAvailabilityZoneArgs struct {
+	// The Availability Zone name.
+	AvailabilityZonesName pulumi.StringInput `pulumi:"availabilityZonesName"`
+	// specify a Placement Group name, the instances will be launched in the Placement Group for the AZ.
+	PlacementGroupName pulumi.StringPtrInput `pulumi:"placementGroupName"`
+	// A comma-separated list of subnet identifiers for your group.
+	SubnetIds pulumi.StringArrayInput `pulumi:"subnetIds"`
+}
+
+func (ElastigroupAvailabilityZoneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAvailabilityZone)(nil)).Elem()
+}
+
+func (i ElastigroupAvailabilityZoneArgs) ToElastigroupAvailabilityZoneOutput() ElastigroupAvailabilityZoneOutput {
+	return i.ToElastigroupAvailabilityZoneOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAvailabilityZoneArgs) ToElastigroupAvailabilityZoneOutputWithContext(ctx context.Context) ElastigroupAvailabilityZoneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAvailabilityZoneOutput)
+}
+
+// ElastigroupAvailabilityZoneArrayInput is an input type that accepts ElastigroupAvailabilityZoneArray and ElastigroupAvailabilityZoneArrayOutput values.
+// You can construct a concrete instance of `ElastigroupAvailabilityZoneArrayInput` via:
+//
+//	ElastigroupAvailabilityZoneArray{ ElastigroupAvailabilityZoneArgs{...} }
+type ElastigroupAvailabilityZoneArrayInput interface {
+	pulumi.Input
+
+	ToElastigroupAvailabilityZoneArrayOutput() ElastigroupAvailabilityZoneArrayOutput
+	ToElastigroupAvailabilityZoneArrayOutputWithContext(context.Context) ElastigroupAvailabilityZoneArrayOutput
+}
+
+type ElastigroupAvailabilityZoneArray []ElastigroupAvailabilityZoneInput
+
+func (ElastigroupAvailabilityZoneArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAvailabilityZone)(nil)).Elem()
+}
+
+func (i ElastigroupAvailabilityZoneArray) ToElastigroupAvailabilityZoneArrayOutput() ElastigroupAvailabilityZoneArrayOutput {
+	return i.ToElastigroupAvailabilityZoneArrayOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAvailabilityZoneArray) ToElastigroupAvailabilityZoneArrayOutputWithContext(ctx context.Context) ElastigroupAvailabilityZoneArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAvailabilityZoneArrayOutput)
+}
+
+type ElastigroupAvailabilityZoneOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAvailabilityZoneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAvailabilityZone)(nil)).Elem()
+}
+
+func (o ElastigroupAvailabilityZoneOutput) ToElastigroupAvailabilityZoneOutput() ElastigroupAvailabilityZoneOutput {
+	return o
+}
+
+func (o ElastigroupAvailabilityZoneOutput) ToElastigroupAvailabilityZoneOutputWithContext(ctx context.Context) ElastigroupAvailabilityZoneOutput {
+	return o
+}
+
+// The Availability Zone name.
+func (o ElastigroupAvailabilityZoneOutput) AvailabilityZonesName() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAvailabilityZone) string { return v.AvailabilityZonesName }).(pulumi.StringOutput)
+}
+
+// specify a Placement Group name, the instances will be launched in the Placement Group for the AZ.
+func (o ElastigroupAvailabilityZoneOutput) PlacementGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupAvailabilityZone) *string { return v.PlacementGroupName }).(pulumi.StringPtrOutput)
+}
+
+// A comma-separated list of subnet identifiers for your group.
+func (o ElastigroupAvailabilityZoneOutput) SubnetIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ElastigroupAvailabilityZone) []string { return v.SubnetIds }).(pulumi.StringArrayOutput)
+}
+
+type ElastigroupAvailabilityZoneArrayOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAvailabilityZoneArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAvailabilityZone)(nil)).Elem()
+}
+
+func (o ElastigroupAvailabilityZoneArrayOutput) ToElastigroupAvailabilityZoneArrayOutput() ElastigroupAvailabilityZoneArrayOutput {
+	return o
+}
+
+func (o ElastigroupAvailabilityZoneArrayOutput) ToElastigroupAvailabilityZoneArrayOutputWithContext(ctx context.Context) ElastigroupAvailabilityZoneArrayOutput {
+	return o
+}
+
+func (o ElastigroupAvailabilityZoneArrayOutput) Index(i pulumi.IntInput) ElastigroupAvailabilityZoneOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupAvailabilityZone {
+		return vs[0].([]ElastigroupAvailabilityZone)[vs[1].(int)]
+	}).(ElastigroupAvailabilityZoneOutput)
+}
+
 type ElastigroupCpuOptions struct {
 	// The ability to define the number of threads per core in instances that allow this.
 	ThreadsPerCore int `pulumi:"threadsPerCore"`
@@ -25329,6 +25444,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BeanstalkManagedActionsPlatformUpdatePtrInput)(nil)).Elem(), BeanstalkManagedActionsPlatformUpdateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BeanstalkScheduledTaskInput)(nil)).Elem(), BeanstalkScheduledTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BeanstalkScheduledTaskArrayInput)(nil)).Elem(), BeanstalkScheduledTaskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAvailabilityZoneInput)(nil)).Elem(), ElastigroupAvailabilityZoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAvailabilityZoneArrayInput)(nil)).Elem(), ElastigroupAvailabilityZoneArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupCpuOptionsInput)(nil)).Elem(), ElastigroupCpuOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupCpuOptionsPtrInput)(nil)).Elem(), ElastigroupCpuOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupEbsBlockDeviceInput)(nil)).Elem(), ElastigroupEbsBlockDeviceArgs{})
@@ -25663,6 +25780,8 @@ func init() {
 	pulumi.RegisterOutputType(BeanstalkManagedActionsPlatformUpdatePtrOutput{})
 	pulumi.RegisterOutputType(BeanstalkScheduledTaskOutput{})
 	pulumi.RegisterOutputType(BeanstalkScheduledTaskArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupAvailabilityZoneOutput{})
+	pulumi.RegisterOutputType(ElastigroupAvailabilityZoneArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupCpuOptionsOutput{})
 	pulumi.RegisterOutputType(ElastigroupCpuOptionsPtrOutput{})
 	pulumi.RegisterOutputType(ElastigroupEbsBlockDeviceOutput{})

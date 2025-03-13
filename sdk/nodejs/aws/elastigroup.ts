@@ -29,6 +29,11 @@ import * as utilities from "../utilities";
  *         "sb-123456",
  *         "sb-456789",
  *     ],
+ *     availabilityZones: [{
+ *         availabilityZonesName: "us-west-2a",
+ *         subnetIds: ["subnet-123456"],
+ *         placementGroupName: "placementGroupName",
+ *     }],
  *     imageId: "ami-a27d8fda",
  *     iamInstanceProfile: "iam-profile",
  *     keyName: "my-key.ssh",
@@ -176,11 +181,9 @@ export class Elastigroup extends pulumi.CustomResource {
      */
     public readonly autoHealing!: pulumi.Output<boolean | undefined>;
     /**
-     * List of Strings of availability zones. When this parameter is set, `subnetIds` should be left unused.
-     * Note: `availabilityZones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
-     * `availabilityZones = ["us-east-1a:subnet-123456:ClusterI03"]`
+     * One or more availability Zones for the group. When this parameter is set, compute.subnetIds should be left unused.
      */
-    public readonly availabilityZones!: pulumi.Output<string[] | undefined>;
+    public readonly availabilityZones!: pulumi.Output<outputs.aws.ElastigroupAvailabilityZone[] | undefined>;
     public readonly blockDevicesMode!: pulumi.Output<string | undefined>;
     /**
      * The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
@@ -387,6 +390,8 @@ export class Elastigroup extends pulumi.CustomResource {
     /**
      * List of Strings of subnet identifiers.
      * Note: When this parameter is set, `availabilityZones` should be left unused.
+     *
+     * @deprecated This field will soon be deprecated and handled by availability_zones
      */
     public readonly subnetIds!: pulumi.Output<string[] | undefined>;
     /**
@@ -623,11 +628,9 @@ export interface ElastigroupState {
      */
     autoHealing?: pulumi.Input<boolean>;
     /**
-     * List of Strings of availability zones. When this parameter is set, `subnetIds` should be left unused.
-     * Note: `availabilityZones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
-     * `availabilityZones = ["us-east-1a:subnet-123456:ClusterI03"]`
+     * One or more availability Zones for the group. When this parameter is set, compute.subnetIds should be left unused.
      */
-    availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
+    availabilityZones?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupAvailabilityZone>[]>;
     blockDevicesMode?: pulumi.Input<string>;
     /**
      * The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
@@ -834,6 +837,8 @@ export interface ElastigroupState {
     /**
      * List of Strings of subnet identifiers.
      * Note: When this parameter is set, `availabilityZones` should be left unused.
+     *
+     * @deprecated This field will soon be deprecated and handled by availability_zones
      */
     subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -870,11 +875,9 @@ export interface ElastigroupArgs {
      */
     autoHealing?: pulumi.Input<boolean>;
     /**
-     * List of Strings of availability zones. When this parameter is set, `subnetIds` should be left unused.
-     * Note: `availabilityZones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
-     * `availabilityZones = ["us-east-1a:subnet-123456:ClusterI03"]`
+     * One or more availability Zones for the group. When this parameter is set, compute.subnetIds should be left unused.
      */
-    availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
+    availabilityZones?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupAvailabilityZone>[]>;
     blockDevicesMode?: pulumi.Input<string>;
     /**
      * The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
@@ -1081,6 +1084,8 @@ export interface ElastigroupArgs {
     /**
      * List of Strings of subnet identifiers.
      * Note: When this parameter is set, `availabilityZones` should be left unused.
+     *
+     * @deprecated This field will soon be deprecated and handled by availability_zones
      */
     subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**

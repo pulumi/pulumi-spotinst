@@ -6,6 +6,7 @@ package com.pulumi.spotinst.aws;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.spotinst.aws.inputs.ElastigroupAvailabilityZoneArgs;
 import com.pulumi.spotinst.aws.inputs.ElastigroupCpuOptionsArgs;
 import com.pulumi.spotinst.aws.inputs.ElastigroupEbsBlockDeviceArgs;
 import com.pulumi.spotinst.aws.inputs.ElastigroupEphemeralBlockDeviceArgs;
@@ -68,21 +69,17 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
-     * Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
-     * `availability_zones = [&#34;us-east-1a:subnet-123456:ClusterI03&#34;]`
+     * One or more availability Zones for the group. When this parameter is set, compute.subnetIds should be left unused.
      * 
      */
     @Import(name="availabilityZones")
-    private @Nullable Output<List<String>> availabilityZones;
+    private @Nullable Output<List<ElastigroupAvailabilityZoneArgs>> availabilityZones;
 
     /**
-     * @return List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
-     * Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
-     * `availability_zones = [&#34;us-east-1a:subnet-123456:ClusterI03&#34;]`
+     * @return One or more availability Zones for the group. When this parameter is set, compute.subnetIds should be left unused.
      * 
      */
-    public Optional<Output<List<String>>> availabilityZones() {
+    public Optional<Output<List<ElastigroupAvailabilityZoneArgs>>> availabilityZones() {
         return Optional.ofNullable(this.availabilityZones);
     }
 
@@ -945,7 +942,11 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
      * List of Strings of subnet identifiers.
      * Note: When this parameter is set, `availability_zones` should be left unused.
      * 
+     * @deprecated
+     * This field will soon be deprecated and handled by availability_zones
+     * 
      */
+    @Deprecated /* This field will soon be deprecated and handled by availability_zones */
     @Import(name="subnetIds")
     private @Nullable Output<List<String>> subnetIds;
 
@@ -953,7 +954,11 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
      * @return List of Strings of subnet identifiers.
      * Note: When this parameter is set, `availability_zones` should be left unused.
      * 
+     * @deprecated
+     * This field will soon be deprecated and handled by availability_zones
+     * 
      */
+    @Deprecated /* This field will soon be deprecated and handled by availability_zones */
     public Optional<Output<List<String>>> subnetIds() {
         return Optional.ofNullable(this.subnetIds);
     }
@@ -1183,39 +1188,33 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param availabilityZones List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
-         * Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
-         * `availability_zones = [&#34;us-east-1a:subnet-123456:ClusterI03&#34;]`
+         * @param availabilityZones One or more availability Zones for the group. When this parameter is set, compute.subnetIds should be left unused.
          * 
          * @return builder
          * 
          */
-        public Builder availabilityZones(@Nullable Output<List<String>> availabilityZones) {
+        public Builder availabilityZones(@Nullable Output<List<ElastigroupAvailabilityZoneArgs>> availabilityZones) {
             $.availabilityZones = availabilityZones;
             return this;
         }
 
         /**
-         * @param availabilityZones List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
-         * Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
-         * `availability_zones = [&#34;us-east-1a:subnet-123456:ClusterI03&#34;]`
+         * @param availabilityZones One or more availability Zones for the group. When this parameter is set, compute.subnetIds should be left unused.
          * 
          * @return builder
          * 
          */
-        public Builder availabilityZones(List<String> availabilityZones) {
+        public Builder availabilityZones(List<ElastigroupAvailabilityZoneArgs> availabilityZones) {
             return availabilityZones(Output.of(availabilityZones));
         }
 
         /**
-         * @param availabilityZones List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
-         * Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
-         * `availability_zones = [&#34;us-east-1a:subnet-123456:ClusterI03&#34;]`
+         * @param availabilityZones One or more availability Zones for the group. When this parameter is set, compute.subnetIds should be left unused.
          * 
          * @return builder
          * 
          */
-        public Builder availabilityZones(String... availabilityZones) {
+        public Builder availabilityZones(ElastigroupAvailabilityZoneArgs... availabilityZones) {
             return availabilityZones(List.of(availabilityZones));
         }
 
@@ -2554,7 +2553,11 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field will soon be deprecated and handled by availability_zones
+         * 
          */
+        @Deprecated /* This field will soon be deprecated and handled by availability_zones */
         public Builder subnetIds(@Nullable Output<List<String>> subnetIds) {
             $.subnetIds = subnetIds;
             return this;
@@ -2566,7 +2569,11 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field will soon be deprecated and handled by availability_zones
+         * 
          */
+        @Deprecated /* This field will soon be deprecated and handled by availability_zones */
         public Builder subnetIds(List<String> subnetIds) {
             return subnetIds(Output.of(subnetIds));
         }
@@ -2577,7 +2584,11 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field will soon be deprecated and handled by availability_zones
+         * 
          */
+        @Deprecated /* This field will soon be deprecated and handled by availability_zones */
         public Builder subnetIds(String... subnetIds) {
             return subnetIds(List.of(subnetIds));
         }

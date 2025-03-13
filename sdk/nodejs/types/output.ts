@@ -751,6 +751,21 @@ export namespace aws {
         taskType: string;
     }
 
+    export interface ElastigroupAvailabilityZone {
+        /**
+         * The Availability Zone name.
+         */
+        availabilityZonesName: string;
+        /**
+         * specify a Placement Group name, the instances will be launched in the Placement Group for the AZ.
+         */
+        placementGroupName?: string;
+        /**
+         * A comma-separated list of subnet identifiers for your group.
+         */
+        subnetIds?: string[];
+    }
+
     export interface ElastigroupCpuOptions {
         /**
          * The ability to define the number of threads per core in instances that allow this.

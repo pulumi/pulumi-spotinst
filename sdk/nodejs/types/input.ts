@@ -750,6 +750,21 @@ export namespace aws {
         taskType: pulumi.Input<string>;
     }
 
+    export interface ElastigroupAvailabilityZone {
+        /**
+         * The Availability Zone name.
+         */
+        availabilityZonesName: pulumi.Input<string>;
+        /**
+         * specify a Placement Group name, the instances will be launched in the Placement Group for the AZ.
+         */
+        placementGroupName?: pulumi.Input<string>;
+        /**
+         * A comma-separated list of subnet identifiers for your group.
+         */
+        subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface ElastigroupCpuOptions {
         /**
          * The ability to define the number of threads per core in instances that allow this.
