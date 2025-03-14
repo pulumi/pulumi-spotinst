@@ -1037,7 +1037,11 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      * List of Strings of subnet identifiers.
      * Note: When this parameter is set, `availability_zones` should be left unused.
      * 
+     * @deprecated
+     * This field will soon be deprecated and handled by availability_zones
+     * 
      */
+    @Deprecated /* This field will soon be deprecated and handled by availability_zones */
     @Export(name="subnetIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> subnetIds;
 

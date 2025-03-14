@@ -387,6 +387,8 @@ export class Elastigroup extends pulumi.CustomResource {
     /**
      * List of Strings of subnet identifiers.
      * Note: When this parameter is set, `availabilityZones` should be left unused.
+     *
+     * @deprecated This field will soon be deprecated and handled by availability_zones
      */
     public readonly subnetIds!: pulumi.Output<string[] | undefined>;
     /**
@@ -834,6 +836,8 @@ export interface ElastigroupState {
     /**
      * List of Strings of subnet identifiers.
      * Note: When this parameter is set, `availabilityZones` should be left unused.
+     *
+     * @deprecated This field will soon be deprecated and handled by availability_zones
      */
     subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1081,6 +1085,8 @@ export interface ElastigroupArgs {
     /**
      * List of Strings of subnet identifiers.
      * Note: When this parameter is set, `availabilityZones` should be left unused.
+     *
+     * @deprecated This field will soon be deprecated and handled by availability_zones
      */
     subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**

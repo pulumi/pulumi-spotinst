@@ -11634,7 +11634,8 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of Strings of subnet identifiers.\nNote: When this parameter is set, `availability_zones` should be left unused.\n"
+                    "description": "List of Strings of subnet identifiers.\nNote: When this parameter is set, `availability_zones` should be left unused.\n",
+                    "deprecationMessage": "This field will soon be deprecated and handled by availability_zones"
                 },
                 "tags": {
                     "type": "array",
@@ -12031,7 +12032,8 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of Strings of subnet identifiers.\nNote: When this parameter is set, `availability_zones` should be left unused.\n"
+                    "description": "List of Strings of subnet identifiers.\nNote: When this parameter is set, `availability_zones` should be left unused.\n",
+                    "deprecationMessage": "This field will soon be deprecated and handled by availability_zones"
                 },
                 "tags": {
                     "type": "array",
@@ -12424,7 +12426,8 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "List of Strings of subnet identifiers.\nNote: When this parameter is set, `availability_zones` should be left unused.\n"
+                        "description": "List of Strings of subnet identifiers.\nNote: When this parameter is set, `availability_zones` should be left unused.\n",
+                        "deprecationMessage": "This field will soon be deprecated and handled by availability_zones"
                     },
                     "tags": {
                         "type": "array",

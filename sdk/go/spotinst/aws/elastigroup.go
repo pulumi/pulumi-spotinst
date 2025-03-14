@@ -312,6 +312,8 @@ type Elastigroup struct {
 	StatefulInstanceActions ElastigroupStatefulInstanceActionArrayOutput `pulumi:"statefulInstanceActions"`
 	// List of Strings of subnet identifiers.
 	// Note: When this parameter is set, `availabilityZones` should be left unused.
+	//
+	// Deprecated: This field will soon be deprecated and handled by availability_zones
 	SubnetIds pulumi.StringArrayOutput `pulumi:"subnetIds"`
 	// A key/value mapping of tags to assign to the resource.
 	Tags            ElastigroupTagArrayOutput        `pulumi:"tags"`
@@ -497,6 +499,8 @@ type elastigroupState struct {
 	StatefulInstanceActions []ElastigroupStatefulInstanceAction `pulumi:"statefulInstanceActions"`
 	// List of Strings of subnet identifiers.
 	// Note: When this parameter is set, `availabilityZones` should be left unused.
+	//
+	// Deprecated: This field will soon be deprecated and handled by availability_zones
 	SubnetIds []string `pulumi:"subnetIds"`
 	// A key/value mapping of tags to assign to the resource.
 	Tags            []ElastigroupTag         `pulumi:"tags"`
@@ -641,6 +645,8 @@ type ElastigroupState struct {
 	StatefulInstanceActions ElastigroupStatefulInstanceActionArrayInput
 	// List of Strings of subnet identifiers.
 	// Note: When this parameter is set, `availabilityZones` should be left unused.
+	//
+	// Deprecated: This field will soon be deprecated and handled by availability_zones
 	SubnetIds pulumi.StringArrayInput
 	// A key/value mapping of tags to assign to the resource.
 	Tags            ElastigroupTagArrayInput
@@ -789,6 +795,8 @@ type elastigroupArgs struct {
 	StatefulInstanceActions []ElastigroupStatefulInstanceAction `pulumi:"statefulInstanceActions"`
 	// List of Strings of subnet identifiers.
 	// Note: When this parameter is set, `availabilityZones` should be left unused.
+	//
+	// Deprecated: This field will soon be deprecated and handled by availability_zones
 	SubnetIds []string `pulumi:"subnetIds"`
 	// A key/value mapping of tags to assign to the resource.
 	Tags            []ElastigroupTag         `pulumi:"tags"`
@@ -934,6 +942,8 @@ type ElastigroupArgs struct {
 	StatefulInstanceActions ElastigroupStatefulInstanceActionArrayInput
 	// List of Strings of subnet identifiers.
 	// Note: When this parameter is set, `availabilityZones` should be left unused.
+	//
+	// Deprecated: This field will soon be deprecated and handled by availability_zones
 	SubnetIds pulumi.StringArrayInput
 	// A key/value mapping of tags to assign to the resource.
 	Tags            ElastigroupTagArrayInput
@@ -1391,6 +1401,8 @@ func (o ElastigroupOutput) StatefulInstanceActions() ElastigroupStatefulInstance
 
 // List of Strings of subnet identifiers.
 // Note: When this parameter is set, `availabilityZones` should be left unused.
+//
+// Deprecated: This field will soon be deprecated and handled by availability_zones
 func (o ElastigroupOutput) SubnetIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.StringArrayOutput { return v.SubnetIds }).(pulumi.StringArrayOutput)
 }
