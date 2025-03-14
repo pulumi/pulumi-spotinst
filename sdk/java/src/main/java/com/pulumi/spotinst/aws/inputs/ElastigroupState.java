@@ -944,7 +944,11 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
      * List of Strings of subnet identifiers.
      * Note: When this parameter is set, `availability_zones` should be left unused.
      * 
+     * @deprecated
+     * This field will soon be deprecated and handled by availability_zones
+     * 
      */
+    @Deprecated /* This field will soon be deprecated and handled by availability_zones */
     @Import(name="subnetIds")
     private @Nullable Output<List<String>> subnetIds;
 
@@ -952,7 +956,11 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
      * @return List of Strings of subnet identifiers.
      * Note: When this parameter is set, `availability_zones` should be left unused.
      * 
+     * @deprecated
+     * This field will soon be deprecated and handled by availability_zones
+     * 
      */
+    @Deprecated /* This field will soon be deprecated and handled by availability_zones */
     public Optional<Output<List<String>>> subnetIds() {
         return Optional.ofNullable(this.subnetIds);
     }
@@ -2553,7 +2561,11 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field will soon be deprecated and handled by availability_zones
+         * 
          */
+        @Deprecated /* This field will soon be deprecated and handled by availability_zones */
         public Builder subnetIds(@Nullable Output<List<String>> subnetIds) {
             $.subnetIds = subnetIds;
             return this;
@@ -2565,7 +2577,11 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field will soon be deprecated and handled by availability_zones
+         * 
          */
+        @Deprecated /* This field will soon be deprecated and handled by availability_zones */
         public Builder subnetIds(List<String> subnetIds) {
             return subnetIds(Output.of(subnetIds));
         }
@@ -2576,7 +2592,11 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field will soon be deprecated and handled by availability_zones
+         * 
          */
+        @Deprecated /* This field will soon be deprecated and handled by availability_zones */
         public Builder subnetIds(String... subnetIds) {
             return subnetIds(List.of(subnetIds));
         }

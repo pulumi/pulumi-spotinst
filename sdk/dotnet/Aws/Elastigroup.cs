@@ -1164,6 +1164,7 @@ namespace Pulumi.SpotInst.Aws
         /// List of Strings of subnet identifiers.
         /// Note: When this parameter is set, `availability_zones` should be left unused.
         /// </summary>
+        [Obsolete(@"This field will soon be deprecated and handled by availability_zones")]
         public InputList<string> SubnetIds
         {
             get => _subnetIds ?? (_subnetIds = new InputList<string>());
@@ -1730,6 +1731,7 @@ namespace Pulumi.SpotInst.Aws
         /// List of Strings of subnet identifiers.
         /// Note: When this parameter is set, `availability_zones` should be left unused.
         /// </summary>
+        [Obsolete(@"This field will soon be deprecated and handled by availability_zones")]
         public InputList<string> SubnetIds
         {
             get => _subnetIds ?? (_subnetIds = new InputList<string>());

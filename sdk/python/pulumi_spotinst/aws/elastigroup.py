@@ -312,6 +312,9 @@ class ElastigroupArgs:
         if stateful_instance_actions is not None:
             pulumi.set(__self__, "stateful_instance_actions", stateful_instance_actions)
         if subnet_ids is not None:
+            warnings.warn("""This field will soon be deprecated and handled by availability_zones""", DeprecationWarning)
+            pulumi.log.warn("""subnet_ids is deprecated: This field will soon be deprecated and handled by availability_zones""")
+        if subnet_ids is not None:
             pulumi.set(__self__, "subnet_ids", subnet_ids)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
@@ -1145,6 +1148,7 @@ class ElastigroupArgs:
 
     @property
     @pulumi.getter(name="subnetIds")
+    @_utilities.deprecated("""This field will soon be deprecated and handled by availability_zones""")
     def subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of Strings of subnet identifiers.
@@ -1541,6 +1545,9 @@ class _ElastigroupState:
             pulumi.set(__self__, "stateful_deallocation", stateful_deallocation)
         if stateful_instance_actions is not None:
             pulumi.set(__self__, "stateful_instance_actions", stateful_instance_actions)
+        if subnet_ids is not None:
+            warnings.warn("""This field will soon be deprecated and handled by availability_zones""", DeprecationWarning)
+            pulumi.log.warn("""subnet_ids is deprecated: This field will soon be deprecated and handled by availability_zones""")
         if subnet_ids is not None:
             pulumi.set(__self__, "subnet_ids", subnet_ids)
         if tags is not None:
@@ -2375,6 +2382,7 @@ class _ElastigroupState:
 
     @property
     @pulumi.getter(name="subnetIds")
+    @_utilities.deprecated("""This field will soon be deprecated and handled by availability_zones""")
     def subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of Strings of subnet identifiers.
@@ -3866,6 +3874,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="subnetIds")
+    @_utilities.deprecated("""This field will soon be deprecated and handled by availability_zones""")
     def subnet_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         List of Strings of subnet identifiers.
