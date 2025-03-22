@@ -271,6 +271,8 @@ __all__ = [
     'OceanFiltersArgsDict',
     'OceanInstanceMetadataOptionsArgs',
     'OceanInstanceMetadataOptionsArgsDict',
+    'OceanInstanceStorePolicyArgs',
+    'OceanInstanceStorePolicyArgsDict',
     'OceanLaunchSpecAutoscaleDownArgs',
     'OceanLaunchSpecAutoscaleDownArgsDict',
     'OceanLaunchSpecAutoscaleHeadroomArgs',
@@ -297,6 +299,8 @@ __all__ = [
     'OceanLaunchSpecImageArgsDict',
     'OceanLaunchSpecInstanceMetadataOptionsArgs',
     'OceanLaunchSpecInstanceMetadataOptionsArgsDict',
+    'OceanLaunchSpecInstanceStorePolicyArgs',
+    'OceanLaunchSpecInstanceStorePolicyArgsDict',
     'OceanLaunchSpecInstanceTypesFiltersArgs',
     'OceanLaunchSpecInstanceTypesFiltersArgsDict',
     'OceanLaunchSpecLabelArgs',
@@ -11580,6 +11584,38 @@ class OceanInstanceMetadataOptionsArgs:
 
 
 if not MYPY:
+    class OceanInstanceStorePolicyArgsDict(TypedDict):
+        instance_store_policy_type: NotRequired[pulumi.Input[str]]
+        """
+        Value: `"RAID0"` The method for using the instance store volumes (must also be defined in the userData).
+        """
+elif False:
+    OceanInstanceStorePolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OceanInstanceStorePolicyArgs:
+    def __init__(__self__, *,
+                 instance_store_policy_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] instance_store_policy_type: Value: `"RAID0"` The method for using the instance store volumes (must also be defined in the userData).
+        """
+        if instance_store_policy_type is not None:
+            pulumi.set(__self__, "instance_store_policy_type", instance_store_policy_type)
+
+    @property
+    @pulumi.getter(name="instanceStorePolicyType")
+    def instance_store_policy_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Value: `"RAID0"` The method for using the instance store volumes (must also be defined in the userData).
+        """
+        return pulumi.get(self, "instance_store_policy_type")
+
+    @instance_store_policy_type.setter
+    def instance_store_policy_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_store_policy_type", value)
+
+
+if not MYPY:
     class OceanLaunchSpecAutoscaleDownArgsDict(TypedDict):
         max_scale_down_percentage: NotRequired[pulumi.Input[float]]
         """
@@ -12359,6 +12395,38 @@ class OceanLaunchSpecInstanceMetadataOptionsArgs:
     @http_put_response_hop_limit.setter
     def http_put_response_hop_limit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "http_put_response_hop_limit", value)
+
+
+if not MYPY:
+    class OceanLaunchSpecInstanceStorePolicyArgsDict(TypedDict):
+        instance_store_policy_type: NotRequired[pulumi.Input[str]]
+        """
+        Value: `"RAID0"` The method for using the instance store volumes (must also be defined in the userData).
+        """
+elif False:
+    OceanLaunchSpecInstanceStorePolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OceanLaunchSpecInstanceStorePolicyArgs:
+    def __init__(__self__, *,
+                 instance_store_policy_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] instance_store_policy_type: Value: `"RAID0"` The method for using the instance store volumes (must also be defined in the userData).
+        """
+        if instance_store_policy_type is not None:
+            pulumi.set(__self__, "instance_store_policy_type", instance_store_policy_type)
+
+    @property
+    @pulumi.getter(name="instanceStorePolicyType")
+    def instance_store_policy_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Value: `"RAID0"` The method for using the instance store volumes (must also be defined in the userData).
+        """
+        return pulumi.get(self, "instance_store_policy_type")
+
+    @instance_store_policy_type.setter
+    def instance_store_policy_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_store_policy_type", value)
 
 
 if not MYPY:

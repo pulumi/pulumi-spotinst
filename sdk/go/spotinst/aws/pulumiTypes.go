@@ -19457,6 +19457,143 @@ func (o OceanInstanceMetadataOptionsPtrOutput) HttpTokens() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+type OceanInstanceStorePolicy struct {
+	// Value: `"RAID0"` The method for using the instance store volumes (must also be defined in the userData).
+	InstanceStorePolicyType *string `pulumi:"instanceStorePolicyType"`
+}
+
+// OceanInstanceStorePolicyInput is an input type that accepts OceanInstanceStorePolicyArgs and OceanInstanceStorePolicyOutput values.
+// You can construct a concrete instance of `OceanInstanceStorePolicyInput` via:
+//
+//	OceanInstanceStorePolicyArgs{...}
+type OceanInstanceStorePolicyInput interface {
+	pulumi.Input
+
+	ToOceanInstanceStorePolicyOutput() OceanInstanceStorePolicyOutput
+	ToOceanInstanceStorePolicyOutputWithContext(context.Context) OceanInstanceStorePolicyOutput
+}
+
+type OceanInstanceStorePolicyArgs struct {
+	// Value: `"RAID0"` The method for using the instance store volumes (must also be defined in the userData).
+	InstanceStorePolicyType pulumi.StringPtrInput `pulumi:"instanceStorePolicyType"`
+}
+
+func (OceanInstanceStorePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanInstanceStorePolicy)(nil)).Elem()
+}
+
+func (i OceanInstanceStorePolicyArgs) ToOceanInstanceStorePolicyOutput() OceanInstanceStorePolicyOutput {
+	return i.ToOceanInstanceStorePolicyOutputWithContext(context.Background())
+}
+
+func (i OceanInstanceStorePolicyArgs) ToOceanInstanceStorePolicyOutputWithContext(ctx context.Context) OceanInstanceStorePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanInstanceStorePolicyOutput)
+}
+
+func (i OceanInstanceStorePolicyArgs) ToOceanInstanceStorePolicyPtrOutput() OceanInstanceStorePolicyPtrOutput {
+	return i.ToOceanInstanceStorePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i OceanInstanceStorePolicyArgs) ToOceanInstanceStorePolicyPtrOutputWithContext(ctx context.Context) OceanInstanceStorePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanInstanceStorePolicyOutput).ToOceanInstanceStorePolicyPtrOutputWithContext(ctx)
+}
+
+// OceanInstanceStorePolicyPtrInput is an input type that accepts OceanInstanceStorePolicyArgs, OceanInstanceStorePolicyPtr and OceanInstanceStorePolicyPtrOutput values.
+// You can construct a concrete instance of `OceanInstanceStorePolicyPtrInput` via:
+//
+//	        OceanInstanceStorePolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type OceanInstanceStorePolicyPtrInput interface {
+	pulumi.Input
+
+	ToOceanInstanceStorePolicyPtrOutput() OceanInstanceStorePolicyPtrOutput
+	ToOceanInstanceStorePolicyPtrOutputWithContext(context.Context) OceanInstanceStorePolicyPtrOutput
+}
+
+type oceanInstanceStorePolicyPtrType OceanInstanceStorePolicyArgs
+
+func OceanInstanceStorePolicyPtr(v *OceanInstanceStorePolicyArgs) OceanInstanceStorePolicyPtrInput {
+	return (*oceanInstanceStorePolicyPtrType)(v)
+}
+
+func (*oceanInstanceStorePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanInstanceStorePolicy)(nil)).Elem()
+}
+
+func (i *oceanInstanceStorePolicyPtrType) ToOceanInstanceStorePolicyPtrOutput() OceanInstanceStorePolicyPtrOutput {
+	return i.ToOceanInstanceStorePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanInstanceStorePolicyPtrType) ToOceanInstanceStorePolicyPtrOutputWithContext(ctx context.Context) OceanInstanceStorePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanInstanceStorePolicyPtrOutput)
+}
+
+type OceanInstanceStorePolicyOutput struct{ *pulumi.OutputState }
+
+func (OceanInstanceStorePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanInstanceStorePolicy)(nil)).Elem()
+}
+
+func (o OceanInstanceStorePolicyOutput) ToOceanInstanceStorePolicyOutput() OceanInstanceStorePolicyOutput {
+	return o
+}
+
+func (o OceanInstanceStorePolicyOutput) ToOceanInstanceStorePolicyOutputWithContext(ctx context.Context) OceanInstanceStorePolicyOutput {
+	return o
+}
+
+func (o OceanInstanceStorePolicyOutput) ToOceanInstanceStorePolicyPtrOutput() OceanInstanceStorePolicyPtrOutput {
+	return o.ToOceanInstanceStorePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o OceanInstanceStorePolicyOutput) ToOceanInstanceStorePolicyPtrOutputWithContext(ctx context.Context) OceanInstanceStorePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanInstanceStorePolicy) *OceanInstanceStorePolicy {
+		return &v
+	}).(OceanInstanceStorePolicyPtrOutput)
+}
+
+// Value: `"RAID0"` The method for using the instance store volumes (must also be defined in the userData).
+func (o OceanInstanceStorePolicyOutput) InstanceStorePolicyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanInstanceStorePolicy) *string { return v.InstanceStorePolicyType }).(pulumi.StringPtrOutput)
+}
+
+type OceanInstanceStorePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanInstanceStorePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanInstanceStorePolicy)(nil)).Elem()
+}
+
+func (o OceanInstanceStorePolicyPtrOutput) ToOceanInstanceStorePolicyPtrOutput() OceanInstanceStorePolicyPtrOutput {
+	return o
+}
+
+func (o OceanInstanceStorePolicyPtrOutput) ToOceanInstanceStorePolicyPtrOutputWithContext(ctx context.Context) OceanInstanceStorePolicyPtrOutput {
+	return o
+}
+
+func (o OceanInstanceStorePolicyPtrOutput) Elem() OceanInstanceStorePolicyOutput {
+	return o.ApplyT(func(v *OceanInstanceStorePolicy) OceanInstanceStorePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret OceanInstanceStorePolicy
+		return ret
+	}).(OceanInstanceStorePolicyOutput)
+}
+
+// Value: `"RAID0"` The method for using the instance store volumes (must also be defined in the userData).
+func (o OceanInstanceStorePolicyPtrOutput) InstanceStorePolicyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanInstanceStorePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceStorePolicyType
+	}).(pulumi.StringPtrOutput)
+}
+
 type OceanLaunchSpecAutoscaleDown struct {
 	// The maximum percentage allowed to scale down in a single scaling action on the nodes running in a specific VNG. Allowed only if maxScaleDownPercentage is set to null at the cluster level. Number between [0.1-100].
 	MaxScaleDownPercentage *float64 `pulumi:"maxScaleDownPercentage"`
@@ -21255,6 +21392,143 @@ func (o OceanLaunchSpecInstanceMetadataOptionsPtrOutput) HttpTokens() pulumi.Str
 			return nil
 		}
 		return &v.HttpTokens
+	}).(pulumi.StringPtrOutput)
+}
+
+type OceanLaunchSpecInstanceStorePolicy struct {
+	// Value: `"RAID0"` The method for using the instance store volumes (must also be defined in the userData).
+	InstanceStorePolicyType *string `pulumi:"instanceStorePolicyType"`
+}
+
+// OceanLaunchSpecInstanceStorePolicyInput is an input type that accepts OceanLaunchSpecInstanceStorePolicyArgs and OceanLaunchSpecInstanceStorePolicyOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecInstanceStorePolicyInput` via:
+//
+//	OceanLaunchSpecInstanceStorePolicyArgs{...}
+type OceanLaunchSpecInstanceStorePolicyInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecInstanceStorePolicyOutput() OceanLaunchSpecInstanceStorePolicyOutput
+	ToOceanLaunchSpecInstanceStorePolicyOutputWithContext(context.Context) OceanLaunchSpecInstanceStorePolicyOutput
+}
+
+type OceanLaunchSpecInstanceStorePolicyArgs struct {
+	// Value: `"RAID0"` The method for using the instance store volumes (must also be defined in the userData).
+	InstanceStorePolicyType pulumi.StringPtrInput `pulumi:"instanceStorePolicyType"`
+}
+
+func (OceanLaunchSpecInstanceStorePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecInstanceStorePolicy)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecInstanceStorePolicyArgs) ToOceanLaunchSpecInstanceStorePolicyOutput() OceanLaunchSpecInstanceStorePolicyOutput {
+	return i.ToOceanLaunchSpecInstanceStorePolicyOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecInstanceStorePolicyArgs) ToOceanLaunchSpecInstanceStorePolicyOutputWithContext(ctx context.Context) OceanLaunchSpecInstanceStorePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecInstanceStorePolicyOutput)
+}
+
+func (i OceanLaunchSpecInstanceStorePolicyArgs) ToOceanLaunchSpecInstanceStorePolicyPtrOutput() OceanLaunchSpecInstanceStorePolicyPtrOutput {
+	return i.ToOceanLaunchSpecInstanceStorePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecInstanceStorePolicyArgs) ToOceanLaunchSpecInstanceStorePolicyPtrOutputWithContext(ctx context.Context) OceanLaunchSpecInstanceStorePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecInstanceStorePolicyOutput).ToOceanLaunchSpecInstanceStorePolicyPtrOutputWithContext(ctx)
+}
+
+// OceanLaunchSpecInstanceStorePolicyPtrInput is an input type that accepts OceanLaunchSpecInstanceStorePolicyArgs, OceanLaunchSpecInstanceStorePolicyPtr and OceanLaunchSpecInstanceStorePolicyPtrOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecInstanceStorePolicyPtrInput` via:
+//
+//	        OceanLaunchSpecInstanceStorePolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type OceanLaunchSpecInstanceStorePolicyPtrInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecInstanceStorePolicyPtrOutput() OceanLaunchSpecInstanceStorePolicyPtrOutput
+	ToOceanLaunchSpecInstanceStorePolicyPtrOutputWithContext(context.Context) OceanLaunchSpecInstanceStorePolicyPtrOutput
+}
+
+type oceanLaunchSpecInstanceStorePolicyPtrType OceanLaunchSpecInstanceStorePolicyArgs
+
+func OceanLaunchSpecInstanceStorePolicyPtr(v *OceanLaunchSpecInstanceStorePolicyArgs) OceanLaunchSpecInstanceStorePolicyPtrInput {
+	return (*oceanLaunchSpecInstanceStorePolicyPtrType)(v)
+}
+
+func (*oceanLaunchSpecInstanceStorePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLaunchSpecInstanceStorePolicy)(nil)).Elem()
+}
+
+func (i *oceanLaunchSpecInstanceStorePolicyPtrType) ToOceanLaunchSpecInstanceStorePolicyPtrOutput() OceanLaunchSpecInstanceStorePolicyPtrOutput {
+	return i.ToOceanLaunchSpecInstanceStorePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanLaunchSpecInstanceStorePolicyPtrType) ToOceanLaunchSpecInstanceStorePolicyPtrOutputWithContext(ctx context.Context) OceanLaunchSpecInstanceStorePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecInstanceStorePolicyPtrOutput)
+}
+
+type OceanLaunchSpecInstanceStorePolicyOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecInstanceStorePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecInstanceStorePolicy)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecInstanceStorePolicyOutput) ToOceanLaunchSpecInstanceStorePolicyOutput() OceanLaunchSpecInstanceStorePolicyOutput {
+	return o
+}
+
+func (o OceanLaunchSpecInstanceStorePolicyOutput) ToOceanLaunchSpecInstanceStorePolicyOutputWithContext(ctx context.Context) OceanLaunchSpecInstanceStorePolicyOutput {
+	return o
+}
+
+func (o OceanLaunchSpecInstanceStorePolicyOutput) ToOceanLaunchSpecInstanceStorePolicyPtrOutput() OceanLaunchSpecInstanceStorePolicyPtrOutput {
+	return o.ToOceanLaunchSpecInstanceStorePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o OceanLaunchSpecInstanceStorePolicyOutput) ToOceanLaunchSpecInstanceStorePolicyPtrOutputWithContext(ctx context.Context) OceanLaunchSpecInstanceStorePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanLaunchSpecInstanceStorePolicy) *OceanLaunchSpecInstanceStorePolicy {
+		return &v
+	}).(OceanLaunchSpecInstanceStorePolicyPtrOutput)
+}
+
+// Value: `"RAID0"` The method for using the instance store volumes (must also be defined in the userData).
+func (o OceanLaunchSpecInstanceStorePolicyOutput) InstanceStorePolicyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecInstanceStorePolicy) *string { return v.InstanceStorePolicyType }).(pulumi.StringPtrOutput)
+}
+
+type OceanLaunchSpecInstanceStorePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecInstanceStorePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLaunchSpecInstanceStorePolicy)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecInstanceStorePolicyPtrOutput) ToOceanLaunchSpecInstanceStorePolicyPtrOutput() OceanLaunchSpecInstanceStorePolicyPtrOutput {
+	return o
+}
+
+func (o OceanLaunchSpecInstanceStorePolicyPtrOutput) ToOceanLaunchSpecInstanceStorePolicyPtrOutputWithContext(ctx context.Context) OceanLaunchSpecInstanceStorePolicyPtrOutput {
+	return o
+}
+
+func (o OceanLaunchSpecInstanceStorePolicyPtrOutput) Elem() OceanLaunchSpecInstanceStorePolicyOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecInstanceStorePolicy) OceanLaunchSpecInstanceStorePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret OceanLaunchSpecInstanceStorePolicy
+		return ret
+	}).(OceanLaunchSpecInstanceStorePolicyOutput)
+}
+
+// Value: `"RAID0"` The method for using the instance store volumes (must also be defined in the userData).
+func (o OceanLaunchSpecInstanceStorePolicyPtrOutput) InstanceStorePolicyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecInstanceStorePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceStorePolicyType
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -25573,6 +25847,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanFiltersPtrInput)(nil)).Elem(), OceanFiltersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanInstanceMetadataOptionsInput)(nil)).Elem(), OceanInstanceMetadataOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanInstanceMetadataOptionsPtrInput)(nil)).Elem(), OceanInstanceMetadataOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanInstanceStorePolicyInput)(nil)).Elem(), OceanInstanceStorePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanInstanceStorePolicyPtrInput)(nil)).Elem(), OceanInstanceStorePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecAutoscaleDownInput)(nil)).Elem(), OceanLaunchSpecAutoscaleDownArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecAutoscaleDownArrayInput)(nil)).Elem(), OceanLaunchSpecAutoscaleDownArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecAutoscaleHeadroomInput)(nil)).Elem(), OceanLaunchSpecAutoscaleHeadroomArgs{})
@@ -25599,6 +25875,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecImageArrayInput)(nil)).Elem(), OceanLaunchSpecImageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecInstanceMetadataOptionsInput)(nil)).Elem(), OceanLaunchSpecInstanceMetadataOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecInstanceMetadataOptionsPtrInput)(nil)).Elem(), OceanLaunchSpecInstanceMetadataOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecInstanceStorePolicyInput)(nil)).Elem(), OceanLaunchSpecInstanceStorePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecInstanceStorePolicyPtrInput)(nil)).Elem(), OceanLaunchSpecInstanceStorePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecInstanceTypesFiltersInput)(nil)).Elem(), OceanLaunchSpecInstanceTypesFiltersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecInstanceTypesFiltersPtrInput)(nil)).Elem(), OceanLaunchSpecInstanceTypesFiltersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecLabelInput)(nil)).Elem(), OceanLaunchSpecLabelArgs{})
@@ -25907,6 +26185,8 @@ func init() {
 	pulumi.RegisterOutputType(OceanFiltersPtrOutput{})
 	pulumi.RegisterOutputType(OceanInstanceMetadataOptionsOutput{})
 	pulumi.RegisterOutputType(OceanInstanceMetadataOptionsPtrOutput{})
+	pulumi.RegisterOutputType(OceanInstanceStorePolicyOutput{})
+	pulumi.RegisterOutputType(OceanInstanceStorePolicyPtrOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecAutoscaleDownOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecAutoscaleDownArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecAutoscaleHeadroomOutput{})
@@ -25933,6 +26213,8 @@ func init() {
 	pulumi.RegisterOutputType(OceanLaunchSpecImageArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecInstanceMetadataOptionsOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecInstanceMetadataOptionsPtrOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecInstanceStorePolicyOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecInstanceStorePolicyPtrOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecInstanceTypesFiltersOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecInstanceTypesFiltersPtrOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecLabelOutput{})

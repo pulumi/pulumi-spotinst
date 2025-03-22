@@ -35,6 +35,7 @@ class OceanLaunchSpecArgs:
                  image_id: Optional[pulumi.Input[str]] = None,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecImageArgs']]]] = None,
                  instance_metadata_options: Optional[pulumi.Input['OceanLaunchSpecInstanceMetadataOptionsArgs']] = None,
+                 instance_store_policy: Optional[pulumi.Input['OceanLaunchSpecInstanceStorePolicyArgs']] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  instance_types_filters: Optional[pulumi.Input['OceanLaunchSpecInstanceTypesFiltersArgs']] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]]] = None,
@@ -68,6 +69,7 @@ class OceanLaunchSpecArgs:
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecImageArgs']]] images: Array of objects (Image object, containing the id of the image used to launch instances.) You can configure VNG with either the imageId or images objects, but not both simultaneously.
                For each architecture type (amd64, arm64) only one AMI is allowed. Valid values: null, or an array with at least one element.
         :param pulumi.Input['OceanLaunchSpecInstanceMetadataOptionsArgs'] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
+        :param pulumi.Input['OceanLaunchSpecInstanceStorePolicyArgs'] instance_store_policy: Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
         :param pulumi.Input['OceanLaunchSpecInstanceTypesFiltersArgs'] instance_types_filters: The instance types that match with all filters compose the Virtual Node Group's instanceTypes parameter.
                The architectures that come from the Virtual Node Group's images will be taken into account when using this parameter. Cannot be configured together with Virtual Node Group's instanceTypes and with the Cluster's whitelist/blacklist/filters.
@@ -113,6 +115,8 @@ class OceanLaunchSpecArgs:
             pulumi.set(__self__, "images", images)
         if instance_metadata_options is not None:
             pulumi.set(__self__, "instance_metadata_options", instance_metadata_options)
+        if instance_store_policy is not None:
+            pulumi.set(__self__, "instance_store_policy", instance_store_policy)
         if instance_types is not None:
             pulumi.set(__self__, "instance_types", instance_types)
         if instance_types_filters is not None:
@@ -311,6 +315,18 @@ class OceanLaunchSpecArgs:
     @instance_metadata_options.setter
     def instance_metadata_options(self, value: Optional[pulumi.Input['OceanLaunchSpecInstanceMetadataOptionsArgs']]):
         pulumi.set(self, "instance_metadata_options", value)
+
+    @property
+    @pulumi.getter(name="instanceStorePolicy")
+    def instance_store_policy(self) -> Optional[pulumi.Input['OceanLaunchSpecInstanceStorePolicyArgs']]:
+        """
+        Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
+        """
+        return pulumi.get(self, "instance_store_policy")
+
+    @instance_store_policy.setter
+    def instance_store_policy(self, value: Optional[pulumi.Input['OceanLaunchSpecInstanceStorePolicyArgs']]):
+        pulumi.set(self, "instance_store_policy", value)
 
     @property
     @pulumi.getter(name="instanceTypes")
@@ -549,6 +565,7 @@ class _OceanLaunchSpecState:
                  image_id: Optional[pulumi.Input[str]] = None,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecImageArgs']]]] = None,
                  instance_metadata_options: Optional[pulumi.Input['OceanLaunchSpecInstanceMetadataOptionsArgs']] = None,
+                 instance_store_policy: Optional[pulumi.Input['OceanLaunchSpecInstanceStorePolicyArgs']] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  instance_types_filters: Optional[pulumi.Input['OceanLaunchSpecInstanceTypesFiltersArgs']] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]]] = None,
@@ -582,6 +599,7 @@ class _OceanLaunchSpecState:
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecImageArgs']]] images: Array of objects (Image object, containing the id of the image used to launch instances.) You can configure VNG with either the imageId or images objects, but not both simultaneously.
                For each architecture type (amd64, arm64) only one AMI is allowed. Valid values: null, or an array with at least one element.
         :param pulumi.Input['OceanLaunchSpecInstanceMetadataOptionsArgs'] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
+        :param pulumi.Input['OceanLaunchSpecInstanceStorePolicyArgs'] instance_store_policy: Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
         :param pulumi.Input['OceanLaunchSpecInstanceTypesFiltersArgs'] instance_types_filters: The instance types that match with all filters compose the Virtual Node Group's instanceTypes parameter.
                The architectures that come from the Virtual Node Group's images will be taken into account when using this parameter. Cannot be configured together with Virtual Node Group's instanceTypes and with the Cluster's whitelist/blacklist/filters.
@@ -627,6 +645,8 @@ class _OceanLaunchSpecState:
             pulumi.set(__self__, "images", images)
         if instance_metadata_options is not None:
             pulumi.set(__self__, "instance_metadata_options", instance_metadata_options)
+        if instance_store_policy is not None:
+            pulumi.set(__self__, "instance_store_policy", instance_store_policy)
         if instance_types is not None:
             pulumi.set(__self__, "instance_types", instance_types)
         if instance_types_filters is not None:
@@ -815,6 +835,18 @@ class _OceanLaunchSpecState:
     @instance_metadata_options.setter
     def instance_metadata_options(self, value: Optional[pulumi.Input['OceanLaunchSpecInstanceMetadataOptionsArgs']]):
         pulumi.set(self, "instance_metadata_options", value)
+
+    @property
+    @pulumi.getter(name="instanceStorePolicy")
+    def instance_store_policy(self) -> Optional[pulumi.Input['OceanLaunchSpecInstanceStorePolicyArgs']]:
+        """
+        Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
+        """
+        return pulumi.get(self, "instance_store_policy")
+
+    @instance_store_policy.setter
+    def instance_store_policy(self, value: Optional[pulumi.Input['OceanLaunchSpecInstanceStorePolicyArgs']]):
+        pulumi.set(self, "instance_store_policy", value)
 
     @property
     @pulumi.getter(name="instanceTypes")
@@ -1067,6 +1099,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  image_id: Optional[pulumi.Input[str]] = None,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecImageArgs', 'OceanLaunchSpecImageArgsDict']]]]] = None,
                  instance_metadata_options: Optional[pulumi.Input[Union['OceanLaunchSpecInstanceMetadataOptionsArgs', 'OceanLaunchSpecInstanceMetadataOptionsArgsDict']]] = None,
+                 instance_store_policy: Optional[pulumi.Input[Union['OceanLaunchSpecInstanceStorePolicyArgs', 'OceanLaunchSpecInstanceStorePolicyArgsDict']]] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  instance_types_filters: Optional[pulumi.Input[Union['OceanLaunchSpecInstanceTypesFiltersArgs', 'OceanLaunchSpecInstanceTypesFiltersArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecLabelArgs', 'OceanLaunchSpecLabelArgsDict']]]]] = None,
@@ -1114,6 +1147,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecImageArgs', 'OceanLaunchSpecImageArgsDict']]]] images: Array of objects (Image object, containing the id of the image used to launch instances.) You can configure VNG with either the imageId or images objects, but not both simultaneously.
                For each architecture type (amd64, arm64) only one AMI is allowed. Valid values: null, or an array with at least one element.
         :param pulumi.Input[Union['OceanLaunchSpecInstanceMetadataOptionsArgs', 'OceanLaunchSpecInstanceMetadataOptionsArgsDict']] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
+        :param pulumi.Input[Union['OceanLaunchSpecInstanceStorePolicyArgs', 'OceanLaunchSpecInstanceStorePolicyArgsDict']] instance_store_policy: Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
         :param pulumi.Input[Union['OceanLaunchSpecInstanceTypesFiltersArgs', 'OceanLaunchSpecInstanceTypesFiltersArgsDict']] instance_types_filters: The instance types that match with all filters compose the Virtual Node Group's instanceTypes parameter.
                The architectures that come from the Virtual Node Group's images will be taken into account when using this parameter. Cannot be configured together with Virtual Node Group's instanceTypes and with the Cluster's whitelist/blacklist/filters.
@@ -1180,6 +1214,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  image_id: Optional[pulumi.Input[str]] = None,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecImageArgs', 'OceanLaunchSpecImageArgsDict']]]]] = None,
                  instance_metadata_options: Optional[pulumi.Input[Union['OceanLaunchSpecInstanceMetadataOptionsArgs', 'OceanLaunchSpecInstanceMetadataOptionsArgsDict']]] = None,
+                 instance_store_policy: Optional[pulumi.Input[Union['OceanLaunchSpecInstanceStorePolicyArgs', 'OceanLaunchSpecInstanceStorePolicyArgsDict']]] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  instance_types_filters: Optional[pulumi.Input[Union['OceanLaunchSpecInstanceTypesFiltersArgs', 'OceanLaunchSpecInstanceTypesFiltersArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecLabelArgs', 'OceanLaunchSpecLabelArgsDict']]]]] = None,
@@ -1222,6 +1257,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             __props__.__dict__["image_id"] = image_id
             __props__.__dict__["images"] = images
             __props__.__dict__["instance_metadata_options"] = instance_metadata_options
+            __props__.__dict__["instance_store_policy"] = instance_store_policy
             __props__.__dict__["instance_types"] = instance_types
             __props__.__dict__["instance_types_filters"] = instance_types_filters
             __props__.__dict__["labels"] = labels
@@ -1267,6 +1303,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             image_id: Optional[pulumi.Input[str]] = None,
             images: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecImageArgs', 'OceanLaunchSpecImageArgsDict']]]]] = None,
             instance_metadata_options: Optional[pulumi.Input[Union['OceanLaunchSpecInstanceMetadataOptionsArgs', 'OceanLaunchSpecInstanceMetadataOptionsArgsDict']]] = None,
+            instance_store_policy: Optional[pulumi.Input[Union['OceanLaunchSpecInstanceStorePolicyArgs', 'OceanLaunchSpecInstanceStorePolicyArgsDict']]] = None,
             instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             instance_types_filters: Optional[pulumi.Input[Union['OceanLaunchSpecInstanceTypesFiltersArgs', 'OceanLaunchSpecInstanceTypesFiltersArgsDict']]] = None,
             labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecLabelArgs', 'OceanLaunchSpecLabelArgsDict']]]]] = None,
@@ -1305,6 +1342,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecImageArgs', 'OceanLaunchSpecImageArgsDict']]]] images: Array of objects (Image object, containing the id of the image used to launch instances.) You can configure VNG with either the imageId or images objects, but not both simultaneously.
                For each architecture type (amd64, arm64) only one AMI is allowed. Valid values: null, or an array with at least one element.
         :param pulumi.Input[Union['OceanLaunchSpecInstanceMetadataOptionsArgs', 'OceanLaunchSpecInstanceMetadataOptionsArgsDict']] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
+        :param pulumi.Input[Union['OceanLaunchSpecInstanceStorePolicyArgs', 'OceanLaunchSpecInstanceStorePolicyArgsDict']] instance_store_policy: Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
         :param pulumi.Input[Union['OceanLaunchSpecInstanceTypesFiltersArgs', 'OceanLaunchSpecInstanceTypesFiltersArgsDict']] instance_types_filters: The instance types that match with all filters compose the Virtual Node Group's instanceTypes parameter.
                The architectures that come from the Virtual Node Group's images will be taken into account when using this parameter. Cannot be configured together with Virtual Node Group's instanceTypes and with the Cluster's whitelist/blacklist/filters.
@@ -1341,6 +1379,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         __props__.__dict__["image_id"] = image_id
         __props__.__dict__["images"] = images
         __props__.__dict__["instance_metadata_options"] = instance_metadata_options
+        __props__.__dict__["instance_store_policy"] = instance_store_policy
         __props__.__dict__["instance_types"] = instance_types
         __props__.__dict__["instance_types_filters"] = instance_types_filters
         __props__.__dict__["labels"] = labels
@@ -1458,6 +1497,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
         Ocean instance metadata options object for IMDSv2.
         """
         return pulumi.get(self, "instance_metadata_options")
+
+    @property
+    @pulumi.getter(name="instanceStorePolicy")
+    def instance_store_policy(self) -> pulumi.Output[Optional['outputs.OceanLaunchSpecInstanceStorePolicy']]:
+        """
+        Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
+        """
+        return pulumi.get(self, "instance_store_policy")
 
     @property
     @pulumi.getter(name="instanceTypes")

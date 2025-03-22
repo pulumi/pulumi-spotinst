@@ -17,6 +17,7 @@ import com.pulumi.spotinst.aws.outputs.OceanClusterOrientation;
 import com.pulumi.spotinst.aws.outputs.OceanDetachLoadBalancer;
 import com.pulumi.spotinst.aws.outputs.OceanFilters;
 import com.pulumi.spotinst.aws.outputs.OceanInstanceMetadataOptions;
+import com.pulumi.spotinst.aws.outputs.OceanInstanceStorePolicy;
 import com.pulumi.spotinst.aws.outputs.OceanLoadBalancer;
 import com.pulumi.spotinst.aws.outputs.OceanLogging;
 import com.pulumi.spotinst.aws.outputs.OceanResourceTagSpecification;
@@ -287,6 +288,20 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<OceanInstanceMetadataOptions>> instanceMetadataOptions() {
         return Codegen.optional(this.instanceMetadataOptions);
+    }
+    /**
+     * Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
+     * 
+     */
+    @Export(name="instanceStorePolicy", refs={OceanInstanceStorePolicy.class}, tree="[0]")
+    private Output</* @Nullable */ OceanInstanceStorePolicy> instanceStorePolicy;
+
+    /**
+     * @return Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
+     * 
+     */
+    public Output<Optional<OceanInstanceStorePolicy>> instanceStorePolicy() {
+        return Codegen.optional(this.instanceStorePolicy);
     }
     /**
      * The key pair to attach the instances.

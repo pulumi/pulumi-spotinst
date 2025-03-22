@@ -2651,6 +2651,13 @@ export namespace aws {
         httpTokens: pulumi.Input<string>;
     }
 
+    export interface OceanInstanceStorePolicy {
+        /**
+         * Value: `"RAID0"` The method for using the instance store volumes (must also be defined in the userData).
+         */
+        instanceStorePolicyType?: pulumi.Input<string>;
+    }
+
     export interface OceanLaunchSpecAutoscaleDown {
         /**
          * The maximum percentage allowed to scale down in a single scaling action on the nodes running in a specific VNG. Allowed only if maxScaleDownPercentage is set to null at the cluster level. Number between [0.1-100].
@@ -2813,6 +2820,13 @@ export namespace aws {
          * Determines if a signed token is required or not. Valid values: `optional` or `required`.
          */
         httpTokens: pulumi.Input<string>;
+    }
+
+    export interface OceanLaunchSpecInstanceStorePolicy {
+        /**
+         * Value: `"RAID0"` The method for using the instance store volumes (must also be defined in the userData).
+         */
+        instanceStorePolicyType?: pulumi.Input<string>;
     }
 
     export interface OceanLaunchSpecInstanceTypesFilters {

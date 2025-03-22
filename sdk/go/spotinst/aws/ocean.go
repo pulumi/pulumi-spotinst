@@ -61,6 +61,8 @@ type Ocean struct {
 	ImageId pulumi.StringOutput `pulumi:"imageId"`
 	// Ocean instance metadata options object for IMDSv2.
 	InstanceMetadataOptions OceanInstanceMetadataOptionsPtrOutput `pulumi:"instanceMetadataOptions"`
+	// Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
+	InstanceStorePolicy OceanInstanceStorePolicyPtrOutput `pulumi:"instanceStorePolicy"`
 	// The key pair to attach the instances.
 	KeyName pulumi.StringPtrOutput `pulumi:"keyName"`
 	// Array of load balancer objects to add to ocean cluster
@@ -183,6 +185,8 @@ type oceanState struct {
 	ImageId *string `pulumi:"imageId"`
 	// Ocean instance metadata options object for IMDSv2.
 	InstanceMetadataOptions *OceanInstanceMetadataOptions `pulumi:"instanceMetadataOptions"`
+	// Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
+	InstanceStorePolicy *OceanInstanceStorePolicy `pulumi:"instanceStorePolicy"`
 	// The key pair to attach the instances.
 	KeyName *string `pulumi:"keyName"`
 	// Array of load balancer objects to add to ocean cluster
@@ -267,6 +271,8 @@ type OceanState struct {
 	ImageId pulumi.StringPtrInput
 	// Ocean instance metadata options object for IMDSv2.
 	InstanceMetadataOptions OceanInstanceMetadataOptionsPtrInput
+	// Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
+	InstanceStorePolicy OceanInstanceStorePolicyPtrInput
 	// The key pair to attach the instances.
 	KeyName pulumi.StringPtrInput
 	// Array of load balancer objects to add to ocean cluster
@@ -355,6 +361,8 @@ type oceanArgs struct {
 	ImageId string `pulumi:"imageId"`
 	// Ocean instance metadata options object for IMDSv2.
 	InstanceMetadataOptions *OceanInstanceMetadataOptions `pulumi:"instanceMetadataOptions"`
+	// Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
+	InstanceStorePolicy *OceanInstanceStorePolicy `pulumi:"instanceStorePolicy"`
 	// The key pair to attach the instances.
 	KeyName *string `pulumi:"keyName"`
 	// Array of load balancer objects to add to ocean cluster
@@ -440,6 +448,8 @@ type OceanArgs struct {
 	ImageId pulumi.StringInput
 	// Ocean instance metadata options object for IMDSv2.
 	InstanceMetadataOptions OceanInstanceMetadataOptionsPtrInput
+	// Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
+	InstanceStorePolicy OceanInstanceStorePolicyPtrInput
 	// The key pair to attach the instances.
 	KeyName pulumi.StringPtrInput
 	// Array of load balancer objects to add to ocean cluster
@@ -665,6 +675,11 @@ func (o OceanOutput) ImageId() pulumi.StringOutput {
 // Ocean instance metadata options object for IMDSv2.
 func (o OceanOutput) InstanceMetadataOptions() OceanInstanceMetadataOptionsPtrOutput {
 	return o.ApplyT(func(v *Ocean) OceanInstanceMetadataOptionsPtrOutput { return v.InstanceMetadataOptions }).(OceanInstanceMetadataOptionsPtrOutput)
+}
+
+// Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
+func (o OceanOutput) InstanceStorePolicy() OceanInstanceStorePolicyPtrOutput {
+	return o.ApplyT(func(v *Ocean) OceanInstanceStorePolicyPtrOutput { return v.InstanceStorePolicy }).(OceanInstanceStorePolicyPtrOutput)
 }
 
 // The key pair to attach the instances.

@@ -115,6 +115,10 @@ export class Ocean extends pulumi.CustomResource {
      */
     public readonly instanceMetadataOptions!: pulumi.Output<outputs.aws.OceanInstanceMetadataOptions | undefined>;
     /**
+     * Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
+     */
+    public readonly instanceStorePolicy!: pulumi.Output<outputs.aws.OceanInstanceStorePolicy | undefined>;
+    /**
      * The key pair to attach the instances.
      */
     public readonly keyName!: pulumi.Output<string | undefined>;
@@ -235,6 +239,7 @@ export class Ocean extends pulumi.CustomResource {
             resourceInputs["iamInstanceProfile"] = state ? state.iamInstanceProfile : undefined;
             resourceInputs["imageId"] = state ? state.imageId : undefined;
             resourceInputs["instanceMetadataOptions"] = state ? state.instanceMetadataOptions : undefined;
+            resourceInputs["instanceStorePolicy"] = state ? state.instanceStorePolicy : undefined;
             resourceInputs["keyName"] = state ? state.keyName : undefined;
             resourceInputs["loadBalancers"] = state ? state.loadBalancers : undefined;
             resourceInputs["logging"] = state ? state.logging : undefined;
@@ -288,6 +293,7 @@ export class Ocean extends pulumi.CustomResource {
             resourceInputs["iamInstanceProfile"] = args ? args.iamInstanceProfile : undefined;
             resourceInputs["imageId"] = args ? args.imageId : undefined;
             resourceInputs["instanceMetadataOptions"] = args ? args.instanceMetadataOptions : undefined;
+            resourceInputs["instanceStorePolicy"] = args ? args.instanceStorePolicy : undefined;
             resourceInputs["keyName"] = args ? args.keyName : undefined;
             resourceInputs["loadBalancers"] = args ? args.loadBalancers : undefined;
             resourceInputs["logging"] = args ? args.logging : undefined;
@@ -388,6 +394,10 @@ export interface OceanState {
      * Ocean instance metadata options object for IMDSv2.
      */
     instanceMetadataOptions?: pulumi.Input<inputs.aws.OceanInstanceMetadataOptions>;
+    /**
+     * Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
+     */
+    instanceStorePolicy?: pulumi.Input<inputs.aws.OceanInstanceStorePolicy>;
     /**
      * The key pair to attach the instances.
      */
@@ -549,6 +559,10 @@ export interface OceanArgs {
      * Ocean instance metadata options object for IMDSv2.
      */
     instanceMetadataOptions?: pulumi.Input<inputs.aws.OceanInstanceMetadataOptions>;
+    /**
+     * Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
+     */
+    instanceStorePolicy?: pulumi.Input<inputs.aws.OceanInstanceStorePolicy>;
     /**
      * The key pair to attach the instances.
      */
