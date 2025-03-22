@@ -3388,6 +3388,15 @@
                 "httpTokens"
             ]
         },
+        "spotinst:aws/OceanInstanceStorePolicy:OceanInstanceStorePolicy": {
+            "properties": {
+                "instanceStorePolicyType": {
+                    "type": "string",
+                    "description": "Value: `\"RAID0\"` The method for using the instance store volumes (must also be defined in the userData).\n"
+                }
+            },
+            "type": "object"
+        },
         "spotinst:aws/OceanLaunchSpecAutoscaleDown:OceanLaunchSpecAutoscaleDown": {
             "properties": {
                 "maxScaleDownPercentage": {
@@ -3605,6 +3614,15 @@
             "required": [
                 "httpTokens"
             ]
+        },
+        "spotinst:aws/OceanLaunchSpecInstanceStorePolicy:OceanLaunchSpecInstanceStorePolicy": {
+            "properties": {
+                "instanceStorePolicyType": {
+                    "type": "string",
+                    "description": "Value: `\"RAID0\"` The method for using the instance store volumes (must also be defined in the userData).\n"
+                }
+            },
+            "type": "object"
         },
         "spotinst:aws/OceanLaunchSpecInstanceTypesFilters:OceanLaunchSpecInstanceTypesFilters": {
             "properties": {
@@ -13922,6 +13940,10 @@
                     "$ref": "#/types/spotinst:aws/OceanInstanceMetadataOptions:OceanInstanceMetadataOptions",
                     "description": "Ocean instance metadata options object for IMDSv2.\n"
                 },
+                "instanceStorePolicy": {
+                    "$ref": "#/types/spotinst:aws/OceanInstanceStorePolicy:OceanInstanceStorePolicy",
+                    "description": "Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.\n"
+                },
                 "keyName": {
                     "type": "string",
                     "description": "The key pair to attach the instances.\n"
@@ -14131,6 +14153,10 @@
                     "$ref": "#/types/spotinst:aws/OceanInstanceMetadataOptions:OceanInstanceMetadataOptions",
                     "description": "Ocean instance metadata options object for IMDSv2.\n"
                 },
+                "instanceStorePolicy": {
+                    "$ref": "#/types/spotinst:aws/OceanInstanceStorePolicy:OceanInstanceStorePolicy",
+                    "description": "Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.\n"
+                },
                 "keyName": {
                     "type": "string",
                     "description": "The key pair to attach the instances.\n"
@@ -14338,6 +14364,10 @@
                     "instanceMetadataOptions": {
                         "$ref": "#/types/spotinst:aws/OceanInstanceMetadataOptions:OceanInstanceMetadataOptions",
                         "description": "Ocean instance metadata options object for IMDSv2.\n"
+                    },
+                    "instanceStorePolicy": {
+                        "$ref": "#/types/spotinst:aws/OceanInstanceStorePolicy:OceanInstanceStorePolicy",
+                        "description": "Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.\n"
                     },
                     "keyName": {
                         "type": "string",
@@ -14580,6 +14610,10 @@
                     "$ref": "#/types/spotinst:aws/OceanLaunchSpecInstanceMetadataOptions:OceanLaunchSpecInstanceMetadataOptions",
                     "description": "Ocean instance metadata options object for IMDSv2.\n"
                 },
+                "instanceStorePolicy": {
+                    "$ref": "#/types/spotinst:aws/OceanLaunchSpecInstanceStorePolicy:OceanLaunchSpecInstanceStorePolicy",
+                    "description": "Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.\n"
+                },
                 "instanceTypes": {
                     "type": "array",
                     "items": {
@@ -14765,6 +14799,10 @@
                 "instanceMetadataOptions": {
                     "$ref": "#/types/spotinst:aws/OceanLaunchSpecInstanceMetadataOptions:OceanLaunchSpecInstanceMetadataOptions",
                     "description": "Ocean instance metadata options object for IMDSv2.\n"
+                },
+                "instanceStorePolicy": {
+                    "$ref": "#/types/spotinst:aws/OceanLaunchSpecInstanceStorePolicy:OceanLaunchSpecInstanceStorePolicy",
+                    "description": "Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.\n"
                 },
                 "instanceTypes": {
                     "type": "array",
@@ -14953,6 +14991,10 @@
                     "instanceMetadataOptions": {
                         "$ref": "#/types/spotinst:aws/OceanLaunchSpecInstanceMetadataOptions:OceanLaunchSpecInstanceMetadataOptions",
                         "description": "Ocean instance metadata options object for IMDSv2.\n"
+                    },
+                    "instanceStorePolicy": {
+                        "$ref": "#/types/spotinst:aws/OceanLaunchSpecInstanceStorePolicy:OceanLaunchSpecInstanceStorePolicy",
+                        "description": "Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.\n"
                     },
                     "instanceTypes": {
                         "type": "array",
