@@ -50,6 +50,8 @@ type OceanLaunchSpec struct {
 	Images OceanLaunchSpecImageArrayOutput `pulumi:"images"`
 	// Ocean instance metadata options object for IMDSv2.
 	InstanceMetadataOptions OceanLaunchSpecInstanceMetadataOptionsPtrOutput `pulumi:"instanceMetadataOptions"`
+	// Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
+	InstanceStorePolicy OceanLaunchSpecInstanceStorePolicyPtrOutput `pulumi:"instanceStorePolicy"`
 	// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
 	InstanceTypes pulumi.StringArrayOutput `pulumi:"instanceTypes"`
 	// The instance types that match with all filters compose the Virtual Node Group's instanceTypes parameter.
@@ -147,6 +149,8 @@ type oceanLaunchSpecState struct {
 	Images []OceanLaunchSpecImage `pulumi:"images"`
 	// Ocean instance metadata options object for IMDSv2.
 	InstanceMetadataOptions *OceanLaunchSpecInstanceMetadataOptions `pulumi:"instanceMetadataOptions"`
+	// Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
+	InstanceStorePolicy *OceanLaunchSpecInstanceStorePolicy `pulumi:"instanceStorePolicy"`
 	// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
 	InstanceTypes []string `pulumi:"instanceTypes"`
 	// The instance types that match with all filters compose the Virtual Node Group's instanceTypes parameter.
@@ -212,6 +216,8 @@ type OceanLaunchSpecState struct {
 	Images OceanLaunchSpecImageArrayInput
 	// Ocean instance metadata options object for IMDSv2.
 	InstanceMetadataOptions OceanLaunchSpecInstanceMetadataOptionsPtrInput
+	// Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
+	InstanceStorePolicy OceanLaunchSpecInstanceStorePolicyPtrInput
 	// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
 	InstanceTypes pulumi.StringArrayInput
 	// The instance types that match with all filters compose the Virtual Node Group's instanceTypes parameter.
@@ -281,6 +287,8 @@ type oceanLaunchSpecArgs struct {
 	Images []OceanLaunchSpecImage `pulumi:"images"`
 	// Ocean instance metadata options object for IMDSv2.
 	InstanceMetadataOptions *OceanLaunchSpecInstanceMetadataOptions `pulumi:"instanceMetadataOptions"`
+	// Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
+	InstanceStorePolicy *OceanLaunchSpecInstanceStorePolicy `pulumi:"instanceStorePolicy"`
 	// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
 	InstanceTypes []string `pulumi:"instanceTypes"`
 	// The instance types that match with all filters compose the Virtual Node Group's instanceTypes parameter.
@@ -347,6 +355,8 @@ type OceanLaunchSpecArgs struct {
 	Images OceanLaunchSpecImageArrayInput
 	// Ocean instance metadata options object for IMDSv2.
 	InstanceMetadataOptions OceanLaunchSpecInstanceMetadataOptionsPtrInput
+	// Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
+	InstanceStorePolicy OceanLaunchSpecInstanceStorePolicyPtrInput
 	// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
 	InstanceTypes pulumi.StringArrayInput
 	// The instance types that match with all filters compose the Virtual Node Group's instanceTypes parameter.
@@ -539,6 +549,11 @@ func (o OceanLaunchSpecOutput) InstanceMetadataOptions() OceanLaunchSpecInstance
 	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecInstanceMetadataOptionsPtrOutput {
 		return v.InstanceMetadataOptions
 	}).(OceanLaunchSpecInstanceMetadataOptionsPtrOutput)
+}
+
+// Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
+func (o OceanLaunchSpecOutput) InstanceStorePolicy() OceanLaunchSpecInstanceStorePolicyPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecInstanceStorePolicyPtrOutput { return v.InstanceStorePolicy }).(OceanLaunchSpecInstanceStorePolicyPtrOutput)
 }
 
 // A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.

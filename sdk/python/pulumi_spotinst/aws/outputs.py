@@ -144,6 +144,7 @@ __all__ = [
     'OceanDetachLoadBalancer',
     'OceanFilters',
     'OceanInstanceMetadataOptions',
+    'OceanInstanceStorePolicy',
     'OceanLaunchSpecAutoscaleDown',
     'OceanLaunchSpecAutoscaleHeadroom',
     'OceanLaunchSpecAutoscaleHeadroomsAutomatic',
@@ -157,6 +158,7 @@ __all__ = [
     'OceanLaunchSpecEphemeralStorage',
     'OceanLaunchSpecImage',
     'OceanLaunchSpecInstanceMetadataOptions',
+    'OceanLaunchSpecInstanceStorePolicy',
     'OceanLaunchSpecInstanceTypesFilters',
     'OceanLaunchSpecLabel',
     'OceanLaunchSpecResourceLimit',
@@ -8979,6 +8981,42 @@ class OceanInstanceMetadataOptions(dict):
 
 
 @pulumi.output_type
+class OceanInstanceStorePolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "instanceStorePolicyType":
+            suggest = "instance_store_policy_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanInstanceStorePolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanInstanceStorePolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanInstanceStorePolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 instance_store_policy_type: Optional[str] = None):
+        """
+        :param str instance_store_policy_type: Value: `"RAID0"` The method for using the instance store volumes (must also be defined in the userData).
+        """
+        if instance_store_policy_type is not None:
+            pulumi.set(__self__, "instance_store_policy_type", instance_store_policy_type)
+
+    @property
+    @pulumi.getter(name="instanceStorePolicyType")
+    def instance_store_policy_type(self) -> Optional[str]:
+        """
+        Value: `"RAID0"` The method for using the instance store volumes (must also be defined in the userData).
+        """
+        return pulumi.get(self, "instance_store_policy_type")
+
+
+@pulumi.output_type
 class OceanLaunchSpecAutoscaleDown(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -9689,6 +9727,42 @@ class OceanLaunchSpecInstanceMetadataOptions(dict):
         An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
         """
         return pulumi.get(self, "http_put_response_hop_limit")
+
+
+@pulumi.output_type
+class OceanLaunchSpecInstanceStorePolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "instanceStorePolicyType":
+            suggest = "instance_store_policy_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanLaunchSpecInstanceStorePolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanLaunchSpecInstanceStorePolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanLaunchSpecInstanceStorePolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 instance_store_policy_type: Optional[str] = None):
+        """
+        :param str instance_store_policy_type: Value: `"RAID0"` The method for using the instance store volumes (must also be defined in the userData).
+        """
+        if instance_store_policy_type is not None:
+            pulumi.set(__self__, "instance_store_policy_type", instance_store_policy_type)
+
+    @property
+    @pulumi.getter(name="instanceStorePolicyType")
+    def instance_store_policy_type(self) -> Optional[str]:
+        """
+        Value: `"RAID0"` The method for using the instance store volumes (must also be defined in the userData).
+        """
+        return pulumi.get(self, "instance_store_policy_type")
 
 
 @pulumi.output_type

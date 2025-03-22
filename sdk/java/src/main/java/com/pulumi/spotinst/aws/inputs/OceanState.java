@@ -12,6 +12,7 @@ import com.pulumi.spotinst.aws.inputs.OceanClusterOrientationArgs;
 import com.pulumi.spotinst.aws.inputs.OceanDetachLoadBalancerArgs;
 import com.pulumi.spotinst.aws.inputs.OceanFiltersArgs;
 import com.pulumi.spotinst.aws.inputs.OceanInstanceMetadataOptionsArgs;
+import com.pulumi.spotinst.aws.inputs.OceanInstanceStorePolicyArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLoadBalancerArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLoggingArgs;
 import com.pulumi.spotinst.aws.inputs.OceanResourceTagSpecificationArgs;
@@ -290,6 +291,21 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<OceanInstanceMetadataOptionsArgs>> instanceMetadataOptions() {
         return Optional.ofNullable(this.instanceMetadataOptions);
+    }
+
+    /**
+     * Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
+     * 
+     */
+    @Import(name="instanceStorePolicy")
+    private @Nullable Output<OceanInstanceStorePolicyArgs> instanceStorePolicy;
+
+    /**
+     * @return Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
+     * 
+     */
+    public Optional<Output<OceanInstanceStorePolicyArgs>> instanceStorePolicy() {
+        return Optional.ofNullable(this.instanceStorePolicy);
     }
 
     /**
@@ -647,6 +663,7 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
         this.iamInstanceProfile = $.iamInstanceProfile;
         this.imageId = $.imageId;
         this.instanceMetadataOptions = $.instanceMetadataOptions;
+        this.instanceStorePolicy = $.instanceStorePolicy;
         this.keyName = $.keyName;
         this.loadBalancers = $.loadBalancers;
         this.logging = $.logging;
@@ -1089,6 +1106,27 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder instanceMetadataOptions(OceanInstanceMetadataOptionsArgs instanceMetadataOptions) {
             return instanceMetadataOptions(Output.of(instanceMetadataOptions));
+        }
+
+        /**
+         * @param instanceStorePolicy Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceStorePolicy(@Nullable Output<OceanInstanceStorePolicyArgs> instanceStorePolicy) {
+            $.instanceStorePolicy = instanceStorePolicy;
+            return this;
+        }
+
+        /**
+         * @param instanceStorePolicy Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceStorePolicy(OceanInstanceStorePolicyArgs instanceStorePolicy) {
+            return instanceStorePolicy(Output.of(instanceStorePolicy));
         }
 
         /**

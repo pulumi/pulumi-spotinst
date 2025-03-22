@@ -131,6 +131,12 @@ namespace Pulumi.SpotInst.Aws
         public Output<Outputs.OceanInstanceMetadataOptions?> InstanceMetadataOptions { get; private set; } = null!;
 
         /// <summary>
+        /// Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
+        /// </summary>
+        [Output("instanceStorePolicy")]
+        public Output<Outputs.OceanInstanceStorePolicy?> InstanceStorePolicy { get; private set; } = null!;
+
+        /// <summary>
         /// The key pair to attach the instances.
         /// </summary>
         [Output("keyName")]
@@ -442,6 +448,12 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("instanceMetadataOptions")]
         public Input<Inputs.OceanInstanceMetadataOptionsArgs>? InstanceMetadataOptions { get; set; }
+
+        /// <summary>
+        /// Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
+        /// </summary>
+        [Input("instanceStorePolicy")]
+        public Input<Inputs.OceanInstanceStorePolicyArgs>? InstanceStorePolicy { get; set; }
 
         /// <summary>
         /// The key pair to attach the instances.
@@ -758,6 +770,12 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("instanceMetadataOptions")]
         public Input<Inputs.OceanInstanceMetadataOptionsGetArgs>? InstanceMetadataOptions { get; set; }
+
+        /// <summary>
+        /// Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
+        /// </summary>
+        [Input("instanceStorePolicy")]
+        public Input<Inputs.OceanInstanceStorePolicyGetArgs>? InstanceStorePolicy { get; set; }
 
         /// <summary>
         /// The key pair to attach the instances.

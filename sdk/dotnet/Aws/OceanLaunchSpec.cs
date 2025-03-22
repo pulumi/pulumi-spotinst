@@ -96,6 +96,12 @@ namespace Pulumi.SpotInst.Aws
         public Output<Outputs.OceanLaunchSpecInstanceMetadataOptions?> InstanceMetadataOptions { get; private set; } = null!;
 
         /// <summary>
+        /// Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
+        /// </summary>
+        [Output("instanceStorePolicy")]
+        public Output<Outputs.OceanLaunchSpecInstanceStorePolicy?> InstanceStorePolicy { get; private set; } = null!;
+
+        /// <summary>
         /// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
         /// </summary>
         [Output("instanceTypes")]
@@ -363,6 +369,12 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("instanceMetadataOptions")]
         public Input<Inputs.OceanLaunchSpecInstanceMetadataOptionsArgs>? InstanceMetadataOptions { get; set; }
+
+        /// <summary>
+        /// Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
+        /// </summary>
+        [Input("instanceStorePolicy")]
+        public Input<Inputs.OceanLaunchSpecInstanceStorePolicyArgs>? InstanceStorePolicy { get; set; }
 
         [Input("instanceTypes")]
         private InputList<string>? _instanceTypes;
@@ -658,6 +670,12 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("instanceMetadataOptions")]
         public Input<Inputs.OceanLaunchSpecInstanceMetadataOptionsGetArgs>? InstanceMetadataOptions { get; set; }
+
+        /// <summary>
+        /// Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
+        /// </summary>
+        [Input("instanceStorePolicy")]
+        public Input<Inputs.OceanLaunchSpecInstanceStorePolicyGetArgs>? InstanceStorePolicy { get; set; }
 
         [Input("instanceTypes")]
         private InputList<string>? _instanceTypes;

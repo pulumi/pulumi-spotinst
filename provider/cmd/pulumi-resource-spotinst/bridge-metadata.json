@@ -1462,6 +1462,9 @@
                     "instance_metadata_options": {
                         "maxItemsOne": true
                     },
+                    "instance_store_policy": {
+                        "maxItemsOne": true
+                    },
                     "load_balancers": {
                         "maxItemsOne": false
                     },
@@ -1618,6 +1621,9 @@
                         "maxItemsOne": false
                     },
                     "instance_metadata_options": {
+                        "maxItemsOne": true
+                    },
+                    "instance_store_policy": {
                         "maxItemsOne": true
                     },
                     "instance_types": {

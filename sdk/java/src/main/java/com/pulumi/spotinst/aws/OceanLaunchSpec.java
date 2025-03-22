@@ -20,6 +20,7 @@ import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecElasticIpPool;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecEphemeralStorage;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecImage;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecInstanceMetadataOptions;
+import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecInstanceStorePolicy;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecInstanceTypesFilters;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecLabel;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecResourceLimit;
@@ -211,6 +212,20 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<OceanLaunchSpecInstanceMetadataOptions>> instanceMetadataOptions() {
         return Codegen.optional(this.instanceMetadataOptions);
+    }
+    /**
+     * Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
+     * 
+     */
+    @Export(name="instanceStorePolicy", refs={OceanLaunchSpecInstanceStorePolicy.class}, tree="[0]")
+    private Output</* @Nullable */ OceanLaunchSpecInstanceStorePolicy> instanceStorePolicy;
+
+    /**
+     * @return Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
+     * 
+     */
+    public Output<Optional<OceanLaunchSpecInstanceStorePolicy>> instanceStorePolicy() {
+        return Codegen.optional(this.instanceStorePolicy);
     }
     /**
      * A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.

@@ -42,6 +42,7 @@ class OceanArgs:
                  health_check_unhealthy_duration_before_replacement: Optional[pulumi.Input[int]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  instance_metadata_options: Optional[pulumi.Input['OceanInstanceMetadataOptionsArgs']] = None,
+                 instance_store_policy: Optional[pulumi.Input['OceanInstanceStorePolicyArgs']] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLoadBalancerArgs']]]] = None,
                  logging: Optional[pulumi.Input['OceanLoggingArgs']] = None,
@@ -84,6 +85,7 @@ class OceanArgs:
         :param pulumi.Input[int] health_check_unhealthy_duration_before_replacement: The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced. The minimum value allowed is 60, and it must be a multiple of 60.
         :param pulumi.Input[str] iam_instance_profile: The instance profile iam role.
         :param pulumi.Input['OceanInstanceMetadataOptionsArgs'] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
+        :param pulumi.Input['OceanInstanceStorePolicyArgs'] instance_store_policy: Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
         :param pulumi.Input[str] key_name: The key pair to attach the instances.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLoadBalancerArgs']]] load_balancers: Array of load balancer objects to add to ocean cluster
         :param pulumi.Input['OceanLoggingArgs'] logging: Logging configuration.
@@ -144,6 +146,8 @@ class OceanArgs:
             pulumi.set(__self__, "iam_instance_profile", iam_instance_profile)
         if instance_metadata_options is not None:
             pulumi.set(__self__, "instance_metadata_options", instance_metadata_options)
+        if instance_store_policy is not None:
+            pulumi.set(__self__, "instance_store_policy", instance_store_policy)
         if key_name is not None:
             pulumi.set(__self__, "key_name", key_name)
         if load_balancers is not None:
@@ -432,6 +436,18 @@ class OceanArgs:
         pulumi.set(self, "instance_metadata_options", value)
 
     @property
+    @pulumi.getter(name="instanceStorePolicy")
+    def instance_store_policy(self) -> Optional[pulumi.Input['OceanInstanceStorePolicyArgs']]:
+        """
+        Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
+        """
+        return pulumi.get(self, "instance_store_policy")
+
+    @instance_store_policy.setter
+    def instance_store_policy(self, value: Optional[pulumi.Input['OceanInstanceStorePolicyArgs']]):
+        pulumi.set(self, "instance_store_policy", value)
+
+    @property
     @pulumi.getter(name="keyName")
     def key_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -701,6 +717,7 @@ class _OceanState:
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  instance_metadata_options: Optional[pulumi.Input['OceanInstanceMetadataOptionsArgs']] = None,
+                 instance_store_policy: Optional[pulumi.Input['OceanInstanceStorePolicyArgs']] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLoadBalancerArgs']]]] = None,
                  logging: Optional[pulumi.Input['OceanLoggingArgs']] = None,
@@ -742,6 +759,7 @@ class _OceanState:
         :param pulumi.Input[str] iam_instance_profile: The instance profile iam role.
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
         :param pulumi.Input['OceanInstanceMetadataOptionsArgs'] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
+        :param pulumi.Input['OceanInstanceStorePolicyArgs'] instance_store_policy: Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
         :param pulumi.Input[str] key_name: The key pair to attach the instances.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLoadBalancerArgs']]] load_balancers: Array of load balancer objects to add to ocean cluster
         :param pulumi.Input['OceanLoggingArgs'] logging: Logging configuration.
@@ -804,6 +822,8 @@ class _OceanState:
             pulumi.set(__self__, "image_id", image_id)
         if instance_metadata_options is not None:
             pulumi.set(__self__, "instance_metadata_options", instance_metadata_options)
+        if instance_store_policy is not None:
+            pulumi.set(__self__, "instance_store_policy", instance_store_policy)
         if key_name is not None:
             pulumi.set(__self__, "key_name", key_name)
         if load_balancers is not None:
@@ -1069,6 +1089,18 @@ class _OceanState:
     @instance_metadata_options.setter
     def instance_metadata_options(self, value: Optional[pulumi.Input['OceanInstanceMetadataOptionsArgs']]):
         pulumi.set(self, "instance_metadata_options", value)
+
+    @property
+    @pulumi.getter(name="instanceStorePolicy")
+    def instance_store_policy(self) -> Optional[pulumi.Input['OceanInstanceStorePolicyArgs']]:
+        """
+        Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
+        """
+        return pulumi.get(self, "instance_store_policy")
+
+    @instance_store_policy.setter
+    def instance_store_policy(self, value: Optional[pulumi.Input['OceanInstanceStorePolicyArgs']]):
+        pulumi.set(self, "instance_store_policy", value)
 
     @property
     @pulumi.getter(name="keyName")
@@ -1367,6 +1399,7 @@ class Ocean(pulumi.CustomResource):
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  instance_metadata_options: Optional[pulumi.Input[Union['OceanInstanceMetadataOptionsArgs', 'OceanInstanceMetadataOptionsArgsDict']]] = None,
+                 instance_store_policy: Optional[pulumi.Input[Union['OceanInstanceStorePolicyArgs', 'OceanInstanceStorePolicyArgsDict']]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLoadBalancerArgs', 'OceanLoadBalancerArgsDict']]]]] = None,
                  logging: Optional[pulumi.Input[Union['OceanLoggingArgs', 'OceanLoggingArgsDict']]] = None,
@@ -1422,6 +1455,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[str] iam_instance_profile: The instance profile iam role.
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
         :param pulumi.Input[Union['OceanInstanceMetadataOptionsArgs', 'OceanInstanceMetadataOptionsArgsDict']] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
+        :param pulumi.Input[Union['OceanInstanceStorePolicyArgs', 'OceanInstanceStorePolicyArgsDict']] instance_store_policy: Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
         :param pulumi.Input[str] key_name: The key pair to attach the instances.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLoadBalancerArgs', 'OceanLoadBalancerArgsDict']]]] load_balancers: Array of load balancer objects to add to ocean cluster
         :param pulumi.Input[Union['OceanLoggingArgs', 'OceanLoggingArgsDict']] logging: Logging configuration.
@@ -1499,6 +1533,7 @@ class Ocean(pulumi.CustomResource):
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  instance_metadata_options: Optional[pulumi.Input[Union['OceanInstanceMetadataOptionsArgs', 'OceanInstanceMetadataOptionsArgsDict']]] = None,
+                 instance_store_policy: Optional[pulumi.Input[Union['OceanInstanceStorePolicyArgs', 'OceanInstanceStorePolicyArgsDict']]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLoadBalancerArgs', 'OceanLoadBalancerArgsDict']]]]] = None,
                  logging: Optional[pulumi.Input[Union['OceanLoggingArgs', 'OceanLoggingArgsDict']]] = None,
@@ -1552,6 +1587,7 @@ class Ocean(pulumi.CustomResource):
                 raise TypeError("Missing required property 'image_id'")
             __props__.__dict__["image_id"] = image_id
             __props__.__dict__["instance_metadata_options"] = instance_metadata_options
+            __props__.__dict__["instance_store_policy"] = instance_store_policy
             __props__.__dict__["key_name"] = key_name
             __props__.__dict__["load_balancers"] = load_balancers
             __props__.__dict__["logging"] = logging
@@ -1608,6 +1644,7 @@ class Ocean(pulumi.CustomResource):
             iam_instance_profile: Optional[pulumi.Input[str]] = None,
             image_id: Optional[pulumi.Input[str]] = None,
             instance_metadata_options: Optional[pulumi.Input[Union['OceanInstanceMetadataOptionsArgs', 'OceanInstanceMetadataOptionsArgsDict']]] = None,
+            instance_store_policy: Optional[pulumi.Input[Union['OceanInstanceStorePolicyArgs', 'OceanInstanceStorePolicyArgsDict']]] = None,
             key_name: Optional[pulumi.Input[str]] = None,
             load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLoadBalancerArgs', 'OceanLoadBalancerArgsDict']]]]] = None,
             logging: Optional[pulumi.Input[Union['OceanLoggingArgs', 'OceanLoggingArgsDict']]] = None,
@@ -1654,6 +1691,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[str] iam_instance_profile: The instance profile iam role.
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
         :param pulumi.Input[Union['OceanInstanceMetadataOptionsArgs', 'OceanInstanceMetadataOptionsArgsDict']] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
+        :param pulumi.Input[Union['OceanInstanceStorePolicyArgs', 'OceanInstanceStorePolicyArgsDict']] instance_store_policy: Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
         :param pulumi.Input[str] key_name: The key pair to attach the instances.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLoadBalancerArgs', 'OceanLoadBalancerArgsDict']]]] load_balancers: Array of load balancer objects to add to ocean cluster
         :param pulumi.Input[Union['OceanLoggingArgs', 'OceanLoggingArgsDict']] logging: Logging configuration.
@@ -1701,6 +1739,7 @@ class Ocean(pulumi.CustomResource):
         __props__.__dict__["iam_instance_profile"] = iam_instance_profile
         __props__.__dict__["image_id"] = image_id
         __props__.__dict__["instance_metadata_options"] = instance_metadata_options
+        __props__.__dict__["instance_store_policy"] = instance_store_policy
         __props__.__dict__["key_name"] = key_name
         __props__.__dict__["load_balancers"] = load_balancers
         __props__.__dict__["logging"] = logging
@@ -1868,6 +1907,14 @@ class Ocean(pulumi.CustomResource):
         Ocean instance metadata options object for IMDSv2.
         """
         return pulumi.get(self, "instance_metadata_options")
+
+    @property
+    @pulumi.getter(name="instanceStorePolicy")
+    def instance_store_policy(self) -> pulumi.Output[Optional['outputs.OceanInstanceStorePolicy']]:
+        """
+        Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
+        """
+        return pulumi.get(self, "instance_store_policy")
 
     @property
     @pulumi.getter(name="keyName")

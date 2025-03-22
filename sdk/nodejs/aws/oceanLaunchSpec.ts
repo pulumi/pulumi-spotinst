@@ -92,6 +92,10 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     public readonly instanceMetadataOptions!: pulumi.Output<outputs.aws.OceanLaunchSpecInstanceMetadataOptions | undefined>;
     /**
+     * Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
+     */
+    public readonly instanceStorePolicy!: pulumi.Output<outputs.aws.OceanLaunchSpecInstanceStorePolicy | undefined>;
+    /**
      * A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
      */
     public readonly instanceTypes!: pulumi.Output<string[] | undefined>;
@@ -190,6 +194,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             resourceInputs["imageId"] = state ? state.imageId : undefined;
             resourceInputs["images"] = state ? state.images : undefined;
             resourceInputs["instanceMetadataOptions"] = state ? state.instanceMetadataOptions : undefined;
+            resourceInputs["instanceStorePolicy"] = state ? state.instanceStorePolicy : undefined;
             resourceInputs["instanceTypes"] = state ? state.instanceTypes : undefined;
             resourceInputs["instanceTypesFilters"] = state ? state.instanceTypesFilters : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
@@ -228,6 +233,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             resourceInputs["imageId"] = args ? args.imageId : undefined;
             resourceInputs["images"] = args ? args.images : undefined;
             resourceInputs["instanceMetadataOptions"] = args ? args.instanceMetadataOptions : undefined;
+            resourceInputs["instanceStorePolicy"] = args ? args.instanceStorePolicy : undefined;
             resourceInputs["instanceTypes"] = args ? args.instanceTypes : undefined;
             resourceInputs["instanceTypesFilters"] = args ? args.instanceTypesFilters : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -302,6 +308,10 @@ export interface OceanLaunchSpecState {
      * Ocean instance metadata options object for IMDSv2.
      */
     instanceMetadataOptions?: pulumi.Input<inputs.aws.OceanLaunchSpecInstanceMetadataOptions>;
+    /**
+     * Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
+     */
+    instanceStorePolicy?: pulumi.Input<inputs.aws.OceanLaunchSpecInstanceStorePolicy>;
     /**
      * A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
      */
@@ -424,6 +434,10 @@ export interface OceanLaunchSpecArgs {
      * Ocean instance metadata options object for IMDSv2.
      */
     instanceMetadataOptions?: pulumi.Input<inputs.aws.OceanLaunchSpecInstanceMetadataOptions>;
+    /**
+     * Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
+     */
+    instanceStorePolicy?: pulumi.Input<inputs.aws.OceanLaunchSpecInstanceStorePolicy>;
     /**
      * A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
      */
