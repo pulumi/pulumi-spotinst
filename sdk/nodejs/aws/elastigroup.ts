@@ -83,6 +83,7 @@ import * as utilities from "../utilities";
  *     fallbackToOndemand: false,
  *     cpuCredits: "unlimited",
  *     minimumInstanceLifetime: 12,
+ *     maxReplacementsPercentage: 10,
  *     waitForCapacity: 5,
  *     waitForCapacityTimeout: 300,
  *     scalingStrategies: [{
@@ -289,6 +290,10 @@ export class Elastigroup extends pulumi.CustomResource {
      */
     public readonly logging!: pulumi.Output<outputs.aws.ElastigroupLogging | undefined>;
     /**
+     * The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once.
+     */
+    public readonly maxReplacementsPercentage!: pulumi.Output<number | undefined>;
+    /**
      * The maximum number of instances the group should have at any time.
      */
     public readonly maxSize!: pulumi.Output<number>;
@@ -470,6 +475,7 @@ export class Elastigroup extends pulumi.CustomResource {
             resourceInputs["keyName"] = state ? state.keyName : undefined;
             resourceInputs["lifetimePeriod"] = state ? state.lifetimePeriod : undefined;
             resourceInputs["logging"] = state ? state.logging : undefined;
+            resourceInputs["maxReplacementsPercentage"] = state ? state.maxReplacementsPercentage : undefined;
             resourceInputs["maxSize"] = state ? state.maxSize : undefined;
             resourceInputs["metadataOptions"] = state ? state.metadataOptions : undefined;
             resourceInputs["minSize"] = state ? state.minSize : undefined;
@@ -568,6 +574,7 @@ export class Elastigroup extends pulumi.CustomResource {
             resourceInputs["keyName"] = args ? args.keyName : undefined;
             resourceInputs["lifetimePeriod"] = args ? args.lifetimePeriod : undefined;
             resourceInputs["logging"] = args ? args.logging : undefined;
+            resourceInputs["maxReplacementsPercentage"] = args ? args.maxReplacementsPercentage : undefined;
             resourceInputs["maxSize"] = args ? args.maxSize : undefined;
             resourceInputs["metadataOptions"] = args ? args.metadataOptions : undefined;
             resourceInputs["minSize"] = args ? args.minSize : undefined;
@@ -737,6 +744,10 @@ export interface ElastigroupState {
      * Logging configuration.
      */
     logging?: pulumi.Input<inputs.aws.ElastigroupLogging>;
+    /**
+     * The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once.
+     */
+    maxReplacementsPercentage?: pulumi.Input<number>;
     /**
      * The maximum number of instances the group should have at any time.
      */
@@ -986,6 +997,10 @@ export interface ElastigroupArgs {
      * Logging configuration.
      */
     logging?: pulumi.Input<inputs.aws.ElastigroupLogging>;
+    /**
+     * The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once.
+     */
+    maxReplacementsPercentage?: pulumi.Input<number>;
     /**
      * The maximum number of instances the group should have at any time.
      */

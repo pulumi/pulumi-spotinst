@@ -66,6 +66,7 @@ class ElastigroupArgs:
                  key_name: Optional[pulumi.Input[str]] = None,
                  lifetime_period: Optional[pulumi.Input[str]] = None,
                  logging: Optional[pulumi.Input['ElastigroupLoggingArgs']] = None,
+                 max_replacements_percentage: Optional[pulumi.Input[int]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  metadata_options: Optional[pulumi.Input['ElastigroupMetadataOptionsArgs']] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
@@ -138,6 +139,7 @@ class ElastigroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupInstanceTypesWeightArgs']]] instance_types_weights: List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
         :param pulumi.Input[str] key_name: The key name that should be used for the instance.
         :param pulumi.Input['ElastigroupLoggingArgs'] logging: Logging configuration.
+        :param pulumi.Input[int] max_replacements_percentage: The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input['ElastigroupMetadataOptionsArgs'] metadata_options: Data that used to configure or manage the running instances:
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
@@ -251,6 +253,8 @@ class ElastigroupArgs:
             pulumi.set(__self__, "lifetime_period", lifetime_period)
         if logging is not None:
             pulumi.set(__self__, "logging", logging)
+        if max_replacements_percentage is not None:
+            pulumi.set(__self__, "max_replacements_percentage", max_replacements_percentage)
         if max_size is not None:
             pulumi.set(__self__, "max_size", max_size)
         if metadata_options is not None:
@@ -824,6 +828,18 @@ class ElastigroupArgs:
         pulumi.set(self, "logging", value)
 
     @property
+    @pulumi.getter(name="maxReplacementsPercentage")
+    def max_replacements_percentage(self) -> Optional[pulumi.Input[int]]:
+        """
+        The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once.
+        """
+        return pulumi.get(self, "max_replacements_percentage")
+
+    @max_replacements_percentage.setter
+    def max_replacements_percentage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_replacements_percentage", value)
+
+    @property
     @pulumi.getter(name="maxSize")
     def max_size(self) -> Optional[pulumi.Input[int]]:
         """
@@ -1293,6 +1309,7 @@ class _ElastigroupState:
                  key_name: Optional[pulumi.Input[str]] = None,
                  lifetime_period: Optional[pulumi.Input[str]] = None,
                  logging: Optional[pulumi.Input['ElastigroupLoggingArgs']] = None,
+                 max_replacements_percentage: Optional[pulumi.Input[int]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  metadata_options: Optional[pulumi.Input['ElastigroupMetadataOptionsArgs']] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
@@ -1364,6 +1381,7 @@ class _ElastigroupState:
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupInstanceTypesWeightArgs']]] instance_types_weights: List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
         :param pulumi.Input[str] key_name: The key name that should be used for the instance.
         :param pulumi.Input['ElastigroupLoggingArgs'] logging: Logging configuration.
+        :param pulumi.Input[int] max_replacements_percentage: The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input['ElastigroupMetadataOptionsArgs'] metadata_options: Data that used to configure or manage the running instances:
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
@@ -1479,6 +1497,8 @@ class _ElastigroupState:
             pulumi.set(__self__, "lifetime_period", lifetime_period)
         if logging is not None:
             pulumi.set(__self__, "logging", logging)
+        if max_replacements_percentage is not None:
+            pulumi.set(__self__, "max_replacements_percentage", max_replacements_percentage)
         if max_size is not None:
             pulumi.set(__self__, "max_size", max_size)
         if metadata_options is not None:
@@ -2021,6 +2041,18 @@ class _ElastigroupState:
         pulumi.set(self, "logging", value)
 
     @property
+    @pulumi.getter(name="maxReplacementsPercentage")
+    def max_replacements_percentage(self) -> Optional[pulumi.Input[int]]:
+        """
+        The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once.
+        """
+        return pulumi.get(self, "max_replacements_percentage")
+
+    @max_replacements_percentage.setter
+    def max_replacements_percentage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_replacements_percentage", value)
+
+    @property
     @pulumi.getter(name="maxSize")
     def max_size(self) -> Optional[pulumi.Input[int]]:
         """
@@ -2529,6 +2561,7 @@ class Elastigroup(pulumi.CustomResource):
                  key_name: Optional[pulumi.Input[str]] = None,
                  lifetime_period: Optional[pulumi.Input[str]] = None,
                  logging: Optional[pulumi.Input[Union['ElastigroupLoggingArgs', 'ElastigroupLoggingArgsDict']]] = None,
+                 max_replacements_percentage: Optional[pulumi.Input[int]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  metadata_options: Optional[pulumi.Input[Union['ElastigroupMetadataOptionsArgs', 'ElastigroupMetadataOptionsArgsDict']]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
@@ -2649,6 +2682,7 @@ class Elastigroup(pulumi.CustomResource):
             fallback_to_ondemand=False,
             cpu_credits="unlimited",
             minimum_instance_lifetime=12,
+            max_replacements_percentage=10,
             wait_for_capacity=5,
             wait_for_capacity_timeout=300,
             scaling_strategies=[{
@@ -2737,6 +2771,7 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupInstanceTypesWeightArgs', 'ElastigroupInstanceTypesWeightArgsDict']]]] instance_types_weights: List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
         :param pulumi.Input[str] key_name: The key name that should be used for the instance.
         :param pulumi.Input[Union['ElastigroupLoggingArgs', 'ElastigroupLoggingArgsDict']] logging: Logging configuration.
+        :param pulumi.Input[int] max_replacements_percentage: The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input[Union['ElastigroupMetadataOptionsArgs', 'ElastigroupMetadataOptionsArgsDict']] metadata_options: Data that used to configure or manage the running instances:
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
@@ -2851,6 +2886,7 @@ class Elastigroup(pulumi.CustomResource):
             fallback_to_ondemand=False,
             cpu_credits="unlimited",
             minimum_instance_lifetime=12,
+            max_replacements_percentage=10,
             wait_for_capacity=5,
             wait_for_capacity_timeout=300,
             scaling_strategies=[{
@@ -2967,6 +3003,7 @@ class Elastigroup(pulumi.CustomResource):
                  key_name: Optional[pulumi.Input[str]] = None,
                  lifetime_period: Optional[pulumi.Input[str]] = None,
                  logging: Optional[pulumi.Input[Union['ElastigroupLoggingArgs', 'ElastigroupLoggingArgsDict']]] = None,
+                 max_replacements_percentage: Optional[pulumi.Input[int]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  metadata_options: Optional[pulumi.Input[Union['ElastigroupMetadataOptionsArgs', 'ElastigroupMetadataOptionsArgsDict']]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
@@ -3062,6 +3099,7 @@ class Elastigroup(pulumi.CustomResource):
             __props__.__dict__["key_name"] = key_name
             __props__.__dict__["lifetime_period"] = lifetime_period
             __props__.__dict__["logging"] = logging
+            __props__.__dict__["max_replacements_percentage"] = max_replacements_percentage
             __props__.__dict__["max_size"] = max_size
             __props__.__dict__["metadata_options"] = metadata_options
             __props__.__dict__["min_size"] = min_size
@@ -3162,6 +3200,7 @@ class Elastigroup(pulumi.CustomResource):
             key_name: Optional[pulumi.Input[str]] = None,
             lifetime_period: Optional[pulumi.Input[str]] = None,
             logging: Optional[pulumi.Input[Union['ElastigroupLoggingArgs', 'ElastigroupLoggingArgsDict']]] = None,
+            max_replacements_percentage: Optional[pulumi.Input[int]] = None,
             max_size: Optional[pulumi.Input[int]] = None,
             metadata_options: Optional[pulumi.Input[Union['ElastigroupMetadataOptionsArgs', 'ElastigroupMetadataOptionsArgsDict']]] = None,
             min_size: Optional[pulumi.Input[int]] = None,
@@ -3238,6 +3277,7 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupInstanceTypesWeightArgs', 'ElastigroupInstanceTypesWeightArgsDict']]]] instance_types_weights: List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
         :param pulumi.Input[str] key_name: The key name that should be used for the instance.
         :param pulumi.Input[Union['ElastigroupLoggingArgs', 'ElastigroupLoggingArgsDict']] logging: Logging configuration.
+        :param pulumi.Input[int] max_replacements_percentage: The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input[Union['ElastigroupMetadataOptionsArgs', 'ElastigroupMetadataOptionsArgsDict']] metadata_options: Data that used to configure or manage the running instances:
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
@@ -3315,6 +3355,7 @@ class Elastigroup(pulumi.CustomResource):
         __props__.__dict__["key_name"] = key_name
         __props__.__dict__["lifetime_period"] = lifetime_period
         __props__.__dict__["logging"] = logging
+        __props__.__dict__["max_replacements_percentage"] = max_replacements_percentage
         __props__.__dict__["max_size"] = max_size
         __props__.__dict__["metadata_options"] = metadata_options
         __props__.__dict__["min_size"] = min_size
@@ -3643,6 +3684,14 @@ class Elastigroup(pulumi.CustomResource):
         Logging configuration.
         """
         return pulumi.get(self, "logging")
+
+    @property
+    @pulumi.getter(name="maxReplacementsPercentage")
+    def max_replacements_percentage(self) -> pulumi.Output[Optional[int]]:
+        """
+        The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once.
+        """
+        return pulumi.get(self, "max_replacements_percentage")
 
     @property
     @pulumi.getter(name="maxSize")
