@@ -102,12 +102,13 @@ import (
 //						RequiredVcpuMaximum:   pulumi.Int(64),
 //					},
 //				},
-//				Orientation:             pulumi.String("balanced"),
-//				FallbackToOndemand:      pulumi.Bool(false),
-//				CpuCredits:              pulumi.String("unlimited"),
-//				MinimumInstanceLifetime: pulumi.Int(12),
-//				WaitForCapacity:         pulumi.Int(5),
-//				WaitForCapacityTimeout:  pulumi.Int(300),
+//				Orientation:               pulumi.String("balanced"),
+//				FallbackToOndemand:        pulumi.Bool(false),
+//				CpuCredits:                pulumi.String("unlimited"),
+//				MinimumInstanceLifetime:   pulumi.Int(12),
+//				MaxReplacementsPercentage: pulumi.Int(10),
+//				WaitForCapacity:           pulumi.Int(5),
+//				WaitForCapacityTimeout:    pulumi.Int(300),
 //				ScalingStrategies: aws.ElastigroupScalingStrategyArray{
 //					&aws.ElastigroupScalingStrategyArgs{
 //						TerminateAtEndOfBillingHour: pulumi.Bool(true),
@@ -254,6 +255,8 @@ type Elastigroup struct {
 	LifetimePeriod pulumi.StringPtrOutput `pulumi:"lifetimePeriod"`
 	// Logging configuration.
 	Logging ElastigroupLoggingPtrOutput `pulumi:"logging"`
+	// The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once.
+	MaxReplacementsPercentage pulumi.IntPtrOutput `pulumi:"maxReplacementsPercentage"`
 	// The maximum number of instances the group should have at any time.
 	MaxSize pulumi.IntOutput `pulumi:"maxSize"`
 	// Data that used to configure or manage the running instances:
@@ -441,6 +444,8 @@ type elastigroupState struct {
 	LifetimePeriod *string `pulumi:"lifetimePeriod"`
 	// Logging configuration.
 	Logging *ElastigroupLogging `pulumi:"logging"`
+	// The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once.
+	MaxReplacementsPercentage *int `pulumi:"maxReplacementsPercentage"`
 	// The maximum number of instances the group should have at any time.
 	MaxSize *int `pulumi:"maxSize"`
 	// Data that used to configure or manage the running instances:
@@ -587,6 +592,8 @@ type ElastigroupState struct {
 	LifetimePeriod pulumi.StringPtrInput
 	// Logging configuration.
 	Logging ElastigroupLoggingPtrInput
+	// The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once.
+	MaxReplacementsPercentage pulumi.IntPtrInput
 	// The maximum number of instances the group should have at any time.
 	MaxSize pulumi.IntPtrInput
 	// Data that used to configure or manage the running instances:
@@ -737,6 +744,8 @@ type elastigroupArgs struct {
 	LifetimePeriod *string `pulumi:"lifetimePeriod"`
 	// Logging configuration.
 	Logging *ElastigroupLogging `pulumi:"logging"`
+	// The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once.
+	MaxReplacementsPercentage *int `pulumi:"maxReplacementsPercentage"`
 	// The maximum number of instances the group should have at any time.
 	MaxSize *int `pulumi:"maxSize"`
 	// Data that used to configure or manage the running instances:
@@ -884,6 +893,8 @@ type ElastigroupArgs struct {
 	LifetimePeriod pulumi.StringPtrInput
 	// Logging configuration.
 	Logging ElastigroupLoggingPtrInput
+	// The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once.
+	MaxReplacementsPercentage pulumi.IntPtrInput
 	// The maximum number of instances the group should have at any time.
 	MaxSize pulumi.IntPtrInput
 	// Data that used to configure or manage the running instances:
@@ -1240,6 +1251,11 @@ func (o ElastigroupOutput) LifetimePeriod() pulumi.StringPtrOutput {
 // Logging configuration.
 func (o ElastigroupOutput) Logging() ElastigroupLoggingPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) ElastigroupLoggingPtrOutput { return v.Logging }).(ElastigroupLoggingPtrOutput)
+}
+
+// The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once.
+func (o ElastigroupOutput) MaxReplacementsPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.IntPtrOutput { return v.MaxReplacementsPercentage }).(pulumi.IntPtrOutput)
 }
 
 // The maximum number of instances the group should have at any time.

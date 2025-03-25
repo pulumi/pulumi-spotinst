@@ -544,6 +544,21 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once.
+     * 
+     */
+    @Import(name="maxReplacementsPercentage")
+    private @Nullable Output<Integer> maxReplacementsPercentage;
+
+    /**
+     * @return The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once.
+     * 
+     */
+    public Optional<Output<Integer>> maxReplacementsPercentage() {
+        return Optional.ofNullable(this.maxReplacementsPercentage);
+    }
+
+    /**
      * The maximum number of instances the group should have at any time.
      * 
      */
@@ -1106,6 +1121,7 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
         this.keyName = $.keyName;
         this.lifetimePeriod = $.lifetimePeriod;
         this.logging = $.logging;
+        this.maxReplacementsPercentage = $.maxReplacementsPercentage;
         this.maxSize = $.maxSize;
         this.metadataOptions = $.metadataOptions;
         this.minSize = $.minSize;
@@ -1917,6 +1933,27 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder logging(ElastigroupLoggingArgs logging) {
             return logging(Output.of(logging));
+        }
+
+        /**
+         * @param maxReplacementsPercentage The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxReplacementsPercentage(@Nullable Output<Integer> maxReplacementsPercentage) {
+            $.maxReplacementsPercentage = maxReplacementsPercentage;
+            return this;
+        }
+
+        /**
+         * @param maxReplacementsPercentage The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxReplacementsPercentage(Integer maxReplacementsPercentage) {
+            return maxReplacementsPercentage(Output.of(maxReplacementsPercentage));
         }
 
         /**

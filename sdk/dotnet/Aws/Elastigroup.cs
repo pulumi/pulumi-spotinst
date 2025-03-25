@@ -116,6 +116,7 @@ namespace Pulumi.SpotInst.Aws
     ///         FallbackToOndemand = false,
     ///         CpuCredits = "unlimited",
     ///         MinimumInstanceLifetime = 12,
+    ///         MaxReplacementsPercentage = 10,
     ///         WaitForCapacity = 5,
     ///         WaitForCapacityTimeout = 300,
     ///         ScalingStrategies = new[]
@@ -407,6 +408,12 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Output("logging")]
         public Output<Outputs.ElastigroupLogging?> Logging { get; private set; } = null!;
+
+        /// <summary>
+        /// The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once.
+        /// </summary>
+        [Output("maxReplacementsPercentage")]
+        public Output<int?> MaxReplacementsPercentage { get; private set; } = null!;
 
         /// <summary>
         /// The maximum number of instances the group should have at any time.
@@ -918,6 +925,12 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("logging")]
         public Input<Inputs.ElastigroupLoggingArgs>? Logging { get; set; }
+
+        /// <summary>
+        /// The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once.
+        /// </summary>
+        [Input("maxReplacementsPercentage")]
+        public Input<int>? MaxReplacementsPercentage { get; set; }
 
         /// <summary>
         /// The maximum number of instances the group should have at any time.
@@ -1485,6 +1498,12 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("logging")]
         public Input<Inputs.ElastigroupLoggingGetArgs>? Logging { get; set; }
+
+        /// <summary>
+        /// The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once.
+        /// </summary>
+        [Input("maxReplacementsPercentage")]
+        public Input<int>? MaxReplacementsPercentage { get; set; }
 
         /// <summary>
         /// The maximum number of instances the group should have at any time.
