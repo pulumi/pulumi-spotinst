@@ -95,6 +95,7 @@ import (
 //				Strategies: gke.OceanLaunchSpecStrategyArray{
 //					&gke.OceanLaunchSpecStrategyArgs{
 //						PreemptiblePercentage: pulumi.Int(30),
+//						ScalingOrientation:    pulumi.String("balanced"),
 //					},
 //				},
 //				SchedulingTasks: gke.OceanLaunchSpecSchedulingTaskArray{

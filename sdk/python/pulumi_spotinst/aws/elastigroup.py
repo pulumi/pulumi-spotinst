@@ -139,7 +139,6 @@ class ElastigroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupInstanceTypesWeightArgs']]] instance_types_weights: List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
         :param pulumi.Input[str] key_name: The key name that should be used for the instance.
         :param pulumi.Input['ElastigroupLoggingArgs'] logging: Logging configuration.
-        :param pulumi.Input[int] max_replacements_percentage: The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input['ElastigroupMetadataOptionsArgs'] metadata_options: Data that used to configure or manage the running instances:
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
@@ -830,9 +829,6 @@ class ElastigroupArgs:
     @property
     @pulumi.getter(name="maxReplacementsPercentage")
     def max_replacements_percentage(self) -> Optional[pulumi.Input[int]]:
-        """
-        The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once.
-        """
         return pulumi.get(self, "max_replacements_percentage")
 
     @max_replacements_percentage.setter
@@ -1381,7 +1377,6 @@ class _ElastigroupState:
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupInstanceTypesWeightArgs']]] instance_types_weights: List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
         :param pulumi.Input[str] key_name: The key name that should be used for the instance.
         :param pulumi.Input['ElastigroupLoggingArgs'] logging: Logging configuration.
-        :param pulumi.Input[int] max_replacements_percentage: The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input['ElastigroupMetadataOptionsArgs'] metadata_options: Data that used to configure or manage the running instances:
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
@@ -2043,9 +2038,6 @@ class _ElastigroupState:
     @property
     @pulumi.getter(name="maxReplacementsPercentage")
     def max_replacements_percentage(self) -> Optional[pulumi.Input[int]]:
-        """
-        The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once.
-        """
         return pulumi.get(self, "max_replacements_percentage")
 
     @max_replacements_percentage.setter
@@ -2771,7 +2763,6 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupInstanceTypesWeightArgs', 'ElastigroupInstanceTypesWeightArgsDict']]]] instance_types_weights: List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
         :param pulumi.Input[str] key_name: The key name that should be used for the instance.
         :param pulumi.Input[Union['ElastigroupLoggingArgs', 'ElastigroupLoggingArgsDict']] logging: Logging configuration.
-        :param pulumi.Input[int] max_replacements_percentage: The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input[Union['ElastigroupMetadataOptionsArgs', 'ElastigroupMetadataOptionsArgsDict']] metadata_options: Data that used to configure or manage the running instances:
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
@@ -3277,7 +3268,6 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupInstanceTypesWeightArgs', 'ElastigroupInstanceTypesWeightArgsDict']]]] instance_types_weights: List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
         :param pulumi.Input[str] key_name: The key name that should be used for the instance.
         :param pulumi.Input[Union['ElastigroupLoggingArgs', 'ElastigroupLoggingArgsDict']] logging: Logging configuration.
-        :param pulumi.Input[int] max_replacements_percentage: The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input[Union['ElastigroupMetadataOptionsArgs', 'ElastigroupMetadataOptionsArgsDict']] metadata_options: Data that used to configure or manage the running instances:
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
@@ -3688,9 +3678,6 @@ class Elastigroup(pulumi.CustomResource):
     @property
     @pulumi.getter(name="maxReplacementsPercentage")
     def max_replacements_percentage(self) -> pulumi.Output[Optional[int]]:
-        """
-        The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once.
-        """
         return pulumi.get(self, "max_replacements_percentage")
 
     @property

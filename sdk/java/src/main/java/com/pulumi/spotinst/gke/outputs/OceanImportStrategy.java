@@ -29,6 +29,11 @@ public final class OceanImportStrategy {
      */
     private @Nullable String provisioningModel;
     /**
+     * @return Valid Values: `&#34;cost&#34;, &#34;availability&#34;, &#34;balanced&#34;`. Set this value to control the approach that Ocean takes when launching nodes.
+     * 
+     */
+    private @Nullable String scalingOrientation;
+    /**
      * @return Enable committed use discounts utilization.
      * 
      */
@@ -57,6 +62,13 @@ public final class OceanImportStrategy {
         return Optional.ofNullable(this.provisioningModel);
     }
     /**
+     * @return Valid Values: `&#34;cost&#34;, &#34;availability&#34;, &#34;balanced&#34;`. Set this value to control the approach that Ocean takes when launching nodes.
+     * 
+     */
+    public Optional<String> scalingOrientation() {
+        return Optional.ofNullable(this.scalingOrientation);
+    }
+    /**
      * @return Enable committed use discounts utilization.
      * 
      */
@@ -76,6 +88,7 @@ public final class OceanImportStrategy {
         private @Nullable Integer drainingTimeout;
         private @Nullable Integer preemptiblePercentage;
         private @Nullable String provisioningModel;
+        private @Nullable String scalingOrientation;
         private @Nullable Boolean shouldUtilizeCommitments;
         public Builder() {}
         public Builder(OceanImportStrategy defaults) {
@@ -83,6 +96,7 @@ public final class OceanImportStrategy {
     	      this.drainingTimeout = defaults.drainingTimeout;
     	      this.preemptiblePercentage = defaults.preemptiblePercentage;
     	      this.provisioningModel = defaults.provisioningModel;
+    	      this.scalingOrientation = defaults.scalingOrientation;
     	      this.shouldUtilizeCommitments = defaults.shouldUtilizeCommitments;
         }
 
@@ -105,6 +119,12 @@ public final class OceanImportStrategy {
             return this;
         }
         @CustomType.Setter
+        public Builder scalingOrientation(@Nullable String scalingOrientation) {
+
+            this.scalingOrientation = scalingOrientation;
+            return this;
+        }
+        @CustomType.Setter
         public Builder shouldUtilizeCommitments(@Nullable Boolean shouldUtilizeCommitments) {
 
             this.shouldUtilizeCommitments = shouldUtilizeCommitments;
@@ -115,6 +135,7 @@ public final class OceanImportStrategy {
             _resultValue.drainingTimeout = drainingTimeout;
             _resultValue.preemptiblePercentage = preemptiblePercentage;
             _resultValue.provisioningModel = provisioningModel;
+            _resultValue.scalingOrientation = scalingOrientation;
             _resultValue.shouldUtilizeCommitments = shouldUtilizeCommitments;
             return _resultValue;
         }

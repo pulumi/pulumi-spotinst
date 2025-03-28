@@ -26,6 +26,10 @@ namespace Pulumi.SpotInst.Gke.Outputs
         /// </summary>
         public readonly string? ProvisioningModel;
         /// <summary>
+        /// Valid Values: `"cost", "availability", "balanced"`. Set this value to control the approach that Ocean takes when launching nodes.
+        /// </summary>
+        public readonly string? ScalingOrientation;
+        /// <summary>
         /// Enable committed use discounts utilization.
         /// </summary>
         public readonly bool? ShouldUtilizeCommitments;
@@ -38,11 +42,14 @@ namespace Pulumi.SpotInst.Gke.Outputs
 
             string? provisioningModel,
 
+            string? scalingOrientation,
+
             bool? shouldUtilizeCommitments)
         {
             DrainingTimeout = drainingTimeout;
             PreemptiblePercentage = preemptiblePercentage;
             ProvisioningModel = provisioningModel;
+            ScalingOrientation = scalingOrientation;
             ShouldUtilizeCommitments = shouldUtilizeCommitments;
         }
     }

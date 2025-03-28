@@ -6,6 +6,7 @@ package com.pulumi.spotinst.gke.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -30,10 +31,26 @@ public final class OceanLaunchSpecStrategyArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.preemptiblePercentage);
     }
 
+    /**
+     * Valid Values: `&#34;cost&#34;, &#34;availability&#34;, &#34;balanced&#34;`. Set this value to control the approach that Ocean takes when launching nodes.
+     * 
+     */
+    @Import(name="scalingOrientation")
+    private @Nullable Output<String> scalingOrientation;
+
+    /**
+     * @return Valid Values: `&#34;cost&#34;, &#34;availability&#34;, &#34;balanced&#34;`. Set this value to control the approach that Ocean takes when launching nodes.
+     * 
+     */
+    public Optional<Output<String>> scalingOrientation() {
+        return Optional.ofNullable(this.scalingOrientation);
+    }
+
     private OceanLaunchSpecStrategyArgs() {}
 
     private OceanLaunchSpecStrategyArgs(OceanLaunchSpecStrategyArgs $) {
         this.preemptiblePercentage = $.preemptiblePercentage;
+        this.scalingOrientation = $.scalingOrientation;
     }
 
     public static Builder builder() {
@@ -73,6 +90,27 @@ public final class OceanLaunchSpecStrategyArgs extends com.pulumi.resources.Reso
          */
         public Builder preemptiblePercentage(Integer preemptiblePercentage) {
             return preemptiblePercentage(Output.of(preemptiblePercentage));
+        }
+
+        /**
+         * @param scalingOrientation Valid Values: `&#34;cost&#34;, &#34;availability&#34;, &#34;balanced&#34;`. Set this value to control the approach that Ocean takes when launching nodes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scalingOrientation(@Nullable Output<String> scalingOrientation) {
+            $.scalingOrientation = scalingOrientation;
+            return this;
+        }
+
+        /**
+         * @param scalingOrientation Valid Values: `&#34;cost&#34;, &#34;availability&#34;, &#34;balanced&#34;`. Set this value to control the approach that Ocean takes when launching nodes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scalingOrientation(String scalingOrientation) {
+            return scalingOrientation(Output.of(scalingOrientation));
         }
 
         public OceanLaunchSpecStrategyArgs build() {

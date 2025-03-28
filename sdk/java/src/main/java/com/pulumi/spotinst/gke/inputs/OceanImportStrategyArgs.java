@@ -63,6 +63,21 @@ public final class OceanImportStrategyArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * Valid Values: `&#34;cost&#34;, &#34;availability&#34;, &#34;balanced&#34;`. Set this value to control the approach that Ocean takes when launching nodes.
+     * 
+     */
+    @Import(name="scalingOrientation")
+    private @Nullable Output<String> scalingOrientation;
+
+    /**
+     * @return Valid Values: `&#34;cost&#34;, &#34;availability&#34;, &#34;balanced&#34;`. Set this value to control the approach that Ocean takes when launching nodes.
+     * 
+     */
+    public Optional<Output<String>> scalingOrientation() {
+        return Optional.ofNullable(this.scalingOrientation);
+    }
+
+    /**
      * Enable committed use discounts utilization.
      * 
      */
@@ -83,6 +98,7 @@ public final class OceanImportStrategyArgs extends com.pulumi.resources.Resource
         this.drainingTimeout = $.drainingTimeout;
         this.preemptiblePercentage = $.preemptiblePercentage;
         this.provisioningModel = $.provisioningModel;
+        this.scalingOrientation = $.scalingOrientation;
         this.shouldUtilizeCommitments = $.shouldUtilizeCommitments;
     }
 
@@ -165,6 +181,27 @@ public final class OceanImportStrategyArgs extends com.pulumi.resources.Resource
          */
         public Builder provisioningModel(String provisioningModel) {
             return provisioningModel(Output.of(provisioningModel));
+        }
+
+        /**
+         * @param scalingOrientation Valid Values: `&#34;cost&#34;, &#34;availability&#34;, &#34;balanced&#34;`. Set this value to control the approach that Ocean takes when launching nodes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scalingOrientation(@Nullable Output<String> scalingOrientation) {
+            $.scalingOrientation = scalingOrientation;
+            return this;
+        }
+
+        /**
+         * @param scalingOrientation Valid Values: `&#34;cost&#34;, &#34;availability&#34;, &#34;balanced&#34;`. Set this value to control the approach that Ocean takes when launching nodes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scalingOrientation(String scalingOrientation) {
+            return scalingOrientation(Output.of(scalingOrientation));
         }
 
         /**

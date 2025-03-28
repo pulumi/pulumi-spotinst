@@ -17,11 +17,19 @@ namespace Pulumi.SpotInst.Gke.Outputs
         /// Defines the desired preemptible percentage for this launch specification.
         /// </summary>
         public readonly int? PreemptiblePercentage;
+        /// <summary>
+        /// Valid Values: `"cost", "availability", "balanced"`. Set this value to control the approach that Ocean takes when launching nodes.
+        /// </summary>
+        public readonly string? ScalingOrientation;
 
         [OutputConstructor]
-        private OceanLaunchSpecStrategy(int? preemptiblePercentage)
+        private OceanLaunchSpecStrategy(
+            int? preemptiblePercentage,
+
+            string? scalingOrientation)
         {
             PreemptiblePercentage = preemptiblePercentage;
+            ScalingOrientation = scalingOrientation;
         }
     }
 }

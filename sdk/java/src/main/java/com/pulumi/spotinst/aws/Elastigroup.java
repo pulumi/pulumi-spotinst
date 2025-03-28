@@ -670,17 +670,9 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     public Output<Optional<ElastigroupLogging>> logging() {
         return Codegen.optional(this.logging);
     }
-    /**
-     * The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once.
-     * 
-     */
     @Export(name="maxReplacementsPercentage", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxReplacementsPercentage;
 
-    /**
-     * @return The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once.
-     * 
-     */
     public Output<Optional<Integer>> maxReplacementsPercentage() {
         return Codegen.optional(this.maxReplacementsPercentage);
     }

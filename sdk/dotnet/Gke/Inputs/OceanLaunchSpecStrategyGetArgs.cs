@@ -18,6 +18,12 @@ namespace Pulumi.SpotInst.Gke.Inputs
         [Input("preemptiblePercentage")]
         public Input<int>? PreemptiblePercentage { get; set; }
 
+        /// <summary>
+        /// Valid Values: `"cost", "availability", "balanced"`. Set this value to control the approach that Ocean takes when launching nodes.
+        /// </summary>
+        [Input("scalingOrientation")]
+        public Input<string>? ScalingOrientation { get; set; }
+
         public OceanLaunchSpecStrategyGetArgs()
         {
         }

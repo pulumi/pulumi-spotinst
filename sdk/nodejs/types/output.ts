@@ -5099,6 +5099,10 @@ export namespace gke {
          */
         provisioningModel?: string;
         /**
+         * Valid Values: `"cost", "availability", "balanced"`. Set this value to control the approach that Ocean takes when launching nodes.
+         */
+        scalingOrientation?: string;
+        /**
          * Enable committed use discounts utilization.
          */
         shouldUtilizeCommitments?: boolean;
@@ -5306,6 +5310,10 @@ export namespace gke {
          * Defines the desired preemptible percentage for this launch specification.
          */
         preemptiblePercentage?: number;
+        /**
+         * Valid Values: `"cost", "availability", "balanced"`. Set this value to control the approach that Ocean takes when launching nodes.
+         */
+        scalingOrientation?: string;
     }
 
     export interface OceanLaunchSpecTaint {

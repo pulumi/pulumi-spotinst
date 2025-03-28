@@ -108,6 +108,7 @@ namespace Pulumi.SpotInst.Gke
     ///             new SpotInst.Gke.Inputs.OceanLaunchSpecStrategyArgs
     ///             {
     ///                 PreemptiblePercentage = 30,
+    ///                 ScalingOrientation = "balanced",
     ///             },
     ///         },
     ///         SchedulingTasks = new[]

@@ -5047,6 +5047,8 @@ type OceanImportStrategy struct {
 	PreemptiblePercentage *int `pulumi:"preemptiblePercentage"`
 	// Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
 	ProvisioningModel *string `pulumi:"provisioningModel"`
+	// Valid Values: `"cost", "availability", "balanced"`. Set this value to control the approach that Ocean takes when launching nodes.
+	ScalingOrientation *string `pulumi:"scalingOrientation"`
 	// Enable committed use discounts utilization.
 	ShouldUtilizeCommitments *bool `pulumi:"shouldUtilizeCommitments"`
 }
@@ -5069,6 +5071,8 @@ type OceanImportStrategyArgs struct {
 	PreemptiblePercentage pulumi.IntPtrInput `pulumi:"preemptiblePercentage"`
 	// Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
 	ProvisioningModel pulumi.StringPtrInput `pulumi:"provisioningModel"`
+	// Valid Values: `"cost", "availability", "balanced"`. Set this value to control the approach that Ocean takes when launching nodes.
+	ScalingOrientation pulumi.StringPtrInput `pulumi:"scalingOrientation"`
 	// Enable committed use discounts utilization.
 	ShouldUtilizeCommitments pulumi.BoolPtrInput `pulumi:"shouldUtilizeCommitments"`
 }
@@ -5137,6 +5141,11 @@ func (o OceanImportStrategyOutput) PreemptiblePercentage() pulumi.IntPtrOutput {
 // Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
 func (o OceanImportStrategyOutput) ProvisioningModel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanImportStrategy) *string { return v.ProvisioningModel }).(pulumi.StringPtrOutput)
+}
+
+// Valid Values: `"cost", "availability", "balanced"`. Set this value to control the approach that Ocean takes when launching nodes.
+func (o OceanImportStrategyOutput) ScalingOrientation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanImportStrategy) *string { return v.ScalingOrientation }).(pulumi.StringPtrOutput)
 }
 
 // Enable committed use discounts utilization.
@@ -7145,6 +7154,8 @@ func (o OceanLaunchSpecStoragePtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
 type OceanLaunchSpecStrategy struct {
 	// Defines the desired preemptible percentage for this launch specification.
 	PreemptiblePercentage *int `pulumi:"preemptiblePercentage"`
+	// Valid Values: `"cost", "availability", "balanced"`. Set this value to control the approach that Ocean takes when launching nodes.
+	ScalingOrientation *string `pulumi:"scalingOrientation"`
 }
 
 // OceanLaunchSpecStrategyInput is an input type that accepts OceanLaunchSpecStrategyArgs and OceanLaunchSpecStrategyOutput values.
@@ -7161,6 +7172,8 @@ type OceanLaunchSpecStrategyInput interface {
 type OceanLaunchSpecStrategyArgs struct {
 	// Defines the desired preemptible percentage for this launch specification.
 	PreemptiblePercentage pulumi.IntPtrInput `pulumi:"preemptiblePercentage"`
+	// Valid Values: `"cost", "availability", "balanced"`. Set this value to control the approach that Ocean takes when launching nodes.
+	ScalingOrientation pulumi.StringPtrInput `pulumi:"scalingOrientation"`
 }
 
 func (OceanLaunchSpecStrategyArgs) ElementType() reflect.Type {
@@ -7217,6 +7230,11 @@ func (o OceanLaunchSpecStrategyOutput) ToOceanLaunchSpecStrategyOutputWithContex
 // Defines the desired preemptible percentage for this launch specification.
 func (o OceanLaunchSpecStrategyOutput) PreemptiblePercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecStrategy) *int { return v.PreemptiblePercentage }).(pulumi.IntPtrOutput)
+}
+
+// Valid Values: `"cost", "availability", "balanced"`. Set this value to control the approach that Ocean takes when launching nodes.
+func (o OceanLaunchSpecStrategyOutput) ScalingOrientation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecStrategy) *string { return v.ScalingOrientation }).(pulumi.StringPtrOutput)
 }
 
 type OceanLaunchSpecStrategyArrayOutput struct{ *pulumi.OutputState }

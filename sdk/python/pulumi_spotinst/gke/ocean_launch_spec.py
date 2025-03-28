@@ -845,6 +845,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             }],
             strategies=[{
                 "preemptible_percentage": 30,
+                "scaling_orientation": "balanced",
             }],
             scheduling_tasks=[{
                 "is_enabled": True,
@@ -964,6 +965,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             }],
             strategies=[{
                 "preemptible_percentage": 30,
+                "scaling_orientation": "balanced",
             }],
             scheduling_tasks=[{
                 "is_enabled": True,
