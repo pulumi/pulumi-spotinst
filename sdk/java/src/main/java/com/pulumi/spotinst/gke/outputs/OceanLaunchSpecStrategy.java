@@ -5,6 +5,7 @@ package com.pulumi.spotinst.gke.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +17,11 @@ public final class OceanLaunchSpecStrategy {
      * 
      */
     private @Nullable Integer preemptiblePercentage;
+    /**
+     * @return Valid Values: `&#34;cost&#34;, &#34;availability&#34;, &#34;balanced&#34;`. Set this value to control the approach that Ocean takes when launching nodes.
+     * 
+     */
+    private @Nullable String scalingOrientation;
 
     private OceanLaunchSpecStrategy() {}
     /**
@@ -24,6 +30,13 @@ public final class OceanLaunchSpecStrategy {
      */
     public Optional<Integer> preemptiblePercentage() {
         return Optional.ofNullable(this.preemptiblePercentage);
+    }
+    /**
+     * @return Valid Values: `&#34;cost&#34;, &#34;availability&#34;, &#34;balanced&#34;`. Set this value to control the approach that Ocean takes when launching nodes.
+     * 
+     */
+    public Optional<String> scalingOrientation() {
+        return Optional.ofNullable(this.scalingOrientation);
     }
 
     public static Builder builder() {
@@ -36,10 +49,12 @@ public final class OceanLaunchSpecStrategy {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer preemptiblePercentage;
+        private @Nullable String scalingOrientation;
         public Builder() {}
         public Builder(OceanLaunchSpecStrategy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.preemptiblePercentage = defaults.preemptiblePercentage;
+    	      this.scalingOrientation = defaults.scalingOrientation;
         }
 
         @CustomType.Setter
@@ -48,9 +63,16 @@ public final class OceanLaunchSpecStrategy {
             this.preemptiblePercentage = preemptiblePercentage;
             return this;
         }
+        @CustomType.Setter
+        public Builder scalingOrientation(@Nullable String scalingOrientation) {
+
+            this.scalingOrientation = scalingOrientation;
+            return this;
+        }
         public OceanLaunchSpecStrategy build() {
             final var _resultValue = new OceanLaunchSpecStrategy();
             _resultValue.preemptiblePercentage = preemptiblePercentage;
+            _resultValue.scalingOrientation = scalingOrientation;
             return _resultValue;
         }
     }

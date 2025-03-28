@@ -69,6 +69,7 @@ import * as utilities from "../utilities";
  *     }],
  *     strategies: [{
  *         preemptiblePercentage: 30,
+ *         scalingOrientation: "balanced",
  *     }],
  *     schedulingTasks: [{
  *         isEnabled: true,

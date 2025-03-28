@@ -5094,6 +5094,10 @@ export namespace gke {
          */
         provisioningModel?: pulumi.Input<string>;
         /**
+         * Valid Values: `"cost", "availability", "balanced"`. Set this value to control the approach that Ocean takes when launching nodes.
+         */
+        scalingOrientation?: pulumi.Input<string>;
+        /**
          * Enable committed use discounts utilization.
          */
         shouldUtilizeCommitments?: pulumi.Input<boolean>;
@@ -5301,6 +5305,10 @@ export namespace gke {
          * Defines the desired preemptible percentage for this launch specification.
          */
         preemptiblePercentage?: pulumi.Input<number>;
+        /**
+         * Valid Values: `"cost", "availability", "balanced"`. Set this value to control the approach that Ocean takes when launching nodes.
+         */
+        scalingOrientation?: pulumi.Input<string>;
     }
 
     export interface OceanLaunchSpecTaint {

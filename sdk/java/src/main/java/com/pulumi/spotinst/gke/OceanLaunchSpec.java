@@ -123,6 +123,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .strategies(OceanLaunchSpecStrategyArgs.builder()
  *                 .preemptiblePercentage(30)
+ *                 .scalingOrientation("balanced")
  *                 .build())
  *             .schedulingTasks(OceanLaunchSpecSchedulingTaskArgs.builder()
  *                 .isEnabled(true)

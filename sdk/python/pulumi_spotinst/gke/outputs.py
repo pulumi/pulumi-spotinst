@@ -2079,6 +2079,8 @@ class OceanImportStrategy(dict):
             suggest = "preemptible_percentage"
         elif key == "provisioningModel":
             suggest = "provisioning_model"
+        elif key == "scalingOrientation":
+            suggest = "scaling_orientation"
         elif key == "shouldUtilizeCommitments":
             suggest = "should_utilize_commitments"
 
@@ -2097,11 +2099,13 @@ class OceanImportStrategy(dict):
                  draining_timeout: Optional[int] = None,
                  preemptible_percentage: Optional[int] = None,
                  provisioning_model: Optional[str] = None,
+                 scaling_orientation: Optional[str] = None,
                  should_utilize_commitments: Optional[bool] = None):
         """
         :param int draining_timeout: The draining timeout (in seconds) before terminating the instance. If no draining timeout is defined, the default draining timeout will be used.
         :param int preemptible_percentage: Defines the desired preemptible percentage for the cluster.
         :param str provisioning_model: Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
+        :param str scaling_orientation: Valid Values: `"cost", "availability", "balanced"`. Set this value to control the approach that Ocean takes when launching nodes.
         :param bool should_utilize_commitments: Enable committed use discounts utilization.
         """
         if draining_timeout is not None:
@@ -2110,6 +2114,8 @@ class OceanImportStrategy(dict):
             pulumi.set(__self__, "preemptible_percentage", preemptible_percentage)
         if provisioning_model is not None:
             pulumi.set(__self__, "provisioning_model", provisioning_model)
+        if scaling_orientation is not None:
+            pulumi.set(__self__, "scaling_orientation", scaling_orientation)
         if should_utilize_commitments is not None:
             pulumi.set(__self__, "should_utilize_commitments", should_utilize_commitments)
 
@@ -2136,6 +2142,14 @@ class OceanImportStrategy(dict):
         Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
         """
         return pulumi.get(self, "provisioning_model")
+
+    @property
+    @pulumi.getter(name="scalingOrientation")
+    def scaling_orientation(self) -> Optional[str]:
+        """
+        Valid Values: `"cost", "availability", "balanced"`. Set this value to control the approach that Ocean takes when launching nodes.
+        """
+        return pulumi.get(self, "scaling_orientation")
 
     @property
     @pulumi.getter(name="shouldUtilizeCommitments")
@@ -2946,6 +2960,8 @@ class OceanLaunchSpecStrategy(dict):
         suggest = None
         if key == "preemptiblePercentage":
             suggest = "preemptible_percentage"
+        elif key == "scalingOrientation":
+            suggest = "scaling_orientation"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in OceanLaunchSpecStrategy. Access the value via the '{suggest}' property getter instead.")
@@ -2959,12 +2975,16 @@ class OceanLaunchSpecStrategy(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 preemptible_percentage: Optional[int] = None):
+                 preemptible_percentage: Optional[int] = None,
+                 scaling_orientation: Optional[str] = None):
         """
         :param int preemptible_percentage: Defines the desired preemptible percentage for this launch specification.
+        :param str scaling_orientation: Valid Values: `"cost", "availability", "balanced"`. Set this value to control the approach that Ocean takes when launching nodes.
         """
         if preemptible_percentage is not None:
             pulumi.set(__self__, "preemptible_percentage", preemptible_percentage)
+        if scaling_orientation is not None:
+            pulumi.set(__self__, "scaling_orientation", scaling_orientation)
 
     @property
     @pulumi.getter(name="preemptiblePercentage")
@@ -2973,6 +2993,14 @@ class OceanLaunchSpecStrategy(dict):
         Defines the desired preemptible percentage for this launch specification.
         """
         return pulumi.get(self, "preemptible_percentage")
+
+    @property
+    @pulumi.getter(name="scalingOrientation")
+    def scaling_orientation(self) -> Optional[str]:
+        """
+        Valid Values: `"cost", "availability", "balanced"`. Set this value to control the approach that Ocean takes when launching nodes.
+        """
+        return pulumi.get(self, "scaling_orientation")
 
 
 @pulumi.output_type

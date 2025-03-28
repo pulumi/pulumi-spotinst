@@ -543,17 +543,9 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.logging);
     }
 
-    /**
-     * The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once.
-     * 
-     */
     @Import(name="maxReplacementsPercentage")
     private @Nullable Output<Integer> maxReplacementsPercentage;
 
-    /**
-     * @return The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once.
-     * 
-     */
     public Optional<Output<Integer>> maxReplacementsPercentage() {
         return Optional.ofNullable(this.maxReplacementsPercentage);
     }
@@ -1935,23 +1927,11 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
             return logging(Output.of(logging));
         }
 
-        /**
-         * @param maxReplacementsPercentage The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once.
-         * 
-         * @return builder
-         * 
-         */
         public Builder maxReplacementsPercentage(@Nullable Output<Integer> maxReplacementsPercentage) {
             $.maxReplacementsPercentage = maxReplacementsPercentage;
             return this;
         }
 
-        /**
-         * @param maxReplacementsPercentage The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once.
-         * 
-         * @return builder
-         * 
-         */
         public Builder maxReplacementsPercentage(Integer maxReplacementsPercentage) {
             return maxReplacementsPercentage(Output.of(maxReplacementsPercentage));
         }
