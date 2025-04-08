@@ -106,8 +106,8 @@ import javax.annotation.Nullable;
  *                 .namedPorts(ElastigroupBackendServiceNamedPortArgs.builder()
  *                     .name("port-name")
  *                     .ports(                    
- *                         8000,
- *                         6000)
+ *                         "8000",
+ *                         "6000")
  *                     .build())
  *                 .build())
  *             .disks(ElastigroupDiskArgs.builder()
@@ -118,7 +118,7 @@ import javax.annotation.Nullable;
  *                 .boot(true)
  *                 .interface_("SCSI")
  *                 .initializeParams(ElastigroupDiskInitializeParamArgs.builder()
- *                     .diskSizeGb(10)
+ *                     .diskSizeGb("10")
  *                     .diskType("pd-standard")
  *                     .sourceImage("")
  *                     .build())
@@ -149,7 +149,7 @@ import javax.annotation.Nullable;
  *                 .namespace("compute")
  *                 .statistic("average")
  *                 .unit("percent")
- *                 .threshold(10000)
+ *                 .threshold(10000.0)
  *                 .period(300)
  *                 .cooldown(300)
  *                 .operator("gte")

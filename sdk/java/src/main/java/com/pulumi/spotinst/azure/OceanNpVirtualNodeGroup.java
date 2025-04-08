@@ -105,8 +105,8 @@ import javax.annotation.Nullable;
  *             .filters(OceanNpVirtualNodeGroupFiltersArgs.builder()
  *                 .minVcpu(2)
  *                 .maxVcpu(16)
- *                 .minMemoryGib(8)
- *                 .maxMemoryGib(128)
+ *                 .minMemoryGib(8.0)
+ *                 .maxMemoryGib(128.0)
  *                 .architectures(                
  *                     "x86_64",
  *                     "arm64")
@@ -122,8 +122,8 @@ import javax.annotation.Nullable;
  *                     "E")
  *                 .acceleratedNetworking("Enabled")
  *                 .diskPerformance("Premium")
- *                 .minGpu(1)
- *                 .maxGpu(2)
+ *                 .minGpu(1.0)
+ *                 .maxGpu(2.0)
  *                 .minNics(1)
  *                 .vmTypes(                
  *                     "generalPurpose",

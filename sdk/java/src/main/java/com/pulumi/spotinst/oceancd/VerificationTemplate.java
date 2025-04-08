@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *                 .dryRun(false)
  *                 .interval("10m")
  *                 .initialDelay("1m")
- *                 .count("10")
+ *                 .count(10)
  *                 .successCondition("result[0] <= 0.95")
  *                 .failureCondition("result[0] >= 0.95")
  *                 .failureLimit(2)
