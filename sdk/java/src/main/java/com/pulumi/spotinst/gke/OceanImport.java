@@ -73,8 +73,8 @@ import javax.annotation.Nullable;
  *                 .includeFamilies(                
  *                     "c2",
  *                     "c3")
- *                 .minMemoryGib(8)
- *                 .maxMemoryGib(16)
+ *                 .minMemoryGib(8.0)
+ *                 .maxMemoryGib(16.0)
  *                 .minVcpu(2)
  *                 .maxVcpu(16)
  *                 .build())
@@ -85,8 +85,8 @@ import javax.annotation.Nullable;
  *                 .namedPorts(OceanImportBackendServiceNamedPortArgs.builder()
  *                     .name("http")
  *                     .ports(                    
- *                         80,
- *                         8080)
+ *                         "80",
+ *                         "8080")
  *                     .build())
  *                 .build())
  *             .rootVolumeType("pd-ssd")

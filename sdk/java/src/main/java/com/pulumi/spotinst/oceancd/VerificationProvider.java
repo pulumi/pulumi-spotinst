@@ -60,9 +60,9 @@ import javax.annotation.Nullable;
  *                 "Example-Cluster-Id-2",
  *                 "Example-Cluster-Id-3")
  *             .datadog(VerificationProviderDatadogArgs.builder()
- *                 .address(1024)
- *                 .apiKey(512)
- *                 .appKey(0)
+ *                 .address("1024")
+ *                 .apiKey("512")
+ *                 .appKey("0")
  *                 .build())
  *             .cloudWatch(VerificationProviderCloudWatchArgs.builder()
  *                 .iamArn("arn:aws:iam::123456789012:role/GetMetricData")

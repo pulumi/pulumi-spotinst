@@ -21,6 +21,52 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.spotinst.HealthCheck;
+ * import com.pulumi.spotinst.HealthCheckArgs;
+ * import com.pulumi.spotinst.inputs.HealthCheckCheckArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var httpCheck = new HealthCheck("httpCheck", HealthCheckArgs.builder()
+ *             .name("sample_health_check")
+ *             .resourceId("sig-123")
+ *             .check(HealthCheckCheckArgs.builder()
+ *                 .protocol("http")
+ *                 .endpoint("http://endpoint.com")
+ *                 .port(1337)
+ *                 .interval(10)
+ *                 .timeout(10)
+ *                 .healthy(1)
+ *                 .unhealthy(1)
+ *                 .build())
+ *             .proxyAddress("http://proxy.com")
+ *             .proxyPort(80)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  */
 @ResourceType(type="spotinst:index/healthCheck:HealthCheck")
 public class HealthCheck extends com.pulumi.resources.CustomResource {

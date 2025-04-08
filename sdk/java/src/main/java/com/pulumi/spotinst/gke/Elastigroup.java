@@ -106,8 +106,8 @@ import javax.annotation.Nullable;
  *                 .namedPorts(ElastigroupBackendServiceNamedPortArgs.builder()
  *                     .name("http")
  *                     .ports(                    
- *                         80,
- *                         8080)
+ *                         "80",
+ *                         "8080")
  *                     .build())
  *                 .build())
  *             .build());
