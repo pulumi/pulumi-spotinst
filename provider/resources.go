@@ -27,8 +27,10 @@ import (
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tks "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens/fallbackstrat"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 
 	"github.com/pulumi/pulumi-spotinst/provider/v3/pkg/version"
 )
@@ -171,11 +173,20 @@ func Provider() tfbridge.ProviderInfo {
 		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 	}
 
-	prov.MustComputeTokens(tks.KnownModules("spotinst_", mainMod, []string{
-		"organization",
-		"multai",
-		"oceancd",
-	}, tks.MakeStandard(mainPkg)))
+	strategy, err := fallbackstrat.KnownModulesWithInferredFallback(
+		&prov,
+		"spotinst_",
+		mainMod,
+		[]string{
+			"organization",
+			"multai",
+			"oceancd",
+		},
+		tks.MakeStandard(mainPkg),
+	)
+	contract.AssertNoErrorf(err, "failed to create fallback strategy")
+
+	prov.MustComputeTokens(strategy)
 	prov.MustApplyAutoAliases()
 
 	prov.SetAutonaming(255, "-")
