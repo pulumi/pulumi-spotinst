@@ -375,6 +375,9 @@ class _CredentialsGcpState:
 
 
 class CredentialsGcp(pulumi.CustomResource):
+
+    pulumi_type = "spotinst:index/credentialsGcp:CredentialsGcp"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

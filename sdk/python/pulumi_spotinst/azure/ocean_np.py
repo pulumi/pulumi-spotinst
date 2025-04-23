@@ -998,6 +998,9 @@ class _OceanNpState:
 
 
 class OceanNp(pulumi.CustomResource):
+
+    pulumi_type = "spotinst:azure/oceanNp:OceanNp"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

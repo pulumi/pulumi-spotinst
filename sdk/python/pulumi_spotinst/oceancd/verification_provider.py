@@ -259,6 +259,9 @@ class _VerificationProviderState:
 
 
 class VerificationProvider(pulumi.CustomResource):
+
+    pulumi_type = "spotinst:oceancd/verificationProvider:VerificationProvider"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -611,6 +611,9 @@ class _OceanLaunchSpecState:
 
 
 class OceanLaunchSpec(pulumi.CustomResource):
+
+    pulumi_type = "spotinst:ecs/oceanLaunchSpec:OceanLaunchSpec"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

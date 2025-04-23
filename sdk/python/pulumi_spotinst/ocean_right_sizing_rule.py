@@ -298,6 +298,9 @@ class _OceanRightSizingRuleState:
 
 
 class OceanRightSizingRule(pulumi.CustomResource):
+
+    pulumi_type = "spotinst:index/oceanRightSizingRule:OceanRightSizingRule"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
