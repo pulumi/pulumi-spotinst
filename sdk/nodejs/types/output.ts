@@ -2701,9 +2701,6 @@ export namespace aws {
          * Object. Set Elastic Block Store properties .
          */
         ebs?: outputs.aws.OceanLaunchSpecBlockDeviceMappingEbs;
-        /**
-         * String. Suppresses the specified device included in the block device mapping of the AMI.
-         */
         noDevice?: string;
         virtualName?: string;
     }
@@ -2712,7 +2709,7 @@ export namespace aws {
         /**
          * Boolean. Flag to delete the EBS on instance termination.
          */
-        deleteOnTermination: boolean;
+        deleteOnTermination?: boolean;
         /**
          * Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
          */
@@ -2720,7 +2717,7 @@ export namespace aws {
         /**
          * Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
          */
-        encrypted: boolean;
+        encrypted?: boolean;
         /**
          * Int. The number of I/O operations per second (IOPS) that the volume supports.
          */
@@ -2744,7 +2741,7 @@ export namespace aws {
         /**
          * String. The type of the volume. (Example: `gp2`).
          */
-        volumeType: string;
+        volumeType?: string;
     }
 
     export interface OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize {

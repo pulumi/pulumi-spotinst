@@ -9197,7 +9197,6 @@ class OceanLaunchSpecBlockDeviceMapping(dict):
         """
         :param builtins.str device_name: String. Set device name. (Example: `/dev/xvda`).
         :param 'OceanLaunchSpecBlockDeviceMappingEbsArgs' ebs: Object. Set Elastic Block Store properties .
-        :param builtins.str no_device: String. Suppresses the specified device included in the block device mapping of the AMI.
         """
         if device_name is not None:
             pulumi.set(__self__, "device_name", device_name)
@@ -9227,9 +9226,6 @@ class OceanLaunchSpecBlockDeviceMapping(dict):
     @property
     @pulumi.getter(name="noDevice")
     def no_device(self) -> Optional[builtins.str]:
-        """
-        String. Suppresses the specified device included in the block device mapping of the AMI.
-        """
         return pulumi.get(self, "no_device")
 
     @property

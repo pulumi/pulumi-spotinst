@@ -2700,9 +2700,6 @@ export namespace aws {
          * Object. Set Elastic Block Store properties .
          */
         ebs?: pulumi.Input<inputs.aws.OceanLaunchSpecBlockDeviceMappingEbs>;
-        /**
-         * String. Suppresses the specified device included in the block device mapping of the AMI.
-         */
         noDevice?: pulumi.Input<string>;
         virtualName?: pulumi.Input<string>;
     }

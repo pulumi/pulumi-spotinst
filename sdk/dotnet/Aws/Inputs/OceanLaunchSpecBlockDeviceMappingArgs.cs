@@ -24,9 +24,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         [Input("ebs")]
         public Input<Inputs.OceanLaunchSpecBlockDeviceMappingEbsArgs>? Ebs { get; set; }
 
-        /// <summary>
-        /// String. Suppresses the specified device included in the block device mapping of the AMI.
-        /// </summary>
         [Input("noDevice")]
         public Input<string>? NoDevice { get; set; }
 
