@@ -11782,9 +11782,6 @@ if not MYPY:
         Object. Set Elastic Block Store properties .
         """
         no_device: NotRequired[pulumi.Input[builtins.str]]
-        """
-        String. Suppresses the specified device included in the block device mapping of the AMI.
-        """
         virtual_name: NotRequired[pulumi.Input[builtins.str]]
 elif False:
     OceanLaunchSpecBlockDeviceMappingArgsDict: TypeAlias = Mapping[str, Any]
@@ -11799,7 +11796,6 @@ class OceanLaunchSpecBlockDeviceMappingArgs:
         """
         :param pulumi.Input[builtins.str] device_name: String. Set device name. (Example: `/dev/xvda`).
         :param pulumi.Input['OceanLaunchSpecBlockDeviceMappingEbsArgs'] ebs: Object. Set Elastic Block Store properties .
-        :param pulumi.Input[builtins.str] no_device: String. Suppresses the specified device included in the block device mapping of the AMI.
         """
         if device_name is not None:
             pulumi.set(__self__, "device_name", device_name)
@@ -11837,9 +11833,6 @@ class OceanLaunchSpecBlockDeviceMappingArgs:
     @property
     @pulumi.getter(name="noDevice")
     def no_device(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        String. Suppresses the specified device included in the block device mapping of the AMI.
-        """
         return pulumi.get(self, "no_device")
 
     @no_device.setter

@@ -19916,10 +19916,9 @@ type OceanLaunchSpecBlockDeviceMapping struct {
 	// String. Set device name. (Example: `/dev/xvda`).
 	DeviceName *string `pulumi:"deviceName"`
 	// Object. Set Elastic Block Store properties .
-	Ebs *OceanLaunchSpecBlockDeviceMappingEbs `pulumi:"ebs"`
-	// String. Suppresses the specified device included in the block device mapping of the AMI.
-	NoDevice    *string `pulumi:"noDevice"`
-	VirtualName *string `pulumi:"virtualName"`
+	Ebs         *OceanLaunchSpecBlockDeviceMappingEbs `pulumi:"ebs"`
+	NoDevice    *string                               `pulumi:"noDevice"`
+	VirtualName *string                               `pulumi:"virtualName"`
 }
 
 // OceanLaunchSpecBlockDeviceMappingInput is an input type that accepts OceanLaunchSpecBlockDeviceMappingArgs and OceanLaunchSpecBlockDeviceMappingOutput values.
@@ -19937,10 +19936,9 @@ type OceanLaunchSpecBlockDeviceMappingArgs struct {
 	// String. Set device name. (Example: `/dev/xvda`).
 	DeviceName pulumi.StringPtrInput `pulumi:"deviceName"`
 	// Object. Set Elastic Block Store properties .
-	Ebs OceanLaunchSpecBlockDeviceMappingEbsPtrInput `pulumi:"ebs"`
-	// String. Suppresses the specified device included in the block device mapping of the AMI.
-	NoDevice    pulumi.StringPtrInput `pulumi:"noDevice"`
-	VirtualName pulumi.StringPtrInput `pulumi:"virtualName"`
+	Ebs         OceanLaunchSpecBlockDeviceMappingEbsPtrInput `pulumi:"ebs"`
+	NoDevice    pulumi.StringPtrInput                        `pulumi:"noDevice"`
+	VirtualName pulumi.StringPtrInput                        `pulumi:"virtualName"`
 }
 
 func (OceanLaunchSpecBlockDeviceMappingArgs) ElementType() reflect.Type {
@@ -20004,7 +20002,6 @@ func (o OceanLaunchSpecBlockDeviceMappingOutput) Ebs() OceanLaunchSpecBlockDevic
 	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMapping) *OceanLaunchSpecBlockDeviceMappingEbs { return v.Ebs }).(OceanLaunchSpecBlockDeviceMappingEbsPtrOutput)
 }
 
-// String. Suppresses the specified device included in the block device mapping of the AMI.
 func (o OceanLaunchSpecBlockDeviceMappingOutput) NoDevice() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMapping) *string { return v.NoDevice }).(pulumi.StringPtrOutput)
 }
