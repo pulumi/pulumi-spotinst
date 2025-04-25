@@ -211,6 +211,9 @@ class _OceanState:
 
 
 class Ocean(pulumi.CustomResource):
+
+    pulumi_type = "spotinst:spark/ocean:Ocean"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

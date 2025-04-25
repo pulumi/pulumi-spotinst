@@ -906,6 +906,9 @@ class _ElastigroupState:
 
 
 class Elastigroup(pulumi.CustomResource):
+
+    pulumi_type = "spotinst:gke/elastigroup:Elastigroup"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

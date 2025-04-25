@@ -189,6 +189,9 @@ class _CredentialsAzureState:
 
 
 class CredentialsAzure(pulumi.CustomResource):
+
+    pulumi_type = "spotinst:index/credentialsAzure:CredentialsAzure"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

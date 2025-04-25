@@ -136,6 +136,9 @@ class _DataIntegrationState:
 
 
 class DataIntegration(pulumi.CustomResource):
+
+    pulumi_type = "spotinst:index/dataIntegration:DataIntegration"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
