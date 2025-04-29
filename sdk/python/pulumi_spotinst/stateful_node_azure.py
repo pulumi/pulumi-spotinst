@@ -1036,6 +1036,9 @@ class _StatefulNodeAzureState:
 
 
 class StatefulNodeAzure(pulumi.CustomResource):
+
+    pulumi_type = "spotinst:index/statefulNodeAzure:StatefulNodeAzure"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

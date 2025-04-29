@@ -226,6 +226,9 @@ class _RolloutSpecState:
 
 
 class RolloutSpec(pulumi.CustomResource):
+
+    pulumi_type = "spotinst:oceancd/rolloutSpec:RolloutSpec"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

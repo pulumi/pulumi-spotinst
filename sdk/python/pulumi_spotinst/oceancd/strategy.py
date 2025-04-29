@@ -123,6 +123,9 @@ class _StrategyState:
 
 
 class Strategy(pulumi.CustomResource):
+
+    pulumi_type = "spotinst:oceancd/strategy:Strategy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

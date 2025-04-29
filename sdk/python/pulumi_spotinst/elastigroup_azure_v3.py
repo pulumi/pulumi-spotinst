@@ -1014,6 +1014,9 @@ class _ElastigroupAzureV3State:
 
 
 class ElastigroupAzureV3(pulumi.CustomResource):
+
+    pulumi_type = "spotinst:index/elastigroupAzureV3:ElastigroupAzureV3"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

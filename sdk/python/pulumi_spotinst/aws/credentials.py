@@ -96,6 +96,9 @@ class _CredentialsState:
 
 
 class Credentials(pulumi.CustomResource):
+
+    pulumi_type = "spotinst:aws/credentials:Credentials"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
