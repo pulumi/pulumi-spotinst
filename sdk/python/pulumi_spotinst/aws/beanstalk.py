@@ -434,6 +434,9 @@ class _BeanstalkState:
 
 
 class Beanstalk(pulumi.CustomResource):
+
+    pulumi_type = "spotinst:aws/beanstalk:Beanstalk"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -254,6 +254,9 @@ class _SubscriptionState:
 
 
 class Subscription(pulumi.CustomResource):
+
+    pulumi_type = "spotinst:index/subscription:Subscription"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -1551,6 +1551,9 @@ class _MrScalarState:
 
 
 class MrScalar(pulumi.CustomResource):
+
+    pulumi_type = "spotinst:aws/mrScalar:MrScalar"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

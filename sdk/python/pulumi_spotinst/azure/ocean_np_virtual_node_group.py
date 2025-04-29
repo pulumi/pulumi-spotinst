@@ -787,6 +787,9 @@ class _OceanNpVirtualNodeGroupState:
 
 
 class OceanNpVirtualNodeGroup(pulumi.CustomResource):
+
+    pulumi_type = "spotinst:azure/oceanNpVirtualNodeGroup:OceanNpVirtualNodeGroup"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

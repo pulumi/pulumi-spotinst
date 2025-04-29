@@ -132,6 +132,9 @@ class _VerificationTemplateState:
 
 
 class VerificationTemplate(pulumi.CustomResource):
+
+    pulumi_type = "spotinst:oceancd/verificationTemplate:VerificationTemplate"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

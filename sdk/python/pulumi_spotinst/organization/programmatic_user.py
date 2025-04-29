@@ -204,6 +204,9 @@ class _ProgrammaticUserState:
 
 
 class ProgrammaticUser(pulumi.CustomResource):
+
+    pulumi_type = "spotinst:organization/programmaticUser:ProgrammaticUser"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

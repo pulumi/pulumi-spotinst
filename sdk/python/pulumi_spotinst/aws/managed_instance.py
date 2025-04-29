@@ -1183,6 +1183,9 @@ class _ManagedInstanceState:
 
 
 class ManagedInstance(pulumi.CustomResource):
+
+    pulumi_type = "spotinst:aws/managedInstance:ManagedInstance"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

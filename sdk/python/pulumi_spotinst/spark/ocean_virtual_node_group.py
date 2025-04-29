@@ -80,6 +80,9 @@ class _OceanVirtualNodeGroupState:
 
 
 class OceanVirtualNodeGroup(pulumi.CustomResource):
+
+    pulumi_type = "spotinst:spark/oceanVirtualNodeGroup:OceanVirtualNodeGroup"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
