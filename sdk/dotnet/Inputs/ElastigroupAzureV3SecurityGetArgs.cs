@@ -15,6 +15,9 @@ namespace Pulumi.SpotInst.Inputs
         [Input("confidentialOsDiskEncryption")]
         public Input<bool>? ConfidentialOsDiskEncryption { get; set; }
 
+        [Input("encryptionAtHost")]
+        public Input<bool>? EncryptionAtHost { get; set; }
+
         [Input("secureBootEnabled")]
         public Input<bool>? SecureBootEnabled { get; set; }
 

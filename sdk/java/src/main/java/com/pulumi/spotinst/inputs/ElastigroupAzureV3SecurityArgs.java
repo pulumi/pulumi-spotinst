@@ -23,6 +23,13 @@ public final class ElastigroupAzureV3SecurityArgs extends com.pulumi.resources.R
         return Optional.ofNullable(this.confidentialOsDiskEncryption);
     }
 
+    @Import(name="encryptionAtHost")
+    private @Nullable Output<Boolean> encryptionAtHost;
+
+    public Optional<Output<Boolean>> encryptionAtHost() {
+        return Optional.ofNullable(this.encryptionAtHost);
+    }
+
     @Import(name="secureBootEnabled")
     private @Nullable Output<Boolean> secureBootEnabled;
 
@@ -48,6 +55,7 @@ public final class ElastigroupAzureV3SecurityArgs extends com.pulumi.resources.R
 
     private ElastigroupAzureV3SecurityArgs(ElastigroupAzureV3SecurityArgs $) {
         this.confidentialOsDiskEncryption = $.confidentialOsDiskEncryption;
+        this.encryptionAtHost = $.encryptionAtHost;
         this.secureBootEnabled = $.secureBootEnabled;
         this.securityType = $.securityType;
         this.vtpmEnabled = $.vtpmEnabled;
@@ -78,6 +86,15 @@ public final class ElastigroupAzureV3SecurityArgs extends com.pulumi.resources.R
 
         public Builder confidentialOsDiskEncryption(Boolean confidentialOsDiskEncryption) {
             return confidentialOsDiskEncryption(Output.of(confidentialOsDiskEncryption));
+        }
+
+        public Builder encryptionAtHost(@Nullable Output<Boolean> encryptionAtHost) {
+            $.encryptionAtHost = encryptionAtHost;
+            return this;
+        }
+
+        public Builder encryptionAtHost(Boolean encryptionAtHost) {
+            return encryptionAtHost(Output.of(encryptionAtHost));
         }
 
         public Builder secureBootEnabled(@Nullable Output<Boolean> secureBootEnabled) {

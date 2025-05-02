@@ -2211,6 +2211,7 @@ class ElastigroupAzureV3SecretVaultCertificateArgs:
 if not MYPY:
     class ElastigroupAzureV3SecurityArgsDict(TypedDict):
         confidential_os_disk_encryption: NotRequired[pulumi.Input[builtins.bool]]
+        encryption_at_host: NotRequired[pulumi.Input[builtins.bool]]
         secure_boot_enabled: NotRequired[pulumi.Input[builtins.bool]]
         security_type: NotRequired[pulumi.Input[builtins.str]]
         vtpm_enabled: NotRequired[pulumi.Input[builtins.bool]]
@@ -2221,11 +2222,14 @@ elif False:
 class ElastigroupAzureV3SecurityArgs:
     def __init__(__self__, *,
                  confidential_os_disk_encryption: Optional[pulumi.Input[builtins.bool]] = None,
+                 encryption_at_host: Optional[pulumi.Input[builtins.bool]] = None,
                  secure_boot_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  security_type: Optional[pulumi.Input[builtins.str]] = None,
                  vtpm_enabled: Optional[pulumi.Input[builtins.bool]] = None):
         if confidential_os_disk_encryption is not None:
             pulumi.set(__self__, "confidential_os_disk_encryption", confidential_os_disk_encryption)
+        if encryption_at_host is not None:
+            pulumi.set(__self__, "encryption_at_host", encryption_at_host)
         if secure_boot_enabled is not None:
             pulumi.set(__self__, "secure_boot_enabled", secure_boot_enabled)
         if security_type is not None:
@@ -2241,6 +2245,15 @@ class ElastigroupAzureV3SecurityArgs:
     @confidential_os_disk_encryption.setter
     def confidential_os_disk_encryption(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "confidential_os_disk_encryption", value)
+
+    @property
+    @pulumi.getter(name="encryptionAtHost")
+    def encryption_at_host(self) -> Optional[pulumi.Input[builtins.bool]]:
+        return pulumi.get(self, "encryption_at_host")
+
+    @encryption_at_host.setter
+    def encryption_at_host(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "encryption_at_host", value)
 
     @property
     @pulumi.getter(name="secureBootEnabled")

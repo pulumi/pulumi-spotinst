@@ -243,6 +243,7 @@ export interface ElastigroupAzureV3SecretVaultCertificate {
 
 export interface ElastigroupAzureV3Security {
     confidentialOsDiskEncryption?: pulumi.Input<boolean>;
+    encryptionAtHost?: pulumi.Input<boolean>;
     secureBootEnabled?: pulumi.Input<boolean>;
     securityType?: pulumi.Input<string>;
     vtpmEnabled?: pulumi.Input<boolean>;
