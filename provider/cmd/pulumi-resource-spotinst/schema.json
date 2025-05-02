@@ -8187,6 +8187,9 @@
                 "confidentialOsDiskEncryption": {
                     "type": "boolean"
                 },
+                "encryptionAtHost": {
+                    "type": "boolean"
+                },
                 "secureBootEnabled": {
                     "type": "boolean"
                 },
