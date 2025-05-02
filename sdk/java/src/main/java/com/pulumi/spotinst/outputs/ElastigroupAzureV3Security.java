@@ -13,6 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ElastigroupAzureV3Security {
     private @Nullable Boolean confidentialOsDiskEncryption;
+    private @Nullable Boolean encryptionAtHost;
     private @Nullable Boolean secureBootEnabled;
     private @Nullable String securityType;
     private @Nullable Boolean vtpmEnabled;
@@ -20,6 +21,9 @@ public final class ElastigroupAzureV3Security {
     private ElastigroupAzureV3Security() {}
     public Optional<Boolean> confidentialOsDiskEncryption() {
         return Optional.ofNullable(this.confidentialOsDiskEncryption);
+    }
+    public Optional<Boolean> encryptionAtHost() {
+        return Optional.ofNullable(this.encryptionAtHost);
     }
     public Optional<Boolean> secureBootEnabled() {
         return Optional.ofNullable(this.secureBootEnabled);
@@ -41,6 +45,7 @@ public final class ElastigroupAzureV3Security {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean confidentialOsDiskEncryption;
+        private @Nullable Boolean encryptionAtHost;
         private @Nullable Boolean secureBootEnabled;
         private @Nullable String securityType;
         private @Nullable Boolean vtpmEnabled;
@@ -48,6 +53,7 @@ public final class ElastigroupAzureV3Security {
         public Builder(ElastigroupAzureV3Security defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.confidentialOsDiskEncryption = defaults.confidentialOsDiskEncryption;
+    	      this.encryptionAtHost = defaults.encryptionAtHost;
     	      this.secureBootEnabled = defaults.secureBootEnabled;
     	      this.securityType = defaults.securityType;
     	      this.vtpmEnabled = defaults.vtpmEnabled;
@@ -57,6 +63,12 @@ public final class ElastigroupAzureV3Security {
         public Builder confidentialOsDiskEncryption(@Nullable Boolean confidentialOsDiskEncryption) {
 
             this.confidentialOsDiskEncryption = confidentialOsDiskEncryption;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder encryptionAtHost(@Nullable Boolean encryptionAtHost) {
+
+            this.encryptionAtHost = encryptionAtHost;
             return this;
         }
         @CustomType.Setter
@@ -80,6 +92,7 @@ public final class ElastigroupAzureV3Security {
         public ElastigroupAzureV3Security build() {
             final var _resultValue = new ElastigroupAzureV3Security();
             _resultValue.confidentialOsDiskEncryption = confidentialOsDiskEncryption;
+            _resultValue.encryptionAtHost = encryptionAtHost;
             _resultValue.secureBootEnabled = secureBootEnabled;
             _resultValue.securityType = securityType;
             _resultValue.vtpmEnabled = vtpmEnabled;

@@ -14,6 +14,7 @@ namespace Pulumi.SpotInst.Outputs
     public sealed class ElastigroupAzureV3Security
     {
         public readonly bool? ConfidentialOsDiskEncryption;
+        public readonly bool? EncryptionAtHost;
         public readonly bool? SecureBootEnabled;
         public readonly string? SecurityType;
         public readonly bool? VtpmEnabled;
@@ -22,6 +23,8 @@ namespace Pulumi.SpotInst.Outputs
         private ElastigroupAzureV3Security(
             bool? confidentialOsDiskEncryption,
 
+            bool? encryptionAtHost,
+
             bool? secureBootEnabled,
 
             string? securityType,
@@ -29,6 +32,7 @@ namespace Pulumi.SpotInst.Outputs
             bool? vtpmEnabled)
         {
             ConfidentialOsDiskEncryption = confidentialOsDiskEncryption;
+            EncryptionAtHost = encryptionAtHost;
             SecureBootEnabled = secureBootEnabled;
             SecurityType = securityType;
             VtpmEnabled = vtpmEnabled;

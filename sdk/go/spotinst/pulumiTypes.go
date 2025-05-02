@@ -4138,6 +4138,7 @@ func (o ElastigroupAzureV3SecretVaultCertificateArrayOutput) Index(i pulumi.IntI
 
 type ElastigroupAzureV3Security struct {
 	ConfidentialOsDiskEncryption *bool   `pulumi:"confidentialOsDiskEncryption"`
+	EncryptionAtHost             *bool   `pulumi:"encryptionAtHost"`
 	SecureBootEnabled            *bool   `pulumi:"secureBootEnabled"`
 	SecurityType                 *string `pulumi:"securityType"`
 	VtpmEnabled                  *bool   `pulumi:"vtpmEnabled"`
@@ -4156,6 +4157,7 @@ type ElastigroupAzureV3SecurityInput interface {
 
 type ElastigroupAzureV3SecurityArgs struct {
 	ConfidentialOsDiskEncryption pulumi.BoolPtrInput   `pulumi:"confidentialOsDiskEncryption"`
+	EncryptionAtHost             pulumi.BoolPtrInput   `pulumi:"encryptionAtHost"`
 	SecureBootEnabled            pulumi.BoolPtrInput   `pulumi:"secureBootEnabled"`
 	SecurityType                 pulumi.StringPtrInput `pulumi:"securityType"`
 	VtpmEnabled                  pulumi.BoolPtrInput   `pulumi:"vtpmEnabled"`
@@ -4242,6 +4244,10 @@ func (o ElastigroupAzureV3SecurityOutput) ConfidentialOsDiskEncryption() pulumi.
 	return o.ApplyT(func(v ElastigroupAzureV3Security) *bool { return v.ConfidentialOsDiskEncryption }).(pulumi.BoolPtrOutput)
 }
 
+func (o ElastigroupAzureV3SecurityOutput) EncryptionAtHost() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3Security) *bool { return v.EncryptionAtHost }).(pulumi.BoolPtrOutput)
+}
+
 func (o ElastigroupAzureV3SecurityOutput) SecureBootEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ElastigroupAzureV3Security) *bool { return v.SecureBootEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -4284,6 +4290,15 @@ func (o ElastigroupAzureV3SecurityPtrOutput) ConfidentialOsDiskEncryption() pulu
 			return nil
 		}
 		return v.ConfidentialOsDiskEncryption
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ElastigroupAzureV3SecurityPtrOutput) EncryptionAtHost() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3Security) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptionAtHost
 	}).(pulumi.BoolPtrOutput)
 }
 

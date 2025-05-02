@@ -243,6 +243,7 @@ export interface ElastigroupAzureV3SecretVaultCertificate {
 
 export interface ElastigroupAzureV3Security {
     confidentialOsDiskEncryption?: boolean;
+    encryptionAtHost?: boolean;
     secureBootEnabled?: boolean;
     securityType?: string;
     vtpmEnabled?: boolean;

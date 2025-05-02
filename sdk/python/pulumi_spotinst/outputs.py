@@ -1851,6 +1851,8 @@ class ElastigroupAzureV3Security(dict):
         suggest = None
         if key == "confidentialOsDiskEncryption":
             suggest = "confidential_os_disk_encryption"
+        elif key == "encryptionAtHost":
+            suggest = "encryption_at_host"
         elif key == "secureBootEnabled":
             suggest = "secure_boot_enabled"
         elif key == "securityType":
@@ -1871,11 +1873,14 @@ class ElastigroupAzureV3Security(dict):
 
     def __init__(__self__, *,
                  confidential_os_disk_encryption: Optional[builtins.bool] = None,
+                 encryption_at_host: Optional[builtins.bool] = None,
                  secure_boot_enabled: Optional[builtins.bool] = None,
                  security_type: Optional[builtins.str] = None,
                  vtpm_enabled: Optional[builtins.bool] = None):
         if confidential_os_disk_encryption is not None:
             pulumi.set(__self__, "confidential_os_disk_encryption", confidential_os_disk_encryption)
+        if encryption_at_host is not None:
+            pulumi.set(__self__, "encryption_at_host", encryption_at_host)
         if secure_boot_enabled is not None:
             pulumi.set(__self__, "secure_boot_enabled", secure_boot_enabled)
         if security_type is not None:
@@ -1887,6 +1892,11 @@ class ElastigroupAzureV3Security(dict):
     @pulumi.getter(name="confidentialOsDiskEncryption")
     def confidential_os_disk_encryption(self) -> Optional[builtins.bool]:
         return pulumi.get(self, "confidential_os_disk_encryption")
+
+    @property
+    @pulumi.getter(name="encryptionAtHost")
+    def encryption_at_host(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "encryption_at_host")
 
     @property
     @pulumi.getter(name="secureBootEnabled")
