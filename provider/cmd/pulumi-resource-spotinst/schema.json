@@ -8234,6 +8234,12 @@
         },
         "spotinst:index/ElastigroupAzureV3VmSizes:ElastigroupAzureV3VmSizes": {
             "properties": {
+                "excludedVmSizes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "odSizes": {
                     "type": "array",
                     "items": {
@@ -8246,6 +8252,9 @@
                         "type": "string"
                     }
                 },
+                "spotSizeAttributes": {
+                    "$ref": "#/types/spotinst:index/ElastigroupAzureV3VmSizesSpotSizeAttributes:ElastigroupAzureV3VmSizesSpotSizeAttributes"
+                },
                 "spotSizes": {
                     "type": "array",
                     "items": {
@@ -8255,9 +8264,31 @@
             },
             "type": "object",
             "required": [
-                "odSizes",
-                "spotSizes"
+                "odSizes"
             ]
+        },
+        "spotinst:index/ElastigroupAzureV3VmSizesSpotSizeAttributes:ElastigroupAzureV3VmSizesSpotSizeAttributes": {
+            "properties": {
+                "maxCpu": {
+                    "type": "integer"
+                },
+                "maxMemory": {
+                    "type": "integer"
+                },
+                "maxStorage": {
+                    "type": "integer"
+                },
+                "minCpu": {
+                    "type": "integer"
+                },
+                "minMemory": {
+                    "type": "integer"
+                },
+                "minStorage": {
+                    "type": "integer"
+                }
+            },
+            "type": "object"
         },
         "spotinst:index/HealthCheckCheck:HealthCheckCheck": {
             "properties": {
