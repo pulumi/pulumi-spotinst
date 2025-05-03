@@ -13,20 +13,28 @@ namespace Pulumi.SpotInst.Outputs
     [OutputType]
     public sealed class ElastigroupAzureV3VmSizes
     {
+        public readonly ImmutableArray<string> ExcludedVmSizes;
         public readonly ImmutableArray<string> OdSizes;
         public readonly ImmutableArray<string> PreferredSpotSizes;
+        public readonly Outputs.ElastigroupAzureV3VmSizesSpotSizeAttributes? SpotSizeAttributes;
         public readonly ImmutableArray<string> SpotSizes;
 
         [OutputConstructor]
         private ElastigroupAzureV3VmSizes(
+            ImmutableArray<string> excludedVmSizes,
+
             ImmutableArray<string> odSizes,
 
             ImmutableArray<string> preferredSpotSizes,
 
+            Outputs.ElastigroupAzureV3VmSizesSpotSizeAttributes? spotSizeAttributes,
+
             ImmutableArray<string> spotSizes)
         {
+            ExcludedVmSizes = excludedVmSizes;
             OdSizes = odSizes;
             PreferredSpotSizes = preferredSpotSizes;
+            SpotSizeAttributes = spotSizeAttributes;
             SpotSizes = spotSizes;
         }
     }
