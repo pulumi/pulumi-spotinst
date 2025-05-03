@@ -260,9 +260,20 @@ export interface ElastigroupAzureV3Tag {
 }
 
 export interface ElastigroupAzureV3VmSizes {
+    excludedVmSizes?: string[];
     odSizes: string[];
     preferredSpotSizes?: string[];
-    spotSizes: string[];
+    spotSizeAttributes?: outputs.ElastigroupAzureV3VmSizesSpotSizeAttributes;
+    spotSizes?: string[];
+}
+
+export interface ElastigroupAzureV3VmSizesSpotSizeAttributes {
+    maxCpu?: number;
+    maxMemory?: number;
+    maxStorage?: number;
+    minCpu?: number;
+    minMemory?: number;
+    minStorage?: number;
 }
 
 export interface HealthCheckCheck {

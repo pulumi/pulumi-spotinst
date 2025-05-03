@@ -90,6 +90,8 @@ __all__ = [
     'ElastigroupAzureV3TagArgsDict',
     'ElastigroupAzureV3VmSizesArgs',
     'ElastigroupAzureV3VmSizesArgsDict',
+    'ElastigroupAzureV3VmSizesSpotSizeAttributesArgs',
+    'ElastigroupAzureV3VmSizesSpotSizeAttributesArgsDict',
     'HealthCheckCheckArgs',
     'HealthCheckCheckArgsDict',
     'OceanRightSizingRuleAttachWorkloadArgs',
@@ -2354,8 +2356,10 @@ class ElastigroupAzureV3TagArgs:
 if not MYPY:
     class ElastigroupAzureV3VmSizesArgsDict(TypedDict):
         od_sizes: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]
-        spot_sizes: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]
+        excluded_vm_sizes: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
         preferred_spot_sizes: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        spot_size_attributes: NotRequired[pulumi.Input['ElastigroupAzureV3VmSizesSpotSizeAttributesArgsDict']]
+        spot_sizes: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
 elif False:
     ElastigroupAzureV3VmSizesArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -2363,12 +2367,19 @@ elif False:
 class ElastigroupAzureV3VmSizesArgs:
     def __init__(__self__, *,
                  od_sizes: pulumi.Input[Sequence[pulumi.Input[builtins.str]]],
-                 spot_sizes: pulumi.Input[Sequence[pulumi.Input[builtins.str]]],
-                 preferred_spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
+                 excluded_vm_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 preferred_spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 spot_size_attributes: Optional[pulumi.Input['ElastigroupAzureV3VmSizesSpotSizeAttributesArgs']] = None,
+                 spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
         pulumi.set(__self__, "od_sizes", od_sizes)
-        pulumi.set(__self__, "spot_sizes", spot_sizes)
+        if excluded_vm_sizes is not None:
+            pulumi.set(__self__, "excluded_vm_sizes", excluded_vm_sizes)
         if preferred_spot_sizes is not None:
             pulumi.set(__self__, "preferred_spot_sizes", preferred_spot_sizes)
+        if spot_size_attributes is not None:
+            pulumi.set(__self__, "spot_size_attributes", spot_size_attributes)
+        if spot_sizes is not None:
+            pulumi.set(__self__, "spot_sizes", spot_sizes)
 
     @property
     @pulumi.getter(name="odSizes")
@@ -2380,13 +2391,13 @@ class ElastigroupAzureV3VmSizesArgs:
         pulumi.set(self, "od_sizes", value)
 
     @property
-    @pulumi.getter(name="spotSizes")
-    def spot_sizes(self) -> pulumi.Input[Sequence[pulumi.Input[builtins.str]]]:
-        return pulumi.get(self, "spot_sizes")
+    @pulumi.getter(name="excludedVmSizes")
+    def excluded_vm_sizes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        return pulumi.get(self, "excluded_vm_sizes")
 
-    @spot_sizes.setter
-    def spot_sizes(self, value: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]):
-        pulumi.set(self, "spot_sizes", value)
+    @excluded_vm_sizes.setter
+    def excluded_vm_sizes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "excluded_vm_sizes", value)
 
     @property
     @pulumi.getter(name="preferredSpotSizes")
@@ -2396,6 +2407,112 @@ class ElastigroupAzureV3VmSizesArgs:
     @preferred_spot_sizes.setter
     def preferred_spot_sizes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "preferred_spot_sizes", value)
+
+    @property
+    @pulumi.getter(name="spotSizeAttributes")
+    def spot_size_attributes(self) -> Optional[pulumi.Input['ElastigroupAzureV3VmSizesSpotSizeAttributesArgs']]:
+        return pulumi.get(self, "spot_size_attributes")
+
+    @spot_size_attributes.setter
+    def spot_size_attributes(self, value: Optional[pulumi.Input['ElastigroupAzureV3VmSizesSpotSizeAttributesArgs']]):
+        pulumi.set(self, "spot_size_attributes", value)
+
+    @property
+    @pulumi.getter(name="spotSizes")
+    def spot_sizes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        return pulumi.get(self, "spot_sizes")
+
+    @spot_sizes.setter
+    def spot_sizes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "spot_sizes", value)
+
+
+if not MYPY:
+    class ElastigroupAzureV3VmSizesSpotSizeAttributesArgsDict(TypedDict):
+        max_cpu: NotRequired[pulumi.Input[builtins.int]]
+        max_memory: NotRequired[pulumi.Input[builtins.int]]
+        max_storage: NotRequired[pulumi.Input[builtins.int]]
+        min_cpu: NotRequired[pulumi.Input[builtins.int]]
+        min_memory: NotRequired[pulumi.Input[builtins.int]]
+        min_storage: NotRequired[pulumi.Input[builtins.int]]
+elif False:
+    ElastigroupAzureV3VmSizesSpotSizeAttributesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ElastigroupAzureV3VmSizesSpotSizeAttributesArgs:
+    def __init__(__self__, *,
+                 max_cpu: Optional[pulumi.Input[builtins.int]] = None,
+                 max_memory: Optional[pulumi.Input[builtins.int]] = None,
+                 max_storage: Optional[pulumi.Input[builtins.int]] = None,
+                 min_cpu: Optional[pulumi.Input[builtins.int]] = None,
+                 min_memory: Optional[pulumi.Input[builtins.int]] = None,
+                 min_storage: Optional[pulumi.Input[builtins.int]] = None):
+        if max_cpu is not None:
+            pulumi.set(__self__, "max_cpu", max_cpu)
+        if max_memory is not None:
+            pulumi.set(__self__, "max_memory", max_memory)
+        if max_storage is not None:
+            pulumi.set(__self__, "max_storage", max_storage)
+        if min_cpu is not None:
+            pulumi.set(__self__, "min_cpu", min_cpu)
+        if min_memory is not None:
+            pulumi.set(__self__, "min_memory", min_memory)
+        if min_storage is not None:
+            pulumi.set(__self__, "min_storage", min_storage)
+
+    @property
+    @pulumi.getter(name="maxCpu")
+    def max_cpu(self) -> Optional[pulumi.Input[builtins.int]]:
+        return pulumi.get(self, "max_cpu")
+
+    @max_cpu.setter
+    def max_cpu(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "max_cpu", value)
+
+    @property
+    @pulumi.getter(name="maxMemory")
+    def max_memory(self) -> Optional[pulumi.Input[builtins.int]]:
+        return pulumi.get(self, "max_memory")
+
+    @max_memory.setter
+    def max_memory(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "max_memory", value)
+
+    @property
+    @pulumi.getter(name="maxStorage")
+    def max_storage(self) -> Optional[pulumi.Input[builtins.int]]:
+        return pulumi.get(self, "max_storage")
+
+    @max_storage.setter
+    def max_storage(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "max_storage", value)
+
+    @property
+    @pulumi.getter(name="minCpu")
+    def min_cpu(self) -> Optional[pulumi.Input[builtins.int]]:
+        return pulumi.get(self, "min_cpu")
+
+    @min_cpu.setter
+    def min_cpu(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "min_cpu", value)
+
+    @property
+    @pulumi.getter(name="minMemory")
+    def min_memory(self) -> Optional[pulumi.Input[builtins.int]]:
+        return pulumi.get(self, "min_memory")
+
+    @min_memory.setter
+    def min_memory(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "min_memory", value)
+
+    @property
+    @pulumi.getter(name="minStorage")
+    def min_storage(self) -> Optional[pulumi.Input[builtins.int]]:
+        return pulumi.get(self, "min_storage")
+
+    @min_storage.setter
+    def min_storage(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "min_storage", value)
 
 
 if not MYPY:

@@ -260,9 +260,20 @@ export interface ElastigroupAzureV3Tag {
 }
 
 export interface ElastigroupAzureV3VmSizes {
+    excludedVmSizes?: pulumi.Input<pulumi.Input<string>[]>;
     odSizes: pulumi.Input<pulumi.Input<string>[]>;
     preferredSpotSizes?: pulumi.Input<pulumi.Input<string>[]>;
-    spotSizes: pulumi.Input<pulumi.Input<string>[]>;
+    spotSizeAttributes?: pulumi.Input<inputs.ElastigroupAzureV3VmSizesSpotSizeAttributes>;
+    spotSizes?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ElastigroupAzureV3VmSizesSpotSizeAttributes {
+    maxCpu?: pulumi.Input<number>;
+    maxMemory?: pulumi.Input<number>;
+    maxStorage?: pulumi.Input<number>;
+    minCpu?: pulumi.Input<number>;
+    minMemory?: pulumi.Input<number>;
+    minStorage?: pulumi.Input<number>;
 }
 
 export interface HealthCheckCheck {

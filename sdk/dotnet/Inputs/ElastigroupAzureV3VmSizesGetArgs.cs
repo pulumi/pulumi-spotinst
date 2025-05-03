@@ -12,6 +12,14 @@ namespace Pulumi.SpotInst.Inputs
 
     public sealed class ElastigroupAzureV3VmSizesGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("excludedVmSizes")]
+        private InputList<string>? _excludedVmSizes;
+        public InputList<string> ExcludedVmSizes
+        {
+            get => _excludedVmSizes ?? (_excludedVmSizes = new InputList<string>());
+            set => _excludedVmSizes = value;
+        }
+
         [Input("odSizes", required: true)]
         private InputList<string>? _odSizes;
         public InputList<string> OdSizes
@@ -28,7 +36,10 @@ namespace Pulumi.SpotInst.Inputs
             set => _preferredSpotSizes = value;
         }
 
-        [Input("spotSizes", required: true)]
+        [Input("spotSizeAttributes")]
+        public Input<Inputs.ElastigroupAzureV3VmSizesSpotSizeAttributesGetArgs>? SpotSizeAttributes { get; set; }
+
+        [Input("spotSizes")]
         private InputList<string>? _spotSizes;
         public InputList<string> SpotSizes
         {

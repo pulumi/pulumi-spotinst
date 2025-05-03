@@ -4530,9 +4530,11 @@ func (o ElastigroupAzureV3TagArrayOutput) Index(i pulumi.IntInput) ElastigroupAz
 }
 
 type ElastigroupAzureV3VmSizes struct {
-	OdSizes            []string `pulumi:"odSizes"`
-	PreferredSpotSizes []string `pulumi:"preferredSpotSizes"`
-	SpotSizes          []string `pulumi:"spotSizes"`
+	ExcludedVmSizes    []string                                     `pulumi:"excludedVmSizes"`
+	OdSizes            []string                                     `pulumi:"odSizes"`
+	PreferredSpotSizes []string                                     `pulumi:"preferredSpotSizes"`
+	SpotSizeAttributes *ElastigroupAzureV3VmSizesSpotSizeAttributes `pulumi:"spotSizeAttributes"`
+	SpotSizes          []string                                     `pulumi:"spotSizes"`
 }
 
 // ElastigroupAzureV3VmSizesInput is an input type that accepts ElastigroupAzureV3VmSizesArgs and ElastigroupAzureV3VmSizesOutput values.
@@ -4547,9 +4549,11 @@ type ElastigroupAzureV3VmSizesInput interface {
 }
 
 type ElastigroupAzureV3VmSizesArgs struct {
-	OdSizes            pulumi.StringArrayInput `pulumi:"odSizes"`
-	PreferredSpotSizes pulumi.StringArrayInput `pulumi:"preferredSpotSizes"`
-	SpotSizes          pulumi.StringArrayInput `pulumi:"spotSizes"`
+	ExcludedVmSizes    pulumi.StringArrayInput                             `pulumi:"excludedVmSizes"`
+	OdSizes            pulumi.StringArrayInput                             `pulumi:"odSizes"`
+	PreferredSpotSizes pulumi.StringArrayInput                             `pulumi:"preferredSpotSizes"`
+	SpotSizeAttributes ElastigroupAzureV3VmSizesSpotSizeAttributesPtrInput `pulumi:"spotSizeAttributes"`
+	SpotSizes          pulumi.StringArrayInput                             `pulumi:"spotSizes"`
 }
 
 func (ElastigroupAzureV3VmSizesArgs) ElementType() reflect.Type {
@@ -4629,12 +4633,22 @@ func (o ElastigroupAzureV3VmSizesOutput) ToElastigroupAzureV3VmSizesPtrOutputWit
 	}).(ElastigroupAzureV3VmSizesPtrOutput)
 }
 
+func (o ElastigroupAzureV3VmSizesOutput) ExcludedVmSizes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3VmSizes) []string { return v.ExcludedVmSizes }).(pulumi.StringArrayOutput)
+}
+
 func (o ElastigroupAzureV3VmSizesOutput) OdSizes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ElastigroupAzureV3VmSizes) []string { return v.OdSizes }).(pulumi.StringArrayOutput)
 }
 
 func (o ElastigroupAzureV3VmSizesOutput) PreferredSpotSizes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ElastigroupAzureV3VmSizes) []string { return v.PreferredSpotSizes }).(pulumi.StringArrayOutput)
+}
+
+func (o ElastigroupAzureV3VmSizesOutput) SpotSizeAttributes() ElastigroupAzureV3VmSizesSpotSizeAttributesPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3VmSizes) *ElastigroupAzureV3VmSizesSpotSizeAttributes {
+		return v.SpotSizeAttributes
+	}).(ElastigroupAzureV3VmSizesSpotSizeAttributesPtrOutput)
 }
 
 func (o ElastigroupAzureV3VmSizesOutput) SpotSizes() pulumi.StringArrayOutput {
@@ -4665,6 +4679,15 @@ func (o ElastigroupAzureV3VmSizesPtrOutput) Elem() ElastigroupAzureV3VmSizesOutp
 	}).(ElastigroupAzureV3VmSizesOutput)
 }
 
+func (o ElastigroupAzureV3VmSizesPtrOutput) ExcludedVmSizes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3VmSizes) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedVmSizes
+	}).(pulumi.StringArrayOutput)
+}
+
 func (o ElastigroupAzureV3VmSizesPtrOutput) OdSizes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3VmSizes) []string {
 		if v == nil {
@@ -4683,6 +4706,15 @@ func (o ElastigroupAzureV3VmSizesPtrOutput) PreferredSpotSizes() pulumi.StringAr
 	}).(pulumi.StringArrayOutput)
 }
 
+func (o ElastigroupAzureV3VmSizesPtrOutput) SpotSizeAttributes() ElastigroupAzureV3VmSizesSpotSizeAttributesPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3VmSizes) *ElastigroupAzureV3VmSizesSpotSizeAttributes {
+		if v == nil {
+			return nil
+		}
+		return v.SpotSizeAttributes
+	}).(ElastigroupAzureV3VmSizesSpotSizeAttributesPtrOutput)
+}
+
 func (o ElastigroupAzureV3VmSizesPtrOutput) SpotSizes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3VmSizes) []string {
 		if v == nil {
@@ -4690,6 +4722,214 @@ func (o ElastigroupAzureV3VmSizesPtrOutput) SpotSizes() pulumi.StringArrayOutput
 		}
 		return v.SpotSizes
 	}).(pulumi.StringArrayOutput)
+}
+
+type ElastigroupAzureV3VmSizesSpotSizeAttributes struct {
+	MaxCpu     *int `pulumi:"maxCpu"`
+	MaxMemory  *int `pulumi:"maxMemory"`
+	MaxStorage *int `pulumi:"maxStorage"`
+	MinCpu     *int `pulumi:"minCpu"`
+	MinMemory  *int `pulumi:"minMemory"`
+	MinStorage *int `pulumi:"minStorage"`
+}
+
+// ElastigroupAzureV3VmSizesSpotSizeAttributesInput is an input type that accepts ElastigroupAzureV3VmSizesSpotSizeAttributesArgs and ElastigroupAzureV3VmSizesSpotSizeAttributesOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3VmSizesSpotSizeAttributesInput` via:
+//
+//	ElastigroupAzureV3VmSizesSpotSizeAttributesArgs{...}
+type ElastigroupAzureV3VmSizesSpotSizeAttributesInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3VmSizesSpotSizeAttributesOutput() ElastigroupAzureV3VmSizesSpotSizeAttributesOutput
+	ToElastigroupAzureV3VmSizesSpotSizeAttributesOutputWithContext(context.Context) ElastigroupAzureV3VmSizesSpotSizeAttributesOutput
+}
+
+type ElastigroupAzureV3VmSizesSpotSizeAttributesArgs struct {
+	MaxCpu     pulumi.IntPtrInput `pulumi:"maxCpu"`
+	MaxMemory  pulumi.IntPtrInput `pulumi:"maxMemory"`
+	MaxStorage pulumi.IntPtrInput `pulumi:"maxStorage"`
+	MinCpu     pulumi.IntPtrInput `pulumi:"minCpu"`
+	MinMemory  pulumi.IntPtrInput `pulumi:"minMemory"`
+	MinStorage pulumi.IntPtrInput `pulumi:"minStorage"`
+}
+
+func (ElastigroupAzureV3VmSizesSpotSizeAttributesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3VmSizesSpotSizeAttributes)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3VmSizesSpotSizeAttributesArgs) ToElastigroupAzureV3VmSizesSpotSizeAttributesOutput() ElastigroupAzureV3VmSizesSpotSizeAttributesOutput {
+	return i.ToElastigroupAzureV3VmSizesSpotSizeAttributesOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3VmSizesSpotSizeAttributesArgs) ToElastigroupAzureV3VmSizesSpotSizeAttributesOutputWithContext(ctx context.Context) ElastigroupAzureV3VmSizesSpotSizeAttributesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3VmSizesSpotSizeAttributesOutput)
+}
+
+func (i ElastigroupAzureV3VmSizesSpotSizeAttributesArgs) ToElastigroupAzureV3VmSizesSpotSizeAttributesPtrOutput() ElastigroupAzureV3VmSizesSpotSizeAttributesPtrOutput {
+	return i.ToElastigroupAzureV3VmSizesSpotSizeAttributesPtrOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3VmSizesSpotSizeAttributesArgs) ToElastigroupAzureV3VmSizesSpotSizeAttributesPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3VmSizesSpotSizeAttributesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3VmSizesSpotSizeAttributesOutput).ToElastigroupAzureV3VmSizesSpotSizeAttributesPtrOutputWithContext(ctx)
+}
+
+// ElastigroupAzureV3VmSizesSpotSizeAttributesPtrInput is an input type that accepts ElastigroupAzureV3VmSizesSpotSizeAttributesArgs, ElastigroupAzureV3VmSizesSpotSizeAttributesPtr and ElastigroupAzureV3VmSizesSpotSizeAttributesPtrOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3VmSizesSpotSizeAttributesPtrInput` via:
+//
+//	        ElastigroupAzureV3VmSizesSpotSizeAttributesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ElastigroupAzureV3VmSizesSpotSizeAttributesPtrInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3VmSizesSpotSizeAttributesPtrOutput() ElastigroupAzureV3VmSizesSpotSizeAttributesPtrOutput
+	ToElastigroupAzureV3VmSizesSpotSizeAttributesPtrOutputWithContext(context.Context) ElastigroupAzureV3VmSizesSpotSizeAttributesPtrOutput
+}
+
+type elastigroupAzureV3VmSizesSpotSizeAttributesPtrType ElastigroupAzureV3VmSizesSpotSizeAttributesArgs
+
+func ElastigroupAzureV3VmSizesSpotSizeAttributesPtr(v *ElastigroupAzureV3VmSizesSpotSizeAttributesArgs) ElastigroupAzureV3VmSizesSpotSizeAttributesPtrInput {
+	return (*elastigroupAzureV3VmSizesSpotSizeAttributesPtrType)(v)
+}
+
+func (*elastigroupAzureV3VmSizesSpotSizeAttributesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupAzureV3VmSizesSpotSizeAttributes)(nil)).Elem()
+}
+
+func (i *elastigroupAzureV3VmSizesSpotSizeAttributesPtrType) ToElastigroupAzureV3VmSizesSpotSizeAttributesPtrOutput() ElastigroupAzureV3VmSizesSpotSizeAttributesPtrOutput {
+	return i.ToElastigroupAzureV3VmSizesSpotSizeAttributesPtrOutputWithContext(context.Background())
+}
+
+func (i *elastigroupAzureV3VmSizesSpotSizeAttributesPtrType) ToElastigroupAzureV3VmSizesSpotSizeAttributesPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3VmSizesSpotSizeAttributesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3VmSizesSpotSizeAttributesPtrOutput)
+}
+
+type ElastigroupAzureV3VmSizesSpotSizeAttributesOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3VmSizesSpotSizeAttributesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3VmSizesSpotSizeAttributes)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3VmSizesSpotSizeAttributesOutput) ToElastigroupAzureV3VmSizesSpotSizeAttributesOutput() ElastigroupAzureV3VmSizesSpotSizeAttributesOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3VmSizesSpotSizeAttributesOutput) ToElastigroupAzureV3VmSizesSpotSizeAttributesOutputWithContext(ctx context.Context) ElastigroupAzureV3VmSizesSpotSizeAttributesOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3VmSizesSpotSizeAttributesOutput) ToElastigroupAzureV3VmSizesSpotSizeAttributesPtrOutput() ElastigroupAzureV3VmSizesSpotSizeAttributesPtrOutput {
+	return o.ToElastigroupAzureV3VmSizesSpotSizeAttributesPtrOutputWithContext(context.Background())
+}
+
+func (o ElastigroupAzureV3VmSizesSpotSizeAttributesOutput) ToElastigroupAzureV3VmSizesSpotSizeAttributesPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3VmSizesSpotSizeAttributesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupAzureV3VmSizesSpotSizeAttributes) *ElastigroupAzureV3VmSizesSpotSizeAttributes {
+		return &v
+	}).(ElastigroupAzureV3VmSizesSpotSizeAttributesPtrOutput)
+}
+
+func (o ElastigroupAzureV3VmSizesSpotSizeAttributesOutput) MaxCpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3VmSizesSpotSizeAttributes) *int { return v.MaxCpu }).(pulumi.IntPtrOutput)
+}
+
+func (o ElastigroupAzureV3VmSizesSpotSizeAttributesOutput) MaxMemory() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3VmSizesSpotSizeAttributes) *int { return v.MaxMemory }).(pulumi.IntPtrOutput)
+}
+
+func (o ElastigroupAzureV3VmSizesSpotSizeAttributesOutput) MaxStorage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3VmSizesSpotSizeAttributes) *int { return v.MaxStorage }).(pulumi.IntPtrOutput)
+}
+
+func (o ElastigroupAzureV3VmSizesSpotSizeAttributesOutput) MinCpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3VmSizesSpotSizeAttributes) *int { return v.MinCpu }).(pulumi.IntPtrOutput)
+}
+
+func (o ElastigroupAzureV3VmSizesSpotSizeAttributesOutput) MinMemory() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3VmSizesSpotSizeAttributes) *int { return v.MinMemory }).(pulumi.IntPtrOutput)
+}
+
+func (o ElastigroupAzureV3VmSizesSpotSizeAttributesOutput) MinStorage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3VmSizesSpotSizeAttributes) *int { return v.MinStorage }).(pulumi.IntPtrOutput)
+}
+
+type ElastigroupAzureV3VmSizesSpotSizeAttributesPtrOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3VmSizesSpotSizeAttributesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupAzureV3VmSizesSpotSizeAttributes)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3VmSizesSpotSizeAttributesPtrOutput) ToElastigroupAzureV3VmSizesSpotSizeAttributesPtrOutput() ElastigroupAzureV3VmSizesSpotSizeAttributesPtrOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3VmSizesSpotSizeAttributesPtrOutput) ToElastigroupAzureV3VmSizesSpotSizeAttributesPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3VmSizesSpotSizeAttributesPtrOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3VmSizesSpotSizeAttributesPtrOutput) Elem() ElastigroupAzureV3VmSizesSpotSizeAttributesOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3VmSizesSpotSizeAttributes) ElastigroupAzureV3VmSizesSpotSizeAttributes {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupAzureV3VmSizesSpotSizeAttributes
+		return ret
+	}).(ElastigroupAzureV3VmSizesSpotSizeAttributesOutput)
+}
+
+func (o ElastigroupAzureV3VmSizesSpotSizeAttributesPtrOutput) MaxCpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3VmSizesSpotSizeAttributes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxCpu
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ElastigroupAzureV3VmSizesSpotSizeAttributesPtrOutput) MaxMemory() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3VmSizesSpotSizeAttributes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxMemory
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ElastigroupAzureV3VmSizesSpotSizeAttributesPtrOutput) MaxStorage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3VmSizesSpotSizeAttributes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxStorage
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ElastigroupAzureV3VmSizesSpotSizeAttributesPtrOutput) MinCpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3VmSizesSpotSizeAttributes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinCpu
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ElastigroupAzureV3VmSizesSpotSizeAttributesPtrOutput) MinMemory() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3VmSizesSpotSizeAttributes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinMemory
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ElastigroupAzureV3VmSizesSpotSizeAttributesPtrOutput) MinStorage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3VmSizesSpotSizeAttributes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinStorage
+	}).(pulumi.IntPtrOutput)
 }
 
 type HealthCheckCheck struct {
@@ -11510,6 +11750,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3TagArrayInput)(nil)).Elem(), ElastigroupAzureV3TagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3VmSizesInput)(nil)).Elem(), ElastigroupAzureV3VmSizesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3VmSizesPtrInput)(nil)).Elem(), ElastigroupAzureV3VmSizesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3VmSizesSpotSizeAttributesInput)(nil)).Elem(), ElastigroupAzureV3VmSizesSpotSizeAttributesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3VmSizesSpotSizeAttributesPtrInput)(nil)).Elem(), ElastigroupAzureV3VmSizesSpotSizeAttributesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HealthCheckCheckInput)(nil)).Elem(), HealthCheckCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HealthCheckCheckPtrInput)(nil)).Elem(), HealthCheckCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleAttachWorkloadInput)(nil)).Elem(), OceanRightSizingRuleAttachWorkloadArgs{})
@@ -11690,6 +11932,8 @@ func init() {
 	pulumi.RegisterOutputType(ElastigroupAzureV3TagArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3VmSizesOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3VmSizesPtrOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3VmSizesSpotSizeAttributesOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3VmSizesSpotSizeAttributesPtrOutput{})
 	pulumi.RegisterOutputType(HealthCheckCheckOutput{})
 	pulumi.RegisterOutputType(HealthCheckCheckPtrOutput{})
 	pulumi.RegisterOutputType(OceanRightSizingRuleAttachWorkloadOutput{})
