@@ -690,10 +690,10 @@ public class StatefulNodeAzure extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.login);
     }
     @Export(name="managedServiceIdentities", refs={List.class,StatefulNodeAzureManagedServiceIdentity.class}, tree="[0,1]")
-    private Output<List<StatefulNodeAzureManagedServiceIdentity>> managedServiceIdentities;
+    private Output</* @Nullable */ List<StatefulNodeAzureManagedServiceIdentity>> managedServiceIdentities;
 
-    public Output<List<StatefulNodeAzureManagedServiceIdentity>> managedServiceIdentities() {
-        return this.managedServiceIdentities;
+    public Output<Optional<List<StatefulNodeAzureManagedServiceIdentity>>> managedServiceIdentities() {
+        return Codegen.optional(this.managedServiceIdentities);
     }
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;

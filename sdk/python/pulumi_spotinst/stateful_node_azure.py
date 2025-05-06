@@ -2450,7 +2450,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="managedServiceIdentities")
-    def managed_service_identities(self) -> pulumi.Output[Sequence['outputs.StatefulNodeAzureManagedServiceIdentity']]:
+    def managed_service_identities(self) -> pulumi.Output[Optional[Sequence['outputs.StatefulNodeAzureManagedServiceIdentity']]]:
         return pulumi.get(self, "managed_service_identities")
 
     @property
