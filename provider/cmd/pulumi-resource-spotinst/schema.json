@@ -20075,7 +20075,6 @@
                 "extensions",
                 "health",
                 "loadBalancers",
-                "managedServiceIdentities",
                 "name",
                 "os",
                 "osDiskPersistenceMode",

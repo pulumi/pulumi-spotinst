@@ -573,7 +573,7 @@ export class StatefulNodeAzure extends pulumi.CustomResource {
     public readonly licenseType!: pulumi.Output<string | undefined>;
     public readonly loadBalancers!: pulumi.Output<outputs.StatefulNodeAzureLoadBalancer[]>;
     public readonly login!: pulumi.Output<outputs.StatefulNodeAzureLogin | undefined>;
-    public readonly managedServiceIdentities!: pulumi.Output<outputs.StatefulNodeAzureManagedServiceIdentity[]>;
+    public readonly managedServiceIdentities!: pulumi.Output<outputs.StatefulNodeAzureManagedServiceIdentity[] | undefined>;
     public readonly name!: pulumi.Output<string>;
     public readonly network!: pulumi.Output<outputs.StatefulNodeAzureNetwork | undefined>;
     public readonly os!: pulumi.Output<string>;
