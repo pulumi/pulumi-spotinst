@@ -65,10 +65,8 @@ class _AccountState:
         pulumi.set(self, "name", value)
 
 
+@pulumi.type_token("spotinst:index/account:Account")
 class Account(pulumi.CustomResource):
-
-    pulumi_type = "spotinst:index/account:Account"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

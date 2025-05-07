@@ -225,10 +225,8 @@ class _RolloutSpecState:
         pulumi.set(self, "traffic", value)
 
 
+@pulumi.type_token("spotinst:oceancd/rolloutSpec:RolloutSpec")
 class RolloutSpec(pulumi.CustomResource):
-
-    pulumi_type = "spotinst:oceancd/rolloutSpec:RolloutSpec"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -1278,10 +1278,8 @@ class _ElastigroupState:
         pulumi.set(self, "unhealthy_duration", value)
 
 
+@pulumi.type_token("spotinst:gcp/elastigroup:Elastigroup")
 class Elastigroup(pulumi.CustomResource):
-
-    pulumi_type = "spotinst:gcp/elastigroup:Elastigroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

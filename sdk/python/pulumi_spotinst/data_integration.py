@@ -135,10 +135,8 @@ class _DataIntegrationState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("spotinst:index/dataIntegration:DataIntegration")
 class DataIntegration(pulumi.CustomResource):
-
-    pulumi_type = "spotinst:index/dataIntegration:DataIntegration"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -1082,10 +1082,8 @@ class _OceanLaunchSpecState:
         pulumi.set(self, "user_data", value)
 
 
+@pulumi.type_token("spotinst:aws/oceanLaunchSpec:OceanLaunchSpec")
 class OceanLaunchSpec(pulumi.CustomResource):
-
-    pulumi_type = "spotinst:aws/oceanLaunchSpec:OceanLaunchSpec"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

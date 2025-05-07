@@ -1035,10 +1035,8 @@ class _StatefulNodeAzureState:
         pulumi.set(self, "zones", value)
 
 
+@pulumi.type_token("spotinst:index/statefulNodeAzure:StatefulNodeAzure")
 class StatefulNodeAzure(pulumi.CustomResource):
-
-    pulumi_type = "spotinst:index/statefulNodeAzure:StatefulNodeAzure"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -260,10 +260,8 @@ class _UserState:
         pulumi.set(self, "user_group_ids", value)
 
 
+@pulumi.type_token("spotinst:organization/user:User")
 class User(pulumi.CustomResource):
-
-    pulumi_type = "spotinst:organization/user:User"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

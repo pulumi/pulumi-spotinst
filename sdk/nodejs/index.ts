@@ -40,10 +40,8 @@ export type OceanRightSizingRule = import("./oceanRightSizingRule").OceanRightSi
 export const OceanRightSizingRule: typeof import("./oceanRightSizingRule").OceanRightSizingRule = null as any;
 utilities.lazyLoad(exports, ["OceanRightSizingRule"], () => require("./oceanRightSizingRule"));
 
-export { ProviderArgs } from "./provider";
-export type Provider = import("./provider").Provider;
-export const Provider: typeof import("./provider").Provider = null as any;
-utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+export * from "./provider";
+import { Provider } from "./provider";
 
 export { StatefulNodeAzureArgs, StatefulNodeAzureState } from "./statefulNodeAzure";
 export type StatefulNodeAzure = import("./statefulNodeAzure").StatefulNodeAzure;

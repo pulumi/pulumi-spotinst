@@ -613,10 +613,8 @@ class _OceanImportState:
         pulumi.set(self, "whitelists", value)
 
 
+@pulumi.type_token("spotinst:gke/oceanImport:OceanImport")
 class OceanImport(pulumi.CustomResource):
-
-    pulumi_type = "spotinst:gke/oceanImport:OceanImport"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

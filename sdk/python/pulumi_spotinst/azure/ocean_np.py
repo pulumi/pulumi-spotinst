@@ -997,10 +997,8 @@ class _OceanNpState:
         pulumi.set(self, "vng_template_scheduling", value)
 
 
+@pulumi.type_token("spotinst:azure/oceanNp:OceanNp")
 class OceanNp(pulumi.CustomResource):
-
-    pulumi_type = "spotinst:azure/oceanNp:OceanNp"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
