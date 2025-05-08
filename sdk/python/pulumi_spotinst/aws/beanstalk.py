@@ -433,10 +433,8 @@ class _BeanstalkState:
         pulumi.set(self, "scheduled_tasks", value)
 
 
+@pulumi.type_token("spotinst:aws/beanstalk:Beanstalk")
 class Beanstalk(pulumi.CustomResource):
-
-    pulumi_type = "spotinst:aws/beanstalk:Beanstalk"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

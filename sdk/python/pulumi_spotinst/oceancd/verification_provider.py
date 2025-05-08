@@ -258,10 +258,8 @@ class _VerificationProviderState:
         pulumi.set(self, "prometheus", value)
 
 
+@pulumi.type_token("spotinst:oceancd/verificationProvider:VerificationProvider")
 class VerificationProvider(pulumi.CustomResource):
-
-    pulumi_type = "spotinst:oceancd/verificationProvider:VerificationProvider"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

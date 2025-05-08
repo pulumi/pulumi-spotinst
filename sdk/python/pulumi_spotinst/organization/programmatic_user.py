@@ -203,10 +203,8 @@ class _ProgrammaticUserState:
         pulumi.set(self, "user_group_ids", value)
 
 
+@pulumi.type_token("spotinst:organization/programmaticUser:ProgrammaticUser")
 class ProgrammaticUser(pulumi.CustomResource):
-
-    pulumi_type = "spotinst:organization/programmaticUser:ProgrammaticUser"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

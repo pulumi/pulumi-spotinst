@@ -188,10 +188,8 @@ class _CredentialsAzureState:
         pulumi.set(self, "tenant_id", value)
 
 
+@pulumi.type_token("spotinst:index/credentialsAzure:CredentialsAzure")
 class CredentialsAzure(pulumi.CustomResource):
-
-    pulumi_type = "spotinst:index/credentialsAzure:CredentialsAzure"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

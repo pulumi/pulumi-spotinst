@@ -1054,10 +1054,8 @@ class _OceanState:
         pulumi.set(self, "whitelists", value)
 
 
+@pulumi.type_token("spotinst:ecs/ocean:Ocean")
 class Ocean(pulumi.CustomResource):
-
-    pulumi_type = "spotinst:ecs/ocean:Ocean"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

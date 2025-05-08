@@ -79,10 +79,8 @@ class _OceanVirtualNodeGroupState:
         pulumi.set(self, "virtual_node_group_id", value)
 
 
+@pulumi.type_token("spotinst:spark/oceanVirtualNodeGroup:OceanVirtualNodeGroup")
 class OceanVirtualNodeGroup(pulumi.CustomResource):
-
-    pulumi_type = "spotinst:spark/oceanVirtualNodeGroup:OceanVirtualNodeGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

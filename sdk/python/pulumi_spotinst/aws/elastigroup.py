@@ -2507,10 +2507,8 @@ class _ElastigroupState:
         pulumi.set(self, "wait_for_capacity_timeout", value)
 
 
+@pulumi.type_token("spotinst:aws/elastigroup:Elastigroup")
 class Elastigroup(pulumi.CustomResource):
-
-    pulumi_type = "spotinst:aws/elastigroup:Elastigroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

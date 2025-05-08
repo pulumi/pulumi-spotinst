@@ -786,10 +786,8 @@ class _OceanNpVirtualNodeGroupState:
         pulumi.set(self, "vnet_subnet_ids", value)
 
 
+@pulumi.type_token("spotinst:azure/oceanNpVirtualNodeGroup:OceanNpVirtualNodeGroup")
 class OceanNpVirtualNodeGroup(pulumi.CustomResource):
-
-    pulumi_type = "spotinst:azure/oceanNpVirtualNodeGroup:OceanNpVirtualNodeGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

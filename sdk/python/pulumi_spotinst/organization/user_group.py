@@ -171,10 +171,8 @@ class _UserGroupState:
         pulumi.set(self, "user_ids", value)
 
 
+@pulumi.type_token("spotinst:organization/userGroup:UserGroup")
 class UserGroup(pulumi.CustomResource):
-
-    pulumi_type = "spotinst:organization/userGroup:UserGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
