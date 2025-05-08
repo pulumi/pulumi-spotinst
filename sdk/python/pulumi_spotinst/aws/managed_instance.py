@@ -1182,10 +1182,8 @@ class _ManagedInstanceState:
         pulumi.set(self, "vpc_id", value)
 
 
+@pulumi.type_token("spotinst:aws/managedInstance:ManagedInstance")
 class ManagedInstance(pulumi.CustomResource):
-
-    pulumi_type = "spotinst:aws/managedInstance:ManagedInstance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

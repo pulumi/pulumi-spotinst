@@ -1550,10 +1550,8 @@ class _MrScalarState:
         pulumi.set(self, "visible_to_all_users", value)
 
 
+@pulumi.type_token("spotinst:aws/mrScalar:MrScalar")
 class MrScalar(pulumi.CustomResource):
-
-    pulumi_type = "spotinst:aws/mrScalar:MrScalar"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

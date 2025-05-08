@@ -100,10 +100,8 @@ class _OceanExtendedResourceDefinitionState:
         pulumi.set(self, "resource_mapping", value)
 
 
+@pulumi.type_token("spotinst:aws/oceanExtendedResourceDefinition:OceanExtendedResourceDefinition")
 class OceanExtendedResourceDefinition(pulumi.CustomResource):
-
-    pulumi_type = "spotinst:aws/oceanExtendedResourceDefinition:OceanExtendedResourceDefinition"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

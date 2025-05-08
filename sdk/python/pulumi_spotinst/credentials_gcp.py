@@ -374,10 +374,8 @@ class _CredentialsGcpState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("spotinst:index/credentialsGcp:CredentialsGcp")
 class CredentialsGcp(pulumi.CustomResource):
-
-    pulumi_type = "spotinst:index/credentialsGcp:CredentialsGcp"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

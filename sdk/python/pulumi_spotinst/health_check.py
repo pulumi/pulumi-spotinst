@@ -177,10 +177,8 @@ class _HealthCheckState:
         pulumi.set(self, "resource_id", value)
 
 
+@pulumi.type_token("spotinst:index/healthCheck:HealthCheck")
 class HealthCheck(pulumi.CustomResource):
-
-    pulumi_type = "spotinst:index/healthCheck:HealthCheck"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

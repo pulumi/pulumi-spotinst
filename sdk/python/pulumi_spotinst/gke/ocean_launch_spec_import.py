@@ -95,10 +95,8 @@ class _OceanLaunchSpecImportState:
         pulumi.set(self, "ocean_id", value)
 
 
+@pulumi.type_token("spotinst:gke/oceanLaunchSpecImport:OceanLaunchSpecImport")
 class OceanLaunchSpecImport(pulumi.CustomResource):
-
-    pulumi_type = "spotinst:gke/oceanLaunchSpecImport:OceanLaunchSpecImport"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

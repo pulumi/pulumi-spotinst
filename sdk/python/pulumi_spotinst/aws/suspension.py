@@ -97,10 +97,8 @@ class _SuspensionState:
         pulumi.set(self, "suspensions", value)
 
 
+@pulumi.type_token("spotinst:aws/suspension:Suspension")
 class Suspension(pulumi.CustomResource):
-
-    pulumi_type = "spotinst:aws/suspension:Suspension"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

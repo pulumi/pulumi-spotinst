@@ -253,10 +253,8 @@ class _SubscriptionState:
         pulumi.set(self, "resource_id", value)
 
 
+@pulumi.type_token("spotinst:index/subscription:Subscription")
 class Subscription(pulumi.CustomResource):
-
-    pulumi_type = "spotinst:index/subscription:Subscription"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
