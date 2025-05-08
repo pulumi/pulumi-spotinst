@@ -11055,6 +11055,9 @@
                 "type": "string",
                 "description": "Spotinst Personal API Access Token\n"
             }
+        },
+        "methods": {
+            "terraformConfig": "pulumi:providers:spotinst/terraformConfig"
         }
     },
     "resources": {
@@ -21399,6 +21402,37 @@
                         "type": "string"
                     }
                 },
+                "type": "object"
+            }
+        }
+    },
+    "functions": {
+        "pulumi:providers:spotinst/terraformConfig": {
+            "description": "This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.",
+            "inputs": {
+                "properties": {
+                    "__self__": {
+                        "type": "ref",
+                        "$ref": "#/resources/pulumi:providers:spotinst"
+                    }
+                },
+                "type": "pulumi:providers:spotinst/terraformConfig",
+                "required": [
+                    "__self__"
+                ]
+            },
+            "outputs": {
+                "properties": {
+                    "result": {
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "type": "object"
+                    }
+                },
+                "required": [
+                    "result"
+                ],
                 "type": "object"
             }
         }
