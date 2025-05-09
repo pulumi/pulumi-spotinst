@@ -149,6 +149,10 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      * Optionally adds security group IDs.
      */
     public readonly securityGroups!: pulumi.Output<string[] | undefined>;
+    /**
+     * Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
+     */
+    public readonly startupTaints!: pulumi.Output<outputs.aws.OceanLaunchSpecStartupTaint[] | undefined>;
     public readonly strategies!: pulumi.Output<outputs.aws.OceanLaunchSpecStrategy[] | undefined>;
     /**
      * A list of subnet IDs.
@@ -209,6 +213,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             resourceInputs["schedulingShutdownHours"] = state ? state.schedulingShutdownHours : undefined;
             resourceInputs["schedulingTasks"] = state ? state.schedulingTasks : undefined;
             resourceInputs["securityGroups"] = state ? state.securityGroups : undefined;
+            resourceInputs["startupTaints"] = state ? state.startupTaints : undefined;
             resourceInputs["strategies"] = state ? state.strategies : undefined;
             resourceInputs["subnetIds"] = state ? state.subnetIds : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
@@ -248,6 +253,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             resourceInputs["schedulingShutdownHours"] = args ? args.schedulingShutdownHours : undefined;
             resourceInputs["schedulingTasks"] = args ? args.schedulingTasks : undefined;
             resourceInputs["securityGroups"] = args ? args.securityGroups : undefined;
+            resourceInputs["startupTaints"] = args ? args.startupTaints : undefined;
             resourceInputs["strategies"] = args ? args.strategies : undefined;
             resourceInputs["subnetIds"] = args ? args.subnetIds : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -366,6 +372,10 @@ export interface OceanLaunchSpecState {
      * Optionally adds security group IDs.
      */
     securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
+     */
+    startupTaints?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecStartupTaint>[]>;
     strategies?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecStrategy>[]>;
     /**
      * A list of subnet IDs.
@@ -492,6 +502,10 @@ export interface OceanLaunchSpecArgs {
      * Optionally adds security group IDs.
      */
     securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
+     */
+    startupTaints?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecStartupTaint>[]>;
     strategies?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecStrategy>[]>;
     /**
      * A list of subnet IDs.

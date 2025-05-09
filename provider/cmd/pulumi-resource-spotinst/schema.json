@@ -3814,6 +3814,23 @@
                 "numOfUnits"
             ]
         },
+        "spotinst:aws/OceanLaunchSpecStartupTaint:OceanLaunchSpecStartupTaint": {
+            "properties": {
+                "effect": {
+                    "type": "string",
+                    "description": "Set startup taint effect.\n"
+                },
+                "key": {
+                    "type": "string",
+                    "description": "Set startup taint key.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Set startup taint value.\n"
+                }
+            },
+            "type": "object"
+        },
         "spotinst:aws/OceanLaunchSpecStrategy:OceanLaunchSpecStrategy": {
             "properties": {
                 "drainingTimeout": {
@@ -4096,6 +4113,23 @@
                 "respectPdb": {
                     "type": "boolean",
                     "description": "During the roll, if the parameter is set to true we honor PDB during the instance replacement.\n\n"
+                }
+            },
+            "type": "object"
+        },
+        "spotinst:aws/OceanStartupTaint:OceanStartupTaint": {
+            "properties": {
+                "effect": {
+                    "type": "string",
+                    "description": "Set startup taint effect.\n"
+                },
+                "key": {
+                    "type": "string",
+                    "description": "Set startup taint key.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Set startup taint value.\n"
                 }
             },
             "type": "object"
@@ -14060,6 +14094,13 @@
                     "type": "string",
                     "description": "Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.\n"
                 },
+                "startupTaints": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:aws/OceanStartupTaint:OceanStartupTaint"
+                    },
+                    "description": "Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.\n"
+                },
                 "subnetIds": {
                     "type": "array",
                     "items": {
@@ -14273,6 +14314,13 @@
                     "type": "string",
                     "description": "Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.\n"
                 },
+                "startupTaints": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:aws/OceanStartupTaint:OceanStartupTaint"
+                    },
+                    "description": "Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.\n"
+                },
                 "subnetIds": {
                     "type": "array",
                     "items": {
@@ -14484,6 +14532,13 @@
                     "spreadNodesBy": {
                         "type": "string",
                         "description": "Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.\n"
+                    },
+                    "startupTaints": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/spotinst:aws/OceanStartupTaint:OceanStartupTaint"
+                        },
+                        "description": "Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.\n"
                     },
                     "subnetIds": {
                         "type": "array",
@@ -14734,6 +14789,13 @@
                     },
                     "description": "Optionally adds security group IDs.\n"
                 },
+                "startupTaints": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:aws/OceanLaunchSpecStartupTaint:OceanLaunchSpecStartupTaint"
+                    },
+                    "description": "Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.\n"
+                },
                 "strategies": {
                     "type": "array",
                     "items": {
@@ -14924,6 +14986,13 @@
                         "type": "string"
                     },
                     "description": "Optionally adds security group IDs.\n"
+                },
+                "startupTaints": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:aws/OceanLaunchSpecStartupTaint:OceanLaunchSpecStartupTaint"
+                    },
+                    "description": "Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.\n"
                 },
                 "strategies": {
                     "type": "array",
@@ -15116,6 +15185,13 @@
                             "type": "string"
                         },
                         "description": "Optionally adds security group IDs.\n"
+                    },
+                    "startupTaints": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/spotinst:aws/OceanLaunchSpecStartupTaint:OceanLaunchSpecStartupTaint"
+                        },
+                        "description": "Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.\n"
                     },
                     "strategies": {
                         "type": "array",

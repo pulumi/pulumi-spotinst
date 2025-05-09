@@ -179,6 +179,10 @@ export class Ocean extends pulumi.CustomResource {
      */
     public readonly spreadNodesBy!: pulumi.Output<string | undefined>;
     /**
+     * Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
+     */
+    public readonly startupTaints!: pulumi.Output<outputs.aws.OceanStartupTaint[] | undefined>;
+    /**
      * A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
      * * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
      */
@@ -255,6 +259,7 @@ export class Ocean extends pulumi.CustomResource {
             resourceInputs["securityGroups"] = state ? state.securityGroups : undefined;
             resourceInputs["spotPercentage"] = state ? state.spotPercentage : undefined;
             resourceInputs["spreadNodesBy"] = state ? state.spreadNodesBy : undefined;
+            resourceInputs["startupTaints"] = state ? state.startupTaints : undefined;
             resourceInputs["subnetIds"] = state ? state.subnetIds : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["updatePolicy"] = state ? state.updatePolicy : undefined;
@@ -309,6 +314,7 @@ export class Ocean extends pulumi.CustomResource {
             resourceInputs["securityGroups"] = args ? args.securityGroups : undefined;
             resourceInputs["spotPercentage"] = args ? args.spotPercentage : undefined;
             resourceInputs["spreadNodesBy"] = args ? args.spreadNodesBy : undefined;
+            resourceInputs["startupTaints"] = args ? args.startupTaints : undefined;
             resourceInputs["subnetIds"] = args ? args.subnetIds : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["updatePolicy"] = args ? args.updatePolicy : undefined;
@@ -458,6 +464,10 @@ export interface OceanState {
      * Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
      */
     spreadNodesBy?: pulumi.Input<string>;
+    /**
+     * Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
+     */
+    startupTaints?: pulumi.Input<pulumi.Input<inputs.aws.OceanStartupTaint>[]>;
     /**
      * A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
      * * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
@@ -623,6 +633,10 @@ export interface OceanArgs {
      * Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
      */
     spreadNodesBy?: pulumi.Input<string>;
+    /**
+     * Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
+     */
+    startupTaints?: pulumi.Input<pulumi.Input<inputs.aws.OceanStartupTaint>[]>;
     /**
      * A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
      * * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.

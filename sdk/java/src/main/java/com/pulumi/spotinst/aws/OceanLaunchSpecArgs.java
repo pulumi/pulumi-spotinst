@@ -22,6 +22,7 @@ import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecLabelArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecResourceLimitArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecSchedulingShutdownHoursArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecSchedulingTaskArgs;
+import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecStartupTaintArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecStrategyArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecTagArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecTaintArgs;
@@ -431,6 +432,21 @@ public final class OceanLaunchSpecArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.securityGroups);
     }
 
+    /**
+     * Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
+     * 
+     */
+    @Import(name="startupTaints")
+    private @Nullable Output<List<OceanLaunchSpecStartupTaintArgs>> startupTaints;
+
+    /**
+     * @return Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
+     * 
+     */
+    public Optional<Output<List<OceanLaunchSpecStartupTaintArgs>>> startupTaints() {
+        return Optional.ofNullable(this.startupTaints);
+    }
+
     @Import(name="strategies")
     private @Nullable Output<List<OceanLaunchSpecStrategyArgs>> strategies;
 
@@ -536,6 +552,7 @@ public final class OceanLaunchSpecArgs extends com.pulumi.resources.ResourceArgs
         this.schedulingShutdownHours = $.schedulingShutdownHours;
         this.schedulingTasks = $.schedulingTasks;
         this.securityGroups = $.securityGroups;
+        this.startupTaints = $.startupTaints;
         this.strategies = $.strategies;
         this.subnetIds = $.subnetIds;
         this.tags = $.tags;
@@ -1233,6 +1250,37 @@ public final class OceanLaunchSpecArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder securityGroups(String... securityGroups) {
             return securityGroups(List.of(securityGroups));
+        }
+
+        /**
+         * @param startupTaints Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startupTaints(@Nullable Output<List<OceanLaunchSpecStartupTaintArgs>> startupTaints) {
+            $.startupTaints = startupTaints;
+            return this;
+        }
+
+        /**
+         * @param startupTaints Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startupTaints(List<OceanLaunchSpecStartupTaintArgs> startupTaints) {
+            return startupTaints(Output.of(startupTaints));
+        }
+
+        /**
+         * @param startupTaints Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startupTaints(OceanLaunchSpecStartupTaintArgs... startupTaints) {
+            return startupTaints(List.of(startupTaints));
         }
 
         public Builder strategies(@Nullable Output<List<OceanLaunchSpecStrategyArgs>> strategies) {

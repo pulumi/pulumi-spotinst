@@ -26,6 +26,7 @@ import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecLabel;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecResourceLimit;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecSchedulingShutdownHours;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecSchedulingTask;
+import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecStartupTaint;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecStrategy;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecTag;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecTaint;
@@ -416,6 +417,20 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<String>>> securityGroups() {
         return Codegen.optional(this.securityGroups);
+    }
+    /**
+     * Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
+     * 
+     */
+    @Export(name="startupTaints", refs={List.class,OceanLaunchSpecStartupTaint.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<OceanLaunchSpecStartupTaint>> startupTaints;
+
+    /**
+     * @return Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
+     * 
+     */
+    public Output<Optional<List<OceanLaunchSpecStartupTaint>>> startupTaints() {
+        return Codegen.optional(this.startupTaints);
     }
     @Export(name="strategies", refs={List.class,OceanLaunchSpecStrategy.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OceanLaunchSpecStrategy>> strategies;

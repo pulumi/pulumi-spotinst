@@ -2985,6 +2985,21 @@ export namespace aws {
         numOfUnits: number;
     }
 
+    export interface OceanLaunchSpecStartupTaint {
+        /**
+         * Set startup taint effect.
+         */
+        effect?: string;
+        /**
+         * Set startup taint key.
+         */
+        key?: string;
+        /**
+         * Set startup taint value.
+         */
+        value?: string;
+    }
+
     export interface OceanLaunchSpecStrategy {
         /**
          * The configurable amount of time that Ocean will wait for the draining process to complete before terminating an instance. If you have not defined a draining timeout, the default of 300 seconds will be used.
@@ -3196,6 +3211,21 @@ export namespace aws {
          * During the roll, if the parameter is set to true we honor PDB during the instance replacement.
          */
         respectPdb?: boolean;
+    }
+
+    export interface OceanStartupTaint {
+        /**
+         * Set startup taint effect.
+         */
+        effect?: string;
+        /**
+         * Set startup taint key.
+         */
+        key?: string;
+        /**
+         * Set startup taint value.
+         */
+        value?: string;
     }
 
     export interface OceanTag {

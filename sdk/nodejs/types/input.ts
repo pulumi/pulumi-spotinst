@@ -2984,6 +2984,21 @@ export namespace aws {
         numOfUnits: pulumi.Input<number>;
     }
 
+    export interface OceanLaunchSpecStartupTaint {
+        /**
+         * Set startup taint effect.
+         */
+        effect?: pulumi.Input<string>;
+        /**
+         * Set startup taint key.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * Set startup taint value.
+         */
+        value?: pulumi.Input<string>;
+    }
+
     export interface OceanLaunchSpecStrategy {
         /**
          * The configurable amount of time that Ocean will wait for the draining process to complete before terminating an instance. If you have not defined a draining timeout, the default of 300 seconds will be used.
@@ -3195,6 +3210,21 @@ export namespace aws {
          * During the roll, if the parameter is set to true we honor PDB during the instance replacement.
          */
         respectPdb?: pulumi.Input<boolean>;
+    }
+
+    export interface OceanStartupTaint {
+        /**
+         * Set startup taint effect.
+         */
+        effect?: pulumi.Input<string>;
+        /**
+         * Set startup taint key.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * Set startup taint value.
+         */
+        value?: pulumi.Input<string>;
     }
 
     export interface OceanTag {

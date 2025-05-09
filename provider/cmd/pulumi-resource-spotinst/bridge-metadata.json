@@ -1541,6 +1541,9 @@
                     "security_groups": {
                         "maxItemsOne": false
                     },
+                    "startup_taints": {
+                        "maxItemsOne": false
+                    },
                     "subnet_ids": {
                         "maxItemsOne": false
                     },
@@ -1696,6 +1699,9 @@
                         }
                     },
                     "security_groups": {
+                        "maxItemsOne": false
+                    },
+                    "startup_taints": {
                         "maxItemsOne": false
                     },
                     "strategy": {

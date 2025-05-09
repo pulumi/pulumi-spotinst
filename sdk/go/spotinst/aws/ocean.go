@@ -93,6 +93,8 @@ type Ocean struct {
 	SpotPercentage pulumi.IntPtrOutput `pulumi:"spotPercentage"`
 	// Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
 	SpreadNodesBy pulumi.StringPtrOutput `pulumi:"spreadNodesBy"`
+	// Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
+	StartupTaints OceanStartupTaintArrayOutput `pulumi:"startupTaints"`
 	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
 	// * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
 	SubnetIds pulumi.StringArrayOutput `pulumi:"subnetIds"`
@@ -217,6 +219,8 @@ type oceanState struct {
 	SpotPercentage *int `pulumi:"spotPercentage"`
 	// Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
 	SpreadNodesBy *string `pulumi:"spreadNodesBy"`
+	// Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
+	StartupTaints []OceanStartupTaint `pulumi:"startupTaints"`
 	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
 	// * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
 	SubnetIds []string `pulumi:"subnetIds"`
@@ -303,6 +307,8 @@ type OceanState struct {
 	SpotPercentage pulumi.IntPtrInput
 	// Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
 	SpreadNodesBy pulumi.StringPtrInput
+	// Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
+	StartupTaints OceanStartupTaintArrayInput
 	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
 	// * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
 	SubnetIds pulumi.StringArrayInput
@@ -393,6 +399,8 @@ type oceanArgs struct {
 	SpotPercentage *int `pulumi:"spotPercentage"`
 	// Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
 	SpreadNodesBy *string `pulumi:"spreadNodesBy"`
+	// Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
+	StartupTaints []OceanStartupTaint `pulumi:"startupTaints"`
 	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
 	// * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
 	SubnetIds []string `pulumi:"subnetIds"`
@@ -480,6 +488,8 @@ type OceanArgs struct {
 	SpotPercentage pulumi.IntPtrInput
 	// Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
 	SpreadNodesBy pulumi.StringPtrInput
+	// Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
+	StartupTaints OceanStartupTaintArrayInput
 	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
 	// * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
 	SubnetIds pulumi.StringArrayInput
@@ -755,6 +765,11 @@ func (o OceanOutput) SpotPercentage() pulumi.IntPtrOutput {
 // Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
 func (o OceanOutput) SpreadNodesBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Ocean) pulumi.StringPtrOutput { return v.SpreadNodesBy }).(pulumi.StringPtrOutput)
+}
+
+// Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
+func (o OceanOutput) StartupTaints() OceanStartupTaintArrayOutput {
+	return o.ApplyT(func(v *Ocean) OceanStartupTaintArrayOutput { return v.StartupTaints }).(OceanStartupTaintArrayOutput)
 }
 
 // A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.

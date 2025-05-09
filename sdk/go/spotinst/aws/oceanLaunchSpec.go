@@ -79,8 +79,10 @@ type OceanLaunchSpec struct {
 	// Used to define scheduled tasks such as a manual headroom update.
 	SchedulingTasks OceanLaunchSpecSchedulingTaskArrayOutput `pulumi:"schedulingTasks"`
 	// Optionally adds security group IDs.
-	SecurityGroups pulumi.StringArrayOutput           `pulumi:"securityGroups"`
-	Strategies     OceanLaunchSpecStrategyArrayOutput `pulumi:"strategies"`
+	SecurityGroups pulumi.StringArrayOutput `pulumi:"securityGroups"`
+	// Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
+	StartupTaints OceanLaunchSpecStartupTaintArrayOutput `pulumi:"startupTaints"`
+	Strategies    OceanLaunchSpecStrategyArrayOutput     `pulumi:"strategies"`
 	// A list of subnet IDs.
 	SubnetIds pulumi.StringArrayOutput `pulumi:"subnetIds"`
 	// A key/value mapping of tags to assign to the resource.
@@ -178,8 +180,10 @@ type oceanLaunchSpecState struct {
 	// Used to define scheduled tasks such as a manual headroom update.
 	SchedulingTasks []OceanLaunchSpecSchedulingTask `pulumi:"schedulingTasks"`
 	// Optionally adds security group IDs.
-	SecurityGroups []string                  `pulumi:"securityGroups"`
-	Strategies     []OceanLaunchSpecStrategy `pulumi:"strategies"`
+	SecurityGroups []string `pulumi:"securityGroups"`
+	// Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
+	StartupTaints []OceanLaunchSpecStartupTaint `pulumi:"startupTaints"`
+	Strategies    []OceanLaunchSpecStrategy     `pulumi:"strategies"`
 	// A list of subnet IDs.
 	SubnetIds []string `pulumi:"subnetIds"`
 	// A key/value mapping of tags to assign to the resource.
@@ -246,7 +250,9 @@ type OceanLaunchSpecState struct {
 	SchedulingTasks OceanLaunchSpecSchedulingTaskArrayInput
 	// Optionally adds security group IDs.
 	SecurityGroups pulumi.StringArrayInput
-	Strategies     OceanLaunchSpecStrategyArrayInput
+	// Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
+	StartupTaints OceanLaunchSpecStartupTaintArrayInput
+	Strategies    OceanLaunchSpecStrategyArrayInput
 	// A list of subnet IDs.
 	SubnetIds pulumi.StringArrayInput
 	// A key/value mapping of tags to assign to the resource.
@@ -316,8 +322,10 @@ type oceanLaunchSpecArgs struct {
 	// Used to define scheduled tasks such as a manual headroom update.
 	SchedulingTasks []OceanLaunchSpecSchedulingTask `pulumi:"schedulingTasks"`
 	// Optionally adds security group IDs.
-	SecurityGroups []string                  `pulumi:"securityGroups"`
-	Strategies     []OceanLaunchSpecStrategy `pulumi:"strategies"`
+	SecurityGroups []string `pulumi:"securityGroups"`
+	// Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
+	StartupTaints []OceanLaunchSpecStartupTaint `pulumi:"startupTaints"`
+	Strategies    []OceanLaunchSpecStrategy     `pulumi:"strategies"`
 	// A list of subnet IDs.
 	SubnetIds []string `pulumi:"subnetIds"`
 	// A key/value mapping of tags to assign to the resource.
@@ -385,7 +393,9 @@ type OceanLaunchSpecArgs struct {
 	SchedulingTasks OceanLaunchSpecSchedulingTaskArrayInput
 	// Optionally adds security group IDs.
 	SecurityGroups pulumi.StringArrayInput
-	Strategies     OceanLaunchSpecStrategyArrayInput
+	// Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
+	StartupTaints OceanLaunchSpecStartupTaintArrayInput
+	Strategies    OceanLaunchSpecStrategyArrayInput
 	// A list of subnet IDs.
 	SubnetIds pulumi.StringArrayInput
 	// A key/value mapping of tags to assign to the resource.
@@ -626,6 +636,11 @@ func (o OceanLaunchSpecOutput) SchedulingTasks() OceanLaunchSpecSchedulingTaskAr
 // Optionally adds security group IDs.
 func (o OceanLaunchSpecOutput) SecurityGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.StringArrayOutput { return v.SecurityGroups }).(pulumi.StringArrayOutput)
+}
+
+// Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
+func (o OceanLaunchSpecOutput) StartupTaints() OceanLaunchSpecStartupTaintArrayOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecStartupTaintArrayOutput { return v.StartupTaints }).(OceanLaunchSpecStartupTaintArrayOutput)
 }
 
 func (o OceanLaunchSpecOutput) Strategies() OceanLaunchSpecStrategyArrayOutput {

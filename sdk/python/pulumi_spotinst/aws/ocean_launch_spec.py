@@ -50,6 +50,7 @@ class OceanLaunchSpecArgs:
                  scheduling_shutdown_hours: Optional[pulumi.Input['OceanLaunchSpecSchedulingShutdownHoursArgs']] = None,
                  scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskArgs']]]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 startup_taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecStartupTaintArgs']]]] = None,
                  strategies: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecStrategyArgs']]]] = None,
                  subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTagArgs']]]] = None,
@@ -84,6 +85,7 @@ class OceanLaunchSpecArgs:
         :param pulumi.Input['OceanLaunchSpecSchedulingShutdownHoursArgs'] scheduling_shutdown_hours: Used to specify times that the nodes in the virtual node group will be taken down.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskArgs']]] scheduling_tasks: Used to define scheduled tasks such as a manual headroom update.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] security_groups: Optionally adds security group IDs.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecStartupTaintArgs']]] startup_taints: Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] subnet_ids: A list of subnet IDs.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTagArgs']]] tags: A key/value mapping of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTaintArgs']]] taints: Optionally adds labels to instances launched in the cluster.
@@ -144,6 +146,8 @@ class OceanLaunchSpecArgs:
             pulumi.set(__self__, "scheduling_tasks", scheduling_tasks)
         if security_groups is not None:
             pulumi.set(__self__, "security_groups", security_groups)
+        if startup_taints is not None:
+            pulumi.set(__self__, "startup_taints", startup_taints)
         if strategies is not None:
             pulumi.set(__self__, "strategies", strategies)
         if subnet_ids is not None:
@@ -484,6 +488,18 @@ class OceanLaunchSpecArgs:
         pulumi.set(self, "security_groups", value)
 
     @property
+    @pulumi.getter(name="startupTaints")
+    def startup_taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecStartupTaintArgs']]]]:
+        """
+        Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
+        """
+        return pulumi.get(self, "startup_taints")
+
+    @startup_taints.setter
+    def startup_taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecStartupTaintArgs']]]]):
+        pulumi.set(self, "startup_taints", value)
+
+    @property
     @pulumi.getter
     def strategies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecStrategyArgs']]]]:
         return pulumi.get(self, "strategies")
@@ -581,6 +597,7 @@ class _OceanLaunchSpecState:
                  scheduling_shutdown_hours: Optional[pulumi.Input['OceanLaunchSpecSchedulingShutdownHoursArgs']] = None,
                  scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskArgs']]]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 startup_taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecStartupTaintArgs']]]] = None,
                  strategies: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecStrategyArgs']]]] = None,
                  subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTagArgs']]]] = None,
@@ -615,6 +632,7 @@ class _OceanLaunchSpecState:
         :param pulumi.Input['OceanLaunchSpecSchedulingShutdownHoursArgs'] scheduling_shutdown_hours: Used to specify times that the nodes in the virtual node group will be taken down.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskArgs']]] scheduling_tasks: Used to define scheduled tasks such as a manual headroom update.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] security_groups: Optionally adds security group IDs.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecStartupTaintArgs']]] startup_taints: Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] subnet_ids: A list of subnet IDs.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTagArgs']]] tags: A key/value mapping of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTaintArgs']]] taints: Optionally adds labels to instances launched in the cluster.
@@ -676,6 +694,8 @@ class _OceanLaunchSpecState:
             pulumi.set(__self__, "scheduling_tasks", scheduling_tasks)
         if security_groups is not None:
             pulumi.set(__self__, "security_groups", security_groups)
+        if startup_taints is not None:
+            pulumi.set(__self__, "startup_taints", startup_taints)
         if strategies is not None:
             pulumi.set(__self__, "strategies", strategies)
         if subnet_ids is not None:
@@ -1016,6 +1036,18 @@ class _OceanLaunchSpecState:
         pulumi.set(self, "security_groups", value)
 
     @property
+    @pulumi.getter(name="startupTaints")
+    def startup_taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecStartupTaintArgs']]]]:
+        """
+        Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
+        """
+        return pulumi.get(self, "startup_taints")
+
+    @startup_taints.setter
+    def startup_taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecStartupTaintArgs']]]]):
+        pulumi.set(self, "startup_taints", value)
+
+    @property
     @pulumi.getter
     def strategies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecStrategyArgs']]]]:
         return pulumi.get(self, "strategies")
@@ -1116,6 +1148,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  scheduling_shutdown_hours: Optional[pulumi.Input[Union['OceanLaunchSpecSchedulingShutdownHoursArgs', 'OceanLaunchSpecSchedulingShutdownHoursArgsDict']]] = None,
                  scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecSchedulingTaskArgs', 'OceanLaunchSpecSchedulingTaskArgsDict']]]]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 startup_taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecStartupTaintArgs', 'OceanLaunchSpecStartupTaintArgsDict']]]]] = None,
                  strategies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecStrategyArgs', 'OceanLaunchSpecStrategyArgsDict']]]]] = None,
                  subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecTagArgs', 'OceanLaunchSpecTagArgsDict']]]]] = None,
@@ -1164,6 +1197,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[Union['OceanLaunchSpecSchedulingShutdownHoursArgs', 'OceanLaunchSpecSchedulingShutdownHoursArgsDict']] scheduling_shutdown_hours: Used to specify times that the nodes in the virtual node group will be taken down.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecSchedulingTaskArgs', 'OceanLaunchSpecSchedulingTaskArgsDict']]]] scheduling_tasks: Used to define scheduled tasks such as a manual headroom update.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] security_groups: Optionally adds security group IDs.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecStartupTaintArgs', 'OceanLaunchSpecStartupTaintArgsDict']]]] startup_taints: Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] subnet_ids: A list of subnet IDs.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecTagArgs', 'OceanLaunchSpecTagArgsDict']]]] tags: A key/value mapping of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecTaintArgs', 'OceanLaunchSpecTaintArgsDict']]]] taints: Optionally adds labels to instances launched in the cluster.
@@ -1231,6 +1265,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  scheduling_shutdown_hours: Optional[pulumi.Input[Union['OceanLaunchSpecSchedulingShutdownHoursArgs', 'OceanLaunchSpecSchedulingShutdownHoursArgsDict']]] = None,
                  scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecSchedulingTaskArgs', 'OceanLaunchSpecSchedulingTaskArgsDict']]]]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 startup_taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecStartupTaintArgs', 'OceanLaunchSpecStartupTaintArgsDict']]]]] = None,
                  strategies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecStrategyArgs', 'OceanLaunchSpecStrategyArgsDict']]]]] = None,
                  subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecTagArgs', 'OceanLaunchSpecTagArgsDict']]]]] = None,
@@ -1276,6 +1311,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             __props__.__dict__["scheduling_shutdown_hours"] = scheduling_shutdown_hours
             __props__.__dict__["scheduling_tasks"] = scheduling_tasks
             __props__.__dict__["security_groups"] = security_groups
+            __props__.__dict__["startup_taints"] = startup_taints
             __props__.__dict__["strategies"] = strategies
             __props__.__dict__["subnet_ids"] = subnet_ids
             __props__.__dict__["tags"] = tags
@@ -1320,6 +1356,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             scheduling_shutdown_hours: Optional[pulumi.Input[Union['OceanLaunchSpecSchedulingShutdownHoursArgs', 'OceanLaunchSpecSchedulingShutdownHoursArgsDict']]] = None,
             scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecSchedulingTaskArgs', 'OceanLaunchSpecSchedulingTaskArgsDict']]]]] = None,
             security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+            startup_taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecStartupTaintArgs', 'OceanLaunchSpecStartupTaintArgsDict']]]]] = None,
             strategies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecStrategyArgs', 'OceanLaunchSpecStrategyArgsDict']]]]] = None,
             subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecTagArgs', 'OceanLaunchSpecTagArgsDict']]]]] = None,
@@ -1359,6 +1396,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[Union['OceanLaunchSpecSchedulingShutdownHoursArgs', 'OceanLaunchSpecSchedulingShutdownHoursArgsDict']] scheduling_shutdown_hours: Used to specify times that the nodes in the virtual node group will be taken down.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecSchedulingTaskArgs', 'OceanLaunchSpecSchedulingTaskArgsDict']]]] scheduling_tasks: Used to define scheduled tasks such as a manual headroom update.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] security_groups: Optionally adds security group IDs.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecStartupTaintArgs', 'OceanLaunchSpecStartupTaintArgsDict']]]] startup_taints: Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] subnet_ids: A list of subnet IDs.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecTagArgs', 'OceanLaunchSpecTagArgsDict']]]] tags: A key/value mapping of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecTaintArgs', 'OceanLaunchSpecTaintArgsDict']]]] taints: Optionally adds labels to instances launched in the cluster.
@@ -1396,6 +1434,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         __props__.__dict__["scheduling_shutdown_hours"] = scheduling_shutdown_hours
         __props__.__dict__["scheduling_tasks"] = scheduling_tasks
         __props__.__dict__["security_groups"] = security_groups
+        __props__.__dict__["startup_taints"] = startup_taints
         __props__.__dict__["strategies"] = strategies
         __props__.__dict__["subnet_ids"] = subnet_ids
         __props__.__dict__["tags"] = tags
@@ -1617,6 +1656,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
         Optionally adds security group IDs.
         """
         return pulumi.get(self, "security_groups")
+
+    @property
+    @pulumi.getter(name="startupTaints")
+    def startup_taints(self) -> pulumi.Output[Optional[Sequence['outputs.OceanLaunchSpecStartupTaint']]]:
+        """
+        Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
+        """
+        return pulumi.get(self, "startup_taints")
 
     @property
     @pulumi.getter

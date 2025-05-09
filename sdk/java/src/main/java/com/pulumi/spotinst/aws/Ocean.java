@@ -22,6 +22,7 @@ import com.pulumi.spotinst.aws.outputs.OceanLoadBalancer;
 import com.pulumi.spotinst.aws.outputs.OceanLogging;
 import com.pulumi.spotinst.aws.outputs.OceanResourceTagSpecification;
 import com.pulumi.spotinst.aws.outputs.OceanScheduledTask;
+import com.pulumi.spotinst.aws.outputs.OceanStartupTaint;
 import com.pulumi.spotinst.aws.outputs.OceanTag;
 import com.pulumi.spotinst.aws.outputs.OceanUpdatePolicy;
 import java.lang.Boolean;
@@ -512,6 +513,20 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> spreadNodesBy() {
         return Codegen.optional(this.spreadNodesBy);
+    }
+    /**
+     * Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
+     * 
+     */
+    @Export(name="startupTaints", refs={List.class,OceanStartupTaint.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<OceanStartupTaint>> startupTaints;
+
+    /**
+     * @return Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
+     * 
+     */
+    public Output<Optional<List<OceanStartupTaint>>> startupTaints() {
+        return Codegen.optional(this.startupTaints);
     }
     /**
      * A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.

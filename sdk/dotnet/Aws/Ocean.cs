@@ -227,6 +227,12 @@ namespace Pulumi.SpotInst.Aws
         public Output<string?> SpreadNodesBy { get; private set; } = null!;
 
         /// <summary>
+        /// Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
+        /// </summary>
+        [Output("startupTaints")]
+        public Output<ImmutableArray<Outputs.OceanStartupTaint>> StartupTaints { get; private set; } = null!;
+
+        /// <summary>
         /// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
         /// * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
         /// </summary>
@@ -569,6 +575,18 @@ namespace Pulumi.SpotInst.Aws
         [Input("spreadNodesBy")]
         public Input<string>? SpreadNodesBy { get; set; }
 
+        [Input("startupTaints")]
+        private InputList<Inputs.OceanStartupTaintArgs>? _startupTaints;
+
+        /// <summary>
+        /// Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
+        /// </summary>
+        public InputList<Inputs.OceanStartupTaintArgs> StartupTaints
+        {
+            get => _startupTaints ?? (_startupTaints = new InputList<Inputs.OceanStartupTaintArgs>());
+            set => _startupTaints = value;
+        }
+
         [Input("subnetIds", required: true)]
         private InputList<string>? _subnetIds;
 
@@ -890,6 +908,18 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("spreadNodesBy")]
         public Input<string>? SpreadNodesBy { get; set; }
+
+        [Input("startupTaints")]
+        private InputList<Inputs.OceanStartupTaintGetArgs>? _startupTaints;
+
+        /// <summary>
+        /// Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
+        /// </summary>
+        public InputList<Inputs.OceanStartupTaintGetArgs> StartupTaints
+        {
+            get => _startupTaints ?? (_startupTaints = new InputList<Inputs.OceanStartupTaintGetArgs>());
+            set => _startupTaints = value;
+        }
 
         [Input("subnetIds")]
         private InputList<string>? _subnetIds;
