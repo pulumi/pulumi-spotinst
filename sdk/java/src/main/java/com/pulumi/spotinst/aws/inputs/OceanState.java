@@ -17,6 +17,7 @@ import com.pulumi.spotinst.aws.inputs.OceanLoadBalancerArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLoggingArgs;
 import com.pulumi.spotinst.aws.inputs.OceanResourceTagSpecificationArgs;
 import com.pulumi.spotinst.aws.inputs.OceanScheduledTaskArgs;
+import com.pulumi.spotinst.aws.inputs.OceanStartupTaintArgs;
 import com.pulumi.spotinst.aws.inputs.OceanTagArgs;
 import com.pulumi.spotinst.aws.inputs.OceanUpdatePolicyArgs;
 import java.lang.Boolean;
@@ -534,6 +535,21 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
+     * 
+     */
+    @Import(name="startupTaints")
+    private @Nullable Output<List<OceanStartupTaintArgs>> startupTaints;
+
+    /**
+     * @return Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
+     * 
+     */
+    public Optional<Output<List<OceanStartupTaintArgs>>> startupTaints() {
+        return Optional.ofNullable(this.startupTaints);
+    }
+
+    /**
      * A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
      * * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
      * 
@@ -679,6 +695,7 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
         this.securityGroups = $.securityGroups;
         this.spotPercentage = $.spotPercentage;
         this.spreadNodesBy = $.spreadNodesBy;
+        this.startupTaints = $.startupTaints;
         this.subnetIds = $.subnetIds;
         this.tags = $.tags;
         this.updatePolicy = $.updatePolicy;
@@ -1482,6 +1499,37 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder spreadNodesBy(String spreadNodesBy) {
             return spreadNodesBy(Output.of(spreadNodesBy));
+        }
+
+        /**
+         * @param startupTaints Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startupTaints(@Nullable Output<List<OceanStartupTaintArgs>> startupTaints) {
+            $.startupTaints = startupTaints;
+            return this;
+        }
+
+        /**
+         * @param startupTaints Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startupTaints(List<OceanStartupTaintArgs> startupTaints) {
+            return startupTaints(Output.of(startupTaints));
+        }
+
+        /**
+         * @param startupTaints Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startupTaints(OceanStartupTaintArgs... startupTaints) {
+            return startupTaints(List.of(startupTaints));
         }
 
         /**

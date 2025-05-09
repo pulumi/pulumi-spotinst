@@ -22607,6 +22607,121 @@ func (o OceanLaunchSpecSchedulingTaskTaskHeadroomArrayOutput) Index(i pulumi.Int
 	}).(OceanLaunchSpecSchedulingTaskTaskHeadroomOutput)
 }
 
+type OceanLaunchSpecStartupTaint struct {
+	// Set startup taint effect.
+	Effect *string `pulumi:"effect"`
+	// Set startup taint key.
+	Key *string `pulumi:"key"`
+	// Set startup taint value.
+	Value *string `pulumi:"value"`
+}
+
+// OceanLaunchSpecStartupTaintInput is an input type that accepts OceanLaunchSpecStartupTaintArgs and OceanLaunchSpecStartupTaintOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecStartupTaintInput` via:
+//
+//	OceanLaunchSpecStartupTaintArgs{...}
+type OceanLaunchSpecStartupTaintInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecStartupTaintOutput() OceanLaunchSpecStartupTaintOutput
+	ToOceanLaunchSpecStartupTaintOutputWithContext(context.Context) OceanLaunchSpecStartupTaintOutput
+}
+
+type OceanLaunchSpecStartupTaintArgs struct {
+	// Set startup taint effect.
+	Effect pulumi.StringPtrInput `pulumi:"effect"`
+	// Set startup taint key.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Set startup taint value.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (OceanLaunchSpecStartupTaintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecStartupTaint)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecStartupTaintArgs) ToOceanLaunchSpecStartupTaintOutput() OceanLaunchSpecStartupTaintOutput {
+	return i.ToOceanLaunchSpecStartupTaintOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecStartupTaintArgs) ToOceanLaunchSpecStartupTaintOutputWithContext(ctx context.Context) OceanLaunchSpecStartupTaintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecStartupTaintOutput)
+}
+
+// OceanLaunchSpecStartupTaintArrayInput is an input type that accepts OceanLaunchSpecStartupTaintArray and OceanLaunchSpecStartupTaintArrayOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecStartupTaintArrayInput` via:
+//
+//	OceanLaunchSpecStartupTaintArray{ OceanLaunchSpecStartupTaintArgs{...} }
+type OceanLaunchSpecStartupTaintArrayInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecStartupTaintArrayOutput() OceanLaunchSpecStartupTaintArrayOutput
+	ToOceanLaunchSpecStartupTaintArrayOutputWithContext(context.Context) OceanLaunchSpecStartupTaintArrayOutput
+}
+
+type OceanLaunchSpecStartupTaintArray []OceanLaunchSpecStartupTaintInput
+
+func (OceanLaunchSpecStartupTaintArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanLaunchSpecStartupTaint)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecStartupTaintArray) ToOceanLaunchSpecStartupTaintArrayOutput() OceanLaunchSpecStartupTaintArrayOutput {
+	return i.ToOceanLaunchSpecStartupTaintArrayOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecStartupTaintArray) ToOceanLaunchSpecStartupTaintArrayOutputWithContext(ctx context.Context) OceanLaunchSpecStartupTaintArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecStartupTaintArrayOutput)
+}
+
+type OceanLaunchSpecStartupTaintOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecStartupTaintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecStartupTaint)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecStartupTaintOutput) ToOceanLaunchSpecStartupTaintOutput() OceanLaunchSpecStartupTaintOutput {
+	return o
+}
+
+func (o OceanLaunchSpecStartupTaintOutput) ToOceanLaunchSpecStartupTaintOutputWithContext(ctx context.Context) OceanLaunchSpecStartupTaintOutput {
+	return o
+}
+
+// Set startup taint effect.
+func (o OceanLaunchSpecStartupTaintOutput) Effect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecStartupTaint) *string { return v.Effect }).(pulumi.StringPtrOutput)
+}
+
+// Set startup taint key.
+func (o OceanLaunchSpecStartupTaintOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecStartupTaint) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Set startup taint value.
+func (o OceanLaunchSpecStartupTaintOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecStartupTaint) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type OceanLaunchSpecStartupTaintArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecStartupTaintArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanLaunchSpecStartupTaint)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecStartupTaintArrayOutput) ToOceanLaunchSpecStartupTaintArrayOutput() OceanLaunchSpecStartupTaintArrayOutput {
+	return o
+}
+
+func (o OceanLaunchSpecStartupTaintArrayOutput) ToOceanLaunchSpecStartupTaintArrayOutputWithContext(ctx context.Context) OceanLaunchSpecStartupTaintArrayOutput {
+	return o
+}
+
+func (o OceanLaunchSpecStartupTaintArrayOutput) Index(i pulumi.IntInput) OceanLaunchSpecStartupTaintOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanLaunchSpecStartupTaint {
+		return vs[0].([]OceanLaunchSpecStartupTaint)[vs[1].(int)]
+	}).(OceanLaunchSpecStartupTaintOutput)
+}
+
 type OceanLaunchSpecStrategy struct {
 	// The configurable amount of time that Ocean will wait for the draining process to complete before terminating an instance. If you have not defined a draining timeout, the default of 300 seconds will be used.
 	DrainingTimeout *int `pulumi:"drainingTimeout"`
@@ -24979,6 +25094,121 @@ func (o OceanScheduledTaskTaskParametersParametersClusterRollPtrOutput) RespectP
 	}).(pulumi.BoolPtrOutput)
 }
 
+type OceanStartupTaint struct {
+	// Set startup taint effect.
+	Effect *string `pulumi:"effect"`
+	// Set startup taint key.
+	Key *string `pulumi:"key"`
+	// Set startup taint value.
+	Value *string `pulumi:"value"`
+}
+
+// OceanStartupTaintInput is an input type that accepts OceanStartupTaintArgs and OceanStartupTaintOutput values.
+// You can construct a concrete instance of `OceanStartupTaintInput` via:
+//
+//	OceanStartupTaintArgs{...}
+type OceanStartupTaintInput interface {
+	pulumi.Input
+
+	ToOceanStartupTaintOutput() OceanStartupTaintOutput
+	ToOceanStartupTaintOutputWithContext(context.Context) OceanStartupTaintOutput
+}
+
+type OceanStartupTaintArgs struct {
+	// Set startup taint effect.
+	Effect pulumi.StringPtrInput `pulumi:"effect"`
+	// Set startup taint key.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Set startup taint value.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (OceanStartupTaintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanStartupTaint)(nil)).Elem()
+}
+
+func (i OceanStartupTaintArgs) ToOceanStartupTaintOutput() OceanStartupTaintOutput {
+	return i.ToOceanStartupTaintOutputWithContext(context.Background())
+}
+
+func (i OceanStartupTaintArgs) ToOceanStartupTaintOutputWithContext(ctx context.Context) OceanStartupTaintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanStartupTaintOutput)
+}
+
+// OceanStartupTaintArrayInput is an input type that accepts OceanStartupTaintArray and OceanStartupTaintArrayOutput values.
+// You can construct a concrete instance of `OceanStartupTaintArrayInput` via:
+//
+//	OceanStartupTaintArray{ OceanStartupTaintArgs{...} }
+type OceanStartupTaintArrayInput interface {
+	pulumi.Input
+
+	ToOceanStartupTaintArrayOutput() OceanStartupTaintArrayOutput
+	ToOceanStartupTaintArrayOutputWithContext(context.Context) OceanStartupTaintArrayOutput
+}
+
+type OceanStartupTaintArray []OceanStartupTaintInput
+
+func (OceanStartupTaintArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanStartupTaint)(nil)).Elem()
+}
+
+func (i OceanStartupTaintArray) ToOceanStartupTaintArrayOutput() OceanStartupTaintArrayOutput {
+	return i.ToOceanStartupTaintArrayOutputWithContext(context.Background())
+}
+
+func (i OceanStartupTaintArray) ToOceanStartupTaintArrayOutputWithContext(ctx context.Context) OceanStartupTaintArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanStartupTaintArrayOutput)
+}
+
+type OceanStartupTaintOutput struct{ *pulumi.OutputState }
+
+func (OceanStartupTaintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanStartupTaint)(nil)).Elem()
+}
+
+func (o OceanStartupTaintOutput) ToOceanStartupTaintOutput() OceanStartupTaintOutput {
+	return o
+}
+
+func (o OceanStartupTaintOutput) ToOceanStartupTaintOutputWithContext(ctx context.Context) OceanStartupTaintOutput {
+	return o
+}
+
+// Set startup taint effect.
+func (o OceanStartupTaintOutput) Effect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanStartupTaint) *string { return v.Effect }).(pulumi.StringPtrOutput)
+}
+
+// Set startup taint key.
+func (o OceanStartupTaintOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanStartupTaint) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Set startup taint value.
+func (o OceanStartupTaintOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanStartupTaint) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type OceanStartupTaintArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanStartupTaintArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanStartupTaint)(nil)).Elem()
+}
+
+func (o OceanStartupTaintArrayOutput) ToOceanStartupTaintArrayOutput() OceanStartupTaintArrayOutput {
+	return o
+}
+
+func (o OceanStartupTaintArrayOutput) ToOceanStartupTaintArrayOutputWithContext(ctx context.Context) OceanStartupTaintArrayOutput {
+	return o
+}
+
+func (o OceanStartupTaintArrayOutput) Index(i pulumi.IntInput) OceanStartupTaintOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanStartupTaint {
+		return vs[0].([]OceanStartupTaint)[vs[1].(int)]
+	}).(OceanStartupTaintOutput)
+}
+
 type OceanTag struct {
 	// The tag key.
 	Key string `pulumi:"key"`
@@ -25886,6 +26116,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecSchedulingTaskArrayInput)(nil)).Elem(), OceanLaunchSpecSchedulingTaskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecSchedulingTaskTaskHeadroomInput)(nil)).Elem(), OceanLaunchSpecSchedulingTaskTaskHeadroomArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecSchedulingTaskTaskHeadroomArrayInput)(nil)).Elem(), OceanLaunchSpecSchedulingTaskTaskHeadroomArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecStartupTaintInput)(nil)).Elem(), OceanLaunchSpecStartupTaintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecStartupTaintArrayInput)(nil)).Elem(), OceanLaunchSpecStartupTaintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecStrategyInput)(nil)).Elem(), OceanLaunchSpecStrategyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecStrategyArrayInput)(nil)).Elem(), OceanLaunchSpecStrategyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecTagInput)(nil)).Elem(), OceanLaunchSpecTagArgs{})
@@ -25920,6 +26152,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollPtrInput)(nil)).Elem(), OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanScheduledTaskTaskParametersParametersClusterRollInput)(nil)).Elem(), OceanScheduledTaskTaskParametersParametersClusterRollArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanScheduledTaskTaskParametersParametersClusterRollPtrInput)(nil)).Elem(), OceanScheduledTaskTaskParametersParametersClusterRollArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanStartupTaintInput)(nil)).Elem(), OceanStartupTaintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanStartupTaintArrayInput)(nil)).Elem(), OceanStartupTaintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanTagInput)(nil)).Elem(), OceanTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanTagArrayInput)(nil)).Elem(), OceanTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanUpdatePolicyInput)(nil)).Elem(), OceanUpdatePolicyArgs{})
@@ -26224,6 +26458,8 @@ func init() {
 	pulumi.RegisterOutputType(OceanLaunchSpecSchedulingTaskArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecSchedulingTaskTaskHeadroomOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecSchedulingTaskTaskHeadroomArrayOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecStartupTaintOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecStartupTaintArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecStrategyOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecStrategyArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecTagOutput{})
@@ -26258,6 +26494,8 @@ func init() {
 	pulumi.RegisterOutputType(OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollPtrOutput{})
 	pulumi.RegisterOutputType(OceanScheduledTaskTaskParametersParametersClusterRollOutput{})
 	pulumi.RegisterOutputType(OceanScheduledTaskTaskParametersParametersClusterRollPtrOutput{})
+	pulumi.RegisterOutputType(OceanStartupTaintOutput{})
+	pulumi.RegisterOutputType(OceanStartupTaintArrayOutput{})
 	pulumi.RegisterOutputType(OceanTagOutput{})
 	pulumi.RegisterOutputType(OceanTagArrayOutput{})
 	pulumi.RegisterOutputType(OceanUpdatePolicyOutput{})

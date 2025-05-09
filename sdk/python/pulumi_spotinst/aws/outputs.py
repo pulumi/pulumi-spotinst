@@ -166,6 +166,7 @@ __all__ = [
     'OceanLaunchSpecSchedulingShutdownHours',
     'OceanLaunchSpecSchedulingTask',
     'OceanLaunchSpecSchedulingTaskTaskHeadroom',
+    'OceanLaunchSpecStartupTaint',
     'OceanLaunchSpecStrategy',
     'OceanLaunchSpecTag',
     'OceanLaunchSpecTaint',
@@ -183,6 +184,7 @@ __all__ = [
     'OceanScheduledTaskTaskParametersAmiAutoUpdate',
     'OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRoll',
     'OceanScheduledTaskTaskParametersParametersClusterRoll',
+    'OceanStartupTaint',
     'OceanTag',
     'OceanUpdatePolicy',
     'OceanUpdatePolicyRollConfig',
@@ -10313,6 +10315,49 @@ class OceanLaunchSpecSchedulingTaskTaskHeadroom(dict):
 
 
 @pulumi.output_type
+class OceanLaunchSpecStartupTaint(dict):
+    def __init__(__self__, *,
+                 effect: Optional[builtins.str] = None,
+                 key: Optional[builtins.str] = None,
+                 value: Optional[builtins.str] = None):
+        """
+        :param builtins.str effect: Set startup taint effect.
+        :param builtins.str key: Set startup taint key.
+        :param builtins.str value: Set startup taint value.
+        """
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[builtins.str]:
+        """
+        Set startup taint effect.
+        """
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[builtins.str]:
+        """
+        Set startup taint key.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[builtins.str]:
+        """
+        Set startup taint value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
 class OceanLaunchSpecStrategy(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -11128,6 +11173,49 @@ class OceanScheduledTaskTaskParametersParametersClusterRoll(dict):
         During the roll, if the parameter is set to true we honor PDB during the instance replacement.
         """
         return pulumi.get(self, "respect_pdb")
+
+
+@pulumi.output_type
+class OceanStartupTaint(dict):
+    def __init__(__self__, *,
+                 effect: Optional[builtins.str] = None,
+                 key: Optional[builtins.str] = None,
+                 value: Optional[builtins.str] = None):
+        """
+        :param builtins.str effect: Set startup taint effect.
+        :param builtins.str key: Set startup taint key.
+        :param builtins.str value: Set startup taint value.
+        """
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[builtins.str]:
+        """
+        Set startup taint effect.
+        """
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[builtins.str]:
+        """
+        Set startup taint key.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[builtins.str]:
+        """
+        Set startup taint value.
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type

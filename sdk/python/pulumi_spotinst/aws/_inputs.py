@@ -314,6 +314,8 @@ __all__ = [
     'OceanLaunchSpecSchedulingTaskArgsDict',
     'OceanLaunchSpecSchedulingTaskTaskHeadroomArgs',
     'OceanLaunchSpecSchedulingTaskTaskHeadroomArgsDict',
+    'OceanLaunchSpecStartupTaintArgs',
+    'OceanLaunchSpecStartupTaintArgsDict',
     'OceanLaunchSpecStrategyArgs',
     'OceanLaunchSpecStrategyArgsDict',
     'OceanLaunchSpecTagArgs',
@@ -348,6 +350,8 @@ __all__ = [
     'OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollArgsDict',
     'OceanScheduledTaskTaskParametersParametersClusterRollArgs',
     'OceanScheduledTaskTaskParametersParametersClusterRollArgsDict',
+    'OceanStartupTaintArgs',
+    'OceanStartupTaintArgsDict',
     'OceanTagArgs',
     'OceanTagArgsDict',
     'OceanUpdatePolicyArgs',
@@ -13129,6 +13133,78 @@ class OceanLaunchSpecSchedulingTaskTaskHeadroomArgs:
 
 
 if not MYPY:
+    class OceanLaunchSpecStartupTaintArgsDict(TypedDict):
+        effect: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Set startup taint effect.
+        """
+        key: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Set startup taint key.
+        """
+        value: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Set startup taint value.
+        """
+elif False:
+    OceanLaunchSpecStartupTaintArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OceanLaunchSpecStartupTaintArgs:
+    def __init__(__self__, *,
+                 effect: Optional[pulumi.Input[builtins.str]] = None,
+                 key: Optional[pulumi.Input[builtins.str]] = None,
+                 value: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] effect: Set startup taint effect.
+        :param pulumi.Input[builtins.str] key: Set startup taint key.
+        :param pulumi.Input[builtins.str] value: Set startup taint value.
+        """
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Set startup taint effect.
+        """
+        return pulumi.get(self, "effect")
+
+    @effect.setter
+    def effect(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "effect", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Set startup taint key.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Set startup taint value.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
     class OceanLaunchSpecStrategyArgsDict(TypedDict):
         draining_timeout: NotRequired[pulumi.Input[builtins.int]]
         """
@@ -14142,6 +14218,78 @@ class OceanScheduledTaskTaskParametersParametersClusterRollArgs:
     @respect_pdb.setter
     def respect_pdb(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "respect_pdb", value)
+
+
+if not MYPY:
+    class OceanStartupTaintArgsDict(TypedDict):
+        effect: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Set startup taint effect.
+        """
+        key: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Set startup taint key.
+        """
+        value: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Set startup taint value.
+        """
+elif False:
+    OceanStartupTaintArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OceanStartupTaintArgs:
+    def __init__(__self__, *,
+                 effect: Optional[pulumi.Input[builtins.str]] = None,
+                 key: Optional[pulumi.Input[builtins.str]] = None,
+                 value: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] effect: Set startup taint effect.
+        :param pulumi.Input[builtins.str] key: Set startup taint key.
+        :param pulumi.Input[builtins.str] value: Set startup taint value.
+        """
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Set startup taint effect.
+        """
+        return pulumi.get(self, "effect")
+
+    @effect.setter
+    def effect(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "effect", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Set startup taint key.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Set startup taint value.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "value", value)
 
 
 if not MYPY:

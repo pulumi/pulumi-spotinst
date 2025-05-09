@@ -58,6 +58,7 @@ class OceanArgs:
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskArgs']]]] = None,
                  spot_percentage: Optional[pulumi.Input[builtins.int]] = None,
                  spread_nodes_by: Optional[pulumi.Input[builtins.str]] = None,
+                 startup_taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanStartupTaintArgs']]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]]] = None,
                  update_policy: Optional[pulumi.Input['OceanUpdatePolicyArgs']] = None,
                  use_as_template_only: Optional[pulumi.Input[builtins.bool]] = None,
@@ -101,6 +102,7 @@ class OceanArgs:
         :param pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskArgs']]] scheduled_tasks: Set scheduling object.
         :param pulumi.Input[builtins.int] spot_percentage: The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
         :param pulumi.Input[builtins.str] spread_nodes_by: Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanStartupTaintArgs']]] startup_taints: Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
         :param pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]] tags: Optionally adds tags to instances launched in an Ocean cluster.
         :param pulumi.Input[builtins.bool] use_as_template_only: launch specification defined on the Ocean object will function only as a template for virtual node groups.
                When set to true, on Ocean resource creation please make sure your custom VNG has an initial_nodes parameter to create nodes for your VNG.
@@ -177,6 +179,8 @@ class OceanArgs:
             pulumi.set(__self__, "spot_percentage", spot_percentage)
         if spread_nodes_by is not None:
             pulumi.set(__self__, "spread_nodes_by", spread_nodes_by)
+        if startup_taints is not None:
+            pulumi.set(__self__, "startup_taints", startup_taints)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if update_policy is not None:
@@ -617,6 +621,18 @@ class OceanArgs:
         pulumi.set(self, "spread_nodes_by", value)
 
     @property
+    @pulumi.getter(name="startupTaints")
+    def startup_taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanStartupTaintArgs']]]]:
+        """
+        Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
+        """
+        return pulumi.get(self, "startup_taints")
+
+    @startup_taints.setter
+    def startup_taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanStartupTaintArgs']]]]):
+        pulumi.set(self, "startup_taints", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]]]:
         """
@@ -734,6 +750,7 @@ class _OceanState:
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  spot_percentage: Optional[pulumi.Input[builtins.int]] = None,
                  spread_nodes_by: Optional[pulumi.Input[builtins.str]] = None,
+                 startup_taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanStartupTaintArgs']]]] = None,
                  subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]]] = None,
                  update_policy: Optional[pulumi.Input['OceanUpdatePolicyArgs']] = None,
@@ -776,6 +793,7 @@ class _OceanState:
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] security_groups: One or more security group ids.
         :param pulumi.Input[builtins.int] spot_percentage: The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
         :param pulumi.Input[builtins.str] spread_nodes_by: Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanStartupTaintArgs']]] startup_taints: Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
                * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]] tags: Optionally adds tags to instances launched in an Ocean cluster.
@@ -855,6 +873,8 @@ class _OceanState:
             pulumi.set(__self__, "spot_percentage", spot_percentage)
         if spread_nodes_by is not None:
             pulumi.set(__self__, "spread_nodes_by", spread_nodes_by)
+        if startup_taints is not None:
+            pulumi.set(__self__, "startup_taints", startup_taints)
         if subnet_ids is not None:
             pulumi.set(__self__, "subnet_ids", subnet_ids)
         if tags is not None:
@@ -1284,6 +1304,18 @@ class _OceanState:
         pulumi.set(self, "spread_nodes_by", value)
 
     @property
+    @pulumi.getter(name="startupTaints")
+    def startup_taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanStartupTaintArgs']]]]:
+        """
+        Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
+        """
+        return pulumi.get(self, "startup_taints")
+
+    @startup_taints.setter
+    def startup_taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanStartupTaintArgs']]]]):
+        pulumi.set(self, "startup_taints", value)
+
+    @property
     @pulumi.getter(name="subnetIds")
     def subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
@@ -1417,6 +1449,7 @@ class Ocean(pulumi.CustomResource):
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  spot_percentage: Optional[pulumi.Input[builtins.int]] = None,
                  spread_nodes_by: Optional[pulumi.Input[builtins.str]] = None,
+                 startup_taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanStartupTaintArgs', 'OceanStartupTaintArgsDict']]]]] = None,
                  subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanTagArgs', 'OceanTagArgsDict']]]]] = None,
                  update_policy: Optional[pulumi.Input[Union['OceanUpdatePolicyArgs', 'OceanUpdatePolicyArgsDict']]] = None,
@@ -1473,6 +1506,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] security_groups: One or more security group ids.
         :param pulumi.Input[builtins.int] spot_percentage: The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
         :param pulumi.Input[builtins.str] spread_nodes_by: Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanStartupTaintArgs', 'OceanStartupTaintArgsDict']]]] startup_taints: Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
                * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanTagArgs', 'OceanTagArgsDict']]]] tags: Optionally adds tags to instances launched in an Ocean cluster.
@@ -1551,6 +1585,7 @@ class Ocean(pulumi.CustomResource):
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  spot_percentage: Optional[pulumi.Input[builtins.int]] = None,
                  spread_nodes_by: Optional[pulumi.Input[builtins.str]] = None,
+                 startup_taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanStartupTaintArgs', 'OceanStartupTaintArgsDict']]]]] = None,
                  subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanTagArgs', 'OceanTagArgsDict']]]]] = None,
                  update_policy: Optional[pulumi.Input[Union['OceanUpdatePolicyArgs', 'OceanUpdatePolicyArgsDict']]] = None,
@@ -1607,6 +1642,7 @@ class Ocean(pulumi.CustomResource):
             __props__.__dict__["security_groups"] = security_groups
             __props__.__dict__["spot_percentage"] = spot_percentage
             __props__.__dict__["spread_nodes_by"] = spread_nodes_by
+            __props__.__dict__["startup_taints"] = startup_taints
             if subnet_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'subnet_ids'")
             __props__.__dict__["subnet_ids"] = subnet_ids
@@ -1662,6 +1698,7 @@ class Ocean(pulumi.CustomResource):
             security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             spot_percentage: Optional[pulumi.Input[builtins.int]] = None,
             spread_nodes_by: Optional[pulumi.Input[builtins.str]] = None,
+            startup_taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanStartupTaintArgs', 'OceanStartupTaintArgsDict']]]]] = None,
             subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanTagArgs', 'OceanTagArgsDict']]]]] = None,
             update_policy: Optional[pulumi.Input[Union['OceanUpdatePolicyArgs', 'OceanUpdatePolicyArgsDict']]] = None,
@@ -1709,6 +1746,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] security_groups: One or more security group ids.
         :param pulumi.Input[builtins.int] spot_percentage: The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
         :param pulumi.Input[builtins.str] spread_nodes_by: Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanStartupTaintArgs', 'OceanStartupTaintArgsDict']]]] startup_taints: Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
                * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanTagArgs', 'OceanTagArgsDict']]]] tags: Optionally adds tags to instances launched in an Ocean cluster.
@@ -1757,6 +1795,7 @@ class Ocean(pulumi.CustomResource):
         __props__.__dict__["security_groups"] = security_groups
         __props__.__dict__["spot_percentage"] = spot_percentage
         __props__.__dict__["spread_nodes_by"] = spread_nodes_by
+        __props__.__dict__["startup_taints"] = startup_taints
         __props__.__dict__["subnet_ids"] = subnet_ids
         __props__.__dict__["tags"] = tags
         __props__.__dict__["update_policy"] = update_policy
@@ -2037,6 +2076,14 @@ class Ocean(pulumi.CustomResource):
         Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
         """
         return pulumi.get(self, "spread_nodes_by")
+
+    @property
+    @pulumi.getter(name="startupTaints")
+    def startup_taints(self) -> pulumi.Output[Optional[Sequence['outputs.OceanStartupTaint']]]:
+        """
+        Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
+        """
+        return pulumi.get(self, "startup_taints")
 
     @property
     @pulumi.getter(name="subnetIds")

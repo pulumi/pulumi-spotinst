@@ -183,6 +183,12 @@ namespace Pulumi.SpotInst.Aws
         [Output("securityGroups")]
         public Output<ImmutableArray<string>> SecurityGroups { get; private set; } = null!;
 
+        /// <summary>
+        /// Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
+        /// </summary>
+        [Output("startupTaints")]
+        public Output<ImmutableArray<Outputs.OceanLaunchSpecStartupTaint>> StartupTaints { get; private set; } = null!;
+
         [Output("strategies")]
         public Output<ImmutableArray<Outputs.OceanLaunchSpecStrategy>> Strategies { get; private set; } = null!;
 
@@ -499,6 +505,18 @@ namespace Pulumi.SpotInst.Aws
             set => _securityGroups = value;
         }
 
+        [Input("startupTaints")]
+        private InputList<Inputs.OceanLaunchSpecStartupTaintArgs>? _startupTaints;
+
+        /// <summary>
+        /// Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
+        /// </summary>
+        public InputList<Inputs.OceanLaunchSpecStartupTaintArgs> StartupTaints
+        {
+            get => _startupTaints ?? (_startupTaints = new InputList<Inputs.OceanLaunchSpecStartupTaintArgs>());
+            set => _startupTaints = value;
+        }
+
         [Input("strategies")]
         private InputList<Inputs.OceanLaunchSpecStrategyArgs>? _strategies;
         public InputList<Inputs.OceanLaunchSpecStrategyArgs> Strategies
@@ -798,6 +816,18 @@ namespace Pulumi.SpotInst.Aws
         {
             get => _securityGroups ?? (_securityGroups = new InputList<string>());
             set => _securityGroups = value;
+        }
+
+        [Input("startupTaints")]
+        private InputList<Inputs.OceanLaunchSpecStartupTaintGetArgs>? _startupTaints;
+
+        /// <summary>
+        /// Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
+        /// </summary>
+        public InputList<Inputs.OceanLaunchSpecStartupTaintGetArgs> StartupTaints
+        {
+            get => _startupTaints ?? (_startupTaints = new InputList<Inputs.OceanLaunchSpecStartupTaintGetArgs>());
+            set => _startupTaints = value;
         }
 
         [Input("strategies")]
