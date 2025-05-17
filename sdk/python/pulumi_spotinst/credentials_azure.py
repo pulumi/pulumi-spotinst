@@ -24,7 +24,8 @@ class CredentialsAzureArgs:
                  client_id: pulumi.Input[builtins.str],
                  client_secret: pulumi.Input[builtins.str],
                  subscription_id: pulumi.Input[builtins.str],
-                 tenant_id: pulumi.Input[builtins.str]):
+                 tenant_id: pulumi.Input[builtins.str],
+                 expiration_date: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a CredentialsAzure resource.
         :param pulumi.Input[builtins.str] account_id: The ID of the account associated with your token.
@@ -32,12 +33,15 @@ class CredentialsAzureArgs:
         :param pulumi.Input[builtins.str] client_secret: Set the key secret.
         :param pulumi.Input[builtins.str] subscription_id: Set the subscription ID.
         :param pulumi.Input[builtins.str] tenant_id: Set the directory ID.
+        :param pulumi.Input[builtins.str] expiration_date: Set the key secret expiration date.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "client_id", client_id)
         pulumi.set(__self__, "client_secret", client_secret)
         pulumi.set(__self__, "subscription_id", subscription_id)
         pulumi.set(__self__, "tenant_id", tenant_id)
+        if expiration_date is not None:
+            pulumi.set(__self__, "expiration_date", expiration_date)
 
     @property
     @pulumi.getter(name="accountId")
@@ -99,6 +103,18 @@ class CredentialsAzureArgs:
     def tenant_id(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "tenant_id", value)
 
+    @property
+    @pulumi.getter(name="expirationDate")
+    def expiration_date(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Set the key secret expiration date.
+        """
+        return pulumi.get(self, "expiration_date")
+
+    @expiration_date.setter
+    def expiration_date(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "expiration_date", value)
+
 
 @pulumi.input_type
 class _CredentialsAzureState:
@@ -106,6 +122,7 @@ class _CredentialsAzureState:
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
                  client_id: Optional[pulumi.Input[builtins.str]] = None,
                  client_secret: Optional[pulumi.Input[builtins.str]] = None,
+                 expiration_date: Optional[pulumi.Input[builtins.str]] = None,
                  subscription_id: Optional[pulumi.Input[builtins.str]] = None,
                  tenant_id: Optional[pulumi.Input[builtins.str]] = None):
         """
@@ -113,6 +130,7 @@ class _CredentialsAzureState:
         :param pulumi.Input[builtins.str] account_id: The ID of the account associated with your token.
         :param pulumi.Input[builtins.str] client_id: Set the application ID.
         :param pulumi.Input[builtins.str] client_secret: Set the key secret.
+        :param pulumi.Input[builtins.str] expiration_date: Set the key secret expiration date.
         :param pulumi.Input[builtins.str] subscription_id: Set the subscription ID.
         :param pulumi.Input[builtins.str] tenant_id: Set the directory ID.
         """
@@ -122,6 +140,8 @@ class _CredentialsAzureState:
             pulumi.set(__self__, "client_id", client_id)
         if client_secret is not None:
             pulumi.set(__self__, "client_secret", client_secret)
+        if expiration_date is not None:
+            pulumi.set(__self__, "expiration_date", expiration_date)
         if subscription_id is not None:
             pulumi.set(__self__, "subscription_id", subscription_id)
         if tenant_id is not None:
@@ -164,6 +184,18 @@ class _CredentialsAzureState:
         pulumi.set(self, "client_secret", value)
 
     @property
+    @pulumi.getter(name="expirationDate")
+    def expiration_date(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Set the key secret expiration date.
+        """
+        return pulumi.get(self, "expiration_date")
+
+    @expiration_date.setter
+    def expiration_date(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "expiration_date", value)
+
+    @property
     @pulumi.getter(name="subscriptionId")
     def subscription_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -197,6 +229,7 @@ class CredentialsAzure(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
                  client_id: Optional[pulumi.Input[builtins.str]] = None,
                  client_secret: Optional[pulumi.Input[builtins.str]] = None,
+                 expiration_date: Optional[pulumi.Input[builtins.str]] = None,
                  subscription_id: Optional[pulumi.Input[builtins.str]] = None,
                  tenant_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
@@ -215,7 +248,8 @@ class CredentialsAzure(pulumi.CustomResource):
             client_id="redacted",
             client_secret="redacted",
             tenant_id="redacted",
-            subscription_id="redacted")
+            subscription_id="redacted",
+            expiration_date="2025-12-31T23:59:00.000Z")
         ```
 
         :param str resource_name: The name of the resource.
@@ -223,6 +257,7 @@ class CredentialsAzure(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] account_id: The ID of the account associated with your token.
         :param pulumi.Input[builtins.str] client_id: Set the application ID.
         :param pulumi.Input[builtins.str] client_secret: Set the key secret.
+        :param pulumi.Input[builtins.str] expiration_date: Set the key secret expiration date.
         :param pulumi.Input[builtins.str] subscription_id: Set the subscription ID.
         :param pulumi.Input[builtins.str] tenant_id: Set the directory ID.
         """
@@ -247,7 +282,8 @@ class CredentialsAzure(pulumi.CustomResource):
             client_id="redacted",
             client_secret="redacted",
             tenant_id="redacted",
-            subscription_id="redacted")
+            subscription_id="redacted",
+            expiration_date="2025-12-31T23:59:00.000Z")
         ```
 
         :param str resource_name: The name of the resource.
@@ -268,6 +304,7 @@ class CredentialsAzure(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
                  client_id: Optional[pulumi.Input[builtins.str]] = None,
                  client_secret: Optional[pulumi.Input[builtins.str]] = None,
+                 expiration_date: Optional[pulumi.Input[builtins.str]] = None,
                  subscription_id: Optional[pulumi.Input[builtins.str]] = None,
                  tenant_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
@@ -288,6 +325,7 @@ class CredentialsAzure(pulumi.CustomResource):
             if client_secret is None and not opts.urn:
                 raise TypeError("Missing required property 'client_secret'")
             __props__.__dict__["client_secret"] = client_secret
+            __props__.__dict__["expiration_date"] = expiration_date
             if subscription_id is None and not opts.urn:
                 raise TypeError("Missing required property 'subscription_id'")
             __props__.__dict__["subscription_id"] = subscription_id
@@ -307,6 +345,7 @@ class CredentialsAzure(pulumi.CustomResource):
             account_id: Optional[pulumi.Input[builtins.str]] = None,
             client_id: Optional[pulumi.Input[builtins.str]] = None,
             client_secret: Optional[pulumi.Input[builtins.str]] = None,
+            expiration_date: Optional[pulumi.Input[builtins.str]] = None,
             subscription_id: Optional[pulumi.Input[builtins.str]] = None,
             tenant_id: Optional[pulumi.Input[builtins.str]] = None) -> 'CredentialsAzure':
         """
@@ -319,6 +358,7 @@ class CredentialsAzure(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] account_id: The ID of the account associated with your token.
         :param pulumi.Input[builtins.str] client_id: Set the application ID.
         :param pulumi.Input[builtins.str] client_secret: Set the key secret.
+        :param pulumi.Input[builtins.str] expiration_date: Set the key secret expiration date.
         :param pulumi.Input[builtins.str] subscription_id: Set the subscription ID.
         :param pulumi.Input[builtins.str] tenant_id: Set the directory ID.
         """
@@ -329,6 +369,7 @@ class CredentialsAzure(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["client_id"] = client_id
         __props__.__dict__["client_secret"] = client_secret
+        __props__.__dict__["expiration_date"] = expiration_date
         __props__.__dict__["subscription_id"] = subscription_id
         __props__.__dict__["tenant_id"] = tenant_id
         return CredentialsAzure(resource_name, opts=opts, __props__=__props__)
@@ -356,6 +397,14 @@ class CredentialsAzure(pulumi.CustomResource):
         Set the key secret.
         """
         return pulumi.get(self, "client_secret")
+
+    @property
+    @pulumi.getter(name="expirationDate")
+    def expiration_date(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        Set the key secret expiration date.
+        """
+        return pulumi.get(self, "expiration_date")
 
     @property
     @pulumi.getter(name="subscriptionId")

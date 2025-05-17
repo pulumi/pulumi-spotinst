@@ -30,6 +30,7 @@ namespace Pulumi.SpotInst
     ///         ClientSecret = "redacted",
     ///         TenantId = "redacted",
     ///         SubscriptionId = "redacted",
+    ///         ExpirationDate = "2025-12-31T23:59:00.000Z",
     ///     });
     /// 
     /// });
@@ -55,6 +56,12 @@ namespace Pulumi.SpotInst
         /// </summary>
         [Output("clientSecret")]
         public Output<string> ClientSecret { get; private set; } = null!;
+
+        /// <summary>
+        /// Set the key secret expiration date.
+        /// </summary>
+        [Output("expirationDate")]
+        public Output<string?> ExpirationDate { get; private set; } = null!;
 
         /// <summary>
         /// Set the subscription ID.
@@ -133,6 +140,12 @@ namespace Pulumi.SpotInst
         public Input<string> ClientSecret { get; set; } = null!;
 
         /// <summary>
+        /// Set the key secret expiration date.
+        /// </summary>
+        [Input("expirationDate")]
+        public Input<string>? ExpirationDate { get; set; }
+
+        /// <summary>
         /// Set the subscription ID.
         /// </summary>
         [Input("subscriptionId", required: true)]
@@ -169,6 +182,12 @@ namespace Pulumi.SpotInst
         /// </summary>
         [Input("clientSecret")]
         public Input<string>? ClientSecret { get; set; }
+
+        /// <summary>
+        /// Set the key secret expiration date.
+        /// </summary>
+        [Input("expirationDate")]
+        public Input<string>? ExpirationDate { get; set; }
 
         /// <summary>
         /// Set the subscription ID.

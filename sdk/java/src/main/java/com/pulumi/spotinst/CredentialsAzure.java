@@ -11,6 +11,7 @@ import com.pulumi.spotinst.CredentialsAzureArgs;
 import com.pulumi.spotinst.Utilities;
 import com.pulumi.spotinst.inputs.CredentialsAzureState;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -48,6 +49,7 @@ import javax.annotation.Nullable;
  *             .clientSecret("redacted")
  *             .tenantId("redacted")
  *             .subscriptionId("redacted")
+ *             .expirationDate("2025-12-31T23:59:00.000Z")
  *             .build());
  * 
  *     }
@@ -100,6 +102,20 @@ public class CredentialsAzure extends com.pulumi.resources.CustomResource {
      */
     public Output<String> clientSecret() {
         return this.clientSecret;
+    }
+    /**
+     * Set the key secret expiration date.
+     * 
+     */
+    @Export(name="expirationDate", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> expirationDate;
+
+    /**
+     * @return Set the key secret expiration date.
+     * 
+     */
+    public Output<Optional<String>> expirationDate() {
+        return Codegen.optional(this.expirationDate);
     }
     /**
      * Set the subscription ID.
