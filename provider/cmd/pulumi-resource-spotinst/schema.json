@@ -18822,7 +18822,7 @@
             }
         },
         "spotinst:index/credentialsAzure:CredentialsAzure": {
-            "description": "Provides a Spotinst credential Azure resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\n// set credential Azure\nconst credential = new spotinst.CredentialsAzure(\"credential\", {\n    accountId: \"act-123456\",\n    clientId: \"redacted\",\n    clientSecret: \"redacted\",\n    tenantId: \"redacted\",\n    subscriptionId: \"redacted\",\n});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\n# set credential Azure\ncredential = spotinst.CredentialsAzure(\"credential\",\n    account_id=\"act-123456\",\n    client_id=\"redacted\",\n    client_secret=\"redacted\",\n    tenant_id=\"redacted\",\n    subscription_id=\"redacted\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SpotInst = Pulumi.SpotInst;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // set credential Azure\n    var credential = new SpotInst.CredentialsAzure(\"credential\", new()\n    {\n        AccountId = \"act-123456\",\n        ClientId = \"redacted\",\n        ClientSecret = \"redacted\",\n        TenantId = \"redacted\",\n        SubscriptionId = \"redacted\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// set credential Azure\n\t\t_, err := spotinst.NewCredentialsAzure(ctx, \"credential\", \u0026spotinst.CredentialsAzureArgs{\n\t\t\tAccountId:      pulumi.String(\"act-123456\"),\n\t\t\tClientId:       pulumi.String(\"redacted\"),\n\t\t\tClientSecret:   pulumi.String(\"redacted\"),\n\t\t\tTenantId:       pulumi.String(\"redacted\"),\n\t\t\tSubscriptionId: pulumi.String(\"redacted\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.spotinst.CredentialsAzure;\nimport com.pulumi.spotinst.CredentialsAzureArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // set credential Azure\n        var credential = new CredentialsAzure(\"credential\", CredentialsAzureArgs.builder()\n            .accountId(\"act-123456\")\n            .clientId(\"redacted\")\n            .clientSecret(\"redacted\")\n            .tenantId(\"redacted\")\n            .subscriptionId(\"redacted\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # set credential Azure\n  credential:\n    type: spotinst:CredentialsAzure\n    properties:\n      accountId: act-123456\n      clientId: redacted\n      clientSecret: redacted\n      tenantId: redacted\n      subscriptionId: redacted\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Provides a Spotinst credential Azure resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\n// set credential Azure\nconst credential = new spotinst.CredentialsAzure(\"credential\", {\n    accountId: \"act-123456\",\n    clientId: \"redacted\",\n    clientSecret: \"redacted\",\n    tenantId: \"redacted\",\n    subscriptionId: \"redacted\",\n    expirationDate: \"2025-12-31T23:59:00.000Z\",\n});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\n# set credential Azure\ncredential = spotinst.CredentialsAzure(\"credential\",\n    account_id=\"act-123456\",\n    client_id=\"redacted\",\n    client_secret=\"redacted\",\n    tenant_id=\"redacted\",\n    subscription_id=\"redacted\",\n    expiration_date=\"2025-12-31T23:59:00.000Z\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SpotInst = Pulumi.SpotInst;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // set credential Azure\n    var credential = new SpotInst.CredentialsAzure(\"credential\", new()\n    {\n        AccountId = \"act-123456\",\n        ClientId = \"redacted\",\n        ClientSecret = \"redacted\",\n        TenantId = \"redacted\",\n        SubscriptionId = \"redacted\",\n        ExpirationDate = \"2025-12-31T23:59:00.000Z\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// set credential Azure\n\t\t_, err := spotinst.NewCredentialsAzure(ctx, \"credential\", \u0026spotinst.CredentialsAzureArgs{\n\t\t\tAccountId:      pulumi.String(\"act-123456\"),\n\t\t\tClientId:       pulumi.String(\"redacted\"),\n\t\t\tClientSecret:   pulumi.String(\"redacted\"),\n\t\t\tTenantId:       pulumi.String(\"redacted\"),\n\t\t\tSubscriptionId: pulumi.String(\"redacted\"),\n\t\t\tExpirationDate: pulumi.String(\"2025-12-31T23:59:00.000Z\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.spotinst.CredentialsAzure;\nimport com.pulumi.spotinst.CredentialsAzureArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // set credential Azure\n        var credential = new CredentialsAzure(\"credential\", CredentialsAzureArgs.builder()\n            .accountId(\"act-123456\")\n            .clientId(\"redacted\")\n            .clientSecret(\"redacted\")\n            .tenantId(\"redacted\")\n            .subscriptionId(\"redacted\")\n            .expirationDate(\"2025-12-31T23:59:00.000Z\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # set credential Azure\n  credential:\n    type: spotinst:CredentialsAzure\n    properties:\n      accountId: act-123456\n      clientId: redacted\n      clientSecret: redacted\n      tenantId: redacted\n      subscriptionId: redacted\n      expirationDate: 2025-12-31T23:59:00.000Z\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "accountId": {
                     "type": "string",
@@ -18835,6 +18835,10 @@
                 "clientSecret": {
                     "type": "string",
                     "description": "Set the key secret.\n"
+                },
+                "expirationDate": {
+                    "type": "string",
+                    "description": "Set the key secret expiration date.\n"
                 },
                 "subscriptionId": {
                     "type": "string",
@@ -18866,6 +18870,11 @@
                 "clientSecret": {
                     "type": "string",
                     "description": "Set the key secret.\n",
+                    "willReplaceOnChanges": true
+                },
+                "expirationDate": {
+                    "type": "string",
+                    "description": "Set the key secret expiration date.\n",
                     "willReplaceOnChanges": true
                 },
                 "subscriptionId": {
@@ -18902,6 +18911,11 @@
                     "clientSecret": {
                         "type": "string",
                         "description": "Set the key secret.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "expirationDate": {
+                        "type": "string",
+                        "description": "Set the key secret expiration date.\n",
                         "willReplaceOnChanges": true
                     },
                     "subscriptionId": {
