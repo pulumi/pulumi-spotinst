@@ -35,6 +35,7 @@ import (
 //				ClientSecret:   pulumi.String("redacted"),
 //				TenantId:       pulumi.String("redacted"),
 //				SubscriptionId: pulumi.String("redacted"),
+//				ExpirationDate: pulumi.String("2025-12-31T23:59:00.000Z"),
 //			})
 //			if err != nil {
 //				return err
@@ -53,6 +54,8 @@ type CredentialsAzure struct {
 	ClientId pulumi.StringOutput `pulumi:"clientId"`
 	// Set the key secret.
 	ClientSecret pulumi.StringOutput `pulumi:"clientSecret"`
+	// Set the key secret expiration date.
+	ExpirationDate pulumi.StringPtrOutput `pulumi:"expirationDate"`
 	// Set the subscription ID.
 	SubscriptionId pulumi.StringOutput `pulumi:"subscriptionId"`
 	// Set the directory ID.
@@ -110,6 +113,8 @@ type credentialsAzureState struct {
 	ClientId *string `pulumi:"clientId"`
 	// Set the key secret.
 	ClientSecret *string `pulumi:"clientSecret"`
+	// Set the key secret expiration date.
+	ExpirationDate *string `pulumi:"expirationDate"`
 	// Set the subscription ID.
 	SubscriptionId *string `pulumi:"subscriptionId"`
 	// Set the directory ID.
@@ -123,6 +128,8 @@ type CredentialsAzureState struct {
 	ClientId pulumi.StringPtrInput
 	// Set the key secret.
 	ClientSecret pulumi.StringPtrInput
+	// Set the key secret expiration date.
+	ExpirationDate pulumi.StringPtrInput
 	// Set the subscription ID.
 	SubscriptionId pulumi.StringPtrInput
 	// Set the directory ID.
@@ -140,6 +147,8 @@ type credentialsAzureArgs struct {
 	ClientId string `pulumi:"clientId"`
 	// Set the key secret.
 	ClientSecret string `pulumi:"clientSecret"`
+	// Set the key secret expiration date.
+	ExpirationDate *string `pulumi:"expirationDate"`
 	// Set the subscription ID.
 	SubscriptionId string `pulumi:"subscriptionId"`
 	// Set the directory ID.
@@ -154,6 +163,8 @@ type CredentialsAzureArgs struct {
 	ClientId pulumi.StringInput
 	// Set the key secret.
 	ClientSecret pulumi.StringInput
+	// Set the key secret expiration date.
+	ExpirationDate pulumi.StringPtrInput
 	// Set the subscription ID.
 	SubscriptionId pulumi.StringInput
 	// Set the directory ID.
@@ -260,6 +271,11 @@ func (o CredentialsAzureOutput) ClientId() pulumi.StringOutput {
 // Set the key secret.
 func (o CredentialsAzureOutput) ClientSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v *CredentialsAzure) pulumi.StringOutput { return v.ClientSecret }).(pulumi.StringOutput)
+}
+
+// Set the key secret expiration date.
+func (o CredentialsAzureOutput) ExpirationDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CredentialsAzure) pulumi.StringPtrOutput { return v.ExpirationDate }).(pulumi.StringPtrOutput)
 }
 
 // Set the subscription ID.

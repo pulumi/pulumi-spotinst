@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class CredentialsAzureArgs extends com.pulumi.resources.ResourceArgs {
@@ -60,6 +62,21 @@ public final class CredentialsAzureArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Set the key secret expiration date.
+     * 
+     */
+    @Import(name="expirationDate")
+    private @Nullable Output<String> expirationDate;
+
+    /**
+     * @return Set the key secret expiration date.
+     * 
+     */
+    public Optional<Output<String>> expirationDate() {
+        return Optional.ofNullable(this.expirationDate);
+    }
+
+    /**
      * Set the subscription ID.
      * 
      */
@@ -95,6 +112,7 @@ public final class CredentialsAzureArgs extends com.pulumi.resources.ResourceArg
         this.accountId = $.accountId;
         this.clientId = $.clientId;
         this.clientSecret = $.clientSecret;
+        this.expirationDate = $.expirationDate;
         this.subscriptionId = $.subscriptionId;
         this.tenantId = $.tenantId;
     }
@@ -178,6 +196,27 @@ public final class CredentialsAzureArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder clientSecret(String clientSecret) {
             return clientSecret(Output.of(clientSecret));
+        }
+
+        /**
+         * @param expirationDate Set the key secret expiration date.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expirationDate(@Nullable Output<String> expirationDate) {
+            $.expirationDate = expirationDate;
+            return this;
+        }
+
+        /**
+         * @param expirationDate Set the key secret expiration date.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expirationDate(String expirationDate) {
+            return expirationDate(Output.of(expirationDate));
         }
 
         /**

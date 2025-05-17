@@ -20,6 +20,7 @@ import * as utilities from "./utilities";
  *     clientSecret: "redacted",
  *     tenantId: "redacted",
  *     subscriptionId: "redacted",
+ *     expirationDate: "2025-12-31T23:59:00.000Z",
  * });
  * ```
  */
@@ -64,6 +65,10 @@ export class CredentialsAzure extends pulumi.CustomResource {
      */
     public readonly clientSecret!: pulumi.Output<string>;
     /**
+     * Set the key secret expiration date.
+     */
+    public readonly expirationDate!: pulumi.Output<string | undefined>;
+    /**
      * Set the subscription ID.
      */
     public readonly subscriptionId!: pulumi.Output<string>;
@@ -88,6 +93,7 @@ export class CredentialsAzure extends pulumi.CustomResource {
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["clientId"] = state ? state.clientId : undefined;
             resourceInputs["clientSecret"] = state ? state.clientSecret : undefined;
+            resourceInputs["expirationDate"] = state ? state.expirationDate : undefined;
             resourceInputs["subscriptionId"] = state ? state.subscriptionId : undefined;
             resourceInputs["tenantId"] = state ? state.tenantId : undefined;
         } else {
@@ -110,6 +116,7 @@ export class CredentialsAzure extends pulumi.CustomResource {
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["clientId"] = args ? args.clientId : undefined;
             resourceInputs["clientSecret"] = args ? args.clientSecret : undefined;
+            resourceInputs["expirationDate"] = args ? args.expirationDate : undefined;
             resourceInputs["subscriptionId"] = args ? args.subscriptionId : undefined;
             resourceInputs["tenantId"] = args ? args.tenantId : undefined;
         }
@@ -134,6 +141,10 @@ export interface CredentialsAzureState {
      * Set the key secret.
      */
     clientSecret?: pulumi.Input<string>;
+    /**
+     * Set the key secret expiration date.
+     */
+    expirationDate?: pulumi.Input<string>;
     /**
      * Set the subscription ID.
      */
@@ -160,6 +171,10 @@ export interface CredentialsAzureArgs {
      * Set the key secret.
      */
     clientSecret: pulumi.Input<string>;
+    /**
+     * Set the key secret expiration date.
+     */
+    expirationDate?: pulumi.Input<string>;
     /**
      * Set the subscription ID.
      */
