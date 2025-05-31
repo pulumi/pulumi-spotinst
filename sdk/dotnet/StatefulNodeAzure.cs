@@ -761,9 +761,6 @@ namespace Pulumi.SpotInst
         [Output("shouldPersistOsDisk")]
         public Output<bool> ShouldPersistOsDisk { get; private set; } = null!;
 
-        [Output("shouldPersistVm")]
-        public Output<bool> ShouldPersistVm { get; private set; } = null!;
-
         [Output("shutdownScript")]
         public Output<string> ShutdownScript { get; private set; } = null!;
 
@@ -993,9 +990,6 @@ namespace Pulumi.SpotInst
         [Input("shouldPersistOsDisk", required: true)]
         public Input<bool> ShouldPersistOsDisk { get; set; } = null!;
 
-        [Input("shouldPersistVm")]
-        public Input<bool>? ShouldPersistVm { get; set; }
-
         [Input("shutdownScript")]
         public Input<string>? ShutdownScript { get; set; }
 
@@ -1206,9 +1200,6 @@ namespace Pulumi.SpotInst
 
         [Input("shouldPersistOsDisk")]
         public Input<bool>? ShouldPersistOsDisk { get; set; }
-
-        [Input("shouldPersistVm")]
-        public Input<bool>? ShouldPersistVm { get; set; }
 
         [Input("shutdownScript")]
         public Input<string>? ShutdownScript { get; set; }
