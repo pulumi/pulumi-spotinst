@@ -20114,9 +20114,6 @@
                 "shouldPersistOsDisk": {
                     "type": "boolean"
                 },
-                "shouldPersistVm": {
-                    "type": "boolean"
-                },
                 "shutdownScript": {
                     "type": "string"
                 },
@@ -20179,7 +20176,6 @@
                 "shouldPersistDataDisks",
                 "shouldPersistNetwork",
                 "shouldPersistOsDisk",
-                "shouldPersistVm",
                 "shutdownScript",
                 "signals",
                 "strategy",
@@ -20315,9 +20311,6 @@
                     "type": "boolean"
                 },
                 "shouldPersistOsDisk": {
-                    "type": "boolean"
-                },
-                "shouldPersistVm": {
                     "type": "boolean"
                 },
                 "shutdownScript": {
@@ -20503,9 +20496,6 @@
                         "type": "boolean"
                     },
                     "shouldPersistOsDisk": {
-                        "type": "boolean"
-                    },
-                    "shouldPersistVm": {
                         "type": "boolean"
                     },
                     "shutdownScript": {
