@@ -785,12 +785,6 @@ public class StatefulNodeAzure extends com.pulumi.resources.CustomResource {
     public Output<Boolean> shouldPersistOsDisk() {
         return this.shouldPersistOsDisk;
     }
-    @Export(name="shouldPersistVm", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> shouldPersistVm;
-
-    public Output<Boolean> shouldPersistVm() {
-        return this.shouldPersistVm;
-    }
     @Export(name="shutdownScript", refs={String.class}, tree="[0]")
     private Output<String> shutdownScript;
 

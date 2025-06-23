@@ -589,7 +589,6 @@ export class StatefulNodeAzure extends pulumi.CustomResource {
     public readonly shouldPersistDataDisks!: pulumi.Output<boolean>;
     public readonly shouldPersistNetwork!: pulumi.Output<boolean>;
     public readonly shouldPersistOsDisk!: pulumi.Output<boolean>;
-    public readonly shouldPersistVm!: pulumi.Output<boolean>;
     public readonly shutdownScript!: pulumi.Output<string>;
     public readonly signals!: pulumi.Output<outputs.StatefulNodeAzureSignal[]>;
     public readonly strategy!: pulumi.Output<outputs.StatefulNodeAzureStrategy>;
@@ -645,7 +644,6 @@ export class StatefulNodeAzure extends pulumi.CustomResource {
             resourceInputs["shouldPersistDataDisks"] = state ? state.shouldPersistDataDisks : undefined;
             resourceInputs["shouldPersistNetwork"] = state ? state.shouldPersistNetwork : undefined;
             resourceInputs["shouldPersistOsDisk"] = state ? state.shouldPersistOsDisk : undefined;
-            resourceInputs["shouldPersistVm"] = state ? state.shouldPersistVm : undefined;
             resourceInputs["shutdownScript"] = state ? state.shutdownScript : undefined;
             resourceInputs["signals"] = state ? state.signals : undefined;
             resourceInputs["strategy"] = state ? state.strategy : undefined;
@@ -713,7 +711,6 @@ export class StatefulNodeAzure extends pulumi.CustomResource {
             resourceInputs["shouldPersistDataDisks"] = args ? args.shouldPersistDataDisks : undefined;
             resourceInputs["shouldPersistNetwork"] = args ? args.shouldPersistNetwork : undefined;
             resourceInputs["shouldPersistOsDisk"] = args ? args.shouldPersistOsDisk : undefined;
-            resourceInputs["shouldPersistVm"] = args ? args.shouldPersistVm : undefined;
             resourceInputs["shutdownScript"] = args ? args.shutdownScript : undefined;
             resourceInputs["signals"] = args ? args.signals : undefined;
             resourceInputs["strategy"] = args ? args.strategy : undefined;
@@ -765,7 +762,6 @@ export interface StatefulNodeAzureState {
     shouldPersistDataDisks?: pulumi.Input<boolean>;
     shouldPersistNetwork?: pulumi.Input<boolean>;
     shouldPersistOsDisk?: pulumi.Input<boolean>;
-    shouldPersistVm?: pulumi.Input<boolean>;
     shutdownScript?: pulumi.Input<string>;
     signals?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureSignal>[]>;
     strategy?: pulumi.Input<inputs.StatefulNodeAzureStrategy>;
@@ -813,7 +809,6 @@ export interface StatefulNodeAzureArgs {
     shouldPersistDataDisks: pulumi.Input<boolean>;
     shouldPersistNetwork: pulumi.Input<boolean>;
     shouldPersistOsDisk: pulumi.Input<boolean>;
-    shouldPersistVm?: pulumi.Input<boolean>;
     shutdownScript?: pulumi.Input<string>;
     signals?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureSignal>[]>;
     strategy: pulumi.Input<inputs.StatefulNodeAzureStrategy>;
