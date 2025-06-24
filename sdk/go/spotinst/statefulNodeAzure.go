@@ -636,7 +636,6 @@ type StatefulNodeAzure struct {
 	ShouldPersistDataDisks   pulumi.BoolOutput                                   `pulumi:"shouldPersistDataDisks"`
 	ShouldPersistNetwork     pulumi.BoolOutput                                   `pulumi:"shouldPersistNetwork"`
 	ShouldPersistOsDisk      pulumi.BoolOutput                                   `pulumi:"shouldPersistOsDisk"`
-	ShouldPersistVm          pulumi.BoolOutput                                   `pulumi:"shouldPersistVm"`
 	ShutdownScript           pulumi.StringOutput                                 `pulumi:"shutdownScript"`
 	Signals                  StatefulNodeAzureSignalArrayOutput                  `pulumi:"signals"`
 	Strategy                 StatefulNodeAzureStrategyOutput                     `pulumi:"strategy"`
@@ -734,7 +733,6 @@ type statefulNodeAzureState struct {
 	ShouldPersistDataDisks   *bool                                      `pulumi:"shouldPersistDataDisks"`
 	ShouldPersistNetwork     *bool                                      `pulumi:"shouldPersistNetwork"`
 	ShouldPersistOsDisk      *bool                                      `pulumi:"shouldPersistOsDisk"`
-	ShouldPersistVm          *bool                                      `pulumi:"shouldPersistVm"`
 	ShutdownScript           *string                                    `pulumi:"shutdownScript"`
 	Signals                  []StatefulNodeAzureSignal                  `pulumi:"signals"`
 	Strategy                 *StatefulNodeAzureStrategy                 `pulumi:"strategy"`
@@ -779,7 +777,6 @@ type StatefulNodeAzureState struct {
 	ShouldPersistDataDisks   pulumi.BoolPtrInput
 	ShouldPersistNetwork     pulumi.BoolPtrInput
 	ShouldPersistOsDisk      pulumi.BoolPtrInput
-	ShouldPersistVm          pulumi.BoolPtrInput
 	ShutdownScript           pulumi.StringPtrInput
 	Signals                  StatefulNodeAzureSignalArrayInput
 	Strategy                 StatefulNodeAzureStrategyPtrInput
@@ -828,7 +825,6 @@ type statefulNodeAzureArgs struct {
 	ShouldPersistDataDisks   bool                                       `pulumi:"shouldPersistDataDisks"`
 	ShouldPersistNetwork     bool                                       `pulumi:"shouldPersistNetwork"`
 	ShouldPersistOsDisk      bool                                       `pulumi:"shouldPersistOsDisk"`
-	ShouldPersistVm          *bool                                      `pulumi:"shouldPersistVm"`
 	ShutdownScript           *string                                    `pulumi:"shutdownScript"`
 	Signals                  []StatefulNodeAzureSignal                  `pulumi:"signals"`
 	Strategy                 StatefulNodeAzureStrategy                  `pulumi:"strategy"`
@@ -874,7 +870,6 @@ type StatefulNodeAzureArgs struct {
 	ShouldPersistDataDisks   pulumi.BoolInput
 	ShouldPersistNetwork     pulumi.BoolInput
 	ShouldPersistOsDisk      pulumi.BoolInput
-	ShouldPersistVm          pulumi.BoolPtrInput
 	ShutdownScript           pulumi.StringPtrInput
 	Signals                  StatefulNodeAzureSignalArrayInput
 	Strategy                 StatefulNodeAzureStrategyInput
@@ -1100,10 +1095,6 @@ func (o StatefulNodeAzureOutput) ShouldPersistNetwork() pulumi.BoolOutput {
 
 func (o StatefulNodeAzureOutput) ShouldPersistOsDisk() pulumi.BoolOutput {
 	return o.ApplyT(func(v *StatefulNodeAzure) pulumi.BoolOutput { return v.ShouldPersistOsDisk }).(pulumi.BoolOutput)
-}
-
-func (o StatefulNodeAzureOutput) ShouldPersistVm() pulumi.BoolOutput {
-	return o.ApplyT(func(v *StatefulNodeAzure) pulumi.BoolOutput { return v.ShouldPersistVm }).(pulumi.BoolOutput)
 }
 
 func (o StatefulNodeAzureOutput) ShutdownScript() pulumi.StringOutput {

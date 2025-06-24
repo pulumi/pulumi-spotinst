@@ -257,13 +257,6 @@ public final class StatefulNodeAzureState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.shouldPersistOsDisk);
     }
 
-    @Import(name="shouldPersistVm")
-    private @Nullable Output<Boolean> shouldPersistVm;
-
-    public Optional<Output<Boolean>> shouldPersistVm() {
-        return Optional.ofNullable(this.shouldPersistVm);
-    }
-
     @Import(name="shutdownScript")
     private @Nullable Output<String> shutdownScript;
 
@@ -368,7 +361,6 @@ public final class StatefulNodeAzureState extends com.pulumi.resources.ResourceA
         this.shouldPersistDataDisks = $.shouldPersistDataDisks;
         this.shouldPersistNetwork = $.shouldPersistNetwork;
         this.shouldPersistOsDisk = $.shouldPersistOsDisk;
-        this.shouldPersistVm = $.shouldPersistVm;
         this.shutdownScript = $.shutdownScript;
         this.signals = $.signals;
         this.strategy = $.strategy;
@@ -724,15 +716,6 @@ public final class StatefulNodeAzureState extends com.pulumi.resources.ResourceA
 
         public Builder shouldPersistOsDisk(Boolean shouldPersistOsDisk) {
             return shouldPersistOsDisk(Output.of(shouldPersistOsDisk));
-        }
-
-        public Builder shouldPersistVm(@Nullable Output<Boolean> shouldPersistVm) {
-            $.shouldPersistVm = shouldPersistVm;
-            return this;
-        }
-
-        public Builder shouldPersistVm(Boolean shouldPersistVm) {
-            return shouldPersistVm(Output.of(shouldPersistVm));
         }
 
         public Builder shutdownScript(@Nullable Output<String> shutdownScript) {
