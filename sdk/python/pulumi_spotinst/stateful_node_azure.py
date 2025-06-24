@@ -55,7 +55,6 @@ class StatefulNodeAzureArgs:
                  scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSchedulingTaskArgs']]]] = None,
                  secrets: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSecretArgs']]]] = None,
                  security: Optional[pulumi.Input['StatefulNodeAzureSecurityArgs']] = None,
-                 should_persist_vm: Optional[pulumi.Input[builtins.bool]] = None,
                  shutdown_script: Optional[pulumi.Input[builtins.str]] = None,
                  signals: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSignalArgs']]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureTagArgs']]]] = None,
@@ -125,8 +124,6 @@ class StatefulNodeAzureArgs:
             pulumi.set(__self__, "secrets", secrets)
         if security is not None:
             pulumi.set(__self__, "security", security)
-        if should_persist_vm is not None:
-            pulumi.set(__self__, "should_persist_vm", should_persist_vm)
         if shutdown_script is not None:
             pulumi.set(__self__, "shutdown_script", shutdown_script)
         if signals is not None:
@@ -442,15 +439,6 @@ class StatefulNodeAzureArgs:
         pulumi.set(self, "security", value)
 
     @property
-    @pulumi.getter(name="shouldPersistVm")
-    def should_persist_vm(self) -> Optional[pulumi.Input[builtins.bool]]:
-        return pulumi.get(self, "should_persist_vm")
-
-    @should_persist_vm.setter
-    def should_persist_vm(self, value: Optional[pulumi.Input[builtins.bool]]):
-        pulumi.set(self, "should_persist_vm", value)
-
-    @property
     @pulumi.getter(name="shutdownScript")
     def shutdown_script(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "shutdown_script")
@@ -557,7 +545,6 @@ class _StatefulNodeAzureState:
                  should_persist_data_disks: Optional[pulumi.Input[builtins.bool]] = None,
                  should_persist_network: Optional[pulumi.Input[builtins.bool]] = None,
                  should_persist_os_disk: Optional[pulumi.Input[builtins.bool]] = None,
-                 should_persist_vm: Optional[pulumi.Input[builtins.bool]] = None,
                  shutdown_script: Optional[pulumi.Input[builtins.str]] = None,
                  signals: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSignalArgs']]]] = None,
                  strategy: Optional[pulumi.Input['StatefulNodeAzureStrategyArgs']] = None,
@@ -633,8 +620,6 @@ class _StatefulNodeAzureState:
             pulumi.set(__self__, "should_persist_network", should_persist_network)
         if should_persist_os_disk is not None:
             pulumi.set(__self__, "should_persist_os_disk", should_persist_os_disk)
-        if should_persist_vm is not None:
-            pulumi.set(__self__, "should_persist_vm", should_persist_vm)
         if shutdown_script is not None:
             pulumi.set(__self__, "shutdown_script", shutdown_script)
         if signals is not None:
@@ -936,15 +921,6 @@ class _StatefulNodeAzureState:
         pulumi.set(self, "should_persist_os_disk", value)
 
     @property
-    @pulumi.getter(name="shouldPersistVm")
-    def should_persist_vm(self) -> Optional[pulumi.Input[builtins.bool]]:
-        return pulumi.get(self, "should_persist_vm")
-
-    @should_persist_vm.setter
-    def should_persist_vm(self, value: Optional[pulumi.Input[builtins.bool]]):
-        pulumi.set(self, "should_persist_vm", value)
-
-    @property
     @pulumi.getter(name="shutdownScript")
     def shutdown_script(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "shutdown_script")
@@ -1072,7 +1048,6 @@ class StatefulNodeAzure(pulumi.CustomResource):
                  should_persist_data_disks: Optional[pulumi.Input[builtins.bool]] = None,
                  should_persist_network: Optional[pulumi.Input[builtins.bool]] = None,
                  should_persist_os_disk: Optional[pulumi.Input[builtins.bool]] = None,
-                 should_persist_vm: Optional[pulumi.Input[builtins.bool]] = None,
                  shutdown_script: Optional[pulumi.Input[builtins.str]] = None,
                  signals: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureSignalArgs', 'StatefulNodeAzureSignalArgsDict']]]]] = None,
                  strategy: Optional[pulumi.Input[Union['StatefulNodeAzureStrategyArgs', 'StatefulNodeAzureStrategyArgsDict']]] = None,
@@ -2185,7 +2160,6 @@ class StatefulNodeAzure(pulumi.CustomResource):
                  should_persist_data_disks: Optional[pulumi.Input[builtins.bool]] = None,
                  should_persist_network: Optional[pulumi.Input[builtins.bool]] = None,
                  should_persist_os_disk: Optional[pulumi.Input[builtins.bool]] = None,
-                 should_persist_vm: Optional[pulumi.Input[builtins.bool]] = None,
                  shutdown_script: Optional[pulumi.Input[builtins.str]] = None,
                  signals: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureSignalArgs', 'StatefulNodeAzureSignalArgsDict']]]]] = None,
                  strategy: Optional[pulumi.Input[Union['StatefulNodeAzureStrategyArgs', 'StatefulNodeAzureStrategyArgsDict']]] = None,
@@ -2248,7 +2222,6 @@ class StatefulNodeAzure(pulumi.CustomResource):
             if should_persist_os_disk is None and not opts.urn:
                 raise TypeError("Missing required property 'should_persist_os_disk'")
             __props__.__dict__["should_persist_os_disk"] = should_persist_os_disk
-            __props__.__dict__["should_persist_vm"] = should_persist_vm
             __props__.__dict__["shutdown_script"] = shutdown_script
             __props__.__dict__["signals"] = signals
             if strategy is None and not opts.urn:
@@ -2304,7 +2277,6 @@ class StatefulNodeAzure(pulumi.CustomResource):
             should_persist_data_disks: Optional[pulumi.Input[builtins.bool]] = None,
             should_persist_network: Optional[pulumi.Input[builtins.bool]] = None,
             should_persist_os_disk: Optional[pulumi.Input[builtins.bool]] = None,
-            should_persist_vm: Optional[pulumi.Input[builtins.bool]] = None,
             shutdown_script: Optional[pulumi.Input[builtins.str]] = None,
             signals: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureSignalArgs', 'StatefulNodeAzureSignalArgsDict']]]]] = None,
             strategy: Optional[pulumi.Input[Union['StatefulNodeAzureStrategyArgs', 'StatefulNodeAzureStrategyArgsDict']]] = None,
@@ -2358,7 +2330,6 @@ class StatefulNodeAzure(pulumi.CustomResource):
         __props__.__dict__["should_persist_data_disks"] = should_persist_data_disks
         __props__.__dict__["should_persist_network"] = should_persist_network
         __props__.__dict__["should_persist_os_disk"] = should_persist_os_disk
-        __props__.__dict__["should_persist_vm"] = should_persist_vm
         __props__.__dict__["shutdown_script"] = shutdown_script
         __props__.__dict__["signals"] = signals
         __props__.__dict__["strategy"] = strategy
@@ -2525,11 +2496,6 @@ class StatefulNodeAzure(pulumi.CustomResource):
     @pulumi.getter(name="shouldPersistOsDisk")
     def should_persist_os_disk(self) -> pulumi.Output[builtins.bool]:
         return pulumi.get(self, "should_persist_os_disk")
-
-    @property
-    @pulumi.getter(name="shouldPersistVm")
-    def should_persist_vm(self) -> pulumi.Output[builtins.bool]:
-        return pulumi.get(self, "should_persist_vm")
 
     @property
     @pulumi.getter(name="shutdownScript")
