@@ -17,9 +17,9 @@ public final class StatefulNodeAzureSecurityArgs extends com.pulumi.resources.Re
     public static final StatefulNodeAzureSecurityArgs Empty = new StatefulNodeAzureSecurityArgs();
 
     @Import(name="confidentialOsDiskEncryption")
-    private @Nullable Output<Boolean> confidentialOsDiskEncryption;
+    private @Nullable Output<String> confidentialOsDiskEncryption;
 
-    public Optional<Output<Boolean>> confidentialOsDiskEncryption() {
+    public Optional<Output<String>> confidentialOsDiskEncryption() {
         return Optional.ofNullable(this.confidentialOsDiskEncryption);
     }
 
@@ -79,12 +79,12 @@ public final class StatefulNodeAzureSecurityArgs extends com.pulumi.resources.Re
             $ = new StatefulNodeAzureSecurityArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder confidentialOsDiskEncryption(@Nullable Output<Boolean> confidentialOsDiskEncryption) {
+        public Builder confidentialOsDiskEncryption(@Nullable Output<String> confidentialOsDiskEncryption) {
             $.confidentialOsDiskEncryption = confidentialOsDiskEncryption;
             return this;
         }
 
-        public Builder confidentialOsDiskEncryption(Boolean confidentialOsDiskEncryption) {
+        public Builder confidentialOsDiskEncryption(String confidentialOsDiskEncryption) {
             return confidentialOsDiskEncryption(Output.of(confidentialOsDiskEncryption));
         }
 

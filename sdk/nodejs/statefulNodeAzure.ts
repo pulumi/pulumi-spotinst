@@ -191,7 +191,7 @@ import * as utilities from "./utilities";
  *         secureBootEnabled: true,
  *         vtpmEnabled: true,
  *         encryptionAtHost: false,
- *         confidentialOsDiskEncryption: true,
+ *         confidentialOsDiskEncryption: "true",
  *     },
  *     tags: [{
  *         tagKey: "Creator",
@@ -585,7 +585,7 @@ export class StatefulNodeAzure extends pulumi.CustomResource {
     public readonly resourceGroupName!: pulumi.Output<string>;
     public readonly schedulingTasks!: pulumi.Output<outputs.StatefulNodeAzureSchedulingTask[]>;
     public readonly secrets!: pulumi.Output<outputs.StatefulNodeAzureSecret[] | undefined>;
-    public readonly security!: pulumi.Output<outputs.StatefulNodeAzureSecurity | undefined>;
+    public readonly security!: pulumi.Output<outputs.StatefulNodeAzureSecurity>;
     public readonly shouldPersistDataDisks!: pulumi.Output<boolean>;
     public readonly shouldPersistNetwork!: pulumi.Output<boolean>;
     public readonly shouldPersistOsDisk!: pulumi.Output<boolean>;

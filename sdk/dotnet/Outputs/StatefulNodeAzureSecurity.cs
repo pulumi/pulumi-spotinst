@@ -13,7 +13,7 @@ namespace Pulumi.SpotInst.Outputs
     [OutputType]
     public sealed class StatefulNodeAzureSecurity
     {
-        public readonly bool? ConfidentialOsDiskEncryption;
+        public readonly string? ConfidentialOsDiskEncryption;
         public readonly bool? EncryptionAtHost;
         public readonly bool? SecureBootEnabled;
         public readonly string? SecurityType;
@@ -21,7 +21,7 @@ namespace Pulumi.SpotInst.Outputs
 
         [OutputConstructor]
         private StatefulNodeAzureSecurity(
-            bool? confidentialOsDiskEncryption,
+            string? confidentialOsDiskEncryption,
 
             bool? encryptionAtHost,
 
