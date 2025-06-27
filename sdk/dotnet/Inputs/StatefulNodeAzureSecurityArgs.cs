@@ -13,7 +13,7 @@ namespace Pulumi.SpotInst.Inputs
     public sealed class StatefulNodeAzureSecurityArgs : global::Pulumi.ResourceArgs
     {
         [Input("confidentialOsDiskEncryption")]
-        public Input<bool>? ConfidentialOsDiskEncryption { get; set; }
+        public Input<string>? ConfidentialOsDiskEncryption { get; set; }
 
         [Input("encryptionAtHost")]
         public Input<bool>? EncryptionAtHost { get; set; }

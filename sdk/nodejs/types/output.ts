@@ -579,11 +579,11 @@ export interface StatefulNodeAzureSecretVaultCertificate {
 }
 
 export interface StatefulNodeAzureSecurity {
-    confidentialOsDiskEncryption?: boolean;
-    encryptionAtHost?: boolean;
-    secureBootEnabled?: boolean;
+    confidentialOsDiskEncryption?: string;
+    encryptionAtHost: boolean;
+    secureBootEnabled: boolean;
     securityType?: string;
-    vtpmEnabled?: boolean;
+    vtpmEnabled: boolean;
 }
 
 export interface StatefulNodeAzureSignal {

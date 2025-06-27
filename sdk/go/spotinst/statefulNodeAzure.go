@@ -248,7 +248,7 @@ import (
 //					SecureBootEnabled:            pulumi.Bool(true),
 //					VtpmEnabled:                  pulumi.Bool(true),
 //					EncryptionAtHost:             pulumi.Bool(false),
-//					ConfidentialOsDiskEncryption: pulumi.Bool(true),
+//					ConfidentialOsDiskEncryption: pulumi.String("true"),
 //				},
 //				Tags: spotinst.StatefulNodeAzureTagArray{
 //					&spotinst.StatefulNodeAzureTagArgs{
@@ -632,7 +632,7 @@ type StatefulNodeAzure struct {
 	ResourceGroupName        pulumi.StringOutput                                 `pulumi:"resourceGroupName"`
 	SchedulingTasks          StatefulNodeAzureSchedulingTaskArrayOutput          `pulumi:"schedulingTasks"`
 	Secrets                  StatefulNodeAzureSecretArrayOutput                  `pulumi:"secrets"`
-	Security                 StatefulNodeAzureSecurityPtrOutput                  `pulumi:"security"`
+	Security                 StatefulNodeAzureSecurityOutput                     `pulumi:"security"`
 	ShouldPersistDataDisks   pulumi.BoolOutput                                   `pulumi:"shouldPersistDataDisks"`
 	ShouldPersistNetwork     pulumi.BoolOutput                                   `pulumi:"shouldPersistNetwork"`
 	ShouldPersistOsDisk      pulumi.BoolOutput                                   `pulumi:"shouldPersistOsDisk"`
@@ -1081,8 +1081,8 @@ func (o StatefulNodeAzureOutput) Secrets() StatefulNodeAzureSecretArrayOutput {
 	return o.ApplyT(func(v *StatefulNodeAzure) StatefulNodeAzureSecretArrayOutput { return v.Secrets }).(StatefulNodeAzureSecretArrayOutput)
 }
 
-func (o StatefulNodeAzureOutput) Security() StatefulNodeAzureSecurityPtrOutput {
-	return o.ApplyT(func(v *StatefulNodeAzure) StatefulNodeAzureSecurityPtrOutput { return v.Security }).(StatefulNodeAzureSecurityPtrOutput)
+func (o StatefulNodeAzureOutput) Security() StatefulNodeAzureSecurityOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) StatefulNodeAzureSecurityOutput { return v.Security }).(StatefulNodeAzureSecurityOutput)
 }
 
 func (o StatefulNodeAzureOutput) ShouldPersistDataDisks() pulumi.BoolOutput {

@@ -2288,8 +2288,8 @@ github.com/spf13/pflag v1.0.6/go.mod h1:McXfInJRrz4CZXVZOBLb0bTZqETkiAhM9Iw0y3An
 github.com/spiffe/go-spiffe/v2 v2.5.0/go.mod h1:P+NxobPc6wXhVtINNtFjNWGBTreew1GBUCwT2wPmb7g=
 github.com/spotinst/spotinst-sdk-go v1.394.1 h1:d7oLTplCYj4WrYAok3FFCnfSx14QYs0/F9Y+QBIFSUg=
 github.com/spotinst/spotinst-sdk-go v1.394.1/go.mod h1:Tn4/eb0SFY6IXmxz71CClujvbD/PuT+EO6Ta8v6AML4=
-github.com/spotinst/terraform-provider-spotinst v1.220.3 h1:IhpNtdTE8U9M3uq8ZMUX6ZDdYeS4YW/4ernXwFTvSr4=
-github.com/spotinst/terraform-provider-spotinst v1.220.3/go.mod h1:/a77LuiYFVdualc+rcVl/TzjZDY/K+sfmC8x94QFZrc=
+github.com/spotinst/terraform-provider-spotinst v1.220.4 h1:DchS0R4SecbjxkZgJMWq/PAZWGh0MjUEtndAefIj3uw=
+github.com/spotinst/terraform-provider-spotinst v1.220.4/go.mod h1:/a77LuiYFVdualc+rcVl/TzjZDY/K+sfmC8x94QFZrc=
 github.com/stoewer/go-strcase v1.3.0/go.mod h1:fAH5hQ5pehh+j3nZfvwdk2RgEgQjAoM8wodgtPmh1xo=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/objx v0.1.1/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=

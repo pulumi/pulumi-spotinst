@@ -254,7 +254,7 @@ import javax.annotation.Nullable;
  *                 .secureBootEnabled(true)
  *                 .vtpmEnabled(true)
  *                 .encryptionAtHost(false)
- *                 .confidentialOsDiskEncryption(true)
+ *                 .confidentialOsDiskEncryption("true")
  *                 .build())
  *             .tags(StatefulNodeAzureTagArgs.builder()
  *                 .tagKey("Creator")
@@ -762,10 +762,10 @@ public class StatefulNodeAzure extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.secrets);
     }
     @Export(name="security", refs={StatefulNodeAzureSecurity.class}, tree="[0]")
-    private Output</* @Nullable */ StatefulNodeAzureSecurity> security;
+    private Output<StatefulNodeAzureSecurity> security;
 
-    public Output<Optional<StatefulNodeAzureSecurity>> security() {
-        return Codegen.optional(this.security);
+    public Output<StatefulNodeAzureSecurity> security() {
+        return this.security;
     }
     @Export(name="shouldPersistDataDisks", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> shouldPersistDataDisks;

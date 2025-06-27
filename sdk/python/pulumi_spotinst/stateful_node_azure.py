@@ -1244,7 +1244,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
                 "secure_boot_enabled": True,
                 "vtpm_enabled": True,
                 "encryption_at_host": False,
-                "confidential_os_disk_encryption": True,
+                "confidential_os_disk_encryption": "true",
             },
             tags=[{
                 "tag_key": "Creator",
@@ -1776,7 +1776,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
                 "secure_boot_enabled": True,
                 "vtpm_enabled": True,
                 "encryption_at_host": False,
-                "confidential_os_disk_encryption": True,
+                "confidential_os_disk_encryption": "true",
             },
             tags=[{
                 "tag_key": "Creator",
@@ -2479,7 +2479,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def security(self) -> pulumi.Output[Optional['outputs.StatefulNodeAzureSecurity']]:
+    def security(self) -> pulumi.Output['outputs.StatefulNodeAzureSecurity']:
         return pulumi.get(self, "security")
 
     @property

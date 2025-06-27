@@ -10182,7 +10182,7 @@ func (o StatefulNodeAzureSecretVaultCertificateArrayOutput) Index(i pulumi.IntIn
 }
 
 type StatefulNodeAzureSecurity struct {
-	ConfidentialOsDiskEncryption *bool   `pulumi:"confidentialOsDiskEncryption"`
+	ConfidentialOsDiskEncryption *string `pulumi:"confidentialOsDiskEncryption"`
 	EncryptionAtHost             *bool   `pulumi:"encryptionAtHost"`
 	SecureBootEnabled            *bool   `pulumi:"secureBootEnabled"`
 	SecurityType                 *string `pulumi:"securityType"`
@@ -10201,7 +10201,7 @@ type StatefulNodeAzureSecurityInput interface {
 }
 
 type StatefulNodeAzureSecurityArgs struct {
-	ConfidentialOsDiskEncryption pulumi.BoolPtrInput   `pulumi:"confidentialOsDiskEncryption"`
+	ConfidentialOsDiskEncryption pulumi.StringPtrInput `pulumi:"confidentialOsDiskEncryption"`
 	EncryptionAtHost             pulumi.BoolPtrInput   `pulumi:"encryptionAtHost"`
 	SecureBootEnabled            pulumi.BoolPtrInput   `pulumi:"secureBootEnabled"`
 	SecurityType                 pulumi.StringPtrInput `pulumi:"securityType"`
@@ -10285,8 +10285,8 @@ func (o StatefulNodeAzureSecurityOutput) ToStatefulNodeAzureSecurityPtrOutputWit
 	}).(StatefulNodeAzureSecurityPtrOutput)
 }
 
-func (o StatefulNodeAzureSecurityOutput) ConfidentialOsDiskEncryption() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v StatefulNodeAzureSecurity) *bool { return v.ConfidentialOsDiskEncryption }).(pulumi.BoolPtrOutput)
+func (o StatefulNodeAzureSecurityOutput) ConfidentialOsDiskEncryption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureSecurity) *string { return v.ConfidentialOsDiskEncryption }).(pulumi.StringPtrOutput)
 }
 
 func (o StatefulNodeAzureSecurityOutput) EncryptionAtHost() pulumi.BoolPtrOutput {
@@ -10329,13 +10329,13 @@ func (o StatefulNodeAzureSecurityPtrOutput) Elem() StatefulNodeAzureSecurityOutp
 	}).(StatefulNodeAzureSecurityOutput)
 }
 
-func (o StatefulNodeAzureSecurityPtrOutput) ConfidentialOsDiskEncryption() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *StatefulNodeAzureSecurity) *bool {
+func (o StatefulNodeAzureSecurityPtrOutput) ConfidentialOsDiskEncryption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureSecurity) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ConfidentialOsDiskEncryption
-	}).(pulumi.BoolPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o StatefulNodeAzureSecurityPtrOutput) EncryptionAtHost() pulumi.BoolPtrOutput {

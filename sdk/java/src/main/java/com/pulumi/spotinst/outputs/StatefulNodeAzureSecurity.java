@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class StatefulNodeAzureSecurity {
-    private @Nullable Boolean confidentialOsDiskEncryption;
+    private @Nullable String confidentialOsDiskEncryption;
     private @Nullable Boolean encryptionAtHost;
     private @Nullable Boolean secureBootEnabled;
     private @Nullable String securityType;
     private @Nullable Boolean vtpmEnabled;
 
     private StatefulNodeAzureSecurity() {}
-    public Optional<Boolean> confidentialOsDiskEncryption() {
+    public Optional<String> confidentialOsDiskEncryption() {
         return Optional.ofNullable(this.confidentialOsDiskEncryption);
     }
     public Optional<Boolean> encryptionAtHost() {
@@ -44,7 +44,7 @@ public final class StatefulNodeAzureSecurity {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Boolean confidentialOsDiskEncryption;
+        private @Nullable String confidentialOsDiskEncryption;
         private @Nullable Boolean encryptionAtHost;
         private @Nullable Boolean secureBootEnabled;
         private @Nullable String securityType;
@@ -60,7 +60,7 @@ public final class StatefulNodeAzureSecurity {
         }
 
         @CustomType.Setter
-        public Builder confidentialOsDiskEncryption(@Nullable Boolean confidentialOsDiskEncryption) {
+        public Builder confidentialOsDiskEncryption(@Nullable String confidentialOsDiskEncryption) {
 
             this.confidentialOsDiskEncryption = confidentialOsDiskEncryption;
             return this;

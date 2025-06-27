@@ -4863,7 +4863,7 @@ class StatefulNodeAzureSecretVaultCertificateArgs:
 
 if not MYPY:
     class StatefulNodeAzureSecurityArgsDict(TypedDict):
-        confidential_os_disk_encryption: NotRequired[pulumi.Input[builtins.bool]]
+        confidential_os_disk_encryption: NotRequired[pulumi.Input[builtins.str]]
         encryption_at_host: NotRequired[pulumi.Input[builtins.bool]]
         secure_boot_enabled: NotRequired[pulumi.Input[builtins.bool]]
         security_type: NotRequired[pulumi.Input[builtins.str]]
@@ -4874,7 +4874,7 @@ elif False:
 @pulumi.input_type
 class StatefulNodeAzureSecurityArgs:
     def __init__(__self__, *,
-                 confidential_os_disk_encryption: Optional[pulumi.Input[builtins.bool]] = None,
+                 confidential_os_disk_encryption: Optional[pulumi.Input[builtins.str]] = None,
                  encryption_at_host: Optional[pulumi.Input[builtins.bool]] = None,
                  secure_boot_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  security_type: Optional[pulumi.Input[builtins.str]] = None,
@@ -4892,11 +4892,11 @@ class StatefulNodeAzureSecurityArgs:
 
     @property
     @pulumi.getter(name="confidentialOsDiskEncryption")
-    def confidential_os_disk_encryption(self) -> Optional[pulumi.Input[builtins.bool]]:
+    def confidential_os_disk_encryption(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "confidential_os_disk_encryption")
 
     @confidential_os_disk_encryption.setter
-    def confidential_os_disk_encryption(self, value: Optional[pulumi.Input[builtins.bool]]):
+    def confidential_os_disk_encryption(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "confidential_os_disk_encryption", value)
 
     @property

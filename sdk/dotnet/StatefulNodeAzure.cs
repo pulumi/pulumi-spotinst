@@ -301,7 +301,7 @@ namespace Pulumi.SpotInst
     ///             SecureBootEnabled = true,
     ///             VtpmEnabled = true,
     ///             EncryptionAtHost = false,
-    ///             ConfidentialOsDiskEncryption = true,
+    ///             ConfidentialOsDiskEncryption = "true",
     ///         },
     ///         Tags = new[]
     ///         {
@@ -750,7 +750,7 @@ namespace Pulumi.SpotInst
         public Output<ImmutableArray<Outputs.StatefulNodeAzureSecret>> Secrets { get; private set; } = null!;
 
         [Output("security")]
-        public Output<Outputs.StatefulNodeAzureSecurity?> Security { get; private set; } = null!;
+        public Output<Outputs.StatefulNodeAzureSecurity> Security { get; private set; } = null!;
 
         [Output("shouldPersistDataDisks")]
         public Output<bool> ShouldPersistDataDisks { get; private set; } = null!;

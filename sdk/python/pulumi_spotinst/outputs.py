@@ -4283,7 +4283,7 @@ class StatefulNodeAzureSecurity(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 confidential_os_disk_encryption: Optional[builtins.bool] = None,
+                 confidential_os_disk_encryption: Optional[builtins.str] = None,
                  encryption_at_host: Optional[builtins.bool] = None,
                  secure_boot_enabled: Optional[builtins.bool] = None,
                  security_type: Optional[builtins.str] = None,
@@ -4301,7 +4301,7 @@ class StatefulNodeAzureSecurity(dict):
 
     @property
     @pulumi.getter(name="confidentialOsDiskEncryption")
-    def confidential_os_disk_encryption(self) -> Optional[builtins.bool]:
+    def confidential_os_disk_encryption(self) -> Optional[builtins.str]:
         return pulumi.get(self, "confidential_os_disk_encryption")
 
     @property

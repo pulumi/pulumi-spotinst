@@ -579,7 +579,7 @@ export interface StatefulNodeAzureSecretVaultCertificate {
 }
 
 export interface StatefulNodeAzureSecurity {
-    confidentialOsDiskEncryption?: pulumi.Input<boolean>;
+    confidentialOsDiskEncryption?: pulumi.Input<string>;
     encryptionAtHost?: pulumi.Input<boolean>;
     secureBootEnabled?: pulumi.Input<boolean>;
     securityType?: pulumi.Input<string>;
