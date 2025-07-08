@@ -678,6 +678,9 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "backend_balancing": {
+                                    "maxItemsOne": true
+                                },
                                 "named_ports": {
                                     "maxItemsOne": false,
                                     "elem": {
@@ -805,6 +808,9 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "backend_balancing": {
+                                    "maxItemsOne": true
+                                },
                                 "named_ports": {
                                     "maxItemsOne": false,
                                     "elem": {
@@ -1089,6 +1095,47 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "spotinst_notification_center": {
+                "current": "spotinst:index/notificationCenter:NotificationCenter",
+                "fields": {
+                    "compute_policy_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "dynamic_rules": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "filter_conditions": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "events": {
+                                    "maxItemsOne": false
+                                },
+                                "resource_ids": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "registered_users": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "subscription_types": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "subscriptions": {
+                        "maxItemsOne": false
                     }
                 }
             },
