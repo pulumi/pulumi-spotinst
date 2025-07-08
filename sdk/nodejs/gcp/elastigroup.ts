@@ -58,6 +58,10 @@ import * as utilities from "../utilities";
  *                 "6000",
  *             ],
  *         }],
+ *         backendBalancing: {
+ *             backendBalancingMode: "RATE",
+ *             maxRatePerInstance: 500,
+ *         },
  *     }],
  *     disks: [{
  *         deviceName: "device",

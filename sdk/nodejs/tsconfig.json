@@ -46,6 +46,7 @@
         "gke/oceanLaunchSpecImport.ts",
         "healthCheck.ts",
         "index.ts",
+        "notificationCenter.ts",
         "oceanRightSizingRule.ts",
         "oceancd/index.ts",
         "oceancd/rolloutSpec.ts",

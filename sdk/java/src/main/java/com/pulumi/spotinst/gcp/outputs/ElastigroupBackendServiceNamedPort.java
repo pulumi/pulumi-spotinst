@@ -19,8 +19,6 @@ public final class ElastigroupBackendServiceNamedPort {
     /**
      * @return A list of ports.
      * 
-     * Usage:
-     * 
      */
     private List<String> ports;
 
@@ -34,8 +32,6 @@ public final class ElastigroupBackendServiceNamedPort {
     }
     /**
      * @return A list of ports.
-     * 
-     * Usage:
      * 
      */
     public List<String> ports() {

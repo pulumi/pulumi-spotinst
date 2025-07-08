@@ -82,6 +82,10 @@ import (
 //								},
 //							},
 //						},
+//						BackendBalancing: &gcp.ElastigroupBackendServiceBackendBalancingArgs{
+//							BackendBalancingMode: pulumi.String("RATE"),
+//							MaxRatePerInstance:   pulumi.Int(500),
+//						},
 //					},
 //				},
 //				Disks: gcp.ElastigroupDiskArray{

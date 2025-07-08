@@ -33,16 +33,12 @@ public final class ElastigroupBackendServiceNamedPortArgs extends com.pulumi.res
     /**
      * A list of ports.
      * 
-     * Usage:
-     * 
      */
     @Import(name="ports", required=true)
     private Output<List<String>> ports;
 
     /**
      * @return A list of ports.
-     * 
-     * Usage:
      * 
      */
     public Output<List<String>> ports() {
@@ -98,8 +94,6 @@ public final class ElastigroupBackendServiceNamedPortArgs extends com.pulumi.res
         /**
          * @param ports A list of ports.
          * 
-         * Usage:
-         * 
          * @return builder
          * 
          */
@@ -111,8 +105,6 @@ public final class ElastigroupBackendServiceNamedPortArgs extends com.pulumi.res
         /**
          * @param ports A list of ports.
          * 
-         * Usage:
-         * 
          * @return builder
          * 
          */
@@ -122,8 +114,6 @@ public final class ElastigroupBackendServiceNamedPortArgs extends com.pulumi.res
 
         /**
          * @param ports A list of ports.
-         * 
-         * Usage:
          * 
          * @return builder
          * 

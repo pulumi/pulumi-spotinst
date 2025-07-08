@@ -13,6 +13,7 @@ namespace Pulumi.SpotInst.Gke.Outputs
     [OutputType]
     public sealed class ElastigroupBackendService
     {
+        public readonly Outputs.ElastigroupBackendServiceBackendBalancing? BackendBalancing;
         public readonly string? LocationType;
         public readonly ImmutableArray<Outputs.ElastigroupBackendServiceNamedPort> NamedPorts;
         public readonly string? Scheme;
@@ -20,6 +21,8 @@ namespace Pulumi.SpotInst.Gke.Outputs
 
         [OutputConstructor]
         private ElastigroupBackendService(
+            Outputs.ElastigroupBackendServiceBackendBalancing? backendBalancing,
+
             string? locationType,
 
             ImmutableArray<Outputs.ElastigroupBackendServiceNamedPort> namedPorts,
@@ -28,6 +31,7 @@ namespace Pulumi.SpotInst.Gke.Outputs
 
             string serviceName)
         {
+            BackendBalancing = backendBalancing;
             LocationType = locationType;
             NamedPorts = namedPorts;
             Scheme = scheme;

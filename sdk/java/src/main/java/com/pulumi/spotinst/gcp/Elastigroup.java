@@ -50,6 +50,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.spotinst.gcp.inputs.ElastigroupRevertToPreemptibleArgs;
  * import com.pulumi.spotinst.gcp.inputs.ElastigroupLabelArgs;
  * import com.pulumi.spotinst.gcp.inputs.ElastigroupBackendServiceArgs;
+ * import com.pulumi.spotinst.gcp.inputs.ElastigroupBackendServiceBackendBalancingArgs;
  * import com.pulumi.spotinst.gcp.inputs.ElastigroupDiskArgs;
  * import com.pulumi.spotinst.gcp.inputs.ElastigroupShieldedInstanceConfigArgs;
  * import com.pulumi.spotinst.gcp.inputs.ElastigroupNetworkInterfaceArgs;
@@ -108,6 +109,10 @@ import javax.annotation.Nullable;
  *                     .ports(                    
  *                         "8000",
  *                         "6000")
+ *                     .build())
+ *                 .backendBalancing(ElastigroupBackendServiceBackendBalancingArgs.builder()
+ *                     .backendBalancingMode("RATE")
+ *                     .maxRatePerInstance(500)
  *                     .build())
  *                 .build())
  *             .disks(ElastigroupDiskArgs.builder()

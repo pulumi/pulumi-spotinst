@@ -5213,6 +5213,690 @@ func (o HealthCheckCheckPtrOutput) Unhealthy() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type NotificationCenterComputePolicyConfig struct {
+	DynamicRules              []NotificationCenterComputePolicyConfigDynamicRule `pulumi:"dynamicRules"`
+	Events                    []NotificationCenterComputePolicyConfigEvent       `pulumi:"events"`
+	ResourceIds               []string                                           `pulumi:"resourceIds"`
+	ShouldIncludeAllResources *bool                                              `pulumi:"shouldIncludeAllResources"`
+}
+
+// NotificationCenterComputePolicyConfigInput is an input type that accepts NotificationCenterComputePolicyConfigArgs and NotificationCenterComputePolicyConfigOutput values.
+// You can construct a concrete instance of `NotificationCenterComputePolicyConfigInput` via:
+//
+//	NotificationCenterComputePolicyConfigArgs{...}
+type NotificationCenterComputePolicyConfigInput interface {
+	pulumi.Input
+
+	ToNotificationCenterComputePolicyConfigOutput() NotificationCenterComputePolicyConfigOutput
+	ToNotificationCenterComputePolicyConfigOutputWithContext(context.Context) NotificationCenterComputePolicyConfigOutput
+}
+
+type NotificationCenterComputePolicyConfigArgs struct {
+	DynamicRules              NotificationCenterComputePolicyConfigDynamicRuleArrayInput `pulumi:"dynamicRules"`
+	Events                    NotificationCenterComputePolicyConfigEventArrayInput       `pulumi:"events"`
+	ResourceIds               pulumi.StringArrayInput                                    `pulumi:"resourceIds"`
+	ShouldIncludeAllResources pulumi.BoolPtrInput                                        `pulumi:"shouldIncludeAllResources"`
+}
+
+func (NotificationCenterComputePolicyConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationCenterComputePolicyConfig)(nil)).Elem()
+}
+
+func (i NotificationCenterComputePolicyConfigArgs) ToNotificationCenterComputePolicyConfigOutput() NotificationCenterComputePolicyConfigOutput {
+	return i.ToNotificationCenterComputePolicyConfigOutputWithContext(context.Background())
+}
+
+func (i NotificationCenterComputePolicyConfigArgs) ToNotificationCenterComputePolicyConfigOutputWithContext(ctx context.Context) NotificationCenterComputePolicyConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationCenterComputePolicyConfigOutput)
+}
+
+func (i NotificationCenterComputePolicyConfigArgs) ToNotificationCenterComputePolicyConfigPtrOutput() NotificationCenterComputePolicyConfigPtrOutput {
+	return i.ToNotificationCenterComputePolicyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i NotificationCenterComputePolicyConfigArgs) ToNotificationCenterComputePolicyConfigPtrOutputWithContext(ctx context.Context) NotificationCenterComputePolicyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationCenterComputePolicyConfigOutput).ToNotificationCenterComputePolicyConfigPtrOutputWithContext(ctx)
+}
+
+// NotificationCenterComputePolicyConfigPtrInput is an input type that accepts NotificationCenterComputePolicyConfigArgs, NotificationCenterComputePolicyConfigPtr and NotificationCenterComputePolicyConfigPtrOutput values.
+// You can construct a concrete instance of `NotificationCenterComputePolicyConfigPtrInput` via:
+//
+//	        NotificationCenterComputePolicyConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type NotificationCenterComputePolicyConfigPtrInput interface {
+	pulumi.Input
+
+	ToNotificationCenterComputePolicyConfigPtrOutput() NotificationCenterComputePolicyConfigPtrOutput
+	ToNotificationCenterComputePolicyConfigPtrOutputWithContext(context.Context) NotificationCenterComputePolicyConfigPtrOutput
+}
+
+type notificationCenterComputePolicyConfigPtrType NotificationCenterComputePolicyConfigArgs
+
+func NotificationCenterComputePolicyConfigPtr(v *NotificationCenterComputePolicyConfigArgs) NotificationCenterComputePolicyConfigPtrInput {
+	return (*notificationCenterComputePolicyConfigPtrType)(v)
+}
+
+func (*notificationCenterComputePolicyConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotificationCenterComputePolicyConfig)(nil)).Elem()
+}
+
+func (i *notificationCenterComputePolicyConfigPtrType) ToNotificationCenterComputePolicyConfigPtrOutput() NotificationCenterComputePolicyConfigPtrOutput {
+	return i.ToNotificationCenterComputePolicyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *notificationCenterComputePolicyConfigPtrType) ToNotificationCenterComputePolicyConfigPtrOutputWithContext(ctx context.Context) NotificationCenterComputePolicyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationCenterComputePolicyConfigPtrOutput)
+}
+
+type NotificationCenterComputePolicyConfigOutput struct{ *pulumi.OutputState }
+
+func (NotificationCenterComputePolicyConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationCenterComputePolicyConfig)(nil)).Elem()
+}
+
+func (o NotificationCenterComputePolicyConfigOutput) ToNotificationCenterComputePolicyConfigOutput() NotificationCenterComputePolicyConfigOutput {
+	return o
+}
+
+func (o NotificationCenterComputePolicyConfigOutput) ToNotificationCenterComputePolicyConfigOutputWithContext(ctx context.Context) NotificationCenterComputePolicyConfigOutput {
+	return o
+}
+
+func (o NotificationCenterComputePolicyConfigOutput) ToNotificationCenterComputePolicyConfigPtrOutput() NotificationCenterComputePolicyConfigPtrOutput {
+	return o.ToNotificationCenterComputePolicyConfigPtrOutputWithContext(context.Background())
+}
+
+func (o NotificationCenterComputePolicyConfigOutput) ToNotificationCenterComputePolicyConfigPtrOutputWithContext(ctx context.Context) NotificationCenterComputePolicyConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotificationCenterComputePolicyConfig) *NotificationCenterComputePolicyConfig {
+		return &v
+	}).(NotificationCenterComputePolicyConfigPtrOutput)
+}
+
+func (o NotificationCenterComputePolicyConfigOutput) DynamicRules() NotificationCenterComputePolicyConfigDynamicRuleArrayOutput {
+	return o.ApplyT(func(v NotificationCenterComputePolicyConfig) []NotificationCenterComputePolicyConfigDynamicRule {
+		return v.DynamicRules
+	}).(NotificationCenterComputePolicyConfigDynamicRuleArrayOutput)
+}
+
+func (o NotificationCenterComputePolicyConfigOutput) Events() NotificationCenterComputePolicyConfigEventArrayOutput {
+	return o.ApplyT(func(v NotificationCenterComputePolicyConfig) []NotificationCenterComputePolicyConfigEvent {
+		return v.Events
+	}).(NotificationCenterComputePolicyConfigEventArrayOutput)
+}
+
+func (o NotificationCenterComputePolicyConfigOutput) ResourceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NotificationCenterComputePolicyConfig) []string { return v.ResourceIds }).(pulumi.StringArrayOutput)
+}
+
+func (o NotificationCenterComputePolicyConfigOutput) ShouldIncludeAllResources() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NotificationCenterComputePolicyConfig) *bool { return v.ShouldIncludeAllResources }).(pulumi.BoolPtrOutput)
+}
+
+type NotificationCenterComputePolicyConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (NotificationCenterComputePolicyConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotificationCenterComputePolicyConfig)(nil)).Elem()
+}
+
+func (o NotificationCenterComputePolicyConfigPtrOutput) ToNotificationCenterComputePolicyConfigPtrOutput() NotificationCenterComputePolicyConfigPtrOutput {
+	return o
+}
+
+func (o NotificationCenterComputePolicyConfigPtrOutput) ToNotificationCenterComputePolicyConfigPtrOutputWithContext(ctx context.Context) NotificationCenterComputePolicyConfigPtrOutput {
+	return o
+}
+
+func (o NotificationCenterComputePolicyConfigPtrOutput) Elem() NotificationCenterComputePolicyConfigOutput {
+	return o.ApplyT(func(v *NotificationCenterComputePolicyConfig) NotificationCenterComputePolicyConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NotificationCenterComputePolicyConfig
+		return ret
+	}).(NotificationCenterComputePolicyConfigOutput)
+}
+
+func (o NotificationCenterComputePolicyConfigPtrOutput) DynamicRules() NotificationCenterComputePolicyConfigDynamicRuleArrayOutput {
+	return o.ApplyT(func(v *NotificationCenterComputePolicyConfig) []NotificationCenterComputePolicyConfigDynamicRule {
+		if v == nil {
+			return nil
+		}
+		return v.DynamicRules
+	}).(NotificationCenterComputePolicyConfigDynamicRuleArrayOutput)
+}
+
+func (o NotificationCenterComputePolicyConfigPtrOutput) Events() NotificationCenterComputePolicyConfigEventArrayOutput {
+	return o.ApplyT(func(v *NotificationCenterComputePolicyConfig) []NotificationCenterComputePolicyConfigEvent {
+		if v == nil {
+			return nil
+		}
+		return v.Events
+	}).(NotificationCenterComputePolicyConfigEventArrayOutput)
+}
+
+func (o NotificationCenterComputePolicyConfigPtrOutput) ResourceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NotificationCenterComputePolicyConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceIds
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o NotificationCenterComputePolicyConfigPtrOutput) ShouldIncludeAllResources() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NotificationCenterComputePolicyConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ShouldIncludeAllResources
+	}).(pulumi.BoolPtrOutput)
+}
+
+type NotificationCenterComputePolicyConfigDynamicRule struct {
+	FilterConditions []NotificationCenterComputePolicyConfigDynamicRuleFilterCondition `pulumi:"filterConditions"`
+}
+
+// NotificationCenterComputePolicyConfigDynamicRuleInput is an input type that accepts NotificationCenterComputePolicyConfigDynamicRuleArgs and NotificationCenterComputePolicyConfigDynamicRuleOutput values.
+// You can construct a concrete instance of `NotificationCenterComputePolicyConfigDynamicRuleInput` via:
+//
+//	NotificationCenterComputePolicyConfigDynamicRuleArgs{...}
+type NotificationCenterComputePolicyConfigDynamicRuleInput interface {
+	pulumi.Input
+
+	ToNotificationCenterComputePolicyConfigDynamicRuleOutput() NotificationCenterComputePolicyConfigDynamicRuleOutput
+	ToNotificationCenterComputePolicyConfigDynamicRuleOutputWithContext(context.Context) NotificationCenterComputePolicyConfigDynamicRuleOutput
+}
+
+type NotificationCenterComputePolicyConfigDynamicRuleArgs struct {
+	FilterConditions NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArrayInput `pulumi:"filterConditions"`
+}
+
+func (NotificationCenterComputePolicyConfigDynamicRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationCenterComputePolicyConfigDynamicRule)(nil)).Elem()
+}
+
+func (i NotificationCenterComputePolicyConfigDynamicRuleArgs) ToNotificationCenterComputePolicyConfigDynamicRuleOutput() NotificationCenterComputePolicyConfigDynamicRuleOutput {
+	return i.ToNotificationCenterComputePolicyConfigDynamicRuleOutputWithContext(context.Background())
+}
+
+func (i NotificationCenterComputePolicyConfigDynamicRuleArgs) ToNotificationCenterComputePolicyConfigDynamicRuleOutputWithContext(ctx context.Context) NotificationCenterComputePolicyConfigDynamicRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationCenterComputePolicyConfigDynamicRuleOutput)
+}
+
+// NotificationCenterComputePolicyConfigDynamicRuleArrayInput is an input type that accepts NotificationCenterComputePolicyConfigDynamicRuleArray and NotificationCenterComputePolicyConfigDynamicRuleArrayOutput values.
+// You can construct a concrete instance of `NotificationCenterComputePolicyConfigDynamicRuleArrayInput` via:
+//
+//	NotificationCenterComputePolicyConfigDynamicRuleArray{ NotificationCenterComputePolicyConfigDynamicRuleArgs{...} }
+type NotificationCenterComputePolicyConfigDynamicRuleArrayInput interface {
+	pulumi.Input
+
+	ToNotificationCenterComputePolicyConfigDynamicRuleArrayOutput() NotificationCenterComputePolicyConfigDynamicRuleArrayOutput
+	ToNotificationCenterComputePolicyConfigDynamicRuleArrayOutputWithContext(context.Context) NotificationCenterComputePolicyConfigDynamicRuleArrayOutput
+}
+
+type NotificationCenterComputePolicyConfigDynamicRuleArray []NotificationCenterComputePolicyConfigDynamicRuleInput
+
+func (NotificationCenterComputePolicyConfigDynamicRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NotificationCenterComputePolicyConfigDynamicRule)(nil)).Elem()
+}
+
+func (i NotificationCenterComputePolicyConfigDynamicRuleArray) ToNotificationCenterComputePolicyConfigDynamicRuleArrayOutput() NotificationCenterComputePolicyConfigDynamicRuleArrayOutput {
+	return i.ToNotificationCenterComputePolicyConfigDynamicRuleArrayOutputWithContext(context.Background())
+}
+
+func (i NotificationCenterComputePolicyConfigDynamicRuleArray) ToNotificationCenterComputePolicyConfigDynamicRuleArrayOutputWithContext(ctx context.Context) NotificationCenterComputePolicyConfigDynamicRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationCenterComputePolicyConfigDynamicRuleArrayOutput)
+}
+
+type NotificationCenterComputePolicyConfigDynamicRuleOutput struct{ *pulumi.OutputState }
+
+func (NotificationCenterComputePolicyConfigDynamicRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationCenterComputePolicyConfigDynamicRule)(nil)).Elem()
+}
+
+func (o NotificationCenterComputePolicyConfigDynamicRuleOutput) ToNotificationCenterComputePolicyConfigDynamicRuleOutput() NotificationCenterComputePolicyConfigDynamicRuleOutput {
+	return o
+}
+
+func (o NotificationCenterComputePolicyConfigDynamicRuleOutput) ToNotificationCenterComputePolicyConfigDynamicRuleOutputWithContext(ctx context.Context) NotificationCenterComputePolicyConfigDynamicRuleOutput {
+	return o
+}
+
+func (o NotificationCenterComputePolicyConfigDynamicRuleOutput) FilterConditions() NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArrayOutput {
+	return o.ApplyT(func(v NotificationCenterComputePolicyConfigDynamicRule) []NotificationCenterComputePolicyConfigDynamicRuleFilterCondition {
+		return v.FilterConditions
+	}).(NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArrayOutput)
+}
+
+type NotificationCenterComputePolicyConfigDynamicRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (NotificationCenterComputePolicyConfigDynamicRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NotificationCenterComputePolicyConfigDynamicRule)(nil)).Elem()
+}
+
+func (o NotificationCenterComputePolicyConfigDynamicRuleArrayOutput) ToNotificationCenterComputePolicyConfigDynamicRuleArrayOutput() NotificationCenterComputePolicyConfigDynamicRuleArrayOutput {
+	return o
+}
+
+func (o NotificationCenterComputePolicyConfigDynamicRuleArrayOutput) ToNotificationCenterComputePolicyConfigDynamicRuleArrayOutputWithContext(ctx context.Context) NotificationCenterComputePolicyConfigDynamicRuleArrayOutput {
+	return o
+}
+
+func (o NotificationCenterComputePolicyConfigDynamicRuleArrayOutput) Index(i pulumi.IntInput) NotificationCenterComputePolicyConfigDynamicRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NotificationCenterComputePolicyConfigDynamicRule {
+		return vs[0].([]NotificationCenterComputePolicyConfigDynamicRule)[vs[1].(int)]
+	}).(NotificationCenterComputePolicyConfigDynamicRuleOutput)
+}
+
+type NotificationCenterComputePolicyConfigDynamicRuleFilterCondition struct {
+	Expression *string `pulumi:"expression"`
+	Identifier *string `pulumi:"identifier"`
+	Operator   *string `pulumi:"operator"`
+}
+
+// NotificationCenterComputePolicyConfigDynamicRuleFilterConditionInput is an input type that accepts NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArgs and NotificationCenterComputePolicyConfigDynamicRuleFilterConditionOutput values.
+// You can construct a concrete instance of `NotificationCenterComputePolicyConfigDynamicRuleFilterConditionInput` via:
+//
+//	NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArgs{...}
+type NotificationCenterComputePolicyConfigDynamicRuleFilterConditionInput interface {
+	pulumi.Input
+
+	ToNotificationCenterComputePolicyConfigDynamicRuleFilterConditionOutput() NotificationCenterComputePolicyConfigDynamicRuleFilterConditionOutput
+	ToNotificationCenterComputePolicyConfigDynamicRuleFilterConditionOutputWithContext(context.Context) NotificationCenterComputePolicyConfigDynamicRuleFilterConditionOutput
+}
+
+type NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArgs struct {
+	Expression pulumi.StringPtrInput `pulumi:"expression"`
+	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
+	Operator   pulumi.StringPtrInput `pulumi:"operator"`
+}
+
+func (NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationCenterComputePolicyConfigDynamicRuleFilterCondition)(nil)).Elem()
+}
+
+func (i NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArgs) ToNotificationCenterComputePolicyConfigDynamicRuleFilterConditionOutput() NotificationCenterComputePolicyConfigDynamicRuleFilterConditionOutput {
+	return i.ToNotificationCenterComputePolicyConfigDynamicRuleFilterConditionOutputWithContext(context.Background())
+}
+
+func (i NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArgs) ToNotificationCenterComputePolicyConfigDynamicRuleFilterConditionOutputWithContext(ctx context.Context) NotificationCenterComputePolicyConfigDynamicRuleFilterConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationCenterComputePolicyConfigDynamicRuleFilterConditionOutput)
+}
+
+// NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArrayInput is an input type that accepts NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArray and NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArrayOutput values.
+// You can construct a concrete instance of `NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArrayInput` via:
+//
+//	NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArray{ NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArgs{...} }
+type NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArrayInput interface {
+	pulumi.Input
+
+	ToNotificationCenterComputePolicyConfigDynamicRuleFilterConditionArrayOutput() NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArrayOutput
+	ToNotificationCenterComputePolicyConfigDynamicRuleFilterConditionArrayOutputWithContext(context.Context) NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArrayOutput
+}
+
+type NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArray []NotificationCenterComputePolicyConfigDynamicRuleFilterConditionInput
+
+func (NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NotificationCenterComputePolicyConfigDynamicRuleFilterCondition)(nil)).Elem()
+}
+
+func (i NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArray) ToNotificationCenterComputePolicyConfigDynamicRuleFilterConditionArrayOutput() NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArrayOutput {
+	return i.ToNotificationCenterComputePolicyConfigDynamicRuleFilterConditionArrayOutputWithContext(context.Background())
+}
+
+func (i NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArray) ToNotificationCenterComputePolicyConfigDynamicRuleFilterConditionArrayOutputWithContext(ctx context.Context) NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArrayOutput)
+}
+
+type NotificationCenterComputePolicyConfigDynamicRuleFilterConditionOutput struct{ *pulumi.OutputState }
+
+func (NotificationCenterComputePolicyConfigDynamicRuleFilterConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationCenterComputePolicyConfigDynamicRuleFilterCondition)(nil)).Elem()
+}
+
+func (o NotificationCenterComputePolicyConfigDynamicRuleFilterConditionOutput) ToNotificationCenterComputePolicyConfigDynamicRuleFilterConditionOutput() NotificationCenterComputePolicyConfigDynamicRuleFilterConditionOutput {
+	return o
+}
+
+func (o NotificationCenterComputePolicyConfigDynamicRuleFilterConditionOutput) ToNotificationCenterComputePolicyConfigDynamicRuleFilterConditionOutputWithContext(ctx context.Context) NotificationCenterComputePolicyConfigDynamicRuleFilterConditionOutput {
+	return o
+}
+
+func (o NotificationCenterComputePolicyConfigDynamicRuleFilterConditionOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationCenterComputePolicyConfigDynamicRuleFilterCondition) *string { return v.Expression }).(pulumi.StringPtrOutput)
+}
+
+func (o NotificationCenterComputePolicyConfigDynamicRuleFilterConditionOutput) Identifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationCenterComputePolicyConfigDynamicRuleFilterCondition) *string { return v.Identifier }).(pulumi.StringPtrOutput)
+}
+
+func (o NotificationCenterComputePolicyConfigDynamicRuleFilterConditionOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationCenterComputePolicyConfigDynamicRuleFilterCondition) *string { return v.Operator }).(pulumi.StringPtrOutput)
+}
+
+type NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NotificationCenterComputePolicyConfigDynamicRuleFilterCondition)(nil)).Elem()
+}
+
+func (o NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArrayOutput) ToNotificationCenterComputePolicyConfigDynamicRuleFilterConditionArrayOutput() NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArrayOutput {
+	return o
+}
+
+func (o NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArrayOutput) ToNotificationCenterComputePolicyConfigDynamicRuleFilterConditionArrayOutputWithContext(ctx context.Context) NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArrayOutput {
+	return o
+}
+
+func (o NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArrayOutput) Index(i pulumi.IntInput) NotificationCenterComputePolicyConfigDynamicRuleFilterConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NotificationCenterComputePolicyConfigDynamicRuleFilterCondition {
+		return vs[0].([]NotificationCenterComputePolicyConfigDynamicRuleFilterCondition)[vs[1].(int)]
+	}).(NotificationCenterComputePolicyConfigDynamicRuleFilterConditionOutput)
+}
+
+type NotificationCenterComputePolicyConfigEvent struct {
+	Event     *string `pulumi:"event"`
+	EventType *string `pulumi:"eventType"`
+}
+
+// NotificationCenterComputePolicyConfigEventInput is an input type that accepts NotificationCenterComputePolicyConfigEventArgs and NotificationCenterComputePolicyConfigEventOutput values.
+// You can construct a concrete instance of `NotificationCenterComputePolicyConfigEventInput` via:
+//
+//	NotificationCenterComputePolicyConfigEventArgs{...}
+type NotificationCenterComputePolicyConfigEventInput interface {
+	pulumi.Input
+
+	ToNotificationCenterComputePolicyConfigEventOutput() NotificationCenterComputePolicyConfigEventOutput
+	ToNotificationCenterComputePolicyConfigEventOutputWithContext(context.Context) NotificationCenterComputePolicyConfigEventOutput
+}
+
+type NotificationCenterComputePolicyConfigEventArgs struct {
+	Event     pulumi.StringPtrInput `pulumi:"event"`
+	EventType pulumi.StringPtrInput `pulumi:"eventType"`
+}
+
+func (NotificationCenterComputePolicyConfigEventArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationCenterComputePolicyConfigEvent)(nil)).Elem()
+}
+
+func (i NotificationCenterComputePolicyConfigEventArgs) ToNotificationCenterComputePolicyConfigEventOutput() NotificationCenterComputePolicyConfigEventOutput {
+	return i.ToNotificationCenterComputePolicyConfigEventOutputWithContext(context.Background())
+}
+
+func (i NotificationCenterComputePolicyConfigEventArgs) ToNotificationCenterComputePolicyConfigEventOutputWithContext(ctx context.Context) NotificationCenterComputePolicyConfigEventOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationCenterComputePolicyConfigEventOutput)
+}
+
+// NotificationCenterComputePolicyConfigEventArrayInput is an input type that accepts NotificationCenterComputePolicyConfigEventArray and NotificationCenterComputePolicyConfigEventArrayOutput values.
+// You can construct a concrete instance of `NotificationCenterComputePolicyConfigEventArrayInput` via:
+//
+//	NotificationCenterComputePolicyConfigEventArray{ NotificationCenterComputePolicyConfigEventArgs{...} }
+type NotificationCenterComputePolicyConfigEventArrayInput interface {
+	pulumi.Input
+
+	ToNotificationCenterComputePolicyConfigEventArrayOutput() NotificationCenterComputePolicyConfigEventArrayOutput
+	ToNotificationCenterComputePolicyConfigEventArrayOutputWithContext(context.Context) NotificationCenterComputePolicyConfigEventArrayOutput
+}
+
+type NotificationCenterComputePolicyConfigEventArray []NotificationCenterComputePolicyConfigEventInput
+
+func (NotificationCenterComputePolicyConfigEventArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NotificationCenterComputePolicyConfigEvent)(nil)).Elem()
+}
+
+func (i NotificationCenterComputePolicyConfigEventArray) ToNotificationCenterComputePolicyConfigEventArrayOutput() NotificationCenterComputePolicyConfigEventArrayOutput {
+	return i.ToNotificationCenterComputePolicyConfigEventArrayOutputWithContext(context.Background())
+}
+
+func (i NotificationCenterComputePolicyConfigEventArray) ToNotificationCenterComputePolicyConfigEventArrayOutputWithContext(ctx context.Context) NotificationCenterComputePolicyConfigEventArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationCenterComputePolicyConfigEventArrayOutput)
+}
+
+type NotificationCenterComputePolicyConfigEventOutput struct{ *pulumi.OutputState }
+
+func (NotificationCenterComputePolicyConfigEventOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationCenterComputePolicyConfigEvent)(nil)).Elem()
+}
+
+func (o NotificationCenterComputePolicyConfigEventOutput) ToNotificationCenterComputePolicyConfigEventOutput() NotificationCenterComputePolicyConfigEventOutput {
+	return o
+}
+
+func (o NotificationCenterComputePolicyConfigEventOutput) ToNotificationCenterComputePolicyConfigEventOutputWithContext(ctx context.Context) NotificationCenterComputePolicyConfigEventOutput {
+	return o
+}
+
+func (o NotificationCenterComputePolicyConfigEventOutput) Event() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationCenterComputePolicyConfigEvent) *string { return v.Event }).(pulumi.StringPtrOutput)
+}
+
+func (o NotificationCenterComputePolicyConfigEventOutput) EventType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationCenterComputePolicyConfigEvent) *string { return v.EventType }).(pulumi.StringPtrOutput)
+}
+
+type NotificationCenterComputePolicyConfigEventArrayOutput struct{ *pulumi.OutputState }
+
+func (NotificationCenterComputePolicyConfigEventArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NotificationCenterComputePolicyConfigEvent)(nil)).Elem()
+}
+
+func (o NotificationCenterComputePolicyConfigEventArrayOutput) ToNotificationCenterComputePolicyConfigEventArrayOutput() NotificationCenterComputePolicyConfigEventArrayOutput {
+	return o
+}
+
+func (o NotificationCenterComputePolicyConfigEventArrayOutput) ToNotificationCenterComputePolicyConfigEventArrayOutputWithContext(ctx context.Context) NotificationCenterComputePolicyConfigEventArrayOutput {
+	return o
+}
+
+func (o NotificationCenterComputePolicyConfigEventArrayOutput) Index(i pulumi.IntInput) NotificationCenterComputePolicyConfigEventOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NotificationCenterComputePolicyConfigEvent {
+		return vs[0].([]NotificationCenterComputePolicyConfigEvent)[vs[1].(int)]
+	}).(NotificationCenterComputePolicyConfigEventOutput)
+}
+
+type NotificationCenterRegisteredUser struct {
+	SubscriptionTypes []string `pulumi:"subscriptionTypes"`
+	UserEmail         *string  `pulumi:"userEmail"`
+}
+
+// NotificationCenterRegisteredUserInput is an input type that accepts NotificationCenterRegisteredUserArgs and NotificationCenterRegisteredUserOutput values.
+// You can construct a concrete instance of `NotificationCenterRegisteredUserInput` via:
+//
+//	NotificationCenterRegisteredUserArgs{...}
+type NotificationCenterRegisteredUserInput interface {
+	pulumi.Input
+
+	ToNotificationCenterRegisteredUserOutput() NotificationCenterRegisteredUserOutput
+	ToNotificationCenterRegisteredUserOutputWithContext(context.Context) NotificationCenterRegisteredUserOutput
+}
+
+type NotificationCenterRegisteredUserArgs struct {
+	SubscriptionTypes pulumi.StringArrayInput `pulumi:"subscriptionTypes"`
+	UserEmail         pulumi.StringPtrInput   `pulumi:"userEmail"`
+}
+
+func (NotificationCenterRegisteredUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationCenterRegisteredUser)(nil)).Elem()
+}
+
+func (i NotificationCenterRegisteredUserArgs) ToNotificationCenterRegisteredUserOutput() NotificationCenterRegisteredUserOutput {
+	return i.ToNotificationCenterRegisteredUserOutputWithContext(context.Background())
+}
+
+func (i NotificationCenterRegisteredUserArgs) ToNotificationCenterRegisteredUserOutputWithContext(ctx context.Context) NotificationCenterRegisteredUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationCenterRegisteredUserOutput)
+}
+
+// NotificationCenterRegisteredUserArrayInput is an input type that accepts NotificationCenterRegisteredUserArray and NotificationCenterRegisteredUserArrayOutput values.
+// You can construct a concrete instance of `NotificationCenterRegisteredUserArrayInput` via:
+//
+//	NotificationCenterRegisteredUserArray{ NotificationCenterRegisteredUserArgs{...} }
+type NotificationCenterRegisteredUserArrayInput interface {
+	pulumi.Input
+
+	ToNotificationCenterRegisteredUserArrayOutput() NotificationCenterRegisteredUserArrayOutput
+	ToNotificationCenterRegisteredUserArrayOutputWithContext(context.Context) NotificationCenterRegisteredUserArrayOutput
+}
+
+type NotificationCenterRegisteredUserArray []NotificationCenterRegisteredUserInput
+
+func (NotificationCenterRegisteredUserArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NotificationCenterRegisteredUser)(nil)).Elem()
+}
+
+func (i NotificationCenterRegisteredUserArray) ToNotificationCenterRegisteredUserArrayOutput() NotificationCenterRegisteredUserArrayOutput {
+	return i.ToNotificationCenterRegisteredUserArrayOutputWithContext(context.Background())
+}
+
+func (i NotificationCenterRegisteredUserArray) ToNotificationCenterRegisteredUserArrayOutputWithContext(ctx context.Context) NotificationCenterRegisteredUserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationCenterRegisteredUserArrayOutput)
+}
+
+type NotificationCenterRegisteredUserOutput struct{ *pulumi.OutputState }
+
+func (NotificationCenterRegisteredUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationCenterRegisteredUser)(nil)).Elem()
+}
+
+func (o NotificationCenterRegisteredUserOutput) ToNotificationCenterRegisteredUserOutput() NotificationCenterRegisteredUserOutput {
+	return o
+}
+
+func (o NotificationCenterRegisteredUserOutput) ToNotificationCenterRegisteredUserOutputWithContext(ctx context.Context) NotificationCenterRegisteredUserOutput {
+	return o
+}
+
+func (o NotificationCenterRegisteredUserOutput) SubscriptionTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NotificationCenterRegisteredUser) []string { return v.SubscriptionTypes }).(pulumi.StringArrayOutput)
+}
+
+func (o NotificationCenterRegisteredUserOutput) UserEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationCenterRegisteredUser) *string { return v.UserEmail }).(pulumi.StringPtrOutput)
+}
+
+type NotificationCenterRegisteredUserArrayOutput struct{ *pulumi.OutputState }
+
+func (NotificationCenterRegisteredUserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NotificationCenterRegisteredUser)(nil)).Elem()
+}
+
+func (o NotificationCenterRegisteredUserArrayOutput) ToNotificationCenterRegisteredUserArrayOutput() NotificationCenterRegisteredUserArrayOutput {
+	return o
+}
+
+func (o NotificationCenterRegisteredUserArrayOutput) ToNotificationCenterRegisteredUserArrayOutputWithContext(ctx context.Context) NotificationCenterRegisteredUserArrayOutput {
+	return o
+}
+
+func (o NotificationCenterRegisteredUserArrayOutput) Index(i pulumi.IntInput) NotificationCenterRegisteredUserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NotificationCenterRegisteredUser {
+		return vs[0].([]NotificationCenterRegisteredUser)[vs[1].(int)]
+	}).(NotificationCenterRegisteredUserOutput)
+}
+
+type NotificationCenterSubscription struct {
+	Endpoint         *string `pulumi:"endpoint"`
+	SubscriptionType *string `pulumi:"subscriptionType"`
+}
+
+// NotificationCenterSubscriptionInput is an input type that accepts NotificationCenterSubscriptionArgs and NotificationCenterSubscriptionOutput values.
+// You can construct a concrete instance of `NotificationCenterSubscriptionInput` via:
+//
+//	NotificationCenterSubscriptionArgs{...}
+type NotificationCenterSubscriptionInput interface {
+	pulumi.Input
+
+	ToNotificationCenterSubscriptionOutput() NotificationCenterSubscriptionOutput
+	ToNotificationCenterSubscriptionOutputWithContext(context.Context) NotificationCenterSubscriptionOutput
+}
+
+type NotificationCenterSubscriptionArgs struct {
+	Endpoint         pulumi.StringPtrInput `pulumi:"endpoint"`
+	SubscriptionType pulumi.StringPtrInput `pulumi:"subscriptionType"`
+}
+
+func (NotificationCenterSubscriptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationCenterSubscription)(nil)).Elem()
+}
+
+func (i NotificationCenterSubscriptionArgs) ToNotificationCenterSubscriptionOutput() NotificationCenterSubscriptionOutput {
+	return i.ToNotificationCenterSubscriptionOutputWithContext(context.Background())
+}
+
+func (i NotificationCenterSubscriptionArgs) ToNotificationCenterSubscriptionOutputWithContext(ctx context.Context) NotificationCenterSubscriptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationCenterSubscriptionOutput)
+}
+
+// NotificationCenterSubscriptionArrayInput is an input type that accepts NotificationCenterSubscriptionArray and NotificationCenterSubscriptionArrayOutput values.
+// You can construct a concrete instance of `NotificationCenterSubscriptionArrayInput` via:
+//
+//	NotificationCenterSubscriptionArray{ NotificationCenterSubscriptionArgs{...} }
+type NotificationCenterSubscriptionArrayInput interface {
+	pulumi.Input
+
+	ToNotificationCenterSubscriptionArrayOutput() NotificationCenterSubscriptionArrayOutput
+	ToNotificationCenterSubscriptionArrayOutputWithContext(context.Context) NotificationCenterSubscriptionArrayOutput
+}
+
+type NotificationCenterSubscriptionArray []NotificationCenterSubscriptionInput
+
+func (NotificationCenterSubscriptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NotificationCenterSubscription)(nil)).Elem()
+}
+
+func (i NotificationCenterSubscriptionArray) ToNotificationCenterSubscriptionArrayOutput() NotificationCenterSubscriptionArrayOutput {
+	return i.ToNotificationCenterSubscriptionArrayOutputWithContext(context.Background())
+}
+
+func (i NotificationCenterSubscriptionArray) ToNotificationCenterSubscriptionArrayOutputWithContext(ctx context.Context) NotificationCenterSubscriptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationCenterSubscriptionArrayOutput)
+}
+
+type NotificationCenterSubscriptionOutput struct{ *pulumi.OutputState }
+
+func (NotificationCenterSubscriptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationCenterSubscription)(nil)).Elem()
+}
+
+func (o NotificationCenterSubscriptionOutput) ToNotificationCenterSubscriptionOutput() NotificationCenterSubscriptionOutput {
+	return o
+}
+
+func (o NotificationCenterSubscriptionOutput) ToNotificationCenterSubscriptionOutputWithContext(ctx context.Context) NotificationCenterSubscriptionOutput {
+	return o
+}
+
+func (o NotificationCenterSubscriptionOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationCenterSubscription) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o NotificationCenterSubscriptionOutput) SubscriptionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationCenterSubscription) *string { return v.SubscriptionType }).(pulumi.StringPtrOutput)
+}
+
+type NotificationCenterSubscriptionArrayOutput struct{ *pulumi.OutputState }
+
+func (NotificationCenterSubscriptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NotificationCenterSubscription)(nil)).Elem()
+}
+
+func (o NotificationCenterSubscriptionArrayOutput) ToNotificationCenterSubscriptionArrayOutput() NotificationCenterSubscriptionArrayOutput {
+	return o
+}
+
+func (o NotificationCenterSubscriptionArrayOutput) ToNotificationCenterSubscriptionArrayOutputWithContext(ctx context.Context) NotificationCenterSubscriptionArrayOutput {
+	return o
+}
+
+func (o NotificationCenterSubscriptionArrayOutput) Index(i pulumi.IntInput) NotificationCenterSubscriptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NotificationCenterSubscription {
+		return vs[0].([]NotificationCenterSubscription)[vs[1].(int)]
+	}).(NotificationCenterSubscriptionOutput)
+}
+
 type OceanRightSizingRuleAttachWorkload struct {
 	Namespaces []OceanRightSizingRuleAttachWorkloadNamespace `pulumi:"namespaces"`
 }
@@ -11754,6 +12438,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3VmSizesSpotSizeAttributesPtrInput)(nil)).Elem(), ElastigroupAzureV3VmSizesSpotSizeAttributesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HealthCheckCheckInput)(nil)).Elem(), HealthCheckCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HealthCheckCheckPtrInput)(nil)).Elem(), HealthCheckCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationCenterComputePolicyConfigInput)(nil)).Elem(), NotificationCenterComputePolicyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationCenterComputePolicyConfigPtrInput)(nil)).Elem(), NotificationCenterComputePolicyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationCenterComputePolicyConfigDynamicRuleInput)(nil)).Elem(), NotificationCenterComputePolicyConfigDynamicRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationCenterComputePolicyConfigDynamicRuleArrayInput)(nil)).Elem(), NotificationCenterComputePolicyConfigDynamicRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationCenterComputePolicyConfigDynamicRuleFilterConditionInput)(nil)).Elem(), NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArrayInput)(nil)).Elem(), NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationCenterComputePolicyConfigEventInput)(nil)).Elem(), NotificationCenterComputePolicyConfigEventArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationCenterComputePolicyConfigEventArrayInput)(nil)).Elem(), NotificationCenterComputePolicyConfigEventArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationCenterRegisteredUserInput)(nil)).Elem(), NotificationCenterRegisteredUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationCenterRegisteredUserArrayInput)(nil)).Elem(), NotificationCenterRegisteredUserArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationCenterSubscriptionInput)(nil)).Elem(), NotificationCenterSubscriptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationCenterSubscriptionArrayInput)(nil)).Elem(), NotificationCenterSubscriptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleAttachWorkloadInput)(nil)).Elem(), OceanRightSizingRuleAttachWorkloadArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleAttachWorkloadArrayInput)(nil)).Elem(), OceanRightSizingRuleAttachWorkloadArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleAttachWorkloadNamespaceInput)(nil)).Elem(), OceanRightSizingRuleAttachWorkloadNamespaceArgs{})
@@ -11936,6 +12632,18 @@ func init() {
 	pulumi.RegisterOutputType(ElastigroupAzureV3VmSizesSpotSizeAttributesPtrOutput{})
 	pulumi.RegisterOutputType(HealthCheckCheckOutput{})
 	pulumi.RegisterOutputType(HealthCheckCheckPtrOutput{})
+	pulumi.RegisterOutputType(NotificationCenterComputePolicyConfigOutput{})
+	pulumi.RegisterOutputType(NotificationCenterComputePolicyConfigPtrOutput{})
+	pulumi.RegisterOutputType(NotificationCenterComputePolicyConfigDynamicRuleOutput{})
+	pulumi.RegisterOutputType(NotificationCenterComputePolicyConfigDynamicRuleArrayOutput{})
+	pulumi.RegisterOutputType(NotificationCenterComputePolicyConfigDynamicRuleFilterConditionOutput{})
+	pulumi.RegisterOutputType(NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArrayOutput{})
+	pulumi.RegisterOutputType(NotificationCenterComputePolicyConfigEventOutput{})
+	pulumi.RegisterOutputType(NotificationCenterComputePolicyConfigEventArrayOutput{})
+	pulumi.RegisterOutputType(NotificationCenterRegisteredUserOutput{})
+	pulumi.RegisterOutputType(NotificationCenterRegisteredUserArrayOutput{})
+	pulumi.RegisterOutputType(NotificationCenterSubscriptionOutput{})
+	pulumi.RegisterOutputType(NotificationCenterSubscriptionArrayOutput{})
 	pulumi.RegisterOutputType(OceanRightSizingRuleAttachWorkloadOutput{})
 	pulumi.RegisterOutputType(OceanRightSizingRuleAttachWorkloadArrayOutput{})
 	pulumi.RegisterOutputType(OceanRightSizingRuleAttachWorkloadNamespaceOutput{})

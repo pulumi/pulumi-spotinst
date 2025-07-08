@@ -6,6 +6,7 @@ package com.pulumi.spotinst.gcp.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.spotinst.gcp.inputs.ElastigroupBackendServiceBackendBalancingArgs;
 import com.pulumi.spotinst.gcp.inputs.ElastigroupBackendServiceNamedPortArgs;
 import java.lang.String;
 import java.util.List;
@@ -17,6 +18,21 @@ import javax.annotation.Nullable;
 public final class ElastigroupBackendServiceArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ElastigroupBackendServiceArgs Empty = new ElastigroupBackendServiceArgs();
+
+    /**
+     * Configure how traffic is distributed across instance groups.
+     * 
+     */
+    @Import(name="backendBalancing")
+    private @Nullable Output<ElastigroupBackendServiceBackendBalancingArgs> backendBalancing;
+
+    /**
+     * @return Configure how traffic is distributed across instance groups.
+     * 
+     */
+    public Optional<Output<ElastigroupBackendServiceBackendBalancingArgs>> backendBalancing() {
+        return Optional.ofNullable(this.backendBalancing);
+    }
 
     /**
      * Sets which location the backend services will be active. Valid values: `regional`, `global`.
@@ -81,6 +97,7 @@ public final class ElastigroupBackendServiceArgs extends com.pulumi.resources.Re
     private ElastigroupBackendServiceArgs() {}
 
     private ElastigroupBackendServiceArgs(ElastigroupBackendServiceArgs $) {
+        this.backendBalancing = $.backendBalancing;
         this.locationType = $.locationType;
         this.namedPorts = $.namedPorts;
         this.scheme = $.scheme;
@@ -103,6 +120,27 @@ public final class ElastigroupBackendServiceArgs extends com.pulumi.resources.Re
 
         public Builder(ElastigroupBackendServiceArgs defaults) {
             $ = new ElastigroupBackendServiceArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param backendBalancing Configure how traffic is distributed across instance groups.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backendBalancing(@Nullable Output<ElastigroupBackendServiceBackendBalancingArgs> backendBalancing) {
+            $.backendBalancing = backendBalancing;
+            return this;
+        }
+
+        /**
+         * @param backendBalancing Configure how traffic is distributed across instance groups.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backendBalancing(ElastigroupBackendServiceBackendBalancingArgs backendBalancing) {
+            return backendBalancing(Output.of(backendBalancing));
         }
 
         /**

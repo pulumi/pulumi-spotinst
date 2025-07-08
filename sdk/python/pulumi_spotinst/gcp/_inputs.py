@@ -18,6 +18,8 @@ from .. import _utilities
 __all__ = [
     'ElastigroupBackendServiceArgs',
     'ElastigroupBackendServiceArgsDict',
+    'ElastigroupBackendServiceBackendBalancingArgs',
+    'ElastigroupBackendServiceBackendBalancingArgsDict',
     'ElastigroupBackendServiceNamedPortArgs',
     'ElastigroupBackendServiceNamedPortArgsDict',
     'ElastigroupDiskArgs',
@@ -74,6 +76,10 @@ if not MYPY:
         """
         The name of the backend service.
         """
+        backend_balancing: NotRequired[pulumi.Input['ElastigroupBackendServiceBackendBalancingArgsDict']]
+        """
+        Configure how traffic is distributed across instance groups.
+        """
         location_type: NotRequired[pulumi.Input[builtins.str]]
         """
         Sets which location the backend services will be active. Valid values: `regional`, `global`.
@@ -93,16 +99,20 @@ elif False:
 class ElastigroupBackendServiceArgs:
     def __init__(__self__, *,
                  service_name: pulumi.Input[builtins.str],
+                 backend_balancing: Optional[pulumi.Input['ElastigroupBackendServiceBackendBalancingArgs']] = None,
                  location_type: Optional[pulumi.Input[builtins.str]] = None,
                  named_ports: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupBackendServiceNamedPortArgs']]]] = None,
                  scheme: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.str] service_name: The name of the backend service.
+        :param pulumi.Input['ElastigroupBackendServiceBackendBalancingArgs'] backend_balancing: Configure how traffic is distributed across instance groups.
         :param pulumi.Input[builtins.str] location_type: Sets which location the backend services will be active. Valid values: `regional`, `global`.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupBackendServiceNamedPortArgs']]] named_ports: Describes a named port and a list of ports.
         :param pulumi.Input[builtins.str] scheme: Use when `location_type` is "regional". Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
         """
         pulumi.set(__self__, "service_name", service_name)
+        if backend_balancing is not None:
+            pulumi.set(__self__, "backend_balancing", backend_balancing)
         if location_type is not None:
             pulumi.set(__self__, "location_type", location_type)
         if named_ports is not None:
@@ -121,6 +131,18 @@ class ElastigroupBackendServiceArgs:
     @service_name.setter
     def service_name(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "service_name", value)
+
+    @property
+    @pulumi.getter(name="backendBalancing")
+    def backend_balancing(self) -> Optional[pulumi.Input['ElastigroupBackendServiceBackendBalancingArgs']]:
+        """
+        Configure how traffic is distributed across instance groups.
+        """
+        return pulumi.get(self, "backend_balancing")
+
+    @backend_balancing.setter
+    def backend_balancing(self, value: Optional[pulumi.Input['ElastigroupBackendServiceBackendBalancingArgs']]):
+        pulumi.set(self, "backend_balancing", value)
 
     @property
     @pulumi.getter(name="locationType")
@@ -160,6 +182,64 @@ class ElastigroupBackendServiceArgs:
 
 
 if not MYPY:
+    class ElastigroupBackendServiceBackendBalancingArgsDict(TypedDict):
+        backend_balancing_mode: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The backend balancing mode. Valid values: `RATE`, `UTILIZATION`.
+        """
+        max_rate_per_instance: NotRequired[pulumi.Input[builtins.int]]
+        """
+        If the backendBalancingMode is set to RATE, this field is required.
+
+        Usage:
+        """
+elif False:
+    ElastigroupBackendServiceBackendBalancingArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ElastigroupBackendServiceBackendBalancingArgs:
+    def __init__(__self__, *,
+                 backend_balancing_mode: Optional[pulumi.Input[builtins.str]] = None,
+                 max_rate_per_instance: Optional[pulumi.Input[builtins.int]] = None):
+        """
+        :param pulumi.Input[builtins.str] backend_balancing_mode: The backend balancing mode. Valid values: `RATE`, `UTILIZATION`.
+        :param pulumi.Input[builtins.int] max_rate_per_instance: If the backendBalancingMode is set to RATE, this field is required.
+               
+               Usage:
+        """
+        if backend_balancing_mode is not None:
+            pulumi.set(__self__, "backend_balancing_mode", backend_balancing_mode)
+        if max_rate_per_instance is not None:
+            pulumi.set(__self__, "max_rate_per_instance", max_rate_per_instance)
+
+    @property
+    @pulumi.getter(name="backendBalancingMode")
+    def backend_balancing_mode(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The backend balancing mode. Valid values: `RATE`, `UTILIZATION`.
+        """
+        return pulumi.get(self, "backend_balancing_mode")
+
+    @backend_balancing_mode.setter
+    def backend_balancing_mode(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "backend_balancing_mode", value)
+
+    @property
+    @pulumi.getter(name="maxRatePerInstance")
+    def max_rate_per_instance(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        If the backendBalancingMode is set to RATE, this field is required.
+
+        Usage:
+        """
+        return pulumi.get(self, "max_rate_per_instance")
+
+    @max_rate_per_instance.setter
+    def max_rate_per_instance(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "max_rate_per_instance", value)
+
+
+if not MYPY:
     class ElastigroupBackendServiceNamedPortArgsDict(TypedDict):
         name: pulumi.Input[builtins.str]
         """
@@ -168,8 +248,6 @@ if not MYPY:
         ports: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]
         """
         A list of ports.
-
-        Usage:
         """
 elif False:
     ElastigroupBackendServiceNamedPortArgsDict: TypeAlias = Mapping[str, Any]
@@ -182,8 +260,6 @@ class ElastigroupBackendServiceNamedPortArgs:
         """
         :param pulumi.Input[builtins.str] name: The name of the port.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ports: A list of ports.
-               
-               Usage:
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "ports", ports)
@@ -205,8 +281,6 @@ class ElastigroupBackendServiceNamedPortArgs:
     def ports(self) -> pulumi.Input[Sequence[pulumi.Input[builtins.str]]]:
         """
         A list of ports.
-
-        Usage:
         """
         return pulumi.get(self, "ports")
 

@@ -35,6 +35,11 @@ export type HealthCheck = import("./healthCheck").HealthCheck;
 export const HealthCheck: typeof import("./healthCheck").HealthCheck = null as any;
 utilities.lazyLoad(exports, ["HealthCheck"], () => require("./healthCheck"));
 
+export { NotificationCenterArgs, NotificationCenterState } from "./notificationCenter";
+export type NotificationCenter = import("./notificationCenter").NotificationCenter;
+export const NotificationCenter: typeof import("./notificationCenter").NotificationCenter = null as any;
+utilities.lazyLoad(exports, ["NotificationCenter"], () => require("./notificationCenter"));
+
 export { OceanRightSizingRuleArgs, OceanRightSizingRuleState } from "./oceanRightSizingRule";
 export type OceanRightSizingRule = import("./oceanRightSizingRule").OceanRightSizingRule;
 export const OceanRightSizingRule: typeof import("./oceanRightSizingRule").OceanRightSizingRule = null as any;
@@ -95,6 +100,8 @@ const _module = {
                 return new ElastigroupAzureV3(name, <any>undefined, { urn })
             case "spotinst:index/healthCheck:HealthCheck":
                 return new HealthCheck(name, <any>undefined, { urn })
+            case "spotinst:index/notificationCenter:NotificationCenter":
+                return new NotificationCenter(name, <any>undefined, { urn })
             case "spotinst:index/oceanRightSizingRule:OceanRightSizingRule":
                 return new OceanRightSizingRule(name, <any>undefined, { urn })
             case "spotinst:index/statefulNodeAzure:StatefulNodeAzure":
@@ -112,6 +119,7 @@ pulumi.runtime.registerResourceModule("spotinst", "index/credentialsGcp", _modul
 pulumi.runtime.registerResourceModule("spotinst", "index/dataIntegration", _module)
 pulumi.runtime.registerResourceModule("spotinst", "index/elastigroupAzureV3", _module)
 pulumi.runtime.registerResourceModule("spotinst", "index/healthCheck", _module)
+pulumi.runtime.registerResourceModule("spotinst", "index/notificationCenter", _module)
 pulumi.runtime.registerResourceModule("spotinst", "index/oceanRightSizingRule", _module)
 pulumi.runtime.registerResourceModule("spotinst", "index/statefulNodeAzure", _module)
 pulumi.runtime.registerResourceModule("spotinst", "index/subscription", _module)

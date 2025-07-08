@@ -23,8 +23,6 @@ namespace Pulumi.SpotInst.Gcp.Inputs
 
         /// <summary>
         /// A list of ports.
-        /// 
-        /// Usage:
         /// </summary>
         public InputList<string> Ports
         {

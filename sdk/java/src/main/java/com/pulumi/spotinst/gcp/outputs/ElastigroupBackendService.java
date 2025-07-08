@@ -5,6 +5,7 @@ package com.pulumi.spotinst.gcp.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.spotinst.gcp.outputs.ElastigroupBackendServiceBackendBalancing;
 import com.pulumi.spotinst.gcp.outputs.ElastigroupBackendServiceNamedPort;
 import java.lang.String;
 import java.util.List;
@@ -14,6 +15,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupBackendService {
+    /**
+     * @return Configure how traffic is distributed across instance groups.
+     * 
+     */
+    private @Nullable ElastigroupBackendServiceBackendBalancing backendBalancing;
     /**
      * @return Sets which location the backend services will be active. Valid values: `regional`, `global`.
      * 
@@ -36,6 +42,13 @@ public final class ElastigroupBackendService {
     private String serviceName;
 
     private ElastigroupBackendService() {}
+    /**
+     * @return Configure how traffic is distributed across instance groups.
+     * 
+     */
+    public Optional<ElastigroupBackendServiceBackendBalancing> backendBalancing() {
+        return Optional.ofNullable(this.backendBalancing);
+    }
     /**
      * @return Sets which location the backend services will be active. Valid values: `regional`, `global`.
      * 
@@ -74,6 +87,7 @@ public final class ElastigroupBackendService {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable ElastigroupBackendServiceBackendBalancing backendBalancing;
         private @Nullable String locationType;
         private @Nullable List<ElastigroupBackendServiceNamedPort> namedPorts;
         private @Nullable String scheme;
@@ -81,12 +95,19 @@ public final class ElastigroupBackendService {
         public Builder() {}
         public Builder(ElastigroupBackendService defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.backendBalancing = defaults.backendBalancing;
     	      this.locationType = defaults.locationType;
     	      this.namedPorts = defaults.namedPorts;
     	      this.scheme = defaults.scheme;
     	      this.serviceName = defaults.serviceName;
         }
 
+        @CustomType.Setter
+        public Builder backendBalancing(@Nullable ElastigroupBackendServiceBackendBalancing backendBalancing) {
+
+            this.backendBalancing = backendBalancing;
+            return this;
+        }
         @CustomType.Setter
         public Builder locationType(@Nullable String locationType) {
 
@@ -118,6 +139,7 @@ public final class ElastigroupBackendService {
         }
         public ElastigroupBackendService build() {
             final var _resultValue = new ElastigroupBackendService();
+            _resultValue.backendBalancing = backendBalancing;
             _resultValue.locationType = locationType;
             _resultValue.namedPorts = namedPorts;
             _resultValue.scheme = scheme;

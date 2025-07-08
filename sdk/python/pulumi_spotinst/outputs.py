@@ -56,6 +56,12 @@ __all__ = [
     'ElastigroupAzureV3VmSizes',
     'ElastigroupAzureV3VmSizesSpotSizeAttributes',
     'HealthCheckCheck',
+    'NotificationCenterComputePolicyConfig',
+    'NotificationCenterComputePolicyConfigDynamicRule',
+    'NotificationCenterComputePolicyConfigDynamicRuleFilterCondition',
+    'NotificationCenterComputePolicyConfigEvent',
+    'NotificationCenterRegisteredUser',
+    'NotificationCenterSubscription',
     'OceanRightSizingRuleAttachWorkload',
     'OceanRightSizingRuleAttachWorkloadNamespace',
     'OceanRightSizingRuleAttachWorkloadNamespaceLabel',
@@ -2221,6 +2227,238 @@ class HealthCheckCheck(dict):
         the amount of time (in seconds) to wait when receiving a response from the health check.
         """
         return pulumi.get(self, "timeout")
+
+
+@pulumi.output_type
+class NotificationCenterComputePolicyConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dynamicRules":
+            suggest = "dynamic_rules"
+        elif key == "resourceIds":
+            suggest = "resource_ids"
+        elif key == "shouldIncludeAllResources":
+            suggest = "should_include_all_resources"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NotificationCenterComputePolicyConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NotificationCenterComputePolicyConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NotificationCenterComputePolicyConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 events: Sequence['outputs.NotificationCenterComputePolicyConfigEvent'],
+                 dynamic_rules: Optional[Sequence['outputs.NotificationCenterComputePolicyConfigDynamicRule']] = None,
+                 resource_ids: Optional[Sequence[builtins.str]] = None,
+                 should_include_all_resources: Optional[builtins.bool] = None):
+        pulumi.set(__self__, "events", events)
+        if dynamic_rules is not None:
+            pulumi.set(__self__, "dynamic_rules", dynamic_rules)
+        if resource_ids is not None:
+            pulumi.set(__self__, "resource_ids", resource_ids)
+        if should_include_all_resources is not None:
+            pulumi.set(__self__, "should_include_all_resources", should_include_all_resources)
+
+    @property
+    @pulumi.getter
+    def events(self) -> Sequence['outputs.NotificationCenterComputePolicyConfigEvent']:
+        return pulumi.get(self, "events")
+
+    @property
+    @pulumi.getter(name="dynamicRules")
+    def dynamic_rules(self) -> Optional[Sequence['outputs.NotificationCenterComputePolicyConfigDynamicRule']]:
+        return pulumi.get(self, "dynamic_rules")
+
+    @property
+    @pulumi.getter(name="resourceIds")
+    def resource_ids(self) -> Optional[Sequence[builtins.str]]:
+        return pulumi.get(self, "resource_ids")
+
+    @property
+    @pulumi.getter(name="shouldIncludeAllResources")
+    def should_include_all_resources(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "should_include_all_resources")
+
+
+@pulumi.output_type
+class NotificationCenterComputePolicyConfigDynamicRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "filterConditions":
+            suggest = "filter_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NotificationCenterComputePolicyConfigDynamicRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NotificationCenterComputePolicyConfigDynamicRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NotificationCenterComputePolicyConfigDynamicRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 filter_conditions: Optional[Sequence['outputs.NotificationCenterComputePolicyConfigDynamicRuleFilterCondition']] = None):
+        if filter_conditions is not None:
+            pulumi.set(__self__, "filter_conditions", filter_conditions)
+
+    @property
+    @pulumi.getter(name="filterConditions")
+    def filter_conditions(self) -> Optional[Sequence['outputs.NotificationCenterComputePolicyConfigDynamicRuleFilterCondition']]:
+        return pulumi.get(self, "filter_conditions")
+
+
+@pulumi.output_type
+class NotificationCenterComputePolicyConfigDynamicRuleFilterCondition(dict):
+    def __init__(__self__, *,
+                 expression: Optional[builtins.str] = None,
+                 identifier: Optional[builtins.str] = None,
+                 operator: Optional[builtins.str] = None):
+        if expression is not None:
+            pulumi.set(__self__, "expression", expression)
+        if identifier is not None:
+            pulumi.set(__self__, "identifier", identifier)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def identifier(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "identifier")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "operator")
+
+
+@pulumi.output_type
+class NotificationCenterComputePolicyConfigEvent(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "eventType":
+            suggest = "event_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NotificationCenterComputePolicyConfigEvent. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NotificationCenterComputePolicyConfigEvent.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NotificationCenterComputePolicyConfigEvent.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 event: Optional[builtins.str] = None,
+                 event_type: Optional[builtins.str] = None):
+        if event is not None:
+            pulumi.set(__self__, "event", event)
+        if event_type is not None:
+            pulumi.set(__self__, "event_type", event_type)
+
+    @property
+    @pulumi.getter
+    def event(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "event")
+
+    @property
+    @pulumi.getter(name="eventType")
+    def event_type(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "event_type")
+
+
+@pulumi.output_type
+class NotificationCenterRegisteredUser(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "subscriptionTypes":
+            suggest = "subscription_types"
+        elif key == "userEmail":
+            suggest = "user_email"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NotificationCenterRegisteredUser. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NotificationCenterRegisteredUser.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NotificationCenterRegisteredUser.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 subscription_types: Optional[Sequence[builtins.str]] = None,
+                 user_email: Optional[builtins.str] = None):
+        if subscription_types is not None:
+            pulumi.set(__self__, "subscription_types", subscription_types)
+        if user_email is not None:
+            pulumi.set(__self__, "user_email", user_email)
+
+    @property
+    @pulumi.getter(name="subscriptionTypes")
+    def subscription_types(self) -> Optional[Sequence[builtins.str]]:
+        return pulumi.get(self, "subscription_types")
+
+    @property
+    @pulumi.getter(name="userEmail")
+    def user_email(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "user_email")
+
+
+@pulumi.output_type
+class NotificationCenterSubscription(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "subscriptionType":
+            suggest = "subscription_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NotificationCenterSubscription. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NotificationCenterSubscription.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NotificationCenterSubscription.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 endpoint: Optional[builtins.str] = None,
+                 subscription_type: Optional[builtins.str] = None):
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if subscription_type is not None:
+            pulumi.set(__self__, "subscription_type", subscription_type)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter(name="subscriptionType")
+    def subscription_type(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "subscription_type")
 
 
 @pulumi.output_type

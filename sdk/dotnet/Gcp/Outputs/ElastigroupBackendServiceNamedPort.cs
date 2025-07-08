@@ -19,8 +19,6 @@ namespace Pulumi.SpotInst.Gcp.Outputs
         public readonly string Name;
         /// <summary>
         /// A list of ports.
-        /// 
-        /// Usage:
         /// </summary>
         public readonly ImmutableArray<string> Ports;
 

@@ -309,6 +309,38 @@ export interface HealthCheckCheck {
     unhealthy: pulumi.Input<number>;
 }
 
+export interface NotificationCenterComputePolicyConfig {
+    dynamicRules?: pulumi.Input<pulumi.Input<inputs.NotificationCenterComputePolicyConfigDynamicRule>[]>;
+    events: pulumi.Input<pulumi.Input<inputs.NotificationCenterComputePolicyConfigEvent>[]>;
+    resourceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    shouldIncludeAllResources?: pulumi.Input<boolean>;
+}
+
+export interface NotificationCenterComputePolicyConfigDynamicRule {
+    filterConditions?: pulumi.Input<pulumi.Input<inputs.NotificationCenterComputePolicyConfigDynamicRuleFilterCondition>[]>;
+}
+
+export interface NotificationCenterComputePolicyConfigDynamicRuleFilterCondition {
+    expression?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string>;
+    operator?: pulumi.Input<string>;
+}
+
+export interface NotificationCenterComputePolicyConfigEvent {
+    event?: pulumi.Input<string>;
+    eventType?: pulumi.Input<string>;
+}
+
+export interface NotificationCenterRegisteredUser {
+    subscriptionTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    userEmail?: pulumi.Input<string>;
+}
+
+export interface NotificationCenterSubscription {
+    endpoint?: pulumi.Input<string>;
+    subscriptionType?: pulumi.Input<string>;
+}
+
 export interface OceanRightSizingRuleAttachWorkload {
     namespaces: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleAttachWorkloadNamespace>[]>;
 }
@@ -4334,6 +4366,10 @@ export namespace ecs {
 export namespace gcp {
     export interface ElastigroupBackendService {
         /**
+         * Configure how traffic is distributed across instance groups.
+         */
+        backendBalancing?: pulumi.Input<inputs.gcp.ElastigroupBackendServiceBackendBalancing>;
+        /**
          * Sets which location the backend services will be active. Valid values: `regional`, `global`.
          */
         locationType?: pulumi.Input<string>;
@@ -4351,6 +4387,19 @@ export namespace gcp {
         serviceName: pulumi.Input<string>;
     }
 
+    export interface ElastigroupBackendServiceBackendBalancing {
+        /**
+         * The backend balancing mode. Valid values: `RATE`, `UTILIZATION`.
+         */
+        backendBalancingMode?: pulumi.Input<string>;
+        /**
+         * If the backendBalancingMode is set to RATE, this field is required.
+         *
+         * Usage:
+         */
+        maxRatePerInstance?: pulumi.Input<number>;
+    }
+
     export interface ElastigroupBackendServiceNamedPort {
         /**
          * The name of the port.
@@ -4358,8 +4407,6 @@ export namespace gcp {
         name: pulumi.Input<string>;
         /**
          * A list of ports.
-         *
-         * Usage:
          */
         ports: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -4715,10 +4762,16 @@ export namespace gcp {
 
 export namespace gke {
     export interface ElastigroupBackendService {
+        backendBalancing?: pulumi.Input<inputs.gke.ElastigroupBackendServiceBackendBalancing>;
         locationType?: pulumi.Input<string>;
         namedPorts?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupBackendServiceNamedPort>[]>;
         scheme?: pulumi.Input<string>;
         serviceName: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupBackendServiceBackendBalancing {
+        backendBalancingMode?: pulumi.Input<string>;
+        maxRatePerInstance?: pulumi.Input<number>;
     }
 
     export interface ElastigroupBackendServiceNamedPort {
