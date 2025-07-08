@@ -309,6 +309,38 @@ export interface HealthCheckCheck {
     unhealthy: number;
 }
 
+export interface NotificationCenterComputePolicyConfig {
+    dynamicRules?: outputs.NotificationCenterComputePolicyConfigDynamicRule[];
+    events: outputs.NotificationCenterComputePolicyConfigEvent[];
+    resourceIds?: string[];
+    shouldIncludeAllResources?: boolean;
+}
+
+export interface NotificationCenterComputePolicyConfigDynamicRule {
+    filterConditions?: outputs.NotificationCenterComputePolicyConfigDynamicRuleFilterCondition[];
+}
+
+export interface NotificationCenterComputePolicyConfigDynamicRuleFilterCondition {
+    expression?: string;
+    identifier?: string;
+    operator?: string;
+}
+
+export interface NotificationCenterComputePolicyConfigEvent {
+    event?: string;
+    eventType?: string;
+}
+
+export interface NotificationCenterRegisteredUser {
+    subscriptionTypes?: string[];
+    userEmail?: string;
+}
+
+export interface NotificationCenterSubscription {
+    endpoint?: string;
+    subscriptionType?: string;
+}
+
 export interface OceanRightSizingRuleAttachWorkload {
     namespaces: outputs.OceanRightSizingRuleAttachWorkloadNamespace[];
 }
@@ -4338,6 +4370,10 @@ export namespace ecs {
 export namespace gcp {
     export interface ElastigroupBackendService {
         /**
+         * Configure how traffic is distributed across instance groups.
+         */
+        backendBalancing?: outputs.gcp.ElastigroupBackendServiceBackendBalancing;
+        /**
          * Sets which location the backend services will be active. Valid values: `regional`, `global`.
          */
         locationType?: string;
@@ -4355,6 +4391,19 @@ export namespace gcp {
         serviceName: string;
     }
 
+    export interface ElastigroupBackendServiceBackendBalancing {
+        /**
+         * The backend balancing mode. Valid values: `RATE`, `UTILIZATION`.
+         */
+        backendBalancingMode?: string;
+        /**
+         * If the backendBalancingMode is set to RATE, this field is required.
+         *
+         * Usage:
+         */
+        maxRatePerInstance?: number;
+    }
+
     export interface ElastigroupBackendServiceNamedPort {
         /**
          * The name of the port.
@@ -4362,8 +4411,6 @@ export namespace gcp {
         name: string;
         /**
          * A list of ports.
-         *
-         * Usage:
          */
         ports: string[];
     }
@@ -4720,10 +4767,16 @@ export namespace gcp {
 
 export namespace gke {
     export interface ElastigroupBackendService {
+        backendBalancing?: outputs.gke.ElastigroupBackendServiceBackendBalancing;
         locationType?: string;
         namedPorts?: outputs.gke.ElastigroupBackendServiceNamedPort[];
         scheme?: string;
         serviceName: string;
+    }
+
+    export interface ElastigroupBackendServiceBackendBalancing {
+        backendBalancingMode?: string;
+        maxRatePerInstance?: number;
     }
 
     export interface ElastigroupBackendServiceNamedPort {

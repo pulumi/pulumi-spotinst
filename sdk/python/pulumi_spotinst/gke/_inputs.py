@@ -18,6 +18,8 @@ from .. import _utilities
 __all__ = [
     'ElastigroupBackendServiceArgs',
     'ElastigroupBackendServiceArgsDict',
+    'ElastigroupBackendServiceBackendBalancingArgs',
+    'ElastigroupBackendServiceBackendBalancingArgsDict',
     'ElastigroupBackendServiceNamedPortArgs',
     'ElastigroupBackendServiceNamedPortArgsDict',
     'ElastigroupDiskArgs',
@@ -135,6 +137,7 @@ MYPY = False
 if not MYPY:
     class ElastigroupBackendServiceArgsDict(TypedDict):
         service_name: pulumi.Input[builtins.str]
+        backend_balancing: NotRequired[pulumi.Input['ElastigroupBackendServiceBackendBalancingArgsDict']]
         location_type: NotRequired[pulumi.Input[builtins.str]]
         named_ports: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupBackendServiceNamedPortArgsDict']]]]
         scheme: NotRequired[pulumi.Input[builtins.str]]
@@ -145,10 +148,13 @@ elif False:
 class ElastigroupBackendServiceArgs:
     def __init__(__self__, *,
                  service_name: pulumi.Input[builtins.str],
+                 backend_balancing: Optional[pulumi.Input['ElastigroupBackendServiceBackendBalancingArgs']] = None,
                  location_type: Optional[pulumi.Input[builtins.str]] = None,
                  named_ports: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupBackendServiceNamedPortArgs']]]] = None,
                  scheme: Optional[pulumi.Input[builtins.str]] = None):
         pulumi.set(__self__, "service_name", service_name)
+        if backend_balancing is not None:
+            pulumi.set(__self__, "backend_balancing", backend_balancing)
         if location_type is not None:
             pulumi.set(__self__, "location_type", location_type)
         if named_ports is not None:
@@ -164,6 +170,15 @@ class ElastigroupBackendServiceArgs:
     @service_name.setter
     def service_name(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "service_name", value)
+
+    @property
+    @pulumi.getter(name="backendBalancing")
+    def backend_balancing(self) -> Optional[pulumi.Input['ElastigroupBackendServiceBackendBalancingArgs']]:
+        return pulumi.get(self, "backend_balancing")
+
+    @backend_balancing.setter
+    def backend_balancing(self, value: Optional[pulumi.Input['ElastigroupBackendServiceBackendBalancingArgs']]):
+        pulumi.set(self, "backend_balancing", value)
 
     @property
     @pulumi.getter(name="locationType")
@@ -191,6 +206,42 @@ class ElastigroupBackendServiceArgs:
     @scheme.setter
     def scheme(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "scheme", value)
+
+
+if not MYPY:
+    class ElastigroupBackendServiceBackendBalancingArgsDict(TypedDict):
+        backend_balancing_mode: NotRequired[pulumi.Input[builtins.str]]
+        max_rate_per_instance: NotRequired[pulumi.Input[builtins.int]]
+elif False:
+    ElastigroupBackendServiceBackendBalancingArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ElastigroupBackendServiceBackendBalancingArgs:
+    def __init__(__self__, *,
+                 backend_balancing_mode: Optional[pulumi.Input[builtins.str]] = None,
+                 max_rate_per_instance: Optional[pulumi.Input[builtins.int]] = None):
+        if backend_balancing_mode is not None:
+            pulumi.set(__self__, "backend_balancing_mode", backend_balancing_mode)
+        if max_rate_per_instance is not None:
+            pulumi.set(__self__, "max_rate_per_instance", max_rate_per_instance)
+
+    @property
+    @pulumi.getter(name="backendBalancingMode")
+    def backend_balancing_mode(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "backend_balancing_mode")
+
+    @backend_balancing_mode.setter
+    def backend_balancing_mode(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "backend_balancing_mode", value)
+
+    @property
+    @pulumi.getter(name="maxRatePerInstance")
+    def max_rate_per_instance(self) -> Optional[pulumi.Input[builtins.int]]:
+        return pulumi.get(self, "max_rate_per_instance")
+
+    @max_rate_per_instance.setter
+    def max_rate_per_instance(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "max_rate_per_instance", value)
 
 
 if not MYPY:

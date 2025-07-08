@@ -14,10 +14,11 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type ElastigroupBackendService struct {
-	LocationType *string                              `pulumi:"locationType"`
-	NamedPorts   []ElastigroupBackendServiceNamedPort `pulumi:"namedPorts"`
-	Scheme       *string                              `pulumi:"scheme"`
-	ServiceName  string                               `pulumi:"serviceName"`
+	BackendBalancing *ElastigroupBackendServiceBackendBalancing `pulumi:"backendBalancing"`
+	LocationType     *string                                    `pulumi:"locationType"`
+	NamedPorts       []ElastigroupBackendServiceNamedPort       `pulumi:"namedPorts"`
+	Scheme           *string                                    `pulumi:"scheme"`
+	ServiceName      string                                     `pulumi:"serviceName"`
 }
 
 // ElastigroupBackendServiceInput is an input type that accepts ElastigroupBackendServiceArgs and ElastigroupBackendServiceOutput values.
@@ -32,10 +33,11 @@ type ElastigroupBackendServiceInput interface {
 }
 
 type ElastigroupBackendServiceArgs struct {
-	LocationType pulumi.StringPtrInput                        `pulumi:"locationType"`
-	NamedPorts   ElastigroupBackendServiceNamedPortArrayInput `pulumi:"namedPorts"`
-	Scheme       pulumi.StringPtrInput                        `pulumi:"scheme"`
-	ServiceName  pulumi.StringInput                           `pulumi:"serviceName"`
+	BackendBalancing ElastigroupBackendServiceBackendBalancingPtrInput `pulumi:"backendBalancing"`
+	LocationType     pulumi.StringPtrInput                             `pulumi:"locationType"`
+	NamedPorts       ElastigroupBackendServiceNamedPortArrayInput      `pulumi:"namedPorts"`
+	Scheme           pulumi.StringPtrInput                             `pulumi:"scheme"`
+	ServiceName      pulumi.StringInput                                `pulumi:"serviceName"`
 }
 
 func (ElastigroupBackendServiceArgs) ElementType() reflect.Type {
@@ -89,6 +91,12 @@ func (o ElastigroupBackendServiceOutput) ToElastigroupBackendServiceOutputWithCo
 	return o
 }
 
+func (o ElastigroupBackendServiceOutput) BackendBalancing() ElastigroupBackendServiceBackendBalancingPtrOutput {
+	return o.ApplyT(func(v ElastigroupBackendService) *ElastigroupBackendServiceBackendBalancing {
+		return v.BackendBalancing
+	}).(ElastigroupBackendServiceBackendBalancingPtrOutput)
+}
+
 func (o ElastigroupBackendServiceOutput) LocationType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupBackendService) *string { return v.LocationType }).(pulumi.StringPtrOutput)
 }
@@ -123,6 +131,154 @@ func (o ElastigroupBackendServiceArrayOutput) Index(i pulumi.IntInput) Elastigro
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupBackendService {
 		return vs[0].([]ElastigroupBackendService)[vs[1].(int)]
 	}).(ElastigroupBackendServiceOutput)
+}
+
+type ElastigroupBackendServiceBackendBalancing struct {
+	BackendBalancingMode *string `pulumi:"backendBalancingMode"`
+	MaxRatePerInstance   *int    `pulumi:"maxRatePerInstance"`
+}
+
+// ElastigroupBackendServiceBackendBalancingInput is an input type that accepts ElastigroupBackendServiceBackendBalancingArgs and ElastigroupBackendServiceBackendBalancingOutput values.
+// You can construct a concrete instance of `ElastigroupBackendServiceBackendBalancingInput` via:
+//
+//	ElastigroupBackendServiceBackendBalancingArgs{...}
+type ElastigroupBackendServiceBackendBalancingInput interface {
+	pulumi.Input
+
+	ToElastigroupBackendServiceBackendBalancingOutput() ElastigroupBackendServiceBackendBalancingOutput
+	ToElastigroupBackendServiceBackendBalancingOutputWithContext(context.Context) ElastigroupBackendServiceBackendBalancingOutput
+}
+
+type ElastigroupBackendServiceBackendBalancingArgs struct {
+	BackendBalancingMode pulumi.StringPtrInput `pulumi:"backendBalancingMode"`
+	MaxRatePerInstance   pulumi.IntPtrInput    `pulumi:"maxRatePerInstance"`
+}
+
+func (ElastigroupBackendServiceBackendBalancingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupBackendServiceBackendBalancing)(nil)).Elem()
+}
+
+func (i ElastigroupBackendServiceBackendBalancingArgs) ToElastigroupBackendServiceBackendBalancingOutput() ElastigroupBackendServiceBackendBalancingOutput {
+	return i.ToElastigroupBackendServiceBackendBalancingOutputWithContext(context.Background())
+}
+
+func (i ElastigroupBackendServiceBackendBalancingArgs) ToElastigroupBackendServiceBackendBalancingOutputWithContext(ctx context.Context) ElastigroupBackendServiceBackendBalancingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupBackendServiceBackendBalancingOutput)
+}
+
+func (i ElastigroupBackendServiceBackendBalancingArgs) ToElastigroupBackendServiceBackendBalancingPtrOutput() ElastigroupBackendServiceBackendBalancingPtrOutput {
+	return i.ToElastigroupBackendServiceBackendBalancingPtrOutputWithContext(context.Background())
+}
+
+func (i ElastigroupBackendServiceBackendBalancingArgs) ToElastigroupBackendServiceBackendBalancingPtrOutputWithContext(ctx context.Context) ElastigroupBackendServiceBackendBalancingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupBackendServiceBackendBalancingOutput).ToElastigroupBackendServiceBackendBalancingPtrOutputWithContext(ctx)
+}
+
+// ElastigroupBackendServiceBackendBalancingPtrInput is an input type that accepts ElastigroupBackendServiceBackendBalancingArgs, ElastigroupBackendServiceBackendBalancingPtr and ElastigroupBackendServiceBackendBalancingPtrOutput values.
+// You can construct a concrete instance of `ElastigroupBackendServiceBackendBalancingPtrInput` via:
+//
+//	        ElastigroupBackendServiceBackendBalancingArgs{...}
+//
+//	or:
+//
+//	        nil
+type ElastigroupBackendServiceBackendBalancingPtrInput interface {
+	pulumi.Input
+
+	ToElastigroupBackendServiceBackendBalancingPtrOutput() ElastigroupBackendServiceBackendBalancingPtrOutput
+	ToElastigroupBackendServiceBackendBalancingPtrOutputWithContext(context.Context) ElastigroupBackendServiceBackendBalancingPtrOutput
+}
+
+type elastigroupBackendServiceBackendBalancingPtrType ElastigroupBackendServiceBackendBalancingArgs
+
+func ElastigroupBackendServiceBackendBalancingPtr(v *ElastigroupBackendServiceBackendBalancingArgs) ElastigroupBackendServiceBackendBalancingPtrInput {
+	return (*elastigroupBackendServiceBackendBalancingPtrType)(v)
+}
+
+func (*elastigroupBackendServiceBackendBalancingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupBackendServiceBackendBalancing)(nil)).Elem()
+}
+
+func (i *elastigroupBackendServiceBackendBalancingPtrType) ToElastigroupBackendServiceBackendBalancingPtrOutput() ElastigroupBackendServiceBackendBalancingPtrOutput {
+	return i.ToElastigroupBackendServiceBackendBalancingPtrOutputWithContext(context.Background())
+}
+
+func (i *elastigroupBackendServiceBackendBalancingPtrType) ToElastigroupBackendServiceBackendBalancingPtrOutputWithContext(ctx context.Context) ElastigroupBackendServiceBackendBalancingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupBackendServiceBackendBalancingPtrOutput)
+}
+
+type ElastigroupBackendServiceBackendBalancingOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupBackendServiceBackendBalancingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupBackendServiceBackendBalancing)(nil)).Elem()
+}
+
+func (o ElastigroupBackendServiceBackendBalancingOutput) ToElastigroupBackendServiceBackendBalancingOutput() ElastigroupBackendServiceBackendBalancingOutput {
+	return o
+}
+
+func (o ElastigroupBackendServiceBackendBalancingOutput) ToElastigroupBackendServiceBackendBalancingOutputWithContext(ctx context.Context) ElastigroupBackendServiceBackendBalancingOutput {
+	return o
+}
+
+func (o ElastigroupBackendServiceBackendBalancingOutput) ToElastigroupBackendServiceBackendBalancingPtrOutput() ElastigroupBackendServiceBackendBalancingPtrOutput {
+	return o.ToElastigroupBackendServiceBackendBalancingPtrOutputWithContext(context.Background())
+}
+
+func (o ElastigroupBackendServiceBackendBalancingOutput) ToElastigroupBackendServiceBackendBalancingPtrOutputWithContext(ctx context.Context) ElastigroupBackendServiceBackendBalancingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupBackendServiceBackendBalancing) *ElastigroupBackendServiceBackendBalancing {
+		return &v
+	}).(ElastigroupBackendServiceBackendBalancingPtrOutput)
+}
+
+func (o ElastigroupBackendServiceBackendBalancingOutput) BackendBalancingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupBackendServiceBackendBalancing) *string { return v.BackendBalancingMode }).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupBackendServiceBackendBalancingOutput) MaxRatePerInstance() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElastigroupBackendServiceBackendBalancing) *int { return v.MaxRatePerInstance }).(pulumi.IntPtrOutput)
+}
+
+type ElastigroupBackendServiceBackendBalancingPtrOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupBackendServiceBackendBalancingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupBackendServiceBackendBalancing)(nil)).Elem()
+}
+
+func (o ElastigroupBackendServiceBackendBalancingPtrOutput) ToElastigroupBackendServiceBackendBalancingPtrOutput() ElastigroupBackendServiceBackendBalancingPtrOutput {
+	return o
+}
+
+func (o ElastigroupBackendServiceBackendBalancingPtrOutput) ToElastigroupBackendServiceBackendBalancingPtrOutputWithContext(ctx context.Context) ElastigroupBackendServiceBackendBalancingPtrOutput {
+	return o
+}
+
+func (o ElastigroupBackendServiceBackendBalancingPtrOutput) Elem() ElastigroupBackendServiceBackendBalancingOutput {
+	return o.ApplyT(func(v *ElastigroupBackendServiceBackendBalancing) ElastigroupBackendServiceBackendBalancing {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupBackendServiceBackendBalancing
+		return ret
+	}).(ElastigroupBackendServiceBackendBalancingOutput)
+}
+
+func (o ElastigroupBackendServiceBackendBalancingPtrOutput) BackendBalancingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElastigroupBackendServiceBackendBalancing) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BackendBalancingMode
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupBackendServiceBackendBalancingPtrOutput) MaxRatePerInstance() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElastigroupBackendServiceBackendBalancing) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxRatePerInstance
+	}).(pulumi.IntPtrOutput)
 }
 
 type ElastigroupBackendServiceNamedPort struct {
@@ -7668,6 +7824,8 @@ func (o OceanLaunchSpecUpdatePolicyRollConfigPtrOutput) BatchSizePercentage() pu
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupBackendServiceInput)(nil)).Elem(), ElastigroupBackendServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupBackendServiceArrayInput)(nil)).Elem(), ElastigroupBackendServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupBackendServiceBackendBalancingInput)(nil)).Elem(), ElastigroupBackendServiceBackendBalancingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupBackendServiceBackendBalancingPtrInput)(nil)).Elem(), ElastigroupBackendServiceBackendBalancingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupBackendServiceNamedPortInput)(nil)).Elem(), ElastigroupBackendServiceNamedPortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupBackendServiceNamedPortArrayInput)(nil)).Elem(), ElastigroupBackendServiceNamedPortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupDiskInput)(nil)).Elem(), ElastigroupDiskArgs{})
@@ -7780,6 +7938,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecUpdatePolicyRollConfigPtrInput)(nil)).Elem(), OceanLaunchSpecUpdatePolicyRollConfigArgs{})
 	pulumi.RegisterOutputType(ElastigroupBackendServiceOutput{})
 	pulumi.RegisterOutputType(ElastigroupBackendServiceArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupBackendServiceBackendBalancingOutput{})
+	pulumi.RegisterOutputType(ElastigroupBackendServiceBackendBalancingPtrOutput{})
 	pulumi.RegisterOutputType(ElastigroupBackendServiceNamedPortOutput{})
 	pulumi.RegisterOutputType(ElastigroupBackendServiceNamedPortArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupDiskOutput{})

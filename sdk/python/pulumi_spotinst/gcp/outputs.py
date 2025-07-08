@@ -18,6 +18,7 @@ from . import outputs
 
 __all__ = [
     'ElastigroupBackendService',
+    'ElastigroupBackendServiceBackendBalancing',
     'ElastigroupBackendServiceNamedPort',
     'ElastigroupDisk',
     'ElastigroupDiskInitializeParam',
@@ -50,6 +51,8 @@ class ElastigroupBackendService(dict):
         suggest = None
         if key == "serviceName":
             suggest = "service_name"
+        elif key == "backendBalancing":
+            suggest = "backend_balancing"
         elif key == "locationType":
             suggest = "location_type"
         elif key == "namedPorts":
@@ -68,16 +71,20 @@ class ElastigroupBackendService(dict):
 
     def __init__(__self__, *,
                  service_name: builtins.str,
+                 backend_balancing: Optional['outputs.ElastigroupBackendServiceBackendBalancing'] = None,
                  location_type: Optional[builtins.str] = None,
                  named_ports: Optional[Sequence['outputs.ElastigroupBackendServiceNamedPort']] = None,
                  scheme: Optional[builtins.str] = None):
         """
         :param builtins.str service_name: The name of the backend service.
+        :param 'ElastigroupBackendServiceBackendBalancingArgs' backend_balancing: Configure how traffic is distributed across instance groups.
         :param builtins.str location_type: Sets which location the backend services will be active. Valid values: `regional`, `global`.
         :param Sequence['ElastigroupBackendServiceNamedPortArgs'] named_ports: Describes a named port and a list of ports.
         :param builtins.str scheme: Use when `location_type` is "regional". Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
         """
         pulumi.set(__self__, "service_name", service_name)
+        if backend_balancing is not None:
+            pulumi.set(__self__, "backend_balancing", backend_balancing)
         if location_type is not None:
             pulumi.set(__self__, "location_type", location_type)
         if named_ports is not None:
@@ -92,6 +99,14 @@ class ElastigroupBackendService(dict):
         The name of the backend service.
         """
         return pulumi.get(self, "service_name")
+
+    @property
+    @pulumi.getter(name="backendBalancing")
+    def backend_balancing(self) -> Optional['outputs.ElastigroupBackendServiceBackendBalancing']:
+        """
+        Configure how traffic is distributed across instance groups.
+        """
+        return pulumi.get(self, "backend_balancing")
 
     @property
     @pulumi.getter(name="locationType")
@@ -119,6 +134,60 @@ class ElastigroupBackendService(dict):
 
 
 @pulumi.output_type
+class ElastigroupBackendServiceBackendBalancing(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "backendBalancingMode":
+            suggest = "backend_balancing_mode"
+        elif key == "maxRatePerInstance":
+            suggest = "max_rate_per_instance"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupBackendServiceBackendBalancing. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupBackendServiceBackendBalancing.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupBackendServiceBackendBalancing.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 backend_balancing_mode: Optional[builtins.str] = None,
+                 max_rate_per_instance: Optional[builtins.int] = None):
+        """
+        :param builtins.str backend_balancing_mode: The backend balancing mode. Valid values: `RATE`, `UTILIZATION`.
+        :param builtins.int max_rate_per_instance: If the backendBalancingMode is set to RATE, this field is required.
+               
+               Usage:
+        """
+        if backend_balancing_mode is not None:
+            pulumi.set(__self__, "backend_balancing_mode", backend_balancing_mode)
+        if max_rate_per_instance is not None:
+            pulumi.set(__self__, "max_rate_per_instance", max_rate_per_instance)
+
+    @property
+    @pulumi.getter(name="backendBalancingMode")
+    def backend_balancing_mode(self) -> Optional[builtins.str]:
+        """
+        The backend balancing mode. Valid values: `RATE`, `UTILIZATION`.
+        """
+        return pulumi.get(self, "backend_balancing_mode")
+
+    @property
+    @pulumi.getter(name="maxRatePerInstance")
+    def max_rate_per_instance(self) -> Optional[builtins.int]:
+        """
+        If the backendBalancingMode is set to RATE, this field is required.
+
+        Usage:
+        """
+        return pulumi.get(self, "max_rate_per_instance")
+
+
+@pulumi.output_type
 class ElastigroupBackendServiceNamedPort(dict):
     def __init__(__self__, *,
                  name: builtins.str,
@@ -126,8 +195,6 @@ class ElastigroupBackendServiceNamedPort(dict):
         """
         :param builtins.str name: The name of the port.
         :param Sequence[builtins.str] ports: A list of ports.
-               
-               Usage:
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "ports", ports)
@@ -145,8 +212,6 @@ class ElastigroupBackendServiceNamedPort(dict):
     def ports(self) -> Sequence[builtins.str]:
         """
         A list of ports.
-
-        Usage:
         """
         return pulumi.get(self, "ports")
 

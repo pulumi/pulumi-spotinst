@@ -90,6 +90,11 @@ namespace Pulumi.SpotInst.Gcp
     ///                         },
     ///                     },
     ///                 },
+    ///                 BackendBalancing = new SpotInst.Gcp.Inputs.ElastigroupBackendServiceBackendBalancingArgs
+    ///                 {
+    ///                     BackendBalancingMode = "RATE",
+    ///                     MaxRatePerInstance = 500,
+    ///                 },
     ///             },
     ///         },
     ///         Disks = new[]

@@ -1379,6 +1379,10 @@ class Elastigroup(pulumi.CustomResource):
                         "6000",
                     ],
                 }],
+                "backend_balancing": {
+                    "backend_balancing_mode": "RATE",
+                    "max_rate_per_instance": 500,
+                },
             }],
             disks=[{
                 "device_name": "device",
@@ -1525,6 +1529,10 @@ class Elastigroup(pulumi.CustomResource):
                         "6000",
                     ],
                 }],
+                "backend_balancing": {
+                    "backend_balancing_mode": "RATE",
+                    "max_rate_per_instance": 500,
+                },
             }],
             disks=[{
                 "device_name": "device",

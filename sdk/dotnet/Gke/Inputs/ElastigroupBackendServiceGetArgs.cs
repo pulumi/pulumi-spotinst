@@ -12,6 +12,9 @@ namespace Pulumi.SpotInst.Gke.Inputs
 
     public sealed class ElastigroupBackendServiceGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("backendBalancing")]
+        public Input<Inputs.ElastigroupBackendServiceBackendBalancingGetArgs>? BackendBalancing { get; set; }
+
         [Input("locationType")]
         public Input<string>? LocationType { get; set; }
 

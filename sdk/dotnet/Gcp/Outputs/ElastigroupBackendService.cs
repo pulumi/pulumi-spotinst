@@ -14,6 +14,10 @@ namespace Pulumi.SpotInst.Gcp.Outputs
     public sealed class ElastigroupBackendService
     {
         /// <summary>
+        /// Configure how traffic is distributed across instance groups.
+        /// </summary>
+        public readonly Outputs.ElastigroupBackendServiceBackendBalancing? BackendBalancing;
+        /// <summary>
         /// Sets which location the backend services will be active. Valid values: `regional`, `global`.
         /// </summary>
         public readonly string? LocationType;
@@ -32,6 +36,8 @@ namespace Pulumi.SpotInst.Gcp.Outputs
 
         [OutputConstructor]
         private ElastigroupBackendService(
+            Outputs.ElastigroupBackendServiceBackendBalancing? backendBalancing,
+
             string? locationType,
 
             ImmutableArray<Outputs.ElastigroupBackendServiceNamedPort> namedPorts,
@@ -40,6 +46,7 @@ namespace Pulumi.SpotInst.Gcp.Outputs
 
             string serviceName)
         {
+            BackendBalancing = backendBalancing;
             LocationType = locationType;
             NamedPorts = namedPorts;
             Scheme = scheme;

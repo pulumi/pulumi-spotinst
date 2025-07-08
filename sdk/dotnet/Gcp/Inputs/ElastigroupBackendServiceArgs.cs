@@ -13,6 +13,12 @@ namespace Pulumi.SpotInst.Gcp.Inputs
     public sealed class ElastigroupBackendServiceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Configure how traffic is distributed across instance groups.
+        /// </summary>
+        [Input("backendBalancing")]
+        public Input<Inputs.ElastigroupBackendServiceBackendBalancingArgs>? BackendBalancing { get; set; }
+
+        /// <summary>
         /// Sets which location the backend services will be active. Valid values: `regional`, `global`.
         /// </summary>
         [Input("locationType")]

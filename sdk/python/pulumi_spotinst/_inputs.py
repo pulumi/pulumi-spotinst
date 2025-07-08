@@ -94,6 +94,18 @@ __all__ = [
     'ElastigroupAzureV3VmSizesSpotSizeAttributesArgsDict',
     'HealthCheckCheckArgs',
     'HealthCheckCheckArgsDict',
+    'NotificationCenterComputePolicyConfigArgs',
+    'NotificationCenterComputePolicyConfigArgsDict',
+    'NotificationCenterComputePolicyConfigDynamicRuleArgs',
+    'NotificationCenterComputePolicyConfigDynamicRuleArgsDict',
+    'NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArgs',
+    'NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArgsDict',
+    'NotificationCenterComputePolicyConfigEventArgs',
+    'NotificationCenterComputePolicyConfigEventArgsDict',
+    'NotificationCenterRegisteredUserArgs',
+    'NotificationCenterRegisteredUserArgsDict',
+    'NotificationCenterSubscriptionArgs',
+    'NotificationCenterSubscriptionArgsDict',
     'OceanRightSizingRuleAttachWorkloadArgs',
     'OceanRightSizingRuleAttachWorkloadArgsDict',
     'OceanRightSizingRuleAttachWorkloadNamespaceArgs',
@@ -2686,6 +2698,247 @@ class HealthCheckCheckArgs:
     @timeout.setter
     def timeout(self, value: Optional[pulumi.Input[builtins.int]]):
         pulumi.set(self, "timeout", value)
+
+
+if not MYPY:
+    class NotificationCenterComputePolicyConfigArgsDict(TypedDict):
+        events: pulumi.Input[Sequence[pulumi.Input['NotificationCenterComputePolicyConfigEventArgsDict']]]
+        dynamic_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['NotificationCenterComputePolicyConfigDynamicRuleArgsDict']]]]
+        resource_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        should_include_all_resources: NotRequired[pulumi.Input[builtins.bool]]
+elif False:
+    NotificationCenterComputePolicyConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NotificationCenterComputePolicyConfigArgs:
+    def __init__(__self__, *,
+                 events: pulumi.Input[Sequence[pulumi.Input['NotificationCenterComputePolicyConfigEventArgs']]],
+                 dynamic_rules: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationCenterComputePolicyConfigDynamicRuleArgs']]]] = None,
+                 resource_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 should_include_all_resources: Optional[pulumi.Input[builtins.bool]] = None):
+        pulumi.set(__self__, "events", events)
+        if dynamic_rules is not None:
+            pulumi.set(__self__, "dynamic_rules", dynamic_rules)
+        if resource_ids is not None:
+            pulumi.set(__self__, "resource_ids", resource_ids)
+        if should_include_all_resources is not None:
+            pulumi.set(__self__, "should_include_all_resources", should_include_all_resources)
+
+    @property
+    @pulumi.getter
+    def events(self) -> pulumi.Input[Sequence[pulumi.Input['NotificationCenterComputePolicyConfigEventArgs']]]:
+        return pulumi.get(self, "events")
+
+    @events.setter
+    def events(self, value: pulumi.Input[Sequence[pulumi.Input['NotificationCenterComputePolicyConfigEventArgs']]]):
+        pulumi.set(self, "events", value)
+
+    @property
+    @pulumi.getter(name="dynamicRules")
+    def dynamic_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NotificationCenterComputePolicyConfigDynamicRuleArgs']]]]:
+        return pulumi.get(self, "dynamic_rules")
+
+    @dynamic_rules.setter
+    def dynamic_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationCenterComputePolicyConfigDynamicRuleArgs']]]]):
+        pulumi.set(self, "dynamic_rules", value)
+
+    @property
+    @pulumi.getter(name="resourceIds")
+    def resource_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        return pulumi.get(self, "resource_ids")
+
+    @resource_ids.setter
+    def resource_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "resource_ids", value)
+
+    @property
+    @pulumi.getter(name="shouldIncludeAllResources")
+    def should_include_all_resources(self) -> Optional[pulumi.Input[builtins.bool]]:
+        return pulumi.get(self, "should_include_all_resources")
+
+    @should_include_all_resources.setter
+    def should_include_all_resources(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "should_include_all_resources", value)
+
+
+if not MYPY:
+    class NotificationCenterComputePolicyConfigDynamicRuleArgsDict(TypedDict):
+        filter_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArgsDict']]]]
+elif False:
+    NotificationCenterComputePolicyConfigDynamicRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NotificationCenterComputePolicyConfigDynamicRuleArgs:
+    def __init__(__self__, *,
+                 filter_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArgs']]]] = None):
+        if filter_conditions is not None:
+            pulumi.set(__self__, "filter_conditions", filter_conditions)
+
+    @property
+    @pulumi.getter(name="filterConditions")
+    def filter_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArgs']]]]:
+        return pulumi.get(self, "filter_conditions")
+
+    @filter_conditions.setter
+    def filter_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArgs']]]]):
+        pulumi.set(self, "filter_conditions", value)
+
+
+if not MYPY:
+    class NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArgsDict(TypedDict):
+        expression: NotRequired[pulumi.Input[builtins.str]]
+        identifier: NotRequired[pulumi.Input[builtins.str]]
+        operator: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArgs:
+    def __init__(__self__, *,
+                 expression: Optional[pulumi.Input[builtins.str]] = None,
+                 identifier: Optional[pulumi.Input[builtins.str]] = None,
+                 operator: Optional[pulumi.Input[builtins.str]] = None):
+        if expression is not None:
+            pulumi.set(__self__, "expression", expression)
+        if identifier is not None:
+            pulumi.set(__self__, "identifier", identifier)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def identifier(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "identifier")
+
+    @identifier.setter
+    def identifier(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "identifier", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "operator", value)
+
+
+if not MYPY:
+    class NotificationCenterComputePolicyConfigEventArgsDict(TypedDict):
+        event: NotRequired[pulumi.Input[builtins.str]]
+        event_type: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    NotificationCenterComputePolicyConfigEventArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NotificationCenterComputePolicyConfigEventArgs:
+    def __init__(__self__, *,
+                 event: Optional[pulumi.Input[builtins.str]] = None,
+                 event_type: Optional[pulumi.Input[builtins.str]] = None):
+        if event is not None:
+            pulumi.set(__self__, "event", event)
+        if event_type is not None:
+            pulumi.set(__self__, "event_type", event_type)
+
+    @property
+    @pulumi.getter
+    def event(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "event")
+
+    @event.setter
+    def event(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "event", value)
+
+    @property
+    @pulumi.getter(name="eventType")
+    def event_type(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "event_type")
+
+    @event_type.setter
+    def event_type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "event_type", value)
+
+
+if not MYPY:
+    class NotificationCenterRegisteredUserArgsDict(TypedDict):
+        subscription_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        user_email: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    NotificationCenterRegisteredUserArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NotificationCenterRegisteredUserArgs:
+    def __init__(__self__, *,
+                 subscription_types: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 user_email: Optional[pulumi.Input[builtins.str]] = None):
+        if subscription_types is not None:
+            pulumi.set(__self__, "subscription_types", subscription_types)
+        if user_email is not None:
+            pulumi.set(__self__, "user_email", user_email)
+
+    @property
+    @pulumi.getter(name="subscriptionTypes")
+    def subscription_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        return pulumi.get(self, "subscription_types")
+
+    @subscription_types.setter
+    def subscription_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "subscription_types", value)
+
+    @property
+    @pulumi.getter(name="userEmail")
+    def user_email(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "user_email")
+
+    @user_email.setter
+    def user_email(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "user_email", value)
+
+
+if not MYPY:
+    class NotificationCenterSubscriptionArgsDict(TypedDict):
+        endpoint: NotRequired[pulumi.Input[builtins.str]]
+        subscription_type: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    NotificationCenterSubscriptionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NotificationCenterSubscriptionArgs:
+    def __init__(__self__, *,
+                 endpoint: Optional[pulumi.Input[builtins.str]] = None,
+                 subscription_type: Optional[pulumi.Input[builtins.str]] = None):
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if subscription_type is not None:
+            pulumi.set(__self__, "subscription_type", subscription_type)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "endpoint")
+
+    @endpoint.setter
+    def endpoint(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "endpoint", value)
+
+    @property
+    @pulumi.getter(name="subscriptionType")
+    def subscription_type(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "subscription_type")
+
+    @subscription_type.setter
+    def subscription_type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "subscription_type", value)
 
 
 if not MYPY:

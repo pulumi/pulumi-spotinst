@@ -6,6 +6,7 @@ package com.pulumi.spotinst.gke.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.spotinst.gke.inputs.ElastigroupBackendServiceBackendBalancingArgs;
 import com.pulumi.spotinst.gke.inputs.ElastigroupBackendServiceNamedPortArgs;
 import java.lang.String;
 import java.util.List;
@@ -17,6 +18,13 @@ import javax.annotation.Nullable;
 public final class ElastigroupBackendServiceArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ElastigroupBackendServiceArgs Empty = new ElastigroupBackendServiceArgs();
+
+    @Import(name="backendBalancing")
+    private @Nullable Output<ElastigroupBackendServiceBackendBalancingArgs> backendBalancing;
+
+    public Optional<Output<ElastigroupBackendServiceBackendBalancingArgs>> backendBalancing() {
+        return Optional.ofNullable(this.backendBalancing);
+    }
 
     @Import(name="locationType")
     private @Nullable Output<String> locationType;
@@ -49,6 +57,7 @@ public final class ElastigroupBackendServiceArgs extends com.pulumi.resources.Re
     private ElastigroupBackendServiceArgs() {}
 
     private ElastigroupBackendServiceArgs(ElastigroupBackendServiceArgs $) {
+        this.backendBalancing = $.backendBalancing;
         this.locationType = $.locationType;
         this.namedPorts = $.namedPorts;
         this.scheme = $.scheme;
@@ -71,6 +80,15 @@ public final class ElastigroupBackendServiceArgs extends com.pulumi.resources.Re
 
         public Builder(ElastigroupBackendServiceArgs defaults) {
             $ = new ElastigroupBackendServiceArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder backendBalancing(@Nullable Output<ElastigroupBackendServiceBackendBalancingArgs> backendBalancing) {
+            $.backendBalancing = backendBalancing;
+            return this;
+        }
+
+        public Builder backendBalancing(ElastigroupBackendServiceBackendBalancingArgs backendBalancing) {
+            return backendBalancing(Output.of(backendBalancing));
         }
 
         public Builder locationType(@Nullable Output<String> locationType) {
