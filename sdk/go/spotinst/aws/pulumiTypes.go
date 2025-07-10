@@ -22725,6 +22725,8 @@ func (o OceanLaunchSpecStartupTaintArrayOutput) Index(i pulumi.IntInput) OceanLa
 type OceanLaunchSpecStrategy struct {
 	// The configurable amount of time that Ocean will wait for the draining process to complete before terminating an instance. If you have not defined a draining timeout, the default of 300 seconds will be used.
 	DrainingTimeout *int `pulumi:"drainingTimeout"`
+	// Vng orientation configuration.
+	Orientation *OceanLaunchSpecStrategyOrientation `pulumi:"orientation"`
 	// The desired percentage of the Spot instances out of all running instances for this VNG. Only available when the field is not set in the cluster directly (cluster.strategy.spotPercentage).
 	SpotPercentage *int `pulumi:"spotPercentage"`
 	// When set as ‘true’, if savings plans commitments have available capacity, Ocean will utilize them alongside RIs (if exist) to maximize cost efficiency. If the value is set as 'null', it will automatically be inherited from the cluster level.
@@ -22747,6 +22749,8 @@ type OceanLaunchSpecStrategyInput interface {
 type OceanLaunchSpecStrategyArgs struct {
 	// The configurable amount of time that Ocean will wait for the draining process to complete before terminating an instance. If you have not defined a draining timeout, the default of 300 seconds will be used.
 	DrainingTimeout pulumi.IntPtrInput `pulumi:"drainingTimeout"`
+	// Vng orientation configuration.
+	Orientation OceanLaunchSpecStrategyOrientationPtrInput `pulumi:"orientation"`
 	// The desired percentage of the Spot instances out of all running instances for this VNG. Only available when the field is not set in the cluster directly (cluster.strategy.spotPercentage).
 	SpotPercentage pulumi.IntPtrInput `pulumi:"spotPercentage"`
 	// When set as ‘true’, if savings plans commitments have available capacity, Ocean will utilize them alongside RIs (if exist) to maximize cost efficiency. If the value is set as 'null', it will automatically be inherited from the cluster level.
@@ -22811,6 +22815,11 @@ func (o OceanLaunchSpecStrategyOutput) DrainingTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecStrategy) *int { return v.DrainingTimeout }).(pulumi.IntPtrOutput)
 }
 
+// Vng orientation configuration.
+func (o OceanLaunchSpecStrategyOutput) Orientation() OceanLaunchSpecStrategyOrientationPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecStrategy) *OceanLaunchSpecStrategyOrientation { return v.Orientation }).(OceanLaunchSpecStrategyOrientationPtrOutput)
+}
+
 // The desired percentage of the Spot instances out of all running instances for this VNG. Only available when the field is not set in the cluster directly (cluster.strategy.spotPercentage).
 func (o OceanLaunchSpecStrategyOutput) SpotPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecStrategy) *int { return v.SpotPercentage }).(pulumi.IntPtrOutput)
@@ -22844,6 +22853,143 @@ func (o OceanLaunchSpecStrategyArrayOutput) Index(i pulumi.IntInput) OceanLaunch
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanLaunchSpecStrategy {
 		return vs[0].([]OceanLaunchSpecStrategy)[vs[1].(int)]
 	}).(OceanLaunchSpecStrategyOutput)
+}
+
+type OceanLaunchSpecStrategyOrientation struct {
+	// Set this value to control the approach that Ocean takes while launching nodes. Valid values: `"costOriented"`, `"cheapest"`, `"balanced"`.
+	AvailabilityVsCost *string `pulumi:"availabilityVsCost"`
+}
+
+// OceanLaunchSpecStrategyOrientationInput is an input type that accepts OceanLaunchSpecStrategyOrientationArgs and OceanLaunchSpecStrategyOrientationOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecStrategyOrientationInput` via:
+//
+//	OceanLaunchSpecStrategyOrientationArgs{...}
+type OceanLaunchSpecStrategyOrientationInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecStrategyOrientationOutput() OceanLaunchSpecStrategyOrientationOutput
+	ToOceanLaunchSpecStrategyOrientationOutputWithContext(context.Context) OceanLaunchSpecStrategyOrientationOutput
+}
+
+type OceanLaunchSpecStrategyOrientationArgs struct {
+	// Set this value to control the approach that Ocean takes while launching nodes. Valid values: `"costOriented"`, `"cheapest"`, `"balanced"`.
+	AvailabilityVsCost pulumi.StringPtrInput `pulumi:"availabilityVsCost"`
+}
+
+func (OceanLaunchSpecStrategyOrientationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecStrategyOrientation)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecStrategyOrientationArgs) ToOceanLaunchSpecStrategyOrientationOutput() OceanLaunchSpecStrategyOrientationOutput {
+	return i.ToOceanLaunchSpecStrategyOrientationOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecStrategyOrientationArgs) ToOceanLaunchSpecStrategyOrientationOutputWithContext(ctx context.Context) OceanLaunchSpecStrategyOrientationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecStrategyOrientationOutput)
+}
+
+func (i OceanLaunchSpecStrategyOrientationArgs) ToOceanLaunchSpecStrategyOrientationPtrOutput() OceanLaunchSpecStrategyOrientationPtrOutput {
+	return i.ToOceanLaunchSpecStrategyOrientationPtrOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecStrategyOrientationArgs) ToOceanLaunchSpecStrategyOrientationPtrOutputWithContext(ctx context.Context) OceanLaunchSpecStrategyOrientationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecStrategyOrientationOutput).ToOceanLaunchSpecStrategyOrientationPtrOutputWithContext(ctx)
+}
+
+// OceanLaunchSpecStrategyOrientationPtrInput is an input type that accepts OceanLaunchSpecStrategyOrientationArgs, OceanLaunchSpecStrategyOrientationPtr and OceanLaunchSpecStrategyOrientationPtrOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecStrategyOrientationPtrInput` via:
+//
+//	        OceanLaunchSpecStrategyOrientationArgs{...}
+//
+//	or:
+//
+//	        nil
+type OceanLaunchSpecStrategyOrientationPtrInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecStrategyOrientationPtrOutput() OceanLaunchSpecStrategyOrientationPtrOutput
+	ToOceanLaunchSpecStrategyOrientationPtrOutputWithContext(context.Context) OceanLaunchSpecStrategyOrientationPtrOutput
+}
+
+type oceanLaunchSpecStrategyOrientationPtrType OceanLaunchSpecStrategyOrientationArgs
+
+func OceanLaunchSpecStrategyOrientationPtr(v *OceanLaunchSpecStrategyOrientationArgs) OceanLaunchSpecStrategyOrientationPtrInput {
+	return (*oceanLaunchSpecStrategyOrientationPtrType)(v)
+}
+
+func (*oceanLaunchSpecStrategyOrientationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLaunchSpecStrategyOrientation)(nil)).Elem()
+}
+
+func (i *oceanLaunchSpecStrategyOrientationPtrType) ToOceanLaunchSpecStrategyOrientationPtrOutput() OceanLaunchSpecStrategyOrientationPtrOutput {
+	return i.ToOceanLaunchSpecStrategyOrientationPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanLaunchSpecStrategyOrientationPtrType) ToOceanLaunchSpecStrategyOrientationPtrOutputWithContext(ctx context.Context) OceanLaunchSpecStrategyOrientationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecStrategyOrientationPtrOutput)
+}
+
+type OceanLaunchSpecStrategyOrientationOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecStrategyOrientationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecStrategyOrientation)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecStrategyOrientationOutput) ToOceanLaunchSpecStrategyOrientationOutput() OceanLaunchSpecStrategyOrientationOutput {
+	return o
+}
+
+func (o OceanLaunchSpecStrategyOrientationOutput) ToOceanLaunchSpecStrategyOrientationOutputWithContext(ctx context.Context) OceanLaunchSpecStrategyOrientationOutput {
+	return o
+}
+
+func (o OceanLaunchSpecStrategyOrientationOutput) ToOceanLaunchSpecStrategyOrientationPtrOutput() OceanLaunchSpecStrategyOrientationPtrOutput {
+	return o.ToOceanLaunchSpecStrategyOrientationPtrOutputWithContext(context.Background())
+}
+
+func (o OceanLaunchSpecStrategyOrientationOutput) ToOceanLaunchSpecStrategyOrientationPtrOutputWithContext(ctx context.Context) OceanLaunchSpecStrategyOrientationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanLaunchSpecStrategyOrientation) *OceanLaunchSpecStrategyOrientation {
+		return &v
+	}).(OceanLaunchSpecStrategyOrientationPtrOutput)
+}
+
+// Set this value to control the approach that Ocean takes while launching nodes. Valid values: `"costOriented"`, `"cheapest"`, `"balanced"`.
+func (o OceanLaunchSpecStrategyOrientationOutput) AvailabilityVsCost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecStrategyOrientation) *string { return v.AvailabilityVsCost }).(pulumi.StringPtrOutput)
+}
+
+type OceanLaunchSpecStrategyOrientationPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecStrategyOrientationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLaunchSpecStrategyOrientation)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecStrategyOrientationPtrOutput) ToOceanLaunchSpecStrategyOrientationPtrOutput() OceanLaunchSpecStrategyOrientationPtrOutput {
+	return o
+}
+
+func (o OceanLaunchSpecStrategyOrientationPtrOutput) ToOceanLaunchSpecStrategyOrientationPtrOutputWithContext(ctx context.Context) OceanLaunchSpecStrategyOrientationPtrOutput {
+	return o
+}
+
+func (o OceanLaunchSpecStrategyOrientationPtrOutput) Elem() OceanLaunchSpecStrategyOrientationOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecStrategyOrientation) OceanLaunchSpecStrategyOrientation {
+		if v != nil {
+			return *v
+		}
+		var ret OceanLaunchSpecStrategyOrientation
+		return ret
+	}).(OceanLaunchSpecStrategyOrientationOutput)
+}
+
+// Set this value to control the approach that Ocean takes while launching nodes. Valid values: `"costOriented"`, `"cheapest"`, `"balanced"`.
+func (o OceanLaunchSpecStrategyOrientationPtrOutput) AvailabilityVsCost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecStrategyOrientation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AvailabilityVsCost
+	}).(pulumi.StringPtrOutput)
 }
 
 type OceanLaunchSpecTag struct {
@@ -26120,6 +26266,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecStartupTaintArrayInput)(nil)).Elem(), OceanLaunchSpecStartupTaintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecStrategyInput)(nil)).Elem(), OceanLaunchSpecStrategyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecStrategyArrayInput)(nil)).Elem(), OceanLaunchSpecStrategyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecStrategyOrientationInput)(nil)).Elem(), OceanLaunchSpecStrategyOrientationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecStrategyOrientationPtrInput)(nil)).Elem(), OceanLaunchSpecStrategyOrientationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecTagInput)(nil)).Elem(), OceanLaunchSpecTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecTagArrayInput)(nil)).Elem(), OceanLaunchSpecTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecTaintInput)(nil)).Elem(), OceanLaunchSpecTaintArgs{})
@@ -26462,6 +26610,8 @@ func init() {
 	pulumi.RegisterOutputType(OceanLaunchSpecStartupTaintArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecStrategyOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecStrategyArrayOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecStrategyOrientationOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecStrategyOrientationPtrOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecTagOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecTagArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecTaintOutput{})
