@@ -18,6 +18,10 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly int? DrainingTimeout;
         /// <summary>
+        /// Vng orientation configuration.
+        /// </summary>
+        public readonly Outputs.OceanLaunchSpecStrategyOrientation? Orientation;
+        /// <summary>
         /// The desired percentage of the Spot instances out of all running instances for this VNG. Only available when the field is not set in the cluster directly (cluster.strategy.spotPercentage).
         /// </summary>
         public readonly int? SpotPercentage;
@@ -34,6 +38,8 @@ namespace Pulumi.SpotInst.Aws.Outputs
         private OceanLaunchSpecStrategy(
             int? drainingTimeout,
 
+            Outputs.OceanLaunchSpecStrategyOrientation? orientation,
+
             int? spotPercentage,
 
             bool? utilizeCommitments,
@@ -41,6 +47,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
             bool? utilizeReservedInstances)
         {
             DrainingTimeout = drainingTimeout;
+            Orientation = orientation;
             SpotPercentage = spotPercentage;
             UtilizeCommitments = utilizeCommitments;
             UtilizeReservedInstances = utilizeReservedInstances;

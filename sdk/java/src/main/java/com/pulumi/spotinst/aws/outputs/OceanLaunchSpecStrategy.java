@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecStrategyOrientation;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.Objects;
@@ -17,6 +18,11 @@ public final class OceanLaunchSpecStrategy {
      * 
      */
     private @Nullable Integer drainingTimeout;
+    /**
+     * @return Vng orientation configuration.
+     * 
+     */
+    private @Nullable OceanLaunchSpecStrategyOrientation orientation;
     /**
      * @return The desired percentage of the Spot instances out of all running instances for this VNG. Only available when the field is not set in the cluster directly (cluster.strategy.spotPercentage).
      * 
@@ -40,6 +46,13 @@ public final class OceanLaunchSpecStrategy {
      */
     public Optional<Integer> drainingTimeout() {
         return Optional.ofNullable(this.drainingTimeout);
+    }
+    /**
+     * @return Vng orientation configuration.
+     * 
+     */
+    public Optional<OceanLaunchSpecStrategyOrientation> orientation() {
+        return Optional.ofNullable(this.orientation);
     }
     /**
      * @return The desired percentage of the Spot instances out of all running instances for this VNG. Only available when the field is not set in the cluster directly (cluster.strategy.spotPercentage).
@@ -73,6 +86,7 @@ public final class OceanLaunchSpecStrategy {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer drainingTimeout;
+        private @Nullable OceanLaunchSpecStrategyOrientation orientation;
         private @Nullable Integer spotPercentage;
         private @Nullable Boolean utilizeCommitments;
         private @Nullable Boolean utilizeReservedInstances;
@@ -80,6 +94,7 @@ public final class OceanLaunchSpecStrategy {
         public Builder(OceanLaunchSpecStrategy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.drainingTimeout = defaults.drainingTimeout;
+    	      this.orientation = defaults.orientation;
     	      this.spotPercentage = defaults.spotPercentage;
     	      this.utilizeCommitments = defaults.utilizeCommitments;
     	      this.utilizeReservedInstances = defaults.utilizeReservedInstances;
@@ -89,6 +104,12 @@ public final class OceanLaunchSpecStrategy {
         public Builder drainingTimeout(@Nullable Integer drainingTimeout) {
 
             this.drainingTimeout = drainingTimeout;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder orientation(@Nullable OceanLaunchSpecStrategyOrientation orientation) {
+
+            this.orientation = orientation;
             return this;
         }
         @CustomType.Setter
@@ -112,6 +133,7 @@ public final class OceanLaunchSpecStrategy {
         public OceanLaunchSpecStrategy build() {
             final var _resultValue = new OceanLaunchSpecStrategy();
             _resultValue.drainingTimeout = drainingTimeout;
+            _resultValue.orientation = orientation;
             _resultValue.spotPercentage = spotPercentage;
             _resultValue.utilizeCommitments = utilizeCommitments;
             _resultValue.utilizeReservedInstances = utilizeReservedInstances;

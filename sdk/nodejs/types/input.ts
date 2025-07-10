@@ -3037,6 +3037,10 @@ export namespace aws {
          */
         drainingTimeout?: pulumi.Input<number>;
         /**
+         * Vng orientation configuration.
+         */
+        orientation?: pulumi.Input<inputs.aws.OceanLaunchSpecStrategyOrientation>;
+        /**
          * The desired percentage of the Spot instances out of all running instances for this VNG. Only available when the field is not set in the cluster directly (cluster.strategy.spotPercentage).
          */
         spotPercentage?: pulumi.Input<number>;
@@ -3048,6 +3052,13 @@ export namespace aws {
          * When set as ‘true’, if reserved instances exist, Ocean will utilize them before launching spot instances. If the value is set as 'null', it will automatically be inherited from the cluster level.
          */
         utilizeReservedInstances?: pulumi.Input<boolean>;
+    }
+
+    export interface OceanLaunchSpecStrategyOrientation {
+        /**
+         * Set this value to control the approach that Ocean takes while launching nodes. Valid values: `"costOriented"`, `"cheapest"`, `"balanced"`.
+         */
+        availabilityVsCost?: pulumi.Input<string>;
     }
 
     export interface OceanLaunchSpecTag {

@@ -19,6 +19,12 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<int>? DrainingTimeout { get; set; }
 
         /// <summary>
+        /// Vng orientation configuration.
+        /// </summary>
+        [Input("orientation")]
+        public Input<Inputs.OceanLaunchSpecStrategyOrientationGetArgs>? Orientation { get; set; }
+
+        /// <summary>
         /// The desired percentage of the Spot instances out of all running instances for this VNG. Only available when the field is not set in the cluster directly (cluster.strategy.spotPercentage).
         /// </summary>
         [Input("spotPercentage")]

@@ -168,6 +168,7 @@ __all__ = [
     'OceanLaunchSpecSchedulingTaskTaskHeadroom',
     'OceanLaunchSpecStartupTaint',
     'OceanLaunchSpecStrategy',
+    'OceanLaunchSpecStrategyOrientation',
     'OceanLaunchSpecTag',
     'OceanLaunchSpecTaint',
     'OceanLaunchSpecUpdatePolicy',
@@ -10384,17 +10385,21 @@ class OceanLaunchSpecStrategy(dict):
 
     def __init__(__self__, *,
                  draining_timeout: Optional[builtins.int] = None,
+                 orientation: Optional['outputs.OceanLaunchSpecStrategyOrientation'] = None,
                  spot_percentage: Optional[builtins.int] = None,
                  utilize_commitments: Optional[builtins.bool] = None,
                  utilize_reserved_instances: Optional[builtins.bool] = None):
         """
         :param builtins.int draining_timeout: The configurable amount of time that Ocean will wait for the draining process to complete before terminating an instance. If you have not defined a draining timeout, the default of 300 seconds will be used.
+        :param 'OceanLaunchSpecStrategyOrientationArgs' orientation: Vng orientation configuration.
         :param builtins.int spot_percentage: The desired percentage of the Spot instances out of all running instances for this VNG. Only available when the field is not set in the cluster directly (cluster.strategy.spotPercentage).
         :param builtins.bool utilize_commitments: When set as ‘true’, if savings plans commitments have available capacity, Ocean will utilize them alongside RIs (if exist) to maximize cost efficiency. If the value is set as 'null', it will automatically be inherited from the cluster level.
         :param builtins.bool utilize_reserved_instances: When set as ‘true’, if reserved instances exist, Ocean will utilize them before launching spot instances. If the value is set as 'null', it will automatically be inherited from the cluster level.
         """
         if draining_timeout is not None:
             pulumi.set(__self__, "draining_timeout", draining_timeout)
+        if orientation is not None:
+            pulumi.set(__self__, "orientation", orientation)
         if spot_percentage is not None:
             pulumi.set(__self__, "spot_percentage", spot_percentage)
         if utilize_commitments is not None:
@@ -10409,6 +10414,14 @@ class OceanLaunchSpecStrategy(dict):
         The configurable amount of time that Ocean will wait for the draining process to complete before terminating an instance. If you have not defined a draining timeout, the default of 300 seconds will be used.
         """
         return pulumi.get(self, "draining_timeout")
+
+    @property
+    @pulumi.getter
+    def orientation(self) -> Optional['outputs.OceanLaunchSpecStrategyOrientation']:
+        """
+        Vng orientation configuration.
+        """
+        return pulumi.get(self, "orientation")
 
     @property
     @pulumi.getter(name="spotPercentage")
@@ -10433,6 +10446,42 @@ class OceanLaunchSpecStrategy(dict):
         When set as ‘true’, if reserved instances exist, Ocean will utilize them before launching spot instances. If the value is set as 'null', it will automatically be inherited from the cluster level.
         """
         return pulumi.get(self, "utilize_reserved_instances")
+
+
+@pulumi.output_type
+class OceanLaunchSpecStrategyOrientation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "availabilityVsCost":
+            suggest = "availability_vs_cost"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanLaunchSpecStrategyOrientation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanLaunchSpecStrategyOrientation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanLaunchSpecStrategyOrientation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 availability_vs_cost: Optional[builtins.str] = None):
+        """
+        :param builtins.str availability_vs_cost: Set this value to control the approach that Ocean takes while launching nodes. Valid values: `"costOriented"`, `"cheapest"`, `"balanced"`.
+        """
+        if availability_vs_cost is not None:
+            pulumi.set(__self__, "availability_vs_cost", availability_vs_cost)
+
+    @property
+    @pulumi.getter(name="availabilityVsCost")
+    def availability_vs_cost(self) -> Optional[builtins.str]:
+        """
+        Set this value to control the approach that Ocean takes while launching nodes. Valid values: `"costOriented"`, `"cheapest"`, `"balanced"`.
+        """
+        return pulumi.get(self, "availability_vs_cost")
 
 
 @pulumi.output_type

@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecStrategyOrientationArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.Objects;
@@ -29,6 +30,21 @@ public final class OceanLaunchSpecStrategyArgs extends com.pulumi.resources.Reso
      */
     public Optional<Output<Integer>> drainingTimeout() {
         return Optional.ofNullable(this.drainingTimeout);
+    }
+
+    /**
+     * Vng orientation configuration.
+     * 
+     */
+    @Import(name="orientation")
+    private @Nullable Output<OceanLaunchSpecStrategyOrientationArgs> orientation;
+
+    /**
+     * @return Vng orientation configuration.
+     * 
+     */
+    public Optional<Output<OceanLaunchSpecStrategyOrientationArgs>> orientation() {
+        return Optional.ofNullable(this.orientation);
     }
 
     /**
@@ -80,6 +96,7 @@ public final class OceanLaunchSpecStrategyArgs extends com.pulumi.resources.Reso
 
     private OceanLaunchSpecStrategyArgs(OceanLaunchSpecStrategyArgs $) {
         this.drainingTimeout = $.drainingTimeout;
+        this.orientation = $.orientation;
         this.spotPercentage = $.spotPercentage;
         this.utilizeCommitments = $.utilizeCommitments;
         this.utilizeReservedInstances = $.utilizeReservedInstances;
@@ -122,6 +139,27 @@ public final class OceanLaunchSpecStrategyArgs extends com.pulumi.resources.Reso
          */
         public Builder drainingTimeout(Integer drainingTimeout) {
             return drainingTimeout(Output.of(drainingTimeout));
+        }
+
+        /**
+         * @param orientation Vng orientation configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orientation(@Nullable Output<OceanLaunchSpecStrategyOrientationArgs> orientation) {
+            $.orientation = orientation;
+            return this;
+        }
+
+        /**
+         * @param orientation Vng orientation configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orientation(OceanLaunchSpecStrategyOrientationArgs orientation) {
+            return orientation(Output.of(orientation));
         }
 
         /**
