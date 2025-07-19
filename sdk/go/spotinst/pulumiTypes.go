@@ -9370,8 +9370,9 @@ func (o StatefulNodeAzureLoginPtrOutput) UserName() pulumi.StringPtrOutput {
 }
 
 type StatefulNodeAzureManagedServiceIdentity struct {
-	Name              string `pulumi:"name"`
-	ResourceGroupName string `pulumi:"resourceGroupName"`
+	Name              string  `pulumi:"name"`
+	ResourceGroupName string  `pulumi:"resourceGroupName"`
+	SubscriptionId    *string `pulumi:"subscriptionId"`
 }
 
 // StatefulNodeAzureManagedServiceIdentityInput is an input type that accepts StatefulNodeAzureManagedServiceIdentityArgs and StatefulNodeAzureManagedServiceIdentityOutput values.
@@ -9386,8 +9387,9 @@ type StatefulNodeAzureManagedServiceIdentityInput interface {
 }
 
 type StatefulNodeAzureManagedServiceIdentityArgs struct {
-	Name              pulumi.StringInput `pulumi:"name"`
-	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	Name              pulumi.StringInput    `pulumi:"name"`
+	ResourceGroupName pulumi.StringInput    `pulumi:"resourceGroupName"`
+	SubscriptionId    pulumi.StringPtrInput `pulumi:"subscriptionId"`
 }
 
 func (StatefulNodeAzureManagedServiceIdentityArgs) ElementType() reflect.Type {
@@ -9447,6 +9449,10 @@ func (o StatefulNodeAzureManagedServiceIdentityOutput) Name() pulumi.StringOutpu
 
 func (o StatefulNodeAzureManagedServiceIdentityOutput) ResourceGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v StatefulNodeAzureManagedServiceIdentity) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+func (o StatefulNodeAzureManagedServiceIdentityOutput) SubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureManagedServiceIdentity) *string { return v.SubscriptionId }).(pulumi.StringPtrOutput)
 }
 
 type StatefulNodeAzureManagedServiceIdentityArrayOutput struct{ *pulumi.OutputState }

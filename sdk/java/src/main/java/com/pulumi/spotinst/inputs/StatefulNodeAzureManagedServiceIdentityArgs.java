@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class StatefulNodeAzureManagedServiceIdentityArgs extends com.pulumi.resources.ResourceArgs {
@@ -28,11 +30,19 @@ public final class StatefulNodeAzureManagedServiceIdentityArgs extends com.pulum
         return this.resourceGroupName;
     }
 
+    @Import(name="subscriptionId")
+    private @Nullable Output<String> subscriptionId;
+
+    public Optional<Output<String>> subscriptionId() {
+        return Optional.ofNullable(this.subscriptionId);
+    }
+
     private StatefulNodeAzureManagedServiceIdentityArgs() {}
 
     private StatefulNodeAzureManagedServiceIdentityArgs(StatefulNodeAzureManagedServiceIdentityArgs $) {
         this.name = $.name;
         this.resourceGroupName = $.resourceGroupName;
+        this.subscriptionId = $.subscriptionId;
     }
 
     public static Builder builder() {
@@ -69,6 +79,15 @@ public final class StatefulNodeAzureManagedServiceIdentityArgs extends com.pulum
 
         public Builder resourceGroupName(String resourceGroupName) {
             return resourceGroupName(Output.of(resourceGroupName));
+        }
+
+        public Builder subscriptionId(@Nullable Output<String> subscriptionId) {
+            $.subscriptionId = subscriptionId;
+            return this;
+        }
+
+        public Builder subscriptionId(String subscriptionId) {
+            return subscriptionId(Output.of(subscriptionId));
         }
 
         public StatefulNodeAzureManagedServiceIdentityArgs build() {

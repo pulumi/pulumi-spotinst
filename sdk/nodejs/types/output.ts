@@ -537,6 +537,7 @@ export interface StatefulNodeAzureLogin {
 export interface StatefulNodeAzureManagedServiceIdentity {
     name: string;
     resourceGroupName: string;
+    subscriptionId?: string;
 }
 
 export interface StatefulNodeAzureNetwork {

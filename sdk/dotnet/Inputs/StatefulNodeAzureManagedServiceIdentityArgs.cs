@@ -18,6 +18,9 @@ namespace Pulumi.SpotInst.Inputs
         [Input("resourceGroupName", required: true)]
         public Input<string> ResourceGroupName { get; set; } = null!;
 
+        [Input("subscriptionId")]
+        public Input<string>? SubscriptionId { get; set; }
+
         public StatefulNodeAzureManagedServiceIdentityArgs()
         {
         }

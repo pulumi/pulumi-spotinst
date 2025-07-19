@@ -3913,6 +3913,8 @@ class StatefulNodeAzureManagedServiceIdentity(dict):
         suggest = None
         if key == "resourceGroupName":
             suggest = "resource_group_name"
+        elif key == "subscriptionId":
+            suggest = "subscription_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in StatefulNodeAzureManagedServiceIdentity. Access the value via the '{suggest}' property getter instead.")
@@ -3927,9 +3929,12 @@ class StatefulNodeAzureManagedServiceIdentity(dict):
 
     def __init__(__self__, *,
                  name: builtins.str,
-                 resource_group_name: builtins.str):
+                 resource_group_name: builtins.str,
+                 subscription_id: Optional[builtins.str] = None):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if subscription_id is not None:
+            pulumi.set(__self__, "subscription_id", subscription_id)
 
     @property
     @pulumi.getter
@@ -3940,6 +3945,11 @@ class StatefulNodeAzureManagedServiceIdentity(dict):
     @pulumi.getter(name="resourceGroupName")
     def resource_group_name(self) -> builtins.str:
         return pulumi.get(self, "resource_group_name")
+
+    @property
+    @pulumi.getter(name="subscriptionId")
+    def subscription_id(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "subscription_id")
 
 
 @pulumi.output_type

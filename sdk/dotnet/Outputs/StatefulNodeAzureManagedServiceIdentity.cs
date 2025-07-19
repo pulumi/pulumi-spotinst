@@ -15,15 +15,19 @@ namespace Pulumi.SpotInst.Outputs
     {
         public readonly string Name;
         public readonly string ResourceGroupName;
+        public readonly string? SubscriptionId;
 
         [OutputConstructor]
         private StatefulNodeAzureManagedServiceIdentity(
             string name,
 
-            string resourceGroupName)
+            string resourceGroupName,
+
+            string? subscriptionId)
         {
             Name = name;
             ResourceGroupName = resourceGroupName;
+            SubscriptionId = subscriptionId;
         }
     }
 }
