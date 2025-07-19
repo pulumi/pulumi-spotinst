@@ -7,11 +7,14 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class StatefulNodeAzureManagedServiceIdentity {
     private String name;
     private String resourceGroupName;
+    private @Nullable String subscriptionId;
 
     private StatefulNodeAzureManagedServiceIdentity() {}
     public String name() {
@@ -19,6 +22,9 @@ public final class StatefulNodeAzureManagedServiceIdentity {
     }
     public String resourceGroupName() {
         return this.resourceGroupName;
+    }
+    public Optional<String> subscriptionId() {
+        return Optional.ofNullable(this.subscriptionId);
     }
 
     public static Builder builder() {
@@ -32,11 +38,13 @@ public final class StatefulNodeAzureManagedServiceIdentity {
     public static final class Builder {
         private String name;
         private String resourceGroupName;
+        private @Nullable String subscriptionId;
         public Builder() {}
         public Builder(StatefulNodeAzureManagedServiceIdentity defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
     	      this.resourceGroupName = defaults.resourceGroupName;
+    	      this.subscriptionId = defaults.subscriptionId;
         }
 
         @CustomType.Setter
@@ -55,10 +63,17 @@ public final class StatefulNodeAzureManagedServiceIdentity {
             this.resourceGroupName = resourceGroupName;
             return this;
         }
+        @CustomType.Setter
+        public Builder subscriptionId(@Nullable String subscriptionId) {
+
+            this.subscriptionId = subscriptionId;
+            return this;
+        }
         public StatefulNodeAzureManagedServiceIdentity build() {
             final var _resultValue = new StatefulNodeAzureManagedServiceIdentity();
             _resultValue.name = name;
             _resultValue.resourceGroupName = resourceGroupName;
+            _resultValue.subscriptionId = subscriptionId;
             return _resultValue;
         }
     }

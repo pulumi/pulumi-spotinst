@@ -537,6 +537,7 @@ export interface StatefulNodeAzureLogin {
 export interface StatefulNodeAzureManagedServiceIdentity {
     name: pulumi.Input<string>;
     resourceGroupName: pulumi.Input<string>;
+    subscriptionId?: pulumi.Input<string>;
 }
 
 export interface StatefulNodeAzureNetwork {

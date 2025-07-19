@@ -180,6 +180,7 @@ import (
 //					&spotinst.StatefulNodeAzureManagedServiceIdentityArgs{
 //						Name:              pulumi.String("mySI2"),
 //						ResourceGroupName: pulumi.String("myResourceGroup"),
+//						SubscriptionId:    pulumi.String("12345678-abcd-1234-abcd-123456789ab"),
 //					},
 //				},
 //				Network: &spotinst.StatefulNodeAzureNetworkArgs{
@@ -453,6 +454,9 @@ import (
 // * `managedServiceIdentities` - (Optional) Add a user-assigned managed identity to the Stateful Node's VM.
 //   - `name` - (Required) name of the managed identity.
 //   - `resourceGroupName` - (Required) The Resource Group that the user-assigned managed identity resides in.
+//   - `subscriptionId` - (Optional) Defines the subscription ID of the managed service identities. Required if the managed service identity is in a different subscription. To use a user-assigned managed identity in a different subscription, you must ensure that the spotAccount's Service Principal has access to the defined subscription and that it has the two following permissions:
+//     1. Microsoft.ManagedIdentity/userAssignedIdentities/assign/action
+//     2. Microsoft.ManagedIdentity/userAssignedIdentities/read
 //
 // <a id="proximityPlacementGroups"></a>
 // ## Proximity Placement Groups

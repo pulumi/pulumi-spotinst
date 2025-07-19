@@ -4530,6 +4530,7 @@ if not MYPY:
     class StatefulNodeAzureManagedServiceIdentityArgsDict(TypedDict):
         name: pulumi.Input[builtins.str]
         resource_group_name: pulumi.Input[builtins.str]
+        subscription_id: NotRequired[pulumi.Input[builtins.str]]
 elif False:
     StatefulNodeAzureManagedServiceIdentityArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -4537,9 +4538,12 @@ elif False:
 class StatefulNodeAzureManagedServiceIdentityArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[builtins.str],
-                 resource_group_name: pulumi.Input[builtins.str]):
+                 resource_group_name: pulumi.Input[builtins.str],
+                 subscription_id: Optional[pulumi.Input[builtins.str]] = None):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if subscription_id is not None:
+            pulumi.set(__self__, "subscription_id", subscription_id)
 
     @property
     @pulumi.getter
@@ -4558,6 +4562,15 @@ class StatefulNodeAzureManagedServiceIdentityArgs:
     @resource_group_name.setter
     def resource_group_name(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="subscriptionId")
+    def subscription_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "subscription_id")
+
+    @subscription_id.setter
+    def subscription_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "subscription_id", value)
 
 
 if not MYPY:
