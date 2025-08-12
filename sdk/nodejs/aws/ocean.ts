@@ -147,6 +147,10 @@ export class Ocean extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Enables assignment of a primary IPv6 address to the cluster. This feature is only available when `associateIpv6Address` is explicitly set to true. Additionally, the cluster must have been initially created as an EKS cluster in IPv6 mode.
+     */
+    public readonly primaryIpv6!: pulumi.Output<boolean | undefined>;
+    /**
      * The region the cluster will run in.
      */
     public readonly region!: pulumi.Output<string | undefined>;
@@ -251,6 +255,7 @@ export class Ocean extends pulumi.CustomResource {
             resourceInputs["minSize"] = state ? state.minSize : undefined;
             resourceInputs["monitoring"] = state ? state.monitoring : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["primaryIpv6"] = state ? state.primaryIpv6 : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["reservedEnis"] = state ? state.reservedEnis : undefined;
             resourceInputs["resourceTagSpecifications"] = state ? state.resourceTagSpecifications : undefined;
@@ -306,6 +311,7 @@ export class Ocean extends pulumi.CustomResource {
             resourceInputs["minSize"] = args ? args.minSize : undefined;
             resourceInputs["monitoring"] = args ? args.monitoring : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["primaryIpv6"] = args ? args.primaryIpv6 : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["reservedEnis"] = args ? args.reservedEnis : undefined;
             resourceInputs["resourceTagSpecifications"] = args ? args.resourceTagSpecifications : undefined;
@@ -432,6 +438,10 @@ export interface OceanState {
      * The cluster name.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Enables assignment of a primary IPv6 address to the cluster. This feature is only available when `associateIpv6Address` is explicitly set to true. Additionally, the cluster must have been initially created as an EKS cluster in IPv6 mode.
+     */
+    primaryIpv6?: pulumi.Input<boolean>;
     /**
      * The region the cluster will run in.
      */
@@ -601,6 +611,10 @@ export interface OceanArgs {
      * The cluster name.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Enables assignment of a primary IPv6 address to the cluster. This feature is only available when `associateIpv6Address` is explicitly set to true. Additionally, the cluster must have been initially created as an EKS cluster in IPv6 mode.
+     */
+    primaryIpv6?: pulumi.Input<boolean>;
     /**
      * The region the cluster will run in.
      */

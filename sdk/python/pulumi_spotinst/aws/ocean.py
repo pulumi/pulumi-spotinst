@@ -50,6 +50,7 @@ class OceanArgs:
                  min_size: Optional[pulumi.Input[_builtins.int]] = None,
                  monitoring: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 primary_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  reserved_enis: Optional[pulumi.Input[_builtins.int]] = None,
                  resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input['OceanResourceTagSpecificationArgs']]]] = None,
@@ -94,6 +95,7 @@ class OceanArgs:
         :param pulumi.Input[_builtins.int] min_size: The lower limit of instances the cluster can scale down to.
         :param pulumi.Input[_builtins.bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
         :param pulumi.Input[_builtins.str] name: The cluster name.
+        :param pulumi.Input[_builtins.bool] primary_ipv6: Enables assignment of a primary IPv6 address to the cluster. This feature is only available when `associate_ipv6_address` is explicitly set to true. Additionally, the cluster must have been initially created as an EKS cluster in IPv6 mode.
         :param pulumi.Input[_builtins.str] region: The region the cluster will run in.
         :param pulumi.Input[_builtins.int] reserved_enis: Specifies the count of ENIs to reserve per instance type for scaling purposes.
         :param pulumi.Input[Sequence[pulumi.Input['OceanResourceTagSpecificationArgs']]] resource_tag_specifications: Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
@@ -164,6 +166,8 @@ class OceanArgs:
             pulumi.set(__self__, "monitoring", monitoring)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if primary_ipv6 is not None:
+            pulumi.set(__self__, "primary_ipv6", primary_ipv6)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if reserved_enis is not None:
@@ -536,6 +540,18 @@ class OceanArgs:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="primaryIpv6")
+    def primary_ipv6(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enables assignment of a primary IPv6 address to the cluster. This feature is only available when `associate_ipv6_address` is explicitly set to true. Additionally, the cluster must have been initially created as an EKS cluster in IPv6 mode.
+        """
+        return pulumi.get(self, "primary_ipv6")
+
+    @primary_ipv6.setter
+    def primary_ipv6(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "primary_ipv6", value)
+
+    @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -741,6 +757,7 @@ class _OceanState:
                  min_size: Optional[pulumi.Input[_builtins.int]] = None,
                  monitoring: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 primary_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  reserved_enis: Optional[pulumi.Input[_builtins.int]] = None,
                  resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input['OceanResourceTagSpecificationArgs']]]] = None,
@@ -784,6 +801,7 @@ class _OceanState:
         :param pulumi.Input[_builtins.int] min_size: The lower limit of instances the cluster can scale down to.
         :param pulumi.Input[_builtins.bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
         :param pulumi.Input[_builtins.str] name: The cluster name.
+        :param pulumi.Input[_builtins.bool] primary_ipv6: Enables assignment of a primary IPv6 address to the cluster. This feature is only available when `associate_ipv6_address` is explicitly set to true. Additionally, the cluster must have been initially created as an EKS cluster in IPv6 mode.
         :param pulumi.Input[_builtins.str] region: The region the cluster will run in.
         :param pulumi.Input[_builtins.int] reserved_enis: Specifies the count of ENIs to reserve per instance type for scaling purposes.
         :param pulumi.Input[Sequence[pulumi.Input['OceanResourceTagSpecificationArgs']]] resource_tag_specifications: Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
@@ -856,6 +874,8 @@ class _OceanState:
             pulumi.set(__self__, "monitoring", monitoring)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if primary_ipv6 is not None:
+            pulumi.set(__self__, "primary_ipv6", primary_ipv6)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if reserved_enis is not None:
@@ -1207,6 +1227,18 @@ class _OceanState:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="primaryIpv6")
+    def primary_ipv6(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enables assignment of a primary IPv6 address to the cluster. This feature is only available when `associate_ipv6_address` is explicitly set to true. Additionally, the cluster must have been initially created as an EKS cluster in IPv6 mode.
+        """
+        return pulumi.get(self, "primary_ipv6")
+
+    @primary_ipv6.setter
+    def primary_ipv6(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "primary_ipv6", value)
+
+    @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -1440,6 +1472,7 @@ class Ocean(pulumi.CustomResource):
                  min_size: Optional[pulumi.Input[_builtins.int]] = None,
                  monitoring: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 primary_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  reserved_enis: Optional[pulumi.Input[_builtins.int]] = None,
                  resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanResourceTagSpecificationArgs', 'OceanResourceTagSpecificationArgsDict']]]]] = None,
@@ -1497,6 +1530,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] min_size: The lower limit of instances the cluster can scale down to.
         :param pulumi.Input[_builtins.bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
         :param pulumi.Input[_builtins.str] name: The cluster name.
+        :param pulumi.Input[_builtins.bool] primary_ipv6: Enables assignment of a primary IPv6 address to the cluster. This feature is only available when `associate_ipv6_address` is explicitly set to true. Additionally, the cluster must have been initially created as an EKS cluster in IPv6 mode.
         :param pulumi.Input[_builtins.str] region: The region the cluster will run in.
         :param pulumi.Input[_builtins.int] reserved_enis: Specifies the count of ENIs to reserve per instance type for scaling purposes.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanResourceTagSpecificationArgs', 'OceanResourceTagSpecificationArgsDict']]]] resource_tag_specifications: Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
@@ -1576,6 +1610,7 @@ class Ocean(pulumi.CustomResource):
                  min_size: Optional[pulumi.Input[_builtins.int]] = None,
                  monitoring: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 primary_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  reserved_enis: Optional[pulumi.Input[_builtins.int]] = None,
                  resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanResourceTagSpecificationArgs', 'OceanResourceTagSpecificationArgsDict']]]]] = None,
@@ -1631,6 +1666,7 @@ class Ocean(pulumi.CustomResource):
             __props__.__dict__["min_size"] = min_size
             __props__.__dict__["monitoring"] = monitoring
             __props__.__dict__["name"] = name
+            __props__.__dict__["primary_ipv6"] = primary_ipv6
             __props__.__dict__["region"] = region
             __props__.__dict__["reserved_enis"] = reserved_enis
             __props__.__dict__["resource_tag_specifications"] = resource_tag_specifications
@@ -1689,6 +1725,7 @@ class Ocean(pulumi.CustomResource):
             min_size: Optional[pulumi.Input[_builtins.int]] = None,
             monitoring: Optional[pulumi.Input[_builtins.bool]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            primary_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
             region: Optional[pulumi.Input[_builtins.str]] = None,
             reserved_enis: Optional[pulumi.Input[_builtins.int]] = None,
             resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanResourceTagSpecificationArgs', 'OceanResourceTagSpecificationArgsDict']]]]] = None,
@@ -1737,6 +1774,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] min_size: The lower limit of instances the cluster can scale down to.
         :param pulumi.Input[_builtins.bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
         :param pulumi.Input[_builtins.str] name: The cluster name.
+        :param pulumi.Input[_builtins.bool] primary_ipv6: Enables assignment of a primary IPv6 address to the cluster. This feature is only available when `associate_ipv6_address` is explicitly set to true. Additionally, the cluster must have been initially created as an EKS cluster in IPv6 mode.
         :param pulumi.Input[_builtins.str] region: The region the cluster will run in.
         :param pulumi.Input[_builtins.int] reserved_enis: Specifies the count of ENIs to reserve per instance type for scaling purposes.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanResourceTagSpecificationArgs', 'OceanResourceTagSpecificationArgsDict']]]] resource_tag_specifications: Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
@@ -1786,6 +1824,7 @@ class Ocean(pulumi.CustomResource):
         __props__.__dict__["min_size"] = min_size
         __props__.__dict__["monitoring"] = monitoring
         __props__.__dict__["name"] = name
+        __props__.__dict__["primary_ipv6"] = primary_ipv6
         __props__.__dict__["region"] = region
         __props__.__dict__["reserved_enis"] = reserved_enis
         __props__.__dict__["resource_tag_specifications"] = resource_tag_specifications
@@ -2011,6 +2050,14 @@ class Ocean(pulumi.CustomResource):
         The cluster name.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="primaryIpv6")
+    def primary_ipv6(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Enables assignment of a primary IPv6 address to the cluster. This feature is only available when `associate_ipv6_address` is explicitly set to true. Additionally, the cluster must have been initially created as an EKS cluster in IPv6 mode.
+        """
+        return pulumi.get(self, "primary_ipv6")
 
     @_builtins.property
     @pulumi.getter

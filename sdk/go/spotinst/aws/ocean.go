@@ -77,6 +77,8 @@ type Ocean struct {
 	Monitoring pulumi.BoolPtrOutput `pulumi:"monitoring"`
 	// The cluster name.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Enables assignment of a primary IPv6 address to the cluster. This feature is only available when `associateIpv6Address` is explicitly set to true. Additionally, the cluster must have been initially created as an EKS cluster in IPv6 mode.
+	PrimaryIpv6 pulumi.BoolPtrOutput `pulumi:"primaryIpv6"`
 	// The region the cluster will run in.
 	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// Specifies the count of ENIs to reserve per instance type for scaling purposes.
@@ -203,6 +205,8 @@ type oceanState struct {
 	Monitoring *bool `pulumi:"monitoring"`
 	// The cluster name.
 	Name *string `pulumi:"name"`
+	// Enables assignment of a primary IPv6 address to the cluster. This feature is only available when `associateIpv6Address` is explicitly set to true. Additionally, the cluster must have been initially created as an EKS cluster in IPv6 mode.
+	PrimaryIpv6 *bool `pulumi:"primaryIpv6"`
 	// The region the cluster will run in.
 	Region *string `pulumi:"region"`
 	// Specifies the count of ENIs to reserve per instance type for scaling purposes.
@@ -291,6 +295,8 @@ type OceanState struct {
 	Monitoring pulumi.BoolPtrInput
 	// The cluster name.
 	Name pulumi.StringPtrInput
+	// Enables assignment of a primary IPv6 address to the cluster. This feature is only available when `associateIpv6Address` is explicitly set to true. Additionally, the cluster must have been initially created as an EKS cluster in IPv6 mode.
+	PrimaryIpv6 pulumi.BoolPtrInput
 	// The region the cluster will run in.
 	Region pulumi.StringPtrInput
 	// Specifies the count of ENIs to reserve per instance type for scaling purposes.
@@ -383,6 +389,8 @@ type oceanArgs struct {
 	Monitoring *bool `pulumi:"monitoring"`
 	// The cluster name.
 	Name *string `pulumi:"name"`
+	// Enables assignment of a primary IPv6 address to the cluster. This feature is only available when `associateIpv6Address` is explicitly set to true. Additionally, the cluster must have been initially created as an EKS cluster in IPv6 mode.
+	PrimaryIpv6 *bool `pulumi:"primaryIpv6"`
 	// The region the cluster will run in.
 	Region *string `pulumi:"region"`
 	// Specifies the count of ENIs to reserve per instance type for scaling purposes.
@@ -472,6 +480,8 @@ type OceanArgs struct {
 	Monitoring pulumi.BoolPtrInput
 	// The cluster name.
 	Name pulumi.StringPtrInput
+	// Enables assignment of a primary IPv6 address to the cluster. This feature is only available when `associateIpv6Address` is explicitly set to true. Additionally, the cluster must have been initially created as an EKS cluster in IPv6 mode.
+	PrimaryIpv6 pulumi.BoolPtrInput
 	// The region the cluster will run in.
 	Region pulumi.StringPtrInput
 	// Specifies the count of ENIs to reserve per instance type for scaling purposes.
@@ -725,6 +735,11 @@ func (o OceanOutput) Monitoring() pulumi.BoolPtrOutput {
 // The cluster name.
 func (o OceanOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ocean) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Enables assignment of a primary IPv6 address to the cluster. This feature is only available when `associateIpv6Address` is explicitly set to true. Additionally, the cluster must have been initially created as an EKS cluster in IPv6 mode.
+func (o OceanOutput) PrimaryIpv6() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Ocean) pulumi.BoolPtrOutput { return v.PrimaryIpv6 }).(pulumi.BoolPtrOutput)
 }
 
 // The region the cluster will run in.

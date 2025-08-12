@@ -415,6 +415,21 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Enables assignment of a primary IPv6 address to the cluster. This feature is only available when `associate_ipv6_address` is explicitly set to true. Additionally, the cluster must have been initially created as an EKS cluster in IPv6 mode.
+     * 
+     */
+    @Import(name="primaryIpv6")
+    private @Nullable Output<Boolean> primaryIpv6;
+
+    /**
+     * @return Enables assignment of a primary IPv6 address to the cluster. This feature is only available when `associate_ipv6_address` is explicitly set to true. Additionally, the cluster must have been initially created as an EKS cluster in IPv6 mode.
+     * 
+     */
+    public Optional<Output<Boolean>> primaryIpv6() {
+        return Optional.ofNullable(this.primaryIpv6);
+    }
+
+    /**
      * The region the cluster will run in.
      * 
      */
@@ -687,6 +702,7 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
         this.minSize = $.minSize;
         this.monitoring = $.monitoring;
         this.name = $.name;
+        this.primaryIpv6 = $.primaryIpv6;
         this.region = $.region;
         this.reservedEnis = $.reservedEnis;
         this.resourceTagSpecifications = $.resourceTagSpecifications;
@@ -1301,6 +1317,27 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param primaryIpv6 Enables assignment of a primary IPv6 address to the cluster. This feature is only available when `associate_ipv6_address` is explicitly set to true. Additionally, the cluster must have been initially created as an EKS cluster in IPv6 mode.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder primaryIpv6(@Nullable Output<Boolean> primaryIpv6) {
+            $.primaryIpv6 = primaryIpv6;
+            return this;
+        }
+
+        /**
+         * @param primaryIpv6 Enables assignment of a primary IPv6 address to the cluster. This feature is only available when `associate_ipv6_address` is explicitly set to true. Additionally, the cluster must have been initially created as an EKS cluster in IPv6 mode.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder primaryIpv6(Boolean primaryIpv6) {
+            return primaryIpv6(Output.of(primaryIpv6));
         }
 
         /**
