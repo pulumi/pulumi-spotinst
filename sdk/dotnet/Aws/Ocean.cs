@@ -179,6 +179,12 @@ namespace Pulumi.SpotInst.Aws
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Enables assignment of a primary IPv6 address to the cluster. This feature is only available when `associate_ipv6_address` is explicitly set to true. Additionally, the cluster must have been initially created as an EKS cluster in IPv6 mode.
+        /// </summary>
+        [Output("primaryIpv6")]
+        public Output<bool?> PrimaryIpv6 { get; private set; } = null!;
+
+        /// <summary>
         /// The region the cluster will run in.
         /// </summary>
         [Output("region")]
@@ -508,6 +514,12 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Enables assignment of a primary IPv6 address to the cluster. This feature is only available when `associate_ipv6_address` is explicitly set to true. Additionally, the cluster must have been initially created as an EKS cluster in IPv6 mode.
+        /// </summary>
+        [Input("primaryIpv6")]
+        public Input<bool>? PrimaryIpv6 { get; set; }
 
         /// <summary>
         /// The region the cluster will run in.
@@ -842,6 +854,12 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Enables assignment of a primary IPv6 address to the cluster. This feature is only available when `associate_ipv6_address` is explicitly set to true. Additionally, the cluster must have been initially created as an EKS cluster in IPv6 mode.
+        /// </summary>
+        [Input("primaryIpv6")]
+        public Input<bool>? PrimaryIpv6 { get; set; }
 
         /// <summary>
         /// The region the cluster will run in.

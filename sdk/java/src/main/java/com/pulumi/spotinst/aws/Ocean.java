@@ -403,6 +403,20 @@ public class Ocean extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
+     * Enables assignment of a primary IPv6 address to the cluster. This feature is only available when `associate_ipv6_address` is explicitly set to true. Additionally, the cluster must have been initially created as an EKS cluster in IPv6 mode.
+     * 
+     */
+    @Export(name="primaryIpv6", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> primaryIpv6;
+
+    /**
+     * @return Enables assignment of a primary IPv6 address to the cluster. This feature is only available when `associate_ipv6_address` is explicitly set to true. Additionally, the cluster must have been initially created as an EKS cluster in IPv6 mode.
+     * 
+     */
+    public Output<Optional<Boolean>> primaryIpv6() {
+        return Codegen.optional(this.primaryIpv6);
+    }
+    /**
      * The region the cluster will run in.
      * 
      */
