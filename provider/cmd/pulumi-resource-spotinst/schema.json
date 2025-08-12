@@ -14199,6 +14199,10 @@
                     "type": "string",
                     "description": "The cluster name.\n"
                 },
+                "primaryIpv6": {
+                    "type": "boolean",
+                    "description": "Enables assignment of a primary IPv6 address to the cluster. This feature is only available when `associate_ipv6_address` is explicitly set to true. Additionally, the cluster must have been initially created as an EKS cluster in IPv6 mode.\n"
+                },
                 "region": {
                     "type": "string",
                     "description": "The region the cluster will run in.\n"
@@ -14419,6 +14423,10 @@
                     "type": "string",
                     "description": "The cluster name.\n"
                 },
+                "primaryIpv6": {
+                    "type": "boolean",
+                    "description": "Enables assignment of a primary IPv6 address to the cluster. This feature is only available when `associate_ipv6_address` is explicitly set to true. Additionally, the cluster must have been initially created as an EKS cluster in IPv6 mode.\n"
+                },
                 "region": {
                     "type": "string",
                     "description": "The region the cluster will run in.\n"
@@ -14637,6 +14645,10 @@
                     "name": {
                         "type": "string",
                         "description": "The cluster name.\n"
+                    },
+                    "primaryIpv6": {
+                        "type": "boolean",
+                        "description": "Enables assignment of a primary IPv6 address to the cluster. This feature is only available when `associate_ipv6_address` is explicitly set to true. Additionally, the cluster must have been initially created as an EKS cluster in IPv6 mode.\n"
                     },
                     "region": {
                         "type": "string",
