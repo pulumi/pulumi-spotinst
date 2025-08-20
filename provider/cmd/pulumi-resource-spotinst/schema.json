@@ -21754,7 +21754,7 @@
                 "properties": {
                     "__self__": {
                         "type": "ref",
-                        "$ref": "#/resources/pulumi:providers:spotinst"
+                        "$ref": "#/provider"
                     }
                 },
                 "type": "pulumi:providers:spotinst/terraformConfig",
