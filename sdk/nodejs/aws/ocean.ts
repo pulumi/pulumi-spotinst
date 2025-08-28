@@ -50,170 +50,170 @@ export class Ocean extends pulumi.CustomResource {
     /**
      * Configure IPv6 address allocation.
      */
-    public readonly associateIpv6Address!: pulumi.Output<boolean | undefined>;
+    declare public readonly associateIpv6Address: pulumi.Output<boolean | undefined>;
     /**
      * Configure public IP address allocation.
      */
-    public readonly associatePublicIpAddress!: pulumi.Output<boolean | undefined>;
+    declare public readonly associatePublicIpAddress: pulumi.Output<boolean | undefined>;
     /**
      * Attach load balancers to the cluster.
      */
-    public readonly attachLoadBalancers!: pulumi.Output<outputs.aws.OceanAttachLoadBalancer[] | undefined>;
+    declare public readonly attachLoadBalancers: pulumi.Output<outputs.aws.OceanAttachLoadBalancer[] | undefined>;
     /**
      * Describes the Ocean Kubernetes Auto Scaler.
      */
-    public readonly autoscaler!: pulumi.Output<outputs.aws.OceanAutoscaler | undefined>;
-    public readonly blacklists!: pulumi.Output<string[] | undefined>;
+    declare public readonly autoscaler: pulumi.Output<outputs.aws.OceanAutoscaler | undefined>;
+    declare public readonly blacklists: pulumi.Output<string[] | undefined>;
     /**
      * Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
      */
-    public readonly blockDeviceMappings!: pulumi.Output<outputs.aws.OceanBlockDeviceMapping[] | undefined>;
-    public readonly clusterOrientations!: pulumi.Output<outputs.aws.OceanClusterOrientation[] | undefined>;
+    declare public readonly blockDeviceMappings: pulumi.Output<outputs.aws.OceanBlockDeviceMapping[] | undefined>;
+    declare public readonly clusterOrientations: pulumi.Output<outputs.aws.OceanClusterOrientation[] | undefined>;
     /**
      * A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
      */
-    public readonly controllerId!: pulumi.Output<string | undefined>;
+    declare public readonly controllerId: pulumi.Output<string | undefined>;
     /**
      * The number of instances to launch and maintain in the cluster.
      */
-    public readonly desiredCapacity!: pulumi.Output<number>;
+    declare public readonly desiredCapacity: pulumi.Output<number>;
     /**
      * Detach load balancers from the cluster.
      */
-    public readonly detachLoadBalancers!: pulumi.Output<outputs.aws.OceanDetachLoadBalancer[] | undefined>;
+    declare public readonly detachLoadBalancers: pulumi.Output<outputs.aws.OceanDetachLoadBalancer[] | undefined>;
     /**
      * The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
      */
-    public readonly drainingTimeout!: pulumi.Output<number | undefined>;
+    declare public readonly drainingTimeout: pulumi.Output<number | undefined>;
     /**
      * Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
      */
-    public readonly ebsOptimized!: pulumi.Output<boolean | undefined>;
+    declare public readonly ebsOptimized: pulumi.Output<boolean | undefined>;
     /**
      * If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
      */
-    public readonly fallbackToOndemand!: pulumi.Output<boolean | undefined>;
-    public readonly filters!: pulumi.Output<outputs.aws.OceanFilters | undefined>;
+    declare public readonly fallbackToOndemand: pulumi.Output<boolean | undefined>;
+    declare public readonly filters: pulumi.Output<outputs.aws.OceanFilters | undefined>;
     /**
      * The amount of time, in seconds, after the instance has launched to start checking its health.
      */
-    public readonly gracePeriod!: pulumi.Output<number | undefined>;
+    declare public readonly gracePeriod: pulumi.Output<number | undefined>;
     /**
      * The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced. The minimum value allowed is 60, and it must be a multiple of 60.
      */
-    public readonly healthCheckUnhealthyDurationBeforeReplacement!: pulumi.Output<number | undefined>;
+    declare public readonly healthCheckUnhealthyDurationBeforeReplacement: pulumi.Output<number | undefined>;
     /**
      * The instance profile iam role.
      */
-    public readonly iamInstanceProfile!: pulumi.Output<string | undefined>;
+    declare public readonly iamInstanceProfile: pulumi.Output<string | undefined>;
     /**
      * ID of the image used to launch the instances.
      */
-    public readonly imageId!: pulumi.Output<string>;
+    declare public readonly imageId: pulumi.Output<string>;
     /**
      * Ocean instance metadata options object for IMDSv2.
      */
-    public readonly instanceMetadataOptions!: pulumi.Output<outputs.aws.OceanInstanceMetadataOptions | undefined>;
+    declare public readonly instanceMetadataOptions: pulumi.Output<outputs.aws.OceanInstanceMetadataOptions | undefined>;
     /**
      * Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
      */
-    public readonly instanceStorePolicy!: pulumi.Output<outputs.aws.OceanInstanceStorePolicy | undefined>;
+    declare public readonly instanceStorePolicy: pulumi.Output<outputs.aws.OceanInstanceStorePolicy | undefined>;
     /**
      * The key pair to attach the instances.
      */
-    public readonly keyName!: pulumi.Output<string | undefined>;
+    declare public readonly keyName: pulumi.Output<string | undefined>;
     /**
      * Array of load balancer objects to add to ocean cluster
      */
-    public readonly loadBalancers!: pulumi.Output<outputs.aws.OceanLoadBalancer[] | undefined>;
+    declare public readonly loadBalancers: pulumi.Output<outputs.aws.OceanLoadBalancer[] | undefined>;
     /**
      * Logging configuration.
      */
-    public readonly logging!: pulumi.Output<outputs.aws.OceanLogging | undefined>;
+    declare public readonly logging: pulumi.Output<outputs.aws.OceanLogging | undefined>;
     /**
      * The upper limit of instances the cluster can scale up to.
      */
-    public readonly maxSize!: pulumi.Output<number | undefined>;
+    declare public readonly maxSize: pulumi.Output<number | undefined>;
     /**
      * The lower limit of instances the cluster can scale down to.
      */
-    public readonly minSize!: pulumi.Output<number>;
+    declare public readonly minSize: pulumi.Output<number>;
     /**
      * Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
      */
-    public readonly monitoring!: pulumi.Output<boolean | undefined>;
+    declare public readonly monitoring: pulumi.Output<boolean | undefined>;
     /**
      * The cluster name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Enables assignment of a primary IPv6 address to the cluster. This feature is only available when `associateIpv6Address` is explicitly set to true. Additionally, the cluster must have been initially created as an EKS cluster in IPv6 mode.
      */
-    public readonly primaryIpv6!: pulumi.Output<boolean | undefined>;
+    declare public readonly primaryIpv6: pulumi.Output<boolean | undefined>;
     /**
      * The region the cluster will run in.
      */
-    public readonly region!: pulumi.Output<string | undefined>;
+    declare public readonly region: pulumi.Output<string | undefined>;
     /**
      * Specifies the count of ENIs to reserve per instance type for scaling purposes.
      */
-    public readonly reservedEnis!: pulumi.Output<number | undefined>;
+    declare public readonly reservedEnis: pulumi.Output<number | undefined>;
     /**
      * Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
      */
-    public readonly resourceTagSpecifications!: pulumi.Output<outputs.aws.OceanResourceTagSpecification[] | undefined>;
+    declare public readonly resourceTagSpecifications: pulumi.Output<outputs.aws.OceanResourceTagSpecification[] | undefined>;
     /**
      * The size (in Gb) to allocate for the root volume. Minimum `20`.
      */
-    public readonly rootVolumeSize!: pulumi.Output<number | undefined>;
+    declare public readonly rootVolumeSize: pulumi.Output<number | undefined>;
     /**
      * Set scheduling object.
      */
-    public readonly scheduledTasks!: pulumi.Output<outputs.aws.OceanScheduledTask[] | undefined>;
+    declare public readonly scheduledTasks: pulumi.Output<outputs.aws.OceanScheduledTask[] | undefined>;
     /**
      * One or more security group ids.
      */
-    public readonly securityGroups!: pulumi.Output<string[]>;
+    declare public readonly securityGroups: pulumi.Output<string[]>;
     /**
      * The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
      */
-    public readonly spotPercentage!: pulumi.Output<number | undefined>;
+    declare public readonly spotPercentage: pulumi.Output<number | undefined>;
     /**
      * Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
      */
-    public readonly spreadNodesBy!: pulumi.Output<string | undefined>;
+    declare public readonly spreadNodesBy: pulumi.Output<string | undefined>;
     /**
      * Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
      */
-    public readonly startupTaints!: pulumi.Output<outputs.aws.OceanStartupTaint[] | undefined>;
+    declare public readonly startupTaints: pulumi.Output<outputs.aws.OceanStartupTaint[] | undefined>;
     /**
      * A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
      * * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
      */
-    public readonly subnetIds!: pulumi.Output<string[]>;
+    declare public readonly subnetIds: pulumi.Output<string[]>;
     /**
      * Optionally adds tags to instances launched in an Ocean cluster.
      */
-    public readonly tags!: pulumi.Output<outputs.aws.OceanTag[] | undefined>;
-    public readonly updatePolicy!: pulumi.Output<outputs.aws.OceanUpdatePolicy | undefined>;
+    declare public readonly tags: pulumi.Output<outputs.aws.OceanTag[] | undefined>;
+    declare public readonly updatePolicy: pulumi.Output<outputs.aws.OceanUpdatePolicy | undefined>;
     /**
      * launch specification defined on the Ocean object will function only as a template for virtual node groups.
      * When set to true, on Ocean resource creation please make sure your custom VNG has an initialNodes parameter to create nodes for your VNG.
      */
-    public readonly useAsTemplateOnly!: pulumi.Output<boolean | undefined>;
+    declare public readonly useAsTemplateOnly: pulumi.Output<boolean | undefined>;
     /**
      * Base64-encoded MIME user data to make available to the instances.
      */
-    public readonly userData!: pulumi.Output<string | undefined>;
+    declare public readonly userData: pulumi.Output<string | undefined>;
     /**
      * If savings plans exist, Ocean will utilize them before launching Spot instances.
      */
-    public readonly utilizeCommitments!: pulumi.Output<boolean | undefined>;
+    declare public readonly utilizeCommitments: pulumi.Output<boolean | undefined>;
     /**
      * If Reserved instances exist, Ocean will utilize them before launching Spot instances.
      */
-    public readonly utilizeReservedInstances!: pulumi.Output<boolean | undefined>;
-    public readonly whitelists!: pulumi.Output<string[] | undefined>;
+    declare public readonly utilizeReservedInstances: pulumi.Output<boolean | undefined>;
+    declare public readonly whitelists: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a Ocean resource with the given unique name, arguments, and options.
@@ -228,107 +228,107 @@ export class Ocean extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OceanState | undefined;
-            resourceInputs["associateIpv6Address"] = state ? state.associateIpv6Address : undefined;
-            resourceInputs["associatePublicIpAddress"] = state ? state.associatePublicIpAddress : undefined;
-            resourceInputs["attachLoadBalancers"] = state ? state.attachLoadBalancers : undefined;
-            resourceInputs["autoscaler"] = state ? state.autoscaler : undefined;
-            resourceInputs["blacklists"] = state ? state.blacklists : undefined;
-            resourceInputs["blockDeviceMappings"] = state ? state.blockDeviceMappings : undefined;
-            resourceInputs["clusterOrientations"] = state ? state.clusterOrientations : undefined;
-            resourceInputs["controllerId"] = state ? state.controllerId : undefined;
-            resourceInputs["desiredCapacity"] = state ? state.desiredCapacity : undefined;
-            resourceInputs["detachLoadBalancers"] = state ? state.detachLoadBalancers : undefined;
-            resourceInputs["drainingTimeout"] = state ? state.drainingTimeout : undefined;
-            resourceInputs["ebsOptimized"] = state ? state.ebsOptimized : undefined;
-            resourceInputs["fallbackToOndemand"] = state ? state.fallbackToOndemand : undefined;
-            resourceInputs["filters"] = state ? state.filters : undefined;
-            resourceInputs["gracePeriod"] = state ? state.gracePeriod : undefined;
-            resourceInputs["healthCheckUnhealthyDurationBeforeReplacement"] = state ? state.healthCheckUnhealthyDurationBeforeReplacement : undefined;
-            resourceInputs["iamInstanceProfile"] = state ? state.iamInstanceProfile : undefined;
-            resourceInputs["imageId"] = state ? state.imageId : undefined;
-            resourceInputs["instanceMetadataOptions"] = state ? state.instanceMetadataOptions : undefined;
-            resourceInputs["instanceStorePolicy"] = state ? state.instanceStorePolicy : undefined;
-            resourceInputs["keyName"] = state ? state.keyName : undefined;
-            resourceInputs["loadBalancers"] = state ? state.loadBalancers : undefined;
-            resourceInputs["logging"] = state ? state.logging : undefined;
-            resourceInputs["maxSize"] = state ? state.maxSize : undefined;
-            resourceInputs["minSize"] = state ? state.minSize : undefined;
-            resourceInputs["monitoring"] = state ? state.monitoring : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["primaryIpv6"] = state ? state.primaryIpv6 : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["reservedEnis"] = state ? state.reservedEnis : undefined;
-            resourceInputs["resourceTagSpecifications"] = state ? state.resourceTagSpecifications : undefined;
-            resourceInputs["rootVolumeSize"] = state ? state.rootVolumeSize : undefined;
-            resourceInputs["scheduledTasks"] = state ? state.scheduledTasks : undefined;
-            resourceInputs["securityGroups"] = state ? state.securityGroups : undefined;
-            resourceInputs["spotPercentage"] = state ? state.spotPercentage : undefined;
-            resourceInputs["spreadNodesBy"] = state ? state.spreadNodesBy : undefined;
-            resourceInputs["startupTaints"] = state ? state.startupTaints : undefined;
-            resourceInputs["subnetIds"] = state ? state.subnetIds : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["updatePolicy"] = state ? state.updatePolicy : undefined;
-            resourceInputs["useAsTemplateOnly"] = state ? state.useAsTemplateOnly : undefined;
-            resourceInputs["userData"] = state ? state.userData : undefined;
-            resourceInputs["utilizeCommitments"] = state ? state.utilizeCommitments : undefined;
-            resourceInputs["utilizeReservedInstances"] = state ? state.utilizeReservedInstances : undefined;
-            resourceInputs["whitelists"] = state ? state.whitelists : undefined;
+            resourceInputs["associateIpv6Address"] = state?.associateIpv6Address;
+            resourceInputs["associatePublicIpAddress"] = state?.associatePublicIpAddress;
+            resourceInputs["attachLoadBalancers"] = state?.attachLoadBalancers;
+            resourceInputs["autoscaler"] = state?.autoscaler;
+            resourceInputs["blacklists"] = state?.blacklists;
+            resourceInputs["blockDeviceMappings"] = state?.blockDeviceMappings;
+            resourceInputs["clusterOrientations"] = state?.clusterOrientations;
+            resourceInputs["controllerId"] = state?.controllerId;
+            resourceInputs["desiredCapacity"] = state?.desiredCapacity;
+            resourceInputs["detachLoadBalancers"] = state?.detachLoadBalancers;
+            resourceInputs["drainingTimeout"] = state?.drainingTimeout;
+            resourceInputs["ebsOptimized"] = state?.ebsOptimized;
+            resourceInputs["fallbackToOndemand"] = state?.fallbackToOndemand;
+            resourceInputs["filters"] = state?.filters;
+            resourceInputs["gracePeriod"] = state?.gracePeriod;
+            resourceInputs["healthCheckUnhealthyDurationBeforeReplacement"] = state?.healthCheckUnhealthyDurationBeforeReplacement;
+            resourceInputs["iamInstanceProfile"] = state?.iamInstanceProfile;
+            resourceInputs["imageId"] = state?.imageId;
+            resourceInputs["instanceMetadataOptions"] = state?.instanceMetadataOptions;
+            resourceInputs["instanceStorePolicy"] = state?.instanceStorePolicy;
+            resourceInputs["keyName"] = state?.keyName;
+            resourceInputs["loadBalancers"] = state?.loadBalancers;
+            resourceInputs["logging"] = state?.logging;
+            resourceInputs["maxSize"] = state?.maxSize;
+            resourceInputs["minSize"] = state?.minSize;
+            resourceInputs["monitoring"] = state?.monitoring;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["primaryIpv6"] = state?.primaryIpv6;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["reservedEnis"] = state?.reservedEnis;
+            resourceInputs["resourceTagSpecifications"] = state?.resourceTagSpecifications;
+            resourceInputs["rootVolumeSize"] = state?.rootVolumeSize;
+            resourceInputs["scheduledTasks"] = state?.scheduledTasks;
+            resourceInputs["securityGroups"] = state?.securityGroups;
+            resourceInputs["spotPercentage"] = state?.spotPercentage;
+            resourceInputs["spreadNodesBy"] = state?.spreadNodesBy;
+            resourceInputs["startupTaints"] = state?.startupTaints;
+            resourceInputs["subnetIds"] = state?.subnetIds;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["updatePolicy"] = state?.updatePolicy;
+            resourceInputs["useAsTemplateOnly"] = state?.useAsTemplateOnly;
+            resourceInputs["userData"] = state?.userData;
+            resourceInputs["utilizeCommitments"] = state?.utilizeCommitments;
+            resourceInputs["utilizeReservedInstances"] = state?.utilizeReservedInstances;
+            resourceInputs["whitelists"] = state?.whitelists;
         } else {
             const args = argsOrState as OceanArgs | undefined;
-            if ((!args || args.imageId === undefined) && !opts.urn) {
+            if (args?.imageId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'imageId'");
             }
-            if ((!args || args.securityGroups === undefined) && !opts.urn) {
+            if (args?.securityGroups === undefined && !opts.urn) {
                 throw new Error("Missing required property 'securityGroups'");
             }
-            if ((!args || args.subnetIds === undefined) && !opts.urn) {
+            if (args?.subnetIds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'subnetIds'");
             }
-            resourceInputs["associateIpv6Address"] = args ? args.associateIpv6Address : undefined;
-            resourceInputs["associatePublicIpAddress"] = args ? args.associatePublicIpAddress : undefined;
-            resourceInputs["attachLoadBalancers"] = args ? args.attachLoadBalancers : undefined;
-            resourceInputs["autoscaler"] = args ? args.autoscaler : undefined;
-            resourceInputs["blacklists"] = args ? args.blacklists : undefined;
-            resourceInputs["blockDeviceMappings"] = args ? args.blockDeviceMappings : undefined;
-            resourceInputs["clusterOrientations"] = args ? args.clusterOrientations : undefined;
-            resourceInputs["controllerId"] = args ? args.controllerId : undefined;
-            resourceInputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
-            resourceInputs["detachLoadBalancers"] = args ? args.detachLoadBalancers : undefined;
-            resourceInputs["drainingTimeout"] = args ? args.drainingTimeout : undefined;
-            resourceInputs["ebsOptimized"] = args ? args.ebsOptimized : undefined;
-            resourceInputs["fallbackToOndemand"] = args ? args.fallbackToOndemand : undefined;
-            resourceInputs["filters"] = args ? args.filters : undefined;
-            resourceInputs["gracePeriod"] = args ? args.gracePeriod : undefined;
-            resourceInputs["healthCheckUnhealthyDurationBeforeReplacement"] = args ? args.healthCheckUnhealthyDurationBeforeReplacement : undefined;
-            resourceInputs["iamInstanceProfile"] = args ? args.iamInstanceProfile : undefined;
-            resourceInputs["imageId"] = args ? args.imageId : undefined;
-            resourceInputs["instanceMetadataOptions"] = args ? args.instanceMetadataOptions : undefined;
-            resourceInputs["instanceStorePolicy"] = args ? args.instanceStorePolicy : undefined;
-            resourceInputs["keyName"] = args ? args.keyName : undefined;
-            resourceInputs["loadBalancers"] = args ? args.loadBalancers : undefined;
-            resourceInputs["logging"] = args ? args.logging : undefined;
-            resourceInputs["maxSize"] = args ? args.maxSize : undefined;
-            resourceInputs["minSize"] = args ? args.minSize : undefined;
-            resourceInputs["monitoring"] = args ? args.monitoring : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["primaryIpv6"] = args ? args.primaryIpv6 : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["reservedEnis"] = args ? args.reservedEnis : undefined;
-            resourceInputs["resourceTagSpecifications"] = args ? args.resourceTagSpecifications : undefined;
-            resourceInputs["rootVolumeSize"] = args ? args.rootVolumeSize : undefined;
-            resourceInputs["scheduledTasks"] = args ? args.scheduledTasks : undefined;
-            resourceInputs["securityGroups"] = args ? args.securityGroups : undefined;
-            resourceInputs["spotPercentage"] = args ? args.spotPercentage : undefined;
-            resourceInputs["spreadNodesBy"] = args ? args.spreadNodesBy : undefined;
-            resourceInputs["startupTaints"] = args ? args.startupTaints : undefined;
-            resourceInputs["subnetIds"] = args ? args.subnetIds : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["updatePolicy"] = args ? args.updatePolicy : undefined;
-            resourceInputs["useAsTemplateOnly"] = args ? args.useAsTemplateOnly : undefined;
-            resourceInputs["userData"] = args ? args.userData : undefined;
-            resourceInputs["utilizeCommitments"] = args ? args.utilizeCommitments : undefined;
-            resourceInputs["utilizeReservedInstances"] = args ? args.utilizeReservedInstances : undefined;
-            resourceInputs["whitelists"] = args ? args.whitelists : undefined;
+            resourceInputs["associateIpv6Address"] = args?.associateIpv6Address;
+            resourceInputs["associatePublicIpAddress"] = args?.associatePublicIpAddress;
+            resourceInputs["attachLoadBalancers"] = args?.attachLoadBalancers;
+            resourceInputs["autoscaler"] = args?.autoscaler;
+            resourceInputs["blacklists"] = args?.blacklists;
+            resourceInputs["blockDeviceMappings"] = args?.blockDeviceMappings;
+            resourceInputs["clusterOrientations"] = args?.clusterOrientations;
+            resourceInputs["controllerId"] = args?.controllerId;
+            resourceInputs["desiredCapacity"] = args?.desiredCapacity;
+            resourceInputs["detachLoadBalancers"] = args?.detachLoadBalancers;
+            resourceInputs["drainingTimeout"] = args?.drainingTimeout;
+            resourceInputs["ebsOptimized"] = args?.ebsOptimized;
+            resourceInputs["fallbackToOndemand"] = args?.fallbackToOndemand;
+            resourceInputs["filters"] = args?.filters;
+            resourceInputs["gracePeriod"] = args?.gracePeriod;
+            resourceInputs["healthCheckUnhealthyDurationBeforeReplacement"] = args?.healthCheckUnhealthyDurationBeforeReplacement;
+            resourceInputs["iamInstanceProfile"] = args?.iamInstanceProfile;
+            resourceInputs["imageId"] = args?.imageId;
+            resourceInputs["instanceMetadataOptions"] = args?.instanceMetadataOptions;
+            resourceInputs["instanceStorePolicy"] = args?.instanceStorePolicy;
+            resourceInputs["keyName"] = args?.keyName;
+            resourceInputs["loadBalancers"] = args?.loadBalancers;
+            resourceInputs["logging"] = args?.logging;
+            resourceInputs["maxSize"] = args?.maxSize;
+            resourceInputs["minSize"] = args?.minSize;
+            resourceInputs["monitoring"] = args?.monitoring;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["primaryIpv6"] = args?.primaryIpv6;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["reservedEnis"] = args?.reservedEnis;
+            resourceInputs["resourceTagSpecifications"] = args?.resourceTagSpecifications;
+            resourceInputs["rootVolumeSize"] = args?.rootVolumeSize;
+            resourceInputs["scheduledTasks"] = args?.scheduledTasks;
+            resourceInputs["securityGroups"] = args?.securityGroups;
+            resourceInputs["spotPercentage"] = args?.spotPercentage;
+            resourceInputs["spreadNodesBy"] = args?.spreadNodesBy;
+            resourceInputs["startupTaints"] = args?.startupTaints;
+            resourceInputs["subnetIds"] = args?.subnetIds;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["updatePolicy"] = args?.updatePolicy;
+            resourceInputs["useAsTemplateOnly"] = args?.useAsTemplateOnly;
+            resourceInputs["userData"] = args?.userData;
+            resourceInputs["utilizeCommitments"] = args?.utilizeCommitments;
+            resourceInputs["utilizeReservedInstances"] = args?.utilizeReservedInstances;
+            resourceInputs["whitelists"] = args?.whitelists;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Ocean.__pulumiType, name, resourceInputs, opts);

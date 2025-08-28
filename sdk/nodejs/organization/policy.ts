@@ -72,15 +72,15 @@ export class Policy extends pulumi.CustomResource {
     /**
      * Short description of policy.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Name of the Policy.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Set permissions objects list.
      */
-    public readonly policyContents!: pulumi.Output<outputs.organization.PolicyPolicyContent[]>;
+    declare public readonly policyContents: pulumi.Output<outputs.organization.PolicyPolicyContent[]>;
 
     /**
      * Create a Policy resource with the given unique name, arguments, and options.
@@ -95,17 +95,17 @@ export class Policy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PolicyState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["policyContents"] = state ? state.policyContents : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["policyContents"] = state?.policyContents;
         } else {
             const args = argsOrState as PolicyArgs | undefined;
-            if ((!args || args.policyContents === undefined) && !opts.urn) {
+            if (args?.policyContents === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyContents'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["policyContents"] = args ? args.policyContents : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["policyContents"] = args?.policyContents;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Policy.__pulumiType, name, resourceInputs, opts);

@@ -51,8 +51,8 @@ export class OceanVirtualNodeGroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === OceanVirtualNodeGroup.__pulumiType;
     }
 
-    public readonly oceanSparkClusterId!: pulumi.Output<string>;
-    public readonly virtualNodeGroupId!: pulumi.Output<string>;
+    declare public readonly oceanSparkClusterId: pulumi.Output<string>;
+    declare public readonly virtualNodeGroupId: pulumi.Output<string>;
 
     /**
      * Create a OceanVirtualNodeGroup resource with the given unique name, arguments, and options.
@@ -67,18 +67,18 @@ export class OceanVirtualNodeGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OceanVirtualNodeGroupState | undefined;
-            resourceInputs["oceanSparkClusterId"] = state ? state.oceanSparkClusterId : undefined;
-            resourceInputs["virtualNodeGroupId"] = state ? state.virtualNodeGroupId : undefined;
+            resourceInputs["oceanSparkClusterId"] = state?.oceanSparkClusterId;
+            resourceInputs["virtualNodeGroupId"] = state?.virtualNodeGroupId;
         } else {
             const args = argsOrState as OceanVirtualNodeGroupArgs | undefined;
-            if ((!args || args.oceanSparkClusterId === undefined) && !opts.urn) {
+            if (args?.oceanSparkClusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'oceanSparkClusterId'");
             }
-            if ((!args || args.virtualNodeGroupId === undefined) && !opts.urn) {
+            if (args?.virtualNodeGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'virtualNodeGroupId'");
             }
-            resourceInputs["oceanSparkClusterId"] = args ? args.oceanSparkClusterId : undefined;
-            resourceInputs["virtualNodeGroupId"] = args ? args.virtualNodeGroupId : undefined;
+            resourceInputs["oceanSparkClusterId"] = args?.oceanSparkClusterId;
+            resourceInputs["virtualNodeGroupId"] = args?.virtualNodeGroupId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(OceanVirtualNodeGroup.__pulumiType, name, resourceInputs, opts);

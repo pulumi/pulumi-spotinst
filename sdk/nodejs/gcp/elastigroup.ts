@@ -146,134 +146,134 @@ export class Elastigroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === Elastigroup.__pulumiType;
     }
 
-    public readonly autoHealing!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoHealing: pulumi.Output<boolean | undefined>;
     /**
      * List of availability zones for the group.
      *
      * @deprecated This field will soon be handled by Region in Subnets
      */
-    public readonly availabilityZones!: pulumi.Output<string[] | undefined>;
-    public readonly backendServices!: pulumi.Output<outputs.gcp.ElastigroupBackendService[] | undefined>;
+    declare public readonly availabilityZones: pulumi.Output<string[] | undefined>;
+    declare public readonly backendServices: pulumi.Output<outputs.gcp.ElastigroupBackendService[] | undefined>;
     /**
      * The region your GCP group will be created in.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The desired number of instances the group should have at any time.
      */
-    public readonly desiredCapacity!: pulumi.Output<number>;
-    public readonly disks!: pulumi.Output<outputs.gcp.ElastigroupDisk[] | undefined>;
+    declare public readonly desiredCapacity: pulumi.Output<number>;
+    declare public readonly disks: pulumi.Output<outputs.gcp.ElastigroupDisk[] | undefined>;
     /**
      * Time (seconds) the instance is allowed to run after it is detached from the group. This is to allow the instance time to drain all the current TCP connections before terminating it.
      */
-    public readonly drainingTimeout!: pulumi.Output<number | undefined>;
+    declare public readonly drainingTimeout: pulumi.Output<number | undefined>;
     /**
      * Activate fallback-to-on-demand. When provisioning an instance, if no Preemptible market is available, fallback-to-on-demand will provision an On-Demand instance to maintain the group capacity.
      */
-    public readonly fallbackToOndemand!: pulumi.Output<boolean | undefined>;
-    public readonly gpu!: pulumi.Output<outputs.gcp.ElastigroupGpu[] | undefined>;
-    public readonly healthCheckGracePeriod!: pulumi.Output<number | undefined>;
-    public readonly healthCheckType!: pulumi.Output<string | undefined>;
+    declare public readonly fallbackToOndemand: pulumi.Output<boolean | undefined>;
+    declare public readonly gpu: pulumi.Output<outputs.gcp.ElastigroupGpu[] | undefined>;
+    declare public readonly healthCheckGracePeriod: pulumi.Output<number | undefined>;
+    declare public readonly healthCheckType: pulumi.Output<string | undefined>;
     /**
      * Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
      * * A maximal length of 25 characters.
      * * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
      */
-    public readonly instanceNamePrefix!: pulumi.Output<string | undefined>;
+    declare public readonly instanceNamePrefix: pulumi.Output<string | undefined>;
     /**
      * Defines a set of custom instance types. Required if instanceTypesPreemptible and instanceTypesOndemand are not set.
      * * `vCPU` - (Optional) The number of vCPUs in the custom instance type. GCP has a number of limitations on accepted vCPU values. For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
      */
-    public readonly instanceTypesCustoms!: pulumi.Output<outputs.gcp.ElastigroupInstanceTypesCustom[] | undefined>;
+    declare public readonly instanceTypesCustoms: pulumi.Output<outputs.gcp.ElastigroupInstanceTypesCustom[] | undefined>;
     /**
      * The regular VM instance type to use for mixed-type groups and when falling back to on-demand. Required if instanceTypesPreemptible is not set.
      */
-    public readonly instanceTypesOndemand!: pulumi.Output<string | undefined>;
+    declare public readonly instanceTypesOndemand: pulumi.Output<string | undefined>;
     /**
      * The preemptible VMs instance type. To maximize cost savings and market availability, select as many types as possible. Required if instanceTypesOndemand is not set.
      */
-    public readonly instanceTypesPreemptibles!: pulumi.Output<string[] | undefined>;
-    public readonly integrationDockerSwarm!: pulumi.Output<outputs.gcp.ElastigroupIntegrationDockerSwarm | undefined>;
-    public readonly integrationGke!: pulumi.Output<outputs.gcp.ElastigroupIntegrationGke | undefined>;
-    public readonly ipForwarding!: pulumi.Output<boolean | undefined>;
+    declare public readonly instanceTypesPreemptibles: pulumi.Output<string[] | undefined>;
+    declare public readonly integrationDockerSwarm: pulumi.Output<outputs.gcp.ElastigroupIntegrationDockerSwarm | undefined>;
+    declare public readonly integrationGke: pulumi.Output<outputs.gcp.ElastigroupIntegrationGke | undefined>;
+    declare public readonly ipForwarding: pulumi.Output<boolean | undefined>;
     /**
      * Array of objects with key-value pairs.
      */
-    public readonly labels!: pulumi.Output<outputs.gcp.ElastigroupLabel[] | undefined>;
+    declare public readonly labels: pulumi.Output<outputs.gcp.ElastigroupLabel[] | undefined>;
     /**
      * The maximum number of instances the group should have at any time.
      */
-    public readonly maxSize!: pulumi.Output<number>;
+    declare public readonly maxSize: pulumi.Output<number>;
     /**
      * Array of objects with key-value pairs.
      */
-    public readonly metadatas!: pulumi.Output<outputs.gcp.ElastigroupMetadata[] | undefined>;
+    declare public readonly metadatas: pulumi.Output<outputs.gcp.ElastigroupMetadata[] | undefined>;
     /**
      * Select a minimum CPU platform for the compute instance.
      */
-    public readonly minCpuPlatform!: pulumi.Output<string | undefined>;
+    declare public readonly minCpuPlatform: pulumi.Output<string | undefined>;
     /**
      * The minimum number of instances the group should have at any time.
      */
-    public readonly minSize!: pulumi.Output<number>;
+    declare public readonly minSize: pulumi.Output<number>;
     /**
      * The group name.
      */
-    public readonly name!: pulumi.Output<string>;
-    public readonly networkInterfaces!: pulumi.Output<outputs.gcp.ElastigroupNetworkInterface[] | undefined>;
-    public readonly ondemandCount!: pulumi.Output<number | undefined>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly networkInterfaces: pulumi.Output<outputs.gcp.ElastigroupNetworkInterface[] | undefined>;
+    declare public readonly ondemandCount: pulumi.Output<number | undefined>;
     /**
      * Set time window to perform the revert to preemptible. Time windows must be at least 120 minutes. Format: DayInWeek:HH-DayInWeek:HH. Required when strategy.revertToPreemptible.performAt is 'timeWindow'.
      */
-    public readonly optimizationWindows!: pulumi.Output<string[] | undefined>;
+    declare public readonly optimizationWindows: pulumi.Output<string[] | undefined>;
     /**
      * Percentage of Preemptible VMs to spin up from the "desiredCapacity".
      */
-    public readonly preemptiblePercentage!: pulumi.Output<number | undefined>;
+    declare public readonly preemptiblePercentage: pulumi.Output<number | undefined>;
     /**
      * prioritize availability zones when launching instances for the group. Must be a sublist of `availabilityZones`.
      */
-    public readonly preferredAvailabilityZones!: pulumi.Output<string[] | undefined>;
+    declare public readonly preferredAvailabilityZones: pulumi.Output<string[] | undefined>;
     /**
      * Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
      */
-    public readonly provisioningModel!: pulumi.Output<string | undefined>;
+    declare public readonly provisioningModel: pulumi.Output<string | undefined>;
     /**
      * Setting for revert to preemptible option.
      */
-    public readonly revertToPreemptibles!: pulumi.Output<outputs.gcp.ElastigroupRevertToPreemptible[] | undefined>;
-    public readonly scalingDownPolicies!: pulumi.Output<outputs.gcp.ElastigroupScalingDownPolicy[] | undefined>;
-    public readonly scalingUpPolicies!: pulumi.Output<outputs.gcp.ElastigroupScalingUpPolicy[] | undefined>;
-    public readonly scheduledTasks!: pulumi.Output<outputs.gcp.ElastigroupScheduledTask[] | undefined>;
+    declare public readonly revertToPreemptibles: pulumi.Output<outputs.gcp.ElastigroupRevertToPreemptible[] | undefined>;
+    declare public readonly scalingDownPolicies: pulumi.Output<outputs.gcp.ElastigroupScalingDownPolicy[] | undefined>;
+    declare public readonly scalingUpPolicies: pulumi.Output<outputs.gcp.ElastigroupScalingUpPolicy[] | undefined>;
+    declare public readonly scheduledTasks: pulumi.Output<outputs.gcp.ElastigroupScheduledTask[] | undefined>;
     /**
      * The email of the service account in which the group instances will be launched.
      */
-    public readonly serviceAccount!: pulumi.Output<string | undefined>;
+    declare public readonly serviceAccount: pulumi.Output<string | undefined>;
     /**
      * You can use secure boot when you launch VMs using Elastigroup. This helps you comply with your security policies. In the instance configuration, use ‘secureBootEnabled’ set to True to enforce UEFI with secure boot. Elastigroup provisions VMs with secure boot, as long as the images supports UEFI.
      */
-    public readonly shieldedInstanceConfig!: pulumi.Output<outputs.gcp.ElastigroupShieldedInstanceConfig | undefined>;
+    declare public readonly shieldedInstanceConfig: pulumi.Output<outputs.gcp.ElastigroupShieldedInstanceConfig | undefined>;
     /**
      * Enable committed use discounts utilization.
      */
-    public readonly shouldUtilizeCommitments!: pulumi.Output<boolean | undefined>;
+    declare public readonly shouldUtilizeCommitments: pulumi.Output<boolean | undefined>;
     /**
      * The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
      */
-    public readonly shutdownScript!: pulumi.Output<string | undefined>;
+    declare public readonly shutdownScript: pulumi.Output<string | undefined>;
     /**
      * Create and run your own startup scripts on your virtual machines to perform automated tasks every time your instance boots up.
      */
-    public readonly startupScript!: pulumi.Output<string | undefined>;
+    declare public readonly startupScript: pulumi.Output<string | undefined>;
     /**
      * A list of regions and subnets.
      */
-    public readonly subnets!: pulumi.Output<outputs.gcp.ElastigroupSubnet[] | undefined>;
+    declare public readonly subnets: pulumi.Output<outputs.gcp.ElastigroupSubnet[] | undefined>;
     /**
      * Tags to mark created instances.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
-    public readonly unhealthyDuration!: pulumi.Output<number | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
+    declare public readonly unhealthyDuration: pulumi.Output<number | undefined>;
 
     /**
      * Create a Elastigroup resource with the given unique name, arguments, and options.
@@ -288,95 +288,95 @@ export class Elastigroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ElastigroupState | undefined;
-            resourceInputs["autoHealing"] = state ? state.autoHealing : undefined;
-            resourceInputs["availabilityZones"] = state ? state.availabilityZones : undefined;
-            resourceInputs["backendServices"] = state ? state.backendServices : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["desiredCapacity"] = state ? state.desiredCapacity : undefined;
-            resourceInputs["disks"] = state ? state.disks : undefined;
-            resourceInputs["drainingTimeout"] = state ? state.drainingTimeout : undefined;
-            resourceInputs["fallbackToOndemand"] = state ? state.fallbackToOndemand : undefined;
-            resourceInputs["gpu"] = state ? state.gpu : undefined;
-            resourceInputs["healthCheckGracePeriod"] = state ? state.healthCheckGracePeriod : undefined;
-            resourceInputs["healthCheckType"] = state ? state.healthCheckType : undefined;
-            resourceInputs["instanceNamePrefix"] = state ? state.instanceNamePrefix : undefined;
-            resourceInputs["instanceTypesCustoms"] = state ? state.instanceTypesCustoms : undefined;
-            resourceInputs["instanceTypesOndemand"] = state ? state.instanceTypesOndemand : undefined;
-            resourceInputs["instanceTypesPreemptibles"] = state ? state.instanceTypesPreemptibles : undefined;
-            resourceInputs["integrationDockerSwarm"] = state ? state.integrationDockerSwarm : undefined;
-            resourceInputs["integrationGke"] = state ? state.integrationGke : undefined;
-            resourceInputs["ipForwarding"] = state ? state.ipForwarding : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["maxSize"] = state ? state.maxSize : undefined;
-            resourceInputs["metadatas"] = state ? state.metadatas : undefined;
-            resourceInputs["minCpuPlatform"] = state ? state.minCpuPlatform : undefined;
-            resourceInputs["minSize"] = state ? state.minSize : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
-            resourceInputs["ondemandCount"] = state ? state.ondemandCount : undefined;
-            resourceInputs["optimizationWindows"] = state ? state.optimizationWindows : undefined;
-            resourceInputs["preemptiblePercentage"] = state ? state.preemptiblePercentage : undefined;
-            resourceInputs["preferredAvailabilityZones"] = state ? state.preferredAvailabilityZones : undefined;
-            resourceInputs["provisioningModel"] = state ? state.provisioningModel : undefined;
-            resourceInputs["revertToPreemptibles"] = state ? state.revertToPreemptibles : undefined;
-            resourceInputs["scalingDownPolicies"] = state ? state.scalingDownPolicies : undefined;
-            resourceInputs["scalingUpPolicies"] = state ? state.scalingUpPolicies : undefined;
-            resourceInputs["scheduledTasks"] = state ? state.scheduledTasks : undefined;
-            resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
-            resourceInputs["shieldedInstanceConfig"] = state ? state.shieldedInstanceConfig : undefined;
-            resourceInputs["shouldUtilizeCommitments"] = state ? state.shouldUtilizeCommitments : undefined;
-            resourceInputs["shutdownScript"] = state ? state.shutdownScript : undefined;
-            resourceInputs["startupScript"] = state ? state.startupScript : undefined;
-            resourceInputs["subnets"] = state ? state.subnets : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["unhealthyDuration"] = state ? state.unhealthyDuration : undefined;
+            resourceInputs["autoHealing"] = state?.autoHealing;
+            resourceInputs["availabilityZones"] = state?.availabilityZones;
+            resourceInputs["backendServices"] = state?.backendServices;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["desiredCapacity"] = state?.desiredCapacity;
+            resourceInputs["disks"] = state?.disks;
+            resourceInputs["drainingTimeout"] = state?.drainingTimeout;
+            resourceInputs["fallbackToOndemand"] = state?.fallbackToOndemand;
+            resourceInputs["gpu"] = state?.gpu;
+            resourceInputs["healthCheckGracePeriod"] = state?.healthCheckGracePeriod;
+            resourceInputs["healthCheckType"] = state?.healthCheckType;
+            resourceInputs["instanceNamePrefix"] = state?.instanceNamePrefix;
+            resourceInputs["instanceTypesCustoms"] = state?.instanceTypesCustoms;
+            resourceInputs["instanceTypesOndemand"] = state?.instanceTypesOndemand;
+            resourceInputs["instanceTypesPreemptibles"] = state?.instanceTypesPreemptibles;
+            resourceInputs["integrationDockerSwarm"] = state?.integrationDockerSwarm;
+            resourceInputs["integrationGke"] = state?.integrationGke;
+            resourceInputs["ipForwarding"] = state?.ipForwarding;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["maxSize"] = state?.maxSize;
+            resourceInputs["metadatas"] = state?.metadatas;
+            resourceInputs["minCpuPlatform"] = state?.minCpuPlatform;
+            resourceInputs["minSize"] = state?.minSize;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networkInterfaces"] = state?.networkInterfaces;
+            resourceInputs["ondemandCount"] = state?.ondemandCount;
+            resourceInputs["optimizationWindows"] = state?.optimizationWindows;
+            resourceInputs["preemptiblePercentage"] = state?.preemptiblePercentage;
+            resourceInputs["preferredAvailabilityZones"] = state?.preferredAvailabilityZones;
+            resourceInputs["provisioningModel"] = state?.provisioningModel;
+            resourceInputs["revertToPreemptibles"] = state?.revertToPreemptibles;
+            resourceInputs["scalingDownPolicies"] = state?.scalingDownPolicies;
+            resourceInputs["scalingUpPolicies"] = state?.scalingUpPolicies;
+            resourceInputs["scheduledTasks"] = state?.scheduledTasks;
+            resourceInputs["serviceAccount"] = state?.serviceAccount;
+            resourceInputs["shieldedInstanceConfig"] = state?.shieldedInstanceConfig;
+            resourceInputs["shouldUtilizeCommitments"] = state?.shouldUtilizeCommitments;
+            resourceInputs["shutdownScript"] = state?.shutdownScript;
+            resourceInputs["startupScript"] = state?.startupScript;
+            resourceInputs["subnets"] = state?.subnets;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["unhealthyDuration"] = state?.unhealthyDuration;
         } else {
             const args = argsOrState as ElastigroupArgs | undefined;
-            if ((!args || args.desiredCapacity === undefined) && !opts.urn) {
+            if (args?.desiredCapacity === undefined && !opts.urn) {
                 throw new Error("Missing required property 'desiredCapacity'");
             }
-            resourceInputs["autoHealing"] = args ? args.autoHealing : undefined;
-            resourceInputs["availabilityZones"] = args ? args.availabilityZones : undefined;
-            resourceInputs["backendServices"] = args ? args.backendServices : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
-            resourceInputs["disks"] = args ? args.disks : undefined;
-            resourceInputs["drainingTimeout"] = args ? args.drainingTimeout : undefined;
-            resourceInputs["fallbackToOndemand"] = args ? args.fallbackToOndemand : undefined;
-            resourceInputs["gpu"] = args ? args.gpu : undefined;
-            resourceInputs["healthCheckGracePeriod"] = args ? args.healthCheckGracePeriod : undefined;
-            resourceInputs["healthCheckType"] = args ? args.healthCheckType : undefined;
-            resourceInputs["instanceNamePrefix"] = args ? args.instanceNamePrefix : undefined;
-            resourceInputs["instanceTypesCustoms"] = args ? args.instanceTypesCustoms : undefined;
-            resourceInputs["instanceTypesOndemand"] = args ? args.instanceTypesOndemand : undefined;
-            resourceInputs["instanceTypesPreemptibles"] = args ? args.instanceTypesPreemptibles : undefined;
-            resourceInputs["integrationDockerSwarm"] = args ? args.integrationDockerSwarm : undefined;
-            resourceInputs["integrationGke"] = args ? args.integrationGke : undefined;
-            resourceInputs["ipForwarding"] = args ? args.ipForwarding : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["maxSize"] = args ? args.maxSize : undefined;
-            resourceInputs["metadatas"] = args ? args.metadatas : undefined;
-            resourceInputs["minCpuPlatform"] = args ? args.minCpuPlatform : undefined;
-            resourceInputs["minSize"] = args ? args.minSize : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
-            resourceInputs["ondemandCount"] = args ? args.ondemandCount : undefined;
-            resourceInputs["optimizationWindows"] = args ? args.optimizationWindows : undefined;
-            resourceInputs["preemptiblePercentage"] = args ? args.preemptiblePercentage : undefined;
-            resourceInputs["preferredAvailabilityZones"] = args ? args.preferredAvailabilityZones : undefined;
-            resourceInputs["provisioningModel"] = args ? args.provisioningModel : undefined;
-            resourceInputs["revertToPreemptibles"] = args ? args.revertToPreemptibles : undefined;
-            resourceInputs["scalingDownPolicies"] = args ? args.scalingDownPolicies : undefined;
-            resourceInputs["scalingUpPolicies"] = args ? args.scalingUpPolicies : undefined;
-            resourceInputs["scheduledTasks"] = args ? args.scheduledTasks : undefined;
-            resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
-            resourceInputs["shieldedInstanceConfig"] = args ? args.shieldedInstanceConfig : undefined;
-            resourceInputs["shouldUtilizeCommitments"] = args ? args.shouldUtilizeCommitments : undefined;
-            resourceInputs["shutdownScript"] = args ? args.shutdownScript : undefined;
-            resourceInputs["startupScript"] = args ? args.startupScript : undefined;
-            resourceInputs["subnets"] = args ? args.subnets : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["unhealthyDuration"] = args ? args.unhealthyDuration : undefined;
+            resourceInputs["autoHealing"] = args?.autoHealing;
+            resourceInputs["availabilityZones"] = args?.availabilityZones;
+            resourceInputs["backendServices"] = args?.backendServices;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["desiredCapacity"] = args?.desiredCapacity;
+            resourceInputs["disks"] = args?.disks;
+            resourceInputs["drainingTimeout"] = args?.drainingTimeout;
+            resourceInputs["fallbackToOndemand"] = args?.fallbackToOndemand;
+            resourceInputs["gpu"] = args?.gpu;
+            resourceInputs["healthCheckGracePeriod"] = args?.healthCheckGracePeriod;
+            resourceInputs["healthCheckType"] = args?.healthCheckType;
+            resourceInputs["instanceNamePrefix"] = args?.instanceNamePrefix;
+            resourceInputs["instanceTypesCustoms"] = args?.instanceTypesCustoms;
+            resourceInputs["instanceTypesOndemand"] = args?.instanceTypesOndemand;
+            resourceInputs["instanceTypesPreemptibles"] = args?.instanceTypesPreemptibles;
+            resourceInputs["integrationDockerSwarm"] = args?.integrationDockerSwarm;
+            resourceInputs["integrationGke"] = args?.integrationGke;
+            resourceInputs["ipForwarding"] = args?.ipForwarding;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["maxSize"] = args?.maxSize;
+            resourceInputs["metadatas"] = args?.metadatas;
+            resourceInputs["minCpuPlatform"] = args?.minCpuPlatform;
+            resourceInputs["minSize"] = args?.minSize;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networkInterfaces"] = args?.networkInterfaces;
+            resourceInputs["ondemandCount"] = args?.ondemandCount;
+            resourceInputs["optimizationWindows"] = args?.optimizationWindows;
+            resourceInputs["preemptiblePercentage"] = args?.preemptiblePercentage;
+            resourceInputs["preferredAvailabilityZones"] = args?.preferredAvailabilityZones;
+            resourceInputs["provisioningModel"] = args?.provisioningModel;
+            resourceInputs["revertToPreemptibles"] = args?.revertToPreemptibles;
+            resourceInputs["scalingDownPolicies"] = args?.scalingDownPolicies;
+            resourceInputs["scalingUpPolicies"] = args?.scalingUpPolicies;
+            resourceInputs["scheduledTasks"] = args?.scheduledTasks;
+            resourceInputs["serviceAccount"] = args?.serviceAccount;
+            resourceInputs["shieldedInstanceConfig"] = args?.shieldedInstanceConfig;
+            resourceInputs["shouldUtilizeCommitments"] = args?.shouldUtilizeCommitments;
+            resourceInputs["shutdownScript"] = args?.shutdownScript;
+            resourceInputs["startupScript"] = args?.startupScript;
+            resourceInputs["subnets"] = args?.subnets;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["unhealthyDuration"] = args?.unhealthyDuration;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Elastigroup.__pulumiType, name, resourceInputs, opts);

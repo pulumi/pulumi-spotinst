@@ -51,11 +51,11 @@ export class Credentials extends pulumi.CustomResource {
     /**
      * The ID of the account associated with your token.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - https://docs.spot.io/administration/api/spot-policy-in-aws
      */
-    public readonly iamrole!: pulumi.Output<string>;
+    declare public readonly iamrole: pulumi.Output<string>;
 
     /**
      * Create a Credentials resource with the given unique name, arguments, and options.
@@ -70,18 +70,18 @@ export class Credentials extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CredentialsState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["iamrole"] = state ? state.iamrole : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["iamrole"] = state?.iamrole;
         } else {
             const args = argsOrState as CredentialsArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.iamrole === undefined) && !opts.urn) {
+            if (args?.iamrole === undefined && !opts.urn) {
                 throw new Error("Missing required property 'iamrole'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["iamrole"] = args ? args.iamrole : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["iamrole"] = args?.iamrole;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Credentials.__pulumiType, name, resourceInputs, opts);

@@ -38,47 +38,47 @@ export class CredentialsGcp extends pulumi.CustomResource {
     /**
      * The ID of the account associated with your token.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * .
      */
-    public readonly authProviderX509CertUrl!: pulumi.Output<string>;
+    declare public readonly authProviderX509CertUrl: pulumi.Output<string>;
     /**
      * Authentication uri.
      */
-    public readonly authUri!: pulumi.Output<string>;
+    declare public readonly authUri: pulumi.Output<string>;
     /**
      * Email associated with service account.
      */
-    public readonly clientEmail!: pulumi.Output<string>;
+    declare public readonly clientEmail: pulumi.Output<string>;
     /**
      * Client ID of service account.
      */
-    public readonly clientId!: pulumi.Output<string>;
+    declare public readonly clientId: pulumi.Output<string>;
     /**
      * Should be in following format - "https://www.googleapis.com/robot/v1/metadata/x509/".
      */
-    public readonly clientX509CertUrl!: pulumi.Output<string>;
+    declare public readonly clientX509CertUrl: pulumi.Output<string>;
     /**
      * Private key of JSON key created during prerequisites stage.
      */
-    public readonly privateKey!: pulumi.Output<string>;
+    declare public readonly privateKey: pulumi.Output<string>;
     /**
      * Private key ID of JSON key created during prerequisites stage.
      */
-    public readonly privateKeyId!: pulumi.Output<string>;
+    declare public readonly privateKeyId: pulumi.Output<string>;
     /**
      * Name of project in GCP.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * Token uri.
      */
-    public readonly tokenUri!: pulumi.Output<string>;
+    declare public readonly tokenUri: pulumi.Output<string>;
     /**
      * Valid values - service_account.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a CredentialsGcp resource with the given unique name, arguments, and options.
@@ -93,63 +93,63 @@ export class CredentialsGcp extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CredentialsGcpState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["authProviderX509CertUrl"] = state ? state.authProviderX509CertUrl : undefined;
-            resourceInputs["authUri"] = state ? state.authUri : undefined;
-            resourceInputs["clientEmail"] = state ? state.clientEmail : undefined;
-            resourceInputs["clientId"] = state ? state.clientId : undefined;
-            resourceInputs["clientX509CertUrl"] = state ? state.clientX509CertUrl : undefined;
-            resourceInputs["privateKey"] = state ? state.privateKey : undefined;
-            resourceInputs["privateKeyId"] = state ? state.privateKeyId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["tokenUri"] = state ? state.tokenUri : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["authProviderX509CertUrl"] = state?.authProviderX509CertUrl;
+            resourceInputs["authUri"] = state?.authUri;
+            resourceInputs["clientEmail"] = state?.clientEmail;
+            resourceInputs["clientId"] = state?.clientId;
+            resourceInputs["clientX509CertUrl"] = state?.clientX509CertUrl;
+            resourceInputs["privateKey"] = state?.privateKey;
+            resourceInputs["privateKeyId"] = state?.privateKeyId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["tokenUri"] = state?.tokenUri;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as CredentialsGcpArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.authProviderX509CertUrl === undefined) && !opts.urn) {
+            if (args?.authProviderX509CertUrl === undefined && !opts.urn) {
                 throw new Error("Missing required property 'authProviderX509CertUrl'");
             }
-            if ((!args || args.authUri === undefined) && !opts.urn) {
+            if (args?.authUri === undefined && !opts.urn) {
                 throw new Error("Missing required property 'authUri'");
             }
-            if ((!args || args.clientEmail === undefined) && !opts.urn) {
+            if (args?.clientEmail === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clientEmail'");
             }
-            if ((!args || args.clientId === undefined) && !opts.urn) {
+            if (args?.clientId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clientId'");
             }
-            if ((!args || args.clientX509CertUrl === undefined) && !opts.urn) {
+            if (args?.clientX509CertUrl === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clientX509CertUrl'");
             }
-            if ((!args || args.privateKey === undefined) && !opts.urn) {
+            if (args?.privateKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'privateKey'");
             }
-            if ((!args || args.privateKeyId === undefined) && !opts.urn) {
+            if (args?.privateKeyId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'privateKeyId'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.tokenUri === undefined) && !opts.urn) {
+            if (args?.tokenUri === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tokenUri'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["authProviderX509CertUrl"] = args ? args.authProviderX509CertUrl : undefined;
-            resourceInputs["authUri"] = args ? args.authUri : undefined;
-            resourceInputs["clientEmail"] = args ? args.clientEmail : undefined;
-            resourceInputs["clientId"] = args ? args.clientId : undefined;
-            resourceInputs["clientX509CertUrl"] = args ? args.clientX509CertUrl : undefined;
-            resourceInputs["privateKey"] = args ? args.privateKey : undefined;
-            resourceInputs["privateKeyId"] = args ? args.privateKeyId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["tokenUri"] = args ? args.tokenUri : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["authProviderX509CertUrl"] = args?.authProviderX509CertUrl;
+            resourceInputs["authUri"] = args?.authUri;
+            resourceInputs["clientEmail"] = args?.clientEmail;
+            resourceInputs["clientId"] = args?.clientId;
+            resourceInputs["clientX509CertUrl"] = args?.clientX509CertUrl;
+            resourceInputs["privateKey"] = args?.privateKey;
+            resourceInputs["privateKeyId"] = args?.privateKeyId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["tokenUri"] = args?.tokenUri;
+            resourceInputs["type"] = args?.type;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CredentialsGcp.__pulumiType, name, resourceInputs, opts);

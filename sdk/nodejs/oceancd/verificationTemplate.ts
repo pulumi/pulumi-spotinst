@@ -166,15 +166,15 @@ export class VerificationTemplate extends pulumi.CustomResource {
     /**
      * List of verification arguments. You may specify either `value` OR `valueFrom` but not both.In case `args`:`value` is already defined in the RolloutSpec entity, there is no need to also specify it in the VerificationTemplate entity.
      */
-    public readonly args!: pulumi.Output<outputs.oceancd.VerificationTemplateArg[] | undefined>;
+    declare public readonly args: pulumi.Output<outputs.oceancd.VerificationTemplateArg[] | undefined>;
     /**
      * List of verification metrics.
      */
-    public readonly metrics!: pulumi.Output<outputs.oceancd.VerificationTemplateMetric[] | undefined>;
+    declare public readonly metrics: pulumi.Output<outputs.oceancd.VerificationTemplateMetric[] | undefined>;
     /**
      * Identifier name for Ocean CD Verification Template. Must be unique.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a VerificationTemplate resource with the given unique name, arguments, and options.
@@ -189,14 +189,14 @@ export class VerificationTemplate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VerificationTemplateState | undefined;
-            resourceInputs["args"] = state ? state.args : undefined;
-            resourceInputs["metrics"] = state ? state.metrics : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["args"] = state?.args;
+            resourceInputs["metrics"] = state?.metrics;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as VerificationTemplateArgs | undefined;
-            resourceInputs["args"] = args ? args.args : undefined;
-            resourceInputs["metrics"] = args ? args.metrics : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["args"] = args?.args;
+            resourceInputs["metrics"] = args?.metrics;
+            resourceInputs["name"] = args?.name;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(VerificationTemplate.__pulumiType, name, resourceInputs, opts);

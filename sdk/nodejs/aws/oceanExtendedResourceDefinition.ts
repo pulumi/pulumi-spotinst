@@ -54,11 +54,11 @@ export class OceanExtendedResourceDefinition extends pulumi.CustomResource {
      * The extended resource name as should be requested by your pods and registered to the nodes. Cannot be updated.
      * The name should be a valid Kubernetes extended resource name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * A mapping between AWS instanceType or * as default and its value for the given extended resource.
      */
-    public readonly resourceMapping!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly resourceMapping: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a OceanExtendedResourceDefinition resource with the given unique name, arguments, and options.
@@ -73,15 +73,15 @@ export class OceanExtendedResourceDefinition extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OceanExtendedResourceDefinitionState | undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["resourceMapping"] = state ? state.resourceMapping : undefined;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["resourceMapping"] = state?.resourceMapping;
         } else {
             const args = argsOrState as OceanExtendedResourceDefinitionArgs | undefined;
-            if ((!args || args.resourceMapping === undefined) && !opts.urn) {
+            if (args?.resourceMapping === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceMapping'");
             }
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["resourceMapping"] = args ? args.resourceMapping : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["resourceMapping"] = args?.resourceMapping;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(OceanExtendedResourceDefinition.__pulumiType, name, resourceInputs, opts);

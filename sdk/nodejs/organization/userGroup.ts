@@ -57,21 +57,21 @@ export class UserGroup extends pulumi.CustomResource {
     /**
      * User group description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * User group name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The policies to register under the given group
      * (should be existing policies only).
      */
-    public readonly policies!: pulumi.Output<outputs.organization.UserGroupPolicy[] | undefined>;
+    declare public readonly policies: pulumi.Output<outputs.organization.UserGroupPolicy[] | undefined>;
     /**
      * The users to register under the created group
      * (should be existing users only).
      */
-    public readonly userIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly userIds: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a UserGroup resource with the given unique name, arguments, and options.
@@ -86,16 +86,16 @@ export class UserGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserGroupState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["policies"] = state ? state.policies : undefined;
-            resourceInputs["userIds"] = state ? state.userIds : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["policies"] = state?.policies;
+            resourceInputs["userIds"] = state?.userIds;
         } else {
             const args = argsOrState as UserGroupArgs | undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["policies"] = args ? args.policies : undefined;
-            resourceInputs["userIds"] = args ? args.userIds : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["policies"] = args?.policies;
+            resourceInputs["userIds"] = args?.userIds;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(UserGroup.__pulumiType, name, resourceInputs, opts);

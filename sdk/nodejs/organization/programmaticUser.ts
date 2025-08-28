@@ -61,24 +61,24 @@ export class ProgrammaticUser extends pulumi.CustomResource {
      * All the accounts the programmatic user will have access to.
      * If used - Cannot be empty.
      */
-    public readonly accounts!: pulumi.Output<outputs.organization.ProgrammaticUserAccount[] | undefined>;
+    declare public readonly accounts: pulumi.Output<outputs.organization.ProgrammaticUserAccount[] | undefined>;
     /**
      * Brief description of the user.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Name of the programmatic user.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * All the policies the programmatic user will have access to.
      * If used - Cannot be empty.
      */
-    public readonly policies!: pulumi.Output<outputs.organization.ProgrammaticUserPolicy[] | undefined>;
+    declare public readonly policies: pulumi.Output<outputs.organization.ProgrammaticUserPolicy[] | undefined>;
     /**
      * A list of the user groups to register the given user to (should be existing user groups only)
      */
-    public readonly userGroupIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly userGroupIds: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a ProgrammaticUser resource with the given unique name, arguments, and options.
@@ -93,18 +93,18 @@ export class ProgrammaticUser extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProgrammaticUserState | undefined;
-            resourceInputs["accounts"] = state ? state.accounts : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["policies"] = state ? state.policies : undefined;
-            resourceInputs["userGroupIds"] = state ? state.userGroupIds : undefined;
+            resourceInputs["accounts"] = state?.accounts;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["policies"] = state?.policies;
+            resourceInputs["userGroupIds"] = state?.userGroupIds;
         } else {
             const args = argsOrState as ProgrammaticUserArgs | undefined;
-            resourceInputs["accounts"] = args ? args.accounts : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["policies"] = args ? args.policies : undefined;
-            resourceInputs["userGroupIds"] = args ? args.userGroupIds : undefined;
+            resourceInputs["accounts"] = args?.accounts;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["policies"] = args?.policies;
+            resourceInputs["userGroupIds"] = args?.userGroupIds;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ProgrammaticUser.__pulumiType, name, resourceInputs, opts);

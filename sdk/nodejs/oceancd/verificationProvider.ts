@@ -79,31 +79,31 @@ export class VerificationProvider extends pulumi.CustomResource {
     /**
      * Specify the credentials for CloudWatch verification provider.
      */
-    public readonly cloudWatch!: pulumi.Output<outputs.oceancd.VerificationProviderCloudWatch | undefined>;
+    declare public readonly cloudWatch: pulumi.Output<outputs.oceancd.VerificationProviderCloudWatch | undefined>;
     /**
      * List of cluster IDs that this Verification Provider will be applied to.
      */
-    public readonly clusterIds!: pulumi.Output<string[]>;
+    declare public readonly clusterIds: pulumi.Output<string[]>;
     /**
      * Specify the credentials for datadog verification provider.
      */
-    public readonly datadog!: pulumi.Output<outputs.oceancd.VerificationProviderDatadog | undefined>;
+    declare public readonly datadog: pulumi.Output<outputs.oceancd.VerificationProviderDatadog | undefined>;
     /**
      * Specify the credentials for Jenkins verification provider.
      */
-    public readonly jenkins!: pulumi.Output<outputs.oceancd.VerificationProviderJenkins | undefined>;
+    declare public readonly jenkins: pulumi.Output<outputs.oceancd.VerificationProviderJenkins | undefined>;
     /**
      * Identifier name for Ocean CD Verification Provider. Must be unique.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Specify the credentials for New Relic verification provider.
      */
-    public readonly newRelic!: pulumi.Output<outputs.oceancd.VerificationProviderNewRelic | undefined>;
+    declare public readonly newRelic: pulumi.Output<outputs.oceancd.VerificationProviderNewRelic | undefined>;
     /**
      * Specify the credentials for prometheus verification provider.
      */
-    public readonly prometheus!: pulumi.Output<outputs.oceancd.VerificationProviderPrometheus | undefined>;
+    declare public readonly prometheus: pulumi.Output<outputs.oceancd.VerificationProviderPrometheus | undefined>;
 
     /**
      * Create a VerificationProvider resource with the given unique name, arguments, and options.
@@ -118,25 +118,25 @@ export class VerificationProvider extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VerificationProviderState | undefined;
-            resourceInputs["cloudWatch"] = state ? state.cloudWatch : undefined;
-            resourceInputs["clusterIds"] = state ? state.clusterIds : undefined;
-            resourceInputs["datadog"] = state ? state.datadog : undefined;
-            resourceInputs["jenkins"] = state ? state.jenkins : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["newRelic"] = state ? state.newRelic : undefined;
-            resourceInputs["prometheus"] = state ? state.prometheus : undefined;
+            resourceInputs["cloudWatch"] = state?.cloudWatch;
+            resourceInputs["clusterIds"] = state?.clusterIds;
+            resourceInputs["datadog"] = state?.datadog;
+            resourceInputs["jenkins"] = state?.jenkins;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["newRelic"] = state?.newRelic;
+            resourceInputs["prometheus"] = state?.prometheus;
         } else {
             const args = argsOrState as VerificationProviderArgs | undefined;
-            if ((!args || args.clusterIds === undefined) && !opts.urn) {
+            if (args?.clusterIds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterIds'");
             }
-            resourceInputs["cloudWatch"] = args ? args.cloudWatch : undefined;
-            resourceInputs["clusterIds"] = args ? args.clusterIds : undefined;
-            resourceInputs["datadog"] = args ? args.datadog : undefined;
-            resourceInputs["jenkins"] = args ? args.jenkins : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["newRelic"] = args ? args.newRelic : undefined;
-            resourceInputs["prometheus"] = args ? args.prometheus : undefined;
+            resourceInputs["cloudWatch"] = args?.cloudWatch;
+            resourceInputs["clusterIds"] = args?.clusterIds;
+            resourceInputs["datadog"] = args?.datadog;
+            resourceInputs["jenkins"] = args?.jenkins;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["newRelic"] = args?.newRelic;
+            resourceInputs["prometheus"] = args?.prometheus;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(VerificationProvider.__pulumiType, name, resourceInputs, opts);

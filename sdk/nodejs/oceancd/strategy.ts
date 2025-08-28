@@ -40,12 +40,12 @@ export class Strategy extends pulumi.CustomResource {
     /**
      * Represents Canary strategy. Cannot be defined when Rolling object is defined.
      */
-    public readonly canary!: pulumi.Output<outputs.oceancd.StrategyCanary | undefined>;
+    declare public readonly canary: pulumi.Output<outputs.oceancd.StrategyCanary | undefined>;
     /**
      * Represents Rolling Update strategy. Cannot be defined when Canary object is defined.
      */
-    public readonly rolling!: pulumi.Output<outputs.oceancd.StrategyRolling | undefined>;
-    public readonly strategyName!: pulumi.Output<string>;
+    declare public readonly rolling: pulumi.Output<outputs.oceancd.StrategyRolling | undefined>;
+    declare public readonly strategyName: pulumi.Output<string>;
 
     /**
      * Create a Strategy resource with the given unique name, arguments, and options.
@@ -60,17 +60,17 @@ export class Strategy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StrategyState | undefined;
-            resourceInputs["canary"] = state ? state.canary : undefined;
-            resourceInputs["rolling"] = state ? state.rolling : undefined;
-            resourceInputs["strategyName"] = state ? state.strategyName : undefined;
+            resourceInputs["canary"] = state?.canary;
+            resourceInputs["rolling"] = state?.rolling;
+            resourceInputs["strategyName"] = state?.strategyName;
         } else {
             const args = argsOrState as StrategyArgs | undefined;
-            if ((!args || args.strategyName === undefined) && !opts.urn) {
+            if (args?.strategyName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'strategyName'");
             }
-            resourceInputs["canary"] = args ? args.canary : undefined;
-            resourceInputs["rolling"] = args ? args.rolling : undefined;
-            resourceInputs["strategyName"] = args ? args.strategyName : undefined;
+            resourceInputs["canary"] = args?.canary;
+            resourceInputs["rolling"] = args?.rolling;
+            resourceInputs["strategyName"] = args?.strategyName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Strategy.__pulumiType, name, resourceInputs, opts);

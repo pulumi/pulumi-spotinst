@@ -97,16 +97,16 @@ export class Ocean extends pulumi.CustomResource {
         return obj['__pulumiType'] === Ocean.__pulumiType;
     }
 
-    public readonly compute!: pulumi.Output<outputs.spark.OceanCompute>;
-    public readonly ingress!: pulumi.Output<outputs.spark.OceanIngress>;
-    public readonly logCollection!: pulumi.Output<outputs.spark.OceanLogCollection>;
+    declare public readonly compute: pulumi.Output<outputs.spark.OceanCompute>;
+    declare public readonly ingress: pulumi.Output<outputs.spark.OceanIngress>;
+    declare public readonly logCollection: pulumi.Output<outputs.spark.OceanLogCollection>;
     /**
      * - The ID of the Ocean cluster that Ocean for Apache Spark should be installed on.
      */
-    public readonly oceanClusterId!: pulumi.Output<string>;
-    public readonly spark!: pulumi.Output<outputs.spark.OceanSpark>;
-    public readonly webhook!: pulumi.Output<outputs.spark.OceanWebhook>;
-    public readonly workspaces!: pulumi.Output<outputs.spark.OceanWorkspaces>;
+    declare public readonly oceanClusterId: pulumi.Output<string>;
+    declare public readonly spark: pulumi.Output<outputs.spark.OceanSpark>;
+    declare public readonly webhook: pulumi.Output<outputs.spark.OceanWebhook>;
+    declare public readonly workspaces: pulumi.Output<outputs.spark.OceanWorkspaces>;
 
     /**
      * Create a Ocean resource with the given unique name, arguments, and options.
@@ -121,25 +121,25 @@ export class Ocean extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OceanState | undefined;
-            resourceInputs["compute"] = state ? state.compute : undefined;
-            resourceInputs["ingress"] = state ? state.ingress : undefined;
-            resourceInputs["logCollection"] = state ? state.logCollection : undefined;
-            resourceInputs["oceanClusterId"] = state ? state.oceanClusterId : undefined;
-            resourceInputs["spark"] = state ? state.spark : undefined;
-            resourceInputs["webhook"] = state ? state.webhook : undefined;
-            resourceInputs["workspaces"] = state ? state.workspaces : undefined;
+            resourceInputs["compute"] = state?.compute;
+            resourceInputs["ingress"] = state?.ingress;
+            resourceInputs["logCollection"] = state?.logCollection;
+            resourceInputs["oceanClusterId"] = state?.oceanClusterId;
+            resourceInputs["spark"] = state?.spark;
+            resourceInputs["webhook"] = state?.webhook;
+            resourceInputs["workspaces"] = state?.workspaces;
         } else {
             const args = argsOrState as OceanArgs | undefined;
-            if ((!args || args.oceanClusterId === undefined) && !opts.urn) {
+            if (args?.oceanClusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'oceanClusterId'");
             }
-            resourceInputs["compute"] = args ? args.compute : undefined;
-            resourceInputs["ingress"] = args ? args.ingress : undefined;
-            resourceInputs["logCollection"] = args ? args.logCollection : undefined;
-            resourceInputs["oceanClusterId"] = args ? args.oceanClusterId : undefined;
-            resourceInputs["spark"] = args ? args.spark : undefined;
-            resourceInputs["webhook"] = args ? args.webhook : undefined;
-            resourceInputs["workspaces"] = args ? args.workspaces : undefined;
+            resourceInputs["compute"] = args?.compute;
+            resourceInputs["ingress"] = args?.ingress;
+            resourceInputs["logCollection"] = args?.logCollection;
+            resourceInputs["oceanClusterId"] = args?.oceanClusterId;
+            resourceInputs["spark"] = args?.spark;
+            resourceInputs["webhook"] = args?.webhook;
+            resourceInputs["workspaces"] = args?.workspaces;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Ocean.__pulumiType, name, resourceInputs, opts);

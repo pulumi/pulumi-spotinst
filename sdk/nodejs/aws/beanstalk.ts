@@ -40,50 +40,50 @@ export class Beanstalk extends pulumi.CustomResource {
     /**
      * The id of an existing Beanstalk environment.
      */
-    public readonly beanstalkEnvironmentId!: pulumi.Output<string | undefined>;
+    declare public readonly beanstalkEnvironmentId: pulumi.Output<string | undefined>;
     /**
      * The name of an existing Beanstalk environment.
      */
-    public readonly beanstalkEnvironmentName!: pulumi.Output<string | undefined>;
+    declare public readonly beanstalkEnvironmentName: pulumi.Output<string | undefined>;
     /**
      * Preferences when performing a roll
      */
-    public readonly deploymentPreferences!: pulumi.Output<outputs.aws.BeanstalkDeploymentPreferences | undefined>;
+    declare public readonly deploymentPreferences: pulumi.Output<outputs.aws.BeanstalkDeploymentPreferences | undefined>;
     /**
      * The desired number of instances the group should have at any time.
      */
-    public readonly desiredCapacity!: pulumi.Output<number>;
+    declare public readonly desiredCapacity: pulumi.Output<number>;
     /**
      * One or more instance types. To maximize the availability of Spot instances, select as many instance types as possible.
      */
-    public readonly instanceTypesSpots!: pulumi.Output<string[]>;
-    public readonly maintenance!: pulumi.Output<string | undefined>;
+    declare public readonly instanceTypesSpots: pulumi.Output<string[]>;
+    declare public readonly maintenance: pulumi.Output<string | undefined>;
     /**
      * Managed Actions parameters
      */
-    public readonly managedActions!: pulumi.Output<outputs.aws.BeanstalkManagedActions | undefined>;
+    declare public readonly managedActions: pulumi.Output<outputs.aws.BeanstalkManagedActions | undefined>;
     /**
      * The maximum number of instances the group should have at any time.
      */
-    public readonly maxSize!: pulumi.Output<number>;
+    declare public readonly maxSize: pulumi.Output<number>;
     /**
      * The minimum number of instances the group should have at any time.
      */
-    public readonly minSize!: pulumi.Output<number>;
+    declare public readonly minSize: pulumi.Output<number>;
     /**
      * The group name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
      * For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
      */
-    public readonly product!: pulumi.Output<string>;
+    declare public readonly product: pulumi.Output<string>;
     /**
      * The AWS region your group will be created in. Cannot be changed after the group has been created.
      */
-    public readonly region!: pulumi.Output<string>;
-    public readonly scheduledTasks!: pulumi.Output<outputs.aws.BeanstalkScheduledTask[] | undefined>;
+    declare public readonly region: pulumi.Output<string>;
+    declare public readonly scheduledTasks: pulumi.Output<outputs.aws.BeanstalkScheduledTask[] | undefined>;
 
     /**
      * Create a Beanstalk resource with the given unique name, arguments, and options.
@@ -98,52 +98,52 @@ export class Beanstalk extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BeanstalkState | undefined;
-            resourceInputs["beanstalkEnvironmentId"] = state ? state.beanstalkEnvironmentId : undefined;
-            resourceInputs["beanstalkEnvironmentName"] = state ? state.beanstalkEnvironmentName : undefined;
-            resourceInputs["deploymentPreferences"] = state ? state.deploymentPreferences : undefined;
-            resourceInputs["desiredCapacity"] = state ? state.desiredCapacity : undefined;
-            resourceInputs["instanceTypesSpots"] = state ? state.instanceTypesSpots : undefined;
-            resourceInputs["maintenance"] = state ? state.maintenance : undefined;
-            resourceInputs["managedActions"] = state ? state.managedActions : undefined;
-            resourceInputs["maxSize"] = state ? state.maxSize : undefined;
-            resourceInputs["minSize"] = state ? state.minSize : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["product"] = state ? state.product : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["scheduledTasks"] = state ? state.scheduledTasks : undefined;
+            resourceInputs["beanstalkEnvironmentId"] = state?.beanstalkEnvironmentId;
+            resourceInputs["beanstalkEnvironmentName"] = state?.beanstalkEnvironmentName;
+            resourceInputs["deploymentPreferences"] = state?.deploymentPreferences;
+            resourceInputs["desiredCapacity"] = state?.desiredCapacity;
+            resourceInputs["instanceTypesSpots"] = state?.instanceTypesSpots;
+            resourceInputs["maintenance"] = state?.maintenance;
+            resourceInputs["managedActions"] = state?.managedActions;
+            resourceInputs["maxSize"] = state?.maxSize;
+            resourceInputs["minSize"] = state?.minSize;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["product"] = state?.product;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["scheduledTasks"] = state?.scheduledTasks;
         } else {
             const args = argsOrState as BeanstalkArgs | undefined;
-            if ((!args || args.desiredCapacity === undefined) && !opts.urn) {
+            if (args?.desiredCapacity === undefined && !opts.urn) {
                 throw new Error("Missing required property 'desiredCapacity'");
             }
-            if ((!args || args.instanceTypesSpots === undefined) && !opts.urn) {
+            if (args?.instanceTypesSpots === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceTypesSpots'");
             }
-            if ((!args || args.maxSize === undefined) && !opts.urn) {
+            if (args?.maxSize === undefined && !opts.urn) {
                 throw new Error("Missing required property 'maxSize'");
             }
-            if ((!args || args.minSize === undefined) && !opts.urn) {
+            if (args?.minSize === undefined && !opts.urn) {
                 throw new Error("Missing required property 'minSize'");
             }
-            if ((!args || args.product === undefined) && !opts.urn) {
+            if (args?.product === undefined && !opts.urn) {
                 throw new Error("Missing required property 'product'");
             }
-            if ((!args || args.region === undefined) && !opts.urn) {
+            if (args?.region === undefined && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            resourceInputs["beanstalkEnvironmentId"] = args ? args.beanstalkEnvironmentId : undefined;
-            resourceInputs["beanstalkEnvironmentName"] = args ? args.beanstalkEnvironmentName : undefined;
-            resourceInputs["deploymentPreferences"] = args ? args.deploymentPreferences : undefined;
-            resourceInputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
-            resourceInputs["instanceTypesSpots"] = args ? args.instanceTypesSpots : undefined;
-            resourceInputs["maintenance"] = args ? args.maintenance : undefined;
-            resourceInputs["managedActions"] = args ? args.managedActions : undefined;
-            resourceInputs["maxSize"] = args ? args.maxSize : undefined;
-            resourceInputs["minSize"] = args ? args.minSize : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["product"] = args ? args.product : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["scheduledTasks"] = args ? args.scheduledTasks : undefined;
+            resourceInputs["beanstalkEnvironmentId"] = args?.beanstalkEnvironmentId;
+            resourceInputs["beanstalkEnvironmentName"] = args?.beanstalkEnvironmentName;
+            resourceInputs["deploymentPreferences"] = args?.deploymentPreferences;
+            resourceInputs["desiredCapacity"] = args?.desiredCapacity;
+            resourceInputs["instanceTypesSpots"] = args?.instanceTypesSpots;
+            resourceInputs["maintenance"] = args?.maintenance;
+            resourceInputs["managedActions"] = args?.managedActions;
+            resourceInputs["maxSize"] = args?.maxSize;
+            resourceInputs["minSize"] = args?.minSize;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["product"] = args?.product;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["scheduledTasks"] = args?.scheduledTasks;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Beanstalk.__pulumiType, name, resourceInputs, opts);
