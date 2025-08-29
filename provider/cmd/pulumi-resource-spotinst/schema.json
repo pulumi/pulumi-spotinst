@@ -60,19 +60,19 @@
         "variables": {
             "account": {
                 "type": "string",
-                "description": "Spotinst Account ID\n"
+                "description": "Spotinst Account ID"
             },
             "enabled": {
                 "type": "boolean",
-                "description": "Enable or disable the Spotinst provider\n"
+                "description": "Enable or disable the Spotinst provider"
             },
             "featureFlags": {
                 "type": "string",
-                "description": "Spotinst SDK Feature Flags\n"
+                "description": "Spotinst SDK Feature Flags"
             },
             "token": {
                 "type": "string",
-                "description": "Spotinst Personal API Access Token\n"
+                "description": "Spotinst Personal API Access Token"
             }
         }
     },
@@ -11203,37 +11203,37 @@
         "properties": {
             "account": {
                 "type": "string",
-                "description": "Spotinst Account ID\n"
+                "description": "Spotinst Account ID"
             },
             "enabled": {
                 "type": "boolean",
-                "description": "Enable or disable the Spotinst provider\n"
+                "description": "Enable or disable the Spotinst provider"
             },
             "featureFlags": {
                 "type": "string",
-                "description": "Spotinst SDK Feature Flags\n"
+                "description": "Spotinst SDK Feature Flags"
             },
             "token": {
                 "type": "string",
-                "description": "Spotinst Personal API Access Token\n"
+                "description": "Spotinst Personal API Access Token"
             }
         },
         "inputProperties": {
             "account": {
                 "type": "string",
-                "description": "Spotinst Account ID\n"
+                "description": "Spotinst Account ID"
             },
             "enabled": {
                 "type": "boolean",
-                "description": "Enable or disable the Spotinst provider\n"
+                "description": "Enable or disable the Spotinst provider"
             },
             "featureFlags": {
                 "type": "string",
-                "description": "Spotinst SDK Feature Flags\n"
+                "description": "Spotinst SDK Feature Flags"
             },
             "token": {
                 "type": "string",
-                "description": "Spotinst Personal API Access Token\n"
+                "description": "Spotinst Personal API Access Token"
             }
         },
         "methods": {

@@ -50,11 +50,11 @@ export class OceanLaunchSpecImport extends pulumi.CustomResource {
     /**
      * The node pool you wish to use in your launchSpec.
      */
-    public readonly nodePoolName!: pulumi.Output<string>;
+    declare public readonly nodePoolName: pulumi.Output<string>;
     /**
      * The Ocean cluster ID required for launchSpec create.
      */
-    public readonly oceanId!: pulumi.Output<string>;
+    declare public readonly oceanId: pulumi.Output<string>;
 
     /**
      * Create a OceanLaunchSpecImport resource with the given unique name, arguments, and options.
@@ -69,18 +69,18 @@ export class OceanLaunchSpecImport extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OceanLaunchSpecImportState | undefined;
-            resourceInputs["nodePoolName"] = state ? state.nodePoolName : undefined;
-            resourceInputs["oceanId"] = state ? state.oceanId : undefined;
+            resourceInputs["nodePoolName"] = state?.nodePoolName;
+            resourceInputs["oceanId"] = state?.oceanId;
         } else {
             const args = argsOrState as OceanLaunchSpecImportArgs | undefined;
-            if ((!args || args.nodePoolName === undefined) && !opts.urn) {
+            if (args?.nodePoolName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nodePoolName'");
             }
-            if ((!args || args.oceanId === undefined) && !opts.urn) {
+            if (args?.oceanId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'oceanId'");
             }
-            resourceInputs["nodePoolName"] = args ? args.nodePoolName : undefined;
-            resourceInputs["oceanId"] = args ? args.oceanId : undefined;
+            resourceInputs["nodePoolName"] = args?.nodePoolName;
+            resourceInputs["oceanId"] = args?.oceanId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(OceanLaunchSpecImport.__pulumiType, name, resourceInputs, opts);

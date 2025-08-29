@@ -63,17 +63,17 @@ export class HealthCheck extends pulumi.CustomResource {
     /**
      * Describes the check to execute.
      */
-    public readonly check!: pulumi.Output<outputs.HealthCheckCheck | undefined>;
+    declare public readonly check: pulumi.Output<outputs.HealthCheckCheck | undefined>;
     /**
      * The name of the health check.
      */
-    public readonly name!: pulumi.Output<string>;
-    public readonly proxyAddress!: pulumi.Output<string>;
-    public readonly proxyPort!: pulumi.Output<number | undefined>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly proxyAddress: pulumi.Output<string>;
+    declare public readonly proxyPort: pulumi.Output<number | undefined>;
     /**
      * The ID of the resource to check.
      */
-    public readonly resourceId!: pulumi.Output<string>;
+    declare public readonly resourceId: pulumi.Output<string>;
 
     /**
      * Create a HealthCheck resource with the given unique name, arguments, and options.
@@ -88,24 +88,24 @@ export class HealthCheck extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HealthCheckState | undefined;
-            resourceInputs["check"] = state ? state.check : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["proxyAddress"] = state ? state.proxyAddress : undefined;
-            resourceInputs["proxyPort"] = state ? state.proxyPort : undefined;
-            resourceInputs["resourceId"] = state ? state.resourceId : undefined;
+            resourceInputs["check"] = state?.check;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["proxyAddress"] = state?.proxyAddress;
+            resourceInputs["proxyPort"] = state?.proxyPort;
+            resourceInputs["resourceId"] = state?.resourceId;
         } else {
             const args = argsOrState as HealthCheckArgs | undefined;
-            if ((!args || args.proxyAddress === undefined) && !opts.urn) {
+            if (args?.proxyAddress === undefined && !opts.urn) {
                 throw new Error("Missing required property 'proxyAddress'");
             }
-            if ((!args || args.resourceId === undefined) && !opts.urn) {
+            if (args?.resourceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceId'");
             }
-            resourceInputs["check"] = args ? args.check : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["proxyAddress"] = args ? args.proxyAddress : undefined;
-            resourceInputs["proxyPort"] = args ? args.proxyPort : undefined;
-            resourceInputs["resourceId"] = args ? args.resourceId : undefined;
+            resourceInputs["check"] = args?.check;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["proxyAddress"] = args?.proxyAddress;
+            resourceInputs["proxyPort"] = args?.proxyPort;
+            resourceInputs["resourceId"] = args?.resourceId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(HealthCheck.__pulumiType, name, resourceInputs, opts);

@@ -56,16 +56,16 @@ export class DataIntegration extends pulumi.CustomResource {
     /**
      * The name of the data integration.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * When vendor value is s3, the following fields are included:
      * * `bucketName` - (Required) The name of the bucket to use. Your spot IAM Role policy needs to include s3:putObject permissions for this bucket. Can't be null.
      */
-    public readonly s3!: pulumi.Output<outputs.DataIntegrationS3 | undefined>;
+    declare public readonly s3: pulumi.Output<outputs.DataIntegrationS3 | undefined>;
     /**
      * Determines if this data integration is on or off. Valid values: `"enabled"`, `"disabled"`
      */
-    public readonly status!: pulumi.Output<string | undefined>;
+    declare public readonly status: pulumi.Output<string | undefined>;
 
     /**
      * Create a DataIntegration resource with the given unique name, arguments, and options.
@@ -80,14 +80,14 @@ export class DataIntegration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DataIntegrationState | undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["s3"] = state ? state.s3 : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["s3"] = state?.s3;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as DataIntegrationArgs | undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["s3"] = args ? args.s3 : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["s3"] = args?.s3;
+            resourceInputs["status"] = args?.status;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DataIntegration.__pulumiType, name, resourceInputs, opts);

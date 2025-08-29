@@ -175,247 +175,247 @@ export class Elastigroup extends pulumi.CustomResource {
     /**
      * Auto-healing replacement won't be triggered if this parameter value is "false". In a case of a stateful group - no recycling will start if this parameter value is "false".
      */
-    public readonly autoHealing!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoHealing: pulumi.Output<boolean | undefined>;
     /**
      * List of Strings of availability zones. When this parameter is set, `subnetIds` should be left unused.
      * Note: `availabilityZones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
      * `availabilityZones = ["us-east-1a:subnet-123456:ClusterI03"]`
      */
-    public readonly availabilityZones!: pulumi.Output<string[] | undefined>;
-    public readonly blockDevicesMode!: pulumi.Output<string | undefined>;
+    declare public readonly availabilityZones: pulumi.Output<string[] | undefined>;
+    declare public readonly blockDevicesMode: pulumi.Output<string | undefined>;
     /**
      * The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
      */
-    public readonly capacityUnit!: pulumi.Output<string>;
-    public readonly considerOdPricing!: pulumi.Output<boolean | undefined>;
+    declare public readonly capacityUnit: pulumi.Output<string>;
+    declare public readonly considerOdPricing: pulumi.Output<boolean | undefined>;
     /**
      * Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
      */
-    public readonly cpuCredits!: pulumi.Output<string | undefined>;
+    declare public readonly cpuCredits: pulumi.Output<string | undefined>;
     /**
      * The CPU options for the instances that are launched within the group:
      */
-    public readonly cpuOptions!: pulumi.Output<outputs.aws.ElastigroupCpuOptions | undefined>;
+    declare public readonly cpuOptions: pulumi.Output<outputs.aws.ElastigroupCpuOptions | undefined>;
     /**
      * The group description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The desired number of instances the group should have at any time.
      */
-    public readonly desiredCapacity!: pulumi.Output<number | undefined>;
+    declare public readonly desiredCapacity: pulumi.Output<number | undefined>;
     /**
      * The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
      */
-    public readonly drainingTimeout!: pulumi.Output<number>;
-    public readonly ebsBlockDevices!: pulumi.Output<outputs.aws.ElastigroupEbsBlockDevice[] | undefined>;
+    declare public readonly drainingTimeout: pulumi.Output<number>;
+    declare public readonly ebsBlockDevices: pulumi.Output<outputs.aws.ElastigroupEbsBlockDevice[] | undefined>;
     /**
      * Enable high bandwidth connectivity between instances and AWS’s Elastic Block Store (EBS). For instance types that are EBS-optimized by default this parameter will be ignored.
      */
-    public readonly ebsOptimized!: pulumi.Output<boolean>;
+    declare public readonly ebsOptimized: pulumi.Output<boolean>;
     /**
      * A list of [AWS Elastic IP](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) allocation IDs to associate to the group instances.
      */
-    public readonly elasticIps!: pulumi.Output<string[] | undefined>;
-    public readonly elasticLoadBalancers!: pulumi.Output<string[] | undefined>;
+    declare public readonly elasticIps: pulumi.Output<string[] | undefined>;
+    declare public readonly elasticLoadBalancers: pulumi.Output<string[] | undefined>;
     /**
      * Indicates whether monitoring is enabled for the instance.
      */
-    public readonly enableMonitoring!: pulumi.Output<boolean | undefined>;
-    public readonly ephemeralBlockDevices!: pulumi.Output<outputs.aws.ElastigroupEphemeralBlockDevice[] | undefined>;
+    declare public readonly enableMonitoring: pulumi.Output<boolean | undefined>;
+    declare public readonly ephemeralBlockDevices: pulumi.Output<outputs.aws.ElastigroupEphemeralBlockDevice[] | undefined>;
     /**
      * In a case of no Spot instances available, Elastigroup will launch on-demand instances instead.
      */
-    public readonly fallbackToOndemand!: pulumi.Output<boolean>;
+    declare public readonly fallbackToOndemand: pulumi.Output<boolean>;
     /**
      * The amount of time, in seconds, after the instance has launched to starts and check its health.
      */
-    public readonly healthCheckGracePeriod!: pulumi.Output<number | undefined>;
+    declare public readonly healthCheckGracePeriod: pulumi.Output<number | undefined>;
     /**
      * The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"EC2"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
      */
-    public readonly healthCheckType!: pulumi.Output<string | undefined>;
+    declare public readonly healthCheckType: pulumi.Output<string | undefined>;
     /**
      * The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
      */
-    public readonly healthCheckUnhealthyDurationBeforeReplacement!: pulumi.Output<number | undefined>;
+    declare public readonly healthCheckUnhealthyDurationBeforeReplacement: pulumi.Output<number | undefined>;
     /**
      * The ARN or name of an IAM instance profile to associate with launched instances.
      */
-    public readonly iamInstanceProfile!: pulumi.Output<string | undefined>;
+    declare public readonly iamInstanceProfile: pulumi.Output<string | undefined>;
     /**
      * The ID of the AMI used to launch the instance.
      */
-    public readonly imageId!: pulumi.Output<string | undefined>;
+    declare public readonly imageId: pulumi.Output<string | undefined>;
     /**
      * An array of image objects. 
      * Note: Elastigroup can be configured with either imageId or images, but not both.
      */
-    public readonly images!: pulumi.Output<outputs.aws.ElastigroupImage[] | undefined>;
-    public readonly immediateOdRecoverThreshold!: pulumi.Output<number | undefined>;
+    declare public readonly images: pulumi.Output<outputs.aws.ElastigroupImage[] | undefined>;
+    declare public readonly immediateOdRecoverThreshold: pulumi.Output<number | undefined>;
     /**
      * The type of instance determines your instance's CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
      */
-    public readonly instanceTypesOndemand!: pulumi.Output<string | undefined>;
+    declare public readonly instanceTypesOndemand: pulumi.Output<string | undefined>;
     /**
      * Prioritize a subset of spot instance types. Must be a subset of the selected spot instance types.
      */
-    public readonly instanceTypesPreferredSpots!: pulumi.Output<string[] | undefined>;
+    declare public readonly instanceTypesPreferredSpots: pulumi.Output<string[] | undefined>;
     /**
      * One or more instance types. Note: Cannot be defined if 'resourceRequirements' is defined.
      */
-    public readonly instanceTypesSpots!: pulumi.Output<string[] | undefined>;
+    declare public readonly instanceTypesSpots: pulumi.Output<string[] | undefined>;
     /**
      * List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
      */
-    public readonly instanceTypesWeights!: pulumi.Output<outputs.aws.ElastigroupInstanceTypesWeight[] | undefined>;
-    public readonly integrationBeanstalk!: pulumi.Output<outputs.aws.ElastigroupIntegrationBeanstalk | undefined>;
-    public readonly integrationCodedeploy!: pulumi.Output<outputs.aws.ElastigroupIntegrationCodedeploy | undefined>;
-    public readonly integrationDockerSwarm!: pulumi.Output<outputs.aws.ElastigroupIntegrationDockerSwarm | undefined>;
-    public readonly integrationEcs!: pulumi.Output<outputs.aws.ElastigroupIntegrationEcs | undefined>;
-    public readonly integrationGitlab!: pulumi.Output<outputs.aws.ElastigroupIntegrationGitlab | undefined>;
-    public readonly integrationKubernetes!: pulumi.Output<outputs.aws.ElastigroupIntegrationKubernetes | undefined>;
-    public readonly integrationMesosphere!: pulumi.Output<outputs.aws.ElastigroupIntegrationMesosphere | undefined>;
-    public readonly integrationNomad!: pulumi.Output<outputs.aws.ElastigroupIntegrationNomad | undefined>;
-    public readonly integrationRancher!: pulumi.Output<outputs.aws.ElastigroupIntegrationRancher | undefined>;
-    public readonly integrationRoute53!: pulumi.Output<outputs.aws.ElastigroupIntegrationRoute53 | undefined>;
-    public readonly itfs!: pulumi.Output<outputs.aws.ElastigroupItf[] | undefined>;
+    declare public readonly instanceTypesWeights: pulumi.Output<outputs.aws.ElastigroupInstanceTypesWeight[] | undefined>;
+    declare public readonly integrationBeanstalk: pulumi.Output<outputs.aws.ElastigroupIntegrationBeanstalk | undefined>;
+    declare public readonly integrationCodedeploy: pulumi.Output<outputs.aws.ElastigroupIntegrationCodedeploy | undefined>;
+    declare public readonly integrationDockerSwarm: pulumi.Output<outputs.aws.ElastigroupIntegrationDockerSwarm | undefined>;
+    declare public readonly integrationEcs: pulumi.Output<outputs.aws.ElastigroupIntegrationEcs | undefined>;
+    declare public readonly integrationGitlab: pulumi.Output<outputs.aws.ElastigroupIntegrationGitlab | undefined>;
+    declare public readonly integrationKubernetes: pulumi.Output<outputs.aws.ElastigroupIntegrationKubernetes | undefined>;
+    declare public readonly integrationMesosphere: pulumi.Output<outputs.aws.ElastigroupIntegrationMesosphere | undefined>;
+    declare public readonly integrationNomad: pulumi.Output<outputs.aws.ElastigroupIntegrationNomad | undefined>;
+    declare public readonly integrationRancher: pulumi.Output<outputs.aws.ElastigroupIntegrationRancher | undefined>;
+    declare public readonly integrationRoute53: pulumi.Output<outputs.aws.ElastigroupIntegrationRoute53 | undefined>;
+    declare public readonly itfs: pulumi.Output<outputs.aws.ElastigroupItf[] | undefined>;
     /**
      * The key name that should be used for the instance.
      */
-    public readonly keyName!: pulumi.Output<string | undefined>;
-    public readonly lifetimePeriod!: pulumi.Output<string | undefined>;
+    declare public readonly keyName: pulumi.Output<string | undefined>;
+    declare public readonly lifetimePeriod: pulumi.Output<string | undefined>;
     /**
      * Logging configuration.
      */
-    public readonly logging!: pulumi.Output<outputs.aws.ElastigroupLogging | undefined>;
-    public readonly maxReplacementsPercentage!: pulumi.Output<number | undefined>;
+    declare public readonly logging: pulumi.Output<outputs.aws.ElastigroupLogging | undefined>;
+    declare public readonly maxReplacementsPercentage: pulumi.Output<number | undefined>;
     /**
      * The maximum number of instances the group should have at any time.
      */
-    public readonly maxSize!: pulumi.Output<number>;
+    declare public readonly maxSize: pulumi.Output<number>;
     /**
      * Data that used to configure or manage the running instances:
      */
-    public readonly metadataOptions!: pulumi.Output<outputs.aws.ElastigroupMetadataOptions | undefined>;
+    declare public readonly metadataOptions: pulumi.Output<outputs.aws.ElastigroupMetadataOptions | undefined>;
     /**
      * The minimum number of instances the group should have at any time.
      */
-    public readonly minSize!: pulumi.Output<number>;
+    declare public readonly minSize: pulumi.Output<number>;
     /**
      * Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
      */
-    public readonly minimumInstanceLifetime!: pulumi.Output<number | undefined>;
-    public readonly multipleMetrics!: pulumi.Output<outputs.aws.ElastigroupMultipleMetrics | undefined>;
+    declare public readonly minimumInstanceLifetime: pulumi.Output<number | undefined>;
+    declare public readonly multipleMetrics: pulumi.Output<outputs.aws.ElastigroupMultipleMetrics | undefined>;
     /**
      * The group name.
      */
-    public readonly name!: pulumi.Output<string>;
-    public readonly networkInterfaces!: pulumi.Output<outputs.aws.ElastigroupNetworkInterface[] | undefined>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly networkInterfaces: pulumi.Output<outputs.aws.ElastigroupNetworkInterface[] | undefined>;
     /**
      * Available ondemand instance types. Note: Either ondemand or onDemandTypes must be defined, but not both.
      */
-    public readonly onDemandTypes!: pulumi.Output<string[] | undefined>;
+    declare public readonly onDemandTypes: pulumi.Output<string[] | undefined>;
     /**
      * Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spotPercentage` parameter is being ignored.
      */
-    public readonly ondemandCount!: pulumi.Output<number | undefined>;
+    declare public readonly ondemandCount: pulumi.Output<number | undefined>;
     /**
      * Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
      */
-    public readonly orientation!: pulumi.Output<string>;
-    public readonly persistBlockDevices!: pulumi.Output<boolean | undefined>;
-    public readonly persistPrivateIp!: pulumi.Output<boolean | undefined>;
-    public readonly persistRootDevice!: pulumi.Output<boolean | undefined>;
+    declare public readonly orientation: pulumi.Output<string>;
+    declare public readonly persistBlockDevices: pulumi.Output<boolean | undefined>;
+    declare public readonly persistPrivateIp: pulumi.Output<boolean | undefined>;
+    declare public readonly persistRootDevice: pulumi.Output<boolean | undefined>;
     /**
      * Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used. Valid values: "default", "dedicated" .
      */
-    public readonly placementTenancy!: pulumi.Output<string | undefined>;
+    declare public readonly placementTenancy: pulumi.Output<string | undefined>;
     /**
      * The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
      * Note: Must be a sublist of `availabilityZones` and `orientation` value must not be `"equalAzDistribution"`.
      */
-    public readonly preferredAvailabilityZones!: pulumi.Output<string[] | undefined>;
-    public readonly privateIps!: pulumi.Output<string[] | undefined>;
+    declare public readonly preferredAvailabilityZones: pulumi.Output<string[] | undefined>;
+    declare public readonly privateIps: pulumi.Output<string[] | undefined>;
     /**
      * Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
      * For EC2 Classic instances: `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
      */
-    public readonly product!: pulumi.Output<string>;
+    declare public readonly product: pulumi.Output<string>;
     /**
      * The AWS region your group will be created in.
      * Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
      */
-    public readonly region!: pulumi.Output<string | undefined>;
+    declare public readonly region: pulumi.Output<string | undefined>;
     /**
      * Required instance attributes. Instance types will be selected based on these requirements.
      */
-    public readonly resourceRequirements!: pulumi.Output<outputs.aws.ElastigroupResourceRequirement[] | undefined>;
+    declare public readonly resourceRequirements: pulumi.Output<outputs.aws.ElastigroupResourceRequirement[] | undefined>;
     /**
      * User will specify which resources should be tagged with group tags.
      */
-    public readonly resourceTagSpecifications!: pulumi.Output<outputs.aws.ElastigroupResourceTagSpecification[] | undefined>;
+    declare public readonly resourceTagSpecifications: pulumi.Output<outputs.aws.ElastigroupResourceTagSpecification[] | undefined>;
     /**
      * Elastigroup will automatically scale your instances in the most available and cost efficient availability zone. Every evaluation will be done when there are no active instances in the group.
      */
-    public readonly restrictSingleAz!: pulumi.Output<boolean | undefined>;
+    declare public readonly restrictSingleAz: pulumi.Output<boolean | undefined>;
     /**
      * Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
      */
-    public readonly revertToSpot!: pulumi.Output<outputs.aws.ElastigroupRevertToSpot | undefined>;
-    public readonly scalingDownPolicies!: pulumi.Output<outputs.aws.ElastigroupScalingDownPolicy[] | undefined>;
+    declare public readonly revertToSpot: pulumi.Output<outputs.aws.ElastigroupRevertToSpot | undefined>;
+    declare public readonly scalingDownPolicies: pulumi.Output<outputs.aws.ElastigroupScalingDownPolicy[] | undefined>;
     /**
      * Set termination policy.
      */
-    public readonly scalingStrategies!: pulumi.Output<outputs.aws.ElastigroupScalingStrategy[] | undefined>;
-    public readonly scalingTargetPolicies!: pulumi.Output<outputs.aws.ElastigroupScalingTargetPolicy[] | undefined>;
-    public readonly scalingUpPolicies!: pulumi.Output<outputs.aws.ElastigroupScalingUpPolicy[] | undefined>;
-    public readonly scheduledTasks!: pulumi.Output<outputs.aws.ElastigroupScheduledTask[] | undefined>;
+    declare public readonly scalingStrategies: pulumi.Output<outputs.aws.ElastigroupScalingStrategy[] | undefined>;
+    declare public readonly scalingTargetPolicies: pulumi.Output<outputs.aws.ElastigroupScalingTargetPolicy[] | undefined>;
+    declare public readonly scalingUpPolicies: pulumi.Output<outputs.aws.ElastigroupScalingUpPolicy[] | undefined>;
+    declare public readonly scheduledTasks: pulumi.Output<outputs.aws.ElastigroupScheduledTask[] | undefined>;
     /**
      * A list of associated security group IDS.
      */
-    public readonly securityGroups!: pulumi.Output<string[]>;
+    declare public readonly securityGroups: pulumi.Output<string[]>;
     /**
      * The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
      */
-    public readonly shutdownScript!: pulumi.Output<string | undefined>;
-    public readonly signals!: pulumi.Output<outputs.aws.ElastigroupSignal[] | undefined>;
+    declare public readonly shutdownScript: pulumi.Output<string | undefined>;
+    declare public readonly signals: pulumi.Output<outputs.aws.ElastigroupSignal[] | undefined>;
     /**
      * The percentage of Spot instances that would spin up from the `desiredCapacity` number.
      */
-    public readonly spotPercentage!: pulumi.Output<number | undefined>;
-    public readonly statefulDeallocation!: pulumi.Output<outputs.aws.ElastigroupStatefulDeallocation | undefined>;
-    public readonly statefulInstanceActions!: pulumi.Output<outputs.aws.ElastigroupStatefulInstanceAction[] | undefined>;
+    declare public readonly spotPercentage: pulumi.Output<number | undefined>;
+    declare public readonly statefulDeallocation: pulumi.Output<outputs.aws.ElastigroupStatefulDeallocation | undefined>;
+    declare public readonly statefulInstanceActions: pulumi.Output<outputs.aws.ElastigroupStatefulInstanceAction[] | undefined>;
     /**
      * List of Strings of subnet identifiers.
      * Note: When this parameter is set, `availabilityZones` should be left unused.
      *
      * @deprecated This field will soon be deprecated and handled by availability_zones
      */
-    public readonly subnetIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly subnetIds: pulumi.Output<string[] | undefined>;
     /**
      * A key/value mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<outputs.aws.ElastigroupTag[] | undefined>;
-    public readonly targetGroupArns!: pulumi.Output<string[] | undefined>;
-    public readonly updatePolicy!: pulumi.Output<outputs.aws.ElastigroupUpdatePolicy | undefined>;
+    declare public readonly tags: pulumi.Output<outputs.aws.ElastigroupTag[] | undefined>;
+    declare public readonly targetGroupArns: pulumi.Output<string[] | undefined>;
+    declare public readonly updatePolicy: pulumi.Output<outputs.aws.ElastigroupUpdatePolicy | undefined>;
     /**
      * The user data to provide when launching the instance.
      */
-    public readonly userData!: pulumi.Output<string | undefined>;
-    public readonly utilizeCommitments!: pulumi.Output<boolean | undefined>;
+    declare public readonly userData: pulumi.Output<string | undefined>;
+    declare public readonly utilizeCommitments: pulumi.Output<boolean | undefined>;
     /**
      * In a case of any available reserved instances, Elastigroup will utilize them first before purchasing Spot instances.
      */
-    public readonly utilizeReservedInstances!: pulumi.Output<boolean | undefined>;
+    declare public readonly utilizeReservedInstances: pulumi.Output<boolean | undefined>;
     /**
      * Minimum number of instances in a 'HEALTHY' status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desiredCapacity`.
      */
-    public readonly waitForCapacity!: pulumi.Output<number | undefined>;
+    declare public readonly waitForCapacity: pulumi.Output<number | undefined>;
     /**
      * Time (seconds) to wait for instances to report a 'HEALTHY' status. Useful for plans with multiple dependencies that take some time to initialize. Leave undefined or set to `0` to indicate no wait. This is ignored when updating with blue/green deployment.
      */
-    public readonly waitForCapacityTimeout!: pulumi.Output<number | undefined>;
+    declare public readonly waitForCapacityTimeout: pulumi.Output<number | undefined>;
 
     /**
      * Create a Elastigroup resource with the given unique name, arguments, and options.
@@ -430,190 +430,190 @@ export class Elastigroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ElastigroupState | undefined;
-            resourceInputs["autoHealing"] = state ? state.autoHealing : undefined;
-            resourceInputs["availabilityZones"] = state ? state.availabilityZones : undefined;
-            resourceInputs["blockDevicesMode"] = state ? state.blockDevicesMode : undefined;
-            resourceInputs["capacityUnit"] = state ? state.capacityUnit : undefined;
-            resourceInputs["considerOdPricing"] = state ? state.considerOdPricing : undefined;
-            resourceInputs["cpuCredits"] = state ? state.cpuCredits : undefined;
-            resourceInputs["cpuOptions"] = state ? state.cpuOptions : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["desiredCapacity"] = state ? state.desiredCapacity : undefined;
-            resourceInputs["drainingTimeout"] = state ? state.drainingTimeout : undefined;
-            resourceInputs["ebsBlockDevices"] = state ? state.ebsBlockDevices : undefined;
-            resourceInputs["ebsOptimized"] = state ? state.ebsOptimized : undefined;
-            resourceInputs["elasticIps"] = state ? state.elasticIps : undefined;
-            resourceInputs["elasticLoadBalancers"] = state ? state.elasticLoadBalancers : undefined;
-            resourceInputs["enableMonitoring"] = state ? state.enableMonitoring : undefined;
-            resourceInputs["ephemeralBlockDevices"] = state ? state.ephemeralBlockDevices : undefined;
-            resourceInputs["fallbackToOndemand"] = state ? state.fallbackToOndemand : undefined;
-            resourceInputs["healthCheckGracePeriod"] = state ? state.healthCheckGracePeriod : undefined;
-            resourceInputs["healthCheckType"] = state ? state.healthCheckType : undefined;
-            resourceInputs["healthCheckUnhealthyDurationBeforeReplacement"] = state ? state.healthCheckUnhealthyDurationBeforeReplacement : undefined;
-            resourceInputs["iamInstanceProfile"] = state ? state.iamInstanceProfile : undefined;
-            resourceInputs["imageId"] = state ? state.imageId : undefined;
-            resourceInputs["images"] = state ? state.images : undefined;
-            resourceInputs["immediateOdRecoverThreshold"] = state ? state.immediateOdRecoverThreshold : undefined;
-            resourceInputs["instanceTypesOndemand"] = state ? state.instanceTypesOndemand : undefined;
-            resourceInputs["instanceTypesPreferredSpots"] = state ? state.instanceTypesPreferredSpots : undefined;
-            resourceInputs["instanceTypesSpots"] = state ? state.instanceTypesSpots : undefined;
-            resourceInputs["instanceTypesWeights"] = state ? state.instanceTypesWeights : undefined;
-            resourceInputs["integrationBeanstalk"] = state ? state.integrationBeanstalk : undefined;
-            resourceInputs["integrationCodedeploy"] = state ? state.integrationCodedeploy : undefined;
-            resourceInputs["integrationDockerSwarm"] = state ? state.integrationDockerSwarm : undefined;
-            resourceInputs["integrationEcs"] = state ? state.integrationEcs : undefined;
-            resourceInputs["integrationGitlab"] = state ? state.integrationGitlab : undefined;
-            resourceInputs["integrationKubernetes"] = state ? state.integrationKubernetes : undefined;
-            resourceInputs["integrationMesosphere"] = state ? state.integrationMesosphere : undefined;
-            resourceInputs["integrationNomad"] = state ? state.integrationNomad : undefined;
-            resourceInputs["integrationRancher"] = state ? state.integrationRancher : undefined;
-            resourceInputs["integrationRoute53"] = state ? state.integrationRoute53 : undefined;
-            resourceInputs["itfs"] = state ? state.itfs : undefined;
-            resourceInputs["keyName"] = state ? state.keyName : undefined;
-            resourceInputs["lifetimePeriod"] = state ? state.lifetimePeriod : undefined;
-            resourceInputs["logging"] = state ? state.logging : undefined;
-            resourceInputs["maxReplacementsPercentage"] = state ? state.maxReplacementsPercentage : undefined;
-            resourceInputs["maxSize"] = state ? state.maxSize : undefined;
-            resourceInputs["metadataOptions"] = state ? state.metadataOptions : undefined;
-            resourceInputs["minSize"] = state ? state.minSize : undefined;
-            resourceInputs["minimumInstanceLifetime"] = state ? state.minimumInstanceLifetime : undefined;
-            resourceInputs["multipleMetrics"] = state ? state.multipleMetrics : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
-            resourceInputs["onDemandTypes"] = state ? state.onDemandTypes : undefined;
-            resourceInputs["ondemandCount"] = state ? state.ondemandCount : undefined;
-            resourceInputs["orientation"] = state ? state.orientation : undefined;
-            resourceInputs["persistBlockDevices"] = state ? state.persistBlockDevices : undefined;
-            resourceInputs["persistPrivateIp"] = state ? state.persistPrivateIp : undefined;
-            resourceInputs["persistRootDevice"] = state ? state.persistRootDevice : undefined;
-            resourceInputs["placementTenancy"] = state ? state.placementTenancy : undefined;
-            resourceInputs["preferredAvailabilityZones"] = state ? state.preferredAvailabilityZones : undefined;
-            resourceInputs["privateIps"] = state ? state.privateIps : undefined;
-            resourceInputs["product"] = state ? state.product : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["resourceRequirements"] = state ? state.resourceRequirements : undefined;
-            resourceInputs["resourceTagSpecifications"] = state ? state.resourceTagSpecifications : undefined;
-            resourceInputs["restrictSingleAz"] = state ? state.restrictSingleAz : undefined;
-            resourceInputs["revertToSpot"] = state ? state.revertToSpot : undefined;
-            resourceInputs["scalingDownPolicies"] = state ? state.scalingDownPolicies : undefined;
-            resourceInputs["scalingStrategies"] = state ? state.scalingStrategies : undefined;
-            resourceInputs["scalingTargetPolicies"] = state ? state.scalingTargetPolicies : undefined;
-            resourceInputs["scalingUpPolicies"] = state ? state.scalingUpPolicies : undefined;
-            resourceInputs["scheduledTasks"] = state ? state.scheduledTasks : undefined;
-            resourceInputs["securityGroups"] = state ? state.securityGroups : undefined;
-            resourceInputs["shutdownScript"] = state ? state.shutdownScript : undefined;
-            resourceInputs["signals"] = state ? state.signals : undefined;
-            resourceInputs["spotPercentage"] = state ? state.spotPercentage : undefined;
-            resourceInputs["statefulDeallocation"] = state ? state.statefulDeallocation : undefined;
-            resourceInputs["statefulInstanceActions"] = state ? state.statefulInstanceActions : undefined;
-            resourceInputs["subnetIds"] = state ? state.subnetIds : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["targetGroupArns"] = state ? state.targetGroupArns : undefined;
-            resourceInputs["updatePolicy"] = state ? state.updatePolicy : undefined;
-            resourceInputs["userData"] = state ? state.userData : undefined;
-            resourceInputs["utilizeCommitments"] = state ? state.utilizeCommitments : undefined;
-            resourceInputs["utilizeReservedInstances"] = state ? state.utilizeReservedInstances : undefined;
-            resourceInputs["waitForCapacity"] = state ? state.waitForCapacity : undefined;
-            resourceInputs["waitForCapacityTimeout"] = state ? state.waitForCapacityTimeout : undefined;
+            resourceInputs["autoHealing"] = state?.autoHealing;
+            resourceInputs["availabilityZones"] = state?.availabilityZones;
+            resourceInputs["blockDevicesMode"] = state?.blockDevicesMode;
+            resourceInputs["capacityUnit"] = state?.capacityUnit;
+            resourceInputs["considerOdPricing"] = state?.considerOdPricing;
+            resourceInputs["cpuCredits"] = state?.cpuCredits;
+            resourceInputs["cpuOptions"] = state?.cpuOptions;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["desiredCapacity"] = state?.desiredCapacity;
+            resourceInputs["drainingTimeout"] = state?.drainingTimeout;
+            resourceInputs["ebsBlockDevices"] = state?.ebsBlockDevices;
+            resourceInputs["ebsOptimized"] = state?.ebsOptimized;
+            resourceInputs["elasticIps"] = state?.elasticIps;
+            resourceInputs["elasticLoadBalancers"] = state?.elasticLoadBalancers;
+            resourceInputs["enableMonitoring"] = state?.enableMonitoring;
+            resourceInputs["ephemeralBlockDevices"] = state?.ephemeralBlockDevices;
+            resourceInputs["fallbackToOndemand"] = state?.fallbackToOndemand;
+            resourceInputs["healthCheckGracePeriod"] = state?.healthCheckGracePeriod;
+            resourceInputs["healthCheckType"] = state?.healthCheckType;
+            resourceInputs["healthCheckUnhealthyDurationBeforeReplacement"] = state?.healthCheckUnhealthyDurationBeforeReplacement;
+            resourceInputs["iamInstanceProfile"] = state?.iamInstanceProfile;
+            resourceInputs["imageId"] = state?.imageId;
+            resourceInputs["images"] = state?.images;
+            resourceInputs["immediateOdRecoverThreshold"] = state?.immediateOdRecoverThreshold;
+            resourceInputs["instanceTypesOndemand"] = state?.instanceTypesOndemand;
+            resourceInputs["instanceTypesPreferredSpots"] = state?.instanceTypesPreferredSpots;
+            resourceInputs["instanceTypesSpots"] = state?.instanceTypesSpots;
+            resourceInputs["instanceTypesWeights"] = state?.instanceTypesWeights;
+            resourceInputs["integrationBeanstalk"] = state?.integrationBeanstalk;
+            resourceInputs["integrationCodedeploy"] = state?.integrationCodedeploy;
+            resourceInputs["integrationDockerSwarm"] = state?.integrationDockerSwarm;
+            resourceInputs["integrationEcs"] = state?.integrationEcs;
+            resourceInputs["integrationGitlab"] = state?.integrationGitlab;
+            resourceInputs["integrationKubernetes"] = state?.integrationKubernetes;
+            resourceInputs["integrationMesosphere"] = state?.integrationMesosphere;
+            resourceInputs["integrationNomad"] = state?.integrationNomad;
+            resourceInputs["integrationRancher"] = state?.integrationRancher;
+            resourceInputs["integrationRoute53"] = state?.integrationRoute53;
+            resourceInputs["itfs"] = state?.itfs;
+            resourceInputs["keyName"] = state?.keyName;
+            resourceInputs["lifetimePeriod"] = state?.lifetimePeriod;
+            resourceInputs["logging"] = state?.logging;
+            resourceInputs["maxReplacementsPercentage"] = state?.maxReplacementsPercentage;
+            resourceInputs["maxSize"] = state?.maxSize;
+            resourceInputs["metadataOptions"] = state?.metadataOptions;
+            resourceInputs["minSize"] = state?.minSize;
+            resourceInputs["minimumInstanceLifetime"] = state?.minimumInstanceLifetime;
+            resourceInputs["multipleMetrics"] = state?.multipleMetrics;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networkInterfaces"] = state?.networkInterfaces;
+            resourceInputs["onDemandTypes"] = state?.onDemandTypes;
+            resourceInputs["ondemandCount"] = state?.ondemandCount;
+            resourceInputs["orientation"] = state?.orientation;
+            resourceInputs["persistBlockDevices"] = state?.persistBlockDevices;
+            resourceInputs["persistPrivateIp"] = state?.persistPrivateIp;
+            resourceInputs["persistRootDevice"] = state?.persistRootDevice;
+            resourceInputs["placementTenancy"] = state?.placementTenancy;
+            resourceInputs["preferredAvailabilityZones"] = state?.preferredAvailabilityZones;
+            resourceInputs["privateIps"] = state?.privateIps;
+            resourceInputs["product"] = state?.product;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["resourceRequirements"] = state?.resourceRequirements;
+            resourceInputs["resourceTagSpecifications"] = state?.resourceTagSpecifications;
+            resourceInputs["restrictSingleAz"] = state?.restrictSingleAz;
+            resourceInputs["revertToSpot"] = state?.revertToSpot;
+            resourceInputs["scalingDownPolicies"] = state?.scalingDownPolicies;
+            resourceInputs["scalingStrategies"] = state?.scalingStrategies;
+            resourceInputs["scalingTargetPolicies"] = state?.scalingTargetPolicies;
+            resourceInputs["scalingUpPolicies"] = state?.scalingUpPolicies;
+            resourceInputs["scheduledTasks"] = state?.scheduledTasks;
+            resourceInputs["securityGroups"] = state?.securityGroups;
+            resourceInputs["shutdownScript"] = state?.shutdownScript;
+            resourceInputs["signals"] = state?.signals;
+            resourceInputs["spotPercentage"] = state?.spotPercentage;
+            resourceInputs["statefulDeallocation"] = state?.statefulDeallocation;
+            resourceInputs["statefulInstanceActions"] = state?.statefulInstanceActions;
+            resourceInputs["subnetIds"] = state?.subnetIds;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["targetGroupArns"] = state?.targetGroupArns;
+            resourceInputs["updatePolicy"] = state?.updatePolicy;
+            resourceInputs["userData"] = state?.userData;
+            resourceInputs["utilizeCommitments"] = state?.utilizeCommitments;
+            resourceInputs["utilizeReservedInstances"] = state?.utilizeReservedInstances;
+            resourceInputs["waitForCapacity"] = state?.waitForCapacity;
+            resourceInputs["waitForCapacityTimeout"] = state?.waitForCapacityTimeout;
         } else {
             const args = argsOrState as ElastigroupArgs | undefined;
-            if ((!args || args.fallbackToOndemand === undefined) && !opts.urn) {
+            if (args?.fallbackToOndemand === undefined && !opts.urn) {
                 throw new Error("Missing required property 'fallbackToOndemand'");
             }
-            if ((!args || args.orientation === undefined) && !opts.urn) {
+            if (args?.orientation === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orientation'");
             }
-            if ((!args || args.product === undefined) && !opts.urn) {
+            if (args?.product === undefined && !opts.urn) {
                 throw new Error("Missing required property 'product'");
             }
-            if ((!args || args.securityGroups === undefined) && !opts.urn) {
+            if (args?.securityGroups === undefined && !opts.urn) {
                 throw new Error("Missing required property 'securityGroups'");
             }
-            resourceInputs["autoHealing"] = args ? args.autoHealing : undefined;
-            resourceInputs["availabilityZones"] = args ? args.availabilityZones : undefined;
-            resourceInputs["blockDevicesMode"] = args ? args.blockDevicesMode : undefined;
-            resourceInputs["capacityUnit"] = args ? args.capacityUnit : undefined;
-            resourceInputs["considerOdPricing"] = args ? args.considerOdPricing : undefined;
-            resourceInputs["cpuCredits"] = args ? args.cpuCredits : undefined;
-            resourceInputs["cpuOptions"] = args ? args.cpuOptions : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
-            resourceInputs["drainingTimeout"] = args ? args.drainingTimeout : undefined;
-            resourceInputs["ebsBlockDevices"] = args ? args.ebsBlockDevices : undefined;
-            resourceInputs["ebsOptimized"] = args ? args.ebsOptimized : undefined;
-            resourceInputs["elasticIps"] = args ? args.elasticIps : undefined;
-            resourceInputs["elasticLoadBalancers"] = args ? args.elasticLoadBalancers : undefined;
-            resourceInputs["enableMonitoring"] = args ? args.enableMonitoring : undefined;
-            resourceInputs["ephemeralBlockDevices"] = args ? args.ephemeralBlockDevices : undefined;
-            resourceInputs["fallbackToOndemand"] = args ? args.fallbackToOndemand : undefined;
-            resourceInputs["healthCheckGracePeriod"] = args ? args.healthCheckGracePeriod : undefined;
-            resourceInputs["healthCheckType"] = args ? args.healthCheckType : undefined;
-            resourceInputs["healthCheckUnhealthyDurationBeforeReplacement"] = args ? args.healthCheckUnhealthyDurationBeforeReplacement : undefined;
-            resourceInputs["iamInstanceProfile"] = args ? args.iamInstanceProfile : undefined;
-            resourceInputs["imageId"] = args ? args.imageId : undefined;
-            resourceInputs["images"] = args ? args.images : undefined;
-            resourceInputs["immediateOdRecoverThreshold"] = args ? args.immediateOdRecoverThreshold : undefined;
-            resourceInputs["instanceTypesOndemand"] = args ? args.instanceTypesOndemand : undefined;
-            resourceInputs["instanceTypesPreferredSpots"] = args ? args.instanceTypesPreferredSpots : undefined;
-            resourceInputs["instanceTypesSpots"] = args ? args.instanceTypesSpots : undefined;
-            resourceInputs["instanceTypesWeights"] = args ? args.instanceTypesWeights : undefined;
-            resourceInputs["integrationBeanstalk"] = args ? args.integrationBeanstalk : undefined;
-            resourceInputs["integrationCodedeploy"] = args ? args.integrationCodedeploy : undefined;
-            resourceInputs["integrationDockerSwarm"] = args ? args.integrationDockerSwarm : undefined;
-            resourceInputs["integrationEcs"] = args ? args.integrationEcs : undefined;
-            resourceInputs["integrationGitlab"] = args ? args.integrationGitlab : undefined;
-            resourceInputs["integrationKubernetes"] = args ? args.integrationKubernetes : undefined;
-            resourceInputs["integrationMesosphere"] = args ? args.integrationMesosphere : undefined;
-            resourceInputs["integrationNomad"] = args ? args.integrationNomad : undefined;
-            resourceInputs["integrationRancher"] = args ? args.integrationRancher : undefined;
-            resourceInputs["integrationRoute53"] = args ? args.integrationRoute53 : undefined;
-            resourceInputs["itfs"] = args ? args.itfs : undefined;
-            resourceInputs["keyName"] = args ? args.keyName : undefined;
-            resourceInputs["lifetimePeriod"] = args ? args.lifetimePeriod : undefined;
-            resourceInputs["logging"] = args ? args.logging : undefined;
-            resourceInputs["maxReplacementsPercentage"] = args ? args.maxReplacementsPercentage : undefined;
-            resourceInputs["maxSize"] = args ? args.maxSize : undefined;
-            resourceInputs["metadataOptions"] = args ? args.metadataOptions : undefined;
-            resourceInputs["minSize"] = args ? args.minSize : undefined;
-            resourceInputs["minimumInstanceLifetime"] = args ? args.minimumInstanceLifetime : undefined;
-            resourceInputs["multipleMetrics"] = args ? args.multipleMetrics : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
-            resourceInputs["onDemandTypes"] = args ? args.onDemandTypes : undefined;
-            resourceInputs["ondemandCount"] = args ? args.ondemandCount : undefined;
-            resourceInputs["orientation"] = args ? args.orientation : undefined;
-            resourceInputs["persistBlockDevices"] = args ? args.persistBlockDevices : undefined;
-            resourceInputs["persistPrivateIp"] = args ? args.persistPrivateIp : undefined;
-            resourceInputs["persistRootDevice"] = args ? args.persistRootDevice : undefined;
-            resourceInputs["placementTenancy"] = args ? args.placementTenancy : undefined;
-            resourceInputs["preferredAvailabilityZones"] = args ? args.preferredAvailabilityZones : undefined;
-            resourceInputs["privateIps"] = args ? args.privateIps : undefined;
-            resourceInputs["product"] = args ? args.product : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["resourceRequirements"] = args ? args.resourceRequirements : undefined;
-            resourceInputs["resourceTagSpecifications"] = args ? args.resourceTagSpecifications : undefined;
-            resourceInputs["restrictSingleAz"] = args ? args.restrictSingleAz : undefined;
-            resourceInputs["revertToSpot"] = args ? args.revertToSpot : undefined;
-            resourceInputs["scalingDownPolicies"] = args ? args.scalingDownPolicies : undefined;
-            resourceInputs["scalingStrategies"] = args ? args.scalingStrategies : undefined;
-            resourceInputs["scalingTargetPolicies"] = args ? args.scalingTargetPolicies : undefined;
-            resourceInputs["scalingUpPolicies"] = args ? args.scalingUpPolicies : undefined;
-            resourceInputs["scheduledTasks"] = args ? args.scheduledTasks : undefined;
-            resourceInputs["securityGroups"] = args ? args.securityGroups : undefined;
-            resourceInputs["shutdownScript"] = args ? args.shutdownScript : undefined;
-            resourceInputs["signals"] = args ? args.signals : undefined;
-            resourceInputs["spotPercentage"] = args ? args.spotPercentage : undefined;
-            resourceInputs["statefulDeallocation"] = args ? args.statefulDeallocation : undefined;
-            resourceInputs["statefulInstanceActions"] = args ? args.statefulInstanceActions : undefined;
-            resourceInputs["subnetIds"] = args ? args.subnetIds : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["targetGroupArns"] = args ? args.targetGroupArns : undefined;
-            resourceInputs["updatePolicy"] = args ? args.updatePolicy : undefined;
-            resourceInputs["userData"] = args ? args.userData : undefined;
-            resourceInputs["utilizeCommitments"] = args ? args.utilizeCommitments : undefined;
-            resourceInputs["utilizeReservedInstances"] = args ? args.utilizeReservedInstances : undefined;
-            resourceInputs["waitForCapacity"] = args ? args.waitForCapacity : undefined;
-            resourceInputs["waitForCapacityTimeout"] = args ? args.waitForCapacityTimeout : undefined;
+            resourceInputs["autoHealing"] = args?.autoHealing;
+            resourceInputs["availabilityZones"] = args?.availabilityZones;
+            resourceInputs["blockDevicesMode"] = args?.blockDevicesMode;
+            resourceInputs["capacityUnit"] = args?.capacityUnit;
+            resourceInputs["considerOdPricing"] = args?.considerOdPricing;
+            resourceInputs["cpuCredits"] = args?.cpuCredits;
+            resourceInputs["cpuOptions"] = args?.cpuOptions;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["desiredCapacity"] = args?.desiredCapacity;
+            resourceInputs["drainingTimeout"] = args?.drainingTimeout;
+            resourceInputs["ebsBlockDevices"] = args?.ebsBlockDevices;
+            resourceInputs["ebsOptimized"] = args?.ebsOptimized;
+            resourceInputs["elasticIps"] = args?.elasticIps;
+            resourceInputs["elasticLoadBalancers"] = args?.elasticLoadBalancers;
+            resourceInputs["enableMonitoring"] = args?.enableMonitoring;
+            resourceInputs["ephemeralBlockDevices"] = args?.ephemeralBlockDevices;
+            resourceInputs["fallbackToOndemand"] = args?.fallbackToOndemand;
+            resourceInputs["healthCheckGracePeriod"] = args?.healthCheckGracePeriod;
+            resourceInputs["healthCheckType"] = args?.healthCheckType;
+            resourceInputs["healthCheckUnhealthyDurationBeforeReplacement"] = args?.healthCheckUnhealthyDurationBeforeReplacement;
+            resourceInputs["iamInstanceProfile"] = args?.iamInstanceProfile;
+            resourceInputs["imageId"] = args?.imageId;
+            resourceInputs["images"] = args?.images;
+            resourceInputs["immediateOdRecoverThreshold"] = args?.immediateOdRecoverThreshold;
+            resourceInputs["instanceTypesOndemand"] = args?.instanceTypesOndemand;
+            resourceInputs["instanceTypesPreferredSpots"] = args?.instanceTypesPreferredSpots;
+            resourceInputs["instanceTypesSpots"] = args?.instanceTypesSpots;
+            resourceInputs["instanceTypesWeights"] = args?.instanceTypesWeights;
+            resourceInputs["integrationBeanstalk"] = args?.integrationBeanstalk;
+            resourceInputs["integrationCodedeploy"] = args?.integrationCodedeploy;
+            resourceInputs["integrationDockerSwarm"] = args?.integrationDockerSwarm;
+            resourceInputs["integrationEcs"] = args?.integrationEcs;
+            resourceInputs["integrationGitlab"] = args?.integrationGitlab;
+            resourceInputs["integrationKubernetes"] = args?.integrationKubernetes;
+            resourceInputs["integrationMesosphere"] = args?.integrationMesosphere;
+            resourceInputs["integrationNomad"] = args?.integrationNomad;
+            resourceInputs["integrationRancher"] = args?.integrationRancher;
+            resourceInputs["integrationRoute53"] = args?.integrationRoute53;
+            resourceInputs["itfs"] = args?.itfs;
+            resourceInputs["keyName"] = args?.keyName;
+            resourceInputs["lifetimePeriod"] = args?.lifetimePeriod;
+            resourceInputs["logging"] = args?.logging;
+            resourceInputs["maxReplacementsPercentage"] = args?.maxReplacementsPercentage;
+            resourceInputs["maxSize"] = args?.maxSize;
+            resourceInputs["metadataOptions"] = args?.metadataOptions;
+            resourceInputs["minSize"] = args?.minSize;
+            resourceInputs["minimumInstanceLifetime"] = args?.minimumInstanceLifetime;
+            resourceInputs["multipleMetrics"] = args?.multipleMetrics;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networkInterfaces"] = args?.networkInterfaces;
+            resourceInputs["onDemandTypes"] = args?.onDemandTypes;
+            resourceInputs["ondemandCount"] = args?.ondemandCount;
+            resourceInputs["orientation"] = args?.orientation;
+            resourceInputs["persistBlockDevices"] = args?.persistBlockDevices;
+            resourceInputs["persistPrivateIp"] = args?.persistPrivateIp;
+            resourceInputs["persistRootDevice"] = args?.persistRootDevice;
+            resourceInputs["placementTenancy"] = args?.placementTenancy;
+            resourceInputs["preferredAvailabilityZones"] = args?.preferredAvailabilityZones;
+            resourceInputs["privateIps"] = args?.privateIps;
+            resourceInputs["product"] = args?.product;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["resourceRequirements"] = args?.resourceRequirements;
+            resourceInputs["resourceTagSpecifications"] = args?.resourceTagSpecifications;
+            resourceInputs["restrictSingleAz"] = args?.restrictSingleAz;
+            resourceInputs["revertToSpot"] = args?.revertToSpot;
+            resourceInputs["scalingDownPolicies"] = args?.scalingDownPolicies;
+            resourceInputs["scalingStrategies"] = args?.scalingStrategies;
+            resourceInputs["scalingTargetPolicies"] = args?.scalingTargetPolicies;
+            resourceInputs["scalingUpPolicies"] = args?.scalingUpPolicies;
+            resourceInputs["scheduledTasks"] = args?.scheduledTasks;
+            resourceInputs["securityGroups"] = args?.securityGroups;
+            resourceInputs["shutdownScript"] = args?.shutdownScript;
+            resourceInputs["signals"] = args?.signals;
+            resourceInputs["spotPercentage"] = args?.spotPercentage;
+            resourceInputs["statefulDeallocation"] = args?.statefulDeallocation;
+            resourceInputs["statefulInstanceActions"] = args?.statefulInstanceActions;
+            resourceInputs["subnetIds"] = args?.subnetIds;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["targetGroupArns"] = args?.targetGroupArns;
+            resourceInputs["updatePolicy"] = args?.updatePolicy;
+            resourceInputs["userData"] = args?.userData;
+            resourceInputs["utilizeCommitments"] = args?.utilizeCommitments;
+            resourceInputs["utilizeReservedInstances"] = args?.utilizeReservedInstances;
+            resourceInputs["waitForCapacity"] = args?.waitForCapacity;
+            resourceInputs["waitForCapacityTimeout"] = args?.waitForCapacityTimeout;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Elastigroup.__pulumiType, name, resourceInputs, opts);

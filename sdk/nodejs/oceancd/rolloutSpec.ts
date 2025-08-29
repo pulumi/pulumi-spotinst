@@ -40,27 +40,27 @@ export class RolloutSpec extends pulumi.CustomResource {
     /**
      * Holds information on how to react when failure happens.
      */
-    public readonly failurePolicy!: pulumi.Output<outputs.oceancd.RolloutSpecFailurePolicy | undefined>;
+    declare public readonly failurePolicy: pulumi.Output<outputs.oceancd.RolloutSpecFailurePolicy | undefined>;
     /**
      * Identifier name for Ocean CD Rollout Spec. Must be unique
      */
-    public readonly rolloutSpecName!: pulumi.Output<string>;
+    declare public readonly rolloutSpecName: pulumi.Output<string>;
     /**
      * Represents the SpotDeployment selector.
      */
-    public readonly spotDeployment!: pulumi.Output<outputs.oceancd.RolloutSpecSpotDeployment | undefined>;
+    declare public readonly spotDeployment: pulumi.Output<outputs.oceancd.RolloutSpecSpotDeployment | undefined>;
     /**
      * You must specify either `spotDeployment` OR `spotDeployments` but not both. Every SpotDeployment has to be unique. If more than one `SpotDeployment` has been configured, no `traffic` managers can be set as part of the RolloutSpec.For such case ensure that each of the chosen SpotDeployments are being exposed with different Kubernetes services.
      */
-    public readonly spotDeployments!: pulumi.Output<outputs.oceancd.RolloutSpecSpotDeployment[] | undefined>;
+    declare public readonly spotDeployments: pulumi.Output<outputs.oceancd.RolloutSpecSpotDeployment[] | undefined>;
     /**
      * Determines the Ocean CD strategy
      */
-    public readonly strategy!: pulumi.Output<outputs.oceancd.RolloutSpecStrategy>;
+    declare public readonly strategy: pulumi.Output<outputs.oceancd.RolloutSpecStrategy>;
     /**
      * Hosts all of the supported service meshes needed to enable more fine-grained traffic routing. In case `SpotDeployments` contains more than one SpotDeployment the `traffic` manager may not be configured.
      */
-    public readonly traffic!: pulumi.Output<outputs.oceancd.RolloutSpecTraffic | undefined>;
+    declare public readonly traffic: pulumi.Output<outputs.oceancd.RolloutSpecTraffic | undefined>;
 
     /**
      * Create a RolloutSpec resource with the given unique name, arguments, and options.
@@ -75,26 +75,26 @@ export class RolloutSpec extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RolloutSpecState | undefined;
-            resourceInputs["failurePolicy"] = state ? state.failurePolicy : undefined;
-            resourceInputs["rolloutSpecName"] = state ? state.rolloutSpecName : undefined;
-            resourceInputs["spotDeployment"] = state ? state.spotDeployment : undefined;
-            resourceInputs["spotDeployments"] = state ? state.spotDeployments : undefined;
-            resourceInputs["strategy"] = state ? state.strategy : undefined;
-            resourceInputs["traffic"] = state ? state.traffic : undefined;
+            resourceInputs["failurePolicy"] = state?.failurePolicy;
+            resourceInputs["rolloutSpecName"] = state?.rolloutSpecName;
+            resourceInputs["spotDeployment"] = state?.spotDeployment;
+            resourceInputs["spotDeployments"] = state?.spotDeployments;
+            resourceInputs["strategy"] = state?.strategy;
+            resourceInputs["traffic"] = state?.traffic;
         } else {
             const args = argsOrState as RolloutSpecArgs | undefined;
-            if ((!args || args.rolloutSpecName === undefined) && !opts.urn) {
+            if (args?.rolloutSpecName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rolloutSpecName'");
             }
-            if ((!args || args.strategy === undefined) && !opts.urn) {
+            if (args?.strategy === undefined && !opts.urn) {
                 throw new Error("Missing required property 'strategy'");
             }
-            resourceInputs["failurePolicy"] = args ? args.failurePolicy : undefined;
-            resourceInputs["rolloutSpecName"] = args ? args.rolloutSpecName : undefined;
-            resourceInputs["spotDeployment"] = args ? args.spotDeployment : undefined;
-            resourceInputs["spotDeployments"] = args ? args.spotDeployments : undefined;
-            resourceInputs["strategy"] = args ? args.strategy : undefined;
-            resourceInputs["traffic"] = args ? args.traffic : undefined;
+            resourceInputs["failurePolicy"] = args?.failurePolicy;
+            resourceInputs["rolloutSpecName"] = args?.rolloutSpecName;
+            resourceInputs["spotDeployment"] = args?.spotDeployment;
+            resourceInputs["spotDeployments"] = args?.spotDeployments;
+            resourceInputs["strategy"] = args?.strategy;
+            resourceInputs["traffic"] = args?.traffic;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RolloutSpec.__pulumiType, name, resourceInputs, opts);

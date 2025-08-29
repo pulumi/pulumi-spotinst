@@ -562,47 +562,47 @@ export class StatefulNodeAzure extends pulumi.CustomResource {
         return obj['__pulumiType'] === StatefulNodeAzure.__pulumiType;
     }
 
-    public readonly attachDataDisks!: pulumi.Output<outputs.StatefulNodeAzureAttachDataDisk[] | undefined>;
-    public readonly bootDiagnostics!: pulumi.Output<outputs.StatefulNodeAzureBootDiagnostic[]>;
-    public readonly customData!: pulumi.Output<string>;
-    public readonly dataDisks!: pulumi.Output<outputs.StatefulNodeAzureDataDisk[] | undefined>;
-    public readonly dataDisksPersistenceMode!: pulumi.Output<string>;
-    public readonly deletes!: pulumi.Output<outputs.StatefulNodeAzureDelete[] | undefined>;
-    public readonly description!: pulumi.Output<string>;
-    public readonly detachDataDisks!: pulumi.Output<outputs.StatefulNodeAzureDetachDataDisk[] | undefined>;
-    public readonly extensions!: pulumi.Output<outputs.StatefulNodeAzureExtension[]>;
-    public readonly health!: pulumi.Output<outputs.StatefulNodeAzureHealth>;
-    public readonly image!: pulumi.Output<outputs.StatefulNodeAzureImage | undefined>;
-    public readonly importVms!: pulumi.Output<outputs.StatefulNodeAzureImportVm[] | undefined>;
-    public readonly licenseType!: pulumi.Output<string | undefined>;
-    public readonly loadBalancers!: pulumi.Output<outputs.StatefulNodeAzureLoadBalancer[]>;
-    public readonly login!: pulumi.Output<outputs.StatefulNodeAzureLogin | undefined>;
-    public readonly managedServiceIdentities!: pulumi.Output<outputs.StatefulNodeAzureManagedServiceIdentity[] | undefined>;
-    public readonly name!: pulumi.Output<string>;
-    public readonly network!: pulumi.Output<outputs.StatefulNodeAzureNetwork | undefined>;
-    public readonly os!: pulumi.Output<string>;
-    public readonly osDisk!: pulumi.Output<outputs.StatefulNodeAzureOsDisk | undefined>;
-    public readonly osDiskPersistenceMode!: pulumi.Output<string>;
-    public readonly preferredZone!: pulumi.Output<string>;
-    public readonly proximityPlacementGroups!: pulumi.Output<outputs.StatefulNodeAzureProximityPlacementGroup[]>;
-    public readonly region!: pulumi.Output<string>;
-    public readonly resourceGroupName!: pulumi.Output<string>;
-    public readonly schedulingTasks!: pulumi.Output<outputs.StatefulNodeAzureSchedulingTask[]>;
-    public readonly secrets!: pulumi.Output<outputs.StatefulNodeAzureSecret[] | undefined>;
-    public readonly security!: pulumi.Output<outputs.StatefulNodeAzureSecurity>;
-    public readonly shouldPersistDataDisks!: pulumi.Output<boolean>;
-    public readonly shouldPersistNetwork!: pulumi.Output<boolean>;
-    public readonly shouldPersistOsDisk!: pulumi.Output<boolean>;
-    public readonly shutdownScript!: pulumi.Output<string>;
-    public readonly signals!: pulumi.Output<outputs.StatefulNodeAzureSignal[]>;
-    public readonly strategy!: pulumi.Output<outputs.StatefulNodeAzureStrategy>;
-    public readonly tags!: pulumi.Output<outputs.StatefulNodeAzureTag[]>;
-    public readonly updateStates!: pulumi.Output<outputs.StatefulNodeAzureUpdateState[] | undefined>;
-    public readonly userData!: pulumi.Output<string>;
-    public readonly vmName!: pulumi.Output<string | undefined>;
-    public readonly vmNamePrefix!: pulumi.Output<string | undefined>;
-    public readonly vmSizes!: pulumi.Output<outputs.StatefulNodeAzureVmSizes>;
-    public readonly zones!: pulumi.Output<string[] | undefined>;
+    declare public readonly attachDataDisks: pulumi.Output<outputs.StatefulNodeAzureAttachDataDisk[] | undefined>;
+    declare public readonly bootDiagnostics: pulumi.Output<outputs.StatefulNodeAzureBootDiagnostic[]>;
+    declare public readonly customData: pulumi.Output<string>;
+    declare public readonly dataDisks: pulumi.Output<outputs.StatefulNodeAzureDataDisk[] | undefined>;
+    declare public readonly dataDisksPersistenceMode: pulumi.Output<string>;
+    declare public readonly deletes: pulumi.Output<outputs.StatefulNodeAzureDelete[] | undefined>;
+    declare public readonly description: pulumi.Output<string>;
+    declare public readonly detachDataDisks: pulumi.Output<outputs.StatefulNodeAzureDetachDataDisk[] | undefined>;
+    declare public readonly extensions: pulumi.Output<outputs.StatefulNodeAzureExtension[]>;
+    declare public readonly health: pulumi.Output<outputs.StatefulNodeAzureHealth>;
+    declare public readonly image: pulumi.Output<outputs.StatefulNodeAzureImage | undefined>;
+    declare public readonly importVms: pulumi.Output<outputs.StatefulNodeAzureImportVm[] | undefined>;
+    declare public readonly licenseType: pulumi.Output<string | undefined>;
+    declare public readonly loadBalancers: pulumi.Output<outputs.StatefulNodeAzureLoadBalancer[]>;
+    declare public readonly login: pulumi.Output<outputs.StatefulNodeAzureLogin | undefined>;
+    declare public readonly managedServiceIdentities: pulumi.Output<outputs.StatefulNodeAzureManagedServiceIdentity[] | undefined>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly network: pulumi.Output<outputs.StatefulNodeAzureNetwork | undefined>;
+    declare public readonly os: pulumi.Output<string>;
+    declare public readonly osDisk: pulumi.Output<outputs.StatefulNodeAzureOsDisk | undefined>;
+    declare public readonly osDiskPersistenceMode: pulumi.Output<string>;
+    declare public readonly preferredZone: pulumi.Output<string>;
+    declare public readonly proximityPlacementGroups: pulumi.Output<outputs.StatefulNodeAzureProximityPlacementGroup[]>;
+    declare public readonly region: pulumi.Output<string>;
+    declare public readonly resourceGroupName: pulumi.Output<string>;
+    declare public readonly schedulingTasks: pulumi.Output<outputs.StatefulNodeAzureSchedulingTask[]>;
+    declare public readonly secrets: pulumi.Output<outputs.StatefulNodeAzureSecret[] | undefined>;
+    declare public readonly security: pulumi.Output<outputs.StatefulNodeAzureSecurity>;
+    declare public readonly shouldPersistDataDisks: pulumi.Output<boolean>;
+    declare public readonly shouldPersistNetwork: pulumi.Output<boolean>;
+    declare public readonly shouldPersistOsDisk: pulumi.Output<boolean>;
+    declare public readonly shutdownScript: pulumi.Output<string>;
+    declare public readonly signals: pulumi.Output<outputs.StatefulNodeAzureSignal[]>;
+    declare public readonly strategy: pulumi.Output<outputs.StatefulNodeAzureStrategy>;
+    declare public readonly tags: pulumi.Output<outputs.StatefulNodeAzureTag[]>;
+    declare public readonly updateStates: pulumi.Output<outputs.StatefulNodeAzureUpdateState[] | undefined>;
+    declare public readonly userData: pulumi.Output<string>;
+    declare public readonly vmName: pulumi.Output<string | undefined>;
+    declare public readonly vmNamePrefix: pulumi.Output<string | undefined>;
+    declare public readonly vmSizes: pulumi.Output<outputs.StatefulNodeAzureVmSizes>;
+    declare public readonly zones: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a StatefulNodeAzure resource with the given unique name, arguments, and options.
@@ -617,114 +617,114 @@ export class StatefulNodeAzure extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StatefulNodeAzureState | undefined;
-            resourceInputs["attachDataDisks"] = state ? state.attachDataDisks : undefined;
-            resourceInputs["bootDiagnostics"] = state ? state.bootDiagnostics : undefined;
-            resourceInputs["customData"] = state ? state.customData : undefined;
-            resourceInputs["dataDisks"] = state ? state.dataDisks : undefined;
-            resourceInputs["dataDisksPersistenceMode"] = state ? state.dataDisksPersistenceMode : undefined;
-            resourceInputs["deletes"] = state ? state.deletes : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["detachDataDisks"] = state ? state.detachDataDisks : undefined;
-            resourceInputs["extensions"] = state ? state.extensions : undefined;
-            resourceInputs["health"] = state ? state.health : undefined;
-            resourceInputs["image"] = state ? state.image : undefined;
-            resourceInputs["importVms"] = state ? state.importVms : undefined;
-            resourceInputs["licenseType"] = state ? state.licenseType : undefined;
-            resourceInputs["loadBalancers"] = state ? state.loadBalancers : undefined;
-            resourceInputs["login"] = state ? state.login : undefined;
-            resourceInputs["managedServiceIdentities"] = state ? state.managedServiceIdentities : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["os"] = state ? state.os : undefined;
-            resourceInputs["osDisk"] = state ? state.osDisk : undefined;
-            resourceInputs["osDiskPersistenceMode"] = state ? state.osDiskPersistenceMode : undefined;
-            resourceInputs["preferredZone"] = state ? state.preferredZone : undefined;
-            resourceInputs["proximityPlacementGroups"] = state ? state.proximityPlacementGroups : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["resourceGroupName"] = state ? state.resourceGroupName : undefined;
-            resourceInputs["schedulingTasks"] = state ? state.schedulingTasks : undefined;
-            resourceInputs["secrets"] = state ? state.secrets : undefined;
-            resourceInputs["security"] = state ? state.security : undefined;
-            resourceInputs["shouldPersistDataDisks"] = state ? state.shouldPersistDataDisks : undefined;
-            resourceInputs["shouldPersistNetwork"] = state ? state.shouldPersistNetwork : undefined;
-            resourceInputs["shouldPersistOsDisk"] = state ? state.shouldPersistOsDisk : undefined;
-            resourceInputs["shutdownScript"] = state ? state.shutdownScript : undefined;
-            resourceInputs["signals"] = state ? state.signals : undefined;
-            resourceInputs["strategy"] = state ? state.strategy : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["updateStates"] = state ? state.updateStates : undefined;
-            resourceInputs["userData"] = state ? state.userData : undefined;
-            resourceInputs["vmName"] = state ? state.vmName : undefined;
-            resourceInputs["vmNamePrefix"] = state ? state.vmNamePrefix : undefined;
-            resourceInputs["vmSizes"] = state ? state.vmSizes : undefined;
-            resourceInputs["zones"] = state ? state.zones : undefined;
+            resourceInputs["attachDataDisks"] = state?.attachDataDisks;
+            resourceInputs["bootDiagnostics"] = state?.bootDiagnostics;
+            resourceInputs["customData"] = state?.customData;
+            resourceInputs["dataDisks"] = state?.dataDisks;
+            resourceInputs["dataDisksPersistenceMode"] = state?.dataDisksPersistenceMode;
+            resourceInputs["deletes"] = state?.deletes;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["detachDataDisks"] = state?.detachDataDisks;
+            resourceInputs["extensions"] = state?.extensions;
+            resourceInputs["health"] = state?.health;
+            resourceInputs["image"] = state?.image;
+            resourceInputs["importVms"] = state?.importVms;
+            resourceInputs["licenseType"] = state?.licenseType;
+            resourceInputs["loadBalancers"] = state?.loadBalancers;
+            resourceInputs["login"] = state?.login;
+            resourceInputs["managedServiceIdentities"] = state?.managedServiceIdentities;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["os"] = state?.os;
+            resourceInputs["osDisk"] = state?.osDisk;
+            resourceInputs["osDiskPersistenceMode"] = state?.osDiskPersistenceMode;
+            resourceInputs["preferredZone"] = state?.preferredZone;
+            resourceInputs["proximityPlacementGroups"] = state?.proximityPlacementGroups;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["resourceGroupName"] = state?.resourceGroupName;
+            resourceInputs["schedulingTasks"] = state?.schedulingTasks;
+            resourceInputs["secrets"] = state?.secrets;
+            resourceInputs["security"] = state?.security;
+            resourceInputs["shouldPersistDataDisks"] = state?.shouldPersistDataDisks;
+            resourceInputs["shouldPersistNetwork"] = state?.shouldPersistNetwork;
+            resourceInputs["shouldPersistOsDisk"] = state?.shouldPersistOsDisk;
+            resourceInputs["shutdownScript"] = state?.shutdownScript;
+            resourceInputs["signals"] = state?.signals;
+            resourceInputs["strategy"] = state?.strategy;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["updateStates"] = state?.updateStates;
+            resourceInputs["userData"] = state?.userData;
+            resourceInputs["vmName"] = state?.vmName;
+            resourceInputs["vmNamePrefix"] = state?.vmNamePrefix;
+            resourceInputs["vmSizes"] = state?.vmSizes;
+            resourceInputs["zones"] = state?.zones;
         } else {
             const args = argsOrState as StatefulNodeAzureArgs | undefined;
-            if ((!args || args.os === undefined) && !opts.urn) {
+            if (args?.os === undefined && !opts.urn) {
                 throw new Error("Missing required property 'os'");
             }
-            if ((!args || args.region === undefined) && !opts.urn) {
+            if (args?.region === undefined && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.shouldPersistDataDisks === undefined) && !opts.urn) {
+            if (args?.shouldPersistDataDisks === undefined && !opts.urn) {
                 throw new Error("Missing required property 'shouldPersistDataDisks'");
             }
-            if ((!args || args.shouldPersistNetwork === undefined) && !opts.urn) {
+            if (args?.shouldPersistNetwork === undefined && !opts.urn) {
                 throw new Error("Missing required property 'shouldPersistNetwork'");
             }
-            if ((!args || args.shouldPersistOsDisk === undefined) && !opts.urn) {
+            if (args?.shouldPersistOsDisk === undefined && !opts.urn) {
                 throw new Error("Missing required property 'shouldPersistOsDisk'");
             }
-            if ((!args || args.strategy === undefined) && !opts.urn) {
+            if (args?.strategy === undefined && !opts.urn) {
                 throw new Error("Missing required property 'strategy'");
             }
-            if ((!args || args.vmSizes === undefined) && !opts.urn) {
+            if (args?.vmSizes === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vmSizes'");
             }
-            resourceInputs["attachDataDisks"] = args ? args.attachDataDisks : undefined;
-            resourceInputs["bootDiagnostics"] = args ? args.bootDiagnostics : undefined;
-            resourceInputs["customData"] = args ? args.customData : undefined;
-            resourceInputs["dataDisks"] = args ? args.dataDisks : undefined;
-            resourceInputs["dataDisksPersistenceMode"] = args ? args.dataDisksPersistenceMode : undefined;
-            resourceInputs["deletes"] = args ? args.deletes : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["detachDataDisks"] = args ? args.detachDataDisks : undefined;
-            resourceInputs["extensions"] = args ? args.extensions : undefined;
-            resourceInputs["health"] = args ? args.health : undefined;
-            resourceInputs["image"] = args ? args.image : undefined;
-            resourceInputs["importVms"] = args ? args.importVms : undefined;
-            resourceInputs["licenseType"] = args ? args.licenseType : undefined;
-            resourceInputs["loadBalancers"] = args ? args.loadBalancers : undefined;
-            resourceInputs["login"] = args ? args.login : undefined;
-            resourceInputs["managedServiceIdentities"] = args ? args.managedServiceIdentities : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["os"] = args ? args.os : undefined;
-            resourceInputs["osDisk"] = args ? args.osDisk : undefined;
-            resourceInputs["osDiskPersistenceMode"] = args ? args.osDiskPersistenceMode : undefined;
-            resourceInputs["preferredZone"] = args ? args.preferredZone : undefined;
-            resourceInputs["proximityPlacementGroups"] = args ? args.proximityPlacementGroups : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["schedulingTasks"] = args ? args.schedulingTasks : undefined;
-            resourceInputs["secrets"] = args ? args.secrets : undefined;
-            resourceInputs["security"] = args ? args.security : undefined;
-            resourceInputs["shouldPersistDataDisks"] = args ? args.shouldPersistDataDisks : undefined;
-            resourceInputs["shouldPersistNetwork"] = args ? args.shouldPersistNetwork : undefined;
-            resourceInputs["shouldPersistOsDisk"] = args ? args.shouldPersistOsDisk : undefined;
-            resourceInputs["shutdownScript"] = args ? args.shutdownScript : undefined;
-            resourceInputs["signals"] = args ? args.signals : undefined;
-            resourceInputs["strategy"] = args ? args.strategy : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["updateStates"] = args ? args.updateStates : undefined;
-            resourceInputs["userData"] = args ? args.userData : undefined;
-            resourceInputs["vmName"] = args ? args.vmName : undefined;
-            resourceInputs["vmNamePrefix"] = args ? args.vmNamePrefix : undefined;
-            resourceInputs["vmSizes"] = args ? args.vmSizes : undefined;
-            resourceInputs["zones"] = args ? args.zones : undefined;
+            resourceInputs["attachDataDisks"] = args?.attachDataDisks;
+            resourceInputs["bootDiagnostics"] = args?.bootDiagnostics;
+            resourceInputs["customData"] = args?.customData;
+            resourceInputs["dataDisks"] = args?.dataDisks;
+            resourceInputs["dataDisksPersistenceMode"] = args?.dataDisksPersistenceMode;
+            resourceInputs["deletes"] = args?.deletes;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["detachDataDisks"] = args?.detachDataDisks;
+            resourceInputs["extensions"] = args?.extensions;
+            resourceInputs["health"] = args?.health;
+            resourceInputs["image"] = args?.image;
+            resourceInputs["importVms"] = args?.importVms;
+            resourceInputs["licenseType"] = args?.licenseType;
+            resourceInputs["loadBalancers"] = args?.loadBalancers;
+            resourceInputs["login"] = args?.login;
+            resourceInputs["managedServiceIdentities"] = args?.managedServiceIdentities;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["os"] = args?.os;
+            resourceInputs["osDisk"] = args?.osDisk;
+            resourceInputs["osDiskPersistenceMode"] = args?.osDiskPersistenceMode;
+            resourceInputs["preferredZone"] = args?.preferredZone;
+            resourceInputs["proximityPlacementGroups"] = args?.proximityPlacementGroups;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["schedulingTasks"] = args?.schedulingTasks;
+            resourceInputs["secrets"] = args?.secrets;
+            resourceInputs["security"] = args?.security;
+            resourceInputs["shouldPersistDataDisks"] = args?.shouldPersistDataDisks;
+            resourceInputs["shouldPersistNetwork"] = args?.shouldPersistNetwork;
+            resourceInputs["shouldPersistOsDisk"] = args?.shouldPersistOsDisk;
+            resourceInputs["shutdownScript"] = args?.shutdownScript;
+            resourceInputs["signals"] = args?.signals;
+            resourceInputs["strategy"] = args?.strategy;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["updateStates"] = args?.updateStates;
+            resourceInputs["userData"] = args?.userData;
+            resourceInputs["vmName"] = args?.vmName;
+            resourceInputs["vmNamePrefix"] = args?.vmNamePrefix;
+            resourceInputs["vmSizes"] = args?.vmSizes;
+            resourceInputs["zones"] = args?.zones;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(StatefulNodeAzure.__pulumiType, name, resourceInputs, opts);

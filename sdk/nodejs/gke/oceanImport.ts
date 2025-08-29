@@ -90,73 +90,73 @@ export class OceanImport extends pulumi.CustomResource {
     /**
      * The Ocean Kubernetes AutoUpdate object. If set to 'true', Ocean will ensure that your clusters have an up-to-date configuration according to the respective GKE cluster.
      */
-    public readonly autoUpdates!: pulumi.Output<outputs.gke.OceanImportAutoUpdate[] | undefined>;
+    declare public readonly autoUpdates: pulumi.Output<outputs.gke.OceanImportAutoUpdate[] | undefined>;
     /**
      * The Ocean Kubernetes Autoscaler object.
      */
-    public readonly autoscaler!: pulumi.Output<outputs.gke.OceanImportAutoscaler>;
+    declare public readonly autoscaler: pulumi.Output<outputs.gke.OceanImportAutoscaler>;
     /**
      * Describes the backend service configurations.
      */
-    public readonly backendServices!: pulumi.Output<outputs.gke.OceanImportBackendService[] | undefined>;
+    declare public readonly backendServices: pulumi.Output<outputs.gke.OceanImportBackendService[] | undefined>;
     /**
      * Instance types to avoid launching in the Ocean cluster. Cannot be configured if whitelist list is configured.
      */
-    public readonly blacklists!: pulumi.Output<string[] | undefined>;
-    public /*out*/ readonly clusterControllerId!: pulumi.Output<string>;
+    declare public readonly blacklists: pulumi.Output<string[] | undefined>;
+    declare public /*out*/ readonly clusterControllerId: pulumi.Output<string>;
     /**
      * The GKE cluster name.
      */
-    public readonly clusterName!: pulumi.Output<string>;
+    declare public readonly clusterName: pulumi.Output<string>;
     /**
      * A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
      */
-    public readonly controllerClusterId!: pulumi.Output<string>;
+    declare public readonly controllerClusterId: pulumi.Output<string>;
     /**
      * The number of instances to launch and maintain in the cluster.
      */
-    public readonly desiredCapacity!: pulumi.Output<number | undefined>;
+    declare public readonly desiredCapacity: pulumi.Output<number | undefined>;
     /**
      * List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
      */
-    public readonly filters!: pulumi.Output<outputs.gke.OceanImportFilters | undefined>;
+    declare public readonly filters: pulumi.Output<outputs.gke.OceanImportFilters | undefined>;
     /**
      * The zone the master cluster is located in.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The upper limit of instances the cluster can scale up to.
      */
-    public readonly maxSize!: pulumi.Output<number | undefined>;
+    declare public readonly maxSize: pulumi.Output<number | undefined>;
     /**
      * The lower limit of instances the cluster can scale down to.
      */
-    public readonly minSize!: pulumi.Output<number | undefined>;
+    declare public readonly minSize: pulumi.Output<number | undefined>;
     /**
      * The root volume disk type.
      */
-    public readonly rootVolumeType!: pulumi.Output<string | undefined>;
+    declare public readonly rootVolumeType: pulumi.Output<string | undefined>;
     /**
      * Set scheduling object.
      */
-    public readonly scheduledTasks!: pulumi.Output<outputs.gke.OceanImportScheduledTask[] | undefined>;
+    declare public readonly scheduledTasks: pulumi.Output<outputs.gke.OceanImportScheduledTask[] | undefined>;
     /**
      * The Ocean shielded instance configuration object.
      */
-    public readonly shieldedInstanceConfig!: pulumi.Output<outputs.gke.OceanImportShieldedInstanceConfig>;
+    declare public readonly shieldedInstanceConfig: pulumi.Output<outputs.gke.OceanImportShieldedInstanceConfig>;
     /**
      * Strategy object.
      */
-    public readonly strategies!: pulumi.Output<outputs.gke.OceanImportStrategy[] | undefined>;
-    public readonly updatePolicy!: pulumi.Output<outputs.gke.OceanImportUpdatePolicy | undefined>;
+    declare public readonly strategies: pulumi.Output<outputs.gke.OceanImportStrategy[] | undefined>;
+    declare public readonly updatePolicy: pulumi.Output<outputs.gke.OceanImportUpdatePolicy | undefined>;
     /**
      * launch specification defined on the Ocean object will function only as a template for virtual node groups.
      */
-    public readonly useAsTemplateOnly!: pulumi.Output<boolean | undefined>;
+    declare public readonly useAsTemplateOnly: pulumi.Output<boolean | undefined>;
     /**
      * Instance types allowed in the Ocean cluster. Cannot be configured if blacklist list is configured.
      */
-    public readonly whitelists!: pulumi.Output<string[] | undefined>;
+    declare public readonly whitelists: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a OceanImport resource with the given unique name, arguments, and options.
@@ -171,51 +171,51 @@ export class OceanImport extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OceanImportState | undefined;
-            resourceInputs["autoUpdates"] = state ? state.autoUpdates : undefined;
-            resourceInputs["autoscaler"] = state ? state.autoscaler : undefined;
-            resourceInputs["backendServices"] = state ? state.backendServices : undefined;
-            resourceInputs["blacklists"] = state ? state.blacklists : undefined;
-            resourceInputs["clusterControllerId"] = state ? state.clusterControllerId : undefined;
-            resourceInputs["clusterName"] = state ? state.clusterName : undefined;
-            resourceInputs["controllerClusterId"] = state ? state.controllerClusterId : undefined;
-            resourceInputs["desiredCapacity"] = state ? state.desiredCapacity : undefined;
-            resourceInputs["filters"] = state ? state.filters : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["maxSize"] = state ? state.maxSize : undefined;
-            resourceInputs["minSize"] = state ? state.minSize : undefined;
-            resourceInputs["rootVolumeType"] = state ? state.rootVolumeType : undefined;
-            resourceInputs["scheduledTasks"] = state ? state.scheduledTasks : undefined;
-            resourceInputs["shieldedInstanceConfig"] = state ? state.shieldedInstanceConfig : undefined;
-            resourceInputs["strategies"] = state ? state.strategies : undefined;
-            resourceInputs["updatePolicy"] = state ? state.updatePolicy : undefined;
-            resourceInputs["useAsTemplateOnly"] = state ? state.useAsTemplateOnly : undefined;
-            resourceInputs["whitelists"] = state ? state.whitelists : undefined;
+            resourceInputs["autoUpdates"] = state?.autoUpdates;
+            resourceInputs["autoscaler"] = state?.autoscaler;
+            resourceInputs["backendServices"] = state?.backendServices;
+            resourceInputs["blacklists"] = state?.blacklists;
+            resourceInputs["clusterControllerId"] = state?.clusterControllerId;
+            resourceInputs["clusterName"] = state?.clusterName;
+            resourceInputs["controllerClusterId"] = state?.controllerClusterId;
+            resourceInputs["desiredCapacity"] = state?.desiredCapacity;
+            resourceInputs["filters"] = state?.filters;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["maxSize"] = state?.maxSize;
+            resourceInputs["minSize"] = state?.minSize;
+            resourceInputs["rootVolumeType"] = state?.rootVolumeType;
+            resourceInputs["scheduledTasks"] = state?.scheduledTasks;
+            resourceInputs["shieldedInstanceConfig"] = state?.shieldedInstanceConfig;
+            resourceInputs["strategies"] = state?.strategies;
+            resourceInputs["updatePolicy"] = state?.updatePolicy;
+            resourceInputs["useAsTemplateOnly"] = state?.useAsTemplateOnly;
+            resourceInputs["whitelists"] = state?.whitelists;
         } else {
             const args = argsOrState as OceanImportArgs | undefined;
-            if ((!args || args.clusterName === undefined) && !opts.urn) {
+            if (args?.clusterName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterName'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["autoUpdates"] = args ? args.autoUpdates : undefined;
-            resourceInputs["autoscaler"] = args ? args.autoscaler : undefined;
-            resourceInputs["backendServices"] = args ? args.backendServices : undefined;
-            resourceInputs["blacklists"] = args ? args.blacklists : undefined;
-            resourceInputs["clusterName"] = args ? args.clusterName : undefined;
-            resourceInputs["controllerClusterId"] = args ? args.controllerClusterId : undefined;
-            resourceInputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
-            resourceInputs["filters"] = args ? args.filters : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["maxSize"] = args ? args.maxSize : undefined;
-            resourceInputs["minSize"] = args ? args.minSize : undefined;
-            resourceInputs["rootVolumeType"] = args ? args.rootVolumeType : undefined;
-            resourceInputs["scheduledTasks"] = args ? args.scheduledTasks : undefined;
-            resourceInputs["shieldedInstanceConfig"] = args ? args.shieldedInstanceConfig : undefined;
-            resourceInputs["strategies"] = args ? args.strategies : undefined;
-            resourceInputs["updatePolicy"] = args ? args.updatePolicy : undefined;
-            resourceInputs["useAsTemplateOnly"] = args ? args.useAsTemplateOnly : undefined;
-            resourceInputs["whitelists"] = args ? args.whitelists : undefined;
+            resourceInputs["autoUpdates"] = args?.autoUpdates;
+            resourceInputs["autoscaler"] = args?.autoscaler;
+            resourceInputs["backendServices"] = args?.backendServices;
+            resourceInputs["blacklists"] = args?.blacklists;
+            resourceInputs["clusterName"] = args?.clusterName;
+            resourceInputs["controllerClusterId"] = args?.controllerClusterId;
+            resourceInputs["desiredCapacity"] = args?.desiredCapacity;
+            resourceInputs["filters"] = args?.filters;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["maxSize"] = args?.maxSize;
+            resourceInputs["minSize"] = args?.minSize;
+            resourceInputs["rootVolumeType"] = args?.rootVolumeType;
+            resourceInputs["scheduledTasks"] = args?.scheduledTasks;
+            resourceInputs["shieldedInstanceConfig"] = args?.shieldedInstanceConfig;
+            resourceInputs["strategies"] = args?.strategies;
+            resourceInputs["updatePolicy"] = args?.updatePolicy;
+            resourceInputs["useAsTemplateOnly"] = args?.useAsTemplateOnly;
+            resourceInputs["whitelists"] = args?.whitelists;
             resourceInputs["clusterControllerId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

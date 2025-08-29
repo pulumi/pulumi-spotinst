@@ -28,15 +28,15 @@ export class Provider extends pulumi.ProviderResource {
     /**
      * Spotinst Account ID
      */
-    public readonly account!: pulumi.Output<string | undefined>;
+    declare public readonly account: pulumi.Output<string | undefined>;
     /**
      * Spotinst SDK Feature Flags
      */
-    public readonly featureFlags!: pulumi.Output<string | undefined>;
+    declare public readonly featureFlags: pulumi.Output<string | undefined>;
     /**
      * Spotinst Personal API Access Token
      */
-    public readonly token!: pulumi.Output<string | undefined>;
+    declare public readonly token: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -49,10 +49,10 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            resourceInputs["account"] = args ? args.account : undefined;
-            resourceInputs["enabled"] = pulumi.output(args ? args.enabled : undefined).apply(JSON.stringify);
-            resourceInputs["featureFlags"] = args ? args.featureFlags : undefined;
-            resourceInputs["token"] = args ? args.token : undefined;
+            resourceInputs["account"] = args?.account;
+            resourceInputs["enabled"] = pulumi.output(args?.enabled).apply(JSON.stringify);
+            resourceInputs["featureFlags"] = args?.featureFlags;
+            resourceInputs["token"] = args?.token;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Provider.__pulumiType, name, resourceInputs, opts);

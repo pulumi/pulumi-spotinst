@@ -128,89 +128,89 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
     /**
      * Set custom headroom per launch spec. provide list of headrooms object.
      */
-    public readonly autoscaleHeadrooms!: pulumi.Output<outputs.gke.OceanLaunchSpecAutoscaleHeadroom[] | undefined>;
+    declare public readonly autoscaleHeadrooms: pulumi.Output<outputs.gke.OceanLaunchSpecAutoscaleHeadroom[] | undefined>;
     /**
      * Set automatic headroom per launch spec.
      */
-    public readonly autoscaleHeadroomsAutomatics!: pulumi.Output<outputs.gke.OceanLaunchSpecAutoscaleHeadroomsAutomatic[] | undefined>;
-    public readonly createOptions!: pulumi.Output<outputs.gke.OceanLaunchSpecCreateOptions | undefined>;
+    declare public readonly autoscaleHeadroomsAutomatics: pulumi.Output<outputs.gke.OceanLaunchSpecAutoscaleHeadroomsAutomatic[] | undefined>;
+    declare public readonly createOptions: pulumi.Output<outputs.gke.OceanLaunchSpecCreateOptions | undefined>;
     /**
      * List of supported machine types for the Launch Spec.
      */
-    public readonly instanceTypes!: pulumi.Output<string[]>;
+    declare public readonly instanceTypes: pulumi.Output<string[]>;
     /**
      * Optionally adds labels to instances launched in an Ocean cluster.
      */
-    public readonly labels!: pulumi.Output<outputs.gke.OceanLaunchSpecLabel[]>;
+    declare public readonly labels: pulumi.Output<outputs.gke.OceanLaunchSpecLabel[]>;
     /**
      * Cluster's metadata.
      */
-    public readonly metadatas!: pulumi.Output<outputs.gke.OceanLaunchSpecMetadata[]>;
+    declare public readonly metadatas: pulumi.Output<outputs.gke.OceanLaunchSpecMetadata[]>;
     /**
      * The launch specification name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Settings for network interfaces.
      */
-    public readonly networkInterfaces!: pulumi.Output<outputs.gke.OceanLaunchSpecNetworkInterface[] | undefined>;
+    declare public readonly networkInterfaces: pulumi.Output<outputs.gke.OceanLaunchSpecNetworkInterface[] | undefined>;
     /**
      * The node pool you wish to use in your Launch Spec.
      */
-    public readonly nodePoolName!: pulumi.Output<string | undefined>;
+    declare public readonly nodePoolName: pulumi.Output<string | undefined>;
     /**
      * The Ocean cluster ID.
      */
-    public readonly oceanId!: pulumi.Output<string>;
+    declare public readonly oceanId: pulumi.Output<string>;
     /**
      * The Ocean virtual node group resource limits object.
      */
-    public readonly resourceLimits!: pulumi.Output<outputs.gke.OceanLaunchSpecResourceLimits | undefined>;
+    declare public readonly resourceLimits: pulumi.Output<outputs.gke.OceanLaunchSpecResourceLimits | undefined>;
     /**
      * Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
      */
-    public readonly restrictScaleDown!: pulumi.Output<boolean>;
+    declare public readonly restrictScaleDown: pulumi.Output<boolean>;
     /**
      * Root volume size (in GB).
      */
-    public readonly rootVolumeSize!: pulumi.Output<number>;
+    declare public readonly rootVolumeSize: pulumi.Output<number>;
     /**
      * Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
      */
-    public readonly rootVolumeType!: pulumi.Output<string>;
+    declare public readonly rootVolumeType: pulumi.Output<string>;
     /**
      * Used to define scheduled tasks such as a manual headroom update.
      */
-    public readonly schedulingTasks!: pulumi.Output<outputs.gke.OceanLaunchSpecSchedulingTask[] | undefined>;
+    declare public readonly schedulingTasks: pulumi.Output<outputs.gke.OceanLaunchSpecSchedulingTask[] | undefined>;
     /**
      * The account used by applications running on the VM to call GCP APIs.
      */
-    public readonly serviceAccount!: pulumi.Output<string>;
+    declare public readonly serviceAccount: pulumi.Output<string>;
     /**
      * The Ocean shielded instance configuration object.
      */
-    public readonly shieldedInstanceConfig!: pulumi.Output<outputs.gke.OceanLaunchSpecShieldedInstanceConfig>;
+    declare public readonly shieldedInstanceConfig: pulumi.Output<outputs.gke.OceanLaunchSpecShieldedInstanceConfig>;
     /**
      * Image URL.
      */
-    public readonly sourceImage!: pulumi.Output<string>;
+    declare public readonly sourceImage: pulumi.Output<string>;
     /**
      * The Ocean virtual node group storage object.
      */
-    public readonly storage!: pulumi.Output<outputs.gke.OceanLaunchSpecStorage>;
+    declare public readonly storage: pulumi.Output<outputs.gke.OceanLaunchSpecStorage>;
     /**
      * The Ocean Launch Spec Strategy object.
      */
-    public readonly strategies!: pulumi.Output<outputs.gke.OceanLaunchSpecStrategy[] | undefined>;
+    declare public readonly strategies: pulumi.Output<outputs.gke.OceanLaunchSpecStrategy[] | undefined>;
     /**
      * Every node launched from this configuration will be tagged with those tags. Note: during creation some tags are automatically imported to the state file, it is required to manually add it to the template configuration
      */
-    public readonly tags!: pulumi.Output<string[]>;
+    declare public readonly tags: pulumi.Output<string[]>;
     /**
      * Optionally adds labels to instances launched in an Ocean cluster.
      */
-    public readonly taints!: pulumi.Output<outputs.gke.OceanLaunchSpecTaint[]>;
-    public readonly updatePolicy!: pulumi.Output<outputs.gke.OceanLaunchSpecUpdatePolicy | undefined>;
+    declare public readonly taints: pulumi.Output<outputs.gke.OceanLaunchSpecTaint[]>;
+    declare public readonly updatePolicy: pulumi.Output<outputs.gke.OceanLaunchSpecUpdatePolicy | undefined>;
 
     /**
      * Create a OceanLaunchSpec resource with the given unique name, arguments, and options.
@@ -225,57 +225,57 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OceanLaunchSpecState | undefined;
-            resourceInputs["autoscaleHeadrooms"] = state ? state.autoscaleHeadrooms : undefined;
-            resourceInputs["autoscaleHeadroomsAutomatics"] = state ? state.autoscaleHeadroomsAutomatics : undefined;
-            resourceInputs["createOptions"] = state ? state.createOptions : undefined;
-            resourceInputs["instanceTypes"] = state ? state.instanceTypes : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["metadatas"] = state ? state.metadatas : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
-            resourceInputs["nodePoolName"] = state ? state.nodePoolName : undefined;
-            resourceInputs["oceanId"] = state ? state.oceanId : undefined;
-            resourceInputs["resourceLimits"] = state ? state.resourceLimits : undefined;
-            resourceInputs["restrictScaleDown"] = state ? state.restrictScaleDown : undefined;
-            resourceInputs["rootVolumeSize"] = state ? state.rootVolumeSize : undefined;
-            resourceInputs["rootVolumeType"] = state ? state.rootVolumeType : undefined;
-            resourceInputs["schedulingTasks"] = state ? state.schedulingTasks : undefined;
-            resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
-            resourceInputs["shieldedInstanceConfig"] = state ? state.shieldedInstanceConfig : undefined;
-            resourceInputs["sourceImage"] = state ? state.sourceImage : undefined;
-            resourceInputs["storage"] = state ? state.storage : undefined;
-            resourceInputs["strategies"] = state ? state.strategies : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["taints"] = state ? state.taints : undefined;
-            resourceInputs["updatePolicy"] = state ? state.updatePolicy : undefined;
+            resourceInputs["autoscaleHeadrooms"] = state?.autoscaleHeadrooms;
+            resourceInputs["autoscaleHeadroomsAutomatics"] = state?.autoscaleHeadroomsAutomatics;
+            resourceInputs["createOptions"] = state?.createOptions;
+            resourceInputs["instanceTypes"] = state?.instanceTypes;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["metadatas"] = state?.metadatas;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networkInterfaces"] = state?.networkInterfaces;
+            resourceInputs["nodePoolName"] = state?.nodePoolName;
+            resourceInputs["oceanId"] = state?.oceanId;
+            resourceInputs["resourceLimits"] = state?.resourceLimits;
+            resourceInputs["restrictScaleDown"] = state?.restrictScaleDown;
+            resourceInputs["rootVolumeSize"] = state?.rootVolumeSize;
+            resourceInputs["rootVolumeType"] = state?.rootVolumeType;
+            resourceInputs["schedulingTasks"] = state?.schedulingTasks;
+            resourceInputs["serviceAccount"] = state?.serviceAccount;
+            resourceInputs["shieldedInstanceConfig"] = state?.shieldedInstanceConfig;
+            resourceInputs["sourceImage"] = state?.sourceImage;
+            resourceInputs["storage"] = state?.storage;
+            resourceInputs["strategies"] = state?.strategies;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["taints"] = state?.taints;
+            resourceInputs["updatePolicy"] = state?.updatePolicy;
         } else {
             const args = argsOrState as OceanLaunchSpecArgs | undefined;
-            if ((!args || args.oceanId === undefined) && !opts.urn) {
+            if (args?.oceanId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'oceanId'");
             }
-            resourceInputs["autoscaleHeadrooms"] = args ? args.autoscaleHeadrooms : undefined;
-            resourceInputs["autoscaleHeadroomsAutomatics"] = args ? args.autoscaleHeadroomsAutomatics : undefined;
-            resourceInputs["createOptions"] = args ? args.createOptions : undefined;
-            resourceInputs["instanceTypes"] = args ? args.instanceTypes : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["metadatas"] = args ? args.metadatas : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
-            resourceInputs["nodePoolName"] = args ? args.nodePoolName : undefined;
-            resourceInputs["oceanId"] = args ? args.oceanId : undefined;
-            resourceInputs["resourceLimits"] = args ? args.resourceLimits : undefined;
-            resourceInputs["restrictScaleDown"] = args ? args.restrictScaleDown : undefined;
-            resourceInputs["rootVolumeSize"] = args ? args.rootVolumeSize : undefined;
-            resourceInputs["rootVolumeType"] = args ? args.rootVolumeType : undefined;
-            resourceInputs["schedulingTasks"] = args ? args.schedulingTasks : undefined;
-            resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
-            resourceInputs["shieldedInstanceConfig"] = args ? args.shieldedInstanceConfig : undefined;
-            resourceInputs["sourceImage"] = args ? args.sourceImage : undefined;
-            resourceInputs["storage"] = args ? args.storage : undefined;
-            resourceInputs["strategies"] = args ? args.strategies : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["taints"] = args ? args.taints : undefined;
-            resourceInputs["updatePolicy"] = args ? args.updatePolicy : undefined;
+            resourceInputs["autoscaleHeadrooms"] = args?.autoscaleHeadrooms;
+            resourceInputs["autoscaleHeadroomsAutomatics"] = args?.autoscaleHeadroomsAutomatics;
+            resourceInputs["createOptions"] = args?.createOptions;
+            resourceInputs["instanceTypes"] = args?.instanceTypes;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["metadatas"] = args?.metadatas;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networkInterfaces"] = args?.networkInterfaces;
+            resourceInputs["nodePoolName"] = args?.nodePoolName;
+            resourceInputs["oceanId"] = args?.oceanId;
+            resourceInputs["resourceLimits"] = args?.resourceLimits;
+            resourceInputs["restrictScaleDown"] = args?.restrictScaleDown;
+            resourceInputs["rootVolumeSize"] = args?.rootVolumeSize;
+            resourceInputs["rootVolumeType"] = args?.rootVolumeType;
+            resourceInputs["schedulingTasks"] = args?.schedulingTasks;
+            resourceInputs["serviceAccount"] = args?.serviceAccount;
+            resourceInputs["shieldedInstanceConfig"] = args?.shieldedInstanceConfig;
+            resourceInputs["sourceImage"] = args?.sourceImage;
+            resourceInputs["storage"] = args?.storage;
+            resourceInputs["strategies"] = args?.strategies;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["taints"] = args?.taints;
+            resourceInputs["updatePolicy"] = args?.updatePolicy;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(OceanLaunchSpec.__pulumiType, name, resourceInputs, opts);
