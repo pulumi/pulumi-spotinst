@@ -136,93 +136,93 @@ export class OceanNpVirtualNodeGroup extends pulumi.CustomResource {
     /**
      * An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
      */
-    public readonly availabilityZones!: pulumi.Output<string[] | undefined>;
+    declare public readonly availabilityZones: pulumi.Output<string[] | undefined>;
     /**
      * Enable node public IP.
      */
-    public readonly enableNodePublicIp!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableNodePublicIp: pulumi.Output<boolean | undefined>;
     /**
      * If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
      */
-    public readonly fallbackToOndemand!: pulumi.Output<boolean | undefined>;
+    declare public readonly fallbackToOndemand: pulumi.Output<boolean | undefined>;
     /**
      * Filters for the VM sizes that can be launched from the virtual node group.
      */
-    public readonly filters!: pulumi.Output<outputs.azure.OceanNpVirtualNodeGroupFilters | undefined>;
+    declare public readonly filters: pulumi.Output<outputs.azure.OceanNpVirtualNodeGroupFilters | undefined>;
     /**
      * Specify the custom headroom per VNG. Provide a list of headroom objects.
      */
-    public readonly headrooms!: pulumi.Output<outputs.azure.OceanNpVirtualNodeGroupHeadroom[] | undefined>;
+    declare public readonly headrooms: pulumi.Output<outputs.azure.OceanNpVirtualNodeGroupHeadroom[] | undefined>;
     /**
      * The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
      */
-    public readonly kubernetesVersion!: pulumi.Output<string | undefined>;
+    declare public readonly kubernetesVersion: pulumi.Output<string | undefined>;
     /**
      * An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Custom Linux OS configuration.
      */
-    public readonly linuxOsConfigs!: pulumi.Output<outputs.azure.OceanNpVirtualNodeGroupLinuxOsConfig[] | undefined>;
+    declare public readonly linuxOsConfigs: pulumi.Output<outputs.azure.OceanNpVirtualNodeGroupLinuxOsConfig[] | undefined>;
     /**
      * Maximum node count limit.
      */
-    public readonly maxCount!: pulumi.Output<number | undefined>;
+    declare public readonly maxCount: pulumi.Output<number | undefined>;
     /**
      * The maximum number of pods per node in the node pools.
      */
-    public readonly maxPodsPerNode!: pulumi.Output<number | undefined>;
+    declare public readonly maxPodsPerNode: pulumi.Output<number | undefined>;
     /**
      * Minimum node count limit.
      */
-    public readonly minCount!: pulumi.Output<number | undefined>;
+    declare public readonly minCount: pulumi.Output<number | undefined>;
     /**
      * Enter a name for the virtual node group.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The Ocean cluster identifier. Required for Launch Spec creation.
      */
-    public readonly oceanId!: pulumi.Output<string>;
+    declare public readonly oceanId: pulumi.Output<string>;
     /**
      * The size of the OS disk in GB.
      */
-    public readonly osDiskSizeGb!: pulumi.Output<number | undefined>;
+    declare public readonly osDiskSizeGb: pulumi.Output<number | undefined>;
     /**
      * The type of the OS disk.
      */
-    public readonly osDiskType!: pulumi.Output<string | undefined>;
+    declare public readonly osDiskType: pulumi.Output<string | undefined>;
     /**
      * The OS SKU of the OS type. Must correlate with the os type.
      */
-    public readonly osSku!: pulumi.Output<string | undefined>;
+    declare public readonly osSku: pulumi.Output<string | undefined>;
     /**
      * The OS type of the OS disk. Can't be modified once set.
      */
-    public readonly osType!: pulumi.Output<string | undefined>;
+    declare public readonly osType: pulumi.Output<string | undefined>;
     /**
      * The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
      */
-    public readonly podSubnetIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly podSubnetIds: pulumi.Output<string[] | undefined>;
     /**
      * An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
      */
-    public readonly scheduling!: pulumi.Output<outputs.azure.OceanNpVirtualNodeGroupScheduling | undefined>;
+    declare public readonly scheduling: pulumi.Output<outputs.azure.OceanNpVirtualNodeGroupScheduling | undefined>;
     /**
      * Percentage of spot VMs to maintain.
      */
-    public readonly spotPercentage!: pulumi.Output<number | undefined>;
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly spotPercentage: pulumi.Output<number | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Add taints to a virtual node group.
      */
-    public readonly taints!: pulumi.Output<outputs.azure.OceanNpVirtualNodeGroupTaint[] | undefined>;
-    public readonly updatePolicy!: pulumi.Output<outputs.azure.OceanNpVirtualNodeGroupUpdatePolicy | undefined>;
+    declare public readonly taints: pulumi.Output<outputs.azure.OceanNpVirtualNodeGroupTaint[] | undefined>;
+    declare public readonly updatePolicy: pulumi.Output<outputs.azure.OceanNpVirtualNodeGroupUpdatePolicy | undefined>;
     /**
      * The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
      */
-    public readonly vnetSubnetIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly vnetSubnetIds: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a OceanNpVirtualNodeGroup resource with the given unique name, arguments, and options.
@@ -237,59 +237,59 @@ export class OceanNpVirtualNodeGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OceanNpVirtualNodeGroupState | undefined;
-            resourceInputs["availabilityZones"] = state ? state.availabilityZones : undefined;
-            resourceInputs["enableNodePublicIp"] = state ? state.enableNodePublicIp : undefined;
-            resourceInputs["fallbackToOndemand"] = state ? state.fallbackToOndemand : undefined;
-            resourceInputs["filters"] = state ? state.filters : undefined;
-            resourceInputs["headrooms"] = state ? state.headrooms : undefined;
-            resourceInputs["kubernetesVersion"] = state ? state.kubernetesVersion : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["linuxOsConfigs"] = state ? state.linuxOsConfigs : undefined;
-            resourceInputs["maxCount"] = state ? state.maxCount : undefined;
-            resourceInputs["maxPodsPerNode"] = state ? state.maxPodsPerNode : undefined;
-            resourceInputs["minCount"] = state ? state.minCount : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["oceanId"] = state ? state.oceanId : undefined;
-            resourceInputs["osDiskSizeGb"] = state ? state.osDiskSizeGb : undefined;
-            resourceInputs["osDiskType"] = state ? state.osDiskType : undefined;
-            resourceInputs["osSku"] = state ? state.osSku : undefined;
-            resourceInputs["osType"] = state ? state.osType : undefined;
-            resourceInputs["podSubnetIds"] = state ? state.podSubnetIds : undefined;
-            resourceInputs["scheduling"] = state ? state.scheduling : undefined;
-            resourceInputs["spotPercentage"] = state ? state.spotPercentage : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["taints"] = state ? state.taints : undefined;
-            resourceInputs["updatePolicy"] = state ? state.updatePolicy : undefined;
-            resourceInputs["vnetSubnetIds"] = state ? state.vnetSubnetIds : undefined;
+            resourceInputs["availabilityZones"] = state?.availabilityZones;
+            resourceInputs["enableNodePublicIp"] = state?.enableNodePublicIp;
+            resourceInputs["fallbackToOndemand"] = state?.fallbackToOndemand;
+            resourceInputs["filters"] = state?.filters;
+            resourceInputs["headrooms"] = state?.headrooms;
+            resourceInputs["kubernetesVersion"] = state?.kubernetesVersion;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["linuxOsConfigs"] = state?.linuxOsConfigs;
+            resourceInputs["maxCount"] = state?.maxCount;
+            resourceInputs["maxPodsPerNode"] = state?.maxPodsPerNode;
+            resourceInputs["minCount"] = state?.minCount;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["oceanId"] = state?.oceanId;
+            resourceInputs["osDiskSizeGb"] = state?.osDiskSizeGb;
+            resourceInputs["osDiskType"] = state?.osDiskType;
+            resourceInputs["osSku"] = state?.osSku;
+            resourceInputs["osType"] = state?.osType;
+            resourceInputs["podSubnetIds"] = state?.podSubnetIds;
+            resourceInputs["scheduling"] = state?.scheduling;
+            resourceInputs["spotPercentage"] = state?.spotPercentage;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["taints"] = state?.taints;
+            resourceInputs["updatePolicy"] = state?.updatePolicy;
+            resourceInputs["vnetSubnetIds"] = state?.vnetSubnetIds;
         } else {
             const args = argsOrState as OceanNpVirtualNodeGroupArgs | undefined;
-            if ((!args || args.oceanId === undefined) && !opts.urn) {
+            if (args?.oceanId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'oceanId'");
             }
-            resourceInputs["availabilityZones"] = args ? args.availabilityZones : undefined;
-            resourceInputs["enableNodePublicIp"] = args ? args.enableNodePublicIp : undefined;
-            resourceInputs["fallbackToOndemand"] = args ? args.fallbackToOndemand : undefined;
-            resourceInputs["filters"] = args ? args.filters : undefined;
-            resourceInputs["headrooms"] = args ? args.headrooms : undefined;
-            resourceInputs["kubernetesVersion"] = args ? args.kubernetesVersion : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["linuxOsConfigs"] = args ? args.linuxOsConfigs : undefined;
-            resourceInputs["maxCount"] = args ? args.maxCount : undefined;
-            resourceInputs["maxPodsPerNode"] = args ? args.maxPodsPerNode : undefined;
-            resourceInputs["minCount"] = args ? args.minCount : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["oceanId"] = args ? args.oceanId : undefined;
-            resourceInputs["osDiskSizeGb"] = args ? args.osDiskSizeGb : undefined;
-            resourceInputs["osDiskType"] = args ? args.osDiskType : undefined;
-            resourceInputs["osSku"] = args ? args.osSku : undefined;
-            resourceInputs["osType"] = args ? args.osType : undefined;
-            resourceInputs["podSubnetIds"] = args ? args.podSubnetIds : undefined;
-            resourceInputs["scheduling"] = args ? args.scheduling : undefined;
-            resourceInputs["spotPercentage"] = args ? args.spotPercentage : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["taints"] = args ? args.taints : undefined;
-            resourceInputs["updatePolicy"] = args ? args.updatePolicy : undefined;
-            resourceInputs["vnetSubnetIds"] = args ? args.vnetSubnetIds : undefined;
+            resourceInputs["availabilityZones"] = args?.availabilityZones;
+            resourceInputs["enableNodePublicIp"] = args?.enableNodePublicIp;
+            resourceInputs["fallbackToOndemand"] = args?.fallbackToOndemand;
+            resourceInputs["filters"] = args?.filters;
+            resourceInputs["headrooms"] = args?.headrooms;
+            resourceInputs["kubernetesVersion"] = args?.kubernetesVersion;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["linuxOsConfigs"] = args?.linuxOsConfigs;
+            resourceInputs["maxCount"] = args?.maxCount;
+            resourceInputs["maxPodsPerNode"] = args?.maxPodsPerNode;
+            resourceInputs["minCount"] = args?.minCount;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["oceanId"] = args?.oceanId;
+            resourceInputs["osDiskSizeGb"] = args?.osDiskSizeGb;
+            resourceInputs["osDiskType"] = args?.osDiskType;
+            resourceInputs["osSku"] = args?.osSku;
+            resourceInputs["osType"] = args?.osType;
+            resourceInputs["podSubnetIds"] = args?.podSubnetIds;
+            resourceInputs["scheduling"] = args?.scheduling;
+            resourceInputs["spotPercentage"] = args?.spotPercentage;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["taints"] = args?.taints;
+            resourceInputs["updatePolicy"] = args?.updatePolicy;
+            resourceInputs["vnetSubnetIds"] = args?.vnetSubnetIds;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(OceanNpVirtualNodeGroup.__pulumiType, name, resourceInputs, opts);

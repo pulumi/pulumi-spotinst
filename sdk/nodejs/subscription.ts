@@ -60,7 +60,7 @@ export class Subscription extends pulumi.CustomResource {
     /**
      * The endpoint the notification will be sent to. url in case of `"http"`/`"https"`/`"web"`, email address in case of `"email"`/`"email-json"` and sns-topic-arn in case of `"aws-sns"`.
      */
-    public readonly endpoint!: pulumi.Output<string>;
+    declare public readonly endpoint: pulumi.Output<string>;
     /**
      * The event to send the notification when triggered. Valid values: `"AWS_EC2_INSTANCE_TERMINATE"`, `"AWS_EC2_INSTANCE_TERMINATED"`, `"AWS_EC2_INSTANCE_LAUNCH"`, `"AWS_EC2_INSTANCE_READY_SIGNAL_TIMEOUT"`, `"SIGNAL_TIMEOUT_SHUTDOWN_SCRIPT"`, `"AWS_EC2_CANT_SPIN_OD"`, `"AWS_EC2_INSTANCE_UNHEALTHY_IN_ELB"`, `"GROUP_ROLL_FAILED"`, `"GROUP_ROLL_FINISHED"`,
      * `"CANT_SCALE_UP_GROUP_MAX_CAPACITY"`,
@@ -75,24 +75,24 @@ export class Subscription extends pulumi.CustomResource {
      * Ocean Events:`"CLUSTER_ROLL_FINISHED"`,`"GROUP_ROLL_FAILED"`,`"OCEAN_CANT_SCALE_UP_MAX_RESOURCES"`
      * `"OCEAN_LAUNCH_SPEC_CANT_SCALE_UP_MAX_INSTANCES"`,`"OCEAN_K8S_NODE_REMOVED"`.
      */
-    public readonly eventType!: pulumi.Output<string>;
+    declare public readonly eventType: pulumi.Output<string>;
     /**
      * The format of the notification content (JSON Format - Key+Value). Valid Values : `"instance-id"`, `"event"`, `"resource-id"`, `"resource-name"`, `"subnet-id"`, `"availability-zone"`, `"reason"`, `"private-ip"`, `"launchspec-id"`
      * Example: {"event": `"event"`, `"resourceId"`: `"resource-id"`, `"resourceName"`: `"resource-name"`", `"myCustomKey"`: `"My content is set here"` }
      * Default: {`"event"`: `"<event>"`, `"instanceId"`: `"<instance-id>"`, `"resourceId"`: `"<resource-id>"`, `"resourceName"`: `"<resource-name>"` }.
      */
-    public readonly format!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly format: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`. 
      * The following values are deprecated: `"http"` , `"https"`
      * You can use the generic `"web"` protocol instead.
      * `"aws-sns"` is only supported with AWS provider
      */
-    public readonly protocol!: pulumi.Output<string>;
+    declare public readonly protocol: pulumi.Output<string>;
     /**
      * Spotinst Resource id (Elastigroup or Ocean ID).
      */
-    public readonly resourceId!: pulumi.Output<string>;
+    declare public readonly resourceId: pulumi.Output<string>;
 
     /**
      * Create a Subscription resource with the given unique name, arguments, and options.
@@ -107,30 +107,30 @@ export class Subscription extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SubscriptionState | undefined;
-            resourceInputs["endpoint"] = state ? state.endpoint : undefined;
-            resourceInputs["eventType"] = state ? state.eventType : undefined;
-            resourceInputs["format"] = state ? state.format : undefined;
-            resourceInputs["protocol"] = state ? state.protocol : undefined;
-            resourceInputs["resourceId"] = state ? state.resourceId : undefined;
+            resourceInputs["endpoint"] = state?.endpoint;
+            resourceInputs["eventType"] = state?.eventType;
+            resourceInputs["format"] = state?.format;
+            resourceInputs["protocol"] = state?.protocol;
+            resourceInputs["resourceId"] = state?.resourceId;
         } else {
             const args = argsOrState as SubscriptionArgs | undefined;
-            if ((!args || args.endpoint === undefined) && !opts.urn) {
+            if (args?.endpoint === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endpoint'");
             }
-            if ((!args || args.eventType === undefined) && !opts.urn) {
+            if (args?.eventType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'eventType'");
             }
-            if ((!args || args.protocol === undefined) && !opts.urn) {
+            if (args?.protocol === undefined && !opts.urn) {
                 throw new Error("Missing required property 'protocol'");
             }
-            if ((!args || args.resourceId === undefined) && !opts.urn) {
+            if (args?.resourceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceId'");
             }
-            resourceInputs["endpoint"] = args ? args.endpoint : undefined;
-            resourceInputs["eventType"] = args ? args.eventType : undefined;
-            resourceInputs["format"] = args ? args.format : undefined;
-            resourceInputs["protocol"] = args ? args.protocol : undefined;
-            resourceInputs["resourceId"] = args ? args.resourceId : undefined;
+            resourceInputs["endpoint"] = args?.endpoint;
+            resourceInputs["eventType"] = args?.eventType;
+            resourceInputs["format"] = args?.format;
+            resourceInputs["protocol"] = args?.protocol;
+            resourceInputs["resourceId"] = args?.resourceId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Subscription.__pulumiType, name, resourceInputs, opts);

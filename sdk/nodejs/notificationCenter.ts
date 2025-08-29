@@ -34,13 +34,13 @@ export class NotificationCenter extends pulumi.CustomResource {
         return obj['__pulumiType'] === NotificationCenter.__pulumiType;
     }
 
-    public readonly computePolicyConfig!: pulumi.Output<outputs.NotificationCenterComputePolicyConfig>;
-    public readonly description!: pulumi.Output<string | undefined>;
-    public readonly isActive!: pulumi.Output<boolean | undefined>;
-    public readonly name!: pulumi.Output<string>;
-    public readonly privacyLevel!: pulumi.Output<string>;
-    public readonly registeredUsers!: pulumi.Output<outputs.NotificationCenterRegisteredUser[] | undefined>;
-    public readonly subscriptions!: pulumi.Output<outputs.NotificationCenterSubscription[] | undefined>;
+    declare public readonly computePolicyConfig: pulumi.Output<outputs.NotificationCenterComputePolicyConfig>;
+    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public readonly isActive: pulumi.Output<boolean | undefined>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly privacyLevel: pulumi.Output<string>;
+    declare public readonly registeredUsers: pulumi.Output<outputs.NotificationCenterRegisteredUser[] | undefined>;
+    declare public readonly subscriptions: pulumi.Output<outputs.NotificationCenterSubscription[] | undefined>;
 
     /**
      * Create a NotificationCenter resource with the given unique name, arguments, and options.
@@ -55,28 +55,28 @@ export class NotificationCenter extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NotificationCenterState | undefined;
-            resourceInputs["computePolicyConfig"] = state ? state.computePolicyConfig : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["isActive"] = state ? state.isActive : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["privacyLevel"] = state ? state.privacyLevel : undefined;
-            resourceInputs["registeredUsers"] = state ? state.registeredUsers : undefined;
-            resourceInputs["subscriptions"] = state ? state.subscriptions : undefined;
+            resourceInputs["computePolicyConfig"] = state?.computePolicyConfig;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["isActive"] = state?.isActive;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["privacyLevel"] = state?.privacyLevel;
+            resourceInputs["registeredUsers"] = state?.registeredUsers;
+            resourceInputs["subscriptions"] = state?.subscriptions;
         } else {
             const args = argsOrState as NotificationCenterArgs | undefined;
-            if ((!args || args.computePolicyConfig === undefined) && !opts.urn) {
+            if (args?.computePolicyConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'computePolicyConfig'");
             }
-            if ((!args || args.privacyLevel === undefined) && !opts.urn) {
+            if (args?.privacyLevel === undefined && !opts.urn) {
                 throw new Error("Missing required property 'privacyLevel'");
             }
-            resourceInputs["computePolicyConfig"] = args ? args.computePolicyConfig : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["isActive"] = args ? args.isActive : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["privacyLevel"] = args ? args.privacyLevel : undefined;
-            resourceInputs["registeredUsers"] = args ? args.registeredUsers : undefined;
-            resourceInputs["subscriptions"] = args ? args.subscriptions : undefined;
+            resourceInputs["computePolicyConfig"] = args?.computePolicyConfig;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["isActive"] = args?.isActive;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["privacyLevel"] = args?.privacyLevel;
+            resourceInputs["registeredUsers"] = args?.registeredUsers;
+            resourceInputs["subscriptions"] = args?.subscriptions;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(NotificationCenter.__pulumiType, name, resourceInputs, opts);

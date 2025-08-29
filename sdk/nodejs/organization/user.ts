@@ -63,32 +63,32 @@ export class User extends pulumi.CustomResource {
     /**
      * Email.
      */
-    public readonly email!: pulumi.Output<string>;
+    declare public readonly email: pulumi.Output<string>;
     /**
      * The first name of the user.
      */
-    public readonly firstName!: pulumi.Output<string>;
+    declare public readonly firstName: pulumi.Output<string>;
     /**
      * The last name of the user.
      */
-    public readonly lastName!: pulumi.Output<string>;
+    declare public readonly lastName: pulumi.Output<string>;
     /**
      * Password.
      */
-    public readonly password!: pulumi.Output<string>;
+    declare public readonly password: pulumi.Output<string>;
     /**
      * The policies to register under the given group
      * (should be existing policies only).
      */
-    public readonly policies!: pulumi.Output<outputs.organization.UserPolicy[] | undefined>;
+    declare public readonly policies: pulumi.Output<outputs.organization.UserPolicy[] | undefined>;
     /**
      * User's role.
      */
-    public readonly role!: pulumi.Output<string | undefined>;
+    declare public readonly role: pulumi.Output<string | undefined>;
     /**
      * A list of the user groups to register the given user to (should be existing user groups only)
      */
-    public readonly userGroupIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly userGroupIds: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a User resource with the given unique name, arguments, and options.
@@ -103,31 +103,31 @@ export class User extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserState | undefined;
-            resourceInputs["email"] = state ? state.email : undefined;
-            resourceInputs["firstName"] = state ? state.firstName : undefined;
-            resourceInputs["lastName"] = state ? state.lastName : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["policies"] = state ? state.policies : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
-            resourceInputs["userGroupIds"] = state ? state.userGroupIds : undefined;
+            resourceInputs["email"] = state?.email;
+            resourceInputs["firstName"] = state?.firstName;
+            resourceInputs["lastName"] = state?.lastName;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["policies"] = state?.policies;
+            resourceInputs["role"] = state?.role;
+            resourceInputs["userGroupIds"] = state?.userGroupIds;
         } else {
             const args = argsOrState as UserArgs | undefined;
-            if ((!args || args.email === undefined) && !opts.urn) {
+            if (args?.email === undefined && !opts.urn) {
                 throw new Error("Missing required property 'email'");
             }
-            if ((!args || args.firstName === undefined) && !opts.urn) {
+            if (args?.firstName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'firstName'");
             }
-            if ((!args || args.lastName === undefined) && !opts.urn) {
+            if (args?.lastName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'lastName'");
             }
-            resourceInputs["email"] = args ? args.email : undefined;
-            resourceInputs["firstName"] = args ? args.firstName : undefined;
-            resourceInputs["lastName"] = args ? args.lastName : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
-            resourceInputs["policies"] = args ? args.policies : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
-            resourceInputs["userGroupIds"] = args ? args.userGroupIds : undefined;
+            resourceInputs["email"] = args?.email;
+            resourceInputs["firstName"] = args?.firstName;
+            resourceInputs["lastName"] = args?.lastName;
+            resourceInputs["password"] = args?.password;
+            resourceInputs["policies"] = args?.policies;
+            resourceInputs["role"] = args?.role;
+            resourceInputs["userGroupIds"] = args?.userGroupIds;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(User.__pulumiType, name, resourceInputs, opts);

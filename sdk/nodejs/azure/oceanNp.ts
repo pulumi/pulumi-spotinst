@@ -34,113 +34,113 @@ export class OceanNp extends pulumi.CustomResource {
         return obj['__pulumiType'] === OceanNp.__pulumiType;
     }
 
-    public readonly aksClusterName!: pulumi.Output<string>;
-    public readonly aksInfrastructureResourceGroupName!: pulumi.Output<string>;
-    public readonly aksRegion!: pulumi.Output<string>;
-    public readonly aksResourceGroupName!: pulumi.Output<string>;
+    declare public readonly aksClusterName: pulumi.Output<string>;
+    declare public readonly aksInfrastructureResourceGroupName: pulumi.Output<string>;
+    declare public readonly aksRegion: pulumi.Output<string>;
+    declare public readonly aksResourceGroupName: pulumi.Output<string>;
     /**
      * The Ocean Kubernetes Autoscaler object.
      */
-    public readonly autoscaler!: pulumi.Output<outputs.azure.OceanNpAutoscaler | undefined>;
+    declare public readonly autoscaler: pulumi.Output<outputs.azure.OceanNpAutoscaler | undefined>;
     /**
      * An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
      */
-    public readonly availabilityZones!: pulumi.Output<string[]>;
+    declare public readonly availabilityZones: pulumi.Output<string[]>;
     /**
      * Enter a unique Ocean cluster identifier. Cannot be updated. This needs to match with string that was used to install the controller in the cluster, typically clusterName + 8 digit string.
      */
-    public readonly controllerClusterId!: pulumi.Output<string>;
+    declare public readonly controllerClusterId: pulumi.Output<string>;
     /**
      * Enable node public IP.
      */
-    public readonly enableNodePublicIp!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableNodePublicIp: pulumi.Output<boolean | undefined>;
     /**
      * If no spot VM markets are available, enable Ocean to launch regular (pay-as-you-go) nodes instead.
      */
-    public readonly fallbackToOndemand!: pulumi.Output<boolean | undefined>;
+    declare public readonly fallbackToOndemand: pulumi.Output<boolean | undefined>;
     /**
      * Filters for the VM sizes that can be launched from the virtual node group.
      */
-    public readonly filters!: pulumi.Output<outputs.azure.OceanNpFilters | undefined>;
+    declare public readonly filters: pulumi.Output<outputs.azure.OceanNpFilters | undefined>;
     /**
      * Specify the custom headroom per VNG. Provide a list of headroom objects.
      */
-    public readonly headrooms!: pulumi.Output<outputs.azure.OceanNpHeadroom[] | undefined>;
+    declare public readonly headrooms: pulumi.Output<outputs.azure.OceanNpHeadroom[] | undefined>;
     /**
      * The Ocean AKS Health object.
      */
-    public readonly health!: pulumi.Output<outputs.azure.OceanNpHealth | undefined>;
+    declare public readonly health: pulumi.Output<outputs.azure.OceanNpHealth | undefined>;
     /**
      * The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
      */
-    public readonly kubernetesVersion!: pulumi.Output<string | undefined>;
+    declare public readonly kubernetesVersion: pulumi.Output<string | undefined>;
     /**
      * An array of labels to add to the virtual node group. Only custom user labels are allowed, and not [Kubernetes well-known labels](https://kubernetes.io/docs/reference/labels-annotations-taints/) or [ Azure AKS labels](https://learn.microsoft.com/en-us/azure/aks/use-labels) or [Spot labels](https://docs.spot.io/ocean/features/labels-and-taints?id=spot-labels).
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Custom Linux OS configuration.
      */
-    public readonly linuxOsConfigs!: pulumi.Output<outputs.azure.OceanNpLinuxOsConfig[] | undefined>;
+    declare public readonly linuxOsConfigs: pulumi.Output<outputs.azure.OceanNpLinuxOsConfig[] | undefined>;
     /**
      * The Ocean AKS Logging Object.
      */
-    public readonly logging!: pulumi.Output<outputs.azure.OceanNpLogging | undefined>;
+    declare public readonly logging: pulumi.Output<outputs.azure.OceanNpLogging | undefined>;
     /**
      * Maximum node count limit.
      */
-    public readonly maxCount!: pulumi.Output<number | undefined>;
+    declare public readonly maxCount: pulumi.Output<number | undefined>;
     /**
      * The maximum number of pods per node in the node pools.
      */
-    public readonly maxPodsPerNode!: pulumi.Output<number | undefined>;
+    declare public readonly maxPodsPerNode: pulumi.Output<number | undefined>;
     /**
      * Minimum node count limit.
      */
-    public readonly minCount!: pulumi.Output<number | undefined>;
+    declare public readonly minCount: pulumi.Output<number | undefined>;
     /**
      * Add a name for the Ocean cluster.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The size of the OS disk in GB.
      */
-    public readonly osDiskSizeGb!: pulumi.Output<number | undefined>;
+    declare public readonly osDiskSizeGb: pulumi.Output<number | undefined>;
     /**
      * The type of the OS disk.
      */
-    public readonly osDiskType!: pulumi.Output<string | undefined>;
+    declare public readonly osDiskType: pulumi.Output<string | undefined>;
     /**
      * The OS SKU of the OS type. Must correlate with the os type.
      */
-    public readonly osSku!: pulumi.Output<string | undefined>;
+    declare public readonly osSku: pulumi.Output<string | undefined>;
     /**
      * The OS type of the OS disk. Can't be modified once set.
      */
-    public readonly osType!: pulumi.Output<string | undefined>;
+    declare public readonly osType: pulumi.Output<string | undefined>;
     /**
      * The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
      */
-    public readonly podSubnetIds!: pulumi.Output<string[] | undefined>;
-    public readonly scheduling!: pulumi.Output<outputs.azure.OceanNpScheduling | undefined>;
+    declare public readonly podSubnetIds: pulumi.Output<string[] | undefined>;
+    declare public readonly scheduling: pulumi.Output<outputs.azure.OceanNpScheduling | undefined>;
     /**
      * Percentage of spot VMs to maintain.
      */
-    public readonly spotPercentage!: pulumi.Output<number | undefined>;
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly spotPercentage: pulumi.Output<number | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Add taints to a virtual node group. Only custom user taints are allowed, and not [Kubernetes well-known taints](https://kubernetes.io/docs/reference/labels-annotations-taints/) or Azure AKS [ScaleSetPrioirty (Spot VM) taint](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool). For all Spot VMs, AKS injects a taint kubernetes.azure.com/scalesetpriority=spot:NoSchedule, to ensure that only workloads that can handle interruptions are scheduled on Spot nodes. To [schedule a pod to run on Spot node](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool#schedule-a-pod-to-run-on-the-spot-node), add a toleration but dont include the nodeAffinity (not supported for Spot Ocean), this will prevent the pod from being scheduled using Spot Ocean.
      */
-    public readonly taints!: pulumi.Output<outputs.azure.OceanNpTaint[] | undefined>;
-    public readonly updatePolicy!: pulumi.Output<outputs.azure.OceanNpUpdatePolicy | undefined>;
+    declare public readonly taints: pulumi.Output<outputs.azure.OceanNpTaint[] | undefined>;
+    declare public readonly updatePolicy: pulumi.Output<outputs.azure.OceanNpUpdatePolicy | undefined>;
     /**
      * The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
      */
-    public readonly vnetSubnetIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly vnetSubnetIds: pulumi.Output<string[] | undefined>;
     /**
      * An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
      */
-    public readonly vngTemplateScheduling!: pulumi.Output<outputs.azure.OceanNpVngTemplateScheduling | undefined>;
+    declare public readonly vngTemplateScheduling: pulumi.Output<outputs.azure.OceanNpVngTemplateScheduling | undefined>;
 
     /**
      * Create a OceanNp resource with the given unique name, arguments, and options.
@@ -155,90 +155,90 @@ export class OceanNp extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OceanNpState | undefined;
-            resourceInputs["aksClusterName"] = state ? state.aksClusterName : undefined;
-            resourceInputs["aksInfrastructureResourceGroupName"] = state ? state.aksInfrastructureResourceGroupName : undefined;
-            resourceInputs["aksRegion"] = state ? state.aksRegion : undefined;
-            resourceInputs["aksResourceGroupName"] = state ? state.aksResourceGroupName : undefined;
-            resourceInputs["autoscaler"] = state ? state.autoscaler : undefined;
-            resourceInputs["availabilityZones"] = state ? state.availabilityZones : undefined;
-            resourceInputs["controllerClusterId"] = state ? state.controllerClusterId : undefined;
-            resourceInputs["enableNodePublicIp"] = state ? state.enableNodePublicIp : undefined;
-            resourceInputs["fallbackToOndemand"] = state ? state.fallbackToOndemand : undefined;
-            resourceInputs["filters"] = state ? state.filters : undefined;
-            resourceInputs["headrooms"] = state ? state.headrooms : undefined;
-            resourceInputs["health"] = state ? state.health : undefined;
-            resourceInputs["kubernetesVersion"] = state ? state.kubernetesVersion : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["linuxOsConfigs"] = state ? state.linuxOsConfigs : undefined;
-            resourceInputs["logging"] = state ? state.logging : undefined;
-            resourceInputs["maxCount"] = state ? state.maxCount : undefined;
-            resourceInputs["maxPodsPerNode"] = state ? state.maxPodsPerNode : undefined;
-            resourceInputs["minCount"] = state ? state.minCount : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["osDiskSizeGb"] = state ? state.osDiskSizeGb : undefined;
-            resourceInputs["osDiskType"] = state ? state.osDiskType : undefined;
-            resourceInputs["osSku"] = state ? state.osSku : undefined;
-            resourceInputs["osType"] = state ? state.osType : undefined;
-            resourceInputs["podSubnetIds"] = state ? state.podSubnetIds : undefined;
-            resourceInputs["scheduling"] = state ? state.scheduling : undefined;
-            resourceInputs["spotPercentage"] = state ? state.spotPercentage : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["taints"] = state ? state.taints : undefined;
-            resourceInputs["updatePolicy"] = state ? state.updatePolicy : undefined;
-            resourceInputs["vnetSubnetIds"] = state ? state.vnetSubnetIds : undefined;
-            resourceInputs["vngTemplateScheduling"] = state ? state.vngTemplateScheduling : undefined;
+            resourceInputs["aksClusterName"] = state?.aksClusterName;
+            resourceInputs["aksInfrastructureResourceGroupName"] = state?.aksInfrastructureResourceGroupName;
+            resourceInputs["aksRegion"] = state?.aksRegion;
+            resourceInputs["aksResourceGroupName"] = state?.aksResourceGroupName;
+            resourceInputs["autoscaler"] = state?.autoscaler;
+            resourceInputs["availabilityZones"] = state?.availabilityZones;
+            resourceInputs["controllerClusterId"] = state?.controllerClusterId;
+            resourceInputs["enableNodePublicIp"] = state?.enableNodePublicIp;
+            resourceInputs["fallbackToOndemand"] = state?.fallbackToOndemand;
+            resourceInputs["filters"] = state?.filters;
+            resourceInputs["headrooms"] = state?.headrooms;
+            resourceInputs["health"] = state?.health;
+            resourceInputs["kubernetesVersion"] = state?.kubernetesVersion;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["linuxOsConfigs"] = state?.linuxOsConfigs;
+            resourceInputs["logging"] = state?.logging;
+            resourceInputs["maxCount"] = state?.maxCount;
+            resourceInputs["maxPodsPerNode"] = state?.maxPodsPerNode;
+            resourceInputs["minCount"] = state?.minCount;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["osDiskSizeGb"] = state?.osDiskSizeGb;
+            resourceInputs["osDiskType"] = state?.osDiskType;
+            resourceInputs["osSku"] = state?.osSku;
+            resourceInputs["osType"] = state?.osType;
+            resourceInputs["podSubnetIds"] = state?.podSubnetIds;
+            resourceInputs["scheduling"] = state?.scheduling;
+            resourceInputs["spotPercentage"] = state?.spotPercentage;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["taints"] = state?.taints;
+            resourceInputs["updatePolicy"] = state?.updatePolicy;
+            resourceInputs["vnetSubnetIds"] = state?.vnetSubnetIds;
+            resourceInputs["vngTemplateScheduling"] = state?.vngTemplateScheduling;
         } else {
             const args = argsOrState as OceanNpArgs | undefined;
-            if ((!args || args.aksClusterName === undefined) && !opts.urn) {
+            if (args?.aksClusterName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'aksClusterName'");
             }
-            if ((!args || args.aksInfrastructureResourceGroupName === undefined) && !opts.urn) {
+            if (args?.aksInfrastructureResourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'aksInfrastructureResourceGroupName'");
             }
-            if ((!args || args.aksRegion === undefined) && !opts.urn) {
+            if (args?.aksRegion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'aksRegion'");
             }
-            if ((!args || args.aksResourceGroupName === undefined) && !opts.urn) {
+            if (args?.aksResourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'aksResourceGroupName'");
             }
-            if ((!args || args.availabilityZones === undefined) && !opts.urn) {
+            if (args?.availabilityZones === undefined && !opts.urn) {
                 throw new Error("Missing required property 'availabilityZones'");
             }
-            if ((!args || args.controllerClusterId === undefined) && !opts.urn) {
+            if (args?.controllerClusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'controllerClusterId'");
             }
-            resourceInputs["aksClusterName"] = args ? args.aksClusterName : undefined;
-            resourceInputs["aksInfrastructureResourceGroupName"] = args ? args.aksInfrastructureResourceGroupName : undefined;
-            resourceInputs["aksRegion"] = args ? args.aksRegion : undefined;
-            resourceInputs["aksResourceGroupName"] = args ? args.aksResourceGroupName : undefined;
-            resourceInputs["autoscaler"] = args ? args.autoscaler : undefined;
-            resourceInputs["availabilityZones"] = args ? args.availabilityZones : undefined;
-            resourceInputs["controllerClusterId"] = args ? args.controllerClusterId : undefined;
-            resourceInputs["enableNodePublicIp"] = args ? args.enableNodePublicIp : undefined;
-            resourceInputs["fallbackToOndemand"] = args ? args.fallbackToOndemand : undefined;
-            resourceInputs["filters"] = args ? args.filters : undefined;
-            resourceInputs["headrooms"] = args ? args.headrooms : undefined;
-            resourceInputs["health"] = args ? args.health : undefined;
-            resourceInputs["kubernetesVersion"] = args ? args.kubernetesVersion : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["linuxOsConfigs"] = args ? args.linuxOsConfigs : undefined;
-            resourceInputs["logging"] = args ? args.logging : undefined;
-            resourceInputs["maxCount"] = args ? args.maxCount : undefined;
-            resourceInputs["maxPodsPerNode"] = args ? args.maxPodsPerNode : undefined;
-            resourceInputs["minCount"] = args ? args.minCount : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["osDiskSizeGb"] = args ? args.osDiskSizeGb : undefined;
-            resourceInputs["osDiskType"] = args ? args.osDiskType : undefined;
-            resourceInputs["osSku"] = args ? args.osSku : undefined;
-            resourceInputs["osType"] = args ? args.osType : undefined;
-            resourceInputs["podSubnetIds"] = args ? args.podSubnetIds : undefined;
-            resourceInputs["scheduling"] = args ? args.scheduling : undefined;
-            resourceInputs["spotPercentage"] = args ? args.spotPercentage : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["taints"] = args ? args.taints : undefined;
-            resourceInputs["updatePolicy"] = args ? args.updatePolicy : undefined;
-            resourceInputs["vnetSubnetIds"] = args ? args.vnetSubnetIds : undefined;
-            resourceInputs["vngTemplateScheduling"] = args ? args.vngTemplateScheduling : undefined;
+            resourceInputs["aksClusterName"] = args?.aksClusterName;
+            resourceInputs["aksInfrastructureResourceGroupName"] = args?.aksInfrastructureResourceGroupName;
+            resourceInputs["aksRegion"] = args?.aksRegion;
+            resourceInputs["aksResourceGroupName"] = args?.aksResourceGroupName;
+            resourceInputs["autoscaler"] = args?.autoscaler;
+            resourceInputs["availabilityZones"] = args?.availabilityZones;
+            resourceInputs["controllerClusterId"] = args?.controllerClusterId;
+            resourceInputs["enableNodePublicIp"] = args?.enableNodePublicIp;
+            resourceInputs["fallbackToOndemand"] = args?.fallbackToOndemand;
+            resourceInputs["filters"] = args?.filters;
+            resourceInputs["headrooms"] = args?.headrooms;
+            resourceInputs["health"] = args?.health;
+            resourceInputs["kubernetesVersion"] = args?.kubernetesVersion;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["linuxOsConfigs"] = args?.linuxOsConfigs;
+            resourceInputs["logging"] = args?.logging;
+            resourceInputs["maxCount"] = args?.maxCount;
+            resourceInputs["maxPodsPerNode"] = args?.maxPodsPerNode;
+            resourceInputs["minCount"] = args?.minCount;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["osDiskSizeGb"] = args?.osDiskSizeGb;
+            resourceInputs["osDiskType"] = args?.osDiskType;
+            resourceInputs["osSku"] = args?.osSku;
+            resourceInputs["osType"] = args?.osType;
+            resourceInputs["podSubnetIds"] = args?.podSubnetIds;
+            resourceInputs["scheduling"] = args?.scheduling;
+            resourceInputs["spotPercentage"] = args?.spotPercentage;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["taints"] = args?.taints;
+            resourceInputs["updatePolicy"] = args?.updatePolicy;
+            resourceInputs["vnetSubnetIds"] = args?.vnetSubnetIds;
+            resourceInputs["vngTemplateScheduling"] = args?.vngTemplateScheduling;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(OceanNp.__pulumiType, name, resourceInputs, opts);
