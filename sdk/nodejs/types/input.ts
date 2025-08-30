@@ -5274,6 +5274,33 @@ export namespace gke {
         initialNodes?: pulumi.Input<number>;
     }
 
+    export interface OceanLaunchSpecFilters {
+        /**
+         * Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
+         */
+        excludeFamilies?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
+         */
+        includeFamilies?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Maximum amount of Memory (GiB).
+         */
+        maxMemoryGib?: pulumi.Input<number>;
+        /**
+         * Maximum number of vcpus available.
+         */
+        maxVcpu?: pulumi.Input<number>;
+        /**
+         * Minimum amount of Memory (GiB).
+         */
+        minMemoryGib?: pulumi.Input<number>;
+        /**
+         * Minimum number of vcpus available.
+         */
+        minVcpu?: pulumi.Input<number>;
+    }
+
     export interface OceanLaunchSpecLabel {
         /**
          * The label key.
