@@ -94,6 +94,17 @@ import * as utilities from "../utilities";
  *             subnetworkRangeName: "gke-test-native-vpc-pods-123456-vng",
  *         }],
  *     }],
+ *     filters: {
+ *         excludeFamilies: ["n2"],
+ *         includeFamilies: [
+ *             "c2",
+ *             "c3",
+ *         ],
+ *         minMemoryGib: 8,
+ *         maxMemoryGib: 32,
+ *         minVcpu: 2,
+ *         maxVcpu: 16,
+ *     },
  * });
  * ```
  */
@@ -134,6 +145,10 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     declare public readonly autoscaleHeadroomsAutomatics: pulumi.Output<outputs.gke.OceanLaunchSpecAutoscaleHeadroomsAutomatic[] | undefined>;
     declare public readonly createOptions: pulumi.Output<outputs.gke.OceanLaunchSpecCreateOptions | undefined>;
+    /**
+     * List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `instanceTypes` is configured.
+     */
+    declare public readonly filters: pulumi.Output<outputs.gke.OceanLaunchSpecFilters | undefined>;
     /**
      * List of supported machine types for the Launch Spec.
      */
@@ -228,6 +243,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             resourceInputs["autoscaleHeadrooms"] = state?.autoscaleHeadrooms;
             resourceInputs["autoscaleHeadroomsAutomatics"] = state?.autoscaleHeadroomsAutomatics;
             resourceInputs["createOptions"] = state?.createOptions;
+            resourceInputs["filters"] = state?.filters;
             resourceInputs["instanceTypes"] = state?.instanceTypes;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["metadatas"] = state?.metadatas;
@@ -256,6 +272,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             resourceInputs["autoscaleHeadrooms"] = args?.autoscaleHeadrooms;
             resourceInputs["autoscaleHeadroomsAutomatics"] = args?.autoscaleHeadroomsAutomatics;
             resourceInputs["createOptions"] = args?.createOptions;
+            resourceInputs["filters"] = args?.filters;
             resourceInputs["instanceTypes"] = args?.instanceTypes;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["metadatas"] = args?.metadatas;
@@ -295,6 +312,10 @@ export interface OceanLaunchSpecState {
      */
     autoscaleHeadroomsAutomatics?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecAutoscaleHeadroomsAutomatic>[]>;
     createOptions?: pulumi.Input<inputs.gke.OceanLaunchSpecCreateOptions>;
+    /**
+     * List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `instanceTypes` is configured.
+     */
+    filters?: pulumi.Input<inputs.gke.OceanLaunchSpecFilters>;
     /**
      * List of supported machine types for the Launch Spec.
      */
@@ -387,6 +408,10 @@ export interface OceanLaunchSpecArgs {
      */
     autoscaleHeadroomsAutomatics?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecAutoscaleHeadroomsAutomatic>[]>;
     createOptions?: pulumi.Input<inputs.gke.OceanLaunchSpecCreateOptions>;
+    /**
+     * List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `instanceTypes` is configured.
+     */
+    filters?: pulumi.Input<inputs.gke.OceanLaunchSpecFilters>;
     /**
      * List of supported machine types for the Launch Spec.
      */
