@@ -13,6 +13,7 @@ import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecState;
 import com.pulumi.spotinst.gke.outputs.OceanLaunchSpecAutoscaleHeadroom;
 import com.pulumi.spotinst.gke.outputs.OceanLaunchSpecAutoscaleHeadroomsAutomatic;
 import com.pulumi.spotinst.gke.outputs.OceanLaunchSpecCreateOptions;
+import com.pulumi.spotinst.gke.outputs.OceanLaunchSpecFilters;
 import com.pulumi.spotinst.gke.outputs.OceanLaunchSpecLabel;
 import com.pulumi.spotinst.gke.outputs.OceanLaunchSpecMetadata;
 import com.pulumi.spotinst.gke.outputs.OceanLaunchSpecNetworkInterface;
@@ -59,6 +60,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecStrategyArgs;
  * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecSchedulingTaskArgs;
  * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecNetworkInterfaceArgs;
+ * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecFiltersArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -148,6 +150,16 @@ import javax.annotation.Nullable;
  *                     .subnetworkRangeName("gke-test-native-vpc-pods-123456-vng")
  *                     .build())
  *                 .build())
+ *             .filters(OceanLaunchSpecFiltersArgs.builder()
+ *                 .excludeFamilies("n2")
+ *                 .includeFamilies(                
+ *                     "c2",
+ *                     "c3")
+ *                 .minMemoryGib(8.0)
+ *                 .maxMemoryGib(32.0)
+ *                 .minVcpu(2)
+ *                 .maxVcpu(16)
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -192,6 +204,20 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<OceanLaunchSpecCreateOptions>> createOptions() {
         return Codegen.optional(this.createOptions);
+    }
+    /**
+     * List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured if cluster&#39;s `instance_types` is configured.
+     * 
+     */
+    @Export(name="filters", refs={OceanLaunchSpecFilters.class}, tree="[0]")
+    private Output</* @Nullable */ OceanLaunchSpecFilters> filters;
+
+    /**
+     * @return List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured if cluster&#39;s `instance_types` is configured.
+     * 
+     */
+    public Output<Optional<OceanLaunchSpecFilters>> filters() {
+        return Codegen.optional(this.filters);
     }
     /**
      * List of supported machine types for the Launch Spec.
