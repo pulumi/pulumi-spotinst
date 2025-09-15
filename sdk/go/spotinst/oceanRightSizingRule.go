@@ -16,6 +16,7 @@ type OceanRightSizingRule struct {
 	pulumi.CustomResourceState
 
 	AttachWorkloads                         OceanRightSizingRuleAttachWorkloadArrayOutput                         `pulumi:"attachWorkloads"`
+	AutoApplyDefinitions                    OceanRightSizingRuleAutoApplyDefinitionArrayOutput                    `pulumi:"autoApplyDefinitions"`
 	DetachWorkloads                         OceanRightSizingRuleDetachWorkloadArrayOutput                         `pulumi:"detachWorkloads"`
 	ExcludePreliminaryRecommendations       pulumi.BoolPtrOutput                                                  `pulumi:"excludePreliminaryRecommendations"`
 	OceanId                                 pulumi.StringPtrOutput                                                `pulumi:"oceanId"`
@@ -65,6 +66,7 @@ func GetOceanRightSizingRule(ctx *pulumi.Context,
 // Input properties used for looking up and filtering OceanRightSizingRule resources.
 type oceanRightSizingRuleState struct {
 	AttachWorkloads                         []OceanRightSizingRuleAttachWorkload                         `pulumi:"attachWorkloads"`
+	AutoApplyDefinitions                    []OceanRightSizingRuleAutoApplyDefinition                    `pulumi:"autoApplyDefinitions"`
 	DetachWorkloads                         []OceanRightSizingRuleDetachWorkload                         `pulumi:"detachWorkloads"`
 	ExcludePreliminaryRecommendations       *bool                                                        `pulumi:"excludePreliminaryRecommendations"`
 	OceanId                                 *string                                                      `pulumi:"oceanId"`
@@ -79,6 +81,7 @@ type oceanRightSizingRuleState struct {
 
 type OceanRightSizingRuleState struct {
 	AttachWorkloads                         OceanRightSizingRuleAttachWorkloadArrayInput
+	AutoApplyDefinitions                    OceanRightSizingRuleAutoApplyDefinitionArrayInput
 	DetachWorkloads                         OceanRightSizingRuleDetachWorkloadArrayInput
 	ExcludePreliminaryRecommendations       pulumi.BoolPtrInput
 	OceanId                                 pulumi.StringPtrInput
@@ -97,6 +100,7 @@ func (OceanRightSizingRuleState) ElementType() reflect.Type {
 
 type oceanRightSizingRuleArgs struct {
 	AttachWorkloads                         []OceanRightSizingRuleAttachWorkload                         `pulumi:"attachWorkloads"`
+	AutoApplyDefinitions                    []OceanRightSizingRuleAutoApplyDefinition                    `pulumi:"autoApplyDefinitions"`
 	DetachWorkloads                         []OceanRightSizingRuleDetachWorkload                         `pulumi:"detachWorkloads"`
 	ExcludePreliminaryRecommendations       *bool                                                        `pulumi:"excludePreliminaryRecommendations"`
 	OceanId                                 *string                                                      `pulumi:"oceanId"`
@@ -112,6 +116,7 @@ type oceanRightSizingRuleArgs struct {
 // The set of arguments for constructing a OceanRightSizingRule resource.
 type OceanRightSizingRuleArgs struct {
 	AttachWorkloads                         OceanRightSizingRuleAttachWorkloadArrayInput
+	AutoApplyDefinitions                    OceanRightSizingRuleAutoApplyDefinitionArrayInput
 	DetachWorkloads                         OceanRightSizingRuleDetachWorkloadArrayInput
 	ExcludePreliminaryRecommendations       pulumi.BoolPtrInput
 	OceanId                                 pulumi.StringPtrInput
@@ -213,6 +218,12 @@ func (o OceanRightSizingRuleOutput) ToOceanRightSizingRuleOutputWithContext(ctx 
 
 func (o OceanRightSizingRuleOutput) AttachWorkloads() OceanRightSizingRuleAttachWorkloadArrayOutput {
 	return o.ApplyT(func(v *OceanRightSizingRule) OceanRightSizingRuleAttachWorkloadArrayOutput { return v.AttachWorkloads }).(OceanRightSizingRuleAttachWorkloadArrayOutput)
+}
+
+func (o OceanRightSizingRuleOutput) AutoApplyDefinitions() OceanRightSizingRuleAutoApplyDefinitionArrayOutput {
+	return o.ApplyT(func(v *OceanRightSizingRule) OceanRightSizingRuleAutoApplyDefinitionArrayOutput {
+		return v.AutoApplyDefinitions
+	}).(OceanRightSizingRuleAutoApplyDefinitionArrayOutput)
 }
 
 func (o OceanRightSizingRuleOutput) DetachWorkloads() OceanRightSizingRuleDetachWorkloadArrayOutput {

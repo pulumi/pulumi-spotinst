@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.inputs.OceanRightSizingRuleAttachWorkloadArgs;
+import com.pulumi.spotinst.inputs.OceanRightSizingRuleAutoApplyDefinitionArgs;
 import com.pulumi.spotinst.inputs.OceanRightSizingRuleDetachWorkloadArgs;
 import com.pulumi.spotinst.inputs.OceanRightSizingRuleRecommendationApplicationBoundaryArgs;
 import com.pulumi.spotinst.inputs.OceanRightSizingRuleRecommendationApplicationHpaArgs;
@@ -30,6 +31,13 @@ public final class OceanRightSizingRuleArgs extends com.pulumi.resources.Resourc
 
     public Optional<Output<List<OceanRightSizingRuleAttachWorkloadArgs>>> attachWorkloads() {
         return Optional.ofNullable(this.attachWorkloads);
+    }
+
+    @Import(name="autoApplyDefinitions")
+    private @Nullable Output<List<OceanRightSizingRuleAutoApplyDefinitionArgs>> autoApplyDefinitions;
+
+    public Optional<Output<List<OceanRightSizingRuleAutoApplyDefinitionArgs>>> autoApplyDefinitions() {
+        return Optional.ofNullable(this.autoApplyDefinitions);
     }
 
     @Import(name="detachWorkloads")
@@ -106,6 +114,7 @@ public final class OceanRightSizingRuleArgs extends com.pulumi.resources.Resourc
 
     private OceanRightSizingRuleArgs(OceanRightSizingRuleArgs $) {
         this.attachWorkloads = $.attachWorkloads;
+        this.autoApplyDefinitions = $.autoApplyDefinitions;
         this.detachWorkloads = $.detachWorkloads;
         this.excludePreliminaryRecommendations = $.excludePreliminaryRecommendations;
         this.oceanId = $.oceanId;
@@ -147,6 +156,19 @@ public final class OceanRightSizingRuleArgs extends com.pulumi.resources.Resourc
 
         public Builder attachWorkloads(OceanRightSizingRuleAttachWorkloadArgs... attachWorkloads) {
             return attachWorkloads(List.of(attachWorkloads));
+        }
+
+        public Builder autoApplyDefinitions(@Nullable Output<List<OceanRightSizingRuleAutoApplyDefinitionArgs>> autoApplyDefinitions) {
+            $.autoApplyDefinitions = autoApplyDefinitions;
+            return this;
+        }
+
+        public Builder autoApplyDefinitions(List<OceanRightSizingRuleAutoApplyDefinitionArgs> autoApplyDefinitions) {
+            return autoApplyDefinitions(Output.of(autoApplyDefinitions));
+        }
+
+        public Builder autoApplyDefinitions(OceanRightSizingRuleAutoApplyDefinitionArgs... autoApplyDefinitions) {
+            return autoApplyDefinitions(List.of(autoApplyDefinitions));
         }
 
         public Builder detachWorkloads(@Nullable Output<List<OceanRightSizingRuleDetachWorkloadArgs>> detachWorkloads) {

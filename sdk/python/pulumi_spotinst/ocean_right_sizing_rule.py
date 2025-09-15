@@ -24,6 +24,7 @@ class OceanRightSizingRuleArgs:
                  recommendation_application_intervals: pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalArgs']]],
                  rule_name: pulumi.Input[_builtins.str],
                  attach_workloads: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadArgs']]]] = None,
+                 auto_apply_definitions: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAutoApplyDefinitionArgs']]]] = None,
                  detach_workloads: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadArgs']]]] = None,
                  exclude_preliminary_recommendations: Optional[pulumi.Input[_builtins.bool]] = None,
                  ocean_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -39,6 +40,8 @@ class OceanRightSizingRuleArgs:
         pulumi.set(__self__, "rule_name", rule_name)
         if attach_workloads is not None:
             pulumi.set(__self__, "attach_workloads", attach_workloads)
+        if auto_apply_definitions is not None:
+            pulumi.set(__self__, "auto_apply_definitions", auto_apply_definitions)
         if detach_workloads is not None:
             pulumi.set(__self__, "detach_workloads", detach_workloads)
         if exclude_preliminary_recommendations is not None:
@@ -82,6 +85,15 @@ class OceanRightSizingRuleArgs:
     @attach_workloads.setter
     def attach_workloads(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadArgs']]]]):
         pulumi.set(self, "attach_workloads", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autoApplyDefinitions")
+    def auto_apply_definitions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAutoApplyDefinitionArgs']]]]:
+        return pulumi.get(self, "auto_apply_definitions")
+
+    @auto_apply_definitions.setter
+    def auto_apply_definitions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAutoApplyDefinitionArgs']]]]):
+        pulumi.set(self, "auto_apply_definitions", value)
 
     @_builtins.property
     @pulumi.getter(name="detachWorkloads")
@@ -160,6 +172,7 @@ class OceanRightSizingRuleArgs:
 class _OceanRightSizingRuleState:
     def __init__(__self__, *,
                  attach_workloads: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadArgs']]]] = None,
+                 auto_apply_definitions: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAutoApplyDefinitionArgs']]]] = None,
                  detach_workloads: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadArgs']]]] = None,
                  exclude_preliminary_recommendations: Optional[pulumi.Input[_builtins.bool]] = None,
                  ocean_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -175,6 +188,8 @@ class _OceanRightSizingRuleState:
         """
         if attach_workloads is not None:
             pulumi.set(__self__, "attach_workloads", attach_workloads)
+        if auto_apply_definitions is not None:
+            pulumi.set(__self__, "auto_apply_definitions", auto_apply_definitions)
         if detach_workloads is not None:
             pulumi.set(__self__, "detach_workloads", detach_workloads)
         if exclude_preliminary_recommendations is not None:
@@ -204,6 +219,15 @@ class _OceanRightSizingRuleState:
     @attach_workloads.setter
     def attach_workloads(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadArgs']]]]):
         pulumi.set(self, "attach_workloads", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autoApplyDefinitions")
+    def auto_apply_definitions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAutoApplyDefinitionArgs']]]]:
+        return pulumi.get(self, "auto_apply_definitions")
+
+    @auto_apply_definitions.setter
+    def auto_apply_definitions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAutoApplyDefinitionArgs']]]]):
+        pulumi.set(self, "auto_apply_definitions", value)
 
     @_builtins.property
     @pulumi.getter(name="detachWorkloads")
@@ -303,6 +327,7 @@ class OceanRightSizingRule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attach_workloads: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleAttachWorkloadArgs', 'OceanRightSizingRuleAttachWorkloadArgsDict']]]]] = None,
+                 auto_apply_definitions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleAutoApplyDefinitionArgs', 'OceanRightSizingRuleAutoApplyDefinitionArgsDict']]]]] = None,
                  detach_workloads: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleDetachWorkloadArgs', 'OceanRightSizingRuleDetachWorkloadArgsDict']]]]] = None,
                  exclude_preliminary_recommendations: Optional[pulumi.Input[_builtins.bool]] = None,
                  ocean_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -343,6 +368,7 @@ class OceanRightSizingRule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attach_workloads: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleAttachWorkloadArgs', 'OceanRightSizingRuleAttachWorkloadArgsDict']]]]] = None,
+                 auto_apply_definitions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleAutoApplyDefinitionArgs', 'OceanRightSizingRuleAutoApplyDefinitionArgsDict']]]]] = None,
                  detach_workloads: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleDetachWorkloadArgs', 'OceanRightSizingRuleDetachWorkloadArgsDict']]]]] = None,
                  exclude_preliminary_recommendations: Optional[pulumi.Input[_builtins.bool]] = None,
                  ocean_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -363,6 +389,7 @@ class OceanRightSizingRule(pulumi.CustomResource):
             __props__ = OceanRightSizingRuleArgs.__new__(OceanRightSizingRuleArgs)
 
             __props__.__dict__["attach_workloads"] = attach_workloads
+            __props__.__dict__["auto_apply_definitions"] = auto_apply_definitions
             __props__.__dict__["detach_workloads"] = detach_workloads
             __props__.__dict__["exclude_preliminary_recommendations"] = exclude_preliminary_recommendations
             __props__.__dict__["ocean_id"] = ocean_id
@@ -388,6 +415,7 @@ class OceanRightSizingRule(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             attach_workloads: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleAttachWorkloadArgs', 'OceanRightSizingRuleAttachWorkloadArgsDict']]]]] = None,
+            auto_apply_definitions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleAutoApplyDefinitionArgs', 'OceanRightSizingRuleAutoApplyDefinitionArgsDict']]]]] = None,
             detach_workloads: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleDetachWorkloadArgs', 'OceanRightSizingRuleDetachWorkloadArgsDict']]]]] = None,
             exclude_preliminary_recommendations: Optional[pulumi.Input[_builtins.bool]] = None,
             ocean_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -411,6 +439,7 @@ class OceanRightSizingRule(pulumi.CustomResource):
         __props__ = _OceanRightSizingRuleState.__new__(_OceanRightSizingRuleState)
 
         __props__.__dict__["attach_workloads"] = attach_workloads
+        __props__.__dict__["auto_apply_definitions"] = auto_apply_definitions
         __props__.__dict__["detach_workloads"] = detach_workloads
         __props__.__dict__["exclude_preliminary_recommendations"] = exclude_preliminary_recommendations
         __props__.__dict__["ocean_id"] = ocean_id
@@ -427,6 +456,11 @@ class OceanRightSizingRule(pulumi.CustomResource):
     @pulumi.getter(name="attachWorkloads")
     def attach_workloads(self) -> pulumi.Output[Optional[Sequence['outputs.OceanRightSizingRuleAttachWorkload']]]:
         return pulumi.get(self, "attach_workloads")
+
+    @_builtins.property
+    @pulumi.getter(name="autoApplyDefinitions")
+    def auto_apply_definitions(self) -> pulumi.Output[Optional[Sequence['outputs.OceanRightSizingRuleAutoApplyDefinition']]]:
+        return pulumi.get(self, "auto_apply_definitions")
 
     @_builtins.property
     @pulumi.getter(name="detachWorkloads")

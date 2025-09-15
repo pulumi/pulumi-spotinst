@@ -6309,6 +6309,112 @@ func (o OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArrayOutput) Index(i 
 	}).(OceanRightSizingRuleAttachWorkloadNamespaceWorkloadOutput)
 }
 
+type OceanRightSizingRuleAutoApplyDefinition struct {
+	Enabled    *bool             `pulumi:"enabled"`
+	Labels     map[string]string `pulumi:"labels"`
+	Namespaces []string          `pulumi:"namespaces"`
+}
+
+// OceanRightSizingRuleAutoApplyDefinitionInput is an input type that accepts OceanRightSizingRuleAutoApplyDefinitionArgs and OceanRightSizingRuleAutoApplyDefinitionOutput values.
+// You can construct a concrete instance of `OceanRightSizingRuleAutoApplyDefinitionInput` via:
+//
+//	OceanRightSizingRuleAutoApplyDefinitionArgs{...}
+type OceanRightSizingRuleAutoApplyDefinitionInput interface {
+	pulumi.Input
+
+	ToOceanRightSizingRuleAutoApplyDefinitionOutput() OceanRightSizingRuleAutoApplyDefinitionOutput
+	ToOceanRightSizingRuleAutoApplyDefinitionOutputWithContext(context.Context) OceanRightSizingRuleAutoApplyDefinitionOutput
+}
+
+type OceanRightSizingRuleAutoApplyDefinitionArgs struct {
+	Enabled    pulumi.BoolPtrInput     `pulumi:"enabled"`
+	Labels     pulumi.StringMapInput   `pulumi:"labels"`
+	Namespaces pulumi.StringArrayInput `pulumi:"namespaces"`
+}
+
+func (OceanRightSizingRuleAutoApplyDefinitionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanRightSizingRuleAutoApplyDefinition)(nil)).Elem()
+}
+
+func (i OceanRightSizingRuleAutoApplyDefinitionArgs) ToOceanRightSizingRuleAutoApplyDefinitionOutput() OceanRightSizingRuleAutoApplyDefinitionOutput {
+	return i.ToOceanRightSizingRuleAutoApplyDefinitionOutputWithContext(context.Background())
+}
+
+func (i OceanRightSizingRuleAutoApplyDefinitionArgs) ToOceanRightSizingRuleAutoApplyDefinitionOutputWithContext(ctx context.Context) OceanRightSizingRuleAutoApplyDefinitionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanRightSizingRuleAutoApplyDefinitionOutput)
+}
+
+// OceanRightSizingRuleAutoApplyDefinitionArrayInput is an input type that accepts OceanRightSizingRuleAutoApplyDefinitionArray and OceanRightSizingRuleAutoApplyDefinitionArrayOutput values.
+// You can construct a concrete instance of `OceanRightSizingRuleAutoApplyDefinitionArrayInput` via:
+//
+//	OceanRightSizingRuleAutoApplyDefinitionArray{ OceanRightSizingRuleAutoApplyDefinitionArgs{...} }
+type OceanRightSizingRuleAutoApplyDefinitionArrayInput interface {
+	pulumi.Input
+
+	ToOceanRightSizingRuleAutoApplyDefinitionArrayOutput() OceanRightSizingRuleAutoApplyDefinitionArrayOutput
+	ToOceanRightSizingRuleAutoApplyDefinitionArrayOutputWithContext(context.Context) OceanRightSizingRuleAutoApplyDefinitionArrayOutput
+}
+
+type OceanRightSizingRuleAutoApplyDefinitionArray []OceanRightSizingRuleAutoApplyDefinitionInput
+
+func (OceanRightSizingRuleAutoApplyDefinitionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanRightSizingRuleAutoApplyDefinition)(nil)).Elem()
+}
+
+func (i OceanRightSizingRuleAutoApplyDefinitionArray) ToOceanRightSizingRuleAutoApplyDefinitionArrayOutput() OceanRightSizingRuleAutoApplyDefinitionArrayOutput {
+	return i.ToOceanRightSizingRuleAutoApplyDefinitionArrayOutputWithContext(context.Background())
+}
+
+func (i OceanRightSizingRuleAutoApplyDefinitionArray) ToOceanRightSizingRuleAutoApplyDefinitionArrayOutputWithContext(ctx context.Context) OceanRightSizingRuleAutoApplyDefinitionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanRightSizingRuleAutoApplyDefinitionArrayOutput)
+}
+
+type OceanRightSizingRuleAutoApplyDefinitionOutput struct{ *pulumi.OutputState }
+
+func (OceanRightSizingRuleAutoApplyDefinitionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanRightSizingRuleAutoApplyDefinition)(nil)).Elem()
+}
+
+func (o OceanRightSizingRuleAutoApplyDefinitionOutput) ToOceanRightSizingRuleAutoApplyDefinitionOutput() OceanRightSizingRuleAutoApplyDefinitionOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleAutoApplyDefinitionOutput) ToOceanRightSizingRuleAutoApplyDefinitionOutputWithContext(ctx context.Context) OceanRightSizingRuleAutoApplyDefinitionOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleAutoApplyDefinitionOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanRightSizingRuleAutoApplyDefinition) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o OceanRightSizingRuleAutoApplyDefinitionOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v OceanRightSizingRuleAutoApplyDefinition) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o OceanRightSizingRuleAutoApplyDefinitionOutput) Namespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanRightSizingRuleAutoApplyDefinition) []string { return v.Namespaces }).(pulumi.StringArrayOutput)
+}
+
+type OceanRightSizingRuleAutoApplyDefinitionArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanRightSizingRuleAutoApplyDefinitionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanRightSizingRuleAutoApplyDefinition)(nil)).Elem()
+}
+
+func (o OceanRightSizingRuleAutoApplyDefinitionArrayOutput) ToOceanRightSizingRuleAutoApplyDefinitionArrayOutput() OceanRightSizingRuleAutoApplyDefinitionArrayOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleAutoApplyDefinitionArrayOutput) ToOceanRightSizingRuleAutoApplyDefinitionArrayOutputWithContext(ctx context.Context) OceanRightSizingRuleAutoApplyDefinitionArrayOutput {
+	return o
+}
+
+func (o OceanRightSizingRuleAutoApplyDefinitionArrayOutput) Index(i pulumi.IntInput) OceanRightSizingRuleAutoApplyDefinitionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanRightSizingRuleAutoApplyDefinition {
+		return vs[0].([]OceanRightSizingRuleAutoApplyDefinition)[vs[1].(int)]
+	}).(OceanRightSizingRuleAutoApplyDefinitionOutput)
+}
+
 type OceanRightSizingRuleDetachWorkload struct {
 	Namespaces []OceanRightSizingRuleDetachWorkloadNamespace `pulumi:"namespaces"`
 }
@@ -12464,6 +12570,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleAttachWorkloadNamespaceLabelArrayInput)(nil)).Elem(), OceanRightSizingRuleAttachWorkloadNamespaceLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleAttachWorkloadNamespaceWorkloadInput)(nil)).Elem(), OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArrayInput)(nil)).Elem(), OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleAutoApplyDefinitionInput)(nil)).Elem(), OceanRightSizingRuleAutoApplyDefinitionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleAutoApplyDefinitionArrayInput)(nil)).Elem(), OceanRightSizingRuleAutoApplyDefinitionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleDetachWorkloadInput)(nil)).Elem(), OceanRightSizingRuleDetachWorkloadArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleDetachWorkloadArrayInput)(nil)).Elem(), OceanRightSizingRuleDetachWorkloadArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleDetachWorkloadNamespaceInput)(nil)).Elem(), OceanRightSizingRuleDetachWorkloadNamespaceArgs{})
@@ -12658,6 +12766,8 @@ func init() {
 	pulumi.RegisterOutputType(OceanRightSizingRuleAttachWorkloadNamespaceLabelArrayOutput{})
 	pulumi.RegisterOutputType(OceanRightSizingRuleAttachWorkloadNamespaceWorkloadOutput{})
 	pulumi.RegisterOutputType(OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArrayOutput{})
+	pulumi.RegisterOutputType(OceanRightSizingRuleAutoApplyDefinitionOutput{})
+	pulumi.RegisterOutputType(OceanRightSizingRuleAutoApplyDefinitionArrayOutput{})
 	pulumi.RegisterOutputType(OceanRightSizingRuleDetachWorkloadOutput{})
 	pulumi.RegisterOutputType(OceanRightSizingRuleDetachWorkloadArrayOutput{})
 	pulumi.RegisterOutputType(OceanRightSizingRuleDetachWorkloadNamespaceOutput{})

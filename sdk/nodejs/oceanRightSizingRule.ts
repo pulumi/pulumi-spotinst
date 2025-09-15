@@ -35,6 +35,7 @@ export class OceanRightSizingRule extends pulumi.CustomResource {
     }
 
     declare public readonly attachWorkloads: pulumi.Output<outputs.OceanRightSizingRuleAttachWorkload[] | undefined>;
+    declare public readonly autoApplyDefinitions: pulumi.Output<outputs.OceanRightSizingRuleAutoApplyDefinition[] | undefined>;
     declare public readonly detachWorkloads: pulumi.Output<outputs.OceanRightSizingRuleDetachWorkload[] | undefined>;
     declare public readonly excludePreliminaryRecommendations: pulumi.Output<boolean | undefined>;
     declare public readonly oceanId: pulumi.Output<string | undefined>;
@@ -60,6 +61,7 @@ export class OceanRightSizingRule extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as OceanRightSizingRuleState | undefined;
             resourceInputs["attachWorkloads"] = state?.attachWorkloads;
+            resourceInputs["autoApplyDefinitions"] = state?.autoApplyDefinitions;
             resourceInputs["detachWorkloads"] = state?.detachWorkloads;
             resourceInputs["excludePreliminaryRecommendations"] = state?.excludePreliminaryRecommendations;
             resourceInputs["oceanId"] = state?.oceanId;
@@ -79,6 +81,7 @@ export class OceanRightSizingRule extends pulumi.CustomResource {
                 throw new Error("Missing required property 'ruleName'");
             }
             resourceInputs["attachWorkloads"] = args?.attachWorkloads;
+            resourceInputs["autoApplyDefinitions"] = args?.autoApplyDefinitions;
             resourceInputs["detachWorkloads"] = args?.detachWorkloads;
             resourceInputs["excludePreliminaryRecommendations"] = args?.excludePreliminaryRecommendations;
             resourceInputs["oceanId"] = args?.oceanId;
@@ -100,6 +103,7 @@ export class OceanRightSizingRule extends pulumi.CustomResource {
  */
 export interface OceanRightSizingRuleState {
     attachWorkloads?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleAttachWorkload>[]>;
+    autoApplyDefinitions?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleAutoApplyDefinition>[]>;
     detachWorkloads?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleDetachWorkload>[]>;
     excludePreliminaryRecommendations?: pulumi.Input<boolean>;
     oceanId?: pulumi.Input<string>;
@@ -117,6 +121,7 @@ export interface OceanRightSizingRuleState {
  */
 export interface OceanRightSizingRuleArgs {
     attachWorkloads?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleAttachWorkload>[]>;
+    autoApplyDefinitions?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleAutoApplyDefinition>[]>;
     detachWorkloads?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleDetachWorkload>[]>;
     excludePreliminaryRecommendations?: pulumi.Input<boolean>;
     oceanId?: pulumi.Input<string>;

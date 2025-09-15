@@ -25,6 +25,7 @@ class OceanLaunchSpecArgs:
                  autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]]] = None,
                  autoscale_headrooms_automatics: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs']]]] = None,
                  create_options: Optional[pulumi.Input['OceanLaunchSpecCreateOptionsArgs']] = None,
+                 filters: Optional[pulumi.Input['OceanLaunchSpecFiltersArgs']] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecMetadataArgs']]]] = None,
@@ -49,6 +50,7 @@ class OceanLaunchSpecArgs:
         :param pulumi.Input[_builtins.str] ocean_id: The Ocean cluster ID.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs']]] autoscale_headrooms_automatics: Set automatic headroom per launch spec.
+        :param pulumi.Input['OceanLaunchSpecFiltersArgs'] filters: List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `instance_types` is configured.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_types: List of supported machine types for the Launch Spec.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]] labels: Optionally adds labels to instances launched in an Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecMetadataArgs']]] metadatas: Cluster's metadata.
@@ -75,6 +77,8 @@ class OceanLaunchSpecArgs:
             pulumi.set(__self__, "autoscale_headrooms_automatics", autoscale_headrooms_automatics)
         if create_options is not None:
             pulumi.set(__self__, "create_options", create_options)
+        if filters is not None:
+            pulumi.set(__self__, "filters", filters)
         if instance_types is not None:
             pulumi.set(__self__, "instance_types", instance_types)
         if labels is not None:
@@ -158,6 +162,18 @@ class OceanLaunchSpecArgs:
     @create_options.setter
     def create_options(self, value: Optional[pulumi.Input['OceanLaunchSpecCreateOptionsArgs']]):
         pulumi.set(self, "create_options", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def filters(self) -> Optional[pulumi.Input['OceanLaunchSpecFiltersArgs']]:
+        """
+        List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `instance_types` is configured.
+        """
+        return pulumi.get(self, "filters")
+
+    @filters.setter
+    def filters(self, value: Optional[pulumi.Input['OceanLaunchSpecFiltersArgs']]):
+        pulumi.set(self, "filters", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceTypes")
@@ -391,6 +407,7 @@ class _OceanLaunchSpecState:
                  autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]]] = None,
                  autoscale_headrooms_automatics: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs']]]] = None,
                  create_options: Optional[pulumi.Input['OceanLaunchSpecCreateOptionsArgs']] = None,
+                 filters: Optional[pulumi.Input['OceanLaunchSpecFiltersArgs']] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecMetadataArgs']]]] = None,
@@ -415,6 +432,7 @@ class _OceanLaunchSpecState:
         Input properties used for looking up and filtering OceanLaunchSpec resources.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs']]] autoscale_headrooms_automatics: Set automatic headroom per launch spec.
+        :param pulumi.Input['OceanLaunchSpecFiltersArgs'] filters: List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `instance_types` is configured.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_types: List of supported machine types for the Launch Spec.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]] labels: Optionally adds labels to instances launched in an Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecMetadataArgs']]] metadatas: Cluster's metadata.
@@ -441,6 +459,8 @@ class _OceanLaunchSpecState:
             pulumi.set(__self__, "autoscale_headrooms_automatics", autoscale_headrooms_automatics)
         if create_options is not None:
             pulumi.set(__self__, "create_options", create_options)
+        if filters is not None:
+            pulumi.set(__self__, "filters", filters)
         if instance_types is not None:
             pulumi.set(__self__, "instance_types", instance_types)
         if labels is not None:
@@ -514,6 +534,18 @@ class _OceanLaunchSpecState:
     @create_options.setter
     def create_options(self, value: Optional[pulumi.Input['OceanLaunchSpecCreateOptionsArgs']]):
         pulumi.set(self, "create_options", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def filters(self) -> Optional[pulumi.Input['OceanLaunchSpecFiltersArgs']]:
+        """
+        List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `instance_types` is configured.
+        """
+        return pulumi.get(self, "filters")
+
+    @filters.setter
+    def filters(self, value: Optional[pulumi.Input['OceanLaunchSpecFiltersArgs']]):
+        pulumi.set(self, "filters", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceTypes")
@@ -762,6 +794,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomArgs', 'OceanLaunchSpecAutoscaleHeadroomArgsDict']]]]] = None,
                  autoscale_headrooms_automatics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs', 'OceanLaunchSpecAutoscaleHeadroomsAutomaticArgsDict']]]]] = None,
                  create_options: Optional[pulumi.Input[Union['OceanLaunchSpecCreateOptionsArgs', 'OceanLaunchSpecCreateOptionsArgsDict']]] = None,
+                 filters: Optional[pulumi.Input[Union['OceanLaunchSpecFiltersArgs', 'OceanLaunchSpecFiltersArgsDict']]] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecLabelArgs', 'OceanLaunchSpecLabelArgsDict']]]]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecMetadataArgs', 'OceanLaunchSpecMetadataArgsDict']]]]] = None,
@@ -870,13 +903,25 @@ class OceanLaunchSpec(pulumi.CustomResource):
                     "ip_cidr_range": "/25",
                     "subnetwork_range_name": "gke-test-native-vpc-pods-123456-vng",
                 }],
-            }])
+            }],
+            filters={
+                "exclude_families": ["n2"],
+                "include_families": [
+                    "c2",
+                    "c3",
+                ],
+                "min_memory_gib": 8,
+                "max_memory_gib": 32,
+                "min_vcpu": 2,
+                "max_vcpu": 16,
+            })
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomArgs', 'OceanLaunchSpecAutoscaleHeadroomArgsDict']]]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs', 'OceanLaunchSpecAutoscaleHeadroomsAutomaticArgsDict']]]] autoscale_headrooms_automatics: Set automatic headroom per launch spec.
+        :param pulumi.Input[Union['OceanLaunchSpecFiltersArgs', 'OceanLaunchSpecFiltersArgsDict']] filters: List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `instance_types` is configured.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_types: List of supported machine types for the Launch Spec.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecLabelArgs', 'OceanLaunchSpecLabelArgsDict']]]] labels: Optionally adds labels to instances launched in an Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecMetadataArgs', 'OceanLaunchSpecMetadataArgsDict']]]] metadatas: Cluster's metadata.
@@ -990,7 +1035,18 @@ class OceanLaunchSpec(pulumi.CustomResource):
                     "ip_cidr_range": "/25",
                     "subnetwork_range_name": "gke-test-native-vpc-pods-123456-vng",
                 }],
-            }])
+            }],
+            filters={
+                "exclude_families": ["n2"],
+                "include_families": [
+                    "c2",
+                    "c3",
+                ],
+                "min_memory_gib": 8,
+                "max_memory_gib": 32,
+                "min_vcpu": 2,
+                "max_vcpu": 16,
+            })
         ```
 
         :param str resource_name: The name of the resource.
@@ -1011,6 +1067,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomArgs', 'OceanLaunchSpecAutoscaleHeadroomArgsDict']]]]] = None,
                  autoscale_headrooms_automatics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs', 'OceanLaunchSpecAutoscaleHeadroomsAutomaticArgsDict']]]]] = None,
                  create_options: Optional[pulumi.Input[Union['OceanLaunchSpecCreateOptionsArgs', 'OceanLaunchSpecCreateOptionsArgsDict']]] = None,
+                 filters: Optional[pulumi.Input[Union['OceanLaunchSpecFiltersArgs', 'OceanLaunchSpecFiltersArgsDict']]] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecLabelArgs', 'OceanLaunchSpecLabelArgsDict']]]]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecMetadataArgs', 'OceanLaunchSpecMetadataArgsDict']]]]] = None,
@@ -1043,6 +1100,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             __props__.__dict__["autoscale_headrooms"] = autoscale_headrooms
             __props__.__dict__["autoscale_headrooms_automatics"] = autoscale_headrooms_automatics
             __props__.__dict__["create_options"] = create_options
+            __props__.__dict__["filters"] = filters
             __props__.__dict__["instance_types"] = instance_types
             __props__.__dict__["labels"] = labels
             __props__.__dict__["metadatas"] = metadatas
@@ -1078,6 +1136,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomArgs', 'OceanLaunchSpecAutoscaleHeadroomArgsDict']]]]] = None,
             autoscale_headrooms_automatics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs', 'OceanLaunchSpecAutoscaleHeadroomsAutomaticArgsDict']]]]] = None,
             create_options: Optional[pulumi.Input[Union['OceanLaunchSpecCreateOptionsArgs', 'OceanLaunchSpecCreateOptionsArgsDict']]] = None,
+            filters: Optional[pulumi.Input[Union['OceanLaunchSpecFiltersArgs', 'OceanLaunchSpecFiltersArgsDict']]] = None,
             instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecLabelArgs', 'OceanLaunchSpecLabelArgsDict']]]]] = None,
             metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecMetadataArgs', 'OceanLaunchSpecMetadataArgsDict']]]]] = None,
@@ -1107,6 +1166,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomArgs', 'OceanLaunchSpecAutoscaleHeadroomArgsDict']]]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs', 'OceanLaunchSpecAutoscaleHeadroomsAutomaticArgsDict']]]] autoscale_headrooms_automatics: Set automatic headroom per launch spec.
+        :param pulumi.Input[Union['OceanLaunchSpecFiltersArgs', 'OceanLaunchSpecFiltersArgsDict']] filters: List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `instance_types` is configured.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_types: List of supported machine types for the Launch Spec.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecLabelArgs', 'OceanLaunchSpecLabelArgsDict']]]] labels: Optionally adds labels to instances launched in an Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecMetadataArgs', 'OceanLaunchSpecMetadataArgsDict']]]] metadatas: Cluster's metadata.
@@ -1134,6 +1194,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         __props__.__dict__["autoscale_headrooms"] = autoscale_headrooms
         __props__.__dict__["autoscale_headrooms_automatics"] = autoscale_headrooms_automatics
         __props__.__dict__["create_options"] = create_options
+        __props__.__dict__["filters"] = filters
         __props__.__dict__["instance_types"] = instance_types
         __props__.__dict__["labels"] = labels
         __props__.__dict__["metadatas"] = metadatas
@@ -1176,6 +1237,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
     @pulumi.getter(name="createOptions")
     def create_options(self) -> pulumi.Output[Optional['outputs.OceanLaunchSpecCreateOptions']]:
         return pulumi.get(self, "create_options")
+
+    @_builtins.property
+    @pulumi.getter
+    def filters(self) -> pulumi.Output[Optional['outputs.OceanLaunchSpecFilters']]:
+        """
+        List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `instance_types` is configured.
+        """
+        return pulumi.get(self, "filters")
 
     @_builtins.property
     @pulumi.getter(name="instanceTypes")
