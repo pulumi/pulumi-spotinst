@@ -131,6 +131,19 @@ import (
 //						},
 //					},
 //				},
+//				Filters: &gke.OceanLaunchSpecFiltersArgs{
+//					ExcludeFamilies: pulumi.StringArray{
+//						pulumi.String("n2"),
+//					},
+//					IncludeFamilies: pulumi.StringArray{
+//						pulumi.String("c2"),
+//						pulumi.String("c3"),
+//					},
+//					MinMemoryGib: pulumi.Float64(8),
+//					MaxMemoryGib: pulumi.Float64(32),
+//					MinVcpu:      pulumi.Int(2),
+//					MaxVcpu:      pulumi.Int(16),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -148,6 +161,8 @@ type OceanLaunchSpec struct {
 	// Set automatic headroom per launch spec.
 	AutoscaleHeadroomsAutomatics OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput `pulumi:"autoscaleHeadroomsAutomatics"`
 	CreateOptions                OceanLaunchSpecCreateOptionsPtrOutput                 `pulumi:"createOptions"`
+	// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `instanceTypes` is configured.
+	Filters OceanLaunchSpecFiltersPtrOutput `pulumi:"filters"`
 	// List of supported machine types for the Launch Spec.
 	InstanceTypes pulumi.StringArrayOutput `pulumi:"instanceTypes"`
 	// Optionally adds labels to instances launched in an Ocean cluster.
@@ -227,6 +242,8 @@ type oceanLaunchSpecState struct {
 	// Set automatic headroom per launch spec.
 	AutoscaleHeadroomsAutomatics []OceanLaunchSpecAutoscaleHeadroomsAutomatic `pulumi:"autoscaleHeadroomsAutomatics"`
 	CreateOptions                *OceanLaunchSpecCreateOptions                `pulumi:"createOptions"`
+	// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `instanceTypes` is configured.
+	Filters *OceanLaunchSpecFilters `pulumi:"filters"`
 	// List of supported machine types for the Launch Spec.
 	InstanceTypes []string `pulumi:"instanceTypes"`
 	// Optionally adds labels to instances launched in an Ocean cluster.
@@ -274,6 +291,8 @@ type OceanLaunchSpecState struct {
 	// Set automatic headroom per launch spec.
 	AutoscaleHeadroomsAutomatics OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayInput
 	CreateOptions                OceanLaunchSpecCreateOptionsPtrInput
+	// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `instanceTypes` is configured.
+	Filters OceanLaunchSpecFiltersPtrInput
 	// List of supported machine types for the Launch Spec.
 	InstanceTypes pulumi.StringArrayInput
 	// Optionally adds labels to instances launched in an Ocean cluster.
@@ -325,6 +344,8 @@ type oceanLaunchSpecArgs struct {
 	// Set automatic headroom per launch spec.
 	AutoscaleHeadroomsAutomatics []OceanLaunchSpecAutoscaleHeadroomsAutomatic `pulumi:"autoscaleHeadroomsAutomatics"`
 	CreateOptions                *OceanLaunchSpecCreateOptions                `pulumi:"createOptions"`
+	// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `instanceTypes` is configured.
+	Filters *OceanLaunchSpecFilters `pulumi:"filters"`
 	// List of supported machine types for the Launch Spec.
 	InstanceTypes []string `pulumi:"instanceTypes"`
 	// Optionally adds labels to instances launched in an Ocean cluster.
@@ -373,6 +394,8 @@ type OceanLaunchSpecArgs struct {
 	// Set automatic headroom per launch spec.
 	AutoscaleHeadroomsAutomatics OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayInput
 	CreateOptions                OceanLaunchSpecCreateOptionsPtrInput
+	// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `instanceTypes` is configured.
+	Filters OceanLaunchSpecFiltersPtrInput
 	// List of supported machine types for the Launch Spec.
 	InstanceTypes pulumi.StringArrayInput
 	// Optionally adds labels to instances launched in an Ocean cluster.
@@ -515,6 +538,11 @@ func (o OceanLaunchSpecOutput) AutoscaleHeadroomsAutomatics() OceanLaunchSpecAut
 
 func (o OceanLaunchSpecOutput) CreateOptions() OceanLaunchSpecCreateOptionsPtrOutput {
 	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecCreateOptionsPtrOutput { return v.CreateOptions }).(OceanLaunchSpecCreateOptionsPtrOutput)
+}
+
+// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `instanceTypes` is configured.
+func (o OceanLaunchSpecOutput) Filters() OceanLaunchSpecFiltersPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecFiltersPtrOutput { return v.Filters }).(OceanLaunchSpecFiltersPtrOutput)
 }
 
 // List of supported machine types for the Launch Spec.

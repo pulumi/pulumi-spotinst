@@ -6056,6 +6056,238 @@ func (o OceanLaunchSpecCreateOptionsPtrOutput) InitialNodes() pulumi.IntPtrOutpu
 	}).(pulumi.IntPtrOutput)
 }
 
+type OceanLaunchSpecFilters struct {
+	// Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
+	ExcludeFamilies []string `pulumi:"excludeFamilies"`
+	// Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
+	IncludeFamilies []string `pulumi:"includeFamilies"`
+	// Maximum amount of Memory (GiB).
+	MaxMemoryGib *float64 `pulumi:"maxMemoryGib"`
+	// Maximum number of vcpus available.
+	MaxVcpu *int `pulumi:"maxVcpu"`
+	// Minimum amount of Memory (GiB).
+	MinMemoryGib *float64 `pulumi:"minMemoryGib"`
+	// Minimum number of vcpus available.
+	MinVcpu *int `pulumi:"minVcpu"`
+}
+
+// OceanLaunchSpecFiltersInput is an input type that accepts OceanLaunchSpecFiltersArgs and OceanLaunchSpecFiltersOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecFiltersInput` via:
+//
+//	OceanLaunchSpecFiltersArgs{...}
+type OceanLaunchSpecFiltersInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecFiltersOutput() OceanLaunchSpecFiltersOutput
+	ToOceanLaunchSpecFiltersOutputWithContext(context.Context) OceanLaunchSpecFiltersOutput
+}
+
+type OceanLaunchSpecFiltersArgs struct {
+	// Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
+	ExcludeFamilies pulumi.StringArrayInput `pulumi:"excludeFamilies"`
+	// Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
+	IncludeFamilies pulumi.StringArrayInput `pulumi:"includeFamilies"`
+	// Maximum amount of Memory (GiB).
+	MaxMemoryGib pulumi.Float64PtrInput `pulumi:"maxMemoryGib"`
+	// Maximum number of vcpus available.
+	MaxVcpu pulumi.IntPtrInput `pulumi:"maxVcpu"`
+	// Minimum amount of Memory (GiB).
+	MinMemoryGib pulumi.Float64PtrInput `pulumi:"minMemoryGib"`
+	// Minimum number of vcpus available.
+	MinVcpu pulumi.IntPtrInput `pulumi:"minVcpu"`
+}
+
+func (OceanLaunchSpecFiltersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecFilters)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecFiltersArgs) ToOceanLaunchSpecFiltersOutput() OceanLaunchSpecFiltersOutput {
+	return i.ToOceanLaunchSpecFiltersOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecFiltersArgs) ToOceanLaunchSpecFiltersOutputWithContext(ctx context.Context) OceanLaunchSpecFiltersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecFiltersOutput)
+}
+
+func (i OceanLaunchSpecFiltersArgs) ToOceanLaunchSpecFiltersPtrOutput() OceanLaunchSpecFiltersPtrOutput {
+	return i.ToOceanLaunchSpecFiltersPtrOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecFiltersArgs) ToOceanLaunchSpecFiltersPtrOutputWithContext(ctx context.Context) OceanLaunchSpecFiltersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecFiltersOutput).ToOceanLaunchSpecFiltersPtrOutputWithContext(ctx)
+}
+
+// OceanLaunchSpecFiltersPtrInput is an input type that accepts OceanLaunchSpecFiltersArgs, OceanLaunchSpecFiltersPtr and OceanLaunchSpecFiltersPtrOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecFiltersPtrInput` via:
+//
+//	        OceanLaunchSpecFiltersArgs{...}
+//
+//	or:
+//
+//	        nil
+type OceanLaunchSpecFiltersPtrInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecFiltersPtrOutput() OceanLaunchSpecFiltersPtrOutput
+	ToOceanLaunchSpecFiltersPtrOutputWithContext(context.Context) OceanLaunchSpecFiltersPtrOutput
+}
+
+type oceanLaunchSpecFiltersPtrType OceanLaunchSpecFiltersArgs
+
+func OceanLaunchSpecFiltersPtr(v *OceanLaunchSpecFiltersArgs) OceanLaunchSpecFiltersPtrInput {
+	return (*oceanLaunchSpecFiltersPtrType)(v)
+}
+
+func (*oceanLaunchSpecFiltersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLaunchSpecFilters)(nil)).Elem()
+}
+
+func (i *oceanLaunchSpecFiltersPtrType) ToOceanLaunchSpecFiltersPtrOutput() OceanLaunchSpecFiltersPtrOutput {
+	return i.ToOceanLaunchSpecFiltersPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanLaunchSpecFiltersPtrType) ToOceanLaunchSpecFiltersPtrOutputWithContext(ctx context.Context) OceanLaunchSpecFiltersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecFiltersPtrOutput)
+}
+
+type OceanLaunchSpecFiltersOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecFiltersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecFilters)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecFiltersOutput) ToOceanLaunchSpecFiltersOutput() OceanLaunchSpecFiltersOutput {
+	return o
+}
+
+func (o OceanLaunchSpecFiltersOutput) ToOceanLaunchSpecFiltersOutputWithContext(ctx context.Context) OceanLaunchSpecFiltersOutput {
+	return o
+}
+
+func (o OceanLaunchSpecFiltersOutput) ToOceanLaunchSpecFiltersPtrOutput() OceanLaunchSpecFiltersPtrOutput {
+	return o.ToOceanLaunchSpecFiltersPtrOutputWithContext(context.Background())
+}
+
+func (o OceanLaunchSpecFiltersOutput) ToOceanLaunchSpecFiltersPtrOutputWithContext(ctx context.Context) OceanLaunchSpecFiltersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanLaunchSpecFilters) *OceanLaunchSpecFilters {
+		return &v
+	}).(OceanLaunchSpecFiltersPtrOutput)
+}
+
+// Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
+func (o OceanLaunchSpecFiltersOutput) ExcludeFamilies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanLaunchSpecFilters) []string { return v.ExcludeFamilies }).(pulumi.StringArrayOutput)
+}
+
+// Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
+func (o OceanLaunchSpecFiltersOutput) IncludeFamilies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanLaunchSpecFilters) []string { return v.IncludeFamilies }).(pulumi.StringArrayOutput)
+}
+
+// Maximum amount of Memory (GiB).
+func (o OceanLaunchSpecFiltersOutput) MaxMemoryGib() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecFilters) *float64 { return v.MaxMemoryGib }).(pulumi.Float64PtrOutput)
+}
+
+// Maximum number of vcpus available.
+func (o OceanLaunchSpecFiltersOutput) MaxVcpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecFilters) *int { return v.MaxVcpu }).(pulumi.IntPtrOutput)
+}
+
+// Minimum amount of Memory (GiB).
+func (o OceanLaunchSpecFiltersOutput) MinMemoryGib() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecFilters) *float64 { return v.MinMemoryGib }).(pulumi.Float64PtrOutput)
+}
+
+// Minimum number of vcpus available.
+func (o OceanLaunchSpecFiltersOutput) MinVcpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecFilters) *int { return v.MinVcpu }).(pulumi.IntPtrOutput)
+}
+
+type OceanLaunchSpecFiltersPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecFiltersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLaunchSpecFilters)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecFiltersPtrOutput) ToOceanLaunchSpecFiltersPtrOutput() OceanLaunchSpecFiltersPtrOutput {
+	return o
+}
+
+func (o OceanLaunchSpecFiltersPtrOutput) ToOceanLaunchSpecFiltersPtrOutputWithContext(ctx context.Context) OceanLaunchSpecFiltersPtrOutput {
+	return o
+}
+
+func (o OceanLaunchSpecFiltersPtrOutput) Elem() OceanLaunchSpecFiltersOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecFilters) OceanLaunchSpecFilters {
+		if v != nil {
+			return *v
+		}
+		var ret OceanLaunchSpecFilters
+		return ret
+	}).(OceanLaunchSpecFiltersOutput)
+}
+
+// Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
+func (o OceanLaunchSpecFiltersPtrOutput) ExcludeFamilies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeFamilies
+	}).(pulumi.StringArrayOutput)
+}
+
+// Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
+func (o OceanLaunchSpecFiltersPtrOutput) IncludeFamilies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeFamilies
+	}).(pulumi.StringArrayOutput)
+}
+
+// Maximum amount of Memory (GiB).
+func (o OceanLaunchSpecFiltersPtrOutput) MaxMemoryGib() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecFilters) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MaxMemoryGib
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Maximum number of vcpus available.
+func (o OceanLaunchSpecFiltersPtrOutput) MaxVcpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecFilters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxVcpu
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minimum amount of Memory (GiB).
+func (o OceanLaunchSpecFiltersPtrOutput) MinMemoryGib() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecFilters) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MinMemoryGib
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Minimum number of vcpus available.
+func (o OceanLaunchSpecFiltersPtrOutput) MinVcpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecFilters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinVcpu
+	}).(pulumi.IntPtrOutput)
+}
+
 type OceanLaunchSpecLabel struct {
 	// The label key.
 	Key *string `pulumi:"key"`
@@ -7908,6 +8140,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayInput)(nil)).Elem(), OceanLaunchSpecAutoscaleHeadroomsAutomaticArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecCreateOptionsInput)(nil)).Elem(), OceanLaunchSpecCreateOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecCreateOptionsPtrInput)(nil)).Elem(), OceanLaunchSpecCreateOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecFiltersInput)(nil)).Elem(), OceanLaunchSpecFiltersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecFiltersPtrInput)(nil)).Elem(), OceanLaunchSpecFiltersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecLabelInput)(nil)).Elem(), OceanLaunchSpecLabelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecLabelArrayInput)(nil)).Elem(), OceanLaunchSpecLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecMetadataInput)(nil)).Elem(), OceanLaunchSpecMetadataArgs{})
@@ -8022,6 +8256,8 @@ func init() {
 	pulumi.RegisterOutputType(OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecCreateOptionsOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecCreateOptionsPtrOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecFiltersOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecFiltersPtrOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecLabelOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecLabelArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecMetadataOutput{})

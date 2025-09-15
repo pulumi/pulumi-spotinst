@@ -101,6 +101,8 @@ __all__ = [
     'OceanLaunchSpecAutoscaleHeadroomsAutomaticArgsDict',
     'OceanLaunchSpecCreateOptionsArgs',
     'OceanLaunchSpecCreateOptionsArgsDict',
+    'OceanLaunchSpecFiltersArgs',
+    'OceanLaunchSpecFiltersArgsDict',
     'OceanLaunchSpecLabelArgs',
     'OceanLaunchSpecLabelArgsDict',
     'OceanLaunchSpecMetadataArgs',
@@ -3039,6 +3041,138 @@ class OceanLaunchSpecCreateOptionsArgs:
     @initial_nodes.setter
     def initial_nodes(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "initial_nodes", value)
+
+
+if not MYPY:
+    class OceanLaunchSpecFiltersArgsDict(TypedDict):
+        exclude_families: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
+        """
+        include_families: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
+        """
+        max_memory_gib: NotRequired[pulumi.Input[_builtins.float]]
+        """
+        Maximum amount of Memory (GiB).
+        """
+        max_vcpu: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Maximum number of vcpus available.
+        """
+        min_memory_gib: NotRequired[pulumi.Input[_builtins.float]]
+        """
+        Minimum amount of Memory (GiB).
+        """
+        min_vcpu: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Minimum number of vcpus available.
+        """
+elif False:
+    OceanLaunchSpecFiltersArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OceanLaunchSpecFiltersArgs:
+    def __init__(__self__, *,
+                 exclude_families: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 include_families: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 max_memory_gib: Optional[pulumi.Input[_builtins.float]] = None,
+                 max_vcpu: Optional[pulumi.Input[_builtins.int]] = None,
+                 min_memory_gib: Optional[pulumi.Input[_builtins.float]] = None,
+                 min_vcpu: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exclude_families: Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] include_families: Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
+        :param pulumi.Input[_builtins.float] max_memory_gib: Maximum amount of Memory (GiB).
+        :param pulumi.Input[_builtins.int] max_vcpu: Maximum number of vcpus available.
+        :param pulumi.Input[_builtins.float] min_memory_gib: Minimum amount of Memory (GiB).
+        :param pulumi.Input[_builtins.int] min_vcpu: Minimum number of vcpus available.
+        """
+        if exclude_families is not None:
+            pulumi.set(__self__, "exclude_families", exclude_families)
+        if include_families is not None:
+            pulumi.set(__self__, "include_families", include_families)
+        if max_memory_gib is not None:
+            pulumi.set(__self__, "max_memory_gib", max_memory_gib)
+        if max_vcpu is not None:
+            pulumi.set(__self__, "max_vcpu", max_vcpu)
+        if min_memory_gib is not None:
+            pulumi.set(__self__, "min_memory_gib", min_memory_gib)
+        if min_vcpu is not None:
+            pulumi.set(__self__, "min_vcpu", min_vcpu)
+
+    @_builtins.property
+    @pulumi.getter(name="excludeFamilies")
+    def exclude_families(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
+        """
+        return pulumi.get(self, "exclude_families")
+
+    @exclude_families.setter
+    def exclude_families(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "exclude_families", value)
+
+    @_builtins.property
+    @pulumi.getter(name="includeFamilies")
+    def include_families(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
+        """
+        return pulumi.get(self, "include_families")
+
+    @include_families.setter
+    def include_families(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "include_families", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxMemoryGib")
+    def max_memory_gib(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        Maximum amount of Memory (GiB).
+        """
+        return pulumi.get(self, "max_memory_gib")
+
+    @max_memory_gib.setter
+    def max_memory_gib(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "max_memory_gib", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxVcpu")
+    def max_vcpu(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Maximum number of vcpus available.
+        """
+        return pulumi.get(self, "max_vcpu")
+
+    @max_vcpu.setter
+    def max_vcpu(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_vcpu", value)
+
+    @_builtins.property
+    @pulumi.getter(name="minMemoryGib")
+    def min_memory_gib(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        Minimum amount of Memory (GiB).
+        """
+        return pulumi.get(self, "min_memory_gib")
+
+    @min_memory_gib.setter
+    def min_memory_gib(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "min_memory_gib", value)
+
+    @_builtins.property
+    @pulumi.getter(name="minVcpu")
+    def min_vcpu(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Minimum number of vcpus available.
+        """
+        return pulumi.get(self, "min_vcpu")
+
+    @min_vcpu.setter
+    def min_vcpu(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "min_vcpu", value)
 
 
 if not MYPY:

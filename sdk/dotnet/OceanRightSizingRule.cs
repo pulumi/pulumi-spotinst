@@ -15,6 +15,9 @@ namespace Pulumi.SpotInst
         [Output("attachWorkloads")]
         public Output<ImmutableArray<Outputs.OceanRightSizingRuleAttachWorkload>> AttachWorkloads { get; private set; } = null!;
 
+        [Output("autoApplyDefinitions")]
+        public Output<ImmutableArray<Outputs.OceanRightSizingRuleAutoApplyDefinition>> AutoApplyDefinitions { get; private set; } = null!;
+
         [Output("detachWorkloads")]
         public Output<ImmutableArray<Outputs.OceanRightSizingRuleDetachWorkload>> DetachWorkloads { get; private set; } = null!;
 
@@ -99,6 +102,14 @@ namespace Pulumi.SpotInst
             set => _attachWorkloads = value;
         }
 
+        [Input("autoApplyDefinitions")]
+        private InputList<Inputs.OceanRightSizingRuleAutoApplyDefinitionArgs>? _autoApplyDefinitions;
+        public InputList<Inputs.OceanRightSizingRuleAutoApplyDefinitionArgs> AutoApplyDefinitions
+        {
+            get => _autoApplyDefinitions ?? (_autoApplyDefinitions = new InputList<Inputs.OceanRightSizingRuleAutoApplyDefinitionArgs>());
+            set => _autoApplyDefinitions = value;
+        }
+
         [Input("detachWorkloads")]
         private InputList<Inputs.OceanRightSizingRuleDetachWorkloadArgs>? _detachWorkloads;
         public InputList<Inputs.OceanRightSizingRuleDetachWorkloadArgs> DetachWorkloads
@@ -173,6 +184,14 @@ namespace Pulumi.SpotInst
         {
             get => _attachWorkloads ?? (_attachWorkloads = new InputList<Inputs.OceanRightSizingRuleAttachWorkloadGetArgs>());
             set => _attachWorkloads = value;
+        }
+
+        [Input("autoApplyDefinitions")]
+        private InputList<Inputs.OceanRightSizingRuleAutoApplyDefinitionGetArgs>? _autoApplyDefinitions;
+        public InputList<Inputs.OceanRightSizingRuleAutoApplyDefinitionGetArgs> AutoApplyDefinitions
+        {
+            get => _autoApplyDefinitions ?? (_autoApplyDefinitions = new InputList<Inputs.OceanRightSizingRuleAutoApplyDefinitionGetArgs>());
+            set => _autoApplyDefinitions = value;
         }
 
         [Input("detachWorkloads")]

@@ -11,6 +11,7 @@ import com.pulumi.spotinst.OceanRightSizingRuleArgs;
 import com.pulumi.spotinst.Utilities;
 import com.pulumi.spotinst.inputs.OceanRightSizingRuleState;
 import com.pulumi.spotinst.outputs.OceanRightSizingRuleAttachWorkload;
+import com.pulumi.spotinst.outputs.OceanRightSizingRuleAutoApplyDefinition;
 import com.pulumi.spotinst.outputs.OceanRightSizingRuleDetachWorkload;
 import com.pulumi.spotinst.outputs.OceanRightSizingRuleRecommendationApplicationBoundary;
 import com.pulumi.spotinst.outputs.OceanRightSizingRuleRecommendationApplicationHpa;
@@ -30,6 +31,12 @@ public class OceanRightSizingRule extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<List<OceanRightSizingRuleAttachWorkload>>> attachWorkloads() {
         return Codegen.optional(this.attachWorkloads);
+    }
+    @Export(name="autoApplyDefinitions", refs={List.class,OceanRightSizingRuleAutoApplyDefinition.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<OceanRightSizingRuleAutoApplyDefinition>> autoApplyDefinitions;
+
+    public Output<Optional<List<OceanRightSizingRuleAutoApplyDefinition>>> autoApplyDefinitions() {
+        return Codegen.optional(this.autoApplyDefinitions);
     }
     @Export(name="detachWorkloads", refs={List.class,OceanRightSizingRuleDetachWorkload.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OceanRightSizingRuleDetachWorkload>> detachWorkloads;
