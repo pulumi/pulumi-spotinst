@@ -6,6 +6,7 @@ package com.pulumi.spotinst.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.spotinst.inputs.OceanRightSizingRuleAttachWorkloadArgs;
+import com.pulumi.spotinst.inputs.OceanRightSizingRuleAutoApplyDefinitionArgs;
 import com.pulumi.spotinst.inputs.OceanRightSizingRuleDetachWorkloadArgs;
 import com.pulumi.spotinst.inputs.OceanRightSizingRuleRecommendationApplicationBoundaryArgs;
 import com.pulumi.spotinst.inputs.OceanRightSizingRuleRecommendationApplicationHpaArgs;
@@ -31,11 +32,25 @@ public final class OceanRightSizingRuleState extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.attachWorkloads);
     }
 
+    @Import(name="autoApplyDefinitions")
+    private @Nullable Output<List<OceanRightSizingRuleAutoApplyDefinitionArgs>> autoApplyDefinitions;
+
+    public Optional<Output<List<OceanRightSizingRuleAutoApplyDefinitionArgs>>> autoApplyDefinitions() {
+        return Optional.ofNullable(this.autoApplyDefinitions);
+    }
+
     @Import(name="detachWorkloads")
     private @Nullable Output<List<OceanRightSizingRuleDetachWorkloadArgs>> detachWorkloads;
 
     public Optional<Output<List<OceanRightSizingRuleDetachWorkloadArgs>>> detachWorkloads() {
         return Optional.ofNullable(this.detachWorkloads);
+    }
+
+    @Import(name="downsideOnly")
+    private @Nullable Output<Boolean> downsideOnly;
+
+    public Optional<Output<Boolean>> downsideOnly() {
+        return Optional.ofNullable(this.downsideOnly);
     }
 
     @Import(name="excludePreliminaryRecommendations")
@@ -105,7 +120,9 @@ public final class OceanRightSizingRuleState extends com.pulumi.resources.Resour
 
     private OceanRightSizingRuleState(OceanRightSizingRuleState $) {
         this.attachWorkloads = $.attachWorkloads;
+        this.autoApplyDefinitions = $.autoApplyDefinitions;
         this.detachWorkloads = $.detachWorkloads;
+        this.downsideOnly = $.downsideOnly;
         this.excludePreliminaryRecommendations = $.excludePreliminaryRecommendations;
         this.oceanId = $.oceanId;
         this.recommendationApplicationBoundaries = $.recommendationApplicationBoundaries;
@@ -148,6 +165,19 @@ public final class OceanRightSizingRuleState extends com.pulumi.resources.Resour
             return attachWorkloads(List.of(attachWorkloads));
         }
 
+        public Builder autoApplyDefinitions(@Nullable Output<List<OceanRightSizingRuleAutoApplyDefinitionArgs>> autoApplyDefinitions) {
+            $.autoApplyDefinitions = autoApplyDefinitions;
+            return this;
+        }
+
+        public Builder autoApplyDefinitions(List<OceanRightSizingRuleAutoApplyDefinitionArgs> autoApplyDefinitions) {
+            return autoApplyDefinitions(Output.of(autoApplyDefinitions));
+        }
+
+        public Builder autoApplyDefinitions(OceanRightSizingRuleAutoApplyDefinitionArgs... autoApplyDefinitions) {
+            return autoApplyDefinitions(List.of(autoApplyDefinitions));
+        }
+
         public Builder detachWorkloads(@Nullable Output<List<OceanRightSizingRuleDetachWorkloadArgs>> detachWorkloads) {
             $.detachWorkloads = detachWorkloads;
             return this;
@@ -159,6 +189,15 @@ public final class OceanRightSizingRuleState extends com.pulumi.resources.Resour
 
         public Builder detachWorkloads(OceanRightSizingRuleDetachWorkloadArgs... detachWorkloads) {
             return detachWorkloads(List.of(detachWorkloads));
+        }
+
+        public Builder downsideOnly(@Nullable Output<Boolean> downsideOnly) {
+            $.downsideOnly = downsideOnly;
+            return this;
+        }
+
+        public Builder downsideOnly(Boolean downsideOnly) {
+            return downsideOnly(Output.of(downsideOnly));
         }
 
         public Builder excludePreliminaryRecommendations(@Nullable Output<Boolean> excludePreliminaryRecommendations) {

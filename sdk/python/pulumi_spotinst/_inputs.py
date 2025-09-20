@@ -113,6 +113,8 @@ __all__ = [
     'OceanRightSizingRuleAttachWorkloadNamespaceLabelArgsDict',
     'OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArgs',
     'OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArgsDict',
+    'OceanRightSizingRuleAutoApplyDefinitionArgs',
+    'OceanRightSizingRuleAutoApplyDefinitionArgsDict',
     'OceanRightSizingRuleDetachWorkloadArgs',
     'OceanRightSizingRuleDetachWorkloadArgsDict',
     'OceanRightSizingRuleDetachWorkloadNamespaceArgs',
@@ -3090,6 +3092,55 @@ class OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArgs:
     @workload_name.setter
     def workload_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "workload_name", value)
+
+
+if not MYPY:
+    class OceanRightSizingRuleAutoApplyDefinitionArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[_builtins.bool]]
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+        namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+elif False:
+    OceanRightSizingRuleAutoApplyDefinitionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OceanRightSizingRuleAutoApplyDefinitionArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if namespaces is not None:
+            pulumi.set(__self__, "namespaces", namespaces)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def namespaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "namespaces")
+
+    @namespaces.setter
+    def namespaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "namespaces", value)
 
 
 if not MYPY:
