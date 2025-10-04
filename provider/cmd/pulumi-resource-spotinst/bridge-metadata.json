@@ -2120,6 +2120,19 @@
                     "create_options": {
                         "maxItemsOne": true
                     },
+                    "filters": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "exclude_families": {
+                                    "maxItemsOne": false
+                                },
+                                "include_families": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "instance_types": {
                         "maxItemsOne": false
                     },
@@ -2204,6 +2217,16 @@
                                             }
                                         }
                                     }
+                                }
+                            }
+                        }
+                    },
+                    "auto_apply_definition": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "namespaces": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
