@@ -154,6 +154,22 @@ namespace Pulumi.SpotInst.Gke
     ///                 },
     ///             },
     ///         },
+    ///         Filters = new SpotInst.Gke.Inputs.OceanLaunchSpecFiltersArgs
+    ///         {
+    ///             ExcludeFamilies = new[]
+    ///             {
+    ///                 "n2",
+    ///             },
+    ///             IncludeFamilies = new[]
+    ///             {
+    ///                 "c2",
+    ///                 "c3",
+    ///             },
+    ///             MinMemoryGib = 8,
+    ///             MaxMemoryGib = 32,
+    ///             MinVcpu = 2,
+    ///             MaxVcpu = 16,
+    ///         },
     ///     });
     /// 
     /// });
@@ -176,6 +192,12 @@ namespace Pulumi.SpotInst.Gke
 
         [Output("createOptions")]
         public Output<Outputs.OceanLaunchSpecCreateOptions?> CreateOptions { get; private set; } = null!;
+
+        /// <summary>
+        /// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `instance_types` is configured.
+        /// </summary>
+        [Output("filters")]
+        public Output<Outputs.OceanLaunchSpecFilters?> Filters { get; private set; } = null!;
 
         /// <summary>
         /// List of supported machine types for the Launch Spec.
@@ -366,6 +388,12 @@ namespace Pulumi.SpotInst.Gke
 
         [Input("createOptions")]
         public Input<Inputs.OceanLaunchSpecCreateOptionsArgs>? CreateOptions { get; set; }
+
+        /// <summary>
+        /// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `instance_types` is configured.
+        /// </summary>
+        [Input("filters")]
+        public Input<Inputs.OceanLaunchSpecFiltersArgs>? Filters { get; set; }
 
         [Input("instanceTypes")]
         private InputList<string>? _instanceTypes;
@@ -566,6 +594,12 @@ namespace Pulumi.SpotInst.Gke
 
         [Input("createOptions")]
         public Input<Inputs.OceanLaunchSpecCreateOptionsGetArgs>? CreateOptions { get; set; }
+
+        /// <summary>
+        /// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `instance_types` is configured.
+        /// </summary>
+        [Input("filters")]
+        public Input<Inputs.OceanLaunchSpecFiltersGetArgs>? Filters { get; set; }
 
         [Input("instanceTypes")]
         private InputList<string>? _instanceTypes;
