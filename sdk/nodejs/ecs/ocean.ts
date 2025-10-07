@@ -9,6 +9,113 @@ import * as utilities from "../utilities";
 /**
  * Manages a Spotinst Ocean ECS resource.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as spotinst from "@pulumi/spotinst";
+ *
+ * const example = new spotinst.ecs.Ocean("example", {
+ *     region: "us-west-2",
+ *     name: "sample-ecs-cluster",
+ *     clusterName: "sample-ecs-cluster",
+ *     minSize: 0,
+ *     maxSize: 1,
+ *     desiredCapacity: 0,
+ *     subnetIds: ["subnet-12345"],
+ *     instanceTypes: [{
+ *         filters: [{
+ *             architectures: [
+ *                 "x86_64",
+ *                 "i386",
+ *             ],
+ *             categories: [
+ *                 "Accelerated_computing",
+ *                 "Compute_optimized",
+ *             ],
+ *             diskTypes: [
+ *                 "EBS",
+ *                 "SSD",
+ *             ],
+ *             excludeFamilies: ["m*"],
+ *             excludeMetal: false,
+ *             hypervisor: ["xen"],
+ *             includeFamilies: [
+ *                 "c*",
+ *                 "t*",
+ *             ],
+ *             isEnaSupported: false,
+ *             maxGpu: 4,
+ *             minGpu: 0,
+ *             maxMemoryGib: 16,
+ *             maxNetworkPerformance: 20,
+ *             maxVcpu: 16,
+ *             minEnis: 2,
+ *             minMemoryGib: 8,
+ *             minNetworkPerformance: 2,
+ *             minVcpu: 2,
+ *             rootDeviceTypes: ["ebs"],
+ *             virtualizationTypes: ["hvm"],
+ *         }],
+ *     }],
+ *     securityGroupIds: ["sg-12345"],
+ *     imageId: "ami-12345",
+ *     iamInstanceProfile: "iam-profile",
+ *     keyPair: "KeyPair",
+ *     userData: "echo hello world",
+ *     associatePublicIpAddress: false,
+ *     utilizeReservedInstances: false,
+ *     drainingTimeout: 120,
+ *     monitoring: true,
+ *     ebsOptimized: true,
+ *     useAsTemplateOnly: true,
+ *     spotPercentage: 100,
+ *     utilizeCommitments: false,
+ *     fallbackToOndemand: true,
+ *     clusterOrientations: [{
+ *         availabilityVsCost: "balanced",
+ *     }],
+ *     instanceMetadataOptions: {
+ *         httpTokens: "required",
+ *         httpPutResponseHopLimit: 10,
+ *     },
+ *     blockDeviceMappings: [{
+ *         deviceName: "/dev/xvda1",
+ *         ebs: {
+ *             deleteOnTermination: true,
+ *             encrypted: false,
+ *             volumeType: "gp2",
+ *             volumeSize: 50,
+ *             throughput: 500,
+ *             dynamicVolumeSize: {
+ *                 baseSize: 50,
+ *                 resource: "CPU",
+ *                 sizePerResourceUnit: 20,
+ *             },
+ *         },
+ *     }],
+ *     optimizeImages: {
+ *         performAt: "timeWindow",
+ *         timeWindows: [
+ *             "Sun:02:00-Sun:12:00",
+ *             "Sun:05:00-Sun:16:00",
+ *         ],
+ *         shouldOptimizeEcsAmi: true,
+ *     },
+ *     tags: [{
+ *         key: "fakeKey",
+ *         value: "fakeValue",
+ *     }],
+ *     logging: {
+ *         "export": {
+ *             s3s: [{
+ *                 id: "di-abcd123",
+ *             }],
+ *         },
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Clusters can be imported using the Ocean `id`, e.g.,

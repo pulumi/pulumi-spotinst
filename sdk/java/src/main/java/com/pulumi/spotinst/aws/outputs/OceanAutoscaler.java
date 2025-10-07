@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OceanAutoscaler {
     /**
-     * @return Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscale_is_auto_config` toggled on.
+     * @return Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscaleIsAutoConfig` toggled on.
      * 
      */
     private @Nullable Integer autoHeadroomPercentage;
@@ -65,7 +65,7 @@ public final class OceanAutoscaler {
 
     private OceanAutoscaler() {}
     /**
-     * @return Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscale_is_auto_config` toggled on.
+     * @return Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscaleIsAutoConfig` toggled on.
      * 
      */
     public Optional<Integer> autoHeadroomPercentage() {

@@ -1096,6 +1096,112 @@ class Ocean(pulumi.CustomResource):
         """
         Manages a Spotinst Ocean ECS resource.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        example = spotinst.ecs.Ocean("example",
+            region="us-west-2",
+            name="sample-ecs-cluster",
+            cluster_name="sample-ecs-cluster",
+            min_size=0,
+            max_size=1,
+            desired_capacity=0,
+            subnet_ids=["subnet-12345"],
+            instance_types=[{
+                "filters": [{
+                    "architectures": [
+                        "x86_64",
+                        "i386",
+                    ],
+                    "categories": [
+                        "Accelerated_computing",
+                        "Compute_optimized",
+                    ],
+                    "diskTypes": [
+                        "EBS",
+                        "SSD",
+                    ],
+                    "excludeFamilies": ["m*"],
+                    "excludeMetal": False,
+                    "hypervisor": ["xen"],
+                    "includeFamilies": [
+                        "c*",
+                        "t*",
+                    ],
+                    "isEnaSupported": False,
+                    "maxGpu": 4,
+                    "minGpu": 0,
+                    "maxMemoryGib": 16,
+                    "maxNetworkPerformance": 20,
+                    "maxVcpu": 16,
+                    "minEnis": 2,
+                    "minMemoryGib": 8,
+                    "minNetworkPerformance": 2,
+                    "minVcpu": 2,
+                    "rootDeviceTypes": ["ebs"],
+                    "virtualizationTypes": ["hvm"],
+                }],
+            }],
+            security_group_ids=["sg-12345"],
+            image_id="ami-12345",
+            iam_instance_profile="iam-profile",
+            key_pair="KeyPair",
+            user_data="echo hello world",
+            associate_public_ip_address=False,
+            utilize_reserved_instances=False,
+            draining_timeout=120,
+            monitoring=True,
+            ebs_optimized=True,
+            use_as_template_only=True,
+            spot_percentage=100,
+            utilize_commitments=False,
+            fallback_to_ondemand=True,
+            cluster_orientations=[{
+                "availability_vs_cost": "balanced",
+            }],
+            instance_metadata_options={
+                "http_tokens": "required",
+                "http_put_response_hop_limit": 10,
+            },
+            block_device_mappings=[{
+                "device_name": "/dev/xvda1",
+                "ebs": {
+                    "delete_on_termination": True,
+                    "encrypted": False,
+                    "volume_type": "gp2",
+                    "volume_size": 50,
+                    "throughput": 500,
+                    "dynamic_volume_size": {
+                        "base_size": 50,
+                        "resource": "CPU",
+                        "size_per_resource_unit": 20,
+                    },
+                },
+            }],
+            optimize_images={
+                "perform_at": "timeWindow",
+                "time_windows": [
+                    "Sun:02:00-Sun:12:00",
+                    "Sun:05:00-Sun:16:00",
+                ],
+                "should_optimize_ecs_ami": True,
+            },
+            tags=[{
+                "key": "fakeKey",
+                "value": "fakeValue",
+            }],
+            logging={
+                "export": {
+                    "s3s": [{
+                        "id": "di-abcd123",
+                    }],
+                },
+            })
+        ```
+
         ## Import
 
         Clusters can be imported using the Ocean `id`, e.g.,
@@ -1146,6 +1252,112 @@ class Ocean(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a Spotinst Ocean ECS resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        example = spotinst.ecs.Ocean("example",
+            region="us-west-2",
+            name="sample-ecs-cluster",
+            cluster_name="sample-ecs-cluster",
+            min_size=0,
+            max_size=1,
+            desired_capacity=0,
+            subnet_ids=["subnet-12345"],
+            instance_types=[{
+                "filters": [{
+                    "architectures": [
+                        "x86_64",
+                        "i386",
+                    ],
+                    "categories": [
+                        "Accelerated_computing",
+                        "Compute_optimized",
+                    ],
+                    "diskTypes": [
+                        "EBS",
+                        "SSD",
+                    ],
+                    "excludeFamilies": ["m*"],
+                    "excludeMetal": False,
+                    "hypervisor": ["xen"],
+                    "includeFamilies": [
+                        "c*",
+                        "t*",
+                    ],
+                    "isEnaSupported": False,
+                    "maxGpu": 4,
+                    "minGpu": 0,
+                    "maxMemoryGib": 16,
+                    "maxNetworkPerformance": 20,
+                    "maxVcpu": 16,
+                    "minEnis": 2,
+                    "minMemoryGib": 8,
+                    "minNetworkPerformance": 2,
+                    "minVcpu": 2,
+                    "rootDeviceTypes": ["ebs"],
+                    "virtualizationTypes": ["hvm"],
+                }],
+            }],
+            security_group_ids=["sg-12345"],
+            image_id="ami-12345",
+            iam_instance_profile="iam-profile",
+            key_pair="KeyPair",
+            user_data="echo hello world",
+            associate_public_ip_address=False,
+            utilize_reserved_instances=False,
+            draining_timeout=120,
+            monitoring=True,
+            ebs_optimized=True,
+            use_as_template_only=True,
+            spot_percentage=100,
+            utilize_commitments=False,
+            fallback_to_ondemand=True,
+            cluster_orientations=[{
+                "availability_vs_cost": "balanced",
+            }],
+            instance_metadata_options={
+                "http_tokens": "required",
+                "http_put_response_hop_limit": 10,
+            },
+            block_device_mappings=[{
+                "device_name": "/dev/xvda1",
+                "ebs": {
+                    "delete_on_termination": True,
+                    "encrypted": False,
+                    "volume_type": "gp2",
+                    "volume_size": 50,
+                    "throughput": 500,
+                    "dynamic_volume_size": {
+                        "base_size": 50,
+                        "resource": "CPU",
+                        "size_per_resource_unit": 20,
+                    },
+                },
+            }],
+            optimize_images={
+                "perform_at": "timeWindow",
+                "time_windows": [
+                    "Sun:02:00-Sun:12:00",
+                    "Sun:05:00-Sun:16:00",
+                ],
+                "should_optimize_ecs_ami": True,
+            },
+            tags=[{
+                "key": "fakeKey",
+                "value": "fakeValue",
+            }],
+            logging={
+                "export": {
+                    "s3s": [{
+                        "id": "di-abcd123",
+                    }],
+                },
+            })
+        ```
 
         ## Import
 

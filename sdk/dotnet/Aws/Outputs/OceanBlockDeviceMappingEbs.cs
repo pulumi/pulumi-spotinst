@@ -18,7 +18,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly bool? DeleteOnTermination;
         /// <summary>
-        /// Set dynamic IOPS properties. When using this object, you cannot use the `iops` attribute. You must use one or the other.
+        /// Set dynamic IOPS properties. When using this object, you cannot use the `Iops` attribute. You must use one or the other.
         /// </summary>
         public readonly Outputs.OceanBlockDeviceMappingEbsDynamicIops? DynamicIops;
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly string? SnapshotId;
         /// <summary>
-        /// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = `gp3`.
+        /// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `VolumeType` = `Gp3`.
         /// </summary>
         public readonly int? Throughput;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly int? VolumeSize;
         /// <summary>
-        /// String. The type of the volume. (Example: `gp2`).
+        /// String. The type of the volume. (Example: `Gp2`).
         /// </summary>
         public readonly string? VolumeType;
 

@@ -18,7 +18,7 @@ namespace Pulumi.SpotInst.Gke
     /// 
     /// There are two main differences:
     /// 
-    /// * you must include `cluster_zone_name` and `cluster_id`
+    /// * you must include `ClusterZoneName` and `ClusterId`
     /// * a handful of parameters are created remotely and will not appear in the diff. A complete list can be found below.
     /// 
     /// ```csharp

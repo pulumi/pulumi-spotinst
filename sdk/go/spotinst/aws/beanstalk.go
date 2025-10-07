@@ -13,6 +13,62 @@ import (
 )
 
 // Provides a Spotinst AWS group resource using Elastic Beanstalk.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/aws"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aws.NewBeanstalk(ctx, "elastigoup-aws-beanstalk", &aws.BeanstalkArgs{
+//				Name:                     pulumi.String("example-elastigroup-beanstalk"),
+//				Region:                   pulumi.String("us-west-2"),
+//				Product:                  pulumi.String("Linux/UNIX"),
+//				MinSize:                  pulumi.Int(0),
+//				MaxSize:                  pulumi.Int(1),
+//				DesiredCapacity:          pulumi.Int(0),
+//				BeanstalkEnvironmentName: pulumi.String("example-env"),
+//				BeanstalkEnvironmentId:   pulumi.String("e-example"),
+//				InstanceTypesSpots: pulumi.StringArray{
+//					pulumi.String("t2.micro"),
+//					pulumi.String("t2.medium"),
+//					pulumi.String("t2.large"),
+//				},
+//				DeploymentPreferences: &aws.BeanstalkDeploymentPreferencesArgs{
+//					AutomaticRoll:       pulumi.Bool(true),
+//					BatchSizePercentage: pulumi.Int(100),
+//					GracePeriod:         pulumi.Int(90),
+//					Strategies: aws.BeanstalkDeploymentPreferencesStrategyArray{
+//						&aws.BeanstalkDeploymentPreferencesStrategyArgs{
+//							Action:               pulumi.String("REPLACE_SERVER"),
+//							ShouldDrainInstances: pulumi.Bool(true),
+//						},
+//					},
+//				},
+//				ManagedActions: map[string]interface{}{
+//					"platformUpdate": map[string]interface{}{
+//						"performAt":   "timeWindow",
+//						"timeWindow":  "Mon:23:50-Tue:00:20",
+//						"updateLevel": "minorAndPatch",
+//					},
+//				}[0],
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type Beanstalk struct {
 	pulumi.CustomResourceState
 

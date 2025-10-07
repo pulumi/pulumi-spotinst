@@ -232,14 +232,14 @@ public final class BeanstalkScheduledTaskArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The task type to run. Supported task types are: `&#34;scale&#34;`, `&#34;backup_ami&#34;`, `&#34;roll&#34;`, `&#34;scaleUp&#34;`, `&#34;percentageScaleUp&#34;`, `&#34;scaleDown&#34;`, `&#34;percentageScaleDown&#34;`, `&#34;statefulUpdateCapacity&#34;`.
+     * The task type to run. Supported task types are: `&#34;scale&#34;`, `&#34;backupAmi&#34;`, `&#34;roll&#34;`, `&#34;scaleUp&#34;`, `&#34;percentageScaleUp&#34;`, `&#34;scaleDown&#34;`, `&#34;percentageScaleDown&#34;`, `&#34;statefulUpdateCapacity&#34;`.
      * 
      */
     @Import(name="taskType", required=true)
     private Output<String> taskType;
 
     /**
-     * @return The task type to run. Supported task types are: `&#34;scale&#34;`, `&#34;backup_ami&#34;`, `&#34;roll&#34;`, `&#34;scaleUp&#34;`, `&#34;percentageScaleUp&#34;`, `&#34;scaleDown&#34;`, `&#34;percentageScaleDown&#34;`, `&#34;statefulUpdateCapacity&#34;`.
+     * @return The task type to run. Supported task types are: `&#34;scale&#34;`, `&#34;backupAmi&#34;`, `&#34;roll&#34;`, `&#34;scaleUp&#34;`, `&#34;percentageScaleUp&#34;`, `&#34;scaleDown&#34;`, `&#34;percentageScaleDown&#34;`, `&#34;statefulUpdateCapacity&#34;`.
      * 
      */
     public Output<String> taskType() {
@@ -583,7 +583,7 @@ public final class BeanstalkScheduledTaskArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param taskType The task type to run. Supported task types are: `&#34;scale&#34;`, `&#34;backup_ami&#34;`, `&#34;roll&#34;`, `&#34;scaleUp&#34;`, `&#34;percentageScaleUp&#34;`, `&#34;scaleDown&#34;`, `&#34;percentageScaleDown&#34;`, `&#34;statefulUpdateCapacity&#34;`.
+         * @param taskType The task type to run. Supported task types are: `&#34;scale&#34;`, `&#34;backupAmi&#34;`, `&#34;roll&#34;`, `&#34;scaleUp&#34;`, `&#34;percentageScaleUp&#34;`, `&#34;scaleDown&#34;`, `&#34;percentageScaleDown&#34;`, `&#34;statefulUpdateCapacity&#34;`.
          * 
          * @return builder
          * 
@@ -594,7 +594,7 @@ public final class BeanstalkScheduledTaskArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param taskType The task type to run. Supported task types are: `&#34;scale&#34;`, `&#34;backup_ami&#34;`, `&#34;roll&#34;`, `&#34;scaleUp&#34;`, `&#34;percentageScaleUp&#34;`, `&#34;scaleDown&#34;`, `&#34;percentageScaleDown&#34;`, `&#34;statefulUpdateCapacity&#34;`.
+         * @param taskType The task type to run. Supported task types are: `&#34;scale&#34;`, `&#34;backupAmi&#34;`, `&#34;roll&#34;`, `&#34;scaleUp&#34;`, `&#34;percentageScaleUp&#34;`, `&#34;scaleDown&#34;`, `&#34;percentageScaleDown&#34;`, `&#34;statefulUpdateCapacity&#34;`.
          * 
          * @return builder
          * 

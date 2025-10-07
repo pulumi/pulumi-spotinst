@@ -206,14 +206,14 @@ public final class MrScalarArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Allow the `cluster_id` to set a provider output variable.
+     * Allow the `clusterId` to set a provider output variable.
      * 
      */
     @Import(name="exposeClusterId")
     private @Nullable Output<Boolean> exposeClusterId;
 
     /**
-     * @return Allow the `cluster_id` to set a provider output variable.
+     * @return Allow the `clusterId` to set a provider output variable.
      * 
      */
     public Optional<Output<Boolean>> exposeClusterId() {
@@ -869,7 +869,7 @@ public final class MrScalarArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param exposeClusterId Allow the `cluster_id` to set a provider output variable.
+         * @param exposeClusterId Allow the `clusterId` to set a provider output variable.
          * 
          * @return builder
          * 
@@ -880,7 +880,7 @@ public final class MrScalarArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param exposeClusterId Allow the `cluster_id` to set a provider output variable.
+         * @param exposeClusterId Allow the `clusterId` to set a provider output variable.
          * 
          * @return builder
          * 
