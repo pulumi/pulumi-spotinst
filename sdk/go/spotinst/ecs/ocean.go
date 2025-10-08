@@ -14,6 +14,152 @@ import (
 
 // Manages a Spotinst Ocean ECS resource.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ecs.NewOcean(ctx, "example", &ecs.OceanArgs{
+//				Region:          pulumi.String("us-west-2"),
+//				Name:            pulumi.String("sample-ecs-cluster"),
+//				ClusterName:     pulumi.String("sample-ecs-cluster"),
+//				MinSize:         pulumi.Int(0),
+//				MaxSize:         pulumi.Int(1),
+//				DesiredCapacity: pulumi.Int(0),
+//				SubnetIds: pulumi.StringArray{
+//					pulumi.String("subnet-12345"),
+//				},
+//				InstanceTypes: []map[string]interface{}{
+//					map[string]interface{}{
+//						"filters": []map[string]interface{}{
+//							map[string]interface{}{
+//								"architectures": []string{
+//									"x86_64",
+//									"i386",
+//								},
+//								"categories": []string{
+//									"Accelerated_computing",
+//									"Compute_optimized",
+//								},
+//								"diskTypes": []string{
+//									"EBS",
+//									"SSD",
+//								},
+//								"excludeFamilies": []string{
+//									"m*",
+//								},
+//								"excludeMetal": false,
+//								"hypervisor": []string{
+//									"xen",
+//								},
+//								"includeFamilies": []string{
+//									"c*",
+//									"t*",
+//								},
+//								"isEnaSupported":        false,
+//								"maxGpu":                4,
+//								"minGpu":                0,
+//								"maxMemoryGib":          16,
+//								"maxNetworkPerformance": 20,
+//								"maxVcpu":               16,
+//								"minEnis":               2,
+//								"minMemoryGib":          8,
+//								"minNetworkPerformance": 2,
+//								"minVcpu":               2,
+//								"rootDeviceTypes": []string{
+//									"ebs",
+//								},
+//								"virtualizationTypes": []string{
+//									"hvm",
+//								},
+//							},
+//						},
+//					},
+//				},
+//				SecurityGroupIds: pulumi.StringArray{
+//					pulumi.String("sg-12345"),
+//				},
+//				ImageId:                  pulumi.String("ami-12345"),
+//				IamInstanceProfile:       pulumi.String("iam-profile"),
+//				KeyPair:                  pulumi.String("KeyPair"),
+//				UserData:                 pulumi.String("echo hello world"),
+//				AssociatePublicIpAddress: pulumi.Bool(false),
+//				UtilizeReservedInstances: pulumi.Bool(false),
+//				DrainingTimeout:          pulumi.Int(120),
+//				Monitoring:               pulumi.Bool(true),
+//				EbsOptimized:             pulumi.Bool(true),
+//				UseAsTemplateOnly:        pulumi.Bool(true),
+//				SpotPercentage:           pulumi.Int(100),
+//				UtilizeCommitments:       pulumi.Bool(false),
+//				FallbackToOndemand:       pulumi.Bool(true),
+//				ClusterOrientations: ecs.OceanClusterOrientationArray{
+//					&ecs.OceanClusterOrientationArgs{
+//						AvailabilityVsCost: pulumi.String("balanced"),
+//					},
+//				},
+//				InstanceMetadataOptions: &ecs.OceanInstanceMetadataOptionsArgs{
+//					HttpTokens:              pulumi.String("required"),
+//					HttpPutResponseHopLimit: pulumi.Int(10),
+//				},
+//				BlockDeviceMappings: ecs.OceanBlockDeviceMappingArray{
+//					&ecs.OceanBlockDeviceMappingArgs{
+//						DeviceName: pulumi.String("/dev/xvda1"),
+//						Ebs: &ecs.OceanBlockDeviceMappingEbsArgs{
+//							DeleteOnTermination: pulumi.Bool(true),
+//							Encrypted:           pulumi.Bool(false),
+//							VolumeType:          pulumi.String("gp2"),
+//							VolumeSize:          pulumi.Int(50),
+//							Throughput:          pulumi.Int(500),
+//							DynamicVolumeSize: &ecs.OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs{
+//								BaseSize:            pulumi.Int(50),
+//								Resource:            pulumi.String("CPU"),
+//								SizePerResourceUnit: pulumi.Int(20),
+//							},
+//						},
+//					},
+//				},
+//				OptimizeImages: &ecs.OceanOptimizeImagesArgs{
+//					PerformAt: pulumi.String("timeWindow"),
+//					TimeWindows: pulumi.StringArray{
+//						pulumi.String("Sun:02:00-Sun:12:00"),
+//						pulumi.String("Sun:05:00-Sun:16:00"),
+//					},
+//					ShouldOptimizeEcsAmi: pulumi.Bool(true),
+//				},
+//				Tags: ecs.OceanTagArray{
+//					&ecs.OceanTagArgs{
+//						Key:   pulumi.String("fakeKey"),
+//						Value: pulumi.String("fakeValue"),
+//					},
+//				},
+//				Logging: &ecs.OceanLoggingArgs{
+//					Export: &ecs.OceanLoggingExportArgs{
+//						S3s: ecs.OceanLoggingExportS3Array{
+//							&ecs.OceanLoggingExportS3Args{
+//								Id: pulumi.String("di-abcd123"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Clusters can be imported using the Ocean `id`, e.g.,

@@ -41,14 +41,14 @@ public final class OceanImportBackendServiceArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Use when `location_type` is `regional`. Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
+     * Use when `locationType` is `regional`. Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
      * 
      */
     @Import(name="scheme")
     private @Nullable Output<String> scheme;
 
     /**
-     * @return Use when `location_type` is `regional`. Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
+     * @return Use when `locationType` is `regional`. Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
      * 
      */
     public Optional<Output<String>> scheme() {
@@ -132,7 +132,7 @@ public final class OceanImportBackendServiceArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param scheme Use when `location_type` is `regional`. Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
+         * @param scheme Use when `locationType` is `regional`. Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
          * 
          * @return builder
          * 
@@ -143,7 +143,7 @@ public final class OceanImportBackendServiceArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param scheme Use when `location_type` is `regional`. Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
+         * @param scheme Use when `locationType` is `regional`. Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
          * 
          * @return builder
          * 

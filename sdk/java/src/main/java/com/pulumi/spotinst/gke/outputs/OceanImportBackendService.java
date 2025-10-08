@@ -21,7 +21,7 @@ public final class OceanImportBackendService {
     private @Nullable String locationType;
     private @Nullable List<OceanImportBackendServiceNamedPort> namedPorts;
     /**
-     * @return Use when `location_type` is `regional`. Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
+     * @return Use when `locationType` is `regional`. Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
      * 
      */
     private @Nullable String scheme;
@@ -43,7 +43,7 @@ public final class OceanImportBackendService {
         return this.namedPorts == null ? List.of() : this.namedPorts;
     }
     /**
-     * @return Use when `location_type` is `regional`. Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
+     * @return Use when `locationType` is `regional`. Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
      * 
      */
     public Optional<String> scheme() {

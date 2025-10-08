@@ -11,6 +11,60 @@ namespace Pulumi.SpotInst.Aws
 {
     /// <summary>
     /// Provides a Spotinst AWS group resource using Elastic Beanstalk.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SpotInst = Pulumi.SpotInst;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var elastigoup_aws_beanstalk = new SpotInst.Aws.Beanstalk("elastigoup-aws-beanstalk", new()
+    ///     {
+    ///         Name = "example-elastigroup-beanstalk",
+    ///         Region = "us-west-2",
+    ///         Product = "Linux/UNIX",
+    ///         MinSize = 0,
+    ///         MaxSize = 1,
+    ///         DesiredCapacity = 0,
+    ///         BeanstalkEnvironmentName = "example-env",
+    ///         BeanstalkEnvironmentId = "e-example",
+    ///         InstanceTypesSpots = new[]
+    ///         {
+    ///             "t2.micro",
+    ///             "t2.medium",
+    ///             "t2.large",
+    ///         },
+    ///         DeploymentPreferences = new SpotInst.Aws.Inputs.BeanstalkDeploymentPreferencesArgs
+    ///         {
+    ///             AutomaticRoll = true,
+    ///             BatchSizePercentage = 100,
+    ///             GracePeriod = 90,
+    ///             Strategies = new[]
+    ///             {
+    ///                 new SpotInst.Aws.Inputs.BeanstalkDeploymentPreferencesStrategyArgs
+    ///                 {
+    ///                     Action = "REPLACE_SERVER",
+    ///                     ShouldDrainInstances = true,
+    ///                 },
+    ///             },
+    ///         },
+    ///         ManagedActions = 
+    ///         {
+    ///             { "platformUpdate", 
+    ///             {
+    ///                 { "performAt", "timeWindow" },
+    ///                 { "timeWindow", "Mon:23:50-Tue:00:20" },
+    ///                 { "updateLevel", "minorAndPatch" },
+    ///             } },
+    ///         }[0],
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [SpotInstResourceType("spotinst:aws/beanstalk:Beanstalk")]
     public partial class Beanstalk : global::Pulumi.CustomResource

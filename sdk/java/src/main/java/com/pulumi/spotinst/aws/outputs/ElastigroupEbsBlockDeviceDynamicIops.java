@@ -25,7 +25,7 @@ public final class ElastigroupEbsBlockDeviceDynamicIops {
     /**
      * @return Additional size per resource unit (in IOPS).
      * 
-     * Modifying any `ebs_block_device` currently requires resource replacement.
+     * Modifying any `ebsBlockDevice` currently requires resource replacement.
      * 
      * Usage:
      * 
@@ -50,7 +50,7 @@ public final class ElastigroupEbsBlockDeviceDynamicIops {
     /**
      * @return Additional size per resource unit (in IOPS).
      * 
-     * Modifying any `ebs_block_device` currently requires resource replacement.
+     * Modifying any `ebsBlockDevice` currently requires resource replacement.
      * 
      * Usage:
      * 

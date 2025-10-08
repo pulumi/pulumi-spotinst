@@ -18,7 +18,7 @@ namespace Pulumi.SpotInst.Azure.Outputs
         /// </summary>
         public readonly string? AcceleratedNetworking;
         /// <summary>
-        /// The filtered vm sizes will support at least one of the architectures from this list. x86_64 includes both intel64 and amd64.
+        /// The filtered vm sizes will support at least one of the architectures from this list. X8664 includes both intel64 and amd64.
         /// </summary>
         public readonly ImmutableArray<string> Architectures;
         /// <summary>
@@ -66,7 +66,7 @@ namespace Pulumi.SpotInst.Azure.Outputs
         /// </summary>
         public readonly int? MinVcpu;
         /// <summary>
-        /// Vm sizes belonging to a series from the list will be available for scaling. We can specify include list and series can be specified with capital or small letters, with space, without space or with underscore '_' .  For example all of these "DSv2", "Ds v2", "ds_v2" refer to same DS_v2 series.
+        /// Vm sizes belonging to a series from the list will be available for scaling. We can specify include list and series can be specified with capital or small letters, with space, without space or with underscore '_' .  For example all of these "DSv2", "Ds v2", "DsV2" refer to same DS_v2 series.
         /// </summary>
         public readonly ImmutableArray<string> Series;
         /// <summary>

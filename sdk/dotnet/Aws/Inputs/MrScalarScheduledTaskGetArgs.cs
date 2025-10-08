@@ -25,7 +25,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<string>? DesiredCapacity { get; set; }
 
         /// <summary>
-        /// Select the EMR instance groups to execute the scheduled task on. Valid values: `task`.
+        /// Select the EMR instance groups to execute the scheduled task on. Valid values: `Task`.
         /// </summary>
         [Input("instanceGroupType", required: true)]
         public Input<string> InstanceGroupType { get; set; } = null!;

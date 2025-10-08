@@ -13,7 +13,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
     public sealed class ElastigroupScalingUpPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`. If a `step_adjustment` object is defined, then it cannot be specified.
+        /// The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`. If a `StepAdjustment` object is defined, then it cannot be specified.
         /// </summary>
         [Input("actionType")]
         public Input<string>? ActionType { get; set; }
@@ -132,7 +132,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<string>? Target { get; set; }
 
         /// <summary>
-        /// The value against which the specified statistic is compared. If a `step_adjustment` object is defined, then it cannot be specified.
+        /// The value against which the specified statistic is compared. If a `StepAdjustment` object is defined, then it cannot be specified.
         /// </summary>
         [Input("threshold")]
         public Input<double>? Threshold { get; set; }

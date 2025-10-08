@@ -18,7 +18,7 @@ namespace Pulumi.SpotInst.Ecs.Outputs
         /// </summary>
         public readonly string CronExpression;
         /// <summary>
-        /// Describes whether the task is enabled. When `true`, the task runs. When `false`, it does not run.
+        /// Describes whether the task is enabled. When `True`, the task runs. When `False`, it does not run.
         /// </summary>
         public readonly bool IsEnabled;
         /// <summary>

@@ -67,18 +67,18 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
-     * Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
-     * `availability_zones = [&#34;us-east-1a:subnet-123456:ClusterI03&#34;]`
+     * List of Strings of availability zones. When this parameter is set, `subnetIds` should be left unused.
+     * Note: `availabilityZones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
+     * `availabilityZones = [&#34;us-east-1a:subnet-123456:ClusterI03&#34;]`
      * 
      */
     @Import(name="availabilityZones")
     private @Nullable Output<List<String>> availabilityZones;
 
     /**
-     * @return List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
-     * Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
-     * `availability_zones = [&#34;us-east-1a:subnet-123456:ClusterI03&#34;]`
+     * @return List of Strings of availability zones. When this parameter is set, `subnetIds` should be left unused.
+     * Note: `availabilityZones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
+     * `availabilityZones = [&#34;us-east-1a:subnet-123456:ClusterI03&#34;]`
      * 
      */
     public Optional<Output<List<String>>> availabilityZones() {
@@ -655,14 +655,14 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
+     * Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spotPercentage` parameter is being ignored.
      * 
      */
     @Import(name="ondemandCount")
     private @Nullable Output<Integer> ondemandCount;
 
     /**
-     * @return Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
+     * @return Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spotPercentage` parameter is being ignored.
      * 
      */
     public Optional<Output<Integer>> ondemandCount() {
@@ -722,7 +722,7 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
-     * Note: Must be a sublist of `availability_zones` and `orientation` value must not be `&#34;equalAzDistribution&#34;`.
+     * Note: Must be a sublist of `availabilityZones` and `orientation` value must not be `&#34;equalAzDistribution&#34;`.
      * 
      */
     @Import(name="preferredAvailabilityZones")
@@ -730,7 +730,7 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
-     * Note: Must be a sublist of `availability_zones` and `orientation` value must not be `&#34;equalAzDistribution&#34;`.
+     * Note: Must be a sublist of `availabilityZones` and `orientation` value must not be `&#34;equalAzDistribution&#34;`.
      * 
      */
     public Optional<Output<List<String>>> preferredAvailabilityZones() {
@@ -919,14 +919,14 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The percentage of Spot instances that would spin up from the `desired_capacity` number.
+     * The percentage of Spot instances that would spin up from the `desiredCapacity` number.
      * 
      */
     @Import(name="spotPercentage")
     private @Nullable Output<Integer> spotPercentage;
 
     /**
-     * @return The percentage of Spot instances that would spin up from the `desired_capacity` number.
+     * @return The percentage of Spot instances that would spin up from the `desiredCapacity` number.
      * 
      */
     public Optional<Output<Integer>> spotPercentage() {
@@ -949,7 +949,7 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * List of Strings of subnet identifiers.
-     * Note: When this parameter is set, `availability_zones` should be left unused.
+     * Note: When this parameter is set, `availabilityZones` should be left unused.
      * 
      * @deprecated
      * This field will soon be deprecated and handled by availability_zones
@@ -961,7 +961,7 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return List of Strings of subnet identifiers.
-     * Note: When this parameter is set, `availability_zones` should be left unused.
+     * Note: When this parameter is set, `availabilityZones` should be left unused.
      * 
      * @deprecated
      * This field will soon be deprecated and handled by availability_zones
@@ -1039,14 +1039,14 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Minimum number of instances in a &#39;HEALTHY&#39; status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desired_capacity`.
+     * Minimum number of instances in a &#39;HEALTHY&#39; status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desiredCapacity`.
      * 
      */
     @Import(name="waitForCapacity")
     private @Nullable Output<Integer> waitForCapacity;
 
     /**
-     * @return Minimum number of instances in a &#39;HEALTHY&#39; status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desired_capacity`.
+     * @return Minimum number of instances in a &#39;HEALTHY&#39; status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desiredCapacity`.
      * 
      */
     public Optional<Output<Integer>> waitForCapacity() {
@@ -1198,9 +1198,9 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param availabilityZones List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
-         * Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
-         * `availability_zones = [&#34;us-east-1a:subnet-123456:ClusterI03&#34;]`
+         * @param availabilityZones List of Strings of availability zones. When this parameter is set, `subnetIds` should be left unused.
+         * Note: `availabilityZones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
+         * `availabilityZones = [&#34;us-east-1a:subnet-123456:ClusterI03&#34;]`
          * 
          * @return builder
          * 
@@ -1211,9 +1211,9 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param availabilityZones List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
-         * Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
-         * `availability_zones = [&#34;us-east-1a:subnet-123456:ClusterI03&#34;]`
+         * @param availabilityZones List of Strings of availability zones. When this parameter is set, `subnetIds` should be left unused.
+         * Note: `availabilityZones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
+         * `availabilityZones = [&#34;us-east-1a:subnet-123456:ClusterI03&#34;]`
          * 
          * @return builder
          * 
@@ -1223,9 +1223,9 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param availabilityZones List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
-         * Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
-         * `availability_zones = [&#34;us-east-1a:subnet-123456:ClusterI03&#34;]`
+         * @param availabilityZones List of Strings of availability zones. When this parameter is set, `subnetIds` should be left unused.
+         * Note: `availabilityZones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
+         * `availabilityZones = [&#34;us-east-1a:subnet-123456:ClusterI03&#34;]`
          * 
          * @return builder
          * 
@@ -2095,7 +2095,7 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ondemandCount Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
+         * @param ondemandCount Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spotPercentage` parameter is being ignored.
          * 
          * @return builder
          * 
@@ -2106,7 +2106,7 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ondemandCount Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
+         * @param ondemandCount Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spotPercentage` parameter is being ignored.
          * 
          * @return builder
          * 
@@ -2186,7 +2186,7 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param preferredAvailabilityZones The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
-         * Note: Must be a sublist of `availability_zones` and `orientation` value must not be `&#34;equalAzDistribution&#34;`.
+         * Note: Must be a sublist of `availabilityZones` and `orientation` value must not be `&#34;equalAzDistribution&#34;`.
          * 
          * @return builder
          * 
@@ -2198,7 +2198,7 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param preferredAvailabilityZones The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
-         * Note: Must be a sublist of `availability_zones` and `orientation` value must not be `&#34;equalAzDistribution&#34;`.
+         * Note: Must be a sublist of `availabilityZones` and `orientation` value must not be `&#34;equalAzDistribution&#34;`.
          * 
          * @return builder
          * 
@@ -2209,7 +2209,7 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param preferredAvailabilityZones The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
-         * Note: Must be a sublist of `availability_zones` and `orientation` value must not be `&#34;equalAzDistribution&#34;`.
+         * Note: Must be a sublist of `availabilityZones` and `orientation` value must not be `&#34;equalAzDistribution&#34;`.
          * 
          * @return builder
          * 
@@ -2530,7 +2530,7 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param spotPercentage The percentage of Spot instances that would spin up from the `desired_capacity` number.
+         * @param spotPercentage The percentage of Spot instances that would spin up from the `desiredCapacity` number.
          * 
          * @return builder
          * 
@@ -2541,7 +2541,7 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param spotPercentage The percentage of Spot instances that would spin up from the `desired_capacity` number.
+         * @param spotPercentage The percentage of Spot instances that would spin up from the `desiredCapacity` number.
          * 
          * @return builder
          * 
@@ -2574,7 +2574,7 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param subnetIds List of Strings of subnet identifiers.
-         * Note: When this parameter is set, `availability_zones` should be left unused.
+         * Note: When this parameter is set, `availabilityZones` should be left unused.
          * 
          * @return builder
          * 
@@ -2590,7 +2590,7 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param subnetIds List of Strings of subnet identifiers.
-         * Note: When this parameter is set, `availability_zones` should be left unused.
+         * Note: When this parameter is set, `availabilityZones` should be left unused.
          * 
          * @return builder
          * 
@@ -2605,7 +2605,7 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param subnetIds List of Strings of subnet identifiers.
-         * Note: When this parameter is set, `availability_zones` should be left unused.
+         * Note: When this parameter is set, `availabilityZones` should be left unused.
          * 
          * @return builder
          * 
@@ -2723,7 +2723,7 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param waitForCapacity Minimum number of instances in a &#39;HEALTHY&#39; status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desired_capacity`.
+         * @param waitForCapacity Minimum number of instances in a &#39;HEALTHY&#39; status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desiredCapacity`.
          * 
          * @return builder
          * 
@@ -2734,7 +2734,7 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param waitForCapacity Minimum number of instances in a &#39;HEALTHY&#39; status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desired_capacity`.
+         * @param waitForCapacity Minimum number of instances in a &#39;HEALTHY&#39; status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desiredCapacity`.
          * 
          * @return builder
          * 

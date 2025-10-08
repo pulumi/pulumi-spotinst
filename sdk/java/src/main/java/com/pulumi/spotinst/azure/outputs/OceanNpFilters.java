@@ -20,7 +20,7 @@ public final class OceanNpFilters {
      */
     private @Nullable String acceleratedNetworking;
     /**
-     * @return The filtered vm sizes will support at least one of the architectures from this list. x86_64 includes both intel64 and amd64.
+     * @return The filtered vm sizes will support at least one of the architectures from this list. x8664 includes both intel64 and amd64.
      * 
      */
     private @Nullable List<String> architectures;
@@ -80,7 +80,7 @@ public final class OceanNpFilters {
      */
     private @Nullable Integer minVcpu;
     /**
-     * @return Vm sizes belonging to a series from the list will be available for scaling. We can specify include list and series can be specified with capital or small letters, with space, without space or with underscore &#39;_&#39; .  For example all of these &#34;DSv2&#34;, &#34;Ds v2&#34;, &#34;ds_v2&#34; refer to same DS_v2 series.
+     * @return Vm sizes belonging to a series from the list will be available for scaling. We can specify include list and series can be specified with capital or small letters, with space, without space or with underscore &#39;_&#39; .  For example all of these &#34;DSv2&#34;, &#34;Ds v2&#34;, &#34;dsV2&#34; refer to same DS_v2 series.
      * 
      */
     private @Nullable List<String> series;
@@ -99,7 +99,7 @@ public final class OceanNpFilters {
         return Optional.ofNullable(this.acceleratedNetworking);
     }
     /**
-     * @return The filtered vm sizes will support at least one of the architectures from this list. x86_64 includes both intel64 and amd64.
+     * @return The filtered vm sizes will support at least one of the architectures from this list. x8664 includes both intel64 and amd64.
      * 
      */
     public List<String> architectures() {
@@ -183,7 +183,7 @@ public final class OceanNpFilters {
         return Optional.ofNullable(this.minVcpu);
     }
     /**
-     * @return Vm sizes belonging to a series from the list will be available for scaling. We can specify include list and series can be specified with capital or small letters, with space, without space or with underscore &#39;_&#39; .  For example all of these &#34;DSv2&#34;, &#34;Ds v2&#34;, &#34;ds_v2&#34; refer to same DS_v2 series.
+     * @return Vm sizes belonging to a series from the list will be available for scaling. We can specify include list and series can be specified with capital or small letters, with space, without space or with underscore &#39;_&#39; .  For example all of these &#34;DSv2&#34;, &#34;Ds v2&#34;, &#34;dsV2&#34; refer to same DS_v2 series.
      * 
      */
     public List<String> series() {
