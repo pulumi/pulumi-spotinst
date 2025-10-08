@@ -16,7 +16,9 @@ type OceanRightSizingRule struct {
 	pulumi.CustomResourceState
 
 	AttachWorkloads                         OceanRightSizingRuleAttachWorkloadArrayOutput                         `pulumi:"attachWorkloads"`
+	AutoApplyDefinitions                    OceanRightSizingRuleAutoApplyDefinitionArrayOutput                    `pulumi:"autoApplyDefinitions"`
 	DetachWorkloads                         OceanRightSizingRuleDetachWorkloadArrayOutput                         `pulumi:"detachWorkloads"`
+	DownsideOnly                            pulumi.BoolPtrOutput                                                  `pulumi:"downsideOnly"`
 	ExcludePreliminaryRecommendations       pulumi.BoolPtrOutput                                                  `pulumi:"excludePreliminaryRecommendations"`
 	OceanId                                 pulumi.StringPtrOutput                                                `pulumi:"oceanId"`
 	RecommendationApplicationBoundaries     OceanRightSizingRuleRecommendationApplicationBoundaryArrayOutput      `pulumi:"recommendationApplicationBoundaries"`
@@ -65,7 +67,9 @@ func GetOceanRightSizingRule(ctx *pulumi.Context,
 // Input properties used for looking up and filtering OceanRightSizingRule resources.
 type oceanRightSizingRuleState struct {
 	AttachWorkloads                         []OceanRightSizingRuleAttachWorkload                         `pulumi:"attachWorkloads"`
+	AutoApplyDefinitions                    []OceanRightSizingRuleAutoApplyDefinition                    `pulumi:"autoApplyDefinitions"`
 	DetachWorkloads                         []OceanRightSizingRuleDetachWorkload                         `pulumi:"detachWorkloads"`
+	DownsideOnly                            *bool                                                        `pulumi:"downsideOnly"`
 	ExcludePreliminaryRecommendations       *bool                                                        `pulumi:"excludePreliminaryRecommendations"`
 	OceanId                                 *string                                                      `pulumi:"oceanId"`
 	RecommendationApplicationBoundaries     []OceanRightSizingRuleRecommendationApplicationBoundary      `pulumi:"recommendationApplicationBoundaries"`
@@ -79,7 +83,9 @@ type oceanRightSizingRuleState struct {
 
 type OceanRightSizingRuleState struct {
 	AttachWorkloads                         OceanRightSizingRuleAttachWorkloadArrayInput
+	AutoApplyDefinitions                    OceanRightSizingRuleAutoApplyDefinitionArrayInput
 	DetachWorkloads                         OceanRightSizingRuleDetachWorkloadArrayInput
+	DownsideOnly                            pulumi.BoolPtrInput
 	ExcludePreliminaryRecommendations       pulumi.BoolPtrInput
 	OceanId                                 pulumi.StringPtrInput
 	RecommendationApplicationBoundaries     OceanRightSizingRuleRecommendationApplicationBoundaryArrayInput
@@ -97,7 +103,9 @@ func (OceanRightSizingRuleState) ElementType() reflect.Type {
 
 type oceanRightSizingRuleArgs struct {
 	AttachWorkloads                         []OceanRightSizingRuleAttachWorkload                         `pulumi:"attachWorkloads"`
+	AutoApplyDefinitions                    []OceanRightSizingRuleAutoApplyDefinition                    `pulumi:"autoApplyDefinitions"`
 	DetachWorkloads                         []OceanRightSizingRuleDetachWorkload                         `pulumi:"detachWorkloads"`
+	DownsideOnly                            *bool                                                        `pulumi:"downsideOnly"`
 	ExcludePreliminaryRecommendations       *bool                                                        `pulumi:"excludePreliminaryRecommendations"`
 	OceanId                                 *string                                                      `pulumi:"oceanId"`
 	RecommendationApplicationBoundaries     []OceanRightSizingRuleRecommendationApplicationBoundary      `pulumi:"recommendationApplicationBoundaries"`
@@ -112,7 +120,9 @@ type oceanRightSizingRuleArgs struct {
 // The set of arguments for constructing a OceanRightSizingRule resource.
 type OceanRightSizingRuleArgs struct {
 	AttachWorkloads                         OceanRightSizingRuleAttachWorkloadArrayInput
+	AutoApplyDefinitions                    OceanRightSizingRuleAutoApplyDefinitionArrayInput
 	DetachWorkloads                         OceanRightSizingRuleDetachWorkloadArrayInput
+	DownsideOnly                            pulumi.BoolPtrInput
 	ExcludePreliminaryRecommendations       pulumi.BoolPtrInput
 	OceanId                                 pulumi.StringPtrInput
 	RecommendationApplicationBoundaries     OceanRightSizingRuleRecommendationApplicationBoundaryArrayInput
@@ -215,8 +225,18 @@ func (o OceanRightSizingRuleOutput) AttachWorkloads() OceanRightSizingRuleAttach
 	return o.ApplyT(func(v *OceanRightSizingRule) OceanRightSizingRuleAttachWorkloadArrayOutput { return v.AttachWorkloads }).(OceanRightSizingRuleAttachWorkloadArrayOutput)
 }
 
+func (o OceanRightSizingRuleOutput) AutoApplyDefinitions() OceanRightSizingRuleAutoApplyDefinitionArrayOutput {
+	return o.ApplyT(func(v *OceanRightSizingRule) OceanRightSizingRuleAutoApplyDefinitionArrayOutput {
+		return v.AutoApplyDefinitions
+	}).(OceanRightSizingRuleAutoApplyDefinitionArrayOutput)
+}
+
 func (o OceanRightSizingRuleOutput) DetachWorkloads() OceanRightSizingRuleDetachWorkloadArrayOutput {
 	return o.ApplyT(func(v *OceanRightSizingRule) OceanRightSizingRuleDetachWorkloadArrayOutput { return v.DetachWorkloads }).(OceanRightSizingRuleDetachWorkloadArrayOutput)
+}
+
+func (o OceanRightSizingRuleOutput) DownsideOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanRightSizingRule) pulumi.BoolPtrOutput { return v.DownsideOnly }).(pulumi.BoolPtrOutput)
 }
 
 func (o OceanRightSizingRuleOutput) ExcludePreliminaryRecommendations() pulumi.BoolPtrOutput {

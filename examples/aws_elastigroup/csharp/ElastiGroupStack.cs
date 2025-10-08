@@ -9,8 +9,6 @@ class ElastiGroupStack : Stack
     {
         var sg = new Pulumi.Aws.Ec2.SecurityGroup("my-csharp-security-group");
 
-        var azs = GetAvailabilityZones.InvokeAsync();
-        
         var elastigroup = new Elastigroup("my-csharp-elastigroup", new ElastigroupArgs
         {
             FallbackToOndemand = false,
@@ -27,7 +25,7 @@ class ElastiGroupStack : Stack
                 sg.Id
             },
             Region = "us-west-2",
-            AvailabilityZones = azs.Result.Names,
+            AvailabilityZones = new[] { "us-west-2a:subnet-12345678", "us-west-2b:subnet-87654321" },
             ImageId = "ami-e251209a",
         });
     }
