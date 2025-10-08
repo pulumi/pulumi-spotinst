@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecAutoscaleHeadroomArgs;
 import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs;
 import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecCreateOptionsArgs;
+import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecFiltersArgs;
 import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecLabelArgs;
 import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecMetadataArgs;
 import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecNetworkInterfaceArgs;
@@ -66,6 +67,21 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
 
     public Optional<Output<OceanLaunchSpecCreateOptionsArgs>> createOptions() {
         return Optional.ofNullable(this.createOptions);
+    }
+
+    /**
+     * List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured if cluster&#39;s `instance_types` is configured.
+     * 
+     */
+    @Import(name="filters")
+    private @Nullable Output<OceanLaunchSpecFiltersArgs> filters;
+
+    /**
+     * @return List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured if cluster&#39;s `instance_types` is configured.
+     * 
+     */
+    public Optional<Output<OceanLaunchSpecFiltersArgs>> filters() {
+        return Optional.ofNullable(this.filters);
     }
 
     /**
@@ -366,6 +382,7 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
         this.autoscaleHeadrooms = $.autoscaleHeadrooms;
         this.autoscaleHeadroomsAutomatics = $.autoscaleHeadroomsAutomatics;
         this.createOptions = $.createOptions;
+        this.filters = $.filters;
         this.instanceTypes = $.instanceTypes;
         this.labels = $.labels;
         this.metadatas = $.metadatas;
@@ -475,6 +492,27 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
 
         public Builder createOptions(OceanLaunchSpecCreateOptionsArgs createOptions) {
             return createOptions(Output.of(createOptions));
+        }
+
+        /**
+         * @param filters List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured if cluster&#39;s `instance_types` is configured.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filters(@Nullable Output<OceanLaunchSpecFiltersArgs> filters) {
+            $.filters = filters;
+            return this;
+        }
+
+        /**
+         * @param filters List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured if cluster&#39;s `instance_types` is configured.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filters(OceanLaunchSpecFiltersArgs filters) {
+            return filters(Output.of(filters));
         }
 
         /**

@@ -65,6 +65,7 @@ __all__ = [
     'OceanRightSizingRuleAttachWorkloadNamespace',
     'OceanRightSizingRuleAttachWorkloadNamespaceLabel',
     'OceanRightSizingRuleAttachWorkloadNamespaceWorkload',
+    'OceanRightSizingRuleAutoApplyDefinition',
     'OceanRightSizingRuleDetachWorkload',
     'OceanRightSizingRuleDetachWorkloadNamespace',
     'OceanRightSizingRuleDetachWorkloadNamespaceLabel',
@@ -2583,6 +2584,35 @@ class OceanRightSizingRuleAttachWorkloadNamespaceWorkload(dict):
     @pulumi.getter(name="workloadName")
     def workload_name(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "workload_name")
+
+
+@pulumi.output_type
+class OceanRightSizingRuleAutoApplyDefinition(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None,
+                 labels: Optional[Mapping[str, _builtins.str]] = None,
+                 namespaces: Optional[Sequence[_builtins.str]] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if namespaces is not None:
+            pulumi.set(__self__, "namespaces", namespaces)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> Optional[Mapping[str, _builtins.str]]:
+        return pulumi.get(self, "labels")
+
+    @_builtins.property
+    @pulumi.getter
+    def namespaces(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "namespaces")
 
 
 @pulumi.output_type
