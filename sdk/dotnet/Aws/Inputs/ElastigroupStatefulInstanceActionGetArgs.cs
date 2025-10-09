@@ -19,7 +19,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<string> StatefulInstanceId { get; set; } = null!;
 
         /// <summary>
-        /// String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+        /// String, Action type. Supported action types: `Pause`, `Resume`, `Recycle`, `Deallocate`.
         /// 
         /// Usage:
         /// </summary>

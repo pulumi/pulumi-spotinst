@@ -19,7 +19,7 @@ namespace Pulumi.SpotInst.Gcp.Inputs
         public Input<Inputs.ElastigroupBackendServiceBackendBalancingArgs>? BackendBalancing { get; set; }
 
         /// <summary>
-        /// Sets which location the backend services will be active. Valid values: `regional`, `global`.
+        /// Sets which location the backend services will be active. Valid values: `Regional`, `Global`.
         /// </summary>
         [Input("locationType")]
         public Input<string>? LocationType { get; set; }
@@ -37,7 +37,7 @@ namespace Pulumi.SpotInst.Gcp.Inputs
         }
 
         /// <summary>
-        /// Use when `location_type` is "regional". Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
+        /// Use when `LocationType` is "regional". Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
         /// </summary>
         [Input("scheme")]
         public Input<string>? Scheme { get; set; }

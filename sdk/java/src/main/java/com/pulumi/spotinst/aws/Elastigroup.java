@@ -233,18 +233,18 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoHealing);
     }
     /**
-     * List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
-     * Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
-     * `availability_zones = [&#34;us-east-1a:subnet-123456:ClusterI03&#34;]`
+     * List of Strings of availability zones. When this parameter is set, `subnetIds` should be left unused.
+     * Note: `availabilityZones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
+     * `availabilityZones = [&#34;us-east-1a:subnet-123456:ClusterI03&#34;]`
      * 
      */
     @Export(name="availabilityZones", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> availabilityZones;
 
     /**
-     * @return List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
-     * Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
-     * `availability_zones = [&#34;us-east-1a:subnet-123456:ClusterI03&#34;]`
+     * @return List of Strings of availability zones. When this parameter is set, `subnetIds` should be left unused.
+     * Note: `availabilityZones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
+     * `availabilityZones = [&#34;us-east-1a:subnet-123456:ClusterI03&#34;]`
      * 
      */
     public Output<Optional<List<String>>> availabilityZones() {
@@ -771,14 +771,14 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.onDemandTypes);
     }
     /**
-     * Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
+     * Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spotPercentage` parameter is being ignored.
      * 
      */
     @Export(name="ondemandCount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> ondemandCount;
 
     /**
-     * @return Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
+     * @return Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spotPercentage` parameter is being ignored.
      * 
      */
     public Output<Optional<Integer>> ondemandCount() {
@@ -832,7 +832,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     }
     /**
      * The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
-     * Note: Must be a sublist of `availability_zones` and `orientation` value must not be `&#34;equalAzDistribution&#34;`.
+     * Note: Must be a sublist of `availabilityZones` and `orientation` value must not be `&#34;equalAzDistribution&#34;`.
      * 
      */
     @Export(name="preferredAvailabilityZones", refs={List.class,String.class}, tree="[0,1]")
@@ -840,7 +840,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
-     * Note: Must be a sublist of `availability_zones` and `orientation` value must not be `&#34;equalAzDistribution&#34;`.
+     * Note: Must be a sublist of `availabilityZones` and `orientation` value must not be `&#34;equalAzDistribution&#34;`.
      * 
      */
     public Output<Optional<List<String>>> preferredAvailabilityZones() {
@@ -1013,14 +1013,14 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.signals);
     }
     /**
-     * The percentage of Spot instances that would spin up from the `desired_capacity` number.
+     * The percentage of Spot instances that would spin up from the `desiredCapacity` number.
      * 
      */
     @Export(name="spotPercentage", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> spotPercentage;
 
     /**
-     * @return The percentage of Spot instances that would spin up from the `desired_capacity` number.
+     * @return The percentage of Spot instances that would spin up from the `desiredCapacity` number.
      * 
      */
     public Output<Optional<Integer>> spotPercentage() {
@@ -1040,7 +1040,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     }
     /**
      * List of Strings of subnet identifiers.
-     * Note: When this parameter is set, `availability_zones` should be left unused.
+     * Note: When this parameter is set, `availabilityZones` should be left unused.
      * 
      * @deprecated
      * This field will soon be deprecated and handled by availability_zones
@@ -1052,7 +1052,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
 
     /**
      * @return List of Strings of subnet identifiers.
-     * Note: When this parameter is set, `availability_zones` should be left unused.
+     * Note: When this parameter is set, `availabilityZones` should be left unused.
      * 
      */
     public Output<Optional<List<String>>> subnetIds() {
@@ -1119,14 +1119,14 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.utilizeReservedInstances);
     }
     /**
-     * Minimum number of instances in a &#39;HEALTHY&#39; status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desired_capacity`.
+     * Minimum number of instances in a &#39;HEALTHY&#39; status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desiredCapacity`.
      * 
      */
     @Export(name="waitForCapacity", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> waitForCapacity;
 
     /**
-     * @return Minimum number of instances in a &#39;HEALTHY&#39; status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desired_capacity`.
+     * @return Minimum number of instances in a &#39;HEALTHY&#39; status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desiredCapacity`.
      * 
      */
     public Output<Optional<Integer>> waitForCapacity() {

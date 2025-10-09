@@ -54,7 +54,7 @@ namespace Pulumi.SpotInst.Oceancd.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.VerificationTemplateMetricProvider> Providers;
         /// <summary>
-        /// An expression which determines if a measurement is considered successful. The keyword `result` is a variable reference to the value of measurement. Results can be both structured data or primitive. If successCondition is set, then failureCondition is not allowed. When choosing `Jenkins` as the provider, there is no need to send this variable.
+        /// An expression which determines if a measurement is considered successful. The keyword `Result` is a variable reference to the value of measurement. Results can be both structured data or primitive. If successCondition is set, then failureCondition is not allowed. When choosing `Jenkins` as the provider, there is no need to send this variable.
         /// </summary>
         public readonly string? SuccessCondition;
 

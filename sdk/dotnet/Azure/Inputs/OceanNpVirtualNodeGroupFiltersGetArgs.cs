@@ -22,7 +22,7 @@ namespace Pulumi.SpotInst.Azure.Inputs
         private InputList<string>? _architectures;
 
         /// <summary>
-        /// The filtered vm sizes will support at least one of the architectures from this list. x86_64 includes both intel64 and amd64.
+        /// The filtered vm sizes will support at least one of the architectures from this list. X8664 includes both intel64 and amd64.
         /// </summary>
         public InputList<string> Architectures
         {

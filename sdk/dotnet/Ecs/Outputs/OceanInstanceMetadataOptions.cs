@@ -18,7 +18,7 @@ namespace Pulumi.SpotInst.Ecs.Outputs
         /// </summary>
         public readonly int? HttpPutResponseHopLimit;
         /// <summary>
-        /// Determines if a signed token is required or not. Valid values: `optional` or `required`.
+        /// Determines if a signed token is required or not. Valid values: `Optional` or `Required`.
         /// </summary>
         public readonly string HttpTokens;
 

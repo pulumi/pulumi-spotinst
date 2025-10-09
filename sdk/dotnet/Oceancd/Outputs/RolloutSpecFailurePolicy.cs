@@ -14,7 +14,7 @@ namespace Pulumi.SpotInst.Oceancd.Outputs
     public sealed class RolloutSpecFailurePolicy
     {
         /// <summary>
-        /// Choose an action to perform on failure. Default is `abort`.  Enum: "abort" "pause" "promote".
+        /// Choose an action to perform on failure. Default is `Abort`.  Enum: "abort" "pause" "promote".
         /// </summary>
         public readonly string Action;
 

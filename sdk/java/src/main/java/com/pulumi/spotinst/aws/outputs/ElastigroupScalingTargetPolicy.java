@@ -34,7 +34,7 @@ public final class ElastigroupScalingTargetPolicy {
     /**
      * @return String, restrict the maximal number of instances which can be added in each scale-up action.
      * 
-     * `scaling_target_policies` support predictive scaling:
+     * `scalingTargetPolicies` support predictive scaling:
      * 
      */
     private @Nullable String maxCapacityPerScale;
@@ -111,7 +111,7 @@ public final class ElastigroupScalingTargetPolicy {
     /**
      * @return String, restrict the maximal number of instances which can be added in each scale-up action.
      * 
-     * `scaling_target_policies` support predictive scaling:
+     * `scalingTargetPolicies` support predictive scaling:
      * 
      */
     public Optional<String> maxCapacityPerScale() {

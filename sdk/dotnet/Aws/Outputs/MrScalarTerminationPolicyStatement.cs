@@ -26,7 +26,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly string Namespace;
         /// <summary>
-        /// The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+        /// The operator to use in order to determine if the policy is applicable. Valid values: `Gt` | `Gte` | `Lt` | `Lte`
         /// </summary>
         public readonly string? Operator;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly int? Period;
         /// <summary>
-        /// The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
+        /// The aggregation method of the given metric. Valid Values: `Average` | `Sum` | `sampleCount` | `Maximum` | `Minimum`
         /// </summary>
         public readonly string? Statistic;
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly double Threshold;
         /// <summary>
-        /// The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+        /// The unit for a given metric. Valid Values: `Seconds` | `Microseconds` | `Milliseconds` | `Bytes` | `Kilobytes` | `Megabytes` | `Gigabytes` | `Terabytes` | `Bits` | `Kilobits` | `Megabits` | `Gigabits` | `Terabits` | `Percent` | `Count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `None`
         /// </summary>
         public readonly string? Unit;
 

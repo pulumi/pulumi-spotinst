@@ -125,14 +125,14 @@ public final class OceanBlockDeviceMappingEbsArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = `gp3`.
+     * The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = `gp3`.
      * 
      */
     @Import(name="throughput")
     private @Nullable Output<Integer> throughput;
 
     /**
-     * @return The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = `gp3`.
+     * @return The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = `gp3`.
      * 
      */
     public Optional<Output<Integer>> throughput() {
@@ -350,7 +350,7 @@ public final class OceanBlockDeviceMappingEbsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param throughput The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = `gp3`.
+         * @param throughput The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = `gp3`.
          * 
          * @return builder
          * 
@@ -361,7 +361,7 @@ public final class OceanBlockDeviceMappingEbsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param throughput The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = `gp3`.
+         * @param throughput The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = `gp3`.
          * 
          * @return builder
          * 
