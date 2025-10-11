@@ -36,12 +36,12 @@ public final class ElastigroupUpdatePolicyRollConfig {
      */
     private @Nullable ElastigroupUpdatePolicyRollConfigStrategy strategy;
     /**
-     * @return For use with `should_roll`. Sets minimum % of roll required to complete before continuing the plan. Required if `wait_for_roll_timeout` is set.
+     * @return For use with `shouldRoll`. Sets minimum % of roll required to complete before continuing the plan. Required if `waitForRollTimeout` is set.
      * 
      */
     private @Nullable Double waitForRollPercentage;
     /**
-     * @return For use with `should_roll`. Sets how long to wait for the deployed % of a roll to exceed `wait_for_roll_percentage` before continuing the plan. Required if `wait_for_roll_percentage` is set.
+     * @return For use with `shouldRoll`. Sets how long to wait for the deployed % of a roll to exceed `waitForRollPercentage` before continuing the plan. Required if `waitForRollPercentage` is set.
      * 
      */
     private @Nullable Integer waitForRollTimeout;
@@ -76,14 +76,14 @@ public final class ElastigroupUpdatePolicyRollConfig {
         return Optional.ofNullable(this.strategy);
     }
     /**
-     * @return For use with `should_roll`. Sets minimum % of roll required to complete before continuing the plan. Required if `wait_for_roll_timeout` is set.
+     * @return For use with `shouldRoll`. Sets minimum % of roll required to complete before continuing the plan. Required if `waitForRollTimeout` is set.
      * 
      */
     public Optional<Double> waitForRollPercentage() {
         return Optional.ofNullable(this.waitForRollPercentage);
     }
     /**
-     * @return For use with `should_roll`. Sets how long to wait for the deployed % of a roll to exceed `wait_for_roll_percentage` before continuing the plan. Required if `wait_for_roll_percentage` is set.
+     * @return For use with `shouldRoll`. Sets how long to wait for the deployed % of a roll to exceed `waitForRollPercentage` before continuing the plan. Required if `waitForRollPercentage` is set.
      * 
      */
     public Optional<Integer> waitForRollTimeout() {

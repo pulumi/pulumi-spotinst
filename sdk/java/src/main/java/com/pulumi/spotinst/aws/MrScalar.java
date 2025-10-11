@@ -38,6 +38,8 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * ### New Strategy
+ * 
  * ### Wrap Strategy
  * 
  * <pre>
@@ -387,14 +389,14 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ec2KeyName);
     }
     /**
-     * Allow the `cluster_id` to set a provider output variable.
+     * Allow the `clusterId` to set a provider output variable.
      * 
      */
     @Export(name="exposeClusterId", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> exposeClusterId;
 
     /**
-     * @return Allow the `cluster_id` to set a provider output variable.
+     * @return Allow the `clusterId` to set a provider output variable.
      * 
      */
     public Output<Optional<Boolean>> exposeClusterId() {

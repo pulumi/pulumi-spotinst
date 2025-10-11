@@ -179,7 +179,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Enables assignment of a primary IPv6 address to the cluster. This feature is only available when `associate_ipv6_address` is explicitly set to true. Additionally, the cluster must have been initially created as an EKS cluster in IPv6 mode.
+        /// Enables assignment of a primary IPv6 address to the cluster. This feature is only available when `AssociateIpv6Address` is explicitly set to true. Additionally, the cluster must have been initially created as an EKS cluster in IPv6 mode.
         /// </summary>
         [Output("primaryIpv6")]
         public Output<bool?> PrimaryIpv6 { get; private set; } = null!;
@@ -227,7 +227,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<int?> SpotPercentage { get; private set; } = null!;
 
         /// <summary>
-        /// Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
+        /// Ocean will spread the nodes across markets by this value. Possible values: `Vcpu` or `Count`.
         /// </summary>
         [Output("spreadNodesBy")]
         public Output<string?> SpreadNodesBy { get; private set; } = null!;
@@ -256,7 +256,7 @@ namespace Pulumi.SpotInst.Aws
 
         /// <summary>
         /// launch specification defined on the Ocean object will function only as a template for virtual node groups.
-        /// When set to true, on Ocean resource creation please make sure your custom VNG has an initial_nodes parameter to create nodes for your VNG.
+        /// When set to true, on Ocean resource creation please make sure your custom VNG has an InitialNodes parameter to create nodes for your VNG.
         /// </summary>
         [Output("useAsTemplateOnly")]
         public Output<bool?> UseAsTemplateOnly { get; private set; } = null!;
@@ -516,7 +516,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Enables assignment of a primary IPv6 address to the cluster. This feature is only available when `associate_ipv6_address` is explicitly set to true. Additionally, the cluster must have been initially created as an EKS cluster in IPv6 mode.
+        /// Enables assignment of a primary IPv6 address to the cluster. This feature is only available when `AssociateIpv6Address` is explicitly set to true. Additionally, the cluster must have been initially created as an EKS cluster in IPv6 mode.
         /// </summary>
         [Input("primaryIpv6")]
         public Input<bool>? PrimaryIpv6 { get; set; }
@@ -582,7 +582,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<int>? SpotPercentage { get; set; }
 
         /// <summary>
-        /// Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
+        /// Ocean will spread the nodes across markets by this value. Possible values: `Vcpu` or `Count`.
         /// </summary>
         [Input("spreadNodesBy")]
         public Input<string>? SpreadNodesBy { get; set; }
@@ -629,7 +629,7 @@ namespace Pulumi.SpotInst.Aws
 
         /// <summary>
         /// launch specification defined on the Ocean object will function only as a template for virtual node groups.
-        /// When set to true, on Ocean resource creation please make sure your custom VNG has an initial_nodes parameter to create nodes for your VNG.
+        /// When set to true, on Ocean resource creation please make sure your custom VNG has an InitialNodes parameter to create nodes for your VNG.
         /// </summary>
         [Input("useAsTemplateOnly")]
         public Input<bool>? UseAsTemplateOnly { get; set; }
@@ -856,7 +856,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Enables assignment of a primary IPv6 address to the cluster. This feature is only available when `associate_ipv6_address` is explicitly set to true. Additionally, the cluster must have been initially created as an EKS cluster in IPv6 mode.
+        /// Enables assignment of a primary IPv6 address to the cluster. This feature is only available when `AssociateIpv6Address` is explicitly set to true. Additionally, the cluster must have been initially created as an EKS cluster in IPv6 mode.
         /// </summary>
         [Input("primaryIpv6")]
         public Input<bool>? PrimaryIpv6 { get; set; }
@@ -922,7 +922,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<int>? SpotPercentage { get; set; }
 
         /// <summary>
-        /// Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
+        /// Ocean will spread the nodes across markets by this value. Possible values: `Vcpu` or `Count`.
         /// </summary>
         [Input("spreadNodesBy")]
         public Input<string>? SpreadNodesBy { get; set; }
@@ -969,7 +969,7 @@ namespace Pulumi.SpotInst.Aws
 
         /// <summary>
         /// launch specification defined on the Ocean object will function only as a template for virtual node groups.
-        /// When set to true, on Ocean resource creation please make sure your custom VNG has an initial_nodes parameter to create nodes for your VNG.
+        /// When set to true, on Ocean resource creation please make sure your custom VNG has an InitialNodes parameter to create nodes for your VNG.
         /// </summary>
         [Input("useAsTemplateOnly")]
         public Input<bool>? UseAsTemplateOnly { get; set; }

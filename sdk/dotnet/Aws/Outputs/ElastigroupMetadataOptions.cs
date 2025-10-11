@@ -18,7 +18,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly int? HttpPutResponseHopLimit;
         /// <summary>
-        /// The state of token usage for your instance metadata requests. Valid values: `optional` or `required`.
+        /// The state of token usage for your instance metadata requests. Valid values: `Optional` or `Required`.
         /// </summary>
         public readonly string HttpTokens;
         /// <summary>

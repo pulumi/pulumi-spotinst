@@ -22,7 +22,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly string? DesiredCapacity;
         /// <summary>
-        /// Select the EMR instance groups to execute the scheduled task on. Valid values: `task`.
+        /// Select the EMR instance groups to execute the scheduled task on. Valid values: `Task`.
         /// </summary>
         public readonly string InstanceGroupType;
         /// <summary>

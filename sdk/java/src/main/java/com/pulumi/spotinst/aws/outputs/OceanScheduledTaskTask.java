@@ -25,7 +25,7 @@ public final class OceanScheduledTaskTask {
      */
     private Boolean isEnabled;
     /**
-     * @return This filed will be compatible to the `task_type` field. If `task_type` is defined as `clusterRoll`, user cluster roll object in parameters.
+     * @return This filed will be compatible to the `taskType` field. If `taskType` is defined as `clusterRoll`, user cluster roll object in parameters.
      * 
      */
     private @Nullable OceanScheduledTaskTaskParameters parameters;
@@ -51,7 +51,7 @@ public final class OceanScheduledTaskTask {
         return this.isEnabled;
     }
     /**
-     * @return This filed will be compatible to the `task_type` field. If `task_type` is defined as `clusterRoll`, user cluster roll object in parameters.
+     * @return This filed will be compatible to the `taskType` field. If `taskType` is defined as `clusterRoll`, user cluster roll object in parameters.
      * 
      */
     public Optional<OceanScheduledTaskTaskParameters> parameters() {

@@ -22,11 +22,11 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly string DeviceName;
         /// <summary>
-        /// Set dynamic IOPS properties. When using this object, you cannot use the `iops` object. You must use one or the other.
+        /// Set dynamic IOPS properties. When using this object, you cannot use the `Iops` object. You must use one or the other.
         /// </summary>
         public readonly Outputs.ElastigroupEbsBlockDeviceDynamicIops? DynamicIops;
         /// <summary>
-        /// Set dynamic volume size properties. When using this object, you cannot use `volume_size`. You must use one or the other.
+        /// Set dynamic volume size properties. When using this object, you cannot use `VolumeSize`. You must use one or the other.
         /// </summary>
         public readonly Outputs.ElastigroupEbsBlockDeviceDynamicVolumeSize? DynamicVolumeSize;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly bool? Encrypted;
         /// <summary>
-        /// The amount of provisioned [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html). This must be set with a `volume_type` of `"io1"`.
+        /// The amount of provisioned [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html). This must be set with a `VolumeType` of `"io1"`.
         /// </summary>
         public readonly int? Iops;
         /// <summary>
@@ -46,7 +46,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly string? SnapshotId;
         /// <summary>
-        /// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.
+        /// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `VolumeType` = gp3.
         /// </summary>
         public readonly int? Throughput;
         /// <summary>

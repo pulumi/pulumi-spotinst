@@ -19,7 +19,7 @@ namespace Pulumi.SpotInst.Azure.Inputs
         private InputList<string>? _timeWindows;
 
         /// <summary>
-        /// The times that the shutdown hours will apply. Required if `is_enabled` is true.
+        /// The times that the shutdown hours will apply. Required if `IsEnabled` is true.
         /// </summary>
         public InputList<string> TimeWindows
         {

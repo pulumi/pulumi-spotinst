@@ -13,7 +13,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
     public sealed class OceanAutoscalerGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscale_is_auto_config` toggled on.
+        /// Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `AutoscaleIsAutoConfig` toggled on.
         /// </summary>
         [Input("autoHeadroomPercentage")]
         public Input<int>? AutoHeadroomPercentage { get; set; }

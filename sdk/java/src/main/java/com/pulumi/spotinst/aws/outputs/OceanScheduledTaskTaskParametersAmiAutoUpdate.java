@@ -23,7 +23,7 @@ public final class OceanScheduledTaskTaskParametersAmiAutoUpdate {
      */
     private @Nullable Boolean applyRoll;
     /**
-     * @return When set to &#39;true&#39;, the auto-update process will update the VNGs’ AMI with the AMI to match the Kubernetes control plane version. either &#34;patch&#34; or &#34;minor_version&#34; must be true.
+     * @return When set to &#39;true&#39;, the auto-update process will update the VNGs’ AMI with the AMI to match the Kubernetes control plane version. either &#34;patch&#34; or &#34;minorVersion&#34; must be true.
      * 
      */
     private @Nullable Boolean minorVersion;
@@ -49,7 +49,7 @@ public final class OceanScheduledTaskTaskParametersAmiAutoUpdate {
         return Optional.ofNullable(this.applyRoll);
     }
     /**
-     * @return When set to &#39;true&#39;, the auto-update process will update the VNGs’ AMI with the AMI to match the Kubernetes control plane version. either &#34;patch&#34; or &#34;minor_version&#34; must be true.
+     * @return When set to &#39;true&#39;, the auto-update process will update the VNGs’ AMI with the AMI to match the Kubernetes control plane version. either &#34;patch&#34; or &#34;minorVersion&#34; must be true.
      * 
      */
     public Optional<Boolean> minorVersion() {

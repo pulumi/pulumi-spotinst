@@ -20,7 +20,7 @@ public final class OceanNpVirtualNodeGroupFilters {
      */
     private @Nullable String acceleratedNetworking;
     /**
-     * @return The filtered vm sizes will support at least one of the architectures from this list. x86_64 includes both intel64 and amd64.
+     * @return The filtered vm sizes will support at least one of the architectures from this list. x8664 includes both intel64 and amd64.
      * 
      */
     private @Nullable List<String> architectures;
@@ -99,7 +99,7 @@ public final class OceanNpVirtualNodeGroupFilters {
         return Optional.ofNullable(this.acceleratedNetworking);
     }
     /**
-     * @return The filtered vm sizes will support at least one of the architectures from this list. x86_64 includes both intel64 and amd64.
+     * @return The filtered vm sizes will support at least one of the architectures from this list. x8664 includes both intel64 and amd64.
      * 
      */
     public List<String> architectures() {

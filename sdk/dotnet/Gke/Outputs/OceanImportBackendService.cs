@@ -14,12 +14,12 @@ namespace Pulumi.SpotInst.Gke.Outputs
     public sealed class OceanImportBackendService
     {
         /// <summary>
-        /// Sets which location the backend services will be active. Valid values: `regional`, `global`.
+        /// Sets which location the backend services will be active. Valid values: `Regional`, `Global`.
         /// </summary>
         public readonly string? LocationType;
         public readonly ImmutableArray<Outputs.OceanImportBackendServiceNamedPort> NamedPorts;
         /// <summary>
-        /// Use when `location_type` is `regional`. Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
+        /// Use when `LocationType` is `Regional`. Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
         /// </summary>
         public readonly string? Scheme;
         /// <summary>

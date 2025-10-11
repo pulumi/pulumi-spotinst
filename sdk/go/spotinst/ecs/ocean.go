@@ -14,6 +14,8 @@ import (
 
 // Manages a Spotinst Ocean ECS resource.
 //
+// ## Example Usage
+//
 // ## Import
 //
 // Clusters can be imported using the Ocean `id`, e.g.,

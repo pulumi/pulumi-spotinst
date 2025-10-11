@@ -18,7 +18,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly string StatefulInstanceId;
         /// <summary>
-        /// String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+        /// String, Action type. Supported action types: `Pause`, `Resume`, `Recycle`, `Deallocate`.
         /// 
         /// Usage:
         /// </summary>

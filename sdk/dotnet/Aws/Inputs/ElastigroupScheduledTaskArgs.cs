@@ -99,7 +99,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<string>? TargetCapacity { get; set; }
 
         /// <summary>
-        /// The task type to run. Supported task types are: `"scale"`, `"backup_ami"`, `"roll"`, `"scaleUp"`, `"percentageScaleUp"`, `"scaleDown"`, `"percentageScaleDown"`, `"statefulUpdateCapacity"`.
+        /// The task type to run. Supported task types are: `"scale"`, `"BackupAmi"`, `"roll"`, `"scaleUp"`, `"percentageScaleUp"`, `"scaleDown"`, `"percentageScaleDown"`, `"statefulUpdateCapacity"`.
         /// </summary>
         [Input("taskType", required: true)]
         public Input<string> TaskType { get; set; } = null!;

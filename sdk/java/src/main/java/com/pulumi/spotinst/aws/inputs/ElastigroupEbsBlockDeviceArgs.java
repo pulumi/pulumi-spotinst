@@ -66,14 +66,14 @@ public final class ElastigroupEbsBlockDeviceArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Set dynamic volume size properties. When using this object, you cannot use `volume_size`. You must use one or the other.
+     * Set dynamic volume size properties. When using this object, you cannot use `volumeSize`. You must use one or the other.
      * 
      */
     @Import(name="dynamicVolumeSize")
     private @Nullable Output<ElastigroupEbsBlockDeviceDynamicVolumeSizeArgs> dynamicVolumeSize;
 
     /**
-     * @return Set dynamic volume size properties. When using this object, you cannot use `volume_size`. You must use one or the other.
+     * @return Set dynamic volume size properties. When using this object, you cannot use `volumeSize`. You must use one or the other.
      * 
      */
     public Optional<Output<ElastigroupEbsBlockDeviceDynamicVolumeSizeArgs>> dynamicVolumeSize() {
@@ -96,14 +96,14 @@ public final class ElastigroupEbsBlockDeviceArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The amount of provisioned [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html). This must be set with a `volume_type` of `&#34;io1&#34;`.
+     * The amount of provisioned [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html). This must be set with a `volumeType` of `&#34;io1&#34;`.
      * 
      */
     @Import(name="iops")
     private @Nullable Output<Integer> iops;
 
     /**
-     * @return The amount of provisioned [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html). This must be set with a `volume_type` of `&#34;io1&#34;`.
+     * @return The amount of provisioned [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html). This must be set with a `volumeType` of `&#34;io1&#34;`.
      * 
      */
     public Optional<Output<Integer>> iops() {
@@ -141,14 +141,14 @@ public final class ElastigroupEbsBlockDeviceArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.
+     * The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
      * 
      */
     @Import(name="throughput")
     private @Nullable Output<Integer> throughput;
 
     /**
-     * @return The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.
+     * @return The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
      * 
      */
     public Optional<Output<Integer>> throughput() {
@@ -283,7 +283,7 @@ public final class ElastigroupEbsBlockDeviceArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param dynamicVolumeSize Set dynamic volume size properties. When using this object, you cannot use `volume_size`. You must use one or the other.
+         * @param dynamicVolumeSize Set dynamic volume size properties. When using this object, you cannot use `volumeSize`. You must use one or the other.
          * 
          * @return builder
          * 
@@ -294,7 +294,7 @@ public final class ElastigroupEbsBlockDeviceArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param dynamicVolumeSize Set dynamic volume size properties. When using this object, you cannot use `volume_size`. You must use one or the other.
+         * @param dynamicVolumeSize Set dynamic volume size properties. When using this object, you cannot use `volumeSize`. You must use one or the other.
          * 
          * @return builder
          * 
@@ -325,7 +325,7 @@ public final class ElastigroupEbsBlockDeviceArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param iops The amount of provisioned [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html). This must be set with a `volume_type` of `&#34;io1&#34;`.
+         * @param iops The amount of provisioned [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html). This must be set with a `volumeType` of `&#34;io1&#34;`.
          * 
          * @return builder
          * 
@@ -336,7 +336,7 @@ public final class ElastigroupEbsBlockDeviceArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param iops The amount of provisioned [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html). This must be set with a `volume_type` of `&#34;io1&#34;`.
+         * @param iops The amount of provisioned [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html). This must be set with a `volumeType` of `&#34;io1&#34;`.
          * 
          * @return builder
          * 
@@ -388,7 +388,7 @@ public final class ElastigroupEbsBlockDeviceArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param throughput The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.
+         * @param throughput The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
          * 
          * @return builder
          * 
@@ -399,7 +399,7 @@ public final class ElastigroupEbsBlockDeviceArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param throughput The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.
+         * @param throughput The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
          * 
          * @return builder
          * 

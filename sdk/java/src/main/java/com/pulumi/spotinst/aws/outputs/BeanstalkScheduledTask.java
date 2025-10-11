@@ -86,7 +86,7 @@ public final class BeanstalkScheduledTask {
      */
     private @Nullable String targetCapacity;
     /**
-     * @return The task type to run. Supported task types are: `&#34;scale&#34;`, `&#34;backup_ami&#34;`, `&#34;roll&#34;`, `&#34;scaleUp&#34;`, `&#34;percentageScaleUp&#34;`, `&#34;scaleDown&#34;`, `&#34;percentageScaleDown&#34;`, `&#34;statefulUpdateCapacity&#34;`.
+     * @return The task type to run. Supported task types are: `&#34;scale&#34;`, `&#34;backupAmi&#34;`, `&#34;roll&#34;`, `&#34;scaleUp&#34;`, `&#34;percentageScaleUp&#34;`, `&#34;scaleDown&#34;`, `&#34;percentageScaleDown&#34;`, `&#34;statefulUpdateCapacity&#34;`.
      * 
      */
     private String taskType;
@@ -193,7 +193,7 @@ public final class BeanstalkScheduledTask {
         return Optional.ofNullable(this.targetCapacity);
     }
     /**
-     * @return The task type to run. Supported task types are: `&#34;scale&#34;`, `&#34;backup_ami&#34;`, `&#34;roll&#34;`, `&#34;scaleUp&#34;`, `&#34;percentageScaleUp&#34;`, `&#34;scaleDown&#34;`, `&#34;percentageScaleDown&#34;`, `&#34;statefulUpdateCapacity&#34;`.
+     * @return The task type to run. Supported task types are: `&#34;scale&#34;`, `&#34;backupAmi&#34;`, `&#34;roll&#34;`, `&#34;scaleUp&#34;`, `&#34;percentageScaleUp&#34;`, `&#34;scaleDown&#34;`, `&#34;percentageScaleDown&#34;`, `&#34;statefulUpdateCapacity&#34;`.
      * 
      */
     public String taskType() {

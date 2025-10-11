@@ -19,7 +19,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<int>? HttpPutResponseHopLimit { get; set; }
 
         /// <summary>
-        /// Determines if a signed token is required or not. Valid values: `optional` or `required`.
+        /// Determines if a signed token is required or not. Valid values: `Optional` or `Required`.
         /// </summary>
         [Input("httpTokens", required: true)]
         public Input<string> HttpTokens { get; set; } = null!;

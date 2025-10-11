@@ -18,7 +18,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly int Timeout;
         /// <summary>
-        /// The action to take if the timeout is exceeded. Valid values: `terminate`, `terminateAndRetry`.
+        /// The action to take if the timeout is exceeded. Valid values: `Terminate`, `terminateAndRetry`.
         /// </summary>
         public readonly string TimeoutAction;
 

@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ElastigroupScalingDownPolicy {
     /**
-     * @return The type of action to perform for scaling. Valid values: `&#34;adjustment&#34;`, `&#34;percentageAdjustment&#34;`, `&#34;setMaxTarget&#34;`, `&#34;setMinTarget&#34;`, `&#34;updateCapacity&#34;`. If a `step_adjustment` object is defined, then it cannot be specified.
+     * @return The type of action to perform for scaling. Valid values: `&#34;adjustment&#34;`, `&#34;percentageAdjustment&#34;`, `&#34;setMaxTarget&#34;`, `&#34;setMinTarget&#34;`, `&#34;updateCapacity&#34;`. If a `stepAdjustment` object is defined, then it cannot be specified.
      * 
      */
     private @Nullable String actionType;
@@ -106,7 +106,7 @@ public final class ElastigroupScalingDownPolicy {
      */
     private @Nullable String target;
     /**
-     * @return The value against which the specified statistic is compared. If a `step_adjustment` object is defined, then it cannot be specified.
+     * @return The value against which the specified statistic is compared. If a `stepAdjustment` object is defined, then it cannot be specified.
      * 
      */
     private @Nullable Double threshold;
@@ -118,7 +118,7 @@ public final class ElastigroupScalingDownPolicy {
 
     private ElastigroupScalingDownPolicy() {}
     /**
-     * @return The type of action to perform for scaling. Valid values: `&#34;adjustment&#34;`, `&#34;percentageAdjustment&#34;`, `&#34;setMaxTarget&#34;`, `&#34;setMinTarget&#34;`, `&#34;updateCapacity&#34;`. If a `step_adjustment` object is defined, then it cannot be specified.
+     * @return The type of action to perform for scaling. Valid values: `&#34;adjustment&#34;`, `&#34;percentageAdjustment&#34;`, `&#34;setMaxTarget&#34;`, `&#34;setMinTarget&#34;`, `&#34;updateCapacity&#34;`. If a `stepAdjustment` object is defined, then it cannot be specified.
      * 
      */
     public Optional<String> actionType() {
@@ -243,7 +243,7 @@ public final class ElastigroupScalingDownPolicy {
         return Optional.ofNullable(this.target);
     }
     /**
-     * @return The value against which the specified statistic is compared. If a `step_adjustment` object is defined, then it cannot be specified.
+     * @return The value against which the specified statistic is compared. If a `stepAdjustment` object is defined, then it cannot be specified.
      * 
      */
     public Optional<Double> threshold() {

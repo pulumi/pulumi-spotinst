@@ -13,7 +13,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
     public sealed class ElastigroupUpdatePolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enables updates to tags without rolling the group when set to `true`.
+        /// Enables updates to tags without rolling the group when set to `True`.
         /// </summary>
         [Input("autoApplyTags")]
         public Input<bool>? AutoApplyTags { get; set; }

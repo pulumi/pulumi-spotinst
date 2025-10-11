@@ -39,7 +39,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         /// <summary>
         /// String, restrict the maximal number of instances which can be added in each scale-up action.
         /// 
-        /// `scaling_target_policies` support predictive scaling:
+        /// `ScalingTargetPolicies` support predictive scaling:
         /// </summary>
         [Input("maxCapacityPerScale")]
         public Input<string>? MaxCapacityPerScale { get; set; }

@@ -34,7 +34,7 @@ import javax.annotation.Nullable;
 /**
  * Manages a custom Spotinst Ocean GKE Launch Spec resource.
  * 
- * &gt; This resource can be imported from GKE node pool or not. If you want to import the node pool and create the VNG from it, please provide `node_pool_name`.
+ * &gt; This resource can be imported from GKE node pool or not. If you want to import the node pool and create the VNG from it, please provide `nodePoolName`.
  * 
  * ## Example Usage
  * 
@@ -204,14 +204,14 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.createOptions);
     }
     /**
-     * List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured if cluster&#39;s `instance_types` is configured.
+     * List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured if cluster&#39;s `instanceTypes` is configured.
      * 
      */
     @Export(name="filters", refs={OceanLaunchSpecFilters.class}, tree="[0]")
     private Output</* @Nullable */ OceanLaunchSpecFilters> filters;
 
     /**
-     * @return List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured if cluster&#39;s `instance_types` is configured.
+     * @return List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured if cluster&#39;s `instanceTypes` is configured.
      * 
      */
     public Output<Optional<OceanLaunchSpecFilters>> filters() {

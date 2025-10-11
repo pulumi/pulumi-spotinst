@@ -15,7 +15,7 @@ namespace Pulumi.SpotInst.Azure.Outputs
     {
         public readonly bool? IsEnabled;
         /// <summary>
-        /// The times that the shutdown hours will apply. Required if `is_enabled` is true.
+        /// The times that the shutdown hours will apply. Required if `IsEnabled` is true.
         /// </summary>
         public readonly ImmutableArray<string> TimeWindows;
 

@@ -13,7 +13,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
     public sealed class OceanScheduledTaskTaskGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. (Example: `0 1 * * *`).
+        /// A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `Frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. (Example: `0 1 * * *`).
         /// </summary>
         [Input("cronExpression", required: true)]
         public Input<string> CronExpression { get; set; } = null!;
@@ -25,7 +25,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<bool> IsEnabled { get; set; } = null!;
 
         /// <summary>
-        /// This filed will be compatible to the `task_type` field. If `task_type` is defined as `clusterRoll`, user cluster roll object in parameters.
+        /// This filed will be compatible to the `TaskType` field. If `TaskType` is defined as `clusterRoll`, user cluster roll object in parameters.
         /// </summary>
         [Input("parameters")]
         public Input<Inputs.OceanScheduledTaskTaskParametersGetArgs>? Parameters { get; set; }

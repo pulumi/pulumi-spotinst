@@ -24,7 +24,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// <summary>
         /// Additional size per resource unit (in IOPS).
         /// 
-        /// Modifying any `ebs_block_device` currently requires resource replacement.
+        /// Modifying any `EbsBlockDevice` currently requires resource replacement.
         /// 
         /// Usage:
         /// </summary>

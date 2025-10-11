@@ -25,14 +25,14 @@ public final class OceanNpSchedulingShutdownHoursArgs extends com.pulumi.resourc
     }
 
     /**
-     * The times that the shutdown hours will apply. Required if `is_enabled` is true.
+     * The times that the shutdown hours will apply. Required if `isEnabled` is true.
      * 
      */
     @Import(name="timeWindows")
     private @Nullable Output<List<String>> timeWindows;
 
     /**
-     * @return The times that the shutdown hours will apply. Required if `is_enabled` is true.
+     * @return The times that the shutdown hours will apply. Required if `isEnabled` is true.
      * 
      */
     public Optional<Output<List<String>>> timeWindows() {
@@ -74,7 +74,7 @@ public final class OceanNpSchedulingShutdownHoursArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param timeWindows The times that the shutdown hours will apply. Required if `is_enabled` is true.
+         * @param timeWindows The times that the shutdown hours will apply. Required if `isEnabled` is true.
          * 
          * @return builder
          * 
@@ -85,7 +85,7 @@ public final class OceanNpSchedulingShutdownHoursArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param timeWindows The times that the shutdown hours will apply. Required if `is_enabled` is true.
+         * @param timeWindows The times that the shutdown hours will apply. Required if `isEnabled` is true.
          * 
          * @return builder
          * 
@@ -95,7 +95,7 @@ public final class OceanNpSchedulingShutdownHoursArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param timeWindows The times that the shutdown hours will apply. Required if `is_enabled` is true.
+         * @param timeWindows The times that the shutdown hours will apply. Required if `isEnabled` is true.
          * 
          * @return builder
          * 

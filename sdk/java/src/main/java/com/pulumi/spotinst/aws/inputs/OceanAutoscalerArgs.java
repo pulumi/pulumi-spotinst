@@ -22,14 +22,14 @@ public final class OceanAutoscalerArgs extends com.pulumi.resources.ResourceArgs
     public static final OceanAutoscalerArgs Empty = new OceanAutoscalerArgs();
 
     /**
-     * Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscale_is_auto_config` toggled on.
+     * Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscaleIsAutoConfig` toggled on.
      * 
      */
     @Import(name="autoHeadroomPercentage")
     private @Nullable Output<Integer> autoHeadroomPercentage;
 
     /**
-     * @return Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscale_is_auto_config` toggled on.
+     * @return Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscaleIsAutoConfig` toggled on.
      * 
      */
     public Optional<Output<Integer>> autoHeadroomPercentage() {
@@ -189,7 +189,7 @@ public final class OceanAutoscalerArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param autoHeadroomPercentage Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscale_is_auto_config` toggled on.
+         * @param autoHeadroomPercentage Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscaleIsAutoConfig` toggled on.
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class OceanAutoscalerArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param autoHeadroomPercentage Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscale_is_auto_config` toggled on.
+         * @param autoHeadroomPercentage Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscaleIsAutoConfig` toggled on.
          * 
          * @return builder
          * 

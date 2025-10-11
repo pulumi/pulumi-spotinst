@@ -25,7 +25,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<bool>? ApplyRoll { get; set; }
 
         /// <summary>
-        /// When set to 'true', the auto-update process will update the VNGs’ AMI with the AMI to match the Kubernetes control plane version. either "patch" or "minor_version" must be true.
+        /// When set to 'true', the auto-update process will update the VNGs’ AMI with the AMI to match the Kubernetes control plane version. either "patch" or "MinorVersion" must be true.
         /// </summary>
         [Input("minorVersion")]
         public Input<bool>? MinorVersion { get; set; }

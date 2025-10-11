@@ -16,6 +16,8 @@ import (
 //
 // ## Example Usage
 //
+// ### New Strategy
+//
 // ### Wrap Strategy
 //
 // ```go

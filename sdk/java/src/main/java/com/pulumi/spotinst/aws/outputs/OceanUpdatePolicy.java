@@ -26,7 +26,7 @@ public final class OceanUpdatePolicy {
      */
     private @Nullable Boolean conditionedRoll;
     /**
-     * @return A custom list of attributes will trigger the cluster roll operation (overrides the predefined list of parameters). Valid only when the `conditioned_roll` parameter is set to true. (Valid values: `&#34;subnet_ids&#34;`,`&#34;whitelist&#34;`,`&#34;blacklist&#34;`,`&#34;user_data&#34;`,`&#34;image_id&#34;`,`&#34;security_groups&#34;`,`&#34;key_name&#34;`,`&#34;iam_instance_profile&#34;`,`&#34;associate_public_ip_address&#34;`,`&#34;load_balancers&#34;`,`&#34;instance_metadata_options&#34;`,`&#34;ebs_optimized&#34;`,`&#34;root_volume_size&#34;`)
+     * @return A custom list of attributes will trigger the cluster roll operation (overrides the predefined list of parameters). Valid only when the `conditionedRoll` parameter is set to true. (Valid values: `&#34;subnetIds&#34;`,`&#34;whitelist&#34;`,`&#34;blacklist&#34;`,`&#34;userData&#34;`,`&#34;imageId&#34;`,`&#34;securityGroups&#34;`,`&#34;keyName&#34;`,`&#34;iamInstanceProfile&#34;`,`&#34;associatePublicIpAddress&#34;`,`&#34;loadBalancers&#34;`,`&#34;instanceMetadataOptions&#34;`,`&#34;ebsOptimized&#34;`,`&#34;rootVolumeSize&#34;`)
      * 
      */
     private @Nullable List<String> conditionedRollParams;
@@ -57,7 +57,7 @@ public final class OceanUpdatePolicy {
         return Optional.ofNullable(this.conditionedRoll);
     }
     /**
-     * @return A custom list of attributes will trigger the cluster roll operation (overrides the predefined list of parameters). Valid only when the `conditioned_roll` parameter is set to true. (Valid values: `&#34;subnet_ids&#34;`,`&#34;whitelist&#34;`,`&#34;blacklist&#34;`,`&#34;user_data&#34;`,`&#34;image_id&#34;`,`&#34;security_groups&#34;`,`&#34;key_name&#34;`,`&#34;iam_instance_profile&#34;`,`&#34;associate_public_ip_address&#34;`,`&#34;load_balancers&#34;`,`&#34;instance_metadata_options&#34;`,`&#34;ebs_optimized&#34;`,`&#34;root_volume_size&#34;`)
+     * @return A custom list of attributes will trigger the cluster roll operation (overrides the predefined list of parameters). Valid only when the `conditionedRoll` parameter is set to true. (Valid values: `&#34;subnetIds&#34;`,`&#34;whitelist&#34;`,`&#34;blacklist&#34;`,`&#34;userData&#34;`,`&#34;imageId&#34;`,`&#34;securityGroups&#34;`,`&#34;keyName&#34;`,`&#34;iamInstanceProfile&#34;`,`&#34;associatePublicIpAddress&#34;`,`&#34;loadBalancers&#34;`,`&#34;instanceMetadataOptions&#34;`,`&#34;ebsOptimized&#34;`,`&#34;rootVolumeSize&#34;`)
      * 
      */
     public List<String> conditionedRollParams() {

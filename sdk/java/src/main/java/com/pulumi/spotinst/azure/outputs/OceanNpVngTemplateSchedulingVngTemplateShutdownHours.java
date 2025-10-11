@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 public final class OceanNpVngTemplateSchedulingVngTemplateShutdownHours {
     private @Nullable Boolean isEnabled;
     /**
-     * @return The times that the shutdown hours will apply. Required if `is_enabled` is true.
+     * @return The times that the shutdown hours will apply. Required if `isEnabled` is true.
      * 
      */
     private @Nullable List<String> timeWindows;
@@ -25,7 +25,7 @@ public final class OceanNpVngTemplateSchedulingVngTemplateShutdownHours {
         return Optional.ofNullable(this.isEnabled);
     }
     /**
-     * @return The times that the shutdown hours will apply. Required if `is_enabled` is true.
+     * @return The times that the shutdown hours will apply. Required if `isEnabled` is true.
      * 
      */
     public List<String> timeWindows() {

@@ -25,7 +25,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<int>? BatchSizePercentage { get; set; }
 
         /// <summary>
-        /// Add a `comment` description for the roll. The `comment` is limited to 256 chars
+        /// Add a `Comment` description for the roll. The `Comment` is limited to 256 chars
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }

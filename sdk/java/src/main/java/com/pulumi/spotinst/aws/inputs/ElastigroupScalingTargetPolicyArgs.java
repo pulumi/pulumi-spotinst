@@ -68,7 +68,7 @@ public final class ElastigroupScalingTargetPolicyArgs extends com.pulumi.resourc
     /**
      * String, restrict the maximal number of instances which can be added in each scale-up action.
      * 
-     * `scaling_target_policies` support predictive scaling:
+     * `scalingTargetPolicies` support predictive scaling:
      * 
      */
     @Import(name="maxCapacityPerScale")
@@ -77,7 +77,7 @@ public final class ElastigroupScalingTargetPolicyArgs extends com.pulumi.resourc
     /**
      * @return String, restrict the maximal number of instances which can be added in each scale-up action.
      * 
-     * `scaling_target_policies` support predictive scaling:
+     * `scalingTargetPolicies` support predictive scaling:
      * 
      */
     public Optional<Output<String>> maxCapacityPerScale() {
@@ -335,7 +335,7 @@ public final class ElastigroupScalingTargetPolicyArgs extends com.pulumi.resourc
         /**
          * @param maxCapacityPerScale String, restrict the maximal number of instances which can be added in each scale-up action.
          * 
-         * `scaling_target_policies` support predictive scaling:
+         * `scalingTargetPolicies` support predictive scaling:
          * 
          * @return builder
          * 
@@ -348,7 +348,7 @@ public final class ElastigroupScalingTargetPolicyArgs extends com.pulumi.resourc
         /**
          * @param maxCapacityPerScale String, restrict the maximal number of instances which can be added in each scale-up action.
          * 
-         * `scaling_target_policies` support predictive scaling:
+         * `scalingTargetPolicies` support predictive scaling:
          * 
          * @return builder
          * 

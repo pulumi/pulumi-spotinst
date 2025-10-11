@@ -49,7 +49,7 @@ namespace Pulumi.SpotInst.Ecs.Inputs
         public Input<string>? SnapshotId { get; set; }
 
         /// <summary>
-        /// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.
+        /// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `VolumeType` = gp3.
         /// </summary>
         [Input("throughput")]
         public Input<int>? Throughput { get; set; }

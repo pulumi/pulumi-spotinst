@@ -13,7 +13,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
     public sealed class OceanScheduledTaskShutdownHoursArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Toggle the shutdown hours task. (Example: `true`).
+        /// Toggle the shutdown hours task. (Example: `True`).
         /// </summary>
         [Input("isEnabled")]
         public Input<bool>? IsEnabled { get; set; }
@@ -22,7 +22,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         private InputList<string>? _timeWindows;
 
         /// <summary>
-        /// Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of: `ddd:hh:mm-ddd:hh:mm` where `ddd` = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat, `hh` = hour 24 = 0 -23, `mm` = minute = 0 - 59. Time windows should not overlap. Required if `cluster.scheduling.isEnabled` is `true`. (Example: `Fri:15:30-Wed:14:30`).
+        /// Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of: `ddd:hh:mm-ddd:hh:mm` where `Ddd` = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat, `Hh` = hour 24 = 0 -23, `Mm` = minute = 0 - 59. Time windows should not overlap. Required if `cluster.scheduling.isEnabled` is `True`. (Example: `Fri:15:30-Wed:14:30`).
         /// </summary>
         public InputList<string> TimeWindows
         {

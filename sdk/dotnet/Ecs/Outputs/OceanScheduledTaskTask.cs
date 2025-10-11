@@ -14,7 +14,7 @@ namespace Pulumi.SpotInst.Ecs.Outputs
     public sealed class OceanScheduledTaskTask
     {
         /// <summary>
-        /// A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. Example: `0 1 * * *`.
+        /// A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `Frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. Example: `0 1 * * *`.
         /// </summary>
         public readonly string CronExpression;
         /// <summary>

@@ -326,67 +326,67 @@ import javax.annotation.Nullable;
  * 
  * * `name` - (Required) Azure stateful node name.
  * * `region` - (Required) The Azure region your stateful node will be created in.
- * * `resource_group_name` - (Required) Name of the Resource Group for stateful node.
+ * * `resourceGroupName` - (Required) Name of the Resource Group for stateful node.
  * * `description` - (Optional) Describe your Azure stateful node.
  * 
  * ## Strategy
  * 
  * * `strategy` - (Required) Strategy for stateful node.
- *   * `draining_timeout` - (Optional, Default `120`) Time (in seconds) to allow the VM be drained from incoming TCP connections and detached from MLB before terminating it during a scale down operation.
- *   * `availability_vs_cost` - (Optional) Set the desired preference for the Spot market VM selection. (100- Availability, 0- cost).
- *   * `fallback_to_on_demand` - (Required) In case of no spots available, Stateful Node will launch an On-demand instance instead.
- *   * `optimization_windows` - (Optional) Valid format: &#34;ddd:hh:mm-ddd:hh:mm (day:hour(0-23):minute(0-59))&#34;, not empty if revertToSpot.performAt = timeWindow.
- *   * `od_windows` - (Optional) Define the time windows in which the underlying VM will be set as an on-demand lifecycle type. During the entire time window, the rest of the strategy processes will be paused.
+ *   * `drainingTimeout` - (Optional, Default `120`) Time (in seconds) to allow the VM be drained from incoming TCP connections and detached from MLB before terminating it during a scale down operation.
+ *   * `availabilityVsCost` - (Optional) Set the desired preference for the Spot market VM selection. (100- Availability, 0- cost).
+ *   * `fallbackToOnDemand` - (Required) In case of no spots available, Stateful Node will launch an On-demand instance instead.
+ *   * `optimizationWindows` - (Optional) Valid format: &#34;ddd:hh:mm-ddd:hh:mm (day:hour(0-23):minute(0-59))&#34;, not empty if revertToSpot.performAt = timeWindow.
+ *   * `odWindows` - (Optional) Define the time windows in which the underlying VM will be set as an on-demand lifecycle type. During the entire time window, the rest of the strategy processes will be paused.
  *     Switching between on-demand and Spot VM types at the enter/exit of the time window will trigger the recycling of the stateful node. Valid format: &#34;ddd:hh:mm-ddd:hh:mm (day:hour(0-23):minute(0-59))&#34;.
- *   * `preferred_life_cycle` - (Optional, Enum `&#34;od&#34;, &#34;spot&#34;`, Default `&#34;spot&#34;`) The desired type of VM.
- *   * `revert_to_spot` - (Optional) Hold settings for strategy correction - replacing On-Demand for Spot VMs.
- *     * `perform_at` - (Required, Enum `&#34;timeWindow&#34;, &#34;never&#34;, &#34;always&#34;`, Default `&#34;always&#34;`) Settings for maintenance strategy.
- *   * `capacity_reservation` - (Optional) On-demand Capacity Reservation group enables you to reserve Compute capacity in an Azure region or an Availability Zone for any duration of time. [CRG can only be created on the Azure end.](https://learn.microsoft.com/en-us/azure/virtual-machines/capacity-reservation-create)
- *     * `should_utilize` - (Required) Determines whether capacity reservations should be utilized.
- *     * `utilization_strategy` - (Required, Enum `&#34;utilizeOverSpot&#34;, &#34;utilizeOverOD&#34;`) The priority requested for using CRG. This value will determine if CRG is used ahead of spot VMs or On-demand VMs. (`&#34;utilizeOverOD&#34;`- If picked, we will use CRG only in case On demand should be launched. `&#34;utilizeOverSpot&#34;`- CRG will be preferred over Spot. Only after CRG is fully used, spot VMs can be used.)
- *     * `capacity_reservation_groups` - (Optional) List of the desired CRGs to use under the associated Azure subscription. When null we will utilize any available reservation that matches the launch specification.
- *       * `crg_name` - (Required) The name of the CRG.
- *       * `crg_resource_group_name` - (Required) Azure resource group name
- *       * `crg_should_prioritize` - The desired CRG to utilize ahead of other CRGs in the subscription.
- *   * `vm_admins` - (Optional) Defines Azure identities that are considered VM admins. If the list is empty, the defined behavior is `NONE`, If the list is null, the defined behavior is `ALL`. This applies if the object is not defined. If an identity contains the string, it will be considered permitted to perform the following actions: Stop VM: VM admins can move the VM to a &#34;stopped (deallocated)&#34; state using the Azure console. If triggered by someone else, it is considered an interruption.
+ *   * `preferredLifeCycle` - (Optional, Enum `&#34;od&#34;, &#34;spot&#34;`, Default `&#34;spot&#34;`) The desired type of VM.
+ *   * `revertToSpot` - (Optional) Hold settings for strategy correction - replacing On-Demand for Spot VMs.
+ *     * `performAt` - (Required, Enum `&#34;timeWindow&#34;, &#34;never&#34;, &#34;always&#34;`, Default `&#34;always&#34;`) Settings for maintenance strategy.
+ *   * `capacityReservation` - (Optional) On-demand Capacity Reservation group enables you to reserve Compute capacity in an Azure region or an Availability Zone for any duration of time. [CRG can only be created on the Azure end.](https://learn.microsoft.com/en-us/azure/virtual-machines/capacity-reservation-create)
+ *     * `shouldUtilize` - (Required) Determines whether capacity reservations should be utilized.
+ *     * `utilizationStrategy` - (Required, Enum `&#34;utilizeOverSpot&#34;, &#34;utilizeOverOD&#34;`) The priority requested for using CRG. This value will determine if CRG is used ahead of spot VMs or On-demand VMs. (`&#34;utilizeOverOD&#34;`- If picked, we will use CRG only in case On demand should be launched. `&#34;utilizeOverSpot&#34;`- CRG will be preferred over Spot. Only after CRG is fully used, spot VMs can be used.)
+ *     * `capacityReservationGroups` - (Optional) List of the desired CRGs to use under the associated Azure subscription. When null we will utilize any available reservation that matches the launch specification.
+ *       * `crgName` - (Required) The name of the CRG.
+ *       * `crgResourceGroupName` - (Required) Azure resource group name
+ *       * `crgShouldPrioritize` - The desired CRG to utilize ahead of other CRGs in the subscription.
+ *   * `vmAdmins` - (Optional) Defines Azure identities that are considered VM admins. If the list is empty, the defined behavior is `NONE`, If the list is null, the defined behavior is `ALL`. This applies if the object is not defined. If an identity contains the string, it will be considered permitted to perform the following actions: Stop VM: VM admins can move the VM to a &#34;stopped (deallocated)&#34; state using the Azure console. If triggered by someone else, it is considered an interruption.
  * 
  * ## Compute
  * 
  * * `os` - (Required, Enum `&#34;Linux&#34;, &#34;Windows&#34;`) Type of operating system.
- * * `vm_sizes` - (Required) Defines the VM sizes to use when launching VMs.
- *     * `od_sizes` - (Required) Available On-Demand sizes.
- *     * `spot_sizes` - (Optional) Available Spot-VM sizes. Required if spotSizeAttributes isn&#39;t specified.
- *     * `preferred_spot_sizes` - (Optional) Prioritize Spot VM sizes when launching Spot VMs for the group. If set, must be a sublist of compute.vmSizes.spotSizes.
- *     * `excluded_vm_sizes` - (Optional) Defines the VM sizes to exclude when defining spot types with spotSizeAttributes.
- *     * `spot_size_attributes` - (Optional) Defines values and ranges for attributes of the spot sizes to use when launching VMs. Required if spotSizes isn&#39;t specified.
- *       * `max_cpu` - (Optional) Maximum amount of vCPU units.
- *       * `min_cpu` - (Optional) Minimum amount of vCPU units.
- *       * `max_memory` - (Optional) Maximum amount of memory in GiB.
- *       * `min_memory` - (Optional) Minimum amount of memory in GiB.
- *       * `max_storage` - (Optional) Maximum amount of storage in GiB.
- *       * `min_storage` - (optional) Minimum amount of storage in GiB.
+ * * `vmSizes` - (Required) Defines the VM sizes to use when launching VMs.
+ *     * `odSizes` - (Required) Available On-Demand sizes.
+ *     * `spotSizes` - (Optional) Available Spot-VM sizes. Required if spotSizeAttributes isn&#39;t specified.
+ *     * `preferredSpotSizes` - (Optional) Prioritize Spot VM sizes when launching Spot VMs for the group. If set, must be a sublist of compute.vmSizes.spotSizes.
+ *     * `excludedVmSizes` - (Optional) Defines the VM sizes to exclude when defining spot types with spotSizeAttributes.
+ *     * `spotSizeAttributes` - (Optional) Defines values and ranges for attributes of the spot sizes to use when launching VMs. Required if spotSizes isn&#39;t specified.
+ *       * `maxCpu` - (Optional) Maximum amount of vCPU units.
+ *       * `minCpu` - (Optional) Minimum amount of vCPU units.
+ *       * `maxMemory` - (Optional) Maximum amount of memory in GiB.
+ *       * `minMemory` - (Optional) Minimum amount of memory in GiB.
+ *       * `maxStorage` - (Optional) Maximum amount of storage in GiB.
+ *       * `minStorage` - (optional) Minimum amount of storage in GiB.
  * * `zones` - (Optional, Enum `&#34;1&#34;, &#34;2&#34;, &#34;3&#34;`) List of Azure Availability Zones in the defined region. If not defined, Virtual machines will be launched regionally.
- * * `preferred_zone` - (Optional, Enum `&#34;1&#34;, &#34;2&#34;, &#34;3&#34;`) The AZ to prioritize when launching VMs. If no markets are available in the Preferred AZ, VMs are launched in the non-preferred AZ. Must be a sublist of compute.zones.
- * * `custom_data` - (Optional) This value will hold the YAML in base64 and will be executed upon VM launch.
- * * `shutdown_script` - (Optional) Shutdown script for the stateful node. Value should be passed as a string encoded at Base64 only.
- * * `user_data` - (Optional) Define a set of scripts or other metadata that&#39;s inserted to an Azure virtual machine at provision time. (Base64 encoded)
- * * `vm_name` - (Optional) Set a VM name that will be persisted throughout the entire node lifecycle. This can&#39;t be set if `vm_name_prefix` is set.
- * * `vm_name_prefix` - (Optional) Set a VM name prefix to be used for all launched VMs and the VM resources. This can&#39;t be set if `vm_name` is set.
- * * `license_type` - (Optional) Specify an existing Azure license type to use when launching new VMs. Valid values for Windows OS: &#34;Windows_Server&#34;, &#34;Windows_Client&#34;, Valid values for Linux OS: &#34;RHEL_BYOS&#34;, &#34;SLES_BYOS&#34;
+ * * `preferredZone` - (Optional, Enum `&#34;1&#34;, &#34;2&#34;, &#34;3&#34;`) The AZ to prioritize when launching VMs. If no markets are available in the Preferred AZ, VMs are launched in the non-preferred AZ. Must be a sublist of compute.zones.
+ * * `customData` - (Optional) This value will hold the YAML in base64 and will be executed upon VM launch.
+ * * `shutdownScript` - (Optional) Shutdown script for the stateful node. Value should be passed as a string encoded at Base64 only.
+ * * `userData` - (Optional) Define a set of scripts or other metadata that&#39;s inserted to an Azure virtual machine at provision time. (Base64 encoded)
+ * * `vmName` - (Optional) Set a VM name that will be persisted throughout the entire node lifecycle. This can&#39;t be set if `vmNamePrefix` is set.
+ * * `vmNamePrefix` - (Optional) Set a VM name prefix to be used for all launched VMs and the VM resources. This can&#39;t be set if `vmName` is set.
+ * * `licenseType` - (Optional) Specify an existing Azure license type to use when launching new VMs. Valid values for Windows OS: &#34;Windows_Server&#34;, &#34;Windows_Client&#34;, Valid values for Linux OS: &#34;RHEL_BYOS&#34;, &#34;SLES_BYOS&#34;
  * 
- * &lt;a id=&#34;boot_diagnostics&#34;&gt;&lt;/a&gt;
+ * &lt;a id=&#34;bootDiagnostics&#34;&gt;&lt;/a&gt;
  * ## Boot Diagnostics
  * 
- * * `boot_diagnostics`
- *   * `is_enabled` - (Optional) Allows you to enable and disable the configuration of boot diagnostics at launch.
- *   * `storage_url` - (Optional) The storage URI that is used if a type is unmanaged. The storage URI must follow the blob storage URI format (&#34;https://.blob.core.windows.net/&#34;). StorageUri is required if the type is unmanaged. StorageUri must be ‘null’ in case the boot diagnostics type is managed.
+ * * `bootDiagnostics`
+ *   * `isEnabled` - (Optional) Allows you to enable and disable the configuration of boot diagnostics at launch.
+ *   * `storageUrl` - (Optional) The storage URI that is used if a type is unmanaged. The storage URI must follow the blob storage URI format (&#34;https://.blob.core.windows.net/&#34;). StorageUri is required if the type is unmanaged. StorageUri must be ‘null’ in case the boot diagnostics type is managed.
  *   * `type` - (Optional, Enum `&#34;managed&#34;, &#34;unmanaged&#34;`) Defines the storage type on VM launch in Azure.
  * 
- * &lt;a id=&#34;data_disks&#34;&gt;&lt;/a&gt;
+ * &lt;a id=&#34;dataDisks&#34;&gt;&lt;/a&gt;
  * ## Data Disks
  * 
- * * `data_disk` - (Optional) The definitions of data disks that will be created and attached to the stateful node&#39;s VM.
- *   * `size_gb` - (Required) The size of the data disk in GB, required if dataDisks is specified.
+ * * `dataDisk` - (Optional) The definitions of data disks that will be created and attached to the stateful node&#39;s VM.
+ *   * `sizeGb` - (Required) The size of the data disk in GB, required if dataDisks is specified.
  *   * `lun` - (Required) The LUN of the data disk.
  *   * `type` - (Required, Enum `&#34;Standard_LRS&#34;, &#34;Premium_LRS&#34;, &#34;StandardSSD_LRS&#34;, &#34;UltraSSD_LRS&#34;`) The type of the data disk.
  * 
@@ -396,149 +396,149 @@ import javax.annotation.Nullable;
  *   * `name` - (Required) Required on compute.launchSpecification.extensions object.
  *   * `type` - (Required) Required on compute.launchSpecification.extensions object.
  *   * `publisher` - (Required) Required on compute.launchSpecification.extensions object.
- *   * `api_version` - (Required) The API version of the extension. Required if extension specified.
- *   * `minor_version_auto_upgrade` - (Required) Required on compute.launchSpecification.extensions object.
- *   * `protected_settings` - (Optional) Object for protected settings.
- *   * `public_settings` - (Optional) Object for public settings.
+ *   * `apiVersion` - (Required) The API version of the extension. Required if extension specified.
+ *   * `minorVersionAutoUpgrade` - (Required) Required on compute.launchSpecification.extensions object.
+ *   * `protectedSettings` - (Optional) Object for protected settings.
+ *   * `publicSettings` - (Optional) Object for public settings.
  * 
  * ## Image
  * 
  * * `image`
- *   * `marketplace_image` - (Optional) Select an image from Azure&#39;s Marketplace image catalogue. Required if the custom image or gallery image are not specified.
+ *   * `marketplaceImage` - (Optional) Select an image from Azure&#39;s Marketplace image catalogue. Required if the custom image or gallery image are not specified.
  *     * `publisher` - (Required) Image publisher.
  *     * `offer` - (Required) Image offer.
  *     * `sku` - (Required) Image Stock Keeping Unit, which is the specific version of the image.
  *     * `version` - (Required, Default `&#34;latest&#34;`) Image&#39;s version. if version not provided we use &#34;latest&#34;.
  *   * `gallery` - (Optional) Gallery image definitions. Required if custom image or marketplace image are not specified.
- *     * `gallery_resource_group_name` - (Required) The resource group name for gallery image.
- *     * `gallery_name` - (Required) Name of the gallery.
- *     * `image_name` - (Required) Name of the gallery image.
- *     * `version_name` - (Required) Image&#39;s version. Can be in the format x.x.x or &#39;latest&#39;.
- *     * `spot_account_id` - (Optional) The Spot account ID that connected to the Azure subscription to which the gallery belongs. Relevant only in case of cross-subscription shared galleries. [Read more](https://docs.spot.io/elastigroup/features-azure/shared-image-galleries) about cross-subscription shared galleries in Elastigroup.
- *   * `custom_image` - (Optional) Custom image definitions. Required if marketplace image or gallery image are not specified.
- *     * `custom_image_resource_group_name` - (Required) The resource group name for custom image.
+ *     * `galleryResourceGroupName` - (Required) The resource group name for gallery image.
+ *     * `galleryName` - (Required) Name of the gallery.
+ *     * `imageName` - (Required) Name of the gallery image.
+ *     * `versionName` - (Required) Image&#39;s version. Can be in the format x.x.x or &#39;latest&#39;.
+ *     * `spotAccountId` - (Optional) The Spot account ID that connected to the Azure subscription to which the gallery belongs. Relevant only in case of cross-subscription shared galleries. [Read more](https://docs.spot.io/elastigroup/features-azure/shared-image-galleries) about cross-subscription shared galleries in Elastigroup.
+ *   * `customImage` - (Optional) Custom image definitions. Required if marketplace image or gallery image are not specified.
+ *     * `customImageResourceGroupName` - (Required) The resource group name for custom image.
  *     * `name` - (Required) The name of the custom image.
  * 
  * &lt;a id=&#34;load balancer&#34;&gt;&lt;/a&gt;
  * ## Load Balancer
  * 
- * * `load_balancer` - (Optional) Add a load balancer. For Azure Gateway, each Backend Pool is a separate load balancer.
+ * * `loadBalancer` - (Optional) Add a load balancer. For Azure Gateway, each Backend Pool is a separate load balancer.
  *   * `type` - (Required, Enum `&#34;loadBalancer&#34;, &#34;applicationGateway&#34;`) The type of load balancer.
- *   * `resource_group_name` - (Required) The Resource Group name of the Load Balancer.
+ *   * `resourceGroupName` - (Required) The Resource Group name of the Load Balancer.
  *   * `name` - (Required) Name of the Application Gateway/Load Balancer.
  *   * `sku` - (Optional)
  *     * if type is `&#34;LoadBalancer&#34;` then possible values are `“Standard&#34;, &#34;Basic”`.
  *     * If ApplicationGateway then possible values are
  *       `“Standard_Large”, “Standard_Medium”, “Standard_Small”, “Standard_v2&#34;, “WAF_Large”, “WAF_Medium&#34;, “WAF_v2&#34;`.
- *   * `backend_pool_names` - (Optional) Name of the Backend Pool to register the Stateful Node VMs to. Each Backend Pool is a separate load balancer. Required if Type is APPLICATION_GATEWAY.
+ *   * `backendPoolNames` - (Optional) Name of the Backend Pool to register the Stateful Node VMs to. Each Backend Pool is a separate load balancer. Required if Type is APPLICATION_GATEWAY.
  * 
  * ## Login
  * 
  * * `login` - (Required) Set admin access for accessing your VMs. Password/SSH is required for Linux.
- *   * `user_name` - (Required) username for admin access to VMs.
- *   * `ssh_public_key` - (Optional) SSH for admin access to Linux VMs. Optional for Linux.
+ *   * `userName` - (Required) username for admin access to VMs.
+ *   * `sshPublicKey` - (Optional) SSH for admin access to Linux VMs. Optional for Linux.
  *   * `password` - (Optional) Password for admin access to Windows VMs. Required for Windows.
  * 
- * &lt;a id=&#34;managed_service_identities&#34;&gt;&lt;/a&gt;
+ * &lt;a id=&#34;managedServiceIdentities&#34;&gt;&lt;/a&gt;
  * ## Managed Service Identities
  * 
- * * `managed_service_identities` - (Optional) Add a user-assigned managed identity to the Stateful Node&#39;s VM.
+ * * `managedServiceIdentities` - (Optional) Add a user-assigned managed identity to the Stateful Node&#39;s VM.
  *   * `name` - (Required) name of the managed identity.
- *   * `resource_group_name` - (Required) The Resource Group that the user-assigned managed identity resides in.
- *   * `subscription_id` - (Optional) Defines the subscription ID of the managed service identities. Required if the managed service identity is in a different subscription. To use a user-assigned managed identity in a different subscription, you must ensure that the spotAccount&#39;s Service Principal has access to the defined subscription and that it has the two following permissions:
+ *   * `resourceGroupName` - (Required) The Resource Group that the user-assigned managed identity resides in.
+ *   * `subscriptionId` - (Optional) Defines the subscription ID of the managed service identities. Required if the managed service identity is in a different subscription. To use a user-assigned managed identity in a different subscription, you must ensure that the spotAccount&#39;s Service Principal has access to the defined subscription and that it has the two following permissions:
  *     1. Microsoft.ManagedIdentity/userAssignedIdentities/assign/action
  *     2. Microsoft.ManagedIdentity/userAssignedIdentities/read
  * 
- * &lt;a id=&#34;proximity_placement_groups&#34;&gt;&lt;/a&gt;
+ * &lt;a id=&#34;proximityPlacementGroups&#34;&gt;&lt;/a&gt;
  * ## Proximity Placement Groups
  * 
- * * `proximity_placement_groups` - (Optional) Defines the proximity placement group in which the VM will be launched.
+ * * `proximityPlacementGroups` - (Optional) Defines the proximity placement group in which the VM will be launched.
  *   * `name` - (Required) name of the proximity placement group.
- *   * `resource_group_name` - (Required) The Resource Group name of the proximity placement group.
+ *   * `resourceGroupName` - (Required) The Resource Group name of the proximity placement group.
  * 
  * ## Network
  * 
  * * `network` - (Required) Define the Virtual Network and Subnet for your Stateful Node.
- *   * `network_resource_group_name` - (Required) Vnet Resource Group Name.
- *   * `virtual_network_name` - (Required) Virtual Network.
- *   * `network_interface` - (Required) Define a network interface
- *     * `is_primary` - (Required) Defines whether the network interface is primary or not.
- *     * `subnet_name` - (Required) Subnet name.
- *     * `assign_public_ip` - (Optional) Assign public IP.
- *     * `public_ip_sku` - (Optional) Required if assignPublicIp=true values=[Standard/Basic].
- *     * `network_security_group` - (Optional) Network Security Group.
- *       * `network_resource_group_name` - (Required) Requires valid security group name.
+ *   * `networkResourceGroupName` - (Required) Vnet Resource Group Name.
+ *   * `virtualNetworkName` - (Required) Virtual Network.
+ *   * `networkInterface` - (Required) Define a network interface
+ *     * `isPrimary` - (Required) Defines whether the network interface is primary or not.
+ *     * `subnetName` - (Required) Subnet name.
+ *     * `assignPublicIp` - (Optional) Assign public IP.
+ *     * `publicIpSku` - (Optional) Required if assignPublicIp=true values=[Standard/Basic].
+ *     * `networkSecurityGroup` - (Optional) Network Security Group.
+ *       * `networkResourceGroupName` - (Required) Requires valid security group name.
  *       * `name` - (Required) Requires valid resource group name.
- *     * `enable_ip_forwarding` - (Optional) Enable IP Forwarding.
- *     * `private_ip_addresses` - (Optional) A list with unique items that every item is a valid IP.
- *     * `additional_ip_configurations` - (Optional) Additional configuration of network interface.
+ *     * `enableIpForwarding` - (Optional) Enable IP Forwarding.
+ *     * `privateIpAddresses` - (Optional) A list with unique items that every item is a valid IP.
+ *     * `additionalIpConfigurations` - (Optional) Additional configuration of network interface.
  *       * `name` - (Required) Configuration name.
- *       * `private_ip_address_version` - (Required, Enum `&#34;IPv4&#34;, &#34;IPv6&#34;` Default `&#34;IPv4&#34;`) Version of the private IP address.
- *     * `public_ips` - (Optional) Defined a pool of Public Ips (from Azure), that will be associated to the network interface. We will associate one public ip per instance until the pool is exhausted, in which case, we will create a new one.
- *       * `resource_group_name` - (Required) The resource group of the public ip.
+ *       * `privateIpAddressVersion` - (Required, Enum `&#34;IPv4&#34;, &#34;IPv6&#34;` Default `&#34;IPv4&#34;`) Version of the private IP address.
+ *     * `publicIps` - (Optional) Defined a pool of Public Ips (from Azure), that will be associated to the network interface. We will associate one public ip per instance until the pool is exhausted, in which case, we will create a new one.
+ *       * `resourceGroupName` - (Required) The resource group of the public ip.
  *       * `name` - (Required) - The name of the public ip.
- *     * `application_security_groups` - (Optional) Network Security Group.
- *       * `resource_group_name` - (Required) Requires valid security group name.
+ *     * `applicationSecurityGroups` - (Optional) Network Security Group.
+ *       * `resourceGroupName` - (Required) Requires valid security group name.
  *       * `name` - (Required) Requires valid resource group name.
  * 
- * &lt;a id=&#34;os_disk&#34;&gt;&lt;/a&gt;
+ * &lt;a id=&#34;osDisk&#34;&gt;&lt;/a&gt;
  * ## OS Disk
  * 
- * * `os_disk` - (Optional) Specify OS disk specification other than default.
- *   * `size_gb` - (Optional, Default `&#34;30&#34;`) The size of the data disk in GB.
+ * * `osDisk` - (Optional) Specify OS disk specification other than default.
+ *   * `sizeGb` - (Optional, Default `&#34;30&#34;`) The size of the data disk in GB.
  *   * `type` - (Required, Enum `&#34;Standard_LRS&#34;, &#34;Premium_LRS&#34;, &#34;StandardSSD_LRS&#34;`) The type of the OS disk.
  *   * `caching` - (Optional, Enum `&#34;None&#34;, &#34;ReadOnly&#34;, &#34;ReadWrite&#34;`) Specifies the host caching requirements. With disk caching enabled, VMs can achieve higher levels of performance. If not specified, the Azure default behavior will be applied.
  * 
  * ## Secret
  * 
  * * `secret` - (Optional) Set of certificates that should be installed on the VM.
- *   * `source_vault` - (Required) The key vault reference, contains the required certificates.
+ *   * `sourceVault` - (Required) The key vault reference, contains the required certificates.
  *     * `name` - (Required) The name of the key vault.
- *     * `resource_group_name` - (Required) The resource group name of the key vault.
- *   * `vault_certificates` - (Required) The required certificate references.
- *     * `certificate_url` - (Optional) The URL of the certificate under the key vault.
- *     * `certificate_store` - (Required) The certificate store directory the VM. The directory is created in the LocalMachine account.
+ *     * `resourceGroupName` - (Required) The resource group name of the key vault.
+ *   * `vaultCertificates` - (Required) The required certificate references.
+ *     * `certificateUrl` - (Optional) The URL of the certificate under the key vault.
+ *     * `certificateStore` - (Required) The certificate store directory the VM. The directory is created in the LocalMachine account.
  *       * This field is required only when using Windows OS type
  *       * This field must be ‘null’ when the OS type is Linux
  * 
  * ## Security
  * 
  * * `security` - (Optional) Specifies the Security related profile settings for the virtual machine.
- *     * `secure_boot_enabled` - (Optional) Specifies whether secure boot should be enabled on the virtual machine.
- *     * `security_type` - (Optional) Enum: `&#34;Standard&#34;, &#34;TrustedLaunch&#34;, &#34;ConfidentialVM&#34;` Security type refers to the different security features of a virtual machine. Security features like Trusted launch virtual machines help to improve the security of Azure generation 2 virtual machines.
- *     * `vtpm_enabled` - (Optional) Specifies whether vTPM should be enabled on the virtual machine.
- *     * `encryption_at_host` - (Optional) Enables the Host Encryption for the virtual machine. The Encryption at host will be disabled unless this property is set to true for the resource.
- *     * `confidential_os_disk_encryption` - (Optional) Confidential disk encryption binds the disk encryption keys to the VM&#39;s TPM, ensuring VM-only access. The security type must be &#34;ConfidentialVM&#34; to enable defining this preference as “true”.
+ *     * `secureBootEnabled` - (Optional) Specifies whether secure boot should be enabled on the virtual machine.
+ *     * `securityType` - (Optional) Enum: `&#34;Standard&#34;, &#34;TrustedLaunch&#34;, &#34;ConfidentialVM&#34;` Security type refers to the different security features of a virtual machine. Security features like Trusted launch virtual machines help to improve the security of Azure generation 2 virtual machines.
+ *     * `vtpmEnabled` - (Optional) Specifies whether vTPM should be enabled on the virtual machine.
+ *     * `encryptionAtHost` - (Optional) Enables the Host Encryption for the virtual machine. The Encryption at host will be disabled unless this property is set to true for the resource.
+ *     * `confidentialOsDiskEncryption` - (Optional) Confidential disk encryption binds the disk encryption keys to the VM&#39;s TPM, ensuring VM-only access. The security type must be &#34;ConfidentialVM&#34; to enable defining this preference as “true”.
  * 
  * ## Tag
  * 
  * * `tag` - (Optional) Unique Key-Value pair for all Stateful Node Resources.
- *   * `tag_key` - (Optional) Tag Key for Stateful Node Resources.
- *   * `tag_value` - (Optional) Tag Value for Stateful Node Resources.
+ *   * `tagKey` - (Optional) Tag Key for Stateful Node Resources.
+ *   * `tagValue` - (Optional) Tag Value for Stateful Node Resources.
  * 
  * ## Health
  * 
  * * `health` - (Optional) Set the auto healing preferences for unhealthy VMs.
- *   * `health_check_types` - (Optional, Enum `&#34;vmState&#34;, &#34;applicationGateway&#34;`) Healthcheck to use to validate VM health.
- *   * `unhealthy_duration` - (Optional) Amount of time to be unhealthy before a replacement is triggered.
- *   * `auto_healing` - (Required) Enable Autohealing of unhealthy VMs.
- *   * `grace_period` - (Optional) Period of time to wait for VM to reach healthiness before monitoring for unhealthiness.
+ *   * `healthCheckTypes` - (Optional, Enum `&#34;vmState&#34;, &#34;applicationGateway&#34;`) Healthcheck to use to validate VM health.
+ *   * `unhealthyDuration` - (Optional) Amount of time to be unhealthy before a replacement is triggered.
+ *   * `autoHealing` - (Required) Enable Autohealing of unhealthy VMs.
+ *   * `gracePeriod` - (Optional) Period of time to wait for VM to reach healthiness before monitoring for unhealthiness.
  * 
  * ## Persistence
  * 
- * * `should_persist_os_disk` - (Required) Should persist os disk.
- * * `os_disk_persistence_mode` - (Optional, Enum `&#34;reattach&#34;, &#34;onLaunch&#34;`)
- * * `should_persist_data_disks` - (Required) Should persist data disks.
- * * `data_disks_persistence_mode` - (Optional, Enum `&#34;reattach&#34;, &#34;onLaunch&#34;`)
- * * `should_persist_network` - (Required) Should persist network.
+ * * `shouldPersistOsDisk` - (Required) Should persist os disk.
+ * * `osDiskPersistenceMode` - (Optional, Enum `&#34;reattach&#34;, &#34;onLaunch&#34;`)
+ * * `shouldPersistDataDisks` - (Required) Should persist data disks.
+ * * `dataDisksPersistenceMode` - (Optional, Enum `&#34;reattach&#34;, &#34;onLaunch&#34;`)
+ * * `shouldPersistNetwork` - (Required) Should persist network.
  * 
- * &lt;a id=&#34;scheduling_tasks&#34;&gt;&lt;/a&gt;
+ * &lt;a id=&#34;schedulingTasks&#34;&gt;&lt;/a&gt;
  * ## Scheduling Tasks
  * 
- * * `scheduling_task` - (Optional) Scheduling settings object for stateful node.
- *   * `is_enabled` - (Required) Is scheduled task enabled for stateful node.
+ * * `schedulingTask` - (Optional) Scheduling settings object for stateful node.
+ *   * `isEnabled` - (Required) Is scheduled task enabled for stateful node.
  *   * `type` - (Required, Enum `&#34;pause&#34;, &#34;resume&#34;, &#34;recycle&#34;) The type of the scheduled task
- *   * `cron_expression` (Required) A expression which describes when to execute the scheduled task (UTC).
+ *   * `cronExpression` (Required) A expression which describes when to execute the scheduled task (UTC).
  * 
  * ## Signals
  * 
@@ -548,55 +548,55 @@ import javax.annotation.Nullable;
  * 
  * ***
  * 
- * &lt;a id=&#34;attach_data_disk&#34;&gt;&lt;/a&gt;
+ * &lt;a id=&#34;attachDataDisk&#34;&gt;&lt;/a&gt;
  * ## Attach Data Disk
  * 
- * * `attach_data_disk` - (Optional) Create a new data disk and attach it to the stateful node.
- *   * `data_disk_name` - (Required) The name of the created data disk.
- *   * `data_disk_resource_group_name` - (Required) The resource group name in which the data disk will be created.
- *   * `storage_account_type` - (Required, Enum `&#34;Standard_LRS&#34;, &#34;Premium_LRS&#34;, &#34;StandardSSD_LRS&#34;, &#34;UltraSSD_LRS&#34;`) The type of the data disk.
- *   * `size_gb` - (Required) The size of the data disk in GB, Required if dataDisks is specified.
+ * * `attachDataDisk` - (Optional) Create a new data disk and attach it to the stateful node.
+ *   * `dataDiskName` - (Required) The name of the created data disk.
+ *   * `dataDiskResourceGroupName` - (Required) The resource group name in which the data disk will be created.
+ *   * `storageAccountType` - (Required, Enum `&#34;Standard_LRS&#34;, &#34;Premium_LRS&#34;, &#34;StandardSSD_LRS&#34;, &#34;UltraSSD_LRS&#34;`) The type of the data disk.
+ *   * `sizeGb` - (Required) The size of the data disk in GB, Required if dataDisks is specified.
  *   * `zone` - (Optional, Enum `&#34;1&#34;, &#34;2&#34;, &#34;3&#34;`) The Availability Zone in which the data disk will be created. If not defined, the data disk will be created regionally.
  *   * `lun` - (Optional, Default `&#34;orginal&#34;`) The LUN of the data disk. If not defined, the LUN will be set in order.
  * 
- * &lt;a id=&#34;detach_data_disk&#34;&gt;&lt;/a&gt;
+ * &lt;a id=&#34;detachDataDisk&#34;&gt;&lt;/a&gt;
  * ## Detach Data Disk
  * 
- * * `detach_data_disk` - (Optional) Detach a data disk from a stateful node.
- *   * `data_disk_name` - (Required) The name of the detached data disk.
- *   * `data_disk_resource_group_name` - (Required) The resource group name in which the data disk exists.
- *   * `should_deallocate` - (Required) Indicates whether to delete the data disk in addition to detach.
- *   * `ttl_in_hours` - (Required, Default `&#34;0&#34;`) Hours to keep the disk alive before deletion.
+ * * `detachDataDisk` - (Optional) Detach a data disk from a stateful node.
+ *   * `dataDiskName` - (Required) The name of the detached data disk.
+ *   * `dataDiskResourceGroupName` - (Required) The resource group name in which the data disk exists.
+ *   * `shouldDeallocate` - (Required) Indicates whether to delete the data disk in addition to detach.
+ *   * `ttlInHours` - (Required, Default `&#34;0&#34;`) Hours to keep the disk alive before deletion.
  * 
- * &lt;a id=&#34;update_state&#34;&gt;&lt;/a&gt;
+ * &lt;a id=&#34;updateState&#34;&gt;&lt;/a&gt;
  * ## Update State
  * 
- * * `update_state` - (Optional) Update the stateful node state.
+ * * `updateState` - (Optional) Update the stateful node state.
  *   * `state` - (Required, Enum `&#34;pause&#34;, &#34;resume&#34;, &#34;recycle&#34;`) New state for the stateful node.
  * 
- * &lt;a id=&#34;import_vm&#34;&gt;&lt;/a&gt;
+ * &lt;a id=&#34;importVm&#34;&gt;&lt;/a&gt;
  * ## Import VM
  * 
- * * `import_vm` - (Optional) Import an Azure VM and create a stateful node by providing a node configuration.
- *   * `resource_group_name` - (Required) Name of the Resource Group for Stateful Node.
- *   * `original_vm_name` - (Required) Azure Import Stateful Node Name.
- *   * `draining_timeout` - (Optional) Hours to keep resources alive.
- *   * `resources_retention_time` - (Optional) Hours to keep resources alive.
+ * * `importVm` - (Optional) Import an Azure VM and create a stateful node by providing a node configuration.
+ *   * `resourceGroupName` - (Required) Name of the Resource Group for Stateful Node.
+ *   * `originalVmName` - (Required) Azure Import Stateful Node Name.
+ *   * `drainingTimeout` - (Optional) Hours to keep resources alive.
+ *   * `resourcesRetentionTime` - (Optional) Hours to keep resources alive.
  * 
  * ## Deallocation Config
  * 
  * * `delete` - (Required) Specify deallocation parameters for stateful node deletion.
- *     * `should_terminate_vm` - (Required) Indicates whether to delete the stateful node&#39;s VM.
- *     * `network_should_deallocate` - (Optional) Indicates whether to delete the stateful node&#39;s network resources.
- *     * `network_ttl_in_hours` - (Optional, Default: 96) Hours to keep the network resource alive before deletion.
- *     * `disk_should_deallocate` - (Optional) Indicates whether to delete the stateful node&#39;s disk resources.
- *     * `disk_ttl_in_hours` - (Optional, Default: 96) Hours to keep the disk resource alive before deletion.
- *     * `snapshot_should_deallocate` - (Optional) Indicates whether to delete the stateful node&#39;s snapshot resources.
- *     * `snapshot_ttl_in_hours` - (Optional, Default: 96) Hours to keep the snapshots alive before deletion.
- *     * `public_ip_should_deallocate` - (Optional) Indicates whether to delete the stateful node&#39;s public ip resources.
- *     * `public_ip_ttl_in_hours` - (Optional, Default: 96) Hours to keep the public ip alive before deletion.
- *     * `should_deregister_from_lb` - (Optional, Default: true) Indicates whether to deregister the stateful node&#39;s VM from any type of load balancer. Can be changed to false only when shouldTerminateVms is &#39;false&#39;.
- *     * `should_revert_to_od` - (Optional, Default: false) Indicates whether to change the stateful node&#39;s VM lifecycle to on-demand. Can be changed to true only when `should_terminate_vm` is &#39;false&#39;.
+ *     * `shouldTerminateVm` - (Required) Indicates whether to delete the stateful node&#39;s VM.
+ *     * `networkShouldDeallocate` - (Optional) Indicates whether to delete the stateful node&#39;s network resources.
+ *     * `networkTtlInHours` - (Optional, Default: 96) Hours to keep the network resource alive before deletion.
+ *     * `diskShouldDeallocate` - (Optional) Indicates whether to delete the stateful node&#39;s disk resources.
+ *     * `diskTtlInHours` - (Optional, Default: 96) Hours to keep the disk resource alive before deletion.
+ *     * `snapshotShouldDeallocate` - (Optional) Indicates whether to delete the stateful node&#39;s snapshot resources.
+ *     * `snapshotTtlInHours` - (Optional, Default: 96) Hours to keep the snapshots alive before deletion.
+ *     * `publicIpShouldDeallocate` - (Optional) Indicates whether to delete the stateful node&#39;s public ip resources.
+ *     * `publicIpTtlInHours` - (Optional, Default: 96) Hours to keep the public ip alive before deletion.
+ *     * `shouldDeregisterFromLb` - (Optional, Default: true) Indicates whether to deregister the stateful node&#39;s VM from any type of load balancer. Can be changed to false only when shouldTerminateVms is &#39;false&#39;.
+ *     * `shouldRevertToOd` - (Optional, Default: false) Indicates whether to change the stateful node&#39;s VM lifecycle to on-demand. Can be changed to true only when `shouldTerminateVm` is &#39;false&#39;.
  * 
  */
 @ResourceType(type="spotinst:index/statefulNodeAzure:StatefulNodeAzure")

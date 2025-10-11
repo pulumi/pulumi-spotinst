@@ -30,11 +30,11 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly Outputs.ElastigroupUpdatePolicyRollConfigStrategy? Strategy;
         /// <summary>
-        /// For use with `should_roll`. Sets minimum % of roll required to complete before continuing the plan. Required if `wait_for_roll_timeout` is set.
+        /// For use with `ShouldRoll`. Sets minimum % of roll required to complete before continuing the plan. Required if `WaitForRollTimeout` is set.
         /// </summary>
         public readonly double? WaitForRollPercentage;
         /// <summary>
-        /// For use with `should_roll`. Sets how long to wait for the deployed % of a roll to exceed `wait_for_roll_percentage` before continuing the plan. Required if `wait_for_roll_percentage` is set.
+        /// For use with `ShouldRoll`. Sets how long to wait for the deployed % of a roll to exceed `WaitForRollPercentage` before continuing the plan. Required if `WaitForRollPercentage` is set.
         /// </summary>
         public readonly int? WaitForRollTimeout;
 

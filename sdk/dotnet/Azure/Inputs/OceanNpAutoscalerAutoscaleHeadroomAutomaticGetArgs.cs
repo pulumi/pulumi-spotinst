@@ -13,7 +13,7 @@ namespace Pulumi.SpotInst.Azure.Inputs
     public sealed class OceanNpAutoscalerAutoscaleHeadroomAutomaticGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
+        /// Enable automatic headroom. When set to `True`, Ocean configures and optimizes headroom automatically.
         /// </summary>
         [Input("isEnabled")]
         public Input<bool>? IsEnabled { get; set; }

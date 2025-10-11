@@ -30,6 +30,8 @@ import javax.annotation.Nullable;
 /**
  * Manages a Spotinst Ocean ECS resource.
  * 
+ * ## Example Usage
+ * 
  * ## Import
  * 
  * Clusters can be imported using the Ocean `id`, e.g.,
@@ -356,14 +358,14 @@ public class Ocean extends com.pulumi.resources.CustomResource {
         return this.securityGroupIds;
     }
     /**
-     * The percentage of Spot instances that would spin up from the `desired_capacity` number.
+     * The percentage of Spot instances that would spin up from the `desiredCapacity` number.
      * 
      */
     @Export(name="spotPercentage", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> spotPercentage;
 
     /**
-     * @return The percentage of Spot instances that would spin up from the `desired_capacity` number.
+     * @return The percentage of Spot instances that would spin up from the `desiredCapacity` number.
      * 
      */
     public Output<Optional<Integer>> spotPercentage() {

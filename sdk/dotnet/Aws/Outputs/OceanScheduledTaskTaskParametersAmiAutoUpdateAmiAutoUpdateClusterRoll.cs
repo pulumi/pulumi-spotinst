@@ -22,7 +22,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly int? BatchSizePercentage;
         /// <summary>
-        /// Add a `comment` description for the roll. The `comment` is limited to 256 chars
+        /// Add a `Comment` description for the roll. The `Comment` is limited to 256 chars
         /// </summary>
         public readonly string? Comment;
         /// <summary>

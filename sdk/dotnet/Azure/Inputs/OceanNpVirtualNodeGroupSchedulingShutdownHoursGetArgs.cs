@@ -13,7 +13,7 @@ namespace Pulumi.SpotInst.Azure.Inputs
     public sealed class OceanNpVirtualNodeGroupSchedulingShutdownHoursGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Flag to enable or disable the shutdown hours mechanism. When `false`, the mechanism is deactivated, and the virtual node gorup remains in its current state.
+        /// Flag to enable or disable the shutdown hours mechanism. When `False`, the mechanism is deactivated, and the virtual node gorup remains in its current state.
         /// </summary>
         [Input("isEnabled")]
         public Input<bool>? IsEnabled { get; set; }

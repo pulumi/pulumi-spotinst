@@ -1096,6 +1096,8 @@ class Ocean(pulumi.CustomResource):
         """
         Manages a Spotinst Ocean ECS resource.
 
+        ## Example Usage
+
         ## Import
 
         Clusters can be imported using the Ocean `id`, e.g.,
@@ -1146,6 +1148,8 @@ class Ocean(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a Spotinst Ocean ECS resource.
+
+        ## Example Usage
 
         ## Import
 

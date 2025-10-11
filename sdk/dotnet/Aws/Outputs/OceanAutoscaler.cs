@@ -14,7 +14,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class OceanAutoscaler
     {
         /// <summary>
-        /// Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscale_is_auto_config` toggled on.
+        /// Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `AutoscaleIsAutoConfig` toggled on.
         /// </summary>
         public readonly int? AutoHeadroomPercentage;
         /// <summary>

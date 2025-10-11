@@ -49,14 +49,14 @@ public final class OceanScheduledTaskTaskArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * This filed will be compatible to the `task_type` field. If `task_type` is defined as `clusterRoll`, user cluster roll object in parameters.
+     * This filed will be compatible to the `taskType` field. If `taskType` is defined as `clusterRoll`, user cluster roll object in parameters.
      * 
      */
     @Import(name="parameters")
     private @Nullable Output<OceanScheduledTaskTaskParametersArgs> parameters;
 
     /**
-     * @return This filed will be compatible to the `task_type` field. If `task_type` is defined as `clusterRoll`, user cluster roll object in parameters.
+     * @return This filed will be compatible to the `taskType` field. If `taskType` is defined as `clusterRoll`, user cluster roll object in parameters.
      * 
      */
     public Optional<Output<OceanScheduledTaskTaskParametersArgs>> parameters() {
@@ -148,7 +148,7 @@ public final class OceanScheduledTaskTaskArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param parameters This filed will be compatible to the `task_type` field. If `task_type` is defined as `clusterRoll`, user cluster roll object in parameters.
+         * @param parameters This filed will be compatible to the `taskType` field. If `taskType` is defined as `clusterRoll`, user cluster roll object in parameters.
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class OceanScheduledTaskTaskArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param parameters This filed will be compatible to the `task_type` field. If `task_type` is defined as `clusterRoll`, user cluster roll object in parameters.
+         * @param parameters This filed will be compatible to the `taskType` field. If `taskType` is defined as `clusterRoll`, user cluster roll object in parameters.
          * 
          * @return builder
          * 

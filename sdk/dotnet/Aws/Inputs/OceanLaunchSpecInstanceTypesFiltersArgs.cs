@@ -58,7 +58,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         private InputList<string>? _hypervisors;
 
         /// <summary>
-        /// The filtered instance types will have a hypervisor type from this list. Valid values: `nitro`, `xen`.
+        /// The filtered instance types will have a hypervisor type from this list. Valid values: `Nitro`, `Xen`.
         /// </summary>
         public InputList<string> Hypervisors
         {
@@ -142,7 +142,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         private InputList<string>? _rootDeviceTypes;
 
         /// <summary>
-        /// The filtered instance types will have a root device types from this list. Valid values: `ebs`, or `instance-store`.
+        /// The filtered instance types will have a root device types from this list. Valid values: `Ebs`, or `instance-store`.
         /// </summary>
         public InputList<string> RootDeviceTypes
         {
@@ -154,7 +154,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         private InputList<string>? _virtualizationTypes;
 
         /// <summary>
-        /// The filtered instance types will support at least one of the virtualization types from this list. Valid values: `hvm`, `paravirtual`.
+        /// The filtered instance types will support at least one of the virtualization types from this list. Valid values: `Hvm`, `Paravirtual`.
         /// </summary>
         public InputList<string> VirtualizationTypes
         {

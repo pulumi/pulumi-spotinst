@@ -14,7 +14,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class ElastigroupScalingDownPolicy
     {
         /// <summary>
-        /// The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`. If a `step_adjustment` object is defined, then it cannot be specified.
+        /// The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`. If a `StepAdjustment` object is defined, then it cannot be specified.
         /// </summary>
         public readonly string? ActionType;
         /// <summary>
@@ -84,7 +84,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly string? Target;
         /// <summary>
-        /// The value against which the specified statistic is compared. If a `step_adjustment` object is defined, then it cannot be specified.
+        /// The value against which the specified statistic is compared. If a `StepAdjustment` object is defined, then it cannot be specified.
         /// </summary>
         public readonly double? Threshold;
         /// <summary>

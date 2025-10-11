@@ -28,7 +28,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         private InputList<string>? _conditionedRollParams;
 
         /// <summary>
-        /// A custom list of attributes will trigger the cluster roll operation (overrides the predefined list of parameters). Valid only when the `conditioned_roll` parameter is set to true. (Valid values: `"subnet_ids"`,`"whitelist"`,`"blacklist"`,`"user_data"`,`"image_id"`,`"security_groups"`,`"key_name"`,`"iam_instance_profile"`,`"associate_public_ip_address"`,`"load_balancers"`,`"instance_metadata_options"`,`"ebs_optimized"`,`"root_volume_size"`)
+        /// A custom list of attributes will trigger the cluster roll operation (overrides the predefined list of parameters). Valid only when the `ConditionedRoll` parameter is set to true. (Valid values: `"SubnetIds"`,`"whitelist"`,`"blacklist"`,`"UserData"`,`"ImageId"`,`"SecurityGroups"`,`"KeyName"`,`"IamInstanceProfile"`,`"AssociatePublicIpAddress"`,`"LoadBalancers"`,`"InstanceMetadataOptions"`,`"EbsOptimized"`,`"RootVolumeSize"`)
         /// </summary>
         public InputList<string> ConditionedRollParams
         {

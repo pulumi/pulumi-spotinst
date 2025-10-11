@@ -304,7 +304,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.instanceNamePrefix);
     }
     /**
-     * Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
+     * Defines a set of custom instance types. Required if instanceTypesPreemptible and instanceTypesOndemand are not set.
      * * `vCPU` - (Optional) The number of vCPUs in the custom instance type. GCP has a number of limitations on accepted vCPU values. For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
      * 
      */
@@ -312,7 +312,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ List<ElastigroupInstanceTypesCustom>> instanceTypesCustoms;
 
     /**
-     * @return Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
+     * @return Defines a set of custom instance types. Required if instanceTypesPreemptible and instanceTypesOndemand are not set.
      * * `vCPU` - (Optional) The number of vCPUs in the custom instance type. GCP has a number of limitations on accepted vCPU values. For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
      * 
      */
@@ -320,28 +320,28 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.instanceTypesCustoms);
     }
     /**
-     * The regular VM instance type to use for mixed-type groups and when falling back to on-demand. Required if instance_types_preemptible is not set.
+     * The regular VM instance type to use for mixed-type groups and when falling back to on-demand. Required if instanceTypesPreemptible is not set.
      * 
      */
     @Export(name="instanceTypesOndemand", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceTypesOndemand;
 
     /**
-     * @return The regular VM instance type to use for mixed-type groups and when falling back to on-demand. Required if instance_types_preemptible is not set.
+     * @return The regular VM instance type to use for mixed-type groups and when falling back to on-demand. Required if instanceTypesPreemptible is not set.
      * 
      */
     public Output<Optional<String>> instanceTypesOndemand() {
         return Codegen.optional(this.instanceTypesOndemand);
     }
     /**
-     * The preemptible VMs instance type. To maximize cost savings and market availability, select as many types as possible. Required if instance_types_ondemand is not set.
+     * The preemptible VMs instance type. To maximize cost savings and market availability, select as many types as possible. Required if instanceTypesOndemand is not set.
      * 
      */
     @Export(name="instanceTypesPreemptibles", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> instanceTypesPreemptibles;
 
     /**
-     * @return The preemptible VMs instance type. To maximize cost savings and market availability, select as many types as possible. Required if instance_types_ondemand is not set.
+     * @return The preemptible VMs instance type. To maximize cost savings and market availability, select as many types as possible. Required if instanceTypesOndemand is not set.
      * 
      */
     public Output<Optional<List<String>>> instanceTypesPreemptibles() {
@@ -476,28 +476,28 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.optimizationWindows);
     }
     /**
-     * Percentage of Preemptible VMs to spin up from the &#34;desired_capacity&#34;.
+     * Percentage of Preemptible VMs to spin up from the &#34;desiredCapacity&#34;.
      * 
      */
     @Export(name="preemptiblePercentage", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> preemptiblePercentage;
 
     /**
-     * @return Percentage of Preemptible VMs to spin up from the &#34;desired_capacity&#34;.
+     * @return Percentage of Preemptible VMs to spin up from the &#34;desiredCapacity&#34;.
      * 
      */
     public Output<Optional<Integer>> preemptiblePercentage() {
         return Codegen.optional(this.preemptiblePercentage);
     }
     /**
-     * prioritize availability zones when launching instances for the group. Must be a sublist of `availability_zones`.
+     * prioritize availability zones when launching instances for the group. Must be a sublist of `availabilityZones`.
      * 
      */
     @Export(name="preferredAvailabilityZones", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> preferredAvailabilityZones;
 
     /**
-     * @return prioritize availability zones when launching instances for the group. Must be a sublist of `availability_zones`.
+     * @return prioritize availability zones when launching instances for the group. Must be a sublist of `availabilityZones`.
      * 
      */
     public Output<Optional<List<String>>> preferredAvailabilityZones() {

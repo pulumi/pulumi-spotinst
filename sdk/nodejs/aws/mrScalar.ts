@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ### New Strategy
+ *
  * ### Wrap Strategy
  *
  * ```typescript

@@ -215,9 +215,9 @@ namespace Pulumi.SpotInst.Aws
         public Output<bool?> AutoHealing { get; private set; } = null!;
 
         /// <summary>
-        /// List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
-        /// Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
-        /// `availability_zones = ["us-east-1a:subnet-123456:ClusterI03"]`
+        /// List of Strings of availability zones. When this parameter is set, `SubnetIds` should be left unused.
+        /// Note: `AvailabilityZones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
+        /// `AvailabilityZones = ["us-east-1a:subnet-123456:ClusterI03"]`
         /// </summary>
         [Output("availabilityZones")]
         public Output<ImmutableArray<string>> AvailabilityZones { get; private set; } = null!;
@@ -226,7 +226,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<string?> BlockDevicesMode { get; private set; } = null!;
 
         /// <summary>
-        /// The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
+        /// The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `Instance`, `Weight`.
         /// </summary>
         [Output("capacityUnit")]
         public Output<string> CapacityUnit { get; private set; } = null!;
@@ -235,7 +235,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<bool?> ConsiderOdPricing { get; private set; } = null!;
 
         /// <summary>
-        /// Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
+        /// Controls how T3 instances are launched. Valid values: `Standard`, `Unlimited`.
         /// </summary>
         [Output("cpuCredits")]
         public Output<string?> CpuCredits { get; private set; } = null!;
@@ -455,13 +455,13 @@ namespace Pulumi.SpotInst.Aws
         public Output<ImmutableArray<string>> OnDemandTypes { get; private set; } = null!;
 
         /// <summary>
-        /// Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
+        /// Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `SpotPercentage` parameter is being ignored.
         /// </summary>
         [Output("ondemandCount")]
         public Output<int?> OndemandCount { get; private set; } = null!;
 
         /// <summary>
-        /// Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
+        /// Select a prediction strategy. Valid values: `Balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
         /// </summary>
         [Output("orientation")]
         public Output<string> Orientation { get; private set; } = null!;
@@ -483,7 +483,7 @@ namespace Pulumi.SpotInst.Aws
 
         /// <summary>
         /// The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
-        /// Note: Must be a sublist of `availability_zones` and `orientation` value must not be `"equalAzDistribution"`.
+        /// Note: Must be a sublist of `AvailabilityZones` and `Orientation` value must not be `"equalAzDistribution"`.
         /// </summary>
         [Output("preferredAvailabilityZones")]
         public Output<ImmutableArray<string>> PreferredAvailabilityZones { get; private set; } = null!;
@@ -563,7 +563,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<ImmutableArray<Outputs.ElastigroupSignal>> Signals { get; private set; } = null!;
 
         /// <summary>
-        /// The percentage of Spot instances that would spin up from the `desired_capacity` number.
+        /// The percentage of Spot instances that would spin up from the `DesiredCapacity` number.
         /// </summary>
         [Output("spotPercentage")]
         public Output<int?> SpotPercentage { get; private set; } = null!;
@@ -576,7 +576,7 @@ namespace Pulumi.SpotInst.Aws
 
         /// <summary>
         /// List of Strings of subnet identifiers.
-        /// Note: When this parameter is set, `availability_zones` should be left unused.
+        /// Note: When this parameter is set, `AvailabilityZones` should be left unused.
         /// </summary>
         [Output("subnetIds")]
         public Output<ImmutableArray<string>> SubnetIds { get; private set; } = null!;
@@ -609,7 +609,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<bool?> UtilizeReservedInstances { get; private set; } = null!;
 
         /// <summary>
-        /// Minimum number of instances in a 'HEALTHY' status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desired_capacity`.
+        /// Minimum number of instances in a 'HEALTHY' status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `DesiredCapacity`.
         /// </summary>
         [Output("waitForCapacity")]
         public Output<int?> WaitForCapacity { get; private set; } = null!;
@@ -676,9 +676,9 @@ namespace Pulumi.SpotInst.Aws
         private InputList<string>? _availabilityZones;
 
         /// <summary>
-        /// List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
-        /// Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
-        /// `availability_zones = ["us-east-1a:subnet-123456:ClusterI03"]`
+        /// List of Strings of availability zones. When this parameter is set, `SubnetIds` should be left unused.
+        /// Note: `AvailabilityZones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
+        /// `AvailabilityZones = ["us-east-1a:subnet-123456:ClusterI03"]`
         /// </summary>
         public InputList<string> AvailabilityZones
         {
@@ -690,7 +690,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<string>? BlockDevicesMode { get; set; }
 
         /// <summary>
-        /// The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
+        /// The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `Instance`, `Weight`.
         /// </summary>
         [Input("capacityUnit")]
         public Input<string>? CapacityUnit { get; set; }
@@ -699,7 +699,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<bool>? ConsiderOdPricing { get; set; }
 
         /// <summary>
-        /// Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
+        /// Controls how T3 instances are launched. Valid values: `Standard`, `Unlimited`.
         /// </summary>
         [Input("cpuCredits")]
         public Input<string>? CpuCredits { get; set; }
@@ -980,13 +980,13 @@ namespace Pulumi.SpotInst.Aws
         }
 
         /// <summary>
-        /// Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
+        /// Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `SpotPercentage` parameter is being ignored.
         /// </summary>
         [Input("ondemandCount")]
         public Input<int>? OndemandCount { get; set; }
 
         /// <summary>
-        /// Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
+        /// Select a prediction strategy. Valid values: `Balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
         /// </summary>
         [Input("orientation", required: true)]
         public Input<string> Orientation { get; set; } = null!;
@@ -1011,7 +1011,7 @@ namespace Pulumi.SpotInst.Aws
 
         /// <summary>
         /// The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
-        /// Note: Must be a sublist of `availability_zones` and `orientation` value must not be `"equalAzDistribution"`.
+        /// Note: Must be a sublist of `AvailabilityZones` and `Orientation` value must not be `"equalAzDistribution"`.
         /// </summary>
         public InputList<string> PreferredAvailabilityZones
         {
@@ -1148,7 +1148,7 @@ namespace Pulumi.SpotInst.Aws
         }
 
         /// <summary>
-        /// The percentage of Spot instances that would spin up from the `desired_capacity` number.
+        /// The percentage of Spot instances that would spin up from the `DesiredCapacity` number.
         /// </summary>
         [Input("spotPercentage")]
         public Input<int>? SpotPercentage { get; set; }
@@ -1169,7 +1169,7 @@ namespace Pulumi.SpotInst.Aws
 
         /// <summary>
         /// List of Strings of subnet identifiers.
-        /// Note: When this parameter is set, `availability_zones` should be left unused.
+        /// Note: When this parameter is set, `AvailabilityZones` should be left unused.
         /// </summary>
         [Obsolete(@"This field will soon be deprecated and handled by availability_zones")]
         public InputList<string> SubnetIds
@@ -1217,7 +1217,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<bool>? UtilizeReservedInstances { get; set; }
 
         /// <summary>
-        /// Minimum number of instances in a 'HEALTHY' status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desired_capacity`.
+        /// Minimum number of instances in a 'HEALTHY' status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `DesiredCapacity`.
         /// </summary>
         [Input("waitForCapacity")]
         public Input<int>? WaitForCapacity { get; set; }
@@ -1246,9 +1246,9 @@ namespace Pulumi.SpotInst.Aws
         private InputList<string>? _availabilityZones;
 
         /// <summary>
-        /// List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
-        /// Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
-        /// `availability_zones = ["us-east-1a:subnet-123456:ClusterI03"]`
+        /// List of Strings of availability zones. When this parameter is set, `SubnetIds` should be left unused.
+        /// Note: `AvailabilityZones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
+        /// `AvailabilityZones = ["us-east-1a:subnet-123456:ClusterI03"]`
         /// </summary>
         public InputList<string> AvailabilityZones
         {
@@ -1260,7 +1260,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<string>? BlockDevicesMode { get; set; }
 
         /// <summary>
-        /// The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
+        /// The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `Instance`, `Weight`.
         /// </summary>
         [Input("capacityUnit")]
         public Input<string>? CapacityUnit { get; set; }
@@ -1269,7 +1269,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<bool>? ConsiderOdPricing { get; set; }
 
         /// <summary>
-        /// Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
+        /// Controls how T3 instances are launched. Valid values: `Standard`, `Unlimited`.
         /// </summary>
         [Input("cpuCredits")]
         public Input<string>? CpuCredits { get; set; }
@@ -1550,13 +1550,13 @@ namespace Pulumi.SpotInst.Aws
         }
 
         /// <summary>
-        /// Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
+        /// Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `SpotPercentage` parameter is being ignored.
         /// </summary>
         [Input("ondemandCount")]
         public Input<int>? OndemandCount { get; set; }
 
         /// <summary>
-        /// Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
+        /// Select a prediction strategy. Valid values: `Balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
         /// </summary>
         [Input("orientation")]
         public Input<string>? Orientation { get; set; }
@@ -1581,7 +1581,7 @@ namespace Pulumi.SpotInst.Aws
 
         /// <summary>
         /// The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
-        /// Note: Must be a sublist of `availability_zones` and `orientation` value must not be `"equalAzDistribution"`.
+        /// Note: Must be a sublist of `AvailabilityZones` and `Orientation` value must not be `"equalAzDistribution"`.
         /// </summary>
         public InputList<string> PreferredAvailabilityZones
         {
@@ -1718,7 +1718,7 @@ namespace Pulumi.SpotInst.Aws
         }
 
         /// <summary>
-        /// The percentage of Spot instances that would spin up from the `desired_capacity` number.
+        /// The percentage of Spot instances that would spin up from the `DesiredCapacity` number.
         /// </summary>
         [Input("spotPercentage")]
         public Input<int>? SpotPercentage { get; set; }
@@ -1739,7 +1739,7 @@ namespace Pulumi.SpotInst.Aws
 
         /// <summary>
         /// List of Strings of subnet identifiers.
-        /// Note: When this parameter is set, `availability_zones` should be left unused.
+        /// Note: When this parameter is set, `AvailabilityZones` should be left unused.
         /// </summary>
         [Obsolete(@"This field will soon be deprecated and handled by availability_zones")]
         public InputList<string> SubnetIds
@@ -1787,7 +1787,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<bool>? UtilizeReservedInstances { get; set; }
 
         /// <summary>
-        /// Minimum number of instances in a 'HEALTHY' status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desired_capacity`.
+        /// Minimum number of instances in a 'HEALTHY' status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `DesiredCapacity`.
         /// </summary>
         [Input("waitForCapacity")]
         public Input<int>? WaitForCapacity { get; set; }

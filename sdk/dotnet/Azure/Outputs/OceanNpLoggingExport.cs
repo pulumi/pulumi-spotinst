@@ -14,7 +14,7 @@ namespace Pulumi.SpotInst.Azure.Outputs
     public sealed class OceanNpLoggingExport
     {
         /// <summary>
-        /// Exports your cluster's logs to the storage account and container configured on the storage account [data integration](https://docs.spot.io/ocean/features/log-integration-with-azure-blob?id=log-integration-with-azure-blob) given. Each file contains logs of 3 minutes where each log is separated by a new line and saved as a JSON. The file formats are `container`/`accountId``oceanId``oceanName`_`startTime`.log
+        /// Exports your cluster's logs to the storage account and container configured on the storage account [data integration](https://docs.spot.io/ocean/features/log-integration-with-azure-blob?id=log-integration-with-azure-blob) given. Each file contains logs of 3 minutes where each log is separated by a new line and saved as a JSON. The file formats are `Container`/`accountId``oceanId``oceanName`_`startTime`.log
         /// </summary>
         public readonly ImmutableArray<Outputs.OceanNpLoggingExportAzureBlob> AzureBlobs;
 

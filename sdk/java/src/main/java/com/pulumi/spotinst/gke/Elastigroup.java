@@ -39,7 +39,7 @@ import javax.annotation.Nullable;
  * 
  * There are two main differences:
  * 
- * * you must include `cluster_zone_name` and `cluster_id`
+ * * you must include `clusterZoneName` and `clusterId`
  * * a handful of parameters are created remotely and will not appear in the diff. A complete list can be found below.
  * 
  * <pre>
@@ -127,10 +127,10 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     }
     /**
      * @deprecated
-     * Please define cluster_id under integration_gke
+     * Please define clusterId under integration_gke
      * 
      */
-    @Deprecated /* Please define cluster_id under integration_gke */
+    @Deprecated /* Please define clusterId under integration_gke */
     @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clusterId;
 

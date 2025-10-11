@@ -80,14 +80,14 @@ public final class ElastigroupUpdatePolicyRollConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * For use with `should_roll`. Sets minimum % of roll required to complete before continuing the plan. Required if `wait_for_roll_timeout` is set.
+     * For use with `shouldRoll`. Sets minimum % of roll required to complete before continuing the plan. Required if `waitForRollTimeout` is set.
      * 
      */
     @Import(name="waitForRollPercentage")
     private @Nullable Output<Double> waitForRollPercentage;
 
     /**
-     * @return For use with `should_roll`. Sets minimum % of roll required to complete before continuing the plan. Required if `wait_for_roll_timeout` is set.
+     * @return For use with `shouldRoll`. Sets minimum % of roll required to complete before continuing the plan. Required if `waitForRollTimeout` is set.
      * 
      */
     public Optional<Output<Double>> waitForRollPercentage() {
@@ -95,14 +95,14 @@ public final class ElastigroupUpdatePolicyRollConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * For use with `should_roll`. Sets how long to wait for the deployed % of a roll to exceed `wait_for_roll_percentage` before continuing the plan. Required if `wait_for_roll_percentage` is set.
+     * For use with `shouldRoll`. Sets how long to wait for the deployed % of a roll to exceed `waitForRollPercentage` before continuing the plan. Required if `waitForRollPercentage` is set.
      * 
      */
     @Import(name="waitForRollTimeout")
     private @Nullable Output<Integer> waitForRollTimeout;
 
     /**
-     * @return For use with `should_roll`. Sets how long to wait for the deployed % of a roll to exceed `wait_for_roll_percentage` before continuing the plan. Required if `wait_for_roll_percentage` is set.
+     * @return For use with `shouldRoll`. Sets how long to wait for the deployed % of a roll to exceed `waitForRollPercentage` before continuing the plan. Required if `waitForRollPercentage` is set.
      * 
      */
     public Optional<Output<Integer>> waitForRollTimeout() {
@@ -223,7 +223,7 @@ public final class ElastigroupUpdatePolicyRollConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param waitForRollPercentage For use with `should_roll`. Sets minimum % of roll required to complete before continuing the plan. Required if `wait_for_roll_timeout` is set.
+         * @param waitForRollPercentage For use with `shouldRoll`. Sets minimum % of roll required to complete before continuing the plan. Required if `waitForRollTimeout` is set.
          * 
          * @return builder
          * 
@@ -234,7 +234,7 @@ public final class ElastigroupUpdatePolicyRollConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param waitForRollPercentage For use with `should_roll`. Sets minimum % of roll required to complete before continuing the plan. Required if `wait_for_roll_timeout` is set.
+         * @param waitForRollPercentage For use with `shouldRoll`. Sets minimum % of roll required to complete before continuing the plan. Required if `waitForRollTimeout` is set.
          * 
          * @return builder
          * 
@@ -244,7 +244,7 @@ public final class ElastigroupUpdatePolicyRollConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param waitForRollTimeout For use with `should_roll`. Sets how long to wait for the deployed % of a roll to exceed `wait_for_roll_percentage` before continuing the plan. Required if `wait_for_roll_percentage` is set.
+         * @param waitForRollTimeout For use with `shouldRoll`. Sets how long to wait for the deployed % of a roll to exceed `waitForRollPercentage` before continuing the plan. Required if `waitForRollPercentage` is set.
          * 
          * @return builder
          * 
@@ -255,7 +255,7 @@ public final class ElastigroupUpdatePolicyRollConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param waitForRollTimeout For use with `should_roll`. Sets how long to wait for the deployed % of a roll to exceed `wait_for_roll_percentage` before continuing the plan. Required if `wait_for_roll_percentage` is set.
+         * @param waitForRollTimeout For use with `shouldRoll`. Sets how long to wait for the deployed % of a roll to exceed `waitForRollPercentage` before continuing the plan. Required if `waitForRollPercentage` is set.
          * 
          * @return builder
          * 

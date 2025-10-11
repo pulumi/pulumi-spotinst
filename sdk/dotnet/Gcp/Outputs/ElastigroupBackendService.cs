@@ -18,7 +18,7 @@ namespace Pulumi.SpotInst.Gcp.Outputs
         /// </summary>
         public readonly Outputs.ElastigroupBackendServiceBackendBalancing? BackendBalancing;
         /// <summary>
-        /// Sets which location the backend services will be active. Valid values: `regional`, `global`.
+        /// Sets which location the backend services will be active. Valid values: `Regional`, `Global`.
         /// </summary>
         public readonly string? LocationType;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.SpotInst.Gcp.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ElastigroupBackendServiceNamedPort> NamedPorts;
         /// <summary>
-        /// Use when `location_type` is "regional". Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
+        /// Use when `LocationType` is "regional". Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
         /// </summary>
         public readonly string? Scheme;
         /// <summary>

@@ -34,14 +34,14 @@ public final class OceanNpVirtualNodeGroupFiltersArgs extends com.pulumi.resourc
     }
 
     /**
-     * The filtered vm sizes will support at least one of the architectures from this list. x86_64 includes both intel64 and amd64.
+     * The filtered vm sizes will support at least one of the architectures from this list. x8664 includes both intel64 and amd64.
      * 
      */
     @Import(name="architectures")
     private @Nullable Output<List<String>> architectures;
 
     /**
-     * @return The filtered vm sizes will support at least one of the architectures from this list. x86_64 includes both intel64 and amd64.
+     * @return The filtered vm sizes will support at least one of the architectures from this list. x8664 includes both intel64 and amd64.
      * 
      */
     public Optional<Output<List<String>>> architectures() {
@@ -303,7 +303,7 @@ public final class OceanNpVirtualNodeGroupFiltersArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param architectures The filtered vm sizes will support at least one of the architectures from this list. x86_64 includes both intel64 and amd64.
+         * @param architectures The filtered vm sizes will support at least one of the architectures from this list. x8664 includes both intel64 and amd64.
          * 
          * @return builder
          * 
@@ -314,7 +314,7 @@ public final class OceanNpVirtualNodeGroupFiltersArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param architectures The filtered vm sizes will support at least one of the architectures from this list. x86_64 includes both intel64 and amd64.
+         * @param architectures The filtered vm sizes will support at least one of the architectures from this list. x8664 includes both intel64 and amd64.
          * 
          * @return builder
          * 
@@ -324,7 +324,7 @@ public final class OceanNpVirtualNodeGroupFiltersArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param architectures The filtered vm sizes will support at least one of the architectures from this list. x86_64 includes both intel64 and amd64.
+         * @param architectures The filtered vm sizes will support at least one of the architectures from this list. x8664 includes both intel64 and amd64.
          * 
          * @return builder
          * 

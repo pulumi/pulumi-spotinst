@@ -47,14 +47,14 @@ public final class OceanScheduledTaskTaskParametersAmiAutoUpdateArgs extends com
     }
 
     /**
-     * When set to &#39;true&#39;, the auto-update process will update the VNGs’ AMI with the AMI to match the Kubernetes control plane version. either &#34;patch&#34; or &#34;minor_version&#34; must be true.
+     * When set to &#39;true&#39;, the auto-update process will update the VNGs’ AMI with the AMI to match the Kubernetes control plane version. either &#34;patch&#34; or &#34;minorVersion&#34; must be true.
      * 
      */
     @Import(name="minorVersion")
     private @Nullable Output<Boolean> minorVersion;
 
     /**
-     * @return When set to &#39;true&#39;, the auto-update process will update the VNGs’ AMI with the AMI to match the Kubernetes control plane version. either &#34;patch&#34; or &#34;minor_version&#34; must be true.
+     * @return When set to &#39;true&#39;, the auto-update process will update the VNGs’ AMI with the AMI to match the Kubernetes control plane version. either &#34;patch&#34; or &#34;minorVersion&#34; must be true.
      * 
      */
     public Optional<Output<Boolean>> minorVersion() {
@@ -146,7 +146,7 @@ public final class OceanScheduledTaskTaskParametersAmiAutoUpdateArgs extends com
         }
 
         /**
-         * @param minorVersion When set to &#39;true&#39;, the auto-update process will update the VNGs’ AMI with the AMI to match the Kubernetes control plane version. either &#34;patch&#34; or &#34;minor_version&#34; must be true.
+         * @param minorVersion When set to &#39;true&#39;, the auto-update process will update the VNGs’ AMI with the AMI to match the Kubernetes control plane version. either &#34;patch&#34; or &#34;minorVersion&#34; must be true.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class OceanScheduledTaskTaskParametersAmiAutoUpdateArgs extends com
         }
 
         /**
-         * @param minorVersion When set to &#39;true&#39;, the auto-update process will update the VNGs’ AMI with the AMI to match the Kubernetes control plane version. either &#34;patch&#34; or &#34;minor_version&#34; must be true.
+         * @param minorVersion When set to &#39;true&#39;, the auto-update process will update the VNGs’ AMI with the AMI to match the Kubernetes control plane version. either &#34;patch&#34; or &#34;minorVersion&#34; must be true.
          * 
          * @return builder
          * 

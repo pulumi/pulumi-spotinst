@@ -51,7 +51,7 @@ public final class OceanBlockDeviceMappingEbs {
      */
     private @Nullable String snapshotId;
     /**
-     * @return The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = `gp3`.
+     * @return The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = `gp3`.
      * 
      */
     private @Nullable Integer throughput;
@@ -117,7 +117,7 @@ public final class OceanBlockDeviceMappingEbs {
         return Optional.ofNullable(this.snapshotId);
     }
     /**
-     * @return The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = `gp3`.
+     * @return The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = `gp3`.
      * 
      */
     public Optional<Integer> throughput() {
