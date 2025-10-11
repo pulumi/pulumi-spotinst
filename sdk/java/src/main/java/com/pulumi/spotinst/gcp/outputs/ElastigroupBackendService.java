@@ -31,7 +31,7 @@ public final class ElastigroupBackendService {
      */
     private @Nullable List<ElastigroupBackendServiceNamedPort> namedPorts;
     /**
-     * @return Use when `location_type` is &#34;regional&#34;. Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
+     * @return Use when `locationType` is &#34;regional&#34;. Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
      * 
      */
     private @Nullable String scheme;
@@ -64,7 +64,7 @@ public final class ElastigroupBackendService {
         return this.namedPorts == null ? List.of() : this.namedPorts;
     }
     /**
-     * @return Use when `location_type` is &#34;regional&#34;. Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
+     * @return Use when `locationType` is &#34;regional&#34;. Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
      * 
      */
     public Optional<String> scheme() {

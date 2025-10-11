@@ -70,14 +70,14 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured if cluster&#39;s `instance_types` is configured.
+     * List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured if cluster&#39;s `instanceTypes` is configured.
      * 
      */
     @Import(name="filters")
     private @Nullable Output<OceanLaunchSpecFiltersArgs> filters;
 
     /**
-     * @return List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured if cluster&#39;s `instance_types` is configured.
+     * @return List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured if cluster&#39;s `instanceTypes` is configured.
      * 
      */
     public Optional<Output<OceanLaunchSpecFiltersArgs>> filters() {
@@ -495,7 +495,7 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param filters List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured if cluster&#39;s `instance_types` is configured.
+         * @param filters List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured if cluster&#39;s `instanceTypes` is configured.
          * 
          * @return builder
          * 
@@ -506,7 +506,7 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param filters List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured if cluster&#39;s `instance_types` is configured.
+         * @param filters List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured if cluster&#39;s `instanceTypes` is configured.
          * 
          * @return builder
          * 

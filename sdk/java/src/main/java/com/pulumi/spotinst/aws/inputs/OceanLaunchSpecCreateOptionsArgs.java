@@ -16,14 +16,14 @@ public final class OceanLaunchSpecCreateOptionsArgs extends com.pulumi.resources
     public static final OceanLaunchSpecCreateOptionsArgs Empty = new OceanLaunchSpecCreateOptionsArgs();
 
     /**
-     * When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group. The parameter is recommended in case the use_as_template_only (in spotinst.aws.Ocean resource) is set to true during Ocean resource creation.
+     * When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group. The parameter is recommended in case the useAsTemplateOnly (in spotinst.aws.Ocean resource) is set to true during Ocean resource creation.
      * 
      */
     @Import(name="initialNodes")
     private @Nullable Output<Integer> initialNodes;
 
     /**
-     * @return When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group. The parameter is recommended in case the use_as_template_only (in spotinst.aws.Ocean resource) is set to true during Ocean resource creation.
+     * @return When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group. The parameter is recommended in case the useAsTemplateOnly (in spotinst.aws.Ocean resource) is set to true during Ocean resource creation.
      * 
      */
     public Optional<Output<Integer>> initialNodes() {
@@ -55,7 +55,7 @@ public final class OceanLaunchSpecCreateOptionsArgs extends com.pulumi.resources
         }
 
         /**
-         * @param initialNodes When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group. The parameter is recommended in case the use_as_template_only (in spotinst.aws.Ocean resource) is set to true during Ocean resource creation.
+         * @param initialNodes When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group. The parameter is recommended in case the useAsTemplateOnly (in spotinst.aws.Ocean resource) is set to true during Ocean resource creation.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class OceanLaunchSpecCreateOptionsArgs extends com.pulumi.resources
         }
 
         /**
-         * @param initialNodes When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group. The parameter is recommended in case the use_as_template_only (in spotinst.aws.Ocean resource) is set to true during Ocean resource creation.
+         * @param initialNodes When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group. The parameter is recommended in case the useAsTemplateOnly (in spotinst.aws.Ocean resource) is set to true during Ocean resource creation.
          * 
          * @return builder
          * 

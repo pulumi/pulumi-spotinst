@@ -30,7 +30,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly bool? ExcludeMetal;
         /// <summary>
-        /// The filtered instance types will have a hypervisor type from this list. Valid values: `nitro`, `xen`.
+        /// The filtered instance types will have a hypervisor type from this list. Valid values: `Nitro`, `Xen`.
         /// </summary>
         public readonly ImmutableArray<string> Hypervisors;
         /// <summary>
@@ -78,11 +78,11 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly int? MinVcpu;
         /// <summary>
-        /// The filtered instance types will have a root device types from this list. Valid values: `ebs`, or `instance-store`.
+        /// The filtered instance types will have a root device types from this list. Valid values: `Ebs`, or `instance-store`.
         /// </summary>
         public readonly ImmutableArray<string> RootDeviceTypes;
         /// <summary>
-        /// The filtered instance types will support at least one of the virtualization types from this list. Valid values: `hvm`, `paravirtual`.
+        /// The filtered instance types will support at least one of the virtualization types from this list. Valid values: `Hvm`, `Paravirtual`.
         /// </summary>
         public readonly ImmutableArray<string> VirtualizationTypes;
 

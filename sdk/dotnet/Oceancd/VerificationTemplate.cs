@@ -210,7 +210,7 @@ namespace Pulumi.SpotInst.Oceancd
     public partial class VerificationTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// List of verification arguments. You may specify either `value` OR `valueFrom` but not both.In case `args`:`value` is already defined in the RolloutSpec entity, there is no need to also specify it in the VerificationTemplate entity.
+        /// List of verification arguments. You may specify either `Value` OR `valueFrom` but not both.In case `Args`:`Value` is already defined in the RolloutSpec entity, there is no need to also specify it in the VerificationTemplate entity.
         /// </summary>
         [Output("args")]
         public Output<ImmutableArray<Outputs.VerificationTemplateArg>> Args { get; private set; } = null!;
@@ -277,7 +277,7 @@ namespace Pulumi.SpotInst.Oceancd
         private InputList<Inputs.VerificationTemplateArgArgs>? _args;
 
         /// <summary>
-        /// List of verification arguments. You may specify either `value` OR `valueFrom` but not both.In case `args`:`value` is already defined in the RolloutSpec entity, there is no need to also specify it in the VerificationTemplate entity.
+        /// List of verification arguments. You may specify either `Value` OR `valueFrom` but not both.In case `Args`:`Value` is already defined in the RolloutSpec entity, there is no need to also specify it in the VerificationTemplate entity.
         /// </summary>
         public InputList<Inputs.VerificationTemplateArgArgs> Args
         {
@@ -315,7 +315,7 @@ namespace Pulumi.SpotInst.Oceancd
         private InputList<Inputs.VerificationTemplateArgGetArgs>? _args;
 
         /// <summary>
-        /// List of verification arguments. You may specify either `value` OR `valueFrom` but not both.In case `args`:`value` is already defined in the RolloutSpec entity, there is no need to also specify it in the VerificationTemplate entity.
+        /// List of verification arguments. You may specify either `Value` OR `valueFrom` but not both.In case `Args`:`Value` is already defined in the RolloutSpec entity, there is no need to also specify it in the VerificationTemplate entity.
         /// </summary>
         public InputList<Inputs.VerificationTemplateArgGetArgs> Args
         {
