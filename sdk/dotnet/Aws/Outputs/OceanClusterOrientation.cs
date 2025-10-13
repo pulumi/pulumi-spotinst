@@ -14,7 +14,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class OceanClusterOrientation
     {
         /// <summary>
-        /// You can control the approach that Ocean takes while launching nodes by configuring this value. Possible values: `costOriented`,`balanced`,`cheapest`.
+        /// You can control the approach that Ocean takes while launching nodes by configuring this value. Possible values: `costOriented`,`Balanced`,`Cheapest`.
         /// </summary>
         public readonly string? AvailabilityVsCost;
 

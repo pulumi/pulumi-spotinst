@@ -403,14 +403,14 @@ public class Ocean extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Enables assignment of a primary IPv6 address to the cluster. This feature is only available when `associate_ipv6_address` is explicitly set to true. Additionally, the cluster must have been initially created as an EKS cluster in IPv6 mode.
+     * Enables assignment of a primary IPv6 address to the cluster. This feature is only available when `associateIpv6Address` is explicitly set to true. Additionally, the cluster must have been initially created as an EKS cluster in IPv6 mode.
      * 
      */
     @Export(name="primaryIpv6", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> primaryIpv6;
 
     /**
-     * @return Enables assignment of a primary IPv6 address to the cluster. This feature is only available when `associate_ipv6_address` is explicitly set to true. Additionally, the cluster must have been initially created as an EKS cluster in IPv6 mode.
+     * @return Enables assignment of a primary IPv6 address to the cluster. This feature is only available when `associateIpv6Address` is explicitly set to true. Additionally, the cluster must have been initially created as an EKS cluster in IPv6 mode.
      * 
      */
     public Output<Optional<Boolean>> primaryIpv6() {
@@ -580,7 +580,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
     }
     /**
      * launch specification defined on the Ocean object will function only as a template for virtual node groups.
-     * When set to true, on Ocean resource creation please make sure your custom VNG has an initial_nodes parameter to create nodes for your VNG.
+     * When set to true, on Ocean resource creation please make sure your custom VNG has an initialNodes parameter to create nodes for your VNG.
      * 
      */
     @Export(name="useAsTemplateOnly", refs={Boolean.class}, tree="[0]")
@@ -588,7 +588,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
 
     /**
      * @return launch specification defined on the Ocean object will function only as a template for virtual node groups.
-     * When set to true, on Ocean resource creation please make sure your custom VNG has an initial_nodes parameter to create nodes for your VNG.
+     * When set to true, on Ocean resource creation please make sure your custom VNG has an initialNodes parameter to create nodes for your VNG.
      * 
      */
     public Output<Optional<Boolean>> useAsTemplateOnly() {

@@ -14,6 +14,8 @@ namespace Pulumi.SpotInst.Aws
     /// 
     /// ## Example Usage
     /// 
+    /// ### New Strategy
+    /// 
     /// ### Wrap Strategy
     /// 
     /// ```csharp
@@ -308,7 +310,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<string?> Ec2KeyName { get; private set; } = null!;
 
         /// <summary>
-        /// Allow the `cluster_id` to set a provider output variable.
+        /// Allow the `ClusterId` to set a provider output variable.
         /// </summary>
         [Output("exposeClusterId")]
         public Output<bool?> ExposeClusterId { get; private set; } = null!;
@@ -389,7 +391,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<ImmutableArray<Outputs.MrScalarStepsFile>> StepsFiles { get; private set; } = null!;
 
         /// <summary>
-        /// The MrScaler strategy. Allowed values are `new` `clone` and `wrap`.
+        /// The MrScaler strategy. Allowed values are `New` `Clone` and `Wrap`.
         /// </summary>
         [Output("strategy")]
         public Output<string> Strategy { get; private set; } = null!;
@@ -608,7 +610,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<string>? Ec2KeyName { get; set; }
 
         /// <summary>
-        /// Allow the `cluster_id` to set a provider output variable.
+        /// Allow the `ClusterId` to set a provider output variable.
         /// </summary>
         [Input("exposeClusterId")]
         public Input<bool>? ExposeClusterId { get; set; }
@@ -711,7 +713,7 @@ namespace Pulumi.SpotInst.Aws
         }
 
         /// <summary>
-        /// The MrScaler strategy. Allowed values are `new` `clone` and `wrap`.
+        /// The MrScaler strategy. Allowed values are `New` `Clone` and `Wrap`.
         /// </summary>
         [Input("strategy", required: true)]
         public Input<string> Strategy { get; set; } = null!;
@@ -923,7 +925,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<string>? Ec2KeyName { get; set; }
 
         /// <summary>
-        /// Allow the `cluster_id` to set a provider output variable.
+        /// Allow the `ClusterId` to set a provider output variable.
         /// </summary>
         [Input("exposeClusterId")]
         public Input<bool>? ExposeClusterId { get; set; }
@@ -1029,7 +1031,7 @@ namespace Pulumi.SpotInst.Aws
         }
 
         /// <summary>
-        /// The MrScaler strategy. Allowed values are `new` `clone` and `wrap`.
+        /// The MrScaler strategy. Allowed values are `New` `Clone` and `Wrap`.
         /// </summary>
         [Input("strategy")]
         public Input<string>? Strategy { get; set; }

@@ -23,14 +23,14 @@ public final class ElastigroupScalingUpPolicyArgs extends com.pulumi.resources.R
     public static final ElastigroupScalingUpPolicyArgs Empty = new ElastigroupScalingUpPolicyArgs();
 
     /**
-     * The type of action to perform for scaling. Valid values: `&#34;adjustment&#34;`, `&#34;percentageAdjustment&#34;`, `&#34;setMaxTarget&#34;`, `&#34;setMinTarget&#34;`, `&#34;updateCapacity&#34;`. If a `step_adjustment` object is defined, then it cannot be specified.
+     * The type of action to perform for scaling. Valid values: `&#34;adjustment&#34;`, `&#34;percentageAdjustment&#34;`, `&#34;setMaxTarget&#34;`, `&#34;setMinTarget&#34;`, `&#34;updateCapacity&#34;`. If a `stepAdjustment` object is defined, then it cannot be specified.
      * 
      */
     @Import(name="actionType")
     private @Nullable Output<String> actionType;
 
     /**
-     * @return The type of action to perform for scaling. Valid values: `&#34;adjustment&#34;`, `&#34;percentageAdjustment&#34;`, `&#34;setMaxTarget&#34;`, `&#34;setMinTarget&#34;`, `&#34;updateCapacity&#34;`. If a `step_adjustment` object is defined, then it cannot be specified.
+     * @return The type of action to perform for scaling. Valid values: `&#34;adjustment&#34;`, `&#34;percentageAdjustment&#34;`, `&#34;setMaxTarget&#34;`, `&#34;setMinTarget&#34;`, `&#34;updateCapacity&#34;`. If a `stepAdjustment` object is defined, then it cannot be specified.
      * 
      */
     public Optional<Output<String>> actionType() {
@@ -292,14 +292,14 @@ public final class ElastigroupScalingUpPolicyArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The value against which the specified statistic is compared. If a `step_adjustment` object is defined, then it cannot be specified.
+     * The value against which the specified statistic is compared. If a `stepAdjustment` object is defined, then it cannot be specified.
      * 
      */
     @Import(name="threshold")
     private @Nullable Output<Double> threshold;
 
     /**
-     * @return The value against which the specified statistic is compared. If a `step_adjustment` object is defined, then it cannot be specified.
+     * @return The value against which the specified statistic is compared. If a `stepAdjustment` object is defined, then it cannot be specified.
      * 
      */
     public Optional<Output<Double>> threshold() {
@@ -366,7 +366,7 @@ public final class ElastigroupScalingUpPolicyArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param actionType The type of action to perform for scaling. Valid values: `&#34;adjustment&#34;`, `&#34;percentageAdjustment&#34;`, `&#34;setMaxTarget&#34;`, `&#34;setMinTarget&#34;`, `&#34;updateCapacity&#34;`. If a `step_adjustment` object is defined, then it cannot be specified.
+         * @param actionType The type of action to perform for scaling. Valid values: `&#34;adjustment&#34;`, `&#34;percentageAdjustment&#34;`, `&#34;setMaxTarget&#34;`, `&#34;setMinTarget&#34;`, `&#34;updateCapacity&#34;`. If a `stepAdjustment` object is defined, then it cannot be specified.
          * 
          * @return builder
          * 
@@ -377,7 +377,7 @@ public final class ElastigroupScalingUpPolicyArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param actionType The type of action to perform for scaling. Valid values: `&#34;adjustment&#34;`, `&#34;percentageAdjustment&#34;`, `&#34;setMaxTarget&#34;`, `&#34;setMinTarget&#34;`, `&#34;updateCapacity&#34;`. If a `step_adjustment` object is defined, then it cannot be specified.
+         * @param actionType The type of action to perform for scaling. Valid values: `&#34;adjustment&#34;`, `&#34;percentageAdjustment&#34;`, `&#34;setMaxTarget&#34;`, `&#34;setMinTarget&#34;`, `&#34;updateCapacity&#34;`. If a `stepAdjustment` object is defined, then it cannot be specified.
          * 
          * @return builder
          * 
@@ -755,7 +755,7 @@ public final class ElastigroupScalingUpPolicyArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param threshold The value against which the specified statistic is compared. If a `step_adjustment` object is defined, then it cannot be specified.
+         * @param threshold The value against which the specified statistic is compared. If a `stepAdjustment` object is defined, then it cannot be specified.
          * 
          * @return builder
          * 
@@ -766,7 +766,7 @@ public final class ElastigroupScalingUpPolicyArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param threshold The value against which the specified statistic is compared. If a `step_adjustment` object is defined, then it cannot be specified.
+         * @param threshold The value against which the specified statistic is compared. If a `stepAdjustment` object is defined, then it cannot be specified.
          * 
          * @return builder
          * 

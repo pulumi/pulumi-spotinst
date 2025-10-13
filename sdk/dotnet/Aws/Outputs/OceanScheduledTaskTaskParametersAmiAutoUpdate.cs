@@ -22,7 +22,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly bool? ApplyRoll;
         /// <summary>
-        /// When set to 'true', the auto-update process will update the VNGs’ AMI with the AMI to match the Kubernetes control plane version. either "patch" or "minor_version" must be true.
+        /// When set to 'true', the auto-update process will update the VNGs’ AMI with the AMI to match the Kubernetes control plane version. either "patch" or "MinorVersion" must be true.
         /// </summary>
         public readonly bool? MinorVersion;
         /// <summary>

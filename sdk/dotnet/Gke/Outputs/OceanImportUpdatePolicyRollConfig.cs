@@ -26,7 +26,7 @@ namespace Pulumi.SpotInst.Gke.Outputs
         /// </summary>
         public readonly ImmutableArray<string> LaunchSpecIds;
         /// <summary>
-        /// Default: `false`. During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.
+        /// Default: `False`. During the roll, if the parameter is set to `True` we honor PDB during the instance replacement.
         /// </summary>
         public readonly bool? RespectPdb;
 

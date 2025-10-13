@@ -34,7 +34,7 @@ namespace Pulumi.SpotInst.Oceancd
         public Output<Outputs.RolloutSpecSpotDeployment?> SpotDeployment { get; private set; } = null!;
 
         /// <summary>
-        /// You must specify either `spotDeployment` OR `spotDeployments` but not both. Every SpotDeployment has to be unique. If more than one `SpotDeployment` has been configured, no `traffic` managers can be set as part of the RolloutSpec.For such case ensure that each of the chosen SpotDeployments are being exposed with different Kubernetes services.
+        /// You must specify either `spotDeployment` OR `spotDeployments` but not both. Every SpotDeployment has to be unique. If more than one `SpotDeployment` has been configured, no `Traffic` managers can be set as part of the RolloutSpec.For such case ensure that each of the chosen SpotDeployments are being exposed with different Kubernetes services.
         /// </summary>
         [Output("spotDeployments")]
         public Output<ImmutableArray<Outputs.RolloutSpecSpotDeployment>> SpotDeployments { get; private set; } = null!;
@@ -46,7 +46,7 @@ namespace Pulumi.SpotInst.Oceancd
         public Output<Outputs.RolloutSpecStrategy> Strategy { get; private set; } = null!;
 
         /// <summary>
-        /// Hosts all of the supported service meshes needed to enable more fine-grained traffic routing. In case `SpotDeployments` contains more than one SpotDeployment the `traffic` manager may not be configured.
+        /// Hosts all of the supported service meshes needed to enable more fine-grained traffic routing. In case `SpotDeployments` contains more than one SpotDeployment the `Traffic` manager may not be configured.
         /// </summary>
         [Output("traffic")]
         public Output<Outputs.RolloutSpecTraffic?> Traffic { get; private set; } = null!;
@@ -119,7 +119,7 @@ namespace Pulumi.SpotInst.Oceancd
         private InputList<Inputs.RolloutSpecSpotDeploymentArgs>? _spotDeployments;
 
         /// <summary>
-        /// You must specify either `spotDeployment` OR `spotDeployments` but not both. Every SpotDeployment has to be unique. If more than one `SpotDeployment` has been configured, no `traffic` managers can be set as part of the RolloutSpec.For such case ensure that each of the chosen SpotDeployments are being exposed with different Kubernetes services.
+        /// You must specify either `spotDeployment` OR `spotDeployments` but not both. Every SpotDeployment has to be unique. If more than one `SpotDeployment` has been configured, no `Traffic` managers can be set as part of the RolloutSpec.For such case ensure that each of the chosen SpotDeployments are being exposed with different Kubernetes services.
         /// </summary>
         public InputList<Inputs.RolloutSpecSpotDeploymentArgs> SpotDeployments
         {
@@ -134,7 +134,7 @@ namespace Pulumi.SpotInst.Oceancd
         public Input<Inputs.RolloutSpecStrategyArgs> Strategy { get; set; } = null!;
 
         /// <summary>
-        /// Hosts all of the supported service meshes needed to enable more fine-grained traffic routing. In case `SpotDeployments` contains more than one SpotDeployment the `traffic` manager may not be configured.
+        /// Hosts all of the supported service meshes needed to enable more fine-grained traffic routing. In case `SpotDeployments` contains more than one SpotDeployment the `Traffic` manager may not be configured.
         /// </summary>
         [Input("traffic")]
         public Input<Inputs.RolloutSpecTrafficArgs>? Traffic { get; set; }
@@ -169,7 +169,7 @@ namespace Pulumi.SpotInst.Oceancd
         private InputList<Inputs.RolloutSpecSpotDeploymentGetArgs>? _spotDeployments;
 
         /// <summary>
-        /// You must specify either `spotDeployment` OR `spotDeployments` but not both. Every SpotDeployment has to be unique. If more than one `SpotDeployment` has been configured, no `traffic` managers can be set as part of the RolloutSpec.For such case ensure that each of the chosen SpotDeployments are being exposed with different Kubernetes services.
+        /// You must specify either `spotDeployment` OR `spotDeployments` but not both. Every SpotDeployment has to be unique. If more than one `SpotDeployment` has been configured, no `Traffic` managers can be set as part of the RolloutSpec.For such case ensure that each of the chosen SpotDeployments are being exposed with different Kubernetes services.
         /// </summary>
         public InputList<Inputs.RolloutSpecSpotDeploymentGetArgs> SpotDeployments
         {
@@ -184,7 +184,7 @@ namespace Pulumi.SpotInst.Oceancd
         public Input<Inputs.RolloutSpecStrategyGetArgs>? Strategy { get; set; }
 
         /// <summary>
-        /// Hosts all of the supported service meshes needed to enable more fine-grained traffic routing. In case `SpotDeployments` contains more than one SpotDeployment the `traffic` manager may not be configured.
+        /// Hosts all of the supported service meshes needed to enable more fine-grained traffic routing. In case `SpotDeployments` contains more than one SpotDeployment the `Traffic` manager may not be configured.
         /// </summary>
         [Input("traffic")]
         public Input<Inputs.RolloutSpecTrafficGetArgs>? Traffic { get; set; }

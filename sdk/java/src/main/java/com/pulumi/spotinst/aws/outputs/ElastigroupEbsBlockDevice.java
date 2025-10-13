@@ -32,7 +32,7 @@ public final class ElastigroupEbsBlockDevice {
      */
     private @Nullable ElastigroupEbsBlockDeviceDynamicIops dynamicIops;
     /**
-     * @return Set dynamic volume size properties. When using this object, you cannot use `volume_size`. You must use one or the other.
+     * @return Set dynamic volume size properties. When using this object, you cannot use `volumeSize`. You must use one or the other.
      * 
      */
     private @Nullable ElastigroupEbsBlockDeviceDynamicVolumeSize dynamicVolumeSize;
@@ -42,7 +42,7 @@ public final class ElastigroupEbsBlockDevice {
      */
     private @Nullable Boolean encrypted;
     /**
-     * @return The amount of provisioned [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html). This must be set with a `volume_type` of `&#34;io1&#34;`.
+     * @return The amount of provisioned [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html). This must be set with a `volumeType` of `&#34;io1&#34;`.
      * 
      */
     private @Nullable Integer iops;
@@ -57,7 +57,7 @@ public final class ElastigroupEbsBlockDevice {
      */
     private @Nullable String snapshotId;
     /**
-     * @return The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.
+     * @return The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
      * 
      */
     private @Nullable Integer throughput;
@@ -95,7 +95,7 @@ public final class ElastigroupEbsBlockDevice {
         return Optional.ofNullable(this.dynamicIops);
     }
     /**
-     * @return Set dynamic volume size properties. When using this object, you cannot use `volume_size`. You must use one or the other.
+     * @return Set dynamic volume size properties. When using this object, you cannot use `volumeSize`. You must use one or the other.
      * 
      */
     public Optional<ElastigroupEbsBlockDeviceDynamicVolumeSize> dynamicVolumeSize() {
@@ -109,7 +109,7 @@ public final class ElastigroupEbsBlockDevice {
         return Optional.ofNullable(this.encrypted);
     }
     /**
-     * @return The amount of provisioned [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html). This must be set with a `volume_type` of `&#34;io1&#34;`.
+     * @return The amount of provisioned [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html). This must be set with a `volumeType` of `&#34;io1&#34;`.
      * 
      */
     public Optional<Integer> iops() {
@@ -130,7 +130,7 @@ public final class ElastigroupEbsBlockDevice {
         return Optional.ofNullable(this.snapshotId);
     }
     /**
-     * @return The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.
+     * @return The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
      * 
      */
     public Optional<Integer> throughput() {

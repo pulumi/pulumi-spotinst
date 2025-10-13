@@ -247,20 +247,20 @@ namespace Pulumi.SpotInst.Gcp
         public Output<string?> InstanceNamePrefix { get; private set; } = null!;
 
         /// <summary>
-        /// Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
+        /// Defines a set of custom instance types. Required if InstanceTypesPreemptible and InstanceTypesOndemand are not set.
         /// * `vCPU` - (Optional) The number of vCPUs in the custom instance type. GCP has a number of limitations on accepted vCPU values. For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
         /// </summary>
         [Output("instanceTypesCustoms")]
         public Output<ImmutableArray<Outputs.ElastigroupInstanceTypesCustom>> InstanceTypesCustoms { get; private set; } = null!;
 
         /// <summary>
-        /// The regular VM instance type to use for mixed-type groups and when falling back to on-demand. Required if instance_types_preemptible is not set.
+        /// The regular VM instance type to use for mixed-type groups and when falling back to on-demand. Required if InstanceTypesPreemptible is not set.
         /// </summary>
         [Output("instanceTypesOndemand")]
         public Output<string?> InstanceTypesOndemand { get; private set; } = null!;
 
         /// <summary>
-        /// The preemptible VMs instance type. To maximize cost savings and market availability, select as many types as possible. Required if instance_types_ondemand is not set.
+        /// The preemptible VMs instance type. To maximize cost savings and market availability, select as many types as possible. Required if InstanceTypesOndemand is not set.
         /// </summary>
         [Output("instanceTypesPreemptibles")]
         public Output<ImmutableArray<string>> InstanceTypesPreemptibles { get; private set; } = null!;
@@ -323,13 +323,13 @@ namespace Pulumi.SpotInst.Gcp
         public Output<ImmutableArray<string>> OptimizationWindows { get; private set; } = null!;
 
         /// <summary>
-        /// Percentage of Preemptible VMs to spin up from the "desired_capacity".
+        /// Percentage of Preemptible VMs to spin up from the "DesiredCapacity".
         /// </summary>
         [Output("preemptiblePercentage")]
         public Output<int?> PreemptiblePercentage { get; private set; } = null!;
 
         /// <summary>
-        /// prioritize availability zones when launching instances for the group. Must be a sublist of `availability_zones`.
+        /// prioritize availability zones when launching instances for the group. Must be a sublist of `AvailabilityZones`.
         /// </summary>
         [Output("preferredAvailabilityZones")]
         public Output<ImmutableArray<string>> PreferredAvailabilityZones { get; private set; } = null!;
@@ -528,7 +528,7 @@ namespace Pulumi.SpotInst.Gcp
         private InputList<Inputs.ElastigroupInstanceTypesCustomArgs>? _instanceTypesCustoms;
 
         /// <summary>
-        /// Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
+        /// Defines a set of custom instance types. Required if InstanceTypesPreemptible and InstanceTypesOndemand are not set.
         /// * `vCPU` - (Optional) The number of vCPUs in the custom instance type. GCP has a number of limitations on accepted vCPU values. For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
         /// </summary>
         public InputList<Inputs.ElastigroupInstanceTypesCustomArgs> InstanceTypesCustoms
@@ -538,7 +538,7 @@ namespace Pulumi.SpotInst.Gcp
         }
 
         /// <summary>
-        /// The regular VM instance type to use for mixed-type groups and when falling back to on-demand. Required if instance_types_preemptible is not set.
+        /// The regular VM instance type to use for mixed-type groups and when falling back to on-demand. Required if InstanceTypesPreemptible is not set.
         /// </summary>
         [Input("instanceTypesOndemand")]
         public Input<string>? InstanceTypesOndemand { get; set; }
@@ -547,7 +547,7 @@ namespace Pulumi.SpotInst.Gcp
         private InputList<string>? _instanceTypesPreemptibles;
 
         /// <summary>
-        /// The preemptible VMs instance type. To maximize cost savings and market availability, select as many types as possible. Required if instance_types_ondemand is not set.
+        /// The preemptible VMs instance type. To maximize cost savings and market availability, select as many types as possible. Required if InstanceTypesOndemand is not set.
         /// </summary>
         public InputList<string> InstanceTypesPreemptibles
         {
@@ -636,7 +636,7 @@ namespace Pulumi.SpotInst.Gcp
         }
 
         /// <summary>
-        /// Percentage of Preemptible VMs to spin up from the "desired_capacity".
+        /// Percentage of Preemptible VMs to spin up from the "DesiredCapacity".
         /// </summary>
         [Input("preemptiblePercentage")]
         public Input<int>? PreemptiblePercentage { get; set; }
@@ -645,7 +645,7 @@ namespace Pulumi.SpotInst.Gcp
         private InputList<string>? _preferredAvailabilityZones;
 
         /// <summary>
-        /// prioritize availability zones when launching instances for the group. Must be a sublist of `availability_zones`.
+        /// prioritize availability zones when launching instances for the group. Must be a sublist of `AvailabilityZones`.
         /// </summary>
         public InputList<string> PreferredAvailabilityZones
         {
@@ -842,7 +842,7 @@ namespace Pulumi.SpotInst.Gcp
         private InputList<Inputs.ElastigroupInstanceTypesCustomGetArgs>? _instanceTypesCustoms;
 
         /// <summary>
-        /// Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
+        /// Defines a set of custom instance types. Required if InstanceTypesPreemptible and InstanceTypesOndemand are not set.
         /// * `vCPU` - (Optional) The number of vCPUs in the custom instance type. GCP has a number of limitations on accepted vCPU values. For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
         /// </summary>
         public InputList<Inputs.ElastigroupInstanceTypesCustomGetArgs> InstanceTypesCustoms
@@ -852,7 +852,7 @@ namespace Pulumi.SpotInst.Gcp
         }
 
         /// <summary>
-        /// The regular VM instance type to use for mixed-type groups and when falling back to on-demand. Required if instance_types_preemptible is not set.
+        /// The regular VM instance type to use for mixed-type groups and when falling back to on-demand. Required if InstanceTypesPreemptible is not set.
         /// </summary>
         [Input("instanceTypesOndemand")]
         public Input<string>? InstanceTypesOndemand { get; set; }
@@ -861,7 +861,7 @@ namespace Pulumi.SpotInst.Gcp
         private InputList<string>? _instanceTypesPreemptibles;
 
         /// <summary>
-        /// The preemptible VMs instance type. To maximize cost savings and market availability, select as many types as possible. Required if instance_types_ondemand is not set.
+        /// The preemptible VMs instance type. To maximize cost savings and market availability, select as many types as possible. Required if InstanceTypesOndemand is not set.
         /// </summary>
         public InputList<string> InstanceTypesPreemptibles
         {
@@ -950,7 +950,7 @@ namespace Pulumi.SpotInst.Gcp
         }
 
         /// <summary>
-        /// Percentage of Preemptible VMs to spin up from the "desired_capacity".
+        /// Percentage of Preemptible VMs to spin up from the "DesiredCapacity".
         /// </summary>
         [Input("preemptiblePercentage")]
         public Input<int>? PreemptiblePercentage { get; set; }
@@ -959,7 +959,7 @@ namespace Pulumi.SpotInst.Gcp
         private InputList<string>? _preferredAvailabilityZones;
 
         /// <summary>
-        /// prioritize availability zones when launching instances for the group. Must be a sublist of `availability_zones`.
+        /// prioritize availability zones when launching instances for the group. Must be a sublist of `AvailabilityZones`.
         /// </summary>
         public InputList<string> PreferredAvailabilityZones
         {
