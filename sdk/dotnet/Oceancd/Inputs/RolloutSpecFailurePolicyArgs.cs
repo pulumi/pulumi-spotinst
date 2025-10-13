@@ -13,7 +13,7 @@ namespace Pulumi.SpotInst.Oceancd.Inputs
     public sealed class RolloutSpecFailurePolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Choose an action to perform on failure. Default is `abort`.  Enum: "abort" "pause" "promote".
+        /// Choose an action to perform on failure. Default is `Abort`.  Enum: "abort" "pause" "promote".
         /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;

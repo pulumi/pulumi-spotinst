@@ -1621,6 +1621,8 @@ class MrScalar(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### New Strategy
+
         ### Wrap Strategy
 
         ```python
@@ -1787,6 +1789,8 @@ class MrScalar(pulumi.CustomResource):
         Provides a Spotinst AWS MrScaler resource.
 
         ## Example Usage
+
+        ### New Strategy
 
         ### Wrap Strategy
 

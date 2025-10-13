@@ -366,14 +366,14 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The percentage of Spot instances that would spin up from the `desired_capacity` number.
+     * The percentage of Spot instances that would spin up from the `desiredCapacity` number.
      * 
      */
     @Import(name="spotPercentage")
     private @Nullable Output<Integer> spotPercentage;
 
     /**
-     * @return The percentage of Spot instances that would spin up from the `desired_capacity` number.
+     * @return The percentage of Spot instances that would spin up from the `desiredCapacity` number.
      * 
      */
     public Optional<Output<Integer>> spotPercentage() {
@@ -1055,7 +1055,7 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param spotPercentage The percentage of Spot instances that would spin up from the `desired_capacity` number.
+         * @param spotPercentage The percentage of Spot instances that would spin up from the `desiredCapacity` number.
          * 
          * @return builder
          * 
@@ -1066,7 +1066,7 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param spotPercentage The percentage of Spot instances that would spin up from the `desired_capacity` number.
+         * @param spotPercentage The percentage of Spot instances that would spin up from the `desiredCapacity` number.
          * 
          * @return builder
          * 

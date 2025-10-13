@@ -19,7 +19,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<int> Timeout { get; set; } = null!;
 
         /// <summary>
-        /// The action to take if the timeout is exceeded. Valid values: `terminate`, `terminateAndRetry`.
+        /// The action to take if the timeout is exceeded. Valid values: `Terminate`, `terminateAndRetry`.
         /// </summary>
         [Input("timeoutAction", required: true)]
         public Input<string> TimeoutAction { get; set; } = null!;

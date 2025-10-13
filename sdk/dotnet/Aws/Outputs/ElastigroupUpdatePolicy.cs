@@ -14,7 +14,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class ElastigroupUpdatePolicy
     {
         /// <summary>
-        /// Enables updates to tags without rolling the group when set to `true`.
+        /// Enables updates to tags without rolling the group when set to `True`.
         /// </summary>
         public readonly bool? AutoApplyTags;
         /// <summary>

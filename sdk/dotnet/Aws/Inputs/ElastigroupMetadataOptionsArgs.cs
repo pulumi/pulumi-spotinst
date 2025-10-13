@@ -19,7 +19,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<int>? HttpPutResponseHopLimit { get; set; }
 
         /// <summary>
-        /// The state of token usage for your instance metadata requests. Valid values: `optional` or `required`.
+        /// The state of token usage for your instance metadata requests. Valid values: `Optional` or `Required`.
         /// </summary>
         [Input("httpTokens", required: true)]
         public Input<string> HttpTokens { get; set; } = null!;

@@ -13,7 +13,7 @@ namespace Pulumi.SpotInst.Ecs.Inputs
     public sealed class OceanClusterOrientationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// You can control the approach that Ocean takes while launching nodes by configuring this value. Possible values: `costOriented`,`balanced`,`cheapest`.
+        /// You can control the approach that Ocean takes while launching nodes by configuring this value. Possible values: `costOriented`,`Balanced`,`Cheapest`.
         /// </summary>
         [Input("availabilityVsCost")]
         public Input<string>? AvailabilityVsCost { get; set; }

@@ -12,6 +12,8 @@ namespace Pulumi.SpotInst.Ecs
     /// <summary>
     /// Manages a Spotinst Ocean ECS resource.
     /// 
+    /// ## Example Usage
+    /// 
     /// ## Import
     /// 
     /// Clusters can be imported using the Ocean `id`, e.g.,
@@ -161,7 +163,7 @@ namespace Pulumi.SpotInst.Ecs
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
 
         /// <summary>
-        /// The percentage of Spot instances that would spin up from the `desired_capacity` number.
+        /// The percentage of Spot instances that would spin up from the `DesiredCapacity` number.
         /// </summary>
         [Output("spotPercentage")]
         public Output<int?> SpotPercentage { get; private set; } = null!;
@@ -421,7 +423,7 @@ namespace Pulumi.SpotInst.Ecs
         }
 
         /// <summary>
-        /// The percentage of Spot instances that would spin up from the `desired_capacity` number.
+        /// The percentage of Spot instances that would spin up from the `DesiredCapacity` number.
         /// </summary>
         [Input("spotPercentage")]
         public Input<int>? SpotPercentage { get; set; }
@@ -660,7 +662,7 @@ namespace Pulumi.SpotInst.Ecs
         }
 
         /// <summary>
-        /// The percentage of Spot instances that would spin up from the `desired_capacity` number.
+        /// The percentage of Spot instances that would spin up from the `DesiredCapacity` number.
         /// </summary>
         [Input("spotPercentage")]
         public Input<int>? SpotPercentage { get; set; }

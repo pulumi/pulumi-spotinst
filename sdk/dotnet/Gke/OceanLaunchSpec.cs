@@ -12,7 +12,7 @@ namespace Pulumi.SpotInst.Gke
     /// <summary>
     /// Manages a custom Spotinst Ocean GKE Launch Spec resource.
     /// 
-    /// &gt; This resource can be imported from GKE node pool or not. If you want to import the node pool and create the VNG from it, please provide `node_pool_name`.
+    /// &gt; This resource can be imported from GKE node pool or not. If you want to import the node pool and create the VNG from it, please provide `NodePoolName`.
     /// 
     /// ## Example Usage
     /// 
@@ -194,7 +194,7 @@ namespace Pulumi.SpotInst.Gke
         public Output<Outputs.OceanLaunchSpecCreateOptions?> CreateOptions { get; private set; } = null!;
 
         /// <summary>
-        /// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `instance_types` is configured.
+        /// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `InstanceTypes` is configured.
         /// </summary>
         [Output("filters")]
         public Output<Outputs.OceanLaunchSpecFilters?> Filters { get; private set; } = null!;
@@ -248,7 +248,7 @@ namespace Pulumi.SpotInst.Gke
         public Output<Outputs.OceanLaunchSpecResourceLimits?> ResourceLimits { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        /// Boolean. When set to `True`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         /// </summary>
         [Output("restrictScaleDown")]
         public Output<bool> RestrictScaleDown { get; private set; } = null!;
@@ -390,7 +390,7 @@ namespace Pulumi.SpotInst.Gke
         public Input<Inputs.OceanLaunchSpecCreateOptionsArgs>? CreateOptions { get; set; }
 
         /// <summary>
-        /// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `instance_types` is configured.
+        /// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `InstanceTypes` is configured.
         /// </summary>
         [Input("filters")]
         public Input<Inputs.OceanLaunchSpecFiltersArgs>? Filters { get; set; }
@@ -468,7 +468,7 @@ namespace Pulumi.SpotInst.Gke
         public Input<Inputs.OceanLaunchSpecResourceLimitsArgs>? ResourceLimits { get; set; }
 
         /// <summary>
-        /// Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        /// Boolean. When set to `True`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         /// </summary>
         [Input("restrictScaleDown")]
         public Input<bool>? RestrictScaleDown { get; set; }
@@ -596,7 +596,7 @@ namespace Pulumi.SpotInst.Gke
         public Input<Inputs.OceanLaunchSpecCreateOptionsGetArgs>? CreateOptions { get; set; }
 
         /// <summary>
-        /// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `instance_types` is configured.
+        /// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `InstanceTypes` is configured.
         /// </summary>
         [Input("filters")]
         public Input<Inputs.OceanLaunchSpecFiltersGetArgs>? Filters { get; set; }
@@ -674,7 +674,7 @@ namespace Pulumi.SpotInst.Gke
         public Input<Inputs.OceanLaunchSpecResourceLimitsGetArgs>? ResourceLimits { get; set; }
 
         /// <summary>
-        /// Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        /// Boolean. When set to `True`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         /// </summary>
         [Input("restrictScaleDown")]
         public Input<bool>? RestrictScaleDown { get; set; }

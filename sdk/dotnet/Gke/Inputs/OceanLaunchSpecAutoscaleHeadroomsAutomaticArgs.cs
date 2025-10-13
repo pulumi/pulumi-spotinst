@@ -13,7 +13,7 @@ namespace Pulumi.SpotInst.Gke.Inputs
     public sealed class OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`is_enabled` = true is set on the Ocean cluster.
+        /// Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`IsEnabled` = true is set on the Ocean cluster.
         /// </summary>
         [Input("autoHeadroomPercentage")]
         public Input<int>? AutoHeadroomPercentage { get; set; }

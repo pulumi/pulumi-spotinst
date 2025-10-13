@@ -49,7 +49,7 @@ public final class ElastigroupEbsBlockDeviceDynamicIopsArgs extends com.pulumi.r
     /**
      * Additional size per resource unit (in IOPS).
      * 
-     * Modifying any `ebs_block_device` currently requires resource replacement.
+     * Modifying any `ebsBlockDevice` currently requires resource replacement.
      * 
      * Usage:
      * 
@@ -60,7 +60,7 @@ public final class ElastigroupEbsBlockDeviceDynamicIopsArgs extends com.pulumi.r
     /**
      * @return Additional size per resource unit (in IOPS).
      * 
-     * Modifying any `ebs_block_device` currently requires resource replacement.
+     * Modifying any `ebsBlockDevice` currently requires resource replacement.
      * 
      * Usage:
      * 
@@ -140,7 +140,7 @@ public final class ElastigroupEbsBlockDeviceDynamicIopsArgs extends com.pulumi.r
         /**
          * @param sizePerResourceUnit Additional size per resource unit (in IOPS).
          * 
-         * Modifying any `ebs_block_device` currently requires resource replacement.
+         * Modifying any `ebsBlockDevice` currently requires resource replacement.
          * 
          * Usage:
          * 
@@ -155,7 +155,7 @@ public final class ElastigroupEbsBlockDeviceDynamicIopsArgs extends com.pulumi.r
         /**
          * @param sizePerResourceUnit Additional size per resource unit (in IOPS).
          * 
-         * Modifying any `ebs_block_device` currently requires resource replacement.
+         * Modifying any `ebsBlockDevice` currently requires resource replacement.
          * 
          * Usage:
          * 

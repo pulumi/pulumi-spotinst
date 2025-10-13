@@ -22,7 +22,7 @@ namespace Pulumi.SpotInst.Azure.Inputs
         private InputList<string>? _architectures;
 
         /// <summary>
-        /// The filtered vm sizes will support at least one of the architectures from this list. x86_64 includes both intel64 and amd64.
+        /// The filtered vm sizes will support at least one of the architectures from this list. X8664 includes both intel64 and amd64.
         /// </summary>
         public InputList<string> Architectures
         {
@@ -112,7 +112,7 @@ namespace Pulumi.SpotInst.Azure.Inputs
         private InputList<string>? _series;
 
         /// <summary>
-        /// Vm sizes belonging to a series from the list will be available for scaling. We can specify include list and series can be specified with capital or small letters, with space, without space or with underscore '_' .  For example all of these "DSv2", "Ds v2", "ds_v2" refer to same DS_v2 series.
+        /// Vm sizes belonging to a series from the list will be available for scaling. We can specify include list and series can be specified with capital or small letters, with space, without space or with underscore '_' .  For example all of these "DSv2", "Ds v2", "DsV2" refer to same DS_v2 series.
         /// </summary>
         public InputList<string> Series
         {
