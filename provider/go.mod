@@ -5,7 +5,7 @@ go 1.24.0
 toolchain go1.24.6
 
 require (
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.115.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.115.1-0.20251021160433-4c9196985ee8
 	github.com/pulumi/pulumi/sdk/v3 v3.190.0
 	github.com/spotinst/terraform-provider-spotinst v1.228.0
 )
