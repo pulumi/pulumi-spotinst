@@ -13,9 +13,21 @@ namespace Pulumi.SpotInst.Outputs
     [OutputType]
     public sealed class OceanRightSizingRuleRecommendationApplicationBoundary
     {
+        /// <summary>
+        /// the maximal value of cpu in vCpu.
+        /// </summary>
         public readonly double? CpuMax;
+        /// <summary>
+        /// the minimal value of cpu in vCpu.
+        /// </summary>
         public readonly double? CpuMin;
+        /// <summary>
+        /// the maximal value of memory in Gib.
+        /// </summary>
         public readonly int? MemoryMax;
+        /// <summary>
+        /// the minimal value of memory in Gib.
+        /// </summary>
         public readonly int? MemoryMin;
 
         [OutputConstructor]

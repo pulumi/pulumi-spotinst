@@ -19,6 +19,7 @@ import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecInstanceMetadataOptionsArgs
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecInstanceStorePolicyArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecInstanceTypesFiltersArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecLabelArgs;
+import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecLoadBalancerArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecResourceLimitArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecSchedulingShutdownHoursArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecSchedulingTaskArgs;
@@ -273,6 +274,21 @@ public final class OceanLaunchSpecArgs extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<List<OceanLaunchSpecLabelArgs>>> labels() {
         return Optional.ofNullable(this.labels);
+    }
+
+    /**
+     * Array of load balancer objects to add to VNG
+     * 
+     */
+    @Import(name="loadBalancers")
+    private @Nullable Output<List<OceanLaunchSpecLoadBalancerArgs>> loadBalancers;
+
+    /**
+     * @return Array of load balancer objects to add to VNG
+     * 
+     */
+    public Optional<Output<List<OceanLaunchSpecLoadBalancerArgs>>> loadBalancers() {
+        return Optional.ofNullable(this.loadBalancers);
     }
 
     /**
@@ -541,6 +557,7 @@ public final class OceanLaunchSpecArgs extends com.pulumi.resources.ResourceArgs
         this.instanceTypes = $.instanceTypes;
         this.instanceTypesFilters = $.instanceTypesFilters;
         this.labels = $.labels;
+        this.loadBalancers = $.loadBalancers;
         this.name = $.name;
         this.oceanId = $.oceanId;
         this.preferredOdTypes = $.preferredOdTypes;
@@ -987,6 +1004,37 @@ public final class OceanLaunchSpecArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder labels(OceanLaunchSpecLabelArgs... labels) {
             return labels(List.of(labels));
+        }
+
+        /**
+         * @param loadBalancers Array of load balancer objects to add to VNG
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loadBalancers(@Nullable Output<List<OceanLaunchSpecLoadBalancerArgs>> loadBalancers) {
+            $.loadBalancers = loadBalancers;
+            return this;
+        }
+
+        /**
+         * @param loadBalancers Array of load balancer objects to add to VNG
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loadBalancers(List<OceanLaunchSpecLoadBalancerArgs> loadBalancers) {
+            return loadBalancers(Output.of(loadBalancers));
+        }
+
+        /**
+         * @param loadBalancers Array of load balancer objects to add to VNG
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loadBalancers(OceanLaunchSpecLoadBalancerArgs... loadBalancers) {
+            return loadBalancers(List.of(loadBalancers));
         }
 
         /**

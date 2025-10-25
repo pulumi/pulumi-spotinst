@@ -161,6 +161,7 @@ __all__ = [
     'OceanLaunchSpecInstanceStorePolicy',
     'OceanLaunchSpecInstanceTypesFilters',
     'OceanLaunchSpecLabel',
+    'OceanLaunchSpecLoadBalancer',
     'OceanLaunchSpecResourceLimit',
     'OceanLaunchSpecSchedulingShutdownHours',
     'OceanLaunchSpecSchedulingTask',
@@ -10061,6 +10062,48 @@ class OceanLaunchSpecLabel(dict):
         The label value.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class OceanLaunchSpecLoadBalancer(dict):
+    def __init__(__self__, *,
+                 type: _builtins.str,
+                 arn: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str type: Can be set to `CLASSIC` or `TARGET_GROUP`
+        :param _builtins.str arn: Required if type is set to `TARGET_GROUP`
+        :param _builtins.str name: Required if type is set to `CLASSIC`
+        """
+        pulumi.set(__self__, "type", type)
+        if arn is not None:
+            pulumi.set(__self__, "arn", arn)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Can be set to `CLASSIC` or `TARGET_GROUP`
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def arn(self) -> Optional[_builtins.str]:
+        """
+        Required if type is set to `TARGET_GROUP`
+        """
+        return pulumi.get(self, "arn")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Required if type is set to `CLASSIC`
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type

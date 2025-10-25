@@ -19,23 +19,47 @@ public final class OceanRightSizingRuleRecommendationApplicationIntervalMonthlyR
 
     public static final OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs Empty = new OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs();
 
+    /**
+     * Array of the months (in number), when we want to trigger the apply recommendations.
+     * 
+     */
     @Import(name="intervalMonths", required=true)
     private Output<List<Integer>> intervalMonths;
 
+    /**
+     * @return Array of the months (in number), when we want to trigger the apply recommendations.
+     * 
+     */
     public Output<List<Integer>> intervalMonths() {
         return this.intervalMonths;
     }
 
+    /**
+     * Valid values: &#34;FIRST&#34; &#34;SECOND&#34; &#34;THIRD&#34; &#34;FOURTH&#34; &#34;LAST&#34;. Array of the weeks in the month, when we want to trigger the apply recommendations.
+     * 
+     */
     @Import(name="weekOfTheMonths", required=true)
     private Output<List<String>> weekOfTheMonths;
 
+    /**
+     * @return Valid values: &#34;FIRST&#34; &#34;SECOND&#34; &#34;THIRD&#34; &#34;FOURTH&#34; &#34;LAST&#34;. Array of the weeks in the month, when we want to trigger the apply recommendations.
+     * 
+     */
     public Output<List<String>> weekOfTheMonths() {
         return this.weekOfTheMonths;
     }
 
+    /**
+     * Determines the Ocean Rightsizing rule weekly repetition basis.
+     * 
+     */
     @Import(name="weeklyRepetitionBases")
     private @Nullable Output<List<OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgs>> weeklyRepetitionBases;
 
+    /**
+     * @return Determines the Ocean Rightsizing rule weekly repetition basis.
+     * 
+     */
     public Optional<Output<List<OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgs>>> weeklyRepetitionBases() {
         return Optional.ofNullable(this.weeklyRepetitionBases);
     }
@@ -66,41 +90,95 @@ public final class OceanRightSizingRuleRecommendationApplicationIntervalMonthlyR
             $ = new OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param intervalMonths Array of the months (in number), when we want to trigger the apply recommendations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder intervalMonths(Output<List<Integer>> intervalMonths) {
             $.intervalMonths = intervalMonths;
             return this;
         }
 
+        /**
+         * @param intervalMonths Array of the months (in number), when we want to trigger the apply recommendations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder intervalMonths(List<Integer> intervalMonths) {
             return intervalMonths(Output.of(intervalMonths));
         }
 
+        /**
+         * @param intervalMonths Array of the months (in number), when we want to trigger the apply recommendations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder intervalMonths(Integer... intervalMonths) {
             return intervalMonths(List.of(intervalMonths));
         }
 
+        /**
+         * @param weekOfTheMonths Valid values: &#34;FIRST&#34; &#34;SECOND&#34; &#34;THIRD&#34; &#34;FOURTH&#34; &#34;LAST&#34;. Array of the weeks in the month, when we want to trigger the apply recommendations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder weekOfTheMonths(Output<List<String>> weekOfTheMonths) {
             $.weekOfTheMonths = weekOfTheMonths;
             return this;
         }
 
+        /**
+         * @param weekOfTheMonths Valid values: &#34;FIRST&#34; &#34;SECOND&#34; &#34;THIRD&#34; &#34;FOURTH&#34; &#34;LAST&#34;. Array of the weeks in the month, when we want to trigger the apply recommendations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder weekOfTheMonths(List<String> weekOfTheMonths) {
             return weekOfTheMonths(Output.of(weekOfTheMonths));
         }
 
+        /**
+         * @param weekOfTheMonths Valid values: &#34;FIRST&#34; &#34;SECOND&#34; &#34;THIRD&#34; &#34;FOURTH&#34; &#34;LAST&#34;. Array of the weeks in the month, when we want to trigger the apply recommendations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder weekOfTheMonths(String... weekOfTheMonths) {
             return weekOfTheMonths(List.of(weekOfTheMonths));
         }
 
+        /**
+         * @param weeklyRepetitionBases Determines the Ocean Rightsizing rule weekly repetition basis.
+         * 
+         * @return builder
+         * 
+         */
         public Builder weeklyRepetitionBases(@Nullable Output<List<OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgs>> weeklyRepetitionBases) {
             $.weeklyRepetitionBases = weeklyRepetitionBases;
             return this;
         }
 
+        /**
+         * @param weeklyRepetitionBases Determines the Ocean Rightsizing rule weekly repetition basis.
+         * 
+         * @return builder
+         * 
+         */
         public Builder weeklyRepetitionBases(List<OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgs> weeklyRepetitionBases) {
             return weeklyRepetitionBases(Output.of(weeklyRepetitionBases));
         }
 
+        /**
+         * @param weeklyRepetitionBases Determines the Ocean Rightsizing rule weekly repetition basis.
+         * 
+         * @return builder
+         * 
+         */
         public Builder weeklyRepetitionBases(OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgs... weeklyRepetitionBases) {
             return weeklyRepetitionBases(List.of(weeklyRepetitionBases));
         }

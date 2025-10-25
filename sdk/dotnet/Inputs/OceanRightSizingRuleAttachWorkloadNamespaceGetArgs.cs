@@ -14,6 +14,12 @@ namespace Pulumi.SpotInst.Inputs
     {
         [Input("labels")]
         private InputList<Inputs.OceanRightSizingRuleAttachWorkloadNamespaceLabelGetArgs>? _labels;
+
+        /// <summary>
+        /// A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
+        /// 
+        /// &lt;a id="AttachWorkloads"&gt;&lt;/a&gt;
+        /// </summary>
         public InputList<Inputs.OceanRightSizingRuleAttachWorkloadNamespaceLabelGetArgs> Labels
         {
             get => _labels ?? (_labels = new InputList<Inputs.OceanRightSizingRuleAttachWorkloadNamespaceLabelGetArgs>());

@@ -11,17 +11,41 @@ import java.util.Objects;
 
 @CustomType
 public final class OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBase {
+    /**
+     * @return Valid values: &#34;SUNDAY&#34; &#34;MONDAY&#34; &#34;TUESDAY&#34; &#34;WEDNESDAY&#34; &#34;THURSDAY&#34; &#34;FRIDAY&#34; &#34;SATURDAY&#34;. Array of the days of the week, when we want to trigger the apply recommendations.
+     * 
+     */
     private List<String> intervalDays;
+    /**
+     * @return End time.
+     * 
+     */
     private String intervalHoursEndTime;
+    /**
+     * @return Start time.
+     * 
+     */
     private String intervalHoursStartTime;
 
     private OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBase() {}
+    /**
+     * @return Valid values: &#34;SUNDAY&#34; &#34;MONDAY&#34; &#34;TUESDAY&#34; &#34;WEDNESDAY&#34; &#34;THURSDAY&#34; &#34;FRIDAY&#34; &#34;SATURDAY&#34;. Array of the days of the week, when we want to trigger the apply recommendations.
+     * 
+     */
     public List<String> intervalDays() {
         return this.intervalDays;
     }
+    /**
+     * @return End time.
+     * 
+     */
     public String intervalHoursEndTime() {
         return this.intervalHoursEndTime;
     }
+    /**
+     * @return Start time.
+     * 
+     */
     public String intervalHoursStartTime() {
         return this.intervalHoursStartTime;
     }

@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanRightSizingRuleRecommendationApplicationHpa {
+    /**
+     * @return Determines by the rule if recommendation application is allowed for workloads with HPA definition.
+     * 
+     */
     private @Nullable Boolean allowHpaRecommendations;
 
     private OceanRightSizingRuleRecommendationApplicationHpa() {}
+    /**
+     * @return Determines by the rule if recommendation application is allowed for workloads with HPA definition.
+     * 
+     */
     public Optional<Boolean> allowHpaRecommendations() {
         return Optional.ofNullable(this.allowHpaRecommendations);
     }

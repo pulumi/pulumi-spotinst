@@ -13,8 +13,17 @@ namespace Pulumi.SpotInst.Outputs
     [OutputType]
     public sealed class OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBase
     {
+        /// <summary>
+        /// Valid values: "SUNDAY" "MONDAY" "TUESDAY" "WEDNESDAY" "THURSDAY" "FRIDAY" "SATURDAY". Array of the days of the week, when we want to trigger the apply recommendations.
+        /// </summary>
         public readonly ImmutableArray<string> IntervalDays;
+        /// <summary>
+        /// End time.
+        /// </summary>
         public readonly string IntervalHoursEndTime;
+        /// <summary>
+        /// Start time.
+        /// </summary>
         public readonly string IntervalHoursStartTime;
 
         [OutputConstructor]

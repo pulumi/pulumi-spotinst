@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanRightSizingRuleRecommendationApplicationMinThreshold {
+    /**
+     * @return .
+     * 
+     */
     private @Nullable Double cpuPercentage;
+    /**
+     * @return .
+     * 
+     */
     private @Nullable Double memoryPercentage;
 
     private OceanRightSizingRuleRecommendationApplicationMinThreshold() {}
+    /**
+     * @return .
+     * 
+     */
     public Optional<Double> cpuPercentage() {
         return Optional.ofNullable(this.cpuPercentage);
     }
+    /**
+     * @return .
+     * 
+     */
     public Optional<Double> memoryPercentage() {
         return Optional.ofNullable(this.memoryPercentage);
     }
