@@ -11,9 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class OceanRightSizingRuleAttachWorkload {
+    /**
+     * @return List of namespaces that match the auto-apply rule.
+     * 
+     */
     private List<OceanRightSizingRuleAttachWorkloadNamespace> namespaces;
 
     private OceanRightSizingRuleAttachWorkload() {}
+    /**
+     * @return List of namespaces that match the auto-apply rule.
+     * 
+     */
     public List<OceanRightSizingRuleAttachWorkloadNamespace> namespaces() {
         return this.namespaces;
     }

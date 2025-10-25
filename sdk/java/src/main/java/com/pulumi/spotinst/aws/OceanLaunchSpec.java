@@ -23,6 +23,7 @@ import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecInstanceMetadataOptions;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecInstanceStorePolicy;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecInstanceTypesFilters;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecLabel;
+import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecLoadBalancer;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecResourceLimit;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecSchedulingShutdownHours;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecSchedulingTask;
@@ -271,6 +272,20 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<OceanLaunchSpecLabel>>> labels() {
         return Codegen.optional(this.labels);
+    }
+    /**
+     * Array of load balancer objects to add to VNG
+     * 
+     */
+    @Export(name="loadBalancers", refs={List.class,OceanLaunchSpecLoadBalancer.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<OceanLaunchSpecLoadBalancer>> loadBalancers;
+
+    /**
+     * @return Array of load balancer objects to add to VNG
+     * 
+     */
+    public Output<Optional<List<OceanLaunchSpecLoadBalancer>>> loadBalancers() {
+        return Codegen.optional(this.loadBalancers);
     }
     /**
      * The name of the Virtual Node Group.

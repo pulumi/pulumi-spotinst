@@ -1716,6 +1716,9 @@
                     "labels": {
                         "maxItemsOne": false
                     },
+                    "load_balancers": {
+                        "maxItemsOne": false
+                    },
                     "preferred_od_types": {
                         "maxItemsOne": false
                     },

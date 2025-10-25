@@ -13,6 +13,9 @@ namespace Pulumi.SpotInst.Outputs
     [OutputType]
     public sealed class OceanRightSizingRuleRecommendationApplicationHpa
     {
+        /// <summary>
+        /// Determines by the rule if recommendation application is allowed for workloads with HPA definition.
+        /// </summary>
         public readonly bool? AllowHpaRecommendations;
 
         [OutputConstructor]

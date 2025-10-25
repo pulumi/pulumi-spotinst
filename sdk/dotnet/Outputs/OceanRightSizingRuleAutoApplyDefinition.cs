@@ -13,8 +13,19 @@ namespace Pulumi.SpotInst.Outputs
     [OutputType]
     public sealed class OceanRightSizingRuleAutoApplyDefinition
     {
+        /// <summary>
+        /// Determines if auto apply is enabled.
+        /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
+        /// 
+        /// &lt;a id="AttachWorkloads"&gt;&lt;/a&gt;
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Labels;
+        /// <summary>
+        /// List of namespaces that match the auto-apply rule.
+        /// </summary>
         public readonly ImmutableArray<string> Namespaces;
 
         [OutputConstructor]
