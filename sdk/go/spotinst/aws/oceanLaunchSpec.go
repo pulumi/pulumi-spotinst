@@ -59,6 +59,8 @@ type OceanLaunchSpec struct {
 	InstanceTypesFilters OceanLaunchSpecInstanceTypesFiltersPtrOutput `pulumi:"instanceTypesFilters"`
 	// Optionally adds labels to instances launched in the cluster.
 	Labels OceanLaunchSpecLabelArrayOutput `pulumi:"labels"`
+	// Array of load balancer objects to add to VNG
+	LoadBalancers OceanLaunchSpecLoadBalancerArrayOutput `pulumi:"loadBalancers"`
 	// The name of the Virtual Node Group.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the Ocean cluster.
@@ -160,6 +162,8 @@ type oceanLaunchSpecState struct {
 	InstanceTypesFilters *OceanLaunchSpecInstanceTypesFilters `pulumi:"instanceTypesFilters"`
 	// Optionally adds labels to instances launched in the cluster.
 	Labels []OceanLaunchSpecLabel `pulumi:"labels"`
+	// Array of load balancer objects to add to VNG
+	LoadBalancers []OceanLaunchSpecLoadBalancer `pulumi:"loadBalancers"`
 	// The name of the Virtual Node Group.
 	Name *string `pulumi:"name"`
 	// The ID of the Ocean cluster.
@@ -229,6 +233,8 @@ type OceanLaunchSpecState struct {
 	InstanceTypesFilters OceanLaunchSpecInstanceTypesFiltersPtrInput
 	// Optionally adds labels to instances launched in the cluster.
 	Labels OceanLaunchSpecLabelArrayInput
+	// Array of load balancer objects to add to VNG
+	LoadBalancers OceanLaunchSpecLoadBalancerArrayInput
 	// The name of the Virtual Node Group.
 	Name pulumi.StringPtrInput
 	// The ID of the Ocean cluster.
@@ -302,6 +308,8 @@ type oceanLaunchSpecArgs struct {
 	InstanceTypesFilters *OceanLaunchSpecInstanceTypesFilters `pulumi:"instanceTypesFilters"`
 	// Optionally adds labels to instances launched in the cluster.
 	Labels []OceanLaunchSpecLabel `pulumi:"labels"`
+	// Array of load balancer objects to add to VNG
+	LoadBalancers []OceanLaunchSpecLoadBalancer `pulumi:"loadBalancers"`
 	// The name of the Virtual Node Group.
 	Name *string `pulumi:"name"`
 	// The ID of the Ocean cluster.
@@ -372,6 +380,8 @@ type OceanLaunchSpecArgs struct {
 	InstanceTypesFilters OceanLaunchSpecInstanceTypesFiltersPtrInput
 	// Optionally adds labels to instances launched in the cluster.
 	Labels OceanLaunchSpecLabelArrayInput
+	// Array of load balancer objects to add to VNG
+	LoadBalancers OceanLaunchSpecLoadBalancerArrayInput
 	// The name of the Virtual Node Group.
 	Name pulumi.StringPtrInput
 	// The ID of the Ocean cluster.
@@ -580,6 +590,11 @@ func (o OceanLaunchSpecOutput) InstanceTypesFilters() OceanLaunchSpecInstanceTyp
 // Optionally adds labels to instances launched in the cluster.
 func (o OceanLaunchSpecOutput) Labels() OceanLaunchSpecLabelArrayOutput {
 	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecLabelArrayOutput { return v.Labels }).(OceanLaunchSpecLabelArrayOutput)
+}
+
+// Array of load balancer objects to add to VNG
+func (o OceanLaunchSpecOutput) LoadBalancers() OceanLaunchSpecLoadBalancerArrayOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecLoadBalancerArrayOutput { return v.LoadBalancers }).(OceanLaunchSpecLoadBalancerArrayOutput)
 }
 
 // The name of the Virtual Node Group.

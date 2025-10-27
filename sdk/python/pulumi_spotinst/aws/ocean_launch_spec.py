@@ -39,6 +39,7 @@ class OceanLaunchSpecArgs:
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  instance_types_filters: Optional[pulumi.Input['OceanLaunchSpecInstanceTypesFiltersArgs']] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]]] = None,
+                 load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLoadBalancerArgs']]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  preferred_od_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  preferred_spot_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -75,6 +76,7 @@ class OceanLaunchSpecArgs:
         :param pulumi.Input['OceanLaunchSpecInstanceTypesFiltersArgs'] instance_types_filters: The instance types that match with all filters compose the Virtual Node Group's instanceTypes parameter.
                The architectures that come from the Virtual Node Group's images will be taken into account when using this parameter. Cannot be configured together with Virtual Node Group's instanceTypes and with the Cluster's whitelist/blacklist/filters.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]] labels: Optionally adds labels to instances launched in the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLoadBalancerArgs']]] load_balancers: Array of load balancer objects to add to VNG
         :param pulumi.Input[_builtins.str] name: The name of the Virtual Node Group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preferred_od_types: A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preferred_spot_types: A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
@@ -125,6 +127,8 @@ class OceanLaunchSpecArgs:
             pulumi.set(__self__, "instance_types_filters", instance_types_filters)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if load_balancers is not None:
+            pulumi.set(__self__, "load_balancers", load_balancers)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if preferred_od_types is not None:
@@ -370,6 +374,18 @@ class OceanLaunchSpecArgs:
         pulumi.set(self, "labels", value)
 
     @_builtins.property
+    @pulumi.getter(name="loadBalancers")
+    def load_balancers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLoadBalancerArgs']]]]:
+        """
+        Array of load balancer objects to add to VNG
+        """
+        return pulumi.get(self, "load_balancers")
+
+    @load_balancers.setter
+    def load_balancers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLoadBalancerArgs']]]]):
+        pulumi.set(self, "load_balancers", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -585,6 +601,7 @@ class _OceanLaunchSpecState:
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  instance_types_filters: Optional[pulumi.Input['OceanLaunchSpecInstanceTypesFiltersArgs']] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]]] = None,
+                 load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLoadBalancerArgs']]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  ocean_id: Optional[pulumi.Input[_builtins.str]] = None,
                  preferred_od_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -621,6 +638,7 @@ class _OceanLaunchSpecState:
         :param pulumi.Input['OceanLaunchSpecInstanceTypesFiltersArgs'] instance_types_filters: The instance types that match with all filters compose the Virtual Node Group's instanceTypes parameter.
                The architectures that come from the Virtual Node Group's images will be taken into account when using this parameter. Cannot be configured together with Virtual Node Group's instanceTypes and with the Cluster's whitelist/blacklist/filters.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]] labels: Optionally adds labels to instances launched in the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLoadBalancerArgs']]] load_balancers: Array of load balancer objects to add to VNG
         :param pulumi.Input[_builtins.str] name: The name of the Virtual Node Group.
         :param pulumi.Input[_builtins.str] ocean_id: The ID of the Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preferred_od_types: A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
@@ -671,6 +689,8 @@ class _OceanLaunchSpecState:
             pulumi.set(__self__, "instance_types_filters", instance_types_filters)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if load_balancers is not None:
+            pulumi.set(__self__, "load_balancers", load_balancers)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if ocean_id is not None:
@@ -906,6 +926,18 @@ class _OceanLaunchSpecState:
         pulumi.set(self, "labels", value)
 
     @_builtins.property
+    @pulumi.getter(name="loadBalancers")
+    def load_balancers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLoadBalancerArgs']]]]:
+        """
+        Array of load balancer objects to add to VNG
+        """
+        return pulumi.get(self, "load_balancers")
+
+    @load_balancers.setter
+    def load_balancers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLoadBalancerArgs']]]]):
+        pulumi.set(self, "load_balancers", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -1136,6 +1168,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  instance_types_filters: Optional[pulumi.Input[Union['OceanLaunchSpecInstanceTypesFiltersArgs', 'OceanLaunchSpecInstanceTypesFiltersArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecLabelArgs', 'OceanLaunchSpecLabelArgsDict']]]]] = None,
+                 load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecLoadBalancerArgs', 'OceanLaunchSpecLoadBalancerArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  ocean_id: Optional[pulumi.Input[_builtins.str]] = None,
                  preferred_od_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1186,6 +1219,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[Union['OceanLaunchSpecInstanceTypesFiltersArgs', 'OceanLaunchSpecInstanceTypesFiltersArgsDict']] instance_types_filters: The instance types that match with all filters compose the Virtual Node Group's instanceTypes parameter.
                The architectures that come from the Virtual Node Group's images will be taken into account when using this parameter. Cannot be configured together with Virtual Node Group's instanceTypes and with the Cluster's whitelist/blacklist/filters.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecLabelArgs', 'OceanLaunchSpecLabelArgsDict']]]] labels: Optionally adds labels to instances launched in the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecLoadBalancerArgs', 'OceanLaunchSpecLoadBalancerArgsDict']]]] load_balancers: Array of load balancer objects to add to VNG
         :param pulumi.Input[_builtins.str] name: The name of the Virtual Node Group.
         :param pulumi.Input[_builtins.str] ocean_id: The ID of the Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preferred_od_types: A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
@@ -1253,6 +1287,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  instance_types_filters: Optional[pulumi.Input[Union['OceanLaunchSpecInstanceTypesFiltersArgs', 'OceanLaunchSpecInstanceTypesFiltersArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecLabelArgs', 'OceanLaunchSpecLabelArgsDict']]]]] = None,
+                 load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecLoadBalancerArgs', 'OceanLaunchSpecLoadBalancerArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  ocean_id: Optional[pulumi.Input[_builtins.str]] = None,
                  preferred_od_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1297,6 +1332,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             __props__.__dict__["instance_types"] = instance_types
             __props__.__dict__["instance_types_filters"] = instance_types_filters
             __props__.__dict__["labels"] = labels
+            __props__.__dict__["load_balancers"] = load_balancers
             __props__.__dict__["name"] = name
             if ocean_id is None and not opts.urn:
                 raise TypeError("Missing required property 'ocean_id'")
@@ -1344,6 +1380,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             instance_types_filters: Optional[pulumi.Input[Union['OceanLaunchSpecInstanceTypesFiltersArgs', 'OceanLaunchSpecInstanceTypesFiltersArgsDict']]] = None,
             labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecLabelArgs', 'OceanLaunchSpecLabelArgsDict']]]]] = None,
+            load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecLoadBalancerArgs', 'OceanLaunchSpecLoadBalancerArgsDict']]]]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             ocean_id: Optional[pulumi.Input[_builtins.str]] = None,
             preferred_od_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1385,6 +1422,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[Union['OceanLaunchSpecInstanceTypesFiltersArgs', 'OceanLaunchSpecInstanceTypesFiltersArgsDict']] instance_types_filters: The instance types that match with all filters compose the Virtual Node Group's instanceTypes parameter.
                The architectures that come from the Virtual Node Group's images will be taken into account when using this parameter. Cannot be configured together with Virtual Node Group's instanceTypes and with the Cluster's whitelist/blacklist/filters.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecLabelArgs', 'OceanLaunchSpecLabelArgsDict']]]] labels: Optionally adds labels to instances launched in the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecLoadBalancerArgs', 'OceanLaunchSpecLoadBalancerArgsDict']]]] load_balancers: Array of load balancer objects to add to VNG
         :param pulumi.Input[_builtins.str] name: The name of the Virtual Node Group.
         :param pulumi.Input[_builtins.str] ocean_id: The ID of the Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preferred_od_types: A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
@@ -1422,6 +1460,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         __props__.__dict__["instance_types"] = instance_types
         __props__.__dict__["instance_types_filters"] = instance_types_filters
         __props__.__dict__["labels"] = labels
+        __props__.__dict__["load_balancers"] = load_balancers
         __props__.__dict__["name"] = name
         __props__.__dict__["ocean_id"] = ocean_id
         __props__.__dict__["preferred_od_types"] = preferred_od_types
@@ -1570,6 +1609,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
         Optionally adds labels to instances launched in the cluster.
         """
         return pulumi.get(self, "labels")
+
+    @_builtins.property
+    @pulumi.getter(name="loadBalancers")
+    def load_balancers(self) -> pulumi.Output[Optional[Sequence['outputs.OceanLaunchSpecLoadBalancer']]]:
+        """
+        Array of load balancer objects to add to VNG
+        """
+        return pulumi.get(self, "load_balancers")
 
     @_builtins.property
     @pulumi.getter

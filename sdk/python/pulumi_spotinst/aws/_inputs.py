@@ -305,6 +305,8 @@ __all__ = [
     'OceanLaunchSpecInstanceTypesFiltersArgsDict',
     'OceanLaunchSpecLabelArgs',
     'OceanLaunchSpecLabelArgsDict',
+    'OceanLaunchSpecLoadBalancerArgs',
+    'OceanLaunchSpecLoadBalancerArgsDict',
     'OceanLaunchSpecResourceLimitArgs',
     'OceanLaunchSpecResourceLimitArgsDict',
     'OceanLaunchSpecSchedulingShutdownHoursArgs',
@@ -12848,6 +12850,77 @@ class OceanLaunchSpecLabelArgs:
     @value.setter
     def value(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class OceanLaunchSpecLoadBalancerArgsDict(TypedDict):
+        type: pulumi.Input[_builtins.str]
+        """
+        Can be set to `CLASSIC` or `TARGET_GROUP`
+        """
+        arn: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Required if type is set to `TARGET_GROUP`
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Required if type is set to `CLASSIC`
+        """
+elif False:
+    OceanLaunchSpecLoadBalancerArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OceanLaunchSpecLoadBalancerArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[_builtins.str],
+                 arn: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] type: Can be set to `CLASSIC` or `TARGET_GROUP`
+        :param pulumi.Input[_builtins.str] arn: Required if type is set to `TARGET_GROUP`
+        :param pulumi.Input[_builtins.str] name: Required if type is set to `CLASSIC`
+        """
+        pulumi.set(__self__, "type", type)
+        if arn is not None:
+            pulumi.set(__self__, "arn", arn)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[_builtins.str]:
+        """
+        Can be set to `CLASSIC` or `TARGET_GROUP`
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Required if type is set to `TARGET_GROUP`
+        """
+        return pulumi.get(self, "arn")
+
+    @arn.setter
+    def arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "arn", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Required if type is set to `CLASSIC`
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
 
 
 if not MYPY:

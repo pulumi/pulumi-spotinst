@@ -14,6 +14,10 @@ namespace Pulumi.SpotInst.Inputs
     {
         [Input("namespaces", required: true)]
         private InputList<Inputs.OceanRightSizingRuleAttachWorkloadNamespaceArgs>? _namespaces;
+
+        /// <summary>
+        /// List of namespaces that match the auto-apply rule.
+        /// </summary>
         public InputList<Inputs.OceanRightSizingRuleAttachWorkloadNamespaceArgs> Namespaces
         {
             get => _namespaces ?? (_namespaces = new InputList<Inputs.OceanRightSizingRuleAttachWorkloadNamespaceArgs>());

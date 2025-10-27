@@ -24,6 +24,107 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Manages a Spotinst Ocean right sizing rule resource.
+ * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.spotinst.OceanRightSizingRule;
+ * import com.pulumi.spotinst.OceanRightSizingRuleArgs;
+ * import com.pulumi.spotinst.inputs.OceanRightSizingRuleRecommendationApplicationHpaArgs;
+ * import com.pulumi.spotinst.inputs.OceanRightSizingRuleRecommendationApplicationIntervalArgs;
+ * import com.pulumi.spotinst.inputs.OceanRightSizingRuleRecommendationApplicationBoundaryArgs;
+ * import com.pulumi.spotinst.inputs.OceanRightSizingRuleRecommendationApplicationMinThresholdArgs;
+ * import com.pulumi.spotinst.inputs.OceanRightSizingRuleRecommendationApplicationOverheadValueArgs;
+ * import com.pulumi.spotinst.inputs.OceanRightSizingRuleAutoApplyDefinitionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new OceanRightSizingRule("example", OceanRightSizingRuleArgs.builder()
+ *             .oceanId("o-123456")
+ *             .ruleName("test-rule")
+ *             .excludePreliminaryRecommendations(true)
+ *             .restartReplicas("ALL_MANIFEST")
+ *             .recommendationApplicationHpas(OceanRightSizingRuleRecommendationApplicationHpaArgs.builder()
+ *                 .allowHpaRecommendations(true)
+ *                 .build())
+ *             .recommendationApplicationIntervals(            
+ *                 OceanRightSizingRuleRecommendationApplicationIntervalArgs.builder()
+ *                     .repetitionBasis("WEEKLY")
+ *                     .weeklyRepetitionBases(OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgs.builder()
+ *                         .intervalDays(                        
+ *                             "MONDAY",
+ *                             "WEDNESDAY")
+ *                         .intervalHoursStartTime("12:00")
+ *                         .intervalHoursEndTime("14:00")
+ *                         .build())
+ *                     .build(),
+ *                 OceanRightSizingRuleRecommendationApplicationIntervalArgs.builder()
+ *                     .repetitionBasis("MONTHLY")
+ *                     .monthlyRepetitionBases(OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs.builder()
+ *                         .intervalMonths(                        
+ *                             2,
+ *                             6,
+ *                             9)
+ *                         .weekOfTheMonths(                        
+ *                             "FIRST",
+ *                             "LAST")
+ *                         .weeklyRepetitionBases(OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgs.builder()
+ *                             .intervalDays("MONDAY")
+ *                             .intervalHoursStartTime("03:00")
+ *                             .intervalHoursEndTime("04:00")
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *             .recommendationApplicationBoundaries(OceanRightSizingRuleRecommendationApplicationBoundaryArgs.builder()
+ *                 .cpuMin(120.0)
+ *                 .cpuMax(190.0)
+ *                 .memoryMin(160)
+ *                 .memoryMax(190)
+ *                 .build())
+ *             .recommendationApplicationMinThresholds(OceanRightSizingRuleRecommendationApplicationMinThresholdArgs.builder()
+ *                 .cpuPercentage(0.412)
+ *                 .memoryPercentage(0.36)
+ *                 .build())
+ *             .recommendationApplicationOverheadValues(OceanRightSizingRuleRecommendationApplicationOverheadValueArgs.builder()
+ *                 .cpuPercentage(0.8)
+ *                 .memoryPercentage(0.5)
+ *                 .build())
+ *             .autoApplyDefinitions(OceanRightSizingRuleAutoApplyDefinitionArgs.builder()
+ *                 .enabled(true)
+ *                 .namespaces(                
+ *                     "kube-system",
+ *                     "spot-system")
+ *                 .labels(Map.ofEntries(
+ *                     Map.entry("k8s-app", "kube-proxy"),
+ *                     Map.entry("app.kubernetes.io/name", "metrics-server")
+ *                 ))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ */
 @ResourceType(type="spotinst:index/oceanRightSizingRule:OceanRightSizingRule")
 public class OceanRightSizingRule extends com.pulumi.resources.CustomResource {
     @Export(name="attachWorkloads", refs={List.class,OceanRightSizingRuleAttachWorkload.class}, tree="[0,1]")
@@ -32,9 +133,17 @@ public class OceanRightSizingRule extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<OceanRightSizingRuleAttachWorkload>>> attachWorkloads() {
         return Codegen.optional(this.attachWorkloads);
     }
+    /**
+     * Ocean Rightsizing Rule Auto Apply Configuration.
+     * 
+     */
     @Export(name="autoApplyDefinitions", refs={List.class,OceanRightSizingRuleAutoApplyDefinition.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OceanRightSizingRuleAutoApplyDefinition>> autoApplyDefinitions;
 
+    /**
+     * @return Ocean Rightsizing Rule Auto Apply Configuration.
+     * 
+     */
     public Output<Optional<List<OceanRightSizingRuleAutoApplyDefinition>>> autoApplyDefinitions() {
         return Codegen.optional(this.autoApplyDefinitions);
     }
@@ -50,57 +159,129 @@ public class OceanRightSizingRule extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> downsideOnly() {
         return Codegen.optional(this.downsideOnly);
     }
+    /**
+     * Exclude preliminary recommendations (recommendations based on less than 4 full days of data).
+     * 
+     */
     @Export(name="excludePreliminaryRecommendations", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> excludePreliminaryRecommendations;
 
+    /**
+     * @return Exclude preliminary recommendations (recommendations based on less than 4 full days of data).
+     * 
+     */
     public Output<Optional<Boolean>> excludePreliminaryRecommendations() {
         return Codegen.optional(this.excludePreliminaryRecommendations);
     }
+    /**
+     * Identifier of the Ocean cluster.
+     * 
+     */
     @Export(name="oceanId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> oceanId;
 
+    /**
+     * @return Identifier of the Ocean cluster.
+     * 
+     */
     public Output<Optional<String>> oceanId() {
         return Codegen.optional(this.oceanId);
     }
+    /**
+     * Determines the Ocean Rightsizing rule recommendation application boundaries.
+     * 
+     */
     @Export(name="recommendationApplicationBoundaries", refs={List.class,OceanRightSizingRuleRecommendationApplicationBoundary.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OceanRightSizingRuleRecommendationApplicationBoundary>> recommendationApplicationBoundaries;
 
+    /**
+     * @return Determines the Ocean Rightsizing rule recommendation application boundaries.
+     * 
+     */
     public Output<Optional<List<OceanRightSizingRuleRecommendationApplicationBoundary>>> recommendationApplicationBoundaries() {
         return Codegen.optional(this.recommendationApplicationBoundaries);
     }
+    /**
+     * HPA Rightsizing Rule Recommendation Configuration
+     * 
+     */
     @Export(name="recommendationApplicationHpas", refs={List.class,OceanRightSizingRuleRecommendationApplicationHpa.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OceanRightSizingRuleRecommendationApplicationHpa>> recommendationApplicationHpas;
 
+    /**
+     * @return HPA Rightsizing Rule Recommendation Configuration
+     * 
+     */
     public Output<Optional<List<OceanRightSizingRuleRecommendationApplicationHpa>>> recommendationApplicationHpas() {
         return Codegen.optional(this.recommendationApplicationHpas);
     }
+    /**
+     * Determines the Ocean Rightsizing rule recommendation application intervals.
+     * 
+     */
     @Export(name="recommendationApplicationIntervals", refs={List.class,OceanRightSizingRuleRecommendationApplicationInterval.class}, tree="[0,1]")
     private Output<List<OceanRightSizingRuleRecommendationApplicationInterval>> recommendationApplicationIntervals;
 
+    /**
+     * @return Determines the Ocean Rightsizing rule recommendation application intervals.
+     * 
+     */
     public Output<List<OceanRightSizingRuleRecommendationApplicationInterval>> recommendationApplicationIntervals() {
         return this.recommendationApplicationIntervals;
     }
+    /**
+     * Determines the extent of difference between current request and recommendation to trigger a change in percentage.
+     * 
+     */
     @Export(name="recommendationApplicationMinThresholds", refs={List.class,OceanRightSizingRuleRecommendationApplicationMinThreshold.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OceanRightSizingRuleRecommendationApplicationMinThreshold>> recommendationApplicationMinThresholds;
 
+    /**
+     * @return Determines the extent of difference between current request and recommendation to trigger a change in percentage.
+     * 
+     */
     public Output<Optional<List<OceanRightSizingRuleRecommendationApplicationMinThreshold>>> recommendationApplicationMinThresholds() {
         return Codegen.optional(this.recommendationApplicationMinThresholds);
     }
+    /**
+     * Determines the Ocean Rightsizing rule recommendation application overhead values.
+     * 
+     */
     @Export(name="recommendationApplicationOverheadValues", refs={List.class,OceanRightSizingRuleRecommendationApplicationOverheadValue.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OceanRightSizingRuleRecommendationApplicationOverheadValue>> recommendationApplicationOverheadValues;
 
+    /**
+     * @return Determines the Ocean Rightsizing rule recommendation application overhead values.
+     * 
+     */
     public Output<Optional<List<OceanRightSizingRuleRecommendationApplicationOverheadValue>>> recommendationApplicationOverheadValues() {
         return Codegen.optional(this.recommendationApplicationOverheadValues);
     }
+    /**
+     * Valid values: &#34;MORE_THAN_ONE_REPLICA&#34; &#34;ALL_MANIFEST&#34; &#34;NO_RESTART&#34;. Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
+     * 
+     */
     @Export(name="restartReplicas", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> restartReplicas;
 
+    /**
+     * @return Valid values: &#34;MORE_THAN_ONE_REPLICA&#34; &#34;ALL_MANIFEST&#34; &#34;NO_RESTART&#34;. Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
+     * 
+     */
     public Output<Optional<String>> restartReplicas() {
         return Codegen.optional(this.restartReplicas);
     }
+    /**
+     * The unique name of the rule.
+     * 
+     */
     @Export(name="ruleName", refs={String.class}, tree="[0]")
     private Output<String> ruleName;
 
+    /**
+     * @return The unique name of the rule.
+     * 
+     */
     public Output<String> ruleName() {
         return this.ruleName;
     }

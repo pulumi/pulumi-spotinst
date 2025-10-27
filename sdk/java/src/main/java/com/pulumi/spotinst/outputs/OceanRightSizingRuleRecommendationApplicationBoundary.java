@@ -12,21 +12,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanRightSizingRuleRecommendationApplicationBoundary {
+    /**
+     * @return the maximal value of cpu in vCpu.
+     * 
+     */
     private @Nullable Double cpuMax;
+    /**
+     * @return the minimal value of cpu in vCpu.
+     * 
+     */
     private @Nullable Double cpuMin;
+    /**
+     * @return the maximal value of memory in Gib.
+     * 
+     */
     private @Nullable Integer memoryMax;
+    /**
+     * @return the minimal value of memory in Gib.
+     * 
+     */
     private @Nullable Integer memoryMin;
 
     private OceanRightSizingRuleRecommendationApplicationBoundary() {}
+    /**
+     * @return the maximal value of cpu in vCpu.
+     * 
+     */
     public Optional<Double> cpuMax() {
         return Optional.ofNullable(this.cpuMax);
     }
+    /**
+     * @return the minimal value of cpu in vCpu.
+     * 
+     */
     public Optional<Double> cpuMin() {
         return Optional.ofNullable(this.cpuMin);
     }
+    /**
+     * @return the maximal value of memory in Gib.
+     * 
+     */
     public Optional<Integer> memoryMax() {
         return Optional.ofNullable(this.memoryMax);
     }
+    /**
+     * @return the minimal value of memory in Gib.
+     * 
+     */
     public Optional<Integer> memoryMin() {
         return Optional.ofNullable(this.memoryMin);
     }

@@ -19,9 +19,21 @@ public final class OceanRightSizingRuleAttachWorkloadNamespaceArgs extends com.p
 
     public static final OceanRightSizingRuleAttachWorkloadNamespaceArgs Empty = new OceanRightSizingRuleAttachWorkloadNamespaceArgs();
 
+    /**
+     * A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
+     * 
+     * &lt;a id=&#34;attachWorkloads&#34;&gt;&lt;/a&gt;
+     * 
+     */
     @Import(name="labels")
     private @Nullable Output<List<OceanRightSizingRuleAttachWorkloadNamespaceLabelArgs>> labels;
 
+    /**
+     * @return A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
+     * 
+     * &lt;a id=&#34;attachWorkloads&#34;&gt;&lt;/a&gt;
+     * 
+     */
     public Optional<Output<List<OceanRightSizingRuleAttachWorkloadNamespaceLabelArgs>>> labels() {
         return Optional.ofNullable(this.labels);
     }
@@ -66,15 +78,39 @@ public final class OceanRightSizingRuleAttachWorkloadNamespaceArgs extends com.p
             $ = new OceanRightSizingRuleAttachWorkloadNamespaceArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param labels A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
+         * 
+         * &lt;a id=&#34;attachWorkloads&#34;&gt;&lt;/a&gt;
+         * 
+         * @return builder
+         * 
+         */
         public Builder labels(@Nullable Output<List<OceanRightSizingRuleAttachWorkloadNamespaceLabelArgs>> labels) {
             $.labels = labels;
             return this;
         }
 
+        /**
+         * @param labels A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
+         * 
+         * &lt;a id=&#34;attachWorkloads&#34;&gt;&lt;/a&gt;
+         * 
+         * @return builder
+         * 
+         */
         public Builder labels(List<OceanRightSizingRuleAttachWorkloadNamespaceLabelArgs> labels) {
             return labels(Output.of(labels));
         }
 
+        /**
+         * @param labels A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
+         * 
+         * &lt;a id=&#34;attachWorkloads&#34;&gt;&lt;/a&gt;
+         * 
+         * @return builder
+         * 
+         */
         public Builder labels(OceanRightSizingRuleAttachWorkloadNamespaceLabelArgs... labels) {
             return labels(List.of(labels));
         }

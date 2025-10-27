@@ -9,12 +9,142 @@ using Pulumi.Serialization;
 
 namespace Pulumi.SpotInst
 {
+    /// <summary>
+    /// Manages a Spotinst Ocean right sizing rule resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SpotInst = Pulumi.SpotInst;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new SpotInst.OceanRightSizingRule("example", new()
+    ///     {
+    ///         OceanId = "o-123456",
+    ///         RuleName = "test-rule",
+    ///         ExcludePreliminaryRecommendations = true,
+    ///         RestartReplicas = "ALL_MANIFEST",
+    ///         RecommendationApplicationHpas = new[]
+    ///         {
+    ///             new SpotInst.Inputs.OceanRightSizingRuleRecommendationApplicationHpaArgs
+    ///             {
+    ///                 AllowHpaRecommendations = true,
+    ///             },
+    ///         },
+    ///         RecommendationApplicationIntervals = new[]
+    ///         {
+    ///             new SpotInst.Inputs.OceanRightSizingRuleRecommendationApplicationIntervalArgs
+    ///             {
+    ///                 RepetitionBasis = "WEEKLY",
+    ///                 WeeklyRepetitionBases = new[]
+    ///                 {
+    ///                     new SpotInst.Inputs.OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgs
+    ///                     {
+    ///                         IntervalDays = new[]
+    ///                         {
+    ///                             "MONDAY",
+    ///                             "WEDNESDAY",
+    ///                         },
+    ///                         IntervalHoursStartTime = "12:00",
+    ///                         IntervalHoursEndTime = "14:00",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new SpotInst.Inputs.OceanRightSizingRuleRecommendationApplicationIntervalArgs
+    ///             {
+    ///                 RepetitionBasis = "MONTHLY",
+    ///                 MonthlyRepetitionBases = new[]
+    ///                 {
+    ///                     new SpotInst.Inputs.OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs
+    ///                     {
+    ///                         IntervalMonths = new[]
+    ///                         {
+    ///                             2,
+    ///                             6,
+    ///                             9,
+    ///                         },
+    ///                         WeekOfTheMonths = new[]
+    ///                         {
+    ///                             "FIRST",
+    ///                             "LAST",
+    ///                         },
+    ///                         WeeklyRepetitionBases = new[]
+    ///                         {
+    ///                             new SpotInst.Inputs.OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgs
+    ///                             {
+    ///                                 IntervalDays = new[]
+    ///                                 {
+    ///                                     "MONDAY",
+    ///                                 },
+    ///                                 IntervalHoursStartTime = "03:00",
+    ///                                 IntervalHoursEndTime = "04:00",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         RecommendationApplicationBoundaries = new[]
+    ///         {
+    ///             new SpotInst.Inputs.OceanRightSizingRuleRecommendationApplicationBoundaryArgs
+    ///             {
+    ///                 CpuMin = 120,
+    ///                 CpuMax = 190,
+    ///                 MemoryMin = 160,
+    ///                 MemoryMax = 190,
+    ///             },
+    ///         },
+    ///         RecommendationApplicationMinThresholds = new[]
+    ///         {
+    ///             new SpotInst.Inputs.OceanRightSizingRuleRecommendationApplicationMinThresholdArgs
+    ///             {
+    ///                 CpuPercentage = 0.412,
+    ///                 MemoryPercentage = 0.36,
+    ///             },
+    ///         },
+    ///         RecommendationApplicationOverheadValues = new[]
+    ///         {
+    ///             new SpotInst.Inputs.OceanRightSizingRuleRecommendationApplicationOverheadValueArgs
+    ///             {
+    ///                 CpuPercentage = 0.8,
+    ///                 MemoryPercentage = 0.5,
+    ///             },
+    ///         },
+    ///         AutoApplyDefinitions = new[]
+    ///         {
+    ///             new SpotInst.Inputs.OceanRightSizingRuleAutoApplyDefinitionArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 Namespaces = new[]
+    ///                 {
+    ///                     "kube-system",
+    ///                     "spot-system",
+    ///                 },
+    ///                 Labels = 
+    ///                 {
+    ///                     { "k8s-app", "kube-proxy" },
+    ///                     { "app.kubernetes.io/name", "metrics-server" },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// </summary>
     [SpotInstResourceType("spotinst:index/oceanRightSizingRule:OceanRightSizingRule")]
     public partial class OceanRightSizingRule : global::Pulumi.CustomResource
     {
         [Output("attachWorkloads")]
         public Output<ImmutableArray<Outputs.OceanRightSizingRuleAttachWorkload>> AttachWorkloads { get; private set; } = null!;
 
+        /// <summary>
+        /// Ocean Rightsizing Rule Auto Apply Configuration.
+        /// </summary>
         [Output("autoApplyDefinitions")]
         public Output<ImmutableArray<Outputs.OceanRightSizingRuleAutoApplyDefinition>> AutoApplyDefinitions { get; private set; } = null!;
 
@@ -24,30 +154,57 @@ namespace Pulumi.SpotInst
         [Output("downsideOnly")]
         public Output<bool?> DownsideOnly { get; private set; } = null!;
 
+        /// <summary>
+        /// Exclude preliminary recommendations (recommendations based on less than 4 full days of data).
+        /// </summary>
         [Output("excludePreliminaryRecommendations")]
         public Output<bool?> ExcludePreliminaryRecommendations { get; private set; } = null!;
 
+        /// <summary>
+        /// Identifier of the Ocean cluster.
+        /// </summary>
         [Output("oceanId")]
         public Output<string?> OceanId { get; private set; } = null!;
 
+        /// <summary>
+        /// Determines the Ocean Rightsizing rule recommendation application boundaries.
+        /// </summary>
         [Output("recommendationApplicationBoundaries")]
         public Output<ImmutableArray<Outputs.OceanRightSizingRuleRecommendationApplicationBoundary>> RecommendationApplicationBoundaries { get; private set; } = null!;
 
+        /// <summary>
+        /// HPA Rightsizing Rule Recommendation Configuration
+        /// </summary>
         [Output("recommendationApplicationHpas")]
         public Output<ImmutableArray<Outputs.OceanRightSizingRuleRecommendationApplicationHpa>> RecommendationApplicationHpas { get; private set; } = null!;
 
+        /// <summary>
+        /// Determines the Ocean Rightsizing rule recommendation application intervals.
+        /// </summary>
         [Output("recommendationApplicationIntervals")]
         public Output<ImmutableArray<Outputs.OceanRightSizingRuleRecommendationApplicationInterval>> RecommendationApplicationIntervals { get; private set; } = null!;
 
+        /// <summary>
+        /// Determines the extent of difference between current request and recommendation to trigger a change in percentage.
+        /// </summary>
         [Output("recommendationApplicationMinThresholds")]
         public Output<ImmutableArray<Outputs.OceanRightSizingRuleRecommendationApplicationMinThreshold>> RecommendationApplicationMinThresholds { get; private set; } = null!;
 
+        /// <summary>
+        /// Determines the Ocean Rightsizing rule recommendation application overhead values.
+        /// </summary>
         [Output("recommendationApplicationOverheadValues")]
         public Output<ImmutableArray<Outputs.OceanRightSizingRuleRecommendationApplicationOverheadValue>> RecommendationApplicationOverheadValues { get; private set; } = null!;
 
+        /// <summary>
+        /// Valid values: "MORE_THAN_ONE_REPLICA" "ALL_MANIFEST" "NO_RESTART". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
+        /// </summary>
         [Output("restartReplicas")]
         public Output<string?> RestartReplicas { get; private set; } = null!;
 
+        /// <summary>
+        /// The unique name of the rule.
+        /// </summary>
         [Output("ruleName")]
         public Output<string> RuleName { get; private set; } = null!;
 
@@ -107,6 +264,10 @@ namespace Pulumi.SpotInst
 
         [Input("autoApplyDefinitions")]
         private InputList<Inputs.OceanRightSizingRuleAutoApplyDefinitionArgs>? _autoApplyDefinitions;
+
+        /// <summary>
+        /// Ocean Rightsizing Rule Auto Apply Configuration.
+        /// </summary>
         public InputList<Inputs.OceanRightSizingRuleAutoApplyDefinitionArgs> AutoApplyDefinitions
         {
             get => _autoApplyDefinitions ?? (_autoApplyDefinitions = new InputList<Inputs.OceanRightSizingRuleAutoApplyDefinitionArgs>());
@@ -124,14 +285,24 @@ namespace Pulumi.SpotInst
         [Input("downsideOnly")]
         public Input<bool>? DownsideOnly { get; set; }
 
+        /// <summary>
+        /// Exclude preliminary recommendations (recommendations based on less than 4 full days of data).
+        /// </summary>
         [Input("excludePreliminaryRecommendations")]
         public Input<bool>? ExcludePreliminaryRecommendations { get; set; }
 
+        /// <summary>
+        /// Identifier of the Ocean cluster.
+        /// </summary>
         [Input("oceanId")]
         public Input<string>? OceanId { get; set; }
 
         [Input("recommendationApplicationBoundaries")]
         private InputList<Inputs.OceanRightSizingRuleRecommendationApplicationBoundaryArgs>? _recommendationApplicationBoundaries;
+
+        /// <summary>
+        /// Determines the Ocean Rightsizing rule recommendation application boundaries.
+        /// </summary>
         public InputList<Inputs.OceanRightSizingRuleRecommendationApplicationBoundaryArgs> RecommendationApplicationBoundaries
         {
             get => _recommendationApplicationBoundaries ?? (_recommendationApplicationBoundaries = new InputList<Inputs.OceanRightSizingRuleRecommendationApplicationBoundaryArgs>());
@@ -140,6 +311,10 @@ namespace Pulumi.SpotInst
 
         [Input("recommendationApplicationHpas")]
         private InputList<Inputs.OceanRightSizingRuleRecommendationApplicationHpaArgs>? _recommendationApplicationHpas;
+
+        /// <summary>
+        /// HPA Rightsizing Rule Recommendation Configuration
+        /// </summary>
         public InputList<Inputs.OceanRightSizingRuleRecommendationApplicationHpaArgs> RecommendationApplicationHpas
         {
             get => _recommendationApplicationHpas ?? (_recommendationApplicationHpas = new InputList<Inputs.OceanRightSizingRuleRecommendationApplicationHpaArgs>());
@@ -148,6 +323,10 @@ namespace Pulumi.SpotInst
 
         [Input("recommendationApplicationIntervals", required: true)]
         private InputList<Inputs.OceanRightSizingRuleRecommendationApplicationIntervalArgs>? _recommendationApplicationIntervals;
+
+        /// <summary>
+        /// Determines the Ocean Rightsizing rule recommendation application intervals.
+        /// </summary>
         public InputList<Inputs.OceanRightSizingRuleRecommendationApplicationIntervalArgs> RecommendationApplicationIntervals
         {
             get => _recommendationApplicationIntervals ?? (_recommendationApplicationIntervals = new InputList<Inputs.OceanRightSizingRuleRecommendationApplicationIntervalArgs>());
@@ -156,6 +335,10 @@ namespace Pulumi.SpotInst
 
         [Input("recommendationApplicationMinThresholds")]
         private InputList<Inputs.OceanRightSizingRuleRecommendationApplicationMinThresholdArgs>? _recommendationApplicationMinThresholds;
+
+        /// <summary>
+        /// Determines the extent of difference between current request and recommendation to trigger a change in percentage.
+        /// </summary>
         public InputList<Inputs.OceanRightSizingRuleRecommendationApplicationMinThresholdArgs> RecommendationApplicationMinThresholds
         {
             get => _recommendationApplicationMinThresholds ?? (_recommendationApplicationMinThresholds = new InputList<Inputs.OceanRightSizingRuleRecommendationApplicationMinThresholdArgs>());
@@ -164,15 +347,25 @@ namespace Pulumi.SpotInst
 
         [Input("recommendationApplicationOverheadValues")]
         private InputList<Inputs.OceanRightSizingRuleRecommendationApplicationOverheadValueArgs>? _recommendationApplicationOverheadValues;
+
+        /// <summary>
+        /// Determines the Ocean Rightsizing rule recommendation application overhead values.
+        /// </summary>
         public InputList<Inputs.OceanRightSizingRuleRecommendationApplicationOverheadValueArgs> RecommendationApplicationOverheadValues
         {
             get => _recommendationApplicationOverheadValues ?? (_recommendationApplicationOverheadValues = new InputList<Inputs.OceanRightSizingRuleRecommendationApplicationOverheadValueArgs>());
             set => _recommendationApplicationOverheadValues = value;
         }
 
+        /// <summary>
+        /// Valid values: "MORE_THAN_ONE_REPLICA" "ALL_MANIFEST" "NO_RESTART". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
+        /// </summary>
         [Input("restartReplicas")]
         public Input<string>? RestartReplicas { get; set; }
 
+        /// <summary>
+        /// The unique name of the rule.
+        /// </summary>
         [Input("ruleName", required: true)]
         public Input<string> RuleName { get; set; } = null!;
 
@@ -194,6 +387,10 @@ namespace Pulumi.SpotInst
 
         [Input("autoApplyDefinitions")]
         private InputList<Inputs.OceanRightSizingRuleAutoApplyDefinitionGetArgs>? _autoApplyDefinitions;
+
+        /// <summary>
+        /// Ocean Rightsizing Rule Auto Apply Configuration.
+        /// </summary>
         public InputList<Inputs.OceanRightSizingRuleAutoApplyDefinitionGetArgs> AutoApplyDefinitions
         {
             get => _autoApplyDefinitions ?? (_autoApplyDefinitions = new InputList<Inputs.OceanRightSizingRuleAutoApplyDefinitionGetArgs>());
@@ -211,14 +408,24 @@ namespace Pulumi.SpotInst
         [Input("downsideOnly")]
         public Input<bool>? DownsideOnly { get; set; }
 
+        /// <summary>
+        /// Exclude preliminary recommendations (recommendations based on less than 4 full days of data).
+        /// </summary>
         [Input("excludePreliminaryRecommendations")]
         public Input<bool>? ExcludePreliminaryRecommendations { get; set; }
 
+        /// <summary>
+        /// Identifier of the Ocean cluster.
+        /// </summary>
         [Input("oceanId")]
         public Input<string>? OceanId { get; set; }
 
         [Input("recommendationApplicationBoundaries")]
         private InputList<Inputs.OceanRightSizingRuleRecommendationApplicationBoundaryGetArgs>? _recommendationApplicationBoundaries;
+
+        /// <summary>
+        /// Determines the Ocean Rightsizing rule recommendation application boundaries.
+        /// </summary>
         public InputList<Inputs.OceanRightSizingRuleRecommendationApplicationBoundaryGetArgs> RecommendationApplicationBoundaries
         {
             get => _recommendationApplicationBoundaries ?? (_recommendationApplicationBoundaries = new InputList<Inputs.OceanRightSizingRuleRecommendationApplicationBoundaryGetArgs>());
@@ -227,6 +434,10 @@ namespace Pulumi.SpotInst
 
         [Input("recommendationApplicationHpas")]
         private InputList<Inputs.OceanRightSizingRuleRecommendationApplicationHpaGetArgs>? _recommendationApplicationHpas;
+
+        /// <summary>
+        /// HPA Rightsizing Rule Recommendation Configuration
+        /// </summary>
         public InputList<Inputs.OceanRightSizingRuleRecommendationApplicationHpaGetArgs> RecommendationApplicationHpas
         {
             get => _recommendationApplicationHpas ?? (_recommendationApplicationHpas = new InputList<Inputs.OceanRightSizingRuleRecommendationApplicationHpaGetArgs>());
@@ -235,6 +446,10 @@ namespace Pulumi.SpotInst
 
         [Input("recommendationApplicationIntervals")]
         private InputList<Inputs.OceanRightSizingRuleRecommendationApplicationIntervalGetArgs>? _recommendationApplicationIntervals;
+
+        /// <summary>
+        /// Determines the Ocean Rightsizing rule recommendation application intervals.
+        /// </summary>
         public InputList<Inputs.OceanRightSizingRuleRecommendationApplicationIntervalGetArgs> RecommendationApplicationIntervals
         {
             get => _recommendationApplicationIntervals ?? (_recommendationApplicationIntervals = new InputList<Inputs.OceanRightSizingRuleRecommendationApplicationIntervalGetArgs>());
@@ -243,6 +458,10 @@ namespace Pulumi.SpotInst
 
         [Input("recommendationApplicationMinThresholds")]
         private InputList<Inputs.OceanRightSizingRuleRecommendationApplicationMinThresholdGetArgs>? _recommendationApplicationMinThresholds;
+
+        /// <summary>
+        /// Determines the extent of difference between current request and recommendation to trigger a change in percentage.
+        /// </summary>
         public InputList<Inputs.OceanRightSizingRuleRecommendationApplicationMinThresholdGetArgs> RecommendationApplicationMinThresholds
         {
             get => _recommendationApplicationMinThresholds ?? (_recommendationApplicationMinThresholds = new InputList<Inputs.OceanRightSizingRuleRecommendationApplicationMinThresholdGetArgs>());
@@ -251,15 +470,25 @@ namespace Pulumi.SpotInst
 
         [Input("recommendationApplicationOverheadValues")]
         private InputList<Inputs.OceanRightSizingRuleRecommendationApplicationOverheadValueGetArgs>? _recommendationApplicationOverheadValues;
+
+        /// <summary>
+        /// Determines the Ocean Rightsizing rule recommendation application overhead values.
+        /// </summary>
         public InputList<Inputs.OceanRightSizingRuleRecommendationApplicationOverheadValueGetArgs> RecommendationApplicationOverheadValues
         {
             get => _recommendationApplicationOverheadValues ?? (_recommendationApplicationOverheadValues = new InputList<Inputs.OceanRightSizingRuleRecommendationApplicationOverheadValueGetArgs>());
             set => _recommendationApplicationOverheadValues = value;
         }
 
+        /// <summary>
+        /// Valid values: "MORE_THAN_ONE_REPLICA" "ALL_MANIFEST" "NO_RESTART". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
+        /// </summary>
         [Input("restartReplicas")]
         public Input<string>? RestartReplicas { get; set; }
 
+        /// <summary>
+        /// The unique name of the rule.
+        /// </summary>
         [Input("ruleName")]
         public Input<string>? RuleName { get; set; }
 
