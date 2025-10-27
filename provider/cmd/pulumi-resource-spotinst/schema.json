@@ -3729,6 +3729,26 @@
                 "value"
             ]
         },
+        "spotinst:aws/OceanLaunchSpecLoadBalancer:OceanLaunchSpecLoadBalancer": {
+            "properties": {
+                "arn": {
+                    "type": "string",
+                    "description": "Required if type is set to `TARGET_GROUP`\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Required if type is set to `CLASSIC`\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Can be set to `CLASSIC` or `TARGET_GROUP`\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "type"
+            ]
+        },
         "spotinst:aws/OceanLaunchSpecResourceLimit:OceanLaunchSpecResourceLimit": {
             "properties": {
                 "maxInstanceCount": {
@@ -8545,7 +8565,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:index/OceanRightSizingRuleAttachWorkloadNamespace:OceanRightSizingRuleAttachWorkloadNamespace"
-                    }
+                    },
+                    "description": "List of namespaces that match the auto-apply rule.\n"
                 }
             },
             "type": "object",
@@ -8559,7 +8580,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:index/OceanRightSizingRuleAttachWorkloadNamespaceLabel:OceanRightSizingRuleAttachWorkloadNamespaceLabel"
-                    }
+                    },
+                    "description": "A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.\n\n\u003ca id=\u003cspan pulumi-lang-nodejs=\"\"attachWorkloads\"\" pulumi-lang-dotnet=\"\"AttachWorkloads\"\" pulumi-lang-go=\"\"attachWorkloads\"\" pulumi-lang-python=\"\"attach_workloads\"\" pulumi-lang-yaml=\"\"attachWorkloads\"\" pulumi-lang-java=\"\"attachWorkloads\"\"\u003e\"attach_workloads\"\u003c/span\u003e\u003e\u003c/a\u003e\n"
                 },
                 "namespaceName": {
                     "type": "string"
@@ -8611,19 +8633,22 @@
         "spotinst:index/OceanRightSizingRuleAutoApplyDefinition:OceanRightSizingRuleAutoApplyDefinition": {
             "properties": {
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Determines if auto apply is enabled.\n"
                 },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
-                    }
+                    },
+                    "description": "A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.\n\n\u003ca id=\u003cspan pulumi-lang-nodejs=\"\"attachWorkloads\"\" pulumi-lang-dotnet=\"\"AttachWorkloads\"\" pulumi-lang-go=\"\"attachWorkloads\"\" pulumi-lang-python=\"\"attach_workloads\"\" pulumi-lang-yaml=\"\"attachWorkloads\"\" pulumi-lang-java=\"\"attachWorkloads\"\"\u003e\"attach_workloads\"\u003c/span\u003e\u003e\u003c/a\u003e\n"
                 },
                 "namespaces": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "List of namespaces that match the auto-apply rule.\n"
                 }
             },
             "type": "object"
@@ -8634,7 +8659,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:index/OceanRightSizingRuleDetachWorkloadNamespace:OceanRightSizingRuleDetachWorkloadNamespace"
-                    }
+                    },
+                    "description": "List of namespaces that match the auto-apply rule.\n"
                 }
             },
             "type": "object",
@@ -8648,7 +8674,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:index/OceanRightSizingRuleDetachWorkloadNamespaceLabel:OceanRightSizingRuleDetachWorkloadNamespaceLabel"
-                    }
+                    },
+                    "description": "A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.\n\n\u003ca id=\u003cspan pulumi-lang-nodejs=\"\"attachWorkloads\"\" pulumi-lang-dotnet=\"\"AttachWorkloads\"\" pulumi-lang-go=\"\"attachWorkloads\"\" pulumi-lang-python=\"\"attach_workloads\"\" pulumi-lang-yaml=\"\"attachWorkloads\"\" pulumi-lang-java=\"\"attachWorkloads\"\"\u003e\"attach_workloads\"\u003c/span\u003e\u003e\u003c/a\u003e\n"
                 },
                 "namespaceName": {
                     "type": "string"
@@ -8700,16 +8727,20 @@
         "spotinst:index/OceanRightSizingRuleRecommendationApplicationBoundary:OceanRightSizingRuleRecommendationApplicationBoundary": {
             "properties": {
                 "cpuMax": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "the maximal value of cpu in vCpu.\n"
                 },
                 "cpuMin": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "the minimal value of cpu in vCpu.\n"
                 },
                 "memoryMax": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "the maximal value of memory in Gib.\n"
                 },
                 "memoryMin": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "the minimal value of memory in Gib.\n"
                 }
             },
             "type": "object"
@@ -8717,7 +8748,8 @@
         "spotinst:index/OceanRightSizingRuleRecommendationApplicationHpa:OceanRightSizingRuleRecommendationApplicationHpa": {
             "properties": {
                 "allowHpaRecommendations": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Determines by the rule if recommendation application is allowed for workloads with HPA definition.\n"
                 }
             },
             "type": "object"
@@ -8728,16 +8760,19 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:index/OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase:OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase"
-                    }
+                    },
+                    "description": "Determines the Ocean Rightsizing rule monthly repetition basis.\n"
                 },
                 "repetitionBasis": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Valid values: \"WEEKLY\" \"MONTHLY\". The repetition basis.\n"
                 },
                 "weeklyRepetitionBases": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:index/OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBase:OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBase"
-                    }
+                    },
+                    "description": "Determines the Ocean Rightsizing rule weekly repetition basis.\n"
                 }
             },
             "type": "object",
@@ -8751,19 +8786,22 @@
                     "type": "array",
                     "items": {
                         "type": "integer"
-                    }
+                    },
+                    "description": "Array of the months (in number), when we want to trigger the apply recommendations.\n"
                 },
                 "weekOfTheMonths": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Valid values: \"FIRST\" \"SECOND\" \"THIRD\" \"FOURTH\" \"LAST\". Array of the weeks in the month, when we want to trigger the apply recommendations.\n"
                 },
                 "weeklyRepetitionBases": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:index/OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBase:OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBase"
-                    }
+                    },
+                    "description": "Determines the Ocean Rightsizing rule weekly repetition basis.\n"
                 }
             },
             "type": "object",
@@ -8778,13 +8816,16 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Valid values: \"SUNDAY\" \"MONDAY\" \"TUESDAY\" \"WEDNESDAY\" \"THURSDAY\" \"FRIDAY\" \"SATURDAY\". Array of the days of the week, when we want to trigger the apply recommendations.\n"
                 },
                 "intervalHoursEndTime": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "End time.\n"
                 },
                 "intervalHoursStartTime": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Start time.\n"
                 }
             },
             "type": "object",
@@ -8800,13 +8841,16 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Valid values: \"SUNDAY\" \"MONDAY\" \"TUESDAY\" \"WEDNESDAY\" \"THURSDAY\" \"FRIDAY\" \"SATURDAY\". Array of the days of the week, when we want to trigger the apply recommendations.\n"
                 },
                 "intervalHoursEndTime": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "End time.\n"
                 },
                 "intervalHoursStartTime": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Start time.\n"
                 }
             },
             "type": "object",
@@ -8819,10 +8863,12 @@
         "spotinst:index/OceanRightSizingRuleRecommendationApplicationMinThreshold:OceanRightSizingRuleRecommendationApplicationMinThreshold": {
             "properties": {
                 "cpuPercentage": {
-                    "type": "number"
+                    "type": "number",
+                    "description": ".\n"
                 },
                 "memoryPercentage": {
-                    "type": "number"
+                    "type": "number",
+                    "description": ".\n"
                 }
             },
             "type": "object"
@@ -8830,10 +8876,12 @@
         "spotinst:index/OceanRightSizingRuleRecommendationApplicationOverheadValue:OceanRightSizingRuleRecommendationApplicationOverheadValue": {
             "properties": {
                 "cpuPercentage": {
-                    "type": "number"
+                    "type": "number",
+                    "description": ".\n"
                 },
                 "memoryPercentage": {
-                    "type": "number"
+                    "type": "number",
+                    "description": ".\n"
                 }
             },
             "type": "object"
@@ -14944,6 +14992,13 @@
                     },
                     "description": "Optionally adds labels to instances launched in the cluster.\n"
                 },
+                "loadBalancers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:aws/OceanLaunchSpecLoadBalancer:OceanLaunchSpecLoadBalancer"
+                    },
+                    "description": "Array of load balancer objects to add to VNG\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "The name of the Virtual Node Group.\n"
@@ -15140,6 +15195,13 @@
                         "$ref": "#/types/spotinst:aws/OceanLaunchSpecLabel:OceanLaunchSpecLabel"
                     },
                     "description": "Optionally adds labels to instances launched in the cluster.\n"
+                },
+                "loadBalancers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:aws/OceanLaunchSpecLoadBalancer:OceanLaunchSpecLoadBalancer"
+                    },
+                    "description": "Array of load balancer objects to add to VNG\n"
                 },
                 "name": {
                     "type": "string",
@@ -15339,6 +15401,13 @@
                             "$ref": "#/types/spotinst:aws/OceanLaunchSpecLabel:OceanLaunchSpecLabel"
                         },
                         "description": "Optionally adds labels to instances launched in the cluster.\n"
+                    },
+                    "loadBalancers": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/spotinst:aws/OceanLaunchSpecLoadBalancer:OceanLaunchSpecLoadBalancer"
+                        },
+                        "description": "Array of load balancer objects to add to VNG\n"
                     },
                     "name": {
                         "type": "string",
@@ -20128,6 +20197,7 @@
             }
         },
         "spotinst:index/oceanRightSizingRule:OceanRightSizingRule": {
+            "description": "Manages a Spotinst Ocean right sizing rule resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\nconst example = new spotinst.OceanRightSizingRule(\"example\", {\n    oceanId: \"o-123456\",\n    ruleName: \"test-rule\",\n    excludePreliminaryRecommendations: true,\n    restartReplicas: \"ALL_MANIFEST\",\n    recommendationApplicationHpas: [{\n        allowHpaRecommendations: true,\n    }],\n    recommendationApplicationIntervals: [\n        {\n            repetitionBasis: \"WEEKLY\",\n            weeklyRepetitionBases: [{\n                intervalDays: [\n                    \"MONDAY\",\n                    \"WEDNESDAY\",\n                ],\n                intervalHoursStartTime: \"12:00\",\n                intervalHoursEndTime: \"14:00\",\n            }],\n        },\n        {\n            repetitionBasis: \"MONTHLY\",\n            monthlyRepetitionBases: [{\n                intervalMonths: [\n                    2,\n                    6,\n                    9,\n                ],\n                weekOfTheMonths: [\n                    \"FIRST\",\n                    \"LAST\",\n                ],\n                weeklyRepetitionBases: [{\n                    intervalDays: [\"MONDAY\"],\n                    intervalHoursStartTime: \"03:00\",\n                    intervalHoursEndTime: \"04:00\",\n                }],\n            }],\n        },\n    ],\n    recommendationApplicationBoundaries: [{\n        cpuMin: 120,\n        cpuMax: 190,\n        memoryMin: 160,\n        memoryMax: 190,\n    }],\n    recommendationApplicationMinThresholds: [{\n        cpuPercentage: 0.412,\n        memoryPercentage: 0.36,\n    }],\n    recommendationApplicationOverheadValues: [{\n        cpuPercentage: 0.8,\n        memoryPercentage: 0.5,\n    }],\n    autoApplyDefinitions: [{\n        enabled: true,\n        namespaces: [\n            \"kube-system\",\n            \"spot-system\",\n        ],\n        labels: {\n            \"k8s-app\": \"kube-proxy\",\n            \"app.kubernetes.io/name\": \"metrics-server\",\n        },\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\nexample = spotinst.OceanRightSizingRule(\"example\",\n    ocean_id=\"o-123456\",\n    rule_name=\"test-rule\",\n    exclude_preliminary_recommendations=True,\n    restart_replicas=\"ALL_MANIFEST\",\n    recommendation_application_hpas=[{\n        \"allow_hpa_recommendations\": True,\n    }],\n    recommendation_application_intervals=[\n        {\n            \"repetition_basis\": \"WEEKLY\",\n            \"weekly_repetition_bases\": [{\n                \"interval_days\": [\n                    \"MONDAY\",\n                    \"WEDNESDAY\",\n                ],\n                \"interval_hours_start_time\": \"12:00\",\n                \"interval_hours_end_time\": \"14:00\",\n            }],\n        },\n        {\n            \"repetition_basis\": \"MONTHLY\",\n            \"monthly_repetition_bases\": [{\n                \"interval_months\": [\n                    2,\n                    6,\n                    9,\n                ],\n                \"week_of_the_months\": [\n                    \"FIRST\",\n                    \"LAST\",\n                ],\n                \"weekly_repetition_bases\": [{\n                    \"interval_days\": [\"MONDAY\"],\n                    \"interval_hours_start_time\": \"03:00\",\n                    \"interval_hours_end_time\": \"04:00\",\n                }],\n            }],\n        },\n    ],\n    recommendation_application_boundaries=[{\n        \"cpu_min\": 120,\n        \"cpu_max\": 190,\n        \"memory_min\": 160,\n        \"memory_max\": 190,\n    }],\n    recommendation_application_min_thresholds=[{\n        \"cpu_percentage\": 0.412,\n        \"memory_percentage\": 0.36,\n    }],\n    recommendation_application_overhead_values=[{\n        \"cpu_percentage\": 0.8,\n        \"memory_percentage\": 0.5,\n    }],\n    auto_apply_definitions=[{\n        \"enabled\": True,\n        \"namespaces\": [\n            \"kube-system\",\n            \"spot-system\",\n        ],\n        \"labels\": {\n            \"k8s-app\": \"kube-proxy\",\n            \"app.kubernetes.io/name\": \"metrics-server\",\n        },\n    }])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SpotInst = Pulumi.SpotInst;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new SpotInst.OceanRightSizingRule(\"example\", new()\n    {\n        OceanId = \"o-123456\",\n        RuleName = \"test-rule\",\n        ExcludePreliminaryRecommendations = true,\n        RestartReplicas = \"ALL_MANIFEST\",\n        RecommendationApplicationHpas = new[]\n        {\n            new SpotInst.Inputs.OceanRightSizingRuleRecommendationApplicationHpaArgs\n            {\n                AllowHpaRecommendations = true,\n            },\n        },\n        RecommendationApplicationIntervals = new[]\n        {\n            new SpotInst.Inputs.OceanRightSizingRuleRecommendationApplicationIntervalArgs\n            {\n                RepetitionBasis = \"WEEKLY\",\n                WeeklyRepetitionBases = new[]\n                {\n                    new SpotInst.Inputs.OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgs\n                    {\n                        IntervalDays = new[]\n                        {\n                            \"MONDAY\",\n                            \"WEDNESDAY\",\n                        },\n                        IntervalHoursStartTime = \"12:00\",\n                        IntervalHoursEndTime = \"14:00\",\n                    },\n                },\n            },\n            new SpotInst.Inputs.OceanRightSizingRuleRecommendationApplicationIntervalArgs\n            {\n                RepetitionBasis = \"MONTHLY\",\n                MonthlyRepetitionBases = new[]\n                {\n                    new SpotInst.Inputs.OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs\n                    {\n                        IntervalMonths = new[]\n                        {\n                            2,\n                            6,\n                            9,\n                        },\n                        WeekOfTheMonths = new[]\n                        {\n                            \"FIRST\",\n                            \"LAST\",\n                        },\n                        WeeklyRepetitionBases = new[]\n                        {\n                            new SpotInst.Inputs.OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgs\n                            {\n                                IntervalDays = new[]\n                                {\n                                    \"MONDAY\",\n                                },\n                                IntervalHoursStartTime = \"03:00\",\n                                IntervalHoursEndTime = \"04:00\",\n                            },\n                        },\n                    },\n                },\n            },\n        },\n        RecommendationApplicationBoundaries = new[]\n        {\n            new SpotInst.Inputs.OceanRightSizingRuleRecommendationApplicationBoundaryArgs\n            {\n                CpuMin = 120,\n                CpuMax = 190,\n                MemoryMin = 160,\n                MemoryMax = 190,\n            },\n        },\n        RecommendationApplicationMinThresholds = new[]\n        {\n            new SpotInst.Inputs.OceanRightSizingRuleRecommendationApplicationMinThresholdArgs\n            {\n                CpuPercentage = 0.412,\n                MemoryPercentage = 0.36,\n            },\n        },\n        RecommendationApplicationOverheadValues = new[]\n        {\n            new SpotInst.Inputs.OceanRightSizingRuleRecommendationApplicationOverheadValueArgs\n            {\n                CpuPercentage = 0.8,\n                MemoryPercentage = 0.5,\n            },\n        },\n        AutoApplyDefinitions = new[]\n        {\n            new SpotInst.Inputs.OceanRightSizingRuleAutoApplyDefinitionArgs\n            {\n                Enabled = true,\n                Namespaces = new[]\n                {\n                    \"kube-system\",\n                    \"spot-system\",\n                },\n                Labels = \n                {\n                    { \"k8s-app\", \"kube-proxy\" },\n                    { \"app.kubernetes.io/name\", \"metrics-server\" },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := spotinst.NewOceanRightSizingRule(ctx, \"example\", \u0026spotinst.OceanRightSizingRuleArgs{\n\t\t\tOceanId:                           pulumi.String(\"o-123456\"),\n\t\t\tRuleName:                          pulumi.String(\"test-rule\"),\n\t\t\tExcludePreliminaryRecommendations: pulumi.Bool(true),\n\t\t\tRestartReplicas:                   pulumi.String(\"ALL_MANIFEST\"),\n\t\t\tRecommendationApplicationHpas: spotinst.OceanRightSizingRuleRecommendationApplicationHpaArray{\n\t\t\t\t\u0026spotinst.OceanRightSizingRuleRecommendationApplicationHpaArgs{\n\t\t\t\t\tAllowHpaRecommendations: pulumi.Bool(true),\n\t\t\t\t},\n\t\t\t},\n\t\t\tRecommendationApplicationIntervals: spotinst.OceanRightSizingRuleRecommendationApplicationIntervalArray{\n\t\t\t\t\u0026spotinst.OceanRightSizingRuleRecommendationApplicationIntervalArgs{\n\t\t\t\t\tRepetitionBasis: pulumi.String(\"WEEKLY\"),\n\t\t\t\t\tWeeklyRepetitionBases: spotinst.OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArray{\n\t\t\t\t\t\t\u0026spotinst.OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgs{\n\t\t\t\t\t\t\tIntervalDays: pulumi.StringArray{\n\t\t\t\t\t\t\t\tpulumi.String(\"MONDAY\"),\n\t\t\t\t\t\t\t\tpulumi.String(\"WEDNESDAY\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\tIntervalHoursStartTime: pulumi.String(\"12:00\"),\n\t\t\t\t\t\t\tIntervalHoursEndTime:   pulumi.String(\"14:00\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t\u0026spotinst.OceanRightSizingRuleRecommendationApplicationIntervalArgs{\n\t\t\t\t\tRepetitionBasis: pulumi.String(\"MONTHLY\"),\n\t\t\t\t\tMonthlyRepetitionBases: spotinst.OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArray{\n\t\t\t\t\t\t\u0026spotinst.OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs{\n\t\t\t\t\t\t\tIntervalMonths: pulumi.IntArray{\n\t\t\t\t\t\t\t\tpulumi.Int(2),\n\t\t\t\t\t\t\t\tpulumi.Int(6),\n\t\t\t\t\t\t\t\tpulumi.Int(9),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\tWeekOfTheMonths: pulumi.StringArray{\n\t\t\t\t\t\t\t\tpulumi.String(\"FIRST\"),\n\t\t\t\t\t\t\t\tpulumi.String(\"LAST\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\tWeeklyRepetitionBases: spotinst.OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArray{\n\t\t\t\t\t\t\t\t\u0026spotinst.OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgs{\n\t\t\t\t\t\t\t\t\tIntervalDays: pulumi.StringArray{\n\t\t\t\t\t\t\t\t\t\tpulumi.String(\"MONDAY\"),\n\t\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t\tIntervalHoursStartTime: pulumi.String(\"03:00\"),\n\t\t\t\t\t\t\t\t\tIntervalHoursEndTime:   pulumi.String(\"04:00\"),\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tRecommendationApplicationBoundaries: spotinst.OceanRightSizingRuleRecommendationApplicationBoundaryArray{\n\t\t\t\t\u0026spotinst.OceanRightSizingRuleRecommendationApplicationBoundaryArgs{\n\t\t\t\t\tCpuMin:    pulumi.Float64(120),\n\t\t\t\t\tCpuMax:    pulumi.Float64(190),\n\t\t\t\t\tMemoryMin: pulumi.Int(160),\n\t\t\t\t\tMemoryMax: pulumi.Int(190),\n\t\t\t\t},\n\t\t\t},\n\t\t\tRecommendationApplicationMinThresholds: spotinst.OceanRightSizingRuleRecommendationApplicationMinThresholdArray{\n\t\t\t\t\u0026spotinst.OceanRightSizingRuleRecommendationApplicationMinThresholdArgs{\n\t\t\t\t\tCpuPercentage:    pulumi.Float64(0.412),\n\t\t\t\t\tMemoryPercentage: pulumi.Float64(0.36),\n\t\t\t\t},\n\t\t\t},\n\t\t\tRecommendationApplicationOverheadValues: spotinst.OceanRightSizingRuleRecommendationApplicationOverheadValueArray{\n\t\t\t\t\u0026spotinst.OceanRightSizingRuleRecommendationApplicationOverheadValueArgs{\n\t\t\t\t\tCpuPercentage:    pulumi.Float64(0.8),\n\t\t\t\t\tMemoryPercentage: pulumi.Float64(0.5),\n\t\t\t\t},\n\t\t\t},\n\t\t\tAutoApplyDefinitions: spotinst.OceanRightSizingRuleAutoApplyDefinitionArray{\n\t\t\t\t\u0026spotinst.OceanRightSizingRuleAutoApplyDefinitionArgs{\n\t\t\t\t\tEnabled: pulumi.Bool(true),\n\t\t\t\t\tNamespaces: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"kube-system\"),\n\t\t\t\t\t\tpulumi.String(\"spot-system\"),\n\t\t\t\t\t},\n\t\t\t\t\tLabels: pulumi.StringMap{\n\t\t\t\t\t\t\"k8s-app\":                pulumi.String(\"kube-proxy\"),\n\t\t\t\t\t\t\"app.kubernetes.io/name\": pulumi.String(\"metrics-server\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.spotinst.OceanRightSizingRule;\nimport com.pulumi.spotinst.OceanRightSizingRuleArgs;\nimport com.pulumi.spotinst.inputs.OceanRightSizingRuleRecommendationApplicationHpaArgs;\nimport com.pulumi.spotinst.inputs.OceanRightSizingRuleRecommendationApplicationIntervalArgs;\nimport com.pulumi.spotinst.inputs.OceanRightSizingRuleRecommendationApplicationBoundaryArgs;\nimport com.pulumi.spotinst.inputs.OceanRightSizingRuleRecommendationApplicationMinThresholdArgs;\nimport com.pulumi.spotinst.inputs.OceanRightSizingRuleRecommendationApplicationOverheadValueArgs;\nimport com.pulumi.spotinst.inputs.OceanRightSizingRuleAutoApplyDefinitionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new OceanRightSizingRule(\"example\", OceanRightSizingRuleArgs.builder()\n            .oceanId(\"o-123456\")\n            .ruleName(\"test-rule\")\n            .excludePreliminaryRecommendations(true)\n            .restartReplicas(\"ALL_MANIFEST\")\n            .recommendationApplicationHpas(OceanRightSizingRuleRecommendationApplicationHpaArgs.builder()\n                .allowHpaRecommendations(true)\n                .build())\n            .recommendationApplicationIntervals(            \n                OceanRightSizingRuleRecommendationApplicationIntervalArgs.builder()\n                    .repetitionBasis(\"WEEKLY\")\n                    .weeklyRepetitionBases(OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgs.builder()\n                        .intervalDays(                        \n                            \"MONDAY\",\n                            \"WEDNESDAY\")\n                        .intervalHoursStartTime(\"12:00\")\n                        .intervalHoursEndTime(\"14:00\")\n                        .build())\n                    .build(),\n                OceanRightSizingRuleRecommendationApplicationIntervalArgs.builder()\n                    .repetitionBasis(\"MONTHLY\")\n                    .monthlyRepetitionBases(OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs.builder()\n                        .intervalMonths(                        \n                            2,\n                            6,\n                            9)\n                        .weekOfTheMonths(                        \n                            \"FIRST\",\n                            \"LAST\")\n                        .weeklyRepetitionBases(OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgs.builder()\n                            .intervalDays(\"MONDAY\")\n                            .intervalHoursStartTime(\"03:00\")\n                            .intervalHoursEndTime(\"04:00\")\n                            .build())\n                        .build())\n                    .build())\n            .recommendationApplicationBoundaries(OceanRightSizingRuleRecommendationApplicationBoundaryArgs.builder()\n                .cpuMin(120.0)\n                .cpuMax(190.0)\n                .memoryMin(160)\n                .memoryMax(190)\n                .build())\n            .recommendationApplicationMinThresholds(OceanRightSizingRuleRecommendationApplicationMinThresholdArgs.builder()\n                .cpuPercentage(0.412)\n                .memoryPercentage(0.36)\n                .build())\n            .recommendationApplicationOverheadValues(OceanRightSizingRuleRecommendationApplicationOverheadValueArgs.builder()\n                .cpuPercentage(0.8)\n                .memoryPercentage(0.5)\n                .build())\n            .autoApplyDefinitions(OceanRightSizingRuleAutoApplyDefinitionArgs.builder()\n                .enabled(true)\n                .namespaces(                \n                    \"kube-system\",\n                    \"spot-system\")\n                .labels(Map.ofEntries(\n                    Map.entry(\"k8s-app\", \"kube-proxy\"),\n                    Map.entry(\"app.kubernetes.io/name\", \"metrics-server\")\n                ))\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: spotinst:OceanRightSizingRule\n    properties:\n      oceanId: o-123456\n      ruleName: test-rule\n      excludePreliminaryRecommendations: true\n      restartReplicas: ALL_MANIFEST\n      recommendationApplicationHpas:\n        - allowHpaRecommendations: true\n      recommendationApplicationIntervals:\n        - repetitionBasis: WEEKLY\n          weeklyRepetitionBases:\n            - intervalDays:\n                - MONDAY\n                - WEDNESDAY\n              intervalHoursStartTime: 12:00\n              intervalHoursEndTime: 14:00\n        - repetitionBasis: MONTHLY\n          monthlyRepetitionBases:\n            - intervalMonths:\n                - 2\n                - 6\n                - 9\n              weekOfTheMonths:\n                - FIRST\n                - LAST\n              weeklyRepetitionBases:\n                - intervalDays:\n                    - MONDAY\n                  intervalHoursStartTime: 03:00\n                  intervalHoursEndTime: 04:00\n      recommendationApplicationBoundaries:\n        - cpuMin: 120\n          cpuMax: 190\n          memoryMin: 160\n          memoryMax: 190\n      recommendationApplicationMinThresholds:\n        - cpuPercentage: 0.412\n          memoryPercentage: 0.36\n      recommendationApplicationOverheadValues:\n        - cpuPercentage: 0.8\n          memoryPercentage: 0.5\n      autoApplyDefinitions:\n        - enabled: true\n          namespaces:\n            - kube-system\n            - spot-system\n          labels:\n            k8s-app: kube-proxy\n            app.kubernetes.io/name: metrics-server\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "attachWorkloads": {
                     "type": "array",
@@ -20139,7 +20209,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:index/OceanRightSizingRuleAutoApplyDefinition:OceanRightSizingRuleAutoApplyDefinition"
-                    }
+                    },
+                    "description": "Ocean Rightsizing Rule Auto Apply Configuration.\n"
                 },
                 "detachWorkloads": {
                     "type": "array",
@@ -20151,46 +20222,55 @@
                     "type": "boolean"
                 },
                 "excludePreliminaryRecommendations": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Exclude preliminary recommendations (recommendations based on less than 4 full days of data).\n"
                 },
                 "oceanId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Identifier of the Ocean cluster.\n"
                 },
                 "recommendationApplicationBoundaries": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:index/OceanRightSizingRuleRecommendationApplicationBoundary:OceanRightSizingRuleRecommendationApplicationBoundary"
-                    }
+                    },
+                    "description": "Determines the Ocean Rightsizing rule recommendation application boundaries.\n"
                 },
                 "recommendationApplicationHpas": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:index/OceanRightSizingRuleRecommendationApplicationHpa:OceanRightSizingRuleRecommendationApplicationHpa"
-                    }
+                    },
+                    "description": "HPA Rightsizing Rule Recommendation Configuration\n"
                 },
                 "recommendationApplicationIntervals": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:index/OceanRightSizingRuleRecommendationApplicationInterval:OceanRightSizingRuleRecommendationApplicationInterval"
-                    }
+                    },
+                    "description": "Determines the Ocean Rightsizing rule recommendation application intervals.\n"
                 },
                 "recommendationApplicationMinThresholds": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:index/OceanRightSizingRuleRecommendationApplicationMinThreshold:OceanRightSizingRuleRecommendationApplicationMinThreshold"
-                    }
+                    },
+                    "description": "Determines the extent of difference between current request and recommendation to trigger a change in percentage.\n"
                 },
                 "recommendationApplicationOverheadValues": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:index/OceanRightSizingRuleRecommendationApplicationOverheadValue:OceanRightSizingRuleRecommendationApplicationOverheadValue"
-                    }
+                    },
+                    "description": "Determines the Ocean Rightsizing rule recommendation application overhead values.\n"
                 },
                 "restartReplicas": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Valid values: \"MORE_THAN_ONE_REPLICA\" \"ALL_MANIFEST\" \"NO_RESTART\". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.\n"
                 },
                 "ruleName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The unique name of the rule.\n"
                 }
             },
             "required": [
@@ -20208,7 +20288,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:index/OceanRightSizingRuleAutoApplyDefinition:OceanRightSizingRuleAutoApplyDefinition"
-                    }
+                    },
+                    "description": "Ocean Rightsizing Rule Auto Apply Configuration.\n"
                 },
                 "detachWorkloads": {
                     "type": "array",
@@ -20220,46 +20301,55 @@
                     "type": "boolean"
                 },
                 "excludePreliminaryRecommendations": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Exclude preliminary recommendations (recommendations based on less than 4 full days of data).\n"
                 },
                 "oceanId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Identifier of the Ocean cluster.\n"
                 },
                 "recommendationApplicationBoundaries": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:index/OceanRightSizingRuleRecommendationApplicationBoundary:OceanRightSizingRuleRecommendationApplicationBoundary"
-                    }
+                    },
+                    "description": "Determines the Ocean Rightsizing rule recommendation application boundaries.\n"
                 },
                 "recommendationApplicationHpas": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:index/OceanRightSizingRuleRecommendationApplicationHpa:OceanRightSizingRuleRecommendationApplicationHpa"
-                    }
+                    },
+                    "description": "HPA Rightsizing Rule Recommendation Configuration\n"
                 },
                 "recommendationApplicationIntervals": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:index/OceanRightSizingRuleRecommendationApplicationInterval:OceanRightSizingRuleRecommendationApplicationInterval"
-                    }
+                    },
+                    "description": "Determines the Ocean Rightsizing rule recommendation application intervals.\n"
                 },
                 "recommendationApplicationMinThresholds": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:index/OceanRightSizingRuleRecommendationApplicationMinThreshold:OceanRightSizingRuleRecommendationApplicationMinThreshold"
-                    }
+                    },
+                    "description": "Determines the extent of difference between current request and recommendation to trigger a change in percentage.\n"
                 },
                 "recommendationApplicationOverheadValues": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:index/OceanRightSizingRuleRecommendationApplicationOverheadValue:OceanRightSizingRuleRecommendationApplicationOverheadValue"
-                    }
+                    },
+                    "description": "Determines the Ocean Rightsizing rule recommendation application overhead values.\n"
                 },
                 "restartReplicas": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Valid values: \"MORE_THAN_ONE_REPLICA\" \"ALL_MANIFEST\" \"NO_RESTART\". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.\n"
                 },
                 "ruleName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The unique name of the rule.\n"
                 }
             },
             "requiredInputs": [
@@ -20279,7 +20369,8 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/types/spotinst:index/OceanRightSizingRuleAutoApplyDefinition:OceanRightSizingRuleAutoApplyDefinition"
-                        }
+                        },
+                        "description": "Ocean Rightsizing Rule Auto Apply Configuration.\n"
                     },
                     "detachWorkloads": {
                         "type": "array",
@@ -20291,46 +20382,55 @@
                         "type": "boolean"
                     },
                     "excludePreliminaryRecommendations": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Exclude preliminary recommendations (recommendations based on less than 4 full days of data).\n"
                     },
                     "oceanId": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Identifier of the Ocean cluster.\n"
                     },
                     "recommendationApplicationBoundaries": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/spotinst:index/OceanRightSizingRuleRecommendationApplicationBoundary:OceanRightSizingRuleRecommendationApplicationBoundary"
-                        }
+                        },
+                        "description": "Determines the Ocean Rightsizing rule recommendation application boundaries.\n"
                     },
                     "recommendationApplicationHpas": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/spotinst:index/OceanRightSizingRuleRecommendationApplicationHpa:OceanRightSizingRuleRecommendationApplicationHpa"
-                        }
+                        },
+                        "description": "HPA Rightsizing Rule Recommendation Configuration\n"
                     },
                     "recommendationApplicationIntervals": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/spotinst:index/OceanRightSizingRuleRecommendationApplicationInterval:OceanRightSizingRuleRecommendationApplicationInterval"
-                        }
+                        },
+                        "description": "Determines the Ocean Rightsizing rule recommendation application intervals.\n"
                     },
                     "recommendationApplicationMinThresholds": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/spotinst:index/OceanRightSizingRuleRecommendationApplicationMinThreshold:OceanRightSizingRuleRecommendationApplicationMinThreshold"
-                        }
+                        },
+                        "description": "Determines the extent of difference between current request and recommendation to trigger a change in percentage.\n"
                     },
                     "recommendationApplicationOverheadValues": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/spotinst:index/OceanRightSizingRuleRecommendationApplicationOverheadValue:OceanRightSizingRuleRecommendationApplicationOverheadValue"
-                        }
+                        },
+                        "description": "Determines the Ocean Rightsizing rule recommendation application overhead values.\n"
                     },
                     "restartReplicas": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Valid values: \"MORE_THAN_ONE_REPLICA\" \"ALL_MANIFEST\" \"NO_RESTART\". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.\n"
                     },
                     "ruleName": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The unique name of the rule.\n"
                     }
                 },
                 "type": "object"
