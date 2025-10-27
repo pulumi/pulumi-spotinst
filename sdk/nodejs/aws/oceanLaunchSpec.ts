@@ -109,6 +109,10 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     declare public readonly labels: pulumi.Output<outputs.aws.OceanLaunchSpecLabel[] | undefined>;
     /**
+     * Array of load balancer objects to add to VNG
+     */
+    declare public readonly loadBalancers: pulumi.Output<outputs.aws.OceanLaunchSpecLoadBalancer[] | undefined>;
+    /**
      * The name of the Virtual Node Group.
      */
     declare public readonly name: pulumi.Output<string>;
@@ -202,6 +206,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             resourceInputs["instanceTypes"] = state?.instanceTypes;
             resourceInputs["instanceTypesFilters"] = state?.instanceTypesFilters;
             resourceInputs["labels"] = state?.labels;
+            resourceInputs["loadBalancers"] = state?.loadBalancers;
             resourceInputs["name"] = state?.name;
             resourceInputs["oceanId"] = state?.oceanId;
             resourceInputs["preferredOdTypes"] = state?.preferredOdTypes;
@@ -242,6 +247,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             resourceInputs["instanceTypes"] = args?.instanceTypes;
             resourceInputs["instanceTypesFilters"] = args?.instanceTypesFilters;
             resourceInputs["labels"] = args?.labels;
+            resourceInputs["loadBalancers"] = args?.loadBalancers;
             resourceInputs["name"] = args?.name;
             resourceInputs["oceanId"] = args?.oceanId;
             resourceInputs["preferredOdTypes"] = args?.preferredOdTypes;
@@ -331,6 +337,10 @@ export interface OceanLaunchSpecState {
      * Optionally adds labels to instances launched in the cluster.
      */
     labels?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecLabel>[]>;
+    /**
+     * Array of load balancer objects to add to VNG
+     */
+    loadBalancers?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecLoadBalancer>[]>;
     /**
      * The name of the Virtual Node Group.
      */
@@ -461,6 +471,10 @@ export interface OceanLaunchSpecArgs {
      * Optionally adds labels to instances launched in the cluster.
      */
     labels?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecLabel>[]>;
+    /**
+     * Array of load balancer objects to add to VNG
+     */
+    loadBalancers?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecLoadBalancer>[]>;
     /**
      * The name of the Virtual Node Group.
      */

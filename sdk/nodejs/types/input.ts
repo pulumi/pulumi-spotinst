@@ -342,10 +342,18 @@ export interface NotificationCenterSubscription {
 }
 
 export interface OceanRightSizingRuleAttachWorkload {
+    /**
+     * List of namespaces that match the auto-apply rule.
+     */
     namespaces: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleAttachWorkloadNamespace>[]>;
 }
 
 export interface OceanRightSizingRuleAttachWorkloadNamespace {
+    /**
+     * A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
+     *
+     * <a id="attachWorkloads"></a>
+     */
     labels?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleAttachWorkloadNamespaceLabel>[]>;
     namespaceName: pulumi.Input<string>;
     workloads?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleAttachWorkloadNamespaceWorkload>[]>;
@@ -363,16 +371,35 @@ export interface OceanRightSizingRuleAttachWorkloadNamespaceWorkload {
 }
 
 export interface OceanRightSizingRuleAutoApplyDefinition {
+    /**
+     * Determines if auto apply is enabled.
+     */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
+     *
+     * <a id="attachWorkloads"></a>
+     */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * List of namespaces that match the auto-apply rule.
+     */
     namespaces?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface OceanRightSizingRuleDetachWorkload {
+    /**
+     * List of namespaces that match the auto-apply rule.
+     */
     namespaces: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleDetachWorkloadNamespace>[]>;
 }
 
 export interface OceanRightSizingRuleDetachWorkloadNamespace {
+    /**
+     * A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
+     *
+     * <a id="attachWorkloads"></a>
+     */
     labels?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleDetachWorkloadNamespaceLabel>[]>;
     namespaceName: pulumi.Input<string>;
     workloads?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleDetachWorkloadNamespaceWorkload>[]>;
@@ -390,47 +417,110 @@ export interface OceanRightSizingRuleDetachWorkloadNamespaceWorkload {
 }
 
 export interface OceanRightSizingRuleRecommendationApplicationBoundary {
+    /**
+     * the maximal value of cpu in vCpu.
+     */
     cpuMax?: pulumi.Input<number>;
+    /**
+     * the minimal value of cpu in vCpu.
+     */
     cpuMin?: pulumi.Input<number>;
+    /**
+     * the maximal value of memory in Gib.
+     */
     memoryMax?: pulumi.Input<number>;
+    /**
+     * the minimal value of memory in Gib.
+     */
     memoryMin?: pulumi.Input<number>;
 }
 
 export interface OceanRightSizingRuleRecommendationApplicationHpa {
+    /**
+     * Determines by the rule if recommendation application is allowed for workloads with HPA definition.
+     */
     allowHpaRecommendations?: pulumi.Input<boolean>;
 }
 
 export interface OceanRightSizingRuleRecommendationApplicationInterval {
+    /**
+     * Determines the Ocean Rightsizing rule monthly repetition basis.
+     */
     monthlyRepetitionBases?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase>[]>;
+    /**
+     * Valid values: "WEEKLY" "MONTHLY". The repetition basis.
+     */
     repetitionBasis: pulumi.Input<string>;
+    /**
+     * Determines the Ocean Rightsizing rule weekly repetition basis.
+     */
     weeklyRepetitionBases?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBase>[]>;
 }
 
 export interface OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase {
+    /**
+     * Array of the months (in number), when we want to trigger the apply recommendations.
+     */
     intervalMonths: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * Valid values: "FIRST" "SECOND" "THIRD" "FOURTH" "LAST". Array of the weeks in the month, when we want to trigger the apply recommendations.
+     */
     weekOfTheMonths: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Determines the Ocean Rightsizing rule weekly repetition basis.
+     */
     weeklyRepetitionBases?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBase>[]>;
 }
 
 export interface OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBase {
+    /**
+     * Valid values: "SUNDAY" "MONDAY" "TUESDAY" "WEDNESDAY" "THURSDAY" "FRIDAY" "SATURDAY". Array of the days of the week, when we want to trigger the apply recommendations.
+     */
     intervalDays: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * End time.
+     */
     intervalHoursEndTime: pulumi.Input<string>;
+    /**
+     * Start time.
+     */
     intervalHoursStartTime: pulumi.Input<string>;
 }
 
 export interface OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBase {
+    /**
+     * Valid values: "SUNDAY" "MONDAY" "TUESDAY" "WEDNESDAY" "THURSDAY" "FRIDAY" "SATURDAY". Array of the days of the week, when we want to trigger the apply recommendations.
+     */
     intervalDays: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * End time.
+     */
     intervalHoursEndTime: pulumi.Input<string>;
+    /**
+     * Start time.
+     */
     intervalHoursStartTime: pulumi.Input<string>;
 }
 
 export interface OceanRightSizingRuleRecommendationApplicationMinThreshold {
+    /**
+     * .
+     */
     cpuPercentage?: pulumi.Input<number>;
+    /**
+     * .
+     */
     memoryPercentage?: pulumi.Input<number>;
 }
 
 export interface OceanRightSizingRuleRecommendationApplicationOverheadValue {
+    /**
+     * .
+     */
     cpuPercentage?: pulumi.Input<number>;
+    /**
+     * .
+     */
     memoryPercentage?: pulumi.Input<number>;
 }
 
@@ -2961,6 +3051,21 @@ export namespace aws {
          * The label value.
          */
         value: pulumi.Input<string>;
+    }
+
+    export interface OceanLaunchSpecLoadBalancer {
+        /**
+         * Required if type is set to `TARGET_GROUP`
+         */
+        arn?: pulumi.Input<string>;
+        /**
+         * Required if type is set to `CLASSIC`
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Can be set to `CLASSIC` or `TARGET_GROUP`
+         */
+        type: pulumi.Input<string>;
     }
 
     export interface OceanLaunchSpecResourceLimit {

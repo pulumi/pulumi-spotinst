@@ -342,10 +342,18 @@ export interface NotificationCenterSubscription {
 }
 
 export interface OceanRightSizingRuleAttachWorkload {
+    /**
+     * List of namespaces that match the auto-apply rule.
+     */
     namespaces: outputs.OceanRightSizingRuleAttachWorkloadNamespace[];
 }
 
 export interface OceanRightSizingRuleAttachWorkloadNamespace {
+    /**
+     * A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
+     *
+     * <a id="attachWorkloads"></a>
+     */
     labels?: outputs.OceanRightSizingRuleAttachWorkloadNamespaceLabel[];
     namespaceName: string;
     workloads?: outputs.OceanRightSizingRuleAttachWorkloadNamespaceWorkload[];
@@ -363,16 +371,35 @@ export interface OceanRightSizingRuleAttachWorkloadNamespaceWorkload {
 }
 
 export interface OceanRightSizingRuleAutoApplyDefinition {
+    /**
+     * Determines if auto apply is enabled.
+     */
     enabled?: boolean;
+    /**
+     * A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
+     *
+     * <a id="attachWorkloads"></a>
+     */
     labels?: {[key: string]: string};
+    /**
+     * List of namespaces that match the auto-apply rule.
+     */
     namespaces?: string[];
 }
 
 export interface OceanRightSizingRuleDetachWorkload {
+    /**
+     * List of namespaces that match the auto-apply rule.
+     */
     namespaces: outputs.OceanRightSizingRuleDetachWorkloadNamespace[];
 }
 
 export interface OceanRightSizingRuleDetachWorkloadNamespace {
+    /**
+     * A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
+     *
+     * <a id="attachWorkloads"></a>
+     */
     labels?: outputs.OceanRightSizingRuleDetachWorkloadNamespaceLabel[];
     namespaceName: string;
     workloads?: outputs.OceanRightSizingRuleDetachWorkloadNamespaceWorkload[];
@@ -390,47 +417,110 @@ export interface OceanRightSizingRuleDetachWorkloadNamespaceWorkload {
 }
 
 export interface OceanRightSizingRuleRecommendationApplicationBoundary {
+    /**
+     * the maximal value of cpu in vCpu.
+     */
     cpuMax?: number;
+    /**
+     * the minimal value of cpu in vCpu.
+     */
     cpuMin?: number;
+    /**
+     * the maximal value of memory in Gib.
+     */
     memoryMax?: number;
+    /**
+     * the minimal value of memory in Gib.
+     */
     memoryMin?: number;
 }
 
 export interface OceanRightSizingRuleRecommendationApplicationHpa {
+    /**
+     * Determines by the rule if recommendation application is allowed for workloads with HPA definition.
+     */
     allowHpaRecommendations?: boolean;
 }
 
 export interface OceanRightSizingRuleRecommendationApplicationInterval {
+    /**
+     * Determines the Ocean Rightsizing rule monthly repetition basis.
+     */
     monthlyRepetitionBases?: outputs.OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase[];
+    /**
+     * Valid values: "WEEKLY" "MONTHLY". The repetition basis.
+     */
     repetitionBasis: string;
+    /**
+     * Determines the Ocean Rightsizing rule weekly repetition basis.
+     */
     weeklyRepetitionBases?: outputs.OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBase[];
 }
 
 export interface OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase {
+    /**
+     * Array of the months (in number), when we want to trigger the apply recommendations.
+     */
     intervalMonths: number[];
+    /**
+     * Valid values: "FIRST" "SECOND" "THIRD" "FOURTH" "LAST". Array of the weeks in the month, when we want to trigger the apply recommendations.
+     */
     weekOfTheMonths: string[];
+    /**
+     * Determines the Ocean Rightsizing rule weekly repetition basis.
+     */
     weeklyRepetitionBases?: outputs.OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBase[];
 }
 
 export interface OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBase {
+    /**
+     * Valid values: "SUNDAY" "MONDAY" "TUESDAY" "WEDNESDAY" "THURSDAY" "FRIDAY" "SATURDAY". Array of the days of the week, when we want to trigger the apply recommendations.
+     */
     intervalDays: string[];
+    /**
+     * End time.
+     */
     intervalHoursEndTime: string;
+    /**
+     * Start time.
+     */
     intervalHoursStartTime: string;
 }
 
 export interface OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBase {
+    /**
+     * Valid values: "SUNDAY" "MONDAY" "TUESDAY" "WEDNESDAY" "THURSDAY" "FRIDAY" "SATURDAY". Array of the days of the week, when we want to trigger the apply recommendations.
+     */
     intervalDays: string[];
+    /**
+     * End time.
+     */
     intervalHoursEndTime: string;
+    /**
+     * Start time.
+     */
     intervalHoursStartTime: string;
 }
 
 export interface OceanRightSizingRuleRecommendationApplicationMinThreshold {
+    /**
+     * .
+     */
     cpuPercentage?: number;
+    /**
+     * .
+     */
     memoryPercentage?: number;
 }
 
 export interface OceanRightSizingRuleRecommendationApplicationOverheadValue {
+    /**
+     * .
+     */
     cpuPercentage?: number;
+    /**
+     * .
+     */
     memoryPercentage?: number;
 }
 
@@ -2962,6 +3052,21 @@ export namespace aws {
          * The label value.
          */
         value: string;
+    }
+
+    export interface OceanLaunchSpecLoadBalancer {
+        /**
+         * Required if type is set to `TARGET_GROUP`
+         */
+        arn?: string;
+        /**
+         * Required if type is set to `CLASSIC`
+         */
+        name?: string;
+        /**
+         * Can be set to `CLASSIC` or `TARGET_GROUP`
+         */
+        type: string;
     }
 
     export interface OceanLaunchSpecResourceLimit {

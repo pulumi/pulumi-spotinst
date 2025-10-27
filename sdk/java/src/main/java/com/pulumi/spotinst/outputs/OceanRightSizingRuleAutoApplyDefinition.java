@@ -14,17 +14,45 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanRightSizingRuleAutoApplyDefinition {
+    /**
+     * @return Determines if auto apply is enabled.
+     * 
+     */
     private @Nullable Boolean enabled;
+    /**
+     * @return A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
+     * 
+     * &lt;a id=&#34;attachWorkloads&#34;&gt;&lt;/a&gt;
+     * 
+     */
     private @Nullable Map<String,String> labels;
+    /**
+     * @return List of namespaces that match the auto-apply rule.
+     * 
+     */
     private @Nullable List<String> namespaces;
 
     private OceanRightSizingRuleAutoApplyDefinition() {}
+    /**
+     * @return Determines if auto apply is enabled.
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    /**
+     * @return A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
+     * 
+     * &lt;a id=&#34;attachWorkloads&#34;&gt;&lt;/a&gt;
+     * 
+     */
     public Map<String,String> labels() {
         return this.labels == null ? Map.of() : this.labels;
     }
+    /**
+     * @return List of namespaces that match the auto-apply rule.
+     * 
+     */
     public List<String> namespaces() {
         return this.namespaces == null ? List.of() : this.namespaces;
     }

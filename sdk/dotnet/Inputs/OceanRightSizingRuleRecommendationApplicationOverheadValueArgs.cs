@@ -12,9 +12,15 @@ namespace Pulumi.SpotInst.Inputs
 
     public sealed class OceanRightSizingRuleRecommendationApplicationOverheadValueArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// .
+        /// </summary>
         [Input("cpuPercentage")]
         public Input<double>? CpuPercentage { get; set; }
 
+        /// <summary>
+        /// .
+        /// </summary>
         [Input("memoryPercentage")]
         public Input<double>? MemoryPercentage { get; set; }
 

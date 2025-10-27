@@ -5898,6 +5898,7 @@ func (o NotificationCenterSubscriptionArrayOutput) Index(i pulumi.IntInput) Noti
 }
 
 type OceanRightSizingRuleAttachWorkload struct {
+	// List of namespaces that match the auto-apply rule.
 	Namespaces []OceanRightSizingRuleAttachWorkloadNamespace `pulumi:"namespaces"`
 }
 
@@ -5913,6 +5914,7 @@ type OceanRightSizingRuleAttachWorkloadInput interface {
 }
 
 type OceanRightSizingRuleAttachWorkloadArgs struct {
+	// List of namespaces that match the auto-apply rule.
 	Namespaces OceanRightSizingRuleAttachWorkloadNamespaceArrayInput `pulumi:"namespaces"`
 }
 
@@ -5967,6 +5969,7 @@ func (o OceanRightSizingRuleAttachWorkloadOutput) ToOceanRightSizingRuleAttachWo
 	return o
 }
 
+// List of namespaces that match the auto-apply rule.
 func (o OceanRightSizingRuleAttachWorkloadOutput) Namespaces() OceanRightSizingRuleAttachWorkloadNamespaceArrayOutput {
 	return o.ApplyT(func(v OceanRightSizingRuleAttachWorkload) []OceanRightSizingRuleAttachWorkloadNamespace {
 		return v.Namespaces
@@ -5994,6 +5997,9 @@ func (o OceanRightSizingRuleAttachWorkloadArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type OceanRightSizingRuleAttachWorkloadNamespace struct {
+	// A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
+	//
+	// <a id="attachWorkloads"></a>
 	Labels        []OceanRightSizingRuleAttachWorkloadNamespaceLabel    `pulumi:"labels"`
 	NamespaceName string                                                `pulumi:"namespaceName"`
 	Workloads     []OceanRightSizingRuleAttachWorkloadNamespaceWorkload `pulumi:"workloads"`
@@ -6011,6 +6017,9 @@ type OceanRightSizingRuleAttachWorkloadNamespaceInput interface {
 }
 
 type OceanRightSizingRuleAttachWorkloadNamespaceArgs struct {
+	// A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
+	//
+	// <a id="attachWorkloads"></a>
 	Labels        OceanRightSizingRuleAttachWorkloadNamespaceLabelArrayInput    `pulumi:"labels"`
 	NamespaceName pulumi.StringInput                                            `pulumi:"namespaceName"`
 	Workloads     OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArrayInput `pulumi:"workloads"`
@@ -6067,6 +6076,9 @@ func (o OceanRightSizingRuleAttachWorkloadNamespaceOutput) ToOceanRightSizingRul
 	return o
 }
 
+// A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
+//
+// <a id="attachWorkloads"></a>
 func (o OceanRightSizingRuleAttachWorkloadNamespaceOutput) Labels() OceanRightSizingRuleAttachWorkloadNamespaceLabelArrayOutput {
 	return o.ApplyT(func(v OceanRightSizingRuleAttachWorkloadNamespace) []OceanRightSizingRuleAttachWorkloadNamespaceLabel {
 		return v.Labels
@@ -6310,9 +6322,14 @@ func (o OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArrayOutput) Index(i 
 }
 
 type OceanRightSizingRuleAutoApplyDefinition struct {
-	Enabled    *bool             `pulumi:"enabled"`
-	Labels     map[string]string `pulumi:"labels"`
-	Namespaces []string          `pulumi:"namespaces"`
+	// Determines if auto apply is enabled.
+	Enabled *bool `pulumi:"enabled"`
+	// A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
+	//
+	// <a id="attachWorkloads"></a>
+	Labels map[string]string `pulumi:"labels"`
+	// List of namespaces that match the auto-apply rule.
+	Namespaces []string `pulumi:"namespaces"`
 }
 
 // OceanRightSizingRuleAutoApplyDefinitionInput is an input type that accepts OceanRightSizingRuleAutoApplyDefinitionArgs and OceanRightSizingRuleAutoApplyDefinitionOutput values.
@@ -6327,8 +6344,13 @@ type OceanRightSizingRuleAutoApplyDefinitionInput interface {
 }
 
 type OceanRightSizingRuleAutoApplyDefinitionArgs struct {
-	Enabled    pulumi.BoolPtrInput     `pulumi:"enabled"`
-	Labels     pulumi.StringMapInput   `pulumi:"labels"`
+	// Determines if auto apply is enabled.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
+	//
+	// <a id="attachWorkloads"></a>
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// List of namespaces that match the auto-apply rule.
 	Namespaces pulumi.StringArrayInput `pulumi:"namespaces"`
 }
 
@@ -6383,14 +6405,19 @@ func (o OceanRightSizingRuleAutoApplyDefinitionOutput) ToOceanRightSizingRuleAut
 	return o
 }
 
+// Determines if auto apply is enabled.
 func (o OceanRightSizingRuleAutoApplyDefinitionOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanRightSizingRuleAutoApplyDefinition) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
+//
+// <a id="attachWorkloads"></a>
 func (o OceanRightSizingRuleAutoApplyDefinitionOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v OceanRightSizingRuleAutoApplyDefinition) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+// List of namespaces that match the auto-apply rule.
 func (o OceanRightSizingRuleAutoApplyDefinitionOutput) Namespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanRightSizingRuleAutoApplyDefinition) []string { return v.Namespaces }).(pulumi.StringArrayOutput)
 }
@@ -6416,6 +6443,7 @@ func (o OceanRightSizingRuleAutoApplyDefinitionArrayOutput) Index(i pulumi.IntIn
 }
 
 type OceanRightSizingRuleDetachWorkload struct {
+	// List of namespaces that match the auto-apply rule.
 	Namespaces []OceanRightSizingRuleDetachWorkloadNamespace `pulumi:"namespaces"`
 }
 
@@ -6431,6 +6459,7 @@ type OceanRightSizingRuleDetachWorkloadInput interface {
 }
 
 type OceanRightSizingRuleDetachWorkloadArgs struct {
+	// List of namespaces that match the auto-apply rule.
 	Namespaces OceanRightSizingRuleDetachWorkloadNamespaceArrayInput `pulumi:"namespaces"`
 }
 
@@ -6485,6 +6514,7 @@ func (o OceanRightSizingRuleDetachWorkloadOutput) ToOceanRightSizingRuleDetachWo
 	return o
 }
 
+// List of namespaces that match the auto-apply rule.
 func (o OceanRightSizingRuleDetachWorkloadOutput) Namespaces() OceanRightSizingRuleDetachWorkloadNamespaceArrayOutput {
 	return o.ApplyT(func(v OceanRightSizingRuleDetachWorkload) []OceanRightSizingRuleDetachWorkloadNamespace {
 		return v.Namespaces
@@ -6512,6 +6542,9 @@ func (o OceanRightSizingRuleDetachWorkloadArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type OceanRightSizingRuleDetachWorkloadNamespace struct {
+	// A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
+	//
+	// <a id="attachWorkloads"></a>
 	Labels        []OceanRightSizingRuleDetachWorkloadNamespaceLabel    `pulumi:"labels"`
 	NamespaceName string                                                `pulumi:"namespaceName"`
 	Workloads     []OceanRightSizingRuleDetachWorkloadNamespaceWorkload `pulumi:"workloads"`
@@ -6529,6 +6562,9 @@ type OceanRightSizingRuleDetachWorkloadNamespaceInput interface {
 }
 
 type OceanRightSizingRuleDetachWorkloadNamespaceArgs struct {
+	// A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
+	//
+	// <a id="attachWorkloads"></a>
 	Labels        OceanRightSizingRuleDetachWorkloadNamespaceLabelArrayInput    `pulumi:"labels"`
 	NamespaceName pulumi.StringInput                                            `pulumi:"namespaceName"`
 	Workloads     OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArrayInput `pulumi:"workloads"`
@@ -6585,6 +6621,9 @@ func (o OceanRightSizingRuleDetachWorkloadNamespaceOutput) ToOceanRightSizingRul
 	return o
 }
 
+// A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
+//
+// <a id="attachWorkloads"></a>
 func (o OceanRightSizingRuleDetachWorkloadNamespaceOutput) Labels() OceanRightSizingRuleDetachWorkloadNamespaceLabelArrayOutput {
 	return o.ApplyT(func(v OceanRightSizingRuleDetachWorkloadNamespace) []OceanRightSizingRuleDetachWorkloadNamespaceLabel {
 		return v.Labels
@@ -6828,10 +6867,14 @@ func (o OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArrayOutput) Index(i 
 }
 
 type OceanRightSizingRuleRecommendationApplicationBoundary struct {
-	CpuMax    *float64 `pulumi:"cpuMax"`
-	CpuMin    *float64 `pulumi:"cpuMin"`
-	MemoryMax *int     `pulumi:"memoryMax"`
-	MemoryMin *int     `pulumi:"memoryMin"`
+	// the maximal value of cpu in vCpu.
+	CpuMax *float64 `pulumi:"cpuMax"`
+	// the minimal value of cpu in vCpu.
+	CpuMin *float64 `pulumi:"cpuMin"`
+	// the maximal value of memory in Gib.
+	MemoryMax *int `pulumi:"memoryMax"`
+	// the minimal value of memory in Gib.
+	MemoryMin *int `pulumi:"memoryMin"`
 }
 
 // OceanRightSizingRuleRecommendationApplicationBoundaryInput is an input type that accepts OceanRightSizingRuleRecommendationApplicationBoundaryArgs and OceanRightSizingRuleRecommendationApplicationBoundaryOutput values.
@@ -6846,10 +6889,14 @@ type OceanRightSizingRuleRecommendationApplicationBoundaryInput interface {
 }
 
 type OceanRightSizingRuleRecommendationApplicationBoundaryArgs struct {
-	CpuMax    pulumi.Float64PtrInput `pulumi:"cpuMax"`
-	CpuMin    pulumi.Float64PtrInput `pulumi:"cpuMin"`
-	MemoryMax pulumi.IntPtrInput     `pulumi:"memoryMax"`
-	MemoryMin pulumi.IntPtrInput     `pulumi:"memoryMin"`
+	// the maximal value of cpu in vCpu.
+	CpuMax pulumi.Float64PtrInput `pulumi:"cpuMax"`
+	// the minimal value of cpu in vCpu.
+	CpuMin pulumi.Float64PtrInput `pulumi:"cpuMin"`
+	// the maximal value of memory in Gib.
+	MemoryMax pulumi.IntPtrInput `pulumi:"memoryMax"`
+	// the minimal value of memory in Gib.
+	MemoryMin pulumi.IntPtrInput `pulumi:"memoryMin"`
 }
 
 func (OceanRightSizingRuleRecommendationApplicationBoundaryArgs) ElementType() reflect.Type {
@@ -6903,18 +6950,22 @@ func (o OceanRightSizingRuleRecommendationApplicationBoundaryOutput) ToOceanRigh
 	return o
 }
 
+// the maximal value of cpu in vCpu.
 func (o OceanRightSizingRuleRecommendationApplicationBoundaryOutput) CpuMax() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v OceanRightSizingRuleRecommendationApplicationBoundary) *float64 { return v.CpuMax }).(pulumi.Float64PtrOutput)
 }
 
+// the minimal value of cpu in vCpu.
 func (o OceanRightSizingRuleRecommendationApplicationBoundaryOutput) CpuMin() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v OceanRightSizingRuleRecommendationApplicationBoundary) *float64 { return v.CpuMin }).(pulumi.Float64PtrOutput)
 }
 
+// the maximal value of memory in Gib.
 func (o OceanRightSizingRuleRecommendationApplicationBoundaryOutput) MemoryMax() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanRightSizingRuleRecommendationApplicationBoundary) *int { return v.MemoryMax }).(pulumi.IntPtrOutput)
 }
 
+// the minimal value of memory in Gib.
 func (o OceanRightSizingRuleRecommendationApplicationBoundaryOutput) MemoryMin() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanRightSizingRuleRecommendationApplicationBoundary) *int { return v.MemoryMin }).(pulumi.IntPtrOutput)
 }
@@ -6940,6 +6991,7 @@ func (o OceanRightSizingRuleRecommendationApplicationBoundaryArrayOutput) Index(
 }
 
 type OceanRightSizingRuleRecommendationApplicationHpa struct {
+	// Determines by the rule if recommendation application is allowed for workloads with HPA definition.
 	AllowHpaRecommendations *bool `pulumi:"allowHpaRecommendations"`
 }
 
@@ -6955,6 +7007,7 @@ type OceanRightSizingRuleRecommendationApplicationHpaInput interface {
 }
 
 type OceanRightSizingRuleRecommendationApplicationHpaArgs struct {
+	// Determines by the rule if recommendation application is allowed for workloads with HPA definition.
 	AllowHpaRecommendations pulumi.BoolPtrInput `pulumi:"allowHpaRecommendations"`
 }
 
@@ -7009,6 +7062,7 @@ func (o OceanRightSizingRuleRecommendationApplicationHpaOutput) ToOceanRightSizi
 	return o
 }
 
+// Determines by the rule if recommendation application is allowed for workloads with HPA definition.
 func (o OceanRightSizingRuleRecommendationApplicationHpaOutput) AllowHpaRecommendations() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanRightSizingRuleRecommendationApplicationHpa) *bool { return v.AllowHpaRecommendations }).(pulumi.BoolPtrOutput)
 }
@@ -7034,9 +7088,12 @@ func (o OceanRightSizingRuleRecommendationApplicationHpaArrayOutput) Index(i pul
 }
 
 type OceanRightSizingRuleRecommendationApplicationInterval struct {
+	// Determines the Ocean Rightsizing rule monthly repetition basis.
 	MonthlyRepetitionBases []OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase `pulumi:"monthlyRepetitionBases"`
-	RepetitionBasis        string                                                                       `pulumi:"repetitionBasis"`
-	WeeklyRepetitionBases  []OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBase  `pulumi:"weeklyRepetitionBases"`
+	// Valid values: "WEEKLY" "MONTHLY". The repetition basis.
+	RepetitionBasis string `pulumi:"repetitionBasis"`
+	// Determines the Ocean Rightsizing rule weekly repetition basis.
+	WeeklyRepetitionBases []OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBase `pulumi:"weeklyRepetitionBases"`
 }
 
 // OceanRightSizingRuleRecommendationApplicationIntervalInput is an input type that accepts OceanRightSizingRuleRecommendationApplicationIntervalArgs and OceanRightSizingRuleRecommendationApplicationIntervalOutput values.
@@ -7051,9 +7108,12 @@ type OceanRightSizingRuleRecommendationApplicationIntervalInput interface {
 }
 
 type OceanRightSizingRuleRecommendationApplicationIntervalArgs struct {
+	// Determines the Ocean Rightsizing rule monthly repetition basis.
 	MonthlyRepetitionBases OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArrayInput `pulumi:"monthlyRepetitionBases"`
-	RepetitionBasis        pulumi.StringInput                                                                   `pulumi:"repetitionBasis"`
-	WeeklyRepetitionBases  OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArrayInput  `pulumi:"weeklyRepetitionBases"`
+	// Valid values: "WEEKLY" "MONTHLY". The repetition basis.
+	RepetitionBasis pulumi.StringInput `pulumi:"repetitionBasis"`
+	// Determines the Ocean Rightsizing rule weekly repetition basis.
+	WeeklyRepetitionBases OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArrayInput `pulumi:"weeklyRepetitionBases"`
 }
 
 func (OceanRightSizingRuleRecommendationApplicationIntervalArgs) ElementType() reflect.Type {
@@ -7107,16 +7167,19 @@ func (o OceanRightSizingRuleRecommendationApplicationIntervalOutput) ToOceanRigh
 	return o
 }
 
+// Determines the Ocean Rightsizing rule monthly repetition basis.
 func (o OceanRightSizingRuleRecommendationApplicationIntervalOutput) MonthlyRepetitionBases() OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArrayOutput {
 	return o.ApplyT(func(v OceanRightSizingRuleRecommendationApplicationInterval) []OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase {
 		return v.MonthlyRepetitionBases
 	}).(OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArrayOutput)
 }
 
+// Valid values: "WEEKLY" "MONTHLY". The repetition basis.
 func (o OceanRightSizingRuleRecommendationApplicationIntervalOutput) RepetitionBasis() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanRightSizingRuleRecommendationApplicationInterval) string { return v.RepetitionBasis }).(pulumi.StringOutput)
 }
 
+// Determines the Ocean Rightsizing rule weekly repetition basis.
 func (o OceanRightSizingRuleRecommendationApplicationIntervalOutput) WeeklyRepetitionBases() OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArrayOutput {
 	return o.ApplyT(func(v OceanRightSizingRuleRecommendationApplicationInterval) []OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBase {
 		return v.WeeklyRepetitionBases
@@ -7144,8 +7207,11 @@ func (o OceanRightSizingRuleRecommendationApplicationIntervalArrayOutput) Index(
 }
 
 type OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase struct {
-	IntervalMonths        []int                                                                                            `pulumi:"intervalMonths"`
-	WeekOfTheMonths       []string                                                                                         `pulumi:"weekOfTheMonths"`
+	// Array of the months (in number), when we want to trigger the apply recommendations.
+	IntervalMonths []int `pulumi:"intervalMonths"`
+	// Valid values: "FIRST" "SECOND" "THIRD" "FOURTH" "LAST". Array of the weeks in the month, when we want to trigger the apply recommendations.
+	WeekOfTheMonths []string `pulumi:"weekOfTheMonths"`
+	// Determines the Ocean Rightsizing rule weekly repetition basis.
 	WeeklyRepetitionBases []OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBase `pulumi:"weeklyRepetitionBases"`
 }
 
@@ -7161,8 +7227,11 @@ type OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseI
 }
 
 type OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs struct {
-	IntervalMonths        pulumi.IntArrayInput                                                                                     `pulumi:"intervalMonths"`
-	WeekOfTheMonths       pulumi.StringArrayInput                                                                                  `pulumi:"weekOfTheMonths"`
+	// Array of the months (in number), when we want to trigger the apply recommendations.
+	IntervalMonths pulumi.IntArrayInput `pulumi:"intervalMonths"`
+	// Valid values: "FIRST" "SECOND" "THIRD" "FOURTH" "LAST". Array of the weeks in the month, when we want to trigger the apply recommendations.
+	WeekOfTheMonths pulumi.StringArrayInput `pulumi:"weekOfTheMonths"`
+	// Determines the Ocean Rightsizing rule weekly repetition basis.
 	WeeklyRepetitionBases OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArrayInput `pulumi:"weeklyRepetitionBases"`
 }
 
@@ -7217,18 +7286,21 @@ func (o OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBa
 	return o
 }
 
+// Array of the months (in number), when we want to trigger the apply recommendations.
 func (o OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseOutput) IntervalMonths() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase) []int {
 		return v.IntervalMonths
 	}).(pulumi.IntArrayOutput)
 }
 
+// Valid values: "FIRST" "SECOND" "THIRD" "FOURTH" "LAST". Array of the weeks in the month, when we want to trigger the apply recommendations.
 func (o OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseOutput) WeekOfTheMonths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase) []string {
 		return v.WeekOfTheMonths
 	}).(pulumi.StringArrayOutput)
 }
 
+// Determines the Ocean Rightsizing rule weekly repetition basis.
 func (o OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseOutput) WeeklyRepetitionBases() OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArrayOutput {
 	return o.ApplyT(func(v OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase) []OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBase {
 		return v.WeeklyRepetitionBases
@@ -7256,9 +7328,12 @@ func (o OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBa
 }
 
 type OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBase struct {
-	IntervalDays           []string `pulumi:"intervalDays"`
-	IntervalHoursEndTime   string   `pulumi:"intervalHoursEndTime"`
-	IntervalHoursStartTime string   `pulumi:"intervalHoursStartTime"`
+	// Valid values: "SUNDAY" "MONDAY" "TUESDAY" "WEDNESDAY" "THURSDAY" "FRIDAY" "SATURDAY". Array of the days of the week, when we want to trigger the apply recommendations.
+	IntervalDays []string `pulumi:"intervalDays"`
+	// End time.
+	IntervalHoursEndTime string `pulumi:"intervalHoursEndTime"`
+	// Start time.
+	IntervalHoursStartTime string `pulumi:"intervalHoursStartTime"`
 }
 
 // OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseInput is an input type that accepts OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgs and OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseOutput values.
@@ -7273,9 +7348,12 @@ type OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseW
 }
 
 type OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgs struct {
-	IntervalDays           pulumi.StringArrayInput `pulumi:"intervalDays"`
-	IntervalHoursEndTime   pulumi.StringInput      `pulumi:"intervalHoursEndTime"`
-	IntervalHoursStartTime pulumi.StringInput      `pulumi:"intervalHoursStartTime"`
+	// Valid values: "SUNDAY" "MONDAY" "TUESDAY" "WEDNESDAY" "THURSDAY" "FRIDAY" "SATURDAY". Array of the days of the week, when we want to trigger the apply recommendations.
+	IntervalDays pulumi.StringArrayInput `pulumi:"intervalDays"`
+	// End time.
+	IntervalHoursEndTime pulumi.StringInput `pulumi:"intervalHoursEndTime"`
+	// Start time.
+	IntervalHoursStartTime pulumi.StringInput `pulumi:"intervalHoursStartTime"`
 }
 
 func (OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgs) ElementType() reflect.Type {
@@ -7329,18 +7407,21 @@ func (o OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBa
 	return o
 }
 
+// Valid values: "SUNDAY" "MONDAY" "TUESDAY" "WEDNESDAY" "THURSDAY" "FRIDAY" "SATURDAY". Array of the days of the week, when we want to trigger the apply recommendations.
 func (o OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseOutput) IntervalDays() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBase) []string {
 		return v.IntervalDays
 	}).(pulumi.StringArrayOutput)
 }
 
+// End time.
 func (o OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseOutput) IntervalHoursEndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBase) string {
 		return v.IntervalHoursEndTime
 	}).(pulumi.StringOutput)
 }
 
+// Start time.
 func (o OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseOutput) IntervalHoursStartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBase) string {
 		return v.IntervalHoursStartTime
@@ -7368,9 +7449,12 @@ func (o OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBa
 }
 
 type OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBase struct {
-	IntervalDays           []string `pulumi:"intervalDays"`
-	IntervalHoursEndTime   string   `pulumi:"intervalHoursEndTime"`
-	IntervalHoursStartTime string   `pulumi:"intervalHoursStartTime"`
+	// Valid values: "SUNDAY" "MONDAY" "TUESDAY" "WEDNESDAY" "THURSDAY" "FRIDAY" "SATURDAY". Array of the days of the week, when we want to trigger the apply recommendations.
+	IntervalDays []string `pulumi:"intervalDays"`
+	// End time.
+	IntervalHoursEndTime string `pulumi:"intervalHoursEndTime"`
+	// Start time.
+	IntervalHoursStartTime string `pulumi:"intervalHoursStartTime"`
 }
 
 // OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseInput is an input type that accepts OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgs and OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseOutput values.
@@ -7385,9 +7469,12 @@ type OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseIn
 }
 
 type OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgs struct {
-	IntervalDays           pulumi.StringArrayInput `pulumi:"intervalDays"`
-	IntervalHoursEndTime   pulumi.StringInput      `pulumi:"intervalHoursEndTime"`
-	IntervalHoursStartTime pulumi.StringInput      `pulumi:"intervalHoursStartTime"`
+	// Valid values: "SUNDAY" "MONDAY" "TUESDAY" "WEDNESDAY" "THURSDAY" "FRIDAY" "SATURDAY". Array of the days of the week, when we want to trigger the apply recommendations.
+	IntervalDays pulumi.StringArrayInput `pulumi:"intervalDays"`
+	// End time.
+	IntervalHoursEndTime pulumi.StringInput `pulumi:"intervalHoursEndTime"`
+	// Start time.
+	IntervalHoursStartTime pulumi.StringInput `pulumi:"intervalHoursStartTime"`
 }
 
 func (OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgs) ElementType() reflect.Type {
@@ -7441,18 +7528,21 @@ func (o OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBas
 	return o
 }
 
+// Valid values: "SUNDAY" "MONDAY" "TUESDAY" "WEDNESDAY" "THURSDAY" "FRIDAY" "SATURDAY". Array of the days of the week, when we want to trigger the apply recommendations.
 func (o OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseOutput) IntervalDays() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBase) []string {
 		return v.IntervalDays
 	}).(pulumi.StringArrayOutput)
 }
 
+// End time.
 func (o OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseOutput) IntervalHoursEndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBase) string {
 		return v.IntervalHoursEndTime
 	}).(pulumi.StringOutput)
 }
 
+// Start time.
 func (o OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseOutput) IntervalHoursStartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBase) string {
 		return v.IntervalHoursStartTime
@@ -7480,7 +7570,9 @@ func (o OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBas
 }
 
 type OceanRightSizingRuleRecommendationApplicationMinThreshold struct {
-	CpuPercentage    *float64 `pulumi:"cpuPercentage"`
+	// .
+	CpuPercentage *float64 `pulumi:"cpuPercentage"`
+	// .
 	MemoryPercentage *float64 `pulumi:"memoryPercentage"`
 }
 
@@ -7496,7 +7588,9 @@ type OceanRightSizingRuleRecommendationApplicationMinThresholdInput interface {
 }
 
 type OceanRightSizingRuleRecommendationApplicationMinThresholdArgs struct {
-	CpuPercentage    pulumi.Float64PtrInput `pulumi:"cpuPercentage"`
+	// .
+	CpuPercentage pulumi.Float64PtrInput `pulumi:"cpuPercentage"`
+	// .
 	MemoryPercentage pulumi.Float64PtrInput `pulumi:"memoryPercentage"`
 }
 
@@ -7551,10 +7645,12 @@ func (o OceanRightSizingRuleRecommendationApplicationMinThresholdOutput) ToOcean
 	return o
 }
 
+// .
 func (o OceanRightSizingRuleRecommendationApplicationMinThresholdOutput) CpuPercentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v OceanRightSizingRuleRecommendationApplicationMinThreshold) *float64 { return v.CpuPercentage }).(pulumi.Float64PtrOutput)
 }
 
+// .
 func (o OceanRightSizingRuleRecommendationApplicationMinThresholdOutput) MemoryPercentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v OceanRightSizingRuleRecommendationApplicationMinThreshold) *float64 { return v.MemoryPercentage }).(pulumi.Float64PtrOutput)
 }
@@ -7580,7 +7676,9 @@ func (o OceanRightSizingRuleRecommendationApplicationMinThresholdArrayOutput) In
 }
 
 type OceanRightSizingRuleRecommendationApplicationOverheadValue struct {
-	CpuPercentage    *float64 `pulumi:"cpuPercentage"`
+	// .
+	CpuPercentage *float64 `pulumi:"cpuPercentage"`
+	// .
 	MemoryPercentage *float64 `pulumi:"memoryPercentage"`
 }
 
@@ -7596,7 +7694,9 @@ type OceanRightSizingRuleRecommendationApplicationOverheadValueInput interface {
 }
 
 type OceanRightSizingRuleRecommendationApplicationOverheadValueArgs struct {
-	CpuPercentage    pulumi.Float64PtrInput `pulumi:"cpuPercentage"`
+	// .
+	CpuPercentage pulumi.Float64PtrInput `pulumi:"cpuPercentage"`
+	// .
 	MemoryPercentage pulumi.Float64PtrInput `pulumi:"memoryPercentage"`
 }
 
@@ -7651,10 +7751,12 @@ func (o OceanRightSizingRuleRecommendationApplicationOverheadValueOutput) ToOcea
 	return o
 }
 
+// .
 func (o OceanRightSizingRuleRecommendationApplicationOverheadValueOutput) CpuPercentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v OceanRightSizingRuleRecommendationApplicationOverheadValue) *float64 { return v.CpuPercentage }).(pulumi.Float64PtrOutput)
 }
 
+// .
 func (o OceanRightSizingRuleRecommendationApplicationOverheadValueOutput) MemoryPercentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v OceanRightSizingRuleRecommendationApplicationOverheadValue) *float64 { return v.MemoryPercentage }).(pulumi.Float64PtrOutput)
 }

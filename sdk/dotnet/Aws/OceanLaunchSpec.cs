@@ -121,6 +121,12 @@ namespace Pulumi.SpotInst.Aws
         public Output<ImmutableArray<Outputs.OceanLaunchSpecLabel>> Labels { get; private set; } = null!;
 
         /// <summary>
+        /// Array of load balancer objects to add to VNG
+        /// </summary>
+        [Output("loadBalancers")]
+        public Output<ImmutableArray<Outputs.OceanLaunchSpecLoadBalancer>> LoadBalancers { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the Virtual Node Group.
         /// </summary>
         [Output("name")]
@@ -411,6 +417,18 @@ namespace Pulumi.SpotInst.Aws
         {
             get => _labels ?? (_labels = new InputList<Inputs.OceanLaunchSpecLabelArgs>());
             set => _labels = value;
+        }
+
+        [Input("loadBalancers")]
+        private InputList<Inputs.OceanLaunchSpecLoadBalancerArgs>? _loadBalancers;
+
+        /// <summary>
+        /// Array of load balancer objects to add to VNG
+        /// </summary>
+        public InputList<Inputs.OceanLaunchSpecLoadBalancerArgs> LoadBalancers
+        {
+            get => _loadBalancers ?? (_loadBalancers = new InputList<Inputs.OceanLaunchSpecLoadBalancerArgs>());
+            set => _loadBalancers = value;
         }
 
         /// <summary>
@@ -724,6 +742,18 @@ namespace Pulumi.SpotInst.Aws
         {
             get => _labels ?? (_labels = new InputList<Inputs.OceanLaunchSpecLabelGetArgs>());
             set => _labels = value;
+        }
+
+        [Input("loadBalancers")]
+        private InputList<Inputs.OceanLaunchSpecLoadBalancerGetArgs>? _loadBalancers;
+
+        /// <summary>
+        /// Array of load balancer objects to add to VNG
+        /// </summary>
+        public InputList<Inputs.OceanLaunchSpecLoadBalancerGetArgs> LoadBalancers
+        {
+            get => _loadBalancers ?? (_loadBalancers = new InputList<Inputs.OceanLaunchSpecLoadBalancerGetArgs>());
+            set => _loadBalancers = value;
         }
 
         /// <summary>

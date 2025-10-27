@@ -13,6 +13,11 @@ namespace Pulumi.SpotInst.Outputs
     [OutputType]
     public sealed class OceanRightSizingRuleAttachWorkloadNamespace
     {
+        /// <summary>
+        /// A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
+        /// 
+        /// &lt;a id="AttachWorkloads"&gt;&lt;/a&gt;
+        /// </summary>
         public readonly ImmutableArray<Outputs.OceanRightSizingRuleAttachWorkloadNamespaceLabel> Labels;
         public readonly string NamespaceName;
         public readonly ImmutableArray<Outputs.OceanRightSizingRuleAttachWorkloadNamespaceWorkload> Workloads;

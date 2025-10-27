@@ -2945,6 +2945,9 @@ class NotificationCenterSubscriptionArgs:
 if not MYPY:
     class OceanRightSizingRuleAttachWorkloadArgsDict(TypedDict):
         namespaces: pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadNamespaceArgsDict']]]
+        """
+        List of namespaces that match the auto-apply rule.
+        """
 elif False:
     OceanRightSizingRuleAttachWorkloadArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -2952,11 +2955,17 @@ elif False:
 class OceanRightSizingRuleAttachWorkloadArgs:
     def __init__(__self__, *,
                  namespaces: pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadNamespaceArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadNamespaceArgs']]] namespaces: List of namespaces that match the auto-apply rule.
+        """
         pulumi.set(__self__, "namespaces", namespaces)
 
     @_builtins.property
     @pulumi.getter
     def namespaces(self) -> pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadNamespaceArgs']]]:
+        """
+        List of namespaces that match the auto-apply rule.
+        """
         return pulumi.get(self, "namespaces")
 
     @namespaces.setter
@@ -2968,6 +2977,11 @@ if not MYPY:
     class OceanRightSizingRuleAttachWorkloadNamespaceArgsDict(TypedDict):
         namespace_name: pulumi.Input[_builtins.str]
         labels: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadNamespaceLabelArgsDict']]]]
+        """
+        A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
+
+        <a id="attach_workloads"></a>
+        """
         workloads: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArgsDict']]]]
 elif False:
     OceanRightSizingRuleAttachWorkloadNamespaceArgsDict: TypeAlias = Mapping[str, Any]
@@ -2978,6 +2992,11 @@ class OceanRightSizingRuleAttachWorkloadNamespaceArgs:
                  namespace_name: pulumi.Input[_builtins.str],
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadNamespaceLabelArgs']]]] = None,
                  workloads: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadNamespaceLabelArgs']]] labels: A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
+               
+               <a id="attach_workloads"></a>
+        """
         pulumi.set(__self__, "namespace_name", namespace_name)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
@@ -2996,6 +3015,11 @@ class OceanRightSizingRuleAttachWorkloadNamespaceArgs:
     @_builtins.property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadNamespaceLabelArgs']]]]:
+        """
+        A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
+
+        <a id="attach_workloads"></a>
+        """
         return pulumi.get(self, "labels")
 
     @labels.setter
@@ -3097,8 +3121,19 @@ class OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArgs:
 if not MYPY:
     class OceanRightSizingRuleAutoApplyDefinitionArgsDict(TypedDict):
         enabled: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Determines if auto apply is enabled.
+        """
         labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+        """
+        A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
+
+        <a id="attach_workloads"></a>
+        """
         namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        List of namespaces that match the auto-apply rule.
+        """
 elif False:
     OceanRightSizingRuleAutoApplyDefinitionArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -3108,6 +3143,13 @@ class OceanRightSizingRuleAutoApplyDefinitionArgs:
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Determines if auto apply is enabled.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
+               
+               <a id="attach_workloads"></a>
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] namespaces: List of namespaces that match the auto-apply rule.
+        """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if labels is not None:
@@ -3118,6 +3160,9 @@ class OceanRightSizingRuleAutoApplyDefinitionArgs:
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Determines if auto apply is enabled.
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -3127,6 +3172,11 @@ class OceanRightSizingRuleAutoApplyDefinitionArgs:
     @_builtins.property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
+
+        <a id="attach_workloads"></a>
+        """
         return pulumi.get(self, "labels")
 
     @labels.setter
@@ -3136,6 +3186,9 @@ class OceanRightSizingRuleAutoApplyDefinitionArgs:
     @_builtins.property
     @pulumi.getter
     def namespaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of namespaces that match the auto-apply rule.
+        """
         return pulumi.get(self, "namespaces")
 
     @namespaces.setter
@@ -3146,6 +3199,9 @@ class OceanRightSizingRuleAutoApplyDefinitionArgs:
 if not MYPY:
     class OceanRightSizingRuleDetachWorkloadArgsDict(TypedDict):
         namespaces: pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadNamespaceArgsDict']]]
+        """
+        List of namespaces that match the auto-apply rule.
+        """
 elif False:
     OceanRightSizingRuleDetachWorkloadArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -3153,11 +3209,17 @@ elif False:
 class OceanRightSizingRuleDetachWorkloadArgs:
     def __init__(__self__, *,
                  namespaces: pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadNamespaceArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadNamespaceArgs']]] namespaces: List of namespaces that match the auto-apply rule.
+        """
         pulumi.set(__self__, "namespaces", namespaces)
 
     @_builtins.property
     @pulumi.getter
     def namespaces(self) -> pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadNamespaceArgs']]]:
+        """
+        List of namespaces that match the auto-apply rule.
+        """
         return pulumi.get(self, "namespaces")
 
     @namespaces.setter
@@ -3169,6 +3231,11 @@ if not MYPY:
     class OceanRightSizingRuleDetachWorkloadNamespaceArgsDict(TypedDict):
         namespace_name: pulumi.Input[_builtins.str]
         labels: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadNamespaceLabelArgsDict']]]]
+        """
+        A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
+
+        <a id="attach_workloads"></a>
+        """
         workloads: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArgsDict']]]]
 elif False:
     OceanRightSizingRuleDetachWorkloadNamespaceArgsDict: TypeAlias = Mapping[str, Any]
@@ -3179,6 +3246,11 @@ class OceanRightSizingRuleDetachWorkloadNamespaceArgs:
                  namespace_name: pulumi.Input[_builtins.str],
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadNamespaceLabelArgs']]]] = None,
                  workloads: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadNamespaceLabelArgs']]] labels: A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
+               
+               <a id="attach_workloads"></a>
+        """
         pulumi.set(__self__, "namespace_name", namespace_name)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
@@ -3197,6 +3269,11 @@ class OceanRightSizingRuleDetachWorkloadNamespaceArgs:
     @_builtins.property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadNamespaceLabelArgs']]]]:
+        """
+        A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
+
+        <a id="attach_workloads"></a>
+        """
         return pulumi.get(self, "labels")
 
     @labels.setter
@@ -3298,9 +3375,21 @@ class OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArgs:
 if not MYPY:
     class OceanRightSizingRuleRecommendationApplicationBoundaryArgsDict(TypedDict):
         cpu_max: NotRequired[pulumi.Input[_builtins.float]]
+        """
+        the maximal value of cpu in vCpu.
+        """
         cpu_min: NotRequired[pulumi.Input[_builtins.float]]
+        """
+        the minimal value of cpu in vCpu.
+        """
         memory_max: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        the maximal value of memory in Gib.
+        """
         memory_min: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        the minimal value of memory in Gib.
+        """
 elif False:
     OceanRightSizingRuleRecommendationApplicationBoundaryArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -3311,6 +3400,12 @@ class OceanRightSizingRuleRecommendationApplicationBoundaryArgs:
                  cpu_min: Optional[pulumi.Input[_builtins.float]] = None,
                  memory_max: Optional[pulumi.Input[_builtins.int]] = None,
                  memory_min: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.float] cpu_max: the maximal value of cpu in vCpu.
+        :param pulumi.Input[_builtins.float] cpu_min: the minimal value of cpu in vCpu.
+        :param pulumi.Input[_builtins.int] memory_max: the maximal value of memory in Gib.
+        :param pulumi.Input[_builtins.int] memory_min: the minimal value of memory in Gib.
+        """
         if cpu_max is not None:
             pulumi.set(__self__, "cpu_max", cpu_max)
         if cpu_min is not None:
@@ -3323,6 +3418,9 @@ class OceanRightSizingRuleRecommendationApplicationBoundaryArgs:
     @_builtins.property
     @pulumi.getter(name="cpuMax")
     def cpu_max(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        the maximal value of cpu in vCpu.
+        """
         return pulumi.get(self, "cpu_max")
 
     @cpu_max.setter
@@ -3332,6 +3430,9 @@ class OceanRightSizingRuleRecommendationApplicationBoundaryArgs:
     @_builtins.property
     @pulumi.getter(name="cpuMin")
     def cpu_min(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        the minimal value of cpu in vCpu.
+        """
         return pulumi.get(self, "cpu_min")
 
     @cpu_min.setter
@@ -3341,6 +3442,9 @@ class OceanRightSizingRuleRecommendationApplicationBoundaryArgs:
     @_builtins.property
     @pulumi.getter(name="memoryMax")
     def memory_max(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        the maximal value of memory in Gib.
+        """
         return pulumi.get(self, "memory_max")
 
     @memory_max.setter
@@ -3350,6 +3454,9 @@ class OceanRightSizingRuleRecommendationApplicationBoundaryArgs:
     @_builtins.property
     @pulumi.getter(name="memoryMin")
     def memory_min(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        the minimal value of memory in Gib.
+        """
         return pulumi.get(self, "memory_min")
 
     @memory_min.setter
@@ -3360,6 +3467,9 @@ class OceanRightSizingRuleRecommendationApplicationBoundaryArgs:
 if not MYPY:
     class OceanRightSizingRuleRecommendationApplicationHpaArgsDict(TypedDict):
         allow_hpa_recommendations: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Determines by the rule if recommendation application is allowed for workloads with HPA definition.
+        """
 elif False:
     OceanRightSizingRuleRecommendationApplicationHpaArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -3367,12 +3477,18 @@ elif False:
 class OceanRightSizingRuleRecommendationApplicationHpaArgs:
     def __init__(__self__, *,
                  allow_hpa_recommendations: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] allow_hpa_recommendations: Determines by the rule if recommendation application is allowed for workloads with HPA definition.
+        """
         if allow_hpa_recommendations is not None:
             pulumi.set(__self__, "allow_hpa_recommendations", allow_hpa_recommendations)
 
     @_builtins.property
     @pulumi.getter(name="allowHpaRecommendations")
     def allow_hpa_recommendations(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Determines by the rule if recommendation application is allowed for workloads with HPA definition.
+        """
         return pulumi.get(self, "allow_hpa_recommendations")
 
     @allow_hpa_recommendations.setter
@@ -3383,8 +3499,17 @@ class OceanRightSizingRuleRecommendationApplicationHpaArgs:
 if not MYPY:
     class OceanRightSizingRuleRecommendationApplicationIntervalArgsDict(TypedDict):
         repetition_basis: pulumi.Input[_builtins.str]
+        """
+        Valid values: "WEEKLY" "MONTHLY". The repetition basis.
+        """
         monthly_repetition_bases: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgsDict']]]]
+        """
+        Determines the Ocean Rightsizing rule monthly repetition basis.
+        """
         weekly_repetition_bases: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgsDict']]]]
+        """
+        Determines the Ocean Rightsizing rule weekly repetition basis.
+        """
 elif False:
     OceanRightSizingRuleRecommendationApplicationIntervalArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -3394,6 +3519,11 @@ class OceanRightSizingRuleRecommendationApplicationIntervalArgs:
                  repetition_basis: pulumi.Input[_builtins.str],
                  monthly_repetition_bases: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs']]]] = None,
                  weekly_repetition_bases: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] repetition_basis: Valid values: "WEEKLY" "MONTHLY". The repetition basis.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs']]] monthly_repetition_bases: Determines the Ocean Rightsizing rule monthly repetition basis.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgs']]] weekly_repetition_bases: Determines the Ocean Rightsizing rule weekly repetition basis.
+        """
         pulumi.set(__self__, "repetition_basis", repetition_basis)
         if monthly_repetition_bases is not None:
             pulumi.set(__self__, "monthly_repetition_bases", monthly_repetition_bases)
@@ -3403,6 +3533,9 @@ class OceanRightSizingRuleRecommendationApplicationIntervalArgs:
     @_builtins.property
     @pulumi.getter(name="repetitionBasis")
     def repetition_basis(self) -> pulumi.Input[_builtins.str]:
+        """
+        Valid values: "WEEKLY" "MONTHLY". The repetition basis.
+        """
         return pulumi.get(self, "repetition_basis")
 
     @repetition_basis.setter
@@ -3412,6 +3545,9 @@ class OceanRightSizingRuleRecommendationApplicationIntervalArgs:
     @_builtins.property
     @pulumi.getter(name="monthlyRepetitionBases")
     def monthly_repetition_bases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs']]]]:
+        """
+        Determines the Ocean Rightsizing rule monthly repetition basis.
+        """
         return pulumi.get(self, "monthly_repetition_bases")
 
     @monthly_repetition_bases.setter
@@ -3421,6 +3557,9 @@ class OceanRightSizingRuleRecommendationApplicationIntervalArgs:
     @_builtins.property
     @pulumi.getter(name="weeklyRepetitionBases")
     def weekly_repetition_bases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgs']]]]:
+        """
+        Determines the Ocean Rightsizing rule weekly repetition basis.
+        """
         return pulumi.get(self, "weekly_repetition_bases")
 
     @weekly_repetition_bases.setter
@@ -3431,8 +3570,17 @@ class OceanRightSizingRuleRecommendationApplicationIntervalArgs:
 if not MYPY:
     class OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgsDict(TypedDict):
         interval_months: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]
+        """
+        Array of the months (in number), when we want to trigger the apply recommendations.
+        """
         week_of_the_months: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+        """
+        Valid values: "FIRST" "SECOND" "THIRD" "FOURTH" "LAST". Array of the weeks in the month, when we want to trigger the apply recommendations.
+        """
         weekly_repetition_bases: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgsDict']]]]
+        """
+        Determines the Ocean Rightsizing rule weekly repetition basis.
+        """
 elif False:
     OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -3442,6 +3590,11 @@ class OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase
                  interval_months: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]],
                  week_of_the_months: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  weekly_repetition_bases: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] interval_months: Array of the months (in number), when we want to trigger the apply recommendations.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] week_of_the_months: Valid values: "FIRST" "SECOND" "THIRD" "FOURTH" "LAST". Array of the weeks in the month, when we want to trigger the apply recommendations.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgs']]] weekly_repetition_bases: Determines the Ocean Rightsizing rule weekly repetition basis.
+        """
         pulumi.set(__self__, "interval_months", interval_months)
         pulumi.set(__self__, "week_of_the_months", week_of_the_months)
         if weekly_repetition_bases is not None:
@@ -3450,6 +3603,9 @@ class OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase
     @_builtins.property
     @pulumi.getter(name="intervalMonths")
     def interval_months(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]:
+        """
+        Array of the months (in number), when we want to trigger the apply recommendations.
+        """
         return pulumi.get(self, "interval_months")
 
     @interval_months.setter
@@ -3459,6 +3615,9 @@ class OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase
     @_builtins.property
     @pulumi.getter(name="weekOfTheMonths")
     def week_of_the_months(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        Valid values: "FIRST" "SECOND" "THIRD" "FOURTH" "LAST". Array of the weeks in the month, when we want to trigger the apply recommendations.
+        """
         return pulumi.get(self, "week_of_the_months")
 
     @week_of_the_months.setter
@@ -3468,6 +3627,9 @@ class OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase
     @_builtins.property
     @pulumi.getter(name="weeklyRepetitionBases")
     def weekly_repetition_bases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgs']]]]:
+        """
+        Determines the Ocean Rightsizing rule weekly repetition basis.
+        """
         return pulumi.get(self, "weekly_repetition_bases")
 
     @weekly_repetition_bases.setter
@@ -3478,8 +3640,17 @@ class OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase
 if not MYPY:
     class OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgsDict(TypedDict):
         interval_days: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+        """
+        Valid values: "SUNDAY" "MONDAY" "TUESDAY" "WEDNESDAY" "THURSDAY" "FRIDAY" "SATURDAY". Array of the days of the week, when we want to trigger the apply recommendations.
+        """
         interval_hours_end_time: pulumi.Input[_builtins.str]
+        """
+        End time.
+        """
         interval_hours_start_time: pulumi.Input[_builtins.str]
+        """
+        Start time.
+        """
 elif False:
     OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -3489,6 +3660,11 @@ class OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase
                  interval_days: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  interval_hours_end_time: pulumi.Input[_builtins.str],
                  interval_hours_start_time: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] interval_days: Valid values: "SUNDAY" "MONDAY" "TUESDAY" "WEDNESDAY" "THURSDAY" "FRIDAY" "SATURDAY". Array of the days of the week, when we want to trigger the apply recommendations.
+        :param pulumi.Input[_builtins.str] interval_hours_end_time: End time.
+        :param pulumi.Input[_builtins.str] interval_hours_start_time: Start time.
+        """
         pulumi.set(__self__, "interval_days", interval_days)
         pulumi.set(__self__, "interval_hours_end_time", interval_hours_end_time)
         pulumi.set(__self__, "interval_hours_start_time", interval_hours_start_time)
@@ -3496,6 +3672,9 @@ class OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase
     @_builtins.property
     @pulumi.getter(name="intervalDays")
     def interval_days(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        Valid values: "SUNDAY" "MONDAY" "TUESDAY" "WEDNESDAY" "THURSDAY" "FRIDAY" "SATURDAY". Array of the days of the week, when we want to trigger the apply recommendations.
+        """
         return pulumi.get(self, "interval_days")
 
     @interval_days.setter
@@ -3505,6 +3684,9 @@ class OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase
     @_builtins.property
     @pulumi.getter(name="intervalHoursEndTime")
     def interval_hours_end_time(self) -> pulumi.Input[_builtins.str]:
+        """
+        End time.
+        """
         return pulumi.get(self, "interval_hours_end_time")
 
     @interval_hours_end_time.setter
@@ -3514,6 +3696,9 @@ class OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase
     @_builtins.property
     @pulumi.getter(name="intervalHoursStartTime")
     def interval_hours_start_time(self) -> pulumi.Input[_builtins.str]:
+        """
+        Start time.
+        """
         return pulumi.get(self, "interval_hours_start_time")
 
     @interval_hours_start_time.setter
@@ -3524,8 +3709,17 @@ class OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase
 if not MYPY:
     class OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgsDict(TypedDict):
         interval_days: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+        """
+        Valid values: "SUNDAY" "MONDAY" "TUESDAY" "WEDNESDAY" "THURSDAY" "FRIDAY" "SATURDAY". Array of the days of the week, when we want to trigger the apply recommendations.
+        """
         interval_hours_end_time: pulumi.Input[_builtins.str]
+        """
+        End time.
+        """
         interval_hours_start_time: pulumi.Input[_builtins.str]
+        """
+        Start time.
+        """
 elif False:
     OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -3535,6 +3729,11 @@ class OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseA
                  interval_days: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  interval_hours_end_time: pulumi.Input[_builtins.str],
                  interval_hours_start_time: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] interval_days: Valid values: "SUNDAY" "MONDAY" "TUESDAY" "WEDNESDAY" "THURSDAY" "FRIDAY" "SATURDAY". Array of the days of the week, when we want to trigger the apply recommendations.
+        :param pulumi.Input[_builtins.str] interval_hours_end_time: End time.
+        :param pulumi.Input[_builtins.str] interval_hours_start_time: Start time.
+        """
         pulumi.set(__self__, "interval_days", interval_days)
         pulumi.set(__self__, "interval_hours_end_time", interval_hours_end_time)
         pulumi.set(__self__, "interval_hours_start_time", interval_hours_start_time)
@@ -3542,6 +3741,9 @@ class OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseA
     @_builtins.property
     @pulumi.getter(name="intervalDays")
     def interval_days(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        Valid values: "SUNDAY" "MONDAY" "TUESDAY" "WEDNESDAY" "THURSDAY" "FRIDAY" "SATURDAY". Array of the days of the week, when we want to trigger the apply recommendations.
+        """
         return pulumi.get(self, "interval_days")
 
     @interval_days.setter
@@ -3551,6 +3753,9 @@ class OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseA
     @_builtins.property
     @pulumi.getter(name="intervalHoursEndTime")
     def interval_hours_end_time(self) -> pulumi.Input[_builtins.str]:
+        """
+        End time.
+        """
         return pulumi.get(self, "interval_hours_end_time")
 
     @interval_hours_end_time.setter
@@ -3560,6 +3765,9 @@ class OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseA
     @_builtins.property
     @pulumi.getter(name="intervalHoursStartTime")
     def interval_hours_start_time(self) -> pulumi.Input[_builtins.str]:
+        """
+        Start time.
+        """
         return pulumi.get(self, "interval_hours_start_time")
 
     @interval_hours_start_time.setter
@@ -3570,7 +3778,13 @@ class OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseA
 if not MYPY:
     class OceanRightSizingRuleRecommendationApplicationMinThresholdArgsDict(TypedDict):
         cpu_percentage: NotRequired[pulumi.Input[_builtins.float]]
+        """
+        .
+        """
         memory_percentage: NotRequired[pulumi.Input[_builtins.float]]
+        """
+        .
+        """
 elif False:
     OceanRightSizingRuleRecommendationApplicationMinThresholdArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -3579,6 +3793,10 @@ class OceanRightSizingRuleRecommendationApplicationMinThresholdArgs:
     def __init__(__self__, *,
                  cpu_percentage: Optional[pulumi.Input[_builtins.float]] = None,
                  memory_percentage: Optional[pulumi.Input[_builtins.float]] = None):
+        """
+        :param pulumi.Input[_builtins.float] cpu_percentage: .
+        :param pulumi.Input[_builtins.float] memory_percentage: .
+        """
         if cpu_percentage is not None:
             pulumi.set(__self__, "cpu_percentage", cpu_percentage)
         if memory_percentage is not None:
@@ -3587,6 +3805,9 @@ class OceanRightSizingRuleRecommendationApplicationMinThresholdArgs:
     @_builtins.property
     @pulumi.getter(name="cpuPercentage")
     def cpu_percentage(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        .
+        """
         return pulumi.get(self, "cpu_percentage")
 
     @cpu_percentage.setter
@@ -3596,6 +3817,9 @@ class OceanRightSizingRuleRecommendationApplicationMinThresholdArgs:
     @_builtins.property
     @pulumi.getter(name="memoryPercentage")
     def memory_percentage(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        .
+        """
         return pulumi.get(self, "memory_percentage")
 
     @memory_percentage.setter
@@ -3606,7 +3830,13 @@ class OceanRightSizingRuleRecommendationApplicationMinThresholdArgs:
 if not MYPY:
     class OceanRightSizingRuleRecommendationApplicationOverheadValueArgsDict(TypedDict):
         cpu_percentage: NotRequired[pulumi.Input[_builtins.float]]
+        """
+        .
+        """
         memory_percentage: NotRequired[pulumi.Input[_builtins.float]]
+        """
+        .
+        """
 elif False:
     OceanRightSizingRuleRecommendationApplicationOverheadValueArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -3615,6 +3845,10 @@ class OceanRightSizingRuleRecommendationApplicationOverheadValueArgs:
     def __init__(__self__, *,
                  cpu_percentage: Optional[pulumi.Input[_builtins.float]] = None,
                  memory_percentage: Optional[pulumi.Input[_builtins.float]] = None):
+        """
+        :param pulumi.Input[_builtins.float] cpu_percentage: .
+        :param pulumi.Input[_builtins.float] memory_percentage: .
+        """
         if cpu_percentage is not None:
             pulumi.set(__self__, "cpu_percentage", cpu_percentage)
         if memory_percentage is not None:
@@ -3623,6 +3857,9 @@ class OceanRightSizingRuleRecommendationApplicationOverheadValueArgs:
     @_builtins.property
     @pulumi.getter(name="cpuPercentage")
     def cpu_percentage(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        .
+        """
         return pulumi.get(self, "cpu_percentage")
 
     @cpu_percentage.setter
@@ -3632,6 +3869,9 @@ class OceanRightSizingRuleRecommendationApplicationOverheadValueArgs:
     @_builtins.property
     @pulumi.getter(name="memoryPercentage")
     def memory_percentage(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        .
+        """
         return pulumi.get(self, "memory_percentage")
 
     @memory_percentage.setter

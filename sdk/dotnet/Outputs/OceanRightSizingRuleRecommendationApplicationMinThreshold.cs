@@ -13,7 +13,13 @@ namespace Pulumi.SpotInst.Outputs
     [OutputType]
     public sealed class OceanRightSizingRuleRecommendationApplicationMinThreshold
     {
+        /// <summary>
+        /// .
+        /// </summary>
         public readonly double? CpuPercentage;
+        /// <summary>
+        /// .
+        /// </summary>
         public readonly double? MemoryPercentage;
 
         [OutputConstructor]

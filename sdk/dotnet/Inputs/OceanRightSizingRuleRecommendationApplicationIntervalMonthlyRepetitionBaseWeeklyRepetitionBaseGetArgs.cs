@@ -14,15 +14,25 @@ namespace Pulumi.SpotInst.Inputs
     {
         [Input("intervalDays", required: true)]
         private InputList<string>? _intervalDays;
+
+        /// <summary>
+        /// Valid values: "SUNDAY" "MONDAY" "TUESDAY" "WEDNESDAY" "THURSDAY" "FRIDAY" "SATURDAY". Array of the days of the week, when we want to trigger the apply recommendations.
+        /// </summary>
         public InputList<string> IntervalDays
         {
             get => _intervalDays ?? (_intervalDays = new InputList<string>());
             set => _intervalDays = value;
         }
 
+        /// <summary>
+        /// End time.
+        /// </summary>
         [Input("intervalHoursEndTime", required: true)]
         public Input<string> IntervalHoursEndTime { get; set; } = null!;
 
+        /// <summary>
+        /// Start time.
+        /// </summary>
         [Input("intervalHoursStartTime", required: true)]
         public Input<string> IntervalHoursStartTime { get; set; } = null!;
 
