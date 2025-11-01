@@ -14,6 +14,10 @@ namespace Pulumi.SpotInst.Inputs
     {
         [Input("intervalMonths", required: true)]
         private InputList<int>? _intervalMonths;
+
+        /// <summary>
+        /// Array of the months (in number), when we want to trigger the apply recommendations.
+        /// </summary>
         public InputList<int> IntervalMonths
         {
             get => _intervalMonths ?? (_intervalMonths = new InputList<int>());
@@ -22,6 +26,10 @@ namespace Pulumi.SpotInst.Inputs
 
         [Input("weekOfTheMonths", required: true)]
         private InputList<string>? _weekOfTheMonths;
+
+        /// <summary>
+        /// Valid values: "FIRST" "SECOND" "THIRD" "FOURTH" "LAST". Array of the weeks in the month, when we want to trigger the apply recommendations.
+        /// </summary>
         public InputList<string> WeekOfTheMonths
         {
             get => _weekOfTheMonths ?? (_weekOfTheMonths = new InputList<string>());
@@ -30,6 +38,10 @@ namespace Pulumi.SpotInst.Inputs
 
         [Input("weeklyRepetitionBases")]
         private InputList<Inputs.OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgs>? _weeklyRepetitionBases;
+
+        /// <summary>
+        /// Determines the Ocean Rightsizing rule weekly repetition basis.
+        /// </summary>
         public InputList<Inputs.OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgs> WeeklyRepetitionBases
         {
             get => _weeklyRepetitionBases ?? (_weeklyRepetitionBases = new InputList<Inputs.OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgs>());

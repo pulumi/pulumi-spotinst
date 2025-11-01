@@ -16,30 +16,62 @@ public final class OceanRightSizingRuleRecommendationApplicationBoundaryArgs ext
 
     public static final OceanRightSizingRuleRecommendationApplicationBoundaryArgs Empty = new OceanRightSizingRuleRecommendationApplicationBoundaryArgs();
 
+    /**
+     * the maximal value of cpu in vCpu.
+     * 
+     */
     @Import(name="cpuMax")
     private @Nullable Output<Double> cpuMax;
 
+    /**
+     * @return the maximal value of cpu in vCpu.
+     * 
+     */
     public Optional<Output<Double>> cpuMax() {
         return Optional.ofNullable(this.cpuMax);
     }
 
+    /**
+     * the minimal value of cpu in vCpu.
+     * 
+     */
     @Import(name="cpuMin")
     private @Nullable Output<Double> cpuMin;
 
+    /**
+     * @return the minimal value of cpu in vCpu.
+     * 
+     */
     public Optional<Output<Double>> cpuMin() {
         return Optional.ofNullable(this.cpuMin);
     }
 
+    /**
+     * the maximal value of memory in Gib.
+     * 
+     */
     @Import(name="memoryMax")
     private @Nullable Output<Integer> memoryMax;
 
+    /**
+     * @return the maximal value of memory in Gib.
+     * 
+     */
     public Optional<Output<Integer>> memoryMax() {
         return Optional.ofNullable(this.memoryMax);
     }
 
+    /**
+     * the minimal value of memory in Gib.
+     * 
+     */
     @Import(name="memoryMin")
     private @Nullable Output<Integer> memoryMin;
 
+    /**
+     * @return the minimal value of memory in Gib.
+     * 
+     */
     public Optional<Output<Integer>> memoryMin() {
         return Optional.ofNullable(this.memoryMin);
     }
@@ -71,38 +103,86 @@ public final class OceanRightSizingRuleRecommendationApplicationBoundaryArgs ext
             $ = new OceanRightSizingRuleRecommendationApplicationBoundaryArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param cpuMax the maximal value of cpu in vCpu.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cpuMax(@Nullable Output<Double> cpuMax) {
             $.cpuMax = cpuMax;
             return this;
         }
 
+        /**
+         * @param cpuMax the maximal value of cpu in vCpu.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cpuMax(Double cpuMax) {
             return cpuMax(Output.of(cpuMax));
         }
 
+        /**
+         * @param cpuMin the minimal value of cpu in vCpu.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cpuMin(@Nullable Output<Double> cpuMin) {
             $.cpuMin = cpuMin;
             return this;
         }
 
+        /**
+         * @param cpuMin the minimal value of cpu in vCpu.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cpuMin(Double cpuMin) {
             return cpuMin(Output.of(cpuMin));
         }
 
+        /**
+         * @param memoryMax the maximal value of memory in Gib.
+         * 
+         * @return builder
+         * 
+         */
         public Builder memoryMax(@Nullable Output<Integer> memoryMax) {
             $.memoryMax = memoryMax;
             return this;
         }
 
+        /**
+         * @param memoryMax the maximal value of memory in Gib.
+         * 
+         * @return builder
+         * 
+         */
         public Builder memoryMax(Integer memoryMax) {
             return memoryMax(Output.of(memoryMax));
         }
 
+        /**
+         * @param memoryMin the minimal value of memory in Gib.
+         * 
+         * @return builder
+         * 
+         */
         public Builder memoryMin(@Nullable Output<Integer> memoryMin) {
             $.memoryMin = memoryMin;
             return this;
         }
 
+        /**
+         * @param memoryMin the minimal value of memory in Gib.
+         * 
+         * @return builder
+         * 
+         */
         public Builder memoryMin(Integer memoryMin) {
             return memoryMin(Output.of(memoryMin));
         }

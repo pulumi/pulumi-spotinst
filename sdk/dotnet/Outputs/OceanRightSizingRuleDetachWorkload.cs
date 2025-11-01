@@ -13,6 +13,9 @@ namespace Pulumi.SpotInst.Outputs
     [OutputType]
     public sealed class OceanRightSizingRuleDetachWorkload
     {
+        /// <summary>
+        /// List of namespaces that match the auto-apply rule.
+        /// </summary>
         public readonly ImmutableArray<Outputs.OceanRightSizingRuleDetachWorkloadNamespace> Namespaces;
 
         [OutputConstructor]

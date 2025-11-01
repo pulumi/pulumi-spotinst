@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Double;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,21 @@ import javax.annotation.Nullable;
 public final class OceanLaunchSpecAutoscaleDownArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final OceanLaunchSpecAutoscaleDownArgs Empty = new OceanLaunchSpecAutoscaleDownArgs();
+
+    /**
+     * When set to &#39;true&#39;, the Aggressive Scale Down feature is enabled.
+     * 
+     */
+    @Import(name="isAggressiveScaleDownEnabled")
+    private @Nullable Output<Boolean> isAggressiveScaleDownEnabled;
+
+    /**
+     * @return When set to &#39;true&#39;, the Aggressive Scale Down feature is enabled.
+     * 
+     */
+    public Optional<Output<Boolean>> isAggressiveScaleDownEnabled() {
+        return Optional.ofNullable(this.isAggressiveScaleDownEnabled);
+    }
 
     /**
      * The maximum percentage allowed to scale down in a single scaling action on the nodes running in a specific VNG. Allowed only if maxScaleDownPercentage is set to null at the cluster level. Number between [0.1-100].
@@ -33,6 +49,7 @@ public final class OceanLaunchSpecAutoscaleDownArgs extends com.pulumi.resources
     private OceanLaunchSpecAutoscaleDownArgs() {}
 
     private OceanLaunchSpecAutoscaleDownArgs(OceanLaunchSpecAutoscaleDownArgs $) {
+        this.isAggressiveScaleDownEnabled = $.isAggressiveScaleDownEnabled;
         this.maxScaleDownPercentage = $.maxScaleDownPercentage;
     }
 
@@ -52,6 +69,27 @@ public final class OceanLaunchSpecAutoscaleDownArgs extends com.pulumi.resources
 
         public Builder(OceanLaunchSpecAutoscaleDownArgs defaults) {
             $ = new OceanLaunchSpecAutoscaleDownArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param isAggressiveScaleDownEnabled When set to &#39;true&#39;, the Aggressive Scale Down feature is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isAggressiveScaleDownEnabled(@Nullable Output<Boolean> isAggressiveScaleDownEnabled) {
+            $.isAggressiveScaleDownEnabled = isAggressiveScaleDownEnabled;
+            return this;
+        }
+
+        /**
+         * @param isAggressiveScaleDownEnabled When set to &#39;true&#39;, the Aggressive Scale Down feature is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isAggressiveScaleDownEnabled(Boolean isAggressiveScaleDownEnabled) {
+            return isAggressiveScaleDownEnabled(Output.of(isAggressiveScaleDownEnabled));
         }
 
         /**

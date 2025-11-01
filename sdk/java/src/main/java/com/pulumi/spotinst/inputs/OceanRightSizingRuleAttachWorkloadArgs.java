@@ -15,9 +15,17 @@ public final class OceanRightSizingRuleAttachWorkloadArgs extends com.pulumi.res
 
     public static final OceanRightSizingRuleAttachWorkloadArgs Empty = new OceanRightSizingRuleAttachWorkloadArgs();
 
+    /**
+     * List of namespaces that match the auto-apply rule.
+     * 
+     */
     @Import(name="namespaces", required=true)
     private Output<List<OceanRightSizingRuleAttachWorkloadNamespaceArgs>> namespaces;
 
+    /**
+     * @return List of namespaces that match the auto-apply rule.
+     * 
+     */
     public Output<List<OceanRightSizingRuleAttachWorkloadNamespaceArgs>> namespaces() {
         return this.namespaces;
     }
@@ -46,15 +54,33 @@ public final class OceanRightSizingRuleAttachWorkloadArgs extends com.pulumi.res
             $ = new OceanRightSizingRuleAttachWorkloadArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param namespaces List of namespaces that match the auto-apply rule.
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespaces(Output<List<OceanRightSizingRuleAttachWorkloadNamespaceArgs>> namespaces) {
             $.namespaces = namespaces;
             return this;
         }
 
+        /**
+         * @param namespaces List of namespaces that match the auto-apply rule.
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespaces(List<OceanRightSizingRuleAttachWorkloadNamespaceArgs> namespaces) {
             return namespaces(Output.of(namespaces));
         }
 
+        /**
+         * @param namespaces List of namespaces that match the auto-apply rule.
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespaces(OceanRightSizingRuleAttachWorkloadNamespaceArgs... namespaces) {
             return namespaces(List.of(namespaces));
         }

@@ -14,17 +14,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanRightSizingRuleRecommendationApplicationInterval {
+    /**
+     * @return Determines the Ocean Rightsizing rule monthly repetition basis.
+     * 
+     */
     private @Nullable List<OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase> monthlyRepetitionBases;
+    /**
+     * @return Valid values: &#34;WEEKLY&#34; &#34;MONTHLY&#34;. The repetition basis.
+     * 
+     */
     private String repetitionBasis;
+    /**
+     * @return Determines the Ocean Rightsizing rule weekly repetition basis.
+     * 
+     */
     private @Nullable List<OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBase> weeklyRepetitionBases;
 
     private OceanRightSizingRuleRecommendationApplicationInterval() {}
+    /**
+     * @return Determines the Ocean Rightsizing rule monthly repetition basis.
+     * 
+     */
     public List<OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase> monthlyRepetitionBases() {
         return this.monthlyRepetitionBases == null ? List.of() : this.monthlyRepetitionBases;
     }
+    /**
+     * @return Valid values: &#34;WEEKLY&#34; &#34;MONTHLY&#34;. The repetition basis.
+     * 
+     */
     public String repetitionBasis() {
         return this.repetitionBasis;
     }
+    /**
+     * @return Determines the Ocean Rightsizing rule weekly repetition basis.
+     * 
+     */
     public List<OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBase> weeklyRepetitionBases() {
         return this.weeklyRepetitionBases == null ? List.of() : this.weeklyRepetitionBases;
     }

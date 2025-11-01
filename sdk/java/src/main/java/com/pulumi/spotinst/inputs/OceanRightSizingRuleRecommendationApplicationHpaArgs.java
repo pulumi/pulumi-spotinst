@@ -15,9 +15,17 @@ public final class OceanRightSizingRuleRecommendationApplicationHpaArgs extends 
 
     public static final OceanRightSizingRuleRecommendationApplicationHpaArgs Empty = new OceanRightSizingRuleRecommendationApplicationHpaArgs();
 
+    /**
+     * Determines by the rule if recommendation application is allowed for workloads with HPA definition.
+     * 
+     */
     @Import(name="allowHpaRecommendations")
     private @Nullable Output<Boolean> allowHpaRecommendations;
 
+    /**
+     * @return Determines by the rule if recommendation application is allowed for workloads with HPA definition.
+     * 
+     */
     public Optional<Output<Boolean>> allowHpaRecommendations() {
         return Optional.ofNullable(this.allowHpaRecommendations);
     }
@@ -46,11 +54,23 @@ public final class OceanRightSizingRuleRecommendationApplicationHpaArgs extends 
             $ = new OceanRightSizingRuleRecommendationApplicationHpaArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param allowHpaRecommendations Determines by the rule if recommendation application is allowed for workloads with HPA definition.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowHpaRecommendations(@Nullable Output<Boolean> allowHpaRecommendations) {
             $.allowHpaRecommendations = allowHpaRecommendations;
             return this;
         }
 
+        /**
+         * @param allowHpaRecommendations Determines by the rule if recommendation application is allowed for workloads with HPA definition.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowHpaRecommendations(Boolean allowHpaRecommendations) {
             return allowHpaRecommendations(Output.of(allowHpaRecommendations));
         }

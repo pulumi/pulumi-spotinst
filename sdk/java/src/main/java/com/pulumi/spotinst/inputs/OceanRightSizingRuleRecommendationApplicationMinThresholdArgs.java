@@ -15,16 +15,32 @@ public final class OceanRightSizingRuleRecommendationApplicationMinThresholdArgs
 
     public static final OceanRightSizingRuleRecommendationApplicationMinThresholdArgs Empty = new OceanRightSizingRuleRecommendationApplicationMinThresholdArgs();
 
+    /**
+     * .
+     * 
+     */
     @Import(name="cpuPercentage")
     private @Nullable Output<Double> cpuPercentage;
 
+    /**
+     * @return .
+     * 
+     */
     public Optional<Output<Double>> cpuPercentage() {
         return Optional.ofNullable(this.cpuPercentage);
     }
 
+    /**
+     * .
+     * 
+     */
     @Import(name="memoryPercentage")
     private @Nullable Output<Double> memoryPercentage;
 
+    /**
+     * @return .
+     * 
+     */
     public Optional<Output<Double>> memoryPercentage() {
         return Optional.ofNullable(this.memoryPercentage);
     }
@@ -54,20 +70,44 @@ public final class OceanRightSizingRuleRecommendationApplicationMinThresholdArgs
             $ = new OceanRightSizingRuleRecommendationApplicationMinThresholdArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param cpuPercentage .
+         * 
+         * @return builder
+         * 
+         */
         public Builder cpuPercentage(@Nullable Output<Double> cpuPercentage) {
             $.cpuPercentage = cpuPercentage;
             return this;
         }
 
+        /**
+         * @param cpuPercentage .
+         * 
+         * @return builder
+         * 
+         */
         public Builder cpuPercentage(Double cpuPercentage) {
             return cpuPercentage(Output.of(cpuPercentage));
         }
 
+        /**
+         * @param memoryPercentage .
+         * 
+         * @return builder
+         * 
+         */
         public Builder memoryPercentage(@Nullable Output<Double> memoryPercentage) {
             $.memoryPercentage = memoryPercentage;
             return this;
         }
 
+        /**
+         * @param memoryPercentage .
+         * 
+         * @return builder
+         * 
+         */
         public Builder memoryPercentage(Double memoryPercentage) {
             return memoryPercentage(Output.of(memoryPercentage));
         }

@@ -15,23 +15,47 @@ public final class OceanRightSizingRuleRecommendationApplicationIntervalMonthlyR
 
     public static final OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgs Empty = new OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgs();
 
+    /**
+     * Valid values: &#34;SUNDAY&#34; &#34;MONDAY&#34; &#34;TUESDAY&#34; &#34;WEDNESDAY&#34; &#34;THURSDAY&#34; &#34;FRIDAY&#34; &#34;SATURDAY&#34;. Array of the days of the week, when we want to trigger the apply recommendations.
+     * 
+     */
     @Import(name="intervalDays", required=true)
     private Output<List<String>> intervalDays;
 
+    /**
+     * @return Valid values: &#34;SUNDAY&#34; &#34;MONDAY&#34; &#34;TUESDAY&#34; &#34;WEDNESDAY&#34; &#34;THURSDAY&#34; &#34;FRIDAY&#34; &#34;SATURDAY&#34;. Array of the days of the week, when we want to trigger the apply recommendations.
+     * 
+     */
     public Output<List<String>> intervalDays() {
         return this.intervalDays;
     }
 
+    /**
+     * End time.
+     * 
+     */
     @Import(name="intervalHoursEndTime", required=true)
     private Output<String> intervalHoursEndTime;
 
+    /**
+     * @return End time.
+     * 
+     */
     public Output<String> intervalHoursEndTime() {
         return this.intervalHoursEndTime;
     }
 
+    /**
+     * Start time.
+     * 
+     */
     @Import(name="intervalHoursStartTime", required=true)
     private Output<String> intervalHoursStartTime;
 
+    /**
+     * @return Start time.
+     * 
+     */
     public Output<String> intervalHoursStartTime() {
         return this.intervalHoursStartTime;
     }
@@ -62,33 +86,75 @@ public final class OceanRightSizingRuleRecommendationApplicationIntervalMonthlyR
             $ = new OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param intervalDays Valid values: &#34;SUNDAY&#34; &#34;MONDAY&#34; &#34;TUESDAY&#34; &#34;WEDNESDAY&#34; &#34;THURSDAY&#34; &#34;FRIDAY&#34; &#34;SATURDAY&#34;. Array of the days of the week, when we want to trigger the apply recommendations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder intervalDays(Output<List<String>> intervalDays) {
             $.intervalDays = intervalDays;
             return this;
         }
 
+        /**
+         * @param intervalDays Valid values: &#34;SUNDAY&#34; &#34;MONDAY&#34; &#34;TUESDAY&#34; &#34;WEDNESDAY&#34; &#34;THURSDAY&#34; &#34;FRIDAY&#34; &#34;SATURDAY&#34;. Array of the days of the week, when we want to trigger the apply recommendations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder intervalDays(List<String> intervalDays) {
             return intervalDays(Output.of(intervalDays));
         }
 
+        /**
+         * @param intervalDays Valid values: &#34;SUNDAY&#34; &#34;MONDAY&#34; &#34;TUESDAY&#34; &#34;WEDNESDAY&#34; &#34;THURSDAY&#34; &#34;FRIDAY&#34; &#34;SATURDAY&#34;. Array of the days of the week, when we want to trigger the apply recommendations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder intervalDays(String... intervalDays) {
             return intervalDays(List.of(intervalDays));
         }
 
+        /**
+         * @param intervalHoursEndTime End time.
+         * 
+         * @return builder
+         * 
+         */
         public Builder intervalHoursEndTime(Output<String> intervalHoursEndTime) {
             $.intervalHoursEndTime = intervalHoursEndTime;
             return this;
         }
 
+        /**
+         * @param intervalHoursEndTime End time.
+         * 
+         * @return builder
+         * 
+         */
         public Builder intervalHoursEndTime(String intervalHoursEndTime) {
             return intervalHoursEndTime(Output.of(intervalHoursEndTime));
         }
 
+        /**
+         * @param intervalHoursStartTime Start time.
+         * 
+         * @return builder
+         * 
+         */
         public Builder intervalHoursStartTime(Output<String> intervalHoursStartTime) {
             $.intervalHoursStartTime = intervalHoursStartTime;
             return this;
         }
 
+        /**
+         * @param intervalHoursStartTime Start time.
+         * 
+         * @return builder
+         * 
+         */
         public Builder intervalHoursStartTime(String intervalHoursStartTime) {
             return intervalHoursStartTime(Output.of(intervalHoursStartTime));
         }

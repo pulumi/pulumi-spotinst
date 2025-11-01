@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.Double;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,12 +13,24 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OceanLaunchSpecAutoscaleDown {
     /**
+     * @return When set to &#39;true&#39;, the Aggressive Scale Down feature is enabled.
+     * 
+     */
+    private @Nullable Boolean isAggressiveScaleDownEnabled;
+    /**
      * @return The maximum percentage allowed to scale down in a single scaling action on the nodes running in a specific VNG. Allowed only if maxScaleDownPercentage is set to null at the cluster level. Number between [0.1-100].
      * 
      */
     private @Nullable Double maxScaleDownPercentage;
 
     private OceanLaunchSpecAutoscaleDown() {}
+    /**
+     * @return When set to &#39;true&#39;, the Aggressive Scale Down feature is enabled.
+     * 
+     */
+    public Optional<Boolean> isAggressiveScaleDownEnabled() {
+        return Optional.ofNullable(this.isAggressiveScaleDownEnabled);
+    }
     /**
      * @return The maximum percentage allowed to scale down in a single scaling action on the nodes running in a specific VNG. Allowed only if maxScaleDownPercentage is set to null at the cluster level. Number between [0.1-100].
      * 
@@ -35,13 +48,21 @@ public final class OceanLaunchSpecAutoscaleDown {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean isAggressiveScaleDownEnabled;
         private @Nullable Double maxScaleDownPercentage;
         public Builder() {}
         public Builder(OceanLaunchSpecAutoscaleDown defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.isAggressiveScaleDownEnabled = defaults.isAggressiveScaleDownEnabled;
     	      this.maxScaleDownPercentage = defaults.maxScaleDownPercentage;
         }
 
+        @CustomType.Setter
+        public Builder isAggressiveScaleDownEnabled(@Nullable Boolean isAggressiveScaleDownEnabled) {
+
+            this.isAggressiveScaleDownEnabled = isAggressiveScaleDownEnabled;
+            return this;
+        }
         @CustomType.Setter
         public Builder maxScaleDownPercentage(@Nullable Double maxScaleDownPercentage) {
 
@@ -50,6 +71,7 @@ public final class OceanLaunchSpecAutoscaleDown {
         }
         public OceanLaunchSpecAutoscaleDown build() {
             final var _resultValue = new OceanLaunchSpecAutoscaleDown();
+            _resultValue.isAggressiveScaleDownEnabled = isAggressiveScaleDownEnabled;
             _resultValue.maxScaleDownPercentage = maxScaleDownPercentage;
             return _resultValue;
         }

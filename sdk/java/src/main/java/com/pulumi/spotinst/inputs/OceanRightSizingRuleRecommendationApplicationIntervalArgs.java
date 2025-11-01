@@ -19,23 +19,47 @@ public final class OceanRightSizingRuleRecommendationApplicationIntervalArgs ext
 
     public static final OceanRightSizingRuleRecommendationApplicationIntervalArgs Empty = new OceanRightSizingRuleRecommendationApplicationIntervalArgs();
 
+    /**
+     * Determines the Ocean Rightsizing rule monthly repetition basis.
+     * 
+     */
     @Import(name="monthlyRepetitionBases")
     private @Nullable Output<List<OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs>> monthlyRepetitionBases;
 
+    /**
+     * @return Determines the Ocean Rightsizing rule monthly repetition basis.
+     * 
+     */
     public Optional<Output<List<OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs>>> monthlyRepetitionBases() {
         return Optional.ofNullable(this.monthlyRepetitionBases);
     }
 
+    /**
+     * Valid values: &#34;WEEKLY&#34; &#34;MONTHLY&#34;. The repetition basis.
+     * 
+     */
     @Import(name="repetitionBasis", required=true)
     private Output<String> repetitionBasis;
 
+    /**
+     * @return Valid values: &#34;WEEKLY&#34; &#34;MONTHLY&#34;. The repetition basis.
+     * 
+     */
     public Output<String> repetitionBasis() {
         return this.repetitionBasis;
     }
 
+    /**
+     * Determines the Ocean Rightsizing rule weekly repetition basis.
+     * 
+     */
     @Import(name="weeklyRepetitionBases")
     private @Nullable Output<List<OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgs>> weeklyRepetitionBases;
 
+    /**
+     * @return Determines the Ocean Rightsizing rule weekly repetition basis.
+     * 
+     */
     public Optional<Output<List<OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgs>>> weeklyRepetitionBases() {
         return Optional.ofNullable(this.weeklyRepetitionBases);
     }
@@ -66,37 +90,85 @@ public final class OceanRightSizingRuleRecommendationApplicationIntervalArgs ext
             $ = new OceanRightSizingRuleRecommendationApplicationIntervalArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param monthlyRepetitionBases Determines the Ocean Rightsizing rule monthly repetition basis.
+         * 
+         * @return builder
+         * 
+         */
         public Builder monthlyRepetitionBases(@Nullable Output<List<OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs>> monthlyRepetitionBases) {
             $.monthlyRepetitionBases = monthlyRepetitionBases;
             return this;
         }
 
+        /**
+         * @param monthlyRepetitionBases Determines the Ocean Rightsizing rule monthly repetition basis.
+         * 
+         * @return builder
+         * 
+         */
         public Builder monthlyRepetitionBases(List<OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs> monthlyRepetitionBases) {
             return monthlyRepetitionBases(Output.of(monthlyRepetitionBases));
         }
 
+        /**
+         * @param monthlyRepetitionBases Determines the Ocean Rightsizing rule monthly repetition basis.
+         * 
+         * @return builder
+         * 
+         */
         public Builder monthlyRepetitionBases(OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs... monthlyRepetitionBases) {
             return monthlyRepetitionBases(List.of(monthlyRepetitionBases));
         }
 
+        /**
+         * @param repetitionBasis Valid values: &#34;WEEKLY&#34; &#34;MONTHLY&#34;. The repetition basis.
+         * 
+         * @return builder
+         * 
+         */
         public Builder repetitionBasis(Output<String> repetitionBasis) {
             $.repetitionBasis = repetitionBasis;
             return this;
         }
 
+        /**
+         * @param repetitionBasis Valid values: &#34;WEEKLY&#34; &#34;MONTHLY&#34;. The repetition basis.
+         * 
+         * @return builder
+         * 
+         */
         public Builder repetitionBasis(String repetitionBasis) {
             return repetitionBasis(Output.of(repetitionBasis));
         }
 
+        /**
+         * @param weeklyRepetitionBases Determines the Ocean Rightsizing rule weekly repetition basis.
+         * 
+         * @return builder
+         * 
+         */
         public Builder weeklyRepetitionBases(@Nullable Output<List<OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgs>> weeklyRepetitionBases) {
             $.weeklyRepetitionBases = weeklyRepetitionBases;
             return this;
         }
 
+        /**
+         * @param weeklyRepetitionBases Determines the Ocean Rightsizing rule weekly repetition basis.
+         * 
+         * @return builder
+         * 
+         */
         public Builder weeklyRepetitionBases(List<OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgs> weeklyRepetitionBases) {
             return weeklyRepetitionBases(Output.of(weeklyRepetitionBases));
         }
 
+        /**
+         * @param weeklyRepetitionBases Determines the Ocean Rightsizing rule weekly repetition basis.
+         * 
+         * @return builder
+         * 
+         */
         public Builder weeklyRepetitionBases(OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgs... weeklyRepetitionBases) {
             return weeklyRepetitionBases(List.of(weeklyRepetitionBases));
         }

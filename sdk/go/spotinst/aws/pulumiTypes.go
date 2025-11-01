@@ -19595,6 +19595,8 @@ func (o OceanInstanceStorePolicyPtrOutput) InstanceStorePolicyType() pulumi.Stri
 }
 
 type OceanLaunchSpecAutoscaleDown struct {
+	// When set to 'true', the Aggressive Scale Down feature is enabled.
+	IsAggressiveScaleDownEnabled *bool `pulumi:"isAggressiveScaleDownEnabled"`
 	// The maximum percentage allowed to scale down in a single scaling action on the nodes running in a specific VNG. Allowed only if maxScaleDownPercentage is set to null at the cluster level. Number between [0.1-100].
 	MaxScaleDownPercentage *float64 `pulumi:"maxScaleDownPercentage"`
 }
@@ -19611,6 +19613,8 @@ type OceanLaunchSpecAutoscaleDownInput interface {
 }
 
 type OceanLaunchSpecAutoscaleDownArgs struct {
+	// When set to 'true', the Aggressive Scale Down feature is enabled.
+	IsAggressiveScaleDownEnabled pulumi.BoolPtrInput `pulumi:"isAggressiveScaleDownEnabled"`
 	// The maximum percentage allowed to scale down in a single scaling action on the nodes running in a specific VNG. Allowed only if maxScaleDownPercentage is set to null at the cluster level. Number between [0.1-100].
 	MaxScaleDownPercentage pulumi.Float64PtrInput `pulumi:"maxScaleDownPercentage"`
 }
@@ -19664,6 +19668,11 @@ func (o OceanLaunchSpecAutoscaleDownOutput) ToOceanLaunchSpecAutoscaleDownOutput
 
 func (o OceanLaunchSpecAutoscaleDownOutput) ToOceanLaunchSpecAutoscaleDownOutputWithContext(ctx context.Context) OceanLaunchSpecAutoscaleDownOutput {
 	return o
+}
+
+// When set to 'true', the Aggressive Scale Down feature is enabled.
+func (o OceanLaunchSpecAutoscaleDownOutput) IsAggressiveScaleDownEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecAutoscaleDown) *bool { return v.IsAggressiveScaleDownEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // The maximum percentage allowed to scale down in a single scaling action on the nodes running in a specific VNG. Allowed only if maxScaleDownPercentage is set to null at the cluster level. Number between [0.1-100].
@@ -22093,6 +22102,121 @@ func (o OceanLaunchSpecLabelArrayOutput) Index(i pulumi.IntInput) OceanLaunchSpe
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanLaunchSpecLabel {
 		return vs[0].([]OceanLaunchSpecLabel)[vs[1].(int)]
 	}).(OceanLaunchSpecLabelOutput)
+}
+
+type OceanLaunchSpecLoadBalancer struct {
+	// Required if type is set to `TARGET_GROUP`
+	Arn *string `pulumi:"arn"`
+	// Required if type is set to `CLASSIC`
+	Name *string `pulumi:"name"`
+	// Can be set to `CLASSIC` or `TARGET_GROUP`
+	Type string `pulumi:"type"`
+}
+
+// OceanLaunchSpecLoadBalancerInput is an input type that accepts OceanLaunchSpecLoadBalancerArgs and OceanLaunchSpecLoadBalancerOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecLoadBalancerInput` via:
+//
+//	OceanLaunchSpecLoadBalancerArgs{...}
+type OceanLaunchSpecLoadBalancerInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecLoadBalancerOutput() OceanLaunchSpecLoadBalancerOutput
+	ToOceanLaunchSpecLoadBalancerOutputWithContext(context.Context) OceanLaunchSpecLoadBalancerOutput
+}
+
+type OceanLaunchSpecLoadBalancerArgs struct {
+	// Required if type is set to `TARGET_GROUP`
+	Arn pulumi.StringPtrInput `pulumi:"arn"`
+	// Required if type is set to `CLASSIC`
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Can be set to `CLASSIC` or `TARGET_GROUP`
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (OceanLaunchSpecLoadBalancerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecLoadBalancer)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecLoadBalancerArgs) ToOceanLaunchSpecLoadBalancerOutput() OceanLaunchSpecLoadBalancerOutput {
+	return i.ToOceanLaunchSpecLoadBalancerOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecLoadBalancerArgs) ToOceanLaunchSpecLoadBalancerOutputWithContext(ctx context.Context) OceanLaunchSpecLoadBalancerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecLoadBalancerOutput)
+}
+
+// OceanLaunchSpecLoadBalancerArrayInput is an input type that accepts OceanLaunchSpecLoadBalancerArray and OceanLaunchSpecLoadBalancerArrayOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecLoadBalancerArrayInput` via:
+//
+//	OceanLaunchSpecLoadBalancerArray{ OceanLaunchSpecLoadBalancerArgs{...} }
+type OceanLaunchSpecLoadBalancerArrayInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecLoadBalancerArrayOutput() OceanLaunchSpecLoadBalancerArrayOutput
+	ToOceanLaunchSpecLoadBalancerArrayOutputWithContext(context.Context) OceanLaunchSpecLoadBalancerArrayOutput
+}
+
+type OceanLaunchSpecLoadBalancerArray []OceanLaunchSpecLoadBalancerInput
+
+func (OceanLaunchSpecLoadBalancerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanLaunchSpecLoadBalancer)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecLoadBalancerArray) ToOceanLaunchSpecLoadBalancerArrayOutput() OceanLaunchSpecLoadBalancerArrayOutput {
+	return i.ToOceanLaunchSpecLoadBalancerArrayOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecLoadBalancerArray) ToOceanLaunchSpecLoadBalancerArrayOutputWithContext(ctx context.Context) OceanLaunchSpecLoadBalancerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecLoadBalancerArrayOutput)
+}
+
+type OceanLaunchSpecLoadBalancerOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecLoadBalancerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecLoadBalancer)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecLoadBalancerOutput) ToOceanLaunchSpecLoadBalancerOutput() OceanLaunchSpecLoadBalancerOutput {
+	return o
+}
+
+func (o OceanLaunchSpecLoadBalancerOutput) ToOceanLaunchSpecLoadBalancerOutputWithContext(ctx context.Context) OceanLaunchSpecLoadBalancerOutput {
+	return o
+}
+
+// Required if type is set to `TARGET_GROUP`
+func (o OceanLaunchSpecLoadBalancerOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecLoadBalancer) *string { return v.Arn }).(pulumi.StringPtrOutput)
+}
+
+// Required if type is set to `CLASSIC`
+func (o OceanLaunchSpecLoadBalancerOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecLoadBalancer) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Can be set to `CLASSIC` or `TARGET_GROUP`
+func (o OceanLaunchSpecLoadBalancerOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanLaunchSpecLoadBalancer) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type OceanLaunchSpecLoadBalancerArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecLoadBalancerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanLaunchSpecLoadBalancer)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecLoadBalancerArrayOutput) ToOceanLaunchSpecLoadBalancerArrayOutput() OceanLaunchSpecLoadBalancerArrayOutput {
+	return o
+}
+
+func (o OceanLaunchSpecLoadBalancerArrayOutput) ToOceanLaunchSpecLoadBalancerArrayOutputWithContext(ctx context.Context) OceanLaunchSpecLoadBalancerArrayOutput {
+	return o
+}
+
+func (o OceanLaunchSpecLoadBalancerArrayOutput) Index(i pulumi.IntInput) OceanLaunchSpecLoadBalancerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanLaunchSpecLoadBalancer {
+		return vs[0].([]OceanLaunchSpecLoadBalancer)[vs[1].(int)]
+	}).(OceanLaunchSpecLoadBalancerOutput)
 }
 
 type OceanLaunchSpecResourceLimit struct {
@@ -26254,6 +26378,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecInstanceTypesFiltersPtrInput)(nil)).Elem(), OceanLaunchSpecInstanceTypesFiltersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecLabelInput)(nil)).Elem(), OceanLaunchSpecLabelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecLabelArrayInput)(nil)).Elem(), OceanLaunchSpecLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecLoadBalancerInput)(nil)).Elem(), OceanLaunchSpecLoadBalancerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecLoadBalancerArrayInput)(nil)).Elem(), OceanLaunchSpecLoadBalancerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecResourceLimitInput)(nil)).Elem(), OceanLaunchSpecResourceLimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecResourceLimitArrayInput)(nil)).Elem(), OceanLaunchSpecResourceLimitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecSchedulingShutdownHoursInput)(nil)).Elem(), OceanLaunchSpecSchedulingShutdownHoursArgs{})
@@ -26598,6 +26724,8 @@ func init() {
 	pulumi.RegisterOutputType(OceanLaunchSpecInstanceTypesFiltersPtrOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecLabelOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecLabelArrayOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecLoadBalancerOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecLoadBalancerArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecResourceLimitOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecResourceLimitArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecSchedulingShutdownHoursOutput{})

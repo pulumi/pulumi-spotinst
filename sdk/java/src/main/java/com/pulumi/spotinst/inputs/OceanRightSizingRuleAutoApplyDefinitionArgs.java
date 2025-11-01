@@ -18,23 +18,51 @@ public final class OceanRightSizingRuleAutoApplyDefinitionArgs extends com.pulum
 
     public static final OceanRightSizingRuleAutoApplyDefinitionArgs Empty = new OceanRightSizingRuleAutoApplyDefinitionArgs();
 
+    /**
+     * Determines if auto apply is enabled.
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Determines if auto apply is enabled.
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
+     * 
+     * &lt;a id=&#34;attachWorkloads&#34;&gt;&lt;/a&gt;
+     * 
+     */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
+    /**
+     * @return A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
+     * 
+     * &lt;a id=&#34;attachWorkloads&#34;&gt;&lt;/a&gt;
+     * 
+     */
     public Optional<Output<Map<String,String>>> labels() {
         return Optional.ofNullable(this.labels);
     }
 
+    /**
+     * List of namespaces that match the auto-apply rule.
+     * 
+     */
     @Import(name="namespaces")
     private @Nullable Output<List<String>> namespaces;
 
+    /**
+     * @return List of namespaces that match the auto-apply rule.
+     * 
+     */
     public Optional<Output<List<String>>> namespaces() {
         return Optional.ofNullable(this.namespaces);
     }
@@ -65,33 +93,79 @@ public final class OceanRightSizingRuleAutoApplyDefinitionArgs extends com.pulum
             $ = new OceanRightSizingRuleAutoApplyDefinitionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Determines if auto apply is enabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Determines if auto apply is enabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param labels A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
+         * 
+         * &lt;a id=&#34;attachWorkloads&#34;&gt;&lt;/a&gt;
+         * 
+         * @return builder
+         * 
+         */
         public Builder labels(@Nullable Output<Map<String,String>> labels) {
             $.labels = labels;
             return this;
         }
 
+        /**
+         * @param labels A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
+         * 
+         * &lt;a id=&#34;attachWorkloads&#34;&gt;&lt;/a&gt;
+         * 
+         * @return builder
+         * 
+         */
         public Builder labels(Map<String,String> labels) {
             return labels(Output.of(labels));
         }
 
+        /**
+         * @param namespaces List of namespaces that match the auto-apply rule.
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespaces(@Nullable Output<List<String>> namespaces) {
             $.namespaces = namespaces;
             return this;
         }
 
+        /**
+         * @param namespaces List of namespaces that match the auto-apply rule.
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespaces(List<String> namespaces) {
             return namespaces(Output.of(namespaces));
         }
 
+        /**
+         * @param namespaces List of namespaces that match the auto-apply rule.
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespaces(String... namespaces) {
             return namespaces(List.of(namespaces));
         }

@@ -13,8 +13,17 @@ namespace Pulumi.SpotInst.Outputs
     [OutputType]
     public sealed class OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase
     {
+        /// <summary>
+        /// Array of the months (in number), when we want to trigger the apply recommendations.
+        /// </summary>
         public readonly ImmutableArray<int> IntervalMonths;
+        /// <summary>
+        /// Valid values: "FIRST" "SECOND" "THIRD" "FOURTH" "LAST". Array of the weeks in the month, when we want to trigger the apply recommendations.
+        /// </summary>
         public readonly ImmutableArray<string> WeekOfTheMonths;
+        /// <summary>
+        /// Determines the Ocean Rightsizing rule weekly repetition basis.
+        /// </summary>
         public readonly ImmutableArray<Outputs.OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBase> WeeklyRepetitionBases;
 
         [OutputConstructor]

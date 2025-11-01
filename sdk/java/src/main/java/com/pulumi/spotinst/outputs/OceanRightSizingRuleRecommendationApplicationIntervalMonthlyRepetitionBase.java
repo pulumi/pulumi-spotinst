@@ -14,17 +14,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase {
+    /**
+     * @return Array of the months (in number), when we want to trigger the apply recommendations.
+     * 
+     */
     private List<Integer> intervalMonths;
+    /**
+     * @return Valid values: &#34;FIRST&#34; &#34;SECOND&#34; &#34;THIRD&#34; &#34;FOURTH&#34; &#34;LAST&#34;. Array of the weeks in the month, when we want to trigger the apply recommendations.
+     * 
+     */
     private List<String> weekOfTheMonths;
+    /**
+     * @return Determines the Ocean Rightsizing rule weekly repetition basis.
+     * 
+     */
     private @Nullable List<OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBase> weeklyRepetitionBases;
 
     private OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase() {}
+    /**
+     * @return Array of the months (in number), when we want to trigger the apply recommendations.
+     * 
+     */
     public List<Integer> intervalMonths() {
         return this.intervalMonths;
     }
+    /**
+     * @return Valid values: &#34;FIRST&#34; &#34;SECOND&#34; &#34;THIRD&#34; &#34;FOURTH&#34; &#34;LAST&#34;. Array of the weeks in the month, when we want to trigger the apply recommendations.
+     * 
+     */
     public List<String> weekOfTheMonths() {
         return this.weekOfTheMonths;
     }
+    /**
+     * @return Determines the Ocean Rightsizing rule weekly repetition basis.
+     * 
+     */
     public List<OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBase> weeklyRepetitionBases() {
         return this.weeklyRepetitionBases == null ? List.of() : this.weeklyRepetitionBases;
     }

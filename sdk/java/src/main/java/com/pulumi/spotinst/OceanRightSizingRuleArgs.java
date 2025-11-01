@@ -33,9 +33,17 @@ public final class OceanRightSizingRuleArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.attachWorkloads);
     }
 
+    /**
+     * Ocean Rightsizing Rule Auto Apply Configuration.
+     * 
+     */
     @Import(name="autoApplyDefinitions")
     private @Nullable Output<List<OceanRightSizingRuleAutoApplyDefinitionArgs>> autoApplyDefinitions;
 
+    /**
+     * @return Ocean Rightsizing Rule Auto Apply Configuration.
+     * 
+     */
     public Optional<Output<List<OceanRightSizingRuleAutoApplyDefinitionArgs>>> autoApplyDefinitions() {
         return Optional.ofNullable(this.autoApplyDefinitions);
     }
@@ -54,65 +62,137 @@ public final class OceanRightSizingRuleArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.downsideOnly);
     }
 
+    /**
+     * Exclude preliminary recommendations (recommendations based on less than 4 full days of data).
+     * 
+     */
     @Import(name="excludePreliminaryRecommendations")
     private @Nullable Output<Boolean> excludePreliminaryRecommendations;
 
+    /**
+     * @return Exclude preliminary recommendations (recommendations based on less than 4 full days of data).
+     * 
+     */
     public Optional<Output<Boolean>> excludePreliminaryRecommendations() {
         return Optional.ofNullable(this.excludePreliminaryRecommendations);
     }
 
+    /**
+     * Identifier of the Ocean cluster.
+     * 
+     */
     @Import(name="oceanId")
     private @Nullable Output<String> oceanId;
 
+    /**
+     * @return Identifier of the Ocean cluster.
+     * 
+     */
     public Optional<Output<String>> oceanId() {
         return Optional.ofNullable(this.oceanId);
     }
 
+    /**
+     * Determines the Ocean Rightsizing rule recommendation application boundaries.
+     * 
+     */
     @Import(name="recommendationApplicationBoundaries")
     private @Nullable Output<List<OceanRightSizingRuleRecommendationApplicationBoundaryArgs>> recommendationApplicationBoundaries;
 
+    /**
+     * @return Determines the Ocean Rightsizing rule recommendation application boundaries.
+     * 
+     */
     public Optional<Output<List<OceanRightSizingRuleRecommendationApplicationBoundaryArgs>>> recommendationApplicationBoundaries() {
         return Optional.ofNullable(this.recommendationApplicationBoundaries);
     }
 
+    /**
+     * HPA Rightsizing Rule Recommendation Configuration
+     * 
+     */
     @Import(name="recommendationApplicationHpas")
     private @Nullable Output<List<OceanRightSizingRuleRecommendationApplicationHpaArgs>> recommendationApplicationHpas;
 
+    /**
+     * @return HPA Rightsizing Rule Recommendation Configuration
+     * 
+     */
     public Optional<Output<List<OceanRightSizingRuleRecommendationApplicationHpaArgs>>> recommendationApplicationHpas() {
         return Optional.ofNullable(this.recommendationApplicationHpas);
     }
 
+    /**
+     * Determines the Ocean Rightsizing rule recommendation application intervals.
+     * 
+     */
     @Import(name="recommendationApplicationIntervals", required=true)
     private Output<List<OceanRightSizingRuleRecommendationApplicationIntervalArgs>> recommendationApplicationIntervals;
 
+    /**
+     * @return Determines the Ocean Rightsizing rule recommendation application intervals.
+     * 
+     */
     public Output<List<OceanRightSizingRuleRecommendationApplicationIntervalArgs>> recommendationApplicationIntervals() {
         return this.recommendationApplicationIntervals;
     }
 
+    /**
+     * Determines the extent of difference between current request and recommendation to trigger a change in percentage.
+     * 
+     */
     @Import(name="recommendationApplicationMinThresholds")
     private @Nullable Output<List<OceanRightSizingRuleRecommendationApplicationMinThresholdArgs>> recommendationApplicationMinThresholds;
 
+    /**
+     * @return Determines the extent of difference between current request and recommendation to trigger a change in percentage.
+     * 
+     */
     public Optional<Output<List<OceanRightSizingRuleRecommendationApplicationMinThresholdArgs>>> recommendationApplicationMinThresholds() {
         return Optional.ofNullable(this.recommendationApplicationMinThresholds);
     }
 
+    /**
+     * Determines the Ocean Rightsizing rule recommendation application overhead values.
+     * 
+     */
     @Import(name="recommendationApplicationOverheadValues")
     private @Nullable Output<List<OceanRightSizingRuleRecommendationApplicationOverheadValueArgs>> recommendationApplicationOverheadValues;
 
+    /**
+     * @return Determines the Ocean Rightsizing rule recommendation application overhead values.
+     * 
+     */
     public Optional<Output<List<OceanRightSizingRuleRecommendationApplicationOverheadValueArgs>>> recommendationApplicationOverheadValues() {
         return Optional.ofNullable(this.recommendationApplicationOverheadValues);
     }
 
+    /**
+     * Valid values: &#34;MORE_THAN_ONE_REPLICA&#34; &#34;ALL_MANIFEST&#34; &#34;NO_RESTART&#34;. Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
+     * 
+     */
     @Import(name="restartReplicas")
     private @Nullable Output<String> restartReplicas;
 
+    /**
+     * @return Valid values: &#34;MORE_THAN_ONE_REPLICA&#34; &#34;ALL_MANIFEST&#34; &#34;NO_RESTART&#34;. Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
+     * 
+     */
     public Optional<Output<String>> restartReplicas() {
         return Optional.ofNullable(this.restartReplicas);
     }
 
+    /**
+     * The unique name of the rule.
+     * 
+     */
     @Import(name="ruleName", required=true)
     private Output<String> ruleName;
 
+    /**
+     * @return The unique name of the rule.
+     * 
+     */
     public Output<String> ruleName() {
         return this.ruleName;
     }
@@ -166,15 +246,33 @@ public final class OceanRightSizingRuleArgs extends com.pulumi.resources.Resourc
             return attachWorkloads(List.of(attachWorkloads));
         }
 
+        /**
+         * @param autoApplyDefinitions Ocean Rightsizing Rule Auto Apply Configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoApplyDefinitions(@Nullable Output<List<OceanRightSizingRuleAutoApplyDefinitionArgs>> autoApplyDefinitions) {
             $.autoApplyDefinitions = autoApplyDefinitions;
             return this;
         }
 
+        /**
+         * @param autoApplyDefinitions Ocean Rightsizing Rule Auto Apply Configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoApplyDefinitions(List<OceanRightSizingRuleAutoApplyDefinitionArgs> autoApplyDefinitions) {
             return autoApplyDefinitions(Output.of(autoApplyDefinitions));
         }
 
+        /**
+         * @param autoApplyDefinitions Ocean Rightsizing Rule Auto Apply Configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoApplyDefinitions(OceanRightSizingRuleAutoApplyDefinitionArgs... autoApplyDefinitions) {
             return autoApplyDefinitions(List.of(autoApplyDefinitions));
         }
@@ -201,103 +299,241 @@ public final class OceanRightSizingRuleArgs extends com.pulumi.resources.Resourc
             return downsideOnly(Output.of(downsideOnly));
         }
 
+        /**
+         * @param excludePreliminaryRecommendations Exclude preliminary recommendations (recommendations based on less than 4 full days of data).
+         * 
+         * @return builder
+         * 
+         */
         public Builder excludePreliminaryRecommendations(@Nullable Output<Boolean> excludePreliminaryRecommendations) {
             $.excludePreliminaryRecommendations = excludePreliminaryRecommendations;
             return this;
         }
 
+        /**
+         * @param excludePreliminaryRecommendations Exclude preliminary recommendations (recommendations based on less than 4 full days of data).
+         * 
+         * @return builder
+         * 
+         */
         public Builder excludePreliminaryRecommendations(Boolean excludePreliminaryRecommendations) {
             return excludePreliminaryRecommendations(Output.of(excludePreliminaryRecommendations));
         }
 
+        /**
+         * @param oceanId Identifier of the Ocean cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder oceanId(@Nullable Output<String> oceanId) {
             $.oceanId = oceanId;
             return this;
         }
 
+        /**
+         * @param oceanId Identifier of the Ocean cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder oceanId(String oceanId) {
             return oceanId(Output.of(oceanId));
         }
 
+        /**
+         * @param recommendationApplicationBoundaries Determines the Ocean Rightsizing rule recommendation application boundaries.
+         * 
+         * @return builder
+         * 
+         */
         public Builder recommendationApplicationBoundaries(@Nullable Output<List<OceanRightSizingRuleRecommendationApplicationBoundaryArgs>> recommendationApplicationBoundaries) {
             $.recommendationApplicationBoundaries = recommendationApplicationBoundaries;
             return this;
         }
 
+        /**
+         * @param recommendationApplicationBoundaries Determines the Ocean Rightsizing rule recommendation application boundaries.
+         * 
+         * @return builder
+         * 
+         */
         public Builder recommendationApplicationBoundaries(List<OceanRightSizingRuleRecommendationApplicationBoundaryArgs> recommendationApplicationBoundaries) {
             return recommendationApplicationBoundaries(Output.of(recommendationApplicationBoundaries));
         }
 
+        /**
+         * @param recommendationApplicationBoundaries Determines the Ocean Rightsizing rule recommendation application boundaries.
+         * 
+         * @return builder
+         * 
+         */
         public Builder recommendationApplicationBoundaries(OceanRightSizingRuleRecommendationApplicationBoundaryArgs... recommendationApplicationBoundaries) {
             return recommendationApplicationBoundaries(List.of(recommendationApplicationBoundaries));
         }
 
+        /**
+         * @param recommendationApplicationHpas HPA Rightsizing Rule Recommendation Configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder recommendationApplicationHpas(@Nullable Output<List<OceanRightSizingRuleRecommendationApplicationHpaArgs>> recommendationApplicationHpas) {
             $.recommendationApplicationHpas = recommendationApplicationHpas;
             return this;
         }
 
+        /**
+         * @param recommendationApplicationHpas HPA Rightsizing Rule Recommendation Configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder recommendationApplicationHpas(List<OceanRightSizingRuleRecommendationApplicationHpaArgs> recommendationApplicationHpas) {
             return recommendationApplicationHpas(Output.of(recommendationApplicationHpas));
         }
 
+        /**
+         * @param recommendationApplicationHpas HPA Rightsizing Rule Recommendation Configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder recommendationApplicationHpas(OceanRightSizingRuleRecommendationApplicationHpaArgs... recommendationApplicationHpas) {
             return recommendationApplicationHpas(List.of(recommendationApplicationHpas));
         }
 
+        /**
+         * @param recommendationApplicationIntervals Determines the Ocean Rightsizing rule recommendation application intervals.
+         * 
+         * @return builder
+         * 
+         */
         public Builder recommendationApplicationIntervals(Output<List<OceanRightSizingRuleRecommendationApplicationIntervalArgs>> recommendationApplicationIntervals) {
             $.recommendationApplicationIntervals = recommendationApplicationIntervals;
             return this;
         }
 
+        /**
+         * @param recommendationApplicationIntervals Determines the Ocean Rightsizing rule recommendation application intervals.
+         * 
+         * @return builder
+         * 
+         */
         public Builder recommendationApplicationIntervals(List<OceanRightSizingRuleRecommendationApplicationIntervalArgs> recommendationApplicationIntervals) {
             return recommendationApplicationIntervals(Output.of(recommendationApplicationIntervals));
         }
 
+        /**
+         * @param recommendationApplicationIntervals Determines the Ocean Rightsizing rule recommendation application intervals.
+         * 
+         * @return builder
+         * 
+         */
         public Builder recommendationApplicationIntervals(OceanRightSizingRuleRecommendationApplicationIntervalArgs... recommendationApplicationIntervals) {
             return recommendationApplicationIntervals(List.of(recommendationApplicationIntervals));
         }
 
+        /**
+         * @param recommendationApplicationMinThresholds Determines the extent of difference between current request and recommendation to trigger a change in percentage.
+         * 
+         * @return builder
+         * 
+         */
         public Builder recommendationApplicationMinThresholds(@Nullable Output<List<OceanRightSizingRuleRecommendationApplicationMinThresholdArgs>> recommendationApplicationMinThresholds) {
             $.recommendationApplicationMinThresholds = recommendationApplicationMinThresholds;
             return this;
         }
 
+        /**
+         * @param recommendationApplicationMinThresholds Determines the extent of difference between current request and recommendation to trigger a change in percentage.
+         * 
+         * @return builder
+         * 
+         */
         public Builder recommendationApplicationMinThresholds(List<OceanRightSizingRuleRecommendationApplicationMinThresholdArgs> recommendationApplicationMinThresholds) {
             return recommendationApplicationMinThresholds(Output.of(recommendationApplicationMinThresholds));
         }
 
+        /**
+         * @param recommendationApplicationMinThresholds Determines the extent of difference between current request and recommendation to trigger a change in percentage.
+         * 
+         * @return builder
+         * 
+         */
         public Builder recommendationApplicationMinThresholds(OceanRightSizingRuleRecommendationApplicationMinThresholdArgs... recommendationApplicationMinThresholds) {
             return recommendationApplicationMinThresholds(List.of(recommendationApplicationMinThresholds));
         }
 
+        /**
+         * @param recommendationApplicationOverheadValues Determines the Ocean Rightsizing rule recommendation application overhead values.
+         * 
+         * @return builder
+         * 
+         */
         public Builder recommendationApplicationOverheadValues(@Nullable Output<List<OceanRightSizingRuleRecommendationApplicationOverheadValueArgs>> recommendationApplicationOverheadValues) {
             $.recommendationApplicationOverheadValues = recommendationApplicationOverheadValues;
             return this;
         }
 
+        /**
+         * @param recommendationApplicationOverheadValues Determines the Ocean Rightsizing rule recommendation application overhead values.
+         * 
+         * @return builder
+         * 
+         */
         public Builder recommendationApplicationOverheadValues(List<OceanRightSizingRuleRecommendationApplicationOverheadValueArgs> recommendationApplicationOverheadValues) {
             return recommendationApplicationOverheadValues(Output.of(recommendationApplicationOverheadValues));
         }
 
+        /**
+         * @param recommendationApplicationOverheadValues Determines the Ocean Rightsizing rule recommendation application overhead values.
+         * 
+         * @return builder
+         * 
+         */
         public Builder recommendationApplicationOverheadValues(OceanRightSizingRuleRecommendationApplicationOverheadValueArgs... recommendationApplicationOverheadValues) {
             return recommendationApplicationOverheadValues(List.of(recommendationApplicationOverheadValues));
         }
 
+        /**
+         * @param restartReplicas Valid values: &#34;MORE_THAN_ONE_REPLICA&#34; &#34;ALL_MANIFEST&#34; &#34;NO_RESTART&#34;. Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
+         * 
+         * @return builder
+         * 
+         */
         public Builder restartReplicas(@Nullable Output<String> restartReplicas) {
             $.restartReplicas = restartReplicas;
             return this;
         }
 
+        /**
+         * @param restartReplicas Valid values: &#34;MORE_THAN_ONE_REPLICA&#34; &#34;ALL_MANIFEST&#34; &#34;NO_RESTART&#34;. Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
+         * 
+         * @return builder
+         * 
+         */
         public Builder restartReplicas(String restartReplicas) {
             return restartReplicas(Output.of(restartReplicas));
         }
 
+        /**
+         * @param ruleName The unique name of the rule.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ruleName(Output<String> ruleName) {
             $.ruleName = ruleName;
             return this;
         }
 
+        /**
+         * @param ruleName The unique name of the rule.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ruleName(String ruleName) {
             return ruleName(Output.of(ruleName));
         }
