@@ -14,11 +14,23 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanRightSizingRuleAttachWorkloadNamespace {
+    /**
+     * @return A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
+     * 
+     * &lt;a id=&#34;attachWorkloads&#34;&gt;&lt;/a&gt;
+     * 
+     */
     private @Nullable List<OceanRightSizingRuleAttachWorkloadNamespaceLabel> labels;
     private String namespaceName;
     private @Nullable List<OceanRightSizingRuleAttachWorkloadNamespaceWorkload> workloads;
 
     private OceanRightSizingRuleAttachWorkloadNamespace() {}
+    /**
+     * @return A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
+     * 
+     * &lt;a id=&#34;attachWorkloads&#34;&gt;&lt;/a&gt;
+     * 
+     */
     public List<OceanRightSizingRuleAttachWorkloadNamespaceLabel> labels() {
         return this.labels == null ? List.of() : this.labels;
     }

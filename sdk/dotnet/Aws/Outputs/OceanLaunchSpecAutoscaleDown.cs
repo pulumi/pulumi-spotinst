@@ -14,13 +14,21 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class OceanLaunchSpecAutoscaleDown
     {
         /// <summary>
+        /// When set to 'true', the Aggressive Scale Down feature is enabled.
+        /// </summary>
+        public readonly bool? IsAggressiveScaleDownEnabled;
+        /// <summary>
         /// The maximum percentage allowed to scale down in a single scaling action on the nodes running in a specific VNG. Allowed only if maxScaleDownPercentage is set to null at the cluster level. Number between [0.1-100].
         /// </summary>
         public readonly double? MaxScaleDownPercentage;
 
         [OutputConstructor]
-        private OceanLaunchSpecAutoscaleDown(double? maxScaleDownPercentage)
+        private OceanLaunchSpecAutoscaleDown(
+            bool? isAggressiveScaleDownEnabled,
+
+            double? maxScaleDownPercentage)
         {
+            IsAggressiveScaleDownEnabled = isAggressiveScaleDownEnabled;
             MaxScaleDownPercentage = maxScaleDownPercentage;
         }
     }

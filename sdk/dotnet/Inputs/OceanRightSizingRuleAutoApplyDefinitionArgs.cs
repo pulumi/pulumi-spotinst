@@ -12,11 +12,20 @@ namespace Pulumi.SpotInst.Inputs
 
     public sealed class OceanRightSizingRuleAutoApplyDefinitionArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Determines if auto apply is enabled.
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
+
+        /// <summary>
+        /// A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
+        /// 
+        /// &lt;a id="AttachWorkloads"&gt;&lt;/a&gt;
+        /// </summary>
         public InputMap<string> Labels
         {
             get => _labels ?? (_labels = new InputMap<string>());
@@ -25,6 +34,10 @@ namespace Pulumi.SpotInst.Inputs
 
         [Input("namespaces")]
         private InputList<string>? _namespaces;
+
+        /// <summary>
+        /// List of namespaces that match the auto-apply rule.
+        /// </summary>
         public InputList<string> Namespaces
         {
             get => _namespaces ?? (_namespaces = new InputList<string>());

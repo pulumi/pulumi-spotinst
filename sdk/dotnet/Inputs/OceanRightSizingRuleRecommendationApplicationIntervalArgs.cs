@@ -14,17 +14,28 @@ namespace Pulumi.SpotInst.Inputs
     {
         [Input("monthlyRepetitionBases")]
         private InputList<Inputs.OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs>? _monthlyRepetitionBases;
+
+        /// <summary>
+        /// Determines the Ocean Rightsizing rule monthly repetition basis.
+        /// </summary>
         public InputList<Inputs.OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs> MonthlyRepetitionBases
         {
             get => _monthlyRepetitionBases ?? (_monthlyRepetitionBases = new InputList<Inputs.OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs>());
             set => _monthlyRepetitionBases = value;
         }
 
+        /// <summary>
+        /// Valid values: "WEEKLY" "MONTHLY". The repetition basis.
+        /// </summary>
         [Input("repetitionBasis", required: true)]
         public Input<string> RepetitionBasis { get; set; } = null!;
 
         [Input("weeklyRepetitionBases")]
         private InputList<Inputs.OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgs>? _weeklyRepetitionBases;
+
+        /// <summary>
+        /// Determines the Ocean Rightsizing rule weekly repetition basis.
+        /// </summary>
         public InputList<Inputs.OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgs> WeeklyRepetitionBases
         {
             get => _weeklyRepetitionBases ?? (_weeklyRepetitionBases = new InputList<Inputs.OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgs>());

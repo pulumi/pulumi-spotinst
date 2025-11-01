@@ -12,6 +12,9 @@ namespace Pulumi.SpotInst.Inputs
 
     public sealed class OceanRightSizingRuleRecommendationApplicationHpaGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Determines by the rule if recommendation application is allowed for workloads with HPA definition.
+        /// </summary>
         [Input("allowHpaRecommendations")]
         public Input<bool>? AllowHpaRecommendations { get; set; }
 

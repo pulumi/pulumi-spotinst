@@ -12,15 +12,27 @@ namespace Pulumi.SpotInst.Inputs
 
     public sealed class OceanRightSizingRuleRecommendationApplicationBoundaryGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// the maximal value of cpu in vCpu.
+        /// </summary>
         [Input("cpuMax")]
         public Input<double>? CpuMax { get; set; }
 
+        /// <summary>
+        /// the minimal value of cpu in vCpu.
+        /// </summary>
         [Input("cpuMin")]
         public Input<double>? CpuMin { get; set; }
 
+        /// <summary>
+        /// the maximal value of memory in Gib.
+        /// </summary>
         [Input("memoryMax")]
         public Input<int>? MemoryMax { get; set; }
 
+        /// <summary>
+        /// the minimal value of memory in Gib.
+        /// </summary>
         [Input("memoryMin")]
         public Input<int>? MemoryMin { get; set; }
 

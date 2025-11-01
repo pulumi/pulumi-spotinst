@@ -161,6 +161,7 @@ __all__ = [
     'OceanLaunchSpecInstanceStorePolicy',
     'OceanLaunchSpecInstanceTypesFilters',
     'OceanLaunchSpecLabel',
+    'OceanLaunchSpecLoadBalancer',
     'OceanLaunchSpecResourceLimit',
     'OceanLaunchSpecSchedulingShutdownHours',
     'OceanLaunchSpecSchedulingTask',
@@ -9024,7 +9025,9 @@ class OceanLaunchSpecAutoscaleDown(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "maxScaleDownPercentage":
+        if key == "isAggressiveScaleDownEnabled":
+            suggest = "is_aggressive_scale_down_enabled"
+        elif key == "maxScaleDownPercentage":
             suggest = "max_scale_down_percentage"
 
         if suggest:
@@ -9039,12 +9042,24 @@ class OceanLaunchSpecAutoscaleDown(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 is_aggressive_scale_down_enabled: Optional[_builtins.bool] = None,
                  max_scale_down_percentage: Optional[_builtins.float] = None):
         """
+        :param _builtins.bool is_aggressive_scale_down_enabled: When set to 'true', the Aggressive Scale Down feature is enabled.
         :param _builtins.float max_scale_down_percentage: The maximum percentage allowed to scale down in a single scaling action on the nodes running in a specific VNG. Allowed only if maxScaleDownPercentage is set to null at the cluster level. Number between [0.1-100].
         """
+        if is_aggressive_scale_down_enabled is not None:
+            pulumi.set(__self__, "is_aggressive_scale_down_enabled", is_aggressive_scale_down_enabled)
         if max_scale_down_percentage is not None:
             pulumi.set(__self__, "max_scale_down_percentage", max_scale_down_percentage)
+
+    @_builtins.property
+    @pulumi.getter(name="isAggressiveScaleDownEnabled")
+    def is_aggressive_scale_down_enabled(self) -> Optional[_builtins.bool]:
+        """
+        When set to 'true', the Aggressive Scale Down feature is enabled.
+        """
+        return pulumi.get(self, "is_aggressive_scale_down_enabled")
 
     @_builtins.property
     @pulumi.getter(name="maxScaleDownPercentage")
@@ -10061,6 +10076,48 @@ class OceanLaunchSpecLabel(dict):
         The label value.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class OceanLaunchSpecLoadBalancer(dict):
+    def __init__(__self__, *,
+                 type: _builtins.str,
+                 arn: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str type: Can be set to `CLASSIC` or `TARGET_GROUP`
+        :param _builtins.str arn: Required if type is set to `TARGET_GROUP`
+        :param _builtins.str name: Required if type is set to `CLASSIC`
+        """
+        pulumi.set(__self__, "type", type)
+        if arn is not None:
+            pulumi.set(__self__, "arn", arn)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Can be set to `CLASSIC` or `TARGET_GROUP`
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def arn(self) -> Optional[_builtins.str]:
+        """
+        Required if type is set to `TARGET_GROUP`
+        """
+        return pulumi.get(self, "arn")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Required if type is set to `CLASSIC`
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
