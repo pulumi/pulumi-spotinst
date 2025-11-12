@@ -8,6 +8,45 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Spotinst AWS group resource using Elastic Beanstalk.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as spotinst from "@pulumi/spotinst";
+ *
+ * const elastigoup_aws_beanstalk = new spotinst.aws.Beanstalk("elastigoup-aws-beanstalk", {
+ *     name: "example-elastigroup-beanstalk",
+ *     region: "us-west-2",
+ *     product: "Linux/UNIX",
+ *     minSize: 0,
+ *     maxSize: 1,
+ *     desiredCapacity: 0,
+ *     beanstalkEnvironmentName: "example-env",
+ *     beanstalkEnvironmentId: "e-example",
+ *     instanceTypesSpots: [
+ *         "t2.micro",
+ *         "t2.medium",
+ *         "t2.large",
+ *     ],
+ *     deploymentPreferences: {
+ *         automaticRoll: true,
+ *         batchSizePercentage: 100,
+ *         gracePeriod: 90,
+ *         strategies: [{
+ *             action: "REPLACE_SERVER",
+ *             shouldDrainInstances: true,
+ *         }],
+ *     },
+ *     managedActions: {
+ *         platformUpdate: {
+ *             performAt: "timeWindow",
+ *             timeWindow: "Mon:23:50-Tue:00:20",
+ *             updateLevel: "minorAndPatch",
+ *         },
+ *     }[0],
+ * });
+ * ```
  */
 export class Beanstalk extends pulumi.CustomResource {
     /**
