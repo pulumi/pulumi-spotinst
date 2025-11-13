@@ -22,6 +22,67 @@ import javax.annotation.Nullable;
 /**
  * Provides a Spotinst AWS group resource using Elastic Beanstalk.
  * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.spotinst.aws.Beanstalk;
+ * import com.pulumi.spotinst.aws.BeanstalkArgs;
+ * import com.pulumi.spotinst.aws.inputs.BeanstalkDeploymentPreferencesArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var elastigoup_aws_beanstalk = new Beanstalk("elastigoup-aws-beanstalk", BeanstalkArgs.builder()
+ *             .name("example-elastigroup-beanstalk")
+ *             .region("us-west-2")
+ *             .product("Linux/UNIX")
+ *             .minSize(0)
+ *             .maxSize(1)
+ *             .desiredCapacity(0)
+ *             .beanstalkEnvironmentName("example-env")
+ *             .beanstalkEnvironmentId("e-example")
+ *             .instanceTypesSpots(            
+ *                 "t2.micro",
+ *                 "t2.medium",
+ *                 "t2.large")
+ *             .deploymentPreferences(BeanstalkDeploymentPreferencesArgs.builder()
+ *                 .automaticRoll(true)
+ *                 .batchSizePercentage(100)
+ *                 .gracePeriod(90)
+ *                 .strategies(BeanstalkDeploymentPreferencesStrategyArgs.builder()
+ *                     .action("REPLACE_SERVER")
+ *                     .shouldDrainInstances(true)
+ *                     .build())
+ *                 .build())
+ *             .managedActions(BeanstalkManagedActionsArgs.builder()
+ *                 .platformUpdate(BeanstalkManagedActionsPlatformUpdateArgs.builder()
+ *                     .performAt("timeWindow")
+ *                     .timeWindow("Mon:23:50-Tue:00:20")
+ *                     .updateLevel("minorAndPatch")
+ *                     .build())
+ *                 .build()[0])
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  */
 @ResourceType(type="spotinst:aws/beanstalk:Beanstalk")
 public class Beanstalk extends com.pulumi.resources.CustomResource {

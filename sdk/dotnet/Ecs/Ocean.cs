@@ -14,6 +14,171 @@ namespace Pulumi.SpotInst.Ecs
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SpotInst = Pulumi.SpotInst;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new SpotInst.Ecs.Ocean("example", new()
+    ///     {
+    ///         Region = "us-west-2",
+    ///         Name = "sample-ecs-cluster",
+    ///         ClusterName = "sample-ecs-cluster",
+    ///         MinSize = 0,
+    ///         MaxSize = 1,
+    ///         DesiredCapacity = 0,
+    ///         SubnetIds = new[]
+    ///         {
+    ///             "subnet-12345",
+    ///         },
+    ///         InstanceTypes = new[]
+    ///         {
+    ///             
+    ///             {
+    ///                 { "filters", new[]
+    ///                 {
+    ///                     
+    ///                     {
+    ///                         { "architectures", new[]
+    ///                         {
+    ///                             "x86_64",
+    ///                             "i386",
+    ///                         } },
+    ///                         { "categories", new[]
+    ///                         {
+    ///                             "Accelerated_computing",
+    ///                             "Compute_optimized",
+    ///                         } },
+    ///                         { "diskTypes", new[]
+    ///                         {
+    ///                             "EBS",
+    ///                             "SSD",
+    ///                         } },
+    ///                         { "excludeFamilies", new[]
+    ///                         {
+    ///                             "m*",
+    ///                         } },
+    ///                         { "excludeMetal", false },
+    ///                         { "hypervisor", new[]
+    ///                         {
+    ///                             "xen",
+    ///                         } },
+    ///                         { "includeFamilies", new[]
+    ///                         {
+    ///                             "c*",
+    ///                             "t*",
+    ///                         } },
+    ///                         { "isEnaSupported", false },
+    ///                         { "maxGpu", 4 },
+    ///                         { "minGpu", 0 },
+    ///                         { "maxMemoryGib", 16 },
+    ///                         { "maxNetworkPerformance", 20 },
+    ///                         { "maxVcpu", 16 },
+    ///                         { "minEnis", 2 },
+    ///                         { "minMemoryGib", 8 },
+    ///                         { "minNetworkPerformance", 2 },
+    ///                         { "minVcpu", 2 },
+    ///                         { "rootDeviceTypes", new[]
+    ///                         {
+    ///                             "ebs",
+    ///                         } },
+    ///                         { "virtualizationTypes", new[]
+    ///                         {
+    ///                             "hvm",
+    ///                         } },
+    ///                     },
+    ///                 } },
+    ///             },
+    ///         },
+    ///         SecurityGroupIds = new[]
+    ///         {
+    ///             "sg-12345",
+    ///         },
+    ///         ImageId = "ami-12345",
+    ///         IamInstanceProfile = "iam-profile",
+    ///         KeyPair = "KeyPair",
+    ///         UserData = "echo hello world",
+    ///         AssociatePublicIpAddress = false,
+    ///         UtilizeReservedInstances = false,
+    ///         DrainingTimeout = 120,
+    ///         Monitoring = true,
+    ///         EbsOptimized = true,
+    ///         UseAsTemplateOnly = true,
+    ///         SpotPercentage = 100,
+    ///         UtilizeCommitments = false,
+    ///         FallbackToOndemand = true,
+    ///         ClusterOrientations = new[]
+    ///         {
+    ///             new SpotInst.Ecs.Inputs.OceanClusterOrientationArgs
+    ///             {
+    ///                 AvailabilityVsCost = "balanced",
+    ///             },
+    ///         },
+    ///         InstanceMetadataOptions = new SpotInst.Ecs.Inputs.OceanInstanceMetadataOptionsArgs
+    ///         {
+    ///             HttpTokens = "required",
+    ///             HttpPutResponseHopLimit = 10,
+    ///         },
+    ///         BlockDeviceMappings = new[]
+    ///         {
+    ///             new SpotInst.Ecs.Inputs.OceanBlockDeviceMappingArgs
+    ///             {
+    ///                 DeviceName = "/dev/xvda1",
+    ///                 Ebs = new SpotInst.Ecs.Inputs.OceanBlockDeviceMappingEbsArgs
+    ///                 {
+    ///                     DeleteOnTermination = true,
+    ///                     Encrypted = false,
+    ///                     VolumeType = "gp2",
+    ///                     VolumeSize = 50,
+    ///                     Throughput = 500,
+    ///                     DynamicVolumeSize = new SpotInst.Ecs.Inputs.OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs
+    ///                     {
+    ///                         BaseSize = 50,
+    ///                         Resource = "CPU",
+    ///                         SizePerResourceUnit = 20,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         OptimizeImages = new SpotInst.Ecs.Inputs.OceanOptimizeImagesArgs
+    ///         {
+    ///             PerformAt = "timeWindow",
+    ///             TimeWindows = new[]
+    ///             {
+    ///                 "Sun:02:00-Sun:12:00",
+    ///                 "Sun:05:00-Sun:16:00",
+    ///             },
+    ///             ShouldOptimizeEcsAmi = true,
+    ///         },
+    ///         Tags = new[]
+    ///         {
+    ///             new SpotInst.Ecs.Inputs.OceanTagArgs
+    ///             {
+    ///                 Key = "fakeKey",
+    ///                 Value = "fakeValue",
+    ///             },
+    ///         },
+    ///         Logging = new SpotInst.Ecs.Inputs.OceanLoggingArgs
+    ///         {
+    ///             Export = new SpotInst.Ecs.Inputs.OceanLoggingExportArgs
+    ///             {
+    ///                 S3s = new[]
+    ///                 {
+    ///                     new SpotInst.Ecs.Inputs.OceanLoggingExportS3Args
+    ///                     {
+    ///                         Id = "di-abcd123",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Clusters can be imported using the Ocean `id`, e.g.,

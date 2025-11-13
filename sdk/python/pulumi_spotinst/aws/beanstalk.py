@@ -455,6 +455,44 @@ class Beanstalk(pulumi.CustomResource):
         """
         Provides a Spotinst AWS group resource using Elastic Beanstalk.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        elastigoup_aws_beanstalk = spotinst.aws.Beanstalk("elastigoup-aws-beanstalk",
+            name="example-elastigroup-beanstalk",
+            region="us-west-2",
+            product="Linux/UNIX",
+            min_size=0,
+            max_size=1,
+            desired_capacity=0,
+            beanstalk_environment_name="example-env",
+            beanstalk_environment_id="e-example",
+            instance_types_spots=[
+                "t2.micro",
+                "t2.medium",
+                "t2.large",
+            ],
+            deployment_preferences={
+                "automatic_roll": True,
+                "batch_size_percentage": 100,
+                "grace_period": 90,
+                "strategies": [{
+                    "action": "REPLACE_SERVER",
+                    "should_drain_instances": True,
+                }],
+            },
+            managed_actions={
+                "platformUpdate": {
+                    "performAt": "timeWindow",
+                    "timeWindow": "Mon:23:50-Tue:00:20",
+                    "updateLevel": "minorAndPatch",
+                },
+            }[0])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] beanstalk_environment_id: The id of an existing Beanstalk environment.
@@ -478,6 +516,44 @@ class Beanstalk(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Spotinst AWS group resource using Elastic Beanstalk.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        elastigoup_aws_beanstalk = spotinst.aws.Beanstalk("elastigoup-aws-beanstalk",
+            name="example-elastigroup-beanstalk",
+            region="us-west-2",
+            product="Linux/UNIX",
+            min_size=0,
+            max_size=1,
+            desired_capacity=0,
+            beanstalk_environment_name="example-env",
+            beanstalk_environment_id="e-example",
+            instance_types_spots=[
+                "t2.micro",
+                "t2.medium",
+                "t2.large",
+            ],
+            deployment_preferences={
+                "automatic_roll": True,
+                "batch_size_percentage": 100,
+                "grace_period": 90,
+                "strategies": [{
+                    "action": "REPLACE_SERVER",
+                    "should_drain_instances": True,
+                }],
+            },
+            managed_actions={
+                "platformUpdate": {
+                    "performAt": "timeWindow",
+                    "timeWindow": "Mon:23:50-Tue:00:20",
+                    "updateLevel": "minorAndPatch",
+                },
+            }[0])
+        ```
 
         :param str resource_name: The name of the resource.
         :param BeanstalkArgs args: The arguments to use to populate this resource's properties.

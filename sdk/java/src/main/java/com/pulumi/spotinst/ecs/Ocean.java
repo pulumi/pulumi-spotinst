@@ -32,6 +32,135 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.spotinst.ecs.Ocean;
+ * import com.pulumi.spotinst.ecs.OceanArgs;
+ * import com.pulumi.spotinst.ecs.inputs.OceanClusterOrientationArgs;
+ * import com.pulumi.spotinst.ecs.inputs.OceanInstanceMetadataOptionsArgs;
+ * import com.pulumi.spotinst.ecs.inputs.OceanBlockDeviceMappingArgs;
+ * import com.pulumi.spotinst.ecs.inputs.OceanBlockDeviceMappingEbsArgs;
+ * import com.pulumi.spotinst.ecs.inputs.OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs;
+ * import com.pulumi.spotinst.ecs.inputs.OceanOptimizeImagesArgs;
+ * import com.pulumi.spotinst.ecs.inputs.OceanTagArgs;
+ * import com.pulumi.spotinst.ecs.inputs.OceanLoggingArgs;
+ * import com.pulumi.spotinst.ecs.inputs.OceanLoggingExportArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Ocean("example", OceanArgs.builder()
+ *             .region("us-west-2")
+ *             .name("sample-ecs-cluster")
+ *             .clusterName("sample-ecs-cluster")
+ *             .minSize(0)
+ *             .maxSize(1)
+ *             .desiredCapacity(0)
+ *             .subnetIds("subnet-12345")
+ *             .instanceTypes(List.of(Map.of("filters", List.of(Map.ofEntries(
+ *                 Map.entry("architectures", List.of(                
+ *                     "x86_64",
+ *                     "i386")),
+ *                 Map.entry("categories", List.of(                
+ *                     "Accelerated_computing",
+ *                     "Compute_optimized")),
+ *                 Map.entry("diskTypes", List.of(                
+ *                     "EBS",
+ *                     "SSD")),
+ *                 Map.entry("excludeFamilies", List.of("m*")),
+ *                 Map.entry("excludeMetal", false),
+ *                 Map.entry("hypervisor", List.of("xen")),
+ *                 Map.entry("includeFamilies", List.of(                
+ *                     "c*",
+ *                     "t*")),
+ *                 Map.entry("isEnaSupported", false),
+ *                 Map.entry("maxGpu", 4),
+ *                 Map.entry("minGpu", 0),
+ *                 Map.entry("maxMemoryGib", 16),
+ *                 Map.entry("maxNetworkPerformance", 20),
+ *                 Map.entry("maxVcpu", 16),
+ *                 Map.entry("minEnis", 2),
+ *                 Map.entry("minMemoryGib", 8),
+ *                 Map.entry("minNetworkPerformance", 2),
+ *                 Map.entry("minVcpu", 2),
+ *                 Map.entry("rootDeviceTypes", List.of("ebs")),
+ *                 Map.entry("virtualizationTypes", List.of("hvm"))
+ *             )))))
+ *             .securityGroupIds("sg-12345")
+ *             .imageId("ami-12345")
+ *             .iamInstanceProfile("iam-profile")
+ *             .keyPair("KeyPair")
+ *             .userData("echo hello world")
+ *             .associatePublicIpAddress(false)
+ *             .utilizeReservedInstances(false)
+ *             .drainingTimeout(120)
+ *             .monitoring(true)
+ *             .ebsOptimized(true)
+ *             .useAsTemplateOnly(true)
+ *             .spotPercentage(100)
+ *             .utilizeCommitments(false)
+ *             .fallbackToOndemand(true)
+ *             .clusterOrientations(OceanClusterOrientationArgs.builder()
+ *                 .availabilityVsCost("balanced")
+ *                 .build())
+ *             .instanceMetadataOptions(OceanInstanceMetadataOptionsArgs.builder()
+ *                 .httpTokens("required")
+ *                 .httpPutResponseHopLimit(10)
+ *                 .build())
+ *             .blockDeviceMappings(OceanBlockDeviceMappingArgs.builder()
+ *                 .deviceName("/dev/xvda1")
+ *                 .ebs(OceanBlockDeviceMappingEbsArgs.builder()
+ *                     .deleteOnTermination(true)
+ *                     .encrypted(false)
+ *                     .volumeType("gp2")
+ *                     .volumeSize(50)
+ *                     .throughput(500)
+ *                     .dynamicVolumeSize(OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs.builder()
+ *                         .baseSize(50)
+ *                         .resource("CPU")
+ *                         .sizePerResourceUnit(20)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .optimizeImages(OceanOptimizeImagesArgs.builder()
+ *                 .performAt("timeWindow")
+ *                 .timeWindows(                
+ *                     "Sun:02:00-Sun:12:00",
+ *                     "Sun:05:00-Sun:16:00")
+ *                 .shouldOptimizeEcsAmi(true)
+ *                 .build())
+ *             .tags(OceanTagArgs.builder()
+ *                 .key("fakeKey")
+ *                 .value("fakeValue")
+ *                 .build())
+ *             .logging(OceanLoggingArgs.builder()
+ *                 .export(OceanLoggingExportArgs.builder()
+ *                     .s3s(OceanLoggingExportS3Args.builder()
+ *                         .id("di-abcd123")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Clusters can be imported using the Ocean `id`, e.g.,
