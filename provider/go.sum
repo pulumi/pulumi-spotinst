@@ -2502,10 +2502,10 @@ github.com/spf13/pflag v1.0.3/go.mod h1:DYY7MBk1bdzusC3SYhjObp+wFpr4gzcvqqNjLnIn
 github.com/spf13/pflag v1.0.9 h1:9exaQaMOCwffKiiiYk6/BndUBv+iRViNW+4lEMi0PvY=
 github.com/spf13/pflag v1.0.9/go.mod h1:McXfInJRrz4CZXVZOBLb0bTZqETkiAhM9Iw0y3An2Bg=
 github.com/spiffe/go-spiffe/v2 v2.5.0/go.mod h1:P+NxobPc6wXhVtINNtFjNWGBTreew1GBUCwT2wPmb7g=
-github.com/spotinst/spotinst-sdk-go v1.404.0 h1:zkVW+bmeUvfhLBeq2Q7DkKrXjGdKCgZZRn/g3wks36E=
-github.com/spotinst/spotinst-sdk-go v1.404.0/go.mod h1:Tn4/eb0SFY6IXmxz71CClujvbD/PuT+EO6Ta8v6AML4=
-github.com/spotinst/terraform-provider-spotinst v1.230.0 h1:tS7Hw05a+FSK4d2Yctt1XMvKyWGs/m7W6EmJZX3ODjo=
-github.com/spotinst/terraform-provider-spotinst v1.230.0/go.mod h1:jCQl2KM73UuU5gTvpkcGShbN3bZlEXDB+dfGiKCZjHg=
+github.com/spotinst/spotinst-sdk-go v1.405.0 h1:fgih+cXOro1+QXwr6eaqrb2YCsJ2+qRwGXtC1wXKtOs=
+github.com/spotinst/spotinst-sdk-go v1.405.0/go.mod h1:Tn4/eb0SFY6IXmxz71CClujvbD/PuT+EO6Ta8v6AML4=
+github.com/spotinst/terraform-provider-spotinst v1.231.0 h1:a/93qBKxMDyd6TedFbM+C9DZ1lQZVAJHt1XqcqEsIyc=
+github.com/spotinst/terraform-provider-spotinst v1.231.0/go.mod h1:U71TDHyMPzA/tc6UUsnJbYv6W1SCHixj6SQdSM/IvDQ=
 github.com/stoewer/go-strcase v1.3.0/go.mod h1:fAH5hQ5pehh+j3nZfvwdk2RgEgQjAoM8wodgtPmh1xo=
 github.com/streadway/amqp v0.0.0-20190404075320-75d898a42a94/go.mod h1:AZpEONHx3DKn8O/DFsRAY58/XVQiIPMTMB1SddzLXVw=
 github.com/streadway/amqp v0.0.0-20190827072141-edfb9018d271/go.mod h1:AZpEONHx3DKn8O/DFsRAY58/XVQiIPMTMB1SddzLXVw=
