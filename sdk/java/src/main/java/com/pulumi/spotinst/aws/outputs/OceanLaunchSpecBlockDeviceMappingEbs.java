@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecBlockDeviceMappingEbsDynamicIops;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -19,6 +20,11 @@ public final class OceanLaunchSpecBlockDeviceMappingEbs {
      * 
      */
     private @Nullable Boolean deleteOnTermination;
+    /**
+     * @return Set dynamic IOPS properties. When using this object, you cannot use the `iops` attribute. You must use one or the other.
+     * 
+     */
+    private @Nullable OceanLaunchSpecBlockDeviceMappingEbsDynamicIops dynamicIops;
     /**
      * @return Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
      * 
@@ -67,6 +73,13 @@ public final class OceanLaunchSpecBlockDeviceMappingEbs {
      */
     public Optional<Boolean> deleteOnTermination() {
         return Optional.ofNullable(this.deleteOnTermination);
+    }
+    /**
+     * @return Set dynamic IOPS properties. When using this object, you cannot use the `iops` attribute. You must use one or the other.
+     * 
+     */
+    public Optional<OceanLaunchSpecBlockDeviceMappingEbsDynamicIops> dynamicIops() {
+        return Optional.ofNullable(this.dynamicIops);
     }
     /**
      * @return Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
@@ -135,6 +148,7 @@ public final class OceanLaunchSpecBlockDeviceMappingEbs {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean deleteOnTermination;
+        private @Nullable OceanLaunchSpecBlockDeviceMappingEbsDynamicIops dynamicIops;
         private @Nullable OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize dynamicVolumeSize;
         private @Nullable Boolean encrypted;
         private @Nullable Integer iops;
@@ -147,6 +161,7 @@ public final class OceanLaunchSpecBlockDeviceMappingEbs {
         public Builder(OceanLaunchSpecBlockDeviceMappingEbs defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.deleteOnTermination = defaults.deleteOnTermination;
+    	      this.dynamicIops = defaults.dynamicIops;
     	      this.dynamicVolumeSize = defaults.dynamicVolumeSize;
     	      this.encrypted = defaults.encrypted;
     	      this.iops = defaults.iops;
@@ -161,6 +176,12 @@ public final class OceanLaunchSpecBlockDeviceMappingEbs {
         public Builder deleteOnTermination(@Nullable Boolean deleteOnTermination) {
 
             this.deleteOnTermination = deleteOnTermination;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dynamicIops(@Nullable OceanLaunchSpecBlockDeviceMappingEbsDynamicIops dynamicIops) {
+
+            this.dynamicIops = dynamicIops;
             return this;
         }
         @CustomType.Setter
@@ -214,6 +235,7 @@ public final class OceanLaunchSpecBlockDeviceMappingEbs {
         public OceanLaunchSpecBlockDeviceMappingEbs build() {
             final var _resultValue = new OceanLaunchSpecBlockDeviceMappingEbs();
             _resultValue.deleteOnTermination = deleteOnTermination;
+            _resultValue.dynamicIops = dynamicIops;
             _resultValue.dynamicVolumeSize = dynamicVolumeSize;
             _resultValue.encrypted = encrypted;
             _resultValue.iops = iops;

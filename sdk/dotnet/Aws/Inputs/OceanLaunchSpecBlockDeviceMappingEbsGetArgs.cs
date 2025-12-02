@@ -19,6 +19,12 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<bool>? DeleteOnTermination { get; set; }
 
         /// <summary>
+        /// Set dynamic IOPS properties. When using this object, you cannot use the `Iops` attribute. You must use one or the other.
+        /// </summary>
+        [Input("dynamicIops")]
+        public Input<Inputs.OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsGetArgs>? DynamicIops { get; set; }
+
+        /// <summary>
         /// Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
         /// </summary>
         [Input("dynamicVolumeSize")]

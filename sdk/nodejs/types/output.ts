@@ -2856,6 +2856,10 @@ export namespace aws {
          */
         deleteOnTermination?: boolean;
         /**
+         * Set dynamic IOPS properties. When using this object, you cannot use the `iops` attribute. You must use one or the other.
+         */
+        dynamicIops?: outputs.aws.OceanLaunchSpecBlockDeviceMappingEbsDynamicIops;
+        /**
          * Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
          */
         dynamicVolumeSize?: outputs.aws.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize;
@@ -2887,6 +2891,18 @@ export namespace aws {
          * String. The type of the volume. (Example: `gp2`).
          */
         volumeType?: string;
+    }
+
+    export interface OceanLaunchSpecBlockDeviceMappingEbsDynamicIops {
+        /**
+         * Initial size for IOPS.
+         */
+        baseSize: number;
+        resource: string;
+        /**
+         * Additional size per resource unit (in IOPS). (Example: `baseSize=50`, `sizePerResourceUnit=20`, and an instance with 2 CPU is launched; its IOPS size will be: 90).
+         */
+        sizePerResourceUnit: number;
     }
 
     export interface OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize {

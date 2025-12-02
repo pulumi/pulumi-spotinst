@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -31,6 +32,21 @@ public final class OceanLaunchSpecBlockDeviceMappingEbsArgs extends com.pulumi.r
      */
     public Optional<Output<Boolean>> deleteOnTermination() {
         return Optional.ofNullable(this.deleteOnTermination);
+    }
+
+    /**
+     * Set dynamic IOPS properties. When using this object, you cannot use the `iops` attribute. You must use one or the other.
+     * 
+     */
+    @Import(name="dynamicIops")
+    private @Nullable Output<OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsArgs> dynamicIops;
+
+    /**
+     * @return Set dynamic IOPS properties. When using this object, you cannot use the `iops` attribute. You must use one or the other.
+     * 
+     */
+    public Optional<Output<OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsArgs>> dynamicIops() {
+        return Optional.ofNullable(this.dynamicIops);
     }
 
     /**
@@ -157,6 +173,7 @@ public final class OceanLaunchSpecBlockDeviceMappingEbsArgs extends com.pulumi.r
 
     private OceanLaunchSpecBlockDeviceMappingEbsArgs(OceanLaunchSpecBlockDeviceMappingEbsArgs $) {
         this.deleteOnTermination = $.deleteOnTermination;
+        this.dynamicIops = $.dynamicIops;
         this.dynamicVolumeSize = $.dynamicVolumeSize;
         this.encrypted = $.encrypted;
         this.iops = $.iops;
@@ -204,6 +221,27 @@ public final class OceanLaunchSpecBlockDeviceMappingEbsArgs extends com.pulumi.r
          */
         public Builder deleteOnTermination(Boolean deleteOnTermination) {
             return deleteOnTermination(Output.of(deleteOnTermination));
+        }
+
+        /**
+         * @param dynamicIops Set dynamic IOPS properties. When using this object, you cannot use the `iops` attribute. You must use one or the other.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dynamicIops(@Nullable Output<OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsArgs> dynamicIops) {
+            $.dynamicIops = dynamicIops;
+            return this;
+        }
+
+        /**
+         * @param dynamicIops Set dynamic IOPS properties. When using this object, you cannot use the `iops` attribute. You must use one or the other.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dynamicIops(OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsArgs dynamicIops) {
+            return dynamicIops(Output.of(dynamicIops));
         }
 
         /**
