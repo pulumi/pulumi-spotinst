@@ -150,6 +150,7 @@ __all__ = [
     'OceanLaunchSpecAutoscaleHeadroomsAutomatic',
     'OceanLaunchSpecBlockDeviceMapping',
     'OceanLaunchSpecBlockDeviceMappingEbs',
+    'OceanLaunchSpecBlockDeviceMappingEbsDynamicIops',
     'OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize',
     'OceanLaunchSpecCreateOptions',
     'OceanLaunchSpecDeleteOptions',
@@ -9258,6 +9259,8 @@ class OceanLaunchSpecBlockDeviceMappingEbs(dict):
         suggest = None
         if key == "deleteOnTermination":
             suggest = "delete_on_termination"
+        elif key == "dynamicIops":
+            suggest = "dynamic_iops"
         elif key == "dynamicVolumeSize":
             suggest = "dynamic_volume_size"
         elif key == "kmsKeyId":
@@ -9282,6 +9285,7 @@ class OceanLaunchSpecBlockDeviceMappingEbs(dict):
 
     def __init__(__self__, *,
                  delete_on_termination: Optional[_builtins.bool] = None,
+                 dynamic_iops: Optional['outputs.OceanLaunchSpecBlockDeviceMappingEbsDynamicIops'] = None,
                  dynamic_volume_size: Optional['outputs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize'] = None,
                  encrypted: Optional[_builtins.bool] = None,
                  iops: Optional[_builtins.int] = None,
@@ -9292,6 +9296,7 @@ class OceanLaunchSpecBlockDeviceMappingEbs(dict):
                  volume_type: Optional[_builtins.str] = None):
         """
         :param _builtins.bool delete_on_termination: Boolean. Flag to delete the EBS on instance termination.
+        :param 'OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsArgs' dynamic_iops: Set dynamic IOPS properties. When using this object, you cannot use the `iops` attribute. You must use one or the other.
         :param 'OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs' dynamic_volume_size: Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
         :param _builtins.bool encrypted: Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
         :param _builtins.int iops: Int. The number of I/O operations per second (IOPS) that the volume supports.
@@ -9303,6 +9308,8 @@ class OceanLaunchSpecBlockDeviceMappingEbs(dict):
         """
         if delete_on_termination is not None:
             pulumi.set(__self__, "delete_on_termination", delete_on_termination)
+        if dynamic_iops is not None:
+            pulumi.set(__self__, "dynamic_iops", dynamic_iops)
         if dynamic_volume_size is not None:
             pulumi.set(__self__, "dynamic_volume_size", dynamic_volume_size)
         if encrypted is not None:
@@ -9327,6 +9334,14 @@ class OceanLaunchSpecBlockDeviceMappingEbs(dict):
         Boolean. Flag to delete the EBS on instance termination.
         """
         return pulumi.get(self, "delete_on_termination")
+
+    @_builtins.property
+    @pulumi.getter(name="dynamicIops")
+    def dynamic_iops(self) -> Optional['outputs.OceanLaunchSpecBlockDeviceMappingEbsDynamicIops']:
+        """
+        Set dynamic IOPS properties. When using this object, you cannot use the `iops` attribute. You must use one or the other.
+        """
+        return pulumi.get(self, "dynamic_iops")
 
     @_builtins.property
     @pulumi.getter(name="dynamicVolumeSize")
@@ -9391,6 +9406,61 @@ class OceanLaunchSpecBlockDeviceMappingEbs(dict):
         String. The type of the volume. (Example: `gp2`).
         """
         return pulumi.get(self, "volume_type")
+
+
+@pulumi.output_type
+class OceanLaunchSpecBlockDeviceMappingEbsDynamicIops(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "baseSize":
+            suggest = "base_size"
+        elif key == "sizePerResourceUnit":
+            suggest = "size_per_resource_unit"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanLaunchSpecBlockDeviceMappingEbsDynamicIops. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanLaunchSpecBlockDeviceMappingEbsDynamicIops.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanLaunchSpecBlockDeviceMappingEbsDynamicIops.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 base_size: _builtins.int,
+                 resource: _builtins.str,
+                 size_per_resource_unit: _builtins.int):
+        """
+        :param _builtins.int base_size: Initial size for IOPS.
+        :param _builtins.int size_per_resource_unit: Additional size per resource unit (in IOPS). (Example: `baseSize=50`, `sizePerResourceUnit=20`, and an instance with 2 CPU is launched; its IOPS size will be: 90).
+        """
+        pulumi.set(__self__, "base_size", base_size)
+        pulumi.set(__self__, "resource", resource)
+        pulumi.set(__self__, "size_per_resource_unit", size_per_resource_unit)
+
+    @_builtins.property
+    @pulumi.getter(name="baseSize")
+    def base_size(self) -> _builtins.int:
+        """
+        Initial size for IOPS.
+        """
+        return pulumi.get(self, "base_size")
+
+    @_builtins.property
+    @pulumi.getter
+    def resource(self) -> _builtins.str:
+        return pulumi.get(self, "resource")
+
+    @_builtins.property
+    @pulumi.getter(name="sizePerResourceUnit")
+    def size_per_resource_unit(self) -> _builtins.int:
+        """
+        Additional size per resource unit (in IOPS). (Example: `baseSize=50`, `sizePerResourceUnit=20`, and an instance with 2 CPU is launched; its IOPS size will be: 90).
+        """
+        return pulumi.get(self, "size_per_resource_unit")
 
 
 @pulumi.output_type

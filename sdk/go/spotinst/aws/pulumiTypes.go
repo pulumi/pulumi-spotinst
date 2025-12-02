@@ -20042,6 +20042,8 @@ func (o OceanLaunchSpecBlockDeviceMappingArrayOutput) Index(i pulumi.IntInput) O
 type OceanLaunchSpecBlockDeviceMappingEbs struct {
 	// Boolean. Flag to delete the EBS on instance termination.
 	DeleteOnTermination *bool `pulumi:"deleteOnTermination"`
+	// Set dynamic IOPS properties. When using this object, you cannot use the `iops` attribute. You must use one or the other.
+	DynamicIops *OceanLaunchSpecBlockDeviceMappingEbsDynamicIops `pulumi:"dynamicIops"`
 	// Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
 	DynamicVolumeSize *OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize `pulumi:"dynamicVolumeSize"`
 	// Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
@@ -20074,6 +20076,8 @@ type OceanLaunchSpecBlockDeviceMappingEbsInput interface {
 type OceanLaunchSpecBlockDeviceMappingEbsArgs struct {
 	// Boolean. Flag to delete the EBS on instance termination.
 	DeleteOnTermination pulumi.BoolPtrInput `pulumi:"deleteOnTermination"`
+	// Set dynamic IOPS properties. When using this object, you cannot use the `iops` attribute. You must use one or the other.
+	DynamicIops OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrInput `pulumi:"dynamicIops"`
 	// Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
 	DynamicVolumeSize OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrInput `pulumi:"dynamicVolumeSize"`
 	// Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
@@ -20174,6 +20178,13 @@ func (o OceanLaunchSpecBlockDeviceMappingEbsOutput) DeleteOnTermination() pulumi
 	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMappingEbs) *bool { return v.DeleteOnTermination }).(pulumi.BoolPtrOutput)
 }
 
+// Set dynamic IOPS properties. When using this object, you cannot use the `iops` attribute. You must use one or the other.
+func (o OceanLaunchSpecBlockDeviceMappingEbsOutput) DynamicIops() OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMappingEbs) *OceanLaunchSpecBlockDeviceMappingEbsDynamicIops {
+		return v.DynamicIops
+	}).(OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrOutput)
+}
+
 // Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
 func (o OceanLaunchSpecBlockDeviceMappingEbsOutput) DynamicVolumeSize() OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMappingEbs) *OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize {
@@ -20248,6 +20259,16 @@ func (o OceanLaunchSpecBlockDeviceMappingEbsPtrOutput) DeleteOnTermination() pul
 		}
 		return v.DeleteOnTermination
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Set dynamic IOPS properties. When using this object, you cannot use the `iops` attribute. You must use one or the other.
+func (o OceanLaunchSpecBlockDeviceMappingEbsPtrOutput) DynamicIops() OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecBlockDeviceMappingEbs) *OceanLaunchSpecBlockDeviceMappingEbsDynamicIops {
+		if v == nil {
+			return nil
+		}
+		return v.DynamicIops
+	}).(OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrOutput)
 }
 
 // Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
@@ -20328,6 +20349,177 @@ func (o OceanLaunchSpecBlockDeviceMappingEbsPtrOutput) VolumeType() pulumi.Strin
 		}
 		return v.VolumeType
 	}).(pulumi.StringPtrOutput)
+}
+
+type OceanLaunchSpecBlockDeviceMappingEbsDynamicIops struct {
+	// Initial size for IOPS.
+	BaseSize int    `pulumi:"baseSize"`
+	Resource string `pulumi:"resource"`
+	// Additional size per resource unit (in IOPS). (Example: `baseSize=50`, `sizePerResourceUnit=20`, and an instance with 2 CPU is launched; its IOPS size will be: 90).
+	SizePerResourceUnit int `pulumi:"sizePerResourceUnit"`
+}
+
+// OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsInput is an input type that accepts OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsArgs and OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsInput` via:
+//
+//	OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsArgs{...}
+type OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecBlockDeviceMappingEbsDynamicIopsOutput() OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsOutput
+	ToOceanLaunchSpecBlockDeviceMappingEbsDynamicIopsOutputWithContext(context.Context) OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsOutput
+}
+
+type OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsArgs struct {
+	// Initial size for IOPS.
+	BaseSize pulumi.IntInput    `pulumi:"baseSize"`
+	Resource pulumi.StringInput `pulumi:"resource"`
+	// Additional size per resource unit (in IOPS). (Example: `baseSize=50`, `sizePerResourceUnit=20`, and an instance with 2 CPU is launched; its IOPS size will be: 90).
+	SizePerResourceUnit pulumi.IntInput `pulumi:"sizePerResourceUnit"`
+}
+
+func (OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecBlockDeviceMappingEbsDynamicIops)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsArgs) ToOceanLaunchSpecBlockDeviceMappingEbsDynamicIopsOutput() OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsOutput {
+	return i.ToOceanLaunchSpecBlockDeviceMappingEbsDynamicIopsOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsArgs) ToOceanLaunchSpecBlockDeviceMappingEbsDynamicIopsOutputWithContext(ctx context.Context) OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsOutput)
+}
+
+func (i OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsArgs) ToOceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrOutput() OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrOutput {
+	return i.ToOceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsArgs) ToOceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrOutputWithContext(ctx context.Context) OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsOutput).ToOceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrOutputWithContext(ctx)
+}
+
+// OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrInput is an input type that accepts OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsArgs, OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtr and OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrInput` via:
+//
+//	        OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsArgs{...}
+//
+//	or:
+//
+//	        nil
+type OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrOutput() OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrOutput
+	ToOceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrOutputWithContext(context.Context) OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrOutput
+}
+
+type oceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrType OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsArgs
+
+func OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtr(v *OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsArgs) OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrInput {
+	return (*oceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrType)(v)
+}
+
+func (*oceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLaunchSpecBlockDeviceMappingEbsDynamicIops)(nil)).Elem()
+}
+
+func (i *oceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrType) ToOceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrOutput() OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrOutput {
+	return i.ToOceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrType) ToOceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrOutputWithContext(ctx context.Context) OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrOutput)
+}
+
+type OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecBlockDeviceMappingEbsDynamicIops)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsOutput) ToOceanLaunchSpecBlockDeviceMappingEbsDynamicIopsOutput() OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsOutput {
+	return o
+}
+
+func (o OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsOutput) ToOceanLaunchSpecBlockDeviceMappingEbsDynamicIopsOutputWithContext(ctx context.Context) OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsOutput {
+	return o
+}
+
+func (o OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsOutput) ToOceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrOutput() OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrOutput {
+	return o.ToOceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrOutputWithContext(context.Background())
+}
+
+func (o OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsOutput) ToOceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrOutputWithContext(ctx context.Context) OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanLaunchSpecBlockDeviceMappingEbsDynamicIops) *OceanLaunchSpecBlockDeviceMappingEbsDynamicIops {
+		return &v
+	}).(OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrOutput)
+}
+
+// Initial size for IOPS.
+func (o OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsOutput) BaseSize() pulumi.IntOutput {
+	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMappingEbsDynamicIops) int { return v.BaseSize }).(pulumi.IntOutput)
+}
+
+func (o OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsOutput) Resource() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMappingEbsDynamicIops) string { return v.Resource }).(pulumi.StringOutput)
+}
+
+// Additional size per resource unit (in IOPS). (Example: `baseSize=50`, `sizePerResourceUnit=20`, and an instance with 2 CPU is launched; its IOPS size will be: 90).
+func (o OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsOutput) SizePerResourceUnit() pulumi.IntOutput {
+	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMappingEbsDynamicIops) int { return v.SizePerResourceUnit }).(pulumi.IntOutput)
+}
+
+type OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLaunchSpecBlockDeviceMappingEbsDynamicIops)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrOutput) ToOceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrOutput() OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrOutput {
+	return o
+}
+
+func (o OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrOutput) ToOceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrOutputWithContext(ctx context.Context) OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrOutput {
+	return o
+}
+
+func (o OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrOutput) Elem() OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecBlockDeviceMappingEbsDynamicIops) OceanLaunchSpecBlockDeviceMappingEbsDynamicIops {
+		if v != nil {
+			return *v
+		}
+		var ret OceanLaunchSpecBlockDeviceMappingEbsDynamicIops
+		return ret
+	}).(OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsOutput)
+}
+
+// Initial size for IOPS.
+func (o OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrOutput) BaseSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecBlockDeviceMappingEbsDynamicIops) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.BaseSize
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecBlockDeviceMappingEbsDynamicIops) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Resource
+	}).(pulumi.StringPtrOutput)
+}
+
+// Additional size per resource unit (in IOPS). (Example: `baseSize=50`, `sizePerResourceUnit=20`, and an instance with 2 CPU is launched; its IOPS size will be: 90).
+func (o OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrOutput) SizePerResourceUnit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecBlockDeviceMappingEbsDynamicIops) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.SizePerResourceUnit
+	}).(pulumi.IntPtrOutput)
 }
 
 type OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize struct {
@@ -26356,6 +26548,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecBlockDeviceMappingArrayInput)(nil)).Elem(), OceanLaunchSpecBlockDeviceMappingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecBlockDeviceMappingEbsInput)(nil)).Elem(), OceanLaunchSpecBlockDeviceMappingEbsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecBlockDeviceMappingEbsPtrInput)(nil)).Elem(), OceanLaunchSpecBlockDeviceMappingEbsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsInput)(nil)).Elem(), OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrInput)(nil)).Elem(), OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeInput)(nil)).Elem(), OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrInput)(nil)).Elem(), OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecCreateOptionsInput)(nil)).Elem(), OceanLaunchSpecCreateOptionsArgs{})
@@ -26702,6 +26896,8 @@ func init() {
 	pulumi.RegisterOutputType(OceanLaunchSpecBlockDeviceMappingArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecBlockDeviceMappingEbsOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecBlockDeviceMappingEbsPtrOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecCreateOptionsOutput{})

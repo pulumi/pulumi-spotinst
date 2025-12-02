@@ -18,6 +18,10 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly bool? DeleteOnTermination;
         /// <summary>
+        /// Set dynamic IOPS properties. When using this object, you cannot use the `Iops` attribute. You must use one or the other.
+        /// </summary>
+        public readonly Outputs.OceanLaunchSpecBlockDeviceMappingEbsDynamicIops? DynamicIops;
+        /// <summary>
         /// Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
         /// </summary>
         public readonly Outputs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize? DynamicVolumeSize;
@@ -54,6 +58,8 @@ namespace Pulumi.SpotInst.Aws.Outputs
         private OceanLaunchSpecBlockDeviceMappingEbs(
             bool? deleteOnTermination,
 
+            Outputs.OceanLaunchSpecBlockDeviceMappingEbsDynamicIops? dynamicIops,
+
             Outputs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize? dynamicVolumeSize,
 
             bool? encrypted,
@@ -71,6 +77,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
             string? volumeType)
         {
             DeleteOnTermination = deleteOnTermination;
+            DynamicIops = dynamicIops;
             DynamicVolumeSize = dynamicVolumeSize;
             Encrypted = encrypted;
             Iops = iops;

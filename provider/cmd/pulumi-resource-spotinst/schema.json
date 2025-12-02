@@ -3468,6 +3468,10 @@
                     "type": "boolean",
                     "description": "Boolean. Flag to delete the EBS on instance termination.\n"
                 },
+                "dynamicIops": {
+                    "$ref": "#/types/spotinst:aws/OceanLaunchSpecBlockDeviceMappingEbsDynamicIops:OceanLaunchSpecBlockDeviceMappingEbsDynamicIops",
+                    "description": "Set dynamic IOPS properties. When using this object, you cannot use the \u003cspan pulumi-lang-nodejs=\"`iops`\" pulumi-lang-dotnet=\"`Iops`\" pulumi-lang-go=\"`iops`\" pulumi-lang-python=\"`iops`\" pulumi-lang-yaml=\"`iops`\" pulumi-lang-java=\"`iops`\"\u003e`iops`\u003c/span\u003e attribute. You must use one or the other.\n"
+                },
                 "dynamicVolumeSize": {
                     "$ref": "#/types/spotinst:aws/OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize:OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize",
                     "description": "Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.\n"
@@ -3502,6 +3506,27 @@
                 }
             },
             "type": "object"
+        },
+        "spotinst:aws/OceanLaunchSpecBlockDeviceMappingEbsDynamicIops:OceanLaunchSpecBlockDeviceMappingEbsDynamicIops": {
+            "properties": {
+                "baseSize": {
+                    "type": "integer",
+                    "description": "Initial size for IOPS.\n"
+                },
+                "resource": {
+                    "type": "string"
+                },
+                "sizePerResourceUnit": {
+                    "type": "integer",
+                    "description": "Additional size per resource unit (in IOPS). (Example: `baseSize=50`, `sizePerResourceUnit=20`, and an instance with 2 CPU is launched; its IOPS size will be: 90).\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "baseSize",
+                "resource",
+                "sizePerResourceUnit"
+            ]
         },
         "spotinst:aws/OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize:OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize": {
             "properties": {
