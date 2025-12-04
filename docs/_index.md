@@ -37,6 +37,7 @@ config:
         value: 'TODO: "${var.spotinst_token}"'
 
 ```
+
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as spotinst from "@pulumi/spotinst";
@@ -44,6 +45,7 @@ import * as spotinst from "@pulumi/spotinst";
 // Create an Elastigroup
 const foo = new spotinst.aws.Elastigroup("foo", {});
 ```
+
 {{% /choosable %}}
 {{% choosable language python %}}
 ```yaml
@@ -57,6 +59,7 @@ config:
         value: 'TODO: "${var.spotinst_token}"'
 
 ```
+
 ```python
 import pulumi
 import pulumi_spotinst as spotinst
@@ -64,6 +67,7 @@ import pulumi_spotinst as spotinst
 # Create an Elastigroup
 foo = spotinst.aws.Elastigroup("foo")
 ```
+
 {{% /choosable %}}
 {{% choosable language csharp %}}
 ```yaml
@@ -77,6 +81,7 @@ config:
         value: 'TODO: "${var.spotinst_token}"'
 
 ```
+
 ```csharp
 using System.Collections.Generic;
 using System.Linq;
@@ -91,6 +96,7 @@ return await Deployment.RunAsync(() =>
 });
 
 ```
+
 {{% /choosable %}}
 {{% choosable language go %}}
 ```yaml
@@ -104,6 +110,7 @@ config:
         value: 'TODO: "${var.spotinst_token}"'
 
 ```
+
 ```go
 package main
 
@@ -123,6 +130,7 @@ func main() {
 	})
 }
 ```
+
 {{% /choosable %}}
 {{% choosable language yaml %}}
 ```yaml
@@ -136,12 +144,14 @@ config:
         value: 'TODO: "${var.spotinst_token}"'
 
 ```
+
 ```yaml
 resources:
   # Create an Elastigroup
   foo:
     type: spotinst:aws:Elastigroup
 ```
+
 {{% /choosable %}}
 {{% choosable language java %}}
 ```yaml
@@ -155,6 +165,7 @@ config:
         value: 'TODO: "${var.spotinst_token}"'
 
 ```
+
 ```java
 package generated_program;
 
@@ -181,6 +192,7 @@ public class App {
     }
 }
 ```
+
 {{% /choosable %}}
 {{< /chooser >}}
 ## Configuration Reference
