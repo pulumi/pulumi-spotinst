@@ -183,7 +183,7 @@ type OceanLaunchSpec struct {
 	RestrictScaleDown pulumi.BoolOutput `pulumi:"restrictScaleDown"`
 	// Root volume size (in GB).
 	RootVolumeSize pulumi.IntOutput `pulumi:"rootVolumeSize"`
-	// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
+	// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`, `"pd-balanced"`.
 	RootVolumeType pulumi.StringOutput `pulumi:"rootVolumeType"`
 	// Used to define scheduled tasks such as a manual headroom update.
 	SchedulingTasks OceanLaunchSpecSchedulingTaskArrayOutput `pulumi:"schedulingTasks"`
@@ -264,7 +264,7 @@ type oceanLaunchSpecState struct {
 	RestrictScaleDown *bool `pulumi:"restrictScaleDown"`
 	// Root volume size (in GB).
 	RootVolumeSize *int `pulumi:"rootVolumeSize"`
-	// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
+	// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`, `"pd-balanced"`.
 	RootVolumeType *string `pulumi:"rootVolumeType"`
 	// Used to define scheduled tasks such as a manual headroom update.
 	SchedulingTasks []OceanLaunchSpecSchedulingTask `pulumi:"schedulingTasks"`
@@ -313,7 +313,7 @@ type OceanLaunchSpecState struct {
 	RestrictScaleDown pulumi.BoolPtrInput
 	// Root volume size (in GB).
 	RootVolumeSize pulumi.IntPtrInput
-	// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
+	// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`, `"pd-balanced"`.
 	RootVolumeType pulumi.StringPtrInput
 	// Used to define scheduled tasks such as a manual headroom update.
 	SchedulingTasks OceanLaunchSpecSchedulingTaskArrayInput
@@ -366,7 +366,7 @@ type oceanLaunchSpecArgs struct {
 	RestrictScaleDown *bool `pulumi:"restrictScaleDown"`
 	// Root volume size (in GB).
 	RootVolumeSize *int `pulumi:"rootVolumeSize"`
-	// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
+	// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`, `"pd-balanced"`.
 	RootVolumeType *string `pulumi:"rootVolumeType"`
 	// Used to define scheduled tasks such as a manual headroom update.
 	SchedulingTasks []OceanLaunchSpecSchedulingTask `pulumi:"schedulingTasks"`
@@ -416,7 +416,7 @@ type OceanLaunchSpecArgs struct {
 	RestrictScaleDown pulumi.BoolPtrInput
 	// Root volume size (in GB).
 	RootVolumeSize pulumi.IntPtrInput
-	// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
+	// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`, `"pd-balanced"`.
 	RootVolumeType pulumi.StringPtrInput
 	// Used to define scheduled tasks such as a manual headroom update.
 	SchedulingTasks OceanLaunchSpecSchedulingTaskArrayInput
@@ -595,7 +595,7 @@ func (o OceanLaunchSpecOutput) RootVolumeSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.IntOutput { return v.RootVolumeSize }).(pulumi.IntOutput)
 }
 
-// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
+// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`, `"pd-balanced"`.
 func (o OceanLaunchSpecOutput) RootVolumeType() pulumi.StringOutput {
 	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.StringOutput { return v.RootVolumeType }).(pulumi.StringOutput)
 }

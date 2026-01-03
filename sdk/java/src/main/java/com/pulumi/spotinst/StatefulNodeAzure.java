@@ -55,6 +55,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.spotinst.StatefulNodeAzureArgs;
  * import com.pulumi.spotinst.inputs.StatefulNodeAzureStrategyArgs;
  * import com.pulumi.spotinst.inputs.StatefulNodeAzureStrategyRevertToSpotArgs;
+ * import com.pulumi.spotinst.inputs.StatefulNodeAzureStrategyInterruptionTolerationArgs;
  * import com.pulumi.spotinst.inputs.StatefulNodeAzureVmSizesArgs;
  * import com.pulumi.spotinst.inputs.StatefulNodeAzureVmSizesSpotSizeAttributesArgs;
  * import com.pulumi.spotinst.inputs.StatefulNodeAzureBootDiagnosticArgs;
@@ -103,6 +104,12 @@ import javax.annotation.Nullable;
  *                     "TestUser")
  *                 .revertToSpot(StatefulNodeAzureStrategyRevertToSpotArgs.builder()
  *                     .performAt("timeWindow")
+ *                     .build())
+ *                 .interruptionToleration(StatefulNodeAzureStrategyInterruptionTolerationArgs.builder()
+ *                     .isEnabled(true)
+ *                     .threshold(3)
+ *                     .evaluationPeriod(30)
+ *                     .cooldown(120)
  *                     .build())
  *                 .preferredLifeCycle("od")
  *                 .capacityReservations(StatefulNodeAzureStrategyCapacityReservationArgs.builder()
@@ -341,6 +348,11 @@ import javax.annotation.Nullable;
  *   * `preferredLifeCycle` - (Optional, Enum `&#34;od&#34;, &#34;spot&#34;`, Default `&#34;spot&#34;`) The desired type of VM.
  *   * `revertToSpot` - (Optional) Hold settings for strategy correction - replacing On-Demand for Spot VMs.
  *     * `performAt` - (Required, Enum `&#34;timeWindow&#34;, &#34;never&#34;, &#34;always&#34;`, Default `&#34;always&#34;`) Settings for maintenance strategy.
+ *   * `interruptionToleration` - (Optional) Interruption tolerance settings for the stateful node. When enabled, the stateful node tracks interruption frequency and temporarily switches the node to On-Demand if too many interruptions occur within a defined evaluation window.
+ *     * `cooldown` - (Optional) The cooldown period after an interruption occurs before another interruption can be tolerated. Must be set when `isEnabled` is true. Range `120`-`10080`.
+ *     * `evaluationPeriod` - (Optional) The time window used to evaluate interruption tolerance. Must be set when `isEnabled` is true. Range `30`-`1440`.
+ *     * `isEnabled` - (Optional) Enables interruption tolerance behavior for the Stateful Node.
+ *     * `threshold` - (Optional) The maximum number of interruptions allowed within the defined evaluation period. Must be set when `isEnabled` is true. Value `&gt;=3`
  *   * `capacityReservation` - (Optional) On-demand Capacity Reservation group enables you to reserve Compute capacity in an Azure region or an Availability Zone for any duration of time. [CRG can only be created on the Azure end.](https://learn.microsoft.com/en-us/azure/virtual-machines/capacity-reservation-create)
  *     * `shouldUtilize` - (Required) Determines whether capacity reservations should be utilized.
  *     * `utilizationStrategy` - (Required, Enum `&#34;utilizeOverSpot&#34;, &#34;utilizeOverOD&#34;`) The priority requested for using CRG. This value will determine if CRG is used ahead of spot VMs or On-demand VMs. (`&#34;utilizeOverOD&#34;`- If picked, we will use CRG only in case On demand should be launched. `&#34;utilizeOverSpot&#34;`- CRG will be preferred over Spot. Only after CRG is fully used, spot VMs can be used.)

@@ -6,6 +6,7 @@ package com.pulumi.spotinst.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.outputs.StatefulNodeAzureStrategyCapacityReservation;
+import com.pulumi.spotinst.outputs.StatefulNodeAzureStrategyInterruptionToleration;
 import com.pulumi.spotinst.outputs.StatefulNodeAzureStrategyRevertToSpot;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -21,6 +22,7 @@ public final class StatefulNodeAzureStrategy {
     private @Nullable List<StatefulNodeAzureStrategyCapacityReservation> capacityReservations;
     private @Nullable Integer drainingTimeout;
     private Boolean fallbackToOnDemand;
+    private @Nullable StatefulNodeAzureStrategyInterruptionToleration interruptionToleration;
     private @Nullable List<String> odWindows;
     private @Nullable List<String> optimizationWindows;
     private @Nullable String preferredLifeCycle;
@@ -39,6 +41,9 @@ public final class StatefulNodeAzureStrategy {
     }
     public Boolean fallbackToOnDemand() {
         return this.fallbackToOnDemand;
+    }
+    public Optional<StatefulNodeAzureStrategyInterruptionToleration> interruptionToleration() {
+        return Optional.ofNullable(this.interruptionToleration);
     }
     public List<String> odWindows() {
         return this.odWindows == null ? List.of() : this.odWindows;
@@ -69,6 +74,7 @@ public final class StatefulNodeAzureStrategy {
         private @Nullable List<StatefulNodeAzureStrategyCapacityReservation> capacityReservations;
         private @Nullable Integer drainingTimeout;
         private Boolean fallbackToOnDemand;
+        private @Nullable StatefulNodeAzureStrategyInterruptionToleration interruptionToleration;
         private @Nullable List<String> odWindows;
         private @Nullable List<String> optimizationWindows;
         private @Nullable String preferredLifeCycle;
@@ -81,6 +87,7 @@ public final class StatefulNodeAzureStrategy {
     	      this.capacityReservations = defaults.capacityReservations;
     	      this.drainingTimeout = defaults.drainingTimeout;
     	      this.fallbackToOnDemand = defaults.fallbackToOnDemand;
+    	      this.interruptionToleration = defaults.interruptionToleration;
     	      this.odWindows = defaults.odWindows;
     	      this.optimizationWindows = defaults.optimizationWindows;
     	      this.preferredLifeCycle = defaults.preferredLifeCycle;
@@ -115,6 +122,12 @@ public final class StatefulNodeAzureStrategy {
               throw new MissingRequiredPropertyException("StatefulNodeAzureStrategy", "fallbackToOnDemand");
             }
             this.fallbackToOnDemand = fallbackToOnDemand;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder interruptionToleration(@Nullable StatefulNodeAzureStrategyInterruptionToleration interruptionToleration) {
+
+            this.interruptionToleration = interruptionToleration;
             return this;
         }
         @CustomType.Setter
@@ -162,6 +175,7 @@ public final class StatefulNodeAzureStrategy {
             _resultValue.capacityReservations = capacityReservations;
             _resultValue.drainingTimeout = drainingTimeout;
             _resultValue.fallbackToOnDemand = fallbackToOnDemand;
+            _resultValue.interruptionToleration = interruptionToleration;
             _resultValue.odWindows = odWindows;
             _resultValue.optimizationWindows = optimizationWindows;
             _resultValue.preferredLifeCycle = preferredLifeCycle;

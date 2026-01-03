@@ -60,7 +60,7 @@ class OceanLaunchSpecArgs:
         :param pulumi.Input['OceanLaunchSpecResourceLimitsArgs'] resource_limits: The Ocean virtual node group resource limits object.
         :param pulumi.Input[_builtins.bool] restrict_scale_down: Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[_builtins.int] root_volume_size: Root volume size (in GB).
-        :param pulumi.Input[_builtins.str] root_volume_type: Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
+        :param pulumi.Input[_builtins.str] root_volume_type: Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`, `"pd-balanced"`.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskArgs']]] scheduling_tasks: Used to define scheduled tasks such as a manual headroom update.
         :param pulumi.Input[_builtins.str] service_account: The account used by applications running on the VM to call GCP APIs.
         :param pulumi.Input['OceanLaunchSpecShieldedInstanceConfigArgs'] shielded_instance_config: The Ocean shielded instance configuration object.
@@ -287,7 +287,7 @@ class OceanLaunchSpecArgs:
     @pulumi.getter(name="rootVolumeType")
     def root_volume_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
+        Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`, `"pd-balanced"`.
         """
         return pulumi.get(self, "root_volume_type")
 
@@ -443,7 +443,7 @@ class _OceanLaunchSpecState:
         :param pulumi.Input['OceanLaunchSpecResourceLimitsArgs'] resource_limits: The Ocean virtual node group resource limits object.
         :param pulumi.Input[_builtins.bool] restrict_scale_down: Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[_builtins.int] root_volume_size: Root volume size (in GB).
-        :param pulumi.Input[_builtins.str] root_volume_type: Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
+        :param pulumi.Input[_builtins.str] root_volume_type: Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`, `"pd-balanced"`.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskArgs']]] scheduling_tasks: Used to define scheduled tasks such as a manual headroom update.
         :param pulumi.Input[_builtins.str] service_account: The account used by applications running on the VM to call GCP APIs.
         :param pulumi.Input['OceanLaunchSpecShieldedInstanceConfigArgs'] shielded_instance_config: The Ocean shielded instance configuration object.
@@ -671,7 +671,7 @@ class _OceanLaunchSpecState:
     @pulumi.getter(name="rootVolumeType")
     def root_volume_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
+        Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`, `"pd-balanced"`.
         """
         return pulumi.get(self, "root_volume_type")
 
@@ -932,7 +932,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[Union['OceanLaunchSpecResourceLimitsArgs', 'OceanLaunchSpecResourceLimitsArgsDict']] resource_limits: The Ocean virtual node group resource limits object.
         :param pulumi.Input[_builtins.bool] restrict_scale_down: Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[_builtins.int] root_volume_size: Root volume size (in GB).
-        :param pulumi.Input[_builtins.str] root_volume_type: Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
+        :param pulumi.Input[_builtins.str] root_volume_type: Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`, `"pd-balanced"`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecSchedulingTaskArgs', 'OceanLaunchSpecSchedulingTaskArgsDict']]]] scheduling_tasks: Used to define scheduled tasks such as a manual headroom update.
         :param pulumi.Input[_builtins.str] service_account: The account used by applications running on the VM to call GCP APIs.
         :param pulumi.Input[Union['OceanLaunchSpecShieldedInstanceConfigArgs', 'OceanLaunchSpecShieldedInstanceConfigArgsDict']] shielded_instance_config: The Ocean shielded instance configuration object.
@@ -1177,7 +1177,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[Union['OceanLaunchSpecResourceLimitsArgs', 'OceanLaunchSpecResourceLimitsArgsDict']] resource_limits: The Ocean virtual node group resource limits object.
         :param pulumi.Input[_builtins.bool] restrict_scale_down: Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[_builtins.int] root_volume_size: Root volume size (in GB).
-        :param pulumi.Input[_builtins.str] root_volume_type: Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
+        :param pulumi.Input[_builtins.str] root_volume_type: Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`, `"pd-balanced"`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecSchedulingTaskArgs', 'OceanLaunchSpecSchedulingTaskArgsDict']]]] scheduling_tasks: Used to define scheduled tasks such as a manual headroom update.
         :param pulumi.Input[_builtins.str] service_account: The account used by applications running on the VM to call GCP APIs.
         :param pulumi.Input[Union['OceanLaunchSpecShieldedInstanceConfigArgs', 'OceanLaunchSpecShieldedInstanceConfigArgsDict']] shielded_instance_config: The Ocean shielded instance configuration object.
@@ -1330,7 +1330,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
     @pulumi.getter(name="rootVolumeType")
     def root_volume_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
+        Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`, `"pd-balanced"`.
         """
         return pulumi.get(self, "root_volume_type")
 

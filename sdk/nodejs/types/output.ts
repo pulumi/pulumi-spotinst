@@ -725,6 +725,7 @@ export interface StatefulNodeAzureStrategy {
     capacityReservations?: outputs.StatefulNodeAzureStrategyCapacityReservation[];
     drainingTimeout: number;
     fallbackToOnDemand: boolean;
+    interruptionToleration?: outputs.StatefulNodeAzureStrategyInterruptionToleration;
     odWindows?: string[];
     optimizationWindows?: string[];
     preferredLifeCycle: string;
@@ -742,6 +743,13 @@ export interface StatefulNodeAzureStrategyCapacityReservationCapacityReservation
     crgName: string;
     crgResourceGroupName: string;
     crgShouldPrioritize?: boolean;
+}
+
+export interface StatefulNodeAzureStrategyInterruptionToleration {
+    cooldown?: number;
+    evaluationPeriod?: number;
+    isEnabled?: boolean;
+    threshold?: number;
 }
 
 export interface StatefulNodeAzureStrategyRevertToSpot {

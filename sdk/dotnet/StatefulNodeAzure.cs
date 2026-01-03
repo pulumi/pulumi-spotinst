@@ -50,6 +50,13 @@ namespace Pulumi.SpotInst
     ///             {
     ///                 PerformAt = "timeWindow",
     ///             },
+    ///             InterruptionToleration = new SpotInst.Inputs.StatefulNodeAzureStrategyInterruptionTolerationArgs
+    ///             {
+    ///                 IsEnabled = true,
+    ///                 Threshold = 3,
+    ///                 EvaluationPeriod = 30,
+    ///                 Cooldown = 120,
+    ///             },
     ///             PreferredLifeCycle = "od",
     ///             CapacityReservations = new[]
     ///             {
@@ -412,6 +419,11 @@ namespace Pulumi.SpotInst
     ///   * `PreferredLifeCycle` - (Optional, Enum `"od", "spot"`, Default `"spot"`) The desired type of VM.
     ///   * `RevertToSpot` - (Optional) Hold settings for strategy correction - replacing On-Demand for Spot VMs.
     ///     * `PerformAt` - (Required, Enum `"timeWindow", "never", "always"`, Default `"always"`) Settings for maintenance strategy.
+    ///   * `InterruptionToleration` - (Optional) Interruption tolerance settings for the stateful node. When enabled, the stateful node tracks interruption frequency and temporarily switches the node to On-Demand if too many interruptions occur within a defined evaluation window.
+    ///     * `Cooldown` - (Optional) The cooldown period after an interruption occurs before another interruption can be tolerated. Must be set when `isEnabled` is true. Range `120`-`10080`.
+    ///     * `EvaluationPeriod` - (Optional) The time window used to evaluate interruption tolerance. Must be set when `isEnabled` is true. Range `30`-`1440`.
+    ///     * `IsEnabled` - (Optional) Enables interruption tolerance behavior for the Stateful Node.
+    ///     * `Threshold` - (Optional) The maximum number of interruptions allowed within the defined evaluation period. Must be set when `isEnabled` is true. Value `&gt;=3`
     ///   * `CapacityReservation` - (Optional) On-demand Capacity Reservation group enables you to reserve Compute capacity in an Azure region or an Availability Zone for any duration of time. [CRG can only be created on the Azure end.](https://learn.microsoft.com/en-us/azure/virtual-machines/capacity-reservation-create)
     ///     * `ShouldUtilize` - (Required) Determines whether capacity reservations should be utilized.
     ///     * `UtilizationStrategy` - (Required, Enum `"utilizeOverSpot", "utilizeOverOD"`) The priority requested for using CRG. This value will determine if CRG is used ahead of spot VMs or On-demand VMs. (`"utilizeOverOD"`- If picked, we will use CRG only in case On demand should be launched. `"utilizeOverSpot"`- CRG will be preferred over Spot. Only after CRG is fully used, spot VMs can be used.)

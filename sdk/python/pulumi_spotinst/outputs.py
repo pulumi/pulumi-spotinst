@@ -110,6 +110,7 @@ __all__ = [
     'StatefulNodeAzureStrategy',
     'StatefulNodeAzureStrategyCapacityReservation',
     'StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup',
+    'StatefulNodeAzureStrategyInterruptionToleration',
     'StatefulNodeAzureStrategyRevertToSpot',
     'StatefulNodeAzureTag',
     'StatefulNodeAzureUpdateState',
@@ -4784,6 +4785,8 @@ class StatefulNodeAzureStrategy(dict):
             suggest = "capacity_reservations"
         elif key == "drainingTimeout":
             suggest = "draining_timeout"
+        elif key == "interruptionToleration":
+            suggest = "interruption_toleration"
         elif key == "odWindows":
             suggest = "od_windows"
         elif key == "optimizationWindows":
@@ -4811,6 +4814,7 @@ class StatefulNodeAzureStrategy(dict):
                  availability_vs_cost: Optional[_builtins.int] = None,
                  capacity_reservations: Optional[Sequence['outputs.StatefulNodeAzureStrategyCapacityReservation']] = None,
                  draining_timeout: Optional[_builtins.int] = None,
+                 interruption_toleration: Optional['outputs.StatefulNodeAzureStrategyInterruptionToleration'] = None,
                  od_windows: Optional[Sequence[_builtins.str]] = None,
                  optimization_windows: Optional[Sequence[_builtins.str]] = None,
                  preferred_life_cycle: Optional[_builtins.str] = None,
@@ -4823,6 +4827,8 @@ class StatefulNodeAzureStrategy(dict):
             pulumi.set(__self__, "capacity_reservations", capacity_reservations)
         if draining_timeout is not None:
             pulumi.set(__self__, "draining_timeout", draining_timeout)
+        if interruption_toleration is not None:
+            pulumi.set(__self__, "interruption_toleration", interruption_toleration)
         if od_windows is not None:
             pulumi.set(__self__, "od_windows", od_windows)
         if optimization_windows is not None:
@@ -4853,6 +4859,11 @@ class StatefulNodeAzureStrategy(dict):
     @pulumi.getter(name="drainingTimeout")
     def draining_timeout(self) -> Optional[_builtins.int]:
         return pulumi.get(self, "draining_timeout")
+
+    @_builtins.property
+    @pulumi.getter(name="interruptionToleration")
+    def interruption_toleration(self) -> Optional['outputs.StatefulNodeAzureStrategyInterruptionToleration']:
+        return pulumi.get(self, "interruption_toleration")
 
     @_builtins.property
     @pulumi.getter(name="odWindows")
@@ -4974,6 +4985,62 @@ class StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup(dict)
     @pulumi.getter(name="crgShouldPrioritize")
     def crg_should_prioritize(self) -> Optional[_builtins.bool]:
         return pulumi.get(self, "crg_should_prioritize")
+
+
+@pulumi.output_type
+class StatefulNodeAzureStrategyInterruptionToleration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "evaluationPeriod":
+            suggest = "evaluation_period"
+        elif key == "isEnabled":
+            suggest = "is_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StatefulNodeAzureStrategyInterruptionToleration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StatefulNodeAzureStrategyInterruptionToleration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StatefulNodeAzureStrategyInterruptionToleration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cooldown: Optional[_builtins.int] = None,
+                 evaluation_period: Optional[_builtins.int] = None,
+                 is_enabled: Optional[_builtins.bool] = None,
+                 threshold: Optional[_builtins.int] = None):
+        if cooldown is not None:
+            pulumi.set(__self__, "cooldown", cooldown)
+        if evaluation_period is not None:
+            pulumi.set(__self__, "evaluation_period", evaluation_period)
+        if is_enabled is not None:
+            pulumi.set(__self__, "is_enabled", is_enabled)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+
+    @_builtins.property
+    @pulumi.getter
+    def cooldown(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "cooldown")
+
+    @_builtins.property
+    @pulumi.getter(name="evaluationPeriod")
+    def evaluation_period(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "evaluation_period")
+
+    @_builtins.property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "is_enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def threshold(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "threshold")
 
 
 @pulumi.output_type

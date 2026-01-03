@@ -190,7 +190,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     declare public readonly rootVolumeSize: pulumi.Output<number>;
     /**
-     * Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
+     * Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`, `"pd-balanced"`.
      */
     declare public readonly rootVolumeType: pulumi.Output<string>;
     /**
@@ -357,7 +357,7 @@ export interface OceanLaunchSpecState {
      */
     rootVolumeSize?: pulumi.Input<number>;
     /**
-     * Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
+     * Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`, `"pd-balanced"`.
      */
     rootVolumeType?: pulumi.Input<string>;
     /**
@@ -453,7 +453,7 @@ export interface OceanLaunchSpecArgs {
      */
     rootVolumeSize?: pulumi.Input<number>;
     /**
-     * Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
+     * Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`, `"pd-balanced"`.
      */
     rootVolumeType?: pulumi.Input<string>;
     /**

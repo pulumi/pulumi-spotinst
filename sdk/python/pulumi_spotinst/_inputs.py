@@ -203,6 +203,8 @@ __all__ = [
     'StatefulNodeAzureStrategyCapacityReservationArgsDict',
     'StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs',
     'StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgsDict',
+    'StatefulNodeAzureStrategyInterruptionTolerationArgs',
+    'StatefulNodeAzureStrategyInterruptionTolerationArgsDict',
     'StatefulNodeAzureStrategyRevertToSpotArgs',
     'StatefulNodeAzureStrategyRevertToSpotArgsDict',
     'StatefulNodeAzureTagArgs',
@@ -5532,6 +5534,7 @@ if not MYPY:
         availability_vs_cost: NotRequired[pulumi.Input[_builtins.int]]
         capacity_reservations: NotRequired[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureStrategyCapacityReservationArgsDict']]]]
         draining_timeout: NotRequired[pulumi.Input[_builtins.int]]
+        interruption_toleration: NotRequired[pulumi.Input['StatefulNodeAzureStrategyInterruptionTolerationArgsDict']]
         od_windows: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         optimization_windows: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         preferred_life_cycle: NotRequired[pulumi.Input[_builtins.str]]
@@ -5547,6 +5550,7 @@ class StatefulNodeAzureStrategyArgs:
                  availability_vs_cost: Optional[pulumi.Input[_builtins.int]] = None,
                  capacity_reservations: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureStrategyCapacityReservationArgs']]]] = None,
                  draining_timeout: Optional[pulumi.Input[_builtins.int]] = None,
+                 interruption_toleration: Optional[pulumi.Input['StatefulNodeAzureStrategyInterruptionTolerationArgs']] = None,
                  od_windows: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  optimization_windows: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  preferred_life_cycle: Optional[pulumi.Input[_builtins.str]] = None,
@@ -5559,6 +5563,8 @@ class StatefulNodeAzureStrategyArgs:
             pulumi.set(__self__, "capacity_reservations", capacity_reservations)
         if draining_timeout is not None:
             pulumi.set(__self__, "draining_timeout", draining_timeout)
+        if interruption_toleration is not None:
+            pulumi.set(__self__, "interruption_toleration", interruption_toleration)
         if od_windows is not None:
             pulumi.set(__self__, "od_windows", od_windows)
         if optimization_windows is not None:
@@ -5605,6 +5611,15 @@ class StatefulNodeAzureStrategyArgs:
     @draining_timeout.setter
     def draining_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "draining_timeout", value)
+
+    @_builtins.property
+    @pulumi.getter(name="interruptionToleration")
+    def interruption_toleration(self) -> Optional[pulumi.Input['StatefulNodeAzureStrategyInterruptionTolerationArgs']]:
+        return pulumi.get(self, "interruption_toleration")
+
+    @interruption_toleration.setter
+    def interruption_toleration(self, value: Optional[pulumi.Input['StatefulNodeAzureStrategyInterruptionTolerationArgs']]):
+        pulumi.set(self, "interruption_toleration", value)
 
     @_builtins.property
     @pulumi.getter(name="odWindows")
@@ -5744,6 +5759,68 @@ class StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs:
     @crg_should_prioritize.setter
     def crg_should_prioritize(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "crg_should_prioritize", value)
+
+
+if not MYPY:
+    class StatefulNodeAzureStrategyInterruptionTolerationArgsDict(TypedDict):
+        cooldown: NotRequired[pulumi.Input[_builtins.int]]
+        evaluation_period: NotRequired[pulumi.Input[_builtins.int]]
+        is_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+        threshold: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    StatefulNodeAzureStrategyInterruptionTolerationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StatefulNodeAzureStrategyInterruptionTolerationArgs:
+    def __init__(__self__, *,
+                 cooldown: Optional[pulumi.Input[_builtins.int]] = None,
+                 evaluation_period: Optional[pulumi.Input[_builtins.int]] = None,
+                 is_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 threshold: Optional[pulumi.Input[_builtins.int]] = None):
+        if cooldown is not None:
+            pulumi.set(__self__, "cooldown", cooldown)
+        if evaluation_period is not None:
+            pulumi.set(__self__, "evaluation_period", evaluation_period)
+        if is_enabled is not None:
+            pulumi.set(__self__, "is_enabled", is_enabled)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+
+    @_builtins.property
+    @pulumi.getter
+    def cooldown(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "cooldown")
+
+    @cooldown.setter
+    def cooldown(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "cooldown", value)
+
+    @_builtins.property
+    @pulumi.getter(name="evaluationPeriod")
+    def evaluation_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "evaluation_period")
+
+    @evaluation_period.setter
+    def evaluation_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "evaluation_period", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "is_enabled")
+
+    @is_enabled.setter
+    def is_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "is_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "threshold")
+
+    @threshold.setter
+    def threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "threshold", value)
 
 
 if not MYPY:
