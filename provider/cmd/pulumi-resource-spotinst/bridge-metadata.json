@@ -2980,6 +2980,9 @@
                                         }
                                     }
                                 },
+                                "interruption_toleration": {
+                                    "maxItemsOne": true
+                                },
                                 "od_windows": {
                                     "maxItemsOne": false
                                 },
