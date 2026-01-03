@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.inputs.StatefulNodeAzureStrategyCapacityReservationArgs;
+import com.pulumi.spotinst.inputs.StatefulNodeAzureStrategyInterruptionTolerationArgs;
 import com.pulumi.spotinst.inputs.StatefulNodeAzureStrategyRevertToSpotArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -47,6 +48,13 @@ public final class StatefulNodeAzureStrategyArgs extends com.pulumi.resources.Re
 
     public Output<Boolean> fallbackToOnDemand() {
         return this.fallbackToOnDemand;
+    }
+
+    @Import(name="interruptionToleration")
+    private @Nullable Output<StatefulNodeAzureStrategyInterruptionTolerationArgs> interruptionToleration;
+
+    public Optional<Output<StatefulNodeAzureStrategyInterruptionTolerationArgs>> interruptionToleration() {
+        return Optional.ofNullable(this.interruptionToleration);
     }
 
     @Import(name="odWindows")
@@ -91,6 +99,7 @@ public final class StatefulNodeAzureStrategyArgs extends com.pulumi.resources.Re
         this.capacityReservations = $.capacityReservations;
         this.drainingTimeout = $.drainingTimeout;
         this.fallbackToOnDemand = $.fallbackToOnDemand;
+        this.interruptionToleration = $.interruptionToleration;
         this.odWindows = $.odWindows;
         this.optimizationWindows = $.optimizationWindows;
         this.preferredLifeCycle = $.preferredLifeCycle;
@@ -154,6 +163,15 @@ public final class StatefulNodeAzureStrategyArgs extends com.pulumi.resources.Re
 
         public Builder fallbackToOnDemand(Boolean fallbackToOnDemand) {
             return fallbackToOnDemand(Output.of(fallbackToOnDemand));
+        }
+
+        public Builder interruptionToleration(@Nullable Output<StatefulNodeAzureStrategyInterruptionTolerationArgs> interruptionToleration) {
+            $.interruptionToleration = interruptionToleration;
+            return this;
+        }
+
+        public Builder interruptionToleration(StatefulNodeAzureStrategyInterruptionTolerationArgs interruptionToleration) {
+            return interruptionToleration(Output.of(interruptionToleration));
         }
 
         public Builder odWindows(@Nullable Output<List<String>> odWindows) {

@@ -358,14 +358,14 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
         return this.rootVolumeSize;
     }
     /**
-     * Root volume disk type. Valid values: `&#34;pd-standard&#34;`, `&#34;pd-ssd&#34;`.
+     * Root volume disk type. Valid values: `&#34;pd-standard&#34;`, `&#34;pd-ssd&#34;`, `&#34;pd-balanced&#34;`.
      * 
      */
     @Export(name="rootVolumeType", refs={String.class}, tree="[0]")
     private Output<String> rootVolumeType;
 
     /**
-     * @return Root volume disk type. Valid values: `&#34;pd-standard&#34;`, `&#34;pd-ssd&#34;`.
+     * @return Root volume disk type. Valid values: `&#34;pd-standard&#34;`, `&#34;pd-ssd&#34;`, `&#34;pd-balanced&#34;`.
      * 
      */
     public Output<String> rootVolumeType() {

@@ -17,6 +17,7 @@ namespace Pulumi.SpotInst.Outputs
         public readonly ImmutableArray<Outputs.StatefulNodeAzureStrategyCapacityReservation> CapacityReservations;
         public readonly int? DrainingTimeout;
         public readonly bool FallbackToOnDemand;
+        public readonly Outputs.StatefulNodeAzureStrategyInterruptionToleration? InterruptionToleration;
         public readonly ImmutableArray<string> OdWindows;
         public readonly ImmutableArray<string> OptimizationWindows;
         public readonly string? PreferredLifeCycle;
@@ -33,6 +34,8 @@ namespace Pulumi.SpotInst.Outputs
 
             bool fallbackToOnDemand,
 
+            Outputs.StatefulNodeAzureStrategyInterruptionToleration? interruptionToleration,
+
             ImmutableArray<string> odWindows,
 
             ImmutableArray<string> optimizationWindows,
@@ -47,6 +50,7 @@ namespace Pulumi.SpotInst.Outputs
             CapacityReservations = capacityReservations;
             DrainingTimeout = drainingTimeout;
             FallbackToOnDemand = fallbackToOnDemand;
+            InterruptionToleration = interruptionToleration;
             OdWindows = odWindows;
             OptimizationWindows = optimizationWindows;
             PreferredLifeCycle = preferredLifeCycle;

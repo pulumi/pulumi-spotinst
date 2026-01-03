@@ -11373,15 +11373,16 @@ func (o StatefulNodeAzureSignalArrayOutput) Index(i pulumi.IntInput) StatefulNod
 }
 
 type StatefulNodeAzureStrategy struct {
-	AvailabilityVsCost   *int                                           `pulumi:"availabilityVsCost"`
-	CapacityReservations []StatefulNodeAzureStrategyCapacityReservation `pulumi:"capacityReservations"`
-	DrainingTimeout      *int                                           `pulumi:"drainingTimeout"`
-	FallbackToOnDemand   bool                                           `pulumi:"fallbackToOnDemand"`
-	OdWindows            []string                                       `pulumi:"odWindows"`
-	OptimizationWindows  []string                                       `pulumi:"optimizationWindows"`
-	PreferredLifeCycle   *string                                        `pulumi:"preferredLifeCycle"`
-	RevertToSpot         *StatefulNodeAzureStrategyRevertToSpot         `pulumi:"revertToSpot"`
-	VmAdmins             []string                                       `pulumi:"vmAdmins"`
+	AvailabilityVsCost     *int                                             `pulumi:"availabilityVsCost"`
+	CapacityReservations   []StatefulNodeAzureStrategyCapacityReservation   `pulumi:"capacityReservations"`
+	DrainingTimeout        *int                                             `pulumi:"drainingTimeout"`
+	FallbackToOnDemand     bool                                             `pulumi:"fallbackToOnDemand"`
+	InterruptionToleration *StatefulNodeAzureStrategyInterruptionToleration `pulumi:"interruptionToleration"`
+	OdWindows              []string                                         `pulumi:"odWindows"`
+	OptimizationWindows    []string                                         `pulumi:"optimizationWindows"`
+	PreferredLifeCycle     *string                                          `pulumi:"preferredLifeCycle"`
+	RevertToSpot           *StatefulNodeAzureStrategyRevertToSpot           `pulumi:"revertToSpot"`
+	VmAdmins               []string                                         `pulumi:"vmAdmins"`
 }
 
 // StatefulNodeAzureStrategyInput is an input type that accepts StatefulNodeAzureStrategyArgs and StatefulNodeAzureStrategyOutput values.
@@ -11396,15 +11397,16 @@ type StatefulNodeAzureStrategyInput interface {
 }
 
 type StatefulNodeAzureStrategyArgs struct {
-	AvailabilityVsCost   pulumi.IntPtrInput                                     `pulumi:"availabilityVsCost"`
-	CapacityReservations StatefulNodeAzureStrategyCapacityReservationArrayInput `pulumi:"capacityReservations"`
-	DrainingTimeout      pulumi.IntPtrInput                                     `pulumi:"drainingTimeout"`
-	FallbackToOnDemand   pulumi.BoolInput                                       `pulumi:"fallbackToOnDemand"`
-	OdWindows            pulumi.StringArrayInput                                `pulumi:"odWindows"`
-	OptimizationWindows  pulumi.StringArrayInput                                `pulumi:"optimizationWindows"`
-	PreferredLifeCycle   pulumi.StringPtrInput                                  `pulumi:"preferredLifeCycle"`
-	RevertToSpot         StatefulNodeAzureStrategyRevertToSpotPtrInput          `pulumi:"revertToSpot"`
-	VmAdmins             pulumi.StringArrayInput                                `pulumi:"vmAdmins"`
+	AvailabilityVsCost     pulumi.IntPtrInput                                      `pulumi:"availabilityVsCost"`
+	CapacityReservations   StatefulNodeAzureStrategyCapacityReservationArrayInput  `pulumi:"capacityReservations"`
+	DrainingTimeout        pulumi.IntPtrInput                                      `pulumi:"drainingTimeout"`
+	FallbackToOnDemand     pulumi.BoolInput                                        `pulumi:"fallbackToOnDemand"`
+	InterruptionToleration StatefulNodeAzureStrategyInterruptionTolerationPtrInput `pulumi:"interruptionToleration"`
+	OdWindows              pulumi.StringArrayInput                                 `pulumi:"odWindows"`
+	OptimizationWindows    pulumi.StringArrayInput                                 `pulumi:"optimizationWindows"`
+	PreferredLifeCycle     pulumi.StringPtrInput                                   `pulumi:"preferredLifeCycle"`
+	RevertToSpot           StatefulNodeAzureStrategyRevertToSpotPtrInput           `pulumi:"revertToSpot"`
+	VmAdmins               pulumi.StringArrayInput                                 `pulumi:"vmAdmins"`
 }
 
 func (StatefulNodeAzureStrategyArgs) ElementType() reflect.Type {
@@ -11502,6 +11504,12 @@ func (o StatefulNodeAzureStrategyOutput) FallbackToOnDemand() pulumi.BoolOutput 
 	return o.ApplyT(func(v StatefulNodeAzureStrategy) bool { return v.FallbackToOnDemand }).(pulumi.BoolOutput)
 }
 
+func (o StatefulNodeAzureStrategyOutput) InterruptionToleration() StatefulNodeAzureStrategyInterruptionTolerationPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureStrategy) *StatefulNodeAzureStrategyInterruptionToleration {
+		return v.InterruptionToleration
+	}).(StatefulNodeAzureStrategyInterruptionTolerationPtrOutput)
+}
+
 func (o StatefulNodeAzureStrategyOutput) OdWindows() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v StatefulNodeAzureStrategy) []string { return v.OdWindows }).(pulumi.StringArrayOutput)
 }
@@ -11580,6 +11588,15 @@ func (o StatefulNodeAzureStrategyPtrOutput) FallbackToOnDemand() pulumi.BoolPtrO
 		}
 		return &v.FallbackToOnDemand
 	}).(pulumi.BoolPtrOutput)
+}
+
+func (o StatefulNodeAzureStrategyPtrOutput) InterruptionToleration() StatefulNodeAzureStrategyInterruptionTolerationPtrOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureStrategy) *StatefulNodeAzureStrategyInterruptionToleration {
+		if v == nil {
+			return nil
+		}
+		return v.InterruptionToleration
+	}).(StatefulNodeAzureStrategyInterruptionTolerationPtrOutput)
 }
 
 func (o StatefulNodeAzureStrategyPtrOutput) OdWindows() pulumi.StringArrayOutput {
@@ -11843,6 +11860,184 @@ func (o StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArra
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup {
 		return vs[0].([]StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup)[vs[1].(int)]
 	}).(StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupOutput)
+}
+
+type StatefulNodeAzureStrategyInterruptionToleration struct {
+	Cooldown         *int  `pulumi:"cooldown"`
+	EvaluationPeriod *int  `pulumi:"evaluationPeriod"`
+	IsEnabled        *bool `pulumi:"isEnabled"`
+	Threshold        *int  `pulumi:"threshold"`
+}
+
+// StatefulNodeAzureStrategyInterruptionTolerationInput is an input type that accepts StatefulNodeAzureStrategyInterruptionTolerationArgs and StatefulNodeAzureStrategyInterruptionTolerationOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureStrategyInterruptionTolerationInput` via:
+//
+//	StatefulNodeAzureStrategyInterruptionTolerationArgs{...}
+type StatefulNodeAzureStrategyInterruptionTolerationInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureStrategyInterruptionTolerationOutput() StatefulNodeAzureStrategyInterruptionTolerationOutput
+	ToStatefulNodeAzureStrategyInterruptionTolerationOutputWithContext(context.Context) StatefulNodeAzureStrategyInterruptionTolerationOutput
+}
+
+type StatefulNodeAzureStrategyInterruptionTolerationArgs struct {
+	Cooldown         pulumi.IntPtrInput  `pulumi:"cooldown"`
+	EvaluationPeriod pulumi.IntPtrInput  `pulumi:"evaluationPeriod"`
+	IsEnabled        pulumi.BoolPtrInput `pulumi:"isEnabled"`
+	Threshold        pulumi.IntPtrInput  `pulumi:"threshold"`
+}
+
+func (StatefulNodeAzureStrategyInterruptionTolerationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureStrategyInterruptionToleration)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureStrategyInterruptionTolerationArgs) ToStatefulNodeAzureStrategyInterruptionTolerationOutput() StatefulNodeAzureStrategyInterruptionTolerationOutput {
+	return i.ToStatefulNodeAzureStrategyInterruptionTolerationOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureStrategyInterruptionTolerationArgs) ToStatefulNodeAzureStrategyInterruptionTolerationOutputWithContext(ctx context.Context) StatefulNodeAzureStrategyInterruptionTolerationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureStrategyInterruptionTolerationOutput)
+}
+
+func (i StatefulNodeAzureStrategyInterruptionTolerationArgs) ToStatefulNodeAzureStrategyInterruptionTolerationPtrOutput() StatefulNodeAzureStrategyInterruptionTolerationPtrOutput {
+	return i.ToStatefulNodeAzureStrategyInterruptionTolerationPtrOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureStrategyInterruptionTolerationArgs) ToStatefulNodeAzureStrategyInterruptionTolerationPtrOutputWithContext(ctx context.Context) StatefulNodeAzureStrategyInterruptionTolerationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureStrategyInterruptionTolerationOutput).ToStatefulNodeAzureStrategyInterruptionTolerationPtrOutputWithContext(ctx)
+}
+
+// StatefulNodeAzureStrategyInterruptionTolerationPtrInput is an input type that accepts StatefulNodeAzureStrategyInterruptionTolerationArgs, StatefulNodeAzureStrategyInterruptionTolerationPtr and StatefulNodeAzureStrategyInterruptionTolerationPtrOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureStrategyInterruptionTolerationPtrInput` via:
+//
+//	        StatefulNodeAzureStrategyInterruptionTolerationArgs{...}
+//
+//	or:
+//
+//	        nil
+type StatefulNodeAzureStrategyInterruptionTolerationPtrInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureStrategyInterruptionTolerationPtrOutput() StatefulNodeAzureStrategyInterruptionTolerationPtrOutput
+	ToStatefulNodeAzureStrategyInterruptionTolerationPtrOutputWithContext(context.Context) StatefulNodeAzureStrategyInterruptionTolerationPtrOutput
+}
+
+type statefulNodeAzureStrategyInterruptionTolerationPtrType StatefulNodeAzureStrategyInterruptionTolerationArgs
+
+func StatefulNodeAzureStrategyInterruptionTolerationPtr(v *StatefulNodeAzureStrategyInterruptionTolerationArgs) StatefulNodeAzureStrategyInterruptionTolerationPtrInput {
+	return (*statefulNodeAzureStrategyInterruptionTolerationPtrType)(v)
+}
+
+func (*statefulNodeAzureStrategyInterruptionTolerationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatefulNodeAzureStrategyInterruptionToleration)(nil)).Elem()
+}
+
+func (i *statefulNodeAzureStrategyInterruptionTolerationPtrType) ToStatefulNodeAzureStrategyInterruptionTolerationPtrOutput() StatefulNodeAzureStrategyInterruptionTolerationPtrOutput {
+	return i.ToStatefulNodeAzureStrategyInterruptionTolerationPtrOutputWithContext(context.Background())
+}
+
+func (i *statefulNodeAzureStrategyInterruptionTolerationPtrType) ToStatefulNodeAzureStrategyInterruptionTolerationPtrOutputWithContext(ctx context.Context) StatefulNodeAzureStrategyInterruptionTolerationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureStrategyInterruptionTolerationPtrOutput)
+}
+
+type StatefulNodeAzureStrategyInterruptionTolerationOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureStrategyInterruptionTolerationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureStrategyInterruptionToleration)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureStrategyInterruptionTolerationOutput) ToStatefulNodeAzureStrategyInterruptionTolerationOutput() StatefulNodeAzureStrategyInterruptionTolerationOutput {
+	return o
+}
+
+func (o StatefulNodeAzureStrategyInterruptionTolerationOutput) ToStatefulNodeAzureStrategyInterruptionTolerationOutputWithContext(ctx context.Context) StatefulNodeAzureStrategyInterruptionTolerationOutput {
+	return o
+}
+
+func (o StatefulNodeAzureStrategyInterruptionTolerationOutput) ToStatefulNodeAzureStrategyInterruptionTolerationPtrOutput() StatefulNodeAzureStrategyInterruptionTolerationPtrOutput {
+	return o.ToStatefulNodeAzureStrategyInterruptionTolerationPtrOutputWithContext(context.Background())
+}
+
+func (o StatefulNodeAzureStrategyInterruptionTolerationOutput) ToStatefulNodeAzureStrategyInterruptionTolerationPtrOutputWithContext(ctx context.Context) StatefulNodeAzureStrategyInterruptionTolerationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatefulNodeAzureStrategyInterruptionToleration) *StatefulNodeAzureStrategyInterruptionToleration {
+		return &v
+	}).(StatefulNodeAzureStrategyInterruptionTolerationPtrOutput)
+}
+
+func (o StatefulNodeAzureStrategyInterruptionTolerationOutput) Cooldown() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureStrategyInterruptionToleration) *int { return v.Cooldown }).(pulumi.IntPtrOutput)
+}
+
+func (o StatefulNodeAzureStrategyInterruptionTolerationOutput) EvaluationPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureStrategyInterruptionToleration) *int { return v.EvaluationPeriod }).(pulumi.IntPtrOutput)
+}
+
+func (o StatefulNodeAzureStrategyInterruptionTolerationOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureStrategyInterruptionToleration) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o StatefulNodeAzureStrategyInterruptionTolerationOutput) Threshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureStrategyInterruptionToleration) *int { return v.Threshold }).(pulumi.IntPtrOutput)
+}
+
+type StatefulNodeAzureStrategyInterruptionTolerationPtrOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureStrategyInterruptionTolerationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatefulNodeAzureStrategyInterruptionToleration)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureStrategyInterruptionTolerationPtrOutput) ToStatefulNodeAzureStrategyInterruptionTolerationPtrOutput() StatefulNodeAzureStrategyInterruptionTolerationPtrOutput {
+	return o
+}
+
+func (o StatefulNodeAzureStrategyInterruptionTolerationPtrOutput) ToStatefulNodeAzureStrategyInterruptionTolerationPtrOutputWithContext(ctx context.Context) StatefulNodeAzureStrategyInterruptionTolerationPtrOutput {
+	return o
+}
+
+func (o StatefulNodeAzureStrategyInterruptionTolerationPtrOutput) Elem() StatefulNodeAzureStrategyInterruptionTolerationOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureStrategyInterruptionToleration) StatefulNodeAzureStrategyInterruptionToleration {
+		if v != nil {
+			return *v
+		}
+		var ret StatefulNodeAzureStrategyInterruptionToleration
+		return ret
+	}).(StatefulNodeAzureStrategyInterruptionTolerationOutput)
+}
+
+func (o StatefulNodeAzureStrategyInterruptionTolerationPtrOutput) Cooldown() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureStrategyInterruptionToleration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Cooldown
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o StatefulNodeAzureStrategyInterruptionTolerationPtrOutput) EvaluationPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureStrategyInterruptionToleration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.EvaluationPeriod
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o StatefulNodeAzureStrategyInterruptionTolerationPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureStrategyInterruptionToleration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o StatefulNodeAzureStrategyInterruptionTolerationPtrOutput) Threshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureStrategyInterruptionToleration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Threshold
+	}).(pulumi.IntPtrOutput)
 }
 
 type StatefulNodeAzureStrategyRevertToSpot struct {
@@ -12762,6 +12957,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureStrategyCapacityReservationArrayInput)(nil)).Elem(), StatefulNodeAzureStrategyCapacityReservationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupInput)(nil)).Elem(), StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArrayInput)(nil)).Elem(), StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureStrategyInterruptionTolerationInput)(nil)).Elem(), StatefulNodeAzureStrategyInterruptionTolerationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureStrategyInterruptionTolerationPtrInput)(nil)).Elem(), StatefulNodeAzureStrategyInterruptionTolerationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureStrategyRevertToSpotInput)(nil)).Elem(), StatefulNodeAzureStrategyRevertToSpotArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureStrategyRevertToSpotPtrInput)(nil)).Elem(), StatefulNodeAzureStrategyRevertToSpotArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureTagInput)(nil)).Elem(), StatefulNodeAzureTagArgs{})
@@ -12958,6 +13155,8 @@ func init() {
 	pulumi.RegisterOutputType(StatefulNodeAzureStrategyCapacityReservationArrayOutput{})
 	pulumi.RegisterOutputType(StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupOutput{})
 	pulumi.RegisterOutputType(StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArrayOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureStrategyInterruptionTolerationOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureStrategyInterruptionTolerationPtrOutput{})
 	pulumi.RegisterOutputType(StatefulNodeAzureStrategyRevertToSpotOutput{})
 	pulumi.RegisterOutputType(StatefulNodeAzureStrategyRevertToSpotPtrOutput{})
 	pulumi.RegisterOutputType(StatefulNodeAzureTagOutput{})

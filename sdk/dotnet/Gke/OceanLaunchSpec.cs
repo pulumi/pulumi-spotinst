@@ -260,7 +260,7 @@ namespace Pulumi.SpotInst.Gke
         public Output<int> RootVolumeSize { get; private set; } = null!;
 
         /// <summary>
-        /// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
+        /// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`, `"pd-balanced"`.
         /// </summary>
         [Output("rootVolumeType")]
         public Output<string> RootVolumeType { get; private set; } = null!;
@@ -480,7 +480,7 @@ namespace Pulumi.SpotInst.Gke
         public Input<int>? RootVolumeSize { get; set; }
 
         /// <summary>
-        /// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
+        /// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`, `"pd-balanced"`.
         /// </summary>
         [Input("rootVolumeType")]
         public Input<string>? RootVolumeType { get; set; }
@@ -686,7 +686,7 @@ namespace Pulumi.SpotInst.Gke
         public Input<int>? RootVolumeSize { get; set; }
 
         /// <summary>
-        /// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
+        /// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`, `"pd-balanced"`.
         /// </summary>
         [Input("rootVolumeType")]
         public Input<string>? RootVolumeType { get; set; }

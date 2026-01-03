@@ -29,6 +29,9 @@ namespace Pulumi.SpotInst.Inputs
         [Input("fallbackToOnDemand", required: true)]
         public Input<bool> FallbackToOnDemand { get; set; } = null!;
 
+        [Input("interruptionToleration")]
+        public Input<Inputs.StatefulNodeAzureStrategyInterruptionTolerationArgs>? InterruptionToleration { get; set; }
+
         [Input("odWindows")]
         private InputList<string>? _odWindows;
         public InputList<string> OdWindows

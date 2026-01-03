@@ -725,6 +725,7 @@ export interface StatefulNodeAzureStrategy {
     capacityReservations?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureStrategyCapacityReservation>[]>;
     drainingTimeout?: pulumi.Input<number>;
     fallbackToOnDemand: pulumi.Input<boolean>;
+    interruptionToleration?: pulumi.Input<inputs.StatefulNodeAzureStrategyInterruptionToleration>;
     odWindows?: pulumi.Input<pulumi.Input<string>[]>;
     optimizationWindows?: pulumi.Input<pulumi.Input<string>[]>;
     preferredLifeCycle?: pulumi.Input<string>;
@@ -742,6 +743,13 @@ export interface StatefulNodeAzureStrategyCapacityReservationCapacityReservation
     crgName: pulumi.Input<string>;
     crgResourceGroupName: pulumi.Input<string>;
     crgShouldPrioritize?: pulumi.Input<boolean>;
+}
+
+export interface StatefulNodeAzureStrategyInterruptionToleration {
+    cooldown?: pulumi.Input<number>;
+    evaluationPeriod?: pulumi.Input<number>;
+    isEnabled?: pulumi.Input<boolean>;
+    threshold?: pulumi.Input<number>;
 }
 
 export interface StatefulNodeAzureStrategyRevertToSpot {

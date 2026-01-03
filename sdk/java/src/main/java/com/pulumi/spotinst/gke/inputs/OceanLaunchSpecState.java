@@ -235,14 +235,14 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Root volume disk type. Valid values: `&#34;pd-standard&#34;`, `&#34;pd-ssd&#34;`.
+     * Root volume disk type. Valid values: `&#34;pd-standard&#34;`, `&#34;pd-ssd&#34;`, `&#34;pd-balanced&#34;`.
      * 
      */
     @Import(name="rootVolumeType")
     private @Nullable Output<String> rootVolumeType;
 
     /**
-     * @return Root volume disk type. Valid values: `&#34;pd-standard&#34;`, `&#34;pd-ssd&#34;`.
+     * @return Root volume disk type. Valid values: `&#34;pd-standard&#34;`, `&#34;pd-ssd&#34;`, `&#34;pd-balanced&#34;`.
      * 
      */
     public Optional<Output<String>> rootVolumeType() {
@@ -766,7 +766,7 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param rootVolumeType Root volume disk type. Valid values: `&#34;pd-standard&#34;`, `&#34;pd-ssd&#34;`.
+         * @param rootVolumeType Root volume disk type. Valid values: `&#34;pd-standard&#34;`, `&#34;pd-ssd&#34;`, `&#34;pd-balanced&#34;`.
          * 
          * @return builder
          * 
@@ -777,7 +777,7 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param rootVolumeType Root volume disk type. Valid values: `&#34;pd-standard&#34;`, `&#34;pd-ssd&#34;`.
+         * @param rootVolumeType Root volume disk type. Valid values: `&#34;pd-standard&#34;`, `&#34;pd-ssd&#34;`, `&#34;pd-balanced&#34;`.
          * 
          * @return builder
          * 
