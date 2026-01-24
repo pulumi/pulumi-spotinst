@@ -2504,8 +2504,8 @@ github.com/spf13/pflag v1.0.10/go.mod h1:McXfInJRrz4CZXVZOBLb0bTZqETkiAhM9Iw0y3A
 github.com/spiffe/go-spiffe/v2 v2.5.0/go.mod h1:P+NxobPc6wXhVtINNtFjNWGBTreew1GBUCwT2wPmb7g=
 github.com/spotinst/spotinst-sdk-go v1.406.1 h1:jGVHLYii93rI7s6gN4iS1V4IuUtQiYod26EAl0FiHT0=
 github.com/spotinst/spotinst-sdk-go v1.406.1/go.mod h1:Tn4/eb0SFY6IXmxz71CClujvbD/PuT+EO6Ta8v6AML4=
-github.com/spotinst/terraform-provider-spotinst v1.232.1 h1:KXqQPCXggSsiE6UWLQ2nbW1m0kgOKgQtEHTzNN7rOCY=
-github.com/spotinst/terraform-provider-spotinst v1.232.1/go.mod h1:RPRTFGRvFUVdw9DwMcVD/0uL0OUYlsBQV30KzwKN790=
+github.com/spotinst/terraform-provider-spotinst v1.232.3 h1:v6hStCe8ohHH0n5GU55PixFRtnhffXSkgfNZHOkH6JA=
+github.com/spotinst/terraform-provider-spotinst v1.232.3/go.mod h1:RPRTFGRvFUVdw9DwMcVD/0uL0OUYlsBQV30KzwKN790=
 github.com/stoewer/go-strcase v1.3.0/go.mod h1:fAH5hQ5pehh+j3nZfvwdk2RgEgQjAoM8wodgtPmh1xo=
 github.com/streadway/amqp v0.0.0-20190404075320-75d898a42a94/go.mod h1:AZpEONHx3DKn8O/DFsRAY58/XVQiIPMTMB1SddzLXVw=
 github.com/streadway/amqp v0.0.0-20190827072141-edfb9018d271/go.mod h1:AZpEONHx3DKn8O/DFsRAY58/XVQiIPMTMB1SddzLXVw=
