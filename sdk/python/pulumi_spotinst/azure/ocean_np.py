@@ -1036,7 +1036,153 @@ class OceanNp(pulumi.CustomResource):
                  vng_template_scheduling: Optional[pulumi.Input[Union['OceanNpVngTemplateSchedulingArgs', 'OceanNpVngTemplateSchedulingArgsDict']]] = None,
                  __props__=None):
         """
-        Create a OceanNp resource with the given unique name, props, and options.
+        Manages a Spotinst Ocean AKS resource.
+
+        ## Basic Ocean Cluster Creation Usage Example - using minimum configuration with only required parameters
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        example = spotinst.azure.OceanNp("example",
+            name="test",
+            aks_region="eastus",
+            aks_cluster_name="test-cluster",
+            aks_infrastructure_resource_group_name="MC_TestResourceGroup_test-cluster_eastus",
+            aks_resource_group_name="TestResourceGroup",
+            controller_cluster_id="test-123124",
+            availability_zones=[
+                "1",
+                "2",
+                "3",
+            ])
+        ```
+
+        ## Detailed Ocean Cluster Creation Usage Example - using all available parameters with sample values
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        example = spotinst.azure.OceanNp("example",
+            name="test",
+            aks_region="eastus",
+            aks_cluster_name="test-cluster",
+            aks_infrastructure_resource_group_name="MC_TestResourceGroup_test-cluster_eastus",
+            aks_resource_group_name="TestResourceGroup",
+            controller_cluster_id="test-123124",
+            autoscaler={
+                "autoscale_is_enabled": True,
+                "resource_limits": {
+                    "max_vcpu": 750,
+                    "max_memory_gib": 1500,
+                },
+                "autoscale_down": {
+                    "max_scale_down_percentage": 30,
+                },
+                "autoscale_headroom": {
+                    "automatic": {
+                        "is_enabled": True,
+                        "percentage": 5,
+                    },
+                },
+            },
+            health={
+                "grace_period": 600,
+            },
+            logging={
+                "export": {
+                    "azure_blobs": [{
+                        "id": "di-abcd123",
+                    }],
+                },
+            },
+            headrooms=[{
+                "cpu_per_unit": 1024,
+                "memory_per_unit": 512,
+                "gpu_per_unit": 0,
+                "num_of_units": 2,
+            }],
+            availability_zones=[
+                "1",
+                "2",
+                "3",
+            ],
+            labels={
+                "key": "env",
+                "value": "test",
+            },
+            min_count=1,
+            max_count=100,
+            max_pods_per_node=30,
+            enable_node_public_ip=True,
+            os_disk_size_gb=30,
+            os_disk_type="Managed",
+            os_type="Windows",
+            os_sku="Windows2022",
+            kubernetes_version="1.26",
+            pod_subnet_ids=["/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default"],
+            vnet_subnet_ids=["/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default"],
+            linux_os_configs=[{
+                "sysctls": [{
+                    "vm_max_map_count": 79550,
+                }],
+            }],
+            spot_percentage=50,
+            fallback_to_ondemand=True,
+            taints=[{
+                "key": "taintKey",
+                "value": "taintValue",
+                "effect": "NoSchedule",
+            }],
+            vng_template_scheduling={
+                "vng_template_shutdown_hours": {
+                    "is_enabled": True,
+                    "time_windows": [
+                        "Fri:15:30-Sat:13:30",
+                        "Sun:15:30-Mon:13:30",
+                    ],
+                },
+            },
+            tags={
+                "tagKey": "env",
+                "tagValue": "staging",
+            },
+            filters={
+                "min_vcpu": 2,
+                "max_vcpu": 16,
+                "min_memory_gib": 8,
+                "max_memory_gib": 128,
+                "architectures": [
+                    "x86_64",
+                    "arm64",
+                ],
+                "series": [
+                    "D v3",
+                    "Dds_v4",
+                    "Dsv2",
+                ],
+                "exclude_series": [
+                    "Av2",
+                    "A",
+                    "Bs",
+                    "D",
+                    "E",
+                ],
+                "accelerated_networking": "Enabled",
+                "disk_performance": "Premium",
+                "min_gpu": 1,
+                "max_gpu": 2,
+                "min_nics": 1,
+                "vm_types": [
+                    "generalPurpose",
+                    "GPU",
+                ],
+                "min_disk": 1,
+                "gpu_types": ["nvidia-tesla-t4"],
+            })
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['OceanNpAutoscalerArgs', 'OceanNpAutoscalerArgsDict']] autoscaler: The Ocean Kubernetes Autoscaler object.
@@ -1072,7 +1218,153 @@ class OceanNp(pulumi.CustomResource):
                  args: OceanNpArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a OceanNp resource with the given unique name, props, and options.
+        Manages a Spotinst Ocean AKS resource.
+
+        ## Basic Ocean Cluster Creation Usage Example - using minimum configuration with only required parameters
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        example = spotinst.azure.OceanNp("example",
+            name="test",
+            aks_region="eastus",
+            aks_cluster_name="test-cluster",
+            aks_infrastructure_resource_group_name="MC_TestResourceGroup_test-cluster_eastus",
+            aks_resource_group_name="TestResourceGroup",
+            controller_cluster_id="test-123124",
+            availability_zones=[
+                "1",
+                "2",
+                "3",
+            ])
+        ```
+
+        ## Detailed Ocean Cluster Creation Usage Example - using all available parameters with sample values
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        example = spotinst.azure.OceanNp("example",
+            name="test",
+            aks_region="eastus",
+            aks_cluster_name="test-cluster",
+            aks_infrastructure_resource_group_name="MC_TestResourceGroup_test-cluster_eastus",
+            aks_resource_group_name="TestResourceGroup",
+            controller_cluster_id="test-123124",
+            autoscaler={
+                "autoscale_is_enabled": True,
+                "resource_limits": {
+                    "max_vcpu": 750,
+                    "max_memory_gib": 1500,
+                },
+                "autoscale_down": {
+                    "max_scale_down_percentage": 30,
+                },
+                "autoscale_headroom": {
+                    "automatic": {
+                        "is_enabled": True,
+                        "percentage": 5,
+                    },
+                },
+            },
+            health={
+                "grace_period": 600,
+            },
+            logging={
+                "export": {
+                    "azure_blobs": [{
+                        "id": "di-abcd123",
+                    }],
+                },
+            },
+            headrooms=[{
+                "cpu_per_unit": 1024,
+                "memory_per_unit": 512,
+                "gpu_per_unit": 0,
+                "num_of_units": 2,
+            }],
+            availability_zones=[
+                "1",
+                "2",
+                "3",
+            ],
+            labels={
+                "key": "env",
+                "value": "test",
+            },
+            min_count=1,
+            max_count=100,
+            max_pods_per_node=30,
+            enable_node_public_ip=True,
+            os_disk_size_gb=30,
+            os_disk_type="Managed",
+            os_type="Windows",
+            os_sku="Windows2022",
+            kubernetes_version="1.26",
+            pod_subnet_ids=["/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default"],
+            vnet_subnet_ids=["/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default"],
+            linux_os_configs=[{
+                "sysctls": [{
+                    "vm_max_map_count": 79550,
+                }],
+            }],
+            spot_percentage=50,
+            fallback_to_ondemand=True,
+            taints=[{
+                "key": "taintKey",
+                "value": "taintValue",
+                "effect": "NoSchedule",
+            }],
+            vng_template_scheduling={
+                "vng_template_shutdown_hours": {
+                    "is_enabled": True,
+                    "time_windows": [
+                        "Fri:15:30-Sat:13:30",
+                        "Sun:15:30-Mon:13:30",
+                    ],
+                },
+            },
+            tags={
+                "tagKey": "env",
+                "tagValue": "staging",
+            },
+            filters={
+                "min_vcpu": 2,
+                "max_vcpu": 16,
+                "min_memory_gib": 8,
+                "max_memory_gib": 128,
+                "architectures": [
+                    "x86_64",
+                    "arm64",
+                ],
+                "series": [
+                    "D v3",
+                    "Dds_v4",
+                    "Dsv2",
+                ],
+                "exclude_series": [
+                    "Av2",
+                    "A",
+                    "Bs",
+                    "D",
+                    "E",
+                ],
+                "accelerated_networking": "Enabled",
+                "disk_performance": "Premium",
+                "min_gpu": 1,
+                "max_gpu": 2,
+                "min_nics": 1,
+                "vm_types": [
+                    "generalPurpose",
+                    "GPU",
+                ],
+                "min_disk": 1,
+                "gpu_types": ["nvidia-tesla-t4"],
+            })
+        ```
+
         :param str resource_name: The name of the resource.
         :param OceanNpArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -46,9 +46,17 @@ public final class OceanLaunchSpecBlockDeviceMappingArgs extends com.pulumi.reso
         return Optional.ofNullable(this.ebs);
     }
 
+    /**
+     * String. Suppresses the specified device included in the block device mapping of the AMI. Default value is set to `unset` intentionally, which will appear in the terminal during a pulumi preview if this field is not configured or removed. This prevents confusion, as Terraform otherwise considers empty string as null.
+     * 
+     */
     @Import(name="noDevice")
     private @Nullable Output<String> noDevice;
 
+    /**
+     * @return String. Suppresses the specified device included in the block device mapping of the AMI. Default value is set to `unset` intentionally, which will appear in the terminal during a pulumi preview if this field is not configured or removed. This prevents confusion, as Terraform otherwise considers empty string as null.
+     * 
+     */
     public Optional<Output<String>> noDevice() {
         return Optional.ofNullable(this.noDevice);
     }
@@ -129,11 +137,23 @@ public final class OceanLaunchSpecBlockDeviceMappingArgs extends com.pulumi.reso
             return ebs(Output.of(ebs));
         }
 
+        /**
+         * @param noDevice String. Suppresses the specified device included in the block device mapping of the AMI. Default value is set to `unset` intentionally, which will appear in the terminal during a pulumi preview if this field is not configured or removed. This prevents confusion, as Terraform otherwise considers empty string as null.
+         * 
+         * @return builder
+         * 
+         */
         public Builder noDevice(@Nullable Output<String> noDevice) {
             $.noDevice = noDevice;
             return this;
         }
 
+        /**
+         * @param noDevice String. Suppresses the specified device included in the block device mapping of the AMI. Default value is set to `unset` intentionally, which will appear in the terminal during a pulumi preview if this field is not configured or removed. This prevents confusion, as Terraform otherwise considers empty string as null.
+         * 
+         * @return builder
+         * 
+         */
         public Builder noDevice(String noDevice) {
             return noDevice(Output.of(noDevice));
         }

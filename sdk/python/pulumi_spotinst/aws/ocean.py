@@ -1492,17 +1492,7 @@ class Ocean(pulumi.CustomResource):
                  whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ## Import
-
-        Clusters can be imported using the Ocean `id`, e.g.,
-
-        hcl
-
-        ```sh
-        $ pulumi import spotinst:aws/ocean:Ocean nameOfTheResource o-12345678
-        ```
+        Manages a Spotinst Ocean AWS resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1556,17 +1546,7 @@ class Ocean(pulumi.CustomResource):
                  args: OceanArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ## Import
-
-        Clusters can be imported using the Ocean `id`, e.g.,
-
-        hcl
-
-        ```sh
-        $ pulumi import spotinst:aws/ocean:Ocean nameOfTheResource o-12345678
-        ```
+        Manages a Spotinst Ocean AWS resource.
 
         :param str resource_name: The name of the resource.
         :param OceanArgs args: The arguments to use to populate this resource's properties.

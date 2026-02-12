@@ -106,6 +106,10 @@ class Suspension(pulumi.CustomResource):
                  suspensions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SuspensionSuspensionArgs', 'SuspensionSuspensionArgsDict']]]]] = None,
                  __props__=None):
         """
+        Suspend AWS Elastigroup processes. This resource provide the capability of
+        suspending elastigroup processes using Terraform.
+
+        For supported processes please visit: [Suspend Processes API reference](https://help.spot.io/spotinst-api/elastigroup/amazon-web-services/suspend-processes/)
         ## Example Usage
 
         ```python
@@ -140,6 +144,10 @@ class Suspension(pulumi.CustomResource):
                  args: SuspensionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Suspend AWS Elastigroup processes. This resource provide the capability of
+        suspending elastigroup processes using Terraform.
+
+        For supported processes please visit: [Suspend Processes API reference](https://help.spot.io/spotinst-api/elastigroup/amazon-web-services/suspend-processes/)
         ## Example Usage
 
         ```python

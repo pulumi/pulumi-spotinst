@@ -33,17 +33,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## Example Usage
- * 
- * ## Import
- * 
- * Clusters can be imported using the Ocean `id`, e.g.,
- * 
- * hcl
- * 
- * ```sh
- * $ pulumi import spotinst:aws/ocean:Ocean nameOfTheResource o-12345678
- * ```
+ * Manages a Spotinst Ocean AWS resource.
  * 
  */
 @ResourceType(type="spotinst:aws/ocean:Ocean")

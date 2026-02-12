@@ -668,9 +668,17 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     public Output<Optional<ElastigroupLogging>> logging() {
         return Codegen.optional(this.logging);
     }
+    /**
+     * The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once. Default value is set to -1 intentionally, which will appear in the terminal during a pulumi preview if this field is not configured. This prevents confusion, as Terraform otherwise defaults integer data types to 0 when a field is not explicitly set.
+     * 
+     */
     @Export(name="maxReplacementsPercentage", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxReplacementsPercentage;
 
+    /**
+     * @return The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once. Default value is set to -1 intentionally, which will appear in the terminal during a pulumi preview if this field is not configured. This prevents confusion, as Terraform otherwise defaults integer data types to 0 when a field is not explicitly set.
+     * 
+     */
     public Output<Optional<Integer>> maxReplacementsPercentage() {
         return Codegen.optional(this.maxReplacementsPercentage);
     }

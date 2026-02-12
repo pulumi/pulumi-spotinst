@@ -289,6 +289,9 @@ export class Elastigroup extends pulumi.CustomResource {
      * Logging configuration.
      */
     declare public readonly logging: pulumi.Output<outputs.aws.ElastigroupLogging | undefined>;
+    /**
+     * The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once. Default value is set to -1 intentionally, which will appear in the terminal during a pulumi preview if this field is not configured. This prevents confusion, as Terraform otherwise defaults integer data types to 0 when a field is not explicitly set.
+     */
     declare public readonly maxReplacementsPercentage: pulumi.Output<number | undefined>;
     /**
      * The maximum number of instances the group should have at any time.
@@ -741,6 +744,9 @@ export interface ElastigroupState {
      * Logging configuration.
      */
     logging?: pulumi.Input<inputs.aws.ElastigroupLogging>;
+    /**
+     * The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once. Default value is set to -1 intentionally, which will appear in the terminal during a pulumi preview if this field is not configured. This prevents confusion, as Terraform otherwise defaults integer data types to 0 when a field is not explicitly set.
+     */
     maxReplacementsPercentage?: pulumi.Input<number>;
     /**
      * The maximum number of instances the group should have at any time.
@@ -991,6 +997,9 @@ export interface ElastigroupArgs {
      * Logging configuration.
      */
     logging?: pulumi.Input<inputs.aws.ElastigroupLogging>;
+    /**
+     * The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once. Default value is set to -1 intentionally, which will appear in the terminal during a pulumi preview if this field is not configured. This prevents confusion, as Terraform otherwise defaults integer data types to 0 when a field is not explicitly set.
+     */
     maxReplacementsPercentage?: pulumi.Input<number>;
     /**
      * The maximum number of instances the group should have at any time.

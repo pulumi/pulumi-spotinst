@@ -10,17 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws
 {
     /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ## Import
-    /// 
-    /// Clusters can be imported using the Ocean `id`, e.g.,
-    /// 
-    /// hcl
-    /// 
-    /// ```sh
-    /// $ pulumi import spotinst:aws/ocean:Ocean nameOfTheResource o-12345678
-    /// ```
+    /// Manages a Spotinst Ocean AWS resource.
     /// </summary>
     [SpotInstResourceType("spotinst:aws/ocean:Ocean")]
     public partial class Ocean : global::Pulumi.CustomResource

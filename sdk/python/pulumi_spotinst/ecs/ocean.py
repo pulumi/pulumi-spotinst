@@ -1202,16 +1202,6 @@ class Ocean(pulumi.CustomResource):
             })
         ```
 
-        ## Import
-
-        Clusters can be imported using the Ocean `id`, e.g.,
-
-        hcl
-
-        ```sh
-        $ pulumi import spotinst:ecs/ocean:Ocean nameOfTheResource o-12345678
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] associate_public_ip_address: Configure public IP address allocation.
@@ -1357,16 +1347,6 @@ class Ocean(pulumi.CustomResource):
                     }],
                 },
             })
-        ```
-
-        ## Import
-
-        Clusters can be imported using the Ocean `id`, e.g.,
-
-        hcl
-
-        ```sh
-        $ pulumi import spotinst:ecs/ocean:Ocean nameOfTheResource o-12345678
         ```
 
         :param str resource_name: The name of the resource.

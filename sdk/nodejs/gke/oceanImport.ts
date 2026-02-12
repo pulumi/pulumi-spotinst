@@ -7,6 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Manages a Spotinst Ocean GKE resource.
+ *
  * ## Example Usage
  *
  * ```typescript

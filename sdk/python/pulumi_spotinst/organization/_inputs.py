@@ -29,16 +29,11 @@ __all__ = [
     'UserPolicyArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class PolicyPolicyContentArgsDict(TypedDict):
-        statements: pulumi.Input[Sequence[pulumi.Input['PolicyPolicyContentStatementArgsDict']]]
-        """
-        List of permissions statements.
-        """
-elif False:
-    PolicyPolicyContentArgsDict: TypeAlias = Mapping[str, Any]
+class PolicyPolicyContentArgsDict(TypedDict):
+    statements: pulumi.Input[Sequence[pulumi.Input['PolicyPolicyContentStatementArgsDict']]]
+    """
+    List of permissions statements.
+    """
 
 @pulumi.input_type
 class PolicyPolicyContentArgs:
@@ -62,23 +57,20 @@ class PolicyPolicyContentArgs:
         pulumi.set(self, "statements", value)
 
 
-if not MYPY:
-    class PolicyPolicyContentStatementArgsDict(TypedDict):
-        actions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Set a list of required actions for this permissions statement.
-        Full list of actions can be found in [https://docs.spot.io/account-user-management/user-management/access-policies-actions/](https://docs.spot.io/account-user-management/user-management/access-policies-actions/).
-        """
-        effect: pulumi.Input[_builtins.str]
-        """
-        Valid values "ALLOW", "DENY".
-        """
-        resources: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Set a list of resources IDs. In order to include all resources in this statement - use "*".
-        """
-elif False:
-    PolicyPolicyContentStatementArgsDict: TypeAlias = Mapping[str, Any]
+class PolicyPolicyContentStatementArgsDict(TypedDict):
+    actions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Set a list of required actions for this permissions statement.
+    Full list of actions can be found in [https://docs.spot.io/account-user-management/user-management/access-policies-actions/](https://docs.spot.io/account-user-management/user-management/access-policies-actions/).
+    """
+    effect: pulumi.Input[_builtins.str]
+    """
+    Valid values "ALLOW", "DENY".
+    """
+    resources: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Set a list of resources IDs. In order to include all resources in this statement - use "*".
+    """
 
 @pulumi.input_type
 class PolicyPolicyContentStatementArgs:
@@ -134,19 +126,16 @@ class PolicyPolicyContentStatementArgs:
         pulumi.set(self, "resources", value)
 
 
-if not MYPY:
-    class ProgrammaticUserAccountArgsDict(TypedDict):
-        account_id: pulumi.Input[_builtins.str]
-        """
-        Account ID the programmatic user will have access to.
-        """
-        account_role: pulumi.Input[_builtins.str]
-        """
-        (Enum: `"viewer", "editor") Role to be associated with the
-        programmatic user for this account.
-        """
-elif False:
-    ProgrammaticUserAccountArgsDict: TypeAlias = Mapping[str, Any]
+class ProgrammaticUserAccountArgsDict(TypedDict):
+    account_id: pulumi.Input[_builtins.str]
+    """
+    Account ID the programmatic user will have access to.
+    """
+    account_role: pulumi.Input[_builtins.str]
+    """
+    (Enum: `"viewer", "editor") Role to be associated with the
+    programmatic user for this account.
+    """
 
 @pulumi.input_type
 class ProgrammaticUserAccountArgs:
@@ -187,19 +176,16 @@ class ProgrammaticUserAccountArgs:
         pulumi.set(self, "account_role", value)
 
 
-if not MYPY:
-    class ProgrammaticUserPolicyArgsDict(TypedDict):
-        policy_id: pulumi.Input[_builtins.str]
-        """
-        Policy ID the programmatic user will have access to.
-        """
-        policy_account_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of the accounts that the policy should be
-        enforced for the user.
-        """
-elif False:
-    ProgrammaticUserPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class ProgrammaticUserPolicyArgsDict(TypedDict):
+    policy_id: pulumi.Input[_builtins.str]
+    """
+    Policy ID the programmatic user will have access to.
+    """
+    policy_account_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of the accounts that the policy should be
+    enforced for the user.
+    """
 
 @pulumi.input_type
 class ProgrammaticUserPolicyArgs:
@@ -241,20 +227,17 @@ class ProgrammaticUserPolicyArgs:
         pulumi.set(self, "policy_account_ids", value)
 
 
-if not MYPY:
-    class UserGroupPolicyArgsDict(TypedDict):
-        account_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        A list of accounts to register with the assigned under the
-        given group (should be existing accounts only).
-        """
-        policy_id: pulumi.Input[_builtins.str]
-        """
-        A policy to register under the given group
-        (should be existing policy only).
-        """
-elif False:
-    UserGroupPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class UserGroupPolicyArgsDict(TypedDict):
+    account_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    A list of accounts to register with the assigned under the
+    given group (should be existing accounts only).
+    """
+    policy_id: pulumi.Input[_builtins.str]
+    """
+    A policy to register under the given group
+    (should be existing policy only).
+    """
 
 @pulumi.input_type
 class UserGroupPolicyArgs:
@@ -297,16 +280,13 @@ class UserGroupPolicyArgs:
         pulumi.set(self, "policy_id", value)
 
 
-if not MYPY:
-    class UserPolicyArgsDict(TypedDict):
-        policy_account_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        policy_id: pulumi.Input[_builtins.str]
-        """
-        A policy to register under the given group
-        (should be existing policy only).
-        """
-elif False:
-    UserPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class UserPolicyArgsDict(TypedDict):
+    policy_account_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    policy_id: pulumi.Input[_builtins.str]
+    """
+    A policy to register under the given group
+    (should be existing policy only).
+    """
 
 @pulumi.input_type
 class UserPolicyArgs:

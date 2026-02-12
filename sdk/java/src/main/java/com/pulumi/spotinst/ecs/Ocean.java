@@ -161,16 +161,6 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ## Import
- * 
- * Clusters can be imported using the Ocean `id`, e.g.,
- * 
- * hcl
- * 
- * ```sh
- * $ pulumi import spotinst:ecs/ocean:Ocean nameOfTheResource o-12345678
- * ```
- * 
  */
 @ResourceType(type="spotinst:ecs/ocean:Ocean")
 public class Ocean extends com.pulumi.resources.CustomResource {

@@ -12,17 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
-//
-// ## Import
-//
-// Clusters can be imported using the Ocean `id`, e.g.,
-//
-// hcl
-//
-// ```sh
-// $ pulumi import spotinst:aws/ocean:Ocean nameOfTheResource o-12345678
-// ```
+// Manages a Spotinst Ocean AWS resource.
 type Ocean struct {
 	pulumi.CustomResourceState
 

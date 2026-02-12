@@ -9215,6 +9215,7 @@ class OceanLaunchSpecBlockDeviceMapping(dict):
         """
         :param _builtins.str device_name: String. Set device name. (Example: `/dev/xvda`).
         :param 'OceanLaunchSpecBlockDeviceMappingEbsArgs' ebs: Object. Set Elastic Block Store properties .
+        :param _builtins.str no_device: String. Suppresses the specified device included in the block device mapping of the AMI. Default value is set to `unset` intentionally, which will appear in the terminal during a pulumi preview if this field is not configured or removed. This prevents confusion, as Terraform otherwise considers empty string as null.
         """
         if device_name is not None:
             pulumi.set(__self__, "device_name", device_name)
@@ -9244,6 +9245,9 @@ class OceanLaunchSpecBlockDeviceMapping(dict):
     @_builtins.property
     @pulumi.getter(name="noDevice")
     def no_device(self) -> Optional[_builtins.str]:
+        """
+        String. Suppresses the specified device included in the block device mapping of the AMI. Default value is set to `unset` intentionally, which will appear in the terminal during a pulumi preview if this field is not configured or removed. This prevents confusion, as Terraform otherwise considers empty string as null.
+        """
         return pulumi.get(self, "no_device")
 
     @_builtins.property
