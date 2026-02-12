@@ -254,8 +254,9 @@ type Elastigroup struct {
 	KeyName        pulumi.StringPtrOutput `pulumi:"keyName"`
 	LifetimePeriod pulumi.StringPtrOutput `pulumi:"lifetimePeriod"`
 	// Logging configuration.
-	Logging                   ElastigroupLoggingPtrOutput `pulumi:"logging"`
-	MaxReplacementsPercentage pulumi.IntPtrOutput         `pulumi:"maxReplacementsPercentage"`
+	Logging ElastigroupLoggingPtrOutput `pulumi:"logging"`
+	// The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once. Default value is set to -1 intentionally, which will appear in the terminal during a pulumi preview if this field is not configured. This prevents confusion, as Terraform otherwise defaults integer data types to 0 when a field is not explicitly set.
+	MaxReplacementsPercentage pulumi.IntPtrOutput `pulumi:"maxReplacementsPercentage"`
 	// The maximum number of instances the group should have at any time.
 	MaxSize pulumi.IntOutput `pulumi:"maxSize"`
 	// Data that used to configure or manage the running instances:
@@ -442,8 +443,9 @@ type elastigroupState struct {
 	KeyName        *string `pulumi:"keyName"`
 	LifetimePeriod *string `pulumi:"lifetimePeriod"`
 	// Logging configuration.
-	Logging                   *ElastigroupLogging `pulumi:"logging"`
-	MaxReplacementsPercentage *int                `pulumi:"maxReplacementsPercentage"`
+	Logging *ElastigroupLogging `pulumi:"logging"`
+	// The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once. Default value is set to -1 intentionally, which will appear in the terminal during a pulumi preview if this field is not configured. This prevents confusion, as Terraform otherwise defaults integer data types to 0 when a field is not explicitly set.
+	MaxReplacementsPercentage *int `pulumi:"maxReplacementsPercentage"`
 	// The maximum number of instances the group should have at any time.
 	MaxSize *int `pulumi:"maxSize"`
 	// Data that used to configure or manage the running instances:
@@ -589,7 +591,8 @@ type ElastigroupState struct {
 	KeyName        pulumi.StringPtrInput
 	LifetimePeriod pulumi.StringPtrInput
 	// Logging configuration.
-	Logging                   ElastigroupLoggingPtrInput
+	Logging ElastigroupLoggingPtrInput
+	// The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once. Default value is set to -1 intentionally, which will appear in the terminal during a pulumi preview if this field is not configured. This prevents confusion, as Terraform otherwise defaults integer data types to 0 when a field is not explicitly set.
 	MaxReplacementsPercentage pulumi.IntPtrInput
 	// The maximum number of instances the group should have at any time.
 	MaxSize pulumi.IntPtrInput
@@ -740,8 +743,9 @@ type elastigroupArgs struct {
 	KeyName        *string `pulumi:"keyName"`
 	LifetimePeriod *string `pulumi:"lifetimePeriod"`
 	// Logging configuration.
-	Logging                   *ElastigroupLogging `pulumi:"logging"`
-	MaxReplacementsPercentage *int                `pulumi:"maxReplacementsPercentage"`
+	Logging *ElastigroupLogging `pulumi:"logging"`
+	// The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once. Default value is set to -1 intentionally, which will appear in the terminal during a pulumi preview if this field is not configured. This prevents confusion, as Terraform otherwise defaults integer data types to 0 when a field is not explicitly set.
+	MaxReplacementsPercentage *int `pulumi:"maxReplacementsPercentage"`
 	// The maximum number of instances the group should have at any time.
 	MaxSize *int `pulumi:"maxSize"`
 	// Data that used to configure or manage the running instances:
@@ -888,7 +892,8 @@ type ElastigroupArgs struct {
 	KeyName        pulumi.StringPtrInput
 	LifetimePeriod pulumi.StringPtrInput
 	// Logging configuration.
-	Logging                   ElastigroupLoggingPtrInput
+	Logging ElastigroupLoggingPtrInput
+	// The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once. Default value is set to -1 intentionally, which will appear in the terminal during a pulumi preview if this field is not configured. This prevents confusion, as Terraform otherwise defaults integer data types to 0 when a field is not explicitly set.
 	MaxReplacementsPercentage pulumi.IntPtrInput
 	// The maximum number of instances the group should have at any time.
 	MaxSize pulumi.IntPtrInput
@@ -1248,6 +1253,7 @@ func (o ElastigroupOutput) Logging() ElastigroupLoggingPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) ElastigroupLoggingPtrOutput { return v.Logging }).(ElastigroupLoggingPtrOutput)
 }
 
+// The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once. Default value is set to -1 intentionally, which will appear in the terminal during a pulumi preview if this field is not configured. This prevents confusion, as Terraform otherwise defaults integer data types to 0 when a field is not explicitly set.
 func (o ElastigroupOutput) MaxReplacementsPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.IntPtrOutput { return v.MaxReplacementsPercentage }).(pulumi.IntPtrOutput)
 }

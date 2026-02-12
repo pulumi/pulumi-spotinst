@@ -2853,6 +2853,9 @@ export namespace aws {
          * Object. Set Elastic Block Store properties .
          */
         ebs?: pulumi.Input<inputs.aws.OceanLaunchSpecBlockDeviceMappingEbs>;
+        /**
+         * String. Suppresses the specified device included in the block device mapping of the AMI. Default value is set to `unset` intentionally, which will appear in the terminal during a pulumi preview if this field is not configured or removed. This prevents confusion, as Terraform otherwise considers empty string as null.
+         */
         noDevice?: pulumi.Input<string>;
         virtualName?: pulumi.Input<string>;
     }

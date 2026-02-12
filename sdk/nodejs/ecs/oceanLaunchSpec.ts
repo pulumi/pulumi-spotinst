@@ -102,16 +102,6 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- *
- * ## Import
- *
- * Launch_Specs can be imported using the Launch_Spec `id`, e.g.,
- *
- * hcl
- *
- * ```sh
- * $ pulumi import spotinst:ecs/oceanLaunchSpec:OceanLaunchSpec nameOfTheResource ols-1a2345
- * ```
  */
 export class OceanLaunchSpec extends pulumi.CustomResource {
     /**

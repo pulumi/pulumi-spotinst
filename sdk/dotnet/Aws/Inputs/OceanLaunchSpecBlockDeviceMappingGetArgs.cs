@@ -24,6 +24,9 @@ namespace Pulumi.SpotInst.Aws.Inputs
         [Input("ebs")]
         public Input<Inputs.OceanLaunchSpecBlockDeviceMappingEbsGetArgs>? Ebs { get; set; }
 
+        /// <summary>
+        /// String. Suppresses the specified device included in the block device mapping of the AMI. Default value is set to `Unset` intentionally, which will appear in the terminal during a pulumi preview if this field is not configured or removed. This prevents confusion, as Terraform otherwise considers empty string as null.
+        /// </summary>
         [Input("noDevice")]
         public Input<string>? NoDevice { get; set; }
 

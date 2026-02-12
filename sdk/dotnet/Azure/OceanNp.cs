@@ -9,6 +9,219 @@ using Pulumi.Serialization;
 
 namespace Pulumi.SpotInst.Azure
 {
+    /// <summary>
+    /// Manages a Spotinst Ocean AKS resource.
+    /// 
+    /// ## Basic Ocean Cluster Creation Usage Example - using minimum configuration with only required parameters
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SpotInst = Pulumi.SpotInst;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new SpotInst.Azure.OceanNp("example", new()
+    ///     {
+    ///         Name = "test",
+    ///         AksRegion = "eastus",
+    ///         AksClusterName = "test-cluster",
+    ///         AksInfrastructureResourceGroupName = "MC_TestResourceGroup_test-cluster_eastus",
+    ///         AksResourceGroupName = "TestResourceGroup",
+    ///         ControllerClusterId = "test-123124",
+    ///         AvailabilityZones = new[]
+    ///         {
+    ///             "1",
+    ///             "2",
+    ///             "3",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Detailed Ocean Cluster Creation Usage Example - using all available parameters with sample values
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SpotInst = Pulumi.SpotInst;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new SpotInst.Azure.OceanNp("example", new()
+    ///     {
+    ///         Name = "test",
+    ///         AksRegion = "eastus",
+    ///         AksClusterName = "test-cluster",
+    ///         AksInfrastructureResourceGroupName = "MC_TestResourceGroup_test-cluster_eastus",
+    ///         AksResourceGroupName = "TestResourceGroup",
+    ///         ControllerClusterId = "test-123124",
+    ///         Autoscaler = new SpotInst.Azure.Inputs.OceanNpAutoscalerArgs
+    ///         {
+    ///             AutoscaleIsEnabled = true,
+    ///             ResourceLimits = new SpotInst.Azure.Inputs.OceanNpAutoscalerResourceLimitsArgs
+    ///             {
+    ///                 MaxVcpu = 750,
+    ///                 MaxMemoryGib = 1500,
+    ///             },
+    ///             AutoscaleDown = new SpotInst.Azure.Inputs.OceanNpAutoscalerAutoscaleDownArgs
+    ///             {
+    ///                 MaxScaleDownPercentage = 30,
+    ///             },
+    ///             AutoscaleHeadroom = new SpotInst.Azure.Inputs.OceanNpAutoscalerAutoscaleHeadroomArgs
+    ///             {
+    ///                 Automatic = new SpotInst.Azure.Inputs.OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs
+    ///                 {
+    ///                     IsEnabled = true,
+    ///                     Percentage = 5,
+    ///                 },
+    ///             },
+    ///         },
+    ///         Health = new SpotInst.Azure.Inputs.OceanNpHealthArgs
+    ///         {
+    ///             GracePeriod = 600,
+    ///         },
+    ///         Logging = new SpotInst.Azure.Inputs.OceanNpLoggingArgs
+    ///         {
+    ///             Export = new SpotInst.Azure.Inputs.OceanNpLoggingExportArgs
+    ///             {
+    ///                 AzureBlobs = new[]
+    ///                 {
+    ///                     new SpotInst.Azure.Inputs.OceanNpLoggingExportAzureBlobArgs
+    ///                     {
+    ///                         Id = "di-abcd123",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Headrooms = new[]
+    ///         {
+    ///             new SpotInst.Azure.Inputs.OceanNpHeadroomArgs
+    ///             {
+    ///                 CpuPerUnit = 1024,
+    ///                 MemoryPerUnit = 512,
+    ///                 GpuPerUnit = 0,
+    ///                 NumOfUnits = 2,
+    ///             },
+    ///         },
+    ///         AvailabilityZones = new[]
+    ///         {
+    ///             "1",
+    ///             "2",
+    ///             "3",
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "key", "env" },
+    ///             { "value", "test" },
+    ///         },
+    ///         MinCount = 1,
+    ///         MaxCount = 100,
+    ///         MaxPodsPerNode = 30,
+    ///         EnableNodePublicIp = true,
+    ///         OsDiskSizeGb = 30,
+    ///         OsDiskType = "Managed",
+    ///         OsType = "Windows",
+    ///         OsSku = "Windows2022",
+    ///         KubernetesVersion = "1.26",
+    ///         PodSubnetIds = new[]
+    ///         {
+    ///             "/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default",
+    ///         },
+    ///         VnetSubnetIds = new[]
+    ///         {
+    ///             "/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default",
+    ///         },
+    ///         LinuxOsConfigs = new[]
+    ///         {
+    ///             new SpotInst.Azure.Inputs.OceanNpLinuxOsConfigArgs
+    ///             {
+    ///                 Sysctls = new[]
+    ///                 {
+    ///                     new SpotInst.Azure.Inputs.OceanNpLinuxOsConfigSysctlArgs
+    ///                     {
+    ///                         VmMaxMapCount = 79550,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         SpotPercentage = 50,
+    ///         FallbackToOndemand = true,
+    ///         Taints = new[]
+    ///         {
+    ///             new SpotInst.Azure.Inputs.OceanNpTaintArgs
+    ///             {
+    ///                 Key = "taintKey",
+    ///                 Value = "taintValue",
+    ///                 Effect = "NoSchedule",
+    ///             },
+    ///         },
+    ///         VngTemplateScheduling = new SpotInst.Azure.Inputs.OceanNpVngTemplateSchedulingArgs
+    ///         {
+    ///             VngTemplateShutdownHours = new SpotInst.Azure.Inputs.OceanNpVngTemplateSchedulingVngTemplateShutdownHoursArgs
+    ///             {
+    ///                 IsEnabled = true,
+    ///                 TimeWindows = new[]
+    ///                 {
+    ///                     "Fri:15:30-Sat:13:30",
+    ///                     "Sun:15:30-Mon:13:30",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Tags = 
+    ///         {
+    ///             { "tagKey", "env" },
+    ///             { "tagValue", "staging" },
+    ///         },
+    ///         Filters = new SpotInst.Azure.Inputs.OceanNpFiltersArgs
+    ///         {
+    ///             MinVcpu = 2,
+    ///             MaxVcpu = 16,
+    ///             MinMemoryGib = 8,
+    ///             MaxMemoryGib = 128,
+    ///             Architectures = new[]
+    ///             {
+    ///                 "x86_64",
+    ///                 "arm64",
+    ///             },
+    ///             Series = new[]
+    ///             {
+    ///                 "D v3",
+    ///                 "Dds_v4",
+    ///                 "Dsv2",
+    ///             },
+    ///             ExcludeSeries = new[]
+    ///             {
+    ///                 "Av2",
+    ///                 "A",
+    ///                 "Bs",
+    ///                 "D",
+    ///                 "E",
+    ///             },
+    ///             AcceleratedNetworking = "Enabled",
+    ///             DiskPerformance = "Premium",
+    ///             MinGpu = 1,
+    ///             MaxGpu = 2,
+    ///             MinNics = 1,
+    ///             VmTypes = new[]
+    ///             {
+    ///                 "generalPurpose",
+    ///                 "GPU",
+    ///             },
+    ///             MinDisk = 1,
+    ///             GpuTypes = new[]
+    ///             {
+    ///                 "nvidia-tesla-t4",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// </summary>
     [SpotInstResourceType("spotinst:azure/oceanNp:OceanNp")]
     public partial class OceanNp : global::Pulumi.CustomResource
     {

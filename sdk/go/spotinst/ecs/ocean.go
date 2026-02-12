@@ -159,16 +159,6 @@ import (
 //	}
 //
 // ```
-//
-// ## Import
-//
-// Clusters can be imported using the Ocean `id`, e.g.,
-//
-// hcl
-//
-// ```sh
-// $ pulumi import spotinst:ecs/ocean:Ocean nameOfTheResource o-12345678
-// ```
 type Ocean struct {
 	pulumi.CustomResourceState
 

@@ -79,48 +79,43 @@ __all__ = [
     'OceanUpdatePolicyRollConfigArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class OceanAutoscalerArgsDict(TypedDict):
-        auto_headroom_percentage: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The auto-headroom percentage. Set a number between 0-200 to control the headroom % of the cluster. Relevant when `isAutoConfig`= true.
-        """
-        cooldown: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Cooldown period between scaling actions.
-        """
-        down: NotRequired[pulumi.Input['OceanAutoscalerDownArgsDict']]
-        """
-        Auto Scaling scale down operations.
-        """
-        enable_automatic_and_manual_headroom: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When set to true, both automatic and per custom launch specification manual headroom to be saved concurrently and independently in the cluster. prerequisite: isAutoConfig must be true
-        """
-        headroom: NotRequired[pulumi.Input['OceanAutoscalerHeadroomArgsDict']]
-        """
-        Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
-        """
-        is_auto_config: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Automatically configure and optimize headroom resources.
-        """
-        is_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable the Ocean ECS autoscaler.
-        """
-        resource_limits: NotRequired[pulumi.Input['OceanAutoscalerResourceLimitsArgsDict']]
-        """
-        Optionally set upper and lower bounds on the resource usage of the cluster.
-        """
-        should_scale_down_non_service_tasks: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Option to scale down non-service tasks. If not set, Ocean does not scale down standalone tasks.
-        """
-elif False:
-    OceanAutoscalerArgsDict: TypeAlias = Mapping[str, Any]
+class OceanAutoscalerArgsDict(TypedDict):
+    auto_headroom_percentage: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The auto-headroom percentage. Set a number between 0-200 to control the headroom % of the cluster. Relevant when `isAutoConfig`= true.
+    """
+    cooldown: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Cooldown period between scaling actions.
+    """
+    down: NotRequired[pulumi.Input['OceanAutoscalerDownArgsDict']]
+    """
+    Auto Scaling scale down operations.
+    """
+    enable_automatic_and_manual_headroom: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When set to true, both automatic and per custom launch specification manual headroom to be saved concurrently and independently in the cluster. prerequisite: isAutoConfig must be true
+    """
+    headroom: NotRequired[pulumi.Input['OceanAutoscalerHeadroomArgsDict']]
+    """
+    Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
+    """
+    is_auto_config: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Automatically configure and optimize headroom resources.
+    """
+    is_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable the Ocean ECS autoscaler.
+    """
+    resource_limits: NotRequired[pulumi.Input['OceanAutoscalerResourceLimitsArgsDict']]
+    """
+    Optionally set upper and lower bounds on the resource usage of the cluster.
+    """
+    should_scale_down_non_service_tasks: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Option to scale down non-service tasks. If not set, Ocean does not scale down standalone tasks.
+    """
 
 @pulumi.input_type
 class OceanAutoscalerArgs:
@@ -273,14 +268,11 @@ class OceanAutoscalerArgs:
         pulumi.set(self, "should_scale_down_non_service_tasks", value)
 
 
-if not MYPY:
-    class OceanAutoscalerDownArgsDict(TypedDict):
-        max_scale_down_percentage: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Would represent the maximum % to scale-down. Number between 1-100.
-        """
-elif False:
-    OceanAutoscalerDownArgsDict: TypeAlias = Mapping[str, Any]
+class OceanAutoscalerDownArgsDict(TypedDict):
+    max_scale_down_percentage: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Would represent the maximum % to scale-down. Number between 1-100.
+    """
 
 @pulumi.input_type
 class OceanAutoscalerDownArgs:
@@ -305,22 +297,19 @@ class OceanAutoscalerDownArgs:
         pulumi.set(self, "max_scale_down_percentage", value)
 
 
-if not MYPY:
-    class OceanAutoscalerHeadroomArgsDict(TypedDict):
-        cpu_per_unit: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-        """
-        memory_per_unit: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Optionally configure the amount of memory (MB) to allocate the headroom.
-        """
-        num_of_units: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
-        """
-elif False:
-    OceanAutoscalerHeadroomArgsDict: TypeAlias = Mapping[str, Any]
+class OceanAutoscalerHeadroomArgsDict(TypedDict):
+    cpu_per_unit: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+    """
+    memory_per_unit: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Optionally configure the amount of memory (MB) to allocate the headroom.
+    """
+    num_of_units: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+    """
 
 @pulumi.input_type
 class OceanAutoscalerHeadroomArgs:
@@ -377,18 +366,15 @@ class OceanAutoscalerHeadroomArgs:
         pulumi.set(self, "num_of_units", value)
 
 
-if not MYPY:
-    class OceanAutoscalerResourceLimitsArgsDict(TypedDict):
-        max_memory_gib: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum memory in GiB units that can be allocated to the cluster.
-        """
-        max_vcpu: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum cpu in vCPU units that can be allocated to the cluster.
-        """
-elif False:
-    OceanAutoscalerResourceLimitsArgsDict: TypeAlias = Mapping[str, Any]
+class OceanAutoscalerResourceLimitsArgsDict(TypedDict):
+    max_memory_gib: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum memory in GiB units that can be allocated to the cluster.
+    """
+    max_vcpu: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum cpu in vCPU units that can be allocated to the cluster.
+    """
 
 @pulumi.input_type
 class OceanAutoscalerResourceLimitsArgs:
@@ -429,23 +415,20 @@ class OceanAutoscalerResourceLimitsArgs:
         pulumi.set(self, "max_vcpu", value)
 
 
-if not MYPY:
-    class OceanBlockDeviceMappingArgsDict(TypedDict):
-        device_name: pulumi.Input[_builtins.str]
-        """
-        String. Set device name. Example: `/dev/xvda1`.
-        """
-        ebs: NotRequired[pulumi.Input['OceanBlockDeviceMappingEbsArgsDict']]
-        """
-        Object. Set Elastic Block Store properties.
-        """
-        no_device: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        String. Suppresses the specified device included in the block device mapping of the AMI.
-        """
-        virtual_name: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    OceanBlockDeviceMappingArgsDict: TypeAlias = Mapping[str, Any]
+class OceanBlockDeviceMappingArgsDict(TypedDict):
+    device_name: pulumi.Input[_builtins.str]
+    """
+    String. Set device name. Example: `/dev/xvda1`.
+    """
+    ebs: NotRequired[pulumi.Input['OceanBlockDeviceMappingEbsArgsDict']]
+    """
+    Object. Set Elastic Block Store properties.
+    """
+    no_device: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    String. Suppresses the specified device included in the block device mapping of the AMI.
+    """
+    virtual_name: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class OceanBlockDeviceMappingArgs:
@@ -513,46 +496,43 @@ class OceanBlockDeviceMappingArgs:
         pulumi.set(self, "virtual_name", value)
 
 
-if not MYPY:
-    class OceanBlockDeviceMappingEbsArgsDict(TypedDict):
-        delete_on_termination: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Boolean. Toggles EBS deletion upon instance termination.
-        """
-        dynamic_volume_size: NotRequired[pulumi.Input['OceanBlockDeviceMappingEbsDynamicVolumeSizeArgsDict']]
-        """
-        Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
-        """
-        encrypted: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
-        """
-        iops: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Int. The number of I/O operations per second (IOPS) that the volume supports.
-        """
-        kms_key_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
-        """
-        snapshot_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Optional) String. The snapshot ID to mount by.
-        """
-        throughput: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.
-        """
-        volume_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Int. The size (in GB) of the volume.
-        """
-        volume_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        String. The type of the volume. Example: `gp2`.
-        """
-elif False:
-    OceanBlockDeviceMappingEbsArgsDict: TypeAlias = Mapping[str, Any]
+class OceanBlockDeviceMappingEbsArgsDict(TypedDict):
+    delete_on_termination: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Boolean. Toggles EBS deletion upon instance termination.
+    """
+    dynamic_volume_size: NotRequired[pulumi.Input['OceanBlockDeviceMappingEbsDynamicVolumeSizeArgsDict']]
+    """
+    Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
+    """
+    encrypted: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+    """
+    iops: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Int. The number of I/O operations per second (IOPS) that the volume supports.
+    """
+    kms_key_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+    """
+    snapshot_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Optional) String. The snapshot ID to mount by.
+    """
+    throughput: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.
+    """
+    volume_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Int. The size (in GB) of the volume.
+    """
+    volume_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    String. The type of the volume. Example: `gp2`.
+    """
 
 @pulumi.input_type
 class OceanBlockDeviceMappingEbsArgs:
@@ -705,22 +685,19 @@ class OceanBlockDeviceMappingEbsArgs:
         pulumi.set(self, "volume_type", value)
 
 
-if not MYPY:
-    class OceanBlockDeviceMappingEbsDynamicVolumeSizeArgsDict(TypedDict):
-        base_size: pulumi.Input[_builtins.int]
-        """
-        Int. Initial size for volume. Example: `50`.
-        """
-        resource: pulumi.Input[_builtins.str]
-        """
-        String. Resource type to increase volume size dynamically by. Valid values: `CPU`.
-        """
-        size_per_resource_unit: pulumi.Input[_builtins.int]
-        """
-        Int. Additional size (in GB) per resource unit. Example: When the `baseSize=50`, `sizePerResourceUnit=20`, and instance with two CPUs is launched, its total disk size will be: 90GB.
-        """
-elif False:
-    OceanBlockDeviceMappingEbsDynamicVolumeSizeArgsDict: TypeAlias = Mapping[str, Any]
+class OceanBlockDeviceMappingEbsDynamicVolumeSizeArgsDict(TypedDict):
+    base_size: pulumi.Input[_builtins.int]
+    """
+    Int. Initial size for volume. Example: `50`.
+    """
+    resource: pulumi.Input[_builtins.str]
+    """
+    String. Resource type to increase volume size dynamically by. Valid values: `CPU`.
+    """
+    size_per_resource_unit: pulumi.Input[_builtins.int]
+    """
+    Int. Additional size (in GB) per resource unit. Example: When the `baseSize=50`, `sizePerResourceUnit=20`, and instance with two CPUs is launched, its total disk size will be: 90GB.
+    """
 
 @pulumi.input_type
 class OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs:
@@ -774,14 +751,11 @@ class OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs:
         pulumi.set(self, "size_per_resource_unit", value)
 
 
-if not MYPY:
-    class OceanClusterOrientationArgsDict(TypedDict):
-        availability_vs_cost: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        You can control the approach that Ocean takes while launching nodes by configuring this value. Possible values: `costOriented`,`balanced`,`cheapest`.
-        """
-elif False:
-    OceanClusterOrientationArgsDict: TypeAlias = Mapping[str, Any]
+class OceanClusterOrientationArgsDict(TypedDict):
+    availability_vs_cost: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    You can control the approach that Ocean takes while launching nodes by configuring this value. Possible values: `costOriented`,`balanced`,`cheapest`.
+    """
 
 @pulumi.input_type
 class OceanClusterOrientationArgs:
@@ -806,80 +780,77 @@ class OceanClusterOrientationArgs:
         pulumi.set(self, "availability_vs_cost", value)
 
 
-if not MYPY:
-    class OceanFiltersArgsDict(TypedDict):
-        architectures: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The filtered instance types will support at least one of the architectures from this list.
-        """
-        categories: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The filtered instance types will belong to one of the categories types from this list.
-        """
-        disk_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The filtered instance types will have one of the disk type from this list.
-        """
-        exclude_families: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
-        """
-        exclude_metal: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        In case excludeMetal is set to true, metal types will not be available for scaling.
-        """
-        hypervisors: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The filtered instance types will have a hypervisor type from this list.
-        """
-        include_families: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
-        """
-        is_ena_supported: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Ena is supported or not.
-        """
-        max_gpu: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum total number of GPUs.
-        """
-        max_memory_gib: NotRequired[pulumi.Input[_builtins.float]]
-        max_network_performance: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum Bandwidth in Gib/s of network performance.
-        """
-        max_vcpu: NotRequired[pulumi.Input[_builtins.int]]
-        min_enis: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minimum number of network interfaces (ENIs).
-        """
-        min_gpu: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minimum total number of GPUs.
-        """
-        min_memory_gib: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Minimum amount of Memory (GiB).
-        """
-        min_network_performance: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minimum Bandwidth in Gib/s of network performance.
-        """
-        min_vcpu: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minimum number of vcpus available.
-        """
-        root_device_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The filtered instance types will have a root device types from this list.
-        """
-        virtualization_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The filtered instance types will support at least one of the virtualization types from this list.
-        """
-elif False:
-    OceanFiltersArgsDict: TypeAlias = Mapping[str, Any]
+class OceanFiltersArgsDict(TypedDict):
+    architectures: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The filtered instance types will support at least one of the architectures from this list.
+    """
+    categories: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The filtered instance types will belong to one of the categories types from this list.
+    """
+    disk_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The filtered instance types will have one of the disk type from this list.
+    """
+    exclude_families: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
+    """
+    exclude_metal: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    In case excludeMetal is set to true, metal types will not be available for scaling.
+    """
+    hypervisors: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The filtered instance types will have a hypervisor type from this list.
+    """
+    include_families: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
+    """
+    is_ena_supported: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Ena is supported or not.
+    """
+    max_gpu: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum total number of GPUs.
+    """
+    max_memory_gib: NotRequired[pulumi.Input[_builtins.float]]
+    max_network_performance: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum Bandwidth in Gib/s of network performance.
+    """
+    max_vcpu: NotRequired[pulumi.Input[_builtins.int]]
+    min_enis: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minimum number of network interfaces (ENIs).
+    """
+    min_gpu: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minimum total number of GPUs.
+    """
+    min_memory_gib: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Minimum amount of Memory (GiB).
+    """
+    min_network_performance: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minimum Bandwidth in Gib/s of network performance.
+    """
+    min_vcpu: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minimum number of vcpus available.
+    """
+    root_device_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The filtered instance types will have a root device types from this list.
+    """
+    virtualization_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The filtered instance types will support at least one of the virtualization types from this list.
+    """
 
 @pulumi.input_type
 class OceanFiltersArgs:
@@ -1184,18 +1155,15 @@ class OceanFiltersArgs:
         pulumi.set(self, "virtualization_types", value)
 
 
-if not MYPY:
-    class OceanInstanceMetadataOptionsArgsDict(TypedDict):
-        http_tokens: pulumi.Input[_builtins.str]
-        """
-        Determines if a signed token is required or not. Valid values: `optional` or `required`.
-        """
-        http_put_response_hop_limit: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
-        """
-elif False:
-    OceanInstanceMetadataOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class OceanInstanceMetadataOptionsArgsDict(TypedDict):
+    http_tokens: pulumi.Input[_builtins.str]
+    """
+    Determines if a signed token is required or not. Valid values: `optional` or `required`.
+    """
+    http_put_response_hop_limit: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
+    """
 
 @pulumi.input_type
 class OceanInstanceMetadataOptionsArgs:
@@ -1235,18 +1203,15 @@ class OceanInstanceMetadataOptionsArgs:
         pulumi.set(self, "http_put_response_hop_limit", value)
 
 
-if not MYPY:
-    class OceanLaunchSpecAttributeArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        The label key.
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        The label value.
-        """
-elif False:
-    OceanLaunchSpecAttributeArgsDict: TypeAlias = Mapping[str, Any]
+class OceanLaunchSpecAttributeArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    The label key.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    The label value.
+    """
 
 @pulumi.input_type
 class OceanLaunchSpecAttributeArgs:
@@ -1285,22 +1250,19 @@ class OceanLaunchSpecAttributeArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class OceanLaunchSpecAutoscaleHeadroomArgsDict(TypedDict):
-        num_of_units: pulumi.Input[_builtins.int]
-        """
-        The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
-        """
-        cpu_per_unit: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in CPU units, where 1024 units = 1 vCPU.
-        """
-        memory_per_unit: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
-        """
-elif False:
-    OceanLaunchSpecAutoscaleHeadroomArgsDict: TypeAlias = Mapping[str, Any]
+class OceanLaunchSpecAutoscaleHeadroomArgsDict(TypedDict):
+    num_of_units: pulumi.Input[_builtins.int]
+    """
+    The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+    """
+    cpu_per_unit: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in CPU units, where 1024 units = 1 vCPU.
+    """
+    memory_per_unit: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
+    """
 
 @pulumi.input_type
 class OceanLaunchSpecAutoscaleHeadroomArgs:
@@ -1356,23 +1318,20 @@ class OceanLaunchSpecAutoscaleHeadroomArgs:
         pulumi.set(self, "memory_per_unit", value)
 
 
-if not MYPY:
-    class OceanLaunchSpecBlockDeviceMappingArgsDict(TypedDict):
-        device_name: pulumi.Input[_builtins.str]
-        """
-        String. Set device name. (Example: "/dev/xvda1").
-        """
-        ebs: NotRequired[pulumi.Input['OceanLaunchSpecBlockDeviceMappingEbsArgsDict']]
-        """
-        Object. Set Elastic Block Store properties .
-        """
-        no_device: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        String. suppresses the specified device included in the block device mapping of the AMI.
-        """
-        virtual_name: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    OceanLaunchSpecBlockDeviceMappingArgsDict: TypeAlias = Mapping[str, Any]
+class OceanLaunchSpecBlockDeviceMappingArgsDict(TypedDict):
+    device_name: pulumi.Input[_builtins.str]
+    """
+    String. Set device name. (Example: "/dev/xvda1").
+    """
+    ebs: NotRequired[pulumi.Input['OceanLaunchSpecBlockDeviceMappingEbsArgsDict']]
+    """
+    Object. Set Elastic Block Store properties .
+    """
+    no_device: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    String. suppresses the specified device included in the block device mapping of the AMI.
+    """
+    virtual_name: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class OceanLaunchSpecBlockDeviceMappingArgs:
@@ -1440,46 +1399,43 @@ class OceanLaunchSpecBlockDeviceMappingArgs:
         pulumi.set(self, "virtual_name", value)
 
 
-if not MYPY:
-    class OceanLaunchSpecBlockDeviceMappingEbsArgsDict(TypedDict):
-        delete_on_termination: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Boolean. Flag to delete the EBS on instance termination.
-        """
-        dynamic_volume_size: NotRequired[pulumi.Input['OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgsDict']]
-        """
-        Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
-        """
-        encrypted: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
-        """
-        iops: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Int. The number of I/O operations per second (IOPS) that the volume supports.
-        """
-        kms_key_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
-        """
-        snapshot_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Optional) String. The Snapshot ID to mount by.
-        """
-        throughput: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.
-        """
-        volume_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Int. The size, in GB of the volume.
-        """
-        volume_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        String. The type of the volume (example: "gp2").
-        """
-elif False:
-    OceanLaunchSpecBlockDeviceMappingEbsArgsDict: TypeAlias = Mapping[str, Any]
+class OceanLaunchSpecBlockDeviceMappingEbsArgsDict(TypedDict):
+    delete_on_termination: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Boolean. Flag to delete the EBS on instance termination.
+    """
+    dynamic_volume_size: NotRequired[pulumi.Input['OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgsDict']]
+    """
+    Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
+    """
+    encrypted: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+    """
+    iops: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Int. The number of I/O operations per second (IOPS) that the volume supports.
+    """
+    kms_key_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+    """
+    snapshot_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Optional) String. The Snapshot ID to mount by.
+    """
+    throughput: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.
+    """
+    volume_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Int. The size, in GB of the volume.
+    """
+    volume_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    String. The type of the volume (example: "gp2").
+    """
 
 @pulumi.input_type
 class OceanLaunchSpecBlockDeviceMappingEbsArgs:
@@ -1632,22 +1588,19 @@ class OceanLaunchSpecBlockDeviceMappingEbsArgs:
         pulumi.set(self, "volume_type", value)
 
 
-if not MYPY:
-    class OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgsDict(TypedDict):
-        base_size: pulumi.Input[_builtins.int]
-        """
-        Int. Initial size for volume. (Example: 50)
-        """
-        resource: pulumi.Input[_builtins.str]
-        """
-        String. Resource type to increase volume size dynamically by. (valid values: "CPU")
-        """
-        size_per_resource_unit: pulumi.Input[_builtins.int]
-        """
-        Int. Additional size (in GB) per resource unit. (Example: baseSize= 50, sizePerResourceUnit=20, and instance with 2 CPU is launched - its total disk size will be: 90GB)
-        """
-elif False:
-    OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgsDict: TypeAlias = Mapping[str, Any]
+class OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgsDict(TypedDict):
+    base_size: pulumi.Input[_builtins.int]
+    """
+    Int. Initial size for volume. (Example: 50)
+    """
+    resource: pulumi.Input[_builtins.str]
+    """
+    String. Resource type to increase volume size dynamically by. (valid values: "CPU")
+    """
+    size_per_resource_unit: pulumi.Input[_builtins.int]
+    """
+    Int. Additional size (in GB) per resource unit. (Example: baseSize= 50, sizePerResourceUnit=20, and instance with 2 CPU is launched - its total disk size will be: 90GB)
+    """
 
 @pulumi.input_type
 class OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs:
@@ -1701,14 +1654,11 @@ class OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs:
         pulumi.set(self, "size_per_resource_unit", value)
 
 
-if not MYPY:
-    class OceanLaunchSpecImageArgsDict(TypedDict):
-        image_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Identifier of the image in AWS. Valid values: any string which is not empty or null.
-        """
-elif False:
-    OceanLaunchSpecImageArgsDict: TypeAlias = Mapping[str, Any]
+class OceanLaunchSpecImageArgsDict(TypedDict):
+    image_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Identifier of the image in AWS. Valid values: any string which is not empty or null.
+    """
 
 @pulumi.input_type
 class OceanLaunchSpecImageArgs:
@@ -1733,18 +1683,15 @@ class OceanLaunchSpecImageArgs:
         pulumi.set(self, "image_id", value)
 
 
-if not MYPY:
-    class OceanLaunchSpecInstanceMetadataOptionsArgsDict(TypedDict):
-        http_tokens: pulumi.Input[_builtins.str]
-        """
-        Determines if a signed token is required or not. Valid values: `optional` or `required`.
-        """
-        http_put_response_hop_limit: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
-        """
-elif False:
-    OceanLaunchSpecInstanceMetadataOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class OceanLaunchSpecInstanceMetadataOptionsArgsDict(TypedDict):
+    http_tokens: pulumi.Input[_builtins.str]
+    """
+    Determines if a signed token is required or not. Valid values: `optional` or `required`.
+    """
+    http_put_response_hop_limit: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
+    """
 
 @pulumi.input_type
 class OceanLaunchSpecInstanceMetadataOptionsArgs:
@@ -1784,26 +1731,23 @@ class OceanLaunchSpecInstanceMetadataOptionsArgs:
         pulumi.set(self, "http_put_response_hop_limit", value)
 
 
-if not MYPY:
-    class OceanLaunchSpecSchedulingTaskArgsDict(TypedDict):
-        cron_expression: pulumi.Input[_builtins.str]
-        """
-        A valid cron expression. For example : " * * * * * ". The cron job runs in UTC time and is in Unix cron format.
-        """
-        is_enabled: pulumi.Input[_builtins.bool]
-        """
-        Describes whether the task is enabled. When `true`, the task runs. When `false`, it does not run.
-        """
-        task_type: pulumi.Input[_builtins.str]
-        """
-        The activity that you are scheduling. Valid values: "manualHeadroomUpdate".
-        """
-        task_headrooms: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskTaskHeadroomArgsDict']]]]
-        """
-        The config of this scheduled task. Depends on the value of taskType.
-        """
-elif False:
-    OceanLaunchSpecSchedulingTaskArgsDict: TypeAlias = Mapping[str, Any]
+class OceanLaunchSpecSchedulingTaskArgsDict(TypedDict):
+    cron_expression: pulumi.Input[_builtins.str]
+    """
+    A valid cron expression. For example : " * * * * * ". The cron job runs in UTC time and is in Unix cron format.
+    """
+    is_enabled: pulumi.Input[_builtins.bool]
+    """
+    Describes whether the task is enabled. When `true`, the task runs. When `false`, it does not run.
+    """
+    task_type: pulumi.Input[_builtins.str]
+    """
+    The activity that you are scheduling. Valid values: "manualHeadroomUpdate".
+    """
+    task_headrooms: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskTaskHeadroomArgsDict']]]]
+    """
+    The config of this scheduled task. Depends on the value of taskType.
+    """
 
 @pulumi.input_type
 class OceanLaunchSpecSchedulingTaskArgs:
@@ -1873,22 +1817,19 @@ class OceanLaunchSpecSchedulingTaskArgs:
         pulumi.set(self, "task_headrooms", value)
 
 
-if not MYPY:
-    class OceanLaunchSpecSchedulingTaskTaskHeadroomArgsDict(TypedDict):
-        num_of_units: pulumi.Input[_builtins.int]
-        """
-        The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
-        """
-        cpu_per_unit: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-        """
-        memory_per_unit: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
-        """
-elif False:
-    OceanLaunchSpecSchedulingTaskTaskHeadroomArgsDict: TypeAlias = Mapping[str, Any]
+class OceanLaunchSpecSchedulingTaskTaskHeadroomArgsDict(TypedDict):
+    num_of_units: pulumi.Input[_builtins.int]
+    """
+    The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+    """
+    cpu_per_unit: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+    """
+    memory_per_unit: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
+    """
 
 @pulumi.input_type
 class OceanLaunchSpecSchedulingTaskTaskHeadroomArgs:
@@ -1944,14 +1885,11 @@ class OceanLaunchSpecSchedulingTaskTaskHeadroomArgs:
         pulumi.set(self, "memory_per_unit", value)
 
 
-if not MYPY:
-    class OceanLaunchSpecStrategyArgsDict(TypedDict):
-        spot_percentage: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Virtual Node Group instances.
-        """
-elif False:
-    OceanLaunchSpecStrategyArgsDict: TypeAlias = Mapping[str, Any]
+class OceanLaunchSpecStrategyArgsDict(TypedDict):
+    spot_percentage: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Virtual Node Group instances.
+    """
 
 @pulumi.input_type
 class OceanLaunchSpecStrategyArgs:
@@ -1976,18 +1914,15 @@ class OceanLaunchSpecStrategyArgs:
         pulumi.set(self, "spot_percentage", value)
 
 
-if not MYPY:
-    class OceanLaunchSpecTagArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        The label key.
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        The label value.
-        """
-elif False:
-    OceanLaunchSpecTagArgsDict: TypeAlias = Mapping[str, Any]
+class OceanLaunchSpecTagArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    The label key.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    The label value.
+    """
 
 @pulumi.input_type
 class OceanLaunchSpecTagArgs:
@@ -2026,14 +1961,11 @@ class OceanLaunchSpecTagArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class OceanLoggingArgsDict(TypedDict):
-        export: NotRequired[pulumi.Input['OceanLoggingExportArgsDict']]
-        """
-        Logging Export configuration.
-        """
-elif False:
-    OceanLoggingArgsDict: TypeAlias = Mapping[str, Any]
+class OceanLoggingArgsDict(TypedDict):
+    export: NotRequired[pulumi.Input['OceanLoggingExportArgsDict']]
+    """
+    Logging Export configuration.
+    """
 
 @pulumi.input_type
 class OceanLoggingArgs:
@@ -2058,14 +1990,11 @@ class OceanLoggingArgs:
         pulumi.set(self, "export", value)
 
 
-if not MYPY:
-    class OceanLoggingExportArgsDict(TypedDict):
-        s3s: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanLoggingExportS3ArgsDict']]]]
-        """
-        Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
-        """
-elif False:
-    OceanLoggingExportArgsDict: TypeAlias = Mapping[str, Any]
+class OceanLoggingExportArgsDict(TypedDict):
+    s3s: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanLoggingExportS3ArgsDict']]]]
+    """
+    Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
+    """
 
 @pulumi.input_type
 class OceanLoggingExportArgs:
@@ -2090,14 +2019,11 @@ class OceanLoggingExportArgs:
         pulumi.set(self, "s3s", value)
 
 
-if not MYPY:
-    class OceanLoggingExportS3ArgsDict(TypedDict):
-        id: pulumi.Input[_builtins.str]
-        """
-        The identifier of The S3 data integration to export the logs to.
-        """
-elif False:
-    OceanLoggingExportS3ArgsDict: TypeAlias = Mapping[str, Any]
+class OceanLoggingExportS3ArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.str]
+    """
+    The identifier of The S3 data integration to export the logs to.
+    """
 
 @pulumi.input_type
 class OceanLoggingExportS3Args:
@@ -2121,22 +2047,19 @@ class OceanLoggingExportS3Args:
         pulumi.set(self, "id", value)
 
 
-if not MYPY:
-    class OceanOptimizeImagesArgsDict(TypedDict):
-        perform_at: pulumi.Input[_builtins.str]
-        """
-        String. Valid values: "always" "never" "timeWindow".
-        """
-        should_optimize_ecs_ami: pulumi.Input[_builtins.bool]
-        """
-        Boolean. Enable auto image (AMI) update for the ECS container instances. The auto update applies for ECS-Optimized AMIs.
-        """
-        time_windows: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
-        """
-elif False:
-    OceanOptimizeImagesArgsDict: TypeAlias = Mapping[str, Any]
+class OceanOptimizeImagesArgsDict(TypedDict):
+    perform_at: pulumi.Input[_builtins.str]
+    """
+    String. Valid values: "always" "never" "timeWindow".
+    """
+    should_optimize_ecs_ami: pulumi.Input[_builtins.bool]
+    """
+    Boolean. Enable auto image (AMI) update for the ECS container instances. The auto update applies for ECS-Optimized AMIs.
+    """
+    time_windows: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
+    """
 
 @pulumi.input_type
 class OceanOptimizeImagesArgs:
@@ -2191,18 +2114,15 @@ class OceanOptimizeImagesArgs:
         pulumi.set(self, "time_windows", value)
 
 
-if not MYPY:
-    class OceanScheduledTaskArgsDict(TypedDict):
-        shutdown_hours: NotRequired[pulumi.Input['OceanScheduledTaskShutdownHoursArgsDict']]
-        """
-        Set shutdown hours for cluster object.
-        """
-        tasks: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskTaskArgsDict']]]]
-        """
-        The scheduling tasks for the cluster.
-        """
-elif False:
-    OceanScheduledTaskArgsDict: TypeAlias = Mapping[str, Any]
+class OceanScheduledTaskArgsDict(TypedDict):
+    shutdown_hours: NotRequired[pulumi.Input['OceanScheduledTaskShutdownHoursArgsDict']]
+    """
+    Set shutdown hours for cluster object.
+    """
+    tasks: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskTaskArgsDict']]]]
+    """
+    The scheduling tasks for the cluster.
+    """
 
 @pulumi.input_type
 class OceanScheduledTaskArgs:
@@ -2243,18 +2163,15 @@ class OceanScheduledTaskArgs:
         pulumi.set(self, "tasks", value)
 
 
-if not MYPY:
-    class OceanScheduledTaskShutdownHoursArgsDict(TypedDict):
-        time_windows: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59). Time windows should not overlap. Required when `cluster.scheduling.isEnabled` is true. API Times are in UTC. Example: `Fri:15:30-Wed:14:30`.
-        """
-        is_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Flag to enable / disable the shutdown hours.
-        """
-elif False:
-    OceanScheduledTaskShutdownHoursArgsDict: TypeAlias = Mapping[str, Any]
+class OceanScheduledTaskShutdownHoursArgsDict(TypedDict):
+    time_windows: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59). Time windows should not overlap. Required when `cluster.scheduling.isEnabled` is true. API Times are in UTC. Example: `Fri:15:30-Wed:14:30`.
+    """
+    is_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Flag to enable / disable the shutdown hours.
+    """
 
 @pulumi.input_type
 class OceanScheduledTaskShutdownHoursArgs:
@@ -2294,22 +2211,19 @@ class OceanScheduledTaskShutdownHoursArgs:
         pulumi.set(self, "is_enabled", value)
 
 
-if not MYPY:
-    class OceanScheduledTaskTaskArgsDict(TypedDict):
-        cron_expression: pulumi.Input[_builtins.str]
-        """
-        A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. Example: `0 1 * * *`.
-        """
-        is_enabled: pulumi.Input[_builtins.bool]
-        """
-        Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
-        """
-        task_type: pulumi.Input[_builtins.str]
-        """
-        Valid values: "clusterRoll". Required for `cluster.scheduling.tasks object`. Example: `clusterRoll`.
-        """
-elif False:
-    OceanScheduledTaskTaskArgsDict: TypeAlias = Mapping[str, Any]
+class OceanScheduledTaskTaskArgsDict(TypedDict):
+    cron_expression: pulumi.Input[_builtins.str]
+    """
+    A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. Example: `0 1 * * *`.
+    """
+    is_enabled: pulumi.Input[_builtins.bool]
+    """
+    Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
+    """
+    task_type: pulumi.Input[_builtins.str]
+    """
+    Valid values: "clusterRoll". Required for `cluster.scheduling.tasks object`. Example: `clusterRoll`.
+    """
 
 @pulumi.input_type
 class OceanScheduledTaskTaskArgs:
@@ -2363,19 +2277,16 @@ class OceanScheduledTaskTaskArgs:
         pulumi.set(self, "task_type", value)
 
 
-if not MYPY:
-    class OceanTagArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        The tag key.
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        The tag value.
-        * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
-        """
-elif False:
-    OceanTagArgsDict: TypeAlias = Mapping[str, Any]
+class OceanTagArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    The tag key.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    The tag value.
+    * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
+    """
 
 @pulumi.input_type
 class OceanTagArgs:
@@ -2416,23 +2327,20 @@ class OceanTagArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class OceanUpdatePolicyArgsDict(TypedDict):
-        should_roll: pulumi.Input[_builtins.bool]
-        """
-        Enables the roll.
-        """
-        auto_apply_tags: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        will update instance tags on the fly without rolling the cluster.
-        """
-        conditioned_roll: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
-        """
-        roll_config: NotRequired[pulumi.Input['OceanUpdatePolicyRollConfigArgsDict']]
-elif False:
-    OceanUpdatePolicyArgsDict: TypeAlias = Mapping[str, Any]
+class OceanUpdatePolicyArgsDict(TypedDict):
+    should_roll: pulumi.Input[_builtins.bool]
+    """
+    Enables the roll.
+    """
+    auto_apply_tags: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    will update instance tags on the fly without rolling the cluster.
+    """
+    conditioned_roll: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
+    """
+    roll_config: NotRequired[pulumi.Input['OceanUpdatePolicyRollConfigArgsDict']]
 
 @pulumi.input_type
 class OceanUpdatePolicyArgs:
@@ -2500,18 +2408,15 @@ class OceanUpdatePolicyArgs:
         pulumi.set(self, "roll_config", value)
 
 
-if not MYPY:
-    class OceanUpdatePolicyRollConfigArgsDict(TypedDict):
-        batch_size_percentage: pulumi.Input[_builtins.int]
-        """
-        Sets the percentage of the instances to deploy in each batch.
-        """
-        batch_min_healthy_percentage: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
-        """
-elif False:
-    OceanUpdatePolicyRollConfigArgsDict: TypeAlias = Mapping[str, Any]
+class OceanUpdatePolicyRollConfigArgsDict(TypedDict):
+    batch_size_percentage: pulumi.Input[_builtins.int]
+    """
+    Sets the percentage of the instances to deploy in each batch.
+    """
+    batch_min_healthy_percentage: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+    """
 
 @pulumi.input_type
 class OceanUpdatePolicyRollConfigArgs:

@@ -730,16 +730,6 @@ class OceanLaunchSpec(pulumi.CustomResource):
             }])
         ```
 
-        ## Import
-
-        Launch_Specs can be imported using the Launch_Spec `id`, e.g.,
-
-        hcl
-
-        ```sh
-        $ pulumi import spotinst:ecs/oceanLaunchSpec:OceanLaunchSpec nameOfTheResource ols-1a2345
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecAttributeArgs', 'OceanLaunchSpecAttributeArgsDict']]]] attributes: Optionally adds labels to instances launched in an Ocean cluster.
@@ -861,16 +851,6 @@ class OceanLaunchSpec(pulumi.CustomResource):
                     "memory_per_unit": 2048,
                 }],
             }])
-        ```
-
-        ## Import
-
-        Launch_Specs can be imported using the Launch_Spec `id`, e.g.,
-
-        hcl
-
-        ```sh
-        $ pulumi import spotinst:ecs/oceanLaunchSpec:OceanLaunchSpec nameOfTheResource ols-1a2345
         ```
 
         :param str resource_name: The name of the resource.

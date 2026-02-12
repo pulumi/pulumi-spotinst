@@ -10,6 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws
 {
     /// <summary>
+    /// Suspend AWS Elastigroup processes. This resource provide the capability of
+    /// suspending elastigroup processes using Terraform.
+    /// 
+    /// For supported processes please visit: [Suspend Processes API reference](https://help.spot.io/spotinst-api/elastigroup/amazon-web-services/suspend-processes/)
     /// ## Example Usage
     /// 
     /// ```csharp

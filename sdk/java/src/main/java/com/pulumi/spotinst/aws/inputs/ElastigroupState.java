@@ -543,9 +543,17 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.logging);
     }
 
+    /**
+     * The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once. Default value is set to -1 intentionally, which will appear in the terminal during a pulumi preview if this field is not configured. This prevents confusion, as Terraform otherwise defaults integer data types to 0 when a field is not explicitly set.
+     * 
+     */
     @Import(name="maxReplacementsPercentage")
     private @Nullable Output<Integer> maxReplacementsPercentage;
 
+    /**
+     * @return The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once. Default value is set to -1 intentionally, which will appear in the terminal during a pulumi preview if this field is not configured. This prevents confusion, as Terraform otherwise defaults integer data types to 0 when a field is not explicitly set.
+     * 
+     */
     public Optional<Output<Integer>> maxReplacementsPercentage() {
         return Optional.ofNullable(this.maxReplacementsPercentage);
     }
@@ -1927,11 +1935,23 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
             return logging(Output.of(logging));
         }
 
+        /**
+         * @param maxReplacementsPercentage The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once. Default value is set to -1 intentionally, which will appear in the terminal during a pulumi preview if this field is not configured. This prevents confusion, as Terraform otherwise defaults integer data types to 0 when a field is not explicitly set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxReplacementsPercentage(@Nullable Output<Integer> maxReplacementsPercentage) {
             $.maxReplacementsPercentage = maxReplacementsPercentage;
             return this;
         }
 
+        /**
+         * @param maxReplacementsPercentage The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once. Default value is set to -1 intentionally, which will appear in the terminal during a pulumi preview if this field is not configured. This prevents confusion, as Terraform otherwise defaults integer data types to 0 when a field is not explicitly set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxReplacementsPercentage(Integer maxReplacementsPercentage) {
             return maxReplacementsPercentage(Output.of(maxReplacementsPercentage));
         }

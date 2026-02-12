@@ -28,6 +28,208 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Manages a Spotinst Ocean AKS resource.
+ * 
+ * ## Basic Ocean Cluster Creation Usage Example - using minimum configuration with only required parameters
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.spotinst.azure.OceanNp;
+ * import com.pulumi.spotinst.azure.OceanNpArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new OceanNp("example", OceanNpArgs.builder()
+ *             .name("test")
+ *             .aksRegion("eastus")
+ *             .aksClusterName("test-cluster")
+ *             .aksInfrastructureResourceGroupName("MC_TestResourceGroup_test-cluster_eastus")
+ *             .aksResourceGroupName("TestResourceGroup")
+ *             .controllerClusterId("test-123124")
+ *             .availabilityZones(            
+ *                 "1",
+ *                 "2",
+ *                 "3")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ## Detailed Ocean Cluster Creation Usage Example - using all available parameters with sample values
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.spotinst.azure.OceanNp;
+ * import com.pulumi.spotinst.azure.OceanNpArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanNpAutoscalerArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanNpAutoscalerResourceLimitsArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanNpAutoscalerAutoscaleDownArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanNpAutoscalerAutoscaleHeadroomArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanNpHealthArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanNpLoggingArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanNpLoggingExportArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanNpHeadroomArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanNpLinuxOsConfigArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanNpTaintArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanNpVngTemplateSchedulingArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanNpVngTemplateSchedulingVngTemplateShutdownHoursArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanNpFiltersArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new OceanNp("example", OceanNpArgs.builder()
+ *             .name("test")
+ *             .aksRegion("eastus")
+ *             .aksClusterName("test-cluster")
+ *             .aksInfrastructureResourceGroupName("MC_TestResourceGroup_test-cluster_eastus")
+ *             .aksResourceGroupName("TestResourceGroup")
+ *             .controllerClusterId("test-123124")
+ *             .autoscaler(OceanNpAutoscalerArgs.builder()
+ *                 .autoscaleIsEnabled(true)
+ *                 .resourceLimits(OceanNpAutoscalerResourceLimitsArgs.builder()
+ *                     .maxVcpu(750)
+ *                     .maxMemoryGib(1500)
+ *                     .build())
+ *                 .autoscaleDown(OceanNpAutoscalerAutoscaleDownArgs.builder()
+ *                     .maxScaleDownPercentage(30)
+ *                     .build())
+ *                 .autoscaleHeadroom(OceanNpAutoscalerAutoscaleHeadroomArgs.builder()
+ *                     .automatic(OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs.builder()
+ *                         .isEnabled(true)
+ *                         .percentage(5)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .health(OceanNpHealthArgs.builder()
+ *                 .gracePeriod(600)
+ *                 .build())
+ *             .logging(OceanNpLoggingArgs.builder()
+ *                 .export(OceanNpLoggingExportArgs.builder()
+ *                     .azureBlobs(OceanNpLoggingExportAzureBlobArgs.builder()
+ *                         .id("di-abcd123")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .headrooms(OceanNpHeadroomArgs.builder()
+ *                 .cpuPerUnit(1024)
+ *                 .memoryPerUnit(512)
+ *                 .gpuPerUnit(0)
+ *                 .numOfUnits(2)
+ *                 .build())
+ *             .availabilityZones(            
+ *                 "1",
+ *                 "2",
+ *                 "3")
+ *             .labels(Map.ofEntries(
+ *                 Map.entry("key", "env"),
+ *                 Map.entry("value", "test")
+ *             ))
+ *             .minCount(1)
+ *             .maxCount(100)
+ *             .maxPodsPerNode(30)
+ *             .enableNodePublicIp(true)
+ *             .osDiskSizeGb(30)
+ *             .osDiskType("Managed")
+ *             .osType("Windows")
+ *             .osSku("Windows2022")
+ *             .kubernetesVersion("1.26")
+ *             .podSubnetIds("/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default")
+ *             .vnetSubnetIds("/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default")
+ *             .linuxOsConfigs(OceanNpLinuxOsConfigArgs.builder()
+ *                 .sysctls(OceanNpLinuxOsConfigSysctlArgs.builder()
+ *                     .vmMaxMapCount(79550)
+ *                     .build())
+ *                 .build())
+ *             .spotPercentage(50)
+ *             .fallbackToOndemand(true)
+ *             .taints(OceanNpTaintArgs.builder()
+ *                 .key("taintKey")
+ *                 .value("taintValue")
+ *                 .effect("NoSchedule")
+ *                 .build())
+ *             .vngTemplateScheduling(OceanNpVngTemplateSchedulingArgs.builder()
+ *                 .vngTemplateShutdownHours(OceanNpVngTemplateSchedulingVngTemplateShutdownHoursArgs.builder()
+ *                     .isEnabled(true)
+ *                     .timeWindows(                    
+ *                         "Fri:15:30-Sat:13:30",
+ *                         "Sun:15:30-Mon:13:30")
+ *                     .build())
+ *                 .build())
+ *             .tags(Map.ofEntries(
+ *                 Map.entry("tagKey", "env"),
+ *                 Map.entry("tagValue", "staging")
+ *             ))
+ *             .filters(OceanNpFiltersArgs.builder()
+ *                 .minVcpu(2)
+ *                 .maxVcpu(16)
+ *                 .minMemoryGib(8.0)
+ *                 .maxMemoryGib(128.0)
+ *                 .architectures(                
+ *                     "x86_64",
+ *                     "arm64")
+ *                 .series(                
+ *                     "D v3",
+ *                     "Dds_v4",
+ *                     "Dsv2")
+ *                 .excludeSeries(                
+ *                     "Av2",
+ *                     "A",
+ *                     "Bs",
+ *                     "D",
+ *                     "E")
+ *                 .acceleratedNetworking("Enabled")
+ *                 .diskPerformance("Premium")
+ *                 .minGpu(1.0)
+ *                 .maxGpu(2.0)
+ *                 .minNics(1)
+ *                 .vmTypes(                
+ *                     "generalPurpose",
+ *                     "GPU")
+ *                 .minDisk(1)
+ *                 .gpuTypes("nvidia-tesla-t4")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ */
 @ResourceType(type="spotinst:azure/oceanNp:OceanNp")
 public class OceanNp extends com.pulumi.resources.CustomResource {
     @Export(name="aksClusterName", refs={String.class}, tree="[0]")

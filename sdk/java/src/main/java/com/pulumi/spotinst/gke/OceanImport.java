@@ -26,6 +26,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Manages a Spotinst Ocean GKE resource.
+ * 
  * ## Example Usage
  * 
  * <pre>

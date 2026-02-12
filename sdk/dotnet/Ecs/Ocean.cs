@@ -178,16 +178,6 @@ namespace Pulumi.SpotInst.Ecs
     /// 
     /// });
     /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// Clusters can be imported using the Ocean `id`, e.g.,
-    /// 
-    /// hcl
-    /// 
-    /// ```sh
-    /// $ pulumi import spotinst:ecs/ocean:Ocean nameOfTheResource o-12345678
-    /// ```
     /// </summary>
     [SpotInstResourceType("spotinst:ecs/ocean:Ocean")]
     public partial class Ocean : global::Pulumi.CustomResource

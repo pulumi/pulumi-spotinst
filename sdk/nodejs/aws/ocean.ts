@@ -7,17 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * ## Example Usage
- *
- * ## Import
- *
- * Clusters can be imported using the Ocean `id`, e.g.,
- *
- * hcl
- *
- * ```sh
- * $ pulumi import spotinst:aws/ocean:Ocean nameOfTheResource o-12345678
- * ```
+ * Manages a Spotinst Ocean AWS resource.
  */
 export class Ocean extends pulumi.CustomResource {
     /**

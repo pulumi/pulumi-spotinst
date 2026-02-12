@@ -139,6 +139,7 @@ class ElastigroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupInstanceTypesWeightArgs']]] instance_types_weights: List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
         :param pulumi.Input[_builtins.str] key_name: The key name that should be used for the instance.
         :param pulumi.Input['ElastigroupLoggingArgs'] logging: Logging configuration.
+        :param pulumi.Input[_builtins.int] max_replacements_percentage: The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once. Default value is set to -1 intentionally, which will appear in the terminal during a pulumi preview if this field is not configured. This prevents confusion, as Terraform otherwise defaults integer data types to 0 when a field is not explicitly set.
         :param pulumi.Input[_builtins.int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input['ElastigroupMetadataOptionsArgs'] metadata_options: Data that used to configure or manage the running instances:
         :param pulumi.Input[_builtins.int] min_size: The minimum number of instances the group should have at any time.
@@ -829,6 +830,9 @@ class ElastigroupArgs:
     @_builtins.property
     @pulumi.getter(name="maxReplacementsPercentage")
     def max_replacements_percentage(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once. Default value is set to -1 intentionally, which will appear in the terminal during a pulumi preview if this field is not configured. This prevents confusion, as Terraform otherwise defaults integer data types to 0 when a field is not explicitly set.
+        """
         return pulumi.get(self, "max_replacements_percentage")
 
     @max_replacements_percentage.setter
@@ -1377,6 +1381,7 @@ class _ElastigroupState:
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupInstanceTypesWeightArgs']]] instance_types_weights: List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
         :param pulumi.Input[_builtins.str] key_name: The key name that should be used for the instance.
         :param pulumi.Input['ElastigroupLoggingArgs'] logging: Logging configuration.
+        :param pulumi.Input[_builtins.int] max_replacements_percentage: The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once. Default value is set to -1 intentionally, which will appear in the terminal during a pulumi preview if this field is not configured. This prevents confusion, as Terraform otherwise defaults integer data types to 0 when a field is not explicitly set.
         :param pulumi.Input[_builtins.int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input['ElastigroupMetadataOptionsArgs'] metadata_options: Data that used to configure or manage the running instances:
         :param pulumi.Input[_builtins.int] min_size: The minimum number of instances the group should have at any time.
@@ -2038,6 +2043,9 @@ class _ElastigroupState:
     @_builtins.property
     @pulumi.getter(name="maxReplacementsPercentage")
     def max_replacements_percentage(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once. Default value is set to -1 intentionally, which will appear in the terminal during a pulumi preview if this field is not configured. This prevents confusion, as Terraform otherwise defaults integer data types to 0 when a field is not explicitly set.
+        """
         return pulumi.get(self, "max_replacements_percentage")
 
     @max_replacements_percentage.setter
@@ -2764,6 +2772,7 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupInstanceTypesWeightArgs', 'ElastigroupInstanceTypesWeightArgsDict']]]] instance_types_weights: List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
         :param pulumi.Input[_builtins.str] key_name: The key name that should be used for the instance.
         :param pulumi.Input[Union['ElastigroupLoggingArgs', 'ElastigroupLoggingArgsDict']] logging: Logging configuration.
+        :param pulumi.Input[_builtins.int] max_replacements_percentage: The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once. Default value is set to -1 intentionally, which will appear in the terminal during a pulumi preview if this field is not configured. This prevents confusion, as Terraform otherwise defaults integer data types to 0 when a field is not explicitly set.
         :param pulumi.Input[_builtins.int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input[Union['ElastigroupMetadataOptionsArgs', 'ElastigroupMetadataOptionsArgsDict']] metadata_options: Data that used to configure or manage the running instances:
         :param pulumi.Input[_builtins.int] min_size: The minimum number of instances the group should have at any time.
@@ -3269,6 +3278,7 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupInstanceTypesWeightArgs', 'ElastigroupInstanceTypesWeightArgsDict']]]] instance_types_weights: List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
         :param pulumi.Input[_builtins.str] key_name: The key name that should be used for the instance.
         :param pulumi.Input[Union['ElastigroupLoggingArgs', 'ElastigroupLoggingArgsDict']] logging: Logging configuration.
+        :param pulumi.Input[_builtins.int] max_replacements_percentage: The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once. Default value is set to -1 intentionally, which will appear in the terminal during a pulumi preview if this field is not configured. This prevents confusion, as Terraform otherwise defaults integer data types to 0 when a field is not explicitly set.
         :param pulumi.Input[_builtins.int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input[Union['ElastigroupMetadataOptionsArgs', 'ElastigroupMetadataOptionsArgsDict']] metadata_options: Data that used to configure or manage the running instances:
         :param pulumi.Input[_builtins.int] min_size: The minimum number of instances the group should have at any time.
@@ -3679,6 +3689,9 @@ class Elastigroup(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="maxReplacementsPercentage")
     def max_replacements_percentage(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once. Default value is set to -1 intentionally, which will appear in the terminal during a pulumi preview if this field is not configured. This prevents confusion, as Terraform otherwise defaults integer data types to 0 when a field is not explicitly set.
+        """
         return pulumi.get(self, "max_replacements_percentage")
 
     @_builtins.property

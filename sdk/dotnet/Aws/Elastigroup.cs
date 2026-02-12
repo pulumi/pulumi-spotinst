@@ -409,6 +409,9 @@ namespace Pulumi.SpotInst.Aws
         [Output("logging")]
         public Output<Outputs.ElastigroupLogging?> Logging { get; private set; } = null!;
 
+        /// <summary>
+        /// The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once. Default value is set to -1 intentionally, which will appear in the terminal during a pulumi preview if this field is not configured. This prevents confusion, as Terraform otherwise defaults integer data types to 0 when a field is not explicitly set.
+        /// </summary>
         [Output("maxReplacementsPercentage")]
         public Output<int?> MaxReplacementsPercentage { get; private set; } = null!;
 
@@ -923,6 +926,9 @@ namespace Pulumi.SpotInst.Aws
         [Input("logging")]
         public Input<Inputs.ElastigroupLoggingArgs>? Logging { get; set; }
 
+        /// <summary>
+        /// The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once. Default value is set to -1 intentionally, which will appear in the terminal during a pulumi preview if this field is not configured. This prevents confusion, as Terraform otherwise defaults integer data types to 0 when a field is not explicitly set.
+        /// </summary>
         [Input("maxReplacementsPercentage")]
         public Input<int>? MaxReplacementsPercentage { get; set; }
 
@@ -1493,6 +1499,9 @@ namespace Pulumi.SpotInst.Aws
         [Input("logging")]
         public Input<Inputs.ElastigroupLoggingGetArgs>? Logging { get; set; }
 
+        /// <summary>
+        /// The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once. Default value is set to -1 intentionally, which will appear in the terminal during a pulumi preview if this field is not configured. This prevents confusion, as Terraform otherwise defaults integer data types to 0 when a field is not explicitly set.
+        /// </summary>
         [Input("maxReplacementsPercentage")]
         public Input<int>? MaxReplacementsPercentage { get; set; }
 

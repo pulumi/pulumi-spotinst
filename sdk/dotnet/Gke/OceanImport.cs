@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gke
 {
     /// <summary>
+    /// Manages a Spotinst Ocean GKE resource.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
