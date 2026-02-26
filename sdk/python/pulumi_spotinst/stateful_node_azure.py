@@ -1596,6 +1596,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
             * `should_deregister_from_lb` - (Optional, Default: true) Indicates whether to deregister the stateful node's VM from any type of load balancer. Can be changed to false only when shouldTerminateVms is 'false'.
             * `should_revert_to_od` - (Optional, Default: false) Indicates whether to change the stateful node's VM lifecycle to on-demand. Can be changed to true only when `should_terminate_vm` is 'false'.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -2142,6 +2143,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
             * `public_ip_ttl_in_hours` - (Optional, Default: 96) Hours to keep the public ip alive before deletion.
             * `should_deregister_from_lb` - (Optional, Default: true) Indicates whether to deregister the stateful node's VM from any type of load balancer. Can be changed to false only when shouldTerminateVms is 'false'.
             * `should_revert_to_od` - (Optional, Default: false) Indicates whether to change the stateful node's VM lifecycle to on-demand. Can be changed to true only when `should_terminate_vm` is 'false'.
+
 
         :param str resource_name: The name of the resource.
         :param StatefulNodeAzureArgs args: The arguments to use to populate this resource's properties.

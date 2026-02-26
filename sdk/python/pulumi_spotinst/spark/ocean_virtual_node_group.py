@@ -105,6 +105,7 @@ class OceanVirtualNodeGroup(pulumi.CustomResource):
             ocean_spark_cluster_id="cluster_id")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -131,6 +132,7 @@ class OceanVirtualNodeGroup(pulumi.CustomResource):
             virtual_node_group_id="vng_id",
             ocean_spark_cluster_id="cluster_id")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OceanVirtualNodeGroupArgs args: The arguments to use to populate this resource's properties.

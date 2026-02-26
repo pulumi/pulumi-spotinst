@@ -23,6 +23,7 @@ class OceanExtendedResourceDefinitionArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a OceanExtendedResourceDefinition resource.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] resource_mapping: A mapping between AWS instanceType or * as default and its value for the given extended resource.
         :param pulumi.Input[_builtins.str] name: The extended resource name as should be requested by your pods and registered to the nodes. Cannot be updated.
                The name should be a valid Kubernetes extended resource name.
@@ -64,6 +65,7 @@ class _OceanExtendedResourceDefinitionState:
                  resource_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering OceanExtendedResourceDefinition resources.
+
         :param pulumi.Input[_builtins.str] name: The extended resource name as should be requested by your pods and registered to the nodes. Cannot be updated.
                The name should be a valid Kubernetes extended resource name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] resource_mapping: A mapping between AWS instanceType or * as default and its value for the given extended resource.
@@ -125,6 +127,7 @@ class OceanExtendedResourceDefinition(pulumi.CustomResource):
             })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: The extended resource name as should be requested by your pods and registered to the nodes. Cannot be updated.
@@ -153,6 +156,7 @@ class OceanExtendedResourceDefinition(pulumi.CustomResource):
                 "c3.xlarge": "4Ki",
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OceanExtendedResourceDefinitionArgs args: The arguments to use to populate this resource's properties.

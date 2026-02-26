@@ -28,6 +28,7 @@ class HealthCheckArgs:
                  proxy_port: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a HealthCheck resource.
+
         :param pulumi.Input[_builtins.str] resource_id: The ID of the resource to check.
         :param pulumi.Input['HealthCheckCheckArgs'] check: Describes the check to execute.
         :param pulumi.Input[_builtins.str] name: The name of the health check.
@@ -106,6 +107,7 @@ class _HealthCheckState:
                  resource_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HealthCheck resources.
+
         :param pulumi.Input['HealthCheckCheckArgs'] check: Describes the check to execute.
         :param pulumi.Input[_builtins.str] name: The name of the health check.
         :param pulumi.Input[_builtins.str] resource_id: The ID of the resource to check.
@@ -213,6 +215,7 @@ class HealthCheck(pulumi.CustomResource):
             proxy_port=80)
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['HealthCheckCheckArgs', 'HealthCheckCheckArgsDict']] check: Describes the check to execute.
@@ -249,6 +252,7 @@ class HealthCheck(pulumi.CustomResource):
             proxy_address="http://proxy.com",
             proxy_port=80)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HealthCheckArgs args: The arguments to use to populate this resource's properties.

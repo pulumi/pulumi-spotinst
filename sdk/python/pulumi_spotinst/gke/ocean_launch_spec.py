@@ -47,6 +47,7 @@ class OceanLaunchSpecArgs:
                  update_policy: Optional[pulumi.Input['OceanLaunchSpecUpdatePolicyArgs']] = None):
         """
         The set of arguments for constructing a OceanLaunchSpec resource.
+
         :param pulumi.Input[_builtins.str] ocean_id: The Ocean cluster ID.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs']]] autoscale_headrooms_automatics: Set automatic headroom per launch spec.
@@ -430,6 +431,7 @@ class _OceanLaunchSpecState:
                  update_policy: Optional[pulumi.Input['OceanLaunchSpecUpdatePolicyArgs']] = None):
         """
         Input properties used for looking up and filtering OceanLaunchSpec resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs']]] autoscale_headrooms_automatics: Set automatic headroom per launch spec.
         :param pulumi.Input['OceanLaunchSpecFiltersArgs'] filters: List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `instance_types` is configured.
@@ -917,6 +919,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomArgs', 'OceanLaunchSpecAutoscaleHeadroomArgsDict']]]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
@@ -1048,6 +1051,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                 "max_vcpu": 16,
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OceanLaunchSpecArgs args: The arguments to use to populate this resource's properties.

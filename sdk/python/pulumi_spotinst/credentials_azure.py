@@ -27,6 +27,7 @@ class CredentialsAzureArgs:
                  expiration_date: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CredentialsAzure resource.
+
         :param pulumi.Input[_builtins.str] account_id: The ID of the account associated with your token.
         :param pulumi.Input[_builtins.str] client_id: Set the application ID.
         :param pulumi.Input[_builtins.str] client_secret: Set the key secret.
@@ -126,6 +127,7 @@ class _CredentialsAzureState:
                  tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CredentialsAzure resources.
+
         :param pulumi.Input[_builtins.str] account_id: The ID of the account associated with your token.
         :param pulumi.Input[_builtins.str] client_id: Set the application ID.
         :param pulumi.Input[_builtins.str] client_secret: Set the key secret.
@@ -251,6 +253,7 @@ class CredentialsAzure(pulumi.CustomResource):
             expiration_date="2025-12-31T23:59:00.000Z")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The ID of the account associated with your token.
@@ -284,6 +287,7 @@ class CredentialsAzure(pulumi.CustomResource):
             subscription_id="redacted",
             expiration_date="2025-12-31T23:59:00.000Z")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CredentialsAzureArgs args: The arguments to use to populate this resource's properties.

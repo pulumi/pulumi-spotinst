@@ -59,6 +59,7 @@ class OceanLaunchSpecArgs:
                  user_data: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a OceanLaunchSpec resource.
+
         :param pulumi.Input[_builtins.str] ocean_id: The ID of the Ocean cluster.
         :param pulumi.Input[_builtins.bool] associate_public_ip_address: Configure public IP address allocation.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleDownArgs']]] autoscale_downs: Auto Scaling scale down operations.
@@ -622,6 +623,7 @@ class _OceanLaunchSpecState:
                  user_data: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OceanLaunchSpec resources.
+
         :param pulumi.Input[_builtins.bool] associate_public_ip_address: Configure public IP address allocation.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleDownArgs']]] autoscale_downs: Auto Scaling scale down operations.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]] autoscale_headrooms: Set custom headroom per Virtual Node Group. Provide a list of headrooms object.
@@ -1191,6 +1193,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         """
         Manages a Spotinst Ocean AWS [Virtual Node Group](https://docs.spot.io/ocean/features/launch-specifications) resource.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] associate_public_ip_address: Configure public IP address allocation.
@@ -1234,6 +1237,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a Spotinst Ocean AWS [Virtual Node Group](https://docs.spot.io/ocean/features/launch-specifications) resource.
+
 
         :param str resource_name: The name of the resource.
         :param OceanLaunchSpecArgs args: The arguments to use to populate this resource's properties.

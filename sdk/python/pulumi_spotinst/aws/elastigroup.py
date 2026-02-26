@@ -108,6 +108,7 @@ class ElastigroupArgs:
                  wait_for_capacity_timeout: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Elastigroup resource.
+
         :param pulumi.Input[_builtins.bool] fallback_to_ondemand: In a case of no Spot instances available, Elastigroup will launch on-demand instances instead.
         :param pulumi.Input[_builtins.str] orientation: Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
         :param pulumi.Input[_builtins.str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
@@ -1354,6 +1355,7 @@ class _ElastigroupState:
                  wait_for_capacity_timeout: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Elastigroup resources.
+
         :param pulumi.Input[_builtins.bool] auto_healing: Auto-healing replacement won't be triggered if this parameter value is "false". In a case of a stateful group - no recycling will start if this parameter value is "false".
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
                Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
@@ -2743,6 +2745,7 @@ class Elastigroup(pulumi.CustomResource):
             })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_healing: Auto-healing replacement won't be triggered if this parameter value is "false". In a case of a stateful group - no recycling will start if this parameter value is "false".
@@ -2946,6 +2949,7 @@ class Elastigroup(pulumi.CustomResource):
                 },
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ElastigroupArgs args: The arguments to use to populate this resource's properties.

@@ -27,6 +27,7 @@ class UserGroupArgs:
                  user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a UserGroup resource.
+
         :param pulumi.Input[_builtins.str] description: User group description.
         :param pulumi.Input[_builtins.str] name: User group name.
         :param pulumi.Input[Sequence[pulumi.Input['UserGroupPolicyArgs']]] policies: The policies to register under the given group
@@ -103,6 +104,7 @@ class _UserGroupState:
                  user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering UserGroup resources.
+
         :param pulumi.Input[_builtins.str] description: User group description.
         :param pulumi.Input[_builtins.str] name: User group name.
         :param pulumi.Input[Sequence[pulumi.Input['UserGroupPolicyArgs']]] policies: The policies to register under the given group
@@ -200,6 +202,7 @@ class UserGroup(pulumi.CustomResource):
             }])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: User group description.
@@ -233,6 +236,7 @@ class UserGroup(pulumi.CustomResource):
                 "policy_id": "pol-vv7d8c06",
             }])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UserGroupArgs args: The arguments to use to populate this resource's properties.

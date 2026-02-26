@@ -32,6 +32,7 @@ class CredentialsGcpArgs:
                  type: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a CredentialsGcp resource.
+
         :param pulumi.Input[_builtins.str] account_id: The ID of the account associated with your token.
         :param pulumi.Input[_builtins.str] auth_provider_x509_cert_url: .
         :param pulumi.Input[_builtins.str] auth_uri: Authentication uri.
@@ -205,6 +206,7 @@ class _CredentialsGcpState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CredentialsGcp resources.
+
         :param pulumi.Input[_builtins.str] account_id: The ID of the account associated with your token.
         :param pulumi.Input[_builtins.str] auth_provider_x509_cert_url: .
         :param pulumi.Input[_builtins.str] auth_uri: Authentication uri.
@@ -394,6 +396,7 @@ class CredentialsGcp(pulumi.CustomResource):
         """
         Provides a Spotinst credential GCP resource.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The ID of the account associated with your token.
@@ -416,6 +419,7 @@ class CredentialsGcp(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Spotinst credential GCP resource.
+
 
         :param str resource_name: The name of the resource.
         :param CredentialsGcpArgs args: The arguments to use to populate this resource's properties.

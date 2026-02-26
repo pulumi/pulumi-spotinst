@@ -83,6 +83,7 @@ class MrScalarArgs:
                  visible_to_all_users: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a MrScalar resource.
+
         :param pulumi.Input[_builtins.str] strategy: The MrScaler strategy. Allowed values are `new` `clone` and `wrap`.
         :param pulumi.Input[_builtins.str] cluster_id: The MrScaler cluster id.
         :param pulumi.Input[_builtins.str] description: The MrScaler description.
@@ -843,6 +844,7 @@ class _MrScalarState:
                  visible_to_all_users: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering MrScalar resources.
+
         :param pulumi.Input[_builtins.str] cluster_id: The MrScaler cluster id.
         :param pulumi.Input[_builtins.str] description: The MrScaler description.
         :param pulumi.Input[_builtins.bool] expose_cluster_id: Allow the `cluster_id` to set a provider output variable.
@@ -1769,6 +1771,7 @@ class MrScalar(pulumi.CustomResource):
             }])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: The MrScaler cluster id.
@@ -1937,6 +1940,7 @@ class MrScalar(pulumi.CustomResource):
                 "value": "Pulumi",
             }])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MrScalarArgs args: The arguments to use to populate this resource's properties.

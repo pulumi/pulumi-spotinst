@@ -23,6 +23,7 @@ class CredentialsArgs:
                  iamrole: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a Credentials resource.
+
         :param pulumi.Input[_builtins.str] account_id: The ID of the account associated with your token.
         :param pulumi.Input[_builtins.str] iamrole: Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - https://docs.spot.io/administration/api/spot-policy-in-aws
         """
@@ -61,6 +62,7 @@ class _CredentialsState:
                  iamrole: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Credentials resources.
+
         :param pulumi.Input[_builtins.str] account_id: The ID of the account associated with your token.
         :param pulumi.Input[_builtins.str] iamrole: Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - https://docs.spot.io/administration/api/spot-policy-in-aws
         """
@@ -118,6 +120,7 @@ class Credentials(pulumi.CustomResource):
             account_id="act-123456")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The ID of the account associated with your token.
@@ -143,6 +146,7 @@ class Credentials(pulumi.CustomResource):
             iamrole="arn:aws:iam::1234567890:role/Spot_Iam_Role",
             account_id="act-123456")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CredentialsArgs args: The arguments to use to populate this resource's properties.

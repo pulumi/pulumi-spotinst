@@ -26,6 +26,7 @@ class VerificationTemplateArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a VerificationTemplate resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['VerificationTemplateArgArgs']]] args: List of verification arguments. You may specify either `value` OR `valueFrom` but not both.In case `args`:`value` is already defined in the RolloutSpec entity, there is no need to also specify it in the VerificationTemplate entity.
         :param pulumi.Input[Sequence[pulumi.Input['VerificationTemplateMetricArgs']]] metrics: List of verification metrics.
         :param pulumi.Input[_builtins.str] name: Identifier name for Ocean CD Verification Template. Must be unique.
@@ -82,6 +83,7 @@ class _VerificationTemplateState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VerificationTemplate resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['VerificationTemplateArgArgs']]] args: List of verification arguments. You may specify either `value` OR `valueFrom` but not both.In case `args`:`value` is already defined in the RolloutSpec entity, there is no need to also specify it in the VerificationTemplate entity.
         :param pulumi.Input[Sequence[pulumi.Input['VerificationTemplateMetricArgs']]] metrics: List of verification metrics.
         :param pulumi.Input[_builtins.str] name: Identifier name for Ocean CD Verification Template. Must be unique.
@@ -268,6 +270,7 @@ class VerificationTemplate(pulumi.CustomResource):
             }])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VerificationTemplateArgArgs', 'VerificationTemplateArgArgsDict']]]] args: List of verification arguments. You may specify either `value` OR `valueFrom` but not both.In case `args`:`value` is already defined in the RolloutSpec entity, there is no need to also specify it in the VerificationTemplate entity.
@@ -407,6 +410,7 @@ class VerificationTemplate(pulumi.CustomResource):
                 },
             }])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VerificationTemplateArgs args: The arguments to use to populate this resource's properties.
