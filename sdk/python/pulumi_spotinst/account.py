@@ -22,6 +22,7 @@ class AccountArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Account resource.
+
         :param pulumi.Input[_builtins.str] name: Provide a name for your account. The account name must contain at least one character that is a-z or A-Z.
         """
         if name is not None:
@@ -46,6 +47,7 @@ class _AccountState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Account resources.
+
         :param pulumi.Input[_builtins.str] name: Provide a name for your account. The account name must contain at least one character that is a-z or A-Z.
         """
         if name is not None:
@@ -85,6 +87,7 @@ class Account(pulumi.CustomResource):
         my_acct = spotinst.Account("my_acct", name="my_acct")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: Provide a name for your account. The account name must contain at least one character that is a-z or A-Z.
@@ -107,6 +110,7 @@ class Account(pulumi.CustomResource):
         # Create a Account
         my_acct = spotinst.Account("my_acct", name="my_acct")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccountArgs args: The arguments to use to populate this resource's properties.

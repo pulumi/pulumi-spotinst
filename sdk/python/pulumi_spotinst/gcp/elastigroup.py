@@ -65,6 +65,7 @@ class ElastigroupArgs:
                  unhealthy_duration: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Elastigroup resource.
+
         :param pulumi.Input[_builtins.int] desired_capacity: The desired number of instances the group should have at any time.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: List of availability zones for the group.
         :param pulumi.Input[_builtins.str] description: The region your GCP group will be created in.
@@ -694,6 +695,7 @@ class _ElastigroupState:
                  unhealthy_duration: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Elastigroup resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: List of availability zones for the group.
         :param pulumi.Input[_builtins.str] description: The region your GCP group will be created in.
         :param pulumi.Input[_builtins.int] desired_capacity: The desired number of instances the group should have at any time.
@@ -1437,6 +1439,7 @@ class Elastigroup(pulumi.CustomResource):
             }])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: List of availability zones for the group.
@@ -1586,6 +1589,7 @@ class Elastigroup(pulumi.CustomResource):
                 }],
             }])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ElastigroupArgs args: The arguments to use to populate this resource's properties.

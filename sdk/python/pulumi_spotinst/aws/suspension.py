@@ -25,6 +25,7 @@ class SuspensionArgs:
                  suspensions: pulumi.Input[Sequence[pulumi.Input['SuspensionSuspensionArgs']]]):
         """
         The set of arguments for constructing a Suspension resource.
+
         :param pulumi.Input[_builtins.str] group_id: Elastigroup ID to apply the suspensions on.
         :param pulumi.Input[Sequence[pulumi.Input['SuspensionSuspensionArgs']]] suspensions: block of single process to suspend.
         """
@@ -63,6 +64,7 @@ class _SuspensionState:
                  suspensions: Optional[pulumi.Input[Sequence[pulumi.Input['SuspensionSuspensionArgs']]]] = None):
         """
         Input properties used for looking up and filtering Suspension resources.
+
         :param pulumi.Input[_builtins.str] group_id: Elastigroup ID to apply the suspensions on.
         :param pulumi.Input[Sequence[pulumi.Input['SuspensionSuspensionArgs']]] suspensions: block of single process to suspend.
         """
@@ -132,6 +134,7 @@ class Suspension(pulumi.CustomResource):
             ])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] group_id: Elastigroup ID to apply the suspensions on.
@@ -169,6 +172,7 @@ class Suspension(pulumi.CustomResource):
                 },
             ])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SuspensionArgs args: The arguments to use to populate this resource's properties.

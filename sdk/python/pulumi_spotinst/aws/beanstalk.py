@@ -36,6 +36,7 @@ class BeanstalkArgs:
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['BeanstalkScheduledTaskArgs']]]] = None):
         """
         The set of arguments for constructing a Beanstalk resource.
+
         :param pulumi.Input[_builtins.int] desired_capacity: The desired number of instances the group should have at any time.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_types_spots: One or more instance types. To maximize the availability of Spot instances, select as many instance types as possible.
         :param pulumi.Input[_builtins.int] max_size: The maximum number of instances the group should have at any time.
@@ -240,6 +241,7 @@ class _BeanstalkState:
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['BeanstalkScheduledTaskArgs']]]] = None):
         """
         Input properties used for looking up and filtering Beanstalk resources.
+
         :param pulumi.Input[_builtins.str] beanstalk_environment_id: The id of an existing Beanstalk environment.
         :param pulumi.Input[_builtins.str] beanstalk_environment_name: The name of an existing Beanstalk environment.
         :param pulumi.Input['BeanstalkDeploymentPreferencesArgs'] deployment_preferences: Preferences when performing a roll
@@ -493,6 +495,7 @@ class Beanstalk(pulumi.CustomResource):
             }[0])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] beanstalk_environment_id: The id of an existing Beanstalk environment.
@@ -554,6 +557,7 @@ class Beanstalk(pulumi.CustomResource):
                 },
             }[0])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BeanstalkArgs args: The arguments to use to populate this resource's properties.

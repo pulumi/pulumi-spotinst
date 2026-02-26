@@ -30,6 +30,7 @@ class OceanArgs:
                  workspaces: Optional[pulumi.Input['OceanWorkspacesArgs']] = None):
         """
         The set of arguments for constructing a Ocean resource.
+
         :param pulumi.Input[_builtins.str] ocean_cluster_id: - The ID of the Ocean cluster that Ocean for Apache Spark should be installed on.
         """
         pulumi.set(__self__, "ocean_cluster_id", ocean_cluster_id)
@@ -125,6 +126,7 @@ class _OceanState:
                  workspaces: Optional[pulumi.Input['OceanWorkspacesArgs']] = None):
         """
         Input properties used for looking up and filtering Ocean resources.
+
         :param pulumi.Input[_builtins.str] ocean_cluster_id: - The ID of the Ocean cluster that Ocean for Apache Spark should be installed on.
         """
         if compute is not None:
@@ -285,6 +287,7 @@ class Ocean(pulumi.CustomResource):
             })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] ocean_cluster_id: - The ID of the Ocean cluster that Ocean for Apache Spark should be installed on.
@@ -356,6 +359,7 @@ class Ocean(pulumi.CustomResource):
                 },
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OceanArgs args: The arguments to use to populate this resource's properties.

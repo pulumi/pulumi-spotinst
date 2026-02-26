@@ -30,6 +30,7 @@ class VerificationProviderArgs:
                  prometheus: Optional[pulumi.Input['VerificationProviderPrometheusArgs']] = None):
         """
         The set of arguments for constructing a VerificationProvider resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cluster_ids: List of cluster IDs that this Verification Provider will be applied to.
         :param pulumi.Input['VerificationProviderCloudWatchArgs'] cloud_watch: Specify the credentials for CloudWatch verification provider.
         :param pulumi.Input['VerificationProviderDatadogArgs'] datadog: Specify the credentials for datadog verification provider.
@@ -149,6 +150,7 @@ class _VerificationProviderState:
                  prometheus: Optional[pulumi.Input['VerificationProviderPrometheusArgs']] = None):
         """
         Input properties used for looking up and filtering VerificationProvider resources.
+
         :param pulumi.Input['VerificationProviderCloudWatchArgs'] cloud_watch: Specify the credentials for CloudWatch verification provider.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cluster_ids: List of cluster IDs that this Verification Provider will be applied to.
         :param pulumi.Input['VerificationProviderDatadogArgs'] datadog: Specify the credentials for datadog verification provider.
@@ -312,6 +314,7 @@ class VerificationProvider(pulumi.CustomResource):
             })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['VerificationProviderCloudWatchArgs', 'VerificationProviderCloudWatchArgsDict']] cloud_watch: Specify the credentials for CloudWatch verification provider.
@@ -368,6 +371,7 @@ class VerificationProvider(pulumi.CustomResource):
                 "api_token": "AbCDeeFFGG",
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VerificationProviderArgs args: The arguments to use to populate this resource's properties.

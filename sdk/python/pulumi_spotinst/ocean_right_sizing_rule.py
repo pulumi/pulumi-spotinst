@@ -36,6 +36,7 @@ class OceanRightSizingRuleArgs:
                  restart_replicas: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a OceanRightSizingRule resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalArgs']]] recommendation_application_intervals: Determines the Ocean Rightsizing rule recommendation application intervals.
         :param pulumi.Input[_builtins.str] rule_name: The unique name of the rule.
         :param pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAutoApplyDefinitionArgs']]] auto_apply_definitions: Ocean Rightsizing Rule Auto Apply Configuration.
@@ -238,6 +239,7 @@ class _OceanRightSizingRuleState:
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OceanRightSizingRule resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAutoApplyDefinitionArgs']]] auto_apply_definitions: Ocean Rightsizing Rule Auto Apply Configuration.
         :param pulumi.Input[_builtins.bool] exclude_preliminary_recommendations: Exclude preliminary recommendations (recommendations based on less than 4 full days of data).
         :param pulumi.Input[_builtins.str] ocean_id: Identifier of the Ocean cluster.
@@ -520,6 +522,7 @@ class OceanRightSizingRule(pulumi.CustomResource):
             }])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleAutoApplyDefinitionArgs', 'OceanRightSizingRuleAutoApplyDefinitionArgsDict']]]] auto_apply_definitions: Ocean Rightsizing Rule Auto Apply Configuration.
@@ -614,6 +617,7 @@ class OceanRightSizingRule(pulumi.CustomResource):
                 },
             }])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OceanRightSizingRuleArgs args: The arguments to use to populate this resource's properties.

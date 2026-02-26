@@ -68,6 +68,7 @@ class OceanArgs:
                  whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Ocean resource.
+
         :param pulumi.Input[_builtins.str] image_id: ID of the image used to launch the instances.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: One or more security group ids.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
@@ -777,6 +778,7 @@ class _OceanState:
                  whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Ocean resources.
+
         :param pulumi.Input[_builtins.bool] associate_ipv6_address: Configure IPv6 address allocation.
         :param pulumi.Input[_builtins.bool] associate_public_ip_address: Configure public IP address allocation.
         :param pulumi.Input[Sequence[pulumi.Input['OceanAttachLoadBalancerArgs']]] attach_load_balancers: Attach load balancers to the cluster.
@@ -1494,6 +1496,7 @@ class Ocean(pulumi.CustomResource):
         """
         Manages a Spotinst Ocean AWS resource.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] associate_ipv6_address: Configure IPv6 address allocation.
@@ -1547,6 +1550,7 @@ class Ocean(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a Spotinst Ocean AWS resource.
+
 
         :param str resource_name: The name of the resource.
         :param OceanArgs args: The arguments to use to populate this resource's properties.

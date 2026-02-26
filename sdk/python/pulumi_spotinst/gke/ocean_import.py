@@ -41,6 +41,7 @@ class OceanImportArgs:
                  whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a OceanImport resource.
+
         :param pulumi.Input[_builtins.str] cluster_name: The GKE cluster name.
         :param pulumi.Input[_builtins.str] location: The zone the master cluster is located in.
         :param pulumi.Input[Sequence[pulumi.Input['OceanImportAutoUpdateArgs']]] auto_updates: The Ocean Kubernetes AutoUpdate object. If set to 'true', Ocean will ensure that your clusters have an up-to-date configuration according to the respective GKE cluster.
@@ -332,6 +333,7 @@ class _OceanImportState:
                  whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering OceanImport resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['OceanImportAutoUpdateArgs']]] auto_updates: The Ocean Kubernetes AutoUpdate object. If set to 'true', Ocean will ensure that your clusters have an up-to-date configuration according to the respective GKE cluster.
         :param pulumi.Input['OceanImportAutoscalerArgs'] autoscaler: The Ocean Kubernetes Autoscaler object.
         :param pulumi.Input[Sequence[pulumi.Input['OceanImportBackendServiceArgs']]] backend_services: Describes the backend service configurations.
@@ -691,6 +693,7 @@ class OceanImport(pulumi.CustomResource):
             use_as_template_only=False)
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanImportAutoUpdateArgs', 'OceanImportAutoUpdateArgsDict']]]] auto_updates: The Ocean Kubernetes AutoUpdate object. If set to 'true', Ocean will ensure that your clusters have an up-to-date configuration according to the respective GKE cluster.
@@ -770,6 +773,7 @@ class OceanImport(pulumi.CustomResource):
             },
             use_as_template_only=False)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OceanImportArgs args: The arguments to use to populate this resource's properties.

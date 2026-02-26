@@ -47,6 +47,7 @@ class OceanNpVirtualNodeGroupArgs:
                  vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a OceanNpVirtualNodeGroup resource.
+
         :param pulumi.Input[_builtins.str] ocean_id: The Ocean cluster identifier. Required for Launch Spec creation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
         :param pulumi.Input[_builtins.bool] enable_node_public_ip: Enable node public IP.
@@ -430,6 +431,7 @@ class _OceanNpVirtualNodeGroupState:
                  vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering OceanNpVirtualNodeGroup resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
         :param pulumi.Input[_builtins.bool] enable_node_public_ip: Enable node public IP.
         :param pulumi.Input[_builtins.bool] fallback_to_ondemand: If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
@@ -914,6 +916,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
             })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
@@ -1042,6 +1045,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
                 },
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OceanNpVirtualNodeGroupArgs args: The arguments to use to populate this resource's properties.

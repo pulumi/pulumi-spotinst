@@ -26,6 +26,7 @@ class StrategyArgs:
                  rolling: Optional[pulumi.Input['StrategyRollingArgs']] = None):
         """
         The set of arguments for constructing a Strategy resource.
+
         :param pulumi.Input['StrategyCanaryArgs'] canary: Represents Canary strategy. Cannot be defined when Rolling object is defined.
         :param pulumi.Input['StrategyRollingArgs'] rolling: Represents Rolling Update strategy. Cannot be defined when Canary object is defined.
         """
@@ -77,6 +78,7 @@ class _StrategyState:
                  strategy_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Strategy resources.
+
         :param pulumi.Input['StrategyCanaryArgs'] canary: Represents Canary strategy. Cannot be defined when Rolling object is defined.
         :param pulumi.Input['StrategyRollingArgs'] rolling: Represents Rolling Update strategy. Cannot be defined when Canary object is defined.
         """
@@ -134,6 +136,7 @@ class Strategy(pulumi.CustomResource):
         """
         Manages a Spotinst OceanCD Strategy resource.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['StrategyCanaryArgs', 'StrategyCanaryArgsDict']] canary: Represents Canary strategy. Cannot be defined when Rolling object is defined.
@@ -147,6 +150,7 @@ class Strategy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a Spotinst OceanCD Strategy resource.
+
 
         :param str resource_name: The name of the resource.
         :param StrategyArgs args: The arguments to use to populate this resource's properties.

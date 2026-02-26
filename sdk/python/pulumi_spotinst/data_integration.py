@@ -26,6 +26,7 @@ class DataIntegrationArgs:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DataIntegration resource.
+
         :param pulumi.Input[_builtins.str] name: The name of the data integration.
         :param pulumi.Input['DataIntegrationS3Args'] s3: When vendor value is s3, the following fields are included:
                * `bucketName` - (Required) The name of the bucket to use. Your spot IAM Role policy needs to include s3:putObject permissions for this bucket. Can't be null.
@@ -84,6 +85,7 @@ class _DataIntegrationState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DataIntegration resources.
+
         :param pulumi.Input[_builtins.str] name: The name of the data integration.
         :param pulumi.Input['DataIntegrationS3Args'] s3: When vendor value is s3, the following fields are included:
                * `bucketName` - (Required) The name of the bucket to use. Your spot IAM Role policy needs to include s3:putObject permissions for this bucket. Can't be null.
@@ -162,6 +164,7 @@ class DataIntegration(pulumi.CustomResource):
             })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: The name of the data integration.
@@ -192,6 +195,7 @@ class DataIntegration(pulumi.CustomResource):
                 "subdir": "terraform-test-data-integration",
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DataIntegrationArgs args: The arguments to use to populate this resource's properties.

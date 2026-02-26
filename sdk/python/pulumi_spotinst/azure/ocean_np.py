@@ -55,6 +55,7 @@ class OceanNpArgs:
                  vng_template_scheduling: Optional[pulumi.Input['OceanNpVngTemplateSchedulingArgs']] = None):
         """
         The set of arguments for constructing a OceanNp resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
         :param pulumi.Input[_builtins.str] controller_cluster_id: Enter a unique Ocean cluster identifier. Cannot be updated. This needs to match with string that was used to install the controller in the cluster, typically clusterName + 8 digit string.
         :param pulumi.Input['OceanNpAutoscalerArgs'] autoscaler: The Ocean Kubernetes Autoscaler object.
@@ -541,6 +542,7 @@ class _OceanNpState:
                  vng_template_scheduling: Optional[pulumi.Input['OceanNpVngTemplateSchedulingArgs']] = None):
         """
         Input properties used for looking up and filtering OceanNp resources.
+
         :param pulumi.Input['OceanNpAutoscalerArgs'] autoscaler: The Ocean Kubernetes Autoscaler object.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
         :param pulumi.Input[_builtins.str] controller_cluster_id: Enter a unique Ocean cluster identifier. Cannot be updated. This needs to match with string that was used to install the controller in the cluster, typically clusterName + 8 digit string.
@@ -1183,6 +1185,7 @@ class OceanNp(pulumi.CustomResource):
             })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['OceanNpAutoscalerArgs', 'OceanNpAutoscalerArgsDict']] autoscaler: The Ocean Kubernetes Autoscaler object.
@@ -1364,6 +1367,7 @@ class OceanNp(pulumi.CustomResource):
                 "gpu_types": ["nvidia-tesla-t4"],
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OceanNpArgs args: The arguments to use to populate this resource's properties.

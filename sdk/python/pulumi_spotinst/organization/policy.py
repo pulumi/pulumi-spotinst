@@ -26,6 +26,7 @@ class PolicyArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Policy resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['PolicyPolicyContentArgs']]] policy_contents: Set permissions objects list.
         :param pulumi.Input[_builtins.str] description: Short description of policy.
         :param pulumi.Input[_builtins.str] name: Name of the Policy.
@@ -81,6 +82,7 @@ class _PolicyState:
                  policy_contents: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyPolicyContentArgs']]]] = None):
         """
         Input properties used for looking up and filtering Policy resources.
+
         :param pulumi.Input[_builtins.str] description: Short description of policy.
         :param pulumi.Input[_builtins.str] name: Name of the Policy.
         :param pulumi.Input[Sequence[pulumi.Input['PolicyPolicyContentArgs']]] policy_contents: Set permissions objects list.
@@ -173,6 +175,7 @@ class Policy(pulumi.CustomResource):
             }])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Short description of policy.
@@ -218,6 +221,7 @@ class Policy(pulumi.CustomResource):
                 ],
             }])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PolicyArgs args: The arguments to use to populate this resource's properties.

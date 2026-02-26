@@ -56,6 +56,7 @@ class OceanArgs:
                  whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Ocean resource.
+
         :param pulumi.Input[_builtins.str] cluster_name: The name of the ECS cluster.
         :param pulumi.Input[_builtins.str] image_id: ID of the image used to launch the instances.
         :param pulumi.Input[_builtins.str] region: The region the cluster will run in.
@@ -571,6 +572,7 @@ class _OceanState:
                  whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Ocean resources.
+
         :param pulumi.Input[_builtins.bool] associate_public_ip_address: Configure public IP address allocation.
         :param pulumi.Input['OceanAutoscalerArgs'] autoscaler: Describes the Ocean ECS autoscaler.
         :param pulumi.Input[Sequence[pulumi.Input['OceanBlockDeviceMappingArgs']]] block_device_mappings: Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
@@ -1202,6 +1204,7 @@ class Ocean(pulumi.CustomResource):
             })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] associate_public_ip_address: Configure public IP address allocation.
@@ -1348,6 +1351,7 @@ class Ocean(pulumi.CustomResource):
                 },
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OceanArgs args: The arguments to use to populate this resource's properties.

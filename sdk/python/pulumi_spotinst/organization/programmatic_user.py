@@ -28,6 +28,7 @@ class ProgrammaticUserArgs:
                  user_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ProgrammaticUser resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['ProgrammaticUserAccountArgs']]] accounts: All the accounts the programmatic user will have access to.
                If used - Cannot be empty.
         :param pulumi.Input[_builtins.str] description: Brief description of the user.
@@ -120,6 +121,7 @@ class _ProgrammaticUserState:
                  user_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ProgrammaticUser resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['ProgrammaticUserAccountArgs']]] accounts: All the accounts the programmatic user will have access to.
                If used - Cannot be empty.
         :param pulumi.Input[_builtins.str] description: Brief description of the user.
@@ -236,6 +238,7 @@ class ProgrammaticUser(pulumi.CustomResource):
             ])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ProgrammaticUserAccountArgs', 'ProgrammaticUserAccountArgsDict']]]] accounts: All the accounts the programmatic user will have access to.
@@ -273,6 +276,7 @@ class ProgrammaticUser(pulumi.CustomResource):
                 "ugr-defg8763",
             ])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProgrammaticUserArgs args: The arguments to use to populate this resource's properties.

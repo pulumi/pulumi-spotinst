@@ -29,6 +29,7 @@ class RolloutSpecArgs:
                  traffic: Optional[pulumi.Input['RolloutSpecTrafficArgs']] = None):
         """
         The set of arguments for constructing a RolloutSpec resource.
+
         :param pulumi.Input[_builtins.str] rollout_spec_name: Identifier name for Ocean CD Rollout Spec. Must be unique
         :param pulumi.Input['RolloutSpecStrategyArgs'] strategy: Determines the Ocean CD strategy
         :param pulumi.Input['RolloutSpecFailurePolicyArgs'] failure_policy: Holds information on how to react when failure happens.
@@ -131,6 +132,7 @@ class _RolloutSpecState:
                  traffic: Optional[pulumi.Input['RolloutSpecTrafficArgs']] = None):
         """
         Input properties used for looking up and filtering RolloutSpec resources.
+
         :param pulumi.Input['RolloutSpecFailurePolicyArgs'] failure_policy: Holds information on how to react when failure happens.
         :param pulumi.Input[_builtins.str] rollout_spec_name: Identifier name for Ocean CD Rollout Spec. Must be unique
         :param pulumi.Input['RolloutSpecSpotDeploymentArgs'] spot_deployment: Represents the SpotDeployment selector.
@@ -240,6 +242,7 @@ class RolloutSpec(pulumi.CustomResource):
         """
         Manages a Spotinst OceanCD Rollout Spec resource.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['RolloutSpecFailurePolicyArgs', 'RolloutSpecFailurePolicyArgsDict']] failure_policy: Holds information on how to react when failure happens.
@@ -257,6 +260,7 @@ class RolloutSpec(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a Spotinst OceanCD Rollout Spec resource.
+
 
         :param str resource_name: The name of the resource.
         :param RolloutSpecArgs args: The arguments to use to populate this resource's properties.

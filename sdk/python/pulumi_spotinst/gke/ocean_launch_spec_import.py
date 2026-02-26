@@ -23,6 +23,7 @@ class OceanLaunchSpecImportArgs:
                  ocean_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a OceanLaunchSpecImport resource.
+
         :param pulumi.Input[_builtins.str] node_pool_name: The node pool you wish to use in your launchSpec.
         :param pulumi.Input[_builtins.str] ocean_id: The Ocean cluster ID required for launchSpec create.
         """
@@ -61,6 +62,7 @@ class _OceanLaunchSpecImportState:
                  ocean_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OceanLaunchSpecImport resources.
+
         :param pulumi.Input[_builtins.str] node_pool_name: The node pool you wish to use in your launchSpec.
         :param pulumi.Input[_builtins.str] ocean_id: The Ocean cluster ID required for launchSpec create.
         """
@@ -117,6 +119,7 @@ class OceanLaunchSpecImport(pulumi.CustomResource):
             node_pool_name="default-pool")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] node_pool_name: The node pool you wish to use in your launchSpec.
@@ -141,6 +144,7 @@ class OceanLaunchSpecImport(pulumi.CustomResource):
             ocean_id="o-123456",
             node_pool_name="default-pool")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OceanLaunchSpecImportArgs args: The arguments to use to populate this resource's properties.
