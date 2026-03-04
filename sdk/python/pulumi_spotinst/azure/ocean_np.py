@@ -56,7 +56,9 @@ class OceanNpArgs:
         """
         The set of arguments for constructing a OceanNp resource.
 
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: An Array holding Availability Zones, this configures the availability zones the Ocean may launch nodes in per VNG.
+               Select zone 0 if you have a workload that requires no availability zone redundancy (AZ=null). You can select this option either alone or together with other availability zones.
+               In case zone 0 is selected together with other availability zones, nodes of zone 0 will be scaled only for workloads that demand it.
         :param pulumi.Input[_builtins.str] controller_cluster_id: Enter a unique Ocean cluster identifier. Cannot be updated. This needs to match with string that was used to install the controller in the cluster, typically clusterName + 8 digit string.
         :param pulumi.Input['OceanNpAutoscalerArgs'] autoscaler: The Ocean Kubernetes Autoscaler object.
         :param pulumi.Input[_builtins.bool] enable_node_public_ip: Enable node public IP.
@@ -181,7 +183,9 @@ class OceanNpArgs:
     @pulumi.getter(name="availabilityZones")
     def availability_zones(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+        An Array holding Availability Zones, this configures the availability zones the Ocean may launch nodes in per VNG.
+        Select zone 0 if you have a workload that requires no availability zone redundancy (AZ=null). You can select this option either alone or together with other availability zones.
+        In case zone 0 is selected together with other availability zones, nodes of zone 0 will be scaled only for workloads that demand it.
         """
         return pulumi.get(self, "availability_zones")
 
@@ -544,7 +548,9 @@ class _OceanNpState:
         Input properties used for looking up and filtering OceanNp resources.
 
         :param pulumi.Input['OceanNpAutoscalerArgs'] autoscaler: The Ocean Kubernetes Autoscaler object.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: An Array holding Availability Zones, this configures the availability zones the Ocean may launch nodes in per VNG.
+               Select zone 0 if you have a workload that requires no availability zone redundancy (AZ=null). You can select this option either alone or together with other availability zones.
+               In case zone 0 is selected together with other availability zones, nodes of zone 0 will be scaled only for workloads that demand it.
         :param pulumi.Input[_builtins.str] controller_cluster_id: Enter a unique Ocean cluster identifier. Cannot be updated. This needs to match with string that was used to install the controller in the cluster, typically clusterName + 8 digit string.
         :param pulumi.Input[_builtins.bool] enable_node_public_ip: Enable node public IP.
         :param pulumi.Input[_builtins.bool] fallback_to_ondemand: If no spot VM markets are available, enable Ocean to launch regular (pay-as-you-go) nodes instead.
@@ -686,7 +692,9 @@ class _OceanNpState:
     @pulumi.getter(name="availabilityZones")
     def availability_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+        An Array holding Availability Zones, this configures the availability zones the Ocean may launch nodes in per VNG.
+        Select zone 0 if you have a workload that requires no availability zone redundancy (AZ=null). You can select this option either alone or together with other availability zones.
+        In case zone 0 is selected together with other availability zones, nodes of zone 0 will be scaled only for workloads that demand it.
         """
         return pulumi.get(self, "availability_zones")
 
@@ -1189,7 +1197,9 @@ class OceanNp(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['OceanNpAutoscalerArgs', 'OceanNpAutoscalerArgsDict']] autoscaler: The Ocean Kubernetes Autoscaler object.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: An Array holding Availability Zones, this configures the availability zones the Ocean may launch nodes in per VNG.
+               Select zone 0 if you have a workload that requires no availability zone redundancy (AZ=null). You can select this option either alone or together with other availability zones.
+               In case zone 0 is selected together with other availability zones, nodes of zone 0 will be scaled only for workloads that demand it.
         :param pulumi.Input[_builtins.str] controller_cluster_id: Enter a unique Ocean cluster identifier. Cannot be updated. This needs to match with string that was used to install the controller in the cluster, typically clusterName + 8 digit string.
         :param pulumi.Input[_builtins.bool] enable_node_public_ip: Enable node public IP.
         :param pulumi.Input[_builtins.bool] fallback_to_ondemand: If no spot VM markets are available, enable Ocean to launch regular (pay-as-you-go) nodes instead.
@@ -1519,7 +1529,9 @@ class OceanNp(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['OceanNpAutoscalerArgs', 'OceanNpAutoscalerArgsDict']] autoscaler: The Ocean Kubernetes Autoscaler object.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: An Array holding Availability Zones, this configures the availability zones the Ocean may launch nodes in per VNG.
+               Select zone 0 if you have a workload that requires no availability zone redundancy (AZ=null). You can select this option either alone or together with other availability zones.
+               In case zone 0 is selected together with other availability zones, nodes of zone 0 will be scaled only for workloads that demand it.
         :param pulumi.Input[_builtins.str] controller_cluster_id: Enter a unique Ocean cluster identifier. Cannot be updated. This needs to match with string that was used to install the controller in the cluster, typically clusterName + 8 digit string.
         :param pulumi.Input[_builtins.bool] enable_node_public_ip: Enable node public IP.
         :param pulumi.Input[_builtins.bool] fallback_to_ondemand: If no spot VM markets are available, enable Ocean to launch regular (pay-as-you-go) nodes instead.
@@ -1614,7 +1626,9 @@ class OceanNp(pulumi.CustomResource):
     @pulumi.getter(name="availabilityZones")
     def availability_zones(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+        An Array holding Availability Zones, this configures the availability zones the Ocean may launch nodes in per VNG.
+        Select zone 0 if you have a workload that requires no availability zone redundancy (AZ=null). You can select this option either alone or together with other availability zones.
+        In case zone 0 is selected together with other availability zones, nodes of zone 0 will be scaled only for workloads that demand it.
         """
         return pulumi.get(self, "availability_zones")
 

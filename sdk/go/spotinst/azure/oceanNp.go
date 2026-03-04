@@ -215,7 +215,9 @@ type OceanNp struct {
 	AksResourceGroupName               pulumi.StringOutput `pulumi:"aksResourceGroupName"`
 	// The Ocean Kubernetes Autoscaler object.
 	Autoscaler OceanNpAutoscalerPtrOutput `pulumi:"autoscaler"`
-	// An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+	// An Array holding Availability Zones, this configures the availability zones the Ocean may launch nodes in per VNG.
+	// Select zone 0 if you have a workload that requires no availability zone redundancy (AZ=null). You can select this option either alone or together with other availability zones.
+	// In case zone 0 is selected together with other availability zones, nodes of zone 0 will be scaled only for workloads that demand it.
 	AvailabilityZones pulumi.StringArrayOutput `pulumi:"availabilityZones"`
 	// Enter a unique Ocean cluster identifier. Cannot be updated. This needs to match with string that was used to install the controller in the cluster, typically clusterName + 8 digit string.
 	ControllerClusterId pulumi.StringOutput `pulumi:"controllerClusterId"`
@@ -322,7 +324,9 @@ type oceanNpState struct {
 	AksResourceGroupName               *string `pulumi:"aksResourceGroupName"`
 	// The Ocean Kubernetes Autoscaler object.
 	Autoscaler *OceanNpAutoscaler `pulumi:"autoscaler"`
-	// An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+	// An Array holding Availability Zones, this configures the availability zones the Ocean may launch nodes in per VNG.
+	// Select zone 0 if you have a workload that requires no availability zone redundancy (AZ=null). You can select this option either alone or together with other availability zones.
+	// In case zone 0 is selected together with other availability zones, nodes of zone 0 will be scaled only for workloads that demand it.
 	AvailabilityZones []string `pulumi:"availabilityZones"`
 	// Enter a unique Ocean cluster identifier. Cannot be updated. This needs to match with string that was used to install the controller in the cluster, typically clusterName + 8 digit string.
 	ControllerClusterId *string `pulumi:"controllerClusterId"`
@@ -382,7 +386,9 @@ type OceanNpState struct {
 	AksResourceGroupName               pulumi.StringPtrInput
 	// The Ocean Kubernetes Autoscaler object.
 	Autoscaler OceanNpAutoscalerPtrInput
-	// An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+	// An Array holding Availability Zones, this configures the availability zones the Ocean may launch nodes in per VNG.
+	// Select zone 0 if you have a workload that requires no availability zone redundancy (AZ=null). You can select this option either alone or together with other availability zones.
+	// In case zone 0 is selected together with other availability zones, nodes of zone 0 will be scaled only for workloads that demand it.
 	AvailabilityZones pulumi.StringArrayInput
 	// Enter a unique Ocean cluster identifier. Cannot be updated. This needs to match with string that was used to install the controller in the cluster, typically clusterName + 8 digit string.
 	ControllerClusterId pulumi.StringPtrInput
@@ -446,7 +452,9 @@ type oceanNpArgs struct {
 	AksResourceGroupName               string `pulumi:"aksResourceGroupName"`
 	// The Ocean Kubernetes Autoscaler object.
 	Autoscaler *OceanNpAutoscaler `pulumi:"autoscaler"`
-	// An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+	// An Array holding Availability Zones, this configures the availability zones the Ocean may launch nodes in per VNG.
+	// Select zone 0 if you have a workload that requires no availability zone redundancy (AZ=null). You can select this option either alone or together with other availability zones.
+	// In case zone 0 is selected together with other availability zones, nodes of zone 0 will be scaled only for workloads that demand it.
 	AvailabilityZones []string `pulumi:"availabilityZones"`
 	// Enter a unique Ocean cluster identifier. Cannot be updated. This needs to match with string that was used to install the controller in the cluster, typically clusterName + 8 digit string.
 	ControllerClusterId string `pulumi:"controllerClusterId"`
@@ -507,7 +515,9 @@ type OceanNpArgs struct {
 	AksResourceGroupName               pulumi.StringInput
 	// The Ocean Kubernetes Autoscaler object.
 	Autoscaler OceanNpAutoscalerPtrInput
-	// An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+	// An Array holding Availability Zones, this configures the availability zones the Ocean may launch nodes in per VNG.
+	// Select zone 0 if you have a workload that requires no availability zone redundancy (AZ=null). You can select this option either alone or together with other availability zones.
+	// In case zone 0 is selected together with other availability zones, nodes of zone 0 will be scaled only for workloads that demand it.
 	AvailabilityZones pulumi.StringArrayInput
 	// Enter a unique Ocean cluster identifier. Cannot be updated. This needs to match with string that was used to install the controller in the cluster, typically clusterName + 8 digit string.
 	ControllerClusterId pulumi.StringInput
@@ -668,7 +678,9 @@ func (o OceanNpOutput) Autoscaler() OceanNpAutoscalerPtrOutput {
 	return o.ApplyT(func(v *OceanNp) OceanNpAutoscalerPtrOutput { return v.Autoscaler }).(OceanNpAutoscalerPtrOutput)
 }
 
-// An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+// An Array holding Availability Zones, this configures the availability zones the Ocean may launch nodes in per VNG.
+// Select zone 0 if you have a workload that requires no availability zone redundancy (AZ=null). You can select this option either alone or together with other availability zones.
+// In case zone 0 is selected together with other availability zones, nodes of zone 0 will be scaled only for workloads that demand it.
 func (o OceanNpOutput) AvailabilityZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanNp) pulumi.StringArrayOutput { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
 }

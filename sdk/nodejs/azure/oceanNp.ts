@@ -193,7 +193,9 @@ export class OceanNp extends pulumi.CustomResource {
      */
     declare public readonly autoscaler: pulumi.Output<outputs.azure.OceanNpAutoscaler | undefined>;
     /**
-     * An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+     * An Array holding Availability Zones, this configures the availability zones the Ocean may launch nodes in per VNG.
+     * Select zone 0 if you have a workload that requires no availability zone redundancy (AZ=null). You can select this option either alone or together with other availability zones.
+     * In case zone 0 is selected together with other availability zones, nodes of zone 0 will be scaled only for workloads that demand it.
      */
     declare public readonly availabilityZones: pulumi.Output<string[]>;
     /**
@@ -408,7 +410,9 @@ export interface OceanNpState {
      */
     autoscaler?: pulumi.Input<inputs.azure.OceanNpAutoscaler>;
     /**
-     * An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+     * An Array holding Availability Zones, this configures the availability zones the Ocean may launch nodes in per VNG.
+     * Select zone 0 if you have a workload that requires no availability zone redundancy (AZ=null). You can select this option either alone or together with other availability zones.
+     * In case zone 0 is selected together with other availability zones, nodes of zone 0 will be scaled only for workloads that demand it.
      */
     availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -521,7 +525,9 @@ export interface OceanNpArgs {
      */
     autoscaler?: pulumi.Input<inputs.azure.OceanNpAutoscaler>;
     /**
-     * An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+     * An Array holding Availability Zones, this configures the availability zones the Ocean may launch nodes in per VNG.
+     * Select zone 0 if you have a workload that requires no availability zone redundancy (AZ=null). You can select this option either alone or together with other availability zones.
+     * In case zone 0 is selected together with other availability zones, nodes of zone 0 will be scaled only for workloads that demand it.
      */
     availabilityZones: pulumi.Input<pulumi.Input<string>[]>;
     /**

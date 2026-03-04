@@ -74,14 +74,18 @@ public final class OceanNpArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+     * An Array holding Availability Zones, this configures the availability zones the Ocean may launch nodes in per VNG.
+     * Select zone 0 if you have a workload that requires no availability zone redundancy (AZ=null). You can select this option either alone or together with other availability zones.
+     * In case zone 0 is selected together with other availability zones, nodes of zone 0 will be scaled only for workloads that demand it.
      * 
      */
     @Import(name="availabilityZones", required=true)
     private Output<List<String>> availabilityZones;
 
     /**
-     * @return An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+     * @return An Array holding Availability Zones, this configures the availability zones the Ocean may launch nodes in per VNG.
+     * Select zone 0 if you have a workload that requires no availability zone redundancy (AZ=null). You can select this option either alone or together with other availability zones.
+     * In case zone 0 is selected together with other availability zones, nodes of zone 0 will be scaled only for workloads that demand it.
      * 
      */
     public Output<List<String>> availabilityZones() {
@@ -567,7 +571,9 @@ public final class OceanNpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param availabilityZones An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+         * @param availabilityZones An Array holding Availability Zones, this configures the availability zones the Ocean may launch nodes in per VNG.
+         * Select zone 0 if you have a workload that requires no availability zone redundancy (AZ=null). You can select this option either alone or together with other availability zones.
+         * In case zone 0 is selected together with other availability zones, nodes of zone 0 will be scaled only for workloads that demand it.
          * 
          * @return builder
          * 
@@ -578,7 +584,9 @@ public final class OceanNpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param availabilityZones An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+         * @param availabilityZones An Array holding Availability Zones, this configures the availability zones the Ocean may launch nodes in per VNG.
+         * Select zone 0 if you have a workload that requires no availability zone redundancy (AZ=null). You can select this option either alone or together with other availability zones.
+         * In case zone 0 is selected together with other availability zones, nodes of zone 0 will be scaled only for workloads that demand it.
          * 
          * @return builder
          * 
@@ -588,7 +596,9 @@ public final class OceanNpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param availabilityZones An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+         * @param availabilityZones An Array holding Availability Zones, this configures the availability zones the Ocean may launch nodes in per VNG.
+         * Select zone 0 if you have a workload that requires no availability zone redundancy (AZ=null). You can select this option either alone or together with other availability zones.
+         * In case zone 0 is selected together with other availability zones, nodes of zone 0 will be scaled only for workloads that demand it.
          * 
          * @return builder
          * 
