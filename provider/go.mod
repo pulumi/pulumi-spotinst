@@ -5,7 +5,7 @@ go 1.25.0
 require (
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.122.0
 	github.com/pulumi/pulumi/sdk/v3 v3.223.0
-	github.com/spotinst/terraform-provider-spotinst v1.232.4
+	github.com/spotinst/terraform-provider-spotinst v1.232.5
 )
 
 replace (
