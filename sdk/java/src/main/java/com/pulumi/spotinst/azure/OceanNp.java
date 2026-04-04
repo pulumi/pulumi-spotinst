@@ -176,6 +176,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .spotPercentage(50)
  *             .fallbackToOndemand(true)
+ *             .drainingTimeout(600)
  *             .taints(OceanNpTaintArgs.builder()
  *                 .key("taintKey")
  *                 .value("taintValue")
@@ -301,6 +302,20 @@ public class OceanNp extends com.pulumi.resources.CustomResource {
      */
     public Output<String> controllerClusterId() {
         return this.controllerClusterId;
+    }
+    /**
+     * Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
+     * 
+     */
+    @Export(name="drainingTimeout", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> drainingTimeout;
+
+    /**
+     * @return Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
+     * 
+     */
+    public Output<Optional<Integer>> drainingTimeout() {
+        return Codegen.optional(this.drainingTimeout);
     }
     /**
      * Enable node public IP.

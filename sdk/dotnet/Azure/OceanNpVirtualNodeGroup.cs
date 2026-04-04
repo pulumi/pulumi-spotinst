@@ -79,6 +79,7 @@ namespace Pulumi.SpotInst.Azure
     ///         },
     ///         SpotPercentage = 50,
     ///         FallbackToOndemand = true,
+    ///         DrainingTimeout = 600,
     ///         Taints = new[]
     ///         {
     ///             new SpotInst.Azure.Inputs.OceanNpVirtualNodeGroupTaintArgs
@@ -159,6 +160,12 @@ namespace Pulumi.SpotInst.Azure
         /// </summary>
         [Output("availabilityZones")]
         public Output<ImmutableArray<string>> AvailabilityZones { get; private set; } = null!;
+
+        /// <summary>
+        /// Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
+        /// </summary>
+        [Output("drainingTimeout")]
+        public Output<int?> DrainingTimeout { get; private set; } = null!;
 
         /// <summary>
         /// Enable node public IP.
@@ -349,6 +356,12 @@ namespace Pulumi.SpotInst.Azure
             get => _availabilityZones ?? (_availabilityZones = new InputList<string>());
             set => _availabilityZones = value;
         }
+
+        /// <summary>
+        /// Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
+        /// </summary>
+        [Input("drainingTimeout")]
+        public Input<int>? DrainingTimeout { get; set; }
 
         /// <summary>
         /// Enable node public IP.
@@ -542,6 +555,12 @@ namespace Pulumi.SpotInst.Azure
             get => _availabilityZones ?? (_availabilityZones = new InputList<string>());
             set => _availabilityZones = value;
         }
+
+        /// <summary>
+        /// Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
+        /// </summary>
+        [Input("drainingTimeout")]
+        public Input<int>? DrainingTimeout { get; set; }
 
         /// <summary>
         /// Enable node public IP.

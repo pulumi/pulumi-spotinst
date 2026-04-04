@@ -74,6 +74,7 @@ import (
 //				},
 //				SpotPercentage:     pulumi.Int(50),
 //				FallbackToOndemand: pulumi.Bool(true),
+//				DrainingTimeout:    pulumi.Int(600),
 //				Taints: azure.OceanNpVirtualNodeGroupTaintArray{
 //					&azure.OceanNpVirtualNodeGroupTaintArgs{
 //						Key:    pulumi.String("taintKey"),
@@ -143,6 +144,8 @@ type OceanNpVirtualNodeGroup struct {
 
 	// An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
 	AvailabilityZones pulumi.StringArrayOutput `pulumi:"availabilityZones"`
+	// Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
+	DrainingTimeout pulumi.IntPtrOutput `pulumi:"drainingTimeout"`
 	// Enable node public IP.
 	EnableNodePublicIp pulumi.BoolPtrOutput `pulumi:"enableNodePublicIp"`
 	// If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
@@ -224,6 +227,8 @@ func GetOceanNpVirtualNodeGroup(ctx *pulumi.Context,
 type oceanNpVirtualNodeGroupState struct {
 	// An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
 	AvailabilityZones []string `pulumi:"availabilityZones"`
+	// Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
+	DrainingTimeout *int `pulumi:"drainingTimeout"`
 	// Enable node public IP.
 	EnableNodePublicIp *bool `pulumi:"enableNodePublicIp"`
 	// If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
@@ -273,6 +278,8 @@ type oceanNpVirtualNodeGroupState struct {
 type OceanNpVirtualNodeGroupState struct {
 	// An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
 	AvailabilityZones pulumi.StringArrayInput
+	// Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
+	DrainingTimeout pulumi.IntPtrInput
 	// Enable node public IP.
 	EnableNodePublicIp pulumi.BoolPtrInput
 	// If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
@@ -326,6 +333,8 @@ func (OceanNpVirtualNodeGroupState) ElementType() reflect.Type {
 type oceanNpVirtualNodeGroupArgs struct {
 	// An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
 	AvailabilityZones []string `pulumi:"availabilityZones"`
+	// Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
+	DrainingTimeout *int `pulumi:"drainingTimeout"`
 	// Enable node public IP.
 	EnableNodePublicIp *bool `pulumi:"enableNodePublicIp"`
 	// If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
@@ -376,6 +385,8 @@ type oceanNpVirtualNodeGroupArgs struct {
 type OceanNpVirtualNodeGroupArgs struct {
 	// An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
 	AvailabilityZones pulumi.StringArrayInput
+	// Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
+	DrainingTimeout pulumi.IntPtrInput
 	// Enable node public IP.
 	EnableNodePublicIp pulumi.BoolPtrInput
 	// If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
@@ -512,6 +523,11 @@ func (o OceanNpVirtualNodeGroupOutput) ToOceanNpVirtualNodeGroupOutputWithContex
 // An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
 func (o OceanNpVirtualNodeGroupOutput) AvailabilityZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroup) pulumi.StringArrayOutput { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
+}
+
+// Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
+func (o OceanNpVirtualNodeGroupOutput) DrainingTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroup) pulumi.IntPtrOutput { return v.DrainingTimeout }).(pulumi.IntPtrOutput)
 }
 
 // Enable node public IP.

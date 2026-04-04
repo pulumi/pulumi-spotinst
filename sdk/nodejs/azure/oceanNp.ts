@@ -102,6 +102,7 @@ import * as utilities from "../utilities";
  *     }],
  *     spotPercentage: 50,
  *     fallbackToOndemand: true,
+ *     drainingTimeout: 600,
  *     taints: [{
  *         key: "taintKey",
  *         value: "taintValue",
@@ -202,6 +203,10 @@ export class OceanNp extends pulumi.CustomResource {
      * Enter a unique Ocean cluster identifier. Cannot be updated. This needs to match with string that was used to install the controller in the cluster, typically clusterName + 8 digit string.
      */
     declare public readonly controllerClusterId: pulumi.Output<string>;
+    /**
+     * Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
+     */
+    declare public readonly drainingTimeout: pulumi.Output<number | undefined>;
     /**
      * Enable node public IP.
      */
@@ -314,6 +319,7 @@ export class OceanNp extends pulumi.CustomResource {
             resourceInputs["autoscaler"] = state?.autoscaler;
             resourceInputs["availabilityZones"] = state?.availabilityZones;
             resourceInputs["controllerClusterId"] = state?.controllerClusterId;
+            resourceInputs["drainingTimeout"] = state?.drainingTimeout;
             resourceInputs["enableNodePublicIp"] = state?.enableNodePublicIp;
             resourceInputs["fallbackToOndemand"] = state?.fallbackToOndemand;
             resourceInputs["filters"] = state?.filters;
@@ -366,6 +372,7 @@ export class OceanNp extends pulumi.CustomResource {
             resourceInputs["autoscaler"] = args?.autoscaler;
             resourceInputs["availabilityZones"] = args?.availabilityZones;
             resourceInputs["controllerClusterId"] = args?.controllerClusterId;
+            resourceInputs["drainingTimeout"] = args?.drainingTimeout;
             resourceInputs["enableNodePublicIp"] = args?.enableNodePublicIp;
             resourceInputs["fallbackToOndemand"] = args?.fallbackToOndemand;
             resourceInputs["filters"] = args?.filters;
@@ -419,6 +426,10 @@ export interface OceanNpState {
      * Enter a unique Ocean cluster identifier. Cannot be updated. This needs to match with string that was used to install the controller in the cluster, typically clusterName + 8 digit string.
      */
     controllerClusterId?: pulumi.Input<string>;
+    /**
+     * Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
+     */
+    drainingTimeout?: pulumi.Input<number>;
     /**
      * Enable node public IP.
      */
@@ -534,6 +545,10 @@ export interface OceanNpArgs {
      * Enter a unique Ocean cluster identifier. Cannot be updated. This needs to match with string that was used to install the controller in the cluster, typically clusterName + 8 digit string.
      */
     controllerClusterId: pulumi.Input<string>;
+    /**
+     * Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
+     */
+    drainingTimeout?: pulumi.Input<number>;
     /**
      * Enable node public IP.
      */

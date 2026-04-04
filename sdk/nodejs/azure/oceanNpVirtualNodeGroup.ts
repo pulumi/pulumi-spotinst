@@ -51,6 +51,7 @@ import * as utilities from "../utilities";
  *     }],
  *     spotPercentage: 50,
  *     fallbackToOndemand: true,
+ *     drainingTimeout: 600,
  *     taints: [{
  *         key: "taintKey",
  *         value: "taintValue",
@@ -137,6 +138,10 @@ export class OceanNpVirtualNodeGroup extends pulumi.CustomResource {
      * An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
      */
     declare public readonly availabilityZones: pulumi.Output<string[] | undefined>;
+    /**
+     * Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
+     */
+    declare public readonly drainingTimeout: pulumi.Output<number | undefined>;
     /**
      * Enable node public IP.
      */
@@ -238,6 +243,7 @@ export class OceanNpVirtualNodeGroup extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as OceanNpVirtualNodeGroupState | undefined;
             resourceInputs["availabilityZones"] = state?.availabilityZones;
+            resourceInputs["drainingTimeout"] = state?.drainingTimeout;
             resourceInputs["enableNodePublicIp"] = state?.enableNodePublicIp;
             resourceInputs["fallbackToOndemand"] = state?.fallbackToOndemand;
             resourceInputs["filters"] = state?.filters;
@@ -267,6 +273,7 @@ export class OceanNpVirtualNodeGroup extends pulumi.CustomResource {
                 throw new Error("Missing required property 'oceanId'");
             }
             resourceInputs["availabilityZones"] = args?.availabilityZones;
+            resourceInputs["drainingTimeout"] = args?.drainingTimeout;
             resourceInputs["enableNodePublicIp"] = args?.enableNodePublicIp;
             resourceInputs["fallbackToOndemand"] = args?.fallbackToOndemand;
             resourceInputs["filters"] = args?.filters;
@@ -304,6 +311,10 @@ export interface OceanNpVirtualNodeGroupState {
      * An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
      */
     availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
+     */
+    drainingTimeout?: pulumi.Input<number>;
     /**
      * Enable node public IP.
      */
@@ -400,6 +411,10 @@ export interface OceanNpVirtualNodeGroupArgs {
      * An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
      */
     availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
+     */
+    drainingTimeout?: pulumi.Input<number>;
     /**
      * Enable node public IP.
      */
