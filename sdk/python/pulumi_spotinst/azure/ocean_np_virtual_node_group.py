@@ -23,6 +23,7 @@ class OceanNpVirtualNodeGroupArgs:
     def __init__(__self__, *,
                  ocean_id: pulumi.Input[_builtins.str],
                  availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 draining_timeout: Optional[pulumi.Input[_builtins.int]] = None,
                  enable_node_public_ip: Optional[pulumi.Input[_builtins.bool]] = None,
                  fallback_to_ondemand: Optional[pulumi.Input[_builtins.bool]] = None,
                  filters: Optional[pulumi.Input['OceanNpVirtualNodeGroupFiltersArgs']] = None,
@@ -50,6 +51,7 @@ class OceanNpVirtualNodeGroupArgs:
 
         :param pulumi.Input[_builtins.str] ocean_id: The Ocean cluster identifier. Required for Launch Spec creation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+        :param pulumi.Input[_builtins.int] draining_timeout: Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
         :param pulumi.Input[_builtins.bool] enable_node_public_ip: Enable node public IP.
         :param pulumi.Input[_builtins.bool] fallback_to_ondemand: If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
         :param pulumi.Input['OceanNpVirtualNodeGroupFiltersArgs'] filters: Filters for the VM sizes that can be launched from the virtual node group.
@@ -74,6 +76,8 @@ class OceanNpVirtualNodeGroupArgs:
         pulumi.set(__self__, "ocean_id", ocean_id)
         if availability_zones is not None:
             pulumi.set(__self__, "availability_zones", availability_zones)
+        if draining_timeout is not None:
+            pulumi.set(__self__, "draining_timeout", draining_timeout)
         if enable_node_public_ip is not None:
             pulumi.set(__self__, "enable_node_public_ip", enable_node_public_ip)
         if fallback_to_ondemand is not None:
@@ -142,6 +146,18 @@ class OceanNpVirtualNodeGroupArgs:
     @availability_zones.setter
     def availability_zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "availability_zones", value)
+
+    @_builtins.property
+    @pulumi.getter(name="drainingTimeout")
+    def draining_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
+        """
+        return pulumi.get(self, "draining_timeout")
+
+    @draining_timeout.setter
+    def draining_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "draining_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="enableNodePublicIp")
@@ -406,6 +422,7 @@ class OceanNpVirtualNodeGroupArgs:
 class _OceanNpVirtualNodeGroupState:
     def __init__(__self__, *,
                  availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 draining_timeout: Optional[pulumi.Input[_builtins.int]] = None,
                  enable_node_public_ip: Optional[pulumi.Input[_builtins.bool]] = None,
                  fallback_to_ondemand: Optional[pulumi.Input[_builtins.bool]] = None,
                  filters: Optional[pulumi.Input['OceanNpVirtualNodeGroupFiltersArgs']] = None,
@@ -433,6 +450,7 @@ class _OceanNpVirtualNodeGroupState:
         Input properties used for looking up and filtering OceanNpVirtualNodeGroup resources.
 
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+        :param pulumi.Input[_builtins.int] draining_timeout: Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
         :param pulumi.Input[_builtins.bool] enable_node_public_ip: Enable node public IP.
         :param pulumi.Input[_builtins.bool] fallback_to_ondemand: If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
         :param pulumi.Input['OceanNpVirtualNodeGroupFiltersArgs'] filters: Filters for the VM sizes that can be launched from the virtual node group.
@@ -457,6 +475,8 @@ class _OceanNpVirtualNodeGroupState:
         """
         if availability_zones is not None:
             pulumi.set(__self__, "availability_zones", availability_zones)
+        if draining_timeout is not None:
+            pulumi.set(__self__, "draining_timeout", draining_timeout)
         if enable_node_public_ip is not None:
             pulumi.set(__self__, "enable_node_public_ip", enable_node_public_ip)
         if fallback_to_ondemand is not None:
@@ -515,6 +535,18 @@ class _OceanNpVirtualNodeGroupState:
     @availability_zones.setter
     def availability_zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "availability_zones", value)
+
+    @_builtins.property
+    @pulumi.getter(name="drainingTimeout")
+    def draining_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
+        """
+        return pulumi.get(self, "draining_timeout")
+
+    @draining_timeout.setter
+    def draining_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "draining_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="enableNodePublicIp")
@@ -794,6 +826,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 draining_timeout: Optional[pulumi.Input[_builtins.int]] = None,
                  enable_node_public_ip: Optional[pulumi.Input[_builtins.bool]] = None,
                  fallback_to_ondemand: Optional[pulumi.Input[_builtins.bool]] = None,
                  filters: Optional[pulumi.Input[Union['OceanNpVirtualNodeGroupFiltersArgs', 'OceanNpVirtualNodeGroupFiltersArgsDict']]] = None,
@@ -863,6 +896,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
             }],
             spot_percentage=50,
             fallback_to_ondemand=True,
+            draining_timeout=600,
             taints=[{
                 "key": "taintKey",
                 "value": "taintValue",
@@ -920,6 +954,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+        :param pulumi.Input[_builtins.int] draining_timeout: Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
         :param pulumi.Input[_builtins.bool] enable_node_public_ip: Enable node public IP.
         :param pulumi.Input[_builtins.bool] fallback_to_ondemand: If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
         :param pulumi.Input[Union['OceanNpVirtualNodeGroupFiltersArgs', 'OceanNpVirtualNodeGroupFiltersArgsDict']] filters: Filters for the VM sizes that can be launched from the virtual node group.
@@ -993,6 +1028,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
             }],
             spot_percentage=50,
             fallback_to_ondemand=True,
+            draining_timeout=600,
             taints=[{
                 "key": "taintKey",
                 "value": "taintValue",
@@ -1063,6 +1099,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 draining_timeout: Optional[pulumi.Input[_builtins.int]] = None,
                  enable_node_public_ip: Optional[pulumi.Input[_builtins.bool]] = None,
                  fallback_to_ondemand: Optional[pulumi.Input[_builtins.bool]] = None,
                  filters: Optional[pulumi.Input[Union['OceanNpVirtualNodeGroupFiltersArgs', 'OceanNpVirtualNodeGroupFiltersArgsDict']]] = None,
@@ -1096,6 +1133,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
             __props__ = OceanNpVirtualNodeGroupArgs.__new__(OceanNpVirtualNodeGroupArgs)
 
             __props__.__dict__["availability_zones"] = availability_zones
+            __props__.__dict__["draining_timeout"] = draining_timeout
             __props__.__dict__["enable_node_public_ip"] = enable_node_public_ip
             __props__.__dict__["fallback_to_ondemand"] = fallback_to_ondemand
             __props__.__dict__["filters"] = filters
@@ -1132,6 +1170,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            draining_timeout: Optional[pulumi.Input[_builtins.int]] = None,
             enable_node_public_ip: Optional[pulumi.Input[_builtins.bool]] = None,
             fallback_to_ondemand: Optional[pulumi.Input[_builtins.bool]] = None,
             filters: Optional[pulumi.Input[Union['OceanNpVirtualNodeGroupFiltersArgs', 'OceanNpVirtualNodeGroupFiltersArgsDict']]] = None,
@@ -1163,6 +1202,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+        :param pulumi.Input[_builtins.int] draining_timeout: Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
         :param pulumi.Input[_builtins.bool] enable_node_public_ip: Enable node public IP.
         :param pulumi.Input[_builtins.bool] fallback_to_ondemand: If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
         :param pulumi.Input[Union['OceanNpVirtualNodeGroupFiltersArgs', 'OceanNpVirtualNodeGroupFiltersArgsDict']] filters: Filters for the VM sizes that can be launched from the virtual node group.
@@ -1190,6 +1230,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         __props__ = _OceanNpVirtualNodeGroupState.__new__(_OceanNpVirtualNodeGroupState)
 
         __props__.__dict__["availability_zones"] = availability_zones
+        __props__.__dict__["draining_timeout"] = draining_timeout
         __props__.__dict__["enable_node_public_ip"] = enable_node_public_ip
         __props__.__dict__["fallback_to_ondemand"] = fallback_to_ondemand
         __props__.__dict__["filters"] = filters
@@ -1222,6 +1263,14 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
         """
         return pulumi.get(self, "availability_zones")
+
+    @_builtins.property
+    @pulumi.getter(name="drainingTimeout")
+    def draining_timeout(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
+        """
+        return pulumi.get(self, "draining_timeout")
 
     @_builtins.property
     @pulumi.getter(name="enableNodePublicIp")

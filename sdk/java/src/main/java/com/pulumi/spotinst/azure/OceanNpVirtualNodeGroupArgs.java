@@ -42,6 +42,21 @@ public final class OceanNpVirtualNodeGroupArgs extends com.pulumi.resources.Reso
     }
 
     /**
+     * Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
+     * 
+     */
+    @Import(name="drainingTimeout")
+    private @Nullable Output<Integer> drainingTimeout;
+
+    /**
+     * @return Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
+     * 
+     */
+    public Optional<Output<Integer>> drainingTimeout() {
+        return Optional.ofNullable(this.drainingTimeout);
+    }
+
+    /**
      * Enable node public IP.
      * 
      */
@@ -374,6 +389,7 @@ public final class OceanNpVirtualNodeGroupArgs extends com.pulumi.resources.Reso
 
     private OceanNpVirtualNodeGroupArgs(OceanNpVirtualNodeGroupArgs $) {
         this.availabilityZones = $.availabilityZones;
+        this.drainingTimeout = $.drainingTimeout;
         this.enableNodePublicIp = $.enableNodePublicIp;
         this.fallbackToOndemand = $.fallbackToOndemand;
         this.filters = $.filters;
@@ -446,6 +462,27 @@ public final class OceanNpVirtualNodeGroupArgs extends com.pulumi.resources.Reso
          */
         public Builder availabilityZones(String... availabilityZones) {
             return availabilityZones(List.of(availabilityZones));
+        }
+
+        /**
+         * @param drainingTimeout Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder drainingTimeout(@Nullable Output<Integer> drainingTimeout) {
+            $.drainingTimeout = drainingTimeout;
+            return this;
+        }
+
+        /**
+         * @param drainingTimeout Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder drainingTimeout(Integer drainingTimeout) {
+            return drainingTimeout(Output.of(drainingTimeout));
         }
 
         /**

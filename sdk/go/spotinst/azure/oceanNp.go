@@ -142,6 +142,7 @@ import (
 //				},
 //				SpotPercentage:     pulumi.Int(50),
 //				FallbackToOndemand: pulumi.Bool(true),
+//				DrainingTimeout:    pulumi.Int(600),
 //				Taints: azure.OceanNpTaintArray{
 //					&azure.OceanNpTaintArgs{
 //						Key:    pulumi.String("taintKey"),
@@ -221,6 +222,8 @@ type OceanNp struct {
 	AvailabilityZones pulumi.StringArrayOutput `pulumi:"availabilityZones"`
 	// Enter a unique Ocean cluster identifier. Cannot be updated. This needs to match with string that was used to install the controller in the cluster, typically clusterName + 8 digit string.
 	ControllerClusterId pulumi.StringOutput `pulumi:"controllerClusterId"`
+	// Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
+	DrainingTimeout pulumi.IntPtrOutput `pulumi:"drainingTimeout"`
 	// Enable node public IP.
 	EnableNodePublicIp pulumi.BoolPtrOutput `pulumi:"enableNodePublicIp"`
 	// If no spot VM markets are available, enable Ocean to launch regular (pay-as-you-go) nodes instead.
@@ -330,6 +333,8 @@ type oceanNpState struct {
 	AvailabilityZones []string `pulumi:"availabilityZones"`
 	// Enter a unique Ocean cluster identifier. Cannot be updated. This needs to match with string that was used to install the controller in the cluster, typically clusterName + 8 digit string.
 	ControllerClusterId *string `pulumi:"controllerClusterId"`
+	// Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
+	DrainingTimeout *int `pulumi:"drainingTimeout"`
 	// Enable node public IP.
 	EnableNodePublicIp *bool `pulumi:"enableNodePublicIp"`
 	// If no spot VM markets are available, enable Ocean to launch regular (pay-as-you-go) nodes instead.
@@ -392,6 +397,8 @@ type OceanNpState struct {
 	AvailabilityZones pulumi.StringArrayInput
 	// Enter a unique Ocean cluster identifier. Cannot be updated. This needs to match with string that was used to install the controller in the cluster, typically clusterName + 8 digit string.
 	ControllerClusterId pulumi.StringPtrInput
+	// Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
+	DrainingTimeout pulumi.IntPtrInput
 	// Enable node public IP.
 	EnableNodePublicIp pulumi.BoolPtrInput
 	// If no spot VM markets are available, enable Ocean to launch regular (pay-as-you-go) nodes instead.
@@ -458,6 +465,8 @@ type oceanNpArgs struct {
 	AvailabilityZones []string `pulumi:"availabilityZones"`
 	// Enter a unique Ocean cluster identifier. Cannot be updated. This needs to match with string that was used to install the controller in the cluster, typically clusterName + 8 digit string.
 	ControllerClusterId string `pulumi:"controllerClusterId"`
+	// Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
+	DrainingTimeout *int `pulumi:"drainingTimeout"`
 	// Enable node public IP.
 	EnableNodePublicIp *bool `pulumi:"enableNodePublicIp"`
 	// If no spot VM markets are available, enable Ocean to launch regular (pay-as-you-go) nodes instead.
@@ -521,6 +530,8 @@ type OceanNpArgs struct {
 	AvailabilityZones pulumi.StringArrayInput
 	// Enter a unique Ocean cluster identifier. Cannot be updated. This needs to match with string that was used to install the controller in the cluster, typically clusterName + 8 digit string.
 	ControllerClusterId pulumi.StringInput
+	// Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
+	DrainingTimeout pulumi.IntPtrInput
 	// Enable node public IP.
 	EnableNodePublicIp pulumi.BoolPtrInput
 	// If no spot VM markets are available, enable Ocean to launch regular (pay-as-you-go) nodes instead.
@@ -688,6 +699,11 @@ func (o OceanNpOutput) AvailabilityZones() pulumi.StringArrayOutput {
 // Enter a unique Ocean cluster identifier. Cannot be updated. This needs to match with string that was used to install the controller in the cluster, typically clusterName + 8 digit string.
 func (o OceanNpOutput) ControllerClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OceanNp) pulumi.StringOutput { return v.ControllerClusterId }).(pulumi.StringOutput)
+}
+
+// Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
+func (o OceanNpOutput) DrainingTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanNp) pulumi.IntPtrOutput { return v.DrainingTimeout }).(pulumi.IntPtrOutput)
 }
 
 // Enable node public IP.

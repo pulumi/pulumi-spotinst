@@ -150,6 +150,7 @@ namespace Pulumi.SpotInst.Azure
     ///         },
     ///         SpotPercentage = 50,
     ///         FallbackToOndemand = true,
+    ///         DrainingTimeout = 600,
     ///         Taints = new[]
     ///         {
     ///             new SpotInst.Azure.Inputs.OceanNpTaintArgs
@@ -256,6 +257,12 @@ namespace Pulumi.SpotInst.Azure
         /// </summary>
         [Output("controllerClusterId")]
         public Output<string> ControllerClusterId { get; private set; } = null!;
+
+        /// <summary>
+        /// Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
+        /// </summary>
+        [Output("drainingTimeout")]
+        public Output<int?> DrainingTimeout { get; private set; } = null!;
 
         /// <summary>
         /// Enable node public IP.
@@ -481,6 +488,12 @@ namespace Pulumi.SpotInst.Azure
         /// </summary>
         [Input("controllerClusterId", required: true)]
         public Input<string> ControllerClusterId { get; set; } = null!;
+
+        /// <summary>
+        /// Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
+        /// </summary>
+        [Input("drainingTimeout")]
+        public Input<int>? DrainingTimeout { get; set; }
 
         /// <summary>
         /// Enable node public IP.
@@ -709,6 +722,12 @@ namespace Pulumi.SpotInst.Azure
         /// </summary>
         [Input("controllerClusterId")]
         public Input<string>? ControllerClusterId { get; set; }
+
+        /// <summary>
+        /// Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
+        /// </summary>
+        [Input("drainingTimeout")]
+        public Input<int>? DrainingTimeout { get; set; }
 
         /// <summary>
         /// Enable node public IP.

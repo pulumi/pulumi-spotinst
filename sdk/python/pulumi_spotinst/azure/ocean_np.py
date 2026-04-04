@@ -28,6 +28,7 @@ class OceanNpArgs:
                  availability_zones: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  controller_cluster_id: pulumi.Input[_builtins.str],
                  autoscaler: Optional[pulumi.Input['OceanNpAutoscalerArgs']] = None,
+                 draining_timeout: Optional[pulumi.Input[_builtins.int]] = None,
                  enable_node_public_ip: Optional[pulumi.Input[_builtins.bool]] = None,
                  fallback_to_ondemand: Optional[pulumi.Input[_builtins.bool]] = None,
                  filters: Optional[pulumi.Input['OceanNpFiltersArgs']] = None,
@@ -61,6 +62,7 @@ class OceanNpArgs:
                In case zone 0 is selected together with other availability zones, nodes of zone 0 will be scaled only for workloads that demand it.
         :param pulumi.Input[_builtins.str] controller_cluster_id: Enter a unique Ocean cluster identifier. Cannot be updated. This needs to match with string that was used to install the controller in the cluster, typically clusterName + 8 digit string.
         :param pulumi.Input['OceanNpAutoscalerArgs'] autoscaler: The Ocean Kubernetes Autoscaler object.
+        :param pulumi.Input[_builtins.int] draining_timeout: Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
         :param pulumi.Input[_builtins.bool] enable_node_public_ip: Enable node public IP.
         :param pulumi.Input[_builtins.bool] fallback_to_ondemand: If no spot VM markets are available, enable Ocean to launch regular (pay-as-you-go) nodes instead.
         :param pulumi.Input['OceanNpFiltersArgs'] filters: Filters for the VM sizes that can be launched from the virtual node group.
@@ -92,6 +94,8 @@ class OceanNpArgs:
         pulumi.set(__self__, "controller_cluster_id", controller_cluster_id)
         if autoscaler is not None:
             pulumi.set(__self__, "autoscaler", autoscaler)
+        if draining_timeout is not None:
+            pulumi.set(__self__, "draining_timeout", draining_timeout)
         if enable_node_public_ip is not None:
             pulumi.set(__self__, "enable_node_public_ip", enable_node_public_ip)
         if fallback_to_ondemand is not None:
@@ -216,6 +220,18 @@ class OceanNpArgs:
     @autoscaler.setter
     def autoscaler(self, value: Optional[pulumi.Input['OceanNpAutoscalerArgs']]):
         pulumi.set(self, "autoscaler", value)
+
+    @_builtins.property
+    @pulumi.getter(name="drainingTimeout")
+    def draining_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
+        """
+        return pulumi.get(self, "draining_timeout")
+
+    @draining_timeout.setter
+    def draining_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "draining_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="enableNodePublicIp")
@@ -519,6 +535,7 @@ class _OceanNpState:
                  autoscaler: Optional[pulumi.Input['OceanNpAutoscalerArgs']] = None,
                  availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  controller_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 draining_timeout: Optional[pulumi.Input[_builtins.int]] = None,
                  enable_node_public_ip: Optional[pulumi.Input[_builtins.bool]] = None,
                  fallback_to_ondemand: Optional[pulumi.Input[_builtins.bool]] = None,
                  filters: Optional[pulumi.Input['OceanNpFiltersArgs']] = None,
@@ -552,6 +569,7 @@ class _OceanNpState:
                Select zone 0 if you have a workload that requires no availability zone redundancy (AZ=null). You can select this option either alone or together with other availability zones.
                In case zone 0 is selected together with other availability zones, nodes of zone 0 will be scaled only for workloads that demand it.
         :param pulumi.Input[_builtins.str] controller_cluster_id: Enter a unique Ocean cluster identifier. Cannot be updated. This needs to match with string that was used to install the controller in the cluster, typically clusterName + 8 digit string.
+        :param pulumi.Input[_builtins.int] draining_timeout: Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
         :param pulumi.Input[_builtins.bool] enable_node_public_ip: Enable node public IP.
         :param pulumi.Input[_builtins.bool] fallback_to_ondemand: If no spot VM markets are available, enable Ocean to launch regular (pay-as-you-go) nodes instead.
         :param pulumi.Input['OceanNpFiltersArgs'] filters: Filters for the VM sizes that can be launched from the virtual node group.
@@ -589,6 +607,8 @@ class _OceanNpState:
             pulumi.set(__self__, "availability_zones", availability_zones)
         if controller_cluster_id is not None:
             pulumi.set(__self__, "controller_cluster_id", controller_cluster_id)
+        if draining_timeout is not None:
+            pulumi.set(__self__, "draining_timeout", draining_timeout)
         if enable_node_public_ip is not None:
             pulumi.set(__self__, "enable_node_public_ip", enable_node_public_ip)
         if fallback_to_ondemand is not None:
@@ -713,6 +733,18 @@ class _OceanNpState:
     @controller_cluster_id.setter
     def controller_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "controller_cluster_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="drainingTimeout")
+    def draining_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
+        """
+        return pulumi.get(self, "draining_timeout")
+
+    @draining_timeout.setter
+    def draining_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "draining_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="enableNodePublicIp")
@@ -1019,6 +1051,7 @@ class OceanNp(pulumi.CustomResource):
                  autoscaler: Optional[pulumi.Input[Union['OceanNpAutoscalerArgs', 'OceanNpAutoscalerArgsDict']]] = None,
                  availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  controller_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 draining_timeout: Optional[pulumi.Input[_builtins.int]] = None,
                  enable_node_public_ip: Optional[pulumi.Input[_builtins.bool]] = None,
                  fallback_to_ondemand: Optional[pulumi.Input[_builtins.bool]] = None,
                  filters: Optional[pulumi.Input[Union['OceanNpFiltersArgs', 'OceanNpFiltersArgsDict']]] = None,
@@ -1140,6 +1173,7 @@ class OceanNp(pulumi.CustomResource):
             }],
             spot_percentage=50,
             fallback_to_ondemand=True,
+            draining_timeout=600,
             taints=[{
                 "key": "taintKey",
                 "value": "taintValue",
@@ -1201,6 +1235,7 @@ class OceanNp(pulumi.CustomResource):
                Select zone 0 if you have a workload that requires no availability zone redundancy (AZ=null). You can select this option either alone or together with other availability zones.
                In case zone 0 is selected together with other availability zones, nodes of zone 0 will be scaled only for workloads that demand it.
         :param pulumi.Input[_builtins.str] controller_cluster_id: Enter a unique Ocean cluster identifier. Cannot be updated. This needs to match with string that was used to install the controller in the cluster, typically clusterName + 8 digit string.
+        :param pulumi.Input[_builtins.int] draining_timeout: Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
         :param pulumi.Input[_builtins.bool] enable_node_public_ip: Enable node public IP.
         :param pulumi.Input[_builtins.bool] fallback_to_ondemand: If no spot VM markets are available, enable Ocean to launch regular (pay-as-you-go) nodes instead.
         :param pulumi.Input[Union['OceanNpFiltersArgs', 'OceanNpFiltersArgsDict']] filters: Filters for the VM sizes that can be launched from the virtual node group.
@@ -1325,6 +1360,7 @@ class OceanNp(pulumi.CustomResource):
             }],
             spot_percentage=50,
             fallback_to_ondemand=True,
+            draining_timeout=600,
             taints=[{
                 "key": "taintKey",
                 "value": "taintValue",
@@ -1401,6 +1437,7 @@ class OceanNp(pulumi.CustomResource):
                  autoscaler: Optional[pulumi.Input[Union['OceanNpAutoscalerArgs', 'OceanNpAutoscalerArgsDict']]] = None,
                  availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  controller_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 draining_timeout: Optional[pulumi.Input[_builtins.int]] = None,
                  enable_node_public_ip: Optional[pulumi.Input[_builtins.bool]] = None,
                  fallback_to_ondemand: Optional[pulumi.Input[_builtins.bool]] = None,
                  filters: Optional[pulumi.Input[Union['OceanNpFiltersArgs', 'OceanNpFiltersArgsDict']]] = None,
@@ -1454,6 +1491,7 @@ class OceanNp(pulumi.CustomResource):
             if controller_cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'controller_cluster_id'")
             __props__.__dict__["controller_cluster_id"] = controller_cluster_id
+            __props__.__dict__["draining_timeout"] = draining_timeout
             __props__.__dict__["enable_node_public_ip"] = enable_node_public_ip
             __props__.__dict__["fallback_to_ondemand"] = fallback_to_ondemand
             __props__.__dict__["filters"] = filters
@@ -1496,6 +1534,7 @@ class OceanNp(pulumi.CustomResource):
             autoscaler: Optional[pulumi.Input[Union['OceanNpAutoscalerArgs', 'OceanNpAutoscalerArgsDict']]] = None,
             availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             controller_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
+            draining_timeout: Optional[pulumi.Input[_builtins.int]] = None,
             enable_node_public_ip: Optional[pulumi.Input[_builtins.bool]] = None,
             fallback_to_ondemand: Optional[pulumi.Input[_builtins.bool]] = None,
             filters: Optional[pulumi.Input[Union['OceanNpFiltersArgs', 'OceanNpFiltersArgsDict']]] = None,
@@ -1533,6 +1572,7 @@ class OceanNp(pulumi.CustomResource):
                Select zone 0 if you have a workload that requires no availability zone redundancy (AZ=null). You can select this option either alone or together with other availability zones.
                In case zone 0 is selected together with other availability zones, nodes of zone 0 will be scaled only for workloads that demand it.
         :param pulumi.Input[_builtins.str] controller_cluster_id: Enter a unique Ocean cluster identifier. Cannot be updated. This needs to match with string that was used to install the controller in the cluster, typically clusterName + 8 digit string.
+        :param pulumi.Input[_builtins.int] draining_timeout: Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
         :param pulumi.Input[_builtins.bool] enable_node_public_ip: Enable node public IP.
         :param pulumi.Input[_builtins.bool] fallback_to_ondemand: If no spot VM markets are available, enable Ocean to launch regular (pay-as-you-go) nodes instead.
         :param pulumi.Input[Union['OceanNpFiltersArgs', 'OceanNpFiltersArgsDict']] filters: Filters for the VM sizes that can be launched from the virtual node group.
@@ -1567,6 +1607,7 @@ class OceanNp(pulumi.CustomResource):
         __props__.__dict__["autoscaler"] = autoscaler
         __props__.__dict__["availability_zones"] = availability_zones
         __props__.__dict__["controller_cluster_id"] = controller_cluster_id
+        __props__.__dict__["draining_timeout"] = draining_timeout
         __props__.__dict__["enable_node_public_ip"] = enable_node_public_ip
         __props__.__dict__["fallback_to_ondemand"] = fallback_to_ondemand
         __props__.__dict__["filters"] = filters
@@ -1639,6 +1680,14 @@ class OceanNp(pulumi.CustomResource):
         Enter a unique Ocean cluster identifier. Cannot be updated. This needs to match with string that was used to install the controller in the cluster, typically clusterName + 8 digit string.
         """
         return pulumi.get(self, "controller_cluster_id")
+
+    @_builtins.property
+    @pulumi.getter(name="drainingTimeout")
+    def draining_timeout(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
+        """
+        return pulumi.get(self, "draining_timeout")
 
     @_builtins.property
     @pulumi.getter(name="enableNodePublicIp")
