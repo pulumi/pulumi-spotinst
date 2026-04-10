@@ -23,7 +23,7 @@ namespace Pulumi.SpotInst
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a Subscription
-    ///     var default_subscription = new SpotInst.Subscription("default-subscription", new()
+    ///     var default_subscription = new SpotInst.Index.Subscription("default-subscription", new()
     ///     {
     ///         ResourceId = my_eg.Id,
     ///         EventType = "AWS_EC2_INSTANCE_LAUNCH",

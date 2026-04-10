@@ -23,7 +23,7 @@ namespace Pulumi.SpotInst
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // set credential Azure
-    ///     var credential = new SpotInst.CredentialsAzure("credential", new()
+    ///     var credential = new SpotInst.Index.CredentialsAzure("credential", new()
     ///     {
     ///         AccountId = "act-123456",
     ///         ClientId = "redacted",

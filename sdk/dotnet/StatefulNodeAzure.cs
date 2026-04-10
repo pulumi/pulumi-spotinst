@@ -22,7 +22,7 @@ namespace Pulumi.SpotInst
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var testStatefulNodeAzure = new SpotInst.StatefulNodeAzure("test_stateful_node_azure", new()
+    ///     var testStatefulNodeAzure = new SpotInst.Index.StatefulNodeAzure("test_stateful_node_azure", new()
     ///     {
     ///         Name = "example_stateful_node_azure",
     ///         Region = "eastus",

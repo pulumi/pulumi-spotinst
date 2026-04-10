@@ -22,7 +22,7 @@ namespace Pulumi.SpotInst
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var httpCheck = new SpotInst.HealthCheck("http_check", new()
+    ///     var httpCheck = new SpotInst.Index.HealthCheck("http_check", new()
     ///     {
     ///         Name = "sample_health_check",
     ///         ResourceId = "sig-123",
