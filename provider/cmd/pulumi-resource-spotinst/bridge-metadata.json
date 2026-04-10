@@ -1545,6 +1545,23 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "optimization_windows": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "windows": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "effects": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
                                 "shutdown_hours": {
                                     "maxItemsOne": true,
                                     "elem": {
@@ -1721,6 +1738,23 @@
                     },
                     "load_balancers": {
                         "maxItemsOne": false
+                    },
+                    "optimization_windows": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "windows": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "effects": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     },
                     "preferred_od_types": {
                         "maxItemsOne": false
