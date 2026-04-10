@@ -41,6 +41,7 @@ class OceanLaunchSpecArgs:
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]]] = None,
                  load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLoadBalancerArgs']]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 optimization_windows: Optional[pulumi.Input['OceanLaunchSpecOptimizationWindowsArgs']] = None,
                  preferred_od_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  preferred_spot_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  reserved_enis: Optional[pulumi.Input[_builtins.int]] = None,
@@ -79,6 +80,7 @@ class OceanLaunchSpecArgs:
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]] labels: Optionally adds labels to instances launched in the cluster.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLoadBalancerArgs']]] load_balancers: Array of load balancer objects to add to VNG
         :param pulumi.Input[_builtins.str] name: The name of the Virtual Node Group.
+        :param pulumi.Input['OceanLaunchSpecOptimizationWindowsArgs'] optimization_windows: An object used to specify time windows during which certain optimization constraints can be eased.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preferred_od_types: A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preferred_spot_types: A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
         :param pulumi.Input[_builtins.int] reserved_enis: Specifies the count of ENIs to reserve per instance type for scaling purposes.
@@ -132,6 +134,8 @@ class OceanLaunchSpecArgs:
             pulumi.set(__self__, "load_balancers", load_balancers)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if optimization_windows is not None:
+            pulumi.set(__self__, "optimization_windows", optimization_windows)
         if preferred_od_types is not None:
             pulumi.set(__self__, "preferred_od_types", preferred_od_types)
         if preferred_spot_types is not None:
@@ -399,6 +403,18 @@ class OceanLaunchSpecArgs:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="optimizationWindows")
+    def optimization_windows(self) -> Optional[pulumi.Input['OceanLaunchSpecOptimizationWindowsArgs']]:
+        """
+        An object used to specify time windows during which certain optimization constraints can be eased.
+        """
+        return pulumi.get(self, "optimization_windows")
+
+    @optimization_windows.setter
+    def optimization_windows(self, value: Optional[pulumi.Input['OceanLaunchSpecOptimizationWindowsArgs']]):
+        pulumi.set(self, "optimization_windows", value)
+
+    @_builtins.property
     @pulumi.getter(name="preferredOdTypes")
     def preferred_od_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -605,6 +621,7 @@ class _OceanLaunchSpecState:
                  load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLoadBalancerArgs']]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  ocean_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 optimization_windows: Optional[pulumi.Input['OceanLaunchSpecOptimizationWindowsArgs']] = None,
                  preferred_od_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  preferred_spot_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  reserved_enis: Optional[pulumi.Input[_builtins.int]] = None,
@@ -643,6 +660,7 @@ class _OceanLaunchSpecState:
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLoadBalancerArgs']]] load_balancers: Array of load balancer objects to add to VNG
         :param pulumi.Input[_builtins.str] name: The name of the Virtual Node Group.
         :param pulumi.Input[_builtins.str] ocean_id: The ID of the Ocean cluster.
+        :param pulumi.Input['OceanLaunchSpecOptimizationWindowsArgs'] optimization_windows: An object used to specify time windows during which certain optimization constraints can be eased.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preferred_od_types: A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preferred_spot_types: A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
         :param pulumi.Input[_builtins.int] reserved_enis: Specifies the count of ENIs to reserve per instance type for scaling purposes.
@@ -697,6 +715,8 @@ class _OceanLaunchSpecState:
             pulumi.set(__self__, "name", name)
         if ocean_id is not None:
             pulumi.set(__self__, "ocean_id", ocean_id)
+        if optimization_windows is not None:
+            pulumi.set(__self__, "optimization_windows", optimization_windows)
         if preferred_od_types is not None:
             pulumi.set(__self__, "preferred_od_types", preferred_od_types)
         if preferred_spot_types is not None:
@@ -964,6 +984,18 @@ class _OceanLaunchSpecState:
         pulumi.set(self, "ocean_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="optimizationWindows")
+    def optimization_windows(self) -> Optional[pulumi.Input['OceanLaunchSpecOptimizationWindowsArgs']]:
+        """
+        An object used to specify time windows during which certain optimization constraints can be eased.
+        """
+        return pulumi.get(self, "optimization_windows")
+
+    @optimization_windows.setter
+    def optimization_windows(self, value: Optional[pulumi.Input['OceanLaunchSpecOptimizationWindowsArgs']]):
+        pulumi.set(self, "optimization_windows", value)
+
+    @_builtins.property
     @pulumi.getter(name="preferredOdTypes")
     def preferred_od_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -1173,6 +1205,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecLoadBalancerArgs', 'OceanLaunchSpecLoadBalancerArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  ocean_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 optimization_windows: Optional[pulumi.Input[Union['OceanLaunchSpecOptimizationWindowsArgs', 'OceanLaunchSpecOptimizationWindowsArgsDict']]] = None,
                  preferred_od_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  preferred_spot_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  reserved_enis: Optional[pulumi.Input[_builtins.int]] = None,
@@ -1215,6 +1248,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecLoadBalancerArgs', 'OceanLaunchSpecLoadBalancerArgsDict']]]] load_balancers: Array of load balancer objects to add to VNG
         :param pulumi.Input[_builtins.str] name: The name of the Virtual Node Group.
         :param pulumi.Input[_builtins.str] ocean_id: The ID of the Ocean cluster.
+        :param pulumi.Input[Union['OceanLaunchSpecOptimizationWindowsArgs', 'OceanLaunchSpecOptimizationWindowsArgsDict']] optimization_windows: An object used to specify time windows during which certain optimization constraints can be eased.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preferred_od_types: A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preferred_spot_types: A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
         :param pulumi.Input[_builtins.int] reserved_enis: Specifies the count of ENIs to reserve per instance type for scaling purposes.
@@ -1274,6 +1308,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecLoadBalancerArgs', 'OceanLaunchSpecLoadBalancerArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  ocean_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 optimization_windows: Optional[pulumi.Input[Union['OceanLaunchSpecOptimizationWindowsArgs', 'OceanLaunchSpecOptimizationWindowsArgsDict']]] = None,
                  preferred_od_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  preferred_spot_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  reserved_enis: Optional[pulumi.Input[_builtins.int]] = None,
@@ -1321,6 +1356,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             if ocean_id is None and not opts.urn:
                 raise TypeError("Missing required property 'ocean_id'")
             __props__.__dict__["ocean_id"] = ocean_id
+            __props__.__dict__["optimization_windows"] = optimization_windows
             __props__.__dict__["preferred_od_types"] = preferred_od_types
             __props__.__dict__["preferred_spot_types"] = preferred_spot_types
             __props__.__dict__["reserved_enis"] = reserved_enis
@@ -1367,6 +1403,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecLoadBalancerArgs', 'OceanLaunchSpecLoadBalancerArgsDict']]]]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             ocean_id: Optional[pulumi.Input[_builtins.str]] = None,
+            optimization_windows: Optional[pulumi.Input[Union['OceanLaunchSpecOptimizationWindowsArgs', 'OceanLaunchSpecOptimizationWindowsArgsDict']]] = None,
             preferred_od_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             preferred_spot_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             reserved_enis: Optional[pulumi.Input[_builtins.int]] = None,
@@ -1409,6 +1446,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecLoadBalancerArgs', 'OceanLaunchSpecLoadBalancerArgsDict']]]] load_balancers: Array of load balancer objects to add to VNG
         :param pulumi.Input[_builtins.str] name: The name of the Virtual Node Group.
         :param pulumi.Input[_builtins.str] ocean_id: The ID of the Ocean cluster.
+        :param pulumi.Input[Union['OceanLaunchSpecOptimizationWindowsArgs', 'OceanLaunchSpecOptimizationWindowsArgsDict']] optimization_windows: An object used to specify time windows during which certain optimization constraints can be eased.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preferred_od_types: A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preferred_spot_types: A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
         :param pulumi.Input[_builtins.int] reserved_enis: Specifies the count of ENIs to reserve per instance type for scaling purposes.
@@ -1447,6 +1485,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         __props__.__dict__["load_balancers"] = load_balancers
         __props__.__dict__["name"] = name
         __props__.__dict__["ocean_id"] = ocean_id
+        __props__.__dict__["optimization_windows"] = optimization_windows
         __props__.__dict__["preferred_od_types"] = preferred_od_types
         __props__.__dict__["preferred_spot_types"] = preferred_spot_types
         __props__.__dict__["reserved_enis"] = reserved_enis
@@ -1617,6 +1656,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
         The ID of the Ocean cluster.
         """
         return pulumi.get(self, "ocean_id")
+
+    @_builtins.property
+    @pulumi.getter(name="optimizationWindows")
+    def optimization_windows(self) -> pulumi.Output[Optional['outputs.OceanLaunchSpecOptimizationWindows']]:
+        """
+        An object used to specify time windows during which certain optimization constraints can be eased.
+        """
+        return pulumi.get(self, "optimization_windows")
 
     @_builtins.property
     @pulumi.getter(name="preferredOdTypes")

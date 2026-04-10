@@ -20,6 +20,7 @@ import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecInstanceStorePolicyArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecInstanceTypesFiltersArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecLabelArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecLoadBalancerArgs;
+import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecOptimizationWindowsArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecResourceLimitArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecSchedulingShutdownHoursArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecSchedulingTaskArgs;
@@ -322,6 +323,21 @@ public final class OceanLaunchSpecArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * An object used to specify time windows during which certain optimization constraints can be eased.
+     * 
+     */
+    @Import(name="optimizationWindows")
+    private @Nullable Output<OceanLaunchSpecOptimizationWindowsArgs> optimizationWindows;
+
+    /**
+     * @return An object used to specify time windows during which certain optimization constraints can be eased.
+     * 
+     */
+    public Optional<Output<OceanLaunchSpecOptimizationWindowsArgs>> optimizationWindows() {
+        return Optional.ofNullable(this.optimizationWindows);
+    }
+
+    /**
      * A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
      * 
      */
@@ -560,6 +576,7 @@ public final class OceanLaunchSpecArgs extends com.pulumi.resources.ResourceArgs
         this.loadBalancers = $.loadBalancers;
         this.name = $.name;
         this.oceanId = $.oceanId;
+        this.optimizationWindows = $.optimizationWindows;
         this.preferredOdTypes = $.preferredOdTypes;
         this.preferredSpotTypes = $.preferredSpotTypes;
         this.reservedEnis = $.reservedEnis;
@@ -1077,6 +1094,27 @@ public final class OceanLaunchSpecArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder oceanId(String oceanId) {
             return oceanId(Output.of(oceanId));
+        }
+
+        /**
+         * @param optimizationWindows An object used to specify time windows during which certain optimization constraints can be eased.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder optimizationWindows(@Nullable Output<OceanLaunchSpecOptimizationWindowsArgs> optimizationWindows) {
+            $.optimizationWindows = optimizationWindows;
+            return this;
+        }
+
+        /**
+         * @param optimizationWindows An object used to specify time windows during which certain optimization constraints can be eased.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder optimizationWindows(OceanLaunchSpecOptimizationWindowsArgs optimizationWindows) {
+            return optimizationWindows(Output.of(optimizationWindows));
         }
 
         /**

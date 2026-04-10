@@ -111,6 +111,10 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     declare public readonly oceanId: pulumi.Output<string>;
     /**
+     * An object used to specify time windows during which certain optimization constraints can be eased.
+     */
+    declare public readonly optimizationWindows: pulumi.Output<outputs.aws.OceanLaunchSpecOptimizationWindows | undefined>;
+    /**
      * A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
      */
     declare public readonly preferredOdTypes: pulumi.Output<string[] | undefined>;
@@ -199,6 +203,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             resourceInputs["loadBalancers"] = state?.loadBalancers;
             resourceInputs["name"] = state?.name;
             resourceInputs["oceanId"] = state?.oceanId;
+            resourceInputs["optimizationWindows"] = state?.optimizationWindows;
             resourceInputs["preferredOdTypes"] = state?.preferredOdTypes;
             resourceInputs["preferredSpotTypes"] = state?.preferredSpotTypes;
             resourceInputs["reservedEnis"] = state?.reservedEnis;
@@ -240,6 +245,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             resourceInputs["loadBalancers"] = args?.loadBalancers;
             resourceInputs["name"] = args?.name;
             resourceInputs["oceanId"] = args?.oceanId;
+            resourceInputs["optimizationWindows"] = args?.optimizationWindows;
             resourceInputs["preferredOdTypes"] = args?.preferredOdTypes;
             resourceInputs["preferredSpotTypes"] = args?.preferredSpotTypes;
             resourceInputs["reservedEnis"] = args?.reservedEnis;
@@ -339,6 +345,10 @@ export interface OceanLaunchSpecState {
      * The ID of the Ocean cluster.
      */
     oceanId?: pulumi.Input<string>;
+    /**
+     * An object used to specify time windows during which certain optimization constraints can be eased.
+     */
+    optimizationWindows?: pulumi.Input<inputs.aws.OceanLaunchSpecOptimizationWindows>;
     /**
      * A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
      */
@@ -473,6 +483,10 @@ export interface OceanLaunchSpecArgs {
      * The ID of the Ocean cluster.
      */
     oceanId: pulumi.Input<string>;
+    /**
+     * An object used to specify time windows during which certain optimization constraints can be eased.
+     */
+    optimizationWindows?: pulumi.Input<inputs.aws.OceanLaunchSpecOptimizationWindows>;
     /**
      * A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
      */

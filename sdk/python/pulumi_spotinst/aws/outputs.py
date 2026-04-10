@@ -163,6 +163,8 @@ __all__ = [
     'OceanLaunchSpecInstanceTypesFilters',
     'OceanLaunchSpecLabel',
     'OceanLaunchSpecLoadBalancer',
+    'OceanLaunchSpecOptimizationWindows',
+    'OceanLaunchSpecOptimizationWindowsWindow',
     'OceanLaunchSpecResourceLimit',
     'OceanLaunchSpecSchedulingShutdownHours',
     'OceanLaunchSpecSchedulingTask',
@@ -180,6 +182,8 @@ __all__ = [
     'OceanLoggingExportS3',
     'OceanResourceTagSpecification',
     'OceanScheduledTask',
+    'OceanScheduledTaskOptimizationWindows',
+    'OceanScheduledTaskOptimizationWindowsWindow',
     'OceanScheduledTaskShutdownHours',
     'OceanScheduledTaskTask',
     'OceanScheduledTaskTaskParameters',
@@ -10195,6 +10199,106 @@ class OceanLaunchSpecLoadBalancer(dict):
 
 
 @pulumi.output_type
+class OceanLaunchSpecOptimizationWindows(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isEnabled":
+            suggest = "is_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanLaunchSpecOptimizationWindows. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanLaunchSpecOptimizationWindows.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanLaunchSpecOptimizationWindows.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 is_enabled: _builtins.bool,
+                 windows: Optional[Sequence['outputs.OceanLaunchSpecOptimizationWindowsWindow']] = None):
+        """
+        :param _builtins.bool is_enabled: Used to enable or disable the optimization windows mechanism. Must be a boolean (null is invalid). When `true`, at least one window must be defined. When `false`, windows can be empty or omitted.
+        :param Sequence['OceanLaunchSpecOptimizationWindowsWindowArgs'] windows: The times when the optimization windows will apply. Required if `is_enabled` is `true`.
+        """
+        pulumi.set(__self__, "is_enabled", is_enabled)
+        if windows is not None:
+            pulumi.set(__self__, "windows", windows)
+
+    @_builtins.property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> _builtins.bool:
+        """
+        Used to enable or disable the optimization windows mechanism. Must be a boolean (null is invalid). When `true`, at least one window must be defined. When `false`, windows can be empty or omitted.
+        """
+        return pulumi.get(self, "is_enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def windows(self) -> Optional[Sequence['outputs.OceanLaunchSpecOptimizationWindowsWindow']]:
+        """
+        The times when the optimization windows will apply. Required if `is_enabled` is `true`.
+        """
+        return pulumi.get(self, "windows")
+
+
+@pulumi.output_type
+class OceanLaunchSpecOptimizationWindowsWindow(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cronExpression":
+            suggest = "cron_expression"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanLaunchSpecOptimizationWindowsWindow. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanLaunchSpecOptimizationWindowsWindow.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanLaunchSpecOptimizationWindowsWindow.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cron_expression: _builtins.str,
+                 duration: _builtins.str,
+                 effects: Sequence[_builtins.str]):
+        """
+        :param _builtins.str duration: The duration of the optimization window. Must be in the format where unit is `m` (minutes), `h` (hours), or `d` (days). Examples: `10m`, `5h`, `2d`.
+        :param Sequence[_builtins.str] effects: Items Enum: `ignorePdb` `ignoreRestrictScaleDown`. The list of effects that will be applied during this optimization window.
+        """
+        pulumi.set(__self__, "cron_expression", cron_expression)
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "effects", effects)
+
+    @_builtins.property
+    @pulumi.getter(name="cronExpression")
+    def cron_expression(self) -> _builtins.str:
+        return pulumi.get(self, "cron_expression")
+
+    @_builtins.property
+    @pulumi.getter
+    def duration(self) -> _builtins.str:
+        """
+        The duration of the optimization window. Must be in the format where unit is `m` (minutes), `h` (hours), or `d` (days). Examples: `10m`, `5h`, `2d`.
+        """
+        return pulumi.get(self, "duration")
+
+    @_builtins.property
+    @pulumi.getter
+    def effects(self) -> Sequence[_builtins.str]:
+        """
+        Items Enum: `ignorePdb` `ignoreRestrictScaleDown`. The list of effects that will be applied during this optimization window.
+        """
+        return pulumi.get(self, "effects")
+
+
+@pulumi.output_type
 class OceanLaunchSpecResourceLimit(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -10911,7 +11015,9 @@ class OceanScheduledTask(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "shutdownHours":
+        if key == "optimizationWindows":
+            suggest = "optimization_windows"
+        elif key == "shutdownHours":
             suggest = "shutdown_hours"
 
         if suggest:
@@ -10926,16 +11032,28 @@ class OceanScheduledTask(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 optimization_windows: Optional['outputs.OceanScheduledTaskOptimizationWindows'] = None,
                  shutdown_hours: Optional['outputs.OceanScheduledTaskShutdownHours'] = None,
                  tasks: Optional[Sequence['outputs.OceanScheduledTaskTask']] = None):
         """
+        :param 'OceanScheduledTaskOptimizationWindowsArgs' optimization_windows: An object used to specify time windows during which certain optimization constraints can be eased.
         :param 'OceanScheduledTaskShutdownHoursArgs' shutdown_hours: Set shutdown hours for cluster object.
         :param Sequence['OceanScheduledTaskTaskArgs'] tasks: The scheduling tasks for the cluster.
         """
+        if optimization_windows is not None:
+            pulumi.set(__self__, "optimization_windows", optimization_windows)
         if shutdown_hours is not None:
             pulumi.set(__self__, "shutdown_hours", shutdown_hours)
         if tasks is not None:
             pulumi.set(__self__, "tasks", tasks)
+
+    @_builtins.property
+    @pulumi.getter(name="optimizationWindows")
+    def optimization_windows(self) -> Optional['outputs.OceanScheduledTaskOptimizationWindows']:
+        """
+        An object used to specify time windows during which certain optimization constraints can be eased.
+        """
+        return pulumi.get(self, "optimization_windows")
 
     @_builtins.property
     @pulumi.getter(name="shutdownHours")
@@ -10952,6 +11070,110 @@ class OceanScheduledTask(dict):
         The scheduling tasks for the cluster.
         """
         return pulumi.get(self, "tasks")
+
+
+@pulumi.output_type
+class OceanScheduledTaskOptimizationWindows(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isEnabled":
+            suggest = "is_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanScheduledTaskOptimizationWindows. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanScheduledTaskOptimizationWindows.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanScheduledTaskOptimizationWindows.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 is_enabled: _builtins.bool,
+                 windows: Optional[Sequence['outputs.OceanScheduledTaskOptimizationWindowsWindow']] = None):
+        """
+        :param _builtins.bool is_enabled: Used to enable or disable the optimization windows mechanism. Must be a boolean (null is invalid). When `true`, at least one window must be defined. When `false`, windows can be empty or omitted.
+        :param Sequence['OceanScheduledTaskOptimizationWindowsWindowArgs'] windows: The times when the optimization windows will apply. Required if `is_enabled` is `true`.
+        """
+        pulumi.set(__self__, "is_enabled", is_enabled)
+        if windows is not None:
+            pulumi.set(__self__, "windows", windows)
+
+    @_builtins.property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> _builtins.bool:
+        """
+        Used to enable or disable the optimization windows mechanism. Must be a boolean (null is invalid). When `true`, at least one window must be defined. When `false`, windows can be empty or omitted.
+        """
+        return pulumi.get(self, "is_enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def windows(self) -> Optional[Sequence['outputs.OceanScheduledTaskOptimizationWindowsWindow']]:
+        """
+        The times when the optimization windows will apply. Required if `is_enabled` is `true`.
+        """
+        return pulumi.get(self, "windows")
+
+
+@pulumi.output_type
+class OceanScheduledTaskOptimizationWindowsWindow(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cronExpression":
+            suggest = "cron_expression"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanScheduledTaskOptimizationWindowsWindow. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanScheduledTaskOptimizationWindowsWindow.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanScheduledTaskOptimizationWindowsWindow.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cron_expression: _builtins.str,
+                 duration: _builtins.str,
+                 effects: Sequence[_builtins.str]):
+        """
+        :param _builtins.str cron_expression: A valid cron expression defining when the optimization window starts. For example: `0 0 * * *` (daily at midnight). The cron job runs in UTC time and follows Unix cron format.
+        :param _builtins.str duration: The duration of the optimization window. Must be in the format where unit is `m` (minutes), `h` (hours), or `d` (days). Examples: `10m`, `5h`, `2d`.
+        :param Sequence[_builtins.str] effects: Items Enum: `ignorePdb` `ignoreRestrictScaleDown`. The list of effects that will be applied during this optimization window.
+        """
+        pulumi.set(__self__, "cron_expression", cron_expression)
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "effects", effects)
+
+    @_builtins.property
+    @pulumi.getter(name="cronExpression")
+    def cron_expression(self) -> _builtins.str:
+        """
+        A valid cron expression defining when the optimization window starts. For example: `0 0 * * *` (daily at midnight). The cron job runs in UTC time and follows Unix cron format.
+        """
+        return pulumi.get(self, "cron_expression")
+
+    @_builtins.property
+    @pulumi.getter
+    def duration(self) -> _builtins.str:
+        """
+        The duration of the optimization window. Must be in the format where unit is `m` (minutes), `h` (hours), or `d` (days). Examples: `10m`, `5h`, `2d`.
+        """
+        return pulumi.get(self, "duration")
+
+    @_builtins.property
+    @pulumi.getter
+    def effects(self) -> Sequence[_builtins.str]:
+        """
+        Items Enum: `ignorePdb` `ignoreRestrictScaleDown`. The list of effects that will be applied during this optimization window.
+        """
+        return pulumi.get(self, "effects")
 
 
 @pulumi.output_type

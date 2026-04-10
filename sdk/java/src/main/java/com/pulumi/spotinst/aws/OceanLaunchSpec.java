@@ -24,6 +24,7 @@ import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecInstanceStorePolicy;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecInstanceTypesFilters;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecLabel;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecLoadBalancer;
+import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecOptimizationWindows;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecResourceLimit;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecSchedulingShutdownHours;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecSchedulingTask;
@@ -304,6 +305,20 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
      */
     public Output<String> oceanId() {
         return this.oceanId;
+    }
+    /**
+     * An object used to specify time windows during which certain optimization constraints can be eased.
+     * 
+     */
+    @Export(name="optimizationWindows", refs={OceanLaunchSpecOptimizationWindows.class}, tree="[0]")
+    private Output</* @Nullable */ OceanLaunchSpecOptimizationWindows> optimizationWindows;
+
+    /**
+     * @return An object used to specify time windows during which certain optimization constraints can be eased.
+     * 
+     */
+    public Output<Optional<OceanLaunchSpecOptimizationWindows>> optimizationWindows() {
+        return Codegen.optional(this.optimizationWindows);
     }
     /**
      * A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.

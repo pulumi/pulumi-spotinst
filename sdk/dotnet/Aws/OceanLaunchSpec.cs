@@ -129,6 +129,12 @@ namespace Pulumi.SpotInst.Aws
         public Output<string> OceanId { get; private set; } = null!;
 
         /// <summary>
+        /// An object used to specify time windows during which certain optimization constraints can be eased.
+        /// </summary>
+        [Output("optimizationWindows")]
+        public Output<Outputs.OceanLaunchSpecOptimizationWindows?> OptimizationWindows { get; private set; } = null!;
+
+        /// <summary>
         /// A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
         /// </summary>
         [Output("preferredOdTypes")]
@@ -432,6 +438,12 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("oceanId", required: true)]
         public Input<string> OceanId { get; set; } = null!;
+
+        /// <summary>
+        /// An object used to specify time windows during which certain optimization constraints can be eased.
+        /// </summary>
+        [Input("optimizationWindows")]
+        public Input<Inputs.OceanLaunchSpecOptimizationWindowsArgs>? OptimizationWindows { get; set; }
 
         [Input("preferredOdTypes")]
         private InputList<string>? _preferredOdTypes;
@@ -757,6 +769,12 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("oceanId")]
         public Input<string>? OceanId { get; set; }
+
+        /// <summary>
+        /// An object used to specify time windows during which certain optimization constraints can be eased.
+        /// </summary>
+        [Input("optimizationWindows")]
+        public Input<Inputs.OceanLaunchSpecOptimizationWindowsGetArgs>? OptimizationWindows { get; set; }
 
         [Input("preferredOdTypes")]
         private InputList<string>? _preferredOdTypes;
