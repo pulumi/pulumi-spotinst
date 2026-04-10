@@ -3099,6 +3099,29 @@ export namespace aws {
         type: pulumi.Input<string>;
     }
 
+    export interface OceanLaunchSpecOptimizationWindows {
+        /**
+         * Used to enable or disable the optimization windows mechanism. Must be a boolean (null is invalid). When `true`, at least one window must be defined. When `false`, windows can be empty or omitted.
+         */
+        isEnabled: pulumi.Input<boolean>;
+        /**
+         * The times when the optimization windows will apply. Required if `isEnabled` is `true`.
+         */
+        windows?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecOptimizationWindowsWindow>[]>;
+    }
+
+    export interface OceanLaunchSpecOptimizationWindowsWindow {
+        cronExpression: pulumi.Input<string>;
+        /**
+         * The duration of the optimization window. Must be in the format where unit is `m` (minutes), `h` (hours), or `d` (days). Examples: `10m`, `5h`, `2d`.
+         */
+        duration: pulumi.Input<string>;
+        /**
+         * Items Enum: `ignorePdb` `ignoreRestrictScaleDown`. The list of effects that will be applied during this optimization window.
+         */
+        effects: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface OceanLaunchSpecResourceLimit {
         /**
          * Set a maximum number of instances per Virtual Node Group. Can be null. If set, value must be greater than or equal to 0.
@@ -3291,6 +3314,10 @@ export namespace aws {
 
     export interface OceanScheduledTask {
         /**
+         * An object used to specify time windows during which certain optimization constraints can be eased.
+         */
+        optimizationWindows?: pulumi.Input<inputs.aws.OceanScheduledTaskOptimizationWindows>;
+        /**
          * Set shutdown hours for cluster object.
          */
         shutdownHours?: pulumi.Input<inputs.aws.OceanScheduledTaskShutdownHours>;
@@ -3298,6 +3325,32 @@ export namespace aws {
          * The scheduling tasks for the cluster.
          */
         tasks?: pulumi.Input<pulumi.Input<inputs.aws.OceanScheduledTaskTask>[]>;
+    }
+
+    export interface OceanScheduledTaskOptimizationWindows {
+        /**
+         * Used to enable or disable the optimization windows mechanism. Must be a boolean (null is invalid). When `true`, at least one window must be defined. When `false`, windows can be empty or omitted.
+         */
+        isEnabled: pulumi.Input<boolean>;
+        /**
+         * The times when the optimization windows will apply. Required if `isEnabled` is `true`.
+         */
+        windows?: pulumi.Input<pulumi.Input<inputs.aws.OceanScheduledTaskOptimizationWindowsWindow>[]>;
+    }
+
+    export interface OceanScheduledTaskOptimizationWindowsWindow {
+        /**
+         * A valid cron expression defining when the optimization window starts. For example: `0 0 * * *` (daily at midnight). The cron job runs in UTC time and follows Unix cron format.
+         */
+        cronExpression: pulumi.Input<string>;
+        /**
+         * The duration of the optimization window. Must be in the format where unit is `m` (minutes), `h` (hours), or `d` (days). Examples: `10m`, `5h`, `2d`.
+         */
+        duration: pulumi.Input<string>;
+        /**
+         * Items Enum: `ignorePdb` `ignoreRestrictScaleDown`. The list of effects that will be applied during this optimization window.
+         */
+        effects: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface OceanScheduledTaskShutdownHours {

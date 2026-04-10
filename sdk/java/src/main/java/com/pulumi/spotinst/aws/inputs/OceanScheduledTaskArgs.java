@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.spotinst.aws.inputs.OceanScheduledTaskOptimizationWindowsArgs;
 import com.pulumi.spotinst.aws.inputs.OceanScheduledTaskShutdownHoursArgs;
 import com.pulumi.spotinst.aws.inputs.OceanScheduledTaskTaskArgs;
 import java.util.List;
@@ -16,6 +17,21 @@ import javax.annotation.Nullable;
 public final class OceanScheduledTaskArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final OceanScheduledTaskArgs Empty = new OceanScheduledTaskArgs();
+
+    /**
+     * An object used to specify time windows during which certain optimization constraints can be eased.
+     * 
+     */
+    @Import(name="optimizationWindows")
+    private @Nullable Output<OceanScheduledTaskOptimizationWindowsArgs> optimizationWindows;
+
+    /**
+     * @return An object used to specify time windows during which certain optimization constraints can be eased.
+     * 
+     */
+    public Optional<Output<OceanScheduledTaskOptimizationWindowsArgs>> optimizationWindows() {
+        return Optional.ofNullable(this.optimizationWindows);
+    }
 
     /**
      * Set shutdown hours for cluster object.
@@ -50,6 +66,7 @@ public final class OceanScheduledTaskArgs extends com.pulumi.resources.ResourceA
     private OceanScheduledTaskArgs() {}
 
     private OceanScheduledTaskArgs(OceanScheduledTaskArgs $) {
+        this.optimizationWindows = $.optimizationWindows;
         this.shutdownHours = $.shutdownHours;
         this.tasks = $.tasks;
     }
@@ -70,6 +87,27 @@ public final class OceanScheduledTaskArgs extends com.pulumi.resources.ResourceA
 
         public Builder(OceanScheduledTaskArgs defaults) {
             $ = new OceanScheduledTaskArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param optimizationWindows An object used to specify time windows during which certain optimization constraints can be eased.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder optimizationWindows(@Nullable Output<OceanScheduledTaskOptimizationWindowsArgs> optimizationWindows) {
+            $.optimizationWindows = optimizationWindows;
+            return this;
+        }
+
+        /**
+         * @param optimizationWindows An object used to specify time windows during which certain optimization constraints can be eased.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder optimizationWindows(OceanScheduledTaskOptimizationWindowsArgs optimizationWindows) {
+            return optimizationWindows(Output.of(optimizationWindows));
         }
 
         /**

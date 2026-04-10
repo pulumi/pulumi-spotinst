@@ -13,6 +13,12 @@ namespace Pulumi.SpotInst.Aws.Inputs
     public sealed class OceanScheduledTaskGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// An object used to specify time windows during which certain optimization constraints can be eased.
+        /// </summary>
+        [Input("optimizationWindows")]
+        public Input<Inputs.OceanScheduledTaskOptimizationWindowsGetArgs>? OptimizationWindows { get; set; }
+
+        /// <summary>
         /// Set shutdown hours for cluster object.
         /// </summary>
         [Input("shutdownHours")]

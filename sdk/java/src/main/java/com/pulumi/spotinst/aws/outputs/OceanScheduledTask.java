@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.spotinst.aws.outputs.OceanScheduledTaskOptimizationWindows;
 import com.pulumi.spotinst.aws.outputs.OceanScheduledTaskShutdownHours;
 import com.pulumi.spotinst.aws.outputs.OceanScheduledTaskTask;
 import java.util.List;
@@ -13,6 +14,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanScheduledTask {
+    /**
+     * @return An object used to specify time windows during which certain optimization constraints can be eased.
+     * 
+     */
+    private @Nullable OceanScheduledTaskOptimizationWindows optimizationWindows;
     /**
      * @return Set shutdown hours for cluster object.
      * 
@@ -25,6 +31,13 @@ public final class OceanScheduledTask {
     private @Nullable List<OceanScheduledTaskTask> tasks;
 
     private OceanScheduledTask() {}
+    /**
+     * @return An object used to specify time windows during which certain optimization constraints can be eased.
+     * 
+     */
+    public Optional<OceanScheduledTaskOptimizationWindows> optimizationWindows() {
+        return Optional.ofNullable(this.optimizationWindows);
+    }
     /**
      * @return Set shutdown hours for cluster object.
      * 
@@ -49,15 +62,23 @@ public final class OceanScheduledTask {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable OceanScheduledTaskOptimizationWindows optimizationWindows;
         private @Nullable OceanScheduledTaskShutdownHours shutdownHours;
         private @Nullable List<OceanScheduledTaskTask> tasks;
         public Builder() {}
         public Builder(OceanScheduledTask defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.optimizationWindows = defaults.optimizationWindows;
     	      this.shutdownHours = defaults.shutdownHours;
     	      this.tasks = defaults.tasks;
         }
 
+        @CustomType.Setter
+        public Builder optimizationWindows(@Nullable OceanScheduledTaskOptimizationWindows optimizationWindows) {
+
+            this.optimizationWindows = optimizationWindows;
+            return this;
+        }
         @CustomType.Setter
         public Builder shutdownHours(@Nullable OceanScheduledTaskShutdownHours shutdownHours) {
 
@@ -75,6 +96,7 @@ public final class OceanScheduledTask {
         }
         public OceanScheduledTask build() {
             final var _resultValue = new OceanScheduledTask();
+            _resultValue.optimizationWindows = optimizationWindows;
             _resultValue.shutdownHours = shutdownHours;
             _resultValue.tasks = tasks;
             return _resultValue;

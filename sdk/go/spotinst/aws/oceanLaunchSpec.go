@@ -55,6 +55,8 @@ type OceanLaunchSpec struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the Ocean cluster.
 	OceanId pulumi.StringOutput `pulumi:"oceanId"`
+	// An object used to specify time windows during which certain optimization constraints can be eased.
+	OptimizationWindows OceanLaunchSpecOptimizationWindowsPtrOutput `pulumi:"optimizationWindows"`
 	// A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
 	PreferredOdTypes pulumi.StringArrayOutput `pulumi:"preferredOdTypes"`
 	// A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
@@ -158,6 +160,8 @@ type oceanLaunchSpecState struct {
 	Name *string `pulumi:"name"`
 	// The ID of the Ocean cluster.
 	OceanId *string `pulumi:"oceanId"`
+	// An object used to specify time windows during which certain optimization constraints can be eased.
+	OptimizationWindows *OceanLaunchSpecOptimizationWindows `pulumi:"optimizationWindows"`
 	// A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
 	PreferredOdTypes []string `pulumi:"preferredOdTypes"`
 	// A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
@@ -229,6 +233,8 @@ type OceanLaunchSpecState struct {
 	Name pulumi.StringPtrInput
 	// The ID of the Ocean cluster.
 	OceanId pulumi.StringPtrInput
+	// An object used to specify time windows during which certain optimization constraints can be eased.
+	OptimizationWindows OceanLaunchSpecOptimizationWindowsPtrInput
 	// A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
 	PreferredOdTypes pulumi.StringArrayInput
 	// A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
@@ -304,6 +310,8 @@ type oceanLaunchSpecArgs struct {
 	Name *string `pulumi:"name"`
 	// The ID of the Ocean cluster.
 	OceanId string `pulumi:"oceanId"`
+	// An object used to specify time windows during which certain optimization constraints can be eased.
+	OptimizationWindows *OceanLaunchSpecOptimizationWindows `pulumi:"optimizationWindows"`
 	// A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
 	PreferredOdTypes []string `pulumi:"preferredOdTypes"`
 	// A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
@@ -376,6 +384,8 @@ type OceanLaunchSpecArgs struct {
 	Name pulumi.StringPtrInput
 	// The ID of the Ocean cluster.
 	OceanId pulumi.StringInput
+	// An object used to specify time windows during which certain optimization constraints can be eased.
+	OptimizationWindows OceanLaunchSpecOptimizationWindowsPtrInput
 	// A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
 	PreferredOdTypes pulumi.StringArrayInput
 	// A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
@@ -595,6 +605,11 @@ func (o OceanLaunchSpecOutput) Name() pulumi.StringOutput {
 // The ID of the Ocean cluster.
 func (o OceanLaunchSpecOutput) OceanId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.StringOutput { return v.OceanId }).(pulumi.StringOutput)
+}
+
+// An object used to specify time windows during which certain optimization constraints can be eased.
+func (o OceanLaunchSpecOutput) OptimizationWindows() OceanLaunchSpecOptimizationWindowsPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecOptimizationWindowsPtrOutput { return v.OptimizationWindows }).(OceanLaunchSpecOptimizationWindowsPtrOutput)
 }
 
 // A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.

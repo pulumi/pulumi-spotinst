@@ -22414,6 +22414,276 @@ func (o OceanLaunchSpecLoadBalancerArrayOutput) Index(i pulumi.IntInput) OceanLa
 	}).(OceanLaunchSpecLoadBalancerOutput)
 }
 
+type OceanLaunchSpecOptimizationWindows struct {
+	// Used to enable or disable the optimization windows mechanism. Must be a boolean (null is invalid). When `true`, at least one window must be defined. When `false`, windows can be empty or omitted.
+	IsEnabled bool `pulumi:"isEnabled"`
+	// The times when the optimization windows will apply. Required if `isEnabled` is `true`.
+	Windows []OceanLaunchSpecOptimizationWindowsWindow `pulumi:"windows"`
+}
+
+// OceanLaunchSpecOptimizationWindowsInput is an input type that accepts OceanLaunchSpecOptimizationWindowsArgs and OceanLaunchSpecOptimizationWindowsOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecOptimizationWindowsInput` via:
+//
+//	OceanLaunchSpecOptimizationWindowsArgs{...}
+type OceanLaunchSpecOptimizationWindowsInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecOptimizationWindowsOutput() OceanLaunchSpecOptimizationWindowsOutput
+	ToOceanLaunchSpecOptimizationWindowsOutputWithContext(context.Context) OceanLaunchSpecOptimizationWindowsOutput
+}
+
+type OceanLaunchSpecOptimizationWindowsArgs struct {
+	// Used to enable or disable the optimization windows mechanism. Must be a boolean (null is invalid). When `true`, at least one window must be defined. When `false`, windows can be empty or omitted.
+	IsEnabled pulumi.BoolInput `pulumi:"isEnabled"`
+	// The times when the optimization windows will apply. Required if `isEnabled` is `true`.
+	Windows OceanLaunchSpecOptimizationWindowsWindowArrayInput `pulumi:"windows"`
+}
+
+func (OceanLaunchSpecOptimizationWindowsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecOptimizationWindows)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecOptimizationWindowsArgs) ToOceanLaunchSpecOptimizationWindowsOutput() OceanLaunchSpecOptimizationWindowsOutput {
+	return i.ToOceanLaunchSpecOptimizationWindowsOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecOptimizationWindowsArgs) ToOceanLaunchSpecOptimizationWindowsOutputWithContext(ctx context.Context) OceanLaunchSpecOptimizationWindowsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecOptimizationWindowsOutput)
+}
+
+func (i OceanLaunchSpecOptimizationWindowsArgs) ToOceanLaunchSpecOptimizationWindowsPtrOutput() OceanLaunchSpecOptimizationWindowsPtrOutput {
+	return i.ToOceanLaunchSpecOptimizationWindowsPtrOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecOptimizationWindowsArgs) ToOceanLaunchSpecOptimizationWindowsPtrOutputWithContext(ctx context.Context) OceanLaunchSpecOptimizationWindowsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecOptimizationWindowsOutput).ToOceanLaunchSpecOptimizationWindowsPtrOutputWithContext(ctx)
+}
+
+// OceanLaunchSpecOptimizationWindowsPtrInput is an input type that accepts OceanLaunchSpecOptimizationWindowsArgs, OceanLaunchSpecOptimizationWindowsPtr and OceanLaunchSpecOptimizationWindowsPtrOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecOptimizationWindowsPtrInput` via:
+//
+//	        OceanLaunchSpecOptimizationWindowsArgs{...}
+//
+//	or:
+//
+//	        nil
+type OceanLaunchSpecOptimizationWindowsPtrInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecOptimizationWindowsPtrOutput() OceanLaunchSpecOptimizationWindowsPtrOutput
+	ToOceanLaunchSpecOptimizationWindowsPtrOutputWithContext(context.Context) OceanLaunchSpecOptimizationWindowsPtrOutput
+}
+
+type oceanLaunchSpecOptimizationWindowsPtrType OceanLaunchSpecOptimizationWindowsArgs
+
+func OceanLaunchSpecOptimizationWindowsPtr(v *OceanLaunchSpecOptimizationWindowsArgs) OceanLaunchSpecOptimizationWindowsPtrInput {
+	return (*oceanLaunchSpecOptimizationWindowsPtrType)(v)
+}
+
+func (*oceanLaunchSpecOptimizationWindowsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLaunchSpecOptimizationWindows)(nil)).Elem()
+}
+
+func (i *oceanLaunchSpecOptimizationWindowsPtrType) ToOceanLaunchSpecOptimizationWindowsPtrOutput() OceanLaunchSpecOptimizationWindowsPtrOutput {
+	return i.ToOceanLaunchSpecOptimizationWindowsPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanLaunchSpecOptimizationWindowsPtrType) ToOceanLaunchSpecOptimizationWindowsPtrOutputWithContext(ctx context.Context) OceanLaunchSpecOptimizationWindowsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecOptimizationWindowsPtrOutput)
+}
+
+type OceanLaunchSpecOptimizationWindowsOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecOptimizationWindowsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecOptimizationWindows)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecOptimizationWindowsOutput) ToOceanLaunchSpecOptimizationWindowsOutput() OceanLaunchSpecOptimizationWindowsOutput {
+	return o
+}
+
+func (o OceanLaunchSpecOptimizationWindowsOutput) ToOceanLaunchSpecOptimizationWindowsOutputWithContext(ctx context.Context) OceanLaunchSpecOptimizationWindowsOutput {
+	return o
+}
+
+func (o OceanLaunchSpecOptimizationWindowsOutput) ToOceanLaunchSpecOptimizationWindowsPtrOutput() OceanLaunchSpecOptimizationWindowsPtrOutput {
+	return o.ToOceanLaunchSpecOptimizationWindowsPtrOutputWithContext(context.Background())
+}
+
+func (o OceanLaunchSpecOptimizationWindowsOutput) ToOceanLaunchSpecOptimizationWindowsPtrOutputWithContext(ctx context.Context) OceanLaunchSpecOptimizationWindowsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanLaunchSpecOptimizationWindows) *OceanLaunchSpecOptimizationWindows {
+		return &v
+	}).(OceanLaunchSpecOptimizationWindowsPtrOutput)
+}
+
+// Used to enable or disable the optimization windows mechanism. Must be a boolean (null is invalid). When `true`, at least one window must be defined. When `false`, windows can be empty or omitted.
+func (o OceanLaunchSpecOptimizationWindowsOutput) IsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v OceanLaunchSpecOptimizationWindows) bool { return v.IsEnabled }).(pulumi.BoolOutput)
+}
+
+// The times when the optimization windows will apply. Required if `isEnabled` is `true`.
+func (o OceanLaunchSpecOptimizationWindowsOutput) Windows() OceanLaunchSpecOptimizationWindowsWindowArrayOutput {
+	return o.ApplyT(func(v OceanLaunchSpecOptimizationWindows) []OceanLaunchSpecOptimizationWindowsWindow {
+		return v.Windows
+	}).(OceanLaunchSpecOptimizationWindowsWindowArrayOutput)
+}
+
+type OceanLaunchSpecOptimizationWindowsPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecOptimizationWindowsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLaunchSpecOptimizationWindows)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecOptimizationWindowsPtrOutput) ToOceanLaunchSpecOptimizationWindowsPtrOutput() OceanLaunchSpecOptimizationWindowsPtrOutput {
+	return o
+}
+
+func (o OceanLaunchSpecOptimizationWindowsPtrOutput) ToOceanLaunchSpecOptimizationWindowsPtrOutputWithContext(ctx context.Context) OceanLaunchSpecOptimizationWindowsPtrOutput {
+	return o
+}
+
+func (o OceanLaunchSpecOptimizationWindowsPtrOutput) Elem() OceanLaunchSpecOptimizationWindowsOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecOptimizationWindows) OceanLaunchSpecOptimizationWindows {
+		if v != nil {
+			return *v
+		}
+		var ret OceanLaunchSpecOptimizationWindows
+		return ret
+	}).(OceanLaunchSpecOptimizationWindowsOutput)
+}
+
+// Used to enable or disable the optimization windows mechanism. Must be a boolean (null is invalid). When `true`, at least one window must be defined. When `false`, windows can be empty or omitted.
+func (o OceanLaunchSpecOptimizationWindowsPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecOptimizationWindows) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.IsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The times when the optimization windows will apply. Required if `isEnabled` is `true`.
+func (o OceanLaunchSpecOptimizationWindowsPtrOutput) Windows() OceanLaunchSpecOptimizationWindowsWindowArrayOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecOptimizationWindows) []OceanLaunchSpecOptimizationWindowsWindow {
+		if v == nil {
+			return nil
+		}
+		return v.Windows
+	}).(OceanLaunchSpecOptimizationWindowsWindowArrayOutput)
+}
+
+type OceanLaunchSpecOptimizationWindowsWindow struct {
+	CronExpression string `pulumi:"cronExpression"`
+	// The duration of the optimization window. Must be in the format where unit is `m` (minutes), `h` (hours), or `d` (days). Examples: `10m`, `5h`, `2d`.
+	Duration string `pulumi:"duration"`
+	// Items Enum: `ignorePdb` `ignoreRestrictScaleDown`. The list of effects that will be applied during this optimization window.
+	Effects []string `pulumi:"effects"`
+}
+
+// OceanLaunchSpecOptimizationWindowsWindowInput is an input type that accepts OceanLaunchSpecOptimizationWindowsWindowArgs and OceanLaunchSpecOptimizationWindowsWindowOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecOptimizationWindowsWindowInput` via:
+//
+//	OceanLaunchSpecOptimizationWindowsWindowArgs{...}
+type OceanLaunchSpecOptimizationWindowsWindowInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecOptimizationWindowsWindowOutput() OceanLaunchSpecOptimizationWindowsWindowOutput
+	ToOceanLaunchSpecOptimizationWindowsWindowOutputWithContext(context.Context) OceanLaunchSpecOptimizationWindowsWindowOutput
+}
+
+type OceanLaunchSpecOptimizationWindowsWindowArgs struct {
+	CronExpression pulumi.StringInput `pulumi:"cronExpression"`
+	// The duration of the optimization window. Must be in the format where unit is `m` (minutes), `h` (hours), or `d` (days). Examples: `10m`, `5h`, `2d`.
+	Duration pulumi.StringInput `pulumi:"duration"`
+	// Items Enum: `ignorePdb` `ignoreRestrictScaleDown`. The list of effects that will be applied during this optimization window.
+	Effects pulumi.StringArrayInput `pulumi:"effects"`
+}
+
+func (OceanLaunchSpecOptimizationWindowsWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecOptimizationWindowsWindow)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecOptimizationWindowsWindowArgs) ToOceanLaunchSpecOptimizationWindowsWindowOutput() OceanLaunchSpecOptimizationWindowsWindowOutput {
+	return i.ToOceanLaunchSpecOptimizationWindowsWindowOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecOptimizationWindowsWindowArgs) ToOceanLaunchSpecOptimizationWindowsWindowOutputWithContext(ctx context.Context) OceanLaunchSpecOptimizationWindowsWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecOptimizationWindowsWindowOutput)
+}
+
+// OceanLaunchSpecOptimizationWindowsWindowArrayInput is an input type that accepts OceanLaunchSpecOptimizationWindowsWindowArray and OceanLaunchSpecOptimizationWindowsWindowArrayOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecOptimizationWindowsWindowArrayInput` via:
+//
+//	OceanLaunchSpecOptimizationWindowsWindowArray{ OceanLaunchSpecOptimizationWindowsWindowArgs{...} }
+type OceanLaunchSpecOptimizationWindowsWindowArrayInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecOptimizationWindowsWindowArrayOutput() OceanLaunchSpecOptimizationWindowsWindowArrayOutput
+	ToOceanLaunchSpecOptimizationWindowsWindowArrayOutputWithContext(context.Context) OceanLaunchSpecOptimizationWindowsWindowArrayOutput
+}
+
+type OceanLaunchSpecOptimizationWindowsWindowArray []OceanLaunchSpecOptimizationWindowsWindowInput
+
+func (OceanLaunchSpecOptimizationWindowsWindowArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanLaunchSpecOptimizationWindowsWindow)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecOptimizationWindowsWindowArray) ToOceanLaunchSpecOptimizationWindowsWindowArrayOutput() OceanLaunchSpecOptimizationWindowsWindowArrayOutput {
+	return i.ToOceanLaunchSpecOptimizationWindowsWindowArrayOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecOptimizationWindowsWindowArray) ToOceanLaunchSpecOptimizationWindowsWindowArrayOutputWithContext(ctx context.Context) OceanLaunchSpecOptimizationWindowsWindowArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecOptimizationWindowsWindowArrayOutput)
+}
+
+type OceanLaunchSpecOptimizationWindowsWindowOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecOptimizationWindowsWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecOptimizationWindowsWindow)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecOptimizationWindowsWindowOutput) ToOceanLaunchSpecOptimizationWindowsWindowOutput() OceanLaunchSpecOptimizationWindowsWindowOutput {
+	return o
+}
+
+func (o OceanLaunchSpecOptimizationWindowsWindowOutput) ToOceanLaunchSpecOptimizationWindowsWindowOutputWithContext(ctx context.Context) OceanLaunchSpecOptimizationWindowsWindowOutput {
+	return o
+}
+
+func (o OceanLaunchSpecOptimizationWindowsWindowOutput) CronExpression() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanLaunchSpecOptimizationWindowsWindow) string { return v.CronExpression }).(pulumi.StringOutput)
+}
+
+// The duration of the optimization window. Must be in the format where unit is `m` (minutes), `h` (hours), or `d` (days). Examples: `10m`, `5h`, `2d`.
+func (o OceanLaunchSpecOptimizationWindowsWindowOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanLaunchSpecOptimizationWindowsWindow) string { return v.Duration }).(pulumi.StringOutput)
+}
+
+// Items Enum: `ignorePdb` `ignoreRestrictScaleDown`. The list of effects that will be applied during this optimization window.
+func (o OceanLaunchSpecOptimizationWindowsWindowOutput) Effects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanLaunchSpecOptimizationWindowsWindow) []string { return v.Effects }).(pulumi.StringArrayOutput)
+}
+
+type OceanLaunchSpecOptimizationWindowsWindowArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecOptimizationWindowsWindowArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanLaunchSpecOptimizationWindowsWindow)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecOptimizationWindowsWindowArrayOutput) ToOceanLaunchSpecOptimizationWindowsWindowArrayOutput() OceanLaunchSpecOptimizationWindowsWindowArrayOutput {
+	return o
+}
+
+func (o OceanLaunchSpecOptimizationWindowsWindowArrayOutput) ToOceanLaunchSpecOptimizationWindowsWindowArrayOutputWithContext(ctx context.Context) OceanLaunchSpecOptimizationWindowsWindowArrayOutput {
+	return o
+}
+
+func (o OceanLaunchSpecOptimizationWindowsWindowArrayOutput) Index(i pulumi.IntInput) OceanLaunchSpecOptimizationWindowsWindowOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanLaunchSpecOptimizationWindowsWindow {
+		return vs[0].([]OceanLaunchSpecOptimizationWindowsWindow)[vs[1].(int)]
+	}).(OceanLaunchSpecOptimizationWindowsWindowOutput)
+}
+
 type OceanLaunchSpecResourceLimit struct {
 	// Set a maximum number of instances per Virtual Node Group. Can be null. If set, value must be greater than or equal to 0.
 	MaxInstanceCount *int `pulumi:"maxInstanceCount"`
@@ -24422,6 +24692,8 @@ func (o OceanResourceTagSpecificationArrayOutput) Index(i pulumi.IntInput) Ocean
 }
 
 type OceanScheduledTask struct {
+	// An object used to specify time windows during which certain optimization constraints can be eased.
+	OptimizationWindows *OceanScheduledTaskOptimizationWindows `pulumi:"optimizationWindows"`
 	// Set shutdown hours for cluster object.
 	ShutdownHours *OceanScheduledTaskShutdownHours `pulumi:"shutdownHours"`
 	// The scheduling tasks for the cluster.
@@ -24440,6 +24712,8 @@ type OceanScheduledTaskInput interface {
 }
 
 type OceanScheduledTaskArgs struct {
+	// An object used to specify time windows during which certain optimization constraints can be eased.
+	OptimizationWindows OceanScheduledTaskOptimizationWindowsPtrInput `pulumi:"optimizationWindows"`
 	// Set shutdown hours for cluster object.
 	ShutdownHours OceanScheduledTaskShutdownHoursPtrInput `pulumi:"shutdownHours"`
 	// The scheduling tasks for the cluster.
@@ -24497,6 +24771,11 @@ func (o OceanScheduledTaskOutput) ToOceanScheduledTaskOutputWithContext(ctx cont
 	return o
 }
 
+// An object used to specify time windows during which certain optimization constraints can be eased.
+func (o OceanScheduledTaskOutput) OptimizationWindows() OceanScheduledTaskOptimizationWindowsPtrOutput {
+	return o.ApplyT(func(v OceanScheduledTask) *OceanScheduledTaskOptimizationWindows { return v.OptimizationWindows }).(OceanScheduledTaskOptimizationWindowsPtrOutput)
+}
+
 // Set shutdown hours for cluster object.
 func (o OceanScheduledTaskOutput) ShutdownHours() OceanScheduledTaskShutdownHoursPtrOutput {
 	return o.ApplyT(func(v OceanScheduledTask) *OceanScheduledTaskShutdownHours { return v.ShutdownHours }).(OceanScheduledTaskShutdownHoursPtrOutput)
@@ -24525,6 +24804,279 @@ func (o OceanScheduledTaskArrayOutput) Index(i pulumi.IntInput) OceanScheduledTa
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanScheduledTask {
 		return vs[0].([]OceanScheduledTask)[vs[1].(int)]
 	}).(OceanScheduledTaskOutput)
+}
+
+type OceanScheduledTaskOptimizationWindows struct {
+	// Used to enable or disable the optimization windows mechanism. Must be a boolean (null is invalid). When `true`, at least one window must be defined. When `false`, windows can be empty or omitted.
+	IsEnabled bool `pulumi:"isEnabled"`
+	// The times when the optimization windows will apply. Required if `isEnabled` is `true`.
+	Windows []OceanScheduledTaskOptimizationWindowsWindow `pulumi:"windows"`
+}
+
+// OceanScheduledTaskOptimizationWindowsInput is an input type that accepts OceanScheduledTaskOptimizationWindowsArgs and OceanScheduledTaskOptimizationWindowsOutput values.
+// You can construct a concrete instance of `OceanScheduledTaskOptimizationWindowsInput` via:
+//
+//	OceanScheduledTaskOptimizationWindowsArgs{...}
+type OceanScheduledTaskOptimizationWindowsInput interface {
+	pulumi.Input
+
+	ToOceanScheduledTaskOptimizationWindowsOutput() OceanScheduledTaskOptimizationWindowsOutput
+	ToOceanScheduledTaskOptimizationWindowsOutputWithContext(context.Context) OceanScheduledTaskOptimizationWindowsOutput
+}
+
+type OceanScheduledTaskOptimizationWindowsArgs struct {
+	// Used to enable or disable the optimization windows mechanism. Must be a boolean (null is invalid). When `true`, at least one window must be defined. When `false`, windows can be empty or omitted.
+	IsEnabled pulumi.BoolInput `pulumi:"isEnabled"`
+	// The times when the optimization windows will apply. Required if `isEnabled` is `true`.
+	Windows OceanScheduledTaskOptimizationWindowsWindowArrayInput `pulumi:"windows"`
+}
+
+func (OceanScheduledTaskOptimizationWindowsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanScheduledTaskOptimizationWindows)(nil)).Elem()
+}
+
+func (i OceanScheduledTaskOptimizationWindowsArgs) ToOceanScheduledTaskOptimizationWindowsOutput() OceanScheduledTaskOptimizationWindowsOutput {
+	return i.ToOceanScheduledTaskOptimizationWindowsOutputWithContext(context.Background())
+}
+
+func (i OceanScheduledTaskOptimizationWindowsArgs) ToOceanScheduledTaskOptimizationWindowsOutputWithContext(ctx context.Context) OceanScheduledTaskOptimizationWindowsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanScheduledTaskOptimizationWindowsOutput)
+}
+
+func (i OceanScheduledTaskOptimizationWindowsArgs) ToOceanScheduledTaskOptimizationWindowsPtrOutput() OceanScheduledTaskOptimizationWindowsPtrOutput {
+	return i.ToOceanScheduledTaskOptimizationWindowsPtrOutputWithContext(context.Background())
+}
+
+func (i OceanScheduledTaskOptimizationWindowsArgs) ToOceanScheduledTaskOptimizationWindowsPtrOutputWithContext(ctx context.Context) OceanScheduledTaskOptimizationWindowsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanScheduledTaskOptimizationWindowsOutput).ToOceanScheduledTaskOptimizationWindowsPtrOutputWithContext(ctx)
+}
+
+// OceanScheduledTaskOptimizationWindowsPtrInput is an input type that accepts OceanScheduledTaskOptimizationWindowsArgs, OceanScheduledTaskOptimizationWindowsPtr and OceanScheduledTaskOptimizationWindowsPtrOutput values.
+// You can construct a concrete instance of `OceanScheduledTaskOptimizationWindowsPtrInput` via:
+//
+//	        OceanScheduledTaskOptimizationWindowsArgs{...}
+//
+//	or:
+//
+//	        nil
+type OceanScheduledTaskOptimizationWindowsPtrInput interface {
+	pulumi.Input
+
+	ToOceanScheduledTaskOptimizationWindowsPtrOutput() OceanScheduledTaskOptimizationWindowsPtrOutput
+	ToOceanScheduledTaskOptimizationWindowsPtrOutputWithContext(context.Context) OceanScheduledTaskOptimizationWindowsPtrOutput
+}
+
+type oceanScheduledTaskOptimizationWindowsPtrType OceanScheduledTaskOptimizationWindowsArgs
+
+func OceanScheduledTaskOptimizationWindowsPtr(v *OceanScheduledTaskOptimizationWindowsArgs) OceanScheduledTaskOptimizationWindowsPtrInput {
+	return (*oceanScheduledTaskOptimizationWindowsPtrType)(v)
+}
+
+func (*oceanScheduledTaskOptimizationWindowsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanScheduledTaskOptimizationWindows)(nil)).Elem()
+}
+
+func (i *oceanScheduledTaskOptimizationWindowsPtrType) ToOceanScheduledTaskOptimizationWindowsPtrOutput() OceanScheduledTaskOptimizationWindowsPtrOutput {
+	return i.ToOceanScheduledTaskOptimizationWindowsPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanScheduledTaskOptimizationWindowsPtrType) ToOceanScheduledTaskOptimizationWindowsPtrOutputWithContext(ctx context.Context) OceanScheduledTaskOptimizationWindowsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanScheduledTaskOptimizationWindowsPtrOutput)
+}
+
+type OceanScheduledTaskOptimizationWindowsOutput struct{ *pulumi.OutputState }
+
+func (OceanScheduledTaskOptimizationWindowsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanScheduledTaskOptimizationWindows)(nil)).Elem()
+}
+
+func (o OceanScheduledTaskOptimizationWindowsOutput) ToOceanScheduledTaskOptimizationWindowsOutput() OceanScheduledTaskOptimizationWindowsOutput {
+	return o
+}
+
+func (o OceanScheduledTaskOptimizationWindowsOutput) ToOceanScheduledTaskOptimizationWindowsOutputWithContext(ctx context.Context) OceanScheduledTaskOptimizationWindowsOutput {
+	return o
+}
+
+func (o OceanScheduledTaskOptimizationWindowsOutput) ToOceanScheduledTaskOptimizationWindowsPtrOutput() OceanScheduledTaskOptimizationWindowsPtrOutput {
+	return o.ToOceanScheduledTaskOptimizationWindowsPtrOutputWithContext(context.Background())
+}
+
+func (o OceanScheduledTaskOptimizationWindowsOutput) ToOceanScheduledTaskOptimizationWindowsPtrOutputWithContext(ctx context.Context) OceanScheduledTaskOptimizationWindowsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanScheduledTaskOptimizationWindows) *OceanScheduledTaskOptimizationWindows {
+		return &v
+	}).(OceanScheduledTaskOptimizationWindowsPtrOutput)
+}
+
+// Used to enable or disable the optimization windows mechanism. Must be a boolean (null is invalid). When `true`, at least one window must be defined. When `false`, windows can be empty or omitted.
+func (o OceanScheduledTaskOptimizationWindowsOutput) IsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v OceanScheduledTaskOptimizationWindows) bool { return v.IsEnabled }).(pulumi.BoolOutput)
+}
+
+// The times when the optimization windows will apply. Required if `isEnabled` is `true`.
+func (o OceanScheduledTaskOptimizationWindowsOutput) Windows() OceanScheduledTaskOptimizationWindowsWindowArrayOutput {
+	return o.ApplyT(func(v OceanScheduledTaskOptimizationWindows) []OceanScheduledTaskOptimizationWindowsWindow {
+		return v.Windows
+	}).(OceanScheduledTaskOptimizationWindowsWindowArrayOutput)
+}
+
+type OceanScheduledTaskOptimizationWindowsPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanScheduledTaskOptimizationWindowsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanScheduledTaskOptimizationWindows)(nil)).Elem()
+}
+
+func (o OceanScheduledTaskOptimizationWindowsPtrOutput) ToOceanScheduledTaskOptimizationWindowsPtrOutput() OceanScheduledTaskOptimizationWindowsPtrOutput {
+	return o
+}
+
+func (o OceanScheduledTaskOptimizationWindowsPtrOutput) ToOceanScheduledTaskOptimizationWindowsPtrOutputWithContext(ctx context.Context) OceanScheduledTaskOptimizationWindowsPtrOutput {
+	return o
+}
+
+func (o OceanScheduledTaskOptimizationWindowsPtrOutput) Elem() OceanScheduledTaskOptimizationWindowsOutput {
+	return o.ApplyT(func(v *OceanScheduledTaskOptimizationWindows) OceanScheduledTaskOptimizationWindows {
+		if v != nil {
+			return *v
+		}
+		var ret OceanScheduledTaskOptimizationWindows
+		return ret
+	}).(OceanScheduledTaskOptimizationWindowsOutput)
+}
+
+// Used to enable or disable the optimization windows mechanism. Must be a boolean (null is invalid). When `true`, at least one window must be defined. When `false`, windows can be empty or omitted.
+func (o OceanScheduledTaskOptimizationWindowsPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanScheduledTaskOptimizationWindows) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.IsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The times when the optimization windows will apply. Required if `isEnabled` is `true`.
+func (o OceanScheduledTaskOptimizationWindowsPtrOutput) Windows() OceanScheduledTaskOptimizationWindowsWindowArrayOutput {
+	return o.ApplyT(func(v *OceanScheduledTaskOptimizationWindows) []OceanScheduledTaskOptimizationWindowsWindow {
+		if v == nil {
+			return nil
+		}
+		return v.Windows
+	}).(OceanScheduledTaskOptimizationWindowsWindowArrayOutput)
+}
+
+type OceanScheduledTaskOptimizationWindowsWindow struct {
+	// A valid cron expression defining when the optimization window starts. For example: `0 0 * * *` (daily at midnight). The cron job runs in UTC time and follows Unix cron format.
+	CronExpression string `pulumi:"cronExpression"`
+	// The duration of the optimization window. Must be in the format where unit is `m` (minutes), `h` (hours), or `d` (days). Examples: `10m`, `5h`, `2d`.
+	Duration string `pulumi:"duration"`
+	// Items Enum: `ignorePdb` `ignoreRestrictScaleDown`. The list of effects that will be applied during this optimization window.
+	Effects []string `pulumi:"effects"`
+}
+
+// OceanScheduledTaskOptimizationWindowsWindowInput is an input type that accepts OceanScheduledTaskOptimizationWindowsWindowArgs and OceanScheduledTaskOptimizationWindowsWindowOutput values.
+// You can construct a concrete instance of `OceanScheduledTaskOptimizationWindowsWindowInput` via:
+//
+//	OceanScheduledTaskOptimizationWindowsWindowArgs{...}
+type OceanScheduledTaskOptimizationWindowsWindowInput interface {
+	pulumi.Input
+
+	ToOceanScheduledTaskOptimizationWindowsWindowOutput() OceanScheduledTaskOptimizationWindowsWindowOutput
+	ToOceanScheduledTaskOptimizationWindowsWindowOutputWithContext(context.Context) OceanScheduledTaskOptimizationWindowsWindowOutput
+}
+
+type OceanScheduledTaskOptimizationWindowsWindowArgs struct {
+	// A valid cron expression defining when the optimization window starts. For example: `0 0 * * *` (daily at midnight). The cron job runs in UTC time and follows Unix cron format.
+	CronExpression pulumi.StringInput `pulumi:"cronExpression"`
+	// The duration of the optimization window. Must be in the format where unit is `m` (minutes), `h` (hours), or `d` (days). Examples: `10m`, `5h`, `2d`.
+	Duration pulumi.StringInput `pulumi:"duration"`
+	// Items Enum: `ignorePdb` `ignoreRestrictScaleDown`. The list of effects that will be applied during this optimization window.
+	Effects pulumi.StringArrayInput `pulumi:"effects"`
+}
+
+func (OceanScheduledTaskOptimizationWindowsWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanScheduledTaskOptimizationWindowsWindow)(nil)).Elem()
+}
+
+func (i OceanScheduledTaskOptimizationWindowsWindowArgs) ToOceanScheduledTaskOptimizationWindowsWindowOutput() OceanScheduledTaskOptimizationWindowsWindowOutput {
+	return i.ToOceanScheduledTaskOptimizationWindowsWindowOutputWithContext(context.Background())
+}
+
+func (i OceanScheduledTaskOptimizationWindowsWindowArgs) ToOceanScheduledTaskOptimizationWindowsWindowOutputWithContext(ctx context.Context) OceanScheduledTaskOptimizationWindowsWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanScheduledTaskOptimizationWindowsWindowOutput)
+}
+
+// OceanScheduledTaskOptimizationWindowsWindowArrayInput is an input type that accepts OceanScheduledTaskOptimizationWindowsWindowArray and OceanScheduledTaskOptimizationWindowsWindowArrayOutput values.
+// You can construct a concrete instance of `OceanScheduledTaskOptimizationWindowsWindowArrayInput` via:
+//
+//	OceanScheduledTaskOptimizationWindowsWindowArray{ OceanScheduledTaskOptimizationWindowsWindowArgs{...} }
+type OceanScheduledTaskOptimizationWindowsWindowArrayInput interface {
+	pulumi.Input
+
+	ToOceanScheduledTaskOptimizationWindowsWindowArrayOutput() OceanScheduledTaskOptimizationWindowsWindowArrayOutput
+	ToOceanScheduledTaskOptimizationWindowsWindowArrayOutputWithContext(context.Context) OceanScheduledTaskOptimizationWindowsWindowArrayOutput
+}
+
+type OceanScheduledTaskOptimizationWindowsWindowArray []OceanScheduledTaskOptimizationWindowsWindowInput
+
+func (OceanScheduledTaskOptimizationWindowsWindowArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanScheduledTaskOptimizationWindowsWindow)(nil)).Elem()
+}
+
+func (i OceanScheduledTaskOptimizationWindowsWindowArray) ToOceanScheduledTaskOptimizationWindowsWindowArrayOutput() OceanScheduledTaskOptimizationWindowsWindowArrayOutput {
+	return i.ToOceanScheduledTaskOptimizationWindowsWindowArrayOutputWithContext(context.Background())
+}
+
+func (i OceanScheduledTaskOptimizationWindowsWindowArray) ToOceanScheduledTaskOptimizationWindowsWindowArrayOutputWithContext(ctx context.Context) OceanScheduledTaskOptimizationWindowsWindowArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanScheduledTaskOptimizationWindowsWindowArrayOutput)
+}
+
+type OceanScheduledTaskOptimizationWindowsWindowOutput struct{ *pulumi.OutputState }
+
+func (OceanScheduledTaskOptimizationWindowsWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanScheduledTaskOptimizationWindowsWindow)(nil)).Elem()
+}
+
+func (o OceanScheduledTaskOptimizationWindowsWindowOutput) ToOceanScheduledTaskOptimizationWindowsWindowOutput() OceanScheduledTaskOptimizationWindowsWindowOutput {
+	return o
+}
+
+func (o OceanScheduledTaskOptimizationWindowsWindowOutput) ToOceanScheduledTaskOptimizationWindowsWindowOutputWithContext(ctx context.Context) OceanScheduledTaskOptimizationWindowsWindowOutput {
+	return o
+}
+
+// A valid cron expression defining when the optimization window starts. For example: `0 0 * * *` (daily at midnight). The cron job runs in UTC time and follows Unix cron format.
+func (o OceanScheduledTaskOptimizationWindowsWindowOutput) CronExpression() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanScheduledTaskOptimizationWindowsWindow) string { return v.CronExpression }).(pulumi.StringOutput)
+}
+
+// The duration of the optimization window. Must be in the format where unit is `m` (minutes), `h` (hours), or `d` (days). Examples: `10m`, `5h`, `2d`.
+func (o OceanScheduledTaskOptimizationWindowsWindowOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanScheduledTaskOptimizationWindowsWindow) string { return v.Duration }).(pulumi.StringOutput)
+}
+
+// Items Enum: `ignorePdb` `ignoreRestrictScaleDown`. The list of effects that will be applied during this optimization window.
+func (o OceanScheduledTaskOptimizationWindowsWindowOutput) Effects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanScheduledTaskOptimizationWindowsWindow) []string { return v.Effects }).(pulumi.StringArrayOutput)
+}
+
+type OceanScheduledTaskOptimizationWindowsWindowArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanScheduledTaskOptimizationWindowsWindowArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanScheduledTaskOptimizationWindowsWindow)(nil)).Elem()
+}
+
+func (o OceanScheduledTaskOptimizationWindowsWindowArrayOutput) ToOceanScheduledTaskOptimizationWindowsWindowArrayOutput() OceanScheduledTaskOptimizationWindowsWindowArrayOutput {
+	return o
+}
+
+func (o OceanScheduledTaskOptimizationWindowsWindowArrayOutput) ToOceanScheduledTaskOptimizationWindowsWindowArrayOutputWithContext(ctx context.Context) OceanScheduledTaskOptimizationWindowsWindowArrayOutput {
+	return o
+}
+
+func (o OceanScheduledTaskOptimizationWindowsWindowArrayOutput) Index(i pulumi.IntInput) OceanScheduledTaskOptimizationWindowsWindowOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanScheduledTaskOptimizationWindowsWindow {
+		return vs[0].([]OceanScheduledTaskOptimizationWindowsWindow)[vs[1].(int)]
+	}).(OceanScheduledTaskOptimizationWindowsWindowOutput)
 }
 
 type OceanScheduledTaskShutdownHours struct {
@@ -26577,6 +27129,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecLabelArrayInput)(nil)).Elem(), OceanLaunchSpecLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecLoadBalancerInput)(nil)).Elem(), OceanLaunchSpecLoadBalancerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecLoadBalancerArrayInput)(nil)).Elem(), OceanLaunchSpecLoadBalancerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecOptimizationWindowsInput)(nil)).Elem(), OceanLaunchSpecOptimizationWindowsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecOptimizationWindowsPtrInput)(nil)).Elem(), OceanLaunchSpecOptimizationWindowsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecOptimizationWindowsWindowInput)(nil)).Elem(), OceanLaunchSpecOptimizationWindowsWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecOptimizationWindowsWindowArrayInput)(nil)).Elem(), OceanLaunchSpecOptimizationWindowsWindowArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecResourceLimitInput)(nil)).Elem(), OceanLaunchSpecResourceLimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecResourceLimitArrayInput)(nil)).Elem(), OceanLaunchSpecResourceLimitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecSchedulingShutdownHoursInput)(nil)).Elem(), OceanLaunchSpecSchedulingShutdownHoursArgs{})
@@ -26611,6 +27167,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanResourceTagSpecificationArrayInput)(nil)).Elem(), OceanResourceTagSpecificationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanScheduledTaskInput)(nil)).Elem(), OceanScheduledTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanScheduledTaskArrayInput)(nil)).Elem(), OceanScheduledTaskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanScheduledTaskOptimizationWindowsInput)(nil)).Elem(), OceanScheduledTaskOptimizationWindowsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanScheduledTaskOptimizationWindowsPtrInput)(nil)).Elem(), OceanScheduledTaskOptimizationWindowsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanScheduledTaskOptimizationWindowsWindowInput)(nil)).Elem(), OceanScheduledTaskOptimizationWindowsWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanScheduledTaskOptimizationWindowsWindowArrayInput)(nil)).Elem(), OceanScheduledTaskOptimizationWindowsWindowArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanScheduledTaskShutdownHoursInput)(nil)).Elem(), OceanScheduledTaskShutdownHoursArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanScheduledTaskShutdownHoursPtrInput)(nil)).Elem(), OceanScheduledTaskShutdownHoursArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanScheduledTaskTaskInput)(nil)).Elem(), OceanScheduledTaskTaskArgs{})
@@ -26925,6 +27485,10 @@ func init() {
 	pulumi.RegisterOutputType(OceanLaunchSpecLabelArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecLoadBalancerOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecLoadBalancerArrayOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecOptimizationWindowsOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecOptimizationWindowsPtrOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecOptimizationWindowsWindowOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecOptimizationWindowsWindowArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecResourceLimitOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecResourceLimitArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecSchedulingShutdownHoursOutput{})
@@ -26959,6 +27523,10 @@ func init() {
 	pulumi.RegisterOutputType(OceanResourceTagSpecificationArrayOutput{})
 	pulumi.RegisterOutputType(OceanScheduledTaskOutput{})
 	pulumi.RegisterOutputType(OceanScheduledTaskArrayOutput{})
+	pulumi.RegisterOutputType(OceanScheduledTaskOptimizationWindowsOutput{})
+	pulumi.RegisterOutputType(OceanScheduledTaskOptimizationWindowsPtrOutput{})
+	pulumi.RegisterOutputType(OceanScheduledTaskOptimizationWindowsWindowOutput{})
+	pulumi.RegisterOutputType(OceanScheduledTaskOptimizationWindowsWindowArrayOutput{})
 	pulumi.RegisterOutputType(OceanScheduledTaskShutdownHoursOutput{})
 	pulumi.RegisterOutputType(OceanScheduledTaskShutdownHoursPtrOutput{})
 	pulumi.RegisterOutputType(OceanScheduledTaskTaskOutput{})

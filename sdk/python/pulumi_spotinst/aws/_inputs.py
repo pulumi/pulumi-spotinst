@@ -309,6 +309,10 @@ __all__ = [
     'OceanLaunchSpecLabelArgsDict',
     'OceanLaunchSpecLoadBalancerArgs',
     'OceanLaunchSpecLoadBalancerArgsDict',
+    'OceanLaunchSpecOptimizationWindowsArgs',
+    'OceanLaunchSpecOptimizationWindowsArgsDict',
+    'OceanLaunchSpecOptimizationWindowsWindowArgs',
+    'OceanLaunchSpecOptimizationWindowsWindowArgsDict',
     'OceanLaunchSpecResourceLimitArgs',
     'OceanLaunchSpecResourceLimitArgsDict',
     'OceanLaunchSpecSchedulingShutdownHoursArgs',
@@ -343,6 +347,10 @@ __all__ = [
     'OceanResourceTagSpecificationArgsDict',
     'OceanScheduledTaskArgs',
     'OceanScheduledTaskArgsDict',
+    'OceanScheduledTaskOptimizationWindowsArgs',
+    'OceanScheduledTaskOptimizationWindowsArgsDict',
+    'OceanScheduledTaskOptimizationWindowsWindowArgs',
+    'OceanScheduledTaskOptimizationWindowsWindowArgsDict',
     'OceanScheduledTaskShutdownHoursArgs',
     'OceanScheduledTaskShutdownHoursArgsDict',
     'OceanScheduledTaskTaskArgs',
@@ -12591,6 +12599,113 @@ class OceanLaunchSpecLoadBalancerArgs:
         pulumi.set(self, "name", value)
 
 
+class OceanLaunchSpecOptimizationWindowsArgsDict(TypedDict):
+    is_enabled: pulumi.Input[_builtins.bool]
+    """
+    Used to enable or disable the optimization windows mechanism. Must be a boolean (null is invalid). When `true`, at least one window must be defined. When `false`, windows can be empty or omitted.
+    """
+    windows: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecOptimizationWindowsWindowArgsDict']]]]
+    """
+    The times when the optimization windows will apply. Required if `is_enabled` is `true`.
+    """
+
+@pulumi.input_type
+class OceanLaunchSpecOptimizationWindowsArgs:
+    def __init__(__self__, *,
+                 is_enabled: pulumi.Input[_builtins.bool],
+                 windows: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecOptimizationWindowsWindowArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] is_enabled: Used to enable or disable the optimization windows mechanism. Must be a boolean (null is invalid). When `true`, at least one window must be defined. When `false`, windows can be empty or omitted.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecOptimizationWindowsWindowArgs']]] windows: The times when the optimization windows will apply. Required if `is_enabled` is `true`.
+        """
+        pulumi.set(__self__, "is_enabled", is_enabled)
+        if windows is not None:
+            pulumi.set(__self__, "windows", windows)
+
+    @_builtins.property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Used to enable or disable the optimization windows mechanism. Must be a boolean (null is invalid). When `true`, at least one window must be defined. When `false`, windows can be empty or omitted.
+        """
+        return pulumi.get(self, "is_enabled")
+
+    @is_enabled.setter
+    def is_enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "is_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def windows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecOptimizationWindowsWindowArgs']]]]:
+        """
+        The times when the optimization windows will apply. Required if `is_enabled` is `true`.
+        """
+        return pulumi.get(self, "windows")
+
+    @windows.setter
+    def windows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecOptimizationWindowsWindowArgs']]]]):
+        pulumi.set(self, "windows", value)
+
+
+class OceanLaunchSpecOptimizationWindowsWindowArgsDict(TypedDict):
+    cron_expression: pulumi.Input[_builtins.str]
+    duration: pulumi.Input[_builtins.str]
+    """
+    The duration of the optimization window. Must be in the format where unit is `m` (minutes), `h` (hours), or `d` (days). Examples: `10m`, `5h`, `2d`.
+    """
+    effects: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Items Enum: `ignorePdb` `ignoreRestrictScaleDown`. The list of effects that will be applied during this optimization window.
+    """
+
+@pulumi.input_type
+class OceanLaunchSpecOptimizationWindowsWindowArgs:
+    def __init__(__self__, *,
+                 cron_expression: pulumi.Input[_builtins.str],
+                 duration: pulumi.Input[_builtins.str],
+                 effects: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        """
+        :param pulumi.Input[_builtins.str] duration: The duration of the optimization window. Must be in the format where unit is `m` (minutes), `h` (hours), or `d` (days). Examples: `10m`, `5h`, `2d`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] effects: Items Enum: `ignorePdb` `ignoreRestrictScaleDown`. The list of effects that will be applied during this optimization window.
+        """
+        pulumi.set(__self__, "cron_expression", cron_expression)
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "effects", effects)
+
+    @_builtins.property
+    @pulumi.getter(name="cronExpression")
+    def cron_expression(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "cron_expression")
+
+    @cron_expression.setter
+    def cron_expression(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "cron_expression", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def duration(self) -> pulumi.Input[_builtins.str]:
+        """
+        The duration of the optimization window. Must be in the format where unit is `m` (minutes), `h` (hours), or `d` (days). Examples: `10m`, `5h`, `2d`.
+        """
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "duration", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def effects(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        Items Enum: `ignorePdb` `ignoreRestrictScaleDown`. The list of effects that will be applied during this optimization window.
+        """
+        return pulumi.get(self, "effects")
+
+    @effects.setter
+    def effects(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "effects", value)
+
+
 class OceanLaunchSpecResourceLimitArgsDict(TypedDict):
     max_instance_count: NotRequired[pulumi.Input[_builtins.int]]
     """
@@ -13447,6 +13562,10 @@ class OceanResourceTagSpecificationArgs:
 
 
 class OceanScheduledTaskArgsDict(TypedDict):
+    optimization_windows: NotRequired[pulumi.Input['OceanScheduledTaskOptimizationWindowsArgsDict']]
+    """
+    An object used to specify time windows during which certain optimization constraints can be eased.
+    """
     shutdown_hours: NotRequired[pulumi.Input['OceanScheduledTaskShutdownHoursArgsDict']]
     """
     Set shutdown hours for cluster object.
@@ -13459,16 +13578,32 @@ class OceanScheduledTaskArgsDict(TypedDict):
 @pulumi.input_type
 class OceanScheduledTaskArgs:
     def __init__(__self__, *,
+                 optimization_windows: Optional[pulumi.Input['OceanScheduledTaskOptimizationWindowsArgs']] = None,
                  shutdown_hours: Optional[pulumi.Input['OceanScheduledTaskShutdownHoursArgs']] = None,
                  tasks: Optional[pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskTaskArgs']]]] = None):
         """
+        :param pulumi.Input['OceanScheduledTaskOptimizationWindowsArgs'] optimization_windows: An object used to specify time windows during which certain optimization constraints can be eased.
         :param pulumi.Input['OceanScheduledTaskShutdownHoursArgs'] shutdown_hours: Set shutdown hours for cluster object.
         :param pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskTaskArgs']]] tasks: The scheduling tasks for the cluster.
         """
+        if optimization_windows is not None:
+            pulumi.set(__self__, "optimization_windows", optimization_windows)
         if shutdown_hours is not None:
             pulumi.set(__self__, "shutdown_hours", shutdown_hours)
         if tasks is not None:
             pulumi.set(__self__, "tasks", tasks)
+
+    @_builtins.property
+    @pulumi.getter(name="optimizationWindows")
+    def optimization_windows(self) -> Optional[pulumi.Input['OceanScheduledTaskOptimizationWindowsArgs']]:
+        """
+        An object used to specify time windows during which certain optimization constraints can be eased.
+        """
+        return pulumi.get(self, "optimization_windows")
+
+    @optimization_windows.setter
+    def optimization_windows(self, value: Optional[pulumi.Input['OceanScheduledTaskOptimizationWindowsArgs']]):
+        pulumi.set(self, "optimization_windows", value)
 
     @_builtins.property
     @pulumi.getter(name="shutdownHours")
@@ -13493,6 +13628,120 @@ class OceanScheduledTaskArgs:
     @tasks.setter
     def tasks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskTaskArgs']]]]):
         pulumi.set(self, "tasks", value)
+
+
+class OceanScheduledTaskOptimizationWindowsArgsDict(TypedDict):
+    is_enabled: pulumi.Input[_builtins.bool]
+    """
+    Used to enable or disable the optimization windows mechanism. Must be a boolean (null is invalid). When `true`, at least one window must be defined. When `false`, windows can be empty or omitted.
+    """
+    windows: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskOptimizationWindowsWindowArgsDict']]]]
+    """
+    The times when the optimization windows will apply. Required if `is_enabled` is `true`.
+    """
+
+@pulumi.input_type
+class OceanScheduledTaskOptimizationWindowsArgs:
+    def __init__(__self__, *,
+                 is_enabled: pulumi.Input[_builtins.bool],
+                 windows: Optional[pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskOptimizationWindowsWindowArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] is_enabled: Used to enable or disable the optimization windows mechanism. Must be a boolean (null is invalid). When `true`, at least one window must be defined. When `false`, windows can be empty or omitted.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskOptimizationWindowsWindowArgs']]] windows: The times when the optimization windows will apply. Required if `is_enabled` is `true`.
+        """
+        pulumi.set(__self__, "is_enabled", is_enabled)
+        if windows is not None:
+            pulumi.set(__self__, "windows", windows)
+
+    @_builtins.property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Used to enable or disable the optimization windows mechanism. Must be a boolean (null is invalid). When `true`, at least one window must be defined. When `false`, windows can be empty or omitted.
+        """
+        return pulumi.get(self, "is_enabled")
+
+    @is_enabled.setter
+    def is_enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "is_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def windows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskOptimizationWindowsWindowArgs']]]]:
+        """
+        The times when the optimization windows will apply. Required if `is_enabled` is `true`.
+        """
+        return pulumi.get(self, "windows")
+
+    @windows.setter
+    def windows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskOptimizationWindowsWindowArgs']]]]):
+        pulumi.set(self, "windows", value)
+
+
+class OceanScheduledTaskOptimizationWindowsWindowArgsDict(TypedDict):
+    cron_expression: pulumi.Input[_builtins.str]
+    """
+    A valid cron expression defining when the optimization window starts. For example: `0 0 * * *` (daily at midnight). The cron job runs in UTC time and follows Unix cron format.
+    """
+    duration: pulumi.Input[_builtins.str]
+    """
+    The duration of the optimization window. Must be in the format where unit is `m` (minutes), `h` (hours), or `d` (days). Examples: `10m`, `5h`, `2d`.
+    """
+    effects: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Items Enum: `ignorePdb` `ignoreRestrictScaleDown`. The list of effects that will be applied during this optimization window.
+    """
+
+@pulumi.input_type
+class OceanScheduledTaskOptimizationWindowsWindowArgs:
+    def __init__(__self__, *,
+                 cron_expression: pulumi.Input[_builtins.str],
+                 duration: pulumi.Input[_builtins.str],
+                 effects: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        """
+        :param pulumi.Input[_builtins.str] cron_expression: A valid cron expression defining when the optimization window starts. For example: `0 0 * * *` (daily at midnight). The cron job runs in UTC time and follows Unix cron format.
+        :param pulumi.Input[_builtins.str] duration: The duration of the optimization window. Must be in the format where unit is `m` (minutes), `h` (hours), or `d` (days). Examples: `10m`, `5h`, `2d`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] effects: Items Enum: `ignorePdb` `ignoreRestrictScaleDown`. The list of effects that will be applied during this optimization window.
+        """
+        pulumi.set(__self__, "cron_expression", cron_expression)
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "effects", effects)
+
+    @_builtins.property
+    @pulumi.getter(name="cronExpression")
+    def cron_expression(self) -> pulumi.Input[_builtins.str]:
+        """
+        A valid cron expression defining when the optimization window starts. For example: `0 0 * * *` (daily at midnight). The cron job runs in UTC time and follows Unix cron format.
+        """
+        return pulumi.get(self, "cron_expression")
+
+    @cron_expression.setter
+    def cron_expression(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "cron_expression", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def duration(self) -> pulumi.Input[_builtins.str]:
+        """
+        The duration of the optimization window. Must be in the format where unit is `m` (minutes), `h` (hours), or `d` (days). Examples: `10m`, `5h`, `2d`.
+        """
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "duration", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def effects(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        Items Enum: `ignorePdb` `ignoreRestrictScaleDown`. The list of effects that will be applied during this optimization window.
+        """
+        return pulumi.get(self, "effects")
+
+    @effects.setter
+    def effects(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "effects", value)
 
 
 class OceanScheduledTaskShutdownHoursArgsDict(TypedDict):

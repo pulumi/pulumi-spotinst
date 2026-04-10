@@ -14,6 +14,10 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class OceanScheduledTask
     {
         /// <summary>
+        /// An object used to specify time windows during which certain optimization constraints can be eased.
+        /// </summary>
+        public readonly Outputs.OceanScheduledTaskOptimizationWindows? OptimizationWindows;
+        /// <summary>
         /// Set shutdown hours for cluster object.
         /// </summary>
         public readonly Outputs.OceanScheduledTaskShutdownHours? ShutdownHours;
@@ -24,10 +28,13 @@ namespace Pulumi.SpotInst.Aws.Outputs
 
         [OutputConstructor]
         private OceanScheduledTask(
+            Outputs.OceanScheduledTaskOptimizationWindows? optimizationWindows,
+
             Outputs.OceanScheduledTaskShutdownHours? shutdownHours,
 
             ImmutableArray<Outputs.OceanScheduledTaskTask> tasks)
         {
+            OptimizationWindows = optimizationWindows;
             ShutdownHours = shutdownHours;
             Tasks = tasks;
         }
