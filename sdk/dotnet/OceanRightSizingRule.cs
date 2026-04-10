@@ -22,7 +22,7 @@ namespace Pulumi.SpotInst
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new SpotInst.OceanRightSizingRule("example", new()
+    ///     var example = new SpotInst.Index.OceanRightSizingRule("example", new()
     ///     {
     ///         OceanId = "o-123456",
     ///         RuleName = "test-rule",

@@ -22,7 +22,7 @@ namespace Pulumi.SpotInst
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new SpotInst.DataIntegration("example", new()
+    ///     var example = new SpotInst.Index.DataIntegration("example", new()
     ///     {
     ///         Name = "foo",
     ///         Status = "enabled",

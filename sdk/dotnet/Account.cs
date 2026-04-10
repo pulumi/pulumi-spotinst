@@ -23,7 +23,7 @@ namespace Pulumi.SpotInst
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a Account
-    ///     var myAcct = new SpotInst.Account("my_acct", new()
+    ///     var myAcct = new SpotInst.Index.Account("my_acct", new()
     ///     {
     ///         Name = "my_acct",
     ///     });
