@@ -41,6 +41,7 @@ class OceanNpVirtualNodeGroupArgs:
                  os_type: Optional[pulumi.Input[_builtins.str]] = None,
                  pod_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  scheduling: Optional[pulumi.Input['OceanNpVirtualNodeGroupSchedulingArgs']] = None,
+                 should_utilize_commitments: Optional[pulumi.Input[_builtins.bool]] = None,
                  spot_percentage: Optional[pulumi.Input[_builtins.int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupTaintArgs']]]] = None,
@@ -69,6 +70,7 @@ class OceanNpVirtualNodeGroupArgs:
         :param pulumi.Input[_builtins.str] os_type: The OS type of the OS disk. Can't be modified once set.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] pod_subnet_ids: The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
         :param pulumi.Input['OceanNpVirtualNodeGroupSchedulingArgs'] scheduling: An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
+        :param pulumi.Input[_builtins.bool] should_utilize_commitments: Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
         :param pulumi.Input[_builtins.int] spot_percentage: Percentage of spot VMs to maintain.
         :param pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupTaintArgs']]] taints: Add taints to a virtual node group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vnet_subnet_ids: The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
@@ -112,6 +114,8 @@ class OceanNpVirtualNodeGroupArgs:
             pulumi.set(__self__, "pod_subnet_ids", pod_subnet_ids)
         if scheduling is not None:
             pulumi.set(__self__, "scheduling", scheduling)
+        if should_utilize_commitments is not None:
+            pulumi.set(__self__, "should_utilize_commitments", should_utilize_commitments)
         if spot_percentage is not None:
             pulumi.set(__self__, "spot_percentage", spot_percentage)
         if tags is not None:
@@ -364,6 +368,18 @@ class OceanNpVirtualNodeGroupArgs:
         pulumi.set(self, "scheduling", value)
 
     @_builtins.property
+    @pulumi.getter(name="shouldUtilizeCommitments")
+    def should_utilize_commitments(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
+        """
+        return pulumi.get(self, "should_utilize_commitments")
+
+    @should_utilize_commitments.setter
+    def should_utilize_commitments(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "should_utilize_commitments", value)
+
+    @_builtins.property
     @pulumi.getter(name="spotPercentage")
     def spot_percentage(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -441,6 +457,7 @@ class _OceanNpVirtualNodeGroupState:
                  os_type: Optional[pulumi.Input[_builtins.str]] = None,
                  pod_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  scheduling: Optional[pulumi.Input['OceanNpVirtualNodeGroupSchedulingArgs']] = None,
+                 should_utilize_commitments: Optional[pulumi.Input[_builtins.bool]] = None,
                  spot_percentage: Optional[pulumi.Input[_builtins.int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupTaintArgs']]]] = None,
@@ -469,6 +486,7 @@ class _OceanNpVirtualNodeGroupState:
         :param pulumi.Input[_builtins.str] os_type: The OS type of the OS disk. Can't be modified once set.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] pod_subnet_ids: The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
         :param pulumi.Input['OceanNpVirtualNodeGroupSchedulingArgs'] scheduling: An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
+        :param pulumi.Input[_builtins.bool] should_utilize_commitments: Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
         :param pulumi.Input[_builtins.int] spot_percentage: Percentage of spot VMs to maintain.
         :param pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupTaintArgs']]] taints: Add taints to a virtual node group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vnet_subnet_ids: The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
@@ -513,6 +531,8 @@ class _OceanNpVirtualNodeGroupState:
             pulumi.set(__self__, "pod_subnet_ids", pod_subnet_ids)
         if scheduling is not None:
             pulumi.set(__self__, "scheduling", scheduling)
+        if should_utilize_commitments is not None:
+            pulumi.set(__self__, "should_utilize_commitments", should_utilize_commitments)
         if spot_percentage is not None:
             pulumi.set(__self__, "spot_percentage", spot_percentage)
         if tags is not None:
@@ -765,6 +785,18 @@ class _OceanNpVirtualNodeGroupState:
         pulumi.set(self, "scheduling", value)
 
     @_builtins.property
+    @pulumi.getter(name="shouldUtilizeCommitments")
+    def should_utilize_commitments(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
+        """
+        return pulumi.get(self, "should_utilize_commitments")
+
+    @should_utilize_commitments.setter
+    def should_utilize_commitments(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "should_utilize_commitments", value)
+
+    @_builtins.property
     @pulumi.getter(name="spotPercentage")
     def spot_percentage(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -845,6 +877,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
                  os_type: Optional[pulumi.Input[_builtins.str]] = None,
                  pod_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  scheduling: Optional[pulumi.Input[Union['OceanNpVirtualNodeGroupSchedulingArgs', 'OceanNpVirtualNodeGroupSchedulingArgsDict']]] = None,
+                 should_utilize_commitments: Optional[pulumi.Input[_builtins.bool]] = None,
                  spot_percentage: Optional[pulumi.Input[_builtins.int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupTaintArgs', 'OceanNpVirtualNodeGroupTaintArgsDict']]]]] = None,
@@ -897,6 +930,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
             spot_percentage=50,
             fallback_to_ondemand=True,
             draining_timeout=600,
+            should_utilize_commitments=True,
             taints=[{
                 "key": "taintKey",
                 "value": "taintValue",
@@ -973,6 +1007,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] os_type: The OS type of the OS disk. Can't be modified once set.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] pod_subnet_ids: The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
         :param pulumi.Input[Union['OceanNpVirtualNodeGroupSchedulingArgs', 'OceanNpVirtualNodeGroupSchedulingArgsDict']] scheduling: An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
+        :param pulumi.Input[_builtins.bool] should_utilize_commitments: Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
         :param pulumi.Input[_builtins.int] spot_percentage: Percentage of spot VMs to maintain.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupTaintArgs', 'OceanNpVirtualNodeGroupTaintArgsDict']]]] taints: Add taints to a virtual node group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vnet_subnet_ids: The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
@@ -1029,6 +1064,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
             spot_percentage=50,
             fallback_to_ondemand=True,
             draining_timeout=600,
+            should_utilize_commitments=True,
             taints=[{
                 "key": "taintKey",
                 "value": "taintValue",
@@ -1118,6 +1154,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
                  os_type: Optional[pulumi.Input[_builtins.str]] = None,
                  pod_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  scheduling: Optional[pulumi.Input[Union['OceanNpVirtualNodeGroupSchedulingArgs', 'OceanNpVirtualNodeGroupSchedulingArgsDict']]] = None,
+                 should_utilize_commitments: Optional[pulumi.Input[_builtins.bool]] = None,
                  spot_percentage: Optional[pulumi.Input[_builtins.int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupTaintArgs', 'OceanNpVirtualNodeGroupTaintArgsDict']]]]] = None,
@@ -1154,6 +1191,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
             __props__.__dict__["os_type"] = os_type
             __props__.__dict__["pod_subnet_ids"] = pod_subnet_ids
             __props__.__dict__["scheduling"] = scheduling
+            __props__.__dict__["should_utilize_commitments"] = should_utilize_commitments
             __props__.__dict__["spot_percentage"] = spot_percentage
             __props__.__dict__["tags"] = tags
             __props__.__dict__["taints"] = taints
@@ -1189,6 +1227,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
             os_type: Optional[pulumi.Input[_builtins.str]] = None,
             pod_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             scheduling: Optional[pulumi.Input[Union['OceanNpVirtualNodeGroupSchedulingArgs', 'OceanNpVirtualNodeGroupSchedulingArgsDict']]] = None,
+            should_utilize_commitments: Optional[pulumi.Input[_builtins.bool]] = None,
             spot_percentage: Optional[pulumi.Input[_builtins.int]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupTaintArgs', 'OceanNpVirtualNodeGroupTaintArgsDict']]]]] = None,
@@ -1221,6 +1260,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] os_type: The OS type of the OS disk. Can't be modified once set.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] pod_subnet_ids: The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
         :param pulumi.Input[Union['OceanNpVirtualNodeGroupSchedulingArgs', 'OceanNpVirtualNodeGroupSchedulingArgsDict']] scheduling: An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
+        :param pulumi.Input[_builtins.bool] should_utilize_commitments: Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
         :param pulumi.Input[_builtins.int] spot_percentage: Percentage of spot VMs to maintain.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupTaintArgs', 'OceanNpVirtualNodeGroupTaintArgsDict']]]] taints: Add taints to a virtual node group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vnet_subnet_ids: The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
@@ -1249,6 +1289,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         __props__.__dict__["os_type"] = os_type
         __props__.__dict__["pod_subnet_ids"] = pod_subnet_ids
         __props__.__dict__["scheduling"] = scheduling
+        __props__.__dict__["should_utilize_commitments"] = should_utilize_commitments
         __props__.__dict__["spot_percentage"] = spot_percentage
         __props__.__dict__["tags"] = tags
         __props__.__dict__["taints"] = taints
@@ -1415,6 +1456,14 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
         """
         return pulumi.get(self, "scheduling")
+
+    @_builtins.property
+    @pulumi.getter(name="shouldUtilizeCommitments")
+    def should_utilize_commitments(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
+        """
+        return pulumi.get(self, "should_utilize_commitments")
 
     @_builtins.property
     @pulumi.getter(name="spotPercentage")

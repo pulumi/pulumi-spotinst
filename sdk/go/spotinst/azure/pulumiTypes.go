@@ -1325,6 +1325,10 @@ func (o OceanNpHeadroomArrayOutput) Index(i pulumi.IntInput) OceanNpHeadroomOutp
 type OceanNpHealth struct {
 	// The amount of time to wait, in seconds, from the moment the instance has launched until monitoring of its health checks begins.
 	GracePeriod *int `pulumi:"gracePeriod"`
+	// The amount of time, in seconds, a node is allowed to remain unhealthy after the grace period has elapsed before Ocean automatically replaces it. Valid values are in range `[120-3600]`.
+	HealthCheckUnhealthyDurationBeforeReplacement *int `pulumi:"healthCheckUnhealthyDurationBeforeReplacement"`
+	// Indicates whether Ocean automatically replaces nodes that remain in a NotReady or Unschedulable state. When `false`, unhealthy nodes are detected but not replaced. When `true`, unhealthy nodes are automatically replaced.
+	ShouldReplaceUnhealthyInstances *bool `pulumi:"shouldReplaceUnhealthyInstances"`
 }
 
 // OceanNpHealthInput is an input type that accepts OceanNpHealthArgs and OceanNpHealthOutput values.
@@ -1341,6 +1345,10 @@ type OceanNpHealthInput interface {
 type OceanNpHealthArgs struct {
 	// The amount of time to wait, in seconds, from the moment the instance has launched until monitoring of its health checks begins.
 	GracePeriod pulumi.IntPtrInput `pulumi:"gracePeriod"`
+	// The amount of time, in seconds, a node is allowed to remain unhealthy after the grace period has elapsed before Ocean automatically replaces it. Valid values are in range `[120-3600]`.
+	HealthCheckUnhealthyDurationBeforeReplacement pulumi.IntPtrInput `pulumi:"healthCheckUnhealthyDurationBeforeReplacement"`
+	// Indicates whether Ocean automatically replaces nodes that remain in a NotReady or Unschedulable state. When `false`, unhealthy nodes are detected but not replaced. When `true`, unhealthy nodes are automatically replaced.
+	ShouldReplaceUnhealthyInstances pulumi.BoolPtrInput `pulumi:"shouldReplaceUnhealthyInstances"`
 }
 
 func (OceanNpHealthArgs) ElementType() reflect.Type {
@@ -1425,6 +1433,16 @@ func (o OceanNpHealthOutput) GracePeriod() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanNpHealth) *int { return v.GracePeriod }).(pulumi.IntPtrOutput)
 }
 
+// The amount of time, in seconds, a node is allowed to remain unhealthy after the grace period has elapsed before Ocean automatically replaces it. Valid values are in range `[120-3600]`.
+func (o OceanNpHealthOutput) HealthCheckUnhealthyDurationBeforeReplacement() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanNpHealth) *int { return v.HealthCheckUnhealthyDurationBeforeReplacement }).(pulumi.IntPtrOutput)
+}
+
+// Indicates whether Ocean automatically replaces nodes that remain in a NotReady or Unschedulable state. When `false`, unhealthy nodes are detected but not replaced. When `true`, unhealthy nodes are automatically replaced.
+func (o OceanNpHealthOutput) ShouldReplaceUnhealthyInstances() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanNpHealth) *bool { return v.ShouldReplaceUnhealthyInstances }).(pulumi.BoolPtrOutput)
+}
+
 type OceanNpHealthPtrOutput struct{ *pulumi.OutputState }
 
 func (OceanNpHealthPtrOutput) ElementType() reflect.Type {
@@ -1457,6 +1475,26 @@ func (o OceanNpHealthPtrOutput) GracePeriod() pulumi.IntPtrOutput {
 		}
 		return v.GracePeriod
 	}).(pulumi.IntPtrOutput)
+}
+
+// The amount of time, in seconds, a node is allowed to remain unhealthy after the grace period has elapsed before Ocean automatically replaces it. Valid values are in range `[120-3600]`.
+func (o OceanNpHealthPtrOutput) HealthCheckUnhealthyDurationBeforeReplacement() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanNpHealth) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HealthCheckUnhealthyDurationBeforeReplacement
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates whether Ocean automatically replaces nodes that remain in a NotReady or Unschedulable state. When `false`, unhealthy nodes are detected but not replaced. When `true`, unhealthy nodes are automatically replaced.
+func (o OceanNpHealthPtrOutput) ShouldReplaceUnhealthyInstances() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanNpHealth) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ShouldReplaceUnhealthyInstances
+	}).(pulumi.BoolPtrOutput)
 }
 
 type OceanNpLinuxOsConfig struct {

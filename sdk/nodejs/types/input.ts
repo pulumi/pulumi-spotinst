@@ -3670,6 +3670,14 @@ export namespace azure {
          * The amount of time to wait, in seconds, from the moment the instance has launched until monitoring of its health checks begins.
          */
         gracePeriod?: pulumi.Input<number>;
+        /**
+         * The amount of time, in seconds, a node is allowed to remain unhealthy after the grace period has elapsed before Ocean automatically replaces it. Valid values are in range `[120-3600]`.
+         */
+        healthCheckUnhealthyDurationBeforeReplacement?: pulumi.Input<number>;
+        /**
+         * Indicates whether Ocean automatically replaces nodes that remain in a NotReady or Unschedulable state. When `false`, unhealthy nodes are detected but not replaced. When `true`, unhealthy nodes are automatically replaced.
+         */
+        shouldReplaceUnhealthyInstances?: pulumi.Input<boolean>;
     }
 
     export interface OceanNpLinuxOsConfig {

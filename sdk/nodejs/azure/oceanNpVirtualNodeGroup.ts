@@ -52,6 +52,7 @@ import * as utilities from "../utilities";
  *     spotPercentage: 50,
  *     fallbackToOndemand: true,
  *     drainingTimeout: 600,
+ *     shouldUtilizeCommitments: true,
  *     taints: [{
  *         key: "taintKey",
  *         value: "taintValue",
@@ -215,6 +216,10 @@ export class OceanNpVirtualNodeGroup extends pulumi.CustomResource {
      */
     declare public readonly scheduling: pulumi.Output<outputs.azure.OceanNpVirtualNodeGroupScheduling | undefined>;
     /**
+     * Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
+     */
+    declare public readonly shouldUtilizeCommitments: pulumi.Output<boolean | undefined>;
+    /**
      * Percentage of spot VMs to maintain.
      */
     declare public readonly spotPercentage: pulumi.Output<number | undefined>;
@@ -262,6 +267,7 @@ export class OceanNpVirtualNodeGroup extends pulumi.CustomResource {
             resourceInputs["osType"] = state?.osType;
             resourceInputs["podSubnetIds"] = state?.podSubnetIds;
             resourceInputs["scheduling"] = state?.scheduling;
+            resourceInputs["shouldUtilizeCommitments"] = state?.shouldUtilizeCommitments;
             resourceInputs["spotPercentage"] = state?.spotPercentage;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["taints"] = state?.taints;
@@ -292,6 +298,7 @@ export class OceanNpVirtualNodeGroup extends pulumi.CustomResource {
             resourceInputs["osType"] = args?.osType;
             resourceInputs["podSubnetIds"] = args?.podSubnetIds;
             resourceInputs["scheduling"] = args?.scheduling;
+            resourceInputs["shouldUtilizeCommitments"] = args?.shouldUtilizeCommitments;
             resourceInputs["spotPercentage"] = args?.spotPercentage;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["taints"] = args?.taints;
@@ -387,6 +394,10 @@ export interface OceanNpVirtualNodeGroupState {
      * An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
      */
     scheduling?: pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupScheduling>;
+    /**
+     * Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
+     */
+    shouldUtilizeCommitments?: pulumi.Input<boolean>;
     /**
      * Percentage of spot VMs to maintain.
      */
@@ -487,6 +498,10 @@ export interface OceanNpVirtualNodeGroupArgs {
      * An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
      */
     scheduling?: pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupScheduling>;
+    /**
+     * Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
+     */
+    shouldUtilizeCommitments?: pulumi.Input<boolean>;
     /**
      * Percentage of spot VMs to maintain.
      */

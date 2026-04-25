@@ -88,7 +88,9 @@ import (
 //					},
 //				},
 //				Health: &azure.OceanNpHealthArgs{
-//					GracePeriod: pulumi.Int(600),
+//					GracePeriod:                                   pulumi.Int(600),
+//					ShouldReplaceUnhealthyInstances:               pulumi.Bool(false),
+//					HealthCheckUnhealthyDurationBeforeReplacement: pulumi.Int(180),
 //				},
 //				Logging: &azure.OceanNpLoggingArgs{
 //					Export: &azure.OceanNpLoggingExportArgs{
@@ -140,9 +142,10 @@ import (
 //						},
 //					},
 //				},
-//				SpotPercentage:     pulumi.Int(50),
-//				FallbackToOndemand: pulumi.Bool(true),
-//				DrainingTimeout:    pulumi.Int(600),
+//				SpotPercentage:           pulumi.Int(50),
+//				FallbackToOndemand:       pulumi.Bool(true),
+//				DrainingTimeout:          pulumi.Int(600),
+//				ShouldUtilizeCommitments: pulumi.Bool(true),
 //				Taints: azure.OceanNpTaintArray{
 //					&azure.OceanNpTaintArgs{
 //						Key:    pulumi.String("taintKey"),
@@ -261,6 +264,8 @@ type OceanNp struct {
 	// The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
 	PodSubnetIds pulumi.StringArrayOutput   `pulumi:"podSubnetIds"`
 	Scheduling   OceanNpSchedulingPtrOutput `pulumi:"scheduling"`
+	// Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
+	ShouldUtilizeCommitments pulumi.BoolPtrOutput `pulumi:"shouldUtilizeCommitments"`
 	// Percentage of spot VMs to maintain.
 	SpotPercentage pulumi.IntPtrOutput    `pulumi:"spotPercentage"`
 	Tags           pulumi.StringMapOutput `pulumi:"tags"`
@@ -372,6 +377,8 @@ type oceanNpState struct {
 	// The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
 	PodSubnetIds []string           `pulumi:"podSubnetIds"`
 	Scheduling   *OceanNpScheduling `pulumi:"scheduling"`
+	// Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
+	ShouldUtilizeCommitments *bool `pulumi:"shouldUtilizeCommitments"`
 	// Percentage of spot VMs to maintain.
 	SpotPercentage *int              `pulumi:"spotPercentage"`
 	Tags           map[string]string `pulumi:"tags"`
@@ -436,6 +443,8 @@ type OceanNpState struct {
 	// The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
 	PodSubnetIds pulumi.StringArrayInput
 	Scheduling   OceanNpSchedulingPtrInput
+	// Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
+	ShouldUtilizeCommitments pulumi.BoolPtrInput
 	// Percentage of spot VMs to maintain.
 	SpotPercentage pulumi.IntPtrInput
 	Tags           pulumi.StringMapInput
@@ -504,6 +513,8 @@ type oceanNpArgs struct {
 	// The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
 	PodSubnetIds []string           `pulumi:"podSubnetIds"`
 	Scheduling   *OceanNpScheduling `pulumi:"scheduling"`
+	// Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
+	ShouldUtilizeCommitments *bool `pulumi:"shouldUtilizeCommitments"`
 	// Percentage of spot VMs to maintain.
 	SpotPercentage *int              `pulumi:"spotPercentage"`
 	Tags           map[string]string `pulumi:"tags"`
@@ -569,6 +580,8 @@ type OceanNpArgs struct {
 	// The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
 	PodSubnetIds pulumi.StringArrayInput
 	Scheduling   OceanNpSchedulingPtrInput
+	// Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
+	ShouldUtilizeCommitments pulumi.BoolPtrInput
 	// Percentage of spot VMs to maintain.
 	SpotPercentage pulumi.IntPtrInput
 	Tags           pulumi.StringMapInput
@@ -798,6 +811,11 @@ func (o OceanNpOutput) PodSubnetIds() pulumi.StringArrayOutput {
 
 func (o OceanNpOutput) Scheduling() OceanNpSchedulingPtrOutput {
 	return o.ApplyT(func(v *OceanNp) OceanNpSchedulingPtrOutput { return v.Scheduling }).(OceanNpSchedulingPtrOutput)
+}
+
+// Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
+func (o OceanNpOutput) ShouldUtilizeCommitments() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanNp) pulumi.BoolPtrOutput { return v.ShouldUtilizeCommitments }).(pulumi.BoolPtrOutput)
 }
 
 // Percentage of spot VMs to maintain.

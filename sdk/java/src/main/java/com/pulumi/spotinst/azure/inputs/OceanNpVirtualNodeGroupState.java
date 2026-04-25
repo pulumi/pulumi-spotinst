@@ -326,6 +326,21 @@ public final class OceanNpVirtualNodeGroupState extends com.pulumi.resources.Res
     }
 
     /**
+     * Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
+     * 
+     */
+    @Import(name="shouldUtilizeCommitments")
+    private @Nullable Output<Boolean> shouldUtilizeCommitments;
+
+    /**
+     * @return Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
+     * 
+     */
+    public Optional<Output<Boolean>> shouldUtilizeCommitments() {
+        return Optional.ofNullable(this.shouldUtilizeCommitments);
+    }
+
+    /**
      * Percentage of spot VMs to maintain.
      * 
      */
@@ -407,6 +422,7 @@ public final class OceanNpVirtualNodeGroupState extends com.pulumi.resources.Res
         this.osType = $.osType;
         this.podSubnetIds = $.podSubnetIds;
         this.scheduling = $.scheduling;
+        this.shouldUtilizeCommitments = $.shouldUtilizeCommitments;
         this.spotPercentage = $.spotPercentage;
         this.tags = $.tags;
         this.taints = $.taints;
@@ -890,6 +906,27 @@ public final class OceanNpVirtualNodeGroupState extends com.pulumi.resources.Res
          */
         public Builder scheduling(OceanNpVirtualNodeGroupSchedulingArgs scheduling) {
             return scheduling(Output.of(scheduling));
+        }
+
+        /**
+         * @param shouldUtilizeCommitments Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shouldUtilizeCommitments(@Nullable Output<Boolean> shouldUtilizeCommitments) {
+            $.shouldUtilizeCommitments = shouldUtilizeCommitments;
+            return this;
+        }
+
+        /**
+         * @param shouldUtilizeCommitments Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shouldUtilizeCommitments(Boolean shouldUtilizeCommitments) {
+            return shouldUtilizeCommitments(Output.of(shouldUtilizeCommitments));
         }
 
         /**

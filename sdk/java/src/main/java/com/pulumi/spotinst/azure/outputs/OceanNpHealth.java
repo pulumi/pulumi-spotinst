@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.azure.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,6 +17,16 @@ public final class OceanNpHealth {
      * 
      */
     private @Nullable Integer gracePeriod;
+    /**
+     * @return The amount of time, in seconds, a node is allowed to remain unhealthy after the grace period has elapsed before Ocean automatically replaces it. Valid values are in range `[120-3600]`.
+     * 
+     */
+    private @Nullable Integer healthCheckUnhealthyDurationBeforeReplacement;
+    /**
+     * @return Indicates whether Ocean automatically replaces nodes that remain in a NotReady or Unschedulable state. When `false`, unhealthy nodes are detected but not replaced. When `true`, unhealthy nodes are automatically replaced.
+     * 
+     */
+    private @Nullable Boolean shouldReplaceUnhealthyInstances;
 
     private OceanNpHealth() {}
     /**
@@ -24,6 +35,20 @@ public final class OceanNpHealth {
      */
     public Optional<Integer> gracePeriod() {
         return Optional.ofNullable(this.gracePeriod);
+    }
+    /**
+     * @return The amount of time, in seconds, a node is allowed to remain unhealthy after the grace period has elapsed before Ocean automatically replaces it. Valid values are in range `[120-3600]`.
+     * 
+     */
+    public Optional<Integer> healthCheckUnhealthyDurationBeforeReplacement() {
+        return Optional.ofNullable(this.healthCheckUnhealthyDurationBeforeReplacement);
+    }
+    /**
+     * @return Indicates whether Ocean automatically replaces nodes that remain in a NotReady or Unschedulable state. When `false`, unhealthy nodes are detected but not replaced. When `true`, unhealthy nodes are automatically replaced.
+     * 
+     */
+    public Optional<Boolean> shouldReplaceUnhealthyInstances() {
+        return Optional.ofNullable(this.shouldReplaceUnhealthyInstances);
     }
 
     public static Builder builder() {
@@ -36,10 +61,14 @@ public final class OceanNpHealth {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer gracePeriod;
+        private @Nullable Integer healthCheckUnhealthyDurationBeforeReplacement;
+        private @Nullable Boolean shouldReplaceUnhealthyInstances;
         public Builder() {}
         public Builder(OceanNpHealth defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.gracePeriod = defaults.gracePeriod;
+    	      this.healthCheckUnhealthyDurationBeforeReplacement = defaults.healthCheckUnhealthyDurationBeforeReplacement;
+    	      this.shouldReplaceUnhealthyInstances = defaults.shouldReplaceUnhealthyInstances;
         }
 
         @CustomType.Setter
@@ -48,9 +77,23 @@ public final class OceanNpHealth {
             this.gracePeriod = gracePeriod;
             return this;
         }
+        @CustomType.Setter
+        public Builder healthCheckUnhealthyDurationBeforeReplacement(@Nullable Integer healthCheckUnhealthyDurationBeforeReplacement) {
+
+            this.healthCheckUnhealthyDurationBeforeReplacement = healthCheckUnhealthyDurationBeforeReplacement;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder shouldReplaceUnhealthyInstances(@Nullable Boolean shouldReplaceUnhealthyInstances) {
+
+            this.shouldReplaceUnhealthyInstances = shouldReplaceUnhealthyInstances;
+            return this;
+        }
         public OceanNpHealth build() {
             final var _resultValue = new OceanNpHealth();
             _resultValue.gracePeriod = gracePeriod;
+            _resultValue.healthCheckUnhealthyDurationBeforeReplacement = healthCheckUnhealthyDurationBeforeReplacement;
+            _resultValue.shouldReplaceUnhealthyInstances = shouldReplaceUnhealthyInstances;
             return _resultValue;
         }
     }
