@@ -18,6 +18,18 @@ namespace Pulumi.SpotInst.Azure.Inputs
         [Input("gracePeriod")]
         public Input<int>? GracePeriod { get; set; }
 
+        /// <summary>
+        /// The amount of time, in seconds, a node is allowed to remain unhealthy after the grace period has elapsed before Ocean automatically replaces it. Valid values are in range `[120-3600]`.
+        /// </summary>
+        [Input("healthCheckUnhealthyDurationBeforeReplacement")]
+        public Input<int>? HealthCheckUnhealthyDurationBeforeReplacement { get; set; }
+
+        /// <summary>
+        /// Indicates whether Ocean automatically replaces nodes that remain in a NotReady or Unschedulable state. When `False`, unhealthy nodes are detected but not replaced. When `True`, unhealthy nodes are automatically replaced.
+        /// </summary>
+        [Input("shouldReplaceUnhealthyInstances")]
+        public Input<bool>? ShouldReplaceUnhealthyInstances { get; set; }
+
         public OceanNpHealthGetArgs()
         {
         }

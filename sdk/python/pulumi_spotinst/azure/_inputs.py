@@ -735,16 +735,32 @@ class OceanNpHealthArgsDict(TypedDict):
     """
     The amount of time to wait, in seconds, from the moment the instance has launched until monitoring of its health checks begins.
     """
+    health_check_unhealthy_duration_before_replacement: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The amount of time, in seconds, a node is allowed to remain unhealthy after the grace period has elapsed before Ocean automatically replaces it. Valid values are in range `[120-3600]`.
+    """
+    should_replace_unhealthy_instances: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates whether Ocean automatically replaces nodes that remain in a NotReady or Unschedulable state. When `false`, unhealthy nodes are detected but not replaced. When `true`, unhealthy nodes are automatically replaced.
+    """
 
 @pulumi.input_type
 class OceanNpHealthArgs:
     def __init__(__self__, *,
-                 grace_period: Optional[pulumi.Input[_builtins.int]] = None):
+                 grace_period: Optional[pulumi.Input[_builtins.int]] = None,
+                 health_check_unhealthy_duration_before_replacement: Optional[pulumi.Input[_builtins.int]] = None,
+                 should_replace_unhealthy_instances: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.int] grace_period: The amount of time to wait, in seconds, from the moment the instance has launched until monitoring of its health checks begins.
+        :param pulumi.Input[_builtins.int] health_check_unhealthy_duration_before_replacement: The amount of time, in seconds, a node is allowed to remain unhealthy after the grace period has elapsed before Ocean automatically replaces it. Valid values are in range `[120-3600]`.
+        :param pulumi.Input[_builtins.bool] should_replace_unhealthy_instances: Indicates whether Ocean automatically replaces nodes that remain in a NotReady or Unschedulable state. When `false`, unhealthy nodes are detected but not replaced. When `true`, unhealthy nodes are automatically replaced.
         """
         if grace_period is not None:
             pulumi.set(__self__, "grace_period", grace_period)
+        if health_check_unhealthy_duration_before_replacement is not None:
+            pulumi.set(__self__, "health_check_unhealthy_duration_before_replacement", health_check_unhealthy_duration_before_replacement)
+        if should_replace_unhealthy_instances is not None:
+            pulumi.set(__self__, "should_replace_unhealthy_instances", should_replace_unhealthy_instances)
 
     @_builtins.property
     @pulumi.getter(name="gracePeriod")
@@ -757,6 +773,30 @@ class OceanNpHealthArgs:
     @grace_period.setter
     def grace_period(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "grace_period", value)
+
+    @_builtins.property
+    @pulumi.getter(name="healthCheckUnhealthyDurationBeforeReplacement")
+    def health_check_unhealthy_duration_before_replacement(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The amount of time, in seconds, a node is allowed to remain unhealthy after the grace period has elapsed before Ocean automatically replaces it. Valid values are in range `[120-3600]`.
+        """
+        return pulumi.get(self, "health_check_unhealthy_duration_before_replacement")
+
+    @health_check_unhealthy_duration_before_replacement.setter
+    def health_check_unhealthy_duration_before_replacement(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "health_check_unhealthy_duration_before_replacement", value)
+
+    @_builtins.property
+    @pulumi.getter(name="shouldReplaceUnhealthyInstances")
+    def should_replace_unhealthy_instances(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates whether Ocean automatically replaces nodes that remain in a NotReady or Unschedulable state. When `false`, unhealthy nodes are detected but not replaced. When `true`, unhealthy nodes are automatically replaced.
+        """
+        return pulumi.get(self, "should_replace_unhealthy_instances")
+
+    @should_replace_unhealthy_instances.setter
+    def should_replace_unhealthy_instances(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "should_replace_unhealthy_instances", value)
 
 
 class OceanNpLinuxOsConfigArgsDict(TypedDict):

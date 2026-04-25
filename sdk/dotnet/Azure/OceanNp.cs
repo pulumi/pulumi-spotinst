@@ -83,6 +83,8 @@ namespace Pulumi.SpotInst.Azure
     ///         Health = new SpotInst.Azure.Inputs.OceanNpHealthArgs
     ///         {
     ///             GracePeriod = 600,
+    ///             ShouldReplaceUnhealthyInstances = false,
+    ///             HealthCheckUnhealthyDurationBeforeReplacement = 180,
     ///         },
     ///         Logging = new SpotInst.Azure.Inputs.OceanNpLoggingArgs
     ///         {
@@ -151,6 +153,7 @@ namespace Pulumi.SpotInst.Azure
     ///         SpotPercentage = 50,
     ///         FallbackToOndemand = true,
     ///         DrainingTimeout = 600,
+    ///         ShouldUtilizeCommitments = true,
     ///         Taints = new[]
     ///         {
     ///             new SpotInst.Azure.Inputs.OceanNpTaintArgs
@@ -374,6 +377,12 @@ namespace Pulumi.SpotInst.Azure
 
         [Output("scheduling")]
         public Output<Outputs.OceanNpScheduling?> Scheduling { get; private set; } = null!;
+
+        /// <summary>
+        /// Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
+        /// </summary>
+        [Output("shouldUtilizeCommitments")]
+        public Output<bool?> ShouldUtilizeCommitments { get; private set; } = null!;
 
         /// <summary>
         /// Percentage of spot VMs to maintain.
@@ -631,6 +640,12 @@ namespace Pulumi.SpotInst.Azure
         public Input<Inputs.OceanNpSchedulingArgs>? Scheduling { get; set; }
 
         /// <summary>
+        /// Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
+        /// </summary>
+        [Input("shouldUtilizeCommitments")]
+        public Input<bool>? ShouldUtilizeCommitments { get; set; }
+
+        /// <summary>
         /// Percentage of spot VMs to maintain.
         /// </summary>
         [Input("spotPercentage")]
@@ -863,6 +878,12 @@ namespace Pulumi.SpotInst.Azure
 
         [Input("scheduling")]
         public Input<Inputs.OceanNpSchedulingGetArgs>? Scheduling { get; set; }
+
+        /// <summary>
+        /// Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
+        /// </summary>
+        [Input("shouldUtilizeCommitments")]
+        public Input<bool>? ShouldUtilizeCommitments { get; set; }
 
         /// <summary>
         /// Percentage of spot VMs to maintain.

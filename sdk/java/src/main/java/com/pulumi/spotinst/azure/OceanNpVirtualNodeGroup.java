@@ -93,6 +93,7 @@ import javax.annotation.Nullable;
  *             .spotPercentage(50)
  *             .fallbackToOndemand(true)
  *             .drainingTimeout(600)
+ *             .shouldUtilizeCommitments(true)
  *             .taints(OceanNpVirtualNodeGroupTaintArgs.builder()
  *                 .key("taintKey")
  *                 .value("taintValue")
@@ -428,6 +429,20 @@ public class OceanNpVirtualNodeGroup extends com.pulumi.resources.CustomResource
      */
     public Output<Optional<OceanNpVirtualNodeGroupScheduling>> scheduling() {
         return Codegen.optional(this.scheduling);
+    }
+    /**
+     * Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
+     * 
+     */
+    @Export(name="shouldUtilizeCommitments", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> shouldUtilizeCommitments;
+
+    /**
+     * @return Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
+     * 
+     */
+    public Output<Optional<Boolean>> shouldUtilizeCommitments() {
+        return Codegen.optional(this.shouldUtilizeCommitments);
     }
     /**
      * Percentage of spot VMs to maintain.

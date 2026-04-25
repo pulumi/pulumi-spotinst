@@ -80,6 +80,7 @@ namespace Pulumi.SpotInst.Azure
     ///         SpotPercentage = 50,
     ///         FallbackToOndemand = true,
     ///         DrainingTimeout = 600,
+    ///         ShouldUtilizeCommitments = true,
     ///         Taints = new[]
     ///         {
     ///             new SpotInst.Azure.Inputs.OceanNpVirtualNodeGroupTaintArgs
@@ -274,6 +275,12 @@ namespace Pulumi.SpotInst.Azure
         /// </summary>
         [Output("scheduling")]
         public Output<Outputs.OceanNpVirtualNodeGroupScheduling?> Scheduling { get; private set; } = null!;
+
+        /// <summary>
+        /// Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
+        /// </summary>
+        [Output("shouldUtilizeCommitments")]
+        public Output<bool?> ShouldUtilizeCommitments { get; private set; } = null!;
 
         /// <summary>
         /// Percentage of spot VMs to maintain.
@@ -496,6 +503,12 @@ namespace Pulumi.SpotInst.Azure
         public Input<Inputs.OceanNpVirtualNodeGroupSchedulingArgs>? Scheduling { get; set; }
 
         /// <summary>
+        /// Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
+        /// </summary>
+        [Input("shouldUtilizeCommitments")]
+        public Input<bool>? ShouldUtilizeCommitments { get; set; }
+
+        /// <summary>
         /// Percentage of spot VMs to maintain.
         /// </summary>
         [Input("spotPercentage")]
@@ -693,6 +706,12 @@ namespace Pulumi.SpotInst.Azure
         /// </summary>
         [Input("scheduling")]
         public Input<Inputs.OceanNpVirtualNodeGroupSchedulingGetArgs>? Scheduling { get; set; }
+
+        /// <summary>
+        /// Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
+        /// </summary>
+        [Input("shouldUtilizeCommitments")]
+        public Input<bool>? ShouldUtilizeCommitments { get; set; }
 
         /// <summary>
         /// Percentage of spot VMs to maintain.

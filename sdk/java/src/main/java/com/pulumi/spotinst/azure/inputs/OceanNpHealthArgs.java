@@ -5,6 +5,7 @@ package com.pulumi.spotinst.azure.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
@@ -30,10 +31,42 @@ public final class OceanNpHealthArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.gracePeriod);
     }
 
+    /**
+     * The amount of time, in seconds, a node is allowed to remain unhealthy after the grace period has elapsed before Ocean automatically replaces it. Valid values are in range `[120-3600]`.
+     * 
+     */
+    @Import(name="healthCheckUnhealthyDurationBeforeReplacement")
+    private @Nullable Output<Integer> healthCheckUnhealthyDurationBeforeReplacement;
+
+    /**
+     * @return The amount of time, in seconds, a node is allowed to remain unhealthy after the grace period has elapsed before Ocean automatically replaces it. Valid values are in range `[120-3600]`.
+     * 
+     */
+    public Optional<Output<Integer>> healthCheckUnhealthyDurationBeforeReplacement() {
+        return Optional.ofNullable(this.healthCheckUnhealthyDurationBeforeReplacement);
+    }
+
+    /**
+     * Indicates whether Ocean automatically replaces nodes that remain in a NotReady or Unschedulable state. When `false`, unhealthy nodes are detected but not replaced. When `true`, unhealthy nodes are automatically replaced.
+     * 
+     */
+    @Import(name="shouldReplaceUnhealthyInstances")
+    private @Nullable Output<Boolean> shouldReplaceUnhealthyInstances;
+
+    /**
+     * @return Indicates whether Ocean automatically replaces nodes that remain in a NotReady or Unschedulable state. When `false`, unhealthy nodes are detected but not replaced. When `true`, unhealthy nodes are automatically replaced.
+     * 
+     */
+    public Optional<Output<Boolean>> shouldReplaceUnhealthyInstances() {
+        return Optional.ofNullable(this.shouldReplaceUnhealthyInstances);
+    }
+
     private OceanNpHealthArgs() {}
 
     private OceanNpHealthArgs(OceanNpHealthArgs $) {
         this.gracePeriod = $.gracePeriod;
+        this.healthCheckUnhealthyDurationBeforeReplacement = $.healthCheckUnhealthyDurationBeforeReplacement;
+        this.shouldReplaceUnhealthyInstances = $.shouldReplaceUnhealthyInstances;
     }
 
     public static Builder builder() {
@@ -73,6 +106,48 @@ public final class OceanNpHealthArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder gracePeriod(Integer gracePeriod) {
             return gracePeriod(Output.of(gracePeriod));
+        }
+
+        /**
+         * @param healthCheckUnhealthyDurationBeforeReplacement The amount of time, in seconds, a node is allowed to remain unhealthy after the grace period has elapsed before Ocean automatically replaces it. Valid values are in range `[120-3600]`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder healthCheckUnhealthyDurationBeforeReplacement(@Nullable Output<Integer> healthCheckUnhealthyDurationBeforeReplacement) {
+            $.healthCheckUnhealthyDurationBeforeReplacement = healthCheckUnhealthyDurationBeforeReplacement;
+            return this;
+        }
+
+        /**
+         * @param healthCheckUnhealthyDurationBeforeReplacement The amount of time, in seconds, a node is allowed to remain unhealthy after the grace period has elapsed before Ocean automatically replaces it. Valid values are in range `[120-3600]`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder healthCheckUnhealthyDurationBeforeReplacement(Integer healthCheckUnhealthyDurationBeforeReplacement) {
+            return healthCheckUnhealthyDurationBeforeReplacement(Output.of(healthCheckUnhealthyDurationBeforeReplacement));
+        }
+
+        /**
+         * @param shouldReplaceUnhealthyInstances Indicates whether Ocean automatically replaces nodes that remain in a NotReady or Unschedulable state. When `false`, unhealthy nodes are detected but not replaced. When `true`, unhealthy nodes are automatically replaced.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shouldReplaceUnhealthyInstances(@Nullable Output<Boolean> shouldReplaceUnhealthyInstances) {
+            $.shouldReplaceUnhealthyInstances = shouldReplaceUnhealthyInstances;
+            return this;
+        }
+
+        /**
+         * @param shouldReplaceUnhealthyInstances Indicates whether Ocean automatically replaces nodes that remain in a NotReady or Unschedulable state. When `false`, unhealthy nodes are detected but not replaced. When `true`, unhealthy nodes are automatically replaced.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shouldReplaceUnhealthyInstances(Boolean shouldReplaceUnhealthyInstances) {
+            return shouldReplaceUnhealthyInstances(Output.of(shouldReplaceUnhealthyInstances));
         }
 
         public OceanNpHealthArgs build() {

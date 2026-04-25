@@ -136,6 +136,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .health(OceanNpHealthArgs.builder()
  *                 .gracePeriod(600)
+ *                 .shouldReplaceUnhealthyInstances(false)
+ *                 .healthCheckUnhealthyDurationBeforeReplacement(180)
  *                 .build())
  *             .logging(OceanNpLoggingArgs.builder()
  *                 .export(OceanNpLoggingExportArgs.builder()
@@ -177,6 +179,7 @@ import javax.annotation.Nullable;
  *             .spotPercentage(50)
  *             .fallbackToOndemand(true)
  *             .drainingTimeout(600)
+ *             .shouldUtilizeCommitments(true)
  *             .taints(OceanNpTaintArgs.builder()
  *                 .key("taintKey")
  *                 .value("taintValue")
@@ -574,6 +577,20 @@ public class OceanNp extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<OceanNpScheduling>> scheduling() {
         return Codegen.optional(this.scheduling);
+    }
+    /**
+     * Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
+     * 
+     */
+    @Export(name="shouldUtilizeCommitments", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> shouldUtilizeCommitments;
+
+    /**
+     * @return Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
+     * 
+     */
+    public Output<Optional<Boolean>> shouldUtilizeCommitments() {
+        return Codegen.optional(this.shouldUtilizeCommitments);
     }
     /**
      * Percentage of spot VMs to maintain.

@@ -17,11 +17,26 @@ namespace Pulumi.SpotInst.Azure.Outputs
         /// The amount of time to wait, in seconds, from the moment the instance has launched until monitoring of its health checks begins.
         /// </summary>
         public readonly int? GracePeriod;
+        /// <summary>
+        /// The amount of time, in seconds, a node is allowed to remain unhealthy after the grace period has elapsed before Ocean automatically replaces it. Valid values are in range `[120-3600]`.
+        /// </summary>
+        public readonly int? HealthCheckUnhealthyDurationBeforeReplacement;
+        /// <summary>
+        /// Indicates whether Ocean automatically replaces nodes that remain in a NotReady or Unschedulable state. When `False`, unhealthy nodes are detected but not replaced. When `True`, unhealthy nodes are automatically replaced.
+        /// </summary>
+        public readonly bool? ShouldReplaceUnhealthyInstances;
 
         [OutputConstructor]
-        private OceanNpHealth(int? gracePeriod)
+        private OceanNpHealth(
+            int? gracePeriod,
+
+            int? healthCheckUnhealthyDurationBeforeReplacement,
+
+            bool? shouldReplaceUnhealthyInstances)
         {
             GracePeriod = gracePeriod;
+            HealthCheckUnhealthyDurationBeforeReplacement = healthCheckUnhealthyDurationBeforeReplacement;
+            ShouldReplaceUnhealthyInstances = shouldReplaceUnhealthyInstances;
         }
     }
 }
