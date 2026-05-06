@@ -496,8 +496,8 @@ class OceanRightSizingRule(pulumi.CustomResource):
                 },
             ],
             recommendation_application_boundaries=[{
-                "cpu_min": 120,
-                "cpu_max": 190,
+                "cpu_min": float(120),
+                "cpu_max": float(190),
                 "memory_min": 160,
                 "memory_max": 190,
             }],
@@ -592,8 +592,8 @@ class OceanRightSizingRule(pulumi.CustomResource):
                 },
             ],
             recommendation_application_boundaries=[{
-                "cpu_min": 120,
-                "cpu_max": 190,
+                "cpu_min": float(120),
+                "cpu_max": float(190),
                 "memory_min": 160,
                 "memory_max": 190,
             }],

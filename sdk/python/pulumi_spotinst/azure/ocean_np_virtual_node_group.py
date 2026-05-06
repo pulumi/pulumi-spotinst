@@ -943,8 +943,8 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
             filters={
                 "min_vcpu": 2,
                 "max_vcpu": 16,
-                "min_memory_gib": 8,
-                "max_memory_gib": 128,
+                "min_memory_gib": float(8),
+                "max_memory_gib": float(128),
                 "architectures": [
                     "x86_64",
                     "arm64",
@@ -963,8 +963,8 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
                 ],
                 "accelerated_networking": "Enabled",
                 "disk_performance": "Premium",
-                "min_gpu": 1,
-                "max_gpu": 2,
+                "min_gpu": float(1),
+                "max_gpu": float(2),
                 "min_nics": 1,
                 "vm_types": [
                     "generalPurpose",
@@ -1077,8 +1077,8 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
             filters={
                 "min_vcpu": 2,
                 "max_vcpu": 16,
-                "min_memory_gib": 8,
-                "max_memory_gib": 128,
+                "min_memory_gib": float(8),
+                "max_memory_gib": float(128),
                 "architectures": [
                     "x86_64",
                     "arm64",
@@ -1097,8 +1097,8 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
                 ],
                 "accelerated_networking": "Enabled",
                 "disk_performance": "Premium",
-                "min_gpu": 1,
-                "max_gpu": 2,
+                "min_gpu": float(1),
+                "max_gpu": float(2),
                 "min_nics": 1,
                 "vm_types": [
                     "generalPurpose",

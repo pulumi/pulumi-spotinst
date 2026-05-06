@@ -912,8 +912,8 @@ class OceanLaunchSpec(pulumi.CustomResource):
                     "c2",
                     "c3",
                 ],
-                "min_memory_gib": 8,
-                "max_memory_gib": 32,
+                "min_memory_gib": float(8),
+                "max_memory_gib": float(32),
                 "min_vcpu": 2,
                 "max_vcpu": 16,
             })
@@ -1045,8 +1045,8 @@ class OceanLaunchSpec(pulumi.CustomResource):
                     "c2",
                     "c3",
                 ],
-                "min_memory_gib": 8,
-                "max_memory_gib": 32,
+                "min_memory_gib": float(8),
+                "max_memory_gib": float(32),
                 "min_vcpu": 2,
                 "max_vcpu": 16,
             })
