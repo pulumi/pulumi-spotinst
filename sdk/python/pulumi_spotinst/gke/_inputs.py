@@ -135,19 +135,19 @@ __all__ = [
 
 class ElastigroupBackendServiceArgsDict(TypedDict):
     service_name: pulumi.Input[_builtins.str]
-    backend_balancing: NotRequired[pulumi.Input['ElastigroupBackendServiceBackendBalancingArgsDict']]
-    location_type: NotRequired[pulumi.Input[_builtins.str]]
-    named_ports: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupBackendServiceNamedPortArgsDict']]]]
-    scheme: NotRequired[pulumi.Input[_builtins.str]]
+    backend_balancing: NotRequired[pulumi.Input[Optional['ElastigroupBackendServiceBackendBalancingArgs']]]
+    location_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    named_ports: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupBackendServiceNamedPortArgs']]]]]
+    scheme: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ElastigroupBackendServiceArgs:
     def __init__(__self__, *,
                  service_name: pulumi.Input[_builtins.str],
-                 backend_balancing: Optional[pulumi.Input['ElastigroupBackendServiceBackendBalancingArgs']] = None,
-                 location_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 named_ports: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupBackendServiceNamedPortArgs']]]] = None,
-                 scheme: Optional[pulumi.Input[_builtins.str]] = None):
+                 backend_balancing: pulumi.Input[Optional['ElastigroupBackendServiceBackendBalancingArgs']] = None,
+                 location_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 named_ports: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupBackendServiceNamedPortArgs']]]] = None,
+                 scheme: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "service_name", service_name)
         if backend_balancing is not None:
             pulumi.set(__self__, "backend_balancing", backend_balancing)
@@ -169,50 +169,50 @@ class ElastigroupBackendServiceArgs:
 
     @_builtins.property
     @pulumi.getter(name="backendBalancing")
-    def backend_balancing(self) -> Optional[pulumi.Input['ElastigroupBackendServiceBackendBalancingArgs']]:
+    def backend_balancing(self) -> pulumi.Input[Optional['ElastigroupBackendServiceBackendBalancingArgs']]:
         return pulumi.get(self, "backend_balancing")
 
     @backend_balancing.setter
-    def backend_balancing(self, value: Optional[pulumi.Input['ElastigroupBackendServiceBackendBalancingArgs']]):
+    def backend_balancing(self, value: pulumi.Input[Optional['ElastigroupBackendServiceBackendBalancingArgs']]):
         pulumi.set(self, "backend_balancing", value)
 
     @_builtins.property
     @pulumi.getter(name="locationType")
-    def location_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "location_type")
 
     @location_type.setter
-    def location_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location_type", value)
 
     @_builtins.property
     @pulumi.getter(name="namedPorts")
-    def named_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupBackendServiceNamedPortArgs']]]]:
+    def named_ports(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupBackendServiceNamedPortArgs']]]]:
         return pulumi.get(self, "named_ports")
 
     @named_ports.setter
-    def named_ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupBackendServiceNamedPortArgs']]]]):
+    def named_ports(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupBackendServiceNamedPortArgs']]]]):
         pulumi.set(self, "named_ports", value)
 
     @_builtins.property
     @pulumi.getter
-    def scheme(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scheme(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "scheme")
 
     @scheme.setter
-    def scheme(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scheme(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scheme", value)
 
 
 class ElastigroupBackendServiceBackendBalancingArgsDict(TypedDict):
-    backend_balancing_mode: NotRequired[pulumi.Input[_builtins.str]]
-    max_rate_per_instance: NotRequired[pulumi.Input[_builtins.int]]
+    backend_balancing_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    max_rate_per_instance: NotRequired[pulumi.Input[Optional[_builtins.int]]]
 
 @pulumi.input_type
 class ElastigroupBackendServiceBackendBalancingArgs:
     def __init__(__self__, *,
-                 backend_balancing_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_rate_per_instance: Optional[pulumi.Input[_builtins.int]] = None):
+                 backend_balancing_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_rate_per_instance: pulumi.Input[Optional[_builtins.int]] = None):
         if backend_balancing_mode is not None:
             pulumi.set(__self__, "backend_balancing_mode", backend_balancing_mode)
         if max_rate_per_instance is not None:
@@ -220,20 +220,20 @@ class ElastigroupBackendServiceBackendBalancingArgs:
 
     @_builtins.property
     @pulumi.getter(name="backendBalancingMode")
-    def backend_balancing_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backend_balancing_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "backend_balancing_mode")
 
     @backend_balancing_mode.setter
-    def backend_balancing_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backend_balancing_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backend_balancing_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="maxRatePerInstance")
-    def max_rate_per_instance(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_rate_per_instance(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "max_rate_per_instance")
 
     @max_rate_per_instance.setter
-    def max_rate_per_instance(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_rate_per_instance(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_rate_per_instance", value)
 
 
@@ -269,26 +269,26 @@ class ElastigroupBackendServiceNamedPortArgs:
 
 
 class ElastigroupDiskArgsDict(TypedDict):
-    auto_delete: NotRequired[pulumi.Input[_builtins.bool]]
-    boot: NotRequired[pulumi.Input[_builtins.bool]]
-    device_name: NotRequired[pulumi.Input[_builtins.str]]
-    initialize_params: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupDiskInitializeParamArgsDict']]]]
-    interface: NotRequired[pulumi.Input[_builtins.str]]
-    mode: NotRequired[pulumi.Input[_builtins.str]]
-    source: NotRequired[pulumi.Input[_builtins.str]]
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    auto_delete: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    boot: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    device_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    initialize_params: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupDiskInitializeParamArgs']]]]]
+    interface: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    source: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ElastigroupDiskArgs:
     def __init__(__self__, *,
-                 auto_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 boot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 device_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 initialize_params: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupDiskInitializeParamArgs']]]] = None,
-                 interface: Optional[pulumi.Input[_builtins.str]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 boot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 device_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 initialize_params: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupDiskInitializeParamArgs']]]] = None,
+                 interface: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         if auto_delete is not None:
             pulumi.set(__self__, "auto_delete", auto_delete)
         if boot is not None:
@@ -308,88 +308,88 @@ class ElastigroupDiskArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoDelete")
-    def auto_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "auto_delete")
 
     @auto_delete.setter
-    def auto_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_delete", value)
 
     @_builtins.property
     @pulumi.getter
-    def boot(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def boot(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "boot")
 
     @boot.setter
-    def boot(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def boot(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "boot", value)
 
     @_builtins.property
     @pulumi.getter(name="deviceName")
-    def device_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def device_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "device_name")
 
     @device_name.setter
-    def device_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def device_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "device_name", value)
 
     @_builtins.property
     @pulumi.getter(name="initializeParams")
-    def initialize_params(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupDiskInitializeParamArgs']]]]:
+    def initialize_params(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupDiskInitializeParamArgs']]]]:
         return pulumi.get(self, "initialize_params")
 
     @initialize_params.setter
-    def initialize_params(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupDiskInitializeParamArgs']]]]):
+    def initialize_params(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupDiskInitializeParamArgs']]]]):
         pulumi.set(self, "initialize_params", value)
 
     @_builtins.property
     @pulumi.getter
-    def interface(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def interface(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "interface")
 
     @interface.setter
-    def interface(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def interface(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "interface", value)
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class ElastigroupDiskInitializeParamArgsDict(TypedDict):
     source_image: pulumi.Input[_builtins.str]
-    disk_size_gb: NotRequired[pulumi.Input[_builtins.str]]
-    disk_type: NotRequired[pulumi.Input[_builtins.str]]
+    disk_size_gb: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ElastigroupDiskInitializeParamArgs:
     def __init__(__self__, *,
                  source_image: pulumi.Input[_builtins.str],
-                 disk_size_gb: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 disk_size_gb: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_type: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "source_image", source_image)
         if disk_size_gb is not None:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
@@ -407,20 +407,20 @@ class ElastigroupDiskInitializeParamArgs:
 
     @_builtins.property
     @pulumi.getter(name="diskSizeGb")
-    def disk_size_gb(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_size_gb(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "disk_size_gb")
 
     @disk_size_gb.setter
-    def disk_size_gb(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_size_gb(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_size_gb", value)
 
     @_builtins.property
     @pulumi.getter(name="diskType")
-    def disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "disk_type")
 
     @disk_type.setter
-    def disk_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_type", value)
 
 
@@ -518,30 +518,30 @@ class ElastigroupIntegrationDockerSwarmArgs:
 
 
 class ElastigroupIntegrationGkeArgsDict(TypedDict):
-    auto_update: NotRequired[pulumi.Input[_builtins.bool]]
-    autoscale_cooldown: NotRequired[pulumi.Input[_builtins.int]]
+    auto_update: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    autoscale_cooldown: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
     """
-    autoscale_down: NotRequired[pulumi.Input['ElastigroupIntegrationGkeAutoscaleDownArgsDict']]
+    autoscale_down: NotRequired[pulumi.Input[Optional['ElastigroupIntegrationGkeAutoscaleDownArgs']]]
     """
     Enabling scale down.
     """
-    autoscale_headroom: NotRequired[pulumi.Input['ElastigroupIntegrationGkeAutoscaleHeadroomArgsDict']]
+    autoscale_headroom: NotRequired[pulumi.Input[Optional['ElastigroupIntegrationGkeAutoscaleHeadroomArgs']]]
     """
     Headroom for the cluster.
     """
-    autoscale_is_auto_config: NotRequired[pulumi.Input[_builtins.bool]]
-    autoscale_is_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    autoscale_is_auto_config: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    autoscale_is_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Specifies whether the auto scaling feature is enabled.
     """
-    autoscale_labels: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationGkeAutoscaleLabelArgsDict']]]]
+    autoscale_labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupIntegrationGkeAutoscaleLabelArgs']]]]]
     """
     Labels to assign to the resource.
     """
-    cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-    location: NotRequired[pulumi.Input[_builtins.str]]
+    cluster_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The location of your GKE cluster.
     """
@@ -549,15 +549,15 @@ class ElastigroupIntegrationGkeArgsDict(TypedDict):
 @pulumi.input_type
 class ElastigroupIntegrationGkeArgs:
     def __init__(__self__, *,
-                 auto_update: Optional[pulumi.Input[_builtins.bool]] = None,
-                 autoscale_cooldown: Optional[pulumi.Input[_builtins.int]] = None,
-                 autoscale_down: Optional[pulumi.Input['ElastigroupIntegrationGkeAutoscaleDownArgs']] = None,
-                 autoscale_headroom: Optional[pulumi.Input['ElastigroupIntegrationGkeAutoscaleHeadroomArgs']] = None,
-                 autoscale_is_auto_config: Optional[pulumi.Input[_builtins.bool]] = None,
-                 autoscale_is_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 autoscale_labels: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationGkeAutoscaleLabelArgs']]]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_update: pulumi.Input[Optional[_builtins.bool]] = None,
+                 autoscale_cooldown: pulumi.Input[Optional[_builtins.int]] = None,
+                 autoscale_down: pulumi.Input[Optional['ElastigroupIntegrationGkeAutoscaleDownArgs']] = None,
+                 autoscale_headroom: pulumi.Input[Optional['ElastigroupIntegrationGkeAutoscaleHeadroomArgs']] = None,
+                 autoscale_is_auto_config: pulumi.Input[Optional[_builtins.bool]] = None,
+                 autoscale_is_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 autoscale_labels: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupIntegrationGkeAutoscaleLabelArgs']]]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] autoscale_cooldown: The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
         :param pulumi.Input['ElastigroupIntegrationGkeAutoscaleDownArgs'] autoscale_down: Enabling scale down.
@@ -587,106 +587,106 @@ class ElastigroupIntegrationGkeArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoUpdate")
-    def auto_update(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_update(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "auto_update")
 
     @auto_update.setter
-    def auto_update(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_update(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_update", value)
 
     @_builtins.property
     @pulumi.getter(name="autoscaleCooldown")
-    def autoscale_cooldown(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def autoscale_cooldown(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
         """
         return pulumi.get(self, "autoscale_cooldown")
 
     @autoscale_cooldown.setter
-    def autoscale_cooldown(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def autoscale_cooldown(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "autoscale_cooldown", value)
 
     @_builtins.property
     @pulumi.getter(name="autoscaleDown")
-    def autoscale_down(self) -> Optional[pulumi.Input['ElastigroupIntegrationGkeAutoscaleDownArgs']]:
+    def autoscale_down(self) -> pulumi.Input[Optional['ElastigroupIntegrationGkeAutoscaleDownArgs']]:
         """
         Enabling scale down.
         """
         return pulumi.get(self, "autoscale_down")
 
     @autoscale_down.setter
-    def autoscale_down(self, value: Optional[pulumi.Input['ElastigroupIntegrationGkeAutoscaleDownArgs']]):
+    def autoscale_down(self, value: pulumi.Input[Optional['ElastigroupIntegrationGkeAutoscaleDownArgs']]):
         pulumi.set(self, "autoscale_down", value)
 
     @_builtins.property
     @pulumi.getter(name="autoscaleHeadroom")
-    def autoscale_headroom(self) -> Optional[pulumi.Input['ElastigroupIntegrationGkeAutoscaleHeadroomArgs']]:
+    def autoscale_headroom(self) -> pulumi.Input[Optional['ElastigroupIntegrationGkeAutoscaleHeadroomArgs']]:
         """
         Headroom for the cluster.
         """
         return pulumi.get(self, "autoscale_headroom")
 
     @autoscale_headroom.setter
-    def autoscale_headroom(self, value: Optional[pulumi.Input['ElastigroupIntegrationGkeAutoscaleHeadroomArgs']]):
+    def autoscale_headroom(self, value: pulumi.Input[Optional['ElastigroupIntegrationGkeAutoscaleHeadroomArgs']]):
         pulumi.set(self, "autoscale_headroom", value)
 
     @_builtins.property
     @pulumi.getter(name="autoscaleIsAutoConfig")
-    def autoscale_is_auto_config(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def autoscale_is_auto_config(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "autoscale_is_auto_config")
 
     @autoscale_is_auto_config.setter
-    def autoscale_is_auto_config(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def autoscale_is_auto_config(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "autoscale_is_auto_config", value)
 
     @_builtins.property
     @pulumi.getter(name="autoscaleIsEnabled")
-    def autoscale_is_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def autoscale_is_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the auto scaling feature is enabled.
         """
         return pulumi.get(self, "autoscale_is_enabled")
 
     @autoscale_is_enabled.setter
-    def autoscale_is_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def autoscale_is_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "autoscale_is_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="autoscaleLabels")
-    def autoscale_labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationGkeAutoscaleLabelArgs']]]]:
+    def autoscale_labels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupIntegrationGkeAutoscaleLabelArgs']]]]:
         """
         Labels to assign to the resource.
         """
         return pulumi.get(self, "autoscale_labels")
 
     @autoscale_labels.setter
-    def autoscale_labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationGkeAutoscaleLabelArgs']]]]):
+    def autoscale_labels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupIntegrationGkeAutoscaleLabelArgs']]]]):
         pulumi.set(self, "autoscale_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location of your GKE cluster.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
 
 class ElastigroupIntegrationGkeAutoscaleDownArgsDict(TypedDict):
-    evaluation_periods: NotRequired[pulumi.Input[_builtins.int]]
+    evaluation_periods: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Amount of cooldown evaluation periods for scale down.
     """
@@ -694,7 +694,7 @@ class ElastigroupIntegrationGkeAutoscaleDownArgsDict(TypedDict):
 @pulumi.input_type
 class ElastigroupIntegrationGkeAutoscaleDownArgs:
     def __init__(__self__, *,
-                 evaluation_periods: Optional[pulumi.Input[_builtins.int]] = None):
+                 evaluation_periods: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] evaluation_periods: Amount of cooldown evaluation periods for scale down.
         """
@@ -703,27 +703,27 @@ class ElastigroupIntegrationGkeAutoscaleDownArgs:
 
     @_builtins.property
     @pulumi.getter(name="evaluationPeriods")
-    def evaluation_periods(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def evaluation_periods(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Amount of cooldown evaluation periods for scale down.
         """
         return pulumi.get(self, "evaluation_periods")
 
     @evaluation_periods.setter
-    def evaluation_periods(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def evaluation_periods(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "evaluation_periods", value)
 
 
 class ElastigroupIntegrationGkeAutoscaleHeadroomArgsDict(TypedDict):
-    cpu_per_unit: NotRequired[pulumi.Input[_builtins.int]]
+    cpu_per_unit: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Cpu units for compute.
     """
-    memory_per_unit: NotRequired[pulumi.Input[_builtins.int]]
+    memory_per_unit: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     RAM units for compute.
     """
-    num_of_units: NotRequired[pulumi.Input[_builtins.int]]
+    num_of_units: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Amount of units for compute.
     """
@@ -731,9 +731,9 @@ class ElastigroupIntegrationGkeAutoscaleHeadroomArgsDict(TypedDict):
 @pulumi.input_type
 class ElastigroupIntegrationGkeAutoscaleHeadroomArgs:
     def __init__(__self__, *,
-                 cpu_per_unit: Optional[pulumi.Input[_builtins.int]] = None,
-                 memory_per_unit: Optional[pulumi.Input[_builtins.int]] = None,
-                 num_of_units: Optional[pulumi.Input[_builtins.int]] = None):
+                 cpu_per_unit: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory_per_unit: pulumi.Input[Optional[_builtins.int]] = None,
+                 num_of_units: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] cpu_per_unit: Cpu units for compute.
         :param pulumi.Input[_builtins.int] memory_per_unit: RAM units for compute.
@@ -748,38 +748,38 @@ class ElastigroupIntegrationGkeAutoscaleHeadroomArgs:
 
     @_builtins.property
     @pulumi.getter(name="cpuPerUnit")
-    def cpu_per_unit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cpu_per_unit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Cpu units for compute.
         """
         return pulumi.get(self, "cpu_per_unit")
 
     @cpu_per_unit.setter
-    def cpu_per_unit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cpu_per_unit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cpu_per_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="memoryPerUnit")
-    def memory_per_unit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def memory_per_unit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         RAM units for compute.
         """
         return pulumi.get(self, "memory_per_unit")
 
     @memory_per_unit.setter
-    def memory_per_unit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def memory_per_unit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "memory_per_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="numOfUnits")
-    def num_of_units(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def num_of_units(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Amount of units for compute.
         """
         return pulumi.get(self, "num_of_units")
 
     @num_of_units.setter
-    def num_of_units(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def num_of_units(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "num_of_units", value)
 
 
@@ -878,15 +878,15 @@ class ElastigroupMetadataArgs:
 
 class ElastigroupNetworkInterfaceArgsDict(TypedDict):
     network: pulumi.Input[_builtins.str]
-    access_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceAccessConfigArgsDict']]]]
-    alias_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceAliasIpRangeArgsDict']]]]
+    access_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupNetworkInterfaceAccessConfigArgs']]]]]
+    alias_ip_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupNetworkInterfaceAliasIpRangeArgs']]]]]
 
 @pulumi.input_type
 class ElastigroupNetworkInterfaceArgs:
     def __init__(__self__, *,
                  network: pulumi.Input[_builtins.str],
-                 access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceAccessConfigArgs']]]] = None,
-                 alias_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceAliasIpRangeArgs']]]] = None):
+                 access_configs: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupNetworkInterfaceAccessConfigArgs']]]] = None,
+                 alias_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupNetworkInterfaceAliasIpRangeArgs']]]] = None):
         pulumi.set(__self__, "network", network)
         if access_configs is not None:
             pulumi.set(__self__, "access_configs", access_configs)
@@ -904,32 +904,32 @@ class ElastigroupNetworkInterfaceArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessConfigs")
-    def access_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceAccessConfigArgs']]]]:
+    def access_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupNetworkInterfaceAccessConfigArgs']]]]:
         return pulumi.get(self, "access_configs")
 
     @access_configs.setter
-    def access_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceAccessConfigArgs']]]]):
+    def access_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupNetworkInterfaceAccessConfigArgs']]]]):
         pulumi.set(self, "access_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="aliasIpRanges")
-    def alias_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceAliasIpRangeArgs']]]]:
+    def alias_ip_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupNetworkInterfaceAliasIpRangeArgs']]]]:
         return pulumi.get(self, "alias_ip_ranges")
 
     @alias_ip_ranges.setter
-    def alias_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceAliasIpRangeArgs']]]]):
+    def alias_ip_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupNetworkInterfaceAliasIpRangeArgs']]]]):
         pulumi.set(self, "alias_ip_ranges", value)
 
 
 class ElastigroupNetworkInterfaceAccessConfigArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ElastigroupNetworkInterfaceAccessConfigArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         if name is not None:
             pulumi.set(__self__, "name", name)
         if type is not None:
@@ -937,20 +937,20 @@ class ElastigroupNetworkInterfaceAccessConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -1010,18 +1010,18 @@ class ElastigroupScalingDownPolicyArgsDict(TypedDict):
     policy_name: pulumi.Input[_builtins.str]
     threshold: pulumi.Input[_builtins.float]
     unit: pulumi.Input[_builtins.str]
-    action_type: NotRequired[pulumi.Input[_builtins.str]]
-    adjustment: NotRequired[pulumi.Input[_builtins.int]]
-    cooldown: NotRequired[pulumi.Input[_builtins.int]]
-    dimensions: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyDimensionArgsDict']]]]
-    evaluation_periods: NotRequired[pulumi.Input[_builtins.int]]
+    action_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    adjustment: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    cooldown: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    dimensions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupScalingDownPolicyDimensionArgs']]]]]
+    evaluation_periods: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Amount of cooldown evaluation periods for scale down.
     """
-    operator: NotRequired[pulumi.Input[_builtins.str]]
-    period: NotRequired[pulumi.Input[_builtins.int]]
-    source: NotRequired[pulumi.Input[_builtins.str]]
-    statistic: NotRequired[pulumi.Input[_builtins.str]]
+    operator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    period: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    source: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    statistic: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ElastigroupScalingDownPolicyArgs:
@@ -1031,15 +1031,15 @@ class ElastigroupScalingDownPolicyArgs:
                  policy_name: pulumi.Input[_builtins.str],
                  threshold: pulumi.Input[_builtins.float],
                  unit: pulumi.Input[_builtins.str],
-                 action_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 adjustment: Optional[pulumi.Input[_builtins.int]] = None,
-                 cooldown: Optional[pulumi.Input[_builtins.int]] = None,
-                 dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyDimensionArgs']]]] = None,
-                 evaluation_periods: Optional[pulumi.Input[_builtins.int]] = None,
-                 operator: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
-                 statistic: Optional[pulumi.Input[_builtins.str]] = None):
+                 action_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 adjustment: pulumi.Input[Optional[_builtins.int]] = None,
+                 cooldown: pulumi.Input[Optional[_builtins.int]] = None,
+                 dimensions: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupScalingDownPolicyDimensionArgs']]]] = None,
+                 evaluation_periods: pulumi.Input[Optional[_builtins.int]] = None,
+                 operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
+                 statistic: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] evaluation_periods: Amount of cooldown evaluation periods for scale down.
         """
@@ -1114,98 +1114,98 @@ class ElastigroupScalingDownPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="actionType")
-    def action_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def action_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "action_type")
 
     @action_type.setter
-    def action_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def action_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def adjustment(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def adjustment(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "adjustment")
 
     @adjustment.setter
-    def adjustment(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def adjustment(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "adjustment", value)
 
     @_builtins.property
     @pulumi.getter
-    def cooldown(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cooldown(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "cooldown")
 
     @cooldown.setter
-    def cooldown(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cooldown(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cooldown", value)
 
     @_builtins.property
     @pulumi.getter
-    def dimensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyDimensionArgs']]]]:
+    def dimensions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupScalingDownPolicyDimensionArgs']]]]:
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
-    def dimensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyDimensionArgs']]]]):
+    def dimensions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupScalingDownPolicyDimensionArgs']]]]):
         pulumi.set(self, "dimensions", value)
 
     @_builtins.property
     @pulumi.getter(name="evaluationPeriods")
-    def evaluation_periods(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def evaluation_periods(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Amount of cooldown evaluation periods for scale down.
         """
         return pulumi.get(self, "evaluation_periods")
 
     @evaluation_periods.setter
-    def evaluation_periods(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def evaluation_periods(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "evaluation_periods", value)
 
     @_builtins.property
     @pulumi.getter
-    def operator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def operator(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "operator")
 
     @operator.setter
-    def operator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def operator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "operator", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source", value)
 
     @_builtins.property
     @pulumi.getter
-    def statistic(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def statistic(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "statistic")
 
     @statistic.setter
-    def statistic(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def statistic(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "statistic", value)
 
 
 class ElastigroupScalingDownPolicyDimensionArgsDict(TypedDict):
     name: pulumi.Input[_builtins.str]
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ElastigroupScalingDownPolicyDimensionArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "name", name)
         if value is not None:
             pulumi.set(__self__, "value", value)
@@ -1221,11 +1221,11 @@ class ElastigroupScalingDownPolicyDimensionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
@@ -1235,18 +1235,18 @@ class ElastigroupScalingUpPolicyArgsDict(TypedDict):
     policy_name: pulumi.Input[_builtins.str]
     threshold: pulumi.Input[_builtins.float]
     unit: pulumi.Input[_builtins.str]
-    action_type: NotRequired[pulumi.Input[_builtins.str]]
-    adjustment: NotRequired[pulumi.Input[_builtins.int]]
-    cooldown: NotRequired[pulumi.Input[_builtins.int]]
-    dimensions: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyDimensionArgsDict']]]]
-    evaluation_periods: NotRequired[pulumi.Input[_builtins.int]]
+    action_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    adjustment: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    cooldown: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    dimensions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupScalingUpPolicyDimensionArgs']]]]]
+    evaluation_periods: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Amount of cooldown evaluation periods for scale down.
     """
-    operator: NotRequired[pulumi.Input[_builtins.str]]
-    period: NotRequired[pulumi.Input[_builtins.int]]
-    source: NotRequired[pulumi.Input[_builtins.str]]
-    statistic: NotRequired[pulumi.Input[_builtins.str]]
+    operator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    period: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    source: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    statistic: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ElastigroupScalingUpPolicyArgs:
@@ -1256,15 +1256,15 @@ class ElastigroupScalingUpPolicyArgs:
                  policy_name: pulumi.Input[_builtins.str],
                  threshold: pulumi.Input[_builtins.float],
                  unit: pulumi.Input[_builtins.str],
-                 action_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 adjustment: Optional[pulumi.Input[_builtins.int]] = None,
-                 cooldown: Optional[pulumi.Input[_builtins.int]] = None,
-                 dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyDimensionArgs']]]] = None,
-                 evaluation_periods: Optional[pulumi.Input[_builtins.int]] = None,
-                 operator: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
-                 statistic: Optional[pulumi.Input[_builtins.str]] = None):
+                 action_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 adjustment: pulumi.Input[Optional[_builtins.int]] = None,
+                 cooldown: pulumi.Input[Optional[_builtins.int]] = None,
+                 dimensions: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupScalingUpPolicyDimensionArgs']]]] = None,
+                 evaluation_periods: pulumi.Input[Optional[_builtins.int]] = None,
+                 operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
+                 statistic: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] evaluation_periods: Amount of cooldown evaluation periods for scale down.
         """
@@ -1339,98 +1339,98 @@ class ElastigroupScalingUpPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="actionType")
-    def action_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def action_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "action_type")
 
     @action_type.setter
-    def action_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def action_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def adjustment(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def adjustment(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "adjustment")
 
     @adjustment.setter
-    def adjustment(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def adjustment(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "adjustment", value)
 
     @_builtins.property
     @pulumi.getter
-    def cooldown(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cooldown(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "cooldown")
 
     @cooldown.setter
-    def cooldown(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cooldown(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cooldown", value)
 
     @_builtins.property
     @pulumi.getter
-    def dimensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyDimensionArgs']]]]:
+    def dimensions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupScalingUpPolicyDimensionArgs']]]]:
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
-    def dimensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyDimensionArgs']]]]):
+    def dimensions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupScalingUpPolicyDimensionArgs']]]]):
         pulumi.set(self, "dimensions", value)
 
     @_builtins.property
     @pulumi.getter(name="evaluationPeriods")
-    def evaluation_periods(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def evaluation_periods(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Amount of cooldown evaluation periods for scale down.
         """
         return pulumi.get(self, "evaluation_periods")
 
     @evaluation_periods.setter
-    def evaluation_periods(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def evaluation_periods(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "evaluation_periods", value)
 
     @_builtins.property
     @pulumi.getter
-    def operator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def operator(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "operator")
 
     @operator.setter
-    def operator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def operator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "operator", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source", value)
 
     @_builtins.property
     @pulumi.getter
-    def statistic(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def statistic(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "statistic")
 
     @statistic.setter
-    def statistic(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def statistic(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "statistic", value)
 
 
 class ElastigroupScalingUpPolicyDimensionArgsDict(TypedDict):
     name: pulumi.Input[_builtins.str]
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ElastigroupScalingUpPolicyDimensionArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "name", name)
         if value is not None:
             pulumi.set(__self__, "value", value)
@@ -1446,23 +1446,23 @@ class ElastigroupScalingUpPolicyDimensionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class ElastigroupShieldedInstanceConfigArgsDict(TypedDict):
-    enable_integrity_monitoring: NotRequired[pulumi.Input[_builtins.bool]]
-    enable_secure_boot: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_integrity_monitoring: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    enable_secure_boot: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
 
 @pulumi.input_type
 class ElastigroupShieldedInstanceConfigArgs:
     def __init__(__self__, *,
-                 enable_integrity_monitoring: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_secure_boot: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enable_integrity_monitoring: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_secure_boot: pulumi.Input[Optional[_builtins.bool]] = None):
         if enable_integrity_monitoring is not None:
             pulumi.set(__self__, "enable_integrity_monitoring", enable_integrity_monitoring)
         if enable_secure_boot is not None:
@@ -1470,25 +1470,25 @@ class ElastigroupShieldedInstanceConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableIntegrityMonitoring")
-    def enable_integrity_monitoring(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_integrity_monitoring(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "enable_integrity_monitoring")
 
     @enable_integrity_monitoring.setter
-    def enable_integrity_monitoring(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_integrity_monitoring(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_integrity_monitoring", value)
 
     @_builtins.property
     @pulumi.getter(name="enableSecureBoot")
-    def enable_secure_boot(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_secure_boot(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "enable_secure_boot")
 
     @enable_secure_boot.setter
-    def enable_secure_boot(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_secure_boot(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_secure_boot", value)
 
 
 class OceanImportAutoUpdateArgsDict(TypedDict):
-    is_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    is_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enable the Ocean Kubernetes AutoUpdate.
     """
@@ -1496,7 +1496,7 @@ class OceanImportAutoUpdateArgsDict(TypedDict):
 @pulumi.input_type
 class OceanImportAutoUpdateArgs:
     def __init__(__self__, *,
-                 is_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 is_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] is_enabled: Enable the Ocean Kubernetes AutoUpdate.
         """
@@ -1505,47 +1505,47 @@ class OceanImportAutoUpdateArgs:
 
     @_builtins.property
     @pulumi.getter(name="isEnabled")
-    def is_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable the Ocean Kubernetes AutoUpdate.
         """
         return pulumi.get(self, "is_enabled")
 
     @is_enabled.setter
-    def is_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_enabled", value)
 
 
 class OceanImportAutoscalerArgsDict(TypedDict):
-    auto_headroom_percentage: NotRequired[pulumi.Input[_builtins.int]]
+    auto_headroom_percentage: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom % from the cluster. Relevant when isAutoConfig=true.
     """
-    cooldown: NotRequired[pulumi.Input[_builtins.int]]
+    cooldown: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Cooldown period between scaling actions.
     """
-    down: NotRequired[pulumi.Input['OceanImportAutoscalerDownArgsDict']]
+    down: NotRequired[pulumi.Input[Optional['OceanImportAutoscalerDownArgs']]]
     """
     Auto Scaling scale down operations.
     """
-    enable_automatic_and_manual_headroom: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_automatic_and_manual_headroom: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
     """
-    headroom: NotRequired[pulumi.Input['OceanImportAutoscalerHeadroomArgsDict']]
+    headroom: NotRequired[pulumi.Input[Optional['OceanImportAutoscalerHeadroomArgs']]]
     """
     Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
     """
-    is_auto_config: NotRequired[pulumi.Input[_builtins.bool]]
+    is_auto_config: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Automatically configure and optimize headroom resources.
     """
-    is_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    is_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enable the Ocean Kubernetes Autoscaler.
     """
-    resource_limits: NotRequired[pulumi.Input['OceanImportAutoscalerResourceLimitsArgsDict']]
+    resource_limits: NotRequired[pulumi.Input[Optional['OceanImportAutoscalerResourceLimitsArgs']]]
     """
     Optionally set upper and lower bounds on the resource usage of the cluster.
     """
@@ -1553,14 +1553,14 @@ class OceanImportAutoscalerArgsDict(TypedDict):
 @pulumi.input_type
 class OceanImportAutoscalerArgs:
     def __init__(__self__, *,
-                 auto_headroom_percentage: Optional[pulumi.Input[_builtins.int]] = None,
-                 cooldown: Optional[pulumi.Input[_builtins.int]] = None,
-                 down: Optional[pulumi.Input['OceanImportAutoscalerDownArgs']] = None,
-                 enable_automatic_and_manual_headroom: Optional[pulumi.Input[_builtins.bool]] = None,
-                 headroom: Optional[pulumi.Input['OceanImportAutoscalerHeadroomArgs']] = None,
-                 is_auto_config: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_limits: Optional[pulumi.Input['OceanImportAutoscalerResourceLimitsArgs']] = None):
+                 auto_headroom_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+                 cooldown: pulumi.Input[Optional[_builtins.int]] = None,
+                 down: pulumi.Input[Optional['OceanImportAutoscalerDownArgs']] = None,
+                 enable_automatic_and_manual_headroom: pulumi.Input[Optional[_builtins.bool]] = None,
+                 headroom: pulumi.Input[Optional['OceanImportAutoscalerHeadroomArgs']] = None,
+                 is_auto_config: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_limits: pulumi.Input[Optional['OceanImportAutoscalerResourceLimitsArgs']] = None):
         """
         :param pulumi.Input[_builtins.int] auto_headroom_percentage: Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom % from the cluster. Relevant when isAutoConfig=true.
         :param pulumi.Input[_builtins.int] cooldown: Cooldown period between scaling actions.
@@ -1590,111 +1590,111 @@ class OceanImportAutoscalerArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoHeadroomPercentage")
-    def auto_headroom_percentage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def auto_headroom_percentage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom % from the cluster. Relevant when isAutoConfig=true.
         """
         return pulumi.get(self, "auto_headroom_percentage")
 
     @auto_headroom_percentage.setter
-    def auto_headroom_percentage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def auto_headroom_percentage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "auto_headroom_percentage", value)
 
     @_builtins.property
     @pulumi.getter
-    def cooldown(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cooldown(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Cooldown period between scaling actions.
         """
         return pulumi.get(self, "cooldown")
 
     @cooldown.setter
-    def cooldown(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cooldown(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cooldown", value)
 
     @_builtins.property
     @pulumi.getter
-    def down(self) -> Optional[pulumi.Input['OceanImportAutoscalerDownArgs']]:
+    def down(self) -> pulumi.Input[Optional['OceanImportAutoscalerDownArgs']]:
         """
         Auto Scaling scale down operations.
         """
         return pulumi.get(self, "down")
 
     @down.setter
-    def down(self, value: Optional[pulumi.Input['OceanImportAutoscalerDownArgs']]):
+    def down(self, value: pulumi.Input[Optional['OceanImportAutoscalerDownArgs']]):
         pulumi.set(self, "down", value)
 
     @_builtins.property
     @pulumi.getter(name="enableAutomaticAndManualHeadroom")
-    def enable_automatic_and_manual_headroom(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_automatic_and_manual_headroom(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
         """
         return pulumi.get(self, "enable_automatic_and_manual_headroom")
 
     @enable_automatic_and_manual_headroom.setter
-    def enable_automatic_and_manual_headroom(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_automatic_and_manual_headroom(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_automatic_and_manual_headroom", value)
 
     @_builtins.property
     @pulumi.getter
-    def headroom(self) -> Optional[pulumi.Input['OceanImportAutoscalerHeadroomArgs']]:
+    def headroom(self) -> pulumi.Input[Optional['OceanImportAutoscalerHeadroomArgs']]:
         """
         Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
         """
         return pulumi.get(self, "headroom")
 
     @headroom.setter
-    def headroom(self, value: Optional[pulumi.Input['OceanImportAutoscalerHeadroomArgs']]):
+    def headroom(self, value: pulumi.Input[Optional['OceanImportAutoscalerHeadroomArgs']]):
         pulumi.set(self, "headroom", value)
 
     @_builtins.property
     @pulumi.getter(name="isAutoConfig")
-    def is_auto_config(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_auto_config(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Automatically configure and optimize headroom resources.
         """
         return pulumi.get(self, "is_auto_config")
 
     @is_auto_config.setter
-    def is_auto_config(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_auto_config(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_auto_config", value)
 
     @_builtins.property
     @pulumi.getter(name="isEnabled")
-    def is_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable the Ocean Kubernetes Autoscaler.
         """
         return pulumi.get(self, "is_enabled")
 
     @is_enabled.setter
-    def is_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceLimits")
-    def resource_limits(self) -> Optional[pulumi.Input['OceanImportAutoscalerResourceLimitsArgs']]:
+    def resource_limits(self) -> pulumi.Input[Optional['OceanImportAutoscalerResourceLimitsArgs']]:
         """
         Optionally set upper and lower bounds on the resource usage of the cluster.
         """
         return pulumi.get(self, "resource_limits")
 
     @resource_limits.setter
-    def resource_limits(self, value: Optional[pulumi.Input['OceanImportAutoscalerResourceLimitsArgs']]):
+    def resource_limits(self, value: pulumi.Input[Optional['OceanImportAutoscalerResourceLimitsArgs']]):
         pulumi.set(self, "resource_limits", value)
 
 
 class OceanImportAutoscalerDownArgsDict(TypedDict):
-    evaluation_periods: NotRequired[pulumi.Input[_builtins.int]]
+    evaluation_periods: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of evaluation periods that should accumulate before a scale down action takes place.
     """
-    is_aggressive_scale_down_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    is_aggressive_scale_down_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     When set to 'true', the Aggressive Scale Down feature is enabled.
     """
-    max_scale_down_percentage: NotRequired[pulumi.Input[_builtins.float]]
+    max_scale_down_percentage: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Would represent the maximum % to scale-down. Number between 1-100.
     """
@@ -1702,9 +1702,9 @@ class OceanImportAutoscalerDownArgsDict(TypedDict):
 @pulumi.input_type
 class OceanImportAutoscalerDownArgs:
     def __init__(__self__, *,
-                 evaluation_periods: Optional[pulumi.Input[_builtins.int]] = None,
-                 is_aggressive_scale_down_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 max_scale_down_percentage: Optional[pulumi.Input[_builtins.float]] = None):
+                 evaluation_periods: pulumi.Input[Optional[_builtins.int]] = None,
+                 is_aggressive_scale_down_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 max_scale_down_percentage: pulumi.Input[Optional[_builtins.float]] = None):
         """
         :param pulumi.Input[_builtins.int] evaluation_periods: The number of evaluation periods that should accumulate before a scale down action takes place.
         :param pulumi.Input[_builtins.bool] is_aggressive_scale_down_enabled: When set to 'true', the Aggressive Scale Down feature is enabled.
@@ -1719,55 +1719,55 @@ class OceanImportAutoscalerDownArgs:
 
     @_builtins.property
     @pulumi.getter(name="evaluationPeriods")
-    def evaluation_periods(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def evaluation_periods(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of evaluation periods that should accumulate before a scale down action takes place.
         """
         return pulumi.get(self, "evaluation_periods")
 
     @evaluation_periods.setter
-    def evaluation_periods(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def evaluation_periods(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "evaluation_periods", value)
 
     @_builtins.property
     @pulumi.getter(name="isAggressiveScaleDownEnabled")
-    def is_aggressive_scale_down_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_aggressive_scale_down_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When set to 'true', the Aggressive Scale Down feature is enabled.
         """
         return pulumi.get(self, "is_aggressive_scale_down_enabled")
 
     @is_aggressive_scale_down_enabled.setter
-    def is_aggressive_scale_down_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_aggressive_scale_down_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_aggressive_scale_down_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="maxScaleDownPercentage")
-    def max_scale_down_percentage(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def max_scale_down_percentage(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Would represent the maximum % to scale-down. Number between 1-100.
         """
         return pulumi.get(self, "max_scale_down_percentage")
 
     @max_scale_down_percentage.setter
-    def max_scale_down_percentage(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def max_scale_down_percentage(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "max_scale_down_percentage", value)
 
 
 class OceanImportAutoscalerHeadroomArgsDict(TypedDict):
-    cpu_per_unit: NotRequired[pulumi.Input[_builtins.int]]
+    cpu_per_unit: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
     """
-    gpu_per_unit: NotRequired[pulumi.Input[_builtins.int]]
+    gpu_per_unit: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     How much GPU allocate for headroom unit.
     """
-    memory_per_unit: NotRequired[pulumi.Input[_builtins.int]]
+    memory_per_unit: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Optionally configure the amount of memory (MiB) to allocate the headroom.
     """
-    num_of_units: NotRequired[pulumi.Input[_builtins.int]]
+    num_of_units: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
     """
@@ -1775,10 +1775,10 @@ class OceanImportAutoscalerHeadroomArgsDict(TypedDict):
 @pulumi.input_type
 class OceanImportAutoscalerHeadroomArgs:
     def __init__(__self__, *,
-                 cpu_per_unit: Optional[pulumi.Input[_builtins.int]] = None,
-                 gpu_per_unit: Optional[pulumi.Input[_builtins.int]] = None,
-                 memory_per_unit: Optional[pulumi.Input[_builtins.int]] = None,
-                 num_of_units: Optional[pulumi.Input[_builtins.int]] = None):
+                 cpu_per_unit: pulumi.Input[Optional[_builtins.int]] = None,
+                 gpu_per_unit: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory_per_unit: pulumi.Input[Optional[_builtins.int]] = None,
+                 num_of_units: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] cpu_per_unit: Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
         :param pulumi.Input[_builtins.int] gpu_per_unit: How much GPU allocate for headroom unit.
@@ -1796,59 +1796,59 @@ class OceanImportAutoscalerHeadroomArgs:
 
     @_builtins.property
     @pulumi.getter(name="cpuPerUnit")
-    def cpu_per_unit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cpu_per_unit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
         """
         return pulumi.get(self, "cpu_per_unit")
 
     @cpu_per_unit.setter
-    def cpu_per_unit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cpu_per_unit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cpu_per_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="gpuPerUnit")
-    def gpu_per_unit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def gpu_per_unit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         How much GPU allocate for headroom unit.
         """
         return pulumi.get(self, "gpu_per_unit")
 
     @gpu_per_unit.setter
-    def gpu_per_unit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def gpu_per_unit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "gpu_per_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="memoryPerUnit")
-    def memory_per_unit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def memory_per_unit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optionally configure the amount of memory (MiB) to allocate the headroom.
         """
         return pulumi.get(self, "memory_per_unit")
 
     @memory_per_unit.setter
-    def memory_per_unit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def memory_per_unit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "memory_per_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="numOfUnits")
-    def num_of_units(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def num_of_units(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
         """
         return pulumi.get(self, "num_of_units")
 
     @num_of_units.setter
-    def num_of_units(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def num_of_units(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "num_of_units", value)
 
 
 class OceanImportAutoscalerResourceLimitsArgsDict(TypedDict):
-    max_memory_gib: NotRequired[pulumi.Input[_builtins.int]]
+    max_memory_gib: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum memory in GiB units that can be allocated to the cluster.
     """
-    max_vcpu: NotRequired[pulumi.Input[_builtins.int]]
+    max_vcpu: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum cpu in vCpu units that can be allocated to the cluster.
     """
@@ -1856,8 +1856,8 @@ class OceanImportAutoscalerResourceLimitsArgsDict(TypedDict):
 @pulumi.input_type
 class OceanImportAutoscalerResourceLimitsArgs:
     def __init__(__self__, *,
-                 max_memory_gib: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_vcpu: Optional[pulumi.Input[_builtins.int]] = None):
+                 max_memory_gib: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_vcpu: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] max_memory_gib: The maximum memory in GiB units that can be allocated to the cluster.
         :param pulumi.Input[_builtins.int] max_vcpu: The maximum cpu in vCpu units that can be allocated to the cluster.
@@ -1869,26 +1869,26 @@ class OceanImportAutoscalerResourceLimitsArgs:
 
     @_builtins.property
     @pulumi.getter(name="maxMemoryGib")
-    def max_memory_gib(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_memory_gib(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum memory in GiB units that can be allocated to the cluster.
         """
         return pulumi.get(self, "max_memory_gib")
 
     @max_memory_gib.setter
-    def max_memory_gib(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_memory_gib(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_memory_gib", value)
 
     @_builtins.property
     @pulumi.getter(name="maxVcpu")
-    def max_vcpu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_vcpu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum cpu in vCpu units that can be allocated to the cluster.
         """
         return pulumi.get(self, "max_vcpu")
 
     @max_vcpu.setter
-    def max_vcpu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_vcpu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_vcpu", value)
 
 
@@ -1897,12 +1897,12 @@ class OceanImportBackendServiceArgsDict(TypedDict):
     """
     The name of the backend service.
     """
-    location_type: NotRequired[pulumi.Input[_builtins.str]]
+    location_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Sets which location the backend services will be active. Valid values: `regional`, `global`.
     """
-    named_ports: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanImportBackendServiceNamedPortArgsDict']]]]
-    scheme: NotRequired[pulumi.Input[_builtins.str]]
+    named_ports: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanImportBackendServiceNamedPortArgs']]]]]
+    scheme: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use when `location_type` is `regional`. Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
     """
@@ -1911,9 +1911,9 @@ class OceanImportBackendServiceArgsDict(TypedDict):
 class OceanImportBackendServiceArgs:
     def __init__(__self__, *,
                  service_name: pulumi.Input[_builtins.str],
-                 location_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 named_ports: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportBackendServiceNamedPortArgs']]]] = None,
-                 scheme: Optional[pulumi.Input[_builtins.str]] = None):
+                 location_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 named_ports: pulumi.Input[Optional[Sequence[pulumi.Input['OceanImportBackendServiceNamedPortArgs']]]] = None,
+                 scheme: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] service_name: The name of the backend service.
         :param pulumi.Input[_builtins.str] location_type: Sets which location the backend services will be active. Valid values: `regional`, `global`.
@@ -1941,35 +1941,35 @@ class OceanImportBackendServiceArgs:
 
     @_builtins.property
     @pulumi.getter(name="locationType")
-    def location_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sets which location the backend services will be active. Valid values: `regional`, `global`.
         """
         return pulumi.get(self, "location_type")
 
     @location_type.setter
-    def location_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location_type", value)
 
     @_builtins.property
     @pulumi.getter(name="namedPorts")
-    def named_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportBackendServiceNamedPortArgs']]]]:
+    def named_ports(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanImportBackendServiceNamedPortArgs']]]]:
         return pulumi.get(self, "named_ports")
 
     @named_ports.setter
-    def named_ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportBackendServiceNamedPortArgs']]]]):
+    def named_ports(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanImportBackendServiceNamedPortArgs']]]]):
         pulumi.set(self, "named_ports", value)
 
     @_builtins.property
     @pulumi.getter
-    def scheme(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scheme(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use when `location_type` is `regional`. Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
         """
         return pulumi.get(self, "scheme")
 
     @scheme.setter
-    def scheme(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scheme(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scheme", value)
 
 
@@ -2014,27 +2014,27 @@ class OceanImportBackendServiceNamedPortArgs:
 
 
 class OceanImportFiltersArgsDict(TypedDict):
-    exclude_families: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    exclude_families: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
     """
-    include_families: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    include_families: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
     """
-    max_memory_gib: NotRequired[pulumi.Input[_builtins.float]]
+    max_memory_gib: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Maximum amount of Memory (GiB).
     """
-    max_vcpu: NotRequired[pulumi.Input[_builtins.int]]
+    max_vcpu: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Maximum number of vcpus available.
     """
-    min_memory_gib: NotRequired[pulumi.Input[_builtins.float]]
+    min_memory_gib: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Minimum amount of Memory (GiB).
     """
-    min_vcpu: NotRequired[pulumi.Input[_builtins.int]]
+    min_vcpu: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Minimum number of vcpus available.
     """
@@ -2042,12 +2042,12 @@ class OceanImportFiltersArgsDict(TypedDict):
 @pulumi.input_type
 class OceanImportFiltersArgs:
     def __init__(__self__, *,
-                 exclude_families: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 include_families: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 max_memory_gib: Optional[pulumi.Input[_builtins.float]] = None,
-                 max_vcpu: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_memory_gib: Optional[pulumi.Input[_builtins.float]] = None,
-                 min_vcpu: Optional[pulumi.Input[_builtins.int]] = None):
+                 exclude_families: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 include_families: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 max_memory_gib: pulumi.Input[Optional[_builtins.float]] = None,
+                 max_vcpu: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_memory_gib: pulumi.Input[Optional[_builtins.float]] = None,
+                 min_vcpu: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exclude_families: Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] include_families: Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
@@ -2071,83 +2071,83 @@ class OceanImportFiltersArgs:
 
     @_builtins.property
     @pulumi.getter(name="excludeFamilies")
-    def exclude_families(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def exclude_families(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
         """
         return pulumi.get(self, "exclude_families")
 
     @exclude_families.setter
-    def exclude_families(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def exclude_families(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "exclude_families", value)
 
     @_builtins.property
     @pulumi.getter(name="includeFamilies")
-    def include_families(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def include_families(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
         """
         return pulumi.get(self, "include_families")
 
     @include_families.setter
-    def include_families(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def include_families(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "include_families", value)
 
     @_builtins.property
     @pulumi.getter(name="maxMemoryGib")
-    def max_memory_gib(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def max_memory_gib(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Maximum amount of Memory (GiB).
         """
         return pulumi.get(self, "max_memory_gib")
 
     @max_memory_gib.setter
-    def max_memory_gib(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def max_memory_gib(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "max_memory_gib", value)
 
     @_builtins.property
     @pulumi.getter(name="maxVcpu")
-    def max_vcpu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_vcpu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of vcpus available.
         """
         return pulumi.get(self, "max_vcpu")
 
     @max_vcpu.setter
-    def max_vcpu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_vcpu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_vcpu", value)
 
     @_builtins.property
     @pulumi.getter(name="minMemoryGib")
-    def min_memory_gib(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def min_memory_gib(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Minimum amount of Memory (GiB).
         """
         return pulumi.get(self, "min_memory_gib")
 
     @min_memory_gib.setter
-    def min_memory_gib(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def min_memory_gib(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "min_memory_gib", value)
 
     @_builtins.property
     @pulumi.getter(name="minVcpu")
-    def min_vcpu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_vcpu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum number of vcpus available.
         """
         return pulumi.get(self, "min_vcpu")
 
     @min_vcpu.setter
-    def min_vcpu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_vcpu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_vcpu", value)
 
 
 class OceanImportScheduledTaskArgsDict(TypedDict):
-    shutdown_hours: NotRequired[pulumi.Input['OceanImportScheduledTaskShutdownHoursArgsDict']]
+    shutdown_hours: NotRequired[pulumi.Input[Optional['OceanImportScheduledTaskShutdownHoursArgs']]]
     """
     Set shutdown hours for cluster object.
     """
-    tasks: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanImportScheduledTaskTaskArgsDict']]]]
+    tasks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanImportScheduledTaskTaskArgs']]]]]
     """
     The scheduling tasks for the cluster.
     """
@@ -2155,8 +2155,8 @@ class OceanImportScheduledTaskArgsDict(TypedDict):
 @pulumi.input_type
 class OceanImportScheduledTaskArgs:
     def __init__(__self__, *,
-                 shutdown_hours: Optional[pulumi.Input['OceanImportScheduledTaskShutdownHoursArgs']] = None,
-                 tasks: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportScheduledTaskTaskArgs']]]] = None):
+                 shutdown_hours: pulumi.Input[Optional['OceanImportScheduledTaskShutdownHoursArgs']] = None,
+                 tasks: pulumi.Input[Optional[Sequence[pulumi.Input['OceanImportScheduledTaskTaskArgs']]]] = None):
         """
         :param pulumi.Input['OceanImportScheduledTaskShutdownHoursArgs'] shutdown_hours: Set shutdown hours for cluster object.
         :param pulumi.Input[Sequence[pulumi.Input['OceanImportScheduledTaskTaskArgs']]] tasks: The scheduling tasks for the cluster.
@@ -2168,26 +2168,26 @@ class OceanImportScheduledTaskArgs:
 
     @_builtins.property
     @pulumi.getter(name="shutdownHours")
-    def shutdown_hours(self) -> Optional[pulumi.Input['OceanImportScheduledTaskShutdownHoursArgs']]:
+    def shutdown_hours(self) -> pulumi.Input[Optional['OceanImportScheduledTaskShutdownHoursArgs']]:
         """
         Set shutdown hours for cluster object.
         """
         return pulumi.get(self, "shutdown_hours")
 
     @shutdown_hours.setter
-    def shutdown_hours(self, value: Optional[pulumi.Input['OceanImportScheduledTaskShutdownHoursArgs']]):
+    def shutdown_hours(self, value: pulumi.Input[Optional['OceanImportScheduledTaskShutdownHoursArgs']]):
         pulumi.set(self, "shutdown_hours", value)
 
     @_builtins.property
     @pulumi.getter
-    def tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportScheduledTaskTaskArgs']]]]:
+    def tasks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanImportScheduledTaskTaskArgs']]]]:
         """
         The scheduling tasks for the cluster.
         """
         return pulumi.get(self, "tasks")
 
     @tasks.setter
-    def tasks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportScheduledTaskTaskArgs']]]]):
+    def tasks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanImportScheduledTaskTaskArgs']]]]):
         pulumi.set(self, "tasks", value)
 
 
@@ -2197,7 +2197,7 @@ class OceanImportScheduledTaskShutdownHoursArgsDict(TypedDict):
     Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = `true`. API Times are in UTC
     Example: Fri:15:30-Wed:14:30
     """
-    is_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    is_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Flag to enable / disable the shutdown hours.
     Example: `true`
@@ -2207,7 +2207,7 @@ class OceanImportScheduledTaskShutdownHoursArgsDict(TypedDict):
 class OceanImportScheduledTaskShutdownHoursArgs:
     def __init__(__self__, *,
                  time_windows: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 is_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 is_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] time_windows: Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = `true`. API Times are in UTC
                Example: Fri:15:30-Wed:14:30
@@ -2233,7 +2233,7 @@ class OceanImportScheduledTaskShutdownHoursArgs:
 
     @_builtins.property
     @pulumi.getter(name="isEnabled")
-    def is_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag to enable / disable the shutdown hours.
         Example: `true`
@@ -2241,7 +2241,7 @@ class OceanImportScheduledTaskShutdownHoursArgs:
         return pulumi.get(self, "is_enabled")
 
     @is_enabled.setter
-    def is_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_enabled", value)
 
 
@@ -2259,7 +2259,7 @@ class OceanImportScheduledTaskTaskArgsDict(TypedDict):
     """
     Valid values: "clusterRoll". Required for cluster.scheduling.tasks object.
     """
-    task_parameters: NotRequired[pulumi.Input['OceanImportScheduledTaskTaskTaskParametersArgsDict']]
+    task_parameters: NotRequired[pulumi.Input[Optional['OceanImportScheduledTaskTaskTaskParametersArgs']]]
     """
     The scheduling parameters for the cluster.
     """
@@ -2270,7 +2270,7 @@ class OceanImportScheduledTaskTaskArgs:
                  cron_expression: pulumi.Input[_builtins.str],
                  is_enabled: pulumi.Input[_builtins.bool],
                  task_type: pulumi.Input[_builtins.str],
-                 task_parameters: Optional[pulumi.Input['OceanImportScheduledTaskTaskTaskParametersArgs']] = None):
+                 task_parameters: pulumi.Input[Optional['OceanImportScheduledTaskTaskTaskParametersArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] cron_expression: A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
                Example: 0 1 * * *
@@ -2323,19 +2323,19 @@ class OceanImportScheduledTaskTaskArgs:
 
     @_builtins.property
     @pulumi.getter(name="taskParameters")
-    def task_parameters(self) -> Optional[pulumi.Input['OceanImportScheduledTaskTaskTaskParametersArgs']]:
+    def task_parameters(self) -> pulumi.Input[Optional['OceanImportScheduledTaskTaskTaskParametersArgs']]:
         """
         The scheduling parameters for the cluster.
         """
         return pulumi.get(self, "task_parameters")
 
     @task_parameters.setter
-    def task_parameters(self, value: Optional[pulumi.Input['OceanImportScheduledTaskTaskTaskParametersArgs']]):
+    def task_parameters(self, value: pulumi.Input[Optional['OceanImportScheduledTaskTaskTaskParametersArgs']]):
         pulumi.set(self, "task_parameters", value)
 
 
 class OceanImportScheduledTaskTaskTaskParametersArgsDict(TypedDict):
-    cluster_roll: NotRequired[pulumi.Input['OceanImportScheduledTaskTaskTaskParametersClusterRollArgsDict']]
+    cluster_roll: NotRequired[pulumi.Input[Optional['OceanImportScheduledTaskTaskTaskParametersClusterRollArgs']]]
     """
     The cluster roll parameters for the cluster.
     """
@@ -2343,7 +2343,7 @@ class OceanImportScheduledTaskTaskTaskParametersArgsDict(TypedDict):
 @pulumi.input_type
 class OceanImportScheduledTaskTaskTaskParametersArgs:
     def __init__(__self__, *,
-                 cluster_roll: Optional[pulumi.Input['OceanImportScheduledTaskTaskTaskParametersClusterRollArgs']] = None):
+                 cluster_roll: pulumi.Input[Optional['OceanImportScheduledTaskTaskTaskParametersClusterRollArgs']] = None):
         """
         :param pulumi.Input['OceanImportScheduledTaskTaskTaskParametersClusterRollArgs'] cluster_roll: The cluster roll parameters for the cluster.
         """
@@ -2352,31 +2352,31 @@ class OceanImportScheduledTaskTaskTaskParametersArgs:
 
     @_builtins.property
     @pulumi.getter(name="clusterRoll")
-    def cluster_roll(self) -> Optional[pulumi.Input['OceanImportScheduledTaskTaskTaskParametersClusterRollArgs']]:
+    def cluster_roll(self) -> pulumi.Input[Optional['OceanImportScheduledTaskTaskTaskParametersClusterRollArgs']]:
         """
         The cluster roll parameters for the cluster.
         """
         return pulumi.get(self, "cluster_roll")
 
     @cluster_roll.setter
-    def cluster_roll(self, value: Optional[pulumi.Input['OceanImportScheduledTaskTaskTaskParametersClusterRollArgs']]):
+    def cluster_roll(self, value: pulumi.Input[Optional['OceanImportScheduledTaskTaskTaskParametersClusterRollArgs']]):
         pulumi.set(self, "cluster_roll", value)
 
 
 class OceanImportScheduledTaskTaskTaskParametersClusterRollArgsDict(TypedDict):
-    batch_min_healthy_percentage: NotRequired[pulumi.Input[_builtins.int]]
+    batch_min_healthy_percentage: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
     """
-    batch_size_percentage: NotRequired[pulumi.Input[_builtins.int]]
+    batch_size_percentage: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Value as a percent to set the size of a batch in a roll. Valid values are 0-100.
     """
-    comment: NotRequired[pulumi.Input[_builtins.str]]
+    comment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Add a comment description for the roll. The comment is limited to 256 chars.
     """
-    respect_pdb: NotRequired[pulumi.Input[_builtins.bool]]
+    respect_pdb: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     During the roll, if the parameter is set to true we honor PDB during the instance replacement.
     """
@@ -2384,10 +2384,10 @@ class OceanImportScheduledTaskTaskTaskParametersClusterRollArgsDict(TypedDict):
 @pulumi.input_type
 class OceanImportScheduledTaskTaskTaskParametersClusterRollArgs:
     def __init__(__self__, *,
-                 batch_min_healthy_percentage: Optional[pulumi.Input[_builtins.int]] = None,
-                 batch_size_percentage: Optional[pulumi.Input[_builtins.int]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 respect_pdb: Optional[pulumi.Input[_builtins.bool]] = None):
+                 batch_min_healthy_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+                 batch_size_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 respect_pdb: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.int] batch_min_healthy_percentage: Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
         :param pulumi.Input[_builtins.int] batch_size_percentage: Value as a percent to set the size of a batch in a roll. Valid values are 0-100.
@@ -2405,59 +2405,59 @@ class OceanImportScheduledTaskTaskTaskParametersClusterRollArgs:
 
     @_builtins.property
     @pulumi.getter(name="batchMinHealthyPercentage")
-    def batch_min_healthy_percentage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def batch_min_healthy_percentage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
         """
         return pulumi.get(self, "batch_min_healthy_percentage")
 
     @batch_min_healthy_percentage.setter
-    def batch_min_healthy_percentage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def batch_min_healthy_percentage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "batch_min_healthy_percentage", value)
 
     @_builtins.property
     @pulumi.getter(name="batchSizePercentage")
-    def batch_size_percentage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def batch_size_percentage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Value as a percent to set the size of a batch in a roll. Valid values are 0-100.
         """
         return pulumi.get(self, "batch_size_percentage")
 
     @batch_size_percentage.setter
-    def batch_size_percentage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def batch_size_percentage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "batch_size_percentage", value)
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Add a comment description for the roll. The comment is limited to 256 chars.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter(name="respectPdb")
-    def respect_pdb(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def respect_pdb(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         During the roll, if the parameter is set to true we honor PDB during the instance replacement.
         """
         return pulumi.get(self, "respect_pdb")
 
     @respect_pdb.setter
-    def respect_pdb(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def respect_pdb(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "respect_pdb", value)
 
 
 class OceanImportShieldedInstanceConfigArgsDict(TypedDict):
-    enable_integrity_monitoring: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_integrity_monitoring: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Boolean. Enable the integrity monitoring parameter on the GCP instances.
     """
-    enable_secure_boot: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_secure_boot: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Boolean. Enable the secure boot parameter on the GCP instances.
     """
@@ -2465,8 +2465,8 @@ class OceanImportShieldedInstanceConfigArgsDict(TypedDict):
 @pulumi.input_type
 class OceanImportShieldedInstanceConfigArgs:
     def __init__(__self__, *,
-                 enable_integrity_monitoring: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_secure_boot: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enable_integrity_monitoring: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_secure_boot: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] enable_integrity_monitoring: Boolean. Enable the integrity monitoring parameter on the GCP instances.
         :param pulumi.Input[_builtins.bool] enable_secure_boot: Boolean. Enable the secure boot parameter on the GCP instances.
@@ -2478,47 +2478,47 @@ class OceanImportShieldedInstanceConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableIntegrityMonitoring")
-    def enable_integrity_monitoring(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_integrity_monitoring(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean. Enable the integrity monitoring parameter on the GCP instances.
         """
         return pulumi.get(self, "enable_integrity_monitoring")
 
     @enable_integrity_monitoring.setter
-    def enable_integrity_monitoring(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_integrity_monitoring(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_integrity_monitoring", value)
 
     @_builtins.property
     @pulumi.getter(name="enableSecureBoot")
-    def enable_secure_boot(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_secure_boot(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean. Enable the secure boot parameter on the GCP instances.
         """
         return pulumi.get(self, "enable_secure_boot")
 
     @enable_secure_boot.setter
-    def enable_secure_boot(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_secure_boot(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_secure_boot", value)
 
 
 class OceanImportStrategyArgsDict(TypedDict):
-    draining_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    draining_timeout: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The draining timeout (in seconds) before terminating the instance. If no draining timeout is defined, the default draining timeout will be used.
     """
-    preemptible_percentage: NotRequired[pulumi.Input[_builtins.int]]
+    preemptible_percentage: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Defines the desired preemptible percentage for the cluster.
     """
-    provisioning_model: NotRequired[pulumi.Input[_builtins.str]]
+    provisioning_model: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
     """
-    scaling_orientation: NotRequired[pulumi.Input[_builtins.str]]
+    scaling_orientation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Valid Values: `"cost", "availability", "balanced"`. Set this value to control the approach that Ocean takes when launching nodes.
     """
-    should_utilize_commitments: NotRequired[pulumi.Input[_builtins.bool]]
+    should_utilize_commitments: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enable committed use discounts utilization.
     """
@@ -2526,11 +2526,11 @@ class OceanImportStrategyArgsDict(TypedDict):
 @pulumi.input_type
 class OceanImportStrategyArgs:
     def __init__(__self__, *,
-                 draining_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 preemptible_percentage: Optional[pulumi.Input[_builtins.int]] = None,
-                 provisioning_model: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_orientation: Optional[pulumi.Input[_builtins.str]] = None,
-                 should_utilize_commitments: Optional[pulumi.Input[_builtins.bool]] = None):
+                 draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 preemptible_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+                 provisioning_model: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_orientation: pulumi.Input[Optional[_builtins.str]] = None,
+                 should_utilize_commitments: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.int] draining_timeout: The draining timeout (in seconds) before terminating the instance. If no draining timeout is defined, the default draining timeout will be used.
         :param pulumi.Input[_builtins.int] preemptible_percentage: Defines the desired preemptible percentage for the cluster.
@@ -2551,62 +2551,62 @@ class OceanImportStrategyArgs:
 
     @_builtins.property
     @pulumi.getter(name="drainingTimeout")
-    def draining_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def draining_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The draining timeout (in seconds) before terminating the instance. If no draining timeout is defined, the default draining timeout will be used.
         """
         return pulumi.get(self, "draining_timeout")
 
     @draining_timeout.setter
-    def draining_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def draining_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "draining_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="preemptiblePercentage")
-    def preemptible_percentage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def preemptible_percentage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Defines the desired preemptible percentage for the cluster.
         """
         return pulumi.get(self, "preemptible_percentage")
 
     @preemptible_percentage.setter
-    def preemptible_percentage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def preemptible_percentage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "preemptible_percentage", value)
 
     @_builtins.property
     @pulumi.getter(name="provisioningModel")
-    def provisioning_model(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def provisioning_model(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
         """
         return pulumi.get(self, "provisioning_model")
 
     @provisioning_model.setter
-    def provisioning_model(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def provisioning_model(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "provisioning_model", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingOrientation")
-    def scaling_orientation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scaling_orientation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Valid Values: `"cost", "availability", "balanced"`. Set this value to control the approach that Ocean takes when launching nodes.
         """
         return pulumi.get(self, "scaling_orientation")
 
     @scaling_orientation.setter
-    def scaling_orientation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scaling_orientation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scaling_orientation", value)
 
     @_builtins.property
     @pulumi.getter(name="shouldUtilizeCommitments")
-    def should_utilize_commitments(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def should_utilize_commitments(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable committed use discounts utilization.
         """
         return pulumi.get(self, "should_utilize_commitments")
 
     @should_utilize_commitments.setter
-    def should_utilize_commitments(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def should_utilize_commitments(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "should_utilize_commitments", value)
 
 
@@ -2615,11 +2615,11 @@ class OceanImportUpdatePolicyArgsDict(TypedDict):
     """
     Enables the roll.
     """
-    conditioned_roll: NotRequired[pulumi.Input[_builtins.bool]]
+    conditioned_roll: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
     """
-    roll_config: NotRequired[pulumi.Input['OceanImportUpdatePolicyRollConfigArgsDict']]
+    roll_config: NotRequired[pulumi.Input[Optional['OceanImportUpdatePolicyRollConfigArgs']]]
     """
     Holds the roll configuration.
     """
@@ -2628,8 +2628,8 @@ class OceanImportUpdatePolicyArgsDict(TypedDict):
 class OceanImportUpdatePolicyArgs:
     def __init__(__self__, *,
                  should_roll: pulumi.Input[_builtins.bool],
-                 conditioned_roll: Optional[pulumi.Input[_builtins.bool]] = None,
-                 roll_config: Optional[pulumi.Input['OceanImportUpdatePolicyRollConfigArgs']] = None):
+                 conditioned_roll: pulumi.Input[Optional[_builtins.bool]] = None,
+                 roll_config: pulumi.Input[Optional['OceanImportUpdatePolicyRollConfigArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] should_roll: Enables the roll.
         :param pulumi.Input[_builtins.bool] conditioned_roll: Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
@@ -2655,26 +2655,26 @@ class OceanImportUpdatePolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="conditionedRoll")
-    def conditioned_roll(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def conditioned_roll(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
         """
         return pulumi.get(self, "conditioned_roll")
 
     @conditioned_roll.setter
-    def conditioned_roll(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def conditioned_roll(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "conditioned_roll", value)
 
     @_builtins.property
     @pulumi.getter(name="rollConfig")
-    def roll_config(self) -> Optional[pulumi.Input['OceanImportUpdatePolicyRollConfigArgs']]:
+    def roll_config(self) -> pulumi.Input[Optional['OceanImportUpdatePolicyRollConfigArgs']]:
         """
         Holds the roll configuration.
         """
         return pulumi.get(self, "roll_config")
 
     @roll_config.setter
-    def roll_config(self, value: Optional[pulumi.Input['OceanImportUpdatePolicyRollConfigArgs']]):
+    def roll_config(self, value: pulumi.Input[Optional['OceanImportUpdatePolicyRollConfigArgs']]):
         pulumi.set(self, "roll_config", value)
 
 
@@ -2683,15 +2683,15 @@ class OceanImportUpdatePolicyRollConfigArgsDict(TypedDict):
     """
     Sets the percentage of the instances to deploy in each batch.
     """
-    batch_min_healthy_percentage: NotRequired[pulumi.Input[_builtins.int]]
+    batch_min_healthy_percentage: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
     """
-    launch_spec_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    launch_spec_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of Virtual Node Group identifiers to be rolled.
     """
-    respect_pdb: NotRequired[pulumi.Input[_builtins.bool]]
+    respect_pdb: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Default: `false`. During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.
     """
@@ -2700,9 +2700,9 @@ class OceanImportUpdatePolicyRollConfigArgsDict(TypedDict):
 class OceanImportUpdatePolicyRollConfigArgs:
     def __init__(__self__, *,
                  batch_size_percentage: pulumi.Input[_builtins.int],
-                 batch_min_healthy_percentage: Optional[pulumi.Input[_builtins.int]] = None,
-                 launch_spec_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 respect_pdb: Optional[pulumi.Input[_builtins.bool]] = None):
+                 batch_min_healthy_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+                 launch_spec_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 respect_pdb: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.int] batch_size_percentage: Sets the percentage of the instances to deploy in each batch.
         :param pulumi.Input[_builtins.int] batch_min_healthy_percentage: Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
@@ -2731,38 +2731,38 @@ class OceanImportUpdatePolicyRollConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="batchMinHealthyPercentage")
-    def batch_min_healthy_percentage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def batch_min_healthy_percentage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
         """
         return pulumi.get(self, "batch_min_healthy_percentage")
 
     @batch_min_healthy_percentage.setter
-    def batch_min_healthy_percentage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def batch_min_healthy_percentage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "batch_min_healthy_percentage", value)
 
     @_builtins.property
     @pulumi.getter(name="launchSpecIds")
-    def launch_spec_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def launch_spec_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of Virtual Node Group identifiers to be rolled.
         """
         return pulumi.get(self, "launch_spec_ids")
 
     @launch_spec_ids.setter
-    def launch_spec_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def launch_spec_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "launch_spec_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="respectPdb")
-    def respect_pdb(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def respect_pdb(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Default: `false`. During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.
         """
         return pulumi.get(self, "respect_pdb")
 
     @respect_pdb.setter
-    def respect_pdb(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def respect_pdb(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "respect_pdb", value)
 
 
@@ -2771,15 +2771,15 @@ class OceanLaunchSpecAutoscaleHeadroomArgsDict(TypedDict):
     """
     The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
     """
-    cpu_per_unit: NotRequired[pulumi.Input[_builtins.int]]
+    cpu_per_unit: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
     """
-    gpu_per_unit: NotRequired[pulumi.Input[_builtins.int]]
+    gpu_per_unit: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Optionally configure the number of GPUS to allocate for each headroom unit.
     """
-    memory_per_unit: NotRequired[pulumi.Input[_builtins.int]]
+    memory_per_unit: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
     """
@@ -2788,9 +2788,9 @@ class OceanLaunchSpecAutoscaleHeadroomArgsDict(TypedDict):
 class OceanLaunchSpecAutoscaleHeadroomArgs:
     def __init__(__self__, *,
                  num_of_units: pulumi.Input[_builtins.int],
-                 cpu_per_unit: Optional[pulumi.Input[_builtins.int]] = None,
-                 gpu_per_unit: Optional[pulumi.Input[_builtins.int]] = None,
-                 memory_per_unit: Optional[pulumi.Input[_builtins.int]] = None):
+                 cpu_per_unit: pulumi.Input[Optional[_builtins.int]] = None,
+                 gpu_per_unit: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory_per_unit: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] num_of_units: The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
         :param pulumi.Input[_builtins.int] cpu_per_unit: Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
@@ -2819,43 +2819,43 @@ class OceanLaunchSpecAutoscaleHeadroomArgs:
 
     @_builtins.property
     @pulumi.getter(name="cpuPerUnit")
-    def cpu_per_unit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cpu_per_unit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
         """
         return pulumi.get(self, "cpu_per_unit")
 
     @cpu_per_unit.setter
-    def cpu_per_unit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cpu_per_unit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cpu_per_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="gpuPerUnit")
-    def gpu_per_unit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def gpu_per_unit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optionally configure the number of GPUS to allocate for each headroom unit.
         """
         return pulumi.get(self, "gpu_per_unit")
 
     @gpu_per_unit.setter
-    def gpu_per_unit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def gpu_per_unit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "gpu_per_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="memoryPerUnit")
-    def memory_per_unit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def memory_per_unit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
         """
         return pulumi.get(self, "memory_per_unit")
 
     @memory_per_unit.setter
-    def memory_per_unit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def memory_per_unit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "memory_per_unit", value)
 
 
 class OceanLaunchSpecAutoscaleHeadroomsAutomaticArgsDict(TypedDict):
-    auto_headroom_percentage: NotRequired[pulumi.Input[_builtins.int]]
+    auto_headroom_percentage: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`is_enabled` = true is set on the Ocean cluster.
     """
@@ -2863,7 +2863,7 @@ class OceanLaunchSpecAutoscaleHeadroomsAutomaticArgsDict(TypedDict):
 @pulumi.input_type
 class OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs:
     def __init__(__self__, *,
-                 auto_headroom_percentage: Optional[pulumi.Input[_builtins.int]] = None):
+                 auto_headroom_percentage: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] auto_headroom_percentage: Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`is_enabled` = true is set on the Ocean cluster.
         """
@@ -2872,19 +2872,19 @@ class OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoHeadroomPercentage")
-    def auto_headroom_percentage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def auto_headroom_percentage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`is_enabled` = true is set on the Ocean cluster.
         """
         return pulumi.get(self, "auto_headroom_percentage")
 
     @auto_headroom_percentage.setter
-    def auto_headroom_percentage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def auto_headroom_percentage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "auto_headroom_percentage", value)
 
 
 class OceanLaunchSpecCreateOptionsArgsDict(TypedDict):
-    initial_nodes: NotRequired[pulumi.Input[_builtins.int]]
+    initial_nodes: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group.
     """
@@ -2892,7 +2892,7 @@ class OceanLaunchSpecCreateOptionsArgsDict(TypedDict):
 @pulumi.input_type
 class OceanLaunchSpecCreateOptionsArgs:
     def __init__(__self__, *,
-                 initial_nodes: Optional[pulumi.Input[_builtins.int]] = None):
+                 initial_nodes: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] initial_nodes: When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group.
         """
@@ -2901,39 +2901,39 @@ class OceanLaunchSpecCreateOptionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="initialNodes")
-    def initial_nodes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def initial_nodes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group.
         """
         return pulumi.get(self, "initial_nodes")
 
     @initial_nodes.setter
-    def initial_nodes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def initial_nodes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "initial_nodes", value)
 
 
 class OceanLaunchSpecFiltersArgsDict(TypedDict):
-    exclude_families: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    exclude_families: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
     """
-    include_families: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    include_families: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
     """
-    max_memory_gib: NotRequired[pulumi.Input[_builtins.float]]
+    max_memory_gib: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Maximum amount of Memory (GiB).
     """
-    max_vcpu: NotRequired[pulumi.Input[_builtins.int]]
+    max_vcpu: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Maximum number of vcpus available.
     """
-    min_memory_gib: NotRequired[pulumi.Input[_builtins.float]]
+    min_memory_gib: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Minimum amount of Memory (GiB).
     """
-    min_vcpu: NotRequired[pulumi.Input[_builtins.int]]
+    min_vcpu: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Minimum number of vcpus available.
     """
@@ -2941,12 +2941,12 @@ class OceanLaunchSpecFiltersArgsDict(TypedDict):
 @pulumi.input_type
 class OceanLaunchSpecFiltersArgs:
     def __init__(__self__, *,
-                 exclude_families: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 include_families: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 max_memory_gib: Optional[pulumi.Input[_builtins.float]] = None,
-                 max_vcpu: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_memory_gib: Optional[pulumi.Input[_builtins.float]] = None,
-                 min_vcpu: Optional[pulumi.Input[_builtins.int]] = None):
+                 exclude_families: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 include_families: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 max_memory_gib: pulumi.Input[Optional[_builtins.float]] = None,
+                 max_vcpu: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_memory_gib: pulumi.Input[Optional[_builtins.float]] = None,
+                 min_vcpu: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exclude_families: Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] include_families: Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
@@ -2970,83 +2970,83 @@ class OceanLaunchSpecFiltersArgs:
 
     @_builtins.property
     @pulumi.getter(name="excludeFamilies")
-    def exclude_families(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def exclude_families(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
         """
         return pulumi.get(self, "exclude_families")
 
     @exclude_families.setter
-    def exclude_families(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def exclude_families(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "exclude_families", value)
 
     @_builtins.property
     @pulumi.getter(name="includeFamilies")
-    def include_families(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def include_families(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
         """
         return pulumi.get(self, "include_families")
 
     @include_families.setter
-    def include_families(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def include_families(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "include_families", value)
 
     @_builtins.property
     @pulumi.getter(name="maxMemoryGib")
-    def max_memory_gib(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def max_memory_gib(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Maximum amount of Memory (GiB).
         """
         return pulumi.get(self, "max_memory_gib")
 
     @max_memory_gib.setter
-    def max_memory_gib(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def max_memory_gib(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "max_memory_gib", value)
 
     @_builtins.property
     @pulumi.getter(name="maxVcpu")
-    def max_vcpu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_vcpu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of vcpus available.
         """
         return pulumi.get(self, "max_vcpu")
 
     @max_vcpu.setter
-    def max_vcpu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_vcpu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_vcpu", value)
 
     @_builtins.property
     @pulumi.getter(name="minMemoryGib")
-    def min_memory_gib(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def min_memory_gib(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Minimum amount of Memory (GiB).
         """
         return pulumi.get(self, "min_memory_gib")
 
     @min_memory_gib.setter
-    def min_memory_gib(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def min_memory_gib(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "min_memory_gib", value)
 
     @_builtins.property
     @pulumi.getter(name="minVcpu")
-    def min_vcpu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_vcpu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum number of vcpus available.
         """
         return pulumi.get(self, "min_vcpu")
 
     @min_vcpu.setter
-    def min_vcpu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_vcpu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_vcpu", value)
 
 
 class OceanLaunchSpecLabelArgsDict(TypedDict):
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The label key.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The label value.
     """
@@ -3054,8 +3054,8 @@ class OceanLaunchSpecLabelArgsDict(TypedDict):
 @pulumi.input_type
 class OceanLaunchSpecLabelArgs:
     def __init__(__self__, *,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: The label key.
         :param pulumi.Input[_builtins.str] value: The label value.
@@ -3067,35 +3067,35 @@ class OceanLaunchSpecLabelArgs:
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The label key.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The label value.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class OceanLaunchSpecMetadataArgsDict(TypedDict):
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The metadata key.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The metadata value.
     """
@@ -3103,8 +3103,8 @@ class OceanLaunchSpecMetadataArgsDict(TypedDict):
 @pulumi.input_type
 class OceanLaunchSpecMetadataArgs:
     def __init__(__self__, *,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: The metadata key.
         :param pulumi.Input[_builtins.str] value: The metadata value.
@@ -3116,26 +3116,26 @@ class OceanLaunchSpecMetadataArgs:
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The metadata key.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The metadata value.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
@@ -3144,15 +3144,15 @@ class OceanLaunchSpecNetworkInterfaceArgsDict(TypedDict):
     """
     The name of the network.
     """
-    access_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecNetworkInterfaceAccessConfigArgsDict']]]]
+    access_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanLaunchSpecNetworkInterfaceAccessConfigArgs']]]]]
     """
     The network protocol of the VNG.
     """
-    alias_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecNetworkInterfaceAliasIpRangeArgsDict']]]]
+    alias_ip_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs']]]]]
     """
     use the imported node pool’s associated aliasIpRange to assign secondary IP addresses to the nodes. Cannot be changed after VNG creation.
     """
-    project_id: NotRequired[pulumi.Input[_builtins.str]]
+    project_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use a network resource from a different project. Set the project identifier to use its network resource. This parameter is relevant only if the network resource is in a different project.
     """
@@ -3161,9 +3161,9 @@ class OceanLaunchSpecNetworkInterfaceArgsDict(TypedDict):
 class OceanLaunchSpecNetworkInterfaceArgs:
     def __init__(__self__, *,
                  network: pulumi.Input[_builtins.str],
-                 access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecNetworkInterfaceAccessConfigArgs']]]] = None,
-                 alias_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs']]]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_configs: pulumi.Input[Optional[Sequence[pulumi.Input['OceanLaunchSpecNetworkInterfaceAccessConfigArgs']]]] = None,
+                 alias_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input['OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs']]]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] network: The name of the network.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecNetworkInterfaceAccessConfigArgs']]] access_configs: The network protocol of the VNG.
@@ -3192,47 +3192,47 @@ class OceanLaunchSpecNetworkInterfaceArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessConfigs")
-    def access_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecNetworkInterfaceAccessConfigArgs']]]]:
+    def access_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanLaunchSpecNetworkInterfaceAccessConfigArgs']]]]:
         """
         The network protocol of the VNG.
         """
         return pulumi.get(self, "access_configs")
 
     @access_configs.setter
-    def access_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecNetworkInterfaceAccessConfigArgs']]]]):
+    def access_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanLaunchSpecNetworkInterfaceAccessConfigArgs']]]]):
         pulumi.set(self, "access_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="aliasIpRanges")
-    def alias_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs']]]]:
+    def alias_ip_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs']]]]:
         """
         use the imported node pool’s associated aliasIpRange to assign secondary IP addresses to the nodes. Cannot be changed after VNG creation.
         """
         return pulumi.get(self, "alias_ip_ranges")
 
     @alias_ip_ranges.setter
-    def alias_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs']]]]):
+    def alias_ip_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs']]]]):
         pulumi.set(self, "alias_ip_ranges", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use a network resource from a different project. Set the project identifier to use its network resource. This parameter is relevant only if the network resource is in a different project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
 
 class OceanLaunchSpecNetworkInterfaceAccessConfigArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the access configuration.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of the access configuration.
     """
@@ -3240,8 +3240,8 @@ class OceanLaunchSpecNetworkInterfaceAccessConfigArgsDict(TypedDict):
 @pulumi.input_type
 class OceanLaunchSpecNetworkInterfaceAccessConfigArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The name of the access configuration.
         :param pulumi.Input[_builtins.str] type: The type of the access configuration.
@@ -3253,26 +3253,26 @@ class OceanLaunchSpecNetworkInterfaceAccessConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the access configuration.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the access configuration.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -3324,11 +3324,11 @@ class OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs:
 
 
 class OceanLaunchSpecResourceLimitsArgsDict(TypedDict):
-    max_instance_count: NotRequired[pulumi.Input[_builtins.int]]
+    max_instance_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Option to set a maximum number of instances per virtual node group. Can be null. If set, the value must be greater than or equal to 0.
     """
-    min_instance_count: NotRequired[pulumi.Input[_builtins.int]]
+    min_instance_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Option to set a minimum number of instances per virtual node group. Can be null. If set, the value must be greater than or equal to 0.
     """
@@ -3336,8 +3336,8 @@ class OceanLaunchSpecResourceLimitsArgsDict(TypedDict):
 @pulumi.input_type
 class OceanLaunchSpecResourceLimitsArgs:
     def __init__(__self__, *,
-                 max_instance_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_instance_count: Optional[pulumi.Input[_builtins.int]] = None):
+                 max_instance_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_instance_count: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] max_instance_count: Option to set a maximum number of instances per virtual node group. Can be null. If set, the value must be greater than or equal to 0.
         :param pulumi.Input[_builtins.int] min_instance_count: Option to set a minimum number of instances per virtual node group. Can be null. If set, the value must be greater than or equal to 0.
@@ -3349,26 +3349,26 @@ class OceanLaunchSpecResourceLimitsArgs:
 
     @_builtins.property
     @pulumi.getter(name="maxInstanceCount")
-    def max_instance_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_instance_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Option to set a maximum number of instances per virtual node group. Can be null. If set, the value must be greater than or equal to 0.
         """
         return pulumi.get(self, "max_instance_count")
 
     @max_instance_count.setter
-    def max_instance_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_instance_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_instance_count", value)
 
     @_builtins.property
     @pulumi.getter(name="minInstanceCount")
-    def min_instance_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_instance_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Option to set a minimum number of instances per virtual node group. Can be null. If set, the value must be greater than or equal to 0.
         """
         return pulumi.get(self, "min_instance_count")
 
     @min_instance_count.setter
-    def min_instance_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_instance_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_instance_count", value)
 
 
@@ -3385,7 +3385,7 @@ class OceanLaunchSpecSchedulingTaskArgsDict(TypedDict):
     """
     The activity that you are scheduling. Valid values: "manualHeadroomUpdate".
     """
-    task_headrooms: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskTaskHeadroomArgsDict']]]]
+    task_headrooms: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskTaskHeadroomArgs']]]]]
     """
     The config of this scheduled task. Depends on the value of taskType.
     """
@@ -3396,7 +3396,7 @@ class OceanLaunchSpecSchedulingTaskArgs:
                  cron_expression: pulumi.Input[_builtins.str],
                  is_enabled: pulumi.Input[_builtins.bool],
                  task_type: pulumi.Input[_builtins.str],
-                 task_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskTaskHeadroomArgs']]]] = None):
+                 task_headrooms: pulumi.Input[Optional[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskTaskHeadroomArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] cron_expression: A valid cron expression. For example : " * * * * * ". The cron job runs in UTC time and is in Unix cron format.
         :param pulumi.Input[_builtins.bool] is_enabled: Describes whether the task is enabled. When `true`, the task runs. When `false`, it does not run.
@@ -3447,14 +3447,14 @@ class OceanLaunchSpecSchedulingTaskArgs:
 
     @_builtins.property
     @pulumi.getter(name="taskHeadrooms")
-    def task_headrooms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskTaskHeadroomArgs']]]]:
+    def task_headrooms(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskTaskHeadroomArgs']]]]:
         """
         The config of this scheduled task. Depends on the value of taskType.
         """
         return pulumi.get(self, "task_headrooms")
 
     @task_headrooms.setter
-    def task_headrooms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskTaskHeadroomArgs']]]]):
+    def task_headrooms(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskTaskHeadroomArgs']]]]):
         pulumi.set(self, "task_headrooms", value)
 
 
@@ -3463,15 +3463,15 @@ class OceanLaunchSpecSchedulingTaskTaskHeadroomArgsDict(TypedDict):
     """
     The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
     """
-    cpu_per_unit: NotRequired[pulumi.Input[_builtins.int]]
+    cpu_per_unit: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
     """
-    gpu_per_unit: NotRequired[pulumi.Input[_builtins.int]]
+    gpu_per_unit: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Optionally configure the number of GPUS to allocate for each headroom unit.
     """
-    memory_per_unit: NotRequired[pulumi.Input[_builtins.int]]
+    memory_per_unit: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
     """
@@ -3480,9 +3480,9 @@ class OceanLaunchSpecSchedulingTaskTaskHeadroomArgsDict(TypedDict):
 class OceanLaunchSpecSchedulingTaskTaskHeadroomArgs:
     def __init__(__self__, *,
                  num_of_units: pulumi.Input[_builtins.int],
-                 cpu_per_unit: Optional[pulumi.Input[_builtins.int]] = None,
-                 gpu_per_unit: Optional[pulumi.Input[_builtins.int]] = None,
-                 memory_per_unit: Optional[pulumi.Input[_builtins.int]] = None):
+                 cpu_per_unit: pulumi.Input[Optional[_builtins.int]] = None,
+                 gpu_per_unit: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory_per_unit: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] num_of_units: The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
         :param pulumi.Input[_builtins.int] cpu_per_unit: Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
@@ -3511,47 +3511,47 @@ class OceanLaunchSpecSchedulingTaskTaskHeadroomArgs:
 
     @_builtins.property
     @pulumi.getter(name="cpuPerUnit")
-    def cpu_per_unit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cpu_per_unit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
         """
         return pulumi.get(self, "cpu_per_unit")
 
     @cpu_per_unit.setter
-    def cpu_per_unit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cpu_per_unit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cpu_per_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="gpuPerUnit")
-    def gpu_per_unit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def gpu_per_unit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optionally configure the number of GPUS to allocate for each headroom unit.
         """
         return pulumi.get(self, "gpu_per_unit")
 
     @gpu_per_unit.setter
-    def gpu_per_unit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def gpu_per_unit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "gpu_per_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="memoryPerUnit")
-    def memory_per_unit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def memory_per_unit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
         """
         return pulumi.get(self, "memory_per_unit")
 
     @memory_per_unit.setter
-    def memory_per_unit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def memory_per_unit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "memory_per_unit", value)
 
 
 class OceanLaunchSpecShieldedInstanceConfigArgsDict(TypedDict):
-    enable_integrity_monitoring: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_integrity_monitoring: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Boolean. Enable the integrity monitoring parameter on the GCP instances.
     """
-    enable_secure_boot: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_secure_boot: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Boolean. Enable the secure boot parameter on the GCP instances.
     """
@@ -3559,8 +3559,8 @@ class OceanLaunchSpecShieldedInstanceConfigArgsDict(TypedDict):
 @pulumi.input_type
 class OceanLaunchSpecShieldedInstanceConfigArgs:
     def __init__(__self__, *,
-                 enable_integrity_monitoring: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_secure_boot: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enable_integrity_monitoring: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_secure_boot: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] enable_integrity_monitoring: Boolean. Enable the integrity monitoring parameter on the GCP instances.
         :param pulumi.Input[_builtins.bool] enable_secure_boot: Boolean. Enable the secure boot parameter on the GCP instances.
@@ -3572,31 +3572,31 @@ class OceanLaunchSpecShieldedInstanceConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableIntegrityMonitoring")
-    def enable_integrity_monitoring(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_integrity_monitoring(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean. Enable the integrity monitoring parameter on the GCP instances.
         """
         return pulumi.get(self, "enable_integrity_monitoring")
 
     @enable_integrity_monitoring.setter
-    def enable_integrity_monitoring(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_integrity_monitoring(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_integrity_monitoring", value)
 
     @_builtins.property
     @pulumi.getter(name="enableSecureBoot")
-    def enable_secure_boot(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_secure_boot(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean. Enable the secure boot parameter on the GCP instances.
         """
         return pulumi.get(self, "enable_secure_boot")
 
     @enable_secure_boot.setter
-    def enable_secure_boot(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_secure_boot(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_secure_boot", value)
 
 
 class OceanLaunchSpecStorageArgsDict(TypedDict):
-    local_ssd_count: NotRequired[pulumi.Input[_builtins.int]]
+    local_ssd_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Defines the number of local SSDs to be attached per node for this VNG.
     """
@@ -3604,7 +3604,7 @@ class OceanLaunchSpecStorageArgsDict(TypedDict):
 @pulumi.input_type
 class OceanLaunchSpecStorageArgs:
     def __init__(__self__, *,
-                 local_ssd_count: Optional[pulumi.Input[_builtins.int]] = None):
+                 local_ssd_count: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] local_ssd_count: Defines the number of local SSDs to be attached per node for this VNG.
         """
@@ -3613,23 +3613,23 @@ class OceanLaunchSpecStorageArgs:
 
     @_builtins.property
     @pulumi.getter(name="localSsdCount")
-    def local_ssd_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def local_ssd_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Defines the number of local SSDs to be attached per node for this VNG.
         """
         return pulumi.get(self, "local_ssd_count")
 
     @local_ssd_count.setter
-    def local_ssd_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def local_ssd_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "local_ssd_count", value)
 
 
 class OceanLaunchSpecStrategyArgsDict(TypedDict):
-    preemptible_percentage: NotRequired[pulumi.Input[_builtins.int]]
+    preemptible_percentage: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Defines the desired preemptible percentage for this launch specification.
     """
-    scaling_orientation: NotRequired[pulumi.Input[_builtins.str]]
+    scaling_orientation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Valid Values: `"cost", "availability", "balanced"`. Set this value to control the approach that Ocean takes when launching nodes.
     """
@@ -3637,8 +3637,8 @@ class OceanLaunchSpecStrategyArgsDict(TypedDict):
 @pulumi.input_type
 class OceanLaunchSpecStrategyArgs:
     def __init__(__self__, *,
-                 preemptible_percentage: Optional[pulumi.Input[_builtins.int]] = None,
-                 scaling_orientation: Optional[pulumi.Input[_builtins.str]] = None):
+                 preemptible_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+                 scaling_orientation: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] preemptible_percentage: Defines the desired preemptible percentage for this launch specification.
         :param pulumi.Input[_builtins.str] scaling_orientation: Valid Values: `"cost", "availability", "balanced"`. Set this value to control the approach that Ocean takes when launching nodes.
@@ -3650,39 +3650,39 @@ class OceanLaunchSpecStrategyArgs:
 
     @_builtins.property
     @pulumi.getter(name="preemptiblePercentage")
-    def preemptible_percentage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def preemptible_percentage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Defines the desired preemptible percentage for this launch specification.
         """
         return pulumi.get(self, "preemptible_percentage")
 
     @preemptible_percentage.setter
-    def preemptible_percentage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def preemptible_percentage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "preemptible_percentage", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingOrientation")
-    def scaling_orientation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scaling_orientation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Valid Values: `"cost", "availability", "balanced"`. Set this value to control the approach that Ocean takes when launching nodes.
         """
         return pulumi.get(self, "scaling_orientation")
 
     @scaling_orientation.setter
-    def scaling_orientation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scaling_orientation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scaling_orientation", value)
 
 
 class OceanLaunchSpecTaintArgsDict(TypedDict):
-    effect: NotRequired[pulumi.Input[_builtins.str]]
+    effect: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`.
     """
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The taint key.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The taint value.
     """
@@ -3690,9 +3690,9 @@ class OceanLaunchSpecTaintArgsDict(TypedDict):
 @pulumi.input_type
 class OceanLaunchSpecTaintArgs:
     def __init__(__self__, *,
-                 effect: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 effect: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] effect: The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`.
         :param pulumi.Input[_builtins.str] key: The taint key.
@@ -3707,38 +3707,38 @@ class OceanLaunchSpecTaintArgs:
 
     @_builtins.property
     @pulumi.getter
-    def effect(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effect(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`.
         """
         return pulumi.get(self, "effect")
 
     @effect.setter
-    def effect(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effect(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effect", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The taint key.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The taint value.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
@@ -3747,7 +3747,7 @@ class OceanLaunchSpecUpdatePolicyArgsDict(TypedDict):
     """
     Enables the roll.
     """
-    roll_config: NotRequired[pulumi.Input['OceanLaunchSpecUpdatePolicyRollConfigArgsDict']]
+    roll_config: NotRequired[pulumi.Input[Optional['OceanLaunchSpecUpdatePolicyRollConfigArgs']]]
     """
     Holds the roll configuration.
     """
@@ -3756,7 +3756,7 @@ class OceanLaunchSpecUpdatePolicyArgsDict(TypedDict):
 class OceanLaunchSpecUpdatePolicyArgs:
     def __init__(__self__, *,
                  should_roll: pulumi.Input[_builtins.bool],
-                 roll_config: Optional[pulumi.Input['OceanLaunchSpecUpdatePolicyRollConfigArgs']] = None):
+                 roll_config: pulumi.Input[Optional['OceanLaunchSpecUpdatePolicyRollConfigArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] should_roll: Enables the roll.
         :param pulumi.Input['OceanLaunchSpecUpdatePolicyRollConfigArgs'] roll_config: Holds the roll configuration.
@@ -3779,14 +3779,14 @@ class OceanLaunchSpecUpdatePolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="rollConfig")
-    def roll_config(self) -> Optional[pulumi.Input['OceanLaunchSpecUpdatePolicyRollConfigArgs']]:
+    def roll_config(self) -> pulumi.Input[Optional['OceanLaunchSpecUpdatePolicyRollConfigArgs']]:
         """
         Holds the roll configuration.
         """
         return pulumi.get(self, "roll_config")
 
     @roll_config.setter
-    def roll_config(self, value: Optional[pulumi.Input['OceanLaunchSpecUpdatePolicyRollConfigArgs']]):
+    def roll_config(self, value: pulumi.Input[Optional['OceanLaunchSpecUpdatePolicyRollConfigArgs']]):
         pulumi.set(self, "roll_config", value)
 
 

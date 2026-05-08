@@ -109,11 +109,11 @@ export interface SuspensionState {
     /**
      * Elastigroup ID to apply the suspensions on.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * block of single process to suspend.
      */
-    suspensions?: pulumi.Input<pulumi.Input<inputs.aws.SuspensionSuspension>[]>;
+    suspensions?: pulumi.Input<pulumi.Input<inputs.aws.SuspensionSuspension>[] | undefined>;
 }
 
 /**

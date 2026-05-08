@@ -89,8 +89,8 @@ export class OceanVirtualNodeGroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering OceanVirtualNodeGroup resources.
  */
 export interface OceanVirtualNodeGroupState {
-    oceanSparkClusterId?: pulumi.Input<string>;
-    virtualNodeGroupId?: pulumi.Input<string>;
+    oceanSparkClusterId?: pulumi.Input<string | undefined>;
+    virtualNodeGroupId?: pulumi.Input<string | undefined>;
 }
 
 /**

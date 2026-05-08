@@ -58,8 +58,8 @@ class OceanLaunchSpecImportArgs:
 @pulumi.input_type
 class _OceanLaunchSpecImportState:
     def __init__(__self__, *,
-                 node_pool_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ocean_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 node_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ocean_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OceanLaunchSpecImport resources.
 
@@ -73,26 +73,26 @@ class _OceanLaunchSpecImportState:
 
     @_builtins.property
     @pulumi.getter(name="nodePoolName")
-    def node_pool_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_pool_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The node pool you wish to use in your launchSpec.
         """
         return pulumi.get(self, "node_pool_name")
 
     @node_pool_name.setter
-    def node_pool_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_pool_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_pool_name", value)
 
     @_builtins.property
     @pulumi.getter(name="oceanId")
-    def ocean_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ocean_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Ocean cluster ID required for launchSpec create.
         """
         return pulumi.get(self, "ocean_id")
 
     @ocean_id.setter
-    def ocean_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ocean_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ocean_id", value)
 
 
@@ -102,8 +102,8 @@ class OceanLaunchSpecImport(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 node_pool_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ocean_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 node_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ocean_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a custom Spotinst Ocean GKE Launch Spec Import resource.
@@ -161,8 +161,8 @@ class OceanLaunchSpecImport(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 node_pool_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ocean_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 node_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ocean_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -188,8 +188,8 @@ class OceanLaunchSpecImport(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            node_pool_name: Optional[pulumi.Input[_builtins.str]] = None,
-            ocean_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'OceanLaunchSpecImport':
+            node_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ocean_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'OceanLaunchSpecImport':
         """
         Get an existing OceanLaunchSpecImport resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

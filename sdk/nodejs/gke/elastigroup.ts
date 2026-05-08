@@ -239,88 +239,88 @@ export class Elastigroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Elastigroup resources.
  */
 export interface ElastigroupState {
-    backendServices?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupBackendService>[]>;
+    backendServices?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupBackendService>[] | undefined>;
     /**
      * @deprecated Please define clusterId under integration_gke
      */
-    clusterId?: pulumi.Input<string>;
-    clusterZoneName?: pulumi.Input<string>;
-    desiredCapacity?: pulumi.Input<number>;
-    disks?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupDisk>[]>;
-    drainingTimeout?: pulumi.Input<number>;
-    fallbackToOndemand?: pulumi.Input<boolean>;
-    gpu?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupGpu>[]>;
-    instanceNamePrefix?: pulumi.Input<string>;
-    instanceTypesCustoms?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupInstanceTypesCustom>[]>;
-    instanceTypesOndemand?: pulumi.Input<string>;
-    instanceTypesPreemptibles?: pulumi.Input<pulumi.Input<string>[]>;
-    integrationDockerSwarm?: pulumi.Input<inputs.gke.ElastigroupIntegrationDockerSwarm>;
-    integrationGke?: pulumi.Input<inputs.gke.ElastigroupIntegrationGke>;
-    ipForwarding?: pulumi.Input<boolean>;
-    labels?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupLabel>[]>;
-    maxSize?: pulumi.Input<number>;
-    metadatas?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupMetadata>[]>;
-    minCpuPlatform?: pulumi.Input<string>;
-    minSize?: pulumi.Input<number>;
-    name?: pulumi.Input<string>;
-    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupNetworkInterface>[]>;
-    nodeImage?: pulumi.Input<string>;
-    ondemandCount?: pulumi.Input<number>;
-    optimizationWindows?: pulumi.Input<pulumi.Input<string>[]>;
-    preemptiblePercentage?: pulumi.Input<number>;
-    provisioningModel?: pulumi.Input<string>;
-    revertToPreemptibles?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupRevertToPreemptible>[]>;
-    scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupScalingDownPolicy>[]>;
-    scalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupScalingUpPolicy>[]>;
-    serviceAccount?: pulumi.Input<string>;
-    shieldedInstanceConfig?: pulumi.Input<inputs.gke.ElastigroupShieldedInstanceConfig>;
-    shouldUtilizeCommitments?: pulumi.Input<boolean>;
-    shutdownScript?: pulumi.Input<string>;
-    startupScript?: pulumi.Input<string>;
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    clusterId?: pulumi.Input<string | undefined>;
+    clusterZoneName?: pulumi.Input<string | undefined>;
+    desiredCapacity?: pulumi.Input<number | undefined>;
+    disks?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupDisk>[] | undefined>;
+    drainingTimeout?: pulumi.Input<number | undefined>;
+    fallbackToOndemand?: pulumi.Input<boolean | undefined>;
+    gpu?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupGpu>[] | undefined>;
+    instanceNamePrefix?: pulumi.Input<string | undefined>;
+    instanceTypesCustoms?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupInstanceTypesCustom>[] | undefined>;
+    instanceTypesOndemand?: pulumi.Input<string | undefined>;
+    instanceTypesPreemptibles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    integrationDockerSwarm?: pulumi.Input<inputs.gke.ElastigroupIntegrationDockerSwarm | undefined>;
+    integrationGke?: pulumi.Input<inputs.gke.ElastigroupIntegrationGke | undefined>;
+    ipForwarding?: pulumi.Input<boolean | undefined>;
+    labels?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupLabel>[] | undefined>;
+    maxSize?: pulumi.Input<number | undefined>;
+    metadatas?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupMetadata>[] | undefined>;
+    minCpuPlatform?: pulumi.Input<string | undefined>;
+    minSize?: pulumi.Input<number | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupNetworkInterface>[] | undefined>;
+    nodeImage?: pulumi.Input<string | undefined>;
+    ondemandCount?: pulumi.Input<number | undefined>;
+    optimizationWindows?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    preemptiblePercentage?: pulumi.Input<number | undefined>;
+    provisioningModel?: pulumi.Input<string | undefined>;
+    revertToPreemptibles?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupRevertToPreemptible>[] | undefined>;
+    scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupScalingDownPolicy>[] | undefined>;
+    scalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupScalingUpPolicy>[] | undefined>;
+    serviceAccount?: pulumi.Input<string | undefined>;
+    shieldedInstanceConfig?: pulumi.Input<inputs.gke.ElastigroupShieldedInstanceConfig | undefined>;
+    shouldUtilizeCommitments?: pulumi.Input<boolean | undefined>;
+    shutdownScript?: pulumi.Input<string | undefined>;
+    startupScript?: pulumi.Input<string | undefined>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
  * The set of arguments for constructing a Elastigroup resource.
  */
 export interface ElastigroupArgs {
-    backendServices?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupBackendService>[]>;
+    backendServices?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupBackendService>[] | undefined>;
     /**
      * @deprecated Please define clusterId under integration_gke
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     clusterZoneName: pulumi.Input<string>;
     desiredCapacity: pulumi.Input<number>;
-    disks?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupDisk>[]>;
-    drainingTimeout?: pulumi.Input<number>;
-    fallbackToOndemand?: pulumi.Input<boolean>;
-    gpu?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupGpu>[]>;
-    instanceNamePrefix?: pulumi.Input<string>;
-    instanceTypesCustoms?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupInstanceTypesCustom>[]>;
-    instanceTypesOndemand?: pulumi.Input<string>;
-    instanceTypesPreemptibles?: pulumi.Input<pulumi.Input<string>[]>;
-    integrationDockerSwarm?: pulumi.Input<inputs.gke.ElastigroupIntegrationDockerSwarm>;
-    integrationGke?: pulumi.Input<inputs.gke.ElastigroupIntegrationGke>;
-    ipForwarding?: pulumi.Input<boolean>;
-    labels?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupLabel>[]>;
-    maxSize?: pulumi.Input<number>;
-    metadatas?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupMetadata>[]>;
-    minCpuPlatform?: pulumi.Input<string>;
-    minSize?: pulumi.Input<number>;
-    name?: pulumi.Input<string>;
-    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupNetworkInterface>[]>;
-    nodeImage?: pulumi.Input<string>;
-    ondemandCount?: pulumi.Input<number>;
-    optimizationWindows?: pulumi.Input<pulumi.Input<string>[]>;
-    preemptiblePercentage?: pulumi.Input<number>;
-    provisioningModel?: pulumi.Input<string>;
-    revertToPreemptibles?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupRevertToPreemptible>[]>;
-    scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupScalingDownPolicy>[]>;
-    scalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupScalingUpPolicy>[]>;
-    serviceAccount?: pulumi.Input<string>;
-    shieldedInstanceConfig?: pulumi.Input<inputs.gke.ElastigroupShieldedInstanceConfig>;
-    shouldUtilizeCommitments?: pulumi.Input<boolean>;
-    shutdownScript?: pulumi.Input<string>;
-    startupScript?: pulumi.Input<string>;
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    disks?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupDisk>[] | undefined>;
+    drainingTimeout?: pulumi.Input<number | undefined>;
+    fallbackToOndemand?: pulumi.Input<boolean | undefined>;
+    gpu?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupGpu>[] | undefined>;
+    instanceNamePrefix?: pulumi.Input<string | undefined>;
+    instanceTypesCustoms?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupInstanceTypesCustom>[] | undefined>;
+    instanceTypesOndemand?: pulumi.Input<string | undefined>;
+    instanceTypesPreemptibles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    integrationDockerSwarm?: pulumi.Input<inputs.gke.ElastigroupIntegrationDockerSwarm | undefined>;
+    integrationGke?: pulumi.Input<inputs.gke.ElastigroupIntegrationGke | undefined>;
+    ipForwarding?: pulumi.Input<boolean | undefined>;
+    labels?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupLabel>[] | undefined>;
+    maxSize?: pulumi.Input<number | undefined>;
+    metadatas?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupMetadata>[] | undefined>;
+    minCpuPlatform?: pulumi.Input<string | undefined>;
+    minSize?: pulumi.Input<number | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupNetworkInterface>[] | undefined>;
+    nodeImage?: pulumi.Input<string | undefined>;
+    ondemandCount?: pulumi.Input<number | undefined>;
+    optimizationWindows?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    preemptiblePercentage?: pulumi.Input<number | undefined>;
+    provisioningModel?: pulumi.Input<string | undefined>;
+    revertToPreemptibles?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupRevertToPreemptible>[] | undefined>;
+    scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupScalingDownPolicy>[] | undefined>;
+    scalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupScalingUpPolicy>[] | undefined>;
+    serviceAccount?: pulumi.Input<string | undefined>;
+    shieldedInstanceConfig?: pulumi.Input<inputs.gke.ElastigroupShieldedInstanceConfig | undefined>;
+    shouldUtilizeCommitments?: pulumi.Input<boolean | undefined>;
+    shutdownScript?: pulumi.Input<string | undefined>;
+    startupScript?: pulumi.Input<string | undefined>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

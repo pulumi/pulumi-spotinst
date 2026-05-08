@@ -75,19 +75,19 @@ export interface ProviderArgs {
     /**
      * Spotinst Account ID
      */
-    account?: pulumi.Input<string>;
+    account?: pulumi.Input<string | undefined>;
     /**
      * Enable or disable the Spotinst provider
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Spotinst SDK Feature Flags
      */
-    featureFlags?: pulumi.Input<string>;
+    featureFlags?: pulumi.Input<string | undefined>;
     /**
      * Spotinst Personal API Access Token
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
 }
 
 export namespace Provider {

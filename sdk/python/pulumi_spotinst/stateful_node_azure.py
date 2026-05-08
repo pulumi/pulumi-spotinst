@@ -29,39 +29,39 @@ class StatefulNodeAzureArgs:
                  should_persist_os_disk: pulumi.Input[_builtins.bool],
                  strategy: pulumi.Input['StatefulNodeAzureStrategyArgs'],
                  vm_sizes: pulumi.Input['StatefulNodeAzureVmSizesArgs'],
-                 attach_data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureAttachDataDiskArgs']]]] = None,
-                 boot_diagnostics: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureBootDiagnosticArgs']]]] = None,
-                 custom_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureDataDiskArgs']]]] = None,
-                 data_disks_persistence_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletes: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureDeleteArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 detach_data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureDetachDataDiskArgs']]]] = None,
-                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureExtensionArgs']]]] = None,
-                 health: Optional[pulumi.Input['StatefulNodeAzureHealthArgs']] = None,
-                 image: Optional[pulumi.Input['StatefulNodeAzureImageArgs']] = None,
-                 import_vms: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureImportVmArgs']]]] = None,
-                 license_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureLoadBalancerArgs']]]] = None,
-                 login: Optional[pulumi.Input['StatefulNodeAzureLoginArgs']] = None,
-                 managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureManagedServiceIdentityArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input['StatefulNodeAzureNetworkArgs']] = None,
-                 os_disk: Optional[pulumi.Input['StatefulNodeAzureOsDiskArgs']] = None,
-                 os_disk_persistence_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 preferred_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 proximity_placement_groups: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureProximityPlacementGroupArgs']]]] = None,
-                 scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSchedulingTaskArgs']]]] = None,
-                 secrets: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSecretArgs']]]] = None,
-                 security: Optional[pulumi.Input['StatefulNodeAzureSecurityArgs']] = None,
-                 shutdown_script: Optional[pulumi.Input[_builtins.str]] = None,
-                 signals: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSignalArgs']]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureTagArgs']]]] = None,
-                 update_states: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureUpdateStateArgs']]]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 attach_data_disks: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureAttachDataDiskArgs']]]] = None,
+                 boot_diagnostics: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureBootDiagnosticArgs']]]] = None,
+                 custom_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureDataDiskArgs']]]] = None,
+                 data_disks_persistence_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletes: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureDeleteArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 detach_data_disks: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureDetachDataDiskArgs']]]] = None,
+                 extensions: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureExtensionArgs']]]] = None,
+                 health: pulumi.Input[Optional['StatefulNodeAzureHealthArgs']] = None,
+                 image: pulumi.Input[Optional['StatefulNodeAzureImageArgs']] = None,
+                 import_vms: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureImportVmArgs']]]] = None,
+                 license_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureLoadBalancerArgs']]]] = None,
+                 login: pulumi.Input[Optional['StatefulNodeAzureLoginArgs']] = None,
+                 managed_service_identities: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureManagedServiceIdentityArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional['StatefulNodeAzureNetworkArgs']] = None,
+                 os_disk: pulumi.Input[Optional['StatefulNodeAzureOsDiskArgs']] = None,
+                 os_disk_persistence_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 preferred_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 proximity_placement_groups: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureProximityPlacementGroupArgs']]]] = None,
+                 scheduling_tasks: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureSchedulingTaskArgs']]]] = None,
+                 secrets: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureSecretArgs']]]] = None,
+                 security: pulumi.Input[Optional['StatefulNodeAzureSecurityArgs']] = None,
+                 shutdown_script: pulumi.Input[Optional[_builtins.str]] = None,
+                 signals: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureSignalArgs']]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureTagArgs']]]] = None,
+                 update_states: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureUpdateStateArgs']]]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a StatefulNodeAzure resource.
         """
@@ -214,346 +214,346 @@ class StatefulNodeAzureArgs:
 
     @_builtins.property
     @pulumi.getter(name="attachDataDisks")
-    def attach_data_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureAttachDataDiskArgs']]]]:
+    def attach_data_disks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureAttachDataDiskArgs']]]]:
         return pulumi.get(self, "attach_data_disks")
 
     @attach_data_disks.setter
-    def attach_data_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureAttachDataDiskArgs']]]]):
+    def attach_data_disks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureAttachDataDiskArgs']]]]):
         pulumi.set(self, "attach_data_disks", value)
 
     @_builtins.property
     @pulumi.getter(name="bootDiagnostics")
-    def boot_diagnostics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureBootDiagnosticArgs']]]]:
+    def boot_diagnostics(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureBootDiagnosticArgs']]]]:
         return pulumi.get(self, "boot_diagnostics")
 
     @boot_diagnostics.setter
-    def boot_diagnostics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureBootDiagnosticArgs']]]]):
+    def boot_diagnostics(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureBootDiagnosticArgs']]]]):
         pulumi.set(self, "boot_diagnostics", value)
 
     @_builtins.property
     @pulumi.getter(name="customData")
-    def custom_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "custom_data")
 
     @custom_data.setter
-    def custom_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_data", value)
 
     @_builtins.property
     @pulumi.getter(name="dataDisks")
-    def data_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureDataDiskArgs']]]]:
+    def data_disks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureDataDiskArgs']]]]:
         return pulumi.get(self, "data_disks")
 
     @data_disks.setter
-    def data_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureDataDiskArgs']]]]):
+    def data_disks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureDataDiskArgs']]]]):
         pulumi.set(self, "data_disks", value)
 
     @_builtins.property
     @pulumi.getter(name="dataDisksPersistenceMode")
-    def data_disks_persistence_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_disks_persistence_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "data_disks_persistence_mode")
 
     @data_disks_persistence_mode.setter
-    def data_disks_persistence_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_disks_persistence_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_disks_persistence_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def deletes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureDeleteArgs']]]]:
+    def deletes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureDeleteArgs']]]]:
         return pulumi.get(self, "deletes")
 
     @deletes.setter
-    def deletes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureDeleteArgs']]]]):
+    def deletes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureDeleteArgs']]]]):
         pulumi.set(self, "deletes", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="detachDataDisks")
-    def detach_data_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureDetachDataDiskArgs']]]]:
+    def detach_data_disks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureDetachDataDiskArgs']]]]:
         return pulumi.get(self, "detach_data_disks")
 
     @detach_data_disks.setter
-    def detach_data_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureDetachDataDiskArgs']]]]):
+    def detach_data_disks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureDetachDataDiskArgs']]]]):
         pulumi.set(self, "detach_data_disks", value)
 
     @_builtins.property
     @pulumi.getter
-    def extensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureExtensionArgs']]]]:
+    def extensions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureExtensionArgs']]]]:
         return pulumi.get(self, "extensions")
 
     @extensions.setter
-    def extensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureExtensionArgs']]]]):
+    def extensions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureExtensionArgs']]]]):
         pulumi.set(self, "extensions", value)
 
     @_builtins.property
     @pulumi.getter
-    def health(self) -> Optional[pulumi.Input['StatefulNodeAzureHealthArgs']]:
+    def health(self) -> pulumi.Input[Optional['StatefulNodeAzureHealthArgs']]:
         return pulumi.get(self, "health")
 
     @health.setter
-    def health(self, value: Optional[pulumi.Input['StatefulNodeAzureHealthArgs']]):
+    def health(self, value: pulumi.Input[Optional['StatefulNodeAzureHealthArgs']]):
         pulumi.set(self, "health", value)
 
     @_builtins.property
     @pulumi.getter
-    def image(self) -> Optional[pulumi.Input['StatefulNodeAzureImageArgs']]:
+    def image(self) -> pulumi.Input[Optional['StatefulNodeAzureImageArgs']]:
         return pulumi.get(self, "image")
 
     @image.setter
-    def image(self, value: Optional[pulumi.Input['StatefulNodeAzureImageArgs']]):
+    def image(self, value: pulumi.Input[Optional['StatefulNodeAzureImageArgs']]):
         pulumi.set(self, "image", value)
 
     @_builtins.property
     @pulumi.getter(name="importVms")
-    def import_vms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureImportVmArgs']]]]:
+    def import_vms(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureImportVmArgs']]]]:
         return pulumi.get(self, "import_vms")
 
     @import_vms.setter
-    def import_vms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureImportVmArgs']]]]):
+    def import_vms(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureImportVmArgs']]]]):
         pulumi.set(self, "import_vms", value)
 
     @_builtins.property
     @pulumi.getter(name="licenseType")
-    def license_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def license_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "license_type")
 
     @license_type.setter
-    def license_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def license_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "license_type", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancers")
-    def load_balancers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureLoadBalancerArgs']]]]:
+    def load_balancers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureLoadBalancerArgs']]]]:
         return pulumi.get(self, "load_balancers")
 
     @load_balancers.setter
-    def load_balancers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureLoadBalancerArgs']]]]):
+    def load_balancers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureLoadBalancerArgs']]]]):
         pulumi.set(self, "load_balancers", value)
 
     @_builtins.property
     @pulumi.getter
-    def login(self) -> Optional[pulumi.Input['StatefulNodeAzureLoginArgs']]:
+    def login(self) -> pulumi.Input[Optional['StatefulNodeAzureLoginArgs']]:
         return pulumi.get(self, "login")
 
     @login.setter
-    def login(self, value: Optional[pulumi.Input['StatefulNodeAzureLoginArgs']]):
+    def login(self, value: pulumi.Input[Optional['StatefulNodeAzureLoginArgs']]):
         pulumi.set(self, "login", value)
 
     @_builtins.property
     @pulumi.getter(name="managedServiceIdentities")
-    def managed_service_identities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureManagedServiceIdentityArgs']]]]:
+    def managed_service_identities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureManagedServiceIdentityArgs']]]]:
         return pulumi.get(self, "managed_service_identities")
 
     @managed_service_identities.setter
-    def managed_service_identities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureManagedServiceIdentityArgs']]]]):
+    def managed_service_identities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureManagedServiceIdentityArgs']]]]):
         pulumi.set(self, "managed_service_identities", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input['StatefulNodeAzureNetworkArgs']]:
+    def network(self) -> pulumi.Input[Optional['StatefulNodeAzureNetworkArgs']]:
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input['StatefulNodeAzureNetworkArgs']]):
+    def network(self, value: pulumi.Input[Optional['StatefulNodeAzureNetworkArgs']]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter(name="osDisk")
-    def os_disk(self) -> Optional[pulumi.Input['StatefulNodeAzureOsDiskArgs']]:
+    def os_disk(self) -> pulumi.Input[Optional['StatefulNodeAzureOsDiskArgs']]:
         return pulumi.get(self, "os_disk")
 
     @os_disk.setter
-    def os_disk(self, value: Optional[pulumi.Input['StatefulNodeAzureOsDiskArgs']]):
+    def os_disk(self, value: pulumi.Input[Optional['StatefulNodeAzureOsDiskArgs']]):
         pulumi.set(self, "os_disk", value)
 
     @_builtins.property
     @pulumi.getter(name="osDiskPersistenceMode")
-    def os_disk_persistence_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def os_disk_persistence_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "os_disk_persistence_mode")
 
     @os_disk_persistence_mode.setter
-    def os_disk_persistence_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def os_disk_persistence_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "os_disk_persistence_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="preferredZone")
-    def preferred_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def preferred_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "preferred_zone")
 
     @preferred_zone.setter
-    def preferred_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def preferred_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "preferred_zone", value)
 
     @_builtins.property
     @pulumi.getter(name="proximityPlacementGroups")
-    def proximity_placement_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureProximityPlacementGroupArgs']]]]:
+    def proximity_placement_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureProximityPlacementGroupArgs']]]]:
         return pulumi.get(self, "proximity_placement_groups")
 
     @proximity_placement_groups.setter
-    def proximity_placement_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureProximityPlacementGroupArgs']]]]):
+    def proximity_placement_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureProximityPlacementGroupArgs']]]]):
         pulumi.set(self, "proximity_placement_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="schedulingTasks")
-    def scheduling_tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSchedulingTaskArgs']]]]:
+    def scheduling_tasks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureSchedulingTaskArgs']]]]:
         return pulumi.get(self, "scheduling_tasks")
 
     @scheduling_tasks.setter
-    def scheduling_tasks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSchedulingTaskArgs']]]]):
+    def scheduling_tasks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureSchedulingTaskArgs']]]]):
         pulumi.set(self, "scheduling_tasks", value)
 
     @_builtins.property
     @pulumi.getter
-    def secrets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSecretArgs']]]]:
+    def secrets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureSecretArgs']]]]:
         return pulumi.get(self, "secrets")
 
     @secrets.setter
-    def secrets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSecretArgs']]]]):
+    def secrets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureSecretArgs']]]]):
         pulumi.set(self, "secrets", value)
 
     @_builtins.property
     @pulumi.getter
-    def security(self) -> Optional[pulumi.Input['StatefulNodeAzureSecurityArgs']]:
+    def security(self) -> pulumi.Input[Optional['StatefulNodeAzureSecurityArgs']]:
         return pulumi.get(self, "security")
 
     @security.setter
-    def security(self, value: Optional[pulumi.Input['StatefulNodeAzureSecurityArgs']]):
+    def security(self, value: pulumi.Input[Optional['StatefulNodeAzureSecurityArgs']]):
         pulumi.set(self, "security", value)
 
     @_builtins.property
     @pulumi.getter(name="shutdownScript")
-    def shutdown_script(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def shutdown_script(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "shutdown_script")
 
     @shutdown_script.setter
-    def shutdown_script(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def shutdown_script(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "shutdown_script", value)
 
     @_builtins.property
     @pulumi.getter
-    def signals(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSignalArgs']]]]:
+    def signals(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureSignalArgs']]]]:
         return pulumi.get(self, "signals")
 
     @signals.setter
-    def signals(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSignalArgs']]]]):
+    def signals(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureSignalArgs']]]]):
         pulumi.set(self, "signals", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureTagArgs']]]]:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="updateStates")
-    def update_states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureUpdateStateArgs']]]]:
+    def update_states(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureUpdateStateArgs']]]]:
         return pulumi.get(self, "update_states")
 
     @update_states.setter
-    def update_states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureUpdateStateArgs']]]]):
+    def update_states(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureUpdateStateArgs']]]]):
         pulumi.set(self, "update_states", value)
 
     @_builtins.property
     @pulumi.getter(name="userData")
-    def user_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "user_data")
 
     @user_data.setter
-    def user_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_data", value)
 
     @_builtins.property
     @pulumi.getter(name="vmName")
-    def vm_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vm_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "vm_name")
 
     @vm_name.setter
-    def vm_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vm_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vm_name", value)
 
     @_builtins.property
     @pulumi.getter(name="vmNamePrefix")
-    def vm_name_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vm_name_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "vm_name_prefix")
 
     @vm_name_prefix.setter
-    def vm_name_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vm_name_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vm_name_prefix", value)
 
     @_builtins.property
     @pulumi.getter
-    def zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def zones(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "zones")
 
     @zones.setter
-    def zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def zones(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "zones", value)
 
 
 @pulumi.input_type
 class _StatefulNodeAzureState:
     def __init__(__self__, *,
-                 attach_data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureAttachDataDiskArgs']]]] = None,
-                 boot_diagnostics: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureBootDiagnosticArgs']]]] = None,
-                 custom_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureDataDiskArgs']]]] = None,
-                 data_disks_persistence_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletes: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureDeleteArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 detach_data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureDetachDataDiskArgs']]]] = None,
-                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureExtensionArgs']]]] = None,
-                 health: Optional[pulumi.Input['StatefulNodeAzureHealthArgs']] = None,
-                 image: Optional[pulumi.Input['StatefulNodeAzureImageArgs']] = None,
-                 import_vms: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureImportVmArgs']]]] = None,
-                 license_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureLoadBalancerArgs']]]] = None,
-                 login: Optional[pulumi.Input['StatefulNodeAzureLoginArgs']] = None,
-                 managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureManagedServiceIdentityArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input['StatefulNodeAzureNetworkArgs']] = None,
-                 os: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_disk: Optional[pulumi.Input['StatefulNodeAzureOsDiskArgs']] = None,
-                 os_disk_persistence_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 preferred_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 proximity_placement_groups: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureProximityPlacementGroupArgs']]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSchedulingTaskArgs']]]] = None,
-                 secrets: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSecretArgs']]]] = None,
-                 security: Optional[pulumi.Input['StatefulNodeAzureSecurityArgs']] = None,
-                 should_persist_data_disks: Optional[pulumi.Input[_builtins.bool]] = None,
-                 should_persist_network: Optional[pulumi.Input[_builtins.bool]] = None,
-                 should_persist_os_disk: Optional[pulumi.Input[_builtins.bool]] = None,
-                 shutdown_script: Optional[pulumi.Input[_builtins.str]] = None,
-                 signals: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSignalArgs']]]] = None,
-                 strategy: Optional[pulumi.Input['StatefulNodeAzureStrategyArgs']] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureTagArgs']]]] = None,
-                 update_states: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureUpdateStateArgs']]]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_sizes: Optional[pulumi.Input['StatefulNodeAzureVmSizesArgs']] = None,
-                 zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 attach_data_disks: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureAttachDataDiskArgs']]]] = None,
+                 boot_diagnostics: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureBootDiagnosticArgs']]]] = None,
+                 custom_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureDataDiskArgs']]]] = None,
+                 data_disks_persistence_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletes: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureDeleteArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 detach_data_disks: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureDetachDataDiskArgs']]]] = None,
+                 extensions: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureExtensionArgs']]]] = None,
+                 health: pulumi.Input[Optional['StatefulNodeAzureHealthArgs']] = None,
+                 image: pulumi.Input[Optional['StatefulNodeAzureImageArgs']] = None,
+                 import_vms: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureImportVmArgs']]]] = None,
+                 license_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureLoadBalancerArgs']]]] = None,
+                 login: pulumi.Input[Optional['StatefulNodeAzureLoginArgs']] = None,
+                 managed_service_identities: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureManagedServiceIdentityArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional['StatefulNodeAzureNetworkArgs']] = None,
+                 os: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_disk: pulumi.Input[Optional['StatefulNodeAzureOsDiskArgs']] = None,
+                 os_disk_persistence_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 preferred_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 proximity_placement_groups: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureProximityPlacementGroupArgs']]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduling_tasks: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureSchedulingTaskArgs']]]] = None,
+                 secrets: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureSecretArgs']]]] = None,
+                 security: pulumi.Input[Optional['StatefulNodeAzureSecurityArgs']] = None,
+                 should_persist_data_disks: pulumi.Input[Optional[_builtins.bool]] = None,
+                 should_persist_network: pulumi.Input[Optional[_builtins.bool]] = None,
+                 should_persist_os_disk: pulumi.Input[Optional[_builtins.bool]] = None,
+                 shutdown_script: pulumi.Input[Optional[_builtins.str]] = None,
+                 signals: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureSignalArgs']]]] = None,
+                 strategy: pulumi.Input[Optional['StatefulNodeAzureStrategyArgs']] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureTagArgs']]]] = None,
+                 update_states: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureUpdateStateArgs']]]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_sizes: pulumi.Input[Optional['StatefulNodeAzureVmSizesArgs']] = None,
+                 zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering StatefulNodeAzure resources.
         """
@@ -642,371 +642,371 @@ class _StatefulNodeAzureState:
 
     @_builtins.property
     @pulumi.getter(name="attachDataDisks")
-    def attach_data_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureAttachDataDiskArgs']]]]:
+    def attach_data_disks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureAttachDataDiskArgs']]]]:
         return pulumi.get(self, "attach_data_disks")
 
     @attach_data_disks.setter
-    def attach_data_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureAttachDataDiskArgs']]]]):
+    def attach_data_disks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureAttachDataDiskArgs']]]]):
         pulumi.set(self, "attach_data_disks", value)
 
     @_builtins.property
     @pulumi.getter(name="bootDiagnostics")
-    def boot_diagnostics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureBootDiagnosticArgs']]]]:
+    def boot_diagnostics(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureBootDiagnosticArgs']]]]:
         return pulumi.get(self, "boot_diagnostics")
 
     @boot_diagnostics.setter
-    def boot_diagnostics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureBootDiagnosticArgs']]]]):
+    def boot_diagnostics(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureBootDiagnosticArgs']]]]):
         pulumi.set(self, "boot_diagnostics", value)
 
     @_builtins.property
     @pulumi.getter(name="customData")
-    def custom_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "custom_data")
 
     @custom_data.setter
-    def custom_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_data", value)
 
     @_builtins.property
     @pulumi.getter(name="dataDisks")
-    def data_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureDataDiskArgs']]]]:
+    def data_disks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureDataDiskArgs']]]]:
         return pulumi.get(self, "data_disks")
 
     @data_disks.setter
-    def data_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureDataDiskArgs']]]]):
+    def data_disks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureDataDiskArgs']]]]):
         pulumi.set(self, "data_disks", value)
 
     @_builtins.property
     @pulumi.getter(name="dataDisksPersistenceMode")
-    def data_disks_persistence_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_disks_persistence_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "data_disks_persistence_mode")
 
     @data_disks_persistence_mode.setter
-    def data_disks_persistence_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_disks_persistence_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_disks_persistence_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def deletes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureDeleteArgs']]]]:
+    def deletes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureDeleteArgs']]]]:
         return pulumi.get(self, "deletes")
 
     @deletes.setter
-    def deletes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureDeleteArgs']]]]):
+    def deletes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureDeleteArgs']]]]):
         pulumi.set(self, "deletes", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="detachDataDisks")
-    def detach_data_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureDetachDataDiskArgs']]]]:
+    def detach_data_disks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureDetachDataDiskArgs']]]]:
         return pulumi.get(self, "detach_data_disks")
 
     @detach_data_disks.setter
-    def detach_data_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureDetachDataDiskArgs']]]]):
+    def detach_data_disks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureDetachDataDiskArgs']]]]):
         pulumi.set(self, "detach_data_disks", value)
 
     @_builtins.property
     @pulumi.getter
-    def extensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureExtensionArgs']]]]:
+    def extensions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureExtensionArgs']]]]:
         return pulumi.get(self, "extensions")
 
     @extensions.setter
-    def extensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureExtensionArgs']]]]):
+    def extensions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureExtensionArgs']]]]):
         pulumi.set(self, "extensions", value)
 
     @_builtins.property
     @pulumi.getter
-    def health(self) -> Optional[pulumi.Input['StatefulNodeAzureHealthArgs']]:
+    def health(self) -> pulumi.Input[Optional['StatefulNodeAzureHealthArgs']]:
         return pulumi.get(self, "health")
 
     @health.setter
-    def health(self, value: Optional[pulumi.Input['StatefulNodeAzureHealthArgs']]):
+    def health(self, value: pulumi.Input[Optional['StatefulNodeAzureHealthArgs']]):
         pulumi.set(self, "health", value)
 
     @_builtins.property
     @pulumi.getter
-    def image(self) -> Optional[pulumi.Input['StatefulNodeAzureImageArgs']]:
+    def image(self) -> pulumi.Input[Optional['StatefulNodeAzureImageArgs']]:
         return pulumi.get(self, "image")
 
     @image.setter
-    def image(self, value: Optional[pulumi.Input['StatefulNodeAzureImageArgs']]):
+    def image(self, value: pulumi.Input[Optional['StatefulNodeAzureImageArgs']]):
         pulumi.set(self, "image", value)
 
     @_builtins.property
     @pulumi.getter(name="importVms")
-    def import_vms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureImportVmArgs']]]]:
+    def import_vms(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureImportVmArgs']]]]:
         return pulumi.get(self, "import_vms")
 
     @import_vms.setter
-    def import_vms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureImportVmArgs']]]]):
+    def import_vms(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureImportVmArgs']]]]):
         pulumi.set(self, "import_vms", value)
 
     @_builtins.property
     @pulumi.getter(name="licenseType")
-    def license_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def license_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "license_type")
 
     @license_type.setter
-    def license_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def license_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "license_type", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancers")
-    def load_balancers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureLoadBalancerArgs']]]]:
+    def load_balancers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureLoadBalancerArgs']]]]:
         return pulumi.get(self, "load_balancers")
 
     @load_balancers.setter
-    def load_balancers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureLoadBalancerArgs']]]]):
+    def load_balancers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureLoadBalancerArgs']]]]):
         pulumi.set(self, "load_balancers", value)
 
     @_builtins.property
     @pulumi.getter
-    def login(self) -> Optional[pulumi.Input['StatefulNodeAzureLoginArgs']]:
+    def login(self) -> pulumi.Input[Optional['StatefulNodeAzureLoginArgs']]:
         return pulumi.get(self, "login")
 
     @login.setter
-    def login(self, value: Optional[pulumi.Input['StatefulNodeAzureLoginArgs']]):
+    def login(self, value: pulumi.Input[Optional['StatefulNodeAzureLoginArgs']]):
         pulumi.set(self, "login", value)
 
     @_builtins.property
     @pulumi.getter(name="managedServiceIdentities")
-    def managed_service_identities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureManagedServiceIdentityArgs']]]]:
+    def managed_service_identities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureManagedServiceIdentityArgs']]]]:
         return pulumi.get(self, "managed_service_identities")
 
     @managed_service_identities.setter
-    def managed_service_identities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureManagedServiceIdentityArgs']]]]):
+    def managed_service_identities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureManagedServiceIdentityArgs']]]]):
         pulumi.set(self, "managed_service_identities", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input['StatefulNodeAzureNetworkArgs']]:
+    def network(self) -> pulumi.Input[Optional['StatefulNodeAzureNetworkArgs']]:
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input['StatefulNodeAzureNetworkArgs']]):
+    def network(self, value: pulumi.Input[Optional['StatefulNodeAzureNetworkArgs']]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter
-    def os(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def os(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "os")
 
     @os.setter
-    def os(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def os(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "os", value)
 
     @_builtins.property
     @pulumi.getter(name="osDisk")
-    def os_disk(self) -> Optional[pulumi.Input['StatefulNodeAzureOsDiskArgs']]:
+    def os_disk(self) -> pulumi.Input[Optional['StatefulNodeAzureOsDiskArgs']]:
         return pulumi.get(self, "os_disk")
 
     @os_disk.setter
-    def os_disk(self, value: Optional[pulumi.Input['StatefulNodeAzureOsDiskArgs']]):
+    def os_disk(self, value: pulumi.Input[Optional['StatefulNodeAzureOsDiskArgs']]):
         pulumi.set(self, "os_disk", value)
 
     @_builtins.property
     @pulumi.getter(name="osDiskPersistenceMode")
-    def os_disk_persistence_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def os_disk_persistence_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "os_disk_persistence_mode")
 
     @os_disk_persistence_mode.setter
-    def os_disk_persistence_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def os_disk_persistence_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "os_disk_persistence_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="preferredZone")
-    def preferred_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def preferred_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "preferred_zone")
 
     @preferred_zone.setter
-    def preferred_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def preferred_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "preferred_zone", value)
 
     @_builtins.property
     @pulumi.getter(name="proximityPlacementGroups")
-    def proximity_placement_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureProximityPlacementGroupArgs']]]]:
+    def proximity_placement_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureProximityPlacementGroupArgs']]]]:
         return pulumi.get(self, "proximity_placement_groups")
 
     @proximity_placement_groups.setter
-    def proximity_placement_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureProximityPlacementGroupArgs']]]]):
+    def proximity_placement_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureProximityPlacementGroupArgs']]]]):
         pulumi.set(self, "proximity_placement_groups", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupName")
-    def resource_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "resource_group_name")
 
     @resource_group_name.setter
-    def resource_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="schedulingTasks")
-    def scheduling_tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSchedulingTaskArgs']]]]:
+    def scheduling_tasks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureSchedulingTaskArgs']]]]:
         return pulumi.get(self, "scheduling_tasks")
 
     @scheduling_tasks.setter
-    def scheduling_tasks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSchedulingTaskArgs']]]]):
+    def scheduling_tasks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureSchedulingTaskArgs']]]]):
         pulumi.set(self, "scheduling_tasks", value)
 
     @_builtins.property
     @pulumi.getter
-    def secrets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSecretArgs']]]]:
+    def secrets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureSecretArgs']]]]:
         return pulumi.get(self, "secrets")
 
     @secrets.setter
-    def secrets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSecretArgs']]]]):
+    def secrets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureSecretArgs']]]]):
         pulumi.set(self, "secrets", value)
 
     @_builtins.property
     @pulumi.getter
-    def security(self) -> Optional[pulumi.Input['StatefulNodeAzureSecurityArgs']]:
+    def security(self) -> pulumi.Input[Optional['StatefulNodeAzureSecurityArgs']]:
         return pulumi.get(self, "security")
 
     @security.setter
-    def security(self, value: Optional[pulumi.Input['StatefulNodeAzureSecurityArgs']]):
+    def security(self, value: pulumi.Input[Optional['StatefulNodeAzureSecurityArgs']]):
         pulumi.set(self, "security", value)
 
     @_builtins.property
     @pulumi.getter(name="shouldPersistDataDisks")
-    def should_persist_data_disks(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def should_persist_data_disks(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "should_persist_data_disks")
 
     @should_persist_data_disks.setter
-    def should_persist_data_disks(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def should_persist_data_disks(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "should_persist_data_disks", value)
 
     @_builtins.property
     @pulumi.getter(name="shouldPersistNetwork")
-    def should_persist_network(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def should_persist_network(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "should_persist_network")
 
     @should_persist_network.setter
-    def should_persist_network(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def should_persist_network(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "should_persist_network", value)
 
     @_builtins.property
     @pulumi.getter(name="shouldPersistOsDisk")
-    def should_persist_os_disk(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def should_persist_os_disk(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "should_persist_os_disk")
 
     @should_persist_os_disk.setter
-    def should_persist_os_disk(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def should_persist_os_disk(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "should_persist_os_disk", value)
 
     @_builtins.property
     @pulumi.getter(name="shutdownScript")
-    def shutdown_script(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def shutdown_script(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "shutdown_script")
 
     @shutdown_script.setter
-    def shutdown_script(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def shutdown_script(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "shutdown_script", value)
 
     @_builtins.property
     @pulumi.getter
-    def signals(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSignalArgs']]]]:
+    def signals(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureSignalArgs']]]]:
         return pulumi.get(self, "signals")
 
     @signals.setter
-    def signals(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSignalArgs']]]]):
+    def signals(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureSignalArgs']]]]):
         pulumi.set(self, "signals", value)
 
     @_builtins.property
     @pulumi.getter
-    def strategy(self) -> Optional[pulumi.Input['StatefulNodeAzureStrategyArgs']]:
+    def strategy(self) -> pulumi.Input[Optional['StatefulNodeAzureStrategyArgs']]:
         return pulumi.get(self, "strategy")
 
     @strategy.setter
-    def strategy(self, value: Optional[pulumi.Input['StatefulNodeAzureStrategyArgs']]):
+    def strategy(self, value: pulumi.Input[Optional['StatefulNodeAzureStrategyArgs']]):
         pulumi.set(self, "strategy", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureTagArgs']]]]:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="updateStates")
-    def update_states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureUpdateStateArgs']]]]:
+    def update_states(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureUpdateStateArgs']]]]:
         return pulumi.get(self, "update_states")
 
     @update_states.setter
-    def update_states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureUpdateStateArgs']]]]):
+    def update_states(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureUpdateStateArgs']]]]):
         pulumi.set(self, "update_states", value)
 
     @_builtins.property
     @pulumi.getter(name="userData")
-    def user_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "user_data")
 
     @user_data.setter
-    def user_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_data", value)
 
     @_builtins.property
     @pulumi.getter(name="vmName")
-    def vm_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vm_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "vm_name")
 
     @vm_name.setter
-    def vm_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vm_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vm_name", value)
 
     @_builtins.property
     @pulumi.getter(name="vmNamePrefix")
-    def vm_name_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vm_name_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "vm_name_prefix")
 
     @vm_name_prefix.setter
-    def vm_name_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vm_name_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vm_name_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="vmSizes")
-    def vm_sizes(self) -> Optional[pulumi.Input['StatefulNodeAzureVmSizesArgs']]:
+    def vm_sizes(self) -> pulumi.Input[Optional['StatefulNodeAzureVmSizesArgs']]:
         return pulumi.get(self, "vm_sizes")
 
     @vm_sizes.setter
-    def vm_sizes(self, value: Optional[pulumi.Input['StatefulNodeAzureVmSizesArgs']]):
+    def vm_sizes(self, value: pulumi.Input[Optional['StatefulNodeAzureVmSizesArgs']]):
         pulumi.set(self, "vm_sizes", value)
 
     @_builtins.property
     @pulumi.getter
-    def zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def zones(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "zones")
 
     @zones.setter
-    def zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def zones(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "zones", value)
 
 
@@ -1016,47 +1016,47 @@ class StatefulNodeAzure(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attach_data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureAttachDataDiskArgs', 'StatefulNodeAzureAttachDataDiskArgsDict']]]]] = None,
-                 boot_diagnostics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureBootDiagnosticArgs', 'StatefulNodeAzureBootDiagnosticArgsDict']]]]] = None,
-                 custom_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureDataDiskArgs', 'StatefulNodeAzureDataDiskArgsDict']]]]] = None,
-                 data_disks_persistence_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureDeleteArgs', 'StatefulNodeAzureDeleteArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 detach_data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureDetachDataDiskArgs', 'StatefulNodeAzureDetachDataDiskArgsDict']]]]] = None,
-                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureExtensionArgs', 'StatefulNodeAzureExtensionArgsDict']]]]] = None,
-                 health: Optional[pulumi.Input[Union['StatefulNodeAzureHealthArgs', 'StatefulNodeAzureHealthArgsDict']]] = None,
-                 image: Optional[pulumi.Input[Union['StatefulNodeAzureImageArgs', 'StatefulNodeAzureImageArgsDict']]] = None,
-                 import_vms: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureImportVmArgs', 'StatefulNodeAzureImportVmArgsDict']]]]] = None,
-                 license_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureLoadBalancerArgs', 'StatefulNodeAzureLoadBalancerArgsDict']]]]] = None,
-                 login: Optional[pulumi.Input[Union['StatefulNodeAzureLoginArgs', 'StatefulNodeAzureLoginArgsDict']]] = None,
-                 managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureManagedServiceIdentityArgs', 'StatefulNodeAzureManagedServiceIdentityArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[Union['StatefulNodeAzureNetworkArgs', 'StatefulNodeAzureNetworkArgsDict']]] = None,
-                 os: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_disk: Optional[pulumi.Input[Union['StatefulNodeAzureOsDiskArgs', 'StatefulNodeAzureOsDiskArgsDict']]] = None,
-                 os_disk_persistence_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 preferred_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 proximity_placement_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureProximityPlacementGroupArgs', 'StatefulNodeAzureProximityPlacementGroupArgsDict']]]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureSchedulingTaskArgs', 'StatefulNodeAzureSchedulingTaskArgsDict']]]]] = None,
-                 secrets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureSecretArgs', 'StatefulNodeAzureSecretArgsDict']]]]] = None,
-                 security: Optional[pulumi.Input[Union['StatefulNodeAzureSecurityArgs', 'StatefulNodeAzureSecurityArgsDict']]] = None,
-                 should_persist_data_disks: Optional[pulumi.Input[_builtins.bool]] = None,
-                 should_persist_network: Optional[pulumi.Input[_builtins.bool]] = None,
-                 should_persist_os_disk: Optional[pulumi.Input[_builtins.bool]] = None,
-                 shutdown_script: Optional[pulumi.Input[_builtins.str]] = None,
-                 signals: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureSignalArgs', 'StatefulNodeAzureSignalArgsDict']]]]] = None,
-                 strategy: Optional[pulumi.Input[Union['StatefulNodeAzureStrategyArgs', 'StatefulNodeAzureStrategyArgsDict']]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureTagArgs', 'StatefulNodeAzureTagArgsDict']]]]] = None,
-                 update_states: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureUpdateStateArgs', 'StatefulNodeAzureUpdateStateArgsDict']]]]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_sizes: Optional[pulumi.Input[Union['StatefulNodeAzureVmSizesArgs', 'StatefulNodeAzureVmSizesArgsDict']]] = None,
-                 zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 attach_data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StatefulNodeAzureAttachDataDiskArgs', 'StatefulNodeAzureAttachDataDiskArgsDict']]]]] = None,
+                 boot_diagnostics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StatefulNodeAzureBootDiagnosticArgs', 'StatefulNodeAzureBootDiagnosticArgsDict']]]]] = None,
+                 custom_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StatefulNodeAzureDataDiskArgs', 'StatefulNodeAzureDataDiskArgsDict']]]]] = None,
+                 data_disks_persistence_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StatefulNodeAzureDeleteArgs', 'StatefulNodeAzureDeleteArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 detach_data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StatefulNodeAzureDetachDataDiskArgs', 'StatefulNodeAzureDetachDataDiskArgsDict']]]]] = None,
+                 extensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StatefulNodeAzureExtensionArgs', 'StatefulNodeAzureExtensionArgsDict']]]]] = None,
+                 health: pulumi.Input[Optional[Union['StatefulNodeAzureHealthArgs', 'StatefulNodeAzureHealthArgsDict']]] = None,
+                 image: pulumi.Input[Optional[Union['StatefulNodeAzureImageArgs', 'StatefulNodeAzureImageArgsDict']]] = None,
+                 import_vms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StatefulNodeAzureImportVmArgs', 'StatefulNodeAzureImportVmArgsDict']]]]] = None,
+                 license_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StatefulNodeAzureLoadBalancerArgs', 'StatefulNodeAzureLoadBalancerArgsDict']]]]] = None,
+                 login: pulumi.Input[Optional[Union['StatefulNodeAzureLoginArgs', 'StatefulNodeAzureLoginArgsDict']]] = None,
+                 managed_service_identities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StatefulNodeAzureManagedServiceIdentityArgs', 'StatefulNodeAzureManagedServiceIdentityArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[Union['StatefulNodeAzureNetworkArgs', 'StatefulNodeAzureNetworkArgsDict']]] = None,
+                 os: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_disk: pulumi.Input[Optional[Union['StatefulNodeAzureOsDiskArgs', 'StatefulNodeAzureOsDiskArgsDict']]] = None,
+                 os_disk_persistence_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 preferred_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 proximity_placement_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StatefulNodeAzureProximityPlacementGroupArgs', 'StatefulNodeAzureProximityPlacementGroupArgsDict']]]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduling_tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StatefulNodeAzureSchedulingTaskArgs', 'StatefulNodeAzureSchedulingTaskArgsDict']]]]] = None,
+                 secrets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StatefulNodeAzureSecretArgs', 'StatefulNodeAzureSecretArgsDict']]]]] = None,
+                 security: pulumi.Input[Optional[Union['StatefulNodeAzureSecurityArgs', 'StatefulNodeAzureSecurityArgsDict']]] = None,
+                 should_persist_data_disks: pulumi.Input[Optional[_builtins.bool]] = None,
+                 should_persist_network: pulumi.Input[Optional[_builtins.bool]] = None,
+                 should_persist_os_disk: pulumi.Input[Optional[_builtins.bool]] = None,
+                 shutdown_script: pulumi.Input[Optional[_builtins.str]] = None,
+                 signals: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StatefulNodeAzureSignalArgs', 'StatefulNodeAzureSignalArgsDict']]]]] = None,
+                 strategy: pulumi.Input[Optional[Union['StatefulNodeAzureStrategyArgs', 'StatefulNodeAzureStrategyArgsDict']]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StatefulNodeAzureTagArgs', 'StatefulNodeAzureTagArgsDict']]]]] = None,
+                 update_states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StatefulNodeAzureUpdateStateArgs', 'StatefulNodeAzureUpdateStateArgsDict']]]]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_sizes: pulumi.Input[Optional[Union['StatefulNodeAzureVmSizesArgs', 'StatefulNodeAzureVmSizesArgsDict']]] = None,
+                 zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Spotinst stateful node Azure resource.
@@ -2160,47 +2160,47 @@ class StatefulNodeAzure(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attach_data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureAttachDataDiskArgs', 'StatefulNodeAzureAttachDataDiskArgsDict']]]]] = None,
-                 boot_diagnostics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureBootDiagnosticArgs', 'StatefulNodeAzureBootDiagnosticArgsDict']]]]] = None,
-                 custom_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureDataDiskArgs', 'StatefulNodeAzureDataDiskArgsDict']]]]] = None,
-                 data_disks_persistence_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureDeleteArgs', 'StatefulNodeAzureDeleteArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 detach_data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureDetachDataDiskArgs', 'StatefulNodeAzureDetachDataDiskArgsDict']]]]] = None,
-                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureExtensionArgs', 'StatefulNodeAzureExtensionArgsDict']]]]] = None,
-                 health: Optional[pulumi.Input[Union['StatefulNodeAzureHealthArgs', 'StatefulNodeAzureHealthArgsDict']]] = None,
-                 image: Optional[pulumi.Input[Union['StatefulNodeAzureImageArgs', 'StatefulNodeAzureImageArgsDict']]] = None,
-                 import_vms: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureImportVmArgs', 'StatefulNodeAzureImportVmArgsDict']]]]] = None,
-                 license_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureLoadBalancerArgs', 'StatefulNodeAzureLoadBalancerArgsDict']]]]] = None,
-                 login: Optional[pulumi.Input[Union['StatefulNodeAzureLoginArgs', 'StatefulNodeAzureLoginArgsDict']]] = None,
-                 managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureManagedServiceIdentityArgs', 'StatefulNodeAzureManagedServiceIdentityArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[Union['StatefulNodeAzureNetworkArgs', 'StatefulNodeAzureNetworkArgsDict']]] = None,
-                 os: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_disk: Optional[pulumi.Input[Union['StatefulNodeAzureOsDiskArgs', 'StatefulNodeAzureOsDiskArgsDict']]] = None,
-                 os_disk_persistence_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 preferred_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 proximity_placement_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureProximityPlacementGroupArgs', 'StatefulNodeAzureProximityPlacementGroupArgsDict']]]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureSchedulingTaskArgs', 'StatefulNodeAzureSchedulingTaskArgsDict']]]]] = None,
-                 secrets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureSecretArgs', 'StatefulNodeAzureSecretArgsDict']]]]] = None,
-                 security: Optional[pulumi.Input[Union['StatefulNodeAzureSecurityArgs', 'StatefulNodeAzureSecurityArgsDict']]] = None,
-                 should_persist_data_disks: Optional[pulumi.Input[_builtins.bool]] = None,
-                 should_persist_network: Optional[pulumi.Input[_builtins.bool]] = None,
-                 should_persist_os_disk: Optional[pulumi.Input[_builtins.bool]] = None,
-                 shutdown_script: Optional[pulumi.Input[_builtins.str]] = None,
-                 signals: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureSignalArgs', 'StatefulNodeAzureSignalArgsDict']]]]] = None,
-                 strategy: Optional[pulumi.Input[Union['StatefulNodeAzureStrategyArgs', 'StatefulNodeAzureStrategyArgsDict']]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureTagArgs', 'StatefulNodeAzureTagArgsDict']]]]] = None,
-                 update_states: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureUpdateStateArgs', 'StatefulNodeAzureUpdateStateArgsDict']]]]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_sizes: Optional[pulumi.Input[Union['StatefulNodeAzureVmSizesArgs', 'StatefulNodeAzureVmSizesArgsDict']]] = None,
-                 zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 attach_data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StatefulNodeAzureAttachDataDiskArgs', 'StatefulNodeAzureAttachDataDiskArgsDict']]]]] = None,
+                 boot_diagnostics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StatefulNodeAzureBootDiagnosticArgs', 'StatefulNodeAzureBootDiagnosticArgsDict']]]]] = None,
+                 custom_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StatefulNodeAzureDataDiskArgs', 'StatefulNodeAzureDataDiskArgsDict']]]]] = None,
+                 data_disks_persistence_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StatefulNodeAzureDeleteArgs', 'StatefulNodeAzureDeleteArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 detach_data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StatefulNodeAzureDetachDataDiskArgs', 'StatefulNodeAzureDetachDataDiskArgsDict']]]]] = None,
+                 extensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StatefulNodeAzureExtensionArgs', 'StatefulNodeAzureExtensionArgsDict']]]]] = None,
+                 health: pulumi.Input[Optional[Union['StatefulNodeAzureHealthArgs', 'StatefulNodeAzureHealthArgsDict']]] = None,
+                 image: pulumi.Input[Optional[Union['StatefulNodeAzureImageArgs', 'StatefulNodeAzureImageArgsDict']]] = None,
+                 import_vms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StatefulNodeAzureImportVmArgs', 'StatefulNodeAzureImportVmArgsDict']]]]] = None,
+                 license_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StatefulNodeAzureLoadBalancerArgs', 'StatefulNodeAzureLoadBalancerArgsDict']]]]] = None,
+                 login: pulumi.Input[Optional[Union['StatefulNodeAzureLoginArgs', 'StatefulNodeAzureLoginArgsDict']]] = None,
+                 managed_service_identities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StatefulNodeAzureManagedServiceIdentityArgs', 'StatefulNodeAzureManagedServiceIdentityArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[Union['StatefulNodeAzureNetworkArgs', 'StatefulNodeAzureNetworkArgsDict']]] = None,
+                 os: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_disk: pulumi.Input[Optional[Union['StatefulNodeAzureOsDiskArgs', 'StatefulNodeAzureOsDiskArgsDict']]] = None,
+                 os_disk_persistence_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 preferred_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 proximity_placement_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StatefulNodeAzureProximityPlacementGroupArgs', 'StatefulNodeAzureProximityPlacementGroupArgsDict']]]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduling_tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StatefulNodeAzureSchedulingTaskArgs', 'StatefulNodeAzureSchedulingTaskArgsDict']]]]] = None,
+                 secrets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StatefulNodeAzureSecretArgs', 'StatefulNodeAzureSecretArgsDict']]]]] = None,
+                 security: pulumi.Input[Optional[Union['StatefulNodeAzureSecurityArgs', 'StatefulNodeAzureSecurityArgsDict']]] = None,
+                 should_persist_data_disks: pulumi.Input[Optional[_builtins.bool]] = None,
+                 should_persist_network: pulumi.Input[Optional[_builtins.bool]] = None,
+                 should_persist_os_disk: pulumi.Input[Optional[_builtins.bool]] = None,
+                 shutdown_script: pulumi.Input[Optional[_builtins.str]] = None,
+                 signals: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StatefulNodeAzureSignalArgs', 'StatefulNodeAzureSignalArgsDict']]]]] = None,
+                 strategy: pulumi.Input[Optional[Union['StatefulNodeAzureStrategyArgs', 'StatefulNodeAzureStrategyArgsDict']]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StatefulNodeAzureTagArgs', 'StatefulNodeAzureTagArgsDict']]]]] = None,
+                 update_states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StatefulNodeAzureUpdateStateArgs', 'StatefulNodeAzureUpdateStateArgsDict']]]]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_sizes: pulumi.Input[Optional[Union['StatefulNodeAzureVmSizesArgs', 'StatefulNodeAzureVmSizesArgsDict']]] = None,
+                 zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -2277,47 +2277,47 @@ class StatefulNodeAzure(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            attach_data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureAttachDataDiskArgs', 'StatefulNodeAzureAttachDataDiskArgsDict']]]]] = None,
-            boot_diagnostics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureBootDiagnosticArgs', 'StatefulNodeAzureBootDiagnosticArgsDict']]]]] = None,
-            custom_data: Optional[pulumi.Input[_builtins.str]] = None,
-            data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureDataDiskArgs', 'StatefulNodeAzureDataDiskArgsDict']]]]] = None,
-            data_disks_persistence_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            deletes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureDeleteArgs', 'StatefulNodeAzureDeleteArgsDict']]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            detach_data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureDetachDataDiskArgs', 'StatefulNodeAzureDetachDataDiskArgsDict']]]]] = None,
-            extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureExtensionArgs', 'StatefulNodeAzureExtensionArgsDict']]]]] = None,
-            health: Optional[pulumi.Input[Union['StatefulNodeAzureHealthArgs', 'StatefulNodeAzureHealthArgsDict']]] = None,
-            image: Optional[pulumi.Input[Union['StatefulNodeAzureImageArgs', 'StatefulNodeAzureImageArgsDict']]] = None,
-            import_vms: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureImportVmArgs', 'StatefulNodeAzureImportVmArgsDict']]]]] = None,
-            license_type: Optional[pulumi.Input[_builtins.str]] = None,
-            load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureLoadBalancerArgs', 'StatefulNodeAzureLoadBalancerArgsDict']]]]] = None,
-            login: Optional[pulumi.Input[Union['StatefulNodeAzureLoginArgs', 'StatefulNodeAzureLoginArgsDict']]] = None,
-            managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureManagedServiceIdentityArgs', 'StatefulNodeAzureManagedServiceIdentityArgsDict']]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network: Optional[pulumi.Input[Union['StatefulNodeAzureNetworkArgs', 'StatefulNodeAzureNetworkArgsDict']]] = None,
-            os: Optional[pulumi.Input[_builtins.str]] = None,
-            os_disk: Optional[pulumi.Input[Union['StatefulNodeAzureOsDiskArgs', 'StatefulNodeAzureOsDiskArgsDict']]] = None,
-            os_disk_persistence_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            preferred_zone: Optional[pulumi.Input[_builtins.str]] = None,
-            proximity_placement_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureProximityPlacementGroupArgs', 'StatefulNodeAzureProximityPlacementGroupArgsDict']]]]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureSchedulingTaskArgs', 'StatefulNodeAzureSchedulingTaskArgsDict']]]]] = None,
-            secrets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureSecretArgs', 'StatefulNodeAzureSecretArgsDict']]]]] = None,
-            security: Optional[pulumi.Input[Union['StatefulNodeAzureSecurityArgs', 'StatefulNodeAzureSecurityArgsDict']]] = None,
-            should_persist_data_disks: Optional[pulumi.Input[_builtins.bool]] = None,
-            should_persist_network: Optional[pulumi.Input[_builtins.bool]] = None,
-            should_persist_os_disk: Optional[pulumi.Input[_builtins.bool]] = None,
-            shutdown_script: Optional[pulumi.Input[_builtins.str]] = None,
-            signals: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureSignalArgs', 'StatefulNodeAzureSignalArgsDict']]]]] = None,
-            strategy: Optional[pulumi.Input[Union['StatefulNodeAzureStrategyArgs', 'StatefulNodeAzureStrategyArgsDict']]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureTagArgs', 'StatefulNodeAzureTagArgsDict']]]]] = None,
-            update_states: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatefulNodeAzureUpdateStateArgs', 'StatefulNodeAzureUpdateStateArgsDict']]]]] = None,
-            user_data: Optional[pulumi.Input[_builtins.str]] = None,
-            vm_name: Optional[pulumi.Input[_builtins.str]] = None,
-            vm_name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            vm_sizes: Optional[pulumi.Input[Union['StatefulNodeAzureVmSizesArgs', 'StatefulNodeAzureVmSizesArgsDict']]] = None,
-            zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'StatefulNodeAzure':
+            attach_data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StatefulNodeAzureAttachDataDiskArgs', 'StatefulNodeAzureAttachDataDiskArgsDict']]]]] = None,
+            boot_diagnostics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StatefulNodeAzureBootDiagnosticArgs', 'StatefulNodeAzureBootDiagnosticArgsDict']]]]] = None,
+            custom_data: pulumi.Input[Optional[_builtins.str]] = None,
+            data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StatefulNodeAzureDataDiskArgs', 'StatefulNodeAzureDataDiskArgsDict']]]]] = None,
+            data_disks_persistence_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            deletes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StatefulNodeAzureDeleteArgs', 'StatefulNodeAzureDeleteArgsDict']]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            detach_data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StatefulNodeAzureDetachDataDiskArgs', 'StatefulNodeAzureDetachDataDiskArgsDict']]]]] = None,
+            extensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StatefulNodeAzureExtensionArgs', 'StatefulNodeAzureExtensionArgsDict']]]]] = None,
+            health: pulumi.Input[Optional[Union['StatefulNodeAzureHealthArgs', 'StatefulNodeAzureHealthArgsDict']]] = None,
+            image: pulumi.Input[Optional[Union['StatefulNodeAzureImageArgs', 'StatefulNodeAzureImageArgsDict']]] = None,
+            import_vms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StatefulNodeAzureImportVmArgs', 'StatefulNodeAzureImportVmArgsDict']]]]] = None,
+            license_type: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StatefulNodeAzureLoadBalancerArgs', 'StatefulNodeAzureLoadBalancerArgsDict']]]]] = None,
+            login: pulumi.Input[Optional[Union['StatefulNodeAzureLoginArgs', 'StatefulNodeAzureLoginArgsDict']]] = None,
+            managed_service_identities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StatefulNodeAzureManagedServiceIdentityArgs', 'StatefulNodeAzureManagedServiceIdentityArgsDict']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[Union['StatefulNodeAzureNetworkArgs', 'StatefulNodeAzureNetworkArgsDict']]] = None,
+            os: pulumi.Input[Optional[_builtins.str]] = None,
+            os_disk: pulumi.Input[Optional[Union['StatefulNodeAzureOsDiskArgs', 'StatefulNodeAzureOsDiskArgsDict']]] = None,
+            os_disk_persistence_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            preferred_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            proximity_placement_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StatefulNodeAzureProximityPlacementGroupArgs', 'StatefulNodeAzureProximityPlacementGroupArgsDict']]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduling_tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StatefulNodeAzureSchedulingTaskArgs', 'StatefulNodeAzureSchedulingTaskArgsDict']]]]] = None,
+            secrets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StatefulNodeAzureSecretArgs', 'StatefulNodeAzureSecretArgsDict']]]]] = None,
+            security: pulumi.Input[Optional[Union['StatefulNodeAzureSecurityArgs', 'StatefulNodeAzureSecurityArgsDict']]] = None,
+            should_persist_data_disks: pulumi.Input[Optional[_builtins.bool]] = None,
+            should_persist_network: pulumi.Input[Optional[_builtins.bool]] = None,
+            should_persist_os_disk: pulumi.Input[Optional[_builtins.bool]] = None,
+            shutdown_script: pulumi.Input[Optional[_builtins.str]] = None,
+            signals: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StatefulNodeAzureSignalArgs', 'StatefulNodeAzureSignalArgsDict']]]]] = None,
+            strategy: pulumi.Input[Optional[Union['StatefulNodeAzureStrategyArgs', 'StatefulNodeAzureStrategyArgsDict']]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StatefulNodeAzureTagArgs', 'StatefulNodeAzureTagArgsDict']]]]] = None,
+            update_states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StatefulNodeAzureUpdateStateArgs', 'StatefulNodeAzureUpdateStateArgsDict']]]]] = None,
+            user_data: pulumi.Input[Optional[_builtins.str]] = None,
+            vm_name: pulumi.Input[Optional[_builtins.str]] = None,
+            vm_name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            vm_sizes: pulumi.Input[Optional[Union['StatefulNodeAzureVmSizesArgs', 'StatefulNodeAzureVmSizesArgsDict']]] = None,
+            zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'StatefulNodeAzure':
         """
         Get an existing StatefulNodeAzure resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

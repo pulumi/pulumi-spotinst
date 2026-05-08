@@ -219,7 +219,7 @@ __all__ = [
 
 class DataIntegrationS3ArgsDict(TypedDict):
     bucket_name: pulumi.Input[_builtins.str]
-    subdir: NotRequired[pulumi.Input[_builtins.str]]
+    subdir: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The subdirectory in which your files will be stored within the bucket. Adds the prefix subdir/ to new objects' keys. Can't be null or contain '/'.
     """
@@ -228,7 +228,7 @@ class DataIntegrationS3ArgsDict(TypedDict):
 class DataIntegrationS3Args:
     def __init__(__self__, *,
                  bucket_name: pulumi.Input[_builtins.str],
-                 subdir: Optional[pulumi.Input[_builtins.str]] = None):
+                 subdir: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] subdir: The subdirectory in which your files will be stored within the bucket. Adds the prefix subdir/ to new objects' keys. Can't be null or contain '/'.
         """
@@ -247,28 +247,28 @@ class DataIntegrationS3Args:
 
     @_builtins.property
     @pulumi.getter
-    def subdir(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subdir(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The subdirectory in which your files will be stored within the bucket. Adds the prefix subdir/ to new objects' keys. Can't be null or contain '/'.
         """
         return pulumi.get(self, "subdir")
 
     @subdir.setter
-    def subdir(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subdir(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subdir", value)
 
 
 class ElastigroupAzureV3BootDiagnosticArgsDict(TypedDict):
     is_enabled: pulumi.Input[_builtins.bool]
     type: pulumi.Input[_builtins.str]
-    storage_url: NotRequired[pulumi.Input[_builtins.str]]
+    storage_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ElastigroupAzureV3BootDiagnosticArgs:
     def __init__(__self__, *,
                  is_enabled: pulumi.Input[_builtins.bool],
                  type: pulumi.Input[_builtins.str],
-                 storage_url: Optional[pulumi.Input[_builtins.str]] = None):
+                 storage_url: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "is_enabled", is_enabled)
         pulumi.set(__self__, "type", type)
         if storage_url is not None:
@@ -294,25 +294,25 @@ class ElastigroupAzureV3BootDiagnosticArgs:
 
     @_builtins.property
     @pulumi.getter(name="storageUrl")
-    def storage_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "storage_url")
 
     @storage_url.setter
-    def storage_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_url", value)
 
 
 class ElastigroupAzureV3CapacityReservationArgsDict(TypedDict):
     should_utilize: pulumi.Input[_builtins.bool]
     utilization_strategy: pulumi.Input[_builtins.str]
-    capacity_reservation_groups: NotRequired[pulumi.Input['ElastigroupAzureV3CapacityReservationCapacityReservationGroupsArgsDict']]
+    capacity_reservation_groups: NotRequired[pulumi.Input[Optional['ElastigroupAzureV3CapacityReservationCapacityReservationGroupsArgs']]]
 
 @pulumi.input_type
 class ElastigroupAzureV3CapacityReservationArgs:
     def __init__(__self__, *,
                  should_utilize: pulumi.Input[_builtins.bool],
                  utilization_strategy: pulumi.Input[_builtins.str],
-                 capacity_reservation_groups: Optional[pulumi.Input['ElastigroupAzureV3CapacityReservationCapacityReservationGroupsArgs']] = None):
+                 capacity_reservation_groups: pulumi.Input[Optional['ElastigroupAzureV3CapacityReservationCapacityReservationGroupsArgs']] = None):
         pulumi.set(__self__, "should_utilize", should_utilize)
         pulumi.set(__self__, "utilization_strategy", utilization_strategy)
         if capacity_reservation_groups is not None:
@@ -338,25 +338,25 @@ class ElastigroupAzureV3CapacityReservationArgs:
 
     @_builtins.property
     @pulumi.getter(name="capacityReservationGroups")
-    def capacity_reservation_groups(self) -> Optional[pulumi.Input['ElastigroupAzureV3CapacityReservationCapacityReservationGroupsArgs']]:
+    def capacity_reservation_groups(self) -> pulumi.Input[Optional['ElastigroupAzureV3CapacityReservationCapacityReservationGroupsArgs']]:
         return pulumi.get(self, "capacity_reservation_groups")
 
     @capacity_reservation_groups.setter
-    def capacity_reservation_groups(self, value: Optional[pulumi.Input['ElastigroupAzureV3CapacityReservationCapacityReservationGroupsArgs']]):
+    def capacity_reservation_groups(self, value: pulumi.Input[Optional['ElastigroupAzureV3CapacityReservationCapacityReservationGroupsArgs']]):
         pulumi.set(self, "capacity_reservation_groups", value)
 
 
 class ElastigroupAzureV3CapacityReservationCapacityReservationGroupsArgsDict(TypedDict):
     crg_name: pulumi.Input[_builtins.str]
     crg_resource_group_name: pulumi.Input[_builtins.str]
-    crg_should_prioritize: NotRequired[pulumi.Input[_builtins.bool]]
+    crg_should_prioritize: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
 
 @pulumi.input_type
 class ElastigroupAzureV3CapacityReservationCapacityReservationGroupsArgs:
     def __init__(__self__, *,
                  crg_name: pulumi.Input[_builtins.str],
                  crg_resource_group_name: pulumi.Input[_builtins.str],
-                 crg_should_prioritize: Optional[pulumi.Input[_builtins.bool]] = None):
+                 crg_should_prioritize: pulumi.Input[Optional[_builtins.bool]] = None):
         pulumi.set(__self__, "crg_name", crg_name)
         pulumi.set(__self__, "crg_resource_group_name", crg_resource_group_name)
         if crg_should_prioritize is not None:
@@ -382,11 +382,11 @@ class ElastigroupAzureV3CapacityReservationCapacityReservationGroupsArgs:
 
     @_builtins.property
     @pulumi.getter(name="crgShouldPrioritize")
-    def crg_should_prioritize(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def crg_should_prioritize(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "crg_should_prioritize")
 
     @crg_should_prioritize.setter
-    def crg_should_prioritize(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def crg_should_prioritize(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "crg_should_prioritize", value)
 
 
@@ -439,10 +439,10 @@ class ElastigroupAzureV3ExtensionArgsDict(TypedDict):
     name: pulumi.Input[_builtins.str]
     publisher: pulumi.Input[_builtins.str]
     type: pulumi.Input[_builtins.str]
-    enable_automatic_upgrade: NotRequired[pulumi.Input[_builtins.bool]]
-    protected_settings: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-    protected_settings_from_key_vault: NotRequired[pulumi.Input['ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultArgsDict']]
-    public_settings: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    enable_automatic_upgrade: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    protected_settings: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
+    protected_settings_from_key_vault: NotRequired[pulumi.Input[Optional['ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultArgs']]]
+    public_settings: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
 
 @pulumi.input_type
 class ElastigroupAzureV3ExtensionArgs:
@@ -452,10 +452,10 @@ class ElastigroupAzureV3ExtensionArgs:
                  name: pulumi.Input[_builtins.str],
                  publisher: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 enable_automatic_upgrade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 protected_settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 protected_settings_from_key_vault: Optional[pulumi.Input['ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultArgs']] = None,
-                 public_settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 enable_automatic_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 protected_settings: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 protected_settings_from_key_vault: pulumi.Input[Optional['ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultArgs']] = None,
+                 public_settings: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         pulumi.set(__self__, "api_version", api_version)
         pulumi.set(__self__, "minor_version_auto_upgrade", minor_version_auto_upgrade)
         pulumi.set(__self__, "name", name)
@@ -517,38 +517,38 @@ class ElastigroupAzureV3ExtensionArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableAutomaticUpgrade")
-    def enable_automatic_upgrade(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_automatic_upgrade(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "enable_automatic_upgrade")
 
     @enable_automatic_upgrade.setter
-    def enable_automatic_upgrade(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_automatic_upgrade(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_automatic_upgrade", value)
 
     @_builtins.property
     @pulumi.getter(name="protectedSettings")
-    def protected_settings(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def protected_settings(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "protected_settings")
 
     @protected_settings.setter
-    def protected_settings(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def protected_settings(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "protected_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="protectedSettingsFromKeyVault")
-    def protected_settings_from_key_vault(self) -> Optional[pulumi.Input['ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultArgs']]:
+    def protected_settings_from_key_vault(self) -> pulumi.Input[Optional['ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultArgs']]:
         return pulumi.get(self, "protected_settings_from_key_vault")
 
     @protected_settings_from_key_vault.setter
-    def protected_settings_from_key_vault(self, value: Optional[pulumi.Input['ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultArgs']]):
+    def protected_settings_from_key_vault(self, value: pulumi.Input[Optional['ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultArgs']]):
         pulumi.set(self, "protected_settings_from_key_vault", value)
 
     @_builtins.property
     @pulumi.getter(name="publicSettings")
-    def public_settings(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def public_settings(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "public_settings")
 
     @public_settings.setter
-    def public_settings(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def public_settings(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "public_settings", value)
 
 
@@ -584,18 +584,18 @@ class ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultArgs:
 
 
 class ElastigroupAzureV3HealthArgsDict(TypedDict):
-    auto_healing: NotRequired[pulumi.Input[_builtins.bool]]
-    grace_period: NotRequired[pulumi.Input[_builtins.int]]
-    health_check_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-    unhealthy_duration: NotRequired[pulumi.Input[_builtins.int]]
+    auto_healing: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    grace_period: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    health_check_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    unhealthy_duration: NotRequired[pulumi.Input[Optional[_builtins.int]]]
 
 @pulumi.input_type
 class ElastigroupAzureV3HealthArgs:
     def __init__(__self__, *,
-                 auto_healing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 grace_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 unhealthy_duration: Optional[pulumi.Input[_builtins.int]] = None):
+                 auto_healing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 grace_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 unhealthy_duration: pulumi.Input[Optional[_builtins.int]] = None):
         if auto_healing is not None:
             pulumi.set(__self__, "auto_healing", auto_healing)
         if grace_period is not None:
@@ -607,52 +607,52 @@ class ElastigroupAzureV3HealthArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoHealing")
-    def auto_healing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_healing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "auto_healing")
 
     @auto_healing.setter
-    def auto_healing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_healing(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_healing", value)
 
     @_builtins.property
     @pulumi.getter(name="gracePeriod")
-    def grace_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def grace_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "grace_period")
 
     @grace_period.setter
-    def grace_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def grace_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "grace_period", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckTypes")
-    def health_check_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def health_check_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "health_check_types")
 
     @health_check_types.setter
-    def health_check_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def health_check_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "health_check_types", value)
 
     @_builtins.property
     @pulumi.getter(name="unhealthyDuration")
-    def unhealthy_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def unhealthy_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "unhealthy_duration")
 
     @unhealthy_duration.setter
-    def unhealthy_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def unhealthy_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "unhealthy_duration", value)
 
 
 class ElastigroupAzureV3ImageArgsDict(TypedDict):
-    customs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageCustomArgsDict']]]]
-    gallery_images: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageGalleryImageArgsDict']]]]
-    marketplaces: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageMarketplaceArgsDict']]]]
+    customs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ImageCustomArgs']]]]]
+    gallery_images: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ImageGalleryImageArgs']]]]]
+    marketplaces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ImageMarketplaceArgs']]]]]
 
 @pulumi.input_type
 class ElastigroupAzureV3ImageArgs:
     def __init__(__self__, *,
-                 customs: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageCustomArgs']]]] = None,
-                 gallery_images: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageGalleryImageArgs']]]] = None,
-                 marketplaces: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageMarketplaceArgs']]]] = None):
+                 customs: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ImageCustomArgs']]]] = None,
+                 gallery_images: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ImageGalleryImageArgs']]]] = None,
+                 marketplaces: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ImageMarketplaceArgs']]]] = None):
         if customs is not None:
             pulumi.set(__self__, "customs", customs)
         if gallery_images is not None:
@@ -662,29 +662,29 @@ class ElastigroupAzureV3ImageArgs:
 
     @_builtins.property
     @pulumi.getter
-    def customs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageCustomArgs']]]]:
+    def customs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ImageCustomArgs']]]]:
         return pulumi.get(self, "customs")
 
     @customs.setter
-    def customs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageCustomArgs']]]]):
+    def customs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ImageCustomArgs']]]]):
         pulumi.set(self, "customs", value)
 
     @_builtins.property
     @pulumi.getter(name="galleryImages")
-    def gallery_images(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageGalleryImageArgs']]]]:
+    def gallery_images(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ImageGalleryImageArgs']]]]:
         return pulumi.get(self, "gallery_images")
 
     @gallery_images.setter
-    def gallery_images(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageGalleryImageArgs']]]]):
+    def gallery_images(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ImageGalleryImageArgs']]]]):
         pulumi.set(self, "gallery_images", value)
 
     @_builtins.property
     @pulumi.getter
-    def marketplaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageMarketplaceArgs']]]]:
+    def marketplaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ImageMarketplaceArgs']]]]:
         return pulumi.get(self, "marketplaces")
 
     @marketplaces.setter
-    def marketplaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageMarketplaceArgs']]]]):
+    def marketplaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ImageMarketplaceArgs']]]]):
         pulumi.set(self, "marketplaces", value)
 
 
@@ -724,7 +724,7 @@ class ElastigroupAzureV3ImageGalleryImageArgsDict(TypedDict):
     image_name: pulumi.Input[_builtins.str]
     resource_group_name: pulumi.Input[_builtins.str]
     version: pulumi.Input[_builtins.str]
-    spot_account_id: NotRequired[pulumi.Input[_builtins.str]]
+    spot_account_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ElastigroupAzureV3ImageGalleryImageArgs:
@@ -733,7 +733,7 @@ class ElastigroupAzureV3ImageGalleryImageArgs:
                  image_name: pulumi.Input[_builtins.str],
                  resource_group_name: pulumi.Input[_builtins.str],
                  version: pulumi.Input[_builtins.str],
-                 spot_account_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 spot_account_id: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "gallery_name", gallery_name)
         pulumi.set(__self__, "image_name", image_name)
         pulumi.set(__self__, "resource_group_name", resource_group_name)
@@ -779,11 +779,11 @@ class ElastigroupAzureV3ImageGalleryImageArgs:
 
     @_builtins.property
     @pulumi.getter(name="spotAccountId")
-    def spot_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spot_account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "spot_account_id")
 
     @spot_account_id.setter
-    def spot_account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spot_account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spot_account_id", value)
 
 
@@ -846,8 +846,8 @@ class ElastigroupAzureV3LoadBalancerArgsDict(TypedDict):
     name: pulumi.Input[_builtins.str]
     resource_group_name: pulumi.Input[_builtins.str]
     type: pulumi.Input[_builtins.str]
-    backend_pool_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-    sku: NotRequired[pulumi.Input[_builtins.str]]
+    backend_pool_names: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    sku: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ElastigroupAzureV3LoadBalancerArgs:
@@ -855,8 +855,8 @@ class ElastigroupAzureV3LoadBalancerArgs:
                  name: pulumi.Input[_builtins.str],
                  resource_group_name: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 backend_pool_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 sku: Optional[pulumi.Input[_builtins.str]] = None):
+                 backend_pool_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 sku: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "resource_group_name", resource_group_name)
         pulumi.set(__self__, "type", type)
@@ -894,34 +894,34 @@ class ElastigroupAzureV3LoadBalancerArgs:
 
     @_builtins.property
     @pulumi.getter(name="backendPoolNames")
-    def backend_pool_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def backend_pool_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "backend_pool_names")
 
     @backend_pool_names.setter
-    def backend_pool_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def backend_pool_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "backend_pool_names", value)
 
     @_builtins.property
     @pulumi.getter
-    def sku(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sku(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "sku")
 
     @sku.setter
-    def sku(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sku(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sku", value)
 
 
 class ElastigroupAzureV3LoginArgsDict(TypedDict):
     user_name: pulumi.Input[_builtins.str]
-    password: NotRequired[pulumi.Input[_builtins.str]]
-    ssh_public_key: NotRequired[pulumi.Input[_builtins.str]]
+    password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    ssh_public_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ElastigroupAzureV3LoginArgs:
     def __init__(__self__, *,
                  user_name: pulumi.Input[_builtins.str],
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssh_public_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssh_public_key: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "user_name", user_name)
         if password is not None:
             pulumi.set(__self__, "password", password)
@@ -939,20 +939,20 @@ class ElastigroupAzureV3LoginArgs:
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="sshPublicKey")
-    def ssh_public_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssh_public_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "ssh_public_key")
 
     @ssh_public_key.setter
-    def ssh_public_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssh_public_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssh_public_key", value)
 
 
@@ -1034,12 +1034,12 @@ class ElastigroupAzureV3NetworkNetworkInterfaceArgsDict(TypedDict):
     assign_public_ip: pulumi.Input[_builtins.bool]
     is_primary: pulumi.Input[_builtins.bool]
     subnet_name: pulumi.Input[_builtins.str]
-    additional_ip_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgsDict']]]]
-    application_security_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgsDict']]]]
-    enable_ip_forwarding: NotRequired[pulumi.Input[_builtins.bool]]
-    private_ip_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-    public_ip_sku: NotRequired[pulumi.Input[_builtins.str]]
-    security_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArgsDict']]]]
+    additional_ip_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs']]]]]
+    application_security_groups: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs']]]]]
+    enable_ip_forwarding: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    private_ip_addresses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    public_ip_sku: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    security_groups: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArgs']]]]]
 
 @pulumi.input_type
 class ElastigroupAzureV3NetworkNetworkInterfaceArgs:
@@ -1047,12 +1047,12 @@ class ElastigroupAzureV3NetworkNetworkInterfaceArgs:
                  assign_public_ip: pulumi.Input[_builtins.bool],
                  is_primary: pulumi.Input[_builtins.bool],
                  subnet_name: pulumi.Input[_builtins.str],
-                 additional_ip_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs']]]] = None,
-                 application_security_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs']]]] = None,
-                 enable_ip_forwarding: Optional[pulumi.Input[_builtins.bool]] = None,
-                 private_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 public_ip_sku: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArgs']]]] = None):
+                 additional_ip_configs: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs']]]] = None,
+                 application_security_groups: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs']]]] = None,
+                 enable_ip_forwarding: pulumi.Input[Optional[_builtins.bool]] = None,
+                 private_ip_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 public_ip_sku: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_groups: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArgs']]]] = None):
         pulumi.set(__self__, "assign_public_ip", assign_public_ip)
         pulumi.set(__self__, "is_primary", is_primary)
         pulumi.set(__self__, "subnet_name", subnet_name)
@@ -1098,68 +1098,68 @@ class ElastigroupAzureV3NetworkNetworkInterfaceArgs:
 
     @_builtins.property
     @pulumi.getter(name="additionalIpConfigs")
-    def additional_ip_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs']]]]:
+    def additional_ip_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs']]]]:
         return pulumi.get(self, "additional_ip_configs")
 
     @additional_ip_configs.setter
-    def additional_ip_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs']]]]):
+    def additional_ip_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs']]]]):
         pulumi.set(self, "additional_ip_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="applicationSecurityGroups")
-    def application_security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs']]]]:
+    def application_security_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs']]]]:
         return pulumi.get(self, "application_security_groups")
 
     @application_security_groups.setter
-    def application_security_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs']]]]):
+    def application_security_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs']]]]):
         pulumi.set(self, "application_security_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="enableIpForwarding")
-    def enable_ip_forwarding(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_ip_forwarding(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "enable_ip_forwarding")
 
     @enable_ip_forwarding.setter
-    def enable_ip_forwarding(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_ip_forwarding(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_ip_forwarding", value)
 
     @_builtins.property
     @pulumi.getter(name="privateIpAddresses")
-    def private_ip_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def private_ip_addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "private_ip_addresses")
 
     @private_ip_addresses.setter
-    def private_ip_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def private_ip_addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "private_ip_addresses", value)
 
     @_builtins.property
     @pulumi.getter(name="publicIpSku")
-    def public_ip_sku(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_ip_sku(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "public_ip_sku")
 
     @public_ip_sku.setter
-    def public_ip_sku(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_ip_sku(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_ip_sku", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroups")
-    def security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArgs']]]]:
+    def security_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArgs']]]]:
         return pulumi.get(self, "security_groups")
 
     @security_groups.setter
-    def security_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArgs']]]]):
+    def security_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArgs']]]]):
         pulumi.set(self, "security_groups", value)
 
 
 class ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgsDict(TypedDict):
     name: pulumi.Input[_builtins.str]
-    private_ip_version: NotRequired[pulumi.Input[_builtins.str]]
+    private_ip_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 private_ip_version: Optional[pulumi.Input[_builtins.str]] = None):
+                 private_ip_version: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "name", name)
         if private_ip_version is not None:
             pulumi.set(__self__, "private_ip_version", private_ip_version)
@@ -1175,11 +1175,11 @@ class ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="privateIpVersion")
-    def private_ip_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_ip_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "private_ip_version")
 
     @private_ip_version.setter
-    def private_ip_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_ip_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_ip_version", value)
 
 
@@ -1215,14 +1215,14 @@ class ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs:
 
 
 class ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
-    resource_group_name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    resource_group_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_name: pulumi.Input[Optional[_builtins.str]] = None):
         if name is not None:
             pulumi.set(__self__, "name", name)
         if resource_group_name is not None:
@@ -1230,32 +1230,32 @@ class ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupName")
-    def resource_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "resource_group_name")
 
     @resource_group_name.setter
-    def resource_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_name", value)
 
 
 class ElastigroupAzureV3OsDiskArgsDict(TypedDict):
     type: pulumi.Input[_builtins.str]
-    size_gb: NotRequired[pulumi.Input[_builtins.int]]
+    size_gb: NotRequired[pulumi.Input[Optional[_builtins.int]]]
 
 @pulumi.input_type
 class ElastigroupAzureV3OsDiskArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[_builtins.str],
-                 size_gb: Optional[pulumi.Input[_builtins.int]] = None):
+                 size_gb: pulumi.Input[Optional[_builtins.int]] = None):
         pulumi.set(__self__, "type", type)
         if size_gb is not None:
             pulumi.set(__self__, "size_gb", size_gb)
@@ -1271,11 +1271,11 @@ class ElastigroupAzureV3OsDiskArgs:
 
     @_builtins.property
     @pulumi.getter(name="sizeGb")
-    def size_gb(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "size_gb")
 
     @size_gb.setter
-    def size_gb(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def size_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "size_gb", value)
 
 
@@ -1340,10 +1340,10 @@ class ElastigroupAzureV3ScalingDownPolicyArgsDict(TypedDict):
     policy_name: pulumi.Input[_builtins.str]
     statistic: pulumi.Input[_builtins.str]
     threshold: pulumi.Input[_builtins.float]
-    dimensions: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ScalingDownPolicyDimensionArgsDict']]]]
-    is_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-    source: NotRequired[pulumi.Input[_builtins.str]]
-    unit: NotRequired[pulumi.Input[_builtins.str]]
+    dimensions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ScalingDownPolicyDimensionArgs']]]]]
+    is_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    source: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    unit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ElastigroupAzureV3ScalingDownPolicyArgs:
@@ -1358,10 +1358,10 @@ class ElastigroupAzureV3ScalingDownPolicyArgs:
                  policy_name: pulumi.Input[_builtins.str],
                  statistic: pulumi.Input[_builtins.str],
                  threshold: pulumi.Input[_builtins.float],
-                 dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ScalingDownPolicyDimensionArgs']]]] = None,
-                 is_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
-                 unit: Optional[pulumi.Input[_builtins.str]] = None):
+                 dimensions: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ScalingDownPolicyDimensionArgs']]]] = None,
+                 is_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
+                 unit: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "cooldown", cooldown)
         pulumi.set(__self__, "evaluation_periods", evaluation_periods)
@@ -1473,56 +1473,56 @@ class ElastigroupAzureV3ScalingDownPolicyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def dimensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ScalingDownPolicyDimensionArgs']]]]:
+    def dimensions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ScalingDownPolicyDimensionArgs']]]]:
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
-    def dimensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ScalingDownPolicyDimensionArgs']]]]):
+    def dimensions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ScalingDownPolicyDimensionArgs']]]]):
         pulumi.set(self, "dimensions", value)
 
     @_builtins.property
     @pulumi.getter(name="isEnabled")
-    def is_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "is_enabled")
 
     @is_enabled.setter
-    def is_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source", value)
 
     @_builtins.property
     @pulumi.getter
-    def unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "unit")
 
     @unit.setter
-    def unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "unit", value)
 
 
 class ElastigroupAzureV3ScalingDownPolicyActionArgsDict(TypedDict):
-    adjustment: NotRequired[pulumi.Input[_builtins.str]]
-    maximum: NotRequired[pulumi.Input[_builtins.str]]
-    minimum: NotRequired[pulumi.Input[_builtins.str]]
-    target: NotRequired[pulumi.Input[_builtins.str]]
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    adjustment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    maximum: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    minimum: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    target: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ElastigroupAzureV3ScalingDownPolicyActionArgs:
     def __init__(__self__, *,
-                 adjustment: Optional[pulumi.Input[_builtins.str]] = None,
-                 maximum: Optional[pulumi.Input[_builtins.str]] = None,
-                 minimum: Optional[pulumi.Input[_builtins.str]] = None,
-                 target: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 adjustment: pulumi.Input[Optional[_builtins.str]] = None,
+                 maximum: pulumi.Input[Optional[_builtins.str]] = None,
+                 minimum: pulumi.Input[Optional[_builtins.str]] = None,
+                 target: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         if adjustment is not None:
             pulumi.set(__self__, "adjustment", adjustment)
         if maximum is not None:
@@ -1536,59 +1536,59 @@ class ElastigroupAzureV3ScalingDownPolicyActionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def adjustment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def adjustment(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "adjustment")
 
     @adjustment.setter
-    def adjustment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def adjustment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "adjustment", value)
 
     @_builtins.property
     @pulumi.getter
-    def maximum(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maximum(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "maximum")
 
     @maximum.setter
-    def maximum(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maximum(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maximum", value)
 
     @_builtins.property
     @pulumi.getter
-    def minimum(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def minimum(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "minimum")
 
     @minimum.setter
-    def minimum(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def minimum(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "minimum", value)
 
     @_builtins.property
     @pulumi.getter
-    def target(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "target")
 
     @target.setter
-    def target(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class ElastigroupAzureV3ScalingDownPolicyDimensionArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ElastigroupAzureV3ScalingDownPolicyDimensionArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         if name is not None:
             pulumi.set(__self__, "name", name)
         if value is not None:
@@ -1596,20 +1596,20 @@ class ElastigroupAzureV3ScalingDownPolicyDimensionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
@@ -1624,10 +1624,10 @@ class ElastigroupAzureV3ScalingUpPolicyArgsDict(TypedDict):
     policy_name: pulumi.Input[_builtins.str]
     statistic: pulumi.Input[_builtins.str]
     threshold: pulumi.Input[_builtins.float]
-    dimensions: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ScalingUpPolicyDimensionArgsDict']]]]
-    is_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-    source: NotRequired[pulumi.Input[_builtins.str]]
-    unit: NotRequired[pulumi.Input[_builtins.str]]
+    dimensions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ScalingUpPolicyDimensionArgs']]]]]
+    is_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    source: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    unit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ElastigroupAzureV3ScalingUpPolicyArgs:
@@ -1642,10 +1642,10 @@ class ElastigroupAzureV3ScalingUpPolicyArgs:
                  policy_name: pulumi.Input[_builtins.str],
                  statistic: pulumi.Input[_builtins.str],
                  threshold: pulumi.Input[_builtins.float],
-                 dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ScalingUpPolicyDimensionArgs']]]] = None,
-                 is_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
-                 unit: Optional[pulumi.Input[_builtins.str]] = None):
+                 dimensions: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ScalingUpPolicyDimensionArgs']]]] = None,
+                 is_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
+                 unit: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "cooldown", cooldown)
         pulumi.set(__self__, "evaluation_periods", evaluation_periods)
@@ -1757,56 +1757,56 @@ class ElastigroupAzureV3ScalingUpPolicyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def dimensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ScalingUpPolicyDimensionArgs']]]]:
+    def dimensions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ScalingUpPolicyDimensionArgs']]]]:
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
-    def dimensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ScalingUpPolicyDimensionArgs']]]]):
+    def dimensions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ScalingUpPolicyDimensionArgs']]]]):
         pulumi.set(self, "dimensions", value)
 
     @_builtins.property
     @pulumi.getter(name="isEnabled")
-    def is_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "is_enabled")
 
     @is_enabled.setter
-    def is_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source", value)
 
     @_builtins.property
     @pulumi.getter
-    def unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "unit")
 
     @unit.setter
-    def unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "unit", value)
 
 
 class ElastigroupAzureV3ScalingUpPolicyActionArgsDict(TypedDict):
-    adjustment: NotRequired[pulumi.Input[_builtins.str]]
-    maximum: NotRequired[pulumi.Input[_builtins.str]]
-    minimum: NotRequired[pulumi.Input[_builtins.str]]
-    target: NotRequired[pulumi.Input[_builtins.str]]
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    adjustment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    maximum: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    minimum: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    target: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ElastigroupAzureV3ScalingUpPolicyActionArgs:
     def __init__(__self__, *,
-                 adjustment: Optional[pulumi.Input[_builtins.str]] = None,
-                 maximum: Optional[pulumi.Input[_builtins.str]] = None,
-                 minimum: Optional[pulumi.Input[_builtins.str]] = None,
-                 target: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 adjustment: pulumi.Input[Optional[_builtins.str]] = None,
+                 maximum: pulumi.Input[Optional[_builtins.str]] = None,
+                 minimum: pulumi.Input[Optional[_builtins.str]] = None,
+                 target: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         if adjustment is not None:
             pulumi.set(__self__, "adjustment", adjustment)
         if maximum is not None:
@@ -1820,59 +1820,59 @@ class ElastigroupAzureV3ScalingUpPolicyActionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def adjustment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def adjustment(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "adjustment")
 
     @adjustment.setter
-    def adjustment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def adjustment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "adjustment", value)
 
     @_builtins.property
     @pulumi.getter
-    def maximum(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maximum(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "maximum")
 
     @maximum.setter
-    def maximum(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maximum(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maximum", value)
 
     @_builtins.property
     @pulumi.getter
-    def minimum(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def minimum(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "minimum")
 
     @minimum.setter
-    def minimum(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def minimum(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "minimum", value)
 
     @_builtins.property
     @pulumi.getter
-    def target(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "target")
 
     @target.setter
-    def target(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class ElastigroupAzureV3ScalingUpPolicyDimensionArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ElastigroupAzureV3ScalingUpPolicyDimensionArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         if name is not None:
             pulumi.set(__self__, "name", name)
         if value is not None:
@@ -1880,20 +1880,20 @@ class ElastigroupAzureV3ScalingUpPolicyDimensionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
@@ -1901,13 +1901,13 @@ class ElastigroupAzureV3SchedulingTaskArgsDict(TypedDict):
     cron_expression: pulumi.Input[_builtins.str]
     is_enabled: pulumi.Input[_builtins.bool]
     type: pulumi.Input[_builtins.str]
-    adjustment: NotRequired[pulumi.Input[_builtins.str]]
-    adjustment_percentage: NotRequired[pulumi.Input[_builtins.str]]
-    batch_size_percentage: NotRequired[pulumi.Input[_builtins.str]]
-    grace_period: NotRequired[pulumi.Input[_builtins.str]]
-    scale_max_capacity: NotRequired[pulumi.Input[_builtins.str]]
-    scale_min_capacity: NotRequired[pulumi.Input[_builtins.str]]
-    scale_target_capacity: NotRequired[pulumi.Input[_builtins.str]]
+    adjustment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    adjustment_percentage: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    batch_size_percentage: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    grace_period: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    scale_max_capacity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    scale_min_capacity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    scale_target_capacity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ElastigroupAzureV3SchedulingTaskArgs:
@@ -1915,13 +1915,13 @@ class ElastigroupAzureV3SchedulingTaskArgs:
                  cron_expression: pulumi.Input[_builtins.str],
                  is_enabled: pulumi.Input[_builtins.bool],
                  type: pulumi.Input[_builtins.str],
-                 adjustment: Optional[pulumi.Input[_builtins.str]] = None,
-                 adjustment_percentage: Optional[pulumi.Input[_builtins.str]] = None,
-                 batch_size_percentage: Optional[pulumi.Input[_builtins.str]] = None,
-                 grace_period: Optional[pulumi.Input[_builtins.str]] = None,
-                 scale_max_capacity: Optional[pulumi.Input[_builtins.str]] = None,
-                 scale_min_capacity: Optional[pulumi.Input[_builtins.str]] = None,
-                 scale_target_capacity: Optional[pulumi.Input[_builtins.str]] = None):
+                 adjustment: pulumi.Input[Optional[_builtins.str]] = None,
+                 adjustment_percentage: pulumi.Input[Optional[_builtins.str]] = None,
+                 batch_size_percentage: pulumi.Input[Optional[_builtins.str]] = None,
+                 grace_period: pulumi.Input[Optional[_builtins.str]] = None,
+                 scale_max_capacity: pulumi.Input[Optional[_builtins.str]] = None,
+                 scale_min_capacity: pulumi.Input[Optional[_builtins.str]] = None,
+                 scale_target_capacity: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "cron_expression", cron_expression)
         pulumi.set(__self__, "is_enabled", is_enabled)
         pulumi.set(__self__, "type", type)
@@ -1969,65 +1969,65 @@ class ElastigroupAzureV3SchedulingTaskArgs:
 
     @_builtins.property
     @pulumi.getter
-    def adjustment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def adjustment(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "adjustment")
 
     @adjustment.setter
-    def adjustment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def adjustment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "adjustment", value)
 
     @_builtins.property
     @pulumi.getter(name="adjustmentPercentage")
-    def adjustment_percentage(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def adjustment_percentage(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "adjustment_percentage")
 
     @adjustment_percentage.setter
-    def adjustment_percentage(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def adjustment_percentage(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "adjustment_percentage", value)
 
     @_builtins.property
     @pulumi.getter(name="batchSizePercentage")
-    def batch_size_percentage(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def batch_size_percentage(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "batch_size_percentage")
 
     @batch_size_percentage.setter
-    def batch_size_percentage(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def batch_size_percentage(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "batch_size_percentage", value)
 
     @_builtins.property
     @pulumi.getter(name="gracePeriod")
-    def grace_period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def grace_period(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "grace_period")
 
     @grace_period.setter
-    def grace_period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def grace_period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "grace_period", value)
 
     @_builtins.property
     @pulumi.getter(name="scaleMaxCapacity")
-    def scale_max_capacity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scale_max_capacity(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "scale_max_capacity")
 
     @scale_max_capacity.setter
-    def scale_max_capacity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scale_max_capacity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scale_max_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="scaleMinCapacity")
-    def scale_min_capacity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scale_min_capacity(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "scale_min_capacity")
 
     @scale_min_capacity.setter
-    def scale_min_capacity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scale_min_capacity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scale_min_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="scaleTargetCapacity")
-    def scale_target_capacity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scale_target_capacity(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "scale_target_capacity")
 
     @scale_target_capacity.setter
-    def scale_target_capacity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scale_target_capacity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scale_target_capacity", value)
 
 
@@ -2125,20 +2125,20 @@ class ElastigroupAzureV3SecretVaultCertificateArgs:
 
 
 class ElastigroupAzureV3SecurityArgsDict(TypedDict):
-    confidential_os_disk_encryption: NotRequired[pulumi.Input[_builtins.bool]]
-    encryption_at_host: NotRequired[pulumi.Input[_builtins.bool]]
-    secure_boot_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-    security_type: NotRequired[pulumi.Input[_builtins.str]]
-    vtpm_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    confidential_os_disk_encryption: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    encryption_at_host: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    secure_boot_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    security_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    vtpm_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
 
 @pulumi.input_type
 class ElastigroupAzureV3SecurityArgs:
     def __init__(__self__, *,
-                 confidential_os_disk_encryption: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encryption_at_host: Optional[pulumi.Input[_builtins.bool]] = None,
-                 secure_boot_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 security_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vtpm_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 confidential_os_disk_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption_at_host: pulumi.Input[Optional[_builtins.bool]] = None,
+                 secure_boot_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 security_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vtpm_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         if confidential_os_disk_encryption is not None:
             pulumi.set(__self__, "confidential_os_disk_encryption", confidential_os_disk_encryption)
         if encryption_at_host is not None:
@@ -2152,47 +2152,47 @@ class ElastigroupAzureV3SecurityArgs:
 
     @_builtins.property
     @pulumi.getter(name="confidentialOsDiskEncryption")
-    def confidential_os_disk_encryption(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def confidential_os_disk_encryption(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "confidential_os_disk_encryption")
 
     @confidential_os_disk_encryption.setter
-    def confidential_os_disk_encryption(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def confidential_os_disk_encryption(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "confidential_os_disk_encryption", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionAtHost")
-    def encryption_at_host(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def encryption_at_host(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "encryption_at_host")
 
     @encryption_at_host.setter
-    def encryption_at_host(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def encryption_at_host(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "encryption_at_host", value)
 
     @_builtins.property
     @pulumi.getter(name="secureBootEnabled")
-    def secure_boot_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def secure_boot_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "secure_boot_enabled")
 
     @secure_boot_enabled.setter
-    def secure_boot_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def secure_boot_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "secure_boot_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="securityType")
-    def security_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "security_type")
 
     @security_type.setter
-    def security_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_type", value)
 
     @_builtins.property
     @pulumi.getter(name="vtpmEnabled")
-    def vtpm_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def vtpm_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "vtpm_enabled")
 
     @vtpm_enabled.setter
-    def vtpm_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def vtpm_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "vtpm_enabled", value)
 
 
@@ -2260,19 +2260,19 @@ class ElastigroupAzureV3TagArgs:
 
 class ElastigroupAzureV3VmSizesArgsDict(TypedDict):
     od_sizes: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-    excluded_vm_sizes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-    preferred_spot_sizes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-    spot_size_attributes: NotRequired[pulumi.Input['ElastigroupAzureV3VmSizesSpotSizeAttributesArgsDict']]
-    spot_sizes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    excluded_vm_sizes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    preferred_spot_sizes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    spot_size_attributes: NotRequired[pulumi.Input[Optional['ElastigroupAzureV3VmSizesSpotSizeAttributesArgs']]]
+    spot_sizes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
 
 @pulumi.input_type
 class ElastigroupAzureV3VmSizesArgs:
     def __init__(__self__, *,
                  od_sizes: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 excluded_vm_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 preferred_spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 spot_size_attributes: Optional[pulumi.Input['ElastigroupAzureV3VmSizesSpotSizeAttributesArgs']] = None,
-                 spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 excluded_vm_sizes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 preferred_spot_sizes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 spot_size_attributes: pulumi.Input[Optional['ElastigroupAzureV3VmSizesSpotSizeAttributesArgs']] = None,
+                 spot_sizes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         pulumi.set(__self__, "od_sizes", od_sizes)
         if excluded_vm_sizes is not None:
             pulumi.set(__self__, "excluded_vm_sizes", excluded_vm_sizes)
@@ -2294,58 +2294,58 @@ class ElastigroupAzureV3VmSizesArgs:
 
     @_builtins.property
     @pulumi.getter(name="excludedVmSizes")
-    def excluded_vm_sizes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def excluded_vm_sizes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "excluded_vm_sizes")
 
     @excluded_vm_sizes.setter
-    def excluded_vm_sizes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def excluded_vm_sizes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "excluded_vm_sizes", value)
 
     @_builtins.property
     @pulumi.getter(name="preferredSpotSizes")
-    def preferred_spot_sizes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def preferred_spot_sizes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "preferred_spot_sizes")
 
     @preferred_spot_sizes.setter
-    def preferred_spot_sizes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def preferred_spot_sizes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "preferred_spot_sizes", value)
 
     @_builtins.property
     @pulumi.getter(name="spotSizeAttributes")
-    def spot_size_attributes(self) -> Optional[pulumi.Input['ElastigroupAzureV3VmSizesSpotSizeAttributesArgs']]:
+    def spot_size_attributes(self) -> pulumi.Input[Optional['ElastigroupAzureV3VmSizesSpotSizeAttributesArgs']]:
         return pulumi.get(self, "spot_size_attributes")
 
     @spot_size_attributes.setter
-    def spot_size_attributes(self, value: Optional[pulumi.Input['ElastigroupAzureV3VmSizesSpotSizeAttributesArgs']]):
+    def spot_size_attributes(self, value: pulumi.Input[Optional['ElastigroupAzureV3VmSizesSpotSizeAttributesArgs']]):
         pulumi.set(self, "spot_size_attributes", value)
 
     @_builtins.property
     @pulumi.getter(name="spotSizes")
-    def spot_sizes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def spot_sizes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "spot_sizes")
 
     @spot_sizes.setter
-    def spot_sizes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def spot_sizes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "spot_sizes", value)
 
 
 class ElastigroupAzureV3VmSizesSpotSizeAttributesArgsDict(TypedDict):
-    max_cpu: NotRequired[pulumi.Input[_builtins.int]]
-    max_memory: NotRequired[pulumi.Input[_builtins.int]]
-    max_storage: NotRequired[pulumi.Input[_builtins.int]]
-    min_cpu: NotRequired[pulumi.Input[_builtins.int]]
-    min_memory: NotRequired[pulumi.Input[_builtins.int]]
-    min_storage: NotRequired[pulumi.Input[_builtins.int]]
+    max_cpu: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    max_memory: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    max_storage: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    min_cpu: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    min_memory: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    min_storage: NotRequired[pulumi.Input[Optional[_builtins.int]]]
 
 @pulumi.input_type
 class ElastigroupAzureV3VmSizesSpotSizeAttributesArgs:
     def __init__(__self__, *,
-                 max_cpu: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_memory: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_cpu: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_memory: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_storage: Optional[pulumi.Input[_builtins.int]] = None):
+                 max_cpu: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_memory: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_cpu: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_memory: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_storage: pulumi.Input[Optional[_builtins.int]] = None):
         if max_cpu is not None:
             pulumi.set(__self__, "max_cpu", max_cpu)
         if max_memory is not None:
@@ -2361,56 +2361,56 @@ class ElastigroupAzureV3VmSizesSpotSizeAttributesArgs:
 
     @_builtins.property
     @pulumi.getter(name="maxCpu")
-    def max_cpu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_cpu(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "max_cpu")
 
     @max_cpu.setter
-    def max_cpu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_cpu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_cpu", value)
 
     @_builtins.property
     @pulumi.getter(name="maxMemory")
-    def max_memory(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_memory(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "max_memory")
 
     @max_memory.setter
-    def max_memory(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_memory(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_memory", value)
 
     @_builtins.property
     @pulumi.getter(name="maxStorage")
-    def max_storage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_storage(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "max_storage")
 
     @max_storage.setter
-    def max_storage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_storage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_storage", value)
 
     @_builtins.property
     @pulumi.getter(name="minCpu")
-    def min_cpu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_cpu(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "min_cpu")
 
     @min_cpu.setter
-    def min_cpu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_cpu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_cpu", value)
 
     @_builtins.property
     @pulumi.getter(name="minMemory")
-    def min_memory(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_memory(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "min_memory")
 
     @min_memory.setter
-    def min_memory(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_memory(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_memory", value)
 
     @_builtins.property
     @pulumi.getter(name="minStorage")
-    def min_storage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_storage(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "min_storage")
 
     @min_storage.setter
-    def min_storage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_storage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_storage", value)
 
 
@@ -2435,13 +2435,13 @@ class HealthCheckCheckArgsDict(TypedDict):
     """
     The number of consecutive failed health checks that must occur before declaring an instance unhealthy.
     """
-    end_point: NotRequired[pulumi.Input[_builtins.str]]
-    endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    end_point: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The destination for the request.
     """
-    time_out: NotRequired[pulumi.Input[_builtins.int]]
-    timeout: NotRequired[pulumi.Input[_builtins.int]]
+    time_out: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    timeout: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     the amount of time (in seconds) to wait when receiving a response from the health check.
     """
@@ -2454,10 +2454,10 @@ class HealthCheckCheckArgs:
                  port: pulumi.Input[_builtins.int],
                  protocol: pulumi.Input[_builtins.str],
                  unhealthy: pulumi.Input[_builtins.int],
-                 end_point: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_out: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None):
+                 end_point: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_out: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] healthy: The number of consecutive successful health checks that must occur before declaring an instance healthy.
         :param pulumi.Input[_builtins.int] interval: The amount of time (in seconds) between each health check (minimum: 10).
@@ -2543,60 +2543,60 @@ class HealthCheckCheckArgs:
 
     @_builtins.property
     @pulumi.getter(name="endPoint")
-    def end_point(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_point(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "end_point")
 
     @end_point.setter
-    def end_point(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_point(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_point", value)
 
     @_builtins.property
     @pulumi.getter
-    def endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The destination for the request.
         """
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
-    def endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="timeOut")
-    def time_out(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def time_out(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "time_out")
 
     @time_out.setter
-    def time_out(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def time_out(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "time_out", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         the amount of time (in seconds) to wait when receiving a response from the health check.
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout", value)
 
 
 class NotificationCenterComputePolicyConfigArgsDict(TypedDict):
     events: pulumi.Input[Sequence[pulumi.Input['NotificationCenterComputePolicyConfigEventArgsDict']]]
-    dynamic_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['NotificationCenterComputePolicyConfigDynamicRuleArgsDict']]]]
-    resource_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-    should_include_all_resources: NotRequired[pulumi.Input[_builtins.bool]]
+    dynamic_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NotificationCenterComputePolicyConfigDynamicRuleArgs']]]]]
+    resource_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    should_include_all_resources: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
 
 @pulumi.input_type
 class NotificationCenterComputePolicyConfigArgs:
     def __init__(__self__, *,
                  events: pulumi.Input[Sequence[pulumi.Input['NotificationCenterComputePolicyConfigEventArgs']]],
-                 dynamic_rules: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationCenterComputePolicyConfigDynamicRuleArgs']]]] = None,
-                 resource_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 should_include_all_resources: Optional[pulumi.Input[_builtins.bool]] = None):
+                 dynamic_rules: pulumi.Input[Optional[Sequence[pulumi.Input['NotificationCenterComputePolicyConfigDynamicRuleArgs']]]] = None,
+                 resource_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 should_include_all_resources: pulumi.Input[Optional[_builtins.bool]] = None):
         pulumi.set(__self__, "events", events)
         if dynamic_rules is not None:
             pulumi.set(__self__, "dynamic_rules", dynamic_rules)
@@ -2616,63 +2616,63 @@ class NotificationCenterComputePolicyConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="dynamicRules")
-    def dynamic_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NotificationCenterComputePolicyConfigDynamicRuleArgs']]]]:
+    def dynamic_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NotificationCenterComputePolicyConfigDynamicRuleArgs']]]]:
         return pulumi.get(self, "dynamic_rules")
 
     @dynamic_rules.setter
-    def dynamic_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationCenterComputePolicyConfigDynamicRuleArgs']]]]):
+    def dynamic_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NotificationCenterComputePolicyConfigDynamicRuleArgs']]]]):
         pulumi.set(self, "dynamic_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceIds")
-    def resource_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def resource_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "resource_ids")
 
     @resource_ids.setter
-    def resource_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def resource_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "resource_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="shouldIncludeAllResources")
-    def should_include_all_resources(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def should_include_all_resources(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "should_include_all_resources")
 
     @should_include_all_resources.setter
-    def should_include_all_resources(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def should_include_all_resources(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "should_include_all_resources", value)
 
 
 class NotificationCenterComputePolicyConfigDynamicRuleArgsDict(TypedDict):
-    filter_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArgsDict']]]]
+    filter_conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArgs']]]]]
 
 @pulumi.input_type
 class NotificationCenterComputePolicyConfigDynamicRuleArgs:
     def __init__(__self__, *,
-                 filter_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArgs']]]] = None):
+                 filter_conditions: pulumi.Input[Optional[Sequence[pulumi.Input['NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArgs']]]] = None):
         if filter_conditions is not None:
             pulumi.set(__self__, "filter_conditions", filter_conditions)
 
     @_builtins.property
     @pulumi.getter(name="filterConditions")
-    def filter_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArgs']]]]:
+    def filter_conditions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArgs']]]]:
         return pulumi.get(self, "filter_conditions")
 
     @filter_conditions.setter
-    def filter_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArgs']]]]):
+    def filter_conditions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArgs']]]]):
         pulumi.set(self, "filter_conditions", value)
 
 
 class NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArgsDict(TypedDict):
-    expression: NotRequired[pulumi.Input[_builtins.str]]
-    identifier: NotRequired[pulumi.Input[_builtins.str]]
-    operator: NotRequired[pulumi.Input[_builtins.str]]
+    expression: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    identifier: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    operator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArgs:
     def __init__(__self__, *,
-                 expression: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 operator: Optional[pulumi.Input[_builtins.str]] = None):
+                 expression: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 operator: pulumi.Input[Optional[_builtins.str]] = None):
         if expression is not None:
             pulumi.set(__self__, "expression", expression)
         if identifier is not None:
@@ -2682,41 +2682,41 @@ class NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def expression(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expression(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "expression")
 
     @expression.setter
-    def expression(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expression(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expression", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def operator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def operator(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "operator")
 
     @operator.setter
-    def operator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def operator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "operator", value)
 
 
 class NotificationCenterComputePolicyConfigEventArgsDict(TypedDict):
-    event: NotRequired[pulumi.Input[_builtins.str]]
-    event_type: NotRequired[pulumi.Input[_builtins.str]]
+    event: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    event_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class NotificationCenterComputePolicyConfigEventArgs:
     def __init__(__self__, *,
-                 event: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 event: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_type: pulumi.Input[Optional[_builtins.str]] = None):
         if event is not None:
             pulumi.set(__self__, "event", event)
         if event_type is not None:
@@ -2724,32 +2724,32 @@ class NotificationCenterComputePolicyConfigEventArgs:
 
     @_builtins.property
     @pulumi.getter
-    def event(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def event(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "event")
 
     @event.setter
-    def event(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def event(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "event", value)
 
     @_builtins.property
     @pulumi.getter(name="eventType")
-    def event_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def event_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "event_type")
 
     @event_type.setter
-    def event_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def event_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "event_type", value)
 
 
 class NotificationCenterRegisteredUserArgsDict(TypedDict):
-    subscription_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-    user_email: NotRequired[pulumi.Input[_builtins.str]]
+    subscription_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    user_email: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class NotificationCenterRegisteredUserArgs:
     def __init__(__self__, *,
-                 subscription_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 user_email: Optional[pulumi.Input[_builtins.str]] = None):
+                 subscription_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 user_email: pulumi.Input[Optional[_builtins.str]] = None):
         if subscription_types is not None:
             pulumi.set(__self__, "subscription_types", subscription_types)
         if user_email is not None:
@@ -2757,32 +2757,32 @@ class NotificationCenterRegisteredUserArgs:
 
     @_builtins.property
     @pulumi.getter(name="subscriptionTypes")
-    def subscription_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def subscription_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "subscription_types")
 
     @subscription_types.setter
-    def subscription_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def subscription_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "subscription_types", value)
 
     @_builtins.property
     @pulumi.getter(name="userEmail")
-    def user_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "user_email")
 
     @user_email.setter
-    def user_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_email", value)
 
 
 class NotificationCenterSubscriptionArgsDict(TypedDict):
-    endpoint: NotRequired[pulumi.Input[_builtins.str]]
-    subscription_type: NotRequired[pulumi.Input[_builtins.str]]
+    endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    subscription_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class NotificationCenterSubscriptionArgs:
     def __init__(__self__, *,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscription_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscription_type: pulumi.Input[Optional[_builtins.str]] = None):
         if endpoint is not None:
             pulumi.set(__self__, "endpoint", endpoint)
         if subscription_type is not None:
@@ -2790,20 +2790,20 @@ class NotificationCenterSubscriptionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
-    def endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="subscriptionType")
-    def subscription_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subscription_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "subscription_type")
 
     @subscription_type.setter
-    def subscription_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subscription_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subscription_type", value)
 
 
@@ -2837,20 +2837,20 @@ class OceanRightSizingRuleAttachWorkloadArgs:
 
 class OceanRightSizingRuleAttachWorkloadNamespaceArgsDict(TypedDict):
     namespace_name: pulumi.Input[_builtins.str]
-    labels: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadNamespaceLabelArgsDict']]]]
+    labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadNamespaceLabelArgs']]]]]
     """
     A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
 
     <a id="attach_workloads"></a>
     """
-    workloads: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArgsDict']]]]
+    workloads: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArgs']]]]]
 
 @pulumi.input_type
 class OceanRightSizingRuleAttachWorkloadNamespaceArgs:
     def __init__(__self__, *,
                  namespace_name: pulumi.Input[_builtins.str],
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadNamespaceLabelArgs']]]] = None,
-                 workloads: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArgs']]]] = None):
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadNamespaceLabelArgs']]]] = None,
+                 workloads: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadNamespaceLabelArgs']]] labels: A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
                
@@ -2873,7 +2873,7 @@ class OceanRightSizingRuleAttachWorkloadNamespaceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadNamespaceLabelArgs']]]]:
+    def labels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadNamespaceLabelArgs']]]]:
         """
         A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
 
@@ -2882,16 +2882,16 @@ class OceanRightSizingRuleAttachWorkloadNamespaceArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadNamespaceLabelArgs']]]]):
+    def labels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadNamespaceLabelArgs']]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def workloads(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArgs']]]]:
+    def workloads(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArgs']]]]:
         return pulumi.get(self, "workloads")
 
     @workloads.setter
-    def workloads(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArgs']]]]):
+    def workloads(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArgs']]]]):
         pulumi.set(self, "workloads", value)
 
 
@@ -2928,15 +2928,15 @@ class OceanRightSizingRuleAttachWorkloadNamespaceLabelArgs:
 
 class OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArgsDict(TypedDict):
     workload_type: pulumi.Input[_builtins.str]
-    regex_name: NotRequired[pulumi.Input[_builtins.str]]
-    workload_name: NotRequired[pulumi.Input[_builtins.str]]
+    regex_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    workload_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArgs:
     def __init__(__self__, *,
                  workload_type: pulumi.Input[_builtins.str],
-                 regex_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 workload_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 regex_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 workload_name: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "workload_type", workload_type)
         if regex_name is not None:
             pulumi.set(__self__, "regex_name", regex_name)
@@ -2954,35 +2954,35 @@ class OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArgs:
 
     @_builtins.property
     @pulumi.getter(name="regexName")
-    def regex_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def regex_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "regex_name")
 
     @regex_name.setter
-    def regex_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def regex_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "regex_name", value)
 
     @_builtins.property
     @pulumi.getter(name="workloadName")
-    def workload_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workload_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "workload_name")
 
     @workload_name.setter
-    def workload_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workload_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workload_name", value)
 
 
 class OceanRightSizingRuleAutoApplyDefinitionArgsDict(TypedDict):
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Determines if auto apply is enabled.
     """
-    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
 
     <a id="attach_workloads"></a>
     """
-    namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    namespaces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of namespaces that match the auto-apply rule.
     """
@@ -2990,9 +2990,9 @@ class OceanRightSizingRuleAutoApplyDefinitionArgsDict(TypedDict):
 @pulumi.input_type
 class OceanRightSizingRuleAutoApplyDefinitionArgs:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 namespaces: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.bool] enabled: Determines if auto apply is enabled.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
@@ -3009,19 +3009,19 @@ class OceanRightSizingRuleAutoApplyDefinitionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines if auto apply is enabled.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
 
@@ -3030,19 +3030,19 @@ class OceanRightSizingRuleAutoApplyDefinitionArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def namespaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def namespaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of namespaces that match the auto-apply rule.
         """
         return pulumi.get(self, "namespaces")
 
     @namespaces.setter
-    def namespaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def namespaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "namespaces", value)
 
 
@@ -3076,20 +3076,20 @@ class OceanRightSizingRuleDetachWorkloadArgs:
 
 class OceanRightSizingRuleDetachWorkloadNamespaceArgsDict(TypedDict):
     namespace_name: pulumi.Input[_builtins.str]
-    labels: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadNamespaceLabelArgsDict']]]]
+    labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadNamespaceLabelArgs']]]]]
     """
     A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
 
     <a id="attach_workloads"></a>
     """
-    workloads: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArgsDict']]]]
+    workloads: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArgs']]]]]
 
 @pulumi.input_type
 class OceanRightSizingRuleDetachWorkloadNamespaceArgs:
     def __init__(__self__, *,
                  namespace_name: pulumi.Input[_builtins.str],
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadNamespaceLabelArgs']]]] = None,
-                 workloads: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArgs']]]] = None):
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadNamespaceLabelArgs']]]] = None,
+                 workloads: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadNamespaceLabelArgs']]] labels: A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
                
@@ -3112,7 +3112,7 @@ class OceanRightSizingRuleDetachWorkloadNamespaceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadNamespaceLabelArgs']]]]:
+    def labels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadNamespaceLabelArgs']]]]:
         """
         A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
 
@@ -3121,16 +3121,16 @@ class OceanRightSizingRuleDetachWorkloadNamespaceArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadNamespaceLabelArgs']]]]):
+    def labels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadNamespaceLabelArgs']]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def workloads(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArgs']]]]:
+    def workloads(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArgs']]]]:
         return pulumi.get(self, "workloads")
 
     @workloads.setter
-    def workloads(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArgs']]]]):
+    def workloads(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArgs']]]]):
         pulumi.set(self, "workloads", value)
 
 
@@ -3167,15 +3167,15 @@ class OceanRightSizingRuleDetachWorkloadNamespaceLabelArgs:
 
 class OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArgsDict(TypedDict):
     workload_type: pulumi.Input[_builtins.str]
-    regex_name: NotRequired[pulumi.Input[_builtins.str]]
-    workload_name: NotRequired[pulumi.Input[_builtins.str]]
+    regex_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    workload_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArgs:
     def __init__(__self__, *,
                  workload_type: pulumi.Input[_builtins.str],
-                 regex_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 workload_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 regex_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 workload_name: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "workload_type", workload_type)
         if regex_name is not None:
             pulumi.set(__self__, "regex_name", regex_name)
@@ -3193,37 +3193,37 @@ class OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArgs:
 
     @_builtins.property
     @pulumi.getter(name="regexName")
-    def regex_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def regex_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "regex_name")
 
     @regex_name.setter
-    def regex_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def regex_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "regex_name", value)
 
     @_builtins.property
     @pulumi.getter(name="workloadName")
-    def workload_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workload_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "workload_name")
 
     @workload_name.setter
-    def workload_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workload_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workload_name", value)
 
 
 class OceanRightSizingRuleRecommendationApplicationBoundaryArgsDict(TypedDict):
-    cpu_max: NotRequired[pulumi.Input[_builtins.float]]
+    cpu_max: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     the maximal value of cpu in vCpu.
     """
-    cpu_min: NotRequired[pulumi.Input[_builtins.float]]
+    cpu_min: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     the minimal value of cpu in vCpu.
     """
-    memory_max: NotRequired[pulumi.Input[_builtins.int]]
+    memory_max: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     the maximal value of memory in Gib.
     """
-    memory_min: NotRequired[pulumi.Input[_builtins.int]]
+    memory_min: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     the minimal value of memory in Gib.
     """
@@ -3231,10 +3231,10 @@ class OceanRightSizingRuleRecommendationApplicationBoundaryArgsDict(TypedDict):
 @pulumi.input_type
 class OceanRightSizingRuleRecommendationApplicationBoundaryArgs:
     def __init__(__self__, *,
-                 cpu_max: Optional[pulumi.Input[_builtins.float]] = None,
-                 cpu_min: Optional[pulumi.Input[_builtins.float]] = None,
-                 memory_max: Optional[pulumi.Input[_builtins.int]] = None,
-                 memory_min: Optional[pulumi.Input[_builtins.int]] = None):
+                 cpu_max: pulumi.Input[Optional[_builtins.float]] = None,
+                 cpu_min: pulumi.Input[Optional[_builtins.float]] = None,
+                 memory_max: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory_min: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.float] cpu_max: the maximal value of cpu in vCpu.
         :param pulumi.Input[_builtins.float] cpu_min: the minimal value of cpu in vCpu.
@@ -3252,55 +3252,55 @@ class OceanRightSizingRuleRecommendationApplicationBoundaryArgs:
 
     @_builtins.property
     @pulumi.getter(name="cpuMax")
-    def cpu_max(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def cpu_max(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         the maximal value of cpu in vCpu.
         """
         return pulumi.get(self, "cpu_max")
 
     @cpu_max.setter
-    def cpu_max(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def cpu_max(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "cpu_max", value)
 
     @_builtins.property
     @pulumi.getter(name="cpuMin")
-    def cpu_min(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def cpu_min(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         the minimal value of cpu in vCpu.
         """
         return pulumi.get(self, "cpu_min")
 
     @cpu_min.setter
-    def cpu_min(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def cpu_min(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "cpu_min", value)
 
     @_builtins.property
     @pulumi.getter(name="memoryMax")
-    def memory_max(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def memory_max(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         the maximal value of memory in Gib.
         """
         return pulumi.get(self, "memory_max")
 
     @memory_max.setter
-    def memory_max(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def memory_max(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "memory_max", value)
 
     @_builtins.property
     @pulumi.getter(name="memoryMin")
-    def memory_min(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def memory_min(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         the minimal value of memory in Gib.
         """
         return pulumi.get(self, "memory_min")
 
     @memory_min.setter
-    def memory_min(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def memory_min(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "memory_min", value)
 
 
 class OceanRightSizingRuleRecommendationApplicationHpaArgsDict(TypedDict):
-    allow_hpa_recommendations: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_hpa_recommendations: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Determines by the rule if recommendation application is allowed for workloads with HPA definition.
     """
@@ -3308,7 +3308,7 @@ class OceanRightSizingRuleRecommendationApplicationHpaArgsDict(TypedDict):
 @pulumi.input_type
 class OceanRightSizingRuleRecommendationApplicationHpaArgs:
     def __init__(__self__, *,
-                 allow_hpa_recommendations: Optional[pulumi.Input[_builtins.bool]] = None):
+                 allow_hpa_recommendations: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] allow_hpa_recommendations: Determines by the rule if recommendation application is allowed for workloads with HPA definition.
         """
@@ -3317,14 +3317,14 @@ class OceanRightSizingRuleRecommendationApplicationHpaArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowHpaRecommendations")
-    def allow_hpa_recommendations(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_hpa_recommendations(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines by the rule if recommendation application is allowed for workloads with HPA definition.
         """
         return pulumi.get(self, "allow_hpa_recommendations")
 
     @allow_hpa_recommendations.setter
-    def allow_hpa_recommendations(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_hpa_recommendations(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_hpa_recommendations", value)
 
 
@@ -3333,11 +3333,11 @@ class OceanRightSizingRuleRecommendationApplicationIntervalArgsDict(TypedDict):
     """
     Valid values: "WEEKLY" "MONTHLY". The repetition basis.
     """
-    monthly_repetition_bases: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgsDict']]]]
+    monthly_repetition_bases: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs']]]]]
     """
     Determines the Ocean Rightsizing rule monthly repetition basis.
     """
-    weekly_repetition_bases: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgsDict']]]]
+    weekly_repetition_bases: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgs']]]]]
     """
     Determines the Ocean Rightsizing rule weekly repetition basis.
     """
@@ -3346,8 +3346,8 @@ class OceanRightSizingRuleRecommendationApplicationIntervalArgsDict(TypedDict):
 class OceanRightSizingRuleRecommendationApplicationIntervalArgs:
     def __init__(__self__, *,
                  repetition_basis: pulumi.Input[_builtins.str],
-                 monthly_repetition_bases: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs']]]] = None,
-                 weekly_repetition_bases: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgs']]]] = None):
+                 monthly_repetition_bases: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs']]]] = None,
+                 weekly_repetition_bases: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] repetition_basis: Valid values: "WEEKLY" "MONTHLY". The repetition basis.
         :param pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs']]] monthly_repetition_bases: Determines the Ocean Rightsizing rule monthly repetition basis.
@@ -3373,26 +3373,26 @@ class OceanRightSizingRuleRecommendationApplicationIntervalArgs:
 
     @_builtins.property
     @pulumi.getter(name="monthlyRepetitionBases")
-    def monthly_repetition_bases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs']]]]:
+    def monthly_repetition_bases(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs']]]]:
         """
         Determines the Ocean Rightsizing rule monthly repetition basis.
         """
         return pulumi.get(self, "monthly_repetition_bases")
 
     @monthly_repetition_bases.setter
-    def monthly_repetition_bases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs']]]]):
+    def monthly_repetition_bases(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs']]]]):
         pulumi.set(self, "monthly_repetition_bases", value)
 
     @_builtins.property
     @pulumi.getter(name="weeklyRepetitionBases")
-    def weekly_repetition_bases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgs']]]]:
+    def weekly_repetition_bases(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgs']]]]:
         """
         Determines the Ocean Rightsizing rule weekly repetition basis.
         """
         return pulumi.get(self, "weekly_repetition_bases")
 
     @weekly_repetition_bases.setter
-    def weekly_repetition_bases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgs']]]]):
+    def weekly_repetition_bases(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgs']]]]):
         pulumi.set(self, "weekly_repetition_bases", value)
 
 
@@ -3405,7 +3405,7 @@ class OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase
     """
     Valid values: "FIRST" "SECOND" "THIRD" "FOURTH" "LAST". Array of the weeks in the month, when we want to trigger the apply recommendations.
     """
-    weekly_repetition_bases: NotRequired[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgsDict']]]]
+    weekly_repetition_bases: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgs']]]]]
     """
     Determines the Ocean Rightsizing rule weekly repetition basis.
     """
@@ -3415,7 +3415,7 @@ class OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase
     def __init__(__self__, *,
                  interval_months: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]],
                  week_of_the_months: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 weekly_repetition_bases: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgs']]]] = None):
+                 weekly_repetition_bases: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] interval_months: Array of the months (in number), when we want to trigger the apply recommendations.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] week_of_the_months: Valid values: "FIRST" "SECOND" "THIRD" "FOURTH" "LAST". Array of the weeks in the month, when we want to trigger the apply recommendations.
@@ -3452,14 +3452,14 @@ class OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase
 
     @_builtins.property
     @pulumi.getter(name="weeklyRepetitionBases")
-    def weekly_repetition_bases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgs']]]]:
+    def weekly_repetition_bases(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgs']]]]:
         """
         Determines the Ocean Rightsizing rule weekly repetition basis.
         """
         return pulumi.get(self, "weekly_repetition_bases")
 
     @weekly_repetition_bases.setter
-    def weekly_repetition_bases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgs']]]]):
+    def weekly_repetition_bases(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgs']]]]):
         pulumi.set(self, "weekly_repetition_bases", value)
 
 
@@ -3596,11 +3596,11 @@ class OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseA
 
 
 class OceanRightSizingRuleRecommendationApplicationMinThresholdArgsDict(TypedDict):
-    cpu_percentage: NotRequired[pulumi.Input[_builtins.float]]
+    cpu_percentage: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     .
     """
-    memory_percentage: NotRequired[pulumi.Input[_builtins.float]]
+    memory_percentage: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     .
     """
@@ -3608,8 +3608,8 @@ class OceanRightSizingRuleRecommendationApplicationMinThresholdArgsDict(TypedDic
 @pulumi.input_type
 class OceanRightSizingRuleRecommendationApplicationMinThresholdArgs:
     def __init__(__self__, *,
-                 cpu_percentage: Optional[pulumi.Input[_builtins.float]] = None,
-                 memory_percentage: Optional[pulumi.Input[_builtins.float]] = None):
+                 cpu_percentage: pulumi.Input[Optional[_builtins.float]] = None,
+                 memory_percentage: pulumi.Input[Optional[_builtins.float]] = None):
         """
         :param pulumi.Input[_builtins.float] cpu_percentage: .
         :param pulumi.Input[_builtins.float] memory_percentage: .
@@ -3621,35 +3621,35 @@ class OceanRightSizingRuleRecommendationApplicationMinThresholdArgs:
 
     @_builtins.property
     @pulumi.getter(name="cpuPercentage")
-    def cpu_percentage(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def cpu_percentage(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         .
         """
         return pulumi.get(self, "cpu_percentage")
 
     @cpu_percentage.setter
-    def cpu_percentage(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def cpu_percentage(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "cpu_percentage", value)
 
     @_builtins.property
     @pulumi.getter(name="memoryPercentage")
-    def memory_percentage(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def memory_percentage(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         .
         """
         return pulumi.get(self, "memory_percentage")
 
     @memory_percentage.setter
-    def memory_percentage(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def memory_percentage(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "memory_percentage", value)
 
 
 class OceanRightSizingRuleRecommendationApplicationOverheadValueArgsDict(TypedDict):
-    cpu_percentage: NotRequired[pulumi.Input[_builtins.float]]
+    cpu_percentage: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     .
     """
-    memory_percentage: NotRequired[pulumi.Input[_builtins.float]]
+    memory_percentage: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     .
     """
@@ -3657,8 +3657,8 @@ class OceanRightSizingRuleRecommendationApplicationOverheadValueArgsDict(TypedDi
 @pulumi.input_type
 class OceanRightSizingRuleRecommendationApplicationOverheadValueArgs:
     def __init__(__self__, *,
-                 cpu_percentage: Optional[pulumi.Input[_builtins.float]] = None,
-                 memory_percentage: Optional[pulumi.Input[_builtins.float]] = None):
+                 cpu_percentage: pulumi.Input[Optional[_builtins.float]] = None,
+                 memory_percentage: pulumi.Input[Optional[_builtins.float]] = None):
         """
         :param pulumi.Input[_builtins.float] cpu_percentage: .
         :param pulumi.Input[_builtins.float] memory_percentage: .
@@ -3670,26 +3670,26 @@ class OceanRightSizingRuleRecommendationApplicationOverheadValueArgs:
 
     @_builtins.property
     @pulumi.getter(name="cpuPercentage")
-    def cpu_percentage(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def cpu_percentage(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         .
         """
         return pulumi.get(self, "cpu_percentage")
 
     @cpu_percentage.setter
-    def cpu_percentage(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def cpu_percentage(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "cpu_percentage", value)
 
     @_builtins.property
     @pulumi.getter(name="memoryPercentage")
-    def memory_percentage(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def memory_percentage(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         .
         """
         return pulumi.get(self, "memory_percentage")
 
     @memory_percentage.setter
-    def memory_percentage(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def memory_percentage(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "memory_percentage", value)
 
 
@@ -3698,8 +3698,8 @@ class StatefulNodeAzureAttachDataDiskArgsDict(TypedDict):
     data_disk_resource_group_name: pulumi.Input[_builtins.str]
     size_gb: pulumi.Input[_builtins.int]
     storage_account_type: pulumi.Input[_builtins.str]
-    lun: NotRequired[pulumi.Input[_builtins.int]]
-    zone: NotRequired[pulumi.Input[_builtins.str]]
+    lun: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    zone: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class StatefulNodeAzureAttachDataDiskArgs:
@@ -3708,8 +3708,8 @@ class StatefulNodeAzureAttachDataDiskArgs:
                  data_disk_resource_group_name: pulumi.Input[_builtins.str],
                  size_gb: pulumi.Input[_builtins.int],
                  storage_account_type: pulumi.Input[_builtins.str],
-                 lun: Optional[pulumi.Input[_builtins.int]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 lun: pulumi.Input[Optional[_builtins.int]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "data_disk_name", data_disk_name)
         pulumi.set(__self__, "data_disk_resource_group_name", data_disk_resource_group_name)
         pulumi.set(__self__, "size_gb", size_gb)
@@ -3757,34 +3757,34 @@ class StatefulNodeAzureAttachDataDiskArgs:
 
     @_builtins.property
     @pulumi.getter
-    def lun(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def lun(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "lun")
 
     @lun.setter
-    def lun(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def lun(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "lun", value)
 
     @_builtins.property
     @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
 
 
 class StatefulNodeAzureBootDiagnosticArgsDict(TypedDict):
-    is_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-    storage_url: NotRequired[pulumi.Input[_builtins.str]]
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    is_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    storage_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class StatefulNodeAzureBootDiagnosticArgs:
     def __init__(__self__, *,
-                 is_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 storage_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 is_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 storage_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         if is_enabled is not None:
             pulumi.set(__self__, "is_enabled", is_enabled)
         if storage_url is not None:
@@ -3794,29 +3794,29 @@ class StatefulNodeAzureBootDiagnosticArgs:
 
     @_builtins.property
     @pulumi.getter(name="isEnabled")
-    def is_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "is_enabled")
 
     @is_enabled.setter
-    def is_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="storageUrl")
-    def storage_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "storage_url")
 
     @storage_url.setter
-    def storage_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -3865,31 +3865,31 @@ class StatefulNodeAzureDataDiskArgs:
 
 class StatefulNodeAzureDeleteArgsDict(TypedDict):
     should_terminate_vm: pulumi.Input[_builtins.bool]
-    disk_should_deallocate: NotRequired[pulumi.Input[_builtins.bool]]
-    disk_ttl_in_hours: NotRequired[pulumi.Input[_builtins.int]]
-    network_should_deallocate: NotRequired[pulumi.Input[_builtins.bool]]
-    network_ttl_in_hours: NotRequired[pulumi.Input[_builtins.int]]
-    public_ip_should_deallocate: NotRequired[pulumi.Input[_builtins.bool]]
-    public_ip_ttl_in_hours: NotRequired[pulumi.Input[_builtins.int]]
-    should_deregister_from_lb: NotRequired[pulumi.Input[_builtins.bool]]
-    should_revert_to_od: NotRequired[pulumi.Input[_builtins.bool]]
-    snapshot_should_deallocate: NotRequired[pulumi.Input[_builtins.bool]]
-    snapshot_ttl_in_hours: NotRequired[pulumi.Input[_builtins.int]]
+    disk_should_deallocate: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    disk_ttl_in_hours: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    network_should_deallocate: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    network_ttl_in_hours: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    public_ip_should_deallocate: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    public_ip_ttl_in_hours: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    should_deregister_from_lb: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    should_revert_to_od: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    snapshot_should_deallocate: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    snapshot_ttl_in_hours: NotRequired[pulumi.Input[Optional[_builtins.int]]]
 
 @pulumi.input_type
 class StatefulNodeAzureDeleteArgs:
     def __init__(__self__, *,
                  should_terminate_vm: pulumi.Input[_builtins.bool],
-                 disk_should_deallocate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disk_ttl_in_hours: Optional[pulumi.Input[_builtins.int]] = None,
-                 network_should_deallocate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 network_ttl_in_hours: Optional[pulumi.Input[_builtins.int]] = None,
-                 public_ip_should_deallocate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 public_ip_ttl_in_hours: Optional[pulumi.Input[_builtins.int]] = None,
-                 should_deregister_from_lb: Optional[pulumi.Input[_builtins.bool]] = None,
-                 should_revert_to_od: Optional[pulumi.Input[_builtins.bool]] = None,
-                 snapshot_should_deallocate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 snapshot_ttl_in_hours: Optional[pulumi.Input[_builtins.int]] = None):
+                 disk_should_deallocate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disk_ttl_in_hours: pulumi.Input[Optional[_builtins.int]] = None,
+                 network_should_deallocate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 network_ttl_in_hours: pulumi.Input[Optional[_builtins.int]] = None,
+                 public_ip_should_deallocate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 public_ip_ttl_in_hours: pulumi.Input[Optional[_builtins.int]] = None,
+                 should_deregister_from_lb: pulumi.Input[Optional[_builtins.bool]] = None,
+                 should_revert_to_od: pulumi.Input[Optional[_builtins.bool]] = None,
+                 snapshot_should_deallocate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 snapshot_ttl_in_hours: pulumi.Input[Optional[_builtins.int]] = None):
         pulumi.set(__self__, "should_terminate_vm", should_terminate_vm)
         if disk_should_deallocate is not None:
             pulumi.set(__self__, "disk_should_deallocate", disk_should_deallocate)
@@ -3923,92 +3923,92 @@ class StatefulNodeAzureDeleteArgs:
 
     @_builtins.property
     @pulumi.getter(name="diskShouldDeallocate")
-    def disk_should_deallocate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disk_should_deallocate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "disk_should_deallocate")
 
     @disk_should_deallocate.setter
-    def disk_should_deallocate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disk_should_deallocate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disk_should_deallocate", value)
 
     @_builtins.property
     @pulumi.getter(name="diskTtlInHours")
-    def disk_ttl_in_hours(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def disk_ttl_in_hours(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "disk_ttl_in_hours")
 
     @disk_ttl_in_hours.setter
-    def disk_ttl_in_hours(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def disk_ttl_in_hours(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "disk_ttl_in_hours", value)
 
     @_builtins.property
     @pulumi.getter(name="networkShouldDeallocate")
-    def network_should_deallocate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def network_should_deallocate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "network_should_deallocate")
 
     @network_should_deallocate.setter
-    def network_should_deallocate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def network_should_deallocate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "network_should_deallocate", value)
 
     @_builtins.property
     @pulumi.getter(name="networkTtlInHours")
-    def network_ttl_in_hours(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def network_ttl_in_hours(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "network_ttl_in_hours")
 
     @network_ttl_in_hours.setter
-    def network_ttl_in_hours(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def network_ttl_in_hours(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "network_ttl_in_hours", value)
 
     @_builtins.property
     @pulumi.getter(name="publicIpShouldDeallocate")
-    def public_ip_should_deallocate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def public_ip_should_deallocate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "public_ip_should_deallocate")
 
     @public_ip_should_deallocate.setter
-    def public_ip_should_deallocate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def public_ip_should_deallocate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "public_ip_should_deallocate", value)
 
     @_builtins.property
     @pulumi.getter(name="publicIpTtlInHours")
-    def public_ip_ttl_in_hours(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def public_ip_ttl_in_hours(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "public_ip_ttl_in_hours")
 
     @public_ip_ttl_in_hours.setter
-    def public_ip_ttl_in_hours(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def public_ip_ttl_in_hours(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "public_ip_ttl_in_hours", value)
 
     @_builtins.property
     @pulumi.getter(name="shouldDeregisterFromLb")
-    def should_deregister_from_lb(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def should_deregister_from_lb(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "should_deregister_from_lb")
 
     @should_deregister_from_lb.setter
-    def should_deregister_from_lb(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def should_deregister_from_lb(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "should_deregister_from_lb", value)
 
     @_builtins.property
     @pulumi.getter(name="shouldRevertToOd")
-    def should_revert_to_od(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def should_revert_to_od(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "should_revert_to_od")
 
     @should_revert_to_od.setter
-    def should_revert_to_od(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def should_revert_to_od(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "should_revert_to_od", value)
 
     @_builtins.property
     @pulumi.getter(name="snapshotShouldDeallocate")
-    def snapshot_should_deallocate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def snapshot_should_deallocate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "snapshot_should_deallocate")
 
     @snapshot_should_deallocate.setter
-    def snapshot_should_deallocate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def snapshot_should_deallocate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "snapshot_should_deallocate", value)
 
     @_builtins.property
     @pulumi.getter(name="snapshotTtlInHours")
-    def snapshot_ttl_in_hours(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def snapshot_ttl_in_hours(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "snapshot_ttl_in_hours")
 
     @snapshot_ttl_in_hours.setter
-    def snapshot_ttl_in_hours(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def snapshot_ttl_in_hours(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "snapshot_ttl_in_hours", value)
 
 
@@ -4016,7 +4016,7 @@ class StatefulNodeAzureDetachDataDiskArgsDict(TypedDict):
     data_disk_name: pulumi.Input[_builtins.str]
     data_disk_resource_group_name: pulumi.Input[_builtins.str]
     should_deallocate: pulumi.Input[_builtins.bool]
-    ttl_in_hours: NotRequired[pulumi.Input[_builtins.int]]
+    ttl_in_hours: NotRequired[pulumi.Input[Optional[_builtins.int]]]
 
 @pulumi.input_type
 class StatefulNodeAzureDetachDataDiskArgs:
@@ -4024,7 +4024,7 @@ class StatefulNodeAzureDetachDataDiskArgs:
                  data_disk_name: pulumi.Input[_builtins.str],
                  data_disk_resource_group_name: pulumi.Input[_builtins.str],
                  should_deallocate: pulumi.Input[_builtins.bool],
-                 ttl_in_hours: Optional[pulumi.Input[_builtins.int]] = None):
+                 ttl_in_hours: pulumi.Input[Optional[_builtins.int]] = None):
         pulumi.set(__self__, "data_disk_name", data_disk_name)
         pulumi.set(__self__, "data_disk_resource_group_name", data_disk_resource_group_name)
         pulumi.set(__self__, "should_deallocate", should_deallocate)
@@ -4060,11 +4060,11 @@ class StatefulNodeAzureDetachDataDiskArgs:
 
     @_builtins.property
     @pulumi.getter(name="ttlInHours")
-    def ttl_in_hours(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ttl_in_hours(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "ttl_in_hours")
 
     @ttl_in_hours.setter
-    def ttl_in_hours(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ttl_in_hours(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ttl_in_hours", value)
 
 
@@ -4074,8 +4074,8 @@ class StatefulNodeAzureExtensionArgsDict(TypedDict):
     name: pulumi.Input[_builtins.str]
     publisher: pulumi.Input[_builtins.str]
     type: pulumi.Input[_builtins.str]
-    protected_settings: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-    public_settings: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    protected_settings: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
+    public_settings: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
 
 @pulumi.input_type
 class StatefulNodeAzureExtensionArgs:
@@ -4085,8 +4085,8 @@ class StatefulNodeAzureExtensionArgs:
                  name: pulumi.Input[_builtins.str],
                  publisher: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 protected_settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 public_settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 protected_settings: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 public_settings: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         pulumi.set(__self__, "api_version", api_version)
         pulumi.set(__self__, "minor_version_auto_upgrade", minor_version_auto_upgrade)
         pulumi.set(__self__, "name", name)
@@ -4144,36 +4144,36 @@ class StatefulNodeAzureExtensionArgs:
 
     @_builtins.property
     @pulumi.getter(name="protectedSettings")
-    def protected_settings(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def protected_settings(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "protected_settings")
 
     @protected_settings.setter
-    def protected_settings(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def protected_settings(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "protected_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="publicSettings")
-    def public_settings(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def public_settings(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "public_settings")
 
     @public_settings.setter
-    def public_settings(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def public_settings(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "public_settings", value)
 
 
 class StatefulNodeAzureHealthArgsDict(TypedDict):
     auto_healing: pulumi.Input[_builtins.bool]
     health_check_types: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-    grace_period: NotRequired[pulumi.Input[_builtins.int]]
-    unhealthy_duration: NotRequired[pulumi.Input[_builtins.int]]
+    grace_period: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    unhealthy_duration: NotRequired[pulumi.Input[Optional[_builtins.int]]]
 
 @pulumi.input_type
 class StatefulNodeAzureHealthArgs:
     def __init__(__self__, *,
                  auto_healing: pulumi.Input[_builtins.bool],
                  health_check_types: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 grace_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 unhealthy_duration: Optional[pulumi.Input[_builtins.int]] = None):
+                 grace_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 unhealthy_duration: pulumi.Input[Optional[_builtins.int]] = None):
         pulumi.set(__self__, "auto_healing", auto_healing)
         pulumi.set(__self__, "health_check_types", health_check_types)
         if grace_period is not None:
@@ -4201,34 +4201,34 @@ class StatefulNodeAzureHealthArgs:
 
     @_builtins.property
     @pulumi.getter(name="gracePeriod")
-    def grace_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def grace_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "grace_period")
 
     @grace_period.setter
-    def grace_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def grace_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "grace_period", value)
 
     @_builtins.property
     @pulumi.getter(name="unhealthyDuration")
-    def unhealthy_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def unhealthy_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "unhealthy_duration")
 
     @unhealthy_duration.setter
-    def unhealthy_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def unhealthy_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "unhealthy_duration", value)
 
 
 class StatefulNodeAzureImageArgsDict(TypedDict):
-    custom_images: NotRequired[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureImageCustomImageArgsDict']]]]
-    galleries: NotRequired[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureImageGalleryArgsDict']]]]
-    marketplace_images: NotRequired[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureImageMarketplaceImageArgsDict']]]]
+    custom_images: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureImageCustomImageArgs']]]]]
+    galleries: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureImageGalleryArgs']]]]]
+    marketplace_images: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureImageMarketplaceImageArgs']]]]]
 
 @pulumi.input_type
 class StatefulNodeAzureImageArgs:
     def __init__(__self__, *,
-                 custom_images: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureImageCustomImageArgs']]]] = None,
-                 galleries: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureImageGalleryArgs']]]] = None,
-                 marketplace_images: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureImageMarketplaceImageArgs']]]] = None):
+                 custom_images: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureImageCustomImageArgs']]]] = None,
+                 galleries: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureImageGalleryArgs']]]] = None,
+                 marketplace_images: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureImageMarketplaceImageArgs']]]] = None):
         if custom_images is not None:
             pulumi.set(__self__, "custom_images", custom_images)
         if galleries is not None:
@@ -4238,29 +4238,29 @@ class StatefulNodeAzureImageArgs:
 
     @_builtins.property
     @pulumi.getter(name="customImages")
-    def custom_images(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureImageCustomImageArgs']]]]:
+    def custom_images(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureImageCustomImageArgs']]]]:
         return pulumi.get(self, "custom_images")
 
     @custom_images.setter
-    def custom_images(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureImageCustomImageArgs']]]]):
+    def custom_images(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureImageCustomImageArgs']]]]):
         pulumi.set(self, "custom_images", value)
 
     @_builtins.property
     @pulumi.getter
-    def galleries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureImageGalleryArgs']]]]:
+    def galleries(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureImageGalleryArgs']]]]:
         return pulumi.get(self, "galleries")
 
     @galleries.setter
-    def galleries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureImageGalleryArgs']]]]):
+    def galleries(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureImageGalleryArgs']]]]):
         pulumi.set(self, "galleries", value)
 
     @_builtins.property
     @pulumi.getter(name="marketplaceImages")
-    def marketplace_images(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureImageMarketplaceImageArgs']]]]:
+    def marketplace_images(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureImageMarketplaceImageArgs']]]]:
         return pulumi.get(self, "marketplace_images")
 
     @marketplace_images.setter
-    def marketplace_images(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureImageMarketplaceImageArgs']]]]):
+    def marketplace_images(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureImageMarketplaceImageArgs']]]]):
         pulumi.set(self, "marketplace_images", value)
 
 
@@ -4300,7 +4300,7 @@ class StatefulNodeAzureImageGalleryArgsDict(TypedDict):
     gallery_resource_group_name: pulumi.Input[_builtins.str]
     image_name: pulumi.Input[_builtins.str]
     version_name: pulumi.Input[_builtins.str]
-    spot_account_id: NotRequired[pulumi.Input[_builtins.str]]
+    spot_account_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class StatefulNodeAzureImageGalleryArgs:
@@ -4309,7 +4309,7 @@ class StatefulNodeAzureImageGalleryArgs:
                  gallery_resource_group_name: pulumi.Input[_builtins.str],
                  image_name: pulumi.Input[_builtins.str],
                  version_name: pulumi.Input[_builtins.str],
-                 spot_account_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 spot_account_id: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "gallery_name", gallery_name)
         pulumi.set(__self__, "gallery_resource_group_name", gallery_resource_group_name)
         pulumi.set(__self__, "image_name", image_name)
@@ -4355,11 +4355,11 @@ class StatefulNodeAzureImageGalleryArgs:
 
     @_builtins.property
     @pulumi.getter(name="spotAccountId")
-    def spot_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spot_account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "spot_account_id")
 
     @spot_account_id.setter
-    def spot_account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spot_account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spot_account_id", value)
 
 
@@ -4421,16 +4421,16 @@ class StatefulNodeAzureImageMarketplaceImageArgs:
 class StatefulNodeAzureImportVmArgsDict(TypedDict):
     original_vm_name: pulumi.Input[_builtins.str]
     resource_group_name: pulumi.Input[_builtins.str]
-    draining_timeout: NotRequired[pulumi.Input[_builtins.int]]
-    resources_retention_time: NotRequired[pulumi.Input[_builtins.int]]
+    draining_timeout: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    resources_retention_time: NotRequired[pulumi.Input[Optional[_builtins.int]]]
 
 @pulumi.input_type
 class StatefulNodeAzureImportVmArgs:
     def __init__(__self__, *,
                  original_vm_name: pulumi.Input[_builtins.str],
                  resource_group_name: pulumi.Input[_builtins.str],
-                 draining_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 resources_retention_time: Optional[pulumi.Input[_builtins.int]] = None):
+                 draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 resources_retention_time: pulumi.Input[Optional[_builtins.int]] = None):
         pulumi.set(__self__, "original_vm_name", original_vm_name)
         pulumi.set(__self__, "resource_group_name", resource_group_name)
         if draining_timeout is not None:
@@ -4458,20 +4458,20 @@ class StatefulNodeAzureImportVmArgs:
 
     @_builtins.property
     @pulumi.getter(name="drainingTimeout")
-    def draining_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def draining_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "draining_timeout")
 
     @draining_timeout.setter
-    def draining_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def draining_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "draining_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="resourcesRetentionTime")
-    def resources_retention_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def resources_retention_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "resources_retention_time")
 
     @resources_retention_time.setter
-    def resources_retention_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def resources_retention_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "resources_retention_time", value)
 
 
@@ -4480,7 +4480,7 @@ class StatefulNodeAzureLoadBalancerArgsDict(TypedDict):
     name: pulumi.Input[_builtins.str]
     resource_group_name: pulumi.Input[_builtins.str]
     type: pulumi.Input[_builtins.str]
-    sku: NotRequired[pulumi.Input[_builtins.str]]
+    sku: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class StatefulNodeAzureLoadBalancerArgs:
@@ -4489,7 +4489,7 @@ class StatefulNodeAzureLoadBalancerArgs:
                  name: pulumi.Input[_builtins.str],
                  resource_group_name: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 sku: Optional[pulumi.Input[_builtins.str]] = None):
+                 sku: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "backend_pool_names", backend_pool_names)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "resource_group_name", resource_group_name)
@@ -4535,25 +4535,25 @@ class StatefulNodeAzureLoadBalancerArgs:
 
     @_builtins.property
     @pulumi.getter
-    def sku(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sku(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "sku")
 
     @sku.setter
-    def sku(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sku(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sku", value)
 
 
 class StatefulNodeAzureLoginArgsDict(TypedDict):
     user_name: pulumi.Input[_builtins.str]
-    password: NotRequired[pulumi.Input[_builtins.str]]
-    ssh_public_key: NotRequired[pulumi.Input[_builtins.str]]
+    password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    ssh_public_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class StatefulNodeAzureLoginArgs:
     def __init__(__self__, *,
                  user_name: pulumi.Input[_builtins.str],
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssh_public_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssh_public_key: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "user_name", user_name)
         if password is not None:
             pulumi.set(__self__, "password", password)
@@ -4571,34 +4571,34 @@ class StatefulNodeAzureLoginArgs:
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="sshPublicKey")
-    def ssh_public_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssh_public_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "ssh_public_key")
 
     @ssh_public_key.setter
-    def ssh_public_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssh_public_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssh_public_key", value)
 
 
 class StatefulNodeAzureManagedServiceIdentityArgsDict(TypedDict):
     name: pulumi.Input[_builtins.str]
     resource_group_name: pulumi.Input[_builtins.str]
-    subscription_id: NotRequired[pulumi.Input[_builtins.str]]
+    subscription_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class StatefulNodeAzureManagedServiceIdentityArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
                  resource_group_name: pulumi.Input[_builtins.str],
-                 subscription_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 subscription_id: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "resource_group_name", resource_group_name)
         if subscription_id is not None:
@@ -4624,11 +4624,11 @@ class StatefulNodeAzureManagedServiceIdentityArgs:
 
     @_builtins.property
     @pulumi.getter(name="subscriptionId")
-    def subscription_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subscription_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "subscription_id")
 
     @subscription_id.setter
-    def subscription_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subscription_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subscription_id", value)
 
 
@@ -4678,28 +4678,28 @@ class StatefulNodeAzureNetworkArgs:
 class StatefulNodeAzureNetworkNetworkInterfaceArgsDict(TypedDict):
     is_primary: pulumi.Input[_builtins.bool]
     subnet_name: pulumi.Input[_builtins.str]
-    additional_ip_configurations: NotRequired[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgsDict']]]]
-    application_security_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgsDict']]]]
-    assign_public_ip: NotRequired[pulumi.Input[_builtins.bool]]
-    enable_ip_forwarding: NotRequired[pulumi.Input[_builtins.bool]]
-    network_security_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgsDict']]]]
-    private_ip_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-    public_ip_sku: NotRequired[pulumi.Input[_builtins.str]]
-    public_ips: NotRequired[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfacePublicIpArgsDict']]]]
+    additional_ip_configurations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgs']]]]]
+    application_security_groups: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs']]]]]
+    assign_public_ip: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    enable_ip_forwarding: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    network_security_groups: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs']]]]]
+    private_ip_addresses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    public_ip_sku: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    public_ips: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs']]]]]
 
 @pulumi.input_type
 class StatefulNodeAzureNetworkNetworkInterfaceArgs:
     def __init__(__self__, *,
                  is_primary: pulumi.Input[_builtins.bool],
                  subnet_name: pulumi.Input[_builtins.str],
-                 additional_ip_configurations: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgs']]]] = None,
-                 application_security_groups: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs']]]] = None,
-                 assign_public_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_ip_forwarding: Optional[pulumi.Input[_builtins.bool]] = None,
-                 network_security_groups: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs']]]] = None,
-                 private_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 public_ip_sku: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_ips: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs']]]] = None):
+                 additional_ip_configurations: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgs']]]] = None,
+                 application_security_groups: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs']]]] = None,
+                 assign_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_ip_forwarding: pulumi.Input[Optional[_builtins.bool]] = None,
+                 network_security_groups: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs']]]] = None,
+                 private_ip_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 public_ip_sku: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_ips: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs']]]] = None):
         pulumi.set(__self__, "is_primary", is_primary)
         pulumi.set(__self__, "subnet_name", subnet_name)
         if additional_ip_configurations is not None:
@@ -4739,74 +4739,74 @@ class StatefulNodeAzureNetworkNetworkInterfaceArgs:
 
     @_builtins.property
     @pulumi.getter(name="additionalIpConfigurations")
-    def additional_ip_configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgs']]]]:
+    def additional_ip_configurations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgs']]]]:
         return pulumi.get(self, "additional_ip_configurations")
 
     @additional_ip_configurations.setter
-    def additional_ip_configurations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgs']]]]):
+    def additional_ip_configurations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgs']]]]):
         pulumi.set(self, "additional_ip_configurations", value)
 
     @_builtins.property
     @pulumi.getter(name="applicationSecurityGroups")
-    def application_security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs']]]]:
+    def application_security_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs']]]]:
         return pulumi.get(self, "application_security_groups")
 
     @application_security_groups.setter
-    def application_security_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs']]]]):
+    def application_security_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs']]]]):
         pulumi.set(self, "application_security_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="assignPublicIp")
-    def assign_public_ip(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def assign_public_ip(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "assign_public_ip")
 
     @assign_public_ip.setter
-    def assign_public_ip(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def assign_public_ip(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "assign_public_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="enableIpForwarding")
-    def enable_ip_forwarding(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_ip_forwarding(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "enable_ip_forwarding")
 
     @enable_ip_forwarding.setter
-    def enable_ip_forwarding(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_ip_forwarding(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_ip_forwarding", value)
 
     @_builtins.property
     @pulumi.getter(name="networkSecurityGroups")
-    def network_security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs']]]]:
+    def network_security_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs']]]]:
         return pulumi.get(self, "network_security_groups")
 
     @network_security_groups.setter
-    def network_security_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs']]]]):
+    def network_security_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs']]]]):
         pulumi.set(self, "network_security_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="privateIpAddresses")
-    def private_ip_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def private_ip_addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "private_ip_addresses")
 
     @private_ip_addresses.setter
-    def private_ip_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def private_ip_addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "private_ip_addresses", value)
 
     @_builtins.property
     @pulumi.getter(name="publicIpSku")
-    def public_ip_sku(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_ip_sku(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "public_ip_sku")
 
     @public_ip_sku.setter
-    def public_ip_sku(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_ip_sku(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_ip_sku", value)
 
     @_builtins.property
     @pulumi.getter(name="publicIps")
-    def public_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs']]]]:
+    def public_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs']]]]:
         return pulumi.get(self, "public_ips")
 
     @public_ips.setter
-    def public_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs']]]]):
+    def public_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs']]]]):
         pulumi.set(self, "public_ips", value)
 
 
@@ -4873,14 +4873,14 @@ class StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs:
 
 
 class StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
-    network_resource_group_name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    network_resource_group_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_resource_group_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_resource_group_name: pulumi.Input[Optional[_builtins.str]] = None):
         if name is not None:
             pulumi.set(__self__, "name", name)
         if network_resource_group_name is not None:
@@ -4888,20 +4888,20 @@ class StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkResourceGroupName")
-    def network_resource_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_resource_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "network_resource_group_name")
 
     @network_resource_group_name.setter
-    def network_resource_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_resource_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_resource_group_name", value)
 
 
@@ -4938,15 +4938,15 @@ class StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs:
 
 class StatefulNodeAzureOsDiskArgsDict(TypedDict):
     type: pulumi.Input[_builtins.str]
-    caching: NotRequired[pulumi.Input[_builtins.str]]
-    size_gb: NotRequired[pulumi.Input[_builtins.int]]
+    caching: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    size_gb: NotRequired[pulumi.Input[Optional[_builtins.int]]]
 
 @pulumi.input_type
 class StatefulNodeAzureOsDiskArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[_builtins.str],
-                 caching: Optional[pulumi.Input[_builtins.str]] = None,
-                 size_gb: Optional[pulumi.Input[_builtins.int]] = None):
+                 caching: pulumi.Input[Optional[_builtins.str]] = None,
+                 size_gb: pulumi.Input[Optional[_builtins.int]] = None):
         pulumi.set(__self__, "type", type)
         if caching is not None:
             pulumi.set(__self__, "caching", caching)
@@ -4964,20 +4964,20 @@ class StatefulNodeAzureOsDiskArgs:
 
     @_builtins.property
     @pulumi.getter
-    def caching(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def caching(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "caching")
 
     @caching.setter
-    def caching(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def caching(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "caching", value)
 
     @_builtins.property
     @pulumi.getter(name="sizeGb")
-    def size_gb(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "size_gb")
 
     @size_gb.setter
-    def size_gb(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def size_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "size_gb", value)
 
 
@@ -5118,14 +5118,14 @@ class StatefulNodeAzureSecretSourceVaultArgs:
 
 
 class StatefulNodeAzureSecretVaultCertificateArgsDict(TypedDict):
-    certificate_store: NotRequired[pulumi.Input[_builtins.str]]
-    certificate_url: NotRequired[pulumi.Input[_builtins.str]]
+    certificate_store: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    certificate_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class StatefulNodeAzureSecretVaultCertificateArgs:
     def __init__(__self__, *,
-                 certificate_store: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate_url: Optional[pulumi.Input[_builtins.str]] = None):
+                 certificate_store: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate_url: pulumi.Input[Optional[_builtins.str]] = None):
         if certificate_store is not None:
             pulumi.set(__self__, "certificate_store", certificate_store)
         if certificate_url is not None:
@@ -5133,38 +5133,38 @@ class StatefulNodeAzureSecretVaultCertificateArgs:
 
     @_builtins.property
     @pulumi.getter(name="certificateStore")
-    def certificate_store(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def certificate_store(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "certificate_store")
 
     @certificate_store.setter
-    def certificate_store(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def certificate_store(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "certificate_store", value)
 
     @_builtins.property
     @pulumi.getter(name="certificateUrl")
-    def certificate_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def certificate_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "certificate_url")
 
     @certificate_url.setter
-    def certificate_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def certificate_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "certificate_url", value)
 
 
 class StatefulNodeAzureSecurityArgsDict(TypedDict):
-    confidential_os_disk_encryption: NotRequired[pulumi.Input[_builtins.str]]
-    encryption_at_host: NotRequired[pulumi.Input[_builtins.bool]]
-    secure_boot_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-    security_type: NotRequired[pulumi.Input[_builtins.str]]
-    vtpm_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    confidential_os_disk_encryption: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    encryption_at_host: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    secure_boot_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    security_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    vtpm_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
 
 @pulumi.input_type
 class StatefulNodeAzureSecurityArgs:
     def __init__(__self__, *,
-                 confidential_os_disk_encryption: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_at_host: Optional[pulumi.Input[_builtins.bool]] = None,
-                 secure_boot_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 security_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vtpm_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 confidential_os_disk_encryption: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_at_host: pulumi.Input[Optional[_builtins.bool]] = None,
+                 secure_boot_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 security_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vtpm_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         if confidential_os_disk_encryption is not None:
             pulumi.set(__self__, "confidential_os_disk_encryption", confidential_os_disk_encryption)
         if encryption_at_host is not None:
@@ -5178,47 +5178,47 @@ class StatefulNodeAzureSecurityArgs:
 
     @_builtins.property
     @pulumi.getter(name="confidentialOsDiskEncryption")
-    def confidential_os_disk_encryption(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def confidential_os_disk_encryption(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "confidential_os_disk_encryption")
 
     @confidential_os_disk_encryption.setter
-    def confidential_os_disk_encryption(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def confidential_os_disk_encryption(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "confidential_os_disk_encryption", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionAtHost")
-    def encryption_at_host(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def encryption_at_host(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "encryption_at_host")
 
     @encryption_at_host.setter
-    def encryption_at_host(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def encryption_at_host(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "encryption_at_host", value)
 
     @_builtins.property
     @pulumi.getter(name="secureBootEnabled")
-    def secure_boot_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def secure_boot_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "secure_boot_enabled")
 
     @secure_boot_enabled.setter
-    def secure_boot_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def secure_boot_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "secure_boot_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="securityType")
-    def security_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "security_type")
 
     @security_type.setter
-    def security_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_type", value)
 
     @_builtins.property
     @pulumi.getter(name="vtpmEnabled")
-    def vtpm_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def vtpm_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "vtpm_enabled")
 
     @vtpm_enabled.setter
-    def vtpm_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def vtpm_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "vtpm_enabled", value)
 
 
@@ -5255,29 +5255,29 @@ class StatefulNodeAzureSignalArgs:
 
 class StatefulNodeAzureStrategyArgsDict(TypedDict):
     fallback_to_on_demand: pulumi.Input[_builtins.bool]
-    availability_vs_cost: NotRequired[pulumi.Input[_builtins.int]]
-    capacity_reservations: NotRequired[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureStrategyCapacityReservationArgsDict']]]]
-    draining_timeout: NotRequired[pulumi.Input[_builtins.int]]
-    interruption_toleration: NotRequired[pulumi.Input['StatefulNodeAzureStrategyInterruptionTolerationArgsDict']]
-    od_windows: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-    optimization_windows: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-    preferred_life_cycle: NotRequired[pulumi.Input[_builtins.str]]
-    revert_to_spot: NotRequired[pulumi.Input['StatefulNodeAzureStrategyRevertToSpotArgsDict']]
-    vm_admins: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    availability_vs_cost: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    capacity_reservations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureStrategyCapacityReservationArgs']]]]]
+    draining_timeout: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    interruption_toleration: NotRequired[pulumi.Input[Optional['StatefulNodeAzureStrategyInterruptionTolerationArgs']]]
+    od_windows: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    optimization_windows: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    preferred_life_cycle: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    revert_to_spot: NotRequired[pulumi.Input[Optional['StatefulNodeAzureStrategyRevertToSpotArgs']]]
+    vm_admins: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
 
 @pulumi.input_type
 class StatefulNodeAzureStrategyArgs:
     def __init__(__self__, *,
                  fallback_to_on_demand: pulumi.Input[_builtins.bool],
-                 availability_vs_cost: Optional[pulumi.Input[_builtins.int]] = None,
-                 capacity_reservations: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureStrategyCapacityReservationArgs']]]] = None,
-                 draining_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 interruption_toleration: Optional[pulumi.Input['StatefulNodeAzureStrategyInterruptionTolerationArgs']] = None,
-                 od_windows: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 optimization_windows: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 preferred_life_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 revert_to_spot: Optional[pulumi.Input['StatefulNodeAzureStrategyRevertToSpotArgs']] = None,
-                 vm_admins: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 availability_vs_cost: pulumi.Input[Optional[_builtins.int]] = None,
+                 capacity_reservations: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureStrategyCapacityReservationArgs']]]] = None,
+                 draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 interruption_toleration: pulumi.Input[Optional['StatefulNodeAzureStrategyInterruptionTolerationArgs']] = None,
+                 od_windows: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 optimization_windows: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 preferred_life_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 revert_to_spot: pulumi.Input[Optional['StatefulNodeAzureStrategyRevertToSpotArgs']] = None,
+                 vm_admins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         pulumi.set(__self__, "fallback_to_on_demand", fallback_to_on_demand)
         if availability_vs_cost is not None:
             pulumi.set(__self__, "availability_vs_cost", availability_vs_cost)
@@ -5309,97 +5309,97 @@ class StatefulNodeAzureStrategyArgs:
 
     @_builtins.property
     @pulumi.getter(name="availabilityVsCost")
-    def availability_vs_cost(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def availability_vs_cost(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "availability_vs_cost")
 
     @availability_vs_cost.setter
-    def availability_vs_cost(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def availability_vs_cost(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "availability_vs_cost", value)
 
     @_builtins.property
     @pulumi.getter(name="capacityReservations")
-    def capacity_reservations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureStrategyCapacityReservationArgs']]]]:
+    def capacity_reservations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureStrategyCapacityReservationArgs']]]]:
         return pulumi.get(self, "capacity_reservations")
 
     @capacity_reservations.setter
-    def capacity_reservations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureStrategyCapacityReservationArgs']]]]):
+    def capacity_reservations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureStrategyCapacityReservationArgs']]]]):
         pulumi.set(self, "capacity_reservations", value)
 
     @_builtins.property
     @pulumi.getter(name="drainingTimeout")
-    def draining_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def draining_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "draining_timeout")
 
     @draining_timeout.setter
-    def draining_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def draining_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "draining_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="interruptionToleration")
-    def interruption_toleration(self) -> Optional[pulumi.Input['StatefulNodeAzureStrategyInterruptionTolerationArgs']]:
+    def interruption_toleration(self) -> pulumi.Input[Optional['StatefulNodeAzureStrategyInterruptionTolerationArgs']]:
         return pulumi.get(self, "interruption_toleration")
 
     @interruption_toleration.setter
-    def interruption_toleration(self, value: Optional[pulumi.Input['StatefulNodeAzureStrategyInterruptionTolerationArgs']]):
+    def interruption_toleration(self, value: pulumi.Input[Optional['StatefulNodeAzureStrategyInterruptionTolerationArgs']]):
         pulumi.set(self, "interruption_toleration", value)
 
     @_builtins.property
     @pulumi.getter(name="odWindows")
-    def od_windows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def od_windows(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "od_windows")
 
     @od_windows.setter
-    def od_windows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def od_windows(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "od_windows", value)
 
     @_builtins.property
     @pulumi.getter(name="optimizationWindows")
-    def optimization_windows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def optimization_windows(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "optimization_windows")
 
     @optimization_windows.setter
-    def optimization_windows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def optimization_windows(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "optimization_windows", value)
 
     @_builtins.property
     @pulumi.getter(name="preferredLifeCycle")
-    def preferred_life_cycle(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def preferred_life_cycle(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "preferred_life_cycle")
 
     @preferred_life_cycle.setter
-    def preferred_life_cycle(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def preferred_life_cycle(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "preferred_life_cycle", value)
 
     @_builtins.property
     @pulumi.getter(name="revertToSpot")
-    def revert_to_spot(self) -> Optional[pulumi.Input['StatefulNodeAzureStrategyRevertToSpotArgs']]:
+    def revert_to_spot(self) -> pulumi.Input[Optional['StatefulNodeAzureStrategyRevertToSpotArgs']]:
         return pulumi.get(self, "revert_to_spot")
 
     @revert_to_spot.setter
-    def revert_to_spot(self, value: Optional[pulumi.Input['StatefulNodeAzureStrategyRevertToSpotArgs']]):
+    def revert_to_spot(self, value: pulumi.Input[Optional['StatefulNodeAzureStrategyRevertToSpotArgs']]):
         pulumi.set(self, "revert_to_spot", value)
 
     @_builtins.property
     @pulumi.getter(name="vmAdmins")
-    def vm_admins(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def vm_admins(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "vm_admins")
 
     @vm_admins.setter
-    def vm_admins(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def vm_admins(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vm_admins", value)
 
 
 class StatefulNodeAzureStrategyCapacityReservationArgsDict(TypedDict):
     should_utilize: pulumi.Input[_builtins.bool]
     utilization_strategy: pulumi.Input[_builtins.str]
-    capacity_reservation_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgsDict']]]]
+    capacity_reservation_groups: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs']]]]]
 
 @pulumi.input_type
 class StatefulNodeAzureStrategyCapacityReservationArgs:
     def __init__(__self__, *,
                  should_utilize: pulumi.Input[_builtins.bool],
                  utilization_strategy: pulumi.Input[_builtins.str],
-                 capacity_reservation_groups: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs']]]] = None):
+                 capacity_reservation_groups: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs']]]] = None):
         pulumi.set(__self__, "should_utilize", should_utilize)
         pulumi.set(__self__, "utilization_strategy", utilization_strategy)
         if capacity_reservation_groups is not None:
@@ -5425,25 +5425,25 @@ class StatefulNodeAzureStrategyCapacityReservationArgs:
 
     @_builtins.property
     @pulumi.getter(name="capacityReservationGroups")
-    def capacity_reservation_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs']]]]:
+    def capacity_reservation_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs']]]]:
         return pulumi.get(self, "capacity_reservation_groups")
 
     @capacity_reservation_groups.setter
-    def capacity_reservation_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs']]]]):
+    def capacity_reservation_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs']]]]):
         pulumi.set(self, "capacity_reservation_groups", value)
 
 
 class StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgsDict(TypedDict):
     crg_name: pulumi.Input[_builtins.str]
     crg_resource_group_name: pulumi.Input[_builtins.str]
-    crg_should_prioritize: NotRequired[pulumi.Input[_builtins.bool]]
+    crg_should_prioritize: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
 
 @pulumi.input_type
 class StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs:
     def __init__(__self__, *,
                  crg_name: pulumi.Input[_builtins.str],
                  crg_resource_group_name: pulumi.Input[_builtins.str],
-                 crg_should_prioritize: Optional[pulumi.Input[_builtins.bool]] = None):
+                 crg_should_prioritize: pulumi.Input[Optional[_builtins.bool]] = None):
         pulumi.set(__self__, "crg_name", crg_name)
         pulumi.set(__self__, "crg_resource_group_name", crg_resource_group_name)
         if crg_should_prioritize is not None:
@@ -5469,27 +5469,27 @@ class StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="crgShouldPrioritize")
-    def crg_should_prioritize(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def crg_should_prioritize(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "crg_should_prioritize")
 
     @crg_should_prioritize.setter
-    def crg_should_prioritize(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def crg_should_prioritize(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "crg_should_prioritize", value)
 
 
 class StatefulNodeAzureStrategyInterruptionTolerationArgsDict(TypedDict):
-    cooldown: NotRequired[pulumi.Input[_builtins.int]]
-    evaluation_period: NotRequired[pulumi.Input[_builtins.int]]
-    is_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-    threshold: NotRequired[pulumi.Input[_builtins.int]]
+    cooldown: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    evaluation_period: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    is_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
 
 @pulumi.input_type
 class StatefulNodeAzureStrategyInterruptionTolerationArgs:
     def __init__(__self__, *,
-                 cooldown: Optional[pulumi.Input[_builtins.int]] = None,
-                 evaluation_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 is_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 threshold: Optional[pulumi.Input[_builtins.int]] = None):
+                 cooldown: pulumi.Input[Optional[_builtins.int]] = None,
+                 evaluation_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 is_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 threshold: pulumi.Input[Optional[_builtins.int]] = None):
         if cooldown is not None:
             pulumi.set(__self__, "cooldown", cooldown)
         if evaluation_period is not None:
@@ -5501,38 +5501,38 @@ class StatefulNodeAzureStrategyInterruptionTolerationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def cooldown(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cooldown(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "cooldown")
 
     @cooldown.setter
-    def cooldown(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cooldown(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cooldown", value)
 
     @_builtins.property
     @pulumi.getter(name="evaluationPeriod")
-    def evaluation_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def evaluation_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "evaluation_period")
 
     @evaluation_period.setter
-    def evaluation_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def evaluation_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "evaluation_period", value)
 
     @_builtins.property
     @pulumi.getter(name="isEnabled")
-    def is_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "is_enabled")
 
     @is_enabled.setter
-    def is_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "threshold")
 
     @threshold.setter
-    def threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "threshold", value)
 
 
@@ -5557,13 +5557,13 @@ class StatefulNodeAzureStrategyRevertToSpotArgs:
 
 class StatefulNodeAzureTagArgsDict(TypedDict):
     tag_key: pulumi.Input[_builtins.str]
-    tag_value: NotRequired[pulumi.Input[_builtins.str]]
+    tag_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class StatefulNodeAzureTagArgs:
     def __init__(__self__, *,
                  tag_key: pulumi.Input[_builtins.str],
-                 tag_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 tag_value: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "tag_key", tag_key)
         if tag_value is not None:
             pulumi.set(__self__, "tag_value", tag_value)
@@ -5579,11 +5579,11 @@ class StatefulNodeAzureTagArgs:
 
     @_builtins.property
     @pulumi.getter(name="tagValue")
-    def tag_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "tag_value")
 
     @tag_value.setter
-    def tag_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag_value", value)
 
 
@@ -5608,19 +5608,19 @@ class StatefulNodeAzureUpdateStateArgs:
 
 class StatefulNodeAzureVmSizesArgsDict(TypedDict):
     od_sizes: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-    excluded_vm_sizes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-    preferred_spot_sizes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-    spot_size_attributes: NotRequired[pulumi.Input['StatefulNodeAzureVmSizesSpotSizeAttributesArgsDict']]
-    spot_sizes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    excluded_vm_sizes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    preferred_spot_sizes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    spot_size_attributes: NotRequired[pulumi.Input[Optional['StatefulNodeAzureVmSizesSpotSizeAttributesArgs']]]
+    spot_sizes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
 
 @pulumi.input_type
 class StatefulNodeAzureVmSizesArgs:
     def __init__(__self__, *,
                  od_sizes: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 excluded_vm_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 preferred_spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 spot_size_attributes: Optional[pulumi.Input['StatefulNodeAzureVmSizesSpotSizeAttributesArgs']] = None,
-                 spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 excluded_vm_sizes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 preferred_spot_sizes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 spot_size_attributes: pulumi.Input[Optional['StatefulNodeAzureVmSizesSpotSizeAttributesArgs']] = None,
+                 spot_sizes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         pulumi.set(__self__, "od_sizes", od_sizes)
         if excluded_vm_sizes is not None:
             pulumi.set(__self__, "excluded_vm_sizes", excluded_vm_sizes)
@@ -5642,58 +5642,58 @@ class StatefulNodeAzureVmSizesArgs:
 
     @_builtins.property
     @pulumi.getter(name="excludedVmSizes")
-    def excluded_vm_sizes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def excluded_vm_sizes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "excluded_vm_sizes")
 
     @excluded_vm_sizes.setter
-    def excluded_vm_sizes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def excluded_vm_sizes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "excluded_vm_sizes", value)
 
     @_builtins.property
     @pulumi.getter(name="preferredSpotSizes")
-    def preferred_spot_sizes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def preferred_spot_sizes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "preferred_spot_sizes")
 
     @preferred_spot_sizes.setter
-    def preferred_spot_sizes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def preferred_spot_sizes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "preferred_spot_sizes", value)
 
     @_builtins.property
     @pulumi.getter(name="spotSizeAttributes")
-    def spot_size_attributes(self) -> Optional[pulumi.Input['StatefulNodeAzureVmSizesSpotSizeAttributesArgs']]:
+    def spot_size_attributes(self) -> pulumi.Input[Optional['StatefulNodeAzureVmSizesSpotSizeAttributesArgs']]:
         return pulumi.get(self, "spot_size_attributes")
 
     @spot_size_attributes.setter
-    def spot_size_attributes(self, value: Optional[pulumi.Input['StatefulNodeAzureVmSizesSpotSizeAttributesArgs']]):
+    def spot_size_attributes(self, value: pulumi.Input[Optional['StatefulNodeAzureVmSizesSpotSizeAttributesArgs']]):
         pulumi.set(self, "spot_size_attributes", value)
 
     @_builtins.property
     @pulumi.getter(name="spotSizes")
-    def spot_sizes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def spot_sizes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "spot_sizes")
 
     @spot_sizes.setter
-    def spot_sizes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def spot_sizes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "spot_sizes", value)
 
 
 class StatefulNodeAzureVmSizesSpotSizeAttributesArgsDict(TypedDict):
-    max_cpu: NotRequired[pulumi.Input[_builtins.int]]
-    max_memory: NotRequired[pulumi.Input[_builtins.int]]
-    max_storage: NotRequired[pulumi.Input[_builtins.int]]
-    min_cpu: NotRequired[pulumi.Input[_builtins.int]]
-    min_memory: NotRequired[pulumi.Input[_builtins.int]]
-    min_storage: NotRequired[pulumi.Input[_builtins.int]]
+    max_cpu: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    max_memory: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    max_storage: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    min_cpu: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    min_memory: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    min_storage: NotRequired[pulumi.Input[Optional[_builtins.int]]]
 
 @pulumi.input_type
 class StatefulNodeAzureVmSizesSpotSizeAttributesArgs:
     def __init__(__self__, *,
-                 max_cpu: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_memory: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_cpu: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_memory: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_storage: Optional[pulumi.Input[_builtins.int]] = None):
+                 max_cpu: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_memory: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_cpu: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_memory: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_storage: pulumi.Input[Optional[_builtins.int]] = None):
         if max_cpu is not None:
             pulumi.set(__self__, "max_cpu", max_cpu)
         if max_memory is not None:
@@ -5709,56 +5709,56 @@ class StatefulNodeAzureVmSizesSpotSizeAttributesArgs:
 
     @_builtins.property
     @pulumi.getter(name="maxCpu")
-    def max_cpu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_cpu(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "max_cpu")
 
     @max_cpu.setter
-    def max_cpu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_cpu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_cpu", value)
 
     @_builtins.property
     @pulumi.getter(name="maxMemory")
-    def max_memory(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_memory(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "max_memory")
 
     @max_memory.setter
-    def max_memory(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_memory(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_memory", value)
 
     @_builtins.property
     @pulumi.getter(name="maxStorage")
-    def max_storage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_storage(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "max_storage")
 
     @max_storage.setter
-    def max_storage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_storage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_storage", value)
 
     @_builtins.property
     @pulumi.getter(name="minCpu")
-    def min_cpu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_cpu(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "min_cpu")
 
     @min_cpu.setter
-    def min_cpu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_cpu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_cpu", value)
 
     @_builtins.property
     @pulumi.getter(name="minMemory")
-    def min_memory(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_memory(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "min_memory")
 
     @min_memory.setter
-    def min_memory(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_memory(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_memory", value)
 
     @_builtins.property
     @pulumi.getter(name="minStorage")
-    def min_storage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_storage(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "min_storage")
 
     @min_storage.setter
-    def min_storage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_storage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_storage", value)
 
 

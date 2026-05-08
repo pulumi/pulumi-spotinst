@@ -387,266 +387,266 @@ export class Elastigroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Elastigroup resources.
  */
 export interface ElastigroupState {
-    autoHealing?: pulumi.Input<boolean>;
+    autoHealing?: pulumi.Input<boolean | undefined>;
     /**
      * List of availability zones for the group.
      *
      * @deprecated This field will soon be handled by Region in Subnets
      */
-    availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
-    backendServices?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupBackendService>[]>;
+    availabilityZones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    backendServices?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupBackendService>[] | undefined>;
     /**
      * The region your GCP group will be created in.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The desired number of instances the group should have at any time.
      */
-    desiredCapacity?: pulumi.Input<number>;
-    disks?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupDisk>[]>;
+    desiredCapacity?: pulumi.Input<number | undefined>;
+    disks?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupDisk>[] | undefined>;
     /**
      * Time (seconds) the instance is allowed to run after it is detached from the group. This is to allow the instance time to drain all the current TCP connections before terminating it.
      */
-    drainingTimeout?: pulumi.Input<number>;
+    drainingTimeout?: pulumi.Input<number | undefined>;
     /**
      * Activate fallback-to-on-demand. When provisioning an instance, if no Preemptible market is available, fallback-to-on-demand will provision an On-Demand instance to maintain the group capacity.
      */
-    fallbackToOndemand?: pulumi.Input<boolean>;
-    gpu?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupGpu>[]>;
-    healthCheckGracePeriod?: pulumi.Input<number>;
-    healthCheckType?: pulumi.Input<string>;
+    fallbackToOndemand?: pulumi.Input<boolean | undefined>;
+    gpu?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupGpu>[] | undefined>;
+    healthCheckGracePeriod?: pulumi.Input<number | undefined>;
+    healthCheckType?: pulumi.Input<string | undefined>;
     /**
      * Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
      * * A maximal length of 25 characters.
      * * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
      */
-    instanceNamePrefix?: pulumi.Input<string>;
+    instanceNamePrefix?: pulumi.Input<string | undefined>;
     /**
      * Defines a set of custom instance types. Required if instanceTypesPreemptible and instanceTypesOndemand are not set.
      * * `vCPU` - (Optional) The number of vCPUs in the custom instance type. GCP has a number of limitations on accepted vCPU values. For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
      */
-    instanceTypesCustoms?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupInstanceTypesCustom>[]>;
+    instanceTypesCustoms?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupInstanceTypesCustom>[] | undefined>;
     /**
      * The regular VM instance type to use for mixed-type groups and when falling back to on-demand. Required if instanceTypesPreemptible is not set.
      */
-    instanceTypesOndemand?: pulumi.Input<string>;
+    instanceTypesOndemand?: pulumi.Input<string | undefined>;
     /**
      * The preemptible VMs instance type. To maximize cost savings and market availability, select as many types as possible. Required if instanceTypesOndemand is not set.
      */
-    instanceTypesPreemptibles?: pulumi.Input<pulumi.Input<string>[]>;
-    integrationDockerSwarm?: pulumi.Input<inputs.gcp.ElastigroupIntegrationDockerSwarm>;
-    integrationGke?: pulumi.Input<inputs.gcp.ElastigroupIntegrationGke>;
-    ipForwarding?: pulumi.Input<boolean>;
+    instanceTypesPreemptibles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    integrationDockerSwarm?: pulumi.Input<inputs.gcp.ElastigroupIntegrationDockerSwarm | undefined>;
+    integrationGke?: pulumi.Input<inputs.gcp.ElastigroupIntegrationGke | undefined>;
+    ipForwarding?: pulumi.Input<boolean | undefined>;
     /**
      * Array of objects with key-value pairs.
      */
-    labels?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupLabel>[]>;
+    labels?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupLabel>[] | undefined>;
     /**
      * The maximum number of instances the group should have at any time.
      */
-    maxSize?: pulumi.Input<number>;
+    maxSize?: pulumi.Input<number | undefined>;
     /**
      * Array of objects with key-value pairs.
      */
-    metadatas?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupMetadata>[]>;
+    metadatas?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupMetadata>[] | undefined>;
     /**
      * Select a minimum CPU platform for the compute instance.
      */
-    minCpuPlatform?: pulumi.Input<string>;
+    minCpuPlatform?: pulumi.Input<string | undefined>;
     /**
      * The minimum number of instances the group should have at any time.
      */
-    minSize?: pulumi.Input<number>;
+    minSize?: pulumi.Input<number | undefined>;
     /**
      * The group name.
      */
-    name?: pulumi.Input<string>;
-    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupNetworkInterface>[]>;
-    ondemandCount?: pulumi.Input<number>;
+    name?: pulumi.Input<string | undefined>;
+    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupNetworkInterface>[] | undefined>;
+    ondemandCount?: pulumi.Input<number | undefined>;
     /**
      * Set time window to perform the revert to preemptible. Time windows must be at least 120 minutes. Format: DayInWeek:HH-DayInWeek:HH. Required when strategy.revertToPreemptible.performAt is 'timeWindow'.
      */
-    optimizationWindows?: pulumi.Input<pulumi.Input<string>[]>;
+    optimizationWindows?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Percentage of Preemptible VMs to spin up from the "desiredCapacity".
      */
-    preemptiblePercentage?: pulumi.Input<number>;
+    preemptiblePercentage?: pulumi.Input<number | undefined>;
     /**
      * prioritize availability zones when launching instances for the group. Must be a sublist of `availabilityZones`.
      */
-    preferredAvailabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
+    preferredAvailabilityZones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
      */
-    provisioningModel?: pulumi.Input<string>;
+    provisioningModel?: pulumi.Input<string | undefined>;
     /**
      * Setting for revert to preemptible option.
      */
-    revertToPreemptibles?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupRevertToPreemptible>[]>;
-    scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupScalingDownPolicy>[]>;
-    scalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupScalingUpPolicy>[]>;
-    scheduledTasks?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupScheduledTask>[]>;
+    revertToPreemptibles?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupRevertToPreemptible>[] | undefined>;
+    scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupScalingDownPolicy>[] | undefined>;
+    scalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupScalingUpPolicy>[] | undefined>;
+    scheduledTasks?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupScheduledTask>[] | undefined>;
     /**
      * The email of the service account in which the group instances will be launched.
      */
-    serviceAccount?: pulumi.Input<string>;
+    serviceAccount?: pulumi.Input<string | undefined>;
     /**
      * You can use secure boot when you launch VMs using Elastigroup. This helps you comply with your security policies. In the instance configuration, use ‘secureBootEnabled’ set to True to enforce UEFI with secure boot. Elastigroup provisions VMs with secure boot, as long as the images supports UEFI.
      */
-    shieldedInstanceConfig?: pulumi.Input<inputs.gcp.ElastigroupShieldedInstanceConfig>;
+    shieldedInstanceConfig?: pulumi.Input<inputs.gcp.ElastigroupShieldedInstanceConfig | undefined>;
     /**
      * Enable committed use discounts utilization.
      */
-    shouldUtilizeCommitments?: pulumi.Input<boolean>;
+    shouldUtilizeCommitments?: pulumi.Input<boolean | undefined>;
     /**
      * The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
      */
-    shutdownScript?: pulumi.Input<string>;
+    shutdownScript?: pulumi.Input<string | undefined>;
     /**
      * Create and run your own startup scripts on your virtual machines to perform automated tasks every time your instance boots up.
      */
-    startupScript?: pulumi.Input<string>;
+    startupScript?: pulumi.Input<string | undefined>;
     /**
      * A list of regions and subnets.
      */
-    subnets?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupSubnet>[]>;
+    subnets?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupSubnet>[] | undefined>;
     /**
      * Tags to mark created instances.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
-    unhealthyDuration?: pulumi.Input<number>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    unhealthyDuration?: pulumi.Input<number | undefined>;
 }
 
 /**
  * The set of arguments for constructing a Elastigroup resource.
  */
 export interface ElastigroupArgs {
-    autoHealing?: pulumi.Input<boolean>;
+    autoHealing?: pulumi.Input<boolean | undefined>;
     /**
      * List of availability zones for the group.
      *
      * @deprecated This field will soon be handled by Region in Subnets
      */
-    availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
-    backendServices?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupBackendService>[]>;
+    availabilityZones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    backendServices?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupBackendService>[] | undefined>;
     /**
      * The region your GCP group will be created in.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The desired number of instances the group should have at any time.
      */
     desiredCapacity: pulumi.Input<number>;
-    disks?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupDisk>[]>;
+    disks?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupDisk>[] | undefined>;
     /**
      * Time (seconds) the instance is allowed to run after it is detached from the group. This is to allow the instance time to drain all the current TCP connections before terminating it.
      */
-    drainingTimeout?: pulumi.Input<number>;
+    drainingTimeout?: pulumi.Input<number | undefined>;
     /**
      * Activate fallback-to-on-demand. When provisioning an instance, if no Preemptible market is available, fallback-to-on-demand will provision an On-Demand instance to maintain the group capacity.
      */
-    fallbackToOndemand?: pulumi.Input<boolean>;
-    gpu?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupGpu>[]>;
-    healthCheckGracePeriod?: pulumi.Input<number>;
-    healthCheckType?: pulumi.Input<string>;
+    fallbackToOndemand?: pulumi.Input<boolean | undefined>;
+    gpu?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupGpu>[] | undefined>;
+    healthCheckGracePeriod?: pulumi.Input<number | undefined>;
+    healthCheckType?: pulumi.Input<string | undefined>;
     /**
      * Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
      * * A maximal length of 25 characters.
      * * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
      */
-    instanceNamePrefix?: pulumi.Input<string>;
+    instanceNamePrefix?: pulumi.Input<string | undefined>;
     /**
      * Defines a set of custom instance types. Required if instanceTypesPreemptible and instanceTypesOndemand are not set.
      * * `vCPU` - (Optional) The number of vCPUs in the custom instance type. GCP has a number of limitations on accepted vCPU values. For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
      */
-    instanceTypesCustoms?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupInstanceTypesCustom>[]>;
+    instanceTypesCustoms?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupInstanceTypesCustom>[] | undefined>;
     /**
      * The regular VM instance type to use for mixed-type groups and when falling back to on-demand. Required if instanceTypesPreemptible is not set.
      */
-    instanceTypesOndemand?: pulumi.Input<string>;
+    instanceTypesOndemand?: pulumi.Input<string | undefined>;
     /**
      * The preemptible VMs instance type. To maximize cost savings and market availability, select as many types as possible. Required if instanceTypesOndemand is not set.
      */
-    instanceTypesPreemptibles?: pulumi.Input<pulumi.Input<string>[]>;
-    integrationDockerSwarm?: pulumi.Input<inputs.gcp.ElastigroupIntegrationDockerSwarm>;
-    integrationGke?: pulumi.Input<inputs.gcp.ElastigroupIntegrationGke>;
-    ipForwarding?: pulumi.Input<boolean>;
+    instanceTypesPreemptibles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    integrationDockerSwarm?: pulumi.Input<inputs.gcp.ElastigroupIntegrationDockerSwarm | undefined>;
+    integrationGke?: pulumi.Input<inputs.gcp.ElastigroupIntegrationGke | undefined>;
+    ipForwarding?: pulumi.Input<boolean | undefined>;
     /**
      * Array of objects with key-value pairs.
      */
-    labels?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupLabel>[]>;
+    labels?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupLabel>[] | undefined>;
     /**
      * The maximum number of instances the group should have at any time.
      */
-    maxSize?: pulumi.Input<number>;
+    maxSize?: pulumi.Input<number | undefined>;
     /**
      * Array of objects with key-value pairs.
      */
-    metadatas?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupMetadata>[]>;
+    metadatas?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupMetadata>[] | undefined>;
     /**
      * Select a minimum CPU platform for the compute instance.
      */
-    minCpuPlatform?: pulumi.Input<string>;
+    minCpuPlatform?: pulumi.Input<string | undefined>;
     /**
      * The minimum number of instances the group should have at any time.
      */
-    minSize?: pulumi.Input<number>;
+    minSize?: pulumi.Input<number | undefined>;
     /**
      * The group name.
      */
-    name?: pulumi.Input<string>;
-    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupNetworkInterface>[]>;
-    ondemandCount?: pulumi.Input<number>;
+    name?: pulumi.Input<string | undefined>;
+    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupNetworkInterface>[] | undefined>;
+    ondemandCount?: pulumi.Input<number | undefined>;
     /**
      * Set time window to perform the revert to preemptible. Time windows must be at least 120 minutes. Format: DayInWeek:HH-DayInWeek:HH. Required when strategy.revertToPreemptible.performAt is 'timeWindow'.
      */
-    optimizationWindows?: pulumi.Input<pulumi.Input<string>[]>;
+    optimizationWindows?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Percentage of Preemptible VMs to spin up from the "desiredCapacity".
      */
-    preemptiblePercentage?: pulumi.Input<number>;
+    preemptiblePercentage?: pulumi.Input<number | undefined>;
     /**
      * prioritize availability zones when launching instances for the group. Must be a sublist of `availabilityZones`.
      */
-    preferredAvailabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
+    preferredAvailabilityZones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
      */
-    provisioningModel?: pulumi.Input<string>;
+    provisioningModel?: pulumi.Input<string | undefined>;
     /**
      * Setting for revert to preemptible option.
      */
-    revertToPreemptibles?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupRevertToPreemptible>[]>;
-    scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupScalingDownPolicy>[]>;
-    scalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupScalingUpPolicy>[]>;
-    scheduledTasks?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupScheduledTask>[]>;
+    revertToPreemptibles?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupRevertToPreemptible>[] | undefined>;
+    scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupScalingDownPolicy>[] | undefined>;
+    scalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupScalingUpPolicy>[] | undefined>;
+    scheduledTasks?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupScheduledTask>[] | undefined>;
     /**
      * The email of the service account in which the group instances will be launched.
      */
-    serviceAccount?: pulumi.Input<string>;
+    serviceAccount?: pulumi.Input<string | undefined>;
     /**
      * You can use secure boot when you launch VMs using Elastigroup. This helps you comply with your security policies. In the instance configuration, use ‘secureBootEnabled’ set to True to enforce UEFI with secure boot. Elastigroup provisions VMs with secure boot, as long as the images supports UEFI.
      */
-    shieldedInstanceConfig?: pulumi.Input<inputs.gcp.ElastigroupShieldedInstanceConfig>;
+    shieldedInstanceConfig?: pulumi.Input<inputs.gcp.ElastigroupShieldedInstanceConfig | undefined>;
     /**
      * Enable committed use discounts utilization.
      */
-    shouldUtilizeCommitments?: pulumi.Input<boolean>;
+    shouldUtilizeCommitments?: pulumi.Input<boolean | undefined>;
     /**
      * The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
      */
-    shutdownScript?: pulumi.Input<string>;
+    shutdownScript?: pulumi.Input<string | undefined>;
     /**
      * Create and run your own startup scripts on your virtual machines to perform automated tasks every time your instance boots up.
      */
-    startupScript?: pulumi.Input<string>;
+    startupScript?: pulumi.Input<string | undefined>;
     /**
      * A list of regions and subnets.
      */
-    subnets?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupSubnet>[]>;
+    subnets?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupSubnet>[] | undefined>;
     /**
      * Tags to mark created instances.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
-    unhealthyDuration?: pulumi.Input<number>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    unhealthyDuration?: pulumi.Input<number | undefined>;
 }

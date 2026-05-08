@@ -119,24 +119,24 @@ export interface ProgrammaticUserState {
      * All the accounts the programmatic user will have access to.
      * If used - Cannot be empty.
      */
-    accounts?: pulumi.Input<pulumi.Input<inputs.organization.ProgrammaticUserAccount>[]>;
+    accounts?: pulumi.Input<pulumi.Input<inputs.organization.ProgrammaticUserAccount>[] | undefined>;
     /**
      * Brief description of the user.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the programmatic user.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * All the policies the programmatic user will have access to.
      * If used - Cannot be empty.
      */
-    policies?: pulumi.Input<pulumi.Input<inputs.organization.ProgrammaticUserPolicy>[]>;
+    policies?: pulumi.Input<pulumi.Input<inputs.organization.ProgrammaticUserPolicy>[] | undefined>;
     /**
      * A list of the user groups to register the given user to (should be existing user groups only)
      */
-    userGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    userGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -147,22 +147,22 @@ export interface ProgrammaticUserArgs {
      * All the accounts the programmatic user will have access to.
      * If used - Cannot be empty.
      */
-    accounts?: pulumi.Input<pulumi.Input<inputs.organization.ProgrammaticUserAccount>[]>;
+    accounts?: pulumi.Input<pulumi.Input<inputs.organization.ProgrammaticUserAccount>[] | undefined>;
     /**
      * Brief description of the user.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the programmatic user.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * All the policies the programmatic user will have access to.
      * If used - Cannot be empty.
      */
-    policies?: pulumi.Input<pulumi.Input<inputs.organization.ProgrammaticUserPolicy>[]>;
+    policies?: pulumi.Input<pulumi.Input<inputs.organization.ProgrammaticUserPolicy>[] | undefined>;
     /**
      * A list of the user groups to register the given user to (should be existing user groups only)
      */
-    userGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    userGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

@@ -141,32 +141,32 @@ export interface UserState {
     /**
      * Email.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * The first name of the user.
      */
-    firstName?: pulumi.Input<string>;
+    firstName?: pulumi.Input<string | undefined>;
     /**
      * The last name of the user.
      */
-    lastName?: pulumi.Input<string>;
+    lastName?: pulumi.Input<string | undefined>;
     /**
      * Password.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The policies to register under the given group
      * (should be existing policies only).
      */
-    policies?: pulumi.Input<pulumi.Input<inputs.organization.UserPolicy>[]>;
+    policies?: pulumi.Input<pulumi.Input<inputs.organization.UserPolicy>[] | undefined>;
     /**
      * User's role.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * A list of the user groups to register the given user to (should be existing user groups only)
      */
-    userGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    userGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -188,18 +188,18 @@ export interface UserArgs {
     /**
      * Password.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The policies to register under the given group
      * (should be existing policies only).
      */
-    policies?: pulumi.Input<pulumi.Input<inputs.organization.UserPolicy>[]>;
+    policies?: pulumi.Input<pulumi.Input<inputs.organization.UserPolicy>[] | undefined>;
     /**
      * User's role.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * A list of the user groups to register the given user to (should be existing user groups only)
      */
-    userGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    userGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

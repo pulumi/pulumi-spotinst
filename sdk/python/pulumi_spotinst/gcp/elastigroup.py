@@ -22,47 +22,47 @@ __all__ = ['ElastigroupArgs', 'Elastigroup']
 class ElastigroupArgs:
     def __init__(__self__, *,
                  desired_capacity: pulumi.Input[_builtins.int],
-                 auto_healing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 backend_services: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupBackendServiceArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disks: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupDiskArgs']]]] = None,
-                 draining_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 fallback_to_ondemand: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gpu: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupGpuArgs']]]] = None,
-                 health_check_grace_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_types_customs: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupInstanceTypesCustomArgs']]]] = None,
-                 instance_types_ondemand: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_types_preemptibles: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 integration_docker_swarm: Optional[pulumi.Input['ElastigroupIntegrationDockerSwarmArgs']] = None,
-                 integration_gke: Optional[pulumi.Input['ElastigroupIntegrationGkeArgs']] = None,
-                 ip_forwarding: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupLabelArgs']]]] = None,
-                 max_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupMetadataArgs']]]] = None,
-                 min_cpu_platform: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceArgs']]]] = None,
-                 ondemand_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 optimization_windows: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 preemptible_percentage: Optional[pulumi.Input[_builtins.int]] = None,
-                 preferred_availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 provisioning_model: Optional[pulumi.Input[_builtins.str]] = None,
-                 revert_to_preemptibles: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupRevertToPreemptibleArgs']]]] = None,
-                 scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]] = None,
-                 scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]]] = None,
-                 scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScheduledTaskArgs']]]] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 shielded_instance_config: Optional[pulumi.Input['ElastigroupShieldedInstanceConfigArgs']] = None,
-                 should_utilize_commitments: Optional[pulumi.Input[_builtins.bool]] = None,
-                 shutdown_script: Optional[pulumi.Input[_builtins.str]] = None,
-                 startup_script: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnets: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupSubnetArgs']]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 unhealthy_duration: Optional[pulumi.Input[_builtins.int]] = None):
+                 auto_healing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 availability_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 backend_services: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupBackendServiceArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disks: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupDiskArgs']]]] = None,
+                 draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 fallback_to_ondemand: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gpu: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupGpuArgs']]]] = None,
+                 health_check_grace_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_types_customs: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupInstanceTypesCustomArgs']]]] = None,
+                 instance_types_ondemand: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_types_preemptibles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 integration_docker_swarm: pulumi.Input[Optional['ElastigroupIntegrationDockerSwarmArgs']] = None,
+                 integration_gke: pulumi.Input[Optional['ElastigroupIntegrationGkeArgs']] = None,
+                 ip_forwarding: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupLabelArgs']]]] = None,
+                 max_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 metadatas: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupMetadataArgs']]]] = None,
+                 min_cpu_platform: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupNetworkInterfaceArgs']]]] = None,
+                 ondemand_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 optimization_windows: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 preemptible_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+                 preferred_availability_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 provisioning_model: pulumi.Input[Optional[_builtins.str]] = None,
+                 revert_to_preemptibles: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupRevertToPreemptibleArgs']]]] = None,
+                 scaling_down_policies: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]] = None,
+                 scaling_up_policies: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]]] = None,
+                 scheduled_tasks: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupScheduledTaskArgs']]]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 shielded_instance_config: pulumi.Input[Optional['ElastigroupShieldedInstanceConfigArgs']] = None,
+                 should_utilize_commitments: pulumi.Input[Optional[_builtins.bool]] = None,
+                 shutdown_script: pulumi.Input[Optional[_builtins.str]] = None,
+                 startup_script: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnets: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupSubnetArgs']]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 unhealthy_duration: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a Elastigroup resource.
 
@@ -198,110 +198,110 @@ class ElastigroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoHealing")
-    def auto_healing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_healing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "auto_healing")
 
     @auto_healing.setter
-    def auto_healing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_healing(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_healing", value)
 
     @_builtins.property
     @pulumi.getter(name="availabilityZones")
     @_utilities.deprecated("""This field will soon be handled by Region in Subnets""")
-    def availability_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def availability_zones(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of availability zones for the group.
         """
         return pulumi.get(self, "availability_zones")
 
     @availability_zones.setter
-    def availability_zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def availability_zones(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "availability_zones", value)
 
     @_builtins.property
     @pulumi.getter(name="backendServices")
-    def backend_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupBackendServiceArgs']]]]:
+    def backend_services(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupBackendServiceArgs']]]]:
         return pulumi.get(self, "backend_services")
 
     @backend_services.setter
-    def backend_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupBackendServiceArgs']]]]):
+    def backend_services(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupBackendServiceArgs']]]]):
         pulumi.set(self, "backend_services", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region your GCP group will be created in.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupDiskArgs']]]]:
+    def disks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupDiskArgs']]]]:
         return pulumi.get(self, "disks")
 
     @disks.setter
-    def disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupDiskArgs']]]]):
+    def disks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupDiskArgs']]]]):
         pulumi.set(self, "disks", value)
 
     @_builtins.property
     @pulumi.getter(name="drainingTimeout")
-    def draining_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def draining_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Time (seconds) the instance is allowed to run after it is detached from the group. This is to allow the instance time to drain all the current TCP connections before terminating it.
         """
         return pulumi.get(self, "draining_timeout")
 
     @draining_timeout.setter
-    def draining_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def draining_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "draining_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="fallbackToOndemand")
-    def fallback_to_ondemand(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def fallback_to_ondemand(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Activate fallback-to-on-demand. When provisioning an instance, if no Preemptible market is available, fallback-to-on-demand will provision an On-Demand instance to maintain the group capacity.
         """
         return pulumi.get(self, "fallback_to_ondemand")
 
     @fallback_to_ondemand.setter
-    def fallback_to_ondemand(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def fallback_to_ondemand(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "fallback_to_ondemand", value)
 
     @_builtins.property
     @pulumi.getter
-    def gpu(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupGpuArgs']]]]:
+    def gpu(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupGpuArgs']]]]:
         return pulumi.get(self, "gpu")
 
     @gpu.setter
-    def gpu(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupGpuArgs']]]]):
+    def gpu(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupGpuArgs']]]]):
         pulumi.set(self, "gpu", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckGracePeriod")
-    def health_check_grace_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def health_check_grace_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "health_check_grace_period")
 
     @health_check_grace_period.setter
-    def health_check_grace_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def health_check_grace_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "health_check_grace_period", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckType")
-    def health_check_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "health_check_type")
 
     @health_check_type.setter
-    def health_check_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_type", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceNamePrefix")
-    def instance_name_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
         * A maximal length of 25 characters.
@@ -310,12 +310,12 @@ class ElastigroupArgs:
         return pulumi.get(self, "instance_name_prefix")
 
     @instance_name_prefix.setter
-    def instance_name_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceTypesCustoms")
-    def instance_types_customs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupInstanceTypesCustomArgs']]]]:
+    def instance_types_customs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupInstanceTypesCustomArgs']]]]:
         """
         Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
         * `vCPU` - (Optional) The number of vCPUs in the custom instance type. GCP has a number of limitations on accepted vCPU values. For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
@@ -323,376 +323,376 @@ class ElastigroupArgs:
         return pulumi.get(self, "instance_types_customs")
 
     @instance_types_customs.setter
-    def instance_types_customs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupInstanceTypesCustomArgs']]]]):
+    def instance_types_customs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupInstanceTypesCustomArgs']]]]):
         pulumi.set(self, "instance_types_customs", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceTypesOndemand")
-    def instance_types_ondemand(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_types_ondemand(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The regular VM instance type to use for mixed-type groups and when falling back to on-demand. Required if instance_types_preemptible is not set.
         """
         return pulumi.get(self, "instance_types_ondemand")
 
     @instance_types_ondemand.setter
-    def instance_types_ondemand(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_types_ondemand(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_types_ondemand", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceTypesPreemptibles")
-    def instance_types_preemptibles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def instance_types_preemptibles(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The preemptible VMs instance type. To maximize cost savings and market availability, select as many types as possible. Required if instance_types_ondemand is not set.
         """
         return pulumi.get(self, "instance_types_preemptibles")
 
     @instance_types_preemptibles.setter
-    def instance_types_preemptibles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def instance_types_preemptibles(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "instance_types_preemptibles", value)
 
     @_builtins.property
     @pulumi.getter(name="integrationDockerSwarm")
-    def integration_docker_swarm(self) -> Optional[pulumi.Input['ElastigroupIntegrationDockerSwarmArgs']]:
+    def integration_docker_swarm(self) -> pulumi.Input[Optional['ElastigroupIntegrationDockerSwarmArgs']]:
         return pulumi.get(self, "integration_docker_swarm")
 
     @integration_docker_swarm.setter
-    def integration_docker_swarm(self, value: Optional[pulumi.Input['ElastigroupIntegrationDockerSwarmArgs']]):
+    def integration_docker_swarm(self, value: pulumi.Input[Optional['ElastigroupIntegrationDockerSwarmArgs']]):
         pulumi.set(self, "integration_docker_swarm", value)
 
     @_builtins.property
     @pulumi.getter(name="integrationGke")
-    def integration_gke(self) -> Optional[pulumi.Input['ElastigroupIntegrationGkeArgs']]:
+    def integration_gke(self) -> pulumi.Input[Optional['ElastigroupIntegrationGkeArgs']]:
         return pulumi.get(self, "integration_gke")
 
     @integration_gke.setter
-    def integration_gke(self, value: Optional[pulumi.Input['ElastigroupIntegrationGkeArgs']]):
+    def integration_gke(self, value: pulumi.Input[Optional['ElastigroupIntegrationGkeArgs']]):
         pulumi.set(self, "integration_gke", value)
 
     @_builtins.property
     @pulumi.getter(name="ipForwarding")
-    def ip_forwarding(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ip_forwarding(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "ip_forwarding")
 
     @ip_forwarding.setter
-    def ip_forwarding(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ip_forwarding(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ip_forwarding", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupLabelArgs']]]]:
+    def labels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupLabelArgs']]]]:
         """
         Array of objects with key-value pairs.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupLabelArgs']]]]):
+    def labels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupLabelArgs']]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="maxSize")
-    def max_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of instances the group should have at any time.
         """
         return pulumi.get(self, "max_size")
 
     @max_size.setter
-    def max_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_size", value)
 
     @_builtins.property
     @pulumi.getter
-    def metadatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupMetadataArgs']]]]:
+    def metadatas(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupMetadataArgs']]]]:
         """
         Array of objects with key-value pairs.
         """
         return pulumi.get(self, "metadatas")
 
     @metadatas.setter
-    def metadatas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupMetadataArgs']]]]):
+    def metadatas(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupMetadataArgs']]]]):
         pulumi.set(self, "metadatas", value)
 
     @_builtins.property
     @pulumi.getter(name="minCpuPlatform")
-    def min_cpu_platform(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def min_cpu_platform(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Select a minimum CPU platform for the compute instance.
         """
         return pulumi.get(self, "min_cpu_platform")
 
     @min_cpu_platform.setter
-    def min_cpu_platform(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def min_cpu_platform(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "min_cpu_platform", value)
 
     @_builtins.property
     @pulumi.getter(name="minSize")
-    def min_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum number of instances the group should have at any time.
         """
         return pulumi.get(self, "min_size")
 
     @min_size.setter
-    def min_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_size", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The group name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkInterfaces")
-    def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceArgs']]]]:
+    def network_interfaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupNetworkInterfaceArgs']]]]:
         return pulumi.get(self, "network_interfaces")
 
     @network_interfaces.setter
-    def network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceArgs']]]]):
+    def network_interfaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupNetworkInterfaceArgs']]]]):
         pulumi.set(self, "network_interfaces", value)
 
     @_builtins.property
     @pulumi.getter(name="ondemandCount")
-    def ondemand_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ondemand_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "ondemand_count")
 
     @ondemand_count.setter
-    def ondemand_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ondemand_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ondemand_count", value)
 
     @_builtins.property
     @pulumi.getter(name="optimizationWindows")
-    def optimization_windows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def optimization_windows(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Set time window to perform the revert to preemptible. Time windows must be at least 120 minutes. Format: DayInWeek:HH-DayInWeek:HH. Required when strategy.revertToPreemptible.performAt is 'timeWindow'.
         """
         return pulumi.get(self, "optimization_windows")
 
     @optimization_windows.setter
-    def optimization_windows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def optimization_windows(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "optimization_windows", value)
 
     @_builtins.property
     @pulumi.getter(name="preemptiblePercentage")
-    def preemptible_percentage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def preemptible_percentage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Percentage of Preemptible VMs to spin up from the "desired_capacity".
         """
         return pulumi.get(self, "preemptible_percentage")
 
     @preemptible_percentage.setter
-    def preemptible_percentage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def preemptible_percentage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "preemptible_percentage", value)
 
     @_builtins.property
     @pulumi.getter(name="preferredAvailabilityZones")
-    def preferred_availability_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def preferred_availability_zones(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         prioritize availability zones when launching instances for the group. Must be a sublist of `availability_zones`.
         """
         return pulumi.get(self, "preferred_availability_zones")
 
     @preferred_availability_zones.setter
-    def preferred_availability_zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def preferred_availability_zones(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "preferred_availability_zones", value)
 
     @_builtins.property
     @pulumi.getter(name="provisioningModel")
-    def provisioning_model(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def provisioning_model(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
         """
         return pulumi.get(self, "provisioning_model")
 
     @provisioning_model.setter
-    def provisioning_model(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def provisioning_model(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "provisioning_model", value)
 
     @_builtins.property
     @pulumi.getter(name="revertToPreemptibles")
-    def revert_to_preemptibles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupRevertToPreemptibleArgs']]]]:
+    def revert_to_preemptibles(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupRevertToPreemptibleArgs']]]]:
         """
         Setting for revert to preemptible option.
         """
         return pulumi.get(self, "revert_to_preemptibles")
 
     @revert_to_preemptibles.setter
-    def revert_to_preemptibles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupRevertToPreemptibleArgs']]]]):
+    def revert_to_preemptibles(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupRevertToPreemptibleArgs']]]]):
         pulumi.set(self, "revert_to_preemptibles", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingDownPolicies")
-    def scaling_down_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]]:
+    def scaling_down_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]]:
         return pulumi.get(self, "scaling_down_policies")
 
     @scaling_down_policies.setter
-    def scaling_down_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]]):
+    def scaling_down_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]]):
         pulumi.set(self, "scaling_down_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingUpPolicies")
-    def scaling_up_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]]]:
+    def scaling_up_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]]]:
         return pulumi.get(self, "scaling_up_policies")
 
     @scaling_up_policies.setter
-    def scaling_up_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]]]):
+    def scaling_up_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]]]):
         pulumi.set(self, "scaling_up_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduledTasks")
-    def scheduled_tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScheduledTaskArgs']]]]:
+    def scheduled_tasks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupScheduledTaskArgs']]]]:
         return pulumi.get(self, "scheduled_tasks")
 
     @scheduled_tasks.setter
-    def scheduled_tasks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScheduledTaskArgs']]]]):
+    def scheduled_tasks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupScheduledTaskArgs']]]]):
         pulumi.set(self, "scheduled_tasks", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The email of the service account in which the group instances will be launched.
         """
         return pulumi.get(self, "service_account")
 
     @service_account.setter
-    def service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="shieldedInstanceConfig")
-    def shielded_instance_config(self) -> Optional[pulumi.Input['ElastigroupShieldedInstanceConfigArgs']]:
+    def shielded_instance_config(self) -> pulumi.Input[Optional['ElastigroupShieldedInstanceConfigArgs']]:
         """
         You can use secure boot when you launch VMs using Elastigroup. This helps you comply with your security policies. In the instance configuration, use ‘secureBootEnabled’ set to True to enforce UEFI with secure boot. Elastigroup provisions VMs with secure boot, as long as the images supports UEFI.
         """
         return pulumi.get(self, "shielded_instance_config")
 
     @shielded_instance_config.setter
-    def shielded_instance_config(self, value: Optional[pulumi.Input['ElastigroupShieldedInstanceConfigArgs']]):
+    def shielded_instance_config(self, value: pulumi.Input[Optional['ElastigroupShieldedInstanceConfigArgs']]):
         pulumi.set(self, "shielded_instance_config", value)
 
     @_builtins.property
     @pulumi.getter(name="shouldUtilizeCommitments")
-    def should_utilize_commitments(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def should_utilize_commitments(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable committed use discounts utilization.
         """
         return pulumi.get(self, "should_utilize_commitments")
 
     @should_utilize_commitments.setter
-    def should_utilize_commitments(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def should_utilize_commitments(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "should_utilize_commitments", value)
 
     @_builtins.property
     @pulumi.getter(name="shutdownScript")
-    def shutdown_script(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def shutdown_script(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
         """
         return pulumi.get(self, "shutdown_script")
 
     @shutdown_script.setter
-    def shutdown_script(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def shutdown_script(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "shutdown_script", value)
 
     @_builtins.property
     @pulumi.getter(name="startupScript")
-    def startup_script(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def startup_script(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Create and run your own startup scripts on your virtual machines to perform automated tasks every time your instance boots up.
         """
         return pulumi.get(self, "startup_script")
 
     @startup_script.setter
-    def startup_script(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def startup_script(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "startup_script", value)
 
     @_builtins.property
     @pulumi.getter
-    def subnets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupSubnetArgs']]]]:
+    def subnets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupSubnetArgs']]]]:
         """
         A list of regions and subnets.
         """
         return pulumi.get(self, "subnets")
 
     @subnets.setter
-    def subnets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupSubnetArgs']]]]):
+    def subnets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupSubnetArgs']]]]):
         pulumi.set(self, "subnets", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to mark created instances.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="unhealthyDuration")
-    def unhealthy_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def unhealthy_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "unhealthy_duration")
 
     @unhealthy_duration.setter
-    def unhealthy_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def unhealthy_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "unhealthy_duration", value)
 
 
 @pulumi.input_type
 class _ElastigroupState:
     def __init__(__self__, *,
-                 auto_healing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 backend_services: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupBackendServiceArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 disks: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupDiskArgs']]]] = None,
-                 draining_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 fallback_to_ondemand: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gpu: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupGpuArgs']]]] = None,
-                 health_check_grace_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_types_customs: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupInstanceTypesCustomArgs']]]] = None,
-                 instance_types_ondemand: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_types_preemptibles: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 integration_docker_swarm: Optional[pulumi.Input['ElastigroupIntegrationDockerSwarmArgs']] = None,
-                 integration_gke: Optional[pulumi.Input['ElastigroupIntegrationGkeArgs']] = None,
-                 ip_forwarding: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupLabelArgs']]]] = None,
-                 max_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupMetadataArgs']]]] = None,
-                 min_cpu_platform: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceArgs']]]] = None,
-                 ondemand_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 optimization_windows: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 preemptible_percentage: Optional[pulumi.Input[_builtins.int]] = None,
-                 preferred_availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 provisioning_model: Optional[pulumi.Input[_builtins.str]] = None,
-                 revert_to_preemptibles: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupRevertToPreemptibleArgs']]]] = None,
-                 scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]] = None,
-                 scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]]] = None,
-                 scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScheduledTaskArgs']]]] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 shielded_instance_config: Optional[pulumi.Input['ElastigroupShieldedInstanceConfigArgs']] = None,
-                 should_utilize_commitments: Optional[pulumi.Input[_builtins.bool]] = None,
-                 shutdown_script: Optional[pulumi.Input[_builtins.str]] = None,
-                 startup_script: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnets: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupSubnetArgs']]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 unhealthy_duration: Optional[pulumi.Input[_builtins.int]] = None):
+                 auto_healing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 availability_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 backend_services: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupBackendServiceArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 disks: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupDiskArgs']]]] = None,
+                 draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 fallback_to_ondemand: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gpu: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupGpuArgs']]]] = None,
+                 health_check_grace_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_types_customs: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupInstanceTypesCustomArgs']]]] = None,
+                 instance_types_ondemand: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_types_preemptibles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 integration_docker_swarm: pulumi.Input[Optional['ElastigroupIntegrationDockerSwarmArgs']] = None,
+                 integration_gke: pulumi.Input[Optional['ElastigroupIntegrationGkeArgs']] = None,
+                 ip_forwarding: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupLabelArgs']]]] = None,
+                 max_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 metadatas: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupMetadataArgs']]]] = None,
+                 min_cpu_platform: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupNetworkInterfaceArgs']]]] = None,
+                 ondemand_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 optimization_windows: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 preemptible_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+                 preferred_availability_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 provisioning_model: pulumi.Input[Optional[_builtins.str]] = None,
+                 revert_to_preemptibles: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupRevertToPreemptibleArgs']]]] = None,
+                 scaling_down_policies: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]] = None,
+                 scaling_up_policies: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]]] = None,
+                 scheduled_tasks: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupScheduledTaskArgs']]]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 shielded_instance_config: pulumi.Input[Optional['ElastigroupShieldedInstanceConfigArgs']] = None,
+                 should_utilize_commitments: pulumi.Input[Optional[_builtins.bool]] = None,
+                 shutdown_script: pulumi.Input[Optional[_builtins.str]] = None,
+                 startup_script: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnets: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupSubnetArgs']]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 unhealthy_duration: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Elastigroup resources.
 
@@ -817,122 +817,122 @@ class _ElastigroupState:
 
     @_builtins.property
     @pulumi.getter(name="autoHealing")
-    def auto_healing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_healing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "auto_healing")
 
     @auto_healing.setter
-    def auto_healing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_healing(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_healing", value)
 
     @_builtins.property
     @pulumi.getter(name="availabilityZones")
     @_utilities.deprecated("""This field will soon be handled by Region in Subnets""")
-    def availability_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def availability_zones(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of availability zones for the group.
         """
         return pulumi.get(self, "availability_zones")
 
     @availability_zones.setter
-    def availability_zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def availability_zones(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "availability_zones", value)
 
     @_builtins.property
     @pulumi.getter(name="backendServices")
-    def backend_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupBackendServiceArgs']]]]:
+    def backend_services(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupBackendServiceArgs']]]]:
         return pulumi.get(self, "backend_services")
 
     @backend_services.setter
-    def backend_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupBackendServiceArgs']]]]):
+    def backend_services(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupBackendServiceArgs']]]]):
         pulumi.set(self, "backend_services", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region your GCP group will be created in.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredCapacity")
-    def desired_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def desired_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The desired number of instances the group should have at any time.
         """
         return pulumi.get(self, "desired_capacity")
 
     @desired_capacity.setter
-    def desired_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def desired_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "desired_capacity", value)
 
     @_builtins.property
     @pulumi.getter
-    def disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupDiskArgs']]]]:
+    def disks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupDiskArgs']]]]:
         return pulumi.get(self, "disks")
 
     @disks.setter
-    def disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupDiskArgs']]]]):
+    def disks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupDiskArgs']]]]):
         pulumi.set(self, "disks", value)
 
     @_builtins.property
     @pulumi.getter(name="drainingTimeout")
-    def draining_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def draining_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Time (seconds) the instance is allowed to run after it is detached from the group. This is to allow the instance time to drain all the current TCP connections before terminating it.
         """
         return pulumi.get(self, "draining_timeout")
 
     @draining_timeout.setter
-    def draining_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def draining_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "draining_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="fallbackToOndemand")
-    def fallback_to_ondemand(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def fallback_to_ondemand(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Activate fallback-to-on-demand. When provisioning an instance, if no Preemptible market is available, fallback-to-on-demand will provision an On-Demand instance to maintain the group capacity.
         """
         return pulumi.get(self, "fallback_to_ondemand")
 
     @fallback_to_ondemand.setter
-    def fallback_to_ondemand(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def fallback_to_ondemand(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "fallback_to_ondemand", value)
 
     @_builtins.property
     @pulumi.getter
-    def gpu(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupGpuArgs']]]]:
+    def gpu(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupGpuArgs']]]]:
         return pulumi.get(self, "gpu")
 
     @gpu.setter
-    def gpu(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupGpuArgs']]]]):
+    def gpu(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupGpuArgs']]]]):
         pulumi.set(self, "gpu", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckGracePeriod")
-    def health_check_grace_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def health_check_grace_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "health_check_grace_period")
 
     @health_check_grace_period.setter
-    def health_check_grace_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def health_check_grace_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "health_check_grace_period", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckType")
-    def health_check_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "health_check_type")
 
     @health_check_type.setter
-    def health_check_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_type", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceNamePrefix")
-    def instance_name_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
         * A maximal length of 25 characters.
@@ -941,12 +941,12 @@ class _ElastigroupState:
         return pulumi.get(self, "instance_name_prefix")
 
     @instance_name_prefix.setter
-    def instance_name_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceTypesCustoms")
-    def instance_types_customs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupInstanceTypesCustomArgs']]]]:
+    def instance_types_customs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupInstanceTypesCustomArgs']]]]:
         """
         Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
         * `vCPU` - (Optional) The number of vCPUs in the custom instance type. GCP has a number of limitations on accepted vCPU values. For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
@@ -954,328 +954,328 @@ class _ElastigroupState:
         return pulumi.get(self, "instance_types_customs")
 
     @instance_types_customs.setter
-    def instance_types_customs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupInstanceTypesCustomArgs']]]]):
+    def instance_types_customs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupInstanceTypesCustomArgs']]]]):
         pulumi.set(self, "instance_types_customs", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceTypesOndemand")
-    def instance_types_ondemand(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_types_ondemand(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The regular VM instance type to use for mixed-type groups and when falling back to on-demand. Required if instance_types_preemptible is not set.
         """
         return pulumi.get(self, "instance_types_ondemand")
 
     @instance_types_ondemand.setter
-    def instance_types_ondemand(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_types_ondemand(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_types_ondemand", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceTypesPreemptibles")
-    def instance_types_preemptibles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def instance_types_preemptibles(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The preemptible VMs instance type. To maximize cost savings and market availability, select as many types as possible. Required if instance_types_ondemand is not set.
         """
         return pulumi.get(self, "instance_types_preemptibles")
 
     @instance_types_preemptibles.setter
-    def instance_types_preemptibles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def instance_types_preemptibles(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "instance_types_preemptibles", value)
 
     @_builtins.property
     @pulumi.getter(name="integrationDockerSwarm")
-    def integration_docker_swarm(self) -> Optional[pulumi.Input['ElastigroupIntegrationDockerSwarmArgs']]:
+    def integration_docker_swarm(self) -> pulumi.Input[Optional['ElastigroupIntegrationDockerSwarmArgs']]:
         return pulumi.get(self, "integration_docker_swarm")
 
     @integration_docker_swarm.setter
-    def integration_docker_swarm(self, value: Optional[pulumi.Input['ElastigroupIntegrationDockerSwarmArgs']]):
+    def integration_docker_swarm(self, value: pulumi.Input[Optional['ElastigroupIntegrationDockerSwarmArgs']]):
         pulumi.set(self, "integration_docker_swarm", value)
 
     @_builtins.property
     @pulumi.getter(name="integrationGke")
-    def integration_gke(self) -> Optional[pulumi.Input['ElastigroupIntegrationGkeArgs']]:
+    def integration_gke(self) -> pulumi.Input[Optional['ElastigroupIntegrationGkeArgs']]:
         return pulumi.get(self, "integration_gke")
 
     @integration_gke.setter
-    def integration_gke(self, value: Optional[pulumi.Input['ElastigroupIntegrationGkeArgs']]):
+    def integration_gke(self, value: pulumi.Input[Optional['ElastigroupIntegrationGkeArgs']]):
         pulumi.set(self, "integration_gke", value)
 
     @_builtins.property
     @pulumi.getter(name="ipForwarding")
-    def ip_forwarding(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ip_forwarding(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "ip_forwarding")
 
     @ip_forwarding.setter
-    def ip_forwarding(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ip_forwarding(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ip_forwarding", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupLabelArgs']]]]:
+    def labels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupLabelArgs']]]]:
         """
         Array of objects with key-value pairs.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupLabelArgs']]]]):
+    def labels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupLabelArgs']]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="maxSize")
-    def max_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of instances the group should have at any time.
         """
         return pulumi.get(self, "max_size")
 
     @max_size.setter
-    def max_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_size", value)
 
     @_builtins.property
     @pulumi.getter
-    def metadatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupMetadataArgs']]]]:
+    def metadatas(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupMetadataArgs']]]]:
         """
         Array of objects with key-value pairs.
         """
         return pulumi.get(self, "metadatas")
 
     @metadatas.setter
-    def metadatas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupMetadataArgs']]]]):
+    def metadatas(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupMetadataArgs']]]]):
         pulumi.set(self, "metadatas", value)
 
     @_builtins.property
     @pulumi.getter(name="minCpuPlatform")
-    def min_cpu_platform(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def min_cpu_platform(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Select a minimum CPU platform for the compute instance.
         """
         return pulumi.get(self, "min_cpu_platform")
 
     @min_cpu_platform.setter
-    def min_cpu_platform(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def min_cpu_platform(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "min_cpu_platform", value)
 
     @_builtins.property
     @pulumi.getter(name="minSize")
-    def min_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum number of instances the group should have at any time.
         """
         return pulumi.get(self, "min_size")
 
     @min_size.setter
-    def min_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_size", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The group name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkInterfaces")
-    def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceArgs']]]]:
+    def network_interfaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupNetworkInterfaceArgs']]]]:
         return pulumi.get(self, "network_interfaces")
 
     @network_interfaces.setter
-    def network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceArgs']]]]):
+    def network_interfaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupNetworkInterfaceArgs']]]]):
         pulumi.set(self, "network_interfaces", value)
 
     @_builtins.property
     @pulumi.getter(name="ondemandCount")
-    def ondemand_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ondemand_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "ondemand_count")
 
     @ondemand_count.setter
-    def ondemand_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ondemand_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ondemand_count", value)
 
     @_builtins.property
     @pulumi.getter(name="optimizationWindows")
-    def optimization_windows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def optimization_windows(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Set time window to perform the revert to preemptible. Time windows must be at least 120 minutes. Format: DayInWeek:HH-DayInWeek:HH. Required when strategy.revertToPreemptible.performAt is 'timeWindow'.
         """
         return pulumi.get(self, "optimization_windows")
 
     @optimization_windows.setter
-    def optimization_windows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def optimization_windows(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "optimization_windows", value)
 
     @_builtins.property
     @pulumi.getter(name="preemptiblePercentage")
-    def preemptible_percentage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def preemptible_percentage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Percentage of Preemptible VMs to spin up from the "desired_capacity".
         """
         return pulumi.get(self, "preemptible_percentage")
 
     @preemptible_percentage.setter
-    def preemptible_percentage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def preemptible_percentage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "preemptible_percentage", value)
 
     @_builtins.property
     @pulumi.getter(name="preferredAvailabilityZones")
-    def preferred_availability_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def preferred_availability_zones(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         prioritize availability zones when launching instances for the group. Must be a sublist of `availability_zones`.
         """
         return pulumi.get(self, "preferred_availability_zones")
 
     @preferred_availability_zones.setter
-    def preferred_availability_zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def preferred_availability_zones(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "preferred_availability_zones", value)
 
     @_builtins.property
     @pulumi.getter(name="provisioningModel")
-    def provisioning_model(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def provisioning_model(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
         """
         return pulumi.get(self, "provisioning_model")
 
     @provisioning_model.setter
-    def provisioning_model(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def provisioning_model(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "provisioning_model", value)
 
     @_builtins.property
     @pulumi.getter(name="revertToPreemptibles")
-    def revert_to_preemptibles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupRevertToPreemptibleArgs']]]]:
+    def revert_to_preemptibles(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupRevertToPreemptibleArgs']]]]:
         """
         Setting for revert to preemptible option.
         """
         return pulumi.get(self, "revert_to_preemptibles")
 
     @revert_to_preemptibles.setter
-    def revert_to_preemptibles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupRevertToPreemptibleArgs']]]]):
+    def revert_to_preemptibles(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupRevertToPreemptibleArgs']]]]):
         pulumi.set(self, "revert_to_preemptibles", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingDownPolicies")
-    def scaling_down_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]]:
+    def scaling_down_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]]:
         return pulumi.get(self, "scaling_down_policies")
 
     @scaling_down_policies.setter
-    def scaling_down_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]]):
+    def scaling_down_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]]):
         pulumi.set(self, "scaling_down_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingUpPolicies")
-    def scaling_up_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]]]:
+    def scaling_up_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]]]:
         return pulumi.get(self, "scaling_up_policies")
 
     @scaling_up_policies.setter
-    def scaling_up_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]]]):
+    def scaling_up_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]]]):
         pulumi.set(self, "scaling_up_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduledTasks")
-    def scheduled_tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScheduledTaskArgs']]]]:
+    def scheduled_tasks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupScheduledTaskArgs']]]]:
         return pulumi.get(self, "scheduled_tasks")
 
     @scheduled_tasks.setter
-    def scheduled_tasks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScheduledTaskArgs']]]]):
+    def scheduled_tasks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupScheduledTaskArgs']]]]):
         pulumi.set(self, "scheduled_tasks", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The email of the service account in which the group instances will be launched.
         """
         return pulumi.get(self, "service_account")
 
     @service_account.setter
-    def service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="shieldedInstanceConfig")
-    def shielded_instance_config(self) -> Optional[pulumi.Input['ElastigroupShieldedInstanceConfigArgs']]:
+    def shielded_instance_config(self) -> pulumi.Input[Optional['ElastigroupShieldedInstanceConfigArgs']]:
         """
         You can use secure boot when you launch VMs using Elastigroup. This helps you comply with your security policies. In the instance configuration, use ‘secureBootEnabled’ set to True to enforce UEFI with secure boot. Elastigroup provisions VMs with secure boot, as long as the images supports UEFI.
         """
         return pulumi.get(self, "shielded_instance_config")
 
     @shielded_instance_config.setter
-    def shielded_instance_config(self, value: Optional[pulumi.Input['ElastigroupShieldedInstanceConfigArgs']]):
+    def shielded_instance_config(self, value: pulumi.Input[Optional['ElastigroupShieldedInstanceConfigArgs']]):
         pulumi.set(self, "shielded_instance_config", value)
 
     @_builtins.property
     @pulumi.getter(name="shouldUtilizeCommitments")
-    def should_utilize_commitments(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def should_utilize_commitments(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable committed use discounts utilization.
         """
         return pulumi.get(self, "should_utilize_commitments")
 
     @should_utilize_commitments.setter
-    def should_utilize_commitments(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def should_utilize_commitments(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "should_utilize_commitments", value)
 
     @_builtins.property
     @pulumi.getter(name="shutdownScript")
-    def shutdown_script(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def shutdown_script(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
         """
         return pulumi.get(self, "shutdown_script")
 
     @shutdown_script.setter
-    def shutdown_script(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def shutdown_script(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "shutdown_script", value)
 
     @_builtins.property
     @pulumi.getter(name="startupScript")
-    def startup_script(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def startup_script(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Create and run your own startup scripts on your virtual machines to perform automated tasks every time your instance boots up.
         """
         return pulumi.get(self, "startup_script")
 
     @startup_script.setter
-    def startup_script(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def startup_script(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "startup_script", value)
 
     @_builtins.property
     @pulumi.getter
-    def subnets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupSubnetArgs']]]]:
+    def subnets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupSubnetArgs']]]]:
         """
         A list of regions and subnets.
         """
         return pulumi.get(self, "subnets")
 
     @subnets.setter
-    def subnets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupSubnetArgs']]]]):
+    def subnets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupSubnetArgs']]]]):
         pulumi.set(self, "subnets", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to mark created instances.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="unhealthyDuration")
-    def unhealthy_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def unhealthy_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "unhealthy_duration")
 
     @unhealthy_duration.setter
-    def unhealthy_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def unhealthy_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "unhealthy_duration", value)
 
 
@@ -1285,48 +1285,48 @@ class Elastigroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_healing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 backend_services: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupBackendServiceArgs', 'ElastigroupBackendServiceArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupDiskArgs', 'ElastigroupDiskArgsDict']]]]] = None,
-                 draining_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 fallback_to_ondemand: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gpu: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupGpuArgs', 'ElastigroupGpuArgsDict']]]]] = None,
-                 health_check_grace_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_types_customs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupInstanceTypesCustomArgs', 'ElastigroupInstanceTypesCustomArgsDict']]]]] = None,
-                 instance_types_ondemand: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_types_preemptibles: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 integration_docker_swarm: Optional[pulumi.Input[Union['ElastigroupIntegrationDockerSwarmArgs', 'ElastigroupIntegrationDockerSwarmArgsDict']]] = None,
-                 integration_gke: Optional[pulumi.Input[Union['ElastigroupIntegrationGkeArgs', 'ElastigroupIntegrationGkeArgsDict']]] = None,
-                 ip_forwarding: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupLabelArgs', 'ElastigroupLabelArgsDict']]]]] = None,
-                 max_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupMetadataArgs', 'ElastigroupMetadataArgsDict']]]]] = None,
-                 min_cpu_platform: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupNetworkInterfaceArgs', 'ElastigroupNetworkInterfaceArgsDict']]]]] = None,
-                 ondemand_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 optimization_windows: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 preemptible_percentage: Optional[pulumi.Input[_builtins.int]] = None,
-                 preferred_availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 provisioning_model: Optional[pulumi.Input[_builtins.str]] = None,
-                 revert_to_preemptibles: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupRevertToPreemptibleArgs', 'ElastigroupRevertToPreemptibleArgsDict']]]]] = None,
-                 scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingDownPolicyArgs', 'ElastigroupScalingDownPolicyArgsDict']]]]] = None,
-                 scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingUpPolicyArgs', 'ElastigroupScalingUpPolicyArgsDict']]]]] = None,
-                 scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScheduledTaskArgs', 'ElastigroupScheduledTaskArgsDict']]]]] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 shielded_instance_config: Optional[pulumi.Input[Union['ElastigroupShieldedInstanceConfigArgs', 'ElastigroupShieldedInstanceConfigArgsDict']]] = None,
-                 should_utilize_commitments: Optional[pulumi.Input[_builtins.bool]] = None,
-                 shutdown_script: Optional[pulumi.Input[_builtins.str]] = None,
-                 startup_script: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupSubnetArgs', 'ElastigroupSubnetArgsDict']]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 unhealthy_duration: Optional[pulumi.Input[_builtins.int]] = None,
+                 auto_healing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 availability_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 backend_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupBackendServiceArgs', 'ElastigroupBackendServiceArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupDiskArgs', 'ElastigroupDiskArgsDict']]]]] = None,
+                 draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 fallback_to_ondemand: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gpu: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupGpuArgs', 'ElastigroupGpuArgsDict']]]]] = None,
+                 health_check_grace_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_types_customs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupInstanceTypesCustomArgs', 'ElastigroupInstanceTypesCustomArgsDict']]]]] = None,
+                 instance_types_ondemand: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_types_preemptibles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 integration_docker_swarm: pulumi.Input[Optional[Union['ElastigroupIntegrationDockerSwarmArgs', 'ElastigroupIntegrationDockerSwarmArgsDict']]] = None,
+                 integration_gke: pulumi.Input[Optional[Union['ElastigroupIntegrationGkeArgs', 'ElastigroupIntegrationGkeArgsDict']]] = None,
+                 ip_forwarding: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupLabelArgs', 'ElastigroupLabelArgsDict']]]]] = None,
+                 max_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 metadatas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupMetadataArgs', 'ElastigroupMetadataArgsDict']]]]] = None,
+                 min_cpu_platform: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupNetworkInterfaceArgs', 'ElastigroupNetworkInterfaceArgsDict']]]]] = None,
+                 ondemand_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 optimization_windows: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 preemptible_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+                 preferred_availability_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 provisioning_model: pulumi.Input[Optional[_builtins.str]] = None,
+                 revert_to_preemptibles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupRevertToPreemptibleArgs', 'ElastigroupRevertToPreemptibleArgsDict']]]]] = None,
+                 scaling_down_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupScalingDownPolicyArgs', 'ElastigroupScalingDownPolicyArgsDict']]]]] = None,
+                 scaling_up_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupScalingUpPolicyArgs', 'ElastigroupScalingUpPolicyArgsDict']]]]] = None,
+                 scheduled_tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupScheduledTaskArgs', 'ElastigroupScheduledTaskArgsDict']]]]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 shielded_instance_config: pulumi.Input[Optional[Union['ElastigroupShieldedInstanceConfigArgs', 'ElastigroupShieldedInstanceConfigArgsDict']]] = None,
+                 should_utilize_commitments: pulumi.Input[Optional[_builtins.bool]] = None,
+                 shutdown_script: pulumi.Input[Optional[_builtins.str]] = None,
+                 startup_script: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupSubnetArgs', 'ElastigroupSubnetArgsDict']]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 unhealthy_duration: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a Spotinst elastigroup GCP resource.
@@ -1425,7 +1425,7 @@ class Elastigroup(pulumi.CustomResource):
                 "namespace": "compute",
                 "statistic": "average",
                 "unit": "percent",
-                "threshold": 10000,
+                "threshold": float(10000),
                 "period": 300,
                 "cooldown": 300,
                 "operator": "gte",
@@ -1576,7 +1576,7 @@ class Elastigroup(pulumi.CustomResource):
                 "namespace": "compute",
                 "statistic": "average",
                 "unit": "percent",
-                "threshold": 10000,
+                "threshold": float(10000),
                 "period": 300,
                 "cooldown": 300,
                 "operator": "gte",
@@ -1606,48 +1606,48 @@ class Elastigroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_healing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 backend_services: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupBackendServiceArgs', 'ElastigroupBackendServiceArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupDiskArgs', 'ElastigroupDiskArgsDict']]]]] = None,
-                 draining_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 fallback_to_ondemand: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gpu: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupGpuArgs', 'ElastigroupGpuArgsDict']]]]] = None,
-                 health_check_grace_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_types_customs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupInstanceTypesCustomArgs', 'ElastigroupInstanceTypesCustomArgsDict']]]]] = None,
-                 instance_types_ondemand: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_types_preemptibles: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 integration_docker_swarm: Optional[pulumi.Input[Union['ElastigroupIntegrationDockerSwarmArgs', 'ElastigroupIntegrationDockerSwarmArgsDict']]] = None,
-                 integration_gke: Optional[pulumi.Input[Union['ElastigroupIntegrationGkeArgs', 'ElastigroupIntegrationGkeArgsDict']]] = None,
-                 ip_forwarding: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupLabelArgs', 'ElastigroupLabelArgsDict']]]]] = None,
-                 max_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupMetadataArgs', 'ElastigroupMetadataArgsDict']]]]] = None,
-                 min_cpu_platform: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupNetworkInterfaceArgs', 'ElastigroupNetworkInterfaceArgsDict']]]]] = None,
-                 ondemand_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 optimization_windows: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 preemptible_percentage: Optional[pulumi.Input[_builtins.int]] = None,
-                 preferred_availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 provisioning_model: Optional[pulumi.Input[_builtins.str]] = None,
-                 revert_to_preemptibles: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupRevertToPreemptibleArgs', 'ElastigroupRevertToPreemptibleArgsDict']]]]] = None,
-                 scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingDownPolicyArgs', 'ElastigroupScalingDownPolicyArgsDict']]]]] = None,
-                 scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingUpPolicyArgs', 'ElastigroupScalingUpPolicyArgsDict']]]]] = None,
-                 scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScheduledTaskArgs', 'ElastigroupScheduledTaskArgsDict']]]]] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 shielded_instance_config: Optional[pulumi.Input[Union['ElastigroupShieldedInstanceConfigArgs', 'ElastigroupShieldedInstanceConfigArgsDict']]] = None,
-                 should_utilize_commitments: Optional[pulumi.Input[_builtins.bool]] = None,
-                 shutdown_script: Optional[pulumi.Input[_builtins.str]] = None,
-                 startup_script: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupSubnetArgs', 'ElastigroupSubnetArgsDict']]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 unhealthy_duration: Optional[pulumi.Input[_builtins.int]] = None,
+                 auto_healing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 availability_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 backend_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupBackendServiceArgs', 'ElastigroupBackendServiceArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupDiskArgs', 'ElastigroupDiskArgsDict']]]]] = None,
+                 draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 fallback_to_ondemand: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gpu: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupGpuArgs', 'ElastigroupGpuArgsDict']]]]] = None,
+                 health_check_grace_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_types_customs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupInstanceTypesCustomArgs', 'ElastigroupInstanceTypesCustomArgsDict']]]]] = None,
+                 instance_types_ondemand: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_types_preemptibles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 integration_docker_swarm: pulumi.Input[Optional[Union['ElastigroupIntegrationDockerSwarmArgs', 'ElastigroupIntegrationDockerSwarmArgsDict']]] = None,
+                 integration_gke: pulumi.Input[Optional[Union['ElastigroupIntegrationGkeArgs', 'ElastigroupIntegrationGkeArgsDict']]] = None,
+                 ip_forwarding: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupLabelArgs', 'ElastigroupLabelArgsDict']]]]] = None,
+                 max_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 metadatas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupMetadataArgs', 'ElastigroupMetadataArgsDict']]]]] = None,
+                 min_cpu_platform: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupNetworkInterfaceArgs', 'ElastigroupNetworkInterfaceArgsDict']]]]] = None,
+                 ondemand_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 optimization_windows: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 preemptible_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+                 preferred_availability_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 provisioning_model: pulumi.Input[Optional[_builtins.str]] = None,
+                 revert_to_preemptibles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupRevertToPreemptibleArgs', 'ElastigroupRevertToPreemptibleArgsDict']]]]] = None,
+                 scaling_down_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupScalingDownPolicyArgs', 'ElastigroupScalingDownPolicyArgsDict']]]]] = None,
+                 scaling_up_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupScalingUpPolicyArgs', 'ElastigroupScalingUpPolicyArgsDict']]]]] = None,
+                 scheduled_tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupScheduledTaskArgs', 'ElastigroupScheduledTaskArgsDict']]]]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 shielded_instance_config: pulumi.Input[Optional[Union['ElastigroupShieldedInstanceConfigArgs', 'ElastigroupShieldedInstanceConfigArgsDict']]] = None,
+                 should_utilize_commitments: pulumi.Input[Optional[_builtins.bool]] = None,
+                 shutdown_script: pulumi.Input[Optional[_builtins.str]] = None,
+                 startup_script: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupSubnetArgs', 'ElastigroupSubnetArgsDict']]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 unhealthy_duration: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1711,48 +1711,48 @@ class Elastigroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_healing: Optional[pulumi.Input[_builtins.bool]] = None,
-            availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            backend_services: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupBackendServiceArgs', 'ElastigroupBackendServiceArgsDict']]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            desired_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-            disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupDiskArgs', 'ElastigroupDiskArgsDict']]]]] = None,
-            draining_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            fallback_to_ondemand: Optional[pulumi.Input[_builtins.bool]] = None,
-            gpu: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupGpuArgs', 'ElastigroupGpuArgsDict']]]]] = None,
-            health_check_grace_period: Optional[pulumi.Input[_builtins.int]] = None,
-            health_check_type: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_types_customs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupInstanceTypesCustomArgs', 'ElastigroupInstanceTypesCustomArgsDict']]]]] = None,
-            instance_types_ondemand: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_types_preemptibles: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            integration_docker_swarm: Optional[pulumi.Input[Union['ElastigroupIntegrationDockerSwarmArgs', 'ElastigroupIntegrationDockerSwarmArgsDict']]] = None,
-            integration_gke: Optional[pulumi.Input[Union['ElastigroupIntegrationGkeArgs', 'ElastigroupIntegrationGkeArgsDict']]] = None,
-            ip_forwarding: Optional[pulumi.Input[_builtins.bool]] = None,
-            labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupLabelArgs', 'ElastigroupLabelArgsDict']]]]] = None,
-            max_size: Optional[pulumi.Input[_builtins.int]] = None,
-            metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupMetadataArgs', 'ElastigroupMetadataArgsDict']]]]] = None,
-            min_cpu_platform: Optional[pulumi.Input[_builtins.str]] = None,
-            min_size: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupNetworkInterfaceArgs', 'ElastigroupNetworkInterfaceArgsDict']]]]] = None,
-            ondemand_count: Optional[pulumi.Input[_builtins.int]] = None,
-            optimization_windows: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            preemptible_percentage: Optional[pulumi.Input[_builtins.int]] = None,
-            preferred_availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            provisioning_model: Optional[pulumi.Input[_builtins.str]] = None,
-            revert_to_preemptibles: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupRevertToPreemptibleArgs', 'ElastigroupRevertToPreemptibleArgsDict']]]]] = None,
-            scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingDownPolicyArgs', 'ElastigroupScalingDownPolicyArgsDict']]]]] = None,
-            scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScalingUpPolicyArgs', 'ElastigroupScalingUpPolicyArgsDict']]]]] = None,
-            scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupScheduledTaskArgs', 'ElastigroupScheduledTaskArgsDict']]]]] = None,
-            service_account: Optional[pulumi.Input[_builtins.str]] = None,
-            shielded_instance_config: Optional[pulumi.Input[Union['ElastigroupShieldedInstanceConfigArgs', 'ElastigroupShieldedInstanceConfigArgsDict']]] = None,
-            should_utilize_commitments: Optional[pulumi.Input[_builtins.bool]] = None,
-            shutdown_script: Optional[pulumi.Input[_builtins.str]] = None,
-            startup_script: Optional[pulumi.Input[_builtins.str]] = None,
-            subnets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupSubnetArgs', 'ElastigroupSubnetArgsDict']]]]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            unhealthy_duration: Optional[pulumi.Input[_builtins.int]] = None) -> 'Elastigroup':
+            auto_healing: pulumi.Input[Optional[_builtins.bool]] = None,
+            availability_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            backend_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupBackendServiceArgs', 'ElastigroupBackendServiceArgsDict']]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+            disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupDiskArgs', 'ElastigroupDiskArgsDict']]]]] = None,
+            draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            fallback_to_ondemand: pulumi.Input[Optional[_builtins.bool]] = None,
+            gpu: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupGpuArgs', 'ElastigroupGpuArgsDict']]]]] = None,
+            health_check_grace_period: pulumi.Input[Optional[_builtins.int]] = None,
+            health_check_type: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_types_customs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupInstanceTypesCustomArgs', 'ElastigroupInstanceTypesCustomArgsDict']]]]] = None,
+            instance_types_ondemand: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_types_preemptibles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            integration_docker_swarm: pulumi.Input[Optional[Union['ElastigroupIntegrationDockerSwarmArgs', 'ElastigroupIntegrationDockerSwarmArgsDict']]] = None,
+            integration_gke: pulumi.Input[Optional[Union['ElastigroupIntegrationGkeArgs', 'ElastigroupIntegrationGkeArgsDict']]] = None,
+            ip_forwarding: pulumi.Input[Optional[_builtins.bool]] = None,
+            labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupLabelArgs', 'ElastigroupLabelArgsDict']]]]] = None,
+            max_size: pulumi.Input[Optional[_builtins.int]] = None,
+            metadatas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupMetadataArgs', 'ElastigroupMetadataArgsDict']]]]] = None,
+            min_cpu_platform: pulumi.Input[Optional[_builtins.str]] = None,
+            min_size: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupNetworkInterfaceArgs', 'ElastigroupNetworkInterfaceArgsDict']]]]] = None,
+            ondemand_count: pulumi.Input[Optional[_builtins.int]] = None,
+            optimization_windows: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            preemptible_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+            preferred_availability_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            provisioning_model: pulumi.Input[Optional[_builtins.str]] = None,
+            revert_to_preemptibles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupRevertToPreemptibleArgs', 'ElastigroupRevertToPreemptibleArgsDict']]]]] = None,
+            scaling_down_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupScalingDownPolicyArgs', 'ElastigroupScalingDownPolicyArgsDict']]]]] = None,
+            scaling_up_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupScalingUpPolicyArgs', 'ElastigroupScalingUpPolicyArgsDict']]]]] = None,
+            scheduled_tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupScheduledTaskArgs', 'ElastigroupScheduledTaskArgsDict']]]]] = None,
+            service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            shielded_instance_config: pulumi.Input[Optional[Union['ElastigroupShieldedInstanceConfigArgs', 'ElastigroupShieldedInstanceConfigArgsDict']]] = None,
+            should_utilize_commitments: pulumi.Input[Optional[_builtins.bool]] = None,
+            shutdown_script: pulumi.Input[Optional[_builtins.str]] = None,
+            startup_script: pulumi.Input[Optional[_builtins.str]] = None,
+            subnets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupSubnetArgs', 'ElastigroupSubnetArgsDict']]]]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            unhealthy_duration: pulumi.Input[Optional[_builtins.int]] = None) -> 'Elastigroup':
         """
         Get an existing Elastigroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

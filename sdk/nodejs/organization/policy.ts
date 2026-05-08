@@ -119,15 +119,15 @@ export interface PolicyState {
     /**
      * Short description of policy.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the Policy.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Set permissions objects list.
      */
-    policyContents?: pulumi.Input<pulumi.Input<inputs.organization.PolicyPolicyContent>[]>;
+    policyContents?: pulumi.Input<pulumi.Input<inputs.organization.PolicyPolicyContent>[] | undefined>;
 }
 
 /**
@@ -137,11 +137,11 @@ export interface PolicyArgs {
     /**
      * Short description of policy.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the Policy.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Set permissions objects list.
      */

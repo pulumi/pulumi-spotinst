@@ -21,9 +21,9 @@ __all__ = ['DataIntegrationArgs', 'DataIntegration']
 @pulumi.input_type
 class DataIntegrationArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 s3: Optional[pulumi.Input['DataIntegrationS3Args']] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 s3: pulumi.Input[Optional['DataIntegrationS3Args']] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DataIntegration resource.
 
@@ -41,19 +41,19 @@ class DataIntegrationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the data integration.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def s3(self) -> Optional[pulumi.Input['DataIntegrationS3Args']]:
+    def s3(self) -> pulumi.Input[Optional['DataIntegrationS3Args']]:
         """
         When vendor value is s3, the following fields are included:
         * `bucketName` - (Required) The name of the bucket to use. Your spot IAM Role policy needs to include s3:putObject permissions for this bucket. Can't be null.
@@ -61,28 +61,28 @@ class DataIntegrationArgs:
         return pulumi.get(self, "s3")
 
     @s3.setter
-    def s3(self, value: Optional[pulumi.Input['DataIntegrationS3Args']]):
+    def s3(self, value: pulumi.Input[Optional['DataIntegrationS3Args']]):
         pulumi.set(self, "s3", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Determines if this data integration is on or off. Valid values: `"enabled"`, `"disabled"`
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
 @pulumi.input_type
 class _DataIntegrationState:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 s3: Optional[pulumi.Input['DataIntegrationS3Args']] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 s3: pulumi.Input[Optional['DataIntegrationS3Args']] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DataIntegration resources.
 
@@ -100,19 +100,19 @@ class _DataIntegrationState:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the data integration.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def s3(self) -> Optional[pulumi.Input['DataIntegrationS3Args']]:
+    def s3(self) -> pulumi.Input[Optional['DataIntegrationS3Args']]:
         """
         When vendor value is s3, the following fields are included:
         * `bucketName` - (Required) The name of the bucket to use. Your spot IAM Role policy needs to include s3:putObject permissions for this bucket. Can't be null.
@@ -120,19 +120,19 @@ class _DataIntegrationState:
         return pulumi.get(self, "s3")
 
     @s3.setter
-    def s3(self, value: Optional[pulumi.Input['DataIntegrationS3Args']]):
+    def s3(self, value: pulumi.Input[Optional['DataIntegrationS3Args']]):
         pulumi.set(self, "s3", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Determines if this data integration is on or off. Valid values: `"enabled"`, `"disabled"`
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -142,9 +142,9 @@ class DataIntegration(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 s3: Optional[pulumi.Input[Union['DataIntegrationS3Args', 'DataIntegrationS3ArgsDict']]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 s3: pulumi.Input[Optional[Union['DataIntegrationS3Args', 'DataIntegrationS3ArgsDict']]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Spotinst Data Integration resource.
@@ -212,9 +212,9 @@ class DataIntegration(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 s3: Optional[pulumi.Input[Union['DataIntegrationS3Args', 'DataIntegrationS3ArgsDict']]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 s3: pulumi.Input[Optional[Union['DataIntegrationS3Args', 'DataIntegrationS3ArgsDict']]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -237,9 +237,9 @@ class DataIntegration(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            s3: Optional[pulumi.Input[Union['DataIntegrationS3Args', 'DataIntegrationS3ArgsDict']]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'DataIntegration':
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            s3: pulumi.Input[Optional[Union['DataIntegrationS3Args', 'DataIntegrationS3ArgsDict']]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'DataIntegration':
         """
         Get an existing DataIntegration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

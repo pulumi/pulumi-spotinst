@@ -23,22 +23,22 @@ class OceanImportArgs:
     def __init__(__self__, *,
                  cluster_name: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
-                 auto_updates: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportAutoUpdateArgs']]]] = None,
-                 autoscaler: Optional[pulumi.Input['OceanImportAutoscalerArgs']] = None,
-                 backend_services: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportBackendServiceArgs']]]] = None,
-                 blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 controller_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 filters: Optional[pulumi.Input['OceanImportFiltersArgs']] = None,
-                 max_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 root_volume_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportScheduledTaskArgs']]]] = None,
-                 shielded_instance_config: Optional[pulumi.Input['OceanImportShieldedInstanceConfigArgs']] = None,
-                 strategies: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportStrategyArgs']]]] = None,
-                 update_policy: Optional[pulumi.Input['OceanImportUpdatePolicyArgs']] = None,
-                 use_as_template_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 auto_updates: pulumi.Input[Optional[Sequence[pulumi.Input['OceanImportAutoUpdateArgs']]]] = None,
+                 autoscaler: pulumi.Input[Optional['OceanImportAutoscalerArgs']] = None,
+                 backend_services: pulumi.Input[Optional[Sequence[pulumi.Input['OceanImportBackendServiceArgs']]]] = None,
+                 blacklists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 controller_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 filters: pulumi.Input[Optional['OceanImportFiltersArgs']] = None,
+                 max_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 root_volume_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduled_tasks: pulumi.Input[Optional[Sequence[pulumi.Input['OceanImportScheduledTaskArgs']]]] = None,
+                 shielded_instance_config: pulumi.Input[Optional['OceanImportShieldedInstanceConfigArgs']] = None,
+                 strategies: pulumi.Input[Optional[Sequence[pulumi.Input['OceanImportStrategyArgs']]]] = None,
+                 update_policy: pulumi.Input[Optional['OceanImportUpdatePolicyArgs']] = None,
+                 use_as_template_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a OceanImport resource.
 
@@ -121,216 +121,216 @@ class OceanImportArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoUpdates")
-    def auto_updates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportAutoUpdateArgs']]]]:
+    def auto_updates(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanImportAutoUpdateArgs']]]]:
         """
         The Ocean Kubernetes AutoUpdate object. If set to 'true', Ocean will ensure that your clusters have an up-to-date configuration according to the respective GKE cluster.
         """
         return pulumi.get(self, "auto_updates")
 
     @auto_updates.setter
-    def auto_updates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportAutoUpdateArgs']]]]):
+    def auto_updates(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanImportAutoUpdateArgs']]]]):
         pulumi.set(self, "auto_updates", value)
 
     @_builtins.property
     @pulumi.getter
-    def autoscaler(self) -> Optional[pulumi.Input['OceanImportAutoscalerArgs']]:
+    def autoscaler(self) -> pulumi.Input[Optional['OceanImportAutoscalerArgs']]:
         """
         The Ocean Kubernetes Autoscaler object.
         """
         return pulumi.get(self, "autoscaler")
 
     @autoscaler.setter
-    def autoscaler(self, value: Optional[pulumi.Input['OceanImportAutoscalerArgs']]):
+    def autoscaler(self, value: pulumi.Input[Optional['OceanImportAutoscalerArgs']]):
         pulumi.set(self, "autoscaler", value)
 
     @_builtins.property
     @pulumi.getter(name="backendServices")
-    def backend_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportBackendServiceArgs']]]]:
+    def backend_services(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanImportBackendServiceArgs']]]]:
         """
         Describes the backend service configurations.
         """
         return pulumi.get(self, "backend_services")
 
     @backend_services.setter
-    def backend_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportBackendServiceArgs']]]]):
+    def backend_services(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanImportBackendServiceArgs']]]]):
         pulumi.set(self, "backend_services", value)
 
     @_builtins.property
     @pulumi.getter
-    def blacklists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def blacklists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Instance types to avoid launching in the Ocean cluster. Cannot be configured if whitelist list is configured.
         """
         return pulumi.get(self, "blacklists")
 
     @blacklists.setter
-    def blacklists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def blacklists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "blacklists", value)
 
     @_builtins.property
     @pulumi.getter(name="controllerClusterId")
-    def controller_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def controller_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
         """
         return pulumi.get(self, "controller_cluster_id")
 
     @controller_cluster_id.setter
-    def controller_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def controller_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "controller_cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredCapacity")
-    def desired_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def desired_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of instances to launch and maintain in the cluster.
         """
         return pulumi.get(self, "desired_capacity")
 
     @desired_capacity.setter
-    def desired_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def desired_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "desired_capacity", value)
 
     @_builtins.property
     @pulumi.getter
-    def filters(self) -> Optional[pulumi.Input['OceanImportFiltersArgs']]:
+    def filters(self) -> pulumi.Input[Optional['OceanImportFiltersArgs']]:
         """
         List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
         """
         return pulumi.get(self, "filters")
 
     @filters.setter
-    def filters(self, value: Optional[pulumi.Input['OceanImportFiltersArgs']]):
+    def filters(self, value: pulumi.Input[Optional['OceanImportFiltersArgs']]):
         pulumi.set(self, "filters", value)
 
     @_builtins.property
     @pulumi.getter(name="maxSize")
-    def max_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The upper limit of instances the cluster can scale up to.
         """
         return pulumi.get(self, "max_size")
 
     @max_size.setter
-    def max_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_size", value)
 
     @_builtins.property
     @pulumi.getter(name="minSize")
-    def min_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The lower limit of instances the cluster can scale down to.
         """
         return pulumi.get(self, "min_size")
 
     @min_size.setter
-    def min_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_size", value)
 
     @_builtins.property
     @pulumi.getter(name="rootVolumeType")
-    def root_volume_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def root_volume_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The root volume disk type.
         """
         return pulumi.get(self, "root_volume_type")
 
     @root_volume_type.setter
-    def root_volume_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def root_volume_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "root_volume_type", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduledTasks")
-    def scheduled_tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportScheduledTaskArgs']]]]:
+    def scheduled_tasks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanImportScheduledTaskArgs']]]]:
         """
         Set scheduling object.
         """
         return pulumi.get(self, "scheduled_tasks")
 
     @scheduled_tasks.setter
-    def scheduled_tasks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportScheduledTaskArgs']]]]):
+    def scheduled_tasks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanImportScheduledTaskArgs']]]]):
         pulumi.set(self, "scheduled_tasks", value)
 
     @_builtins.property
     @pulumi.getter(name="shieldedInstanceConfig")
-    def shielded_instance_config(self) -> Optional[pulumi.Input['OceanImportShieldedInstanceConfigArgs']]:
+    def shielded_instance_config(self) -> pulumi.Input[Optional['OceanImportShieldedInstanceConfigArgs']]:
         """
         The Ocean shielded instance configuration object.
         """
         return pulumi.get(self, "shielded_instance_config")
 
     @shielded_instance_config.setter
-    def shielded_instance_config(self, value: Optional[pulumi.Input['OceanImportShieldedInstanceConfigArgs']]):
+    def shielded_instance_config(self, value: pulumi.Input[Optional['OceanImportShieldedInstanceConfigArgs']]):
         pulumi.set(self, "shielded_instance_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def strategies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportStrategyArgs']]]]:
+    def strategies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanImportStrategyArgs']]]]:
         """
         Strategy object.
         """
         return pulumi.get(self, "strategies")
 
     @strategies.setter
-    def strategies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportStrategyArgs']]]]):
+    def strategies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanImportStrategyArgs']]]]):
         pulumi.set(self, "strategies", value)
 
     @_builtins.property
     @pulumi.getter(name="updatePolicy")
-    def update_policy(self) -> Optional[pulumi.Input['OceanImportUpdatePolicyArgs']]:
+    def update_policy(self) -> pulumi.Input[Optional['OceanImportUpdatePolicyArgs']]:
         return pulumi.get(self, "update_policy")
 
     @update_policy.setter
-    def update_policy(self, value: Optional[pulumi.Input['OceanImportUpdatePolicyArgs']]):
+    def update_policy(self, value: pulumi.Input[Optional['OceanImportUpdatePolicyArgs']]):
         pulumi.set(self, "update_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="useAsTemplateOnly")
-    def use_as_template_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_as_template_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         launch specification defined on the Ocean object will function only as a template for virtual node groups.
         """
         return pulumi.get(self, "use_as_template_only")
 
     @use_as_template_only.setter
-    def use_as_template_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_as_template_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_as_template_only", value)
 
     @_builtins.property
     @pulumi.getter
-    def whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def whitelists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Instance types allowed in the Ocean cluster. Cannot be configured if blacklist list is configured.
         """
         return pulumi.get(self, "whitelists")
 
     @whitelists.setter
-    def whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def whitelists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "whitelists", value)
 
 
 @pulumi.input_type
 class _OceanImportState:
     def __init__(__self__, *,
-                 auto_updates: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportAutoUpdateArgs']]]] = None,
-                 autoscaler: Optional[pulumi.Input['OceanImportAutoscalerArgs']] = None,
-                 backend_services: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportBackendServiceArgs']]]] = None,
-                 blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cluster_controller_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 controller_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 filters: Optional[pulumi.Input['OceanImportFiltersArgs']] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 root_volume_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportScheduledTaskArgs']]]] = None,
-                 shielded_instance_config: Optional[pulumi.Input['OceanImportShieldedInstanceConfigArgs']] = None,
-                 strategies: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportStrategyArgs']]]] = None,
-                 update_policy: Optional[pulumi.Input['OceanImportUpdatePolicyArgs']] = None,
-                 use_as_template_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 auto_updates: pulumi.Input[Optional[Sequence[pulumi.Input['OceanImportAutoUpdateArgs']]]] = None,
+                 autoscaler: pulumi.Input[Optional['OceanImportAutoscalerArgs']] = None,
+                 backend_services: pulumi.Input[Optional[Sequence[pulumi.Input['OceanImportBackendServiceArgs']]]] = None,
+                 blacklists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cluster_controller_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 controller_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 filters: pulumi.Input[Optional['OceanImportFiltersArgs']] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 root_volume_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduled_tasks: pulumi.Input[Optional[Sequence[pulumi.Input['OceanImportScheduledTaskArgs']]]] = None,
+                 shielded_instance_config: pulumi.Input[Optional['OceanImportShieldedInstanceConfigArgs']] = None,
+                 strategies: pulumi.Input[Optional[Sequence[pulumi.Input['OceanImportStrategyArgs']]]] = None,
+                 update_policy: pulumi.Input[Optional['OceanImportUpdatePolicyArgs']] = None,
+                 use_as_template_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering OceanImport resources.
 
@@ -393,224 +393,224 @@ class _OceanImportState:
 
     @_builtins.property
     @pulumi.getter(name="autoUpdates")
-    def auto_updates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportAutoUpdateArgs']]]]:
+    def auto_updates(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanImportAutoUpdateArgs']]]]:
         """
         The Ocean Kubernetes AutoUpdate object. If set to 'true', Ocean will ensure that your clusters have an up-to-date configuration according to the respective GKE cluster.
         """
         return pulumi.get(self, "auto_updates")
 
     @auto_updates.setter
-    def auto_updates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportAutoUpdateArgs']]]]):
+    def auto_updates(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanImportAutoUpdateArgs']]]]):
         pulumi.set(self, "auto_updates", value)
 
     @_builtins.property
     @pulumi.getter
-    def autoscaler(self) -> Optional[pulumi.Input['OceanImportAutoscalerArgs']]:
+    def autoscaler(self) -> pulumi.Input[Optional['OceanImportAutoscalerArgs']]:
         """
         The Ocean Kubernetes Autoscaler object.
         """
         return pulumi.get(self, "autoscaler")
 
     @autoscaler.setter
-    def autoscaler(self, value: Optional[pulumi.Input['OceanImportAutoscalerArgs']]):
+    def autoscaler(self, value: pulumi.Input[Optional['OceanImportAutoscalerArgs']]):
         pulumi.set(self, "autoscaler", value)
 
     @_builtins.property
     @pulumi.getter(name="backendServices")
-    def backend_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportBackendServiceArgs']]]]:
+    def backend_services(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanImportBackendServiceArgs']]]]:
         """
         Describes the backend service configurations.
         """
         return pulumi.get(self, "backend_services")
 
     @backend_services.setter
-    def backend_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportBackendServiceArgs']]]]):
+    def backend_services(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanImportBackendServiceArgs']]]]):
         pulumi.set(self, "backend_services", value)
 
     @_builtins.property
     @pulumi.getter
-    def blacklists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def blacklists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Instance types to avoid launching in the Ocean cluster. Cannot be configured if whitelist list is configured.
         """
         return pulumi.get(self, "blacklists")
 
     @blacklists.setter
-    def blacklists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def blacklists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "blacklists", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterControllerId")
-    def cluster_controller_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_controller_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cluster_controller_id")
 
     @cluster_controller_id.setter
-    def cluster_controller_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_controller_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_controller_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterName")
-    def cluster_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The GKE cluster name.
         """
         return pulumi.get(self, "cluster_name")
 
     @cluster_name.setter
-    def cluster_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_name", value)
 
     @_builtins.property
     @pulumi.getter(name="controllerClusterId")
-    def controller_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def controller_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
         """
         return pulumi.get(self, "controller_cluster_id")
 
     @controller_cluster_id.setter
-    def controller_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def controller_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "controller_cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredCapacity")
-    def desired_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def desired_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of instances to launch and maintain in the cluster.
         """
         return pulumi.get(self, "desired_capacity")
 
     @desired_capacity.setter
-    def desired_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def desired_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "desired_capacity", value)
 
     @_builtins.property
     @pulumi.getter
-    def filters(self) -> Optional[pulumi.Input['OceanImportFiltersArgs']]:
+    def filters(self) -> pulumi.Input[Optional['OceanImportFiltersArgs']]:
         """
         List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
         """
         return pulumi.get(self, "filters")
 
     @filters.setter
-    def filters(self, value: Optional[pulumi.Input['OceanImportFiltersArgs']]):
+    def filters(self, value: pulumi.Input[Optional['OceanImportFiltersArgs']]):
         pulumi.set(self, "filters", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone the master cluster is located in.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter(name="maxSize")
-    def max_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The upper limit of instances the cluster can scale up to.
         """
         return pulumi.get(self, "max_size")
 
     @max_size.setter
-    def max_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_size", value)
 
     @_builtins.property
     @pulumi.getter(name="minSize")
-    def min_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The lower limit of instances the cluster can scale down to.
         """
         return pulumi.get(self, "min_size")
 
     @min_size.setter
-    def min_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_size", value)
 
     @_builtins.property
     @pulumi.getter(name="rootVolumeType")
-    def root_volume_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def root_volume_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The root volume disk type.
         """
         return pulumi.get(self, "root_volume_type")
 
     @root_volume_type.setter
-    def root_volume_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def root_volume_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "root_volume_type", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduledTasks")
-    def scheduled_tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportScheduledTaskArgs']]]]:
+    def scheduled_tasks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanImportScheduledTaskArgs']]]]:
         """
         Set scheduling object.
         """
         return pulumi.get(self, "scheduled_tasks")
 
     @scheduled_tasks.setter
-    def scheduled_tasks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportScheduledTaskArgs']]]]):
+    def scheduled_tasks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanImportScheduledTaskArgs']]]]):
         pulumi.set(self, "scheduled_tasks", value)
 
     @_builtins.property
     @pulumi.getter(name="shieldedInstanceConfig")
-    def shielded_instance_config(self) -> Optional[pulumi.Input['OceanImportShieldedInstanceConfigArgs']]:
+    def shielded_instance_config(self) -> pulumi.Input[Optional['OceanImportShieldedInstanceConfigArgs']]:
         """
         The Ocean shielded instance configuration object.
         """
         return pulumi.get(self, "shielded_instance_config")
 
     @shielded_instance_config.setter
-    def shielded_instance_config(self, value: Optional[pulumi.Input['OceanImportShieldedInstanceConfigArgs']]):
+    def shielded_instance_config(self, value: pulumi.Input[Optional['OceanImportShieldedInstanceConfigArgs']]):
         pulumi.set(self, "shielded_instance_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def strategies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportStrategyArgs']]]]:
+    def strategies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanImportStrategyArgs']]]]:
         """
         Strategy object.
         """
         return pulumi.get(self, "strategies")
 
     @strategies.setter
-    def strategies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportStrategyArgs']]]]):
+    def strategies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanImportStrategyArgs']]]]):
         pulumi.set(self, "strategies", value)
 
     @_builtins.property
     @pulumi.getter(name="updatePolicy")
-    def update_policy(self) -> Optional[pulumi.Input['OceanImportUpdatePolicyArgs']]:
+    def update_policy(self) -> pulumi.Input[Optional['OceanImportUpdatePolicyArgs']]:
         return pulumi.get(self, "update_policy")
 
     @update_policy.setter
-    def update_policy(self, value: Optional[pulumi.Input['OceanImportUpdatePolicyArgs']]):
+    def update_policy(self, value: pulumi.Input[Optional['OceanImportUpdatePolicyArgs']]):
         pulumi.set(self, "update_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="useAsTemplateOnly")
-    def use_as_template_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_as_template_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         launch specification defined on the Ocean object will function only as a template for virtual node groups.
         """
         return pulumi.get(self, "use_as_template_only")
 
     @use_as_template_only.setter
-    def use_as_template_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_as_template_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_as_template_only", value)
 
     @_builtins.property
     @pulumi.getter
-    def whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def whitelists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Instance types allowed in the Ocean cluster. Cannot be configured if blacklist list is configured.
         """
         return pulumi.get(self, "whitelists")
 
     @whitelists.setter
-    def whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def whitelists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "whitelists", value)
 
 
@@ -620,24 +620,24 @@ class OceanImport(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_updates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanImportAutoUpdateArgs', 'OceanImportAutoUpdateArgsDict']]]]] = None,
-                 autoscaler: Optional[pulumi.Input[Union['OceanImportAutoscalerArgs', 'OceanImportAutoscalerArgsDict']]] = None,
-                 backend_services: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanImportBackendServiceArgs', 'OceanImportBackendServiceArgsDict']]]]] = None,
-                 blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 controller_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 filters: Optional[pulumi.Input[Union['OceanImportFiltersArgs', 'OceanImportFiltersArgsDict']]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 root_volume_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanImportScheduledTaskArgs', 'OceanImportScheduledTaskArgsDict']]]]] = None,
-                 shielded_instance_config: Optional[pulumi.Input[Union['OceanImportShieldedInstanceConfigArgs', 'OceanImportShieldedInstanceConfigArgsDict']]] = None,
-                 strategies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanImportStrategyArgs', 'OceanImportStrategyArgsDict']]]]] = None,
-                 update_policy: Optional[pulumi.Input[Union['OceanImportUpdatePolicyArgs', 'OceanImportUpdatePolicyArgsDict']]] = None,
-                 use_as_template_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 auto_updates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanImportAutoUpdateArgs', 'OceanImportAutoUpdateArgsDict']]]]] = None,
+                 autoscaler: pulumi.Input[Optional[Union['OceanImportAutoscalerArgs', 'OceanImportAutoscalerArgsDict']]] = None,
+                 backend_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanImportBackendServiceArgs', 'OceanImportBackendServiceArgsDict']]]]] = None,
+                 blacklists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 controller_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 filters: pulumi.Input[Optional[Union['OceanImportFiltersArgs', 'OceanImportFiltersArgsDict']]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 root_volume_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduled_tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanImportScheduledTaskArgs', 'OceanImportScheduledTaskArgsDict']]]]] = None,
+                 shielded_instance_config: pulumi.Input[Optional[Union['OceanImportShieldedInstanceConfigArgs', 'OceanImportShieldedInstanceConfigArgsDict']]] = None,
+                 strategies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanImportStrategyArgs', 'OceanImportStrategyArgsDict']]]]] = None,
+                 update_policy: pulumi.Input[Optional[Union['OceanImportUpdatePolicyArgs', 'OceanImportUpdatePolicyArgsDict']]] = None,
+                 use_as_template_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Manages a Spotinst Ocean GKE resource.
@@ -668,8 +668,8 @@ class OceanImport(pulumi.CustomResource):
                     "c2",
                     "c3",
                 ],
-                "min_memory_gib": 8,
-                "max_memory_gib": 16,
+                "min_memory_gib": float(8),
+                "max_memory_gib": float(16),
                 "min_vcpu": 2,
                 "max_vcpu": 16,
             },
@@ -749,8 +749,8 @@ class OceanImport(pulumi.CustomResource):
                     "c2",
                     "c3",
                 ],
-                "min_memory_gib": 8,
-                "max_memory_gib": 16,
+                "min_memory_gib": float(8),
+                "max_memory_gib": float(16),
                 "min_vcpu": 2,
                 "max_vcpu": 16,
             },
@@ -790,24 +790,24 @@ class OceanImport(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_updates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanImportAutoUpdateArgs', 'OceanImportAutoUpdateArgsDict']]]]] = None,
-                 autoscaler: Optional[pulumi.Input[Union['OceanImportAutoscalerArgs', 'OceanImportAutoscalerArgsDict']]] = None,
-                 backend_services: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanImportBackendServiceArgs', 'OceanImportBackendServiceArgsDict']]]]] = None,
-                 blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 controller_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 filters: Optional[pulumi.Input[Union['OceanImportFiltersArgs', 'OceanImportFiltersArgsDict']]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 root_volume_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanImportScheduledTaskArgs', 'OceanImportScheduledTaskArgsDict']]]]] = None,
-                 shielded_instance_config: Optional[pulumi.Input[Union['OceanImportShieldedInstanceConfigArgs', 'OceanImportShieldedInstanceConfigArgsDict']]] = None,
-                 strategies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanImportStrategyArgs', 'OceanImportStrategyArgsDict']]]]] = None,
-                 update_policy: Optional[pulumi.Input[Union['OceanImportUpdatePolicyArgs', 'OceanImportUpdatePolicyArgsDict']]] = None,
-                 use_as_template_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 auto_updates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanImportAutoUpdateArgs', 'OceanImportAutoUpdateArgsDict']]]]] = None,
+                 autoscaler: pulumi.Input[Optional[Union['OceanImportAutoscalerArgs', 'OceanImportAutoscalerArgsDict']]] = None,
+                 backend_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanImportBackendServiceArgs', 'OceanImportBackendServiceArgsDict']]]]] = None,
+                 blacklists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 controller_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 filters: pulumi.Input[Optional[Union['OceanImportFiltersArgs', 'OceanImportFiltersArgsDict']]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 root_volume_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduled_tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanImportScheduledTaskArgs', 'OceanImportScheduledTaskArgsDict']]]]] = None,
+                 shielded_instance_config: pulumi.Input[Optional[Union['OceanImportShieldedInstanceConfigArgs', 'OceanImportShieldedInstanceConfigArgsDict']]] = None,
+                 strategies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanImportStrategyArgs', 'OceanImportStrategyArgsDict']]]]] = None,
+                 update_policy: pulumi.Input[Optional[Union['OceanImportUpdatePolicyArgs', 'OceanImportUpdatePolicyArgsDict']]] = None,
+                 use_as_template_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -850,25 +850,25 @@ class OceanImport(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_updates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanImportAutoUpdateArgs', 'OceanImportAutoUpdateArgsDict']]]]] = None,
-            autoscaler: Optional[pulumi.Input[Union['OceanImportAutoscalerArgs', 'OceanImportAutoscalerArgsDict']]] = None,
-            backend_services: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanImportBackendServiceArgs', 'OceanImportBackendServiceArgsDict']]]]] = None,
-            blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            cluster_controller_id: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-            controller_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            desired_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-            filters: Optional[pulumi.Input[Union['OceanImportFiltersArgs', 'OceanImportFiltersArgsDict']]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            max_size: Optional[pulumi.Input[_builtins.int]] = None,
-            min_size: Optional[pulumi.Input[_builtins.int]] = None,
-            root_volume_type: Optional[pulumi.Input[_builtins.str]] = None,
-            scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanImportScheduledTaskArgs', 'OceanImportScheduledTaskArgsDict']]]]] = None,
-            shielded_instance_config: Optional[pulumi.Input[Union['OceanImportShieldedInstanceConfigArgs', 'OceanImportShieldedInstanceConfigArgsDict']]] = None,
-            strategies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanImportStrategyArgs', 'OceanImportStrategyArgsDict']]]]] = None,
-            update_policy: Optional[pulumi.Input[Union['OceanImportUpdatePolicyArgs', 'OceanImportUpdatePolicyArgsDict']]] = None,
-            use_as_template_only: Optional[pulumi.Input[_builtins.bool]] = None,
-            whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'OceanImport':
+            auto_updates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanImportAutoUpdateArgs', 'OceanImportAutoUpdateArgsDict']]]]] = None,
+            autoscaler: pulumi.Input[Optional[Union['OceanImportAutoscalerArgs', 'OceanImportAutoscalerArgsDict']]] = None,
+            backend_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanImportBackendServiceArgs', 'OceanImportBackendServiceArgsDict']]]]] = None,
+            blacklists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            cluster_controller_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+            controller_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+            filters: pulumi.Input[Optional[Union['OceanImportFiltersArgs', 'OceanImportFiltersArgsDict']]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            max_size: pulumi.Input[Optional[_builtins.int]] = None,
+            min_size: pulumi.Input[Optional[_builtins.int]] = None,
+            root_volume_type: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduled_tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanImportScheduledTaskArgs', 'OceanImportScheduledTaskArgsDict']]]]] = None,
+            shielded_instance_config: pulumi.Input[Optional[Union['OceanImportShieldedInstanceConfigArgs', 'OceanImportShieldedInstanceConfigArgsDict']]] = None,
+            strategies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanImportStrategyArgs', 'OceanImportStrategyArgsDict']]]]] = None,
+            update_policy: pulumi.Input[Optional[Union['OceanImportUpdatePolicyArgs', 'OceanImportUpdatePolicyArgsDict']]] = None,
+            use_as_template_only: pulumi.Input[Optional[_builtins.bool]] = None,
+            whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'OceanImport':
         """
         Get an existing OceanImport resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

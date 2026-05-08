@@ -163,47 +163,47 @@ export interface CredentialsGcpState {
     /**
      * The ID of the account associated with your token.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * .
      */
-    authProviderX509CertUrl?: pulumi.Input<string>;
+    authProviderX509CertUrl?: pulumi.Input<string | undefined>;
     /**
      * Authentication uri.
      */
-    authUri?: pulumi.Input<string>;
+    authUri?: pulumi.Input<string | undefined>;
     /**
      * Email associated with service account.
      */
-    clientEmail?: pulumi.Input<string>;
+    clientEmail?: pulumi.Input<string | undefined>;
     /**
      * Client ID of service account.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * Should be in following format - "https://www.googleapis.com/robot/v1/metadata/x509/".
      */
-    clientX509CertUrl?: pulumi.Input<string>;
+    clientX509CertUrl?: pulumi.Input<string | undefined>;
     /**
      * Private key of JSON key created during prerequisites stage.
      */
-    privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string | undefined>;
     /**
      * Private key ID of JSON key created during prerequisites stage.
      */
-    privateKeyId?: pulumi.Input<string>;
+    privateKeyId?: pulumi.Input<string | undefined>;
     /**
      * Name of project in GCP.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Token uri.
      */
-    tokenUri?: pulumi.Input<string>;
+    tokenUri?: pulumi.Input<string | undefined>;
     /**
      * Valid values - service_account.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**

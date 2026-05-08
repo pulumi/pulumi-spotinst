@@ -58,8 +58,8 @@ class CredentialsArgs:
 @pulumi.input_type
 class _CredentialsState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 iamrole: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 iamrole: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Credentials resources.
 
@@ -73,26 +73,26 @@ class _CredentialsState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the account associated with your token.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def iamrole(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def iamrole(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - https://docs.spot.io/administration/api/spot-policy-in-aws
         """
         return pulumi.get(self, "iamrole")
 
     @iamrole.setter
-    def iamrole(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def iamrole(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "iamrole", value)
 
 
@@ -102,8 +102,8 @@ class Credentials(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 iamrole: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 iamrole: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Spotinst credential AWS resource.
@@ -163,8 +163,8 @@ class Credentials(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 iamrole: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 iamrole: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -190,8 +190,8 @@ class Credentials(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            iamrole: Optional[pulumi.Input[_builtins.str]] = None) -> 'Credentials':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            iamrole: pulumi.Input[Optional[_builtins.str]] = None) -> 'Credentials':
         """
         Get an existing Credentials resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

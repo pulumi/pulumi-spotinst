@@ -27,13 +27,13 @@ class BeanstalkArgs:
                  min_size: pulumi.Input[_builtins.int],
                  product: pulumi.Input[_builtins.str],
                  region: pulumi.Input[_builtins.str],
-                 beanstalk_environment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 beanstalk_environment_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 deployment_preferences: Optional[pulumi.Input['BeanstalkDeploymentPreferencesArgs']] = None,
-                 maintenance: Optional[pulumi.Input[_builtins.str]] = None,
-                 managed_actions: Optional[pulumi.Input['BeanstalkManagedActionsArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['BeanstalkScheduledTaskArgs']]]] = None):
+                 beanstalk_environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 beanstalk_environment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployment_preferences: pulumi.Input[Optional['BeanstalkDeploymentPreferencesArgs']] = None,
+                 maintenance: pulumi.Input[Optional[_builtins.str]] = None,
+                 managed_actions: pulumi.Input[Optional['BeanstalkManagedActionsArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduled_tasks: pulumi.Input[Optional[Sequence[pulumi.Input['BeanstalkScheduledTaskArgs']]]] = None):
         """
         The set of arguments for constructing a Beanstalk resource.
 
@@ -146,99 +146,99 @@ class BeanstalkArgs:
 
     @_builtins.property
     @pulumi.getter(name="beanstalkEnvironmentId")
-    def beanstalk_environment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def beanstalk_environment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of an existing Beanstalk environment.
         """
         return pulumi.get(self, "beanstalk_environment_id")
 
     @beanstalk_environment_id.setter
-    def beanstalk_environment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def beanstalk_environment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "beanstalk_environment_id", value)
 
     @_builtins.property
     @pulumi.getter(name="beanstalkEnvironmentName")
-    def beanstalk_environment_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def beanstalk_environment_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of an existing Beanstalk environment.
         """
         return pulumi.get(self, "beanstalk_environment_name")
 
     @beanstalk_environment_name.setter
-    def beanstalk_environment_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def beanstalk_environment_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "beanstalk_environment_name", value)
 
     @_builtins.property
     @pulumi.getter(name="deploymentPreferences")
-    def deployment_preferences(self) -> Optional[pulumi.Input['BeanstalkDeploymentPreferencesArgs']]:
+    def deployment_preferences(self) -> pulumi.Input[Optional['BeanstalkDeploymentPreferencesArgs']]:
         """
         Preferences when performing a roll
         """
         return pulumi.get(self, "deployment_preferences")
 
     @deployment_preferences.setter
-    def deployment_preferences(self, value: Optional[pulumi.Input['BeanstalkDeploymentPreferencesArgs']]):
+    def deployment_preferences(self, value: pulumi.Input[Optional['BeanstalkDeploymentPreferencesArgs']]):
         pulumi.set(self, "deployment_preferences", value)
 
     @_builtins.property
     @pulumi.getter
-    def maintenance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintenance(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "maintenance")
 
     @maintenance.setter
-    def maintenance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintenance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintenance", value)
 
     @_builtins.property
     @pulumi.getter(name="managedActions")
-    def managed_actions(self) -> Optional[pulumi.Input['BeanstalkManagedActionsArgs']]:
+    def managed_actions(self) -> pulumi.Input[Optional['BeanstalkManagedActionsArgs']]:
         """
         Managed Actions parameters
         """
         return pulumi.get(self, "managed_actions")
 
     @managed_actions.setter
-    def managed_actions(self, value: Optional[pulumi.Input['BeanstalkManagedActionsArgs']]):
+    def managed_actions(self, value: pulumi.Input[Optional['BeanstalkManagedActionsArgs']]):
         pulumi.set(self, "managed_actions", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The group name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduledTasks")
-    def scheduled_tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BeanstalkScheduledTaskArgs']]]]:
+    def scheduled_tasks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BeanstalkScheduledTaskArgs']]]]:
         return pulumi.get(self, "scheduled_tasks")
 
     @scheduled_tasks.setter
-    def scheduled_tasks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BeanstalkScheduledTaskArgs']]]]):
+    def scheduled_tasks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BeanstalkScheduledTaskArgs']]]]):
         pulumi.set(self, "scheduled_tasks", value)
 
 
 @pulumi.input_type
 class _BeanstalkState:
     def __init__(__self__, *,
-                 beanstalk_environment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 beanstalk_environment_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 deployment_preferences: Optional[pulumi.Input['BeanstalkDeploymentPreferencesArgs']] = None,
-                 desired_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_types_spots: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 maintenance: Optional[pulumi.Input[_builtins.str]] = None,
-                 managed_actions: Optional[pulumi.Input['BeanstalkManagedActionsArgs']] = None,
-                 max_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 product: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['BeanstalkScheduledTaskArgs']]]] = None):
+                 beanstalk_environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 beanstalk_environment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployment_preferences: pulumi.Input[Optional['BeanstalkDeploymentPreferencesArgs']] = None,
+                 desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_types_spots: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 maintenance: pulumi.Input[Optional[_builtins.str]] = None,
+                 managed_actions: pulumi.Input[Optional['BeanstalkManagedActionsArgs']] = None,
+                 max_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 product: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduled_tasks: pulumi.Input[Optional[Sequence[pulumi.Input['BeanstalkScheduledTaskArgs']]]] = None):
         """
         Input properties used for looking up and filtering Beanstalk resources.
 
@@ -284,124 +284,124 @@ class _BeanstalkState:
 
     @_builtins.property
     @pulumi.getter(name="beanstalkEnvironmentId")
-    def beanstalk_environment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def beanstalk_environment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of an existing Beanstalk environment.
         """
         return pulumi.get(self, "beanstalk_environment_id")
 
     @beanstalk_environment_id.setter
-    def beanstalk_environment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def beanstalk_environment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "beanstalk_environment_id", value)
 
     @_builtins.property
     @pulumi.getter(name="beanstalkEnvironmentName")
-    def beanstalk_environment_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def beanstalk_environment_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of an existing Beanstalk environment.
         """
         return pulumi.get(self, "beanstalk_environment_name")
 
     @beanstalk_environment_name.setter
-    def beanstalk_environment_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def beanstalk_environment_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "beanstalk_environment_name", value)
 
     @_builtins.property
     @pulumi.getter(name="deploymentPreferences")
-    def deployment_preferences(self) -> Optional[pulumi.Input['BeanstalkDeploymentPreferencesArgs']]:
+    def deployment_preferences(self) -> pulumi.Input[Optional['BeanstalkDeploymentPreferencesArgs']]:
         """
         Preferences when performing a roll
         """
         return pulumi.get(self, "deployment_preferences")
 
     @deployment_preferences.setter
-    def deployment_preferences(self, value: Optional[pulumi.Input['BeanstalkDeploymentPreferencesArgs']]):
+    def deployment_preferences(self, value: pulumi.Input[Optional['BeanstalkDeploymentPreferencesArgs']]):
         pulumi.set(self, "deployment_preferences", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredCapacity")
-    def desired_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def desired_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The desired number of instances the group should have at any time.
         """
         return pulumi.get(self, "desired_capacity")
 
     @desired_capacity.setter
-    def desired_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def desired_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "desired_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceTypesSpots")
-    def instance_types_spots(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def instance_types_spots(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         One or more instance types. To maximize the availability of Spot instances, select as many instance types as possible.
         """
         return pulumi.get(self, "instance_types_spots")
 
     @instance_types_spots.setter
-    def instance_types_spots(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def instance_types_spots(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "instance_types_spots", value)
 
     @_builtins.property
     @pulumi.getter
-    def maintenance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintenance(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "maintenance")
 
     @maintenance.setter
-    def maintenance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintenance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintenance", value)
 
     @_builtins.property
     @pulumi.getter(name="managedActions")
-    def managed_actions(self) -> Optional[pulumi.Input['BeanstalkManagedActionsArgs']]:
+    def managed_actions(self) -> pulumi.Input[Optional['BeanstalkManagedActionsArgs']]:
         """
         Managed Actions parameters
         """
         return pulumi.get(self, "managed_actions")
 
     @managed_actions.setter
-    def managed_actions(self, value: Optional[pulumi.Input['BeanstalkManagedActionsArgs']]):
+    def managed_actions(self, value: pulumi.Input[Optional['BeanstalkManagedActionsArgs']]):
         pulumi.set(self, "managed_actions", value)
 
     @_builtins.property
     @pulumi.getter(name="maxSize")
-    def max_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of instances the group should have at any time.
         """
         return pulumi.get(self, "max_size")
 
     @max_size.setter
-    def max_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_size", value)
 
     @_builtins.property
     @pulumi.getter(name="minSize")
-    def min_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum number of instances the group should have at any time.
         """
         return pulumi.get(self, "min_size")
 
     @min_size.setter
-    def min_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_size", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The group name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def product(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def product(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
         For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
@@ -409,28 +409,28 @@ class _BeanstalkState:
         return pulumi.get(self, "product")
 
     @product.setter
-    def product(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def product(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "product", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The AWS region your group will be created in. Cannot be changed after the group has been created.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduledTasks")
-    def scheduled_tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BeanstalkScheduledTaskArgs']]]]:
+    def scheduled_tasks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BeanstalkScheduledTaskArgs']]]]:
         return pulumi.get(self, "scheduled_tasks")
 
     @scheduled_tasks.setter
-    def scheduled_tasks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BeanstalkScheduledTaskArgs']]]]):
+    def scheduled_tasks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BeanstalkScheduledTaskArgs']]]]):
         pulumi.set(self, "scheduled_tasks", value)
 
 
@@ -440,19 +440,19 @@ class Beanstalk(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 beanstalk_environment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 beanstalk_environment_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 deployment_preferences: Optional[pulumi.Input[Union['BeanstalkDeploymentPreferencesArgs', 'BeanstalkDeploymentPreferencesArgsDict']]] = None,
-                 desired_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_types_spots: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 maintenance: Optional[pulumi.Input[_builtins.str]] = None,
-                 managed_actions: Optional[pulumi.Input[Union['BeanstalkManagedActionsArgs', 'BeanstalkManagedActionsArgsDict']]] = None,
-                 max_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 product: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BeanstalkScheduledTaskArgs', 'BeanstalkScheduledTaskArgsDict']]]]] = None,
+                 beanstalk_environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 beanstalk_environment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployment_preferences: pulumi.Input[Optional[Union['BeanstalkDeploymentPreferencesArgs', 'BeanstalkDeploymentPreferencesArgsDict']]] = None,
+                 desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_types_spots: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 maintenance: pulumi.Input[Optional[_builtins.str]] = None,
+                 managed_actions: pulumi.Input[Optional[Union['BeanstalkManagedActionsArgs', 'BeanstalkManagedActionsArgsDict']]] = None,
+                 max_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 product: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduled_tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BeanstalkScheduledTaskArgs', 'BeanstalkScheduledTaskArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a Spotinst AWS group resource using Elastic Beanstalk.
@@ -574,19 +574,19 @@ class Beanstalk(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 beanstalk_environment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 beanstalk_environment_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 deployment_preferences: Optional[pulumi.Input[Union['BeanstalkDeploymentPreferencesArgs', 'BeanstalkDeploymentPreferencesArgsDict']]] = None,
-                 desired_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_types_spots: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 maintenance: Optional[pulumi.Input[_builtins.str]] = None,
-                 managed_actions: Optional[pulumi.Input[Union['BeanstalkManagedActionsArgs', 'BeanstalkManagedActionsArgsDict']]] = None,
-                 max_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 product: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BeanstalkScheduledTaskArgs', 'BeanstalkScheduledTaskArgsDict']]]]] = None,
+                 beanstalk_environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 beanstalk_environment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployment_preferences: pulumi.Input[Optional[Union['BeanstalkDeploymentPreferencesArgs', 'BeanstalkDeploymentPreferencesArgsDict']]] = None,
+                 desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_types_spots: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 maintenance: pulumi.Input[Optional[_builtins.str]] = None,
+                 managed_actions: pulumi.Input[Optional[Union['BeanstalkManagedActionsArgs', 'BeanstalkManagedActionsArgsDict']]] = None,
+                 max_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 product: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduled_tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BeanstalkScheduledTaskArgs', 'BeanstalkScheduledTaskArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -631,19 +631,19 @@ class Beanstalk(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            beanstalk_environment_id: Optional[pulumi.Input[_builtins.str]] = None,
-            beanstalk_environment_name: Optional[pulumi.Input[_builtins.str]] = None,
-            deployment_preferences: Optional[pulumi.Input[Union['BeanstalkDeploymentPreferencesArgs', 'BeanstalkDeploymentPreferencesArgsDict']]] = None,
-            desired_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-            instance_types_spots: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            maintenance: Optional[pulumi.Input[_builtins.str]] = None,
-            managed_actions: Optional[pulumi.Input[Union['BeanstalkManagedActionsArgs', 'BeanstalkManagedActionsArgsDict']]] = None,
-            max_size: Optional[pulumi.Input[_builtins.int]] = None,
-            min_size: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            product: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BeanstalkScheduledTaskArgs', 'BeanstalkScheduledTaskArgsDict']]]]] = None) -> 'Beanstalk':
+            beanstalk_environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            beanstalk_environment_name: pulumi.Input[Optional[_builtins.str]] = None,
+            deployment_preferences: pulumi.Input[Optional[Union['BeanstalkDeploymentPreferencesArgs', 'BeanstalkDeploymentPreferencesArgsDict']]] = None,
+            desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_types_spots: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            maintenance: pulumi.Input[Optional[_builtins.str]] = None,
+            managed_actions: pulumi.Input[Optional[Union['BeanstalkManagedActionsArgs', 'BeanstalkManagedActionsArgsDict']]] = None,
+            max_size: pulumi.Input[Optional[_builtins.int]] = None,
+            min_size: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            product: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduled_tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BeanstalkScheduledTaskArgs', 'BeanstalkScheduledTaskArgsDict']]]]] = None) -> 'Beanstalk':
         """
         Get an existing Beanstalk resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

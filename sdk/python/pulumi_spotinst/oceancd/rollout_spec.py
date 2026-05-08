@@ -23,10 +23,10 @@ class RolloutSpecArgs:
     def __init__(__self__, *,
                  rollout_spec_name: pulumi.Input[_builtins.str],
                  strategy: pulumi.Input['RolloutSpecStrategyArgs'],
-                 failure_policy: Optional[pulumi.Input['RolloutSpecFailurePolicyArgs']] = None,
-                 spot_deployment: Optional[pulumi.Input['RolloutSpecSpotDeploymentArgs']] = None,
-                 spot_deployments: Optional[pulumi.Input[Sequence[pulumi.Input['RolloutSpecSpotDeploymentArgs']]]] = None,
-                 traffic: Optional[pulumi.Input['RolloutSpecTrafficArgs']] = None):
+                 failure_policy: pulumi.Input[Optional['RolloutSpecFailurePolicyArgs']] = None,
+                 spot_deployment: pulumi.Input[Optional['RolloutSpecSpotDeploymentArgs']] = None,
+                 spot_deployments: pulumi.Input[Optional[Sequence[pulumi.Input['RolloutSpecSpotDeploymentArgs']]]] = None,
+                 traffic: pulumi.Input[Optional['RolloutSpecTrafficArgs']] = None):
         """
         The set of arguments for constructing a RolloutSpec resource.
 
@@ -74,62 +74,62 @@ class RolloutSpecArgs:
 
     @_builtins.property
     @pulumi.getter(name="failurePolicy")
-    def failure_policy(self) -> Optional[pulumi.Input['RolloutSpecFailurePolicyArgs']]:
+    def failure_policy(self) -> pulumi.Input[Optional['RolloutSpecFailurePolicyArgs']]:
         """
         Holds information on how to react when failure happens.
         """
         return pulumi.get(self, "failure_policy")
 
     @failure_policy.setter
-    def failure_policy(self, value: Optional[pulumi.Input['RolloutSpecFailurePolicyArgs']]):
+    def failure_policy(self, value: pulumi.Input[Optional['RolloutSpecFailurePolicyArgs']]):
         pulumi.set(self, "failure_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="spotDeployment")
-    def spot_deployment(self) -> Optional[pulumi.Input['RolloutSpecSpotDeploymentArgs']]:
+    def spot_deployment(self) -> pulumi.Input[Optional['RolloutSpecSpotDeploymentArgs']]:
         """
         Represents the SpotDeployment selector.
         """
         return pulumi.get(self, "spot_deployment")
 
     @spot_deployment.setter
-    def spot_deployment(self, value: Optional[pulumi.Input['RolloutSpecSpotDeploymentArgs']]):
+    def spot_deployment(self, value: pulumi.Input[Optional['RolloutSpecSpotDeploymentArgs']]):
         pulumi.set(self, "spot_deployment", value)
 
     @_builtins.property
     @pulumi.getter(name="spotDeployments")
-    def spot_deployments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RolloutSpecSpotDeploymentArgs']]]]:
+    def spot_deployments(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RolloutSpecSpotDeploymentArgs']]]]:
         """
         You must specify either `spotDeployment` OR `spotDeployments` but not both. Every SpotDeployment has to be unique. If more than one `SpotDeployment` has been configured, no `traffic` managers can be set as part of the RolloutSpec.For such case ensure that each of the chosen SpotDeployments are being exposed with different Kubernetes services.
         """
         return pulumi.get(self, "spot_deployments")
 
     @spot_deployments.setter
-    def spot_deployments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RolloutSpecSpotDeploymentArgs']]]]):
+    def spot_deployments(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RolloutSpecSpotDeploymentArgs']]]]):
         pulumi.set(self, "spot_deployments", value)
 
     @_builtins.property
     @pulumi.getter
-    def traffic(self) -> Optional[pulumi.Input['RolloutSpecTrafficArgs']]:
+    def traffic(self) -> pulumi.Input[Optional['RolloutSpecTrafficArgs']]:
         """
         Hosts all of the supported service meshes needed to enable more fine-grained traffic routing. In case `SpotDeployments` contains more than one SpotDeployment the `traffic` manager may not be configured.
         """
         return pulumi.get(self, "traffic")
 
     @traffic.setter
-    def traffic(self, value: Optional[pulumi.Input['RolloutSpecTrafficArgs']]):
+    def traffic(self, value: pulumi.Input[Optional['RolloutSpecTrafficArgs']]):
         pulumi.set(self, "traffic", value)
 
 
 @pulumi.input_type
 class _RolloutSpecState:
     def __init__(__self__, *,
-                 failure_policy: Optional[pulumi.Input['RolloutSpecFailurePolicyArgs']] = None,
-                 rollout_spec_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 spot_deployment: Optional[pulumi.Input['RolloutSpecSpotDeploymentArgs']] = None,
-                 spot_deployments: Optional[pulumi.Input[Sequence[pulumi.Input['RolloutSpecSpotDeploymentArgs']]]] = None,
-                 strategy: Optional[pulumi.Input['RolloutSpecStrategyArgs']] = None,
-                 traffic: Optional[pulumi.Input['RolloutSpecTrafficArgs']] = None):
+                 failure_policy: pulumi.Input[Optional['RolloutSpecFailurePolicyArgs']] = None,
+                 rollout_spec_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 spot_deployment: pulumi.Input[Optional['RolloutSpecSpotDeploymentArgs']] = None,
+                 spot_deployments: pulumi.Input[Optional[Sequence[pulumi.Input['RolloutSpecSpotDeploymentArgs']]]] = None,
+                 strategy: pulumi.Input[Optional['RolloutSpecStrategyArgs']] = None,
+                 traffic: pulumi.Input[Optional['RolloutSpecTrafficArgs']] = None):
         """
         Input properties used for looking up and filtering RolloutSpec resources.
 
@@ -155,74 +155,74 @@ class _RolloutSpecState:
 
     @_builtins.property
     @pulumi.getter(name="failurePolicy")
-    def failure_policy(self) -> Optional[pulumi.Input['RolloutSpecFailurePolicyArgs']]:
+    def failure_policy(self) -> pulumi.Input[Optional['RolloutSpecFailurePolicyArgs']]:
         """
         Holds information on how to react when failure happens.
         """
         return pulumi.get(self, "failure_policy")
 
     @failure_policy.setter
-    def failure_policy(self, value: Optional[pulumi.Input['RolloutSpecFailurePolicyArgs']]):
+    def failure_policy(self, value: pulumi.Input[Optional['RolloutSpecFailurePolicyArgs']]):
         pulumi.set(self, "failure_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="rolloutSpecName")
-    def rollout_spec_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rollout_spec_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier name for Ocean CD Rollout Spec. Must be unique
         """
         return pulumi.get(self, "rollout_spec_name")
 
     @rollout_spec_name.setter
-    def rollout_spec_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rollout_spec_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rollout_spec_name", value)
 
     @_builtins.property
     @pulumi.getter(name="spotDeployment")
-    def spot_deployment(self) -> Optional[pulumi.Input['RolloutSpecSpotDeploymentArgs']]:
+    def spot_deployment(self) -> pulumi.Input[Optional['RolloutSpecSpotDeploymentArgs']]:
         """
         Represents the SpotDeployment selector.
         """
         return pulumi.get(self, "spot_deployment")
 
     @spot_deployment.setter
-    def spot_deployment(self, value: Optional[pulumi.Input['RolloutSpecSpotDeploymentArgs']]):
+    def spot_deployment(self, value: pulumi.Input[Optional['RolloutSpecSpotDeploymentArgs']]):
         pulumi.set(self, "spot_deployment", value)
 
     @_builtins.property
     @pulumi.getter(name="spotDeployments")
-    def spot_deployments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RolloutSpecSpotDeploymentArgs']]]]:
+    def spot_deployments(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RolloutSpecSpotDeploymentArgs']]]]:
         """
         You must specify either `spotDeployment` OR `spotDeployments` but not both. Every SpotDeployment has to be unique. If more than one `SpotDeployment` has been configured, no `traffic` managers can be set as part of the RolloutSpec.For such case ensure that each of the chosen SpotDeployments are being exposed with different Kubernetes services.
         """
         return pulumi.get(self, "spot_deployments")
 
     @spot_deployments.setter
-    def spot_deployments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RolloutSpecSpotDeploymentArgs']]]]):
+    def spot_deployments(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RolloutSpecSpotDeploymentArgs']]]]):
         pulumi.set(self, "spot_deployments", value)
 
     @_builtins.property
     @pulumi.getter
-    def strategy(self) -> Optional[pulumi.Input['RolloutSpecStrategyArgs']]:
+    def strategy(self) -> pulumi.Input[Optional['RolloutSpecStrategyArgs']]:
         """
         Determines the Ocean CD strategy
         """
         return pulumi.get(self, "strategy")
 
     @strategy.setter
-    def strategy(self, value: Optional[pulumi.Input['RolloutSpecStrategyArgs']]):
+    def strategy(self, value: pulumi.Input[Optional['RolloutSpecStrategyArgs']]):
         pulumi.set(self, "strategy", value)
 
     @_builtins.property
     @pulumi.getter
-    def traffic(self) -> Optional[pulumi.Input['RolloutSpecTrafficArgs']]:
+    def traffic(self) -> pulumi.Input[Optional['RolloutSpecTrafficArgs']]:
         """
         Hosts all of the supported service meshes needed to enable more fine-grained traffic routing. In case `SpotDeployments` contains more than one SpotDeployment the `traffic` manager may not be configured.
         """
         return pulumi.get(self, "traffic")
 
     @traffic.setter
-    def traffic(self, value: Optional[pulumi.Input['RolloutSpecTrafficArgs']]):
+    def traffic(self, value: pulumi.Input[Optional['RolloutSpecTrafficArgs']]):
         pulumi.set(self, "traffic", value)
 
 
@@ -232,12 +232,12 @@ class RolloutSpec(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 failure_policy: Optional[pulumi.Input[Union['RolloutSpecFailurePolicyArgs', 'RolloutSpecFailurePolicyArgsDict']]] = None,
-                 rollout_spec_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 spot_deployment: Optional[pulumi.Input[Union['RolloutSpecSpotDeploymentArgs', 'RolloutSpecSpotDeploymentArgsDict']]] = None,
-                 spot_deployments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RolloutSpecSpotDeploymentArgs', 'RolloutSpecSpotDeploymentArgsDict']]]]] = None,
-                 strategy: Optional[pulumi.Input[Union['RolloutSpecStrategyArgs', 'RolloutSpecStrategyArgsDict']]] = None,
-                 traffic: Optional[pulumi.Input[Union['RolloutSpecTrafficArgs', 'RolloutSpecTrafficArgsDict']]] = None,
+                 failure_policy: pulumi.Input[Optional[Union['RolloutSpecFailurePolicyArgs', 'RolloutSpecFailurePolicyArgsDict']]] = None,
+                 rollout_spec_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 spot_deployment: pulumi.Input[Optional[Union['RolloutSpecSpotDeploymentArgs', 'RolloutSpecSpotDeploymentArgsDict']]] = None,
+                 spot_deployments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RolloutSpecSpotDeploymentArgs', 'RolloutSpecSpotDeploymentArgsDict']]]]] = None,
+                 strategy: pulumi.Input[Optional[Union['RolloutSpecStrategyArgs', 'RolloutSpecStrategyArgsDict']]] = None,
+                 traffic: pulumi.Input[Optional[Union['RolloutSpecTrafficArgs', 'RolloutSpecTrafficArgsDict']]] = None,
                  __props__=None):
         """
         Manages a Spotinst OceanCD Rollout Spec resource.
@@ -277,12 +277,12 @@ class RolloutSpec(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 failure_policy: Optional[pulumi.Input[Union['RolloutSpecFailurePolicyArgs', 'RolloutSpecFailurePolicyArgsDict']]] = None,
-                 rollout_spec_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 spot_deployment: Optional[pulumi.Input[Union['RolloutSpecSpotDeploymentArgs', 'RolloutSpecSpotDeploymentArgsDict']]] = None,
-                 spot_deployments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RolloutSpecSpotDeploymentArgs', 'RolloutSpecSpotDeploymentArgsDict']]]]] = None,
-                 strategy: Optional[pulumi.Input[Union['RolloutSpecStrategyArgs', 'RolloutSpecStrategyArgsDict']]] = None,
-                 traffic: Optional[pulumi.Input[Union['RolloutSpecTrafficArgs', 'RolloutSpecTrafficArgsDict']]] = None,
+                 failure_policy: pulumi.Input[Optional[Union['RolloutSpecFailurePolicyArgs', 'RolloutSpecFailurePolicyArgsDict']]] = None,
+                 rollout_spec_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 spot_deployment: pulumi.Input[Optional[Union['RolloutSpecSpotDeploymentArgs', 'RolloutSpecSpotDeploymentArgsDict']]] = None,
+                 spot_deployments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RolloutSpecSpotDeploymentArgs', 'RolloutSpecSpotDeploymentArgsDict']]]]] = None,
+                 strategy: pulumi.Input[Optional[Union['RolloutSpecStrategyArgs', 'RolloutSpecStrategyArgsDict']]] = None,
+                 traffic: pulumi.Input[Optional[Union['RolloutSpecTrafficArgs', 'RolloutSpecTrafficArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -312,12 +312,12 @@ class RolloutSpec(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            failure_policy: Optional[pulumi.Input[Union['RolloutSpecFailurePolicyArgs', 'RolloutSpecFailurePolicyArgsDict']]] = None,
-            rollout_spec_name: Optional[pulumi.Input[_builtins.str]] = None,
-            spot_deployment: Optional[pulumi.Input[Union['RolloutSpecSpotDeploymentArgs', 'RolloutSpecSpotDeploymentArgsDict']]] = None,
-            spot_deployments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RolloutSpecSpotDeploymentArgs', 'RolloutSpecSpotDeploymentArgsDict']]]]] = None,
-            strategy: Optional[pulumi.Input[Union['RolloutSpecStrategyArgs', 'RolloutSpecStrategyArgsDict']]] = None,
-            traffic: Optional[pulumi.Input[Union['RolloutSpecTrafficArgs', 'RolloutSpecTrafficArgsDict']]] = None) -> 'RolloutSpec':
+            failure_policy: pulumi.Input[Optional[Union['RolloutSpecFailurePolicyArgs', 'RolloutSpecFailurePolicyArgsDict']]] = None,
+            rollout_spec_name: pulumi.Input[Optional[_builtins.str]] = None,
+            spot_deployment: pulumi.Input[Optional[Union['RolloutSpecSpotDeploymentArgs', 'RolloutSpecSpotDeploymentArgsDict']]] = None,
+            spot_deployments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RolloutSpecSpotDeploymentArgs', 'RolloutSpecSpotDeploymentArgsDict']]]]] = None,
+            strategy: pulumi.Input[Optional[Union['RolloutSpecStrategyArgs', 'RolloutSpecStrategyArgsDict']]] = None,
+            traffic: pulumi.Input[Optional[Union['RolloutSpecTrafficArgs', 'RolloutSpecTrafficArgsDict']]] = None) -> 'RolloutSpec':
         """
         Get an existing RolloutSpec resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

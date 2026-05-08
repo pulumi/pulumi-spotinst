@@ -24,48 +24,48 @@ class OceanArgs:
                  image_id: pulumi.Input[_builtins.str],
                  security_groups: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  subnet_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 associate_ipv6_address: Optional[pulumi.Input[_builtins.bool]] = None,
-                 associate_public_ip_address: Optional[pulumi.Input[_builtins.bool]] = None,
-                 attach_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['OceanAttachLoadBalancerArgs']]]] = None,
-                 autoscaler: Optional[pulumi.Input['OceanAutoscalerArgs']] = None,
-                 blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['OceanBlockDeviceMappingArgs']]]] = None,
-                 cluster_orientations: Optional[pulumi.Input[Sequence[pulumi.Input['OceanClusterOrientationArgs']]]] = None,
-                 controller_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 detach_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['OceanDetachLoadBalancerArgs']]]] = None,
-                 draining_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 ebs_optimized: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fallback_to_ondemand: Optional[pulumi.Input[_builtins.bool]] = None,
-                 filters: Optional[pulumi.Input['OceanFiltersArgs']] = None,
-                 grace_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_unhealthy_duration_before_replacement: Optional[pulumi.Input[_builtins.int]] = None,
-                 iam_instance_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_metadata_options: Optional[pulumi.Input['OceanInstanceMetadataOptionsArgs']] = None,
-                 instance_store_policy: Optional[pulumi.Input['OceanInstanceStorePolicyArgs']] = None,
-                 key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLoadBalancerArgs']]]] = None,
-                 logging: Optional[pulumi.Input['OceanLoggingArgs']] = None,
-                 max_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 monitoring: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_enis: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input['OceanResourceTagSpecificationArgs']]]] = None,
-                 root_volume_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskArgs']]]] = None,
-                 spot_percentage: Optional[pulumi.Input[_builtins.int]] = None,
-                 spread_nodes_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 startup_taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanStartupTaintArgs']]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]]] = None,
-                 update_policy: Optional[pulumi.Input['OceanUpdatePolicyArgs']] = None,
-                 use_as_template_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 utilize_commitments: Optional[pulumi.Input[_builtins.bool]] = None,
-                 utilize_reserved_instances: Optional[pulumi.Input[_builtins.bool]] = None,
-                 whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 associate_ipv6_address: pulumi.Input[Optional[_builtins.bool]] = None,
+                 associate_public_ip_address: pulumi.Input[Optional[_builtins.bool]] = None,
+                 attach_load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input['OceanAttachLoadBalancerArgs']]]] = None,
+                 autoscaler: pulumi.Input[Optional['OceanAutoscalerArgs']] = None,
+                 blacklists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 block_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input['OceanBlockDeviceMappingArgs']]]] = None,
+                 cluster_orientations: pulumi.Input[Optional[Sequence[pulumi.Input['OceanClusterOrientationArgs']]]] = None,
+                 controller_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 detach_load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input['OceanDetachLoadBalancerArgs']]]] = None,
+                 draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 ebs_optimized: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fallback_to_ondemand: pulumi.Input[Optional[_builtins.bool]] = None,
+                 filters: pulumi.Input[Optional['OceanFiltersArgs']] = None,
+                 grace_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_unhealthy_duration_before_replacement: pulumi.Input[Optional[_builtins.int]] = None,
+                 iam_instance_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_metadata_options: pulumi.Input[Optional['OceanInstanceMetadataOptionsArgs']] = None,
+                 instance_store_policy: pulumi.Input[Optional['OceanInstanceStorePolicyArgs']] = None,
+                 key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input['OceanLoadBalancerArgs']]]] = None,
+                 logging: pulumi.Input[Optional['OceanLoggingArgs']] = None,
+                 max_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 monitoring: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_enis: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_tag_specifications: pulumi.Input[Optional[Sequence[pulumi.Input['OceanResourceTagSpecificationArgs']]]] = None,
+                 root_volume_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 scheduled_tasks: pulumi.Input[Optional[Sequence[pulumi.Input['OceanScheduledTaskArgs']]]] = None,
+                 spot_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+                 spread_nodes_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 startup_taints: pulumi.Input[Optional[Sequence[pulumi.Input['OceanStartupTaintArgs']]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['OceanTagArgs']]]] = None,
+                 update_policy: pulumi.Input[Optional['OceanUpdatePolicyArgs']] = None,
+                 use_as_template_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 utilize_commitments: pulumi.Input[Optional[_builtins.bool]] = None,
+                 utilize_reserved_instances: pulumi.Input[Optional[_builtins.bool]] = None,
+                 whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Ocean resource.
 
@@ -239,439 +239,439 @@ class OceanArgs:
 
     @_builtins.property
     @pulumi.getter(name="associateIpv6Address")
-    def associate_ipv6_address(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def associate_ipv6_address(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Configure IPv6 address allocation.
         """
         return pulumi.get(self, "associate_ipv6_address")
 
     @associate_ipv6_address.setter
-    def associate_ipv6_address(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def associate_ipv6_address(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "associate_ipv6_address", value)
 
     @_builtins.property
     @pulumi.getter(name="associatePublicIpAddress")
-    def associate_public_ip_address(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def associate_public_ip_address(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Configure public IP address allocation.
         """
         return pulumi.get(self, "associate_public_ip_address")
 
     @associate_public_ip_address.setter
-    def associate_public_ip_address(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def associate_public_ip_address(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "associate_public_ip_address", value)
 
     @_builtins.property
     @pulumi.getter(name="attachLoadBalancers")
-    def attach_load_balancers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanAttachLoadBalancerArgs']]]]:
+    def attach_load_balancers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanAttachLoadBalancerArgs']]]]:
         """
         Attach load balancers to the cluster.
         """
         return pulumi.get(self, "attach_load_balancers")
 
     @attach_load_balancers.setter
-    def attach_load_balancers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanAttachLoadBalancerArgs']]]]):
+    def attach_load_balancers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanAttachLoadBalancerArgs']]]]):
         pulumi.set(self, "attach_load_balancers", value)
 
     @_builtins.property
     @pulumi.getter
-    def autoscaler(self) -> Optional[pulumi.Input['OceanAutoscalerArgs']]:
+    def autoscaler(self) -> pulumi.Input[Optional['OceanAutoscalerArgs']]:
         """
         Describes the Ocean Kubernetes Auto Scaler.
         """
         return pulumi.get(self, "autoscaler")
 
     @autoscaler.setter
-    def autoscaler(self, value: Optional[pulumi.Input['OceanAutoscalerArgs']]):
+    def autoscaler(self, value: pulumi.Input[Optional['OceanAutoscalerArgs']]):
         pulumi.set(self, "autoscaler", value)
 
     @_builtins.property
     @pulumi.getter
-    def blacklists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def blacklists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "blacklists")
 
     @blacklists.setter
-    def blacklists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def blacklists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "blacklists", value)
 
     @_builtins.property
     @pulumi.getter(name="blockDeviceMappings")
-    def block_device_mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanBlockDeviceMappingArgs']]]]:
+    def block_device_mappings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanBlockDeviceMappingArgs']]]]:
         """
         Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
         """
         return pulumi.get(self, "block_device_mappings")
 
     @block_device_mappings.setter
-    def block_device_mappings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanBlockDeviceMappingArgs']]]]):
+    def block_device_mappings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanBlockDeviceMappingArgs']]]]):
         pulumi.set(self, "block_device_mappings", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterOrientations")
-    def cluster_orientations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanClusterOrientationArgs']]]]:
+    def cluster_orientations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanClusterOrientationArgs']]]]:
         return pulumi.get(self, "cluster_orientations")
 
     @cluster_orientations.setter
-    def cluster_orientations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanClusterOrientationArgs']]]]):
+    def cluster_orientations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanClusterOrientationArgs']]]]):
         pulumi.set(self, "cluster_orientations", value)
 
     @_builtins.property
     @pulumi.getter(name="controllerId")
-    def controller_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def controller_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
         """
         return pulumi.get(self, "controller_id")
 
     @controller_id.setter
-    def controller_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def controller_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "controller_id", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredCapacity")
-    def desired_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def desired_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of instances to launch and maintain in the cluster.
         """
         return pulumi.get(self, "desired_capacity")
 
     @desired_capacity.setter
-    def desired_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def desired_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "desired_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="detachLoadBalancers")
-    def detach_load_balancers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanDetachLoadBalancerArgs']]]]:
+    def detach_load_balancers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanDetachLoadBalancerArgs']]]]:
         """
         Detach load balancers from the cluster.
         """
         return pulumi.get(self, "detach_load_balancers")
 
     @detach_load_balancers.setter
-    def detach_load_balancers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanDetachLoadBalancerArgs']]]]):
+    def detach_load_balancers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanDetachLoadBalancerArgs']]]]):
         pulumi.set(self, "detach_load_balancers", value)
 
     @_builtins.property
     @pulumi.getter(name="drainingTimeout")
-    def draining_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def draining_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
         """
         return pulumi.get(self, "draining_timeout")
 
     @draining_timeout.setter
-    def draining_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def draining_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "draining_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="ebsOptimized")
-    def ebs_optimized(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ebs_optimized(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
         """
         return pulumi.get(self, "ebs_optimized")
 
     @ebs_optimized.setter
-    def ebs_optimized(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ebs_optimized(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ebs_optimized", value)
 
     @_builtins.property
     @pulumi.getter(name="fallbackToOndemand")
-    def fallback_to_ondemand(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def fallback_to_ondemand(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
         """
         return pulumi.get(self, "fallback_to_ondemand")
 
     @fallback_to_ondemand.setter
-    def fallback_to_ondemand(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def fallback_to_ondemand(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "fallback_to_ondemand", value)
 
     @_builtins.property
     @pulumi.getter
-    def filters(self) -> Optional[pulumi.Input['OceanFiltersArgs']]:
+    def filters(self) -> pulumi.Input[Optional['OceanFiltersArgs']]:
         return pulumi.get(self, "filters")
 
     @filters.setter
-    def filters(self, value: Optional[pulumi.Input['OceanFiltersArgs']]):
+    def filters(self, value: pulumi.Input[Optional['OceanFiltersArgs']]):
         pulumi.set(self, "filters", value)
 
     @_builtins.property
     @pulumi.getter(name="gracePeriod")
-    def grace_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def grace_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of time, in seconds, after the instance has launched to start checking its health.
         """
         return pulumi.get(self, "grace_period")
 
     @grace_period.setter
-    def grace_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def grace_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "grace_period", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckUnhealthyDurationBeforeReplacement")
-    def health_check_unhealthy_duration_before_replacement(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def health_check_unhealthy_duration_before_replacement(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced. The minimum value allowed is 60, and it must be a multiple of 60.
         """
         return pulumi.get(self, "health_check_unhealthy_duration_before_replacement")
 
     @health_check_unhealthy_duration_before_replacement.setter
-    def health_check_unhealthy_duration_before_replacement(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def health_check_unhealthy_duration_before_replacement(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "health_check_unhealthy_duration_before_replacement", value)
 
     @_builtins.property
     @pulumi.getter(name="iamInstanceProfile")
-    def iam_instance_profile(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def iam_instance_profile(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance profile iam role.
         """
         return pulumi.get(self, "iam_instance_profile")
 
     @iam_instance_profile.setter
-    def iam_instance_profile(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def iam_instance_profile(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "iam_instance_profile", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceMetadataOptions")
-    def instance_metadata_options(self) -> Optional[pulumi.Input['OceanInstanceMetadataOptionsArgs']]:
+    def instance_metadata_options(self) -> pulumi.Input[Optional['OceanInstanceMetadataOptionsArgs']]:
         """
         Ocean instance metadata options object for IMDSv2.
         """
         return pulumi.get(self, "instance_metadata_options")
 
     @instance_metadata_options.setter
-    def instance_metadata_options(self, value: Optional[pulumi.Input['OceanInstanceMetadataOptionsArgs']]):
+    def instance_metadata_options(self, value: pulumi.Input[Optional['OceanInstanceMetadataOptionsArgs']]):
         pulumi.set(self, "instance_metadata_options", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceStorePolicy")
-    def instance_store_policy(self) -> Optional[pulumi.Input['OceanInstanceStorePolicyArgs']]:
+    def instance_store_policy(self) -> pulumi.Input[Optional['OceanInstanceStorePolicyArgs']]:
         """
         Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
         """
         return pulumi.get(self, "instance_store_policy")
 
     @instance_store_policy.setter
-    def instance_store_policy(self, value: Optional[pulumi.Input['OceanInstanceStorePolicyArgs']]):
+    def instance_store_policy(self, value: pulumi.Input[Optional['OceanInstanceStorePolicyArgs']]):
         pulumi.set(self, "instance_store_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="keyName")
-    def key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key pair to attach the instances.
         """
         return pulumi.get(self, "key_name")
 
     @key_name.setter
-    def key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_name", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancers")
-    def load_balancers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLoadBalancerArgs']]]]:
+    def load_balancers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanLoadBalancerArgs']]]]:
         """
         Array of load balancer objects to add to ocean cluster
         """
         return pulumi.get(self, "load_balancers")
 
     @load_balancers.setter
-    def load_balancers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLoadBalancerArgs']]]]):
+    def load_balancers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanLoadBalancerArgs']]]]):
         pulumi.set(self, "load_balancers", value)
 
     @_builtins.property
     @pulumi.getter
-    def logging(self) -> Optional[pulumi.Input['OceanLoggingArgs']]:
+    def logging(self) -> pulumi.Input[Optional['OceanLoggingArgs']]:
         """
         Logging configuration.
         """
         return pulumi.get(self, "logging")
 
     @logging.setter
-    def logging(self, value: Optional[pulumi.Input['OceanLoggingArgs']]):
+    def logging(self, value: pulumi.Input[Optional['OceanLoggingArgs']]):
         pulumi.set(self, "logging", value)
 
     @_builtins.property
     @pulumi.getter(name="maxSize")
-    def max_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The upper limit of instances the cluster can scale up to.
         """
         return pulumi.get(self, "max_size")
 
     @max_size.setter
-    def max_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_size", value)
 
     @_builtins.property
     @pulumi.getter(name="minSize")
-    def min_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The lower limit of instances the cluster can scale down to.
         """
         return pulumi.get(self, "min_size")
 
     @min_size.setter
-    def min_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_size", value)
 
     @_builtins.property
     @pulumi.getter
-    def monitoring(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def monitoring(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
         """
         return pulumi.get(self, "monitoring")
 
     @monitoring.setter
-    def monitoring(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def monitoring(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "monitoring", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cluster name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryIpv6")
-    def primary_ipv6(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def primary_ipv6(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables assignment of a primary IPv6 address to the cluster. This feature is only available when `associate_ipv6_address` is explicitly set to true. Additionally, the cluster must have been initially created as an EKS cluster in IPv6 mode.
         """
         return pulumi.get(self, "primary_ipv6")
 
     @primary_ipv6.setter
-    def primary_ipv6(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def primary_ipv6(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "primary_ipv6", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region the cluster will run in.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="reservedEnis")
-    def reserved_enis(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def reserved_enis(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the count of ENIs to reserve per instance type for scaling purposes.
         """
         return pulumi.get(self, "reserved_enis")
 
     @reserved_enis.setter
-    def reserved_enis(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def reserved_enis(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "reserved_enis", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceTagSpecifications")
-    def resource_tag_specifications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanResourceTagSpecificationArgs']]]]:
+    def resource_tag_specifications(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanResourceTagSpecificationArgs']]]]:
         """
         Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
         """
         return pulumi.get(self, "resource_tag_specifications")
 
     @resource_tag_specifications.setter
-    def resource_tag_specifications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanResourceTagSpecificationArgs']]]]):
+    def resource_tag_specifications(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanResourceTagSpecificationArgs']]]]):
         pulumi.set(self, "resource_tag_specifications", value)
 
     @_builtins.property
     @pulumi.getter(name="rootVolumeSize")
-    def root_volume_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def root_volume_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size (in Gb) to allocate for the root volume. Minimum `20`.
         """
         return pulumi.get(self, "root_volume_size")
 
     @root_volume_size.setter
-    def root_volume_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def root_volume_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "root_volume_size", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduledTasks")
-    def scheduled_tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskArgs']]]]:
+    def scheduled_tasks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanScheduledTaskArgs']]]]:
         """
         Set scheduling object.
         """
         return pulumi.get(self, "scheduled_tasks")
 
     @scheduled_tasks.setter
-    def scheduled_tasks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskArgs']]]]):
+    def scheduled_tasks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanScheduledTaskArgs']]]]):
         pulumi.set(self, "scheduled_tasks", value)
 
     @_builtins.property
     @pulumi.getter(name="spotPercentage")
-    def spot_percentage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def spot_percentage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
         """
         return pulumi.get(self, "spot_percentage")
 
     @spot_percentage.setter
-    def spot_percentage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def spot_percentage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "spot_percentage", value)
 
     @_builtins.property
     @pulumi.getter(name="spreadNodesBy")
-    def spread_nodes_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spread_nodes_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
         """
         return pulumi.get(self, "spread_nodes_by")
 
     @spread_nodes_by.setter
-    def spread_nodes_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spread_nodes_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spread_nodes_by", value)
 
     @_builtins.property
     @pulumi.getter(name="startupTaints")
-    def startup_taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanStartupTaintArgs']]]]:
+    def startup_taints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanStartupTaintArgs']]]]:
         """
         Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
         """
         return pulumi.get(self, "startup_taints")
 
     @startup_taints.setter
-    def startup_taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanStartupTaintArgs']]]]):
+    def startup_taints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanStartupTaintArgs']]]]):
         pulumi.set(self, "startup_taints", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanTagArgs']]]]:
         """
         Optionally adds tags to instances launched in an Ocean cluster.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="updatePolicy")
-    def update_policy(self) -> Optional[pulumi.Input['OceanUpdatePolicyArgs']]:
+    def update_policy(self) -> pulumi.Input[Optional['OceanUpdatePolicyArgs']]:
         return pulumi.get(self, "update_policy")
 
     @update_policy.setter
-    def update_policy(self, value: Optional[pulumi.Input['OceanUpdatePolicyArgs']]):
+    def update_policy(self, value: pulumi.Input[Optional['OceanUpdatePolicyArgs']]):
         pulumi.set(self, "update_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="useAsTemplateOnly")
-    def use_as_template_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_as_template_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         launch specification defined on the Ocean object will function only as a template for virtual node groups.
         When set to true, on Ocean resource creation please make sure your custom VNG has an initial_nodes parameter to create nodes for your VNG.
@@ -679,103 +679,103 @@ class OceanArgs:
         return pulumi.get(self, "use_as_template_only")
 
     @use_as_template_only.setter
-    def use_as_template_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_as_template_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_as_template_only", value)
 
     @_builtins.property
     @pulumi.getter(name="userData")
-    def user_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Base64-encoded MIME user data to make available to the instances.
         """
         return pulumi.get(self, "user_data")
 
     @user_data.setter
-    def user_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_data", value)
 
     @_builtins.property
     @pulumi.getter(name="utilizeCommitments")
-    def utilize_commitments(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def utilize_commitments(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If savings plans exist, Ocean will utilize them before launching Spot instances.
         """
         return pulumi.get(self, "utilize_commitments")
 
     @utilize_commitments.setter
-    def utilize_commitments(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def utilize_commitments(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "utilize_commitments", value)
 
     @_builtins.property
     @pulumi.getter(name="utilizeReservedInstances")
-    def utilize_reserved_instances(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def utilize_reserved_instances(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If Reserved instances exist, Ocean will utilize them before launching Spot instances.
         """
         return pulumi.get(self, "utilize_reserved_instances")
 
     @utilize_reserved_instances.setter
-    def utilize_reserved_instances(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def utilize_reserved_instances(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "utilize_reserved_instances", value)
 
     @_builtins.property
     @pulumi.getter
-    def whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def whitelists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "whitelists")
 
     @whitelists.setter
-    def whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def whitelists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "whitelists", value)
 
 
 @pulumi.input_type
 class _OceanState:
     def __init__(__self__, *,
-                 associate_ipv6_address: Optional[pulumi.Input[_builtins.bool]] = None,
-                 associate_public_ip_address: Optional[pulumi.Input[_builtins.bool]] = None,
-                 attach_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['OceanAttachLoadBalancerArgs']]]] = None,
-                 autoscaler: Optional[pulumi.Input['OceanAutoscalerArgs']] = None,
-                 blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['OceanBlockDeviceMappingArgs']]]] = None,
-                 cluster_orientations: Optional[pulumi.Input[Sequence[pulumi.Input['OceanClusterOrientationArgs']]]] = None,
-                 controller_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 detach_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['OceanDetachLoadBalancerArgs']]]] = None,
-                 draining_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 ebs_optimized: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fallback_to_ondemand: Optional[pulumi.Input[_builtins.bool]] = None,
-                 filters: Optional[pulumi.Input['OceanFiltersArgs']] = None,
-                 grace_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_unhealthy_duration_before_replacement: Optional[pulumi.Input[_builtins.int]] = None,
-                 iam_instance_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_metadata_options: Optional[pulumi.Input['OceanInstanceMetadataOptionsArgs']] = None,
-                 instance_store_policy: Optional[pulumi.Input['OceanInstanceStorePolicyArgs']] = None,
-                 key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLoadBalancerArgs']]]] = None,
-                 logging: Optional[pulumi.Input['OceanLoggingArgs']] = None,
-                 max_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 monitoring: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_enis: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input['OceanResourceTagSpecificationArgs']]]] = None,
-                 root_volume_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskArgs']]]] = None,
-                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 spot_percentage: Optional[pulumi.Input[_builtins.int]] = None,
-                 spread_nodes_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 startup_taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanStartupTaintArgs']]]] = None,
-                 subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]]] = None,
-                 update_policy: Optional[pulumi.Input['OceanUpdatePolicyArgs']] = None,
-                 use_as_template_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 utilize_commitments: Optional[pulumi.Input[_builtins.bool]] = None,
-                 utilize_reserved_instances: Optional[pulumi.Input[_builtins.bool]] = None,
-                 whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 associate_ipv6_address: pulumi.Input[Optional[_builtins.bool]] = None,
+                 associate_public_ip_address: pulumi.Input[Optional[_builtins.bool]] = None,
+                 attach_load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input['OceanAttachLoadBalancerArgs']]]] = None,
+                 autoscaler: pulumi.Input[Optional['OceanAutoscalerArgs']] = None,
+                 blacklists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 block_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input['OceanBlockDeviceMappingArgs']]]] = None,
+                 cluster_orientations: pulumi.Input[Optional[Sequence[pulumi.Input['OceanClusterOrientationArgs']]]] = None,
+                 controller_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 detach_load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input['OceanDetachLoadBalancerArgs']]]] = None,
+                 draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 ebs_optimized: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fallback_to_ondemand: pulumi.Input[Optional[_builtins.bool]] = None,
+                 filters: pulumi.Input[Optional['OceanFiltersArgs']] = None,
+                 grace_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_unhealthy_duration_before_replacement: pulumi.Input[Optional[_builtins.int]] = None,
+                 iam_instance_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_metadata_options: pulumi.Input[Optional['OceanInstanceMetadataOptionsArgs']] = None,
+                 instance_store_policy: pulumi.Input[Optional['OceanInstanceStorePolicyArgs']] = None,
+                 key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input['OceanLoadBalancerArgs']]]] = None,
+                 logging: pulumi.Input[Optional['OceanLoggingArgs']] = None,
+                 max_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 monitoring: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_enis: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_tag_specifications: pulumi.Input[Optional[Sequence[pulumi.Input['OceanResourceTagSpecificationArgs']]]] = None,
+                 root_volume_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 scheduled_tasks: pulumi.Input[Optional[Sequence[pulumi.Input['OceanScheduledTaskArgs']]]] = None,
+                 security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 spot_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+                 spread_nodes_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 startup_taints: pulumi.Input[Optional[Sequence[pulumi.Input['OceanStartupTaintArgs']]]] = None,
+                 subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['OceanTagArgs']]]] = None,
+                 update_policy: pulumi.Input[Optional['OceanUpdatePolicyArgs']] = None,
+                 use_as_template_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 utilize_commitments: pulumi.Input[Optional[_builtins.bool]] = None,
+                 utilize_reserved_instances: pulumi.Input[Optional[_builtins.bool]] = None,
+                 whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Ocean resources.
 
@@ -915,442 +915,442 @@ class _OceanState:
 
     @_builtins.property
     @pulumi.getter(name="associateIpv6Address")
-    def associate_ipv6_address(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def associate_ipv6_address(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Configure IPv6 address allocation.
         """
         return pulumi.get(self, "associate_ipv6_address")
 
     @associate_ipv6_address.setter
-    def associate_ipv6_address(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def associate_ipv6_address(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "associate_ipv6_address", value)
 
     @_builtins.property
     @pulumi.getter(name="associatePublicIpAddress")
-    def associate_public_ip_address(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def associate_public_ip_address(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Configure public IP address allocation.
         """
         return pulumi.get(self, "associate_public_ip_address")
 
     @associate_public_ip_address.setter
-    def associate_public_ip_address(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def associate_public_ip_address(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "associate_public_ip_address", value)
 
     @_builtins.property
     @pulumi.getter(name="attachLoadBalancers")
-    def attach_load_balancers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanAttachLoadBalancerArgs']]]]:
+    def attach_load_balancers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanAttachLoadBalancerArgs']]]]:
         """
         Attach load balancers to the cluster.
         """
         return pulumi.get(self, "attach_load_balancers")
 
     @attach_load_balancers.setter
-    def attach_load_balancers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanAttachLoadBalancerArgs']]]]):
+    def attach_load_balancers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanAttachLoadBalancerArgs']]]]):
         pulumi.set(self, "attach_load_balancers", value)
 
     @_builtins.property
     @pulumi.getter
-    def autoscaler(self) -> Optional[pulumi.Input['OceanAutoscalerArgs']]:
+    def autoscaler(self) -> pulumi.Input[Optional['OceanAutoscalerArgs']]:
         """
         Describes the Ocean Kubernetes Auto Scaler.
         """
         return pulumi.get(self, "autoscaler")
 
     @autoscaler.setter
-    def autoscaler(self, value: Optional[pulumi.Input['OceanAutoscalerArgs']]):
+    def autoscaler(self, value: pulumi.Input[Optional['OceanAutoscalerArgs']]):
         pulumi.set(self, "autoscaler", value)
 
     @_builtins.property
     @pulumi.getter
-    def blacklists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def blacklists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "blacklists")
 
     @blacklists.setter
-    def blacklists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def blacklists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "blacklists", value)
 
     @_builtins.property
     @pulumi.getter(name="blockDeviceMappings")
-    def block_device_mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanBlockDeviceMappingArgs']]]]:
+    def block_device_mappings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanBlockDeviceMappingArgs']]]]:
         """
         Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
         """
         return pulumi.get(self, "block_device_mappings")
 
     @block_device_mappings.setter
-    def block_device_mappings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanBlockDeviceMappingArgs']]]]):
+    def block_device_mappings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanBlockDeviceMappingArgs']]]]):
         pulumi.set(self, "block_device_mappings", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterOrientations")
-    def cluster_orientations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanClusterOrientationArgs']]]]:
+    def cluster_orientations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanClusterOrientationArgs']]]]:
         return pulumi.get(self, "cluster_orientations")
 
     @cluster_orientations.setter
-    def cluster_orientations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanClusterOrientationArgs']]]]):
+    def cluster_orientations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanClusterOrientationArgs']]]]):
         pulumi.set(self, "cluster_orientations", value)
 
     @_builtins.property
     @pulumi.getter(name="controllerId")
-    def controller_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def controller_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
         """
         return pulumi.get(self, "controller_id")
 
     @controller_id.setter
-    def controller_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def controller_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "controller_id", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredCapacity")
-    def desired_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def desired_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of instances to launch and maintain in the cluster.
         """
         return pulumi.get(self, "desired_capacity")
 
     @desired_capacity.setter
-    def desired_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def desired_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "desired_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="detachLoadBalancers")
-    def detach_load_balancers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanDetachLoadBalancerArgs']]]]:
+    def detach_load_balancers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanDetachLoadBalancerArgs']]]]:
         """
         Detach load balancers from the cluster.
         """
         return pulumi.get(self, "detach_load_balancers")
 
     @detach_load_balancers.setter
-    def detach_load_balancers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanDetachLoadBalancerArgs']]]]):
+    def detach_load_balancers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanDetachLoadBalancerArgs']]]]):
         pulumi.set(self, "detach_load_balancers", value)
 
     @_builtins.property
     @pulumi.getter(name="drainingTimeout")
-    def draining_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def draining_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
         """
         return pulumi.get(self, "draining_timeout")
 
     @draining_timeout.setter
-    def draining_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def draining_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "draining_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="ebsOptimized")
-    def ebs_optimized(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ebs_optimized(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
         """
         return pulumi.get(self, "ebs_optimized")
 
     @ebs_optimized.setter
-    def ebs_optimized(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ebs_optimized(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ebs_optimized", value)
 
     @_builtins.property
     @pulumi.getter(name="fallbackToOndemand")
-    def fallback_to_ondemand(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def fallback_to_ondemand(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
         """
         return pulumi.get(self, "fallback_to_ondemand")
 
     @fallback_to_ondemand.setter
-    def fallback_to_ondemand(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def fallback_to_ondemand(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "fallback_to_ondemand", value)
 
     @_builtins.property
     @pulumi.getter
-    def filters(self) -> Optional[pulumi.Input['OceanFiltersArgs']]:
+    def filters(self) -> pulumi.Input[Optional['OceanFiltersArgs']]:
         return pulumi.get(self, "filters")
 
     @filters.setter
-    def filters(self, value: Optional[pulumi.Input['OceanFiltersArgs']]):
+    def filters(self, value: pulumi.Input[Optional['OceanFiltersArgs']]):
         pulumi.set(self, "filters", value)
 
     @_builtins.property
     @pulumi.getter(name="gracePeriod")
-    def grace_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def grace_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of time, in seconds, after the instance has launched to start checking its health.
         """
         return pulumi.get(self, "grace_period")
 
     @grace_period.setter
-    def grace_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def grace_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "grace_period", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckUnhealthyDurationBeforeReplacement")
-    def health_check_unhealthy_duration_before_replacement(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def health_check_unhealthy_duration_before_replacement(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced. The minimum value allowed is 60, and it must be a multiple of 60.
         """
         return pulumi.get(self, "health_check_unhealthy_duration_before_replacement")
 
     @health_check_unhealthy_duration_before_replacement.setter
-    def health_check_unhealthy_duration_before_replacement(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def health_check_unhealthy_duration_before_replacement(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "health_check_unhealthy_duration_before_replacement", value)
 
     @_builtins.property
     @pulumi.getter(name="iamInstanceProfile")
-    def iam_instance_profile(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def iam_instance_profile(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance profile iam role.
         """
         return pulumi.get(self, "iam_instance_profile")
 
     @iam_instance_profile.setter
-    def iam_instance_profile(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def iam_instance_profile(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "iam_instance_profile", value)
 
     @_builtins.property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the image used to launch the instances.
         """
         return pulumi.get(self, "image_id")
 
     @image_id.setter
-    def image_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceMetadataOptions")
-    def instance_metadata_options(self) -> Optional[pulumi.Input['OceanInstanceMetadataOptionsArgs']]:
+    def instance_metadata_options(self) -> pulumi.Input[Optional['OceanInstanceMetadataOptionsArgs']]:
         """
         Ocean instance metadata options object for IMDSv2.
         """
         return pulumi.get(self, "instance_metadata_options")
 
     @instance_metadata_options.setter
-    def instance_metadata_options(self, value: Optional[pulumi.Input['OceanInstanceMetadataOptionsArgs']]):
+    def instance_metadata_options(self, value: pulumi.Input[Optional['OceanInstanceMetadataOptionsArgs']]):
         pulumi.set(self, "instance_metadata_options", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceStorePolicy")
-    def instance_store_policy(self) -> Optional[pulumi.Input['OceanInstanceStorePolicyArgs']]:
+    def instance_store_policy(self) -> pulumi.Input[Optional['OceanInstanceStorePolicyArgs']]:
         """
         Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
         """
         return pulumi.get(self, "instance_store_policy")
 
     @instance_store_policy.setter
-    def instance_store_policy(self, value: Optional[pulumi.Input['OceanInstanceStorePolicyArgs']]):
+    def instance_store_policy(self, value: pulumi.Input[Optional['OceanInstanceStorePolicyArgs']]):
         pulumi.set(self, "instance_store_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="keyName")
-    def key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key pair to attach the instances.
         """
         return pulumi.get(self, "key_name")
 
     @key_name.setter
-    def key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_name", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancers")
-    def load_balancers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLoadBalancerArgs']]]]:
+    def load_balancers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanLoadBalancerArgs']]]]:
         """
         Array of load balancer objects to add to ocean cluster
         """
         return pulumi.get(self, "load_balancers")
 
     @load_balancers.setter
-    def load_balancers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLoadBalancerArgs']]]]):
+    def load_balancers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanLoadBalancerArgs']]]]):
         pulumi.set(self, "load_balancers", value)
 
     @_builtins.property
     @pulumi.getter
-    def logging(self) -> Optional[pulumi.Input['OceanLoggingArgs']]:
+    def logging(self) -> pulumi.Input[Optional['OceanLoggingArgs']]:
         """
         Logging configuration.
         """
         return pulumi.get(self, "logging")
 
     @logging.setter
-    def logging(self, value: Optional[pulumi.Input['OceanLoggingArgs']]):
+    def logging(self, value: pulumi.Input[Optional['OceanLoggingArgs']]):
         pulumi.set(self, "logging", value)
 
     @_builtins.property
     @pulumi.getter(name="maxSize")
-    def max_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The upper limit of instances the cluster can scale up to.
         """
         return pulumi.get(self, "max_size")
 
     @max_size.setter
-    def max_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_size", value)
 
     @_builtins.property
     @pulumi.getter(name="minSize")
-    def min_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The lower limit of instances the cluster can scale down to.
         """
         return pulumi.get(self, "min_size")
 
     @min_size.setter
-    def min_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_size", value)
 
     @_builtins.property
     @pulumi.getter
-    def monitoring(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def monitoring(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
         """
         return pulumi.get(self, "monitoring")
 
     @monitoring.setter
-    def monitoring(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def monitoring(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "monitoring", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cluster name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryIpv6")
-    def primary_ipv6(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def primary_ipv6(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables assignment of a primary IPv6 address to the cluster. This feature is only available when `associate_ipv6_address` is explicitly set to true. Additionally, the cluster must have been initially created as an EKS cluster in IPv6 mode.
         """
         return pulumi.get(self, "primary_ipv6")
 
     @primary_ipv6.setter
-    def primary_ipv6(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def primary_ipv6(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "primary_ipv6", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region the cluster will run in.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="reservedEnis")
-    def reserved_enis(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def reserved_enis(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the count of ENIs to reserve per instance type for scaling purposes.
         """
         return pulumi.get(self, "reserved_enis")
 
     @reserved_enis.setter
-    def reserved_enis(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def reserved_enis(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "reserved_enis", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceTagSpecifications")
-    def resource_tag_specifications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanResourceTagSpecificationArgs']]]]:
+    def resource_tag_specifications(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanResourceTagSpecificationArgs']]]]:
         """
         Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
         """
         return pulumi.get(self, "resource_tag_specifications")
 
     @resource_tag_specifications.setter
-    def resource_tag_specifications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanResourceTagSpecificationArgs']]]]):
+    def resource_tag_specifications(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanResourceTagSpecificationArgs']]]]):
         pulumi.set(self, "resource_tag_specifications", value)
 
     @_builtins.property
     @pulumi.getter(name="rootVolumeSize")
-    def root_volume_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def root_volume_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size (in Gb) to allocate for the root volume. Minimum `20`.
         """
         return pulumi.get(self, "root_volume_size")
 
     @root_volume_size.setter
-    def root_volume_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def root_volume_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "root_volume_size", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduledTasks")
-    def scheduled_tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskArgs']]]]:
+    def scheduled_tasks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanScheduledTaskArgs']]]]:
         """
         Set scheduling object.
         """
         return pulumi.get(self, "scheduled_tasks")
 
     @scheduled_tasks.setter
-    def scheduled_tasks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskArgs']]]]):
+    def scheduled_tasks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanScheduledTaskArgs']]]]):
         pulumi.set(self, "scheduled_tasks", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroups")
-    def security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         One or more security group ids.
         """
         return pulumi.get(self, "security_groups")
 
     @security_groups.setter
-    def security_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="spotPercentage")
-    def spot_percentage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def spot_percentage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
         """
         return pulumi.get(self, "spot_percentage")
 
     @spot_percentage.setter
-    def spot_percentage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def spot_percentage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "spot_percentage", value)
 
     @_builtins.property
     @pulumi.getter(name="spreadNodesBy")
-    def spread_nodes_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spread_nodes_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
         """
         return pulumi.get(self, "spread_nodes_by")
 
     @spread_nodes_by.setter
-    def spread_nodes_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spread_nodes_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spread_nodes_by", value)
 
     @_builtins.property
     @pulumi.getter(name="startupTaints")
-    def startup_taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanStartupTaintArgs']]]]:
+    def startup_taints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanStartupTaintArgs']]]]:
         """
         Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
         """
         return pulumi.get(self, "startup_taints")
 
     @startup_taints.setter
-    def startup_taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanStartupTaintArgs']]]]):
+    def startup_taints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanStartupTaintArgs']]]]):
         pulumi.set(self, "startup_taints", value)
 
     @_builtins.property
     @pulumi.getter(name="subnetIds")
-    def subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def subnet_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
         * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
@@ -1358,33 +1358,33 @@ class _OceanState:
         return pulumi.get(self, "subnet_ids")
 
     @subnet_ids.setter
-    def subnet_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def subnet_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "subnet_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanTagArgs']]]]:
         """
         Optionally adds tags to instances launched in an Ocean cluster.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="updatePolicy")
-    def update_policy(self) -> Optional[pulumi.Input['OceanUpdatePolicyArgs']]:
+    def update_policy(self) -> pulumi.Input[Optional['OceanUpdatePolicyArgs']]:
         return pulumi.get(self, "update_policy")
 
     @update_policy.setter
-    def update_policy(self, value: Optional[pulumi.Input['OceanUpdatePolicyArgs']]):
+    def update_policy(self, value: pulumi.Input[Optional['OceanUpdatePolicyArgs']]):
         pulumi.set(self, "update_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="useAsTemplateOnly")
-    def use_as_template_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_as_template_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         launch specification defined on the Ocean object will function only as a template for virtual node groups.
         When set to true, on Ocean resource creation please make sure your custom VNG has an initial_nodes parameter to create nodes for your VNG.
@@ -1392,52 +1392,52 @@ class _OceanState:
         return pulumi.get(self, "use_as_template_only")
 
     @use_as_template_only.setter
-    def use_as_template_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_as_template_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_as_template_only", value)
 
     @_builtins.property
     @pulumi.getter(name="userData")
-    def user_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Base64-encoded MIME user data to make available to the instances.
         """
         return pulumi.get(self, "user_data")
 
     @user_data.setter
-    def user_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_data", value)
 
     @_builtins.property
     @pulumi.getter(name="utilizeCommitments")
-    def utilize_commitments(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def utilize_commitments(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If savings plans exist, Ocean will utilize them before launching Spot instances.
         """
         return pulumi.get(self, "utilize_commitments")
 
     @utilize_commitments.setter
-    def utilize_commitments(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def utilize_commitments(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "utilize_commitments", value)
 
     @_builtins.property
     @pulumi.getter(name="utilizeReservedInstances")
-    def utilize_reserved_instances(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def utilize_reserved_instances(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If Reserved instances exist, Ocean will utilize them before launching Spot instances.
         """
         return pulumi.get(self, "utilize_reserved_instances")
 
     @utilize_reserved_instances.setter
-    def utilize_reserved_instances(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def utilize_reserved_instances(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "utilize_reserved_instances", value)
 
     @_builtins.property
     @pulumi.getter
-    def whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def whitelists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "whitelists")
 
     @whitelists.setter
-    def whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def whitelists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "whitelists", value)
 
 
@@ -1447,51 +1447,51 @@ class Ocean(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 associate_ipv6_address: Optional[pulumi.Input[_builtins.bool]] = None,
-                 associate_public_ip_address: Optional[pulumi.Input[_builtins.bool]] = None,
-                 attach_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanAttachLoadBalancerArgs', 'OceanAttachLoadBalancerArgsDict']]]]] = None,
-                 autoscaler: Optional[pulumi.Input[Union['OceanAutoscalerArgs', 'OceanAutoscalerArgsDict']]] = None,
-                 blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanBlockDeviceMappingArgs', 'OceanBlockDeviceMappingArgsDict']]]]] = None,
-                 cluster_orientations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanClusterOrientationArgs', 'OceanClusterOrientationArgsDict']]]]] = None,
-                 controller_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 detach_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanDetachLoadBalancerArgs', 'OceanDetachLoadBalancerArgsDict']]]]] = None,
-                 draining_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 ebs_optimized: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fallback_to_ondemand: Optional[pulumi.Input[_builtins.bool]] = None,
-                 filters: Optional[pulumi.Input[Union['OceanFiltersArgs', 'OceanFiltersArgsDict']]] = None,
-                 grace_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_unhealthy_duration_before_replacement: Optional[pulumi.Input[_builtins.int]] = None,
-                 iam_instance_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_metadata_options: Optional[pulumi.Input[Union['OceanInstanceMetadataOptionsArgs', 'OceanInstanceMetadataOptionsArgsDict']]] = None,
-                 instance_store_policy: Optional[pulumi.Input[Union['OceanInstanceStorePolicyArgs', 'OceanInstanceStorePolicyArgsDict']]] = None,
-                 key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLoadBalancerArgs', 'OceanLoadBalancerArgsDict']]]]] = None,
-                 logging: Optional[pulumi.Input[Union['OceanLoggingArgs', 'OceanLoggingArgsDict']]] = None,
-                 max_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 monitoring: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_enis: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanResourceTagSpecificationArgs', 'OceanResourceTagSpecificationArgsDict']]]]] = None,
-                 root_volume_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanScheduledTaskArgs', 'OceanScheduledTaskArgsDict']]]]] = None,
-                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 spot_percentage: Optional[pulumi.Input[_builtins.int]] = None,
-                 spread_nodes_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 startup_taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanStartupTaintArgs', 'OceanStartupTaintArgsDict']]]]] = None,
-                 subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanTagArgs', 'OceanTagArgsDict']]]]] = None,
-                 update_policy: Optional[pulumi.Input[Union['OceanUpdatePolicyArgs', 'OceanUpdatePolicyArgsDict']]] = None,
-                 use_as_template_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 utilize_commitments: Optional[pulumi.Input[_builtins.bool]] = None,
-                 utilize_reserved_instances: Optional[pulumi.Input[_builtins.bool]] = None,
-                 whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 associate_ipv6_address: pulumi.Input[Optional[_builtins.bool]] = None,
+                 associate_public_ip_address: pulumi.Input[Optional[_builtins.bool]] = None,
+                 attach_load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanAttachLoadBalancerArgs', 'OceanAttachLoadBalancerArgsDict']]]]] = None,
+                 autoscaler: pulumi.Input[Optional[Union['OceanAutoscalerArgs', 'OceanAutoscalerArgsDict']]] = None,
+                 blacklists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 block_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanBlockDeviceMappingArgs', 'OceanBlockDeviceMappingArgsDict']]]]] = None,
+                 cluster_orientations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanClusterOrientationArgs', 'OceanClusterOrientationArgsDict']]]]] = None,
+                 controller_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 detach_load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanDetachLoadBalancerArgs', 'OceanDetachLoadBalancerArgsDict']]]]] = None,
+                 draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 ebs_optimized: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fallback_to_ondemand: pulumi.Input[Optional[_builtins.bool]] = None,
+                 filters: pulumi.Input[Optional[Union['OceanFiltersArgs', 'OceanFiltersArgsDict']]] = None,
+                 grace_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_unhealthy_duration_before_replacement: pulumi.Input[Optional[_builtins.int]] = None,
+                 iam_instance_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_metadata_options: pulumi.Input[Optional[Union['OceanInstanceMetadataOptionsArgs', 'OceanInstanceMetadataOptionsArgsDict']]] = None,
+                 instance_store_policy: pulumi.Input[Optional[Union['OceanInstanceStorePolicyArgs', 'OceanInstanceStorePolicyArgsDict']]] = None,
+                 key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLoadBalancerArgs', 'OceanLoadBalancerArgsDict']]]]] = None,
+                 logging: pulumi.Input[Optional[Union['OceanLoggingArgs', 'OceanLoggingArgsDict']]] = None,
+                 max_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 monitoring: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_enis: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_tag_specifications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanResourceTagSpecificationArgs', 'OceanResourceTagSpecificationArgsDict']]]]] = None,
+                 root_volume_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 scheduled_tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanScheduledTaskArgs', 'OceanScheduledTaskArgsDict']]]]] = None,
+                 security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 spot_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+                 spread_nodes_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 startup_taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanStartupTaintArgs', 'OceanStartupTaintArgsDict']]]]] = None,
+                 subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanTagArgs', 'OceanTagArgsDict']]]]] = None,
+                 update_policy: pulumi.Input[Optional[Union['OceanUpdatePolicyArgs', 'OceanUpdatePolicyArgsDict']]] = None,
+                 use_as_template_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 utilize_commitments: pulumi.Input[Optional[_builtins.bool]] = None,
+                 utilize_reserved_instances: pulumi.Input[Optional[_builtins.bool]] = None,
+                 whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Manages a Spotinst Ocean AWS resource.
@@ -1567,51 +1567,51 @@ class Ocean(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 associate_ipv6_address: Optional[pulumi.Input[_builtins.bool]] = None,
-                 associate_public_ip_address: Optional[pulumi.Input[_builtins.bool]] = None,
-                 attach_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanAttachLoadBalancerArgs', 'OceanAttachLoadBalancerArgsDict']]]]] = None,
-                 autoscaler: Optional[pulumi.Input[Union['OceanAutoscalerArgs', 'OceanAutoscalerArgsDict']]] = None,
-                 blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanBlockDeviceMappingArgs', 'OceanBlockDeviceMappingArgsDict']]]]] = None,
-                 cluster_orientations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanClusterOrientationArgs', 'OceanClusterOrientationArgsDict']]]]] = None,
-                 controller_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 detach_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanDetachLoadBalancerArgs', 'OceanDetachLoadBalancerArgsDict']]]]] = None,
-                 draining_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 ebs_optimized: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fallback_to_ondemand: Optional[pulumi.Input[_builtins.bool]] = None,
-                 filters: Optional[pulumi.Input[Union['OceanFiltersArgs', 'OceanFiltersArgsDict']]] = None,
-                 grace_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_unhealthy_duration_before_replacement: Optional[pulumi.Input[_builtins.int]] = None,
-                 iam_instance_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_metadata_options: Optional[pulumi.Input[Union['OceanInstanceMetadataOptionsArgs', 'OceanInstanceMetadataOptionsArgsDict']]] = None,
-                 instance_store_policy: Optional[pulumi.Input[Union['OceanInstanceStorePolicyArgs', 'OceanInstanceStorePolicyArgsDict']]] = None,
-                 key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLoadBalancerArgs', 'OceanLoadBalancerArgsDict']]]]] = None,
-                 logging: Optional[pulumi.Input[Union['OceanLoggingArgs', 'OceanLoggingArgsDict']]] = None,
-                 max_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 monitoring: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_enis: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanResourceTagSpecificationArgs', 'OceanResourceTagSpecificationArgsDict']]]]] = None,
-                 root_volume_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanScheduledTaskArgs', 'OceanScheduledTaskArgsDict']]]]] = None,
-                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 spot_percentage: Optional[pulumi.Input[_builtins.int]] = None,
-                 spread_nodes_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 startup_taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanStartupTaintArgs', 'OceanStartupTaintArgsDict']]]]] = None,
-                 subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanTagArgs', 'OceanTagArgsDict']]]]] = None,
-                 update_policy: Optional[pulumi.Input[Union['OceanUpdatePolicyArgs', 'OceanUpdatePolicyArgsDict']]] = None,
-                 use_as_template_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 utilize_commitments: Optional[pulumi.Input[_builtins.bool]] = None,
-                 utilize_reserved_instances: Optional[pulumi.Input[_builtins.bool]] = None,
-                 whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 associate_ipv6_address: pulumi.Input[Optional[_builtins.bool]] = None,
+                 associate_public_ip_address: pulumi.Input[Optional[_builtins.bool]] = None,
+                 attach_load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanAttachLoadBalancerArgs', 'OceanAttachLoadBalancerArgsDict']]]]] = None,
+                 autoscaler: pulumi.Input[Optional[Union['OceanAutoscalerArgs', 'OceanAutoscalerArgsDict']]] = None,
+                 blacklists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 block_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanBlockDeviceMappingArgs', 'OceanBlockDeviceMappingArgsDict']]]]] = None,
+                 cluster_orientations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanClusterOrientationArgs', 'OceanClusterOrientationArgsDict']]]]] = None,
+                 controller_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 detach_load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanDetachLoadBalancerArgs', 'OceanDetachLoadBalancerArgsDict']]]]] = None,
+                 draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 ebs_optimized: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fallback_to_ondemand: pulumi.Input[Optional[_builtins.bool]] = None,
+                 filters: pulumi.Input[Optional[Union['OceanFiltersArgs', 'OceanFiltersArgsDict']]] = None,
+                 grace_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_unhealthy_duration_before_replacement: pulumi.Input[Optional[_builtins.int]] = None,
+                 iam_instance_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_metadata_options: pulumi.Input[Optional[Union['OceanInstanceMetadataOptionsArgs', 'OceanInstanceMetadataOptionsArgsDict']]] = None,
+                 instance_store_policy: pulumi.Input[Optional[Union['OceanInstanceStorePolicyArgs', 'OceanInstanceStorePolicyArgsDict']]] = None,
+                 key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLoadBalancerArgs', 'OceanLoadBalancerArgsDict']]]]] = None,
+                 logging: pulumi.Input[Optional[Union['OceanLoggingArgs', 'OceanLoggingArgsDict']]] = None,
+                 max_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 monitoring: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_enis: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_tag_specifications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanResourceTagSpecificationArgs', 'OceanResourceTagSpecificationArgsDict']]]]] = None,
+                 root_volume_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 scheduled_tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanScheduledTaskArgs', 'OceanScheduledTaskArgsDict']]]]] = None,
+                 security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 spot_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+                 spread_nodes_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 startup_taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanStartupTaintArgs', 'OceanStartupTaintArgsDict']]]]] = None,
+                 subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanTagArgs', 'OceanTagArgsDict']]]]] = None,
+                 update_policy: pulumi.Input[Optional[Union['OceanUpdatePolicyArgs', 'OceanUpdatePolicyArgsDict']]] = None,
+                 use_as_template_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 utilize_commitments: pulumi.Input[Optional[_builtins.bool]] = None,
+                 utilize_reserved_instances: pulumi.Input[Optional[_builtins.bool]] = None,
+                 whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1682,51 +1682,51 @@ class Ocean(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            associate_ipv6_address: Optional[pulumi.Input[_builtins.bool]] = None,
-            associate_public_ip_address: Optional[pulumi.Input[_builtins.bool]] = None,
-            attach_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanAttachLoadBalancerArgs', 'OceanAttachLoadBalancerArgsDict']]]]] = None,
-            autoscaler: Optional[pulumi.Input[Union['OceanAutoscalerArgs', 'OceanAutoscalerArgsDict']]] = None,
-            blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanBlockDeviceMappingArgs', 'OceanBlockDeviceMappingArgsDict']]]]] = None,
-            cluster_orientations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanClusterOrientationArgs', 'OceanClusterOrientationArgsDict']]]]] = None,
-            controller_id: Optional[pulumi.Input[_builtins.str]] = None,
-            desired_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-            detach_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanDetachLoadBalancerArgs', 'OceanDetachLoadBalancerArgsDict']]]]] = None,
-            draining_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            ebs_optimized: Optional[pulumi.Input[_builtins.bool]] = None,
-            fallback_to_ondemand: Optional[pulumi.Input[_builtins.bool]] = None,
-            filters: Optional[pulumi.Input[Union['OceanFiltersArgs', 'OceanFiltersArgsDict']]] = None,
-            grace_period: Optional[pulumi.Input[_builtins.int]] = None,
-            health_check_unhealthy_duration_before_replacement: Optional[pulumi.Input[_builtins.int]] = None,
-            iam_instance_profile: Optional[pulumi.Input[_builtins.str]] = None,
-            image_id: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_metadata_options: Optional[pulumi.Input[Union['OceanInstanceMetadataOptionsArgs', 'OceanInstanceMetadataOptionsArgsDict']]] = None,
-            instance_store_policy: Optional[pulumi.Input[Union['OceanInstanceStorePolicyArgs', 'OceanInstanceStorePolicyArgsDict']]] = None,
-            key_name: Optional[pulumi.Input[_builtins.str]] = None,
-            load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanLoadBalancerArgs', 'OceanLoadBalancerArgsDict']]]]] = None,
-            logging: Optional[pulumi.Input[Union['OceanLoggingArgs', 'OceanLoggingArgsDict']]] = None,
-            max_size: Optional[pulumi.Input[_builtins.int]] = None,
-            min_size: Optional[pulumi.Input[_builtins.int]] = None,
-            monitoring: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            primary_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            reserved_enis: Optional[pulumi.Input[_builtins.int]] = None,
-            resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanResourceTagSpecificationArgs', 'OceanResourceTagSpecificationArgsDict']]]]] = None,
-            root_volume_size: Optional[pulumi.Input[_builtins.int]] = None,
-            scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanScheduledTaskArgs', 'OceanScheduledTaskArgsDict']]]]] = None,
-            security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            spot_percentage: Optional[pulumi.Input[_builtins.int]] = None,
-            spread_nodes_by: Optional[pulumi.Input[_builtins.str]] = None,
-            startup_taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanStartupTaintArgs', 'OceanStartupTaintArgsDict']]]]] = None,
-            subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanTagArgs', 'OceanTagArgsDict']]]]] = None,
-            update_policy: Optional[pulumi.Input[Union['OceanUpdatePolicyArgs', 'OceanUpdatePolicyArgsDict']]] = None,
-            use_as_template_only: Optional[pulumi.Input[_builtins.bool]] = None,
-            user_data: Optional[pulumi.Input[_builtins.str]] = None,
-            utilize_commitments: Optional[pulumi.Input[_builtins.bool]] = None,
-            utilize_reserved_instances: Optional[pulumi.Input[_builtins.bool]] = None,
-            whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Ocean':
+            associate_ipv6_address: pulumi.Input[Optional[_builtins.bool]] = None,
+            associate_public_ip_address: pulumi.Input[Optional[_builtins.bool]] = None,
+            attach_load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanAttachLoadBalancerArgs', 'OceanAttachLoadBalancerArgsDict']]]]] = None,
+            autoscaler: pulumi.Input[Optional[Union['OceanAutoscalerArgs', 'OceanAutoscalerArgsDict']]] = None,
+            blacklists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            block_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanBlockDeviceMappingArgs', 'OceanBlockDeviceMappingArgsDict']]]]] = None,
+            cluster_orientations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanClusterOrientationArgs', 'OceanClusterOrientationArgsDict']]]]] = None,
+            controller_id: pulumi.Input[Optional[_builtins.str]] = None,
+            desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+            detach_load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanDetachLoadBalancerArgs', 'OceanDetachLoadBalancerArgsDict']]]]] = None,
+            draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            ebs_optimized: pulumi.Input[Optional[_builtins.bool]] = None,
+            fallback_to_ondemand: pulumi.Input[Optional[_builtins.bool]] = None,
+            filters: pulumi.Input[Optional[Union['OceanFiltersArgs', 'OceanFiltersArgsDict']]] = None,
+            grace_period: pulumi.Input[Optional[_builtins.int]] = None,
+            health_check_unhealthy_duration_before_replacement: pulumi.Input[Optional[_builtins.int]] = None,
+            iam_instance_profile: pulumi.Input[Optional[_builtins.str]] = None,
+            image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_metadata_options: pulumi.Input[Optional[Union['OceanInstanceMetadataOptionsArgs', 'OceanInstanceMetadataOptionsArgsDict']]] = None,
+            instance_store_policy: pulumi.Input[Optional[Union['OceanInstanceStorePolicyArgs', 'OceanInstanceStorePolicyArgsDict']]] = None,
+            key_name: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLoadBalancerArgs', 'OceanLoadBalancerArgsDict']]]]] = None,
+            logging: pulumi.Input[Optional[Union['OceanLoggingArgs', 'OceanLoggingArgsDict']]] = None,
+            max_size: pulumi.Input[Optional[_builtins.int]] = None,
+            min_size: pulumi.Input[Optional[_builtins.int]] = None,
+            monitoring: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            primary_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            reserved_enis: pulumi.Input[Optional[_builtins.int]] = None,
+            resource_tag_specifications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanResourceTagSpecificationArgs', 'OceanResourceTagSpecificationArgsDict']]]]] = None,
+            root_volume_size: pulumi.Input[Optional[_builtins.int]] = None,
+            scheduled_tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanScheduledTaskArgs', 'OceanScheduledTaskArgsDict']]]]] = None,
+            security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            spot_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+            spread_nodes_by: pulumi.Input[Optional[_builtins.str]] = None,
+            startup_taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanStartupTaintArgs', 'OceanStartupTaintArgsDict']]]]] = None,
+            subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanTagArgs', 'OceanTagArgsDict']]]]] = None,
+            update_policy: pulumi.Input[Optional[Union['OceanUpdatePolicyArgs', 'OceanUpdatePolicyArgsDict']]] = None,
+            use_as_template_only: pulumi.Input[Optional[_builtins.bool]] = None,
+            user_data: pulumi.Input[Optional[_builtins.str]] = None,
+            utilize_commitments: pulumi.Input[Optional[_builtins.bool]] = None,
+            utilize_reserved_instances: pulumi.Input[Optional[_builtins.bool]] = None,
+            whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Ocean':
         """
         Get an existing Ocean resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

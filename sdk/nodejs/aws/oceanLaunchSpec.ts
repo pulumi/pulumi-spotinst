@@ -275,135 +275,135 @@ export interface OceanLaunchSpecState {
     /**
      * Configure public IP address allocation.
      */
-    associatePublicIpAddress?: pulumi.Input<boolean>;
+    associatePublicIpAddress?: pulumi.Input<boolean | undefined>;
     /**
      * Auto Scaling scale down operations.
      */
-    autoscaleDowns?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecAutoscaleDown>[]>;
+    autoscaleDowns?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecAutoscaleDown>[] | undefined>;
     /**
      * Set custom headroom per Virtual Node Group. Provide a list of headrooms object.
      */
-    autoscaleHeadrooms?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecAutoscaleHeadroom>[]>;
+    autoscaleHeadrooms?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecAutoscaleHeadroom>[] | undefined>;
     /**
      * Set automatic headroom per launch spec.
      */
-    autoscaleHeadroomsAutomatics?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecAutoscaleHeadroomsAutomatic>[]>;
+    autoscaleHeadroomsAutomatics?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecAutoscaleHeadroomsAutomatic>[] | undefined>;
     /**
      * Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
      */
-    blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecBlockDeviceMapping>[]>;
-    createOptions?: pulumi.Input<inputs.aws.OceanLaunchSpecCreateOptions>;
-    deleteOptions?: pulumi.Input<inputs.aws.OceanLaunchSpecDeleteOptions>;
+    blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecBlockDeviceMapping>[] | undefined>;
+    createOptions?: pulumi.Input<inputs.aws.OceanLaunchSpecCreateOptions | undefined>;
+    deleteOptions?: pulumi.Input<inputs.aws.OceanLaunchSpecDeleteOptions | undefined>;
     /**
      * Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
      */
-    elasticIpPools?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecElasticIpPool>[]>;
-    ephemeralStorages?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecEphemeralStorage>[]>;
+    elasticIpPools?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecElasticIpPool>[] | undefined>;
+    ephemeralStorages?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecEphemeralStorage>[] | undefined>;
     /**
      * The ARN or name of an IAM instance profile to associate with launched instances.
      */
-    iamInstanceProfile?: pulumi.Input<string>;
+    iamInstanceProfile?: pulumi.Input<string | undefined>;
     /**
      * ID of the image used to launch the instances.
      */
-    imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string | undefined>;
     /**
      * Array of objects (Image object, containing the id of the image used to launch instances.) You can configure VNG with either the imageId or images objects, but not both simultaneously.
      * For each architecture type (amd64, arm64) only one AMI is allowed. Valid values: null, or an array with at least one element.
      */
-    images?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecImage>[]>;
+    images?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecImage>[] | undefined>;
     /**
      * Ocean instance metadata options object for IMDSv2.
      */
-    instanceMetadataOptions?: pulumi.Input<inputs.aws.OceanLaunchSpecInstanceMetadataOptions>;
+    instanceMetadataOptions?: pulumi.Input<inputs.aws.OceanLaunchSpecInstanceMetadataOptions | undefined>;
     /**
      * Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
      */
-    instanceStorePolicy?: pulumi.Input<inputs.aws.OceanLaunchSpecInstanceStorePolicy>;
+    instanceStorePolicy?: pulumi.Input<inputs.aws.OceanLaunchSpecInstanceStorePolicy | undefined>;
     /**
      * A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
      */
-    instanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    instanceTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The instance types that match with all filters compose the Virtual Node Group's instanceTypes parameter.
      * The architectures that come from the Virtual Node Group's images will be taken into account when using this parameter. Cannot be configured together with Virtual Node Group's instanceTypes and with the Cluster's whitelist/blacklist/filters.
      */
-    instanceTypesFilters?: pulumi.Input<inputs.aws.OceanLaunchSpecInstanceTypesFilters>;
+    instanceTypesFilters?: pulumi.Input<inputs.aws.OceanLaunchSpecInstanceTypesFilters | undefined>;
     /**
      * Optionally adds labels to instances launched in the cluster.
      */
-    labels?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecLabel>[]>;
+    labels?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecLabel>[] | undefined>;
     /**
      * Array of load balancer objects to add to VNG
      */
-    loadBalancers?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecLoadBalancer>[]>;
+    loadBalancers?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecLoadBalancer>[] | undefined>;
     /**
      * The name of the Virtual Node Group.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Ocean cluster.
      */
-    oceanId?: pulumi.Input<string>;
+    oceanId?: pulumi.Input<string | undefined>;
     /**
      * An object used to specify time windows during which certain optimization constraints can be eased.
      */
-    optimizationWindows?: pulumi.Input<inputs.aws.OceanLaunchSpecOptimizationWindows>;
+    optimizationWindows?: pulumi.Input<inputs.aws.OceanLaunchSpecOptimizationWindows | undefined>;
     /**
      * A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
      */
-    preferredOdTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    preferredOdTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
      */
-    preferredSpotTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    preferredSpotTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Specifies the count of ENIs to reserve per instance type for scaling purposes.
      */
-    reservedEnis?: pulumi.Input<number>;
-    resourceLimits?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecResourceLimit>[]>;
+    reservedEnis?: pulumi.Input<number | undefined>;
+    resourceLimits?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecResourceLimit>[] | undefined>;
     /**
      * Boolean. When set to `true`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
      */
-    restrictScaleDown?: pulumi.Input<boolean>;
+    restrictScaleDown?: pulumi.Input<boolean | undefined>;
     /**
      * Set root volume size (in GB).
      */
-    rootVolumeSize?: pulumi.Input<number>;
+    rootVolumeSize?: pulumi.Input<number | undefined>;
     /**
      * Used to specify times that the nodes in the virtual node group will be taken down.
      */
-    schedulingShutdownHours?: pulumi.Input<inputs.aws.OceanLaunchSpecSchedulingShutdownHours>;
+    schedulingShutdownHours?: pulumi.Input<inputs.aws.OceanLaunchSpecSchedulingShutdownHours | undefined>;
     /**
      * Used to define scheduled tasks such as a manual headroom update.
      */
-    schedulingTasks?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecSchedulingTask>[]>;
+    schedulingTasks?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecSchedulingTask>[] | undefined>;
     /**
      * Optionally adds security group IDs.
      */
-    securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
      */
-    startupTaints?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecStartupTaint>[]>;
-    strategies?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecStrategy>[]>;
+    startupTaints?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecStartupTaint>[] | undefined>;
+    strategies?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecStrategy>[] | undefined>;
     /**
      * A list of subnet IDs.
      */
-    subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
+    subnetIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A key/value mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecTag>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecTag>[] | undefined>;
     /**
      * Optionally adds labels to instances launched in the cluster.
      */
-    taints?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecTaint>[]>;
-    updatePolicy?: pulumi.Input<inputs.aws.OceanLaunchSpecUpdatePolicy>;
+    taints?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecTaint>[] | undefined>;
+    updatePolicy?: pulumi.Input<inputs.aws.OceanLaunchSpecUpdatePolicy | undefined>;
     /**
      * Base64-encoded MIME user data to make available to the instances.
      */
-    userData?: pulumi.Input<string>;
+    userData?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -413,72 +413,72 @@ export interface OceanLaunchSpecArgs {
     /**
      * Configure public IP address allocation.
      */
-    associatePublicIpAddress?: pulumi.Input<boolean>;
+    associatePublicIpAddress?: pulumi.Input<boolean | undefined>;
     /**
      * Auto Scaling scale down operations.
      */
-    autoscaleDowns?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecAutoscaleDown>[]>;
+    autoscaleDowns?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecAutoscaleDown>[] | undefined>;
     /**
      * Set custom headroom per Virtual Node Group. Provide a list of headrooms object.
      */
-    autoscaleHeadrooms?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecAutoscaleHeadroom>[]>;
+    autoscaleHeadrooms?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecAutoscaleHeadroom>[] | undefined>;
     /**
      * Set automatic headroom per launch spec.
      */
-    autoscaleHeadroomsAutomatics?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecAutoscaleHeadroomsAutomatic>[]>;
+    autoscaleHeadroomsAutomatics?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecAutoscaleHeadroomsAutomatic>[] | undefined>;
     /**
      * Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
      */
-    blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecBlockDeviceMapping>[]>;
-    createOptions?: pulumi.Input<inputs.aws.OceanLaunchSpecCreateOptions>;
-    deleteOptions?: pulumi.Input<inputs.aws.OceanLaunchSpecDeleteOptions>;
+    blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecBlockDeviceMapping>[] | undefined>;
+    createOptions?: pulumi.Input<inputs.aws.OceanLaunchSpecCreateOptions | undefined>;
+    deleteOptions?: pulumi.Input<inputs.aws.OceanLaunchSpecDeleteOptions | undefined>;
     /**
      * Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
      */
-    elasticIpPools?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecElasticIpPool>[]>;
-    ephemeralStorages?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecEphemeralStorage>[]>;
+    elasticIpPools?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecElasticIpPool>[] | undefined>;
+    ephemeralStorages?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecEphemeralStorage>[] | undefined>;
     /**
      * The ARN or name of an IAM instance profile to associate with launched instances.
      */
-    iamInstanceProfile?: pulumi.Input<string>;
+    iamInstanceProfile?: pulumi.Input<string | undefined>;
     /**
      * ID of the image used to launch the instances.
      */
-    imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string | undefined>;
     /**
      * Array of objects (Image object, containing the id of the image used to launch instances.) You can configure VNG with either the imageId or images objects, but not both simultaneously.
      * For each architecture type (amd64, arm64) only one AMI is allowed. Valid values: null, or an array with at least one element.
      */
-    images?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecImage>[]>;
+    images?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecImage>[] | undefined>;
     /**
      * Ocean instance metadata options object for IMDSv2.
      */
-    instanceMetadataOptions?: pulumi.Input<inputs.aws.OceanLaunchSpecInstanceMetadataOptions>;
+    instanceMetadataOptions?: pulumi.Input<inputs.aws.OceanLaunchSpecInstanceMetadataOptions | undefined>;
     /**
      * Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
      */
-    instanceStorePolicy?: pulumi.Input<inputs.aws.OceanLaunchSpecInstanceStorePolicy>;
+    instanceStorePolicy?: pulumi.Input<inputs.aws.OceanLaunchSpecInstanceStorePolicy | undefined>;
     /**
      * A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
      */
-    instanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    instanceTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The instance types that match with all filters compose the Virtual Node Group's instanceTypes parameter.
      * The architectures that come from the Virtual Node Group's images will be taken into account when using this parameter. Cannot be configured together with Virtual Node Group's instanceTypes and with the Cluster's whitelist/blacklist/filters.
      */
-    instanceTypesFilters?: pulumi.Input<inputs.aws.OceanLaunchSpecInstanceTypesFilters>;
+    instanceTypesFilters?: pulumi.Input<inputs.aws.OceanLaunchSpecInstanceTypesFilters | undefined>;
     /**
      * Optionally adds labels to instances launched in the cluster.
      */
-    labels?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecLabel>[]>;
+    labels?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecLabel>[] | undefined>;
     /**
      * Array of load balancer objects to add to VNG
      */
-    loadBalancers?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecLoadBalancer>[]>;
+    loadBalancers?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecLoadBalancer>[] | undefined>;
     /**
      * The name of the Virtual Node Group.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Ocean cluster.
      */
@@ -486,60 +486,60 @@ export interface OceanLaunchSpecArgs {
     /**
      * An object used to specify time windows during which certain optimization constraints can be eased.
      */
-    optimizationWindows?: pulumi.Input<inputs.aws.OceanLaunchSpecOptimizationWindows>;
+    optimizationWindows?: pulumi.Input<inputs.aws.OceanLaunchSpecOptimizationWindows | undefined>;
     /**
      * A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
      */
-    preferredOdTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    preferredOdTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
      */
-    preferredSpotTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    preferredSpotTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Specifies the count of ENIs to reserve per instance type for scaling purposes.
      */
-    reservedEnis?: pulumi.Input<number>;
-    resourceLimits?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecResourceLimit>[]>;
+    reservedEnis?: pulumi.Input<number | undefined>;
+    resourceLimits?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecResourceLimit>[] | undefined>;
     /**
      * Boolean. When set to `true`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
      */
-    restrictScaleDown?: pulumi.Input<boolean>;
+    restrictScaleDown?: pulumi.Input<boolean | undefined>;
     /**
      * Set root volume size (in GB).
      */
-    rootVolumeSize?: pulumi.Input<number>;
+    rootVolumeSize?: pulumi.Input<number | undefined>;
     /**
      * Used to specify times that the nodes in the virtual node group will be taken down.
      */
-    schedulingShutdownHours?: pulumi.Input<inputs.aws.OceanLaunchSpecSchedulingShutdownHours>;
+    schedulingShutdownHours?: pulumi.Input<inputs.aws.OceanLaunchSpecSchedulingShutdownHours | undefined>;
     /**
      * Used to define scheduled tasks such as a manual headroom update.
      */
-    schedulingTasks?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecSchedulingTask>[]>;
+    schedulingTasks?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecSchedulingTask>[] | undefined>;
     /**
      * Optionally adds security group IDs.
      */
-    securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
      */
-    startupTaints?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecStartupTaint>[]>;
-    strategies?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecStrategy>[]>;
+    startupTaints?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecStartupTaint>[] | undefined>;
+    strategies?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecStrategy>[] | undefined>;
     /**
      * A list of subnet IDs.
      */
-    subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
+    subnetIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A key/value mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecTag>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecTag>[] | undefined>;
     /**
      * Optionally adds labels to instances launched in the cluster.
      */
-    taints?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecTaint>[]>;
-    updatePolicy?: pulumi.Input<inputs.aws.OceanLaunchSpecUpdatePolicy>;
+    taints?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecTaint>[] | undefined>;
+    updatePolicy?: pulumi.Input<inputs.aws.OceanLaunchSpecUpdatePolicy | undefined>;
     /**
      * Base64-encoded MIME user data to make available to the instances.
      */
-    userData?: pulumi.Input<string>;
+    userData?: pulumi.Input<string | undefined>;
 }

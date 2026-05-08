@@ -306,93 +306,93 @@ export interface OceanLaunchSpecState {
     /**
      * Set custom headroom per launch spec. provide list of headrooms object.
      */
-    autoscaleHeadrooms?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecAutoscaleHeadroom>[]>;
+    autoscaleHeadrooms?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecAutoscaleHeadroom>[] | undefined>;
     /**
      * Set automatic headroom per launch spec.
      */
-    autoscaleHeadroomsAutomatics?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecAutoscaleHeadroomsAutomatic>[]>;
-    createOptions?: pulumi.Input<inputs.gke.OceanLaunchSpecCreateOptions>;
+    autoscaleHeadroomsAutomatics?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecAutoscaleHeadroomsAutomatic>[] | undefined>;
+    createOptions?: pulumi.Input<inputs.gke.OceanLaunchSpecCreateOptions | undefined>;
     /**
      * List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `instanceTypes` is configured.
      */
-    filters?: pulumi.Input<inputs.gke.OceanLaunchSpecFilters>;
+    filters?: pulumi.Input<inputs.gke.OceanLaunchSpecFilters | undefined>;
     /**
      * List of supported machine types for the Launch Spec.
      */
-    instanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    instanceTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Optionally adds labels to instances launched in an Ocean cluster.
      */
-    labels?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecLabel>[]>;
+    labels?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecLabel>[] | undefined>;
     /**
      * Cluster's metadata.
      */
-    metadatas?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecMetadata>[]>;
+    metadatas?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecMetadata>[] | undefined>;
     /**
      * The launch specification name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Settings for network interfaces.
      */
-    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecNetworkInterface>[]>;
+    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecNetworkInterface>[] | undefined>;
     /**
      * The node pool you wish to use in your Launch Spec.
      */
-    nodePoolName?: pulumi.Input<string>;
+    nodePoolName?: pulumi.Input<string | undefined>;
     /**
      * The Ocean cluster ID.
      */
-    oceanId?: pulumi.Input<string>;
+    oceanId?: pulumi.Input<string | undefined>;
     /**
      * The Ocean virtual node group resource limits object.
      */
-    resourceLimits?: pulumi.Input<inputs.gke.OceanLaunchSpecResourceLimits>;
+    resourceLimits?: pulumi.Input<inputs.gke.OceanLaunchSpecResourceLimits | undefined>;
     /**
      * Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
      */
-    restrictScaleDown?: pulumi.Input<boolean>;
+    restrictScaleDown?: pulumi.Input<boolean | undefined>;
     /**
      * Root volume size (in GB).
      */
-    rootVolumeSize?: pulumi.Input<number>;
+    rootVolumeSize?: pulumi.Input<number | undefined>;
     /**
      * Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`, `"pd-balanced"`.
      */
-    rootVolumeType?: pulumi.Input<string>;
+    rootVolumeType?: pulumi.Input<string | undefined>;
     /**
      * Used to define scheduled tasks such as a manual headroom update.
      */
-    schedulingTasks?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecSchedulingTask>[]>;
+    schedulingTasks?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecSchedulingTask>[] | undefined>;
     /**
      * The account used by applications running on the VM to call GCP APIs.
      */
-    serviceAccount?: pulumi.Input<string>;
+    serviceAccount?: pulumi.Input<string | undefined>;
     /**
      * The Ocean shielded instance configuration object.
      */
-    shieldedInstanceConfig?: pulumi.Input<inputs.gke.OceanLaunchSpecShieldedInstanceConfig>;
+    shieldedInstanceConfig?: pulumi.Input<inputs.gke.OceanLaunchSpecShieldedInstanceConfig | undefined>;
     /**
      * Image URL.
      */
-    sourceImage?: pulumi.Input<string>;
+    sourceImage?: pulumi.Input<string | undefined>;
     /**
      * The Ocean virtual node group storage object.
      */
-    storage?: pulumi.Input<inputs.gke.OceanLaunchSpecStorage>;
+    storage?: pulumi.Input<inputs.gke.OceanLaunchSpecStorage | undefined>;
     /**
      * The Ocean Launch Spec Strategy object.
      */
-    strategies?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecStrategy>[]>;
+    strategies?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecStrategy>[] | undefined>;
     /**
      * Every node launched from this configuration will be tagged with those tags. Note: during creation some tags are automatically imported to the state file, it is required to manually add it to the template configuration
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Optionally adds labels to instances launched in an Ocean cluster.
      */
-    taints?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecTaint>[]>;
-    updatePolicy?: pulumi.Input<inputs.gke.OceanLaunchSpecUpdatePolicy>;
+    taints?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecTaint>[] | undefined>;
+    updatePolicy?: pulumi.Input<inputs.gke.OceanLaunchSpecUpdatePolicy | undefined>;
 }
 
 /**
@@ -402,40 +402,40 @@ export interface OceanLaunchSpecArgs {
     /**
      * Set custom headroom per launch spec. provide list of headrooms object.
      */
-    autoscaleHeadrooms?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecAutoscaleHeadroom>[]>;
+    autoscaleHeadrooms?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecAutoscaleHeadroom>[] | undefined>;
     /**
      * Set automatic headroom per launch spec.
      */
-    autoscaleHeadroomsAutomatics?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecAutoscaleHeadroomsAutomatic>[]>;
-    createOptions?: pulumi.Input<inputs.gke.OceanLaunchSpecCreateOptions>;
+    autoscaleHeadroomsAutomatics?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecAutoscaleHeadroomsAutomatic>[] | undefined>;
+    createOptions?: pulumi.Input<inputs.gke.OceanLaunchSpecCreateOptions | undefined>;
     /**
      * List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `instanceTypes` is configured.
      */
-    filters?: pulumi.Input<inputs.gke.OceanLaunchSpecFilters>;
+    filters?: pulumi.Input<inputs.gke.OceanLaunchSpecFilters | undefined>;
     /**
      * List of supported machine types for the Launch Spec.
      */
-    instanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    instanceTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Optionally adds labels to instances launched in an Ocean cluster.
      */
-    labels?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecLabel>[]>;
+    labels?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecLabel>[] | undefined>;
     /**
      * Cluster's metadata.
      */
-    metadatas?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecMetadata>[]>;
+    metadatas?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecMetadata>[] | undefined>;
     /**
      * The launch specification name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Settings for network interfaces.
      */
-    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecNetworkInterface>[]>;
+    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecNetworkInterface>[] | undefined>;
     /**
      * The node pool you wish to use in your Launch Spec.
      */
-    nodePoolName?: pulumi.Input<string>;
+    nodePoolName?: pulumi.Input<string | undefined>;
     /**
      * The Ocean cluster ID.
      */
@@ -443,50 +443,50 @@ export interface OceanLaunchSpecArgs {
     /**
      * The Ocean virtual node group resource limits object.
      */
-    resourceLimits?: pulumi.Input<inputs.gke.OceanLaunchSpecResourceLimits>;
+    resourceLimits?: pulumi.Input<inputs.gke.OceanLaunchSpecResourceLimits | undefined>;
     /**
      * Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
      */
-    restrictScaleDown?: pulumi.Input<boolean>;
+    restrictScaleDown?: pulumi.Input<boolean | undefined>;
     /**
      * Root volume size (in GB).
      */
-    rootVolumeSize?: pulumi.Input<number>;
+    rootVolumeSize?: pulumi.Input<number | undefined>;
     /**
      * Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`, `"pd-balanced"`.
      */
-    rootVolumeType?: pulumi.Input<string>;
+    rootVolumeType?: pulumi.Input<string | undefined>;
     /**
      * Used to define scheduled tasks such as a manual headroom update.
      */
-    schedulingTasks?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecSchedulingTask>[]>;
+    schedulingTasks?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecSchedulingTask>[] | undefined>;
     /**
      * The account used by applications running on the VM to call GCP APIs.
      */
-    serviceAccount?: pulumi.Input<string>;
+    serviceAccount?: pulumi.Input<string | undefined>;
     /**
      * The Ocean shielded instance configuration object.
      */
-    shieldedInstanceConfig?: pulumi.Input<inputs.gke.OceanLaunchSpecShieldedInstanceConfig>;
+    shieldedInstanceConfig?: pulumi.Input<inputs.gke.OceanLaunchSpecShieldedInstanceConfig | undefined>;
     /**
      * Image URL.
      */
-    sourceImage?: pulumi.Input<string>;
+    sourceImage?: pulumi.Input<string | undefined>;
     /**
      * The Ocean virtual node group storage object.
      */
-    storage?: pulumi.Input<inputs.gke.OceanLaunchSpecStorage>;
+    storage?: pulumi.Input<inputs.gke.OceanLaunchSpecStorage | undefined>;
     /**
      * The Ocean Launch Spec Strategy object.
      */
-    strategies?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecStrategy>[]>;
+    strategies?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecStrategy>[] | undefined>;
     /**
      * Every node launched from this configuration will be tagged with those tags. Note: during creation some tags are automatically imported to the state file, it is required to manually add it to the template configuration
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Optionally adds labels to instances launched in an Ocean cluster.
      */
-    taints?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecTaint>[]>;
-    updatePolicy?: pulumi.Input<inputs.gke.OceanLaunchSpecUpdatePolicy>;
+    taints?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecTaint>[] | undefined>;
+    updatePolicy?: pulumi.Input<inputs.gke.OceanLaunchSpecUpdatePolicy | undefined>;
 }

@@ -27,41 +27,41 @@ class ElastigroupAzureV3Args:
                  region: pulumi.Input[_builtins.str],
                  resource_group_name: pulumi.Input[_builtins.str],
                  vm_sizes: pulumi.Input['ElastigroupAzureV3VmSizesArgs'],
-                 availability_vs_cost: Optional[pulumi.Input[_builtins.int]] = None,
-                 boot_diagnostics: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3BootDiagnosticArgs']]]] = None,
-                 capacity_reservation: Optional[pulumi.Input['ElastigroupAzureV3CapacityReservationArgs']] = None,
-                 custom_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3DataDiskArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 draining_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ExtensionArgs']]]] = None,
-                 health: Optional[pulumi.Input['ElastigroupAzureV3HealthArgs']] = None,
-                 images: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageArgs']]]] = None,
-                 load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3LoadBalancerArgs']]]] = None,
-                 login: Optional[pulumi.Input['ElastigroupAzureV3LoginArgs']] = None,
-                 managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ManagedServiceIdentityArgs']]]] = None,
-                 max_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 on_demand_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 optimization_windows: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 os_disk: Optional[pulumi.Input['ElastigroupAzureV3OsDiskArgs']] = None,
-                 preferred_zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 proximity_placement_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ProximityPlacementGroupArgs']]]] = None,
-                 revert_to_spot: Optional[pulumi.Input['ElastigroupAzureV3RevertToSpotArgs']] = None,
-                 scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ScalingDownPolicyArgs']]]] = None,
-                 scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ScalingUpPolicyArgs']]]] = None,
-                 scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3SchedulingTaskArgs']]]] = None,
-                 secrets: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3SecretArgs']]]] = None,
-                 security: Optional[pulumi.Input['ElastigroupAzureV3SecurityArgs']] = None,
-                 shutdown_script: Optional[pulumi.Input[_builtins.str]] = None,
-                 signals: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3SignalArgs']]]] = None,
-                 spot_percentage: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3TagArgs']]]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 availability_vs_cost: pulumi.Input[Optional[_builtins.int]] = None,
+                 boot_diagnostics: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3BootDiagnosticArgs']]]] = None,
+                 capacity_reservation: pulumi.Input[Optional['ElastigroupAzureV3CapacityReservationArgs']] = None,
+                 custom_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3DataDiskArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 extensions: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ExtensionArgs']]]] = None,
+                 health: pulumi.Input[Optional['ElastigroupAzureV3HealthArgs']] = None,
+                 images: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ImageArgs']]]] = None,
+                 load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3LoadBalancerArgs']]]] = None,
+                 login: pulumi.Input[Optional['ElastigroupAzureV3LoginArgs']] = None,
+                 managed_service_identities: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ManagedServiceIdentityArgs']]]] = None,
+                 max_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 on_demand_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 optimization_windows: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 os_disk: pulumi.Input[Optional['ElastigroupAzureV3OsDiskArgs']] = None,
+                 preferred_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 proximity_placement_groups: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ProximityPlacementGroupArgs']]]] = None,
+                 revert_to_spot: pulumi.Input[Optional['ElastigroupAzureV3RevertToSpotArgs']] = None,
+                 scaling_down_policies: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ScalingDownPolicyArgs']]]] = None,
+                 scaling_up_policies: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ScalingUpPolicyArgs']]]] = None,
+                 scheduling_tasks: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3SchedulingTaskArgs']]]] = None,
+                 secrets: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3SecretArgs']]]] = None,
+                 security: pulumi.Input[Optional['ElastigroupAzureV3SecurityArgs']] = None,
+                 shutdown_script: pulumi.Input[Optional[_builtins.str]] = None,
+                 signals: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3SignalArgs']]]] = None,
+                 spot_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3TagArgs']]]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ElastigroupAzureV3 resource.
         """
@@ -198,364 +198,364 @@ class ElastigroupAzureV3Args:
 
     @_builtins.property
     @pulumi.getter(name="availabilityVsCost")
-    def availability_vs_cost(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def availability_vs_cost(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "availability_vs_cost")
 
     @availability_vs_cost.setter
-    def availability_vs_cost(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def availability_vs_cost(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "availability_vs_cost", value)
 
     @_builtins.property
     @pulumi.getter(name="bootDiagnostics")
-    def boot_diagnostics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3BootDiagnosticArgs']]]]:
+    def boot_diagnostics(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3BootDiagnosticArgs']]]]:
         return pulumi.get(self, "boot_diagnostics")
 
     @boot_diagnostics.setter
-    def boot_diagnostics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3BootDiagnosticArgs']]]]):
+    def boot_diagnostics(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3BootDiagnosticArgs']]]]):
         pulumi.set(self, "boot_diagnostics", value)
 
     @_builtins.property
     @pulumi.getter(name="capacityReservation")
-    def capacity_reservation(self) -> Optional[pulumi.Input['ElastigroupAzureV3CapacityReservationArgs']]:
+    def capacity_reservation(self) -> pulumi.Input[Optional['ElastigroupAzureV3CapacityReservationArgs']]:
         return pulumi.get(self, "capacity_reservation")
 
     @capacity_reservation.setter
-    def capacity_reservation(self, value: Optional[pulumi.Input['ElastigroupAzureV3CapacityReservationArgs']]):
+    def capacity_reservation(self, value: pulumi.Input[Optional['ElastigroupAzureV3CapacityReservationArgs']]):
         pulumi.set(self, "capacity_reservation", value)
 
     @_builtins.property
     @pulumi.getter(name="customData")
-    def custom_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "custom_data")
 
     @custom_data.setter
-    def custom_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_data", value)
 
     @_builtins.property
     @pulumi.getter(name="dataDisks")
-    def data_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3DataDiskArgs']]]]:
+    def data_disks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3DataDiskArgs']]]]:
         return pulumi.get(self, "data_disks")
 
     @data_disks.setter
-    def data_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3DataDiskArgs']]]]):
+    def data_disks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3DataDiskArgs']]]]):
         pulumi.set(self, "data_disks", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredCapacity")
-    def desired_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def desired_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "desired_capacity")
 
     @desired_capacity.setter
-    def desired_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def desired_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "desired_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="drainingTimeout")
-    def draining_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def draining_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "draining_timeout")
 
     @draining_timeout.setter
-    def draining_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def draining_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "draining_timeout", value)
 
     @_builtins.property
     @pulumi.getter
-    def extensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ExtensionArgs']]]]:
+    def extensions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ExtensionArgs']]]]:
         return pulumi.get(self, "extensions")
 
     @extensions.setter
-    def extensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ExtensionArgs']]]]):
+    def extensions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ExtensionArgs']]]]):
         pulumi.set(self, "extensions", value)
 
     @_builtins.property
     @pulumi.getter
-    def health(self) -> Optional[pulumi.Input['ElastigroupAzureV3HealthArgs']]:
+    def health(self) -> pulumi.Input[Optional['ElastigroupAzureV3HealthArgs']]:
         return pulumi.get(self, "health")
 
     @health.setter
-    def health(self, value: Optional[pulumi.Input['ElastigroupAzureV3HealthArgs']]):
+    def health(self, value: pulumi.Input[Optional['ElastigroupAzureV3HealthArgs']]):
         pulumi.set(self, "health", value)
 
     @_builtins.property
     @pulumi.getter
-    def images(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageArgs']]]]:
+    def images(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ImageArgs']]]]:
         return pulumi.get(self, "images")
 
     @images.setter
-    def images(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageArgs']]]]):
+    def images(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ImageArgs']]]]):
         pulumi.set(self, "images", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancers")
-    def load_balancers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3LoadBalancerArgs']]]]:
+    def load_balancers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3LoadBalancerArgs']]]]:
         return pulumi.get(self, "load_balancers")
 
     @load_balancers.setter
-    def load_balancers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3LoadBalancerArgs']]]]):
+    def load_balancers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3LoadBalancerArgs']]]]):
         pulumi.set(self, "load_balancers", value)
 
     @_builtins.property
     @pulumi.getter
-    def login(self) -> Optional[pulumi.Input['ElastigroupAzureV3LoginArgs']]:
+    def login(self) -> pulumi.Input[Optional['ElastigroupAzureV3LoginArgs']]:
         return pulumi.get(self, "login")
 
     @login.setter
-    def login(self, value: Optional[pulumi.Input['ElastigroupAzureV3LoginArgs']]):
+    def login(self, value: pulumi.Input[Optional['ElastigroupAzureV3LoginArgs']]):
         pulumi.set(self, "login", value)
 
     @_builtins.property
     @pulumi.getter(name="managedServiceIdentities")
-    def managed_service_identities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ManagedServiceIdentityArgs']]]]:
+    def managed_service_identities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ManagedServiceIdentityArgs']]]]:
         return pulumi.get(self, "managed_service_identities")
 
     @managed_service_identities.setter
-    def managed_service_identities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ManagedServiceIdentityArgs']]]]):
+    def managed_service_identities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ManagedServiceIdentityArgs']]]]):
         pulumi.set(self, "managed_service_identities", value)
 
     @_builtins.property
     @pulumi.getter(name="maxSize")
-    def max_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "max_size")
 
     @max_size.setter
-    def max_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_size", value)
 
     @_builtins.property
     @pulumi.getter(name="minSize")
-    def min_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "min_size")
 
     @min_size.setter
-    def min_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_size", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="onDemandCount")
-    def on_demand_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def on_demand_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "on_demand_count")
 
     @on_demand_count.setter
-    def on_demand_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def on_demand_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "on_demand_count", value)
 
     @_builtins.property
     @pulumi.getter(name="optimizationWindows")
-    def optimization_windows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def optimization_windows(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "optimization_windows")
 
     @optimization_windows.setter
-    def optimization_windows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def optimization_windows(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "optimization_windows", value)
 
     @_builtins.property
     @pulumi.getter(name="osDisk")
-    def os_disk(self) -> Optional[pulumi.Input['ElastigroupAzureV3OsDiskArgs']]:
+    def os_disk(self) -> pulumi.Input[Optional['ElastigroupAzureV3OsDiskArgs']]:
         return pulumi.get(self, "os_disk")
 
     @os_disk.setter
-    def os_disk(self, value: Optional[pulumi.Input['ElastigroupAzureV3OsDiskArgs']]):
+    def os_disk(self, value: pulumi.Input[Optional['ElastigroupAzureV3OsDiskArgs']]):
         pulumi.set(self, "os_disk", value)
 
     @_builtins.property
     @pulumi.getter(name="preferredZones")
-    def preferred_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def preferred_zones(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "preferred_zones")
 
     @preferred_zones.setter
-    def preferred_zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def preferred_zones(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "preferred_zones", value)
 
     @_builtins.property
     @pulumi.getter(name="proximityPlacementGroups")
-    def proximity_placement_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ProximityPlacementGroupArgs']]]]:
+    def proximity_placement_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ProximityPlacementGroupArgs']]]]:
         return pulumi.get(self, "proximity_placement_groups")
 
     @proximity_placement_groups.setter
-    def proximity_placement_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ProximityPlacementGroupArgs']]]]):
+    def proximity_placement_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ProximityPlacementGroupArgs']]]]):
         pulumi.set(self, "proximity_placement_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="revertToSpot")
-    def revert_to_spot(self) -> Optional[pulumi.Input['ElastigroupAzureV3RevertToSpotArgs']]:
+    def revert_to_spot(self) -> pulumi.Input[Optional['ElastigroupAzureV3RevertToSpotArgs']]:
         return pulumi.get(self, "revert_to_spot")
 
     @revert_to_spot.setter
-    def revert_to_spot(self, value: Optional[pulumi.Input['ElastigroupAzureV3RevertToSpotArgs']]):
+    def revert_to_spot(self, value: pulumi.Input[Optional['ElastigroupAzureV3RevertToSpotArgs']]):
         pulumi.set(self, "revert_to_spot", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingDownPolicies")
-    def scaling_down_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ScalingDownPolicyArgs']]]]:
+    def scaling_down_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ScalingDownPolicyArgs']]]]:
         return pulumi.get(self, "scaling_down_policies")
 
     @scaling_down_policies.setter
-    def scaling_down_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ScalingDownPolicyArgs']]]]):
+    def scaling_down_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ScalingDownPolicyArgs']]]]):
         pulumi.set(self, "scaling_down_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingUpPolicies")
-    def scaling_up_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ScalingUpPolicyArgs']]]]:
+    def scaling_up_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ScalingUpPolicyArgs']]]]:
         return pulumi.get(self, "scaling_up_policies")
 
     @scaling_up_policies.setter
-    def scaling_up_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ScalingUpPolicyArgs']]]]):
+    def scaling_up_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ScalingUpPolicyArgs']]]]):
         pulumi.set(self, "scaling_up_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="schedulingTasks")
-    def scheduling_tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3SchedulingTaskArgs']]]]:
+    def scheduling_tasks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3SchedulingTaskArgs']]]]:
         return pulumi.get(self, "scheduling_tasks")
 
     @scheduling_tasks.setter
-    def scheduling_tasks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3SchedulingTaskArgs']]]]):
+    def scheduling_tasks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3SchedulingTaskArgs']]]]):
         pulumi.set(self, "scheduling_tasks", value)
 
     @_builtins.property
     @pulumi.getter
-    def secrets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3SecretArgs']]]]:
+    def secrets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3SecretArgs']]]]:
         return pulumi.get(self, "secrets")
 
     @secrets.setter
-    def secrets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3SecretArgs']]]]):
+    def secrets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3SecretArgs']]]]):
         pulumi.set(self, "secrets", value)
 
     @_builtins.property
     @pulumi.getter
-    def security(self) -> Optional[pulumi.Input['ElastigroupAzureV3SecurityArgs']]:
+    def security(self) -> pulumi.Input[Optional['ElastigroupAzureV3SecurityArgs']]:
         return pulumi.get(self, "security")
 
     @security.setter
-    def security(self, value: Optional[pulumi.Input['ElastigroupAzureV3SecurityArgs']]):
+    def security(self, value: pulumi.Input[Optional['ElastigroupAzureV3SecurityArgs']]):
         pulumi.set(self, "security", value)
 
     @_builtins.property
     @pulumi.getter(name="shutdownScript")
-    def shutdown_script(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def shutdown_script(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "shutdown_script")
 
     @shutdown_script.setter
-    def shutdown_script(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def shutdown_script(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "shutdown_script", value)
 
     @_builtins.property
     @pulumi.getter
-    def signals(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3SignalArgs']]]]:
+    def signals(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3SignalArgs']]]]:
         return pulumi.get(self, "signals")
 
     @signals.setter
-    def signals(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3SignalArgs']]]]):
+    def signals(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3SignalArgs']]]]):
         pulumi.set(self, "signals", value)
 
     @_builtins.property
     @pulumi.getter(name="spotPercentage")
-    def spot_percentage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def spot_percentage(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "spot_percentage")
 
     @spot_percentage.setter
-    def spot_percentage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def spot_percentage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "spot_percentage", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3TagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3TagArgs']]]]:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3TagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3TagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="userData")
-    def user_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "user_data")
 
     @user_data.setter
-    def user_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_data", value)
 
     @_builtins.property
     @pulumi.getter(name="vmNamePrefix")
-    def vm_name_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vm_name_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "vm_name_prefix")
 
     @vm_name_prefix.setter
-    def vm_name_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vm_name_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vm_name_prefix", value)
 
     @_builtins.property
     @pulumi.getter
-    def zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def zones(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "zones")
 
     @zones.setter
-    def zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def zones(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "zones", value)
 
 
 @pulumi.input_type
 class _ElastigroupAzureV3State:
     def __init__(__self__, *,
-                 availability_vs_cost: Optional[pulumi.Input[_builtins.int]] = None,
-                 boot_diagnostics: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3BootDiagnosticArgs']]]] = None,
-                 capacity_reservation: Optional[pulumi.Input['ElastigroupAzureV3CapacityReservationArgs']] = None,
-                 custom_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3DataDiskArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 draining_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ExtensionArgs']]]] = None,
-                 fallback_to_on_demand: Optional[pulumi.Input[_builtins.bool]] = None,
-                 health: Optional[pulumi.Input['ElastigroupAzureV3HealthArgs']] = None,
-                 images: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageArgs']]]] = None,
-                 load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3LoadBalancerArgs']]]] = None,
-                 login: Optional[pulumi.Input['ElastigroupAzureV3LoginArgs']] = None,
-                 managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ManagedServiceIdentityArgs']]]] = None,
-                 max_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input['ElastigroupAzureV3NetworkArgs']] = None,
-                 on_demand_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 optimization_windows: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 os: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_disk: Optional[pulumi.Input['ElastigroupAzureV3OsDiskArgs']] = None,
-                 preferred_zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 proximity_placement_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ProximityPlacementGroupArgs']]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 revert_to_spot: Optional[pulumi.Input['ElastigroupAzureV3RevertToSpotArgs']] = None,
-                 scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ScalingDownPolicyArgs']]]] = None,
-                 scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ScalingUpPolicyArgs']]]] = None,
-                 scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3SchedulingTaskArgs']]]] = None,
-                 secrets: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3SecretArgs']]]] = None,
-                 security: Optional[pulumi.Input['ElastigroupAzureV3SecurityArgs']] = None,
-                 shutdown_script: Optional[pulumi.Input[_builtins.str]] = None,
-                 signals: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3SignalArgs']]]] = None,
-                 spot_percentage: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3TagArgs']]]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_sizes: Optional[pulumi.Input['ElastigroupAzureV3VmSizesArgs']] = None,
-                 zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 availability_vs_cost: pulumi.Input[Optional[_builtins.int]] = None,
+                 boot_diagnostics: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3BootDiagnosticArgs']]]] = None,
+                 capacity_reservation: pulumi.Input[Optional['ElastigroupAzureV3CapacityReservationArgs']] = None,
+                 custom_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3DataDiskArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 extensions: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ExtensionArgs']]]] = None,
+                 fallback_to_on_demand: pulumi.Input[Optional[_builtins.bool]] = None,
+                 health: pulumi.Input[Optional['ElastigroupAzureV3HealthArgs']] = None,
+                 images: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ImageArgs']]]] = None,
+                 load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3LoadBalancerArgs']]]] = None,
+                 login: pulumi.Input[Optional['ElastigroupAzureV3LoginArgs']] = None,
+                 managed_service_identities: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ManagedServiceIdentityArgs']]]] = None,
+                 max_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional['ElastigroupAzureV3NetworkArgs']] = None,
+                 on_demand_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 optimization_windows: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 os: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_disk: pulumi.Input[Optional['ElastigroupAzureV3OsDiskArgs']] = None,
+                 preferred_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 proximity_placement_groups: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ProximityPlacementGroupArgs']]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 revert_to_spot: pulumi.Input[Optional['ElastigroupAzureV3RevertToSpotArgs']] = None,
+                 scaling_down_policies: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ScalingDownPolicyArgs']]]] = None,
+                 scaling_up_policies: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ScalingUpPolicyArgs']]]] = None,
+                 scheduling_tasks: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3SchedulingTaskArgs']]]] = None,
+                 secrets: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3SecretArgs']]]] = None,
+                 security: pulumi.Input[Optional['ElastigroupAzureV3SecurityArgs']] = None,
+                 shutdown_script: pulumi.Input[Optional[_builtins.str]] = None,
+                 signals: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3SignalArgs']]]] = None,
+                 spot_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3TagArgs']]]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_sizes: pulumi.Input[Optional['ElastigroupAzureV3VmSizesArgs']] = None,
+                 zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ElastigroupAzureV3 resources.
         """
@@ -644,371 +644,371 @@ class _ElastigroupAzureV3State:
 
     @_builtins.property
     @pulumi.getter(name="availabilityVsCost")
-    def availability_vs_cost(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def availability_vs_cost(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "availability_vs_cost")
 
     @availability_vs_cost.setter
-    def availability_vs_cost(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def availability_vs_cost(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "availability_vs_cost", value)
 
     @_builtins.property
     @pulumi.getter(name="bootDiagnostics")
-    def boot_diagnostics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3BootDiagnosticArgs']]]]:
+    def boot_diagnostics(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3BootDiagnosticArgs']]]]:
         return pulumi.get(self, "boot_diagnostics")
 
     @boot_diagnostics.setter
-    def boot_diagnostics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3BootDiagnosticArgs']]]]):
+    def boot_diagnostics(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3BootDiagnosticArgs']]]]):
         pulumi.set(self, "boot_diagnostics", value)
 
     @_builtins.property
     @pulumi.getter(name="capacityReservation")
-    def capacity_reservation(self) -> Optional[pulumi.Input['ElastigroupAzureV3CapacityReservationArgs']]:
+    def capacity_reservation(self) -> pulumi.Input[Optional['ElastigroupAzureV3CapacityReservationArgs']]:
         return pulumi.get(self, "capacity_reservation")
 
     @capacity_reservation.setter
-    def capacity_reservation(self, value: Optional[pulumi.Input['ElastigroupAzureV3CapacityReservationArgs']]):
+    def capacity_reservation(self, value: pulumi.Input[Optional['ElastigroupAzureV3CapacityReservationArgs']]):
         pulumi.set(self, "capacity_reservation", value)
 
     @_builtins.property
     @pulumi.getter(name="customData")
-    def custom_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "custom_data")
 
     @custom_data.setter
-    def custom_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_data", value)
 
     @_builtins.property
     @pulumi.getter(name="dataDisks")
-    def data_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3DataDiskArgs']]]]:
+    def data_disks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3DataDiskArgs']]]]:
         return pulumi.get(self, "data_disks")
 
     @data_disks.setter
-    def data_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3DataDiskArgs']]]]):
+    def data_disks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3DataDiskArgs']]]]):
         pulumi.set(self, "data_disks", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredCapacity")
-    def desired_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def desired_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "desired_capacity")
 
     @desired_capacity.setter
-    def desired_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def desired_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "desired_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="drainingTimeout")
-    def draining_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def draining_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "draining_timeout")
 
     @draining_timeout.setter
-    def draining_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def draining_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "draining_timeout", value)
 
     @_builtins.property
     @pulumi.getter
-    def extensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ExtensionArgs']]]]:
+    def extensions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ExtensionArgs']]]]:
         return pulumi.get(self, "extensions")
 
     @extensions.setter
-    def extensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ExtensionArgs']]]]):
+    def extensions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ExtensionArgs']]]]):
         pulumi.set(self, "extensions", value)
 
     @_builtins.property
     @pulumi.getter(name="fallbackToOnDemand")
-    def fallback_to_on_demand(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def fallback_to_on_demand(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "fallback_to_on_demand")
 
     @fallback_to_on_demand.setter
-    def fallback_to_on_demand(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def fallback_to_on_demand(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "fallback_to_on_demand", value)
 
     @_builtins.property
     @pulumi.getter
-    def health(self) -> Optional[pulumi.Input['ElastigroupAzureV3HealthArgs']]:
+    def health(self) -> pulumi.Input[Optional['ElastigroupAzureV3HealthArgs']]:
         return pulumi.get(self, "health")
 
     @health.setter
-    def health(self, value: Optional[pulumi.Input['ElastigroupAzureV3HealthArgs']]):
+    def health(self, value: pulumi.Input[Optional['ElastigroupAzureV3HealthArgs']]):
         pulumi.set(self, "health", value)
 
     @_builtins.property
     @pulumi.getter
-    def images(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageArgs']]]]:
+    def images(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ImageArgs']]]]:
         return pulumi.get(self, "images")
 
     @images.setter
-    def images(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageArgs']]]]):
+    def images(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ImageArgs']]]]):
         pulumi.set(self, "images", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancers")
-    def load_balancers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3LoadBalancerArgs']]]]:
+    def load_balancers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3LoadBalancerArgs']]]]:
         return pulumi.get(self, "load_balancers")
 
     @load_balancers.setter
-    def load_balancers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3LoadBalancerArgs']]]]):
+    def load_balancers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3LoadBalancerArgs']]]]):
         pulumi.set(self, "load_balancers", value)
 
     @_builtins.property
     @pulumi.getter
-    def login(self) -> Optional[pulumi.Input['ElastigroupAzureV3LoginArgs']]:
+    def login(self) -> pulumi.Input[Optional['ElastigroupAzureV3LoginArgs']]:
         return pulumi.get(self, "login")
 
     @login.setter
-    def login(self, value: Optional[pulumi.Input['ElastigroupAzureV3LoginArgs']]):
+    def login(self, value: pulumi.Input[Optional['ElastigroupAzureV3LoginArgs']]):
         pulumi.set(self, "login", value)
 
     @_builtins.property
     @pulumi.getter(name="managedServiceIdentities")
-    def managed_service_identities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ManagedServiceIdentityArgs']]]]:
+    def managed_service_identities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ManagedServiceIdentityArgs']]]]:
         return pulumi.get(self, "managed_service_identities")
 
     @managed_service_identities.setter
-    def managed_service_identities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ManagedServiceIdentityArgs']]]]):
+    def managed_service_identities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ManagedServiceIdentityArgs']]]]):
         pulumi.set(self, "managed_service_identities", value)
 
     @_builtins.property
     @pulumi.getter(name="maxSize")
-    def max_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "max_size")
 
     @max_size.setter
-    def max_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_size", value)
 
     @_builtins.property
     @pulumi.getter(name="minSize")
-    def min_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "min_size")
 
     @min_size.setter
-    def min_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_size", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input['ElastigroupAzureV3NetworkArgs']]:
+    def network(self) -> pulumi.Input[Optional['ElastigroupAzureV3NetworkArgs']]:
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input['ElastigroupAzureV3NetworkArgs']]):
+    def network(self, value: pulumi.Input[Optional['ElastigroupAzureV3NetworkArgs']]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter(name="onDemandCount")
-    def on_demand_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def on_demand_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "on_demand_count")
 
     @on_demand_count.setter
-    def on_demand_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def on_demand_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "on_demand_count", value)
 
     @_builtins.property
     @pulumi.getter(name="optimizationWindows")
-    def optimization_windows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def optimization_windows(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "optimization_windows")
 
     @optimization_windows.setter
-    def optimization_windows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def optimization_windows(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "optimization_windows", value)
 
     @_builtins.property
     @pulumi.getter
-    def os(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def os(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "os")
 
     @os.setter
-    def os(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def os(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "os", value)
 
     @_builtins.property
     @pulumi.getter(name="osDisk")
-    def os_disk(self) -> Optional[pulumi.Input['ElastigroupAzureV3OsDiskArgs']]:
+    def os_disk(self) -> pulumi.Input[Optional['ElastigroupAzureV3OsDiskArgs']]:
         return pulumi.get(self, "os_disk")
 
     @os_disk.setter
-    def os_disk(self, value: Optional[pulumi.Input['ElastigroupAzureV3OsDiskArgs']]):
+    def os_disk(self, value: pulumi.Input[Optional['ElastigroupAzureV3OsDiskArgs']]):
         pulumi.set(self, "os_disk", value)
 
     @_builtins.property
     @pulumi.getter(name="preferredZones")
-    def preferred_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def preferred_zones(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "preferred_zones")
 
     @preferred_zones.setter
-    def preferred_zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def preferred_zones(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "preferred_zones", value)
 
     @_builtins.property
     @pulumi.getter(name="proximityPlacementGroups")
-    def proximity_placement_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ProximityPlacementGroupArgs']]]]:
+    def proximity_placement_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ProximityPlacementGroupArgs']]]]:
         return pulumi.get(self, "proximity_placement_groups")
 
     @proximity_placement_groups.setter
-    def proximity_placement_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ProximityPlacementGroupArgs']]]]):
+    def proximity_placement_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ProximityPlacementGroupArgs']]]]):
         pulumi.set(self, "proximity_placement_groups", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupName")
-    def resource_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "resource_group_name")
 
     @resource_group_name.setter
-    def resource_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="revertToSpot")
-    def revert_to_spot(self) -> Optional[pulumi.Input['ElastigroupAzureV3RevertToSpotArgs']]:
+    def revert_to_spot(self) -> pulumi.Input[Optional['ElastigroupAzureV3RevertToSpotArgs']]:
         return pulumi.get(self, "revert_to_spot")
 
     @revert_to_spot.setter
-    def revert_to_spot(self, value: Optional[pulumi.Input['ElastigroupAzureV3RevertToSpotArgs']]):
+    def revert_to_spot(self, value: pulumi.Input[Optional['ElastigroupAzureV3RevertToSpotArgs']]):
         pulumi.set(self, "revert_to_spot", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingDownPolicies")
-    def scaling_down_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ScalingDownPolicyArgs']]]]:
+    def scaling_down_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ScalingDownPolicyArgs']]]]:
         return pulumi.get(self, "scaling_down_policies")
 
     @scaling_down_policies.setter
-    def scaling_down_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ScalingDownPolicyArgs']]]]):
+    def scaling_down_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ScalingDownPolicyArgs']]]]):
         pulumi.set(self, "scaling_down_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingUpPolicies")
-    def scaling_up_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ScalingUpPolicyArgs']]]]:
+    def scaling_up_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ScalingUpPolicyArgs']]]]:
         return pulumi.get(self, "scaling_up_policies")
 
     @scaling_up_policies.setter
-    def scaling_up_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ScalingUpPolicyArgs']]]]):
+    def scaling_up_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ScalingUpPolicyArgs']]]]):
         pulumi.set(self, "scaling_up_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="schedulingTasks")
-    def scheduling_tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3SchedulingTaskArgs']]]]:
+    def scheduling_tasks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3SchedulingTaskArgs']]]]:
         return pulumi.get(self, "scheduling_tasks")
 
     @scheduling_tasks.setter
-    def scheduling_tasks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3SchedulingTaskArgs']]]]):
+    def scheduling_tasks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3SchedulingTaskArgs']]]]):
         pulumi.set(self, "scheduling_tasks", value)
 
     @_builtins.property
     @pulumi.getter
-    def secrets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3SecretArgs']]]]:
+    def secrets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3SecretArgs']]]]:
         return pulumi.get(self, "secrets")
 
     @secrets.setter
-    def secrets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3SecretArgs']]]]):
+    def secrets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3SecretArgs']]]]):
         pulumi.set(self, "secrets", value)
 
     @_builtins.property
     @pulumi.getter
-    def security(self) -> Optional[pulumi.Input['ElastigroupAzureV3SecurityArgs']]:
+    def security(self) -> pulumi.Input[Optional['ElastigroupAzureV3SecurityArgs']]:
         return pulumi.get(self, "security")
 
     @security.setter
-    def security(self, value: Optional[pulumi.Input['ElastigroupAzureV3SecurityArgs']]):
+    def security(self, value: pulumi.Input[Optional['ElastigroupAzureV3SecurityArgs']]):
         pulumi.set(self, "security", value)
 
     @_builtins.property
     @pulumi.getter(name="shutdownScript")
-    def shutdown_script(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def shutdown_script(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "shutdown_script")
 
     @shutdown_script.setter
-    def shutdown_script(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def shutdown_script(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "shutdown_script", value)
 
     @_builtins.property
     @pulumi.getter
-    def signals(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3SignalArgs']]]]:
+    def signals(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3SignalArgs']]]]:
         return pulumi.get(self, "signals")
 
     @signals.setter
-    def signals(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3SignalArgs']]]]):
+    def signals(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3SignalArgs']]]]):
         pulumi.set(self, "signals", value)
 
     @_builtins.property
     @pulumi.getter(name="spotPercentage")
-    def spot_percentage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def spot_percentage(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "spot_percentage")
 
     @spot_percentage.setter
-    def spot_percentage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def spot_percentage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "spot_percentage", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3TagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3TagArgs']]]]:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3TagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3TagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="userData")
-    def user_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "user_data")
 
     @user_data.setter
-    def user_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_data", value)
 
     @_builtins.property
     @pulumi.getter(name="vmNamePrefix")
-    def vm_name_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vm_name_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "vm_name_prefix")
 
     @vm_name_prefix.setter
-    def vm_name_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vm_name_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vm_name_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="vmSizes")
-    def vm_sizes(self) -> Optional[pulumi.Input['ElastigroupAzureV3VmSizesArgs']]:
+    def vm_sizes(self) -> pulumi.Input[Optional['ElastigroupAzureV3VmSizesArgs']]:
         return pulumi.get(self, "vm_sizes")
 
     @vm_sizes.setter
-    def vm_sizes(self, value: Optional[pulumi.Input['ElastigroupAzureV3VmSizesArgs']]):
+    def vm_sizes(self, value: pulumi.Input[Optional['ElastigroupAzureV3VmSizesArgs']]):
         pulumi.set(self, "vm_sizes", value)
 
     @_builtins.property
     @pulumi.getter
-    def zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def zones(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "zones")
 
     @zones.setter
-    def zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def zones(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "zones", value)
 
 
@@ -1018,47 +1018,47 @@ class ElastigroupAzureV3(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 availability_vs_cost: Optional[pulumi.Input[_builtins.int]] = None,
-                 boot_diagnostics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3BootDiagnosticArgs', 'ElastigroupAzureV3BootDiagnosticArgsDict']]]]] = None,
-                 capacity_reservation: Optional[pulumi.Input[Union['ElastigroupAzureV3CapacityReservationArgs', 'ElastigroupAzureV3CapacityReservationArgsDict']]] = None,
-                 custom_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3DataDiskArgs', 'ElastigroupAzureV3DataDiskArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 draining_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3ExtensionArgs', 'ElastigroupAzureV3ExtensionArgsDict']]]]] = None,
-                 fallback_to_on_demand: Optional[pulumi.Input[_builtins.bool]] = None,
-                 health: Optional[pulumi.Input[Union['ElastigroupAzureV3HealthArgs', 'ElastigroupAzureV3HealthArgsDict']]] = None,
-                 images: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3ImageArgs', 'ElastigroupAzureV3ImageArgsDict']]]]] = None,
-                 load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3LoadBalancerArgs', 'ElastigroupAzureV3LoadBalancerArgsDict']]]]] = None,
-                 login: Optional[pulumi.Input[Union['ElastigroupAzureV3LoginArgs', 'ElastigroupAzureV3LoginArgsDict']]] = None,
-                 managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3ManagedServiceIdentityArgs', 'ElastigroupAzureV3ManagedServiceIdentityArgsDict']]]]] = None,
-                 max_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[Union['ElastigroupAzureV3NetworkArgs', 'ElastigroupAzureV3NetworkArgsDict']]] = None,
-                 on_demand_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 optimization_windows: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 os: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_disk: Optional[pulumi.Input[Union['ElastigroupAzureV3OsDiskArgs', 'ElastigroupAzureV3OsDiskArgsDict']]] = None,
-                 preferred_zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 proximity_placement_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3ProximityPlacementGroupArgs', 'ElastigroupAzureV3ProximityPlacementGroupArgsDict']]]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 revert_to_spot: Optional[pulumi.Input[Union['ElastigroupAzureV3RevertToSpotArgs', 'ElastigroupAzureV3RevertToSpotArgsDict']]] = None,
-                 scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3ScalingDownPolicyArgs', 'ElastigroupAzureV3ScalingDownPolicyArgsDict']]]]] = None,
-                 scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3ScalingUpPolicyArgs', 'ElastigroupAzureV3ScalingUpPolicyArgsDict']]]]] = None,
-                 scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3SchedulingTaskArgs', 'ElastigroupAzureV3SchedulingTaskArgsDict']]]]] = None,
-                 secrets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3SecretArgs', 'ElastigroupAzureV3SecretArgsDict']]]]] = None,
-                 security: Optional[pulumi.Input[Union['ElastigroupAzureV3SecurityArgs', 'ElastigroupAzureV3SecurityArgsDict']]] = None,
-                 shutdown_script: Optional[pulumi.Input[_builtins.str]] = None,
-                 signals: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3SignalArgs', 'ElastigroupAzureV3SignalArgsDict']]]]] = None,
-                 spot_percentage: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3TagArgs', 'ElastigroupAzureV3TagArgsDict']]]]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_sizes: Optional[pulumi.Input[Union['ElastigroupAzureV3VmSizesArgs', 'ElastigroupAzureV3VmSizesArgsDict']]] = None,
-                 zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 availability_vs_cost: pulumi.Input[Optional[_builtins.int]] = None,
+                 boot_diagnostics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3BootDiagnosticArgs', 'ElastigroupAzureV3BootDiagnosticArgsDict']]]]] = None,
+                 capacity_reservation: pulumi.Input[Optional[Union['ElastigroupAzureV3CapacityReservationArgs', 'ElastigroupAzureV3CapacityReservationArgsDict']]] = None,
+                 custom_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3DataDiskArgs', 'ElastigroupAzureV3DataDiskArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 extensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3ExtensionArgs', 'ElastigroupAzureV3ExtensionArgsDict']]]]] = None,
+                 fallback_to_on_demand: pulumi.Input[Optional[_builtins.bool]] = None,
+                 health: pulumi.Input[Optional[Union['ElastigroupAzureV3HealthArgs', 'ElastigroupAzureV3HealthArgsDict']]] = None,
+                 images: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3ImageArgs', 'ElastigroupAzureV3ImageArgsDict']]]]] = None,
+                 load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3LoadBalancerArgs', 'ElastigroupAzureV3LoadBalancerArgsDict']]]]] = None,
+                 login: pulumi.Input[Optional[Union['ElastigroupAzureV3LoginArgs', 'ElastigroupAzureV3LoginArgsDict']]] = None,
+                 managed_service_identities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3ManagedServiceIdentityArgs', 'ElastigroupAzureV3ManagedServiceIdentityArgsDict']]]]] = None,
+                 max_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[Union['ElastigroupAzureV3NetworkArgs', 'ElastigroupAzureV3NetworkArgsDict']]] = None,
+                 on_demand_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 optimization_windows: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 os: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_disk: pulumi.Input[Optional[Union['ElastigroupAzureV3OsDiskArgs', 'ElastigroupAzureV3OsDiskArgsDict']]] = None,
+                 preferred_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 proximity_placement_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3ProximityPlacementGroupArgs', 'ElastigroupAzureV3ProximityPlacementGroupArgsDict']]]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 revert_to_spot: pulumi.Input[Optional[Union['ElastigroupAzureV3RevertToSpotArgs', 'ElastigroupAzureV3RevertToSpotArgsDict']]] = None,
+                 scaling_down_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3ScalingDownPolicyArgs', 'ElastigroupAzureV3ScalingDownPolicyArgsDict']]]]] = None,
+                 scaling_up_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3ScalingUpPolicyArgs', 'ElastigroupAzureV3ScalingUpPolicyArgsDict']]]]] = None,
+                 scheduling_tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3SchedulingTaskArgs', 'ElastigroupAzureV3SchedulingTaskArgsDict']]]]] = None,
+                 secrets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3SecretArgs', 'ElastigroupAzureV3SecretArgsDict']]]]] = None,
+                 security: pulumi.Input[Optional[Union['ElastigroupAzureV3SecurityArgs', 'ElastigroupAzureV3SecurityArgsDict']]] = None,
+                 shutdown_script: pulumi.Input[Optional[_builtins.str]] = None,
+                 signals: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3SignalArgs', 'ElastigroupAzureV3SignalArgsDict']]]]] = None,
+                 spot_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3TagArgs', 'ElastigroupAzureV3TagArgsDict']]]]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_sizes: pulumi.Input[Optional[Union['ElastigroupAzureV3VmSizesArgs', 'ElastigroupAzureV3VmSizesArgsDict']]] = None,
+                 zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Create a ElastigroupAzureV3 resource with the given unique name, props, and options.
@@ -1090,47 +1090,47 @@ class ElastigroupAzureV3(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 availability_vs_cost: Optional[pulumi.Input[_builtins.int]] = None,
-                 boot_diagnostics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3BootDiagnosticArgs', 'ElastigroupAzureV3BootDiagnosticArgsDict']]]]] = None,
-                 capacity_reservation: Optional[pulumi.Input[Union['ElastigroupAzureV3CapacityReservationArgs', 'ElastigroupAzureV3CapacityReservationArgsDict']]] = None,
-                 custom_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3DataDiskArgs', 'ElastigroupAzureV3DataDiskArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 draining_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3ExtensionArgs', 'ElastigroupAzureV3ExtensionArgsDict']]]]] = None,
-                 fallback_to_on_demand: Optional[pulumi.Input[_builtins.bool]] = None,
-                 health: Optional[pulumi.Input[Union['ElastigroupAzureV3HealthArgs', 'ElastigroupAzureV3HealthArgsDict']]] = None,
-                 images: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3ImageArgs', 'ElastigroupAzureV3ImageArgsDict']]]]] = None,
-                 load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3LoadBalancerArgs', 'ElastigroupAzureV3LoadBalancerArgsDict']]]]] = None,
-                 login: Optional[pulumi.Input[Union['ElastigroupAzureV3LoginArgs', 'ElastigroupAzureV3LoginArgsDict']]] = None,
-                 managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3ManagedServiceIdentityArgs', 'ElastigroupAzureV3ManagedServiceIdentityArgsDict']]]]] = None,
-                 max_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[Union['ElastigroupAzureV3NetworkArgs', 'ElastigroupAzureV3NetworkArgsDict']]] = None,
-                 on_demand_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 optimization_windows: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 os: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_disk: Optional[pulumi.Input[Union['ElastigroupAzureV3OsDiskArgs', 'ElastigroupAzureV3OsDiskArgsDict']]] = None,
-                 preferred_zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 proximity_placement_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3ProximityPlacementGroupArgs', 'ElastigroupAzureV3ProximityPlacementGroupArgsDict']]]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 revert_to_spot: Optional[pulumi.Input[Union['ElastigroupAzureV3RevertToSpotArgs', 'ElastigroupAzureV3RevertToSpotArgsDict']]] = None,
-                 scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3ScalingDownPolicyArgs', 'ElastigroupAzureV3ScalingDownPolicyArgsDict']]]]] = None,
-                 scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3ScalingUpPolicyArgs', 'ElastigroupAzureV3ScalingUpPolicyArgsDict']]]]] = None,
-                 scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3SchedulingTaskArgs', 'ElastigroupAzureV3SchedulingTaskArgsDict']]]]] = None,
-                 secrets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3SecretArgs', 'ElastigroupAzureV3SecretArgsDict']]]]] = None,
-                 security: Optional[pulumi.Input[Union['ElastigroupAzureV3SecurityArgs', 'ElastigroupAzureV3SecurityArgsDict']]] = None,
-                 shutdown_script: Optional[pulumi.Input[_builtins.str]] = None,
-                 signals: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3SignalArgs', 'ElastigroupAzureV3SignalArgsDict']]]]] = None,
-                 spot_percentage: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3TagArgs', 'ElastigroupAzureV3TagArgsDict']]]]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_sizes: Optional[pulumi.Input[Union['ElastigroupAzureV3VmSizesArgs', 'ElastigroupAzureV3VmSizesArgsDict']]] = None,
-                 zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 availability_vs_cost: pulumi.Input[Optional[_builtins.int]] = None,
+                 boot_diagnostics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3BootDiagnosticArgs', 'ElastigroupAzureV3BootDiagnosticArgsDict']]]]] = None,
+                 capacity_reservation: pulumi.Input[Optional[Union['ElastigroupAzureV3CapacityReservationArgs', 'ElastigroupAzureV3CapacityReservationArgsDict']]] = None,
+                 custom_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3DataDiskArgs', 'ElastigroupAzureV3DataDiskArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 extensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3ExtensionArgs', 'ElastigroupAzureV3ExtensionArgsDict']]]]] = None,
+                 fallback_to_on_demand: pulumi.Input[Optional[_builtins.bool]] = None,
+                 health: pulumi.Input[Optional[Union['ElastigroupAzureV3HealthArgs', 'ElastigroupAzureV3HealthArgsDict']]] = None,
+                 images: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3ImageArgs', 'ElastigroupAzureV3ImageArgsDict']]]]] = None,
+                 load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3LoadBalancerArgs', 'ElastigroupAzureV3LoadBalancerArgsDict']]]]] = None,
+                 login: pulumi.Input[Optional[Union['ElastigroupAzureV3LoginArgs', 'ElastigroupAzureV3LoginArgsDict']]] = None,
+                 managed_service_identities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3ManagedServiceIdentityArgs', 'ElastigroupAzureV3ManagedServiceIdentityArgsDict']]]]] = None,
+                 max_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[Union['ElastigroupAzureV3NetworkArgs', 'ElastigroupAzureV3NetworkArgsDict']]] = None,
+                 on_demand_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 optimization_windows: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 os: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_disk: pulumi.Input[Optional[Union['ElastigroupAzureV3OsDiskArgs', 'ElastigroupAzureV3OsDiskArgsDict']]] = None,
+                 preferred_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 proximity_placement_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3ProximityPlacementGroupArgs', 'ElastigroupAzureV3ProximityPlacementGroupArgsDict']]]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 revert_to_spot: pulumi.Input[Optional[Union['ElastigroupAzureV3RevertToSpotArgs', 'ElastigroupAzureV3RevertToSpotArgsDict']]] = None,
+                 scaling_down_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3ScalingDownPolicyArgs', 'ElastigroupAzureV3ScalingDownPolicyArgsDict']]]]] = None,
+                 scaling_up_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3ScalingUpPolicyArgs', 'ElastigroupAzureV3ScalingUpPolicyArgsDict']]]]] = None,
+                 scheduling_tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3SchedulingTaskArgs', 'ElastigroupAzureV3SchedulingTaskArgsDict']]]]] = None,
+                 secrets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3SecretArgs', 'ElastigroupAzureV3SecretArgsDict']]]]] = None,
+                 security: pulumi.Input[Optional[Union['ElastigroupAzureV3SecurityArgs', 'ElastigroupAzureV3SecurityArgsDict']]] = None,
+                 shutdown_script: pulumi.Input[Optional[_builtins.str]] = None,
+                 signals: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3SignalArgs', 'ElastigroupAzureV3SignalArgsDict']]]]] = None,
+                 spot_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3TagArgs', 'ElastigroupAzureV3TagArgsDict']]]]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_sizes: pulumi.Input[Optional[Union['ElastigroupAzureV3VmSizesArgs', 'ElastigroupAzureV3VmSizesArgsDict']]] = None,
+                 zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1203,47 +1203,47 @@ class ElastigroupAzureV3(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            availability_vs_cost: Optional[pulumi.Input[_builtins.int]] = None,
-            boot_diagnostics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3BootDiagnosticArgs', 'ElastigroupAzureV3BootDiagnosticArgsDict']]]]] = None,
-            capacity_reservation: Optional[pulumi.Input[Union['ElastigroupAzureV3CapacityReservationArgs', 'ElastigroupAzureV3CapacityReservationArgsDict']]] = None,
-            custom_data: Optional[pulumi.Input[_builtins.str]] = None,
-            data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3DataDiskArgs', 'ElastigroupAzureV3DataDiskArgsDict']]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            desired_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-            draining_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3ExtensionArgs', 'ElastigroupAzureV3ExtensionArgsDict']]]]] = None,
-            fallback_to_on_demand: Optional[pulumi.Input[_builtins.bool]] = None,
-            health: Optional[pulumi.Input[Union['ElastigroupAzureV3HealthArgs', 'ElastigroupAzureV3HealthArgsDict']]] = None,
-            images: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3ImageArgs', 'ElastigroupAzureV3ImageArgsDict']]]]] = None,
-            load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3LoadBalancerArgs', 'ElastigroupAzureV3LoadBalancerArgsDict']]]]] = None,
-            login: Optional[pulumi.Input[Union['ElastigroupAzureV3LoginArgs', 'ElastigroupAzureV3LoginArgsDict']]] = None,
-            managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3ManagedServiceIdentityArgs', 'ElastigroupAzureV3ManagedServiceIdentityArgsDict']]]]] = None,
-            max_size: Optional[pulumi.Input[_builtins.int]] = None,
-            min_size: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network: Optional[pulumi.Input[Union['ElastigroupAzureV3NetworkArgs', 'ElastigroupAzureV3NetworkArgsDict']]] = None,
-            on_demand_count: Optional[pulumi.Input[_builtins.int]] = None,
-            optimization_windows: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            os: Optional[pulumi.Input[_builtins.str]] = None,
-            os_disk: Optional[pulumi.Input[Union['ElastigroupAzureV3OsDiskArgs', 'ElastigroupAzureV3OsDiskArgsDict']]] = None,
-            preferred_zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            proximity_placement_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3ProximityPlacementGroupArgs', 'ElastigroupAzureV3ProximityPlacementGroupArgsDict']]]]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            revert_to_spot: Optional[pulumi.Input[Union['ElastigroupAzureV3RevertToSpotArgs', 'ElastigroupAzureV3RevertToSpotArgsDict']]] = None,
-            scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3ScalingDownPolicyArgs', 'ElastigroupAzureV3ScalingDownPolicyArgsDict']]]]] = None,
-            scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3ScalingUpPolicyArgs', 'ElastigroupAzureV3ScalingUpPolicyArgsDict']]]]] = None,
-            scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3SchedulingTaskArgs', 'ElastigroupAzureV3SchedulingTaskArgsDict']]]]] = None,
-            secrets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3SecretArgs', 'ElastigroupAzureV3SecretArgsDict']]]]] = None,
-            security: Optional[pulumi.Input[Union['ElastigroupAzureV3SecurityArgs', 'ElastigroupAzureV3SecurityArgsDict']]] = None,
-            shutdown_script: Optional[pulumi.Input[_builtins.str]] = None,
-            signals: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3SignalArgs', 'ElastigroupAzureV3SignalArgsDict']]]]] = None,
-            spot_percentage: Optional[pulumi.Input[_builtins.int]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupAzureV3TagArgs', 'ElastigroupAzureV3TagArgsDict']]]]] = None,
-            user_data: Optional[pulumi.Input[_builtins.str]] = None,
-            vm_name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            vm_sizes: Optional[pulumi.Input[Union['ElastigroupAzureV3VmSizesArgs', 'ElastigroupAzureV3VmSizesArgsDict']]] = None,
-            zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'ElastigroupAzureV3':
+            availability_vs_cost: pulumi.Input[Optional[_builtins.int]] = None,
+            boot_diagnostics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3BootDiagnosticArgs', 'ElastigroupAzureV3BootDiagnosticArgsDict']]]]] = None,
+            capacity_reservation: pulumi.Input[Optional[Union['ElastigroupAzureV3CapacityReservationArgs', 'ElastigroupAzureV3CapacityReservationArgsDict']]] = None,
+            custom_data: pulumi.Input[Optional[_builtins.str]] = None,
+            data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3DataDiskArgs', 'ElastigroupAzureV3DataDiskArgsDict']]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+            draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            extensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3ExtensionArgs', 'ElastigroupAzureV3ExtensionArgsDict']]]]] = None,
+            fallback_to_on_demand: pulumi.Input[Optional[_builtins.bool]] = None,
+            health: pulumi.Input[Optional[Union['ElastigroupAzureV3HealthArgs', 'ElastigroupAzureV3HealthArgsDict']]] = None,
+            images: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3ImageArgs', 'ElastigroupAzureV3ImageArgsDict']]]]] = None,
+            load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3LoadBalancerArgs', 'ElastigroupAzureV3LoadBalancerArgsDict']]]]] = None,
+            login: pulumi.Input[Optional[Union['ElastigroupAzureV3LoginArgs', 'ElastigroupAzureV3LoginArgsDict']]] = None,
+            managed_service_identities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3ManagedServiceIdentityArgs', 'ElastigroupAzureV3ManagedServiceIdentityArgsDict']]]]] = None,
+            max_size: pulumi.Input[Optional[_builtins.int]] = None,
+            min_size: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[Union['ElastigroupAzureV3NetworkArgs', 'ElastigroupAzureV3NetworkArgsDict']]] = None,
+            on_demand_count: pulumi.Input[Optional[_builtins.int]] = None,
+            optimization_windows: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            os: pulumi.Input[Optional[_builtins.str]] = None,
+            os_disk: pulumi.Input[Optional[Union['ElastigroupAzureV3OsDiskArgs', 'ElastigroupAzureV3OsDiskArgsDict']]] = None,
+            preferred_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            proximity_placement_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3ProximityPlacementGroupArgs', 'ElastigroupAzureV3ProximityPlacementGroupArgsDict']]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            revert_to_spot: pulumi.Input[Optional[Union['ElastigroupAzureV3RevertToSpotArgs', 'ElastigroupAzureV3RevertToSpotArgsDict']]] = None,
+            scaling_down_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3ScalingDownPolicyArgs', 'ElastigroupAzureV3ScalingDownPolicyArgsDict']]]]] = None,
+            scaling_up_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3ScalingUpPolicyArgs', 'ElastigroupAzureV3ScalingUpPolicyArgsDict']]]]] = None,
+            scheduling_tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3SchedulingTaskArgs', 'ElastigroupAzureV3SchedulingTaskArgsDict']]]]] = None,
+            secrets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3SecretArgs', 'ElastigroupAzureV3SecretArgsDict']]]]] = None,
+            security: pulumi.Input[Optional[Union['ElastigroupAzureV3SecurityArgs', 'ElastigroupAzureV3SecurityArgsDict']]] = None,
+            shutdown_script: pulumi.Input[Optional[_builtins.str]] = None,
+            signals: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3SignalArgs', 'ElastigroupAzureV3SignalArgsDict']]]]] = None,
+            spot_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3TagArgs', 'ElastigroupAzureV3TagArgsDict']]]]] = None,
+            user_data: pulumi.Input[Optional[_builtins.str]] = None,
+            vm_name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            vm_sizes: pulumi.Input[Optional[Union['ElastigroupAzureV3VmSizesArgs', 'ElastigroupAzureV3VmSizesArgsDict']]] = None,
+            zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'ElastigroupAzureV3':
         """
         Get an existing ElastigroupAzureV3 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

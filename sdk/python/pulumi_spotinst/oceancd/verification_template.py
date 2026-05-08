@@ -21,9 +21,9 @@ __all__ = ['VerificationTemplateArgs', 'VerificationTemplate']
 @pulumi.input_type
 class VerificationTemplateArgs:
     def __init__(__self__, *,
-                 args: Optional[pulumi.Input[Sequence[pulumi.Input['VerificationTemplateArgArgs']]]] = None,
-                 metrics: Optional[pulumi.Input[Sequence[pulumi.Input['VerificationTemplateMetricArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 args: pulumi.Input[Optional[Sequence[pulumi.Input['VerificationTemplateArgArgs']]]] = None,
+                 metrics: pulumi.Input[Optional[Sequence[pulumi.Input['VerificationTemplateMetricArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a VerificationTemplate resource.
 
@@ -40,47 +40,47 @@ class VerificationTemplateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VerificationTemplateArgArgs']]]]:
+    def args(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VerificationTemplateArgArgs']]]]:
         """
         List of verification arguments. You may specify either `value` OR `valueFrom` but not both.In case `args`:`value` is already defined in the RolloutSpec entity, there is no need to also specify it in the VerificationTemplate entity.
         """
         return pulumi.get(self, "args")
 
     @args.setter
-    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VerificationTemplateArgArgs']]]]):
+    def args(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VerificationTemplateArgArgs']]]]):
         pulumi.set(self, "args", value)
 
     @_builtins.property
     @pulumi.getter
-    def metrics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VerificationTemplateMetricArgs']]]]:
+    def metrics(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VerificationTemplateMetricArgs']]]]:
         """
         List of verification metrics.
         """
         return pulumi.get(self, "metrics")
 
     @metrics.setter
-    def metrics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VerificationTemplateMetricArgs']]]]):
+    def metrics(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VerificationTemplateMetricArgs']]]]):
         pulumi.set(self, "metrics", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier name for Ocean CD Verification Template. Must be unique.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _VerificationTemplateState:
     def __init__(__self__, *,
-                 args: Optional[pulumi.Input[Sequence[pulumi.Input['VerificationTemplateArgArgs']]]] = None,
-                 metrics: Optional[pulumi.Input[Sequence[pulumi.Input['VerificationTemplateMetricArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 args: pulumi.Input[Optional[Sequence[pulumi.Input['VerificationTemplateArgArgs']]]] = None,
+                 metrics: pulumi.Input[Optional[Sequence[pulumi.Input['VerificationTemplateMetricArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VerificationTemplate resources.
 
@@ -97,38 +97,38 @@ class _VerificationTemplateState:
 
     @_builtins.property
     @pulumi.getter
-    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VerificationTemplateArgArgs']]]]:
+    def args(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VerificationTemplateArgArgs']]]]:
         """
         List of verification arguments. You may specify either `value` OR `valueFrom` but not both.In case `args`:`value` is already defined in the RolloutSpec entity, there is no need to also specify it in the VerificationTemplate entity.
         """
         return pulumi.get(self, "args")
 
     @args.setter
-    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VerificationTemplateArgArgs']]]]):
+    def args(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VerificationTemplateArgArgs']]]]):
         pulumi.set(self, "args", value)
 
     @_builtins.property
     @pulumi.getter
-    def metrics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VerificationTemplateMetricArgs']]]]:
+    def metrics(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VerificationTemplateMetricArgs']]]]:
         """
         List of verification metrics.
         """
         return pulumi.get(self, "metrics")
 
     @metrics.setter
-    def metrics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VerificationTemplateMetricArgs']]]]):
+    def metrics(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VerificationTemplateMetricArgs']]]]):
         pulumi.set(self, "metrics", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier name for Ocean CD Verification Template. Must be unique.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
@@ -138,9 +138,9 @@ class VerificationTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 args: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VerificationTemplateArgArgs', 'VerificationTemplateArgArgsDict']]]]] = None,
-                 metrics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VerificationTemplateMetricArgs', 'VerificationTemplateMetricArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 args: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VerificationTemplateArgArgs', 'VerificationTemplateArgArgsDict']]]]] = None,
+                 metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VerificationTemplateMetricArgs', 'VerificationTemplateMetricArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a Spotinst OceanCD Verfification Template resource.
@@ -427,9 +427,9 @@ class VerificationTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 args: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VerificationTemplateArgArgs', 'VerificationTemplateArgArgsDict']]]]] = None,
-                 metrics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VerificationTemplateMetricArgs', 'VerificationTemplateMetricArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 args: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VerificationTemplateArgArgs', 'VerificationTemplateArgArgsDict']]]]] = None,
+                 metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VerificationTemplateMetricArgs', 'VerificationTemplateMetricArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -452,9 +452,9 @@ class VerificationTemplate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            args: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VerificationTemplateArgArgs', 'VerificationTemplateArgArgsDict']]]]] = None,
-            metrics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VerificationTemplateMetricArgs', 'VerificationTemplateMetricArgsDict']]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None) -> 'VerificationTemplate':
+            args: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VerificationTemplateArgArgs', 'VerificationTemplateArgArgsDict']]]]] = None,
+            metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VerificationTemplateMetricArgs', 'VerificationTemplateMetricArgsDict']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None) -> 'VerificationTemplate':
         """
         Get an existing VerificationTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

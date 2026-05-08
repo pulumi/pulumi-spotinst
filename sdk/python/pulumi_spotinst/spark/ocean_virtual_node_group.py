@@ -49,8 +49,8 @@ class OceanVirtualNodeGroupArgs:
 @pulumi.input_type
 class _OceanVirtualNodeGroupState:
     def __init__(__self__, *,
-                 ocean_spark_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 virtual_node_group_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 ocean_spark_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_node_group_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OceanVirtualNodeGroup resources.
         """
@@ -61,20 +61,20 @@ class _OceanVirtualNodeGroupState:
 
     @_builtins.property
     @pulumi.getter(name="oceanSparkClusterId")
-    def ocean_spark_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ocean_spark_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "ocean_spark_cluster_id")
 
     @ocean_spark_cluster_id.setter
-    def ocean_spark_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ocean_spark_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ocean_spark_cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="virtualNodeGroupId")
-    def virtual_node_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def virtual_node_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "virtual_node_group_id")
 
     @virtual_node_group_id.setter
-    def virtual_node_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def virtual_node_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "virtual_node_group_id", value)
 
 
@@ -84,8 +84,8 @@ class OceanVirtualNodeGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ocean_spark_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 virtual_node_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 ocean_spark_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_node_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manage a dedicated Spotinst Ocean Spark Virtual Node Group resource
@@ -149,8 +149,8 @@ class OceanVirtualNodeGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ocean_spark_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 virtual_node_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 ocean_spark_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_node_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -176,8 +176,8 @@ class OceanVirtualNodeGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            ocean_spark_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            virtual_node_group_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'OceanVirtualNodeGroup':
+            ocean_spark_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            virtual_node_group_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'OceanVirtualNodeGroup':
         """
         Get an existing OceanVirtualNodeGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

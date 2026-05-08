@@ -425,179 +425,179 @@ export class MrScalar extends pulumi.CustomResource {
  * Input properties used for looking up and filtering MrScalar resources.
  */
 export interface MrScalarState {
-    additionalInfo?: pulumi.Input<string>;
-    additionalPrimarySecurityGroups?: pulumi.Input<pulumi.Input<string>[]>;
-    additionalReplicaSecurityGroups?: pulumi.Input<pulumi.Input<string>[]>;
-    applications?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarApplication>[]>;
-    availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
-    bootstrapActionsFiles?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarBootstrapActionsFile>[]>;
+    additionalInfo?: pulumi.Input<string | undefined>;
+    additionalPrimarySecurityGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    additionalReplicaSecurityGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    applications?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarApplication>[] | undefined>;
+    availabilityZones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    bootstrapActionsFiles?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarBootstrapActionsFile>[] | undefined>;
     /**
      * The MrScaler cluster id.
      */
-    clusterId?: pulumi.Input<string>;
-    configurationsFiles?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarConfigurationsFile>[]>;
-    coreDesiredCapacity?: pulumi.Input<number>;
-    coreEbsBlockDevices?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarCoreEbsBlockDevice>[]>;
-    coreEbsOptimized?: pulumi.Input<boolean>;
-    coreInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
-    coreLifecycle?: pulumi.Input<string>;
-    coreMaxSize?: pulumi.Input<number>;
-    coreMinSize?: pulumi.Input<number>;
-    coreScalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarCoreScalingDownPolicy>[]>;
-    coreScalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarCoreScalingUpPolicy>[]>;
-    coreUnit?: pulumi.Input<string>;
-    customAmiId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
+    configurationsFiles?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarConfigurationsFile>[] | undefined>;
+    coreDesiredCapacity?: pulumi.Input<number | undefined>;
+    coreEbsBlockDevices?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarCoreEbsBlockDevice>[] | undefined>;
+    coreEbsOptimized?: pulumi.Input<boolean | undefined>;
+    coreInstanceTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    coreLifecycle?: pulumi.Input<string | undefined>;
+    coreMaxSize?: pulumi.Input<number | undefined>;
+    coreMinSize?: pulumi.Input<number | undefined>;
+    coreScalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarCoreScalingDownPolicy>[] | undefined>;
+    coreScalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarCoreScalingUpPolicy>[] | undefined>;
+    coreUnit?: pulumi.Input<string | undefined>;
+    customAmiId?: pulumi.Input<string | undefined>;
     /**
      * The MrScaler description.
      */
-    description?: pulumi.Input<string>;
-    ebsRootVolumeSize?: pulumi.Input<number>;
-    ec2KeyName?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
+    ebsRootVolumeSize?: pulumi.Input<number | undefined>;
+    ec2KeyName?: pulumi.Input<string | undefined>;
     /**
      * Allow the `clusterId` to set a provider output variable.
      */
-    exposeClusterId?: pulumi.Input<boolean>;
-    instanceWeights?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarInstanceWeight>[]>;
-    jobFlowRole?: pulumi.Input<string>;
-    keepJobFlowAlive?: pulumi.Input<boolean>;
-    logUri?: pulumi.Input<string>;
-    managedPrimarySecurityGroup?: pulumi.Input<string>;
-    managedReplicaSecurityGroup?: pulumi.Input<string>;
-    masterEbsBlockDevices?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarMasterEbsBlockDevice>[]>;
-    masterEbsOptimized?: pulumi.Input<boolean>;
-    masterInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
-    masterLifecycle?: pulumi.Input<string>;
-    masterTarget?: pulumi.Input<number>;
+    exposeClusterId?: pulumi.Input<boolean | undefined>;
+    instanceWeights?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarInstanceWeight>[] | undefined>;
+    jobFlowRole?: pulumi.Input<string | undefined>;
+    keepJobFlowAlive?: pulumi.Input<boolean | undefined>;
+    logUri?: pulumi.Input<string | undefined>;
+    managedPrimarySecurityGroup?: pulumi.Input<string | undefined>;
+    managedReplicaSecurityGroup?: pulumi.Input<string | undefined>;
+    masterEbsBlockDevices?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarMasterEbsBlockDevice>[] | undefined>;
+    masterEbsOptimized?: pulumi.Input<boolean | undefined>;
+    masterInstanceTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    masterLifecycle?: pulumi.Input<string | undefined>;
+    masterTarget?: pulumi.Input<number | undefined>;
     /**
      * The MrScaler name.
      */
-    name?: pulumi.Input<string>;
-    outputClusterId?: pulumi.Input<string>;
-    provisioningTimeout?: pulumi.Input<inputs.aws.MrScalarProvisioningTimeout>;
+    name?: pulumi.Input<string | undefined>;
+    outputClusterId?: pulumi.Input<string | undefined>;
+    provisioningTimeout?: pulumi.Input<inputs.aws.MrScalarProvisioningTimeout | undefined>;
     /**
      * The MrScaler region.
      */
-    region?: pulumi.Input<string>;
-    releaseLabel?: pulumi.Input<string>;
-    repoUpgradeOnBoot?: pulumi.Input<string>;
-    retries?: pulumi.Input<number>;
-    scheduledTasks?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarScheduledTask>[]>;
-    securityConfig?: pulumi.Input<string>;
-    serviceAccessSecurityGroup?: pulumi.Input<string>;
-    serviceRole?: pulumi.Input<string>;
-    stepsFiles?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarStepsFile>[]>;
+    region?: pulumi.Input<string | undefined>;
+    releaseLabel?: pulumi.Input<string | undefined>;
+    repoUpgradeOnBoot?: pulumi.Input<string | undefined>;
+    retries?: pulumi.Input<number | undefined>;
+    scheduledTasks?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarScheduledTask>[] | undefined>;
+    securityConfig?: pulumi.Input<string | undefined>;
+    serviceAccessSecurityGroup?: pulumi.Input<string | undefined>;
+    serviceRole?: pulumi.Input<string | undefined>;
+    stepsFiles?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarStepsFile>[] | undefined>;
     /**
      * The MrScaler strategy. Allowed values are `new` `clone` and `wrap`.
      */
-    strategy?: pulumi.Input<string>;
-    tags?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTag>[]>;
-    taskDesiredCapacity?: pulumi.Input<number>;
-    taskEbsBlockDevices?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTaskEbsBlockDevice>[]>;
-    taskEbsOptimized?: pulumi.Input<boolean>;
-    taskInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
-    taskLifecycle?: pulumi.Input<string>;
-    taskMaxSize?: pulumi.Input<number>;
-    taskMinSize?: pulumi.Input<number>;
-    taskScalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTaskScalingDownPolicy>[]>;
-    taskScalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTaskScalingUpPolicy>[]>;
-    taskUnit?: pulumi.Input<string>;
+    strategy?: pulumi.Input<string | undefined>;
+    tags?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTag>[] | undefined>;
+    taskDesiredCapacity?: pulumi.Input<number | undefined>;
+    taskEbsBlockDevices?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTaskEbsBlockDevice>[] | undefined>;
+    taskEbsOptimized?: pulumi.Input<boolean | undefined>;
+    taskInstanceTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    taskLifecycle?: pulumi.Input<string | undefined>;
+    taskMaxSize?: pulumi.Input<number | undefined>;
+    taskMinSize?: pulumi.Input<number | undefined>;
+    taskScalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTaskScalingDownPolicy>[] | undefined>;
+    taskScalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTaskScalingUpPolicy>[] | undefined>;
+    taskUnit?: pulumi.Input<string | undefined>;
     /**
      * Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
      */
-    terminationPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTerminationPolicy>[]>;
-    terminationProtected?: pulumi.Input<boolean>;
+    terminationPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTerminationPolicy>[] | undefined>;
+    terminationProtected?: pulumi.Input<boolean | undefined>;
     /**
      * @deprecated This field has been removed from our API and is no longer functional.
      */
-    visibleToAllUsers?: pulumi.Input<boolean>;
+    visibleToAllUsers?: pulumi.Input<boolean | undefined>;
 }
 
 /**
  * The set of arguments for constructing a MrScalar resource.
  */
 export interface MrScalarArgs {
-    additionalInfo?: pulumi.Input<string>;
-    additionalPrimarySecurityGroups?: pulumi.Input<pulumi.Input<string>[]>;
-    additionalReplicaSecurityGroups?: pulumi.Input<pulumi.Input<string>[]>;
-    applications?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarApplication>[]>;
-    availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
-    bootstrapActionsFiles?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarBootstrapActionsFile>[]>;
+    additionalInfo?: pulumi.Input<string | undefined>;
+    additionalPrimarySecurityGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    additionalReplicaSecurityGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    applications?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarApplication>[] | undefined>;
+    availabilityZones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    bootstrapActionsFiles?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarBootstrapActionsFile>[] | undefined>;
     /**
      * The MrScaler cluster id.
      */
-    clusterId?: pulumi.Input<string>;
-    configurationsFiles?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarConfigurationsFile>[]>;
-    coreDesiredCapacity?: pulumi.Input<number>;
-    coreEbsBlockDevices?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarCoreEbsBlockDevice>[]>;
-    coreEbsOptimized?: pulumi.Input<boolean>;
-    coreInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
-    coreLifecycle?: pulumi.Input<string>;
-    coreMaxSize?: pulumi.Input<number>;
-    coreMinSize?: pulumi.Input<number>;
-    coreScalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarCoreScalingDownPolicy>[]>;
-    coreScalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarCoreScalingUpPolicy>[]>;
-    coreUnit?: pulumi.Input<string>;
-    customAmiId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
+    configurationsFiles?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarConfigurationsFile>[] | undefined>;
+    coreDesiredCapacity?: pulumi.Input<number | undefined>;
+    coreEbsBlockDevices?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarCoreEbsBlockDevice>[] | undefined>;
+    coreEbsOptimized?: pulumi.Input<boolean | undefined>;
+    coreInstanceTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    coreLifecycle?: pulumi.Input<string | undefined>;
+    coreMaxSize?: pulumi.Input<number | undefined>;
+    coreMinSize?: pulumi.Input<number | undefined>;
+    coreScalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarCoreScalingDownPolicy>[] | undefined>;
+    coreScalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarCoreScalingUpPolicy>[] | undefined>;
+    coreUnit?: pulumi.Input<string | undefined>;
+    customAmiId?: pulumi.Input<string | undefined>;
     /**
      * The MrScaler description.
      */
-    description?: pulumi.Input<string>;
-    ebsRootVolumeSize?: pulumi.Input<number>;
-    ec2KeyName?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
+    ebsRootVolumeSize?: pulumi.Input<number | undefined>;
+    ec2KeyName?: pulumi.Input<string | undefined>;
     /**
      * Allow the `clusterId` to set a provider output variable.
      */
-    exposeClusterId?: pulumi.Input<boolean>;
-    instanceWeights?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarInstanceWeight>[]>;
-    jobFlowRole?: pulumi.Input<string>;
-    keepJobFlowAlive?: pulumi.Input<boolean>;
-    logUri?: pulumi.Input<string>;
-    managedPrimarySecurityGroup?: pulumi.Input<string>;
-    managedReplicaSecurityGroup?: pulumi.Input<string>;
-    masterEbsBlockDevices?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarMasterEbsBlockDevice>[]>;
-    masterEbsOptimized?: pulumi.Input<boolean>;
-    masterInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
-    masterLifecycle?: pulumi.Input<string>;
-    masterTarget?: pulumi.Input<number>;
+    exposeClusterId?: pulumi.Input<boolean | undefined>;
+    instanceWeights?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarInstanceWeight>[] | undefined>;
+    jobFlowRole?: pulumi.Input<string | undefined>;
+    keepJobFlowAlive?: pulumi.Input<boolean | undefined>;
+    logUri?: pulumi.Input<string | undefined>;
+    managedPrimarySecurityGroup?: pulumi.Input<string | undefined>;
+    managedReplicaSecurityGroup?: pulumi.Input<string | undefined>;
+    masterEbsBlockDevices?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarMasterEbsBlockDevice>[] | undefined>;
+    masterEbsOptimized?: pulumi.Input<boolean | undefined>;
+    masterInstanceTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    masterLifecycle?: pulumi.Input<string | undefined>;
+    masterTarget?: pulumi.Input<number | undefined>;
     /**
      * The MrScaler name.
      */
-    name?: pulumi.Input<string>;
-    provisioningTimeout?: pulumi.Input<inputs.aws.MrScalarProvisioningTimeout>;
+    name?: pulumi.Input<string | undefined>;
+    provisioningTimeout?: pulumi.Input<inputs.aws.MrScalarProvisioningTimeout | undefined>;
     /**
      * The MrScaler region.
      */
-    region?: pulumi.Input<string>;
-    releaseLabel?: pulumi.Input<string>;
-    repoUpgradeOnBoot?: pulumi.Input<string>;
-    retries?: pulumi.Input<number>;
-    scheduledTasks?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarScheduledTask>[]>;
-    securityConfig?: pulumi.Input<string>;
-    serviceAccessSecurityGroup?: pulumi.Input<string>;
-    serviceRole?: pulumi.Input<string>;
-    stepsFiles?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarStepsFile>[]>;
+    region?: pulumi.Input<string | undefined>;
+    releaseLabel?: pulumi.Input<string | undefined>;
+    repoUpgradeOnBoot?: pulumi.Input<string | undefined>;
+    retries?: pulumi.Input<number | undefined>;
+    scheduledTasks?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarScheduledTask>[] | undefined>;
+    securityConfig?: pulumi.Input<string | undefined>;
+    serviceAccessSecurityGroup?: pulumi.Input<string | undefined>;
+    serviceRole?: pulumi.Input<string | undefined>;
+    stepsFiles?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarStepsFile>[] | undefined>;
     /**
      * The MrScaler strategy. Allowed values are `new` `clone` and `wrap`.
      */
     strategy: pulumi.Input<string>;
-    tags?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTag>[]>;
-    taskDesiredCapacity?: pulumi.Input<number>;
-    taskEbsBlockDevices?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTaskEbsBlockDevice>[]>;
-    taskEbsOptimized?: pulumi.Input<boolean>;
-    taskInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
-    taskLifecycle?: pulumi.Input<string>;
-    taskMaxSize?: pulumi.Input<number>;
-    taskMinSize?: pulumi.Input<number>;
-    taskScalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTaskScalingDownPolicy>[]>;
-    taskScalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTaskScalingUpPolicy>[]>;
-    taskUnit?: pulumi.Input<string>;
+    tags?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTag>[] | undefined>;
+    taskDesiredCapacity?: pulumi.Input<number | undefined>;
+    taskEbsBlockDevices?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTaskEbsBlockDevice>[] | undefined>;
+    taskEbsOptimized?: pulumi.Input<boolean | undefined>;
+    taskInstanceTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    taskLifecycle?: pulumi.Input<string | undefined>;
+    taskMaxSize?: pulumi.Input<number | undefined>;
+    taskMinSize?: pulumi.Input<number | undefined>;
+    taskScalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTaskScalingDownPolicy>[] | undefined>;
+    taskScalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTaskScalingUpPolicy>[] | undefined>;
+    taskUnit?: pulumi.Input<string | undefined>;
     /**
      * Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
      */
-    terminationPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTerminationPolicy>[]>;
-    terminationProtected?: pulumi.Input<boolean>;
+    terminationPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTerminationPolicy>[] | undefined>;
+    terminationProtected?: pulumi.Input<boolean | undefined>;
     /**
      * @deprecated This field has been removed from our API and is no longer functional.
      */
-    visibleToAllUsers?: pulumi.Input<boolean>;
+    visibleToAllUsers?: pulumi.Input<boolean | undefined>;
 }

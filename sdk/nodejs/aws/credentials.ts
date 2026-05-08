@@ -95,11 +95,11 @@ export interface CredentialsState {
     /**
      * The ID of the account associated with your token.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - https://docs.spot.io/administration/api/spot-policy-in-aws
      */
-    iamrole?: pulumi.Input<string>;
+    iamrole?: pulumi.Input<string | undefined>;
 }
 
 /**

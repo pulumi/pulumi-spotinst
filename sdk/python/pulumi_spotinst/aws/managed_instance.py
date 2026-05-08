@@ -26,49 +26,49 @@ class ManagedInstanceArgs:
                  product: pulumi.Input[_builtins.str],
                  subnet_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  vpc_id: pulumi.Input[_builtins.str],
-                 auto_healing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceBlockDeviceMappingArgs']]]] = None,
-                 block_devices_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 cpu_credits: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletes: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceDeleteArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 draining_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 ebs_optimized: Optional[pulumi.Input[_builtins.bool]] = None,
-                 elastic_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_monitoring: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fallback_to_ondemand: Optional[pulumi.Input[_builtins.bool]] = None,
-                 grace_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 iam_instance_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 integration_route53: Optional[pulumi.Input['ManagedInstanceIntegrationRoute53Args']] = None,
-                 key_pair: Optional[pulumi.Input[_builtins.str]] = None,
-                 life_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceLoadBalancerArgs']]]] = None,
-                 managed_instance_action: Optional[pulumi.Input['ManagedInstanceManagedInstanceActionArgs']] = None,
-                 metadata_options: Optional[pulumi.Input['ManagedInstanceMetadataOptionsArgs']] = None,
-                 minimum_instance_lifetime: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceNetworkInterfaceArgs']]]] = None,
-                 optimization_windows: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 orientation: Optional[pulumi.Input[_builtins.str]] = None,
-                 persist_private_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 persist_root_device: Optional[pulumi.Input[_builtins.bool]] = None,
-                 placement_tenancy: Optional[pulumi.Input[_builtins.str]] = None,
-                 preferred_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 preferred_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 private_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_requirements: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceResourceRequirementArgs']]]] = None,
-                 resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceResourceTagSpecificationArgs']]]] = None,
-                 revert_to_spot: Optional[pulumi.Input['ManagedInstanceRevertToSpotArgs']] = None,
-                 scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceScheduledTaskArgs']]]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 shutdown_script: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceTagArgs']]]] = None,
-                 unhealthy_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 utilize_reserved_instances: Optional[pulumi.Input[_builtins.bool]] = None):
+                 auto_healing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 block_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceBlockDeviceMappingArgs']]]] = None,
+                 block_devices_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 cpu_credits: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletes: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceDeleteArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 ebs_optimized: pulumi.Input[Optional[_builtins.bool]] = None,
+                 elastic_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_monitoring: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fallback_to_ondemand: pulumi.Input[Optional[_builtins.bool]] = None,
+                 grace_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 iam_instance_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 integration_route53: pulumi.Input[Optional['ManagedInstanceIntegrationRoute53Args']] = None,
+                 key_pair: pulumi.Input[Optional[_builtins.str]] = None,
+                 life_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceLoadBalancerArgs']]]] = None,
+                 managed_instance_action: pulumi.Input[Optional['ManagedInstanceManagedInstanceActionArgs']] = None,
+                 metadata_options: pulumi.Input[Optional['ManagedInstanceMetadataOptionsArgs']] = None,
+                 minimum_instance_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceNetworkInterfaceArgs']]]] = None,
+                 optimization_windows: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 orientation: pulumi.Input[Optional[_builtins.str]] = None,
+                 persist_private_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 persist_root_device: pulumi.Input[Optional[_builtins.bool]] = None,
+                 placement_tenancy: pulumi.Input[Optional[_builtins.str]] = None,
+                 preferred_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 preferred_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 private_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_requirements: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceResourceRequirementArgs']]]] = None,
+                 resource_tag_specifications: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceResourceTagSpecificationArgs']]]] = None,
+                 revert_to_spot: pulumi.Input[Optional['ManagedInstanceRevertToSpotArgs']] = None,
+                 scheduled_tasks: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceScheduledTaskArgs']]]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 shutdown_script: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceTagArgs']]]] = None,
+                 unhealthy_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 utilize_reserved_instances: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ManagedInstance resource.
         """
@@ -211,443 +211,443 @@ class ManagedInstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoHealing")
-    def auto_healing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_healing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "auto_healing")
 
     @auto_healing.setter
-    def auto_healing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_healing(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_healing", value)
 
     @_builtins.property
     @pulumi.getter(name="blockDeviceMappings")
-    def block_device_mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceBlockDeviceMappingArgs']]]]:
+    def block_device_mappings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceBlockDeviceMappingArgs']]]]:
         return pulumi.get(self, "block_device_mappings")
 
     @block_device_mappings.setter
-    def block_device_mappings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceBlockDeviceMappingArgs']]]]):
+    def block_device_mappings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceBlockDeviceMappingArgs']]]]):
         pulumi.set(self, "block_device_mappings", value)
 
     @_builtins.property
     @pulumi.getter(name="blockDevicesMode")
-    def block_devices_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def block_devices_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "block_devices_mode")
 
     @block_devices_mode.setter
-    def block_devices_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def block_devices_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "block_devices_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="cpuCredits")
-    def cpu_credits(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cpu_credits(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cpu_credits")
 
     @cpu_credits.setter
-    def cpu_credits(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cpu_credits(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cpu_credits", value)
 
     @_builtins.property
     @pulumi.getter
-    def deletes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceDeleteArgs']]]]:
+    def deletes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceDeleteArgs']]]]:
         return pulumi.get(self, "deletes")
 
     @deletes.setter
-    def deletes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceDeleteArgs']]]]):
+    def deletes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceDeleteArgs']]]]):
         pulumi.set(self, "deletes", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="drainingTimeout")
-    def draining_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def draining_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "draining_timeout")
 
     @draining_timeout.setter
-    def draining_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def draining_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "draining_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="ebsOptimized")
-    def ebs_optimized(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ebs_optimized(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "ebs_optimized")
 
     @ebs_optimized.setter
-    def ebs_optimized(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ebs_optimized(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ebs_optimized", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticIp")
-    def elastic_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def elastic_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "elastic_ip")
 
     @elastic_ip.setter
-    def elastic_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def elastic_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "elastic_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="enableMonitoring")
-    def enable_monitoring(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_monitoring(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "enable_monitoring")
 
     @enable_monitoring.setter
-    def enable_monitoring(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_monitoring(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_monitoring", value)
 
     @_builtins.property
     @pulumi.getter(name="fallbackToOndemand")
-    def fallback_to_ondemand(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def fallback_to_ondemand(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "fallback_to_ondemand")
 
     @fallback_to_ondemand.setter
-    def fallback_to_ondemand(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def fallback_to_ondemand(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "fallback_to_ondemand", value)
 
     @_builtins.property
     @pulumi.getter(name="gracePeriod")
-    def grace_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def grace_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "grace_period")
 
     @grace_period.setter
-    def grace_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def grace_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "grace_period", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckType")
-    def health_check_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "health_check_type")
 
     @health_check_type.setter
-    def health_check_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_type", value)
 
     @_builtins.property
     @pulumi.getter(name="iamInstanceProfile")
-    def iam_instance_profile(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def iam_instance_profile(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "iam_instance_profile")
 
     @iam_instance_profile.setter
-    def iam_instance_profile(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def iam_instance_profile(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "iam_instance_profile", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceTypes")
-    def instance_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def instance_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "instance_types")
 
     @instance_types.setter
-    def instance_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def instance_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "instance_types", value)
 
     @_builtins.property
     @pulumi.getter(name="integrationRoute53")
-    def integration_route53(self) -> Optional[pulumi.Input['ManagedInstanceIntegrationRoute53Args']]:
+    def integration_route53(self) -> pulumi.Input[Optional['ManagedInstanceIntegrationRoute53Args']]:
         return pulumi.get(self, "integration_route53")
 
     @integration_route53.setter
-    def integration_route53(self, value: Optional[pulumi.Input['ManagedInstanceIntegrationRoute53Args']]):
+    def integration_route53(self, value: pulumi.Input[Optional['ManagedInstanceIntegrationRoute53Args']]):
         pulumi.set(self, "integration_route53", value)
 
     @_builtins.property
     @pulumi.getter(name="keyPair")
-    def key_pair(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_pair(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "key_pair")
 
     @key_pair.setter
-    def key_pair(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_pair(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_pair", value)
 
     @_builtins.property
     @pulumi.getter(name="lifeCycle")
-    def life_cycle(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def life_cycle(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "life_cycle")
 
     @life_cycle.setter
-    def life_cycle(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def life_cycle(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "life_cycle", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancers")
-    def load_balancers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceLoadBalancerArgs']]]]:
+    def load_balancers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceLoadBalancerArgs']]]]:
         return pulumi.get(self, "load_balancers")
 
     @load_balancers.setter
-    def load_balancers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceLoadBalancerArgs']]]]):
+    def load_balancers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceLoadBalancerArgs']]]]):
         pulumi.set(self, "load_balancers", value)
 
     @_builtins.property
     @pulumi.getter(name="managedInstanceAction")
-    def managed_instance_action(self) -> Optional[pulumi.Input['ManagedInstanceManagedInstanceActionArgs']]:
+    def managed_instance_action(self) -> pulumi.Input[Optional['ManagedInstanceManagedInstanceActionArgs']]:
         return pulumi.get(self, "managed_instance_action")
 
     @managed_instance_action.setter
-    def managed_instance_action(self, value: Optional[pulumi.Input['ManagedInstanceManagedInstanceActionArgs']]):
+    def managed_instance_action(self, value: pulumi.Input[Optional['ManagedInstanceManagedInstanceActionArgs']]):
         pulumi.set(self, "managed_instance_action", value)
 
     @_builtins.property
     @pulumi.getter(name="metadataOptions")
-    def metadata_options(self) -> Optional[pulumi.Input['ManagedInstanceMetadataOptionsArgs']]:
+    def metadata_options(self) -> pulumi.Input[Optional['ManagedInstanceMetadataOptionsArgs']]:
         return pulumi.get(self, "metadata_options")
 
     @metadata_options.setter
-    def metadata_options(self, value: Optional[pulumi.Input['ManagedInstanceMetadataOptionsArgs']]):
+    def metadata_options(self, value: pulumi.Input[Optional['ManagedInstanceMetadataOptionsArgs']]):
         pulumi.set(self, "metadata_options", value)
 
     @_builtins.property
     @pulumi.getter(name="minimumInstanceLifetime")
-    def minimum_instance_lifetime(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def minimum_instance_lifetime(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "minimum_instance_lifetime")
 
     @minimum_instance_lifetime.setter
-    def minimum_instance_lifetime(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def minimum_instance_lifetime(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "minimum_instance_lifetime", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkInterfaces")
-    def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceNetworkInterfaceArgs']]]]:
+    def network_interfaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceNetworkInterfaceArgs']]]]:
         return pulumi.get(self, "network_interfaces")
 
     @network_interfaces.setter
-    def network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceNetworkInterfaceArgs']]]]):
+    def network_interfaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceNetworkInterfaceArgs']]]]):
         pulumi.set(self, "network_interfaces", value)
 
     @_builtins.property
     @pulumi.getter(name="optimizationWindows")
-    def optimization_windows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def optimization_windows(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "optimization_windows")
 
     @optimization_windows.setter
-    def optimization_windows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def optimization_windows(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "optimization_windows", value)
 
     @_builtins.property
     @pulumi.getter
-    def orientation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def orientation(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "orientation")
 
     @orientation.setter
-    def orientation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def orientation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "orientation", value)
 
     @_builtins.property
     @pulumi.getter(name="persistPrivateIp")
-    def persist_private_ip(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def persist_private_ip(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "persist_private_ip")
 
     @persist_private_ip.setter
-    def persist_private_ip(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def persist_private_ip(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "persist_private_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="persistRootDevice")
-    def persist_root_device(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def persist_root_device(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "persist_root_device")
 
     @persist_root_device.setter
-    def persist_root_device(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def persist_root_device(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "persist_root_device", value)
 
     @_builtins.property
     @pulumi.getter(name="placementTenancy")
-    def placement_tenancy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def placement_tenancy(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "placement_tenancy")
 
     @placement_tenancy.setter
-    def placement_tenancy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def placement_tenancy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "placement_tenancy", value)
 
     @_builtins.property
     @pulumi.getter(name="preferredType")
-    def preferred_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def preferred_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "preferred_type")
 
     @preferred_type.setter
-    def preferred_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def preferred_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "preferred_type", value)
 
     @_builtins.property
     @pulumi.getter(name="preferredTypes")
-    def preferred_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def preferred_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "preferred_types")
 
     @preferred_types.setter
-    def preferred_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def preferred_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "preferred_types", value)
 
     @_builtins.property
     @pulumi.getter(name="privateIp")
-    def private_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "private_ip")
 
     @private_ip.setter
-    def private_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_ip", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceRequirements")
-    def resource_requirements(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceResourceRequirementArgs']]]]:
+    def resource_requirements(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceResourceRequirementArgs']]]]:
         return pulumi.get(self, "resource_requirements")
 
     @resource_requirements.setter
-    def resource_requirements(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceResourceRequirementArgs']]]]):
+    def resource_requirements(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceResourceRequirementArgs']]]]):
         pulumi.set(self, "resource_requirements", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceTagSpecifications")
-    def resource_tag_specifications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceResourceTagSpecificationArgs']]]]:
+    def resource_tag_specifications(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceResourceTagSpecificationArgs']]]]:
         return pulumi.get(self, "resource_tag_specifications")
 
     @resource_tag_specifications.setter
-    def resource_tag_specifications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceResourceTagSpecificationArgs']]]]):
+    def resource_tag_specifications(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceResourceTagSpecificationArgs']]]]):
         pulumi.set(self, "resource_tag_specifications", value)
 
     @_builtins.property
     @pulumi.getter(name="revertToSpot")
-    def revert_to_spot(self) -> Optional[pulumi.Input['ManagedInstanceRevertToSpotArgs']]:
+    def revert_to_spot(self) -> pulumi.Input[Optional['ManagedInstanceRevertToSpotArgs']]:
         return pulumi.get(self, "revert_to_spot")
 
     @revert_to_spot.setter
-    def revert_to_spot(self, value: Optional[pulumi.Input['ManagedInstanceRevertToSpotArgs']]):
+    def revert_to_spot(self, value: pulumi.Input[Optional['ManagedInstanceRevertToSpotArgs']]):
         pulumi.set(self, "revert_to_spot", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduledTasks")
-    def scheduled_tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceScheduledTaskArgs']]]]:
+    def scheduled_tasks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceScheduledTaskArgs']]]]:
         return pulumi.get(self, "scheduled_tasks")
 
     @scheduled_tasks.setter
-    def scheduled_tasks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceScheduledTaskArgs']]]]):
+    def scheduled_tasks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceScheduledTaskArgs']]]]):
         pulumi.set(self, "scheduled_tasks", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
-    def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_group_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_group_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="shutdownScript")
-    def shutdown_script(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def shutdown_script(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "shutdown_script")
 
     @shutdown_script.setter
-    def shutdown_script(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def shutdown_script(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "shutdown_script", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceTagArgs']]]]:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="unhealthyDuration")
-    def unhealthy_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def unhealthy_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "unhealthy_duration")
 
     @unhealthy_duration.setter
-    def unhealthy_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def unhealthy_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "unhealthy_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="userData")
-    def user_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "user_data")
 
     @user_data.setter
-    def user_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_data", value)
 
     @_builtins.property
     @pulumi.getter(name="utilizeReservedInstances")
-    def utilize_reserved_instances(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def utilize_reserved_instances(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "utilize_reserved_instances")
 
     @utilize_reserved_instances.setter
-    def utilize_reserved_instances(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def utilize_reserved_instances(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "utilize_reserved_instances", value)
 
 
 @pulumi.input_type
 class _ManagedInstanceState:
     def __init__(__self__, *,
-                 auto_healing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceBlockDeviceMappingArgs']]]] = None,
-                 block_devices_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 cpu_credits: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletes: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceDeleteArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 draining_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 ebs_optimized: Optional[pulumi.Input[_builtins.bool]] = None,
-                 elastic_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_monitoring: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fallback_to_ondemand: Optional[pulumi.Input[_builtins.bool]] = None,
-                 grace_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 iam_instance_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 integration_route53: Optional[pulumi.Input['ManagedInstanceIntegrationRoute53Args']] = None,
-                 key_pair: Optional[pulumi.Input[_builtins.str]] = None,
-                 life_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceLoadBalancerArgs']]]] = None,
-                 managed_instance_action: Optional[pulumi.Input['ManagedInstanceManagedInstanceActionArgs']] = None,
-                 metadata_options: Optional[pulumi.Input['ManagedInstanceMetadataOptionsArgs']] = None,
-                 minimum_instance_lifetime: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceNetworkInterfaceArgs']]]] = None,
-                 optimization_windows: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 orientation: Optional[pulumi.Input[_builtins.str]] = None,
-                 persist_block_devices: Optional[pulumi.Input[_builtins.bool]] = None,
-                 persist_private_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 persist_root_device: Optional[pulumi.Input[_builtins.bool]] = None,
-                 placement_tenancy: Optional[pulumi.Input[_builtins.str]] = None,
-                 preferred_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 preferred_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 private_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 product: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_requirements: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceResourceRequirementArgs']]]] = None,
-                 resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceResourceTagSpecificationArgs']]]] = None,
-                 revert_to_spot: Optional[pulumi.Input['ManagedInstanceRevertToSpotArgs']] = None,
-                 scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceScheduledTaskArgs']]]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 shutdown_script: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceTagArgs']]]] = None,
-                 unhealthy_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 utilize_reserved_instances: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_healing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 block_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceBlockDeviceMappingArgs']]]] = None,
+                 block_devices_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 cpu_credits: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletes: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceDeleteArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 ebs_optimized: pulumi.Input[Optional[_builtins.bool]] = None,
+                 elastic_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_monitoring: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fallback_to_ondemand: pulumi.Input[Optional[_builtins.bool]] = None,
+                 grace_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 iam_instance_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 integration_route53: pulumi.Input[Optional['ManagedInstanceIntegrationRoute53Args']] = None,
+                 key_pair: pulumi.Input[Optional[_builtins.str]] = None,
+                 life_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceLoadBalancerArgs']]]] = None,
+                 managed_instance_action: pulumi.Input[Optional['ManagedInstanceManagedInstanceActionArgs']] = None,
+                 metadata_options: pulumi.Input[Optional['ManagedInstanceMetadataOptionsArgs']] = None,
+                 minimum_instance_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceNetworkInterfaceArgs']]]] = None,
+                 optimization_windows: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 orientation: pulumi.Input[Optional[_builtins.str]] = None,
+                 persist_block_devices: pulumi.Input[Optional[_builtins.bool]] = None,
+                 persist_private_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 persist_root_device: pulumi.Input[Optional[_builtins.bool]] = None,
+                 placement_tenancy: pulumi.Input[Optional[_builtins.str]] = None,
+                 preferred_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 preferred_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 private_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 product: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_requirements: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceResourceRequirementArgs']]]] = None,
+                 resource_tag_specifications: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceResourceTagSpecificationArgs']]]] = None,
+                 revert_to_spot: pulumi.Input[Optional['ManagedInstanceRevertToSpotArgs']] = None,
+                 scheduled_tasks: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceScheduledTaskArgs']]]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 shutdown_script: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceTagArgs']]]] = None,
+                 unhealthy_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 utilize_reserved_instances: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ManagedInstance resources.
         """
@@ -750,434 +750,434 @@ class _ManagedInstanceState:
 
     @_builtins.property
     @pulumi.getter(name="autoHealing")
-    def auto_healing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_healing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "auto_healing")
 
     @auto_healing.setter
-    def auto_healing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_healing(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_healing", value)
 
     @_builtins.property
     @pulumi.getter(name="blockDeviceMappings")
-    def block_device_mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceBlockDeviceMappingArgs']]]]:
+    def block_device_mappings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceBlockDeviceMappingArgs']]]]:
         return pulumi.get(self, "block_device_mappings")
 
     @block_device_mappings.setter
-    def block_device_mappings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceBlockDeviceMappingArgs']]]]):
+    def block_device_mappings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceBlockDeviceMappingArgs']]]]):
         pulumi.set(self, "block_device_mappings", value)
 
     @_builtins.property
     @pulumi.getter(name="blockDevicesMode")
-    def block_devices_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def block_devices_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "block_devices_mode")
 
     @block_devices_mode.setter
-    def block_devices_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def block_devices_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "block_devices_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="cpuCredits")
-    def cpu_credits(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cpu_credits(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cpu_credits")
 
     @cpu_credits.setter
-    def cpu_credits(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cpu_credits(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cpu_credits", value)
 
     @_builtins.property
     @pulumi.getter
-    def deletes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceDeleteArgs']]]]:
+    def deletes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceDeleteArgs']]]]:
         return pulumi.get(self, "deletes")
 
     @deletes.setter
-    def deletes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceDeleteArgs']]]]):
+    def deletes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceDeleteArgs']]]]):
         pulumi.set(self, "deletes", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="drainingTimeout")
-    def draining_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def draining_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "draining_timeout")
 
     @draining_timeout.setter
-    def draining_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def draining_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "draining_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="ebsOptimized")
-    def ebs_optimized(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ebs_optimized(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "ebs_optimized")
 
     @ebs_optimized.setter
-    def ebs_optimized(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ebs_optimized(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ebs_optimized", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticIp")
-    def elastic_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def elastic_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "elastic_ip")
 
     @elastic_ip.setter
-    def elastic_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def elastic_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "elastic_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="enableMonitoring")
-    def enable_monitoring(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_monitoring(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "enable_monitoring")
 
     @enable_monitoring.setter
-    def enable_monitoring(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_monitoring(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_monitoring", value)
 
     @_builtins.property
     @pulumi.getter(name="fallbackToOndemand")
-    def fallback_to_ondemand(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def fallback_to_ondemand(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "fallback_to_ondemand")
 
     @fallback_to_ondemand.setter
-    def fallback_to_ondemand(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def fallback_to_ondemand(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "fallback_to_ondemand", value)
 
     @_builtins.property
     @pulumi.getter(name="gracePeriod")
-    def grace_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def grace_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "grace_period")
 
     @grace_period.setter
-    def grace_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def grace_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "grace_period", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckType")
-    def health_check_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "health_check_type")
 
     @health_check_type.setter
-    def health_check_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_type", value)
 
     @_builtins.property
     @pulumi.getter(name="iamInstanceProfile")
-    def iam_instance_profile(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def iam_instance_profile(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "iam_instance_profile")
 
     @iam_instance_profile.setter
-    def iam_instance_profile(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def iam_instance_profile(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "iam_instance_profile", value)
 
     @_builtins.property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "image_id")
 
     @image_id.setter
-    def image_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceTypes")
-    def instance_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def instance_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "instance_types")
 
     @instance_types.setter
-    def instance_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def instance_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "instance_types", value)
 
     @_builtins.property
     @pulumi.getter(name="integrationRoute53")
-    def integration_route53(self) -> Optional[pulumi.Input['ManagedInstanceIntegrationRoute53Args']]:
+    def integration_route53(self) -> pulumi.Input[Optional['ManagedInstanceIntegrationRoute53Args']]:
         return pulumi.get(self, "integration_route53")
 
     @integration_route53.setter
-    def integration_route53(self, value: Optional[pulumi.Input['ManagedInstanceIntegrationRoute53Args']]):
+    def integration_route53(self, value: pulumi.Input[Optional['ManagedInstanceIntegrationRoute53Args']]):
         pulumi.set(self, "integration_route53", value)
 
     @_builtins.property
     @pulumi.getter(name="keyPair")
-    def key_pair(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_pair(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "key_pair")
 
     @key_pair.setter
-    def key_pair(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_pair(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_pair", value)
 
     @_builtins.property
     @pulumi.getter(name="lifeCycle")
-    def life_cycle(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def life_cycle(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "life_cycle")
 
     @life_cycle.setter
-    def life_cycle(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def life_cycle(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "life_cycle", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancers")
-    def load_balancers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceLoadBalancerArgs']]]]:
+    def load_balancers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceLoadBalancerArgs']]]]:
         return pulumi.get(self, "load_balancers")
 
     @load_balancers.setter
-    def load_balancers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceLoadBalancerArgs']]]]):
+    def load_balancers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceLoadBalancerArgs']]]]):
         pulumi.set(self, "load_balancers", value)
 
     @_builtins.property
     @pulumi.getter(name="managedInstanceAction")
-    def managed_instance_action(self) -> Optional[pulumi.Input['ManagedInstanceManagedInstanceActionArgs']]:
+    def managed_instance_action(self) -> pulumi.Input[Optional['ManagedInstanceManagedInstanceActionArgs']]:
         return pulumi.get(self, "managed_instance_action")
 
     @managed_instance_action.setter
-    def managed_instance_action(self, value: Optional[pulumi.Input['ManagedInstanceManagedInstanceActionArgs']]):
+    def managed_instance_action(self, value: pulumi.Input[Optional['ManagedInstanceManagedInstanceActionArgs']]):
         pulumi.set(self, "managed_instance_action", value)
 
     @_builtins.property
     @pulumi.getter(name="metadataOptions")
-    def metadata_options(self) -> Optional[pulumi.Input['ManagedInstanceMetadataOptionsArgs']]:
+    def metadata_options(self) -> pulumi.Input[Optional['ManagedInstanceMetadataOptionsArgs']]:
         return pulumi.get(self, "metadata_options")
 
     @metadata_options.setter
-    def metadata_options(self, value: Optional[pulumi.Input['ManagedInstanceMetadataOptionsArgs']]):
+    def metadata_options(self, value: pulumi.Input[Optional['ManagedInstanceMetadataOptionsArgs']]):
         pulumi.set(self, "metadata_options", value)
 
     @_builtins.property
     @pulumi.getter(name="minimumInstanceLifetime")
-    def minimum_instance_lifetime(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def minimum_instance_lifetime(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "minimum_instance_lifetime")
 
     @minimum_instance_lifetime.setter
-    def minimum_instance_lifetime(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def minimum_instance_lifetime(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "minimum_instance_lifetime", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkInterfaces")
-    def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceNetworkInterfaceArgs']]]]:
+    def network_interfaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceNetworkInterfaceArgs']]]]:
         return pulumi.get(self, "network_interfaces")
 
     @network_interfaces.setter
-    def network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceNetworkInterfaceArgs']]]]):
+    def network_interfaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceNetworkInterfaceArgs']]]]):
         pulumi.set(self, "network_interfaces", value)
 
     @_builtins.property
     @pulumi.getter(name="optimizationWindows")
-    def optimization_windows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def optimization_windows(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "optimization_windows")
 
     @optimization_windows.setter
-    def optimization_windows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def optimization_windows(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "optimization_windows", value)
 
     @_builtins.property
     @pulumi.getter
-    def orientation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def orientation(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "orientation")
 
     @orientation.setter
-    def orientation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def orientation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "orientation", value)
 
     @_builtins.property
     @pulumi.getter(name="persistBlockDevices")
-    def persist_block_devices(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def persist_block_devices(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "persist_block_devices")
 
     @persist_block_devices.setter
-    def persist_block_devices(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def persist_block_devices(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "persist_block_devices", value)
 
     @_builtins.property
     @pulumi.getter(name="persistPrivateIp")
-    def persist_private_ip(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def persist_private_ip(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "persist_private_ip")
 
     @persist_private_ip.setter
-    def persist_private_ip(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def persist_private_ip(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "persist_private_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="persistRootDevice")
-    def persist_root_device(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def persist_root_device(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "persist_root_device")
 
     @persist_root_device.setter
-    def persist_root_device(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def persist_root_device(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "persist_root_device", value)
 
     @_builtins.property
     @pulumi.getter(name="placementTenancy")
-    def placement_tenancy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def placement_tenancy(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "placement_tenancy")
 
     @placement_tenancy.setter
-    def placement_tenancy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def placement_tenancy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "placement_tenancy", value)
 
     @_builtins.property
     @pulumi.getter(name="preferredType")
-    def preferred_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def preferred_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "preferred_type")
 
     @preferred_type.setter
-    def preferred_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def preferred_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "preferred_type", value)
 
     @_builtins.property
     @pulumi.getter(name="preferredTypes")
-    def preferred_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def preferred_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "preferred_types")
 
     @preferred_types.setter
-    def preferred_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def preferred_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "preferred_types", value)
 
     @_builtins.property
     @pulumi.getter(name="privateIp")
-    def private_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "private_ip")
 
     @private_ip.setter
-    def private_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_ip", value)
 
     @_builtins.property
     @pulumi.getter
-    def product(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def product(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "product")
 
     @product.setter
-    def product(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def product(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "product", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceRequirements")
-    def resource_requirements(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceResourceRequirementArgs']]]]:
+    def resource_requirements(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceResourceRequirementArgs']]]]:
         return pulumi.get(self, "resource_requirements")
 
     @resource_requirements.setter
-    def resource_requirements(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceResourceRequirementArgs']]]]):
+    def resource_requirements(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceResourceRequirementArgs']]]]):
         pulumi.set(self, "resource_requirements", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceTagSpecifications")
-    def resource_tag_specifications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceResourceTagSpecificationArgs']]]]:
+    def resource_tag_specifications(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceResourceTagSpecificationArgs']]]]:
         return pulumi.get(self, "resource_tag_specifications")
 
     @resource_tag_specifications.setter
-    def resource_tag_specifications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceResourceTagSpecificationArgs']]]]):
+    def resource_tag_specifications(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceResourceTagSpecificationArgs']]]]):
         pulumi.set(self, "resource_tag_specifications", value)
 
     @_builtins.property
     @pulumi.getter(name="revertToSpot")
-    def revert_to_spot(self) -> Optional[pulumi.Input['ManagedInstanceRevertToSpotArgs']]:
+    def revert_to_spot(self) -> pulumi.Input[Optional['ManagedInstanceRevertToSpotArgs']]:
         return pulumi.get(self, "revert_to_spot")
 
     @revert_to_spot.setter
-    def revert_to_spot(self, value: Optional[pulumi.Input['ManagedInstanceRevertToSpotArgs']]):
+    def revert_to_spot(self, value: pulumi.Input[Optional['ManagedInstanceRevertToSpotArgs']]):
         pulumi.set(self, "revert_to_spot", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduledTasks")
-    def scheduled_tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceScheduledTaskArgs']]]]:
+    def scheduled_tasks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceScheduledTaskArgs']]]]:
         return pulumi.get(self, "scheduled_tasks")
 
     @scheduled_tasks.setter
-    def scheduled_tasks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceScheduledTaskArgs']]]]):
+    def scheduled_tasks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceScheduledTaskArgs']]]]):
         pulumi.set(self, "scheduled_tasks", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
-    def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_group_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_group_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="shutdownScript")
-    def shutdown_script(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def shutdown_script(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "shutdown_script")
 
     @shutdown_script.setter
-    def shutdown_script(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def shutdown_script(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "shutdown_script", value)
 
     @_builtins.property
     @pulumi.getter(name="subnetIds")
-    def subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def subnet_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "subnet_ids")
 
     @subnet_ids.setter
-    def subnet_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def subnet_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "subnet_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceTagArgs']]]]:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedInstanceTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="unhealthyDuration")
-    def unhealthy_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def unhealthy_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "unhealthy_duration")
 
     @unhealthy_duration.setter
-    def unhealthy_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def unhealthy_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "unhealthy_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="userData")
-    def user_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "user_data")
 
     @user_data.setter
-    def user_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_data", value)
 
     @_builtins.property
     @pulumi.getter(name="utilizeReservedInstances")
-    def utilize_reserved_instances(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def utilize_reserved_instances(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "utilize_reserved_instances")
 
     @utilize_reserved_instances.setter
-    def utilize_reserved_instances(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def utilize_reserved_instances(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "utilize_reserved_instances", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
 
@@ -1187,54 +1187,54 @@ class ManagedInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_healing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedInstanceBlockDeviceMappingArgs', 'ManagedInstanceBlockDeviceMappingArgsDict']]]]] = None,
-                 block_devices_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 cpu_credits: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedInstanceDeleteArgs', 'ManagedInstanceDeleteArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 draining_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 ebs_optimized: Optional[pulumi.Input[_builtins.bool]] = None,
-                 elastic_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_monitoring: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fallback_to_ondemand: Optional[pulumi.Input[_builtins.bool]] = None,
-                 grace_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 iam_instance_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 integration_route53: Optional[pulumi.Input[Union['ManagedInstanceIntegrationRoute53Args', 'ManagedInstanceIntegrationRoute53ArgsDict']]] = None,
-                 key_pair: Optional[pulumi.Input[_builtins.str]] = None,
-                 life_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedInstanceLoadBalancerArgs', 'ManagedInstanceLoadBalancerArgsDict']]]]] = None,
-                 managed_instance_action: Optional[pulumi.Input[Union['ManagedInstanceManagedInstanceActionArgs', 'ManagedInstanceManagedInstanceActionArgsDict']]] = None,
-                 metadata_options: Optional[pulumi.Input[Union['ManagedInstanceMetadataOptionsArgs', 'ManagedInstanceMetadataOptionsArgsDict']]] = None,
-                 minimum_instance_lifetime: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedInstanceNetworkInterfaceArgs', 'ManagedInstanceNetworkInterfaceArgsDict']]]]] = None,
-                 optimization_windows: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 orientation: Optional[pulumi.Input[_builtins.str]] = None,
-                 persist_block_devices: Optional[pulumi.Input[_builtins.bool]] = None,
-                 persist_private_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 persist_root_device: Optional[pulumi.Input[_builtins.bool]] = None,
-                 placement_tenancy: Optional[pulumi.Input[_builtins.str]] = None,
-                 preferred_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 preferred_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 private_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 product: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_requirements: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedInstanceResourceRequirementArgs', 'ManagedInstanceResourceRequirementArgsDict']]]]] = None,
-                 resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedInstanceResourceTagSpecificationArgs', 'ManagedInstanceResourceTagSpecificationArgsDict']]]]] = None,
-                 revert_to_spot: Optional[pulumi.Input[Union['ManagedInstanceRevertToSpotArgs', 'ManagedInstanceRevertToSpotArgsDict']]] = None,
-                 scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedInstanceScheduledTaskArgs', 'ManagedInstanceScheduledTaskArgsDict']]]]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 shutdown_script: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedInstanceTagArgs', 'ManagedInstanceTagArgsDict']]]]] = None,
-                 unhealthy_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 utilize_reserved_instances: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_healing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 block_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedInstanceBlockDeviceMappingArgs', 'ManagedInstanceBlockDeviceMappingArgsDict']]]]] = None,
+                 block_devices_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 cpu_credits: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedInstanceDeleteArgs', 'ManagedInstanceDeleteArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 ebs_optimized: pulumi.Input[Optional[_builtins.bool]] = None,
+                 elastic_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_monitoring: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fallback_to_ondemand: pulumi.Input[Optional[_builtins.bool]] = None,
+                 grace_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 iam_instance_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 integration_route53: pulumi.Input[Optional[Union['ManagedInstanceIntegrationRoute53Args', 'ManagedInstanceIntegrationRoute53ArgsDict']]] = None,
+                 key_pair: pulumi.Input[Optional[_builtins.str]] = None,
+                 life_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedInstanceLoadBalancerArgs', 'ManagedInstanceLoadBalancerArgsDict']]]]] = None,
+                 managed_instance_action: pulumi.Input[Optional[Union['ManagedInstanceManagedInstanceActionArgs', 'ManagedInstanceManagedInstanceActionArgsDict']]] = None,
+                 metadata_options: pulumi.Input[Optional[Union['ManagedInstanceMetadataOptionsArgs', 'ManagedInstanceMetadataOptionsArgsDict']]] = None,
+                 minimum_instance_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedInstanceNetworkInterfaceArgs', 'ManagedInstanceNetworkInterfaceArgsDict']]]]] = None,
+                 optimization_windows: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 orientation: pulumi.Input[Optional[_builtins.str]] = None,
+                 persist_block_devices: pulumi.Input[Optional[_builtins.bool]] = None,
+                 persist_private_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 persist_root_device: pulumi.Input[Optional[_builtins.bool]] = None,
+                 placement_tenancy: pulumi.Input[Optional[_builtins.str]] = None,
+                 preferred_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 preferred_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 private_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 product: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_requirements: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedInstanceResourceRequirementArgs', 'ManagedInstanceResourceRequirementArgsDict']]]]] = None,
+                 resource_tag_specifications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedInstanceResourceTagSpecificationArgs', 'ManagedInstanceResourceTagSpecificationArgsDict']]]]] = None,
+                 revert_to_spot: pulumi.Input[Optional[Union['ManagedInstanceRevertToSpotArgs', 'ManagedInstanceRevertToSpotArgsDict']]] = None,
+                 scheduled_tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedInstanceScheduledTaskArgs', 'ManagedInstanceScheduledTaskArgsDict']]]]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 shutdown_script: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedInstanceTagArgs', 'ManagedInstanceTagArgsDict']]]]] = None,
+                 unhealthy_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 utilize_reserved_instances: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Create a ManagedInstance resource with the given unique name, props, and options.
@@ -1266,54 +1266,54 @@ class ManagedInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_healing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedInstanceBlockDeviceMappingArgs', 'ManagedInstanceBlockDeviceMappingArgsDict']]]]] = None,
-                 block_devices_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 cpu_credits: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedInstanceDeleteArgs', 'ManagedInstanceDeleteArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 draining_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 ebs_optimized: Optional[pulumi.Input[_builtins.bool]] = None,
-                 elastic_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_monitoring: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fallback_to_ondemand: Optional[pulumi.Input[_builtins.bool]] = None,
-                 grace_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 iam_instance_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 integration_route53: Optional[pulumi.Input[Union['ManagedInstanceIntegrationRoute53Args', 'ManagedInstanceIntegrationRoute53ArgsDict']]] = None,
-                 key_pair: Optional[pulumi.Input[_builtins.str]] = None,
-                 life_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedInstanceLoadBalancerArgs', 'ManagedInstanceLoadBalancerArgsDict']]]]] = None,
-                 managed_instance_action: Optional[pulumi.Input[Union['ManagedInstanceManagedInstanceActionArgs', 'ManagedInstanceManagedInstanceActionArgsDict']]] = None,
-                 metadata_options: Optional[pulumi.Input[Union['ManagedInstanceMetadataOptionsArgs', 'ManagedInstanceMetadataOptionsArgsDict']]] = None,
-                 minimum_instance_lifetime: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedInstanceNetworkInterfaceArgs', 'ManagedInstanceNetworkInterfaceArgsDict']]]]] = None,
-                 optimization_windows: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 orientation: Optional[pulumi.Input[_builtins.str]] = None,
-                 persist_block_devices: Optional[pulumi.Input[_builtins.bool]] = None,
-                 persist_private_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 persist_root_device: Optional[pulumi.Input[_builtins.bool]] = None,
-                 placement_tenancy: Optional[pulumi.Input[_builtins.str]] = None,
-                 preferred_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 preferred_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 private_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 product: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_requirements: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedInstanceResourceRequirementArgs', 'ManagedInstanceResourceRequirementArgsDict']]]]] = None,
-                 resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedInstanceResourceTagSpecificationArgs', 'ManagedInstanceResourceTagSpecificationArgsDict']]]]] = None,
-                 revert_to_spot: Optional[pulumi.Input[Union['ManagedInstanceRevertToSpotArgs', 'ManagedInstanceRevertToSpotArgsDict']]] = None,
-                 scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedInstanceScheduledTaskArgs', 'ManagedInstanceScheduledTaskArgsDict']]]]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 shutdown_script: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedInstanceTagArgs', 'ManagedInstanceTagArgsDict']]]]] = None,
-                 unhealthy_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 utilize_reserved_instances: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_healing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 block_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedInstanceBlockDeviceMappingArgs', 'ManagedInstanceBlockDeviceMappingArgsDict']]]]] = None,
+                 block_devices_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 cpu_credits: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedInstanceDeleteArgs', 'ManagedInstanceDeleteArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 ebs_optimized: pulumi.Input[Optional[_builtins.bool]] = None,
+                 elastic_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_monitoring: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fallback_to_ondemand: pulumi.Input[Optional[_builtins.bool]] = None,
+                 grace_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 iam_instance_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 integration_route53: pulumi.Input[Optional[Union['ManagedInstanceIntegrationRoute53Args', 'ManagedInstanceIntegrationRoute53ArgsDict']]] = None,
+                 key_pair: pulumi.Input[Optional[_builtins.str]] = None,
+                 life_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedInstanceLoadBalancerArgs', 'ManagedInstanceLoadBalancerArgsDict']]]]] = None,
+                 managed_instance_action: pulumi.Input[Optional[Union['ManagedInstanceManagedInstanceActionArgs', 'ManagedInstanceManagedInstanceActionArgsDict']]] = None,
+                 metadata_options: pulumi.Input[Optional[Union['ManagedInstanceMetadataOptionsArgs', 'ManagedInstanceMetadataOptionsArgsDict']]] = None,
+                 minimum_instance_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedInstanceNetworkInterfaceArgs', 'ManagedInstanceNetworkInterfaceArgsDict']]]]] = None,
+                 optimization_windows: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 orientation: pulumi.Input[Optional[_builtins.str]] = None,
+                 persist_block_devices: pulumi.Input[Optional[_builtins.bool]] = None,
+                 persist_private_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 persist_root_device: pulumi.Input[Optional[_builtins.bool]] = None,
+                 placement_tenancy: pulumi.Input[Optional[_builtins.str]] = None,
+                 preferred_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 preferred_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 private_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 product: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_requirements: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedInstanceResourceRequirementArgs', 'ManagedInstanceResourceRequirementArgsDict']]]]] = None,
+                 resource_tag_specifications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedInstanceResourceTagSpecificationArgs', 'ManagedInstanceResourceTagSpecificationArgsDict']]]]] = None,
+                 revert_to_spot: pulumi.Input[Optional[Union['ManagedInstanceRevertToSpotArgs', 'ManagedInstanceRevertToSpotArgsDict']]] = None,
+                 scheduled_tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedInstanceScheduledTaskArgs', 'ManagedInstanceScheduledTaskArgsDict']]]]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 shutdown_script: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedInstanceTagArgs', 'ManagedInstanceTagArgsDict']]]]] = None,
+                 unhealthy_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 utilize_reserved_instances: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1391,54 +1391,54 @@ class ManagedInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_healing: Optional[pulumi.Input[_builtins.bool]] = None,
-            block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedInstanceBlockDeviceMappingArgs', 'ManagedInstanceBlockDeviceMappingArgsDict']]]]] = None,
-            block_devices_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            cpu_credits: Optional[pulumi.Input[_builtins.str]] = None,
-            deletes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedInstanceDeleteArgs', 'ManagedInstanceDeleteArgsDict']]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            draining_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            ebs_optimized: Optional[pulumi.Input[_builtins.bool]] = None,
-            elastic_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_monitoring: Optional[pulumi.Input[_builtins.bool]] = None,
-            fallback_to_ondemand: Optional[pulumi.Input[_builtins.bool]] = None,
-            grace_period: Optional[pulumi.Input[_builtins.int]] = None,
-            health_check_type: Optional[pulumi.Input[_builtins.str]] = None,
-            iam_instance_profile: Optional[pulumi.Input[_builtins.str]] = None,
-            image_id: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            integration_route53: Optional[pulumi.Input[Union['ManagedInstanceIntegrationRoute53Args', 'ManagedInstanceIntegrationRoute53ArgsDict']]] = None,
-            key_pair: Optional[pulumi.Input[_builtins.str]] = None,
-            life_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-            load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedInstanceLoadBalancerArgs', 'ManagedInstanceLoadBalancerArgsDict']]]]] = None,
-            managed_instance_action: Optional[pulumi.Input[Union['ManagedInstanceManagedInstanceActionArgs', 'ManagedInstanceManagedInstanceActionArgsDict']]] = None,
-            metadata_options: Optional[pulumi.Input[Union['ManagedInstanceMetadataOptionsArgs', 'ManagedInstanceMetadataOptionsArgsDict']]] = None,
-            minimum_instance_lifetime: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedInstanceNetworkInterfaceArgs', 'ManagedInstanceNetworkInterfaceArgsDict']]]]] = None,
-            optimization_windows: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            orientation: Optional[pulumi.Input[_builtins.str]] = None,
-            persist_block_devices: Optional[pulumi.Input[_builtins.bool]] = None,
-            persist_private_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-            persist_root_device: Optional[pulumi.Input[_builtins.bool]] = None,
-            placement_tenancy: Optional[pulumi.Input[_builtins.str]] = None,
-            preferred_type: Optional[pulumi.Input[_builtins.str]] = None,
-            preferred_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            private_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            product: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_requirements: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedInstanceResourceRequirementArgs', 'ManagedInstanceResourceRequirementArgsDict']]]]] = None,
-            resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedInstanceResourceTagSpecificationArgs', 'ManagedInstanceResourceTagSpecificationArgsDict']]]]] = None,
-            revert_to_spot: Optional[pulumi.Input[Union['ManagedInstanceRevertToSpotArgs', 'ManagedInstanceRevertToSpotArgsDict']]] = None,
-            scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedInstanceScheduledTaskArgs', 'ManagedInstanceScheduledTaskArgsDict']]]]] = None,
-            security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            shutdown_script: Optional[pulumi.Input[_builtins.str]] = None,
-            subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedInstanceTagArgs', 'ManagedInstanceTagArgsDict']]]]] = None,
-            unhealthy_duration: Optional[pulumi.Input[_builtins.int]] = None,
-            user_data: Optional[pulumi.Input[_builtins.str]] = None,
-            utilize_reserved_instances: Optional[pulumi.Input[_builtins.bool]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ManagedInstance':
+            auto_healing: pulumi.Input[Optional[_builtins.bool]] = None,
+            block_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedInstanceBlockDeviceMappingArgs', 'ManagedInstanceBlockDeviceMappingArgsDict']]]]] = None,
+            block_devices_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            cpu_credits: pulumi.Input[Optional[_builtins.str]] = None,
+            deletes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedInstanceDeleteArgs', 'ManagedInstanceDeleteArgsDict']]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            ebs_optimized: pulumi.Input[Optional[_builtins.bool]] = None,
+            elastic_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_monitoring: pulumi.Input[Optional[_builtins.bool]] = None,
+            fallback_to_ondemand: pulumi.Input[Optional[_builtins.bool]] = None,
+            grace_period: pulumi.Input[Optional[_builtins.int]] = None,
+            health_check_type: pulumi.Input[Optional[_builtins.str]] = None,
+            iam_instance_profile: pulumi.Input[Optional[_builtins.str]] = None,
+            image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            integration_route53: pulumi.Input[Optional[Union['ManagedInstanceIntegrationRoute53Args', 'ManagedInstanceIntegrationRoute53ArgsDict']]] = None,
+            key_pair: pulumi.Input[Optional[_builtins.str]] = None,
+            life_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedInstanceLoadBalancerArgs', 'ManagedInstanceLoadBalancerArgsDict']]]]] = None,
+            managed_instance_action: pulumi.Input[Optional[Union['ManagedInstanceManagedInstanceActionArgs', 'ManagedInstanceManagedInstanceActionArgsDict']]] = None,
+            metadata_options: pulumi.Input[Optional[Union['ManagedInstanceMetadataOptionsArgs', 'ManagedInstanceMetadataOptionsArgsDict']]] = None,
+            minimum_instance_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedInstanceNetworkInterfaceArgs', 'ManagedInstanceNetworkInterfaceArgsDict']]]]] = None,
+            optimization_windows: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            orientation: pulumi.Input[Optional[_builtins.str]] = None,
+            persist_block_devices: pulumi.Input[Optional[_builtins.bool]] = None,
+            persist_private_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+            persist_root_device: pulumi.Input[Optional[_builtins.bool]] = None,
+            placement_tenancy: pulumi.Input[Optional[_builtins.str]] = None,
+            preferred_type: pulumi.Input[Optional[_builtins.str]] = None,
+            preferred_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            private_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            product: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_requirements: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedInstanceResourceRequirementArgs', 'ManagedInstanceResourceRequirementArgsDict']]]]] = None,
+            resource_tag_specifications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedInstanceResourceTagSpecificationArgs', 'ManagedInstanceResourceTagSpecificationArgsDict']]]]] = None,
+            revert_to_spot: pulumi.Input[Optional[Union['ManagedInstanceRevertToSpotArgs', 'ManagedInstanceRevertToSpotArgsDict']]] = None,
+            scheduled_tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedInstanceScheduledTaskArgs', 'ManagedInstanceScheduledTaskArgsDict']]]]] = None,
+            security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            shutdown_script: pulumi.Input[Optional[_builtins.str]] = None,
+            subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedInstanceTagArgs', 'ManagedInstanceTagArgsDict']]]]] = None,
+            unhealthy_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            user_data: pulumi.Input[Optional[_builtins.str]] = None,
+            utilize_reserved_instances: pulumi.Input[Optional[_builtins.bool]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ManagedInstance':
         """
         Get an existing ManagedInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -84,12 +84,12 @@ export interface StrategyState {
     /**
      * Represents Canary strategy. Cannot be defined when Rolling object is defined.
      */
-    canary?: pulumi.Input<inputs.oceancd.StrategyCanary>;
+    canary?: pulumi.Input<inputs.oceancd.StrategyCanary | undefined>;
     /**
      * Represents Rolling Update strategy. Cannot be defined when Canary object is defined.
      */
-    rolling?: pulumi.Input<inputs.oceancd.StrategyRolling>;
-    strategyName?: pulumi.Input<string>;
+    rolling?: pulumi.Input<inputs.oceancd.StrategyRolling | undefined>;
+    strategyName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -99,10 +99,10 @@ export interface StrategyArgs {
     /**
      * Represents Canary strategy. Cannot be defined when Rolling object is defined.
      */
-    canary?: pulumi.Input<inputs.oceancd.StrategyCanary>;
+    canary?: pulumi.Input<inputs.oceancd.StrategyCanary | undefined>;
     /**
      * Represents Rolling Update strategy. Cannot be defined when Canary object is defined.
      */
-    rolling?: pulumi.Input<inputs.oceancd.StrategyRolling>;
+    rolling?: pulumi.Input<inputs.oceancd.StrategyRolling | undefined>;
     strategyName: pulumi.Input<string>;
 }

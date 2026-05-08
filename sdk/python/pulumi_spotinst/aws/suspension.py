@@ -60,8 +60,8 @@ class SuspensionArgs:
 @pulumi.input_type
 class _SuspensionState:
     def __init__(__self__, *,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 suspensions: Optional[pulumi.Input[Sequence[pulumi.Input['SuspensionSuspensionArgs']]]] = None):
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 suspensions: pulumi.Input[Optional[Sequence[pulumi.Input['SuspensionSuspensionArgs']]]] = None):
         """
         Input properties used for looking up and filtering Suspension resources.
 
@@ -75,26 +75,26 @@ class _SuspensionState:
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Elastigroup ID to apply the suspensions on.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def suspensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SuspensionSuspensionArgs']]]]:
+    def suspensions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SuspensionSuspensionArgs']]]]:
         """
         block of single process to suspend.
         """
         return pulumi.get(self, "suspensions")
 
     @suspensions.setter
-    def suspensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SuspensionSuspensionArgs']]]]):
+    def suspensions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SuspensionSuspensionArgs']]]]):
         pulumi.set(self, "suspensions", value)
 
 
@@ -104,8 +104,8 @@ class Suspension(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 suspensions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SuspensionSuspensionArgs', 'SuspensionSuspensionArgsDict']]]]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 suspensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SuspensionSuspensionArgs', 'SuspensionSuspensionArgsDict']]]]] = None,
                  __props__=None):
         """
         Suspend AWS Elastigroup processes. This resource provide the capability of
@@ -189,8 +189,8 @@ class Suspension(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 suspensions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SuspensionSuspensionArgs', 'SuspensionSuspensionArgsDict']]]]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 suspensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SuspensionSuspensionArgs', 'SuspensionSuspensionArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -216,8 +216,8 @@ class Suspension(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            suspensions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SuspensionSuspensionArgs', 'SuspensionSuspensionArgsDict']]]]] = None) -> 'Suspension':
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            suspensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SuspensionSuspensionArgs', 'SuspensionSuspensionArgsDict']]]]] = None) -> 'Suspension':
         """
         Get an existing Suspension resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

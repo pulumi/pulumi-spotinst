@@ -23,17 +23,17 @@ class OceanRightSizingRuleArgs:
     def __init__(__self__, *,
                  recommendation_application_intervals: pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalArgs']]],
                  rule_name: pulumi.Input[_builtins.str],
-                 attach_workloads: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadArgs']]]] = None,
-                 auto_apply_definitions: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAutoApplyDefinitionArgs']]]] = None,
-                 detach_workloads: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadArgs']]]] = None,
-                 downside_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 exclude_preliminary_recommendations: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ocean_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 recommendation_application_boundaries: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationBoundaryArgs']]]] = None,
-                 recommendation_application_hpas: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationHpaArgs']]]] = None,
-                 recommendation_application_min_thresholds: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationMinThresholdArgs']]]] = None,
-                 recommendation_application_overhead_values: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationOverheadValueArgs']]]] = None,
-                 restart_replicas: Optional[pulumi.Input[_builtins.str]] = None):
+                 attach_workloads: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadArgs']]]] = None,
+                 auto_apply_definitions: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleAutoApplyDefinitionArgs']]]] = None,
+                 detach_workloads: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadArgs']]]] = None,
+                 downside_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 exclude_preliminary_recommendations: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ocean_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 recommendation_application_boundaries: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationBoundaryArgs']]]] = None,
+                 recommendation_application_hpas: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationHpaArgs']]]] = None,
+                 recommendation_application_min_thresholds: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationMinThresholdArgs']]]] = None,
+                 recommendation_application_overhead_values: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationOverheadValueArgs']]]] = None,
+                 restart_replicas: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a OceanRightSizingRule resource.
 
@@ -99,144 +99,144 @@ class OceanRightSizingRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="attachWorkloads")
-    def attach_workloads(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadArgs']]]]:
+    def attach_workloads(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadArgs']]]]:
         return pulumi.get(self, "attach_workloads")
 
     @attach_workloads.setter
-    def attach_workloads(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadArgs']]]]):
+    def attach_workloads(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadArgs']]]]):
         pulumi.set(self, "attach_workloads", value)
 
     @_builtins.property
     @pulumi.getter(name="autoApplyDefinitions")
-    def auto_apply_definitions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAutoApplyDefinitionArgs']]]]:
+    def auto_apply_definitions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleAutoApplyDefinitionArgs']]]]:
         """
         Ocean Rightsizing Rule Auto Apply Configuration.
         """
         return pulumi.get(self, "auto_apply_definitions")
 
     @auto_apply_definitions.setter
-    def auto_apply_definitions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAutoApplyDefinitionArgs']]]]):
+    def auto_apply_definitions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleAutoApplyDefinitionArgs']]]]):
         pulumi.set(self, "auto_apply_definitions", value)
 
     @_builtins.property
     @pulumi.getter(name="detachWorkloads")
-    def detach_workloads(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadArgs']]]]:
+    def detach_workloads(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadArgs']]]]:
         return pulumi.get(self, "detach_workloads")
 
     @detach_workloads.setter
-    def detach_workloads(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadArgs']]]]):
+    def detach_workloads(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadArgs']]]]):
         pulumi.set(self, "detach_workloads", value)
 
     @_builtins.property
     @pulumi.getter(name="downsideOnly")
-    def downside_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def downside_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "downside_only")
 
     @downside_only.setter
-    def downside_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def downside_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "downside_only", value)
 
     @_builtins.property
     @pulumi.getter(name="excludePreliminaryRecommendations")
-    def exclude_preliminary_recommendations(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def exclude_preliminary_recommendations(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Exclude preliminary recommendations (recommendations based on less than 4 full days of data).
         """
         return pulumi.get(self, "exclude_preliminary_recommendations")
 
     @exclude_preliminary_recommendations.setter
-    def exclude_preliminary_recommendations(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def exclude_preliminary_recommendations(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "exclude_preliminary_recommendations", value)
 
     @_builtins.property
     @pulumi.getter(name="oceanId")
-    def ocean_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ocean_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier of the Ocean cluster.
         """
         return pulumi.get(self, "ocean_id")
 
     @ocean_id.setter
-    def ocean_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ocean_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ocean_id", value)
 
     @_builtins.property
     @pulumi.getter(name="recommendationApplicationBoundaries")
-    def recommendation_application_boundaries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationBoundaryArgs']]]]:
+    def recommendation_application_boundaries(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationBoundaryArgs']]]]:
         """
         Determines the Ocean Rightsizing rule recommendation application boundaries.
         """
         return pulumi.get(self, "recommendation_application_boundaries")
 
     @recommendation_application_boundaries.setter
-    def recommendation_application_boundaries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationBoundaryArgs']]]]):
+    def recommendation_application_boundaries(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationBoundaryArgs']]]]):
         pulumi.set(self, "recommendation_application_boundaries", value)
 
     @_builtins.property
     @pulumi.getter(name="recommendationApplicationHpas")
-    def recommendation_application_hpas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationHpaArgs']]]]:
+    def recommendation_application_hpas(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationHpaArgs']]]]:
         """
         HPA Rightsizing Rule Recommendation Configuration
         """
         return pulumi.get(self, "recommendation_application_hpas")
 
     @recommendation_application_hpas.setter
-    def recommendation_application_hpas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationHpaArgs']]]]):
+    def recommendation_application_hpas(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationHpaArgs']]]]):
         pulumi.set(self, "recommendation_application_hpas", value)
 
     @_builtins.property
     @pulumi.getter(name="recommendationApplicationMinThresholds")
-    def recommendation_application_min_thresholds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationMinThresholdArgs']]]]:
+    def recommendation_application_min_thresholds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationMinThresholdArgs']]]]:
         """
         Determines the extent of difference between current request and recommendation to trigger a change in percentage.
         """
         return pulumi.get(self, "recommendation_application_min_thresholds")
 
     @recommendation_application_min_thresholds.setter
-    def recommendation_application_min_thresholds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationMinThresholdArgs']]]]):
+    def recommendation_application_min_thresholds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationMinThresholdArgs']]]]):
         pulumi.set(self, "recommendation_application_min_thresholds", value)
 
     @_builtins.property
     @pulumi.getter(name="recommendationApplicationOverheadValues")
-    def recommendation_application_overhead_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationOverheadValueArgs']]]]:
+    def recommendation_application_overhead_values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationOverheadValueArgs']]]]:
         """
         Determines the Ocean Rightsizing rule recommendation application overhead values.
         """
         return pulumi.get(self, "recommendation_application_overhead_values")
 
     @recommendation_application_overhead_values.setter
-    def recommendation_application_overhead_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationOverheadValueArgs']]]]):
+    def recommendation_application_overhead_values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationOverheadValueArgs']]]]):
         pulumi.set(self, "recommendation_application_overhead_values", value)
 
     @_builtins.property
     @pulumi.getter(name="restartReplicas")
-    def restart_replicas(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def restart_replicas(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Valid values: "MORE_THAN_ONE_REPLICA" "ALL_MANIFEST" "NO_RESTART". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
         """
         return pulumi.get(self, "restart_replicas")
 
     @restart_replicas.setter
-    def restart_replicas(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def restart_replicas(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "restart_replicas", value)
 
 
 @pulumi.input_type
 class _OceanRightSizingRuleState:
     def __init__(__self__, *,
-                 attach_workloads: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadArgs']]]] = None,
-                 auto_apply_definitions: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAutoApplyDefinitionArgs']]]] = None,
-                 detach_workloads: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadArgs']]]] = None,
-                 downside_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 exclude_preliminary_recommendations: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ocean_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 recommendation_application_boundaries: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationBoundaryArgs']]]] = None,
-                 recommendation_application_hpas: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationHpaArgs']]]] = None,
-                 recommendation_application_intervals: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalArgs']]]] = None,
-                 recommendation_application_min_thresholds: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationMinThresholdArgs']]]] = None,
-                 recommendation_application_overhead_values: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationOverheadValueArgs']]]] = None,
-                 restart_replicas: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 attach_workloads: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadArgs']]]] = None,
+                 auto_apply_definitions: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleAutoApplyDefinitionArgs']]]] = None,
+                 detach_workloads: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadArgs']]]] = None,
+                 downside_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 exclude_preliminary_recommendations: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ocean_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 recommendation_application_boundaries: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationBoundaryArgs']]]] = None,
+                 recommendation_application_hpas: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationHpaArgs']]]] = None,
+                 recommendation_application_intervals: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalArgs']]]] = None,
+                 recommendation_application_min_thresholds: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationMinThresholdArgs']]]] = None,
+                 recommendation_application_overhead_values: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationOverheadValueArgs']]]] = None,
+                 restart_replicas: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OceanRightSizingRule resources.
 
@@ -280,149 +280,149 @@ class _OceanRightSizingRuleState:
 
     @_builtins.property
     @pulumi.getter(name="attachWorkloads")
-    def attach_workloads(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadArgs']]]]:
+    def attach_workloads(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadArgs']]]]:
         return pulumi.get(self, "attach_workloads")
 
     @attach_workloads.setter
-    def attach_workloads(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadArgs']]]]):
+    def attach_workloads(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadArgs']]]]):
         pulumi.set(self, "attach_workloads", value)
 
     @_builtins.property
     @pulumi.getter(name="autoApplyDefinitions")
-    def auto_apply_definitions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAutoApplyDefinitionArgs']]]]:
+    def auto_apply_definitions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleAutoApplyDefinitionArgs']]]]:
         """
         Ocean Rightsizing Rule Auto Apply Configuration.
         """
         return pulumi.get(self, "auto_apply_definitions")
 
     @auto_apply_definitions.setter
-    def auto_apply_definitions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAutoApplyDefinitionArgs']]]]):
+    def auto_apply_definitions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleAutoApplyDefinitionArgs']]]]):
         pulumi.set(self, "auto_apply_definitions", value)
 
     @_builtins.property
     @pulumi.getter(name="detachWorkloads")
-    def detach_workloads(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadArgs']]]]:
+    def detach_workloads(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadArgs']]]]:
         return pulumi.get(self, "detach_workloads")
 
     @detach_workloads.setter
-    def detach_workloads(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadArgs']]]]):
+    def detach_workloads(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadArgs']]]]):
         pulumi.set(self, "detach_workloads", value)
 
     @_builtins.property
     @pulumi.getter(name="downsideOnly")
-    def downside_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def downside_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "downside_only")
 
     @downside_only.setter
-    def downside_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def downside_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "downside_only", value)
 
     @_builtins.property
     @pulumi.getter(name="excludePreliminaryRecommendations")
-    def exclude_preliminary_recommendations(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def exclude_preliminary_recommendations(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Exclude preliminary recommendations (recommendations based on less than 4 full days of data).
         """
         return pulumi.get(self, "exclude_preliminary_recommendations")
 
     @exclude_preliminary_recommendations.setter
-    def exclude_preliminary_recommendations(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def exclude_preliminary_recommendations(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "exclude_preliminary_recommendations", value)
 
     @_builtins.property
     @pulumi.getter(name="oceanId")
-    def ocean_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ocean_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier of the Ocean cluster.
         """
         return pulumi.get(self, "ocean_id")
 
     @ocean_id.setter
-    def ocean_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ocean_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ocean_id", value)
 
     @_builtins.property
     @pulumi.getter(name="recommendationApplicationBoundaries")
-    def recommendation_application_boundaries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationBoundaryArgs']]]]:
+    def recommendation_application_boundaries(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationBoundaryArgs']]]]:
         """
         Determines the Ocean Rightsizing rule recommendation application boundaries.
         """
         return pulumi.get(self, "recommendation_application_boundaries")
 
     @recommendation_application_boundaries.setter
-    def recommendation_application_boundaries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationBoundaryArgs']]]]):
+    def recommendation_application_boundaries(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationBoundaryArgs']]]]):
         pulumi.set(self, "recommendation_application_boundaries", value)
 
     @_builtins.property
     @pulumi.getter(name="recommendationApplicationHpas")
-    def recommendation_application_hpas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationHpaArgs']]]]:
+    def recommendation_application_hpas(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationHpaArgs']]]]:
         """
         HPA Rightsizing Rule Recommendation Configuration
         """
         return pulumi.get(self, "recommendation_application_hpas")
 
     @recommendation_application_hpas.setter
-    def recommendation_application_hpas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationHpaArgs']]]]):
+    def recommendation_application_hpas(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationHpaArgs']]]]):
         pulumi.set(self, "recommendation_application_hpas", value)
 
     @_builtins.property
     @pulumi.getter(name="recommendationApplicationIntervals")
-    def recommendation_application_intervals(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalArgs']]]]:
+    def recommendation_application_intervals(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalArgs']]]]:
         """
         Determines the Ocean Rightsizing rule recommendation application intervals.
         """
         return pulumi.get(self, "recommendation_application_intervals")
 
     @recommendation_application_intervals.setter
-    def recommendation_application_intervals(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalArgs']]]]):
+    def recommendation_application_intervals(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalArgs']]]]):
         pulumi.set(self, "recommendation_application_intervals", value)
 
     @_builtins.property
     @pulumi.getter(name="recommendationApplicationMinThresholds")
-    def recommendation_application_min_thresholds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationMinThresholdArgs']]]]:
+    def recommendation_application_min_thresholds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationMinThresholdArgs']]]]:
         """
         Determines the extent of difference between current request and recommendation to trigger a change in percentage.
         """
         return pulumi.get(self, "recommendation_application_min_thresholds")
 
     @recommendation_application_min_thresholds.setter
-    def recommendation_application_min_thresholds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationMinThresholdArgs']]]]):
+    def recommendation_application_min_thresholds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationMinThresholdArgs']]]]):
         pulumi.set(self, "recommendation_application_min_thresholds", value)
 
     @_builtins.property
     @pulumi.getter(name="recommendationApplicationOverheadValues")
-    def recommendation_application_overhead_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationOverheadValueArgs']]]]:
+    def recommendation_application_overhead_values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationOverheadValueArgs']]]]:
         """
         Determines the Ocean Rightsizing rule recommendation application overhead values.
         """
         return pulumi.get(self, "recommendation_application_overhead_values")
 
     @recommendation_application_overhead_values.setter
-    def recommendation_application_overhead_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationOverheadValueArgs']]]]):
+    def recommendation_application_overhead_values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationOverheadValueArgs']]]]):
         pulumi.set(self, "recommendation_application_overhead_values", value)
 
     @_builtins.property
     @pulumi.getter(name="restartReplicas")
-    def restart_replicas(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def restart_replicas(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Valid values: "MORE_THAN_ONE_REPLICA" "ALL_MANIFEST" "NO_RESTART". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
         """
         return pulumi.get(self, "restart_replicas")
 
     @restart_replicas.setter
-    def restart_replicas(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def restart_replicas(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "restart_replicas", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleName")
-    def rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique name of the rule.
         """
         return pulumi.get(self, "rule_name")
 
     @rule_name.setter
-    def rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_name", value)
 
 
@@ -432,19 +432,19 @@ class OceanRightSizingRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attach_workloads: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleAttachWorkloadArgs', 'OceanRightSizingRuleAttachWorkloadArgsDict']]]]] = None,
-                 auto_apply_definitions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleAutoApplyDefinitionArgs', 'OceanRightSizingRuleAutoApplyDefinitionArgsDict']]]]] = None,
-                 detach_workloads: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleDetachWorkloadArgs', 'OceanRightSizingRuleDetachWorkloadArgsDict']]]]] = None,
-                 downside_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 exclude_preliminary_recommendations: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ocean_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 recommendation_application_boundaries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationBoundaryArgs', 'OceanRightSizingRuleRecommendationApplicationBoundaryArgsDict']]]]] = None,
-                 recommendation_application_hpas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationHpaArgs', 'OceanRightSizingRuleRecommendationApplicationHpaArgsDict']]]]] = None,
-                 recommendation_application_intervals: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationIntervalArgs', 'OceanRightSizingRuleRecommendationApplicationIntervalArgsDict']]]]] = None,
-                 recommendation_application_min_thresholds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationMinThresholdArgs', 'OceanRightSizingRuleRecommendationApplicationMinThresholdArgsDict']]]]] = None,
-                 recommendation_application_overhead_values: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationOverheadValueArgs', 'OceanRightSizingRuleRecommendationApplicationOverheadValueArgsDict']]]]] = None,
-                 restart_replicas: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 attach_workloads: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanRightSizingRuleAttachWorkloadArgs', 'OceanRightSizingRuleAttachWorkloadArgsDict']]]]] = None,
+                 auto_apply_definitions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanRightSizingRuleAutoApplyDefinitionArgs', 'OceanRightSizingRuleAutoApplyDefinitionArgsDict']]]]] = None,
+                 detach_workloads: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanRightSizingRuleDetachWorkloadArgs', 'OceanRightSizingRuleDetachWorkloadArgsDict']]]]] = None,
+                 downside_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 exclude_preliminary_recommendations: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ocean_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 recommendation_application_boundaries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationBoundaryArgs', 'OceanRightSizingRuleRecommendationApplicationBoundaryArgsDict']]]]] = None,
+                 recommendation_application_hpas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationHpaArgs', 'OceanRightSizingRuleRecommendationApplicationHpaArgsDict']]]]] = None,
+                 recommendation_application_intervals: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationIntervalArgs', 'OceanRightSizingRuleRecommendationApplicationIntervalArgsDict']]]]] = None,
+                 recommendation_application_min_thresholds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationMinThresholdArgs', 'OceanRightSizingRuleRecommendationApplicationMinThresholdArgsDict']]]]] = None,
+                 recommendation_application_overhead_values: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationOverheadValueArgs', 'OceanRightSizingRuleRecommendationApplicationOverheadValueArgsDict']]]]] = None,
+                 restart_replicas: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a Spotinst Ocean right sizing rule resource.
@@ -496,8 +496,8 @@ class OceanRightSizingRule(pulumi.CustomResource):
                 },
             ],
             recommendation_application_boundaries=[{
-                "cpu_min": 120,
-                "cpu_max": 190,
+                "cpu_min": float(120),
+                "cpu_max": float(190),
                 "memory_min": 160,
                 "memory_max": 190,
             }],
@@ -592,8 +592,8 @@ class OceanRightSizingRule(pulumi.CustomResource):
                 },
             ],
             recommendation_application_boundaries=[{
-                "cpu_min": 120,
-                "cpu_max": 190,
+                "cpu_min": float(120),
+                "cpu_max": float(190),
                 "memory_min": 160,
                 "memory_max": 190,
             }],
@@ -634,19 +634,19 @@ class OceanRightSizingRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attach_workloads: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleAttachWorkloadArgs', 'OceanRightSizingRuleAttachWorkloadArgsDict']]]]] = None,
-                 auto_apply_definitions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleAutoApplyDefinitionArgs', 'OceanRightSizingRuleAutoApplyDefinitionArgsDict']]]]] = None,
-                 detach_workloads: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleDetachWorkloadArgs', 'OceanRightSizingRuleDetachWorkloadArgsDict']]]]] = None,
-                 downside_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 exclude_preliminary_recommendations: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ocean_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 recommendation_application_boundaries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationBoundaryArgs', 'OceanRightSizingRuleRecommendationApplicationBoundaryArgsDict']]]]] = None,
-                 recommendation_application_hpas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationHpaArgs', 'OceanRightSizingRuleRecommendationApplicationHpaArgsDict']]]]] = None,
-                 recommendation_application_intervals: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationIntervalArgs', 'OceanRightSizingRuleRecommendationApplicationIntervalArgsDict']]]]] = None,
-                 recommendation_application_min_thresholds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationMinThresholdArgs', 'OceanRightSizingRuleRecommendationApplicationMinThresholdArgsDict']]]]] = None,
-                 recommendation_application_overhead_values: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationOverheadValueArgs', 'OceanRightSizingRuleRecommendationApplicationOverheadValueArgsDict']]]]] = None,
-                 restart_replicas: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 attach_workloads: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanRightSizingRuleAttachWorkloadArgs', 'OceanRightSizingRuleAttachWorkloadArgsDict']]]]] = None,
+                 auto_apply_definitions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanRightSizingRuleAutoApplyDefinitionArgs', 'OceanRightSizingRuleAutoApplyDefinitionArgsDict']]]]] = None,
+                 detach_workloads: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanRightSizingRuleDetachWorkloadArgs', 'OceanRightSizingRuleDetachWorkloadArgsDict']]]]] = None,
+                 downside_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 exclude_preliminary_recommendations: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ocean_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 recommendation_application_boundaries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationBoundaryArgs', 'OceanRightSizingRuleRecommendationApplicationBoundaryArgsDict']]]]] = None,
+                 recommendation_application_hpas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationHpaArgs', 'OceanRightSizingRuleRecommendationApplicationHpaArgsDict']]]]] = None,
+                 recommendation_application_intervals: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationIntervalArgs', 'OceanRightSizingRuleRecommendationApplicationIntervalArgsDict']]]]] = None,
+                 recommendation_application_min_thresholds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationMinThresholdArgs', 'OceanRightSizingRuleRecommendationApplicationMinThresholdArgsDict']]]]] = None,
+                 recommendation_application_overhead_values: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationOverheadValueArgs', 'OceanRightSizingRuleRecommendationApplicationOverheadValueArgsDict']]]]] = None,
+                 restart_replicas: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -683,19 +683,19 @@ class OceanRightSizingRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            attach_workloads: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleAttachWorkloadArgs', 'OceanRightSizingRuleAttachWorkloadArgsDict']]]]] = None,
-            auto_apply_definitions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleAutoApplyDefinitionArgs', 'OceanRightSizingRuleAutoApplyDefinitionArgsDict']]]]] = None,
-            detach_workloads: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleDetachWorkloadArgs', 'OceanRightSizingRuleDetachWorkloadArgsDict']]]]] = None,
-            downside_only: Optional[pulumi.Input[_builtins.bool]] = None,
-            exclude_preliminary_recommendations: Optional[pulumi.Input[_builtins.bool]] = None,
-            ocean_id: Optional[pulumi.Input[_builtins.str]] = None,
-            recommendation_application_boundaries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationBoundaryArgs', 'OceanRightSizingRuleRecommendationApplicationBoundaryArgsDict']]]]] = None,
-            recommendation_application_hpas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationHpaArgs', 'OceanRightSizingRuleRecommendationApplicationHpaArgsDict']]]]] = None,
-            recommendation_application_intervals: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationIntervalArgs', 'OceanRightSizingRuleRecommendationApplicationIntervalArgsDict']]]]] = None,
-            recommendation_application_min_thresholds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationMinThresholdArgs', 'OceanRightSizingRuleRecommendationApplicationMinThresholdArgsDict']]]]] = None,
-            recommendation_application_overhead_values: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationOverheadValueArgs', 'OceanRightSizingRuleRecommendationApplicationOverheadValueArgsDict']]]]] = None,
-            restart_replicas: Optional[pulumi.Input[_builtins.str]] = None,
-            rule_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'OceanRightSizingRule':
+            attach_workloads: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanRightSizingRuleAttachWorkloadArgs', 'OceanRightSizingRuleAttachWorkloadArgsDict']]]]] = None,
+            auto_apply_definitions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanRightSizingRuleAutoApplyDefinitionArgs', 'OceanRightSizingRuleAutoApplyDefinitionArgsDict']]]]] = None,
+            detach_workloads: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanRightSizingRuleDetachWorkloadArgs', 'OceanRightSizingRuleDetachWorkloadArgsDict']]]]] = None,
+            downside_only: pulumi.Input[Optional[_builtins.bool]] = None,
+            exclude_preliminary_recommendations: pulumi.Input[Optional[_builtins.bool]] = None,
+            ocean_id: pulumi.Input[Optional[_builtins.str]] = None,
+            recommendation_application_boundaries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationBoundaryArgs', 'OceanRightSizingRuleRecommendationApplicationBoundaryArgsDict']]]]] = None,
+            recommendation_application_hpas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationHpaArgs', 'OceanRightSizingRuleRecommendationApplicationHpaArgsDict']]]]] = None,
+            recommendation_application_intervals: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationIntervalArgs', 'OceanRightSizingRuleRecommendationApplicationIntervalArgsDict']]]]] = None,
+            recommendation_application_min_thresholds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationMinThresholdArgs', 'OceanRightSizingRuleRecommendationApplicationMinThresholdArgsDict']]]]] = None,
+            recommendation_application_overhead_values: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationOverheadValueArgs', 'OceanRightSizingRuleRecommendationApplicationOverheadValueArgsDict']]]]] = None,
+            restart_replicas: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'OceanRightSizingRule':
         """
         Get an existing OceanRightSizingRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

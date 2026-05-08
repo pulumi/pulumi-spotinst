@@ -80,7 +80,7 @@ export interface AccountState {
     /**
      * Provide a name for your account. The account name must contain at least one character that is a-z or A-Z.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -90,5 +90,5 @@ export interface AccountArgs {
     /**
      * Provide a name for your account. The account name must contain at least one character that is a-z or A-Z.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

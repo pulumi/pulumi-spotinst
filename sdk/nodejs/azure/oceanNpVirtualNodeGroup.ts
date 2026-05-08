@@ -317,101 +317,101 @@ export interface OceanNpVirtualNodeGroupState {
     /**
      * An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
      */
-    availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
+    availabilityZones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
      */
-    drainingTimeout?: pulumi.Input<number>;
+    drainingTimeout?: pulumi.Input<number | undefined>;
     /**
      * Enable node public IP.
      */
-    enableNodePublicIp?: pulumi.Input<boolean>;
+    enableNodePublicIp?: pulumi.Input<boolean | undefined>;
     /**
      * If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
      */
-    fallbackToOndemand?: pulumi.Input<boolean>;
+    fallbackToOndemand?: pulumi.Input<boolean | undefined>;
     /**
      * Filters for the VM sizes that can be launched from the virtual node group.
      */
-    filters?: pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupFilters>;
+    filters?: pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupFilters | undefined>;
     /**
      * Specify the custom headroom per VNG. Provide a list of headroom objects.
      */
-    headrooms?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupHeadroom>[]>;
+    headrooms?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupHeadroom>[] | undefined>;
     /**
      * The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
      */
-    kubernetesVersion?: pulumi.Input<string>;
+    kubernetesVersion?: pulumi.Input<string | undefined>;
     /**
      * An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Custom Linux OS configuration.
      */
-    linuxOsConfigs?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupLinuxOsConfig>[]>;
+    linuxOsConfigs?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupLinuxOsConfig>[] | undefined>;
     /**
      * Maximum node count limit.
      */
-    maxCount?: pulumi.Input<number>;
+    maxCount?: pulumi.Input<number | undefined>;
     /**
      * The maximum number of pods per node in the node pools.
      */
-    maxPodsPerNode?: pulumi.Input<number>;
+    maxPodsPerNode?: pulumi.Input<number | undefined>;
     /**
      * Minimum node count limit.
      */
-    minCount?: pulumi.Input<number>;
+    minCount?: pulumi.Input<number | undefined>;
     /**
      * Enter a name for the virtual node group.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The Ocean cluster identifier. Required for Launch Spec creation.
      */
-    oceanId?: pulumi.Input<string>;
+    oceanId?: pulumi.Input<string | undefined>;
     /**
      * The size of the OS disk in GB.
      */
-    osDiskSizeGb?: pulumi.Input<number>;
+    osDiskSizeGb?: pulumi.Input<number | undefined>;
     /**
      * The type of the OS disk.
      */
-    osDiskType?: pulumi.Input<string>;
+    osDiskType?: pulumi.Input<string | undefined>;
     /**
      * The OS SKU of the OS type. Must correlate with the os type.
      */
-    osSku?: pulumi.Input<string>;
+    osSku?: pulumi.Input<string | undefined>;
     /**
      * The OS type of the OS disk. Can't be modified once set.
      */
-    osType?: pulumi.Input<string>;
+    osType?: pulumi.Input<string | undefined>;
     /**
      * The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
      */
-    podSubnetIds?: pulumi.Input<pulumi.Input<string>[]>;
+    podSubnetIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
      */
-    scheduling?: pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupScheduling>;
+    scheduling?: pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupScheduling | undefined>;
     /**
      * Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
      */
-    shouldUtilizeCommitments?: pulumi.Input<boolean>;
+    shouldUtilizeCommitments?: pulumi.Input<boolean | undefined>;
     /**
      * Percentage of spot VMs to maintain.
      */
-    spotPercentage?: pulumi.Input<number>;
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    spotPercentage?: pulumi.Input<number | undefined>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Add taints to a virtual node group.
      */
-    taints?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupTaint>[]>;
-    updatePolicy?: pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupUpdatePolicy>;
+    taints?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupTaint>[] | undefined>;
+    updatePolicy?: pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupUpdatePolicy | undefined>;
     /**
      * The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
      */
-    vnetSubnetIds?: pulumi.Input<pulumi.Input<string>[]>;
+    vnetSubnetIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -421,55 +421,55 @@ export interface OceanNpVirtualNodeGroupArgs {
     /**
      * An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
      */
-    availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
+    availabilityZones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
      */
-    drainingTimeout?: pulumi.Input<number>;
+    drainingTimeout?: pulumi.Input<number | undefined>;
     /**
      * Enable node public IP.
      */
-    enableNodePublicIp?: pulumi.Input<boolean>;
+    enableNodePublicIp?: pulumi.Input<boolean | undefined>;
     /**
      * If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
      */
-    fallbackToOndemand?: pulumi.Input<boolean>;
+    fallbackToOndemand?: pulumi.Input<boolean | undefined>;
     /**
      * Filters for the VM sizes that can be launched from the virtual node group.
      */
-    filters?: pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupFilters>;
+    filters?: pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupFilters | undefined>;
     /**
      * Specify the custom headroom per VNG. Provide a list of headroom objects.
      */
-    headrooms?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupHeadroom>[]>;
+    headrooms?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupHeadroom>[] | undefined>;
     /**
      * The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
      */
-    kubernetesVersion?: pulumi.Input<string>;
+    kubernetesVersion?: pulumi.Input<string | undefined>;
     /**
      * An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Custom Linux OS configuration.
      */
-    linuxOsConfigs?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupLinuxOsConfig>[]>;
+    linuxOsConfigs?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupLinuxOsConfig>[] | undefined>;
     /**
      * Maximum node count limit.
      */
-    maxCount?: pulumi.Input<number>;
+    maxCount?: pulumi.Input<number | undefined>;
     /**
      * The maximum number of pods per node in the node pools.
      */
-    maxPodsPerNode?: pulumi.Input<number>;
+    maxPodsPerNode?: pulumi.Input<number | undefined>;
     /**
      * Minimum node count limit.
      */
-    minCount?: pulumi.Input<number>;
+    minCount?: pulumi.Input<number | undefined>;
     /**
      * Enter a name for the virtual node group.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The Ocean cluster identifier. Required for Launch Spec creation.
      */
@@ -477,43 +477,43 @@ export interface OceanNpVirtualNodeGroupArgs {
     /**
      * The size of the OS disk in GB.
      */
-    osDiskSizeGb?: pulumi.Input<number>;
+    osDiskSizeGb?: pulumi.Input<number | undefined>;
     /**
      * The type of the OS disk.
      */
-    osDiskType?: pulumi.Input<string>;
+    osDiskType?: pulumi.Input<string | undefined>;
     /**
      * The OS SKU of the OS type. Must correlate with the os type.
      */
-    osSku?: pulumi.Input<string>;
+    osSku?: pulumi.Input<string | undefined>;
     /**
      * The OS type of the OS disk. Can't be modified once set.
      */
-    osType?: pulumi.Input<string>;
+    osType?: pulumi.Input<string | undefined>;
     /**
      * The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
      */
-    podSubnetIds?: pulumi.Input<pulumi.Input<string>[]>;
+    podSubnetIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
      */
-    scheduling?: pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupScheduling>;
+    scheduling?: pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupScheduling | undefined>;
     /**
      * Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
      */
-    shouldUtilizeCommitments?: pulumi.Input<boolean>;
+    shouldUtilizeCommitments?: pulumi.Input<boolean | undefined>;
     /**
      * Percentage of spot VMs to maintain.
      */
-    spotPercentage?: pulumi.Input<number>;
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    spotPercentage?: pulumi.Input<number | undefined>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Add taints to a virtual node group.
      */
-    taints?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupTaint>[]>;
-    updatePolicy?: pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupUpdatePolicy>;
+    taints?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupTaint>[] | undefined>;
+    updatePolicy?: pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupUpdatePolicy | undefined>;
     /**
      * The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
      */
-    vnetSubnetIds?: pulumi.Input<pulumi.Input<string>[]>;
+    vnetSubnetIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
